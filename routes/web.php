@@ -16,18 +16,18 @@ use App\Http\Controllers\ProductController;
 
 //Auth::routes();
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index']);
 
 Route::group(['middleware' => ['auth']], function() {
     //Route::get('/roles', [RoleController::class, 'index'])->name('roles.index');
     //Route::get('/roles/store', [RoleController::class, 'store'])->name('roles.store');
-    Route::get('/roles/edit/{id}', [RoleController::class, 'edit'])->name('roles.edit');
+    Route::get('/roles/edit/{id}', [RoleController::class, 'edit'])->name('roles.edit2');
     Route::put('/roles/save/{id}', [RoleController::class, 'update'])->name('roles.save');
     //Route::delete('/roles/destroy', [RoleController::class, 'destroy'])->name('roles.destroy');
     Route::post('/roles/destroy_all', [RoleController::class, 'destroy_all'])->name('roles.destroy_all');
     Route::resource('users', UserController::class);
     Route::get('/logout', [UserController::class, 'perform'])->name('logout.perform');
-    Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
+    Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('users.edit2');
     Route::put('/users/save/{id}', [UserController::class, 'update'])->name('users.save');
     Route::post('/users/destroy_all', [UserController::class, 'destroy_all'])->name('users.destroy_all');
     Route::resource('roles', RoleController::class);
