@@ -1,68 +1,85 @@
-@extends('layouts.app')
+<div class="modal fade" id="CreateModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-info">
+                <h4 class="modal-title">เพิ่ม ผู้ใช้งาน</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{-- @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <strong>Whoops!</strong>Something went wrong.<br><br>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif --}}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert"
+                    style="display: none;">
+                    <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="alert alert-success alert-dismissible fade show" role="alert"
+                    style="display: none;">
+
+                    <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true"></span>
+                    </button>
+                </div>
 
 
-@section('content')
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Create New User</h2>
-        </div>
-        <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('users.index') }}"> Back </a>
+                {{-- 'route' => 'users.store', --}}
+                {!! Form::open(['method' => 'POST','class' => 'form']) !!}
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>ชื่อ ผู้ใช้งาน:</strong>
+                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>อีเมล์:</strong>
+                            {!! Form::text('email', null, ['id' => 'AddEmail', 'placeholder' => 'Email', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>รหัสผ่าน:</strong>
+                            {!! Form::password('password', ['id' => 'AddPassword', 'placeholder' => 'Password', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>ยืนยันรหัสผ่าน:</strong>
+                            {!! Form::password('confirm-password', [
+                                'id' => 'AddPasswordc',
+                                'placeholder' => 'Confirm Password',
+                                'class' => 'form-control',
+                            ]) !!}
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>สิทธิ์การใช้งาน:</strong>
+                            {!! Form::select('roles', $roles, [], ['id' => 'AddRole', 'class' => 'form-control', 'single']) !!}
+                        </div>
+                    </div>
+                    {{--  <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                  </div> --}}
+                </div>
+                {!! Form::close() !!}
+            </div>
+            <div class="modal-footer {{-- justify-content-between --}}">
+                <button type="button" class="btn btn-success" id="SubmitCreateForm">บันทึก</button>
+                <button type="button" class="btn btn-danger modelClose" data-dismiss="modal">ปิด</button>
+            </div>
         </div>
     </div>
 </div>
-
-
-@if (count($errors) > 0)
-  <div class="alert alert-danger">
-    <strong>Whoops!</strong>Something went wrong.<br><br>
-    <ul>
-       @foreach ($errors->all() as $error)
-         <li>{{ $error }}</li>
-       @endforeach
-    </ul>
-  </div>
-@endif
-
-
-
-{!! Form::open(array('route' => 'users.store','method'=>'POST')) !!}
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Name:</strong>
-            {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Email:</strong>
-            {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Password:</strong>
-            {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Confirm Password:</strong>
-            {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Role:</strong>
-            {!! Form::select('roles[]', $roles,[], array('class' => 'form-control','multiple')) !!}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
-</div>
-{!! Form::close() !!}
-
-@endsection

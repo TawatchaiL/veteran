@@ -23,17 +23,17 @@
 </li> --}}
 <li class="nav-item">
 
-    <a href="{{ route('users.index') }}" class="nav-link {{ Request::is('users.index') ? 'active' : '' }}">
+    <a href="{{ route('users.index') }}" class="nav-link {{ Request::is('users') ? 'active' : '' }}">
         <i class="nav-icon fas fa-user"></i>
-        <p>Users</p>
+        <p>ผู้ใช้งาน</p>
     </a>
 
 </li>
 <li class="nav-item">
 
-    <a href="{{ route('roles.index') }}" class="nav-link {{ Request::is('roles.index') ? 'active' : '' }}">
+    <a href="{{ route('roles.index') }}" class="nav-link {{ Request::is('roles') ? 'active' : '' }}">
         <i class="nav-icon fas fa-user-lock"></i>
-        <p>Roles</p>
+        <p>สิทธิ์การใช้งาน</p>
     </a>
 
 </li>

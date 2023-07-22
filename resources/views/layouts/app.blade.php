@@ -32,8 +32,12 @@
     <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
     <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-    <link rel="stylesheet" href="dist/css/adminlte.min.css?v=3.2.0">
-
+    <link rel="stylesheet" href="dist/css/adminlte.css?v=3.2.0">
+    <style>
+        .center-content {
+            text-align: center;
+        }
+    </style>
     @yield('style')
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -70,7 +74,23 @@
 <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <script src="dist/js/adminlte.min.js?v=3.2.0"></script>
 <script>
-    
+    //hide logo when resize
+    $(document).ready(function() {
+        $('.sidebar-toggle-btn').on('click', function() {
+            // Get the logo element
+            var logo = $('#logo');
+
+            // Check if the sidebar is being opened or closed
+            if (logo.is(':visible')) {
+                // Hide the logo when the sidebar is toggled
+                logo.hide();
+            } else {
+                // Show the logo when the sidebar is toggled
+                logo.show();
+            }
+        });
+    });
+
     toastr.options = {
         "closeButton": true,
         "debug": false,

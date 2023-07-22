@@ -57,8 +57,8 @@ class RoleController extends Controller
                     return $tperm;
                 })
                 ->addColumn('action', function ($row) {
-                    $html = '<a href="#" class="btn btn-sm btn-warning btn-edit" id="getEditData" data-id="' . $row->id . '"><i class="fa fa-edit"></i> Edit</a> ';
-                    $html .= '<a href="#" data-rowid="' . $row->id . '" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i> Delete</a>';
+                    $html = '<a href="#" class="btn btn-sm btn-warning btn-edit" id="getEditData" data-id="' . $row->id . '"><i class="fa fa-edit"></i> แก้ไข</a> ';
+                    $html .= '<a href="#" data-rowid="' . $row->id . '" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i> ลบ</a>';
                     return $html;
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
@@ -101,7 +101,7 @@ class RoleController extends Controller
 
         /* return redirect()->route('roles.index')
             ->with('success', 'Role created successfully'); */
-        return response()->json(['success' => 'Role created successfully']);
+        return response()->json(['success' => 'สร้าง สิทธิ์การใช้งาน เรียบร้อยแล้ว']);
     }
     /**
      * Display the specified resource.
@@ -218,7 +218,7 @@ class RoleController extends Controller
 
         /* return redirect()->route('roles.index')
             ->with('success', 'Role updated successfully'); */
-        return response()->json(['success' => 'Role updated successfully']);
+        return response()->json(['success' => 'บันทึก สิทธิ์การใช้งาน เรียบร้อยแล้ว']);
     }
     /**
      * Remove the specified resource from storage.
@@ -231,7 +231,7 @@ class RoleController extends Controller
         $id = $request->get('id');
         $ret = DB::table("roles")->where('id', $id)->delete();
         if ($ret) {
-            return ['success' => true, 'message' => 'Role Deleted Successfully'];
+            return ['success' => true, 'message' => 'ลบ สิทธิ์การใช้งาน เรียบร้อยแล้ว'];
         } else {
             return ['error' => true, 'message' => $id];
         }
@@ -250,6 +250,6 @@ class RoleController extends Controller
         }
         //$ids = $request->get('table_records');
         //User::whereIn('id',explode(",",$ids))->delete();
-        return redirect('/roles')->with('success', 'Roles Deleted Successfully');
+        return redirect('/roles')->with('success', 'ลบ สิทธิ์การใช้งาน เรียบร้อยแล้ว');
     }
 }

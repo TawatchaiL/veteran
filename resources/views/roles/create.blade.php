@@ -1,52 +1,69 @@
-@extends('layouts.app')
+<div class="modal fade" id="CreateModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-info">
+                    <h4 class="modal-title">เพิ่ม สิทธิ์การใช้งาน</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{-- @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <strong>Whoops!</strong>Something went wrong.<br><br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif --}}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert" style="display: none;">
+                        <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert" style="display: none;">
 
-@section('content')
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Create New Role</h2>
+                        <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true"></span>
+                        </button>
+                    </div>
+
+
+                    {{-- 'route' => 'users.store', --}}
+                    {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>ชื่อ สิทธิ์การใช้งาน:</strong>
+                                {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>สิทธิ์การใช้งาน:</strong>
+                                <br />
+
+                                @foreach ($permission as $value)
+                                    <div class="custom-control custom-switch">
+                                        {{ Form::checkbox('permission[]', $value->id, false, ['id' => 'customCheckbox' . $value->id, 'class' => 'custom-control-input name']) }}
+                                        <label for="customCheckbox{{ $value->id }}" class="custom-control-label">
+                                            {{ $value->name }}</label>
+                                    </div>
+                                @endforeach
+
+                            </div>
+                        </div>
+
+                    </div>
+                    {!! Form::close() !!}
+
+                </div>
+                <div class="modal-footer {{-- justify-content-between --}}">
+                    <button type="button" class="btn btn-success" id="SubmitCreateForm">บันทึก</button>
+                    <button type="button" class="btn btn-danger modelClose" data-dismiss="modal">ปิด</button>
+                </div>
+            </div>
         </div>
-        <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('roles.index') }}"> Back </a>
-        </div>
     </div>
-</div>
-
-
-@if (count($errors) > 0)
-    <div class="alert alert-danger">
-        <strong>Whoops!</strong> Something went wrong.<br><br>
-        <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-        </ul>
-    </div>
-@endif
-
-{!! Form::open(array('route' => 'roles.store','method'=>'POST')) !!}
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Name:</strong>
-            {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Permission:</strong>
-            <br/>
-            @foreach($permission as $value)
-                <label>{{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name')) }}
-                {{ $value->name }}</label>
-            <br/>
-            @endforeach
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
-</div>
-{!! Form::close() !!}
-
-@endsection

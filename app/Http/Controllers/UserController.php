@@ -65,8 +65,8 @@ class UserController extends Controller
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
                 })
                 ->addColumn('action', function ($row) {
-                    $html = '<a href="#" class="btn btn-sm btn-warning btn-edit" id="getEditData" data-id="' . $row->id . '"><i class="fa fa-edit"></i> Edit</a> ';
-                    $html .= '<a href="#" data-rowid="' . $row->id . '" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i> Delete</a>';
+                    $html = '<a href="#" class="btn btn-sm btn-warning btn-edit" id="getEditData" data-id="' . $row->id . '"><i class="fa fa-edit"></i> แก้ไข</a> ';
+                    $html .= '<a href="#" data-rowid="' . $row->id . '" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i> ลบ</a>';
                     return $html;
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
@@ -121,7 +121,7 @@ class UserController extends Controller
 
         /*  return redirect()->route('users.index')
             ->with('success', 'User created successfully'); */
-        return response()->json(['success' => 'User Add successfully']);
+        return response()->json(['success' => 'เพิ่มช้อมูล ผู้ใช้งาน เรียบร้อยแล้ว']);
     }
 
     /**
@@ -186,25 +186,25 @@ class UserController extends Controller
 
 
         $html = '<div class="form-group">
-                    <label for="Name">Name:</label>
+                    <label for="Name">ชื่อ ผู้ใช้งาน:</label>
                     <input type="text" class="form-control" name="name" id="editName" value="' . $data->name . '">
                 </div>
                 <div class="form-group">
-                    <label for="Name">Email:</label>
+                    <label for="Name">อีเมล์:</label>
                     <input type="text" class="form-control" name="email" id="editEmail" value="' . $data->email . '">
                 </div>
                     <div class="form-group">
-                    <label for="Name">Password:</label>
+                    <label for="Name">รหัสผ่าน:</label>
                     <input type="password" class="form-control" name="password" required autocomplete="new-password"
                         id="EditPassword" >
                 </div>
                 <div class="form-group">
-                    <label for="Name">Confirm Password:</label>
+                    <label for="Name">ยืนยันรหัสผ่าน:</label>
                     <input type="password" class="form-control" name="password_confirmation" id="EditPasswordC"
                         required autocomplete="new-password" >
                 </div>
                 <div class="form-group">
-                    <label for="Name">Level:</label>
+                    <label for="Name">สิทธิ์การใช้งาน:</label>
                     <select class="form-control" id="editRole" name="role">
                      ' . $rolese . '
                     </select>
@@ -272,7 +272,7 @@ class UserController extends Controller
 
         $user->assignRole($request->input('role'));
 
-        return response()->json(['success' => 'User updated successfully']);
+        return response()->json(['success' => 'บันทึกข้อมูล ผู้ใช้งาน เรียบร้อยแล้ว']);
 
         /* return redirect()->route('users.index')
             ->with('success', 'User updated successfully'); */
@@ -288,7 +288,7 @@ class UserController extends Controller
     {
         $id = $request->get('id');
         User::find($id)->delete();
-        return ['success' => true, 'message' => 'User Deleted Successfully'];
+        return ['success' => true, 'message' => 'ลบข้อมูล ผู้ใช้งาน เรียบร้อยแล้ว'];
         /* return redirect()->route('users.index')
             ->with('success', 'User deleted successfully'); */
     }
@@ -303,7 +303,7 @@ class UserController extends Controller
         }
         //$ids = $request->get('table_records');
         //User::whereIn('id',explode(",",$ids))->delete();
-        return redirect('/users')->with('success', 'Users Deleted Successfully');
+        return redirect('/users')->with('success', 'ลบข้อมูล ผู้ใช้งาน ผู้ใช้งาน');
     }
 
     /**

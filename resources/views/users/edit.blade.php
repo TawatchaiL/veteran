@@ -1,68 +1,41 @@
-@extends('layouts.app')
+ <!-- Edit  Modal -->
+ <div class="fade modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"
+ id="EditModal">
+ <div class="modal-dialog modal-lg" role="document">
+     <form id="editdata" class="form" action="" method="POST">
+         <div class="modal-content">
+             <div class="modal-header bg-info">
+                 <h4 class="modal-title" id="exampleModalLongTitle">แก้ไข ผู้ใช้งาน</h4>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                 </button>
+             </div>
+             <!-- Modal body -->
+             <div class="modal-body">
+                 <div class="alert alert-danger alert-dismissible fade show" role="alert"
+                     style="display: none;">
+                     <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                     </button>
+                 </div>
+                 <div class="alert alert-success alert-dismissible fade show" role="alert"
+                     style="display: none;">
+                     <strong>Success!</strong> Users was edit successfully.
+                     <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+                         <span aria-hidden="true"></span>
+                     </button>
+                 </div>
+                 <div id="EditModalBody">
 
-
-@section('content')
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Edit New User</h2>
-        </div>
-        <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('users.index') }}"> Back </a>
-        </div>
-    </div>
+                 </div>
+             </div>
+             <!-- Modal footer -->
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-success" id="SubmitEditForm">บันทึก</button>
+                 <button type="button" class="btn btn-danger modelClose"
+                     data-dismiss="modal">ปิด</button>
+             </div>
+         </div>
+     </form>
+ </div>
 </div>
-
-
-@if (count($errors) > 0)
-  <div class="alert alert-danger">
-    <strong>Whoops!</strong> Something went wrong.<br><br>
-    <ul>
-       @foreach ($errors->all() as $error)
-         <li>{{ $error }}</li>
-       @endforeach
-    </ul>
-  </div>
-@endif
-
-
-{!! Form::model($user, ['method' => 'PATCH','route' => ['users.update', $user->id]]) !!}
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Name:</strong>
-            {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Email:</strong>
-            {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Password:</strong>
-            {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Confirm Password:</strong>
-            {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Role:</strong>
-            {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')) !!}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
-</div>
-{!! Form::close() !!}
-
-
-@endsection
