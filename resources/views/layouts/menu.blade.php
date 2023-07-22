@@ -5,6 +5,7 @@
         <p>Dashboard</p>
     </a>
 </li>
+@can('contact-list')
 <li class="nav-item">
     <a href="#" class="nav-link">
         <i class="nav-icon fas fa-address-book"></i>
@@ -27,6 +28,8 @@
 
     </ul>
 </li>
+@endcan
+@can('master-data-list')
 <li class="nav-item">
     <a href="#" class="nav-link">
         <i class="nav-icon fas fa-database"></i>
@@ -49,6 +52,8 @@
 
     </ul>
 </li>
+@endcan
+@can('user-list')
 <li class="nav-item">
 
     <a href="{{ route('users.index') }}" class="nav-link {{ Request::is('users') ? 'active' : '' }}">
@@ -57,6 +62,8 @@
     </a>
 
 </li>
+@endcan
+@can('role-list')
 <li class="nav-item">
 
     <a href="{{ route('roles.index') }}" class="nav-link {{ Request::is('roles') ? 'active' : '' }}">
@@ -65,6 +72,7 @@
     </a>
 
 </li>
+@endcan
 
 
 
