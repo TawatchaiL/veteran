@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProductController;
+
 
 
 
@@ -31,7 +31,13 @@ Route::group(['middleware' => ['auth']], function() {
     Route::put('/users/save/{id}', [UserController::class, 'update'])->name('users.save');
     Route::post('/users/destroy_all', [UserController::class, 'destroy_all'])->name('users.destroy_all');
     Route::resource('roles', RoleController::class);
-    Route::resource('products', ProductController::class);
+
+    Route::get('/contacts', [App\Http\Controllers\ContactController::class, 'index'])->name('contacts');
+    Route::post('/contacts/store', [App\Http\Controllers\ContactController::class, 'store'])->name('contacts.store');
+    Route::get('/contacts/edit/{id}', [App\Http\Controllers\ContactController::class, 'edit'])->name('contacts.edit');
+    Route::put('/contacts/save/{id}', [App\Http\Controllers\ContactController::class, 'update'])->name('contacts.save');
+    Route::delete('/contacts/destroy', [App\Http\Controllers\ContactController::class, 'destroy'])->name('contacts.destroy');
+    Route::post('/contacts/destroy_all', [App\Http\Controllers\ContactController::class, 'destroy_all'])->name('contacts.destroy_all');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

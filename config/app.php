@@ -18,6 +18,7 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
     'subtitle' => env('APP_SUBTITLE', 'ระบบ'),
+    'version' => env('APP_VERSION', '1.0'),
 
     /*
     |--------------------------------------------------------------------------
