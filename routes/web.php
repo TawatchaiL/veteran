@@ -38,6 +38,13 @@ Route::group(['middleware' => ['auth']], function() {
     Route::put('/contacts/save/{id}', [App\Http\Controllers\ContactController::class, 'update'])->name('contacts.save');
     Route::delete('/contacts/destroy', [App\Http\Controllers\ContactController::class, 'destroy'])->name('contacts.destroy');
     Route::post('/contacts/destroy_all', [App\Http\Controllers\ContactController::class, 'destroy_all'])->name('contacts.destroy_all');
+
+    Route::get('/priorities', [App\Http\Controllers\PrioritiesController::class, 'index'])->name('priorities');
+    Route::post('/priorities/store', [App\Http\Controllers\PrioritiesController::class, 'store'])->name('priorities.store');
+    Route::get('/priorities/edit/{id}', [App\Http\Controllers\PrioritiesController::class, 'edit'])->name('priorities.edit');
+    Route::put('/priorities/save/{id}', [App\Http\Controllers\PrioritiesController::class, 'update'])->name('priorities.save');
+    Route::delete('/priorities/destroy', [App\Http\Controllers\PrioritiesController::class, 'destroy'])->name('priorities.destroy');
+    Route::post('/priorities/destroy_all', [App\Http\Controllers\PrioritiesController::class, 'destroy_all'])->name('priorities.destroy_all');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
