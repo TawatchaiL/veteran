@@ -43,6 +43,18 @@
                 <p>ระดับชั้นความเร็ว</p>
             </a>
         </li>
+        <li class="nav-item" >
+            <a href="{{ route('departments') }}" class="nav-link {{ Request::is('departments') ? 'active' : '' }}">
+                <i class="fas fa-list-ol nav-icon"></i>
+                <p>ส่วนราชการ</p>
+            </a>
+        </li>
+        <li class="nav-item" >
+            <a href="{{ route('positions') }}" class="nav-link {{ Request::is('positions') ? 'active' : '' }}">
+                <i class="fas fa-list-ol nav-icon"></i>
+                <p>ส่วนงาน</p>
+            </a>
+        </li>
         {{-- <li class="nav-item" >
             <a href="{{ route('persons') }}" class="nav-link {{ Request::is('persons') ? 'active' : '' }}">
                 <i class="fas fa-user-tie nav-icon"></i>

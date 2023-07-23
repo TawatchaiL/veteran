@@ -185,6 +185,7 @@
                 method: 'GET',
                 success: function(res) {
                     $('#EditName').val(res.data.name);
+                    
                     if (res.data.status == 1) {
                         $('#ecustomCheckbox1').prop('checked', true);
                     } else {
@@ -228,7 +229,7 @@
                         $('.alert-danger').html('');
                         $.each(result.errors, function(key, value) {
                             $('.alert-danger').show();
-                            $('.alert-danger').append('<strong><li>' + Svalue +
+                            $('.alert-danger').append('<strong><li>' + value +
                                 '</li></strong>');
                         });
                     } else {

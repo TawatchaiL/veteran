@@ -14,21 +14,19 @@
                     <ol class="breadcrumb float-sm-right">
                         {{-- <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item active">Users Management</li> --}}
-
-                        @can('role-create')
+        
+                        @can('master-data-create')
                             <button type="button" class="btn btn-success" id="CreateButton">
-                                <i class="fas fa-user-lock"></i> เพิ่ม
-                                สิทธิ์การใช้งาน </button>
+                                <i class="fas fa-list-ol"></i> เพิ่ม ส่วนราชการ</a> </button>
                         @else
                             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
                                 title="คุณไม่มีสิทธิ์ในส่วนนี้">
                                 <button type="button" class="btn btn-success disabled">
-                                    <i class="fas fa-user-lock"></i> เพิ่ม
-                                สิทธิ์การใช้งาน  </button>
+                                    <i class="fas fa-list-ol"></i> เพิ่ม ส่วนราชการ </a></button>
                             </span>
                         @endcan &nbsp;
 
-                        @can('role-delete')
+                        @can('master-data-delete')
                             <button type="button" class="btn btn-danger delete_all_button"><i class="fa fa-trash"></i> ลบ
                                 ทั้งหมด</button>
                         @else
@@ -51,7 +49,7 @@
                 <div class="col-12">
                     <div class="card card-info">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fa fa-user-lock"></i> จัดการ สิทธิ์การใช้งาน</h3>
+                            <h3 class="card-title"><i class="fas fa-list-ol"></i> ส่วนราชการ</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -73,16 +71,16 @@
                                     });
                                 </script>
                             @endif
-                            <form method="post" action="{{ route('roles.destroy_all') }}" name="delete_all"
+                            <form method="post" action="{{ route('departments.destroy_all') }}" name="delete_all"
                                 id="delete_all">
                                 @csrf
                                 @method('POST')
                                 <table id="Listview" class="table table-bordered table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th width="5%"><input type="checkbox" id="check-all" class="flat"></th>
-                                            <th>ชื่อ สิทธิ์การใช้งาน</th>
-                                            <th>สิทธิ์การใช้งาน</th>
+                                            <th><input type="checkbox" id="check-all" class="flat"></th>
+                                            <th>ส่วนราชการ</th>
+                                            <th>สถานะ</th>
                                             <th width="280px"></th>
                                         </tr>
                                     </thead>
@@ -105,13 +103,14 @@
 
     </section>
 
-    @include('roles.create')
 
-    @include('roles.edit')
+    @include('departments.create')
+
+    @include('departments.edit')
 
     {{--  {!! $data->render() !!} --}}
 @endsection
 
 @section('script')
-    @include('roles.script')
+    @include('departments.script')
 @endsection

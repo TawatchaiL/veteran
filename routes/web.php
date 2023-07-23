@@ -45,6 +45,20 @@ Route::group(['middleware' => ['auth']], function() {
     Route::put('/priorities/save/{id}', [App\Http\Controllers\PrioritiesController::class, 'update'])->name('priorities.save');
     Route::delete('/priorities/destroy', [App\Http\Controllers\PrioritiesController::class, 'destroy'])->name('priorities.destroy');
     Route::post('/priorities/destroy_all', [App\Http\Controllers\PrioritiesController::class, 'destroy_all'])->name('priorities.destroy_all');
+
+    Route::get('/departments', [App\Http\Controllers\DepartmentController::class, 'index'])->name('departments');
+    Route::post('/departments/store', [App\Http\Controllers\DepartmentController::class, 'store'])->name('departments.store');
+    Route::get('/departments/edit/{id}', [App\Http\Controllers\DepartmentController::class, 'edit'])->name('departments.edit');
+    Route::put('/departments/save/{id}', [App\Http\Controllers\DepartmentController::class, 'update'])->name('departments.save');
+    Route::delete('/departments/destroy', [App\Http\Controllers\DepartmentController::class, 'destroy'])->name('departments.destroy');
+    Route::post('/departments/destroy_all', [App\Http\Controllers\DepartmentController::class, 'destroy_all'])->name('departments.destroy_all');
+
+    Route::get('/positions', [App\Http\Controllers\PositionController::class, 'index'])->name('positions');
+    Route::post('/positions/store', [App\Http\Controllers\PositionController::class, 'store'])->name('positions.store');
+    Route::get('/positions/edit/{id}', [App\Http\Controllers\PositionController::class, 'edit'])->name('positions.edit');
+    Route::put('/positions/save/{id}', [App\Http\Controllers\PositionController::class, 'update'])->name('positions.save');
+    Route::delete('/positions/destroy', [App\Http\Controllers\PositionController::class, 'destroy'])->name('positions.destroy');
+    Route::post('/positions/destroy_all', [App\Http\Controllers\PositionController::class, 'destroy_all'])->name('positions.destroy_all');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

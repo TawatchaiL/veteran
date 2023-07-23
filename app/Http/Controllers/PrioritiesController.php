@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Priority;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -47,8 +49,16 @@ class PrioritiesController extends Controller
                     return $state;
                 })
                 ->addColumn('action', function ($row) {
-                    $html = '<a href="#" class="btn btn-sm btn-warning btn-edit" id="getEditData" data-id="' . $row->id . '"><i class="fa fa-edit"></i> แก้ไข</a> ';
-                    $html .= '<a href="#" data-rowid="' . $row->id . '" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i> ลบ</a>';
+                    if (Gate::allows('master-data-edit')) {
+                        $html = '<button type="button" class="btn btn-sm btn-warning btn-edit" id="getEditData" data-id="' . $row->id . '"><i class="fa fa-edit"></i> แก้ไข</button> ';
+                    } else {
+                        $html = '<button type="button" class="btn btn-sm btn-warning disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-edit"></i> แก้ไข</button> ';
+                    }
+                    if (Gate::allows('master-data-delete')) {
+                        $html .= '<button type="button" data-rowid="' . $row->id . '" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i> ลบ</button>';
+                    } else {
+                        $html .= '<button type="button" class="btn btn-sm btn-danger disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-trash"></i> ลบ</button> ';
+                    }
                     return $html;
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
@@ -71,12 +81,16 @@ class PrioritiesController extends Controller
     {
         //
         $validator =  Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|unique:priorities',
             'status' => 'required',
             /* 'email' => 'required|string|email|max:255',
             'address' => 'required|string|max:255',
             'postcode' => 'required|string|max:10',
             'telephone' => 'required|string|max:20',*/
+        ], [
+            'name.required' => 'ชื่อระดับชั้นความเร็วต้องไม่เป็นค่าว่าง!',
+            'name.unique' => 'ชื่อระดับชั้นความเร็วนี้มีอยู่แล้วในฐานข้อมูล!',
+            'status.required' => 'กรุณาเลือกสถานะ!',
         ]);
 
 
@@ -109,13 +123,17 @@ class PrioritiesController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|unique:priorities,name,' . $id,
             'status' => 'required|max:10',
 
         ];
 
 
-        $validator =  Validator::make($request->all(), $rules);
+        $validator =  Validator::make($request->all(), $rules, [
+            'name.required' => 'ชื่อระดับชั้นความเร็วต้องไม่เป็นค่าว่าง!',
+            'name.unique' => 'ชื่อระดับชั้นความเร็วนี้มีอยู่แล้วในฐานข้อมูล!',
+            'status.required' => 'กรุณาเลือกสถานะ!',
+        ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);

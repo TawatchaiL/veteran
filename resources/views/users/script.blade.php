@@ -1,5 +1,7 @@
 <script>
+
     $(document).ready(function() {
+
         $(".delete_all_button").click(function() {
             var len = $('input[name="table_records[]"]:checked').length;
             if (len > 0) {
@@ -101,6 +103,7 @@
             ]
         });
 
+      
 
         $("#example1").DataTable({
             "responsive": true,
@@ -278,6 +281,10 @@
                         table.row(el.parents('tr'))
                             .remove()
                             .draw();
+                    } else {
+                        toastr.error(data.errors, {
+                            timeOut: 5000
+                        });
                     }
                 }
             }); //end ajax

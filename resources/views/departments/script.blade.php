@@ -4,11 +4,11 @@
             var len = $('input[name="table_records[]"]:checked').length;
             if (len > 0) {
 
-                if (confirm("Click OK to Delete?")) {
+                if (confirm("ยืนยันการลบข้อมูล ?")) {
                     $('form#delete_all').submit();
                 }
             } else {
-                alert("กรุณาเลือกรายการ ที่จะลบ");
+                alert("กรุณาเลือกรายการที่จะลบ");
             }
 
         });
@@ -27,9 +27,6 @@
 
 
         var table = $('#Listview').DataTable({
-            "language": {
-
-            },
             /*"aoColumnDefs": [
             {
             'bSortable': true,
@@ -81,17 +78,13 @@
                     orderable: false,
                     searchable: false
                 },
-                /*     {
-                        data: 'id',
-                        name: 'id'
-                    }, */
                 {
                     data: 'name',
                     name: 'name'
                 },
                 {
-                    data: 'role',
-                    name: 'role'
+                    data: 'status',
+                    name: 'status'
                 },
                 {
                     data: 'action',
@@ -137,22 +130,22 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
-            var list = $("input[name='permission[]']:checked").map(function() {
-                return this.value;
-            }).get();
-
+            if ($('#customCheckbox1').is(":checked")) {
+                sstatus = 1;
+            } else {
+                sstatus = 0;
+            }
 
 
             $.ajax({
-                url: "{{ route('roles.store') }}",
+                url: "{{ route('departments.store') }}",
                 method: 'post',
                 data: {
                     name: $('#AddName').val(),
-                    permission: list,
+                    status: sstatus,
                     _token: token,
                 },
                 success: function(result) {
-
                     if (result.errors) {
                         $('.alert-danger').html('');
                         $.each(result.errors, function(key, value) {
@@ -170,12 +163,7 @@
                         });
                         $('#Listview').DataTable().ajax.reload();
                         $('.form').trigger('reset');
-                        //$('#SubmitCreateForm').hide();
-                        //setTimeout(function() {
-                        //$('.alert-success').hide();
                         $('#CreateModal').modal('hide');
-                        //}, 10000);
-
                     }
                 }
             });
@@ -193,21 +181,17 @@
 
             id = $(this).data('id');
             $.ajax({
-                url: "roles/edit/" + id,
+                url: "departments/edit/" + id,
                 method: 'GET',
                 success: function(res) {
-                    //console.log(res);
-                    strs = Array.from(res.permission, x => `${x}`);
-                    $(':checkbox[id^=ecustomCheckbox]').filter(function(index, val) {
-                        if (strs.indexOf(this.value) >= 0) {
-                            return this.checked = true;
-                        } else {
-                            return this.checked = false;
-                        }
+                    $('#EditName').val(res.data.name);
+                    if (res.data.status == 1) {
+                        $('#ecustomCheckbox1').prop('checked', true);
+                    } else {
+                        $('#ecustomCheckbox1').prop('checked', false);
+                    }
 
-                    })
-                    $('#editName').val(res.name);
-                    //$('#EditModalBody').html(res.html);
+                    $('#EditModalBody').html(res.html);
                     $('#EditModal').modal('show');
                 }
             });
@@ -215,7 +199,7 @@
         })
 
         $('#SubmitEditForm').click(function(e) {
-            if (!confirm("ยืนยันการบันทึกข้อมูล ?")) return;
+            if (!confirm("ยืนยันการทำรายการ ?")) return;
             e.preventDefault();
 
             $('.alert-danger').html('');
@@ -224,17 +208,18 @@
             $('.alert-success').hide();
 
 
-            var elist = $("input[name='epermission[]']:checked").map(function() {
-                return this.value;
-            }).get();
+            if ($('#ecustomCheckbox1').is(":checked")) {
+                esstatus = 1;
+            } else {
+                esstatus = 0;
+            }
 
             $.ajax({
-                url: "roles/save/" + id,
+                url: "departments/save/" + id,
                 method: 'PUT',
                 data: {
-                    name: $('#editName').val(),
-                    permission: elist,
-                    _token: token
+                    name: $('#EditName').val(),
+                    status: esstatus,
                 },
 
                 success: function(result) {
@@ -267,7 +252,7 @@
         });
 
         $(document).on('click', '.btn-delete', function() {
-            if (!confirm("ยืนยันการลบข้อมูล ?")) return;
+            if (!confirm("ยืนยันการทำรายการ ?")) return;
 
             var rowid = $(this).data('rowid')
             var el = $(this)
@@ -277,13 +262,14 @@
             $.ajax({
                 type: "POST",
                 dataType: 'JSON',
-                url: "roles/destroy/",
+                url: "departments/destroy/",
                 data: {
                     id: rowid,
                     _method: 'delete',
                     _token: token
                 },
                 success: function(data) {
+                    console.log(data);
                     if (data.success) {
                         toastr.success(data.message, {
                             timeOut: 5000
@@ -291,10 +277,6 @@
                         table.row(el.parents('tr'))
                             .remove()
                             .draw();
-                    } else {
-                        toastr.error(result.errors, {
-                            timeOut: 5000
-                        });
                     }
                 }
             }); //end ajax

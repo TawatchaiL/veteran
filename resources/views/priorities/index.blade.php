@@ -14,9 +14,28 @@
                     <ol class="breadcrumb float-sm-right">
                         {{-- <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item active">Users Management</li> --}}
-                        <a class="btn btn-success" id="CreateButton" {{-- data-toggle="modal" data-target="#CreateModal" --}}{{-- href="{{ route('users.create') }}" --}}>
-                            <i class="fas fa-list-ol"></i> เพิ่ม ระดับชั้นความเร็ว </a> &nbsp;
-                        <a class="btn btn-danger delete_all_button" href="#"><i class="fa fa-trash"></i> ลบ ทั้งหมด</a>
+        
+                        @can('master-data-create')
+                            <button type="button" class="btn btn-success" id="CreateButton">
+                                <i class="fas fa-list-ol"></i> เพิ่ม ระดับชั้นความเร็ว </a> </button>
+                        @else
+                            <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
+                                title="คุณไม่มีสิทธิ์ในส่วนนี้">
+                                <button type="button" class="btn btn-success disabled">
+                                    <i class="fas fa-list-ol"></i> เพิ่ม ระดับชั้นความเร็ว </a></button>
+                            </span>
+                        @endcan &nbsp;
+
+                        @can('master-data-delete')
+                            <button type="button" class="btn btn-danger delete_all_button"><i class="fa fa-trash"></i> ลบ
+                                ทั้งหมด</button>
+                        @else
+                            <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
+                                title="คุณไม่มีสิทธิ์ในส่วนนี้">
+                                <button type="button" class="btn btn-danger disabled"><i class="fa fa-trash"></i>
+                                    ลบทั้งหมด</button>
+                            </span>
+                        @endcan
                     </ol>
 
                 </div>

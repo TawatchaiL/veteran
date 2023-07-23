@@ -17,6 +17,8 @@
             $(':checkbox.flat').prop('checked', this.checked);
         });
 
+        
+
         //$.noConflict();
         var token = ''
         $.ajaxSetup({

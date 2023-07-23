@@ -1,5 +1,5 @@
 <div class="modal fade" id="CreateModal">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header bg-info">
                     <h4 class="modal-title">เพิ่ม สิทธิ์การใช้งาน</h4>
@@ -45,13 +45,18 @@
                                 <strong>สิทธิ์การใช้งาน:</strong>
                                 <br />
 
-                                @foreach ($permission as $value)
-                                    <div class="custom-control custom-switch">
-                                        {{ Form::checkbox('permission[]', $value->id, false, ['id' => 'customCheckbox' . $value->id, 'class' => 'custom-control-input name']) }}
-                                        <label for="customCheckbox{{ $value->id }}" class="custom-control-label">
-                                            {{ $value->name }}</label>
-                                    </div>
-                                @endforeach
+                                <div class="row">
+                                    @foreach ($permission as $value)
+                                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"> <!-- Adjust the column classes based on your needs -->
+                                            <div class="custom-control custom-switch">
+                                                {{ Form::checkbox('permission[]', $value->id, false, ['id' => 'customCheckbox' . $value->id, 'class' => 'custom-control-input name']) }}
+                                                <label for="customCheckbox{{ $value->id }}" class="custom-control-label">
+                                                    {{ $value->name }}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
 
                             </div>
                         </div>

@@ -12,13 +12,14 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Arr;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 
 
 class UserController extends Controller
 {
 
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -28,7 +29,7 @@ class UserController extends Controller
         $this->middleware('permission:user-list|user-create|user-edit|user-delete', ['only' => ['index', 'show']]);
         $this->middleware('permission:user-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:user-edit', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:user-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:user-delete', ['only' => ['destroy', 'destroy_all']]);
     }
 
     /**
@@ -65,8 +66,16 @@ class UserController extends Controller
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
                 })
                 ->addColumn('action', function ($row) {
-                    $html = '<a href="#" class="btn btn-sm btn-warning btn-edit" id="getEditData" data-id="' . $row->id . '"><i class="fa fa-edit"></i> แก้ไข</a> ';
-                    $html .= '<a href="#" data-rowid="' . $row->id . '" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i> ลบ</a>';
+                    if (Gate::allows('user-edit')) {
+                        $html = '<button type="button" class="btn btn-sm btn-warning btn-edit" id="getEditData" data-id="' . $row->id . '"><i class="fa fa-edit"></i> แก้ไข</button> ';
+                    } else {
+                        $html = '<button type="button" class="btn btn-sm btn-warning disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-edit"></i> แก้ไข</button> ';
+                    }
+                    if (Gate::allows('user-delete')) {
+                        $html .= '<button type="button" data-rowid="' . $row->id . '" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i> ลบ</button>';
+                    } else {
+                        $html .= '<button type="button" class="btn btn-sm btn-danger disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-trash"></i> ลบ</button> ';
+                    }
                     return $html;
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
@@ -286,6 +295,9 @@ class UserController extends Controller
      */
     public function destroy(Request $request)
     {
+        /*    if (!Auth::user()->hasPermissionTo('user-delete')) {
+            return response()->json(['errors' => 'คุณไม่มีสิทธิ์ลบข้อมูล.'], 200);
+        } */
         $id = $request->get('id');
         User::find($id)->delete();
         return ['success' => true, 'message' => 'ลบข้อมูล ผู้ใช้งาน เรียบร้อยแล้ว'];
@@ -296,6 +308,9 @@ class UserController extends Controller
     public function destroy_all(Request $request)
     {
 
+        /*  if (!Auth::user()->hasPermissionTo('user-delete')) {
+            return response()->view('errors.403', [], 403);
+        } */
         $arr_del  = $request->get('table_records'); //$arr_ans is Array MacAddress
 
         for ($xx = 0; $xx < count($arr_del); $xx++) {
