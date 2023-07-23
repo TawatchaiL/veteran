@@ -16,7 +16,7 @@
         <li class="nav-item" >
             <a href="{{ route('external-docs') }}" class="nav-link {{ Request::is('external-docs') ? 'active' : '' }}">
                 <i class="fas fa-file-signature nav-icon"></i>
-                <p>ระบบลงรับหนังสือ</p>
+                <p>ลงรับหนังสือ</p>
             </a>
         </li>
         {{-- <li class="nav-item" >

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ExternalBook;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\BookRunningNumber;
 use App\Models\Department;
 use App\Models\Position;
 use Spatie\Permission\Models\Role;
@@ -76,6 +77,10 @@ class ExternalBookController extends Controller
     public function create()
     {
         //
+        $rnumber = BookRunningNumber::pre_generate();
+        return response()->json([
+            'running' =>  $rnumber
+        ]);
     }
 
     /**

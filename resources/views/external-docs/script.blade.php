@@ -155,6 +155,15 @@
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
+            $.ajax({
+                    method: "GET",
+                    url: "external-docs/running",
+                    success: function(res) {
+                        console.log(res)
+                        $('#AddNumber').val(res.running);
+                    }
+                });
+
             $('#CreateModal').modal('show');
         });
 

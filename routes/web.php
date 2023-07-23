@@ -64,6 +64,7 @@ Route::group(['middleware' => ['auth']], function() {
     //ExternalBook
     Route::get('/external-docs', [App\Http\Controllers\ExternalBookController::class, 'index'])->name('external-docs');
     Route::post('/external-docs/store', [App\Http\Controllers\ExternalBookController::class, 'store'])->name('external-docs.store');
+    Route::get('/external-docs/running', [App\Http\Controllers\ExternalBookController::class, 'create'])->name('external-docs.running');
 
     //file
     Route::post('/file/upload', [App\Http\Controllers\ExternalBookController::class, 'upload_file'])->name('file.upload');

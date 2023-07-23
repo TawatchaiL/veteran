@@ -58,7 +58,18 @@
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <strong>ชื่่อส่วนงาน:</strong>
+                                            <strong>เลขที่ทะเบียนรับ:</strong>
+                                            {!! Form::text('number', null, [
+                                                'id' => 'AddNumber',
+                                                'placeholder' => '',
+                                                'class' => 'form-control',
+                                                'readonly' => true,
+                                            ]) !!}
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <strong>หนังสือเลขที่:</strong>
                                             {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                                         </div>
                                     </div>
@@ -66,7 +77,7 @@
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <strong>ส่วนราชการ:</strong>
+                                            <strong>ระดับชั้นความเร็วของหนังสือ:</strong>
                                             <select style="width: 100%;" class="select2 select2_single form-control"
                                                 id="AddDepartment" name="department" multiple="multiple">
                                                 <!-- <option value="" selected>Select Student</option>
@@ -79,21 +90,42 @@
                                             </select>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <strong>สถานะ:</strong>
-                                            <br />
-                                            <div class="custom-control custom-switch">
-                                                {{ Form::checkbox('status', '1', false, ['id' => 'customCheckbox1', 'class' => 'custom-control-input name']) }}
-                                                <label for="customCheckbox1" class="custom-control-label">
-                                                    เปิดใช้งาน</label>
-                                            </div>
+                                            <strong>ลงวันที่:</strong>
+                                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <strong>จาก:</strong>
+                                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <strong>ถึง:</strong>
+                                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <strong>เรื่อง:</strong>
+                                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <strong>ผู้รับ:</strong>
+                                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
+                                        </div>
+                                    </div>
+                                </div>
+
 
                             </div>
                             <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel"
@@ -103,8 +135,7 @@
                                         <a id="datt"></a>
                                         <div class="position-relative form-group">
                                             <label class="form-label form-label-top form-label-auto"
-                                                for="att">อัพโหลดหลักฐานการชำระเงิน<span
-                                                    class="form-required">*</span>
+                                                for="att">อัพโหลดไฟล์<span class="form-required">*</span>
                                                 <div style="width: 280px"></div>
                                             </label>
                                             <input type="text" id="drop" name="drop"
@@ -115,7 +146,7 @@
                                                 </div>
                                             </div>
                                             <label class="form-sub-label" style="min-height:13px"
-                                                aria-hidden="false">รูปภาพใบเสร็จ</label>
+                                                aria-hidden="false">นำเข้าเอกสาร</label>
                                             <div id="dropzone-att-error" class="form-error-message" role="alert">
                                                 <img src="https://cdn.jotfor.ms/images/exclamation-octagon.png"
                                                     height="10">
