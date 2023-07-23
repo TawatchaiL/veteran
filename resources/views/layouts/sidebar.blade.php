@@ -1,4 +1,4 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-light-primary elevation-2">
     <div class="center-content">
         <a href="{{ route('home') }}" class="brand-link">
             <img id="logo" src="{{ asset('images/11890-removebg-preview.png') }}" alt="..." height="150"><br>

@@ -1,0 +1,149 @@
+<div class="modal fade" id="CreateModal">
+    <div class="modal-dialog modal-xxl">
+        <div class="modal-content">
+            <div class="modal-header bg-info">
+                <h4 class="modal-title">ลงรับหนังสือ</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{-- @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <strong>Whoops!</strong>Something went wrong.<br><br>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif --}}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="display: none;">
+                    <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="display: none;">
+
+                    <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true"></span>
+                    </button>
+                </div>
+
+
+                {{-- 'route' => 'users.store', --}}
+                {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
+                <div class="card card-success card-tabs">
+                    <div class="card-header p-0 pt-1">
+                        <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill"
+                                    href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home"
+                                    aria-selected="true">รายละเอียดหนังสือ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill"
+                                    href="#custom-tabs-one-profile" role="tab"
+                                    aria-controls="custom-tabs-one-profile"
+                                    aria-selected="false">อัพโหลดไฟล์นำเข้าเอกสาร</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content" id="custom-tabs-one-tabContent">
+                            <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel"
+                                aria-labelledby="custom-tabs-one-home-tab">
+
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <strong>ชื่่อส่วนงาน:</strong>
+                                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <strong>ส่วนราชการ:</strong>
+                                            <select style="width: 100%;" class="select2 select2_single form-control"
+                                                id="AddDepartment" name="department" multiple="multiple">
+                                                <!-- <option value="" selected>Select Student</option>
+                                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
+                                                @foreach ($department as $key2)
+                                                    <option value="{{ $key2->id }}">{{ $key2->name }}
+                                                    </option>
+                                                @endforeach
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <strong>สถานะ:</strong>
+                                            <br />
+                                            <div class="custom-control custom-switch">
+                                                {{ Form::checkbox('status', '1', false, ['id' => 'customCheckbox1', 'class' => 'custom-control-input name']) }}
+                                                <label for="customCheckbox1" class="custom-control-label">
+                                                    เปิดใช้งาน</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel"
+                                aria-labelledby="custom-tabs-one-profile-tab">
+                                <div class="form-row form-focus" id="dropzone-att">
+                                    <div class="col-md-12 col-sm-12">
+                                        <a id="datt"></a>
+                                        <div class="position-relative form-group">
+                                            <label class="form-label form-label-top form-label-auto"
+                                                for="att">อัพโหลดหลักฐานการชำระเงิน<span
+                                                    class="form-required">*</span>
+                                                <div style="width: 280px"></div>
+                                            </label>
+                                            <input type="text" id="drop" name="drop"
+                                                class="form-control form_none" value="" required>
+                                            <div class="dropzone" id="my-awesome-dropzone" style="font-size: 1.5em;">
+                                                <div class="fallback">
+
+                                                </div>
+                                            </div>
+                                            <label class="form-sub-label" style="min-height:13px"
+                                                aria-hidden="false">รูปภาพใบเสร็จ</label>
+                                            <div id="dropzone-att-error" class="form-error-message" role="alert">
+                                                <img src="https://cdn.jotfor.ms/images/exclamation-octagon.png"
+                                                    height="10">
+                                                <span class="error-navigation-message">This field is
+                                                    required.</span>
+                                                <div class="form-error-arrow">
+                                                    <div class="form-error-arrow-inner"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropzonex dz-default dz-message" id="dropzone_preview"
+                                    style="font-size: 1.5em;">
+                                    <h3 class="dropzone-previews ui"></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                {!! Form::close() !!}
+            </div>
+            <div class="modal-footer {{-- justify-content-between --}}">
+                <button type="button" class="btn btn-success" id="SubmitCreateForm">บันทึก</button>
+                <button type="button" class="btn btn-danger modelClose" data-dismiss="modal">ปิด</button>
+            </div>
+        </div>
+    </div>
+</div>

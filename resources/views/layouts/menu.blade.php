@@ -1,10 +1,34 @@
 <!-- need to remove -->
-<li class="nav-item">
+{{-- <li class="nav-item">
     <a href="{{ route('home') }}" class="nav-link {{ Request::is('home') ? 'active' : '' }}">
         <i class="nav-icon fas fa-home"></i>
         <p>Dashboard</p>
     </a>
+</li> --}}
+@can('external-doc-list')
+<li class="nav-item">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-file-import"></i>
+        <p>หนังสือภายนอก</p>
+        <i class="fas fa-angle-left right"></i>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item" >
+            <a href="{{ route('external-docs') }}" class="nav-link {{ Request::is('external-docs') ? 'active' : '' }}">
+                <i class="fas fa-file-signature nav-icon"></i>
+                <p>ระบบลงรับหนังสือ</p>
+            </a>
+        </li>
+        {{-- <li class="nav-item" >
+            <a href="{{ route('persons') }}" class="nav-link {{ Request::is('persons') ? 'active' : '' }}">
+                <i class="fas fa-user-tie nav-icon"></i>
+                <p>บุคคล</p>
+            </a>
+        </li> --}}
+
+    </ul>
 </li>
+@endcan
 @can('contact-list')
 <li class="nav-item">
     <a href="#" class="nav-link">

@@ -60,6 +60,14 @@ Route::group(['middleware' => ['auth']], function() {
     Route::put('/positions/save/{id}', [App\Http\Controllers\PositionController::class, 'update'])->name('positions.save');
     Route::delete('/positions/destroy', [App\Http\Controllers\PositionController::class, 'destroy'])->name('positions.destroy');
     Route::post('/positions/destroy_all', [App\Http\Controllers\PositionController::class, 'destroy_all'])->name('positions.destroy_all');
+
+    //ExternalBook
+    Route::get('/external-docs', [App\Http\Controllers\ExternalBookController::class, 'index'])->name('external-docs');
+    Route::post('/external-docs/store', [App\Http\Controllers\ExternalBookController::class, 'store'])->name('external-docs.store');
+
+    //file
+    Route::post('/file/upload', [App\Http\Controllers\ExternalBookController::class, 'upload_file'])->name('file.upload');
+    Route::post('/file/upload/delete', [App\Http\Controllers\ExternalBookController::class, 'delete_file'])->name('file.delete');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
