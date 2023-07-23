@@ -1,5 +1,4 @@
 <script>
-
     $(document).ready(function() {
 
         $(".delete_all_button").click(function() {
@@ -18,6 +17,71 @@
         $('#check-all').click(function() {
             $(':checkbox.flat').prop('checked', this.checked);
         });
+
+        $(".select2_single").select2({
+            maximumSelectionLength: 1,
+            allowClear: true,
+            //theme: 'bootstrap4'
+            placeholder: 'กรุณาเลือก'
+        });
+
+        $(".select2_single").on("select2:unselect", function(e) {
+            //log("select2:unselect", e);
+            //$('.positions').html('');
+        });
+
+        $(".select2_singles").select2({
+            maximumSelectionLength: 1,
+            allowClear: true,
+            //theme: 'bootstrap4'
+            placeholder: 'กรุณาเลือก'
+        });
+
+
+        $(".select2_multiple").select2({
+            maximumSelectionLength: 2,
+            //placeholder: "With Max Selection limit 4",
+            allowClear: true,
+            //theme: 'bootstrap4'
+            placeholder: 'กรุณาเลือก'
+        });
+
+
+        $(".departmentl").change(function() {
+            let department = $('#AddDepartment').val();
+            //console.log(product);
+            //alert(product);
+            $('#AddPosition').html('');
+            if (department.length !== 0) {
+                $.ajax({
+                    method: "GET",
+                    url: "departments/find/add/" + department,
+                    success: function(res) {
+                        $('.positions').html(res.html);
+                    }
+                });
+            }
+        })
+
+        $(".departmente.select2").on('select2:select', function() {
+            let department = $('#EditDepartment').val();
+            //console.log(product);
+            //alert(product);
+            $('#EditPosition').html('');
+            if (department.length !== 0) {
+                $.ajax({
+                    method: "GET",
+                    url: "departments/find/add/" + department,
+                    async: false,
+                    success: function(res) {
+                        $('#EditPosition').html(res.html);
+                        //console.log(res);
+
+                    }
+                });
+            }
+
+        })
 
         //$.noConflict();
         var token = ''
@@ -103,7 +167,7 @@
             ]
         });
 
-      
+
 
         $("#example1").DataTable({
             "responsive": true,
@@ -129,6 +193,7 @@
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
+            $('.form').trigger('reset');
             $('#CreateModal').modal('show');
         });
 
@@ -150,6 +215,8 @@
                     password_confirmation: $('#AddPasswordc').val(),
                     name: $('#AddName').val(),
                     email: $('#AddEmail').val(),
+                    department_id: $("#AddDepartment").val()[0],
+                    position_id: $("#AddPosition").val()[0],
                     role: $('#AddRole').val(),
                     _token: token,
                 },
@@ -171,6 +238,8 @@
                             timeOut: 5000
                         });
                         $('#Listview').DataTable().ajax.reload();
+                        $("#AddDepartment").val(null).trigger("change")
+                        $("#AddPosition").val(null).trigger("change")
                         $('.form').trigger('reset');
                         //$('#SubmitCreateForm').hide();
                         //setTimeout(function() {
@@ -193,12 +262,21 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
+            $('#EditPosition').empty();
+
             id = $(this).data('id');
             $.ajax({
                 url: "users/edit/" + id,
                 method: 'GET',
                 success: function(res) {
-                    $('#EditModalBody').html(res.html);
+                    console.log(res)
+                    //$('#EditModalBody').html(res.html);
+                    $('#editName').val(res.data.name);
+                    $('#editEmail').val(res.data.email);
+                    $('#EditDepartment').val(res.data.department_id).change();
+                    $('#EditPosition').append(res.select_list_position);
+                    $('#EditPosition').val(res.data.position_id).change();
+                    $('#editRole').html(res.html);
                     $('#EditModal').modal('show');
                 }
             });
@@ -224,6 +302,8 @@
                     password_confirmation: $('#EditPasswordC').val(),
                     email: $('#editEmail').val(),
                     role: $('#editRole').val(),
+                    department: $("#EditDepartment").val()[0],
+                    position: $("#EditPosition").val()[0],
                 },
 
                 success: function(result) {

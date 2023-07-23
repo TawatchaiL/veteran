@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Department;
+use App\Models\Position;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -79,8 +81,13 @@ class UserController extends Controller
                     return $html;
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
-
-        return view('users.index')->with('roles', $roles);
+        $department = Department::where([['status', '1']])
+            ->orderBy("name", "asc")->get();
+        $position = Position::where([['status', '1']])
+            ->orderBy("name", "asc")->get();
+        return view('users.index')->with('roles', $roles)
+            ->with(['department' => $department])
+            ->with(['position' => $position]);
     }
 
     /**
@@ -113,6 +120,9 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
+            'department_id' => 'required',
+            'position_id' => 'required',
+            'name' => 'required|string|max:255',
             'role' => 'required'
         ]);
 
@@ -193,35 +203,12 @@ class UserController extends Controller
             $rolese .= '<option value="' . $role . '" ' . $sselected . '>' . $role . '</option>';
         }
 
-
-        $html = '<div class="form-group">
-                    <label for="Name">ชื่อ ผู้ใช้งาน:</label>
-                    <input type="text" class="form-control" name="name" id="editName" value="' . $data->name . '">
-                </div>
-                <div class="form-group">
-                    <label for="Name">อีเมล์:</label>
-                    <input type="text" class="form-control" name="email" id="editEmail" value="' . $data->email . '">
-                </div>
-                    <div class="form-group">
-                    <label for="Name">รหัสผ่าน:</label>
-                    <input type="password" class="form-control" name="password" required autocomplete="new-password"
-                        id="EditPassword" >
-                </div>
-                <div class="form-group">
-                    <label for="Name">ยืนยันรหัสผ่าน:</label>
-                    <input type="password" class="form-control" name="password_confirmation" id="EditPasswordC"
-                        required autocomplete="new-password" >
-                </div>
-                <div class="form-group">
-                    <label for="Name">สิทธิ์การใช้งาน:</label>
-                    <select class="form-control" id="editRole" name="role">
-                     ' . $rolese . '
-                    </select>
-                </div>';
+        $position = Position::where([['id', $data->position_id]])->get();
+        $select_list_position = '<option value="' . $position[0]->id . '" > ' . $position[0]->name . '</option>';
 
 
 
-        return response()->json(['html' => $html]);
+        return response()->json(['data' => $data, 'html' => $rolese, 'select_list_position' => $select_list_position]);
     }
 
     /**
@@ -252,6 +239,8 @@ class UserController extends Controller
         $rules = [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $id,
+            'department' => 'required',
+            'position' => 'required',
         ];
 
         if ($request->get('password')) {
@@ -268,6 +257,8 @@ class UserController extends Controller
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'role' => $request->get('role'),
+            'department_id' => $request->get('department'),
+            'position_id' => $request->get('position'),
             //'password' => Hash::make($request->get('password')),
         ];
 

@@ -52,6 +52,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::put('/departments/save/{id}', [App\Http\Controllers\DepartmentController::class, 'update'])->name('departments.save');
     Route::delete('/departments/destroy', [App\Http\Controllers\DepartmentController::class, 'destroy'])->name('departments.destroy');
     Route::post('/departments/destroy_all', [App\Http\Controllers\DepartmentController::class, 'destroy_all'])->name('departments.destroy_all');
+    Route::get('/departments/find/{type}/{department}', [App\Http\Controllers\DepartmentController::class, 'find'])->name('departments.find');
 
     Route::get('/positions', [App\Http\Controllers\PositionController::class, 'index'])->name('positions');
     Route::post('/positions/store', [App\Http\Controllers\PositionController::class, 'store'])->name('positions.store');

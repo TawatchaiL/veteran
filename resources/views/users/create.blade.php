@@ -18,14 +18,12 @@
                         </ul>
                     </div>
                 @endif --}}
-                <div class="alert alert-danger alert-dismissible fade show" role="alert"
-                    style="display: none;">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="display: none;">
                     <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="alert alert-success alert-dismissible fade show" role="alert"
-                    style="display: none;">
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="display: none;">
 
                     <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true"></span>
@@ -34,7 +32,7 @@
 
 
                 {{-- 'route' => 'users.store', --}}
-                {!! Form::open(['method' => 'POST','class' => 'form']) !!}
+                {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
@@ -64,6 +62,38 @@
                             ]) !!}
                         </div>
                     </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <strong>ส่วนราชการ:</strong>
+                            <select style="width: 100%;" class="departmentl select2 select2_single form-control" id="AddDepartment"
+                                name="department" multiple="multiple">
+                                <!-- <option value="" selected>Select Student</option>
+                                                                                                                                                                                                                                                                                                                                                                                        <option value="" selected>Select Parent</option>-->
+                                @foreach ($department as $key2)
+                                    <option value="{{ $key2->id }}">{{ $key2->name }}
+                                    </option>
+                                @endforeach
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <strong>ส่วนงาน:</strong>
+                            <select style="width: 100%;" class="positions select2 select2_single form-control"
+                                id="AddPosition" name="position" multiple="multiple">
+                                <!-- <option value="" selected>Select Student</option>
+                                                                                                                                                                                                                                                                                                                                                                                        <option value="" selected>Select Parent</option>-->
+                                {{--   @foreach ($position as $key)
+                                        <option value="{{ $key->id }}">{{ $key->name }}
+                                        </option>
+                                    @endforeach --}}
+
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>สิทธิ์การใช้งาน:</strong>

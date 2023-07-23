@@ -133,7 +133,7 @@ class PositionController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'name' => 'required|string|max:255|unique:departments,name,' . $id,
+            'name' => 'required|string|max:255|unique:positions,name,' . $id,
             'department' => 'required',
             'status' => 'required|max:10',
         ];

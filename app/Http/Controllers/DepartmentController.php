@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Department;
+use App\Models\Position;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
@@ -64,6 +65,35 @@ class DepartmentController extends Controller
         }
 
         return view('departments.index');
+    }
+
+
+    public function find($type, $department)
+    {
+        $select_list = "<option value=''>please select</option>";
+        if ($type == 'add') {
+            $data = Position::select(
+                "positions.id as id",
+                "positions.name as name",
+            )
+
+                ->where('department_id', $department)
+                ->where('status', 1)
+                ->orderBy("positions.name", "asc")
+                ->get();
+
+            $orderAmounts = [];
+
+            foreach ($data as $key) {
+                $orderAmount = $orderAmounts[$key->id] ?? 0;
+                $remain = $key->amount - $orderAmount;
+                $select_list .= '<option value="' . $key->id . '" >' . $key->name . '</option>';
+            }
+
+            return response()->json([
+                'html' =>  $select_list
+            ]);
+        } 
     }
 
     /**
