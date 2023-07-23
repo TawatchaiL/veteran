@@ -153,8 +153,12 @@
                     name: 'name'
                 },
                 {
-                    data: 'email',
-                    name: 'email'
+                    data: 'department',
+                    name: 'department'
+                },
+                {
+                    data: 'position',
+                    name: 'position'
                 },
                 {
                     data: 'role',

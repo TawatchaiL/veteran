@@ -50,7 +50,7 @@ class UserController extends Controller
         if ($request->ajax()) {
             //sleep(2);
 
-            $datas = User::orderBy("id", "desc")->get();
+            $datas = User::with('department', 'position')->orderBy("id", "desc")->get();
             return datatables()->of($datas)
                 ->editColumn('role', function (User $datas) {
                     if (!empty($datas->getRoleNames())) {
@@ -63,6 +63,12 @@ class UserController extends Controller
                     }
 
                     return $urole;
+                })
+                ->editColumn('department', function ($row) {
+                    return $row->department->name;
+                })
+                ->editColumn('position', function ($row) {
+                    return $row->position->name;
                 })
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';

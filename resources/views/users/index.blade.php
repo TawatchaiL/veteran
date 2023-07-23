@@ -80,7 +80,8 @@
                                         <tr>
                                             <th><input type="checkbox" id="check-all" class="flat"></th>
                                             <th>ชื่อ ผู้ใช้งาน</th>
-                                            <th>อีเมล์</th>
+                                            <th>ส่วนราชการ</th>
+                                            <th>ส่วนงาน</th>
                                             <th>สิทธิ์การใช้งาน</th>
                                             <th width="280px"></th>
                                         </tr>
