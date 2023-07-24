@@ -1,6 +1,7 @@
 <style>
     .nav-tabs .nav-item:first-child .nav-link {
-        margin-left: 10px; /* Adjust the value to your desired space */
+        margin-left: 10px;
+        /* Adjust the value to your desired space */
     }
 
     .disabled-select {
@@ -37,6 +38,15 @@
     .modal-xxxl {
         max-width: 1500px !important;
     }
+
+    .modal-dialog {
+        top: 10px;
+    }
+
+    .modal-dialog-in {
+        top: 90px;
+    }
+    
 
 
 

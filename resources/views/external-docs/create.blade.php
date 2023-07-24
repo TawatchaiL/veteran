@@ -30,6 +30,34 @@
                     </button>
                 </div>
 
+                {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#innerModal">Open Inner
+                    Modal</button> --}}
+
+                <!-- Inner Modal -->
+                <div class="modal fade" id="innerModal" tabindex="-1" role="dialog" aria-labelledby="innerModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-in modal-lg {{-- modal-dialog-centered --}}" role="document">
+                        <div class="modal-content">
+                            <!-- Inner Modal Header -->
+                            <div class="modal-header bg-info">
+                                <h4 class="modal-title" id="innerModalLabel">เพิ่มผู้ติดต่อ</h4>
+                                <button type="button" class="close" data-dismiss-modal="modal2" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <!-- Inner Modal Body -->
+                            <div class="modal-body">
+                                <p>This is the content of the inner modal.</p>
+                            </div>
+                            <!-- Inner Modal Footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss-modal="modal2">ปิด</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Inner Modal -->
+
 
                 {{-- 'route' => 'users.store', --}}
                 {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
@@ -70,7 +98,11 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong>หนังสือเลขที่:</strong>
-                                            {!! Form::text('doc_number', null, ['id' => 'AddDocNumber', 'placeholder' => 'หนังสือเลขที่', 'class' => 'form-control']) !!}
+                                            {!! Form::text('doc_number', null, [
+                                                'id' => 'AddDocNumber',
+                                                'placeholder' => 'หนังสือเลขที่',
+                                                'class' => 'form-control',
+                                            ]) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -78,22 +110,31 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong>ระดับชั้นความเร็วของหนังสือ:</strong>
-                                            <select style="width: 100%;" class="select2 select2_single form-control"
-                                                id="AddPriorities" name="priorities" multiple="multiple">
-                                                <!-- <option value="" selected>Select Student</option>
+                                            <div class="input-group">
+                                                <select style="width: 91%;" class="select2 select2_single form-control"
+                                                    id="AddPriorities" name="priorities" multiple="multiple">
+                                                    <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                                     <option value="" selected>Select Parent</option>-->
-                                                @foreach ($priorities as $key2)
-                                                    <option value="{{ $key2->id }}">{{ $key2->name }}
-                                                    </option>
-                                                @endforeach
+                                                    @foreach ($priorities as $key2)
+                                                        <option value="{{ $key2->id }}">{{ $key2->name }}
+                                                        </option>
+                                                    @endforeach
 
-                                            </select>
+                                                </select>
+                                                <div class="input-group-append">
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                        data-target="#innerModal"><i class="fas fa-plus"></i></button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong>ลงวันที่:</strong>
-                                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
+                                            @php
+                                                $datethai = date('m/d/') . date('Y') + 543;
+                                            @endphp
+                                            {!! Form::text('signdate', $datethai, ['id' => 'AddDate', 'placeholder' => '', 'class' => 'form-control']) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -101,13 +142,34 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong>จาก:</strong>
-                                            {!! Form::text('doc_from', null, ['id' => 'AddDocfrom', 'placeholder' => 'จาก', 'class' => 'form-control']) !!}
+                                            <div class="input-group">
+                                                <select style="width: 91%;"
+                                                    class="select2 select2_single form-control" id="AddDocFrom"
+                                                    name="doc_from" multiple="multiple">
+                                                    <!-- <option value="" selected>Select Student</option>
+                                                                                                                                                                                                                                                                                                                                                                                                                                  <option value="" selected>Select Parent</option>-->
+                                                    @foreach ($contacts as $key)
+                                                        <option value="{{ $key->id }}">{{ $key->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                <div class="input-group-append">
+                                                    <button type="button" class="btn btn-primary"
+                                                        data-toggle="modal"
+                                                        data-target="#innerModal"><i class="fas fa-plus"></i></button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong>ถึง:</strong>
-                                            {!! Form::text('doc_to', null, ['id' => 'AddDocTo', 'placeholder' => 'ถึง', 'class' => 'form-control']) !!}
+                                            {!! Form::text('doc_to', 'นายกเทศมนตรี', [
+                                                'id' => 'AddDocTo',
+                                                'placeholder' => '',
+                                                'class' => 'form-control',
+                                                //'value' => 'นายกเทศมลตรี',
+                                            ]) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -121,7 +183,23 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong>ผู้รับ:</strong>
-                                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
+                                            <div class="input-group">
+                                                <select style="width: 87%;"
+                                                    class="select2 select2_single form-control" id="AddReceive"
+                                                    name="doc_receive" multiple="multiple" readonly>
+                                                    <!-- <option value="" selected>Select Student</option>
+                                                                                                                                                                                                                                                                                                                                                                                                                                  <option value="" selected>Select Parent</option>-->
+                                                    @foreach ($contacts as $key)
+                                                        <option value="{{ $key->id }}">{{ $key->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                <div class="input-group-append">
+                                                    <button type="button" class="btn btn-primary"
+                                                        data-toggle="modal"
+                                                        data-target="#innerModal">เลือก</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

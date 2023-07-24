@@ -17,6 +17,33 @@
             $(':checkbox.flat').prop('checked', this.checked);
         });
 
+        $("button[data-dismiss-modal=modal2]").click(function() {
+            $('#innerModal').modal('hide');
+        });
+
+        /* $("#AddDate").datepicker({
+                language:'th-th',
+                format:'dd/mm/yyyy',
+                autoclose: true
+            }); */
+
+        $.datepicker.setDefaults($.datepicker.regional["th"]);
+        var currentDate = new Date();
+
+        currentDate.setYear(currentDate.getFullYear() + 543);
+        // Birth date
+        $("#AddDate").datetimepicker({
+            changeMonth: true,
+            changeYear: true,
+            yearRange: '+443:+543',
+            dateFormat: 'dd/mm/yy',
+            onSelect: function(date) {
+                $("#edit-date-of-birth").addClass('filled');
+            }
+        });
+        $('#AddDate').datetimepicker("setDate", currentDate);
+
+        
 
         $(".select2_single").select2({
             maximumSelectionLength: 1,
@@ -37,7 +64,7 @@
             placeholder: 'กรุณาเลือก'
         });
 
-    
+
         $(".select2_multiple").select2({
             maximumSelectionLength: 2,
             //placeholder: "With Max Selection limit 4",
@@ -156,13 +183,13 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
             $.ajax({
-                    method: "GET",
-                    url: "external-docs/running",
-                    success: function(res) {
-                        console.log(res)
-                        $('#AddNumber').val(res.running);
-                    }
-                });
+                method: "GET",
+                url: "external-docs/running",
+                success: function(res) {
+                    console.log(res)
+                    $('#AddNumber').val(res.running);
+                }
+            });
 
             $('#CreateModal').modal('show');
         });
