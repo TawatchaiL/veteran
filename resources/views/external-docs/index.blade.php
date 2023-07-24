@@ -109,7 +109,7 @@
 
     @include('external-docs.create')
 
-    @include('external-docs.edit')
+   {{--  @include('external-docs.edit') --}}
 
     {{--  {!! $data->render() !!} --}}
 @endsection

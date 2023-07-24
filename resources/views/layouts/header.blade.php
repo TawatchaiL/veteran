@@ -6,10 +6,13 @@
                     class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">[ <i class="fas fa-building nav-icon"></i> <b class="text-primary">ส่วนราชการ : {{ Auth::user()->department->name }}</b>  ]</a>
+            <a href="#" class="nav-link">[ <i class="fas fa-building nav-icon"></i> <b class="text-primary">ส่วนราชการ : @if(Auth::check() && Auth::user()->department && Auth::user()->department->name)
+                {{ Auth::user()->department->name }} @endif</b>  ]</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">[ <i class="fas fa-users nav-icon"></i> <b class="text-primary">ส่วนงาน : {{ Auth::user()->position->name }}</b> ]</a>
+            <a href="#" class="nav-link">[ <i class="fas fa-users nav-icon"></i> <b class="text-primary">ส่วนงาน : @if(Auth::check() && Auth::user()->position && Auth::user()->position->name)
+                {{ Auth::user()->position->name }}
+            @endif </b> ]</a>
         </li>
     </ul>
 
@@ -26,7 +29,7 @@
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/2048px-User_icon_2.svg.png"
                         height="150" class="img-circle elevation-1" alt="User Image">
                     <p >
-                        {{ Auth::user()->name }} {{ Auth::user()->department->name }}
+                        {{ Auth::user()->name }}
                         <small>Member since {{ Auth::user()->created_at->format('M. Y') }}</small>
                     </p>
                 </li>

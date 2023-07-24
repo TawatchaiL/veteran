@@ -70,7 +70,7 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong>หนังสือเลขที่:</strong>
-                                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
+                                            {!! Form::text('doc_number', null, ['id' => 'AddDocNumber', 'placeholder' => 'หนังสือเลขที่', 'class' => 'form-control']) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -79,10 +79,10 @@
                                         <div class="form-group">
                                             <strong>ระดับชั้นความเร็วของหนังสือ:</strong>
                                             <select style="width: 100%;" class="select2 select2_single form-control"
-                                                id="AddDepartment" name="department" multiple="multiple">
+                                                id="AddPriorities" name="priorities" multiple="multiple">
                                                 <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                                     <option value="" selected>Select Parent</option>-->
-                                                @foreach ($department as $key2)
+                                                @foreach ($priorities as $key2)
                                                     <option value="{{ $key2->id }}">{{ $key2->name }}
                                                     </option>
                                                 @endforeach
@@ -101,13 +101,13 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong>จาก:</strong>
-                                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
+                                            {!! Form::text('doc_from', null, ['id' => 'AddDocfrom', 'placeholder' => 'จาก', 'class' => 'form-control']) !!}
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong>ถึง:</strong>
-                                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
+                                            {!! Form::text('doc_to', null, ['id' => 'AddDocTo', 'placeholder' => 'ถึง', 'class' => 'form-control']) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -115,7 +115,7 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong>เรื่อง:</strong>
-                                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
+                                            {!! Form::text('subject', null, ['id' => 'AddSubject', 'placeholder' => 'เรื่อง', 'class' => 'form-control']) !!}
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">

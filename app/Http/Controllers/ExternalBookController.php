@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Models\BookRunningNumber;
 use App\Models\Department;
 use App\Models\Position;
+use App\Models\Priority;
+use App\Models\Contact;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +20,7 @@ use Illuminate\Support\Facades\Session;
 
 class ExternalBookController extends Controller
 {
-   /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -45,8 +47,7 @@ class ExternalBookController extends Controller
                 "positions.*",
                 "departments.name as dname",
             )
-            ->join("departments", "departments.id", "=", "positions.department_id") */
-            orderBy("external_books.id", "desc")->get();
+            ->join("departments", "departments.id", "=", "positions.department_id") */orderBy("external_books.id", "desc")->get();
 
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
@@ -67,9 +68,11 @@ class ExternalBookController extends Controller
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
 
-        $department = Department::where([['status', '1']])
+        $priorities = Priority::where([['status', '1']])
             ->orderBy("name", "asc")->get();
-        return view('external-docs.index')->with(['department' => $department]);
+        $contacts = Contact::orderBy("name", "asc")->get();
+        return view('external-docs.index')->with(['priorities' => $priorities])
+            ->with(['contacts' => $contacts]);
     }
     /**
      * Show the form for creating a new resource.
