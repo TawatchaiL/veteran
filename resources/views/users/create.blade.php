@@ -46,23 +46,6 @@
                             {!! Form::text('email', null, ['id' => 'AddEmail', 'placeholder' => 'Email', 'class' => 'form-control']) !!}
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>รหัสผ่าน:</strong>
-                            {!! Form::password('password', ['id' => 'AddPassword', 'placeholder' => 'Password', 'class' => 'form-control']) !!}
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>ยืนยันรหัสผ่าน:</strong>
-                            {!! Form::password('confirm-password', [
-                                'id' => 'AddPasswordc',
-                                'placeholder' => 'Confirm Password',
-                                'class' => 'form-control',
-                            ]) !!}
-                        </div>
-                    </div>
-
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
                             <strong>ส่วนราชการ:</strong>
@@ -93,6 +76,24 @@
                             </select>
                         </div>
                     </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>รหัสผ่าน:</strong>
+                            {!! Form::password('password', ['id' => 'AddPassword', 'placeholder' => 'Password', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>ยืนยันรหัสผ่าน:</strong>
+                            {!! Form::password('confirm-password', [
+                                'id' => 'AddPasswordc',
+                                'placeholder' => 'Confirm Password',
+                                'class' => 'form-control',
+                            ]) !!}
+                        </div>
+                    </div>
+
+
 
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
