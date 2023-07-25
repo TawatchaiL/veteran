@@ -82,18 +82,14 @@ class DepartmentController extends Controller
                 ->orderBy("positions.name", "asc")
                 ->get();
 
-            $orderAmounts = [];
-
             foreach ($data as $key) {
-                $orderAmount = $orderAmounts[$key->id] ?? 0;
-                $remain = $key->amount - $orderAmount;
                 $select_list .= '<option value="' . $key->id . '" >' . $key->name . '</option>';
             }
 
             return response()->json([
                 'html' =>  $select_list
             ]);
-        } 
+        }
     }
 
     /**

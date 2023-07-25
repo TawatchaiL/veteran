@@ -71,7 +71,10 @@ class ExternalBookController extends Controller
         $priorities = Priority::where([['status', '1']])
             ->orderBy("name", "asc")->get();
         $contacts = Contact::orderBy("name", "asc")->get();
+        $department = Department::where([['status', '1']])
+            ->orderBy("name", "asc")->get();
         return view('external-docs.index')->with(['priorities' => $priorities])
+            ->with(['departments' => $department])
             ->with(['contacts' => $contacts]);
     }
     /**

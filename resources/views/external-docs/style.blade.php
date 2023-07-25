@@ -43,10 +43,10 @@
         top: 10px;
     }
 
-    .modal-dialog-in {
+    .modal-dialog-in,.modal-dialog-in2,.modal-dialog-in3 {
         top: 90px;
     }
-    
+
 
 
 

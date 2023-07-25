@@ -84,10 +84,10 @@ class ContactController extends Controller
             'address' => 'required|string|max:255',
             'postcode' => 'required|string|max:10',
             'telephone' => 'required|string|max:20',*/
-        ],[
+        ], [
             'name.required' => 'ชื่อหน่วยงานต้องไม่เป็นค่าว่าง!',
             'name.unique' => 'ชื่อหน่วยงานนี้มีอยู่แล้วในฐานข้อมูล!',
-            'status.required' => 'กรุณาเลือกสถานะ!',
+            /*  'status.required' => 'กรุณาเลือกสถานะ!', */
         ]);
 
 
@@ -97,7 +97,8 @@ class ContactController extends Controller
 
         $input = $request->all();
         $contact = Contact::create($input);
-        return response()->json(['success' => 'เพิ่ม หน่วยงานราชการ เรียบร้อยแล้ว']);
+        $select_list_contact = '<option value="' . $contact->id . '" > ' . $contact->name . '</option>';
+        return response()->json(['success' => 'เพิ่ม หน่วยงานราชการ เรียบร้อยแล้ว', 'contact' => $select_list_contact, 'cid' => $contact->id]);
     }
 
     /**
@@ -134,7 +135,7 @@ class ContactController extends Controller
         ];
 
 
-        $validator =  Validator::make($request->all(), $rules,[
+        $validator =  Validator::make($request->all(), $rules, [
             'name.required' => 'ชื่อหน่วยงานต้องไม่เป็นค่าว่าง!',
             'name.unique' => 'ชื่อหน่วยงานนี้มีอยู่แล้วในฐานข้อมูล!',
             'status.required' => 'กรุณาเลือกสถานะ!',

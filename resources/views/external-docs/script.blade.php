@@ -17,8 +17,16 @@
             $(':checkbox.flat').prop('checked', this.checked);
         });
 
-        $("button[data-dismiss-modal=modal2]").click(function() {
+        $("button[data-dismiss-modal=modal1]").click(function() {
             $('#innerModal').modal('hide');
+        });
+
+        $("button[data-dismiss-modal=modal2]").click(function() {
+            $('#innerModal2').modal('hide');
+        });
+
+        $("button[data-dismiss-modal=modal3]").click(function() {
+            $('#innerModal3').modal('hide');
         });
 
         /* $("#AddDate").datepicker({
@@ -43,7 +51,7 @@
         });
         $('#AddDate').datetimepicker("setDate", currentDate);
 
-        
+
 
         $(".select2_single").select2({
             maximumSelectionLength: 1,
@@ -174,6 +182,37 @@
             "responsive": true,
         });
 
+        $(".departmentl").change(function() {
+            let department = $('#AddDepartment').val();
+            //console.log(product);
+            //alert(product);
+            $('#AddPosition').html('');
+            if (department.length !== 0) {
+                $.ajax({
+                    method: "GET",
+                    url: "departments/find/add/" + department,
+                    success: function(res) {
+                        $('.positions').html(res.html);
+                    }
+                });
+            }
+        })
+
+        $(".positions").change(function() {
+            let position = $('#AddPosition').val();
+            $('#AddUser').html('');
+            if (position.length !== 0) {
+                $.ajax({
+                    method: "GET",
+                    url: "users/find/add/" + position,
+                    success: function(res) {
+                        $('.users').html(res.html);
+                    }
+                });
+            }
+        })
+
+
 
 
         $(document).on('click', '#CreateButton', function(e) {
@@ -182,6 +221,11 @@
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
+
+            $("#AddDocFrom").val(null).trigger("change");
+            $("#AddPriorities").val(null).trigger("change");
+            $('#AddReceive').empty().trigger('change');
+
             $.ajax({
                 method: "GET",
                 url: "external-docs/running",
@@ -195,6 +239,22 @@
         });
 
 
+        $(document).on('click', '#inner1', function(e) {
+            e.preventDefault();
+            $('.alert-in').html('');
+            $('.alert-in').hide();
+            $('.success-in').html('');
+            $('.success-in').hide();
+        });
+
+        $(document).on('click', '#inner2', function(e) {
+            e.preventDefault();
+            $('.alert-in').html('');
+            $('.alert-in').hide();
+            $('.success-in').html('');
+            $('.success-in').hide();
+        });
+
         // Create product Ajax request.
         $('#SubmitCreateForm').click(function(e) {
             e.preventDefault();
@@ -203,11 +263,6 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
-            if ($('#customCheckbox1').is(":checked")) {
-                sstatus = 1;
-            } else {
-                sstatus = 0;
-            }
 
 
             $.ajax({
@@ -243,6 +298,142 @@
                 }
             });
         });
+
+
+        $('#SubmitCreateFormIn1').click(function(e) {
+            e.preventDefault();
+            $('.alert-in').html('');
+            $('.alert-in').hide();
+            $('.success-in').html('');
+            $('.success-in').hide();
+
+
+            $.ajax({
+                url: "{{ route('contacts.store') }}",
+                method: 'post',
+                data: {
+                    name: $('#AddName').val(),
+                    telephone: $('#AddTelephone').val(),
+                    _token: token,
+                },
+                success: function(result) {
+                    if (result.errors) {
+                        $('.alert-in').html('');
+                        $.each(result.errors, function(key, value) {
+                            $('.alert-in').show();
+                            $('.alert-in').append('<strong><li>' + value +
+                                '</li></strong>');
+                        });
+                    } else {
+                        $('.alert-in').hide();
+                        $('.success-in').show();
+                        $('.success-in').append('<strong><li>' + result.success +
+                            '</li></strong>');
+                        toastr.success(result.success, {
+                            timeOut: 5000
+                        });
+                        $('#AddDocFrom').append(result.contact);
+                        $('#AddDocFrom').val(result.cid).change();
+                        $('#AddName').val('');
+                        $('#AddTelephone').val('');
+                        //$('.form').trigger('reset');
+                        $('.success-in').hide();
+                        $('.alert-in').hide();
+                        $('#innerModal').modal('hide');
+                    }
+                }
+            });
+        });
+
+        $('#SubmitCreateFormIn2').click(function(e) {
+            e.preventDefault();
+            $('.alert-in').html('');
+            $('.alert-in').hide();
+            $('.success-in').html('');
+            $('.success-in').hide();
+
+
+            $.ajax({
+                url: "{{ route('priorities.store') }}",
+                method: 'post',
+                data: {
+                    name: $('#AddPName').val(),
+                    status: 1,
+                    _token: token,
+                },
+                success: function(result) {
+                    if (result.errors) {
+                        $('.alert-in').html('');
+                        $.each(result.errors, function(key, value) {
+                            $('.alert-in').show();
+                            $('.alert-in').append('<strong><li>' + value +
+                                '</li></strong>');
+                        });
+                    } else {
+                        $('.alert-in').hide();
+                        $('.success-in').show();
+                        $('.success-in').append('<strong><li>' + result.success +
+                            '</li></strong>');
+                        toastr.success(result.success, {
+                            timeOut: 5000
+                        });
+                        $('#AddPriorities').append(result.priorities);
+                        $('#AddPriorities').val(result.pid).change();
+                        $('#AddPName').val('');
+                        //$('.form').trigger('reset');
+                        $('.success-in').hide();
+                        $('.alert-in').hide();
+                        $('#innerModal2').modal('hide');
+                    }
+                }
+            });
+        });
+
+        $('#SubmitCreateFormIn3').click(function(e) {
+            e.preventDefault();
+            $('.alert-in').html('');
+            $('.alert-in').hide();
+            $('.success-in').html('');
+            $('.success-in').hide();
+
+
+
+            if ($("#AddUser").val()[0] === null || $("#AddUser").val()[0] === undefined || $(
+                    "#AddUser").val()[0] === "" || $("#AddUser").val()[0].length === 0) {
+                toastr.error('คุณยังไม่ได้เลือกผู้รับ', {
+                    timeOut: 5000
+                });
+            } else {
+
+                const selectedData = $('#AddUser').select2('data');
+
+                // Loop through the selected data and extract text and value
+                selectedData.forEach(function(data) {
+                    const text = data.text;
+                    const value = data.id;
+
+                    // Do something with the text and value
+                    console.log(`Selected Text: ${text}, Selected Value: ${value}`);
+                    uid = value;
+                    html = `<option value="${value}" > ${text} </option>`;
+                });
+
+                $('#AddReceive').empty().trigger('change');
+                $('#AddReceive').append(html);
+                $('#AddReceive').val(uid).change();
+
+                $("#AddDepartment").val(null).trigger("change");
+                $("#AddPosition").val(null).trigger("change");
+                $("#AddUser").val(null).trigger("change");
+
+                $('#innerModal3').modal('hide');
+
+
+
+            }
+        });
+
+
 
         let id;
         $(document).on('click', '#getEditData', function(e) {

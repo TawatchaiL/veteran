@@ -99,8 +99,9 @@ class PrioritiesController extends Controller
         }
 
         $input = $request->all();
-        $contact = Priority::create($input);
-        return response()->json(['success' => 'เพิ่ม ระดับชั้นความเร็ว เรียบร้อยแล้ว']);
+        $priorities = Priority::create($input);
+        $select_list_priorities = '<option value="' . $priorities->id . '" > ' . $priorities->name . '</option>';
+        return response()->json(['success' => 'เพิ่ม ระดับชั้นความเร็ว เรียบร้อยแล้ว', 'priorities' => $select_list_priorities, 'pid' => $priorities->id]);
     }
 
     /**

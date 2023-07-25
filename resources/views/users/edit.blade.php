@@ -38,6 +38,35 @@
                                          value="">
                                  </div>
                              </div>
+                             <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <strong>ส่วนราชการ:</strong>
+                                    <select style="width: 100%;"
+                                        class="departmente select2 select2_single form-control" id="EditDepartment"
+                                        name="edepartment" multiple="multiple">
+                                        @foreach ($department as $key2)
+                                            <option value="{{ $key2->id }}">{{ $key2->name }}
+                                            </option>
+                                        @endforeach
+
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <strong>ส่วนงาน:</strong>
+                                    <select style="width: 100%;" class="positions select2 select2_single form-control"
+                                        id="EditPosition" name="eposition" multiple="multiple">
+                                       {{--  @foreach ($position as $key)
+                                            <option value="{{ $key->id }}">{{ $key->name }}
+                                            </option>
+                                        @endforeach
+--}}
+
+                                    </select>
+                                </div>
+                            </div>
                              <div class="col-xs-12 col-sm-12 col-md-12">
                                  <div class="form-group">
                                      <label for="Name">รหัสผ่าน:</label>
@@ -52,35 +81,7 @@
                                          id="EditPasswordC" required autocomplete="new-password">
                                  </div>
                              </div>
-                             <div class="col-xs-6 col-sm-6 col-md-6">
-                                 <div class="form-group">
-                                     <strong>ส่วนราชการ:</strong>
-                                     <select style="width: 100%;"
-                                         class="departmente select2 select2_single form-control" id="EditDepartment"
-                                         name="edepartment" multiple="multiple">
-                                         @foreach ($department as $key2)
-                                             <option value="{{ $key2->id }}">{{ $key2->name }}
-                                             </option>
-                                         @endforeach
 
-
-                                     </select>
-                                 </div>
-                             </div>
-                             <div class="col-xs-6 col-sm-6 col-md-6">
-                                 <div class="form-group">
-                                     <strong>ส่วนงาน:</strong>
-                                     <select style="width: 100%;" class="positions select2 select2_single form-control"
-                                         id="EditPosition" name="eposition" multiple="multiple">
-                                        {{--  @foreach ($position as $key)
-                                             <option value="{{ $key->id }}">{{ $key->name }}
-                                             </option>
-                                         @endforeach
- --}}
-
-                                     </select>
-                                 </div>
-                             </div>
                              <div class="col-xs-12 col-sm-12 col-md-12">
                                  <div class="form-group">
                                      <label for="Name">สิทธิ์การใช้งาน:</label>

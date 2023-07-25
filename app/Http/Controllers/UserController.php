@@ -149,6 +149,31 @@ class UserController extends Controller
         return response()->json(['success' => 'เพิ่มช้อมูล ผู้ใช้งาน เรียบร้อยแล้ว']);
     }
 
+
+    public function find($type, $position)
+    {
+        $select_list = "<option value=''>please select</option>";
+        if ($type == 'add') {
+            $data = User::select(
+                "users.id as id",
+                "users.name as name",
+            )
+
+                ->where('position_id', $position)
+                /* ->where('status', 1) */
+                ->orderBy("users.name", "asc")
+                ->get();
+
+            foreach ($data as $key) {
+                $select_list .= '<option value="' . $key->id . '" >' . $key->name . '</option>';
+            }
+
+            return response()->json([
+                'html' =>  $select_list
+            ]);
+        }
+    }
+
     /**
      * Display the specified resource.
      *

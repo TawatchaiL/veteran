@@ -33,34 +33,8 @@
                 {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#innerModal">Open Inner
                     Modal</button> --}}
 
-                <!-- Inner Modal -->
-                <div class="modal fade" id="innerModal" tabindex="-1" role="dialog" aria-labelledby="innerModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-in modal-lg {{-- modal-dialog-centered --}}" role="document">
-                        <div class="modal-content">
-                            <!-- Inner Modal Header -->
-                            <div class="modal-header bg-info">
-                                <h4 class="modal-title" id="innerModalLabel">เพิ่มผู้ติดต่อ</h4>
-                                <button type="button" class="close" data-dismiss-modal="modal2" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <!-- Inner Modal Body -->
-                            <div class="modal-body">
-                                <p>This is the content of the inner modal.</p>
-                            </div>
-                            <!-- Inner Modal Footer -->
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss-modal="modal2">ปิด</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of Inner Modal -->
-
-
                 {{-- 'route' => 'users.store', --}}
-                {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
+                {!! Form::open(['method' => 'POST', 'class' => 'form','id'=>'create_form']) !!}
                 <div class="card card-success card-tabs">
                     <div class="card-header p-0 pt-1">
                         <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
@@ -122,8 +96,8 @@
 
                                                 </select>
                                                 <div class="input-group-append">
-                                                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                        data-target="#innerModal"><i class="fas fa-plus"></i></button>
+                                                    <button type="button" id="inner2" class="btn btn-primary" data-toggle="modal"
+                                                        data-target="#innerModal2"><i class="fas fa-plus"></i></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -154,7 +128,7 @@
                                                     @endforeach
                                                 </select>
                                                 <div class="input-group-append">
-                                                    <button type="button" class="btn btn-primary"
+                                                    <button id="inner1" type="button" class="btn btn-primary"
                                                         data-toggle="modal"
                                                         data-target="#innerModal"><i class="fas fa-plus"></i></button>
                                                 </div>
@@ -189,15 +163,15 @@
                                                     name="doc_receive" multiple="multiple" readonly>
                                                     <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                                                                   <option value="" selected>Select Parent</option>-->
-                                                    @foreach ($contacts as $key)
+                                                   {{--  @foreach ($contacts as $key)
                                                         <option value="{{ $key->id }}">{{ $key->name }}
                                                         </option>
-                                                    @endforeach
+                                                    @endforeach --}}
                                                 </select>
                                                 <div class="input-group-append">
-                                                    <button type="button" class="btn btn-primary"
+                                                    <button id="inner3" type="button" class="btn btn-primary"
                                                         data-toggle="modal"
-                                                        data-target="#innerModal">เลือก</button>
+                                                        data-target="#innerModal3">เลือก</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -256,3 +230,6 @@
         </div>
     </div>
 </div>
+
+
+

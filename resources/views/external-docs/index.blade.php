@@ -16,7 +16,7 @@
                         {{-- <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item active">Users Management</li> --}}
 
-                        @can('master-data-create')
+                        @can('external-doc-create')
                             <button type="button" class="btn btn-success" id="CreateButton">
                                 <i class="fas fa-file-signature"></i> ลงรับหนังสือ</a> </button>
                         @else
@@ -27,7 +27,7 @@
                             </span>
                         @endcan &nbsp;
 
-                        @can('master-data-delete')
+                        @can('external-doc-delete')
                             <button type="button" class="btn btn-danger delete_all_button"><i class="fa fa-trash"></i> ลบ
                                 ทั้งหมด</button>
                         @else
@@ -110,6 +110,8 @@
     @include('external-docs.create')
 
    {{--  @include('external-docs.edit') --}}
+
+   @include('external-docs.inner-modal')
 
     {{--  {!! $data->render() !!} --}}
 @endsection

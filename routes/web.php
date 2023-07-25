@@ -7,7 +7,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 
-
+use App\Services\FileUploadService;
+use Illuminate\Http\Request;
 
 
 /* Route::get('/', function () {
@@ -30,6 +31,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('users.edit2');
     Route::put('/users/save/{id}', [UserController::class, 'update'])->name('users.save');
     Route::post('/users/destroy_all', [UserController::class, 'destroy_all'])->name('users.destroy_all');
+    Route::get('/users/find/{type}/{position}', [UserController::class, 'find'])->name('users.find');
     Route::resource('roles', RoleController::class);
 
     Route::get('/contacts', [App\Http\Controllers\ContactController::class, 'index'])->name('contacts');
@@ -67,8 +69,15 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/external-docs/running', [App\Http\Controllers\ExternalBookController::class, 'create'])->name('external-docs.running');
 
     //file
-    Route::post('/file/upload', [App\Http\Controllers\ExternalBookController::class, 'upload_file'])->name('file.upload');
-    Route::post('/file/upload/delete', [App\Http\Controllers\ExternalBookController::class, 'delete_file'])->name('file.delete');
+    Route::post('/file/upload', function (Request $request) {
+        $result = FileUploadService::fileStore($request);
+        return response()->json(['success' => $result]);
+    })->name('file.upload');
+
+    Route::post('/file/upload/delete', function (Request $request) {
+        $result = FileUploadService::fileDestroy($request);
+        return $result;
+    })->name('file.delete');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
