@@ -17,8 +17,6 @@ use Illuminate\Http\Request;
 
 //Auth::routes();
 
-Route::get('/', [HomeController::class, 'index']);
-
 Route::group(['middleware' => ['auth']], function() {
     //Route::get('/roles', [RoleController::class, 'index'])->name('roles.index');
     //Route::get('/roles/store', [RoleController::class, 'store'])->name('roles.store');
@@ -67,6 +65,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/external-docs', [App\Http\Controllers\ExternalBookController::class, 'index'])->name('external-docs');
     Route::post('/external-docs/store', [App\Http\Controllers\ExternalBookController::class, 'store'])->name('external-docs.store');
     Route::get('/external-docs/running', [App\Http\Controllers\ExternalBookController::class, 'create'])->name('external-docs.running');
+    Route::delete('/external-docs/destroy', [App\Http\Controllers\ExternalBookController::class, 'destroy'])->name('external-docs.destroy');
+    Route::post('/external-docs/destroy_all', [App\Http\Controllers\ExternalBookController::class, 'destroy_all'])->name('external-docs.destroy_all');
 
     //file
     Route::post('/file/upload', function (Request $request) {
@@ -78,8 +78,11 @@ Route::group(['middleware' => ['auth']], function() {
         $result = FileUploadService::fileDestroy($request);
         return $result;
     })->name('file.delete');
+
+    Route::get('/', [App\Http\Controllers\ExternalBookController::class, 'index']);
+    Route::get('/home', [App\Http\Controllers\ExternalBookController::class, 'index'])->name('home');
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+/* Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); */
 
 Auth::routes();

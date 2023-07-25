@@ -85,7 +85,7 @@
                                         <div class="form-group">
                                             <strong>ระดับชั้นความเร็วของหนังสือ:</strong>
                                             <div class="input-group">
-                                                <select style="width: 91%;" class="select2 select2_single form-control"
+                                                <select style="width: 91%;" class="priorities select2 select2_single form-control"
                                                     id="AddPriorities" name="priorities" multiple="multiple">
                                                     <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                                     <option value="" selected>Select Parent</option>-->
@@ -96,7 +96,7 @@
 
                                                 </select>
                                                 <div class="input-group-append">
-                                                    <button type="button" id="inner2" class="btn btn-primary" data-toggle="modal"
+                                                    <button type="button" class="inner2 btn btn-primary" data-toggle="modal"
                                                         data-target="#innerModal2"><i class="fas fa-plus"></i></button>
                                                 </div>
                                             </div>
@@ -118,7 +118,7 @@
                                             <strong>จาก:</strong>
                                             <div class="input-group">
                                                 <select style="width: 91%;"
-                                                    class="select2 select2_single form-control" id="AddDocFrom"
+                                                    class="doc_from select2 select2_single form-control" id="AddDocFrom"
                                                     name="doc_from" multiple="multiple">
                                                     <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                                                                   <option value="" selected>Select Parent</option>-->
@@ -128,7 +128,7 @@
                                                     @endforeach
                                                 </select>
                                                 <div class="input-group-append">
-                                                    <button id="inner1" type="button" class="btn btn-primary"
+                                                    <button type="button" class="inner1 btn btn-primary"
                                                         data-toggle="modal"
                                                         data-target="#innerModal"><i class="fas fa-plus"></i></button>
                                                 </div>
@@ -159,7 +159,7 @@
                                             <strong>ผู้รับ:</strong>
                                             <div class="input-group">
                                                 <select style="width: 87%;"
-                                                    class="select2 select2_single form-control" id="AddReceive"
+                                                    class="doc_receive select2 select2_single form-control" id="AddReceive"
                                                     name="doc_receive" multiple="multiple" readonly>
                                                     <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                                                                   <option value="" selected>Select Parent</option>-->
@@ -169,7 +169,7 @@
                                                     @endforeach --}}
                                                 </select>
                                                 <div class="input-group-append">
-                                                    <button id="inner3" type="button" class="btn btn-primary"
+                                                    <button  type="button" class="inner3 btn btn-primary"
                                                         data-toggle="modal"
                                                         data-target="#innerModal3">เลือก</button>
                                                 </div>

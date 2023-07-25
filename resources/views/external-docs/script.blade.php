@@ -1,4 +1,17 @@
 <script>
+    // Function to clear Dropzone previews
+    function clearDropzonePreviews() {
+        $('input[name="imgFiles[]"]').remove();
+        $('#dropzone_preview').html('');
+        $('#dropzone_preview').css("display", "none");
+    }
+
+    function clearDropzonePreviews2() {
+        $('input[name="imgFiles2[]"]').remove();
+        $('#dropzone_preview2').html('');
+        $('#dropzone_preview2').css("display", "none");
+    }
+
     $(document).ready(function() {
         $(".delete_all_button").click(function() {
             var len = $('input[name="table_records[]"]:checked').length;
@@ -143,20 +156,28 @@
                     searchable: false
                 },
                 {
-                    data: 'name',
-                    name: 'name'
+                    data: 'cname',
+                    name: 'cname'
                 },
                 {
-                    data: 'dname',
-                    name: 'dname'
+                    data: 'doc_receive_number',
+                    name: 'doc_receive_number'
                 },
                 {
-                    data: 'dname',
-                    name: 'dname'
+                    data: 'subject',
+                    name: 'subject'
                 },
                 {
-                    data: 'status',
-                    name: 'status'
+                    data: 'signdate',
+                    name: 'signdate'
+                },
+                {
+                    data: 'priorities',
+                    name: 'priorities'
+                },
+                {
+                    data: 'uname',
+                    name: 'uname'
                 },
                 {
                     data: 'action',
@@ -210,7 +231,7 @@
                     }
                 });
             }
-        })
+        }) 
 
 
 
@@ -239,7 +260,7 @@
         });
 
 
-        $(document).on('click', '#inner1', function(e) {
+        $(document).on('click', '.inner1', function(e) {
             e.preventDefault();
             $('.alert-in').html('');
             $('.alert-in').hide();
@@ -247,7 +268,15 @@
             $('.success-in').hide();
         });
 
-        $(document).on('click', '#inner2', function(e) {
+        $(document).on('click', '.inner2', function(e) {
+            e.preventDefault();
+            $('.alert-in').html('');
+            $('.alert-in').hide();
+            $('.success-in').html('');
+            $('.success-in').hide();
+        });
+
+        $(document).on('click', '.inner3', function(e) {
             e.preventDefault();
             $('.alert-in').html('');
             $('.alert-in').hide();
@@ -263,17 +292,34 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
+            isValid = true;
+            var values = $("input[name='imgFiles[]']")
+                .map(function() {
+                    return $(this).val();
+                }).get();
+
+            if (!document.getElementsByName('imgFiles[]').length) {
+                toastr.error('กรุณาอัพโหลดไฟล์', {
+                    timeOut: 5000
+                });
+                isValid = false;
+            }
+
+            if (!isValid) {
+                return false;
+            }
 
 
             $.ajax({
                 url: "{{ route('external-docs.store') }}",
                 method: 'post',
                 data: {
+                    img: values,
                     doc_receive_number: $('#AddNumber').val(),
                     doc_number: $('#AddDocNumber').val(),
-                    priorities_id: $('#AddPriorities').val(),
+                    priorities_id: $('#AddPriorities').val()[0],
                     signdate: $('#AddDate').val(),
-                    doc_from: $('#AddDocFrom').val(),
+                    doc_from: $('#AddDocFrom').val()[0],
                     doc_to: $('#AddDocTo').val(),
                     subject: $('#AddSubject').val(),
                     doc_receive: $('#AddReceive').val()[0],
@@ -300,6 +346,7 @@
                         $("#AddPriorities").val(null).trigger("change");
                         $('#AddReceive').empty().trigger('change');
                         $('.form').trigger('reset');
+                        clearDropzonePreviews();
                         $('#CreateModal').modal('hide');
                     }
                 }
@@ -339,8 +386,8 @@
                         toastr.success(result.success, {
                             timeOut: 5000
                         });
-                        $('#AddDocFrom').append(result.contact);
-                        $('#AddDocFrom').val(result.cid).change();
+                        $('.doc_from').append(result.contact);
+                        $('.doc_from').val(result.cid).change();
                         $('#AddName').val('');
                         $('#AddTelephone').val('');
                         //$('.form').trigger('reset');
@@ -384,8 +431,8 @@
                         toastr.success(result.success, {
                             timeOut: 5000
                         });
-                        $('#AddPriorities').append(result.priorities);
-                        $('#AddPriorities').val(result.pid).change();
+                        $('.priorities').append(result.priorities);
+                        $('.priorities').val(result.pid).change();
                         $('#AddPName').val('');
                         //$('.form').trigger('reset');
                         $('.success-in').hide();
@@ -425,9 +472,9 @@
                     html = `<option value="${value}" > ${text} </option>`;
                 });
 
-                $('#AddReceive').empty().trigger('change');
-                $('#AddReceive').append(html);
-                $('#AddReceive').val(uid).change();
+                $('.doc_receive').empty().trigger('change');
+                $('.doc_receive').append(html);
+                $('.doc_receive').val(uid).change();
 
                 $("#AddDepartment").val(null).trigger("change");
                 $("#AddPosition").val(null).trigger("change");
@@ -457,15 +504,10 @@
                 url: "positions/edit/" + id,
                 method: 'GET',
                 success: function(res) {
-                    $('#EditName').val(res.data.name);
-                    $('#EditDepartment').val(res.data.department_id).change();
-                    if (res.data.status == 1) {
-                        $('#ecustomCheckbox1').prop('checked', true);
-                    } else {
-                        $('#ecustomCheckbox1').prop('checked', false);
-                    }
-
-                    $('#EditModalBody').html(res.html);
+                    //$('#EditName').val(res.data.name);
+                    //$('#EditDepartment').val(res.data.department_id).change();
+                    
+                    //$('#EditModalBody').html(res.html);
                     $('#EditModal').modal('show');
                 }
             });
@@ -537,7 +579,7 @@
             $.ajax({
                 type: "POST",
                 dataType: 'JSON',
-                url: "positions/destroy/",
+                url: "external-docs/destroy/",
                 data: {
                     id: rowid,
                     _method: 'delete',

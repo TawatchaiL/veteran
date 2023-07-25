@@ -72,7 +72,7 @@
                                     });
                                 </script>
                             @endif
-                            <form method="post" action="{{ route('positions.destroy_all') }}" name="delete_all"
+                            <form method="post" action="{{ route('external-docs.destroy_all') }}" name="delete_all"
                                 id="delete_all">
                                 @csrf
                                 @method('POST')
@@ -82,9 +82,11 @@
                                             <th><input type="checkbox" id="check-all" class="flat"></th>
                                             <th>ชื่อ อปท</th>
                                             <th>เลขที่รับ</th>
-                                            <th>วันที่</th>
-                                            <th>เวลา</th>
-                                            <th width="280px"></th>
+                                            <th>เรื่อง</th>
+                                            <th>วันที่เวลา</th>
+                                            <th>ระดับชั้นความเร็ว</th>
+                                            <th>ผู้รับ</th>
+                                            <th width="120px"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -109,9 +111,9 @@
 
     @include('external-docs.create')
 
-   {{--  @include('external-docs.edit') --}}
+    @include('external-docs.edit')
 
-   @include('external-docs.inner-modal')
+    @include('external-docs.inner-modal')
 
     {{--  {!! $data->render() !!} --}}
 @endsection

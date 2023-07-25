@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\BookRunningNumber;
 use App\Models\Department;
+use App\Models\FileUpload;
+use App\Models\FileStore;
 use App\Models\Position;
 use App\Models\Priority;
 use App\Models\Contact;
+use Illuminate\Foundation\Bootstrap\BootProviders;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
@@ -17,6 +20,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\File;
 
 class ExternalBookController extends Controller
 {
@@ -43,11 +47,20 @@ class ExternalBookController extends Controller
         if ($request->ajax()) {
             //sleep(2);
 
-            $datas = ExternalBook::/* select(
-                "positions.*",
-                "departments.name as dname",
+            $datas = ExternalBook::select(
+                "external_books.id as id",
+                "external_books.doc_receive_number as doc_receive_number",
+                "external_books.subject as subject",
+                "external_books.signdate as signdate",
+                "contacts.name as cname",
+                "users.name as uname",
+                "priorities.name as priorities",
+                
             )
-            ->join("departments", "departments.id", "=", "positions.department_id") */orderBy("external_books.id", "desc")->get();
+            ->join("contacts", "contacts.id", "=", "external_books.doc_from")
+            ->join("users", "users.id", "=", "external_books.doc_receive")
+            ->join("priorities", "priorities.id", "=", "external_books.priorities_id")
+            ->orderBy("external_books.id", "desc")->get();
 
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
@@ -95,19 +108,62 @@ class ExternalBookController extends Controller
     public function store(Request $request)
     {
         $validator =  Validator::make($request->all(), [
-            'doc_receive_number' => 'required|string|max:255|unique:external_books',
+            //'doc_receive_number' => 'required|string|max:255|unique:external_books',
             'priorities_id' => 'required',
-            'doc_number' => 'required|string|email|max:255',
+            'doc_number' => 'required|string|max:255',
             'signdate' => 'required|string|max:255',
-            'doc_to' => 'required|string|max:10',
-            'doc_from' => 'required|string|max:20',
-            'subject' => 'required|string|max:20',
-            'doc_receive' => 'required|string|max:20',
+            'doc_to' => 'required|string|max:255',
+            'doc_from' => 'required',
+            'subject' => 'required|string|max:255',
+            'doc_receive' => 'required',
+            /* 'img.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,pdf|max:10240' */
         ], [
-            'name.required' => 'ชื่อส่วนราชการต้องไม่เป็นค่าว่าง!',
-            'name.unique' => 'ชื่อส่วนราชการนี้มีอยู่แล้วในฐานข้อมูล!',
-            'status.required' => 'กรุณาเลือกสถานะ!',
+            //'doc_receive_number.required' => 'เลขที่ทะเบียนรับต้องไม่เป็นค่าว่าง!',
+            'priorities_id.required' => 'ระดับชั้นความเร็วของหนังสือต้องไม่เป็นค่าว่าง!',
+            'doc_number.required' => 'หนังสือเลขที่ต้องไม่เป็นค่าว่าง!',
+            'doc_to.required' => 'ถึงต้องไม่เป็นค่าว่าง!',
+            'doc_from.required' => 'จากต้องไม่เป็นค่าว่าง!',
+            'subject.required' => 'เรื่องต้องไม่เป็นค่าว่าง!',
+            'doc_receive.required' => 'ผู้รับต้องไม่เป็นค่าว่าง!',
+            'signdate.required' => 'ต้องไม่เป็นค่าว่าง!',
+            /* 'img.required' => 'กรุณาอัพโหลดไฟล์',
+            //'img.array' => 'หลักฐานการชำระเงินต้องเป็นอาเรย์',
+            'img.*.nullable' => 'กรุณาเลือกไฟล์ภาพหรือ PDF',
+            'img.*.image' => 'กรุณาเลือกไฟล์ภาพที่ถูกต้อง (jpeg, png, jpg, gif)',
+            'img.*.mimes' => 'สกุลไฟล์ที่ยอมรับคือ jpeg, png, jpg, gif, pdf',
+            'img.*.max' => 'ขนาดไฟล์ภาพหรือ PDF ต้องไม่เกิน 10MB', */
+
         ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all()]);
+        }
+
+        $input = $request->all();
+        $input['doc_receive_number'] = BookRunningNumber::generate();
+        //dd($input);
+        $ex = ExternalBook::create($input);
+
+        //file att
+
+        $filesa = $request->get('img');
+
+        foreach ($filesa as $filea) {
+            //echo $filea;
+            $oldfile = FileUpload::where('oldname', $filea)->get();
+            $filestore = new FileStore();
+            $filestore->module = 'external-book';
+            $filestore->module_id = $ex->id;
+            $filestore->filename = $oldfile[0]->filename;
+            $filestore->save();
+
+            File::move(public_path() . '/file_upload/' . $oldfile[0]->filename, public_path() . '/file_store/' . $oldfile[0]->filename);
+            FileUpload::where('filename', $oldfile[0]->filename)->delete();
+        }
+
+
+
+        return response()->json(['success' => 'ลงรับหนังสือ เรียบร้อยแล้ว']);
     }
 
     /**
@@ -134,11 +190,76 @@ class ExternalBookController extends Controller
         //
     }
 
+    public function deleteImg($id, $id2)
+    {
+        $dataimg = FileStore::find($id2)->delete();;
+
+        $html = $this->getfileatt($id);
+
+        return response()->json(['imgs' => $html]);
+    }
+
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ExternalBook $externalBook)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request->get('id');
+        ExternalBook::find($id)->delete();
+
+        $dataimg = FileStore::where([
+            'module_id' => $id,
+            'module' => 'external-book',
+        ])->get();
+
+        // Delete the found records
+        if (!$dataimg->isEmpty()) {
+            $dataimg->each(function ($item) {
+                $filename = $item->filename;
+
+                // Build the full path to the file within the 'public/file_store' directory
+                $filePath = public_path('file_store/' . $filename);
+
+                // Delete the file if it exists
+                if (file_exists($filePath)) {
+                    unlink($filePath);
+                }
+                $item->delete();
+            });
+        }
+
+        return ['success' => true, 'message' => 'ลบ หนังสือ เรียบร้อยแล้ว'];
+    }
+
+    public function destroy_all(Request $request)
+    {
+
+        $arr_del  = $request->get('table_records'); //$arr_ans is Array MacAddress
+
+        for ($xx = 0; $xx < count($arr_del); $xx++) {
+            ExternalBook::find($arr_del[$xx])->delete();
+            $dataimg = FileStore::where([
+                'module_id' => $arr_del[$xx],
+                'module' => 'external-book',
+            ])->get();
+
+            // Delete the found records
+            if (!$dataimg->isEmpty()) {
+                $dataimg->each(function ($item) {
+                    $filename = $item->filename;
+
+                    // Build the full path to the file within the 'public/file_store' directory
+                    $filePath = public_path('file_store/' . $filename);
+
+                    // Delete the file if it exists
+                    if (file_exists($filePath)) {
+                        unlink($filePath);
+                    }
+                    $item->delete();
+                });
+            }
+        }
+
+        return redirect('/external-docs')->with('success', 'ลบ หนังสือ  เรียบร้อยแล้ว');
     }
 }
