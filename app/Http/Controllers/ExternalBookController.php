@@ -94,7 +94,20 @@ class ExternalBookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator =  Validator::make($request->all(), [
+            'doc_receive_number' => 'required|string|max:255|unique:external_books',
+            'priorities_id' => 'required',
+            'doc_number' => 'required|string|email|max:255',
+            'signdate' => 'required|string|max:255',
+            'doc_to' => 'required|string|max:10',
+            'doc_from' => 'required|string|max:20',
+            'subject' => 'required|string|max:20',
+            'doc_receive' => 'required|string|max:20',
+        ], [
+            'name.required' => 'ชื่อส่วนราชการต้องไม่เป็นค่าว่าง!',
+            'name.unique' => 'ชื่อส่วนราชการนี้มีอยู่แล้วในฐานข้อมูล!',
+            'status.required' => 'กรุณาเลือกสถานะ!',
+        ]);
     }
 
     /**

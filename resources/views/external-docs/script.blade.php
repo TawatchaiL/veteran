@@ -266,12 +266,17 @@
 
 
             $.ajax({
-                url: "{{ route('positions.store') }}",
+                url: "{{ route('external-docs.store') }}",
                 method: 'post',
                 data: {
-                    name: $('#AddName').val(),
-                    department_id: $('#AddDepartment').val()[0],
-                    status: sstatus,
+                    doc_receive_number: $('#AddNumber').val(),
+                    doc_number: $('#AddDocNumber').val(),
+                    priorities_id: $('#AddPriorities').val(),
+                    signdate: $('#AddDate').val(),
+                    doc_from: $('#AddDocFrom').val(),
+                    doc_to: $('#AddDocTo').val(),
+                    subject: $('#AddSubject').val(),
+                    doc_receive: $('#AddReceive').val()[0],
                     _token: token,
                 },
                 success: function(result) {
@@ -291,7 +296,9 @@
                             timeOut: 5000
                         });
                         $('#Listview').DataTable().ajax.reload();
-                        $("#AddDepartment").val(null).trigger("change")
+                        $("#AddDocFrom").val(null).trigger("change");
+                        $("#AddPriorities").val(null).trigger("change");
+                        $('#AddReceive').empty().trigger('change');
                         $('.form').trigger('reset');
                         $('#CreateModal').modal('hide');
                     }
