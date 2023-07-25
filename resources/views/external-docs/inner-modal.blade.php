@@ -147,7 +147,7 @@ aria-hidden="true">
                 <div class="form-group">
                     <strong>ส่วนงาน:</strong>
                     <select style="width: 100%;" class="positions select2 select2_single form-control"
-                        id="AddPosition" name="position" multiple="multiple">
+                        id="AddPosition" name="position" multiple="multiple" readonly>
                         <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                 <option value="" selected>Select Parent</option>-->
                         {{--   @foreach ($position as $key)
@@ -163,7 +163,7 @@ aria-hidden="true">
                 <div class="form-group">
                     <strong>ผู้รับ:</strong>
                     <select style="width: 100%;" class="users select2 select2_single form-control"
-                        id="AddUser" name="user" multiple="multiple">
+                        id="AddUser" name="user" multiple="multiple" readonly>
                         <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                 <option value="" selected>Select Parent</option>-->
                         {{--   @foreach ($position as $key)

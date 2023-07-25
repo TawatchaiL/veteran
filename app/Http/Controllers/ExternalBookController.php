@@ -12,6 +12,7 @@ use App\Models\FileStore;
 use App\Models\Position;
 use App\Models\Priority;
 use App\Models\Contact;
+use App\Models\User;
 use Illuminate\Foundation\Bootstrap\BootProviders;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Gate;
@@ -55,12 +56,12 @@ class ExternalBookController extends Controller
                 "contacts.name as cname",
                 "users.name as uname",
                 "priorities.name as priorities",
-                
+
             )
-            ->join("contacts", "contacts.id", "=", "external_books.doc_from")
-            ->join("users", "users.id", "=", "external_books.doc_receive")
-            ->join("priorities", "priorities.id", "=", "external_books.priorities_id")
-            ->orderBy("external_books.id", "desc")->get();
+                ->join("contacts", "contacts.id", "=", "external_books.doc_from")
+                ->join("users", "users.id", "=", "external_books.doc_receive")
+                ->join("priorities", "priorities.id", "=", "external_books.priorities_id")
+                ->orderBy("external_books.id", "desc")->get();
 
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
@@ -177,9 +178,64 @@ class ExternalBookController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ExternalBook $externalBook)
+    public function edit($id)
     {
-        //
+        $data = ExternalBook::find($id);
+
+        $select_list = "";
+        $x = 1;
+        $data_html = '';
+        $etotal = 0;
+
+        $user = User::where([['id', $data->doc_receive]])->get();
+        $select_list_receive = '<option value="' . $user[0]->id . '" > ' . $user[0]->name . '</option>';
+
+        //all stock
+        /*  $datasp = ExpenseCatagory::select(
+            "expense_catagories.id as id",
+            "expense_catagories.name as name",
+        )
+            ->where('expen_id', $data->eid)
+            ->orderBy("id", "asc")
+            //->join('products', 'stocks.pid', '=', 'products.id')
+            ->get(); */
+
+        $img = $this->getfileatt($id);
+
+
+        return response()->json(['data' => $data, 'select_list_receive' => $select_list_receive, 'imgs' => $img]);
+    }
+
+    public function getfileatt($id)
+    {
+        $filestore = FileStore::where([['module', 'external-book']])
+            ->where([['module_id', $id]])
+            ->orderBy("id", "asc")->get();
+
+        $img = "";
+        if (!$filestore->isEmpty()) {
+            foreach ($filestore as $pics) {
+                $imgf = url('/') . '/file_store/' . $pics->filename;
+
+                $fileInfo = pathinfo($imgf);
+                $fileType = $fileInfo['extension'];
+                if ($fileType == "pdf") {
+                    $preview = url('/') . '/images/pdf.jpg';
+                } else {
+                    $preview = urldecode($imgf);
+                }
+
+                $img .= "<div id='img_" . $pics->id . "' class='col-md-4 text-center mb-3'><img src=\"" . $preview . "\" height=\"150\"><br>
+                <a class='btn btn-sm btn-info btn-view' href=\"" . urldecode($imgf) . "\" target=\"blank\"><i class='fa fa-search'></i> เปิดดู</a>
+                <a href='#' class='btn btn-sm btn-danger btn-edit' id='getDeleteData' data-id2='" . $pics->id . "' data-id='" . $id . "'><i class='fa fa-trash'></i> ลบ</a>
+                </div>
+                <br><br>";
+            }
+        } else {
+            $img = "";
+        }
+
+        return $img;
     }
 
     /**

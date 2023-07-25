@@ -214,6 +214,7 @@
                     url: "departments/find/add/" + department,
                     success: function(res) {
                         $('.positions').html(res.html);
+                        $('.positions').removeAttr('readonly');
                     }
                 });
             }
@@ -228,10 +229,11 @@
                     url: "users/find/add/" + position,
                     success: function(res) {
                         $('.users').html(res.html);
+                        $('.users').removeAttr('readonly');
                     }
                 });
             }
-        }) 
+        })
 
 
 
@@ -243,9 +245,14 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
+            $('#custom-tabs-one-home-tab').tab('show');
             $("#AddDocFrom").val(null).trigger("change");
             $("#AddPriorities").val(null).trigger("change");
             $('#AddReceive').empty().trigger('change');
+            $('.positions').attr("readonly", "readonly");
+            $('.users').attr("readonly", "readonly");
+            $("#AddDepartment").val(null).trigger("change")
+            $("#AddPosition").val(null).trigger("change")
 
             $.ajax({
                 method: "GET",
@@ -499,14 +506,31 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
+            $('#custom-tabs-one-home-tab2').tab('show');
+            clearDropzonePreviews2();
+            $('#EditReceive').empty();
+            $("#AddDepartment").val(null).trigger("change")
+            $("#AddPosition").val(null).trigger("change")
+            $('.positions').attr("readonly", "readonly");
+            $('.users').attr("readonly", "readonly");
+
+
+
             id = $(this).data('id');
             $.ajax({
-                url: "positions/edit/" + id,
+                url: "external-docs/edit/" + id,
                 method: 'GET',
                 success: function(res) {
-                    //$('#EditName').val(res.data.name);
-                    //$('#EditDepartment').val(res.data.department_id).change();
-                    
+                    $('#EditNumber').val(res.data.doc_receive_number);
+                    $('#EditDocNumber').val(res.data.doc_number);
+                    $('#EditDate').val(res.data.signdate);
+                    $('#EditPriorities').val(res.data.priorities_id).change();
+                    $('#EditDocFrom').val(res.data.doc_from).change();
+                    $('#EditDocTo').val(res.data.doc_to);
+                    $('#EditSubject').val(res.data.subject);
+                    $('#EditReceive').append(res.select_list_receive);
+                    $('#EditReceive').val(res.data.doc_receive).change();
+                    $('.imgs').html(res.imgs);
                     //$('#EditModalBody').html(res.html);
                     $('#EditModal').modal('show');
                 }
@@ -567,6 +591,33 @@
                 }
             });
         });
+
+        let rid;
+        let rid2;
+        $(document).on('click', '#getDeleteData', function(e) {
+            e.preventDefault();
+            $('.alert-danger').html('');
+            $('.alert-danger').hide();
+            $('.alert-success').html('');
+            $('.alert-success').hide();
+            rid = $(this).data('id');
+            rid2 = $(this).data('id2');
+            if (confirm("Click OK to Delete?")) {
+                $.ajax({
+                    url: "external-docs/delete/img/" + rid + "/" + rid2,
+                    method: 'PUT',
+                    // async : false,
+                    success: function(res) {
+                        toastr.success('ลบไฟล์เรียบร้อยแล้ว', {
+                            timeOut: 5000
+                        });
+                        $('.imgs').html(res.imgs);
+
+                    }
+                })
+            }
+        })
+
 
         $(document).on('click', '.btn-delete', function() {
             if (!confirm("ยืนยันการทำรายการ ?")) return;

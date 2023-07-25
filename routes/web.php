@@ -64,9 +64,11 @@ Route::group(['middleware' => ['auth']], function() {
     //ExternalBook
     Route::get('/external-docs', [App\Http\Controllers\ExternalBookController::class, 'index'])->name('external-docs');
     Route::post('/external-docs/store', [App\Http\Controllers\ExternalBookController::class, 'store'])->name('external-docs.store');
+    Route::get('/external-docs/edit/{id}', [App\Http\Controllers\ExternalBookController::class, 'edit'])->name('external-docs.edit');
     Route::get('/external-docs/running', [App\Http\Controllers\ExternalBookController::class, 'create'])->name('external-docs.running');
     Route::delete('/external-docs/destroy', [App\Http\Controllers\ExternalBookController::class, 'destroy'])->name('external-docs.destroy');
     Route::post('/external-docs/destroy_all', [App\Http\Controllers\ExternalBookController::class, 'destroy_all'])->name('external-docs.destroy_all');
+    Route::put('/external-docs/delete/img/{rid}/{rid2}', [App\Http\Controllers\ExternalBookController::class, 'deleteImg'])->name('external-docs.deleteimg');
 
     //file
     Route::post('/file/upload', function (Request $request) {

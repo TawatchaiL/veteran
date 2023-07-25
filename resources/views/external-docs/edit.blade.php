@@ -26,7 +26,7 @@ id="EditModal">
                     </button>
                 </div>
                 <div id="EditModalBody">
-                    {!! Form::open(['method' => 'POST', 'class' => 'form','id'=>'edit_form']) !!}
+                    {!! Form::open(['method' => 'POST', 'class' => 'form','id'=>'editdata']) !!}
                     <div class="card card-success card-tabs">
                         <div class="card-header p-0 pt-1">
                             <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
@@ -174,6 +174,10 @@ id="EditModal">
                                 </div>
                                 <div class="tab-pane fade" id="custom-tabs-one-profile2" role="tabpanel"
                                     aria-labelledby="custom-tabs-one-profile-tab2">
+
+                                    <div class="row imgs">
+
+                                    </div>
                                     <div class="form-row form-focus" id="dropzone-att2">
                                         <div class="col-md-12 col-sm-12">
                                             <a id="datt2"></a>
