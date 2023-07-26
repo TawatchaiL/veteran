@@ -53,7 +53,7 @@
 
         currentDate.setYear(currentDate.getFullYear() + 543);
         // Birth date
-        $("#AddDate").datetimepicker({
+        $(".datepick").datetimepicker({
             changeMonth: true,
             changeYear: true,
             yearRange: '+443:+543',
@@ -62,7 +62,7 @@
                 $("#edit-date-of-birth").addClass('filled');
             }
         });
-        $('#AddDate').datetimepicker("setDate", currentDate);
+        $('.datepick').datetimepicker("setDate", currentDate);
 
 
 
@@ -547,20 +547,25 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
-
-            if ($('#ecustomCheckbox1').is(":checked")) {
-                esstatus = 1;
-            } else {
-                esstatus = 0;
-            }
+            var values = $("input[name='imgFiles2[]']")
+                .map(function() {
+                    return $(this).val();
+                }).get();
 
             $.ajax({
-                url: "positions/save/" + id,
+                url: "external-docs/save/" + id,
                 method: 'PUT',
                 data: {
-                    name: $('#EditName').val(),
-                    department: $('#EditDepartment').val()[0],
-                    status: esstatus,
+                    img: values,
+                    doc_receive_number: $('#EditNumber').val(),
+                    doc_number: $('#EditDocNumber').val(),
+                    priorities_id: $('#EditPriorities').val()[0],
+                    signdate: $('#EditDate').val(),
+                    doc_from: $('#EditDocFrom').val()[0],
+                    doc_to: $('#EditDocTo').val(),
+                    subject: $('#EditSubject').val(),
+                    doc_receive: $('#EditReceive').val()[0],
+                    _token: token
                 },
 
                 success: function(result) {
@@ -582,6 +587,7 @@
                             timeOut: 5000
                         });
                         $('#Listview').DataTable().ajax.reload();
+                        clearDropzonePreviews2();
                         //setTimeout(function() {
                         //$('.alert-success').hide();
 

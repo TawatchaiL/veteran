@@ -182,26 +182,10 @@ class ExternalBookController extends Controller
     {
         $data = ExternalBook::find($id);
 
-        $select_list = "";
-        $x = 1;
-        $data_html = '';
-        $etotal = 0;
-
         $user = User::where([['id', $data->doc_receive]])->get();
         $select_list_receive = '<option value="' . $user[0]->id . '" > ' . $user[0]->name . '</option>';
 
-        //all stock
-        /*  $datasp = ExpenseCatagory::select(
-            "expense_catagories.id as id",
-            "expense_catagories.name as name",
-        )
-            ->where('expen_id', $data->eid)
-            ->orderBy("id", "asc")
-            //->join('products', 'stocks.pid', '=', 'products.id')
-            ->get(); */
-
         $img = $this->getfileatt($id);
-
 
         return response()->json(['data' => $data, 'select_list_receive' => $select_list_receive, 'imgs' => $img]);
     }
@@ -238,12 +222,78 @@ class ExternalBookController extends Controller
         return $img;
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, ExternalBook $externalBook)
+    public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'priorities_id' => 'required',
+            'doc_number' => 'required|string|max:255',
+            'signdate' => 'required|string|max:255',
+            'doc_to' => 'required|string|max:255',
+            'doc_from' => 'required',
+            'subject' => 'required|string|max:255',
+            'doc_receive' => 'required',
+        ];
+
+
+        $validator =  Validator::make($request->all(), $rules,[
+            //'doc_receive_number.required' => 'เลขที่ทะเบียนรับต้องไม่เป็นค่าว่าง!',
+            'priorities_id.required' => 'ระดับชั้นความเร็วของหนังสือต้องไม่เป็นค่าว่าง!',
+            'doc_number.required' => 'หนังสือเลขที่ต้องไม่เป็นค่าว่าง!',
+            'doc_to.required' => 'ถึงต้องไม่เป็นค่าว่าง!',
+            'doc_from.required' => 'จากต้องไม่เป็นค่าว่าง!',
+            'subject.required' => 'เรื่องต้องไม่เป็นค่าว่าง!',
+            'doc_receive.required' => 'ผู้รับต้องไม่เป็นค่าว่าง!',
+            'signdate.required' => 'ต้องไม่เป็นค่าว่าง!',
+            /* 'img.required' => 'กรุณาอัพโหลดไฟล์',
+            //'img.array' => 'หลักฐานการชำระเงินต้องเป็นอาเรย์',
+            'img.*.nullable' => 'กรุณาเลือกไฟล์ภาพหรือ PDF',
+            'img.*.image' => 'กรุณาเลือกไฟล์ภาพที่ถูกต้อง (jpeg, png, jpg, gif)',
+            'img.*.mimes' => 'สกุลไฟล์ที่ยอมรับคือ jpeg, png, jpg, gif, pdf',
+            'img.*.max' => 'ขนาดไฟล์ภาพหรือ PDF ต้องไม่เกิน 10MB', */
+
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all()]);
+        }
+
+        $data = [
+            'priorities_id' => $request->get('priorities_id'),
+            'doc_receive_number' => $request->get('doc_receive_number'),
+            'doc_number' => $request->get('doc_number'),
+            'doc_to' => $request->get('doc_to'),
+            'signdate' => $request->get('signdate'),
+            'doc_from' => $request->get('doc_from'),
+            'subject' => $request->get('subject'),
+            'doc_receive' => $request->get('doc_receive'),
+        ];
+
+        $expen = ExternalBook::find($id);
+        $expen->update($data);
+
+
+        //file att
+
+        $filesa = $request->get('img');
+
+        if (!empty($filesa)) {
+            foreach ($filesa as $filea) {
+                //echo $filea;
+                $oldfile = FileUpload::where('oldname', $filea)->get();
+                $filestore = new FileStore();
+                $filestore->module = 'external-book';
+                $filestore->module_id = $id;
+                $filestore->filename = $oldfile[0]->filename;
+                $filestore->save();
+
+                File::move(public_path() . '/file_upload/' . $oldfile[0]->filename, public_path() . '/file_store/' . $oldfile[0]->filename);
+                FileUpload::where('filename', $oldfile[0]->filename)->delete();
+            }
+        }
+
+
+
+        return response()->json(['success' => 'แก้ไขข้อมูล ลงรับหนังสือ เรียบร้อยแล้ว']);
     }
 
     public function deleteImg($id, $id2)

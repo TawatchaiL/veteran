@@ -41,14 +41,14 @@ id="EditModal">
                                         aria-controls="custom-tabs-one-profile2"
                                         aria-selected="false">อัพโหลดไฟล์นำเข้าเอกสาร</a>
                                 </li>
-    
+
                             </ul>
                         </div>
                         <div class="card-body">
                             <div class="tab-content" id="custom-tabs-one-tabContent">
                                 <div class="tab-pane fade show active" id="custom-tabs-one-home2" role="tabpanel"
                                     aria-labelledby="custom-tabs-one-home-tab2">
-    
+
                                     <div class="row">
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <div class="form-group">
@@ -85,7 +85,7 @@ id="EditModal">
                                                             <option value="{{ $key2->id }}">{{ $key2->name }}
                                                             </option>
                                                         @endforeach
-    
+
                                                     </select>
                                                     <div class="input-group-append">
                                                         <button type="button" class="btn btn-primary inner2" data-toggle="modal"
@@ -100,7 +100,7 @@ id="EditModal">
                                                 @php
                                                     $datethai = date('m/d/') . date('Y') + 543;
                                                 @endphp
-                                                {!! Form::text('esigndate', null, ['id' => 'EditDate', 'placeholder' => '', 'class' => 'form-control']) !!}
+                                                {!! Form::text('esigndate', null, ['id' => 'EditDate', 'placeholder' => '', 'class' => 'datepick form-control']) !!}
                                             </div>
                                         </div>
                                     </div>
@@ -169,8 +169,8 @@ id="EditModal">
                                             </div>
                                         </div>
                                     </div>
-    
-    
+
+
                                 </div>
                                 <div class="tab-pane fade" id="custom-tabs-one-profile2" role="tabpanel"
                                     aria-labelledby="custom-tabs-one-profile-tab2">
@@ -190,7 +190,7 @@ id="EditModal">
                                                     class="form-control form_none" value="" required>
                                                 <div class="dropzone" id="my-awesome-dropzone2" style="font-size: 1.5em;">
                                                     <div class="fallback">
-    
+
                                                     </div>
                                                 </div>
                                                 <label class="form-sub-label" style="min-height:13px"
@@ -215,8 +215,8 @@ id="EditModal">
                             </div>
                         </div>
                     </div>
-    
-    
+
+
                     {!! Form::close() !!}
                 </div>
             </div>

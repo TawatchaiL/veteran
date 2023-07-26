@@ -108,7 +108,7 @@
                                             @php
                                                 $datethai = date('m/d/') . date('Y') + 543;
                                             @endphp
-                                            {!! Form::text('signdate', $datethai, ['id' => 'AddDate', 'placeholder' => '', 'class' => 'form-control']) !!}
+                                            {!! Form::text('signdate', $datethai, ['id' => 'AddDate', 'placeholder' => '', 'class' => 'datepick form-control']) !!}
                                         </div>
                                     </div>
                                 </div>
