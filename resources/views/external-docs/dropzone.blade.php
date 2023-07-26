@@ -39,7 +39,7 @@
             // myDropzone = this;
             this.on("processing", function() {
 
-               this.options.autoProcessQueue = true;
+                this.options.autoProcessQueue = true;
             }).on("addedfile", function(file) {
                 $('#dropzone_preview').css("display", "block");
                 //$('#infinite').append("<input type='text' class='form_none' name='imgFiles[]' value='" + file.name + "'/>");
@@ -75,7 +75,20 @@
 
                 var element = document.getElementById("create_form");
                 var child = document.getElementById(name);
-                element.removeChild(child);
+
+                if (child) {
+                    element.removeChild(child);
+                }
+
+                //remove preview pdf
+                var element2 = document.getElementById("upload_preview");
+                var child2 = document.getElementById("iframe_" + name);
+
+                if (child2) {
+                    element2.removeChild(child2);
+                }
+
+
                 if (!document.getElementsByName('imgFiles[]').length) {
                     $('#dropzone_preview').css("display", "none");
                     /* $('#dropzone-att').addClass('form-focus-error');
@@ -102,6 +115,75 @@
                 }
                 let val1 = file.name;
                 $('#dropzone_preview').css("display", "block");
+
+                //add preview iframe
+                var name = file.previewElement.id;
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    },
+                    type: 'POST',
+                    url: '{{ route('file.get') }}',
+                    data: {
+                        name: name,
+                    },
+                    success: function(data) {
+                        if (data !== 'none') {
+                            console.log('success: ' + data);
+                            var filePath = "file_upload/" + data;
+                            var fileExtension = data.split('.').pop().toLowerCase();
+
+                            // Clear the old content from the div before displaying the new content
+                            //$('#upload_preview').empty();
+
+                            // Check if the uploaded file is a PDF or an image
+                            if (fileExtension === "pdf") {
+                                // Create an iframe for PDF files
+                                var pdfIframe = $('<iframe>', {
+                                    src: filePath,
+                                    width: '100%',
+                                    height: '600',
+                                    frameborder: '0',
+                                    css: {
+                                        margin: '10px 0' // Add margin at the top and bottom of the iframe
+                                    },
+                                    id: 'iframe_' + name,
+                                });
+
+                                // Append the PDF iframe to the div
+                                $('#upload_preview').append(pdfIframe);
+                            } else if (fileExtension === "jpg" || fileExtension ===
+                                "jpeg" || fileExtension ===
+                                "png") {
+                                var imgContainer = $('<div>', {
+                                    css: {
+                                        width: '100%',
+                                        height: '600px', // Set the desired fixed height
+                                        overflow: 'auto' // Add scrollbar if the image exceeds the container height
+                                    },
+                                    id: 'iframe_' + name,
+                                });
+
+                                // Create an img tag for image files
+                                var img = $('<img>', {
+                                    src: filePath,
+                                    width: '100%',
+                                    height: 'auto', // Adjust the width proportionally
+                                    css: {
+                                        margin: '10px 0' // Add margin at the top and bottom of the image
+                                    }
+                                });
+
+                                // Append the image to the container
+                                imgContainer.append(img);
+
+                                // Append the image container to the div
+                                $('#upload_preview').append(imgContainer);
+                            }
+                        }
+                    }
+                });
+
                 /* $('#dropzone-att').removeClass('form-focus-error');
                 $('#dropzone-att')
                     .find('.form-error-message').css("display", "none");
@@ -169,13 +251,13 @@
             // myDropzone.emit("thumbnail", mockFile, "https://example.com")
             // myDropzone = this;
             this.on("processing", function() {
-               this.options.autoProcessQueue = true;
+                this.options.autoProcessQueue = true;
             }).on("addedfile", function(file) {
                 $('#dropzone_preview2').css("display", "block");
                 //$('#infinite').append("<input type='text' class='form_none' name='imgFiles[]' value='" + file.name + "'/>");
                 $('#editdata').append("<input type='text' id='" + file.newName +
                     "' class='form_none' name='imgFiles2[]' value='" + file.newName + "'/>");
-                    var ext = file.name.split('.').pop();
+                var ext = file.name.split('.').pop();
                 if (ext == "pdf") {
                     $(file.previewElement).find(".dz-image img").attr("src", "/images/pdf.jpg");
                 }

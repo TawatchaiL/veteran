@@ -49,6 +49,12 @@
                                     aria-controls="custom-tabs-one-profile"
                                     aria-selected="false">อัพโหลดไฟล์นำเข้าเอกสาร</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="custom-tabs-one-preview-tab" data-toggle="pill"
+                                    href="#custom-tabs-one-preview" role="tab"
+                                    aria-controls="custom-tabs-one-preview"
+                                    aria-selected="false">ดูเอกสารที่อัพโหลด</a>
+                            </li>
 
                         </ul>
                     </div>
@@ -214,6 +220,12 @@
                                 <div class="dropzonex dz-default dz-message" id="dropzone_preview"
                                     style="font-size: 1.5em;">
                                     <h3 class="dropzone-previews ui"></h3>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="custom-tabs-one-preview" role="tabpanel"
+                                aria-labelledby="custom-tabs-one-profile-preview">
+                                <div class="row" id="upload_preview">
+                                    
                                 </div>
                             </div>
                         </div>

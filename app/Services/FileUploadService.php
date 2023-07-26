@@ -32,6 +32,21 @@ class FileUploadService
         //return response()->json(['success' => $newname]);
     }
 
+    public static function fileGetName(Request $request)
+    {
+
+        $filename =  $request->get('name');
+        $oldfile = FileUpload::where('oldname', $filename)->get();
+        if ($oldfile) {
+            $path = public_path() . '/file_upload/' . $oldfile[0]->filename;
+            if (file_exists($path)) {
+                return $oldfile[0]->filename;
+            }
+        } else {
+            return 'none';
+        }
+    }
+
     public static function fileDestroy(Request $request)
     {
 

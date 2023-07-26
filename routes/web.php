@@ -82,6 +82,11 @@ Route::group(['middleware' => ['auth']], function() {
         return $result;
     })->name('file.delete');
 
+    Route::post('/file/upload/get', function (Request $request) {
+        $result = FileUploadService::fileGetName($request);
+        return $result;
+    })->name('file.get');
+
     Route::get('/', [App\Http\Controllers\ExternalBookController::class, 'index']);
     Route::get('/home', [App\Http\Controllers\ExternalBookController::class, 'index'])->name('home');
 });

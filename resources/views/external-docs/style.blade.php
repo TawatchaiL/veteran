@@ -32,7 +32,7 @@
     }
 
     .modal-xxl {
-        max-width: 1000px !important;
+        max-width: 1200px !important;
     }
 
     .modal-xxxl {
