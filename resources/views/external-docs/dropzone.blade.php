@@ -155,7 +155,7 @@
         dictCancelUpload: "Cancel", // ชื่อ ปุ่ม ยกเลิก
         dictDefaultMessage: "<img height='60' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNsug8XTE5KVJEMECVvm8p43BZTdvZExoQ9Q&usqp=CAU'><br><font size='3'>เลือกไฟล์เอกสาร</font>", // ข้อความบนพื้นที่แสดงรูปจะแสดงหลังจากโหลดเพจเสร็จ
         dictFileTooBig: "ไม่อนุญาตให้อัพโหลดไฟล์เกิน 2 MB", //ข้อความแสดงเมื่อเลือกไฟล์ขนาดเกินที่กำหนด
-        acceptedFiles: "image/*", // อนุญาตให้เลือกไฟล์ประเภทรูปภาพได้
+        acceptedFiles: 'image/*, application/pdf', // อนุญาตให้เลือกไฟล์ประเภทรูปภาพได้
         // The setting up of the dropzone
         init: function() {
             var myDropzone = this;
@@ -168,6 +168,10 @@
                 //$('#infinite').append("<input type='text' class='form_none' name='imgFiles[]' value='" + file.name + "'/>");
                 $('#editdata').append("<input type='text' id='" + file.newName +
                     "' class='form_none' name='imgFiles2[]' value='" + file.newName + "'/>");
+                    var ext = file.name.split('.').pop();
+                if (ext == "pdf") {
+                    $(file.previewElement).find(".dz-image img").attr("src", "/images/pdf.jpg");
+                }
                 file.previewElement.id = file.newName;
             }).on("removedfile", function(file) {
                 //alert(file.id);
