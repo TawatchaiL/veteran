@@ -68,7 +68,7 @@
 
         $(".select2_single").select2({
             maximumSelectionLength: 1,
-            allowClear: true,
+            allowClear: false,
             //theme: 'bootstrap4'
             placeholder: 'กรุณาเลือก'
         });
@@ -80,7 +80,7 @@
 
         $(".select2_singles").select2({
             maximumSelectionLength: 1,
-            allowClear: true,
+            allowClear: false,
             //theme: 'bootstrap4'
             placeholder: 'กรุณาเลือก'
         });
@@ -89,7 +89,7 @@
         $(".select2_multiple").select2({
             maximumSelectionLength: 2,
             //placeholder: "With Max Selection limit 4",
-            allowClear: true,
+            allowClear: false,
             //theme: 'bootstrap4'
             placeholder: 'กรุณาเลือก'
         });
