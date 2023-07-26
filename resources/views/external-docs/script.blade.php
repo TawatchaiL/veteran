@@ -634,12 +634,13 @@
 
 
             $.ajax({
-                type: "POST",
+                //type: "POST",
+                method: 'DELETE'
                 dataType: 'JSON',
                 url: "external-docs/destroy/",
                 data: {
                     id: rowid,
-                    _method: 'delete',
+                    //_method: 'delete',
                     _token: token
                 },
                 success: function(data) {
