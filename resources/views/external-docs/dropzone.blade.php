@@ -7,9 +7,9 @@
             'X-CSRF-TOKEN': "{{ csrf_token() }}"
         },
         paramName: "file", // ชื่อไฟล์ปลายทางเมื่อ upload แบบ mutiple จะเป็น array
-        autoProcessQueue: true, // ใส่เพื่อไม่ให้อัพโหลดทันที หลังจากเลือกไฟล์
+        autoProcessQueue: false, // ใส่เพื่อไม่ให้อัพโหลดทันที หลังจากเลือกไฟล์
         uploadMultiple: true, // อัพโหลดไฟล์หลายไฟล์
-        parallelUploads: 2, // ให้ทำงานพร้อมกัน 10 ไฟล์
+        parallelUploads: 10, // ให้ทำงานพร้อมกัน 10 ไฟล์
         maxFiles: 5, // ไฟล์สูงสุด 5 ไฟล์
         maxfilesexceeded: function(file) {
             //this.removeAllFiles();
@@ -134,9 +134,9 @@
             'X-CSRF-TOKEN': "{{ csrf_token() }}"
         },
         paramName: "file", // ชื่อไฟล์ปลายทางเมื่อ upload แบบ mutiple จะเป็น array
-        autoProcessQueue: true, // ใส่เพื่อไม่ให้อัพโหลดทันที หลังจากเลือกไฟล์
+        autoProcessQueue: false, // ใส่เพื่อไม่ให้อัพโหลดทันที หลังจากเลือกไฟล์
         uploadMultiple: true, // อัพโหลดไฟล์หลายไฟล์
-        parallelUploads: 2, // ให้ทำงานพร้อมกัน 10 ไฟล์
+        parallelUploads: 10, // ให้ทำงานพร้อมกัน 10 ไฟล์
         maxFiles: 5, // ไฟล์สูงสุด 5 ไฟล์
         maxfilesexceeded: function(file) {
             //this.removeAllFiles();
