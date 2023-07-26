@@ -38,8 +38,10 @@
             // myDropzone.emit("thumbnail", mockFile, "https://example.com")
             // myDropzone = this;
             this.on("processing", function() {
+                alert('process');
                this.options.autoProcessQueue = true;
             }).on("addedfile", function(file) {
+                alert('add');
                 //$('#infinite').append("<input type='text' class='form_none' name='imgFiles[]' value='" + file.name + "'/>");
                 $('#create_form').append("<input type='text' id='" + file.newName +
                     "' class='form_none'  name='imgFiles[]' value='" + file.newName + "'/>");
