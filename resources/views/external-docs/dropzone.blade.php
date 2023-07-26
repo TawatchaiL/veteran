@@ -37,7 +37,7 @@
             // myDropzone.emit("success", mockFile);
             // myDropzone.emit("thumbnail", mockFile, "https://example.com")
             // myDropzone = this;
-            this.on("processing", function(file) {
+            this.on("processing", function() {
                this.options.autoProcessQueue = true;
             }).on("addedfile", function(file) {
                 //$('#infinite').append("<input type='text' class='form_none' name='imgFiles[]' value='" + file.name + "'/>");
@@ -166,7 +166,7 @@
             // myDropzone.emit("success", mockFile);
             // myDropzone.emit("thumbnail", mockFile, "https://example.com")
             // myDropzone = this;
-            this.on("processing", function(file) {
+            this.on("processing", function() {
                this.options.autoProcessQueue = true;
             }).on("addedfile", function(file) {
                 //$('#infinite').append("<input type='text' class='form_none' name='imgFiles[]' value='" + file.name + "'/>");
