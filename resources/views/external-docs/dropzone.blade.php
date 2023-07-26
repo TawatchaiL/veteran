@@ -37,7 +37,9 @@
             // myDropzone.emit("success", mockFile);
             // myDropzone.emit("thumbnail", mockFile, "https://example.com")
             // myDropzone = this;
-            this.on("addedfile", function(file) {
+            this.on("processing", function(file) {
+               this.options.autoProcessQueue = true;
+            }).on("addedfile", function(file) {
                 //$('#infinite').append("<input type='text' class='form_none' name='imgFiles[]' value='" + file.name + "'/>");
                 $('#create_form').append("<input type='text' id='" + file.newName +
                     "' class='form_none'  name='imgFiles[]' value='" + file.newName + "'/>");
@@ -164,7 +166,9 @@
             // myDropzone.emit("success", mockFile);
             // myDropzone.emit("thumbnail", mockFile, "https://example.com")
             // myDropzone = this;
-            this.on("addedfile", function(file) {
+            this.on("processing", function(file) {
+               this.options.autoProcessQueue = true;
+            }).on("addedfile", function(file) {
                 //$('#infinite').append("<input type='text' class='form_none' name='imgFiles[]' value='" + file.name + "'/>");
                 $('#editdata').append("<input type='text' id='" + file.newName +
                     "' class='form_none' name='imgFiles2[]' value='" + file.newName + "'/>");
@@ -244,7 +248,7 @@
             }).on("error", function(file) {
 
             }).on("processing", function(file) {
-
+               this.options.autoProcessQueue = true;
             }).on("uploadprogress", function(file) {
 
             });*/
