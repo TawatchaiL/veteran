@@ -185,7 +185,7 @@
                 method: 'GET',
                 success: function(res) {
                     $('#EditName').val(res.data.name);
-                    
+
                     if (res.data.status == 1) {
                         $('#ecustomCheckbox1').prop('checked', true);
                     } else {
@@ -261,12 +261,13 @@
 
 
             $.ajax({
-                type: "POST",
+                //type: "POST",
+                method: 'DELETE',
                 dataType: 'JSON',
                 url: "priorities/destroy/",
                 data: {
                     id: rowid,
-                    _method: 'delete',
+                    //_method: 'delete',
                     _token: token
                 },
                 success: function(data) {

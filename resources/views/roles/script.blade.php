@@ -275,12 +275,13 @@
 
 
             $.ajax({
-                type: "POST",
+                //type: "POST",
+                method: 'DELETE',
                 dataType: 'JSON',
                 url: "roles/destroy/",
                 data: {
                     id: rowid,
-                    _method: 'delete',
+                    //_method: 'delete',
                     _token: token
                 },
                 success: function(data) {

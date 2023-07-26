@@ -17,7 +17,7 @@
             $(':checkbox.flat').prop('checked', this.checked);
         });
 
-        
+
 
         //$.noConflict();
         var token = ''
@@ -192,7 +192,7 @@
                     $('#EditPostcode').val(res.data.postcode);
                     $('#EditAddress').val(res.data.address);
                     $('#EditTelephone').val(res.data.telephone);
-                   
+
                     $('#EditModalBody').html(res.html);
                     $('#EditModal').modal('show');
                 }
@@ -259,12 +259,13 @@
 
 
             $.ajax({
-                type: "POST",
+                //type: "POST",
+                method: 'DELETE',
                 dataType: 'JSON',
                 url: "contacts/destroy/",
                 data: {
                     id: rowid,
-                    _method: 'delete',
+                    //_method: 'delete',
                     _token: token
                 },
                 success: function(data) {

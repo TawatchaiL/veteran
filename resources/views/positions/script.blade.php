@@ -37,7 +37,7 @@
             placeholder: 'กรุณาเลือก'
         });
 
-    
+
         $(".select2_multiple").select2({
             maximumSelectionLength: 2,
             //placeholder: "With Max Selection limit 4",
@@ -297,12 +297,13 @@
 
 
             $.ajax({
-                type: "POST",
+                //type: "POST",
+                method: 'DELETE',
                 dataType: 'JSON',
                 url: "positions/destroy/",
                 data: {
                     id: rowid,
-                    _method: 'delete',
+                    //_method: 'delete',
                     _token: token
                 },
                 success: function(data) {
