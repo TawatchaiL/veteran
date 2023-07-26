@@ -16,7 +16,7 @@
             //this.addFile(file);
         },
         addRemoveLinks: true, // อนุญาตให้ลบไฟล์ก่อนการอัพโหลด
-        maxFilesize: 10, // MB
+        maxFilesize: 20, // MB
         renameFile: function(file) {
             let newName = new Date().getTime() + '_' + file.name;
             file.newName = newName;
@@ -27,7 +27,7 @@
         dictRemoveFile: "Remove", // ชื่อ ปุ่ม remove
         dictCancelUpload: "Cancel", // ชื่อ ปุ่ม ยกเลิก
         dictDefaultMessage: "<img height='60' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNsug8XTE5KVJEMECVvm8p43BZTdvZExoQ9Q&usqp=CAU'><br><font size='3'>เลือกไฟล์เอกสาร</font>", // ข้อความบนพื้นที่แสดงรูปจะแสดงหลังจากโหลดเพจเสร็จ
-        dictFileTooBig: "ไม่อนุญาตให้อัพโหลดไฟล์เกิน 2 MB", //ข้อความแสดงเมื่อเลือกไฟล์ขนาดเกินที่กำหนด
+        dictFileTooBig: "ไม่อนุญาตให้อัพโหลดไฟล์เกิน 20 MB", //ข้อความแสดงเมื่อเลือกไฟล์ขนาดเกินที่กำหนด
         acceptedFiles: 'image/*, application/pdf', // อนุญาตให้เลือกไฟล์ประเภทรูปภาพได้
         // The setting up of the dropzone
         init: function() {
@@ -143,7 +143,7 @@
             //this.addFile(file);
         },
         addRemoveLinks: true, // อนุญาตให้ลบไฟล์ก่อนการอัพโหลด
-        maxFilesize: 10, // MB
+        maxFilesize: 20, // MB
         renameFile: function(file) {
             let newName = new Date().getTime() + '_' + file.name;
             file.newName = newName;
@@ -154,7 +154,7 @@
         dictRemoveFile: "Remove", // ชื่อ ปุ่ม remove
         dictCancelUpload: "Cancel", // ชื่อ ปุ่ม ยกเลิก
         dictDefaultMessage: "<img height='60' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNsug8XTE5KVJEMECVvm8p43BZTdvZExoQ9Q&usqp=CAU'><br><font size='3'>เลือกไฟล์เอกสาร</font>", // ข้อความบนพื้นที่แสดงรูปจะแสดงหลังจากโหลดเพจเสร็จ
-        dictFileTooBig: "ไม่อนุญาตให้อัพโหลดไฟล์เกิน 2 MB", //ข้อความแสดงเมื่อเลือกไฟล์ขนาดเกินที่กำหนด
+        dictFileTooBig: "ไม่อนุญาตให้อัพโหลดไฟล์เกิน 20 MB", //ข้อความแสดงเมื่อเลือกไฟล์ขนาดเกินที่กำหนด
         acceptedFiles: 'image/*, application/pdf', // อนุญาตให้เลือกไฟล์ประเภทรูปภาพได้
         // The setting up of the dropzone
         init: function() {
