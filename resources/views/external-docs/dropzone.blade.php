@@ -171,7 +171,7 @@
             this.on("processing", function() {
                this.options.autoProcessQueue = true;
             }).on("addedfile", function(file) {
-                $('#dropzone_preview').css("display", "block");
+                $('#dropzone_preview2').css("display", "block");
                 //$('#infinite').append("<input type='text' class='form_none' name='imgFiles[]' value='" + file.name + "'/>");
                 $('#editdata').append("<input type='text' id='" + file.newName +
                     "' class='form_none' name='imgFiles2[]' value='" + file.newName + "'/>");
