@@ -635,7 +635,7 @@
 
             $.ajax({
                 //type: "POST",
-                method: 'DELETE'
+                method: 'DELETE',
                 dataType: 'JSON',
                 url: "external-docs/destroy/",
                 data: {
