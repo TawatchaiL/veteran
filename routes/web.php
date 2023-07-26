@@ -86,6 +86,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/home', [App\Http\Controllers\ExternalBookController::class, 'index'])->name('home');
 });
 
-/* Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); */
+Route::get('/sign', [App\Http\Controllers\HomeController::class, 'index'])->name('sign');
 
 Auth::routes();
