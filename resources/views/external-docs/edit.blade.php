@@ -41,6 +41,12 @@ id="EditModal">
                                         aria-controls="custom-tabs-one-profile2"
                                         aria-selected="false">อัพโหลดไฟล์นำเข้าเอกสาร</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="custom-tabs-one-preview-tab2" data-toggle="pill"
+                                        href="#custom-tabs-one-preview2" role="tab"
+                                        aria-controls="custom-tabs-one-preview2"
+                                        aria-selected="false">ดูเอกสารที่อัพโหลด</a>
+                                </li>
 
                             </ul>
                         </div>
@@ -212,6 +218,14 @@ id="EditModal">
                                         <h3 class="dropzone-previews ui"></h3>
                                     </div>
                                 </div>
+                                <div class="tab-pane fade" id="custom-tabs-one-preview2" role="tabpanel"
+                                aria-labelledby="custom-tabs-one-profile-preview2">
+                                <div class="row" id="file_preview">
+                                </div>
+                                <div class="row" id="upload_preview2">
+
+                                </div>
+                            </div>
                             </div>
                         </div>
                     </div>

@@ -508,6 +508,7 @@
 
             $('#custom-tabs-one-home-tab2').tab('show');
             clearDropzonePreviews2();
+            $('#upload_preview2').html('');
             $('#EditReceive').empty();
             $("#AddDepartment").val(null).trigger("change")
             $("#AddPosition").val(null).trigger("change")
@@ -531,6 +532,7 @@
                     $('#EditReceive').append(res.select_list_receive);
                     $('#EditReceive').val(res.data.doc_receive).change();
                     $('.imgs').html(res.imgs);
+                    $('#file_preview').html(res.iframes);
                     //$('#EditModalBody').html(res.html);
                     $('#EditModal').modal('show');
                 }
@@ -588,6 +590,7 @@
                         });
                         $('#Listview').DataTable().ajax.reload();
                         clearDropzonePreviews2();
+                        $('#file_preview').empty();
                         //setTimeout(function() {
                         //$('.alert-success').hide();
 
@@ -618,6 +621,8 @@
                             timeOut: 5000
                         });
                         $('.imgs').html(res.imgs);
+                        $('#file_preview').empty();
+                        $('#file_preview').html(res.iframes);
 
                     }
                 })

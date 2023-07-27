@@ -187,7 +187,7 @@ class ExternalBookController extends Controller
 
         $img = $this->getfileatt($id);
 
-        return response()->json(['data' => $data, 'select_list_receive' => $select_list_receive, 'imgs' => $img]);
+        return response()->json(['data' => $data, 'select_list_receive' => $select_list_receive, 'imgs' => $img->img, 'iframes' => $img->iframe]);
     }
 
     public function getfileatt($id)
@@ -197,6 +197,7 @@ class ExternalBookController extends Controller
             ->orderBy("id", "asc")->get();
 
         $img = "";
+        $iframe = "";
         if (!$filestore->isEmpty()) {
             foreach ($filestore as $pics) {
                 $imgf = url('/') . '/file_store/' . $pics->filename;
@@ -205,8 +206,18 @@ class ExternalBookController extends Controller
                 $fileType = $fileInfo['extension'];
                 if ($fileType == "pdf") {
                     $preview = url('/') . '/images/pdf.jpg';
+                    $iframe .= '<iframe src="'.$imgf.'"
+                    width="100%"
+                    height="600"
+                    frameborder="0"
+                    style="margin: 10px 0;"
+                    id="iframe_'.$pics->filename.'">
+                    </iframe>';
                 } else {
                     $preview = urldecode($imgf);
+                    $iframe .= '<div style="width: 100%; height: 600px; overflow: auto;" id="iframe_'.$pics->filename.'">
+                                <img src="'.$imgf.'" style="margin: 10px 0;">
+                                </div>';
                 }
 
                 $img .= "<div id='img_" . $pics->id . "' class='col-md-4 text-center mb-3'><img src=\"" . $preview . "\" height=\"150\"><br>
@@ -214,12 +225,18 @@ class ExternalBookController extends Controller
                 <a href='#' class='btn btn-sm btn-danger btn-edit' id='getDeleteData' data-id2='" . $pics->id . "' data-id='" . $id . "'><i class='fa fa-trash'></i> ลบ</a>
                 </div>
                 <br><br>";
+
+
             }
         } else {
             $img = "";
+            $iframe = "";
         }
 
-        return $img;
+        return (object) array(
+            'img' => $img,
+            'iframe' => $iframe
+        );
     }
 
     public function update(Request $request, $id)
@@ -235,7 +252,7 @@ class ExternalBookController extends Controller
         ];
 
 
-        $validator =  Validator::make($request->all(), $rules,[
+        $validator =  Validator::make($request->all(), $rules, [
             //'doc_receive_number.required' => 'เลขที่ทะเบียนรับต้องไม่เป็นค่าว่าง!',
             'priorities_id.required' => 'ระดับชั้นความเร็วของหนังสือต้องไม่เป็นค่าว่าง!',
             'doc_number.required' => 'หนังสือเลขที่ต้องไม่เป็นค่าว่าง!',
@@ -302,7 +319,7 @@ class ExternalBookController extends Controller
 
         $html = $this->getfileatt($id);
 
-        return response()->json(['imgs' => $html]);
+        return response()->json(['imgs' => $html->img,'iframes' => $html->iframe]);
     }
 
     /**
