@@ -142,7 +142,7 @@
                                 var pdfIframe = $('<iframe>', {
                                     src: filePath,
                                     width: '95%',
-                                    height: '600',
+                                    height: '650',
                                     frameborder: '0',
                                     css: {
                                         margin: '10px 0' // Add margin at the top and bottom of the iframe
@@ -156,11 +156,12 @@
                                 "jpeg" || fileExtension ===
                                 "png") {
                                 var imgContainer = $('<div>', {
-                                    css: {
+                                    /* css: {
                                         width: '95%',
-                                        height: '600px', // Set the desired fixed height
+                                        height: '650px', // Set the desired fixed height
                                         overflow: 'auto' // Add scrollbar if the image exceeds the container height
-                                    },
+                                    }, */
+                                    class: 'imgContainer',
                                     id: 'iframe_' + name,
                                 });
 
@@ -352,7 +353,7 @@
                                 var pdfIframe = $('<iframe>', {
                                     src: filePath,
                                     width: '100%',
-                                    height: '600',
+                                    height: '650',
                                     frameborder: '0',
                                     css: {
                                         margin: '10px 0' // Add margin at the top and bottom of the iframe
@@ -366,19 +367,20 @@
                                 "jpeg" || fileExtension ===
                                 "png") {
                                 var imgContainer = $('<div>', {
-                                    css: {
+                                    /* css: {
                                         width: '100%',
-                                        height: '600px',  // Set the desired fixed height
+                                        height: '650px',  // Set the desired fixed height
                                         overflow: 'auto' // Add scrollbar if the image exceeds the container height
-                                    },
+                                    }, */
+                                    class: 'imgContainer',
                                     id: 'iframe_' + name,
                                 });
 
                                 // Create an img tag for image files
                                 var img = $('<img>', {
                                     src: filePath,
-                                   /*  width: '100%',
-                                    height: 'auto', */ // Adjust the width proportionally
+                                    /*  width: '100%',
+                                     height: 'auto', */ // Adjust the width proportionally
                                     css: {
                                         margin: '10px 0' // Add margin at the top and bottom of the image
                                     }

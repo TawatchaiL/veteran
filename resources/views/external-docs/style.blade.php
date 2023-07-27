@@ -43,11 +43,26 @@
         top: 10px;
     }
 
-    .modal-dialog-in,.modal-dialog-in2,.modal-dialog-in3 {
+    .modal-dialog-in,
+    .modal-dialog-in2,
+    .modal-dialog-in3 {
         top: 90px;
     }
 
 
+    .imgContainer {
+        width: 100%;
+        height: 650px;
+        overflow: auto;
+        background-color: #f0f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .imgContainer img {
+        margin: 10px 0;
+    }
 
 
 
