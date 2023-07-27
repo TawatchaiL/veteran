@@ -141,7 +141,7 @@
                                 // Create an iframe for PDF files
                                 var pdfIframe = $('<iframe>', {
                                     src: filePath,
-                                    width: '100%',
+                                    width: '95%',
                                     height: '600',
                                     frameborder: '0',
                                     css: {
@@ -157,7 +157,7 @@
                                 "png") {
                                 var imgContainer = $('<div>', {
                                     css: {
-                                        width: '100%',
+                                        width: '95%',
                                         height: '600px', // Set the desired fixed height
                                         overflow: 'auto' // Add scrollbar if the image exceeds the container height
                                     },

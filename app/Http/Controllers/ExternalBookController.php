@@ -220,9 +220,9 @@ class ExternalBookController extends Controller
                                 </div>';
                 }
 
-                $img .= "<div id='img_" . $pics->id . "' class='col-md-4 text-center mb-3'><img src=\"" . $preview . "\" height=\"150\"><br>
-                <a class='btn btn-sm btn-info btn-view' href=\"" . urldecode($imgf) . "\" target=\"blank\"><i class='fa fa-search'></i> เปิดดู</a>
-                <a href='#' class='btn btn-sm btn-danger btn-edit' id='getDeleteData' data-id2='" . $pics->id . "' data-id='" . $id . "'><i class='fa fa-trash'></i> ลบ</a>
+                $img .= "<div id='img_" . $pics->id . "' class='col-md-4 text-center mb-3'><img src=\"" . $preview . "\" height=\"80\"><br>
+                <a class='btn btn-xs btn-info btn-view' href=\"" . urldecode($imgf) . "\" target=\"blank\"><i class='fa fa-search'></i> เปิดดู</a>
+                <a href='#' class='btn btn-xs btn-danger btn-edit' id='getDeleteData' data-id2='" . $pics->id . "' data-id='" . $id . "'><i class='fa fa-trash'></i> ลบ</a>
                 </div>
                 <br><br>";
 
