@@ -1,5 +1,5 @@
 <div class="modal fade" id="CreateModal" data-backdrop="static">
-    <div class="modal-dialog modal-xxxl">
+    <div class="modal-dialog modal-xxl">
         <div class="modal-content">
             <div class="modal-header bg-info">
                 <h4 class="modal-title">ลงรับหนังสือ</h4>
@@ -97,7 +97,7 @@
                                             <div class="form-group">
                                                 <strong>ระดับชั้นความเร็วของหนังสือ:</strong>
                                                 <div class="input-group">
-                                                    <select style="width: 90%;"
+                                                    <select style="width: 89%;"
                                                         class="priorities select2 select2_single form-control"
                                                         id="AddPriorities" name="priorities" multiple="multiple">
                                                         <!-- <option value="" selected>Select Student</option>
@@ -135,7 +135,7 @@
                                             <div class="form-group">
                                                 <strong>จาก:</strong>
                                                 <div class="input-group">
-                                                    <select style="width: 90%;"
+                                                    <select style="width: 89%;"
                                                         class="doc_from select2 select2_single form-control"
                                                         id="AddDocFrom" name="doc_from" multiple="multiple">
                                                         <!-- <option value="" selected>Select Student</option>
@@ -176,7 +176,7 @@
                                             <div class="form-group">
                                                 <strong>ผู้รับ:</strong>
                                                 <div class="input-group">
-                                                    <select style="width: 86%;"
+                                                    <select style="width: 84%;"
                                                         class="doc_receive select2 select2_single form-control"
                                                         id="AddReceive" name="doc_receive" multiple="multiple"
                                                         readonly>

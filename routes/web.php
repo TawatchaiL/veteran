@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 
 //Auth::routes();
 
-Route::group(['middleware' => ['auth']], function() {
+Route::group(['middleware' => ['auth']], function () {
     //Route::get('/roles', [RoleController::class, 'index'])->name('roles.index');
     //Route::get('/roles/store', [RoleController::class, 'store'])->name('roles.store');
     Route::get('/roles/edit/{id}', [RoleController::class, 'edit'])->name('roles.edit2');
@@ -86,6 +86,18 @@ Route::group(['middleware' => ['auth']], function() {
         $result = FileUploadService::fileGetName($request);
         return $result;
     })->name('file.get');
+
+    Route::get('/stamp/', function () {
+        $savepath = 'xxx.png';
+        //$result = FileUploadService::createTransparentRectangleImage('200', '100', '1', '#0000FF', $savepath, 10);
+        //FileUploadService::createTransparentRectangleImage2(400, 200, 5, '#FF0000', 'filename.png', 10, 20);
+        //FileUploadService::createTransparentRectangleImage3(400, 200, 5, '#FF0000', 'filename.png', 10, 30);
+        //FileUploadService::createTransparentRectangleImage4(400, 200, 5, '#FF0000', 'filename.png', 10, 30, 20, 20);
+        FileUploadService::createTransparentRectangleImage5(400, 200, 2, '#FF0000', 'filename.png', 10, 30, 20, 20);
+
+
+        return 'xxx';
+    })->name('stamp');
 
     Route::get('/', [App\Http\Controllers\ExternalBookController::class, 'index']);
     Route::get('/home', [App\Http\Controllers\ExternalBookController::class, 'index'])->name('home');

@@ -13,6 +13,7 @@
     }
 
     $(document).ready(function() {
+
         $(".delete_all_button").click(function() {
             var len = $('input[name="table_records[]"]:checked').length;
             if (len > 0) {
@@ -25,6 +26,7 @@
             }
 
         });
+
 
         $('#check-all').click(function() {
             $(':checkbox.flat').prop('checked', this.checked);
@@ -268,13 +270,13 @@
         });
 
 
-        $(document).on('click', '.inner1', function(e) {
+        /* $(document).on('click', '.inner1', function(e) {
             e.preventDefault();
             $('.alert-in').html('');
             $('.alert-in').hide();
             $('.success-in').html('');
             $('.success-in').hide();
-        });
+        }); */
 
         $(document).on('click', '.inner2', function(e) {
             e.preventDefault();
@@ -665,4 +667,6 @@
 
 
     });
+
+
 </script>

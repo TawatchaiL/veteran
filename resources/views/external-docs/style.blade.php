@@ -32,7 +32,7 @@
     }
 
     .modal-xxl {
-        max-width: 1200px !important;
+        max-width: 1400px !important;
     }
 
     .modal-xxxl {
@@ -81,6 +81,7 @@
         justify-content: space-between;
         min-height: 100%;
     }
+
 
 
 
@@ -269,8 +270,8 @@
     .dropzonex .dz-preview .dz-image {
         border-radius: 20px;
         overflow: hidden;
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
         position: relative;
         display: block;
         z-index: 10;
