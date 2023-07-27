@@ -1,5 +1,5 @@
 <!-- Edit  Modal -->
-<div class="fade modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="EditModal">
+<div class="fade modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="EditModal" data-backdrop="static">
     <div class="modal-dialog modal-xxxl" role="document">
         <form id="editdata" class="form" action="" method="POST">
             <div class="modal-content">

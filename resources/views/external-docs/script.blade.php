@@ -253,6 +253,7 @@
             $('.users').attr("readonly", "readonly");
             $("#AddDepartment").val(null).trigger("change")
             $("#AddPosition").val(null).trigger("change")
+            $('#upload_preview').html('');
 
             $.ajax({
                 method: "GET",

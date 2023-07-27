@@ -1,6 +1,6 @@
 <!-- Inner Modal -->
-<div class="modal fade" id="innerModal" tabindex="-1" role="dialog" aria-labelledby="innerModalLabel"
-aria-hidden="true">
+<div class="modal fade innerm" id="innerModal" tabindex="-1" role="dialog" aria-labelledby="innerModalLabel"
+aria-hidden="true" data-backdrop="static">
 <div class="modal-dialog modal-dialog-in modal-lg {{-- modal-dialog-centered --}}" role="document">
     <div class="modal-content">
         <!-- Inner Modal Header -->
@@ -57,8 +57,8 @@ aria-hidden="true">
 
 
 <!-- Inner Modal2 -->
-<div class="modal fade" id="innerModal2" tabindex="-1" role="dialog" aria-labelledby="innerModalLabel"
-aria-hidden="true">
+<div class="modal fade innerm" id="innerModal2" tabindex="-1" role="dialog" aria-labelledby="innerModalLabel"
+aria-hidden="true" data-backdrop="static">
 <div class="modal-dialog modal-dialog-in2 modal-lg {{-- modal-dialog-centered --}}" role="document">
     <div class="modal-content">
         <!-- Inner Modal Header -->
@@ -103,8 +103,8 @@ aria-hidden="true">
 
 
 <!-- Inner Modal3 -->
-<div class="modal fade" id="innerModal3" tabindex="-1" role="dialog" aria-labelledby="innerModalLabel"
-aria-hidden="true">
+<div class="modal fade innerm" id="innerModal3" tabindex="-1" role="dialog" aria-labelledby="innerModalLabel"
+aria-hidden="true" data-backdrop="static">
 <div class="modal-dialog modal-dialog-in3 modal-lg {{-- modal-dialog-centered --}}" role="document">
     <div class="modal-content">
         <!-- Inner Modal Header -->
