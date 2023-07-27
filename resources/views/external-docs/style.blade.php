@@ -64,6 +64,24 @@
         margin: 10px 0;
     }
 
+    .modal-content {
+        min-height: 100%;
+    }
+
+    /* Apply flexbox layout to ensure the card and its parent containers expand to fill the modal content */
+    .col-md-8 {
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+    }
+
+    .myCard {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 100%;
+    }
+
 
 
     input:required:focus:invalid~.form-error-message {

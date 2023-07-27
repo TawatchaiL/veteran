@@ -255,7 +255,7 @@
                         {!! Form::close() !!}
                     </div>
                     <div class="col-md-8">
-                        <div class="card card-warning">
+                        <div class="card card-warning myCard">
                             <div class="card-header">
                                 <!-- Your header content here -->
                                 <h3 class="card-title">เอกสารที่นำเข้า</h3>
