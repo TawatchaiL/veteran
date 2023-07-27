@@ -245,7 +245,7 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
-            $('#custom-tabs-one-home-tab').tab('show');
+            $('#custom-tabs-one-profile-tab').tab('show');
             $("#AddDocFrom").val(null).trigger("change");
             $("#AddPriorities").val(null).trigger("change");
             $('#AddReceive').empty().trigger('change');
@@ -506,7 +506,7 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
-            $('#custom-tabs-one-home-tab2').tab('show');
+            $('#custom-tabs-one-profile-tab2').tab('show');
             clearDropzonePreviews2();
             $('#upload_preview2').html('');
             $('#EditReceive').empty();

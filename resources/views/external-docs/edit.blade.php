@@ -30,13 +30,9 @@ id="EditModal">
                     <div class="card card-success card-tabs">
                         <div class="card-header p-0 pt-1">
                             <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="custom-tabs-one-home-tab2" data-toggle="pill"
-                                        href="#custom-tabs-one-home2" role="tab" aria-controls="custom-tabs-one-home2"
-                                        aria-selected="true">รายละเอียดหนังสือ</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="custom-tabs-one-profile-tab2" data-toggle="pill"
+                                    <a class="nav-link active" id="custom-tabs-one-profile-tab2" data-toggle="pill"
                                         href="#custom-tabs-one-profile2" role="tab"
                                         aria-controls="custom-tabs-one-profile2"
                                         aria-selected="false">อัพโหลดไฟล์นำเข้าเอกสาร</a>
@@ -47,12 +43,17 @@ id="EditModal">
                                         aria-controls="custom-tabs-one-preview2"
                                         aria-selected="false">ดูเอกสารที่อัพโหลด</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " id="custom-tabs-one-home-tab2" data-toggle="pill"
+                                        href="#custom-tabs-one-home2" role="tab" aria-controls="custom-tabs-one-home2"
+                                        aria-selected="true">รายละเอียดหนังสือ</a>
+                                </li>
 
                             </ul>
                         </div>
                         <div class="card-body">
                             <div class="tab-content" id="custom-tabs-one-tabContent">
-                                <div class="tab-pane fade show active" id="custom-tabs-one-home2" role="tabpanel"
+                                <div class="tab-pane fade" id="custom-tabs-one-home2" role="tabpanel"
                                     aria-labelledby="custom-tabs-one-home-tab2">
 
                                     <div class="row">
@@ -178,7 +179,7 @@ id="EditModal">
 
 
                                 </div>
-                                <div class="tab-pane fade" id="custom-tabs-one-profile2" role="tabpanel"
+                                <div class="tab-pane fade show active" id="custom-tabs-one-profile2" role="tabpanel"
                                     aria-labelledby="custom-tabs-one-profile-tab2">
 
                                     <div class="row imgs">
