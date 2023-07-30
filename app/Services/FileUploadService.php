@@ -224,7 +224,7 @@ class FileUploadService
         if (!file_exists($filePath)) {
             return false; // Return false or handle the error if the file doesn't exist
         }
-        $newfile = exec('-sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile="ghjt.pdf" "'.$filePath.'"');
+        $newfile = exec('gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile="ghjt.pdf" "'.$filePath.'"');
 
         // Create an instance of FPDI with TCPDF and FPDI Protection
         //$pdf = new FpdiProtection();
