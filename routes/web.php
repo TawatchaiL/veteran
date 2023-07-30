@@ -93,7 +93,8 @@ Route::group(['middleware' => ['auth']], function () {
         //FileUploadService::createTransparentRectangleImage2(400, 200, 5, '#FF0000', 'filename.png', 10, 20);
         //FileUploadService::createTransparentRectangleImage3(400, 200, 5, '#FF0000', 'filename.png', 10, 30);
         //FileUploadService::createTransparentRectangleImage4(400, 200, 5, '#FF0000', 'filename.png', 10, 30, 20, 20);
-        FileUploadService::createTransparentRectangleImage5(400, 200, 2, '#FF0000', 'filename.png', 10, 30, 20, 20);
+        //FileUploadService::createTransparentRectangleImage5(300, 150, 2, '#0000FF', 'filename.png', 10, 30, 20, 20);
+        FileUploadService::createTransparentRectangleImageWithText2(300, 150, 2, '#0000FF', 'filename.png', 10, 30, 20, 20);
 
 
         return 'xxx';
