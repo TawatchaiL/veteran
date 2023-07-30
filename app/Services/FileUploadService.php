@@ -226,8 +226,27 @@ class FileUploadService
         }
         $output = [];
         $returnValue = 0;
-        $outp = public_path().'/stamps/' . Str::random(40).'.pdf';
-        $newfile = shell_exec('gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile="'.$outp.'" "'.$filePath.'"', $output, $returnValue);
+        // Generate the output file path
+        $outp = public_path() . '/stamps/' . Str::random(40) . '.pdf';
+
+        // Construct the command to be executed
+        $command = 'gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile="' . $outp . '" "' . $filePath . '"';
+
+        // Execute the command and capture the output and return value
+        exec($command, $output, $returnValue);
+
+        // Check if the command was executed successfully
+        if ($returnValue === 0) {
+            // Command executed successfully
+            // $outp now contains the path to the generated PDF file
+            // You can use $output to get the output of the command if needed
+            // For example, you can use var_dump($output) to see the command output
+            // or use implode(PHP_EOL, $output) to get the output as a string with newlines
+            // Note: The output of Ghostscript may go to stderr instead of stdout, so you may need to redirect stderr to stdout in the command if needed.
+        } else {
+            // There was an error executing the command
+            // You can handle the error here, log it, or display a message to the user
+        }
         //dd($output);
 
         // Create an instance of FPDI with TCPDF and FPDI Protection
@@ -292,6 +311,4 @@ class FileUploadService
         // Output the stamped PDF as a response
         $pdf->Output();
     }
-
-
 }
