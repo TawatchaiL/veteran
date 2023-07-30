@@ -261,7 +261,7 @@ class FileUploadService
         //$pdf->AddPage();
 
         // Set the source file (the PDF to be stamped)
-        $pagecount = $pdf->setSourceFile($filePath);
+        $pagecount = $pdf->setSourceFile($outp);
 
         // Import the first page from the source PDF
         //$importedPage = $pdf->importPage(1);
