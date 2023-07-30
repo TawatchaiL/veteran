@@ -358,8 +358,8 @@ class FileUploadService
 
     public static function addTextAtCenterOfLine($image, $x1, $x2, $y, $text) {
         $fontPath = public_path('fonts/THSarabunNew.ttf'); // Replace with the actual path to your TrueType font file
-        $fontSize = 18; // Adjust the font size as needed
-        $fontColor = [0, 0, 255]; // RGB color for the font (black in this example)
+        $fontSize = 14; // Adjust the font size as needed
+        $fontColor = [0, 0, 255]; // RGB color for blue font (0, 0, 255)
 
         // Calculate the width of the text
         $textWidth = imagettfbbox($fontSize, 0, $fontPath, $text);
@@ -369,7 +369,7 @@ class FileUploadService
         $textX = ($x1 + $x2) / 2 - $textWidth / 2;
 
         // Set the Y coordinate for the text (offset from the line)
-        $textY = $y - 10;
+        $textY = $y - 5; // Decrease the offset value to move the text closer to the dotted line
 
         // Load the image as a TrueType font
         imagettftext($image->getCore(), $fontSize, 0, $textX, $textY, imagecolorallocate($image->getCore(), $fontColor[0], $fontColor[1], $fontColor[2]), $fontPath, $text);
