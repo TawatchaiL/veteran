@@ -87,12 +87,15 @@ Route::group(['middleware' => ['auth']], function () {
         return $result;
     })->name('file.get');
 
-    Route::get('/stamp/', function () {
+    Route::get('/stamp/', function (Request $request) {
         $stampText = 'มานนท์ เหลี่ยมวิเศษ';
         $x = 140;
         $y = 10;
+
+        $filename = $request->get('filename');
+
        /*  FileUploadService::createTransparentRectangleImageWithText(300, 150, 2, '#0000FF', 'filename.png', 10, 30, 20, 20,$stampText);*/
-        $uploadedFilePath = public_path('file_store/sssss.pdf');
+        $uploadedFilePath = public_path('file_store/'.$filename.'.pdf');
         $stampedFilePath = FileUploadService::stampPDFWithImage($uploadedFilePath, $stampText, $x, $y);
 
         return $stampedFilePath;
