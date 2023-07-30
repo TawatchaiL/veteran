@@ -88,16 +88,14 @@ Route::group(['middleware' => ['auth']], function () {
     })->name('file.get');
 
     Route::get('/stamp/', function () {
-        $savepath = 'xxx.png';
-        //$result = FileUploadService::createTransparentRectangleImage('200', '100', '1', '#0000FF', $savepath, 10);
-        //FileUploadService::createTransparentRectangleImage2(400, 200, 5, '#FF0000', 'filename.png', 10, 20);
-        //FileUploadService::createTransparentRectangleImage3(400, 200, 5, '#FF0000', 'filename.png', 10, 30);
-        //FileUploadService::createTransparentRectangleImage4(400, 200, 5, '#FF0000', 'filename.png', 10, 30, 20, 20);
-        //FileUploadService::createTransparentRectangleImage5(300, 150, 2, '#0000FF', 'filename.png', 10, 30, 20, 20);
-        FileUploadService::createTransparentRectangleImageWithText2(300, 150, 2, '#0000FF', 'filename.png', 10, 30, 20, 20);
+        $stampText = 'มานนท์ เหลี่ยมวิเศษ';
+        $x = 140;
+        $y = 10;
+       /*  FileUploadService::createTransparentRectangleImageWithText(300, 150, 2, '#0000FF', 'filename.png', 10, 30, 20, 20,$stampText);*/
+        $uploadedFilePath = public_path('file_store/sssss.pdf');
+        $stampedFilePath = FileUploadService::stampPDFWithImage($uploadedFilePath, $stampText, $x, $y);
 
-
-        return 'xxx';
+        return $stampedFilePath;
     })->name('stamp');
 
     Route::get('/', [App\Http\Controllers\ExternalBookController::class, 'index']);

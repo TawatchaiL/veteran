@@ -4,6 +4,7 @@
 /public/hot
 /public/file_upload
 /public/file_store
+/public/stamps
 /public/storage
 /storage/*.key
 /vendor
