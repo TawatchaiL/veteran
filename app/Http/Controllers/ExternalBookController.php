@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\File;
+use App\Services\FileUploadService;
 
 class ExternalBookController extends Controller
 {
@@ -103,6 +104,45 @@ class ExternalBookController extends Controller
         ]);
     }
 
+    public function stamp(Request $request)
+    {
+        $validator =  Validator::make($request->all(), [
+            'signdate' => 'required|string|max:255'
+        ], [
+            'signdate.required' => 'ลงวันที่ต้องไม่เป็นค่าว่าง!'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all()]);
+        }
+
+        $filesa = $request->get('img');
+        $iframe = '';
+        foreach ($filesa as $filea) {
+            //echo $filea;
+            $oldfile = FileUpload::where('oldname', $filea)->get();
+            if ($oldfile->isEmpty()) {
+                $oldfile = FileStore::where('filename', $filea)->get();
+                $uploadedFilePath = public_path('file_store/' . $oldfile[0]->filename);
+            } else {
+                $uploadedFilePath = public_path('file_upload/' . $oldfile[0]->filename);
+            }
+
+
+            $stampd = explode(" ", $request->get('signdate'));
+            $stampedFilePath = FileUploadService::stampPDFWithImage($uploadedFilePath, $request->get('stampx'), $request->get('stampy'), $request->get('doc_receive_number'), $stampd[0], $stampd[1]);
+            $iframe .= '<iframe src="' . $stampedFilePath . '"
+                    width="100%"
+                    height="650"
+                    frameborder="0"
+                    style="margin: 10px 0;"
+                    id="iframe_' . $filea . '">
+                    </iframe>';
+        }
+
+        return response()->json(['success' => 'ประทับตรา เรียบร้อยแล้ว', 'iframe' => $iframe]);
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -126,7 +166,7 @@ class ExternalBookController extends Controller
             'doc_from.required' => 'จากต้องไม่เป็นค่าว่าง!',
             'subject.required' => 'เรื่องต้องไม่เป็นค่าว่าง!',
             'doc_receive.required' => 'ผู้รับต้องไม่เป็นค่าว่าง!',
-            'signdate.required' => 'ต้องไม่เป็นค่าว่าง!',
+            'signdate.required' => 'ลงวันที่ต้องไม่เป็นค่าว่าง!',
             /* 'img.required' => 'กรุณาอัพโหลดไฟล์',
             //'img.array' => 'หลักฐานการชำระเงินต้องเป็นอาเรย์',
             'img.*.nullable' => 'กรุณาเลือกไฟล์ภาพหรือ PDF',
@@ -158,11 +198,13 @@ class ExternalBookController extends Controller
             $filestore->filename = $oldfile[0]->filename;
             $filestore->save();
 
+            $uploadedFilePath = public_path('file_upload/' . $oldfile[0]->filename);
+            $stampd = explode(" ", $request->get('signdate'));
+            $stampedFilePath = FileUploadService::stampPDFWithImage($uploadedFilePath, $request->get('stampx'), $request->get('stampy'), $request->get('doc_receive_number'), $stampd[0], $stampd[1]);
+
             File::move(public_path() . '/file_upload/' . $oldfile[0]->filename, public_path() . '/file_store/' . $oldfile[0]->filename);
             FileUpload::where('filename', $oldfile[0]->filename)->delete();
         }
-
-
 
         return response()->json(['success' => 'ลงรับหนังสือ เรียบร้อยแล้ว']);
     }
@@ -187,7 +229,7 @@ class ExternalBookController extends Controller
 
         $img = $this->getfileatt($id);
 
-        return response()->json(['data' => $data, 'select_list_receive' => $select_list_receive, 'imgs' => $img->img, 'iframes' => $img->iframe]);
+        return response()->json(['data' => $data, 'select_list_receive' => $select_list_receive, 'imgs' => $img->img, 'iframes' => $img->iframe, 'inputf' => $img->inputf]);
     }
 
     public function getfileatt($id)
@@ -198,6 +240,7 @@ class ExternalBookController extends Controller
 
         $img = "";
         $iframe = "";
+        $inputf = "";
         if (!$filestore->isEmpty()) {
             foreach ($filestore as $pics) {
                 $imgf = url('/') . '/file_store/' . $pics->filename;
@@ -206,25 +249,26 @@ class ExternalBookController extends Controller
                 $fileType = $fileInfo['extension'];
                 if ($fileType == "pdf") {
                     $preview = url('/') . '/images/pdf.jpg';
-                    /* $iframe .= '<iframe src="'.$imgf.'"
+                    $imgfs = url('/') . '/stamps/' . $pics->filename;
+                    $iframe .= '<iframe src="' . $imgfs . '"
                     width="100%"
                     height="600"
                     frameborder="0"
                     style="margin: 10px 0;"
-                    id="iframe_'.$pics->filename.'">
-                    </iframe>'; */
-                    $iframe .= '<embed src="'.$imgf.'"
+                    id="iframe_' . $pics->filename . '">
+                    </iframe>';
+                    /* $iframe .= '<embed src="' . $imgf . '"
                     width="95%"
                     height="650"
                     type="application/pdf"
                     class="pdf-viewer"
                     style="margin: 10px 0;"
-                    id="iframe_'.$pics->filename.'">
-                    </embed>';
+                    id="iframe_' . $pics->filename . '">
+                    </embed>'; */
                 } else {
                     $preview = urldecode($imgf);
-                    $iframe .= '<div style="width: 100%; height: 600px; overflow: auto;" id="iframe_'.$pics->filename.'">
-                                <img src="'.$imgf.'" style="margin: 10px 0;">
+                    $iframe .= '<div style="width: 100%; height: 600px; overflow: auto;" id="iframe_' . $pics->filename . '">
+                                <img src="' . $imgf . '" style="margin: 10px 0;">
                                 </div>';
                 }
 
@@ -234,16 +278,19 @@ class ExternalBookController extends Controller
                 </div>
                 <br><br>";
 
-
+                $inputf .= "<input type='text' id='" . $pics->filename .
+                    "' class='form_none' name='imgFiles2[]' value='" . $pics->filename . "'/>";
             }
         } else {
             $img = "";
             $iframe = "";
+            $inputf = "";
         }
 
         return (object) array(
             'img' => $img,
-            'iframe' => $iframe
+            'iframe' => $iframe,
+            'inputf' => $inputf
         );
     }
 
@@ -268,7 +315,7 @@ class ExternalBookController extends Controller
             'doc_from.required' => 'จากต้องไม่เป็นค่าว่าง!',
             'subject.required' => 'เรื่องต้องไม่เป็นค่าว่าง!',
             'doc_receive.required' => 'ผู้รับต้องไม่เป็นค่าว่าง!',
-            'signdate.required' => 'ต้องไม่เป็นค่าว่าง!',
+            'signdate.required' => 'ลงวันที่ต้องไม่เป็นค่าว่าง!',
             /* 'img.required' => 'กรุณาอัพโหลดไฟล์',
             //'img.array' => 'หลักฐานการชำระเงินต้องเป็นอาเรย์',
             'img.*.nullable' => 'กรุณาเลือกไฟล์ภาพหรือ PDF',
@@ -291,6 +338,8 @@ class ExternalBookController extends Controller
             'doc_from' => $request->get('doc_from'),
             'subject' => $request->get('subject'),
             'doc_receive' => $request->get('doc_receive'),
+            'stampx' => $request->get('stampx'),
+            'stampy' => $request->get('stampy'),
         ];
 
         $expen = ExternalBook::find($id);
@@ -305,14 +354,28 @@ class ExternalBookController extends Controller
             foreach ($filesa as $filea) {
                 //echo $filea;
                 $oldfile = FileUpload::where('oldname', $filea)->get();
-                $filestore = new FileStore();
-                $filestore->module = 'external-book';
-                $filestore->module_id = $id;
-                $filestore->filename = $oldfile[0]->filename;
-                $filestore->save();
+                if ($oldfile->isEmpty()) {
+                    $oldfile = FileStore::where('filename', $filea)->get();
+                    
 
-                File::move(public_path() . '/file_upload/' . $oldfile[0]->filename, public_path() . '/file_store/' . $oldfile[0]->filename);
-                FileUpload::where('filename', $oldfile[0]->filename)->delete();
+                } else {
+                    $filestore = new FileStore();
+                    $filestore->module = 'external-book';
+                    $filestore->module_id = $id;
+                    $filestore->filename = $oldfile[0]->filename;
+                    $filestore->save();
+
+                
+                    File::move(public_path() . '/file_upload/' . $oldfile[0]->filename, public_path() . '/file_store/' . $oldfile[0]->filename);
+                    FileUpload::where('filename', $oldfile[0]->filename)->delete();
+
+                    
+                }
+
+                $uploadedFilePath = public_path('file_store/' . $oldfile[0]->filename);
+                $stampd = explode(" ", $request->get('signdate'));
+                $stampedFilePath = FileUploadService::stampPDFWithImage($uploadedFilePath, $request->get('stampx'), $request->get('stampy'), $request->get('doc_receive_number'), $stampd[0], $stampd[1]);
+
             }
         }
 
@@ -323,11 +386,36 @@ class ExternalBookController extends Controller
 
     public function deleteImg($id, $id2)
     {
-        $dataimg = FileStore::find($id2)->delete();;
+        $dataimg = FileStore::where([
+            'id' => $id2,
+        ])->get();
 
+        // Delete the found records
+        if (!$dataimg->isEmpty()) {
+            $dataimg->each(function ($item) {
+                $filename = $item->filename;
+
+                // Build the full path to the file within the 'public/file_store' directory
+                $filePath = public_path('file_store/' . $filename);
+
+                // Delete the file if it exists
+                if (file_exists($filePath)) {
+                    unlink($filePath);
+                }
+
+                $filePaths = public_path('stamps/' . $filename);
+
+                // Delete the file if it exists
+                if (file_exists($filePaths)) {
+                    unlink($filePaths);
+                }
+
+                $item->delete();
+            });
+        }
         $html = $this->getfileatt($id);
 
-        return response()->json(['imgs' => $html->img,'iframes' => $html->iframe]);
+        return response()->json(['imgs' => $html->img, 'iframes' => $html->iframe, 'inputf' => $html->inputf]);
     }
 
     /**
@@ -355,6 +443,13 @@ class ExternalBookController extends Controller
                 if (file_exists($filePath)) {
                     unlink($filePath);
                 }
+
+                $filePaths = public_path('stamps/' . $filename);
+                // Delete the file if it exists
+                if (file_exists($filePaths)) {
+                    unlink($filePaths);
+                }
+
                 $item->delete();
             });
         }
@@ -385,6 +480,12 @@ class ExternalBookController extends Controller
                     // Delete the file if it exists
                     if (file_exists($filePath)) {
                         unlink($filePath);
+                    }
+
+                    $filePaths = public_path('stamps/' . $filename);
+                    // Delete the file if it exists
+                    if (file_exists($filePaths)) {
+                        unlink($filePaths);
                     }
                     $item->delete();
                 });

@@ -325,6 +325,8 @@
                 method: 'post',
                 data: {
                     img: values,
+                    stampx: $('#stampx').val(),
+                    stampy: $('#stampy').val(),
                     doc_receive_number: $('#AddNumber').val(),
                     doc_number: $('#AddDocNumber').val(),
                     priorities_id: $('#AddPriorities').val()[0],
@@ -358,6 +360,122 @@
                         $('.form').trigger('reset');
                         clearDropzonePreviews();
                         $('#CreateModal').modal('hide');
+                    }
+                }
+            });
+        });
+
+
+
+        $('#CreateStamp').click(function(e) {
+            cstamp();
+        });
+
+        function cstamp() {
+            e.preventDefault();
+            $('.alert-danger').html('');
+            $('.alert-danger').hide();
+            $('.alert-success').html('');
+            $('.alert-success').hide();
+
+            isValid = true;
+            var values = $("input[name='imgFiles[]']")
+                .map(function() {
+                    return $(this).val();
+                }).get();
+
+            if (!document.getElementsByName('imgFiles[]').length) {
+                toastr.error('กรุณาอัพโหลดไฟล์', {
+                    timeOut: 5000
+                });
+                isValid = false;
+            }
+
+            if (!isValid) {
+                return false;
+            }
+
+
+            $.ajax({
+                url: "{{ route('external-docs.stamp') }}",
+                method: 'post',
+                data: {
+                    img: values,
+                    doc_receive_number: $('#AddNumber').val(),
+                    signdate: $('#AddDate').val(),
+                    stampx: $('#stampx').val(),
+                    stampy: $('#stampy').val(),
+                    _token: token,
+                },
+                success: function(result) {
+                    if (result.errors) {
+                        $('.alert-danger').html('');
+                        $.each(result.errors, function(key, value) {
+                            $('.alert-danger').show();
+                            $('.alert-danger').append('<strong><li>' + value +
+                                '</li></strong>');
+                        });
+                    } else {
+                        $('.alert-danger').hide();
+                        toastr.success(result.success, {
+                            timeOut: 5000
+                        });
+                        $('#upload_preview').html(result.iframe)
+                    }
+                }
+            });
+        }
+
+        $('#EditStamp').click(function(e) {
+            e.preventDefault();
+            $('.alert-danger').html('');
+            $('.alert-danger').hide();
+            $('.alert-success').html('');
+            $('.alert-success').hide();
+
+            isValid = true;
+            var values = $("input[name='imgFiles2[]']")
+                .map(function() {
+                    return $(this).val();
+                }).get();
+
+            if (!document.getElementsByName('imgFiles2[]').length) {
+                toastr.error('กรุณาอัพโหลดไฟล์', {
+                    timeOut: 5000
+                });
+                isValid = false;
+            }
+
+            if (!isValid) {
+                return false;
+            }
+
+            $.ajax({
+                url: "{{ route('external-docs.stamp') }}",
+                method: 'post',
+                data: {
+                    img: values,
+                    doc_receive_number: $('#EditNumber').val(),
+                    signdate: $('#EditDate').val(),
+                    stampx: $('#estampx').val(),
+                    stampy: $('#estampy').val(),
+                    _token: token,
+                },
+                success: function(result) {
+                    if (result.errors) {
+                        $('.alert-danger').html('');
+                        $.each(result.errors, function(key, value) {
+                            $('.alert-danger').show();
+                            $('.alert-danger').append('<strong><li>' + value +
+                                '</li></strong>');
+                        });
+                    } else {
+                        $('.alert-danger').hide();
+                        toastr.success(result.success, {
+                            timeOut: 5000
+                        });
+                        $('#file_preview').html('');
+                        $('#upload_preview2').html(result.iframe)
                     }
                 }
             });
@@ -535,7 +653,11 @@
                     $('#EditReceive').append(res.select_list_receive);
                     $('#EditReceive').val(res.data.doc_receive).change();
                     $('.imgs').html(res.imgs);
+                    $('#estampx').val(res.data.stampx);
+                    $('#estampy').val(res.data.stampy);
                     $('#file_preview').html(res.iframes);
+                    $('#editdata').append(res.inputf);
+                    //console.log(res.inputf);
                     //$('#EditModalBody').html(res.html);
                     $('#EditModal').modal('show');
                 }
@@ -557,11 +679,15 @@
                     return $(this).val();
                 }).get();
 
+            console.log(values);
+
             $.ajax({
                 url: "external-docs/save/" + id,
                 method: 'PUT',
                 data: {
                     img: values,
+                    stampx: $('#estampx').val(),
+                    stampy: $('#estampy').val(),
                     doc_receive_number: $('#EditNumber').val(),
                     doc_number: $('#EditDocNumber').val(),
                     priorities_id: $('#EditPriorities').val()[0],
@@ -623,9 +749,11 @@
                         toastr.success('ลบไฟล์เรียบร้อยแล้ว', {
                             timeOut: 5000
                         });
+                        console.log(res.inputf);
                         $('.imgs').html(res.imgs);
                         $('#file_preview').empty();
                         $('#file_preview').html(res.iframes);
+                        $('#editdata').append(res.inputf);
 
                     }
                 })
@@ -665,7 +793,7 @@
             }); //end ajax
         })
 
-      /*   var iframe = document.getElementById("iframe")
+        /*   var iframe = document.getElementById("iframe")
 
 onmousedown = function(e) {
     document.getElementById("position").textContent = "Mouse position: " + (e.clientX - iframe.offsetLeft) + " | " + (e.clientY - iframe.offsetTop)

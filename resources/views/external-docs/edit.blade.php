@@ -1,5 +1,6 @@
 <!-- Edit  Modal -->
-<div class="fade modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="EditModal" data-backdrop="static">
+<div class="fade modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="EditModal"
+    data-backdrop="static">
     <div class="modal-dialog modal-xxl" role="document">
         <form id="editdata" class="form" action="" method="POST">
             <div class="modal-content">
@@ -230,6 +231,18 @@
                                                     style="font-size: 1.5em;">
                                                     <h3 class="dropzone-previews ui"></h3>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label for="customRange3">ตำแหน่งประทับตรายางแนวตั้ง</label>
+                                                    <input type="range" min="5" max="140"
+                                                        value="100" class="custom-range custom-range-teal"
+                                                        id="estampx">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="customRange3">ตำแหน่งประทับตรายางแนวนอน</label>
+                                                    <input type="range" min="2" max="230"
+                                                        value="5" class="custom-range custom-range-teal"
+                                                        id="estampy">
+                                                </div>
                                             </div>
                                             {{--   <div class="tab-pane fade" id="custom-tabs-one-preview2" role="tabpanel"
                                                 aria-labelledby="custom-tabs-one-profile-preview2">
@@ -243,10 +256,13 @@
                                     </div>
                                     <div class="card-footer">
                                         <!-- Your footer content here -->
-                                        <button type="button" class="btn btn-success"
+                                        <button type="button" class="btn btn-info"
+                                            id="EditStamp">ประทับตรายาง</button>
+                                        <button type="button" class="btn btn-danger"
                                             id="SubmitEditForm">บันทึก</button>
-                                        <button type="button" class="btn btn-danger modelClose"
-                                            data-dismiss="modal">ปิด</button>
+                                        
+                                        {{--  <button type="button" class="btn btn-danger modelClose"
+                                            data-dismiss="modal">ปิด</button> --}}
                                     </div>
                                 </div>
 

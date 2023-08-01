@@ -68,6 +68,10 @@ class FileUploadService
                 unlink($path);
                 FileUpload::where('oldname', $filename)->delete();
             }
+            $spath = public_path() . '/stamps/' . $oldfile[0]->filename;
+            if (file_exists($spath)) {
+                unlink($spath);
+            }
             return $filename;
         } else {
             return 'none';
@@ -107,7 +111,7 @@ class FileUploadService
     }
 
 
-    public static function createTransparentRectangleImageWithText($width, $height, $borderWidth, $borderColor, $filename, $borderMargin, $lineSpacing, $lineMarginLeft, $lineMarginRight, $stampText)
+    public static function createTransparentRectangleImageWithText($width, $height, $borderWidth, $borderColor, $filename, $borderMargin, $lineSpacing, $lineMarginLeft, $lineMarginRight, $stampText1, $stampText2, $stampText3)
     {
         // Calculate the dimensions for the frame inside the image with the margin
         $frameX1 = $borderWidth + $borderMargin; // X coordinate of top-left corner
@@ -199,10 +203,10 @@ class FileUploadService
         //text before line
 
         //text on line
-        $textForTopLine = $stampText;
+        $textForTopLine = $stampText1;
         self::addTextAtCenterOfLine($image, $lineX1Top, $lineX2Top, $yTop, $textForTopLine);
-        $textForCenterLine = $stampText;
-        $textForBottomLine = $stampText;
+        $textForCenterLine = $stampText2;
+        $textForBottomLine = $stampText3;
         self::addTextAtCenterOfLine($image, $lineX1Center, $lineX2Center, $yCenter, $textForCenterLine);
         self::addTextAtCenterOfLine($image, $lineX1Bottom, $lineX2Bottom, $yBottom, $textForBottomLine);
         //text on line
@@ -257,7 +261,7 @@ class FileUploadService
     }
 
 
-    public static function stampPDFWithImage($filePath, $stampText, $x, $y)
+    public static function stampPDFWithImage($filePath, $x, $y, $stampText1, $stampText2, $stampText3)
     {
         // Check if the file exists
         if (!file_exists($filePath)) {
@@ -315,7 +319,9 @@ class FileUploadService
             25,
             45,
             10,
-            $stampText
+            $stampText1,
+            $stampText2,
+            $stampText3
         );
 
         //$stampImage = file_get_contents($stampImagePath);
@@ -339,11 +345,21 @@ class FileUploadService
 
         @unlink($stampImagePath);
         // Optionally, you can save the stamped PDF to a file
-        //$stampedFileName = 'stamped_' . basename($filePath);
-        //$stampedFilePath = public_path().'/stamps/' . $stampedFileName;
-        //$pdf->Output($stampedFilePath, 'F');
+        $stampedFileName = basename($filePath);
+        $stampedFilePath = public_path() . '/stamps/' . $stampedFileName;
+        $stampedURL = url('/') . '/stamps/' . $stampedFileName;
+
+        // Check if the file already exists
+        if (file_exists($stampedFilePath)) {
+            // If the file exists, unlink (delete) the old file
+            unlink($stampedFilePath);
+        }
+
+        // Save the stamped PDF
+        $pdf->Output($stampedFilePath, 'F');
 
         // Output the stamped PDF as a response
-        $pdf->Output();
+        //$pdf->Output();
+        return $stampedURL;
     }
 }

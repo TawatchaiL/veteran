@@ -201,6 +201,7 @@
                                     </div>
                                     <div class="tab-pane fade show active" id="custom-tabs-one-profile"
                                         role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
+
                                         <div class="form-row form-focus" id="dropzone-att">
                                             <div class="col-md-12 col-sm-12">
                                                 <a id="datt"></a>
@@ -236,6 +237,14 @@
                                             style="font-size: 1.5em;">
                                             <h3 class="dropzone-previews ui"></h3>
                                         </div>
+                                        <div class="form-group">
+                                            <label for="customRange3">ตำแหน่งประทับตรายางแนวตั้ง</label>
+                                            <input type="range" min="5" max="140" value="100" class="custom-range custom-range-teal" id="stampx">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="customRange3">ตำแหน่งประทับตรายางแนวนอน</label>
+                                            <input type="range" min="2" max="230" value="5" class="custom-range custom-range-teal" id="stampy">
+                                        </div>
                                     </div>
                                     {{-- <div class="tab-pane fade" id="custom-tabs-one-preview" role="tabpanel"
                                         aria-labelledby="custom-tabs-one-profile-preview">
@@ -243,11 +252,14 @@
                                     </div> --}}
                                 </div>
                             </div>
-                            <div class="card-footer">
+                            <div class="card-footer ">
                                 <!-- Your footer content here -->
-                                <button type="button" class="btn btn-success" id="SubmitCreateForm">บันทึก</button>
-                                <button type="button" class="btn btn-danger modelClose"
-                                    data-dismiss="modal">ปิด</button>
+                                
+                                    <button type="button" class="btn btn-info" id="CreateStamp">ประทับตรายาง</button>
+                               
+                                    <button type="button" class="btn btn-danger" id="SubmitCreateForm">บันทึกข้อมูล</button>
+                                    {{-- <button type="button" class="btn btn-danger modelClose" data-dismiss="modal">ปิด</button> --}}
+                                
                             </div>
                         </div>
 
@@ -261,11 +273,14 @@
                                 <h3 class="card-title">เอกสารที่นำเข้า</h3>
                             </div>
                             <div class="card-body">
+
                                 <div class="row" style="display: flex; justify-content: center;"
                                     id="upload_preview">
                                     <!-- Your card body content here -->
 
                                 </div>
+
+                              
                             </div>
                         </div>
                     </div>

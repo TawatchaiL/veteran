@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class ExternalBook extends Model
 {
     use HasFactory;
-    protected $fillable = ['priorities_id', 'doc_receive_number', 'doc_number', 'signdate', 'doc_to', 'doc_from', 'subject', 'doc_receive'];
+    protected $fillable = ['priorities_id', 'doc_receive_number', 'doc_number', 'signdate', 'doc_to', 'doc_from', 'subject', 'doc_receive', 'stampx', 'stampy'];
 }

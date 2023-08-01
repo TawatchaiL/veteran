@@ -70,6 +70,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/external-docs/destroy', [App\Http\Controllers\ExternalBookController::class, 'destroy'])->name('external-docs.destroy');
     Route::post('/external-docs/destroy_all', [App\Http\Controllers\ExternalBookController::class, 'destroy_all'])->name('external-docs.destroy_all');
     Route::put('/external-docs/delete/img/{rid}/{rid2}', [App\Http\Controllers\ExternalBookController::class, 'deleteImg'])->name('external-docs.deleteimg');
+    Route::post('/external-docs/stamp', [App\Http\Controllers\ExternalBookController::class, 'stamp'])->name('external-docs.stamp');
 
     //file
     Route::post('/file/upload', function (Request $request) {
@@ -88,15 +89,15 @@ Route::group(['middleware' => ['auth']], function () {
     })->name('file.get');
 
     Route::get('/stamp/', function (Request $request) {
-        $stampText = 'มานนท์ เหลี่ยมวิเศษ';
-        $x = 120;
-        $y = 10;
+        $stampText1 = 'มานนท์ เหลี่ยมวิเศษ';
+        $stampText2 = '12/08/2566';
+        $stampText3 = '18:00:44';
+        $x = 140;
+        $y = 2;
 
         $filename = $request->get('filename');
-
-       /*  FileUploadService::createTransparentRectangleImageWithText(300, 150, 2, '#0000FF', 'filename.png', 10, 30, 20, 20,$stampText);*/
         $uploadedFilePath = public_path('file_store/'.$filename.'.pdf');
-        $stampedFilePath = FileUploadService::stampPDFWithImage($uploadedFilePath, $stampText, $x, $y);
+        $stampedFilePath = FileUploadService::stampPDFWithImage($uploadedFilePath, $x, $y, $stampText1, $stampText2, $stampText3);
 
         return $stampedFilePath;
     })->name('stamp');
