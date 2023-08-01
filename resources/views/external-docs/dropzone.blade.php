@@ -139,7 +139,7 @@
                             // Check if the uploaded file is a PDF or an image
                             if (fileExtension === "pdf") {
                                 // Create an iframe for PDF files
-                                var pdfIframe = $('<iframe>', {
+                                /*  var pdfIframe = $('<iframe>', {
                                     src: filePath,
                                     width: '95%',
                                     height: '650',
@@ -149,9 +149,20 @@
                                     },
                                     id: 'iframe_' + name,
                                 });
+                                */
+                                const pdfEmbed = $('<embed>', {
+                                    src: filePath,
+                                    type: 'application/pdf',
+                                    width: '95%',
+                                    height: '650',
+                                    class: 'pdf-viewer',
+                                    id: 'iframe_' + name,
+                                });
+                                console.log(pdfEmbed);
+                                console.log($('.pdf-viewer').length);
 
                                 // Append the PDF iframe to the div
-                                $('#upload_preview').append(pdfIframe);
+                                $('#upload_preview').append(pdfEmbed);
                             } else if (fileExtension === "jpg" || fileExtension ===
                                 "jpeg" || fileExtension ===
                                 "png") {
@@ -350,7 +361,7 @@
                             // Check if the uploaded file is a PDF or an image
                             if (fileExtension === "pdf") {
                                 // Create an iframe for PDF files
-                                var pdfIframe = $('<iframe>', {
+                                /* var pdfIframe = $('<iframe>', {
                                     src: filePath,
                                     width: '100%',
                                     height: '650',
@@ -359,10 +370,18 @@
                                         margin: '10px 0' // Add margin at the top and bottom of the iframe
                                     },
                                     id: 'iframe_' + name,
+                                }); */
+                                const pdfEmbed = $('<embed>', {
+                                    src: filePath,
+                                    type: 'application/pdf',
+                                    width: '95%',
+                                    height: '650',
+                                    class: 'pdf-viewer',
+                                    id: 'iframe_' + name,
                                 });
 
                                 // Append the PDF iframe to the div
-                                $('#upload_preview2').append(pdfIframe);
+                                $('#upload_preview2').append(pdfEmbed);
                             } else if (fileExtension === "jpg" || fileExtension ===
                                 "jpeg" || fileExtension ===
                                 "png") {

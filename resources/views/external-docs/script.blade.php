@@ -665,8 +665,12 @@
             }); //end ajax
         })
 
+      /*   var iframe = document.getElementById("iframe")
+
+onmousedown = function(e) {
+    document.getElementById("position").textContent = "Mouse position: " + (e.clientX - iframe.offsetLeft) + " | " + (e.clientY - iframe.offsetTop)
+} */
+
 
     });
-
-
 </script>

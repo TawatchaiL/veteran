@@ -89,7 +89,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/stamp/', function (Request $request) {
         $stampText = 'มานนท์ เหลี่ยมวิเศษ';
-        $x = 140;
+        $x = 120;
         $y = 10;
 
         $filename = $request->get('filename');

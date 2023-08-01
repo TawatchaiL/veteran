@@ -105,8 +105,12 @@
             </div>
 
         </div>
+        <div id="pdf-container">
+          {{-- <embed type="application/pdf" class="pdf-viewer"
+                src="file_store/KSfxgov4tL7Jk4A1Bqi3bJaLsXWelol7DhrQI8TD_1690428551565_QT-66072261-มานนท์-lenovo1-1(1).pdf"
+                style="width: 95%; height: 650px;">  <canvas id="pdf-canvas" width="500" height="600"></canvas>--}}
 
-
+        </div>
 
     </section>
 
@@ -121,6 +125,88 @@
 @endsection
 
 @section('script')
-    @include('external-docs.script')
     @include('external-docs.dropzone')
+    @include('external-docs.script')
 @endsection
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    // PDF.js configuration
+    const pdfjsLib = window['pdfjs-dist/build/pdf'];
+
+    // URL of the PDF file to load
+    const pdfUrl = 'http://localhost:8000/file_store/1OjkuHeNTslPYT1DFG30QhHzMpCpXqEU7T84sguV_1690428274472_PreviewDocCertServlet.pdf';
+
+    // Asynchronous function to load and render the PDF
+    async function renderPDF() {
+        try {
+            // Fetch the PDF file and get its array buffer
+            const response = await fetch(pdfUrl);
+            const pdfData = await response.arrayBuffer();
+
+            // Load the PDF document
+            const pdfDocument = await pdfjsLib.getDocument({ data: pdfData }).promise;
+
+            // Get the first page of the PDF
+            const pdfPage = await pdfDocument.getPage(1);
+
+            // Get the canvas element to render the PDF
+            const pdfContainer = document.getElementById('pdf-container');
+            const canvas = document.createElement('canvas');
+            canvas.id = 'pdf-canvas';
+            pdfContainer.appendChild(canvas);
+
+            // Set the canvas context
+            const context = canvas.getContext('2d');
+
+            // Get the desired scale for rendering (optional)
+            const desiredScale = 1.5; // Change this value as needed
+
+            // Get the viewport of the PDF page
+            const viewport = pdfPage.getViewport({ scale: desiredScale });
+
+            // Set the canvas size based on the PDF page size
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+
+            // Render the PDF page on the canvas
+            const renderContext = {
+                canvasContext: context,
+                viewport: viewport,
+            };
+            await pdfPage.render(renderContext).promise;
+        } catch (error) {
+            console.error('Error loading or rendering the PDF:', error);
+        }
+    }
+
+    // Call the renderPDF function to load and display the PDF
+    renderPDF();
+
+    var pdfCanvas = $('#pdf-canvas');
+
+    // Handle click event on the PDF canvas
+    pdfCanvas.on('click', function(e) {
+        alert();
+        // Get the click coordinates relative to the canvas
+        var canvasOffset = pdfCanvas.offset();
+        var clickX = e.pageX - canvasOffset.left;
+        var clickY = e.pageY - canvasOffset.top;
+
+        // Get the current PDF page being displayed
+        var pdfPageNumber = PDFViewerApplication.pdfViewer.currentPageNumber;
+        var pdfPage = PDFViewerApplication.pdfViewer.getPageView(pdfPageNumber - 1);
+
+        // Get the scale of the PDF rendering
+        var scale = pdfPage.viewport.scale;
+
+        // Calculate the approximate x, y coordinates on the PDF
+        var pdfX = clickX / scale;
+        var pdfY = clickY / scale;
+
+        // Now you have the approximate click coordinates (pdfX, pdfY) on the PDF
+        console.log('Clicked on PDF at: X=' + pdfX + ', Y=' + pdfY);
+    });
+});
+
+
+</script>

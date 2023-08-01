@@ -206,13 +206,21 @@ class ExternalBookController extends Controller
                 $fileType = $fileInfo['extension'];
                 if ($fileType == "pdf") {
                     $preview = url('/') . '/images/pdf.jpg';
-                    $iframe .= '<iframe src="'.$imgf.'"
+                    /* $iframe .= '<iframe src="'.$imgf.'"
                     width="100%"
                     height="600"
                     frameborder="0"
                     style="margin: 10px 0;"
                     id="iframe_'.$pics->filename.'">
-                    </iframe>';
+                    </iframe>'; */
+                    $iframe .= '<embed src="'.$imgf.'"
+                    width="95%"
+                    height="650"
+                    type="application/pdf"
+                    class="pdf-viewer"
+                    style="margin: 10px 0;"
+                    id="iframe_'.$pics->filename.'">
+                    </embed>';
                 } else {
                     $preview = urldecode($imgf);
                     $iframe .= '<div style="width: 100%; height: 600px; overflow: auto;" id="iframe_'.$pics->filename.'">

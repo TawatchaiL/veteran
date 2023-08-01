@@ -95,6 +95,17 @@ class FileUploadService
         imagettftext($image->getCore(), $fontSize, 0, $textX, $textY, imagecolorallocate($image->getCore(), $fontColor[0], $fontColor[1], $fontColor[2]), $fontPath, $text);
     }
 
+    private static function addTextInFrontOfLine($image, $x, $y, $text)
+    {
+        $image->text($text, $x, $y, function ($font) {
+            $font->file(public_path('fonts/THSarabunNew Bold.ttf')); // Replace 'path-to-your-font.ttf' with the actual path to your font file
+            $font->size(14); // Adjust the font size as needed
+            $font->color('#0000FF'); // Adjust the text color as needed
+            $font->align('left'); // Align the text to the left
+            $font->valign('top'); // Align the text to the top
+        });
+    }
+
 
     public static function createTransparentRectangleImageWithText($width, $height, $borderWidth, $borderColor, $filename, $borderMargin, $lineSpacing, $lineMarginLeft, $lineMarginRight, $stampText)
     {
@@ -115,14 +126,25 @@ class FileUploadService
 
 
 
+        //top text
+        $topSpaceText = 'เทศบาลตำบลหนองโดน';
+        $image->text($topSpaceText, $frameX1 + 20, $frameY1 + 15, function ($font) {
+            // Set font properties if needed
+            $font->file(public_path('fonts/THSarabunNew Bold.ttf'));
+            $font->size(18);
+            $font->color('#0000FF');
+        });
+
+
+
         // Calculate the y-coordinate for the top, center, and bottom lines
-        $yTop = $frameY1 + $lineSpacing;
-        $yCenter = ($frameY1 + $frameY2) / 2;
-        $yBottom = $frameY2 - $lineSpacing;
+        $yTop = ($frameY1 + $lineSpacing) + 15;
+        $yCenter = (($frameY1 + $frameY2) / 2) + 15;
+        $yBottom = ($frameY2 - $lineSpacing) + 15;
 
         // Draw the three dotted lines inside the frame with adjustable thickness
-        $lineThickness = 1; // Adjust the line thickness as needed
-        $dotLength = 4; // Adjust the length of each dotted segment as needed
+        $lineThickness = 0.5; // Adjust the line thickness as needed
+        $dotLength = 2; // Adjust the length of each dotted segment as needed
 
         // Top dotted line
         $lineX1Top = $frameX1 + $lineMarginLeft;
@@ -162,13 +184,30 @@ class FileUploadService
             $x += 2 * $dotLength; // Adjust the spacing between each dotted segment as needed
         }
 
+        //text before line
+        $textX1Top = $lineX1Top - 35; // Adjust the value as needed to position the text in front of the line
+        $textYTop = $yTop - 10; // Adjust the value as needed to position the text in front of the line
+        self::addTextInFrontOfLine($image, $textX1Top, $textYTop, 'เลขที่รับ');
 
+        $textX1Center = $lineX1Center - 23; // Adjust the value as needed to position the text in front of the line
+        $textYCenter = $yCenter - 10; // Adjust the value as needed to position the text in front of the line
+        self::addTextInFrontOfLine($image, $textX1Center, $textYCenter, 'วันที่');
+
+        $textX1Bottom = $lineX1Bottom - 23; // Adjust the value as needed to position the text in front of the line
+        $textYBottom = $yBottom - 8; // Adjust the value as needed to position the text in front of the line
+        self::addTextInFrontOfLine($image, $textX1Bottom, $textYBottom, 'เวลา');
+        //text before line
+
+        //text on line
         $textForTopLine = $stampText;
         self::addTextAtCenterOfLine($image, $lineX1Top, $lineX2Top, $yTop, $textForTopLine);
         $textForCenterLine = $stampText;
         $textForBottomLine = $stampText;
         self::addTextAtCenterOfLine($image, $lineX1Center, $lineX2Center, $yCenter, $textForCenterLine);
         self::addTextAtCenterOfLine($image, $lineX1Bottom, $lineX2Bottom, $yBottom, $textForBottomLine);
+        //text on line
+
+
         // Check if the file already exists, and delete it if it does
         $filePath = public_path('stamps/' . $filename . '.png'); // Modify the file extension to PNG
         if (File::exists($filePath)) {
@@ -227,7 +266,10 @@ class FileUploadService
         $output = [];
         $returnValue = 0;
         // Generate the output file path
+
         $outp = public_path() . '/stamps/' . Str::random(40) . '.pdf';
+        $outp = $filePath;
+
 
         // Construct the command to be executed
         $command = 'gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile="' . $outp . '" "' . $filePath . '"';
@@ -237,17 +279,10 @@ class FileUploadService
 
         // Check if the command was executed successfully
         if ($returnValue === 0) {
-            // Command executed successfully
-            // $outp now contains the path to the generated PDF file
-            // You can use $output to get the output of the command if needed
-            // For example, you can use var_dump($output) to see the command output
-            // or use implode(PHP_EOL, $output) to get the output as a string with newlines
-            // Note: The output of Ghostscript may go to stderr instead of stdout, so you may need to redirect stderr to stdout in the command if needed.
         } else {
-            // There was an error executing the command
-            // You can handle the error here, log it, or display a message to the user
+            //dd($output);
         }
-        //dd($output);
+
 
         // Create an instance of FPDI with TCPDF and FPDI Protection
         //$pdf = new FpdiProtection();
@@ -272,14 +307,14 @@ class FileUploadService
         // Add the image stamp to the PDF
         $stampImagePath = self::createTransparentRectangleImageWithText(
             200,
-            100,
+            120,
             1,
             [0, 0, 255],
             'stamp_image',
             10,
-            18,
-            20,
-            20,
+            25,
+            45,
+            10,
             $stampText
         );
 
