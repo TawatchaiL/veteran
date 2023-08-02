@@ -5,6 +5,9 @@
 @endsection
 
 @section('content')
+    <div id="loadingOverlay">
+        <div class="loader"></div>
+    </div>
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -105,7 +108,7 @@
             </div>
 
         </div>
-       
+
 
     </section>
 
@@ -123,4 +126,3 @@
     @include('external-docs.dropzone')
     @include('external-docs.script')
 @endsection
-

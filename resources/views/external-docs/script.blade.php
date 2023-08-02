@@ -301,6 +301,7 @@
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
+            $(this).prop('disabled', true);
 
             isValid = true;
             var values = $("input[name='imgFiles[]']")
@@ -316,7 +317,9 @@
             }
 
             if (!isValid) {
+                $("#SubmitCreateForm").prop('disabled', false);
                 return false;
+
             }
 
 
@@ -361,6 +364,7 @@
                         clearDropzonePreviews();
                         $('#CreateModal').modal('hide');
                     }
+                    $("#SubmitCreateForm").prop('disabled', false);
                 }
             });
         });
@@ -368,6 +372,7 @@
 
 
         $('#CreateStamp').click(function(e) {
+            $(this).prop('disabled', true);
             cstamp(e);
         });
 
@@ -377,6 +382,7 @@
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
+            $('#loadingOverlay').show();
 
             isValid = true;
             var values = $("input[name='imgFiles[]']")
@@ -392,6 +398,8 @@
             }
 
             if (!isValid) {
+                $('#loadingOverlay').hide();
+                $("#CreateStamp").prop('disabled', false);
                 return false;
             }
 
@@ -422,6 +430,8 @@
                         });
                         $('#upload_preview').html(result.iframe)
                     }
+                    $('#loadingOverlay').hide();
+                    $("#CreateStamp").prop('disabled', false);
                 }
             });
         }
@@ -432,6 +442,8 @@
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
+            $('#loadingOverlay').show();
+            $(this).prop('disabled', true)
 
             isValid = true;
             var values = $("input[name='imgFiles2[]']")
@@ -447,6 +459,8 @@
             }
 
             if (!isValid) {
+                $('#loadingOverlay').hide();
+                $("#EditStamp").prop('disabled', false);
                 return false;
             }
 
@@ -477,6 +491,8 @@
                         $('#file_preview').html('');
                         $('#upload_preview2').html(result.iframe)
                     }
+                    $('#loadingOverlay').hide();
+                    $("#EditStamp").prop('disabled', false);
                 }
             });
         });
@@ -668,6 +684,7 @@
         $('#SubmitEditForm').click(function(e) {
             if (!confirm("ยืนยันการทำรายการ ?")) return;
             e.preventDefault();
+            $(this).prop('disabled', true);
 
             $('.alert-danger').html('');
             $('.alert-danger').hide();
@@ -726,6 +743,7 @@
                         //}, 10000);
 
                     }
+                    $("#SubmitEditForm").prop('disabled', false);
                 }
             });
         });

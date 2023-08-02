@@ -39,11 +39,11 @@ class FileUploadService
 
                     $output = [];
                     $returnValue = 0;
-                    // Generate the output file path
-                    $new_new = "pdf_".$newname;
+
+                    $new_new = "pdf_" . $newname;
                     $convert = public_path() . '/file_upload/' . $new_new;
                     $orifile = public_path() . '/file_upload/' . $newname;
-                    // Construct the command to be executed
+
                     $command = 'gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile="' .  $convert . '" "' . $orifile . '"';
 
                     // Execute the command and capture the output and return value
