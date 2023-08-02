@@ -121,7 +121,7 @@
                                             <div class="form-group">
                                                 <strong>ลงวันที่:</strong>
                                                 @php
-                                                    $datethai = date('m/d/') . date('Y') + 543;
+                                                    $datethai = date('m/d/') . date('Y') + 543 ." ".date("H:i");
                                                 @endphp
                                                 {!! Form::text('signdate', $datethai, [
                                                     'id' => 'AddDate',
