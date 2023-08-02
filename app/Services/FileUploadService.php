@@ -272,7 +272,7 @@ class FileUploadService
         // Generate the output file path
 
         $outp = public_path() . '/stamps/' . Str::random(40) . '.pdf';
-        $outp = $filePath;
+        //$outp = $filePath;
 
 
         // Construct the command to be executed
@@ -355,8 +355,10 @@ class FileUploadService
             unlink($stampedFilePath);
         }
 
+
         // Save the stamped PDF
         $pdf->Output($stampedFilePath, 'F');
+        unlink($outp);
 
         // Output the stamped PDF as a response
         //$pdf->Output();

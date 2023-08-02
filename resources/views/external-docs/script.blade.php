@@ -368,10 +368,10 @@
 
 
         $('#CreateStamp').click(function(e) {
-            cstamp();
+            cstamp(e);
         });
 
-        function cstamp() {
+        function cstamp(e) {
             e.preventDefault();
             $('.alert-danger').html('');
             $('.alert-danger').hide();
