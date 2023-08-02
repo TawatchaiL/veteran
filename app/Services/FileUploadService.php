@@ -32,6 +32,32 @@ class FileUploadService
                 $newname = Str::random(40) . "_" . $imageName;
                 $image->move(public_path('file_upload'), $newname);
 
+                $fileType = $image->getClientMimeType();
+
+                // Check if the file is a PDF
+                if ($fileType === 'application/pdf') {
+
+                    $output = [];
+                    $returnValue = 0;
+                    // Generate the output file path
+                    $new_new = "pdf_".$newname;
+                    $convert = public_path() . '/file_upload/' . $new_new;
+                    $orifile = public_path() . '/file_upload/' . $newname;
+                    // Construct the command to be executed
+                    $command = 'gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile="' .  $convert . '" "' . $orifile . '"';
+
+                    // Execute the command and capture the output and return value
+                    exec($command, $output, $returnValue);
+
+                    // Check if the command was executed successfully
+                    if ($returnValue === 0) {
+                    } else {
+                        //dd($output);
+                    }
+
+                    $newname = $new_new;
+                }
+
                 $imageUpload = new FileUpload();
                 $imageUpload->filename = $newname;
                 $imageUpload->oldname = $imageName;
@@ -267,26 +293,9 @@ class FileUploadService
         if (!file_exists($filePath)) {
             return false; // Return false or handle the error if the file doesn't exist
         }
-        $output = [];
-        $returnValue = 0;
-        // Generate the output file path
-
-        $outp = public_path() . '/stamps/' . Str::random(40) . '.pdf';
-        //$outp = $filePath;
 
 
-        // Construct the command to be executed
-        $command = 'gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile="' . $outp . '" "' . $filePath . '"';
-
-        // Execute the command and capture the output and return value
-        exec($command, $output, $returnValue);
-
-        // Check if the command was executed successfully
-        if ($returnValue === 0) {
-        } else {
-            //dd($output);
-        }
-
+        $outp = $filePath;
 
         // Create an instance of FPDI with TCPDF and FPDI Protection
         //$pdf = new FpdiProtection();
@@ -358,7 +367,7 @@ class FileUploadService
 
         // Save the stamped PDF
         $pdf->Output($stampedFilePath, 'F');
-        unlink($outp);
+        //unlink($outp);
 
         // Output the stamped PDF as a response
         //$pdf->Output();
