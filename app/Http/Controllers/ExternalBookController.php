@@ -191,23 +191,21 @@ class ExternalBookController extends Controller
             return response()->json(['errors' => $validator->errors()->all()]);
         }
 
+        //signature
+        $signatureData = $request->input('signature');
+        $encodedData = str_replace('data:image/png;base64,', '', $signatureData);
+        $decodedData = base64_decode($encodedData);
+        $sign_name = '/stamps/' . uniqid() . '.png';
+        $signpath = public_path() . $sign_name;
+        File::put($signpath, $decodedData);
+
         $input = $request->all();
         $input['doc_receive_number'] = BookRunningNumber::generate();
+        $input['signature'] = $sign_name;
         //dd($input);
         $ex = ExternalBook::create($input);
 
         //file att
-
-        $signatureData = $request->input('signature');
-        // Remove the data URI prefix from the image data
-        $encodedData = str_replace('data:image/png;base64,', '', $signatureData);
-        // Decode the base64 data
-        $decodedData = base64_decode($encodedData);
-        // Define the path and filename for saving the image
-        //$filename = 'signatures/' . uniqid() . '.png'; // Replace 'signatures/' with your desired locatio
-        $signpath = public_path() . '/stamps/' . uniqid() . '.png';
-        File::put($signpath, $decodedData);
-
 
         $filesa = $request->get('img');
 
@@ -352,6 +350,14 @@ class ExternalBookController extends Controller
             return response()->json(['errors' => $validator->errors()->all()]);
         }
 
+        //signature
+        $signatureData = $request->input('signature');
+        $encodedData = str_replace('data:image/png;base64,', '', $signatureData);
+        $decodedData = base64_decode($encodedData);
+        $sign_name = '/stamps/' . uniqid() . '.png';
+        $signpath = public_path() . $sign_name;
+        File::put($signpath, $decodedData);
+
         $data = [
             'priorities_id' => $request->get('priorities_id'),
             'doc_receive_number' => $request->get('doc_receive_number'),
@@ -363,6 +369,9 @@ class ExternalBookController extends Controller
             'doc_receive' => $request->get('doc_receive'),
             'stampx' => $request->get('stampx'),
             'stampy' => $request->get('stampy'),
+            'sstampx' => $request->get('sstampx'),
+            'sstampy' => $request->get('sstampy'),
+            'signature' => $sign_name,
         ];
 
         $expen = ExternalBook::find($id);
@@ -393,7 +402,7 @@ class ExternalBookController extends Controller
 
                 $uploadedFilePath = public_path('file_store/' . $oldfile[0]->filename);
                 $stampd = explode(" ", $request->get('signdate'));
-                $stampedFilePath = FileUploadService::stampPDFWithImage($uploadedFilePath, $request->get('stampx'), $request->get('stampy'), $request->get('doc_receive_number'), $stampd[0], $stampd[1]);
+                $stampedFilePath = FileUploadService::stampPDFWithImage($uploadedFilePath, $request->get('stampx'), $request->get('stampy'), $request->get('doc_receive_number'), $stampd[0], $stampd[1], $signpath, $request->get('sstampx'), $request->get('sstampy'));
             }
         }
 

@@ -1,6 +1,7 @@
 <script>
-     $(document).ready(function() {
-     var table = $('#Listview').DataTable({
+    var table;
+    $(document).ready(function() {
+        var table = $('#Listview').DataTable({
             /*"aoColumnDefs": [
             {
             'bSortable': true,
@@ -99,5 +100,88 @@
             "autoWidth": false,
             "responsive": true,
         });
+
+        $(".delete_all_button").click(function() {
+            var len = $('input[name="table_records[]"]:checked').length;
+            if (len > 0) {
+
+                if (confirm("ยืนยันการลบข้อมูล ?")) {
+                    $('form#delete_all').submit();
+                }
+            } else {
+                alert("กรุณาเลือกรายการที่จะลบ");
+            }
+
+        });
+
+
+        $('#check-all').click(function() {
+            $(':checkbox.flat').prop('checked', this.checked);
+        });
+
+
+        let rid;
+        let rid2;
+        $(document).on('click', '#getDeleteData', function(e) {
+            e.preventDefault();
+            $('.alert-danger').html('');
+            $('.alert-danger').hide();
+            $('.alert-success').html('');
+            $('.alert-success').hide();
+            rid = $(this).data('id');
+            rid2 = $(this).data('id2');
+            if (confirm("Click OK to Delete?")) {
+                $.ajax({
+                    url: "external-docs/delete/img/" + rid + "/" + rid2,
+                    method: 'PUT',
+                    // async : false,
+                    success: function(res) {
+                        toastr.success('ลบไฟล์เรียบร้อยแล้ว', {
+                            timeOut: 5000
+                        });
+                        console.log(res);
+                        $('.imgs').html(res.imgs);
+                        $('#file_preview').empty();
+                        $('#file_preview').html(res.iframes);
+                        $('#editdata [name="imgFiles3[]"]').remove();
+                        $('#editdata').append(res.inputf);
+
+                    }
+                })
+            }
+        })
+
+
+        $(document).on('click', '.btn-delete', function() {
+            if (!confirm("ยืนยันการทำรายการ ?")) return;
+
+            var rowid = $(this).data('rowid')
+            var el = $(this)
+            if (!rowid) return;
+
+
+            $.ajax({
+                //type: "POST",
+                method: 'DELETE',
+                dataType: 'JSON',
+                url: "external-docs/destroy/",
+                data: {
+                    id: rowid,
+                    //_method: 'delete',
+                    _token: token
+                },
+                success: function(data) {
+                    console.log(data);
+                    if (data.success) {
+                        toastr.success(data.message, {
+                            timeOut: 5000
+                        });
+                        table.row(el.parents('tr'))
+                            .remove()
+                            .draw();
+                    }
+                }
+            }); //end ajax
+        })
     });
 </script>

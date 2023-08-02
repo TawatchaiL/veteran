@@ -256,8 +256,8 @@
 
                                             <div class="form-group">
                                                 <div class="signpadi">
-                                                    <canvas id="signature-pad" width="300"
-                                                        height="100"></canvas>
+                                                    <canvas id="signature-pad" width="350"
+                                                        height="150"></canvas>
                                                 </div>
                                             </div>
                                             <div class="form-group">

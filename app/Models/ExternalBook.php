@@ -20,6 +20,7 @@ class ExternalBook extends Model
         'stampx', 
         'stampy',
         'sstampx',
-        'sstampy'
+        'sstampy',
+        'signature'
     ];
 }

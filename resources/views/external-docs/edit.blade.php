@@ -88,7 +88,7 @@
                                                     <div class="form-group">
                                                         <strong>ระดับชั้นความเร็วของหนังสือ:</strong>
                                                         <div class="input-group">
-                                                            <select style="width: 90%;"
+                                                            <select style="width: 89%;"
                                                                 class="priorities select2 select2_single form-control"
                                                                 id="EditPriorities" name="epriorities"
                                                                 multiple="multiple">
@@ -124,7 +124,7 @@
                                                     <div class="form-group">
                                                         <strong>จาก:</strong>
                                                         <div class="input-group">
-                                                            <select style="width: 90%;"
+                                                            <select style="width: 89%;"
                                                                 class="doc_from select2 select2_single form-control"
                                                                 id="EditDocFrom" name="edoc_from"
                                                                 multiple="multiple">
@@ -251,9 +251,33 @@
                                                             id="estampy">
                                                     </div>
                                                     <div class="form-group">
-                                                        <button type="button" class="btn btn-info"
-                                                            id="EditStamp">ประทับตรายาง</button>
+                                                        <div class="signpadi">
+                                                            <canvas id="esignature-pad" width="350"
+                                                                height="150"></canvas>
+                                                        </div>
                                                     </div>
+                                                    <div class="form-group">
+                                                        <label for="customRange3">ตำแหน่งประทับลายเซ็นต์แนวตั้ง</label>
+                                                        <input type="range" min="5" max="200" 
+                                                            class="custom-range custom-range-teal" id="esstampx">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="customRange3">ตำแหน่งประทับลายเซ็นต์แนวนอน</label>
+                                                        <input type="range" min="2" max="280" 
+                                                            class="custom-range custom-range-teal" id="esstampy">
+                                                    </div>
+                                                    <div class="from-group">
+                                                        {{-- <button type="button" class="inner4 btn btn-primary"
+                                                        data-toggle="modal" data-target="#innerModal4"><i
+                                                            class="fas fa-plus"></i>เซ็นต์</button> --}}
+                                                        <button type="button" class="btn btn-danger"
+                                                            id="eclear-signature">ล้างลายเซ็นต์</button>
+                                                        <button type="button" class="btn btn-info"
+                                                            id="EditStamp">ประทับตรายางและลายเซ็นต์</button>
+                                                        {{-- <button type="button" class="btn btn-primary"
+                                                            id="save-signature">ลงลายเซ็นต์บนเอกสาร</button> --}}
+                                                    </div>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
