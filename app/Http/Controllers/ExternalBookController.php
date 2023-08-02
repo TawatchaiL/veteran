@@ -116,6 +116,17 @@ class ExternalBookController extends Controller
             return response()->json(['errors' => $validator->errors()->all()]);
         }
 
+
+        $signatureData = $request->input('signature');
+        // Remove the data URI prefix from the image data
+        $encodedData = str_replace('data:image/png;base64,', '', $signatureData);
+        // Decode the base64 data
+        $decodedData = base64_decode($encodedData);
+        // Define the path and filename for saving the image
+        //$filename = 'signatures/' . uniqid() . '.png'; // Replace 'signatures/' with your desired locatio
+        $signpath = public_path() . '/stamps/' . uniqid() . '.png';
+        File::put($signpath, $decodedData);
+
         $filesa = $request->get('img');
         $iframe = '';
         foreach ($filesa as $filea) {
@@ -128,15 +139,6 @@ class ExternalBookController extends Controller
                 $uploadedFilePath = public_path('file_upload/' . $oldfile[0]->filename);
             }
 
-            $signatureData = $request->input('signature');
-            // Remove the data URI prefix from the image data
-            $encodedData = str_replace('data:image/png;base64,', '', $signatureData);
-            // Decode the base64 data
-            $decodedData = base64_decode($encodedData);
-            // Define the path and filename for saving the image
-            //$filename = 'signatures/' . uniqid() . '.png'; // Replace 'signatures/' with your desired locatio
-            $signpath = public_path() . '/stamps/' . uniqid() . '.png';
-            File::put($signpath, $decodedData);
 
             $stampd = explode(" ", $request->get('signdate'));
             $stampedFilePath = FileUploadService::stampPDFWithImage($uploadedFilePath, $request->get('stampx'), $request->get('stampy'), $request->get('doc_receive_number'), $stampd[0], $stampd[1], $signpath, $request->get('sstampx'), $request->get('sstampy'));
@@ -196,6 +198,17 @@ class ExternalBookController extends Controller
 
         //file att
 
+        $signatureData = $request->input('signature');
+        // Remove the data URI prefix from the image data
+        $encodedData = str_replace('data:image/png;base64,', '', $signatureData);
+        // Decode the base64 data
+        $decodedData = base64_decode($encodedData);
+        // Define the path and filename for saving the image
+        //$filename = 'signatures/' . uniqid() . '.png'; // Replace 'signatures/' with your desired locatio
+        $signpath = public_path() . '/stamps/' . uniqid() . '.png';
+        File::put($signpath, $decodedData);
+
+
         $filesa = $request->get('img');
 
         foreach ($filesa as $filea) {
@@ -208,8 +221,9 @@ class ExternalBookController extends Controller
             $filestore->save();
 
             $uploadedFilePath = public_path('file_upload/' . $oldfile[0]->filename);
+
             $stampd = explode(" ", $request->get('signdate'));
-            $stampedFilePath = FileUploadService::stampPDFWithImage($uploadedFilePath, $request->get('stampx'), $request->get('stampy'), $request->get('doc_receive_number'), $stampd[0], $stampd[1]);
+            $stampedFilePath = FileUploadService::stampPDFWithImage($uploadedFilePath, $request->get('stampx'), $request->get('stampy'), $request->get('doc_receive_number'), $stampd[0], $stampd[1], $signpath, $request->get('sstampx'), $request->get('sstampy'));
 
             File::move(public_path() . '/file_upload/' . $oldfile[0]->filename, public_path() . '/file_store/' . $oldfile[0]->filename);
             FileUpload::where('filename', $oldfile[0]->filename)->delete();
