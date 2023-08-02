@@ -55,6 +55,7 @@ class FileUploadService
                         //dd($output);
                     }
 
+                    unlink($orifile);
                     $newname = $new_new;
                 }
 
