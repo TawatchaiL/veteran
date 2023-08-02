@@ -233,13 +233,13 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="customRange3">ตำแหน่งประทับตรายางแนวตั้ง</label>
-                                                    <input type="range" min="5" max="140"
+                                                    <input type="range" min="5" max="200"
                                                         value="100" class="custom-range custom-range-teal"
                                                         id="estampx">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="customRange3">ตำแหน่งประทับตรายางแนวนอน</label>
-                                                    <input type="range" min="2" max="230"
+                                                    <input type="range" min="2" max="280"
                                                         value="5" class="custom-range custom-range-teal"
                                                         id="estampy">
                                                 </div>
@@ -260,7 +260,7 @@
                                             id="EditStamp">ประทับตรายาง</button>
                                         <button type="button" class="btn btn-danger"
                                             id="SubmitEditForm">บันทึก</button>
-                                        
+
                                         {{--  <button type="button" class="btn btn-danger modelClose"
                                             data-dismiss="modal">ปิด</button> --}}
                                     </div>

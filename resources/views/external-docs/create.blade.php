@@ -239,11 +239,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="customRange3">ตำแหน่งประทับตรายางแนวตั้ง</label>
-                                            <input type="range" min="5" max="140" value="100" class="custom-range custom-range-teal" id="stampx">
+                                            <input type="range" min="5" max="200" value="100" class="custom-range custom-range-teal" id="stampx">
                                         </div>
                                         <div class="form-group">
                                             <label for="customRange3">ตำแหน่งประทับตรายางแนวนอน</label>
-                                            <input type="range" min="2" max="230" value="5" class="custom-range custom-range-teal" id="stampy">
+                                            <input type="range" min="2" max="280" value="5" class="custom-range custom-range-teal" id="stampy">
                                         </div>
                                     </div>
                                     {{-- <div class="tab-pane fade" id="custom-tabs-one-preview" role="tabpanel"
@@ -254,12 +254,12 @@
                             </div>
                             <div class="card-footer ">
                                 <!-- Your footer content here -->
-                                
+
                                     <button type="button" class="btn btn-info" id="CreateStamp">ประทับตรายาง</button>
-                               
+
                                     <button type="button" class="btn btn-danger" id="SubmitCreateForm">บันทึกข้อมูล</button>
                                     {{-- <button type="button" class="btn btn-danger modelClose" data-dismiss="modal">ปิด</button> --}}
-                                
+
                             </div>
                         </div>
 
@@ -280,7 +280,7 @@
 
                                 </div>
 
-                              
+
                             </div>
                         </div>
                     </div>
