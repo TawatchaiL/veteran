@@ -123,6 +123,9 @@
 @endsection
 
 @section('script')
+    @include('external-docs.datatable')
     @include('external-docs.dropzone')
+    {{-- @include('external-docs.signature') --}}
     @include('external-docs.script')
+
 @endsection

@@ -128,9 +128,18 @@ class ExternalBookController extends Controller
                 $uploadedFilePath = public_path('file_upload/' . $oldfile[0]->filename);
             }
 
+            $signatureData = $request->input('signature');
+            // Remove the data URI prefix from the image data
+            $encodedData = str_replace('data:image/png;base64,', '', $signatureData);
+            // Decode the base64 data
+            $decodedData = base64_decode($encodedData);
+            // Define the path and filename for saving the image
+            //$filename = 'signatures/' . uniqid() . '.png'; // Replace 'signatures/' with your desired locatio
+            $signpath = public_path() . '/stamps/' . uniqid() . '.png';
+            File::put($signpath, $decodedData);
 
             $stampd = explode(" ", $request->get('signdate'));
-            $stampedFilePath = FileUploadService::stampPDFWithImage($uploadedFilePath, $request->get('stampx'), $request->get('stampy'), $request->get('doc_receive_number'), $stampd[0], $stampd[1]);
+            $stampedFilePath = FileUploadService::stampPDFWithImage($uploadedFilePath, $request->get('stampx'), $request->get('stampy'), $request->get('doc_receive_number'), $stampd[0], $stampd[1], $signpath, $request->get('sstampx'), $request->get('sstampy'));
             $iframe .= '<iframe src="' . $stampedFilePath . '"
                     width="100%"
                     height="650"
@@ -243,7 +252,7 @@ class ExternalBookController extends Controller
         $inputf = "";
         if (!$filestore->isEmpty()) {
             foreach ($filestore as $pics) {
-                $imgf = url('/') . '/file_store/' . $pics->filename;
+                $imgf = url('/') . '/stamps/' . $pics->filename;
 
                 $fileInfo = pathinfo($imgf);
                 $fileType = $fileInfo['extension'];
@@ -279,7 +288,7 @@ class ExternalBookController extends Controller
                 <br><br>";
 
                 $inputf .= "<input type='text' id='" . $pics->filename .
-                    "' class='form_none' name='imgFiles2[]' value='" . $pics->filename . "'/>";
+                    "' class='form_none' name='imgFiles3[]' value='" . $pics->filename . "'/>";
             }
         } else {
             $img = "";
@@ -356,8 +365,6 @@ class ExternalBookController extends Controller
                 $oldfile = FileUpload::where('oldname', $filea)->get();
                 if ($oldfile->isEmpty()) {
                     $oldfile = FileStore::where('filename', $filea)->get();
-                    
-
                 } else {
                     $filestore = new FileStore();
                     $filestore->module = 'external-book';
@@ -365,17 +372,14 @@ class ExternalBookController extends Controller
                     $filestore->filename = $oldfile[0]->filename;
                     $filestore->save();
 
-                
+
                     File::move(public_path() . '/file_upload/' . $oldfile[0]->filename, public_path() . '/file_store/' . $oldfile[0]->filename);
                     FileUpload::where('filename', $oldfile[0]->filename)->delete();
-
-                    
                 }
 
                 $uploadedFilePath = public_path('file_store/' . $oldfile[0]->filename);
                 $stampd = explode(" ", $request->get('signdate'));
                 $stampedFilePath = FileUploadService::stampPDFWithImage($uploadedFilePath, $request->get('stampx'), $request->get('stampy'), $request->get('doc_receive_number'), $stampd[0], $stampd[1]);
-
             }
         }
 

@@ -81,8 +81,36 @@
 
     .modal-dialog-in,
     .modal-dialog-in2,
-    .modal-dialog-in3 {
+    .modal-dialog-in3,
+    .modal-dialog-in4 {
         top: 90px;
+    }
+
+    /* fix disable scrollbar */
+    .modal {
+        overflow-y: auto !important;
+    }
+
+    .signpad {
+        background-color: rgb(226, 223, 223);
+        border: 1px solid black;
+        margin: auto;
+        width: 450px;
+    }
+
+    .signpad {
+        background-color: rgb(226, 223, 223);
+        border: 1px solid black;
+        margin: auto;
+        width: 450px;
+    }
+
+    .signpadi {
+        background-color: rgb(226, 223, 223);
+        border: 1px solid black;
+        margin: auto;
+        width: 350px;
+        height: 150px;
     }
 
 

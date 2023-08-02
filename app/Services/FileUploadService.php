@@ -35,7 +35,7 @@ class FileUploadService
                 $fileType = $image->getClientMimeType();
 
                 // Check if the file is a PDF
-                if ($fileType === 'application/pdf') {
+                /* if ($fileType === 'application/pdf') {
 
                     $output = [];
                     $returnValue = 0;
@@ -57,7 +57,7 @@ class FileUploadService
 
                     unlink($orifile);
                     $newname = $new_new;
-                }
+                } */
 
                 $imageUpload = new FileUpload();
                 $imageUpload->filename = $newname;
@@ -288,7 +288,7 @@ class FileUploadService
     }
 
 
-    public static function stampPDFWithImage($filePath, $x, $y, $stampText1, $stampText2, $stampText3)
+    public static function stampPDFWithImage($filePath, $x, $y, $stampText1, $stampText2, $stampText3, $signPath, $x2, $y2)
     {
         // Check if the file exists
         if (!file_exists($filePath)) {
@@ -350,6 +350,10 @@ class FileUploadService
                 //Put the watermark
                 $stampImage = file_get_contents($stampImagePath);
                 $pdf->Image('@' . $stampImage, $x, $y, 0, 0, '', '', '', false, 300);
+
+                //put signature
+                $stampsImage = file_get_contents($signPath);
+                $pdf->Image('@' . $stampsImage, $x2, $y2, 0, 0, '', '', '', false, 300);
             }
         }
 

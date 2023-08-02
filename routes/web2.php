@@ -33,7 +33,7 @@ Route::post('/save-signature', function (Request $request) {
     $filename = 'signatures/' . uniqid() . '.png'; // Replace 'signatures/' with your desired location
 
     // Save the image to the specified location
-    if (Storage::put($filename, $decodedData)) {
+    if (Storage::disk('public')->put($filename, $decodedData)) {
         return response()->json(['message' => 'Signature saved successfully']);
     } else {
         return response()->json(['error' => 'Failed to save the signature'], 500);

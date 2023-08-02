@@ -13,6 +13,20 @@
     }
 
     $(document).ready(function() {
+        var canvas = document.getElementById('signature-pad');
+        var signaturePad = new SignaturePad(canvas);
+
+        // Optional: Customize the appearance of the signature pad
+        signaturePad.penColor = 'blue'; // Change the pen color
+        signaturePad.backgroundColor = 'rgba(0, 0, 0, 0)'; // Set the background color
+
+        // Handle clear button click event
+        $('#clear-signature').on('click', function() {
+            signaturePad.clear();
+            canvas.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+            //$('#signature-image').attr('src', '');
+        });
+
 
         $(".delete_all_button").click(function() {
             var len = $('input[name="table_records[]"]:checked').length;
@@ -42,6 +56,10 @@
 
         $("button[data-dismiss-modal=modal3]").click(function() {
             $('#innerModal3').modal('hide');
+        });
+
+        $("button[data-dismiss-modal=modal4]").click(function() {
+            $('#innerModal4').modal('hide');
         });
 
         /* $("#AddDate").datepicker({
@@ -105,106 +123,6 @@
         });
 
 
-        var table = $('#Listview').DataTable({
-            /*"aoColumnDefs": [
-            {
-            'bSortable': true,
-            'aTargets': [0]
-            } //disables sorting for column one
-            ],
-            "searching": false,
-            "lengthChange": false,
-            "paging": false,
-            'iDisplayLength': 10,
-            "sPaginationType": "full_numbers",
-            "dom": 'T<"clear">lfrtip',
-                */
-            ajax: '',
-            serverSide: true,
-            processing: true,
-            language: {
-                loadingRecords: '&nbsp;',
-                processing: `<div class="spinner-border text-primary"></div>`,
-                "sProcessing": "กำลังดำเนินการ...",
-                "sLengthMenu": "แสดง_MENU_ แถว",
-                "sZeroRecords": "ไม่พบข้อมูล",
-                "sInfo": "แสดง _START_ ถึง _END_ จาก _TOTAL_ รายการ",
-                "sInfoEmpty": "แสดง 0 ถึง 0 จาก 0 รายการ",
-                "sInfoFiltered": "(กรองข้อมูล _MAX_ ทุกแถว)",
-                "sInfoPostFix": "",
-                "sSearch": "ค้นหา:",
-                "sUrl": "",
-                "oPaginate": {
-                    "sFirst": "เริ่มต้น",
-                    "sPrevious": "ก่อนหน้า",
-                    "sNext": "ถัดไป",
-                    "sLast": "สุดท้าย"
-                }
-            },
-            aaSorting: [
-                [0, "desc"]
-            ],
-            iDisplayLength: 10,
-            lengthMenu: [10, 25, 50, 75, 100],
-            stateSave: true,
-            autoWidth: false,
-            responsive: true,
-            sPaginationType: "full_numbers",
-            dom: 'T<"clear">lfrtip',
-            columns: [{
-                    data: 'checkbox',
-                    name: 'checkbox',
-                    orderable: false,
-                    searchable: false
-                },
-                {
-                    data: 'cname',
-                    name: 'cname'
-                },
-                {
-                    data: 'doc_receive_number',
-                    name: 'doc_receive_number'
-                },
-                {
-                    data: 'subject',
-                    name: 'subject'
-                },
-                {
-                    data: 'signdate',
-                    name: 'signdate'
-                },
-                {
-                    data: 'priorities',
-                    name: 'priorities'
-                },
-                {
-                    data: 'uname',
-                    name: 'uname'
-                },
-                {
-                    data: 'action',
-                    name: 'action'
-                },
-            ]
-        });
-
-
-        $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-        });
-
         $(".departmentl").change(function() {
             let department = $('#AddDepartment').val();
             //console.log(product);
@@ -236,8 +154,6 @@
                 });
             }
         })
-
-
 
 
         $(document).on('click', '#CreateButton', function(e) {
@@ -294,6 +210,14 @@
             $('.success-in').hide();
         });
 
+        $(document).on('click', '.inner4', function(e) {
+            e.preventDefault();
+            $('.alert-in').html('');
+            $('.alert-in').hide();
+            $('.success-in').html('');
+            $('.success-in').hide();
+        });
+
         // Create product Ajax request.
         $('#SubmitCreateForm').click(function(e) {
             e.preventDefault();
@@ -328,8 +252,11 @@
                 method: 'post',
                 data: {
                     img: values,
+                    signature: signatureData,
                     stampx: $('#stampx').val(),
                     stampy: $('#stampy').val(),
+                    sstampx: $('#sstampx').val(),
+                    sstampy: $('#sstampy').val(),
                     doc_receive_number: $('#AddNumber').val(),
                     doc_number: $('#AddDocNumber').val(),
                     priorities_id: $('#AddPriorities').val()[0],
@@ -385,6 +312,12 @@
             $('#loadingOverlay').show();
 
             isValid = true;
+            if (signaturePad.isEmpty()) {
+                toastr.error('กรุณาเซ็นต์ลายเซ็น', {
+                    timeOut: 5000
+                });
+                isValid = false;
+            }
             var values = $("input[name='imgFiles[]']")
                 .map(function() {
                     return $(this).val();
@@ -403,16 +336,19 @@
                 return false;
             }
 
-
+            var signatureData = signaturePad.toDataURL();
             $.ajax({
                 url: "{{ route('external-docs.stamp') }}",
                 method: 'post',
                 data: {
                     img: values,
+                    signature: signatureData,
                     doc_receive_number: $('#AddNumber').val(),
                     signdate: $('#AddDate').val(),
                     stampx: $('#stampx').val(),
                     stampy: $('#stampy').val(),
+                    sstampx: $('#sstampx').val(),
+                    sstampy: $('#sstampy').val(),
                     _token: token,
                 },
                 success: function(result) {
@@ -446,12 +382,13 @@
             $(this).prop('disabled', true)
 
             isValid = true;
-            var values = $("input[name='imgFiles2[]']")
+            var values = $("input[name='imgFiles2[]']").add("input[name='imgFiles3[]']")
                 .map(function() {
                     return $(this).val();
                 }).get();
 
-            if (!document.getElementsByName('imgFiles2[]').length) {
+            if (!document.getElementsByName('imgFiles2[]').length && !document.getElementsByName(
+                    'imgFiles3[]').length) {
                 toastr.error('กรุณาอัพโหลดไฟล์', {
                     timeOut: 5000
                 });
@@ -691,12 +628,26 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
-            var values = $("input[name='imgFiles2[]']")
+            isValid = true;
+            var values = $("input[name='imgFiles2[]']").add("input[name='imgFiles3[]']")
                 .map(function() {
                     return $(this).val();
                 }).get();
 
-            console.log(values);
+            if (!document.getElementsByName('imgFiles2[]').length && !document.getElementsByName(
+                    'imgFiles3[]').length) {
+                toastr.error('กรุณาอัพโหลดไฟล์', {
+                    timeOut: 5000
+                });
+                isValid = false;
+            }
+
+            if (!isValid) {
+                $("#SubmitEditForm").prop('disabled', false);
+                return false;
+            }
+
+            //console.log(values);
 
             $.ajax({
                 url: "external-docs/save/" + id,
@@ -767,10 +718,11 @@
                         toastr.success('ลบไฟล์เรียบร้อยแล้ว', {
                             timeOut: 5000
                         });
-                        console.log(res.inputf);
+                        console.log(res);
                         $('.imgs').html(res.imgs);
                         $('#file_preview').empty();
                         $('#file_preview').html(res.iframes);
+                        $('#editdata [name="imgFiles3[]"]').remove();
                         $('#editdata').append(res.inputf);
 
                     }

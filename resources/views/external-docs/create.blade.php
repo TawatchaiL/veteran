@@ -47,19 +47,20 @@
                                         <a class="nav-link active" id="custom-tabs-one-profile-tab" data-toggle="pill"
                                             href="#custom-tabs-one-profile" role="tab"
                                             aria-controls="custom-tabs-one-profile"
-                                            aria-selected="false">อัพโหลดไฟล์นำเข้าเอกสาร</a>
+                                            aria-selected="false">นำเข้าเอกสาร</a>
                                     </li>
-                                    {{--  <li class="nav-item">
-                                        <a class="nav-link" id="custom-tabs-one-preview-tab" data-toggle="pill"
-                                            href="#custom-tabs-one-preview" role="tab"
-                                            aria-controls="custom-tabs-one-preview"
-                                            aria-selected="false">ดูเอกสารที่อัพโหลด</a>
-                                    </li> --}}
+
                                     <li class="nav-item">
                                         <a class="nav-link " id="custom-tabs-one-home-tab" data-toggle="pill"
                                             href="#custom-tabs-one-home" role="tab"
                                             aria-controls="custom-tabs-one-home"
                                             aria-selected="true">รายละเอียดหนังสือ</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="custom-tabs-one-preview-tab" data-toggle="pill"
+                                            href="#custom-tabs-one-preview" role="tab"
+                                            aria-controls="custom-tabs-one-preview"
+                                            aria-selected="false">ประทับตรา/เซ็นต์</a>
                                     </li>
 
                                 </ul>
@@ -237,28 +238,59 @@
                                             style="font-size: 1.5em;">
                                             <h3 class="dropzone-previews ui"></h3>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="customRange3">ตำแหน่งประทับตรายางแนวตั้ง</label>
-                                            <input type="range" min="5" max="200" value="100" class="custom-range custom-range-teal" id="stampx">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="customRange3">ตำแหน่งประทับตรายางแนวนอน</label>
-                                            <input type="range" min="2" max="280" value="5" class="custom-range custom-range-teal" id="stampy">
+
+                                    </div>
+                                    <div class="tab-pane fade" id="custom-tabs-one-preview" role="tabpanel"
+                                        aria-labelledby="custom-tabs-one-profile-preview">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label for="customRange3">ตำแหน่งประทับตรายางแนวตั้ง</label>
+                                                <input type="range" min="5" max="200" value="100"
+                                                    class="custom-range custom-range-teal" id="stampx">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="customRange3">ตำแหน่งประทับตรายางแนวนอน</label>
+                                                <input type="range" min="2" max="280" value="5"
+                                                    class="custom-range custom-range-teal" id="stampy">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="signpadi">
+                                                    <canvas id="signature-pad" width="300"
+                                                        height="100"></canvas>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="customRange3">ตำแหน่งประทับลายเซ็นต์แนวตั้ง</label>
+                                                <input type="range" min="5" max="200" value="20"
+                                                    class="custom-range custom-range-teal" id="sstampx">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="customRange3">ตำแหน่งประทับลายเซ็นต์แนวนอน</label>
+                                                <input type="range" min="2" max="280" value="5"
+                                                    class="custom-range custom-range-teal" id="sstampy">
+                                            </div>
+                                            <div class="from-group">
+                                                {{-- <button type="button" class="inner4 btn btn-primary"
+                                                data-toggle="modal" data-target="#innerModal4"><i
+                                                    class="fas fa-plus"></i>เซ็นต์</button> --}}
+                                                <button type="button" class="btn btn-danger"
+                                                    id="clear-signature">ล้างลายเซ็นต์</button>
+                                                <button type="button" class="btn btn-info"
+                                                    id="CreateStamp">ประทับตรายางและลายเซ็นต์</button>
+                                                {{-- <button type="button" class="btn btn-primary"
+                                                    id="save-signature">ลงลายเซ็นต์บนเอกสาร</button> --}}
+                                            </div>
                                         </div>
                                     </div>
-                                    {{-- <div class="tab-pane fade" id="custom-tabs-one-preview" role="tabpanel"
-                                        aria-labelledby="custom-tabs-one-profile-preview">
-
-                                    </div> --}}
                                 </div>
                             </div>
                             <div class="card-footer ">
                                 <!-- Your footer content here -->
-
-                                    <button type="button" class="btn btn-info" id="CreateStamp">ประทับตรายาง</button>
-
-                                    <button type="button" class="btn btn-danger" id="SubmitCreateForm">บันทึกข้อมูล</button>
-                                    {{-- <button type="button" class="btn btn-danger modelClose" data-dismiss="modal">ปิด</button> --}}
+                                <button type="button" class="btn btn-success"
+                                    id="SubmitCreateForm">บันทึกข้อมูล</button>
+                                <button type="button" class="btn btn-danger modelClose"
+                                    data-dismiss="modal">ปิด</button>
 
                             </div>
                         </div>

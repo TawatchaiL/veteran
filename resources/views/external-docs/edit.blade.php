@@ -37,19 +37,20 @@
                                                 <a class="nav-link active" id="custom-tabs-one-profile-tab2"
                                                     data-toggle="pill" href="#custom-tabs-one-profile2" role="tab"
                                                     aria-controls="custom-tabs-one-profile2"
-                                                    aria-selected="false">อัพโหลดไฟล์นำเข้าเอกสาร</a>
+                                                    aria-selected="false">นำเข้าเอกสาร</a>
                                             </li>
-                                            {{--  <li class="nav-item">
-                                                <a class="nav-link" id="custom-tabs-one-preview-tab2" data-toggle="pill"
-                                                    href="#custom-tabs-one-preview2" role="tab"
-                                                    aria-controls="custom-tabs-one-preview2"
-                                                    aria-selected="false">ดูเอกสารที่อัพโหลด</a>
-                                            </li> --}}
+
                                             <li class="nav-item">
                                                 <a class="nav-link " id="custom-tabs-one-home-tab2" data-toggle="pill"
                                                     href="#custom-tabs-one-home2" role="tab"
                                                     aria-controls="custom-tabs-one-home2"
                                                     aria-selected="true">รายละเอียดหนังสือ</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="custom-tabs-one-preview-tab2" data-toggle="pill"
+                                                    href="#custom-tabs-one-preview2" role="tab"
+                                                    aria-controls="custom-tabs-one-preview2"
+                                                    aria-selected="false">ประทับตรา/เซ็นต์</a>
                                             </li>
 
                                         </ul>
@@ -125,7 +126,8 @@
                                                         <div class="input-group">
                                                             <select style="width: 90%;"
                                                                 class="doc_from select2 select2_single form-control"
-                                                                id="EditDocFrom" name="edoc_from" multiple="multiple">
+                                                                id="EditDocFrom" name="edoc_from"
+                                                                multiple="multiple">
                                                                 <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                                                                           <option value="" selected>Select Parent</option>-->
                                                                 @foreach ($contacts as $key)
@@ -165,7 +167,7 @@
                                                     <div class="form-group">
                                                         <strong>ผู้รับ:</strong>
                                                         <div class="input-group">
-                                                            <select style="width: 85%;"
+                                                            <select style="width: 84%;"
                                                                 class="doc_receive select2 select2_single form-control"
                                                                 id="EditReceive" name="edoc_receive"
                                                                 multiple="multiple" readonly>
@@ -231,42 +233,41 @@
                                                     style="font-size: 1.5em;">
                                                     <h3 class="dropzone-previews ui"></h3>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="customRange3">ตำแหน่งประทับตรายางแนวตั้ง</label>
-                                                    <input type="range" min="5" max="200"
-                                                        value="100" class="custom-range custom-range-teal"
-                                                        id="estampx">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="customRange3">ตำแหน่งประทับตรายางแนวนอน</label>
-                                                    <input type="range" min="2" max="280"
-                                                        value="5" class="custom-range custom-range-teal"
-                                                        id="estampy">
+
+                                            </div>
+                                            <div class="tab-pane fade" id="custom-tabs-one-preview2" role="tabpanel"
+                                                aria-labelledby="custom-tabs-one-profile-preview2">
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <label for="customRange3">ตำแหน่งประทับตรายางแนวตั้ง</label>
+                                                        <input type="range" min="5" max="200"
+                                                            value="100" class="custom-range custom-range-teal"
+                                                            id="estampx">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="customRange3">ตำแหน่งประทับตรายางแนวนอน</label>
+                                                        <input type="range" min="2" max="280"
+                                                            value="5" class="custom-range custom-range-teal"
+                                                            id="estampy">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <button type="button" class="btn btn-info"
+                                                            id="EditStamp">ประทับตรายาง</button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            {{--   <div class="tab-pane fade" id="custom-tabs-one-preview2" role="tabpanel"
-                                                aria-labelledby="custom-tabs-one-profile-preview2">
-                                                 <div class="row" id="file_preview">
-                                                </div>
-                                                <div class="row" id="upload_preview2">
-
-                                                </div>
-                                            </div> --}}
                                         </div>
                                     </div>
                                     <div class="card-footer">
                                         <!-- Your footer content here -->
-                                        <button type="button" class="btn btn-info"
-                                            id="EditStamp">ประทับตรายาง</button>
-                                        <button type="button" class="btn btn-danger"
+
+                                        <button type="button" class="btn btn-success"
                                             id="SubmitEditForm">บันทึก</button>
 
-                                        {{--  <button type="button" class="btn btn-danger modelClose"
-                                            data-dismiss="modal">ปิด</button> --}}
+                                        <button type="button" class="btn btn-danger modelClose"
+                                            data-dismiss="modal">ปิด</button>
                                     </div>
                                 </div>
-
-
 
                                 {!! Form::close() !!}
                             </div>
