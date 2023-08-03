@@ -4,9 +4,7 @@
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        {
-            cache: false
-        }
+        cache: false,
     });
 
     $(document).ready(function() {
