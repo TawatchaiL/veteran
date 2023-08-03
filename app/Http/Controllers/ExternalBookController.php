@@ -143,7 +143,7 @@ class ExternalBookController extends Controller
 
             $stampd = explode(" ", $request->get('signdate'));
             $stampedFilePath = FileUploadService::stampPDFWithImage($uploadedFilePath, $request->get('stampx'), $request->get('stampy'), $request->get('doc_receive_number'), $stampd[0], $stampd[1], $signpath, $request->get('sstampx'), $request->get('sstampy'));
-            $iframe .= '<iframe src="' . $stampedFilePath . '"
+            $iframe .= '<iframe src="' . $stampedFilePath . '?='.time().'"
                     width="100%"
                     height="650"
                     frameborder="0"
@@ -272,7 +272,7 @@ class ExternalBookController extends Controller
                 if ($fileType == "pdf") {
                     $preview = url('/') . '/images/pdf.jpg';
                     $imgfs = url('/') . '/stamps/' . $pics->filename;
-                    $iframe .= '<iframe src="' . $imgfs . '"
+                    $iframe .= '<iframe src="' . $imgfs. '?='.time().'"
                     width="100%"
                     height="600"
                     frameborder="0"
@@ -292,7 +292,7 @@ class ExternalBookController extends Controller
                     /* $iframe .= '<div style="width: 100%; height: 600px; overflow: auto;" id="iframe_' . $pics->filename . '">
                                 <img src="' . $imgf . '" style="margin: 10px 0;">
                                 </div>'; */
-                    $iframe .= '<iframe src="' . $imgf . '"
+                    $iframe .= '<iframe src="' . $imgf . '?='.time().'"
                     width="100%"
                     height="650"
                     frameborder="0"
