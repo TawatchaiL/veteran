@@ -35,7 +35,7 @@ class FileUploadService
                 $fileType = $image->getClientMimeType();
 
                 // Check if the file is a PDF
-                if ($fileType === 'application/pdf') {
+                /* if ($fileType === 'application/pdf') {
 
                     $output = [];
                     $returnValue = 0;
@@ -57,7 +57,7 @@ class FileUploadService
 
                     unlink($orifile);
                     $newname = $new_new;
-                }
+                } */
 
                 $imageUpload = new FileUpload();
                 $imageUpload->filename = $newname;
@@ -408,10 +408,10 @@ class FileUploadService
             $signatureImage = imagecreatefromstring(file_get_contents($signPath));
 
             // Set the position (x, y) where the stamp should be placed on the original image
-            $stampX = $x;
-            $stampY = $y;
-            $signatureX = $x2;
-            $signatureY = $y2;
+            $stampX = $x*2;
+            $stampY = $y*2;
+            $signatureX = $x2*2;
+            $signatureY = $y2*2;
 
             // Apply the stamp image to the image
             imagecopy($originalImage, $stampImage, $stampX, $stampY, 0, 0, imagesx($stampImage), imagesy($stampImage));

@@ -241,13 +241,13 @@
                                                 <div class="row">
                                                     <div class="form-group">
                                                         <label for="customRange3">ตำแหน่งประทับตรายางแนวตั้ง</label>
-                                                        <input type="range" min="-100" max="800"
+                                                        <input type="range" min="-100" max="300"
                                                             value="100" class="custom-range custom-range-teal"
                                                             id="estampx">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="customRange3">ตำแหน่งประทับตรายางแนวนอน</label>
-                                                        <input type="range" min="-100" max="800"
+                                                        <input type="range" min="-100" max="300"
                                                             value="5" class="custom-range custom-range-teal"
                                                             id="estampy">
                                                     </div>
@@ -259,12 +259,12 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="customRange3">ตำแหน่งประทับลายเซ็นต์แนวตั้ง</label>
-                                                        <input type="range" min="-100" max="800"
+                                                        <input type="range" min="-100" max="300"
                                                             class="custom-range custom-range-teal" id="esstampx">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="customRange3">ตำแหน่งประทับลายเซ็นต์แนวนอน</label>
-                                                        <input type="range" min="-100" max="800"
+                                                        <input type="range" min="-100" max="300"
                                                             class="custom-range custom-range-teal" id="esstampy">
                                                     </div>
                                                     <div class="from-group">

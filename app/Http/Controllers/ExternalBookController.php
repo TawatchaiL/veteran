@@ -289,9 +289,16 @@ class ExternalBookController extends Controller
                     </embed>'; */
                 } else {
                     $preview = urldecode($imgf);
-                    $iframe .= '<div style="width: 100%; height: 600px; overflow: auto;" id="iframe_' . $pics->filename . '">
+                    /* $iframe .= '<div style="width: 100%; height: 600px; overflow: auto;" id="iframe_' . $pics->filename . '">
                                 <img src="' . $imgf . '" style="margin: 10px 0;">
-                                </div>';
+                                </div>'; */
+                    $iframe .= '<iframe src="' . $imgf . '"
+                    width="100%"
+                    height="650"
+                    frameborder="0"
+                    style="margin: 10px 0;"
+                    id="iframe_' . $pics->filename . '">
+                    </iframe>';
                 }
 
                 $img .= "<div id='img_" . $pics->id . "' class='col-md-4 text-center mb-3'><img src=\"" . $preview . "\" height=\"80\"><br>
