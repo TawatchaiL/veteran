@@ -6,7 +6,7 @@
     }
 
     $(document).ready(function() {
-       
+
         var canvas2 = document.getElementById('esignature-pad');
         var esignaturePad = new SignaturePad(canvas2);
 
@@ -75,6 +75,7 @@
                     stampy: $('#estampy').val(),
                     sstampx: $('#esstampx').val(),
                     sstampy: $('#esstampy').val(),
+                    old_stamp: $('#old_stamp').val(),
                     _token: token,
                 },
                 success: function(result) {
@@ -120,6 +121,7 @@
             $('.users').attr("readonly", "readonly");
             esignaturePad.clear();
             canvas2.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+            $('input[name="imgFiles3[]"]').remove();
 
 
 
@@ -127,6 +129,7 @@
             $.ajax({
                 url: "external-docs/edit/" + id,
                 method: 'GET',
+                cache: false,
                 success: function(res) {
                     $('#EditNumber').val(res.data.doc_receive_number);
                     $('#EditDocNumber').val(res.data.doc_number);
@@ -143,6 +146,7 @@
                     $('#esstampx').val(res.data.sstampx);
                     $('#esstampy').val(res.data.sstampy);
                     $('#file_preview').html(res.iframes);
+                    $('#old_stamp').val(res.data.signature);
                     $('#editdata').append(res.inputf);
 
                     var backgroundImageUrl =
@@ -222,6 +226,7 @@
                     doc_to: $('#EditDocTo').val(),
                     subject: $('#EditSubject').val(),
                     doc_receive: $('#EditReceive').val()[0],
+                    old_stamp: $('#old_stamp').val(),
                     _token: token
                 },
 

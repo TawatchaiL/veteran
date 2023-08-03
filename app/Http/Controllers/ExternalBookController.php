@@ -116,14 +116,13 @@ class ExternalBookController extends Controller
             return response()->json(['errors' => $validator->errors()->all()]);
         }
 
-
+        $fileToDelete = public_path() . $request->get('old_stamp');
+        if (file_exists($fileToDelete)) {
+            unlink($fileToDelete);
+        }
         $signatureData = $request->input('signature');
-        // Remove the data URI prefix from the image data
         $encodedData = str_replace('data:image/png;base64,', '', $signatureData);
-        // Decode the base64 data
         $decodedData = base64_decode($encodedData);
-        // Define the path and filename for saving the image
-        //$filename = 'signatures/' . uniqid() . '.png'; // Replace 'signatures/' with your desired locatio
         $signpath = public_path() . '/stamps/' . uniqid() . '.png';
         File::put($signpath, $decodedData);
 
@@ -351,6 +350,10 @@ class ExternalBookController extends Controller
         }
 
         //signature
+        $fileToDelete = public_path() . $request->get('old_stamp');
+        if (file_exists($fileToDelete)) {
+            unlink($fileToDelete);
+        }
         $signatureData = $request->input('signature');
         $encodedData = str_replace('data:image/png;base64,', '', $signatureData);
         $decodedData = base64_decode($encodedData);
@@ -451,7 +454,13 @@ class ExternalBookController extends Controller
     public function destroy(Request $request)
     {
         $id = $request->get('id');
-        ExternalBook::find($id)->delete();
+        $book = ExternalBook::find($id);
+        $fileToDelete = public_path() . $book->signature;
+        if (file_exists($fileToDelete)) {
+            unlink($fileToDelete);
+        }
+
+        $book->delete();
 
         $dataimg = FileStore::where([
             'module_id' => $id,
@@ -490,7 +499,13 @@ class ExternalBookController extends Controller
         $arr_del  = $request->get('table_records'); //$arr_ans is Array MacAddress
 
         for ($xx = 0; $xx < count($arr_del); $xx++) {
-            ExternalBook::find($arr_del[$xx])->delete();
+            $book = ExternalBook::find($arr_del[$xx]);
+            $fileToDelete = public_path() . $book->signature;
+            if (file_exists($fileToDelete)) {
+                unlink($fileToDelete);
+            }
+            $book->delete();
+
             $dataimg = FileStore::where([
                 'module_id' => $arr_del[$xx],
                 'module' => 'external-book',

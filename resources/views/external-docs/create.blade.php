@@ -245,12 +245,12 @@
                                         <div class="row">
                                             <div class="form-group">
                                                 <label for="customRange3">ตำแหน่งประทับตรายางแนวตั้ง</label>
-                                                <input type="range" min="5" max="200" value="100"
+                                                <input type="range" min="-100" max="800" value="100"
                                                     class="custom-range custom-range-teal" id="stampx">
                                             </div>
                                             <div class="form-group">
                                                 <label for="customRange3">ตำแหน่งประทับตรายางแนวนอน</label>
-                                                <input type="range" min="2" max="280" value="5"
+                                                <input type="range" min="-100" max="800" value="5"
                                                     class="custom-range custom-range-teal" id="stampy">
                                             </div>
 
@@ -262,12 +262,12 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="customRange3">ตำแหน่งประทับลายเซ็นต์แนวตั้ง</label>
-                                                <input type="range" min="5" max="200" value="20"
+                                                <input type="range" min="-100" max="800" value="20"
                                                     class="custom-range custom-range-teal" id="sstampx">
                                             </div>
                                             <div class="form-group">
                                                 <label for="customRange3">ตำแหน่งประทับลายเซ็นต์แนวนอน</label>
-                                                <input type="range" min="2" max="280" value="5"
+                                                <input type="range" min="-100" max="800" value="5"
                                                     class="custom-range custom-range-teal" id="sstampy">
                                             </div>
                                             <div class="from-group">

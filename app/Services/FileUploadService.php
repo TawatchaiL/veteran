@@ -296,86 +296,147 @@ class FileUploadService
         }
 
 
-        $outp = $filePath;
+        $extension = pathinfo($filePath, PATHINFO_EXTENSION);
+        $isPdf = strtolower($extension) === 'pdf';
+        $isImage = in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']);
 
-        // Create an instance of FPDI with TCPDF and FPDI Protection
-        //$pdf = new FpdiProtection();
-        $pdf = new Fpdi();
-        $pdf->SetPrintHeader(false);
-        $pdf->SetPrintFooter(false);
-        // Set the protection key if the PDF is password-protected (optional)
-        // $pdf->setProtectionKey('your_password_here');
+        if ($isPdf) {
+            // Create an instance of FPDI with TCPDF and FPDI Protection
+            //$pdf = new FpdiProtection();
+            $pdf = new Fpdi();
+            $pdf->SetPrintHeader(false);
+            $pdf->SetPrintFooter(false);
+            // Set the protection key if the PDF is password-protected (optional)
+            // $pdf->setProtectionKey('your_password_here');
 
-        // Add a page to the PDF
-        //$pdf->AddPage();
+            // Add a page to the PDF
+            //$pdf->AddPage();
 
-        // Set the source file (the PDF to be stamped)
-        $pagecount = $pdf->setSourceFile($outp);
+            // Set the source file (the PDF to be stamped)
+            $pagecount = $pdf->setSourceFile($filePath);
 
-        // Import the first page from the source PDF
-        //$importedPage = $pdf->importPage(1);
+            // Import the first page from the source PDF
+            //$importedPage = $pdf->importPage(1);
 
-        // Use the imported page as a template
-        //$pdf->useTemplate($importedPage, 0, 0);
+            // Use the imported page as a template
+            //$pdf->useTemplate($importedPage, 0, 0);
 
-        // Add the image stamp to the PDF
-        $stampImagePath = self::createTransparentRectangleImageWithText(
-            200,
-            120,
-            1,
-            [0, 0, 255],
-            'stamp_image',
-            10,
-            25,
-            45,
-            10,
-            $stampText1,
-            $stampText2,
-            $stampText3
-        );
+            // Add the image stamp to the PDF
+            $stampImagePath = self::createTransparentRectangleImageWithText(
+                200,
+                120,
+                1,
+                [0, 0, 255],
+                'stamp_image',
+                10,
+                25,
+                45,
+                10,
+                $stampText1,
+                $stampText2,
+                $stampText3
+            );
 
-        //$stampImage = file_get_contents($stampImagePath);
-        //$pdf->Image('@' . $stampImage, $x, $y, 0, 0, '', '', '', false, 300);
+            //$stampImage = file_get_contents($stampImagePath);
+            //$pdf->Image('@' . $stampImage, $x, $y, 0, 0, '', '', '', false, 300);
 
 
 
-        // Add watermark to PDF pages
-        for ($i = 1; $i <= $pagecount; $i++) {
-            $tpl = $pdf->importPage($i);
-            $size = $pdf->getTemplateSize($tpl);
-            $pdf->addPage();
-            $pdf->useTemplate($tpl, 1, 1, $size['width'], $size['height'], TRUE);
+            // Add watermark to PDF pages
+            for ($i = 1; $i <= $pagecount; $i++) {
+                $tpl = $pdf->importPage($i);
+                $size = $pdf->getTemplateSize($tpl);
+                $pdf->addPage();
+                $pdf->useTemplate($tpl, 1, 1, $size['width'], $size['height'], TRUE);
 
-            if ($i === 1) {
-                //Put the watermark
-                $stampImage = file_get_contents($stampImagePath);
-                $pdf->Image('@' . $stampImage, $x, $y, 0, 0, '', '', '', false, 300);
+                if ($i === 1) {
+                    //Put the watermark
+                    $stampImage = file_get_contents($stampImagePath);
+                    $pdf->Image('@' . $stampImage, $x, $y, 0, 0, '', '', '', false, 300);
 
-                //put signature
-                $stampsImage = file_get_contents($signPath);
-                $pdf->Image('@' . $stampsImage, $x2, $y2, 0, 0, '', '', '', false, 300);
+                    //put signature
+                    $stampsImage = file_get_contents($signPath);
+                    $pdf->Image('@' . $stampsImage, $x2, $y2, 0, 0, '', '', '', false, 300);
+                }
             }
+
+            @unlink($stampImagePath);
+            // Optionally, you can save the stamped PDF to a file
+            $stampedFileName = basename($filePath);
+            $stampedFilePath = public_path() . '/stamps/' . $stampedFileName;
+            $stampedURL = url('/') . '/stamps/' . $stampedFileName;
+
+            // Check if the file already exists
+            if (file_exists($stampedFilePath)) {
+                // If the file exists, unlink (delete) the old file
+                unlink($stampedFilePath);
+            }
+
+
+            // Save the stamped PDF
+            $pdf->Output($stampedFilePath, 'F');
+            //unlink($outp);
+
+            // Output the stamped PDF as a response
+            //$pdf->Output();
+            return $stampedURL;
         }
 
-        @unlink($stampImagePath);
-        // Optionally, you can save the stamped PDF to a file
-        $stampedFileName = basename($filePath);
-        $stampedFilePath = public_path() . '/stamps/' . $stampedFileName;
-        $stampedURL = url('/') . '/stamps/' . $stampedFileName;
+        if ($isImage) {
+            // Implement the image stamping logic here
+            // Create the stamp image using createTransparentRectangleImageWithText method
+            $stampImagePath = self::createTransparentRectangleImageWithText(
+                200,
+                120,
+                1,
+                [0, 0, 255],
+                'stamp_image',
+                10,
+                25,
+                45,
+                10,
+                $stampText1,
+                $stampText2,
+                $stampText3
+            );
 
-        // Check if the file already exists
-        if (file_exists($stampedFilePath)) {
-            // If the file exists, unlink (delete) the old file
-            unlink($stampedFilePath);
+            // Apply the stamp image to the original image
+            // You can use GD or any other library of your choice to do this
+            // For demonstration, let's assume you are using GD
+            $originalImage = imagecreatefromstring(file_get_contents($filePath));
+            $stampImage = imagecreatefrompng($stampImagePath);
+            $signatureImage = imagecreatefromstring(file_get_contents($signPath));
+
+            // Set the position (x, y) where the stamp should be placed on the original image
+            $stampX = $x;
+            $stampY = $y;
+            $signatureX = $x2;
+            $signatureY = $y2;
+
+            // Apply the stamp image to the image
+            imagecopy($originalImage, $stampImage, $stampX, $stampY, 0, 0, imagesx($stampImage), imagesy($stampImage));
+            imagecopy($originalImage, $signatureImage, $signatureX, $signatureY, 0, 0, imagesx($signatureImage), imagesy($signatureImage));
+
+            // Save the stamped image to a new file (you can also return the image directly or save it to a different location)
+            $stampedFileName = basename($filePath);
+            $stampedFilePath = public_path() . '/stamps/' . $stampedFileName;
+            $stampedURL = url('/') . '/stamps/' . $stampedFileName;
+
+
+            if (file_exists($stampedFilePath)) {
+                // If the file exists, unlink (delete) the old file
+                unlink($stampedFilePath);
+            }
+
+            imagepng($originalImage, $stampedFilePath);
+            //imagedestroy($originalImage);
+            imagedestroy($stampImage);
+            //imagedestroy($signatureImage);
+            @unlink($stampImagePath);
+
+
+            return $stampedURL;
         }
 
-
-        // Save the stamped PDF
-        $pdf->Output($stampedFilePath, 'F');
-        //unlink($outp);
-
-        // Output the stamped PDF as a response
-        //$pdf->Output();
-        return $stampedURL;
     }
 }
