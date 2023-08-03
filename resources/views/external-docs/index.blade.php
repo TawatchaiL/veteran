@@ -89,7 +89,7 @@
                                             <th>วันที่เวลา</th>
                                             <th>ระดับชั้นความเร็ว</th>
                                             <th>ผู้รับ</th>
-                                            <th width="120px"></th>
+                                            <th width="180px"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
