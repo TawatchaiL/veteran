@@ -121,7 +121,7 @@
                                             <div class="form-group">
                                                 <strong>ลงวันที่:</strong>
                                                 @php
-                                                    $datethai = date('m/d/') . date('Y') + 543 ." ".date("H:i");
+                                                    $datethai = date('m/d/') . date('Y') + 543 . ' ' . date('H:i');
                                                 @endphp
                                                 {!! Form::text('signdate', $datethai, [
                                                     'id' => 'AddDate',
@@ -290,7 +290,7 @@
                                 <button type="button" class="btn btn-success"
                                     id="SubmitCreateForm">บันทึกข้อมูล</button>
                                 <button type="button" class="btn btn-danger modelClose"
-                                    data-dismiss="modal">ปิด</button>
+                                    data-dismiss="modal">ปิดหน้าต่าง</button>
 
                             </div>
                         </div>

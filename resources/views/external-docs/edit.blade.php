@@ -287,10 +287,10 @@
                                         <!-- Your footer content here -->
 
                                         <button type="button" class="btn btn-success"
-                                            id="SubmitEditForm">บันทึก</button>
+                                            id="SubmitEditForm">บันทึกข้อมูล</button>
 
                                         <button type="button" class="btn btn-danger modelClose"
-                                            data-dismiss="modal">ปิด</button>
+                                            data-dismiss="modal">ปิดหน้าต่าง</button>
                                     </div>
                                 </div>
 

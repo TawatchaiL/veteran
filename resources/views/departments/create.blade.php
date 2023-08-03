@@ -41,7 +41,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
@@ -61,8 +61,8 @@
                 {!! Form::close() !!}
             </div>
             <div class="modal-footer {{-- justify-content-between --}}">
-                <button type="button" class="btn btn-success" id="SubmitCreateForm">บันทึก</button>
-                <button type="button" class="btn btn-danger modelClose" data-dismiss="modal">ปิด</button>
+                <button type="button" class="btn btn-success" id="SubmitCreateForm">บันทึกข้อมูล</button>
+                <button type="button" class="btn btn-danger modelClose" data-dismiss="modal">ปิดหน้าต่าง</button>
             </div>
         </div>
     </div>
