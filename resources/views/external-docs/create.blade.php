@@ -244,12 +244,12 @@
                                         aria-labelledby="custom-tabs-one-profile-preview">
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="customRange3">ตำแหน่งประทับตรายางแนวตั้ง</label>
+                                                <label for="customRange3">ตำแหน่งประทับตรายาง ซ้าย-ขวา</label>
                                                 <input type="range" min="-100" max="300" value="100"
                                                     class="custom-range custom-range-teal" id="stampx">
                                             </div>
                                             <div class="form-group">
-                                                <label for="customRange3">ตำแหน่งประทับตรายางแนวนอน</label>
+                                                <label for="customRange3">ตำแหน่งประทับตรายาง บน-ล่าง</label>
                                                 <input type="range" min="-100" max="300" value="5"
                                                     class="custom-range custom-range-teal" id="stampy">
                                             </div>
@@ -261,12 +261,12 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="customRange3">ตำแหน่งประทับลายเซ็นต์แนวตั้ง</label>
+                                                <label for="customRange3">ตำแหน่งประทับลายเซ็นต์ ซ้าย-ขวา</label>
                                                 <input type="range" min="-100" max="300" value="20"
                                                     class="custom-range custom-range-teal" id="sstampx">
                                             </div>
                                             <div class="form-group">
-                                                <label for="customRange3">ตำแหน่งประทับลายเซ็นต์แนวนอน</label>
+                                                <label for="customRange3">ตำแหน่งประทับลายเซ็นต์ บน-ล่าง</label>
                                                 <input type="range" min="-100" max="300" value="5"
                                                     class="custom-range custom-range-teal" id="sstampy">
                                             </div>
