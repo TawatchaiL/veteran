@@ -116,9 +116,11 @@ class ExternalBookController extends Controller
             return response()->json(['errors' => $validator->errors()->all()]);
         }
 
-        $fileToDelete = public_path() . $request->get('old_stamp');
-        if (file_exists($fileToDelete)) {
-            unlink($fileToDelete);
+        if (!empty($request->get('old_stamp'))) {
+            $fileToDelete = public_path() . $request->get('old_stamp');
+            if (file_exists($fileToDelete)) {
+                unlink($fileToDelete);
+            }
         }
         $signatureData = $request->input('signature');
         $encodedData = str_replace('data:image/png;base64,', '', $signatureData);
