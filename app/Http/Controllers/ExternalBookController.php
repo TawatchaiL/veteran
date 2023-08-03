@@ -457,9 +457,12 @@ class ExternalBookController extends Controller
     {
         $id = $request->get('id');
         $book = ExternalBook::find($id);
-        $fileToDelete = public_path() . $book->signature;
-        if (file_exists($fileToDelete)) {
-            unlink($fileToDelete);
+
+        if (!empty($book->signature)) {
+            $fileToDelete = public_path() . $book->signature;
+            if (file_exists($fileToDelete)) {
+                unlink($fileToDelete);
+            }
         }
 
         $book->delete();
@@ -502,9 +505,11 @@ class ExternalBookController extends Controller
 
         for ($xx = 0; $xx < count($arr_del); $xx++) {
             $book = ExternalBook::find($arr_del[$xx]);
-            $fileToDelete = public_path() . $book->signature;
-            if (file_exists($fileToDelete)) {
-                unlink($fileToDelete);
+            if (!empty($book->signature)) {
+                $fileToDelete = public_path() . $book->signature;
+                if (file_exists($fileToDelete)) {
+                    unlink($fileToDelete);
+                }
             }
             $book->delete();
 
