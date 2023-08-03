@@ -191,7 +191,7 @@
                     stampy: $('#stampy').val(),
                     sstampx: $('#sstampx').val(),
                     sstampy: $('#sstampy').val(),
-                    old_stamp: $('#old_stamp').val(),
+                    //old_stamp: $('#old_stamp').val(),
                     _token: token,
                 },
                 success: function(result) {

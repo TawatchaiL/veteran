@@ -75,7 +75,7 @@
                     stampy: $('#estampy').val(),
                     sstampx: $('#esstampx').val(),
                     sstampy: $('#esstampy').val(),
-                    old_stamp: $('#old_stamp').val(),
+                    //old_stamp: $('#old_stamp').val(),
                     _token: token,
                 },
                 success: function(result) {
@@ -146,7 +146,7 @@
                     $('#esstampx').val(res.data.sstampx);
                     $('#esstampy').val(res.data.sstampy);
                     $('#file_preview').html(res.iframes);
-                    $('#old_stamp').val(res.data.signature);
+                    //$('#old_stamp').val(res.data.signature);
                     $('#editdata').append(res.inputf);
 
                     var backgroundImageUrl =
@@ -227,7 +227,7 @@
                     doc_to: $('#EditDocTo').val(),
                     subject: $('#EditSubject').val(),
                     doc_receive: $('#EditReceive').val()[0],
-                    old_stamp: $('#old_stamp').val(),
+                    //old_stamp: $('#old_stamp').val(),
                     _token: token
                 },
 

@@ -116,16 +116,12 @@ class ExternalBookController extends Controller
             return response()->json(['errors' => $validator->errors()->all()]);
         }
 
-        if (!empty($request->get('old_stamp'))) {
-            $fileToDelete = $request->get('old_stamp');
-            if (file_exists($fileToDelete)) {
-                unlink($fileToDelete);
-            }
-        }
+
         $signatureData = $request->input('signature');
         $encodedData = str_replace('data:image/png;base64,', '', $signatureData);
         $decodedData = base64_decode($encodedData);
-        $signpath = public_path() . '/stamps/' . uniqid() . '.png';
+        $sign_name = '/stamps/' . uniqid() . '.png';
+        $signpath = public_path() . $sign_name;
         File::put($signpath, $decodedData);
 
         $filesa = $request->get('img');
@@ -142,8 +138,19 @@ class ExternalBookController extends Controller
 
 
             $stampd = explode(" ", $request->get('signdate'));
-            $stampedFilePath = FileUploadService::stampPDFWithImage($uploadedFilePath, $request->get('stampx'), $request->get('stampy'), $request->get('doc_receive_number'), $stampd[0], $stampd[1], $signpath, $request->get('sstampx'), $request->get('sstampy'));
-            $iframe .= '<iframe src="' . $stampedFilePath . '?='.time().'"
+            $stampedFilePath = FileUploadService::stampPDFWithImage(
+                $uploadedFilePath,
+                $request->get('stampx'),
+                $request->get('stampy'),
+                $request->get('doc_receive_number'),
+                $stampd[0],
+                $stampd[1],
+                $signpath,
+                $request->get('sstampx'),
+                $request->get('sstampy'),
+                1
+            );
+            $iframe .= '<iframe src="' . $stampedFilePath . '?=' . time() . '"
                     width="100%"
                     height="650"
                     frameborder="0"
@@ -153,9 +160,10 @@ class ExternalBookController extends Controller
         }
 
 
-        return response()->json(['success' => 'ประทับตรา เรียบร้อยแล้ว', 'iframe' => $iframe, 'old_stamp' => $signpath
+        return response()->json([
+            'success' => 'ประทับตรา เรียบร้อยแล้ว', 'iframe' => $iframe
 
-    ]);
+        ]);
     }
 
     /**
@@ -196,12 +204,7 @@ class ExternalBookController extends Controller
         }
 
         //signature
-        if (!empty($request->get('old_stamp'))) {
-            $fileToDelete = $request->get('old_stamp');
-            if (file_exists($fileToDelete)) {
-                unlink($fileToDelete);
-            }
-        }
+
         $signatureData = $request->input('signature');
         $encodedData = str_replace('data:image/png;base64,', '', $signatureData);
         $decodedData = base64_decode($encodedData);
@@ -231,7 +234,17 @@ class ExternalBookController extends Controller
             $uploadedFilePath = public_path('file_upload/' . $oldfile[0]->filename);
 
             $stampd = explode(" ", $request->get('signdate'));
-            $stampedFilePath = FileUploadService::stampPDFWithImage($uploadedFilePath, $request->get('stampx'), $request->get('stampy'), $request->get('doc_receive_number'), $stampd[0], $stampd[1], $signpath, $request->get('sstampx'), $request->get('sstampy'));
+            $stampedFilePath = FileUploadService::stampPDFWithImage(
+                $uploadedFilePath,
+                $request->get('stampx'),
+                $request->get('stampy'),
+                $request->get('doc_receive_number'),
+                $stampd[0],
+                $stampd[1],
+                $signpath,
+                $request->get('sstampx'),
+                $request->get('sstampy')
+            );
 
             File::move(public_path() . '/file_upload/' . $oldfile[0]->filename, public_path() . '/file_store/' . $oldfile[0]->filename);
             FileUpload::where('filename', $oldfile[0]->filename)->delete();
@@ -281,7 +294,7 @@ class ExternalBookController extends Controller
                 if ($fileType == "pdf") {
                     $preview = url('/') . '/images/pdf.jpg';
                     $imgfs = url('/') . '/stamps/' . $pics->filename;
-                    $iframe .= '<iframe src="' . $imgfs. '?='.time().'"
+                    $iframe .= '<iframe src="' . $imgfs . '?=' . time() . '"
                     width="100%"
                     height="600"
                     frameborder="0"
@@ -301,7 +314,7 @@ class ExternalBookController extends Controller
                     /* $iframe .= '<div style="width: 100%; height: 600px; overflow: auto;" id="iframe_' . $pics->filename . '">
                                 <img src="' . $imgf . '" style="margin: 10px 0;">
                                 </div>'; */
-                    $iframe .= '<iframe src="' . $imgf . '?='.time().'"
+                    $iframe .= '<iframe src="' . $imgf . '?=' . time() . '"
                     width="100%"
                     height="650"
                     frameborder="0"
@@ -368,12 +381,15 @@ class ExternalBookController extends Controller
         }
 
         //signature
-        if (!empty($request->get('old_stamp'))) {
-            $fileToDelete = $request->get('old_stamp');
+        $book = ExternalBook::find($id);
+
+        if (!empty($book->signature)) {
+            $fileToDelete = public_path() . $book->signature;
             if (file_exists($fileToDelete)) {
                 unlink($fileToDelete);
             }
         }
+
         $signatureData = $request->input('signature');
         $encodedData = str_replace('data:image/png;base64,', '', $signatureData);
         $decodedData = base64_decode($encodedData);
@@ -425,11 +441,19 @@ class ExternalBookController extends Controller
 
                 $uploadedFilePath = public_path('file_store/' . $oldfile[0]->filename);
                 $stampd = explode(" ", $request->get('signdate'));
-                $stampedFilePath = FileUploadService::stampPDFWithImage($uploadedFilePath, $request->get('stampx'), $request->get('stampy'), $request->get('doc_receive_number'), $stampd[0], $stampd[1], $signpath, $request->get('sstampx'), $request->get('sstampy'));
+                $stampedFilePath = FileUploadService::stampPDFWithImage(
+                    $uploadedFilePath,
+                    $request->get('stampx'),
+                    $request->get('stampy'),
+                    $request->get('doc_receive_number'),
+                    $stampd[0],
+                    $stampd[1],
+                    $signpath,
+                    $request->get('sstampx'),
+                    $request->get('sstampy')
+                );
             }
         }
-
-
 
         return response()->json(['success' => 'แก้ไขข้อมูล ลงรับหนังสือ เรียบร้อยแล้ว']);
     }

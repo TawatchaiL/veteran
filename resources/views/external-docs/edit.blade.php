@@ -70,7 +70,7 @@
                                                             'class' => 'form-control',
                                                             'readonly' => true,
                                                         ]) !!}
-                                                        <input type="hidden" id="old_stamp" name="old_stamp">
+                                                       {{--  <input type="hidden" id="old_stamp" name="old_stamp"> --}}
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-12 col-md-12">

@@ -288,7 +288,7 @@ class FileUploadService
     }
 
 
-    public static function stampPDFWithImage($filePath, $x, $y, $stampText1, $stampText2, $stampText3, $signPath, $x2, $y2)
+    public static function stampPDFWithImage($filePath, $x, $y, $stampText1, $stampText2, $stampText3, $signPath, $x2, $y2, $delete_sign = 0)
     {
         // Check if the file exists
         if (!file_exists($filePath)) {
@@ -379,7 +379,7 @@ class FileUploadService
 
             // Output the stamped PDF as a response
             //$pdf->Output();
-            return $stampedURL;
+            //return $stampedURL;
         }
 
         if ($isImage) {
@@ -408,10 +408,10 @@ class FileUploadService
             $signatureImage = imagecreatefromstring(file_get_contents($signPath));
 
             // Set the position (x, y) where the stamp should be placed on the original image
-            $stampX = $x*2;
-            $stampY = $y*2;
-            $signatureX = $x2*2;
-            $signatureY = $y2*2;
+            $stampX = $x * 2;
+            $stampY = $y * 2;
+            $signatureX = $x2 * 2;
+            $signatureY = $y2 * 2;
 
             // Apply the stamp image to the image
             imagecopy($originalImage, $stampImage, $stampX, $stampY, 0, 0, imagesx($stampImage), imagesy($stampImage));
@@ -428,15 +428,19 @@ class FileUploadService
                 unlink($stampedFilePath);
             }
 
+
+
             imagepng($originalImage, $stampedFilePath);
             //imagedestroy($originalImage);
             imagedestroy($stampImage);
             //imagedestroy($signatureImage);
             @unlink($stampImagePath);
-
-
-            return $stampedURL;
         }
 
+        if ($delete_sign == 1) {
+            unlink($signPath);
+        }
+
+        return $stampedURL;
     }
 }
