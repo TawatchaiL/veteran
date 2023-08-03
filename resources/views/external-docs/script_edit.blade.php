@@ -205,6 +205,7 @@
                 $("#SubmitEditForm").prop('disabled', false);
                 return false;
             }
+            console.log($('#old_stamp').val());
 
             //console.log(values);
             var esignatureData = esignaturePad.toDataURL();

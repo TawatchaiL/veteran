@@ -32,9 +32,9 @@ return [
     */
 
     'stores' => [
-        'none' => [
+      /*   'none' => [
             'driver' => 'null',
-        ],
+        ], */
 
         'apc' => [
             'driver' => 'apc',

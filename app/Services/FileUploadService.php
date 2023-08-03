@@ -35,7 +35,7 @@ class FileUploadService
                 $fileType = $image->getClientMimeType();
 
                 // Check if the file is a PDF
-                if ($fileType === 'application/pdf') {
+                /* if ($fileType === 'application/pdf') {
 
                     $output = [];
                     $returnValue = 0;
@@ -57,7 +57,7 @@ class FileUploadService
 
                     unlink($orifile);
                     $newname = $new_new;
-                }
+                } */
 
                 $imageUpload = new FileUpload();
                 $imageUpload->filename = $newname;

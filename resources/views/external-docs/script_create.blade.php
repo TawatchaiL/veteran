@@ -7,7 +7,7 @@
     }
 
     $(document).ready(function() {
-       
+
         var canvas = document.getElementById('signature-pad');
         var signaturePad = new SignaturePad(canvas);
 
@@ -177,7 +177,7 @@
                 $("#CreateStamp").prop('disabled', false);
                 return false;
             }
-
+            console.log($('#old_stamp').val());
             var signatureData = signaturePad.toDataURL();
             $.ajax({
                 url: "{{ route('external-docs.stamp') }}",
@@ -191,6 +191,7 @@
                     stampy: $('#stampy').val(),
                     sstampx: $('#sstampx').val(),
                     sstampy: $('#sstampy').val(),
+                    old_stamp: $('#old_stamp').val(),
                     _token: token,
                 },
                 success: function(result) {
@@ -206,6 +207,7 @@
                         toastr.success(result.success, {
                             timeOut: 5000
                         });
+                        $('#old_stamp').val(result.old_stamp);
                         $('#upload_preview').html(result.iframe)
                     }
                     $('#loadingOverlay').hide();

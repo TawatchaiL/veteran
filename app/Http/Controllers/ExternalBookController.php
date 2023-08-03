@@ -117,7 +117,7 @@ class ExternalBookController extends Controller
         }
 
         if (!empty($request->get('old_stamp'))) {
-            $fileToDelete = public_path() . $request->get('old_stamp');
+            $fileToDelete = $request->get('old_stamp');
             if (file_exists($fileToDelete)) {
                 unlink($fileToDelete);
             }
@@ -152,7 +152,10 @@ class ExternalBookController extends Controller
                     </iframe>';
         }
 
-        return response()->json(['success' => 'ประทับตรา เรียบร้อยแล้ว', 'iframe' => $iframe]);
+
+        return response()->json(['success' => 'ประทับตรา เรียบร้อยแล้ว', 'iframe' => $iframe, 'old_stamp' => $signpath
+
+    ]);
     }
 
     /**
@@ -193,6 +196,12 @@ class ExternalBookController extends Controller
         }
 
         //signature
+        if (!empty($request->get('old_stamp'))) {
+            $fileToDelete = $request->get('old_stamp');
+            if (file_exists($fileToDelete)) {
+                unlink($fileToDelete);
+            }
+        }
         $signatureData = $request->input('signature');
         $encodedData = str_replace('data:image/png;base64,', '', $signatureData);
         $decodedData = base64_decode($encodedData);
@@ -359,9 +368,11 @@ class ExternalBookController extends Controller
         }
 
         //signature
-        $fileToDelete = public_path() . $request->get('old_stamp');
-        if (file_exists($fileToDelete)) {
-            unlink($fileToDelete);
+        if (!empty($request->get('old_stamp'))) {
+            $fileToDelete = $request->get('old_stamp');
+            if (file_exists($fileToDelete)) {
+                unlink($fileToDelete);
+            }
         }
         $signatureData = $request->input('signature');
         $encodedData = str_replace('data:image/png;base64,', '', $signatureData);
