@@ -5,15 +5,47 @@
             <a class="nav-link sidebar-toggle-btn" data-widget="pushmenu" href="#" role="button"><i
                     class="fas fa-bars"></i></a>
         </li>
+        {{-- <li><a href="#" class="nav-link">
+                <h5>เทศบาลตำบลหนองโดน</h5>
+            </a></li> --}}
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">[ <i class="fas fa-building nav-icon"></i> <b class="text-primary">ส่วนราชการ : @if(Auth::check() && Auth::user()->department && Auth::user()->department->name)
-                {{ Auth::user()->department->name }} @endif</b>  ]</a>
+
+            <a href="#" class="nav-link">[ <i class="fas fa-building nav-icon"></i> <b
+                    class="text-primary">ส่วนราชการ : @if (Auth::check() && Auth::user()->department && Auth::user()->department->name)
+                        {{ Auth::user()->department->name }}
+                    @endif
+                </b> ]</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">[ <i class="fas fa-users nav-icon"></i> <b class="text-primary">ส่วนงาน : @if(Auth::check() && Auth::user()->position && Auth::user()->position->name)
-                {{ Auth::user()->position->name }}
-            @endif </b> ]</a>
+            <a href="#" class="nav-link">[ <i class="fas fa-users nav-icon"></i> <b class="text-primary">ส่วนงาน :
+                    @if (Auth::check() && Auth::user()->position && Auth::user()->position->name)
+                        {{ Auth::user()->position->name }}
+                    @endif
+                </b> ]</a>
         </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">
+                <span id="real-time-clock"></span>
+
+            </a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">
+                <span class="digital-clock"> <i class="fas fa-clock"></i>  เวลา: &nbsp;
+                    <div id="hours" class="digit">00</div>
+                    <span>:</span>
+                    <div id="minutes" class="digit">00</div>
+                    <span>:</span>
+                    <div id="seconds" class="digit">00</div>
+                </span>
+            </a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">
+                <span id="weather"></span>
+            </a>
+        </li>
+
     </ul>
 
     <ul class="navbar-nav ml-auto">
@@ -28,7 +60,7 @@
                 <li class="user-header bg-primary">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/2048px-User_icon_2.svg.png"
                         height="150" class="img-circle elevation-1" alt="User Image">
-                    <p >
+                    <p>
                         {{ Auth::user()->name }}
                         <small>Member since {{ Auth::user()->created_at->format('M. Y') }}</small>
                     </p>
