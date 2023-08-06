@@ -82,7 +82,7 @@
                                 <table id="Listview" class="display nowrap table table-bordered table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th><input type="checkbox" id="check-all" class="flat"></th>
+                                            <th width="7%"><input type="checkbox" id="check-all" class="flat"></th>
                                             <th>ชื่อ อปท</th>
                                             <th>เลขที่รับ</th>
                                             <th>เรื่อง</th>
