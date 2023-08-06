@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-info">
-                <h4 class="modal-title">เพิ่ม หน่วยงานราชการ</h4>
+                <h4 class="modal-title"><i class="fas fa-building"></i> เพิ่ม หน่วยงานราชการ</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
-                            <strong>ชื่่อหน่วยงาน:</strong>
+                            <strong><i class="fas fa-building"></i> ชื่อหน่วยงาน:</strong>
                             {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                         </div>
                     </div>
@@ -44,7 +44,7 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>ที่อยู่:</strong>
+                            <strong><i class="fas fa-address-card"></i> ที่อยู่:</strong>
                             {!! Form::textarea('address', null, [
                                 'rows' => 4,
                                 'id' => 'AddAddress',
@@ -57,7 +57,7 @@
 
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
-                            <strong>รหัสไปรษณีย์:</strong>
+                            <strong><i class="fas fa-code"></i> รหัสไปรษณีย์:</strong>
                             {!! Form::text('postcode', null, [
                                 'id' => 'AddPostcode',
                                 'placeholder' => 'Postcode',
@@ -67,7 +67,7 @@
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
-                            <strong>อีเมล์:</strong>
+                            <strong><i class="fas fa-at"></i> อีเมล์:</strong>
                             {!! Form::text('email', null, ['id' => 'AddEmail', 'placeholder' => 'Email', 'class' => 'form-control']) !!}
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
-                            <strong>เบอร์โทรศัพท์:</strong>
+                            <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์:</strong>
                             {!! Form::text('telephone', null, [
                                 'id' => 'AddTelephone',
                                 'placeholder' => 'Telephone',

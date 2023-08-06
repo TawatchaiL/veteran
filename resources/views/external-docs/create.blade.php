@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-xxl">
         <div class="modal-content">
             <div class="modal-header bg-info">
-                <h4 class="modal-title">ลงรับหนังสือ</h4>
+                <h4 class="modal-title"><i class="fas fa-file-signature"></i> ลงรับหนังสือ</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -73,7 +73,7 @@
 
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-                                                <strong>เลขที่ทะเบียนรับ:</strong>
+                                                <strong><i class="fas fa-file-signature"></i> เลขที่ทะเบียนรับ:</strong>
                                                 {!! Form::text('number', null, [
                                                     'id' => 'AddNumber',
                                                     'placeholder' => '',
@@ -84,7 +84,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-                                                <strong>หนังสือเลขที่:</strong>
+                                                <strong><i class="fas fa-list-ol"></i> หนังสือเลขที่:</strong>
                                                 {!! Form::text('doc_number', null, [
                                                     'id' => 'AddDocNumber',
                                                     'placeholder' => 'หนังสือเลขที่',
@@ -96,7 +96,7 @@
 
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-                                                <strong>ระดับชั้นความเร็วของหนังสือ:</strong>
+                                                <strong><i class="fas fa-paper-plane"></i> ระดับชั้นความเร็วของหนังสือ:</strong>
                                                 <div class="input-group">
                                                     <select style="width: 89%;"
                                                         class="priorities select2 select2_single form-control"
@@ -119,7 +119,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-                                                <strong>ลงวันที่:</strong>
+                                                <strong><i class="fas fa-calendar"></i> ลงวันที่:</strong>
                                                 @php
                                                     $datethai = date('m/d/') . date('Y') + 543 . ' ' . date('H:i');
                                                 @endphp
@@ -134,7 +134,7 @@
 
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-                                                <strong>จาก:</strong>
+                                                <strong><i class="fas fa-arrow-down"></i> จาก:</strong>
                                                 <div class="input-group">
                                                     <select style="width: 89%;"
                                                         class="doc_from select2 select2_single form-control"
@@ -156,7 +156,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-                                                <strong>ถึง:</strong>
+                                                <strong><i class="fas fa-arrow-up"></i> ถึง:</strong>
                                                 {!! Form::text('doc_to', 'นายกเทศมนตรี', [
                                                     'id' => 'AddDocTo',
                                                     'placeholder' => '',
@@ -169,13 +169,13 @@
 
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-                                                <strong>เรื่อง:</strong>
+                                                <strong><i class="fas fa-comments"></i> เรื่อง:</strong>
                                                 {!! Form::text('subject', null, ['id' => 'AddSubject', 'placeholder' => 'เรื่อง', 'class' => 'form-control']) !!}
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-                                                <strong>ผู้รับ:</strong>
+                                                <strong><i class="fas fa-user"></i> ผู้รับ:</strong>
                                                 <div class="input-group">
                                                     <select style="width: 84%;"
                                                         class="doc_receive select2 select2_single form-control"
@@ -208,7 +208,7 @@
                                                 <a id="datt"></a>
                                                 <div class="position-relative form-group">
                                                     <label class="form-label form-label-top form-label-auto"
-                                                        for="att">อัพโหลดไฟล์<span class="form-required">*</span>
+                                                        for="att"><i class="fas fa-file-pdf"></i> อัพโหลดไฟล์<span class="form-required">*</span>
                                                         <div style="width: 280px"></div>
                                                     </label>
                                                     <input type="text" id="drop" name="drop"
@@ -244,12 +244,12 @@
                                         aria-labelledby="custom-tabs-one-profile-preview">
                                         <div class="row">
                                             <div class="form-group">
-                                                <label for="customRange3">ตำแหน่งประทับตรายาง ซ้าย-ขวา</label>
+                                                <label for="customRange3"><i class="fas fa-crosshairs"></i> ตำแหน่งประทับตรายาง ซ้าย-ขวา</label>
                                                 <input type="range" min="-100" max="300" value="100"
                                                     class="custom-range custom-range-teal" id="stampx">
                                             </div>
                                             <div class="form-group">
-                                                <label for="customRange3">ตำแหน่งประทับตรายาง บน-ล่าง</label>
+                                                <label for="customRange3"><i class="fas fa-crosshairs"></i> ตำแหน่งประทับตรายาง บน-ล่าง</label>
                                                 <input type="range" min="-100" max="300" value="5"
                                                     class="custom-range custom-range-teal" id="stampy">
                                             </div>
@@ -261,12 +261,12 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="customRange3">ตำแหน่งประทับลายเซ็นต์ ซ้าย-ขวา</label>
+                                                <label for="customRange3"><i class="fas fa-crosshairs"></i> ตำแหน่งประทับลายเซ็นต์ ซ้าย-ขวา</label>
                                                 <input type="range" min="-100" max="300" value="20"
                                                     class="custom-range custom-range-teal" id="sstampx">
                                             </div>
                                             <div class="form-group">
-                                                <label for="customRange3">ตำแหน่งประทับลายเซ็นต์ บน-ล่าง</label>
+                                                <label for="customRange3"><i class="fas fa-crosshairs"></i> ตำแหน่งประทับลายเซ็นต์ บน-ล่าง</label>
                                                 <input type="range" min="-100" max="300" value="5"
                                                     class="custom-range custom-range-teal" id="sstampy">
                                             </div>
@@ -302,7 +302,7 @@
                         <div class="card card-warning myCard">
                             <div class="card-header">
                                 <!-- Your header content here -->
-                                <h3 class="card-title">เอกสารที่นำเข้า</h3>
+                                <h3 class="card-title"><i class="fas fa-file-pdf"></i> เอกสารที่นำเข้า</h3>
                             </div>
                             <div class="card-body">
 

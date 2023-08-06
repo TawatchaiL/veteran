@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-info">
-                <h4 class="modal-title">เพิ่ม ส่วนงาน</h4>
+                <h4 class="modal-title"><i class="fas fa-list-ol"></i> เพิ่ม ส่วนงาน</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
-                            <strong>ชื่่อส่วนงาน:</strong>
+                            <strong><i class="fas fa-list-ol"></i> ชื่่อส่วนงาน:</strong>
                             {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                         </div>
                     </div>
@@ -58,11 +58,11 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
-                            <strong>สถานะ:</strong>
+                            <strong><i class="fas fa-eye"></i> สถานะ:</strong>
                             <br />
                             <div class="custom-control custom-switch">
                                 {{ Form::checkbox('status', '1', false, ['id' => 'customCheckbox1', 'class' => 'custom-control-input name']) }}

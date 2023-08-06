@@ -170,8 +170,8 @@
         document.getElementById('seconds').textContent = seconds;
     }
 
-    updateDigitalClock();
-    setInterval(updateDigitalClock, 1000);
+    /* updateDigitalClock();
+    setInterval(updateDigitalClock, 1000); */
 
     function updateWeather(lat, lon) {
         const weatherElement = document.getElementById('weather');
@@ -201,7 +201,7 @@
     }
 
     // Get user's location and update weather
-    if ('geolocation' in navigator) {
+    /* if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(position => {
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
@@ -211,7 +211,8 @@
         });
     } else {
         console.error('Geolocation is not available.');
-    }
+    } */
+    updateWeather('14.683409', '100.706897');
 
     function updateClock() {
         const datetimeElement = document.getElementById('real-time-clock');
@@ -233,7 +234,8 @@
         const thaiDateTimeString = now.toLocaleString('th-TH', thaiOptions);
 
         // Create the complete text  <i class="fas fa-clock"></i> เวลา: ${thaiDateTimeString.slice(11)}
-        const text = `<i class="fas fa-calendar"></i> วันที่: ${thaiDateTimeString.slice(0, 10)}`;
+        const text = `<i class="fas fa-calendar"></i> วันที่: ${thaiDateTimeString.slice(0, 10)}
+        <i class="fas fa-clock"></i> เวลา: ${thaiDateTimeString.slice(11)}`;
 
         datetimeElement.innerHTML = text;
 

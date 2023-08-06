@@ -29,7 +29,7 @@
 
             </a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
+        {{-- <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">
                 <span class="digital-clock"> <i class="fas fa-clock"></i>  เวลา: &nbsp;
                     <div id="hours" class="digit">00</div>
@@ -39,7 +39,7 @@
                     <div id="seconds" class="digit">00</div>
                 </span>
             </a>
-        </li>
+        </li> --}}
         <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">
                 <span id="weather"></span>

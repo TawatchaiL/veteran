@@ -52,7 +52,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card card-info">
-                        <div class="card-header" style="height: 63px">
+                        <div class="card-header" style="height: 58px">
                             <h3 class="card-title"><i class="fas fa-file-signature"></i> ลงรับหนังสือ </h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -79,7 +79,7 @@
                                 id="delete_all">
                                 @csrf
                                 @method('POST')
-                                <table id="Listview" class="table table-bordered table-striped table-hover">
+                                <table id="Listview" class="display nowrap table table-bordered table-striped table-hover">
                                     <thead>
                                         <tr>
                                             <th><input type="checkbox" id="check-all" class="flat"></th>
@@ -90,6 +90,7 @@
                                             <th>ระดับชั้นความเร็ว</th>
                                             <th>ผู้รับ</th>
                                             <th width="180px"></th>
+                                            <th>More</th>
                                         </tr>
                                     </thead>
                                     <tbody>

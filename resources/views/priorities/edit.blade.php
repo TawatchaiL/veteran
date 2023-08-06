@@ -4,7 +4,7 @@
         <form id="editdata" class="form" action="" method="POST">
             <div class="modal-content">
                 <div class="modal-header bg-info">
-                    <h4 class="modal-title" id="exampleModalLongTitle">แก้ไข ระดับชั้นความเร็ว</h4>
+                    <h4 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-list-ol"></i> แก้ไข ระดับชั้นความเร็ว</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -27,16 +27,16 @@
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <strong>ชื่่อระดับชั้นความเร็ว:</strong>
+                                    <strong><i class="fas fa-list-ol"></i> ชื่อระดับชั้นความเร็ว:</strong>
                                     {!! Form::text('name', null, ['id' => 'EditName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
                         </div>
-                       
+
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <strong>สถานะ:</strong>
+                                    <strong><i class="fas fa-eye"></i> สถานะ:</strong>
                                     <br />
                                     <div class="custom-control custom-switch">
                                         {{ Form::checkbox('status', '1', false, ['id' => 'ecustomCheckbox1', 'class' => 'custom-control-input name']) }}

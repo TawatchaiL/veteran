@@ -5,7 +5,7 @@ id="EditModal">
     <form id="editdata" class="form" action="" method="POST">
         <div class="modal-content">
             <div class="modal-header bg-info">
-                <h4 class="modal-title" id="exampleModalLongTitle">แก้ไข ส่วนงาน</h4>
+                <h4 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-list-ol"></i> แก้ไข ส่วนงาน</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -30,7 +30,7 @@ id="EditModal">
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
-                                <strong>ชื่่อส่วนงาน:</strong>
+                                <strong><i class="fas fa-list-ol"></i> ชื่่อส่วนงาน:</strong>
                                 {!! Form::text('name', null, ['id' => 'EditName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                             </div>
                         </div>
@@ -38,7 +38,7 @@ id="EditModal">
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
-                                <strong>ส่วนราชการ:</strong>
+                                <strong><i class="fas fa-eye"></i> ส่วนราชการ:</strong>
                                 <select style="width: 100%;" class="select2 select2_single form-control"
                                     id="EditDepartment" name="edepartment" multiple="multiple">
                                     <!-- <option value="" selected>Select Student</option>
@@ -62,10 +62,10 @@ id="EditModal">
                                     <label for="ecustomCheckbox1" class="custom-control-label">
                                         เปิดใช้งาน</label>
                                 </div>
-                                
+
                             </div>
                         </div>
-                        
+
                     </div>
 
                     {!! Form::close() !!}

@@ -4,7 +4,7 @@
         <form id="editdata" class="form" action="" method="POST">
             <div class="modal-content">
                 <div class="modal-header bg-info">
-                    <h4 class="modal-title" id="exampleModalLongTitle">แก้ไข สิทธิ์การใช้งาน</h4>
+                    <h4 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-user-lock"></i> แก้ไข สิทธิ์การใช้งาน</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -27,13 +27,13 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                    <strong>ชื่อ สิทธิ์การใช้งาน:</strong>
+                                    <strong><i class="fas fa-user-lock"></i> ชื่อ สิทธิ์การใช้งาน:</strong>
                                     {!! Form::text('name', null, ['id' => 'editName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                    <strong>สิทธิ์การใช้งาน:</strong>
+                                    <strong><i class="fas fa-user-lock"></i> สิทธิ์การใช้งาน:</strong>
                                     <br />
                                     <div class="row">
                                         @foreach ($permission as $value)

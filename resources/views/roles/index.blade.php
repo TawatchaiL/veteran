@@ -81,9 +81,9 @@
                                     <thead>
                                         <tr>
                                             <th width="5%"><input type="checkbox" id="check-all" class="flat"></th>
-                                            <th>ชื่อ สิทธิ์การใช้งาน</th>
+                                            <th width="20%">ชื่อ สิทธิ์การใช้งาน</th>
                                             <th>สิทธิ์การใช้งาน</th>
-                                            <th width="280px"></th>
+                                            <th width="120px"></th>
                                         </tr>
                                     </thead>
                                     <tbody>

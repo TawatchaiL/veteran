@@ -44,7 +44,18 @@
             lengthMenu: [10, 25, 50, 75, 100],
             stateSave: true,
             autoWidth: false,
-            responsive: true,
+            fixedHeader: true,
+            responsive: {
+                details: {
+                    type: 'column',
+                    target: 'tr'
+                }
+            },
+            columnDefs: [{
+                className: 'control',
+                orderable: false,
+                targets: -1
+            }],
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
             columns: [{
@@ -81,6 +92,10 @@
                     data: 'action',
                     name: 'action'
                 },
+                {
+                    data: 'more',
+                    name: 'more'
+                }
             ]
         });
 

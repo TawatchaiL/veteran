@@ -68,6 +68,9 @@ class ExternalBookController extends Controller
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
                 })
+                ->addColumn('more', function ($row) {
+                    return '';
+                })
                 ->addColumn('action', function ($row) {
                     if (Gate::allows('external-doc-edit')) {
                         $html = '<button type="button" class="btn btn-sm btn-warning btn-edit" id="getEditData" data-id="' . $row->id . '"><i class="fa fa-edit"></i> เรียกดูเอกสาร</button> ';
@@ -158,6 +161,8 @@ class ExternalBookController extends Controller
                     id="iframe_' . $filea . '">
                     </iframe>';
         }
+
+        unlink($signpath);
 
 
         return response()->json([
