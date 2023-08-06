@@ -98,13 +98,6 @@
         width: 450px;
     }
 
-    .signpad {
-        background-color: rgb(226, 223, 223);
-        border: 1px solid black;
-        margin: auto;
-        width: 450px;
-    }
-
     .signpadi {
         background-color: rgb(226, 223, 223);
         border: 1px solid black;
