@@ -42,7 +42,7 @@
         </li> --}}
         <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">
-                <span id="weather"></span>
+                <span id="weather" style="display: block;  margin-top:-5px; margin-left:-15px"></span>
             </a>
         </li>
 

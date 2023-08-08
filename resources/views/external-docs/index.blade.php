@@ -51,7 +51,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="card card-info">
+                    <div class="card card-orange">
                         <div class="card-header" style="height: 58px">
                             <h3 class="card-title"><i class="fas fa-file-signature"></i> ลงรับหนังสือ </h3>
                             <div class="card-tools">

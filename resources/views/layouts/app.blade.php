@@ -12,7 +12,7 @@
     <meta http-equiv="Content-Language" content="en">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>{{ config('app.subtitle') }} {{ config('app.name') }} </title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('icon/nongdon.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('icon/cropped-footer-logo-32x32.png') }}">
 
     <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
@@ -63,9 +63,7 @@
 
         /* sidebar-bg */
         .main-sidebar {
-            /* background-color: #5595e9 !important */
-            /* background-color: #1b9ee6 !important */
-            background-color: #59b4e5 !important
+            background-color: #f5be6c !important
         }
 
         .scroll-to-top {
