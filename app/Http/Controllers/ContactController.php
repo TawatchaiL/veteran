@@ -85,8 +85,8 @@ class ContactController extends Controller
             'postcode' => 'required|string|max:10',
             'telephone' => 'required|string|max:20',*/
         ], [
-            'name.required' => 'ชื่อหน่วยงานต้องไม่เป็นค่าว่าง!',
-            'name.unique' => 'ชื่อหน่วยงานนี้มีอยู่แล้วในฐานข้อมูล!',
+            'name.required' => 'ชื่อนักเรียนต้องไม่เป็นค่าว่าง!',
+            'name.unique' => 'ชื่อนักเรียนนี้มีอยู่แล้วในฐานข้อมูล!',
             /*  'status.required' => 'กรุณาเลือกสถานะ!', */
         ]);
 
@@ -98,7 +98,7 @@ class ContactController extends Controller
         $input = $request->all();
         $contact = Contact::create($input);
         $select_list_contact = '<option value="' . $contact->id . '" > ' . $contact->name . '</option>';
-        return response()->json(['success' => 'เพิ่ม หน่วยงานราชการ เรียบร้อยแล้ว', 'contact' => $select_list_contact, 'cid' => $contact->id]);
+        return response()->json(['success' => 'เพิ่ม รายชื่อนักเรียน เรียบร้อยแล้ว', 'contact' => $select_list_contact, 'cid' => $contact->id]);
     }
 
     /**
@@ -136,8 +136,8 @@ class ContactController extends Controller
 
 
         $validator =  Validator::make($request->all(), $rules, [
-            'name.required' => 'ชื่อหน่วยงานต้องไม่เป็นค่าว่าง!',
-            'name.unique' => 'ชื่อหน่วยงานนี้มีอยู่แล้วในฐานข้อมูล!',
+            'name.required' => 'ชื่อนักเรียนต้องไม่เป็นค่าว่าง!',
+            'name.unique' => 'ชื่อนักเรียนนี้มีอยู่แล้วในฐานข้อมูล!',
             'status.required' => 'กรุณาเลือกสถานะ!',
         ]);
 
@@ -156,7 +156,7 @@ class ContactController extends Controller
         $contact = Contact::find($id);
         $contact->update($contactd);
 
-        return response()->json(['success' => 'แก้ไข หน่วยงานราชการ เรียบร้อยแล้ว']);
+        return response()->json(['success' => 'แก้ไข นักเรียน เรียบร้อยแล้ว']);
     }
 
     /**
@@ -166,7 +166,7 @@ class ContactController extends Controller
     {
         $id = $request->get('id');
         Contact::find($id)->delete();
-        return ['success' => true, 'message' => 'ลบ หน่วยงานราชการ เรียบร้อยแล้ว'];
+        return ['success' => true, 'message' => 'ลบ นักเรียน เรียบร้อยแล้ว'];
     }
 
     public function destroy_all(Request $request)
@@ -178,6 +178,6 @@ class ContactController extends Controller
             Contact::find($arr_del[$xx])->delete();
         }
 
-        return redirect('/contacts')->with('success', 'ลบ หน่วยงานราชการ เรียบร้อยแล้ว');
+        return redirect('/contacts')->with('success', 'ลบ นักเรียน เรียบร้อยแล้ว');
     }
 }

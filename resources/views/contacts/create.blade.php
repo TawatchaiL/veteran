@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
-                            <strong><i class="fas fa-building"></i> ชื่อนักเรียน:</strong>
+                            <strong><i class="fas fa-graduation-cap"></i> ชื่อนักเรียน:</strong>
                             {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                         </div>
                     </div>

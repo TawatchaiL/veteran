@@ -234,7 +234,7 @@
 
         // Create the complete text  <i class="fas fa-clock"></i> เวลา: ${thaiDateTimeString.slice(11)}
         const text = `<i class="fas fa-calendar"></i> วันที่: ${thaiDateTimeString.slice(0, 10)}
-        <i class="fas fa-clock"></i> เวลา: ${thaiDateTimeString.slice(11)}`;
+        &nbsp;&nbsp;<i class="fas fa-clock"></i> เวลา: ${thaiDateTimeString.slice(11)}`;
 
         datetimeElement.innerHTML = text;
 
