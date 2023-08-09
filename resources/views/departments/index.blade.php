@@ -79,7 +79,8 @@
                                     <thead>
                                         <tr>
                                             <th><input type="checkbox" id="check-all" class="flat"></th>
-                                            <th>สาขา</th>
+                                            <th>ชื่อสาขา</th>
+                                            <th>รหัสสาขา</th>
                                             <th>สถานะ</th>
                                             <th width="120px"></th>
                                         </tr>

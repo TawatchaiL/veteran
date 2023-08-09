@@ -32,8 +32,26 @@
 
 
                 {{-- 'route' => 'users.store', --}}
-                {!! Form::open(['method' => 'POST','class' => 'form']) !!}
+                {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
                 <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fas fa-code"></i> รหัสสาขา:</strong>
+                            <select style="width: 100%;" class="productl select2 select2_single form-control"
+                                id="AddProduct" name="product" multiple="multiple"
+                                @cannot('all-centre') disabled @endcannot>
+                                <!-- <option value="" selected>Select Student</option>
+                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
+                                @foreach ($centre as $key2)
+                                    <option value="{{ $key2->id }}"
+                                        @if (Auth::user()->department->id == (int) $key2->id) selected @endif>{{ $key2->code }}
+                                        {{ $key2->name }}
+                                    </option>
+                                @endforeach
+
+                            </select>
+                        </div>
+                    </div>
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
                             <strong><i class="fas fa-graduation-cap"></i> ชื่อนักเรียน:</strong>
@@ -90,8 +108,10 @@
                 {!! Form::close() !!}
             </div>
             <div class="modal-footer {{-- justify-content-between --}}">
-                <button type="button" class="btn btn-success" id="SubmitCreateForm"><i class="fas fa-download"></i> บันทึกข้อมูล</button>
-                <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
+                <button type="button" class="btn btn-success" id="SubmitCreateForm"><i class="fas fa-download"></i>
+                    บันทึกข้อมูล</button>
+                <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i
+                        class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
             </div>
         </div>
     </div>

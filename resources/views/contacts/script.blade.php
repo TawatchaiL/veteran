@@ -17,6 +17,41 @@
             $(':checkbox.flat').prop('checked', this.checked);
         });
 
+        $(".select2_single").select2({
+            maximumSelectionLength: 1,
+            allowClear: false,
+            //theme: 'bootstrap4'
+            placeholder: 'กรุณาเลือก'
+        });
+
+        $(".select2_single").on("select2:unselect", function(e) {
+            //log("select2:unselect", e);
+            //$('.products').html('');
+        });
+
+        $(".select2_singles").select2({
+            maximumSelectionLength: 1,
+            allowClear: false,
+            //theme: 'bootstrap4'
+            placeholder: 'กรุณาเลือก'
+        });
+
+        $(".select2_singlec").select2({
+            maximumSelectionLength: 1,
+            allowClear: false,
+            //theme: 'bootstrap4'
+            placeholder: 'กรุณาเลือก'
+        });
+
+
+        $(".select2_multiple").select2({
+            maximumSelectionLength: 2,
+            //placeholder: "With Max Selection limit 4",
+            allowClear: false,
+            //theme: 'bootstrap4'
+            placeholder: 'กรุณาเลือก'
+        });
+
 
 
         //$.noConflict();

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
+use App\Models\Department;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
@@ -60,7 +61,10 @@ class ContactController extends Controller
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
 
-        return view('contacts.index');
+        $centre = Department::where([['status', '1']])
+            ->orderBy("name", "asc")->get();
+
+        return view('contacts.index')->with(['centre' => $centre]);
     }
 
     /**

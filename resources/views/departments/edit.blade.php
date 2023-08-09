@@ -38,6 +38,14 @@ id="EditModal">
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
+                                <strong><i class="fas fa-list-ol"></i> รหัสสาขา:</strong>
+                                {!! Form::text('code', null, ['id' => 'EditCode', 'placeholder' => 'Code', 'class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
                                 <strong><i class="fas fa-eye"></i> สถานะ:</strong>
                                 <br />
                                 <div class="custom-control custom-switch">

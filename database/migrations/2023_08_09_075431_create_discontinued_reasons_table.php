@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('departments', function (Blueprint $table) {
+        Schema::create('discontinued_reasons', function (Blueprint $table) {
             $table->id();
-            $table->string('code')->nullable();
             $table->string('name')->nullable();
             $table->integer('status')->default(0);
             $table->timestamps();
+
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('departments');
+        Schema::dropIfExists('discontinued_reasons');
     }
 };

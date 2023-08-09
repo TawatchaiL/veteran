@@ -83,6 +83,10 @@
                     name: 'name'
                 },
                 {
+                    data: 'code',
+                    name: 'code'
+                },
+                {
                     data: 'status',
                     name: 'status'
                 },
@@ -142,6 +146,7 @@
                 method: 'post',
                 data: {
                     name: $('#AddName').val(),
+                    code: $('#AddCode').val(),
                     status: sstatus,
                     _token: token,
                 },
@@ -185,6 +190,7 @@
                 method: 'GET',
                 success: function(res) {
                     $('#EditName').val(res.data.name);
+                    $('#EditCode').val(res.data.code);
                     if (res.data.status == 1) {
                         $('#ecustomCheckbox1').prop('checked', true);
                     } else {
@@ -219,6 +225,7 @@
                 method: 'PUT',
                 data: {
                     name: $('#EditName').val(),
+                    code: $('#EditCode').val(),
                     status: esstatus,
                 },
 

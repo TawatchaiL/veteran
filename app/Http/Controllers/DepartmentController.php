@@ -108,14 +108,17 @@ class DepartmentController extends Controller
         //
         $validator =  Validator::make($request->all(), [
             'name' => 'required|string|max:255|unique:departments',
+            'code' => 'required|string|max:10',
             'status' => 'required',
             /* 'email' => 'required|string|email|max:255',
             'address' => 'required|string|max:255',
             'postcode' => 'required|string|max:10',
             'telephone' => 'required|string|max:20',*/
         ], [
-            'name.required' => 'ชื่อส่วนราชการต้องไม่เป็นค่าว่าง!',
-            'name.unique' => 'ชื่อส่วนราชการนี้มีอยู่แล้วในฐานข้อมูล!',
+            'name.required' => 'ชื่อสาขาต้องไม่เป็นค่าว่าง!',
+            'name.unique' => 'ชื่อสาขานี้มีอยู่แล้วในฐานข้อมูล!',
+            'code.required' => 'รหัสสาขาต้องไม่เป็นค่าว่าง!',
+            'code.max' => 'รหัสสาขาต้องห้ามเกิน10ตัวอักษร!',
             'status.required' => 'กรุณาเลือกสถานะ!',
         ]);
 
@@ -126,7 +129,7 @@ class DepartmentController extends Controller
 
         $input = $request->all();
         Department::create($input);
-        return response()->json(['success' => 'เพิ่ม ส่วนราชการ เรียบร้อยแล้ว']);
+        return response()->json(['success' => 'เพิ่ม สาขา เรียบร้อยแล้ว']);
     }
 
     /**
@@ -150,14 +153,17 @@ class DepartmentController extends Controller
     {
         $rules = [
             'name' => 'required|string|max:255|unique:departments,name,' . $id,
+            'code' => 'required|max:10',
             'status' => 'required|max:10',
 
         ];
 
 
         $validator =  Validator::make($request->all(), $rules, [
-            'name.required' => 'ชื่อส่วนราชการต้องไม่เป็นค่าว่าง!',
-            'name.unique' => 'ชื่อส่วนราชการนี้มีอยู่แล้วในฐานข้อมูล!',
+            'name.required' => 'ชื่อสาขาต้องไม่เป็นค่าว่าง!',
+            'name.unique' => 'ชื่อสาขานี้มีอยู่แล้วในฐานข้อมูล!',
+            'code.required' => 'รหัสสาขาต้องไม่เป็นค่าว่าง!',
+            'code.max' => 'รหัสสาขาต้องห้ามเกิน10ตัวอักษร!',
             'status.required' => 'กรุณาเลือกสถานะ!',
         ]);
 
@@ -167,13 +173,14 @@ class DepartmentController extends Controller
 
         $contactd = [
             'name' => $request->get('name'),
+            'code' => $request->get('code'),
             'status' => $request->get('status'),
         ];
 
         $update = Department::find($id);
         $update->update($contactd);
 
-        return response()->json(['success' => 'แก้ไข ส่วนราชการ เรียบร้อยแล้ว']);
+        return response()->json(['success' => 'แก้ไข สาขา เรียบร้อยแล้ว']);
     }
 
     /**
@@ -183,7 +190,7 @@ class DepartmentController extends Controller
     {
         $id = $request->get('id');
         Department::find($id)->delete();
-        return ['success' => true, 'message' => 'ลบ ส่วนราชการ เรียบร้อยแล้ว'];
+        return ['success' => true, 'message' => 'ลบ สาขา เรียบร้อยแล้ว'];
     }
 
     public function destroy_all(Request $request)
@@ -195,6 +202,6 @@ class DepartmentController extends Controller
             Department::find($arr_del[$xx])->delete();
         }
 
-        return redirect('/departments')->with('success', 'ลบ ส่วนราชการ เรียบร้อยแล้ว');
+        return redirect('/departments')->with('success', 'ลบ สาขา เรียบร้อยแล้ว');
     }
 }
