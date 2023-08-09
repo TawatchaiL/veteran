@@ -1,7 +1,7 @@
 <div class="modal fade" id="CreateModal">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
-                <div class="modal-header bg-info">
+                <div class="modal-header bg-primary">
                     <h4 class="modal-title"><i class="fas fa-user-lock"></i> เพิ่ม สิทธิ์การใช้งาน</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -66,8 +66,8 @@
 
                 </div>
                 <div class="modal-footer {{-- justify-content-between --}}">
-                    <button type="button" class="btn btn-success" id="SubmitCreateForm">บันทึก</button>
-                    <button type="button" class="btn btn-danger modelClose" data-dismiss="modal">ปิด</button>
+                    <button type="button" class="btn btn-success" id="SubmitCreateForm">บันทึกข้อมูล</button>
+                    <button type="button" class="btn btn-danger modelClose" data-dismiss="modal">ปิดหน้าต่าง</button>
                 </div>
             </div>
         </div>

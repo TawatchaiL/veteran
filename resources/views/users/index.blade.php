@@ -47,7 +47,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="card card-info">
+                    <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title"><i class="fa fa-user"></i> จัดการ ผู้ใช้งาน</h3>
                             <div class="card-tools">
@@ -80,7 +80,7 @@
                                         <tr>
                                             <th><input type="checkbox" id="check-all" class="flat"></th>
                                             <th>ชื่อ ผู้ใช้งาน</th>
-                                            <th>ส่วนราชการ</th>
+                                            <th>สาขา</th>
                                             <th>ส่วนงาน</th>
                                             <th>สิทธิ์การใช้งาน</th>
                                             <th width="280px"></th>

@@ -1,7 +1,7 @@
 <div class="modal fade" id="CreateModal">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header bg-info">
+            <div class="modal-header bg-primary">
                 <h4 class="modal-title"><i class="fas fa-user"></i> เพิ่ม ผู้ใช้งาน</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -48,7 +48,7 @@
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
-                            <strong><i class="fas fa-list-ol"></i> ส่วนราชการ:</strong>
+                            <strong><i class="fas fa-list-ol"></i> สาขา:</strong>
                             <select style="width: 100%;" class="departmentl select2 select2_single form-control" id="AddDepartment"
                                 name="department" multiple="multiple">
                                 <!-- <option value="" selected>Select Student</option>
@@ -108,8 +108,8 @@
                 {!! Form::close() !!}
             </div>
             <div class="modal-footer {{-- justify-content-between --}}">
-                <button type="button" class="btn btn-success" id="SubmitCreateForm">บันทึก</button>
-                <button type="button" class="btn btn-danger modelClose" data-dismiss="modal">ปิด</button>
+                <button type="button" class="btn btn-success" id="SubmitCreateForm">บันทึกข้อมูล</button>
+                <button type="button" class="btn btn-danger modelClose" data-dismiss="modal">ปิดหน้าต่าง</button>
             </div>
         </div>
     </div>

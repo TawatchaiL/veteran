@@ -4,8 +4,8 @@ id="EditModal">
 <div class="modal-dialog modal-lg" role="document">
     <form id="editdata" class="form" action="" method="POST">
         <div class="modal-content">
-            <div class="modal-header bg-info">
-                <h4 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-list-ol"></i> แก้ไข ส่วนราชการ</h4>
+            <div class="modal-header bg-primary">
+                <h4 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-list-ol"></i> แก้ไข สาขา</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -30,7 +30,7 @@ id="EditModal">
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
-                                <strong><i class="fas fa-list-ol"></i> ชื่่อระดับชั้นความเร็ว:</strong>
+                                <strong><i class="fas fa-list-ol"></i> ชื่่อสาขา:</strong>
                                 {!! Form::text('name', null, ['id' => 'EditName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                             </div>
                         </div>
@@ -56,8 +56,8 @@ id="EditModal">
             </div>
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="SubmitEditForm">บันทึก</button>
-                <button type="button" class="btn btn-danger modelClose" data-dismiss="modal">ปิด</button>
+                <button type="button" class="btn btn-success" id="SubmitEditForm">บันทึกข้อมูล</button>
+                <button type="button" class="btn btn-danger modelClose" data-dismiss="modal">ปิดหน้าต่าง</button>
             </div>
         </div>
     </form>

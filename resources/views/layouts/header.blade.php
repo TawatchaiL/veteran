@@ -6,12 +6,12 @@
                     class="fas fa-bars"></i></a>
         </li>
         {{-- <li><a href="#" class="nav-link">
-                <h5>เทศบาลตำบลหนองโดน</h5>
+                <h5></h5>
             </a></li> --}}
         <li class="nav-item d-none d-sm-inline-block">
 
             <a href="#" class="nav-link">[ <i class="fas fa-building nav-icon"></i> <b
-                    class="text-primary">ส่วนราชการ : @if (Auth::check() && Auth::user()->department && Auth::user()->department->name)
+                    class="text-primary">สาขา : @if (Auth::check() && Auth::user()->department && Auth::user()->department->name)
                         {{ Auth::user()->department->name }}
                     @endif
                 </b> ]</a>

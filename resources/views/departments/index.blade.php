@@ -14,15 +14,15 @@
                     <ol class="breadcrumb float-sm-right">
                         {{-- <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item active">Users Management</li> --}}
-        
+
                         @can('master-data-create')
                             <button type="button" class="btn btn-success" id="CreateButton">
-                                <i class="fas fa-list-ol"></i> เพิ่ม ส่วนราชการ</a> </button>
+                                <i class="fas fa-list-ol"></i> เพิ่ม สาขา</a> </button>
                         @else
                             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
                                 title="คุณไม่มีสิทธิ์ในส่วนนี้">
                                 <button type="button" class="btn btn-success disabled">
-                                    <i class="fas fa-list-ol"></i> เพิ่ม ส่วนราชการ </a></button>
+                                    <i class="fas fa-list-ol"></i> เพิ่ม สาขา </a></button>
                             </span>
                         @endcan &nbsp;
 
@@ -47,9 +47,9 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="card card-info">
+                    <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-list-ol"></i> ส่วนราชการ</h3>
+                            <h3 class="card-title"><i class="fas fa-list-ol"></i> สาขา</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -79,9 +79,9 @@
                                     <thead>
                                         <tr>
                                             <th><input type="checkbox" id="check-all" class="flat"></th>
-                                            <th>ส่วนราชการ</th>
+                                            <th>สาขา</th>
                                             <th>สถานะ</th>
-                                            <th width="280px"></th>
+                                            <th width="120px"></th>
                                         </tr>
                                     </thead>
                                     <tbody>

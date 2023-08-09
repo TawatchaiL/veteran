@@ -1,8 +1,8 @@
 <div class="modal fade" id="CreateModal">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header bg-info">
-                <h4 class="modal-title"><i class="fas fa-list-ol"></i> เพิ่ม ส่วนราชการ</h4>
+            <div class="modal-header bg-primary">
+                <h4 class="modal-title"><i class="fas fa-list-ol"></i> เพิ่ม สาขา</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
-                            <strong><i class="fas fa-list-ol"></i> ชื่่อส่วนราชการ:</strong>
+                            <strong><i class="fas fa-list-ol"></i> ชื่่อสาขา:</strong>
                             {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                         </div>
                     </div>

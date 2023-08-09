@@ -39,12 +39,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/contacts/destroy', [App\Http\Controllers\ContactController::class, 'destroy'])->name('contacts.destroy');
     Route::post('/contacts/destroy_all', [App\Http\Controllers\ContactController::class, 'destroy_all'])->name('contacts.destroy_all');
 
-    Route::get('/priorities', [App\Http\Controllers\PrioritiesController::class, 'index'])->name('priorities');
-    Route::post('/priorities/store', [App\Http\Controllers\PrioritiesController::class, 'store'])->name('priorities.store');
-    Route::get('/priorities/edit/{id}', [App\Http\Controllers\PrioritiesController::class, 'edit'])->name('priorities.edit');
-    Route::put('/priorities/save/{id}', [App\Http\Controllers\PrioritiesController::class, 'update'])->name('priorities.save');
-    Route::delete('/priorities/destroy', [App\Http\Controllers\PrioritiesController::class, 'destroy'])->name('priorities.destroy');
-    Route::post('/priorities/destroy_all', [App\Http\Controllers\PrioritiesController::class, 'destroy_all'])->name('priorities.destroy_all');
 
     Route::get('/departments', [App\Http\Controllers\DepartmentController::class, 'index'])->name('departments');
     Route::post('/departments/store', [App\Http\Controllers\DepartmentController::class, 'store'])->name('departments.store');
@@ -61,16 +55,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/positions/destroy', [App\Http\Controllers\PositionController::class, 'destroy'])->name('positions.destroy');
     Route::post('/positions/destroy_all', [App\Http\Controllers\PositionController::class, 'destroy_all'])->name('positions.destroy_all');
 
-    //ExternalBook
-    Route::get('/external-docs', [App\Http\Controllers\ExternalBookController::class, 'index'])->name('external-docs');
-    Route::post('/external-docs/store', [App\Http\Controllers\ExternalBookController::class, 'store'])->name('external-docs.store');
-    Route::get('/external-docs/edit/{id}', [App\Http\Controllers\ExternalBookController::class, 'edit'])->name('external-docs.edit');
-    Route::put('/external-docs/save/{id}', [App\Http\Controllers\ExternalBookController::class, 'update'])->name('external-docs.save');
-    Route::get('/external-docs/running', [App\Http\Controllers\ExternalBookController::class, 'create'])->name('external-docs.running');
-    Route::delete('/external-docs/destroy', [App\Http\Controllers\ExternalBookController::class, 'destroy'])->name('external-docs.destroy');
-    Route::post('/external-docs/destroy_all', [App\Http\Controllers\ExternalBookController::class, 'destroy_all'])->name('external-docs.destroy_all');
-    Route::put('/external-docs/delete/img/{rid}/{rid2}', [App\Http\Controllers\ExternalBookController::class, 'deleteImg'])->name('external-docs.deleteimg');
-    Route::post('/external-docs/stamp', [App\Http\Controllers\ExternalBookController::class, 'stamp'])->name('external-docs.stamp');
+
 
     //file
     Route::post('/file/upload', function (Request $request) {
@@ -88,24 +73,10 @@ Route::group(['middleware' => ['auth']], function () {
         return $result;
     })->name('file.get');
 
-    Route::get('/stamp/', function (Request $request) {
-        $stampText1 = 'มานนท์ เหลี่ยมวิเศษ';
-        $stampText2 = '12/08/2566';
-        $stampText3 = '18:00:44';
-        $x = 140;
-        $y = 2;
-
-        $filename = $request->get('filename');
-        $uploadedFilePath = public_path('file_store/'.$filename.'.pdf');
-        $stampedFilePath = FileUploadService::stampPDFWithImage($uploadedFilePath, $x, $y, $stampText1, $stampText2, $stampText3);
-
-        return $stampedFilePath;
-    })->name('stamp');
 
     Route::get('/', [App\Http\Controllers\ExternalBookController::class, 'index']);
     Route::get('/home', [App\Http\Controllers\ExternalBookController::class, 'index'])->name('home');
 });
 
-Route::get('/sign', [App\Http\Controllers\HomeController::class, 'index'])->name('sign');
 
 Auth::routes();

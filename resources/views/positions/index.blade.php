@@ -14,7 +14,7 @@
                     <ol class="breadcrumb float-sm-right">
                         {{-- <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item active">Users Management</li> --}}
-        
+
                         @can('master-data-create')
                             <button type="button" class="btn btn-success" id="CreateButton">
                                 <i class="fas fa-list-ol"></i> เพิ่ม ส่วนงาน </a> </button>
@@ -47,7 +47,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="card card-info">
+                    <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title"><i class="fas fa-list-ol"></i> ส่วนงาน</h3>
                             <div class="card-tools">
@@ -80,9 +80,9 @@
                                         <tr>
                                             <th><input type="checkbox" id="check-all" class="flat"></th>
                                             <th>ส่วนงาน</th>
-                                            <th>ส่วนราชการ</th>
+                                            <th>สาขา</th>
                                             <th>สถานะ</th>
-                                            <th width="280px"></th>
+                                            <th width="120px"></th>
                                         </tr>
                                     </thead>
                                     <tbody>

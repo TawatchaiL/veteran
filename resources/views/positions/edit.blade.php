@@ -4,7 +4,7 @@ id="EditModal">
 <div class="modal-dialog modal-lg" role="document">
     <form id="editdata" class="form" action="" method="POST">
         <div class="modal-content">
-            <div class="modal-header bg-info">
+            <div class="modal-header bg-primary">
                 <h4 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-list-ol"></i> แก้ไข ส่วนงาน</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -38,7 +38,7 @@ id="EditModal">
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
-                                <strong><i class="fas fa-eye"></i> ส่วนราชการ:</strong>
+                                <strong><i class="fas fa-eye"></i> สาขา:</strong>
                                 <select style="width: 100%;" class="select2 select2_single form-control"
                                     id="EditDepartment" name="edepartment" multiple="multiple">
                                     <!-- <option value="" selected>Select Student</option>
@@ -73,8 +73,8 @@ id="EditModal">
             </div>
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="SubmitEditForm">บันทึก</button>
-                <button type="button" class="btn btn-danger modelClose" data-dismiss="modal">ปิด</button>
+                <button type="button" class="btn btn-success" id="SubmitEditForm">บันทึกข้อมูล</button>
+                <button type="button" class="btn btn-danger modelClose" data-dismiss="modal">ปิดหน้าต่าง</button>
             </div>
         </div>
     </form>

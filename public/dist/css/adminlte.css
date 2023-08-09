@@ -36643,15 +36643,15 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
     font-size: 2.1rem;
     font-weight: 300;
     width: 500px;
-    margin-left: -20px;
+    margin-left: -70px;
     margin-bottom: .9rem;
-    /* text-align: center; */
+    text-align: center;
 }
 
 .login-logo a,
 .register-logo a {
-    /* color: #495057; */
-    color: #ffffff;
+    color: #495057;
+    /* color: #ffffff; */
 }
 
 .login-page,
@@ -36662,7 +36662,7 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
     /* background-color: #e9ecef; */
     /* background-color: #40cbff; */
     /* background-color: #1b9ee6; */
-    background-color: #9fcdff;
+    background-color: #fadeb4;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;

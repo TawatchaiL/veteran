@@ -11,8 +11,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Language" content="en">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>{{ config('app.subtitle') }} {{ config('app.name') }}</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('icon/nongdon.ico') }}">
+    <title> {{ config('app.name') }} {{ config('app.subtitle') }}</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/cropped-footer-logo-32x32.png') }}">
+    <link rel="shortcut icon" href="{{ asset('images/cropped-footer-logo-32x32.png') }}" type="image/x-icon">
     <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
@@ -38,7 +39,7 @@
 
     <style>
         body {
-            background-color: #40cbff;
+            background-color: #f5be6c;
             font-family: 'Sarabun', serif;
         }
 
@@ -61,7 +62,7 @@
         <div class="image-container"><img src="{{ asset('images/logo.png') }}" alt="..."
                 height="120"></div>
         <div class="login-logo">
-            <a href="{{ url('/home') }}"><b>{{ config('app.subtitle') }} {{ config('app.name') }} </b></a>
+            <a href="{{ url('/home') }}"><b> {{ config('app.name') }} {{ config('app.subtitle') }}</b></a>
         </div>
         <!-- /.login-logo -->
 
@@ -107,7 +108,7 @@
                                 </div>
                             </div> --}}
 
-                        <div class="col-4">
+                        <div class="col-6">
                             <button type="submit" class="btn btn-primary btn-block">เข้าสู่ระบบ</button>
                         </div>
 

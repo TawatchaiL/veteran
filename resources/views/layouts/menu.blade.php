@@ -5,42 +5,19 @@
         <p>Dashboard</p>
     </a>
 </li> --}}
-@can('external-doc-list')
-<li class="nav-item">
-    <a href="#" class="nav-link">
-        <i class="nav-icon fas fa-file-import"></i>
-        <p>หนังสือภายนอก</p>
-        <i class="fas fa-angle-left right"></i>
-    </a>
-    <ul class="nav nav-treeview">
-        <li class="nav-item" >
-            <a href="{{ route('external-docs') }}" class="nav-link {{ Request::is('external-docs') ? 'active' : '' }}">
-                <i class="fas fa-file-signature nav-icon"></i>
-                <p>ลงรับหนังสือ</p>
-            </a>
-        </li>
-        {{-- <li class="nav-item" >
-            <a href="{{ route('persons') }}" class="nav-link {{ Request::is('persons') ? 'active' : '' }}">
-                <i class="fas fa-user-tie nav-icon"></i>
-                <p>บุคคล</p>
-            </a>
-        </li> --}}
 
-    </ul>
-</li>
-@endcan
 @can('contact-list')
 <li class="nav-item">
     <a href="#" class="nav-link">
         <i class="nav-icon fas fa-address-book"></i>
-        <p>หน่วยงานที่ติดต่อ</p>
+        <p>รายชื่อนักเรียน</p>
         <i class="fas fa-angle-left right"></i>
     </a>
     <ul class="nav nav-treeview">
         <li class="nav-item" >
             <a href="{{ route('contacts') }}" class="nav-link {{ Request::is('contacts') ? 'active' : '' }}">
                 <i class="far fa-building nav-icon"></i>
-                <p>หน่วยงานราชการ</p>
+                <p>รายชื่อนักเรียน</p>
             </a>
         </li>
         {{-- <li class="nav-item" >
@@ -61,16 +38,11 @@
         <i class="fas fa-angle-left right"></i>
     </a>
     <ul class="nav nav-treeview">
-        <li class="nav-item" >
-            <a href="{{ route('priorities') }}" class="nav-link {{ Request::is('priorities') ? 'active' : '' }}">
-                <i class="fas fa-list-ol nav-icon"></i>
-                <p>ระดับชั้นความเร็ว</p>
-            </a>
-        </li>
+
         <li class="nav-item" >
             <a href="{{ route('departments') }}" class="nav-link {{ Request::is('departments') ? 'active' : '' }}">
                 <i class="fas fa-list-ol nav-icon"></i>
-                <p>ส่วนราชการ</p>
+                <p>สาขา</p>
             </a>
         </li>
         <li class="nav-item" >
