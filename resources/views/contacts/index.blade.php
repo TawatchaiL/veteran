@@ -14,16 +14,16 @@
                     <ol class="breadcrumb float-sm-right">
                         {{-- <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item active">Users Management</li> --}}
-            
+
 
                         @can('contact-create')
                             <button type="button" class="btn btn-success" id="CreateButton">
-                                <i class="fas fa-building"></i> เพิ่ม หน่วยงานราชการ  </button>
+                                <i class="fas fa-graduation-cap"></i> เพิ่ม รายชื่อนักเรียน  </button>
                         @else
                             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
                                 title="คุณไม่มีสิทธิ์ในส่วนนี้">
                                 <button type="button" class="btn btn-success disabled">
-                                    <i class="fas fa-building"></i> เพิ่ม หน่วยงานราชการ </button>
+                                    <i class="fas fa-graduation-cap"></i> เพิ่ม รายชื่อนักเรียน </button>
                             </span>
                         @endcan &nbsp;
 
@@ -48,9 +48,9 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="card card-info">
+                    <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-building"></i> รายชื่อ หน่วยงานราชการ</h3>
+                            <h3 class="card-title"><i class="fas fa-graduation-cap"></i> รายชื่อนักเรียน</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -80,7 +80,7 @@
                                     <thead>
                                         <tr>
                                             <th><input type="checkbox" id="check-all" class="flat"></th>
-                                            <th>ชื่่อหน่วยงาน</th>
+                                            <th>ชื่อนักเรียน</th>
                                             <th>อีเมล์</th>
                                             <th>เบอร์โทรศัพท์</th>
                                             <th width="280px"></th>

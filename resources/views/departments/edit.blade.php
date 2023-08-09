@@ -56,8 +56,8 @@ id="EditModal">
             </div>
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="SubmitEditForm">บันทึกข้อมูล</button>
-                <button type="button" class="btn btn-danger modelClose" data-dismiss="modal">ปิดหน้าต่าง</button>
+                <button type="button" class="btn btn-success" id="SubmitEditForm"><i class="fas fa-download"></i> บันทึกข้อมูล</button>
+                <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
             </div>
         </div>
     </form>
