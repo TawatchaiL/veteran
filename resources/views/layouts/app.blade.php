@@ -26,6 +26,8 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Libre Caslon Text' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
         integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
         crossorigin="anonymous" />
@@ -35,6 +37,10 @@
     <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
+    <!-- Include Bootstrap DateTimePicker CDN -->
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
+        rel="stylesheet">
     <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
@@ -48,9 +54,13 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.css" />
     <link rel="stylesheet" href="dist/css/adminlte.css?v=3.2.0">
     <style>
-        body {
+        /* body {
             font-family: 'Sarabun', serif;
-            /*        font-size: 20px;*/
+                    font-size: 20px;
+        } */
+        body {
+            font-family: 'Roboto','Sarabun';
+            font-size: 16px;
         }
 
         .main-header.navbar {
@@ -143,9 +153,11 @@
 <script src="plugins/inputmask/jquery.inputmask.min.js"></script>
 <script src="plugins/pdfmake/pdfmake.min.js"></script>
 <script src="plugins/pdfmake/vfs_fonts.js"></script>
-{{-- <script src="plugins/datepicker/bootstrap-datepicker.js"></script>
-<script src="plugins/datepicker/bootstrap-datepicker-thai.js"></script>
-<script src="plugins/datepicker/locales/bootstrap-datepicker.th.js"></script> --}}
+<!-- Include Moment.js CDN -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js">
+</script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.js">
 </script>
@@ -187,7 +199,7 @@
                 const weatherIconUrl = `http://openweathermap.org/img/w/${weatherIconCode}.png`;
                 const weatherDescription = data.weather[0].description;
 
-                const weatherHTML = `สภาพอากาศ:
+                const weatherHTML = `Weather":
           <img src="${weatherIconUrl}" alt="${weatherDescription}" width="35px">
           ${temperature.toFixed(1)}°C
         `;
@@ -233,8 +245,8 @@
         const thaiDateTimeString = now.toLocaleString('th-TH', thaiOptions);
 
         // Create the complete text  <i class="fas fa-clock"></i> เวลา: ${thaiDateTimeString.slice(11)}
-        const text = `<i class="fas fa-calendar"></i> วันที่: ${thaiDateTimeString.slice(0, 10)}
-        &nbsp;&nbsp;<i class="fas fa-clock"></i> เวลา: ${thaiDateTimeString.slice(11)}`;
+        const text = `<i class="fas fa-calendar"></i> Date: ${thaiDateTimeString.slice(0, 10)}
+        &nbsp;&nbsp;<i class="fas fa-clock"></i> Time: ${thaiDateTimeString.slice(11)}`;
 
         datetimeElement.innerHTML = text;
 

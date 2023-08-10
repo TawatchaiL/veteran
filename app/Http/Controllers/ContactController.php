@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\Department;
+use App\Models\studentRunningNumber;
+use App\Models\term;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
@@ -63,8 +65,12 @@ class ContactController extends Controller
 
         $centre = Department::where([['status', '1']])
             ->orderBy("name", "asc")->get();
+        $term = term::where([['status', '1']])
+            ->orderBy("name", "asc")->get();
+            //dd($term);
 
-        return view('contacts.index')->with(['centre' => $centre]);
+        return view('contacts.index')->with(['centre' => $centre])
+            ->with(['term' => $term]);
     }
 
     /**
@@ -72,7 +78,11 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        $rnumber = studentRunningNumber::pre_generate(Auth::user()->department->code);
+        //dd($rnumber);
+        return response()->json([
+            'running' =>  $rnumber
+        ]);
     }
 
     /**

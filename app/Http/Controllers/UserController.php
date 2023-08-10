@@ -75,14 +75,14 @@ class UserController extends Controller
                 })
                 ->addColumn('action', function ($row) {
                     if (Gate::allows('user-edit')) {
-                        $html = '<button type="button" class="btn btn-sm btn-warning btn-edit" id="getEditData" data-id="' . $row->id . '"><i class="fa fa-edit"></i> แก้ไข</button> ';
+                        $html = '<button type="button" class="btn btn-sm btn-warning btn-edit" id="getEditData" data-id="' . $row->id . '"><i class="fa fa-edit"></i> Edit</button> ';
                     } else {
-                        $html = '<button type="button" class="btn btn-sm btn-warning disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-edit"></i> แก้ไข</button> ';
+                        $html = '<button type="button" class="btn btn-sm btn-warning disabled" data-toggle="tooltip" data-placement="bottom" title="You Not Have Permission"><i class="fa fa-edit"></i> Edit</button> ';
                     }
                     if (Gate::allows('user-delete')) {
-                        $html .= '<button type="button" data-rowid="' . $row->id . '" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i> ลบ</button>';
+                        $html .= '<button type="button" data-rowid="' . $row->id . '" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i> Delete</button>';
                     } else {
-                        $html .= '<button type="button" class="btn btn-sm btn-danger disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-trash"></i> ลบ</button> ';
+                        $html .= '<button type="button" class="btn btn-sm btn-danger disabled" data-toggle="tooltip" data-placement="bottom" title="You Not Have Permission"><i class="fa fa-trash"></i> Delete</button> ';
                     }
                     return $html;
                 })->rawColumns(['checkbox', 'action'])->toJson();
@@ -146,13 +146,13 @@ class UserController extends Controller
 
         /*  return redirect()->route('users.index')
             ->with('success', 'User created successfully'); */
-        return response()->json(['success' => 'เพิ่มช้อมูล ผู้ใช้งาน เรียบร้อยแล้ว']);
+        return response()->json(['success' => 'Add User Success']);
     }
 
 
     public function find($type, $position)
     {
-        $select_list = "<option value=''>please select</option>";
+        $select_list = "<option value=''>Please select</option>";
         if ($type == 'add') {
             $data = User::select(
                 "users.id as id",
@@ -303,7 +303,7 @@ class UserController extends Controller
 
         $user->assignRole($request->input('role'));
 
-        return response()->json(['success' => 'บันทึกข้อมูล ผู้ใช้งาน เรียบร้อยแล้ว']);
+        return response()->json(['success' => 'Save User Success']);
 
         /* return redirect()->route('users.index')
             ->with('success', 'User updated successfully'); */
@@ -322,7 +322,7 @@ class UserController extends Controller
         } */
         $id = $request->get('id');
         User::find($id)->delete();
-        return ['success' => true, 'message' => 'ลบข้อมูล ผู้ใช้งาน เรียบร้อยแล้ว'];
+        return ['success' => true, 'message' => 'Delete User Success'];
         /* return redirect()->route('users.index')
             ->with('success', 'User deleted successfully'); */
     }
@@ -340,7 +340,7 @@ class UserController extends Controller
         }
         //$ids = $request->get('table_records');
         //User::whereIn('id',explode(",",$ids))->delete();
-        return redirect('/users')->with('success', 'ลบข้อมูล ผู้ใช้งาน ผู้ใช้งาน');
+        return redirect('/users')->with('success', 'Delete User Success');
     }
 
     /**

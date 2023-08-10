@@ -52,6 +52,10 @@
             placeholder: 'กรุณาเลือก'
         });
 
+        $(".AddDate").datepicker({
+            dateFormat: "yy-mm-dd"
+        });
+
 
 
         //$.noConflict();
@@ -159,8 +163,17 @@
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
+            $.ajax({
+                method: "GET",
+                url: "{{ route('contacts.running') }}",
+                success: function(res) {
+                    console.log(res)
+                    $('#AddCode').val(res.running);
+                }
+            });
             $('#CreateModal').modal('show');
         });
+
 
 
         // Create product Ajax request.

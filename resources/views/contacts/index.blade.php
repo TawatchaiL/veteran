@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('style')
+    @include('contacts.style')
 @endsection
 
 @section('content')
@@ -18,7 +19,7 @@
 
                         @can('contact-create')
                             <button type="button" class="btn btn-success" id="CreateButton">
-                                <i class="fas fa-graduation-cap"></i> เพิ่ม รายชื่อนักเรียน  </button>
+                                <i class="fas fa-graduation-cap"></i> เพิ่ม รายชื่อนักเรียน </button>
                         @else
                             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
                                 title="คุณไม่มีสิทธิ์ในส่วนนี้">

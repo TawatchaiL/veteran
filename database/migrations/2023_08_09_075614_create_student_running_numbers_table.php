@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('student_running_numbers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('department')->default(0);
+            $table->year('year');
+            $table->string('department')->nullable();
             $table->unsignedInteger('number')->default(0);
             $table->timestamps();
         });
