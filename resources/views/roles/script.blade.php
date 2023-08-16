@@ -49,20 +49,20 @@
             language: {
                 loadingRecords: '&nbsp;',
                 processing: `<div class="spinner-border text-primary"></div>`,
-                "sProcessing": "Processcing...",
-                "sLengthMenu": "Display_MENU_ Row",
-                "sZeroRecords": "No Data Fount",
-                "sInfo": "Display _START_ To _END_ From _TOTAL_ Records",
-                "sInfoEmpty": "Display 0 To 0 From 0 Records",
-                "sInfoFiltered": "(Filters _MAX_ Row)",
+                "sProcessing": "กำลังดำเนินการ...",
+                "sLengthMenu": "แสดง_MENU_ แถว",
+                "sZeroRecords": "ไม่พบข้อมูล",
+                "sInfo": "แสดง _START_ ถึง _END_ จาก _TOTAL_ รายการ",
+                "sInfoEmpty": "แสดง 0 ถึง 0 จาก 0 รายการ",
+                "sInfoFiltered": "(กรองข้อมูล _MAX_ ทุกแถว)",
                 "sInfoPostFix": "",
-                "sSearch": "Search:",
+                "sSearch": "ค้นหา:",
                 "sUrl": "",
                 "oPaginate": {
-                    "sFirst": "First",
-                    "sPrevious": "Previous",
-                    "sNext": "Next",
-                    "sLast": "Last"
+                    "sFirst": "เริ่มต้น",
+                    "sPrevious": "ก่อนหน้า",
+                    "sNext": "ถัดไป",
+                    "sLast": "สุดท้าย"
                 }
             },
             aaSorting: [
