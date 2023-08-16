@@ -5,13 +5,13 @@
             <a class="nav-link sidebar-toggle-btn" data-widget="pushmenu" href="#" role="button"><i
                     class="fas fa-bars"></i></a>
         </li>
-         <li class="nav-item d-none d-sm-inline-block"><a href="#" class="nav-link">
-                <h5>โรงพยาบาลพุทธชินราช พิษณุโลก</h5>
+        <li class="nav-item d-none d-sm-inline-block"><a href="#" class="nav-link"><i class="fas fa-bed"></i>
+                <b class="text-primary"> โรงพยาบาลพุทธชินราช พิษณุโลก</b>
             </a></li>
         <li class="nav-item d-none d-sm-inline-block">
 
-            <a href="#" class="nav-link">[ <i class="fas fa-building nav-icon"></i> <b
-                    class="text-primary">แผนก : @if (Auth::check() && Auth::user()->department && Auth::user()->department->name)
+            <a href="#" class="nav-link">[ <i class="fas fa-building nav-icon"></i> <b class="text-primary">แผนก :
+                    @if (Auth::check() && Auth::user()->department && Auth::user()->department->name)
                         {{ Auth::user()->department->name }}
                     @endif
                 </b> ]</a>
@@ -23,7 +23,7 @@
                     @endif
                 </b> ]</a>
         </li>
-         {{-- <li class="nav-item d-none d-sm-inline-block">
+        {{-- <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">
                 <span id="real-time-clock"></span>
 
@@ -44,7 +44,7 @@
             <a href="#" class="nav-link">
                
             </a>
-        </li>--}}
+        </li> --}}
 
     </ul>
 
