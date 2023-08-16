@@ -10,7 +10,7 @@
 <li class="nav-item">
     <a href="{{ route('contacts') }}" class="nav-link {{ Request::is('contacts') ? 'active' : '' }}">
         <i class="nav-icon fas fa-graduation-cap"></i>
-        <p>Students</p>
+        <p>รายชื่อผู้ติดต่อ</p>
     </a>
 </li>
 
@@ -20,7 +20,7 @@
 <li class="nav-item">
     <a href="#" class="nav-link">
         <i class="nav-icon fas fa-database"></i>
-        <p>Databases</p>
+        <p>ข้อมูลหลัก</p>
         <i class="fas fa-angle-left right"></i>
     </a>
     <ul class="nav nav-treeview">
@@ -28,13 +28,13 @@
         <li class="nav-item" >
             <a href="{{ route('departments') }}" class="nav-link {{ Request::is('departments') ? 'active' : '' }}">
                 <i class="fas fa-list-ol nav-icon"></i>
-                <p>Centre</p>
+                <p>แผนก</p>
             </a>
         </li>
         <li class="nav-item" >
             <a href="{{ route('positions') }}" class="nav-link {{ Request::is('positions') ? 'active' : '' }}">
                 <i class="fas fa-list-ol nav-icon"></i>
-                <p>Department</p>
+                <p>ตำแหน่ง</p>
             </a>
         </li>
         {{-- <li class="nav-item" >
@@ -52,7 +52,7 @@
 
     <a href="{{ route('users.index') }}" class="nav-link {{ Request::is('users') ? 'active' : '' }}">
         <i class="nav-icon fas fa-user"></i>
-        <p>Users</p>
+        <p>ผู้ใช้งาน</p>
     </a>
 
 </li>
@@ -62,7 +62,7 @@
 
     <a href="{{ route('roles.index') }}" class="nav-link {{ Request::is('roles') ? 'active' : '' }}">
         <i class="nav-icon fas fa-user-lock"></i>
-        <p>Roles</p>
+        <p>สิทธิ์การใช้งาน</p>
     </a>
 
 </li>

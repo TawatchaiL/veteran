@@ -1,6 +1,6 @@
 <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-        <b> {{ config('app.name') }} {{ config('app.subtitle') }}</b> {{ config('app.version') }}
+        <b> {{ config('app.subtitle') }} {{ config('app.name') }} {{ config('app.name2') }}</b> {{-- {{ config('app.version') }} --}}
     </div>
     <strong>Copyright &copy; 2023 All rights
     reserved.

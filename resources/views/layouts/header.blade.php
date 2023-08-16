@@ -5,19 +5,19 @@
             <a class="nav-link sidebar-toggle-btn" data-widget="pushmenu" href="#" role="button"><i
                     class="fas fa-bars"></i></a>
         </li>
-        {{-- <li><a href="#" class="nav-link">
-                <h5></h5>
-            </a></li> --}}
+         <li><a href="#" class="nav-link">
+                <h5>โรงพยาบาลพุทธชินราช พิษณุโลก</h5>
+            </a></li>
         <li class="nav-item d-none d-sm-inline-block">
 
             <a href="#" class="nav-link">[ <i class="fas fa-building nav-icon"></i> <b
-                    class="text-primary">Centre : @if (Auth::check() && Auth::user()->department && Auth::user()->department->name)
+                    class="text-primary">แผนก : @if (Auth::check() && Auth::user()->department && Auth::user()->department->name)
                         {{ Auth::user()->department->name }}
                     @endif
                 </b> ]</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">[ <i class="fas fa-users nav-icon"></i> <b class="text-primary">Department :
+            <a href="#" class="nav-link">[ <i class="fas fa-users nav-icon"></i> <b class="text-primary">ตำแหน่ง :
                     @if (Auth::check() && Auth::user()->position && Auth::user()->position->name)
                         {{ Auth::user()->position->name }}
                     @endif
@@ -62,7 +62,7 @@
                         height="150" class="img-circle elevation-1" alt="User Image">
                     <p>
                         {{ Auth::user()->name }}
-                        <small>Member since {{ Auth::user()->created_at->format('M. Y') }}</small>
+                        <small>สร้างเมื่อ {{ Auth::user()->created_at->format('M. Y') }}</small>
                     </p>
                 </li>
                 <!-- Menu Footer-->
@@ -70,7 +70,7 @@
                     <a href="#" class="btn btn-default btn-flat">Profile</a>
                     <a href="#" class="btn btn-default btn-flat float-right"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        Sign out
+                        ออกจากระบบ
                     </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf

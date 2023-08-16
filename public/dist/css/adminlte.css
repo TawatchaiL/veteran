@@ -36662,7 +36662,7 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
     /* background-color: #e9ecef; */
     /* background-color: #40cbff; */
     /* background-color: #1b9ee6; */
-    background-color: #fadeb4;
+    background-color: rgb(162, 223, 144);
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;

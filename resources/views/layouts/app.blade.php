@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Language" content="en">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title> {{ config('app.name') }} {{ config('app.subtitle') }}</title>
+    <title> {{ config('app.subtitle') }} {{ config('app.name') }} </title>
     <link rel="icon" type="image/x-icon" href="{{ asset('images/cropped-footer-logo-32x32.png') }}">
     <link rel="shortcut icon" href="{{ asset('images/cropped-footer-logo-32x32.png') }}" type="image/x-icon">
 
@@ -74,7 +74,7 @@
 
         /* sidebar-bg */
         .main-sidebar {
-            background-color: #f5be6c !important
+            background-color: rgb(162, 223, 144) !important
         }
 
         .scroll-to-top {
@@ -199,7 +199,7 @@
                 const weatherIconUrl = `http://openweathermap.org/img/w/${weatherIconCode}.png`;
                 const weatherDescription = data.weather[0].description;
 
-                const weatherHTML = `Weather":
+                const weatherHTML = `สภาพอากาศ :
           <img src="${weatherIconUrl}" alt="${weatherDescription}" width="35px">
           ${temperature.toFixed(1)}°C
         `;
@@ -245,8 +245,8 @@
         const thaiDateTimeString = now.toLocaleString('th-TH', thaiOptions);
 
         // Create the complete text  <i class="fas fa-clock"></i> เวลา: ${thaiDateTimeString.slice(11)}
-        const text = `<i class="fas fa-calendar"></i> Date: ${thaiDateTimeString.slice(0, 10)}
-        &nbsp;&nbsp;<i class="fas fa-clock"></i> Time: ${thaiDateTimeString.slice(11)}`;
+        const text = `<i class="fas fa-calendar"></i> วันที่: ${thaiDateTimeString.slice(0, 10)}
+        &nbsp;&nbsp;<i class="fas fa-clock"></i> เวลา: ${thaiDateTimeString.slice(11)}`;
 
         datetimeElement.innerHTML = text;
 
