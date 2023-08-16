@@ -59,14 +59,14 @@ class RoleController extends Controller
                 })
                 ->addColumn('action', function ($row) {
                     if (Gate::allows('role-edit')) {
-                        $html = '<button type="button" class="btn btn-sm btn-warning btn-edit" id="getEditData" data-id="' . $row->id . '"><i class="fa fa-edit"></i> Edit</button> ';
+                        $html = '<button type="button" class="btn btn-sm btn-warning btn-edit" id="getEditData" data-id="' . $row->id . '"><i class="fa fa-edit"></i> แก้ไข</button> ';
                     } else {
-                        $html = '<button type="button" class="btn btn-sm btn-warning disabled" data-toggle="tooltip" data-placement="bottom" title="You Not Have Permission"><i class="fa fa-edit"></i> Edit</button> ';
+                        $html = '<button type="button" class="btn btn-sm btn-warning disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-edit"></i> แก้ไข</button> ';
                     }
                     if (Gate::allows('role-delete')) {
-                        $html .= '<button type="button" data-rowid="' . $row->id . '" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i> Delete</button>';
+                        $html .= '<button type="button" data-rowid="' . $row->id . '" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i> ลบ</button>';
                     } else {
-                        $html .= '<button type="button" class="btn btn-sm btn-danger disabled" data-toggle="tooltip" data-placement="bottom" title="You Not Have Permission"><i class="fa fa-trash"></i> Delete</button> ';
+                        $html .= '<button type="button" class="btn btn-sm btn-danger disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-trash"></i> ลบ</button> ';
                     }
                     return $html;
                 })->rawColumns(['checkbox', 'action'])->toJson();
@@ -110,7 +110,7 @@ class RoleController extends Controller
 
         /* return redirect()->route('roles.index')
             ->with('success', 'Role created successfully'); */
-        return response()->json(['success' => 'Add Role Success']);
+        return response()->json(['success' => 'เพิ่ม สิทธิ์การใช้งาน เรียบร้อยแล้ว']);
     }
     /**
      * Display the specified resource.
@@ -227,7 +227,7 @@ class RoleController extends Controller
 
         /* return redirect()->route('roles.index')
             ->with('success', 'Role updated successfully'); */
-        return response()->json(['success' => 'Save Role Success']);
+        return response()->json(['success' => 'บันทึกข้อมูล สิทธิ์การใช้งาน เรียบร้อยแล้ว']);
     }
     /**
      * Remove the specified resource from storage.
@@ -240,7 +240,7 @@ class RoleController extends Controller
         $id = $request->get('id');
         $ret = DB::table("roles")->where('id', $id)->delete();
         if ($ret) {
-            return ['success' => true, 'message' => 'Delete Role Success'];
+            return ['success' => true, 'message' => 'ลบ สิทธิ์การใช้งาน เรียบร้อยแล้ว'];
         } else {
             return ['error' => true, 'message' => $id];
         }
@@ -259,6 +259,6 @@ class RoleController extends Controller
         }
         //$ids = $request->get('table_records');
         //User::whereIn('id',explode(",",$ids))->delete();
-        return redirect('/roles')->with('success', 'Delete Role Success');
+        return redirect('/roles')->with('success', 'ลบ สิทธิ์การใช้งาน เรียบร้อยแล้ว');
     }
 }

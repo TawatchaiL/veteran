@@ -5,7 +5,7 @@ id="EditModal">
     <form id="editdata" class="form" action="" method="POST">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <h4 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-list-ol"></i> แก้ไข ส่วนงาน</h4>
+                <h4 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-list-ol"></i> แก้ไข ตำแหน่ง</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -30,7 +30,7 @@ id="EditModal">
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
-                                <strong><i class="fas fa-list-ol"></i> ชื่่อส่วนงาน:</strong>
+                                <strong><i class="fas fa-list-ol"></i> ชื่่อตำแหน่ง:</strong>
                                 {!! Form::text('name', null, ['id' => 'EditName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                             </div>
                         </div>

@@ -5,11 +5,11 @@
             var len = $('input[name="table_records[]"]:checked').length;
             if (len > 0) {
 
-                if (confirm("Confirm Delete Data?")) {
+                if (confirm("ยืนยันการลบข้อมูล?")) {
                     $('form#delete_all').submit();
                 }
             } else {
-                alert("please select record");
+                alert("กรุณาเลือกรายการที่จะลบ");
             }
 
         });
@@ -22,7 +22,7 @@
             maximumSelectionLength: 1,
             allowClear: false,
             //theme: 'bootstrap4'
-            placeholder: 'Please Select'
+            placeholder: 'กรุณาเลือก'
         });
 
         $(".select2_single").on("select2:unselect", function(e) {
@@ -34,7 +34,7 @@
             maximumSelectionLength: 1,
             allowClear: false,
             //theme: 'bootstrap4'
-            placeholder: 'Please Select'
+            placeholder: 'กรุณาเลือ'
         });
 
 
@@ -43,7 +43,7 @@
             //placeholder: "With Max Selection limit 4",
             allowClear: false,
             //theme: 'bootstrap4'
-            placeholder: 'Please Select'
+            placeholder: 'กรุณาเลือก'
         });
 
 
@@ -288,7 +288,7 @@
         })
 
         $('#SubmitEditForm').click(function(e) {
-            if (!confirm("Confirm Save ?")) return;
+            if (!confirm("ยืนยันการแก้ไขข้อมูล ?")) return;
             e.preventDefault();
 
             $('.alert-danger').html('');
@@ -340,7 +340,7 @@
         });
 
         $(document).on('click', '.btn-delete', function() {
-            if (!confirm("Confirm Delete Data ?")) return;
+            if (!confirm("ยืนยันการลบข้อมูล ?")) return;
 
             var rowid = $(this).data('rowid')
             var el = $(this)

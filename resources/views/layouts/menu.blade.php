@@ -9,7 +9,7 @@
 @can('contact-list')
 <li class="nav-item">
     <a href="{{ route('contacts') }}" class="nav-link {{ Request::is('contacts') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-graduation-cap"></i>
+        <i class="nav-icon fas fa-address-book"></i>
         <p>รายชื่อผู้ติดต่อ</p>
     </a>
 </li>

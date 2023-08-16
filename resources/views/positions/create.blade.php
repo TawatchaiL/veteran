@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <h4 class="modal-title"><i class="fas fa-list-ol"></i> เพิ่ม ส่วนงาน</h4>
+                <h4 class="modal-title"><i class="fas fa-list-ol"></i> เพิ่ม ตำแหน่ง</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
-                            <strong><i class="fas fa-list-ol"></i> ชื่่อส่วนงาน:</strong>
+                            <strong><i class="fas fa-list-ol"></i> ชื่่อตำแหน่ง:</strong>
                             {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                         </div>
                     </div>

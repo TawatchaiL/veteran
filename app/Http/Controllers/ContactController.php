@@ -65,12 +65,12 @@ class ContactController extends Controller
 
         $centre = Department::where([['status', '1']])
             ->orderBy("name", "asc")->get();
-        $term = term::where([['status', '1']])
-            ->orderBy("name", "asc")->get();
+       /*  $term = term::where([['status', '1']])
+            ->orderBy("name", "asc")->get(); */
             //dd($term);
 
         return view('contacts.index')->with(['centre' => $centre])
-            ->with(['term' => $term]);
+           /*  ->with(['term' => $term]) */;
     }
 
     /**
@@ -78,11 +78,11 @@ class ContactController extends Controller
      */
     public function create()
     {
-        $rnumber = studentRunningNumber::pre_generate(Auth::user()->department->code);
+        //$rnumber = studentRunningNumber::pre_generate(Auth::user()->department->code);
         //dd($rnumber);
-        return response()->json([
+        /* return response()->json([
             'running' =>  $rnumber
-        ]);
+        ]); */
     }
 
     /**

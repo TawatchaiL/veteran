@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <h4 class="modal-title"><i class="fas fa-graduation-cap"></i> เพิ่ม รายชื่อนักเรียน</h4>
+                <h4 class="modal-title"><i class="fas fa-address-book"></i> เพิ่ม รายชื่อผู้ติดต่อ</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -40,13 +40,13 @@
                             <li class="nav-item">
                                 <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill"
                                     href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home"
-                                    aria-selected="true">Student Detail</a>
+                                    aria-selected="true">ข้อมูลผู้ติดต่อ</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill"
                                     href="#custom-tabs-one-profile" role="tab"
                                     aria-controls="custom-tabs-one-profile"
-                                    aria-selected="false">Parent Detail</a>
+                                    aria-selected="false">ข้อมูลอื่นๆ</a>
                             </li>
 
                         </ul>
@@ -58,29 +58,10 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
+                                            
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <strong><i class="fas fa-code"></i> Centre Code:</strong>
-                                                    <select style="width: 100%;"
-                                                        class="productl select2 select2_single form-control"
-                                                        id="AddProduct" name="product" multiple="multiple"
-                                                        @cannot('all-centre') disabled @endcannot>
-                                                        <!-- <option value="" selected>Select Student</option>
-                                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
-                                                        @foreach ($centre as $key2)
-                                                            <option value="{{ $key2->id }}"
-                                                                @if (Auth::user()->department->id == (int) $key2->id) selected @endif>
-                                                                {{ $key2->code }}
-                                                                {{ $key2->name }}
-                                                            </option>
-                                                        @endforeach
-
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                                <div class="form-group">
-                                                    <strong><i class="fas fa-code"></i> Student No.</strong>
+                                                    <strong><i class="fas fa-code"></i> รหัสผู้ติดต่อ.</strong>
                                                     {!! Form::text('code', null, [
                                                         'id' => 'AddCode',
                                                         'placeholder' => 'Code',
@@ -89,11 +70,9 @@
                                                     ]) !!}
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <strong><i class="fas fa-calendar"></i> Start Date:</strong>
+                                                    <strong><i class="fas fa-calendar"></i> วันที่บันทึก:</strong>
                                                     {!! Form::text('start_date', null, [
                                                         'id' => 'AddDate',
                                                         'placeholder' => '',
@@ -102,7 +81,10 @@
                                                     ]) !!}
                                                 </div>
                                             </div>
-                                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                        </div>
+                                        <div class="row">
+                                            
+                                            {{-- <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-book-open"></i> Start Term:</strong>
                                                     <select style="width: 100%;"
@@ -116,16 +98,22 @@
 
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                         <div class="row">
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <strong><i class="fas fa-graduation-cap"></i> Name:</strong>
+                                                    <strong><i class="fas fa-user-tie"></i> ชื่อ:</strong>
                                                     {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                                                 </div>
                                             </div>
                                             <div class="col-xs-6 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <strong><i class="fas fa-user-tie"></i> นามสกุล:</strong>
+                                                    {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
+                                                </div>
+                                            </div>
+                                            {{-- <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-layer-group"></i> Level:</strong>
                                                     <select style="width: 100%;"
@@ -139,16 +127,11 @@
 
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                         </div>
-                                        <div class="row">
-                                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                                <div class="form-group">
-                                                    <strong><i class="fas fa-school"></i> School:</strong>
-                                                    {!! Form::text('school', null, ['id' => 'AddSchool', 'placeholder' => 'School', 'class' => 'form-control']) !!}
-                                                </div>
-                                            </div>
+                                        {{-- <div class="row">
+                                           
                                             <div class="col-xs-3 col-sm-3 col-md-3">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-book-open"></i> Term:</strong>
@@ -163,8 +146,8 @@
 
                                                     </select>
                                                 </div>
-                                            </div>
-                                            <div class="col-xs-3 col-sm-3 col-md-3">
+                                            </div> --}}
+                                           {{--  <div class="col-xs-3 col-sm-3 col-md-3">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-book-medical"></i> BookUse:</strong>
                                                     <select style="width: 100%;"
@@ -178,12 +161,12 @@
 
                                                     </select>
                                                 </div>
-                                            </div>
-                                        </div>
+                                            </div> 
+                                        </div>--}}
                                     </div>
                                 </div>
 
-                                <div class="card">
+                                {{-- <div class="card">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-xs-2 col-sm-2 col-md-2">
@@ -222,14 +205,14 @@
                                         </div>
 
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
 
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
-                                                    <strong><i class="fas fa-address-card"></i> Address:</strong>
+                                                    <strong><i class="fas fa-address-card"></i> ที่อยู่:</strong>
                                                     {!! Form::textarea('address', null, [
                                                         'rows' => 4,
                                                         'id' => 'AddAddress',
@@ -241,7 +224,7 @@
                                         <div class="row">
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <strong><i class="fas fa-code"></i> Postcode:</strong>
+                                                    <strong><i class="fas fa-code"></i> รหัสไปรษณีย์:</strong>
                                                     {!! Form::text('postcode', null, [
                                                         'id' => 'AddPostcode',
                                                         'placeholder' => 'Postcode',
@@ -251,7 +234,7 @@
                                             </div>
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <strong><i class="fas fa-phone"></i> Telephone:</strong>
+                                                    <strong><i class="fas fa-phone"></i> โทรศัพท์:</strong>
                                                     {!! Form::text('telephone', null, [
                                                         'id' => 'AddTelephone',
                                                         'placeholder' => 'Telephone',

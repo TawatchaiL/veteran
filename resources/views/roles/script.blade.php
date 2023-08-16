@@ -4,11 +4,11 @@
             var len = $('input[name="table_records[]"]:checked').length;
             if (len > 0) {
 
-                if (confirm("Click OK to Delete?")) {
+                if (confirm("ยืนยันการลบข้อมูล?")) {
                     $('form#delete_all').submit();
                 }
             } else {
-                alert("please select record");
+                alert("กรุณาเลือกรายการที่จะลบ");
             }
 
         });
@@ -215,7 +215,7 @@
         })
 
         $('#SubmitEditForm').click(function(e) {
-            if (!confirm("Confirm Save ?")) return;
+            if (!confirm("ยินยันการแก้ไขข้อมูล ?")) return;
             e.preventDefault();
 
             $('.alert-danger').html('');
@@ -267,7 +267,7 @@
         });
 
         $(document).on('click', '.btn-delete', function() {
-            if (!confirm("Confirm Delete ?")) return;
+            if (!confirm("ยืนยันการลบข้อมูล ?")) return;
 
             var rowid = $(this).data('rowid')
             var el = $(this)

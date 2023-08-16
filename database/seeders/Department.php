@@ -14,7 +14,7 @@ class Department extends Seeder
     public function run(): void
     {
         Dept::create([
-            'name' => 'ราชพฤกษ์',
+            'name' => 'สื่อสารองค์กร',
             'status' => 1
         ]);
 

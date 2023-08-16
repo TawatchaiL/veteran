@@ -97,9 +97,9 @@ class PositionController extends Controller
             'postcode' => 'required|string|max:10',
             'telephone' => 'required|string|max:20',*/
         ],[
-            'name.required' => 'ชื่อส่วนงานต้องไม่เป็นค่าว่าง!',
-            'name.unique' => 'ชื่อส่วนงานนี้มีอยู่แล้วในฐานข้อมูล!',
-            'department_id.required' => 'กรุณาเลือกส่วนราชการ!',
+            'name.required' => 'ชื่อตำแหน่งต้องไม่เป็นค่าว่าง!',
+            'name.unique' => 'ชื่อตำแหน่งนี้มีอยู่แล้วในฐานข้อมูล!',
+            'department_id.required' => 'กรุณาเลือกแผนก!',
             'status.required' => 'กรุณาเลือกสถานะ!',
         ]);
 
@@ -110,7 +110,7 @@ class PositionController extends Controller
 
         $input = $request->all();
         Position::create($input);
-        return response()->json(['success' => 'เพิ่ม ส่วนงาน เรียบร้อยแล้ว']);
+        return response()->json(['success' => 'เพิ่ม ตำแหน่ง เรียบร้อยแล้ว']);
     }
 
     /**
@@ -139,9 +139,9 @@ class PositionController extends Controller
         ];
 
         $validator = Validator::make($request->all(), $rules,[
-            'name.required' => 'ชื่อส่วนงานต้องไม่เป็นค่าว่าง!',
-            'name.unique' => 'ชื่อส่วนงานนี้มีอยู่แล้วในฐานข้อมูล!',
-            'department.required' => 'กรุณาเลือกส่วนราชการ!',
+            'name.required' => 'ชื่อตำแหน่งต้องไม่เป็นค่าว่าง!',
+            'name.unique' => 'ชื่อตำแหน่งนี้มีอยู่แล้วในฐานข้อมูล!',
+            'department.required' => 'กรุณาเลือกตำแหน่ง!',
             'status.required' => 'กรุณาเลือกสถานะ!',
         ]);
 
@@ -158,7 +158,7 @@ class PositionController extends Controller
         $update = Position::find($id);
         $update->update($contactd);
 
-        return response()->json(['success' => 'แก้ไข ส่วนงาน เรียบร้อยแล้ว']);
+        return response()->json(['success' => 'แก้ไข ตำแหน่ง เรียบร้อยแล้ว']);
     }
 
     /**
@@ -168,7 +168,7 @@ class PositionController extends Controller
     {
         $id = $request->get('id');
         Position::find($id)->delete();
-        return ['success' => true, 'message' => 'ลบ ส่วนงาน เรียบร้อยแล้ว'];
+        return ['success' => true, 'message' => 'ลบ ตำแหน่ง เรียบร้อยแล้ว'];
     }
 
     public function destroy_all(Request $request)
@@ -180,6 +180,6 @@ class PositionController extends Controller
             Position::find($arr_del[$xx])->delete();
         }
 
-        return redirect('/priorities')->with('success', 'ลบ ส่วนงาน เรียบร้อยแล้ว');
+        return redirect('/priorities')->with('success', 'ลบ ตำแหน่ง เรียบร้อยแล้ว');
     }
 }

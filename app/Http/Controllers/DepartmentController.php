@@ -115,10 +115,10 @@ class DepartmentController extends Controller
             'postcode' => 'required|string|max:10',
             'telephone' => 'required|string|max:20',*/
         ], [
-            'name.required' => 'ชื่อสาขาต้องไม่เป็นค่าว่าง!',
-            'name.unique' => 'ชื่อสาขานี้มีอยู่แล้วในฐานข้อมูล!',
-            'code.required' => 'รหัสสาขาต้องไม่เป็นค่าว่าง!',
-            'code.max' => 'รหัสสาขาต้องห้ามเกิน10ตัวอักษร!',
+            'name.required' => 'ชื่อแผนกต้องไม่เป็นค่าว่าง!',
+            'name.unique' => 'ชื่อแผนกนี้มีอยู่แล้วในฐานข้อมูล!',
+            'code.required' => 'รหัสแผนกต้องไม่เป็นค่าว่าง!',
+            'code.max' => 'รหัสแผนกต้องห้ามเกิน10ตัวอักษร!',
             'status.required' => 'กรุณาเลือกสถานะ!',
         ]);
 
@@ -129,7 +129,7 @@ class DepartmentController extends Controller
 
         $input = $request->all();
         Department::create($input);
-        return response()->json(['success' => 'เพิ่ม สาขา เรียบร้อยแล้ว']);
+        return response()->json(['success' => 'เพิ่ม แผนก เรียบร้อยแล้ว']);
     }
 
     /**
@@ -160,10 +160,10 @@ class DepartmentController extends Controller
 
 
         $validator =  Validator::make($request->all(), $rules, [
-            'name.required' => 'ชื่อสาขาต้องไม่เป็นค่าว่าง!',
-            'name.unique' => 'ชื่อสาขานี้มีอยู่แล้วในฐานข้อมูล!',
-            'code.required' => 'รหัสสาขาต้องไม่เป็นค่าว่าง!',
-            'code.max' => 'รหัสสาขาต้องห้ามเกิน10ตัวอักษร!',
+            'name.required' => 'ชื่อแผนกต้องไม่เป็นค่าว่าง!',
+            'name.unique' => 'ชื่อแผนกนี้มีอยู่แล้วในฐานข้อมูล!',
+            'code.required' => 'รหัสแผนกต้องไม่เป็นค่าว่าง!',
+            'code.max' => 'รหัสแผนกต้องห้ามเกิน10ตัวอักษร!',
             'status.required' => 'กรุณาเลือกสถานะ!',
         ]);
 
@@ -180,7 +180,7 @@ class DepartmentController extends Controller
         $update = Department::find($id);
         $update->update($contactd);
 
-        return response()->json(['success' => 'แก้ไข สาขา เรียบร้อยแล้ว']);
+        return response()->json(['success' => 'แก้ไข แผนก เรียบร้อยแล้ว']);
     }
 
     /**
@@ -190,7 +190,7 @@ class DepartmentController extends Controller
     {
         $id = $request->get('id');
         Department::find($id)->delete();
-        return ['success' => true, 'message' => 'ลบ สาขา เรียบร้อยแล้ว'];
+        return ['success' => true, 'message' => 'ลบ แผนก เรียบร้อยแล้ว'];
     }
 
     public function destroy_all(Request $request)
@@ -202,6 +202,6 @@ class DepartmentController extends Controller
             Department::find($arr_del[$xx])->delete();
         }
 
-        return redirect('/departments')->with('success', 'ลบ สาขา เรียบร้อยแล้ว');
+        return redirect('/departments')->with('success', 'ลบ แผนก เรียบร้อยแล้ว');
     }
 }

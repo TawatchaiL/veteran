@@ -19,12 +19,12 @@
 
                         @can('contact-create')
                             <button type="button" class="btn btn-success" id="CreateButton">
-                                <i class="fas fa-graduation-cap"></i> เพิ่ม รายชื่อนักเรียน </button>
+                                <i class="fas fa-address-book"></i> เพิ่ม รายชื่อผู้ติดต่อ </button>
                         @else
                             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
                                 title="คุณไม่มีสิทธิ์ในส่วนนี้">
                                 <button type="button" class="btn btn-success disabled">
-                                    <i class="fas fa-graduation-cap"></i> เพิ่ม รายชื่อนักเรียน </button>
+                                    <i class="fas fa-address-book"></i> เพิ่ม รายชื่อผู้ติดต่อ </button>
                             </span>
                         @endcan &nbsp;
 
@@ -51,7 +51,7 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-graduation-cap"></i> รายชื่อนักเรียน</h3>
+                            <h3 class="card-title"><i class="fas fa-address-book"></i> รายชื่อผู้ติดต่อ</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -81,7 +81,7 @@
                                     <thead>
                                         <tr>
                                             <th><input type="checkbox" id="check-all" class="flat"></th>
-                                            <th>ชื่อนักเรียน</th>
+                                            <th>ชื่อผู้ติดต่อ</th>
                                             <th>อีเมล์</th>
                                             <th>เบอร์โทรศัพท์</th>
                                             <th width="280px"></th>

@@ -2,7 +2,7 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header bg-primary">
-                    <h4 class="modal-title"><i class="fas fa-user-lock"></i> Add Role</h4>
+                    <h4 class="modal-title"><i class="fas fa-user-lock"></i> เพิ่ม สิทธิ์การใช้งาน</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -36,13 +36,13 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong><i class="fas fa-user-lock"></i> Role Name:</strong>
+                                <strong><i class="fas fa-user-lock"></i> ชื่อ สิทธิ์การใช้งาน:</strong>
                                 {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong><i class="fas fa-user-lock"></i> Permission:</strong>
+                                <strong><i class="fas fa-user-lock"></i> สิทธิ์การใช้งาน:</strong>
                                 <br />
 
                                 <div class="row">
@@ -66,8 +66,8 @@
 
                 </div>
                 <div class="modal-footer {{-- justify-content-between --}}">
-                    <button type="button" class="btn btn-success" id="SubmitCreateForm"><i class="fas fa-download"></i> Save</button>
-                    <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i class="fas fa-door-closed"></i> Close</button>
+                    <button type="button" class="btn btn-success" id="SubmitCreateForm"><i class="fas fa-download"></i> บันทึกข้อมูล</button>
+                    <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
                 </div>
             </div>
         </div>

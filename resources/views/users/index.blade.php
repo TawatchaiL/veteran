@@ -17,22 +17,22 @@
                         <li class="breadcrumb-item active">Users Management</li> --}}
                         @can('user-create')
                             <button type="button" class="btn btn-success" id="CreateButton">
-                                <i class="fas fa-user"></i> Add User </button>
+                                <i class="fas fa-user"></i> เพิ่มผู้ใช้งาน </button>
                         @else
                             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
                                 title="You Not Have Permission">
                                 <button type="button" class="btn btn-success disabled">
-                                    <i class="fas fa-user"></i> Add User </button>
+                                    <i class="fas fa-user"></i> เพิ่มผู้ใช้งาน </button>
                             </span>
                         @endcan &nbsp;
 
                         @can('user-delete')
-                            <button type="button" class="btn btn-danger delete_all_button"><i class="fa fa-trash"></i> Delete All</button>
+                            <button type="button" class="btn btn-danger delete_all_button"><i class="fa fa-trash"></i> ลบทั้งหมด</button>
                         @else
                             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
                                 title="You Not Have Permission">
                                 <button type="button" class="btn btn-danger disabled"><i
-                                        class="fa fa-trash"></i> Delete All</button>
+                                        class="fa fa-trash"></i> ลบทั้งหมด</button>
                             </span>
                         @endcan
                     </ol>
@@ -48,7 +48,7 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fa fa-user"></i> User Management</h3>
+                            <h3 class="card-title"><i class="fa fa-user"></i> จัดการผู้ใช้งาน</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -78,11 +78,11 @@
                                     <thead>
                                         <tr>
                                             <th><input type="checkbox" id="check-all" class="flat"></th>
-                                            <th>User Name</th>
-                                            <th>Centre</th>
-                                            <th>Department</th>
-                                            <th>Role</th>
-                                            <th width="280px"></th>
+                                            <th>ชื่อผู้ใช้งาน</th>
+                                            <th>แผนก</th>
+                                            <th>ตำแหน่ง</th>
+                                            <th>สิทธิ์การใช้งาน</th>
+                                            <th width="120px"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
