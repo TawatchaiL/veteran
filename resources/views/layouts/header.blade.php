@@ -5,7 +5,7 @@
             <a class="nav-link sidebar-toggle-btn" data-widget="pushmenu" href="#" role="button"><i
                     class="fas fa-bars"></i></a>
         </li>
-         <li><a href="#" class="nav-link">
+         <li class="nav-item d-none d-sm-inline-block"><a href="#" class="nav-link">
                 <h5>โรงพยาบาลพุทธชินราช พิษณุโลก</h5>
             </a></li>
         <li class="nav-item d-none d-sm-inline-block">
