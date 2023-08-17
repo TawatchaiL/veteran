@@ -8,21 +8,7 @@
         <li class="nav-item d-none d-sm-inline-block"><a href="#" class="nav-link"> [ <i class="fas fa-bed"></i>
                 <b class="text-primary"> โรงพยาบาลพุทธชินราช พิษณุโลก</b> ]
             </a></li>
-        <li class="nav-item d-none d-sm-inline-block">
 
-            <a href="#" class="nav-link">[ <i class="fas fa-building nav-icon"></i> <b class="text-primary">แผนก :
-                    @if (Auth::check() && Auth::user()->department && Auth::user()->department->name)
-                        {{ Auth::user()->department->name }}
-                    @endif
-                </b> ]</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">[ <i class="fas fa-users nav-icon"></i> <b class="text-primary">ตำแหน่ง :
-                    @if (Auth::check() && Auth::user()->position && Auth::user()->position->name)
-                        {{ Auth::user()->position->name }}
-                    @endif
-                </b> ]</a>
-        </li>
         {{-- <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">
                 <span id="real-time-clock"></span>
@@ -49,14 +35,14 @@
     </ul>
 
     <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
+        <li class="nav-item d-none d-sm-inline-block">
             <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                 <i class="fas fa-expand-arrows-alt"></i> <b class="text-primary">ขยาย/ย่อ หน้าจอ</b>
             </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item d-none d-sm-inline-block">
             <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                <i class="fas fa-th-large"></i> <b class="text-primary">Agent ToolBar</b>
+                <i class="fas fa-lg faa-shake animated faa-slow fa-wrench"></i> <b class="text-primary">Agent ToolBar [ 9999 ]</b>
             </a>
         </li>
         <li class="nav-item dropdown user-menu">
@@ -67,14 +53,25 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <!-- User image -->
-                <li class="user-header bg-primary">
+                <li class="user-header bg-info">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/2048px-User_icon_2.svg.png"
-                        height="150" class="img-circle elevation-1" alt="User Image">
+                        height="100" class="img-circle elevation-1" alt="User Image">
                     <p>
-                        {{ Auth::user()->name }}
-                        <small>สร้างเมื่อ {{ Auth::user()->created_at->format('M. Y') }}</small>
+                        {{ Auth::user()->name }} <br>
+                        <i class="fas fa-building"></i> แผนก :
+                        @if (Auth::check() && Auth::user()->department && Auth::user()->department->name)
+                            {{ Auth::user()->department->name }}
+                        @endif
+                        <br>
+                        <i class="fas fa-users"></i> ตำแหน่ง :
+                        @if (Auth::check() && Auth::user()->position && Auth::user()->position->name)
+                            {{ Auth::user()->position->name }}
+                        @endif
+
+                        <small>สร้างเมื่อ {{ Auth::user()->created_at->format('M. Y') }}</small><br>
                     </p>
                 </li>
+
                 <!-- Menu Footer-->
                 <li class="user-footer">
                     {{-- <a href="#" class="btn btn-default btn-flat">Profile</a> --}}

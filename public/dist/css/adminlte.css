@@ -17124,15 +17124,15 @@ body.text-sm .control-sidebar {
 }
 
 .navbar-nav>.user-menu>.dropdown-menu>li.user-header {
-    height: 175px;
+    height: 220px;
     padding: 10px;
     text-align: center;
 }
 
 .navbar-nav>.user-menu>.dropdown-menu>li.user-header>img {
     z-index: 5;
-    height: 90px;
-    width: 90px;
+    height: 70px;
+    width: 70px;
     border: 3px solid;
     border-color: transparent;
     border-color: rgba(255, 255, 255, 0.2);

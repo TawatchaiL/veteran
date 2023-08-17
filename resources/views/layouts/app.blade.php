@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
         integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
         crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome-animation@1.1.1/css/font-awesome-animation.min.css"
+        rel="stylesheet">
     {{-- <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css"> --}}
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
@@ -73,8 +75,12 @@
         }
 
         /* sidebar-bg */
-        .main-sidebar,.control-sidebar-light {
+        .main-sidebar {
             background-color: rgb(162, 223, 144) !important
+        }
+
+        .control-sidebar-light {
+            background-color: rgb(252, 253, 251) !important
         }
 
 
