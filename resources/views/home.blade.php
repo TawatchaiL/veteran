@@ -16,7 +16,7 @@
             var canvas = document.getElementById('signature-pad');
             var signaturePad = new SignaturePad(canvas);
 
-            //// Optional: Customize the appearance of the signature pad
+            // Optional: Customize the appearance of the signature pad
             signaturePad.penColor = 'black'; // Change the pen color
             signaturePad.backgroundColor = 'rgba(0, 0, 0, 0)'; // Set the background color
 
