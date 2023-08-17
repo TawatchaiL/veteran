@@ -14,6 +14,18 @@
         </a>
     </li>
 @endcan
+<li class="nav-item" >
+            <a href="{{ route('casetype') }}" class="nav-link {{ Request::is('casetype') ? 'active' : '' }}">
+                <i class="far fa-building nav-icon"></i>
+                <p>ประเภทการติดต่อ</p>
+            </a>
+        </li>
+        <li class="nav-item" >
+            <a href="{{ route('cases') }}" class="nav-link {{ Request::is('cases') ? 'active' : '' }}">
+                <i class="far fa-building nav-icon"></i>
+                <p>เรื่องที่ติดต่อ</p>
+            </a>
+        </li>
 <li class="nav-item">
     <a href="#" class="nav-link {{ Request::is('tickets') ? 'active' : '' }}">
         <i class="nav-icon fas fa-clipboard"></i>
