@@ -73,6 +73,63 @@ class ContactController extends Controller
            /*  ->with(['term' => $term]) */;
     }
 
+    public function popup() {
+        $html = '<div class="card card-danger custom-bottom-right-card">
+        <div class="card-header">
+        <h4 class="card-title">0804190099</h4>
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                <i class="fas fa-expand"></i>
+            </button>
+
+            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        </div>
+        <div class="card-body">
+        <!-- Card content goes here -->
+        </div>
+        </div>
+        <div class="card card-danger custom-bottom-right-card">
+        <div class="card-header">
+        <h3 class="card-title">0822846414</h3>
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                <i class="fas fa-expand"></i>
+            </button>
+
+            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        </div>
+        <div class="card-body">
+        <!-- Card content goes here -->
+        </div>
+        </div>
+        <div class="card card-danger custom-bottom-right-card">
+        <div class="card-header">
+        <h3 class="card-title">0877777777</h3>
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                <i class="fas fa-expand"></i>
+            </button>
+
+            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        </div>
+        <div class="card-body">
+        <!-- Card content goes here -->
+        </div>
+        </div>';
+        return response()->json([
+            'html' =>  $html
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

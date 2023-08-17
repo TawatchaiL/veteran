@@ -59,7 +59,7 @@
                     font-size: 20px;
         } */
         body {
-            font-family: 'Roboto','Sarabun';
+            font-family: 'Roboto', 'Sarabun';
             font-size: 16px;
         }
 
@@ -76,6 +76,32 @@
         .main-sidebar {
             background-color: rgb(162, 223, 144) !important
         }
+
+
+        /* .card-container {
+            display: flex;
+            flex-direction: row-reverse;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        .card {
+            margin-left: 10px;
+        } */
+
+        .custom-bottom-right-card {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        /* .card {
+            position: fixed;
+            bottom: 20px;
+        } */
 
         .scroll-to-top {
             position: fixed;
@@ -136,6 +162,9 @@
         <!-- Main Footer -->
         @include('layouts.footer')
 
+        <div class="card-container" id="dpopup">
+
+        </div>
     </div>
 </body>
 
@@ -295,6 +324,128 @@
         $('#Listview').on('draw.dt', function() {
             initializeTooltips();
         });
+
+        //popup card
+        function positionCards() {
+            var cardPositions = [];
+
+            $.ajax({
+                url: '{{ route('contacts.popup') }}',
+                type: 'get',
+                success: function(response) {
+                    // Handle success
+                    $('#dpopup').html(response.html);
+                    // Position the cards after dynamic content is loaded
+                    $('.custom-bottom-right-card').each(function(index) {
+                        cardPositions.push({
+                            right: (20 + (index * 220)) + 'px',
+                            isMaximized: false,
+                        });
+                        $(this).css('right', cardPositions[index].right);
+                        //$(this).delay(index * 100).fadeIn();
+                    });
+
+                    setupCardActions()
+                },
+                error: function(xhr, status, error) {
+                    // Handle error
+                }
+            });
+        }
+
+        positionCards();
+
+        // Handle card maximize
+        $(document).on('click', '.custom-bottom-right-card .card-tools [data-card-widget="maximize"]',
+            function() {
+
+                var card = $(this).closest('.custom-bottom-right-card');
+                var cardIndex = card.index();
+                var cardId = card.data('id');
+
+                if (!card.hasClass('collapsed-card')) {
+                    // Card is not minimized
+                    card.css('right', '-300px'); // Adjust as needed
+                    card.css('z-index', '99999');
+                    //maximizeCard(cardId);
+                    //positionCards();
+                    console.log('max');
+                } else {
+                    // restore
+                    positionCards();
+                    //card.css('z-index', maxZIndex);
+                }
+
+                // Toggle minimized class
+                card.toggleClass('collapsed-card');
+
+                // Update button icon
+                //var icon = card.hasClass('collapsed-card') ? 'fas fa-compress' : 'fas fa-expand';
+                //$(this).find('i').removeClass().addClass(icon);
+            });
+
+        // Handle card close
+        $(document).on('click', '.custom-bottom-right-card .card-tools [data-card-widget="remove"]',
+            function() {
+                var card = $(this).closest('.custom-bottom-right-card');
+                var cardIndex = card.index();
+                var cardId = card.data('id');
+                // Call AJAX function for close
+                //closeCard(cardId);
+                positionCards();
+            });
+
+
+        // Minimize card AJAX function
+        function minimizeCard(cardId) {
+            $.ajax({
+                url: 'your_minimize_url',
+                type: 'POST',
+                data: {
+                    cardId: cardId
+                },
+                success: function(response) {
+                    // Handle success
+                },
+                error: function(xhr, status, error) {
+                    // Handle error
+                }
+            });
+        }
+
+        // Maximize card AJAX function
+        function maximizeCard(cardId) {
+            $.ajax({
+                url: 'your_maximize_url',
+                type: 'POST',
+                data: {
+                    cardId: cardId
+                },
+                success: function(response) {
+                    // Handle success
+                },
+                error: function(xhr, status, error) {
+                    // Handle error
+                }
+            });
+        }
+
+        // Close card AJAX function
+        function closeCard(cardId) {
+            $.ajax({
+                url: 'your_close_url',
+                type: 'POST',
+                data: {
+                    cardId: cardId
+                },
+                success: function(response) {
+                    // Handle success
+                },
+                error: function(xhr, status, error) {
+                    // Handle error
+                }
+            });
+        }
 
     });
 
