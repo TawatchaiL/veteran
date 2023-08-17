@@ -386,7 +386,7 @@
                 var cardIndex = card.index();
                 var cardId = card.data('id');
                 // Call AJAX function for close
-                //closeCard(cardId);
+                ////closeCard(cardId);
                 positionCards();
             });
 
