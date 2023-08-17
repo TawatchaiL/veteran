@@ -39,16 +39,26 @@
                     <div id="seconds" class="digit">00</div>
                 </span>
             </a>
-        </li> 
+        </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">
-               
+
             </a>
         </li> --}}
 
     </ul>
 
     <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                <i class="fas fa-expand-arrows-alt"></i> ขยาย/ย่อ หน้าจอ
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+                <i class="fas fa-th-large"></i> Agent ToolBar
+            </a>
+        </li>
         <li class="nav-item dropdown user-menu">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/2048px-User_icon_2.svg.png"
@@ -78,5 +88,6 @@
                 </li>
             </ul>
         </li>
+
     </ul>
 </nav>

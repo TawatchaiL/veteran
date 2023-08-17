@@ -73,7 +73,7 @@
         }
 
         /* sidebar-bg */
-        .main-sidebar {
+        .main-sidebar,.control-sidebar-light {
             background-color: rgb(162, 223, 144) !important
         }
 
@@ -87,18 +87,17 @@
             z-index: 9999;
         }
 
-        .card {
-            margin-left: 10px;
-        } */
+        */
 
         .custom-bottom-right-card {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            z-index: 9999;
+            z-index: 1040;
         }
 
         /* .card {
+            margin-left: 10px;
             position: fixed;
             bottom: 20px;
         } */
@@ -442,6 +441,7 @@
                 }
             });
         }
+
 
     });
 

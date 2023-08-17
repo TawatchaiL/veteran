@@ -13,3 +13,11 @@
         <i class="fas fa-angle-up"></i>
     </a>
 </footer>
+
+<aside class="control-sidebar control-sidebar-light">
+    <div class="p-3 control-sidebar-content">
+        <h5>Agent ToolBar</h5>
+        <hr class="mb-2" />
+    </div>
+
+</aside>

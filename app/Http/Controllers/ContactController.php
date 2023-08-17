@@ -74,7 +74,7 @@ class ContactController extends Controller
     }
 
     public function popup() {
-        $html = '<div class="card card-danger custom-bottom-right-card">
+        $html = '<div class="card card-warning custom-bottom-right-card">
         <div class="card-header">
         <h4 class="card-title">0804190099</h4>
         <div class="card-tools">
@@ -91,7 +91,7 @@ class ContactController extends Controller
         <!-- Card content goes here -->
         </div>
         </div>
-        <div class="card card-danger custom-bottom-right-card">
+        <div class="card card-warning custom-bottom-right-card">
         <div class="card-header">
         <h3 class="card-title">0822846414</h3>
         <div class="card-tools">
@@ -108,7 +108,7 @@ class ContactController extends Controller
         <!-- Card content goes here -->
         </div>
         </div>
-        <div class="card card-danger custom-bottom-right-card">
+        <div class="card card-warning custom-bottom-right-card">
         <div class="card-header">
         <h3 class="card-title">0877777777</h3>
         <div class="card-tools">
