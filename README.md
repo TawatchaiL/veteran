@@ -11,6 +11,8 @@
 - npm install
 - npm run build
 - php artisan migrate
+- php artisan db:seed --class=Department
+- php artisan db:seed --class=Position
 - php artisan db:seed --class=PermissionTableSeeder
 - php artisan db:seed --class=CreateAdminUserSeeder
 - php artisan serve
