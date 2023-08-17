@@ -344,8 +344,6 @@
                         $(this).css('right', cardPositions[index].right);
                         //$(this).delay(index * 100).fadeIn();
                     });
-
-                    setupCardActions()
                 },
                 error: function(xhr, status, error) {
                     // Handle error
@@ -368,12 +366,10 @@
                     card.css('right', '-300px'); // Adjust as needed
                     card.css('z-index', '99999');
                     //maximizeCard(cardId);
-                    //positionCards();
-                    console.log('max');
                 } else {
                     // restore
+                    $('#dpopup').html('');
                     positionCards();
-                    //card.css('z-index', maxZIndex);
                 }
 
                 // Toggle minimized class
