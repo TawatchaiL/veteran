@@ -51,12 +51,12 @@
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
             <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                <i class="fas fa-expand-arrows-alt"></i> ขยาย/ย่อ หน้าจอ
+                <i class="fas fa-expand-arrows-alt"></i> <b class="text-primary">ขยาย/ย่อ หน้าจอ</b>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                <i class="fas fa-th-large"></i> Agent ToolBar
+                <i class="fas fa-th-large"></i> <b class="text-primary">Agent ToolBar</b>
             </a>
         </li>
         <li class="nav-item dropdown user-menu">
