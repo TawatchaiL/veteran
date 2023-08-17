@@ -25,3 +25,10 @@ jobs:
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
           script: "cd /var/www/html/crm && ./.scripts/deploy.sh"
+      - uses: snow-actions/line-notify@v1.0.0
+        with:
+          access_token: ${{ secrets.LINE_ACCESS_TOKEN }}
+          message: |
+           Push and Deploy request is ${{ github.event.action }}.
+           #${{ github.event.number }}: ${{ github.event.head_commit.message }}
+           #${{ github.event.head_commit.url }} by ${{ github.event.head_commit.author }}
