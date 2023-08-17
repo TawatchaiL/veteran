@@ -342,7 +342,7 @@
                             isMaximized: false,
                         });
                         $(this).css('right', cardPositions[index].right);
-                        //$(this).delay(index * 100).fadeIn();
+                        $(this).delay(index * 100).fadeIn();
                     });
                 },
                 error: function(xhr, status, error) {
