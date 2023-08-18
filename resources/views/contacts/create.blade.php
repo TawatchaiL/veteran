@@ -61,11 +61,12 @@
                                             
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <strong><i class="fas fa-code"></i> HN : </strong>
+                                                    <strong><i class="fas fa-code"></i> รหัสผู้ติดต่อ.</strong>
                                                     {!! Form::text('code', null, [
                                                         'id' => 'AddCode',
                                                         'placeholder' => 'Code',
                                                         'class' => 'form-control',
+                                                        'readonly' => true,
                                                     ]) !!}
                                                 </div>
                                             </div>
@@ -129,19 +130,6 @@
                                             </div> --}}
 
                                         </div>
-                                        <div class="row">
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                            <div class="form-group">
-                                <strong>กรุ๊ปเลือด :</strong>
-                                <select style="width: 100%;" class="select2 select2_bloodgroup form-control" id="bloodgroup" name="bloodgroup" multiple="multiple">
-                                        <option value="1">A</option>
-                                        <option value="2">B</option>
-                                        <option value="3">AB</option>
-                                        <option value="4">O</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
                                         {{-- <div class="row">
                                            
                                             <div class="col-xs-3 col-sm-3 col-md-3">
@@ -246,16 +234,37 @@
                                             </div>
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <strong><i class="fas fa-phone"></i> โทรศัพท์:</strong>
-                                                    {!! Form::text('telephone', null, [
-                                                        'id' => 'AddTelephone',
+                                                    <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์บ้าน:</strong>
+                                                    {!! Form::text('homephone', null, [
+                                                        'id' => 'homephone',
                                                         'placeholder' => 'Telephone',
                                                         'class' => 'form-control',
                                                     ]) !!}
                                                 </div>
                                             </div>
                                         </div>
-
+                                        <div class="row">
+                                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์มือถือ :</strong>
+                                                    {!! Form::text('telephone', null, [
+                                                        'id' => 'telephone',
+                                                        'placeholder' => 'Postcode',
+                                                        'class' => 'form-control',
+                                                    ]) !!}
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์ที่ทำงาน:</strong>
+                                                    {!! Form::text('workphone', null, [
+                                                        'id' => 'workphone',
+                                                        'placeholder' => 'Telephone',
+                                                        'class' => 'form-control',
+                                                    ]) !!}
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
