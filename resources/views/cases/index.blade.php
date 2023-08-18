@@ -175,15 +175,80 @@
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
-                                <strong>ประเภทเรื่องติดต่อ:</strong>
-                                <select style="width: 100%;" class="select2 select2_singlec form-control" id="AddCompany"
-                                    name="companies" multiple="multiple">
+                                <strong>ประเภทเคส:</strong>
+                                <select style="width: 100%;" class="select2 select2_casetype1 form-control" id="casetype1"
+                                    name="casetype1" multiple="multiple">
                                     <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                     <option value="" selected>Select Parent</option>-->
                                     @foreach ($casetype as $key2)
                                         <option value="{{ $key2->id }}">{{ $key2->name }}
                                         </option>
                                     @endforeach
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <strong>รายละเอียดเคส:</strong>
+                                <select style="width: 100%;" class="select2 select2_casetype2 form-control" id="casetype2"
+                                    name="casetype2" multiple="multiple">
+                                    <!-- <option value="" selected>Select Student</option>
+                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <strong>รายละเอียดเคสย่อย:</strong>
+                                <select style="width: 100%;" class="select2 select2_casetype3 form-control" id="casetype3"
+                                    name="casetype3" multiple="multiple">
+                                    <!-- <option value="" selected>Select Student</option>
+                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <strong>รายละเอียดเคส เพิ่มเติม 1:</strong>
+                                <select style="width: 100%;" class="select2 select2_casetype4 form-control" id="casetype4"
+                                    name="casetype4" multiple="multiple">
+                                    <!-- <option value="" selected>Select Student</option>
+                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <strong>รายละเอียดเคส เพิ่มเติม 2:</strong>
+                                <select style="width: 100%;" class="select2 select2_casetype5 form-control" id="casetype5"
+                                    name="casetype5" multiple="multiple">
+                                    <!-- <option value="" selected>Select Student</option>
+                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <strong>รายละเอียดเคส เพิ่มเติม 3:</strong>
+                                <select style="width: 100%;" class="select2 select2_casetype6 form-control" id="casetype6"
+                                    name="casetype6" multiple="multiple">
+                                    <!-- <option value="" selected>Select Student</option>
+                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
 
                                 </select>
                             </div>
@@ -451,6 +516,44 @@
                 allowClear: true,
                 //theme: 'bootstrap4'
                 placeholder: 'กรุณาเลือกประเภทการติดต่อ'
+            });
+
+            
+            $(".select2_casetype1").select2({
+                maximumSelectionLength: 1,
+                allowClear: true,
+                //theme: 'bootstrap4'
+                placeholder: 'กรุณาเลือกประเภทการติดต่อ'
+            });
+            $(".select2_casetype2").select2({
+                maximumSelectionLength: 1,
+                allowClear: true,
+                //theme: 'bootstrap4'
+                placeholder: 'รายละเอียดเคส'
+            });
+            $(".select2_casetype3").select2({
+                maximumSelectionLength: 1,
+                allowClear: true,
+                //theme: 'bootstrap4'
+                placeholder: 'รายละเอียดเคสย่อย'
+            });
+            $(".select2_casetype4").select2({
+                maximumSelectionLength: 1,
+                allowClear: true,
+                //theme: 'bootstrap4'
+                placeholder: 'รายละเอียดเคส เพิ่มเติม 1'
+            });
+            $(".select2_casetype5").select2({
+                maximumSelectionLength: 1,
+                allowClear: true,
+                //theme: 'bootstrap4'
+                placeholder: 'รายละเอียดเคส เพิ่มเติม 2'
+            });
+            $(".select2_casetype6").select2({
+                maximumSelectionLength: 1,
+                allowClear: true,
+                //theme: 'bootstrap4'
+                placeholder: 'รายละเอียดเคส เพิ่มเติม 3'
             });
 
 
