@@ -65,7 +65,7 @@
                 <div class="col-12">
                     <div class="card card-info">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-truck"></i> จัดการ รายการขาย</h3>
+                            <h3 class="card-title"><i class="fas fa-truck"></i> เรื่องที่ติดต่อ</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -95,14 +95,14 @@
                                     <thead>
                                         <tr>
                                             <th><input type="checkbox" id="check-all" class="flat"></th>
+                                            <th>HN</th>
+                                            <th>ชื่อสกุล</th>
+                                            <th>เบอร์โทร</th>
                                             <th>วันที่ทำรายการ</th>
-                                            <th>หมายเลขออเดอร์</th>
-                                            <th>สินค้า</th>
-                                            <th>หมายเลขล็อต</th>
-                                            <th>บริษัทที่ซื้อ</th>
-                                            <th>จำนวนที่ขาย</th>
-                                            {{-- <th>ราคาต่อหน่วย</th> --}}
-                                            <th>รายรับที่ได้</th>
+                                            <th>ประเภทเคส</th>
+                                            <th>สถานะเคส</th>
+                                            <th>สถานะการโอนสาย</th>
+                                            <th>Agent</th>
                                             <th width="180px"></th>
                                         </tr>
                                     </thead>
@@ -127,7 +127,7 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header bg-info">
-                    <h4 class="modal-title">เพิ่ม รายการขาย</h4>
+                    <h4 class="modal-title">เพิ่ม เรื่องที่ติดต่อ</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -158,17 +158,20 @@
 
                     {{-- 'route' => 'users.store', --}}
                     {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
-                    {{-- <div class="row">
-
-                        <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>สินค้าในคลังสินค้า:</strong>
-                                <select style="width: 100%;" class="products select2 select2_singles form-control"
-                                    id="AddStock" name="stock" multiple="multiple">
-                                </select>
+                                <strong>HN : 99999</strong>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>ชื่อ-สกุล : นายสมมุติ ไม่สบาย</strong>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
@@ -198,7 +201,29 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <strong>สถานะการโอนสาย :</strong>
+                                <select style="width: 100%;" class="select2 select2_tranfer form-control" id="tranferstatus" name="tranferstatus" multiple="multiple">
+                                        <option value="1">รับสาย</option>
+                                        <option value="2">ไม่รับสาย</option>
+                                        <option value="3">สายไม่ว่าง</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <strong>สถานะการเคส :</strong>
+                                <select style="width: 100%;" class="select2 select2_casestatus form-control" id="casestatus" name="casestatus" multiple="multiple">
+                                        <option value="1">ปิดเคส</option>
+                                        <option value="2">กำลังดำเนินการ</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                     {!! Form::close() !!}
                 </div>
                 <div class="modal-footer {{-- justify-content-between --}}">
@@ -240,125 +265,8 @@
                             <div class="row">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <strong>หมายเลขออเดอร์:</strong>
+                                        <strong>ประเภทเรื่องติดต่อ:</strong>
                                         {!! Form::text('lot', null, ['id' => 'EditLot', 'placeholder' => 'Order Number', 'class' => 'form-control']) !!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <table id="myTbl"
-                                        class="table table-striped table-bordered responsive-utilities jambo_table "
-                                        width="400">
-                                        <thead>
-                                            <tr class="headings">
-                                                {{-- <th class="column-title"> สินค้า</th> --}}
-                                                <th class="column-title"> ล็อตสินค้าในคลังสินค้า</th>
-                                                <th class="column-title"> จำนวนที่ขาย</th>
-                                                <th class="column-title"> ราคาต่อหน่วย</th>
-                                                <th class="column-title"> รายรับที่ได้</th>
-                                                <th class="column-title"> </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="EditModalBodyTable">
-                                            <tr class="firstTr">
-
-                                                <td width="30%">
-                                                    <div class="col-md-12 col-sm-12 col-xs-12">
-                                                        <select style="width: 100%;" class="products form-control"
-                                                            id="estock" name="estock[]" required>
-
-
-                                                        </select>
-                                                        <div id="lot_price" class="text-success"></div>
-                                                        <div id="lot_error" class="text-danger"></div>
-                                                    </div>
-                                                </td>
-
-                                                <td width="10%">
-                                                    <div class="col-md-12 col-sm-12 col-xs-12">
-                                                        <input type="number" step="0.50" id="eamount"
-                                                            name="eamount[]" class="form-control has-feedback-left"
-                                                            value="" required="required">
-                                                    </div>
-                                                </td>
-                                                <td width="10%">
-                                                    <div class="col-md-12 col-sm-12 col-xs-12">
-                                                        <input type="number" step="0.50" id="eprice"
-                                                            name="eprice[]" class="form-control has-feedback-left"
-                                                            value="" required="required">
-                                                    </div>
-                                                </td>
-
-                                                <td width="10%">
-                                                    <div class="col-md-12 col-sm-12 col-xs-12">
-                                                        <input type="number" step="0.50" id="etotal"
-                                                            name="etotal[]" class="form-control has-feedback-left"
-                                                            value="" readonly>
-                                                    </div>
-                                                </td>
-
-                                                <td width="10%"><button type="button" id="removeRowg"
-                                                        class="btn btn-sm btn-danger btnRemoveg"><i
-                                                            class="fa fa-minus"></i></button></td>
-
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="col-md-12" align="right">
-
-                                    <button type="button" id="addRow" class="btn btn-sm btn-primary"><i
-                                            class="fa fa-plus"></i></button>
-                                    <button type="button" id="removeRow" class="btn btn-sm btn-danger"><i
-                                            class="fa fa-minus"></i></button>
-                                </div>
-                            </div>
-                            <div class="row">
-
-                                {{-- <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="form-group">
-                                        <strong>สินค้าในคลังสินค้า:</strong>
-                                        <select style="width: 100%;" class="select2 select2_single form-control"
-                                            id="EditStock" name="estock" multiple="multiple">
-                                            <!-- <option value="" selected>Select Student</option>
-                                                                                                                                                                                                                                                                                                                                                <option value="" selected>Select Parent</option>-->
-
-
-                                        </select>
-                                    </div>
-                                </div> --}}
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="form-group">
-                                        <strong>จำนวนที่ขาย:</strong>
-                                        {!! Form::text('amount', null, [
-                                            'id' => 'EditAmount',
-                                            'placeholder' => 'Amount',
-                                            'class' => 'form-control',
-                                            'readonly' => 'true',
-                                        ]) !!}
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                {{--  <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="form-group">
-                                        <strong>ราคาต่อหน่วย:</strong>
-                                        {!! Form::text('price', null, ['id' => 'EditCost', 'placeholder' => 'Price', 'class' => 'form-control']) !!}
-                                    </div>
-                                </div> --}}
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="form-group">
-                                        <strong>รายรับที่ได้:</strong>
-                                        {!! Form::text('total_cost', null, [
-                                            'id' => 'EditTotalCost',
-                                            'placeholder' => 'Total',
-                                            'class' => 'form-control',
-                                            'readonly' => 'true',
-                                        ]) !!}
                                     </div>
                                 </div>
                             </div>
@@ -373,6 +281,28 @@
                                         ]) !!}
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <strong>สถานะการโอนสาย:</strong>
+                                        {!! Form::text('lot', null, ['id' => 'EditLot', 'placeholder' => 'Order Number', 'class' => 'form-control']) !!}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <strong>สถานะการเคส:</strong>
+                                        {!! Form::text('amount', null, [
+                                            'id' => 'EditAmount',
+                                            'placeholder' => 'Amount',
+                                            'class' => 'form-control',
+                                            'readonly' => 'true',
+                                        ]) !!}
+                                    </div>
+                                </div>
+
                             </div>
                             {!! Form::close() !!}
                         </div>
@@ -497,11 +427,11 @@
                 $(':checkbox.flat').prop('checked', this.checked);
             });
 
-            $(".select2_single").select2({
+            $(".select2_tranfer").select2({
                 maximumSelectionLength: 1,
                 allowClear: true,
                 //theme: 'bootstrap4'
-                placeholder: 'กรุณาเลือกสินค้า'
+                placeholder: 'กรุณาเลือกประเภทการโอนสาย'
             });
 
             $(".select2_single").on("select2:unselect", function(e) {
@@ -509,27 +439,18 @@
                 $('.products').html('');
             });
 
-            $(".select2_singles").select2({
+            $(".select2_casestatus").select2({
                 maximumSelectionLength: 1,
                 allowClear: true,
                 //theme: 'bootstrap4'
-                placeholder: 'กรุณาเลือกสินค้า ก่อนเลือกสินค้าในคลังสินค้า'
+                placeholder: 'กรุณาเลือกสถานะเคส'
             });
 
             $(".select2_singlec").select2({
                 maximumSelectionLength: 1,
                 allowClear: true,
                 //theme: 'bootstrap4'
-                placeholder: 'กรุณาเลือกบริษัท'
-            });
-
-
-            $(".select2_multiple").select2({
-                maximumSelectionLength: 2,
-                //placeholder: "With Max Selection limit 4",
-                allowClear: true,
-                //theme: 'bootstrap4'
-                placeholder: 'please select'
+                placeholder: 'กรุณาเลือกประเภทการติดต่อ'
             });
 
 
@@ -753,10 +674,10 @@
                         data: 'amount',
                         name: 'amount'
                     },
-                    /*  {
+                    {
                          data: 'cost',
                          name: 'cost'
-                     }, */
+                    },
                     {
                         data: 'total_cost',
                         name: 'total_cost'
