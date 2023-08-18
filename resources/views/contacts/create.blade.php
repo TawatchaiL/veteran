@@ -208,19 +208,87 @@
                                 </div> --}}
                                 <div class="card">
                                     <div class="card-body">
-                                        <div class="row">
-
-                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                            <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <strong><i class="fas fa-address-card"></i> ที่อยู่:</strong>
-                                                    {!! Form::textarea('address', null, [
-                                                        'rows' => 4,
-                                                        'id' => 'AddAddress',
+                                                    <strong><i class="fas fa-home"></i> บ้านเลขที่:</strong>
+                                                    {!! Form::text('postcode', null, [
+                                                        'id' => 'AddPostcode',
+                                                        'placeholder' => 'Postcode',
+                                                        'class' => 'form-control',
+                                                    ]) !!}
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <strong> หมู่:</strong>
+                                                    {!! Form::text('homephone', null, [
+                                                        'id' => 'homephone',
+                                                        'placeholder' => 'Telephone',
                                                         'class' => 'form-control',
                                                     ]) !!}
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <strong> ซอย :</strong>
+                                                    {!! Form::text('postcode', null, [
+                                                        'id' => 'AddPostcode',
+                                                        'placeholder' => 'Postcode',
+                                                        'class' => 'form-control',
+                                                    ]) !!}
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <strong><i class="fas fa-road"></i> ถนน :</strong>
+                                                    {!! Form::text('homephone', null, [
+                                                        'id' => 'homephone',
+                                                        'placeholder' => 'Telephone',
+                                                        'class' => 'form-control',
+                                                    ]) !!}
+                                                </div>
+                                            </div>
+                                        </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <strong>จังหวัด :</strong>
+                                <select style="width: 100%;" class="select2 select2_city form-control" id="city"
+                                    name="city" multiple="multiple">
+                                    <!-- <option value="" selected>Select Student</option>
+                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <strong>อำเภอ:</strong>
+                                <select style="width: 100%;" class="select2 select2_am form-control" id="am"
+                                    name="am" multiple="multiple">
+                                    <!-- <option value="" selected>Select Student</option>
+                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <strong>ตำบล :</strong>
+                                <select style="width: 100%;" class="select2 select2_tm form-control" id="tm"
+                                    name="tm" multiple="multiple">
+                                    <!-- <option value="" selected>Select Student</option>
+                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                                         <div class="row">
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">

@@ -43,6 +43,24 @@
             placeholder: 'กรุณาเลือก'
         });
 
+        $(".select2_city").select2({
+            maximumSelectionLength: 1,
+            allowClear: false,
+            //theme: 'bootstrap4'
+            placeholder: 'กรุณาเลือกจังหวัด'
+        });
+        $(".select2_am").select2({
+            maximumSelectionLength: 1,
+            allowClear: false,
+            //theme: 'bootstrap4'
+            placeholder: 'กรุณาเลือกอำเภอ'
+        });
+        $(".select2_tm").select2({
+            maximumSelectionLength: 1,
+            allowClear: false,
+            //theme: 'bootstrap4'
+            placeholder: 'กรุณาเลือกตำบล'
+        });
 
         $(".select2_multiple").select2({
             maximumSelectionLength: 2,
