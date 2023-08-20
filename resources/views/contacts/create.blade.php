@@ -45,8 +45,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill"
                                     href="#custom-tabs-one-profile" role="tab"
-                                    aria-controls="custom-tabs-one-profile"
-                                    aria-selected="false">ข้อมูลอื่นๆ</a>
+                                    aria-controls="custom-tabs-one-profile" aria-selected="false">ข้อมูลอื่นๆ</a>
                             </li>
 
                         </ul>
@@ -58,7 +57,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
-                                            
+
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-code"></i> รหัสผู้ติดต่อ.</strong>
@@ -83,7 +82,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            
+
                                             {{-- <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-book-open"></i> Start Term:</strong>
@@ -147,7 +146,7 @@
                                                     </select>
                                                 </div>
                                             </div> --}}
-                                           {{--  <div class="col-xs-3 col-sm-3 col-md-3">
+                                        {{--  <div class="col-xs-3 col-sm-3 col-md-3">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-book-medical"></i> BookUse:</strong>
                                                     <select style="width: 100%;"
@@ -162,7 +161,7 @@
                                                     </select>
                                                 </div>
                                             </div> 
-                                        </div>--}}
+                                        </div> --}}
                                     </div>
                                 </div>
 
@@ -208,7 +207,7 @@
                                 </div> --}}
                                 <div class="card">
                                     <div class="card-body">
-                                    <div class="row">
+                                        <div class="row">
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-home"></i> บ้านเลขที่:</strong>
@@ -252,43 +251,46 @@
                                                 </div>
                                             </div>
                                         </div>
-                    <div class="row">
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                            <div class="form-group">
-                                <strong>จังหวัด :</strong>
-                                <select style="width: 100%;" class="select2 select2_city form-control" id="city"
-                                    name="city" multiple="multiple">
-                                    <!-- <option value="" selected>Select Student</option>
+                                        <div class="row">
+                                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <strong>จังหวัด :</strong>
+                                                    <select style="width: 100%;"
+                                                        class="select2 select2_city form-control" id="city"
+                                                        name="city" multiple="multiple">
+                                                        <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                     <option value="" selected>Select Parent</option>-->
 
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                            <div class="form-group">
-                                <strong>อำเภอ:</strong>
-                                <select style="width: 100%;" class="select2 select2_am form-control" id="am"
-                                    name="am" multiple="multiple">
-                                    <!-- <option value="" selected>Select Student</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <strong>อำเภอ:</strong>
+                                                    <select style="width: 100%;"
+                                                        class="select2 select2_am form-control" id="am"
+                                                        name="am" multiple="multiple">
+                                                        <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                     <option value="" selected>Select Parent</option>-->
 
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                    <div class="col-xs-6 col-sm-6 col-md-6">
-                            <div class="form-group">
-                                <strong>ตำบล :</strong>
-                                <select style="width: 100%;" class="select2 select2_tm form-control" id="tm"
-                                    name="tm" multiple="multiple">
-                                    <!-- <option value="" selected>Select Student</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <strong>ตำบล :</strong>
+                                                    <select style="width: 100%;"
+                                                        class="select2 select2_tm form-control" id="tm"
+                                                        name="tm" multiple="multiple">
+                                                        <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                     <option value="" selected>Select Parent</option>-->
 
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="row">
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
@@ -324,7 +326,8 @@
                                             </div>
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์ที่ทำงาน:</strong>
+                                                    <strong><i class="fas fa-phone"></i>
+                                                        เบอร์โทรศัพท์ที่ทำงาน:</strong>
                                                     {!! Form::text('workphone', null, [
                                                         'id' => 'workphone',
                                                         'placeholder' => 'Telephone',

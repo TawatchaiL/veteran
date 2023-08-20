@@ -86,7 +86,7 @@ class ContactController extends Controller
     public function popup()
     {
 
-        $html = '<div class="card card-danger custom-bottom-right-card d-none d-md-block">
+        $html = '<div class="card card-danger custom-bottom-right-card d-none d-md-block" data-id="0804190099">
         <div class="card-header">
         <h4 class="card-title"><i class="fas fa-circle-info fa-beat" style="--fa-beat-scale: 1.5;"></i> 0804190099</h4>
         <div class="card-tools">
@@ -99,11 +99,14 @@ class ContactController extends Controller
             </button>
         </div>
         </div>
-        <div class="card-body card-content pop_content" id="pop_content">
+        <div class="card-body card-content pop_content" id="pop_0804190099">
         <!-- Card content goes here -->
         </div>
+        <div class="card-footer text-muted bclose">
+        <button type="button" class="btn btn-success bopen" data-card-widget="maximize"><i class="fa-solid fa-up-right-from-square"></i> เปิด</button>
         </div>
-        <div class="card card-danger custom-bottom-right-card d-none d-md-block">
+        </div>
+        <div class="card card-danger custom-bottom-right-card d-none d-md-block" data-id="0822846414">
         <div class="card-header">
         <h3 class="card-title"><i class="fas fa-circle-info fa-beat" style="--fa-beat-scale: 1.5;"></i> 0822846414</h3>
         <div class="card-tools">
@@ -116,11 +119,14 @@ class ContactController extends Controller
             </button>
         </div>
         </div>
-        <div class="card-body card-content pop_content" id="pop_content">
+        <div class="card-body card-content pop_content" id="pop_0822846414">
         <!-- Card content goes here -->
         </div>
+        <div class="card-footer text-muted bclose">
+        <button type="button" class="btn btn-success bopen" data-card-widget="maximize"><i class="fa-solid fa-up-right-from-square"></i> เปิด</button>
         </div>
-        <div class="card card-danger custom-bottom-right-card d-none d-md-block">
+        </div>
+        <div class="card card-danger custom-bottom-right-card d-none d-md-block" data-id="0877777777">
         <div class="card-header">
         <h3 class="card-title"><i class="fas fa-circle-info fa-beat" style="--fa-beat-scale: 1.5;"></i> 0877777777</h3>
         <div class="card-tools">
@@ -133,8 +139,11 @@ class ContactController extends Controller
             </button>
         </div>
         </div>
-        <div class="card-body card-content pop_content" id="pop_content">
+        <div class="card-body card-content pop_content" id="pop_0877777777">
         <!-- Card content goes here -->
+        </div>
+        <div class="card-footer text-muted bclose">
+        <button type="button" class="btn btn-success bopen" data-card-widget="maximize"><i class="fa-solid fa-up-right-from-square"></i> เปิด</button>
         </div>
         </div>';
         return response()->json([

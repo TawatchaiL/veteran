@@ -114,7 +114,8 @@
         .card-content {
             padding: 15px;
             /* Set the maximum height for the card's content */
-            max-height: 100%;
+            max-height: calc(100% - 40px);
+            /* Subtract the height of the footer */
             overflow-y: auto;
             /* Enable vertical scrolling when content overflows */
         }
@@ -188,12 +189,14 @@
             @yield('content')
         </div>
 
-        <!-- Main Footer -->
-        @include('layouts.footer')
-
         <div class="card-container" id="dpopup">
 
         </div>
+
+        <!-- Main Footer -->
+        @include('layouts.footer')
+
+
     </div>
 
     <div class="modal fade" id="ToolbarModal">
@@ -452,6 +455,7 @@
                 type: 'get',
                 success: function(response) {
                     // Handle success
+                    //console.log(response.html)
                     $('#dpopup').html(response.html);
                     // Position the cards after dynamic content is loaded
                     $('.custom-bottom-right-card').each(function(index) {
@@ -460,6 +464,7 @@
                             isMaximized: false,
                         });
                         $(this).css('right', cardPositions[index].right);
+                        $(this).css('bottom', '35px');
                         $(this).delay(index * 100).fadeIn();
                     });
                 },
@@ -493,10 +498,33 @@
                 // Toggle minimized class
                 card.toggleClass('collapsed-card');
 
-                // Update button icon
-                //var icon = card.hasClass('collapsed-card') ? 'fas fa-compress' : 'fas fa-expand';
-                //$(this).find('i').removeClass().addClass(icon);
+
             });
+
+        $(document).on('click', '.custom-bottom-right-card .card-footer .bopen[data-card-widget="maximize"]',
+            function() {
+
+                var card = $(this).closest('.custom-bottom-right-card');
+                var cardIndex = card.index();
+                var cardId = card.data('id');
+
+                if (!card.hasClass('collapsed-card')) {
+                    // Card is not minimized
+                    card.css('right', '-300px'); // Adjust as needed
+                    card.css('z-index', '99999');
+                    maximizeCard(cardId);
+                } else {
+                    // restore
+                    $('#dpopup').html('');
+                    positionCards();
+                }
+
+                // Toggle minimized class
+                card.toggleClass('collapsed-card');
+
+
+            });
+
 
         // Handle card close
         $(document).on('click', '.custom-bottom-right-card .card-tools [data-card-widget="remove"]',
@@ -535,11 +563,14 @@
                 data: {
                     cardId: cardId
                 },
-                success: function(response) {
-                    $('.pop_content').html(response.html);
-                },
-                error: function(xhr, status, error) {
-                    // Handle error
+                success: async function(response) {
+                    await $('#pop_' + cardId).html(response.html);
+                    //$('.pop_content').find('.nav-tabs a').tab('show');
+                    $(".card-footer").css("display", "block")
+                    $('.bclose').css('display', 'none');
+                    $('#amp').select2({});
+                    $('#tmp').select2({});
+                    $('#cityp').select2({});
                 }
             });
         }
