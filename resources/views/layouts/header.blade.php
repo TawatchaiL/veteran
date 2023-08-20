@@ -41,8 +41,9 @@
             </a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                <i class="fas fa-lg faa-shake animated faa-slow fa-wrench"></i> <b class="text-primary">Agent ToolBar [ 9999 ]</b>
+            <a class="nav-link" id="ToolbarButton" {{-- data-widget="control-sidebar" data-slide="true" href="#" --}} role="button">
+                <i class="fas fa-lg faa-shake animated faa-slow fa-wrench"></i> <b class="text-primary">Agent ToolBar [
+                    9999 ]</b>
             </a>
         </li>
         <li class="nav-item dropdown user-menu">
