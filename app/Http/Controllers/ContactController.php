@@ -10,6 +10,7 @@ use App\Models\studentRunningNumber;
 use App\Models\term;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -65,18 +66,29 @@ class ContactController extends Controller
 
         $centre = Department::where([['status', '1']])
             ->orderBy("name", "asc")->get();
-       /*  $term = term::where([['status', '1']])
+        /*  $term = term::where([['status', '1']])
             ->orderBy("name", "asc")->get(); */
-            //dd($term);
+        //dd($term);
 
         return view('contacts.index')->with(['centre' => $centre])
-           /*  ->with(['term' => $term]) */;
+            /*  ->with(['term' => $term]) */;
     }
 
-    public function popup() {
+    public function popup_content()
+    {
+        $template = 'contacts.contact-create';
+        $htmlContent = View::make($template)->render();
+        return response()->json([
+            'html' =>  $htmlContent
+        ]);
+    }
+
+    public function popup()
+    {
+
         $html = '<div class="card card-danger custom-bottom-right-card d-none d-md-block">
         <div class="card-header">
-        <h4 class="card-title">0804190099</h4>
+        <h4 class="card-title"><i class="fas fa-circle-info fa-beat" style="--fa-beat-scale: 1.5;"></i> 0804190099</h4>
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="maximize">
                 <i class="fas fa-expand"></i>
@@ -87,13 +99,13 @@ class ContactController extends Controller
             </button>
         </div>
         </div>
-        <div class="card-body">
+        <div class="card-body card-content pop_content" id="pop_content">
         <!-- Card content goes here -->
         </div>
         </div>
         <div class="card card-danger custom-bottom-right-card d-none d-md-block">
         <div class="card-header">
-        <h3 class="card-title">0822846414</h3>
+        <h3 class="card-title"><i class="fas fa-circle-info fa-beat" style="--fa-beat-scale: 1.5;"></i> 0822846414</h3>
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="maximize">
                 <i class="fas fa-expand"></i>
@@ -104,13 +116,13 @@ class ContactController extends Controller
             </button>
         </div>
         </div>
-        <div class="card-body">
+        <div class="card-body card-content pop_content" id="pop_content">
         <!-- Card content goes here -->
         </div>
         </div>
         <div class="card card-danger custom-bottom-right-card d-none d-md-block">
         <div class="card-header">
-        <h3 class="card-title">0877777777</h3>
+        <h3 class="card-title"><i class="fas fa-circle-info fa-beat" style="--fa-beat-scale: 1.5;"></i> 0877777777</h3>
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="maximize">
                 <i class="fas fa-expand"></i>
@@ -121,7 +133,7 @@ class ContactController extends Controller
             </button>
         </div>
         </div>
-        <div class="card-body">
+        <div class="card-body card-content pop_content" id="pop_content">
         <!-- Card content goes here -->
         </div>
         </div>';

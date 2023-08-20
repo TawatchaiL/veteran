@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Storage;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::post('/contacts/popup/content', [App\Http\Controllers\ContactController::class, 'popup_content'])->name('contacts.popup_content');
 
 Route::get('manon', function (Request $request) {
     return $request;

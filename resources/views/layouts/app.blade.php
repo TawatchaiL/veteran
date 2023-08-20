@@ -28,9 +28,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400&display=swap" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Libre Caslon Text' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    {{--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
         integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
-        crossorigin="anonymous" />
+        crossorigin="anonymous" /> --}}
     <link href="https://cdn.jsdelivr.net/npm/font-awesome-animation@1.1.1/css/font-awesome-animation.min.css"
         rel="stylesheet">
     {{-- <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css"> --}}
@@ -55,6 +55,7 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.css" />
     <link rel="stylesheet" href="dist/css/adminlte.css?v=3.2.0">
+    <link rel="stylesheet" href="dist/css/fontawesome/css/all.min.css">
     <style>
         /* body {
             font-family: 'Sarabun', serif;
@@ -110,6 +111,13 @@
         }
 
         */
+        .card-content {
+            padding: 15px;
+            /* Set the maximum height for the card's content */
+            max-height: 100%;
+            overflow-y: auto;
+            /* Enable vertical scrolling when content overflows */
+        }
 
         .custom-bottom-right-card {
             position: fixed;
@@ -192,7 +200,8 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header bg-primary">
-                    <h4 class="modal-title"><i class="fas fa-wrench"></i> Agent ToolBar [ 9999 ]</h4>
+                    <h4 class="modal-title">{{-- <i class="fas fa-wrench"></i> --}} <i class="fas fa-spin fa-gear"></i> Agent ToolBar [
+                        9999 ]</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -474,7 +483,7 @@
                     // Card is not minimized
                     card.css('right', '-300px'); // Adjust as needed
                     card.css('z-index', '99999');
-                    //maximizeCard(cardId);
+                    maximizeCard(cardId);
                 } else {
                     // restore
                     $('#dpopup').html('');
@@ -521,13 +530,13 @@
         // Maximize card AJAX function
         function maximizeCard(cardId) {
             $.ajax({
-                url: 'your_maximize_url',
+                url: '{{ route('contacts.popup_content') }}',
                 type: 'POST',
                 data: {
                     cardId: cardId
                 },
                 success: function(response) {
-                    // Handle success
+                    $('.pop_content').html(response.html);
                 },
                 error: function(xhr, status, error) {
                     // Handle error
