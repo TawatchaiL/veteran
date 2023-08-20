@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <h4 class="modal-title"><i class="fas fa-list-ol"></i> เพิ่ม แผนก</h4>
+                <h4 class="modal-title"><i class="fas fa-list-ol"></i> เพิ่ม ประเภทการติดต่อ</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -30,26 +30,15 @@
                     </button>
                 </div>
 
-
-                {{-- 'route' => 'users.store', --}}
                 {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
-                            <strong><i class="fas fa-list-ol"></i> ชื่อ แผนก:</strong>
+                            <strong><i class="fas fa-list-ol"></i> ประเภทการติดต่อ:</strong>
                             {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                         </div>
                     </div>
                 </div>
-                {{--   <div class="row">
-                    <div class="col-xs-6 col-sm-6 col-md-6">
-                        <div class="form-group">
-                            <strong><i class="fas fa-list-ol"></i> รหัส แผนก:</strong>
-                            {!! Form::text('code', null, ['id' => 'AddCode', 'placeholder' => 'Code', 'class' => 'form-control']) !!}
-                        </div>
-                    </div>
-                </div> --}}
-
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
@@ -63,9 +52,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
                 {!! Form::close() !!}
             </div>
             <div class="modal-footer {{-- justify-content-between --}}">

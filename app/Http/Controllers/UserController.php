@@ -115,12 +115,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        /* $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|same:confirm-password',
-            'roles' => 'required'
-        ]); */
 
         $validator =  Validator::make($request->all(), [
             'name' => 'required|string|max:255',
@@ -128,8 +122,18 @@ class UserController extends Controller
             'password' => 'required|string|min:8|confirmed',
             'department_id' => 'required',
             'position_id' => 'required',
-            'name' => 'required|string|max:255',
             'role' => 'required'
+        ], [
+            'name.required' => 'กรุณาระบุ ชื่อ-นามสกุล ผู้ใช้งาน!',
+            'email.required' => 'Username ต้องไม่เป็นค่าว่าง!',
+            'email.email' => 'กรุณาระบุ Username ในรูปแบบ Email!',
+            'email.unique' => 'Username นี้มีอยู่แล้วในฐานข้อมูล!',
+            'password.required' => 'กรุณาระบุ รหัสผ่าน!',
+            'password.min' => 'กรุณาระบุ รหัสผ่านไม่น้อยกว่า 8 ตัวอักษร!',
+            'password.confirmed' => 'รหัสผ่านยืนยันไม่ตรงกัน!',
+            'department_id.required' => 'แผนก ต้องไม่เป็นค่าว่าง!',
+            'position_id.required' => 'ตำแหน่ง ต้องไม่เป็นค่าว่าง!',
+            'role.required' => 'สิทธิ์การใช้งาน ต้องไม่เป็นค่าว่าง!',
         ]);
 
 
@@ -144,8 +148,6 @@ class UserController extends Controller
         $user = User::create($input);
         $user->assignRole($request->input('role'));
 
-        /*  return redirect()->route('users.index')
-            ->with('success', 'User created successfully'); */
         return response()->json(['success' => 'เพิ่มผู้ใช้งานเรียบร้อยแล้ว']);
     }
 
@@ -278,7 +280,18 @@ class UserController extends Controller
             $rules['password'] = 'required|string|min:8|confirmed';
         }
 
-        $validator =  Validator::make($request->all(), $rules);
+        $validator =  Validator::make($request->all(), $rules, [
+            'name.required' => 'กรุณาระบุ ชื่อ-นามสกุล ผู้ใช้งาน!',
+            'email.required' => 'Username ต้องไม่เป็นค่าว่าง!',
+            'email.email' => 'กรุณาระบุ Username ในรูปแบบ Email!',
+            'email.unique' => 'Username นี้มีอยู่แล้วในฐานข้อมูล!',
+            'password.required' => 'กรุณาระบุ รหัสผ่าน!',
+            'password.min' => 'กรุณาระบุ รหัสผ่านไม่น้อยกว่า 8 ตัวอักษร!',
+            'password.confirmed' => 'รหัสผ่านยืนยันไม่ตรงกัน!',
+            'department_id.required' => 'แผนก ต้องไม่เป็นค่าว่าง!',
+            'position_id.required' => 'ตำแหน่ง ต้องไม่เป็นค่าว่าง!',
+            'role.required' => 'สิทธิ์การใช้งาน ต้องไม่เป็นค่าว่าง!',
+        ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);
@@ -304,9 +317,6 @@ class UserController extends Controller
         $user->assignRole($request->input('role'));
 
         return response()->json(['success' => 'บันทึกข้อมูล ผู้ใช้งาน เรียบร้อยแล้ว']);
-
-        /* return redirect()->route('users.index')
-            ->with('success', 'User updated successfully'); */
     }
 
     /**

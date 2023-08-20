@@ -13,14 +13,8 @@ return new class extends Migration
     {
         Schema::create('case_types', function (Blueprint $table) {
             $table->id();
-            $table->string('code')->nullable();
             $table->string('name')->nullable();
-            $table->longText('address')->nullable();
-            $table->integer('postcode')->nullable();
-            $table->string('email')->nullable();
-            $table->string('telephone')->nullable();
-            $table->integer('customer')->default(0);
-            $table->integer('supplier')->default(0);
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

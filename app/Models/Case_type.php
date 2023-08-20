@@ -9,13 +9,7 @@ class Case_type extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'code',
         'name',
-        'email',
-        'address',
-        'postcode',
-        'telephone',
-        'customer',
-        'supplier',
+        'status',
     ];
 }

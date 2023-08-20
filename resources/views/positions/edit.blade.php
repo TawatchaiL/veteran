@@ -38,7 +38,7 @@ id="EditModal">
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
-                                <strong><i class="fas fa-eye"></i> สาขา:</strong>
+                                <strong><i class="fas fa-list-ol"></i> แผนก:</strong>
                                 <select style="width: 100%;" class="select2 select2_single form-control"
                                     id="EditDepartment" name="edepartment" multiple="multiple">
                                     <!-- <option value="" selected>Select Student</option>
@@ -55,7 +55,7 @@ id="EditModal">
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
-                                <strong>สถานะ:</strong>
+                                <strong><i class="fas fa-eye"></i> สถานะ:</strong>
                                 <br />
                                 <div class="custom-control custom-switch">
                                     {{ Form::checkbox('status', '1', false, ['id' => 'ecustomCheckbox1', 'class' => 'custom-control-input name']) }}

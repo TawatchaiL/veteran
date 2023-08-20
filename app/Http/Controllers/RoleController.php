@@ -97,6 +97,11 @@ class RoleController extends Controller
         $validator =  Validator::make($request->all(), [
             'name' => 'required|string|max:255|unique:roles',
             'permission' => 'required'
+        ], [
+            'name.required' => 'ชื่อสิทธิ์การใช้งานต้องไม่เป็นค่าว่าง!',
+            'name.unique' => 'ชื่อสิทธิ์การใช้งานนี้มีอยู่แล้วในฐานข้อมูล!',
+            'permission.required' => 'กรุณาระบุสิทธิ์การใช้งาน!',
+            /*  'status.required' => 'กรุณาเลือกสถานะ!', */
         ]);
 
 
@@ -156,7 +161,7 @@ class RoleController extends Controller
         //exit();
 
 
- /*        $rolese = '';
+        /*        $rolese = '';
         foreach ($permission as $value) {
             if (in_array($value->id, $rolePermissions)) {
                 $sselected = "checked";
@@ -190,7 +195,7 @@ class RoleController extends Controller
 
         return response()->json(['html' => $html]); */
 
-        return response()->json(['name' => $data->name,'permission' => $rolePermissions]);
+        return response()->json(['name' => $data->name, 'permission' => $rolePermissions]);
     }
 
     /**
@@ -213,7 +218,12 @@ class RoleController extends Controller
         ];
 
 
-        $validator =  Validator::make($request->all(), $rules);
+        $validator =  Validator::make($request->all(), $rules, [
+            'name.required' => 'ชื่อสิทธิ์การใช้งานต้องไม่เป็นค่าว่าง!',
+            'name.unique' => 'ชื่อสิทธิ์การใช้งานนี้มีอยู่แล้วในฐานข้อมูล!',
+            'permission.required' => 'กรุณาระบุสิทธิ์การใช้งาน!',
+            /*  'status.required' => 'กรุณาเลือกสถานะ!', */
+        ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);

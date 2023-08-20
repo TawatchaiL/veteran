@@ -92,10 +92,6 @@ class PositionController extends Controller
             'name' => 'required|string|max:255|unique:positions',
             'department_id' => 'required',
             'status' => 'required',
-            /* 'email' => 'required|string|email|max:255',
-            'address' => 'required|string|max:255',
-            'postcode' => 'required|string|max:10',
-            'telephone' => 'required|string|max:20',*/
         ],[
             'name.required' => 'ชื่อตำแหน่งต้องไม่เป็นค่าว่าง!',
             'name.unique' => 'ชื่อตำแหน่งนี้มีอยู่แล้วในฐานข้อมูล!',
@@ -180,6 +176,6 @@ class PositionController extends Controller
             Position::find($arr_del[$xx])->delete();
         }
 
-        return redirect('/priorities')->with('success', 'ลบ ตำแหน่ง เรียบร้อยแล้ว');
+        return redirect('/positions')->with('success', 'ลบ ตำแหน่ง เรียบร้อยแล้ว');
     }
 }

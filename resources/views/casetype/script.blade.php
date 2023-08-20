@@ -82,10 +82,6 @@
                     data: 'name',
                     name: 'name'
                 },
-                /* {
-                    data: 'code',
-                    name: 'code'
-                }, */
                 {
                     data: 'status',
                     name: 'status'
@@ -140,13 +136,11 @@
                 sstatus = 0;
             }
 
-
             $.ajax({
-                url: "{{ route('departments.store') }}",
+                url: "{{ route('casetype.store') }}",
                 method: 'post',
                 data: {
                     name: $('#AddName').val(),
-                    code: $('#AddCode').val(),
                     status: sstatus,
                     _token: token,
                 },
@@ -170,6 +164,10 @@
                         $('.form').trigger('reset');
                         $('#CreateModal').modal('hide');
                     }
+                },
+                error: function(result) {
+                    alert('error; ' + result.responseText);
+
                 }
             });
         });
@@ -186,18 +184,17 @@
 
             id = $(this).data('id');
             $.ajax({
-                url: "departments/edit/" + id,
+                url: "casetype/edit/" + id,
                 method: 'GET',
                 success: function(res) {
+                    console.log(res);
                     $('#EditName').val(res.data.name);
-                    $('#EditCode').val(res.data.code);
+                    $('#EditModalBody').html(res.html);
                     if (res.data.status == 1) {
                         $('#ecustomCheckbox1').prop('checked', true);
                     } else {
                         $('#ecustomCheckbox1').prop('checked', false);
                     }
-
-                    $('#EditModalBody').html(res.html);
                     $('#EditModal').modal('show');
                 }
             });
@@ -213,7 +210,6 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
-
             if ($('#ecustomCheckbox1').is(":checked")) {
                 esstatus = 1;
             } else {
@@ -221,11 +217,10 @@
             }
 
             $.ajax({
-                url: "departments/save/" + id,
+                url: "casetype/save/" + id,
                 method: 'PUT',
                 data: {
                     name: $('#EditName').val(),
-                    code: $('#EditCode').val(),
                     status: esstatus,
                 },
 
@@ -269,7 +264,7 @@
             $.ajax({
                 type: "POST",
                 dataType: 'JSON',
-                url: "departments/destroy/",
+                url: "casetype/destroy/",
                 data: {
                     id: rowid,
                     _method: 'delete',

@@ -78,9 +78,9 @@
                                 <table id="Listview" class="table table-bordered table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th><input type="checkbox" id="check-all" class="flat"></th>
+                                            <th width="80px"><input type="checkbox" id="check-all" class="flat"></th>
                                             <th>ตำแหน่ง</th>
-                                            <th>สาขา</th>
+                                            <th>แผนก</th>
                                             <th>สถานะ</th>
                                             <th width="120px"></th>
                                         </tr>

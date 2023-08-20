@@ -44,7 +44,7 @@
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
-                            <strong>สาขา:</strong>
+                            <strong><i class="fas fa-list-ol"></i> แผนก:</strong>
                             <select style="width: 100%;" class="select2 select2_single form-control"
                                 id="AddDepartment" name="department" multiple="multiple">
                                 <!-- <option value="" selected>Select Student</option>

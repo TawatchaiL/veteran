@@ -22,6 +22,10 @@ class PermissionTableSeeder extends Seeder
             'contact-create',
             'contact-edit',
             'contact-delete',
+            'case-list',
+            'case-create',
+            'case-edit',
+            'case-delete',
             'master-data-list',
             'master-data-create',
             'master-data-edit',
@@ -34,7 +38,6 @@ class PermissionTableSeeder extends Seeder
             'user-create',
             'user-edit',
             'user-delete',
-            'all-centre'
         ];
 
         foreach ($permissions as $permission) {

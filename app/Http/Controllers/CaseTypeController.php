@@ -8,12 +8,13 @@ use App\Models\Case_type;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class CaseTypeController extends Controller
 {
-        /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -21,10 +22,10 @@ class CaseTypeController extends Controller
     public function __construct()
     {
         //$this->middleware('auth');
-        $this->middleware('permission:contact-list|contact-create|contact-edit|contact-delete', ['only' => ['index', 'show']]);
-        $this->middleware('permission:contact-create', ['only' => ['create', 'store']]);
-        $this->middleware('permission:contact-edit', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:contact-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:master-data-list|master-data-create|master-data-edit|master-data-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:master-data-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:master-data-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:master-data-delete', ['only' => ['destroy']]);
     }
 
     /**
@@ -34,16 +35,28 @@ class CaseTypeController extends Controller
     {
 
         if ($request->ajax()) {
-            //sleep(2);
 
             $datas = Case_type::orderBy("id", "desc")->get();
+            $state_text = array('ไม่เปิดใช้งาน', 'เปิดใช้งาน');
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
                 })
+                ->editColumn('status', function ($row) use ($state_text) {
+                    $state = $state_text[$row->status];
+                    return $state;
+                })
                 ->addColumn('action', function ($row) {
-                    $html = '<a href="#" class="btn btn-sm btn-warning btn-edit" id="getEditData" data-id="' . $row->id . '"><i class="fa fa-edit"></i> แก้ไข</a> ';
-                    $html .= '<a href="#" data-rowid="' . $row->id . '" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i> ลบ</a>';
+                    if (Gate::allows('master-data-edit')) {
+                        $html = '<button type="button" class="btn btn-sm btn-warning btn-edit" id="getEditData" data-id="' . $row->id . '"><i class="fa fa-edit"></i> แก้ไข</button> ';
+                    } else {
+                        $html = '<button type="button" class="btn btn-sm btn-warning disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-edit"></i> แก้ไข</button> ';
+                    }
+                    if (Gate::allows('master-data-delete')) {
+                        $html .= '<button type="button" data-rowid="' . $row->id . '" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i> ลบ</button>';
+                    } else {
+                        $html .= '<button type="button" class="btn btn-sm btn-danger disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-trash"></i> ลบ</button> ';
+                    }
                     return $html;
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
@@ -66,15 +79,16 @@ class CaseTypeController extends Controller
     {
         //
         $validator =  Validator::make($request->all(), [
+            'name' => 'required|string|max:255|unique:case_types',
             //'code' => 'required|string|max:10',
-            'name' => 'required|string|max:255',
-            //'postcode' => 'int|max:10',
-            /* 'email' => 'required|string|email|max:255',
-            'address' => 'required|string|max:255',
-            'postcode' => 'required|string|max:10',
-            'telephone' => 'required|string|max:20',*/
+            'status' => 'required',
+        ], [
+            'name.required' => 'ชื่อประเภทการติดต่อ ต้องไม่เป็นค่าว่าง!',
+            'name.unique' => 'ชื่อประเภทการติดต่อ นี้มีอยู่แล้วในฐานข้อมูล!',
+            //'code.required' => 'รหัสแผนกต้องไม่เป็นค่าว่าง!',
+            //'code.max' => 'รหัสแผนกต้องห้ามเกิน10ตัวอักษร!',
+            'status.required' => 'กรุณาเลือกสถานะ!',
         ]);
-
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);
@@ -93,7 +107,7 @@ class CaseTypeController extends Controller
         //
     }
 
-   /**
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -113,13 +127,16 @@ class CaseTypeController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'name' => 'required|string|max:255',
-            //'postcode' => 'integer|max:10',
-
+            'name' => 'required|string|max:255|unique:case_types,name,' . $id,
+            'status' => 'required|max:10',
         ];
 
+        $validator = Validator::make($request->all(), $rules, [
+            'name.required' => 'ชื่อประเภทการติดต่อ ต้องไม่เป็นค่าว่าง!',
+            'name.unique' => 'ชื่อประเภทการติดต่อ นี้มีอยู่แล้วในฐานข้อมูล!',
+            'status.required' => 'กรุณาเลือกสถานะ!',
+        ]);
 
-        $validator =  Validator::make($request->all(), $rules);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);
@@ -127,13 +144,13 @@ class CaseTypeController extends Controller
 
         $companyd = [
             'name' => $request->get('name'),
+            'status' => $request->get('status'),
         ];
 
         $company = Case_type::find($id);
         $company->update($companyd);
 
         return response()->json(['success' => 'แก้ไข ประเภทการติดต่อ เรียบร้อยแล้ว']);
-
     }
 
     /**
@@ -144,7 +161,6 @@ class CaseTypeController extends Controller
         $id = $request->get('id');
         Case_type::find($id)->delete();
         return ['success' => true, 'message' => 'ลบ ประเภทการติดต่อ เรียบร้อยแล้ว'];
-
     }
 
     public function destroy_all(Request $request)
@@ -157,5 +173,5 @@ class CaseTypeController extends Controller
         }
 
         return redirect('casetype')->with('success', 'ลบ ประเภทการติดต่อ เรียบร้อยแล้ว');
-    }//
+    } //
 }

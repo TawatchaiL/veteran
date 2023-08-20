@@ -108,17 +108,13 @@ class DepartmentController extends Controller
         //
         $validator =  Validator::make($request->all(), [
             'name' => 'required|string|max:255|unique:departments',
-            'code' => 'required|string|max:10',
+            //'code' => 'required|string|max:10',
             'status' => 'required',
-            /* 'email' => 'required|string|email|max:255',
-            'address' => 'required|string|max:255',
-            'postcode' => 'required|string|max:10',
-            'telephone' => 'required|string|max:20',*/
         ], [
             'name.required' => 'ชื่อแผนกต้องไม่เป็นค่าว่าง!',
             'name.unique' => 'ชื่อแผนกนี้มีอยู่แล้วในฐานข้อมูล!',
-            'code.required' => 'รหัสแผนกต้องไม่เป็นค่าว่าง!',
-            'code.max' => 'รหัสแผนกต้องห้ามเกิน10ตัวอักษร!',
+            //'code.required' => 'รหัสแผนกต้องไม่เป็นค่าว่าง!',
+            //'code.max' => 'รหัสแผนกต้องห้ามเกิน10ตัวอักษร!',
             'status.required' => 'กรุณาเลือกสถานะ!',
         ]);
 
@@ -153,7 +149,7 @@ class DepartmentController extends Controller
     {
         $rules = [
             'name' => 'required|string|max:255|unique:departments,name,' . $id,
-            'code' => 'required|max:10',
+            //'code' => 'required|max:10',
             'status' => 'required|max:10',
 
         ];
@@ -162,8 +158,8 @@ class DepartmentController extends Controller
         $validator =  Validator::make($request->all(), $rules, [
             'name.required' => 'ชื่อแผนกต้องไม่เป็นค่าว่าง!',
             'name.unique' => 'ชื่อแผนกนี้มีอยู่แล้วในฐานข้อมูล!',
-            'code.required' => 'รหัสแผนกต้องไม่เป็นค่าว่าง!',
-            'code.max' => 'รหัสแผนกต้องห้ามเกิน10ตัวอักษร!',
+            //'code.required' => 'รหัสแผนกต้องไม่เป็นค่าว่าง!',
+            //'code.max' => 'รหัสแผนกต้องห้ามเกิน10ตัวอักษร!',
             'status.required' => 'กรุณาเลือกสถานะ!',
         ]);
 
@@ -173,7 +169,7 @@ class DepartmentController extends Controller
 
         $contactd = [
             'name' => $request->get('name'),
-            'code' => $request->get('code'),
+            //'code' => $request->get('code'),
             'status' => $request->get('status'),
         ];
 
