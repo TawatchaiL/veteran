@@ -239,9 +239,9 @@
         function generateRandomData(length) {
             const data = [];
             for (let i = 0; i < length; i++) {
-                const entered = Math.floor(Math.random() * 50) +
+                const entered = Math.floor(Math.random() * 100) +
                     1; // Generate a random value between 1 and 50 (greater than 0)
-                const received = entered + Math.floor(Math.random() * (50 -
+                const received = entered + Math.floor(Math.random() * (100 -
                     entered)); // Generate a random value less than or equal to 'สายเข้า'
                 data.push([entered, received]);
             }

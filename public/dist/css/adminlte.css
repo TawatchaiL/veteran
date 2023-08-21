@@ -30466,8 +30466,10 @@ body.text-sm .input-group-text {
     margin-bottom: -1px;
 }
 
+/* meeh fix card maximize */
 html.maximized-card {
-    overflow: hidden;
+    /* overflow: hidden; */
+    overflow: auto;
 }
 
 .card-header::after,

@@ -76,6 +76,8 @@
         z-index: 1040;
     }
 
+    
+
     /* .card {
             margin-left: 10px;
             position: fixed;

@@ -309,6 +309,7 @@
 
                 // Toggle minimized class
                 card.toggleClass('collapsed-card');
+                
 
 
             });
@@ -335,6 +336,7 @@
 
                 // Toggle minimized class
                 card.toggleClass('collapsed-card');
+                
 
 
             });
