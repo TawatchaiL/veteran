@@ -60,7 +60,7 @@
     @include('layouts.style')
     @yield('style')
 
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed layout-footer-fixed">
     <div class="wrapper">
         <!-- Main Header -->
         @include('layouts.header')
