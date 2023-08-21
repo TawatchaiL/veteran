@@ -30,44 +30,53 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-success"><i class="fas fa-warehouse"></i></span>
+                                <span class="info-box-icon bg-primary"><i class="fa-solid fa-phone-volume"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text text-primary">ลวดทองแดง ที่เหลือในคลัง</span>
-                                    <span class="info-box-number">1,600.00 กิโลกรัม</span>
+                                    <span class="info-box-text text-primary">สายเข้า</span>
+                                    <span class="info-box-number">15 ครั้ง</span>
                                 </div>
 
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-success"><i class="fas fa-warehouse"></i></span>
+                                <span class="info-box-icon bg-warning"><i class="fa-solid fa-bell"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text text-primary">เศษพาสติก ที่เหลือในคลัง</span>
-                                    <span class="info-box-number">1,000.00 กิโลกรัม</span>
+                                    <span class="info-box-text text-primary">เวลารอสายเฉลี่ย</span>
+                                    <span class="info-box-number">00:00:12</span>
                                 </div>
 
                             </div>
                         </div>
+                        <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-success"><i class="fa-solid fa-microphone"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text text-primary">เวลาที่สนทนาทั้งหมด</span>
+                                    <span class="info-box-number">00:38:43</span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-info"><i class="fa-solid fa-gauge"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text text-primary">เวลาสนทนาเฉลี่ยต่อสาย</span>
+                                    <span class="info-box-number"> 00:05:12</span>
+                                </div>
+
+                            </div>
+                        </div>
+
                     </div>
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-info"><i class="fas fa-warehouse"></i></span>
+                                <span class="info-box-icon bg-danger"><i class="fa-solid fa-clipboard"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text">จำนวนสินค้าเข้าคลังวันนี้</span>
-                                    <span class="info-box-number">0.00 หน่วย</span>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-danger"><i class="fas fa-dollar-sign"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text">จำนวนรายจ่ายวันนี้</span>
-                                    <span class="info-box-number">0.00 บาท</span>
+                                    <span class="info-box-text text-primary">เคสที่รับแจ้ง</span>
+                                    <span class="info-box-number">10 เคส</span>
                                 </div>
 
                             </div>
@@ -77,29 +86,37 @@
 
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-primary"><i class="fas fa-cart-arrow-down"></i></span>
+                                <span class="info-box-icon bg-primary"><i class="fa-solid fa-laptop-medical"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text">จำนวนสินค้าที่ขายได้วันนี้</span>
-                                    <span class="info-box-number">0.00 หน่วย</span>
+                                    <span class="info-box-text text-primary">เคสที่ปิดเคสแล้ว</span>
+                                    <span class="info-box-number">4 เคส</span>
                                 </div>
 
                             </div>
 
                         </div>
-
-
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-success"><i class="fas fa-hand-holding-usd"></i></span>
+                                <span class="info-box-icon bg-warning"><i class="fa-solid fa-shuffle"></i></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text">จำนวนรายรับวันนี้</span>
-                                    <span class="info-box-number">0.00 บาท</span>
+                                    <span class="info-box-text text-primary">เคสที่โอนสาย</span>
+                                    <span class="info-box-number">6 เคส</span>
                                 </div>
 
                             </div>
 
                         </div>
+                        <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-success"><i class="fa-solid fa-star"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text text-primary">คะแนนความพึงพอใจ</span>
+                                    <span class="info-box-number">10 คะแนน</span>
+                                </div>
 
+                            </div>
+
+                        </div>
 
                     </div>
 
@@ -108,7 +125,7 @@
 
                             <div class="card card-info">
                                 <div class="card-header">
-                                    <h3 class="card-title">สถิติการนำสินค้าเข้าคลัง / ขายสินค้าออก รายวัน ประจำเดือน 2023-08
+                                    <h3 class="card-title">สถิติ สายเข้า / ขายสินค้าออก รายวัน ประจำเดือน 2023-08
                                     </h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -157,7 +174,7 @@
                     <div class="row">
                         <div class="col-md-6">
 
-                            <div class="card card-primary">
+                            <div class="card card-info">
                                 <div class="card-header">
                                     <h3 class="card-title">จำนวนสินค้าคงเหลือในคลังสินค้า</h3>
                                     <div class="card-tools">
@@ -181,7 +198,7 @@
 
                         <div class="col-md-6">
 
-                            <div class="card card-primary">
+                            <div class="card card-info">
                                 <div class="card-header">
                                     <h3 class="card-title">จำนวนสินค้าที่นำสินค้าเข้าคลัง / ที่ขายสินค้าออกจากคลัง</h3>
                                     <div class="card-tools">

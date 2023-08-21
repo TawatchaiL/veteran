@@ -222,9 +222,10 @@
     function initializeTooltips() {
         $('[data-toggle="tooltip"]').tooltip();
     }
+
     //hide logo when resize
     $(document).ready(function() {
-        $('#ToolbarModal').modal('show');
+
 
         $('.sidebar-toggle-btn').on('click', function() {
             // Get the logo element
@@ -244,6 +245,14 @@
 
         $('#Listview').on('draw.dt', function() {
             initializeTooltips();
+        });
+
+        //$('#ToolbarModal').modal('show');
+        var token = ''
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
         });
 
         //popup card
