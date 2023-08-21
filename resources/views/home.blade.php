@@ -32,7 +32,7 @@
                             <div class="info-box">
                                 <span class="info-box-icon bg-primary"><i class="fa-solid fa-phone-volume"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text text-primary">สายเข้า</span>
+                                    <span class="info-box-text">สายเข้า</span>
                                     <span class="info-box-number">15 ครั้ง</span>
                                 </div>
 
@@ -42,7 +42,7 @@
                             <div class="info-box">
                                 <span class="info-box-icon bg-warning"><i class="fa-solid fa-bell"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text text-primary">เวลารอสายเฉลี่ย</span>
+                                    <span class="info-box-text">เวลารอสายเฉลี่ย</span>
                                     <span class="info-box-number">00:00:12</span>
                                 </div>
 
@@ -52,7 +52,7 @@
                             <div class="info-box">
                                 <span class="info-box-icon bg-success"><i class="fa-solid fa-microphone"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text text-primary">เวลาที่สนทนาทั้งหมด</span>
+                                    <span class="info-box-text ">เวลาที่สนทนาทั้งหมด</span>
                                     <span class="info-box-number">00:38:43</span>
                                 </div>
 
@@ -62,7 +62,7 @@
                             <div class="info-box">
                                 <span class="info-box-icon bg-info"><i class="fa-solid fa-gauge"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text text-primary">เวลาสนทนาเฉลี่ยต่อสาย</span>
+                                    <span class="info-box-text ">เวลาสนทนาเฉลี่ยต่อสาย</span>
                                     <span class="info-box-number"> 00:05:12</span>
                                 </div>
 
@@ -75,7 +75,7 @@
                             <div class="info-box">
                                 <span class="info-box-icon bg-danger"><i class="fa-solid fa-clipboard"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text text-primary">เคสที่รับแจ้ง</span>
+                                    <span class="info-box-text ">เคสที่รับแจ้ง</span>
                                     <span class="info-box-number">10 เคส</span>
                                 </div>
 
@@ -88,7 +88,7 @@
                             <div class="info-box">
                                 <span class="info-box-icon bg-primary"><i class="fa-solid fa-laptop-medical"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text text-primary">เคสที่ปิดเคสแล้ว</span>
+                                    <span class="info-box-text ">เคสที่ปิดเคสแล้ว</span>
                                     <span class="info-box-number">4 เคส</span>
                                 </div>
 
@@ -99,7 +99,7 @@
                             <div class="info-box">
                                 <span class="info-box-icon bg-warning"><i class="fa-solid fa-shuffle"></i></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text text-primary">เคสที่โอนสาย</span>
+                                    <span class="info-box-text ">เคสที่โอนสาย</span>
                                     <span class="info-box-number">6 เคส</span>
                                 </div>
 
@@ -110,7 +110,7 @@
                             <div class="info-box">
                                 <span class="info-box-icon bg-success"><i class="fa-solid fa-star"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text text-primary">คะแนนความพึงพอใจ</span>
+                                    <span class="info-box-text ">คะแนนความพึงพอใจ</span>
                                     <span class="info-box-number">10 คะแนน</span>
                                 </div>
 
@@ -123,9 +123,33 @@
                     <div class="row">
                         <div class="col-md-6">
 
-                            <div class="card card-info">
+                            <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">สถิติ สายเข้า / ขายสินค้าออก รายวัน ประจำเดือน 2023-08
+                                    <h3 class="card-title">สถิติการรับสายตามช่วงเวลา</h3>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                                            <i class="fas fa-expand"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart">
+                                        <div class="col-md-12">
+                                            <div id="chart_os"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">สถิติ สายเข้า รายวัน ประจำเดือน 2023-08
                                     </h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -144,13 +168,17 @@
 
                             </div>
                         </div>
+                      
 
-
+                        
+                    </div>
+                    <div class="row">
                         <div class="col-md-6">
 
-                            <div class="card card-info">
+                            <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">สถิติรายจ่าย / รายรับ รายวัน ประจำเดือน 2023-08</h3>
+                                    <h3 class="card-title">สถิติ เคสที่รับแจ้ง / เคสที่ปิดเคสแล้ว รายวัน ประจำเดือน 2023-08
+                                    </h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                             <i class="fas fa-minus"></i>
@@ -170,37 +198,11 @@
 
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-6">
 
-                            <div class="card card-info">
+                            <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">จำนวนสินค้าคงเหลือในคลังสินค้า</h3>
-                                    <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
-
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="chart">
-                                        <div class="col-md-12">
-                                            <div id="chart_os"></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-6">
-
-                            <div class="card card-info">
-                                <div class="card-header">
-                                    <h3 class="card-title">จำนวนสินค้าที่นำสินค้าเข้าคลัง / ที่ขายสินค้าออกจากคลัง</h3>
+                                    <h3 class="card-title">คะแนน ความพึงพอใจ </h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                             <i class="fas fa-minus"></i>
@@ -234,22 +236,39 @@
 
 @section('script')
     <script language="javascript" type="text/javascript">
+        function generateRandomData(length) {
+            const data = [];
+            for (let i = 0; i < length; i++) {
+                const entered = Math.floor(Math.random() * 50) +
+                    1; // Generate a random value between 1 and 50 (greater than 0)
+                const received = entered + Math.floor(Math.random() * (50 -
+                    entered)); // Generate a random value less than or equal to 'สายเข้า'
+                data.push([entered, received]);
+            }
+            return data;
+        }
+
+        function generateTimeLabels(count) {
+            const labels = [];
+            for (let i = 0; i < count; i++) {
+                const startHour = i * 2;
+                const endHour = startHour + 1;
+                const label = `${startHour.toString().padStart(2, '0')}:00-${endHour.toString().padStart(2, '0')}:59`;
+                labels.push(label);
+            }
+            return labels;
+        }
+
         $(document).ready(function() {
 
             var options = {
                 series: [{
-                        name: 'Income',
-                        data: ['0', '0', '0', '0', '20000', '0', '0', '0', '0', '0', '0', '0', '0', '0',
-                            '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
-                            '0', '0'
-                        ]
+                        name: 'เคสที่รับแจ้ง',
+                        data: generateRandomData(31).map(item => item[1])
                     },
                     {
-                        name: 'Cost',
-                        data: ['0', '0', '0', '0', '115000', '0', '0', '0', '0', '0', '0', '0', '0', '0',
-                            '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
-                            '0', '0'
-                        ]
+                        name: 'เคสที่ปิดเคสแล้ว',
+                        data: generateRandomData(31).map(item => item[0])
                     },
                     /* {
                              name: 'Revenue',
@@ -285,7 +304,7 @@
                             }
                         },
                         horizontal: false,
-                        columnWidth: '55%',
+                        columnWidth: '75%',
                         endingShape: 'rounded'
                     },
                 },
@@ -306,10 +325,10 @@
                     },
 
 
-                    categories: ['08-01', '08-02', '08-03', '08-04', '08-05', '08-06', '08-07', '08-08',
-                        '08-09', '08-10', '08-11', '08-12', '08-13', '08-14', '08-15', '08-16', '08-17',
-                        '08-18', '08-19', '08-20', '08-21', '08-22', '08-23', '08-24', '08-25', '08-26',
-                        '08-27', '08-28', '08-29', '08-30', '08-31'
+                    categories: ['01', '02', '03', '04', '05', '06', '07', '08',
+                        '09', '10', '11', '12', '13', '14', '15', '16', '17',
+                        '18', '19', '20', '21', '22', '23', '24', '25', '26',
+                        '27', '28', '29', '30', '31'
                     ],
                 },
                 yaxis: {
@@ -332,7 +351,7 @@
                 tooltip: {
                     y: {
                         formatter: function(val) {
-                            return " จำนวน " + val + "  บาท"
+                            return " จำนวน " + val + "  เคส"
                         }
                     }
                 }
@@ -343,19 +362,13 @@
 
             var options_d = {
                 series: [{
-                        name: 'Instock',
-                        data: ['0', '0', '0', '0', '3000', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
-                            '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
-                            '0'
-                        ]
+                        name: 'สายเข้า',
+                        data: generateRandomData(31).map(item => item[1])
                     },
-                    {
-                        name: 'Order',
-                        data: ['0', '0', '0', '0', '400', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
-                            '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
-                            '0'
-                        ]
-                    },
+                    /* {
+                        name: 'สายที่ได้รับ',
+                        data: generateRandomData(30).map(item => item[0])
+                    }, */
                 ],
 
                 markers: {
@@ -366,7 +379,7 @@
                 },
                 chart: {
                     type: 'area',
-                    height: 350,
+                    height: 380,
                     zoom: {
                         enabled: false
                     }
@@ -404,10 +417,10 @@
                         maxHeight: 300,
                         //hideOverlappingLabels: false
                     },
-                    categories: ['08-01', '08-02', '08-03', '08-04', '08-05', '08-06', '08-07', '08-08',
-                        '08-09', '08-10', '08-11', '08-12', '08-13', '08-14', '08-15', '08-16', '08-17',
-                        '08-18', '08-19', '08-20', '08-21', '08-22', '08-23', '08-24', '08-25', '08-26',
-                        '08-27', '08-28', '08-29', '08-30', '08-31'
+                    categories: ['01', '02', '03', '04', '05', '06', '07', '08',
+                        '09', '10', '11', '12', '13', '14', '15', '16', '17',
+                        '18', '19', '20', '21', '22', '23', '24', '25', '26',
+                        '27', '28', '29', '30', '31'
                     ],
                 },
                 legend: {
@@ -420,18 +433,18 @@
 
 
             var options_os = {
-                series: [1600, 1000],
+                series: generateRandomData(12).map(item => item[1]),
                 chart: {
                     type: 'donut',
-                    width: 450,
-                    height: 350,
+                    width: 550,
+                    height: 650,
                 },
                 colors: ['#2E93fA', '#66DA26', '#546E7A', '#E91E63', '#FF9800', '#4ECDC4', '#C7F464', '#81D4FA',
                     '#A5978B', '#FD6A6A'
                 ],
                 title: {
                     //text: 'OS ที่ดูมากที่สุด ประจำวันที่ 2023-06-30 - 2023-06-30',
-                    align: 'left',
+                    align: 'center',
                     margin: 10,
                     offsetX: 0,
                     offsetY: 0,
@@ -443,7 +456,7 @@
                         color: '#263238'
                     },
                 },
-                labels: ['ลวดทองแดง', 'เศษพาสติก'],
+                labels: generateTimeLabels(12),
                 responsive: [{
                     breakpoint: 280,
                     options_os: {
@@ -462,13 +475,13 @@
 
 
             var options_c = {
-                series: [20000, 115000],
+                series: [10, 5, 18, 20, 50],
                 chart: {
                     type: 'donut',
-                    width: 450,
-                    height: 550,
+                    width: 460,
+                    height: 450,
                 },
-                colors: ['#4ECDC4', '#FF9800', '#2E93fA', '#66DA26', '#546E7A', '#E91E63', '#C7F464', '#81D4FA',
+                colors: ['#4ECDC4', '#FF9800', '#2E93fA', '#66DA26', '#E91E63', '#546E7A', '#C7F464', '#81D4FA',
                     '#A5978B', '#FD6A6A'
                 ],
                 title: {
@@ -486,7 +499,7 @@
                     },
                 },
 
-                labels: ['ขายสินค้าออกจากคลัง', 'นำสินค้าเข้าคลัง'],
+                labels: ['1', '2', '3', '4', '5'],
                 responsive: [{
                     breakpoint: 280,
                     options_c: {

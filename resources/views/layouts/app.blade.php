@@ -69,7 +69,7 @@
         @include('layouts.sidebar')
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+        <div class="content-wrapper main_content" >
             @yield('content')
         </div>
 
@@ -275,6 +275,7 @@
                         $(this).css('right', cardPositions[index].right);
                         $(this).css('bottom', '35px');
                         $(this).delay(index * 100).fadeIn();
+                       
                     });
                 },
                 error: function(xhr, status, error) {
@@ -298,10 +299,12 @@
                     card.css('right', '-300px'); // Adjust as needed
                     card.css('z-index', '99999');
                     maximizeCard(cardId);
+                    
                 } else {
                     // restore
                     $('#dpopup').html('');
                     positionCards();
+                   
                 }
 
                 // Toggle minimized class
@@ -322,10 +325,12 @@
                     card.css('right', '-300px'); // Adjust as needed
                     card.css('z-index', '99999');
                     maximizeCard(cardId);
+                    
                 } else {
                     // restore
                     $('#dpopup').html('');
                     positionCards();
+                    
                 }
 
                 // Toggle minimized class
@@ -373,12 +378,15 @@
                     cardId: cardId
                 },
                 success: async function(response) {
+                    $('#' + cardId).removeClass('card-danger');
+                    $('#' + cardId).addClass('card-success');
                     await $('#pop_' + cardId).html(response.html);
                     $(".card-footer").css("display", "block")
                     $('.bclose').css('display', 'none');
                     $('#amp').select2({});
                     $('#tmp').select2({});
                     $('#cityp').select2({});
+                    
                 }
             });
         }
