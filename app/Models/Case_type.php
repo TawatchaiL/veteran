@@ -13,3 +13,4 @@ class Case_type extends Model
         'status',
     ];
 }
+//manon
