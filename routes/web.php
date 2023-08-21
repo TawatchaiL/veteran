@@ -71,6 +71,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/cases/destroy', [App\Http\Controllers\CasesController::class, 'destroy'])->name('cases.destroy');
     Route::post('/cases/destroy_all', [App\Http\Controllers\CasesController::class, 'destroy_all'])->name('cases.destroy_all');
 
+    Route::get('/reportcase', [App\Http\Controllers\ReportcaseController::class, 'index'])->name('reportcase');
+    Route::get('pdfreportcases', [App\Http\Controllers\PDFcasesController::class, 'pdf'])->name('reportcase.pdf');
     //file
     Route::post('/file/upload', function (Request $request) {
         $result = FileUploadService::fileStore($request);
