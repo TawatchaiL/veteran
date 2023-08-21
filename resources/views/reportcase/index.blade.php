@@ -1,0 +1,182 @@
+@extends('layouts.app')
+
+@section('style')
+    @include('reportcase.style')
+@endsection
+
+
+
+@section('content')
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-12">
+                    <ol class="breadcrumb float-sm-center">
+                        {{-- <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Users Management</li> --}}
+                        <div class="col-xs-2 col-sm-2 col-md-2">
+                            <div class="form-group">
+                                <strong><i class="fas fa-calendar"></i> วันที่เริ่ม:</strong>
+                                {!! Form::text('start_date', null, [
+                                    'id' => 'SDate',
+                                    'placeholder' => '',
+                                    'class' => 'SDate form-control',
+                                    'data-target' => '#reservationdate',
+                                ]) !!}
+                            </div>
+                        </div>
+                        <div class="col-xs-2 col-sm-2 col-md-2">
+                            <div class="form-group">
+                                <strong><i class="fas fa-calendar"></i> วันที่สิ้นสุด:</strong>
+                                {!! Form::text('end_date', null, [
+                                    'id' => 'EDate',
+                                    'placeholder' => '',
+                                    'class' => 'EDate form-control',
+                                    'data-target' => '#reservationdate',
+                                ]) !!}
+                            </div>
+                        </div>
+                        <div class="col-xs-2 col-sm-2 col-md-2 align-self-end">
+                            <div class="form-group">
+                            <button type="button" class="btn btn-success" id="CreateButton">
+                                <i class="fas fa-address-book"></i> รายงาน </button>
+                            </div>
+                        </div>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="fas fa-address-book"></i> ผลรวมสายเข้าแยกตาม Agent</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                {{-- <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                                    <i class="fas fa-times"></i>
+                                </button> --}}
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            @if ($message = Session::get('success'))
+                                {{--  <div class="alert alert-success">
+                                    <p>{{ $message }}</p>
+                                </div> --}}
+                                <script>
+                                    toastr.success('{{ $message }}', {
+                                        timeOut: 5000
+                                    });
+                                </script>
+                            @endif
+                            <form method="post" name="delete_all" id="delete_all">
+                                @csrf
+                                @method('POST')
+                                <table id="Listview" class="table table-bordered table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th width="20px"><input type="checkbox" id="check-all" class="flat"></th>
+                                            <th>agent</th>
+                                            <th width="280px">จำนวน</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+            </div>
+            <div class="row justify-content-center">
+        <div class="col-md">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card card-success card-tabs">
+                        <div class="card-header p-0 pt-1">
+                            <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill"
+                                        href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home"
+                                        aria-selected="true">Bar Graph</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill"
+                                        href="#custom-tabs-one-line" role="tab"
+                                        aria-controls="custom-tabs-one-profile"
+                                        aria-selected="false">Line Graph</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill"
+                                        href="#custom-tabs-one-pie" role="tab"
+                                        aria-controls="custom-tabs-one-profile"
+                                        aria-selected="false">Pie Graph</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <div class="tab-content" id="custom-tabs-one-tabContent">
+                                <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
+                                    {!! $chart1->renderHtml() !!}
+                                </div>
+                                <div class="tab-pane fade" id="custom-tabs-one-line" role="tabpanel" aria-labelledby="custom-tabs-one-line-tab">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            {!! $chart2->renderHtml() !!}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="custom-tabs-one-pie" role="tabpanel" aria-labelledby="custom-tabs-one-pie-tab">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            {!! $chart3->renderHtml() !!}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+        </div>
+
+    </section>
+
+
+    @include('contacts.create')
+
+    @include('contacts.edit')
+
+    {{--  {!! $data->render() !!} --}}
+    {!! $chart1->renderChartJsLibrary() !!}
+    {!! $chart1->renderJs() !!}
+
+    {!! $chart2->renderJs() !!}
+
+
+    {!! $chart3->renderJs() !!}
+@endsection
+
+@section('script')
+    @include('reportcase.script')
+@endsection
+
+@section('javascript')
+
+@endsection
