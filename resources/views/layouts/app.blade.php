@@ -56,124 +56,8 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.css" />
     <link rel="stylesheet" href="dist/css/adminlte.css?v=3.2.0">
     <link rel="stylesheet" href="dist/css/fontawesome/css/all.min.css">
-    <style>
-        /* body {
-            font-family: 'Sarabun', serif;
-                    font-size: 20px;
-        } */
-        .btn-orange,
-        .btn-orange:hover,
-        .btn-orange:active,
-        .btn-orange:visited {
-            background-color: #ff8000;
-            color: #ffffff;
-        }
 
-        .btn-yellow,
-        .btn-yellow:hover,
-        .btn-yellow:active,
-        .btn-yellow:visited {
-            background-color: #c7c42c;
-            color: #ffffff;
-        }
-
-        body {
-            font-family: 'Roboto', 'Sarabun';
-            font-size: 16px;
-        }
-
-        .main-header.navbar {
-            box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
-            /* Adjust shadow values as needed */
-        }
-
-        .center-content {
-            text-align: center;
-        }
-
-        /* sidebar-bg */
-        .main-sidebar {
-            background-color: rgb(162, 223, 144) !important
-        }
-
-        .control-sidebar-light {
-            background-color: rgb(252, 253, 251) !important
-        }
-
-
-        /* .card-container {
-            display: flex;
-            flex-direction: row-reverse;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 9999;
-        }
-
-        */
-        .card-content {
-            padding: 15px;
-            /* Set the maximum height for the card's content */
-            max-height: calc(100% - 40px);
-            /* Subtract the height of the footer */
-            overflow-y: auto;
-            /* Enable vertical scrolling when content overflows */
-        }
-
-        .custom-bottom-right-card {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1040;
-        }
-
-        /* .card {
-            margin-left: 10px;
-            position: fixed;
-            bottom: 20px;
-        } */
-
-        .scroll-to-top {
-            position: fixed;
-            right: 1rem;
-            bottom: 1rem;
-            display: none;
-            width: 2.75rem;
-            height: 2.75rem;
-            text-align: center;
-            color: #fff;
-            background: rgba(90, 92, 105, .5);
-            line-height: 46px
-        }
-
-        .scroll-to-top:focus,
-        .scroll-to-top:hover {
-            color: #fff
-        }
-
-        .scroll-to-top:hover {
-            background: #5a5c69
-        }
-
-        .scroll-to-top i {
-            font-weight: 800
-        }
-
-        .digital-clock {
-            /* font-family: Arial, sans-serif; */
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .digit {
-            padding: 0.2em;
-            background-color: #333;
-            color: white;
-            border-radius: 0.2em;
-        }
-    </style>
+    @include('layouts.style')
     @yield('style')
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -195,96 +79,12 @@
 
         <!-- Main Footer -->
         @include('layouts.footer')
-
+        @include('layouts.toolbar')
 
     </div>
 
-    <div class="modal fade" id="ToolbarModal">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header bg-primary">
-                    <h4 class="modal-title">{{-- <i class="fas fa-wrench"></i> --}} <i class="fas fa-spin fa-gear"></i> Agent ToolBar [
-                        9999 ]</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <input {{-- <?= $outbound_dis ?> --}} style="height:50px" type="number" class="form-control"
-                                        maxlength="11" id="dial_number" name="dial_number" value=""
-                                        placeholder="กรอกเบอร์" />
-                                </div>
-                                <div class="mx-1">
-                                    <button {{-- <?= $outbound_dis ?> --}} class="btn btn-lg btn-info button_dial"><i
-                                            class="fas fa-phone-square"></i> โทรออก</button>
-                                </div>
-                                <div class="mx-1">
-                                    {{--  <button  <?= $outbound_dis ?>  class="btn btn-lg btn-warning button_tranfer"><i
-                                            class="fas fa-random"></i> โอนสาย</button> --}}
-                                    <div class="btn-group">
-                                        <button type="button"
-                                            class="btn btn-lg btn-warning dropdown-toggle dropdown-icon"
-                                            data-toggle="dropdown">
-                                            <i class="fas fa-random"></i> โอนสาย <span class="sr-only">Toggle
-                                                Dropdown</span>
-                                        </button>
-                                        <div class="dropdown-menu" role="menu">
-                                            <a class="dropdown-item button_tranfer" href="#"><i
-                                                    class="fas fa-random"></i> Blind Tranfer</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item button_atx_tranfer" href="#"><i
-                                                    class="fas fa-random"></i> Attendant Tranfer</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mx-1">
-                                    <button {{-- <?= $outbound_dis ?> --}} class="btn btn-lg btn-success button_conf"><i
-                                            class="fas fa-star"></i> ประเมินความพึงพอใจ</button>
-                                </div>
-                                <div class="mx-1">
-                                    <button {{-- <?= $outbound_dis ?> --}} class="btn btn-lg btn-primary button_conf"><i
-                                            class="fas fa-handshake"></i> ประชุมสาย</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer text-muted">
-                    <div class="btn-group float-left {{-- <?= $break_class ?> --}}" id="break_group">
-                        <button type="button" id="btn-pause"
-                            class="btn btn-lg btn-orange  mx-1 dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                            <i class="fas fa-pause"></i> พัก <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu" role="menu">
-
-                            <a class="dropdown-item button_break" href="#" data-id="ทานข้าว"><i
-                                    class="fas fa-pause"></i> ทานข้าว</a>
-                            <a class="dropdown-item button_break" href="#" data-id="ทานข้าว"><i
-                                    class="fas fa-pause"></i> เข้าห้องน้ำ</a>
-                            <a class="dropdown-item button_break" href="#" data-id="ทานข้าว"><i
-                                    class="fas fa-pause"></i> ประชุม</a>
-                            <div class="dropdown-divider"></div>
 
 
-                        </div>
-                    </div>
-                    <button class="btn btn-lg btn-yellow float-left mx-1 button_unbreak"><i class="fas fa-clock"></i>
-                        UnWarp </button>
-
-                    <button {{-- <?= $logoff_dis ?> --}} onclick="location.href='#'" id="btn-logout"
-                        class="btn btn-lg btn-danger float-right"><i class="fas fa-power-off"></i>
-                        Logoff </button>
-                    <button {{-- <?= $logoff_dis ?> --}} onclick="location.href='#'" id="btn-logout"
-                        class="btn btn-lg btn-success mx-1 float-right"><i class="fas fa-plug"></i>
-                        Login </button>
-                </div>
-            </div>
-        </div>
-    </div>
 </body>
 
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
@@ -565,7 +365,6 @@
                 },
                 success: async function(response) {
                     await $('#pop_' + cardId).html(response.html);
-                    //$('.pop_content').find('.nav-tabs a').tab('show');
                     $(".card-footer").css("display", "block")
                     $('.bclose').css('display', 'none');
                     $('#amp').select2({});
