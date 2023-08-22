@@ -63,7 +63,7 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-address-book"></i> ผลรวมสายเข้าแยกตาม Agentcccc</h3>
+                            <h3 class="card-title"><i class="fas fa-address-book"></i> ผลรวมสายเข้าแยกตาม Agent</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -106,7 +106,7 @@
                             <div class="col-xs-2 col-sm-2 col-md-2 align-self-end">
                                 <div class="form-group">
                                 <a class="btn btn-danger" id="CreateButton" href="{{ route('reportcase.pdf') }}">
-                                <i class="fa-regular fa-file-pdf"></i> รายงาน </a>
+                                <i class="fa-regular fa-file-pdf"></i> Pdf </a>
                                 </div>
                             </div>
                         </div>
