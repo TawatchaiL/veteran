@@ -127,12 +127,13 @@
                                 <div class="card-header">
                                     <h3 class="card-title">สถิติการรับสายตามช่วงเวลา</h3>
                                     <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
                                         <button type="button" class="btn btn-tool" data-card-widget="maximize">
                                             <i class="fas fa-expand"></i>
                                         </button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -152,6 +153,9 @@
                                     <h3 class="card-title">สถิติ สายเข้า รายวัน ประจำเดือน 2023-08
                                     </h3>
                                     <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                                            <i class="fas fa-expand"></i>
+                                        </button>
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                             <i class="fas fa-minus"></i>
                                         </button>
@@ -168,9 +172,9 @@
 
                             </div>
                         </div>
-                      
 
-                        
+
+
                     </div>
                     <div class="row">
                         <div class="col-md-6">
@@ -180,6 +184,9 @@
                                     <h3 class="card-title">สถิติ เคสที่รับแจ้ง / เคสที่ปิดเคสแล้ว รายวัน ประจำเดือน 2023-08
                                     </h3>
                                     <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                                            <i class="fas fa-expand"></i>
+                                        </button>
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                             <i class="fas fa-minus"></i>
                                         </button>
@@ -204,6 +211,9 @@
                                 <div class="card-header">
                                     <h3 class="card-title">คะแนน ความพึงพอใจ </h3>
                                     <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                                            <i class="fas fa-expand"></i>
+                                        </button>
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                             <i class="fas fa-minus"></i>
                                         </button>
