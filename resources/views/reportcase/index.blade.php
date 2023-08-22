@@ -112,57 +112,49 @@
                 </div>
 
             </div>
-            <div class="row justify-content-center">
-        <div class="col-md">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card card-success card-tabs">
-                        <div class="card-header p-0 pt-1">
-                            <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill"
-                                        href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home"
-                                        aria-selected="true">Bar Graph</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill"
-                                        href="#custom-tabs-one-line" role="tab"
-                                        aria-controls="custom-tabs-one-profile"
-                                        aria-selected="false">Line Graph</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill"
-                                        href="#custom-tabs-one-pie" role="tab"
-                                        aria-controls="custom-tabs-one-profile"
-                                        aria-selected="false">Pie Graph</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="card-body">
-                            <div class="tab-content" id="custom-tabs-one-tabContent">
-                                <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
-                                    {!! $chart1->renderHtml() !!}
+                    <div class="card">
+                            <div class="card card-success card-tabs">
+                                <div class="card-header p-0 pt-1">
+                                    <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill"
+                                                href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home"
+                                                aria-selected="true">Bar Graph</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill"
+                                                href="#custom-tabs-one-line" role="tab"
+                                                aria-controls="custom-tabs-one-profile"
+                                                aria-selected="false">Line Graph</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill"
+                                                href="#custom-tabs-one-pie" role="tab"
+                                                aria-controls="custom-tabs-one-profile"
+                                                aria-selected="false">Pie Graph</a>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <div class="tab-pane fade" id="custom-tabs-one-line" role="tabpanel" aria-labelledby="custom-tabs-one-line-tab">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            {!! $chart2->renderHtml() !!}
+                                <div class="card-body">
+                                    <div class="tab-content" id="custom-tabs-one-tabContent">
+                                        <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
+                                            <div class="col-sm-6">
+                                                {!! $chart1->renderHtml() !!}
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="custom-tabs-one-pie" role="tabpanel" aria-labelledby="custom-tabs-one-pie-tab">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            {!! $chart3->renderHtml() !!}
+                                        <div class="tab-pane fade" id="custom-tabs-one-line" role="tabpanel" aria-labelledby="custom-tabs-one-line-tab">
+                                            <div class="col-sm-6">
+                                                    {!! $chart2->renderHtml() !!}
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="custom-tabs-one-pie" role="tabpanel" aria-labelledby="custom-tabs-one-pie-tab">
+                                            <div class="col-sm-6">
+                                                    {!! $chart3->renderHtml() !!} 
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-        </div>
-    </div>
         </div>
 
     </section>
