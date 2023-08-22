@@ -5,24 +5,7 @@
         <p>Dashboard</p>
     </a>
 </li>
-@can('master-data-list')
-    <li class="nav-item">
-        <a href="#" class="nav-link">
-            <i class="fa-solid fa-print nav-icon"></i>
-            <p>รายงาน</p>
-            <i class="fas fa-angle-left right"></i>
-        </a>
-        <ul class="nav nav-treeview">
 
-            <li class="nav-item">
-                <a href="{{ route('reportcase') }}" class="nav-link {{ Request::is('reportcase') ? 'active' : '' }}">
-                    <i class="fas fa-list-ol nav-icon"></i>
-                    <p>Case by Agentbbbbb</p>
-                </a>
-            </li>
-        </ul>
-    </li>
-@endcan
 @can('contact-list')
     <li class="nav-item">
         <a href="{{ route('contacts') }}" class="nav-link {{ Request::is('contacts') ? 'active' : '' }}">
@@ -44,7 +27,24 @@
         <p>เรื่องรับแจ้ง</p>
     </a>
 </li>
+@can('master-data-list')
+    <li class="nav-item">
+        <a href="#" class="nav-link">
+            <i class="fa-solid fa-print nav-icon"></i>
+            <p>รายงาน</p>
+            <i class="fas fa-angle-left right"></i>
+        </a>
+        <ul class="nav nav-treeview">
 
+            <li class="nav-item">
+                <a href="{{ route('reportcase') }}" class="nav-link {{ Request::is('reportcase') ? 'active' : '' }}">
+                    <i class="fas fa-list-ol nav-icon"></i>
+                    <p>ผลรวมสายเข้าแยกตาม Agent</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+@endcan
 @can('master-data-list')
     <li class="nav-item">
         <a href="#" class="nav-link">
@@ -55,7 +55,7 @@
         <ul class="nav nav-treeview">
             <li class="nav-item">
                 <a href="{{ route('casetype') }}" class="nav-link {{ Request::is('casetype') ? 'active' : '' }}">
-                    <i class="far fa-list-ol nav-icon"></i>
+                    <i class="fas fa-list-ol nav-icon"></i>
                     <p>ประเภทการติดต่อ</p>
                 </a>
             </li>
