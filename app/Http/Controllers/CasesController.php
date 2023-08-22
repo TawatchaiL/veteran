@@ -15,10 +15,10 @@ class CasesController extends Controller
 {
     function __construct()
     {
-        $this->middleware('permission:contact-list|contact-create|contact-edit|contact-delete', ['only' => ['index', 'show']]);
-        $this->middleware('permission:contact-create', ['only' => ['create', 'store']]);
-        $this->middleware('permission:contact-edit', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:contact-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:case-list|case-create|case-edit|case-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:case-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:case-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:case-delete', ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.

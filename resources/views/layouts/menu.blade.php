@@ -2,7 +2,7 @@
 <li class="nav-item">
     <a href="{{ route('home') }}" class="nav-link {{ Request::is('home') ? 'active' : '' }}">
         <i class="nav-icon fas fa-home"></i>
-        <p>Dashboard</p>
+        <p>หน้าหลัก</p>
     </a>
 </li>
 
@@ -14,19 +14,14 @@
         </a>
     </li>
 @endcan
-
+@can('case-list')
 <li class="nav-item">
     <a href="{{ route('cases') }}" class="nav-link {{ Request::is('cases') ? 'active' : '' }}">
-        <i class="far fa-building nav-icon"></i>
+        <i class="fas fa-clipboard nav-icon"></i>
         <p>เรื่องที่ติดต่อ</p>
     </a>
 </li>
-<li class="nav-item">
-    <a href="#" class="nav-link {{ Request::is('tickets') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-clipboard"></i>
-        <p>เรื่องรับแจ้ง</p>
-    </a>
-</li>
+@endcan
 @can('master-data-list')
     <li class="nav-item">
         <a href="#" class="nav-link">
