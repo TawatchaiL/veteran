@@ -1,10 +1,10 @@
 <!-- need to remove -->
-<li class="nav-item">
+{{-- <li class="nav-item">
     <a href="{{ route('home') }}" class="nav-link {{ Request::is('home') ? 'active' : '' }}">
         <i class="nav-icon fas fa-home"></i>
         <p>Dashboard</p>
     </a>
-</li>
+</li> --}}
 
 @can('contact-list')
     <li class="nav-item">
@@ -14,11 +14,22 @@
         </a>
     </li>
 @endcan
-
+<li class="nav-item" >
+            <a href="{{ route('casetype') }}" class="nav-link {{ Request::is('casetype') ? 'active' : '' }}">
+                <i class="far fa-building nav-icon"></i>
+                <p>ประเภทการติดต่อ</p>
+            </a>
+        </li>
+        <li class="nav-item" >
+            <a href="{{ route('cases') }}" class="nav-link {{ Request::is('cases') ? 'active' : '' }}">
+                <i class="far fa-building nav-icon"></i>
+                <p>เรื่องที่ติดต่อ</p>
+            </a>
+        </li>
 <li class="nav-item">
-    <a href="{{ route('cases') }}" class="nav-link {{ Request::is('cases') ? 'active' : '' }}">
-        <i class="far fas fa-clipboard nav-icon"></i>
-        <p>เรื่องที่ติดต่อ</p>
+    <a href="#" class="nav-link {{ Request::is('tickets') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-clipboard"></i>
+        <p>เรื่องรับแจ้ง</p>
     </a>
 </li>
 @can('master-data-list')
@@ -29,12 +40,7 @@
             <i class="fas fa-angle-left right"></i>
         </a>
         <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <a href="{{ route('casetype') }}" class="nav-link {{ Request::is('casetype') ? 'active' : '' }}">
-                    <i class="fas fa-list-ol nav-icon"></i>
-                    <p>ประเภทการติดต่อ</p>
-                </a>
-            </li>
+
             <li class="nav-item">
                 <a href="{{ route('departments') }}" class="nav-link {{ Request::is('departments') ? 'active' : '' }}">
                     <i class="fas fa-list-ol nav-icon"></i>
@@ -54,6 +60,24 @@
             </a>
         </li> --}}
 
+        </ul>
+    </li>
+@endcan
+@can('master-data-list')
+    <li class="nav-item">
+        <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-database"></i><i class="fa-solid fa-print"></i>
+            <p>รายงาน</p>
+            <i class="fas fa-angle-left right"></i>
+        </a>
+        <ul class="nav nav-treeview">
+
+            <li class="nav-item">
+                <a href="{{ route('reportcase') }}" class="nav-link {{ Request::is('reportcase') ? 'active' : '' }}">
+                    <i class="fas fa-list-ol nav-icon"></i>
+                    <p>Case by Agent</p>
+                </a>
+            </li>
         </ul>
     </li>
 @endcan
