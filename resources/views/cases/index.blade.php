@@ -77,10 +77,10 @@
                                 id="delete_all">
                                 @csrf
                                 @method('POST')
-                                <table id="Listview" class="table table-bordered table-striped table-hover">
+                                <table id="Listview" class="display nowrap table table-bordered table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th><input type="checkbox" id="check-all" class="flat"></th>
+                                            <th width="5%"><input type="checkbox" id="check-all" class="flat"></th>
                                             <th>HN</th>
                                             <th>ชื่อสกุล</th>
                                             <th>เบอร์โทร</th>
@@ -89,7 +89,8 @@
                                             <th>สถานะเคส</th>
                                             <th>สถานะการโอนสาย</th>
                                             <th>Agent</th>
-                                            <th width="180px"></th>
+                                            <th width="120px"></th>
+                                            <th>More</th>
                                         </tr>
                                     </thead>
                                     <tbody>

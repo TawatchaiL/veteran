@@ -1,3 +1,6 @@
+@php
+    $detect = new Detection\MobileDetect();
+@endphp
 <script>
     var $eventLog = $(".js-event-log");
     let fatotal = () => {
@@ -334,7 +337,22 @@
             lengthMenu: [10, 25, 50, 75, 100],
             stateSave: true,
             autoWidth: false,
-            responsive: true,
+            fixedHeader: true,
+            @if ($detect->isMobile())
+                responsive: true,
+            @else
+                responsive: {
+                    details: {
+                        type: 'column',
+                        target: 'tr'
+                    }
+                },
+                columnDefs: [{
+                    className: 'control',
+                    orderable: false,
+                    targets: -1
+                }],
+            @endif
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
             columns: [{
@@ -344,42 +362,47 @@
                     searchable: false
                 },
                 {
-                    data: 'created_at',
-                    name: 'created_at'
+                    data: 'hn',
+                    name: 'hn'
                 },
                 {
-                    data: 'order_number',
-                    name: 'order_number'
+                    data: 'contact_id',
+                    name: 'contact_id'
                 },
                 {
-                    data: 'pid',
-                    name: 'pid'
+                    data: 'telephone',
+                    name: 'telephone'
                 },
                 {
-                    data: 'lot',
-                    name: 'lot'
+                    data: 'create_date',
+                    name: 'create_date'
                 },
                 {
-                    data: 'cid',
-                    name: 'cid'
+                    data: 'case_type',
+                    name: 'case_type'
                 },
                 {
-                    data: 'amount',
-                    name: 'amount'
+                    data: 'case_status',
+                    name: 'case_status'
                 },
                 {
-                    data: 'cost',
-                    name: 'cost'
+                    data: 'transfer_status',
+                    name: 'transfer_status'
                 },
                 {
-                    data: 'total_cost',
-                    name: 'total_cost'
+                    data: 'agent',
+                    name: 'agent'
                 },
-
                 {
                     data: 'action',
                     name: 'action'
                 },
+                {
+                    data: 'more',
+                    name: 'more'
+                }
+               
+                
             ]
         });
 

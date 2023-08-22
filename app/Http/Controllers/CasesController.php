@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -28,15 +29,62 @@ class CasesController extends Controller
         if ($request->ajax()) {
             //sleep(2);
 
-            $datas = Cases::orderBy("id", "desc")->get();
-            return datatables()->of($datas)
+            //$datas = Cases::orderBy("id", "desc")->get();
+            $numberOfRows = 50; // Change this to the desired number of rows
+            $simulatedDatas = [];
+
+            $thaiCaseTypes = ['บาดเจ็บ', 'อุบัติเหตุ', 'โรคเรื้อรัง', 'ไข้หวัด', 'ผ่าตัด', 'สูตินรีเวช', 'การวินิจฉัยโรค', 'จัดกระบวนการ', 'สัมผัสไข้หวัด', 'พิษสุนัขบ้า'];
+            $thaiNames = ['สมชาย', 'สมหญิง', 'วิชัย', 'วิไล', 'จริงใจ', 'เปรมชัย', 'สุดใจ', 'นฤมล', 'กมลชนก', 'ศุภัทรา', 'กิจวรรณ', 'อรวรรณ', 'ธนพงศ์', 'ประทุม', 'วิทยา', 'พรชัย'];
+            $thaiLastNames = ['ใจดี', 'เสมอ', 'รักชาติ', 'พร้อม', 'ชำนาญ', 'มีเสน่ห์', 'สุขใจ', 'เรียบง่าย', 'สุดหล่อ', 'หวานใจ', 'เก่ง', 'สนุก', 'ร่ำรวย', 'สายเครื่อง', 'ยอดมาก', 'คง', 'ละเอียด'];
+            $createDate = now()->subDays(rand(1, 365))->subHours(rand(0, 23))->subMinutes(rand(0, 59));
+            $thaiCaseStatuses = ['กำลังดำเนินการ', 'ปิดเคส', 'เคสใหม่'];
+            $thaiTransferStatuses = ['รับสาย', 'ไม่รับสาย', '-'];
+            $agents = ['Agent1', 'Agent2', 'Agent3', 'Agent4', 'Agent5'];
+
+            for ($i = 1; $i <= $numberOfRows; $i++) {
+                $hn = str_pad($i, 6, '0', STR_PAD_LEFT);
+                $fullName = $thaiNames[array_rand($thaiNames)] . ' ' . $thaiLastNames[array_rand($thaiLastNames)];
+                $caseType = $thaiCaseTypes[array_rand($thaiCaseTypes)];
+                $caseStatus = $thaiCaseStatuses[array_rand($thaiCaseStatuses)];
+                $transferStatus = $thaiTransferStatuses[array_rand($thaiTransferStatuses)];
+                $agent = $agents[array_rand($agents)];
+
+
+                $simulatedDatas[] = (object) [
+                    'id' => $i,
+                    'telephone' => '08' . rand(10000000, 99999999),
+                    'hn' => $hn,
+                    'contact_id' => $fullName,
+                    'case_type' => $caseType,
+                    'create_date' => $createDate->format('Y-m-d H:i:s'),
+                    'case_status' => $caseStatus,
+                    'transfer_status' => $transferStatus,
+                    'agent' => $agent,
+                    // Simulate other fields as needed
+                ];
+            }
+
+
+            return datatables()->of($simulatedDatas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
                 })
                 ->addColumn('action', function ($row) {
-                    $html = '<a href="#" class="btn btn-sm btn-warning btn-edit" id="getEditData" data-id="' . $row->id . '"><i class="fa fa-edit"></i> แก้ไข</a> ';
-                    $html .= '<a href="#" data-rowid="' . $row->id . '" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i> ลบ</a>';
+                    if (Gate::allows('case-edit')) {
+                        $html = '<button type="button" class="btn btn-sm btn-warning btn-edit" id="getEditData" data-id="' . $row->id . '"><i class="fa fa-edit"></i> แก้ไข</button> ';
+                    } else {
+                        $html = '<button type="button" class="btn btn-sm btn-warning disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-edit"></i> แก้ไข</button> ';
+                    }
+                    if (Gate::allows('case-delete')) {
+                        $html .= '<button type="button" data-rowid="' . $row->id . '" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i> ลบ</button>';
+                    } else {
+                        $html .= '<button type="button" class="btn btn-sm btn-danger disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-trash"></i> ลบ</button> ';
+                    }
                     return $html;
+                    
+                })
+                ->addColumn('more', function ($row) {
+                    return '';
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
         $company = Case_type::orderBy("id", "asc")->get();
@@ -81,7 +129,7 @@ class CasesController extends Controller
      */
     //public function show(Order $order)
     //{
-        //
+    //
     //}
 
     /**
@@ -121,7 +169,6 @@ class CasesController extends Controller
         $company->update($companyd);
 
         return response()->json(['success' => 'แก้ไข เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
-
     }
 
     /**
