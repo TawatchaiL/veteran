@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-	<title>ไม่พบหน้าที่ท่านเรียก เนื่องจากอาจปิดบริการไปแล้ว</title>
+	<title>ไม่พบหน้าที่ท่านเรียก</title>
 
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Cabin:400,700" rel="stylesheet">
@@ -133,7 +133,7 @@ body {
 				<h3>Oops! Page not found</h3>
 				<h1><span>4</span><span>0</span><span>4</span></h1>
 			</div>
-			<h2>ไม่พบหน้าที่ท่านเรียก เนื่องจากอาจปิดบริการไปแล้ว</h2>
+			<h2>ไม่พบหน้าที่ท่านเรียก</h2>
 		</div>
 	</div>
 
