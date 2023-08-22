@@ -1,3 +1,6 @@
+@php
+    $detect = new Detection\MobileDetect();
+@endphp
 <script>
     $(document).ready(function() {
         $(".delete_all_button").click(function() {
@@ -128,7 +131,22 @@
             lengthMenu: [10, 25, 50, 75, 100],
             stateSave: true,
             autoWidth: false,
-            responsive: true,
+            fixedHeader: true,
+            @if ($detect->isMobile())
+                responsive: true,
+            @else
+                responsive: {
+                    details: {
+                        type: 'column',
+                        target: 'tr'
+                    }
+                },
+                columnDefs: [{
+                    className: 'control',
+                    orderable: false,
+                    targets: -1
+                }],
+            @endif
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
             columns: [{
@@ -138,21 +156,33 @@
                     searchable: false
                 },
                 {
-                    data: 'name',
-                    name: 'name'
+                    data: 'code',
+                    name: 'code'
                 },
                 {
-                    data: 'email',
-                    name: 'email'
+                    data: 'name',
+                    name: 'name'
                 },
                 {
                     data: 'telephone',
                     name: 'telephone'
                 },
                 {
+                    data: 'mobile',
+                    name: 'mobile'
+                },
+                {
+                    data: 'create_at',
+                    name: 'create_at'
+                },
+                {
                     data: 'action',
                     name: 'action'
                 },
+                {
+                    data: 'more',
+                    name: 'more'
+                }
             ]
         });
 

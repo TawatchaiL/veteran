@@ -43,9 +43,34 @@ class ContactController extends Controller
         if ($request->ajax()) {
             //sleep(2);
 
-            $datas = Contact::where('ctype', 0)
-                ->orderBy("id", "desc")->get();
-            return datatables()->of($datas)
+            /* $datas = Contact::where('ctype', 0)
+                ->orderBy("id", "desc")->get(); */
+
+            $numberOfRows = 50; // Change this to the desired number of rows
+            $simulatedDatas = [];
+
+            $thaiNames = ['สมชาย', 'สมหญิง', 'วิชัย', 'วิไล', 'จริงใจ', 'เปรมชัย', 'สุดใจ', 'นฤมล', 'กมลชนก', 'ศุภัทรา', 'กิจวรรณ', 'อรวรรณ', 'ธนพงศ์', 'ประทุม', 'วิทยา', 'พรชัย'];
+            $thaiLastNames = ['ใจดี', 'เสมอ', 'รักชาติ', 'พร้อม', 'ชำนาญ', 'มีเสน่ห์', 'สุขใจ', 'เรียบง่าย', 'สุดหล่อ', 'หวานใจ', 'เก่ง', 'สนุก', 'ร่ำรวย', 'สายเครื่อง', 'ยอดมาก', 'คง', 'ละเอียด'];
+
+
+            for ($i = 1; $i <= $numberOfRows; $i++) {
+                $hn = str_pad($i, 6, '0', STR_PAD_LEFT);
+                $fullName = $thaiNames[array_rand($thaiNames)] . ' ' . $thaiLastNames[array_rand($thaiLastNames)];
+                $createDate = now()->subDays(rand(1, 365))->subHours(rand(0, 23))->subMinutes(rand(0, 59));
+
+
+                $simulatedDatas[] = (object) [
+                    'id' => $i,
+                    'code' => $hn,
+                    'telephone' => '055' . rand(100000, 999999),
+                    'mobile' => '08' . rand(10000000, 99999999),
+                    'name' => $fullName,
+                    'create_at' => $createDate->format('Y-m-d H:i:s'),
+                    // Simulate other fields as needed
+                ];
+            }
+
+            return datatables()->of($simulatedDatas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
                 })
@@ -61,6 +86,9 @@ class ContactController extends Controller
                         $html .= '<button type="button" class="btn btn-sm btn-danger disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-trash"></i> ลบ</button> ';
                     }
                     return $html;
+                })
+                ->addColumn('more', function ($row) {
+                    return '';
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
 
