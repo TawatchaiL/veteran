@@ -12,9 +12,10 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
+
 class ReportcaseController extends Controller
 {
-        /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -40,10 +41,10 @@ class ReportcaseController extends Controller
             //$datas = Cases::orderBy("id", "desc")->get();
 
             $datas = DB::table('cases')
-                 ->select('agent', DB::raw('count(*) as sumcases'))
-                 ->groupBy('agent')
-                 ->orderBy("sumcases", "desc")
-                 ->get();
+                ->select('agent', DB::raw('count(*) as sumcases'))
+                ->groupBy('agent')
+                ->orderBy("sumcases", "desc")
+                ->get();
 
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
@@ -122,7 +123,7 @@ class ReportcaseController extends Controller
         //
     }
 
-   /**
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -162,7 +163,6 @@ class ReportcaseController extends Controller
         $company->update($companyd);
 
         return response()->json(['success' => 'แก้ไข ประเภทการติดต่อ เรียบร้อยแล้ว']);
-
     }
 
     /**
@@ -173,7 +173,6 @@ class ReportcaseController extends Controller
         $id = $request->get('id');
         Case_type::find($id)->delete();
         return ['success' => true, 'message' => 'ลบ ประเภทการติดต่อ เรียบร้อยแล้ว'];
-
     }
 
     public function destroy_all(Request $request)
@@ -186,5 +185,5 @@ class ReportcaseController extends Controller
         }
 
         return redirect('casetype')->with('success', 'ลบ ประเภทการติดต่อ เรียบร้อยแล้ว');
-    }//
+    } //
 }
