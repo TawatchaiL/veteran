@@ -44,7 +44,7 @@
             <li class="nav-item">
                 <a href="{{ route('reportcase') }}" class="nav-link {{ Request::is('reportcase') ? 'active' : '' }}">
                     <i class="fas fa-list-ol nav-icon"></i>
-                    <p>Case by Agent</p>
+                    <p>Case by Agentbbbbb</p>
                 </a>
             </li>
         </ul>
