@@ -107,6 +107,8 @@
                                 <div class="form-group">
                                 <a class="btn btn-danger" id="CreateButton" href="{{ route('reportcase.pdf') }}">
                                 <i class="fa-regular fa-file-pdf"></i> Pdf </a>
+                                <a class="btn btn-success" id="CreateButton" href="{{ route('reportcase.pdf') }}">
+                                <i class="fa-regular fa-file-pdf"></i> XLS </a>
                                 </div>
                             </div>
                         </div>
