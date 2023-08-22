@@ -105,8 +105,8 @@
                         <div class="card-body">
                             <div class="col-xs-2 col-sm-2 col-md-2 align-self-end">
                                 <div class="form-group">
-                                <button type="button" class="btn btn-danger" id="CreateButton" href="{{ route('reportcase.pdf') }}">
-                                <i class="fa-regular fa-file-pdf"></i> รายงาน </button>
+                                <a class="btn btn-danger" id="CreateButton" href="{{ route('reportcase.pdf') }}">
+                                <i class="fa-regular fa-file-pdf"></i> รายงาน </a>
                                 </div>
                             </div>
                         </div>
