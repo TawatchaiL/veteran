@@ -44,10 +44,10 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="custom-tabs-one-profile-tabp" data-toggle="pill"
-                                    href="#custom-tabs-one-profilep" role="tab" aria-controls="custom-tabs-one-profilep"
-                                    aria-selected="false">ข้อมูลเบอร์ติดต่อ</a>
+                                    href="#custom-tabs-one-profilep" role="tab"
+                                    aria-controls="custom-tabs-one-profilep" aria-selected="false">ข้อมูลเบอร์ติดต่อ</a>
                             </li>
-        
+
                         </ul>
                     </div>
                     <div class="card-body">
@@ -57,7 +57,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
-        
+
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-code"></i> รหัสผู้ติดต่อ.</strong>
@@ -97,11 +97,11 @@
                                                 </div>
                                             </div>
                                         </div>
-        
+
                                     </div>
                                 </div>
-        
-        
+
+
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
@@ -152,11 +152,12 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fa-solid fa-city"></i> จังหวัด :</strong>
-                                                    <select style="width: 100%;" class="select2 select2_city form-control"
-                                                        id="cityp" name="cityp" multiple="multiple">
+                                                    <select style="width: 100%;"
+                                                        class="select2 select2_city form-control" id="cityp"
+                                                        name="cityp" multiple="multiple">
                                                         <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                         <option value="" selected>Select Parent</option>-->
-        
+
                                                     </select>
                                                 </div>
                                             </div>
@@ -164,11 +165,12 @@
                                                 <div class="form-group">
                                                     <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
                                                         อำเภอ:</strong>
-                                                    <select style="width: 100%;" class="select2 select2_am form-control"
-                                                        id="amp" name="amp" multiple="multiple">
+                                                    <select style="width: 100%;"
+                                                        class="select2 select2_am form-control" id="amp"
+                                                        name="amp" multiple="multiple">
                                                         <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                         <option value="" selected>Select Parent</option>-->
-        
+
                                                     </select>
                                                 </div>
                                             </div>
@@ -176,13 +178,15 @@
                                         <div class="row">
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <strong><i class="fa-solid fa-building-circle-arrow-right"></i> ตำบล
+                                                    <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
+                                                        ตำบล
                                                         :</strong>
-                                                    <select style="width: 100%;" class="select2 select2_tm form-control"
-                                                        id="tmp" name="tmp" multiple="multiple">
+                                                    <select style="width: 100%;"
+                                                        class="select2 select2_tm form-control" id="tmp"
+                                                        name="tmp" multiple="multiple">
                                                         <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                         <option value="" selected>Select Parent</option>-->
-        
+
                                                     </select>
                                                 </div>
                                             </div>
@@ -197,18 +201,18 @@
                                                 </div>
                                             </div>
                                         </div>
-        
+
                                     </div>
                                 </div>
                             </div>
-        
-        
+
+
                             <div class="tab-pane fade" id="custom-tabs-one-profilep" role="tabpanel"
                                 aria-labelledby="custom-tabs-one-profile-tabp">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
-        
+
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์บ้าน:</strong>
@@ -231,7 +235,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-        
+
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-phone"></i>
@@ -249,9 +253,9 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
-        
+
 
                 {!! Form::close() !!}
             </div>
