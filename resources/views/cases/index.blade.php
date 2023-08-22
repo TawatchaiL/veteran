@@ -49,7 +49,7 @@
 
             <div class="row">
                 <div class="col-12">
-                    <div class="card card-success">
+                    <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title"><i class="fa-solid fa-clipboard"></i> เรื่องที่ติดต่อ</h3>
                             <div class="card-tools">
