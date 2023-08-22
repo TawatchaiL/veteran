@@ -101,6 +101,8 @@
             "sPaginationType": "full_numbers",
             "dom": 'T<"clear">lfrtip',
                 */
+            paging: false,
+            searching: false,  
             ajax: '',
             serverSide: true,
             processing: true,

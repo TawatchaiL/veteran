@@ -14,13 +14,42 @@
         </a>
     </li>
 @endcan
-
+<li class="nav-item">
+    <a href="{{ route('casetype') }}" class="nav-link {{ Request::is('casetype') ? 'active' : '' }}">
+        <i class="far fa-building nav-icon"></i>
+        <p>ประเภทการติดต่อ</p>
+    </a>
+</li>
 <li class="nav-item">
     <a href="{{ route('cases') }}" class="nav-link {{ Request::is('cases') ? 'active' : '' }}">
-        <i class="far fas fa-clipboard nav-icon"></i>
+        <i class="far fa-building nav-icon"></i>
         <p>เรื่องที่ติดต่อ</p>
     </a>
 </li>
+<li class="nav-item">
+    <a href="#" class="nav-link {{ Request::is('tickets') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-clipboard"></i>
+        <p>เรื่องรับแจ้ง</p>
+    </a>
+</li>
+@can('master-data-list')
+    <li class="nav-item">
+        <a href="#" class="nav-link">
+            <i class="fa-solid fa-print"></i>
+            <p>รายงาน</p>
+            <i class="fas fa-angle-left right"></i>
+        </a>
+        <ul class="nav nav-treeview">
+
+            <li class="nav-item">
+                <a href="{{ route('reportcase') }}" class="nav-link {{ Request::is('reportcase') ? 'active' : '' }}">
+                    <i class="fas fa-list-ol nav-icon"></i>
+                    <p>Case by Agentbbbbb</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+@endcan
 @can('master-data-list')
     <li class="nav-item">
         <a href="#" class="nav-link">
@@ -29,12 +58,7 @@
             <i class="fas fa-angle-left right"></i>
         </a>
         <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <a href="{{ route('casetype') }}" class="nav-link {{ Request::is('casetype') ? 'active' : '' }}">
-                    <i class="fas fa-list-ol nav-icon"></i>
-                    <p>ประเภทการติดต่อ</p>
-                </a>
-            </li>
+
             <li class="nav-item">
                 <a href="{{ route('departments') }}" class="nav-link {{ Request::is('departments') ? 'active' : '' }}">
                     <i class="fas fa-list-ol nav-icon"></i>
