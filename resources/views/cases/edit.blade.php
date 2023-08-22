@@ -3,8 +3,8 @@
     <div class="modal-dialog modal-xl" role="document">
         <form id="editdata" class="form" action="" method="POST">
             <div class="modal-content">
-                <div class="modal-header bg-info">
-                    <h4 class="modal-title" id="exampleModalLongTitle">แก้ไข รายการขาย</h4>
+                <div class="modal-header bg-primary">
+                    <h4 class="modal-title" id="exampleModalLongTitle"><i class="fa-solid fa-clipboard"></i> แก้ไข เรื่องที่ติดต่อ</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
