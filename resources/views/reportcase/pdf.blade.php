@@ -1,41 +1,24 @@
-@extends('layouts.app')
-
-@section('style')
-    @include('reportcase.style')
-@endsection
-@section('content')
-    <section class="content">
+<section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12">
+                <div class="col-sm-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-address-book"></i> ผลรวมสายเข้าแยกตาม Agent</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                {{-- <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                                    <i class="fas fa-times"></i>
-                                </button> --}}
-                            </div>
+                            <h3 class="card-title" style="font-size:16pt;text-align:center;padding: 4px;"> ผลรวมสายเข้าแยกตาม Agent</h3>
                         </div>
-
                         <div class="card-body">
-                                @csrf
-                                @method('POST')
-                                <table id="Listview" class="table table-bordered table-striped table-hover">
+                                <table id="Listview" style="border-collapse: collapse;font-size:12pt;margin-top:8px;" width="100%">
                                     <thead>
-                                        <tr>
-                                            <th>agent</th>
-                                            <th width="280px">จำนวน</th>
+                                        <tr style="border:1px solid #000;padding:4px;">
+                                            <th style="border:1px solid #000;padding:4px;"><div style="font-size:16pt;">agent</div></th>
+                                            <th style="border:1px solid #000;padding:4px;" width="280px"><div style="font-size:16pt;">จำนวน</div></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($Cases as $c)
-                                    <tr>
-                                            <td>{{$c->casetype1}}</td>
-                                            <td>{{$c->telno}}</td>
+                                    <tr style="border:1px solid #000;padding:4px;">
+                                            <td style="border:1px solid #000;padding:4px;">{{$c->agent}}</td>
+                                            <td style="border:1px solid #000;padding:4px;text-align:center;">{{$c->sumcases}}</td>
                                     </tr>
                                     @endforeach
                                     </tbody>
@@ -45,6 +28,5 @@
                 </div>
             </div>
         </div>
-    </section>   
-@endsection
+</section>   
 

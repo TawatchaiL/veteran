@@ -9,8 +9,14 @@
 @section('content')
     <section class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-12">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="fa-solid fa-magnifying-glass"></i> Filter</h3>
+                        </div>
+                        <div class="card-body">
+                        <div class="col-sm-12">
                     <ol class="breadcrumb float-sm-center">
                         {{-- <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item active">Users Management</li> --}}
@@ -44,14 +50,15 @@
                         </div>
                     </ol>
                 </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <section class="content">
         <div class="container-fluid">
-            <div class="row">
-            </div>
             <div class="row">
                 <div class="col-12">
                     <div class="card card-primary">
@@ -95,7 +102,14 @@
                                 </table>
                             </form>
                         </div>
-
+                        <div class="card-body">
+                            <div class="col-xs-2 col-sm-2 col-md-2 align-self-end">
+                                <div class="form-group">
+                                <button type="button" class="btn btn-danger" id="CreateButton">
+                                <i class="fa-regular fa-file-pdf"></i> รายงาน </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
 
