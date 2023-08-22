@@ -66,7 +66,7 @@
 @can('master-data-list')
     <li class="nav-item">
         <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-database"></i><i class="fa-solid fa-print"></i>
+            <i class="fa-solid fa-print"></i>
             <p>รายงาน</p>
             <i class="fas fa-angle-left right"></i>
         </a>
