@@ -36,7 +36,7 @@ class CasesController extends Controller
             $thaiCaseTypes = ['บาดเจ็บ', 'อุบัติเหตุ', 'โรคเรื้อรัง', 'ไข้หวัด', 'ผ่าตัด', 'สูตินรีเวช', 'การวินิจฉัยโรค', 'จัดกระบวนการ', 'สัมผัสไข้หวัด', 'พิษสุนัขบ้า'];
             $thaiNames = ['สมชาย', 'สมหญิง', 'วิชัย', 'วิไล', 'จริงใจ', 'เปรมชัย', 'สุดใจ', 'นฤมล', 'กมลชนก', 'ศุภัทรา', 'กิจวรรณ', 'อรวรรณ', 'ธนพงศ์', 'ประทุม', 'วิทยา', 'พรชัย'];
             $thaiLastNames = ['ใจดี', 'เสมอ', 'รักชาติ', 'พร้อม', 'ชำนาญ', 'มีเสน่ห์', 'สุขใจ', 'เรียบง่าย', 'สุดหล่อ', 'หวานใจ', 'เก่ง', 'สนุก', 'ร่ำรวย', 'สายเครื่อง', 'ยอดมาก', 'คง', 'ละเอียด'];
-            $createDate = now()->subDays(rand(1, 365))->subHours(rand(0, 23))->subMinutes(rand(0, 59));
+            
             $thaiCaseStatuses = ['กำลังดำเนินการ', 'ปิดเคส', 'เคสใหม่'];
             $thaiTransferStatuses = ['รับสาย', 'ไม่รับสาย', '-'];
             $agents = ['Agent1', 'Agent2', 'Agent3', 'Agent4', 'Agent5'];
@@ -48,6 +48,7 @@ class CasesController extends Controller
                 $caseStatus = $thaiCaseStatuses[array_rand($thaiCaseStatuses)];
                 $transferStatus = $thaiTransferStatuses[array_rand($thaiTransferStatuses)];
                 $agent = $agents[array_rand($agents)];
+                $createDate = now()->subDays(rand(1, 365))->subHours(rand(0, 23))->subMinutes(rand(0, 59));
 
 
                 $simulatedDatas[] = (object) [
