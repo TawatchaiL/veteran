@@ -40,8 +40,8 @@
     <link rel="stylesheet" href="dist/css/adminlte.css?v=3.2.0">
 
     <style>
-         body {
-            font-family: 'Roboto','Sarabun';
+        body {
+            font-family: 'Roboto', 'Sarabun';
             font-size: 16px;
         }
 
@@ -63,7 +63,8 @@
     <div class="login-box">
         <div class="image-container"><img src="{{ asset('images/logo.png') }}" alt="..." height="160"></div>
         <div class="login-logo">
-            <a href="{{ url('/home') }}"><b> {{ config('app.subtitle') }} {{ config('app.name') }} <br> {{ config('app.name2') }} </b></a>
+            <a href="{{ url('/home') }}"><b> {{ config('app.subtitle') }} {{ config('app.name') }} <br>
+                    {{ config('app.name2') }} </b></a>
         </div>
         <!-- /.login-logo -->
 
@@ -96,6 +97,21 @@
                                 </div>
                             </div>
                             @error('password')
+                                <span class="error invalid-feedback">{{ $message }}</span>
+                            @enderror
+
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <input type="text" name="phone" placeholder="หมายเลขโทรศัพท์"
+                                class="form-control @error('phone') is-invalid @enderror"
+                                {{-- value="{{ old('phone', $temporaryPhone) }}" --}}>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-phone"></span>
+                                </div>
+                            </div>
+                            @error('phone')
                                 <span class="error invalid-feedback">{{ $message }}</span>
                             @enderror
 

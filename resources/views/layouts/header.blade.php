@@ -43,7 +43,7 @@
         <li class="nav-item d-none d-sm-inline-block">
             <a class="nav-link" id="ToolbarButton" {{-- data-widget="control-sidebar" data-slide="true" href="#" --}} role="button">
                 <i class="fas fa-xl fa-spin fa-gear"></i> <b class="text-primary">Agent ToolBar [
-                    9999 ]</b>
+                    {{ $temporaryPhone }} ]</b>
             </a>{{-- faa-shake animated faa-slow fa-wrench --}}
         </li>
         <li class="nav-item dropdown user-menu">
