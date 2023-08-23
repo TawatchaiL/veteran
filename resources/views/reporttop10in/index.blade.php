@@ -45,7 +45,7 @@
                         <div class="col-xs-2 col-sm-2 col-md-2 align-self-end">
                             <div class="form-group">
                                 <button type="button" class="btn btn-success" id="CreateButton">
-                                    <i class="fas fa-address-book"></i> รายงาน </button>
+                                    <i class="fas fa-address-book"></i> รายงาน  </button>
                             </div>
                         </div>
                     </ol>
