@@ -84,6 +84,16 @@
                                     });
                                 </script>
                             @endif
+                            <div class="col-xs-12 col-sm-12 col-md-12 align-self-end text-right">
+                                <div class="form-group">
+                                    <a class="btn btn-danger" id="CreateButton" href="{{ route('reportcase.pdf') }}">
+                                        <i class="fa-regular fa-file-pdf"></i> PDF </a>
+                                    <a class="btn btn-success" id="CreateButton2" href="{{ route('reportcase.pdf') }}">
+                                        <i class="fa-regular fa-file-excel"></i> XLS </a>
+                                    <a class="btn btn-info" id="CreateButton3" href="{{ route('reportcase.pdf') }}">
+                                        <i class="fa-solid fa-print"></i> PRINT </a>
+                                </div>
+                            </div>
                             <form method="post" name="delete_all" id="delete_all">
                                 @csrf
                                 @method('POST')
@@ -100,18 +110,6 @@
                                     </tbody>
                                 </table>
                             </form>
-                        </div>
-                        <div class="card-body">
-                            <div class="col-xs-2 col-sm-2 col-md-2 align-self-end">
-                                <div class="form-group">
-                                <a class="btn btn-danger" id="CreateButton" href="{{ route('reportcase.pdf') }}">
-                                <i class="fa-regular fa-file-pdf"></i> Pdf </a>
-                                <a class="btn btn-success" id="CreateButton2" href="{{ route('reportcase.pdf') }}">
-                                <i class="fa-regular fa-file-excel"></i> XLS </a>
-                                <a class="btn btn-info" id="downloadPdf">
-                                <i class="fa-solid fa-print"></i> PRINT </a>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
