@@ -37,6 +37,12 @@
                     <p style="font-size: 12px;">ผลรวมสายเข้าแยกตาม Agent</p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route('reportcasetop10') }}" class="nav-link {{ Request::is('reportcasetop10') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p style="font-size: 12px;">10 อันดับเรื่องที่ติดต่อมากที่สุด</p>
+                </a>
+            </li>
         </ul>
     </li>
 @endcan
