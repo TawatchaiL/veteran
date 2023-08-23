@@ -59,12 +59,7 @@ class ReportcaseController extends Controller
             'group_by_field' => 'agent',
             'chart_type' => 'bar',
             'chart_color' => '255, 99, 71, 1', // Specify valid color values
-            'options' => [
-                'animation' => [
-                    'duration' => 1000,
-                    'easing' => 'easeOutQuart',
-                ],
-            ],
+
         ];
         $chart1 = new LaravelChart($chart_options);
 
@@ -75,13 +70,6 @@ class ReportcaseController extends Controller
             'group_by_field' => 'agent',
             'chart_color' => '136, 8, 8',
             'chart_type' => 'line',
-            'colors' => ['#ff0000', '#00ff00', '#0000ff'],
-            'options' => [
-                'animation' => [
-                    'duration' => 1000, // Animation duration in milliseconds
-                    'easing' => 'easeOutQuart', // Easing function for animation
-                ],
-            ],
         ];
         $chart2 = new LaravelChart($chart_options);
         $chart_options = [
@@ -91,14 +79,6 @@ class ReportcaseController extends Controller
             'group_by_field' => 'agent',
             'chart_color' => '176,224,230',
             'chart_type' => 'pie',
-            'colors' => ['#ff0000', '#00ff00', '#0000ff'],
-            'options' => [
-                'animation' => [
-                    'duration' => 1000, // Animation duration in milliseconds
-                    'easing' => 'easeOutQuart', // Easing function for animation
-                ],
-            ],
-
         ];
         $chart3 = new LaravelChart($chart_options);
 
