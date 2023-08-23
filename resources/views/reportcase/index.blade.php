@@ -145,19 +145,19 @@
                         <div class="tab-content" id="custom-tabs-one-tabContent">
                             <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel"
                                 aria-labelledby="custom-tabs-one-home-tab">
-                                <div class="col-sm-6">
+                                <div class="col-sm-12">
                                     {!! $chart1->renderHtml() !!}
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="custom-tabs-one-line" role="tabpanel"
                                 aria-labelledby="custom-tabs-one-line-tab">
-                                <div class="col-sm-6">
+                                <div class="col-sm-12">
                                     {!! $chart2->renderHtml() !!}
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="custom-tabs-one-pie" role="tabpanel"
                                 aria-labelledby="custom-tabs-one-pie-tab">
-                                <div class="col-sm-6">
+                                <div class="col-sm-12">
                                     {!! $chart3->renderHtml() !!}
                                 </div>
 
@@ -176,7 +176,7 @@
 @section('script')
     @include('reportcase.script')
 
-    {!! $chart1->renderChartJsLibrary() !!}
+    {{-- {!! $chart1->renderChartJsLibrary() !!} --}}
     {!! $chart1->renderJs() !!}
 
     {!! $chart2->renderJs() !!}
