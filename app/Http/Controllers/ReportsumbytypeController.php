@@ -41,7 +41,7 @@ class ReportsumbytypeController extends Controller
             //$datas = Cases::orderBy("id", "desc")->get();
 
             $datas = DB::table('cases')
-                ->select('casetype1', DB::raw('count(*) as sumcases'))
+                ->select('casetype1 as name1', DB::raw('count(*) as sumcases'))
                 ->groupBy('casetype1')
                 ->orderBy("sumcases", "desc")
                 ->get();
