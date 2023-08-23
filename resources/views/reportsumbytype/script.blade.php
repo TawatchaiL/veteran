@@ -143,8 +143,8 @@
                     searchable: false
                 },
                 {
-                    data: 'casetype1',
-                    name: 'casetype1'
+                    data: 'name1',
+                    name: 'name1'
                 },
                 {
                     data: 'sumcases',
@@ -304,7 +304,7 @@
                         });
                         $('#Listview').DataTable().ajax.reload();
                         //setTimeout(function() {
-                        //$('.alert-success').hide(); 
+                        //$('.alert-success').hide();
 
                         //}, 10000);
 
