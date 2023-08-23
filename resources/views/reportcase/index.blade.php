@@ -174,13 +174,6 @@
     @include('contacts.edit')
 
     {{--  {!! $data->render() !!} --}}
-    {!! $chart1->renderChartJsLibrary() !!}
-    {!! $chart1->renderJs() !!}
-
-    {!! $chart2->renderJs() !!}
-
-
-    {!! $chart3->renderJs() !!}
 @endsection
 
 @section('script')
@@ -188,4 +181,11 @@
 @endsection
 
 @section('javascript')
+    {!! $chart1->renderChartJsLibrary() !!}
+    {!! $chart1->renderJs() !!}
+
+    {!! $chart2->renderJs() !!}
+
+
+    {!! $chart3->renderJs() !!}
 @endsection
