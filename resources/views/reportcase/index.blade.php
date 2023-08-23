@@ -103,7 +103,7 @@
                             </form>
                         </div>
                         <div class="card-body">
-                            <div class="col-xs-2 col-sm-2 col-md-2 align-self-end">
+                            <div class="col-xs-4 col-sm-4 col-md-4 align-self-end">
                                 <div class="form-group">
                                     <a class="btn btn-danger" id="CreateButton" href="{{ route('reportcase.pdf') }}">
                                         <i class="fa-regular fa-file-pdf"></i> Pdf </a>
@@ -122,7 +122,7 @@
 
             </div>
             <div class="row">
-                <div class="card card-success card-tabs">
+                <div class="card card-success card-tabs col-md-12 col-lg-12 col-sm-12">
                     <div class="card-header p-0 pt-1">
                         <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
                             <li class="nav-item">
