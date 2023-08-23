@@ -75,6 +75,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('pdfreportcases', [App\Http\Controllers\PDFcasesController::class, 'pdf'])->name('reportcase.pdf');
 
     Route::get('/reportcasetop10', [App\Http\Controllers\ReportcasetopController::class, 'index'])->name('reportcasetop10');
+    Route::get('/reporttop10in', [App\Http\Controllers\ReporttopinController::class, 'index'])->name('reporttop10in');
     //file
     Route::post('/file/upload', function (Request $request) {
         $result = FileUploadService::fileStore($request);
