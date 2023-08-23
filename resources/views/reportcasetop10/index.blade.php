@@ -183,7 +183,7 @@
 @endsection
 
 @section('script')
-    @include('reportcase.script')
+    @include('reportcasetop10.script')
 @endsection
 
 @section('javascript')
