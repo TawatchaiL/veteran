@@ -115,11 +115,7 @@
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
-
             </div>
             <div class="row">
                 <div class="card card-success card-tabs col-md-12 col-lg-12 col-sm-12">
@@ -146,19 +142,19 @@
                         <div class="tab-content" id="custom-tabs-one-tabContent">
                             <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel"
                                 aria-labelledby="custom-tabs-one-home-tab">
-                                <div class="col-sm-12">
+                                <div class="col-sm-8 mx-auto text-center">
                                     {!! $chart1->renderHtml() !!}
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="custom-tabs-one-line" role="tabpanel"
                                 aria-labelledby="custom-tabs-one-line-tab">
-                                <div class="col-sm-12">
+                                <div class="col-sm-8 mx-auto text-center">
                                     {!! $chart2->renderHtml() !!}
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="custom-tabs-one-pie" role="tabpanel"
                                 aria-labelledby="custom-tabs-one-pie-tab">
-                                <div class="col-sm-12">
+                                <div class="col-sm-8 mx-auto text-center">
                                     {!! $chart3->renderHtml() !!}
                                 </div>
 
