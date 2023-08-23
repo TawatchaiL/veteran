@@ -58,9 +58,13 @@
                 var printWindow = window.open('', '_blank');
                 printWindow.document.open();
                 printWindow.document.write('<img src="' + imgData + '">');
-                printWindow.document.close();
 
-                printWindow.print();
+
+                setTimeout(function() {
+                    printWindow.focus();
+                    printWindow.document.close();
+                    printWindow.print();
+                }, 1000); // Adjust the delay as needed
             });
         });
 
@@ -112,9 +116,11 @@
                 var printWindow = window.open('', '_blank');
                 printWindow.document.open();
                 printWindow.document.write('<img src="' + imgData + '">');
-                printWindow.document.close();
-
-                printWindow.print();
+                setTimeout(function() {
+                    printWindow.focus();
+                    printWindow.document.close();
+                    printWindow.print();
+                }, 1000); // Adjust the delay as needed
             });
         });
 
@@ -166,9 +172,11 @@
                 var printWindow = window.open('', '_blank');
                 printWindow.document.open();
                 printWindow.document.write('<img src="' + imgData + '">');
-                printWindow.document.close();
-
-                printWindow.print();
+                setTimeout(function() {
+                    printWindow.focus();
+                    printWindow.document.close();
+                    printWindow.print();
+                }, 1000); // Adjust the delay as needed
             });
         });
 
