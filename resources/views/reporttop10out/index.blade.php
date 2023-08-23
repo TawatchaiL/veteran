@@ -198,7 +198,6 @@
 
     </section>
 @endsection
-
 @section('script')
 @include('reporttop10out.script')
 
