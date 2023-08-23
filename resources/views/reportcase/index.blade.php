@@ -153,27 +153,33 @@
                             <div class="tab-content" id="custom-tabs-one-tabContent">
                                 <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel"
                                     aria-labelledby="custom-tabs-one-home-tab">
-                                    <button id="download_bar" class="btn btn-primary">
-                                        <i class="fas fa-file-pdf"></i> Save as PDF
-                                    </button>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 align-self-end text-right">
+                                        <button id="download_bar" class="btn btn-primary">
+                                            <i class="fas fa-file-pdf"></i> Save as PDF
+                                        </button>
+                                    </div>
                                     <div class="col-sm-10 mx-auto text-center" id="bar_chart_div">
                                         {!! $chart1->renderHtml() !!}
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="custom-tabs-one-line" role="tabpanel"
                                     aria-labelledby="custom-tabs-one-line-tab">
-                                    <button id="download_line" class="btn btn-primary">
-                                        <i class="fas fa-file-pdf"></i> Save as PDF
-                                    </button>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 align-self-end text-right">
+                                        <button id="download_line" class="btn btn-primary">
+                                            <i class="fas fa-file-pdf"></i> Save as PDF
+                                        </button>
+                                    </div>
                                     <div class="col-sm-10 mx-auto text-center">
                                         {!! $chart2->renderHtml() !!}
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="custom-tabs-one-pie" role="tabpanel"
                                     aria-labelledby="custom-tabs-one-pie-tab">
-                                    <button id="download_pie" class="btn btn-primary">
-                                        <i class="fas fa-file-pdf"></i> Save as PDF
-                                    </button>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 align-self-end text-right">
+                                        <button id="download_pie" class="btn btn-primary">
+                                            <i class="fas fa-file-pdf"></i> Save as PDF
+                                        </button>
+                                    </div>
                                     <div class="col-sm-8 mx-auto text-center">
                                         {!! $chart3->renderHtml() !!}
                                     </div>
