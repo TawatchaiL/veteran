@@ -197,26 +197,15 @@
         </div>
 
     </section>
+@endsection
 
-
-    @include('contacts.create')
-
-    @include('contacts.edit')
-
-    {{--  {!! $data->render() !!} --}}
-    {!! $chart1->renderChartJsLibrary() !!}
+@section('script')
+    @include('reportcasetop10.script')
     {!! $chart1->renderJs() !!}
 
     {!! $chart2->renderJs() !!}
 
 
     {!! $chart3->renderJs() !!}
-@endsection
-
-@section('script')
-    @include('reportcasetop10.script')
-@endsection
-
-@section('javascript')
 
 @endsection
