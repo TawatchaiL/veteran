@@ -49,6 +49,21 @@
             });
         });
 
+        $('#print_bar').click(function(event) {
+            var chartContainer = document.querySelector("#bar_graph");
+
+            html2canvas(chartContainer).then(canvas => {
+                var imgData = canvas.toDataURL("image/png");
+
+                var printWindow = window.open('', '_blank');
+                printWindow.document.open();
+                printWindow.document.write('<img src="' + imgData + '">');
+                printWindow.document.close();
+
+                printWindow.print();
+            });
+        });
+
         $('#download_line').click(function(event) {
 
             var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
@@ -88,6 +103,21 @@
             });
         });
 
+        $('#print_line').click(function(event) {
+            var chartContainer = document.querySelector("#line_graph");
+
+            html2canvas(chartContainer).then(canvas => {
+                var imgData = canvas.toDataURL("image/png");
+
+                var printWindow = window.open('', '_blank');
+                printWindow.document.open();
+                printWindow.document.write('<img src="' + imgData + '">');
+                printWindow.document.close();
+
+                printWindow.print();
+            });
+        });
+
         $('#download_pie').click(function(event) {
 
             var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
@@ -124,6 +154,21 @@
                 link.href = imgData;
                 link.download = 'pie_chart.png'; // ชื่อไฟล์ที่จะบันทึก
                 link.click();
+            });
+        });
+
+        $('#print_pie').click(function(event) {
+            var chartContainer = document.querySelector("#line_graph");
+
+            html2canvas(chartContainer).then(canvas => {
+                var imgData = canvas.toDataURL("image/png");
+
+                var printWindow = window.open('', '_blank');
+                printWindow.document.open();
+                printWindow.document.write('<img src="' + imgData + '">');
+                printWindow.document.close();
+
+                printWindow.print();
             });
         });
 

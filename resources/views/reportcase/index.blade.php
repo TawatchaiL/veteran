@@ -160,6 +160,9 @@
                                         <button id="download_bar_img" class="btn btn-warning">
                                             <i class="fas fa-file-image"></i> บันทึกเป็นรูป
                                         </button>
+                                        <button id="print_bar" class="btn btn-secondary">
+                                            <i class="fas fa-print"></i> พิมพ์กราฟ
+                                        </button>
                                     </div>
                                     <div class="col-sm-10 mx-auto text-center" id="bar_chart_div">
                                         {!! $chart1->renderHtml() !!}
@@ -174,6 +177,9 @@
                                         <button id="download_line_img" class="btn btn-warning">
                                             <i class="fas fa-file-image"></i> บันทึกเป็นรูป
                                         </button>
+                                        <button id="print_line" class="btn btn-secondary">
+                                            <i class="fas fa-print"></i> พิมพ์กราฟ
+                                        </button>
                                     </div>
                                     <div class="col-sm-10 mx-auto text-center">
                                         {!! $chart2->renderHtml() !!}
@@ -187,6 +193,9 @@
                                         </button>
                                         <button id="download_pie_img" class="btn btn-warning">
                                             <i class="fas fa-file-image"></i> บันทึกเป็นรูป
+                                        </button>
+                                        <button id="print_pie" class="btn btn-secondary">
+                                            <i class="fas fa-print"></i> พิมพ์กราฟ
                                         </button>
                                     </div>
                                     <div class="col-sm-8 mx-auto text-center">
