@@ -18,12 +18,18 @@
             html2canvas(chartContainer).then(canvas => {
                 var imgData = canvas.toDataURL("image/png");
 
-                var resizePercentage = 60; // Adjust this value for the desired percentage
-                var imgWidth = canvas.width * (resizePercentage / 100);
-                var imgHeight = canvas.height * (resizePercentage / 100);
+                var imgWidth = canvas.width;
+                var imgHeight = canvas.height;
 
-                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth,
-                imgHeight); // Add the resized image
+                // Define the desired aspect ratio (width:height)
+                var aspectRatio = imgWidth / imgHeight;
+
+                // Define the desired PDF width based on the aspect ratio and desired PDF height
+                var desiredPdfHeight = 500; // Define your desired PDF height
+                var desiredPdfWidth = aspectRatio * desiredPdfHeight;
+
+                pdf.addImage(imgData, 'PNG', 10, 10, desiredPdfWidth - 20, desiredPdfHeight -
+                    20); // Add the resized image
                 pdf.save("chart.pdf");
             });
 
