@@ -304,7 +304,7 @@
                         });
                         $('#Listview').DataTable().ajax.reload();
                         //setTimeout(function() {
-                        //$('.alert-success').hide();
+                        //$('.alert-success').hide(); 
 
                         //}, 10000);
 
