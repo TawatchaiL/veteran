@@ -57,6 +57,7 @@ class ReportcaseController extends Controller
             'report_type' => 'group_by_string',
             'model' => 'App\Models\Cases',
             'group_by_field' => 'agent',
+            'chart_color' => '255,160,122',
             'chart_type' => 'bar',
         ];
         $chart1 = new LaravelChart($chart_options);
@@ -66,6 +67,7 @@ class ReportcaseController extends Controller
             'report_type' => 'group_by_string',
             'model' => 'App\Models\Cases',
             'group_by_field' => 'agent',
+            'chart_color' => '136, 8, 8',
             'chart_type' => 'line',
         ];
         $chart2 = new LaravelChart($chart_options);
@@ -74,6 +76,7 @@ class ReportcaseController extends Controller
             'report_type' => 'group_by_string',
             'model' => 'App\Models\Cases',
             'group_by_field' => 'agent',
+            'chart_color' => '176,224,230',
             'chart_type' => 'pie',
         ];
         $chart3 = new LaravelChart($chart_options);
