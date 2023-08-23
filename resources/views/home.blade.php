@@ -232,6 +232,18 @@
 
                             </div>
                         </div>
+                        <div class="col-sm-6">
+                            <canvas id="bar_graph" class=""></canvas>
+
+                        </div>
+                        <div class="col-sm-6">
+                            <canvas id="line_graph" class=""></canvas>
+
+                        </div>
+                        <div class="col-sm-6">
+                            <canvas id="pie_graph" class=""></canvas>
+
+                        </div>
                     </div>
 
 
@@ -531,5 +543,154 @@
 
 
         })
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.js"
+        integrity="sha512-XcsV/45eM/syxTudkE8AoKK1OfxTrlFpOltc9NmHXh3HF+0ZA917G9iG6Fm7B6AzP+UeEzV8pLwnbRNPxdUpfA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        var ctx = document.getElementById("bar_graph");
+        var bar_graph = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    "3200",
+                    "3207",
+                    "3210",
+                ],
+                datasets: [{
+                    label: 'Bar Graph',
+                    data: [
+                        4,
+                        81,
+                        9,
+                    ],
+                    borderColor: 'rgba(255, 99, 71, 1)',
+                    //backgroundColor: 'rgba(255, 99, 71, 1, .2)',
+                    backgroundColor: 'rgba(255, 99, 71, 1)',
+                    borderWidth: 2
+                }, ]
+            },
+            options: {
+                responsive: true,
+                tooltips: {
+                    mode: 'point'
+                },
+                animations: {
+                    tension: {
+                        duration: 1000,
+                        easing: 'linear',
+                        from: 1,
+                        to: 0,
+                        loop: false
+                    }
+                },
+                height: '300px',
+                scales: {
+                    xAxes: [],
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        },
+                    }]
+                },
+            }
+        });
+    </script>
+
+
+    <script>
+        var ctx = document.getElementById("line_graph");
+        var line_graph = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [
+                    "3200",
+                    "3207",
+                    "3210",
+                ],
+                datasets: [{
+                    label: 'Line Graph',
+                    data: [
+                        4,
+                        81,
+                        9,
+                    ],
+                    fill: false,
+                    borderColor: 'rgba(136, 8, 8)',
+                    borderWidth: 2
+                }, ]
+            },
+            options: {
+                responsive: true,
+                tooltips: {
+                    mode: 'point'
+                },
+                animations: {
+                    tension: {
+                        duration: 1000,
+                        easing: 'linear',
+                        from: 1,
+                        to: 0,
+                        loop: false
+                    }
+                },
+                height: '300px',
+                scales: {
+                    xAxes: [],
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        },
+                    }]
+                },
+            }
+        });
+    </script>
+
+
+
+    <script>
+        var ctx = document.getElementById("pie_graph");
+        var pie_graph = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: [
+                    "3200",
+                    "3207",
+                    "3210",
+                ],
+                datasets: [{
+                    label: 'Pie Graph',
+                    data: [
+                        4,
+                        81,
+                        9,
+                    ],
+                    backgroundColor: [
+                        'rgba(243, 50, 153, 0.2)',
+                        'rgba(198, 196, 3, 0.2)',
+                        'rgba(254, 36, 189, 0.2)',
+                    ],
+                    borderWidth: 2
+                }, ]
+            },
+            options: {
+                responsive: true,
+                tooltips: {
+                    mode: 'point'
+                },
+                animations: {
+                    tension: {
+                        duration: 1000,
+                        easing: 'linear',
+                        from: 1,
+                        to: 0,
+                        loop: false
+                    }
+                },
+                height: '300px',
+            }
+        });
     </script>
 @endsection
