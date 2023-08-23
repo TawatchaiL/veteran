@@ -143,8 +143,8 @@
                     searchable: false
                 },
                 {
-                    data: 'agent',
-                    name: 'agent'
+                    data: 'casetype1',
+                    name: 'casetype1'
                 },
                 {
                     data: 'sumcases',
