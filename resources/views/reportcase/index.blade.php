@@ -114,7 +114,7 @@
                                     <thead>
                                         <tr>
                                             <th width="5%"><input type="checkbox" id="check-all" class="flat"></th>
-                                            <th>agent</th>
+                                            <th>Agent</th>
                                             <th width="280px">จำนวน</th>
                                         </tr>
                                     </thead>

@@ -53,7 +53,7 @@ class ReportcaseController extends Controller
         }
 
         $chart_options = [
-            'chart_title' => 'Bar Graph',
+            'chart_title' => 'ผลรวมสายเข้าแยกตาม Agent ',
             'report_type' => 'group_by_string',
             'model' => 'App\Models\Cases',
             'group_by_field' => 'agent',
@@ -64,7 +64,7 @@ class ReportcaseController extends Controller
         $chart1 = new LaravelChart($chart_options);
 
         $chart_options = [
-            'chart_title' => 'Line Graph',
+            'chart_title' => 'ผลรวมสายเข้าแยกตาม Agent ',
             'report_type' => 'group_by_string',
             'model' => 'App\Models\Cases',
             'group_by_field' => 'agent',
@@ -73,7 +73,7 @@ class ReportcaseController extends Controller
         ];
         $chart2 = new LaravelChart($chart_options);
         $chart_options = [
-            'chart_title' => 'Pie Graph',
+            'chart_title' => 'ผลรวมสายเข้าแยกตาม Agent ',
             'report_type' => 'group_by_string',
             'model' => 'App\Models\Cases',
             'group_by_field' => 'agent',
