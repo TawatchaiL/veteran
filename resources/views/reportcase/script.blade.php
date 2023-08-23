@@ -3,14 +3,16 @@
     $(document).ready(function() {
         $('#downloadPdf').click(function(event) {
             var chart = new ApexCharts(document.querySelector("#bar_graph"), options);
-            chart.dataURI().then(({
-                imgURI,
-                blob
-            }) => { //Here shows error
-                var pdf = new jsPDF();
-                pdf.addImage(imgURI, 'PNG', 0, 0);
-                pdf.save("download.pdf");
-            })
+            chart.render().then(() => {
+                chart.dataURI().then(({
+                    imgURI,
+                    blob
+                }) => {
+                    var pdf = new jsPDF();
+                    pdf.addImage(imgURI, 'PNG', 0, 0);
+                    pdf.save("bar_chart.pdf");
+                });
+            });
         });
 
         $(".delete_all_button").click(function() {
