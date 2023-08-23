@@ -37,7 +37,10 @@ return [
         'enabled' => true,
         'binary'  => base_path('vendor/wemersonjanuario/wkhtmltopdf-windows/bin/64bit/wkhtmltopdf.exe'),
         'timeout' => false,
-        'options' => [],
+        'options' => [
+            'enable-local-file-access' => true,
+            'print-media-type' => true
+        ],
         'env'     => [],
     ],
 
