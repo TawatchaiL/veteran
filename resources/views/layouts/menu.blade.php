@@ -49,6 +49,12 @@
                     <p style="font-size: 12px;">10 อันดับเบอร์ภายใน</p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route('reporttop10out') }}" class="nav-link {{ Request::is('reporttop10out') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p style="font-size: 12px;">10 อันดับเบอร์ภายนอก</p>
+                </a>
+            </li>
         </ul>
     </li>
 @endcan

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
-class ReporttopinController extends Controller
+class ReporttopoutController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -42,7 +42,7 @@ class ReporttopinController extends Controller
 
             $datas = DB::table('cases')
                 ->select('telno', DB::raw('count(telno) as sumcases'))
-                ->whereRaw('LENGTH(telno) < 5')
+                ->whereRaw('LENGTH(telno) > 4')
                 ->groupBy('telno')
                 ->orderBy("sumcases", "desc")
                 ->limit(10)
@@ -53,12 +53,12 @@ class ReporttopinController extends Controller
                     return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
-        
+
         $chart_options = [
             'chart_title' => 'Bar Graph',
             'report_type' => 'group_by_string',
             'model' => 'App\Models\Cases',
-            'where_raw' => 'LENGTH(telno) < 5',
+            'where_raw' => 'LENGTH(telno) > 4',
             'group_by_field' => 'telno',
             'top_results' => 10,
             'chart_color' => '255,160,122',
@@ -70,7 +70,7 @@ class ReporttopinController extends Controller
             'chart_title' => 'Line Graph',
             'report_type' => 'group_by_string',
             'model' => 'App\Models\Cases',
-            'where_raw' => 'LENGTH(telno) < 5',
+            'where_raw' => 'LENGTH(telno) > 4',
             'group_by_field' => 'telno',
             'top_results' => 10,
             'chart_color' => '136, 8, 8',
@@ -81,7 +81,7 @@ class ReporttopinController extends Controller
             'chart_title' => 'Pie Graph',
             'report_type' => 'group_by_string',
             'model' => 'App\Models\Cases',
-            'where_raw' => 'LENGTH(telno) < 5',
+            'where_raw' => 'LENGTH(telno) > 4',
             'group_by_field' => 'telno',
             'top_results' => 10,
             'chart_color' => '176,224,230',
@@ -89,7 +89,7 @@ class ReporttopinController extends Controller
         ];
         $chart3 = new LaravelChart($chart_options);
 
-        return view('reporttop10in.index', compact('chart1', 'chart2', 'chart3'));
+        return view('reporttop10out.index', compact('chart1', 'chart2', 'chart3'));
     }
 
     /**
