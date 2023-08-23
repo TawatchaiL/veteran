@@ -84,6 +84,16 @@
                                     });
                                 </script>
                             @endif
+                            <div class="col-xs-12 col-sm-12 col-md-12 align-self-end text-right">
+                                <div class="form-group">
+                                    <a class="btn btn-danger" id="CreateButton" href="{{ route('reportcase.pdf') }}">
+                                        <i class="fa-regular fa-file-pdf"></i> PDF </a>
+                                    <a class="btn btn-success" id="CreateButton2" href="{{ route('reportcase.pdf') }}">
+                                        <i class="fa-regular fa-file-excel"></i> XLS </a>
+                                    <a class="btn btn-info" id="CreateButton3" href="{{ route('reportcase.pdf') }}">
+                                        <i class="fa-solid fa-print"></i> PRINT </a>
+                                </div>
+                            </div>
                             <form method="post" name="delete_all" id="delete_all">
                                 @csrf
                                 @method('POST')
@@ -131,53 +141,72 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill"
-                                    href="#custom-tabs-one-line" role="tab" aria-controls="custom-tabs-one-profile"
+                                    href="#custom-tabs-one-line" role="tab"
+                                    aria-controls="custom-tabs-one-profile"
                                     aria-selected="false">Line Graph</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill"
-                                    href="#custom-tabs-one-pie" role="tab" aria-controls="custom-tabs-one-profile"
+                                    href="#custom-tabs-one-pie" role="tab"
+                                    aria-controls="custom-tabs-one-profile"
                                     aria-selected="false">Pie Graph</a>
                             </li>
                         </ul>
                     </div>
                     <div class="card-body">
                         <div class="tab-content" id="custom-tabs-one-tabContent">
-                            <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel"
-                                aria-labelledby="custom-tabs-one-home-tab">
-                                <div class="col-sm-6">
+                            <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
+                                <div class="col-xs-12 col-sm-12 col-md-12 align-self-end text-right">
+                                    <button id="download_bar" class="btn btn-info">
+                                        <i class="fas fa-file-pdf"></i> บันทึกเป็น PDF
+                                    </button>
+                                    <button id="download_bar_img" class="btn btn-warning">
+                                        <i class="fas fa-file-image"></i> บันทึกเป็นรูป
+                                    </button>
+                                    <button id="print_bar" class="btn btn-secondary">
+                                        <i class="fas fa-print"></i> พิมพ์กราฟ
+                                    </button>
+                                </div>
+                                <div class="col-sm-10 mx-auto text-center" id="bar_chart_div">
                                     {!! $chart1->renderHtml() !!}
                                 </div>
-                                <div class="col-md-12">
-                                    <div id="chart_os"></div>
+                            </div>
+                            <div class="tab-pane fade" id="custom-tabs-one-line" role="tabpanel" aria-labelledby="custom-tabs-one-line-tab">
+                                <div class="col-xs-12 col-sm-12 col-md-12 align-self-end text-right">
+                                    <button id="download_bar" class="btn btn-info">
+                                        <i class="fas fa-file-pdf"></i> บันทึกเป็น PDF
+                                    </button>
+                                    <button id="download_bar_img" class="btn btn-warning">
+                                        <i class="fas fa-file-image"></i> บันทึกเป็นรูป
+                                    </button>
+                                    <button id="print_bar" class="btn btn-secondary">
+                                        <i class="fas fa-print"></i> พิมพ์กราฟ
+                                    </button>
                                 </div>
-                                <div class="col-md-12">
-                                    <div id="chart_date"></div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div id="chart"></div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div id="chart_c"></div>
+                                <div class="col-sm-10 mx-auto text-center" id="bar_chart_div">
+                                        {!! $chart2->renderHtml() !!}
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="custom-tabs-one-line" role="tabpanel"
-                                aria-labelledby="custom-tabs-one-line-tab">
-                                <div class="col-sm-6">
-                                    {!! $chart2->renderHtml() !!}
+                            <div class="tab-pane fade" id="custom-tabs-one-pie" role="tabpanel" aria-labelledby="custom-tabs-one-pie-tab">
+                                <div class="col-xs-12 col-sm-12 col-md-12 align-self-end text-right">
+                                    <button id="download_bar" class="btn btn-info">
+                                        <i class="fas fa-file-pdf"></i> บันทึกเป็น PDF
+                                    </button>
+                                    <button id="download_bar_img" class="btn btn-warning">
+                                        <i class="fas fa-file-image"></i> บันทึกเป็นรูป
+                                    </button>
+                                    <button id="print_bar" class="btn btn-secondary">
+                                        <i class="fas fa-print"></i> พิมพ์กราฟ
+                                    </button>
                                 </div>
-                            </div>
-                            <div class="tab-pane fade" id="custom-tabs-one-pie" role="tabpanel"
-                                aria-labelledby="custom-tabs-one-pie-tab">
-                                <div class="col-sm-6">
-                                    {!! $chart3->renderHtml() !!}
+                                <div class="col-sm-10 mx-auto text-center" id="bar_chart_div">
+                                        {!! $chart3->renderHtml() !!} 
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+</div>
 
     </section>
 
@@ -186,8 +215,7 @@
 @endsection
 
 @section('script')
-
-    {!! $chart1->renderChartJsLibrary() !!}
+@include('reportsumbytype.script')
     {!! $chart1->renderJs() !!}
 
     {!! $chart2->renderJs() !!}
@@ -196,4 +224,3 @@
     {!! $chart3->renderJs() !!}
 
 @endsection
-@include('reportsumbytype.script')
