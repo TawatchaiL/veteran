@@ -148,18 +148,6 @@
                                 <div class="col-sm-6">
                                     {!! $chart1->renderHtml() !!}
                                 </div>
-                            </div>
-                            <div class="tab-pane fade" id="custom-tabs-one-line" role="tabpanel"
-                                aria-labelledby="custom-tabs-one-line-tab">
-                                <div class="col-sm-6">
-                                    {!! $chart2->renderHtml() !!}
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="custom-tabs-one-pie" role="tabpanel"
-                                aria-labelledby="custom-tabs-one-pie-tab">
-                                <div class="col-sm-6">
-                                    {!! $chart3->renderHtml() !!}
-                                </div>
                                 <div class="col-md-12">
                                     <div id="chart_os"></div>
                                 </div>
@@ -172,6 +160,19 @@
                                 <div class="col-md-12">
                                     <div id="chart_c"></div>
                                 </div>
+                            </div>
+                            <div class="tab-pane fade" id="custom-tabs-one-line" role="tabpanel"
+                                aria-labelledby="custom-tabs-one-line-tab">
+                                <div class="col-sm-6">
+                                    {!! $chart2->renderHtml() !!}
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="custom-tabs-one-pie" role="tabpanel"
+                                aria-labelledby="custom-tabs-one-pie-tab">
+                                <div class="col-sm-6">
+                                    {!! $chart3->renderHtml() !!}
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -188,6 +189,28 @@
     @include('reportcase.script')
 
     <script>
+        function generateRandomData(length) {
+            const data = [];
+            for (let i = 0; i < length; i++) {
+                const entered = Math.floor(Math.random() * 100) +
+                    1; // Generate a random value between 1 and 50 (greater than 0)
+                const received = entered + Math.floor(Math.random() * (100 -
+                    entered)); // Generate a random value less than or equal to 'สายเข้า'
+                data.push([entered, received]);
+            }
+            return data;
+        }
+
+        function generateTimeLabels(count) {
+            const labels = [];
+            for (let i = 0; i < count; i++) {
+                const startHour = i * 2;
+                const endHour = startHour + 1;
+                const label = `${startHour.toString().padStart(2, '0')}:00-${endHour.toString().padStart(2, '0')}:59`;
+                labels.push(label);
+            }
+            return labels;
+        }
         $(document).ready(function() {
 
             var options = {
