@@ -26,17 +26,31 @@
 
                 var imgWidth = pdfWidth; // Use the same width as PDF
                 var imgHeight = (canvas.height * imgWidth) / canvas
-                .width; // Calculate proportional height
+                    .width; // Calculate proportional height
 
                 pdf.addImage(imgData, 'PNG', 0, 0, imgWidth,
-                imgHeight); // Add the resized image
+                    imgHeight); // Add the resized image
                 pdf.save("bar_chart.pdf");
             });
-            
+
+        });
+
+        $('#download_bar_img').click(function(event) {
+            var chartContainer = document.querySelector("#bar_graph");
+
+            html2canvas(chartContainer).then(canvas => {
+                var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
+
+                // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
+                var link = document.createElement('a');
+                link.href = imgData;
+                link.download = 'bar_chart.png'; // ชื่อไฟล์ที่จะบันทึก
+                link.click();
+            });
         });
 
         $('#download_line').click(function(event) {
-           
+
             var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
             var pdfHeight = 841.89; // Height of A4 in points
             var pdf = new jsPDF({
@@ -51,39 +65,67 @@
 
                 var imgWidth = pdfWidth; // Use the same width as PDF
                 var imgHeight = (canvas.height * imgWidth) / canvas
-                .width; // Calculate proportional height
+                    .width; // Calculate proportional height
 
                 pdf.addImage(imgData, 'PNG', 0, 0, imgWidth,
-                imgHeight); // Add the resized image
+                    imgHeight); // Add the resized image
                 pdf.save("line_chart.pdf");
             });
-            
+
+        });
+
+        $('#download_line_img').click(function(event) {
+            var chartContainer = document.querySelector("#line_graph");
+
+            html2canvas(chartContainer).then(canvas => {
+                var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
+
+                // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
+                var link = document.createElement('a');
+                link.href = imgData;
+                link.download = 'line_chart.png'; // ชื่อไฟล์ที่จะบันทึก
+                link.click();
+            });
         });
 
         $('#download_pie').click(function(event) {
-           
-           var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
-           var pdfHeight = 841.89; // Height of A4 in points
-           var pdf = new jsPDF({
-               unit: 'pt', // Use points as the unit for measurements
-               format: [pdfWidth, pdfHeight] // Set the format to A4 size
-           });
 
-           var chartContainer = document.querySelector("#pie_graph");
+            var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
+            var pdfHeight = 841.89; // Height of A4 in points
+            var pdf = new jsPDF({
+                unit: 'pt', // Use points as the unit for measurements
+                format: [pdfWidth, pdfHeight] // Set the format to A4 size
+            });
 
-           html2canvas(chartContainer).then(canvas => {
-               var imgData = canvas.toDataURL("image/png");
+            var chartContainer = document.querySelector("#pie_graph");
 
-               var imgWidth = pdfWidth; // Use the same width as PDF
-               var imgHeight = (canvas.height * imgWidth) / canvas
-               .width; // Calculate proportional height
+            html2canvas(chartContainer).then(canvas => {
+                var imgData = canvas.toDataURL("image/png");
 
-               pdf.addImage(imgData, 'PNG', 0, 0, imgWidth,
-               imgHeight); // Add the resized image
-               pdf.save("pie_chart.pdf");
-           });
-           
-       });
+                var imgWidth = pdfWidth; // Use the same width as PDF
+                var imgHeight = (canvas.height * imgWidth) / canvas
+                    .width; // Calculate proportional height
+
+                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth,
+                    imgHeight); // Add the resized image
+                pdf.save("pie_chart.pdf");
+            });
+
+        });
+
+        $('#download_pie_img').click(function(event) {
+            var chartContainer = document.querySelector("#pie_graph");
+
+            html2canvas(chartContainer).then(canvas => {
+                var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
+
+                // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
+                var link = document.createElement('a');
+                link.href = imgData;
+                link.download = 'pie_chart.png'; // ชื่อไฟล์ที่จะบันทึก
+                link.click();
+            });
+        });
 
 
         $(".delete_all_button").click(function() {
