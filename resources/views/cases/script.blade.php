@@ -333,8 +333,8 @@
             aaSorting: [
                 [0, "desc"]
             ],
-            iDisplayLength: 10,
-            lengthMenu: [10, 25, 50, 75, 100],
+            iDisplayLength: 5,
+            lengthMenu: [5, 10, 25, 50, 75, 100],
             stateSave: true,
             autoWidth: false,
             fixedHeader: true,
@@ -401,8 +401,8 @@
                     data: 'more',
                     name: 'more'
                 }
-               
-                
+
+
             ]
         });
 
