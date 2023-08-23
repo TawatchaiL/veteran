@@ -169,18 +169,12 @@
     </section>
 
 
-    @include('contacts.create')
-
-    @include('contacts.edit')
-
     {{--  {!! $data->render() !!} --}}
 @endsection
 
 @section('script')
     @include('reportcase.script')
-@endsection
 
-@section('javascript')
     {!! $chart1->renderChartJsLibrary() !!}
     {!! $chart1->renderJs() !!}
 
