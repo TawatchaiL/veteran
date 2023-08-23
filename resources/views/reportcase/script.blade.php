@@ -12,22 +12,25 @@
                  pdf.addImage(imgData, 'PNG', 0, 0);
                  pdf.save("chart.pdf");
              });  */
-            var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
-            var pdfHeight = 841.89; // Height of A4 in points
-            var pdf = new jsPDF({
-                unit: 'pt', // Use points as the unit for measurements
-                format: [pdfWidth, pdfHeight] // Set the format to A4 size
-            });
-
+            var pdf = new jsPDF();
             var chartContainer = document.querySelector("#bar_chart_div");
+
+            // Get the actual dimensions of the image within the container
+            var imgWidth = chartContainer.querySelector("img").width;
+            var imgHeight = chartContainer.querySelector("img").height;
+
+            // Create a PDF with the same dimensions as the image
+            pdf = new jsPDF({
+                unit: 'px',
+                format: [imgWidth, imgHeight]
+            });
 
             html2canvas(chartContainer).then(canvas => {
                 var imgData = canvas.toDataURL("image/png");
 
-                pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight); // Add the image
+                pdf.addImage(imgData, 'PNG', 0, 0);
                 pdf.save("chart.pdf");
             });
-
         });
 
         $(".delete_all_button").click(function() {
