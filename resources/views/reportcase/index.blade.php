@@ -121,7 +121,7 @@
                 </div>
 
             </div>
-            <div class="card">
+            <div class="row">
                 <div class="card card-success card-tabs">
                     <div class="card-header p-0 pt-1">
                         <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
