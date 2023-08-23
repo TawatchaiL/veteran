@@ -101,8 +101,8 @@
             "sPaginationType": "full_numbers",
             "dom": 'T<"clear">lfrtip',
                 */
-            paging: false,
-            searching: false,  
+            paging: true,
+            searching: false,
             ajax: '',
             serverSide: true,
             processing: true,
@@ -125,12 +125,12 @@
                     "sLast": "สุดท้าย"
                 }
             },
-            
+
             aaSorting: [
                 [0, "desc"]
             ],
-            iDisplayLength: 10,
-            lengthMenu: [10, 25, 50, 75, 100],
+            iDisplayLength: 5,
+            lengthMenu: [5, 10, 25, 50, 75, 100],
             stateSave: true,
             autoWidth: false,
             responsive: true,
@@ -169,25 +169,6 @@
             "autoWidth": false,
             "responsive": true,
         });
-
-
-
-        //$(document).on('click', '#CreateButton', function(e) {
-        //    e.preventDefault();
-        //    $('.alert-danger').html('');
-        //    $('.alert-danger').hide();
-        //    $('.alert-success').html('');
-        //    $('.alert-success').hide();
-        //    $.ajax({
-        //        method: "GET",
-        //        url: "{{ route('contacts.running') }}",
-        //        success: function(res) {
-        //            console.log(res)
-        //            $('#AddCode').val(res.running);
-         //       }
-        //    });
-        //    $('#CreateModal').modal('show');
-        //});
 
 
 
@@ -234,116 +215,6 @@
                 }
             });
         });
-
-        let id;
-        $(document).on('click', '#getEditData', function(e) {
-            e.preventDefault();
-
-
-            $('.alert-danger').html('');
-            $('.alert-danger').hide();
-            $('.alert-success').html('');
-            $('.alert-success').hide();
-
-            id = $(this).data('id');
-            $.ajax({
-                url: "contacts/edit/" + id,
-                method: 'GET',
-                success: function(res) {
-                    $('#EditName').val(res.data.name);
-                    $('#EditEmail').val(res.data.email);
-                    $('#EditPostcode').val(res.data.postcode);
-                    $('#EditAddress').val(res.data.address);
-                    $('#EditTelephone').val(res.data.telephone);
-
-                    $('#EditModalBody').html(res.html);
-                    $('#EditModal').modal('show');
-                }
-            });
-
-        })
-
-        $('#SubmitEditForm').click(function(e) {
-            if (!confirm("ยืนยันการทำรายการ ?")) return;
-            e.preventDefault();
-
-            $('.alert-danger').html('');
-            $('.alert-danger').hide();
-            $('.alert-success').html('');
-            $('.alert-success').hide();
-
-
-            $.ajax({
-                url: "contacts/save/" + id,
-                method: 'PUT',
-                data: {
-                    name: $('#EditName').val(),
-                    email: $('#EditEmail').val(),
-                    postcode: $('#EditPostcode').val(),
-                    address: $('#EditAddress').val(),
-                    telephone: $('#EditTelephone').val(),
-                },
-
-                success: function(result) {
-                    //console.log(result);
-                    if (result.errors) {
-                        $('.alert-danger').html('');
-                        $.each(result.errors, function(key, value) {
-                            $('.alert-danger').show();
-                            $('.alert-danger').append('<strong><li>' + value +
-                                '</li></strong>');
-                        });
-                    } else {
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('.alert-success').append('<strong><li>' + result.success +
-                            '</li></strong>');
-                        $('#EditModal').modal('hide');
-                        toastr.success(result.success, {
-                            timeOut: 5000
-                        });
-                        $('#Listview').DataTable().ajax.reload();
-                        //setTimeout(function() {
-                        //$('.alert-success').hide();
-
-                        //}, 10000);
-
-                    }
-                }
-            });
-        });
-
-        $(document).on('click', '.btn-delete', function() {
-            if (!confirm("ยืนยันการทำรายการ ?")) return;
-
-            var rowid = $(this).data('rowid')
-            var el = $(this)
-            if (!rowid) return;
-
-
-            $.ajax({
-                //type: "POST",
-                method: 'DELETE',
-                dataType: 'JSON',
-                url: "contacts/destroy/",
-                data: {
-                    id: rowid,
-                    //_method: 'delete',
-                    _token: token
-                },
-                success: function(data) {
-                    console.log(data);
-                    if (data.success) {
-                        toastr.success(data.message, {
-                            timeOut: 5000
-                        });
-                        table.row(el.parents('tr'))
-                            .remove()
-                            .draw();
-                    }
-                }
-            }); //end ajax
-        })
 
 
     });
