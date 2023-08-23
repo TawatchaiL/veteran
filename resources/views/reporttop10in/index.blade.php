@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('style')
-    @include('reportcase.style')
+    @include('reporttop10in.style')
 @endsection
 
 
