@@ -58,7 +58,7 @@ class ReportcaseController extends Controller
             'model' => 'App\Models\Cases',
             'group_by_field' => 'agent',
             'chart_type' => 'bar',
-            'chart_color' => ['255, 99, 71, 1','255, 99, 71, 1'], // Specify valid color values
+            'chart_color' => '255, 99, 71, 1', // Specify valid color values
             'options' => [
                 'animation' => [
                     'duration' => 1000,
