@@ -34,7 +34,7 @@
             <li class="nav-item">
                 <a href="{{ route('reportcase') }}" class="nav-link {{ Request::is('reportcase') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p>ผลรวมสายเข้าแยกตาม Agent</p>
+                    <p style="font-size: 10px;">ผลรวมสายเข้าแยกตาม Agent</p>
                 </a>
             </li>
         </ul>
