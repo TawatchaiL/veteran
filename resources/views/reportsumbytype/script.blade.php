@@ -143,8 +143,8 @@
                     searchable: false
                 },
                 {
-                    data: 'name1',
-                    name: 'name1'
+                    data: 'casetype1',
+                    name: 'casetype1'
                 },
                 {
                     data: 'sumcases',
