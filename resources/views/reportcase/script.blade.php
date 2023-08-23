@@ -12,24 +12,21 @@
                  pdf.addImage(imgData, 'PNG', 0, 0);
                  pdf.save("chart.pdf");
              });  */
-            var pdf = new jsPDF();
             var chartContainer = document.querySelector("#bar_chart_div");
 
             html2canvas(chartContainer).then(canvas => {
                 var imgData = canvas.toDataURL("image/png");
-
                 var imgWidth = canvas.width;
                 var imgHeight = canvas.height;
 
-                // Define the desired aspect ratio (width:height)
-                var aspectRatio = imgWidth / imgHeight;
+                // Create a PDF with the same dimensions as the image
+                var pdf = new jsPDF({
+                    unit: 'px',
+                    format: [imgWidth,
+                        imgHeight] // Use image dimensions for PDF dimensions
+                });
 
-                // Define the desired PDF width based on the aspect ratio and desired PDF height
-                var desiredPdfHeight = 500; // Define your desired PDF height
-                var desiredPdfWidth = aspectRatio * desiredPdfHeight;
-
-                pdf.addImage(imgData, 'PNG', 10, 10, desiredPdfWidth - 20, desiredPdfHeight -
-                    20); // Add the resized image
+                pdf.addImage(imgData, 'PNG', 0, 0);
                 pdf.save("chart.pdf");
             });
 
