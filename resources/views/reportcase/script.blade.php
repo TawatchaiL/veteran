@@ -60,9 +60,13 @@
                 printWindow.document.write('<img src="' + imgData + '">');
 
 
+                // Add an event listener for afterprint to close the print window
+                printWindow.addEventListener('afterprint', function() {
+                    printWindow.close();
+                });
+
                 setTimeout(function() {
                     printWindow.focus();
-                    printWindow.document.close();
                     printWindow.print();
                 }, 1000); // Adjust the delay as needed
             });
@@ -116,9 +120,13 @@
                 var printWindow = window.open('', '_blank');
                 printWindow.document.open();
                 printWindow.document.write('<img src="' + imgData + '">');
+                // Add an event listener for afterprint to close the print window
+                printWindow.addEventListener('afterprint', function() {
+                    printWindow.close();
+                });
+
                 setTimeout(function() {
                     printWindow.focus();
-                    printWindow.document.close();
                     printWindow.print();
                 }, 1000); // Adjust the delay as needed
             });
@@ -172,9 +180,13 @@
                 var printWindow = window.open('', '_blank');
                 printWindow.document.open();
                 printWindow.document.write('<img src="' + imgData + '">');
+                // Add an event listener for afterprint to close the print window
+                printWindow.addEventListener('afterprint', function() {
+                    printWindow.close();
+                });
+
                 setTimeout(function() {
                     printWindow.focus();
-                    printWindow.document.close();
                     printWindow.print();
                 }, 1000); // Adjust the delay as needed
             });
