@@ -108,7 +108,7 @@
                                 <i class="fa-regular fa-file-pdf"></i> Pdf </a>
                                 <a class="btn btn-success" id="CreateButton2" href="{{ route('reportcase.pdf') }}">
                                 <i class="fa-regular fa-file-excel"></i> XLS </a>
-                                <a class="btn btn-info" id="CreateButton3" href="{{ route('reportcase.pdf') }}">
+                                <a class="btn btn-info" id="downloadPdf" href="{{ route('reportcase.pdf') }}">
                                 <i class="fa-solid fa-print"></i> PRINT </a>
                                 </div>
                             </div>
