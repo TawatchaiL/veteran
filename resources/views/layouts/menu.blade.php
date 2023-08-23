@@ -55,6 +55,12 @@
                     <p style="font-size: 12px;">10 อันดับเบอร์ภายนอก</p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route('reportsumbytype') }}" class="nav-link {{ Request::is('reportsumbytype') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p style="font-size: 12px;">ผลรวมแยกตามประเภทที่ติดต่อ</p>
+                </a>
+            </li>
         </ul>
     </li>
 @endcan
