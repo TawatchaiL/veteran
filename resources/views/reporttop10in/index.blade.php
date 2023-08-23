@@ -121,6 +121,7 @@
         </div>
 
     </section>
+    @endsection
 @section('script')
 @include('reporttop10in.script')
 
