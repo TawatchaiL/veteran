@@ -3,9 +3,6 @@
 @section('style')
     @include('reporttop10out.style')
 @endsection
-
-
-
 @section('content')
     <section class="content-header">
         <div class="container-fluid">
