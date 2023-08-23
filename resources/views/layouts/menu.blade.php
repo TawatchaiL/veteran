@@ -33,8 +33,8 @@
 
             <li class="nav-item">
                 <a href="{{ route('reportcase') }}" class="nav-link {{ Request::is('reportcase') ? 'active' : '' }}">
-                    <i class="fas fa-list-ol nav-icon"></i>
-                    <p>ผลรวมสายเข้าแยกตาม Agent</p>
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p style="font-size: 10px;">ผลรวมสายเข้าแยกตาม Agent</p>
                 </a>
             </li>
         </ul>
@@ -50,19 +50,19 @@
         <ul class="nav nav-treeview">
             <li class="nav-item">
                 <a href="{{ route('casetype') }}" class="nav-link {{ Request::is('casetype') ? 'active' : '' }}">
-                    <i class="fas fa-list-ol nav-icon"></i>
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
                     <p>ประเภทการติดต่อ</p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="{{ route('departments') }}" class="nav-link {{ Request::is('departments') ? 'active' : '' }}">
-                    <i class="fas fa-list-ol nav-icon"></i>
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
                     <p>แผนก</p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="{{ route('positions') }}" class="nav-link {{ Request::is('positions') ? 'active' : '' }}">
-                    <i class="fas fa-list-ol nav-icon"></i>
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
                     <p>ตำแหน่ง</p>
                 </a>
             </li>
