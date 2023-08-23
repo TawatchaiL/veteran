@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
-class ReportcaseController extends Controller
+class ReportcasetopController extends Controller
 {
     /**
      * Create a new controller instance.
