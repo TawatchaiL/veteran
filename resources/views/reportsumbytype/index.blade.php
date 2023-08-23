@@ -69,7 +69,7 @@
                                 </button>
                                 {{-- <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
                                     <i class="fas fa-times"></i>
-                                </button> --}}
+                                </button> --}} 
                             </div>
                         </div>
 
