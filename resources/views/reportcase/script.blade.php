@@ -3,13 +3,30 @@
 <script>
     $(document).ready(function() {
         $('#downloadPdf').click(function(event) {
-            var pdf = new jsPDF();
+            /* var pdf = new jsPDF();
             var chartContainer = document.querySelector("#bar_chart_div");
 
             html2canvas(chartContainer).then(canvas => {
                 var imgData = canvas.toDataURL("image/png");
 
                 pdf.addImage(imgData, 'PNG', 0, 0);
+                pdf.save("chart.pdf");
+            }); */
+            var pdf = new jsPDF({
+                orientation: 'landscape', // Set the orientation to landscape
+                unit: 'px' // Use pixels as the unit for measurements
+            });
+
+            var chartContainer = document.querySelector("#chartContainer");
+
+            html2canvas(chartContainer).then(canvas => {
+                var imgData = canvas.toDataURL("image/png");
+
+                // Add the image to the PDF, adjusting width and height
+                // to fit the landscape orientation
+                pdf.addImage(imgData, 'PNG', 10, 10, pdf.internal.pageSize.getWidth() - 20, pdf
+                    .internal.pageSize.getHeight() - 20);
+
                 pdf.save("chart.pdf");
             });
         });
