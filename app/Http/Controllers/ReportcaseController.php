@@ -57,13 +57,12 @@ class ReportcaseController extends Controller
             'report_type' => 'group_by_string',
             'model' => 'App\Models\Cases',
             'group_by_field' => 'agent',
-            'chart_color' => '255,160,122',
             'chart_type' => 'bar',
-            'colors' => ['#ff0000', '#00ff00', '#0000ff'],
+            'chart_color' => 'rgb(0, 0, 255)', // Specify valid color values
             'options' => [
                 'animation' => [
-                    'duration' => 1000, // Animation duration in milliseconds
-                    'easing' => 'easeOutQuart', // Easing function for animation
+                    'duration' => 1000,
+                    'easing' => 'easeOutQuart',
                 ],
             ],
         ];
