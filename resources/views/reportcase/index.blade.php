@@ -153,7 +153,8 @@
                             <div class="tab-content" id="custom-tabs-one-tabContent">
                                 <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel"
                                     aria-labelledby="custom-tabs-one-home-tab">
-                                    <div class="col-sm-10 mx-auto text-center">
+                                    <a href="#" id="downloadPdf">Download Report Page as PDF</a>
+                                    <div class="col-sm-10 mx-auto text-center" id="bar_chart_div">
                                         {!! $chart1->renderHtml() !!}
                                     </div>
                                 </div>
