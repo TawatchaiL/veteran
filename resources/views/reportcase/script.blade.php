@@ -2,16 +2,14 @@
 <script>
     $(document).ready(function() {
         $('#downloadPdf').click(function(event) {
-            var chart = new ApexCharts(document.querySelector("#bar_graph"), options);
-            chart.render().then(() => {
-                chart.dataURI().then(({
-                    imgURI,
-                    blob
-                }) => {
-                    var pdf = new jsPDF();
-                    pdf.addImage(imgURI, 'PNG', 0, 0);
-                    pdf.save("bar_chart.pdf");
-                });
+            var pdf = new jsPDF();
+            var chartContainer = document.querySelector("#bar_chart_div");
+
+            html2canvas(chartContainer).then(canvas => {
+                var imgData = canvas.toDataURL("image/png");
+
+                pdf.addImage(imgData, 'PNG', 0, 0);
+                pdf.save("chart.pdf");
             });
         });
 
