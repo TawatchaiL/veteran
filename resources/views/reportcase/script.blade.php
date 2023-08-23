@@ -2,7 +2,7 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js'></script>
 <script>
     $(document).ready(function() {
-        $('#downloadPdf').click(function(event) {
+        $('#download_bar').click(function(event) {
             /*  var pdf = new jsPDF();
              var chartContainer = document.querySelector("#bar_chart_div");
 
@@ -30,9 +30,61 @@
 
                 pdf.addImage(imgData, 'PNG', 0, 0, imgWidth,
                 imgHeight); // Add the resized image
-                pdf.save("chart.pdf");
+                pdf.save("bar_chart.pdf");
             });
+            
         });
+
+        $('#download_line').click(function(event) {
+           
+            var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
+            var pdfHeight = 841.89; // Height of A4 in points
+            var pdf = new jsPDF({
+                unit: 'pt', // Use points as the unit for measurements
+                format: [pdfWidth, pdfHeight] // Set the format to A4 size
+            });
+
+            var chartContainer = document.querySelector("#line_graph");
+
+            html2canvas(chartContainer).then(canvas => {
+                var imgData = canvas.toDataURL("image/png");
+
+                var imgWidth = pdfWidth; // Use the same width as PDF
+                var imgHeight = (canvas.height * imgWidth) / canvas
+                .width; // Calculate proportional height
+
+                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth,
+                imgHeight); // Add the resized image
+                pdf.save("line_chart.pdf");
+            });
+            
+        });
+
+        $('#download_pie').click(function(event) {
+           
+           var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
+           var pdfHeight = 841.89; // Height of A4 in points
+           var pdf = new jsPDF({
+               unit: 'pt', // Use points as the unit for measurements
+               format: [pdfWidth, pdfHeight] // Set the format to A4 size
+           });
+
+           var chartContainer = document.querySelector("#pie_graph");
+
+           html2canvas(chartContainer).then(canvas => {
+               var imgData = canvas.toDataURL("image/png");
+
+               var imgWidth = pdfWidth; // Use the same width as PDF
+               var imgHeight = (canvas.height * imgWidth) / canvas
+               .width; // Calculate proportional height
+
+               pdf.addImage(imgData, 'PNG', 0, 0, imgWidth,
+               imgHeight); // Add the resized image
+               pdf.save("pie_chart.pdf");
+           });
+           
+       });
+
 
         $(".delete_all_button").click(function() {
             var len = $('input[name="table_records[]"]:checked').length;
