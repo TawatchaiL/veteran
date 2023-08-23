@@ -41,8 +41,8 @@ class ReportcasetopController extends Controller
             //$datas = Cases::orderBy("id", "desc")->get();
 
             $datas = DB::table('cases')
-                ->select('agent', DB::raw('count(*) as sumcases'))
-                ->groupBy('agent')
+                ->select('casetype1', DB::raw('count(casetype1) as sumcases'))
+                ->groupBy('casetype1')
                 ->orderBy("sumcases", "desc")
                 ->get();
 
@@ -56,7 +56,8 @@ class ReportcasetopController extends Controller
             'chart_title' => 'Bar Graph',
             'report_type' => 'group_by_string',
             'model' => 'App\Models\Cases',
-            'group_by_field' => 'agent',
+            'group_by_field' => 'casetype1',
+            'chart_color' => '255,160,122',
             'chart_type' => 'bar',
         ];
         $chart1 = new LaravelChart($chart_options);
@@ -65,7 +66,8 @@ class ReportcasetopController extends Controller
             'chart_title' => 'Line Graph',
             'report_type' => 'group_by_string',
             'model' => 'App\Models\Cases',
-            'group_by_field' => 'agent',
+            'group_by_field' => 'casetype1',
+            'chart_color' => '136, 8, 8',
             'chart_type' => 'line',
         ];
         $chart2 = new LaravelChart($chart_options);
@@ -73,7 +75,8 @@ class ReportcasetopController extends Controller
             'chart_title' => 'Pie Graph',
             'report_type' => 'group_by_string',
             'model' => 'App\Models\Cases',
-            'group_by_field' => 'agent',
+            'group_by_field' => 'casetype1',
+            'chart_color' => '176,224,230',
             'chart_type' => 'pie',
         ];
         $chart3 = new LaravelChart($chart_options);

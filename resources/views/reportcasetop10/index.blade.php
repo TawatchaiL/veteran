@@ -62,7 +62,7 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-address-book"></i> ผลรวมสายเข้าแยกตาม Agent</h3>
+                            <h3 class="card-title"><i class="fas fa-address-book"></i> 10 อันดับเรื่องที่ติดต่อมากที่สุด</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -91,7 +91,7 @@
                                     <thead>
                                         <tr>
                                             <th width="20px"><input type="checkbox" id="check-all" class="flat"></th>
-                                            <th>agent</th>
+                                            <th>เรื่องที่ติดต่อ</th>
                                             <th width="280px">จำนวน</th>
                                         </tr>
                                     </thead>
@@ -183,7 +183,7 @@
 @endsection
 
 @section('script')
-    @include('reportcase.script')
+    @include('reportcasetop10.script')
 @endsection
 
 @section('javascript')

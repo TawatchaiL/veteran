@@ -57,6 +57,7 @@ class ReportcaseController extends Controller
             'report_type' => 'group_by_string',
             'model' => 'App\Models\Cases',
             'group_by_field' => 'agent',
+            'chart_color' => '255,160,122',
             'chart_type' => 'bar',
             'colors' => ['#ff0000', '#00ff00', '#0000ff'],
             'options' => [
@@ -73,6 +74,7 @@ class ReportcaseController extends Controller
             'report_type' => 'group_by_string',
             'model' => 'App\Models\Cases',
             'group_by_field' => 'agent',
+            'chart_color' => '136, 8, 8',
             'chart_type' => 'line',
             'colors' => ['#ff0000', '#00ff00', '#0000ff'],
             'options' => [
@@ -88,6 +90,7 @@ class ReportcaseController extends Controller
             'report_type' => 'group_by_string',
             'model' => 'App\Models\Cases',
             'group_by_field' => 'agent',
+            'chart_color' => '176,224,230',
             'chart_type' => 'pie',
             'colors' => ['#ff0000', '#00ff00', '#0000ff'],
             'options' => [
