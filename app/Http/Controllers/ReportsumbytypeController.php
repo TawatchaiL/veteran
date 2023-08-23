@@ -41,8 +41,8 @@ class ReportsumbytypeController extends Controller
             //$datas = Cases::orderBy("id", "desc")->get();
 
             $datas = DB::table('cases')
-                ->select('casastype1 as name1', DB::raw('count(*) as sumcases'))
-                ->groupBy('casastype1')
+                ->select('casetype1 as name1', DB::raw('count(*) as sumcases'))
+                ->groupBy('casetype1')
                 ->orderBy("sumcases", "desc")
                 ->get();
 
@@ -56,7 +56,7 @@ class ReportsumbytypeController extends Controller
             'chart_title' => 'Bar Graph',
             'report_type' => 'group_by_string',
             'model' => 'App\Models\Cases',
-            'group_by_field' => 'casastype1',
+            'group_by_field' => 'casetype1',
             'chart_type' => 'bar',
             'chart_color' => '255, 99, 71, 1', // Specify valid color values
 
@@ -67,7 +67,7 @@ class ReportsumbytypeController extends Controller
             'chart_title' => 'Line Graph',
             'report_type' => 'group_by_string',
             'model' => 'App\Models\Cases',
-            'group_by_field' => 'casastype1',
+            'group_by_field' => 'casetype1',
             'chart_color' => '136, 8, 8',
             'chart_type' => 'line',
         ];
@@ -76,7 +76,7 @@ class ReportsumbytypeController extends Controller
             'chart_title' => 'Pie Graph',
             'report_type' => 'group_by_string',
             'model' => 'App\Models\Cases',
-            'group_by_field' => 'casastype1',
+            'group_by_field' => 'casetype1',
             'chart_color' => '176,224,230',
             'chart_type' => 'pie',
         ];
