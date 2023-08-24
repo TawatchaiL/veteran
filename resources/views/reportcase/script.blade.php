@@ -365,13 +365,15 @@
             var doc = new jsPDF();
 
             // Register the Thai font
-            var thaiFontNormal = 'fonts/THSarabunNew.ttf';
+            /* var thaiFontNormal = 'fonts/THSarabunNew.ttf';
             var thaiFontBold = 'fonts/THSarabunNew Bold.ttf';
 
             doc.addFont(thaiFontNormal, 'thaiFont', 'normal');
             doc.addFont(thaiFontBold, 'thaiFont', 'bold');
 
-            doc.setFont('thaiFont');
+            doc.setFont('thaiFont'); */
+            doc.setFontSize(12); // Set font size
+            doc.setFont('Sarabun'); // Set Google Font family
 
             doc.text("Table Export", 10, 10);
 
