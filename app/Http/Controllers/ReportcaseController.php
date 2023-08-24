@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
+use App\Services\GraphService;
 
 class ReportcaseController extends Controller
 {
@@ -81,6 +82,8 @@ class ReportcaseController extends Controller
             'chart_type' => 'pie',
         ];
         $chart3 = new LaravelChart($chart_options);
+        $data = new GraphService();
+        dd($data);
 
         return view('reportcase.index', compact('chart1', 'chart2', 'chart3'));
     }
