@@ -353,17 +353,15 @@
                             fontSize: 16
                         };
                         // กำหนดความกว้างของ header แต่ละคอลัมน์หัวข้อ
-                       /*  doc.content[1].table.widths = [50, 'auto', '*', '*'];
+                        doc.content[1].table.widths = [50, '*', '*', '*'];
                         doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
-                        var rowCount = doc.content[1].table.body.length; // หาจำนวนแะวทั้งหมดในตาราง
-                        // วนลูปเพื่อกำหนดค่าแต่ละคอลัมน์ เช่นการจัดตำแหน่ง
-                        for (i = 1; i <rowCount; i++) { // i เริ่มที่ 1 เพราะ i แรกเป็นแถวของหัวข้อ
-                            doc.content[1].table.body[i][0].alignment = 'center'; // คอลัมน์แรกเริ่มที่ 0
-                            doc.content[1].table.body[i][1].alignment = 'center';
-                            //doc.content[1].table.body[i][2].alignment = 'left';
-                            //doc.content[1].table.body[i][3].alignment = 'right';
-                        };
-                        console.log(doc); // เอาไว้ debug ดู doc object proptery เพื่ออ้างอิงเพิ่มเติม */
+                        for (var i = 1; i < doc.content[1].table.body.length; i++) {
+                            doc.content[1].table.body[i][0].alignment =
+                            'center'; // Align the first column to the center
+                            doc.content[1].table.body[i][1].alignment =
+                            'right'; // Align the second column to the right
+                            // Customize alignments for other columns as needed
+                        }
                     }
                 },
                 'print'
