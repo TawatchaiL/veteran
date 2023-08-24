@@ -95,6 +95,7 @@ class ReportcaseinbyhourController extends Controller
                             ELSE 0
                         END) as total_cases
                     FROM cases GROUP BY numberhour) as c"), 'timeslot.timeslot', '=', 'c.numberhour')
+                    ->orderBy("timelabel", "asc")
                     ->get();
             //$datas = DB::table('timeslot')
             //    ->select(DB::raw("timeslot as numberhour, 1 as sumt"))
