@@ -4,10 +4,10 @@
 <script>
     pdfMake.fonts = {
         THSarabun: {
-            normal: 'THSarabun.ttf',
-            bold: 'THSarabun-Bold.ttf',
-            italics: 'THSarabun-Italic.ttf',
-            bolditalics: 'THSarabun-BoldItalic.ttf'
+            normal: 'fonts/THSarabunNew.ttf',
+            bold: 'fonts/THSarabunNew Bold.ttf',
+            italics: 'fonts/THSarabunNew Italic.ttf',
+            bolditalics: 'fonts/THSarabunNew BoldItalic.ttf'
         }
     }
     $(document).ready(function() {
