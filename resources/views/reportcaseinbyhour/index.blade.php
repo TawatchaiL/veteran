@@ -199,7 +199,6 @@
 
     {{--  {!! $data->render() !!} --}}
 @endsection
-
 @section('script')
 @include('reportcaseinbyhour.script')
     {!! $chart1->renderJs() !!}
