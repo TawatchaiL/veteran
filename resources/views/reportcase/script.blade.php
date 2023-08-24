@@ -331,10 +331,11 @@
             stateSave: true,
             autoWidth: false,
             buttons: [
-                'copyHtml5',
-                'excelHtml5',
-                'csvHtml5',
-                'pdfHtml5'
+                'copy',
+                'excel',
+                'csv',
+                'pdf',
+                'print'
             ],
             responsive: true,
             sPaginationType: "full_numbers",
@@ -404,7 +405,7 @@
 
         $('#exportPrintButton').on('click', function() {
             // Open a new window for printing
-            table.button('0').trigger();
+            table.button('4').trigger();
         });
 
 
