@@ -352,6 +352,7 @@
 
         $('#exportPDFButton').on('click', function() {
             // Trigger DataTables export buttons
+            console.log(table)
             table.buttons.exportData({
                 format: {
                     header: function(data, columnIdx) {
