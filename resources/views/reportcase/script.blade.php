@@ -359,16 +359,8 @@
 
 
         $('#exportPDFButton').on('click', function() {
-            var doc = new jsPDF();
+            /* var doc = new jsPDF();
 
-            // Register the Thai font
-            /* var thaiFontNormal = 'fonts/THSarabunNew.ttf';
-            var thaiFontBold = 'fonts/THSarabunNew Bold.ttf';
-
-            doc.addFont(thaiFontNormal, 'thaiFont', 'normal');
-            doc.addFont(thaiFontBold, 'thaiFont', 'bold');
-
-            doc.setFont('thaiFont'); */
             doc.setFontSize(12); // Set font size
             doc.setFont('Sarabun'); // Set Google Font family
 
@@ -399,12 +391,16 @@
                 body: data
             });
 
-            doc.save('table-export.pdf');
+            doc.save('table-export.pdf'); */
+            table.button('3').trigger();
+        });
+
+        $('#exportXLSButton').on('click', function() {
+            table.button('1').trigger();
         });
 
 
         $('#exportPrintButton').on('click', function() {
-            // Open a new window for printing
             table.button('4').trigger();
         });
 
