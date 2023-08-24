@@ -355,17 +355,15 @@
             ]
         });
 
-        var dd = $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-            "dom": 'Bfrtip',
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        /*  var dd = $("#example1").DataTable({
+             "responsive": true,
+             "lengthChange": false,
+             "autoWidth": false,
+             "dom": 'Bfrtip',
+             "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)'); */
 
         $('#exportPDFButton').on('click', function() {
-            // Trigger DataTables export buttons
-            //console.log(table)
             var doc = new jsPDF();
             doc.text("Table Export", 10, 10);
 
@@ -382,8 +380,9 @@
                 selected: true
             }).every(function() {
                 var rowData = [];
-                this.data().each(function(value) {
-                    rowData.push(value);
+                var cells = this.nodes().to$();
+                cells.find('td').each(function() {
+                    rowData.push($(this).text());
                 });
                 data.push(rowData);
             });
