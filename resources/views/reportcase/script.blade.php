@@ -1,4 +1,3 @@
-
 <script>
     $(document).ready(function() {
         $('#download_bar').click(function(event) {
@@ -364,6 +363,15 @@
 
         $('#exportPDFButton').on('click', function() {
             var doc = new jsPDF();
+
+            var thaiFontNormal = '{{ asset('fonts/THSarabunNew.ttf') }}';
+            var thaiFontBold = '{{ asset('fonts/THSarabunNew Bold.ttf') }}';
+
+            doc.addFont(thaiFontNormal, 'thaiFont', 'normal');
+            doc.addFont(thaiFontBold, 'thaiFont', 'bold');
+
+            doc.setFont('thaiFont');
+
             doc.text("Table Export", 10, 10);
 
             var columns = [];
@@ -396,7 +404,7 @@
 
 
 
-        $("#example1").DataTable({
+        /* $("#example1").DataTable({
             "responsive": true,
             "lengthChange": false,
             "autoWidth": false,
@@ -410,7 +418,7 @@
             "info": true,
             "autoWidth": false,
             "responsive": true,
-        });
+        }); */
 
 
 
