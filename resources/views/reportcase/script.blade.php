@@ -406,6 +406,52 @@
         });
 
 
+        $('#exportPrintButton').on('click', function() {
+            var doc = new jsPDF();
+
+            // Set font style using the Google Font
+            doc.setFontSize(12); // Set font size
+            doc.setFont('Sarabun'); // Set Google Font family
+
+            doc.text("Table Export", 10, 10);
+
+            var columns = [];
+            var data = [];
+
+            // Get column names from DataTable
+            table.columns().every(function() {
+                columns.push(this.header().textContent.trim());
+            });
+
+            // Get data from DataTable
+            table.rows({
+                selected: true
+            }).every(function() {
+                var rowData = [];
+                var cells = this.nodes().to$();
+                cells.find('td').each(function() {
+                    rowData.push($(this).text());
+                });
+                data.push(rowData);
+            });
+
+            doc.autoTable({
+                head: [columns],
+                body: data
+            });
+
+            // Open the browser's native print dialog for the PDF content
+            doc.print();
+
+            /*  // Open a new window to display the PDF content for printing
+             var pdfDataUri = doc.output('datauristring');
+             var printWindow = window.open();
+             printWindow.document.open();
+             printWindow.document.write('<iframe src="' + pdfDataUri +
+                 '" width="100%" height="100%"></iframe>');
+             printWindow.document.close(); */
+        });
+
 
         /* $("#example1").DataTable({
             "responsive": true,
