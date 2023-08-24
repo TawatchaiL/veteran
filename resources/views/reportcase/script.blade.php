@@ -359,7 +359,9 @@
                                     doc.content[1].table.body[i][0].alignment =
                                         'center'; // Align the first column to the center
                                     doc.content[1].table.body[i][1].alignment =
-                                        'right'; // Align the second column to the right
+                                        'center'; // Align the second column to the right
+                                    doc.content[1].table.body[i][2].alignment =
+                                        'center';
                                     // Customize alignments for other columns as needed
                                 }
                                 // Add cell borders
