@@ -94,7 +94,8 @@
 <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+{{-- <script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script> --}}
+<script src="https://cdn.datatables.net/buttons/2.1.1/js/dataTables.buttons.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
 <script src="plugins/jszip/jszip.min.js"></script>
 <script src="plugins/select2/js/select2.full.min.js"></script>
@@ -111,6 +112,12 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/i18n/datepicker-th.js"></script>
+
+<script src="https://cdn.datatables.net/buttons/2.1.1/js/dataTables.buttons.min.js"></script>
+<!-- Additional button libraries -->
+<script src="https://cdn.datatables.net/buttons/2.1.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.1.1/js/buttons.print.min.js"></script>
+
 <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
@@ -275,7 +282,7 @@
                         $(this).css('right', cardPositions[index].right);
                         $(this).css('bottom', '35px');
                         $(this).delay(index * 100).fadeIn();
-                       
+
                     });
                 },
                 error: function(xhr, status, error) {
@@ -299,17 +306,17 @@
                     card.css('right', '-300px'); // Adjust as needed
                     card.css('z-index', '99999');
                     maximizeCard(cardId);
-                    
+
                 } else {
                     // restore
                     $('#dpopup').html('');
                     positionCards();
-                   
+
                 }
 
                 // Toggle minimized class
                 card.toggleClass('collapsed-card');
-                
+
 
 
             });
@@ -326,17 +333,17 @@
                     card.css('right', '-300px'); // Adjust as needed
                     card.css('z-index', '99999');
                     maximizeCard(cardId);
-                    
+
                 } else {
                     // restore
                     $('#dpopup').html('');
                     positionCards();
-                    
+
                 }
 
                 // Toggle minimized class
                 card.toggleClass('collapsed-card');
-                
+
 
 
             });
@@ -388,7 +395,7 @@
                     $('#amp').select2({});
                     $('#tmp').select2({});
                     $('#cityp').select2({});
-                    
+
                 }
             });
         }
