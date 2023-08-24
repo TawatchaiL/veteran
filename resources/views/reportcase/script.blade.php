@@ -181,7 +181,7 @@
         });
 
         $('#print_pie').click(function(event) {
-            var chartContainer = document.querySelector("#line_graph");
+            var chartContainer = document.querySelector("#pie_graph");
 
             html2canvas(chartContainer).then(canvas => {
                 var imgData = canvas.toDataURL("image/png");
