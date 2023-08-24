@@ -369,7 +369,7 @@
             table.buttons.exportData({
                 format: {
                     header: function(data, columnIdx) {
-                        return dataTable.columns(columnIdx).header().to$().text().trim();
+                        return table.columns(columnIdx).header().to$().text().trim();
                     },
                     body: function(data, row, column, node) {
                         return column === 0 ? $(node).text() : data;
