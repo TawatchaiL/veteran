@@ -124,7 +124,16 @@ class ReportcaseinbyhourController extends Controller
             'chart_color' => '255, 99, 71, 1', // Specify valid color values
 
         ];
-        $chart1 = new LaravelChart($chart_options);
+
+        $chart = new LaravelChart([
+            'data' => $datas,
+            'type' => 'bar',
+            'title' => 'Cases per Time Slot',
+            'labels' => 'numberhour',
+            'values' => 'case_count',
+        ]);
+
+        $chart1 = new LaravelChart($chart);
 
         $chart_options = [
             'chart_title' => 'Line Graph',
