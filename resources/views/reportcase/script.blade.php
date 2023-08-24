@@ -386,7 +386,6 @@
                 data.push(rowData);
             });
 
-            // Create a table using the autoTable plugin
             doc.autoTable({
                 head: [columns],
                 body: data
@@ -397,7 +396,7 @@
 
 
 
-       /*  $("#example1").DataTable({
+        $("#example1").DataTable({
             "responsive": true,
             "lengthChange": false,
             "autoWidth": false,
@@ -411,7 +410,7 @@
             "info": true,
             "autoWidth": false,
             "responsive": true,
-        }); */
+        });
 
 
 
