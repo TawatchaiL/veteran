@@ -350,10 +350,17 @@
             ]
         }).buttons().container().appendTo('#Listview_wrapper .col-md-6:eq(0)');
 
+        var dd = $("#example1").DataTable({
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
         $('#exportPDFButton').on('click', function() {
             // Trigger DataTables export buttons
-            console.log(table)
-            table.buttons.exportData({
+            //console.log(table)
+            dd.buttons.exportData({
                 format: {
                     header: function(data, columnIdx) {
                         return dataTable.columns(columnIdx).header().to$().text().trim();
