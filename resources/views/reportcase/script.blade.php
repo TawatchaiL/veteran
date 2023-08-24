@@ -294,7 +294,7 @@
             "sPaginationType": "full_numbers",
             "dom": 'T<"clear">lfrtip',
                 */
-            paging: true,
+            paging: false,
             searching: false,
             ajax: '',
             serverSide: true,
@@ -326,6 +326,7 @@
             lengthMenu: [5, 10, 25, 50, 75, 100],
             stateSave: true,
             autoWidth: false,
+            buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"]
             responsive: true,
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
@@ -344,7 +345,7 @@
                     name: 'sumcases'
                 },
             ]
-        });
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
 
         $("#example1").DataTable({
