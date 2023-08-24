@@ -280,7 +280,7 @@
         });
 
 
-        var table = $('#Listview').DataTable({
+        var table = $('#listview').DataTable({
             /*"aoColumnDefs": [
             {
             'bSortable': true,
@@ -294,7 +294,7 @@
             "sPaginationType": "full_numbers",
             "dom": 'T<"clear">lfrtip',
                 */
-            paging: false,
+            paging: true,
             searching: false,
             ajax: '',
             serverSide: true,
@@ -345,7 +345,7 @@
                     name: 'sumcases'
                 },
             ]
-        }).buttons().container().appendTo('#Listview_wrapper .col-md-6:eq(0)');
+        }).buttons().container().appendTo('#listview_wrapper .col-md-6:eq(0)');
 
 
         $("#example1").DataTable({
