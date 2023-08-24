@@ -346,6 +346,7 @@
                     "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
                     "text": 'PDF', // ข้อความที่แสดง
                     "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
+                    "title": 'ผลรวมสายเข้าแยกตาม Agent',
                     "customize": function(doc) { // ส่วนกำหนดเพิ่มเติม ส่วนนี้จะใช้จัดการกับ pdfmake
                         // กำหนด style หลัก
                         doc.defaultStyle = {
@@ -392,10 +393,25 @@
                                 'center'; // Align the second column to the right
                             // Customize alignments for other columns as needed
                         }
+
                     }
                 },
                 'print'
             ],
+            layout: {
+                hLineWidth: function(i, node) {
+                    return 1; // Border width for horizontal lines
+                },
+                vLineWidth: function(i, node) {
+                    return 1; // Border width for vertical lines
+                },
+                hLineColor: function(i, node) {
+                    return '#bfbfbf'; // Border color for horizontal lines
+                },
+                vLineColor: function(i, node) {
+                    return '#bfbfbf'; // Border color for vertical lines
+                }
+            },
             responsive: true,
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
