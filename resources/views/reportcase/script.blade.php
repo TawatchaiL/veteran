@@ -345,7 +345,7 @@
                     name: 'sumcases'
                 },
             ]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        }).buttons().container().appendTo('#Listview_wrapper .col-md-6:eq(0)');
 
 
         $("#example1").DataTable({
