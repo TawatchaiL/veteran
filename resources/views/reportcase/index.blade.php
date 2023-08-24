@@ -101,7 +101,7 @@
                                 <div class="form-group">
                                     <a class="btn btn-danger" id="exportPDFButton" {{-- href="{{ route('reportcase.pdf') }}" --}}>
                                         <i class="fa-regular fa-file-pdf"></i> PDF </a>
-                                    <a class="btn btn-success" id="exportXLSButton" href="{{ route('reportcase.pdf') }}">
+                                    <a class="btn btn-success" id="exportXLSButton" {{-- href="{{ route('reportcase.pdf') }}" --}}>
                                         <i class="fa-regular fa-file-excel"></i> XLS </a>
                                     <a class="btn btn-info" id="exportPrintButton" {{-- href="{{ route('reportcase.pdf') }}" --}}>
                                         <i class="fa-solid fa-print"></i> PRINT </a>
