@@ -412,8 +412,8 @@
 
                         }
                         for (var i = 1; i < doc.content[1].table.body.length; i++) {
-                            doc.content[1].table.body[i][0].alignment =
-                                'center'; // Align the first column to the center
+                            //doc.content[1].table.body[i][0].alignment =
+                                //'center'; // Align the first column to the center
                             doc.content[1].table.body[i][1].alignment =
                                 'center'; // Align the second column to the right
                             doc.content[1].table.body[i][2].alignment =
@@ -533,22 +533,6 @@
             table.button('4').trigger();
         });
 
-
-        /* $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-        }); */
 
 
 
