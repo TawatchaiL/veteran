@@ -4,8 +4,6 @@
     @include('reportcaseinbyhour.style')
 @endsection
 
-
-
 @section('content')
     <section class="content-header">
         <div class="container-fluid">
