@@ -404,20 +404,7 @@
 
         $('#exportPrintButton').on('click', function() {
             // Open a new window for printing
-            var printWindow = window.open('', '_blank');
-            printWindow.document.write('<html><head><title>Print</title>');
-            printWindow.document.write('</head><body>');
-            printWindow.document.write('<h1>Table Print</h1>');
-
-            // Add a delay before writing the DataTable content to ensure it's loaded
-            setTimeout(function() {
-                printWindow.document.write(table.table().container().innerHTML);
-                printWindow.document.write('</body></html>');
-
-                // Close the document writing and trigger printing
-                printWindow.document.close();
-                printWindow.print();
-            }, 500); // Adjust the delay as needed
+            table.button('3').trigger();
         });
 
 
