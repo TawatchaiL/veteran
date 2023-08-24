@@ -296,6 +296,7 @@
             "sPaginationType": "full_numbers",
             "dom": 'T<"clear">lfrtip',
                 */
+            dom: 'Bfrtip',
             paging: true,
             searching: false,
             ajax: '',
@@ -350,24 +351,17 @@
         }).buttons().container().appendTo('#Listview_wrapper .col-md-6:eq(0)');
 
         $('#exportPDFButton').on('click', function() {
-            // Use DataTables Buttons to export to PDF
-            table.buttons.exportData({
+            // Trigger DataTables export buttons
+            dataTable.buttons.exportData({
                 format: {
+                    header: function(data, columnIdx) {
+                        return dataTable.columns(columnIdx).header().to$().text().trim();
+                    },
                     body: function(data, row, column, node) {
-                        // Strip HTML tags to get plain text for PDF
                         return column === 0 ? $(node).text() : data;
                     }
                 }
             });
-
-            // Generate PDF using jsPDF
-            var doc = new jsPDF();
-            doc.text('Table Export to PDF', 10, 10);
-            doc.autoTable({
-                html: '#listview',
-                startY: 20
-            });
-            doc.save('table-export.pdf');
         });
 
 
