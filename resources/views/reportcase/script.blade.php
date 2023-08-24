@@ -422,6 +422,7 @@
                     text: 'Print',
                     title: 'ผลรวมสายเข้าแยกตาม Agent',
                     exportOptions: {
+                        columns: ':visible:not(.no-print)',
                         format: {
                             body: function(data, row, column, node) {
                                 // You can set your font here
@@ -465,7 +466,8 @@
                     data: 'checkbox',
                     name: 'checkbox',
                     orderable: false,
-                    searchable: false
+                    searchable: false,
+                    className: 'no-print'
                 },
                 {
                     data: 'agent',
