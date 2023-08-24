@@ -99,7 +99,7 @@
                             @endif
                             <div class="col-xs-12 col-sm-12 col-md-12 align-self-end text-right">
                                 <div class="form-group">
-                                    <a class="btn btn-danger" id="CreateButton" href="{{ route('reportcase.pdf') }}">
+                                    <a class="btn btn-danger" id="exportPDFButton" {{-- href="{{ route('reportcase.pdf') }}" --}}>
                                         <i class="fa-regular fa-file-pdf"></i> PDF </a>
                                     <a class="btn btn-success" id="CreateButton2" href="{{ route('reportcase.pdf') }}">
                                         <i class="fa-regular fa-file-excel"></i> XLS </a>
