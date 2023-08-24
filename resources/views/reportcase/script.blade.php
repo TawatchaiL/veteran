@@ -344,6 +344,9 @@
                     extend: 'excel',
                     text: 'Excel',
                     title: 'ผลรวมสายเข้าแยกตาม Agent',
+                    exportOptions: {
+                        columns: ':visible:not(.no-print)',
+                    },
                     customize: function(xlsx) {
                         var sheet = xlsx.xl.worksheets['sheet1.xml'];
 
@@ -368,6 +371,9 @@
                     "text": 'PDF', // ข้อความที่แสดง
                     "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
                     "title": 'ผลรวมสายเข้าแยกตาม Agent',
+                    exportOptions: {
+                        columns: ':visible:not(.no-print)',
+                    },
                     "customize": function(doc) { // ส่วนกำหนดเพิ่มเติม ส่วนนี้จะใช้จัดการกับ pdfmake
                         // กำหนด style หลัก
                         doc.defaultStyle = {
