@@ -39,7 +39,7 @@ class ReportcaseinbyhourController extends Controller
         if ($request->ajax()) {
             //sleep(2);
                 $datas = DB::table('timeslot')
-                    ->selectRaw("timeslot.timeslot as timelabel, c.numberhour, c.total_cases as sumt")
+                    ->selectRaw("timeslot.timeslot as timelabel, c.numberhour, if(c.total_cases='',1,c.total_cases) as sumt")
                     ->leftJoin(DB::raw("(SELECT
                         CASE
                             WHEN TIME(created_at) < '01:00:00' THEN '00:00-01:00'
@@ -95,6 +95,7 @@ class ReportcaseinbyhourController extends Controller
                             ELSE 0
                         END) as total_cases
                     FROM cases GROUP BY numberhour) as c"), 'timeslot.timeslot', '=', 'c.numberhour')
+                    ->orderBy("timelabel", "asc")
                     ->get();
             //$datas = DB::table('timeslot')
             //    ->select(DB::raw("timeslot as numberhour, 1 as sumt"))
