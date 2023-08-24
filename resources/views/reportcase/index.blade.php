@@ -106,6 +106,7 @@
                                     <a class="btn btn-info" id="CreateButton3" href="{{ route('reportcase.pdf') }}">
                                         <i class="fa-solid fa-print"></i> PRINT </a>
                                 </div>
+                                <div id="#Listview_wrapper"></div>
                             </div>
                             <form method="post" name="delete_all" id="delete_all">
                                 @csrf
