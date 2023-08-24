@@ -329,7 +329,7 @@
             lengthMenu: [5, 10, 25, 50, 75, 100],
             stateSave: true,
             autoWidth: false,
-            buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
             responsive: true,
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
@@ -354,6 +354,7 @@
             "responsive": true,
             "lengthChange": false,
             "autoWidth": false,
+            "dom": 'Bfrtip',
             "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
