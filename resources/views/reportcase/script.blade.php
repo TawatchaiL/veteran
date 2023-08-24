@@ -366,16 +366,34 @@
         $('#exportPDFButton').on('click', function() {
             // Trigger DataTables export buttons
             //console.log(table)
-            table.buttons.exportData({
-                format: {
-                    header: function(data, columnIdx) {
-                        return table.columns(columnIdx).header().to$().text().trim();
-                    },
-                    body: function(data, row, column, node) {
-                        return column === 0 ? $(node).text() : data;
-                    }
-                }
+            var doc = new jsPDF();
+            doc.text("Table Export", 10, 10);
+
+            var columns = [];
+            var data = [];
+
+            // Get column names from DataTable
+            table.columns().every(function() {
+                columns.push(this.header().textContent.trim());
             });
+
+            // Get data from DataTable
+            table.rows({
+                selected: true
+            }).every(function() {
+                var rowData = [];
+                this.data().each(function(value) {
+                    rowData.push(value);
+                });
+                data.push(rowData);
+            });
+
+            doc.autoTable({
+                head: [columns],
+                body: data
+            });
+
+            doc.save('table-export.pdf');
         });
 
 
