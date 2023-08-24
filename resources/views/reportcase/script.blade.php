@@ -189,6 +189,8 @@
                 var printWindow = window.open('', '_blank');
                 printWindow.document.open();
                 printWindow.document.write('<img src="' + imgData + '">');
+                printWindow.document.close(); // Close the document for writing
+
                 // Add an event listener for afterprint to close the print window
                 printWindow.addEventListener('afterprint', function() {
                     printWindow.close();
@@ -417,7 +419,7 @@
                             doc.content[1].table.body[i][1].alignment =
                                 'center'; // Align the second column to the right
                             //doc.content[1].table.body[i][2].alignment =
-                                //'center'; // Align the second column to the right
+                            //'center'; // Align the second column to the right
                             // Customize alignments for other columns as needed
                         }
 
