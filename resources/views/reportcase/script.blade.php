@@ -404,7 +404,7 @@
 
         $('#exportPrintButton').on('click', function() {
             // Open a new window for printing
-            table.button('3').trigger();
+            table.button('0').trigger();
         });
 
 
