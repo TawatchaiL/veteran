@@ -353,7 +353,7 @@
                             fontSize: 16
                         };
                         // กำหนดความกว้างของ header แต่ละคอลัมน์หัวข้อ
-                        doc.content[1].table.widths = [50, 'auto', '*', '*'];
+                       /*  doc.content[1].table.widths = [50, 'auto', '*', '*'];
                         doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
                         var rowCount = doc.content[1].table.body.length; // หาจำนวนแะวทั้งหมดในตาราง
                         // วนลูปเพื่อกำหนดค่าแต่ละคอลัมน์ เช่นการจัดตำแหน่ง
@@ -363,7 +363,7 @@
                             //doc.content[1].table.body[i][2].alignment = 'left';
                             //doc.content[1].table.body[i][3].alignment = 'right';
                         };
-                        console.log(doc); // เอาไว้ debug ดู doc object proptery เพื่ออ้างอิงเพิ่มเติม
+                        console.log(doc); // เอาไว้ debug ดู doc object proptery เพื่ออ้างอิงเพิ่มเติม */
                     }
                 },
                 'print'
