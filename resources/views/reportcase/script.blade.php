@@ -364,8 +364,9 @@
         $('#exportPDFButton').on('click', function() {
             var doc = new jsPDF();
 
-            var thaiFontNormal = '{{ asset('fonts/THSarabunNew.ttf') }}';
-            var thaiFontBold = '{{ asset('fonts/THSarabunNew Bold.ttf') }}';
+            // Register the Thai font
+            var thaiFontNormal = 'fonts/THSarabunNew.ttf';
+            var thaiFontBold = 'fonts/THSarabunNew Bold.ttf';
 
             doc.addFont(thaiFontNormal, 'thaiFont', 'normal');
             doc.addFont(thaiFontBold, 'thaiFont', 'bold');
