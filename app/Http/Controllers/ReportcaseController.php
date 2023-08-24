@@ -83,8 +83,7 @@ class ReportcaseController extends Controller
         ];
         $chart3 = new LaravelChart($chart_options);
         $data = new GraphService();
-        dd($data);
 
-        return view('reportcase.index', compact('chart1', 'chart2', 'chart3'));
+        return view('reportcase.index', compact('chart1', 'chart2', 'chart3', 'data'));
     }
 }

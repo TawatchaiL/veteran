@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Services\FileUploadService;
 use App\Services\GraphService;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,5 +26,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+        View::addNamespace('graph', resource_path('views/graph'));
     }
+   
+
 }

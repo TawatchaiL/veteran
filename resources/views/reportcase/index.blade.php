@@ -203,7 +203,9 @@
                                     <div class="col-sm-8 mx-auto text-center">
                                         {!! $chart3->renderHtml() !!}
                                     </div>
-
+                                    <div>
+                                        {!! $data->renderHtml() !!}
+                                    </div>
                                 </div>
                             </div>
                         </div>

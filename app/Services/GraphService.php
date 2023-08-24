@@ -3,6 +3,8 @@
 namespace App\Services;
 
 
+
+
 class GraphService
 {
     public $options     = [];
