@@ -329,7 +329,12 @@
             lengthMenu: [5, 10, 25, 50, 75, 100],
             stateSave: true,
             autoWidth: false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ],
             responsive: true,
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
@@ -348,7 +353,7 @@
                     name: 'sumcases'
                 },
             ]
-        }).buttons().container().appendTo('#Listview_wrapper');
+        });
 
         var dd = $("#example1").DataTable({
             "responsive": true,
