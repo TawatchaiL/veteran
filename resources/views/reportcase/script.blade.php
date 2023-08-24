@@ -440,13 +440,16 @@
                 body: data
             });
 
-            // Open a new window to display the PDF content for printing
-            var pdfDataUri = doc.output('datauristring');
-            var printWindow = window.open();
-            printWindow.document.open();
-            printWindow.document.write('<iframe src="' + pdfDataUri +
-                '" width="100%" height="100%"></iframe>');
-            printWindow.document.close();
+            // Open the browser's native print dialog for the PDF content
+            doc.print();
+
+            /*  // Open a new window to display the PDF content for printing
+             var pdfDataUri = doc.output('datauristring');
+             var printWindow = window.open();
+             printWindow.document.open();
+             printWindow.document.write('<iframe src="' + pdfDataUri +
+                 '" width="100%" height="100%"></iframe>');
+             printWindow.document.close(); */
         });
 
 
