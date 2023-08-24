@@ -340,7 +340,28 @@
             autoWidth: false,
             buttons: [
                 'copy',
-                'excel',
+                {
+                    extend: 'excel',
+                    text: 'Excel',
+                    title: 'ผลรวมสายเข้าแยกตาม Agent',
+                    customize: function(xlsx) {
+                        var sheet = xlsx.xl.worksheets['sheet1.xml'];
+
+                        // Customize the header style
+                        $('row:first c', sheet).each(function(index) {
+                            $(this).attr('s',
+                                'customHeaderStyle'); // Apply style to header cells
+                        });
+
+                        // Define a custom style for the header cells
+                        var styles = xlsx.xl['styles.xml'];
+                        var headerStyle =
+                            '<cellXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment horizontal="center" vertical="center" wrapText="1" /><font /></xf></cellXfs>';
+
+                        // Add the custom style to the styles
+                        $('cellXfs', styles).prepend(headerStyle);
+                    }
+                },
                 'csv',
                 { // กำหนดพิเศษเฉพาะปุ่ม pdf
                     "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
@@ -396,7 +417,32 @@
 
                     }
                 },
-                'print'
+                {
+                    extend: 'print',
+                    text: 'Print',
+                    title: 'ผลรวมสายเข้าแยกตาม Agent',
+                    exportOptions: {
+                        format: {
+                            body: function(data, row, column, node) {
+                                // You can set your font here
+                                $(node).css('font-family', 'THSarabun');
+                                return data;
+                            }
+                        }
+                    },
+                    customize: function(win) {
+                        // Customize the print layout
+                        $(win.document.body).find('h1').css('text-align', 'center');
+                        $(win.document.body).find('table').addClass('display').css('font-size',
+                            '12px');
+                        $(win.document.body).find('table.dataTable th, table.dataTable td').css(
+                            'border', '1px solid #ddd');
+                        $(win.document.body).find('table.dataTable th').css('background-color',
+                            '#f2f2f2');
+                        $(win.document.body).find('table.dataTable td:nth-child(0)').css(
+                            'width', '50px');
+                    }
+                }
             ],
             layout: {
                 hLineWidth: function(i, node) {
