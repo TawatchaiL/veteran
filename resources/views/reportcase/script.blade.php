@@ -1,5 +1,5 @@
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.15/jspdf.plugin.autotable.min.js"></script>
 <script>
     $(document).ready(function() {
@@ -388,6 +388,7 @@
                 data.push(rowData);
             });
 
+            // Create a table using the autoTable plugin
             doc.autoTable({
                 head: [columns],
                 body: data
@@ -398,7 +399,7 @@
 
 
 
-        $("#example1").DataTable({
+       /*  $("#example1").DataTable({
             "responsive": true,
             "lengthChange": false,
             "autoWidth": false,
@@ -412,7 +413,7 @@
             "info": true,
             "autoWidth": false,
             "responsive": true,
-        });
+        }); */
 
 
 
