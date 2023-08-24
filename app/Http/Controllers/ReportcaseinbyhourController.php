@@ -114,28 +114,18 @@ class ReportcaseinbyhourController extends Controller
                     return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
-        $chart1 = new LaravelChart([
-            'data' => $datas,
-            'type' => 'bar',
-            'title' => 'Cases per Time Slot',
-            'labels' => 'numberhour',
-            'values' => 'case_count',
-            'library' => 'datatable', // Use DataTables for rendering
-            'options' => [
-                'paging' => false,
-                'searching' => false,
-            ],
-        ]);
-        //$chart_options = [
-        //    'chart_title' => 'Bar Graph',
-        //    'report_type' => 'group_by_string',
-        //    'model' => 'App\Models\Cases',
-        //    'group_by_field' => 'casetype1',
-        //    'chart_type' => 'bar',
-        //    'chart_color' => '255, 99, 71, 1', // Specify valid color values
 
-        //];
-        //$chart1 = new LaravelChart($chart_options);
+        $chart_options = [
+            'chart_title' => 'Bar Graph',
+            'report_type' => 'group_by_string',
+            'model' => 'App\Models\Cases',
+            'group_by_field' => 'casetype1',
+            'chart_type' => 'bar',
+            'chart_color' => '255, 99, 71, 1', // Specify valid color values
+
+        ];
+        $chart1 = new LaravelChart($chart_options);
+
         $chart_options = [
             'chart_title' => 'Line Graph',
             'report_type' => 'group_by_string',
