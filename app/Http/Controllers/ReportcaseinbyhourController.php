@@ -39,7 +39,7 @@ class ReportcaseinbyhourController extends Controller
         if ($request->ajax()) {
             //sleep(2);
                 $datas = DB::table('timeslot')
-                    ->selectRaw("timeslot.*, c.numberhour, c.total_cases")
+                    ->selectRaw("timeslot.timeslot as timelabel, c.numberhour, c.total_cases as sumt")
                     ->leftJoin(DB::raw("(SELECT
                         CASE
                             WHEN TIME(created_at) < '01:00:00' THEN '00:00-01:00'

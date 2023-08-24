@@ -334,8 +334,8 @@
                     searchable: false
                 },
                 {
-                    data: 'numberhour',
-                    name: 'numberhour'
+                    data: 'timelabel',
+                    name: 'timelabel'
                 },
                 {
                     data: 'sumt',
