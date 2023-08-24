@@ -4,10 +4,10 @@
 <script>
     pdfMake.fonts = {
         THSarabun: {
-            normal: 'fonts/THSarabunNew.ttf',
-            bold: 'fonts/THSarabunNew Bold.ttf',
-            italics: 'fonts/THSarabunNew Italic.ttf',
-            bolditalics: 'fonts/THSarabunNew BoldItalic.ttf'
+            normal: '{{ asset('fonts/THSarabunNew.ttf') }}',
+            bold: '{{ asset('fonts/THSarabunNew Bold.ttf') }}',
+            italics: '{{ asset('fonts/THSarabunNew Italic.ttf') }}',
+            bolditalics: '{{ asset('fonts/THSarabunNew BoldItalic.ttf') }}'
         }
     }
     $(document).ready(function() {
@@ -353,21 +353,17 @@
                             fontSize: 16
                         };
                         // กำหนดความกว้างของ header แต่ละคอลัมน์หัวข้อ
-                        doc.content[1].table.widths = [50, 'auto'/* , '*', '*' */];
+                        doc.content[1].table.widths = [50, 'auto', '*', '*'];
                         doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
-                        var rowCount = doc.content[1].table.body
-                        .length; // หาจำนวนแะวทั้งหมดในตาราง
+                        var rowCount = doc.content[1].table.body.length; // หาจำนวนแะวทั้งหมดในตาราง
                         // วนลูปเพื่อกำหนดค่าแต่ละคอลัมน์ เช่นการจัดตำแหน่ง
-                        for (i = 1; i <
-                            rowCount; i++) { // i เริ่มที่ 1 เพราะ i แรกเป็นแถวของหัวข้อ
-                            doc.content[1].table.body[i][0].alignment =
-                            'center'; // คอลัมน์แรกเริ่มที่ 0
+                        for (i = 1; i <rowCount; i++) { // i เริ่มที่ 1 เพราะ i แรกเป็นแถวของหัวข้อ
+                            doc.content[1].table.body[i][0].alignment = 'center'; // คอลัมน์แรกเริ่มที่ 0
                             doc.content[1].table.body[i][1].alignment = 'center';
                             //doc.content[1].table.body[i][2].alignment = 'left';
                             //doc.content[1].table.body[i][3].alignment = 'right';
                         };
-                        console.log(
-                        doc); // เอาไว้ debug ดู doc object proptery เพื่ออ้างอิงเพิ่มเติม
+                        console.log(doc); // เอาไว้ debug ดู doc object proptery เพื่ออ้างอิงเพิ่มเติม
                     }
                 },
                 'print'
