@@ -193,26 +193,6 @@
         });
 
 
-        $('#exportPDFButton').on('click', function() {
-            // Use DataTables Buttons to export to PDF
-            dataTable.buttons.exportData({
-                format: {
-                    body: function(data, row, column, node) {
-                        // Strip HTML tags to get plain text for PDF
-                        return column === 0 ? $(node).text() : data;
-                    }
-                }
-            });
-
-            // Generate PDF using jsPDF
-            var doc = new jsPDF();
-            doc.text('Table Export to PDF', 10, 10);
-            doc.autoTable({
-                html: '#listview',
-                startY: 20
-            });
-            doc.save('table-export.pdf');
-        });
 
 
         $(".delete_all_button").click(function() {
@@ -302,7 +282,7 @@
         });
 
 
-        var table = $('#listview').DataTable({
+        var table = $('#Listview').DataTable({
             /*"aoColumnDefs": [
             {
             'bSortable': true,
@@ -367,7 +347,29 @@
                     name: 'sumcases'
                 },
             ]
-        }).buttons().container().appendTo('#listview_wrapper .col-md-6:eq(0)');
+        }).buttons().container().appendTo('#Listview_wrapper .col-md-6:eq(0)');
+
+        $('#exportPDFButton').on('click', function() {
+            // Use DataTables Buttons to export to PDF
+            table.buttons.exportData({
+                format: {
+                    body: function(data, row, column, node) {
+                        // Strip HTML tags to get plain text for PDF
+                        return column === 0 ? $(node).text() : data;
+                    }
+                }
+            });
+
+            // Generate PDF using jsPDF
+            var doc = new jsPDF();
+            doc.text('Table Export to PDF', 10, 10);
+            doc.autoTable({
+                html: '#listview',
+                startY: 20
+            });
+            doc.save('table-export.pdf');
+        });
+
 
 
         $("#example1").DataTable({
