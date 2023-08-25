@@ -13,6 +13,8 @@ class GraphService
     {
         foreach (func_get_args() as $arg) {
             $this->options = $arg;
+            $this->options['chart_id'] = $arg['chart_id'];
+            $this->options['chart_title'] = $arg['chart_title'];
             $this->options['chart_name'] = strtolower(Str::slug($arg['chart_title'], '_'));
             $this->options['color'] = $this->options['color'];
             $this->datasets[] = ['data' => $this->options['data']];

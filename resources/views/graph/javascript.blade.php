@@ -35,7 +35,7 @@
                 @endforeach
             ],
             title: {
-                //text: 'สถิติการเข้าชม แยกตามหน้า ประจำวันที่ 2023-06-30 - 2023-06-30',
+                text: '{{ $options['chart_title'] }}',
                 margin: 50,
                 //offsetX: 50,
                 //offsetY: 100,
@@ -109,7 +109,7 @@
             }
         };
 
-        var chart = new ApexCharts(document.querySelector("#{{ $options['chart_name'] ?? 'myChart' }}"), options);
+        var chart = new ApexCharts(document.querySelector("#{{ $options['chart_id'] ?? 'myChart' }}"), options);
         chart.render();
     @elseif ($options['chart_type'] == 'line')
         var options = {
@@ -159,7 +159,7 @@
                 '#A5978B', '#FD6A6A'
             ],
             title: {
-                //text: 'สถิติการเข้าชม รายวัน ประจำเดือน 2023-06',
+                text: '{{ $options['chart_title'] }}',
                 align: 'left'
             },
             subtitle: {
@@ -195,7 +195,7 @@
             }
         };
 
-        var chart = new ApexCharts(document.querySelector("#{{ $options['chart_name'] ?? 'myChart' }}"), options);
+        var chart = new ApexCharts(document.querySelector("#{{ $options['chart_id'] ?? 'myChart' }}"), options);
         chart.render();
     @elseif ($options['chart_type'] == 'pie')
 
@@ -223,7 +223,7 @@
                 '#A5978B', '#FD6A6A'
             ],
             title: {
-                //text: 'OS ที่ดูมากที่สุด ประจำวันที่ 2023-06-30 - 2023-06-30',
+                text: '{{ $options['chart_title'] }}',
                 align: 'center',
                 margin: 10,
                 offsetX: 0,
@@ -256,7 +256,7 @@
             }]
         };
 
-        var chart = new ApexCharts(document.querySelector("#{{ $options['chart_name'] ?? 'myChart' }}"), options);
+        var chart = new ApexCharts(document.querySelector("#{{ $options['chart_id'] ?? 'myChart' }}"), options);
         chart.render();
     @endif
 </script>
