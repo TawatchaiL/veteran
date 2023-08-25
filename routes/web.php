@@ -81,6 +81,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/reportsumbytype', [App\Http\Controllers\ReportsumbytypeController::class, 'index'])->name('reportsumbytype');
     Route::get('/reportcaseinbyhour', [App\Http\Controllers\ReportcaseinbyhourController::class, 'index'])->name('reportcaseinbyhour');
     Route::get('/reportcaseoutbyhour', [App\Http\Controllers\ReportcaseinbyhourController::class, 'index'])->name('reportcaseoutbyhour');
+    Route::get('/reportsumcasebystatus', [App\Http\Controllers\ReportreportsumcasebystatusController::class, 'index'])->name('reportsumcasebystatus');
 
 
     
