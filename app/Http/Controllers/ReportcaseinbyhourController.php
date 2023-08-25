@@ -36,7 +36,7 @@ class ReportcaseinbyhourController extends Controller
     public function index(Request $request)
     {
 
-        if ($request->ajax()) {
+        //if ($request->ajax()) {
             //sleep(2);
                 $datas = DB::table('timeslot')
                     ->selectRaw("timeslot.timeslot as timelabel, c.numberhour, if(c.numberhour IS NULL,0,c.total_cases) as sumt")
@@ -114,7 +114,7 @@ class ReportcaseinbyhourController extends Controller
             //    ->editColumn('checkbox', function ($row) {
             //        return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
             //    })->rawColumns(['checkbox', 'action'])->toJson();
-        }
+        //}
 
         $chart_options = [
             'chart_title' => 'Bar Graph',
