@@ -192,7 +192,7 @@
                                     </button>
                                 </div>
                                 <div class="col-sm-10 mx-auto text-center" id="bar_chart_div">
-                                    {!! $chart1->renderHtml() !!}
+
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="custom-tabs-one-line" role="tabpanel" aria-labelledby="custom-tabs-one-line-tab">
@@ -208,7 +208,7 @@
                                     </button>
                                 </div>
                                 <div class="col-sm-10 mx-auto text-center" id="bar_chart_div">
-                                        {!! $chart2->renderHtml() !!}
+
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="custom-tabs-one-pie" role="tabpanel" aria-labelledby="custom-tabs-one-pie-tab">
@@ -224,7 +224,7 @@
                                     </button>
                                 </div>
                                 <div class="col-sm-10 mx-auto text-center" id="bar_chart_div">
-                                        {!! $chart3->renderHtml() !!} 
+
                                 </div>
                             </div>
                         </div>
@@ -239,11 +239,6 @@
 @endsection
 @section('script')
 @include('reportcaseinbyhour.script')
-    {!! $chart1->renderJs() !!}
 
-    {!! $chart2->renderJs() !!}
-
-
-    {!! $chart3->renderJs() !!}
 
 @endsection
