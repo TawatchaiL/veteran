@@ -60,7 +60,7 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-address-book"></i> ผลรวมแยกตามประเภทที่ติดต่อ</h3>
+                            <h3 class="card-title"><i class="fas fa-address-book"></i> ผลรวมสายเข้าภายในแยกตามช่วงเวลา</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -100,7 +100,7 @@
                                     <thead>
                                         <tr>
                                             <th width="20px"><input type="checkbox" id="check-all" class="flat"></th>
-                                            <th>ประเภทการติดต่อ</th>
+                                            <th>ช่วงเวลา</th>
                                             <th width="280px">จำนวน</th>
                                         </tr>
                                     </thead>
