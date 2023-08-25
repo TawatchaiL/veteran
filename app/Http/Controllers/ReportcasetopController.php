@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
+use App\Services\GraphService;
 
 class ReportcasetopController extends Controller
 {
@@ -35,11 +36,6 @@ class ReportcasetopController extends Controller
     public function index(Request $request)
     {
 
-        if ($request->ajax()) {
-            //sleep(2);
-
-            //$datas = Cases::orderBy("id", "desc")->get();
-
             $datas = DB::table('cases')
                 ->select('casetype1', DB::raw('count(casetype1) as sumcases'))
                 ->groupBy('casetype1')
@@ -50,36 +46,49 @@ class ReportcasetopController extends Controller
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 })->rawColumns(['checkbox', 'action'])->toJson();
+
+        //graph data
+        $chart_data = array();
+        foreach ($datas as $data) {
+            $chart_data[$data->agent] = $data->sumcases;
         }
 
-        $chart_options = [
-            'chart_title' => 'Bar Graph',
-            'report_type' => 'group_by_string',
-            'model' => 'App\Models\Cases',
-            'group_by_field' => 'casetype1',
-            'chart_color' => '255,160,122',
-            'chart_type' => 'bar',
-        ];
-        $chart1 = new LaravelChart($chart_options);
+        $graph_color = array(
+            '#E91E63', '#2E93fA', '#546E7A', '#66DA26', '#FF9800',  '#4ECDC4', '#C7F464', '#81D4FA',
+            '#A5978B', '#FD6A6A'
+        );
+
+        $chart_title = "ผลรวมสายเข้าแยกตาม Agent";
 
         $chart_options = [
-            'chart_title' => 'Line Graph',
-            'report_type' => 'group_by_string',
-            'model' => 'App\Models\Cases',
-            'group_by_field' => 'casetype1',
-            'chart_color' => '136, 8, 8',
-            'chart_type' => 'line',
+            'chart_id' => 'bar_graph',
+            'chart_title' => $chart_title,
+            'chart_type' => 'bar',
+            'color' => $graph_color,
+            'data' => $chart_data
         ];
-        $chart2 = new LaravelChart($chart_options);
+
+        $chart1 = new GraphService($chart_options);
+
         $chart_options = [
-            'chart_title' => 'Pie Graph',
-            'report_type' => 'group_by_string',
-            'model' => 'App\Models\Cases',
-            'group_by_field' => 'casetype1',
-            'chart_color' => '176,224,230',
-            'chart_type' => 'pie',
+            'chart_id' => 'line_graph',
+            'chart_title' => $chart_title,
+            'chart_type' => 'line',
+            'color' => $graph_color,
+            'data' => $chart_data
         ];
-        $chart3 = new LaravelChart($chart_options);
+
+        $chart2 = new GraphService($chart_options);
+
+        $chart_options = [
+            'chart_id' => 'pie_graph',
+            'chart_title' => $chart_title,
+            'chart_type' => 'pie',
+            'color' => $graph_color,
+            'data' => $chart_data
+        ];
+
+        $chart3 = new GraphService($chart_options);
 
         return view('reportcasetop10.index', compact('chart1', 'chart2', 'chart3'));
     }
