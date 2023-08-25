@@ -96,7 +96,8 @@ class ReportcaseinbyhourController extends Controller
                         END) as total_cases
                     FROM cases GROUP BY numberhour) as c"), 'timeslot.timeslot', '=', 'c.numberhour')
                     ->orderBy("timelabel", "asc")
-                    ->get();
+                    //->get();
+                    ->get()->toArray();  
             //$datas = DB::table('timeslot')
             //    ->select(DB::raw("timeslot as numberhour, 1 as sumt"))
             //    ->groupBy('numberhour')
@@ -109,10 +110,10 @@ class ReportcaseinbyhourController extends Controller
             //    ->orderBy("numberhour", "asc")
             //    ->get();
 
-            return datatables()->of($datas)
-                ->editColumn('checkbox', function ($row) {
-                    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
-                })->rawColumns(['checkbox', 'action'])->toJson();
+            //return datatables()->of($datas)
+            //    ->editColumn('checkbox', function ($row) {
+            //        return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
+            //    })->rawColumns(['checkbox', 'action'])->toJson();
         }
 
         $chart_options = [
@@ -145,6 +146,9 @@ class ReportcaseinbyhourController extends Controller
         ];
         $chart3 = new LaravelChart($chart_options);
 
-        return view('reportcaseinbyhour.index', compact('chart1', 'chart2', 'chart3'));
+        //return view('reportcaseinbyhour.index', compact('chart1', 'chart2', 'chart3'));
+        $viewer = array_column($datas, 'sumt');
+        return view('reportcaseinbyhour.index')->with('viewer',json_encode($viewer,JSON_NUMERIC_CHECK));
+        
     }
 }
