@@ -446,8 +446,8 @@
                 series: generateRandomData(12).map(item => item[1]),
                 chart: {
                     type: 'donut',
-                    width: 550,
-                    height: 650,
+                    //width: 550,
+                    height: 550,
                 },
                 colors: ['#2E93fA', '#66DA26', '#546E7A', '#E91E63', '#FF9800', '#4ECDC4', '#C7F464', '#81D4FA',
                     '#A5978B', '#FD6A6A'
@@ -468,10 +468,10 @@
                 },
                 labels: generateTimeLabels(12),
                 responsive: [{
-                    breakpoint: 280,
-                    options_os: {
+                    breakpoint: 200,
+                    options: {
                         chart: {
-                            width: 200,
+                            width: 300,
                         },
                         legend: {
                             position: 'bottom'
@@ -488,8 +488,8 @@
                 series: [10, 5, 18, 20, 50],
                 chart: {
                     type: 'donut',
-                    width: 460,
-                    height: 450,
+                    //width: 460,
+                    height: 550,
                 },
                 colors: ['#4ECDC4', '#FF9800', '#2E93fA', '#66DA26', '#E91E63', '#546E7A', '#C7F464', '#81D4FA',
                     '#A5978B', '#FD6A6A'
@@ -511,10 +511,10 @@
 
                 labels: ['1', '2', '3', '4', '5'],
                 responsive: [{
-                    breakpoint: 280,
-                    options_c: {
+                    breakpoint: 200,
+                    options: {
                         chart: {
-                            width: 200,
+                            width: 300,
                         },
                         legend: {
                             position: 'bottom'
@@ -532,5 +532,4 @@
 
         })
     </script>
-
 @endsection
