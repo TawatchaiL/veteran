@@ -26,8 +26,13 @@
                 },
 
             },
-            colors: ['#E91E63', '#2E93fA', '#546E7A', '#66DA26', '#FF9800', '#4ECDC4', '#C7F464', '#81D4FA',
-                '#A5978B', '#FD6A6A'
+            colors: [
+                @foreach ($options['color'] as $color)
+                    '{!! $color !!}'
+                    @unless ($loop->last)
+                        ,
+                    @endunless
+                @endforeach
             ],
             title: {
                 //text: 'สถิติการเข้าชม แยกตามหน้า ประจำวันที่ 2023-06-30 - 2023-06-30',
@@ -238,7 +243,7 @@
                     @endforeach
                 @endif
             ],
-             responsive: [{
+            responsive: [{
                 breakpoint: 200,
                 options: {
                     chart: {

@@ -58,24 +58,33 @@ class ReportcaseController extends Controller
         }
 
         $chart_options = [
-            'chart_title' => 'Bar Graph',
+            'chart_id' => 'bar_graph',
+            'chart_title' => 'ผลรวมสายเข้าแยกตาม Agent',
             'chart_type' => 'bar',
+            'color' => array('#FF9800', '#E91E63', '#2E93fA', '#546E7A', '#66DA26', '#4ECDC4', '#C7F464', '#81D4FA',
+            '#A5978B', '#FD6A6A'),
             'data' => $chart_data
         ];
 
         $chart1 = new GraphService($chart_options);
 
         $chart_options = [
-            'chart_title' => 'Line Graph',
+            'chart_id' => 'line_graph',
+            'chart_title' => 'ผลรวมสายเข้าแยกตาม Agent',
             'chart_type' => 'line',
+            'color' => array('#E91E63', '#2E93fA', '#546E7A', '#66DA26', '#FF9800', '#4ECDC4', '#C7F464', '#81D4FA',
+            '#A5978B', '#FD6A6A'),
             'data' => $chart_data
         ];
 
         $chart2 = new GraphService($chart_options);
 
         $chart_options = [
-            'chart_title' => 'Pie Graph',
+            'chart_id' => 'pie_graph',
+            'chart_title' => 'ผลรวมสายเข้าแยกตาม Agent',
             'chart_type' => 'pie',
+            'color' => array('#E91E63', '#2E93fA', '#546E7A', '#66DA26', '#FF9800', '#4ECDC4', '#C7F464', '#81D4FA',
+            '#A5978B', '#FD6A6A'),
             'data' => $chart_data
         ];
 
