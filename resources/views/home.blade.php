@@ -489,7 +489,7 @@
                 chart: {
                     type: 'donut',
                     //width: 460,
-                    height: 380,
+                    height: 370,
                 },
                 colors: ['#4ECDC4', '#FF9800', '#2E93fA', '#66DA26', '#E91E63', '#546E7A', '#C7F464', '#81D4FA',
                     '#A5978B', '#FD6A6A'
