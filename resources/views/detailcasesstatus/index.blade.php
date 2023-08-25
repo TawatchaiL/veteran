@@ -47,8 +47,6 @@
                                     class="select2 select2_casetype3 form-control" id="casetype3"
                                     name="casetype3" multiple="multiple">
                                     <option value="" selected>ปิดเคส</option>
-                                                                                                                                                                                                                                                                                                                                                                <option value="" selected>Select Parent</option>-->
-
                                 </select>
                             </div>
                         </div>
