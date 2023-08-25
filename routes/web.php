@@ -87,6 +87,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/detailcaseinternalnumber', [App\Http\Controllers\DetailcaseinternalnumberController::class, 'index'])->name('detailcaseinternalnumber');
     Route::get('/detailcaseexternalnumber', [App\Http\Controllers\DetailcaseexternalnumberController::class, 'index'])->name('detailcaseexternalnumber');
     Route::get('/detailcases', [App\Http\Controllers\DetailcasesController::class, 'index'])->name('detailcases');
+    Route::get('/detailcasesstatus', [App\Http\Controllers\DetailcasesstatusController::class, 'index'])->name('detailcasesstatus');
     //file
     Route::post('/file/upload', function (Request $request) {
         $result = FileUploadService::fileStore($request);
