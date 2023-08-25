@@ -7,7 +7,7 @@
 @section('content')
 <script src="https://raw.githubusercontent.com/nnnick/Chart.js/master/dist/Chart.bundle.js"></script>  
 <script>  
-    var year = ['2013','2014','2015', '2016'];  
+    var year = ['2013','2014','2015', '2016','2013','2014','2015', '2016','2013','2014','2015', '2016'];  
     var data_viewer = <?php echo $viewer; ?>;  
   
     var barChartData = {  
@@ -81,7 +81,7 @@
                                         <div class="form-group">
                                             <button type="button" class="btn btn-success" id="CreateButton">
                                                 <i class="fas fa-address-book"></i> รายงาน </button>
-                                                <canvas id="canvas" height="280" width="600"></canvas>  
+                                                
                                         </div>
                                     </div>
                                 </ol>
@@ -192,7 +192,7 @@
                                     </button>
                                 </div>
                                 <div class="col-sm-10 mx-auto text-center" id="bar_chart_div">
-
+                                    <canvas id="canvas" height="280" width="600"></canvas>  
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="custom-tabs-one-line" role="tabpanel" aria-labelledby="custom-tabs-one-line-tab">
