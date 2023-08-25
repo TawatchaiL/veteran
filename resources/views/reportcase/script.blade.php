@@ -12,20 +12,11 @@
     }
     $(document).ready(function() {
         $('#download_bar').click(function(event) {
-            /*  var pdf = new jsPDF();
-             var chartContainer = document.querySelector("#bar_chart_div");
-
-             html2canvas(chartContainer).then(canvas => {
-                 var imgData = canvas.toDataURL("image/png");
-
-                 pdf.addImage(imgData, 'PNG', 0, 0);
-                 pdf.save("chart.pdf");
-             });  */
-            var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
-            var pdfHeight = 841.89; // Height of A4 in points
+            var pdfWidth = 841.89; // Width of A4 in points (1 point = 1/72 inch)
+            var pdfHeight = 595.28; // Height of A4 in points
             var pdf = new jsPDF({
                 unit: 'pt', // Use points as the unit for measurements
-                format: [pdfWidth, pdfHeight] // Set the format to A4 size
+                format: [pdfWidth, pdfHeight] // Set the format to A4 size in landscape
             });
 
             var chartContainer = document.querySelector("#bar_graph");
@@ -33,15 +24,26 @@
             html2canvas(chartContainer).then(canvas => {
                 var imgData = canvas.toDataURL("image/png");
 
-                var imgWidth = pdfWidth; // Use the same width as PDF
-                var imgHeight = (canvas.height * imgWidth) / canvas
-                    .width; // Calculate proportional height
+                var imgAspectRatio = canvas.width / canvas.height;
+                var pdfAspectRatio = pdfWidth / pdfHeight;
 
-                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth,
-                    imgHeight); // Add the resized image
+                var imgWidth, imgHeight;
+
+                if (imgAspectRatio > pdfAspectRatio) {
+                    imgWidth = pdfWidth;
+                    imgHeight = imgWidth / imgAspectRatio;
+                } else {
+                    imgHeight = pdfHeight;
+                    imgWidth = imgHeight * imgAspectRatio;
+                }
+
+                var xOffset = (pdfWidth - imgWidth) / 2;
+                var yOffset = (pdfHeight - imgHeight) / 2;
+
+                pdf.addImage(imgData, 'PNG', xOffset, yOffset, imgWidth,
+                imgHeight); // Add the resized image
                 pdf.save("bar_chart.pdf");
             });
-
         });
 
         $('#download_bar_img').click(function(event) {
@@ -66,6 +68,10 @@
 
                 var printWindow = window.open('', '_blank');
                 printWindow.document.open();
+                printWindow.document.write(
+                    '<style>@page { size: landscape; }</style>'); // Set landscape orientation
+                printWindow.document.write(
+                    '<style>body { font-family: Sarabun; }</style>'); // Set font style
                 printWindow.document.write('<img src="' + imgData + '">');
 
 
@@ -83,11 +89,11 @@
 
         $('#download_line').click(function(event) {
 
-            var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
-            var pdfHeight = 841.89; // Height of A4 in points
+            var pdfWidth = 841.89; // Width of A4 in points (1 point = 1/72 inch)
+            var pdfHeight = 595.28; // Height of A4 in points
             var pdf = new jsPDF({
                 unit: 'pt', // Use points as the unit for measurements
-                format: [pdfWidth, pdfHeight] // Set the format to A4 size
+                format: [pdfWidth, pdfHeight] // Set the format to A4 size in landscape
             });
 
             var chartContainer = document.querySelector("#line_graph");
@@ -128,6 +134,10 @@
 
                 var printWindow = window.open('', '_blank');
                 printWindow.document.open();
+                printWindow.document.write(
+                    '<style>@page { size: landscape; }</style>'); // Set landscape orientation
+                printWindow.document.write(
+                    '<style>body { font-family: Sarabun; }</style>'); // Set font style
                 printWindow.document.write('<img src="' + imgData + '">');
                 // Add an event listener for afterprint to close the print window
                 printWindow.addEventListener('afterprint', function() {
@@ -143,11 +153,11 @@
 
         $('#download_pie').click(function(event) {
 
-            var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
-            var pdfHeight = 841.89; // Height of A4 in points
+            var pdfWidth = 841.89; // Width of A4 in points (1 point = 1/72 inch)
+            var pdfHeight = 595.28; // Height of A4 in points
             var pdf = new jsPDF({
                 unit: 'pt', // Use points as the unit for measurements
-                format: [pdfWidth, pdfHeight] // Set the format to A4 size
+                format: [pdfWidth, pdfHeight] // Set the format to A4 size in landscape
             });
 
             var chartContainer = document.querySelector("#pie_graph");
@@ -188,6 +198,10 @@
 
                 var printWindow = window.open('', '_blank');
                 printWindow.document.open();
+                printWindow.document.write(
+                    '<style>@page { size: landscape; }</style>'); // Set landscape orientation
+                printWindow.document.write(
+                    '<style>body { font-family: Sarabun; }</style>'); // Set font style
                 printWindow.document.write('<img src="' + imgData + '">');
                 printWindow.document.close(); // Close the document for writing
 
@@ -450,7 +464,9 @@
                             '#f2f2f2');
                         $(win.document.body).find('table.dataTable td:nth-child(0)').css(
                             'width', '50px');
-                    }
+                    },
+                    // Set landscape orientation
+                    orientation: 'landscape'
                 }
             ],
             layout: {
