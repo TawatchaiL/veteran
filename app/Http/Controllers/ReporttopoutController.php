@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
+use App\Services\GraphService;
 
 class ReporttopoutController extends Controller
 {
@@ -35,7 +36,7 @@ class ReporttopoutController extends Controller
     public function index(Request $request)
     {
 
-        if ($request->ajax()) {
+
             //sleep(2);
 
             //$datas = Cases::orderBy("id", "desc")->get();
@@ -47,47 +48,55 @@ class ReporttopoutController extends Controller
                 ->orderBy("sumcases", "desc")
                 ->limit(10)
                 ->get();
-
+        if ($request->ajax()) {
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
 
-        $chart_options = [
-            'chart_title' => 'Bar Graph',
-            'report_type' => 'group_by_string',
-            'model' => 'App\Models\Cases',
-            'where_raw' => 'LENGTH(telno) > 4',
-            'group_by_field' => 'telno',
-            'top_results' => 10,
-            'chart_color' => '255,160,122',
-            'chart_type' => 'bar',
-        ];
-        $chart1 = new LaravelChart($chart_options);
+        //graph data
+        $chart_data = array();
+        foreach ($datas as $data) {
+            $chart_data[$data->telno] = $data->sumcases;
+        }
+
+        $graph_color = array(
+            '#E91E63', '#2E93fA', '#546E7A', '#66DA26', '#FF9800',  '#4ECDC4', '#C7F464', '#81D4FA',
+            '#A5978B', '#FD6A6A'
+        );
+
+        $chart_title = "ผลรวมสายเข้าแยกตาม Agent";
 
         $chart_options = [
-            'chart_title' => 'Line Graph',
-            'report_type' => 'group_by_string',
-            'model' => 'App\Models\Cases',
-            'where_raw' => 'LENGTH(telno) > 4',
-            'group_by_field' => 'telno',
-            'top_results' => 10,
-            'chart_color' => '136, 8, 8',
-            'chart_type' => 'line',
+            'chart_id' => 'bar_graph',
+            'chart_title' => $chart_title,
+            'chart_type' => 'bar',
+            'color' => $graph_color,
+            'data' => $chart_data
         ];
-        $chart2 = new LaravelChart($chart_options);
+
+        $chart1 = new GraphService($chart_options);
+
         $chart_options = [
-            'chart_title' => 'Pie Graph',
-            'report_type' => 'group_by_string',
-            'model' => 'App\Models\Cases',
-            'where_raw' => 'LENGTH(telno) > 4',
-            'group_by_field' => 'telno',
-            'top_results' => 10,
-            'chart_color' => '176,224,230',
-            'chart_type' => 'pie',
+            'chart_id' => 'line_graph',
+            'chart_title' => $chart_title,
+            'chart_type' => 'line',
+            'color' => $graph_color,
+            'data' => $chart_data
         ];
-        $chart3 = new LaravelChart($chart_options);
+
+        $chart2 = new GraphService($chart_options);
+
+        $chart_options = [
+            'chart_id' => 'pie_graph',
+            'chart_title' => $chart_title,
+            'chart_type' => 'pie',
+            'color' => $graph_color,
+            'data' => $chart_data
+        ];
+
+        $chart3 = new GraphService($chart_options);
 
         return view('reporttop10out.index', compact('chart1', 'chart2', 'chart3'));
     }
