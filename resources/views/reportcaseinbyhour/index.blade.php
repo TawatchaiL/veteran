@@ -234,7 +234,6 @@
 
     </section>
 
-
     {{--  {!! $data->render() !!} --}}
 @endsection
 @section('script')
