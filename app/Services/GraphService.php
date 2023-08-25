@@ -19,16 +19,6 @@ class GraphService
         //dd($this->datasets);
     }
 
-    public static function render()
-    {
-        $options = [
-            'name' => 'Graph',
-        ];
-        return $options;
-        //return response()->json(['success' => $newname]);
-    }
-
-
     public function renderHtml()
     {
         return view('graph::html', ['options' => $this->options]);
