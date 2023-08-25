@@ -93,7 +93,7 @@ class ReportcaseinbyhourController extends Controller
                             WHEN TIME(created_at) < '24:00:00' THEN 1 
                             ELSE 0
                         END) as total_cases
-                    FROM cases LENGTH(telno) < 5 GROUP BY numberhour) as c"), 'timeslot.timeslot', '=', 'c.numberhour')
+                    FROM cases LENGTH(telno) > 4 GROUP BY numberhour) as c"), 'timeslot.timeslot', '=', 'c.numberhour')
                     ->orderBy("timelabel", "asc")
                     ->get();
             //$datas = DB::table('timeslot')
@@ -125,7 +125,7 @@ class ReportcaseinbyhourController extends Controller
             '#A5978B', '#FD6A6A'
         );
 
-        $chart_title = "ผลรวมสายเข้าภายในแยกตามช่วงเวลา";
+        $chart_title = "ผลรวมสายเข้าภายนอกแยกตามช่วงเวลา";
 
         $chart_options = [
             'chart_id' => 'bar_graph',
@@ -157,6 +157,6 @@ class ReportcaseinbyhourController extends Controller
 
         $chart3 = new GraphService($chart_options);
 
-        return view('reportcaseinbyhour.index', compact('chart1', 'chart2', 'chart3'));
+        return view('reportcaseoutbyhour.index', compact('chart1', 'chart2', 'chart3'));
     }
 }
