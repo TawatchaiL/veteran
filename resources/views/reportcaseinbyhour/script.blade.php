@@ -1,22 +1,22 @@
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
 <script>
+    pdfMake.fonts = {
+        THSarabun: {
+            normal: '{{ asset('fonts/THSarabunNew.ttf') }}',
+            bold: '{{ asset('fonts/THSarabunNew Bold.ttf') }}',
+            italics: '{{ asset('fonts/THSarabunNew Italic.ttf') }}',
+            bolditalics: '{{ asset('fonts/THSarabunNew BoldItalic.ttf') }}'
+        }
+    }
     $(document).ready(function() {
         $('#download_bar').click(function(event) {
-            /*  var pdf = new jsPDF();
-             var chartContainer = document.querySelector("#bar_chart_div");
-
-             html2canvas(chartContainer).then(canvas => {
-                 var imgData = canvas.toDataURL("image/png");
-
-                 pdf.addImage(imgData, 'PNG', 0, 0);
-                 pdf.save("chart.pdf");
-             });  */
-            var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
-            var pdfHeight = 841.89; // Height of A4 in points
+            var pdfWidth = 841.89; // Width of A4 in points (1 point = 1/72 inch)
+            var pdfHeight = 595.28; // Height of A4 in points
             var pdf = new jsPDF({
                 unit: 'pt', // Use points as the unit for measurements
-                format: [pdfWidth, pdfHeight] // Set the format to A4 size
+                format: [pdfWidth, pdfHeight] // Set the format to A4 size in landscape
             });
 
             var chartContainer = document.querySelector("#bar_graph");
@@ -24,15 +24,26 @@
             html2canvas(chartContainer).then(canvas => {
                 var imgData = canvas.toDataURL("image/png");
 
-                var imgWidth = pdfWidth; // Use the same width as PDF
-                var imgHeight = (canvas.height * imgWidth) / canvas
-                    .width; // Calculate proportional height
+                var imgAspectRatio = canvas.width / canvas.height;
+                var pdfAspectRatio = pdfWidth / pdfHeight;
 
-                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth,
-                    imgHeight); // Add the resized image
+                var imgWidth, imgHeight;
+
+                if (imgAspectRatio > pdfAspectRatio) {
+                    imgWidth = pdfWidth;
+                    imgHeight = imgWidth / imgAspectRatio;
+                } else {
+                    imgHeight = pdfHeight;
+                    imgWidth = imgHeight * imgAspectRatio;
+                }
+
+                var xOffset = (pdfWidth - imgWidth) / 2;
+                var yOffset = (pdfHeight - imgHeight) / 2;
+
+                pdf.addImage(imgData, 'PNG', xOffset, yOffset, imgWidth,
+                imgHeight); // Add the resized image
                 pdf.save("bar_chart.pdf");
             });
-
         });
 
         $('#download_bar_img').click(function(event) {
@@ -57,6 +68,10 @@
 
                 var printWindow = window.open('', '_blank');
                 printWindow.document.open();
+                printWindow.document.write(
+                    '<style>@page { size: landscape; }</style>'); // Set landscape orientation
+                printWindow.document.write(
+                    '<style>body { font-family: Sarabun; }</style>'); // Set font style
                 printWindow.document.write('<img src="' + imgData + '">');
 
 
@@ -74,11 +89,11 @@
 
         $('#download_line').click(function(event) {
 
-            var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
-            var pdfHeight = 841.89; // Height of A4 in points
+            var pdfWidth = 841.89; // Width of A4 in points (1 point = 1/72 inch)
+            var pdfHeight = 595.28; // Height of A4 in points
             var pdf = new jsPDF({
                 unit: 'pt', // Use points as the unit for measurements
-                format: [pdfWidth, pdfHeight] // Set the format to A4 size
+                format: [pdfWidth, pdfHeight] // Set the format to A4 size in landscape
             });
 
             var chartContainer = document.querySelector("#line_graph");
@@ -119,6 +134,10 @@
 
                 var printWindow = window.open('', '_blank');
                 printWindow.document.open();
+                printWindow.document.write(
+                    '<style>@page { size: landscape; }</style>'); // Set landscape orientation
+                printWindow.document.write(
+                    '<style>body { font-family: Sarabun; }</style>'); // Set font style
                 printWindow.document.write('<img src="' + imgData + '">');
                 // Add an event listener for afterprint to close the print window
                 printWindow.addEventListener('afterprint', function() {
@@ -134,11 +153,11 @@
 
         $('#download_pie').click(function(event) {
 
-            var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
-            var pdfHeight = 841.89; // Height of A4 in points
+            var pdfWidth = 841.89; // Width of A4 in points (1 point = 1/72 inch)
+            var pdfHeight = 595.28; // Height of A4 in points
             var pdf = new jsPDF({
                 unit: 'pt', // Use points as the unit for measurements
-                format: [pdfWidth, pdfHeight] // Set the format to A4 size
+                format: [pdfWidth, pdfHeight] // Set the format to A4 size in landscape
             });
 
             var chartContainer = document.querySelector("#pie_graph");
@@ -172,14 +191,20 @@
         });
 
         $('#print_pie').click(function(event) {
-            var chartContainer = document.querySelector("#line_graph");
+            var chartContainer = document.querySelector("#pie_graph");
 
             html2canvas(chartContainer).then(canvas => {
                 var imgData = canvas.toDataURL("image/png");
 
                 var printWindow = window.open('', '_blank');
                 printWindow.document.open();
+                printWindow.document.write(
+                    '<style>@page { size: landscape; }</style>'); // Set landscape orientation
+                printWindow.document.write(
+                    '<style>body { font-family: Sarabun; }</style>'); // Set font style
                 printWindow.document.write('<img src="' + imgData + '">');
+                printWindow.document.close(); // Close the document for writing
+
                 // Add an event listener for afterprint to close the print window
                 printWindow.addEventListener('afterprint', function() {
                     printWindow.close();
@@ -191,6 +216,10 @@
                 }, 1000); // Adjust the delay as needed
             });
         });
+
+
+
+
         $(".delete_all_button").click(function() {
             var len = $('input[name="table_records[]"]:checked').length;
             if (len > 0) {
@@ -292,8 +321,9 @@
             "sPaginationType": "full_numbers",
             "dom": 'T<"clear">lfrtip',
                 */
-            paging: false,
-            searching: false,  
+            dom: 'Bfrtip',
+            paging: true,
+            searching: false,
             ajax: '',
             serverSide: true,
             processing: true,
@@ -316,14 +346,143 @@
                     "sLast": "สุดท้าย"
                 }
             },
-            
+
             aaSorting: [
                 [0, "desc"]
             ],
-            iDisplayLength: 10,
-            lengthMenu: [10, 25, 50, 75, 100],
+            iDisplayLength: 5,
+            lengthMenu: [5, 10, 25, 50, 75, 100],
             stateSave: true,
             autoWidth: false,
+            buttons: [
+                'copy',
+                {
+                    extend: 'excel',
+                    text: 'Excel',
+                    title: 'ผลรวมสายเข้าแยกตาม Agent',
+                    exportOptions: {
+                        columns: ':visible:not(.no-print)',
+                    },
+                    customize: function(xlsx) {
+                        var sheet = xlsx.xl.worksheets['sheet1.xml'];
+
+                        // Customize the header style
+                        $('row:first c', sheet).each(function(index) {
+                            $(this).attr('s',
+                                'customHeaderStyle'); // Apply style to header cells
+                        });
+
+                        // Define a custom style for the header cells
+                        var styles = xlsx.xl['styles.xml'];
+                        var headerStyle =
+                            '<cellXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment horizontal="center" vertical="center" wrapText="1" /><font /></xf></cellXfs>';
+
+                        // Add the custom style to the styles
+                        $('cellXfs', styles).prepend(headerStyle);
+                    }
+                },
+                'csv',
+                { // กำหนดพิเศษเฉพาะปุ่ม pdf
+                    "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
+                    "text": 'PDF', // ข้อความที่แสดง
+                    "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
+                    "title": 'ผลรวมสายเข้าแยกตาม Agent',
+                    exportOptions: {
+                        columns: ':visible:not(.no-print)',
+                    },
+                    "customize": function(doc) { // ส่วนกำหนดเพิ่มเติม ส่วนนี้จะใช้จัดการกับ pdfmake
+                        // กำหนด style หลัก
+                        doc.defaultStyle = {
+                            font: 'THSarabun',
+                            fontSize: 16
+                        };
+                        // กำหนดความกว้างของ header แต่ละคอลัมน์หัวข้อ
+                        doc.content[1].table.widths = [50, '*', '*', '*'];
+                        doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
+                        // Add cell borders
+                        doc.content[1].table.layout = {
+                            hLineWidth: function(i, node) {
+                                return 1; // Border width for horizontal lines
+                            },
+                            vLineWidth: function(i, node) {
+                                return 1; // Border width for vertical lines
+                            },
+                            hLineColor: function(i, node) {
+                                return '#bfbfbf'; // Border color for horizontal lines
+                            },
+                            vLineColor: function(i, node) {
+                                return '#bfbfbf'; // Border color for vertical lines
+                            },
+                            paddingLeft: function(i, node) {
+                                return 5; // Padding for cells
+                            },
+                            paddingRight: function(i, node) {
+                                return 5; // Padding for cells
+                            },
+                            paddingTop: function(i, node) {
+                                return 3; // Padding for cells
+                            },
+                            paddingBottom: function(i, node) {
+                                return 3; // Padding for cells
+                            }
+
+                        }
+                        for (var i = 1; i < doc.content[1].table.body.length; i++) {
+                            doc.content[1].table.body[i][0].alignment =
+                                'center'; // Align the first column to the center
+                            doc.content[1].table.body[i][1].alignment =
+                                'center'; // Align the second column to the right
+                            //doc.content[1].table.body[i][2].alignment =
+                            //'center'; // Align the second column to the right
+                            // Customize alignments for other columns as needed
+                        }
+
+                    }
+                },
+                {
+                    extend: 'print',
+                    text: 'Print',
+                    title: 'ผลรวมสายเข้าแยกตาม Agent',
+                    exportOptions: {
+                        columns: ':visible:not(.no-print)',
+                        format: {
+                            body: function(data, row, column, node) {
+                                // You can set your font here
+                                $(node).css('font-family', 'THSarabun');
+                                return data;
+                            }
+                        }
+                    },
+                    customize: function(win) {
+                        // Customize the print layout
+                        $(win.document.body).find('h1').css('text-align', 'center');
+                        $(win.document.body).find('table').addClass('display').css('font-size',
+                            '12px');
+                        $(win.document.body).find('table.dataTable th, table.dataTable td').css(
+                            'border', '1px solid #ddd');
+                        $(win.document.body).find('table.dataTable th').css('background-color',
+                            '#f2f2f2');
+                        $(win.document.body).find('table.dataTable td:nth-child(0)').css(
+                            'width', '50px');
+                    },
+                    // Set landscape orientation
+                    orientation: 'landscape'
+                }
+            ],
+            layout: {
+                hLineWidth: function(i, node) {
+                    return 1; // Border width for horizontal lines
+                },
+                vLineWidth: function(i, node) {
+                    return 1; // Border width for vertical lines
+                },
+                hLineColor: function(i, node) {
+                    return '#bfbfbf'; // Border color for horizontal lines
+                },
+                vLineColor: function(i, node) {
+                    return '#bfbfbf'; // Border color for vertical lines
+                }
+            },
             responsive: true,
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
@@ -331,54 +490,67 @@
                     data: 'checkbox',
                     name: 'checkbox',
                     orderable: false,
-                    searchable: false
+                    searchable: false,
+                    className: 'no-print'
                 },
                 {
-                    data: 'timelabel',
-                    name: 'timelabel'
+                    data: 'agent',
+                    name: 'agent'
                 },
                 {
-                    data: 'sumt',
-                    name: 'sumt'
+                    data: 'sumcases',
+                    name: 'sumcases'
                 },
             ]
         });
 
 
-        $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
+        $('#exportPDFButton').on('click', function() {
+            /* var doc = new jsPDF();
+
+            doc.setFontSize(12); // Set font size
+            doc.setFont('Sarabun'); // Set Google Font family
+
+            doc.text("Table Export", 10, 10);
+
+            var columns = [];
+            var data = [];
+
+            // Get column names from DataTable
+            table.columns().every(function() {
+                columns.push(this.header().textContent.trim());
+            });
+
+            // Get data from DataTable
+            table.rows({
+                selected: true
+            }).every(function() {
+                var rowData = [];
+                var cells = this.nodes().to$();
+                cells.find('td').each(function() {
+                    rowData.push($(this).text());
+                });
+                data.push(rowData);
+            });
+
+            doc.autoTable({
+                head: [columns],
+                body: data
+            });
+
+            doc.save('table-export.pdf'); */
+            table.button('3').trigger();
+        });
+
+        $('#exportXLSButton').on('click', function() {
+            table.button('1').trigger();
         });
 
 
+        $('#exportPrintButton').on('click', function() {
+            table.button('4').trigger();
+        });
 
-        //$(document).on('click', '#CreateButton', function(e) {
-        //    e.preventDefault();
-        //    $('.alert-danger').html('');
-        //    $('.alert-danger').hide();
-        //    $('.alert-success').html('');
-        //    $('.alert-success').hide();
-        //    $.ajax({
-        //        method: "GET",
-        //        url: "{{ route('contacts.running') }}",
-        //        success: function(res) {
-        //            console.log(res)
-        //            $('#AddCode').val(res.running);
-         //       }
-        //    });
-        //    $('#CreateModal').modal('show');
-        //});
 
 
 
@@ -426,114 +598,6 @@
             });
         });
 
-        let id;
-        $(document).on('click', '#getEditData', function(e) {
-            e.preventDefault();
 
-
-            $('.alert-danger').html('');
-            $('.alert-danger').hide();
-            $('.alert-success').html('');
-            $('.alert-success').hide();
-
-            id = $(this).data('id');
-            $.ajax({
-                url: "contacts/edit/" + id,
-                method: 'GET',
-                success: function(res) {
-                    $('#EditName').val(res.data.name);
-                    $('#EditEmail').val(res.data.email);
-                    $('#EditPostcode').val(res.data.postcode);
-                    $('#EditAddress').val(res.data.address);
-                    $('#EditTelephone').val(res.data.telephone);
-
-                    $('#EditModalBody').html(res.html);
-                    $('#EditModal').modal('show');
-                }
-            });
-
-        })
-
-        $('#SubmitEditForm').click(function(e) {
-            if (!confirm("ยืนยันการทำรายการ ?")) return;
-            e.preventDefault();
-
-            $('.alert-danger').html('');
-            $('.alert-danger').hide();
-            $('.alert-success').html('');
-            $('.alert-success').hide();
-
-
-            $.ajax({
-                url: "contacts/save/" + id,
-                method: 'PUT',
-                data: {
-                    name: $('#EditName').val(),
-                    email: $('#EditEmail').val(),
-                    postcode: $('#EditPostcode').val(),
-                    address: $('#EditAddress').val(),
-                    telephone: $('#EditTelephone').val(),
-                },
-
-                success: function(result) {
-                    //console.log(result);
-                    if (result.errors) {
-                        $('.alert-danger').html('');
-                        $.each(result.errors, function(key, value) {
-                            $('.alert-danger').show();
-                            $('.alert-danger').append('<strong><li>' + value +
-                                '</li></strong>');
-                        });
-                    } else {
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('.alert-success').append('<strong><li>' + result.success +
-                            '</li></strong>');
-                        $('#EditModal').modal('hide');
-                        toastr.success(result.success, {
-                            timeOut: 5000
-                        });
-                        $('#Listview').DataTable().ajax.reload();
-                        //setTimeout(function() {
-                        //$('.alert-success').hide();
-
-                        //}, 10000);
-
-                    }
-                }
-            });
-        });
-
-        $(document).on('click', '.btn-delete', function() {
-            if (!confirm("ยืนยันการทำรายการ ?")) return;
-
-            var rowid = $(this).data('rowid')
-            var el = $(this)
-            if (!rowid) return;
-
-
-            $.ajax({
-                //type: "POST",
-                method: 'DELETE',
-                dataType: 'JSON',
-                url: "contacts/destroy/",
-                data: {
-                    id: rowid,
-                    //_method: 'delete',
-                    _token: token
-                },
-                success: function(data) {
-                    console.log(data);
-                    if (data.success) {
-                        toastr.success(data.message, {
-                            timeOut: 5000
-                        });
-                        table.row(el.parents('tr'))
-                            .remove()
-                            .draw();
-                    }
-                }
-            }); //end ajax
-        })
     });
 </script>

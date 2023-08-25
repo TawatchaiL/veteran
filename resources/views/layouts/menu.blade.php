@@ -64,7 +64,7 @@
             <li class="nav-item">
                 <a href="{{ route('reportcaseinbyhour') }}" class="nav-link {{ Request::is('reportcaseinbyhour') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p style="font-size: 12px;">ผลรวมสายเข้าแยกตามช่วงเวลา</p>
+                    <p style="font-size: 12px;">ผลรวมสายเข้าภายในแยกตามช่วงเวลา</p>
                 </a>
             </li>
         </ul>
