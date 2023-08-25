@@ -159,13 +159,13 @@
                             </div>
                             <div class="tab-pane fade" id="custom-tabs-one-line" role="tabpanel" aria-labelledby="custom-tabs-one-line-tab">
                                 <div class="col-xs-12 col-sm-12 col-md-12 align-self-end text-right">
-                                    <button id="download_bar" class="btn btn-info">
+                                    <button id="download_line" class="btn btn-info">
                                         <i class="fas fa-file-pdf"></i> บันทึกเป็น PDF
                                     </button>
-                                    <button id="download_bar_img" class="btn btn-warning">
+                                    <button id="download_line_img" class="btn btn-warning">
                                         <i class="fas fa-file-image"></i> บันทึกเป็นรูป
                                     </button>
-                                    <button id="print_bar" class="btn btn-secondary">
+                                    <button id="print_line" class="btn btn-secondary">
                                         <i class="fas fa-print"></i> พิมพ์กราฟ
                                     </button>
                                 </div>
@@ -175,13 +175,13 @@
                             </div>
                             <div class="tab-pane fade" id="custom-tabs-one-pie" role="tabpanel" aria-labelledby="custom-tabs-one-pie-tab">
                                 <div class="col-xs-12 col-sm-12 col-md-12 align-self-end text-right">
-                                    <button id="download_bar" class="btn btn-info">
+                                    <button id="download_pie" class="btn btn-info">
                                         <i class="fas fa-file-pdf"></i> บันทึกเป็น PDF
                                     </button>
-                                    <button id="download_bar_img" class="btn btn-warning">
+                                    <button id="download_pie_img" class="btn btn-warning">
                                         <i class="fas fa-file-image"></i> บันทึกเป็นรูป
                                     </button>
-                                    <button id="print_bar" class="btn btn-secondary">
+                                    <button id="print_pie" class="btn btn-secondary">
                                         <i class="fas fa-print"></i> พิมพ์กราฟ
                                     </button>
                                 </div>
