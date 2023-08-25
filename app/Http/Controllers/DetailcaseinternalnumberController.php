@@ -34,13 +34,10 @@ class DetailcaseinternalnumberController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request)
-    {
+    { 
         $datas = DB::table('cases')
-        ->select('telno', DB::raw('count(telno) as sumcases'))
+        ->select(DB::raw('DATE(addtime) as cdate'), DB::raw('TIME(addtime) as ctime'),'telno','agent' )
         ->whereRaw('LENGTH(telno) < 5')
-        ->groupBy('telno')
-        ->orderBy("sumcases", "desc")
-        ->limit(10)
         ->get();
 
         if ($request->ajax()) {
@@ -51,50 +48,7 @@ class DetailcaseinternalnumberController extends Controller
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
         
-        //graph data
-        $chart_data = array();
-        foreach ($datas as $data) {
-            $chart_data[$data->telno] = $data->sumcases;
-        }
-
-        $graph_color = array(
-            '#E91E63', '#2E93fA', '#546E7A', '#66DA26', '#FF9800',  '#4ECDC4', '#C7F464', '#81D4FA',
-            '#A5978B', '#FD6A6A'
-        );
-
-        $chart_title = "10 อันดับเบอร์ภายใน";
-
-        $chart_options = [
-            'chart_id' => 'bar_graph',
-            'chart_title' => $chart_title,
-            'chart_type' => 'bar',
-            'color' => $graph_color,
-            'data' => $chart_data
-        ];
-
-        $chart1 = new GraphService($chart_options);
-
-        $chart_options = [
-            'chart_id' => 'line_graph',
-            'chart_title' => $chart_title,
-            'chart_type' => 'line',
-            'color' => $graph_color,
-            'data' => $chart_data
-        ];
-
-        $chart2 = new GraphService($chart_options);
-
-        $chart_options = [
-            'chart_id' => 'pie_graph',
-            'chart_title' => $chart_title,
-            'chart_type' => 'pie',
-            'color' => $graph_color,
-            'data' => $chart_data
-        ];
-
-        $chart3 = new GraphService($chart_options);
-
-        return view('reporttop10in.index', compact('chart1', 'chart2', 'chart3'));
+        return view('detailcaseinternalnumber.index');
     }
 
     /**
