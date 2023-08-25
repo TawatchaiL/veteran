@@ -79,6 +79,12 @@
                     <p style="font-size: 12px;">ผลรวมเรื่องที่ติดต่อแยกตามสถานะ</p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route('reportsumcasebytranferstatus') }}" class="nav-link {{ Request::is('reportsumcasebytranferstatus') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p style="font-size: 12px;">ผลรวมเรื่องที่ติดต่อแยกตามสถานะการโอนสาย</p>
+                </a>
+            </li>
         </ul>
     </li>
 @endcan
