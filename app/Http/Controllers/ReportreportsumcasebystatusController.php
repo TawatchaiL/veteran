@@ -64,7 +64,7 @@ class ReportreportsumcasebystatusController extends Controller
             '#A5978B', '#FD6A6A'
         );
 
-        $chart_title = "ผลรวมแยกเรื่องที่ติดต่อแยกตามสถานะ";
+        $chart_title = "ผลรวมเรื่องที่ติดต่อแยกตามสถานะ";
 
         $chart_options = [
             'chart_id' => 'bar_graph',
