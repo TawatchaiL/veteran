@@ -58,7 +58,7 @@ class ReportcasetopController extends Controller
             '#A5978B', '#FD6A6A'
         );
 
-        $chart_title = "ผลรวมสายเข้าแยกตาม Agent";
+        $chart_title = "10 อันดับเรื่องที่ติดต่อมากที่สุด";
 
         $chart_options = [
             'chart_id' => 'bar_graph',

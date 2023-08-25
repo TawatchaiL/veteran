@@ -66,7 +66,7 @@ class ReporttopoutController extends Controller
             '#A5978B', '#FD6A6A'
         );
 
-        $chart_title = "ผลรวมสายเข้าแยกตาม Agent";
+        $chart_title = "10 อันดับเบอร์ภายนอก";
 
         $chart_options = [
             'chart_id' => 'bar_graph',

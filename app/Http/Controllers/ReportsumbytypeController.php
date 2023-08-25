@@ -64,7 +64,7 @@ class ReportsumbytypeController extends Controller
             '#A5978B', '#FD6A6A'
         );
 
-        $chart_title = "ผลรวมสายเข้าแยกตาม Agent";
+        $chart_title = "ผลรวมแยกตามประเภทที่ติดต่อ";
 
         $chart_options = [
             'chart_id' => 'bar_graph',
