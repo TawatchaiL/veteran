@@ -5,6 +5,43 @@
 @endsection
 
 @section('content')
+<script src="https://raw.githubusercontent.com/nnnick/Chart.js/master/dist/Chart.bundle.js"></script>  
+<script>  
+    var year = ['2013','2014','2015', '2016','2013','2014','2015', '2016','2013','2014','2015', '2016'];  
+    var data_viewer = <?php echo $viewer; ?>;  
+  
+    var barChartData = {  
+        labels: year,  
+        datasets: [{  
+            label: 'View',  
+            backgroundColor: "rgba(151,187,205,0.5)",  
+            data: data_viewer  
+        }]  
+    };  
+  
+    window.onload = function() {  
+        var ctx = document.getElementById("canvas").getContext("2d");  
+        window.myBar = new Chart(ctx, {  
+            type: 'bar',  
+            data: barChartData,  
+            options: {  
+                elements: {  
+                    rectangle: {  
+                        borderWidth: 2,  
+                        borderColor: 'rgb(0, 255, 0)',  
+                        borderSkipped: 'bottom'  
+                    }  
+                },  
+                responsive: true,  
+                title: {  
+                    display: true,  
+                    text: 'Yearly Website Visitor'  
+                }  
+            }  
+        });  
+  
+    };  
+</script>  
     <section class="content-header">
         <div class="container-fluid">
             <div class="row">
@@ -44,6 +81,7 @@
                                         <div class="form-group">
                                             <button type="button" class="btn btn-success" id="CreateButton">
                                                 <i class="fas fa-address-book"></i> รายงาน </button>
+                                                
                                         </div>
                                     </div>
                                 </ol>
@@ -154,7 +192,7 @@
                                     </button>
                                 </div>
                                 <div class="col-sm-10 mx-auto text-center" id="bar_chart_div">
-                                    {!! $chart1->renderHtml() !!}
+                                    <canvas id="canvas" height="280" width="600"></canvas> 
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="custom-tabs-one-line" role="tabpanel" aria-labelledby="custom-tabs-one-line-tab">
@@ -170,7 +208,7 @@
                                     </button>
                                 </div>
                                 <div class="col-sm-10 mx-auto text-center" id="bar_chart_div">
-                                        {!! $chart2->renderHtml() !!}
+
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="custom-tabs-one-pie" role="tabpanel" aria-labelledby="custom-tabs-one-pie-tab">
@@ -186,7 +224,7 @@
                                     </button>
                                 </div>
                                 <div class="col-sm-10 mx-auto text-center" id="bar_chart_div">
-                                        {!! $chart3->renderHtml() !!} 
+
                                 </div>
                             </div>
                         </div>
@@ -196,16 +234,10 @@
 
     </section>
 
-
     {{--  {!! $data->render() !!} --}}
 @endsection
 @section('script')
 @include('reportcaseinbyhour.script')
-    {!! $chart1->renderJs() !!}
 
-    {!! $chart2->renderJs() !!}
-
-
-    {!! $chart3->renderJs() !!}
 
 @endsection
