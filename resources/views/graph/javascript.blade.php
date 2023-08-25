@@ -70,7 +70,7 @@
             dataLabels: {
                 enabled: true,
                 formatter: function(val) {
-                    return val /* + "%" */;
+                    return val /* + "%" */ ;
                 },
                 offsetY: -20,
                 style: {
@@ -170,7 +170,7 @@
             dataLabels: {
                 enabled: true,
                 formatter: function(val) {
-                    return val /* + "%" */;
+                    return val /* + "%" */ ;
                 },
                 offsetY: -20,
                 style: {
@@ -182,8 +182,13 @@
                 curve: 'straight',
                 width: 4
             },
-            colors: ['#E91E63', '#2E93fA', '#546E7A', '#66DA26', '#FF9800', '#4ECDC4', '#C7F464', '#81D4FA',
-                '#A5978B', '#FD6A6A'
+            colors: [
+                @foreach ($options['color'] as $color)
+                    '{!! $color !!}'
+                    @unless ($loop->last)
+                        ,
+                    @endunless
+                @endforeach
             ],
             title: {
                 text: '{{ $options['chart_title'] }}',
@@ -252,9 +257,17 @@
                     show: false
                 },
             },
-            colors: ['#E91E63', '#2E93fA', '#546E7A', '#66DA26', '#FF9800', '#4ECDC4', '#C7F464', '#81D4FA',
-                '#A5978B', '#FD6A6A'
+            colors: [
+                @foreach ($options['color'] as $color)
+                    '{!! $color !!}'
+                    @unless ($loop->last)
+                        ,
+                    @endunless
+                @endforeach
             ],
+            fill: {
+                type: 'gradient',
+            },
             title: {
                 text: '{{ $options['chart_title'] }}',
                 align: 'center',
