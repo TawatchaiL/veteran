@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
+use App\Services\GraphService;
 
 class ReporttopinController extends Controller
 {
