@@ -48,7 +48,7 @@ class DetailcasesstatusController extends Controller
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
         
-        return view('detailcases.index');
+        return view('detailcasesstatus.index');
     }
 
     /**
