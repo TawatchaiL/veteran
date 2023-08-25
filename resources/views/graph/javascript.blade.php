@@ -43,7 +43,7 @@
                 style: {
                     fontSize: '16px',
                     fontWeight: 'bold',
-                    fontFamily: 'Saraban',
+                    fontFamily: 'Sarabun',
                     color: '#263238'
                 },
                 //offsetX: 50,
@@ -240,16 +240,16 @@
             title: {
                 text: '{{ $options['chart_title'] }}',
                 align: 'center',
+                style: {
+                    fontSize: '16px',
+                    fontWeight: 'bold',
+                    fontFamily: 'Sarabun',
+                    color: '#263238'
+                },
                 margin: 10,
                 offsetX: 0,
                 offsetY: 0,
                 floating: false,
-                style: {
-                    fontSize: '16px',
-                    fontWeight: 'bold',
-                    fontFamily: 'Saraban',
-                    color: '#263238'
-                },
             },
             labels: [
                 @if (count($datasets) > 0)
