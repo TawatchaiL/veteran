@@ -512,7 +512,6 @@
             ]
         });
 
-        'casedetail', 'casestatus', 'tranferstatus', 'agent'
         $('#exportPDFButton').on('click', function() {
             /* var doc = new jsPDF();
 
