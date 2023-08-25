@@ -36,16 +36,14 @@ class ReportcaseController extends Controller
     public function index(Request $request)
     {
 
+        $datas = DB::table('cases')
+            ->select('agent', DB::raw('count(*) as sumcases'))
+            ->groupBy('agent')
+            ->orderBy("sumcases", "desc")
+            ->get();
+
+
         if ($request->ajax()) {
-            //sleep(2);
-
-            //$datas = Cases::orderBy("id", "desc")->get();
-
-            $datas = DB::table('cases')
-                ->select('agent', DB::raw('count(*) as sumcases'))
-                ->groupBy('agent')
-                ->orderBy("sumcases", "desc")
-                ->get();
 
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
@@ -53,37 +51,37 @@ class ReportcaseController extends Controller
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
 
+        //graph data
+        $chart_data = array();
+        foreach ($datas as $data) {
+            $chart_data[$data->agent] = $data->sumcases;
+        }
+
         $chart_options = [
             'chart_title' => 'Bar Graph',
-            'report_type' => 'group_by_string',
-            'model' => 'App\Models\Cases',
-            'group_by_field' => 'agent',
             'chart_type' => 'bar',
-            'chart_color' => '255, 99, 71, 1', // Specify valid color values
-
+            'data' => $chart_data
         ];
-        $chart1 = new LaravelChart($chart_options);
+
+        $chart1 = new GraphService($chart_options);
 
         $chart_options = [
             'chart_title' => 'Line Graph',
-            'report_type' => 'group_by_string',
-            'model' => 'App\Models\Cases',
-            'group_by_field' => 'agent',
-            'chart_color' => '136, 8, 8',
             'chart_type' => 'line',
+            'data' => $chart_data
         ];
-        $chart2 = new LaravelChart($chart_options);
+
+        $chart2 = new GraphService($chart_options);
+
         $chart_options = [
             'chart_title' => 'Pie Graph',
-            'report_type' => 'group_by_string',
-            'model' => 'App\Models\Cases',
-            'group_by_field' => 'agent',
-            'chart_color' => '176,224,230',
             'chart_type' => 'pie',
+            'data' => $chart_data
         ];
-        $chart3 = new LaravelChart($chart_options);
-        $data = new GraphService();
 
-        return view('reportcase.index', compact('chart1', 'chart2', 'chart3', 'data'));
+        $chart3 = new GraphService($chart_options);
+
+
+        return view('reportcase.index', compact('chart1', 'chart2', 'chart3'));
     }
 }

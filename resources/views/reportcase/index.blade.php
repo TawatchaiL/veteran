@@ -146,8 +146,8 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill"
-                                        href="#custom-tabs-one-pie" role="tab"
-                                        aria-controls="custom-tabs-one-profile" aria-selected="false">Pie Graph</a>
+                                        href="#custom-tabs-one-pie" role="tab" aria-controls="custom-tabs-one-profile"
+                                        aria-selected="false">Pie Graph</a>
                                 </li>
                             </ul>
                         </div>
@@ -203,9 +203,7 @@
                                     <div class="col-sm-8 mx-auto text-center">
                                         {!! $chart3->renderHtml() !!}
                                     </div>
-                                    <div>
-                                        {!! $data->renderHtml() !!}
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -216,18 +214,14 @@
 
     </section>
 
-
-    {{--  {!! $data->render() !!} --}}
 @endsection
 
 @section('script')
     @include('reportcase.script')
 
-    {{-- {!! $chart1->renderChartJsLibrary() !!} --}}
     {!! $chart1->renderJs() !!}
 
     {!! $chart2->renderJs() !!}
-
 
     {!! $chart3->renderJs() !!}
 @endsection

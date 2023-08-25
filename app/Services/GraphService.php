@@ -2,8 +2,7 @@
 
 namespace App\Services;
 
-
-
+use Illuminate\Support\Str;
 
 class GraphService
 {
@@ -12,10 +11,12 @@ class GraphService
 
     public function __construct()
     {
-        $this->datasets = ['name' => 'Graph',];
-        $this->options = [
-            'name' => 'Graph',
-        ];
+        foreach (func_get_args() as $arg) {
+            $this->options = $arg;
+            $this->options['chart_name'] = strtolower(Str::slug($arg['chart_title'], '_'));
+            $this->datasets[] = ['data' => $this->options['data']];
+        }
+        //dd($this->datasets);
     }
 
     public static function render()
