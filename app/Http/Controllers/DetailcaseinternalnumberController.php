@@ -36,7 +36,7 @@ class DetailcaseinternalnumberController extends Controller
     public function index(Request $request)
     { 
         $datas = DB::table('cases')
-        ->select(DB::raw('DATE(addtime) as cdate'), DB::raw('TIME(addtime) as ctime'),'telno','agent' )
+        ->select(DB::raw('DATE(created_at) as cdate'), DB::raw('TIME(created_at) as ctime'),'telno','agent' )
         ->whereRaw('LENGTH(telno) < 5')
         ->get();
 
