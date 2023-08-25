@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Session;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 use App\Services\GraphService;
 
-class DetailcasesController extends Controller
+class DetailcasesstatusController extends Controller
 {
     /**
      * Create a new controller instance.
