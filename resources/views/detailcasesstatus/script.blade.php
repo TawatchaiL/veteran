@@ -267,7 +267,12 @@
             //theme: 'bootstrap4'
             placeholder: 'กรุณาเลือกตำบล'
         });
-
+        $(".select2_casetype3").select2({
+            maximumSelectionLength: 1,
+            allowClear: true,
+            //theme: 'bootstrap4'
+            placeholder: 'สถานะเรื่องที่ติดต่อ'
+        });
         $(".select2_multiple").select2({
             maximumSelectionLength: 2,
             //placeholder: "With Max Selection limit 4",
