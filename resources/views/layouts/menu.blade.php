@@ -100,7 +100,7 @@
             <li class="nav-item">
                 <a href="{{ route('detailcases') }}" class="nav-link {{ Request::is('detailcases') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p style="font-size: 12px;">รายละเอียดเรื่องที่ติดต่อ</p>
+                    <p style="font-size: 12px;">รายละเอียดเรื่องที่ติดต่อ </p>
                 </a>
             </li>
         </ul>
