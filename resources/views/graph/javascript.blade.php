@@ -1,5 +1,7 @@
 <script>
-    window.Apex.chart = { fontFamily: "Sarabun" };
+    window.Apex.chart = {
+        fontFamily: "Sarabun"
+    };
     @if ($options['chart_type'] == 'bar')
         var options = {
             series: [
@@ -66,7 +68,15 @@
                 },
             },
             dataLabels: {
-                enabled: false
+                enabled: true,
+                formatter: function(val) {
+                    return val /* + "%" */;
+                },
+                offsetY: -20,
+                style: {
+                    fontSize: '14px',
+                    colors: ["#304758"]
+                }
             },
             stroke: {
                 show: true,
@@ -158,7 +168,15 @@
 
             },
             dataLabels: {
-                enabled: false
+                enabled: true,
+                formatter: function(val) {
+                    return val /* + "%" */;
+                },
+                offsetY: -20,
+                style: {
+                    fontSize: '14px',
+                    colors: ["#2E93fA"]
+                }
             },
             stroke: {
                 curve: 'straight',
