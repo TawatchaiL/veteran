@@ -34,19 +34,15 @@ class ReporttopinController extends Controller
      */
     public function index(Request $request)
     {
+        $datas = DB::table('cases')
+        ->select('telno', DB::raw('count(telno) as sumcases'))
+        ->whereRaw('LENGTH(telno) < 5')
+        ->groupBy('telno')
+        ->orderBy("sumcases", "desc")
+        ->limit(10)
+        ->get();
 
         if ($request->ajax()) {
-            //sleep(2);
-
-            //$datas = Cases::orderBy("id", "desc")->get();
-
-            $datas = DB::table('cases')
-                ->select('telno', DB::raw('count(telno) as sumcases'))
-                ->whereRaw('LENGTH(telno) < 5')
-                ->groupBy('telno')
-                ->orderBy("sumcases", "desc")
-                ->limit(10)
-                ->get();
 
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
@@ -54,40 +50,48 @@ class ReporttopinController extends Controller
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
         
-        $chart_options = [
-            'chart_title' => 'Bar Graph',
-            'report_type' => 'group_by_string',
-            'model' => 'App\Models\Cases',
-            'where_raw' => 'LENGTH(telno) < 5',
-            'group_by_field' => 'telno',
-            'top_results' => 10,
-            'chart_color' => '255,160,122',
-            'chart_type' => 'bar',
-        ];
-        $chart1 = new LaravelChart($chart_options);
+        //graph data
+        $chart_data = array();
+        foreach ($datas as $data) {
+            $chart_data[$data->telno] = $data->sumcases;
+        }
+
+        $graph_color = array(
+            '#E91E63', '#2E93fA', '#546E7A', '#66DA26', '#FF9800',  '#4ECDC4', '#C7F464', '#81D4FA',
+            '#A5978B', '#FD6A6A'
+        );
+
+        $chart_title = "ผลรวมสายเข้าแยกตาม Agent";
 
         $chart_options = [
-            'chart_title' => 'Line Graph',
-            'report_type' => 'group_by_string',
-            'model' => 'App\Models\Cases',
-            'where_raw' => 'LENGTH(telno) < 5',
-            'group_by_field' => 'telno',
-            'top_results' => 10,
-            'chart_color' => '136, 8, 8',
-            'chart_type' => 'line',
+            'chart_id' => 'bar_graph',
+            'chart_title' => $chart_title,
+            'chart_type' => 'bar',
+            'color' => $graph_color,
+            'data' => $chart_data
         ];
-        $chart2 = new LaravelChart($chart_options);
+
+        $chart1 = new GraphService($chart_options);
+
         $chart_options = [
-            'chart_title' => 'Pie Graph',
-            'report_type' => 'group_by_string',
-            'model' => 'App\Models\Cases',
-            'where_raw' => 'LENGTH(telno) < 5',
-            'group_by_field' => 'telno',
-            'top_results' => 10,
-            'chart_color' => '176,224,230',
-            'chart_type' => 'pie',
+            'chart_id' => 'line_graph',
+            'chart_title' => $chart_title,
+            'chart_type' => 'line',
+            'color' => $graph_color,
+            'data' => $chart_data
         ];
-        $chart3 = new LaravelChart($chart_options);
+
+        $chart2 = new GraphService($chart_options);
+
+        $chart_options = [
+            'chart_id' => 'pie_graph',
+            'chart_title' => $chart_title,
+            'chart_type' => 'pie',
+            'color' => $graph_color,
+            'data' => $chart_data
+        ];
+
+        $chart3 = new GraphService($chart_options);
 
         return view('reporttop10in.index', compact('chart1', 'chart2', 'chart3'));
     }
