@@ -50,7 +50,7 @@ class ReportcasetopController extends Controller
         //graph data
         $chart_data = array();
         foreach ($datas as $data) {
-            $chart_data[$data->agent] = $data->sumcases;
+            $chart_data[$data->casetype1] = $data->sumcases;
         }
 
         $graph_color = array(
