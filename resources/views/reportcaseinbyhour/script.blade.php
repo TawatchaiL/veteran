@@ -494,12 +494,12 @@
                     className: 'no-print'
                 },
                 {
-                    data: 'agent',
-                    name: 'agent'
+                    data: 'timelabel',
+                    name: 'timelabel'
                 },
                 {
-                    data: 'sumcases',
-                    name: 'sumcases'
+                    data: 'sumt',
+                    name: 'sumt'
                 },
             ]
         });
