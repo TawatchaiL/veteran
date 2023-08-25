@@ -62,9 +62,11 @@ class ReportcaseController extends Controller
             '#A5978B', '#FD6A6A'
         );
 
+        $chart_title = "ผลรวมสายเข้าแยกตาม Agent";
+
         $chart_options = [
             'chart_id' => 'bar_graph',
-            'chart_title' => 'ผลรวมสายเข้าแยกตาม Agent',
+            'chart_title' => $chart_title,
             'chart_type' => 'bar',
             'color' => $graph_color,
             'data' => $chart_data
@@ -74,7 +76,7 @@ class ReportcaseController extends Controller
 
         $chart_options = [
             'chart_id' => 'line_graph',
-            'chart_title' => 'ผลรวมสายเข้าแยกตาม Agent',
+            'chart_title' => $chart_title,
             'chart_type' => 'line',
             'color' => $graph_color,
             'data' => $chart_data
@@ -84,7 +86,7 @@ class ReportcaseController extends Controller
 
         $chart_options = [
             'chart_id' => 'pie_graph',
-            'chart_title' => 'ผลรวมสายเข้าแยกตาม Agent',
+            'chart_title' => $chart_title,
             'chart_type' => 'pie',
             'color' => $graph_color,
             'data' => $chart_data
