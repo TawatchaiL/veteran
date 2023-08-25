@@ -85,6 +85,12 @@
                     <p style="font-size: 12px;">ผลรวมเรื่องที่ติดต่อแยกตามสถานะการโอนสาย</p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route('detailcaseinternalnumber') }}" class="nav-link {{ Request::is('detailcaseinternalnumber') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p style="font-size: 12px;">รายละเอียดเบอร์ภายในที่โทรเข้ามาติดต่อ</p>
+                </a>
+            </li>
         </ul>
     </li>
 @endcan

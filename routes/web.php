@@ -84,7 +84,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/reportsumcasebystatus', [App\Http\Controllers\ReportreportsumcasebystatusController::class, 'index'])->name('reportsumcasebystatus');
     Route::get('/reportsumcasebytranferstatus', [App\Http\Controllers\ReportreportsumcasebytranferstatusController::class, 'index'])->name('reportsumcasebytranferstatus');
 
-
+    Route::get('/detailcaseinternalnumber', [App\Http\Controllers\DetailcaseinternalnumberController::class, 'index'])->name('detailcaseinternalnumber');
     
     //file
     Route::post('/file/upload', function (Request $request) {
