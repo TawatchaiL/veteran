@@ -36,7 +36,7 @@ class ReportcaseinbyhourController extends Controller
     public function index(Request $request)
     {
 
-        //if ($request->ajax()) {
+        if ($request->ajax()) {
             //sleep(2);
                 $datas = DB::table('timeslot')
                     ->selectRaw("timeslot.timeslot as timelabel, c.numberhour, if(c.numberhour IS NULL,0,c.total_cases) as sumt")
@@ -96,8 +96,7 @@ class ReportcaseinbyhourController extends Controller
                         END) as total_cases
                     FROM cases GROUP BY numberhour) as c"), 'timeslot.timeslot', '=', 'c.numberhour')
                     ->orderBy("timelabel", "asc")
-                    //->get();
-                    ->get()->toArray();  
+                    ->get();
             //$datas = DB::table('timeslot')
             //    ->select(DB::raw("timeslot as numberhour, 1 as sumt"))
             //    ->groupBy('numberhour')
@@ -110,11 +109,11 @@ class ReportcaseinbyhourController extends Controller
             //    ->orderBy("numberhour", "asc")
             //    ->get();
 
-            //return datatables()->of($datas)
-            //    ->editColumn('checkbox', function ($row) {
-            //        return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
-            //    })->rawColumns(['checkbox', 'action'])->toJson();
-        //}
+            return datatables()->of($datas)
+                ->editColumn('checkbox', function ($row) {
+                    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
+                })->rawColumns(['checkbox', 'action'])->toJson();
+        }
 
         $chart_options = [
             'chart_title' => 'Bar Graph',
@@ -146,9 +145,6 @@ class ReportcaseinbyhourController extends Controller
         ];
         $chart3 = new LaravelChart($chart_options);
 
-        //return view('reportcaseinbyhour.index', compact('chart1', 'chart2', 'chart3'));
-        $viewer = array_column($datas, 'sumt');
-        return view('reportcaseinbyhour.index')->with('viewer',json_encode($viewer,JSON_NUMERIC_CHECK));
-        
+        return view('reportcaseinbyhour.index', compact('chart1', 'chart2', 'chart3'));
     }
 }
