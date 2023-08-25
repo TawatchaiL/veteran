@@ -1,4 +1,5 @@
 <script>
+    window.Apex.chart = { fontFamily: "Sarabun" };
     @if ($options['chart_type'] == 'bar')
         var options = {
             series: [
@@ -24,6 +25,7 @@
                 toolbar: {
                     show: false
                 },
+                fontFamily: "Sarabun"
 
             },
             colors: [
@@ -37,6 +39,13 @@
             title: {
                 text: '{{ $options['chart_title'] }}',
                 margin: 50,
+                align: 'center',
+                style: {
+                    fontSize: '16px',
+                    fontWeight: 'bold',
+                    fontFamily: 'Saraban',
+                    color: '#263238'
+                },
                 //offsetX: 50,
                 //offsetY: 100,
             },
@@ -160,7 +169,13 @@
             ],
             title: {
                 text: '{{ $options['chart_title'] }}',
-                align: 'left'
+                align: 'center',
+                style: {
+                    fontSize: '16px',
+                    fontWeight: 'bold',
+                    fontFamily: 'Sarabun',
+                    color: '#263238'
+                },
             },
             subtitle: {
                 //text: 'จำนวน',
@@ -230,9 +245,9 @@
                 offsetY: 0,
                 floating: false,
                 style: {
-                    fontSize: '14px',
+                    fontSize: '16px',
                     fontWeight: 'bold',
-                    //fontFamily: undefined,
+                    fontFamily: 'Saraban',
                     color: '#263238'
                 },
             },

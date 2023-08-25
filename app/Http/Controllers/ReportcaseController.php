@@ -61,8 +61,10 @@ class ReportcaseController extends Controller
             'chart_id' => 'bar_graph',
             'chart_title' => 'ผลรวมสายเข้าแยกตาม Agent',
             'chart_type' => 'bar',
-            'color' => array('#FF9800', '#E91E63', '#2E93fA', '#546E7A', '#66DA26', '#4ECDC4', '#C7F464', '#81D4FA',
-            '#A5978B', '#FD6A6A'),
+            'color' => array(
+                '#E91E63', '#2E93fA', '#546E7A', '#66DA26', '#FF9800',  '#4ECDC4', '#C7F464', '#81D4FA',
+                '#A5978B', '#FD6A6A'
+            ),
             'data' => $chart_data
         ];
 
@@ -72,8 +74,10 @@ class ReportcaseController extends Controller
             'chart_id' => 'line_graph',
             'chart_title' => 'ผลรวมสายเข้าแยกตาม Agent',
             'chart_type' => 'line',
-            'color' => array('#E91E63', '#2E93fA', '#546E7A', '#66DA26', '#FF9800', '#4ECDC4', '#C7F464', '#81D4FA',
-            '#A5978B', '#FD6A6A'),
+            'color' => array(
+                '#E91E63', '#2E93fA', '#546E7A', '#66DA26', '#FF9800', '#4ECDC4', '#C7F464', '#81D4FA',
+                '#A5978B', '#FD6A6A'
+            ),
             'data' => $chart_data
         ];
 
@@ -83,8 +87,10 @@ class ReportcaseController extends Controller
             'chart_id' => 'pie_graph',
             'chart_title' => 'ผลรวมสายเข้าแยกตาม Agent',
             'chart_type' => 'pie',
-            'color' => array('#E91E63', '#2E93fA', '#546E7A', '#66DA26', '#FF9800', '#4ECDC4', '#C7F464', '#81D4FA',
-            '#A5978B', '#FD6A6A'),
+            'color' => array(
+                '#E91E63', '#2E93fA', '#546E7A', '#66DA26', '#FF9800', '#4ECDC4', '#C7F464', '#81D4FA',
+                '#A5978B', '#FD6A6A'
+            ),
             'data' => $chart_data
         ];
 
