@@ -93,7 +93,7 @@ class ReportcaseinbyhourController extends Controller
                             WHEN TIME(created_at) < '24:00:00' THEN 1 
                             ELSE 0
                         END) as total_cases
-                    FROM cases LENGTH(telno) > 4 GROUP BY numberhour) as c"), 'timeslot.timeslot', '=', 'c.numberhour')
+                    FROM cases WHERE LENGTH(telno) > 4 GROUP BY numberhour) as c"), 'timeslot.timeslot', '=', 'c.numberhour')
                     ->orderBy("timelabel", "asc")
                     ->get();
             //$datas = DB::table('timeslot')
