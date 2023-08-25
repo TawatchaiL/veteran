@@ -39,6 +39,19 @@
                                 ]) !!}
                             </div>
                         </div>
+                        <div class="col-xs-2 col-sm-2 col-md-2">
+                            <div class="form-group">
+                                <strong><i class="fa-regular fa-comment-dots"></i>
+                                    สถานะเรื่องที่ติดต่อ:</strong>
+                                <select style="width: 100%;"
+                                    class="select2 select2_casetype3 form-control" id="casetype3"
+                                    name="casetype3" multiple="multiple">
+                                    <option value="" selected>ปิดเคส</option>
+                                                                                                                                                                                                                                                                                                                                                                <option value="" selected>Select Parent</option>-->
+
+                                </select>
+                            </div>
+                        </div>
                         <div class="col-xs-2 col-sm-2 col-md-2 align-self-end">
                             <div class="form-group">
                                 <button type="button" class="btn btn-success" id="CreateButton">
