@@ -37,6 +37,11 @@
                     imgWidth = imgHeight * imgAspectRatio;
                 }
 
+                if (imgWidth > pdfWidth) {
+                    imgWidth = pdfWidth;
+                    imgHeight = imgWidth / imgAspectRatio;
+                }
+
                 var xOffset = (pdfWidth - imgWidth) / 2;
                 var yOffset = (pdfHeight - imgHeight) / 2;
 
