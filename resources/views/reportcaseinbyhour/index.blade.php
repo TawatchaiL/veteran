@@ -192,7 +192,7 @@
                                     </button>
                                 </div>
                                 <div class="col-sm-10 mx-auto text-center" id="bar_chart_div">
-                                    <canvas id="canvas" height="280" width="600"></canvas>  
+                                    <canvas id="canvas" height="280" width="600"></canvas> 
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="custom-tabs-one-line" role="tabpanel" aria-labelledby="custom-tabs-one-line-tab">
