@@ -44,7 +44,7 @@
                                 <strong><i class="fa-regular fa-comment-dots"></i>
                                     สถานะเรื่องที่ติดต่อ:</strong>
                                 <select style="width: 100%;"
-                                    class="select2 select2_casetype3 form-control" id="casetype3"
+                                    class="select2 form-control" id="casetype3"
                                     name="casetype3">
                                     <option value="" selected>ปิดเคส</option> 
                                 </select>
