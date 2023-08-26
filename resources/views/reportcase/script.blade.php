@@ -126,7 +126,7 @@
                 printWindow.document.write(
                 '<style>@page { size: landscape; }</style>'); // Set landscape orientation
                 printWindow.document.write(
-                '<style>body { font-family: Sarabun; }</style>'); // Set font style
+                '<link rel="stylesheet" href="dist/css/Sarabun.css"><style>body { font-family: Sarabun; }</style>'); // Set font style
                 printWindow.document.write('<img src="' + imgData + '">');
                 // Add an event listener for afterprint to close the print window
                 printWindow.addEventListener('afterprint', function() {

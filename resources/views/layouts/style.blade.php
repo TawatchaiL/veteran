@@ -27,7 +27,7 @@
     }
 
     body {
-        font-family: 'Roboto', 'Sarabun';
+        font-family: 'Sarabun', 'Roboto';
         font-size: 16px;
     }
 
@@ -76,7 +76,7 @@
         z-index: 1040;
     }
 
-    
+
 
     /* .card {
             margin-left: 10px;
