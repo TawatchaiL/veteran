@@ -90,6 +90,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/detailcasesstatus', [App\Http\Controllers\DetailcasesstatusController::class, 'index'])->name('detailcasesstatus');
 
     Route::get('/detailscore', [App\Http\Controllers\DetailscoreController::class, 'index'])->name('detailscore');
+    Route::get('/detailscoreagent', [App\Http\Controllers\DetailscoreagentController::class, 'index'])->name('detailscoreagent');
     //file
     Route::post('/file/upload', function (Request $request) {
         $result = FileUploadService::fileStore($request);

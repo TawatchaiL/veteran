@@ -115,6 +115,12 @@
                     <p style="font-size: 12px;">รายละเอียดการประเมินความพึงพอใจ</p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route('detailscoreagent') }}" class="nav-link {{ Request::is('detailscoreagent') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p style="font-size: 12px;">ผลรวมการประเมินความพึงพอใจ ราย Agent ที่รับสาย</p>
+                </a>
+            </li>
         </ul>
     </li>
 @endcan
