@@ -15,12 +15,12 @@
     </li>
 @endcan
 @can('case-list')
-<li class="nav-item">
-    <a href="{{ route('cases') }}" class="nav-link {{ Request::is('cases') ? 'active' : '' }}">
-        <i class="fas fa-clipboard nav-icon"></i>
-        <p>เรื่องที่ติดต่อ</p>
-    </a>
-</li>
+    <li class="nav-item">
+        <a href="{{ route('cases') }}" class="nav-link {{ Request::is('cases') ? 'active' : '' }}">
+            <i class="fas fa-clipboard nav-icon"></i>
+            <p>เรื่องที่ติดต่อ</p>
+        </a>
+    </li>
 @endcan
 @can('master-data-list')
     <li class="nav-item">
@@ -34,95 +34,174 @@
             <li class="nav-item">
                 <a href="{{ route('reportcase') }}" class="nav-link {{ Request::is('reportcase') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p style="font-size: 12px;">ผลรวมสายเข้าแยกตาม Agent</p>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมสายเข้าแยกตาม Agent">
+                        <span class="text-truncate d-block">
+                            ผลรวมสายเข้าแยกตาม Agent
+                        </span>
+                    </p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('reportcasetop10') }}" class="nav-link {{ Request::is('reportcasetop10') ? 'active' : '' }}">
+                <a href="{{ route('reportcasetop10') }}"
+                    class="nav-link {{ Request::is('reportcasetop10') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p style="font-size: 12px;">10 อันดับเรื่องที่ติดต่อมากที่สุด</p>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="10 อันดับเรื่องที่ติดต่อมากที่สุด">
+                        <span class="text-truncate d-block">
+                            10 อันดับเรื่องที่ติดต่อมากที่สุด
+                        </span>
+                    </p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('reporttop10in') }}" class="nav-link {{ Request::is('reporttop10in') ? 'active' : '' }}">
+                <a href="{{ route('reporttop10in') }}"
+                    class="nav-link {{ Request::is('reporttop10in') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p style="font-size: 12px;">10 อันดับเบอร์ภายใน</p>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="10 อันดับเบอร์ภายใน">
+                        <span class="text-truncate d-block">
+                            10 อันดับเบอร์ภายใน
+                        </span>
+                    </p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('reporttop10out') }}" class="nav-link {{ Request::is('reporttop10out') ? 'active' : '' }}">
+                <a href="{{ route('reporttop10out') }}"
+                    class="nav-link {{ Request::is('reporttop10out') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p style="font-size: 12px;">10 อันดับเบอร์ภายนอก</p>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="10 อันดับเบอร์ภายนอก">
+                        <span class="text-truncate d-block">
+                            10 อันดับเบอร์ภายนอก
+                        </span>
+                    </p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('reportsumbytype') }}" class="nav-link {{ Request::is('reportsumbytype') ? 'active' : '' }}">
+                <a href="{{ route('reportsumbytype') }}"
+                    class="nav-link {{ Request::is('reportsumbytype') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p style="font-size: 12px;">ผลรวมแยกตามประเภทที่ติดต่อ</p>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมแยกตามประเภทที่ติดต่อ">
+                        <span class="text-truncate d-block">
+                            ผลรวมแยกตามประเภทที่ติดต่อ
+                        </span>
+                    </p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('reportcaseinbyhour') }}" class="nav-link {{ Request::is('reportcaseinbyhour') ? 'active' : '' }}">
+                <a href="{{ route('reportcaseinbyhour') }}"
+                    class="nav-link {{ Request::is('reportcaseinbyhour') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p style="font-size: 12px;">ผลรวมสายเข้าภายในแยกตามช่วงเวลา</p>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมสายเข้าภายในแยกตามช่วงเวลา">
+                        <span class="text-truncate d-block">
+                            ผลรวมสายเข้าภายในแยกตามช่วงเวลา
+                        </span>
+                    </p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('reportcaseoutbyhour') }}" class="nav-link {{ Request::is('reportcaseoutbyhour') ? 'active' : '' }}">
+                <a href="{{ route('reportcaseoutbyhour') }}"
+                    class="nav-link {{ Request::is('reportcaseoutbyhour') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p style="font-size: 12px;">ผลรวมสายเข้าภายนอกแยกตามช่วงเวลา</p>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมสายเข้าภายนอกแยกตามช่วงเวลา">
+                        <span class="text-truncate d-block">
+                            ผลรวมสายเข้าภายนอกแยกตามช่วงเวลา
+                        </span>
+                    </p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('reportsumcasebystatus') }}" class="nav-link {{ Request::is('reportsumcasebystatus') ? 'active' : '' }}">
+                <a href="{{ route('reportsumcasebystatus') }}"
+                    class="nav-link {{ Request::is('reportsumcasebystatus') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p style="font-size: 12px;">ผลรวมเรื่องที่ติดต่อแยกตามสถานะ</p>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมเรื่องที่ติดต่อแยกตามสถานะ">
+                        <span class="text-truncate d-block">
+                            ผลรวมเรื่องที่ติดต่อแยกตามสถานะ
+                        </span>
+                    </p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('reportsumcasebytranferstatus') }}" class="nav-link {{ Request::is('reportsumcasebytranferstatus') ? 'active' : '' }}">
+                <a href="{{ route('reportsumcasebytranferstatus') }}"
+                    class="nav-link {{ Request::is('reportsumcasebytranferstatus') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p style="font-size: 12px;">ผลรวมเรื่องที่ติดต่อแยกตามสถานะการโอนสาย</p>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip"
+                        title="ผลรวมเรื่องที่ติดต่อแยกตามสถานะการโอนสาย">
+                        <span class="text-truncate d-block">
+                            ผลรวมเรื่องที่ติดต่อแยกตามสถานะการโอนสาย
+                        </span>
+                    </p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('detailcaseinternalnumber') }}" class="nav-link {{ Request::is('detailcaseinternalnumber') ? 'active' : '' }}">
+                <a href="{{ route('detailcaseinternalnumber') }}"
+                    class="nav-link {{ Request::is('detailcaseinternalnumber') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p style="font-size: 12px;">รายละเอียดเบอร์ภายในที่โทรเข้ามาติดต่อ</p>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip"
+                        title="รายละเอียดเบอร์ภายในที่โทรเข้ามาติดต่อ">
+                        <span class="text-truncate d-block">
+                            รายละเอียดเบอร์ภายในที่โทรเข้ามาติดต่อ
+                        </span>
+                    </p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('detailcaseexternalnumber') }}" class="nav-link {{ Request::is('detailcaseexternalnumber') ? 'active' : '' }}">
+                <a href="{{ route('detailcaseexternalnumber') }}"
+                    class="nav-link {{ Request::is('detailcaseexternalnumber') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p style="font-size: 12px;">รายละเอียดเบอร์ภายนอกที่โทรเข้ามาติดต่อ</p>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip"
+                        title="รายละเอียดเบอร์ภายนอกที่โทรเข้ามาติดต่อ">
+                        <span class="text-truncate d-block">
+                            รายละเอียดเบอร์ภายนอกที่โทรเข้ามาติดต่อ
+                        </span>
+                    </p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="{{ route('detailcases') }}" class="nav-link {{ Request::is('detailcases') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p style="font-size: 12px;">รายละเอียดเรื่องที่ติดต่อ </p>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="รายละเอียดเรื่องที่ติดต่อ">
+                        <span class="text-truncate d-block">
+                            รายละเอียดเรื่องที่ติดต่อ
+                        </span>
+                    </p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('detailcasesstatus') }}" class="nav-link {{ Request::is('detailcasesstatus') ? 'active' : '' }}">
+                <a href="{{ route('detailcasesstatus') }}"
+                    class="nav-link {{ Request::is('detailcasesstatus') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p style="font-size: 12px;">รายละเอียดเรื่องที่ติดต่อแสดงตามสถานะ</p>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip"
+                        title="รายละเอียดเรื่องที่ติดต่อแสดงตามสถานะ">
+                        <span class="text-truncate d-block">
+                            รายละเอียดเรื่องที่ติดต่อแสดงตามสถานะ
+                        </span>
+                    </p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="{{ route('detailscore') }}" class="nav-link {{ Request::is('detailscore') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p style="font-size: 12px;">รายละเอียดการประเมินความพึงพอใจ</p>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="รายละเอียดการประเมินความพึงพอใจ">
+                        <span class="text-truncate d-block">
+                            รายละเอียดการประเมินความพึงพอใจ
+                        </span>
+                    </p>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="{{ route('detailscoreagent') }}" class="nav-link {{ Request::is('detailscoreagent') ? 'active' : '' }}">
+            <li class="nav-item custom-tooltip">
+                <a href="{{ route('detailscoreagent') }}"
+                    class="custom-tooltip nav-link {{ Request::is('detailscoreagent') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p style="font-size: 12px;">ผลรวมการประเมินความพึงพอใจ ราย Agent ที่รับสาย</p>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip"
+                        title="ผลรวมการประเมินความพึงพอใจ ราย Agent ที่รับสาย">
+                        <span class="text-truncate d-block">
+                            ผลรวมการประเมินความพึงพอใจ ราย Agent
+                            ที่รับสาย
+                        </span>
+                    </p>
+
                 </a>
             </li>
         </ul>
-    </li> 
+    </li>
 @endcan
 @can('master-data-list')
     <li class="nav-item">

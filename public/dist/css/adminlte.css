@@ -6831,7 +6831,7 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
 }
 
 .tooltip.show {
-    opacity: 0.9;
+    opacity: 0.8;
 }
 
 .tooltip .arrow {
@@ -6909,6 +6909,8 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
 }
 
 .tooltip-inner {
+    font-family: 'Sarabun', 'Roboto';
+    font-size: 16px;
     max-width: 200px;
     padding: 0.25rem 0.5rem;
     color: #fff;

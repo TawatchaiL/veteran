@@ -20,7 +20,6 @@
     {{--  <meta name="description" content="This is an example dashboard created using build-in elements and components."> --}}
     <meta name="msapplication-tap-highlight" content="no">
     <script src="plugins/jquery/jquery.min.js"></script>
-    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="plugins/toastr/toastr.min.js"></script>
 
     <link rel="stylesheet" href="dist/css/Sans.css?:300,400,400i,700&display=fallback">
@@ -33,8 +32,6 @@
     <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
     <link rel="stylesheet" href="plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css">
-    <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-    <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <link rel="stylesheet" href="plugins/apexchart/apexcharts.min.css">
@@ -104,6 +101,7 @@
 <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script> --}}
 <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <script src="dist/js/adminlte.min.js?v=3.2.0"></script>
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="plugins/dropzone/min/dropzone.min.js"></script>
 <script>
     function updateDigitalClock() {
@@ -213,7 +211,7 @@
 
     //hide logo when resize
     $(document).ready(function() {
-
+        //$('[data-toggle="tooltip"]').tooltip();
 
         $('.sidebar-toggle-btn').on('click', function() {
             // Get the logo element

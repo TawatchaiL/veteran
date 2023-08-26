@@ -4,7 +4,19 @@
         /* Adjust the value to your desired space */
     }
 
+    .sidebar-item {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 12px;
+        max-width: 160px
+            /* Adjust as needed */
+    }
 
+
+    .custom-tooltip .tooltip.show {
+        opacity: 0.7;
+    }
 
     /* body {
             font-family: 'Sarabun', serif;
