@@ -109,6 +109,12 @@
                     <p style="font-size: 12px;">รายละเอียดเรื่องที่ติดต่อแสดงตามสถานะ</p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route('detailscore') }}" class="nav-link {{ Request::is('detailscore') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p style="font-size: 12px;">รายละเอียดการประเมินความพึงพอใจ</p>
+                </a>
+            </li>
         </ul>
     </li>
 @endcan

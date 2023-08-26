@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('style')
-    @include('detailcasesstatus.style')
+    @include('detailcaseexternalnumber.style')
 @endsection
 @section('content')
     <section class="content-header">
@@ -42,11 +42,11 @@
                         <div class="col-xs-2 col-sm-2 col-md-2">
                             <div class="form-group">
                                 <strong><i class="fa-regular fa-comment-dots"></i>
-                                    สถานะเรื่องที่ติดต่อ:</strong>
+                                    Agent ที่รับสาย:</strong>
                                 <select style="width: 100%;"
-                                    class="select2 select2_casetype3 form-control" id="casetype3"
-                                    name="casetype3">
-                                    <option value="" selected>ปิดเคส</option> 
+                                    class="select2 select2_casetype3 form-control" id="agent"
+                                    name="agent">
+                                    <option value="" selected>ทั้งหมด</option>
                                 </select>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-address-book"></i>รายละเอียดเรื่องที่ติดต่อแสดงตามสถานะ</h3>
+                            <h3 class="card-title"><i class="fas fa-address-book"></i>รายละเอียดการประเมินความพึงพอใจ</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -113,10 +113,6 @@
                                             <th>วันที่</th>
                                             <th>เวลา</th>
                                             <th>เบอร์โทรศัพท์</th>
-                                            <th>เรื่องที่ติดต่อ</th>
-                                            <th>รายละเอียดเรื่องที่ติดต่อ</th>
-                                            <th>สถานะเรื่องที่ติดต่อ</th>
-                                            <th>สถานะการโอนสาย</th>
                                             <th>Agent ที่รับสาย</th>
                                         </tr>
                                     </thead>
@@ -137,5 +133,5 @@
     </section>
     @endsection
 @section('script')
-@include('detailcasesstatus.script')
+@include('detailcaseexternalnumber.script')
 @endsection
