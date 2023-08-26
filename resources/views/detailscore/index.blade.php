@@ -44,7 +44,7 @@
                                 <strong><i class="fa-regular fa-comment-dots"></i>
                                     Agent ที่รับสาย:</strong>
                                 <select style="width: 100%;"
-                                    class="select2 select2_agent form-control" id="agent"
+                                    class="form-control" id="agent"
                                     name="agent">
                                     <option value="" selected>ทั้งหมด</option>
                                 </select>
