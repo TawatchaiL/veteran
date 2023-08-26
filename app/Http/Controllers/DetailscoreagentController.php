@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Session;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 use App\Services\GraphService;
 
-class DetailscoreController extends Controller
+class DetailscoreagentController extends Controller
 {
     /**
      * Create a new controller instance.
