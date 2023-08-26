@@ -345,7 +345,7 @@
                 {
                     extend: 'excel',
                     text: 'Excel',
-                    title: 'ผลรวมสายเข้าแยกตาม Agent',
+                    title: 'รายละเอียดการประเมินความพึงพอใจ',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                     },
