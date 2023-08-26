@@ -122,7 +122,7 @@
                 </a>
             </li>
         </ul>
-    </li>
+    </li> 
 @endcan
 @can('master-data-list')
     <li class="nav-item">
