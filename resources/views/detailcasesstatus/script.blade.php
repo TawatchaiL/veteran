@@ -350,7 +350,7 @@
                 {
                     extend: 'excel',
                     text: 'Excel',
-                    title: 'ผลรวมสายเข้าแยกตาม Agent',
+                    title: 'รายละเอียดเรื่องที่ติดต่อแสดงตามสถานะ',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                     },
@@ -377,7 +377,7 @@
                     "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
                     "text": 'PDF', // ข้อความที่แสดง
                     "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
-                    "title": 'ผลรวมสายเข้าแยกตาม Agent',
+                    "title": 'รายละเอียดเรื่องที่ติดต่อแสดงตามสถานะ',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                     },
@@ -388,7 +388,7 @@
                             fontSize: 16
                         };
                         // กำหนดความกว้างของ header แต่ละคอลัมน์หัวข้อ
-                        doc.content[1].table.widths = [50, '*', '*', '*'];
+                        doc.content[1].table.widths = [50, '*', '*', '*', '*', '*', '*', '*'];
                         doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
                         // Add cell borders
                         doc.content[1].table.layout = {
@@ -433,7 +433,7 @@
                 {
                     extend: 'print',
                     text: 'Print',
-                    title: 'ผลรวมสายเข้าแยกตาม Agent',
+                    title: 'รายละเอียดเรื่องที่ติดต่อแสดงตามสถานะ',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                         format: {
