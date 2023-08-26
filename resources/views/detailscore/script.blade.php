@@ -267,12 +267,6 @@
             //theme: 'bootstrap4'
             placeholder: 'กรุณาเลือกตำบล'
         });
-        $(".select2_agent").select2({
-            maximumSelectionLength: 1,
-            allowClear: false,
-            //theme: 'bootstrap4'
-            placeholder: 'กรุณาเลือก'
-        });
 
         $(".select2_multiple").select2({
             maximumSelectionLength: 2,
