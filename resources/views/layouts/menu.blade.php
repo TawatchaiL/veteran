@@ -34,6 +34,28 @@
     <li class="nav-item">
         <a href="#" class="nav-link">
             <i class="fa-solid fa-print nav-icon"></i>
+            <p>IVR Report</p>
+            <i class="fas fa-angle-left right"></i>
+        </a>
+        <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="{{ route('ivrreport') }}" class="nav-link {{ Request::is('ivrreport') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ivrreport">
+                        <span class="text-truncate d-block">
+                            IVR Report
+                        </span>
+                    </p>
+                </a>
+            </li>
+
+        </ul>
+    </li>
+@endcan
+@can('master-data-list')
+    <li class="nav-item">
+        <a href="#" class="nav-link">
+            <i class="fa-solid fa-print nav-icon"></i>
             <p>CRM Report</p>
             <i class="fas fa-angle-left right"></i>
         </a>

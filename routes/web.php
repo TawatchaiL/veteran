@@ -72,6 +72,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/cases/destroy_all', [App\Http\Controllers\CasesController::class, 'destroy_all'])->name('cases.destroy_all');
 
     Route::get('/voicerecord', [App\Http\Controllers\VoicerecordController::class, 'index'])->name('voicerecord');
+    Route::get('/ivrreport', [App\Http\Controllers\Ivrreportontroller::class, 'index'])->name('ivrreport');
 
     Route::get('/reportcase', [App\Http\Controllers\ReportcaseController::class, 'index'])->name('reportcase');
     Route::get('pdfreportcases', [App\Http\Controllers\PDFcasesController::class, 'pdf'])->name('reportcase.pdf');
