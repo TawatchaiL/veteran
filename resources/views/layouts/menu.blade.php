@@ -89,7 +89,16 @@
             <i class="fas fa-angle-left right"></i>
         </a>
         <ul class="nav nav-treeview">
-
+            <li class="nav-item">
+                <a href="{{ route('sumcasebyhn') }}" class="nav-link {{ Request::is('sumcasebyhn') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมสายเข้าแยกตาม Agent">
+                        <span class="text-truncate d-block">
+                            ผลรวมเรื่องที่ติดต่อแยกตาม HN
+                        </span>
+                    </p>
+                </a>
+            </li>
             <li class="nav-item">
                 <a href="{{ route('reportcase') }}" class="nav-link {{ Request::is('reportcase') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
