@@ -90,6 +90,16 @@
         </a>
         <ul class="nav nav-treeview">
             <li class="nav-item">
+                <a href="{{ route('loginstatus') }}" class="nav-link {{ Request::is('loginstatus') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมสายเข้าแยกตาม Agent">
+                        <span class="text-truncate d-block">
+                            สถานะการเข้าสู่ระบบ
+                        </span>
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="{{ route('sumcasebyhn') }}" class="nav-link {{ Request::is('sumcasebyhn') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
                     <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมสายเข้าแยกตาม Agent">
