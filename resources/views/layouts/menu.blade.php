@@ -94,7 +94,7 @@
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
                     <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมสายเข้าแยกตาม Agent">
                         <span class="text-truncate d-block">
-                            ผลรวมเรื่องที่ติดต่อแยกตาม HN
+                            ผลรวมเรื่องที่ติดต่อแยกตาม HN 
                         </span>
                     </p>
                 </a>
