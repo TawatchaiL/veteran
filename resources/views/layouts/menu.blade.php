@@ -22,6 +22,14 @@
         </a>
     </li>
 @endcan
+@can('case-list')
+    <li class="nav-item">
+        <a href="{{ route('voicerecord') }}" class="nav-link {{ Request::is('voicerecord') ? 'active' : '' }}">
+            <i class="fas fa-clipboard nav-icon"></i>
+            <p>ไฟล์บันทึกเสียงสนทนา</p>
+        </a>
+    </li>
+@endcan
 @can('master-data-list')
     <li class="nav-item">
         <a href="#" class="nav-link">
