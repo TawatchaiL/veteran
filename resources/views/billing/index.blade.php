@@ -123,5 +123,5 @@
     </section>
 @endsection
 @section('script')
-    @include('billing.script')
+    @include('billing.script') 
 @endsection
