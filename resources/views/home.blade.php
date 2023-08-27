@@ -270,7 +270,9 @@
         }
 
         $(document).ready(function() {
-
+            window.Apex.chart = {
+                fontFamily: "Sarabun"
+            };
             var options = {
                 series: [{
                         name: 'เคสที่รับแจ้ง',
