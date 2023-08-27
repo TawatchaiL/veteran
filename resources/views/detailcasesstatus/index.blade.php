@@ -13,50 +13,52 @@
                             <h3 class="card-title"><i class="fa-solid fa-magnifying-glass"></i> Filter</h3>
                         </div>
                         <div class="card-body">
-                        <div class="col-sm-12">
-                    <ol class="breadcrumb float-sm-center">
-                        {{-- <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <div class="col-sm-12">
+                                <ol class="breadcrumb float-sm-center">
+                                    {{-- <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item active">Users Management</li> --}}
-                        <div class="col-xs-2 col-sm-2 col-md-2">
-                            <div class="form-group">
-                                <strong><i class="fas fa-calendar"></i> วันที่เริ่ม:</strong>
-                                {!! Form::text('start_date', null, [
-                                    'id' => 'SDate',
-                                    'placeholder' => '',
-                                    'class' => 'SDate form-control',
-                                    'data-target' => '#reservationdate',
-                                ]) !!}
+                                    <div class="col-xs-2 col-sm-2 col-md-2">
+                                        <div class="form-group">
+                                            <strong><i class="fas fa-calendar"></i> วันที่เริ่ม:</strong>
+                                            {!! Form::text('start_date', null, [
+                                                'id' => 'SDate',
+                                                'placeholder' => '',
+                                                'class' => 'SDate form-control',
+                                                'data-target' => '#reservationdate',
+                                            ]) !!}
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-2 col-sm-2 col-md-2">
+                                        <div class="form-group">
+                                            <strong><i class="fas fa-calendar"></i> วันที่สิ้นสุด:</strong>
+                                            {!! Form::text('end_date', null, [
+                                                'id' => 'EDate',
+                                                'placeholder' => '',
+                                                'class' => 'EDate form-control',
+                                                'data-target' => '#reservationdate',
+                                            ]) !!}
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-2 col-sm-2 col-md-2">
+                                        <div class="form-group">
+                                            <strong><i class="fa-regular fa-comment-dots"></i>
+                                                สถานะเรื่องที่ติดต่อ:</strong>
+                                            <select style="width: 100%;" class="select2 form-control" id="casetype3"
+                                                name="casetype3">
+                                                <option value="" selected>ปิดเคส</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-2 col-sm-2 col-md-2 align-self-end">
+                                        <div class="form-group">
+                                            <button type="button" class="btn btn-success" id="CreateButton">
+                                                <i class="fas fa-address-book"></i> รายงาน </button>
+                                        </div>
+                                    </div>
+                                </ol>
                             </div>
                         </div>
-                        <div class="col-xs-2 col-sm-2 col-md-2">
-                            <div class="form-group">
-                                <strong><i class="fas fa-calendar"></i> วันที่สิ้นสุด:</strong>
-                                {!! Form::text('end_date', null, [
-                                    'id' => 'EDate',
-                                    'placeholder' => '',
-                                    'class' => 'EDate form-control',
-                                    'data-target' => '#reservationdate',
-                                ]) !!}
-                            </div>
-                        </div>
-                        <div class="col-xs-2 col-sm-2 col-md-2">
-                            <div class="form-group">
-                                <strong><i class="fa-regular fa-comment-dots"></i>
-                                    สถานะเรื่องที่ติดต่อ:</strong>
-                                <select style="width: 100%;"
-                                    class="select2 form-control" id="casetype3"
-                                    name="casetype3">
-                                    <option value="" selected>ปิดเคส</option> 
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-xs-2 col-sm-2 col-md-2 align-self-end">
-                            <div class="form-group">
-                                <button type="button" class="btn btn-success" id="CreateButton">
-                                    <i class="fas fa-address-book"></i> รายงาน  </button>
-                            </div>
-                        </div>
-                    </ol>
+                    </div>
                 </div>
             </div>
         </div>
@@ -65,12 +67,11 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-            </div>
-            <div class="row">
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-address-book"></i>รายละเอียดเรื่องที่ติดต่อแสดงตามสถานะ</h3>
+                            <h3 class="card-title"><i class="fas fa-address-book"></i>รายละเอียดเรื่องที่ติดต่อแสดงตามสถานะ
+                            </h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -127,15 +128,11 @@
                             </form>
                         </div>
                     </div>
-
-
-
                 </div>
-
             </div>
         </div>
     </section>
-    @endsection
+@endsection
 @section('script')
-@include('detailcasesstatus.script')
+    @include('detailcasesstatus.script')
 @endsection

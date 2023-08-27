@@ -55,10 +55,9 @@
                                     <div class="form-group">
                                         <strong><i class="fa-regular fa-comment-dots"></i>
                                             Agent:</strong>
-                                        <select style="width: 100%;"
-                                            class="select2 form-control" id="Agent"
+                                        <select style="width: 100%;" class="select2 form-control" id="Agent"
                                             name="Agent">
-                                            <option value="" selected>5501</option> 
+                                            <option value="" selected>5501</option>
                                         </select>
                                     </div>
                                 </div>
@@ -83,7 +82,8 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"> <i class="fa-solid fa-print"></i> ผลรวมการประเมินความพึงพอใจ ราย Agent ที่รับสาย</h3>
+                            <h3 class="card-title"> <i class="fa-solid fa-print"></i> ผลรวมการประเมินความพึงพอใจ ราย Agent
+                                ที่รับสาย</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="maximize">
                                     <i class="fas fa-expand"></i>
@@ -157,8 +157,8 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill"
-                                        href="#custom-tabs-one-pie" role="tab" aria-controls="custom-tabs-one-profile"
-                                        aria-selected="false">Pie Graph</a>
+                                        href="#custom-tabs-one-pie" role="tab"
+                                        aria-controls="custom-tabs-one-profile" aria-selected="false">Pie Graph</a>
                                 </li>
                             </ul>
                         </div>
@@ -224,7 +224,6 @@
         </div>
 
     </section>
-
 @endsection
 
 @section('script')

@@ -35,12 +35,9 @@ class ReportreportsumcasebytranferstatusController extends Controller
      */
     public function index(Request $request)
     {
-
-        
             //sleep(2);
 
             //$datas = Cases::orderBy("id", "desc")->get();
-
             $datas = DB::table('cases')
                 ->select('tranferstatus as name1', DB::raw('count(*) as sumcases'))
                 ->groupBy('tranferstatus')

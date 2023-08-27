@@ -26,7 +26,7 @@
     <li class="nav-item">
         <a href="#" class="nav-link">
             <i class="fa-solid fa-print nav-icon"></i>
-            <p>รายงาน</p>
+            <p>CRM Report</p>
             <i class="fas fa-angle-left right"></i>
         </a>
         <ul class="nav nav-treeview">
@@ -176,6 +176,19 @@
                     </p>
                 </a>
             </li>
+        </ul>
+    </li>
+@endcan
+@can('master-data-list')
+    <li class="nav-item">
+        <a href="#" class="nav-link">
+            <i class="fa-solid fa-print nav-icon"></i>
+            <p>Callcenter Report</p>
+            <i class="fas fa-angle-left right"></i>
+        </a>
+        <ul class="nav nav-treeview">
+
+
             <li class="nav-item">
                 <a href="{{ route('detailscore') }}" class="nav-link {{ Request::is('detailscore') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
