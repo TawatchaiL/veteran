@@ -11,6 +11,11 @@
                     <div class="card card-info">
                         <div class="card-header">
                             <h3 class="card-title"><i class="fa-solid fa-magnifying-glass"></i> Filter</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="col-sm-12">
@@ -60,9 +65,12 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-address-book"></i>รายละเอียดเบอร์ภายในที่โทรเข้ามาติดต่อ
+                            <h3 class="card-title"><i class="fa-solid fa-print"></i> รายละเอียดเบอร์ภายในที่โทรเข้ามาติดต่อ
                             </h3>
                             <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                                    <i class="fas fa-expand"></i>
+                                </button>
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
                                 </button>
