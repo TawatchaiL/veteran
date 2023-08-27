@@ -130,6 +130,16 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="{{ route('callstatus') }}" class="nav-link {{ Request::is('callstatus') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมสายเข้าแยกตาม Agent">
+                        <span class="text-truncate d-block">
+                            สถานะการรับสาย
+                        </span>
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="{{ route('reportcase') }}" class="nav-link {{ Request::is('reportcase') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
                     <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมสายเข้าแยกตาม Agent">
