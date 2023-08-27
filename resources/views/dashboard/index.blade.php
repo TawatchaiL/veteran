@@ -9,6 +9,7 @@
             font-size: 36px;
             font-weight: normal;
             margin: 0;
+            color: #4b7ef5
         }
     </style>
 @endsection
@@ -195,37 +196,37 @@
                                                     <div class="alignment info-box-number" id="">
                                                         <p class="font" id="aban_4075">0</p>
                                                     </div>
-                                                    <p class="alignment">Abandon</p>
+                                                    <p class="alignment"><i class="fa-solid fa-phone-slash"></i> สายที่พลาด</p>
                                                 </div>
                                                 <div class="col-md-4 col-sm-4 col-xs-6">
                                                     <div class="alignment info-box-number" id="ahtd">
                                                         <p class="font" id="aht_4075">00:00</p>
                                                     </div>
-                                                    <p class="alignment">Avg. Handling (AHT)</p>
+                                                    <p class="alignment"><i class="fa-solid fa-phone-volume"></i> เวลาสนทนาเฉลี่ย<br>ต่อสาย</p>
                                                 </div>
                                                 <div class="col-md-4 col-sm-4 col-xs-6">
                                                     <div class="alignment info-box-number" id="asad">
                                                         <p class="font" id="asa_4075">00:00</p>
                                                     </div>
-                                                    <p class="alignment">Avg. speed of Answer</p>
+                                                    <p class="alignment"><i class="fa-regular fa-hourglass"></i> เวลารอสายเฉลี่ย<br>ต่อสาย</p>
                                                 </div>
                                                 <div class="col-md-4 col-sm-4 col-xs-6">
                                                     <div class="alignment info-box-number" id="">
                                                         <p class="font" id="abanrate_4075">0.0%</p>
                                                     </div>
-                                                    <p class="alignment">Abandon<br />Rate</p>
+                                                    <p class="alignment"><i class="fa-solid fa-percent"></i> เปอร์เซ็นต์<br />สายที่พลาด</p>
                                                 </div>
                                                 <div class="col-md-4 col-sm-4 col-xs-6">
                                                     <div class="alignment info-box-number" id="">
                                                         <p class="font" id="total_4075">0</p>
                                                     </div>
-                                                    <p class="alignment">Total call</p>
+                                                    <p class="alignment"><i class="fa-solid fa-square-phone"></i> สายทั้งหมด</p>
                                                 </div>
                                                 <div class="col-md-4 col-sm-4 col-xs-6">
                                                     <div class="alignment info-box-number" id="">
                                                         <p class="font" id="ans_4075">0</p>
                                                     </div>
-                                                    <p class="alignment">Answer</p>
+                                                    <p class="alignment"><i class="fa-regular fa-thumbs-up"></i> สายที่่ได้รับ</p>
                                                 </div>
                                             </div>
                                             <div class="" style="visibility: collapse;">block</div>
@@ -261,37 +262,37 @@
                                                     <div class="alignment info-box-number" id="">
                                                         <p class="font" id="waiting_4071">0</p>
                                                     </div>
-                                                    <p class="alignment">User Waiting</p>
+                                                    <p class="alignment"><i class="fa-solid fa-user-clock"></i> สายที่กำลังรอสาย</p>
                                                 </div>
                                                 <div class="col-md-4 col-sm-4 col-xs-6">
                                                     <div class="alignment info-box-number" id="">
                                                         <p class="font" id="maxwl_4071">00:00</p>
                                                     </div>
-                                                    <p class="alignment">Longest Waiting Time</p>
+                                                    <p class="alignment"><i class="fa-regular fa-clock"></i> เวลารอสายที่นานที่สุด</p>
                                                 </div>
                                                 <div class="col-md-4 col-sm-4 col-xs-6">
                                                     <div class="alignment info-box-number" id="">
                                                         <p class="font" id="outw_4071">0</p>
                                                     </div>
-                                                    <p class="alignment">Outbound<br />Waiting</p>
+                                                    <p class="alignment"><i class="fa-solid fa-pause"></i> จำนวน Agent ที่พัก</p>
                                                 </div>
                                                 <div class="col-md-4 col-sm-4 col-xs-6">
                                                     <div class="alignment info-box-number">
                                                         <p class="font" id="active_4071">0</p>
                                                     </div>
-                                                    <p class="alignment">Inbound<br />Active</p>
+                                                    <p class="alignment"><i class="fa-solid fa-microphone"></i> สายที่กำลัง<br />สนทนา</p>
                                                 </div>
                                                 <div class="col-md-4 col-sm-4 col-xs-6">
                                                     <div class="alignment info-box-number" id="">
                                                         <p class="font" id="agents_4071">0/0</p>
                                                     </div>
-                                                    <p class="alignment">Agent Online/Offline</p>
+                                                    <p class="alignment"><i class="fa-solid fa-users"></i> จำนวน Agent <br>Online/Ready</p>
                                                 </div>
                                                 <div class="col-md-4 col-sm-4 col-xs-6">
                                                     <div class="alignment info-box-number" id="">
-                                                        <p class="font" id="outa_4071">0</p>
+                                                        <p class="font" id="outa_4071">00:00</p>
                                                     </div>
-                                                    <p class="alignment">Outbound Active</p>
+                                                    <p class="alignment"><i class="fa-solid fa-clock-rotate-left"></i> เวลาพักสายรวม</p>
                                                 </div>
                                             </div>
                                             <div class="" style="visibility: collapse;">block</div>
