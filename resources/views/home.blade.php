@@ -125,7 +125,7 @@
 
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">สถิติการรับสายตามช่วงเวลา</h3>
+                                    <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> สถิติการรับสายตามช่วงเวลา</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="maximize">
                                             <i class="fas fa-expand"></i>
@@ -150,7 +150,7 @@
 
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">สถิติ สายเข้า รายวัน ประจำเดือน 2023-08
+                                    <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> สถิติ สายเข้า รายวัน ประจำเดือน 2023-08
                                     </h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="maximize">
@@ -177,11 +177,11 @@
 
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-8">
 
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">สถิติ เคสที่รับแจ้ง / เคสที่ปิดเคสแล้ว รายวัน ประจำเดือน 2023-08
+                                    <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> สถิติ เคสที่รับแจ้ง / เคสที่ปิดเคสแล้ว รายวัน ประจำเดือน 2023-08
                                     </h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="maximize">
@@ -205,11 +205,11 @@
 
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
 
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">คะแนน ความพึงพอใจ </h3>
+                                    <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> คะแนน ความพึงพอใจ </h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="maximize">
                                             <i class="fas fa-expand"></i>
@@ -292,7 +292,7 @@
                 ],
                 chart: {
                     type: 'bar',
-                    height: 350,
+                    height: 230,
 
                 },
                 colors: ['#2E93fA', '#FF9800', '#546E7A', '#66DA26', '#E91E63', '#4ECDC4', '#C7F464', '#81D4FA',

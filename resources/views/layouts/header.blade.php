@@ -5,9 +5,18 @@
             <a class="nav-link sidebar-toggle-btn" data-widget="pushmenu" href="#" role="button"><i
                     class="fas fa-bars"></i></a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block"><a href="#" class="nav-link"> [ <i class="fa-solid fa-lg fa-truck-medical"></i>
+
+        <li class="nav-item d-none d-sm-inline-block"><a href="#" class="nav-link"> [ <i
+                    class="fa-solid fa-lg fa-truck-medical"></i>
                 <b class="text-primary"> โรงพยาบาลพุทธชินราช พิษณุโลก</b> ]
             </a></li>
+        @if (!empty($sidebarc))
+            <li class="nav-item d-none d-sm-inline-block"><a href="/" class="nav-link"> [ <i
+                        class="fa-solid fa-lg fa-home"></i>
+                    <b class="text-primary"> หน้าหลัก </b> ]
+                </a></li>
+        @endif
+
 
         {{-- <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">s

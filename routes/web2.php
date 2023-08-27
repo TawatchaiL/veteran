@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Storage;
 |
 */
 Route::post('/contacts/popup/content', [App\Http\Controllers\ContactController::class, 'popup_content'])->name('contacts.popup_content');
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.index');
 
 Route::get('manon', function (Request $request) {
     return $request;

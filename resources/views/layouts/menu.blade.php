@@ -24,6 +24,14 @@
 @endcan
 @can('case-list')
     <li class="nav-item">
+        <a href="{{ route('dashboard.index') }}" class="nav-link {{ Request::is('dashboard.index') ? 'active' : '' }}">
+            <i class="fa-solid fa-desktop nav-icon"></i>
+            <p>Queue/Agent Monitor</p>
+        </a>
+    </li>
+@endcan
+@can('case-list')
+    <li class="nav-item">
         <a href="{{ route('voicerecord') }}" class="nav-link {{ Request::is('voicerecord') ? 'active' : '' }}">
             <i class="fas fa-clipboard nav-icon"></i>
             <p>ไฟล์บันทึกเสียงสนทนา</p>
