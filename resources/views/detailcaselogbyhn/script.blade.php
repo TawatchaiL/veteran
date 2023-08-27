@@ -491,8 +491,8 @@
                     name: 'hn'
                 },
                 {
-                    data: 'caseud',
-                    name: 'caseud'
+                    data: 'caseid',
+                    name: 'caseid'
                 },
                 {
                     data: 'cdate',
