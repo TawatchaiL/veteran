@@ -60,7 +60,7 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-address-book"></i>รายละเอียดเบอร์ภายในที่โทรเข้ามาติดต่อ
+                            <h3 class="card-title"><i class="fa-solid fa-print"></i> รายละเอียดเบอร์ภายในที่โทรเข้ามาติดต่อ
                             </h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
