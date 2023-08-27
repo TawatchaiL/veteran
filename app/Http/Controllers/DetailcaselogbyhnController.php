@@ -55,11 +55,10 @@ class DetailcaselogbyhnController extends Controller
                     'id' => $i,
                     'agent' => rand(1001, 1020),
                     'hn' => rand(10001, 99999),
-                    'caseid' => rand(10000001, 99999999),
+                    'caseid' => rand(100001, 999999),
                     'cdate' => $createDate->format('Y-m-d'),
                     'ctime' => $createDate->format('H:i:s'),
                     'detaillog' => $ivrno,
-                    // Simulate other fields as needed
                 ];
             }
 
