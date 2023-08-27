@@ -38,6 +38,14 @@
         </a>
     </li>
 @endcan
+@can('case-list')
+    <li class="nav-item">
+        <a href="{{ route('billing') }}" class="nav-link {{ Request::is('billing') ? 'active' : '' }}">
+            <i class="fas fa-clipboard nav-icon"></i>
+            <p>Billing</p>
+        </a>
+    </li>
+@endcan
 @can('master-data-list')
     <li class="nav-item">
         <a href="#" class="nav-link">
