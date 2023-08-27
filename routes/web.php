@@ -86,6 +86,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/loginstatus', [App\Http\Controllers\LoginstatusController::class, 'index'])->name('loginstatus');
     Route::get('/sumcasebyhn', [App\Http\Controllers\SumcasebyhnController::class, 'index'])->name('sumcasebyhn');
     Route::get('/detailcaselogbyhn', [App\Http\Controllers\DetailcaselogbyhnController::class, 'index'])->name('detailcaselogbyhn');
+    Route::get('/sumtel', [App\Http\Controllers\SumtelController::class, 'index'])->name('sumtel');
 
     Route::get('/reportsumbytype', [App\Http\Controllers\ReportsumbytypeController::class, 'index'])->name('reportsumbytype');
     Route::get('/reportcaseinbyhour', [App\Http\Controllers\ReportcaseinbyhourController::class, 'index'])->name('reportcaseinbyhour');
