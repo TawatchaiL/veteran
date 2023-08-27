@@ -53,7 +53,7 @@ class LoginstatusController extends Controller
 
                 $simulatedDatas[] = (object) [
                     'id' => $i,
-                    'agent' => '08' . rand(1001, 1020),
+                    'agent' => rand(1001, 1020),
                     'login' => $createDate->format('H:i'),
                     'logoff' => $createDate->format('H:i'),
                     // Simulate other fields as needed
