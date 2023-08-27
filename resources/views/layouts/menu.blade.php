@@ -33,7 +33,7 @@
 @can('case-list')
     <li class="nav-item">
         <a href="{{ route('voicerecord') }}" class="nav-link {{ Request::is('voicerecord') ? 'active' : '' }}">
-            <i class="fas fa-clipboard nav-icon"></i>
+            <i class="fa-solid fa-volume-high nav-icon"></i>
             <p>ไฟล์บันทึกเสียงสนทนา</p>
         </a>
     </li>
