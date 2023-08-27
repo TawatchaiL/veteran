@@ -495,12 +495,20 @@
                     name: 'telno'
                 },
                 {
-                    data: 'ivrname',
-                    name: 'ivrname'
+                    data: 'telin',
+                    name: 'telin'
                 },
                 {
-                    data: 'ivrno',
-                    name: 'ivrno'
+                    data: 'calltime',
+                    name: 'calltime'
+                },
+                {
+                    data: 'callprice',
+                    name: 'callprice'
+                },
+                {
+                    data: 'callfile',
+                    name: 'callfile'
                 },
             ]
         });

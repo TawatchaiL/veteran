@@ -42,7 +42,7 @@ class BillingController extends Controller
             $numberOfRows = 50; // Change this to the desired number of rows
             $simulatedDatas = [];
 
-            $rivrname = ['welcom', 'opd', 'callcenter'];
+            $rivrname = ['02:00', '05:30', '04:00','08:12'];
             $rivrno = ['1', '2', '3', '4', '5'];
 
             for ($i = 1; $i <= $numberOfRows; $i++) {
@@ -57,8 +57,10 @@ class BillingController extends Controller
                     'cdate' => $createDate->format('Y-m-d'),
                     'ctime' => $createDate->format('H:i:s'),
                     'telno' => '08' . rand(10000000, 99999999),
-                    'ivrname' => $ivrname,
-                    'ivrno' => $ivrno,
+                    'telin' => rand(1000, 1020),
+                    'calltime' => $ivrname,
+                    'callprice' => $ivrno,
+                    'callfile' => 'Play'
                     // Simulate other fields as needed
                 ];
             }
