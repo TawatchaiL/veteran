@@ -63,7 +63,7 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-address-book"></i>
+                            <h3 class="card-title"><i class="fa-solid fa-print"></i>
                                 ผลรวมเรื่องที่ติดต่อแยกตามสถานะการโอนสาย</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
