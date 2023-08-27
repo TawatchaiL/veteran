@@ -39,41 +39,30 @@
                                             ]) !!}
                                         </div>
                                     </div>
-                                    <div class="col-xs-2 col-sm-2 col-md-2 align-self-end">
-                                        <div class="form-group">
-                                            <button type="button" class="btn btn-success" id="CreateButton">
-                                                <i class="fas fa-address-book"></i> รายงาน </button>
-                                        </div>
-                                    </div>
-                                </ol>
-                            </div>
-                        </div>
-
-                        <div class="card-body">
-                            <div class="col-sm-12">
-                                <ol class="breadcrumb float-sm-center">
-                                    {{-- <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Users Management</li> --}}
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
-                                            <strong><i class="fas fa-calendar"></i> วันที่เริ่ม:</strong>
-                                            {!! Form::text('start_date', null, [
-                                                'id' => 'SDate',
-                                                'placeholder' => '',
-                                                'class' => 'SDate form-control',
-                                                'data-target' => '#reservationdate',
-                                            ]) !!}
+                                            <strong><i class="fas fa-list-ol"></i> เบอร์ต้นทาง:</strong>
+                                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                                         </div>
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
-                                            <strong><i class="fas fa-calendar"></i> วันที่สิ้นสุด:</strong>
-                                            {!! Form::text('end_date', null, [
-                                                'id' => 'EDate',
-                                                'placeholder' => '',
-                                                'class' => 'EDate form-control',
-                                                'data-target' => '#reservationdate',
-                                            ]) !!}
+                                            <strong><i class="fa-regular fa-comment-dots"></i>
+                                                เบอร์ปลายทาง:</strong>
+                                            <select style="width: 100%;" class="select2 form-control" id="telin"
+                                                name="telin">
+                                                <option value="" selected>1002</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-2 col-sm-2 col-md-2">
+                                        <div class="form-group">
+                                            <strong><i class="fa-regular fa-comment-dots"></i>
+                                                ประเภทการโทร:</strong>
+                                            <select style="width: 100%;" class="select2 form-control" id="teltype"
+                                                name="teltype">
+                                                <option value="" selected>โทรเข้า</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2 align-self-end">
@@ -85,7 +74,6 @@
                                 </ol>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>
