@@ -82,6 +82,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/reportcasetop10', [App\Http\Controllers\ReportcasetopController::class, 'index'])->name('reportcasetop10');
     Route::get('/reporttop10in', [App\Http\Controllers\ReporttopinController::class, 'index'])->name('reporttop10in');
     Route::get('/reporttop10out', [App\Http\Controllers\ReporttopoutController::class, 'index'])->name('reporttop10out');
+//new
+    Route::get('/sumcasebyhn', [App\Http\Controllers\SumcasebyhnController::class, 'index'])->name('sumcasebyhn');
 
     Route::get('/reportsumbytype', [App\Http\Controllers\ReportsumbytypeController::class, 'index'])->name('reportsumbytype');
     Route::get('/reportcaseinbyhour', [App\Http\Controllers\ReportcaseinbyhourController::class, 'index'])->name('reportcaseinbyhour');
