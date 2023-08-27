@@ -54,7 +54,7 @@ class SumtelController extends Controller
                 $simulatedDatas[] = (object) [
                     'id' => $i,
                     'cdate' => $createDate->format('Y-m-d'),
-                    'ctime' => $createDate->format('H:i:s'),
+                    //'ctime' => $createDate->format('H:i:s'),
                     'telt' => rand(100, 300),
                     'telf' => rand(10, 20),
                     // Simulate other fields as needed

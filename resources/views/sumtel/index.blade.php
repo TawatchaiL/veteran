@@ -112,7 +112,6 @@
                                         <tr>
                                             <th width="20px"><input type="checkbox" id="check-all" class="flat"></th>
                                             <th>วันที่</th>
-                                            <th>เวลา</th>
                                             <th>จำนวนสายที่ได้รับบริการ</th>
                                             <th>จำนวนสายที่ไม่ได้รับบริการ</th>
                                         </tr>

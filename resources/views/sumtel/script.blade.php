@@ -487,10 +487,6 @@
                     name: 'cdate'
                 },
                 {
-                    data: 'ctime',
-                    name: 'ctime'
-                },
-                {
                     data: 'telt',
                     name: 'telt'
                 },
