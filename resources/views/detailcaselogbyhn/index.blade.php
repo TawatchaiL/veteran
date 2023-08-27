@@ -116,7 +116,7 @@
                                             <th>Caseid</th>
                                             <th>วันที่</th>
                                             <th>เวลา</th>
-                                            <th>ราย่ละเอียด</th>
+                                            <th>รายละเอียด</th>
                                         </tr>
                                     </thead>
                                     <tbody>
