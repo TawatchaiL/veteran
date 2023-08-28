@@ -248,6 +248,86 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                <table id="myTbl3"
+                                                    class="table table-striped table-bordered responsive-utilities jambo_table " width="400">
+                                                    <thead>
+                                                        <tr class="headings">
+                                                            {{-- <th class="column-title"> สินค้า</th> --}}
+                                                            <th class="column-title"> ล็อตสินค้าในคลังสินค้า</th>
+                                                            <th class="column-title"> จำนวนที่ขาย</th>
+                                                            <th class="column-title"> ราคาต่อหน่วย</th>
+                                                            <th class="column-title"> รายรับที่ได้</th>
+                                                            <th class="column-title"> </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="firstTr3">
+                                                            {{--  <td width="30%">
+                                                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                            <input type="text" id="flown[]" name="flown[]"
+                                                                                class="form-control has-feedback-left" value=""
+                                                                                required="required">
+                                                                        </div>
+                                                                    </td> --}}
+                                                            <td width="30%">
+                                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                    <select style="width: 100%;" class="products form-control" id="stock"
+                                                                        name="stock[]" required>
+                                                                        <!-- <option value="" selected>Select Student</option>
+                                                                                                                                                                                                                                                                                                                                                                                                            <option value="" selected>Select Parent</option>-->
+                                                                        {{-- @foreach ($product as $key2)
+                                                            <option value="{{ $key2->id }}">{{ $key2->name }}
+                                                            </option>
+                                                        @endforeach --}}
+                    
+                                                                    </select>
+                                                                    <div id="lot_price" class="text-success"></div>
+                                                                    <div id="lot_error" class="text-danger"></div>
+                                                                </div>
+                                                            </td>
+                    
+                                                            <td width="10%">
+                                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                    <input type="number" step="0.50" id="amount" name="amount[]"
+                                                                        class="form-control has-feedback-left" value=""
+                                                                        required="required">
+                                                                </div>
+                                                            </td>
+                                                            <td width="10%">
+                                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                    <input type="number" step="0.50" id="price" name="price[]"
+                                                                        class="form-control has-feedback-left" value=""
+                                                                        required="required">
+                                                                </div>
+                                                            </td>
+                    
+                                                            <td width="10%">
+                                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                    <input type="number" step="0.50" id="total" name="total[]"
+                                                                        class="form-control has-feedback-left" value="" readonly>
+                                                                </div>
+                                                            </td>
+                    
+                                                            <td width="10%"><button type="button" id="removeRowt"
+                                                                    class="btn btn-sm btn-danger btnRemoveg2"><i
+                                                                        class="fa fa-minus"></i></button></td>
+                    
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="col-md-12" align="right">
+                    
+                                                <button type="button" id="addRow2" class="btn btn-sm btn-primary btnAddg"><i
+                                                        class="fa fa-plus"></i></button>
+                                                <button type="button" id="removeRow2" class="btn btn-sm btn-danger btnRemoveg"><i
+                                                        class="fa fa-minus"></i></button>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
