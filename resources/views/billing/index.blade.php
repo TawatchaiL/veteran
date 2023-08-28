@@ -49,8 +49,19 @@
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
-                                            <strong><i class="fas fa-list-ol"></i> เบอร์ต้นทาง:</strong>
+                                            <strong><i class="fa-solid fa-hashtag"></i> เบอร์ต้นทาง:</strong>
                                             {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
+                                        </div>
+                                    </div>
+                                   
+                                    <div class="col-xs-2 col-sm-2 col-md-2">
+                                        <div class="form-group">
+                                            <strong><i class="fa-solid fa-hashtag"></i>
+                                                เบอร์ปลายทาง:</strong>
+                                            <select style="width: 100%;" class="select2 form-control" id="telin"
+                                                name="telin">
+                                                <option value="" selected>1002</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2">
@@ -65,21 +76,11 @@
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
-                                            <strong><i class="fas fa-list-ol"></i>
-                                                เบอร์ปลายทาง:</strong>
-                                            <select style="width: 100%;" class="select2 form-control" id="telin"
-                                                name="telin">
-                                                <option value="" selected>1002</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-2 col-sm-2 col-md-2">
-                                        <div class="form-group">
-                                            <strong><i class="fa-solid fa-people-roof"></i>
+                                            <strong><i class="fa-solid fa-hand-holding-dollar"></i>
                                                 ประเภทการโทร:</strong>
                                             <select style="width: 100%;" class="select2 form-control" id="teltype"
                                                 name="teltype">
-                                                <option value="" selected>โทรเข้า</option>
+                                                <option value="" selected>โทรออก</option>
                                             </select>
                                         </div>
                                     </div>
@@ -147,7 +148,7 @@
                                 <table id="Listview" class="table table-bordered table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th width="20px"><input type="checkbox" id="check-all" class="flat"></th>
+                                            <th width="5%"><input type="checkbox" id="check-all" class="flat"></th>
                                             <th>วันที่</th>
                                             <th>เวลา</th>
                                             <th>เบอร์โทรศัพท์ต้นทาง</th>
