@@ -4,7 +4,7 @@
 <div class="modal-dialog modal-xl">
     <div class="modal-content">
         <div class="modal-header bg-primary">
-            <h4 class="modal-title"><i class="fas fa-address-book"></i> เพิ่ม รายชื่อผู้ติดต่อ</h4>
+            <h4 class="modal-title"><i class="fas fa-address-book"></i> แก้ไข รายชื่อผู้ติดต่อ</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -155,8 +155,8 @@
                                             <div class="form-group">
                                                 <strong><i class="fa-solid fa-city"></i> จังหวัด :</strong>
                                                 <select style="width: 100%;"
-                                                    class="select2 select2_city form-control" id="cityp"
-                                                    name="cityp">
+                                                    class="select2 select2_city form-control" id="city"
+                                                    name="city">
                                                     <option value="" selected>พิษณุโลก </option>
 
                                                 </select>
@@ -167,8 +167,8 @@
                                                 <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
                                                     อำเภอ:</strong>
                                                 <select style="width: 100%;"
-                                                    class="select2 select2_am form-control" id="amp"
-                                                    name="amp">
+                                                    class="select2 select2_am form-control" id="am"
+                                                    name="am">
                                                     <option value="" selected>อำเภอเมือง </option>
                                                 </select>
                                             </div>
@@ -181,8 +181,8 @@
                                                     ตำบล
                                                     :</strong>
                                                 <select style="width: 100%;"
-                                                    class="select2 select2_tm form-control" id="tmp"
-                                                    name="tmp">
+                                                    class="select2 select2_tm form-control" id="tm"
+                                                    name="tm">
                                                     <option value="" selected>ในเมือง </option>
                                                 </select>
                                             </div>
