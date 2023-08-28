@@ -45,10 +45,11 @@ class VoicerecordController extends Controller
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
                 })
                 ->addColumn('action', function ($row) {
+                    $html = '<button type="button" class="btn btn-sm btn-info btn-edit" id="getEditData" data-id="' . $row->id . '"><i class="fa-solid fa-volume-high nav-icon"></i> Export</button> ';
                     if (Gate::allows('contact-edit')) {
-                        $html = '<button type="button" class="btn btn-sm btn-warning btn-edit" id="getEditData" data-id="' . $row->id . '"><i class="fa fa-edit"></i> แก้ไข</button> ';
+                        $html .= '<button type="button" class="btn btn-sm btn-warning btn-edit" id="CreateButton" data-id="' . $row->id . '"><i class="fa fa-edit"></i> Comment</button> ';
                     } else {
-                        $html = '<button type="button" class="btn btn-sm btn-warning disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-edit"></i> แก้ไข</button> ';
+                        $html .= '<button type="button" class="btn btn-sm btn-warning disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-edit"></i> แก้ไข</button> ';
                     }
                     if (Gate::allows('contact-delete')) {
                         $html .= '<button type="button" data-rowid="' . $row->id . '" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i> ลบ</button>';

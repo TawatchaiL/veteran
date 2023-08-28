@@ -95,6 +95,8 @@
                             @endif
                             <div class="col-xs-12 col-sm-12 col-md-12 align-self-end text-right">
                                 <div class="form-group">
+                                    <a class="btn btn-info" id="exportPDFButton" {{-- href="{{ route('reportcase.pdf') }}" --}}>
+                                        <i class="fa-solid fa-volume-high nav-icon"></i> Export </a>
                                     <a class="btn btn-danger" id="exportPDFButton" {{-- href="{{ route('reportcase.pdf') }}" --}}>
                                         <i class="fa-regular fa-file-pdf"></i> PDF </a>
                                     <a class="btn btn-success" id="exportXLSButton" {{-- href="{{ route('reportcase.pdf') }}" --}}>
@@ -115,7 +117,7 @@
                                             <th>เวลา</th>
                                             <th>เบอร์โทรศัพท์</th>
                                             <th>Agent ที่รับสาย</th>
-                                            <th>ไฟล์เสียง</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -130,6 +132,7 @@
         </div>
     </section>
 @endsection
+@include('voicerecord.create')
 @section('script')
     @include('voicerecord.script')
 @endsection

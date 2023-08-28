@@ -499,8 +499,8 @@
                     name: 'agent'
                 },
                 {
-                    data: 'more',
-                    name: 'more'
+                    data: 'action',
+                    name: 'action'
                 },
             ]
         });
@@ -551,7 +551,42 @@
             table.button('4').trigger();
         });
 
+        $(document).on('click', '#CreateButton', function(e) {
+            e.preventDefault();
+            $('.alert-danger').html('');
+            $('.alert-danger').hide();
+            $('.alert-success').html('');
+            $('.alert-success').hide();
+            $('#CreateModal').modal('show');
+        });
 
+        let id;
+        $(document).on('click', '#getEditData', function(e) {
+            e.preventDefault();
+
+
+            $('.alert-danger').html('');
+            $('.alert-danger').hide();
+            $('.alert-success').html('');
+            $('.alert-success').hide();
+
+            id = $(this).data('id');
+            $.ajax({
+                url: "contacts/edit/" + id,
+                method: 'GET',
+                success: function(res) {
+                    $('#EditName').val(res.data.name);
+                    $('#EditEmail').val(res.data.email);
+                    $('#EditPostcode').val(res.data.postcode);
+                    $('#EditAddress').val(res.data.address);
+                    $('#EditTelephone').val(res.data.telephone);
+
+                    $('#EditModalBody').html(res.html);
+                    $('#EditModal').modal('show');
+                }
+            });
+
+        })
 
 
         // Create product Ajax request.
