@@ -385,8 +385,9 @@
                     <input type="text" name="price[]" class="form-control has-feedback-left" value="" required>
                 </div>
             </td>
+            <td>
+                <button class="removeRowBtn">Remove</button>
+            </td>
         `;
-
-        table.appendChild(newRow);
     });
 </script>
