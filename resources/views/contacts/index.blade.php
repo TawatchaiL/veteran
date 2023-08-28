@@ -110,6 +110,8 @@
     </section>
 
 
+    @include('contacts.create')
+
     @include('contacts.edit')
 
     {{--  {!! $data->render() !!} --}}
