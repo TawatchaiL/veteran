@@ -362,3 +362,31 @@
 
     });
 </script>
+<script>
+    document.getElementById('addRowBtn').addEventListener('click', function() {
+        var table = document.getElementById('myTbl3');
+
+        var newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td width="30%">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <input type="text" name="name[]" class="form-control has-feedback-left" value="" required>
+                    <div id="lot_price" class="text-success"></div>
+                    <div id="lot_error" class="text-danger"></div>
+                </div>
+            </td>
+            <td width="10%">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <input type="text" name="amount[]" class="form-control has-feedback-left" value="" required>
+                </div>
+            </td>
+            <td width="10%">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <input type="text" name="price[]" class="form-control has-feedback-left" value="" required>
+                </div>
+            </td>
+        `;
+
+        table.appendChild(newRow);
+    });
+</script>

@@ -293,7 +293,7 @@
                                             </div>
                                             <div class="col-md-12" align="right">
                     
-                                                <button type="button" id="addRow2" class="btn btn-sm btn-primary btnAddg"><i
+                                                <button type="button" id="addRowBtn" class="btn btn-sm btn-primary btnAddg"><i
                                                         class="fa fa-plus"></i></button>
                                                 <button type="button" id="removeRow2" class="btn btn-sm btn-danger btnRemoveg"><i
                                                         class="fa fa-minus"></i></button>
