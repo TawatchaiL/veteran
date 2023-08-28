@@ -499,8 +499,8 @@
                     name: 'agent'
                 },
                 {
-                    data: 'playerbutton',
-                    name: 'playerbutton'
+                    data: 'more',
+                    name: 'more'
                 },
             ]
         });
