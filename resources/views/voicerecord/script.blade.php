@@ -499,6 +499,10 @@
                     name: 'agent'
                 },
                 {
+                    data: 'duration',
+                    name: 'duration'
+                },
+                {
                     data: 'action',
                     name: 'action'
                 },

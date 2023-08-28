@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Session;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 use App\Services\GraphService;
 use Illuminate\Support\Facades\Gate;
+
 class VoicerecordController extends Controller
 {
     /**
@@ -36,31 +37,37 @@ class VoicerecordController extends Controller
     public function index(Request $request)
     {
         $datas = DB::table('cases')
-        ->select(DB::raw('DATE(created_at) as cdate'), DB::raw('TIME(created_at) as ctime'),'telno','agent', 'id')
-        ->get();
+            ->select(DB::raw('DATE(created_at) as cdate'), DB::raw('TIME(created_at) as ctime'), 'telno', 'agent', 'id')
+            ->get();
 
         if ($request->ajax()) {
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
                 })
+                ->addColumn('duration', function ($row) {
+                    $hours = str_pad(mt_rand(0, 23), 2, "0", STR_PAD_LEFT);
+                    $minutes = str_pad(mt_rand(0, 59), 2, "0", STR_PAD_LEFT);
+                    $seconds = str_pad(mt_rand(0, 59), 2, "0", STR_PAD_LEFT);
+
+                    $duration = "$hours:$minutes:$seconds";
+                    return $duration;
+                })
                 ->addColumn('action', function ($row) {
-                    
+
                     if (Gate::allows('contact-edit')) {
                         $html = '<button type="button" class="btn btn-sm btn-warning btn-edit" id="CreateButton" data-id="' . $row->id . '"><i class="fa fa-edit"></i> Comment</button> ';
                     } else {
                         $html = '<button type="button" class="btn btn-sm btn-warning disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-edit"></i> แก้ไข</button> ';
                     }
-                   
+
                     return $html;
                 })
                 ->addColumn('more', function ($row) {
                     return '';
                 })->rawColumns(['checkbox', 'action'])->toJson();
-
         }
 
         return view('voicerecord.index');
     }
-
 }
