@@ -186,10 +186,6 @@
             'callstatus',
             'misscall',
             'reportcase',
-            'ivrreport',
-            'ivrreporttop10',
-            'detailscore',
-            'detailscoreagent',
         ])
             ? 'menu-open'
             : '' }}">
@@ -206,15 +202,11 @@
                 'callstatus',
                 'misscall',
                 'reportcase',
-                'ivrreport',
-                'ivrreporttop10',
-                'detailscore',
-                'detailscoreagent',
             ])
                 ? 'active'
                 : '' }}">
             <i class="fa-solid fa-print nav-icon"></i>
-            <p>Callcenter/IVR Report</p>
+            <p>Callcenter Report</p>
             <i class="fas fa-angle-left right"></i>
         </a>
         <ul class="nav nav-treeview">
@@ -336,6 +328,33 @@
                     </p>
                 </a>
             </li>
+        </ul>
+    </li>
+@endcan
+@can('master-data-list')
+    <li
+        class="nav-item {{ in_array(Request::route()->getName(), [
+            'ivrreport',
+            'ivrreporttop10',
+            'detailscore',
+            'detailscoreagent',
+        ])
+            ? 'menu-open'
+            : '' }}">
+        <a href="#"
+            class="nav-link {{ in_array(Request::route()->getName(), [
+                'ivrreport',
+                'ivrreporttop10',
+                'detailscore',
+                'detailscoreagent',
+            ])
+                ? 'active'
+                : '' }}">
+            <i class="fa-solid fa-print nav-icon"></i>
+            <p>IVR & Survey Report</p>
+            <i class="fas fa-angle-left right"></i>
+        </a>
+        <ul class="nav nav-treeview">
             <li class="nav-item">
                 <a href="{{ route('ivrreport') }}" class="nav-link {{ Request::is('ivrreport') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
