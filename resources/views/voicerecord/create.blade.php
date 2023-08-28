@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <h4 class="modal-title"><i class="fas fa-list-ol"></i> Comment</h4>
+                <h4 class="modal-title"><i class="fa-solid fa-volume-high"></i> Play & Comment</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -35,7 +35,13 @@
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
                             <div class="custom-control custom-switch">
-                                <i class="fa-brands fa-youtube fa-2xl"></i> 09999999-1002-2023-08-01-110000.wav
+                                <i class="fa-brands fa-youtube fa-2xl"></i>
+                                09999999-1002-2023-08-01-110000.wav
+                                <audio controls>
+                                    <source src="" type="audio/ogg">
+                                    <source src="" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
                             </div>
                         </div>
                     </div>

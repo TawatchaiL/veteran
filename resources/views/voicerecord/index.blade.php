@@ -49,7 +49,7 @@
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
-                                            <strong><i class="fa-regular fa-comment-dots"></i>
+                                            <strong><i class="fas fa-user"></i>
                                                 Agent ที่รับสาย:</strong>
                                             <select style="width: 100%;" class="select2 form-control" id="casetype3"
                                                 name="casetype3">
@@ -106,8 +106,8 @@
                             @endif
                             <div class="col-xs-12 col-sm-12 col-md-12 align-self-end text-right">
                                 <div class="form-group">
-                                    <a class="btn btn-info" id="exportPDFButton" {{-- href="{{ route('reportcase.pdf') }}" --}}>
-                                        <i class="fa-solid fa-volume-high nav-icon"></i> Export </a>
+                                    <a class="btn btn-warning" id="exportPDFButton" {{-- href="{{ route('reportcase.pdf') }}" --}}>
+                                        <i class="fa-solid fa-file-export"></i> Export </a>
                                     <a class="btn btn-danger" id="exportPDFButton" {{-- href="{{ route('reportcase.pdf') }}" --}}>
                                         <i class="fa-regular fa-file-pdf"></i> PDF </a>
                                     <a class="btn btn-success" id="exportXLSButton" {{-- href="{{ route('reportcase.pdf') }}" --}}>
