@@ -38,14 +38,14 @@ id="EditModal">
 
             <div class="card card-success card-tabs">
                 <div class="card-header p-0 pt-1">
-                    <ul class="nav nav-tabs" id="custom-tabs-one-tabpำ" role="tablist">
+                    <ul class="nav nav-tabs" id="custom-tabs-one-tabpe" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="custom-tabs-one-home-tabp" data-toggle="pill"
+                            <a class="nav-link active" id="custom-tabs-one-home-tabpe" data-toggle="pill"
                                 href="#custom-tabs-one-homep" role="tab" aria-controls="custom-tabs-one-homep"
                                 aria-selected="true">ข้อมูลผู้ติดต่อ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="custom-tabs-one-profile-tabpำ" data-toggle="pill"
+                            <a class="nav-link" id="custom-tabs-one-profile-tabpe" data-toggle="pill"
                                 href="#custom-tabs-one-profilep" role="tab"
                                 aria-controls="custom-tabs-one-profilep" aria-selected="false">ข้อมูลเบอร์ติดต่อ</a>
                         </li>
@@ -54,7 +54,7 @@ id="EditModal">
                 </div>
                 <div class="card-body">
                     <div class="tab-content" id="custom-tabs-one-tabContentp">
-                        <div class="tab-pane fade show active" id="custom-tabs-one-homep" role="tabpanel"
+                        <div class="tab-pane fade show active" id="custom-tabs-one-homepe" role="tabpanel"
                             aria-labelledby="custom-tabs-one-home-tabp">
                             <div class="card">
                                 <div class="card-body">
@@ -204,7 +204,7 @@ id="EditModal">
                         </div>
 
 
-                        <div class="tab-pane fade" id="custom-tabs-one-profilep" role="tabpanel"
+                        <div class="tab-pane fade" id="custom-tabs-one-profilepe" role="tabpanel"
                             aria-labelledby="custom-tabs-one-profile-tabp">
                             <div class="card">
                                 <div class="card-body">
