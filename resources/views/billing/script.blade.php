@@ -350,7 +350,7 @@
                 {
                     extend: 'excel',
                     text: 'Excel',
-                    title: 'IVR Report',
+                    title: 'CDR & Billing',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                     },
@@ -377,7 +377,7 @@
                     "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
                     "text": 'PDF', // ข้อความที่แสดง
                     "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
-                    "title": 'IVR Report',
+                    "title": 'CDR & Billing',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                     },
@@ -433,7 +433,7 @@
                 {
                     extend: 'print',
                     text: 'Print',
-                    title: 'IVR Report',
+                    title: 'CDR & Billing',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                         format: {
@@ -491,12 +491,12 @@
                     name: 'ctime'
                 },
                 {
-                    data: 'telno',
-                    name: 'telno'
-                },
-                {
                     data: 'telin',
                     name: 'telin'
+                },
+                {
+                    data: 'telno',
+                    name: 'telno'
                 },
                 {
                     data: 'calltime',
@@ -561,6 +561,14 @@
         });
 
 
+        $(document).on('click', '#CreateButton', function(e) {
+            e.preventDefault();
+            $('.alert-danger').html('');
+            $('.alert-danger').hide();
+            $('.alert-success').html('');
+            $('.alert-success').hide();
+            $('#CreateModal').modal('show');
+        });
 
 
         // Create product Ajax request.

@@ -151,8 +151,8 @@
                                             <th width="5%"><input type="checkbox" id="check-all" class="flat"></th>
                                             <th>วันที่</th>
                                             <th>เวลา</th>
-                                            <th>เบอร์โทรศัพท์ปลายทาง</th>
                                             <th>เบอร์โทรศัพท์ต้นทาง</th>
+                                            <th>เบอร์โทรศัพท์ปลายทาง</th>
                                             <th>ระยะเวลา</th>
                                             <th>ค่าใช้จ่าย</th>
                                             <th>ไฟล์เสียง</th>

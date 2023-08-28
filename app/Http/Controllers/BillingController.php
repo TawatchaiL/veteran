@@ -46,7 +46,7 @@ class BillingController extends Controller
 
             for ($i = 1; $i <= $numberOfRows; $i++) {
                 $rivrno = mt_rand(0, 2000) / 100;
-                $ivrno  =  number_format($rivrno, 2, '.', '');;
+                $ivrno  =  number_format($rivrno, 2, '.', '')." บาท";
                 $ivrname = $rivrname[array_rand($rivrname)];
                 $createDate = now()->subDays(rand(1, 365))->subHours(rand(0, 23))->subMinutes(rand(0, 59));
 
