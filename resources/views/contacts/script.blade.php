@@ -364,7 +364,7 @@
 </script>
 <script>
     document.getElementById('addRowBtn').addEventListener('click', function() {
-        var table = document.getElementById('myTable');
+        var table = document.getElementById('myTbl3');
 
         var newRow = document.createElement('tr');
         newRow.innerHTML = `
