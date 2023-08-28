@@ -11,6 +11,14 @@
                     <div class="card card-info">
                         <div class="card-header">
                             <h3 class="card-title"><i class="fa-solid fa-magnifying-glass"></i> Filter</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                {{-- <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                                    <i class="fas fa-times"></i>
+                                </button> --}}
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="col-sm-12">
@@ -78,7 +86,7 @@
                                     <div class="col-xs-2 col-sm-2 col-md-2 align-self-end">
                                         <div class="form-group">
                                             <button type="button" class="btn btn-success" id="CreateButton">
-                                                <i class="fas fa-address-book"></i> รายงาน </button>
+                                                <i class="fas fa-search"></i> ค้นหา </button>
                                         </div>
                                     </div>
                                 </ol>
@@ -96,9 +104,12 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-address-book"></i>Billing
+                            <h3 class="card-title"><i class="fa-solid fa-file-invoice-dollar nav-icon"></i> CDR & Billing
                             </h3>
                             <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                                    <i class="fas fa-expand"></i>
+                                </button>
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
                                 </button>

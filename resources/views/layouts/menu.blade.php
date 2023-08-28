@@ -41,8 +41,8 @@
 @can('case-list')
     <li class="nav-item">
         <a href="{{ route('billing') }}" class="nav-link {{ Request::is('billing') ? 'active' : '' }}">
-            <i class="fas fa-clipboard nav-icon"></i>
-            <p>Billing</p>
+            <i class="fa-solid fa-file-invoice-dollar nav-icon"></i>
+            <p>CDR & Billing</p>
         </a>
     </li>
 @endcan
