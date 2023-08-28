@@ -205,7 +205,7 @@ id="EditModal">
 
 
                         <div class="tab-pane fade" id="custom-tabs-one-profilepe" role="tabpanel"
-                            aria-labelledby="custom-tabs-one-profile-tabp">
+                            aria-labelledby="custom-tabs-one-profile-tabpe">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row">
