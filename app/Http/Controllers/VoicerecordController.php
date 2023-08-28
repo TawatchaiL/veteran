@@ -56,9 +56,9 @@ class VoicerecordController extends Controller
                 ->addColumn('action', function ($row) {
 
                     if (Gate::allows('contact-edit')) {
-                        $html = '<button type="button" class="btn btn-sm btn-warning btn-edit" id="CreateButton" data-id="' . $row->id . '"><i class="fa-solid fa-volume-high"></i> Play</button> ';
+                        $html = '<button type="button" class="btn btn-sm btn-success btn-edit" id="CreateButton" data-id="' . $row->id . '"><i class="fa-solid fa-volume-high"></i> Play</button> ';
                     } else {
-                        $html = '<button type="button" class="btn btn-sm btn-warning disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa-solid fa-volume-high"></i> Play</button> ';
+                        $html = '<button type="button" class="btn btn-sm btn-success disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa-solid fa-volume-high"></i> Play</button> ';
                     }
 
                     return $html;

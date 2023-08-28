@@ -35,7 +35,7 @@
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
                             <div class="custom-control custom-switch">
-                                <i class="fa-brands fa-youtube fa-2xl"></i>
+                                <i class="fa-solid fa-file-audio"></i>
                                 09999999-1002-2023-08-01-110000.wav
                                 <audio controls>
                                     <source src="" type="audio/ogg">
