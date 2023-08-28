@@ -12,6 +12,13 @@
             color: #4b7ef5
         }
 
+        .info-box-number {
+            font-size: 24px;
+            font-weight: normal;
+            margin: 0;
+            color: #4b7ef5
+        }
+
         .status-icon {
             font-size: 1.2em;
             /* Adjust the size of the icon */
@@ -59,17 +66,48 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-primary"><i class="fa-solid fa-phone-volume"></i></span>
+                                <span class="info-box-icon bg-primary"><i class="fa-solid fa-square-phone"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text">สายเข้า</span>
-                                    <span class="info-box-number">15 ครั้ง</span>
+                                    <span class="info-box-text">สายทั้งหมด</span>
+                                    <span class="info-box-number">0 ครั้ง</span>
                                 </div>
 
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-warning"><i class="fa-solid fa-bell"></i></span>
+                                <span class="info-box-icon bg-success"><i class="fa-regular fa-thumbs-up"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">สายที่ได้รับ</span>
+                                    <span class="info-box-number">0 ครั้ง</span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-danger"><i class="fa-solid fa-phone-slash"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">สายที่พลาด</span>
+                                    <span class="info-box-number">0 ครั้ง</span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-warning"><i class="fa-solid fa-percent"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text"> เปอร์เซ็นต์
+                                        สายที่พลาด</span>
+                                    <span class="info-box-number">0.0 %</span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-warning"><i class="fa-regular fa-hourglass"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text">เวลารอสายเฉลี่ย</span>
                                     <span class="info-box-number">00:00:12</span>
@@ -79,7 +117,7 @@
                         </div>
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-success"><i class="fa-solid fa-microphone"></i></span>
+                                <span class="info-box-icon bg-primary"><i class="fa-solid fa-headset"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เวลาที่สนทนาทั้งหมด</span>
                                     <span class="info-box-number">00:38:43</span>
@@ -89,7 +127,7 @@
                         </div>
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-info"><i class="fa-solid fa-gauge"></i></span>
+                                <span class="info-box-icon bg-info"><i class="fa-solid fa-phone-volume"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เวลาสนทนาเฉลี่ยต่อสาย</span>
                                     <span class="info-box-number"> 00:05:12</span>
@@ -97,7 +135,16 @@
 
                             </div>
                         </div>
+                        <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-danger"><i class="fa-solid fa-clock"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text ">เวลารอสายที่นานที่สุด</span>
+                                    <span class="info-box-number"> 00:06:12</span>
+                                </div>
 
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
