@@ -268,8 +268,6 @@
                                                                     <input type="text" id="name" name="name[]"
                                                                         class="form-control has-feedback-left" value=""
                                                                         required="required">
-                                                                    <div id="lot_price" class="text-success"></div>
-                                                                    <div id="lot_error" class="text-danger"></div>
                                                                 </div>
                                                             </td>
                     
