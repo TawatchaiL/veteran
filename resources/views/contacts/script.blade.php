@@ -422,8 +422,7 @@
                 </div>
             </td>
             <td>
-                <button type="button" id="removeRow2" class="deleteRowBtn"><i
-                                                        class="fa fa-minus"></i></button>
+                <button type="button" id="removeRow2" class="btn btn-sm btn-danger removeRowBtn"><i class="fa fa-minus"></i></button>
             </td>
         `;
 
