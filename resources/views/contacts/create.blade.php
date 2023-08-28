@@ -256,11 +256,9 @@
                                                     <thead>
                                                         <tr class="headings">
                                                             {{-- <th class="column-title"> สินค้า</th> --}}
-                                                            <th class="column-title"> ล็อตสินค้าในคลังสินค้า</th>
-                                                            <th class="column-title"> จำนวนที่ขาย</th>
-                                                            <th class="column-title"> ราคาต่อหน่วย</th>
-                                                            <th class="column-title"> รายรับที่ได้</th>
-                                                            <th class="column-title"> </th>
+                                                            <th class="column-title"> ชื่อบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน</th>
+                                                            <th class="column-title"> ความสัมพันธ์</th>
+                                                            <th class="column-title"> เบอร์โทรศัพท์</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -303,18 +301,6 @@
                                                                         required="required">
                                                                 </div>
                                                             </td>
-                    
-                                                            <td width="10%">
-                                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                    <input type="number" step="0.50" id="total" name="total[]"
-                                                                        class="form-control has-feedback-left" value="" readonly>
-                                                                </div>
-                                                            </td>
-                    
-                                                            <td width="10%"><button type="button" id="removeRowt"
-                                                                    class="btn btn-sm btn-danger btnRemoveg2"><i
-                                                                        class="fa fa-minus"></i></button></td>
-                    
                                                         </tr>
                                                     </tbody>
                                                 </table>
