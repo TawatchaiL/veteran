@@ -245,6 +245,53 @@ id="EditModal">
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <table id="myTbl3e"
+                                                class="table table-striped table-bordered responsive-utilities jambo_table " width="400">
+                                                <thead>
+                                                    <tr class="headings">
+                                                        {{-- <th class="column-title"> สินค้า</th> --}}
+                                                        <th class="column-title"> ชื่อบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน</th>
+                                                        <th class="column-title"> ความสัมพันธ์</th>
+                                                        <th class="column-title"> เบอร์โทรศัพท์</th>
+                                                    </tr>
+                                                </thead>
+                                                    <tr>
+                                                        <td width="30%">
+                                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                <input type="text" id="name" name="name[]"
+                                                                    class="form-control has-feedback-left" value=""
+                                                                    required="required">
+                                                            </div>
+                                                        </td>
+                
+                                                        <td width="10%">
+                                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                <input type="text" id="amount" name="amount[]"
+                                                                    class="form-control has-feedback-left" value=""
+                                                                    required="required">
+                                                            </div>
+                                                        </td>
+                                                        <td width="10%">
+                                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                <input type="text" id="price" name="price[]"
+                                                                    class="form-control has-feedback-left" value=""
+                                                                    required="required">
+                                                            </div>
+                                                        </td>
+                                                        <td width="5%">
+                                                        </td>
+                                                    </tr>
+                                            </table>
+                                        </div>
+                                        <div class="col-md-12" align="right">
+                
+                                            <button type="button" id="addRowBtn" class="btn btn-sm btn-primary btnAddg">เพิ่มบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน</button>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
