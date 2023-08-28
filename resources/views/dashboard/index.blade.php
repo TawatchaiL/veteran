@@ -3,10 +3,11 @@
     <style>
         .alignment {
             text-align: center;
+            font-size: 32px;
         }
 
         p.font {
-            font-size: 36px;
+            font-size: 76px;
             font-weight: normal;
             margin: 0;
             color: #4b7ef5
@@ -150,7 +151,7 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-danger"><i class="fa-solid fa-clipboard"></i></span>
+                                <span class="info-box-icon bg-info"><i class="fa-solid fa-clipboard"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เคสที่รับแจ้ง</span>
                                     <span class="info-box-number">10 เคส</span>
@@ -163,7 +164,7 @@
 
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-primary"><i class="fa-solid fa-laptop-medical"></i></span>
+                                <span class="info-box-icon bg-success"><i class="fa-solid fa-laptop-medical"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เคสที่ปิดเคสแล้ว</span>
                                     <span class="info-box-number">4 เคส</span>
@@ -200,114 +201,7 @@
                     <div class="row">
                         <div class="col-md-4">
 
-                            <div class="card card-primary">
-                                <div class="card-header">
-                                    <h3 class="card-title"><i class="fa-solid fa-gauge"></i> ระดับการให้บริการ ( Service
-                                        Level )</h3>
-                                    <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="maximize">
-                                            <i class="fas fa-expand"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
-
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="chart">
-                                        <div class="col-md-12 text-center">
-                                            <h6>สายที่รับภายใน
-                                                <a tabindex="0" title="Dismissible popover" data-toggle="popover"
-                                                    data-trigger="focus" data-placement="bottom"
-                                                    data-content="สายที่รับภายใน 20 วินาที"><i
-                                                        class="fa fa-info-circle"></i></a>&emsp;
-                                                20 วินาที <i class="fa fa-edit" data-toggle="modal"
-                                                    data-target="#configModal4071"></i>
-                                            </h6>
-                                            <div id="mainbc2_4071" style="height:200px;"></div>
-                                            <div class="float-right "><i class="fa fa-refresh fa-spin "></i> <span
-                                                    class="c" id="30"></span> sec</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-
-                            <div class="card card-primary">
-                                <div class="card-header">
-                                    <h3 class="card-title"><i class="fa-solid fa-gauge"></i> สถานะการรับสาย ( Queue
-                                        Summary )
-                                    </h3>
-                                    <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="maximize">
-                                            <i class="fas fa-expand"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
-
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="chart">
-                                        <div class="col-md-12">
-                                            <div class="row">
-                                                <div class="col-md-4 col-sm-4 col-xs-6">
-                                                    <div class="alignment info-box-number" id="">
-                                                        <p class="font" id="aban_4075">0</p>
-                                                    </div>
-                                                    <p class="alignment"><i class="fa-solid fa-phone-slash"></i>
-                                                        สายที่พลาด</p>
-                                                </div>
-                                                <div class="col-md-4 col-sm-4 col-xs-6">
-                                                    <div class="alignment info-box-number" id="ahtd">
-                                                        <p class="font" id="aht_4075">00:00</p>
-                                                    </div>
-                                                    <p class="alignment"><i class="fa-solid fa-phone-volume"></i>
-                                                        เวลาสนทนาเฉลี่ย<br>ต่อสาย</p>
-                                                </div>
-                                                <div class="col-md-4 col-sm-4 col-xs-6">
-                                                    <div class="alignment info-box-number" id="asad">
-                                                        <p class="font" id="asa_4075">00:00</p>
-                                                    </div>
-                                                    <p class="alignment"><i class="fa-regular fa-hourglass"></i>
-                                                        เวลารอสายเฉลี่ย<br>ต่อสาย</p>
-                                                </div>
-                                                <div class="col-md-4 col-sm-4 col-xs-6">
-                                                    <div class="alignment info-box-number" id="">
-                                                        <p class="font" id="abanrate_4075">0.0%</p>
-                                                    </div>
-                                                    <p class="alignment"><i class="fa-solid fa-percent"></i>
-                                                        เปอร์เซ็นต์<br />สายที่พลาด</p>
-                                                </div>
-                                                <div class="col-md-4 col-sm-4 col-xs-6">
-                                                    <div class="alignment info-box-number" id="">
-                                                        <p class="font" id="total_4075">0</p>
-                                                    </div>
-                                                    <p class="alignment"><i class="fa-solid fa-square-phone"></i>
-                                                        สายทั้งหมด</p>
-                                                </div>
-                                                <div class="col-md-4 col-sm-4 col-xs-6">
-                                                    <div class="alignment info-box-number" id="">
-                                                        <p class="font" id="ans_4075">0</p>
-                                                    </div>
-                                                    <p class="alignment"><i class="fa-regular fa-thumbs-up"></i>
-                                                        สายที่่ได้รับ</p>
-                                                </div>
-                                            </div>
-                                            <div class="" style="visibility: collapse;">block</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-
-                            <div class="card card-primary">
+                            <div class="card card-primary" style="min-height: 420px">
                                 <div class="card-header">
                                     <h3 class="card-title"><i class="fa-solid fa-gauge"></i> สถานะเรียลไทม์ ( Queue Status
                                         )
@@ -326,53 +220,89 @@
                                     <div class="chart">
                                         <div class="col-md-12">
                                             <div class="row">
-                                                <div class="col-md-4 col-sm-4 col-xs-6">
+                                                &nbsp;
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-xs-6">
                                                     <!-- class alignment ไว้ทำ css -->
                                                     <div class="alignment info-box-number" id="">
                                                         <p class="font" id="waiting_4071">0</p>
                                                     </div>
                                                     <p class="alignment"><i class="fa-solid fa-user-clock"></i>
-                                                        สายที่กำลังรอสาย</p>
+                                                        สายที่ <br>กำลังรอสาย</p>
                                                 </div>
-                                                <div class="col-md-4 col-sm-4 col-xs-6">
-                                                    <div class="alignment info-box-number" id="">
-                                                        <p class="font" id="maxwl_4071">00:00</p>
-                                                    </div>
-                                                    <p class="alignment"><i class="fa-regular fa-clock"></i>
-                                                        เวลารอสายที่นานที่สุด</p>
-                                                </div>
-                                                <div class="col-md-4 col-sm-4 col-xs-6">
-                                                    <div class="alignment info-box-number" id="">
-                                                        <p class="font" id="outw_4071">0</p>
-                                                    </div>
-                                                    <p class="alignment"><i class="fa-solid fa-pause"></i> จำนวน Agent
-                                                        ที่พัก</p>
-                                                </div>
-                                                <div class="col-md-4 col-sm-4 col-xs-6">
+
+                                                <div class="col-md-6 col-sm-6 col-xs-6">
                                                     <div class="alignment info-box-number">
                                                         <p class="font" id="active_4071">0</p>
                                                     </div>
-                                                    <p class="alignment"><i class="fa-solid fa-microphone"></i>
-                                                        สายที่กำลัง<br />สนทนา</p>
+                                                    <p class="alignment"><i class="fa-solid fa-phone-volume"></i>
+                                                        สายที่<br>กำลังสนทนา</p>
                                                 </div>
-                                                <div class="col-md-4 col-sm-4 col-xs-6">
-                                                    <div class="alignment info-box-number" id="">
-                                                        <p class="font" id="agents_4071">0/0</p>
-                                                    </div>
-                                                    <p class="alignment"><i class="fa-solid fa-users"></i> จำนวน Agent
-                                                        <br>Online/Ready
-                                                    </p>
-                                                </div>
-                                                <div class="col-md-4 col-sm-4 col-xs-6">
-                                                    <div class="alignment info-box-number" id="">
-                                                        <p class="font" id="outa_4071">00:00</p>
-                                                    </div>
-                                                    <p class="alignment"><i class="fa-solid fa-clock-rotate-left"></i>
-                                                        เวลาพักสายรวม</p>
-                                                </div>
+
                                             </div>
                                             <div class="" style="visibility: collapse;">block</div>
                                         </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+
+                            <div class="card card-primary" style="min-height: 420px">
+                                <div class="card-header">
+                                    <h3 class="card-title"><i class="fa-solid fa-gauge"></i> ระดับการให้บริการ ( Service
+                                        Level )</h3>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                                            <i class="fas fa-expand"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart">
+                                        <div class="col-md-12 text-center">
+                                            <h6>สายที่รับภายใน
+
+                                                20 วินาที <i class="fa fa-edit" data-toggle="modal"
+                                                    data-target="#configModal4071"></i>
+                                            </h6>
+                                            <div id="mainbc2_4071" style="height:280px;"></div>
+                                            <div class="float-right "><i class="fa fa-refresh fa-spin "></i> <span
+                                                    class="c" id="30"></span> sec</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-4">
+
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title"><i class="fa-solid fa-gauge"></i> สถานะพนักงานรับสาย ( Agent
+                                        Status )
+                                    </h3>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                                            <i class="fas fa-expand"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="col-md-12">
+                                        <div id="chart_c"></div>
                                     </div>
                                 </div>
 
@@ -384,8 +314,8 @@
 
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title"><i class="fa-solid fa-gauge"></i> สถานะพนักงานรับสาย ( Agent
-                                        Status )
+                                    <h3 class="card-title"><i class="fa-solid fa-gauge"></i> รายชื่อพนักงานรับสาย ( Agent
+                                        List )
                                     </h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="maximize">
@@ -645,19 +575,66 @@
         }
 
         $(document).ready(function() {
+            var options_c = {
+                series: [7, 2, 4, 3],
+                chart: {
+                    type: 'donut',
+                    //width: 460,
+                    height: 330,
+                },
+                colors: ['#cacaca', '#fed343', '#66DA26', '#E91E63', '#2E93fA', '#A5978B', '#C7F464', '#81D4FA',
+                    '#4ECDC4', '#FD6A6A'
+                ],
+                title: {
+                    //text: 'ประเทศที่ดูมากที่สุด ประจำวันที่ 2023-06-30 - 2023-06-30',
+                    align: 'left',
+                    margin: 10,
+                    offsetX: 0,
+                    offsetY: 0,
+                    floating: false,
+                    style: {
+                        fontSize: '14px',
+                        fontWeight: 'bold',
+                        //fontFamily: undefined,
+                        color: '#263238'
+                    },
+                },
+
+                labels: ['Offline', 'Pause', 'Ready', 'Busy'],
+                responsive: [{
+                    breakpoint: 200,
+                    options: {
+                        chart: {
+                            width: 300,
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }]
+            };
+
+            var chart_c = new ApexCharts(document.querySelector("#chart_c"), options_c);
+            chart_c.render();
+
+
             var pie4071 = echarts.init(document.getElementById("mainbc2_4071"));
 
             option4071 = {
                 series: [{
                         type: 'gauge',
                         center: ["50%", "60%"],
-                        startAngle: 200,
-                        endAngle: -20,
+                        startAngle: 180,
+                        endAngle: 0,
                         min: 0,
                         max: 100,
                         splitNumber: 5,
                         itemStyle: {
-                            color: '#FFAB91'
+                            color: '#ff8484',
+                            shadowColor: '#ff6633',
+                            shadowBlur: 10,
+                            shadowOffsetX: 2,
+                            shadowOffsetY: 2
                         },
                         progress: {
                             show: true,
@@ -725,12 +702,16 @@
                     {
                         type: 'gauge',
                         center: ["50%", "60%"],
-                        startAngle: 200,
-                        endAngle: -20,
+                        startAngle: 180,
+                        endAngle: 0,
                         min: 0,
                         max: 100,
                         itemStyle: {
-                            color: '#FD7347',
+                            color: '#ff8484',
+                            shadowColor: '#ff6633',
+                            shadowBlur: 10,
+                            shadowOffsetX: 2,
+                            shadowOffsetY: 2
                         },
                         progress: {
                             show: true,
@@ -740,6 +721,7 @@
                             show: false
                         },
                         axisLine: {
+                            show: false,
                             roundCap: false,
                             lineStyle: {
                                 width: 12,
@@ -772,6 +754,93 @@
 
             pie4071.setOption(option4071);
         })
+
+        option = {
+            series: [{
+                type: 'gauge',
+                startAngle: 180,
+                endAngle: 0,
+                min: 0,
+                max: 240,
+                splitNumber: 12,
+                itemStyle: {
+                    color: '#58D9F9',
+                    shadowColor: 'rgba(0,138,255,0.45)',
+                    shadowBlur: 10,
+                    shadowOffsetX: 2,
+                    shadowOffsetY: 2
+                },
+                progress: {
+                    show: true,
+                    roundCap: true,
+                    width: 18
+                },
+                pointer: {
+                    icon: 'path://M2090.36389,615.30999 L2090.36389,615.30999 C2091.48372,615.30999 2092.40383,616.194028 2092.44859,617.312956 L2096.90698,728.755929 C2097.05155,732.369577 2094.2393,735.416212 2090.62566,735.56078 C2090.53845,735.564269 2090.45117,735.566014 2090.36389,735.566014 L2090.36389,735.566014 C2086.74736,735.566014 2083.81557,732.63423 2083.81557,729.017692 C2083.81557,728.930412 2083.81732,728.84314 2083.82081,728.755929 L2088.2792,617.312956 C2088.32396,616.194028 2089.24407,615.30999 2090.36389,615.30999 Z',
+                    length: '75%',
+                    width: 16,
+                    offsetCenter: [0, '5%']
+                },
+                axisLine: {
+                    roundCap: true,
+                    lineStyle: {
+                        width: 18
+                    }
+                },
+                axisTick: {
+                    splitNumber: 2,
+                    lineStyle: {
+                        width: 2,
+                        color: '#999'
+                    }
+                },
+                splitLine: {
+                    length: 12,
+                    lineStyle: {
+                        width: 3,
+                        color: '#999'
+                    }
+                },
+                axisLabel: {
+                    distance: 30,
+                    color: '#999',
+                    fontSize: 20
+                },
+                title: {
+                    show: false
+                },
+                detail: {
+                    backgroundColor: '#fff',
+                    borderColor: '#999',
+                    borderWidth: 2,
+                    width: '60%',
+                    lineHeight: 40,
+                    height: 40,
+                    borderRadius: 8,
+                    offsetCenter: [0, '35%'],
+                    valueAnimation: true,
+                    formatter: function(value) {
+                        return '{value|' + value.toFixed(0) + '}{unit|km/h}';
+                    },
+                    rich: {
+                        value: {
+                            fontSize: 50,
+                            fontWeight: 'bolder',
+                            color: '#777'
+                        },
+                        unit: {
+                            fontSize: 20,
+                            color: '#999',
+                            padding: [0, 0, -20, 10]
+                        }
+                    }
+                },
+                data: [{
+                    value: 100
+                }]
+            }]
+        };
+
 
         function c() {
             var n = $('.c').attr('id');

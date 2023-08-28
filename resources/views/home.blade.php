@@ -223,9 +223,7 @@
                                 <div class="card-body">
                                     <div class="chart">
                                         <div class="col-md-12">
-                                            <div class="col-md-12">
-                                                <div id="chart_c"></div>
-                                            </div>
+                                            <div id="chart_c"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -292,7 +290,7 @@
                 ],
                 chart: {
                     type: 'bar',
-                    height: 230,
+                    height: 350,
 
                 },
                 colors: ['#2E93fA', '#FF9800', '#546E7A', '#66DA26', '#E91E63', '#4ECDC4', '#C7F464', '#81D4FA',
