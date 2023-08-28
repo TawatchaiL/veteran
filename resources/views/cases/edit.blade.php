@@ -88,7 +88,7 @@
                                                     <select style="width: 100%;"
                                                         class="select2 select2_casetype1e form-control" id="casetype1e"
                                                         name="casetype1e" multiple="multiple">
-                                                        <option value="" selected>Select Student</option>
+                                                        <option value="" selected>โอนสาย</option>
                                                         <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                     <option value="" selected>Select Parent</option>-->
                                                         @foreach ($casetype as $key2)
@@ -106,6 +106,7 @@
                                                     <select style="width: 100%;"
                                                         class="select2 select2_casetype2e form-control" id="casetype2e"
                                                         name="casetype2e" multiple="multiple">
+                                                        <option value="" selected>OPD</option>
                                                         <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                     <option value="" selected>Select Parent</option>-->
 
@@ -122,6 +123,7 @@
                                                     <select style="width: 100%;"
                                                         class="select2 select2_casetype3e form-control" id="casetype3e"
                                                         name="casetype3e" multiple="multiple">
+                                                        <option value="" selected>OPD ในเวลา</option>
                                                         <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                     <option value="" selected>Select Parent</option>-->
 
@@ -135,6 +137,7 @@
                                                     <select style="width: 100%;"
                                                         class="select2 select2_casetype4e form-control" id="casetype4e"
                                                         name="casetype4e" multiple="multiple">
+                                                        <option value="" selected>อายุรกรรม</option>
                                                         <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                     <option value="" selected>Select Parent</option>-->
 
