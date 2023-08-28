@@ -154,8 +154,8 @@ id="EditModal">
                                                 <div class="form-group">
                                                     <strong><i class="fa-solid fa-city"></i> จังหวัด :</strong>
                                                     <select style="width: 100%;"
-                                                        class="select2 select2_city form-control" id="cityp"
-                                                        name="cityp" multiple="multiple">
+                                                        class="select2 select2_city form-control" id="city"
+                                                        name="city" multiple="multiple">
                                                         <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                         <option value="" selected>Select Parent</option>-->
 
@@ -167,8 +167,8 @@ id="EditModal">
                                                     <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
                                                         อำเภอ:</strong>
                                                     <select style="width: 100%;"
-                                                        class="select2 select2_am form-control" id="amp"
-                                                        name="amp" multiple="multiple">
+                                                        class="select2 select2_am form-control" id="am"
+                                                        name="am" multiple="multiple">
                                                         <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                         <option value="" selected>Select Parent</option>-->
 
@@ -183,8 +183,8 @@ id="EditModal">
                                                         ตำบล
                                                         :</strong>
                                                     <select style="width: 100%;"
-                                                        class="select2 select2_tm form-control" id="tmp"
-                                                        name="tmp" multiple="multiple">
+                                                        class="select2 select2_tm form-control" id="tm"
+                                                        name="tm" multiple="multiple">
                                                         <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                         <option value="" selected>Select Parent</option>-->
 
