@@ -50,67 +50,24 @@
     <li class="nav-item">
         <a href="#" class="nav-link">
             <i class="fa-solid fa-print nav-icon"></i>
-            <p>IVR Report</p>
-            <i class="fas fa-angle-left right"></i>
-        </a>
-        <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <a href="{{ route('ivrreport') }}" class="nav-link {{ Request::is('ivrreport') ? 'active' : '' }}">
-                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ivrreport">
-                        <span class="text-truncate d-block">
-                            IVR Report
-                        </span>
-                    </p>
-                </a>
-            </li>
-
-        </ul>
-        <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <a href="{{ route('ivrreporttop10') }}" class="nav-link {{ Request::is('ivrreporttop10') ? 'active' : '' }}">
-                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ivrreport">
-                        <span class="text-truncate d-block">
-                            IVR Report Top 10
-                        </span>
-                    </p>
-                </a>
-            </li>
-
-        </ul>
-    </li>
-@endcan
-@can('master-data-list')
-    <li class="nav-item">
-        <a href="#" class="nav-link">
-            <i class="fa-solid fa-print nav-icon"></i>
             <p>CRM Report</p>
             <i class="fas fa-angle-left right"></i>
         </a>
         <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <a href="{{ route('loginstatus') }}" class="nav-link {{ Request::is('loginstatus') ? 'active' : '' }}">
-                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมสายเข้าแยกตาม Agent">
-                        <span class="text-truncate d-block">
-                            สถานะการเข้าสู่ระบบ
-                        </span>
-                    </p>
-                </a>
-            </li>
+            
             <li class="nav-item">
                 <a href="{{ route('sumcasebyhn') }}" class="nav-link {{ Request::is('sumcasebyhn') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
                     <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมสายเข้าแยกตาม Agent">
                         <span class="text-truncate d-block">
-                            ผลรวมเรื่องที่ติดต่อแยกตาม HN 
+                            ผลรวมเรื่องที่ติดต่อแยกตาม HN
                         </span>
                     </p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('detailcaselogbyhn') }}" class="nav-link {{ Request::is('detailcaselogbyhn') ? 'active' : '' }}">
+                <a href="{{ route('detailcaselogbyhn') }}"
+                    class="nav-link {{ Request::is('detailcaselogbyhn') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
                     <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมสายเข้าแยกตาม Agent">
                         <span class="text-truncate d-block">
@@ -119,46 +76,7 @@
                     </p>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="{{ route('sumtel') }}" class="nav-link {{ Request::is('sumtel') ? 'active' : '' }}">
-                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมสายเข้าแยกตาม Agent">
-                        <span class="text-truncate d-block">
-                            จำนวนสายที่ติดต่อ
-                        </span>
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('callstatus') }}" class="nav-link {{ Request::is('callstatus') ? 'active' : '' }}">
-                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมสายเข้าแยกตาม Agent">
-                        <span class="text-truncate d-block">
-                            สถานะการรับสาย
-                        </span>
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('misscall') }}" class="nav-link {{ Request::is('misscall') ? 'active' : '' }}">
-                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมสายเข้าแยกตาม Agent">
-                        <span class="text-truncate d-block">
-                            สายที่ไม่ได้รับ
-                        </span>
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('reportcase') }}" class="nav-link {{ Request::is('reportcase') ? 'active' : '' }}">
-                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมสายเข้าแยกตาม Agent">
-                        <span class="text-truncate d-block">
-                            ผลรวมสายเข้าแยกตาม Agent
-                        </span>
-                    </p>
-                </a>
-            </li>
+            
             <li class="nav-item">
                 <a href="{{ route('reportcasetop10') }}"
                     class="nav-link {{ Request::is('reportcasetop10') ? 'active' : '' }}">
@@ -301,12 +219,81 @@
     <li class="nav-item">
         <a href="#" class="nav-link">
             <i class="fa-solid fa-print nav-icon"></i>
-            <p>Callcenter Report</p>
+            <p>Callcenter/IVR Report</p>
             <i class="fas fa-angle-left right"></i>
         </a>
         <ul class="nav nav-treeview">
-
-
+            <li class="nav-item">
+                <a href="{{ route('loginstatus') }}" class="nav-link {{ Request::is('loginstatus') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมสายเข้าแยกตาม Agent">
+                        <span class="text-truncate d-block">
+                            สถานะการเข้าสู่ระบบ
+                        </span>
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('sumtel') }}" class="nav-link {{ Request::is('sumtel') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมสายเข้าแยกตาม Agent">
+                        <span class="text-truncate d-block">
+                            จำนวนสายที่ติดต่อ
+                        </span>
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('callstatus') }}" class="nav-link {{ Request::is('callstatus') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมสายเข้าแยกตาม Agent">
+                        <span class="text-truncate d-block">
+                            สถานะการรับสาย
+                        </span>
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('misscall') }}" class="nav-link {{ Request::is('misscall') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมสายเข้าแยกตาม Agent">
+                        <span class="text-truncate d-block">
+                            สายที่ไม่ได้รับ
+                        </span>
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('reportcase') }}" class="nav-link {{ Request::is('reportcase') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมสายเข้าแยกตาม Agent">
+                        <span class="text-truncate d-block">
+                            ผลรวมสายเข้าแยกตาม Agent
+                        </span>
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('ivrreport') }}" class="nav-link {{ Request::is('ivrreport') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ivrreport">
+                        <span class="text-truncate d-block">
+                            IVR Report
+                        </span>
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('ivrreporttop10') }}"
+                    class="nav-link {{ Request::is('ivrreporttop10') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ivrreport">
+                        <span class="text-truncate d-block">
+                            IVR Report Top 10
+                        </span>
+                    </p>
+                </a>
+            </li>
             <li class="nav-item">
                 <a href="{{ route('detailscore') }}" class="nav-link {{ Request::is('detailscore') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
