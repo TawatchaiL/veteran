@@ -54,29 +54,6 @@
             <i class="fas fa-angle-left right"></i>
         </a>
         <ul class="nav nav-treeview">
-            
-            <li class="nav-item">
-                <a href="{{ route('sumcasebyhn') }}" class="nav-link {{ Request::is('sumcasebyhn') ? 'active' : '' }}">
-                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมสายเข้าแยกตาม Agent">
-                        <span class="text-truncate d-block">
-                            ผลรวมเรื่องที่ติดต่อแยกตาม HN
-                        </span>
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('detailcaselogbyhn') }}"
-                    class="nav-link {{ Request::is('detailcaselogbyhn') ? 'active' : '' }}">
-                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมสายเข้าแยกตาม Agent">
-                        <span class="text-truncate d-block">
-                            รายละเอียดเรื่องที่ติดต่อที่มีการ แก้ไข และการคอมเม้น
-                        </span>
-                    </p>
-                </a>
-            </li>
-            
             <li class="nav-item">
                 <a href="{{ route('reportcasetop10') }}"
                     class="nav-link {{ Request::is('reportcasetop10') ? 'active' : '' }}">
@@ -88,6 +65,96 @@
                     </p>
                 </a>
             </li>
+            
+            <li class="nav-item">
+                <a href="{{ route('reportsumbytype') }}"
+                    class="nav-link {{ Request::is('reportsumbytype') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมแยกตามประเภทที่ติดต่อ">
+                        <span class="text-truncate d-block">
+                            ผลรวมแยกตามประเภทที่ติดต่อ
+                        </span>
+                    </p>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="{{ route('reportsumcasebystatus') }}"
+                    class="nav-link {{ Request::is('reportsumcasebystatus') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมเรื่องที่ติดต่อแยกตามสถานะ">
+                        <span class="text-truncate d-block">
+                            ผลรวมเรื่องที่ติดต่อแยกตามสถานะ
+                        </span>
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('reportsumcasebytranferstatus') }}"
+                    class="nav-link {{ Request::is('reportsumcasebytranferstatus') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip"
+                        title="ผลรวมเรื่องที่ติดต่อแยกตามสถานะการโอนสาย">
+                        <span class="text-truncate d-block">
+                            ผลรวมเรื่องที่ติดต่อแยกตามสถานะการโอนสาย
+                        </span>
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('detailcases') }}" class="nav-link {{ Request::is('detailcases') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="รายละเอียดเรื่องที่ติดต่อ">
+                        <span class="text-truncate d-block">
+                            รายละเอียดเรื่องที่ติดต่อ
+                        </span>
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('detailcasesstatus') }}"
+                    class="nav-link {{ Request::is('detailcasesstatus') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip"
+                        title="รายละเอียดเรื่องที่ติดต่อแสดงตามสถานะ">
+                        <span class="text-truncate d-block">
+                            รายละเอียดเรื่องที่ติดต่อแสดงตามสถานะ
+                        </span>
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('sumcasebyhn') }}" class="nav-link {{ Request::is('sumcasebyhn') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมเรื่องที่ติดต่อแยกตาม HN">
+                        <span class="text-truncate d-block">
+                            ผลรวมเรื่องที่ติดต่อแยกตาม HN
+                        </span>
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('detailcaselogbyhn') }}"
+                    class="nav-link {{ Request::is('detailcaselogbyhn') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="รายละเอียดเรื่องที่ติดต่อที่มีการ แก้ไข และการคอมเม้น">
+                        <span class="text-truncate d-block">
+                            รายละเอียดเรื่องที่ติดต่อที่มีการ แก้ไข และการคอมเม้น
+                        </span>
+                    </p>
+                </a>
+            </li>
+        </ul>
+    </li>
+@endcan
+@can('master-data-list')
+    <li class="nav-item">
+        <a href="#" class="nav-link">
+            <i class="fa-solid fa-print nav-icon"></i>
+            <p>Callcenter/IVR Report</p>
+            <i class="fas fa-angle-left right"></i>
+        </a>
+        <ul class="nav nav-treeview">
             <li class="nav-item">
                 <a href="{{ route('reporttop10in') }}"
                     class="nav-link {{ Request::is('reporttop10in') ? 'active' : '' }}">
@@ -111,17 +178,6 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('reportsumbytype') }}"
-                    class="nav-link {{ Request::is('reportsumbytype') ? 'active' : '' }}">
-                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมแยกตามประเภทที่ติดต่อ">
-                        <span class="text-truncate d-block">
-                            ผลรวมแยกตามประเภทที่ติดต่อ
-                        </span>
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
                 <a href="{{ route('reportcaseinbyhour') }}"
                     class="nav-link {{ Request::is('reportcaseinbyhour') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
@@ -139,29 +195,6 @@
                     <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมสายเข้าภายนอกแยกตามช่วงเวลา">
                         <span class="text-truncate d-block">
                             ผลรวมสายเข้าภายนอกแยกตามช่วงเวลา
-                        </span>
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('reportsumcasebystatus') }}"
-                    class="nav-link {{ Request::is('reportsumcasebystatus') ? 'active' : '' }}">
-                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมเรื่องที่ติดต่อแยกตามสถานะ">
-                        <span class="text-truncate d-block">
-                            ผลรวมเรื่องที่ติดต่อแยกตามสถานะ
-                        </span>
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('reportsumcasebytranferstatus') }}"
-                    class="nav-link {{ Request::is('reportsumcasebytranferstatus') ? 'active' : '' }}">
-                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip"
-                        title="ผลรวมเรื่องที่ติดต่อแยกตามสถานะการโอนสาย">
-                        <span class="text-truncate d-block">
-                            ผลรวมเรื่องที่ติดต่อแยกตามสถานะการโอนสาย
                         </span>
                     </p>
                 </a>
@@ -190,39 +223,6 @@
                     </p>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="{{ route('detailcases') }}" class="nav-link {{ Request::is('detailcases') ? 'active' : '' }}">
-                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="รายละเอียดเรื่องที่ติดต่อ">
-                        <span class="text-truncate d-block">
-                            รายละเอียดเรื่องที่ติดต่อ
-                        </span>
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('detailcasesstatus') }}"
-                    class="nav-link {{ Request::is('detailcasesstatus') ? 'active' : '' }}">
-                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip"
-                        title="รายละเอียดเรื่องที่ติดต่อแสดงตามสถานะ">
-                        <span class="text-truncate d-block">
-                            รายละเอียดเรื่องที่ติดต่อแสดงตามสถานะ
-                        </span>
-                    </p>
-                </a>
-            </li>
-        </ul>
-    </li>
-@endcan
-@can('master-data-list')
-    <li class="nav-item">
-        <a href="#" class="nav-link">
-            <i class="fa-solid fa-print nav-icon"></i>
-            <p>Callcenter/IVR Report</p>
-            <i class="fas fa-angle-left right"></i>
-        </a>
-        <ul class="nav nav-treeview">
             <li class="nav-item">
                 <a href="{{ route('loginstatus') }}" class="nav-link {{ Request::is('loginstatus') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
