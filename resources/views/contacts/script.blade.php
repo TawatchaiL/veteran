@@ -364,7 +364,7 @@
 </script>
 <script>
     document.getElementById('addRowBtn').addEventListener('click', function() {
-        var table = document.getElementById('myTbl3');
+        var table = document.getElementById('myTable');
 
         var newRow = document.createElement('tr');
         newRow.innerHTML = `
@@ -389,5 +389,11 @@
                 <button class="removeRowBtn">Remove</button>
             </td>
         `;
+
+        table.appendChild(newRow);
+
+        newRow.querySelector('.removeRowBtn').addEventListener('click', function() {
+            table.removeChild(newRow);
+        });
     });
 </script>
