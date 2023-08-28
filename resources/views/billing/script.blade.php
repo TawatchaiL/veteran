@@ -508,7 +508,8 @@
                 },
                 {
                     data: 'action',
-                    name: 'action'
+                    name: 'action',
+                    className: 'no-print'
                 },
             ]
         });
