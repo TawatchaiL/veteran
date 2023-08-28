@@ -262,7 +262,7 @@ id="EditModal">
                                                         <td width="30%">
                                                             <div class="col-md-12 col-sm-12 col-xs-12">
                                                                 <input type="text" id="name" name="name[]"
-                                                                    class="form-control has-feedback-left" value=""
+                                                                    class="form-control has-feedback-left" value="สมหญิง ใจดี"
                                                                     required="required">
                                                             </div>
                                                         </td>
@@ -288,7 +288,7 @@ id="EditModal">
                                                         <td width="30%">
                                                             <div class="col-md-12 col-sm-12 col-xs-12">
                                                                 <input type="text" id="name" name="name[]"
-                                                                    class="form-control has-feedback-left" value=""
+                                                                    class="form-control has-feedback-left" value="สมชายใจดี"
                                                                     required="required">
                                                             </div>
                                                         </td>
@@ -308,7 +308,7 @@ id="EditModal">
                                                             </div>
                                                         </td>
                                                         <td width="5%">
-                                                            <button type="button" id="removeRow2e" class="deleteRowBtnf"><i
+                                                            <button type="button" id="removeRow2e" class="btn btn-sm btn-danger deleteRowBtnf"><i
                                                                 class="fa fa-minus"></i></button>
                                                         </td>
                                                     </tr>
