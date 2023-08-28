@@ -52,7 +52,7 @@
                                     <div class="col-xs-2 col-sm-2 col-md-2 align-self-end">
                                         <div class="form-group">
                                             <button type="button" class="btn btn-success" id="CreateButton">
-                                                <i class="fas fa-address-book"></i> รายงาน </button>
+                                                <i class="fas fa-address-book"></i> ค้นหา </button>
                                         </div>
                                     </div>
                                 </ol>
@@ -70,9 +70,12 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-address-book"></i>สถานะการเข้าสู่ระบบ
+                            <h3 class="card-title"><i class="fas fa-address-print"></i>สถานะการเข้าสู่ระบบ
                             </h3>
                             <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                                    <i class="fas fa-expand"></i>
+                                </button>
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
                                 </button>
@@ -110,7 +113,7 @@
                                 <table id="Listview" class="table table-bordered table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th width="20px"><input type="checkbox" id="check-all" class="flat"></th>
+                                            <th width="5%"><input type="checkbox" id="check-all" class="flat"></th>
                                             <th>Agent ที่รับสาย</th>
                                             <th>Login</th>
                                             <th>Logoff</th>
