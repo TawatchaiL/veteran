@@ -287,7 +287,7 @@
                                                                         required="required">
                                                                 </div>
                                                             </td>
-                                                            <td width="10%">
+                                                            <td width="5%">
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -295,8 +295,7 @@
                                             </div>
                                             <div class="col-md-12" align="right">
                     
-                                                <button type="button" id="addRowBtn" class="btn btn-sm btn-primary btnAddg"><i
-                                                        class="fa fa-plus"></i></button>
+                                                <button type="button" id="addRowBtn" class="btn btn-sm btn-primary btnAddg">เพิ่มบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน</button>
                                             </div>
                                         </div>
 
