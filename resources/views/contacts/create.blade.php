@@ -263,25 +263,11 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr class="firstTr3">
-                                                            {{--  <td width="30%">
-                                                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                            <input type="text" id="flown[]" name="flown[]"
-                                                                                class="form-control has-feedback-left" value=""
-                                                                                required="required">
-                                                                        </div>
-                                                                    </td> --}}
                                                             <td width="30%">
                                                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                    <select style="width: 100%;" class="products form-control" id="stock"
-                                                                        name="stock[]" required>
-                                                                        <!-- <option value="" selected>Select Student</option>
-                                                                                                                                                                                                                                                                                                                                                                                                            <option value="" selected>Select Parent</option>-->
-                                                                        {{-- @foreach ($product as $key2)
-                                                            <option value="{{ $key2->id }}">{{ $key2->name }}
-                                                            </option>
-                                                        @endforeach --}}
-                    
-                                                                    </select>
+                                                                    <input type="text" id="name" name="name[]"
+                                                                        class="form-control has-feedback-left" value=""
+                                                                        required="required">
                                                                     <div id="lot_price" class="text-success"></div>
                                                                     <div id="lot_error" class="text-danger"></div>
                                                                 </div>
@@ -289,14 +275,14 @@
                     
                                                             <td width="10%">
                                                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                    <input type="number" step="0.50" id="amount" name="amount[]"
+                                                                    <input type="text" id="amount" name="amount[]"
                                                                         class="form-control has-feedback-left" value=""
                                                                         required="required">
                                                                 </div>
                                                             </td>
                                                             <td width="10%">
                                                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                    <input type="number" step="0.50" id="price" name="price[]"
+                                                                    <input type="text" id="price" name="price[]"
                                                                         class="form-control has-feedback-left" value=""
                                                                         required="required">
                                                                 </div>
