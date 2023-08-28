@@ -42,10 +42,10 @@ class BillingController extends Controller
             $simulatedDatas = [];
 
             $rivrname = ['02:00', '05:30', '04:00','08:12'];
-            $rivrno = mt_rand(0, 2000) / 100;
+            
 
             for ($i = 1; $i <= $numberOfRows; $i++) {
-
+                $rivrno = mt_rand(0, 2000) / 100;
                 $ivrno  =  number_format($rivrno, 2, '.', '');;
                 $ivrname = $rivrname[array_rand($rivrname)];
                 $createDate = now()->subDays(rand(1, 365))->subHours(rand(0, 23))->subMinutes(rand(0, 59));
