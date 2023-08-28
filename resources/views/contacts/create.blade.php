@@ -261,7 +261,6 @@
                                                             <th class="column-title"> เบอร์โทรศัพท์</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
                                                         <tr>
                                                             <td width="30%">
                                                                 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -288,7 +287,6 @@
                                                             <td width="5%">
                                                             </td>
                                                         </tr>
-                                                    </tbody>
                                                 </table>
                                             </div>
                                             <div class="col-md-12" align="right">
