@@ -1,5 +1,4 @@
-<div class="fade modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"
-id="EditModal">
+<div class="modal fade" id="CreateModal">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header bg-primary">
