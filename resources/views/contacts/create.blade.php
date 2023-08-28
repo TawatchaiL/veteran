@@ -262,7 +262,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr class="firstTr3">
+                                                        <tr>
                                                             <td width="30%">
                                                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                                                     <input type="text" id="name" name="name[]"
