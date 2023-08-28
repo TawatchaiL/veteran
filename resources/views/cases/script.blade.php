@@ -149,6 +149,42 @@
             placeholder: 'รายละเอียดเคส เพิ่มเติม 3'
         });
 
+        $(".select2_casetype1e").select2({
+            maximumSelectionLength: 1,
+            allowClear: true,
+            //theme: 'bootstrap4'
+            placeholder: 'กรุณาเลือกประเภทการติดต่อ'
+        });
+        $(".select2_casetype2e").select2({
+            maximumSelectionLength: 1,
+            allowClear: true,
+            //theme: 'bootstrap4'
+            placeholder: 'รายละเอียดเคส'
+        });
+        $(".select2_casetype3e").select2({
+            maximumSelectionLength: 1,
+            allowClear: true,
+            //theme: 'bootstrap4'
+            placeholder: 'รายละเอียดเคสย่อย'
+        });
+        $(".select2_casetype4e").select2({
+            maximumSelectionLength: 1,
+            allowClear: true,
+            //theme: 'bootstrap4'
+            placeholder: 'รายละเอียดเคส เพิ่มเติม 1'
+        });
+        $(".select2_casetype5e").select2({
+            maximumSelectionLength: 1,
+            allowClear: true,
+            //theme: 'bootstrap4'
+            placeholder: 'รายละเอียดเคส เพิ่มเติม 2'
+        });
+        $(".select2_casetype6e").select2({
+            maximumSelectionLength: 1,
+            allowClear: true,
+            //theme: 'bootstrap4'
+            placeholder: 'รายละเอียดเคส เพิ่มเติม 3'
+        });
 
         $("#price,#amount,#stock").on("change", function() {
             var parent = $(this).parent().parent().parent();
@@ -622,26 +658,26 @@
 
 
 
-            id = $(this).data('id');
-            $.ajax({
-                url: "orders/edit/" + id,
-                method: 'GET',
-                success: function(res) {
-                    console.log(res);
-                    $('#EditLot').val(res.data.order_number);
-                    $('#EditProduct').val(res.data.pid).change();
-                    $("select[name=eproduct]").attr("readonly", "readonly");
-                    $('#EditStock').val(res.data.sid).change();
-                    $("select[name=estock]").attr("readonly", "readonly");
-                    $('#EditCompany').val(res.data.cid).change();
-                    $('#EditAmount').val(res.data.amount);
-                    $('#EditCost').val(res.data.cost);
-                    $('#EditTotalCost').val(res.data.total_cost);
-                    $('#EditDetail').val(res.data.detail);
-                    $('#EditModalBodyTable').html(res.table_html);
+            //id = $(this).data('id');
+            //$.ajax({
+            //    url: "orders/edit/" + id,
+            //    method: 'GET',
+            //    success: function(res) {
+            //        console.log(res);
+             //       $('#EditLot').val(res.data.order_number);
+            //        $('#EditProduct').val(res.data.pid).change();
+            //        $("select[name=eproduct]").attr("readonly", "readonly");
+            //        $('#EditStock').val(res.data.sid).change();
+            //        $("select[name=estock]").attr("readonly", "readonly");
+            //        $('#EditCompany').val(res.data.cid).change();
+           //         $('#EditAmount').val(res.data.amount);
+            //        $('#EditCost').val(res.data.cost);
+            //        $('#EditTotalCost').val(res.data.total_cost);
+            //        $('#EditDetail').val(res.data.detail);
+            //        $('#EditModalBodyTable').html(res.table_html);
                     $('#EditModal').modal('show');
-                }
-            });
+            //    }
+            //});
 
         })
 

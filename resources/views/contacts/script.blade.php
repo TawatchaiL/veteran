@@ -46,24 +46,6 @@
             placeholder: 'กรุณาเลือก'
         });
 
-        $(".select2_city").select2({
-            maximumSelectionLength: 1,
-            allowClear: false,
-            //theme: 'bootstrap4'
-            placeholder: 'กรุณาเลือกจังหวัด'
-        });
-        $(".select2_am").select2({
-            maximumSelectionLength: 1,
-            allowClear: false,
-            //theme: 'bootstrap4'
-            placeholder: 'กรุณาเลือกอำเภอ'
-        });
-        $(".select2_tm").select2({
-            maximumSelectionLength: 1,
-            allowClear: false,
-            //theme: 'bootstrap4'
-            placeholder: 'กรุณาเลือกตำบล'
-        });
 
         $(".select2_multiple").select2({
             maximumSelectionLength: 2,
@@ -278,21 +260,20 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
-            id = $(this).data('id');
-            $.ajax({
-                url: "contacts/edit/" + id,
-                method: 'GET',
-                success: function(res) {
-                    $('#EditName').val(res.data.name);
-                    $('#EditEmail').val(res.data.email);
-                    $('#EditPostcode').val(res.data.postcode);
-                    $('#EditAddress').val(res.data.address);
-                    $('#EditTelephone').val(res.data.telephone);
-
-                    $('#EditModalBody').html(res.html);
+            //id = $(this).data('id');
+            //$.ajax({
+            //    url: "contacts/edit/" + id,
+            //    method: 'GET',
+            //    success: function(res) {
+            //        $('#EditName').val(res.data.name);
+            //        $('#EditPostcode').val(res.data.postcode);
+            //        $('#EditAddress').val(res.data.address);
+            //        $('#postcode').val('1');
+//
+//                    $('#EditModalBody').html(res.html);
                     $('#EditModal').modal('show');
-                }
-            });
+            //    }
+            //});
 
         })
 

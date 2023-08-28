@@ -1,94 +1,267 @@
 <!-- Edit  Modal -->
 <div class="fade modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"
 id="EditModal">
-<div class="modal-dialog modal-lg" role="document">
-    <form id="editdata" class="form" action="" method="POST">
-        <div class="modal-content">
-            <div class="modal-header bg-primary">
-                <h4 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-graduation-cap"></i> แก้ไข รายชื่อนักเรียน</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<div class="modal-dialog modal-xl">
+    <div class="modal-content">
+        <div class="modal-header bg-primary">
+            <h4 class="modal-title"><i class="fas fa-address-book"></i> เพิ่ม รายชื่อผู้ติดต่อ</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            {{-- @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <strong>Whoops!</strong>Something went wrong.<br><br>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif --}}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" style="display: none;">
+                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <!-- Modal body -->
-            <div class="modal-body">
-                <div class="alert alert-danger alert-dismissible fade show" role="alert"
-                    style="display: none;">
-                    <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="alert alert-success alert-dismissible fade show" role="alert"
-                    style="display: none;">
-                    <strong>Success!</strong> Users was edit successfully.
-                    <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true"></span>
-                    </button>
-                </div>
-                <div id="EditModalBody">
-                    {!! Form::open(['method' => 'POST','class' => 'form']) !!}
-                    <div class="row">
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                            <div class="form-group">
-                                <strong><i class="fas fa-graduation-cap"></i> ชื่อนักเรียน:</strong>
-                                {!! Form::text('name', null, ['id' => 'EditName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong><i class="fas fa-address-card"></i> ที่อยู่:</strong>
-                                {!! Form::textarea('address', null, [
-                                    'rows' => 4,
-                                    'id' => 'EditAddress',
-                                    'class' => 'form-control',
-                                ]) !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
+            <div class="alert alert-success alert-dismissible fade show" role="alert" style="display: none;">
 
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                            <div class="form-group">
-                                <strong><i class="fas fa-code"></i> รหัสไปรษณีย์:</strong>
-                                {!! Form::text('postcode', null, [
-                                    'id' => 'EditPostcode',
-                                    'placeholder' => 'Postcode',
-                                    'class' => 'form-control',
-                                ]) !!}
-                            </div>
-                        </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                            <div class="form-group">
-                                <strong><i class="fas fa-at"></i> อีเมล์:</strong>
-                                {!! Form::text('email', null, ['id' => 'EditEmail', 'placeholder' => 'Email', 'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                            <div class="form-group">
-                                <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์:</strong>
-                                {!! Form::text('telephone', null, [
-                                    'id' => 'EditTelephone',
-                                    'placeholder' => 'Telephone',
-                                    'class' => 'form-control',
-                                ]) !!}
-                            </div>
-                        </div>
-
-                    </div>
-
-                    {!! Form::close() !!}
-                </div>
+                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                </button>
             </div>
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="SubmitEditForm"><i class="fas fa-download"></i> บันทึกข้อมูล</button>
-                <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
+
+
+            {{-- 'route' => 'users.store', --}}
+            {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
+
+            <div class="card card-success card-tabs">
+                <div class="card-header p-0 pt-1">
+                    <ul class="nav nav-tabs" id="custom-tabs-one-tabp" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="custom-tabs-one-home-tabp" data-toggle="pill"
+                                href="#custom-tabs-one-homep" role="tab" aria-controls="custom-tabs-one-homep"
+                                aria-selected="true">ข้อมูลผู้ติดต่อ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="custom-tabs-one-profile-tabp" data-toggle="pill"
+                                href="#custom-tabs-one-profilep" role="tab"
+                                aria-controls="custom-tabs-one-profilep" aria-selected="false">ข้อมูลเบอร์ติดต่อ</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <div class="tab-content" id="custom-tabs-one-tabContentp">
+                        <div class="tab-pane fade show active" id="custom-tabs-one-homep" role="tabpanel"
+                            aria-labelledby="custom-tabs-one-home-tabp">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <strong><i class="fas fa-code"></i> รหัสผู้ติดต่อ.</strong>
+                                                {!! Form::text('code', '00001', [
+                                                    'id' => 'AddCode',
+                                                    'placeholder' => 'Code',
+                                                    'class' => 'form-control',
+                                                    'readonly' => true,
+                                                ]) !!}
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <strong><i class="fas fa-calendar"></i> วันที่บันทึก:</strong>
+                                                {!! Form::text('start_date', '2023-08-28', [
+                                                    'id' => 'AddDate',
+                                                    'placeholder' => '',
+                                                    'class' => 'AddDate form-control',
+                                                    'data-target' => '#reservationdate',
+                                                ]) !!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <strong><i class="fas fa-user-tie"></i> ชื่อ:</strong>
+                                                {!! Form::text('name', 'สมชาย', ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <strong><i class="fas fa-user-tie"></i> นามสกุล:</strong>
+                                                {!! Form::text('name', 'เสมอ', ['id' => 'AddName', 'placeholder' => 'LastName', 'class' => 'form-control']) !!}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <strong><i class="fas fa-home"></i> บ้านเลขที่:</strong>
+                                                {!! Form::text('postcode', '90', [
+                                                    'id' => 'AddPostcode',
+                                                    'placeholder' => 'Address',
+                                                    'class' => 'form-control',
+                                                ]) !!}
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <strong><i class="fa-solid fa-people-roof"></i> หมู่:</strong>
+                                                {!! Form::text('homephone', '2', [
+                                                    'id' => 'homephone',
+                                                    'placeholder' => 'Group',
+                                                    'class' => 'form-control',
+                                                ]) !!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <strong><i class="fa-solid fa-people-roof"></i> ซอย :</strong>
+                                                {!! Form::text('postcode', '3', [
+                                                    'id' => 'AddPostcode',
+                                                    'placeholder' => 'Soi',
+                                                    'class' => 'form-control',
+                                                ]) !!}
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <strong><i class="fas fa-road"></i> ถนน :</strong>
+                                                {!! Form::text('homephone', 'ศรีธรรมไตรปิฎก', [
+                                                    'id' => 'homephone',
+                                                    'placeholder' => 'Road',
+                                                    'class' => 'form-control',
+                                                ]) !!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <strong><i class="fa-solid fa-city"></i> จังหวัด :</strong>
+                                                <select style="width: 100%;"
+                                                    class="select2 select2_city form-control" id="cityp"
+                                                    name="cityp">
+                                                    <option value="" selected>พิษณุโลก </option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
+                                                    อำเภอ:</strong>
+                                                <select style="width: 100%;"
+                                                    class="select2 select2_am form-control" id="amp"
+                                                    name="amp">
+                                                    <option value="" selected>อำเภอเมือง </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
+                                                    ตำบล
+                                                    :</strong>
+                                                <select style="width: 100%;"
+                                                    class="select2 select2_tm form-control" id="tmp"
+                                                    name="tmp">
+                                                    <option value="" selected>ในเมือง </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <strong><i class="fas fa-code"></i> รหัสไปรษณีย์:</strong>
+                                                {!! Form::text('postcode', '65000', [
+                                                    'id' => 'AddPostcode',
+                                                    'placeholder' => 'Postcode',
+                                                    'class' => 'form-control',
+                                                ]) !!}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="tab-pane fade" id="custom-tabs-one-profilep" role="tabpanel"
+                            aria-labelledby="custom-tabs-one-profile-tabp">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์บ้าน:</strong>
+                                                {!! Form::text('homephone', null, [
+                                                    'id' => 'homephone',
+                                                    'placeholder' => 'Telephone',
+                                                    'class' => 'form-control',
+                                                ]) !!}
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์มือถือ :</strong>
+                                                {!! Form::text('telephone', null, [
+                                                    'id' => 'telephone',
+                                                    'placeholder' => 'Postcode',
+                                                    'class' => 'form-control',
+                                                ]) !!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <strong><i class="fas fa-phone"></i>
+                                                    เบอร์โทรศัพท์ที่ทำงาน:</strong>
+                                                {!! Form::text('workphone', null, [
+                                                    'id' => 'workphone',
+                                                    'placeholder' => 'Telephone',
+                                                    'class' => 'form-control',
+                                                ]) !!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+
+
+            {!! Form::close() !!}
         </div>
-    </form>
+        <div class="modal-footer {{-- justify-content-between --}}">
+            <button type="button" class="btn btn-success" id="SubmitCreateForm"><i class="fas fa-download"></i>
+                บันทึกข้อมูล</button>
+            <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i
+                    class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
+        </div>
+    </div>
 </div>
 </div>
