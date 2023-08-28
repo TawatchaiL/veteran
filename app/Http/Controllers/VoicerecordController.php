@@ -36,17 +36,14 @@ class VoicerecordController extends Controller
     public function index(Request $request)
     {
         $datas = DB::table('cases')
-        ->select(DB::raw('DATE(created_at) as cdate'), DB::raw('TIME(created_at) as ctime'),'telno','agent')
+        ->select(DB::raw('DATE(created_at) as cdate'), DB::raw('TIME(created_at) as ctime'),'telno','agent', 'id')
         ->get();
 
         if ($request->ajax()) {
-
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
-                    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
-                })->rawColumns(['checkbox', 'action'])
-                //->addColumn('playerbutton', 'เล่นไฟล์เสียง')
-                //->editColumn('duration', concat(rand(1,3),':',rand(0,60)))
+                    return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
+                })
                 ->addColumn('action', function ($row) {
                     if (Gate::allows('contact-edit')) {
                         $html = '<button type="button" class="btn btn-sm btn-warning btn-edit" id="getEditData" data-id="' . $row->id . '"><i class="fa fa-edit"></i> แก้ไข</button> ';
@@ -63,6 +60,7 @@ class VoicerecordController extends Controller
                 ->addColumn('more', function ($row) {
                     return '';
                 })->rawColumns(['checkbox', 'action'])->toJson();
+
         }
 
         return view('voicerecord.index');
