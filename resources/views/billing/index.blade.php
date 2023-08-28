@@ -47,7 +47,17 @@
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
-                                            <strong><i class="fa-regular fa-comment-dots"></i>
+                                            <strong><i class="fa-solid fa-user-group"></i>
+                                                แผนก:</strong>
+                                            <select style="width: 100%;" class="select2 form-control" id="telin1"
+                                                name="telin1">
+                                                <option value="" selected>สื่อสารองค์กร</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-2 col-sm-2 col-md-2">
+                                        <div class="form-group">
+                                            <strong><i class="fas fa-list-ol"></i>
                                                 เบอร์ปลายทาง:</strong>
                                             <select style="width: 100%;" class="select2 form-control" id="telin"
                                                 name="telin">
@@ -57,7 +67,7 @@
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
-                                            <strong><i class="fa-regular fa-comment-dots"></i>
+                                            <strong><i class="fa-solid fa-people-roof"></i>
                                                 ประเภทการโทร:</strong>
                                             <select style="width: 100%;" class="select2 form-control" id="teltype"
                                                 name="teltype">
