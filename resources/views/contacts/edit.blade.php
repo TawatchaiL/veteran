@@ -38,14 +38,14 @@
 
             <div class="card card-success card-tabs">
                 <div class="card-header p-0 pt-1">
-                    <ul class="nav nav-tabs" id="custom-tabs-one-tabp" role="tablist">
+                    <ul class="nav nav-tabs" id="custom-tabs-one-tabpำ" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="custom-tabs-one-home-tabp" data-toggle="pill"
                                 href="#custom-tabs-one-homep" role="tab" aria-controls="custom-tabs-one-homep"
                                 aria-selected="true">ข้อมูลผู้ติดต่อ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="custom-tabs-one-profile-tabp" data-toggle="pill"
+                            <a class="nav-link" id="custom-tabs-one-profile-tabpำ" data-toggle="pill"
                                 href="#custom-tabs-one-profilep" role="tab"
                                 aria-controls="custom-tabs-one-profilep" aria-selected="false">ข้อมูลเบอร์ติดต่อ</a>
                         </li>
