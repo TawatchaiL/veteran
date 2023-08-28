@@ -288,7 +288,7 @@ id="EditModal">
                                         </div>
                                         <div class="col-md-12" align="right">
                 
-                                            <button type="button" id="addRowBtn" class="btn btn-sm btn-primary btnAddg">เพิ่มบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน</button>
+                                            <button type="button" id="addRowBtne" class="btn btn-sm btn-primary btnAddg">เพิ่มบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน</button>
                                         </div>
                                     </div>
 

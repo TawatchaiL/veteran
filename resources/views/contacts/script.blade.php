@@ -399,7 +399,7 @@
     });
 </script>
 <script>
-    document.getElementById('addRowBtn').addEventListener('click', function() {
+    document.getElementById('addRowBtne').addEventListener('click', function() {
         var table = document.getElementById('myTbl3e');
 
         var newRow = document.createElement('tr');
