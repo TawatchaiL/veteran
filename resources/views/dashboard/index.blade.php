@@ -109,7 +109,8 @@
                             <div class="info-box">
                                 <span class="info-box-icon bg-warning"><i class="fa-regular fa-hourglass"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text">เวลารอสายเฉลี่ย</span>
+                                    <span class="info-box-text">เวลารอสายเฉลี่ย
+                                        ต่อสาย</span>
                                     <span class="info-box-number">00:00:12</span>
                                 </div>
 
@@ -416,7 +417,8 @@
                                                 </div>
 
                                                 <div class="card-body table-responsive p-0">
-                                                    <table class="table table-striped table-bordered table-hover text-nowrap">
+                                                    <table
+                                                        class="table table-striped table-bordered table-hover text-nowrap">
                                                         <thead>
                                                             <tr>
                                                                 <th>#</th>
@@ -434,44 +436,53 @@
                                                                 <td>1</td>
                                                                 <td>1234</td>
                                                                 <td><i class="fa-solid fa-user"></i> Agent1</td>
-                                                                <td><i class="fas fa-power-off status-icon offline"></i> <font class="offline">Offline</font></td>
+                                                                <td><i class="fas fa-power-off status-icon offline"></i>
+                                                                    <font class="offline">Offline</font>
+                                                                </td>
                                                                 <td></td>
                                                                 <td>00:00:00</td>
                                                                 <td></td>
-                                                                <td><img src="{{ asset('images/pauseagent.gif') }}"><img src="{{ asset('images/logout-icon.png') }}"></td>
+                                                                <td><img src="{{ asset('images/pauseagent.gif') }}"><img
+                                                                        src="{{ asset('images/logout-icon.png') }}"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>2</td>
                                                                 <td>1235</td>
                                                                 <td><i class="fa-solid fa-user"></i> Agent2</td>
-                                                                <td> <i class="fas fa-power-off status-icon offline"></i> <font class="offline">Offline</font>
+                                                                <td> <i class="fas fa-power-off status-icon offline"></i>
+                                                                    <font class="offline">Offline</font>
                                                                 </td>
                                                                 <td></td>
                                                                 <td>00:00:00</td>
                                                                 <td></td>
-                                                                <td><img src="{{ asset('images/pauseagent.gif') }}"><img src="{{ asset('images/logout-icon.png') }}"></td>
+                                                                <td><img src="{{ asset('images/pauseagent.gif') }}"><img
+                                                                        src="{{ asset('images/logout-icon.png') }}"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>3</td>
                                                                 <td>1236</td>
                                                                 <td><i class="fa-solid fa-user"></i> Agent3</td>
-                                                                <td><i class="fa-solid fa-plug status-icon online"></i> <font class="online">Online</font>
+                                                                <td><i class="fa-solid fa-plug status-icon online"></i>
+                                                                    <font class="online">Online</font>
                                                                 </td>
                                                                 <td></td>
                                                                 <td>00:00:00</td>
                                                                 <td></td>
-                                                                <td><img src="{{ asset('images/pauseagent.gif') }}"><img src="{{ asset('images/logout-icon.png') }}"></td>
+                                                                <td><img src="{{ asset('images/pauseagent.gif') }}"><img
+                                                                        src="{{ asset('images/logout-icon.png') }}"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>4</td>
                                                                 <td>1237</td>
                                                                 <td><i class="fa-solid fa-user"></i> Agent4</td>
-                                                                <td> <i class="fas fa-power-off status-icon offline"></i> <font class="offline">Offline</font>
+                                                                <td> <i class="fas fa-power-off status-icon offline"></i>
+                                                                    <font class="offline">Offline</font>
                                                                 </td>
                                                                 <td></td>
                                                                 <td>00:00:00</td>
                                                                 <td></td>
-                                                                <td><img src="{{ asset('images/pauseagent.gif') }}"><img src="{{ asset('images/logout-icon.png') }}"></td>
+                                                                <td><img src="{{ asset('images/pauseagent.gif') }}"><img
+                                                                        src="{{ asset('images/logout-icon.png') }}"></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -521,7 +532,8 @@
                                                 </div>
 
                                                 <div class="card-body table-responsive p-0">
-                                                    <table class="table table-striped table-bordered table-hover text-nowrap">
+                                                    <table
+                                                        class="table table-striped table-bordered table-hover text-nowrap">
                                                         <thead>
                                                             <tr>
                                                                 <th>#</th>
@@ -682,7 +694,13 @@
                             fontSize: 12
                         },
                         anchor: {
-                            show: false
+                            show: true,
+                            showAbove: true,
+                            color: '#000000',
+                            size: 10,
+                            itemStyle: {
+                                borderWidth: 3,
+                            },
                         },
                         title: {
                             show: false
@@ -693,11 +711,11 @@
                             lineHeight: 40,
                             height: '15%',
                             borderRadius: 8,
-                            offsetCenter: [0, '-15%'],
+                            /* offsetCenter: [0, '-15%'], */
                             fontSize: 20,
                             fontWeight: 'bolder',
                             formatter: '{value} %',
-                            color: 'auto'
+                            color: '#000000'
                         },
                         data: [{
                             value: 73
@@ -718,15 +736,22 @@
                             show: true,
                             width: 8
                         },
-
-                        pointer: {
+                        anchor: {
                             show: false
                         },
                         axisLine: {
-                            show: false
+                            roundCap: false,
+                            lineStyle: {
+                                width: 12,
+                                color: [
+                                    [0.1, '#00C853'],
+                                    [0.8, '#FFD740'],
+                                    [1, '#ff8484'],
+                                ],
+                            },
                         },
                         axisTick: {
-                            show: false
+                            show: false,
                         },
                         splitLine: {
                             show: false
