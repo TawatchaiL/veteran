@@ -270,18 +270,46 @@ id="EditModal">
                                                         <td width="10%">
                                                             <div class="col-md-12 col-sm-12 col-xs-12">
                                                                 <input type="text" id="amount" name="amount[]"
-                                                                    class="form-control has-feedback-left" value=""
+                                                                    class="form-control has-feedback-left" value="แม่"
                                                                     required="required">
                                                             </div>
                                                         </td>
                                                         <td width="10%">
                                                             <div class="col-md-12 col-sm-12 col-xs-12">
                                                                 <input type="text" id="price" name="price[]"
-                                                                    class="form-control has-feedback-left" value=""
+                                                                    class="form-control has-feedback-left" value="089999999"
                                                                     required="required">
                                                             </div>
                                                         </td>
                                                         <td width="5%">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="30%">
+                                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                <input type="text" id="name" name="name[]"
+                                                                    class="form-control has-feedback-left" value=""
+                                                                    required="required">
+                                                            </div>
+                                                        </td>
+                
+                                                        <td width="10%">
+                                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                <input type="text" id="amount" name="amount[]"
+                                                                    class="form-control has-feedback-left" value="พี่"
+                                                                    required="required">
+                                                            </div>
+                                                        </td>
+                                                        <td width="10%">
+                                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                <input type="text" id="price" name="price[]"
+                                                                    class="form-control has-feedback-left" value="0999854"
+                                                                    required="required">
+                                                            </div>
+                                                        </td>
+                                                        <td width="5%">
+                                                            <button type="button" id="removeRow2e" class="deleteRowBtnf"><i
+                                                                class="fa fa-minus"></i></button>
                                                         </td>
                                                     </tr>
                                             </table>

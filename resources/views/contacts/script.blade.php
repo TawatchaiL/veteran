@@ -422,7 +422,7 @@
                 </div>
             </td>
             <td>
-                <button type="button" id="removeRow2" class="btn btn-sm btn-danger removeRowBtn"><i
+                <button type="button" id="removeRow2" class="deleteRowBtn"><i
                                                         class="fa fa-minus"></i></button>
             </td>
         `;
@@ -432,5 +432,12 @@
         newRow.querySelector('.removeRowBtn').addEventListener('click', function() {
             table.removeChild(newRow);
         });
+    });
+
+    document.addEventListener('click', function(event) {
+        if (event.target.classList.contains('deleteRowBtnf')) {
+            var rowToRemove = event.target.parentNode.parentNode;
+            rowToRemove.parentNode.removeChild(rowToRemove);
+        }
     });
 </script>
