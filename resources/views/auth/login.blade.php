@@ -78,7 +78,7 @@
                         @csrf
 
                         <div class="input-group mb-3">
-                            <input type="email" name="email" value="{{ old('email') }}" placeholder="Email"
+                            <input readonly type="email" name="email" value="test@gmail.com{{-- {{ old('email') }} --}}" placeholder="Email"
                                 class="form-control @error('email') is-invalid @enderror">
                             <div class="input-group-append">
                                 <div class="input-group-text"><span class="fas fa-user"></span></div>
@@ -89,7 +89,7 @@
                         </div>
 
                         <div class="input-group mb-3">
-                            <input type="password" name="password" placeholder="Password"
+                            <input readonly type="password"  name="password" value="12345678" placeholder="Password"
                                 class="form-control @error('password') is-invalid @enderror">
                             <div class="input-group-append">
                                 <div class="input-group-text">
@@ -103,7 +103,7 @@
                         </div>
 
                         <div class="input-group mb-3">
-                            <input type="text" name="phone" placeholder="หมายเลขโทรศัพท์"
+                            <input readonly type="text" name="phone" value="8888" placeholder="หมายเลขโทรศัพท์"
                                 class="form-control @error('phone') is-invalid @enderror"
                                 {{-- value="{{ old('phone', $temporaryPhone) }}" --}}>
                             <div class="input-group-append">
