@@ -41,13 +41,13 @@ id="EditModal">
                     <ul class="nav nav-tabs" id="custom-tabs-one-tabpe" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="custom-tabs-one-home-tabpe" data-toggle="pill"
-                                href="#custom-tabs-one-homep" role="tab" aria-controls="custom-tabs-one-homep"
+                                href="#custom-tabs-one-homepe" role="tab" aria-controls="custom-tabs-one-homepe"
                                 aria-selected="true">ข้อมูลผู้ติดต่อ</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="custom-tabs-one-profile-tabpe" data-toggle="pill"
-                                href="#custom-tabs-one-profilep" role="tab"
-                                aria-controls="custom-tabs-one-profilep" aria-selected="false">ข้อมูลเบอร์ติดต่อ</a>
+                                href="#custom-tabs-one-profilepe" role="tab"
+                                aria-controls="custom-tabs-one-profilepe" aria-selected="false">ข้อมูลเบอร์ติดต่อ</a>
                         </li>
 
                     </ul>
@@ -205,7 +205,7 @@ id="EditModal">
 
 
                         <div class="tab-pane fade" id="custom-tabs-one-profilepe" role="tabpanel"
-                            aria-labelledby="custom-tabs-one-profile-tabp">
+                            aria-labelledby="custom-tabs-one-profile-tabpe">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row">
