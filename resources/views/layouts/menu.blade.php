@@ -47,8 +47,32 @@
     </li>
 @endcan
 @can('master-data-list')
-    <li class="nav-item">
-        <a href="#" class="nav-link">
+    <li
+        class="nav-item {{ in_array(Request::route()->getName(), [
+            'reportcasetop10',
+            'reportsumbytype',
+            'reportsumcasebystatus',
+            'reportsumcasebytranferstatus',
+            'detailcases',
+            'detailcasesstatus',
+            'sumcasebyhn',
+            'detailcaselogbyhn',
+        ])
+            ? 'menu-open'
+            : '' }}">
+        <a href="#"
+            class="nav-link {{ in_array(Request::route()->getName(), [
+                'reportcasetop10',
+                'reportsumbytype',
+                'reportsumcasebystatus',
+                'reportsumcasebytranferstatus',
+                'detailcases',
+                'detailcasesstatus',
+                'sumcasebyhn',
+                'detailcaselogbyhn',
+            ])
+                ? 'active'
+                : '' }}">
             <i class="fa-solid fa-print nav-icon"></i>
             <p>CRM Report</p>
             <i class="fas fa-angle-left right"></i>
@@ -65,7 +89,7 @@
                     </p>
                 </a>
             </li>
-            
+
             <li class="nav-item">
                 <a href="{{ route('reportsumbytype') }}"
                     class="nav-link {{ Request::is('reportsumbytype') ? 'active' : '' }}">
@@ -77,7 +101,7 @@
                     </p>
                 </a>
             </li>
-            
+
             <li class="nav-item">
                 <a href="{{ route('reportsumcasebystatus') }}"
                     class="nav-link {{ Request::is('reportsumcasebystatus') ? 'active' : '' }}">
@@ -137,7 +161,8 @@
                 <a href="{{ route('detailcaselogbyhn') }}"
                     class="nav-link {{ Request::is('detailcaselogbyhn') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="รายละเอียดเรื่องที่ติดต่อที่มีการ แก้ไข และการคอมเม้น">
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip"
+                        title="รายละเอียดเรื่องที่ติดต่อที่มีการ แก้ไข และการคอมเม้น">
                         <span class="text-truncate d-block">
                             รายละเอียดเรื่องที่ติดต่อที่มีการ แก้ไข และการคอมเม้น
                         </span>
@@ -148,8 +173,46 @@
     </li>
 @endcan
 @can('master-data-list')
-    <li class="nav-item">
-        <a href="#" class="nav-link">
+    <li
+        class="nav-item {{ in_array(Request::route()->getName(), [
+            'reportcaseinbyhour',
+            'reporttop10in',
+            'reporttop10out',
+            'reportcaseoutbyhour',
+            'detailcaseinternalnumber',
+            'detailcaseexternalnumber',
+            'loginstatus',
+            'sumtel',
+            'callstatus',
+            'misscall',
+            'reportcase',
+            'ivrreport',
+            'ivrreporttop10',
+            'detailscore',
+            'detailscoreagent',
+        ])
+            ? 'menu-open'
+            : '' }}">
+        <a href="#"
+            class="nav-link {{ in_array(Request::route()->getName(), [
+                'reportcaseinbyhour',
+                'reporttop10in',
+                'reporttop10out',
+                'reportcaseoutbyhour',
+                'detailcaseinternalnumber',
+                'detailcaseexternalnumber',
+                'loginstatus',
+                'sumtel',
+                'callstatus',
+                'misscall',
+                'reportcase',
+                'ivrreport',
+                'ivrreporttop10',
+                'detailscore',
+                'detailscoreagent',
+            ])
+                ? 'active'
+                : '' }}">
             <i class="fa-solid fa-print nav-icon"></i>
             <p>Callcenter/IVR Report</p>
             <i class="fas fa-angle-left right"></i>
@@ -322,8 +385,24 @@
     </li>
 @endcan
 @can('master-data-list')
-    <li class="nav-item">
-        <a href="#" class="nav-link">
+    <li
+        class="nav-item {{ in_array(Request::route()->getName(), [
+            'casetype',
+            'departments',
+            'positions',
+            // Add more route names here if needed
+        ])
+            ? 'menu-open'
+            : '' }}">
+        <a href="#"
+            class="nav-link {{ in_array(Request::route()->getName(), [
+                'casetype',
+                'departments',
+                'positions',
+                // Add more route names here if needed
+            ])
+                ? 'active'
+                : '' }}">
             <i class="nav-icon fas fa-database"></i>
             <p>ข้อมูลหลัก</p>
             <i class="fas fa-angle-left right"></i>
