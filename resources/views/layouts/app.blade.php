@@ -105,6 +105,7 @@
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="plugins/dropzone/min/dropzone.min.js"></script>
 <script>
+    
     function updateDigitalClock() {
         const now = new Date();
         const hours = String(now.getHours()).padStart(2, '0');
