@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\Department;
+use App\Models\Case_type;
 use App\Models\studentRunningNumber;
 use App\Models\term;
 use Spatie\Permission\Models\Role;
@@ -102,12 +103,22 @@ class ContactController extends Controller
             /*  ->with(['term' => $term]) */;
     }
 
-    public function popup_content()
+    public function popup_content(Request $request)
     {
+        $con = $request->get('cardId');
+        $contact_name = "";
+        $contact_lname = "";
+        if ($con == "0877777777") {
+            $contact_name = "กิจวรรณ";
+            $contact_lname = "ละเอียด";
+        }
+        $case_type = Case_type::orderBy("id", "asc")->get();
         $template = 'contacts.contact-create';
-        $htmlContent = View::make($template)->render();
+        $htmlContent = View::make($template, [
+            'telephone' => $con, 'contact_name' => $contact_name, 'contact_lname' => $contact_lname, 'casetype' => $case_type
+        ])->render();
         return response()->json([
-            'html' =>  $htmlContent
+            'html' =>  $htmlContent,
         ]);
     }
 
@@ -116,7 +127,7 @@ class ContactController extends Controller
 
         $html = '<div class="card card-danger custom-bottom-right-card d-none d-md-block" data-id="0804190099" id="0804190099">
         <div class="card-header">
-        <h4 class="card-title"><i class="fas fa-circle-info fa-beat" style="--fa-beat-scale: 1.5;"></i> 0804190099</h4>
+        <h4 class="card-title"><i class="fas fa-circle-info fa-beat" style="--fa-beat-scale: 1.5;"></i> 0804190099 (ผู้ติดต่อใหม่)</h4>
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="maximize">
                 <i class="fas fa-expand"></i>
@@ -136,7 +147,7 @@ class ContactController extends Controller
         </div>
         <div class="card card-danger custom-bottom-right-card d-none d-md-block" data-id="0822846414" id="0822846414">
         <div class="card-header">
-        <h3 class="card-title"><i class="fas fa-circle-info fa-beat" style="--fa-beat-scale: 1.5;"></i> 0822846414</h3>
+        <h3 class="card-title"><i class="fas fa-circle-info fa-beat" style="--fa-beat-scale: 1.5;"></i> 0822846414 (ผู้ติดต่อใหม่)</h3>
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="maximize">
                 <i class="fas fa-expand"></i>
@@ -156,7 +167,7 @@ class ContactController extends Controller
         </div>
         <div class="card card-danger custom-bottom-right-card d-none d-md-block" data-id="0877777777" id="0877777777">
         <div class="card-header">
-        <h3 class="card-title"><i class="fas fa-circle-info fa-beat" style="--fa-beat-scale: 1.5;"></i> 0877777777</h3>
+        <h3 class="card-title"><i class="fas fa-circle-info fa-beat" style="--fa-beat-scale: 1.5;"></i> 0877777777 (ผู้ติดต่อในระบบ)</h3>
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="maximize">
                 <i class="fas fa-expand"></i>

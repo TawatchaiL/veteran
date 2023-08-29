@@ -293,7 +293,7 @@
                     // Position the cards after dynamic content is loaded
                     $('.custom-bottom-right-card').each(function(index) {
                         cardPositions.push({
-                            right: (20 + (index * 220)) + 'px',
+                            right: (20 + (index * 320)) + 'px',
                             isMaximized: false,
                         });
                         $(this).css('right', cardPositions[index].right);
@@ -412,6 +412,14 @@
                     $('#amp').select2({});
                     $('#tmp').select2({});
                     $('#cityp').select2({});
+                    $('#casetype1p').select2({});
+                    $('#casetype2p').select2({});
+                    $('#casetype3p').select2({});
+                    $('#casetype4p').select2({});
+                    $('#casetype5p').select2({});
+                    $('#casetype6p').select2({});
+                    $('#tranferstatusp').select2({});
+                    $('#casestatusp').select2({});
                     addemerphone();
                 }
             });

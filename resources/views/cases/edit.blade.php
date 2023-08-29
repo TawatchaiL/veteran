@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <h4 class="modal-title"><i class="fa-regular fa-clipboard"></i> เพิ่ม เรื่องที่ติดต่อ</h4>
+                <h4 class="modal-title"><i class="fa-regular fa-clipboard"></i> แก้ไข เรื่องที่ติดต่อ</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -36,10 +36,10 @@
                 {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
                 <div class="card card-success card-tabs">
                     <div class="card-header p-0 pt-1">
-                        <ul class="nav nav-tabs" id="custom-tabs-one-tabp" role="tablist">
+                        <ul class="nav nav-tabs" id="custom-tabs-one-tabe" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="custom-tabs-one-home-tabp" data-toggle="pill"
-                                    href="#custom-tabs-one-homep" role="tab" aria-controls="custom-tabs-one-homep"
+                                <a class="nav-link active" id="custom-tabs-one-home-tabe" data-toggle="pill"
+                                    href="#custom-tabs-one-homee" role="tab" aria-controls="custom-tabs-one-homee"
                                     aria-selected="true">ข้อมูลเรื่องที่ติดต่อ</a>
                             </li>
                             {{-- <li class="nav-item">
@@ -51,9 +51,9 @@
                         </ul>
                     </div>
                     <div class="card-body">
-                        <div class="tab-content" id="custom-tabs-one-tabContentp">
-                            <div class="tab-pane fade show active" id="custom-tabs-one-homep" role="tabpanel"
-                                aria-labelledby="custom-tabs-one-home-tabp">
+                        <div class="tab-content" id="custom-tabs-one-tabContente">
+                            <div class="tab-pane fade show active" id="custom-tabs-one-homee" role="tabpanel"
+                                aria-labelledby="custom-tabs-one-home-tabe">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
@@ -135,8 +135,8 @@
                                                     <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
                                                         เพิ่มเติม 1:</strong>
                                                     <select style="width: 100%;"
-                                                        class="select2 select2_casetype4e form-control" id="casetype4e"
-                                                        name="casetype4e" multiple="multiple">
+                                                        class="select2 select2_casetype4e form-control"
+                                                        id="casetype4e" name="casetype4e" multiple="multiple">
                                                         <option value="" selected>อายุรกรรม</option>
                                                         <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                     <option value="" selected>Select Parent</option>-->
@@ -152,8 +152,8 @@
                                                     <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
                                                         เพิ่มเติม 2:</strong>
                                                     <select style="width: 100%;"
-                                                        class="select2 select2_casetype5e form-control" id="casetype5e"
-                                                        name="casetype5e" multiple="multiple">
+                                                        class="select2 select2_casetype5e form-control"
+                                                        id="casetype5e" name="casetype5e" multiple="multiple">
                                                         <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                     <option value="" selected>Select Parent</option>-->
 
@@ -165,8 +165,8 @@
                                                     <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
                                                         เพิ่มเติม 3:</strong>
                                                     <select style="width: 100%;"
-                                                        class="select2 select2_casetype6e form-control" id="casetype6e"
-                                                        name="casetype6e" multiple="multiple">
+                                                        class="select2 select2_casetype6e form-control"
+                                                        id="casetype6e" name="casetype6e" multiple="multiple">
                                                         <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                     <option value="" selected>Select Parent</option>-->
 
@@ -234,7 +234,7 @@
                                 aria-labelledby="custom-tabs-one-profile-tabp">
                                 <div class="card">
                                     <div class="card-body">
-                                       
+
                                     </div>
                                 </div>
                             </div> --}}

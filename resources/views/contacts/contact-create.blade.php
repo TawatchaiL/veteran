@@ -12,7 +12,13 @@
             </button>
         </div>
         {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
-
+        <div class="text-center">
+            <h1 style="color: #1a16eb"><i class="fa-solid fa-id-card-clip"></i> {{ $telephone }}</h1>
+            @if ($contact_name)
+                <h2 style="color: #1a16eb"><i class="fa-solid fa-user-tie"></i> {{ $contact_name }} {{ $contact_lname }}
+                </h2>
+            @endif
+        </div>
         <div class="card card-primary card-tabs">
             <div class="card-header p-0 pt-1">
                 <ul class="nav nav-tabs" id="custom-tabs-one-tabp" role="tablist">
@@ -26,7 +32,11 @@
                             href="#custom-tabs-one-profilep" role="tab" aria-controls="custom-tabs-one-profilep"
                             aria-selected="false">ข้อมูลเบอร์ติดต่อ</a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link" id="custom-tabs-one-case-tabp" data-toggle="pill"
+                            href="#custom-tabs-one-casep" role="tab" aria-controls="custom-tabs-one-casep"
+                            aria-selected="true">ข้อมูลเรื่องที่ติดต่อ</a>
+                    </li>
                 </ul>
             </div>
             <div class="card-body">
@@ -66,13 +76,17 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fas fa-user-tie"></i> ชื่อ:</strong>
-                                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'ชื่อ', 'class' => 'form-control']) !!}
+                                            {!! Form::text('name', $contact_name, ['id' => 'AddName', 'placeholder' => 'ชื่อ', 'class' => 'form-control']) !!}
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fas fa-user-tie"></i> นามสกุล:</strong>
-                                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'นามสกุล', 'class' => 'form-control']) !!}
+                                            {!! Form::text('name', $contact_lname, [
+                                                'id' => 'AddName',
+                                                'placeholder' => 'นามสกุล',
+                                                'class' => 'form-control',
+                                            ]) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -198,7 +212,7 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์มือถือ :</strong>
-                                            {!! Form::text('telephone', null, [
+                                            {!! Form::text('telephone', $telephone, [
                                                 'id' => 'telephone',
                                                 'placeholder' => 'เบอร์โทรศัพท์มือถือ',
                                                 'class' => 'form-control',
@@ -269,6 +283,170 @@
                                             เพิ่มบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน</button>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="custom-tabs-one-casep" role="tabpanel"
+                        aria-labelledby="custom-tabs-one-case-tabp">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <strong><i class="fas fa-code"></i> HN:</strong>
+                                            {!! Form::text('name', '000001', [
+                                                'id' => 'AddName',
+                                                'placeholder' => 'Name',
+                                                'class' => 'form-control',
+                                                'readonly' => false,
+                                            ]) !!}
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <strong><i class="fas fa-user-tie"></i> ชื่อ-สกุล :</strong>
+                                            {!! Form::text('name', null, [
+                                                'id' => 'AddName',
+                                                'placeholder' => 'Name',
+                                                'class' => 'form-control',
+                                                'readonly' => false,
+                                            ]) !!}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <strong><i class="fa-regular fa-message"></i> ประเภทเคส:</strong>
+                                            <select class="select2 select2_single form-control" id="casetype1p"
+                                                name="casetype1p" multiple="multiple">
+                                                <!-- <option value="" selected>Select Student</option>
+                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
+                                                @foreach ($casetype as $key2)
+                                                    <option value="{{ $key2->id }}">{{ $key2->name }}
+                                                    </option>
+                                                @endforeach
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <strong><i class="fa-regular fa-comment-dots"></i>
+                                                รายละเอียดเคส:</strong>
+                                            <select class="select2 select2_single form-control" id="casetype2p"
+                                                name="casetype2p" multiple="multiple">
+                                                <!-- <option value="" selected>Select Student</option>
+                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <strong><i class="fa-regular fa-comment-dots"></i>
+                                                รายละเอียดเคสย่อย:</strong>
+                                            <select class="select2 select2_single form-control" id="casetype3p"
+                                                name="casetype3p" multiple="multiple">
+                                                <!-- <option value="" selected>Select Student</option>
+                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
+                                                เพิ่มเติม 1:</strong>
+                                            <select class="select2 select2_single form-control" id="casetype4p"
+                                                name="casetype4p" multiple="multiple">
+                                                <!-- <option value="" selected>Select Student</option>
+                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
+                                                เพิ่มเติม 2:</strong>
+                                            <select class="select2 select2_single form-control" id="casetype5p"
+                                                name="casetype5p" multiple="multiple">
+                                                <!-- <option value="" selected>Select Student</option>
+                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
+                                                เพิ่มเติม 3:</strong>
+                                            <select class="select2 select2_single form-control" id="casetype6p"
+                                                name="casetype6p" multiple="multiple">
+                                                <!-- <option value="" selected>Select Student</option>
+                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong><i class="fa-regular fa-comment-dots"></i>
+                                                รายละเอียด:</strong>
+                                            {!! Form::textarea('detail', null, [
+                                                'rows' => 4,
+                                                'id' => 'AddDetail',
+                                                'class' => 'form-control',
+                                            ]) !!}
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <strong><i class="fas fa-shuffle"></i> สถานะการโอนสาย
+                                                :</strong>
+                                            <select class="select2 select2_single form-control" id="tranferstatusp"
+                                                name="tranferstatus" multiple="multiple">
+                                                <option value="1">รับสาย</option>
+                                                <option value="2">ไม่รับสาย</option>
+                                                <option value="3">สายไม่ว่าง</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <strong><i class="fas fa-arrows-rotate"></i> สถานะการเคส
+                                                :</strong>
+                                            <select class="select2 select2_single form-control" id="casestatusp"
+                                                name="casestatus" multiple="multiple">
+                                                <option value="1">ปิดเคส</option>
+                                                <option value="2">กำลังดำเนินการ</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
