@@ -13,7 +13,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-
+                    <h4><i class="fa-solid fa-chart-pie"></i> สถิติการรับสาย และ รับเคสของ  [{{ Auth::user()->name }}]</h4>
                 </div>
                 <div class="col-sm-6">
 
