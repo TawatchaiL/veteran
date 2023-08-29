@@ -81,6 +81,8 @@
                                     <select style="width: 100%;" class="select2 form-control" id="telin"
                                         name="telin">
                                         <option value="" selected>เบอร์โทรฉุกเฉิน</option>
+                                        <option value="">รหัสผู้ติดต่อ</option>
+                                        <option value="">ชื่อผู้ติดต่อ</option>
                                     </select>
                                 </div>
                             </div>
