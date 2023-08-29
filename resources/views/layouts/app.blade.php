@@ -138,7 +138,7 @@
         });
     };
 
-    const updateDigitalClock = () => {
+    /* const updateDigitalClock = () => {
         const now = new Date();
         const hours = String(now.getHours()).padStart(2, '0');
         const minutes = String(now.getMinutes()).padStart(2, '0');
@@ -147,11 +147,11 @@
         document.getElementById('hours').textContent = hours;
         document.getElementById('minutes').textContent = minutes;
         document.getElementById('seconds').textContent = seconds;
-    };
+    }; */
 
     // Call updateDigitalClock immediately and then every 1000ms (1 second)
-    updateDigitalClock();
-    setInterval(updateDigitalClock, 1000);
+    //updateDigitalClock();
+    //setInterval(updateDigitalClock, 1000);
 
     const updateWeather = (lat, lon) => {
         const weatherElement = document.getElementById('weather');
