@@ -82,6 +82,9 @@
                                             name="telin">
                                             <option value="" selected>กำลังดำเนินการ</option>
                                             <option value="">ปิดเคส</option>
+                                            <option value="">HN</option>
+                                            <option value="">ชื่อ-สกุล</option>
+                                            <option value="">เบอร์โทร</option>
                                         </select>
                                     </div>
                                 </div>
