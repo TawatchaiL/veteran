@@ -50,18 +50,18 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fas fa-code"></i> รหัสผู้ติดต่อ:</strong>
-                                            {!! Form::text('code', null, [
+                                            {!! Form::text('code', '000001', [
                                                 'id' => 'AddCode',
                                                 'placeholder' => 'รหัสผู้ติดต่อ',
                                                 'class' => 'form-control',
-                                                'readonly' => true,
+                                                'readonly' => false,
                                             ]) !!}
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fas fa-calendar"></i> วันที่บันทึก:</strong>
-                                            {!! Form::text('start_date', null, [
+                                            {!! Form::text('start_date', date('Y-m-d'), [
                                                 'id' => 'AddDate',
                                                 'placeholder' => 'วันที่บันทึก',
                                                 'class' => 'AddDate form-control',
