@@ -74,7 +74,7 @@
                                 </script>
                             @endif
                             <div class="row">
-                                <div class="col-xs-2 col-sm-2 col-md-2">
+                                <div class="col-xs-3 col-sm-3 col-md-3">
                                     <div class="form-group">
                                         <strong><i class="fa-solid fa-phone"></i>
                                             ประเภทการค้นหา:</strong>
@@ -88,13 +88,13 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-xs-2 col-sm-2 col-md-2">
+                                <div class="col-xs-3 col-sm-3 col-md-3">
                                     <div class="form-group">
                                         <strong><i class="fa-solid fa-hashtag"></i> รายละเอียดที่ต้องการค้นหา:</strong>
                                         {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => '', 'class' => 'form-control']) !!}
                                     </div>
                                 </div>
-                                <div class="col-xs-2 col-sm-2 col-md-2" style="display: flex; align-items: flex-end;">
+                                <div class="col-xs-3 col-sm-3 col-md-3" style="display: flex; align-items: flex-end;">
                                     <div class="form-group">
                                         <button type="button" class="btn btn-success" id="CreateButtons" style="margin-top: auto;">
                                             <i class="fas fa-search"></i> ค้นหา </button>
