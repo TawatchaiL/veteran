@@ -91,6 +91,7 @@
             ajax: '',
             serverSide: true,
             processing: true,
+            searching: false,
             language: {
                 loadingRecords: '&nbsp;',
                 processing: `<div class="spinner-border text-primary"></div>`,
