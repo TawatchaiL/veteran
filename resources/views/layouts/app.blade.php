@@ -104,8 +104,48 @@
 <script src="dist/js/adminlte.min.js?v=3.2.0"></script>
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="plugins/dropzone/min/dropzone.min.js"></script>
+
+
 <script>
-    
+    function addemerphone() {
+        document.getElementById('addRowBtnp').addEventListener('click', function() {
+        var table = document.getElementById('myTbl3p');
+
+        var newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td width="30%">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <input type="text" name="name[]" class="form-control has-feedback-left" value="" required>
+                    <div id="lot_price" class="text-success"></div>
+                    <div id="lot_error" class="text-danger"></div>
+                </div>
+            </td>
+            <td width="10%">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <input type="text" name="amount[]" class="form-control has-feedback-left" value="" required>
+                </div>
+            </td>
+            <td width="10%">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <input type="text" name="price[]" class="form-control has-feedback-left" value="" required>
+                </div>
+            </td>
+            <td>
+                <button type="button" id="removeRow2p" class="btn btn-sm btn-danger removeRowBtnp"><i
+                                                        class="fa fa-minus"></i></button>
+            </td>
+        `;
+
+        table.appendChild(newRow);
+
+        newRow.querySelector('.removeRowBtnp').addEventListener('click', function() {
+            table.removeChild(newRow);
+        });
+    });
+    }
+
+</script>
+<script>
     function updateDigitalClock() {
         const now = new Date();
         const hours = String(now.getHours()).padStart(2, '0');
@@ -376,7 +416,7 @@
                     $('#amp').select2({});
                     $('#tmp').select2({});
                     $('#cityp').select2({});
-
+                    addemerphone();
                 }
             });
         }
