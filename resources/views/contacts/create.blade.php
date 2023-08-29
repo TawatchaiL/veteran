@@ -38,22 +38,22 @@
                     <div class="card-header p-0 pt-1">
                         <ul class="nav nav-tabs" id="custom-tabs-one-tabp" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="custom-tabs-one-home-tabp" data-toggle="pill"
-                                    href="#custom-tabs-one-homep" role="tab" aria-controls="custom-tabs-one-homep"
+                                <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill"
+                                    href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home"
                                     aria-selected="true">ข้อมูลผู้ติดต่อ</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="custom-tabs-one-profile-tabp" data-toggle="pill"
-                                    href="#custom-tabs-one-profilep" role="tab"
-                                    aria-controls="custom-tabs-one-profilep" aria-selected="false">ข้อมูลเบอร์ติดต่อ</a>
+                                <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill"
+                                    href="#custom-tabs-one-profile" role="tab"
+                                    aria-controls="custom-tabs-one-profile" aria-selected="false">ข้อมูลเบอร์ติดต่อ</a>
                             </li>
 
                         </ul>
                     </div>
                     <div class="card-body">
-                        <div class="tab-content" id="custom-tabs-one-tabContentp">
-                            <div class="tab-pane fade show active" id="custom-tabs-one-homep" role="tabpanel"
-                                aria-labelledby="custom-tabs-one-home-tabp">
+                        <div class="tab-content" id="custom-tabs-one-tabContent">
+                            <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel"
+                                aria-labelledby="custom-tabs-one-home-tab">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
@@ -63,7 +63,7 @@
                                                     <strong><i class="fas fa-code"></i> รหัสผู้ติดต่อ.</strong>
                                                     {!! Form::text('code', null, [
                                                         'id' => 'AddCode',
-                                                        'placeholder' => 'Code',
+                                                        'placeholder' => 'รหัสผู้ติดต่อ',
                                                         'class' => 'form-control',
                                                         'readonly' => true,
                                                     ]) !!}
@@ -74,7 +74,7 @@
                                                     <strong><i class="fas fa-calendar"></i> วันที่บันทึก:</strong>
                                                     {!! Form::text('start_date', null, [
                                                         'id' => 'AddDate',
-                                                        'placeholder' => '',
+                                                        'placeholder' => 'วันที่บันทึก',
                                                         'class' => 'AddDate form-control',
                                                         'data-target' => '#reservationdate',
                                                     ]) !!}
@@ -87,13 +87,13 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> ชื่อ:</strong>
-                                                    {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
+                                                    {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'ชื่อ', 'class' => 'form-control']) !!}
                                                 </div>
                                             </div>
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> นามสกุล:</strong>
-                                                    {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'LastName', 'class' => 'form-control']) !!}
+                                                    {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'นามสกุล', 'class' => 'form-control']) !!}
                                                 </div>
                                             </div>
                                         </div>
@@ -110,7 +110,7 @@
                                                     <strong><i class="fas fa-home"></i> บ้านเลขที่:</strong>
                                                     {!! Form::text('postcode', null, [
                                                         'id' => 'AddPostcode',
-                                                        'placeholder' => 'Address',
+                                                        'placeholder' => 'บ้านเลขที่',
                                                         'class' => 'form-control',
                                                     ]) !!}
                                                 </div>
@@ -120,7 +120,7 @@
                                                     <strong><i class="fa-solid fa-people-roof"></i> หมู่:</strong>
                                                     {!! Form::text('homephone', null, [
                                                         'id' => 'homephone',
-                                                        'placeholder' => 'Group',
+                                                        'placeholder' => 'หมู่',
                                                         'class' => 'form-control',
                                                     ]) !!}
                                                 </div>
@@ -132,7 +132,7 @@
                                                     <strong><i class="fa-solid fa-people-roof"></i> ซอย :</strong>
                                                     {!! Form::text('postcode', null, [
                                                         'id' => 'AddPostcode',
-                                                        'placeholder' => 'Soi',
+                                                        'placeholder' => 'ซอย',
                                                         'class' => 'form-control',
                                                     ]) !!}
                                                 </div>
@@ -142,7 +142,7 @@
                                                     <strong><i class="fas fa-road"></i> ถนน :</strong>
                                                     {!! Form::text('homephone', null, [
                                                         'id' => 'homephone',
-                                                        'placeholder' => 'Road',
+                                                        'placeholder' => 'ถนน',
                                                         'class' => 'form-control',
                                                     ]) !!}
                                                 </div>
@@ -152,11 +152,10 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fa-solid fa-city"></i> จังหวัด :</strong>
-                                                    <select style="width: 100%;"
-                                                        class="select2 select2_city form-control" id="city"
+                                                    <select class="select2 select2_single form-control" id="city"
                                                         name="city" multiple="multiple">
-                                                        <!-- <option value="" selected>Select Student</option>
-                                                                                                                                                                                                                                                                                                                                                                                        <option value="" selected>Select Parent</option>-->
+                                                        <option value="1">พิษณุโลก</option>
+
 
                                                     </select>
                                                 </div>
@@ -165,11 +164,10 @@
                                                 <div class="form-group">
                                                     <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
                                                         อำเภอ:</strong>
-                                                    <select style="width: 100%;"
-                                                        class="select2 select2_am form-control" id="am"
+                                                    <select class="select2 select2_single form-control" id="am"
                                                         name="am" multiple="multiple">
-                                                        <!-- <option value="" selected>Select Student</option>
-                                                                                                                                                                                                                                                                                                                                                                                        <option value="" selected>Select Parent</option>-->
+                                                        <option value="1">อำเภอเมือง</option>
+
 
                                                     </select>
                                                 </div>
@@ -181,11 +179,10 @@
                                                     <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
                                                         ตำบล
                                                         :</strong>
-                                                    <select style="width: 100%;"
-                                                        class="select2 select2_tm form-control" id="tm"
+                                                    <select class="select2 select2_single form-control" id="tm"
                                                         name="tm" multiple="multiple">
-                                                        <!-- <option value="" selected>Select Student</option>
-                                                                                                                                                                                                                                                                                                                                                                                        <option value="" selected>Select Parent</option>-->
+                                                        <option value="1">ในเมือง</option>
+
 
                                                     </select>
                                                 </div>
@@ -195,7 +192,7 @@
                                                     <strong><i class="fas fa-code"></i> รหัสไปรษณีย์:</strong>
                                                     {!! Form::text('postcode', null, [
                                                         'id' => 'AddPostcode',
-                                                        'placeholder' => 'Postcode',
+                                                        'placeholder' => 'รหัสไปรษณีย์',
                                                         'class' => 'form-control',
                                                     ]) !!}
                                                 </div>
@@ -207,8 +204,8 @@
                             </div>
 
 
-                            <div class="tab-pane fade" id="custom-tabs-one-profilep" role="tabpanel"
-                                aria-labelledby="custom-tabs-one-profile-tabp">
+                            <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel"
+                                aria-labelledby="custom-tabs-one-profile-tab">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
@@ -218,7 +215,7 @@
                                                     <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์บ้าน:</strong>
                                                     {!! Form::text('homephone', null, [
                                                         'id' => 'homephone',
-                                                        'placeholder' => 'Telephone',
+                                                        'placeholder' => 'เบอร์โทรศัพท์บ้าน',
                                                         'class' => 'form-control',
                                                     ]) !!}
                                                 </div>
@@ -228,7 +225,7 @@
                                                     <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์มือถือ :</strong>
                                                     {!! Form::text('telephone', null, [
                                                         'id' => 'telephone',
-                                                        'placeholder' => 'Postcode',
+                                                        'placeholder' => 'เบอร์โทรศัพท์มือถือ',
                                                         'class' => 'form-control',
                                                     ]) !!}
                                                 </div>
@@ -242,7 +239,7 @@
                                                         เบอร์โทรศัพท์ที่ทำงาน:</strong>
                                                     {!! Form::text('workphone', null, [
                                                         'id' => 'workphone',
-                                                        'placeholder' => 'Telephone',
+                                                        'placeholder' => 'เบอร์โทรศัพท์ที่ทำงาน',
                                                         'class' => 'form-control',
                                                     ]) !!}
                                                 </div>
@@ -252,46 +249,49 @@
                                         <div class="row">
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <table id="myTbl3"
-                                                    class="table table-striped table-bordered responsive-utilities jambo_table " width="400">
+                                                    class="table table-striped table-bordered responsive-utilities jambo_table "
+                                                    width="400">
                                                     <thead>
                                                         <tr class="headings">
                                                             {{-- <th class="column-title"> สินค้า</th> --}}
-                                                            <th class="column-title"> ชื่อบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน</th>
+                                                            <th class="column-title">
+                                                                ชื่อบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน</th>
                                                             <th class="column-title"> ความสัมพันธ์</th>
                                                             <th class="column-title"> เบอร์โทรศัพท์</th>
                                                         </tr>
                                                     </thead>
-                                                        <tr>
-                                                            <td width="30%">
-                                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                    <input type="text" id="name" name="name[]"
-                                                                        class="form-control has-feedback-left" value=""
-                                                                        required="required">
-                                                                </div>
-                                                            </td>
-                    
-                                                            <td width="10%">
-                                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                    <input type="text" id="amount" name="amount[]"
-                                                                        class="form-control has-feedback-left" value=""
-                                                                        required="required">
-                                                                </div>
-                                                            </td>
-                                                            <td width="10%">
-                                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                    <input type="text" id="price" name="price[]"
-                                                                        class="form-control has-feedback-left" value=""
-                                                                        required="required">
-                                                                </div>
-                                                            </td>
-                                                            <td width="5%">
-                                                            </td>
-                                                        </tr>
+                                                    <tr>
+                                                        <td width="30%">
+                                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                <input type="text" id="name" name="name[]"
+                                                                    class="form-control has-feedback-left"
+                                                                    value="" required="required">
+                                                            </div>
+                                                        </td>
+
+                                                        <td width="10%">
+                                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                <input type="text" id="amount" name="amount[]"
+                                                                    class="form-control has-feedback-left"
+                                                                    value="" required="required">
+                                                            </div>
+                                                        </td>
+                                                        <td width="10%">
+                                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                <input type="text" id="price" name="price[]"
+                                                                    class="form-control has-feedback-left"
+                                                                    value="" required="required">
+                                                            </div>
+                                                        </td>
+                                                        <td width="5%">
+                                                        </td>
+                                                    </tr>
                                                 </table>
                                             </div>
                                             <div class="col-md-12" align="right">
-                    
-                                                <button type="button" id="addRowBtn" class="btn btn-sm btn-primary btnAddg">เพิ่มบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน</button>
+
+                                                <button type="button" id="addRowBtn"
+                                                    class="btn btn-primary btnAddg"><i class="fa-solid fa-plus"></i> เพิ่มบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน</button>
                                             </div>
                                         </div>
 
