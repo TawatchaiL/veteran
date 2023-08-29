@@ -418,6 +418,8 @@
                                 'left'; // Align the first column to the center
                             doc.content[1].table.body[i][1].alignment =
                                 'center'; // Align the second column to the right
+                            doc.content[1].table.body[i][2].alignment =
+                                'center'; // Align the second column to the right
                             //doc.content[1].table.body[i][2].alignment =
                             //'center'; // Align the second column to the right
                             // Customize alignments for other columns as needed
