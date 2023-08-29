@@ -92,7 +92,7 @@
                                 <div class="col-xs-2 col-sm-2 col-md-2">
                                     <div class="form-group">
                                         <strong><i class="fa-solid fa-hashtag"></i> รายละเอียดที่ต้องการค้นหา:</strong>
-                                        {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'เบอร์ต้นทาง', 'class' => 'form-control']) !!}
+                                        {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => '', 'class' => 'form-control']) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-2 col-sm-2 col-md-2" style="display: flex; align-items: flex-end;">
