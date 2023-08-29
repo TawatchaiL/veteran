@@ -201,7 +201,7 @@
                     <div class="row">
                         <div class="col-md-4">
 
-                            <div class="card card-primary" style="min-height: 420px">
+                            <div class="card card-primary" style="min-height: 440px">
                                 <div class="card-header">
                                     <h3 class="card-title"><i class="fa-solid fa-gauge"></i> สถานะเรียลไทม์ ( Queue Status
                                         )
@@ -250,7 +250,7 @@
                         </div>
                         <div class="col-md-4">
 
-                            <div class="card card-primary" style="min-height: 420px">
+                            <div class="card card-primary" style="max-height: 440px">
                                 <div class="card-header">
                                     <h3 class="card-title"><i class="fa-solid fa-gauge"></i> ระดับการให้บริการ ( Service
                                         Level )</h3>
@@ -272,7 +272,7 @@
                                                 20 วินาที <i class="fa fa-edit" data-toggle="modal"
                                                     data-target="#configModal4071"></i>
                                             </h6>
-                                            <div id="mainbc2_4071" style="height:280px;"></div>
+                                            <div id="mainbc2_4071" style="height:300px;"></div>
                                             <div class="float-right "><i class="fa fa-refresh fa-spin "></i> <span
                                                     class="c" id="30"></span> sec</div>
                                         </div>
@@ -285,7 +285,7 @@
 
                         <div class="col-md-4">
 
-                            <div class="card card-primary">
+                            <div class="card card-primary" style="max-height: 440px">
                                 <div class="card-header">
                                     <h3 class="card-title"><i class="fa-solid fa-gauge"></i> สถานะพนักงานรับสาย ( Agent
                                         Status )
@@ -302,7 +302,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="col-md-12">
-                                        <div id="chart_c"></div>
+                                        <div id="mainbc2_4072" style="height:350px;"></div>
                                     </div>
                                 </div>
 
@@ -312,7 +312,7 @@
                     <div class="row">
                         <div class="col-md-8">
 
-                            <div class="card card-primary">
+                            <div class="card card-primary" style="min-height: 405px">
                                 <div class="card-header">
                                     <h3 class="card-title"><i class="fa-solid fa-gauge"></i> รายชื่อพนักงานรับสาย ( Agent
                                         List )
@@ -428,7 +428,7 @@
                         </div>
                         <div class="col-md-4">
 
-                            <div class="card card-primary">
+                            <div class="card card-primary" style="min-height: 405px">
                                 <div class="card-header">
                                     <h3 class="card-title"><i class="fa-solid fa-gauge"></i> สายที่รออยู่ในคิว ( Call
                                         Waiting ) </h3>
@@ -614,8 +614,8 @@
                 }]
             };
 
-            var chart_c = new ApexCharts(document.querySelector("#chart_c"), options_c);
-            chart_c.render();
+            //var chart_c = new ApexCharts(document.querySelector("#chart_c"), options_c);
+            //chart_c.render();
 
 
             var pie4071 = echarts.init(document.getElementById("mainbc2_4071"));
@@ -753,6 +753,61 @@
             };
 
             pie4071.setOption(option4071);
+
+            var pie4072 = echarts.init(document.getElementById("mainbc2_4072"));
+            var option4072 = {
+                title: {
+                    show: false,
+                    text: 'Referer of a Website',
+                    subtext: 'Fake Data',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'item'
+                },
+                /* legend: {
+                    orient: 'vertical',
+                    left: 'left'
+                }, */
+                legend: {
+                    top: '5%',
+                    left: 'center'
+                },
+                series: [{
+                    name: 'Status',
+                    type: 'pie',
+                    radius: '60%',
+                    center: ['50%', '55%'],
+                    data: [{
+                            value: 4,
+                            name: 'Offline'
+                        },
+                        {
+                            value: 3,
+                            name: 'Ready'
+                        },
+                        {
+                            value: 2,
+                            name: 'Pause'
+                        },
+                        {
+                            value: 5,
+                            name: 'Busy'
+                        },
+
+                    ],
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }]
+            };
+
+            pie4072.setOption(option4072);
+            window.addEventListener('resize', pie4072.resize);
         })
 
         option = {

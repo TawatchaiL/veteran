@@ -13,7 +13,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h4><i class="fa-solid fa-chart-pie"></i> สถิติการรับสาย และ รับเคสของ  [{{ Auth::user()->name }}]</h4>
+                    <h4><i class="fa-solid fa-chart-pie"></i> สถิติการรับสาย และ รับเคสของ [{{ Auth::user()->name }}]</h4>
                 </div>
                 <div class="col-sm-6">
 
@@ -123,9 +123,10 @@
                     <div class="row">
                         <div class="col-md-6">
 
-                            <div class="card card-primary">
+                            <div class="card card-primary" style="max-height: 485px">
                                 <div class="card-header">
-                                    <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> สถิติการรับสายตามช่วงเวลา</h3>
+                                    <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> สถิติการรับสายตามช่วงเวลา
+                                    </h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="maximize">
                                             <i class="fas fa-expand"></i>
@@ -137,20 +138,17 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <div class="chart">
-                                        <div class="col-md-12">
-                                            <div id="chart_os"></div>
-                                        </div>
-                                    </div>
+                                    <div id="mainbc2_4072" style="width: 100%; height: 450px;"></div>
                                 </div>
 
                             </div>
                         </div>
                         <div class="col-md-6">
 
-                            <div class="card card-primary">
+                            <div class="card card-primary" style="max-height: 485px">
                                 <div class="card-header">
-                                    <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> สถิติ สายเข้า รายวัน ประจำเดือน 2023-08
+                                    <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> สถิติ สายเข้า รายวัน
+                                        ประจำเดือน 2023-08
                                     </h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="maximize">
@@ -179,9 +177,10 @@
                     <div class="row">
                         <div class="col-md-8">
 
-                            <div class="card card-primary">
+                            <div class="card card-primary" style="max-height: 455px">
                                 <div class="card-header">
-                                    <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> สถิติ เคสที่รับแจ้ง / เคสที่ปิดเคสแล้ว รายวัน ประจำเดือน 2023-08
+                                    <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> สถิติ เคสที่รับแจ้ง /
+                                        เคสที่ปิดเคสแล้ว รายวัน ประจำเดือน 2023-08
                                     </h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="maximize">
@@ -196,9 +195,7 @@
                                 <div class="card-body">
                                     <div class="chart">
                                         <div class="col-md-12">
-                                            <div class="col-md-12">
-                                                <div id="chart"></div>
-                                            </div>
+                                            <div id="chart"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -207,7 +204,7 @@
                         </div>
                         <div class="col-md-4">
 
-                            <div class="card card-primary">
+                            <div class="card card-primary" style="max-height: 455px">
                                 <div class="card-header">
                                     <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> คะแนน ความพึงพอใจ </h3>
                                     <div class="card-tools">
@@ -221,10 +218,8 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <div class="chart">
-                                        <div class="col-md-12">
-                                            <div id="chart_c"></div>
-                                        </div>
+                                    <div class="col-md-12">
+                                        <div id="mainbc2_4071" style="width: 100%; height: 420px;"></div>
                                     </div>
                                 </div>
 
@@ -471,7 +466,7 @@
                     breakpoint: 200,
                     options: {
                         chart: {
-                            width: 300,
+                            width: 350,
                         },
                         legend: {
                             position: 'bottom'
@@ -480,8 +475,8 @@
                 }]
             };
 
-            var chart_os = new ApexCharts(document.querySelector("#chart_os"), options_os);
-            chart_os.render();
+            //var chart_os = new ApexCharts(document.querySelector("#chart_os"), options_os);
+            //chart_os.render();
 
 
             var options_c = {
@@ -514,7 +509,7 @@
                     breakpoint: 200,
                     options: {
                         chart: {
-                            width: 300,
+                            width: 350,
                         },
                         legend: {
                             position: 'bottom'
@@ -523,12 +518,130 @@
                 }]
             };
 
-            var chart_c = new ApexCharts(document.querySelector("#chart_c"), options_c);
-            chart_c.render();
+            //var chart_c = new ApexCharts(document.querySelector("#chart_c"), options_c);
+            //chart_c.render();
+
+            var pie4071 = echarts.init(document.getElementById("mainbc2_4071"));
+            var option4071 = {
+                title: {
+                    show: false,
+                    text: 'Referer of a Website',
+                    subtext: 'Fake Data',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'item'
+                },
+                /* legend: {
+                    orient: 'vertical',
+                    left: 'left'
+                }, */
+                legend: {
+                    top: '5%',
+                    left: 'center'
+                },
+                series: [{
+                    name: 'คะแนน',
+                    type: 'pie',
+                    radius: '60%',
+                    center: ['50%', '40%'],
+                    data: [{
+                            value: 10,
+                            name: '1'
+                        },
+                        {
+                            value: 15,
+                            name: '2'
+                        },
+                        {
+                            value: 18,
+                            name: '3'
+                        },
+                        {
+                            value: 20,
+                            name: '4'
+                        },
+                        {
+                            value: 50,
+                            name: '5'
+                        }
+                    ],
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }]
+            };
+
+            pie4071.setOption(option4071);
+            window.addEventListener('resize', pie4071.resize);
 
 
+            var datac = [];
+            var timeIntervals = ['00:00 - 01:59', '02:00 - 03:59', '04:00 - 05:59', '06:00 - 07:59',
+                '08:00 - 09:59',
+                '10:00 - 11:59', '12:00 - 13:59', '14:00 - 15:59', '16:00 - 17:59', '18:00 - 19:59',
+                '20:00 - 21:59', '22:00 - 23:59'
+            ];
 
+            for (var i = 0; i < timeIntervals.length; i++) {
+                var randomValue = Math.floor(Math.random() * 1000); // Generate a random value between 0 and 999
+                var dataPoint = {
+                    value: randomValue,
+                    name: timeIntervals[i]
+                };
+                datac.push(dataPoint);
+            }
+            var pie4072 = echarts.init(document.getElementById("mainbc2_4072"));
 
+            option4072 = {
+                tooltip: {
+                    trigger: 'item'
+                },
+                legend: {
+                    show: true,
+                    type: 'scroll',
+                    orient: 'vertical',
+                    right: 5,
+                    top: 20,
+                    bottom: 20,
+                    data: datac.legendData
+                },
+                series: [{
+                    name: 'ช่วงเวลา',
+                    type: 'pie',
+                    radius: ['40%', '70%'],
+                    center: ['35%', '40%'],
+                    avoidLabelOverlap: true,
+                    label: {
+                        show: true,
+                        position: 'inner',
+                        fontSize: 10,
+                        color: '#ffffff',
+                        formatter(param) {
+                            // correct the percentage
+                            return /* param.name +  */ ' (' + param.percent * 2 + '%)';
+                        }
+                    },
+                    emphasis: {
+                        label: {
+                            show: true,
+                            fontSize: 20,
+                            fontWeight: 'bold'
+                        }
+                    },
+                    labelLine: {
+                        show: true
+                    },
+                    data: datac
+                }]
+            };
+
+            pie4072.setOption(option4072);
+            window.addEventListener('resize', pie4072.resize);
 
         })
     </script>
