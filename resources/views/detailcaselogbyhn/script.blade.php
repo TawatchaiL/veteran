@@ -389,7 +389,7 @@
                             fontSize: 16
                         };
                         // กำหนดความกว้างของ header แต่ละคอลัมน์หัวข้อ
-                        doc.content[1].table.widths = [70, 70, 70, 100, 100, 300];
+                        doc.content[1].table.widths = [70, 70, 70, 90, 90, '*'];
                         doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
                         // Add cell borders
                         doc.content[1].table.layout = {
