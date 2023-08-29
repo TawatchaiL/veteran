@@ -7,7 +7,6 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Language" content="en">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -70,8 +69,6 @@
 
     </div>
 
-
-
 </body>
 
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
@@ -105,14 +102,12 @@
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="plugins/dropzone/min/dropzone.min.js"></script>
 
-
 <script>
-    function addemerphone() {
-        document.getElementById('addRowBtnp').addEventListener('click', function() {
-        var table = document.getElementById('myTbl3p');
-
-        var newRow = document.createElement('tr');
-        newRow.innerHTML = `
+    const addemerphone = () => {
+        document.getElementById('addRowBtnp').addEventListener('click', () => {
+            const table = document.getElementById('myTbl3p');
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
             <td width="30%">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <input type="text" name="name[]" class="form-control has-feedback-left" value="" required>
@@ -131,22 +126,19 @@
                 </div>
             </td>
             <td>
-                <button type="button" id="removeRow2p" class="btn btn-sm btn-danger removeRowBtnp"><i
-                                                        class="fa fa-minus"></i></button>
+                <button type="button" id="removeRow2p" class="btn btn-sm btn-danger removeRowBtnp"><i class="fa fa-minus"></i></button>
             </td>
         `;
 
-        table.appendChild(newRow);
+            table.appendChild(newRow);
 
-        newRow.querySelector('.removeRowBtnp').addEventListener('click', function() {
-            table.removeChild(newRow);
+            newRow.querySelector('.removeRowBtnp').addEventListener('click', () => {
+                table.removeChild(newRow);
+            });
         });
-    });
-    }
+    };
 
-</script>
-<script>
-    function updateDigitalClock() {
+    const updateDigitalClock = () => {
         const now = new Date();
         const hours = String(now.getHours()).padStart(2, '0');
         const minutes = String(now.getMinutes()).padStart(2, '0');
@@ -155,12 +147,13 @@
         document.getElementById('hours').textContent = hours;
         document.getElementById('minutes').textContent = minutes;
         document.getElementById('seconds').textContent = seconds;
-    }
+    };
 
-    /* updateDigitalClock();
-    setInterval(updateDigitalClock, 1000); */
+    // Call updateDigitalClock immediately and then every 1000ms (1 second)
+    updateDigitalClock();
+    setInterval(updateDigitalClock, 1000);
 
-    function updateWeather(lat, lon) {
+    const updateWeather = (lat, lon) => {
         const weatherElement = document.getElementById('weather');
 
         const apiKey = 'fbe9ed2bd4d3caedef17a2f42e43dc7d';
@@ -176,8 +169,8 @@
                 const weatherDescription = data.weather[0].description;
 
                 const weatherHTML = `สภาพอากาศ :
-          <img src="${weatherIconUrl}" alt="${weatherDescription}" width="35px">
-          ${temperature.toFixed(1)}°C
+            <img src="${weatherIconUrl}" alt="${weatherDescription}" width="35px">
+            ${temperature.toFixed(1)}°C
         `;
 
                 weatherElement.innerHTML = weatherHTML;
@@ -185,7 +178,7 @@
             .catch(error => {
                 console.error('Error fetching weather data:', error);
             });
-    }
+    };
 
     // Get user's location and update weather
     /* if ('geolocation' in navigator) {
@@ -201,7 +194,7 @@
     } */
     updateWeather('14.683409', '100.706897');
 
-    function updateClock() {
+    const updateClock = () => {
         const datetimeElement = document.getElementById('real-time-clock');
         const now = new Date();
 
@@ -220,13 +213,16 @@
         // Format the date and time
         const thaiDateTimeString = now.toLocaleString('th-TH', thaiOptions);
 
-        // Create the complete text  <i class="fas fa-clock"></i> เวลา: ${thaiDateTimeString.slice(11)}
+        // Create the complete text
         const text = `<i class="fas fa-calendar"></i> วันที่: ${thaiDateTimeString.slice(0, 10)}
         &nbsp;&nbsp;<i class="fas fa-clock"></i> เวลา: ${thaiDateTimeString.slice(11)}`;
 
         datetimeElement.innerHTML = text;
+    };
 
-    }
+    // Call updateClock immediately and then every 1000ms (1 second)
+    updateClock();
+    setInterval(updateClock, 1000);
 
     // Update the clock immediately and then every second
     updateClock();
