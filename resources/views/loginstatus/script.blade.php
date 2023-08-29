@@ -388,7 +388,7 @@
                             fontSize: 16
                         };
                         // กำหนดความกว้างของ header แต่ละคอลัมน์หัวข้อ
-                        doc.content[1].table.widths = [50, '*', '*', '*', '*', '*', '*', '*'];
+                        doc.content[1].table.widths = ['*', 100, 100];
                         doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
                         // Add cell borders
                         doc.content[1].table.layout = {
@@ -422,6 +422,8 @@
                             doc.content[1].table.body[i][0].alignment =
                                 'center'; // Align the first column to the center
                             doc.content[1].table.body[i][1].alignment =
+                                'center'; // Align the second column to the right
+                                doc.content[1].table.body[i][2].alignment =
                                 'center'; // Align the second column to the right
                             //doc.content[1].table.body[i][2].alignment =
                             //'center'; // Align the second column to the right
