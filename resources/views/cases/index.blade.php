@@ -73,6 +73,31 @@
                                     });
                                 </script>
                             @endif
+                            <div class="row">
+                                <div class="col-xs-2 col-sm-2 col-md-2">
+                                    <div class="form-group">
+                                        <strong><i class="fa-solid fa-phone"></i>
+                                            ประเภทการค้นหา:</strong>
+                                        <select style="width: 100%;" class="select2 form-control" id="telin"
+                                            name="telin">
+                                            <option value="" selected>กำลังดำเนินการ</option>
+                                            <option value="">ปิดเคส</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2 col-sm-2 col-md-2">
+                                    <div class="form-group">
+                                        <strong><i class="fa-solid fa-hashtag"></i> รายละเอียดที่ต้องการค้นหา:</strong>
+                                        {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'เบอร์ต้นทาง', 'class' => 'form-control']) !!}
+                                    </div>
+                                </div>
+                                <div class="col-xs-2 col-sm-2 col-md-2" style="display: flex; align-items: flex-end;">
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-success" id="CreateButtons" style="margin-top: auto;">
+                                            <i class="fas fa-search"></i> ค้นหา </button>
+                                    </div>
+                                </div>
+                            </div>
                             <form method="post" action="{{ route('cases.destroy_all') }}" name="delete_all"
                                 id="delete_all">
                                 @csrf
