@@ -46,7 +46,7 @@
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
-                                            <strong><i class="fa-regular fa-comment-dots"></i>
+                                            <strong><i class="fas fa-user"></i>
                                                 Agent ที่รับสาย:</strong>
                                             <select style="width: 100%;" class="form-control" id="agent" name="agent">
                                                 <option value="" selected>ทั้งหมด</option>
@@ -116,11 +116,11 @@
                                 <table id="Listview" class="table table-bordered table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th width="20px"><input type="checkbox" id="check-all" class="flat"></th>
+                                            <th width="5%"><input type="checkbox" id="check-all" class="flat"></th>
                                             <th>วันที่</th>
                                             <th>เวลา</th>
                                             <th>เบอร์โทรศัพท์</th>
-                                            <th>คิว</th>
+                                            <th>Queue</th>
                                             <th>Agent ที่รับสาย</th>
                                             <th>คะแนน</th>
                                         </tr>
