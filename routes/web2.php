@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Services\FileUploadService;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,11 @@ use Illuminate\Support\Facades\Storage;
 */
 Route::post('/contacts/popup/content', [App\Http\Controllers\ContactController::class, 'popup_content'])->name('contacts.popup_content');
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.index');
+
+Route::get('/get-logo', function () {
+    $result = FileUploadService::getLogoDataURL();
+    return $result;
+})->name('file.get-logo');
 
 Route::get('manon', function (Request $request) {
     return $request;

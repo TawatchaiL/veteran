@@ -18,6 +18,15 @@ use Illuminate\Support\Facades\Log;
 
 class FileUploadService
 {
+    public static function getLogoDataURL()
+    {
+        $logoPath = public_path('images/logo.png');
+        $logoData = file_get_contents($logoPath);
+        $dataURL = 'data:image/png;base64,' . base64_encode($logoData);
+
+        return response()->json(['dataURL' => $dataURL]);
+    }
+
     public static function fileStore(Request $request)
     {
         $filecount = count($request->file('file'));
@@ -79,6 +88,4 @@ class FileUploadService
             return 'none';
         }
     }
-
-
 }
