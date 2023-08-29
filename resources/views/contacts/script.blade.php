@@ -3,6 +3,10 @@
 @endphp
 <script>
     $(document).ready(function() {
+        $("#etm").val(1).trigger("change")
+        $("#eam").val(1).trigger("change")
+        $("#ecity").val(1).trigger("change")
+
         $(".delete_all_button").click(function() {
             var len = $('input[name="table_records[]"]:checked').length;
             if (len > 0) {
@@ -22,7 +26,7 @@
 
         $(".select2_single").select2({
             maximumSelectionLength: 1,
-            allowClear: false,
+            allowClear: true,
             //theme: 'bootstrap4'
             placeholder: 'กรุณาเลือก'
         });
@@ -269,9 +273,9 @@
             //        $('#EditPostcode').val(res.data.postcode);
             //        $('#EditAddress').val(res.data.address);
             //        $('#postcode').val('1');
-//
-//                    $('#EditModalBody').html(res.html);
-                    $('#EditModal').modal('show');
+            //
+            //                    $('#EditModalBody').html(res.html);
+            $('#EditModal').modal('show');
             //    }
             //});
 

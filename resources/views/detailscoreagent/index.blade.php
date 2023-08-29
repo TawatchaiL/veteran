@@ -53,7 +53,7 @@
                                 </div>
                                 <div class="col-xs-2 col-sm-2 col-md-2">
                                     <div class="form-group">
-                                        <strong><i class="fa-regular fa-comment-dots"></i>
+                                        <strong><i class="fas fa-user"></i>
                                             Agent:</strong>
                                         <select style="width: 100%;" class="select2 form-control" id="Agent"
                                             name="Agent">

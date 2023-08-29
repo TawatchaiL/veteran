@@ -74,7 +74,7 @@ class Ivrreporttop10Controller extends Controller
             '#A5978B', '#FD6A6A'
         );
 
-        $chart_title = "10 อันดับเรื่องที่ติดต่อมากที่สุด";
+        $chart_title = "IVR Report Top 10 ";
 
         $chart_options = [
             'chart_id' => 'bar_graph',

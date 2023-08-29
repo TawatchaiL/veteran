@@ -50,10 +50,10 @@
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
                                             <strong><i class="fa-solid fa-hashtag"></i> เบอร์ต้นทาง:</strong>
-                                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
+                                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'เบอร์ต้นทาง', 'class' => 'form-control']) !!}
                                         </div>
                                     </div>
-                                   
+
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
                                             <strong><i class="fa-solid fa-hashtag"></i>
@@ -172,5 +172,5 @@
     @include('voicerecord.create')
 @endsection
 @section('script')
-    @include('billing.script') 
+    @include('billing.script')
 @endsection
