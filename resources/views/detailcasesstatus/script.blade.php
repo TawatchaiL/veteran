@@ -377,6 +377,7 @@
                     "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
                     "text": 'PDF', // ข้อความที่แสดง
                     "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
+                    "orientation": 'landscape',
                     "title": 'รายละเอียดเรื่องที่ติดต่อแสดงตามสถานะ',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
