@@ -127,7 +127,7 @@ class ContactController extends Controller
 
         $html = '<div class="card card-danger custom-bottom-right-card d-none d-md-block" data-id="0804190099" id="0804190099">
         <div class="card-header">
-        <h4 class="card-title"><i class="fas fa-circle-info fa-beat" style="--fa-beat-scale: 1.5;"></i> 0804190099 (ผู้ติดต่อใหม่)</h4>
+        <h4 class="card-title"> <i class="fa-solid fa-triangle-exclamation fa-beat" style="--fa-beat-scale: 1.5;"></i> 0804190099 (ผู้ติดต่อใหม่)</h4>
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="maximize">
                 <i class="fas fa-expand"></i>
@@ -147,7 +147,7 @@ class ContactController extends Controller
         </div>
         <div class="card card-danger custom-bottom-right-card d-none d-md-block" data-id="0822846414" id="0822846414">
         <div class="card-header">
-        <h3 class="card-title"><i class="fas fa-circle-info fa-beat" style="--fa-beat-scale: 1.5;"></i> 0822846414 (ผู้ติดต่อใหม่)</h3>
+        <h3 class="card-title"> <i class="fa-solid fa-triangle-exclamation fa-beat" style="--fa-beat-scale: 1.5;"></i> 0822846414 (ผู้ติดต่อใหม่)</h3>
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="maximize">
                 <i class="fas fa-expand"></i>
@@ -167,7 +167,7 @@ class ContactController extends Controller
         </div>
         <div class="card card-danger custom-bottom-right-card d-none d-md-block" data-id="0877777777" id="0877777777">
         <div class="card-header">
-        <h3 class="card-title"><i class="fas fa-circle-info fa-beat" style="--fa-beat-scale: 1.5;"></i> 0877777777 (ผู้ติดต่อในระบบ)</h3>
+        <h3 class="card-title"> <i class="fa-solid fa-triangle-exclamation fa-beat" style="--fa-beat-scale: 1.5;"></i> 0877777777 (ผู้ติดต่อในระบบ)</h3>
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="maximize">
                 <i class="fas fa-expand"></i>

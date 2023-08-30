@@ -30,7 +30,8 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-primary"><i class="fa-solid fa-phone-volume"></i></span>
+                                <span class="info-box-icon bg-primary"><i
+                                        class="fa-solid fa-arrow-right-to-bracket"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text">สายเข้า</span>
                                     <span class="info-box-number">15 ครั้ง</span>
@@ -40,7 +41,7 @@
                         </div>
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-warning"><i class="fa-solid fa-bell"></i></span>
+                                <span class="info-box-icon bg-warning"><i class="fa-solid fa-user-clock"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text">เวลารอสายเฉลี่ย</span>
                                     <span class="info-box-number">00:00:12</span>
@@ -50,7 +51,7 @@
                         </div>
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-success"><i class="fa-solid fa-microphone"></i></span>
+                                <span class="info-box-icon bg-success"><i class="fa-solid fa-phone-volume"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เวลาที่สนทนาทั้งหมด</span>
                                     <span class="info-box-number">00:38:43</span>
@@ -60,7 +61,7 @@
                         </div>
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-info"><i class="fa-solid fa-gauge"></i></span>
+                                <span class="info-box-icon bg-info"><i class="fa-solid fa-headset"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เวลาสนทนาเฉลี่ยต่อสาย</span>
                                     <span class="info-box-number"> 00:05:12</span>
@@ -73,7 +74,7 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-danger"><i class="fa-solid fa-clipboard"></i></span>
+                                <span class="info-box-icon bg-danger"><i class="fa-solid fa-clipboard-question"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เคสที่รับแจ้ง</span>
                                     <span class="info-box-number">10 เคส</span>
@@ -86,7 +87,7 @@
 
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-primary"><i class="fa-solid fa-laptop-medical"></i></span>
+                                <span class="info-box-icon bg-primary"><i class="fa-solid fa-clipboard-check"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เคสที่ปิดเคสแล้ว</span>
                                     <span class="info-box-number">4 เคส</span>
@@ -559,6 +560,7 @@
                 series: [{
                     name: 'คะแนน',
                     type: 'pie',
+                    selectedMode: 'single',
                     radius: '60%',
                     center: ['50%', '40%'],
                     data: [{
@@ -579,7 +581,8 @@
                         },
                         {
                             value: 50,
-                            name: '5'
+                            name: '5',
+                            selected: true
                         }
                     ],
                     emphasis: {
@@ -658,6 +661,12 @@
                             return /* param.name +  */ ' (' + param.percent * 2 + '%)';
                         }
                     },
+                    color: ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452',
+                        '#9a60b4', '#ea7ccc', '#91c7ae',
+                        '#fb7293',
+                        '#96BFFF',
+                        '#bda29a',
+                    ],
                     emphasis: {
                         label: {
                             show: true,

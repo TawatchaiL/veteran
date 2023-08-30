@@ -67,7 +67,7 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-primary"><i class="fa-solid fa-square-phone"></i></span>
+                                <span class="info-box-icon bg-primary"><i class="fa-solid fa-arrow-right-to-bracket"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text">สายทั้งหมด</span>
                                     <span class="info-box-number">0 ครั้ง</span>
@@ -151,7 +151,7 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-info"><i class="fa-solid fa-clipboard"></i></span>
+                                <span class="info-box-icon bg-info"><i class="fa-solid fa-clipboard-question"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เคสที่รับแจ้ง</span>
                                     <span class="info-box-number">10 เคส</span>
@@ -164,7 +164,7 @@
 
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-success"><i class="fa-solid fa-laptop-medical"></i></span>
+                                <span class="info-box-icon bg-success"><i class="fa-solid fa-clipboard-check"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เคสที่ปิดเคสแล้ว</span>
                                     <span class="info-box-number">4 เคส</span>
@@ -624,8 +624,8 @@
                 series: [{
                         type: 'gauge',
                         center: ["50%", "60%"],
-                        startAngle: 180,
-                        endAngle: 0,
+                        startAngle: 200,
+                        endAngle: -20,
                         min: 0,
                         max: 100,
                         splitNumber: 5,
@@ -792,6 +792,7 @@
                 series: [{
                     name: 'Status',
                     type: 'pie',
+                    selectedMode: 'single',
                     radius: '60%',
                     center: ['50%', '55%'],
                     data: [{
@@ -808,7 +809,8 @@
                         },
                         {
                             value: 5,
-                            name: 'Busy'
+                            name: 'Busy',
+                            selected: true
                         },
 
                     ],
