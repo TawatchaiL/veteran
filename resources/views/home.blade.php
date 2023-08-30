@@ -532,6 +532,22 @@
                 tooltip: {
                     trigger: 'item'
                 },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        /* dataZoom: {
+                            yAxisIndex: 'none'
+                        },
+                        dataView: {
+                            readOnly: false
+                        },
+                        magicType: {
+                            type: ['line', 'bar']
+                        },
+                        restore: {}, */
+                        saveAsImage: {}
+                    }
+                },
                 /* legend: {
                     orient: 'vertical',
                     left: 'left'
@@ -601,12 +617,28 @@
                 tooltip: {
                     trigger: 'item'
                 },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        /* dataZoom: {
+                            yAxisIndex: 'none'
+                        },
+                        dataView: {
+                            readOnly: false
+                        },
+                        magicType: {
+                            type: ['line', 'bar']
+                        },
+                        restore: {}, */
+                        saveAsImage: {}
+                    }
+                },
                 legend: {
                     show: true,
                     type: 'scroll',
                     orient: 'vertical',
                     right: 5,
-                    top: 20,
+                    top: 30,
                     bottom: 20,
                     data: datac.legendData
                 },

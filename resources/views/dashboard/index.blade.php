@@ -762,6 +762,22 @@
                     subtext: 'Fake Data',
                     left: 'center'
                 },
+                toolbox: {
+                    show: true,
+                    feature: {
+                       /*  dataZoom: {
+                            yAxisIndex: 'none'
+                        },
+                        dataView: {
+                            readOnly: false
+                        },
+                        magicType: {
+                            type: ['line', 'bar']
+                        },
+                        restore: {}, */
+                        saveAsImage: {}
+                    }
+                },
                 tooltip: {
                     trigger: 'item'
                 },
@@ -863,6 +879,22 @@
                 },
                 title: {
                     show: false
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        dataZoom: {
+                            yAxisIndex: 'none'
+                        },
+                        dataView: {
+                            readOnly: false
+                        },
+                        magicType: {
+                            type: ['line', 'bar']
+                        },
+                        restore: {},
+                        saveAsImage: {}
+                    }
                 },
                 detail: {
                     backgroundColor: '#fff',
