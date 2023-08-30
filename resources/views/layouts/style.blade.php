@@ -4,7 +4,13 @@
         /* Adjust the value to your desired space */
     }
 
-    .sidebar-item {
+    .card {
+        background-color: white;
+        border-radius: 6px;
+        /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); */
+    }
+
+    .sidebar-item {s
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
