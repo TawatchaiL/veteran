@@ -10,7 +10,7 @@
                 <div class="col-12">
                     <div class="card card-info">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fa-solid fa-magnifying-glass"></i> Filter</h3>
+                            <h3 class="card-title"><i class="fa-solid fa-magnifying-glass"></i> รายละเอียดเรื่องที่ติดต่อที่มีการ แก้ไข และการคอมเม้น</h3>
                         </div>
                         <div class="card-body">
                             <div class="col-sm-12">

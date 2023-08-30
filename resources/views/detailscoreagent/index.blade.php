@@ -13,7 +13,9 @@
                 <div class="col-12">
                     <div class="card card-info">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fa-solid fa-magnifying-glass"></i> Filter</h3>
+                            <h3 class="card-title"><i class="fa-solid fa-magnifying-glass"></i> ผลรวมการประเมินความพึงพอใจ ราย
+                                Agent
+                                ที่รับสาย</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -78,68 +80,6 @@
 
     <section class="content">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title"> <i class="fa-solid fa-print"></i> ผลรวมการประเมินความพึงพอใจ ราย Agent
-                                ที่รับสาย</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="maximize">
-                                    <i class="fas fa-expand"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                {{-- <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                                    <i class="fas fa-times"></i>
-                                </button> --}}
-                            </div>
-                        </div>
-
-                        <div class="card-body">
-                            @if ($message = Session::get('success'))
-                                {{--  <div class="alert alert-success">
-                                    <p>{{ $message }}</p>
-                                </div> --}}
-                                <script>
-                                    toastr.success('{{ $message }}', {
-                                        timeOut: 5000
-                                    });
-                                </script>
-                            @endif
-                            <div class="col-xs-12 col-sm-12 col-md-12 align-self-end text-right">
-                                <div class="form-group">
-                                    <a class="btn btn-danger" id="exportPDFButton" {{-- href="{{ route('reportcase.pdf') }}" --}}>
-                                        <i class="fa-regular fa-file-pdf"></i> PDF </a>
-                                    <a class="btn btn-success" id="exportXLSButton" {{-- href="{{ route('reportcase.pdf') }}" --}}>
-                                        <i class="fa-regular fa-file-excel"></i> XLS </a>
-                                    <a class="btn btn-info" id="exportPrintButton" {{-- href="{{ route('reportcase.pdf') }}" --}}>
-                                        <i class="fa-solid fa-print"></i> PRINT </a>
-                                </div>
-                                <div id="#Listview_wrapper"></div>
-                            </div>
-                            <form method="post" name="delete_all" id="delete_all">
-                                @csrf
-                                @method('POST')
-                                <table id="Listview" class="table table-bordered table-striped table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th width="5%"><input type="checkbox" id="check-all" class="flat"></th>
-                                            <th>ระดับคะแนน</th>
-                                            <th width="280px">จำนวน</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                    </tbody>
-                                </table>
-
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="row" style="display: flex; justify-content: center; align-items: center;">
                 <div class="col-md-12 col-sm-12 col-lg-12">
                     <div class="card card-success card-tabs">
@@ -157,8 +97,8 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill"
-                                        href="#custom-tabs-one-pie" role="tab"
-                                        aria-controls="custom-tabs-one-profile" aria-selected="false">Pie Graph</a>
+                                        href="#custom-tabs-one-pie" role="tab" aria-controls="custom-tabs-one-profile"
+                                        aria-selected="false">Pie Graph</a>
                                 </li>
                             </ul>
                         </div>
@@ -221,6 +161,71 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title"> <i class="fa-solid fa-print"></i> ผลรวมการประเมินความพึงพอใจ ราย Agent
+                                ที่รับสาย</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                    title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                {{-- <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                                    <i class="fas fa-times"></i>
+                                </button> --}}
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            @if ($message = Session::get('success'))
+                                {{--  <div class="alert alert-success">
+                                    <p>{{ $message }}</p>
+                                </div> --}}
+                                <script>
+                                    toastr.success('{{ $message }}', {
+                                        timeOut: 5000
+                                    });
+                                </script>
+                            @endif
+                            <div class="col-xs-12 col-sm-12 col-md-12 align-self-end text-right">
+                                <div class="form-group">
+                                    <a class="btn btn-danger" id="exportPDFButton" {{-- href="{{ route('reportcase.pdf') }}" --}}>
+                                        <i class="fa-regular fa-file-pdf"></i> PDF </a>
+                                    <a class="btn btn-success" id="exportXLSButton" {{-- href="{{ route('reportcase.pdf') }}" --}}>
+                                        <i class="fa-regular fa-file-excel"></i> XLS </a>
+                                    <a class="btn btn-info" id="exportPrintButton" {{-- href="{{ route('reportcase.pdf') }}" --}}>
+                                        <i class="fa-solid fa-print"></i> PRINT </a>
+                                </div>
+                                <div id="#Listview_wrapper"></div>
+                            </div>
+                            <form method="post" name="delete_all" id="delete_all">
+                                @csrf
+                                @method('POST')
+                                <table id="Listview" class="table table-bordered table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th width="5%"><input type="checkbox" id="check-all" class="flat">
+                                            </th>
+                                            <th>ระดับคะแนน</th>
+                                            <th width="280px">จำนวน</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
     </section>

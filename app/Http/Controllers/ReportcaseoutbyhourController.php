@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Session;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 use App\Services\GraphService;
 
-class ReportcaseinbyhourController extends Controller
+class ReportcaseoutbyhourController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -43,54 +43,54 @@ class ReportcaseinbyhourController extends Controller
                         CASE
                             WHEN TIME(created_at) < '01:00:00' THEN '00:00-01:00'
                             WHEN TIME(created_at) < '02:00:00' THEN '01:00-02:00'
-                            WHEN TIME(created_at) < '03:00:00' THEN '02:00-03:00' 
-                            WHEN TIME(created_at) < '04:00:00' THEN '03:00-04:00' 
-                            WHEN TIME(created_at) < '05:00:00' THEN '04:00-05:00' 
-                            WHEN TIME(created_at) < '06:00:00' THEN '05:00-06:00' 
-                            WHEN TIME(created_at) < '07:00:00' THEN '06:00-07:00' 
-                            WHEN TIME(created_at) < '08:00:00' THEN '07:00-08:00' 
-                            WHEN TIME(created_at) < '09:00:00' THEN '08:00-09:00' 
-                            WHEN TIME(created_at) < '10:00:00' THEN '09:00-10:00' 
-                            WHEN TIME(created_at) < '11:00:00' THEN '10:00-11:00' 
-                            WHEN TIME(created_at) < '12:00:00' THEN '11:00-12:00' 
-                            WHEN TIME(created_at) < '13:00:00' THEN '12:00-13:00' 
-                            WHEN TIME(created_at) < '14:00:00' THEN '13:00-14:00' 
-                            WHEN TIME(created_at) < '15:00:00' THEN '14:00-15:00' 
-                            WHEN TIME(created_at) < '16:00:00' THEN '15:00-16:00' 
-                            WHEN TIME(created_at) < '17:00:00' THEN '16:00-17:00' 
-                            WHEN TIME(created_at) < '18:00:00' THEN '17:00-18:00' 
-                            WHEN TIME(created_at) < '19:00:00' THEN '18:00-19:00' 
-                            WHEN TIME(created_at) < '20:00:00' THEN '19:00-20:00' 
-                            WHEN TIME(created_at) < '21:00:00' THEN '20:00-21:00' 
-                            WHEN TIME(created_at) < '22:00:00' THEN '21:00-22:00' 
+                            WHEN TIME(created_at) < '03:00:00' THEN '02:00-03:00'
+                            WHEN TIME(created_at) < '04:00:00' THEN '03:00-04:00'
+                            WHEN TIME(created_at) < '05:00:00' THEN '04:00-05:00'
+                            WHEN TIME(created_at) < '06:00:00' THEN '05:00-06:00'
+                            WHEN TIME(created_at) < '07:00:00' THEN '06:00-07:00'
+                            WHEN TIME(created_at) < '08:00:00' THEN '07:00-08:00'
+                            WHEN TIME(created_at) < '09:00:00' THEN '08:00-09:00'
+                            WHEN TIME(created_at) < '10:00:00' THEN '09:00-10:00'
+                            WHEN TIME(created_at) < '11:00:00' THEN '10:00-11:00'
+                            WHEN TIME(created_at) < '12:00:00' THEN '11:00-12:00'
+                            WHEN TIME(created_at) < '13:00:00' THEN '12:00-13:00'
+                            WHEN TIME(created_at) < '14:00:00' THEN '13:00-14:00'
+                            WHEN TIME(created_at) < '15:00:00' THEN '14:00-15:00'
+                            WHEN TIME(created_at) < '16:00:00' THEN '15:00-16:00'
+                            WHEN TIME(created_at) < '17:00:00' THEN '16:00-17:00'
+                            WHEN TIME(created_at) < '18:00:00' THEN '17:00-18:00'
+                            WHEN TIME(created_at) < '19:00:00' THEN '18:00-19:00'
+                            WHEN TIME(created_at) < '20:00:00' THEN '19:00-20:00'
+                            WHEN TIME(created_at) < '21:00:00' THEN '20:00-21:00'
+                            WHEN TIME(created_at) < '22:00:00' THEN '21:00-22:00'
                             WHEN TIME(created_at) < '23:00:00' THEN '22:00-23:00'
                             ELSE '23:00-24:00'
                         END as numberhour,
                         SUM(CASE
                             WHEN TIME(created_at) < '01:00:00' THEN 1
                             WHEN TIME(created_at) < '02:00:00' THEN 1
-                            WHEN TIME(created_at) < '03:00:00' THEN 1 
-                            WHEN TIME(created_at) < '04:00:00' THEN 1 
-                            WHEN TIME(created_at) < '05:00:00' THEN 1 
-                            WHEN TIME(created_at) < '06:00:00' THEN 1 
-                            WHEN TIME(created_at) < '07:00:00' THEN 1 
-                            WHEN TIME(created_at) < '08:00:00' THEN 1 
-                            WHEN TIME(created_at) < '09:00:00' THEN 1 
-                            WHEN TIME(created_at) < '10:00:00' THEN 1 
-                            WHEN TIME(created_at) < '11:00:00' THEN 1 
-                            WHEN TIME(created_at) < '12:00:00' THEN 1 
-                            WHEN TIME(created_at) < '13:00:00' THEN 1 
-                            WHEN TIME(created_at) < '14:00:00' THEN 1 
-                            WHEN TIME(created_at) < '15:00:00' THEN 1 
-                            WHEN TIME(created_at) < '16:00:00' THEN 1 
-                            WHEN TIME(created_at) < '17:00:00' THEN 1 
-                            WHEN TIME(created_at) < '18:00:00' THEN 1 
-                            WHEN TIME(created_at) < '19:00:00' THEN 1 
-                            WHEN TIME(created_at) < '20:00:00' THEN 1 
-                            WHEN TIME(created_at) < '21:00:00' THEN 1 
-                            WHEN TIME(created_at) < '22:00:00' THEN 1 
-                            WHEN TIME(created_at) < '23:00:00' THEN 1 
-                            WHEN TIME(created_at) < '24:00:00' THEN 1 
+                            WHEN TIME(created_at) < '03:00:00' THEN 1
+                            WHEN TIME(created_at) < '04:00:00' THEN 1
+                            WHEN TIME(created_at) < '05:00:00' THEN 1
+                            WHEN TIME(created_at) < '06:00:00' THEN 1
+                            WHEN TIME(created_at) < '07:00:00' THEN 1
+                            WHEN TIME(created_at) < '08:00:00' THEN 1
+                            WHEN TIME(created_at) < '09:00:00' THEN 1
+                            WHEN TIME(created_at) < '10:00:00' THEN 1
+                            WHEN TIME(created_at) < '11:00:00' THEN 1
+                            WHEN TIME(created_at) < '12:00:00' THEN 1
+                            WHEN TIME(created_at) < '13:00:00' THEN 1
+                            WHEN TIME(created_at) < '14:00:00' THEN 1
+                            WHEN TIME(created_at) < '15:00:00' THEN 1
+                            WHEN TIME(created_at) < '16:00:00' THEN 1
+                            WHEN TIME(created_at) < '17:00:00' THEN 1
+                            WHEN TIME(created_at) < '18:00:00' THEN 1
+                            WHEN TIME(created_at) < '19:00:00' THEN 1
+                            WHEN TIME(created_at) < '20:00:00' THEN 1
+                            WHEN TIME(created_at) < '21:00:00' THEN 1
+                            WHEN TIME(created_at) < '22:00:00' THEN 1
+                            WHEN TIME(created_at) < '23:00:00' THEN 1
+                            WHEN TIME(created_at) < '24:00:00' THEN 1
                             ELSE 0
                         END) as total_cases
                     FROM cases WHERE LENGTH(telno) > 4 GROUP BY numberhour) as c"), 'timeslot.timeslot', '=', 'c.numberhour')

@@ -10,7 +10,7 @@
                 <div class="col-12">
                     <div class="card card-info">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fa-solid fa-magnifying-glass"></i> Filter</h3>
+                            <h3 class="card-title"><i class="fa-solid fa-magnifying-glass"></i> สายที่ไม่ได้รับ</h3>
                         </div>
                         <div class="card-body">
                             <div class="col-sm-12">
@@ -60,7 +60,7 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-address-print"></i>สายที่ไม่ได้รับ
+                            <h3 class="card-title"><i class="fas fa-address-print"></i> สายที่ไม่ได้รับ
                             </h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="maximize">
