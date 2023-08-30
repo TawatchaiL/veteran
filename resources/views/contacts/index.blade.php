@@ -53,6 +53,9 @@
                         <div class="card-header">
                             <h3 class="card-title"><i class="fas fa-address-book"></i> รายชื่อผู้ติดต่อ</h3>
                             <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                                    <i class="fas fa-expand"></i>
+                                </button>
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
                                 </button>
@@ -73,58 +76,69 @@
                                     });
                                 </script>
                             @endif
-                            <div class="row">
-                                <div class="col-xs-3 col-sm-3 col-md-3">
-                                    <div class="form-group">
-                                        <strong><i class="fa-solid fa-phone"></i>
-                                            ประเภทการค้นหา:</strong>
-                                        <select style="width: 100%;" class="select2 form-control" id="telin"
-                                            name="telin">
-                                            <option value="" selected>เบอร์โทรฉุกเฉิน</option>
-                                            <option value="">เบอร์โทรศัพท์บ้าน</option>
-                                            <option value="">เบอร์โทรศัพท์มือถือ</option>
-                                            <option value="">เบอร์โทรศัพท์ที่ทำงาน</option>
-                                            <option value="">รหัสผู้ติดต่อ</option>
-                                            <option value="">ชื่อผู้ติดต่อ</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-xs-3 col-sm-3 col-md-3">
-                                    <div class="form-group">
-                                        <strong><i class="fa-solid fa-hashtag"></i> รายละเอียดที่ต้องการค้นหา:</strong>
-                                        {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => '', 'class' => 'form-control']) !!}
-                                    </div>
-                                </div>
-                                <div class="col-xs-3 col-sm-3 col-md-3" style="display: flex; align-items: flex-end;">
-                                    <div class="form-group">
-                                        <button type="button" class="btn btn-success" id="CreateButtons"
-                                            style="margin-top: auto;">
-                                            <i class="fas fa-search"></i> ค้นหา </button>
+                            <div class="row ">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row float-lg-right">
+                                        <div class="col-xs-5 col-sm-5 col-md-5">
+                                            <div class="form-group">
+                                                <strong><i class="fa-solid fa-id-card"></i>
+                                                    ประเภทการค้นหา:</strong>
+                                                <select style="width: 100%;" class="select2 form-control" id="telin"
+                                                    name="telin">
+                                                    <option value="" selected>เบอร์โทรฉุกเฉิน</option>
+                                                    <option value="">เบอร์โทรศัพท์บ้าน</option>
+                                                    <option value="">เบอร์โทรศัพท์มือถือ</option>
+                                                    <option value="">เบอร์โทรศัพท์ที่ทำงาน</option>
+                                                    <option value="">รหัสผู้ติดต่อ</option>
+                                                    <option value="">ชื่อผู้ติดต่อ</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-5 col-sm-5 col-md-5">
+                                            <div class="form-group">
+                                                <strong><i class="fa-regular fa-keyboard"></i>
+                                                    คำที่ต้องการค้นหา:</strong>
+                                                {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => '', 'class' => 'form-control']) !!}
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-2 col-sm-2 col-md-2" style="align-items: flex-end;">
+                                            <div class="form-group">
+                                                <strong>&nbsp;</strong>
+                                                <button type="button" class="form-control btn btn-success" id="CreateButtons">
+                                                    <i class="fas fa-search"></i> </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <form method="post" action="{{ route('contacts.destroy_all') }}" name="delete_all"
-                                id="delete_all">
-                                @csrf
-                                @method('POST')
-                                <table id="Listview" class="display nowrap table table-bordered table-striped table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th width="5%"><input type="checkbox" id="check-all" class="flat"></th>
-                                            <th>รหัสผู้ติดต่อ</th>
-                                            <th>ชื่อผู้ติดต่อ</th>
-                                            <th>เบอร์โทรศัพท์บ้าน</th>
-                                            <th>เบอร์โทรศัพท์มือถือ</th>
-                                            <th>วันที่บันทึก</th>
-                                            <th width="120px"></th>
-                                            <th>More</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <form method="post" action="{{ route('contacts.destroy_all') }}" name="delete_all"
+                                        id="delete_all">
+                                        @csrf
+                                        @method('POST')
+                                        <table id="Listview"
+                                            class="display nowrap table table-bordered table-striped table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th width="5%"><input type="checkbox" id="check-all" class="flat">
+                                                    </th>
+                                                    <th>รหัสผู้ติดต่อ</th>
+                                                    <th>ชื่อผู้ติดต่อ</th>
+                                                    <th>เบอร์โทรศัพท์บ้าน</th>
+                                                    <th>เบอร์โทรศัพท์มือถือ</th>
+                                                    <th>วันที่บันทึก</th>
+                                                    <th width="120px"></th>
+                                                    <th>More</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
 
-                                    </tbody>
-                                </table>
-                            </form>
+                                            </tbody>
+                                        </table>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
