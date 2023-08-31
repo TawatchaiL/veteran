@@ -702,8 +702,8 @@
                     {
                         type: 'gauge',
                         center: ["50%", "60%"],
-                        startAngle: 180,
-                        endAngle: 0,
+                        startAngle: 200,
+                        endAngle: -20,
                         min: 0,
                         max: 100,
                         itemStyle: {

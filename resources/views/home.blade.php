@@ -562,7 +562,7 @@
                     type: 'pie',
                     selectedMode: 'single',
                     radius: '60%',
-                    center: ['50%', '40%'],
+                    center: ['50%', '45%'],
                     data: [{
                             value: 10,
                             name: '1'
