@@ -294,210 +294,217 @@
 
 
         var table = $('#Listview').DataTable({
-            /*"aoColumnDefs": [
-            {
-            'bSortable': true,
-            'aTargets': [0]
-            } //disables sorting for column one
-            ],
-            "searching": false,
-            "lengthChange": false,
-            "paging": false,
-            'iDisplayLength': 10,
-            "sPaginationType": "full_numbers",
-            "dom": 'T<"clear">lfrtip',
-                */
-            dom: 'Bfrtip',
-            paging: true,
-            searching: false,
-            ajax: '',
-            serverSide: true,
-            processing: true,
-            language: {
-                loadingRecords: '&nbsp;',
-                processing: `<div class="spinner-border text-primary"></div>`,
-                "sProcessing": "กำลังดำเนินการ...",
-                "sLengthMenu": "แสดง_MENU_ แถว",
-                "sZeroRecords": "ไม่พบข้อมูล",
-                "sInfo": "แสดง _START_ ถึง _END_ จาก _TOTAL_ รายการ",
-                "sInfoEmpty": "แสดง 0 ถึง 0 จาก 0 รายการ",
-                "sInfoFiltered": "(กรองข้อมูล _MAX_ ทุกแถว)",
-                "sInfoPostFix": "",
-                "sSearch": "ค้นหา:",
-                "sUrl": "",
-                "oPaginate": {
-                    "sFirst": "เริ่มต้น",
-                    "sPrevious": "ก่อนหน้า",
-                    "sNext": "ถัดไป",
-                    "sLast": "สุดท้าย"
-                }
-            },
-
-            aaSorting: [
-                [0, "desc"]
-            ],
-            iDisplayLength: 5,
-            lengthMenu: [5, 10, 25, 50, 75, 100],
-            stateSave: true,
-            autoWidth: false,
-            buttons: [
-                'copy',
+                /*"aoColumnDefs": [
                 {
-                    extend: 'excel',
-                    text: 'Excel',
-                    title: 'รายละเอียดเบอร์ภายนอกที่โทรเข้ามาติดต่อ',
-                    exportOptions: {
-                        columns: ':visible:not(.no-print)',
-                    },
-                    customize: function(xlsx) {
-                        var sheet = xlsx.xl.worksheets['sheet1.xml'];
-
-                        // Customize the header style
-                        $('row:first c', sheet).each(function(index) {
-                            $(this).attr('s',
-                                'customHeaderStyle'); // Apply style to header cells
-                        });
-
-                        // Define a custom style for the header cells
-                        var styles = xlsx.xl['styles.xml'];
-                        var headerStyle =
-                            '<cellXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment horizontal="center" vertical="center" wrapText="1" /><font /></xf></cellXfs>';
-
-                        // Add the custom style to the styles
-                        $('cellXfs', styles).prepend(headerStyle);
+                'bSortable': true,
+                'aTargets': [0]
+                } //disables sorting for column one
+                ],
+                "searching": false,
+                "lengthChange": false,
+                "paging": false,
+                'iDisplayLength': 10,
+                "sPaginationType": "full_numbers",
+                "dom": 'T<"clear">lfrtip',
+                    */
+                dom: 'Bfrtip',
+                paging: true,
+                searching: false,
+                ajax: '',
+                serverSide: true,
+                processing: true,
+                language: {
+                    loadingRecords: '&nbsp;',
+                    processing: `<div class="spinner-border text-primary"></div>`,
+                    "sProcessing": "กำลังดำเนินการ...",
+                    "sLengthMenu": "แสดง_MENU_ แถว",
+                    "sZeroRecords": "ไม่พบข้อมูล",
+                    "sInfo": "แสดง _START_ ถึง _END_ จาก _TOTAL_ รายการ",
+                    "sInfoEmpty": "แสดง 0 ถึง 0 จาก 0 รายการ",
+                    "sInfoFiltered": "(กรองข้อมูล _MAX_ ทุกแถว)",
+                    "sInfoPostFix": "",
+                    "sSearch": "ค้นหา:",
+                    "sUrl": "",
+                    "oPaginate": {
+                        "sFirst": "เริ่มต้น",
+                        "sPrevious": "ก่อนหน้า",
+                        "sNext": "ถัดไป",
+                        "sLast": "สุดท้าย"
                     }
                 },
-                'csv',
-                { // กำหนดพิเศษเฉพาะปุ่ม pdf
-                    "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
-                    "text": 'PDF', // ข้อความที่แสดง
-                    "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
-                    "title": 'รายละเอียดเบอร์ภายนอกที่โทรเข้ามาติดต่อ',
-                    exportOptions: {
-                        columns: ':visible:not(.no-print)',
-                    },
-                    "customize": function(doc) { // ส่วนกำหนดเพิ่มเติม ส่วนนี้จะใช้จัดการกับ pdfmake
-                        // กำหนด style หลัก
-                        doc.defaultStyle = {
-                            font: 'THSarabun',
-                            fontSize: 16
-                        };
-                        // กำหนดความกว้างของ header แต่ละคอลัมน์หัวข้อ
-                        doc.content[1].table.widths = [120, 100, 100, '*'];
-                        doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
-                        // Add cell borders
-                        doc.content[1].table.layout = {
-                            hLineWidth: function(i, node) {
-                                return 1; // Border width for horizontal lines
-                            },
-                            vLineWidth: function(i, node) {
-                                return 1; // Border width for vertical lines
-                            },
-                            hLineColor: function(i, node) {
-                                return '#bfbfbf'; // Border color for horizontal lines
-                            },
-                            vLineColor: function(i, node) {
-                                return '#bfbfbf'; // Border color for vertical lines
-                            },
-                            paddingLeft: function(i, node) {
-                                return 5; // Padding for cells
-                            },
-                            paddingRight: function(i, node) {
-                                return 5; // Padding for cells
-                            },
-                            paddingTop: function(i, node) {
-                                return 3; // Padding for cells
-                            },
-                            paddingBottom: function(i, node) {
-                                return 3; // Padding for cells
-                            }
 
+                aaSorting: [
+                    [0, "desc"]
+                ],
+                iDisplayLength: 5,
+                lengthMenu: [5, 10, 25, 50, 75, 100],
+                stateSave: true,
+                autoWidth: false,
+                buttons: [
+                    'copy',
+                    {
+                        extend: 'excel',
+                        text: 'Excel',
+                        title: 'รายละเอียดเบอร์ภายนอกที่โทรเข้ามาติดต่อ',
+                        exportOptions: {
+                            columns: ':visible:not(.no-print)',
+                        },
+                        customize: function(xlsx) {
+                            var sheet = xlsx.xl.worksheets['sheet1.xml'];
+
+                            // Customize the header style
+                            $('row:first c', sheet).each(function(index) {
+                                $(this).attr('s',
+                                    'customHeaderStyle'); // Apply style to header cells
+                            });
+
+                            // Define a custom style for the header cells
+                            var styles = xlsx.xl['styles.xml'];
+                            var headerStyle =
+                                '<cellXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment horizontal="center" vertical="center" wrapText="1" /><font /></xf></cellXfs>';
+
+                            // Add the custom style to the styles
+                            $('cellXfs', styles).prepend(headerStyle);
                         }
-                        for (var i = 1; i < doc.content[1].table.body.length; i++) {
-                            doc.content[1].table.body[i][0].alignment =
-                                'center'; // Align the first column to the center
-                            doc.content[1].table.body[i][1].alignment =
-                                'center'; // Align the second column to the right
+                    },
+                    'csv',
+                    { // กำหนดพิเศษเฉพาะปุ่ม pdf
+                        "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
+                        "text": 'PDF', // ข้อความที่แสดง
+                        "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
+                        "title": 'รายละเอียดเบอร์ภายนอกที่โทรเข้ามาติดต่อ',
+                        exportOptions: {
+                            columns: ':visible:not(.no-print)',
+                        },
+                        "customize": function(doc) { // ส่วนกำหนดเพิ่มเติม ส่วนนี้จะใช้จัดการกับ pdfmake
+                            // กำหนด style หลัก
+                            doc.defaultStyle = {
+                                font: 'THSarabun',
+                                fontSize: 16
+                            };
+                            // กำหนดความกว้างของ header แต่ละคอลัมน์หัวข้อ
+                            doc.content[1].table.widths = [120, 100, 100, '*'];
+                            doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
+                            // Add cell borders
+                            doc.content[1].table.layout = {
+                                hLineWidth: function(i, node) {
+                                    return 1; // Border width for horizontal lines
+                                },
+                                vLineWidth: function(i, node) {
+                                    return 1; // Border width for vertical lines
+                                },
+                                hLineColor: function(i, node) {
+                                    return '#bfbfbf'; // Border color for horizontal lines
+                                },
+                                vLineColor: function(i, node) {
+                                    return '#bfbfbf'; // Border color for vertical lines
+                                },
+                                paddingLeft: function(i, node) {
+                                    return 5; // Padding for cells
+                                },
+                                paddingRight: function(i, node) {
+                                    return 5; // Padding for cells
+                                },
+                                paddingTop: function(i, node) {
+                                    return 3; // Padding for cells
+                                },
+                                paddingBottom: function(i, node) {
+                                    return 3; // Padding for cells
+                                }
+
+                            }
+                            for (var i = 1; i < doc.content[1].table.body.length; i++) {
+                                doc.content[1].table.body[i][0].alignment =
+                                    'center'; // Align the first column to the center
+                                doc.content[1].table.body[i][1].alignment =
+                                    'center'; // Align the second column to the right
                                 doc.content[1].table.body[i][2].alignment =
-                                'center'; // Align the first column to the center
-                            doc.content[1].table.body[i][3].alignment =
-                                'center'; // Align the second column to the right
-                            //doc.content[1].table.body[i][2].alignment =
-                            //'center'; // Align the second column to the right
-                            // Customize alignments for other columns as needed
-                        }
-
-                    }
-                },
-                {
-                    extend: 'print',
-                    text: 'Print',
-                    title: 'รายละเอียดเบอร์ภายนอกที่โทรเข้ามาติดต่อ',
-                    exportOptions: {
-                        columns: ':visible:not(.no-print)',
-                        format: {
-                            body: function(data, row, column, node) {
-                                // You can set your font here
-                                $(node).css('font-family', 'THSarabun');
-                                return data;
+                                    'center'; // Align the first column to the center
+                                doc.content[1].table.body[i][3].alignment =
+                                    'center'; // Align the second column to the right
+                                //doc.content[1].table.body[i][2].alignment =
+                                //'center'; // Align the second column to the right
+                                // Customize alignments for other columns as needed
                             }
+
                         }
                     },
-                    customize: function(win) {
-                        // Customize the print layout
-                        $(win.document.body).find('h1').css('text-align', 'center');
-                        $(win.document.body).find('table').addClass('display').css('font-size',
-                            '12px');
-                        $(win.document.body).find('table.dataTable th, table.dataTable td').css(
-                            'border', '1px solid #ddd');
-                        $(win.document.body).find('table.dataTable th').css('background-color',
-                            '#f2f2f2');
-                        $(win.document.body).find('table.dataTable td:nth-child(0)').css(
-                            'width', '50px');
+                    {
+                        extend: 'print',
+                        text: 'Print',
+                        title: 'รายละเอียดเบอร์ภายนอกที่โทรเข้ามาติดต่อ',
+                        exportOptions: {
+                            columns: ':visible:not(.no-print)',
+                            format: {
+                                body: function(data, row, column, node) {
+                                    // You can set your font here
+                                    $(node).css('font-family', 'THSarabun');
+                                    return data;
+                                }
+                            }
+                        },
+                        customize: function(win) {
+                            // Customize the print layout
+                            $(win.document.body).find('h1').css('text-align', 'center');
+                            $(win.document.body).find('table').addClass('display').css('font-size',
+                                '12px');
+                            $(win.document.body).find('table.dataTable th, table.dataTable td').css(
+                                'border', '1px solid #ddd');
+                            $(win.document.body).find('table.dataTable th').css('background-color',
+                                '#f2f2f2');
+                            $(win.document.body).find('table.dataTable td:nth-child(0)').css(
+                                'width', '50px');
+                        }
                     }
-                }
-            ],
-            layout: {
-                hLineWidth: function(i, node) {
-                    return 1; // Border width for horizontal lines
+                ],
+                layout: {
+                    hLineWidth: function(i, node) {
+                        return 1; // Border width for horizontal lines
+                    },
+                    vLineWidth: function(i, node) {
+                        return 1; // Border width for vertical lines
+                    },
+                    hLineColor: function(i, node) {
+                        return '#bfbfbf'; // Border color for horizontal lines
+                    },
+                    vLineColor: function(i, node) {
+                        return '#bfbfbf'; // Border color for vertical lines
+                    }
                 },
-                vLineWidth: function(i, node) {
-                    return 1; // Border width for vertical lines
-                },
-                hLineColor: function(i, node) {
-                    return '#bfbfbf'; // Border color for horizontal lines
-                },
-                vLineColor: function(i, node) {
-                    return '#bfbfbf'; // Border color for vertical lines
-                }
+                responsive: true,
+                sPaginationType: "full_numbers",
+                dom: 'T<"clear">lfrtip',
+                columns: [{
+                        data: 'checkbox',
+                        name: 'checkbox',
+                        orderable: false,
+                        searchable: false,
+                        className: 'no-print'
+                    },
+                    {
+                        data: 'cdate',
+                        name: 'cdate'
+                    },
+                    {
+                        data: 'ctime',
+                        name: 'ctime'
+                    },
+                    {
+                        data: 'telno',
+                        name: 'telno'
+                    },
+                    {
+                        data: 'agent',
+                        name: 'agent'
+                    },
+                ]
             },
-            responsive: true,
-            sPaginationType: "full_numbers",
-            dom: 'T<"clear">lfrtip',
-            columns: [{
-                    data: 'checkbox',
-                    name: 'checkbox',
-                    orderable: false,
-                    searchable: false,
-                    className: 'no-print'
-                },
-                {
-                    data: 'cdate',
-                    name: 'cdate'
-                },
-                {
-                    data: 'ctime',
-                    name: 'ctime'
-                },
-                {
-                    data: 'telno',
-                    name: 'telno'
-                },
-                {
-                    data: 'agent',
-                    name: 'agent'
-                },
-            ]
+            "footerCallback": function (row, data, start, end, display) {
+            var api = this.api();
+            var recordsTotal = api.page.info().recordsTotal;
+
+            // Update the footer cell with the total record count.
+            $(api.column(4).footer()).html(recordsTotal);
         });
 
 

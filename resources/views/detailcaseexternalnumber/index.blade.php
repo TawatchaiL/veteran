@@ -10,7 +10,8 @@
                 <div class="col-12">
                     <div class="card card-info">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fa-solid fa-magnifying-glass"></i> รายละเอียดเบอร์ภายนอกที่โทรเข้ามาติดต่อ</h3>
+                            <h3 class="card-title"><i class="fa-solid fa-magnifying-glass"></i>
+                                รายละเอียดเบอร์ภายนอกที่โทรเข้ามาติดต่อ</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -118,6 +119,16 @@
                                     <tbody>
 
                                     </tbody>
+                                    <tfoot align="right">
+                                        <tr>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th>รวม</th>
+                                            <th></th>
+                                            
+                                        </tr>
+                                    </tfoot>
                                 </table>
                             </form>
                         </div>
