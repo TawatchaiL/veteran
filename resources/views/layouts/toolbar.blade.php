@@ -18,6 +18,10 @@
                                     placeholder="กรอกเบอร์" />
                             </div>
                             <div class="mx-1">
+                                <button {{-- <?= $outbound_dis ?> --}} class="btn btn-lg btn-success button_dial"><i
+                                        class="fa-solid fa-phone-volume"></i> รับสาย</button>
+                            </div>
+                            <div class="mx-1">
                                 <button {{-- <?= $outbound_dis ?> --}} class="btn btn-lg btn-info button_dial"><i
                                         class="fas fa-phone-square"></i> โทรออก</button>
                             </div>
