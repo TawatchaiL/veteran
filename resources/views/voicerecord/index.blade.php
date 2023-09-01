@@ -49,6 +49,12 @@
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
+                                            <strong><i class="fas fa-square-phone"></i> เบอร์โทรศัพท์:</strong>
+                                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => '', 'class' => 'form-control']) !!}
+                                        </div>
+                                    </div>  
+                                    <div class="col-xs-2 col-sm-2 col-md-2">
+                                        <div class="form-group">
                                             <strong><i class="fas fa-user"></i>
                                                 Agent ที่รับสาย:</strong>
                                             <select style="width: 100%;" class="select2 form-control" id="casetype3"
