@@ -119,13 +119,13 @@
                                     <tbody>
 
                                     </tbody>
-                                    <tfoot align="right">
+                                    <tfoot >
                                         <tr>
                                             <th></th>
                                             <th></th>
                                             <th></th>
-                                            <th>รวม</th>
-                                            <th></th>
+                                            <th align="right">รวม</th>
+                                            <th align="left"></th>
                                             
                                         </tr>
                                     </tfoot>

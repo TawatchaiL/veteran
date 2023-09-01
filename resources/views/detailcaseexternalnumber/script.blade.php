@@ -503,7 +503,7 @@
                 var recordsTotal = api.page.info().recordsTotal;
 
                 // Update the footer cell with the total record count.
-                $(api.column(4).footer()).html(recordsTotal);
+                $(api.column(4).footer()).html(recordsTotal + ' สาย');
             }
         });
 
