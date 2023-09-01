@@ -47,17 +47,25 @@ class CallstatusController extends Controller
 
             for ($i = 1; $i <= $numberOfRows; $i++) {
 
-                $ivrno  = $rivrno[array_rand($rivrno)];
-                $createDate = now()->subDays(rand(1, 365))->subHours(rand(0, 23))->subMinutes(rand(0, 59));
-
+                $totalCall = rand(10, 28);
+                $sumCall = rand(10, 28);
+            
+                // Ensure 'totalcall' is not less than 'sumcall'
+                while ($totalCall < $sumCall) {
+                    $totalCall = rand(10, 28);
+                }
+            
 
                 $simulatedDatas[] = (object) [
                     'id' => $i,
                     'agent' => rand(100, 300),
-                    'sumcall' => rand(10, 28),
+                    'totalcall' => $totalCall,
+                    'sumcall' => $sumCall,
                     'wtime' => '00:'.rand(10, 50),
                     'telf' => rand(3, 5).':'.rand(10, 50),
                     'telfa' => rand(3, 5).':'.rand(10, 50),
+                    'login' => rand(3, 5).':'.rand(10, 50),
+                    'pause' => rand(3, 5).':'.rand(10, 50),
                     // Simulate other fields as needed
                 ];
             }

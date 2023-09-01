@@ -115,10 +115,13 @@
                                         <tr>
                                             <th width="5%"><input type="checkbox" id="check-all" class="flat"></th>
                                             <th>Agent</th>
+                                            <th>สายเข้า</th>
                                             <th>สายที่รับ</th>
                                             <th>เวลารอสายเฉลี่ย</th>
                                             <th>เวลาสนทนา</th>
                                             <th>เวลาสนทนาเฉลี่ย</th>
+                                            <th>เวลาที่Login</th>
+                                            <th>เวลาที่พัก</th>
                                         </tr>
                                     </thead>
                                     <tbody>

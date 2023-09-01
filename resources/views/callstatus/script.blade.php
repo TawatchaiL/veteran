@@ -493,6 +493,10 @@
                     name: 'agent'
                 },
                 {
+                    data: 'totalcall',
+                    name: 'totalcall'
+                },
+                {
                     data: 'sumcall',
                     name: 'sumcall'
                 },
@@ -507,6 +511,14 @@
                 {
                     data: 'telfa',
                     name: 'telfa'
+                },
+                {
+                    data: 'login',
+                    name: 'login'
+                },
+                {
+                    data: 'pause',
+                    name: 'pause'
                 },
             ]
         });
