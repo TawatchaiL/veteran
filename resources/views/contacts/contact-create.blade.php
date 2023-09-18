@@ -50,8 +50,8 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fas fa-code"></i> รหัสผู้ติดต่อ:</strong>
-                                            {!! Form::text('code', '000001', [
-                                                'id' => 'AddCode',
+                                            {!! Form::text('hn', '000001', [
+                                                'id' => 'hn',
                                                 'placeholder' => 'รหัสผู้ติดต่อ',
                                                 'class' => 'form-control',
                                                 'readonly' => false,
@@ -76,14 +76,14 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fas fa-user-tie"></i> ชื่อ:</strong>
-                                            {!! Form::text('name', $contact_name, ['id' => 'AddName', 'placeholder' => 'ชื่อ', 'class' => 'form-control']) !!}
+                                            {!! Form::text('fname', null, ['id' => 'fname', 'placeholder' => 'ชื่อ', 'class' => 'form-control']) !!}
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fas fa-user-tie"></i> นามสกุล:</strong>
-                                            {!! Form::text('name', $contact_lname, [
-                                                'id' => 'AddName',
+                                            {!! Form::text('lname', null, [
+                                                'id' => 'lname',
                                                 'placeholder' => 'นามสกุล',
                                                 'class' => 'form-control',
                                             ]) !!}
@@ -101,8 +101,8 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fas fa-home"></i> บ้านเลขที่:</strong>
-                                            {!! Form::text('postcode', null, [
-                                                'id' => 'AddPostcode',
+                                            {!! Form::text('homeno', null, [
+                                                'id' => 'homeno',
                                                 'placeholder' => 'บ้านเลขที่',
                                                 'class' => 'form-control',
                                             ]) !!}
@@ -111,8 +111,8 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fa-solid fa-people-roof"></i> หมู่:</strong>
-                                            {!! Form::text('homephone', null, [
-                                                'id' => 'homephone',
+                                            {!! Form::text('moo', null, [
+                                                'id' => 'moo',
                                                 'placeholder' => 'หมู่',
                                                 'class' => 'form-control',
                                             ]) !!}
@@ -123,8 +123,8 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fa-solid fa-people-roof"></i> ซอย :</strong>
-                                            {!! Form::text('postcode', null, [
-                                                'id' => 'AddPostcode',
+                                            {!! Form::text('soi', null, [
+                                                'id' => 'soi',
                                                 'placeholder' => 'ซอย',
                                                 'class' => 'form-control',
                                             ]) !!}
@@ -133,8 +133,8 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fas fa-road"></i> ถนน :</strong>
-                                            {!! Form::text('homephone', null, [
-                                                'id' => 'homephone',
+                                            {!! Form::text('road', null, [
+                                                'id' => 'road',
                                                 'placeholder' => 'ถนน',
                                                 'class' => 'form-control',
                                             ]) !!}
@@ -146,7 +146,7 @@
                                         <div class="form-group">
                                             <strong><i class="fa-solid fa-city"></i> จังหวัด :</strong>
                                             <select style="width: 100%;" class="select2 select2_city form-control"
-                                                id="cityp" name="cityp" multiple="multiple">
+                                                id="city" name="city" multiple="multiple">
                                                 <option value="" selected>พิษณุโลก</option>
 
                                             </select>
@@ -157,7 +157,7 @@
                                             <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
                                                 อำเภอ:</strong>
                                             <select style="width: 100%;" class="select2 select2_am form-control"
-                                                id="amp" name="amp" multiple="multiple">
+                                                id="district" name="district" multiple="multiple">
                                                 <option value="" selected>อำเภอเมือง</option>
 
                                             </select>
@@ -170,7 +170,7 @@
                                             <strong><i class="fa-solid fa-building-circle-arrow-right"></i> ตำบล
                                                 :</strong>
                                             <select style="width: 100%;" class="select2 select2_tm form-control"
-                                                id="tmp" name="tmp" multiple="multiple">
+                                                id="subdistrict" name="subdistrict" multiple="multiple">
                                                 <option value="" selected>ในเมือง</option>
 
                                             </select>
@@ -180,7 +180,7 @@
                                         <div class="form-group">
                                             <strong><i class="fas fa-code"></i> รหัสไปรษณีย์:</strong>
                                             {!! Form::text('postcode', null, [
-                                                'id' => 'AddPostcode',
+                                                'id' => 'postcode',
                                                 'placeholder' => 'รหัสไปรษณีย์',
                                                 'class' => 'form-control',
                                             ]) !!}
@@ -202,8 +202,8 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์บ้าน:</strong>
-                                            {!! Form::text('homephone', null, [
-                                                'id' => 'homephone',
+                                            {!! Form::text('telhome', null, [
+                                                'id' => 'telhome',
                                                 'placeholder' => 'เบอร์โทรศัพท์บ้าน',
                                                 'class' => 'form-control',
                                             ]) !!}
@@ -212,8 +212,8 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์มือถือ :</strong>
-                                            {!! Form::text('telephone', $telephone, [
-                                                'id' => 'telephone',
+                                            {!! Form::text('phoneno', null, [
+                                                'id' => 'phoneno',
                                                 'placeholder' => 'เบอร์โทรศัพท์มือถือ',
                                                 'class' => 'form-control',
                                             ]) !!}
@@ -226,8 +226,8 @@
                                         <div class="form-group">
                                             <strong><i class="fas fa-phone"></i>
                                                 เบอร์โทรศัพท์ที่ทำงาน:</strong>
-                                            {!! Form::text('workphone', null, [
-                                                'id' => 'workphone',
+                                            {!! Form::text('workno', null, [
+                                                'id' => 'workno',
                                                 'placeholder' => 'เบอร์โทรศัพท์ที่ทำงาน',
                                                 'class' => 'form-control',
                                             ]) !!}

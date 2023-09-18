@@ -216,8 +216,8 @@ class ContactController extends Controller
             'postcode' => 'required|string|max:10',
             'telephone' => 'required|string|max:20',*/
         ], [
-            'name.required' => 'ชื่อนักเรียนต้องไม่เป็นค่าว่าง!',
-            'name.unique' => 'ชื่อนักเรียนนี้มีอยู่แล้วในฐานข้อมูล!',
+            //'name.required' => 'ชื่อนักเรียนต้องไม่เป็นค่าว่าง!',
+            //'name.unique' => 'ชื่อนักเรียนนี้มีอยู่แล้วในฐานข้อมูล!',
             /*  'status.required' => 'กรุณาเลือกสถานะ!', */
         ]);
 
@@ -228,8 +228,8 @@ class ContactController extends Controller
 
         $input = $request->all();
         $contact = Contact::create($input);
-        $select_list_contact = '<option value="' . $contact->id . '" > ' . $contact->name . '</option>';
-        return response()->json(['success' => 'เพิ่ม รายชื่อนักเรียน เรียบร้อยแล้ว', 'contact' => $select_list_contact, 'cid' => $contact->id]);
+        //$select_list_contact = '<option value="' . $contact->id . '" > ' . $contact->name . '</option>';
+        return response()->json(['success' => 'เพิ่ม รายผู้ติดต่อ เรียบร้อยแล้ว', 'contact' => $select_list_contact, 'cid' => $contact->id]);
     }
 
     /**
