@@ -225,10 +225,6 @@
                 method: 'post',
                 data: {
                     name: $('#AddName').val(),
-                    email: $('#AddEmail').val(),
-                    postcode: $('#AddPostcode').val(),
-                    address: $('#AddAddress').val(),
-                    telephone: $('#AddTelephone').val(),
                     _token: token,
                 },
                 success: function(result) {
