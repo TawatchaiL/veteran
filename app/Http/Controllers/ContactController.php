@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Contact;
+use App\Models\CrmContact;
 use App\Models\Department;
 use App\Models\Case_type;
 use App\Models\studentRunningNumber;
@@ -226,8 +226,7 @@ class ContactController extends Controller
         }
         
         $input = $request->all();
-        $contact = Contact::create($input);
-        return redirect('/contacts')->with('success', 'ลบ นักเรียน เรียบร้อยแล้ว');
+        $contact = CrmContact::create($input);
         //$select_list_contact = '<option value="' . $contact->id . '" > ' . $contact->name . '</option>';
         return response()->json(['success' => 'เพิ่ม รายผู้ติดต่อ เรียบร้อยแล้ว']);
     }
