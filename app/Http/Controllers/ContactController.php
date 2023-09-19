@@ -209,7 +209,7 @@ class ContactController extends Controller
     {
         //
         $validator =  Validator::make($request->all(), [
-            'name' => 'required|string|max:255|unique:contacts',
+            'fname' => 'required|string|max:255|unique:contacts',
             //'postcode' => 'int|max:10',
             /* 'email' => 'required|string|email|max:255',
             'address' => 'required|string|max:255',
