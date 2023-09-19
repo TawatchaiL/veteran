@@ -216,7 +216,7 @@ class ContactController extends Controller
             'postcode' => 'required|string|max:10',
             'telephone' => 'required|string|max:20',*/
         ], [
-            //'name.required' => 'ชื่อนักเรียนต้องไม่เป็นค่าว่าง!',
+            'fname.required' => 'กรุณากรอกชื่อ',
             //'name.unique' => 'ชื่อนักเรียนนี้มีอยู่แล้วในฐานข้อมูล!',
             /*  'status.required' => 'กรุณาเลือกสถานะ!', */
         ]);
