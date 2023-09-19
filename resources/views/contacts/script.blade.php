@@ -224,7 +224,7 @@
                 url: "{{ route('contacts.store') }}",
                 method: 'post',
                 data: {
-                    fname: $('#AddName').val(),
+                    fname: $('#Addfname').val(),
                     _token: token,
                 },
                 success: function(result) {
