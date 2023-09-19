@@ -209,18 +209,34 @@ class ContactController extends Controller
     {
         //
         $validator =  Validator::make($request->all(), [
+            'hn' => 'required|string|max:255',
             'fname' => 'required|string|max:255',
-            //'postcode' => 'int|max:10',
-            /* 'email' => 'required|string|email|max:255',
-            'address' => 'required|string|max:255',
-            'postcode' => 'required|string|max:10',
-            'telephone' => 'required|string|max:20',*/
+            'lname' => 'required|string|max:255',
+            'homeno' => 'required|string|max:255',
+            'moo' => 'required|string|max:255',
+            'soi' => 'required|string|max:255',
+            'road' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'district' => 'required|string|max:255',
+            'subdistrict' => 'required|string|max:255',
+            'telhome' => 'required|string|max:255',
+            'phoneno' => 'required|string|max:255',
+            'workno' => 'required|string|max:255',
         ], [
+            'hn.required' => 'กรุณากรอกรหัสผู้ติดต่อ',
             'fname.required' => 'กรุณากรอกชื่อ',
-            //'name.unique' => 'ชื่อนักเรียนนี้มีอยู่แล้วในฐานข้อมูล!',
-            /*  'status.required' => 'กรุณาเลือกสถานะ!', */
+            'lname.required' => 'กรุณากรอกนามสกุล',
+            'homeno.required' => 'กรุณากรอกบ้านเลขที่',
+            'moo.required' => 'กรุณากรอกหมู่',
+            'soi.required' => 'กรุณากรอกซอย',
+            'road.required' => 'กรุณากรอกถนน',
+            'city.required' => 'กรุณาเลือกจังหวัด',
+            'district.required' => 'กรุณาเลือกอำเภอ',
+            'subdistrict.required' => 'กรุณาเลือกตำบล',
+            'telhome.required' => 'กรุณากรอกเบอร์โทรศัพท์บ้าน',
+            'phoneno.required' => 'กรุณากรอกเบอร์โทรศัทพ์มือถือ',
+            'workno.required' => 'กรุณากรอกเบอร์ทีทำงาน',
         ]);
-
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);
         }
