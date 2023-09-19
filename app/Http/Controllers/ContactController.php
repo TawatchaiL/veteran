@@ -229,6 +229,7 @@ class ContactController extends Controller
         $contact = CrmContact::create($input);
         //$select_list_contact = '<option value="' . $contact->id . '" > ' . $contact->name . '</option>';
         return response()->json(['success' => 'เพิ่ม รายผู้ติดต่อ เรียบร้อยแล้ว']);
+        //return response()->json(['success' => $request->city.$request->district]);
     }
 
     /**

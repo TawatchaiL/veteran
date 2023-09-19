@@ -153,7 +153,7 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fa-solid fa-city"></i> จังหวัด :</strong>
-                                                    <select class="select2 select2_single form-control" id="ecity"
+                                                    <select class="select2 select2_singlee form-control" id="ecity"
                                                         name="ecity" multiple="multiple">
                                                         <option value="1" selected="selected">พิษณุโลก </option>
 
@@ -164,7 +164,7 @@
                                                 <div class="form-group">
                                                     <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
                                                         อำเภอ:</strong>
-                                                    <select class="select2 select2_single form-control" id="eam"
+                                                    <select class="select2 select2_singlee2 form-control" id="eam"
                                                         name="eam" multiple="multiple">
                                                         <option value="1" selected="selected">อำเภอเมือง
                                                         </option>
@@ -178,7 +178,7 @@
                                                     <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
                                                         ตำบล
                                                         :</strong>
-                                                    <select class="select2 select2_single form-control" id="etm"
+                                                    <select class="select2 select2_singlee3 form-control" id="etm"
                                                         name="etm" multiple="multiple">
                                                         <option value="1" selected="selected">ในเมือง</option>
                                                     </select>

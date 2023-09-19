@@ -30,6 +30,36 @@
             //theme: 'bootstrap4'
             placeholder: 'กรุณาเลือก'
         });
+        $(".select2_single2").select2({
+            maximumSelectionLength: 1,
+            allowClear: true,
+            //theme: 'bootstrap4'
+            placeholder: 'กรุณาเลือก'
+        });
+        $(".select2_single3").select2({
+            maximumSelectionLength: 1,
+            allowClear: true,
+            //theme: 'bootstrap4'
+            placeholder: 'กรุณาเลือก'
+        });
+        $(".select2_singlee").select2({
+            maximumSelectionLength: 1,
+            allowClear: true,
+            //theme: 'bootstrap4'
+            placeholder: 'กรุณาเลือก'
+        });
+        $(".select2_singlee2").select2({
+            maximumSelectionLength: 1,
+            allowClear: true,
+            //theme: 'bootstrap4'
+            placeholder: 'กรุณาเลือก'
+        });
+        $(".select2_singlee3").select2({
+            maximumSelectionLength: 1,
+            allowClear: true,
+            //theme: 'bootstrap4'
+            placeholder: 'กรุณาเลือก'
+        });
 
         $(".select2_single").on("select2:unselect", function(e) {
             //log("select2:unselect", e);
@@ -225,6 +255,7 @@
                 method: 'post',
                 data: {
                     hn: $('#Addhn').val(),
+                    adddate: $('#Addadddate').val(),
                     fname: $('#Addfname').val(),
                     lname: $('#Addlname').val(),
                     homeno: $('#Addhomeno').val(),

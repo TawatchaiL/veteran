@@ -18,14 +18,14 @@ class PermissionTableSeeder extends Seeder
         //Permission::truncate();
 
         $permissions = [
-            /* 'contact-list',
+            'contact-list',
             'contact-create',
             'contact-edit',
             'contact-delete',
-            'case-list',
-            'case-create',
-            'case-edit',
-            'case-delete',
+            'external-doc-list',
+            'external-doc-create',
+            'external-doc-edit',
+            'external-doc-delete',
             'master-data-list',
             'master-data-create',
             'master-data-edit',
@@ -37,11 +37,8 @@ class PermissionTableSeeder extends Seeder
             'user-list',
             'user-create',
             'user-edit',
-            'user-delete', */
-            'record-list',
-            'record-listen',
-            'record-export',
-            'record-delete',
+            'user-delete',
+            'all-centre'
         ];
 
         foreach ($permissions as $permission) {

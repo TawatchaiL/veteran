@@ -72,8 +72,8 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-calendar"></i> วันที่บันทึก:</strong>
-                                                    {!! Form::text('start_date', null, [
-                                                        'id' => 'AddDate',
+                                                    {!! Form::text('adddate', null, [
+                                                        'id' => 'Addadddate',
                                                         'placeholder' => 'วันที่บันทึก',
                                                         'class' => 'AddDate form-control',
                                                         'data-target' => '#reservationdate',
@@ -152,11 +152,9 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fa-solid fa-city"></i> จังหวัด :</strong>
-                                                    <select class="select2 select2_single form-control" id="Addcity"
-                                                        name="city" multiple="multiple">
+                                                    <select class="select2 form-control" id="Addcity"
+                                                        name="city">
                                                         <option value="1">พิษณุโลก</option>
-
-
                                                     </select>
                                                 </div>
                                             </div>
@@ -164,11 +162,9 @@
                                                 <div class="form-group">
                                                     <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
                                                         อำเภอ:</strong>
-                                                    <select class="select2 select2_single form-control" id="Adddistrict"
-                                                        name="district" multiple="multiple">
+                                                    <select class="select2 form-control" id="Adddistrict"
+                                                        name="district">
                                                         <option value="1">อำเภอเมือง</option>
-
-
                                                     </select>
                                                 </div>
                                             </div>
@@ -179,11 +175,9 @@
                                                     <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
                                                         ตำบล
                                                         :</strong>
-                                                    <select class="select2 select2_single form-control" id="Addsubdistrict"
-                                                        name="subdistrict" multiple="multiple">
+                                                    <select class="select2 form-control" id="Addsubdistrict"
+                                                        name="subdistrict">
                                                         <option value="1">ในเมือง</option>
-
-
                                                     </select>
                                                 </div>
                                             </div>
