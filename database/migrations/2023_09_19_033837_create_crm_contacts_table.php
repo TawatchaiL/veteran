@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('crm_contacts', function (Blueprint $table) {
             $table->id();
             $table->string('hn')->nullable();
+            $table->date('adddate')->nullable();
             $table->string('fname')->nullable();
             $table->string('lname')->nullable();
             $table->string('homeno')->nullable();
