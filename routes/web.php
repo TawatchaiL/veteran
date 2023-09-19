@@ -105,6 +105,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/detailscoreagent', [App\Http\Controllers\DetailscoreagentController::class, 'index'])->name('detailscoreagent');
 
     Route::get('/thcity/city', [App\Http\Controllers\ThCityController::class, 'city'])->name('thcity.city');
+    Route::get('/thdistrict/district', [App\Http\Controllers\ThDistrictController::class, 'district'])->name('thcity.district');
+    Route::get('/thsubdistrict/subdistrict', [App\Http\Controllers\ThSubDistrictController::class, 'subdistrict'])->name('thcity.subdistrict');
     //file
     Route::post('/file/upload', function (Request $request) {
         $result = FileUploadService::fileStore($request);

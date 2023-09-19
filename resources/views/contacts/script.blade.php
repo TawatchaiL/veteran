@@ -512,4 +512,46 @@
             rowToRemove.parentNode.removeChild(rowToRemove);
         }
     });
+
+    $(function(){
+	
+    var provinceOb = $('#Addcity');
+	var districtOb = $('#Adddistrict');
+	var cartonOb = $('#Addsubdistrict');
+		
+    // on change province
+    $('#Addcity').on('change', function(){
+        var provinceId = $(this).val();
+        districtOb.html('<option value="">เลือกอำเภอ</option>');
+
+        $.ajax({
+                    url: "{{ route('thcity.district') }}",
+                    method: 'GET',
+                    success: function(res) {
+                        districtOb.html('<option value="">เลือกอำเภอ</option>');
+                        $.each(res.data, function(index, item){
+                            districtOb.append(
+                            $('<option></option>').val(item.code).html(item.name_th)
+                        );
+                        });
+                    }
+        });
+    });
+    districtOb.on('change', function(){
+        var districtId = $(this).val();
+        cartonOb.html('<option value="">เลือกตำบล</option>');
+        $.ajax({
+                    url: "{{ route('thcity.subdistrict') }}",
+                    method: 'GET',
+                    success: function(res) {
+                        cartonOb.html('<option value="">เลือกตำบล</option>');
+                        $.each(res.data, function(index, item){
+                            cartonOb.append(
+                            $('<option></option>').val(item.code).html(item.name_th)
+                        );
+                        });
+                    }
+        });
+    });
+});	
 </script>
