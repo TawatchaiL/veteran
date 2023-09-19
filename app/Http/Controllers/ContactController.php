@@ -227,9 +227,18 @@ class ContactController extends Controller
         
         $input = $request->all();
         $contact = CrmContact::create($input);
-        //$select_list_contact = '<option value="' . $contact->id . '" > ' . $contact->name . '</option>';
+
+        //$id = DB::table('users')->insertGetId(['email' => 'john@example.com', 'votes' => 0]);
+        //DB::table('flights')->upsert(
+        //    [
+        //        ['departure' => 'Oakland', 'destination' => 'San Diego', 'price' => 99],
+        //        ['departure' => 'Chicago', 'destination' => 'New York', 'price' => 150]
+        //    ],
+        //    ['departure', 'destination'],
+        //    ['price']
+        //);
+
         return response()->json(['success' => 'เพิ่ม รายผู้ติดต่อ เรียบร้อยแล้ว']);
-        //return response()->json(['success' => $request->city.$request->district]);
     }
 
     /**
