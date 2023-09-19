@@ -523,12 +523,12 @@
     $('#Addcity').on('change', function(){
         var provinceId = $(this).val();
         districtOb.html('<option value="">เลือกอำเภอ</option>');
-
         $.ajax({
-                    url: "{{ route('thcity.district') }}",
+                    url: "thdistrict/district/" + provinceId,
                     method: 'GET',
                     success: function(res) {
                         districtOb.html('<option value="">เลือกอำเภอ</option>');
+                        cartonOb.html('<option value="">เลือกตำบล</option>');
                         $.each(res.data, function(index, item){
                             districtOb.append(
                             $('<option></option>').val(item.code).html(item.name_th)
@@ -541,7 +541,7 @@
         var districtId = $(this).val();
         cartonOb.html('<option value="">เลือกตำบล</option>');
         $.ajax({
-                    url: "{{ route('thcity.subdistrict') }}",
+            url: "thsubdistrict/subdistrict/" + districtId,
                     method: 'GET',
                     success: function(res) {
                         cartonOb.html('<option value="">เลือกตำบล</option>');

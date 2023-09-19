@@ -25,11 +25,12 @@ class ThSubDistrictController extends Controller
         $this->middleware('permission:contact-delete', ['only' => ['destroy']]);
     }
 
-    public function subdistrict()
+    public function subdistrict($districtId)
     {
 
         //$data = ThCity::find($id);
-        $data = ThSubDistrict::orderBy("id", "asc")->get();
+        //$data = ThSubDistrict::orderBy("code", "asc")->get();
+        $data = DB::table('th_sub_districts')->whereRaw("SUBSTRING(code,1,4)='$districtId'")->orderBy("code", "asc")->get();
         return response()->json(['data' => $data]);
     }
 }
