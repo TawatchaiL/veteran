@@ -65,7 +65,7 @@
                                                         'id' => 'Addhn',
                                                         'placeholder' => 'รหัสผู้ติดต่อ',
                                                         'class' => 'form-control',
-                                                        'readonly' => true,
+                                                        //'readonly' => true,
                                                     ]) !!}
                                                 </div>
                                             </div>

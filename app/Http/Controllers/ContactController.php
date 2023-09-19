@@ -209,7 +209,7 @@ class ContactController extends Controller
     {
         //
         $validator =  Validator::make($request->all(), [
-            'fname' => 'required|string|max:255|unique:contacts',
+            'fname' => 'required|string|max:255',
             //'postcode' => 'int|max:10',
             /* 'email' => 'required|string|email|max:255',
             'address' => 'required|string|max:255',
@@ -221,13 +221,13 @@ class ContactController extends Controller
             /*  'status.required' => 'กรุณาเลือกสถานะ!', */
         ]);
 
-
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);
         }
-
+        
         $input = $request->all();
         $contact = Contact::create($input);
+        return redirect('/contacts')->with('success', 'ลบ นักเรียน เรียบร้อยแล้ว');
         //$select_list_contact = '<option value="' . $contact->id . '" > ' . $contact->name . '</option>';
         return response()->json(['success' => 'เพิ่ม รายผู้ติดต่อ เรียบร้อยแล้ว']);
     }
