@@ -93,8 +93,6 @@
             dateFormat: "yy-mm-dd"
         });
 
-
-
         //$.noConflict();
         var token = ''
         $.ajaxSetup({
@@ -236,7 +234,37 @@
                     $('#AddCode').val(res.running);
                 }
             });
+            $.ajax({
+                    url: "{{ route('thcity.city') }}",
+                    method: 'GET',
+                    success: function(res) {
+                        //alert(res.data.code);
+                        var provinceOb = $('#Addcity');
+                        provinceOb.html('<option value="">เลือกจังหวัด</option>');
+                        $.each(res.data, function(index, item){
+                        provinceOb.append(
+                            $('<option></option>').val(item.code).html(item.name_th)
+                        );
+                        });
+                    }
+                });
             $('#CreateModal').modal('show');
+            //ตัวเลือกจังหวัด
+            
+
+
+                //var provinceOb = $('#Addcity');
+                //provinceOb.html('<option value="">เลือกจังหวัด</option>');
+                //$.get('serverside/get_province.php', function(data){
+                //var result = JSON.parse(data);
+
+                //$.each(result, function(index, item){
+                //    provinceOb.append(
+                //        $('<option></option>').val(item.code).html(item.name_th)
+                //    );
+                //});
+                //});
+
         });
 
 
