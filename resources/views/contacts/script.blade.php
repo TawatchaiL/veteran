@@ -436,40 +436,48 @@
     });
 </script>
 <script>
-    document.getElementById('addRowBtn').addEventListener('click', function() {
-        var table = document.getElementById('myTbl3');
+   // document.getElementById('addRowBtn').addEventListener('click', function() {
+    //    var table = document.getElementById('myTbl3');
+//
+   //     var newRow = document.createElement('tr');
+   //     newRow.innerHTML = `
+   //         <td width="30%">
+   //             <div class="col-md-12 col-sm-12 col-xs-12">
+    //                <input type="text" name="name[]" class="form-control has-feedback-left" value="" required>
+   //                 <div id="lot_price" class="text-success"></div>
+   //                 <div id="lot_error" class="text-danger"></div>
+   //             </div>
+   //         </td>
+   //         <td width="10%">
+   //             <div class="col-md-12 col-sm-12 col-xs-12">
+   //                 <input type="text" name="amount[]" class="form-control has-feedback-left" value="" required>
+   //             </div>
+   //         </td>
+   //         <td width="10%">
+  //              <div class="col-md-12 col-sm-12 col-xs-12">
+   //                 <input type="text" name="price[]" class="form-control has-feedback-left" value="" required>
+   //             </div>
+   //         </td>
+   //         <td>
+   //             <button type="button" id="removeRow2" class="btn btn-sm btn-danger removeRowBtn"><i
+  //                                                      class="fa fa-minus"></i></button>
+   //         </td>
+  //      `;
+//
+  //      table.appendChild(newRow);
+//
+   //     newRow.querySelector('.removeRowBtn').addEventListener('click', function() {
+  //          table.removeChild(newRow);
+ //       });
+//    });
 
-        var newRow = document.createElement('tr');
-        newRow.innerHTML = `
-            <td width="30%">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <input type="text" name="name[]" class="form-control has-feedback-left" value="" required>
-                    <div id="lot_price" class="text-success"></div>
-                    <div id="lot_error" class="text-danger"></div>
-                </div>
-            </td>
-            <td width="10%">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <input type="text" name="amount[]" class="form-control has-feedback-left" value="" required>
-                </div>
-            </td>
-            <td width="10%">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <input type="text" name="price[]" class="form-control has-feedback-left" value="" required>
-                </div>
-            </td>
-            <td>
-                <button type="button" id="removeRow2" class="btn btn-sm btn-danger removeRowBtn"><i
-                                                        class="fa fa-minus"></i></button>
-            </td>
-        `;
-
-        table.appendChild(newRow);
-
-        newRow.querySelector('.removeRowBtn').addEventListener('click', function() {
-            table.removeChild(newRow);
-        });
-    });
+$('#addRowBtn').click(function() {
+				$('#myTbl3').append($('<tr>')
+				  .append($('<td class="text-center" style="vertical-align: middle">').append('<input type="text" id="emergencyname" name="emergencyname[]" class="form-control has-feedback-left" value="" required="required">'))
+				  .append($('<td class="text-center" style="vertical-align: middle">').append('<input type="text" id="emerrelation" name="emerrelation[]" class="form-control has-feedback-left" value="" required="required">'))
+				  .append($('<td class="text-center">').append('<input type="text" id="emerphone" name="emerphone[]" class="form-control has-feedback-left" value="" required="required">'))			   
+				  .append($('<td class="text-center">').append('<button type="button" name="deletem" id="deletem" class="btn btn-primary btn-sm" onclick="$(this).closest(\'tr\').remove();\">ลบ</button>')));
+});
 </script>
 <script>
     document.getElementById('addRowBtne').addEventListener('click', function() {
