@@ -476,7 +476,7 @@ $('#addRowBtn').click(function() {
 				  .append($('<td class="text-center" style="vertical-align: middle">').append('<input type="text" id="emergencyname" name="emergencyname[]" class="form-control has-feedback-left" value="" required="required">'))
 				  .append($('<td class="text-center" style="vertical-align: middle">').append('<input type="text" id="emerrelation" name="emerrelation[]" class="form-control has-feedback-left" value="" required="required">'))
 				  .append($('<td class="text-center">').append('<input type="text" id="emerphone" name="emerphone[]" class="form-control has-feedback-left" value="" required="required">'))			   
-				  .append($('<td class="text-center">').append('<button type="button" name="deletem" id="deletem" class="btn btn-primary btn-sm" onclick="$(this).closest(\'tr\').remove();\">ลบ</button>')));
+				  .append($('<td class="text-center">').append('<button type="button" name="deletem" id="deletem" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>')));
 });
 </script>
 <script>
