@@ -247,11 +247,11 @@ class ContactController extends Controller
         $insertedId = $contact->id;
 
     for ($i=0;$i < count($request->emergencyData);$i++) {
-        $student = new Student;
-        $student->name = $request->input('name');
-        $student->email = $request->input('email');
-        $student->course = $request->input('course');
-        $student->section = $request->input('section');
+        $student = new CrmContactemergency;
+        $student->contact_id = $insertedId;
+        $student->emergencyname = $request->emergencyData[$i]['emergencyname'];
+        $student->emerrelation = $request->emergencyData[$i]['emerrelation'];
+        $student->emerphone = $request->emergencyData[$i]['emerphone'];
         $student->save();
 
         //$emergencyData = [
