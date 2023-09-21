@@ -277,28 +277,44 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
+            var emergencyData = [];
+            $('#myTbl3 tbody tr').each(function() {
+                var emergencyname = $(this).find('input[name="emergencyname[]"]').val();
+                var emerrelation = $(this).find('input[name="emerrelation[]"]').val();
+                var emerphone = $(this).find('input[name="emerphone[]"]').val();
+         
+                var emergency = {
+                emergencyname: emergencyname,
+                emerrelation: emerrelation,
+                emerphone: emerphone
+                };
+                emergencyData.push(emergency);
+            });
+
+            var additionalData = {
+                hn: $('#Addhn').val(),
+                adddate: $('#Addadddate').val(),
+                fname: $('#Addfname').val(),
+                lname: $('#Addlname').val(),
+                homeno: $('#Addhomeno').val(),
+                moo: $('#Addmoo').val(),
+                soi: $('#Addsoi').val(),
+                road: $('#Addroad').val(),
+                city: $('#Addcity').val(),
+                district: $('#Adddistrict').val(),
+                subdistrict: $('#Addsubdistrict').val(),
+                postcode: $('#Addpostcode').val(),
+                telhome: $('#Addtelhome').val(),
+                phoneno: $('#Addphoneno').val(),
+                workno: $('#Addworkno').val(),
+                _token: token,
+                emergencyData: emergencyData
+            };
 
             $.ajax({
                 url: "{{ route('contacts.store') }}",
                 method: 'post',
-                data: {
-                    hn: $('#Addhn').val(),
-                    adddate: $('#Addadddate').val(),
-                    fname: $('#Addfname').val(),
-                    lname: $('#Addlname').val(),
-                    homeno: $('#Addhomeno').val(),
-                    moo: $('#Addmoo').val(),
-                    soi: $('#Addsoi').val(),
-                    road: $('#Addroad').val(),
-                    city: $('#Addcity').val(),
-                    district: $('#Adddistrict').val(),
-                    subdistrict: $('#Addsubdistrict').val(),
-                    postcode: $('#Addpostcode').val(),
-                    telhome: $('#Addtelhome').val(),
-                    phoneno: $('#Addphoneno').val(),
-                    workno: $('#Addworkno').val(),
-                    _token: token,
-                },
+                data: additionalData,
                 success: function(result) {
                     if (result.errors) {
                         $('.alert-danger').html('');
