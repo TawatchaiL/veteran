@@ -274,6 +274,7 @@
                                                             </div>
                                                         </td>
                                                         <td width="5%">
+                                                            <button type="button" name="deletem" id="deletem" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest('tr').remove();"><i class="fa fa-minus"></i></button>
                                                         </td>
                                                     </tr>
                                                 </table>
