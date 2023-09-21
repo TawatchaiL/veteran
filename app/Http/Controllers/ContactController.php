@@ -247,10 +247,13 @@ class ContactController extends Controller
         $insertedId = $contact->id;
 
     for ($i=0;$i < count($request->emergencyData);$i++) {
-        $econtact = CrmContactemergency::create($emergency);
-        DB::table('crm_contactemergencies')->insert(
-            ['contact_id' => $insertedId]
-        );
+        $student = new Student;
+        $student->name = $request->input('name');
+        $student->email = $request->input('email');
+        $student->course = $request->input('course');
+        $student->section = $request->input('section');
+        $student->save();
+
         //$emergencyData = [
         //    'emergencyname' => $emergency['emergencyname'],
         //    'emerrelation' => $emergency['emerrelation'],
