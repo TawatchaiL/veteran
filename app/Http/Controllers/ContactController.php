@@ -243,7 +243,7 @@ class ContactController extends Controller
         
         $input = $request->all();
         $contact = CrmContact::create($input);
-
+        $insertedId = $contact->id;
         //$id = DB::table('users')->insertGetId(['email' => 'john@example.com', 'votes' => 0]);
         //DB::table('flights')->upsert(
         //    [
