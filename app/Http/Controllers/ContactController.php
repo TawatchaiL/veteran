@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\CrmContact;
+use App\Models\CrmContactemergency;
 use App\Models\Department;
 use App\Models\Case_type;
 use App\Models\studentRunningNumber;
@@ -244,6 +245,20 @@ class ContactController extends Controller
         $input = $request->all();
         $contact = CrmContact::create($input);
         $insertedId = $contact->id;
+
+    for ($i=0;$i < count($request->emergencyData);$i++) {
+        $econtact = CrmContactemergency::create($emergency);
+        DB::table('crm_contactemergencies')->insert(
+            ['contact_id' => $insertedId]
+        );
+        //$emergencyData = [
+        //    'emergencyname' => $emergency['emergencyname'],
+        //    'emerrelation' => $emergency['emerrelation'],
+        //    'emerphone' => $emergency['emerrelation'],
+        //];
+        //$emergency = $contact->emergencies()->create($emergencyData);
+        //$econtact = CrmContactemergency::create($input);
+    }
         //$id = DB::table('users')->insertGetId(['email' => 'john@example.com', 'votes' => 0]);
         //DB::table('flights')->upsert(
         //    [
