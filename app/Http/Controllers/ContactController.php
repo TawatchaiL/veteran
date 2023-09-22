@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\CrmContact;
-use App\Models\CrmContactemergency;
+use App\Models\CrmPhoneEmergency;
 use App\Models\Department;
-use App\Models\Case_type;
 use App\Models\studentRunningNumber;
 use App\Models\term;
 use Spatie\Permission\Models\Role;
@@ -245,8 +244,19 @@ class ContactController extends Controller
         $input = $request->all();
         $contact = CrmContact::create($input);
         $insertedId = $contact->id;
+    foreach ($request->emergencyData as $edata) {
+        //$test = $edata['emergencyname'];
 
-    for ($i=0;$i < count($request->emergencyData);$i++) {
+        $Crmemergency = new CrmPhoneEmergency();
+        $Crmemergency->contact_id = $insertedId;
+        $Crmemergency->emergencyname = $edata['emergencyname'];
+        $Crmemergency->emerrelation = $edata['emerrelation'];
+        $Crmemergency->emerphone = $edata['emerphone'];
+        $Crmemergency->save();
+
+    }
+    //for ($i=0;$i < count($request->emergencyData);$i++) {
+
         //$student = new CrmContactemergency;
         //$student->contact_id = $insertedId;
         //$student->emergencyname = $request->emergencyData[$i]['emergencyname'];
@@ -255,14 +265,14 @@ class ContactController extends Controller
         //$student->save();
 
         //$emergencyData = [
-        //    'emergencyname' => $emergency['emergencyname'],
-        //    'emerrelation' => $emergency['emerrelation'],
-        //    'emerphone' => $emergency['emerrelation'],
+        //    'emergencyname' => $request->emergencyData[$i]['emergencyname'],
+        //    'emerrelation' => $request->emergencyData[$i]['emergencyname'],
+        //    'emerphone' => $request->emergencyData[$i]['emerrelation'],
         //];
         //$emergency = $contact->emergencies()->create($emergencyData);
         //$econtact = CrmContactemergency::create($input);
-    }
-        //$id = DB::table('users')->insertGetId(['email' => 'john@example.com', 'votes' => 0]);
+    //}
+        //$ids = DB::table('crm_contactemergencies')->insertGetId(['contact_id' => 99, 'emergencyname' => 'john@example.com', 'emerrelation' => 'john@example.com', 'emerphone' => '0000000']);
         //DB::table('flights')->upsert(
         //    [
         //        ['departure' => 'Oakland', 'destination' => 'San Diego', 'price' => 99],
@@ -271,6 +281,13 @@ class ContactController extends Controller
         //    ['departure', 'destination'],
         //    ['price']
         //);
+
+        //$data = [
+        //    ['contact_id' => 1, 'emergencyname' => 'John', 'emerrelation' => 'Friend', 'emerphone' => '1234567890'],
+        //    ['contact_id' => 2, 'emergencyname' => 'Jane', 'emerrelation' => 'Family', 'emerphone' => '9876543210'],
+        //];
+        
+        //CrmContactemergency::insert($data);
 
         return response()->json(['success' => 'เพิ่ม รายผู้ติดต่อ เรียบร้อยแล้ว']);
     }
