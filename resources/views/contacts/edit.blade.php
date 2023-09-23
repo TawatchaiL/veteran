@@ -62,8 +62,8 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-code"></i> รหัสผู้ติดต่อ.</strong>
-                                                    {!! Form::text('code', '00001', [
-                                                        'id' => 'AddCode',
+                                                    {!! Form::text('hn', '00001', [
+                                                        'id' => 'Edithn',
                                                         'placeholder' => 'Code',
                                                         'class' => 'form-control',
                                                         'readonly' => true,
@@ -73,8 +73,8 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-calendar"></i> วันที่บันทึก:</strong>
-                                                    {!! Form::text('start_date', '2023-08-28', [
-                                                        'id' => 'AddDate',
+                                                    {!! Form::text('adddate', '2023-08-28', [
+                                                        'id' => 'Editadddate',
                                                         'placeholder' => '',
                                                         'class' => 'AddDate form-control',
                                                         'data-target' => '#reservationdate',
@@ -153,10 +153,8 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fa-solid fa-city"></i> จังหวัด :</strong>
-                                                    <select class="select2 select2_singlee form-control" id="ecity"
-                                                        name="ecity" multiple="multiple">
-                                                        <option value="1" selected="selected">พิษณุโลก </option>
-
+                                                    <select class="select2 form-control" id="Editecity"
+                                                        name="ecity">
                                                     </select>
                                                 </div>
                                             </div>
@@ -164,10 +162,9 @@
                                                 <div class="form-group">
                                                     <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
                                                         อำเภอ:</strong>
-                                                    <select class="select2 select2_singlee2 form-control" id="eam"
-                                                        name="eam" multiple="multiple">
-                                                        <option value="1" selected="selected">อำเภอเมือง
-                                                        </option>
+                                                    <select class="select2 form-control" id="Editedistrict"
+                                                        name="edistrict">
+                                                        <option value="">กรุณาเลือกอำเภอ</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -178,9 +175,9 @@
                                                     <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
                                                         ตำบล
                                                         :</strong>
-                                                    <select class="select2 select2_singlee3 form-control" id="etm"
-                                                        name="etm" multiple="multiple">
-                                                        <option value="1" selected="selected">ในเมือง</option>
+                                                    <select class="select2 form-control" id="Editesubdistrict"
+                                                        name="esubdistrict">
+                                                        <option value="">กรุณาเลือกตำบล</option>
                                                     </select>
                                                 </div>
                                             </div>

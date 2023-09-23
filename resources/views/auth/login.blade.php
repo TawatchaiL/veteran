@@ -89,7 +89,7 @@
                         </div>
 
                         <div class="input-group mb-3">
-                            <input readonly type="password"  name="password" value="101gadmin2017" placeholder="Password"
+                            <input readonly type="password"  name="password" value="12345678" placeholder="Password"
                                 class="form-control @error('password') is-invalid @enderror">
                             <div class="input-group-append">
                                 <div class="input-group-text">

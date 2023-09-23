@@ -44,34 +44,33 @@ class ContactController extends Controller
         if ($request->ajax()) {
             //sleep(2);
 
-            /* $datas = Contact::where('ctype', 0)
-                ->orderBy("id", "desc")->get(); */
+            $datas = CrmContact::orderBy("id", "desc")->get();
 
-            $numberOfRows = 50; // Change this to the desired number of rows
-            $simulatedDatas = [];
+            //$numberOfRows = 50; // Change this to the desired number of rows
+            //$simulatedDatas = [];
 
-            $thaiNames = ['สมชาย', 'สมหญิง', 'วิชัย', 'วิไล', 'จริงใจ', 'เปรมชัย', 'สุดใจ', 'นฤมล', 'กมลชนก', 'ศุภัทรา', 'กิจวรรณ', 'อรวรรณ', 'ธนพงศ์', 'ประทุม', 'วิทยา', 'พรชัย'];
-            $thaiLastNames = ['ใจดี', 'เสมอ', 'รักชาติ', 'พร้อม', 'ชำนาญ', 'มีเสน่ห์', 'สุขใจ', 'เรียบง่าย', 'สุดหล่อ', 'หวานใจ', 'เก่ง', 'สนุก', 'ร่ำรวย', 'สายเครื่อง', 'ยอดมาก', 'คง', 'ละเอียด'];
-
-
-            for ($i = 1; $i <= $numberOfRows; $i++) {
-                $hn = str_pad($i, 6, '0', STR_PAD_LEFT);
-                $fullName = $thaiNames[array_rand($thaiNames)] . ' ' . $thaiLastNames[array_rand($thaiLastNames)];
-                $createDate = now()->subDays(rand(1, 365))->subHours(rand(0, 23))->subMinutes(rand(0, 59));
+            //$thaiNames = ['สมชาย', 'สมหญิง', 'วิชัย', 'วิไล', 'จริงใจ', 'เปรมชัย', 'สุดใจ', 'นฤมล', 'กมลชนก', 'ศุภัทรา', 'กิจวรรณ', 'อรวรรณ', 'ธนพงศ์', 'ประทุม', 'วิทยา', 'พรชัย'];
+            //$thaiLastNames = ['ใจดี', 'เสมอ', 'รักชาติ', 'พร้อม', 'ชำนาญ', 'มีเสน่ห์', 'สุขใจ', 'เรียบง่าย', 'สุดหล่อ', 'หวานใจ', 'เก่ง', 'สนุก', 'ร่ำรวย', 'สายเครื่อง', 'ยอดมาก', 'คง', 'ละเอียด'];
 
 
-                $simulatedDatas[] = (object) [
-                    'id' => $i,
-                    'code' => $hn,
-                    'telephone' => '055' . rand(100000, 999999),
-                    'mobile' => '08' . rand(10000000, 99999999),
-                    'name' => $fullName,
-                    'create_at' => $createDate->format('Y-m-d H:i:s'),
+            //for ($i = 1; $i <= $numberOfRows; $i++) {
+            //    $hn = str_pad($i, 6, '0', STR_PAD_LEFT);
+             //   $fullName = $thaiNames[array_rand($thaiNames)] . ' ' . $thaiLastNames[array_rand($thaiLastNames)];
+             //   $createDate = now()->subDays(rand(1, 365))->subHours(rand(0, 23))->subMinutes(rand(0, 59));
+
+
+             //   $simulatedDatas[] = (object) [
+            //        'id' => $i,
+            //        'code' => $hn,
+             //       'telephone' => '055' . rand(100000, 999999),
+            //        'mobile' => '08' . rand(10000000, 99999999),
+            //        'name' => $fullName,
+            //        'create_at' => $createDate->format('Y-m-d H:i:s'),
                     // Simulate other fields as needed
-                ];
-            }
+            //    ];
+           //}
 
-            return datatables()->of($simulatedDatas)
+            return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
                 })
@@ -255,40 +254,6 @@ class ContactController extends Controller
         $Crmemergency->save();
 
     }
-    //for ($i=0;$i < count($request->emergencyData);$i++) {
-
-        //$student = new CrmContactemergency;
-        //$student->contact_id = $insertedId;
-        //$student->emergencyname = $request->emergencyData[$i]['emergencyname'];
-        //$student->emerrelation = $request->emergencyData[$i]['emerrelation'];
-        //$student->emerphone = $request->emergencyData[$i]['emerphone'];
-        //$student->save();
-
-        //$emergencyData = [
-        //    'emergencyname' => $request->emergencyData[$i]['emergencyname'],
-        //    'emerrelation' => $request->emergencyData[$i]['emergencyname'],
-        //    'emerphone' => $request->emergencyData[$i]['emerrelation'],
-        //];
-        //$emergency = $contact->emergencies()->create($emergencyData);
-        //$econtact = CrmContactemergency::create($input);
-    //}
-        //$ids = DB::table('crm_contactemergencies')->insertGetId(['contact_id' => 99, 'emergencyname' => 'john@example.com', 'emerrelation' => 'john@example.com', 'emerphone' => '0000000']);
-        //DB::table('flights')->upsert(
-        //    [
-        //        ['departure' => 'Oakland', 'destination' => 'San Diego', 'price' => 99],
-        //        ['departure' => 'Chicago', 'destination' => 'New York', 'price' => 150]
-        //    ],
-        //    ['departure', 'destination'],
-        //    ['price']
-        //);
-
-        //$data = [
-        //    ['contact_id' => 1, 'emergencyname' => 'John', 'emerrelation' => 'Friend', 'emerphone' => '1234567890'],
-        //    ['contact_id' => 2, 'emergencyname' => 'Jane', 'emerrelation' => 'Family', 'emerphone' => '9876543210'],
-        //];
-        
-        //CrmContactemergency::insert($data);
-
         return response()->json(['success' => 'เพิ่ม รายผู้ติดต่อ เรียบร้อยแล้ว']);
     }
 
@@ -309,7 +274,7 @@ class ContactController extends Controller
     public function edit($id)
     {
 
-        $data = Contact::find($id);
+        $data = CrmContact::find($id);
         return response()->json(['data' => $data]);
     }
 

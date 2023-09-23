@@ -171,24 +171,24 @@
                     searchable: false
                 },
                 {
-                    data: 'code',
-                    name: 'code'
+                    data: 'hn',
+                    name: 'hn'
                 },
                 {
-                    data: 'name',
-                    name: 'name'
+                    data: 'fname',
+                    name: 'fname'
                 },
                 {
-                    data: 'telephone',
-                    name: 'telephone'
+                    data: 'telhome',
+                    name: 'telhome'
                 },
                 {
-                    data: 'mobile',
-                    name: 'mobile'
+                    data: 'phoneno',
+                    name: 'phoneno'
                 },
                 {
-                    data: 'create_at',
-                    name: 'create_at'
+                    data: 'adddate',
+                    name: 'adddate'
                 },
                 {
                     data: 'action',
@@ -249,22 +249,6 @@
                     }
                 });
             $('#CreateModal').modal('show');
-            //ตัวเลือกจังหวัด
-            
-
-
-                //var provinceOb = $('#Addcity');
-                //provinceOb.html('<option value="">เลือกจังหวัด</option>');
-                //$.get('serverside/get_province.php', function(data){
-                //var result = JSON.parse(data);
-
-                //$.each(result, function(index, item){
-                //    provinceOb.append(
-                //        $('<option></option>').val(item.code).html(item.name_th)
-                //    );
-                //});
-                //});
-
         });
 
 
@@ -342,29 +326,55 @@
         let id;
         $(document).on('click', '#getEditData', function(e) {
             e.preventDefault();
-
-
             $('.alert-danger').html('');
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
 
-            //id = $(this).data('id');
-            //$.ajax({
-            //    url: "contacts/edit/" + id,
-            //    method: 'GET',
-            //    success: function(res) {
-            //        $('#EditName').val(res.data.name);
+            id = $(this).data('id');
+            $.ajax({
+                    url: "{{ route('thcity.city') }}",
+                    method: 'GET',
+                    success: function(res) {
+                        //alert(res.data.code);
+                        var provinceOb = $('#Editecity');
+                        provinceOb.html('<option value="">เลือกจังหวัด</option>');
+                        $.each(res.data, function(index, item){
+                        provinceOb.append(
+                            $('<option></option>').val(item.code).html(item.name_th)
+                        );
+                        });
+                    }
+                });
+            $.ajax({
+                url: "contacts/edit/" + id,
+                method: 'GET',
+                success: function(res) {
+                    $('#Edithn').val(res.data.hn);
+                    $('#Editadddate').val(res.data.adddate);
+
+                    $('#Editecity').val(res.data.city);
+                    $('#Editecity').change();
+                    setTimeout(function() {
+                        $('#Editedistrict').val(res.data.district);
+                        $('#Editedistrict').change();
+                        setTimeout(function() {
+                        $('#Editesubdistrict').val(res.data.subdistrict);
+                        }, 1000)
+                    }, 1000)
+
+
+                    //$('#Editedistrict').val(res.data.district);
             //        $('#EditPostcode').val(res.data.postcode);
             //        $('#EditAddress').val(res.data.address);
             //        $('#postcode').val('1');
             //
-            //                    $('#EditModalBody').html(res.html);
-            $('#EditModal').modal('show');
-            //    }
-            //});
+            //        $('#EditModalBody').html(res.html);
+                        $('#EditModal').modal('show');
+                }
+            });
 
-        })
+        });
 
         $('#SubmitEditForm').click(function(e) {
             if (!confirm("ยืนยันการทำรายการ ?")) return;
@@ -500,5 +510,46 @@ $('#addRowBtn').click(function() {
                     }
         });
     });
+
+    var provinceOb = $('#Editecity');
+	var districtOb = $('#Editedistrict');
+	var cartonOb = $('#Editesubdistrict');
+		
+    // Edit
+    $('#Editecity').on('change', function(){
+        var provinceId = $(this).val();
+        districtOb.html('<option value="">เลือกอำเภอ</option>');
+        $.ajax({
+                    url: "thdistrict/district/" + provinceId,
+                    method: 'GET',
+                    success: function(res) {
+                        districtOb.html('<option value="">เลือกอำเภอ</option>');
+                        cartonOb.html('<option value="">เลือกตำบล</option>');
+                        $.each(res.data, function(index, item){
+                            districtOb.append(
+                            $('<option></option>').val(item.code).html(item.name_th)
+                        );
+                        });
+                    }
+        });
+    });
+    districtOb.on('change', function(){
+        var districtId = $(this).val();
+        cartonOb.html('<option value="">เลือกตำบล</option>');
+        $.ajax({
+            url: "thsubdistrict/subdistrict/" + districtId,
+                    method: 'GET',
+                    success: function(res) {
+                        cartonOb.html('<option value="">เลือกตำบล</option>');
+                        $.each(res.data, function(index, item){
+                            cartonOb.append(
+                            $('<option></option>').val(item.code).html(item.name_th)
+                        );
+                        });
+                    }
+        });
+    });
 });	
+
+
 </script>
