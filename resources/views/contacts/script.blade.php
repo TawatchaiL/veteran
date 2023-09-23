@@ -375,9 +375,9 @@
                         $('#Editworkno').val(res.datax.datac.workno);
                         $.each(res.datax.emer, function(index, value) {
                             $('#myTbl3e').append($('<tr>')
-				                .append($('<td width="30%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emergencyname" name="emergencyname[]" class="form-control has-feedback-left" value="" required="required"></div>'))
-				                .append($('<td width="10%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emerrelation" name="emerrelation[]" class="form-control has-feedback-left" value="" required="required"></div>'))
-				                .append($('<td width="10%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emerphone" name="emerphone[]" class="form-control has-feedback-left" value="" required="required"></div>'))			   
+				                .append($('<td width="30%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emergencyname" name="emergencyname[]" class="form-control has-feedback-left" value="' + value.emergencyname + '" required="required"></div>'))
+				                .append($('<td width="10%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emerrelation" name="emerrelation[]" class="form-control has-feedback-left" value="' + value.emerrelation + '" required="required"></div>'))
+				                .append($('<td width="10%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emerphone" name="emerphone[]" class="form-control has-feedback-left" value="' + value.emerphone + '" required="required"></div>'))			   
 				                .append($('<td width="5%">').append('<button type="button" name="deletem" id="deletem" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>')));
                             });
                         $('#EditModal').modal('show');
@@ -474,6 +474,13 @@
 <script>
 $('#addRowBtn').click(function() {
 				$('#myTbl3').append($('<tr>')
+				  .append($('<td width="30%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emergencyname" name="emergencyname[]" class="form-control has-feedback-left" value="" required="required"></div>'))
+				  .append($('<td width="10%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emerrelation" name="emerrelation[]" class="form-control has-feedback-left" value="" required="required"></div>'))
+				  .append($('<td width="10%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emerphone" name="emerphone[]" class="form-control has-feedback-left" value="" required="required"></div>'))			   
+				  .append($('<td width="5%">').append('<button type="button" name="deletem" id="deletem" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>')));
+});
+$('#editRowBtne').click(function() {
+				$('#myTbl3e').append($('<tr>')
 				  .append($('<td width="30%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emergencyname" name="emergencyname[]" class="form-control has-feedback-left" value="" required="required"></div>'))
 				  .append($('<td width="10%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emerrelation" name="emerrelation[]" class="form-control has-feedback-left" value="" required="required"></div>'))
 				  .append($('<td width="10%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emerphone" name="emerphone[]" class="form-control has-feedback-left" value="" required="required"></div>'))			   

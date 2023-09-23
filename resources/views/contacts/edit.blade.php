@@ -251,6 +251,7 @@
                                                                 ชื่อบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน</th>
                                                             <th class="column-title"> ความสัมพันธ์</th>
                                                             <th class="column-title"> เบอร์โทรศัพท์</th>
+                                                            <th></th>
                                                         </tr>
                                                     </thead>
                                                 </table>
