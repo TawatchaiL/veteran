@@ -375,9 +375,10 @@
                         $('#Editworkno').val(res.datax.datac.workno);
                         $.each(res.datax.emer, function(index, value) {
                             $('#myTbl3e').append($('<tr>')
-				                .append($('<td width="30%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emergencyname" name="emergencyname[]" class="form-control has-feedback-left" value="' + value.emergencyname + '" required="required"></div>'))
-				                .append($('<td width="10%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emerrelation" name="emerrelation[]" class="form-control has-feedback-left" value="' + value.emerrelation + '" required="required"></div>'))
-				                .append($('<td width="10%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emerphone" name="emerphone[]" class="form-control has-feedback-left" value="' + value.emerphone + '" required="required"></div>'))			   
+                                .append($('<td style="display:none;">').append(value.id))
+				                .append($('<td width="30%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemergencyname" name="eemergencyname[]" class="form-control has-feedback-left" value="' + value.emergencyname + '" required="required"></div>'))
+				                .append($('<td width="10%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerrelation" name="eemerrelation[]" class="form-control has-feedback-left" value="' + value.emerrelation + '" required="required"></div>'))
+				                .append($('<td width="10%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone" name="eemerphone[]" class="form-control has-feedback-left" value="' + value.emerphone + '" required="required"></div>'))			   
 				                .append($('<td width="5%">').append('<button type="button" name="deletem" id="deletem" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>')));
                             });
                         $('#EditModal').modal('show');
@@ -395,17 +396,44 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
+            var emergencyData = [];
+            $('#myTbl3e tbody tr').each(function() {
+                var eemertype = tr.cells[0].innerHTML;
+                var eemergencyname = $(this).find('input[name="eemergencyname[]"]').val();
+                var eemerrelation = $(this).find('input[name="eemerrelation[]"]').val();
+                var eemerphone = $(this).find('input[name="eemerphone[]"]').val();
+                var eemergency = {
+                eemertype: eemertype,
+                emergencyname: eemergencyname,
+                emerrelation: eemerrelation,
+                emerphone: eemerphone
+                };
+                emergencyData.push(eemergency);
+            });
 
+            var additionalData = {
+                hn: $('#Edithn').val(),
+                adddate: $('#Editadddate').val(),
+                fname: $('#Editfname').val(),
+                lname: $('#Editlname').val(),
+                homeno: $('#Edithomeno').val(),
+                moo: $('#Editmoo').val(),
+                soi: $('#Editsoi').val(),
+                road: $('#Editroad').val(),
+                city: $('#Editcity').val(),
+                district: $('#Editdistrict').val(),
+                subdistrict: $('#Editsubdistrict').val(),
+                postcode: $('#Editpostcode').val(),
+                telhome: $('#Edittelhome').val(),
+                phoneno: $('#Editphoneno').val(),
+                workno: $('#Editworkno').val(),
+                _token: token,
+                emergencyData: emergencyData
+            };
             $.ajax({
-                url: "contacts/save/" + id,
+                url: "contacts/update/" + id,
                 method: 'PUT',
-                data: {
-                    name: $('#EditName').val(),
-                    email: $('#EditEmail').val(),
-                    postcode: $('#EditPostcode').val(),
-                    address: $('#EditAddress').val(),
-                    telephone: $('#EditTelephone').val(),
-                },
+                data: additionalData,
 
                 success: function(result) {
                     //console.log(result);
@@ -481,9 +509,10 @@ $('#addRowBtn').click(function() {
 });
 $('#editRowBtne').click(function() {
 				$('#myTbl3e').append($('<tr>')
-				  .append($('<td width="30%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emergencyname" name="emergencyname[]" class="form-control has-feedback-left" value="" required="required"></div>'))
-				  .append($('<td width="10%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emerrelation" name="emerrelation[]" class="form-control has-feedback-left" value="" required="required"></div>'))
-				  .append($('<td width="10%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emerphone" name="emerphone[]" class="form-control has-feedback-left" value="" required="required"></div>'))			   
+                  .append($('<td style="display:none;">').append(''))
+				  .append($('<td width="30%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemergencyname" name="eemergencyname[]" class="form-control has-feedback-left" value="" required="required"></div>'))
+				  .append($('<td width="10%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerrelation" name="eemerrelation[]" class="form-control has-feedback-left" value="" required="required"></div>'))
+				  .append($('<td width="10%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone" name="eemerphone[]" class="form-control has-feedback-left" value="" required="required"></div>'))			   
 				  .append($('<td width="5%">').append('<button type="button" name="deletem" id="deletem" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>')));
 });
 

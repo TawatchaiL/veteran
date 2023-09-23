@@ -246,7 +246,6 @@
                                                     width="400">
                                                     <thead>
                                                         <tr class="headings">
-                                                            {{-- <th class="column-title"> สินค้า</th> --}}
                                                             <th class="column-title">
                                                                 ชื่อบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน</th>
                                                             <th class="column-title"> ความสัมพันธ์</th>
