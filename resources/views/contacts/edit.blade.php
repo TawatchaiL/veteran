@@ -207,8 +207,8 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์บ้าน:</strong>
-                                                    {!! Form::text('ehomephone', null, [
-                                                        'id' => 'Edithomephone',
+                                                    {!! Form::text('etelhome', null, [
+                                                        'id' => 'Edittelhome',
                                                         'placeholder' => 'Telephone',
                                                         'class' => 'form-control',
                                                     ]) !!}
@@ -217,8 +217,8 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์มือถือ :</strong>
-                                                    {!! Form::text('etelephone', null, [
-                                                        'id' => 'Edittelephone',
+                                                    {!! Form::text('ephoneno', null, [
+                                                        'id' => 'Editphoneno',
                                                         'placeholder' => 'Postcode',
                                                         'class' => 'form-control',
                                                     ]) !!}
@@ -231,8 +231,8 @@
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-phone"></i>
                                                         เบอร์โทรศัพท์ที่ทำงาน:</strong>
-                                                    {!! Form::text('eworkphone', null, [
-                                                        'id' => 'Editworkphone',
+                                                    {!! Form::text('eworkno', null, [
+                                                        'id' => 'Editworkno',
                                                         'placeholder' => 'Telephone',
                                                         'class' => 'form-control',
                                                     ]) !!}

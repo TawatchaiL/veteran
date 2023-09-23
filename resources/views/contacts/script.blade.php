@@ -353,7 +353,12 @@
                     success: function(res) {
                         $('#Edithn').val(res.data.hn);
                         $('#Editadddate').val(res.data.adddate);
-
+                        $('#Editfname').val(res.data.fname);
+                        $('#Editlname').val(res.data.lname);
+                        $('#Edithomeno').val(res.data.homeno);
+                        $('#Editmoo').val(res.data.moo);
+                        $('#Editsoi').val(res.data.soi);
+                        $('#Editroad').val(res.data.road);
                         $('#Editecity').val(res.data.city);
                         $('#Editecity').change();
                         setTimeout(function() {
@@ -364,12 +369,11 @@
                             }, 1000)
                         }, 1000)
                         $('#Editedistrict').val(res.data.district);
-                //        $('#EditPostcode').val(res.data.postcode);
-                //        $('#EditAddress').val(res.data.address);
-                //        $('#postcode').val('1');
-                //
-                //        $('#EditModalBody').html(res.html);
-                            $('#EditModal').modal('show');
+                        $('#Editpostcode').val(res.data.postcode);
+                        $('#Edittelhome').val(res.data.telhome);
+                        $('#Editphoneno').val(res.data.phoneno);
+                        $('#Editworkno').val(res.data.workno);
+                        $('#EditModal').modal('show');
                     }
                 });
             }, 1000)
