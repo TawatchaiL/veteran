@@ -337,7 +337,7 @@
                     method: 'GET',
                     success: function(res) {
                         //alert(res.data.code);
-                        var provinceOb = $('#Editecity');
+                        var provinceOb = $('#Editcity');
                         provinceOb.html('<option value="">เลือกจังหวัด</option>');
                         $.each(res.data, function(index, item){
                         provinceOb.append(
@@ -359,16 +359,15 @@
                         $('#Editmoo').val(res.datax.datac.moo);
                         $('#Editsoi').val(res.datax.datac.soi);
                         $('#Editroad').val(res.datax.datac.road);
-                        $('#Editecity').val(res.datax.datac.city);
-                        $('#Editecity').change();
+                        $('#Editcity').val(res.datax.datac.city);
+                        $('#Editcity').change();
                         setTimeout(function() {
-                            $('#Editedistrict').val(res.datax.datac.district);
-                            $('#Editedistrict').change();
+                            $('#Editdistrict').val(res.datax.datac.district);
+                            $('#Editdistrict').change();
                             setTimeout(function() {
-                            $('#Editesubdistrict').val(res.datax.datac.subdistrict);
+                            $('#Editsubdistrict').val(res.datax.datac.subdistrict);
                             }, 1000)
                         }, 1000)
-                        $('#Editedistrict').val(res.datax.datac.district);
                         $('#Editpostcode').val(res.datax.datac.postcode);
                         $('#Edittelhome').val(res.datax.datac.telhome);
                         $('#Editphoneno').val(res.datax.datac.phoneno);
@@ -396,19 +395,17 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
-            var emergencyData = [];
+            var eemergencyData = [];
             $('#myTbl3e tbody tr').each(function() {
-                var eemertype = tr.cells[0].innerHTML;
                 var eemergencyname = $(this).find('input[name="eemergencyname[]"]').val();
                 var eemerrelation = $(this).find('input[name="eemerrelation[]"]').val();
                 var eemerphone = $(this).find('input[name="eemerphone[]"]').val();
                 var eemergency = {
-                eemertype: eemertype,
                 emergencyname: eemergencyname,
                 emerrelation: eemerrelation,
                 emerphone: eemerphone
                 };
-                emergencyData.push(eemergency);
+                eemergencyData.push(eemergency);
             });
 
             var additionalData = {
@@ -427,9 +424,9 @@
                 telhome: $('#Edittelhome').val(),
                 phoneno: $('#Editphoneno').val(),
                 workno: $('#Editworkno').val(),
-                _token: token,
-                emergencyData: emergencyData
+                eemergencyData: eemergencyData
             };
+
             $.ajax({
                 url: "contacts/update/" + id,
                 method: 'PUT',
@@ -557,12 +554,12 @@ $('#editRowBtne').click(function() {
         });
     });
 
-    var EprovinceOb = $('#Editecity');
-	var EdistrictOb = $('#Editedistrict');
-	var EcartonOb = $('#Editesubdistrict');
+    var EprovinceOb = $('#Editcity');
+	var EdistrictOb = $('#Editdistrict');
+	var EcartonOb = $('#Editsubdistrict');
 		
     // Edit
-    $('#Editecity').on('change', function(){
+    $('#Editcity').on('change', function(){
         var provinceId = $(this).val();
         EdistrictOb.html('<option value="">เลือกอำเภอ</option>');
         $.ajax({

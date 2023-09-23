@@ -153,7 +153,7 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fa-solid fa-city"></i> จังหวัด :</strong>
-                                                    <select class="select2 form-control" id="Editecity"
+                                                    <select class="select2 form-control" id="Editcity"
                                                         name="ecity">
                                                     </select>
                                                 </div>
@@ -162,7 +162,7 @@
                                                 <div class="form-group">
                                                     <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
                                                         อำเภอ:</strong>
-                                                    <select class="select2 form-control" id="Editedistrict"
+                                                    <select class="select2 form-control" id="Editdistrict"
                                                         name="edistrict">
                                                         <option value="">กรุณาเลือกอำเภอ</option>
                                                     </select>
@@ -175,7 +175,7 @@
                                                     <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
                                                         ตำบล
                                                         :</strong>
-                                                    <select class="select2 form-control" id="Editesubdistrict"
+                                                    <select class="select2 form-control" id="Editsubdistrict"
                                                         name="esubdistrict">
                                                         <option value="">กรุณาเลือกตำบล</option>
                                                     </select>
@@ -275,7 +275,7 @@
                 {!! Form::close() !!}
             </div>
             <div class="modal-footer {{-- justify-content-between --}}">
-                <button type="button" class="btn btn-success" id="SubmitCreateForm"><i class="fas fa-download"></i>
+                <button type="button" class="btn btn-success" id="SubmitEditForm"><i class="fas fa-download"></i>
                     บันทึกข้อมูล</button>
                 <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i
                         class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>

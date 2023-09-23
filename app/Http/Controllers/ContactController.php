@@ -310,17 +310,29 @@ class ContactController extends Controller
        // }
 
         $contactd = [
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
-            'address' => $request->get('address'),
+            'hn' => $request->get('hn'),
+            'adddate' => $request->get('adddate'),
+            'fname' => $request->get('fname'),
+            'lname' => $request->get('lname'),
+            'homeno' => $request->get('homeno'),
+            'moo' => $request->get('moo'),
+            'soi' => $request->get('soi'),
+            'road' => $request->get('road'),
+            'city' => $request->get('city'),
+            'district' => $request->get('district'),
+            'subdistrict' => $request->get('subdistrict'),
             'postcode' => $request->get('postcode'),
-            'telephone' => $request->get('telephone'),
+            'telhome' => $request->get('telhome'),
+            'phoneno' => $request->get('phoneno'),
+            'workno' => $request->get('workno'),
         ];
 
-        $contact = Contact::find($id);
+        $contact = CrmContact::find($id);
         $contact->update($contactd);
 
-        return response()->json(['success' => 'แก้ไข ผู้ติดต่อ เรียบร้อยแล้ว']);
+
+
+        return response()->json(['success' => 'แก้ไข ผู้ติดต่อ เรียบร้อยแล้ว'.count($request->eemergencyData)]);
     }
 
     /**

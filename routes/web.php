@@ -37,7 +37,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/contacts/running', [App\Http\Controllers\ContactController::class, 'create'])->name('contacts.running');
     Route::post('/contacts/store', [App\Http\Controllers\ContactController::class, 'store'])->name('contacts.store');
     Route::get('/contacts/edit/{id}', [App\Http\Controllers\ContactController::class, 'edit'])->name('contacts.edit');
-    Route::put('/contacts/save/{id}', [App\Http\Controllers\ContactController::class, 'update'])->name('contacts.save');
+    Route::put('/contacts/update/{id}', [App\Http\Controllers\ContactController::class, 'update'])->name('contacts.update');
     Route::delete('/contacts/destroy', [App\Http\Controllers\ContactController::class, 'destroy'])->name('contacts.destroy');
     Route::post('/contacts/destroy_all', [App\Http\Controllers\ContactController::class, 'destroy_all'])->name('contacts.destroy_all');
 
