@@ -351,28 +351,29 @@
                     url: "contacts/edit/" + id,
                     method: 'GET',
                     success: function(res) {
-                        $('#Edithn').val(res.data.hn);
-                        $('#Editadddate').val(res.data.adddate);
-                        $('#Editfname').val(res.data.fname);
-                        $('#Editlname').val(res.data.lname);
-                        $('#Edithomeno').val(res.data.homeno);
-                        $('#Editmoo').val(res.data.moo);
-                        $('#Editsoi').val(res.data.soi);
-                        $('#Editroad').val(res.data.road);
-                        $('#Editecity').val(res.data.city);
+                        $('#Edithn').val(res.datax.datac.hn);
+                        $('#Editadddate').val(res.datax.datac.adddate);
+                        $('#Editfname').val(res.datax.datac.fname);
+                        $('#Editlname').val(res.datax.datac.lname);
+                        $('#Edithomeno').val(res.datax.datac.homeno);
+                        $('#Editmoo').val(res.datax.datac.moo);
+                        $('#Editsoi').val(res.datax.datac.soi);
+                        $('#Editroad').val(res.datax.datac.road);
+                        $('#Editecity').val(res.datax.datac.city);
                         $('#Editecity').change();
                         setTimeout(function() {
-                            $('#Editedistrict').val(res.data.district);
+                            $('#Editedistrict').val(res.datax.datac.district);
                             $('#Editedistrict').change();
                             setTimeout(function() {
-                            $('#Editesubdistrict').val(res.data.subdistrict);
+                            $('#Editesubdistrict').val(res.datax.datac.subdistrict);
                             }, 1000)
                         }, 1000)
-                        $('#Editedistrict').val(res.data.district);
-                        $('#Editpostcode').val(res.data.postcode);
-                        $('#Edittelhome').val(res.data.telhome);
-                        $('#Editphoneno').val(res.data.phoneno);
-                        $('#Editworkno').val(res.data.workno);
+                        $('#Editedistrict').val(res.datax.datac.district);
+                        $('#Editpostcode').val(res.datax.datac.postcode);
+                        $('#Edittelhome').val(res.datax.datac.telhome);
+                        $('#Editphoneno').val(res.datax.datac.phoneno);
+                        $('#Editworkno').val(res.datax.datac.workno);
+                        alert(res.datax.emer[0].emergencyname);
                         $('#EditModal').modal('show');
                     }
                 });

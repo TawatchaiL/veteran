@@ -274,8 +274,16 @@ class ContactController extends Controller
     public function edit($id)
     {
 
-        $data = CrmContact::find($id);
-        return response()->json(['data' => $data]);
+        $datac = CrmContact::find($id);
+        //$data = CrmPhoneEmergency::find($id);
+        $emer = DB::table('crm_phone_emergencies')
+        ->whereRaw('contact_id = '.$id.'')
+        ->get();
+        $data = [
+            'datac' => $datac,
+            'emer' => $emer,
+        ];
+        return response()->json(['datax' => $data]);
     }
 
 
