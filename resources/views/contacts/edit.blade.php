@@ -247,39 +247,12 @@
                                                     width="400">
                                                     <thead>
                                                         <tr class="headings">
-                                                            {{-- <th class="column-title"> สินค้า</th> --}}
                                                             <th class="column-title">
                                                                 ชื่อบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน</th>
                                                             <th class="column-title"> ความสัมพันธ์</th>
                                                             <th class="column-title"> เบอร์โทรศัพท์</th>
                                                         </tr>
                                                     </thead>
-                                                    <tr>
-                                                        <td width="30%">
-                                                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                <input type="text" id="Editemergencyname" name="eemergencyname[]"
-                                                                    class="form-control has-feedback-left"
-                                                                    value="สมหญิง ใจดี" required="required">
-                                                            </div>
-                                                        </td>
-
-                                                        <td width="10%">
-                                                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                <input type="text" id="Editemerrelation" name="eemerrelation[]"
-                                                                    class="form-control has-feedback-left"
-                                                                    value="แม่" required="required">
-                                                            </div>
-                                                        </td>
-                                                        <td width="10%">
-                                                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                <input type="text" id="Editemerphone" name="eemerphone[]"
-                                                                    class="form-control has-feedback-left"
-                                                                    value="089999999" required="required">
-                                                            </div>
-                                                        </td>
-                                                        <td width="5%">
-                                                        </td>
-                                                    </tr>
                                                 </table>
                                             </div>
                                             <div class="col-md-12" align="right">
