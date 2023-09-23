@@ -62,7 +62,7 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-code"></i> รหัสผู้ติดต่อ.</strong>
-                                                    {!! Form::text('hn', '00001', [
+                                                    {!! Form::text('ehn', NULL, [
                                                         'id' => 'Edithn',
                                                         'placeholder' => 'Code',
                                                         'class' => 'form-control',
@@ -73,7 +73,7 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-calendar"></i> วันที่บันทึก:</strong>
-                                                    {!! Form::text('adddate', '2023-08-28', [
+                                                    {!! Form::text('eadddate', '2023-08-28', [
                                                         'id' => 'Editadddate',
                                                         'placeholder' => '',
                                                         'class' => 'AddDate form-control',
@@ -88,13 +88,13 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> ชื่อ:</strong>
-                                                    {!! Form::text('name', 'สมชาย', ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
+                                                    {!! Form::text('efname', NULL, ['id' => 'Editfname', 'placeholder' => 'ชื่อ', 'class' => 'form-control']) !!}
                                                 </div>
                                             </div>
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> นามสกุล:</strong>
-                                                    {!! Form::text('name', 'เสมอ', ['id' => 'AddName', 'placeholder' => 'LastName', 'class' => 'form-control']) !!}
+                                                    {!! Form::text('elname', NULL, ['id' => 'Editlname', 'placeholder' => 'นามสกุล', 'class' => 'form-control']) !!}
                                                 </div>
                                             </div>
                                         </div>
@@ -109,8 +109,8 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-home"></i> บ้านเลขที่:</strong>
-                                                    {!! Form::text('postcode', '90', [
-                                                        'id' => 'AddPostcode',
+                                                    {!! Form::text('homeno', NULL, [
+                                                        'id' => 'Edithomeno',
                                                         'placeholder' => 'Address',
                                                         'class' => 'form-control',
                                                     ]) !!}
@@ -119,8 +119,8 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fa-solid fa-people-roof"></i> หมู่:</strong>
-                                                    {!! Form::text('homephone', '2', [
-                                                        'id' => 'homephone',
+                                                    {!! Form::text('moo', NULL, [
+                                                        'id' => 'Editmoo',
                                                         'placeholder' => 'Group',
                                                         'class' => 'form-control',
                                                     ]) !!}
@@ -131,8 +131,8 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fa-solid fa-people-roof"></i> ซอย :</strong>
-                                                    {!! Form::text('postcode', '3', [
-                                                        'id' => 'AddPostcode',
+                                                    {!! Form::text('esoi', NULL, [
+                                                        'id' => 'Editsoi',
                                                         'placeholder' => 'Soi',
                                                         'class' => 'form-control',
                                                     ]) !!}
@@ -141,8 +141,8 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-road"></i> ถนน :</strong>
-                                                    {!! Form::text('homephone', 'ศรีธรรมไตรปิฎก', [
-                                                        'id' => 'homephone',
+                                                    {!! Form::text('eroad', NULL, [
+                                                        'id' => 'Editroad',
                                                         'placeholder' => 'Road',
                                                         'class' => 'form-control',
                                                     ]) !!}
@@ -184,8 +184,8 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-code"></i> รหัสไปรษณีย์:</strong>
-                                                    {!! Form::text('postcode', '65000', [
-                                                        'id' => 'AddPostcode',
+                                                    {!! Form::text('epostcode', NULL, [
+                                                        'id' => 'Editpostcode',
                                                         'placeholder' => 'Postcode',
                                                         'class' => 'form-control',
                                                     ]) !!}
@@ -207,8 +207,8 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์บ้าน:</strong>
-                                                    {!! Form::text('homephone', null, [
-                                                        'id' => 'homephone',
+                                                    {!! Form::text('ehomephone', null, [
+                                                        'id' => 'Edithomephone',
                                                         'placeholder' => 'Telephone',
                                                         'class' => 'form-control',
                                                     ]) !!}
@@ -217,8 +217,8 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์มือถือ :</strong>
-                                                    {!! Form::text('telephone', null, [
-                                                        'id' => 'telephone',
+                                                    {!! Form::text('etelephone', null, [
+                                                        'id' => 'Edittelephone',
                                                         'placeholder' => 'Postcode',
                                                         'class' => 'form-control',
                                                     ]) !!}
@@ -231,8 +231,8 @@
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-phone"></i>
                                                         เบอร์โทรศัพท์ที่ทำงาน:</strong>
-                                                    {!! Form::text('workphone', null, [
-                                                        'id' => 'workphone',
+                                                    {!! Form::text('eworkphone', null, [
+                                                        'id' => 'Editworkphone',
                                                         'placeholder' => 'Telephone',
                                                         'class' => 'form-control',
                                                     ]) !!}
@@ -257,7 +257,7 @@
                                                     <tr>
                                                         <td width="30%">
                                                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                <input type="text" id="name" name="name[]"
+                                                                <input type="text" id="Editemergencyname" name="eemergencyname[]"
                                                                     class="form-control has-feedback-left"
                                                                     value="สมหญิง ใจดี" required="required">
                                                             </div>
@@ -265,14 +265,14 @@
 
                                                         <td width="10%">
                                                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                <input type="text" id="amount" name="amount[]"
+                                                                <input type="text" id="Editemerrelation" name="eemerrelation[]"
                                                                     class="form-control has-feedback-left"
                                                                     value="แม่" required="required">
                                                             </div>
                                                         </td>
                                                         <td width="10%">
                                                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                <input type="text" id="price" name="price[]"
+                                                                <input type="text" id="Editemerphone" name="eemerphone[]"
                                                                     class="form-control has-feedback-left"
                                                                     value="089999999" required="required">
                                                             </div>
@@ -280,40 +280,11 @@
                                                         <td width="5%">
                                                         </td>
                                                     </tr>
-                                                    <tr>
-                                                        <td width="30%">
-                                                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                <input type="text" id="name" name="name[]"
-                                                                    class="form-control has-feedback-left"
-                                                                    value="สมชายใจดี" required="required">
-                                                            </div>
-                                                        </td>
-
-                                                        <td width="10%">
-                                                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                <input type="text" id="amount" name="amount[]"
-                                                                    class="form-control has-feedback-left"
-                                                                    value="พี่" required="required">
-                                                            </div>
-                                                        </td>
-                                                        <td width="10%">
-                                                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                <input type="text" id="price" name="price[]"
-                                                                    class="form-control has-feedback-left"
-                                                                    value="0999854" required="required">
-                                                            </div>
-                                                        </td>
-                                                        <td width="5%">
-                                                            <button type="button" id="removeRow2e"
-                                                                class="btn btn-sm btn-danger deleteRowBtnf"><i
-                                                                    class="fa fa-minus"></i></button>
-                                                        </td>
-                                                    </tr>
                                                 </table>
                                             </div>
                                             <div class="col-md-12" align="right">
 
-                                                <button type="button" id="addRowBtne"
+                                                <button type="button" id="editRowBtne"
                                                     class="btn btn-primary btnAddg"><i class="fa-solid fa-plus"></i> เพิ่มบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน</button>
                                             </div>
                                         </div>

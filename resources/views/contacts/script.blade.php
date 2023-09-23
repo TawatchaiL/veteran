@@ -346,34 +346,33 @@
                         });
                     }
                 });
-            $.ajax({
-                url: "contacts/edit/" + id,
-                method: 'GET',
-                success: function(res) {
-                    $('#Edithn').val(res.data.hn);
-                    $('#Editadddate').val(res.data.adddate);
+            setTimeout(function() {
+                $.ajax({
+                    url: "contacts/edit/" + id,
+                    method: 'GET',
+                    success: function(res) {
+                        $('#Edithn').val(res.data.hn);
+                        $('#Editadddate').val(res.data.adddate);
 
-                    $('#Editecity').val(res.data.city);
-                    $('#Editecity').change();
-                    setTimeout(function() {
-                        $('#Editedistrict').val(res.data.district);
-                        $('#Editedistrict').change();
+                        $('#Editecity').val(res.data.city);
+                        $('#Editecity').change();
                         setTimeout(function() {
-                        $('#Editesubdistrict').val(res.data.subdistrict);
+                            $('#Editedistrict').val(res.data.district);
+                            $('#Editedistrict').change();
+                            setTimeout(function() {
+                            $('#Editesubdistrict').val(res.data.subdistrict);
+                            }, 1000)
                         }, 1000)
-                    }, 1000)
-
-
-                    //$('#Editedistrict').val(res.data.district);
-            //        $('#EditPostcode').val(res.data.postcode);
-            //        $('#EditAddress').val(res.data.address);
-            //        $('#postcode').val('1');
-            //
-            //        $('#EditModalBody').html(res.html);
-                        $('#EditModal').modal('show');
-                }
-            });
-
+                        $('#Editedistrict').val(res.data.district);
+                //        $('#EditPostcode').val(res.data.postcode);
+                //        $('#EditAddress').val(res.data.address);
+                //        $('#postcode').val('1');
+                //
+                //        $('#EditModalBody').html(res.html);
+                            $('#EditModal').modal('show');
+                    }
+                });
+            }, 1000)
         });
 
         $('#SubmitEditForm').click(function(e) {
@@ -511,38 +510,38 @@ $('#addRowBtn').click(function() {
         });
     });
 
-    var provinceOb = $('#Editecity');
-	var districtOb = $('#Editedistrict');
-	var cartonOb = $('#Editesubdistrict');
+    var EprovinceOb = $('#Editecity');
+	var EdistrictOb = $('#Editedistrict');
+	var EcartonOb = $('#Editesubdistrict');
 		
     // Edit
     $('#Editecity').on('change', function(){
         var provinceId = $(this).val();
-        districtOb.html('<option value="">เลือกอำเภอ</option>');
+        EdistrictOb.html('<option value="">เลือกอำเภอ</option>');
         $.ajax({
                     url: "thdistrict/district/" + provinceId,
                     method: 'GET',
                     success: function(res) {
-                        districtOb.html('<option value="">เลือกอำเภอ</option>');
-                        cartonOb.html('<option value="">เลือกตำบล</option>');
+                        EdistrictOb.html('<option value="">เลือกอำเภอ</option>');
+                        EcartonOb.html('<option value="">เลือกตำบล</option>');
                         $.each(res.data, function(index, item){
-                            districtOb.append(
+                            EdistrictOb.append(
                             $('<option></option>').val(item.code).html(item.name_th)
                         );
                         });
                     }
         });
     });
-    districtOb.on('change', function(){
+    EdistrictOb.on('change', function(){
         var districtId = $(this).val();
-        cartonOb.html('<option value="">เลือกตำบล</option>');
+        EcartonOb.html('<option value="">เลือกตำบล</option>');
         $.ajax({
             url: "thsubdistrict/subdistrict/" + districtId,
                     method: 'GET',
                     success: function(res) {
-                        cartonOb.html('<option value="">เลือกตำบล</option>');
+                        EcartonOb.html('<option value="">เลือกตำบล</option>');
                         $.each(res.data, function(index, item){
-                            cartonOb.append(
+                            EcartonOb.append(
                             $('<option></option>').val(item.code).html(item.name_th)
                         );
                         });
@@ -550,6 +549,4 @@ $('#addRowBtn').click(function() {
         });
     });
 });	
-
-
 </script>

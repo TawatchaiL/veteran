@@ -312,7 +312,7 @@ class ContactController extends Controller
         $contact = Contact::find($id);
         $contact->update($contactd);
 
-        return response()->json(['success' => 'แก้ไข นักเรียน เรียบร้อยแล้ว']);
+        return response()->json(['success' => 'แก้ไข ผู้ติดต่อ เรียบร้อยแล้ว']);
     }
 
     /**
@@ -321,8 +321,8 @@ class ContactController extends Controller
     public function destroy(Request $request)
     {
         $id = $request->get('id');
-        Contact::find($id)->delete();
-        return ['success' => true, 'message' => 'ลบ นักเรียน เรียบร้อยแล้ว'];
+        CrmContact::find($id)->delete();
+        return ['success' => true, 'message' => 'ลบ ผู้ติดต่อ เรียบร้อยแล้ว'];
     }
 
     public function destroy_all(Request $request)
@@ -331,9 +331,9 @@ class ContactController extends Controller
         $arr_del  = $request->get('table_records'); //$arr_ans is Array MacAddress
 
         for ($xx = 0; $xx < count($arr_del); $xx++) {
-            Contact::find($arr_del[$xx])->delete();
+            CrmContact::find($arr_del[$xx])->delete();
         }
 
-        return redirect('/contacts')->with('success', 'ลบ นักเรียน เรียบร้อยแล้ว');
+        return redirect('/contacts')->with('success', 'ลบ ผู้ติดต่อ เรียบร้อยแล้ว');
     }
 }
