@@ -254,6 +254,8 @@
                                                             <th class="column-title"> เบอร์โทรศัพท์</th>
                                                         </tr>
                                                     </thead>
+                                                    <tbody>
+                                                    </tbody>
                                                 </table>
                                             </div>
                                             <div class="col-md-12" align="right">

@@ -396,7 +396,8 @@
             $('.alert-success').hide();
 
             var eemergencyData = [];
-            $('#myTbl3e tbody tr').each(function() {
+            $('#myTbl3e tbody tr').each(function(index, tr) {
+                var eemertype = tr.cells[0].innerHTML;
                 var eemergencyname = $(this).find('input[name="eemergencyname[]"]').val();
                 var eemerrelation = $(this).find('input[name="eemerrelation[]"]').val();
                 var eemerphone = $(this).find('input[name="eemerphone[]"]').val();
