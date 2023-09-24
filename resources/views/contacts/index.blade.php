@@ -83,14 +83,14 @@
                                             <div class="form-group">
                                                 <strong><i class="fa-solid fa-id-card"></i>
                                                     ประเภทการค้นหา:</strong>
-                                                <select style="width: 100%;" class="select2 form-control" id="telin"
-                                                    name="telin">
-                                                    <option value="" selected>เบอร์โทรฉุกเฉิน</option>
-                                                    <option value="">เบอร์โทรศัพท์บ้าน</option>
-                                                    <option value="">เบอร์โทรศัพท์มือถือ</option>
-                                                    <option value="">เบอร์โทรศัพท์ที่ทำงาน</option>
-                                                    <option value="">รหัสผู้ติดต่อ</option>
-                                                    <option value="">ชื่อผู้ติดต่อ</option>
+                                                <select style="width: 100%;" class="select2 form-control" id="seachtype"
+                                                    name="seachtype">
+                                                    <option value="1" selected>เบอร์โทรฉุกเฉิน</option>
+                                                    <option value="2">เบอร์โทรศัพท์บ้าน</option>
+                                                    <option value="3">เบอร์โทรศัพท์มือถือ</option>
+                                                    <option value="4">เบอร์โทรศัพท์ที่ทำงาน</option>
+                                                    <option value="5">รหัสผู้ติดต่อ</option>
+                                                    <option value="6">ชื่อผู้ติดต่อ</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -98,13 +98,13 @@
                                             <div class="form-group">
                                                 <strong><i class="fa-regular fa-keyboard"></i>
                                                     คำที่ต้องการค้นหา:</strong>
-                                                {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => '', 'class' => 'form-control']) !!}
+                                                {!! Form::text('seachtext', null, ['id' => 'seachtext', 'placeholder' => 'ข้อมูลที่ต้องการค้นหา', 'class' => 'form-control']) !!}
                                             </div>
                                         </div>
                                         <div class="col-xs-2 col-sm-2 col-md-2" style="align-items: flex-end;">
                                             <div class="form-group">
                                                 <strong>&nbsp;</strong>
-                                                <button type="button" class="form-control btn btn-success" id="CreateButtons">
+                                                <button type="button" class="form-control btn btn-success" id="btnseach">
                                                     <i class="fas fa-search"></i> </button>
                                             </div>
                                         </div>

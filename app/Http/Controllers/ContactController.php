@@ -42,9 +42,11 @@ class ContactController extends Controller
     {
 
         if ($request->ajax()) {
-            //sleep(2);
-
-            $datas = CrmContact::orderBy("id", "desc")->get();
+            //sleep(2); 
+           // if($request->input['seachtype'] === "1"){
+                $datas = CrmContact::orderBy("id", "desc")->get();
+           // }
+            
 
             //$numberOfRows = 50; // Change this to the desired number of rows
             //$simulatedDatas = [];
@@ -292,23 +294,6 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
-       //$rules = [
-       //     'name' => 'required|string|max:255|unique:contacts,name,' . $id,
-       //     //'postcode' => 'integer|max:10',
-
-        //];
-
-
-       // $validator =  Validator::make($request->all(), $rules, [
-       //     'name.required' => 'ชื่อนักเรียนต้องไม่เป็นค่าว่าง!',
-       //     'name.unique' => 'ชื่อนักเรียนนี้มีอยู่แล้วในฐานข้อมูล!',
-       //     'status.required' => 'กรุณาเลือกสถานะ!',
-       // ]);
-
-       // if ($validator->fails()) {
-       //     return response()->json(['errors' => $validator->errors()->all()]);
-       // }
-
         $contactd = [
             'hn' => $request->get('hn'),
             'adddate' => $request->get('adddate'),

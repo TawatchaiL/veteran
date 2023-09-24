@@ -103,20 +103,12 @@
 
 
         var table = $('#Listview').DataTable({
-            /*"aoColumnDefs": [
-            {
-            'bSortable': true,
-            'aTargets': [0]
-            } //disables sorting for column one
-            ],
-            "searching": false,
-            "lengthChange": false,
-            "paging": false,
-            'iDisplayLength': 10,
-            "sPaginationType": "full_numbers",
-            "dom": 'T<"clear">lfrtip',
-                */
-            ajax: '',
+            ajax: {
+                data: function(d) {
+                    d.seachtype : $("#seachtype").val(),
+                    d.seachtext : $("#seachtext").val()
+                }
+            },
             serverSide: true,
             processing: true,
             searching: false,
@@ -201,6 +193,9 @@
             ]
         });
 
+        $('#btnseach').click(function(e) {
+        $('#Listview').DataTable().ajax.reload();
+        });
 
         $("#example1").DataTable({
             "responsive": true,
