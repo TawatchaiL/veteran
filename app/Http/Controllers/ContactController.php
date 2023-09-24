@@ -330,17 +330,25 @@ class ContactController extends Controller
         $contact = CrmContact::find($id);
         $contact->update($contactd);
 
-        //foreach ($request->eemergencyData as $edata) {
-            //$test = $edata['emergencyname'];
-    
-        //    $Crmemergency = new CrmPhoneEmergency();
-        //    $Crmemergency->contact_id = $id;
-        //    $Crmemergency->emergencyname = $edata['emergencyname'];
-        //   $Crmemergency->emerrelation = $edata['emerrelation'];
-        //    $Crmemergency->emerphone = $edata['emerphone'];
-        //    $Crmemergency->save();
-    
-        //}
+        foreach ($request->eemergencyData as $edata) {
+            if($edata['eemertype']==''){
+                $Crmemergency = new CrmPhoneEmergency();
+                $Crmemergency->contact_id = $id;
+                $Crmemergency->emergencyname = $edata['emergencyname'];
+                $Crmemergency->emerrelation = $edata['emerrelation'];
+                $Crmemergency->emerphone = $edata['emerphone'];
+                $Crmemergency->save();
+            }else{
+                $emerd = [
+                    'emergencyname' => $edata['emergencyname'],
+                    'emerrelation' => $edata['emerrelation'],
+                    'emerphone' => $edata['emerphone'],
+                ];
+        
+                $emer = CrmPhoneEmergency::find($edata['eemertype']);
+                $emer->update($emerd);
+            }
+        }
 
         return response()->json(['success' => 'แก้ไข ผู้ติดต่อ เรียบร้อยแล้ว']);
     }
