@@ -402,6 +402,7 @@
                 var eemerrelation = $(this).find('input[name="eemerrelation[]"]').val();
                 var eemerphone = $(this).find('input[name="eemerphone[]"]').val();
                 var eemergency = {
+                eemertype: eemertype,
                 emergencyname: eemergencyname,
                 emerrelation: eemerrelation,
                 emerphone: eemerphone
