@@ -360,6 +360,7 @@ class ContactController extends Controller
     {
         $id = $request->get('id');
         CrmContact::find($id)->delete();
+        DB::table('crm_phone_emergencies')->where('contact_id',  $id)->delete();
         return ['success' => true, 'message' => 'ลบ ผู้ติดต่อ เรียบร้อยแล้ว'];
     }
 
@@ -370,6 +371,7 @@ class ContactController extends Controller
 
         for ($xx = 0; $xx < count($arr_del); $xx++) {
             CrmContact::find($arr_del[$xx])->delete();
+            DB::table('crm_phone_emergencies')->where('contact_id',  $arr_del[$xx])->delete();
         }
 
         return redirect('/contacts')->with('success', 'ลบ ผู้ติดต่อ เรียบร้อยแล้ว');
