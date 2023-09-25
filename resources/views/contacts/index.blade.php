@@ -85,7 +85,8 @@
                                                     ประเภทการค้นหา:</strong>
                                                 <select style="width: 100%;" class="select2 form-control" id="seachtype"
                                                     name="seachtype">
-                                                    <option value="1" selected>เบอร์โทรฉุกเฉิน</option>
+                                                    <option value="0" selected>ตัวเลือกการค้นหา</option>
+                                                    <option value="1">เบอร์โทรฉุกเฉิน</option>
                                                     <option value="2">เบอร์โทรศัพท์บ้าน</option>
                                                     <option value="3">เบอร์โทรศัพท์มือถือ</option>
                                                     <option value="4">เบอร์โทรศัพท์ที่ทำงาน</option>

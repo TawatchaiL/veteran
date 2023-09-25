@@ -40,14 +40,30 @@ class ContactController extends Controller
      */
     public function index(Request $request)
     {
-
         if ($request->ajax()) {
             //sleep(2); 
-           // if($request->input['seachtype'] === "1"){
-                $datas = CrmContact::orderBy("id", "desc")->get();
-           // }
-            
+            //if(!empty($request->get('seachtext'))){
 
+                if($request->input('seachtype') === "0"){
+                    $datas = CrmContact::orderBy("id", "desc")->get();
+                }else if($request->input('seachtype') === "1"){
+                    $datas = DB::table('crm_contacts')
+                    ->join('crm_phone_emergencies', 'crm_contacts.id', '=', 'crm_phone_emergencies.contact_id')
+                    ->where('emerphone', '=', $request->input('seachtext'))
+                    ->get();
+                }else if($request->input('seachtype') === "2"){
+                    $datas = DB::table('crm_contacts')->where('telhome', '=', $request->input('seachtext'))->get();
+                }else if($request->input('seachtype') === "3"){
+                    $datas = DB::table('crm_contacts')->where('phoneno', '=', $request->input('seachtext'))->get();
+                }else if($request->input('seachtype') === "4"){
+                    $datas = DB::table('crm_contacts')->where('workno', '=', $request->input('seachtext'))->get();
+                }else if($request->input('seachtype') === "5"){
+                    $datas = DB::table('crm_contacts')->where('hn', 'like', '%'.$request->input('seachtext').'%')->get();
+                }else if($request->input('seachtype') === "6"){
+                    $datas = DB::table('crm_contacts')->where('fname', 'like', '%'.$request->input('seachtext').'%')->get();
+                }
+
+            //}
             //$numberOfRows = 50; // Change this to the desired number of rows
             //$simulatedDatas = [];
 
