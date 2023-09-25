@@ -244,6 +244,8 @@
                     });
                 }
             });
+            $('#custom-tabs-one-tabp a[href="#custom-tabs-one-home"]').tab('show');
+            //$("#custom-tabs-one-tabp").tabs({active: 1});
             $('#CreateModal').modal('show');
         });
 
