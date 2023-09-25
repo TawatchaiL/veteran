@@ -227,13 +227,13 @@ class ContactController extends Controller
         //
 
         $valifield = [
-            'hn' => 'required|string|max:255',
-            'fname' => 'required|string|max:255',
-            'lname' => 'required|string|max:255',
-            'homeno' => 'required|string|max:255',
-            'city' => 'required|string|max:255',
-            'district' => 'required|string|max:255',
-            'subdistrict' => 'required|string|max:255',
+            'hn' => 'required|string|max:10',
+            'fname' => 'required|string|max:50',
+            'lname' => 'required|string|max:50',
+            'homeno' => 'required|string|max:10',
+            'city' => 'required|string|max:8',
+            'district' => 'required|string|max:8',
+            'subdistrict' => 'required|string|max:8',
         ];
         $valimess = [
             'hn.required' => 'กรุณากรอกรหัสผู้ติดต่อ',
@@ -257,17 +257,19 @@ class ContactController extends Controller
         $input = $request->all();
         $contact = CrmContact::create($input);
         $insertedId = $contact->id;
-    foreach ($request->emergencyData as $edata) {
-        //$test = $edata['emergencyname'];
+        if(!empty($request->eemergencyData)){
+            foreach ($request->emergencyData as $edata) {
+                //$test = $edata['emergencyname'];
 
-        $Crmemergency = new CrmPhoneEmergency();
-        $Crmemergency->contact_id = $insertedId;
-        $Crmemergency->emergencyname = $edata['emergencyname'];
-        $Crmemergency->emerrelation = $edata['emerrelation'];
-        $Crmemergency->emerphone = $edata['emerphone'];
-        $Crmemergency->save();
+                $Crmemergency = new CrmPhoneEmergency();
+                $Crmemergency->contact_id = $insertedId;
+                $Crmemergency->emergencyname = $edata['emergencyname'];
+                $Crmemergency->emerrelation = $edata['emerrelation'];
+                $Crmemergency->emerphone = $edata['emerphone'];
+                $Crmemergency->save();
 
-    }
+            }
+        }
         return response()->json(['success' => 'เพิ่ม รายผู้ติดต่อ เรียบร้อยแล้ว']);
     }
 
@@ -326,24 +328,25 @@ class ContactController extends Controller
 
         $contact = CrmContact::find($id);
         $contact->update($contactd);
-
-        foreach ($request->eemergencyData as $edata) {
-            if($edata['eemertype']==''){
-                $Crmemergency = new CrmPhoneEmergency();
-                $Crmemergency->contact_id = $id;
-                $Crmemergency->emergencyname = $edata['emergencyname'];
-                $Crmemergency->emerrelation = $edata['emerrelation'];
-                $Crmemergency->emerphone = $edata['emerphone'];
-                $Crmemergency->save();
-            }else{
-                $emerd = [
-                    'emergencyname' => $edata['emergencyname'],
-                    'emerrelation' => $edata['emerrelation'],
-                    'emerphone' => $edata['emerphone'],
-                ];
-        
-                $emer = CrmPhoneEmergency::find($edata['eemertype']);
-                $emer->update($emerd);
+        if(!empty($request->eemergencyData)){
+            foreach ($request->eemergencyData as $edata) {
+                if($edata['eemertype']==''){
+                    $Crmemergency = new CrmPhoneEmergency();
+                    $Crmemergency->contact_id = $id;
+                    $Crmemergency->emergencyname = $edata['emergencyname'];
+                    $Crmemergency->emerrelation = $edata['emerrelation'];
+                    $Crmemergency->emerphone = $edata['emerphone'];
+                    $Crmemergency->save();
+                }else{
+                    $emerd = [
+                        'emergencyname' => $edata['emergencyname'],
+                        'emerrelation' => $edata['emerrelation'],
+                        'emerphone' => $edata['emerphone'],
+                    ];
+            
+                    $emer = CrmPhoneEmergency::find($edata['eemertype']);
+                    $emer->update($emerd);
+                }
             }
         }
 

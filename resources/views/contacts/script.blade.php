@@ -242,10 +242,20 @@
                                 .name_th)
                         );
                     });
+                 
+                    setTimeout(function() {
+                                $('#Addcity').val('65');
+                                $('#Addcity').change();
+                    }, 1000)
+
                 }
             });
+            var tbody = document.querySelector('#myTbl3 tbody');
+            var rows = tbody.querySelectorAll('tr');
+            for (var i = 1; i < rows.length; i++) {
+                tbody.removeChild(rows[i]);
+            }
             $('#custom-tabs-one-tabp a[href="#custom-tabs-one-home"]').tab('show');
-            //$("#custom-tabs-one-tabp").tabs({active: 1});
             $('#CreateModal').modal('show');
         });
 
@@ -373,6 +383,11 @@
                         $('#Edittelhome').val(res.datax.datac.telhome);
                         $('#Editphoneno').val(res.datax.datac.phoneno);
                         $('#Editworkno').val(res.datax.datac.workno);
+                        
+                        var tbody = document.querySelector('#myTbl3e tbody');
+                        while (tbody.firstChild) {
+                            tbody.removeChild(tbody.firstChild);
+                        }
                         $.each(res.datax.emer, function(index, value) {
                             $('#myTbl3e').append($('<tr>')
                                 .append($('<td style="display:none;">')
@@ -393,6 +408,7 @@
                                     '<button type="button" name="deletem" id="deletem" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
                                 )));
                         });
+                        $('#custom-tabs-one-tabe a[href="#custom-tabs-one-homee"]').tab('show');
                         $('#EditModal').modal('show');
                     }
                 });
@@ -441,7 +457,6 @@
                 workno: $('#Editworkno').val(),
                 eemergencyData: eemergencyData
             };
-
             $.ajax({
                 url: "contacts/update/" + id,
                 method: 'PUT',
