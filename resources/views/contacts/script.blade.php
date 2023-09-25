@@ -105,8 +105,8 @@
         var table = $('#Listview').DataTable({
             ajax: {
                 data: function(d) {
-                    d.seachtype : $("#seachtype").val(),
-                    d.seachtext : $("#seachtext").val()
+                    d.seachtype = $("#seachtype").val();
+                    d.seachtext = $("#seachtext").val();
                 }
             },
             serverSide: true,
@@ -194,7 +194,7 @@
         });
 
         $('#btnseach').click(function(e) {
-        $('#Listview').DataTable().ajax.reload();
+            $('#Listview').DataTable().ajax.reload();
         });
 
         $("#example1").DataTable({
@@ -230,19 +230,20 @@
                 }
             });
             $.ajax({
-                    url: "{{ route('thcity.city') }}",
-                    method: 'GET',
-                    success: function(res) {
-                        //alert(res.data.code);
-                        var provinceOb = $('#Addcity');
-                        provinceOb.html('<option value="">เลือกจังหวัด</option>');
-                        $.each(res.data, function(index, item){
+                url: "{{ route('thcity.city') }}",
+                method: 'GET',
+                success: function(res) {
+                    //alert(res.data.code);
+                    var provinceOb = $('#Addcity');
+                    provinceOb.html('<option value="">เลือกจังหวัด</option>');
+                    $.each(res.data, function(index, item) {
                         provinceOb.append(
-                            $('<option></option>').val(item.code).html(item.name_th)
+                            $('<option></option>').val(item.code).html(item
+                                .name_th)
                         );
-                        });
-                    }
-                });
+                    });
+                }
+            });
             $('#CreateModal').modal('show');
         });
 
@@ -261,11 +262,11 @@
                 var emergencyname = $(this).find('input[name="emergencyname[]"]').val();
                 var emerrelation = $(this).find('input[name="emerrelation[]"]').val();
                 var emerphone = $(this).find('input[name="emerphone[]"]').val();
-         
+
                 var emergency = {
-                emergencyname: emergencyname,
-                emerrelation: emerrelation,
-                emerphone: emerphone
+                    emergencyname: emergencyname,
+                    emerrelation: emerrelation,
+                    emerphone: emerphone
                 };
                 emergencyData.push(emergency);
             });
@@ -328,19 +329,20 @@
 
             id = $(this).data('id');
             $.ajax({
-                    url: "{{ route('thcity.city') }}",
-                    method: 'GET',
-                    success: function(res) {
-                        //alert(res.data.code);
-                        var provinceOb = $('#Editcity');
-                        provinceOb.html('<option value="">เลือกจังหวัด</option>');
-                        $.each(res.data, function(index, item){
+                url: "{{ route('thcity.city') }}",
+                method: 'GET',
+                success: function(res) {
+                    //alert(res.data.code);
+                    var provinceOb = $('#Editcity');
+                    provinceOb.html('<option value="">เลือกจังหวัด</option>');
+                    $.each(res.data, function(index, item) {
                         provinceOb.append(
-                            $('<option></option>').val(item.code).html(item.name_th)
+                            $('<option></option>').val(item.code).html(item
+                                .name_th)
                         );
-                        });
-                    }
-                });
+                    });
+                }
+            });
             setTimeout(function() {
                 $.ajax({
                     url: "contacts/edit/" + id,
@@ -357,10 +359,12 @@
                         $('#Editcity').val(res.datax.datac.city);
                         $('#Editcity').change();
                         setTimeout(function() {
-                            $('#Editdistrict').val(res.datax.datac.district);
+                            $('#Editdistrict').val(res.datax.datac
+                                .district);
                             $('#Editdistrict').change();
                             setTimeout(function() {
-                            $('#Editsubdistrict').val(res.datax.datac.subdistrict);
+                                $('#Editsubdistrict').val(res.datax
+                                    .datac.subdistrict);
                             }, 1000)
                         }, 1000)
                         $('#Editpostcode').val(res.datax.datac.postcode);
@@ -369,12 +373,24 @@
                         $('#Editworkno').val(res.datax.datac.workno);
                         $.each(res.datax.emer, function(index, value) {
                             $('#myTbl3e').append($('<tr>')
-                                .append($('<td style="display:none;">').append(value.id))
-				                .append($('<td width="30%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemergencyname" name="eemergencyname[]" class="form-control has-feedback-left" value="' + value.emergencyname + '" required="required"></div>'))
-				                .append($('<td width="10%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerrelation" name="eemerrelation[]" class="form-control has-feedback-left" value="' + value.emerrelation + '" required="required"></div>'))
-				                .append($('<td width="10%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone" name="eemerphone[]" class="form-control has-feedback-left" value="' + value.emerphone + '" required="required"></div>'))			   
-				                .append($('<td width="5%">').append('<button type="button" name="deletem" id="deletem" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>')));
-                            });
+                                .append($('<td style="display:none;">')
+                                    .append(value.id))
+                                .append($('<td width="30%">').append(
+                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemergencyname" name="eemergencyname[]" class="form-control has-feedback-left" value="' +
+                                    value.emergencyname +
+                                    '" required="required"></div>'))
+                                .append($('<td width="10%">').append(
+                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerrelation" name="eemerrelation[]" class="form-control has-feedback-left" value="' +
+                                    value.emerrelation +
+                                    '" required="required"></div>'))
+                                .append($('<td width="10%">').append(
+                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone" name="eemerphone[]" class="form-control has-feedback-left" value="' +
+                                    value.emerphone +
+                                    '" required="required"></div>'))
+                                .append($('<td width="5%">').append(
+                                    '<button type="button" name="deletem" id="deletem" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
+                                )));
+                        });
                         $('#EditModal').modal('show');
                     }
                 });
@@ -397,10 +413,10 @@
                 var eemerrelation = $(this).find('input[name="eemerrelation[]"]').val();
                 var eemerphone = $(this).find('input[name="eemerphone[]"]').val();
                 var eemergency = {
-                eemertype: eemertype,
-                emergencyname: eemergencyname,
-                emerrelation: eemerrelation,
-                emerphone: eemerphone
+                    eemertype: eemertype,
+                    emergencyname: eemergencyname,
+                    emerrelation: eemerrelation,
+                    emerphone: eemerphone
                 };
                 eemergencyData.push(eemergency);
             });
@@ -494,100 +510,120 @@
     });
 </script>
 <script>
-$('#addRowBtn').click(function() {
-				$('#myTbl3').append($('<tr>')
-				  .append($('<td width="30%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emergencyname" name="emergencyname[]" class="form-control has-feedback-left" value="" required="required"></div>'))
-				  .append($('<td width="10%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emerrelation" name="emerrelation[]" class="form-control has-feedback-left" value="" required="required"></div>'))
-				  .append($('<td width="10%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emerphone" name="emerphone[]" class="form-control has-feedback-left" value="" required="required"></div>'))			   
-				  .append($('<td width="5%">').append('<button type="button" name="deletem" id="deletem" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>')));
-});
-$('#editRowBtne').click(function() {
-				$('#myTbl3e').append($('<tr>')
-                  .append($('<td style="display:none;">').append(''))
-				  .append($('<td width="30%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemergencyname" name="eemergencyname[]" class="form-control has-feedback-left" value="" required="required"></div>'))
-				  .append($('<td width="10%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerrelation" name="eemerrelation[]" class="form-control has-feedback-left" value="" required="required"></div>'))
-				  .append($('<td width="10%">').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone" name="eemerphone[]" class="form-control has-feedback-left" value="" required="required"></div>'))			   
-				  .append($('<td width="5%">').append('<button type="button" name="deletem" id="deletem" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>')));
-});
-
-    $(function(){
-	
-    var provinceOb = $('#Addcity');
-	var districtOb = $('#Adddistrict');
-	var cartonOb = $('#Addsubdistrict');
-		
-    // on change province
-    $('#Addcity').on('change', function(){
-        var provinceId = $(this).val();
-        districtOb.html('<option value="">เลือกอำเภอ</option>');
-        $.ajax({
-                    url: "thdistrict/district/" + provinceId,
-                    method: 'GET',
-                    success: function(res) {
-                        districtOb.html('<option value="">เลือกอำเภอ</option>');
-                        cartonOb.html('<option value="">เลือกตำบล</option>');
-                        $.each(res.data, function(index, item){
-                            districtOb.append(
-                            $('<option></option>').val(item.code).html(item.name_th)
-                        );
-                        });
-                    }
-        });
+    $('#addRowBtn').click(function() {
+        $('#myTbl3').append($('<tr>')
+            .append($('<td width="30%">').append(
+                '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emergencyname" name="emergencyname[]" class="form-control has-feedback-left" value="" required="required"></div>'
+            ))
+            .append($('<td width="10%">').append(
+                '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emerrelation" name="emerrelation[]" class="form-control has-feedback-left" value="" required="required"></div>'
+            ))
+            .append($('<td width="10%">').append(
+                '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emerphone" name="emerphone[]" class="form-control has-feedback-left" value="" required="required"></div>'
+            ))
+            .append($('<td width="5%">').append(
+                '<button type="button" name="deletem" id="deletem" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
+            )));
     });
-    districtOb.on('change', function(){
-        var districtId = $(this).val();
-        cartonOb.html('<option value="">เลือกตำบล</option>');
-        $.ajax({
-            url: "thsubdistrict/subdistrict/" + districtId,
-                    method: 'GET',
-                    success: function(res) {
-                        cartonOb.html('<option value="">เลือกตำบล</option>');
-                        $.each(res.data, function(index, item){
-                            cartonOb.append(
-                            $('<option></option>').val(item.code).html(item.name_th)
-                        );
-                        });
-                    }
-        });
+    $('#editRowBtne').click(function() {
+        $('#myTbl3e').append($('<tr>')
+            .append($('<td style="display:none;">').append(''))
+            .append($('<td width="30%">').append(
+                '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemergencyname" name="eemergencyname[]" class="form-control has-feedback-left" value="" required="required"></div>'
+            ))
+            .append($('<td width="10%">').append(
+                '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerrelation" name="eemerrelation[]" class="form-control has-feedback-left" value="" required="required"></div>'
+            ))
+            .append($('<td width="10%">').append(
+                '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone" name="eemerphone[]" class="form-control has-feedback-left" value="" required="required"></div>'
+            ))
+            .append($('<td width="5%">').append(
+                '<button type="button" name="deletem" id="deletem" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
+            )));
     });
 
-    var EprovinceOb = $('#Editcity');
-	var EdistrictOb = $('#Editdistrict');
-	var EcartonOb = $('#Editsubdistrict');
-		
-    // Edit
-    $('#Editcity').on('change', function(){
-        var provinceId = $(this).val();
-        EdistrictOb.html('<option value="">เลือกอำเภอ</option>');
-        $.ajax({
-                    url: "thdistrict/district/" + provinceId,
-                    method: 'GET',
-                    success: function(res) {
-                        EdistrictOb.html('<option value="">เลือกอำเภอ</option>');
-                        EcartonOb.html('<option value="">เลือกตำบล</option>');
-                        $.each(res.data, function(index, item){
-                            EdistrictOb.append(
-                            $('<option></option>').val(item.code).html(item.name_th)
+    $(function() {
+
+        var provinceOb = $('#Addcity');
+        var districtOb = $('#Adddistrict');
+        var cartonOb = $('#Addsubdistrict');
+
+        // on change province
+        $('#Addcity').on('change', function() {
+            var provinceId = $(this).val();
+            districtOb.html('<option value="">เลือกอำเภอ</option>');
+            $.ajax({
+                url: "thdistrict/district/" + provinceId,
+                method: 'GET',
+                success: function(res) {
+                    districtOb.html('<option value="">เลือกอำเภอ</option>');
+                    cartonOb.html('<option value="">เลือกตำบล</option>');
+                    $.each(res.data, function(index, item) {
+                        districtOb.append(
+                            $('<option></option>').val(item.code).html(item
+                                .name_th)
                         );
-                        });
-                    }
+                    });
+                }
+            });
+        });
+        districtOb.on('change', function() {
+            var districtId = $(this).val();
+            cartonOb.html('<option value="">เลือกตำบล</option>');
+            $.ajax({
+                url: "thsubdistrict/subdistrict/" + districtId,
+                method: 'GET',
+                success: function(res) {
+                    cartonOb.html('<option value="">เลือกตำบล</option>');
+                    $.each(res.data, function(index, item) {
+                        cartonOb.append(
+                            $('<option></option>').val(item.code).html(item
+                                .name_th)
+                        );
+                    });
+                }
+            });
+        });
+
+        var EprovinceOb = $('#Editcity');
+        var EdistrictOb = $('#Editdistrict');
+        var EcartonOb = $('#Editsubdistrict');
+
+        // Edit
+        $('#Editcity').on('change', function() {
+            var provinceId = $(this).val();
+            EdistrictOb.html('<option value="">เลือกอำเภอ</option>');
+            $.ajax({
+                url: "thdistrict/district/" + provinceId,
+                method: 'GET',
+                success: function(res) {
+                    EdistrictOb.html('<option value="">เลือกอำเภอ</option>');
+                    EcartonOb.html('<option value="">เลือกตำบล</option>');
+                    $.each(res.data, function(index, item) {
+                        EdistrictOb.append(
+                            $('<option></option>').val(item.code).html(item
+                                .name_th)
+                        );
+                    });
+                }
+            });
+        });
+        EdistrictOb.on('change', function() {
+            var districtId = $(this).val();
+            EcartonOb.html('<option value="">เลือกตำบล</option>');
+            $.ajax({
+                url: "thsubdistrict/subdistrict/" + districtId,
+                method: 'GET',
+                success: function(res) {
+                    EcartonOb.html('<option value="">เลือกตำบล</option>');
+                    $.each(res.data, function(index, item) {
+                        EcartonOb.append(
+                            $('<option></option>').val(item.code).html(item
+                                .name_th)
+                        );
+                    });
+                }
+            });
         });
     });
-    EdistrictOb.on('change', function(){
-        var districtId = $(this).val();
-        EcartonOb.html('<option value="">เลือกตำบล</option>');
-        $.ajax({
-            url: "thsubdistrict/subdistrict/" + districtId,
-                    method: 'GET',
-                    success: function(res) {
-                        EcartonOb.html('<option value="">เลือกตำบล</option>');
-                        $.each(res.data, function(index, item){
-                            EcartonOb.append(
-                            $('<option></option>').val(item.code).html(item.name_th)
-                        );
-                        });
-                    }
-        });
-    });
-});	
 </script>
