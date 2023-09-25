@@ -193,7 +193,7 @@
             ]
         });
 
-        $('#btnseach').click(function(e) {
+        $('#btnsearch').click(function(e) {
             $('#Listview').DataTable().ajax.reload();
         });
 
