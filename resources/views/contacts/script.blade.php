@@ -192,7 +192,32 @@
                 }
             ]
         });
-        retrieveFieldValues();
+
+        var startDate;
+        var endDate;
+
+        function datesearch() {
+            var currentDate = moment();
+            // Set the start date to 7 days before today
+            startDate = moment(currentDate).subtract(7, 'days').format('YYYY-MM-DD');
+            // Set the end date to the end of the current month
+            endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
+        }
+
+        function retrieveFieldValues() {
+            var saveddateStart = localStorage.getItem('dateStart');
+            var savedSearchType = localStorage.getItem('searchType');
+            var savedKeyword = localStorage.getItem('keyword');
+
+            // Set field values from local storage
+            if (saveddateStart) {
+                var dateParts = saveddateStart.split(' - ');
+                startDate = dateParts[0];
+                endDate = dateParts[1];
+            } else {
+                datesearch();
+            }
+        }
 
         let daterange = () => {
             $('#reservation').daterangepicker({
@@ -211,6 +236,8 @@
         }
 
         daterange();
+
+
         $.datepicker.setDefaults($.datepicker.regional['en']);
         $(".AddDate").datepicker({
             /*  onSelect: function() {
@@ -227,12 +254,13 @@
             var textValue = $("#seachtext").val();
             if (fieldValue !== '0') {
                 if (textValue === '') {
-                document.getElementById('validationMessages').textContent = 'กรุณากรอกข้อมูลที่จะค้นหา';
-                return false;
-                }else{
-                document.getElementById('validationMessages').textContent = '';
+                    document.getElementById('validationMessages').textContent =
+                        'กรุณากรอกข้อมูลที่จะค้นหา';
+                    return false;
+                } else {
+                    document.getElementById('validationMessages').textContent = '';
                 }
-            }else{
+            } else {
                 document.getElementById('validationMessages').textContent = '';
             }
             $('#Listview').DataTable().ajax.reload();
@@ -283,10 +311,10 @@
                                 .name_th)
                         );
                     });
-                 
+
                     setTimeout(function() {
-                                $('#Addcity').val('65');
-                                $('#Addcity').change();
+                        $('#Addcity').val('65');
+                        $('#Addcity').change();
                     }, 1000)
 
                 }
@@ -424,7 +452,7 @@
                         $('#Edittelhome').val(res.datax.datac.telhome);
                         $('#Editphoneno').val(res.datax.datac.phoneno);
                         $('#Editworkno').val(res.datax.datac.workno);
-                        
+
                         var tbody = document.querySelector('#myTbl3e tbody');
                         while (tbody.firstChild) {
                             tbody.removeChild(tbody.firstChild);
@@ -449,7 +477,8 @@
                                     '<button type="button" name="deletem" id="deletem" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
                                 )));
                         });
-                        $('#custom-tabs-one-tabe a[href="#custom-tabs-one-homee"]').tab('show');
+                        $('#custom-tabs-one-tabe a[href="#custom-tabs-one-homee"]')
+                            .tab('show');
                         $('#EditModal').modal('show');
                     }
                 });
