@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ThsubdistrictsSeed extends Seeder
 {
@@ -8399,7 +8400,7 @@ class ThsubdistrictsSeed extends Seeder
             ['id'=>'8384','code'=>'920501','zip_code'=>'92150','name_th'=>'บ่อหิน','district_id'=>'947','created_at'=>null,'updated_at'=>null],
             ['id'=>'8385','code'=>'920502','zip_code'=>'92150','name_th'=>'เขาไม้แก้ว','district_id'=>'947','created_at'=>null,'updated_at'=>null],
             ['id'=>'8386','code'=>'920503','zip_code'=>'92150','name_th'=>'กะลาเส','district_id'=>'947','created_at'=>null,'updated_at'=>null],
-            ['id'=>'8387','code'=>'920504','zip_code'=>'92150','name_th'=>'ไม้ฝาด','district_id'=>'947','created_at'=>null:'','updated_at'=>null],
+            ['id'=>'8387','code'=>'920504','zip_code'=>'92150','name_th'=>'ไม้ฝาด','district_id'=>'947','created_at'=>null,'updated_at'=>null],
             ['id'=>'8388','code'=>'920505','zip_code'=>'92000','name_th'=>'นาเมืองเพชร','district_id'=>'947','created_at'=>null,'updated_at'=>null],
             ['id'=>'8389','code'=>'920595','zip_code'=>'0','name_th'=>'*ท่าสะบ้า','district_id'=>'947','created_at'=>null,'updated_at'=>null],
             ['id'=>'8390','code'=>'920596','zip_code'=>'0','name_th'=>'*สิเกา','district_id'=>'947','created_at'=>null,'updated_at'=>null],
