@@ -192,6 +192,35 @@
                 }
             ]
         });
+        retrieveFieldValues();
+
+        let daterange = () => {
+            $('#reservation').daterangepicker({
+                startDate: startDate,
+                endDate: endDate,
+                locale: {
+                    format: 'YYYY-MM-DD'
+                }
+            });
+
+            // Apply the custom date range filter on input change
+            $('#reservation').on('apply.daterangepicker', function() {
+                table.draw();
+                storeFieldValues();
+            });
+        }
+
+        daterange();
+        $.datepicker.setDefaults($.datepicker.regional['en']);
+        $(".AddDate").datepicker({
+            /*  onSelect: function() {
+                 table.draw();
+             }, */
+            dateFormat: 'yy-mm-dd',
+            changeMonth: true,
+            changeYear: true,
+            yearRange: '1980:2050'
+        });
 
         $('#btnsearch').click(function(e) {
             var fieldValue = $("#seachtype").val();
