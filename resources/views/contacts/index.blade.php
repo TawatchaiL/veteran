@@ -100,6 +100,7 @@
                                                 <strong><i class="fa-regular fa-keyboard"></i>
                                                     คำที่ต้องการค้นหา:</strong>
                                                 {!! Form::text('seachtext', null, ['id' => 'seachtext', 'placeholder' => 'ข้อมูลที่ต้องการค้นหา', 'class' => 'form-control']) !!}
+                                                <span id="validationMessages" style="color: red;"></span>
                                             </div>
                                         </div>
                                         <div class="col-xs-2 col-sm-2 col-md-2" style="align-items: flex-end;">
