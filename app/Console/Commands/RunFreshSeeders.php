@@ -28,7 +28,6 @@ class RunFreshSeeders extends Command
             'CreateAdminUserSeeder',
             'ThcitiesSeed',
             'ThdistrictsSeed',
-            'levelSeeder',
             'ThsubdistrictsSeed',
         ];
 
