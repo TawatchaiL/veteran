@@ -231,7 +231,7 @@
             // Apply the custom date range filter on input change
             $('#reservation').on('apply.daterangepicker', function() {
                 table.draw();
-                storeFieldValues();
+                //storeFieldValues();
             });
         }
 
