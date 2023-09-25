@@ -21,6 +21,7 @@
     <script src="plugins/jquery/jquery.min.js"></script>
     <script src="plugins/toastr/toastr.min.js"></script>
 
+
     <link rel="stylesheet" href="dist/css/Sans.css?:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="dist/css/Sarabun.css?:wght@400&display=swap">
     <link rel='stylesheet' href='dist/css/LibreCaslonText.css'>
@@ -30,6 +31,7 @@
     <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
+    <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
     <link rel="stylesheet" href="plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
