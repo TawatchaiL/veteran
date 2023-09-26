@@ -18,7 +18,7 @@ class ContactSeeder extends Seeder
         for ($i = 1; $i <= $numberOfContacts; $i++) {
 
             $city = ThCity::inRandomOrder()->first();
-            $district = ThDistrict::where('city_id', $city->id)->inRandomOrder()->first();
+            $district = ThDistrict::where('province_id', $city->id)->inRandomOrder()->first();
             $subDistrict = ThSubDistrict::where('district_id', $district->id)->inRandomOrder()->first();
             // Generate random phone numbers
             $phoneno = '0' . mt_rand(200, 999) . '-' . mt_rand(1000, 9999);
