@@ -25,9 +25,9 @@ class ContactSeeder extends Seeder
                     $subDistrict = ThSubDistrict::where('district_id', $district->id)->inRandomOrder()->first();
 
                     // Generate random phone numbers
-                    $phoneno = '0' . mt_rand(200, 999) . '-' . mt_rand(1000, 9999);
-                    $telhome = '0' . mt_rand(200, 999) . '-' . mt_rand(1000, 9999);
-                    $workno = '0' . mt_rand(200, 999) . '-' . mt_rand(1000, 9999);
+                    $phoneno = '0' . mt_rand(800, 999) . '-' . mt_rand(100000, 999999);
+                    $telhome = '0' . mt_rand(800, 999) . '-' . mt_rand(100000, 999999);
+                    $workno = '0' . mt_rand(800, 999) . '-' . mt_rand(100000, 999999);
 
                     // Generate a random date within a specific range (e.g., last 14 days)
                     $startDate = strtotime('-14 days');
@@ -47,8 +47,8 @@ class ContactSeeder extends Seeder
                         'road' => 'Road ' . $i,
                         'soi' => 'Soi ' . $i,
                         'city' => $city->id,
-                        'district' => $district->id,
-                        'subdistrict' => $subDistrict ? $subDistrict->id : null, // Handle potential null sub-district
+                        'district' => $district->code,
+                        'subdistrict' => $subDistrict ? $subDistrict->code : null, // Handle potential null sub-district
                         'postcode' => random_int(10000, 99999), // Generate a random postcode
                         'phoneno' => $phoneno, // Set the random phone numbers here
                         'telhome' => $telhome,
