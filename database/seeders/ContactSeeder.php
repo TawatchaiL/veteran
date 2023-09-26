@@ -46,7 +46,7 @@ class ContactSeeder extends Seeder
                         'moo' => random_int(1, 1000), // Generate a random number for "moo"
                         'road' => 'Road ' . $i,
                         'soi' => 'Soi ' . $i,
-                        'city' => $city->id,
+                        'city' => $city->code,
                         'district' => $district->code,
                         'subdistrict' => $subDistrict ? $subDistrict->code : null, // Handle potential null sub-district
                         'postcode' => random_int(10000, 99999), // Generate a random postcode
