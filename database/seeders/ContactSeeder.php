@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Contact;
+use App\Models\CrmContact;
 
 class ContactSeeder extends Seeder
 {
@@ -13,7 +13,7 @@ class ContactSeeder extends Seeder
         $numberOfContacts = 50;
 
         for ($i = 1; $i <= $numberOfContacts; $i++) {
-            Contact::create([
+            CrmContact::create([
                 'hn' => 'HN' . random_int(1000, 9999), // Generate a random health number
                 'fname' => 'First Name ' . $i,
                 'lname' => 'Last Name ' . $i,
