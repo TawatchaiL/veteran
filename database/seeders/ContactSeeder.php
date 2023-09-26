@@ -16,7 +16,7 @@ class ContactSeeder extends Seeder
         $numberOfContacts = 200;
 
         for ($i = 1; $i <= $numberOfContacts; $i++) {
-            $city = ThCity::inRandomOrder()->first();
+            $city = ThCity::where('id', '<=', 77)->inRandomOrder()->first();
 
             if ($city) {
                 $district = ThDistrict::where('province_id', $city->id)->inRandomOrder()->first();
@@ -38,7 +38,7 @@ class ContactSeeder extends Seeder
                     $randomDate = date('Y-m-d', $randomTimestamp);
 
                     CrmContact::create([
-                        'hn' => 'HN' . random_int(1000, 9999), // Generate a random health number
+                        'hn' => 'HN' . random_int(100000, 999999), // Generate a random health number
                         'adddate' => $randomDate, // Set the random date here
                         'fname' => 'First Name ' . $i,
                         'lname' => 'Last Name ' . $i,
