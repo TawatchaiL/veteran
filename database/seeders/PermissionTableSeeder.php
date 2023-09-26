@@ -24,7 +24,7 @@ class PermissionTableSeeder extends Seeder
             'contact-delete',
             'case-list',
             'case-create',
-            'contact-edit',
+            'case-edit',
             'case-delete',
             'external-doc-list',
             'external-doc-create',
