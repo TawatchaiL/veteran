@@ -42,9 +42,9 @@ class ContactSeeder extends Seeder
                 'moo' => random_int(1, 1000), // Generate a random number for "moo"
                 'road' => 'Road ' . $i,
                 'soi' => 'Soi ' . $i,
-                'city_id' => $city->id,
-                'district_id' => $district->id,
-                'subdistrict_id' => $subDistrict->id,
+                'city' => $city->id,
+                'district' => $district->id,
+                'subdistrict' => $subDistrict->id,
                 'postcode' => random_int(10000, 99999), // Generate a random postcode
                 'phoneno' => $phoneno, // Set the random phone numbers here
                 'telhome' => $telhome,
