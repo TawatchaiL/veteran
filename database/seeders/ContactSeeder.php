@@ -26,7 +26,7 @@ class ContactSeeder extends Seeder
             $workno = '0' . mt_rand(200, 999) . '-' . mt_rand(1000, 9999);
 
             // Generate a random date within a specific range (e.g., last 5 years)
-            $startDate = strtotime('-5 years');
+            $startDate = strtotime('-14 days');
             $endDate = strtotime('now');
             $randomTimestamp = mt_rand($startDate, $endDate);
 
