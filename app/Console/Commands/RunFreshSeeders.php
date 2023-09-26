@@ -29,6 +29,7 @@ class RunFreshSeeders extends Command
             'ThcitiesSeed',
             'ThdistrictsSeed',
             'ThsubdistrictsSeed',
+            'ContactSeeder'
         ];
 
         foreach ($seeders as $seeder) {
