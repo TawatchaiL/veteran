@@ -479,7 +479,7 @@
                                     '<button type="button" name="deletem" id="deletem" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
                                 )));
                         });
-                        
+
                         $('#custom-tabs-one-tabe a[href="#custom-tabs-one-homee"]')
                             .tab('show');
                         $('#EditModal').modal('show');

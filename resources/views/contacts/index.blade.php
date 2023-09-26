@@ -116,7 +116,11 @@
                                             <div class="form-group">
                                                 <strong><i class="fa-regular fa-keyboard"></i>
                                                     คำที่ต้องการค้นหา:</strong>
-                                                {!! Form::text('seachtext', null, ['id' => 'seachtext', 'placeholder' => 'ข้อมูลที่ต้องการค้นหา', 'class' => 'form-control']) !!}
+                                                {!! Form::text('seachtext', null, [
+                                                    'id' => 'seachtext',
+                                                    'placeholder' => 'ข้อมูลที่ต้องการค้นหา',
+                                                    'class' => 'form-control',
+                                                ]) !!}
                                                 <span id="validationMessages" style="color: red;"></span>
                                             </div>
                                         </div>
