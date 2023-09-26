@@ -1,6 +1,168 @@
 <script src="dist/js/html2canvas.min.js"></script>
 <script src='dist/js/jspdf.min.js'></script>
 <script src="dist/js/jspdf.plugin.autotable.min.js"></script>
+
+<script type="module">
+    import WaveSurfer from 'https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js'
+    import Hover from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/hover.esm.js'
+    import Minimap from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/minimap.esm.js'
+    import TimelinePlugin from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/timeline.esm.js'
+    import RegionsPlugin from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/regions.esm.js'
+
+    /* const topTimeline = TimelinePlugin.create({
+         height: 20,
+         insertPosition: 'beforebegin',
+         timeInterval: 0.2,
+         primaryLabelInterval: 5,
+         secondaryLabelInterval: 1,
+         style: {
+             fontSize: '20px',
+             color: '#2D5B88',
+         },
+     }) */
+
+    // Create a second timeline
+    const bottomTimline = TimelinePlugin.create({
+        height: 10,
+        timeInterval: 0.1,
+        primaryLabelInterval: 1,
+        style: {
+            fontSize: '10px',
+            color: '#6A3274',
+        },
+    })
+
+    const wavesurfer = WaveSurfer.create({
+        container: '#waveform',
+        audioRate: 1,
+        splitChannels: false,
+        normalize: false,
+        waveColor: '#4F4A85',
+        progressColor: '#383351',
+        url: 'wav/out-0648362517-1008-20230926-085157-1695693117.038600.wav',
+        cursorColor: "#ddd5e9",
+        cursorWidth: 4,
+        barWidth: 1,
+        barGap: 1,
+        barRadius: 1,
+        barHeight: null,
+        barAlign: "",
+        minPxPerSec: 1,
+        fillParent: true,
+        plugins: [
+            Hover.create({
+                lineColor: '#ff0000',
+                lineWidth: 2,
+                labelBackground: '#555',
+                labelColor: '#fff',
+                labelSize: '11px',
+            }),
+            Minimap.create({
+                height: 20,
+                waveColor: '#ddd',
+                progressColor: '#999',
+            }), /* topTimeline,*/ bottomTimline
+        ],
+    })
+
+    const wsRegions = wavesurfer.registerPlugin(RegionsPlugin.create())
+    const playButton = document.querySelector('#play')
+    const forwardButton = document.querySelector('#forward')
+    const backButton = document.querySelector('#backward')
+
+    let preservePitch = true
+    const speeds = [0.25, 0.5, 1, 2, 4]
+
+    // Toggle pitch preservation
+    document.querySelector('#pitch').addEventListener('change', (e) => {
+        preservePitch = e.target.checked
+        wavesurfer.setPlaybackRate(wavesurfer.getPlaybackRate(), preservePitch)
+    })
+
+    // Set the playback rate
+    document.querySelector('#speed').addEventListener('input', (e) => {
+        const speed = speeds[e.target.valueAsNumber]
+        document.querySelector('#rate').textContent = speed.toFixed(2)
+        wavesurfer.setPlaybackRate(speed, preservePitch)
+        wavesurfer.play()
+    })
+
+    wavesurfer.once('decode', () => {
+        const slider = document.querySelector('input[type="range"]')
+
+        slider.addEventListener('input', (e) => {
+            const minPxPerSec = e.target.valueAsNumber
+            wavesurfer.zoom(minPxPerSec)
+        })
+
+        document.querySelector('button').addEventListener('click', () => {
+            wavesurfer.playPause()
+        })
+
+        playButton.onclick = () => {
+            wavesurfer.playPause()
+        }
+
+        forwardButton.onclick = () => {
+            wavesurfer.skip(5)
+        }
+
+        backButton.onclick = () => {
+            wavesurfer.skip(-5)
+        }
+
+
+    })
+
+    wsRegions.enableDragSelection({
+        color: 'rgba(255, 0, 0, 0.1)',
+    })
+
+    wsRegions.on('region-updated', (region) => {
+        console.log('Updated region', region)
+    })
+
+    // Loop a region on click
+    let loop = true
+    // Toggle looping with a checkbox
+    document.querySelector('#loop').onclick = (e) => {
+        loop = e.target.checked
+    }
+
+    {
+        let activeRegion = null
+        wsRegions.on('region-in', (region) => {
+            activeRegion = region
+        })
+        wsRegions.on('region-out', (region) => {
+            if (activeRegion === region) {
+                if (loop) {
+                    region.play()
+                } else {
+                    activeRegion = null
+                }
+            }
+        })
+        wsRegions.on('region-clicked', (region, e) => {
+            e.stopPropagation() // prevent triggering a click on the waveform
+            activeRegion = region
+            region.play()
+            region.setOptions({
+                color: randomColor()
+            })
+        })
+        // Reset the active region when the user clicks anywhere in the waveform
+        wavesurfer.on('interaction', () => {
+            activeRegion = null
+        })
+    }
+
+    /*   wavesurfer.on('interaction', () => {
+          //wavesurfer.play()
+          //wavesurfer.playPause()
+          activeRegion = null
+      }) */
+</script>
 <script>
     pdfMake.fonts = {
         THSarabun: {
