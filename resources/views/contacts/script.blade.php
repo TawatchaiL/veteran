@@ -107,6 +107,7 @@
                 data: function(d) {
                     d.seachtype = $("#seachtype").val();
                     d.seachtext = $("#seachtext").val();
+                    d.sdate = $('#reservation').val();
                 }
             },
             serverSide: true,
@@ -457,6 +458,7 @@
                         while (tbody.firstChild) {
                             tbody.removeChild(tbody.firstChild);
                         }
+
                         $.each(res.datax.emer, function(index, value) {
                             $('#myTbl3e').append($('<tr>')
                                 .append($('<td style="display:none;">')
@@ -477,6 +479,7 @@
                                     '<button type="button" name="deletem" id="deletem" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
                                 )));
                         });
+                        
                         $('#custom-tabs-one-tabe a[href="#custom-tabs-one-homee"]')
                             .tab('show');
                         $('#EditModal').modal('show');
