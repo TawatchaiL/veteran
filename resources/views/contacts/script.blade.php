@@ -100,7 +100,62 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+        
+        var startDate;
+        var endDate;
 
+        function datesearch() {
+            var currentDate = moment();
+            // Set the start date to 7 days before today
+            startDate = moment(currentDate).subtract(7, 'days').format('YYYY-MM-DD');
+            // Set the end date to the end of the current month
+            endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
+        }
+
+        function retrieveFieldValues() {
+            var saveddateStart = localStorage.getItem('dateStart');
+            var savedSearchType = localStorage.getItem('searchType');
+            var savedKeyword = localStorage.getItem('keyword');
+
+            // Set field values from local storage
+            if (saveddateStart) {
+                var dateParts = saveddateStart.split(' - ');
+                startDate = dateParts[0];
+                endDate = dateParts[1];
+            } else {
+                datesearch();
+            }
+        }
+
+        let daterange = () => {
+            $('#reservation').daterangepicker({
+                startDate: startDate,
+                endDate: endDate,
+                locale: {
+                    format: 'YYYY-MM-DD'
+                }
+            });
+
+            // Apply the custom date range filter on input change
+            $('#reservation').on('apply.daterangepicker', function() {
+                table.draw();
+                //storeFieldValues();
+            });
+        }
+
+        daterange();
+
+
+        $.datepicker.setDefaults($.datepicker.regional['en']);
+        $(".AddDate").datepicker({
+            /*  onSelect: function() {
+                 table.draw();
+             }, */
+            dateFormat: 'yy-mm-dd',
+            changeMonth: true,
+            changeYear: true,
+            yearRange: '1980:2050',
+        });
 
         var table = $('#Listview').DataTable({
             ajax: {
@@ -192,62 +247,6 @@
                     name: 'more'
                 }
             ]
-        });
-
-        var startDate;
-        var endDate;
-
-        function datesearch() {
-            var currentDate = moment();
-            // Set the start date to 7 days before today
-            startDate = moment(currentDate).subtract(7, 'days').format('YYYY-MM-DD');
-            // Set the end date to the end of the current month
-            endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
-        }
-
-        function retrieveFieldValues() {
-            var saveddateStart = localStorage.getItem('dateStart');
-            var savedSearchType = localStorage.getItem('searchType');
-            var savedKeyword = localStorage.getItem('keyword');
-
-            // Set field values from local storage
-            if (saveddateStart) {
-                var dateParts = saveddateStart.split(' - ');
-                startDate = dateParts[0];
-                endDate = dateParts[1];
-            } else {
-                datesearch();
-            }
-        }
-
-        let daterange = () => {
-            $('#reservation').daterangepicker({
-                startDate: startDate,
-                endDate: endDate,
-                locale: {
-                    format: 'YYYY-MM-DD'
-                }
-            });
-
-            // Apply the custom date range filter on input change
-            $('#reservation').on('apply.daterangepicker', function() {
-                table.draw();
-                //storeFieldValues();
-            });
-        }
-
-        daterange();
-
-
-        $.datepicker.setDefaults($.datepicker.regional['en']);
-        $(".AddDate").datepicker({
-            /*  onSelect: function() {
-                 table.draw();
-             }, */
-            dateFormat: 'yy-mm-dd',
-            changeMonth: true,
-            changeYear: true,
-            yearRange: '1980:2050',
         });
 
         $('#btnsearch').click(function(e) {
