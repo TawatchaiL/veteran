@@ -372,6 +372,7 @@
                 telhome: $('#Addtelhome').val(),
                 phoneno: $('#Addphoneno').val(),
                 workno: $('#Addworkno').val(),
+                checkemer: $('#Addcheckemer').val(),
                 _token: token,
                 emergencyData: emergencyData
             };

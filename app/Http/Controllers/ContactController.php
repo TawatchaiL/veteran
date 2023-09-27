@@ -242,10 +242,27 @@ class ContactController extends Controller
             'subdistrict.required' => 'กรุณาเลือกตำบล',
         ];
         if ($request->input('telhome') == "" && $request->input('phoneno') == "" && $request->input('workno') == "") {
-            $valifield = array_merge($valifield, ['telhome' => 'required|string|max:255']);
+            $valifield = array_merge($valifield, ['telhome' => 'required|string|max:15']);
             $valimess = array_merge($valimess, ['telhome.required' => 'กรุณากรอกเบอร์โทรศัพท์บ้าน หรือ เบอร์โทรศัทพ์มือถือ หรือ เบอร์โทรศัพท์ทีทำงาน']);
         }
-
+        if (!empty($request->eemergencyData)) {
+            $e = false;
+            foreach ($request->emergencyData as $edata) {
+                if($edata['emergencyname'] == ""){
+                    $e = true;
+                }
+                if($edata['emerrelation'] == ""){
+                    $e = true;
+                }
+                if($edata['emerphone'] == ""){
+                    $e = true;
+                }
+            }
+            if($e){
+                $valifield = array_merge($valifield, ['checkemer' => 'required|string|max:15']);
+                $valimess = array_merge($valimess, ['checkemer.required' => 'กรุณาตรวจสอบข้อมูล ชื่อบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน']);
+            }
+        }
         $validator =  Validator::make($request->all(), $valifield, $valimess);
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);
@@ -256,8 +273,6 @@ class ContactController extends Controller
         $insertedId = $contact->id;
         if (!empty($request->eemergencyData)) {
             foreach ($request->emergencyData as $edata) {
-                //$test = $edata['emergencyname'];
-
                 $Crmemergency = new CrmPhoneEmergency();
                 $Crmemergency->contact_id = $insertedId;
                 $Crmemergency->emergencyname = $edata['emergencyname'];
@@ -266,6 +281,10 @@ class ContactController extends Controller
                 $Crmemergency->save();
             }
         }
+        //DB::table('crm_phone_emergencies')->insert([
+        //    ['contact_id' => $insertedId, 'emergencyname' => '1', 'emerrelation' => '2', 'emerphone' => '3'],
+        //    ['contact_id' => $insertedId, 'emergencyname' => '4', 'emerrelation' => '5', 'emerphone' => '6'],
+        //]);
         return response()->json(['success' => 'เพิ่ม รายผู้ติดต่อ เรียบร้อยแล้ว']);
     }
 
