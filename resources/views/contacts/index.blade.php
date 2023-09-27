@@ -125,11 +125,9 @@
                                             </div>
                                         </div>
                                         <div class="col-xs-2 col-sm-2 col-md-2" style="align-items: flex-end;">
-                                            <div class="form-group">
                                                 <strong>&nbsp;</strong>
                                                 <button type="button" class="form-control btn btn-success" id="btnsearch">
                                                     <i class="fas fa-search"></i> </button>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
