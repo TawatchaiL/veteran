@@ -100,7 +100,7 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        
+
         var startDate;
         var endDate;
 
@@ -265,7 +265,11 @@
             }
             $('#Listview').DataTable().ajax.reload();
         });
-
+        $('#btnreset').click(function(e) {
+            $("#seachtype").val(0);
+            $("#seachtext").val('');
+            $('#Listview').DataTable().ajax.reload();
+        });
         $("#example1").DataTable({
             "responsive": true,
             "lengthChange": false,

@@ -96,23 +96,23 @@
                                         </div>
                                     </div>
                                     <div class="row float-lg-right">
-                                        <div class="col-xs-5 col-sm-5 col-md-5">
+                                        <div class="col-xs-4 col-sm-4 col-md-4">
                                             <div class="form-group">
                                                 <strong><i class="fa-solid fa-id-card"></i>
                                                     ประเภทการค้นหา:</strong>
                                                 <select style="width: 100%;" class="select2 form-control" id="seachtype"
                                                     name="seachtype">
                                                     <option value="0" selected>ตัวเลือกการค้นหา</option>
+                                                    <option value="5">รหัสผู้ติดต่อ</option>
+                                                    <option value="6">ชื่อผู้ติดต่อ</option>
                                                     <option value="1">เบอร์โทรฉุกเฉิน</option>
                                                     <option value="2">เบอร์โทรศัพท์บ้าน</option>
                                                     <option value="3">เบอร์โทรศัพท์มือถือ</option>
                                                     <option value="4">เบอร์โทรศัพท์ที่ทำงาน</option>
-                                                    <option value="5">รหัสผู้ติดต่อ</option>
-                                                    <option value="6">ชื่อผู้ติดต่อ</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-xs-5 col-sm-5 col-md-5">
+                                        <div class="col-xs-4 col-sm-4 col-md-4">
                                             <div class="form-group">
                                                 <strong><i class="fa-regular fa-keyboard"></i>
                                                     คำที่ต้องการค้นหา:</strong>
@@ -124,13 +124,16 @@
                                                 <span id="validationMessages" style="color: red;"></span>
                                             </div>
                                         </div>
-                                        <div class="col-xs-2 col-sm-2 col-md-2" style="align-items: flex-end;">
-                                            <div class="form-group">
+                                        <div class="col-xs-2 col-sm-2 col-md-2">
                                                 <strong>&nbsp;</strong>
                                                 <button type="button" class="form-control btn btn-success" id="btnsearch">
-                                                    <i class="fas fa-search"></i> </button>
-                                            </div>
+                                                <i class="fas fa-search"></i></button>
                                         </div>
+                                        <div class="col-xs-2 col-sm-2 col-md-2" style="align-items: flex-end;">
+                                                <strong>&nbsp;</strong>
+                                                <button type="button" class="form-control btn btn-warning" id="btnreset">
+                                                <i class="fa-solid fa-rotate-right"></i></button>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
