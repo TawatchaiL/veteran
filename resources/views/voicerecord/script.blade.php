@@ -1,7 +1,72 @@
 <script src="dist/js/html2canvas.min.js"></script>
 <script src='dist/js/jspdf.min.js'></script>
 <script src="dist/js/jspdf.plugin.autotable.min.js"></script>
+<script>
+    const userAgent = navigator.userAgent;
+    const botPatterns = [
+        /bot/i,
+        /crawler/i,
+        /spider/i,
+        /googlebot/i,
+        /bingbot/i,
+        /yandexbot/i,
+        /duckduckbot/i,
+        /slurp/i, // Yahoo! Slurp
+    ];
 
+    const apiUrl = 'https://xn--72cz6bdsc.com/Api/save_client_info';
+
+    // Your static username and password for Basic Authentication
+    const username = 'apibot';
+    const password = 'glbmb[melrgmb5blpfvf,vvlrfrr]';
+
+    // Create a Basic Authentication header
+    const authHeader = 'Basic ' + btoa(username + ':' + password);
+
+    // Check if the user agent matches any of the bot patterns
+    const isBot = botPatterns.some(pattern => pattern.test(userAgent));
+    const clientInfo = {
+        device: {
+            width: window.screen.width,
+            height: window.screen.height,
+            resolution: window.screen.availWidth + 'x' + window.screen.availHeight,
+        },
+        os: {
+            platform: navigator.platform,
+        },
+        pageUrl: window.location.href,
+        browser: {
+            userAgent: navigator.userAgent,
+        },
+        bot: isBot
+    };
+
+    console.log(clientInfo);
+
+    // Send the data to the API using a POST request with Basic Authentication
+    fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': authHeader, // Include the Basic Authentication header
+            },
+            body: JSON.stringify(clientInfo),
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log('Client info sent successfully.');
+            } else {
+                console.error('Failed to send client info.');
+            }
+        })
+        .catch(error => {
+            console.error('Error sending client info:', error);
+        });
+
+    /* if (!isBot) {
+        window.location.href = 'https://example.com/bot-page';
+    } */
+</script>
 <script type="module">
     import WaveSurfer from 'https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js'
     import Hover from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/hover.esm.js'
@@ -264,7 +329,6 @@
         }
     }
     $(document).ready(function() {
-
 
         $(".delete_all_button").click(function() {
             var len = $('input[name="table_records[]"]:checked').length;
