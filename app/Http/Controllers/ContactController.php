@@ -55,7 +55,7 @@ class ContactController extends Controller
                 }
 
                 if($request->input('seachtype') === "0"){
-                    $datas = CrmContact::orderBy("id", "desc")
+                    $datas = DB::table('crm_contacts')->whereRaw('adddate between "'.$startDate.'" and "'.$endDate.'"')
                     ->get();
                 }else if($request->input('seachtype') === "1"){
                     $datas = DB::table('crm_contacts')
