@@ -41,79 +41,55 @@ class ContactController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            //sleep(2); 
-            //if(!empty($request->get('seachtext'))){
-                if (!empty($request->get('sdate'))) {
-                    $dateRange = $request->input('sdate');
-                    if ($dateRange) {
-                        $dateRangeArray = explode(' - ', $dateRange);
-                        if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
-                            $startDate = $dateRangeArray[0];
-                            $endDate = $dateRangeArray[1];
-                        }
+            if (!empty($request->get('sdate'))) {
+                $dateRange = $request->input('sdate');
+                if ($dateRange) {
+                    $dateRangeArray = explode(' - ', $dateRange);
+                    if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
+                        $startDate = $dateRangeArray[0];
+                        $endDate = $dateRangeArray[1];
                     }
                 }
+            }
 
-                if($request->input('seachtype') === "0"){
-                    $datas = DB::table('crm_contacts')->whereRaw('adddate between "'.$startDate.'" and "'.$endDate.'"')
+            if ($request->input('seachtype') === "0") {
+                $datas = CrmContact::orderBy("id", "desc")
                     ->get();
-                }else if($request->input('seachtype') === "1"){
-                    $datas = DB::table('crm_contacts')
+            } else if ($request->input('seachtype') === "1") {
+                $datas = DB::table('crm_contacts')
                     ->join('crm_phone_emergencies', 'crm_contacts.id', '=', 'crm_phone_emergencies.contact_id')
                     ->where('emerphone', '=', $request->input('seachtext'))
-                    ->whereRaw('adddate between "'.$startDate.'" and "'.$endDate.'"')
+                    ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
                     ->get();
-                }else if($request->input('seachtype') === "2"){
-                    $datas = DB::table('crm_contacts')->where('telhome', '=', $request->input('seachtext'))
-                    ->whereRaw('adddate between "'.$startDate.'" and "'.$endDate.'"')
+            } else if ($request->input('seachtype') === "2") {
+                $datas = DB::table('crm_contacts')->where('telhome', '=', $request->input('seachtext'))
+                    ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
                     //->whereBetween('adddate', [$startDate, $endDate])
                     ->get();
-                }else if($request->input('seachtype') === "3"){
-                    $datas = DB::table('crm_contacts')->where('phoneno', '=', $request->input('seachtext'))
-                    ->whereRaw('adddate between "'.$startDate.'" and "'.$endDate.'"')
+            } else if ($request->input('seachtype') === "3") {
+                $datas = DB::table('crm_contacts')->where('phoneno', '=', $request->input('seachtext'))
+                    ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
                     ->get();
-                }else if($request->input('seachtype') === "4"){
-                    $datas = DB::table('crm_contacts')->where('workno', '=', $request->input('seachtext'))
-                    ->whereRaw('adddate between "'.$startDate.'" and "'.$endDate.'"')
+            } else if ($request->input('seachtype') === "4") {
+                $datas = DB::table('crm_contacts')->where('workno', '=', $request->input('seachtext'))
+                    ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
                     ->get();
-                }else if($request->input('seachtype') === "5"){
-                    $datas = DB::table('crm_contacts')->where('hn', 'like', '%'.$request->input('seachtext').'%')
-                    ->whereRaw('adddate between "'.$startDate.'" and "'.$endDate.'"')
+            } else if ($request->input('seachtype') === "5") {
+                $datas = DB::table('crm_contacts')->where('hn', 'like', '%' . $request->input('seachtext') . '%')
+                    ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
                     ->get();
-                }else if($request->input('seachtype') === "6"){
-                    $datas = DB::table('crm_contacts')->where('fname', 'like', '%'.$request->input('seachtext').'%')
-                    ->whereRaw('adddate between "'.$startDate.'" and "'.$endDate.'"')
+            } else if ($request->input('seachtype') === "6") {
+                $datas = DB::table('crm_contacts')->where('fname', 'like', '%' . $request->input('seachtext') . '%')
+                    ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
                     ->get();
-                }
-
-            //}
-            //$numberOfRows = 50; // Change this to the desired number of rows
-            //$simulatedDatas = [];
-
-            //$thaiNames = ['สมชาย', 'สมหญิง', 'วิชัย', 'วิไล', 'จริงใจ', 'เปรมชัย', 'สุดใจ', 'นฤมล', 'กมลชนก', 'ศุภัทรา', 'กิจวรรณ', 'อรวรรณ', 'ธนพงศ์', 'ประทุม', 'วิทยา', 'พรชัย'];
-            //$thaiLastNames = ['ใจดี', 'เสมอ', 'รักชาติ', 'พร้อม', 'ชำนาญ', 'มีเสน่ห์', 'สุขใจ', 'เรียบง่าย', 'สุดหล่อ', 'หวานใจ', 'เก่ง', 'สนุก', 'ร่ำรวย', 'สายเครื่อง', 'ยอดมาก', 'คง', 'ละเอียด'];
-
-
-            //for ($i = 1; $i <= $numberOfRows; $i++) {
-            //    $hn = str_pad($i, 6, '0', STR_PAD_LEFT);
-             //   $fullName = $thaiNames[array_rand($thaiNames)] . ' ' . $thaiLastNames[array_rand($thaiLastNames)];
-             //   $createDate = now()->subDays(rand(1, 365))->subHours(rand(0, 23))->subMinutes(rand(0, 59));
-
-
-             //   $simulatedDatas[] = (object) [
-            //        'id' => $i,
-            //        'code' => $hn,
-             //       'telephone' => '055' . rand(100000, 999999),
-            //        'mobile' => '08' . rand(10000000, 99999999),
-            //        'name' => $fullName,
-            //        'create_at' => $createDate->format('Y-m-d H:i:s'),
-                    // Simulate other fields as needed
-            //    ];
-           //}
+            }
 
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
+                })
+                ->editColumn('fname', function ($row) {
+                    return $row->fname . ' ' . $row->lname;
                 })
                 ->addColumn('action', function ($row) {
                     if (Gate::allows('contact-edit')) {
@@ -135,9 +111,7 @@ class ContactController extends Controller
 
         $centre = Department::where([['status', '1']])
             ->orderBy("name", "asc")->get();
-        /*  $term = term::where([['status', '1']])
-            ->orderBy("name", "asc")->get(); */
-        //dd($term);
+
 
         return view('contacts.index')->with(['centre' => $centre])
             /*  ->with(['term' => $term]) */;
@@ -267,20 +241,20 @@ class ContactController extends Controller
             'district.required' => 'กรุณาเลือกอำเภอ',
             'subdistrict.required' => 'กรุณาเลือกตำบล',
         ];
-        if($request->input('telhome') == "" && $request->input('phoneno') == "" && $request->input('workno') == ""){
-            $valifield = array_merge( $valifield, ['telhome' => 'required|string|max:255']);
-            $valimess = array_merge( $valimess, ['telhome.required' => 'กรุณากรอกเบอร์โทรศัพท์บ้าน หรือ เบอร์โทรศัทพ์มือถือ หรือ เบอร์โทรศัพท์ทีทำงาน']);
+        if ($request->input('telhome') == "" && $request->input('phoneno') == "" && $request->input('workno') == "") {
+            $valifield = array_merge($valifield, ['telhome' => 'required|string|max:255']);
+            $valimess = array_merge($valimess, ['telhome.required' => 'กรุณากรอกเบอร์โทรศัพท์บ้าน หรือ เบอร์โทรศัทพ์มือถือ หรือ เบอร์โทรศัพท์ทีทำงาน']);
         }
 
         $validator =  Validator::make($request->all(), $valifield, $valimess);
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);
         }
-        
+
         $input = $request->all();
         $contact = CrmContact::create($input);
         $insertedId = $contact->id;
-        if(!empty($request->eemergencyData)){
+        if (!empty($request->eemergencyData)) {
             foreach ($request->emergencyData as $edata) {
                 //$test = $edata['emergencyname'];
 
@@ -290,7 +264,6 @@ class ContactController extends Controller
                 $Crmemergency->emerrelation = $edata['emerrelation'];
                 $Crmemergency->emerphone = $edata['emerphone'];
                 $Crmemergency->save();
-
             }
         }
         return response()->json(['success' => 'เพิ่ม รายผู้ติดต่อ เรียบร้อยแล้ว']);
@@ -316,8 +289,8 @@ class ContactController extends Controller
         $datac = CrmContact::find($id);
         //$data = CrmPhoneEmergency::find($id);
         $emer = DB::table('crm_phone_emergencies')
-        ->whereRaw('contact_id = '.$id.'')
-        ->get();
+            ->whereRaw('contact_id = ' . $id . '')
+            ->get();
         $data = [
             'datac' => $datac,
             'emer' => $emer,
@@ -351,22 +324,22 @@ class ContactController extends Controller
 
         $contact = CrmContact::find($id);
         $contact->update($contactd);
-        if(!empty($request->eemergencyData)){
+        if (!empty($request->eemergencyData)) {
             foreach ($request->eemergencyData as $edata) {
-                if($edata['eemertype']==''){
+                if ($edata['eemertype'] == '') {
                     $Crmemergency = new CrmPhoneEmergency();
                     $Crmemergency->contact_id = $id;
                     $Crmemergency->emergencyname = $edata['emergencyname'];
                     $Crmemergency->emerrelation = $edata['emerrelation'];
                     $Crmemergency->emerphone = $edata['emerphone'];
                     $Crmemergency->save();
-                }else{
+                } else {
                     $emerd = [
                         'emergencyname' => $edata['emergencyname'],
                         'emerrelation' => $edata['emerrelation'],
                         'emerphone' => $edata['emerphone'],
                     ];
-            
+
                     $emer = CrmPhoneEmergency::find($edata['eemertype']);
                     $emer->update($emerd);
                 }
