@@ -110,33 +110,9 @@
                                     });
                                 </script>
                             @endif
-                            <label>
-                                Zoom: <input type="range" min="10" max="1000" value="100" />
-                            </label>
-                            <button id="play">Play/Pause</button>
-                            <button id="backward">Backward 5s</button>
-                            <button id="forward">Forward 5s</button>
-                            <label>
-                                Playback rate: <span id="rate">2.00</span>x
-                            </label>
 
-                            <label>
-                                0.25x <input type="range" id="speed" min="0" max="4" step="1"
-                                    value="2" />
-                                4x
-                            </label>
-
-                            <label>
-                                <input type="checkbox" id="pitch" checked />
-                                Preserve pitch
-                            </label>
-                            <label>
-                                <input type="checkbox" id="loop" checked="${loop}" />
-                                Loop regions
-                            </label>
-                            <div id="waveform">
-                                <!-- the waveform will be rendered here -->
-                            </div>
+                           
+                            <button id="changeUrlButton">Change URL</button>
                             <div class="col-xs-12 col-sm-12 col-md-12 align-self-end text-right">
                                 <div class="form-group">
                                     <a class="btn btn-warning" id="exportVoiceButton" {{-- href="{{ route('reportcase.pdf') }}" --}}>
@@ -156,7 +132,8 @@
                                 <table id="Listview" class="table table-bordered table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th width="5%"><input type="checkbox" id="check-all" class="flat"></th>
+                                            <th width="5%"><input type="checkbox" id="check-all" class="flat">
+                                            </th>
                                             <th>วันที่</th>
                                             <th>เวลา</th>
                                             <th>เบอร์โทรศัพท์</th>
