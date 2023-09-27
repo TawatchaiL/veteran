@@ -247,7 +247,7 @@
                                                     <thead>
                                                         <tr class="headings">
                                                             <th class="column-title">
-                                                                ชื่อบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน</th>
+                                                                ชื่อบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน<input type="hidden" value="" name="checkemer" id="Addcheckemer"></th>
                                                             <th class="column-title"> ความสัมพันธ์</th>
                                                             <th class="column-title"> เบอร์โทรศัพท์</th>
                                                         </tr>
