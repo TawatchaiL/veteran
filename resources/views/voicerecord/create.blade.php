@@ -1,5 +1,5 @@
 <div class="modal fade" id="CreateModal">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-xxl">
         <div class="modal-content">
             <div class="modal-header bg-primary">
                 <h4 class="modal-title"><i class="fa-solid fa-volume-high"></i> Play & Comment</h4>
@@ -29,6 +29,40 @@
                     <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true"></span>
                     </button>
+                </div>
+
+                <div id="custom-dialog" style="display: none;">
+                    <label for="content-input">Enter Content:</label>
+                    <input type="text" id="content-input">
+                    <button id="add-content-button">Add Content</button>
+                </div>
+
+                <label>
+                    Zoom: <input type="range" min="10" max="1000" value="100" />
+                </label>
+                <button id="play">Play/Pause</button>
+                <button id="backward">Backward 5s</button>
+                <button id="forward">Forward 5s</button>
+                <label>
+                    Playback rate: <span id="rate">2.00</span>x
+                </label>
+
+                <label>
+                    0.25x <input type="range" id="speed" min="0" max="4" step="1"
+                        value="2" />
+                    4x
+                </label>
+
+                <label>
+                    <input type="checkbox" id="pitch" checked />
+                    Preserve pitch
+                </label>
+                <label>
+                    <input type="checkbox" id="loop" checked="${loop}" />
+                    Loop regions
+                </label>
+                <div id="waveform">
+                    <!-- the waveform will be rendered here -->
                 </div>
 
                 {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}

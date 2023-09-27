@@ -9,6 +9,239 @@
     import TimelinePlugin from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/timeline.esm.js'
     import RegionsPlugin from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/regions.esm.js'
 
+    let wavesurfer; // Declare the wavesurfer variable
+
+    // Function to create and initialize WaveSurfer
+    const initializeWaveSurfer = (newUrl) => {
+
+        //wav
+        // Create a second timeline
+        const bottomTimline = TimelinePlugin.create({
+            height: 10,
+            timeInterval: 2,
+            primaryLabelInterval: 10,
+            style: {
+                fontSize: '10px',
+                color: '#6A3274',
+            },
+        })
+
+        if (wavesurfer) {
+            // Destroy the existing WaveSurfer instance to clear it
+            wavesurfer.destroy();
+        }
+
+        wavesurfer = WaveSurfer.create({
+            container: '#waveform',
+            audioRate: 1,
+            splitChannels: false,
+            normalize: false,
+            waveColor: '#4F4A85',
+            progressColor: '#383351',
+            url: newUrl,
+            cursorColor: "#ddd5e9",
+            cursorWidth: 4,
+            barWidth: 1,
+            barGap: 1,
+            barRadius: 1,
+            barHeight: null,
+            barAlign: "",
+            minPxPerSec: 1,
+            fillParent: true,
+            plugins: [
+                Hover.create({
+                    lineColor: '#ff0000',
+                    lineWidth: 2,
+                    labelBackground: '#555',
+                    labelColor: '#fff',
+                    labelSize: '11px',
+                }),
+                Minimap.create({
+                    height: 20,
+                    waveColor: '#ddd',
+                    progressColor: '#999',
+                }), /* topTimeline,*/ bottomTimline
+            ],
+        })
+
+        const wsRegions = wavesurfer.registerPlugin(RegionsPlugin.create())
+        const playButton = document.querySelector('#play')
+        const forwardButton = document.querySelector('#forward')
+        const backButton = document.querySelector('#backward')
+
+        let preservePitch = true
+        const speeds = [0.25, 0.5, 1, 2, 4]
+
+        // Toggle pitch preservation
+        document.querySelector('#pitch').addEventListener('change', (e) => {
+            preservePitch = e.target.checked
+            wavesurfer.setPlaybackRate(wavesurfer.getPlaybackRate(), preservePitch)
+        })
+
+        // Set the playback rate
+        document.querySelector('#speed').addEventListener('input', (e) => {
+            const speed = speeds[e.target.valueAsNumber]
+            document.querySelector('#rate').textContent = speed.toFixed(2)
+            wavesurfer.setPlaybackRate(speed, preservePitch)
+            wavesurfer.play()
+        })
+
+        wavesurfer.once('decode', () => {
+            const slider = document.querySelector('input[type="range"]')
+
+            slider.addEventListener('input', (e) => {
+                const minPxPerSec = e.target.valueAsNumber
+                wavesurfer.zoom(minPxPerSec)
+            })
+
+            document.querySelector('button').addEventListener('click', () => {
+                wavesurfer.playPause()
+            })
+
+            playButton.onclick = () => {
+                wavesurfer.playPause()
+            }
+
+            forwardButton.onclick = () => {
+                wavesurfer.skip(5)
+            }
+
+            backButton.onclick = () => {
+                wavesurfer.skip(-5)
+            }
+
+
+        })
+
+        const customDialog = document.getElementById('custom-dialog');
+        const contentInput = document.getElementById('content-input');
+        const addContentButton = document.getElementById('add-content-button');
+
+        wsRegions.enableDragSelection({
+            color: 'rgba(255, 0, 0, 0.1)',
+            //content: 'Region Content',
+        });
+
+        let currentRegion;
+
+        // Debug statement to check if the code leading up to onRegionCreated is executing
+        console.log('Before onRegionCreated');
+
+        // Add a listener for the region-created event
+        wsRegions.on('region-created', (region) => {
+            // Callback code
+            console.log('Region Created:', region);
+
+            const button = document.createElement('button');
+            button.className = 'remove-region-button';
+            button.textContent = 'X';
+
+            customDialog.style.display = 'block';
+
+            addContentButton.addEventListener('click', () => {
+                // Create a tooltip element
+                const tooltip = document.createElement('div');
+                const content = contentInput.value;
+                tooltip.className = 'region-tooltip';
+                tooltip.textContent = content; // Replace with your tooltip text
+                customDialog.style.display = 'none'; // Close the dialog box
+                region.element.appendChild(tooltip);
+            });
+
+            /*  // Attach a mouseenter event handler to show the tooltip
+             region.element.addEventListener('mouseenter', () => {
+                 tooltip.style.display = 'block';
+             });
+
+             // Attach a mouseleave event handler to hide the tooltip
+             region.element.addEventListener('mouseleave', () => {
+                 tooltip.style.display = 'none';
+             }); */
+
+
+            // Attach a click event handler to the button
+            button.addEventListener('click', () => {
+                // Remove the region when the button is clicked
+                region.remove();
+            });
+
+            // Append the button to the region element
+            region.element.appendChild(button);
+
+        });
+
+        wsRegions.on('region-updated', (region) => {
+            console.log('Updated region', region)
+        })
+
+        // Loop a region on click
+        let loop = true
+        // Toggle looping with a checkbox
+        document.querySelector('#loop').onclick = (e) => {
+            loop = e.target.checked
+        }
+
+        {
+            let activeRegion = null
+            wsRegions.on('region-in', (region) => {
+                activeRegion = region
+            })
+            wsRegions.on('region-out', (region) => {
+                if (activeRegion === region) {
+                    if (loop) {
+                        region.play()
+                    } else {
+                        activeRegion = null
+                    }
+                }
+            })
+            wsRegions.on('region-clicked', (region, e) => {
+                e.stopPropagation() // prevent triggering a click on the waveform
+                activeRegion = region
+                region.play()
+                region.setOptions({
+                    color: randomColor()
+                })
+            })
+            // Reset the active region when the user clicks anywhere in the waveform
+            wavesurfer.on('interaction', () => {
+                activeRegion = null
+            })
+        }
+
+        $('#CreateModal').modal('show');
+    }
+
+    const random = (min, max) => Math.random() * (max - min) + min
+    const randomColor = () => `rgba(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)}, 0.5)`
+
+    $('#changeUrlButton').on('click', () => {
+        const newUrl = 'wav/PinkPanther60.wav'; // Replace with the new URL
+        initializeWaveSurfer(newUrl);
+    });
+
+    $('.modelClose').on('click', () => {
+        console.log(wavesurfer);
+        if (wavesurfer) {
+
+            // Destroy the WaveSurfer instance to clear it
+            wavesurfer.destroy();
+            wavesurfer = null; // Set wavesurfer to null to indicate it's destroyed
+        }
+    });
+
+    // Function to change the audio URL
+    const changeAudioUrl = (newUrl) => {
+        wavesurfer.load(newUrl);
+    };
+
+    /*   wavesurfer.on('interaction', () => {
+          //wavesurfer.play()
+          //wavesurfer.playPause()
+          activeRegion = null
+      }) */
+
+    //wav
     /* const topTimeline = TimelinePlugin.create({
          height: 20,
          insertPosition: 'beforebegin',
@@ -20,148 +253,6 @@
              color: '#2D5B88',
          },
      }) */
-
-    // Create a second timeline
-    const bottomTimline = TimelinePlugin.create({
-        height: 10,
-        timeInterval: 0.1,
-        primaryLabelInterval: 1,
-        style: {
-            fontSize: '10px',
-            color: '#6A3274',
-        },
-    })
-
-    const wavesurfer = WaveSurfer.create({
-        container: '#waveform',
-        audioRate: 1,
-        splitChannels: false,
-        normalize: false,
-        waveColor: '#4F4A85',
-        progressColor: '#383351',
-        url: 'wav/out-0648362517-1008-20230926-085157-1695693117.038600.wav',
-        cursorColor: "#ddd5e9",
-        cursorWidth: 4,
-        barWidth: 1,
-        barGap: 1,
-        barRadius: 1,
-        barHeight: null,
-        barAlign: "",
-        minPxPerSec: 1,
-        fillParent: true,
-        plugins: [
-            Hover.create({
-                lineColor: '#ff0000',
-                lineWidth: 2,
-                labelBackground: '#555',
-                labelColor: '#fff',
-                labelSize: '11px',
-            }),
-            Minimap.create({
-                height: 20,
-                waveColor: '#ddd',
-                progressColor: '#999',
-            }), /* topTimeline,*/ bottomTimline
-        ],
-    })
-
-    const wsRegions = wavesurfer.registerPlugin(RegionsPlugin.create())
-    const playButton = document.querySelector('#play')
-    const forwardButton = document.querySelector('#forward')
-    const backButton = document.querySelector('#backward')
-
-    let preservePitch = true
-    const speeds = [0.25, 0.5, 1, 2, 4]
-
-    // Toggle pitch preservation
-    document.querySelector('#pitch').addEventListener('change', (e) => {
-        preservePitch = e.target.checked
-        wavesurfer.setPlaybackRate(wavesurfer.getPlaybackRate(), preservePitch)
-    })
-
-    // Set the playback rate
-    document.querySelector('#speed').addEventListener('input', (e) => {
-        const speed = speeds[e.target.valueAsNumber]
-        document.querySelector('#rate').textContent = speed.toFixed(2)
-        wavesurfer.setPlaybackRate(speed, preservePitch)
-        wavesurfer.play()
-    })
-
-    wavesurfer.once('decode', () => {
-        const slider = document.querySelector('input[type="range"]')
-
-        slider.addEventListener('input', (e) => {
-            const minPxPerSec = e.target.valueAsNumber
-            wavesurfer.zoom(minPxPerSec)
-        })
-
-        document.querySelector('button').addEventListener('click', () => {
-            wavesurfer.playPause()
-        })
-
-        playButton.onclick = () => {
-            wavesurfer.playPause()
-        }
-
-        forwardButton.onclick = () => {
-            wavesurfer.skip(5)
-        }
-
-        backButton.onclick = () => {
-            wavesurfer.skip(-5)
-        }
-
-
-    })
-
-    wsRegions.enableDragSelection({
-        color: 'rgba(255, 0, 0, 0.1)',
-    })
-
-    wsRegions.on('region-updated', (region) => {
-        console.log('Updated region', region)
-    })
-
-    // Loop a region on click
-    let loop = true
-    // Toggle looping with a checkbox
-    document.querySelector('#loop').onclick = (e) => {
-        loop = e.target.checked
-    }
-
-    {
-        let activeRegion = null
-        wsRegions.on('region-in', (region) => {
-            activeRegion = region
-        })
-        wsRegions.on('region-out', (region) => {
-            if (activeRegion === region) {
-                if (loop) {
-                    region.play()
-                } else {
-                    activeRegion = null
-                }
-            }
-        })
-        wsRegions.on('region-clicked', (region, e) => {
-            e.stopPropagation() // prevent triggering a click on the waveform
-            activeRegion = region
-            region.play()
-            region.setOptions({
-                color: randomColor()
-            })
-        })
-        // Reset the active region when the user clicks anywhere in the waveform
-        wavesurfer.on('interaction', () => {
-            activeRegion = null
-        })
-    }
-
-    /*   wavesurfer.on('interaction', () => {
-          //wavesurfer.play()
-          //wavesurfer.playPause()
-          activeRegion = null
-      }) */
 </script>
 <script>
     pdfMake.fonts = {
@@ -173,6 +264,7 @@
         }
     }
     $(document).ready(function() {
+
 
         $(".delete_all_button").click(function() {
             var len = $('input[name="table_records[]"]:checked').length;
