@@ -268,6 +268,9 @@
         $('#btnreset').click(function(e) {
             $("#seachtype").val(0);
             $("#seachtext").val('');
+            startDate = moment().format('YYYY-MM-DD');
+            endDate = moment().format('YYYY-MM-DD');
+            daterange();
             $('#Listview').DataTable().ajax.reload();
         });
         $("#example1").DataTable({
@@ -373,8 +376,8 @@
                 phoneno: $('#Addphoneno').val(),
                 workno: $('#Addworkno').val(),
                 checkemer: $('#Addcheckemer').val(),
-                _token: token,
-                emergencyData: emergencyData
+                emergencyData: emergencyData,
+                _token: token
             };
 
             $.ajax({

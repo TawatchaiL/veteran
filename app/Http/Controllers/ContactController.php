@@ -242,25 +242,16 @@ class ContactController extends Controller
             'subdistrict.required' => 'กรุณาเลือกตำบล',
         ];
         if ($request->input('telhome') == "" && $request->input('phoneno') == "" && $request->input('workno') == "") {
-            $valifield = array_merge($valifield, ['telhome' => 'required|string|max:15']);
+            $valifield = array_merge($valifield, ['telhome' => 'required|string|max:25']);
             $valimess = array_merge($valimess, ['telhome.required' => 'กรุณากรอกเบอร์โทรศัพท์บ้าน หรือ เบอร์โทรศัทพ์มือถือ หรือ เบอร์โทรศัพท์ทีทำงาน']);
         }
-        if (!empty($request->eemergencyData)) {
-            $e = false;
+        if (!empty($request->emergencyData)) {
             foreach ($request->emergencyData as $edata) {
-                if($edata['emergencyname'] == ""){
-                    $e = true;
+                if ($edata['emergencyname'] == "" || $edata['emerrelation'] == "" || $edata['emerphone'] == "") {
+                    $valifield = array_merge($valifield, ['checkemer' => 'required|string|max:50']);
+                    $valimess = array_merge($valimess, ['checkemer.required' => 'กรุณาตรวจสอบข้อมูล ชื่อบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน']);
+                    break;
                 }
-                if($edata['emerrelation'] == ""){
-                    $e = true;
-                }
-                if($edata['emerphone'] == ""){
-                    $e = true;
-                }
-            }
-            if($e){
-                $valifield = array_merge($valifield, ['checkemer' => 'required|string|max:15']);
-                $valimess = array_merge($valimess, ['checkemer.required' => 'กรุณาตรวจสอบข้อมูล ชื่อบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน']);
             }
         }
         $validator =  Validator::make($request->all(), $valifield, $valimess);
@@ -271,7 +262,7 @@ class ContactController extends Controller
         $input = $request->all();
         $contact = CrmContact::create($input);
         $insertedId = $contact->id;
-        if (!empty($request->eemergencyData)) {
+        if (!empty($request->emergencyData)) {
             foreach ($request->emergencyData as $edata) {
                 $Crmemergency = new CrmPhoneEmergency();
                 $Crmemergency->contact_id = $insertedId;
@@ -323,6 +314,40 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $valifield = [
+            'fname' => 'required|string|max:50',
+            'lname' => 'required|string|max:50',
+            'homeno' => 'required|string|max:10',
+            'city' => 'required|string|max:8',
+            'district' => 'required|string|max:8',
+            'subdistrict' => 'required|string|max:8',
+        ];
+        $valimess = [
+            'fname.required' => 'กรุณากรอกชื่อ',
+            'lname.required' => 'กรุณากรอกนามสกุล',
+            'homeno.required' => 'กรุณากรอกบ้านเลขที่',
+            'city.required' => 'กรุณาเลือกจังหวัด',
+            'district.required' => 'กรุณาเลือกอำเภอ',
+            'subdistrict.required' => 'กรุณาเลือกตำบล',
+        ];
+        if ($request->input('telhome') == "" && $request->input('phoneno') == "" && $request->input('workno') == "") {
+            $valifield = array_merge($valifield, ['telhome' => 'required|string|max:25']);
+            $valimess = array_merge($valimess, ['telhome.required' => 'กรุณากรอกเบอร์โทรศัพท์บ้าน หรือ เบอร์โทรศัทพ์มือถือ หรือ เบอร์โทรศัพท์ทีทำงาน']);
+        }
+        if (!empty($request->eemergencyData)) {
+            foreach ($request->eemergencyData as $edata) {
+                if ($edata['emergencyname'] == "" || $edata['emerrelation'] == "" || $edata['emerphone'] == "") {
+                    $valifield = array_merge($valifield, ['checkemer' => 'required|string|max:50']);
+                    $valimess = array_merge($valimess, ['checkemer.required' => 'กรุณาตรวจสอบข้อมูล ชื่อบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน']);
+                    break;
+                }
+            }
+        }
+        $validator =  Validator::make($request->all(), $valifield, $valimess);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all()]);
+        }
+
         $contactd = [
             'hn' => $request->get('hn'),
             'adddate' => $request->get('adddate'),
