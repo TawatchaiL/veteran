@@ -246,21 +246,11 @@ class ContactController extends Controller
             $valimess = array_merge($valimess, ['telhome.required' => 'กรุณากรอกเบอร์โทรศัพท์บ้าน หรือ เบอร์โทรศัทพ์มือถือ หรือ เบอร์โทรศัพท์ทีทำงาน']);
         }
         if (!empty($request->eemergencyData)) {
-            $e = false;
             foreach ($request->emergencyData as $edata) {
-                if($edata['emergencyname'] == ""){
-                    $e = true;
+                if ($edata['emergencyname'] == "" && $edata['emerrelation'] == "" && $edata['emerphone'] == "") {
+                    $valifield = array_merge($valifield, ['checkemer' => 'required|string|max:50']);
+                    $valimess = array_merge($valimess, ['checkemer.required' => 'กรุณาตรวจสอบข้อมูล ชื่อบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน']);
                 }
-                if($edata['emerrelation'] == ""){
-                    $e = true;
-                }
-                if($edata['emerphone'] == ""){
-                    $e = true;
-                }
-            }
-            if($e){
-                $valifield = array_merge($valifield, ['checkemer' => 'required|string|max:15']);
-                $valimess = array_merge($valimess, ['checkemer.required' => 'กรุณาตรวจสอบข้อมูล ชื่อบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน']);
             }
         }
         $validator =  Validator::make($request->all(), $valifield, $valimess);
