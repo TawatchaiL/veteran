@@ -376,8 +376,8 @@
                 phoneno: $('#Addphoneno').val(),
                 workno: $('#Addworkno').val(),
                 checkemer: $('#Addcheckemer').val(),
-                _token: token,
-                emergencyData: emergencyData
+                emergencyData: emergencyData,
+                _token: token
             };
 
             $.ajax({
