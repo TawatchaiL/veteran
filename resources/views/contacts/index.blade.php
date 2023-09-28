@@ -125,15 +125,15 @@
                                             </div>
                                         </div>
                                         <div class="col-xs-2 col-sm-2 col-md-2">
-                                                <strong>&nbsp;</strong>
-                                                <button type="button" class="form-control btn btn-success" id="btnsearch">
+                                            <strong>&nbsp;</strong>
+                                            <button type="button" class="form-control btn btn-success" id="btnsearch">
                                                 <i class="fas fa-search"></i></button>
                                         </div>
                                         <div class="col-xs-2 col-sm-2 col-md-2" style="align-items: flex-end;">
-                                                <strong>&nbsp;</strong>
-                                                <button type="button" class="form-control btn btn-warning" id="btnreset">
+                                            <strong>&nbsp;</strong>
+                                            <button type="button" class="form-control btn btn-warning" id="btnreset">
                                                 <i class="fa-solid fa-rotate-right"></i></button>
-                                    </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -147,7 +147,8 @@
                                             class="display nowrap table table-bordered table-striped table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th width="5%"><input type="checkbox" id="check-all" class="flat">
+                                                    <th width="5%"><input type="checkbox" id="check-all"
+                                                            class="flat">
                                                     </th>
                                                     <th>รหัสผู้ติดต่อ</th>
                                                     <th>ชื่อผู้ติดต่อ</th>
