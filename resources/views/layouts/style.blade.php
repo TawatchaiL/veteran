@@ -46,7 +46,7 @@
 
     body {
         font-family: 'Sarabun', 'Roboto';
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .main-header.navbar {
