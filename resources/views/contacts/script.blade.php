@@ -269,7 +269,7 @@
             $("#seachtype").val(0);
             $("#seachtext").val('');
             startDate = moment().format('YYYY-MM-DD');
-            endDate = moment().format('YYYY-MM-DD');
+            endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
             daterange();
             $('#Listview').DataTable().ajax.reload();
         });
