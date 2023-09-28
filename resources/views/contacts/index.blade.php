@@ -89,7 +89,7 @@
                                                             <i class="far fa-calendar-alt"></i>
                                                         </span>
                                                     </div>
-                                                    <input type="text" class="form-control float-right" id="reservation">
+                                                    <input type="text" class="form-control float-right" id="reservation" style="width: 210px">
                                                 </div>
 
                                             </div>
