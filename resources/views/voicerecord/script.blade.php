@@ -16,12 +16,12 @@
         //wav
         // Create a second timeline
         const bottomTimline = TimelinePlugin.create({
-            height: 10,
+            height: 15,
             timeInterval: 2,
             primaryLabelInterval: 10,
             style: {
                 fontSize: '10px',
-                color: '#6A3274',
+                color: '#ff0000',
             },
         })
 
@@ -32,16 +32,17 @@
 
         wavesurfer = WaveSurfer.create({
             container: '#waveform',
+            height: 200,
             audioRate: 1,
             splitChannels: false,
             normalize: false,
             waveColor: '#4F4A85',
             progressColor: '#383351',
             url: newUrl,
-            cursorColor: "#ddd5e9",
-            cursorWidth: 4,
-            barWidth: 1,
-            barGap: 1,
+            cursorColor: '#b3aefb',
+            cursorWidth: 1,
+            //barWidth: 1,
+            //barGap: 1,
             barRadius: 1,
             barHeight: null,
             barAlign: "",
@@ -56,7 +57,7 @@
                     labelSize: '11px',
                 }),
                 Minimap.create({
-                    height: 20,
+                    height: 30,
                     waveColor: '#ddd',
                     progressColor: '#999',
                 }), /* topTimeline,*/ bottomTimline
@@ -68,14 +69,16 @@
         const forwardButton = document.querySelector('#forward')
         const backButton = document.querySelector('#backward')
 
+
+
         let preservePitch = true
         const speeds = [0.25, 0.5, 1, 2, 4]
 
         // Toggle pitch preservation
-        document.querySelector('#pitch').addEventListener('change', (e) => {
+        /* document.querySelector('#pitch').addEventListener('change', (e) => {
             preservePitch = e.target.checked
             wavesurfer.setPlaybackRate(wavesurfer.getPlaybackRate(), preservePitch)
-        })
+        }) */
 
         // Set the playback rate
         document.querySelector('#speed').addEventListener('input', (e) => {
@@ -84,6 +87,34 @@
             wavesurfer.setPlaybackRate(speed, preservePitch)
             wavesurfer.play()
         })
+
+        var volumeInput = document.querySelector('#volume');
+        var onChangeVolume = function(e) {
+            wavesurfer.setVolume(e.target.value);
+            const volume = parseFloat(e.target.value*10);
+            document.querySelector('#vol').textContent = volume.toFixed(2)
+            //console.log(e.target.value);
+        };
+        volumeInput.addEventListener('input', onChangeVolume);
+        volumeInput.addEventListener('change', onChangeVolume);
+
+
+        const fetchTooltipsFromDB = () => {
+            // Perform an API request or database query to retrieve tooltip data
+            return [{
+                    startTime: 10,
+                    endTime: 15,
+                    content: 'Tooltip 1'
+                },
+                {
+                    startTime: 20,
+                    endTime: 25,
+                    content: 'Tooltip 2'
+                },
+                // More tooltip data...
+            ];
+        };
+
 
         wavesurfer.once('decode', () => {
             const slider = document.querySelector('input[type="range"]')
@@ -109,8 +140,50 @@
                 wavesurfer.skip(-5)
             }
 
+            wavesurfer.setVolume(0.4);
+            document.querySelector('#volume').value = wavesurfer.getVolume();
 
-        })
+            const tooltipsData = fetchTooltipsFromDB();
+            // Iterate through the tooltip data and add tooltips to the waveform
+            tooltipsData.forEach(({
+                startTime,
+                endTime,
+                content
+            }) => {
+                // Create a region for each tooltip
+                const region = wsRegions.addRegion({
+                    start: startTime,
+                    end: endTime,
+                    color: 'rgba(255, 0, 0, 0.1)', // Set your desired tooltip color
+                });
+
+                const tooltip = document.createElement('div');
+                tooltip.className = 'region-tooltip';
+                tooltip.style.paddingLeft = '10px';
+                tooltip.textContent = content;
+
+                // Attach the tooltip to the region's element
+                region.element.appendChild(tooltip);
+
+            });
+
+            /*  // Create a button to remove the region
+            const regionButton = document.createElement('button');
+            regionButton.className = 'remove-region-button';
+            regionButton.textContent = 'X';
+
+            // Add a click event listener to remove the region when the button is clicked
+            regionButton.addEventListener('click', () => {
+                const activeRegion = wsRegions.getActiveRegion();
+                if (activeRegion) {
+                    activeRegion.remove();
+                }
+            });
+           */
+            // Append the button to the container
+            //const container = document.querySelector('#waveform-container');
+            //container.appendChild(regionButton);
+        });
 
         const customDialog = document.getElementById('custom-dialog');
         const contentInput = document.getElementById('content-input');
@@ -138,25 +211,24 @@
             customDialog.style.display = 'block';
 
             addContentButton.addEventListener('click', () => {
-                // Create a tooltip element
-                const tooltip = document.createElement('div');
-                const content = contentInput.value;
-                tooltip.className = 'region-tooltip';
-                tooltip.textContent = content; // Replace with your tooltip text
-                customDialog.style.display = 'none'; // Close the dialog box
-                region.element.appendChild(tooltip);
+                if (currentRegion) {
+                    // Remove any existing tooltips in the current region
+                    const existingTooltips = currentRegion.element.querySelectorAll(
+                        '.region-tooltip');
+                    existingTooltips.forEach((tooltip) => {
+                        tooltip.remove();
+                    });
+
+                    // Create a tooltip element
+                    const tooltip = document.createElement('div');
+                    const content = contentInput.value;
+                    tooltip.className = 'region-tooltip';
+                    tooltip.textContent = content; // Replace with your tooltip text
+                    tooltip.style.paddingLeft = '10px';
+                    customDialog.style.display = 'none'; // Close the dialog box
+                    currentRegion.element.appendChild(tooltip);
+                }
             });
-
-            /*  // Attach a mouseenter event handler to show the tooltip
-             region.element.addEventListener('mouseenter', () => {
-                 tooltip.style.display = 'block';
-             });
-
-             // Attach a mouseleave event handler to hide the tooltip
-             region.element.addEventListener('mouseleave', () => {
-                 tooltip.style.display = 'none';
-             }); */
-
 
             // Attach a click event handler to the button
             button.addEventListener('click', () => {
@@ -167,6 +239,7 @@
             // Append the button to the region element
             region.element.appendChild(button);
 
+            currentRegion = region;
         });
 
         wsRegions.on('region-updated', (region) => {
