@@ -66,7 +66,7 @@
                 </div>
 
                 {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
                             <div class="custom-control custom-switch">
@@ -92,7 +92,7 @@
                             ]) !!}
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 {!! Form::close() !!}
             </div>
             <div class="modal-footer {{-- justify-content-between --}}">
