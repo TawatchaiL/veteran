@@ -69,6 +69,9 @@
         const forwardButton = document.querySelector('#forward')
         const backButton = document.querySelector('#backward')
         const stopButton = document.querySelector('#stop')
+        const toggleMuteButton = document.querySelector('#toggleMuteBtn')
+        const setMuteOnButton = document.querySelector('#setMuteOnBtn')
+        const setMuteOffButton = document.querySelector('#setMuteOffBtn')
 
 
 
@@ -149,6 +152,18 @@
             document.querySelector('button').addEventListener('click', () => {
                 wavesurfer.playPause()
             })
+
+            toggleMuteButton.onclick = function() {
+                wavesurfer.toggleMute();
+            };
+
+            setMuteOnButton.onclick = function() {
+                wavesurfer.setMute(true);
+            };
+
+            setMuteOffButton.onclick = function() {
+                wavesurfer.setMute(false);
+            };
 
             playButton.onclick = () => {
                 wavesurfer.playPause()
