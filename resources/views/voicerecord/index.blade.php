@@ -111,8 +111,8 @@
                                 </script>
                             @endif
 
-                           
-                            <button id="changeUrlButton">Change URL</button>
+
+                            <button class="changeUrlButton">Change URL</button>
                             <div class="col-xs-12 col-sm-12 col-md-12 align-self-end text-right">
                                 <div class="form-group">
                                     <a class="btn btn-warning" id="exportVoiceButton" {{-- href="{{ route('reportcase.pdf') }}" --}}>

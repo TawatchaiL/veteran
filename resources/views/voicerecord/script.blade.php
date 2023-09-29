@@ -333,7 +333,7 @@
     const random = (min, max) => Math.random() * (max - min) + min
     const randomColor = () => `rgba(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)}, 0.5)`
 
-    $('#changeUrlButton').on('click', () => {
+    $('.changeUrlButton').on('click', () => {
         const newUrl = 'wav/PinkPanther60.wav'; // Replace with the new URL
         initializeWaveSurfer(newUrl);
     });
