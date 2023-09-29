@@ -21,7 +21,7 @@
             primaryLabelInterval: 10,
             style: {
                 fontSize: '10px',
-                color: '#ff0000',
+                color: '#000000',
             },
         })
 
@@ -59,7 +59,7 @@
                 Minimap.create({
                     height: 30,
                     waveColor: '#ddd',
-                    progressColor: '#999',
+                    progressColor: '#ff0000',
                 }), /* topTimeline,*/ bottomTimline
             ],
         })
@@ -91,7 +91,7 @@
         var volumeInput = document.querySelector('#volume');
         var onChangeVolume = function(e) {
             wavesurfer.setVolume(e.target.value);
-            const volume = parseFloat(e.target.value*10);
+            const volume = parseFloat(e.target.value * 10);
             document.querySelector('#vol').textContent = volume.toFixed(2)
             //console.log(e.target.value);
         };
@@ -104,12 +104,12 @@
             return [{
                     startTime: 10,
                     endTime: 15,
-                    content: 'Tooltip 1'
+                    content: 'ทดสอบ'
                 },
                 {
                     startTime: 20,
                     endTime: 25,
-                    content: 'Tooltip 2'
+                    content: 'เสียงชัดเจน'
                 },
                 // More tooltip data...
             ];
@@ -164,6 +164,7 @@
 
                 // Attach the tooltip to the region's element
                 region.element.appendChild(tooltip);
+                customDialog.style.display = 'none';
 
             });
 
@@ -271,9 +272,9 @@
                 e.stopPropagation() // prevent triggering a click on the waveform
                 activeRegion = region
                 region.play()
-                region.setOptions({
+                /* region.setOptions({
                     color: randomColor()
-                })
+                }) */
             })
             // Reset the active region when the user clicks anywhere in the waveform
             wavesurfer.on('interaction', () => {
@@ -291,6 +292,12 @@
         const newUrl = 'wav/PinkPanther60.wav'; // Replace with the new URL
         initializeWaveSurfer(newUrl);
     });
+
+    $('#canclecomment').on('click', () => {
+        document.getElementById('custom-dialog').style.display = 'none';
+    });
+
+
 
     $('.modelClose').on('click', () => {
         console.log(wavesurfer);

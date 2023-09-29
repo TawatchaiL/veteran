@@ -8,6 +8,10 @@
         max-width: 1200px !important;
     }
 
+    .modal-xxxl {
+        max-width: 1400px !important;
+    }
+
     .select2-container.select2-container-disabled .select2-choice {
         background-color: #ddd;
         border-color: #a8a8a8;
@@ -49,6 +53,11 @@
     .region:hover .region-tooltip {
         opacity: 1;
         transform: translateY(0);
+    }
+
+    #waveform {
+        border: 1px solid #cccaca;
+        /* Add your desired border styles here */
     }
 
     #waveform ::part(wrapper) {
@@ -98,17 +107,4 @@
         border-right-width: 4px !important;
         border-right-color: #fff000 !important;
     } */
-
-    .modalvol {
-       /*  text-align: right;
-        padding: 10px; */
-    }
-
-    .lleft {
-        text-align: left;
-    }
-
-    .lright {
-        text-align: right;
-    }
 </style>
