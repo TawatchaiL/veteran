@@ -68,6 +68,7 @@
         const playButton = document.querySelector('#play')
         const forwardButton = document.querySelector('#forward')
         const backButton = document.querySelector('#backward')
+        const stopButton = document.querySelector('#stop')
 
 
 
@@ -115,6 +116,27 @@
             ];
         };
 
+        const updateTimer = () => {
+            const formattedTime = secondsToTimestamp(wavesurfer.getCurrentTime());
+            $('#waveform-time-indicator .time').text(formattedTime);
+        };
+
+        const secondsToTimestamp = (seconds) => {
+            seconds = Math.floor(seconds);
+            const h = Math.floor(seconds / 3600);
+            const m = Math.floor((seconds - (h * 3600)) / 60);
+            const s = seconds - (h * 3600) - (m * 60);
+
+            const padZero = (value) => (value < 10 ? '0' + value : value);
+
+            return `${padZero(h)}:${padZero(m)}:${padZero(s)}`;
+        };
+
+
+        wavesurfer.on('ready', updateTimer)
+        wavesurfer.on('audioprocess', updateTimer)
+        wavesurfer.on('seek', updateTimer)
+
 
         wavesurfer.once('decode', () => {
             const slider = document.querySelector('input[type="range"]')
@@ -132,6 +154,11 @@
                 wavesurfer.playPause()
             }
 
+            stopButton.onclick = () => {
+                wavesurfer.stop()
+            }
+
+
             forwardButton.onclick = () => {
                 wavesurfer.skip(5)
             }
@@ -139,6 +166,9 @@
             backButton.onclick = () => {
                 wavesurfer.skip(-5)
             }
+
+            const totalTime = wavesurfer.getDuration()
+            document.querySelector('#duration').textContent = secondsToTimestamp(totalTime);
 
             wavesurfer.setVolume(0.4);
             document.querySelector('#volume').value = wavesurfer.getVolume();

@@ -107,4 +107,14 @@
         border-right-width: 4px !important;
         border-right-color: #fff000 !important;
     } */
+
+    #waveform-time-indicator {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    #waveform-time-indicator .time {
+        /* background: #f5f5f5; */
+        padding: 5px;
+    }
 </style>

@@ -2,10 +2,13 @@
     <div class="modal-dialog modal-xxxl">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <h4 class="modal-title"><i class="fa-solid fa-volume-high"></i> 09999999-1002-2023-08-01-110000.wav</h4>
-                <button type="button" class="close modelClose" data-dismiss="modal" aria-label="Close">
+                <h4 class="modal-title"><i class="fa-solid fa-volume-high"></i> 09999999-1002-2023-08-01-110000.wav </h4>
+                <div class="closew"> <i class="fa-solid fa-clock"></i> ความยาว <span id="duration">00:00:00</span> นาที
+                </div>
+
+                {{-- <button type="button" class="close modelClose" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
-                </button>
+                </button> --}}
             </div>
             <div class="modal-body">
                 {{-- @if (count($errors) > 0)
@@ -38,11 +41,13 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="row float-lg-left">
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <button class="btn btn-warning" id="backward"> <i
+                                <button class="btn btn-warning btn-lg" id="backward"> <i
                                         class="fa-solid fa-backward"></i></button>
-                                <button class="btn btn-warning"id="play"><i class="fa-solid fa-play"></i> / <i
-                                        class="fa-solid fa-pause"></i></button>
-                                <button class="btn btn-warning" id="forward"><i
+                                <button class="btn btn-warning btn-lg" id="play"><i class="fa-solid fa-play"></i> /
+                                    <i class="fa-solid fa-pause"></i></button>
+                                <button class="btn btn-warning btn-lg" id="stop"><i
+                                        class="fa-solid fa-stop"></i></button>
+                                <button class="btn btn-warning btn-lg" id="forward"><i
                                         class="fa-solid fa-forward"></i></button>
 
                             </div>
@@ -79,29 +84,36 @@
 
 
 
-                <div class="row ">
+                <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div id="waveform">
                             <!-- the waveform will be rendered here -->
                         </div>
+                        <div class="text-center">
+                            <button type="button" class="btn btn-success btn-lg mx-auto" id="waveform-time-indicator">
+                                <i class="fa-solid fa-clock"></i> <span class="time">00:00:00</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
+
+
                 <div class="row" id="custom-dialog" style="display: none;">
                     <div class="col-xs-4 col-sm-4 col-md-4">
-                            <div class="form-group">
-                                <label for="content-input">ระบุ Comment:</label>
-                                <input type="text" id="content-input" class="form-control">
-                            </div>
+                        <div class="form-group">
+                            <label for="content-input">ระบุ Comment:</label>
+                            <input type="text" id="content-input" class="form-control">
+                        </div>
 
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6">
-                            <div class="form-group">
-                                <button type="button" class="btn btn-success" id="add-content-button"><i
-                                        class="fas fa-download"></i> บันทึก</button>
-                                <button type="button" class="btn btn-danger" id="canclecomment"><i
-                                        class="fas fa-door-closed"></i> ยกเลิก</button>
-                            </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-success" id="add-content-button"><i
+                                    class="fas fa-download"></i> บันทึก</button>
+                            <button type="button" class="btn btn-danger" id="canclecomment"><i
+                                    class="fas fa-door-closed"></i> ยกเลิก</button>
+                        </div>
                     </div>
                 </div>
 
