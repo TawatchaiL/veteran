@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
-class CasesController extends Controller
+class CasesContractController extends Controller
 {
     function __construct()
     {
@@ -24,7 +24,7 @@ class CasesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index(Request $request, $id)
     {
         if ($request->ajax()) {
             //sleep(2);

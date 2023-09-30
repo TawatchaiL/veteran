@@ -414,6 +414,15 @@
         });
 
         let id;
+        $(document).on('click', '#getCases', function(e) {
+            id = $(this).data('id');
+            //window.location.href = "{{ route('cases', ['id' => ".id."])}}";
+            //window.location.href = "cases";
+            var id = '12';
+	        var url = "casescontract/1";
+	        //url = url.replace(':id', id);
+	        location.href = url;
+        });
         $(document).on('click', '#getEditData', function(e) {
             e.preventDefault();
             $('.alert-danger').html('');

@@ -71,6 +71,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/cases/destroy', [App\Http\Controllers\CasesController::class, 'destroy'])->name('cases.destroy');
     Route::post('/cases/destroy_all', [App\Http\Controllers\CasesController::class, 'destroy_all'])->name('cases.destroy_all');
 
+    Route::get('/casescontract/{id}', [App\Http\Controllers\CasesContractController::class, 'index'])->name('casescontract.index');
+    Route::post('/casescontract/store', [App\Http\Controllers\CasesContractController::class, 'store'])->name('casescontract.store');
+    Route::get('/casescontract/edit/{id}', [App\Http\Controllers\CasesContractController::class, 'edit'])->name('casescontract.edit');
+    Route::put('/casescontract/save/{id}', [App\Http\Controllers\CasesContractController::class, 'update'])->name('cacasescontractses.save');
+    Route::delete('/casescontract/destroy', [App\Http\Controllers\CasesContractController::class, 'destroy'])->name('casescontract.destroy');
+    Route::post('/casescontract/destroy_all', [App\Http\Controllers\CasesContractController::class, 'destroy_all'])->name('casescontract.destroy_all');
+
     Route::get('/voicerecord', [App\Http\Controllers\VoicerecordController::class, 'index'])->name('voicerecord');
     Route::get('/ivrreport', [App\Http\Controllers\IvrreportController::class, 'index'])->name('ivrreport');
     Route::get('/ivrreporttop10', [App\Http\Controllers\Ivrreporttop10Controller::class, 'index'])->name('ivrreporttop10');
