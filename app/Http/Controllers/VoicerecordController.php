@@ -36,6 +36,9 @@ class VoicerecordController extends Controller
      */
     public function index(Request $request)
     {
+
+        //$remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')->get();
+        //dd($remoteData);
         $datas = DB::table('cases')
             ->select(DB::raw('DATE(created_at) as cdate'), DB::raw('TIME(created_at) as ctime'), 'telno', 'agent', 'id')
             ->get();

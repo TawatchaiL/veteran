@@ -35,6 +35,19 @@ return [
 
     'connections' => [
 
+        'remote_connection' => [
+            'driver' => 'mysql',
+            'host' => '192.168.1.80', // IP address or hostname of the remote machine
+            'port' => '3306', // Default MySQL port
+            'database' => 'call_center',
+            'username' => 'root',
+            'password' => 'rsiippbx',
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+        ],
+
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DATABASE_URL'),
