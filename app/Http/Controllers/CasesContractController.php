@@ -42,10 +42,11 @@ class CasesContractController extends Controller
 
             //sleep(2);
             $datas = DB::table('cases')
+            ->select('cases.id as id','hn', DB::raw("concat(fname, ' ', lname) as name"),'phoneno', 'cases.created_at', 'case_types.name as casename', 'casestatus', 'tranferstatus', 'agent')
             ->join('crm_contacts', 'cases.contact_id', '=', 'crm_contacts.id')
             ->join('case_types', 'cases.casetype1', '=', 'case_types.id')
             //->where('emerphone', '=', $request->input('seachtext'))
-            //->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
+            ->whereRaw('cases.created_at between "' . $startDate . '" and "' . $endDate . '"')
             ->get();
             //$datas = Cases::orderBy("id", "desc")->get();
 
@@ -169,6 +170,6 @@ class CasesContractController extends Controller
             Cases::find($arr_del[$xx])->delete();
         }
 
-        return redirect('/cases')->with('success', 'ลบ เรื่องที่ติดต่อ เรียบร้อยแล้ว');
+        return redirect('casescontract.index')->with('success', 'ลบ เรื่องที่ติดต่อ เรียบร้อยแล้ว');
     }
 }

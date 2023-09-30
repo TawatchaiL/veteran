@@ -456,8 +456,8 @@
                     name: 'hn'
                 },
                 {
-                    data: 'fname',
-                    name: 'fname'
+                    data: 'name',
+                    name: 'name'
                 },
                 {
                     data: 'phoneno',
@@ -468,8 +468,8 @@
                     name: 'created_at'
                 },
                 {
-                    data: 'name',
-                    name: 'name'
+                    data: 'casename',
+                    name: 'casename'
                 },
                 {
                     data: 'casestatus',
@@ -622,26 +622,19 @@
 
 
 
-            //id = $(this).data('id');
-            //$.ajax({
-            //    url: "orders/edit/" + id,
-            //    method: 'GET',
-            //    success: function(res) {
-            //        console.log(res);
-             //       $('#EditLot').val(res.data.order_number);
-            //        $('#EditProduct').val(res.data.pid).change();
-            //        $("select[name=eproduct]").attr("readonly", "readonly");
-            //        $('#EditStock').val(res.data.sid).change();
-            //        $("select[name=estock]").attr("readonly", "readonly");
-            //        $('#EditCompany').val(res.data.cid).change();
-           //         $('#EditAmount').val(res.data.amount);
-            //        $('#EditCost').val(res.data.cost);
-            //        $('#EditTotalCost').val(res.data.total_cost);
-            //        $('#EditDetail').val(res.data.detail);
-            //        $('#EditModalBodyTable').html(res.table_html);
+            id = $(this).data('id');
+            $.ajax({
+                url: "casescontract/edit/" + id,
+                method: 'GET',
+                success: function(res) {
+                    console.log(res);
+                    $('#Editcasetype1e').val(res.data.casetype1);
+                    $('#Editdetail').val(res.data.casedetail);
+                    $('#Edittranferstatuse').val(res.data.tranferstatus);
+                    $('#Editcasestatuse').val(res.data.casestatus);
                     $('#EditModal').modal('show');
-            //    }
-            //});
+                }
+            });
 
         })
 
@@ -654,157 +647,71 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
-            var stockValues = [];
-            var amountValues = [];
-            var priceValues = [];
-            var isValid = true;
-
-            // Initializing array values
-            $("select[name='estock[]']").each(function() {
-                stockValues.push(this.value);
-            });
-
-            // Check for duplicates in stock values
-            var duplicateValues = stockValues.filter(function(value, index, self) {
-                return self.indexOf(value) !== index;
-            });
-
-            if (duplicateValues.length > 0) {
-                toastr.error('ไม่สามารถเลือกสินค้าล็อตเดียวกันในรายการขาย', {
-                    timeOut: 5000
-                });
-                return false;
-            }
-
-            // Validate stock select
-            var stockSelects = $("select[name='estock[]']");
-            stockSelects.each(function() {
-                var stockSelect = $(this);
-                var selectedValue = stockSelect.val();
-
-                if (selectedValue === null || selectedValue.trim() === '') {
-                    stockSelect.addClass("is-invalid");
-                    stockSelect.removeClass("is-valid");
-                    toastr.error('กรุณาเลือกสินค้าในคลังสินค้า', {
-                        timeOut: 5000
-                    });
-                    isValid = false;
-                } else {
-                    stockSelect.removeClass("is-invalid");
-                    stockSelect.addClass("is-valid");
-                }
-            });
-
-            if (!isValid) {
-                return false;
-            }
-
-            // Collect amount values and validate
-            $("input[name='eamount[]']").each(function() {
-                var amountInput = $(this);
-                var value = parseFloat(amountInput.val());
-
-                if (isNaN(value) || value % 0.5 !== 0) {
-                    // Invalid amount input
-                    amountInput.addClass("is-invalid");
-                    amountInput.removeClass("is-valid");
-                    amountInput.siblings(".error-message").text(
-                        "กรุณาระบุจำนวนที่จะขาย");
-                    toastr.error('กรุณาระบุจำนวนที่จะขาย', {
-                        timeOut: 5000
-                    });
-                    isValid = false;
-                } else {
-                    // Valid amount input
-                    amountInput.removeClass("is-invalid");
-                    amountInput.addClass("is-valid");
-                    amountValues.push(value);
-                }
-            });
-
-            if (!isValid) {
-                return false;
-            }
-
-            // Collect price values and validate
-            $("input[name='eprice[]']").each(function() {
-                var priceInput = $(this);
-                var value = parseFloat(priceInput.val());
-
-                if (isNaN(value) || value <= 0) {
-                    // Invalid price input
-                    priceInput.addClass("is-invalid");
-                    priceInput.removeClass("is-valid");
-                    priceInput.siblings(".error-message").text(
-                        "กรุณาระบุราคาที่จะขาย");
-                    toastr.error('กรุณาระบุราคาที่จะขาย', {
-                        timeOut: 5000
-                    });
-                    isValid = false;
-                } else {
-                    // Valid price input
-                    priceInput.removeClass("is-invalid");
-                    priceInput.addClass("is-valid");
-                    priceValues.push(value);
-                }
-            });
-
-            if (!isValid) {
-                return false;
-            }
-
-            if ($('#EditCompany').val()[0] !== undefined) {
-                var formData = {
-                    order_number: $('#EditLot').val(),
-                    sid: stockValues, // Only consider the first selected stock value
-                    cid: $('#EditCompany').val()[0],
-                    pid: $('#EditProduct').val()[0],
-                    amount: amountValues,
-                    price: priceValues,
-                    tamount: $('#EditAmount').val(),
-                    //cost: $('#AddCost').val(),
-                    total_cost: $('#EditTotalCost').val(),
-                    detail: $('#EditDetail').val(),
-                    _token: token
+            var eemergencyData = [];
+            $('#myTbl3e tbody tr').each(function(index, tr) {
+                var eemertype = tr.cells[0].innerHTML;
+                var eemergencyname = $(this).find('input[name="eemergencyname[]"]').val();
+                var eemerrelation = $(this).find('input[name="eemerrelation[]"]').val();
+                var eemerphone = $(this).find('input[name="eemerphone[]"]').val();
+                var eemergency = {
+                    eemertype: eemertype,
+                    emergencyname: eemergencyname,
+                    emerrelation: eemerrelation,
+                    emerphone: eemerphone
                 };
+                eemergencyData.push(eemergency);
+            });
 
-                $.ajax({
-                    url: "orders/save/" + id,
-                    method: 'PUT',
-                    data: formData,
+            var additionalData = {
+                hn: $('#Edithn').val(),
+                adddate: $('#Editadddate').val(),
+                fname: $('#Editfname').val(),
+                lname: $('#Editlname').val(),
+                homeno: $('#Edithomeno').val(),
+                moo: $('#Editmoo').val(),
+                soi: $('#Editsoi').val(),
+                road: $('#Editroad').val(),
+                city: $('#Editcity').val(),
+                district: $('#Editdistrict').val(),
+                subdistrict: $('#Editsubdistrict').val(),
+                postcode: $('#Editpostcode').val(),
+                telhome: $('#Edittelhome').val(),
+                phoneno: $('#Editphoneno').val(),
+                workno: $('#Editworkno').val(),
+                eemergencyData: eemergencyData
+            };
+            $.ajax({
+                url: "casescontract/update/" + id,
+                method: 'PUT',
+                data: additionalData,
 
-                    success: function(result) {
-                        //console.log(result);
-                        if (result.errors) {
-                            $('.alert-danger').html('');
-                            $.each(result.errors, function(key, value) {
-                                $('.alert-danger').show();
-                                $('.alert-danger').append('<strong><li>' + value +
-                                    '</li></strong>');
-                            });
-                        } else {
-                            $('.alert-danger').hide();
-                            $('.alert-success').show();
-                            $('.alert-success').append('<strong><li>' + result.success +
+                success: function(result) {
+                    //console.log(result);
+                    if (result.errors) {
+                        $('.alert-danger').html('');
+                        $.each(result.errors, function(key, value) {
+                            $('.alert-danger').show();
+                            $('.alert-danger').append('<strong><li>' + value +
                                 '</li></strong>');
-                            $('#EditModal').modal('hide');
-                            toastr.success(result.success, {
-                                timeOut: 5000
-                            });
-                            $('#Listview').DataTable().ajax.reload();
-                            //setTimeout(function() {
-                            //$('.alert-success').hide();
+                        });
+                    } else {
+                        $('.alert-danger').hide();
+                        $('.alert-success').show();
+                        $('.alert-success').append('<strong><li>' + result.success +
+                            '</li></strong>');
+                        $('#EditModal').modal('hide');
+                        toastr.success(result.success, {
+                            timeOut: 5000
+                        });
+                        $('#Listview').DataTable().ajax.reload();
+                        //setTimeout(function() {
+                        //$('.alert-success').hide();
 
-                            //}, 10000);
+                        //}, 10000);
 
-                        }
                     }
-                });
-            } else {
-                toastr.error('กรุณากรอกข้อมูลให้ครบ', {
-                    timeOut: 5000
-                });
-            }
+                }
+            });
         });
 
         $(document).on('click', '.btn-delete', function() {
@@ -818,7 +725,7 @@
             $.ajax({
                 type: "POST",
                 dataType: 'JSON',
-                url: "orders/destroy/",
+                url: "casescontract/destroy/",
                 data: {
                     id: rowid,
                     _method: 'delete',
@@ -838,106 +745,6 @@
             }); //end ajax
         })
 
-
-    });
-
-    $(function() {
-
-        $("#addRow").click(function() {
-            // ส่วนของการ clone ข้อมูลด้วย jquery clone() ค่า true คือ
-            // การกำหนดให้ ไม่ต้องมีการ ดึงข้อมูลจากค่าเดิมมาใช้งาน
-            // รีเซ้ตเป็นค่าว่าง ถ้ามีข้อมูลอยู่แล้ว ทั้ง select หรือ input
-            // $(".firstTr1:eq(0)").clone(true)
-            //     .find("input").attr("value", "").end()
-            //     .find("select").attr("value", "").end()
-            //     .appendTo($("#myTbl"));
-            $(".firstTr:eq(0)").clone(true)
-
-                .find("input").attr("value", "").end()
-                .find("select").attr("value", "").end()
-                .appendTo($("#myTbl"));
-
-
-            efatotal();
-
-        });
-        $("#removeRow").click(function() {
-            // // ส่วนสำหรับการลบ
-            if ($("#myTbl tr").length > 2) { // จะลบรายการได้ อย่างน้อย ต้องมี 1 รายการ
-                $("#myTbl tr:last").remove(); // ลบรายการสุดท้าย
-                efatotal();
-            } else {
-                // เหลือ 1 รายการลบไม่ได้
-                if ($("#myTbl tr").length > 1) {
-                    //alert("ต้องมีรายการข้อมูลอย่างน้อย 1 รายการ");
-                    toastr.success('ต้องมีรายการข้อมูลอย่างน้อย 1 รายการ', {
-                        timeOut: 5000
-                    });
-                }
-            }
-        });
-        $(document).on('click', '.btnRemoveg', function() {
-            // // ส่วนสำหรับการลบ
-            if ($("#myTbl tr").length > 2) { // จะลบรายการได้ อย่างน้อย ต้องมี 1 รายการ
-                //$("#myTbl tr:last").remove(); // ลบรายการสุดท้าย
-                $(this).closest("tr").remove();
-                efatotal();
-            } else {
-                // เหลือ 1 รายการลบไม่ได้
-                if ($("#myTbl tr").length > 1) {
-                    //alert("ต้องมีรายการข้อมูลอย่างน้อย 1 รายการ");
-                    toastr.success('ต้องมีรายการข้อมูลอย่างน้อย 1 รายการ', {
-                        timeOut: 5000
-                    });
-                }
-            }
-        });
-
-        $("#addRow2").click(function() {
-            // ส่วนของการ clone ข้อมูลด้วย jquery clone() ค่า true คือ
-            // การกำหนดให้ ไม่ต้องมีการ ดึงข้อมูลจากค่าเดิมมาใช้งาน
-            // รีเซ้ตเป็นค่าว่าง ถ้ามีข้อมูลอยู่แล้ว ทั้ง select หรือ input
-            $(".firstTr3:eq(0)").clone(true)
-
-                .find("input").attr("value", "").end()
-                .find("select").attr("value", "").end()
-                .appendTo($("#myTbl3"));
-
-            fatotal();
-        });
-        $("#removeRow2").click(function() {
-            // // ส่วนสำหรับการลบ
-            if ($("#myTbl3 tr").length > 2) { // จะลบรายการได้ อย่างน้อย ต้องมี 1 รายการ
-                $("#myTbl3 tr:last").remove(); // ลบรายการสุดท้าย
-                fatotal();
-            } else {
-                // เหลือ 1 รายการลบไม่ได้
-                if ($("#myTbl3 tr").length > 1) {
-                    //alert("ต้องมีรายการข้อมูลอย่างน้อย 1 รายการ");
-                    toastr.success('ต้องมีรายการข้อมูลอย่างน้อย 1 รายการ', {
-                        timeOut: 5000
-                    });
-                }
-            }
-        });
-        $(".btnRemoveg2").click(function() {
-            // // ส่วนสำหรับการลบ
-            if ($("#myTbl3 tr").length > 2) { // จะลบรายการได้ อย่างน้อย ต้องมี 1 รายการ
-                //$("#myTbl tr:last").remove(); // ลบรายการสุดท้าย
-                $(this).closest("tr").remove();
-                fatotal();
-            } else {
-                // เหลือ 1 รายการลบไม่ได้
-                if ($("#myTbl3 tr").length > 1) {
-                    //alert("ต้องมีรายการข้อมูลอย่างน้อย 1 รายการ");
-                    toastr.success('ต้องมีรายการข้อมูลอย่างน้อย 1 รายการ', {
-                        timeOut: 5000
-                    });
-                }
-            }
-        });
-
-        $(this).closest(".abcd").remove();
 
     });
 </script>

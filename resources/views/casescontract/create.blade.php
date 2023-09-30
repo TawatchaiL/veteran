@@ -139,8 +139,8 @@
                                                     <select style="width: 100%;"
                                                         class="select2 form-control"
                                                         id="Addcasestatus" name="casestatus">
-                                                        <option value="1">ปิดเคส</option>
-                                                        <option value="2">กำลังดำเนินการ</option>
+                                                        <option value="ปิดเคส">ปิดเคส</option>
+                                                        <option value="กำลังดำเนินการ">กำลังดำเนินการ</option>
                                                     </select>
                                                 </div>
                                             </div>
