@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('style')
-    @include('cases.style')
+    @include('casescontract.style')
 @endsection
 
 @section('content')
@@ -51,7 +51,7 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fa-solid fa-clipboard"></i> เรื่องที่ติดต่อ</h3>
+                            <h3 class="card-title"><i class="fa-solid fa-clipboard"></i> เรื่องที่ติดต่อ : hn {{ $contacts[0]->hn }} ชื่อสกุล {{ $contacts[0]->fname }} {{ $contacts[0]->lname }}</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="maximize">
                                     <i class="fas fa-expand"></i>
@@ -153,11 +153,11 @@
 
     </section>
 
-    @include('cases.create')
+    @include('casescontract.create')
 
-    @include('cases.edit')
+    @include('casescontract.edit')
 @endsection
 
 @section('script')
-    @include('cases.script')
+    @include('casescontract.script')
 @endsection

@@ -24,49 +24,17 @@ class CasesContractController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request, $id)
+    public function index(Request $request)
     {
+        //$id = request('id');
+        //$request->get('id');
         if ($request->ajax()) {
             //sleep(2);
 
-            //$datas = Cases::orderBy("id", "desc")->get();
-            $numberOfRows = 50; // Change this to the desired number of rows
-            $simulatedDatas = [];
-
-            $thaiCaseTypes = ['บาดเจ็บ', 'อุบัติเหตุ', 'โรคเรื้อรัง', 'ไข้หวัด', 'ผ่าตัด', 'สูตินรีเวช', 'การวินิจฉัยโรค', 'จัดกระบวนการ', 'สัมผัสไข้หวัด', 'พิษสุนัขบ้า'];
-            $thaiNames = ['สมชาย', 'สมหญิง', 'วิชัย', 'วิไล', 'จริงใจ', 'เปรมชัย', 'สุดใจ', 'นฤมล', 'กมลชนก', 'ศุภัทรา', 'กิจวรรณ', 'อรวรรณ', 'ธนพงศ์', 'ประทุม', 'วิทยา', 'พรชัย'];
-            $thaiLastNames = ['ใจดี', 'เสมอ', 'รักชาติ', 'พร้อม', 'ชำนาญ', 'มีเสน่ห์', 'สุขใจ', 'เรียบง่าย', 'สุดหล่อ', 'หวานใจ', 'เก่ง', 'สนุก', 'ร่ำรวย', 'สายเครื่อง', 'ยอดมาก', 'คง', 'ละเอียด'];
-            
-            $thaiCaseStatuses = ['กำลังดำเนินการ', 'ปิดเคส', 'เคสใหม่'];
-            $thaiTransferStatuses = ['รับสาย', 'ไม่รับสาย', '-'];
-            $agents = ['Agent1', 'Agent2', 'Agent3', 'Agent4', 'Agent5'];
-
-            for ($i = 1; $i <= $numberOfRows; $i++) {
-                $hn = str_pad($i, 6, '0', STR_PAD_LEFT);
-                $fullName = $thaiNames[array_rand($thaiNames)] . ' ' . $thaiLastNames[array_rand($thaiLastNames)];
-                $caseType = $thaiCaseTypes[array_rand($thaiCaseTypes)];
-                $caseStatus = $thaiCaseStatuses[array_rand($thaiCaseStatuses)];
-                $transferStatus = $thaiTransferStatuses[array_rand($thaiTransferStatuses)];
-                $agent = $agents[array_rand($agents)];
-                $createDate = now()->subDays(rand(1, 365))->subHours(rand(0, 23))->subMinutes(rand(0, 59));
+            $datas = Cases::orderBy("id", "desc")->get();
 
 
-                $simulatedDatas[] = (object) [
-                    'id' => $i,
-                    'telephone' => '08' . rand(10000000, 99999999),
-                    'hn' => $hn,
-                    'contact_id' => $fullName,
-                    'case_type' => $caseType,
-                    'create_date' => $createDate->format('Y-m-d H:i:s'),
-                    'case_status' => $caseStatus,
-                    'transfer_status' => $transferStatus,
-                    'agent' => $agent,
-                    // Simulate other fields as needed
-                ];
-            }
-
-
-            return datatables()->of($simulatedDatas)
+            return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
                 })
@@ -89,7 +57,8 @@ class CasesContractController extends Controller
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
         $company = Case_type::orderBy("id", "asc")->get();
-        return view('casescontract.index')->with(['casetype' => $company]);
+        $contacts = DB::table('crm_contacts')->whereRaw('id = '.request('id').'')->get();
+        return view('casescontract.index')->with(['casetype' => $company,'contacts' => $contacts]);
     }
     /**
      * Show the form for creating a new resource.
