@@ -419,7 +419,7 @@
             //window.location.href = "{{ route('cases', ['id' => ".id."])}}";
             //window.location.href = "cases";
             //var id = '12';
-	        var url = "casescontract/"+id;
+	        var url = "casescontract/get/"+id;
 	        //url = url.replace(':id', id);
 	        location.href = url;
         });

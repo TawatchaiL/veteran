@@ -89,7 +89,7 @@ class CasesContractController extends Controller
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
         $company = Case_type::orderBy("id", "asc")->get();
-        return view('cases.index')->with(['casetype' => $company]);
+        return view('casescontract.index')->with(['casetype' => $company]);
     }
     /**
      * Show the form for creating a new resource.
