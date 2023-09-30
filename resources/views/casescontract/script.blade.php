@@ -222,105 +222,6 @@
             }
         });
 
-        $(document).on('change', '#eprice,#eamount,#estock', function(e) {
-            var parent = $(this).parent().parent().parent();
-
-            var amount = parent.find('#eamount').val();
-            var amounth = parent.find('#eamounth').val();
-            var price = parent.find('#eprice').val();
-            var sid = parent.find('#estock').val();
-
-            let total_cost = amount * price;
-            parent.find('#etotal').val(total_cost)
-
-            //alert(amounth);
-            if (isNaN(parseInt(amounth))) {
-                amounth = 0;
-            }
-
-            efatotal();
-            if (sid !== null) {
-                $.ajax({
-                    type: "GET",
-                    dataType: 'JSON',
-                    async: false,
-                    url: "stocks/find/price/" + sid,
-                    success: function(res) {
-                        //console.log(res);
-
-                        //alert(parseInt(amounth));
-                        //alert(parseInt(res.remaining)+parseInt(amounth));
-                        parent.find('#elot_price').html(
-                            `***ควรขายที่ราคา ${res.cost} - ${res.price} บาท `);
-                        if (parseInt(amount) > (parseInt(res.remaining) + parseInt(
-                                amounth))) {
-                            toastr.error('จำนวนที่จะขายมากกว่าจำนวนที่เหลือในล๊อต', {
-                                timeOut: 5000
-                            });
-                            parent.find('#elot_error').html(
-                                '***จำนวนที่จะขายมากกว่าจำนวนที่เหลือในล๊อต');
-                            parent.find('#eamount').val('')
-                        } else {
-                            parent.find('#elot_error').html('');
-                        }
-                    }
-                });
-            }
-        });
-
-
-        $("#EditCost,#EditAmount").on("keyup", function() {
-            let cost = $("#EditCost").val();
-            let amount = $("#EditAmount").val();
-
-            let total_cost = amount * cost;
-            $("#EditTotalCost").val(total_cost);
-
-        });
-
-
-
-        $(".productl").change(function() {
-            let product = $('#AddProduct').val();
-            //console.log(product);
-            //alert(product);
-            $('#AddStock').html('');
-            if (product.length !== 0) {
-                $.ajax({
-                    method: "GET",
-                    url: "stocks/find/add/" + product,
-                    success: function(res) {
-
-                        //$('#AddStock').html(res.html);
-                        $('.products').html(res.html);
-                        //console.log(res);
-
-                    }
-                });
-            }
-
-        })
-
-        $(".producte").change(function() {
-            let product = $('#EditProduct').val();
-            //console.log(product);
-            //alert(product);
-            $('#EditStock').html('');
-            if (product.length !== 0) {
-                $.ajax({
-                    method: "GET",
-                    url: "stocks/find/edit/" + product,
-                    async: false,
-                    success: function(res) {
-                        $('#EditStock').html(res.html);
-                        //console.log(res);
-
-                    }
-                });
-            }
-
-        })
-
         //$.noConflict();
         var token = ''
         $.ajaxSetup({
@@ -647,41 +548,15 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
-            var eemergencyData = [];
-            $('#myTbl3e tbody tr').each(function(index, tr) {
-                var eemertype = tr.cells[0].innerHTML;
-                var eemergencyname = $(this).find('input[name="eemergencyname[]"]').val();
-                var eemerrelation = $(this).find('input[name="eemerrelation[]"]').val();
-                var eemerphone = $(this).find('input[name="eemerphone[]"]').val();
-                var eemergency = {
-                    eemertype: eemertype,
-                    emergencyname: eemergencyname,
-                    emerrelation: eemerrelation,
-                    emerphone: eemerphone
-                };
-                eemergencyData.push(eemergency);
-            });
-
             var additionalData = {
-                hn: $('#Edithn').val(),
-                adddate: $('#Editadddate').val(),
-                fname: $('#Editfname').val(),
-                lname: $('#Editlname').val(),
-                homeno: $('#Edithomeno').val(),
-                moo: $('#Editmoo').val(),
-                soi: $('#Editsoi').val(),
-                road: $('#Editroad').val(),
-                city: $('#Editcity').val(),
-                district: $('#Editdistrict').val(),
-                subdistrict: $('#Editsubdistrict').val(),
-                postcode: $('#Editpostcode').val(),
-                telhome: $('#Edittelhome').val(),
-                phoneno: $('#Editphoneno').val(),
-                workno: $('#Editworkno').val(),
-                eemergencyData: eemergencyData
+                casetype1: $('#Editcasetype1e').val(),
+                tranferstatus: $('#Edittranferstatuse option:selected').text(),
+                casedetail: $('#Editdetail').val(),
+                casestatus: $('#Editcasestatuse option:selected').text(),
             };
+            
             $.ajax({
-                url: "casescontract/update/" + id,
+                url: "casescontract/save/" + id,
                 method: 'PUT',
                 data: additionalData,
 

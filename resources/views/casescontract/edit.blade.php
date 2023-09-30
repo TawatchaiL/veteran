@@ -88,9 +88,6 @@
                                                     <select style="width: 100%;"
                                                         class="select2 form-control" id="Editcasetype1e"
                                                         name="casetype1e">
-                                                        <option value="" selected>โอนสาย</option>
-                                                        <!-- <option value="" selected>Select Student</option>
-                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
                                                         @foreach ($casetype as $key2)
                                                             <option value="{{ $key2->id }}">{{ $key2->name }}
                                                             </option>
@@ -168,7 +165,7 @@
                 {!! Form::close() !!}
             </div>
             <div class="modal-footer {{-- justify-content-between --}}">
-                <button type="button" class="btn btn-success" id="SubmitCreateForm"><i class="fas fa-download"></i>
+                <button type="button" class="btn btn-success" id="SubmitEditForm"><i class="fas fa-download"></i>
                     บันทึกข้อมูล</button>
                 <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i
                         class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>

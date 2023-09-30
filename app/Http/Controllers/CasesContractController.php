@@ -129,7 +129,7 @@ class CasesContractController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'name' => 'required|string|max:255',
+            'casetype1' => 'required|string|max:20',
             //'postcode' => 'integer|max:10',
 
         ];
@@ -142,11 +142,14 @@ class CasesContractController extends Controller
         }
 
         $companyd = [
-            'name' => $request->get('name'),
+            'casetype1' => $request->get('casetype1'),
+            'tranferstatus' => $request->get('tranferstatus'),
+            'casedetail' => $request->get('casedetail'),
+            'lnacasestatusme' => $request->get('casestatus'),
         ];
 
-        $company = Cases::find($id);
-        $company->update($companyd);
+       $company = Cases::find($id);
+       $company->update($companyd);
 
         return response()->json(['success' => 'แก้ไข เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
     }
