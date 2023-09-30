@@ -274,6 +274,7 @@
         $('#btnreset').click(function(e) {
             $("#seachtype").val(0);
             $("#seachtext").val('');
+            document.getElementById('validationMessages').textContent = '';
             datereset();
             daterange();
             $('#Listview').DataTable().ajax.reload();

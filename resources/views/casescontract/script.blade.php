@@ -329,22 +329,75 @@
             }
         });
 
+        var startDate;
+        var endDate;
+        function datesearch() {
+            var currentDate = moment();
+            // Set the start date to 7 days before today
+            startDate = moment(currentDate).subtract(15, 'days').format('YYYY-MM-DD');
+            // Set the end date to the end of the current month
+            //endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
+            endDate = moment().format('YYYY-MM-DD');
+        }
+        function datereset() {
+            var currentDate = moment();
+            startDate = moment().format('YYYY-MM-DD');
+            endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
+        }
 
+        function retrieveFieldValues() {
+            var saveddateStart = localStorage.getItem('dateStart');
+            var savedSearchType = localStorage.getItem('searchType');
+            var savedKeyword = localStorage.getItem('keyword');
+
+            // Set field values from local storage
+            if (saveddateStart) {
+                var dateParts = saveddateStart.split(' - ');
+                startDate = dateParts[0];
+                endDate = dateParts[1];
+            } else {
+                datesearch();
+            }
+        }
+
+        let daterange = () => {
+
+            $('#reservation').daterangepicker({
+                startDate: startDate,
+                endDate: endDate,
+                locale: {
+                    format: 'YYYY-MM-DD'
+                }
+            });
+
+            // Apply the custom date range filter on input change
+            $('#reservation').on('apply.daterangepicker', function() {
+                table.draw();
+                //storeFieldValues();
+            });
+        }
+        datesearch();
+        daterange();
+
+
+        $.datepicker.setDefaults($.datepicker.regional['en']);
+        $(".AddDate").datepicker({
+            /*  onSelect: function() {
+                 table.draw();
+             }, */
+            dateFormat: 'yy-mm-dd',
+            changeMonth: true,
+            changeYear: true,
+            yearRange: '1980:2050',
+        });
         var table = $('#Listview').DataTable({
-            /*"aoColumnDefs": [
-            {
-            'bSortable': true,
-            'aTargets': [0]
-            } //disables sorting for column one
-            ],
-            "searching": false,
-            "lengthChange": false,
-            "paging": false,
-            'iDisplayLength': 10,
-            "sPaginationType": "full_numbers",
-            "dom": 'T<"clear">lfrtip',
-                */
-            ajax: '',
+            ajax: {
+                data: function(d) {
+                    d.seachtype = $("#seachtype").val();
+                    d.seachtext = $("#seachtext").val();
+                    d.sdate = $('#reservation').val();
+                }
+            },
             serverSide: true,
             processing: true,
             "searching": false,
@@ -403,28 +456,28 @@
                     name: 'hn'
                 },
                 {
-                    data: 'contact_id',
-                    name: 'contact_id'
+                    data: 'fname',
+                    name: 'fname'
                 },
                 {
-                    data: 'telephone',
-                    name: 'telephone'
+                    data: 'phoneno',
+                    name: 'phoneno'
                 },
                 {
-                    data: 'create_date',
-                    name: 'create_date'
+                    data: 'created_at',
+                    name: 'created_at'
                 },
                 {
-                    data: 'case_type',
-                    name: 'case_type'
+                    data: 'name',
+                    name: 'name'
                 },
                 {
-                    data: 'case_status',
-                    name: 'case_status'
+                    data: 'casestatus',
+                    name: 'casestatus'
                 },
                 {
-                    data: 'transfer_status',
-                    name: 'transfer_status'
+                    data: 'tranferstatus',
+                    name: 'tranferstatus'
                 },
                 {
                     data: 'agent',
@@ -442,7 +495,30 @@
 
             ]
         });
-
+        $('#btnsearch').click(function(e) {
+            var fieldValue = $("#seachtype").val();
+            var textValue = $("#seachtext").val();
+            if (fieldValue !== '0') {
+                if (textValue === '') {
+                    document.getElementById('validationMessages').textContent =
+                        'กรุณากรอกข้อมูลที่จะค้นหา';
+                    return false;
+                } else {
+                    document.getElementById('validationMessages').textContent = '';
+                }
+            } else {
+                document.getElementById('validationMessages').textContent = '';
+            }
+            $('#Listview').DataTable().ajax.reload();
+        });
+        $('#btnreset').click(function(e) {
+            $("#seachtype").val(0);
+            $("#seachtext").val('');
+            document.getElementById('validationMessages').textContent = '';
+            datereset();
+            daterange();
+            $('#Listview').DataTable().ajax.reload();
+        });
 
         $("#example1").DataTable({
             "responsive": true,
@@ -495,154 +571,41 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
-            var stockValues = [];
-            var amountValues = [];
-            var priceValues = [];
-            var isValid = true;
+            var additionalData = {
+                contact_id: $('#Addid').val(),
+                casetype1: $('#Addcasetype1').val(),
+                casedetail: $('#AddDetail').val(),
+                tranferstatus: $('#Addtranferstatus option:selected').text(),
+                casestatus: $('#Addcasestatus option:selected').text(),
+                _token: token
+            };
 
-            // Initializing array values
-            $("select[name='stock[]']").each(function() {
-                stockValues.push(this.value);
-            });
-
-            // Check for duplicates in stock values
-            var duplicateValues = stockValues.filter(function(value, index, self) {
-                return self.indexOf(value) !== index;
-            });
-
-            if (duplicateValues.length > 0) {
-                toastr.error('ไม่สามารถเลือกสินค้าล็อตเดียวกันในรายการขาย', {
-                    timeOut: 5000
-                });
-                return false;
-            }
-
-            // Validate stock select
-            var stockSelects = $("select[name='stock[]']");
-            stockSelects.each(function() {
-                var stockSelect = $(this);
-                var selectedValue = stockSelect.val();
-
-                if (selectedValue === null || selectedValue.trim() === '') {
-                    stockSelect.addClass("is-invalid");
-                    stockSelect.removeClass("is-valid");
-                    toastr.error('กรุณาเลือกสินค้าในคลังสินค้า', {
-                        timeOut: 5000
-                    });
-                    isValid = false;
-                } else {
-                    stockSelect.removeClass("is-invalid");
-                    stockSelect.addClass("is-valid");
-                }
-            });
-
-            if (!isValid) {
-                return false;
-            }
-
-            // Collect amount values and validate
-            $("input[name='amount[]']").each(function() {
-                var amountInput = $(this);
-                var value = parseFloat(amountInput.val());
-
-                if (isNaN(value) || value % 0.5 !== 0) {
-                    // Invalid amount input
-                    amountInput.addClass("is-invalid");
-                    amountInput.removeClass("is-valid");
-                    amountInput.siblings(".error-message").text(
-                        "กรุณาระบุจำนวนที่จะขาย");
-                    toastr.error('กรุณาระบุจำนวนที่จะขาย', {
-                        timeOut: 5000
-                    });
-                    isValid = false;
-                } else {
-                    // Valid amount input
-                    amountInput.removeClass("is-invalid");
-                    amountInput.addClass("is-valid");
-                    amountValues.push(value);
-                }
-            });
-
-            if (!isValid) {
-                return false;
-            }
-
-            // Collect price values and validate
-            $("input[name='price[]']").each(function() {
-                var priceInput = $(this);
-                var value = parseFloat(priceInput.val());
-
-                if (isNaN(value) || value <= 0) {
-                    // Invalid price input
-                    priceInput.addClass("is-invalid");
-                    priceInput.removeClass("is-valid");
-                    priceInput.siblings(".error-message").text(
-                        "กรุณาระบุราคาที่จะขาย");
-                    toastr.error('กรุณาระบุราคาที่จะขาย', {
-                        timeOut: 5000
-                    });
-                    isValid = false;
-                } else {
-                    // Valid price input
-                    priceInput.removeClass("is-invalid");
-                    priceInput.addClass("is-valid");
-                    priceValues.push(value);
-                }
-            });
-
-            if (!isValid) {
-                return false;
-            }
-
-            if ($('#AddCompany').val()[0] !== undefined) {
-                var formData = {
-                    order_number: $('#AddLot').val(),
-                    sid: stockValues, // Only consider the first selected stock value
-                    cid: $('#AddCompany').val()[0],
-                    pid: $('#AddProduct').val()[0],
-                    amount: amountValues,
-                    price: priceValues,
-                    tamount: $('#AddAmount').val(),
-                    //cost: $('#AddCost').val(),
-                    total_cost: $('#AddTotalCost').val(),
-                    detail: $('#AddDetail').val(),
-                    _token: token
-                };
-
-                $.ajax({
-                    url: "{{ route('cases.store') }}",
-                    method: 'post',
-                    data: formData,
-                    success: function(result) {
-                        if (result.errors) {
-                            $('.alert-danger').html('');
-                            $.each(result.errors, function(key, value) {
-                                $('.alert-danger').show();
-                                $('.alert-danger').append('<strong><li>' + value +
-                                    '</li></strong>');
-                            });
-                        } else {
-                            $('.alert-danger').hide();
-                            $('.alert-success').show();
-                            $('.alert-success').text(result.success);
-                            toastr.success(result.success, {
-                                timeOut: 5000
-                            });
-                            $('#Listview').DataTable().ajax.reload();
-                            $("#AddProduct").val(null).trigger("change")
-                            $("#AddStock").val(null).trigger("change")
-                            $("#AddCompany").val(null).trigger("change")
-                            $('.form').trigger('reset');
-                            $('#CreateModal').modal('hide');
-                        }
+            $.ajax({
+                url: "{{ route('casescontract.store') }}",
+                method: 'post',
+                data: additionalData,
+                success: function(result) {
+                    if (result.errors) {
+                        $('.alert-danger').html('');
+                        $.each(result.errors, function(key, value) {
+                            $('.alert-danger').show();
+                            $('.alert-danger').append('<strong><li>' + value +
+                                '</li></strong>');
+                        });
+                    } else {
+                        $('.alert-danger').hide();
+                        $('.alert-success').show();
+                        $('.alert-success').append('<strong><li>' + result.success +
+                            '</li></strong>');
+                        toastr.success(result.success, {
+                            timeOut: 5000
+                        });
+                        $('#Listview').DataTable().ajax.reload();
+                        $('.form').trigger('reset');
+                        $('#CreateModal').modal('hide');
                     }
-                });
-
-            } else {
-                toastr.error('กรุณากรอกข้อมูลให้ครบ', {
-                    timeOut: 5000
-                });
-            }
+                }
+            });
         });
 
 

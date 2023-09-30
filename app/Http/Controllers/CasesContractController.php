@@ -29,9 +29,25 @@ class CasesContractController extends Controller
         //$id = request('id');
         //$request->get('id');
         if ($request->ajax()) {
-            //sleep(2);
+            if (!empty($request->get('sdate'))) {
+                $dateRange = $request->input('sdate');
+                if ($dateRange) {
+                    $dateRangeArray = explode(' - ', $dateRange);
+                    if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
+                        $startDate = $dateRangeArray[0];
+                        $endDate = $dateRangeArray[1];
+                    }
+                }
+            }
 
-            $datas = Cases::orderBy("id", "desc")->get();
+            //sleep(2);
+            $datas = DB::table('cases')
+            ->join('crm_contacts', 'cases.contact_id', '=', 'crm_contacts.id')
+            ->join('case_types', 'cases.casetype1', '=', 'case_types.id')
+            //->where('emerphone', '=', $request->input('seachtext'))
+            //->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
+            ->get();
+            //$datas = Cases::orderBy("id", "desc")->get();
 
 
             return datatables()->of($datas)
@@ -74,13 +90,7 @@ class CasesContractController extends Controller
     public function store(Request $request)
     {
         $validator =  Validator::make($request->all(), [
-            //'code' => 'required|string|max:10',
-            'casetype1' => 'required|string|max:255',
-            //'postcode' => 'int|max:10',
-            /* 'email' => 'required|string|email|max:255',
-            'address' => 'required|string|max:255',
-            'postcode' => 'required|string|max:10',
-            'telephone' => 'required|string|max:20',*/
+            'casetype1' => 'required|string|max:20',
         ]);
 
 

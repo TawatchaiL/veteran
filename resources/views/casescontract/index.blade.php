@@ -78,34 +78,55 @@
                             @endif
                             <div class="row ">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row float-lg-left">
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <div class="form-group">
+                                                <strong>
+                                                    วันที่บันทึกข้อมูล:</strong>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">
+                                                            <i class="far fa-calendar-alt"></i>
+                                                        </span>
+                                                    </div>
+                                                    <input type="text" class="form-control float-right" id="reservation" style="width: 210px">
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="row float-lg-right">
-                                        <div class="col-xs-5 col-sm-5 col-md-5">
+                                        <div class="col-xs-4 col-sm-4 col-md-4">
                                             <div class="form-group">
                                                 <strong><i class="fa-solid fa-clipboard-question"></i>
                                                     ประเภทการค้นหา:</strong>
-                                                <select style="width: 100%;" class="select2 form-control" id="telin"
-                                                    name="telin">
-                                                    <option value="" selected>กำลังดำเนินการ</option>
-                                                    <option value="">ปิดเคส</option>
-                                                    <option value="">HN</option>
-                                                    <option value="">ชื่อ-สกุล</option>
-                                                    <option value="">เบอร์โทร</option>
+                                                <select style="width: 100%;" class="select2 form-control" id="seachtype"
+                                                    name="seachtype">
+                                                    <option value="0" selected>ตัวเลือกการค้นหา</option>
+                                                    <option value="1">กำลังดำเนินการ</option>
+                                                    <option value="2">ปิดเคส</option>
+                                                    <option value="3">HN</option>
+                                                    <option value="4">ชื่อ-สกุล</option>
+                                                    <option value="5">เบอร์โทร</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-xs-5 col-sm-5 col-md-5">
+                                        <div class="col-xs-4 col-sm-4 col-md-4">
                                             <div class="form-group">
                                                 <strong><i class="fa-regular fa-keyboard"></i> คำที่ต้องการค้นหา:</strong>
-                                                {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => '', 'class' => 'form-control']) !!}
+                                                {!! Form::text('seachtext', null, ['id' => 'seachtext', 'placeholder' => '', 'class' => 'form-control']) !!}
+                                                <span id="validationMessages" style="color: red;"></span>
                                             </div>
                                         </div>
+                                        <div class="col-xs-2 col-sm-2 col-md-2">
+                                            <strong>&nbsp;</strong>
+                                            <button type="button" class="form-control btn btn-success" id="btnsearch">
+                                                <i class="fas fa-search"></i></button>
+                                        </div>
                                         <div class="col-xs-2 col-sm-2 col-md-2" style="align-items: flex-end;">
-                                            <div class="form-group">
-                                                <strong>&nbsp;</strong>
-                                                <button type="button" class="form-control btn btn-success"
-                                                    id="CreateButtons">
-                                                    <i class="fas fa-search"></i> </button>
-                                            </div>
+                                            <strong>&nbsp;</strong>
+                                            <button type="button" class="form-control btn btn-warning" id="btnreset">
+                                                <i class="fa-solid fa-rotate-right"></i></button>
                                         </div>
                                     </div>
                                 </div>
