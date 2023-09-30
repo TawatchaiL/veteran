@@ -418,8 +418,8 @@
             id = $(this).data('id');
             //window.location.href = "{{ route('cases', ['id' => ".id."])}}";
             //window.location.href = "cases";
-            var id = '12';
-	        var url = "casescontract/1";
+            //var id = '12';
+	        var url = "casescontract/"+id;
 	        //url = url.replace(':id', id);
 	        location.href = url;
         });
