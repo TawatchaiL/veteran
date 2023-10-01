@@ -136,7 +136,7 @@
                                                         :</strong>
                                                     <select style="width: 100%;"
                                                         class="select2 form-control"
-                                                        id="casestatuse" name="Editcasestatuse">
+                                                        id="Editcasestatuse" name="casestatuse">
                                                         <option value="ปิดเคส">ปิดเคส</option>
                                                         <option value="กำลังดำเนินการ">กำลังดำเนินการ</option>
                                                     </select>

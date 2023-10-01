@@ -554,7 +554,6 @@
                 casedetail: $('#Editdetail').val(),
                 casestatus: $('#Editcasestatuse option:selected').text(),
             };
-            
             $.ajax({
                 url: "casescontract/save/" + id,
                 method: 'PUT',
