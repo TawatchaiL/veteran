@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use App\Services\AsteriskAmiService;
+
 class LoginController extends Controller
 {
     /*
@@ -71,7 +73,11 @@ class LoginController extends Controller
                 $user = Auth::user();
                 $user->phone = $request->phone;
                 $user->save();
-                session(['temporary_phone' => Auth::user()->phone]);
+                //session(['temporary_phone' => Auth::user()->phone]);
+                $remote = AsteriskAmiService::asterisk_ami();
+                $remote->QueuePause('4567', "SIP/9999", 'false', '');
+                $remote->QueueRemove('4567', "SIP/9999");
+                $qadd = $remote->QueueAdd('4567', "SIP/9999", 0, "Agent1", "hint:9999@ext-local");
             }
 
             return $this->sendLoginResponse($request);

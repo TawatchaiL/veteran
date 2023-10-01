@@ -5,12 +5,8 @@ require_once '../vendor/welltime/phpagi/src/phpagi-asmanager.php';
 
 use AGI_AsteriskManager as as_manager;
 
-class AsteriskAmiFacade
+class AsteriskAmiService
 {
-    protected static function getFacadeAccessor()
-    {
-        return 'asterisk_ami';
-    }
 
     public static function asterisk_ami()
     {

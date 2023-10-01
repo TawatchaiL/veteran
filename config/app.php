@@ -194,6 +194,7 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'GraphService' => App\Facades\GraphFacade::class,
+        'AsteriskAmi' => App\Facades\AsteriskAmiFacade::class,
     ])->toArray(),
 
 ];
