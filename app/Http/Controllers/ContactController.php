@@ -301,12 +301,12 @@ class ContactController extends Controller
         }
         $Crmcsae = new Cases();
         $Crmcsae->contact_id = $insertedId;
-        $Crmcsae->telno = $edata['emergencyname'];
-        $Crmcsae->casetype1 = $edata['emerrelation'];
-        $Crmcsae->tranferstatus = $edata['emerphone'];
-        $Crmcsae->casedetail = $edata['emergencyname'];
-        $Crmcsae->casestatus = $edata['emerrelation'];
-        $Crmcsae->agent = $edata['emerphone'];
+        $Crmcsae->telno = $request->input('telno');
+        $Crmcsae->casetype1 = $request->input('casetype1');
+        $Crmcsae->tranferstatus = $request->input('tranferstatus');
+        $Crmcsae->casedetail = $request->input('casedetail');
+        $Crmcsae->casestatus = $request->input('casestatus');
+        $Crmcsae->agent = $request->input('agent');
         $Crmcsae->save();
         //contact_id
         //telno

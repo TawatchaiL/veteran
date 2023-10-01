@@ -312,9 +312,9 @@
                                         <div class="form-group">
                                             <strong><i class="fa-regular fa-comment-dots"></i>
                                                 รายละเอียด:</strong>
-                                            {!! Form::textarea('detailp', null, [
+                                            {!! Form::textarea('casedetailp', null, [
                                                 'rows' => 4,
-                                                'id' => 'detailp',
+                                                'id' => 'casedetailp',
                                                 'class' => 'form-control',
                                             ]) !!}
                                         </div>
