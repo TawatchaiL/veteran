@@ -44,8 +44,8 @@ class CasesContractController extends Controller
                 ->select('cases.id as id','hn', DB::raw("concat(fname, ' ', lname) as name"),'phoneno', 'cases.created_at', 'case_types.name as casename', 'casestatus', 'tranferstatus', 'agent')
                 ->join('crm_contacts', 'cases.contact_id', '=', 'crm_contacts.id')
                 ->join('case_types', 'cases.casetype1', '=', 'case_types.id')
-                //->where('emerphone', '=', $request->input('seachtext'))
-                ->whereRaw('cases.created_at between "' . $startDate . '" and "' . $endDate . '"')
+                ->whereRaw('cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+                ->where('cases.contact_id', '=', request('id'))
                 ->get();
             }else if ($request->input('seachtype') === "1") {
                 $datas = DB::table('cases')
@@ -53,7 +53,8 @@ class CasesContractController extends Controller
                 ->join('crm_contacts', 'cases.contact_id', '=', 'crm_contacts.id')
                 ->join('case_types', 'cases.casetype1', '=', 'case_types.id')
                 ->where('casestatus', '=', 'กำลังดำเนินการ')
-                ->whereRaw('cases.created_at between "' . $startDate . '" and "' . $endDate . '"')
+                ->whereRaw('cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+                ->where('cases.contact_id', '=', request('id'))
                 ->get();
             }else if ($request->input('seachtype') === "2") {
                 $datas = DB::table('cases')
@@ -61,7 +62,8 @@ class CasesContractController extends Controller
                 ->join('crm_contacts', 'cases.contact_id', '=', 'crm_contacts.id')
                 ->join('case_types', 'cases.casetype1', '=', 'case_types.id')
                 ->where('casestatus', '=', 'ปิดเคส')
-                ->whereRaw('cases.created_at between "' . $startDate . '" and "' . $endDate . '"')
+                ->whereRaw('cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+                ->where('cases.contact_id', '=', request('id'))
                 ->get();
             }else if ($request->input('seachtype') === "3") {
                 $datas = DB::table('cases')
@@ -69,7 +71,8 @@ class CasesContractController extends Controller
                 ->join('crm_contacts', 'cases.contact_id', '=', 'crm_contacts.id')
                 ->join('case_types', 'cases.casetype1', '=', 'case_types.id')
                 ->where('crm_contacts.hn', 'like', '%' . $request->input('seachtext') . '%')
-                ->whereRaw('cases.created_at between "' . $startDate . '" and "' . $endDate . '"')
+                ->whereRaw('cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+                ->where('cases.contact_id', '=', request('id'))
                 ->get();
             }else if ($request->input('seachtype') === "4") {
                 $datas = DB::table('cases')
@@ -78,7 +81,8 @@ class CasesContractController extends Controller
                 ->join('case_types', 'cases.casetype1', '=', 'case_types.id')
                 ->where('crm_contacts.fname', 'like', '%' . $request->input('seachtext') . '%')
                 ->orWhere('crm_contacts.lname', 'like', '%' . $request->input('seachtext') . '%')
-                ->whereRaw('cases.created_at between "' . $startDate . '" and "' . $endDate . '"')
+                ->whereRaw('cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+                ->where('cases.contact_id', '=', request('id'))
                 ->get();
             }else if ($request->input('seachtype') === "5") {
                 $datas = DB::table('cases')
@@ -88,7 +92,8 @@ class CasesContractController extends Controller
                 ->where('crm_contacts.phoneno', 'like', '%' . $request->input('seachtext') . '%')
                 ->orWhere('crm_contacts.telhome', 'like', '%' . $request->input('seachtext') . '%')
                 ->orWhere('crm_contacts.workno', 'like', '%' . $request->input('seachtext') . '%')
-                ->whereRaw('cases.created_at between "' . $startDate . '" and "' . $endDate . '"')
+                ->whereRaw('cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+                ->where('cases.contact_id', '=', request('id'))
                 ->get();
             }
             //sleep(2);

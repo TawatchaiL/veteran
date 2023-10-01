@@ -51,7 +51,7 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fa-solid fa-clipboard"></i> เรื่องที่ติดต่อ : hn {{ $contacts[0]->hn }} ชื่อสกุล {{ $contacts[0]->fname }} {{ $contacts[0]->lname }}</h3>
+                            <h3 class="card-title"><i class="fa-solid fa-clipboard"></i> เรื่องที่ติดต่อ : HN {{ $contacts[0]->hn }} ชื่อสกุล {{ $contacts[0]->fname }} {{ $contacts[0]->lname }}</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="maximize">
                                     <i class="fas fa-expand"></i>
@@ -105,9 +105,6 @@
                                                     <option value="0" selected>ตัวเลือกการค้นหา</option>
                                                     <option value="1">กำลังดำเนินการ</option>
                                                     <option value="2">ปิดเคส</option>
-                                                    <option value="3">HN</option>
-                                                    <option value="4">ชื่อ-สกุล</option>
-                                                    <option value="5">เบอร์โทร</option>
                                                 </select>
                                             </div>
                                         </div>
