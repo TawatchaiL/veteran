@@ -448,15 +448,11 @@
                     //$('#casestatusp').select2({});
                     addemerphone();
                     $('#SubmitCreateFormPOP').click(function(e) {
-                        
-                        $('#myTbl3p tbody tr').each(function() {
-                            
+                        var emergencyData = [];
+                        $('#myTbl3p tbody tr').each(function() { 
                             var emergencyname = $(this).find('input[name="emergencynamep[]"]').val();
                             var emerrelation = $(this).find('input[name="emerrelationp[]"]').val();
                             var emerphone = $(this).find('input[name="emerphonep[]"]').val();
-                            alert(emergencyname);
-                            alert(emerrelation);
-                            alert(emergencyname);
                             var emergency = {
                                 emergencyname: emergencyname,
                                 emerrelation: emerrelation,
@@ -464,7 +460,6 @@
                             };
                             emergencyData.push(emergency);
                         });
-                        
                         var additionalData = {
                         hn: $('#hnp').val(),
                         adddate: $('#adddatep').val(),
@@ -489,25 +484,7 @@
                         method: 'post',
                         data: additionalData,
                         success: function(result) {
-                            if (result.errors) {
-                                $('.alert-danger').html('');
-                                $.each(result.errors, function(key, value) {
-                                    $('.alert-danger').show();
-                                    $('.alert-danger').append('<strong><li>' + value +
-                                        '</li></strong>');
-                                });
-                            } else {
-                                $('.alert-danger').hide();
-                                $('.alert-success').show();
-                                $('.alert-success').append('<strong><li>' + result.success +
-                                    '</li></strong>');
-                                toastr.success(result.success, {
-                                    timeOut: 5000
-                                });
-                                //$('#Listview').DataTable().ajax.reload();
-                                //$('.form').trigger('reset');
-                                //$('#CreateModal').modal('hide');
-                            }
+
                         }
                     });
                     });                   
