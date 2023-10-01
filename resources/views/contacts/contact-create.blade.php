@@ -13,7 +13,7 @@
         </div>
         {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
         <div class="text-center">
-            <h1 style="color: #1a16eb"><i class="fa-solid fa-id-card-clip"></i> {{ $telephone }}</h1>
+            <h1 style="color: #1a16eb"><i class="fa-solid fa-id-card-clip"></i><input type="hidden" value="{{ $telephone }}" name="telnop" id="telnop"> {{ $telephone }}</h1>
             @if ($contact_name)
                 <h2 style="color: #1a16eb"><i class="fa-solid fa-user-tie"></i> {{ $contact_name }} {{ $contact_lname }}
                 </h2>

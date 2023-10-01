@@ -308,7 +308,7 @@
                                 method: 'GET',
                                 success: function(res) {
                                     //alert(res.data.code);
-                                    var provinceOb = $('#Popcity');
+                                    var provinceOb = $('#cityp');
                                     provinceOb.html(
                                         '<option value="">เลือกจังหวัด</option>'
                                         );
@@ -435,18 +435,49 @@
                     await $('#pop_' + cardId).html(response.html);
                     $(".card-footer").css("display", "block")
                     $('.bclose').css('display', 'none');
-                    //$('#amp').select2({});
-                    //$('#tmp').select2({});
-                    //$('#cityp').select2({});
-                    //$('#casetype1p').select2({});
-                    //$('#casetype2p').select2({});
-                    //$('#casetype3p').select2({});
-                    //$('#casetype4p').select2({});
-                    //$('#casetype5p').select2({});
-                    //$('#casetype6p').select2({});
-                    //$('#tranferstatusp').select2({});
-                    //$('#casestatusp').select2({});
                     addemerphone();
+
+                    var provinceOb = $('#cityp');
+                    var districtOb = $('#districtp');
+                    var cartonOb = $('#subdistrictp');
+
+                    // on change province
+                    $('#cityp').on('change', function() {
+                        var provinceId = $(this).val();
+                        districtOb.html('<option value="">เลือกอำเภอ</option>');
+                        $.ajax({
+                            url: "thdistrict/district/" + provinceId,
+                            method: 'GET',
+                            success: function(res) {
+                                districtOb.html('<option value="">เลือกอำเภอ</option>');
+                                cartonOb.html('<option value="">เลือกตำบล</option>');
+                                $.each(res.data, function(index, item) {
+                                    districtOb.append(
+                                        $('<option></option>').val(item.code).html(item
+                                            .name_th)
+                                    );
+                                });
+                            }
+                        });
+                    });
+                    districtOb.on('change', function() {
+                        var districtId = $(this).val();
+                        cartonOb.html('<option value="">เลือกตำบล</option>');
+                        $.ajax({
+                            url: "thsubdistrict/subdistrict/" + districtId,
+                            method: 'GET',
+                            success: function(res) {
+                                cartonOb.html('<option value="">เลือกตำบล</option>');
+                                $.each(res.data, function(index, item) {
+                                    cartonOb.append(
+                                        $('<option></option>').val(item.code).html(item
+                                            .name_th)
+                                    );
+                                });
+                            }
+                        });
+                    });
+
                     $('#SubmitCreateFormPOP').click(function(e) {
                         var emergencyData = [];
                         $('#myTbl3p tbody tr').each(function() { 
@@ -476,11 +507,17 @@
                         telhome: $('#telhomep').val(),
                         phoneno: $('#phonenop').val(),
                         workno: $('#worknop').val(),
+                        telno: $('#telnop').val(),
+                        casetype1: $('#casetype1p').val(),
+                        tranferstatus: $('#tranferstatusp').val(),
+                        casedetail: $('#casedetailp').val(),
+                        casestatus: $('#casestatusp').val(),
+                        agent: $('#telnop').val(),
                         emergencyData: emergencyData,
                         _token: token
                     };
                     $.ajax({
-                        url: "{{ route('contacts.store') }}",
+                        url: "{{ route('contacts.casescontract') }}",
                         method: 'post',
                         data: additionalData,
                         success: function(result) {
