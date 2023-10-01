@@ -1,6 +1,9 @@
 <?php
 
+
 namespace App\Http\Controllers;
+
+require_once './vendor/welltime/phpagi/src/phpagi-asmanager.php';
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,7 +17,7 @@ use Illuminate\Support\Facades\Session;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 use App\Services\GraphService;
 use Illuminate\Support\Facades\Gate;
-use Welltime\PhpAGI\AGI_AsteriskManager as as_manager;
+use AGI_AsteriskManager as as_manager;
 
 class VoicerecordController extends Controller
 {
