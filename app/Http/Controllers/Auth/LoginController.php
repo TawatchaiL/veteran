@@ -78,7 +78,7 @@ class LoginController extends Controller
                 $remote->QueuePause('4567', "SIP/9999", 'false', '');
                 $remote->QueueRemove('4567', "SIP/9999");
                 $remote->QueueAdd('4567', "SIP/9999", 0, "Agent1", "hint:9999@ext-local");
-                $remote->QueuePause('4567', "SIP/9999", 'true', 'Toilet');
+                dd($remote->QueuePause('4567', "SIP/9999", 'true', 'Toilet'));
             }
 
             return $this->sendLoginResponse($request);
