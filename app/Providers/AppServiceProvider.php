@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\AsteriskAmiService;
 use Illuminate\Support\ServiceProvider;
 use App\Services\FileUploadService;
 use App\Services\GraphService;
@@ -18,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
             return new FileUploadService();
         });
         $this->app->bind('graph-service', GraphService::class);
+        $this->app->bind('asterisk_ami-service', AsteriskAmiService::class);
     }
 
     /**
@@ -28,6 +30,6 @@ class AppServiceProvider extends ServiceProvider
         //
         View::addNamespace('graph', resource_path('views/graph'));
     }
-   
+
 
 }

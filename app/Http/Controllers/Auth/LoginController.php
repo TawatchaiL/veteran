@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use App\Services\AsteriskAmiService;
+
 class LoginController extends Controller
 {
     /*
@@ -30,15 +32,17 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+    protected $remote;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(AsteriskAmiService $asteriskAmiService) // Inject AsteriskAmiService
     {
         $this->middleware('guest')->except('logout');
+        $this->remote = $asteriskAmiService->asterisk_ami(); // Initialize $remote
     }
 
 
@@ -71,7 +75,12 @@ class LoginController extends Controller
                 $user = Auth::user();
                 $user->phone = $request->phone;
                 $user->save();
-                session(['temporary_phone' => Auth::user()->phone]);
+                //session(['temporary_phone' => Auth::user()->phone]);
+
+                $this->remote->QueuePause('4567', "SIP/9999", 'false', '');
+                $this->remote->QueueRemove('4567', "SIP/9999");
+                $this->remote->QueueAdd('4567', "SIP/9999", 0, "Agent1", "hint:9999@ext-local");
+                $this->remote->QueuePause('4567', "SIP/9999", 'true', 'Toilet');
             }
 
             return $this->sendLoginResponse($request);
@@ -84,12 +93,14 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         // Clear the temporary phone from the session
-        $request->session()->forget('temporary_phone');
+        //$request->session()->forget('temporary_phone');
 
         // Update the user's phone to an empty value
         $user = Auth::user();
         $user->phone = '';
         $user->save();
+
+        $this->remote->QueueRemove('4567', "SIP/9999");
 
         $this->guard()->logout();
 

@@ -3,21 +3,15 @@
 
 namespace App\Http\Controllers;
 
-require_once '../vendor/welltime/phpagi/src/phpagi-asmanager.php';
-
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Cases;
-use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-use LaravelDaily\LaravelCharts\Classes\LaravelChart;
-use App\Services\GraphService;
 use Illuminate\Support\Facades\Gate;
-use AGI_AsteriskManager as as_manager;
 
 class VoicerecordController extends Controller
 {
@@ -35,16 +29,6 @@ class VoicerecordController extends Controller
         $this->middleware('permission:contact-delete', ['only' => ['destroy']]);
     }
 
-    public function asterisk_ami()
-    {
-        $managerHost = config('asterisk.manager.host');
-        $managerUser = config('asterisk.manager.user');
-        $managerPass = config('asterisk.manager.password');
-
-        $remote = new as_manager();
-        $remote->connect($managerHost, $managerUser, $managerPass);
-        return $remote;
-    }
 
     /**
      * Display a listing of the resource.
@@ -52,10 +36,9 @@ class VoicerecordController extends Controller
     public function index(Request $request)
     {
 
-        //$remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')->get();
-        //dd($remoteData);
-        //$remote = $this->asterisk_ami();
-        //$qadd = $remote->QueueAdd('4567', "SIP/9999", 0, "Agent1", "hint:9999@ext-local");
+        $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')->get();
+        dd($remoteData);
+
 
         $datas = DB::table('cases')
             ->select(DB::raw('DATE(created_at) as cdate'), DB::raw('TIME(created_at) as ctime'), 'telno', 'agent', 'id')

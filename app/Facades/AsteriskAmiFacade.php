@@ -8,6 +8,6 @@ class AsteriskAmiFacade extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'asterisk_ami';
+        return 'asterisk_ami-service';
     }
 }
