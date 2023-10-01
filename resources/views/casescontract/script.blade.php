@@ -399,7 +399,7 @@
         $('#btnsearch').click(function(e) {
             var fieldValue = $("#seachtype").val();
             var textValue = $("#seachtext").val();
-            if (fieldValue !== '0') {
+            if (fieldValue === '3' || fieldValue === '4' || fieldValue === '5') {
                 if (textValue === '') {
                     document.getElementById('validationMessages').textContent =
                         'กรุณากรอกข้อมูลที่จะค้นหา';

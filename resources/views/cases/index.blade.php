@@ -17,8 +17,6 @@
                         <li class="breadcrumb-item active">Users Management</li> --}}
 
                         @can('case-create')
-                            <button type="button" class="btn btn-success" id="CreateButton">
-                                <i class="fa-solid fa-clipboard"></i> เพิ่ม เรื่องที่ติดต่อ</a> </button>
                         @else
                             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
                                 title="คุณไม่มีสิทธิ์ในส่วนนี้">
