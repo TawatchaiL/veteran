@@ -131,7 +131,7 @@ class ContactController extends Controller
             $contact_name = "กิจวรรณ";
             $contact_lname = "ละเอียด";
         }
-        $case_type = Case_type::orderBy("id", "asc")->get();
+        //$case_type = Case_type::orderBy("id", "asc")->get();
         $template = 'contacts.contact-create';
         $htmlContent = View::make($template, [
             'telephone' => $con, 'contact_name' => $contact_name, 'contact_lname' => $contact_lname, 'casetype' => $case_type
@@ -143,7 +143,6 @@ class ContactController extends Controller
 
     public function popup()
     {
-
         $html = '<div class="card card-danger custom-bottom-right-card d-none d-md-block" data-id="0804190099" id="0804190099">
         <div class="card-header">
         <h4 class="card-title"> <i class="fa-solid fa-triangle-exclamation fa-beat" style="--fa-beat-scale: 1.5;"></i> 0804190099 (ผู้ติดต่อใหม่)</h4>
