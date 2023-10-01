@@ -470,6 +470,10 @@
             $('#ToolbarModal').modal('show');
         });
 
+        $('#SubmitCreateFormPOP').click(function(e) {
+            e.preventDefault();
+            alert('OK');
+        });
 
     });
 
@@ -490,6 +494,8 @@
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     }
+
+
 </script>
 @yield('script')
 
