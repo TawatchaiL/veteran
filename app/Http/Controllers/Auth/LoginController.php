@@ -77,7 +77,8 @@ class LoginController extends Controller
                 $remote = AsteriskAmiService::asterisk_ami();
                 $remote->QueuePause('4567', "SIP/9999", 'false', '');
                 $remote->QueueRemove('4567', "SIP/9999");
-                $qadd = $remote->QueueAdd('4567', "SIP/9999", 0, "Agent1", "hint:9999@ext-local");
+                $remote->QueueAdd('4567', "SIP/9999", 0, "Agent1", "hint:9999@ext-local");
+                $remote->QueuePause('4567', "SIP/9999", 'true', 'Toilet');
             }
 
             return $this->sendLoginResponse($request);
