@@ -36,8 +36,8 @@ class VoicerecordController extends Controller
     public function index(Request $request)
     {
 
-        //$remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')->get();
-        //dd($remoteData);
+        $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')->get();
+        dd($remoteData);
 
 
         $datas = DB::table('cases')
