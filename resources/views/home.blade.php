@@ -74,7 +74,7 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-danger"><i class="fa-solid fa-clipboard-question"></i></span>
+                                <span class="info-box-icon bg-warning"><i class="fa-solid fa-clipboard-question"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เคสที่รับแจ้ง</span>
                                     <span class="info-box-number">10 เคส</span>
