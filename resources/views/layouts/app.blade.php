@@ -311,10 +311,16 @@
                                 success: function(res) {
                                     //alert(res.data.code);
                                     var provinceOb = $('#Popcity');
-                                    provinceOb.html('<option value="">เลือกจังหวัด</option>');
-                                    $.each(res.data, function(index, item) {
+                                    provinceOb.html(
+                                        '<option value="">เลือกจังหวัด</option>'
+                                        );
+                                    $.each(res.data, function(index,
+                                        item) {
                                         provinceOb.append(
-                                            $('<option></option>').val(item.code).html(item
+                                            $(
+                                                '<option></option>')
+                                            .val(item.code)
+                                            .html(item
                                                 .name_th)
                                         );
                                     });
@@ -330,7 +336,7 @@
             });
         }
 
-       positionCards();
+        positionCards();
 
         // Handle card maximize
         $(document).on('click', '.custom-bottom-right-card .card-tools [data-card-widget="maximize"]',
@@ -442,6 +448,10 @@
                     //$('#casetype6p').select2({});
                     //$('#tranferstatusp').select2({});
                     //$('#casestatusp').select2({});
+                    $('#SubmitCreateFormPOP').click(function(e) {
+                        e.preventDefault();
+                        alert('OK');
+                    });
                     addemerphone();
                 }
             });
@@ -470,10 +480,7 @@
             $('#ToolbarModal').modal('show');
         });
 
-        $('#SubmitCreateFormPOP').click(function(e) {
-            e.preventDefault();
-            alert('OK');
-        });
+
 
     });
 
@@ -494,8 +501,6 @@
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     }
-
-
 </script>
 @yield('script')
 
