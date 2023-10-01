@@ -145,8 +145,8 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fa-solid fa-city"></i> จังหวัด :</strong>
-                                            <select style="width: 100%;" class="select2 select2_city form-control"
-                                                id="city" name="city" multiple="multiple">
+                                            <select style="width: 100%;" class="select2 form-control"
+                                                id="Popcity" name="Popcity">
                                                 <option value="" selected>พิษณุโลก</option>
 
                                             </select>
@@ -156,8 +156,8 @@
                                         <div class="form-group">
                                             <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
                                                 อำเภอ:</strong>
-                                            <select style="width: 100%;" class="select2 select2_am form-control"
-                                                id="district" name="district" multiple="multiple">
+                                            <select style="width: 100%;" class="select2 form-control"
+                                                id="Popdistrict" name="Popdistrict">
                                                 <option value="" selected>อำเภอเมือง</option>
 
                                             </select>
@@ -169,8 +169,8 @@
                                         <div class="form-group">
                                             <strong><i class="fa-solid fa-building-circle-arrow-right"></i> ตำบล
                                                 :</strong>
-                                            <select style="width: 100%;" class="select2 select2_tm form-control"
-                                                id="subdistrict" name="subdistrict" multiple="multiple">
+                                            <select style="width: 100%;" class="select2 form-control"
+                                                id="Popsubdistrict" name="Popsubdistrict">
                                                 <option value="" selected>ในเมือง</option>
 
                                             </select>
@@ -293,36 +293,9 @@
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <strong><i class="fas fa-code"></i> HN:</strong>
-                                            {!! Form::text('name', '000001', [
-                                                'id' => 'AddName',
-                                                'placeholder' => 'Name',
-                                                'class' => 'form-control',
-                                                'readonly' => false,
-                                            ]) !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-6 col-md-6">
-                                        <div class="form-group">
-                                            <strong><i class="fas fa-user-tie"></i> ชื่อ-สกุล :</strong>
-                                            {!! Form::text('name', null, [
-                                                'id' => 'AddName',
-                                                'placeholder' => 'Name',
-                                                'class' => 'form-control',
-                                                'readonly' => false,
-                                            ]) !!}
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-xs-6 col-sm-6 col-md-6">
-                                        <div class="form-group">
                                             <strong><i class="fa-regular fa-message"></i> ประเภทเคส:</strong>
-                                            <select class="select2 select2_single form-control" id="casetype1p"
-                                                name="casetype1p" multiple="multiple">
-                                                <!-- <option value="" selected>Select Student</option>
-                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
+                                            <select class="select2 form-control" id="casetype1p"
+                                                name="casetype1p">
                                                 @foreach ($casetype as $key2)
                                                     <option value="{{ $key2->id }}">{{ $key2->name }}
                                                     </option>
@@ -331,74 +304,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-xs-6 col-sm-6 col-md-6">
-                                        <div class="form-group">
-                                            <strong><i class="fa-regular fa-comment-dots"></i>
-                                                รายละเอียดเคส:</strong>
-                                            <select class="select2 select2_single form-control" id="casetype2p"
-                                                name="casetype2p" multiple="multiple">
-                                                <!-- <option value="" selected>Select Student</option>
-                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
-
-                                            </select>
-                                        </div>
-                                    </div>
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-xs-6 col-sm-6 col-md-6">
-                                        <div class="form-group">
-                                            <strong><i class="fa-regular fa-comment-dots"></i>
-                                                รายละเอียดเคสย่อย:</strong>
-                                            <select class="select2 select2_single form-control" id="casetype3p"
-                                                name="casetype3p" multiple="multiple">
-                                                <!-- <option value="" selected>Select Student</option>
-                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-6 col-md-6">
-                                        <div class="form-group">
-                                            <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
-                                                เพิ่มเติม 1:</strong>
-                                            <select class="select2 select2_single form-control" id="casetype4p"
-                                                name="casetype4p" multiple="multiple">
-                                                <!-- <option value="" selected>Select Student</option>
-                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-xs-6 col-sm-6 col-md-6">
-                                        <div class="form-group">
-                                            <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
-                                                เพิ่มเติม 2:</strong>
-                                            <select class="select2 select2_single form-control" id="casetype5p"
-                                                name="casetype5p" multiple="multiple">
-                                                <!-- <option value="" selected>Select Student</option>
-                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-6 col-md-6">
-                                        <div class="form-group">
-                                            <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
-                                                เพิ่มเติม 3:</strong>
-                                            <select class="select2 select2_single form-control" id="casetype6p"
-                                                name="casetype6p" multiple="multiple">
-                                                <!-- <option value="" selected>Select Student</option>
-                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
@@ -425,11 +331,11 @@
                                         <div class="form-group">
                                             <strong><i class="fas fa-shuffle"></i> สถานะการโอนสาย
                                                 :</strong>
-                                            <select class="select2 select2_single form-control" id="tranferstatusp"
-                                                name="tranferstatus" multiple="multiple">
-                                                <option value="1">รับสาย</option>
-                                                <option value="2">ไม่รับสาย</option>
-                                                <option value="3">สายไม่ว่าง</option>
+                                            <select class="select2 form-control" id="tranferstatusp"
+                                                name="tranferstatus">
+                                                <option value="รับสาย">รับสาย</option>
+                                                <option value="ไม่รับสาย">ไม่รับสาย</option>
+                                                <option value="สายไม่ว่าง">สายไม่ว่าง</option>
                                             </select>
                                         </div>
                                     </div>
@@ -437,10 +343,10 @@
                                         <div class="form-group">
                                             <strong><i class="fas fa-arrows-rotate"></i> สถานะการเคส
                                                 :</strong>
-                                            <select class="select2 select2_single form-control" id="casestatusp"
-                                                name="casestatus" multiple="multiple">
-                                                <option value="1">ปิดเคส</option>
-                                                <option value="2">กำลังดำเนินการ</option>
+                                            <select class="select2 form-control" id="casestatusp"
+                                                name="casestatus">
+                                                <option value="ปิดเคส">ปิดเคส</option>
+                                                <option value="กำลังดำเนินการ">กำลังดำเนินการ</option>
                                             </select>
                                         </div>
                                     </div>
