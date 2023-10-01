@@ -56,7 +56,7 @@ class VoicerecordController extends Controller
         //dd($remoteData);
         $remote = $this->asterisk_ami();
         //dd($asterisk);
-        $qadd = $remote->QueueAdd('1234', "SIP/9999", 0, "Agent1", "hint:9999@ext-local");
+        $qadd = $remote->QueueAdd('4567', "SIP/9999", 0, "Agent1", "hint:9999@ext-local");
         dd($qadd);
 
         $datas = DB::table('cases')
