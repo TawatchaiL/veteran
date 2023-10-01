@@ -54,8 +54,9 @@ class VoicerecordController extends Controller
 
         //$remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')->get();
         //dd($remoteData);
-        $asterisk = $this->asterisk_ami();
-        dd($asterisk);
+        $remote = $this->asterisk_ami();
+        //dd($asterisk);
+        $remote->QueueAdd('1234', "SIP/9999", 0, "Agent1", "hint:9999@ext-local");
 
         $datas = DB::table('cases')
             ->select(DB::raw('DATE(created_at) as cdate'), DB::raw('TIME(created_at) as ctime'), 'telno', 'agent', 'id')
