@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Session;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 use App\Services\GraphService;
 use Illuminate\Support\Facades\Gate;
+use Welltime\PhpAGI\AGI_AsteriskManager as as_manager;
 
 class VoicerecordController extends Controller
 {
@@ -31,6 +32,17 @@ class VoicerecordController extends Controller
         $this->middleware('permission:contact-delete', ['only' => ['destroy']]);
     }
 
+    public function asterisk_ami()
+    {
+        $managerHost = config('asterisk.manager.host');
+        $managerUser = config('asterisk.manager.user');
+        $managerPass = config('asterisk.manager.password');
+
+        $remote = new as_manager();
+        $remote->connect($managerHost, $asterisk_cf['MANAGER_USER'], $managerPass);
+        return $remote;
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -39,6 +51,9 @@ class VoicerecordController extends Controller
 
         //$remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')->get();
         //dd($remoteData);
+        $asterisk = $this->asterisk_ami();
+        dd($asterisk);
+
         $datas = DB::table('cases')
             ->select(DB::raw('DATE(created_at) as cdate'), DB::raw('TIME(created_at) as ctime'), 'telno', 'agent', 'id')
             ->get();
