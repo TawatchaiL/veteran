@@ -3,7 +3,7 @@
 
 namespace App\Http\Controllers;
 
-require_once './vendor/welltime/phpagi/src/phpagi-asmanager.php';
+require_once(__DIR__ . '/vendor/welltime/phpagi/src/phpagi-asmanager.php');
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -42,7 +42,7 @@ class VoicerecordController extends Controller
         $managerPass = config('asterisk.manager.password');
 
         $remote = new as_manager();
-        $remote->connect($managerHost, $asterisk_cf['MANAGER_USER'], $managerPass);
+        $remote->connect($managerHost, $managerUser, $managerPass);
         return $remote;
     }
 
