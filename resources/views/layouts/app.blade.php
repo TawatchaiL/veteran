@@ -114,19 +114,17 @@
             newRow.innerHTML = `
             <td width="30%">
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                    <input type="text" name="name[]" class="form-control has-feedback-left" value="" required>
-                    <div id="lot_price" class="text-success"></div>
-                    <div id="lot_error" class="text-danger"></div>
+                    <input type="text" id="emergencynamep" name="emergencynamep[]" class="form-control has-feedback-left" value="" required>
                 </div>
             </td>
             <td width="10%">
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                    <input type="text" name="amount[]" class="form-control has-feedback-left" value="" required>
+                    <input type="text" id="emerrelationp" name="emerrelationp[]" class="form-control has-feedback-left" value="" required>
                 </div>
             </td>
             <td width="10%">
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                    <input type="text" name="price[]" class="form-control has-feedback-left" value="" required>
+                    <input type="text" id="emerphonep" name="emerphonep[]" class="form-control has-feedback-left" value="" required>
                 </div>
             </td>
             <td>
@@ -448,11 +446,71 @@
                     //$('#casetype6p').select2({});
                     //$('#tranferstatusp').select2({});
                     //$('#casestatusp').select2({});
-                    $('#SubmitCreateFormPOP').click(function(e) {
-                        e.preventDefault();
-                        alert('OK');
-                    });
                     addemerphone();
+                    $('#SubmitCreateFormPOP').click(function(e) {
+                        
+                        $('#myTbl3p tbody tr').each(function() {
+                            
+                            var emergencyname = $(this).find('input[name="emergencynamep[]"]').val();
+                            var emerrelation = $(this).find('input[name="emerrelationp[]"]').val();
+                            var emerphone = $(this).find('input[name="emerphonep[]"]').val();
+                            alert(emergencyname);
+                            alert(emerrelation);
+                            alert(emergencyname);
+                            var emergency = {
+                                emergencyname: emergencyname,
+                                emerrelation: emerrelation,
+                                emerphone: emerphone
+                            };
+                            emergencyData.push(emergency);
+                        });
+                        
+                        var additionalData = {
+                        hn: $('#hnp').val(),
+                        adddate: $('#adddatep').val(),
+                        fname: $('#fnamep').val(),
+                        lname: $('#lnamep').val(),
+                        homeno: $('#homenop').val(),
+                        moo: $('#moop').val(),
+                        soi: $('#soip').val(),
+                        road: $('#roadp').val(),
+                        city: $('#cityp').val(),
+                        district: $('#districtp').val(),
+                        subdistrict: $('#subdistrictp').val(),
+                        postcode: $('#postcodep').val(),
+                        telhome: $('#telhomep').val(),
+                        phoneno: $('#phonenop').val(),
+                        workno: $('#worknop').val(),
+                        emergencyData: emergencyData,
+                        _token: token
+                    };
+                    $.ajax({
+                        url: "{{ route('contacts.store') }}",
+                        method: 'post',
+                        data: additionalData,
+                        success: function(result) {
+                            if (result.errors) {
+                                $('.alert-danger').html('');
+                                $.each(result.errors, function(key, value) {
+                                    $('.alert-danger').show();
+                                    $('.alert-danger').append('<strong><li>' + value +
+                                        '</li></strong>');
+                                });
+                            } else {
+                                $('.alert-danger').hide();
+                                $('.alert-success').show();
+                                $('.alert-success').append('<strong><li>' + result.success +
+                                    '</li></strong>');
+                                toastr.success(result.success, {
+                                    timeOut: 5000
+                                });
+                                //$('#Listview').DataTable().ajax.reload();
+                                //$('.form').trigger('reset');
+                                //$('#CreateModal').modal('hide');
+                            }
+                        }
+                    });
+                    });                   
                 }
             });
         }

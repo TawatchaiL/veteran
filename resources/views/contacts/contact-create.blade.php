@@ -50,8 +50,8 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fas fa-code"></i> รหัสผู้ติดต่อ:</strong>
-                                            {!! Form::text('hn', '000001', [
-                                                'id' => 'hn',
+                                            {!! Form::text('hnp', '000001', [
+                                                'id' => 'hnp',
                                                 'placeholder' => 'รหัสผู้ติดต่อ',
                                                 'class' => 'form-control',
                                                 'readonly' => false,
@@ -61,8 +61,8 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fas fa-calendar"></i> วันที่บันทึก:</strong>
-                                            {!! Form::text('start_date', date('Y-m-d'), [
-                                                'id' => 'AddDate',
+                                            {!! Form::text('adddatep', date('Y-m-d'), [
+                                                'id' => 'adddatep',
                                                 'placeholder' => 'วันที่บันทึก',
                                                 'class' => 'AddDate form-control',
                                                 'data-target' => '#reservationdate',
@@ -76,14 +76,14 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fas fa-user-tie"></i> ชื่อ:</strong>
-                                            {!! Form::text('fname', null, ['id' => 'fname', 'placeholder' => 'ชื่อ', 'class' => 'form-control']) !!}
+                                            {!! Form::text('fnamep', null, ['id' => 'fnamep', 'placeholder' => 'ชื่อ', 'class' => 'form-control']) !!}
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fas fa-user-tie"></i> นามสกุล:</strong>
-                                            {!! Form::text('lname', null, [
-                                                'id' => 'lname',
+                                            {!! Form::text('lnamep', null, [
+                                                'id' => 'lnamep',
                                                 'placeholder' => 'นามสกุล',
                                                 'class' => 'form-control',
                                             ]) !!}
@@ -101,8 +101,8 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fas fa-home"></i> บ้านเลขที่:</strong>
-                                            {!! Form::text('homeno', null, [
-                                                'id' => 'homeno',
+                                            {!! Form::text('homenop', null, [
+                                                'id' => 'homenop',
                                                 'placeholder' => 'บ้านเลขที่',
                                                 'class' => 'form-control',
                                             ]) !!}
@@ -111,8 +111,8 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fa-solid fa-people-roof"></i> หมู่:</strong>
-                                            {!! Form::text('moo', null, [
-                                                'id' => 'moo',
+                                            {!! Form::text('moop', null, [
+                                                'id' => 'moop',
                                                 'placeholder' => 'หมู่',
                                                 'class' => 'form-control',
                                             ]) !!}
@@ -123,8 +123,8 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fa-solid fa-people-roof"></i> ซอย :</strong>
-                                            {!! Form::text('soi', null, [
-                                                'id' => 'soi',
+                                            {!! Form::text('soip', null, [
+                                                'id' => 'soip',
                                                 'placeholder' => 'ซอย',
                                                 'class' => 'form-control',
                                             ]) !!}
@@ -133,8 +133,8 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fas fa-road"></i> ถนน :</strong>
-                                            {!! Form::text('road', null, [
-                                                'id' => 'road',
+                                            {!! Form::text('roadp', null, [
+                                                'id' => 'roadp',
                                                 'placeholder' => 'ถนน',
                                                 'class' => 'form-control',
                                             ]) !!}
@@ -146,7 +146,7 @@
                                         <div class="form-group">
                                             <strong><i class="fa-solid fa-city"></i> จังหวัด :</strong>
                                             <select style="width: 100%;" class="select2 form-control"
-                                                id="Popcity" name="Popcity">
+                                                id="cityp" name="cityp">
                                                 <option value="" selected>พิษณุโลก</option>
 
                                             </select>
@@ -157,7 +157,7 @@
                                             <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
                                                 อำเภอ:</strong>
                                             <select style="width: 100%;" class="select2 form-control"
-                                                id="Popdistrict" name="Popdistrict">
+                                                id="districtp" name="districtp">
                                                 <option value="" selected>อำเภอเมือง</option>
 
                                             </select>
@@ -170,7 +170,7 @@
                                             <strong><i class="fa-solid fa-building-circle-arrow-right"></i> ตำบล
                                                 :</strong>
                                             <select style="width: 100%;" class="select2 form-control"
-                                                id="Popsubdistrict" name="Popsubdistrict">
+                                                id="subdistrictp" name="subdistrictp">
                                                 <option value="" selected>ในเมือง</option>
 
                                             </select>
@@ -179,8 +179,8 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fas fa-code"></i> รหัสไปรษณีย์:</strong>
-                                            {!! Form::text('postcode', null, [
-                                                'id' => 'postcode',
+                                            {!! Form::text('postcodep', null, [
+                                                'id' => 'postcodep',
                                                 'placeholder' => 'รหัสไปรษณีย์',
                                                 'class' => 'form-control',
                                             ]) !!}
@@ -202,8 +202,8 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์บ้าน:</strong>
-                                            {!! Form::text('telhome', null, [
-                                                'id' => 'telhome',
+                                            {!! Form::text('telhomep', null, [
+                                                'id' => 'telhomep',
                                                 'placeholder' => 'เบอร์โทรศัพท์บ้าน',
                                                 'class' => 'form-control',
                                             ]) !!}
@@ -212,8 +212,8 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์มือถือ :</strong>
-                                            {!! Form::text('phoneno', null, [
-                                                'id' => 'phoneno',
+                                            {!! Form::text('phonenop', null, [
+                                                'id' => 'phonenop',
                                                 'placeholder' => 'เบอร์โทรศัพท์มือถือ',
                                                 'class' => 'form-control',
                                             ]) !!}
@@ -226,8 +226,8 @@
                                         <div class="form-group">
                                             <strong><i class="fas fa-phone"></i>
                                                 เบอร์โทรศัพท์ที่ทำงาน:</strong>
-                                            {!! Form::text('workno', null, [
-                                                'id' => 'workno',
+                                            {!! Form::text('worknop', null, [
+                                                'id' => 'worknop',
                                                 'placeholder' => 'เบอร์โทรศัพท์ที่ทำงาน',
                                                 'class' => 'form-control',
                                             ]) !!}
@@ -248,10 +248,11 @@
                                                     <th class="column-title"> เบอร์โทรศัพท์</th>
                                                 </tr>
                                             </thead>
+                                            <tbody>
                                             <tr>
                                                 <td width="30%">
                                                     <div class="col-md-12 col-sm-12 col-xs-12">
-                                                        <input type="text" id="name" name="name[]"
+                                                        <input type="text" id="emergencynamep" name="emergencynamep[]"
                                                             class="form-control has-feedback-left" value=""
                                                             required="required">
                                                     </div>
@@ -259,14 +260,14 @@
 
                                                 <td width="10%">
                                                     <div class="col-md-12 col-sm-12 col-xs-12">
-                                                        <input type="text" id="amount" name="amount[]"
+                                                        <input type="text" id="emerrelationp" name="emerrelationp[]"
                                                             class="form-control has-feedback-left" value=""
                                                             required="required">
                                                     </div>
                                                 </td>
                                                 <td width="10%">
                                                     <div class="col-md-12 col-sm-12 col-xs-12">
-                                                        <input type="text" id="price" name="price[]"
+                                                        <input type="text" id="emerphonep" name="emerphonep[]"
                                                             class="form-control has-feedback-left" value=""
                                                             required="required">
                                                     </div>
@@ -274,6 +275,7 @@
                                                 <td width="5%">
                                                 </td>
                                             </tr>
+                                            </tbody>
                                         </table>
                                     </div>
                                     <div class="col-md-12" align="right">
@@ -310,9 +312,9 @@
                                         <div class="form-group">
                                             <strong><i class="fa-regular fa-comment-dots"></i>
                                                 รายละเอียด:</strong>
-                                            {!! Form::textarea('detail', null, [
+                                            {!! Form::textarea('detailp', null, [
                                                 'rows' => 4,
-                                                'id' => 'AddDetail',
+                                                'id' => 'detailp',
                                                 'class' => 'form-control',
                                             ]) !!}
                                         </div>
@@ -332,7 +334,7 @@
                                             <strong><i class="fas fa-shuffle"></i> สถานะการโอนสาย
                                                 :</strong>
                                             <select class="select2 form-control" id="tranferstatusp"
-                                                name="tranferstatus">
+                                                name="tranferstatusp">
                                                 <option value="รับสาย">รับสาย</option>
                                                 <option value="ไม่รับสาย">ไม่รับสาย</option>
                                                 <option value="สายไม่ว่าง">สายไม่ว่าง</option>
@@ -344,7 +346,7 @@
                                             <strong><i class="fas fa-arrows-rotate"></i> สถานะการเคส
                                                 :</strong>
                                             <select class="select2 form-control" id="casestatusp"
-                                                name="casestatus">
+                                                name="casestatusp">
                                                 <option value="ปิดเคส">ปิดเคส</option>
                                                 <option value="กำลังดำเนินการ">กำลังดำเนินการ</option>
                                             </select>
