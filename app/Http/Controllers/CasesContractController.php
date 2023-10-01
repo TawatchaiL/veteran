@@ -222,6 +222,6 @@ class CasesContractController extends Controller
             Cases::find($arr_del[$xx])->delete();
         }
 
-        return redirect('casescontract.index')->with('success', 'ลบ เรื่องที่ติดต่อ เรียบร้อยแล้ว');
+        return redirect('casescontract?id='.$request->get('Delcontact_id'))->with('success', 'ลบ เรื่องที่ติดต่อ เรียบร้อยแล้ว');
     }
 }
