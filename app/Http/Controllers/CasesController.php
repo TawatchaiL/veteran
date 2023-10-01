@@ -26,47 +26,76 @@ class CasesController extends Controller
      */
     public function index(Request $request)
     {
+        //$id = request('id');
+        //$request->get('id');
         if ($request->ajax()) {
-            //sleep(2);
-
-            //$datas = Cases::orderBy("id", "desc")->get();
-            $numberOfRows = 50; // Change this to the desired number of rows
-            $simulatedDatas = [];
-
-            $thaiCaseTypes = ['บาดเจ็บ', 'อุบัติเหตุ', 'โรคเรื้อรัง', 'ไข้หวัด', 'ผ่าตัด', 'สูตินรีเวช', 'การวินิจฉัยโรค', 'จัดกระบวนการ', 'สัมผัสไข้หวัด', 'พิษสุนัขบ้า'];
-            $thaiNames = ['สมชาย', 'สมหญิง', 'วิชัย', 'วิไล', 'จริงใจ', 'เปรมชัย', 'สุดใจ', 'นฤมล', 'กมลชนก', 'ศุภัทรา', 'กิจวรรณ', 'อรวรรณ', 'ธนพงศ์', 'ประทุม', 'วิทยา', 'พรชัย'];
-            $thaiLastNames = ['ใจดี', 'เสมอ', 'รักชาติ', 'พร้อม', 'ชำนาญ', 'มีเสน่ห์', 'สุขใจ', 'เรียบง่าย', 'สุดหล่อ', 'หวานใจ', 'เก่ง', 'สนุก', 'ร่ำรวย', 'สายเครื่อง', 'ยอดมาก', 'คง', 'ละเอียด'];
-            
-            $thaiCaseStatuses = ['กำลังดำเนินการ', 'ปิดเคส', 'เคสใหม่'];
-            $thaiTransferStatuses = ['รับสาย', 'ไม่รับสาย', '-'];
-            $agents = ['Agent1', 'Agent2', 'Agent3', 'Agent4', 'Agent5'];
-
-            for ($i = 1; $i <= $numberOfRows; $i++) {
-                $hn = str_pad($i, 6, '0', STR_PAD_LEFT);
-                $fullName = $thaiNames[array_rand($thaiNames)] . ' ' . $thaiLastNames[array_rand($thaiLastNames)];
-                $caseType = $thaiCaseTypes[array_rand($thaiCaseTypes)];
-                $caseStatus = $thaiCaseStatuses[array_rand($thaiCaseStatuses)];
-                $transferStatus = $thaiTransferStatuses[array_rand($thaiTransferStatuses)];
-                $agent = $agents[array_rand($agents)];
-                $createDate = now()->subDays(rand(1, 365))->subHours(rand(0, 23))->subMinutes(rand(0, 59));
-
-
-                $simulatedDatas[] = (object) [
-                    'id' => $i,
-                    'telephone' => '08' . rand(10000000, 99999999),
-                    'hn' => $hn,
-                    'contact_id' => $fullName,
-                    'case_type' => $caseType,
-                    'create_date' => $createDate->format('Y-m-d H:i:s'),
-                    'case_status' => $caseStatus,
-                    'transfer_status' => $transferStatus,
-                    'agent' => $agent,
-                    // Simulate other fields as needed
-                ];
+            if (!empty($request->get('sdate'))) {
+                $dateRange = $request->input('sdate');
+                if ($dateRange) {
+                    $dateRangeArray = explode(' - ', $dateRange);
+                    if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
+                        $startDate = $dateRangeArray[0];
+                        $endDate = $dateRangeArray[1];
+                    }
+                }
             }
+            if ($request->input('seachtype') === "0") {
+                $datas = DB::table('cases')
+                ->select('cases.id as id','hn', DB::raw("concat(fname, ' ', lname) as name"),'phoneno', 'cases.created_at', 'case_types.name as casename', 'casestatus', 'tranferstatus', 'agent')
+                ->join('crm_contacts', 'cases.contact_id', '=', 'crm_contacts.id')
+                ->join('case_types', 'cases.casetype1', '=', 'case_types.id')
+                //->where('emerphone', '=', $request->input('seachtext'))
+                ->whereRaw('cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+                ->get();
+            }else if ($request->input('seachtype') === "1") {
+                $datas = DB::table('cases')
+                ->select('cases.id as id','hn', DB::raw("concat(fname, ' ', lname) as name"),'phoneno', 'cases.created_at', 'case_types.name as casename', 'casestatus', 'tranferstatus', 'agent')
+                ->join('crm_contacts', 'cases.contact_id', '=', 'crm_contacts.id')
+                ->join('case_types', 'cases.casetype1', '=', 'case_types.id')
+                ->where('casestatus', '=', 'กำลังดำเนินการ')
+                ->whereRaw('cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+                ->get();
+            }else if ($request->input('seachtype') === "2") {
+                $datas = DB::table('cases')
+                ->select('cases.id as id','hn', DB::raw("concat(fname, ' ', lname) as name"),'phoneno', 'cases.created_at', 'case_types.name as casename', 'casestatus', 'tranferstatus', 'agent')
+                ->join('crm_contacts', 'cases.contact_id', '=', 'crm_contacts.id')
+                ->join('case_types', 'cases.casetype1', '=', 'case_types.id')
+                ->where('casestatus', '=', 'ปิดเคส')
+                ->whereRaw('cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+                ->get();
+            }else if ($request->input('seachtype') === "3") {
+                $datas = DB::table('cases')
+                ->select('cases.id as id','hn', DB::raw("concat(fname, ' ', lname) as name"),'phoneno', 'cases.created_at', 'case_types.name as casename', 'casestatus', 'tranferstatus', 'agent')
+                ->join('crm_contacts', 'cases.contact_id', '=', 'crm_contacts.id')
+                ->join('case_types', 'cases.casetype1', '=', 'case_types.id')
+                ->where('crm_contacts.hn', 'like', '%' . $request->input('seachtext') . '%')
+                ->whereRaw('cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+                ->get();
+            }else if ($request->input('seachtype') === "4") {
+                $datas = DB::table('cases')
+                ->select('cases.id as id','hn', DB::raw("concat(fname, ' ', lname) as name"),'phoneno', 'cases.created_at', 'case_types.name as casename', 'casestatus', 'tranferstatus', 'agent')
+                ->join('crm_contacts', 'cases.contact_id', '=', 'crm_contacts.id')
+                ->join('case_types', 'cases.casetype1', '=', 'case_types.id')
+                ->where('crm_contacts.fname', 'like', '%' . $request->input('seachtext') . '%')
+                ->orWhere('crm_contacts.lname', 'like', '%' . $request->input('seachtext') . '%')
+                ->whereRaw('cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+                ->get();
+            }else if ($request->input('seachtype') === "5") {
+                $datas = DB::table('cases')
+                ->select('cases.id as id','hn', DB::raw("concat(fname, ' ', lname) as name"),'phoneno', 'cases.created_at', 'case_types.name as casename', 'casestatus', 'tranferstatus', 'agent')
+                ->join('crm_contacts', 'cases.contact_id', '=', 'crm_contacts.id')
+                ->join('case_types', 'cases.casetype1', '=', 'case_types.id')
+                ->where('crm_contacts.phoneno', 'like', '%' . $request->input('seachtext') . '%')
+                ->orWhere('crm_contacts.telhome', 'like', '%' . $request->input('seachtext') . '%')
+                ->orWhere('crm_contacts.workno', 'like', '%' . $request->input('seachtext') . '%')
+                ->whereRaw('cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+                ->get();
+            }
+            //sleep(2);
+            //$datas = Cases::orderBy("id", "desc")->get();
 
 
-            return datatables()->of($simulatedDatas)
+            return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
                 })
@@ -89,6 +118,7 @@ class CasesController extends Controller
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
         $company = Case_type::orderBy("id", "asc")->get();
+        //$contacts = DB::table('crm_contacts')->whereRaw('id = '.request('id').'')->get();
         return view('cases.index')->with(['casetype' => $company]);
     }
     /**
@@ -105,13 +135,7 @@ class CasesController extends Controller
     public function store(Request $request)
     {
         $validator =  Validator::make($request->all(), [
-            //'code' => 'required|string|max:10',
-            'casetype1' => 'required|string|max:255',
-            //'postcode' => 'int|max:10',
-            /* 'email' => 'required|string|email|max:255',
-            'address' => 'required|string|max:255',
-            'postcode' => 'required|string|max:10',
-            'telephone' => 'required|string|max:20',*/
+            'casetype1' => 'required|string|max:20',
         ]);
 
 
@@ -138,7 +162,14 @@ class CasesController extends Controller
     public function edit($id)
     {
 
-        $data = Cases::find($id);
+        //$data = Cases::find($id);
+        //return response()->json(['data' => $data]);
+
+        $data = Cases::join('crm_contacts', 'cases.contact_id', '=', 'crm_contacts.id')
+        ->select('cases.*','crm_contacts.hn as hn', DB::raw("concat(crm_contacts.fname, ' ', crm_contacts.lname) as name"))
+        ->where('cases.id', $id)
+        ->first();
+
         return response()->json(['data' => $data]);
     }
 
@@ -149,7 +180,7 @@ class CasesController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'name' => 'required|string|max:255',
+            'casetype1' => 'required|string|max:20',
             //'postcode' => 'integer|max:10',
 
         ];
@@ -162,11 +193,14 @@ class CasesController extends Controller
         }
 
         $companyd = [
-            'name' => $request->get('name'),
+            'casetype1' => $request->get('casetype1'),
+            'tranferstatus' => $request->get('tranferstatus'),
+            'casedetail' => $request->get('casedetail'),
+            'casestatus' => $request->get('casestatus'),
         ];
 
-        $company = Cases::find($id);
-        $company->update($companyd);
+       $company = Cases::find($id);
+       $company->update($companyd);
 
         return response()->json(['success' => 'แก้ไข เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
     }
@@ -190,6 +224,6 @@ class CasesController extends Controller
             Cases::find($arr_del[$xx])->delete();
         }
 
-        return redirect('/cases')->with('success', 'ลบ เรื่องที่ติดต่อ เรียบร้อยแล้ว');
+        return redirect('cases.index')->with('success', 'ลบ เรื่องที่ติดต่อ เรียบร้อยแล้ว');
     }
 }

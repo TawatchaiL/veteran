@@ -222,105 +222,6 @@
             }
         });
 
-        $(document).on('change', '#eprice,#eamount,#estock', function(e) {
-            var parent = $(this).parent().parent().parent();
-
-            var amount = parent.find('#eamount').val();
-            var amounth = parent.find('#eamounth').val();
-            var price = parent.find('#eprice').val();
-            var sid = parent.find('#estock').val();
-
-            let total_cost = amount * price;
-            parent.find('#etotal').val(total_cost)
-
-            //alert(amounth);
-            if (isNaN(parseInt(amounth))) {
-                amounth = 0;
-            }
-
-            efatotal();
-            if (sid !== null) {
-                $.ajax({
-                    type: "GET",
-                    dataType: 'JSON',
-                    async: false,
-                    url: "stocks/find/price/" + sid,
-                    success: function(res) {
-                        //console.log(res);
-
-                        //alert(parseInt(amounth));
-                        //alert(parseInt(res.remaining)+parseInt(amounth));
-                        parent.find('#elot_price').html(
-                            `***ควรขายที่ราคา ${res.cost} - ${res.price} บาท `);
-                        if (parseInt(amount) > (parseInt(res.remaining) + parseInt(
-                                amounth))) {
-                            toastr.error('จำนวนที่จะขายมากกว่าจำนวนที่เหลือในล๊อต', {
-                                timeOut: 5000
-                            });
-                            parent.find('#elot_error').html(
-                                '***จำนวนที่จะขายมากกว่าจำนวนที่เหลือในล๊อต');
-                            parent.find('#eamount').val('')
-                        } else {
-                            parent.find('#elot_error').html('');
-                        }
-                    }
-                });
-            }
-        });
-
-
-        $("#EditCost,#EditAmount").on("keyup", function() {
-            let cost = $("#EditCost").val();
-            let amount = $("#EditAmount").val();
-
-            let total_cost = amount * cost;
-            $("#EditTotalCost").val(total_cost);
-
-        });
-
-
-
-        $(".productl").change(function() {
-            let product = $('#AddProduct').val();
-            //console.log(product);
-            //alert(product);
-            $('#AddStock').html('');
-            if (product.length !== 0) {
-                $.ajax({
-                    method: "GET",
-                    url: "stocks/find/add/" + product,
-                    success: function(res) {
-
-                        //$('#AddStock').html(res.html);
-                        $('.products').html(res.html);
-                        //console.log(res);
-
-                    }
-                });
-            }
-
-        })
-
-        $(".producte").change(function() {
-            let product = $('#EditProduct').val();
-            //console.log(product);
-            //alert(product);
-            $('#EditStock').html('');
-            if (product.length !== 0) {
-                $.ajax({
-                    method: "GET",
-                    url: "stocks/find/edit/" + product,
-                    async: false,
-                    success: function(res) {
-                        $('#EditStock').html(res.html);
-                        //console.log(res);
-
-                    }
-                });
-            }
-
-        })
-
         //$.noConflict();
         var token = ''
         $.ajaxSetup({
@@ -329,22 +230,75 @@
             }
         });
 
+        var startDate;
+        var endDate;
+        function datesearch() {
+            var currentDate = moment();
+            // Set the start date to 7 days before today
+            startDate = moment(currentDate).subtract(15, 'days').format('YYYY-MM-DD');
+            // Set the end date to the end of the current month
+            //endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
+            endDate = moment().format('YYYY-MM-DD');
+        }
+        function datereset() {
+            var currentDate = moment();
+            startDate = moment().format('YYYY-MM-DD');
+            endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
+        }
 
+        function retrieveFieldValues() {
+            var saveddateStart = localStorage.getItem('dateStart');
+            var savedSearchType = localStorage.getItem('searchType');
+            var savedKeyword = localStorage.getItem('keyword');
+
+            // Set field values from local storage
+            if (saveddateStart) {
+                var dateParts = saveddateStart.split(' - ');
+                startDate = dateParts[0];
+                endDate = dateParts[1];
+            } else {
+                datesearch();
+            }
+        }
+
+        let daterange = () => {
+
+            $('#reservation').daterangepicker({
+                startDate: startDate,
+                endDate: endDate,
+                locale: {
+                    format: 'YYYY-MM-DD'
+                }
+            });
+
+            // Apply the custom date range filter on input change
+            $('#reservation').on('apply.daterangepicker', function() {
+                table.draw();
+                //storeFieldValues();
+            });
+        }
+        datesearch();
+        daterange();
+
+
+        $.datepicker.setDefaults($.datepicker.regional['en']);
+        $(".AddDate").datepicker({
+            /*  onSelect: function() {
+                 table.draw();
+             }, */
+            dateFormat: 'yy-mm-dd',
+            changeMonth: true,
+            changeYear: true,
+            yearRange: '1980:2050',
+        });
         var table = $('#Listview').DataTable({
-            /*"aoColumnDefs": [
-            {
-            'bSortable': true,
-            'aTargets': [0]
-            } //disables sorting for column one
-            ],
-            "searching": false,
-            "lengthChange": false,
-            "paging": false,
-            'iDisplayLength': 10,
-            "sPaginationType": "full_numbers",
-            "dom": 'T<"clear">lfrtip',
-                */
-            ajax: '',
+            ajax: {
+                data: function(d) {
+                    d.seachtype = $("#seachtype").val();
+                    d.seachtext = $("#seachtext").val();
+                    d.sdate = $('#reservation').val();
+                }
+            },
             serverSide: true,
             processing: true,
             "searching": false,
@@ -403,28 +357,28 @@
                     name: 'hn'
                 },
                 {
-                    data: 'contact_id',
-                    name: 'contact_id'
+                    data: 'name',
+                    name: 'name'
                 },
                 {
-                    data: 'telephone',
-                    name: 'telephone'
+                    data: 'phoneno',
+                    name: 'phoneno'
                 },
                 {
-                    data: 'create_date',
-                    name: 'create_date'
+                    data: 'created_at',
+                    name: 'created_at'
                 },
                 {
-                    data: 'case_type',
-                    name: 'case_type'
+                    data: 'casename',
+                    name: 'casename'
                 },
                 {
-                    data: 'case_status',
-                    name: 'case_status'
+                    data: 'casestatus',
+                    name: 'casestatus'
                 },
                 {
-                    data: 'transfer_status',
-                    name: 'transfer_status'
+                    data: 'tranferstatus',
+                    name: 'tranferstatus'
                 },
                 {
                     data: 'agent',
@@ -442,7 +396,30 @@
 
             ]
         });
-
+        $('#btnsearch').click(function(e) {
+            var fieldValue = $("#seachtype").val();
+            var textValue = $("#seachtext").val();
+            if (fieldValue === '3' || fieldValue === '4' || fieldValue === '5') {
+                if (textValue === '') {
+                    document.getElementById('validationMessages').textContent =
+                        'กรุณากรอกข้อมูลที่จะค้นหา';
+                    return false;
+                } else {
+                    document.getElementById('validationMessages').textContent = '';
+                }
+            } else {
+                document.getElementById('validationMessages').textContent = '';
+            }
+            $('#Listview').DataTable().ajax.reload();
+        });
+        $('#btnreset').click(function(e) {
+            $("#seachtype").val(0);
+            $("#seachtext").val('');
+            document.getElementById('validationMessages').textContent = '';
+            datereset();
+            daterange();
+            $('#Listview').DataTable().ajax.reload();
+        });
 
         $("#example1").DataTable({
             "responsive": true,
@@ -459,23 +436,6 @@
             "autoWidth": false,
             "responsive": true,
         });
-
-
-        let lid;
-        $(document).on('click', '#getLogData', function(e) {
-            e.preventDefault();
-            lid = $(this).data('id');
-            $.ajax({
-                url: "orders/log/" + lid,
-                method: 'GET',
-                success: function(res) {
-                    $('#log_table').html(res.html);
-                    $('#LogModal').modal('show');
-                }
-            });
-
-
-        })
 
 
         $(document).on('click', '#CreateButton', function(e) {
@@ -495,154 +455,41 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
-            var stockValues = [];
-            var amountValues = [];
-            var priceValues = [];
-            var isValid = true;
+            var additionalData = {
+                contact_id: $('#Addid').val(),
+                casetype1: $('#Addcasetype1').val(),
+                casedetail: $('#AddDetail').val(),
+                tranferstatus: $('#Addtranferstatus option:selected').text(),
+                casestatus: $('#Addcasestatus option:selected').text(),
+                _token: token
+            };
 
-            // Initializing array values
-            $("select[name='stock[]']").each(function() {
-                stockValues.push(this.value);
-            });
-
-            // Check for duplicates in stock values
-            var duplicateValues = stockValues.filter(function(value, index, self) {
-                return self.indexOf(value) !== index;
-            });
-
-            if (duplicateValues.length > 0) {
-                toastr.error('ไม่สามารถเลือกสินค้าล็อตเดียวกันในรายการขาย', {
-                    timeOut: 5000
-                });
-                return false;
-            }
-
-            // Validate stock select
-            var stockSelects = $("select[name='stock[]']");
-            stockSelects.each(function() {
-                var stockSelect = $(this);
-                var selectedValue = stockSelect.val();
-
-                if (selectedValue === null || selectedValue.trim() === '') {
-                    stockSelect.addClass("is-invalid");
-                    stockSelect.removeClass("is-valid");
-                    toastr.error('กรุณาเลือกสินค้าในคลังสินค้า', {
-                        timeOut: 5000
-                    });
-                    isValid = false;
-                } else {
-                    stockSelect.removeClass("is-invalid");
-                    stockSelect.addClass("is-valid");
-                }
-            });
-
-            if (!isValid) {
-                return false;
-            }
-
-            // Collect amount values and validate
-            $("input[name='amount[]']").each(function() {
-                var amountInput = $(this);
-                var value = parseFloat(amountInput.val());
-
-                if (isNaN(value) || value % 0.5 !== 0) {
-                    // Invalid amount input
-                    amountInput.addClass("is-invalid");
-                    amountInput.removeClass("is-valid");
-                    amountInput.siblings(".error-message").text(
-                        "กรุณาระบุจำนวนที่จะขาย");
-                    toastr.error('กรุณาระบุจำนวนที่จะขาย', {
-                        timeOut: 5000
-                    });
-                    isValid = false;
-                } else {
-                    // Valid amount input
-                    amountInput.removeClass("is-invalid");
-                    amountInput.addClass("is-valid");
-                    amountValues.push(value);
-                }
-            });
-
-            if (!isValid) {
-                return false;
-            }
-
-            // Collect price values and validate
-            $("input[name='price[]']").each(function() {
-                var priceInput = $(this);
-                var value = parseFloat(priceInput.val());
-
-                if (isNaN(value) || value <= 0) {
-                    // Invalid price input
-                    priceInput.addClass("is-invalid");
-                    priceInput.removeClass("is-valid");
-                    priceInput.siblings(".error-message").text(
-                        "กรุณาระบุราคาที่จะขาย");
-                    toastr.error('กรุณาระบุราคาที่จะขาย', {
-                        timeOut: 5000
-                    });
-                    isValid = false;
-                } else {
-                    // Valid price input
-                    priceInput.removeClass("is-invalid");
-                    priceInput.addClass("is-valid");
-                    priceValues.push(value);
-                }
-            });
-
-            if (!isValid) {
-                return false;
-            }
-
-            if ($('#AddCompany').val()[0] !== undefined) {
-                var formData = {
-                    order_number: $('#AddLot').val(),
-                    sid: stockValues, // Only consider the first selected stock value
-                    cid: $('#AddCompany').val()[0],
-                    pid: $('#AddProduct').val()[0],
-                    amount: amountValues,
-                    price: priceValues,
-                    tamount: $('#AddAmount').val(),
-                    //cost: $('#AddCost').val(),
-                    total_cost: $('#AddTotalCost').val(),
-                    detail: $('#AddDetail').val(),
-                    _token: token
-                };
-
-                $.ajax({
-                    url: "{{ route('cases.store') }}",
-                    method: 'post',
-                    data: formData,
-                    success: function(result) {
-                        if (result.errors) {
-                            $('.alert-danger').html('');
-                            $.each(result.errors, function(key, value) {
-                                $('.alert-danger').show();
-                                $('.alert-danger').append('<strong><li>' + value +
-                                    '</li></strong>');
-                            });
-                        } else {
-                            $('.alert-danger').hide();
-                            $('.alert-success').show();
-                            $('.alert-success').text(result.success);
-                            toastr.success(result.success, {
-                                timeOut: 5000
-                            });
-                            $('#Listview').DataTable().ajax.reload();
-                            $("#AddProduct").val(null).trigger("change")
-                            $("#AddStock").val(null).trigger("change")
-                            $("#AddCompany").val(null).trigger("change")
-                            $('.form').trigger('reset');
-                            $('#CreateModal').modal('hide');
-                        }
+            $.ajax({
+                url: "{{ route('cases.store') }}",
+                method: 'post',
+                data: additionalData,
+                success: function(result) {
+                    if (result.errors) {
+                        $('.alert-danger').html('');
+                        $.each(result.errors, function(key, value) {
+                            $('.alert-danger').show();
+                            $('.alert-danger').append('<strong><li>' + value +
+                                '</li></strong>');
+                        });
+                    } else {
+                        $('.alert-danger').hide();
+                        $('.alert-success').show();
+                        $('.alert-success').append('<strong><li>' + result.success +
+                            '</li></strong>');
+                        toastr.success(result.success, {
+                            timeOut: 5000
+                        });
+                        $('#Listview').DataTable().ajax.reload();
+                        $('.form').trigger('reset');
+                        $('#CreateModal').modal('hide');
                     }
-                });
-
-            } else {
-                toastr.error('กรุณากรอกข้อมูลให้ครบ', {
-                    timeOut: 5000
-                });
-            }
+                }
+            });
         });
 
 
@@ -659,26 +506,21 @@
 
 
 
-            //id = $(this).data('id');
-            //$.ajax({
-            //    url: "orders/edit/" + id,
-            //    method: 'GET',
-            //    success: function(res) {
-            //        console.log(res);
-             //       $('#EditLot').val(res.data.order_number);
-            //        $('#EditProduct').val(res.data.pid).change();
-            //        $("select[name=eproduct]").attr("readonly", "readonly");
-            //        $('#EditStock').val(res.data.sid).change();
-            //        $("select[name=estock]").attr("readonly", "readonly");
-            //        $('#EditCompany').val(res.data.cid).change();
-           //         $('#EditAmount').val(res.data.amount);
-            //        $('#EditCost').val(res.data.cost);
-            //        $('#EditTotalCost').val(res.data.total_cost);
-            //        $('#EditDetail').val(res.data.detail);
-            //        $('#EditModalBodyTable').html(res.table_html);
+            id = $(this).data('id');
+            $.ajax({
+                url: "cases/edit/" + id,
+                method: 'GET',
+                success: function(res) {
+                    console.log(res);
+                    $('#Edithn').val(res.data.hn);
+                    $('#EditName').val(res.data.name);
+                    $('#Editcasetype1e').val(res.data.casetype1);
+                    $('#Editdetail').val(res.data.casedetail);
+                    $('#Edittranferstatuse').val(res.data.tranferstatus);
+                    $('#Editcasestatuse').val(res.data.casestatus);
                     $('#EditModal').modal('show');
-            //    }
-            //});
+                }
+            });
 
         })
 
@@ -691,157 +533,44 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
-            var stockValues = [];
-            var amountValues = [];
-            var priceValues = [];
-            var isValid = true;
+            var additionalData = {
+                casetype1: $('#Editcasetype1e').val(),
+                tranferstatus: $('#Edittranferstatuse option:selected').text(),
+                casedetail: $('#Editdetail').val(),
+                casestatus: $('#Editcasestatuse option:selected').text(),
+            };
+            $.ajax({
+                url: "cases/save/" + id,
+                method: 'PUT',
+                data: additionalData,
 
-            // Initializing array values
-            $("select[name='estock[]']").each(function() {
-                stockValues.push(this.value);
-            });
-
-            // Check for duplicates in stock values
-            var duplicateValues = stockValues.filter(function(value, index, self) {
-                return self.indexOf(value) !== index;
-            });
-
-            if (duplicateValues.length > 0) {
-                toastr.error('ไม่สามารถเลือกสินค้าล็อตเดียวกันในรายการขาย', {
-                    timeOut: 5000
-                });
-                return false;
-            }
-
-            // Validate stock select
-            var stockSelects = $("select[name='estock[]']");
-            stockSelects.each(function() {
-                var stockSelect = $(this);
-                var selectedValue = stockSelect.val();
-
-                if (selectedValue === null || selectedValue.trim() === '') {
-                    stockSelect.addClass("is-invalid");
-                    stockSelect.removeClass("is-valid");
-                    toastr.error('กรุณาเลือกสินค้าในคลังสินค้า', {
-                        timeOut: 5000
-                    });
-                    isValid = false;
-                } else {
-                    stockSelect.removeClass("is-invalid");
-                    stockSelect.addClass("is-valid");
-                }
-            });
-
-            if (!isValid) {
-                return false;
-            }
-
-            // Collect amount values and validate
-            $("input[name='eamount[]']").each(function() {
-                var amountInput = $(this);
-                var value = parseFloat(amountInput.val());
-
-                if (isNaN(value) || value % 0.5 !== 0) {
-                    // Invalid amount input
-                    amountInput.addClass("is-invalid");
-                    amountInput.removeClass("is-valid");
-                    amountInput.siblings(".error-message").text(
-                        "กรุณาระบุจำนวนที่จะขาย");
-                    toastr.error('กรุณาระบุจำนวนที่จะขาย', {
-                        timeOut: 5000
-                    });
-                    isValid = false;
-                } else {
-                    // Valid amount input
-                    amountInput.removeClass("is-invalid");
-                    amountInput.addClass("is-valid");
-                    amountValues.push(value);
-                }
-            });
-
-            if (!isValid) {
-                return false;
-            }
-
-            // Collect price values and validate
-            $("input[name='eprice[]']").each(function() {
-                var priceInput = $(this);
-                var value = parseFloat(priceInput.val());
-
-                if (isNaN(value) || value <= 0) {
-                    // Invalid price input
-                    priceInput.addClass("is-invalid");
-                    priceInput.removeClass("is-valid");
-                    priceInput.siblings(".error-message").text(
-                        "กรุณาระบุราคาที่จะขาย");
-                    toastr.error('กรุณาระบุราคาที่จะขาย', {
-                        timeOut: 5000
-                    });
-                    isValid = false;
-                } else {
-                    // Valid price input
-                    priceInput.removeClass("is-invalid");
-                    priceInput.addClass("is-valid");
-                    priceValues.push(value);
-                }
-            });
-
-            if (!isValid) {
-                return false;
-            }
-
-            if ($('#EditCompany').val()[0] !== undefined) {
-                var formData = {
-                    order_number: $('#EditLot').val(),
-                    sid: stockValues, // Only consider the first selected stock value
-                    cid: $('#EditCompany').val()[0],
-                    pid: $('#EditProduct').val()[0],
-                    amount: amountValues,
-                    price: priceValues,
-                    tamount: $('#EditAmount').val(),
-                    //cost: $('#AddCost').val(),
-                    total_cost: $('#EditTotalCost').val(),
-                    detail: $('#EditDetail').val(),
-                    _token: token
-                };
-
-                $.ajax({
-                    url: "orders/save/" + id,
-                    method: 'PUT',
-                    data: formData,
-
-                    success: function(result) {
-                        //console.log(result);
-                        if (result.errors) {
-                            $('.alert-danger').html('');
-                            $.each(result.errors, function(key, value) {
-                                $('.alert-danger').show();
-                                $('.alert-danger').append('<strong><li>' + value +
-                                    '</li></strong>');
-                            });
-                        } else {
-                            $('.alert-danger').hide();
-                            $('.alert-success').show();
-                            $('.alert-success').append('<strong><li>' + result.success +
+                success: function(result) {
+                    //console.log(result);
+                    if (result.errors) {
+                        $('.alert-danger').html('');
+                        $.each(result.errors, function(key, value) {
+                            $('.alert-danger').show();
+                            $('.alert-danger').append('<strong><li>' + value +
                                 '</li></strong>');
-                            $('#EditModal').modal('hide');
-                            toastr.success(result.success, {
-                                timeOut: 5000
-                            });
-                            $('#Listview').DataTable().ajax.reload();
-                            //setTimeout(function() {
-                            //$('.alert-success').hide();
+                        });
+                    } else {
+                        $('.alert-danger').hide();
+                        $('.alert-success').show();
+                        $('.alert-success').append('<strong><li>' + result.success +
+                            '</li></strong>');
+                        $('#EditModal').modal('hide');
+                        toastr.success(result.success, {
+                            timeOut: 5000
+                        });
+                        $('#Listview').DataTable().ajax.reload();
+                        //setTimeout(function() {
+                        //$('.alert-success').hide();
 
-                            //}, 10000);
+                        //}, 10000);
 
-                        }
                     }
-                });
-            } else {
-                toastr.error('กรุณากรอกข้อมูลให้ครบ', {
-                    timeOut: 5000
-                });
-            }
+                }
+            });
         });
 
         $(document).on('click', '.btn-delete', function() {
@@ -855,7 +584,7 @@
             $.ajax({
                 type: "POST",
                 dataType: 'JSON',
-                url: "orders/destroy/",
+                url: "cases/destroy/",
                 data: {
                     id: rowid,
                     _method: 'delete',
@@ -875,106 +604,6 @@
             }); //end ajax
         })
 
-
-    });
-
-    $(function() {
-
-        $("#addRow").click(function() {
-            // ส่วนของการ clone ข้อมูลด้วย jquery clone() ค่า true คือ
-            // การกำหนดให้ ไม่ต้องมีการ ดึงข้อมูลจากค่าเดิมมาใช้งาน
-            // รีเซ้ตเป็นค่าว่าง ถ้ามีข้อมูลอยู่แล้ว ทั้ง select หรือ input
-            // $(".firstTr1:eq(0)").clone(true)
-            //     .find("input").attr("value", "").end()
-            //     .find("select").attr("value", "").end()
-            //     .appendTo($("#myTbl"));
-            $(".firstTr:eq(0)").clone(true)
-
-                .find("input").attr("value", "").end()
-                .find("select").attr("value", "").end()
-                .appendTo($("#myTbl"));
-
-
-            efatotal();
-
-        });
-        $("#removeRow").click(function() {
-            // // ส่วนสำหรับการลบ
-            if ($("#myTbl tr").length > 2) { // จะลบรายการได้ อย่างน้อย ต้องมี 1 รายการ
-                $("#myTbl tr:last").remove(); // ลบรายการสุดท้าย
-                efatotal();
-            } else {
-                // เหลือ 1 รายการลบไม่ได้
-                if ($("#myTbl tr").length > 1) {
-                    //alert("ต้องมีรายการข้อมูลอย่างน้อย 1 รายการ");
-                    toastr.success('ต้องมีรายการข้อมูลอย่างน้อย 1 รายการ', {
-                        timeOut: 5000
-                    });
-                }
-            }
-        });
-        $(document).on('click', '.btnRemoveg', function() {
-            // // ส่วนสำหรับการลบ
-            if ($("#myTbl tr").length > 2) { // จะลบรายการได้ อย่างน้อย ต้องมี 1 รายการ
-                //$("#myTbl tr:last").remove(); // ลบรายการสุดท้าย
-                $(this).closest("tr").remove();
-                efatotal();
-            } else {
-                // เหลือ 1 รายการลบไม่ได้
-                if ($("#myTbl tr").length > 1) {
-                    //alert("ต้องมีรายการข้อมูลอย่างน้อย 1 รายการ");
-                    toastr.success('ต้องมีรายการข้อมูลอย่างน้อย 1 รายการ', {
-                        timeOut: 5000
-                    });
-                }
-            }
-        });
-
-        $("#addRow2").click(function() {
-            // ส่วนของการ clone ข้อมูลด้วย jquery clone() ค่า true คือ
-            // การกำหนดให้ ไม่ต้องมีการ ดึงข้อมูลจากค่าเดิมมาใช้งาน
-            // รีเซ้ตเป็นค่าว่าง ถ้ามีข้อมูลอยู่แล้ว ทั้ง select หรือ input
-            $(".firstTr3:eq(0)").clone(true)
-
-                .find("input").attr("value", "").end()
-                .find("select").attr("value", "").end()
-                .appendTo($("#myTbl3"));
-
-            fatotal();
-        });
-        $("#removeRow2").click(function() {
-            // // ส่วนสำหรับการลบ
-            if ($("#myTbl3 tr").length > 2) { // จะลบรายการได้ อย่างน้อย ต้องมี 1 รายการ
-                $("#myTbl3 tr:last").remove(); // ลบรายการสุดท้าย
-                fatotal();
-            } else {
-                // เหลือ 1 รายการลบไม่ได้
-                if ($("#myTbl3 tr").length > 1) {
-                    //alert("ต้องมีรายการข้อมูลอย่างน้อย 1 รายการ");
-                    toastr.success('ต้องมีรายการข้อมูลอย่างน้อย 1 รายการ', {
-                        timeOut: 5000
-                    });
-                }
-            }
-        });
-        $(".btnRemoveg2").click(function() {
-            // // ส่วนสำหรับการลบ
-            if ($("#myTbl3 tr").length > 2) { // จะลบรายการได้ อย่างน้อย ต้องมี 1 รายการ
-                //$("#myTbl tr:last").remove(); // ลบรายการสุดท้าย
-                $(this).closest("tr").remove();
-                fatotal();
-            } else {
-                // เหลือ 1 รายการลบไม่ได้
-                if ($("#myTbl3 tr").length > 1) {
-                    //alert("ต้องมีรายการข้อมูลอย่างน้อย 1 รายการ");
-                    toastr.success('ต้องมีรายการข้อมูลอย่างน้อย 1 รายการ', {
-                        timeOut: 5000
-                    });
-                }
-            }
-        });
-
-        $(this).closest(".abcd").remove();
 
     });
 </script>

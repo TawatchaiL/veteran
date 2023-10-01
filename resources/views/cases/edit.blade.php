@@ -60,8 +60,8 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-code"></i> HN:</strong>
-                                                    {!! Form::text('name', '000001', [
-                                                        'id' => 'AddName',
+                                                    {!! Form::text('ehn', NULL, [
+                                                        'id' => 'Edithn',
                                                         'placeholder' => 'Name',
                                                         'class' => 'form-control',
                                                         'readonly' => true,
@@ -71,8 +71,8 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> ชื่อ-สกุล :</strong>
-                                                    {!! Form::text('name', 'นายสมมุติ ไม่สบาย', [
-                                                        'id' => 'AddName',
+                                                    {!! Form::text('ename', NULL, [
+                                                        'id' => 'EditName',
                                                         'placeholder' => 'Name',
                                                         'class' => 'form-control',
                                                         'readonly' => true,
@@ -86,11 +86,8 @@
                                                 <div class="form-group">
                                                     <strong><i class="fa-regular fa-message"></i> ประเภทเคส:</strong>
                                                     <select style="width: 100%;"
-                                                        class="select2 select2_casetype1e form-control" id="casetype1e"
-                                                        name="casetype1e" multiple="multiple">
-                                                        <option value="" selected>โอนสาย</option>
-                                                        <!-- <option value="" selected>Select Student</option>
-                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
+                                                        class="select2 form-control" id="Editcasetype1e"
+                                                        name="casetype1e">
                                                         @foreach ($casetype as $key2)
                                                             <option value="{{ $key2->id }}">{{ $key2->name }}
                                                             </option>
@@ -99,90 +96,15 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                                <div class="form-group">
-                                                    <strong><i class="fa-regular fa-comment-dots"></i>
-                                                        รายละเอียดเคส:</strong>
-                                                    <select style="width: 100%;"
-                                                        class="select2 select2_casetype2e form-control" id="casetype2e"
-                                                        name="casetype2e" multiple="multiple">
-                                                        <option value="" selected>OPD</option>
-                                                        <!-- <option value="" selected>Select Student</option>
-                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
-
-                                                    </select>
-                                                </div>
-                                            </div>
                                         </div>
-
-                                        <div class="row">
-                                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                                <div class="form-group">
-                                                    <strong><i class="fa-regular fa-comment-dots"></i>
-                                                        รายละเอียดเคสย่อย:</strong>
-                                                    <select style="width: 100%;"
-                                                        class="select2 select2_casetype3e form-control" id="casetype3e"
-                                                        name="casetype3e" multiple="multiple">
-                                                        <option value="" selected>OPD ในเวลา</option>
-                                                        <!-- <option value="" selected>Select Student</option>
-                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
-
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                                <div class="form-group">
-                                                    <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
-                                                        เพิ่มเติม 1:</strong>
-                                                    <select style="width: 100%;"
-                                                        class="select2 select2_casetype4e form-control"
-                                                        id="casetype4e" name="casetype4e" multiple="multiple">
-                                                        <option value="" selected>อายุรกรรม</option>
-                                                        <!-- <option value="" selected>Select Student</option>
-                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
-
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                                <div class="form-group">
-                                                    <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
-                                                        เพิ่มเติม 2:</strong>
-                                                    <select style="width: 100%;"
-                                                        class="select2 select2_casetype5e form-control"
-                                                        id="casetype5e" name="casetype5e" multiple="multiple">
-                                                        <!-- <option value="" selected>Select Student</option>
-                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
-
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                                <div class="form-group">
-                                                    <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
-                                                        เพิ่มเติม 3:</strong>
-                                                    <select style="width: 100%;"
-                                                        class="select2 select2_casetype6e form-control"
-                                                        id="casetype6e" name="casetype6e" multiple="multiple">
-                                                        <!-- <option value="" selected>Select Student</option>
-                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
-
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                         <div class="row">
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <strong><i class="fa-regular fa-comment-dots"></i>
                                                         รายละเอียด:</strong>
-                                                    {!! Form::textarea('detail', 'ทดสอบ', [
+                                                    {!! Form::textarea('edetail', NULL, [
                                                         'rows' => 4,
-                                                        'id' => 'AddDetail',
+                                                        'id' => 'Editdetail',
                                                         'class' => 'form-control',
                                                     ]) !!}
                                                 </div>
@@ -192,8 +114,6 @@
 
                                     </div>
                                 </div>
-
-
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
@@ -202,11 +122,11 @@
                                                     <strong><i class="fas fa-shuffle"></i> สถานะการโอนสาย
                                                         :</strong>
                                                     <select style="width: 100%;"
-                                                        class="select2 select2_tranfere form-control"
-                                                        id="tranferstatuse" name="tranferstatuse">
-                                                        <option value="1" selected>รับสาย</option>
-                                                        <option value="2">ไม่รับสาย</option>
-                                                        <option value="3">สายไม่ว่าง</option>
+                                                        class="select2 form-control"
+                                                        id="Edittranferstatuse" name="tranferstatuse">
+                                                        <option value="รับสาย">รับสาย</option>
+                                                        <option value="ไม่รับสาย">ไม่รับสาย</option>
+                                                        <option value="สายไม่ว่าง">สายไม่ว่าง</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -215,10 +135,10 @@
                                                     <strong><i class="fas fa-arrows-rotate"></i> สถานะการเคส
                                                         :</strong>
                                                     <select style="width: 100%;"
-                                                        class="select2 select2_casestatuse form-control"
-                                                        id="casestatuse" name="casestatuse">
-                                                        <option value="1" selected>ปิดเคส</option>
-                                                        <option value="2">กำลังดำเนินการ</option>
+                                                        class="select2 form-control"
+                                                        id="Editcasestatuse" name="casestatuse">
+                                                        <option value="ปิดเคส">ปิดเคส</option>
+                                                        <option value="กำลังดำเนินการ">กำลังดำเนินการ</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -245,7 +165,7 @@
                 {!! Form::close() !!}
             </div>
             <div class="modal-footer {{-- justify-content-between --}}">
-                <button type="button" class="btn btn-success" id="SubmitCreateForm"><i class="fas fa-download"></i>
+                <button type="button" class="btn btn-success" id="SubmitEditForm"><i class="fas fa-download"></i>
                     บันทึกข้อมูล</button>
                 <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i
                         class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
