@@ -130,7 +130,7 @@ class ContactController extends Controller
             $contact_name = "กิจวรรณ";
             $contact_lname = "ละเอียด";
         }
-        //$case_type = Case_type::orderBy("id", "asc")->get();
+        $case_type = Case_type::orderBy("id", "asc")->get();
         $template = 'contacts.contact-create';
         $htmlContent = View::make($template, [
             'telephone' => $con, 'contact_name' => $contact_name, 'contact_lname' => $contact_lname, 'casetype' => $case_type
