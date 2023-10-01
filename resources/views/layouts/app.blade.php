@@ -304,6 +304,24 @@
                         $(this).css('bottom', '35px');
                         $(this).delay(index * 100).fadeIn();
 
+                        setTimeout(function() {
+                            $.ajax({
+                                url: "{{ route('thcity.city') }}",
+                                method: 'GET',
+                                success: function(res) {
+                                    //alert(res.data.code);
+                                    var provinceOb = $('#Popcity');
+                                    provinceOb.html('<option value="">เลือกจังหวัด</option>');
+                                    $.each(res.data, function(index, item) {
+                                        provinceOb.append(
+                                            $('<option></option>').val(item.code).html(item
+                                                .name_th)
+                                        );
+                                    });
+                                }
+                            });
+                        }, 2000)
+
                     });
                 },
                 error: function(xhr, status, error) {
@@ -312,7 +330,7 @@
             });
         }
 
-        positionCards();
+       positionCards();
 
         // Handle card maximize
         $(document).on('click', '.custom-bottom-right-card .card-tools [data-card-widget="maximize"]',
@@ -413,17 +431,17 @@
                     await $('#pop_' + cardId).html(response.html);
                     $(".card-footer").css("display", "block")
                     $('.bclose').css('display', 'none');
-                    $('#amp').select2({});
-                    $('#tmp').select2({});
-                    $('#cityp').select2({});
-                    $('#casetype1p').select2({});
-                    $('#casetype2p').select2({});
-                    $('#casetype3p').select2({});
-                    $('#casetype4p').select2({});
-                    $('#casetype5p').select2({});
-                    $('#casetype6p').select2({});
-                    $('#tranferstatusp').select2({});
-                    $('#casestatusp').select2({});
+                    //$('#amp').select2({});
+                    //$('#tmp').select2({});
+                    //$('#cityp').select2({});
+                    //$('#casetype1p').select2({});
+                    //$('#casetype2p').select2({});
+                    //$('#casetype3p').select2({});
+                    //$('#casetype4p').select2({});
+                    //$('#casetype5p').select2({});
+                    //$('#casetype6p').select2({});
+                    //$('#tranferstatusp').select2({});
+                    //$('#casestatusp').select2({});
                     addemerphone();
                 }
             });
