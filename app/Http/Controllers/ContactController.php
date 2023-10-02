@@ -483,13 +483,13 @@ class ContactController extends Controller
         }
 
         $Crmcsae = new Cases();
-        $Crmcsae->contact_id = $insertedId;
-        $Crmcsae->telno = $request->input('telno');
-        $Crmcsae->casetype1 = $request->input('casetype1');
-        $Crmcsae->tranferstatus = $request->input('tranferstatus');
-        $Crmcsae->casedetail = $request->input('casedetail');
-        $Crmcsae->casestatus = $request->input('casestatus');
-        $Crmcsae->agent = $request->input('agent');
+        $Crmcsae->contact_id = $id;
+        $Crmcsae->telno = $request->get('telno');
+        $Crmcsae->casetype1 = $request->get('casetype1');
+        $Crmcsae->tranferstatus = $request->get('tranferstatus');
+        $Crmcsae->casedetail = $request->get('casedetail');
+        $Crmcsae->casestatus = $request->get('casestatus');
+        $Crmcsae->agent = $request->get('agent');
         $Crmcsae->save();
         return response()->json(['success' => 'แก้ไข ผู้ติดต่อ เรียบร้อยแล้ว']);
     }
