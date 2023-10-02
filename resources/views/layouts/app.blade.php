@@ -590,6 +590,8 @@ const addemerphone = () => {
                                             $('.alert-success-pop').show();
                                             $('.alert-success-pop').append('<strong><li>' + result.success +
                                                 '</li></strong>');
+                            var cardElement = document.getElementById($('#telnop').val()); // Replace 'yourCardId' with the actual ID of your card element
+                                cardElement.remove();
                                             //$('#'.$('#telnop').val()).remove();
                                         //$('#EditModal').modal('hide');
                                         //toastr.success(result.success, {
@@ -662,6 +664,8 @@ const addemerphone = () => {
                                             $('.alert-success-pop').show();
                                             $('.alert-success-pop').append('<strong><li>' + result.success +
                                                 '</li></strong>');
+                                                var cardElement = document.getElementById($('#telnop').val()); // Replace 'yourCardId' with the actual ID of your card element
+                                cardElement.remove();
                                         //$('#EditModal').modal('hide');
                                         //toastr.success(result.success, {
                                         //    timeOut: 5000
