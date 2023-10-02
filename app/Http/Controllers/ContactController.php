@@ -462,7 +462,7 @@ class ContactController extends Controller
         $contact->update($contactd);
         if (!empty($request->emergencyData)) {
             foreach ($request->emergencyData as $edata) {
-                if ($edata['eemertype'] == '') {
+                if ($edata['emertype'] == '') {
                     $Crmemergency = new CrmPhoneEmergency();
                     $Crmemergency->contact_id = $id;
                     $Crmemergency->emergencyname = $edata['emergencyname'];
@@ -476,7 +476,7 @@ class ContactController extends Controller
                         'emerphone' => $edata['emerphone'],
                     ];
 
-                    $emer = CrmPhoneEmergency::find($edata['eemertype']);
+                    $emer = CrmPhoneEmergency::find($edata['emertype']);
                     $emer->update($emerd);
                 }
             }
