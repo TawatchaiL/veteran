@@ -143,66 +143,42 @@ class ContactController extends Controller
 
     public function popup()
     {
-        $html = '<div class="card card-danger custom-bottom-right-card d-none d-md-block" data-id="0804190099" id="0804190099">
-        <div class="card-header">
-        <h4 class="card-title"> <i class="fa-solid fa-triangle-exclamation fa-beat" style="--fa-beat-scale: 1.5;"></i> 0804190099 (ผู้ติดต่อใหม่)</h4>
-        <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="maximize">
-                <i class="fas fa-expand"></i>
-            </button>
+        $datac = DB::table('crm_incoming')
+        ->where('status', '=', "0")
+        ->get();
+        $html = '';
+        foreach ($datac as $item) {
+            $datap = DB::table('crm_contacts')
+            ->where('phoneno', '=', $item->telno)
+            ->orWhere('telhome', '=', $item->telno)
+            ->orWhere('workno', '=', $item->telno)
+            ->count();
+            if($datap > 0){
+                $statusText = "(ผู้ติดต่อในระบบ)";    
+            }else{
+                $statusText = "(ผู้ติดต่อใหม่)&nbsp;&nbsp;&nbsp;";
+            }
+            $html .= '<div class="card card-danger custom-bottom-right-card d-none d-md-block" data-id="'.$item->telno.'" id="'.$item->telno.'">
+            <div class="card-header">
+            <h4 class="card-title"> <i class="fa-solid fa-triangle-exclamation fa-beat" style="--fa-beat-scale: 1.5;"></i> '.$item->telno.' '.$statusText.'</h4>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                    <i class="fas fa-expand"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            </div>
+            <div class="card-body card-content pop_content" id="pop_'.$item->telno.'">
+            <!-- Card content goes here -->
+            </div>
+            <div class="card-footer text-muted bclose">
+            <button type="button" class="btn btn-success bopen" data-card-widget="maximize"><i class="fa-solid fa-up-right-from-square"></i> เปิด</button>
+            </div>
+            </div>';
+        }
 
-            <button type="button" class="btn btn-tool" data-card-widget="remove">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        </div>
-        <div class="card-body card-content pop_content" id="pop_0804190099">
-        <!-- Card content goes here -->
-        </div>
-        <div class="card-footer text-muted bclose">
-        <button type="button" class="btn btn-success bopen" data-card-widget="maximize"><i class="fa-solid fa-up-right-from-square"></i> เปิด</button>
-        </div>
-        </div>
-        <div class="card card-danger custom-bottom-right-card d-none d-md-block" data-id="0822846414" id="0822846414">
-        <div class="card-header">
-        <h3 class="card-title"> <i class="fa-solid fa-triangle-exclamation fa-beat" style="--fa-beat-scale: 1.5;"></i> 0822846414 (ผู้ติดต่อใหม่)</h3>
-        <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="maximize">
-                <i class="fas fa-expand"></i>
-            </button>
-
-            <button type="button" class="btn btn-tool" data-card-widget="remove">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        </div>
-        <div class="card-body card-content pop_content" id="pop_0822846414">
-        <!-- Card content goes here -->
-        </div>
-        <div class="card-footer text-muted bclose">
-        <button type="button" class="btn btn-success bopen" data-card-widget="maximize"><i class="fa-solid fa-up-right-from-square"></i> เปิด</button>
-        </div>
-        </div>
-        <div class="card card-danger custom-bottom-right-card d-none d-md-block" data-id="0877777777" id="0877777777">
-        <div class="card-header">
-        <h3 class="card-title"> <i class="fa-solid fa-triangle-exclamation fa-beat" style="--fa-beat-scale: 1.5;"></i> 0877777777 (ผู้ติดต่อในระบบ)</h3>
-        <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="maximize">
-                <i class="fas fa-expand"></i>
-            </button>
-
-            <button type="button" class="btn btn-tool" data-card-widget="remove">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        </div>
-        <div class="card-body card-content pop_content" id="pop_0877777777">
-        <!-- Card content goes here -->
-        </div>
-        <div class="card-footer text-muted bclose">
-        <button type="button" class="btn btn-success bopen" data-card-widget="maximize"><i class="fa-solid fa-up-right-from-square"></i> เปิด</button>
-        </div>
-        </div>';
         return response()->json([
             'html' =>  $html
         ]);
