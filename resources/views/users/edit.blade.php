@@ -45,10 +45,10 @@
                                     <select style="width: 100%;"
                                         class="select2 select2_multiple form-control" id="EditQueue"
                                         name="equeue" multiple="multiple">
-                                        @foreach ($queue as $keyq)
+                                        {{-- @foreach ($queue as $keyq)
                                             <option value="{{ $keyq->extension }}">{{ $keyq->extension }} ( {{ $keyq->descr }} )
                                             </option>
-                                        @endforeach
+                                        @endforeach --}}
 
 
                                     </select>

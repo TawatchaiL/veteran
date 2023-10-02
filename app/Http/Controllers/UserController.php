@@ -244,9 +244,18 @@ class UserController extends Controller
         $position = Position::where([['id', $data->position_id]])->get();
         $select_list_position = '<option value="' . $position[0]->id . '" > ' . $position[0]->name . '</option>';
 
+        $queuecs = DB::connection('remote_connection')->table('asterisk.queues_config')->get();
+        $queues = Queue::where('user_id', $id)->get();
+        $select_list_queue = '';
 
+        foreach ($queuecs as $queuec) {
+            // Check if $queuec->extension exists in $queues
+            $selected = $queues->contains('extension', $queuec->extension) ? 'selected' : '';
 
-        return response()->json(['data' => $data, 'html' => $rolese, 'select_list_position' => $select_list_position]);
+            $select_list_queue .= '<option value="' . $queuec->extension . '" ' . $selected . '> ' . $queuec->extension . ' ( ' . $queuec->descr . ' ) </option>';
+        }
+
+        return response()->json(['data' => $data, 'html' => $rolese, 'select_list_position' => $select_list_position, 'select_list_queue' => $select_list_queue]);
     }
 
     /**
