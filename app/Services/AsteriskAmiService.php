@@ -35,6 +35,7 @@ class AsteriskAmiService
 
         if ($remote) {
             $foo[$remote_extension]  = $remote->ExtensionState($remote_extension, $this->remoteContext, '');
+            //dd($foo[$remote_extension]);
 
             switch ($foo[$remote_extension]['Status']) {
                 case -1:
