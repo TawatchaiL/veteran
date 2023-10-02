@@ -131,6 +131,11 @@ class ContactController extends Controller
             $contact_name = "กิจวรรณ";
             $contact_lname = "ละเอียด";
         }
+        $datap = DB::table('crm_contacts')
+        ->where('phoneno', '=', $con)
+        ->orWhere('telhome', '=', $con)
+        ->orWhere('workno', '=', $con)
+        ->get();
         $case_type = Case_type::orderBy("id", "asc")->get();
         $template = 'contacts.contact-create';
         $htmlContent = View::make($template, [
@@ -322,6 +327,26 @@ class ContactController extends Controller
             ->get();
         $data = [
             'datac' => $datac,
+            'emer' => $emer,
+        ];
+        return response()->json(['datax' => $data]);
+    }
+
+    public function popupedit($telnop)
+    {
+        //$datac = CrmContact::find('20');
+        $datac = DB::table('crm_contacts')
+        ->where('phoneno', '=', $telnop)
+        //->orWhere('telhome', '=', $telnop)
+        //->orWhere('workno', '=', $telnop)
+        ->get();
+        //$data = CrmPhoneEmergency::find($id);
+        $emer = DB::table('crm_phone_emergencies')
+            ->whereRaw('contact_id = 20')
+            ->get();
+
+        $data = [
+            'datac' => $datac['0'],
             'emer' => $emer,
         ];
         return response()->json(['datax' => $data]);

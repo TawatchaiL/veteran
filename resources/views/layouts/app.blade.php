@@ -114,7 +114,7 @@
             newRow.innerHTML = `
             <td width="30%">
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                    <input type="text" id="emergencynamep" name="emergencynamep[]" class="form-control has-feedback-left" value="" required>
+                    <input type="hidden" value="" name="emertypep[]" id="emertypep"><input type="text" id="emergencynamep" name="emergencynamep[]" class="form-control has-feedback-left" value="" required>
                 </div>
             </td>
             <td width="10%">
@@ -301,31 +301,6 @@
                         $(this).css('right', cardPositions[index].right);
                         $(this).css('bottom', '35px');
                         $(this).delay(index * 100).fadeIn();
-
-                        setTimeout(function() {
-                            $.ajax({
-                                url: "{{ route('thcity.city') }}",
-                                method: 'GET',
-                                success: function(res) {
-                                    //alert(res.data.code);
-                                    var provinceOb = $('#cityp');
-                                    provinceOb.html(
-                                        '<option value="">เลือกจังหวัด</option>'
-                                        );
-                                    $.each(res.data, function(index,
-                                        item) {
-                                        provinceOb.append(
-                                            $(
-                                                '<option></option>')
-                                            .val(item.code)
-                                            .html(item
-                                                .name_th)
-                                        );
-                                    });
-                                }
-                            });
-                        }, 2000)
-
                     });
                 },
                 error: function(xhr, status, error) {
@@ -460,6 +435,7 @@
                             }
                         });
                     });
+
                     districtOb.on('change', function() {
                         var districtId = $(this).val();
                         cartonOb.html('<option value="">เลือกตำบล</option>');
@@ -477,53 +453,178 @@
                             }
                         });
                     });
+                    setTimeout(function() {
+                            $.ajax({
+                                url: "{{ route('thcity.city') }}",
+                                method: 'GET',
+                                success: function(res) {
+                                    var provinceOb = $('#cityp');
+                                    provinceOb.html(
+                                        '<option value="">เลือกจังหวัด</option>'
+                                        );
+                                    $.each(res.data, function(index,
+                                        item) {
+                                        provinceOb.append(
+                                            $('<option></option>')
+                                            .val(item.code)
+                                            .html(item.name_th)
+                                        );
+                                    });
+                                }
+                            });
+
+                                setTimeout(function() {
+                                    var telnop = $('#telnop').val();
+                                    $.ajax({
+                                    url: "contacts/popupedit/" + telnop,
+                                    method: 'GET',
+                                    success: function(res) {
+                                        $('#phonenosuccess').html('<h2 style="color: #1a16eb"><i class="fa-solid fa-user-tie"></i>' + res.datax.datac.fname + ' ' + res.datax.datac.lname + '</h2>');
+                                        $('#contractid').val(res.datax.datac.id);
+                                        $('#hnp').val(res.datax.datac.hn);
+                                        $('#adddatep').val(res.datax.datac.adddate);
+                                        $('#fnamep').val(res.datax.datac.fname);
+                                        $('#lnamep').val(res.datax.datac.lname);
+                                        $('#homenop').val(res.datax.datac.homeno);
+                                        $('#moop').val(res.datax.datac.moo);
+                                        $('#soip').val(res.datax.datac.soi);
+                                        $('#roadp').val(res.datax.datac.road);
+                                        $('#cityp').val(res.datax.datac.city);
+                                        $('#cityp').change();
+                                        setTimeout(function() {
+                                            $('#districtp').val(res.datax.datac.district);
+                                            $('#districtp').change();
+                                            setTimeout(function() {
+                                                $('#subdistrictp').val(res.datax.datac.subdistrict);
+                                            }, 500)
+                                        }, 500)
+                                        $('#postcodep').val(res.datax.datac.postcode);
+                                        $('#telhomep').val(res.datax.datac.telhome);
+                                        $('#phonenop').val(res.datax.datac.phoneno);
+                                        $('#worknop').val(res.datax.datac.workno);
+
+                                        var tbody = document.querySelector('#myTbl3p tbody');
+                                        while (tbody.firstChild) {
+                                        tbody.removeChild(tbody.firstChild);
+                                        }
+                                        $.each(res.datax.emer, function(index, value) {
+                                            $('#myTbl3p').append($('<tr>')
+                                                .append($('<td width="30%">').append(
+                                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="hidden" value="' +
+                                                    value.id +
+                                                    '" name="emertypep[]" id="emertypep"><input type="text" id="emergencynamep" name="emergencynamep[]" class="form-control has-feedback-left" value="' +
+                                                    value.emergencyname +
+                                                    '" required="required"></div>'))
+                                                .append($('<td width="10%">').append(
+                                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerrelation" name="emerrelationp[]" class="form-control has-feedback-left" value="' +
+                                                    value.emerrelation +
+                                                    '" required="required"></div>'))
+                                                .append($('<td width="10%">').append(
+                                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone" name="emerphonep[]" class="form-control has-feedback-left" value="' +
+                                                    value.emerphone +
+                                                    '" required="required"></div>'))
+                                                .append($('<td width="5%">').append(
+                                                    '<button type="button" name="deletem" id="deletem" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
+                                                )));
+                                        });
+
+                                    }
+                                });
+                            }, 500)
+                        }, 500)
 
                     $('#SubmitCreateFormPOP').click(function(e) {
                         var emergencyData = [];
-                        $('#myTbl3p tbody tr').each(function() { 
-                            var emergencyname = $(this).find('input[name="emergencynamep[]"]').val();
-                            var emerrelation = $(this).find('input[name="emerrelationp[]"]').val();
-                            var emerphone = $(this).find('input[name="emerphonep[]"]').val();
-                            var emergency = {
-                                emergencyname: emergencyname,
-                                emerrelation: emerrelation,
-                                emerphone: emerphone
-                            };
-                            emergencyData.push(emergency);
-                        });
-                        var additionalData = {
-                        hn: $('#hnp').val(),
-                        adddate: $('#adddatep').val(),
-                        fname: $('#fnamep').val(),
-                        lname: $('#lnamep').val(),
-                        homeno: $('#homenop').val(),
-                        moo: $('#moop').val(),
-                        soi: $('#soip').val(),
-                        road: $('#roadp').val(),
-                        city: $('#cityp').val(),
-                        district: $('#districtp').val(),
-                        subdistrict: $('#subdistrictp').val(),
-                        postcode: $('#postcodep').val(),
-                        telhome: $('#telhomep').val(),
-                        phoneno: $('#phonenop').val(),
-                        workno: $('#worknop').val(),
-                        telno: $('#telnop').val(),
-                        casetype1: $('#casetype1p').val(),
-                        tranferstatus: $('#tranferstatusp').val(),
-                        casedetail: $('#casedetailp').val(),
-                        casestatus: $('#casestatusp').val(),
-                        agent: $('#telnop').val(),
-                        emergencyData: emergencyData,
-                        _token: token
-                    };
-                    $.ajax({
-                        url: "{{ route('contacts.casescontract') }}",
-                        method: 'post',
-                        data: additionalData,
-                        success: function(result) {
+                            if($('#contractid').val()===""){
+                                alert('OK');
+                                $('#myTbl3p tbody tr').each(function() { 
+                                        var emergencyname = $(this).find('input[name="emergencynamep[]"]').val();
+                                        var emerrelation = $(this).find('input[name="emerrelationp[]"]').val();
+                                        var emerphone = $(this).find('input[name="emerphonep[]"]').val();
+                                        var emergency = {
+                                            emergencyname: emergencyname,
+                                            emerrelation: emerrelation,
+                                            emerphone: emerphone
+                                        };
+                                        emergencyData.push(emergency);
+                                    });
+                                    var additionalData = {
+                                    hn: $('#hnp').val(),
+                                    adddate: $('#adddatep').val(),
+                                    fname: $('#fnamep').val(),
+                                    lname: $('#lnamep').val(),
+                                    homeno: $('#homenop').val(),
+                                    moo: $('#moop').val(),
+                                    soi: $('#soip').val(),
+                                    road: $('#roadp').val(),
+                                    city: $('#cityp').val(),
+                                    district: $('#districtp').val(),
+                                    subdistrict: $('#subdistrictp').val(),
+                                    postcode: $('#postcodep').val(),
+                                    telhome: $('#telhomep').val(),
+                                    phoneno: $('#phonenop').val(),
+                                    workno: $('#worknop').val(),
+                                    telno: $('#telnop').val(),
+                                    casetype1: $('#casetype1p').val(),
+                                    tranferstatus: $('#tranferstatusp').val(),
+                                    casedetail: $('#casedetailp').val(),
+                                    casestatus: $('#casestatusp').val(),
+                                    agent: $('#telnop').val(),
+                                    emergencyData: emergencyData,
+                                    _token: token
+                                };
+                                $.ajax({
+                                    url: "{{ route('contacts.casescontract') }}",
+                                    method: 'post',
+                                    data: additionalData,
+                                    success: function(result) {
 
-                        }
-                    });
+                                    }
+                                });
+                            }else{
+                                if (!confirm("ยืนยันการทำรายการ ?")) return;
+                                $('#myTbl3p tbody tr').each(function(index, tr) {
+                                    var emertype = $(this).find('input[name="emertypep[]"]').val();
+                                    var emergencyname = $(this).find('input[name="emergencynamep[]"]').val();
+                                    var emerrelation = $(this).find('input[name="emerrelationp[]"]').val();
+                                    var emerphone = $(this).find('input[name="emerphonep[]"]').val();
+                                    var emergency = {
+                                        emertype: emertype,
+                                        emergencyname: emergencyname,
+                                        emerrelation: emerrelation,
+                                        emerphone: emerphone
+                                    };
+                                    emergencyData.push(emergency);
+                                });
+                                var id = $('#contractid').val();
+                                var additionalData = {
+                                    hn: $('#hnp').val(),
+                                    adddate: $('#adddatep').val(),
+                                    fname: $('#fnamep').val(),
+                                    lname: $('#lnamep').val(),
+                                    homeno: $('#homenop').val(),
+                                    moo: $('#moop').val(),
+                                    soi: $('#soip').val(),
+                                    road: $('#roadp').val(),
+                                    city: $('#cityp').val(),
+                                    district: $('#districtp').val(),
+                                    subdistrict: $('#subdistrictp').val(),
+                                    postcode: $('#postcodep').val(),
+                                    telhome: $('#telhomep').val(),
+                                    phoneno: $('#phonenop').val(),
+                                    workno: $('#worknop').val(),
+                                    emergencyData: emergencyData
+                                };
+                                $.ajax({
+                                    url: "contacts/update/" + id,
+                                    method: 'PUT',
+                                    data: additionalData,
+
+                                    success: function(result) {
+
+                                    }
+                                });
+                            }        
                     });                   
                 }
             });
