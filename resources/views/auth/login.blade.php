@@ -103,7 +103,7 @@
                         </div>
 
                         <div class="input-group mb-3">
-                            <input readonly type="text" name="phone" value="8888" placeholder="หมายเลขโทรศัพท์"
+                            <input type="text" name="phone" value="" placeholder="หมายเลขโทรศัพท์"
                                 class="form-control @error('phone') is-invalid @enderror"
                                 {{-- value="{{ old('phone', $temporaryPhone) }}" --}}>
                             <div class="input-group-append">
