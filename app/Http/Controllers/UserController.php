@@ -141,6 +141,8 @@ class UserController extends Controller
             'department_id.required' => 'แผนก ต้องไม่เป็นค่าว่าง!',
             'position_id.required' => 'ตำแหน่ง ต้องไม่เป็นค่าว่าง!',
             'role.required' => 'สิทธิ์การใช้งาน ต้องไม่เป็นค่าว่าง!',
+            'queue.required' => 'กรุณาระบุ Queue ผู้ใช้งาน!',
+            'agent.required' => 'กรุณาระบุ Agent ผู้ใช้งาน!',
             'agent.unique' => 'Agent นี้ถูกใช้งานแล้ว',
         ]);
 
