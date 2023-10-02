@@ -79,11 +79,14 @@ class LoginController extends Controller
                 $user->phone = $request->phone;
 
                 //check phone status
-				$phone_state_num = $this->remote->exten_state($user->phone);
+                $phone_state_num = $this->remote->exten_state($user->phone);
                 //dd($phone_state_num);
-				if ($phone_state_num == 4 || $phone_state_num == -1) {
-                    return back()->withErrors(['error' => 'หมายเลขโทรศัพท์ไม่พร้อมใช้งาน']);
-				}
+                if ($phone_state_num == 4 || $phone_state_num == -1) {
+                    auth()->logout();
+                    return redirect()->route('login')
+                        ->with('login_error', 'หมายเลขโทรศัพท์ไม่พร้อมใช้งาน')
+                        ->withErrors(['phone' => 'หมายเลขโทรศัพท์ไม่พร้อมใช้งาน']);
+                }
 
                 $queueNames = $user->queues->pluck('queue_name')->implode(',');
                 $user->queue = $queueNames;
