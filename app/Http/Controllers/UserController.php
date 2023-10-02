@@ -330,6 +330,7 @@ class UserController extends Controller
         }
 
         $users = [
+            'agent_id' => $request->get('agent'),
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'role' => $request->get('role'),
