@@ -460,6 +460,41 @@
                             }
                         });
                     });
+
+                    setTimeout(function() {
+                    var telnop = $('#telnop').val();
+                    $.ajax({
+                    url: "contacts/popupedit/" + telnop,
+                    method: 'GET',
+                    success: function(res) {
+                        alert(res.datax.telno);
+                        $('#hnp').val(res.datax.datac.hn);
+                        $('#adddatep').val(res.datax.datac.adddate);
+                        $('#fnamep').val(res.datax.datac.fname);
+                        $('#lnamep').val(res.datax.datac.lname);
+                        $('#homenop').val(res.datax.datac.homeno);
+                        $('#moop').val(res.datax.datac.moo);
+                        $('#soip').val(res.datax.datac.soi);
+                        $('#roadp').val(res.datax.datac.road);
+                        $('#cityp').val(res.datax.datac.city);
+                        $('#cityp').change();
+                        setTimeout(function() {
+                            $('#districtp').val(res.datax.datac
+                                .district);
+                            $('#districtp').change();
+                            setTimeout(function() {
+                                $('#subdistrictp').val(res.datax
+                                    .datac.subdistrict);
+                            }, 1000)
+                        }, 1000)
+                        $('#postcodep').val(res.datax.datac.postcode);
+                        $('#telhomep').val(res.datax.datac.telhome);
+                        $('#phonenop').val(res.datax.datac.phoneno);
+                        $('#worknop').val(res.datax.datac.workno);
+                    }
+                });
+            }, 1000)
+
                     districtOb.on('change', function() {
                         var districtId = $(this).val();
                         cartonOb.html('<option value="">เลือกตำบล</option>');
