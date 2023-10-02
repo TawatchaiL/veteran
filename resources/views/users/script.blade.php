@@ -311,7 +311,7 @@
                     email: $('#editEmail').val(),
                     role: $('#editRole').val(),
                     queue: $("#EditQueue").val(),
-                    agent: $("#EditAgent").val(),
+                    agent: $("#EditAgent").val()[0],
                     department: $("#EditDepartment").val()[0],
                     position: $("#EditPosition").val()[0],
                 },
