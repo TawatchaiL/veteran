@@ -264,45 +264,6 @@ class ContactController extends Controller
         return response()->json(['success' => 'เพิ่ม รายผู้ติดต่อ เรียบร้อยแล้ว']);
     }
 
-    public function casescontract(Request $request)
-    {
-        //
-        $input = $request->all();
-        $contact = CrmContact::create($input);
-        $insertedId = $contact->id;
-        if (!empty($request->emergencyData)) {
-            foreach ($request->emergencyData as $edata) {
-                $Crmemergency = new CrmPhoneEmergency();
-                $Crmemergency->contact_id = $insertedId;
-                $Crmemergency->emergencyname = $edata['emergencyname'];
-                $Crmemergency->emerrelation = $edata['emerrelation'];
-                $Crmemergency->emerphone = $edata['emerphone'];
-                $Crmemergency->save();
-            }
-        }
-        $Crmcsae = new Cases();
-        $Crmcsae->contact_id = $insertedId;
-        $Crmcsae->telno = $request->input('telno');
-        $Crmcsae->casetype1 = $request->input('casetype1');
-        $Crmcsae->tranferstatus = $request->input('tranferstatus');
-        $Crmcsae->casedetail = $request->input('casedetail');
-        $Crmcsae->casestatus = $request->input('casestatus');
-        $Crmcsae->agent = $request->input('agent');
-        $Crmcsae->save();
-        //contact_id
-        //telno
-        //casetype1
-        //tranferstatus
-        //casedetail
-        //casestatus
-        //agent
-        //DB::table('crm_phone_emergencies')->insert([
-        //    ['contact_id' => $insertedId, 'emergencyname' => '1', 'emerrelation' => '2', 'emerphone' => '3'],
-        //    ['contact_id' => $insertedId, 'emergencyname' => '4', 'emerrelation' => '5', 'emerphone' => '6'],
-        //]);
-        return response()->json(['success' => 'เพิ่ม รายผู้ติดต่อ เรียบร้อยแล้ว']);
-    }
-
     /**
      * Display the specified resource.
      */
@@ -436,6 +397,38 @@ class ContactController extends Controller
         }
 
         return response()->json(['success' => 'แก้ไข ผู้ติดต่อ เรียบร้อยแล้ว']);
+    }
+
+    public function casescontract(Request $request)
+    {
+        //
+        $input = $request->all();
+        $contact = CrmContact::create($input);
+        $insertedId = $contact->id;
+        if (!empty($request->emergencyData)) {
+            foreach ($request->emergencyData as $edata) {
+                $Crmemergency = new CrmPhoneEmergency();
+                $Crmemergency->contact_id = $insertedId;
+                $Crmemergency->emergencyname = $edata['emergencyname'];
+                $Crmemergency->emerrelation = $edata['emerrelation'];
+                $Crmemergency->emerphone = $edata['emerphone'];
+                $Crmemergency->save();
+            }
+        }
+        $Crmcsae = new Cases();
+        $Crmcsae->contact_id = $insertedId;
+        $Crmcsae->telno = $request->input('telno');
+        $Crmcsae->casetype1 = $request->input('casetype1');
+        $Crmcsae->tranferstatus = $request->input('tranferstatus');
+        $Crmcsae->casedetail = $request->input('casedetail');
+        $Crmcsae->casestatus = $request->input('casestatus');
+        $Crmcsae->agent = $request->input('agent');
+        $Crmcsae->save();
+        //DB::table('crm_phone_emergencies')->insert([
+        //    ['contact_id' => $insertedId, 'emergencyname' => '1', 'emerrelation' => '2', 'emerphone' => '3'],
+        //    ['contact_id' => $insertedId, 'emergencyname' => '4', 'emerrelation' => '5', 'emerphone' => '6'],
+        //]);
+        return response()->json(['success' => 'เพิ่ม รายผู้ติดต่อ เรียบร้อยแล้ว']);
     }
 
     public function casescontractupdate(Request $request, $id)
