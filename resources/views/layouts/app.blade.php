@@ -536,7 +536,6 @@
                     $('#SubmitCreateFormPOP').click(function(e) {
                         var emergencyData = [];
                             if($('#contractid').val()===""){
-                                alert('OK');
                                 $('#myTbl3p tbody tr').each(function() { 
                                         var emergencyname = $(this).find('input[name="emergencynamep[]"]').val();
                                         var emerrelation = $(this).find('input[name="emerrelationp[]"]').val();
@@ -548,6 +547,7 @@
                                         };
                                         emergencyData.push(emergency);
                                     });
+                                    alert(emergencyData.length);
                                     var additionalData = {
                                     hn: $('#hnp').val(),
                                     adddate: $('#adddatep').val(),
