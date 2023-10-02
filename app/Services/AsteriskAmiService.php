@@ -29,6 +29,52 @@ class AsteriskAmiService
         return $remote;
     }
 
+    function exten_state($remote_extension)
+    {
+        $remote = $this->asterisk_ami();
+
+        if ($remote->connect()) {
+            $foo[$remote_extension]  = $remote->ExtensionState($remote_extension, $this->remoteContext, '');
+
+            switch ($foo[$remote_extension]['Status']) {
+                case -1:
+                    $phone_state_num = -1;
+                    break;
+                case 0:
+                    $phone_state_num = 0;
+                    break;
+                case 1:
+                    $phone_state_num = 1;
+                    break;
+                case 2:
+                    $phone_state_num = 2;
+                    break;
+                case 4:
+                    $phone_state_num = 4;
+                    break;
+                case 8:
+                    $phone_state_num = 8;
+                    break;
+                case 9:
+                    $phone_state_num = 9;
+                    break;
+                case 16:
+                    $phone_state_num = 16;
+                    break;
+                default:
+                    $phone_state_num = -1;
+            }
+
+            $remote->disconnect();
+
+            return $phone_state_num;
+        } else {
+            echo "Can not connect to remote AGI";
+            exit();
+        }
+    }
+
+
     public function queue_log_in($queues, $remote_extension)
     {
         $remote = $this->asterisk_ami();
