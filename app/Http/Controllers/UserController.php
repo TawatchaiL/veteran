@@ -313,7 +313,7 @@ class UserController extends Controller
             'department' => 'required',
             'position' => 'required',
             'queue' => 'required',
-            'agent' => 'required|unique_agent_id:call_center.agent,id',
+            'agent' => 'required|unique_agent_id:users.agent_id,id',
         ];
 
         if ($request->get('password')) {
