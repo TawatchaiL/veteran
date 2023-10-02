@@ -13,7 +13,7 @@
         </div>
         {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
         <div class="text-center">
-            <h1 style="color: #1a16eb"><i class="fa-solid fa-id-card-clip"></i><input type="hidden" value="{{ $telephone }}" name="telnop" id="telnop"> {{ $telephone }}</h1>
+            <h1 style="color: #1a16eb"><i class="fa-solid fa-id-card-clip"></i><input type="hidden" value="" name="contractid" id="contractid"><input type="hidden" value="{{ $telephone }}" name="telnop" id="telnop"> {{ $telephone }}</h1>
         </div>
         <div id="phonenosuccess" class="text-center">
         </div>
@@ -48,7 +48,7 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fas fa-code"></i> รหัสผู้ติดต่อ:</strong>
-                                            {!! Form::text('hnp', '000001', [
+                                            {!! Form::text('hnp', '', [
                                                 'id' => 'hnp',
                                                 'placeholder' => 'รหัสผู้ติดต่อ',
                                                 'class' => 'form-control',
@@ -145,8 +145,6 @@
                                             <strong><i class="fa-solid fa-city"></i> จังหวัด :</strong>
                                             <select style="width: 100%;" class="select2 form-control"
                                                 id="cityp" name="cityp">
-                                                <option value="" selected>พิษณุโลก</option>
-
                                             </select>
                                         </div>
                                     </div>
@@ -156,8 +154,6 @@
                                                 อำเภอ:</strong>
                                             <select style="width: 100%;" class="select2 form-control"
                                                 id="districtp" name="districtp">
-                                                <option value="" selected>อำเภอเมือง</option>
-
                                             </select>
                                         </div>
                                     </div>
@@ -169,8 +165,6 @@
                                                 :</strong>
                                             <select style="width: 100%;" class="select2 form-control"
                                                 id="subdistrictp" name="subdistrictp">
-                                                <option value="" selected>ในเมือง</option>
-
                                             </select>
                                         </div>
                                     </div>
@@ -250,6 +244,7 @@
                                             <tr>
                                                 <td width="30%">
                                                     <div class="col-md-12 col-sm-12 col-xs-12">
+                                                        <input type="hidden" value="" name="emertypep[]" id="emertypep">
                                                         <input type="text" id="emergencynamep" name="emergencynamep[]"
                                                             class="form-control has-feedback-left" value=""
                                                             required="required">
