@@ -107,38 +107,39 @@
 <script src="plugins/dropzone/min/dropzone.min.js"></script>
 
 <script>
-    const addemerphone = () => {
-        document.getElementById('addRowBtnp').addEventListener('click', () => {
-            const table = document.getElementById('myTbl3p');
-            const newRow = document.createElement('tr');
-            newRow.innerHTML = `
+const addemerphone = () => {
+    const tableBody = document.getElementById('myTbl3p').getElementsByTagName('tbody')[0];
+
+    document.getElementById('addRowBtnp').addEventListener('click', () => {
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
             <td width="30%">
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                    <input type="hidden" value="" name="emertypep[]" id="emertypep"><input type="text" id="emergencynamep" name="emergencynamep[]" class="form-control has-feedback-left" value="" required>
+                    <input type="hidden" value="" name="emertypep[]" class="emertypep"><input type="text" name="emergencynamep[]" class="form-control has-feedback-left" value="" required>
                 </div>
             </td>
             <td width="10%">
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                    <input type="text" id="emerrelationp" name="emerrelationp[]" class="form-control has-feedback-left" value="" required>
+                    <input type="text" name="emerrelationp[]" class="form-control has-feedback-left" value="" required>
                 </div>
             </td>
             <td width="10%">
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                    <input type="text" id="emerphonep" name="emerphonep[]" class="form-control has-feedback-left" value="" required>
+                    <input type="text" name="emerphonep[]" class="form-control has-feedback-left" value="" required>
                 </div>
             </td>
-            <td>
-                <button type="button" id="removeRow2p" class="btn btn-sm btn-danger removeRowBtnp"><i class="fa fa-minus"></i></button>
+            <td width="5%">
+                <button type="button" class="btn btn-sm btn-danger removeRowBtnp"><i class="fa fa-minus"></i></button>
             </td>
         `;
 
-            table.appendChild(newRow);
+        tableBody.appendChild(newRow);
 
-            newRow.querySelector('.removeRowBtnp').addEventListener('click', () => {
-                table.removeChild(newRow);
-            });
+        newRow.querySelector('.removeRowBtnp').addEventListener('click', () => {
+            tableBody.removeChild(newRow);
         });
-    };
+    });
+};
 
     /* const updateDigitalClock = () => {
         const now = new Date();
@@ -508,7 +509,7 @@
                                         tbody.removeChild(tbody.firstChild);
                                         }
                                         $.each(res.datax.emer, function(index, value) {
-                                            $('#myTbl3p').append($('<tr>')
+                                            $('#myTbl3p tbody').append($('<tr>')
                                                 .append($('<td width="30%">').append(
                                                     '<div class="col-md-12 col-sm-12 col-xs-12"><input type="hidden" value="' +
                                                     value.id +
@@ -547,7 +548,6 @@
                                         };
                                         emergencyData.push(emergency);
                                     });
-                                    alert(emergencyData.length);
                                     var additionalData = {
                                     hn: $('#hnp').val(),
                                     adddate: $('#adddatep').val(),
