@@ -30,6 +30,7 @@ class User extends Authenticatable
         'department_id',
         'position_id',
         'phone',
+        'queue',
     ];
 
     /**
@@ -53,7 +54,12 @@ class User extends Authenticatable
     ];
 
 
-     /**
+    public function queues()
+    {
+        return $this->hasMany(Queue::class, 'user_id');
+    }
+
+    /**
      * Get the department that the user belongs to.
      */
     public function department()
