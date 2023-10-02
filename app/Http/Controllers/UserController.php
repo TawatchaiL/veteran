@@ -296,16 +296,7 @@ class UserController extends Controller
             $input = Arr::except($input, array('password'));
         }
        */
-        Validator::extend('unique_agent_id', function ($attribute, $value, $parameters, $validator) {
-            // The 'unique_agent_id' rule logic here
-            $table = $parameters[0]; // Get the table name from the validation rule parameters
 
-            // Check if the agent_id exists in the table except for the current record (when editing)
-            $id = $validator->getData()[$parameters[1]]; // Get the ID of the current record
-            $count = DB::table($table)->where($attribute, $value)->where('id', '!=', $id)->count();
-
-            return $count === 0;
-        });
 
         $rules = [
             'name' => 'required|string|max:255',
@@ -313,7 +304,7 @@ class UserController extends Controller
             'department' => 'required',
             'position' => 'required',
             'queue' => 'required',
-            'agent' => 'required|unique_agent_id:users.agent_id,id',
+            'agent' => 'required|unique:users,agent_id,' . $id,
         ];
 
         if ($request->get('password')) {
