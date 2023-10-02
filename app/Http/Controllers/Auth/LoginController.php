@@ -7,8 +7,14 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Services\AsteriskAmiService;
+
+use App\Models\User;
+
+
+
 
 class LoginController extends Controller
 {
@@ -87,6 +93,48 @@ class LoginController extends Controller
                         ->with('login_error', 'หมายเลขโทรศัพท์ไม่พร้อมใช้งาน')
                         ->withErrors(['phone' => 'หมายเลขโทรศัพท์ไม่พร้อมใช้งาน']);
                 }
+
+                //check in use
+                $inuseCount = User::where('phone', $user->phone)
+                    ->where('agent_id', '!=', $user->id)
+                    ->count();
+
+                if ($inuseCount > 0) {
+                    auth()->logout();
+                    return redirect()->route('login')
+                        ->with('login_error', 'หมายเลขโทรศัพท์ถูกใช้งานแล้ว')
+                        ->withErrors(['phone' => 'หมายเลขโทรศัพท์ถูกใช้งานแล้ว']);
+                } /* else {
+                    //check login again with same phone and same agent
+                    if ($agent_data['extension'] == $phone) {
+                        $not_logout = $this->Agent_model->get_state_not_logout($phone, $agent_data['id_agent']);
+                        if ($not_logout) {
+                            $this->clear_login(
+                                $not_logout['login_datetime'],
+                                $not_logout['id_agent'],
+                                $not_logout['enable_inbound'],
+                                $not_logout['queues_inbound'],
+                                $not_logout['extension'],
+                                $remote_context,
+                                $not_logout['audit_login_id']
+                            );
+                        }
+                    } else {
+                        //check not logout same agent not same phone
+                        $not_logout = $this->Agent_model->get_agent_not_logout($agent_data['id_agent']);
+                        if ($not_logout) {
+                            $this->clear_login(
+                                $not_logout['login_datetime'],
+                                $not_logout['id_agent'],
+                                $not_logout['enable_inbound'],
+                                $not_logout['queues_inbound'],
+                                $not_logout['extension'],
+                                $remote_context,
+                                $not_logout['audit_login_id']
+                            );
+                        }
+                    }
+                }*/
 
                 $queueNames = $user->queues->pluck('queue_name')->implode(',');
                 $user->queue = $queueNames;
