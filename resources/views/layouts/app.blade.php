@@ -480,6 +480,7 @@
                                     method: 'GET',
                                     success: function(res) {
                                         $('#phonenosuccess').html('<h2 style="color: #1a16eb"><i class="fa-solid fa-user-tie"></i>' + res.datax.datac.fname + ' ' + res.datax.datac.lname + '</h2>');
+                                        $('#contractid').val(res.datax.datac.id);
                                         $('#hnp').val(res.datax.datac.hn);
                                         $('#adddatep').val(res.datax.datac.adddate);
                                         $('#fnamep').val(res.datax.datac.fname);
@@ -535,6 +536,7 @@
                     $('#SubmitCreateFormPOP').click(function(e) {
                         var emergencyData = [];
                             if($('#contractid').val()===""){
+                                alert('OK');
                                 $('#myTbl3p tbody tr').each(function() { 
                                         var emergencyname = $(this).find('input[name="emergencynamep[]"]').val();
                                         var emerrelation = $(this).find('input[name="emerrelationp[]"]').val();
@@ -580,7 +582,48 @@
                                     }
                                 });
                             }else{
+                                if (!confirm("ยืนยันการทำรายการ ?")) return;
+                                $('#myTbl3p tbody tr').each(function(index, tr) {
+                                    var emertype = $(this).find('input[name="emertypep[]"]').val();
+                                    var emergencyname = $(this).find('input[name="emergencynamep[]"]').val();
+                                    var emerrelation = $(this).find('input[name="emerrelationp[]"]').val();
+                                    var emerphone = $(this).find('input[name="emerphonep[]"]').val();
+                                    var emergency = {
+                                        emertype: emertype,
+                                        emergencyname: emergencyname,
+                                        emerrelation: emerrelation,
+                                        emerphone: emerphone
+                                    };
+                                    emergencyData.push(emergency);
+                                });
+                                var id = $('#contractid').val();
+                                var additionalData = {
+                                    hn: $('#hnp').val(),
+                                    adddate: $('#adddatep').val(),
+                                    fname: $('#fnamep').val(),
+                                    lname: $('#lnamep').val(),
+                                    homeno: $('#homenop').val(),
+                                    moo: $('#moop').val(),
+                                    soi: $('#soip').val(),
+                                    road: $('#roadp').val(),
+                                    city: $('#cityp').val(),
+                                    district: $('#districtp').val(),
+                                    subdistrict: $('#subdistrictp').val(),
+                                    postcode: $('#postcodep').val(),
+                                    telhome: $('#telhomep').val(),
+                                    phoneno: $('#phonenop').val(),
+                                    workno: $('#worknop').val(),
+                                    emergencyData: emergencyData
+                                };
+                                $.ajax({
+                                    url: "contacts/update/" + id,
+                                    method: 'PUT',
+                                    data: additionalData,
 
+                                    success: function(result) {
+
+                                    }
+                                });
                             }        
                     });                   
                 }
