@@ -1,16 +1,17 @@
 <div class="row" style="display: flex; justify-content: center; align-items: center;">
     <div class="col-md-10 col-sm-10 col-lg-10">
-        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="display: none;">
+        <div class="alert alert-danger alert-danger-pop alert-dismissible fade show" role="alert" style="display: none;">
             <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <div class="alert alert-success alert-dismissible fade show" role="alert" style="display: none;">
+        <div class="alert alert-success alert-success-pop alert-dismissible fade show" role="alert" style="display: none;">
 
             <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true"></span>
             </button>
         </div>
+
         {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
         <div class="text-center">
             <h1 style="color: #1a16eb"><i class="fa-solid fa-id-card-clip"></i><input type="hidden" value="" name="contractid" id="contractid"><input type="hidden" value="{{ $telephone }}" name="telnop" id="telnop"> {{ $telephone }}</h1>

@@ -578,7 +578,30 @@ const addemerphone = () => {
                                     method: 'post',
                                     data: additionalData,
                                     success: function(result) {
+                                        if (result.errors) {
+                                            $('.alert-danger-pop').html('');
+                                            $.each(result.errors, function(key, value) {
+                                                $('.alert-danger-pop').show();
+                                                $('.alert-danger-pop').append('<strong><li>' + value +
+                                                    '</li></strong>');
+                                            });
+                                        } else {
+                                            $('.alert-danger-pop').hide();
+                                            $('.alert-success-pop').show();
+                                            $('.alert-success-pop').append('<strong><li>' + result.success +
+                                                '</li></strong>');
+                                            //$('#'.$('#telnop').val()).remove();
+                                        //$('#EditModal').modal('hide');
+                                        //toastr.success(result.success, {
+                                        //    timeOut: 5000
+                                        //});
+                                        //$('#Listview').DataTable().ajax.reload();
+                                        //setTimeout(function() {
+                                        //$('.alert-success').hide();
 
+                                        //}, 10000);
+
+                                        }
                                     }
                                 });
                             }else{
@@ -627,7 +650,29 @@ const addemerphone = () => {
                                     data: additionalData,
 
                                     success: function(result) {
+                                        if (result.errors) {
+                                            $('.alert-danger-pop').html('');
+                                            $.each(result.errors, function(key, value) {
+                                                $('.alert-danger-pop').show();
+                                                $('.alert-danger-pop').append('<strong><li>' + value +
+                                                    '</li></strong>');
+                                            });
+                                        } else {
+                                            $('.alert-danger-pop').hide();
+                                            $('.alert-success-pop').show();
+                                            $('.alert-success-pop').append('<strong><li>' + result.success +
+                                                '</li></strong>');
+                                        //$('#EditModal').modal('hide');
+                                        //toastr.success(result.success, {
+                                        //    timeOut: 5000
+                                        //});
+                                        //$('#Listview').DataTable().ajax.reload();
+                                        //setTimeout(function() {
+                                        //$('.alert-success').hide();
 
+                                        //}, 10000);
+
+                                        }
                                     }
                                 });
                             }        
