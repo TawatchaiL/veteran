@@ -198,6 +198,12 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
             $('.form').trigger('reset');
+
+            $("#AddQueue").val(null).trigger("change")
+            $("#AddAgent").val(null).trigger("change")
+            $("#AddDepartment").val(null).trigger("change")
+            $("#AddPosition").val(null).trigger("change")
+
             $('#CreateModal').modal('show');
         });
 
@@ -221,6 +227,8 @@
                     email: $('#AddEmail').val(),
                     department_id: $("#AddDepartment").val()[0],
                     position_id: $("#AddPosition").val()[0],
+                    queue: $("#AddQueue").val(),
+                    agent: $("#AddAgent").val()[0],
                     role: $('#AddRole').val(),
                     _token: token,
                 },
@@ -242,6 +250,8 @@
                             timeOut: 5000
                         });
                         $('#Listview').DataTable().ajax.reload();
+                        $("#AddQueue").val(null).trigger("change")
+                        $("#AddAgent").val(null).trigger("change")
                         $("#AddDepartment").val(null).trigger("change")
                         $("#AddPosition").val(null).trigger("change")
                         $('.form').trigger('reset');
