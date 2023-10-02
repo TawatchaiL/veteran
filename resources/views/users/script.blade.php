@@ -277,7 +277,7 @@
                     //$('#EditModalBody').html(res.html);
                     $('#editName').val(res.data.name);
                     $('#editEmail').val(res.data.email);
-                    $('#editQueue').append(res.select_list_queue);
+                    $('#EditQueue').append(res.select_list_queue);
                     //$('#editAgent').val(res.data.agent);
                     $('#EditDepartment').val(res.data.department_id).change();
                     $('#EditPosition').append(res.select_list_position);

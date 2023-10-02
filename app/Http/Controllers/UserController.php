@@ -250,7 +250,7 @@ class UserController extends Controller
 
         foreach ($queuecs as $queuec) {
             // Check if $queuec->extension exists in $queues
-            $selected = $queues->contains('extension', $queuec->extension) ? 'selected' : '';
+            $selected = $queues->contains('queue_name', $queuec->extension) ? 'selected' : '';
 
             $select_list_queue .= '<option value="' . $queuec->extension . '" ' . $selected . '> ' . $queuec->extension . ' ( ' . $queuec->descr . ' ) </option>';
         }
