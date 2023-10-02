@@ -277,6 +277,8 @@
                     //$('#EditModalBody').html(res.html);
                     $('#editName').val(res.data.name);
                     $('#editEmail').val(res.data.email);
+                    //$('#editQueue').val(res.data.queue);
+                    //$('#editAgent').val(res.data.agent);
                     $('#EditDepartment').val(res.data.department_id).change();
                     $('#EditPosition').append(res.select_list_position);
                     $('#EditPosition').val(res.data.position_id).change();
@@ -306,6 +308,8 @@
                     password_confirmation: $('#EditPasswordC').val(),
                     email: $('#editEmail').val(),
                     role: $('#editRole').val(),
+                    queue: $("#EditQueue").val(),
+                    agent: $("#EditAgent").val(),
                     department: $("#EditDepartment").val()[0],
                     position: $("#EditPosition").val()[0],
                 },

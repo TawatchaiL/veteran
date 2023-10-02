@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Department;
 use App\Models\Position;
+use App\Models\Queue;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -278,6 +279,8 @@ class UserController extends Controller
             'email' => 'required|string|email|max:255|unique:users,email,' . $id,
             'department' => 'required',
             'position' => 'required',
+            'queue' => 'required',
+            'agent' => 'required',
         ];
 
         if ($request->get('password')) {
@@ -295,6 +298,8 @@ class UserController extends Controller
             'department_id.required' => 'แผนก ต้องไม่เป็นค่าว่าง!',
             'position_id.required' => 'ตำแหน่ง ต้องไม่เป็นค่าว่าง!',
             'role.required' => 'สิทธิ์การใช้งาน ต้องไม่เป็นค่าว่าง!',
+            'queue.required' => 'กรุณาระบุ Queue ผู้ใช้งาน!',
+            'agent.required' => 'กรุณาระบุ Agent ผู้ใช้งาน!',
         ]);
 
         if ($validator->fails()) {
@@ -316,6 +321,21 @@ class UserController extends Controller
         }
         $user = User::find($id);
         $user->update($users);
+
+
+        Queue::where('user_id', $id)->delete();
+
+        $queueData = [];
+
+        foreach ($request->input('queue') as $ea) {
+            $queueData[] = [
+                'user_id' => $id,
+                'queue_name' => $ea,
+            ];
+        }
+
+        Queue::insert($queueData);
+
         DB::table('model_has_roles')->where('model_id', $id)->delete();
 
         $user->assignRole($request->input('role'));
