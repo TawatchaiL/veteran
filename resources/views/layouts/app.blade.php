@@ -613,6 +613,12 @@ const addemerphone = () => {
                                     telhome: $('#telhomep').val(),
                                     phoneno: $('#phonenop').val(),
                                     workno: $('#worknop').val(),
+                                    telno: $('#telnop').val(),
+                                    casetype1: $('#casetype1p').val(),
+                                    tranferstatus: $('#tranferstatusp').val(),
+                                    casedetail: $('#casedetailp').val(),
+                                    casestatus: $('#casestatusp').val(),
+                                    agent: $('#telnop').val(),
                                     emergencyData: emergencyData
                                 };
                                 $.ajax({
