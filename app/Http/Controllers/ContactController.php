@@ -437,6 +437,53 @@ class ContactController extends Controller
         return response()->json(['success' => 'แก้ไข ผู้ติดต่อ เรียบร้อยแล้ว']);
     }
 
+    public function casescontractupdate(Request $request, $id)
+    {
+        $contactd = [
+            'hn' => $request->get('hn'),
+            'adddate' => $request->get('adddate'),
+            'fname' => $request->get('fname'),
+            'lname' => $request->get('lname'),
+            'homeno' => $request->get('homeno'),
+            'moo' => $request->get('moo'),
+            'soi' => $request->get('soi'),
+            'road' => $request->get('road'),
+            'city' => $request->get('city'),
+            'district' => $request->get('district'),
+            'subdistrict' => $request->get('subdistrict'),
+            'postcode' => $request->get('postcode'),
+            'telhome' => $request->get('telhome'),
+            'phoneno' => $request->get('phoneno'),
+            'workno' => $request->get('workno'),
+        ];
+
+        $contact = CrmContact::find($id);
+        $contact->update($contactd);
+        if (!empty($request->emergencyData)) {
+            foreach ($request->emergencyData as $edata) {
+                if ($edata['eemertype'] == '') {
+                    $Crmemergency = new CrmPhoneEmergency();
+                    $Crmemergency->contact_id = $id;
+                    $Crmemergency->emergencyname = $edata['emergencyname'];
+                    $Crmemergency->emerrelation = $edata['emerrelation'];
+                    $Crmemergency->emerphone = $edata['emerphone'];
+                    $Crmemergency->save();
+                } else {
+                    $emerd = [
+                        'emergencyname' => $edata['emergencyname'],
+                        'emerrelation' => $edata['emerrelation'],
+                        'emerphone' => $edata['emerphone'],
+                    ];
+
+                    $emer = CrmPhoneEmergency::find($edata['eemertype']);
+                    $emer->update($emerd);
+                }
+            }
+        }
+
+        return response()->json(['success' => 'แก้ไข ผู้ติดต่อ เรียบร้อยแล้ว']);
+    }
+
     /**
      * Remove the specified resource from storage.
      */

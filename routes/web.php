@@ -40,6 +40,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/contacts/edit/{id}', [App\Http\Controllers\ContactController::class, 'edit'])->name('contacts.edit');
     Route::get('/contacts/popupedit/{telnop}', [App\Http\Controllers\ContactController::class, 'popupedit'])->name('contacts.popupedit');
     Route::put('/contacts/update/{id}', [App\Http\Controllers\ContactController::class, 'update'])->name('contacts.update');
+    Route::put('/contacts/casescontractupdate/{id}', [App\Http\Controllers\ContactController::class, 'casescontractupdate'])->name('contacts.casescontractupdate');
     Route::delete('/contacts/destroy', [App\Http\Controllers\ContactController::class, 'destroy'])->name('contacts.destroy');
     Route::post('/contacts/destroy_all', [App\Http\Controllers\ContactController::class, 'destroy_all'])->name('contacts.destroy_all');
 

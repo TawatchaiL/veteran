@@ -616,7 +616,7 @@
                                     emergencyData: emergencyData
                                 };
                                 $.ajax({
-                                    url: "contacts/update/" + id,
+                                    url: "contacts/casescontractupdate/" + id,
                                     method: 'PUT',
                                     data: additionalData,
 
