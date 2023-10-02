@@ -482,6 +482,15 @@ class ContactController extends Controller
             }
         }
 
+        $Crmcsae = new Cases();
+        $Crmcsae->contact_id = $insertedId;
+        $Crmcsae->telno = $request->input('telno');
+        $Crmcsae->casetype1 = $request->input('casetype1');
+        $Crmcsae->tranferstatus = $request->input('tranferstatus');
+        $Crmcsae->casedetail = $request->input('casedetail');
+        $Crmcsae->casestatus = $request->input('casestatus');
+        $Crmcsae->agent = $request->input('agent');
+        $Crmcsae->save();
         return response()->json(['success' => 'แก้ไข ผู้ติดต่อ เรียบร้อยแล้ว']);
     }
 
