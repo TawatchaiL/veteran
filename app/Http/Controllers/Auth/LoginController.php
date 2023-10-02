@@ -101,7 +101,7 @@ class LoginController extends Controller
 
         // Update the user's phone to an empty value
         $user = Auth::user();
-        dd($this->remote->queue_log_off('4567', $request->phone));
+        $this->remote->queue_log_off('4567', $user->phone);
         $user->phone = '';
         $user->save();
 
