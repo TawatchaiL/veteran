@@ -268,6 +268,7 @@
 
             $('#EditPosition').empty();
             $('#EditQueue').empty();
+            $('#EditAgent').empty();
 
             id = $(this).data('id');
             $.ajax({
@@ -279,7 +280,7 @@
                     $('#editName').val(res.data.name);
                     $('#editEmail').val(res.data.email);
                     $('#EditQueue').append(res.select_list_queue);
-                    //$('#editAgent').val(res.data.agent);
+                    $('#EditAgent').append(res.select_list_agent);
                     $('#EditDepartment').val(res.data.department_id).change();
                     $('#EditPosition').append(res.select_list_position);
                     $('#EditPosition').val(res.data.position_id).change();

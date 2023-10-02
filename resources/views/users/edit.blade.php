@@ -59,10 +59,10 @@
                                     <strong><i class="fas fa-list-ol"></i> Agent :</strong>
                                     <select style="width: 100%;" class="select2 select2_single form-control"
                                         id="EditAgent" name="eagent" multiple="multiple">
-                                        @foreach ($agent as $keya)
-                                            <option value="{{ $keya->name }}">{{ $keya->name }}
+                                        {{-- @foreach ($agent as $keya)
+                                            <option value="{{ $keya->id }}">{{ $keya->name }}
                                             </option>
-                                        @endforeach
+                                        @endforeach --}}
                                     </select>
                                 </div>
                             </div>

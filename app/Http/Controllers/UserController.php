@@ -255,7 +255,21 @@ class UserController extends Controller
             $select_list_queue .= '<option value="' . $queuec->extension . '" ' . $selected . '> ' . $queuec->extension . ' ( ' . $queuec->descr . ' ) </option>';
         }
 
-        return response()->json(['data' => $data, 'html' => $rolese, 'select_list_position' => $select_list_position, 'select_list_queue' => $select_list_queue]);
+        $agents = DB::connection('remote_connection')->table('call_center.agent')->get();
+        $select_list_agent = '';
+
+        foreach ($agents as $agent) {
+            $selected = ($agent->id == $data->agent_id) ? 'selected' : '';
+            $select_list_agent .= '<option value="' . $agent->id . '" ' . $selected . '> ' . $agent->name . ' </option>';
+        }
+
+        return response()->json([
+            'data' => $data,
+            'html' => $rolese,
+            'select_list_position' => $select_list_position,
+            'select_list_queue' => $select_list_queue,
+            'select_list_agent' => $select_list_agent
+        ]);
     }
 
     /**
