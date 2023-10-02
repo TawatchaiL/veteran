@@ -45,8 +45,8 @@
                                     <select style="width: 100%;"
                                         class="select2 select2_multiple form-control" id="EditQueue"
                                         name="equeue" multiple="multiple">
-                                        @foreach ($department as $key2)
-                                            <option value="{{ $key2->id }}">{{ $key2->name }}
+                                        @foreach ($queue as $keyq)
+                                            <option value="{{ $keyq->extension }}">{{ $keyq->extension }} ( {{ $keyq->descr }} )
                                             </option>
                                         @endforeach
 
@@ -59,6 +59,10 @@
                                     <strong><i class="fas fa-list-ol"></i> Agent :</strong>
                                     <select style="width: 100%;" class="select2 select2_single form-control"
                                         id="EditAgent" name="eagent" multiple="multiple">
+                                        @foreach ($agent as $keya)
+                                            <option value="{{ $keya->name }}">{{ $keya->name }}
+                                            </option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

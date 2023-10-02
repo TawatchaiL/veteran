@@ -91,9 +91,13 @@ class UserController extends Controller
             ->orderBy("name", "asc")->get();
         $position = Position::where([['status', '1']])
             ->orderBy("name", "asc")->get();
+        $queue = DB::connection('remote_connection')->table('asterisk.queues_config')->get();
+        $agent = DB::connection('remote_connection')->table('call_center.agent')->get();
         return view('users.index')->with('roles', $roles)
             ->with(['department' => $department])
-            ->with(['position' => $position]);
+            ->with(['position' => $position])
+            ->with(['queue' => $queue])
+            ->with(['agent' => $agent]);
     }
 
     /**
