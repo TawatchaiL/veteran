@@ -33,7 +33,7 @@ class AsteriskAmiService
     {
         $remote = $this->asterisk_ami();
 
-        if ($remote->connect()) {
+        if ($remote) {
             $foo[$remote_extension]  = $remote->ExtensionState($remote_extension, $this->remoteContext, '');
 
             switch ($foo[$remote_extension]['Status']) {
