@@ -267,6 +267,7 @@
             $('.alert-success').hide();
 
             $('#EditPosition').empty();
+            $('#EditQueue').empty();
 
             id = $(this).data('id');
             $.ajax({
