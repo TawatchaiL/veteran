@@ -501,6 +501,12 @@
                                         $('#telhomep').val(res.datax.datac.telhome);
                                         $('#phonenop').val(res.datax.datac.phoneno);
                                         $('#worknop').val(res.datax.datac.workno);
+
+                                        var tbody = document.querySelector('#myTbl3p tbody');
+                                        while (tbody.firstChild) {
+                                        tbody.removeChild(tbody.firstChild);
+                                        }
+                                        
                                     }
                                 });
                             }, 500)
