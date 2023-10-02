@@ -14,7 +14,8 @@
         {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
         <div class="text-center">
             <h1 style="color: #1a16eb"><i class="fa-solid fa-id-card-clip"></i><input type="hidden" value="{{ $telephone }}" name="telnop" id="telnop"> {{ $telephone }}</h1>
-                <h2 style="color: #1a16eb"><i class="fa-solid fa-user-tie"></i></h2>
+        </div>
+        <div id="phonenosuccess" class="text-center">
         </div>
         <div class="card card-primary card-tabs">
             <div class="card-header p-0 pt-1">

@@ -301,31 +301,6 @@
                         $(this).css('right', cardPositions[index].right);
                         $(this).css('bottom', '35px');
                         $(this).delay(index * 100).fadeIn();
-
-                        setTimeout(function() {
-                            $.ajax({
-                                url: "{{ route('thcity.city') }}",
-                                method: 'GET',
-                                success: function(res) {
-                                    //alert(res.data.code);
-                                    var provinceOb = $('#cityp');
-                                    provinceOb.html(
-                                        '<option value="">เลือกจังหวัด</option>'
-                                        );
-                                    $.each(res.data, function(index,
-                                        item) {
-                                        provinceOb.append(
-                                            $(
-                                                '<option></option>')
-                                            .val(item.code)
-                                            .html(item
-                                                .name_th)
-                                        );
-                                    });
-                                }
-                            });
-                        }, 2000)
-
                     });
                 },
                 error: function(xhr, status, error) {
@@ -461,40 +436,6 @@
                         });
                     });
 
-                    setTimeout(function() {
-                    var telnop = $('#telnop').val();
-                    $.ajax({
-                    url: "contacts/popupedit/" + telnop,
-                    method: 'GET',
-                    success: function(res) {
-                        alert(res.datax.telno);
-                        $('#hnp').val(res.datax.datac.hn);
-                        $('#adddatep').val(res.datax.datac.adddate);
-                        $('#fnamep').val(res.datax.datac.fname);
-                        $('#lnamep').val(res.datax.datac.lname);
-                        $('#homenop').val(res.datax.datac.homeno);
-                        $('#moop').val(res.datax.datac.moo);
-                        $('#soip').val(res.datax.datac.soi);
-                        $('#roadp').val(res.datax.datac.road);
-                        $('#cityp').val(res.datax.datac.city);
-                        $('#cityp').change();
-                        setTimeout(function() {
-                            $('#districtp').val(res.datax.datac
-                                .district);
-                            $('#districtp').change();
-                            setTimeout(function() {
-                                $('#subdistrictp').val(res.datax
-                                    .datac.subdistrict);
-                            }, 1000)
-                        }, 1000)
-                        $('#postcodep').val(res.datax.datac.postcode);
-                        $('#telhomep').val(res.datax.datac.telhome);
-                        $('#phonenop').val(res.datax.datac.phoneno);
-                        $('#worknop').val(res.datax.datac.workno);
-                    }
-                });
-            }, 1000)
-
                     districtOb.on('change', function() {
                         var districtId = $(this).val();
                         cartonOb.html('<option value="">เลือกตำบล</option>');
@@ -512,6 +453,58 @@
                             }
                         });
                     });
+                    setTimeout(function() {
+                            $.ajax({
+                                url: "{{ route('thcity.city') }}",
+                                method: 'GET',
+                                success: function(res) {
+                                    var provinceOb = $('#cityp');
+                                    provinceOb.html(
+                                        '<option value="">เลือกจังหวัด</option>'
+                                        );
+                                    $.each(res.data, function(index,
+                                        item) {
+                                        provinceOb.append(
+                                            $('<option></option>')
+                                            .val(item.code)
+                                            .html(item.name_th)
+                                        );
+                                    });
+                                }
+                            });
+
+                                setTimeout(function() {
+                                    var telnop = $('#telnop').val();
+                                    $.ajax({
+                                    url: "contacts/popupedit/" + telnop,
+                                    method: 'GET',
+                                    success: function(res) {
+                                        $('#phonenosuccess').html('<h2 style="color: #1a16eb"><i class="fa-solid fa-user-tie"></i>' + res.datax.datac.fname + ' ' + res.datax.datac.lname + '</h2>');
+                                        $('#hnp').val(res.datax.datac.hn);
+                                        $('#adddatep').val(res.datax.datac.adddate);
+                                        $('#fnamep').val(res.datax.datac.fname);
+                                        $('#lnamep').val(res.datax.datac.lname);
+                                        $('#homenop').val(res.datax.datac.homeno);
+                                        $('#moop').val(res.datax.datac.moo);
+                                        $('#soip').val(res.datax.datac.soi);
+                                        $('#roadp').val(res.datax.datac.road);
+                                        $('#cityp').val(res.datax.datac.city);
+                                        $('#cityp').change();
+                                        setTimeout(function() {
+                                            $('#districtp').val(res.datax.datac.district);
+                                            $('#districtp').change();
+                                            setTimeout(function() {
+                                                $('#subdistrictp').val(res.datax.datac.subdistrict);
+                                            }, 500)
+                                        }, 500)
+                                        $('#postcodep').val(res.datax.datac.postcode);
+                                        $('#telhomep').val(res.datax.datac.telhome);
+                                        $('#phonenop').val(res.datax.datac.phoneno);
+                                        $('#worknop').val(res.datax.datac.workno);
+                                    }
+                                });
+                            }, 500)
+                        }, 500)
 
                     $('#SubmitCreateFormPOP').click(function(e) {
                         var emergencyData = [];
