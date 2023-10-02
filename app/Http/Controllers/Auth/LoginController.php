@@ -60,7 +60,11 @@ class LoginController extends Controller
         $this->validate($request, [
             $this->username() => 'required|string',
             'password' => 'required|string',
-            'phone' => 'required|string|max:255', // Add this line
+            'phone' => 'required|string|max:255', // เพิ่มบรรทัดนี้
+        ], [
+            $this->username() . '.required' => 'กรุณากรอก' . $this->username(),
+            'password.required' => 'กรุณากรอกรหัสผ่าน',
+            'phone.required' => 'กรุณากรอกหมายเลขโทรศัพท์', // เพิ่มบรรทัดนี้
         ]);
     }
 

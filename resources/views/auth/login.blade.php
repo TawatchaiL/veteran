@@ -21,6 +21,20 @@
     <script src="plugins/jquery/jquery.min.js"></script>
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="plugins/toastr/toastr.min.js"></script>
+    <script>
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("password");
+            var passwordIcon = document.getElementById("password-icon");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                passwordIcon.className = "fas fa-eye-slash";
+            } else {
+                passwordInput.type = "password";
+                passwordIcon.className = "fas fa-eye";
+            }
+        }
+    </script>
 
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -78,8 +92,8 @@
                         @csrf
 
                         <div class="input-group mb-3">
-                            <input readonly type="email" name="email" value="test@gmail.com{{-- {{ old('email') }} --}}" placeholder="Email"
-                                class="form-control @error('email') is-invalid @enderror">
+                            <input type="email" name="email" value="test@gmail.com{{-- {{ old('email') }} --}}"
+                                placeholder="Email" class="form-control @error('email') is-invalid @enderror">
                             <div class="input-group-append">
                                 <div class="input-group-text"><span class="fas fa-user"></span></div>
                             </div>
@@ -89,23 +103,22 @@
                         </div>
 
                         <div class="input-group mb-3">
-                            <input readonly type="password"  name="password" value="12345678" placeholder="Password"
-                                class="form-control @error('password') is-invalid @enderror">
+                            <input type="password" name="password" id="password" value="12345678"
+                                placeholder="Password" class="form-control @error('password') is-invalid @enderror">
                             <div class="input-group-append">
                                 <div class="input-group-text">
-                                    <span class="fas fa-lock"></span>
+                                    <span id="password-icon" class="fas fa-eye"
+                                        onclick="togglePasswordVisibility()"></span>
                                 </div>
                             </div>
                             @error('password')
                                 <span class="error invalid-feedback">{{ $message }}</span>
                             @enderror
-
                         </div>
 
                         <div class="input-group mb-3">
                             <input type="text" name="phone" value="" placeholder="หมายเลขโทรศัพท์"
-                                class="form-control @error('phone') is-invalid @enderror"
-                                {{-- value="{{ old('phone', $temporaryPhone) }}" --}}>
+                                class="form-control @error('phone') is-invalid @enderror" {{-- value="{{ old('phone', $temporaryPhone) }}" --}}>
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-phone"></span>
