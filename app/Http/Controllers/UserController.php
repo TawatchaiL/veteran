@@ -296,6 +296,16 @@ class UserController extends Controller
             $input = Arr::except($input, array('password'));
         }
        */
+        Validator::extend('unique_agent_id', function ($attribute, $value, $parameters, $validator) {
+            // The 'unique_agent_id' rule logic here
+            $table = $parameters[0]; // Get the table name from the validation rule parameters
+
+            // Check if the agent_id exists in the table except for the current record (when editing)
+            $id = $validator->getData()[$parameters[1]]; // Get the ID of the current record
+            $count = DB::table($table)->where($attribute, $value)->where('id', '!=', $id)->count();
+
+            return $count === 0;
+        });
 
         $rules = [
             'name' => 'required|string|max:255',
@@ -303,7 +313,7 @@ class UserController extends Controller
             'department' => 'required',
             'position' => 'required',
             'queue' => 'required',
-            'agent' => 'required',
+            'agent' => 'required|unique_agent_id:call_center.agent,id',
         ];
 
         if ($request->get('password')) {
@@ -323,6 +333,7 @@ class UserController extends Controller
             'role.required' => 'สิทธิ์การใช้งาน ต้องไม่เป็นค่าว่าง!',
             'queue.required' => 'กรุณาระบุ Queue ผู้ใช้งาน!',
             'agent.required' => 'กรุณาระบุ Agent ผู้ใช้งาน!',
+            'agent.unique_agent_id' => 'Agent นี้ถูกใช้งานแล้ว',
         ]);
 
         if ($validator->fails()) {
