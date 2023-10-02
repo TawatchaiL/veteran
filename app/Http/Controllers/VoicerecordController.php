@@ -1,16 +1,10 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Cases;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Gate;
 
 class VoicerecordController extends Controller
@@ -37,10 +31,6 @@ class VoicerecordController extends Controller
     {
 
         $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')->get();
-        //dd($remoteData);
-
-
-
 
         $datas = DB::table('cases')
             ->select(DB::raw('DATE(created_at) as cdate'), DB::raw('TIME(created_at) as ctime'), 'telno', 'agent', 'id')

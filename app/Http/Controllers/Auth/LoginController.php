@@ -8,7 +8,6 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
 use App\Services\AsteriskAmiService;
 
 class LoginController extends Controller
@@ -42,7 +41,7 @@ class LoginController extends Controller
     public function __construct(AsteriskAmiService $asteriskAmiService) // Inject AsteriskAmiService
     {
         $this->middleware('guest')->except('logout');
-        $this->remote = $asteriskAmiService->asterisk_ami(); // Initialize $remote
+        $this->remote = $asteriskAmiService; // Initialize $remote
     }
 
 
@@ -77,10 +76,11 @@ class LoginController extends Controller
                 $user->save();
                 //session(['temporary_phone' => Auth::user()->phone]);
 
-                $this->remote->QueuePause('4567', "SIP/9999", 'false', '');
+                /* $this->remote->QueuePause('4567', "SIP/9999", 'false', '');
                 $this->remote->QueueRemove('4567', "SIP/9999");
                 $this->remote->QueueAdd('4567', "SIP/9999", 0, "Agent1", "hint:9999@ext-local");
-                $this->remote->QueuePause('4567', "SIP/9999", 'true', 'Toilet');
+                $this->remote->QueuePause('4567', "SIP/9999", 'true', 'Toilet'); */
+                $this->remote->queue_log_in('4567', "SIP/" . $request->phone);
             }
 
             return $this->sendLoginResponse($request);
@@ -100,7 +100,7 @@ class LoginController extends Controller
         $user->phone = '';
         $user->save();
 
-        $this->remote->QueueRemove('4567', "SIP/9999");
+        $this->remote->queue_log_off('4567', "SIP/" . $request->phone);
 
         $this->guard()->logout();
 
