@@ -104,7 +104,7 @@ class LoginController extends Controller
         $user->phone = '';
         $user->save();
 
-        $this->remote->queue_log_off('4567', "SIP/" . $request->phone);
+        $this->remote->queue_log_off('4567', $request->phone);
 
         $this->guard()->logout();
 
