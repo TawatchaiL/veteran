@@ -337,12 +337,13 @@ class ContactController extends Controller
         //$datac = CrmContact::find('20');
         $datac = DB::table('crm_contacts')
         ->where('phoneno', '=', $telnop)
-        //->orWhere('telhome', '=', $telnop)
-        //->orWhere('workno', '=', $telnop)
+        ->orWhere('telhome', '=', $telnop)
+        ->orWhere('workno', '=', $telnop)
         ->get();
         //$data = CrmPhoneEmergency::find($id);
         $emer = DB::table('crm_phone_emergencies')
-            ->whereRaw('contact_id = 20')
+            //->whereRaw('contact_id = 20')
+            ->where('contact_id', '=', $datac['0']->id)
             ->get();
 
         $data = [
