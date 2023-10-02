@@ -77,6 +77,8 @@ class LoginController extends Controller
             if ($request->has('phone')) {
                 $user = Auth::user();
                 $user->phone = $request->phone;
+                $queueNames = $user->queues->pluck('queue_name')->implode(',');
+                $user->queue = $queueNames;
                 $user->save();
                 //session(['temporary_phone' => Auth::user()->phone]);
 
@@ -84,7 +86,7 @@ class LoginController extends Controller
                 $this->remote->QueueRemove('4567', "SIP/9999");
                 $this->remote->QueueAdd('4567', "SIP/9999", 0, "Agent1", "hint:9999@ext-local");
                 $this->remote->QueuePause('4567', "SIP/9999", 'true', 'Toilet'); */
-                $this->remote->queue_log_in('4567', $request->phone);
+                $this->remote->queue_log_in($queueNames, $request->phone);
             }
 
             return $this->sendLoginResponse($request);
@@ -101,7 +103,7 @@ class LoginController extends Controller
 
         // Update the user's phone to an empty value
         $user = Auth::user();
-        $this->remote->queue_log_off('4567', $user->phone);
+        $this->remote->queue_log_off($user->queue, $user->phone);
         $user->phone = '';
         $user->save();
 
