@@ -154,10 +154,10 @@ class UserController extends Controller
 
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
-        $input['agent_id'] = $request->get('agent');
+        //$input['agent_id'] = $request->get('agent');
 
         $user = User::create($input);
-        $user->assignRole($request->get('role'));
+        $user->assignRole($request->input('role'));
 
         /*
         $queueData = [];
