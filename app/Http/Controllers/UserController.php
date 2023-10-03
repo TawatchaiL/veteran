@@ -153,7 +153,7 @@ class UserController extends Controller
         }
 
 
-        dd($request->get('agent'));
+        dd($request->get('agent_id'));
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
         //$input['agent_id'] = $request->get('agent');
