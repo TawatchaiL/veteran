@@ -15,9 +15,6 @@ use App\Services\ECCPUnauthorizedException;
 
 use App\Models\User;
 
-
-
-
 class LoginController extends Controller
 {
     /*
@@ -155,8 +152,6 @@ class LoginController extends Controller
                 $cr = $this->eccp->connect("10.148.0.4", $sUsernameECCP, $sPasswordECCP);
                 if (isset($cr->failure)) {
                     throw new ECCPUnauthorizedException('Failed to authenticate to ECCP') . ': ' . ((string)$cr->failure->message);
-                } else {
-                    dd('connect');
                 }
             }
 
