@@ -147,18 +147,15 @@ class UserController extends Controller
         ]);
 
 
-
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);
         }
-
-
 
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
         //dd($input['agent_id']);
         $input['agent_id'] = (int)$request->get('agent_id');
-        dd($input);
+        $input = $request->except('queue');
         $user = User::create($input);
         $user->assignRole($request->input('role'));
 
