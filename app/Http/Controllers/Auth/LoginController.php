@@ -156,22 +156,18 @@ class LoginController extends Controller
                 ->withErrors(['email' => 'User นี้ กำลังใช้งานอยู่']);
         }
 
+        $phone_state_num = $this->remote->exten_state($request->get('phone'));
+        if ($phone_state_num == 4 || $phone_state_num == -1) {
+            //check phone status
+            $this->logoff_to_login_phone_error('หมายเลขโทรศัพท์ไม่พร้อมใช้งาน');
+        }
+
 
         if ($this->attemptLogin($request)) {
             // Update the user's phone if provided
             if ($request->has('phone')) {
                 $user = Auth::user();
                 $user->phone = $request->phone;
-
-
-                //check phone status
-                $phone_state_num = $this->remote->exten_state($user->phone);
-                if ($phone_state_num == 4 || $phone_state_num == -1) {
-                    $user->phone = '';
-                    $user->save();
-                    $this->logoff_to_login_phone_error('หมายเลขโทรศัพท์ไม่พร้อมใช้งาน');
-                    exit();
-                }
 
                 //check in use
                 $inuseCount = User::where('phone', $user->phone)
