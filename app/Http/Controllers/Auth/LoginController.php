@@ -206,7 +206,7 @@ class LoginController extends Controller
                     $loginResponse = $oECCP->loginagent($sExtension, NULL, $iTimeoutMin * 60);
                     if (isset($loginResponse->failure))
                         $this->errMsg = '(internal) loginagent: ' . $this->_formatoErrorECCP($loginResponse);
-                    return ($loginResponse->status == 'logged-in' || $loginResponse->status == 'logging');
+                    //return ($loginResponse->status == 'logged-in' || $loginResponse->status == 'logging');
                 } catch (Exception $e) {
                     $this->errMsg = '(internal) loginagent: ' . $e->getMessage();
                     return FALSE;
