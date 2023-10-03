@@ -249,8 +249,8 @@ class LoginController extends Controller
             //dd($response);
 
             if (isset($response) && isset($response->failure)) {
-                $this->errMsg = '(internal) logoutagent: ' . $this->_formatoErrorECCP($response);
-                return FALSE;
+                //$this->errMsg = '(internal) logoutagent: ' . $this->_formatoErrorECCP($response);
+                //return FALSE;
             }
 
             $user->phone = '';
@@ -261,9 +261,9 @@ class LoginController extends Controller
 
             return redirect('/');
         } catch (Exception $e) {
-            $this->errMsg = '(internal) logoutagent: ' . $e->getMessage();
+            //$this->errMsg = '(internal) logoutagent: ' . $e->getMessage();
             //dd($this->errMsg);
-            return FALSE;
+            //return FALSE;
         }
     }
 
