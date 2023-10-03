@@ -42,6 +42,7 @@ class LoginController extends Controller
     protected $eccp;
     protected $_agent;
     protected $errMsg;
+    protected $_agentPass;
 
     /**
      * Create a new controller instance.
@@ -198,8 +199,9 @@ class LoginController extends Controller
                 $sNumero = $this->_agent;
                 $regs = NULL;
                 $sExtension = (preg_match('|^(\w+)/(\d+)$|', $this->_agent, $regs)) ? $regs[2]: NULL;
+                $sPasswordCallback = '1234';
+                $this->_agentPass = $sPasswordCallback;
                 $iTimeoutMin = 15;
-                dd($sExtension);
                 try {
                     $oECCP = $this->_obtenerConexion();
                     $loginResponse = $oECCP->loginagent($sExtension, NULL, $iTimeoutMin * 60);
