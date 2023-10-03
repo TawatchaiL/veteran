@@ -196,10 +196,12 @@ class LoginController extends Controller
                 }*/
                 $this->_agent = 'SIP/' . $user->phone;
                 $sNumero = $this->_agent;
+                $regs = NULL;
+                $sExtension = (preg_match('|^(\w+)/(\d+)$|', $this->_agent, $regs)) ? $regs[2]: NULL;
                 $iTimeoutMin = 15;
                 try {
                     $oECCP = $this->_obtenerConexion();
-                    $loginResponse = $oECCP->loginagent('9999', NULL, $iTimeoutMin * 60);
+                    $loginResponse = $oECCP->loginagent($sExtension, NULL, $iTimeoutMin * 60);
                     if (isset($loginResponse->failure))
                         $this->errMsg = '(internal) loginagent: ' . $this->_formatoErrorECCP($loginResponse);
                     return ($loginResponse->status == 'logged-in' || $loginResponse->status == 'logging');
