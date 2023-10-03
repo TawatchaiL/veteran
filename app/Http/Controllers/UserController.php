@@ -121,7 +121,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
-        /* $validator =  Validator::make($request->all(), [
+        $validator =  Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
@@ -146,7 +146,7 @@ class UserController extends Controller
             'agent.unique' => 'Agent นี้ถูกใช้งานแล้ว',
         ]);
 
-
+ /*
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);
