@@ -151,11 +151,11 @@ class UserController extends Controller
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);
         }
-/*
+
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
-        //$input['agent_id'] = $request->get('agent');
-
+        $input['agent_id'] = $request->get('agent');
+/*
         $user = User::create($input);
         $user->assignRole($request->input('role'));
 
