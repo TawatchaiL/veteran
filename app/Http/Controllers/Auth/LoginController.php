@@ -195,9 +195,21 @@ class LoginController extends Controller
                     }
                 }*/
                 $this->_agent = 'SIP/' . $user->phone;
-                $ll = $this->esperarResultadoLogin();
+                $sNumero = $this->_agent;
+                $iTimeoutMin = 15;
+                try {
+                    $oECCP = $this->_obtenerConexion();
+                    $loginResponse = $oECCP->loginagent($sNumero, NULL, $iTimeoutMin * 60);
+                    if (isset($loginResponse->failure))
+                        $this->errMsg = '(internal) loginagent: ' . $this->_formatoErrorECCP($loginResponse);
+                    return ($loginResponse->status == 'logged-in' || $loginResponse->status == 'logging');
+                } catch (Exception $e) {
+                    $this->errMsg = '(internal) loginagent: ' . $e->getMessage();
+                    return FALSE;
+                }
+                //$ll = $this->esperarResultadoLogin();
 
-                dd($ll);
+                dd($loginResponse);
 
 
                 $queueNames = $user->queues->pluck('queue_name')->implode(',');
