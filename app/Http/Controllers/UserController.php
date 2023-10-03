@@ -152,6 +152,8 @@ class UserController extends Controller
             return response()->json(['errors' => $validator->errors()->all()]);
         }
 
+
+        dd($request->get('agent'));
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
         //$input['agent_id'] = $request->get('agent');
