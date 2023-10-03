@@ -242,15 +242,15 @@ class LoginController extends Controller
         $user = Auth::user();
         //$this->remote->queue_log_off($user->queue, $user->phone);
         $this->_agent = 'SIP/' . $user->phone;
-        //try {
+        try {
             $oECCP = $this->_obtenerConexion();
             //dd($oECCP);
             $response = $oECCP->logoutagent();
             //dd($response);
 
             if (isset($response) && isset($response->failure)) {
-                //$this->errMsg = '(internal) logoutagent: ' . $this->_formatoErrorECCP($response);
-                //return FALSE;
+                $this->errMsg = '(internal) logoutagent: ' . $this->_formatoErrorECCP($response);
+                return FALSE;
             }
 
             $user->phone = '';
@@ -260,11 +260,11 @@ class LoginController extends Controller
             $request->session()->invalidate();
 
             return redirect('/');
-        //} catch (Exception $e) {
-            //$this->errMsg = '(internal) logoutagent: ' . $e->getMessage();
+        } catch (Exception $e) {
+            $this->errMsg = '(internal) logoutagent: ' . $e->getMessage();
             //dd($this->errMsg);
-            //return FALSE;
-        //}
+            return FALSE;
+        }
     }
 
 
