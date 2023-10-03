@@ -278,7 +278,7 @@ class ECCP
 
     private function agentHash($agent_number, $agent_pass)
     {
-        dd($agent_pass);
+        //dd($agent_pass);
         return md5($this->_sAppCookie . $agent_number . $agent_pass);
     }
 

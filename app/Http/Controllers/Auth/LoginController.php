@@ -114,7 +114,7 @@ class LoginController extends Controller
             throw new ECCPUnauthorizedException('Agent not found');
         if (is_null($tupla[0]->eccp_password))
             throw new ECCPUnauthorizedException('Agent not authorized for ECCP - ECCP password not set');
-        $this->eccp->setAgentPass($tupla[0]);
+        $this->eccp->setAgentPass($tupla[0]->eccp_password);
 
         return $this->eccp;
     }
