@@ -244,13 +244,13 @@ class LoginController extends Controller
 
         try {
             $oECCP = $this->_obtenerConexion();
-            dd($oECCP);
+            //dd($oECCP);
             $response = $oECCP->logoutagent();
-            dd($response);
+            //dd($response);
 
             if (isset($response) && isset($response->failure)) {
                 $this->errMsg = '(internal) logoutagent: ' . $this->_formatoErrorECCP($response);
-                return FALSE;
+                dd($this->errMsg);
             }
 
             $user->phone = '';
