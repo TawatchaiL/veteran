@@ -242,7 +242,7 @@ class LoginController extends Controller
         $user = Auth::user();
         //$this->remote->queue_log_off($user->queue, $user->phone);
 
-        try {
+        //try {
             $oECCP = $this->_obtenerConexion();
             $response = $oECCP->logoutagent();
 
@@ -258,11 +258,11 @@ class LoginController extends Controller
             $request->session()->invalidate();
 
             return redirect('/');
-        } catch (Exception $e) {
-            $this->errMsg = '(internal) logoutagent: ' . $e->getMessage();
+        //} catch (Exception $e) {
+           // $this->errMsg = '(internal) logoutagent: ' . $e->getMessage();
             //dd($this->errMsg);
             //return FALSE;
-        }
+        //}
     }
 
 
