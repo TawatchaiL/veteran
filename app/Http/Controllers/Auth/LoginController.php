@@ -80,7 +80,7 @@ class LoginController extends Controller
 
     public function logoff_to_login_phone_error($message)
     {
-        auth()->logout();
+        //auth()->logout();
         return redirect()->route('login')
             ->with('login_error', $message)
             ->withErrors(['phone' => $message]);
@@ -156,10 +156,50 @@ class LoginController extends Controller
                 ->withErrors(['email' => 'User นี้ กำลังใช้งานอยู่']);
         }
 
+
         $phone_state_num = $this->remote->exten_state($request->get('phone'));
         if ($phone_state_num == 4 || $phone_state_num == -1) {
             //check phone status
             $this->logoff_to_login_phone_error('หมายเลขโทรศัพท์ไม่พร้อมใช้งาน');
+        }
+
+        //check in use
+        $inuseCount = User::where('phone', $request->get('phone'))
+            //->where('agent_id', '!=', $user->id)
+            ->count();
+
+        if ($inuseCount > 0) {
+            $this->logoff_to_login_phone_error('หมายเลขโทรศัพท์ถูกใช้งานแล้ว');
+        } else {
+            //check login again with same phone and same agent
+            /* if ($agent_data['extension'] == $phone) {
+             $not_logout = $this->Agent_model->get_state_not_logout($phone, $agent_data['id_agent']);
+             if ($not_logout) {
+                 $this->clear_login(
+                     $not_logout['login_datetime'],
+                     $not_logout['id_agent'],
+                     $not_logout['enable_inbound'],
+                     $not_logout['queues_inbound'],
+                     $not_logout['extension'],
+                     $remote_context,
+                     $not_logout['audit_login_id']
+                 );
+             }
+         } else {
+             //check not logout same agent not same phone
+             $not_logout = $this->Agent_model->get_agent_not_logout($agent_data['id_agent']);
+             if ($not_logout) {
+                 $this->clear_login(
+                     $not_logout['login_datetime'],
+                     $not_logout['id_agent'],
+                     $not_logout['enable_inbound'],
+                     $not_logout['queues_inbound'],
+                     $not_logout['extension'],
+                     $remote_context,
+                     $not_logout['audit_login_id']
+                 );
+             }
+         } */
         }
 
 
@@ -168,48 +208,6 @@ class LoginController extends Controller
             if ($request->has('phone')) {
                 $user = Auth::user();
                 $user->phone = $request->phone;
-
-                //check in use
-                $inuseCount = User::where('phone', $user->phone)
-                    ->where('agent_id', '!=', $user->id)
-                    ->count();
-
-                if ($inuseCount > 0) {
-                    $user->phone = '';
-                    $user->save();
-                    $this->logoff_to_login_phone_error('หมายเลขโทรศัพท์ถูกใช้งานแล้ว');
-                    exit();
-                } else {
-                    //check login again with same phone and same agent
-                    /* if ($agent_data['extension'] == $phone) {
-                        $not_logout = $this->Agent_model->get_state_not_logout($phone, $agent_data['id_agent']);
-                        if ($not_logout) {
-                            $this->clear_login(
-                                $not_logout['login_datetime'],
-                                $not_logout['id_agent'],
-                                $not_logout['enable_inbound'],
-                                $not_logout['queues_inbound'],
-                                $not_logout['extension'],
-                                $remote_context,
-                                $not_logout['audit_login_id']
-                            );
-                        }
-                    } else {
-                        //check not logout same agent not same phone
-                        $not_logout = $this->Agent_model->get_agent_not_logout($agent_data['id_agent']);
-                        if ($not_logout) {
-                            $this->clear_login(
-                                $not_logout['login_datetime'],
-                                $not_logout['id_agent'],
-                                $not_logout['enable_inbound'],
-                                $not_logout['queues_inbound'],
-                                $not_logout['extension'],
-                                $remote_context,
-                                $not_logout['audit_login_id']
-                            );
-                        }
-                    } */
-                }
                 $this->_agent = 'SIP/' . $user->phone;
                 $regs = NULL;
                 $sExtension = (preg_match('|^(\w+)/(\d+)$|', $this->_agent, $regs)) ? $regs[2] : NULL;
