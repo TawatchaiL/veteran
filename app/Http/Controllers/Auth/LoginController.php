@@ -196,9 +196,8 @@ class LoginController extends Controller
                     }
                 }*/
                 $this->_agent = 'SIP/' . $user->phone;
-                $sNumero = $this->_agent;
                 $regs = NULL;
-                $sExtension = (preg_match('|^(\w+)/(\d+)$|', $this->_agent, $regs)) ? $regs[2]: NULL;
+                $sExtension = (preg_match('|^(\w+)/(\d+)$|', $this->_agent, $regs)) ? $regs[2] : NULL;
                 $sPasswordCallback = '1234';
                 $this->_agentPass = $sPasswordCallback;
                 $iTimeoutMin = 15;
@@ -213,9 +212,6 @@ class LoginController extends Controller
                     return FALSE;
                 }
                 //$ll = $this->esperarResultadoLogin();
-
-                dd($loginResponse);
-
 
                 $queueNames = $user->queues->pluck('queue_name')->implode(',');
                 $user->queue = $queueNames;
@@ -244,7 +240,19 @@ class LoginController extends Controller
 
         // Update the user's phone to an empty value
         $user = Auth::user();
-        $this->remote->queue_log_off($user->queue, $user->phone);
+        //$this->remote->queue_log_off($user->queue, $user->phone);
+        try {
+            $oECCP = $this->_obtenerConexion();
+            $response = $oECCP->logoutagent();
+            if (isset($response->failure)) {
+                $this->errMsg = '(internal) logoutagent: '.$this->_formatoErrorECCP($response);
+                return FALSE;
+            }
+            return TRUE;
+        } catch (Exception $e) {
+            $this->errMsg = '(internal) logoutagent: '.$e->getMessage();
+            return FALSE;
+        }
         $user->phone = '';
         $user->save();
 
