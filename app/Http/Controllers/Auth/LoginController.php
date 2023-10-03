@@ -118,7 +118,7 @@ class LoginController extends Controller
         return $this->eccp;
     }
 
-    function esperarResultadoLogin()
+    public function esperarResultadoLogin()
     {
         $this->errMsg = '';
         try {
