@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+
 use App\Services\AsteriskAmiService;
 use App\Services\ECCP;
 use App\Services\ECCPUnauthorizedException;
@@ -58,7 +59,7 @@ class LoginController extends Controller
         $this->remote = $asteriskAmiService; // Initialize $remote
         $this->eccp = new ECCP();
 
-        $this->eccp_host = config('asterisk.eccp.eccp.host');
+        $this->eccp_host = config('asterisk.eccp.eccp_host');
         $this->sUsernameECCP = config('asterisk.eccp.eccp_user');
         $this->sPasswordECCP = config('asterisk.eccp.eccp_password');
     }
@@ -101,7 +102,6 @@ class LoginController extends Controller
         $cr = $this->eccp->connect($eccp_host, $sUsernameECCP, $sPasswordECCP); */
         //$sUsernameECCP = 'agentconsole';
         //$sPasswordECCP = 'agentconsole';
-        dd($this->eccp_host);
         $cr = $this->eccp->connect($this->eccp_host, $this->sUsernameECCP, $this->sPasswordECCP);
         if (isset($cr->failure)) {
             throw new ECCPUnauthorizedException('Failed to authenticate to ECCP')
