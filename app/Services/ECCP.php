@@ -26,6 +26,7 @@ namespace App\Services;
 
 
 use Exception;
+use SimpleXMLElement;
 
 define('ECCP_PORT', 20005);
 
