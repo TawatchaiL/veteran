@@ -43,6 +43,9 @@ class LoginController extends Controller
     protected $_agent;
     protected $errMsg;
     protected $_agentPass;
+    protected $eccp_host;
+    protected $sUsernameECCP;
+    protected $sPasswordECCP;
 
     /**
      * Create a new controller instance.
@@ -54,6 +57,10 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
         $this->remote = $asteriskAmiService; // Initialize $remote
         $this->eccp = new ECCP();
+
+        $this->eccp_host = config('asterisk.eccp.eccp.host');
+        $this->sUsernameECCP = config('asterisk.eccp.eccp_user');
+        $this->sPasswordECCP = config('asterisk.eccp.eccp_password');
     }
     /*  protected function attemptLogin(Request $request)
     {
@@ -90,13 +97,11 @@ class LoginController extends Controller
     public function _obtenerConexion()
     {
         //if (!is_null($this->eccp)) return $this->eccp;
-        /* $eccp_host = config('asterisk.eccp.eccp.host');
-        $sUsernameECCP = config('asterisk.eccp.eccp_user');
-        $sPasswordECCP = config('asterisk.eccp.eccp_password');;
+        /*
         $cr = $this->eccp->connect($eccp_host, $sUsernameECCP, $sPasswordECCP); */
-        $sUsernameECCP = 'agentconsole';
-        $sPasswordECCP = 'agentconsole';
-        $cr = $this->eccp->connect("10.148.0.4", $sUsernameECCP, $sPasswordECCP);
+        //$sUsernameECCP = 'agentconsole';
+        //$sPasswordECCP = 'agentconsole';
+        $cr = $this->eccp->connect($this->eccp_host, $this->sUsernameECCP, $this->sPasswordECCP);
         if (isset($cr->failure)) {
             throw new ECCPUnauthorizedException('Failed to authenticate to ECCP')
                 . ': ' . ((string)$cr->failure->message);
