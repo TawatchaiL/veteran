@@ -243,6 +243,7 @@ class LoginController extends Controller
         //$this->remote->queue_log_off($user->queue, $user->phone);
         try {
             $oECCP = $this->_obtenerConexion();
+            dd($oECCP);
             $response = $oECCP->logoutagent();
             dd($response);
             if (isset($response->failure)) {
