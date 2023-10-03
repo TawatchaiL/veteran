@@ -101,8 +101,6 @@ class LoginController extends Controller
             $this->eccp->setAgentNumber($this->_agent);
         }
 
-        dd($this->_agent);
-
         $tupla = DB::connection('remote_connection')
             ->table('call_center.agent')
             ->select('eccp_password')
