@@ -195,7 +195,7 @@ class LoginController extends Controller
                         }
                     }
                 }*/
-                $this->_agent = 'SIP/' . $user->phone;
+                dd($this->_agent = 'SIP/' . $user->phone);
                 $ll = $this->esperarResultadoLogin();
 
                 dd($ll);
