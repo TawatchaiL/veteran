@@ -90,10 +90,13 @@ class LoginController extends Controller
     public function _obtenerConexion()
     {
         //if (!is_null($this->eccp)) return $this->eccp;
-        $eccp_host = config('asterisk.eccp.eccp.host');
+        /* $eccp_host = config('asterisk.eccp.eccp.host');
         $sUsernameECCP = config('asterisk.eccp.eccp_user');
         $sPasswordECCP = config('asterisk.eccp.eccp_password');;
-        $cr = $this->eccp->connect($eccp_host, $sUsernameECCP, $sPasswordECCP);
+        $cr = $this->eccp->connect($eccp_host, $sUsernameECCP, $sPasswordECCP); */
+        $sUsernameECCP = 'agentconsole';
+        $sPasswordECCP = 'agentconsole';
+        $cr = $this->eccp->connect("10.148.0.4", $sUsernameECCP, $sPasswordECCP);
         if (isset($cr->failure)) {
             throw new ECCPUnauthorizedException('Failed to authenticate to ECCP')
                 . ': ' . ((string)$cr->failure->message);
