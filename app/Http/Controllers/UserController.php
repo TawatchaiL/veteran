@@ -158,7 +158,7 @@ class UserController extends Controller
         $input['password'] = Hash::make($input['password']);
         //dd($input['agent_id']);
         $input['agent_id'] = (int)$request->get('agent_id');
-
+        dd($input);
         $user = User::create($input);
         $user->assignRole($request->input('role'));
 
