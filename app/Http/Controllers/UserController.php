@@ -153,9 +153,10 @@ class UserController extends Controller
         }
 
 
-        dd($request->get('agent_id'));
+
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
+        dd($input['agent_id']);
         //$input['agent_id'] = $request->get('agent');
 
         $user = User::create($input);
