@@ -157,7 +157,7 @@ class UserController extends Controller
         //$input['agent_id'] = $request->get('agent');
 
         $user = User::create($input);
-        $user->assignRole($request->input('role'));
+        //$user->assignRole($request->input('role'));
 
         /*
         $queueData = [];
