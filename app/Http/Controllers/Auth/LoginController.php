@@ -107,6 +107,8 @@ class LoginController extends Controller
             ->where('estatus', 'A')
             ->get();
 
+            dd($tupla);
+
         if (!is_array($tupla))
             throw new ECCPConnFailedException('Failed to retrieve agent password');
         if (count($tupla) <= 0)
@@ -195,7 +197,7 @@ class LoginController extends Controller
                         }
                     }
                 }*/
-                dd($this->_agent = 'SIP/' . $user->phone);
+                $this->_agent = 'SIP/' . $user->phone;
                 $ll = $this->esperarResultadoLogin();
 
                 dd($ll);
