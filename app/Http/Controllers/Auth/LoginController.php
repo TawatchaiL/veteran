@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Services\AsteriskAmiService;
+use App\Services\ECCP;
+use App\Services\ECCPUnauthorizedException;
 
 use App\Models\User;
 
@@ -38,6 +40,7 @@ class LoginController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
     protected $remote;
+    protected $eccp;
 
     /**
      * Create a new controller instance.
@@ -48,9 +51,8 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
         $this->remote = $asteriskAmiService; // Initialize $remote
+        $this->eccp = new ECCP();
     }
-
-
     /*  protected function attemptLogin(Request $request)
     {
         $credentials = $this->credentials($request);
@@ -146,7 +148,16 @@ class LoginController extends Controller
                 $this->remote->QueueRemove('4567', "SIP/9999");
                 $this->remote->QueueAdd('4567', "SIP/9999", 0, "Agent1", "hint:9999@ext-local");
                 $this->remote->QueuePause('4567', "SIP/9999", 'true', 'Toilet'); */
-                $this->remote->queue_log_in($queueNames, $request->phone);
+                //$this->remote->queue_log_in($queueNames, $request->phone);
+
+                $sUsernameECCP = 'agentconsole';
+                $sPasswordECCP = 'agentconsole';
+                $cr = $this->eccp->connect("10.148.0.4", $sUsernameECCP, $sPasswordECCP);
+                if (isset($cr->failure)) {
+                    throw new ECCPUnauthorizedException('Failed to authenticate to ECCP') . ': ' . ((string)$cr->failure->message);
+                } else {
+                    dd('connect');
+                }
             }
 
             return $this->sendLoginResponse($request);

@@ -195,6 +195,7 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'GraphService' => App\Facades\GraphFacade::class,
         'AsteriskAmi' => App\Facades\AsteriskAmiFacade::class,
+        'ECCP' => App\Facades\ECCP::class,
     ])->toArray(),
 
 ];
