@@ -199,7 +199,7 @@ class LoginController extends Controller
                 $iTimeoutMin = 15;
                 try {
                     $oECCP = $this->_obtenerConexion();
-                    $loginResponse = $oECCP->loginagent($sNumero, NULL, $iTimeoutMin * 60);
+                    $loginResponse = $oECCP->loginagent(9999, NULL, $iTimeoutMin * 60);
                     if (isset($loginResponse->failure))
                         $this->errMsg = '(internal) loginagent: ' . $this->_formatoErrorECCP($loginResponse);
                     return ($loginResponse->status == 'logged-in' || $loginResponse->status == 'logging');
