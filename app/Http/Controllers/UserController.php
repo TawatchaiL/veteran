@@ -121,15 +121,15 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
-        $validator =  Validator::make($request->all(), [
+        /* $validator =  Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
             'department_id' => 'required',
             'position_id' => 'required',
             'role' => 'required',
-            //'queue' => 'required',
-            //'agent' => 'required|unique:users,agent_id',
+            'queue' => 'required',
+            'agent' => 'required|unique:users,agent_id',
         ], [
             'name.required' => 'กรุณาระบุ ชื่อ-นามสกุล ผู้ใช้งาน!',
             'email.required' => 'Username ต้องไม่เป็นค่าว่าง!',
@@ -141,9 +141,9 @@ class UserController extends Controller
             'department_id.required' => 'แผนก ต้องไม่เป็นค่าว่าง!',
             'position_id.required' => 'ตำแหน่ง ต้องไม่เป็นค่าว่าง!',
             'role.required' => 'สิทธิ์การใช้งาน ต้องไม่เป็นค่าว่าง!',
-            //'queue.required' => 'กรุณาระบุ Queue ผู้ใช้งาน!',
-            //'agent.required' => 'กรุณาระบุ Agent ผู้ใช้งาน!',
-            //'agent.unique' => 'Agent นี้ถูกใช้งานแล้ว',
+            'queue.required' => 'กรุณาระบุ Queue ผู้ใช้งาน!',
+            'agent.required' => 'กรุณาระบุ Agent ผู้ใช้งาน!',
+            'agent.unique' => 'Agent นี้ถูกใช้งานแล้ว',
         ]);
 
 
@@ -160,7 +160,7 @@ class UserController extends Controller
         $user->assignRole($request->input('role'));
 
 
-        /* $queueData = [];
+        $queueData = [];
 
         foreach ($request->get('queue') as $ea) {
             $queueData[] = [
