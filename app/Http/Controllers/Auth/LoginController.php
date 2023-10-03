@@ -107,13 +107,13 @@ class LoginController extends Controller
             ->where('estatus', 'A')
             ->get();
 
-            dd($tupla);
 
-        if (!is_array($tupla))
+
+        if (!is_object($tupla))
             throw new ECCPConnFailedException('Failed to retrieve agent password');
         if (count($tupla) <= 0)
             throw new ECCPUnauthorizedException('Agent not found');
-        if (is_null($tupla[0]))
+        if (is_null($tupla[0]->eccp_password))
             throw new ECCPUnauthorizedException('Agent not authorized for ECCP - ECCP password not set');
         $this->eccp->setAgentPass($tupla[0]);
 
