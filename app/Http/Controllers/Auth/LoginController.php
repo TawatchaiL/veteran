@@ -241,14 +241,16 @@ class LoginController extends Controller
         // Update the user's phone to an empty value
         $user = Auth::user();
         //$this->remote->queue_log_off($user->queue, $user->phone);
-
-        //try {
+        $this->_agent = $user->phone;
+        try {
             $oECCP = $this->_obtenerConexion();
+            //dd($oECCP);
             $response = $oECCP->logoutagent();
+            //dd($response);
 
             if (isset($response) && isset($response->failure)) {
                 $this->errMsg = '(internal) logoutagent: ' . $this->_formatoErrorECCP($response);
-                //dd($this->errMsg);
+                return FALSE;
             }
 
             $user->phone = '';
@@ -258,11 +260,11 @@ class LoginController extends Controller
             $request->session()->invalidate();
 
             return redirect('/');
-        //} catch (Exception $e) {
-           // $this->errMsg = '(internal) logoutagent: ' . $e->getMessage();
+        } catch (Exception $e) {
+            $this->errMsg = '(internal) logoutagent: ' . $e->getMessage();
             //dd($this->errMsg);
-            //return FALSE;
-        //}
+            return FALSE;
+        }
     }
 
 
