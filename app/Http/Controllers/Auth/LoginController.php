@@ -103,7 +103,7 @@ class LoginController extends Controller
         $tupla = DB::connection('remote_connection')
             ->table('call_center.agent')
             ->select('eccp_password')
-            ->where("CONCAT(type,'/',number)", $this->_agent)
+            ->whereRaw("CONCAT(type, '/', number) = ?", [$this->_agent])
             ->where('estatus', 'A')
             ->get();
 
@@ -122,22 +122,22 @@ class LoginController extends Controller
     {
         $this->errMsg = '';
         //try {
-            $oECCP = $this->_obtenerConexion();
-            dd($oECCP);
-            $oECCP->wait_response(1);
-            while ($e = $oECCP->getEvent()) {
-                foreach ($e->children() as $ee) $evt = $ee;
+        $oECCP = $this->_obtenerConexion();
+        dd($oECCP);
+        $oECCP->wait_response(1);
+        while ($e = $oECCP->getEvent()) {
+            foreach ($e->children() as $ee) $evt = $ee;
 
-                if ($evt->getName() == 'agentloggedin' && $evt->agent == $this->_agent)
-                    return 'logged-in';
-                if ($evt->getName() == 'agentfailedlogin' && $evt->agent == $this->_agent)
-                    return 'logged-out';
-                // TODO: devolver mismatch si logoneo con éxito a consola equivocada.
-            }
-            return 'logging';   // No se recibieron eventos relevantes
-       // } catch (Exception $e) {
-         //   $this->errMsg = '(internal) esperarResultadoLogin: '.$e->getMessage();
-            //return 'error';
+            if ($evt->getName() == 'agentloggedin' && $evt->agent == $this->_agent)
+                return 'logged-in';
+            if ($evt->getName() == 'agentfailedlogin' && $evt->agent == $this->_agent)
+                return 'logged-out';
+            // TODO: devolver mismatch si logoneo con éxito a consola equivocada.
+        }
+        return 'logging';   // No se recibieron eventos relevantes
+        // } catch (Exception $e) {
+        //   $this->errMsg = '(internal) esperarResultadoLogin: '.$e->getMessage();
+        //return 'error';
         //}
     }
 
