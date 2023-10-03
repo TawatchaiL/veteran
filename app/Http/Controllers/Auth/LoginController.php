@@ -243,7 +243,7 @@ class LoginController extends Controller
         // Update the user's phone to an empty value
         $user = Auth::user();
         //$this->remote->queue_log_off($user->queue, $user->phone);
-        $this->_agent = $user->phone;
+        $this->_agent = 'SIP/' . $user->phone;
         //try {
             $oECCP = $this->_obtenerConexion();
             //dd($oECCP);
