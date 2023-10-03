@@ -199,6 +199,7 @@ class LoginController extends Controller
                 $regs = NULL;
                 $sExtension = (preg_match('|^(\w+)/(\d+)$|', $this->_agent, $regs)) ? $regs[2]: NULL;
                 $iTimeoutMin = 15;
+                dd($sExtension);
                 try {
                     $oECCP = $this->_obtenerConexion();
                     $loginResponse = $oECCP->loginagent($sExtension, NULL, $iTimeoutMin * 60);
