@@ -146,12 +146,12 @@ class UserController extends Controller
             'agent.unique' => 'Agent นี้ถูกใช้งานแล้ว',
         ]);
 
- /*
+
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);
         }
-
+/*
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
         //$input['agent_id'] = $request->get('agent');
