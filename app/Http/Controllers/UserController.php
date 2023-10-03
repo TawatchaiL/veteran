@@ -154,13 +154,13 @@ class UserController extends Controller
 
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
-        $input['agent_id'] = $request->get('agent');
+        //$input['agent_id'] = $request->get('agent');
 
         $user = User::create($input);
         $user->assignRole($request->input('role'));
 
 
-        /* $queueData = [];
+        $queueData = [];
 
         foreach ($request->get('queue') as $ea) {
             $queueData[] = [
@@ -169,7 +169,7 @@ class UserController extends Controller
             ];
         }
 
-        Queue::insert($queueData); */
+        Queue::insert($queueData);
 
         return response()->json(['success' => 'เพิ่มผู้ใช้งานเรียบร้อยแล้ว']);
     }
