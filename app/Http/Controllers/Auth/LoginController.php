@@ -170,6 +170,7 @@ class LoginController extends Controller
                     $user->phone = '';
                     $user->save();
                     $this->logoff_to_login_phone_error('หมายเลขโทรศัพท์ไม่พร้อมใช้งาน');
+                    exit();
                 }
 
                 //check in use
@@ -181,6 +182,7 @@ class LoginController extends Controller
                     $user->phone = '';
                     $user->save();
                     $this->logoff_to_login_phone_error('หมายเลขโทรศัพท์ถูกใช้งานแล้ว');
+                    exit();
                 } else {
                     //check login again with same phone and same agent
                     /* if ($agent_data['extension'] == $phone) {
