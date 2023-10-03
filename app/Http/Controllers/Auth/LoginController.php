@@ -101,6 +101,7 @@ class LoginController extends Controller
         $cr = $this->eccp->connect($eccp_host, $sUsernameECCP, $sPasswordECCP); */
         //$sUsernameECCP = 'agentconsole';
         //$sPasswordECCP = 'agentconsole';
+        dd($this->eccp_host);
         $cr = $this->eccp->connect($this->eccp_host, $this->sUsernameECCP, $this->sPasswordECCP);
         if (isset($cr->failure)) {
             throw new ECCPUnauthorizedException('Failed to authenticate to ECCP')
