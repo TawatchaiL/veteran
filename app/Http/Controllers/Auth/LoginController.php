@@ -121,7 +121,7 @@ class LoginController extends Controller
     public function esperarResultadoLogin()
     {
         $this->errMsg = '';
-        try {
+        //try {
             $oECCP = $this->_obtenerConexion();
             dd($oECCP);
             $oECCP->wait_response(1);
@@ -135,10 +135,10 @@ class LoginController extends Controller
                 // TODO: devolver mismatch si logoneo con éxito a consola equivocada.
             }
             return 'logging';   // No se recibieron eventos relevantes
-        } catch (Exception $e) {
-            $this->errMsg = '(internal) esperarResultadoLogin: '.$e->getMessage();
-            return 'error';
-        }
+       // } catch (Exception $e) {
+         //   $this->errMsg = '(internal) esperarResultadoLogin: '.$e->getMessage();
+            //return 'error';
+        //}
     }
 
     public function login(Request $request)
