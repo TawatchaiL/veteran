@@ -167,6 +167,8 @@ class LoginController extends Controller
                 //check phone status
                 $phone_state_num = $this->remote->exten_state($user->phone);
                 if ($phone_state_num == 4 || $phone_state_num == -1) {
+                    $user->phone = '';
+                    $user->save();
                     $this->logoff_to_login_phone_error('หมายเลขโทรศัพท์ไม่พร้อมใช้งาน');
                 }
 
@@ -176,6 +178,8 @@ class LoginController extends Controller
                     ->count();
 
                 if ($inuseCount > 0) {
+                    $user->phone = '';
+                    $user->save();
                     $this->logoff_to_login_phone_error('หมายเลขโทรศัพท์ถูกใช้งานแล้ว');
                 } else {
                     //check login again with same phone and same agent
