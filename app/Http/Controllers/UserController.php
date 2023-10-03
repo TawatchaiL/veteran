@@ -128,7 +128,7 @@ class UserController extends Controller
             'department_id' => 'required',
             'position_id' => 'required',
             'role' => 'required',
-            'queue' => 'required',
+            'queue' => 'required|array',
             'agent' => 'required|unique:users,agent_id',
         ], [
             'name.required' => 'กรุณาระบุ ชื่อ-นามสกุล ผู้ใช้งาน!',
