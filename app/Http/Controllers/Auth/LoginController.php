@@ -90,11 +90,13 @@ class LoginController extends Controller
     public function _obtenerConexion()
     {
         //if (!is_null($this->eccp)) return $this->eccp;
-        $sUsernameECCP = 'agentconsole';
-        $sPasswordECCP = 'agentconsole';
-        $cr = $this->eccp->connect("10.148.0.4", $sUsernameECCP, $sPasswordECCP);
+        $eccp_host = config('asterisk.eccp.eccp.host');
+        $sUsernameECCP = config('asterisk.eccp.eccp_user');
+        $sPasswordECCP = config('asterisk.eccp.eccp_password');;
+        $cr = $this->eccp->connect($eccp_host, $sUsernameECCP, $sPasswordECCP);
         if (isset($cr->failure)) {
-            throw new ECCPUnauthorizedException('Failed to authenticate to ECCP') . ': ' . ((string)$cr->failure->message);
+            throw new ECCPUnauthorizedException('Failed to authenticate to ECCP')
+                . ': ' . ((string)$cr->failure->message);
         }
 
         if (!is_null($this->_agent)) {
@@ -213,11 +215,18 @@ class LoginController extends Controller
             if ($request->has('phone')) {
                 $user = Auth::user();
                 $user->phone = $request->phone;
+
+                DB::connection('remote_connection')
+                    ->table('call_center.agent')
+                    ->where('id', $user->agent_id)
+                    ->update(['number' => $request->phone]);
+
+
                 $this->_agent = 'SIP/' . $user->phone;
                 $regs = NULL;
                 $sExtension = (preg_match('|^(\w+)/(\d+)$|', $this->_agent, $regs)) ? $regs[2] : NULL;
-                $sPasswordCallback = '1234';
-                $this->_agentPass = $sPasswordCallback;
+                //$sPasswordCallback = '1234';
+                //$this->_agentPass = $sPasswordCallback;
                 $iTimeoutMin = 15;
                 try {
                     $oECCP = $this->_obtenerConexion();
@@ -262,9 +271,7 @@ class LoginController extends Controller
         $this->_agent = 'SIP/' . $user->phone;
         try {
             $oECCP = $this->_obtenerConexion();
-            //dd($oECCP);
             $response = $oECCP->logoutagent();
-            //dd($response);
 
             if (isset($response) && isset($response->failure)) {
                 $this->errMsg = '(internal) logoutagent: ' . $this->_formatoErrorECCP($response);
@@ -274,13 +281,17 @@ class LoginController extends Controller
             $user->phone = '';
             $user->save();
 
+            DB::connection('remote_connection')
+                ->table('call_center.agent')
+                ->where('id', $user->agent_id)
+                ->update(['number' => 0]);
+
             $this->guard()->logout();
             $request->session()->invalidate();
 
             return redirect('/');
         } catch (Exception $e) {
             $this->errMsg = '(internal) logoutagent: ' . $e->getMessage();
-            //dd($this->errMsg);
             return FALSE;
         }
     }
