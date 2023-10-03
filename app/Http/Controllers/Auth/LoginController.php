@@ -145,11 +145,24 @@ class LoginController extends Controller
     {
         $this->validateLogin($request);
 
+        //check already login
+        $inuseUCount = User::where('phone', '!=', '')
+            ->where('email', '=', $request->get('email'))
+            ->count();
+
+        if ($inuseUCount > 0) {
+            return redirect()->route('login')
+                ->with('login_error', 'User นี้ กำลังใช้งานอยู่')
+                ->withErrors(['username' => 'User นี้ กำลังใช้งานอยู่']);
+        }
+
+
         if ($this->attemptLogin($request)) {
             // Update the user's phone if provided
             if ($request->has('phone')) {
                 $user = Auth::user();
                 $user->phone = $request->phone;
+
 
                 //check phone status
                 $phone_state_num = $this->remote->exten_state($user->phone);
@@ -164,9 +177,9 @@ class LoginController extends Controller
 
                 if ($inuseCount > 0) {
                     $this->logoff_to_login_phone_error('หมายเลขโทรศัพท์ถูกใช้งานแล้ว');
-                } /* else {
+                } else {
                     //check login again with same phone and same agent
-                    if ($agent_data['extension'] == $phone) {
+                    /* if ($agent_data['extension'] == $phone) {
                         $not_logout = $this->Agent_model->get_state_not_logout($phone, $agent_data['id_agent']);
                         if ($not_logout) {
                             $this->clear_login(
@@ -193,8 +206,8 @@ class LoginController extends Controller
                                 $not_logout['audit_login_id']
                             );
                         }
-                    }
-                }*/
+                    } */
+                }
                 $this->_agent = 'SIP/' . $user->phone;
                 $regs = NULL;
                 $sExtension = (preg_match('|^(\w+)/(\d+)$|', $this->_agent, $regs)) ? $regs[2] : NULL;
