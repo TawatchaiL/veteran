@@ -74,6 +74,14 @@ class LoginController extends Controller
         ]);
     }
 
+    public function logoff_to_login_phone_error($message)
+    {
+        auth()->logout();
+        return redirect()->route('login')
+            ->with('login_error', $message)
+            ->withErrors(['phone' => $message]);
+    }
+
     public function login(Request $request)
     {
         $this->validateLogin($request);
@@ -86,12 +94,8 @@ class LoginController extends Controller
 
                 //check phone status
                 $phone_state_num = $this->remote->exten_state($user->phone);
-                //dd($phone_state_num);
                 if ($phone_state_num == 4 || $phone_state_num == -1) {
-                    auth()->logout();
-                    return redirect()->route('login')
-                        ->with('login_error', 'หมายเลขโทรศัพท์ไม่พร้อมใช้งาน')
-                        ->withErrors(['phone' => 'หมายเลขโทรศัพท์ไม่พร้อมใช้งาน']);
+                    $this->logoff_to_login_phone_error('หมายเลขโทรศัพท์ไม่พร้อมใช้งาน');
                 }
 
                 //check in use
@@ -100,10 +104,7 @@ class LoginController extends Controller
                     ->count();
 
                 if ($inuseCount > 0) {
-                    auth()->logout();
-                    return redirect()->route('login')
-                        ->with('login_error', 'หมายเลขโทรศัพท์ถูกใช้งานแล้ว')
-                        ->withErrors(['phone' => 'หมายเลขโทรศัพท์ถูกใช้งานแล้ว']);
+                    $this->logoff_to_login_phone_error('หมายเลขโทรศัพท์ถูกใช้งานแล้ว');
                 } /* else {
                     //check login again with same phone and same agent
                     if ($agent_data['extension'] == $phone) {

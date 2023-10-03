@@ -93,7 +93,7 @@ class UserController extends Controller
         $position = Position::where([['status', '1']])
             ->orderBy("name", "asc")->get();
         $queue = DB::connection('remote_connection')->table('asterisk.queues_config')->get();
-        $agent = DB::connection('remote_connection')->table('call_center.agent')->get();
+        $agent = DB::connection('remote_connection')->table('call_center.agent')->where([['estatus', 'A']])->get();
         return view('users.index')->with('roles', $roles)
             ->with(['department' => $department])
             ->with(['position' => $position])
@@ -273,7 +273,7 @@ class UserController extends Controller
             $select_list_queue .= '<option value="' . $queuec->extension . '" ' . $selected . '> ' . $queuec->extension . ' ( ' . $queuec->descr . ' ) </option>';
         }
 
-        $agents = DB::connection('remote_connection')->table('call_center.agent')->get();
+        $agents = DB::connection('remote_connection')->table('call_center.agent')->where([['estatus', 'A']])->get();
         $select_list_agent = '';
 
         foreach ($agents as $agent) {
