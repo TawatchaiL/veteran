@@ -107,8 +107,6 @@ class LoginController extends Controller
             ->where('estatus', 'A')
             ->get();
 
-
-
         if (!is_object($tupla))
             throw new ECCPConnFailedException('Failed to retrieve agent password');
         if (count($tupla) <= 0)
@@ -123,24 +121,23 @@ class LoginController extends Controller
     public function esperarResultadoLogin()
     {
         $this->errMsg = '';
-        //try {
-        $oECCP = $this->_obtenerConexion();
-        dd($oECCP);
-        $oECCP->wait_response(1);
-        while ($e = $oECCP->getEvent()) {
-            foreach ($e->children() as $ee) $evt = $ee;
+        try {
+            $oECCP = $this->_obtenerConexion();
+            $oECCP->wait_response(1);
+            while ($e = $oECCP->getEvent()) {
+                foreach ($e->children() as $ee) $evt = $ee;
 
-            if ($evt->getName() == 'agentloggedin' && $evt->agent == $this->_agent)
-                return 'logged-in';
-            if ($evt->getName() == 'agentfailedlogin' && $evt->agent == $this->_agent)
-                return 'logged-out';
-            // TODO: devolver mismatch si logoneo con éxito a consola equivocada.
+                if ($evt->getName() == 'agentloggedin' && $evt->agent == $this->_agent)
+                    return 'logged-in';
+                if ($evt->getName() == 'agentfailedlogin' && $evt->agent == $this->_agent)
+                    return 'logged-out';
+                // TODO: devolver mismatch si logoneo con éxito a consola equivocada.
+            }
+            return 'logging';   // No se recibieron eventos relevantes
+        } catch (Exception $e) {
+            $this->errMsg = '(internal) esperarResultadoLogin: ' . $e->getMessage();
+            return 'error';
         }
-        return 'logging';   // No se recibieron eventos relevantes
-        // } catch (Exception $e) {
-        //   $this->errMsg = '(internal) esperarResultadoLogin: '.$e->getMessage();
-        //return 'error';
-        //}
     }
 
     public function login(Request $request)
