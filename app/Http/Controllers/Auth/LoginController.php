@@ -153,7 +153,7 @@ class LoginController extends Controller
         if ($inuseUCount > 0) {
             return redirect()->route('login')
                 ->with('login_error', 'User นี้ กำลังใช้งานอยู่')
-                ->withErrors(['username' => 'User นี้ กำลังใช้งานอยู่']);
+                ->withErrors(['email' => 'User นี้ กำลังใช้งานอยู่']);
         }
 
 
