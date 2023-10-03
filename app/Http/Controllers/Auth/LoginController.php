@@ -12,8 +12,10 @@ use Illuminate\Support\Facades\Auth;
 use App\Services\AsteriskAmiService;
 use App\Services\ECCP;
 use App\Services\ECCPUnauthorizedException;
+use App\Services\ECCPConnFailedException;
 
 use App\Models\User;
+use Exception;
 
 class LoginController extends Controller
 {
@@ -38,6 +40,8 @@ class LoginController extends Controller
     protected $redirectTo = RouteServiceProvider::HOME;
     protected $remote;
     protected $eccp;
+    protected $_agent;
+    protected $errMsg;
 
     /**
      * Create a new controller instance.
@@ -79,6 +83,61 @@ class LoginController extends Controller
         return redirect()->route('login')
             ->with('login_error', $message)
             ->withErrors(['phone' => $message]);
+    }
+
+
+    public function _obtenerConexion()
+    {
+        //if (!is_null($this->eccp)) return $this->eccp;
+        $sUsernameECCP = 'agentconsole';
+        $sPasswordECCP = 'agentconsole';
+        $cr = $this->eccp->connect("10.148.0.4", $sUsernameECCP, $sPasswordECCP);
+        if (isset($cr->failure)) {
+            throw new ECCPUnauthorizedException('Failed to authenticate to ECCP') . ': ' . ((string)$cr->failure->message);
+        }
+
+        if (!is_null($this->_agent)) {
+            $this->eccp->setAgentNumber($this->_agent);
+        }
+
+        $tupla = DB::connection('remote_connection')
+            ->table('call_center.agent')
+            ->select('eccp_password')
+            ->where("CONCAT(type,'/',number)", $this->_agent)
+            ->where('estatus', 'A')
+            ->get();
+
+        if (!is_array($tupla))
+            throw new ECCPConnFailedException('Failed to retrieve agent password');
+        if (count($tupla) <= 0)
+            throw new ECCPUnauthorizedException('Agent not found');
+        if (is_null($tupla[0]))
+            throw new ECCPUnauthorizedException('Agent not authorized for ECCP - ECCP password not set');
+        $this->eccp->setAgentPass($tupla[0]);
+
+        return $this->eccp;
+    }
+
+    function esperarResultadoLogin()
+    {
+        $this->errMsg = '';
+        try {
+            $oECCP = $this->_obtenerConexion();
+            $oECCP->wait_response(1);
+            while ($e = $oECCP->getEvent()) {
+                foreach ($e->children() as $ee) $evt = $ee;
+
+                if ($evt->getName() == 'agentloggedin' && $evt->agent == $this->_agent)
+                    return 'logged-in';
+                if ($evt->getName() == 'agentfailedlogin' && $evt->agent == $this->_agent)
+                    return 'logged-out';
+                // TODO: devolver mismatch si logoneo con éxito a consola equivocada.
+            }
+            return 'logging';   // No se recibieron eventos relevantes
+        } catch (Exception $e) {
+            $this->errMsg = '(internal) esperarResultadoLogin: '.$e->getMessage();
+            return 'error';
+        }
     }
 
     public function login(Request $request)
@@ -135,6 +194,11 @@ class LoginController extends Controller
                         }
                     }
                 }*/
+                $this->_agent = 'SIP/' . $user->phone;
+                $ll = $this->esperarResultadoLogin();
+
+                dd($ll);
+
 
                 $queueNames = $user->queues->pluck('queue_name')->implode(',');
                 $user->queue = $queueNames;
@@ -147,12 +211,6 @@ class LoginController extends Controller
                 $this->remote->QueuePause('4567', "SIP/9999", 'true', 'Toilet'); */
                 //$this->remote->queue_log_in($queueNames, $request->phone);
 
-                $sUsernameECCP = 'agentconsole';
-                $sPasswordECCP = 'agentconsole';
-                $cr = $this->eccp->connect("10.148.0.4", $sUsernameECCP, $sPasswordECCP);
-                if (isset($cr->failure)) {
-                    throw new ECCPUnauthorizedException('Failed to authenticate to ECCP') . ': ' . ((string)$cr->failure->message);
-                }
             }
 
             return $this->sendLoginResponse($request);
