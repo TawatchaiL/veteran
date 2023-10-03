@@ -162,7 +162,7 @@ class UserController extends Controller
 
         $queueData = [];
 
-        foreach ($request->input('queue') as $ea) {
+        foreach ($request->get('queue') as $ea) {
             $queueData[] = [
                 'user_id' => $user->id,
                 'queue_name' => $ea,
