@@ -1,4 +1,7 @@
 <?php
+
+namespace App\Services;
+
 /* vim: set expandtab tabstop=4 softtabstop=4 shiftwidth=4:
   Codificación: UTF-8
   +----------------------------------------------------------------------+
@@ -21,7 +24,6 @@
   +----------------------------------------------------------------------+
   $Id: new_campaign.php $ */
 
-namespace App\Services;
 
 use Exception;
 
