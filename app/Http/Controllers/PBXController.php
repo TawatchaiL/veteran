@@ -23,9 +23,9 @@ class PBXController extends Controller
      */
     public function __construct(AsteriskAmiService $asteriskAmiService, IssableService $issableService)
     {
-        //$this->middleware('guest')->except('logout');
-        //$this->remote = $asteriskAmiService;
-        //$this->issable = $issableService;
+        $this->middleware('guest')->except('logout');
+        $this->remote = $asteriskAmiService;
+        $this->issable = $issableService;
     }
 
     public function loginAgentToQueue()
