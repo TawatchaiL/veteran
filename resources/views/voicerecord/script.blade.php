@@ -337,7 +337,7 @@
 
     $(document).on('click', '.changeUrlButton', function() {
         //const newUrl = 'wav/PinkPanther60.wav'; // Replace with the new URL
-        const newUrl = 'wav/2023/10/01/q-4567-8888-20231001-141026-1696169425.161.wav';
+        // const newUrl = 'wav/2023/10/01/q-4567-8888-20231001-141026-1696169425.161.wav';
         var button = document.getElementById('changeUrlButtonw');
         var dataId = button.getAttribute('data-id');
         console.log(dataId);
@@ -348,8 +348,11 @@
                 console.log('Ajax request successful');
                 // Optionally, you can do something with the response from the controller
                 console.log(response);
-                
-                console.log(newUrl);
+                console.log(response.voic); // Accessing voic property
+                console.log(response.remoteData2.datetime_entry); // Accessing remoteData2 property
+                // console.log(newUrl);
+                const newUrl = 'wav/' + response.voic;
+
                 console.log('Button clicked!');
                 initializeWaveSurfer(newUrl);
             },
