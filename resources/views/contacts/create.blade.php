@@ -233,7 +233,7 @@
                                                     {!! Form::text('workno', null, [
                                                         'id' => 'Addworkno',
                                                         'placeholder' => 'เบอร์โทรศัพท์ที่ทำงาน',
-                                                        'class' => 'form-control .inputnumber',
+                                                        'class' => 'form-control',
                                                     ]) !!}
                                                 </div>
                                             </div>
