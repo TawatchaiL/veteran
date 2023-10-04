@@ -36,15 +36,8 @@
                         <div class="form-group">
                             <strong><i class="fa-regular fa-message"></i> ประเภทเคส:</strong>
                             <select style="width: 100%;"
-                                class="select2 select2_casetype1 form-control" id="casetype1"
-                                name="casetype1" multiple="multiple">
-                                <!-- <option value="" selected>Select Student</option>
-                                                                                                                                                                                                                                                                                                                                                            <option value="" selected>Select Parent</option>-->
-                                @foreach ($casetype as $key2)
-                                    <option value="{{ $key2->id }}">{{ $key2->name }}
-                                    </option>
-                                @endforeach
-
+                                class="select2 form-control" id="casetype1"
+                                name="casetype1">
                             </select>
                         </div>
                     </div>
@@ -55,11 +48,8 @@
                             <strong><i class="fa-regular fa-comment-dots"></i>
                                 รายละเอียดเคส:</strong>
                             <select style="width: 100%;"
-                                class="select2 select2_casetype2 form-control" id="casetype2"
-                                name="casetype2" multiple="multiple">
-                                <!-- <option value="" selected>Select Student</option>
-                                                                                                                                                                                                                                                                                                                                                            <option value="" selected>Select Parent</option>-->
-
+                                class="select2 form-control" id="casetype2"
+                                name="casetype2">
                             </select>
                         </div>
                     </div>
@@ -70,11 +60,8 @@
                             <strong><i class="fa-regular fa-comment-dots"></i>
                                 รายละเอียดเคสย่อย:</strong>
                             <select style="width: 100%;"
-                                class="select2 select2_casetype3 form-control" id="casetype3"
-                                name="casetype3" multiple="multiple">
-                                <!-- <option value="" selected>Select Student</option>
-                                                                                                                                                                                                                                                                                                                                                            <option value="" selected>Select Parent</option>-->
-
+                                class="select2 form-control" id="casetype3"
+                                name="casetype3">
                             </select>
                         </div>
                     </div>
@@ -85,11 +72,8 @@
                             <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
                                 เพิ่มเติม 1:</strong>
                             <select style="width: 100%;"
-                                class="select2 select2_casetype4 form-control" id="casetype4"
-                                name="casetype4" multiple="multiple">
-                                <!-- <option value="" selected>Select Student</option>
-                                                                                                                                                                                                                                                                                                                                                            <option value="" selected>Select Parent</option>-->
-
+                                class="select2 form-control" id="casetype4"
+                                name="casetype4">
                             </select>
                         </div>
                     </div>
@@ -100,11 +84,8 @@
                             <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
                                 เพิ่มเติม 2:</strong>
                             <select style="width: 100%;"
-                                class="select2 select2_casetype5 form-control" id="casetype5"
-                                name="casetype5" multiple="multiple">
-                                <!-- <option value="" selected>Select Student</option>
-                                                                                                                                                                                                                                                                                                                                                            <option value="" selected>Select Parent</option>-->
-
+                                class="select2 form-control" id="casetype5"
+                                name="casetype5">
                             </select>
                         </div>
                     </div>
@@ -115,11 +96,8 @@
                             <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
                                 เพิ่มเติม 3:</strong>
                             <select style="width: 100%;"
-                                class="select2 select2_casetype6 form-control" id="casetype6"
-                                name="casetype6" multiple="multiple">
-                                <!-- <option value="" selected>Select Student</option>
-                                                                                                                                                                                                                                                                                                                                                            <option value="" selected>Select Parent</option>-->
-
+                                class="select2 form-control" id="casetype6"
+                                name="casetype6">
                             </select>
                         </div>
                     </div>
