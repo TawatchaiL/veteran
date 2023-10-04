@@ -65,7 +65,8 @@ class VoicerecordController extends Controller
 
                     $dst = $cdrRecord->dstchannel;
                     if ($dst !== null && strpos($dst, 'SIP/') === 0) {
-                        list($sip, $telp) = explode('/', $dst);
+                        list($sip, $no) = explode('/', $dst);
+                        list($telp, $lear) = explode('-', $no);
                         // Now $sip will contain '9999-00000001' and $telp will be empty
                     } else {
                         // Handle the case where $cdrRecord->dstchannel doesn't have the expected format
