@@ -1,4 +1,15 @@
 <script>
+    $(document).on('click', '#btn-agent-login', function(e) {
+        e.preventDefault();
+        $.ajax({
+            url: "/agent_login",
+            method: 'POST',
+            success: function(result) {
+                console.log(result)
+            }
+        });
+    });
+
     $(document).on('click', '.button_break', function(e) {
         e.preventDefault();
         var id = 2;

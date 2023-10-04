@@ -19,9 +19,9 @@ class TemporaryPhoneMiddleware
     {
         $user = Auth::user();
         $temporaryPhone = $user ? $user->phone : '';
+        $temporaryPhoneStatus = $user ? $user->phone_status : '';
         View::share('temporaryPhone', $temporaryPhone);
+        View::share('temporaryPhoneStatus', $temporaryPhoneStatus);
         return $next($request);
     }
 }
-
-

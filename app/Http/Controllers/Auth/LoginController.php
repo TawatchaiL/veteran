@@ -168,19 +168,12 @@ class LoginController extends Controller
                         ->withErrors(['email' => 'กรุณาติดต่อผู้ดูแลระบบ']);
                 }
 
-                DB::connection('remote_connection')
-                    ->table('call_center.agent')
-                    ->where('id', $user->agent_id)
-                    ->update(['number' => $request->phone]);
-
-
-
                 $queueNames = $user->queues->pluck('queue_name')->implode(',');
                 $user->queue = $queueNames;
+                $user->phone_status = "Not Ready";
                 $user->save();
 
-                $this->issable->agent_login($user->phone);
-
+                //$this->issable->agent_login($user->phone);
                 //session(['temporary_phone' => Auth::user()->phone]);
 
                 /* $this->remote->QueuePause('4567', "SIP/9999", 'false', '');

@@ -82,7 +82,7 @@
                 <button {{-- <?= $logoff_dis ?> --}} onclick="location.href='#'" id="btn-logout"
                     class="btn btn-lg btn-danger float-right"><i class="fas fa-power-off"></i>
                     Logoff </button>
-                <button {{-- <?= $logoff_dis ?> --}} onclick="location.href='#'" id="btn-logout"
+                <button {{-- <?= $logoff_dis ?> --}} id="btn-agent-login"
                     class="btn btn-lg btn-success mx-1 float-right"><i class="fas fa-plug"></i>
                     Login </button>
             </div>

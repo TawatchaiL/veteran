@@ -18,3 +18,5 @@ Route::post('/agent_unbreak', function (Request $request) {
     $result = $issable->agent_unbreak($phone);
     return $result;
 })->name('agent.unbreak');
+
+Route::get('/agent_login', [App\Http\Controllers\PBXController::class, 'agent_login'])->name('agent.login');
