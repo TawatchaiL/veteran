@@ -30,7 +30,7 @@ class PBXController extends Controller
         $this->issable = new IssableService();
     }
 
-    public function agent_login()
+    public function queue_agent_login()
     {
         $user = Auth::user();
         $this->issable->agent_login($user->phone);
