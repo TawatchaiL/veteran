@@ -30,6 +30,6 @@ Route::get('manon', function (Request $request) {
 
 //new 4/10/2023
 
-Route::get('/voicerecord/{id}', [App\Http\Controllers\VoicerecordController::class, 'eidt'])->name('voicerecord.edit');
+Route::get('/voicerecord/edit/{id}', [App\Http\Controllers\VoicerecordController::class, 'eidt'])->name('voicerecord.edit');
 
 
