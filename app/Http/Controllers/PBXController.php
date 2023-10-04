@@ -37,7 +37,7 @@ class PBXController extends Controller
             // Update user's phone_status
             $user->phone_status_id = 1;
             $user->phone_status = "พร้อมรับสาย";
-            $user->phone_status_icon = '<i class="fa-solid fa-user-check"></i>';
+            $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-check"></i>';
             $user->save();
 
             return ['success' => true, 'message' => 'พร้อมรับสาย', 'icon' => $user->phone_status_icon];
@@ -58,7 +58,7 @@ class PBXController extends Controller
             // Update user's phone_status
             $user->phone_status_id = 0;
             $user->phone_status = "ไม่พร้อมรับสาย";
-            $user->phone_status_icon = '<i class="fa-solid fa-user-xmark"></i>';
+            $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-xmark"></i>';
             $user->save();
 
             return ['success' => true, 'message' => 'ไม่พร้อมรับสาย', 'icon' => $user->phone_status_icon];
