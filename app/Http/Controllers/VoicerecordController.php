@@ -64,8 +64,6 @@ class VoicerecordController extends Controller
                     $combinedData = [
                         'id' => $record->id,
                         'datetime_entry' => $record->datetime_entry,
-
-
                         'uniqueid' => $record->uniqueid,
                         'cdate' => $date,
                         'ctime' => $time,
@@ -82,7 +80,7 @@ class VoicerecordController extends Controller
         }
 
 
-        // dd($datas);
+        dd($datas);
 
 
 
