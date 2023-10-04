@@ -740,7 +740,7 @@
         });
     });
 
-    $('.inputnumber').on('onkeydown', function(e) {
+    $('#Addtelhome').on('onkeydown', function(e) {
         if (48 > e.which || e.which > 57) {
             if ( e.key.length === 1 ) e.preventDefault();
         }
