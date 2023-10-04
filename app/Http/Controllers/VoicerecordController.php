@@ -147,8 +147,6 @@ class VoicerecordController extends Controller
         $voic = $remoteData2->recordingfile;
 
         // return view('voicerecord.create', compact('voic'));
-        return view('voicerecord.create', [
-            'remoteData2' => $remoteData2
-        ]);
+        return view('voicerecord.create',);
     }
 }
