@@ -2,7 +2,7 @@
 <script src='dist/js/jspdf.min.js'></script>
 <script src="dist/js/jspdf.plugin.autotable.min.js"></script>
 <script src="/js/app.js?v=1"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 <script type="module">
     import WaveSurfer from 'https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js'
     import Hover from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/hover.esm.js'
@@ -341,8 +341,9 @@
         // const newUrl = 'wav/'+$('#vioc').val();
         //
 
-        console.log('wav/'+$('#vioc').val());
+        // console.log('wav/'+$('#vioc').val());
         console.log(newUrl);
+        console.log('Button clicked!');
         initializeWaveSurfer(newUrl);
     });
     $('.vioc').on('click', () => {
