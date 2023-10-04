@@ -140,11 +140,6 @@ class IssableService
                 return FALSE;
             }
 
-            DB::connection('remote_connection')
-                ->table('call_center.agent')
-                ->where('id', $this->_user->agent_id)
-                ->update(['number' => 0]);
-
             return TRUE;
         } catch (Exception $e) {
             $this->errMsg = '(internal) logoutagent: ' . $e->getMessage();

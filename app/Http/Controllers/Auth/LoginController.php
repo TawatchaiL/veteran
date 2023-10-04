@@ -50,7 +50,6 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
         $this->remote = $asteriskAmiService; // Initialize $remote
         $this->issable = new IssableService();
-
     }
     /*  protected function attemptLogin(Request $request)
     {
@@ -207,6 +206,7 @@ class LoginController extends Controller
         $user = Auth::user();
         //$this->remote->queue_log_off($user->queue, $user->phone);
         $this->issable->agent_logoff($user->phone);
+
         $user->phone = '';
         $user->save();
 
