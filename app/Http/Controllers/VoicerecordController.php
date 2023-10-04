@@ -32,13 +32,13 @@ class VoicerecordController extends Controller
 
         $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')->get();
 
-        $datas = DB::table('cases')
-            ->select(DB::raw('DATE(created_at) as cdate'), DB::raw('TIME(created_at) as ctime'), 'telno', 'agent', 'id')
-            ->get();
         // $datas = DB::table('cases')
-        //     ->join('remote_connection.asteriskcdrdb.cdr', 'cases.uniqueid', '=', 'cdr.uniqueid')
-        //     ->select(DB::raw('DATE(cases.created_at) as cdate'), DB::raw('TIME(cases.created_at) as ctime'), 'cases.telno', 'cases.agent', 'cases.id')
+        //     ->select(DB::raw('DATE(created_at) as cdate'), DB::raw('TIME(created_at) as ctime'), 'telno', 'agent', 'id')
         //     ->get();
+        $datas = DB::table('cases')
+            ->join('remote_connection.asteriskcdrdb.cdr', 'cases.uniqueid', '=', 'cdr.uniqueid')
+            ->select(DB::raw('DATE(cases.created_at) as cdate'), DB::raw('TIME(cases.created_at) as ctime'), 'cases.telno', 'cases.agent', 'cases.id')
+            ->get();
 
 
         if ($request->ajax()) {
