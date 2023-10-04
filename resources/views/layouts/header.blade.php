@@ -13,14 +13,14 @@
 
         <li class="nav-item d-none d-sm-inline-block">
             <a class="nav-link" href="#" role="button">
-               [ <span id="phone_state_icon">{!! $temporaryPhoneStatusIcon !!}</span> <
-               {{ $temporaryPhone }} > <b class="text-primary"
+               [ <span id="phone_state_icon">{!! $temporaryPhoneStatusIcon !!}</span>
+               {{ $temporaryPhone }} <b class="text-primary"
                     id="phone_state">{{ $temporaryPhoneStatus }}</b> ]
             </a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link btn btn-primary" id="ToolbarButton" {{-- data-widget="control-sidebar" data-slide="true" href="#" --}} role="button">
-                <i class="fas fa-xl fa-spin fa-gear"></i> <b class="text-primary">Agent ToolBar  </b>
+            <a class="nav-link btn btn-success" id="ToolbarButton" {{-- data-widget="control-sidebar" data-slide="true" href="#" --}} role="button">
+                <i class="fas fa-xl fa-spin fa-gear"></i> Agent ToolBar
             </a>{{-- faa-shake animated faa-slow fa-wrench --}}
         </li>
         @if (!empty($sidebarc))
