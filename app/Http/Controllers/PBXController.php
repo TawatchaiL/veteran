@@ -40,7 +40,7 @@ class PBXController extends Controller
             $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-check"></i>';
             $user->save();
 
-            return ['success' => true, 'message' => 'พร้อมรับสาย', 'icon' => $user->phone_status_icon];
+            return ['success' => true, 'message' => $user->phone_status, 'icon' => $user->phone_status_icon];
         } else {
             return ['success' => false, 'message' => 'error'];
         }
@@ -61,7 +61,7 @@ class PBXController extends Controller
             $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-xmark"></i>';
             $user->save();
 
-            return ['success' => true, 'message' => 'ไม่พร้อมรับสาย', 'icon' => $user->phone_status_icon];
+            return ['success' => true, 'message' => $user->phone_status, 'icon' => $user->phone_status_icon];
         } else {
             return ['success' => false, 'message' => 'error'];
         }
@@ -109,6 +109,28 @@ class PBXController extends Controller
             $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-clock"></i>';
             $user->save();
 
+            return ['success' => true, 'message' => $user->phone_status, 'icon' => $user->phone_status_icon];
+        } else {
+            return ['error' => false, 'message' => 'error'];
+        }
+    }
+
+    public function AgentUnBreak(Request $request)
+    {
+        // Retrieve the authenticated user
+        $user = Auth::user();
+
+        if ($user) {
+            // Perform agent login action using IssableService
+            $this->issable->agent_unbreak($user->phone);
+
+            // Update user's phone_status
+            $user->phone_status_id = 1;
+            $user->phone_status = "พร้อมรับสาย";
+            $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-check"></i>';
+            $user->save();
+
+            return ['success' => true, 'message' => $user->phone_status, 'icon' => $user->phone_status_icon];
         } else {
             return ['error' => false, 'message' => 'error'];
         }

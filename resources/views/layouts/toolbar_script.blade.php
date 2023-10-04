@@ -50,16 +50,14 @@
 
     $(document).on('click', '.button_unbreak', function(e) {
         e.preventDefault();
-        var additionalData = {
-            phone: 9999,
-        };
         $.ajax({
             url: "{{ route('agent.unbreak') }}",
             method: 'POST',
-            data: additionalData,
-
             success: function(result) {
                 console.log(result)
+                $('#phone_state').html(result.message);
+                $('#phone_state_icon').html(result.icon);
+                $('#ToolbarModal').modal('hide');
             }
         });
     });
