@@ -339,8 +339,9 @@
         //const newUrl = 'wav/PinkPanther60.wav'; // Replace with the new URL
         // const newUrl = 'wav/2023/10/01/q-4567-8888-20231001-141026-1696169425.161.wav';
         const newUrl = 'wav/'+$('#vioc').val();
-        console.log('wav/'+$('#vioc').val());
 
+        console.log('wav/'+$('#vioc').val());
+        console.log(newUrl);
         initializeWaveSurfer(newUrl);
     });
 
