@@ -1,12 +1,12 @@
 <script>
     $(document).on('click', '#btn-agent-login', function(e) {
-        $.ajax({
+        /* $.ajax({
             url: "/agent_login",
             method: 'POST',
             success: function(result) {
                 console.log(result)
             }
-        });
+        }); */
     });
 
     $(document).on('click', '.button_break', function(e) {
