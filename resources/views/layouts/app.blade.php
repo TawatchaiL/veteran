@@ -816,14 +816,5 @@
 
 @yield('script')
 
-<script>
-    $(window).on('beforeunload', function(e) {
-        // Display a confirmation dialog
-        var confirmationMessage = 'อย่าลืม Logout ออกจากระบบ?';
-        (e || window.event).returnValue = confirmationMessage;
-        return confirmationMessage;
-    });
-</script>
-
 </html>
 {{-- </x-laravel-ui-adminlte::adminlte-layout> --}}
