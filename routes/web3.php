@@ -17,4 +17,4 @@ Route::post('/agent_unbreak', function (Request $request) {
     $phone = $request->input('phone');
     $result = $issable->agent_unbreak($phone);
     return $result;
-})->name('agent.break');
+})->name('agent.unbreak');
