@@ -51,8 +51,8 @@ class VoicerecordController extends Controller
                     $combinedData = [
                         'uniqueid' => $record->uniqueid,
                         // Add other fields from call_recording and cdr as needed
-                        'field_from_call_recording' => $record->field_name,
-                        'field_from_cdr' => $cdrRecord->field_name,
+                        'datetime_entry' => $record->datetime_entry,
+                        'disposition' => $cdrRecord->disposition,
                         // ...
                     ];
                     $datas[] = (object)$combinedData;
