@@ -41,29 +41,25 @@ class VoicerecordController extends Controller
 
 
         $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')->get();
+        $remoteData2 = DB::connection('remote_connection')->table('call_center.call_recording')->get();
 
-        $remoteData2 = DB::connection('remote_connection')
-            ->table('call_center.call_recording')
-            ->get();
-
-        // Now you have data from both tables, and you can perform the join in your PHP code
         $datas = [];
 
         foreach ($remoteData2 as $record) {
             foreach ($remoteData as $cdrRecord) {
                 if ($record->uniqueid === $cdrRecord->uniqueid) {
-                    // Perform your logic here to combine the data from both tables
-                    // For example, you can create an associative array with the combined data
                     $combinedData = [
                         'uniqueid' => $record->uniqueid,
-                        'other_field_from_call_recording' => $record->other_field,
-                        'other_field_from_cdr' => $cdrRecord->other_field,
-                        // Add other fields as needed
+                        // Add other fields from call_recording and cdr as needed
+                        'field_from_call_recording' => $record->field_name,
+                        'field_from_cdr' => $cdrRecord->field_name,
+                        // ...
                     ];
-                    $datas[] = $combinedData;
+                    $datas[] = (object)$combinedData;
                 }
             }
         }
+
 
         dd($datas);
         if ($request->ajax()) {
