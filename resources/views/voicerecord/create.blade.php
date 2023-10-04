@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header bg-primary">
                 <h4 class="modal-title"><i class="fa-solid fa-volume-high"></i> 09999999-1002-2023-08-01-110000.wav </h4>
-                <div class="closew"> <i class="fa-solid fa-clock"></i> ระยะเวลา <span id="duration">00:00:00</span> นาที
+                <div class="closew"> <i class="fa-solid fa-clock"></i> ความยาว <span id="duration">00:00:00</span> นาที
                 </div>
 
                 {{-- <button type="button" class="close modelClose" data-dismiss="modal" aria-label="Close">
