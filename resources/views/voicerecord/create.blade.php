@@ -13,6 +13,7 @@
     </h4>
     <div class="closew"> <i class="fa-solid fa-clock"></i> ความยาว <span id="duration">00:00:00</span> นาที
     </div>
+    <input type="hidden" value="$remoteData2->recordingfile" id="vioc">
 
     {{-- <button type="button" class="close modelClose" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
