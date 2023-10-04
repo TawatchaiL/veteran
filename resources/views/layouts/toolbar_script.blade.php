@@ -55,21 +55,35 @@
         });
     });
 
-    $(window).on('beforeunload', function() {
-        // Your code to execute before the page is unloaded
-        // For example, you can show a confirmation dialog here
-        return 'Are you sure you want to leave this page?';
-    });
+    var logoutConfirmed = false;
 
-    $(window).on('unload', function() {
-        $.ajax({
-            url: "{{ route('agent.logoff_out') }}",
-            method: 'POST',
-            success: function(result) {
-                console.log(result)
+    $(document).ready(function() {
+        // Handle the window's beforeunload event
+        $(window).on('beforeunload', function(e) {
+            if (!logoutConfirmed) {
+                // Display a confirmation dialog
+                var confirmationMessage = 'คุณแน่ใจว่าต้องการออกจากระบบ?';
+                (e || window.event).returnValue = confirmationMessage;
+                return confirmationMessage;
             }
         });
+
+        // Handle the click event of the logout button
+        $('#logoutButton').on('click', function() {
+            logoutConfirmed = true;
+            // Perform the logout action here, e.g., make an AJAX request
+            $.ajax({
+                url: "{{ route('logout') }}",
+                method: 'POST',
+                success: function(result) {
+                    // Handle the logout success, e.g., redirect to the login page
+                    window.location.href = "{{ route('login') }}";
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                    // Handle any errors during logout
+                }
+            });
+        });
     });
-
-
 </script>
