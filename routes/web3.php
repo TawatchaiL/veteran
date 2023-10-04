@@ -11,3 +11,10 @@ Route::post('/agent_break', function (Request $request) {
     $result = $issable->agent_break($phone, $break_id);
     return $result;
 })->name('agent.break');
+
+Route::post('/agent_unbreak', function (Request $request) {
+    $issable = new IssableService;
+    $phone = $request->input('phone');
+    $result = $issable->agent_unbreak($phone);
+    return $result;
+})->name('agent.break');

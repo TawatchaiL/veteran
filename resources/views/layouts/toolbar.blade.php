@@ -75,6 +75,8 @@
                     </div>
                 </div>
                 <button class="btn btn-lg btn-yellow float-left mx-1 button_unbreak"><i class="fas fa-clock"></i>
+                    Unbreak </button>
+                <button class="btn btn-lg btn-yellow float-left mx-1 button_unbreak"><i class="fas fa-clock"></i>
                     UnWarp </button>
 
                 <button {{-- <?= $logoff_dis ?> --}} onclick="location.href='#'" id="btn-logout"

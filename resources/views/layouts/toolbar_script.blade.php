@@ -12,7 +12,23 @@
             data: additionalData,
 
             success: function(result) {
-                console.log($result)
+                console.log(result)
+            }
+        });
+    });
+
+    $(document).on('click', '.button_unbreak', function(e) {
+        e.preventDefault();
+        var additionalData = {
+            phone: 9999,
+        };
+        $.ajax({
+            url: "/agent_unbreak",
+            method: 'POST',
+            data: additionalData,
+
+            success: function(result) {
+                console.log(result)
             }
         });
     });
