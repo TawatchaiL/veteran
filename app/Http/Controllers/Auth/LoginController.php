@@ -265,11 +265,12 @@ class LoginController extends Controller
                     return FALSE;
                 } */
                 //$ll = $this->esperarResultadoLogin();
-                $this->issable->agent_login();
+
 
                 $queueNames = $user->queues->pluck('queue_name')->implode(',');
                 $user->queue = $queueNames;
                 $user->save();
+                $this->issable->agent_login();
                 //session(['temporary_phone' => Auth::user()->phone]);
 
                 /* $this->remote->QueuePause('4567', "SIP/9999", 'false', '');
