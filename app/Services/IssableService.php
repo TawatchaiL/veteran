@@ -5,11 +5,9 @@ namespace App\Services;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-use App\Services\AsteriskAmiService;
 use App\Services\ECCP;
 use App\Services\ECCPUnauthorizedException;
 use App\Services\ECCPConnFailedException;
-
 use Exception;
 
 
@@ -41,7 +39,6 @@ class IssableService
      */
     public function __construct() // Inject AsteriskAmiService
     {
-        $this->remote = new AsteriskAmiService; // Initialize $remote
         $this->eccp = new ECCP();
 
         $this->eccp_host = config('asterisk.eccp.eccp_host');
@@ -144,6 +141,40 @@ class IssableService
             return TRUE;
         } catch (Exception $e) {
             $this->errMsg = '(internal) logoutagent: ' . $e->getMessage();
+            return FALSE;
+        }
+    }
+
+    public function agent_break($phone, $idBreak)
+    {
+        $this->_agent = 'SIP/' . $phone;
+        try {
+            $oECCP = $this->_obtenerConexion('ECCP');
+            $respuesta = $oECCP->pauseagent($idBreak);
+            if (isset($respuesta->failure)) {
+                $this->errMsg = 'Unable to start break' . ' - ' . $this->_formatoErrorECCP($respuesta);
+                return FALSE;
+            }
+            return TRUE;
+        } catch (Exception $e) {
+            $this->errMsg = '(internal) pauseagent: ' . $e->getMessage();
+            return FALSE;
+        }
+    }
+
+    public function agent_unbreak($phone)
+    {
+        $this->_agent = 'SIP/' . $phone;
+        try {
+            $oECCP = $this->_obtenerConexion('ECCP');
+            $respuesta = $oECCP->unpauseagent();
+            if (isset($respuesta->failure)) {
+                $this->errMsg = 'Unable to stop break' . ' - ' . $this->_formatoErrorECCP($respuesta);
+                return FALSE;
+            }
+            return TRUE;
+        } catch (Exception $e) {
+            $this->errMsg = '(internal) unpauseagent: ' . $e->getMessage();
             return FALSE;
         }
     }

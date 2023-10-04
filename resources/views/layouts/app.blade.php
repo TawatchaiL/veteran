@@ -537,7 +537,7 @@ const addemerphone = () => {
                     $('#SubmitCreateFormPOP').click(function(e) {
                         var emergencyData = [];
                             if($('#contractid').val()===""){
-                                $('#myTbl3p tbody tr').each(function() { 
+                                $('#myTbl3p tbody tr').each(function() {
                                         var emergencyname = $(this).find('input[name="emergencynamep[]"]').val();
                                         var emerrelation = $(this).find('input[name="emerrelationp[]"]').val();
                                         var emerphone = $(this).find('input[name="emerphonep[]"]').val();
@@ -679,8 +679,8 @@ const addemerphone = () => {
                                         }
                                     }
                                 });
-                            }        
-                    });                   
+                            }
+                    });
                 }
             });
         }
@@ -730,6 +730,10 @@ const addemerphone = () => {
         "hideMethod": "fadeOut"
     }
 </script>
+
+@include('layouts.toolbar_script')
+
+
 @yield('script')
 
 </html>
