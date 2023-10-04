@@ -495,7 +495,7 @@
                                     value.emerrelation +
                                     '" required="required"></div>'))
                                 .append($('<td width="10%">').append(
-                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone" name="eemerphone[]" class="form-control has-feedback-left" value="' +
+                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone" name="eemerphone[]" class="form-control has-feedback-left" onkeydown="validateNumber(event)" value="' +
                                     value.emerphone +
                                     '" required="required"></div>'))
                                 .append($('<td width="5%">').append(
