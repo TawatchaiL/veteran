@@ -59,20 +59,35 @@ class VoicerecordController extends Controller
         foreach ($remoteData2 as $record) {
             foreach ($remoteData as $cdrRecord) {
                 if ($record->uniqueid === $cdrRecord->uniqueid) {
-                    $calldate = $record->datetime_entry; // Assuming $record->calldate is '2023-10-01 11:52:37'
+
+                    $calldate = $record->datetime_entry;
                     list($date, $time) = explode(' ', $calldate);
+
+                    $dst = $cdrRecord->dstchannel;
+                    if ($dst !== null && strpos($dst, 'SIP/') === 0) {
+                        list($sip, $no) = explode('/', $dst);
+                        list($telp, $lear) = explode('-', $no);
+                        // Now $sip will contain '9999-00000001' and $telp will be empty
+                    } else {
+                        // Handle the case where $cdrRecord->dstchannel doesn't have the expected format
+                    }
+
+                    $durationInSeconds = $cdrRecord->billsec;
+                    $hours = floor($durationInSeconds / 3600);
+                    $minutes = floor(($durationInSeconds % 3600) / 60);
+                    $seconds = $durationInSeconds % 60;
+
+                    $durationFormatted = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
                     $combinedData = [
                         'id' => $record->id,
                         'datetime_entry' => $record->datetime_entry,
                         'uniqueid' => $record->uniqueid,
                         'cdate' => $date,
                         'ctime' => $time,
-                        // 'calldate' => $record->calldate,
                         'telno' => $cdrRecord->src,
-                        'agent' => $cdrRecord->dst,
-                        'duration' => $cdrRecord->billsec,
+                        'agent' => $telp,
+                        'duration' => $durationFormatted,
                         'action' => $record->recordingfile,
-                        // ...
                     ];
                     $datas[] = (object)$combinedData;
                 }
@@ -89,14 +104,24 @@ class VoicerecordController extends Controller
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
                 })
-                ->addColumn('duration', function ($row) {
-                    $hours = str_pad(mt_rand(0, 23), 2, "0", STR_PAD_LEFT);
-                    $minutes = str_pad(mt_rand(0, 59), 2, "0", STR_PAD_LEFT);
-                    $seconds = str_pad(mt_rand(0, 59), 2, "0", STR_PAD_LEFT);
+                // ->addColumn('duration', function ($row) {
+                //     $hours = str_pad(mt_rand(0, 23), 2, "0", STR_PAD_LEFT);
+                //     $minutes = str_pad(mt_rand(0, 59), 2, "0", STR_PAD_LEFT);
+                //     $seconds = str_pad(mt_rand(0, 59), 2, "0", STR_PAD_LEFT);
 
-                    $duration = "$hours:$minutes:$seconds";
-                    return $duration;
-                })
+                //     $duration = "$hours:$minutes:$seconds";
+                //     return $duration;
+                // })
+                // ->addColumn('duration', function ($row) {
+                //     $durationInSeconds = $row->billsec;
+
+                //     $hours = floor($durationInSeconds / 3600);
+                //     $minutes = floor(($durationInSeconds % 3600) / 60);
+                //     $seconds = $durationInSeconds % 60;
+
+                //     $duration = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
+                //     return $duration;
+                // })
                 ->addColumn('action', function ($row) {
 
                     if (Gate::allows('contact-edit')) {
