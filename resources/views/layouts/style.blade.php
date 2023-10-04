@@ -10,6 +10,10 @@
         /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); */
     }
 
+    .modal-xxl {
+        max-width: 1500px !important;
+    }
+
     .sidebar-item {
         s white-space: nowrap;
         overflow: hidden;

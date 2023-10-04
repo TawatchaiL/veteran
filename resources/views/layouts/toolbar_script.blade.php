@@ -35,7 +35,7 @@
             id_break: bid,
         };
         $.ajax({
-            url: "/agent_break",
+            url: "{{ route('agent.break') }}",
             method: 'POST',
             data: additionalData,
 
@@ -54,7 +54,7 @@
             phone: 9999,
         };
         $.ajax({
-            url: "/agent_unbreak",
+            url: "{{ route('agent.unbreak') }}",
             method: 'POST',
             data: additionalData,
 

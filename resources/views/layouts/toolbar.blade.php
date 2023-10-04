@@ -1,5 +1,5 @@
 <div class="modal fade" id="ToolbarModal">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-xxl">
         <div class="modal-content">
             <div class="modal-header bg-primary">
                 <h4 class="modal-title">{{-- <i class="fas fa-wrench"></i> --}} <i class="fas fa-spin fa-gear"></i> Agent ToolBar [
@@ -63,11 +63,11 @@
                     </button>
                     <div class="dropdown-menu" role="menu">
 
-                        <a class="dropdown-item button_break" href="#" data-id="ทานข้าว"><i
+                        <a class="dropdown-item button_break" href="#" data-id="1"><i
                                 class="fas fa-pause"></i> ทานข้าว</a>
-                        <a class="dropdown-item button_break" href="#" data-id="ทานข้าว"><i
+                        <a class="dropdown-item button_break" href="#" data-id="2"><i
                                 class="fas fa-pause"></i> เข้าห้องน้ำ</a>
-                        <a class="dropdown-item button_break" href="#" data-id="ทานข้าว"><i
+                        <a class="dropdown-item button_break" href="#" data-id="3"><i
                                 class="fas fa-pause"></i> ประชุม</a>
                         <div class="dropdown-divider"></div>
 
