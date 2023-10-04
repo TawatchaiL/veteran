@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,7 +10,6 @@ use App\Services\ECCP;
 use App\Services\ECCPUnauthorizedException;
 use App\Services\ECCPConnFailedException;
 
-use App\Models\User;
 use Exception;
 
 
@@ -130,9 +128,9 @@ class IssableService
         }
     }
 
-    public function agent_logoff()
+    public function agent_logoff($phone)
     {
-        $this->_agent = 'SIP/' . $this->_user->phone;
+        $this->_agent = 'SIP/' . $phone;
         try {
             $oECCP = $this->_obtenerConexion();
             $response = $oECCP->logoutagent();
