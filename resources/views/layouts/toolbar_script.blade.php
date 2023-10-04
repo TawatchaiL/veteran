@@ -7,6 +7,7 @@
             success: function(result) {
                 console.log(result)
                 $('#phone_state').html(result.message);
+                $('#ToolbarModal').modal('hide');
             }
         });
     });
@@ -19,6 +20,7 @@
             success: function(result) {
                 console.log(result)
                 $('#phone_state').html(result.message);
+                $('#ToolbarModal').modal('hide');
             }
         });
     });
