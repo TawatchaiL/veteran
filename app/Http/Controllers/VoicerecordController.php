@@ -115,8 +115,9 @@ class VoicerecordController extends Controller
                 ->addColumn('action', function ($row) {
 
                     if (Gate::allows('contact-edit')) {
-                        $html = '<button type="button" class="changeUrlButtonw btn btn-sm btn-success btn-edit" id="changeUrlButtonw" data-id="' . $row->id . '"><i class="fa-solid fa-volume-high"></i> Play</button> ';
-                        $html .= '<a href="#" class="btn btn-success" onclick="formModal(\'' . route('voicerecord.edit', $row->id) . '\')" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Create New Student"> <i class="fa fa-plus"></i> Create New Student test </a>';
+                        $html = '<button type="button" class="changeUrlButton btn btn-sm btn-success btn-edit" id="changeUrlButtonw" data-id="' . $row->id . '"><i class="fa-solid fa-volume-high"></i> Play</button> ';
+                        $html .= '<a href="#" class="btn btn-success changeUrlButton" onclick="formModal(\'' . route('voicerecord.edit', $row->id) . '\')" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="vioc1"> <i class="fa fa-plus"></i> Create New Student test </a>';
+                        $html .= '<a href="#" class="btn btn-success vioc" onclick="formModal(\'' . route('voicerecord.edit', $row->id) . '\')" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="vioc2"> <i class="fa fa-plus"></i> Create New Student test </a>';
                     } else {
                         $html = '<button type="button" class="btn btn-sm btn-success disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa-solid fa-volume-high"></i> Play</button> ';
                     }

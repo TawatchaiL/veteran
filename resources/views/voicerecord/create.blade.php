@@ -1,3 +1,4 @@
+@include('voicerecord.import')
 <div class="modal fade" id="CreateModal">
     <div class="modal-dialog modal-xxxl">
         <div class="modal-content">
@@ -13,7 +14,7 @@
     </h4>
     <div class="closew"> <i class="fa-solid fa-clock"></i> ความยาว <span id="duration">00:00:00</span> นาที
     </div>
-    <input type="hidden" value="$remoteData2->recordingfile" id="vioc">
+    <input type="hidden" value="{{ $remoteData2->recordingfile }}" id="vioc">
 
     {{-- <button type="button" class="close modelClose" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
