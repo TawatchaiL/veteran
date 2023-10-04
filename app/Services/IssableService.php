@@ -109,9 +109,9 @@ class IssableService
         }
     }
 
-    public function agent_login()
+    public function agent_login($phone)
     {
-        $this->_agent = 'SIP/' . $this->_user->phone;
+        $this->_agent = 'SIP/' . $phone;
         $regs = NULL;
         $sExtension = (preg_match('|^(\w+)/(\d+)$|', $this->_agent, $regs)) ? $regs[2] : NULL;
         //$sPasswordCallback = '1234';

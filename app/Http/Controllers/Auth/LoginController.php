@@ -249,7 +249,7 @@ class LoginController extends Controller
 
 
                 $this->_agent = 'SIP/' . $user->phone;
-               /*  $regs = NULL;
+                /*  $regs = NULL;
                 $sExtension = (preg_match('|^(\w+)/(\d+)$|', $this->_agent, $regs)) ? $regs[2] : NULL;
                 //$sPasswordCallback = '1234';
                 //$this->_agentPass = $sPasswordCallback;
@@ -270,7 +270,7 @@ class LoginController extends Controller
                 $queueNames = $user->queues->pluck('queue_name')->implode(',');
                 $user->queue = $queueNames;
                 $user->save();
-                $this->issable->agent_login();
+                $this->issable->agent_login($user->phone);
                 //session(['temporary_phone' => Auth::user()->phone]);
 
                 /* $this->remote->QueuePause('4567', "SIP/9999", 'false', '');
