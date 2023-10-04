@@ -134,9 +134,9 @@ class VoicerecordController extends Controller
 
         // dd($id);
         $remoteData2 = DB::connection('remote_connection')->table('call_center.call_recording')
-        ->where('call_center.id',$id)
+        // ->where('id',$id)
         ->get();
-
+        dd($remoteData2);
         // $data =  $remoteData2->where('id',$id);
         $voic = $remoteData2->recordingfile;
 
