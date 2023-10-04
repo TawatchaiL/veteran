@@ -61,7 +61,7 @@ class CaseType6Controller extends Controller
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
 
-        return view('casetype.index');
+        return view('casetype6.index');
     }
 
     /**
