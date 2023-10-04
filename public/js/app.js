@@ -1,4 +1,4 @@
-=var token = $('meta[name=csrf-token]').attr('content');
+var token = $('meta[name=csrf-token]').attr('content');
 function formModal(route) {
 
     $.get(route, function (res) {
