@@ -355,8 +355,6 @@
         document.getElementById('custom-dialog').style.display = 'none';
     });
 
-
-
     $('.modelClose').on('click', () => {
         console.log(wavesurfer);
         if (wavesurfer) {
