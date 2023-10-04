@@ -1,6 +1,8 @@
 <script src="dist/js/html2canvas.min.js"></script>
 <script src='dist/js/jspdf.min.js'></script>
 <script src="dist/js/jspdf.plugin.autotable.min.js"></script>
+<script src="/js/app.js?v=1"></script>
+
 <script type="module">
     import WaveSurfer from 'https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js'
     import Hover from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/hover.esm.js'
