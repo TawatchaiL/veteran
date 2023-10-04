@@ -225,6 +225,20 @@ class LoginController extends Controller
                 $user = Auth::user();
                 $user->phone = $request->phone;
 
+                //check active
+                $active = DB::connection('remote_connection')
+                    ->table('call_center.agent')
+                    ->where('id', $user->agent_id)
+                    ->get();
+                if ($active->estatus == 'I') {
+                    auth()->logout();
+                    return redirect()->route('login')
+                        ->with('login_error', 'กรุณาติดต่อผู้ดูแลระบบ')
+                        ->withErrors(['email' => 'กรุณาติดต่อผู้ดูแลระบบ']);
+                }
+
+
+
                 DB::connection('remote_connection')
                     ->table('call_center.agent')
                     ->where('id', $user->agent_id)
