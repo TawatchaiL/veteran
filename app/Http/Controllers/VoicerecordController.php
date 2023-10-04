@@ -69,7 +69,7 @@ class VoicerecordController extends Controller
                         // 'calldate' => $record->calldate,
                         'telno' => $cdrRecord->src,
                         'agent' => $cdrRecord->dst,
-                        'duration' => $record->billsec,
+                        'duration' => $cdrRecord->billsec,
                         'action' => $record->recordingfile,
                         // ...
                     ];
