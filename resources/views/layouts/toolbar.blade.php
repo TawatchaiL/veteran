@@ -18,18 +18,18 @@
                                     placeholder="กรอกเบอร์" />
                             </div>
                             <div class="mx-1">
-                                <button {{-- <?= $outbound_dis ?> --}} class="btn btn-lg btn-success button_dial"><i
+                                <button {{-- <?= $outbound_dis ?> --}} class="btn btn-lg btn-secondary button_dial"><i
                                         class="fa-solid fa-phone-volume"></i> รับสาย</button>
                             </div>
                             <div class="mx-1">
-                                <button {{-- <?= $outbound_dis ?> --}} class="btn btn-lg btn-info button_dial"><i
+                                <button {{-- <?= $outbound_dis ?> --}} class="btn btn-lg btn-secondary button_dial"><i
                                         class="fas fa-phone-square"></i> โทรออก</button>
                             </div>
                             <div class="mx-1">
                                 {{--  <button  <?= $outbound_dis ?>  class="btn btn-lg btn-warning button_tranfer"><i
                                         class="fas fa-random"></i> โอนสาย</button> --}}
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-lg btn-warning dropdown-toggle dropdown-icon"
+                                    <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-icon"
                                         data-toggle="dropdown">
                                         <i class="fas fa-random"></i> โอนสาย <span class="sr-only">Toggle
                                             Dropdown</span>
@@ -44,11 +44,11 @@
                                 </div>
                             </div>
                             <div class="mx-1">
-                                <button {{-- <?= $outbound_dis ?> --}} class="btn btn-lg btn-success button_conf"><i
+                                <button {{-- <?= $outbound_dis ?> --}} class="btn btn-lg btn-secondary button_conf"><i
                                         class="fas fa-star"></i> ประเมินความพึงพอใจ</button>
                             </div>
                             <div class="mx-1">
-                                <button {{-- <?= $outbound_dis ?> --}} class="btn btn-lg btn-primary button_conf"><i
+                                <button {{-- <?= $outbound_dis ?> --}} class="btn btn-lg btn-secondary button_conf"><i
                                         class="fas fa-handshake"></i> ประชุมสาย</button>
                             </div>
                         </div>
