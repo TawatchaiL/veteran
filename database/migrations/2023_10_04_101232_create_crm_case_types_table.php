@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $$table->integer('crmlev')->nullable();
             $table->integer('crmlist')->nullable();
-            $table->string('agent')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
