@@ -19,7 +19,7 @@
             </a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link btn btn-success" id="ToolbarButton" {{-- data-widget="control-sidebar" data-slide="true" href="#" --}} role="button">
+            <a class="btn btn-success" id="ToolbarButton" {{-- data-widget="control-sidebar" data-slide="true" href="#" --}} role="button">
                 <i class="fas fa-xl fa-spin fa-gear"></i> Agent ToolBar
             </a>{{-- faa-shake animated faa-slow fa-wrench --}}
         </li>
