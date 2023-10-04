@@ -4,11 +4,14 @@ function formModal(route) {
     $.get(route, function (res) {
         $("#modal_form_content").empty();
         $('#modal_form_content').html(res);
-        let wavesurfer;
-        let TimelinePlugin;
-        let Minimap;
-        let RegionsPlugin;
-        let Hover;
+        import WaveSurfer from 'https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js'
+        import Hover from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/hover.esm.js'
+        import Minimap from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/minimap.esm.js'
+        import TimelinePlugin from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/timeline.esm.js'
+        import RegionsPlugin from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/regions.esm.js'
+
+        let wavesurfer; // Declare the wavesurfer variable
+
         const initializeWaveSurfer = (newUrl) => {
 
             //wav
@@ -91,7 +94,7 @@ function formModal(route) {
             })
 
             var volumeInput = document.querySelector('#volume');
-            var onChangeVolume = function(e) {
+            var onChangeVolume = function (e) {
                 wavesurfer.setVolume(e.target.value);
                 const volume = parseFloat(e.target.value * 10);
                 document.querySelector('#vol').textContent = volume.toFixed(2)
@@ -104,15 +107,15 @@ function formModal(route) {
             const fetchTooltipsFromDB = () => {
                 // Perform an API request or database query to retrieve tooltip data
                 return [{
-                        startTime: 10,
-                        endTime: 15,
-                        content: 'ทดสอบ'
-                    },
-                    {
-                        startTime: 20,
-                        endTime: 25,
-                        content: 'เสียงชัดเจน'
-                    },
+                    startTime: 10,
+                    endTime: 15,
+                    content: 'ทดสอบ'
+                },
+                {
+                    startTime: 20,
+                    endTime: 25,
+                    content: 'เสียงชัดเจน'
+                },
                     // More tooltip data...
                 ];
             };
@@ -151,15 +154,15 @@ function formModal(route) {
                     wavesurfer.playPause()
                 })
 
-                toggleMuteButton.onclick = function() {
+                toggleMuteButton.onclick = function () {
                     wavesurfer.toggleMute();
                 };
 
-                setMuteOnButton.onclick = function() {
+                setMuteOnButton.onclick = function () {
                     wavesurfer.setMute(true);
                 };
 
-                setMuteOffButton.onclick = function() {
+                setMuteOffButton.onclick = function () {
                     wavesurfer.setMute(false);
                 };
 
