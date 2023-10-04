@@ -126,8 +126,8 @@
                     provinceOb.html('<option value="">เลือกประเภทการติดต่อ</option>');
                     $.each(res.data, function(index, item) {
                         provinceOb.append(
-                            $('<option></option>').val(item.code).html(item
-                                .name_th)
+                            $('<option></option>').val(item.id).html(item
+                                .name)
                         );
                     });
                 }
