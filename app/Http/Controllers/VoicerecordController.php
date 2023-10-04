@@ -30,6 +30,17 @@ class VoicerecordController extends Controller
     public function index(Request $request)
     {
 
+        $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')->get();
+
+        $datas = DB::table('cases')
+            ->select(DB::raw('DATE(created_at) as cdate'), DB::raw('TIME(created_at) as ctime'), 'telno', 'agent', 'id')
+            ->get();
+        // $datas = DB::table('cases')
+        //     ->join('remote_connection.asteriskcdrdb.cdr', 'cases.uniqueid', '=', 'cdr.uniqueid')
+        //     ->select(DB::raw('DATE(cases.created_at) as cdate'), DB::raw('TIME(cases.created_at) as ctime'), 'cases.telno', 'cases.agent', 'cases.id')
+        //     ->get();
+
+
         // $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')->get();
         // // $remoteData2 = DB::connection('remote_connection2')->table('call_center.call_recording')->get();
 
@@ -40,28 +51,31 @@ class VoicerecordController extends Controller
         //     ->get();
 
 
-        $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')->get();
-        $remoteData2 = DB::connection('remote_connection')->table('call_center.call_recording')->get();
+        // $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')->get();
+        // $remoteData2 = DB::connection('remote_connection')->table('call_center.call_recording')->get();
 
-        $datas = [];
+        // $datas = [];
 
-        foreach ($remoteData2 as $record) {
-            foreach ($remoteData as $cdrRecord) {
-                if ($record->uniqueid === $cdrRecord->uniqueid) {
-                    $combinedData = [
-                        'uniqueid' => $record->uniqueid,
-                        // Add other fields from call_recording and cdr as needed
-                        'datetime_entry' => $record->datetime_entry,
-                        'disposition' => $cdrRecord->disposition,
-                        // ...
-                    ];
-                    $datas[] = (object)$combinedData;
-                }
-            }
-        }
+        // foreach ($remoteData2 as $record) {
+        //     foreach ($remoteData as $cdrRecord) {
+        //         if ($record->uniqueid === $cdrRecord->uniqueid) {
+        //             $combinedData = [
+        //                 'uniqueid' => $record->uniqueid,
+        //                 // Add other fields from call_recording and cdr as needed
+        //                 'datetime_entry' => $record->datetime_entry,
+        //                 'disposition' => $cdrRecord->disposition,
+        //                 // ...
+        //             ];
+        //             $datas[] = (object)$combinedData;
+        //         }
+        //     }
+        // }
 
 
-        dd($datas);
+        // dd($datas);
+
+
+
         if ($request->ajax()) {
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
