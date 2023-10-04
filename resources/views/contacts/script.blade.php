@@ -106,10 +106,11 @@
         function datesearch() {
             var currentDate = moment();
             // Set the start date to 7 days before today
-            startDate = moment(currentDate).subtract(15, 'days').format('YYYY-MM-DD');
+            //startDate = moment(currentDate).subtract(15, 'days').format('YYYY-MM-DD');
             // Set the end date to the end of the current month
             //endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
-            endDate = moment().format('YYYY-MM-DD');
+            startDate = moment().format('YYYY-MM-DD');
+            endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
         }
         function datereset() {
             var currentDate = moment();
@@ -737,5 +738,11 @@
                 }
             });
         });
+    });
+
+    $('.inputnumber').on('onkeydown', function(e) {
+        if (48 > e.which || e.which > 57) {
+            if ( e.key.length === 1 ) e.preventDefault();
+        }
     });
 </script>
