@@ -51,7 +51,7 @@ class PBXController extends Controller
 
         if ($user) {
             // Perform agent login action using IssableService
-            $this->issable->agent_login($user->phone);
+            $this->issable->agent_logoff($user->phone);
 
             // Update user's phone_status
             $user->phone_status = "Not Ready";
