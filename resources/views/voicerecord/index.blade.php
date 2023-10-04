@@ -139,7 +139,7 @@
                                             <th>เบอร์โทรศัพท์</th>
                                             <th>Agent ที่รับสาย</th>
                                             <th>เวลาที่ใช้สาย</th>
-                                            <th width="100px">test</th>
+                                            <th width="100px"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
