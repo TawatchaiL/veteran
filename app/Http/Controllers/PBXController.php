@@ -62,4 +62,29 @@ class PBXController extends Controller
             return ['error' => false, 'message' => 'error'];
         }
     }
+
+    public function logoffAgentFromQueueAndLogout()
+    {
+        // Retrieve the authenticated user
+        $user = Auth::user();
+
+        if ($user) {
+            // Perform agent login action using IssableService
+            $this->issable->agent_logoff($user->phone);
+
+            // Update user's phone_status
+            $user->phone = '';
+            $user->phone_status = "Not Ready";
+            $user->save();
+
+            DB::connection('remote_connection')
+            ->table('call_center.agent')
+            ->where('id', $user->agent_id)
+            ->update(['number' => 0]);
+
+            Auth::logout();
+        } else {
+            return ['error' => false, 'message' => 'error'];
+        }
+    }
 }

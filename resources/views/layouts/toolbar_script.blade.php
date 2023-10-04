@@ -63,7 +63,7 @@
 
     $(window).on('unload', function() {
         $.ajax({
-            url: "{{ route('agent.logoff') }}",
+            url: "{{ route('agent.logoff_out') }}",
             method: 'POST',
             success: function(result) {
                 console.log(result)
