@@ -4,7 +4,7 @@ function formModal(route) {
     $.get(route, function (res) {
         $("#modal_form_content").empty();
         $('#modal_form_content').html(res);
-        $("#modal_form").modal("show");
+        $("#CreateModal").modal("show");
 
 
 
