@@ -17,11 +17,11 @@
                 <i class="fas fa-xl fa-spin fa-gear"></i> Agent ToolBar
             </a>{{-- faa-shake animated faa-slow fa-wrench --}}
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
+       {{--  <li class="nav-item d-none d-sm-inline-block">
             <a class="btn btn-success" data-widget="fullscreen" role="button">
                 <i class="fas fa-xl fa-expand-arrows-alt"></i> ขยาย/ย่อ หน้าจอ
             </a>
-        </li>
+        </li> --}}
         @if (!empty($sidebarc))
             <li class="nav-item d-none d-sm-inline-block"><a href="/" class="nav-link"> [ <i
                         class="fa-solid fa-lg fa-home"></i>
