@@ -33,6 +33,7 @@ class User extends Authenticatable
         'queue',
         'phone_status_id',
         'phone_status',
+        'phone_status_icon',
         'break_text',
     ];
 
