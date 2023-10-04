@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use App\Services\IssableService;
+/* use App\Services\IssableService;
 
 Route::post('/agent_break', function (Request $request) {
     $issable = new IssableService;
@@ -17,6 +17,6 @@ Route::post('/agent_unbreak', function (Request $request) {
     $phone = $request->input('phone');
     $result = $issable->agent_unbreak($phone);
     return $result;
-})->name('agent.unbreak');
+})->name('agent.unbreak'); */
 
-Route::get('/agent_login', [App\Http\Controllers\PBXController::class, 'queue_agent_login'])->name('agent.login');
+Route::get('/agent_login', [App\Http\Controllers\PBXController::class, 'loginAgentToQueue'])->name('agent.login');
