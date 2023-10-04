@@ -744,5 +744,5 @@
         if (48 > e.which || e.which > 57) {
             if ( e.key.length === 1 ) e.preventDefault();
         }
-    });
+    }); 
 </script>
