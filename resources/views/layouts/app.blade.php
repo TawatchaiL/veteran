@@ -412,7 +412,12 @@ const addemerphone = () => {
                     $(".card-footer").css("display", "block")
                     $('.bclose').css('display', 'none');
                     addemerphone();
-
+                    function validateNumber(event) {
+                        var keyCode = event.which || event.keyCode;
+                        if ((keyCode < 48 || keyCode > 57) && keyCode !== 8) {
+                            event.preventDefault();
+                        }
+                    }
                     var provinceOb = $('#cityp');
                     var districtOb = $('#districtp');
                     var cartonOb = $('#subdistrictp');

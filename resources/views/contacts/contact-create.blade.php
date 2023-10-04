@@ -199,6 +199,7 @@
                                                 'id' => 'telhomep',
                                                 'placeholder' => 'เบอร์โทรศัพท์บ้าน',
                                                 'class' => 'form-control',
+                                                'onkeydown' => 'validateNumber(event)',
                                             ]) !!}
                                         </div>
                                     </div>
@@ -209,6 +210,7 @@
                                                 'id' => 'phonenop',
                                                 'placeholder' => 'เบอร์โทรศัพท์มือถือ',
                                                 'class' => 'form-control',
+                                                'onkeydown' => 'validateNumber(event)',
                                             ]) !!}
                                         </div>
                                     </div>
@@ -223,6 +225,7 @@
                                                 'id' => 'worknop',
                                                 'placeholder' => 'เบอร์โทรศัพท์ที่ทำงาน',
                                                 'class' => 'form-control',
+                                                'onkeydown' => 'validateNumber(event)',
                                             ]) !!}
                                         </div>
                                     </div>

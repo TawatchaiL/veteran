@@ -211,6 +211,7 @@
                                                         'id' => 'Edittelhome',
                                                         'placeholder' => 'Telephone',
                                                         'class' => 'form-control',
+                                                        'onkeydown' => 'validateNumber(event)',
                                                     ]) !!}
                                                 </div>
                                             </div>
@@ -221,6 +222,7 @@
                                                         'id' => 'Editphoneno',
                                                         'placeholder' => 'Postcode',
                                                         'class' => 'form-control',
+                                                        'onkeydown' => 'validateNumber(event)',
                                                     ]) !!}
                                                 </div>
                                             </div>
@@ -235,6 +237,7 @@
                                                         'id' => 'Editworkno',
                                                         'placeholder' => 'Telephone',
                                                         'class' => 'form-control',
+                                                        'onkeydown' => 'validateNumber(event)',
                                                     ]) !!}
                                                 </div>
                                             </div>
