@@ -348,6 +348,7 @@
                 console.log('Ajax request successful');
                 // Optionally, you can do something with the response from the controller
                 console.log(response);
+                
                 console.log(newUrl);
                 console.log('Button clicked!');
                 initializeWaveSurfer(newUrl);
