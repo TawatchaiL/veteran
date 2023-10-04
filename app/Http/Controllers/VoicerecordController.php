@@ -132,7 +132,15 @@ class VoicerecordController extends Controller
     }
     public function edit($id){
 
-        dd($id);
+        // dd($id);
+        $remoteData2 = DB::connection('remote_connection')->table('call_center.call_recording')->get();
+
+        $data =  $remoteData2->where('id',$id);
+        $voic = $data->recordingfile;
+
+        return view('voicerecord.create',[
+            'voic' => $voic,
+        ]);
 
     }
 }

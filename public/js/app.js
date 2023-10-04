@@ -4,14 +4,7 @@ function formModal(route) {
     $.get(route, function (res) {
         $("#modal_form_content").empty();
         $('#modal_form_content').html(res);
-        $("#modal_form").modal("show");
-
-        $(".select2test").select2({
-
-            maximumSelectionLength: 2,
-            allowClear: true
-        });
-
+        $("#CreateModal").modal("show");
         // $(".select3_single").select2({
         //     maximumSelectionLength: 1,
         //     // allowClear: true
