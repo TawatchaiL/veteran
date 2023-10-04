@@ -36,10 +36,10 @@ class VoicerecordController extends Controller
         $datas = DB::connection('remote_connection')
             ->table('call_center.call_recording')
             ->join('remote_connection.asteriskcdrdb.cdr', 'call_recording.uniqueid', '=', 'cdr.uniqueid')
-            ->select('*') // Use * to select all columns, or specify the columns you want explicitly
+            ->select('call_recording.*', 'cdr.*') // Use * to select all columns, or specify the columns you want explicitly
             ->get();
 
-
+        dd($datas);
         if ($request->ajax()) {
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
