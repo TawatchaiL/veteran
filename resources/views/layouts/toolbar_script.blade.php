@@ -55,6 +55,22 @@
         });
     });
 
+    /* $(window).on('beforeunload', function() {
+        // Your code to execute before the page is unloaded
+        // For example, you can show a confirmation dialog here
+        return 'Are you sure you want to leave this page?';
+    });
+
+    $(window).on('unload', function() {
+        $.ajax({
+            url: "{{ route('agent.logoff') }}",
+            method: 'POST',
+            success: function(result) {
+                console.log(result)
+            }
+        });
+    }); */
+
     var pageIsReloading = false;
 
     $(document).ready(function() {
@@ -63,7 +79,19 @@
             if (!pageIsReloading) {
                 // Your code to execute before the page is unloaded
                 // For example, you can show a confirmation dialog here
-                return 'คุณแน่ใจว่าจะปิดหน้าโปรแกรมใช่ไหม ถ้าใช่จะทำการออกจากระบบให้อัติโนมัติ?';
+                return 'Are you sure you want to leave this page?';
+            }
+        });
+
+        $(window).on('unload', function() {
+            if (!pageIsReloading) {
+                $.ajax({
+                    url: "{{ route('agent.logoff_out') }}",
+                    method: 'POST',
+                    success: function(result) {
+                        console.log(result)
+                    }
+                });
             }
         });
 
@@ -72,20 +100,6 @@
             pageIsReloading = true;
         });
 
-        // Handle the button click event to trigger the logoff action
-        $('#logoffButton').on('click', function() {
-            $.ajax({
-                url: "{{ route('agent.logoff_out') }}",
-                method: 'POST',
-                success: function(result) {
-                    console.log(result);
-                    // Handle success, e.g., show a message to the user
-                },
-                error: function(xhr, status, error) {
-                    console.error(error);
-                    // Handle error, e.g., display an error message
-                }
-            });
-        });
+
     });
 </script>
