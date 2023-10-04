@@ -125,7 +125,7 @@ const addemerphone = () => {
             </td>
             <td width="10%">
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                    <input type="text" name="emerphonep[]" class="form-control has-feedback-left" value="" required>
+                    <input type="text" name="emerphonep[]" class="form-control has-feedback-left" onkeydown="validateNumber(event)" value="" required>
                 </div>
             </td>
             <td width="5%">
@@ -526,7 +526,7 @@ const addemerphone = () => {
                                                     value.emerrelation +
                                                     '" required="required"></div>'))
                                                 .append($('<td width="10%">').append(
-                                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone" name="emerphonep[]" class="form-control has-feedback-left" value="' +
+                                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone" name="emerphonep[]" class="form-control has-feedback-left" onkeydown="validateNumber(event)" value="' +
                                                     value.emerphone +
                                                     '" required="required"></div>'))
                                                 .append($('<td width="5%">').append(
