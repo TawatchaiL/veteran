@@ -345,7 +345,7 @@
         console.log(newUrl);
         initializeWaveSurfer(newUrl);
     });
-    $('.vioc').on('click', function() {
+    $('.vioc').on('click', () => {
         const newUrl = 'wav/' + $('#vioc').val();
         console.log('wav/' + $('#vioc').val());
         console.log(newUrl);
