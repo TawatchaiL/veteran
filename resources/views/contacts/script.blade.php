@@ -106,10 +106,11 @@
         function datesearch() {
             var currentDate = moment();
             // Set the start date to 7 days before today
-            startDate = moment(currentDate).subtract(15, 'days').format('YYYY-MM-DD');
+            //startDate = moment(currentDate).subtract(15, 'days').format('YYYY-MM-DD');
             // Set the end date to the end of the current month
             //endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
-            endDate = moment().format('YYYY-MM-DD');
+            startDate = moment().format('YYYY-MM-DD');
+            endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
         }
         function datereset() {
             var currentDate = moment();
@@ -482,7 +483,7 @@
                         }
 
                         $.each(res.datax.emer, function(index, value) {
-                            $('#myTbl3e').append($('<tr>')
+                            $('#myTbl3e tbody').append($('<tr>')
                                 .append($('<td style="display:none;">')
                                     .append(value.id))
                                 .append($('<td width="30%">').append(
@@ -494,7 +495,7 @@
                                     value.emerrelation +
                                     '" required="required"></div>'))
                                 .append($('<td width="10%">').append(
-                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone" name="eemerphone[]" class="form-control has-feedback-left" value="' +
+                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone" name="eemerphone[]" class="form-control has-feedback-left" onkeydown="validateNumber(event)" value="' +
                                     value.emerphone +
                                     '" required="required"></div>'))
                                 .append($('<td width="5%">').append(
@@ -623,7 +624,7 @@
 </script>
 <script>
     $('#addRowBtn').click(function() {
-        $('#myTbl3').append($('<tr>')
+        $('#myTbl3 tbody').append($('<tr>')
             .append($('<td width="30%">').append(
                 '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emergencyname" name="emergencyname[]" class="form-control has-feedback-left" value="" required="required"></div>'
             ))
@@ -631,14 +632,14 @@
                 '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emerrelation" name="emerrelation[]" class="form-control has-feedback-left" value="" required="required"></div>'
             ))
             .append($('<td width="10%">').append(
-                '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emerphone" name="emerphone[]" class="form-control has-feedback-left" value="" required="required"></div>'
+                '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emerphone" name="emerphone[]" class="form-control has-feedback-left" onkeydown="validateNumber(event)" value="" required="required"></div>'
             ))
             .append($('<td width="5%">').append(
                 '<button type="button" name="deletem" id="deletem" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
             )));
     });
     $('#editRowBtne').click(function() {
-        $('#myTbl3e').append($('<tr>')
+        $('#myTbl3e tbody').append($('<tr>')
             .append($('<td style="display:none;">').append(''))
             .append($('<td width="30%">').append(
                 '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemergencyname" name="eemergencyname[]" class="form-control has-feedback-left" value="" required="required"></div>'
@@ -647,7 +648,7 @@
                 '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerrelation" name="eemerrelation[]" class="form-control has-feedback-left" value="" required="required"></div>'
             ))
             .append($('<td width="10%">').append(
-                '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone" name="eemerphone[]" class="form-control has-feedback-left" value="" required="required"></div>'
+                '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone" name="eemerphone[]" class="form-control has-feedback-left" onkeydown="validateNumber(event)" value="" required="required"></div>'
             ))
             .append($('<td width="5%">').append(
                 '<button type="button" name="deletem" id="deletem" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
@@ -738,4 +739,10 @@
             });
         });
     });
+    function validateNumber(event) {
+        var keyCode = event.which || event.keyCode;
+        if ((keyCode < 48 || keyCode > 57) && keyCode !== 8) {
+            event.preventDefault();
+        }
+    }
 </script>

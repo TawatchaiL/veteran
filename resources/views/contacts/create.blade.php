@@ -210,6 +210,7 @@
                                                         'id' => 'Addtelhome',
                                                         'placeholder' => 'เบอร์โทรศัพท์บ้าน',
                                                         'class' => 'form-control',
+                                                        'onkeydown' => 'validateNumber(event)',
                                                     ]) !!}
                                                 </div>
                                             </div>
@@ -220,6 +221,7 @@
                                                         'id' => 'Addphoneno',
                                                         'placeholder' => 'เบอร์โทรศัพท์มือถือ',
                                                         'class' => 'form-control',
+                                                        'onkeydown' => 'validateNumber(event)',
                                                     ]) !!}
                                                 </div>
                                             </div>
@@ -234,6 +236,7 @@
                                                         'id' => 'Addworkno',
                                                         'placeholder' => 'เบอร์โทรศัพท์ที่ทำงาน',
                                                         'class' => 'form-control',
+                                                        'onkeydown' => 'validateNumber(event)',
                                                     ]) !!}
                                                 </div>
                                             </div>
@@ -252,28 +255,8 @@
                                                             <th class="column-title"> เบอร์โทรศัพท์</th>
                                                         </tr>
                                                     </thead>
-                                                    <tr>
-                                                        <td width="30%">
-                                                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                <input type="text" id="emergencyname" name="emergencyname[]"
-                                                                    class="form-control has-feedback-left"
-                                                                    value="" required="required">
-                                                            </div>
-                                                        </td>
-                                                        <td width="10%">
-                                                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                <input type="text" id="emerrelation" name="emerrelation[]" class="form-control has-feedback-left" value="" required="required">
-                                                            </div>
-                                                        </td>
-                                                        <td width="10%">
-                                                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                <input type="text" id="emerphone" name="emerphone[]" class="form-control has-feedback-left" value="" required="required">
-                                                            </div>
-                                                        </td>
-                                                        <td width="5%">
-                                                            <button type="button" name="deletem" id="deletem" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest('tr').remove();"><i class="fa fa-minus"></i></button>
-                                                        </td>
-                                                    </tr>
+                                                    <tbody>
+                                                    </tbody>
                                                 </table>
                                             </div>
                                             <div class="col-md-12" align="right">
