@@ -14,7 +14,7 @@
         <li class="nav-item d-none d-sm-inline-block">
             <a class="nav-link" href="#" role="button">
                [ <span id="phone_state_icon">{!! $temporaryPhoneStatusIcon !!}</span>
-               {{ $temporaryPhone }} <b class="text-primary"
+               <b class="text-primary">{{ $temporaryPhone }} :</b> <b class="text-primary"
                     id="phone_state">{{ $temporaryPhoneStatus }}</b> ]
             </a>
         </li>
