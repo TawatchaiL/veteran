@@ -9,12 +9,10 @@ use Illuminate\Support\Facades\Auth;
 use App\Services\AsteriskAmiService;
 use App\Services\IssableService;
 
-
 class PBXController extends Controller
 {
     protected $remote;
     protected $issable;
-    protected $user;
 
     /**
      * Create a new controller instance.
@@ -23,32 +21,46 @@ class PBXController extends Controller
      */
     public function __construct(AsteriskAmiService $asteriskAmiService, IssableService $issableService)
     {
+        $this->middleware('guest')->except('logout');
         $this->remote = $asteriskAmiService;
         $this->issable = $issableService;
-        $this->user = Auth::user();
     }
 
-    public function loginAgentToQueue() {
+    public function loginAgentToQueue()
+    {
+        // Retrieve the authenticated user
+        $user = Auth::user();
 
-        // Perform agent login action using IssableService
-        $this->issable->agent_login($this->user->phone);
+        if ($user) {
+            // Perform agent login action using IssableService
+            $this->issable->agent_login($user->phone);
 
-        // Update user's phone_status
-        $this->user->phone_status = "Ready";
-        $this->user->save();
+            // Update user's phone_status
+            $user->phone_status = "Ready";
+            $user->save();
 
-        return ['success' => true, 'message' => 'เข้าระบบรับสาย เรียบร้อยแล้ว'];
+            return ['success' => true, 'message' => 'เข้าระบบรับสาย เรียบร้อยแล้ว'];
+        } else {
+            return ['error' => false, 'message' => 'error'];
+        }
     }
 
     public function logoffAgentFromQueue()
     {
-        // Perform agent login action using IssableService
-        $this->issable->agent_login($this->user->phone);
+        // Retrieve the authenticated user
+        $user = Auth::user();
 
-        // Update user's phone_status
-        $this->user->phone_status = "Not Ready";
-        $this->user->save();
+        if ($user) {
+            // Perform agent login action using IssableService
+            $this->issable->agent_login($user->phone);
 
-        return ['success' => true, 'message' => 'ออกจากระบบรับสาย เรียบร้อยแล้ว'];
+            // Update user's phone_status
+            $user->phone_status = "Not Ready";
+            $user->save();
+
+            return ['success' => true, 'message' => 'ออกจากระบบรับสาย เรียบร้อยแล้ว'];
+        } else {
+            return ['error' => false, 'message' => 'error'];
+        }
     }
 }
