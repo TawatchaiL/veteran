@@ -4,6 +4,7 @@ function formModal(route) {
     $.get(route, function (res) {
         $("#modal_form_content").empty();
         $('#modal_form_content').html(res);
+        let wavesurfer;
         const initializeWaveSurfer = (newUrl) => {
 
             //wav
