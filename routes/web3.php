@@ -21,4 +21,6 @@ Route::post('/agent_unbreak', function (Request $request) {
 
 Route::group(['middleware' => ['auth']], function () {
     Route::post('/agent_login', [App\Http\Controllers\PBXController::class, 'loginAgentToQueue'])->name('agent.login');
+    Route::post('/agent_logoff', [App\Http\Controllers\PBXController::class, 'logoffAgentFromQueue'])->name('agent.logoff');
 });
+

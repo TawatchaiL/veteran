@@ -205,9 +205,13 @@ class LoginController extends Controller
 
         $user = Auth::user();
         //$this->remote->queue_log_off($user->queue, $user->phone);
-        $this->issable->agent_logoff($user->phone);
+        if ($user->phone_status !== "Not Ready") {
+            $this->issable->agent_logoff($user->phone);
+        }
+
 
         $user->phone = '';
+        $user->phone_status = 'Not Ready';
         $user->save();
 
         DB::connection('remote_connection')

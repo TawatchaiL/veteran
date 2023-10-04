@@ -9,12 +9,12 @@ use Illuminate\Support\Facades\Auth;
 use App\Services\AsteriskAmiService;
 use App\Services\IssableService;
 
-use App\Models\User;
 
 class PBXController extends Controller
 {
     protected $remote;
     protected $issable;
+    protected $user;
 
     /**
      * Create a new controller instance.
@@ -25,19 +25,30 @@ class PBXController extends Controller
     {
         $this->remote = $asteriskAmiService;
         $this->issable = $issableService;
+        $this->user = Auth::user();
     }
 
-    public function loginAgentToQueue()
-    {
-        $user = Auth::user();
+    public function loginAgentToQueue() {
 
         // Perform agent login action using IssableService
-        $this->issable->agent_login($user->phone);
+        $this->issable->agent_login($this->user->phone);
 
         // Update user's phone_status
-        $user->phone_status = "Ready";
-        $user->save();
+        $this->user->phone_status = "Ready";
+        $this->user->save();
 
         return ['success' => true, 'message' => 'เข้าระบบรับสาย เรียบร้อยแล้ว'];
+    }
+
+    public function logoffAgentFromQueue()
+    {
+        // Perform agent login action using IssableService
+        $this->issable->agent_login($this->user->phone);
+
+        // Update user's phone_status
+        $this->user->phone_status = "Not Ready";
+        $this->user->save();
+
+        return ['success' => true, 'message' => 'ออกจากระบบรับสาย เรียบร้อยแล้ว'];
     }
 }

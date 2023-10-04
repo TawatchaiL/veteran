@@ -1,9 +1,19 @@
 <script>
     $(document).on('click', '#btn-agent-login', function(e) {
         e.preventDefault();
-        alert();
         $.ajax({
             url: "{{ route('agent.login') }}",
+            method: 'POST',
+            success: function(result) {
+                console.log(result)
+            }
+        });
+    });
+
+    $(document).on('click', '#btn-agent-logout', function(e) {
+        e.preventDefault();
+        $.ajax({
+            url: "{{ route('agent.logoff') }}",
             method: 'POST',
             success: function(result) {
                 console.log(result)
