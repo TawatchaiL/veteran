@@ -1,6 +1,7 @@
 <script>
     $(document).on('click', '#btn-agent-login', function(e) {
         e.preventDefault();
+        alert();
         $.ajax({
             url: "/agent_login",
             method: 'POST',
