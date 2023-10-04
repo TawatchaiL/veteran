@@ -1,3 +1,4 @@
+@include('voicerecord.import')
 <div class="modal fade" id="CreateModal">
     <div class="modal-dialog modal-xxxl">
         <div class="modal-content">

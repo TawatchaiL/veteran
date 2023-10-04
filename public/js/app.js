@@ -1,11 +1,12 @@
+
 var token = $('meta[name=csrf-token]').attr('content');
-import TimelinePlugin from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/timeline.esm.js'
+
 
 function formModal(route) {
+    
     $.get(route, function (res) {
         $("#modal_form_content").empty();
         $('#modal_form_content').html(res);
-        $("#CreateModal").modal("show");
         // $(".select3_single").select2({
         //     maximumSelectionLength: 1,
         //     // allowClear: true
@@ -16,21 +17,6 @@ function formModal(route) {
         //     //placeholder: "With Max Selection limit 4",
         //     allowClear: true
         // });
-        $('.changeUrlButton').on('click', () => {
-            //const newUrl = 'wav/PinkPanther60.wav'; // Replace with the new URL
-            const newUrl = 'wav/2023/10/01/q-4567-8888-20231001-141026-1696169425.161.wav';
-            // const newUrl = 'wav/'+$('#vioc').val();
-
-            console.log('wav/'+$('#vioc').val());
-            console.log(newUrl);
-            initializeWaveSurfer(newUrl);
-        });
-        $('.vioc').on('click', function() {
-            const newUrl = 'wav/' + $('#vioc').val();
-            console.log('wav/' + $('#vioc').val());
-            console.log(newUrl);
-            initializeWaveSurfer(newUrl);
-        });
 
         const initializeWaveSurfer = (newUrl) => {
 
@@ -114,7 +100,7 @@ function formModal(route) {
             })
 
             var volumeInput = document.querySelector('#volume');
-            var onChangeVolume = function(e) {
+            var onChangeVolume = function (e) {
                 wavesurfer.setVolume(e.target.value);
                 const volume = parseFloat(e.target.value * 10);
                 document.querySelector('#vol').textContent = volume.toFixed(2)
@@ -127,15 +113,15 @@ function formModal(route) {
             const fetchTooltipsFromDB = () => {
                 // Perform an API request or database query to retrieve tooltip data
                 return [{
-                        startTime: 10,
-                        endTime: 15,
-                        content: 'ทดสอบ'
-                    },
-                    {
-                        startTime: 20,
-                        endTime: 25,
-                        content: 'เสียงชัดเจน'
-                    },
+                    startTime: 10,
+                    endTime: 15,
+                    content: 'ทดสอบ'
+                },
+                {
+                    startTime: 20,
+                    endTime: 25,
+                    content: 'เสียงชัดเจน'
+                },
                     // More tooltip data...
                 ];
             };
@@ -174,15 +160,15 @@ function formModal(route) {
                     wavesurfer.playPause()
                 })
 
-                toggleMuteButton.onclick = function() {
+                toggleMuteButton.onclick = function () {
                     wavesurfer.toggleMute();
                 };
 
-                setMuteOnButton.onclick = function() {
+                setMuteOnButton.onclick = function () {
                     wavesurfer.setMute(true);
                 };
 
-                setMuteOffButton.onclick = function() {
+                setMuteOffButton.onclick = function () {
                     wavesurfer.setMute(false);
                 };
 
@@ -349,8 +335,47 @@ function formModal(route) {
             }
 
             // $('#CreateModal').modal('show');
-        }
+            $("#CreateModal").modal("show");
 
+        }
+        $('.changeUrlButton').on('click', () => {
+            //const newUrl = 'wav/PinkPanther60.wav'; // Replace with the new URL
+            const newUrl = 'wav/2023/10/01/q-4567-8888-20231001-141026-1696169425.161.wav';
+            // const newUrl = 'wav/'+$('#vioc').val();
+
+            console.log('wav/' + $('#vioc').val());
+            console.log(newUrl);
+            initializeWaveSurfer(newUrl);
+        });
+        $('.vioc').on('click', function () {
+            const newUrl = 'wav/' + $('#vioc').val();
+            console.log('wav/' + $('#vioc').val());
+            console.log(newUrl);
+            initializeWaveSurfer(newUrl);
+        });
+
+
+
+        $('#canclecomment').on('click', () => {
+            document.getElementById('custom-dialog').style.display = 'none';
+        });
+
+
+
+        $('.modelClose').on('click', () => {
+            console.log(wavesurfer);
+            if (wavesurfer) {
+
+                // Destroy the WaveSurfer instance to clear it
+                wavesurfer.destroy();
+                wavesurfer = null; // Set wavesurfer to null to indicate it's destroyed
+            }
+        });
+
+        // Function to change the audio URL
+        const changeAudioUrl = (newUrl) => {
+            wavesurfer.load(newUrl);
+        };
 
 
     });
