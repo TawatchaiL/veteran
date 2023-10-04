@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 use App\Services\AsteriskAmiService;
+use App\Services\IssableService;
 use App\Services\ECCP;
 use App\Services\ECCPUnauthorizedException;
 use App\Services\ECCPConnFailedException;
@@ -40,6 +41,7 @@ class LoginController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
     protected $remote;
+    protected $issable;
     protected $eccp;
     protected $_agent;
     protected $errMsg;
@@ -57,6 +59,7 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
         $this->remote = $asteriskAmiService; // Initialize $remote
+        $this->issable = new IssableService();
         $this->eccp = new ECCP();
 
         $this->eccp_host = config('asterisk.eccp.eccp_host');
@@ -246,7 +249,7 @@ class LoginController extends Controller
 
 
                 $this->_agent = 'SIP/' . $user->phone;
-                $regs = NULL;
+               /*  $regs = NULL;
                 $sExtension = (preg_match('|^(\w+)/(\d+)$|', $this->_agent, $regs)) ? $regs[2] : NULL;
                 //$sPasswordCallback = '1234';
                 //$this->_agentPass = $sPasswordCallback;
@@ -260,8 +263,9 @@ class LoginController extends Controller
                 } catch (Exception $e) {
                     $this->errMsg = '(internal) loginagent: ' . $e->getMessage();
                     return FALSE;
-                }
+                } */
                 //$ll = $this->esperarResultadoLogin();
+                $this->issable->agent_login();
 
                 $queueNames = $user->queues->pluck('queue_name')->implode(',');
                 $user->queue = $queueNames;
