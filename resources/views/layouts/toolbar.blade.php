@@ -75,12 +75,14 @@
                     </div>
                 </div>
                 <button class="btn btn-lg btn-yellow float-left mx-1 button_unbreak"><i class="fas fa-clock"></i>
+                    Unbreak </button>
+                <button class="btn btn-lg btn-yellow float-left mx-1 button_unbreak"><i class="fas fa-clock"></i>
                     UnWarp </button>
 
-                <button {{-- <?= $logoff_dis ?> --}} onclick="location.href='#'" id="btn-logout"
+                <button {{-- <?= $logoff_dis ?> --}}  id="btn-agent-logout"
                     class="btn btn-lg btn-danger float-right"><i class="fas fa-power-off"></i>
                     Logoff </button>
-                <button {{-- <?= $logoff_dis ?> --}} onclick="location.href='#'" id="btn-logout"
+                <button {{-- <?= $logoff_dis ?> --}} id="btn-agent-login"
                     class="btn btn-lg btn-success mx-1 float-right"><i class="fas fa-plug"></i>
                     Login </button>
             </div>

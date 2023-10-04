@@ -44,9 +44,14 @@
     </ul>
 
     <ul class="navbar-nav ml-auto">
-        <li class="nav-item d-none d-sm-inline-block">
+       {{--  <li class="nav-item d-none d-sm-inline-block">
             <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                 <i class="fas fa-xl fa-expand-arrows-alt"></i> <b class="text-primary">ขยาย/ย่อ หน้าจอ</b>
+            </a>
+        </li> --}}
+        <li class="nav-item d-none d-sm-inline-block">
+            <a class="nav-link" href="#" role="button">
+                <i class="fas fa-xl fa-user"></i> <b class="text-primary">{{ $temporaryPhoneStatus }}</b>
             </a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">

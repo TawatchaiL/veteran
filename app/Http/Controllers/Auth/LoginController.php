@@ -11,12 +11,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 use App\Services\AsteriskAmiService;
-use App\Services\ECCP;
-use App\Services\ECCPUnauthorizedException;
-use App\Services\ECCPConnFailedException;
+use App\Services\IssableService;
 
 use App\Models\User;
-use Exception;
+
 
 class LoginController extends Controller
 {
@@ -40,13 +38,7 @@ class LoginController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
     protected $remote;
-    protected $eccp;
-    protected $_agent;
-    protected $errMsg;
-    protected $_agentPass;
-    protected $eccp_host;
-    protected $sUsernameECCP;
-    protected $sPasswordECCP;
+    protected $issable;
 
     /**
      * Create a new controller instance.
@@ -57,11 +49,7 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
         $this->remote = $asteriskAmiService; // Initialize $remote
-        $this->eccp = new ECCP();
-
-        $this->eccp_host = config('asterisk.eccp.eccp_host');
-        $this->sUsernameECCP = config('asterisk.eccp.eccp_user');
-        $this->sPasswordECCP = config('asterisk.eccp.eccp_password');
+        $this->issable = new IssableService();
     }
     /*  protected function attemptLogin(Request $request)
     {
@@ -94,63 +82,6 @@ class LoginController extends Controller
             ->withErrors(['phone' => $message]);
     }
 
-
-    public function _obtenerConexion()
-    {
-        //if (!is_null($this->eccp)) return $this->eccp;
-        /*
-        $cr = $this->eccp->connect($eccp_host, $sUsernameECCP, $sPasswordECCP); */
-        //$sUsernameECCP = 'agentconsole';
-        //$sPasswordECCP = 'agentconsole';
-        $cr = $this->eccp->connect($this->eccp_host, $this->sUsernameECCP, $this->sPasswordECCP);
-        if (isset($cr->failure)) {
-            throw new ECCPUnauthorizedException('Failed to authenticate to ECCP')
-                . ': ' . ((string)$cr->failure->message);
-        }
-
-        if (!is_null($this->_agent)) {
-            $this->eccp->setAgentNumber($this->_agent);
-        }
-
-        $tupla = DB::connection('remote_connection')
-            ->table('call_center.agent')
-            ->select('eccp_password')
-            ->whereRaw("CONCAT(type, '/', number) = ?", [$this->_agent])
-            ->where('estatus', 'A')
-            ->get();
-
-        if (!is_object($tupla))
-            throw new ECCPConnFailedException('Failed to retrieve agent password');
-        if (count($tupla) <= 0)
-            throw new ECCPUnauthorizedException('Agent not found');
-        if (is_null($tupla[0]->eccp_password))
-            throw new ECCPUnauthorizedException('Agent not authorized for ECCP - ECCP password not set');
-        $this->eccp->setAgentPass($tupla[0]->eccp_password);
-
-        return $this->eccp;
-    }
-
-    public function esperarResultadoLogin()
-    {
-        $this->errMsg = '';
-        try {
-            $oECCP = $this->_obtenerConexion();
-            $oECCP->wait_response(1);
-            while ($e = $oECCP->getEvent()) {
-                foreach ($e->children() as $ee) $evt = $ee;
-
-                if ($evt->getName() == 'agentloggedin' && $evt->agent == $this->_agent)
-                    return 'logged-in';
-                if ($evt->getName() == 'agentfailedlogin' && $evt->agent == $this->_agent)
-                    return 'logged-out';
-                // TODO: devolver mismatch si logoneo con éxito a consola equivocada.
-            }
-            return 'logging';   // No se recibieron eventos relevantes
-        } catch (Exception $e) {
-            $this->errMsg = '(internal) esperarResultadoLogin: ' . $e->getMessage();
-            return 'error';
-        }
-    }
 
     public function login(Request $request)
     {
@@ -225,33 +156,31 @@ class LoginController extends Controller
                 $user = Auth::user();
                 $user->phone = $request->phone;
 
-                DB::connection('remote_connection')
+                //check active
+                $active = DB::connection('remote_connection')
                     ->table('call_center.agent')
                     ->where('id', $user->agent_id)
-                    ->update(['number' => $request->phone]);
-
-
-                $this->_agent = 'SIP/' . $user->phone;
-                $regs = NULL;
-                $sExtension = (preg_match('|^(\w+)/(\d+)$|', $this->_agent, $regs)) ? $regs[2] : NULL;
-                //$sPasswordCallback = '1234';
-                //$this->_agentPass = $sPasswordCallback;
-                $iTimeoutMin = 15;
-                try {
-                    $oECCP = $this->_obtenerConexion();
-                    $loginResponse = $oECCP->loginagent($sExtension, NULL, $iTimeoutMin * 60);
-                    if (isset($loginResponse->failure))
-                        $this->errMsg = '(internal) loginagent: ' . $this->_formatoErrorECCP($loginResponse);
-                    //return ($loginResponse->status == 'logged-in' || $loginResponse->status == 'logging');
-                } catch (Exception $e) {
-                    $this->errMsg = '(internal) loginagent: ' . $e->getMessage();
-                    return FALSE;
+                    ->get();
+                if ($active[0]->estatus == 'I') {
+                    auth()->logout();
+                    return redirect()->route('login')
+                        ->with('login_error', 'กรุณาติดต่อผู้ดูแลระบบ')
+                        ->withErrors(['email' => 'กรุณาติดต่อผู้ดูแลระบบ']);
                 }
-                //$ll = $this->esperarResultadoLogin();
 
                 $queueNames = $user->queues->pluck('queue_name')->implode(',');
                 $user->queue = $queueNames;
+                $user->phone_status = "Not Ready";
                 $user->save();
+
+
+                // Update 'number' in the 'call_center.agent' table
+                DB::connection('remote_connection')
+                    ->table('call_center.agent')
+                    ->where('id', $user->agent_id)
+                    ->update(['number' => $user->phone]);
+
+                //$this->issable->agent_login($user->phone);
                 //session(['temporary_phone' => Auth::user()->phone]);
 
                 /* $this->remote->QueuePause('4567', "SIP/9999", 'false', '');
@@ -274,37 +203,27 @@ class LoginController extends Controller
         // Clear the temporary phone from the session
         //$request->session()->forget('temporary_phone');
 
-        // Update the user's phone to an empty value
         $user = Auth::user();
         //$this->remote->queue_log_off($user->queue, $user->phone);
-        $this->_agent = 'SIP/' . $user->phone;
-        try {
-            $oECCP = $this->_obtenerConexion();
-            $response = $oECCP->logoutagent();
-
-            if (isset($response) && isset($response->failure)) {
-                $this->errMsg = '(internal) logoutagent: ' . $this->_formatoErrorECCP($response);
-                return FALSE;
-            }
-
-            $user->phone = '';
-            $user->save();
-
-            DB::connection('remote_connection')
-                ->table('call_center.agent')
-                ->where('id', $user->agent_id)
-                ->update(['number' => 0]);
-
-            $this->guard()->logout();
-            $request->session()->invalidate();
-
-            return redirect('/');
-        } catch (Exception $e) {
-            $this->errMsg = '(internal) logoutagent: ' . $e->getMessage();
-            return FALSE;
+        if ($user->phone_status !== "Not Ready") {
+            $this->issable->agent_logoff($user->phone);
         }
-    }
 
+
+        $user->phone = '';
+        $user->phone_status = 'Not Ready';
+        $user->save();
+
+        DB::connection('remote_connection')
+            ->table('call_center.agent')
+            ->where('id', $user->agent_id)
+            ->update(['number' => 0]);
+
+        $this->guard()->logout();
+        $request->session()->invalidate();
+
+        return redirect('/');
+    }
 
     public function showLoginForm()
     {

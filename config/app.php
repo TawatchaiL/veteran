@@ -196,6 +196,7 @@ return [
         'GraphService' => App\Facades\GraphFacade::class,
         'AsteriskAmi' => App\Facades\AsteriskAmiFacade::class,
         'ECCP' => App\Facades\ECCP::class,
+        'Issable' => App\Facades\IssableFacade::class,
     ])->toArray(),
 
 ];
