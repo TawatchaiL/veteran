@@ -230,7 +230,7 @@ class LoginController extends Controller
                     ->table('call_center.agent')
                     ->where('id', $user->agent_id)
                     ->get();
-                if ($active->estatus == 'I') {
+                if ($active[0]->estatus == 'I') {
                     auth()->logout();
                     return redirect()->route('login')
                         ->with('login_error', 'กรุณาติดต่อผู้ดูแลระบบ')
