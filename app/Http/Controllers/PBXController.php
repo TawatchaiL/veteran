@@ -35,12 +35,13 @@ class PBXController extends Controller
             $this->issable->agent_login($user->phone);
 
             // Update user's phone_status
-            $user->phone_status = "Ready";
+            $user->phone_status_id = 1;
+            $user->phone_status = "พร้อมรับสาย";
             $user->save();
 
-            return ['success' => true, 'message' => 'เข้าระบบรับสาย เรียบร้อยแล้ว'];
+            return ['success' => true, 'message' => 'พร้อมรับสาย'];
         } else {
-            return ['error' => false, 'message' => 'error'];
+            return ['success' => false, 'message' => 'error'];
         }
     }
 
@@ -54,12 +55,13 @@ class PBXController extends Controller
             $this->issable->agent_logoff($user->phone);
 
             // Update user's phone_status
-            $user->phone_status = "Not Ready";
+            $user->phone_status_id = 0;
+            $user->phone_status = "ไม่พร้อมรับสาย";
             $user->save();
 
-            return ['success' => true, 'message' => 'ออกจากระบบรับสาย เรียบร้อยแล้ว'];
+            return ['success' => true, 'message' => 'ไม่พร้อมรับสาย'];
         } else {
-            return ['error' => false, 'message' => 'error'];
+            return ['success' => false, 'message' => 'error'];
         }
     }
 
@@ -74,7 +76,8 @@ class PBXController extends Controller
 
             // Update user's phone_status
             $user->phone = '';
-            $user->phone_status = "Not Ready";
+            $user->phone_status_id = 0;
+            $user->phone_status = "ไม่พร้อมรับสาย";
             $user->save();
 
             DB::connection('remote_connection')

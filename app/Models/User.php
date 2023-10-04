@@ -31,6 +31,7 @@ class User extends Authenticatable
         'position_id',
         'phone',
         'queue',
+        'phone_status_id',
         'phone_status',
         'break_text',
     ];

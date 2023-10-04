@@ -6,6 +6,7 @@
             method: 'POST',
             success: function(result) {
                 console.log(result)
+                $('#phone_state').html(result.message);
             }
         });
     });
@@ -17,6 +18,7 @@
             method: 'POST',
             success: function(result) {
                 console.log(result)
+                $('#phone_state').html(result.message);
             }
         });
     });
