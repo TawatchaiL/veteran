@@ -6,10 +6,10 @@
                     class="fas fa-bars"></i></a>
         </li>
 
-        <li class="nav-item d-none d-sm-inline-block"><a href="#" class="nav-link"> [ <i
+       {{--  <li class="nav-item d-none d-sm-inline-block"><a href="#" class="nav-link"> [ <i
                     class="fa-solid fa-lg fa-truck-medical"></i>
                 <b class="text-primary"> โรงพยาบาลพุทธชินราช พิษณุโลก</b> ]
-            </a></li>
+            </a></li> --}}
 
         <li class="nav-item dropdown user-menu">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
