@@ -30,14 +30,40 @@ class VoicerecordController extends Controller
     public function index(Request $request)
     {
 
-        $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')->get();
-        // $remoteData2 = DB::connection('remote_connection2')->table('call_center.call_recording')->get();
+        // $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')->get();
+        // // $remoteData2 = DB::connection('remote_connection2')->table('call_center.call_recording')->get();
 
-        $datas = DB::connection('remote_connection')
+        // $datas = DB::connection('remote_connection')
+        //     ->table('call_center.call_recording')
+        //     ->join('remote_connection.asteriskcdrdb.cdr', 'call_recording.uniqueid', '=', 'cdr.uniqueid')
+        //     ->select('call_recording.*', 'cdr.*') // Use * to select all columns, or specify the columns you want explicitly
+        //     ->get();
+
+
+        $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')->get();
+
+        $remoteData2 = DB::connection('remote_connection')
             ->table('call_center.call_recording')
-            ->join('remote_connection.asteriskcdrdb.cdr', 'call_recording.uniqueid', '=', 'cdr.uniqueid')
-            ->select('call_recording.*', 'cdr.*') // Use * to select all columns, or specify the columns you want explicitly
             ->get();
+
+        // Now you have data from both tables, and you can perform the join in your PHP code
+        $datas = [];
+
+        foreach ($remoteData2 as $record) {
+            foreach ($remoteData as $cdrRecord) {
+                if ($record->uniqueid === $cdrRecord->uniqueid) {
+                    // Perform your logic here to combine the data from both tables
+                    // For example, you can create an associative array with the combined data
+                    $combinedData = [
+                        'uniqueid' => $record->uniqueid,
+                        'other_field_from_call_recording' => $record->other_field,
+                        'other_field_from_cdr' => $cdrRecord->other_field,
+                        // Add other fields as needed
+                    ];
+                    $datas[] = $combinedData;
+                }
+            }
+        }
 
         dd($datas);
         if ($request->ajax()) {
