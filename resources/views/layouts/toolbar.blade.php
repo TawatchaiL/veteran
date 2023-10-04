@@ -75,16 +75,16 @@
                     </div>
                 </div>
                 <button class="btn btn-lg btn-warning custom-button float-left mx-1 button_unbreak"><i class="fas fa-clock"></i>
-                    Unbreak </button>
+                    หยุดพัก </button>
                 <button class="btn btn-lg btn-warning custom-button float-left mx-1 button_unbreak"><i class="fas fa-clock"></i>
                     UnWarp </button>
 
                 <button {{-- <?= $logoff_dis ?> --}}  id="btn-agent-logout"
                     class="btn btn-lg btn-danger custom-button float-right"><i class="fas fa-power-off"></i>
-                    Logoff </button>
+                    ไม่พร้อมรับสาย </button>
                 <button {{-- <?= $logoff_dis ?> --}} id="btn-agent-login"
                     class="btn btn-lg btn-success custom-button mx-1 float-right"><i class="fas fa-plug"></i>
-                    Login </button>
+                    พร้อมรับสาย </button>
             </div>
         </div>
     </div>

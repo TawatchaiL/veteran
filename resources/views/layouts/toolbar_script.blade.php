@@ -27,12 +27,12 @@
         });
     });
 
+    let bid;
     $(document).on('click', '.button_break', function(e) {
         e.preventDefault();
-        var id = 2;
+        var bid = $(this).data('id');
         var additionalData = {
-            phone: 9999,
-            break_id: id,
+            id_break: bid,
         };
         $.ajax({
             url: "/agent_break",
@@ -41,6 +41,9 @@
 
             success: function(result) {
                 console.log(result)
+                $('#phone_state').html(result.message);
+                $('#phone_state_icon').html(result.icon);
+                $('#ToolbarModal').modal('hide');
             }
         });
     });
@@ -60,5 +63,4 @@
             }
         });
     });
-
 </script>

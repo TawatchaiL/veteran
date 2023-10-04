@@ -144,6 +144,6 @@
     }
 
     .custom-button {
-        width: 150px;
+        width: 170px;
     }
 </style>

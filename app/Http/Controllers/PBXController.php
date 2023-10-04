@@ -80,7 +80,7 @@ class PBXController extends Controller
             $user->phone = '';
             $user->phone_status_id = 0;
             $user->phone_status = "ไม่พร้อมรับสาย";
-            $user->phone_status_icon = '<i class="fa-solid fa-user-xmark"></i>';
+            $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-xmark"></i>';
             $user->save();
 
             DB::connection('remote_connection')
@@ -89,6 +89,26 @@ class PBXController extends Controller
                 ->update(['number' => 0]);
 
             Auth::logout();
+        } else {
+            return ['error' => false, 'message' => 'error'];
+        }
+    }
+
+    public function AgentBreak(Request $request)
+    {
+        // Retrieve the authenticated user
+        $user = Auth::user();
+
+        if ($user) {
+            // Perform agent login action using IssableService
+            $this->issable->agent_logoff($user->phone, $request->get('id_break'));
+
+            // Update user's phone_status
+            $user->phone_status_id = 2;
+            $user->phone_status = "พักเบรค";
+            $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-clock"></i>';
+            $user->save();
+
         } else {
             return ['error' => false, 'message' => 'error'];
         }
