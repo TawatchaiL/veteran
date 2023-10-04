@@ -177,7 +177,7 @@ class CaseType6Controller extends Controller
     public function casetype($id)
     {
         $data = DB::table('crm_case_types')
-        ->whereRaw('contact_id = ' . $id . '')
+        ->whereRaw('parent_id = ' . $id . '')
         ->get();
         return response()->json(['data' => $data]);
     }
