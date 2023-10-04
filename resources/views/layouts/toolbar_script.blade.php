@@ -3,7 +3,7 @@
         e.preventDefault();
         alert();
         $.ajax({
-            url: "/agent_login",
+            url: "{{ route('agent.login') }}",
             method: 'POST',
             success: function(result) {
                 console.log(result)

@@ -23,16 +23,27 @@ class PBXController extends Controller
      */
     public function __construct(AsteriskAmiService $asteriskAmiService, IssableService $issableService)
     {
-        $this->middleware('guest')->except('logout');
-        $this->remote = $asteriskAmiService;
-        $this->issable = $issableService;
+        //$this->middleware('guest')->except('logout');
+        //$this->remote = $asteriskAmiService;
+        //$this->issable = $issableService;
     }
 
     public function loginAgentToQueue()
     {
         $user = Auth::user();
 
+        // Perform agent login action using IssableService
+        $this->issable->agent_login($user->phone);
 
+        // Update user's phone_status
+        $user->phone_status = "Ready";
+        $user->save();
+
+        // Update 'number' in the 'call_center.agent' table
+        DB::connection('remote_connection')
+            ->table('call_center.agent')
+            ->where('id', $user->agent_id)
+            ->update(['number' => $user->phone]);
 
         return ['success' => true, 'message' => 'เข้าระบบรับสาย เรียบร้อยแล้ว'];
     }
