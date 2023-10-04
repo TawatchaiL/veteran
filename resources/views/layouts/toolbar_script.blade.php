@@ -55,6 +55,12 @@
         });
     });
 
+    $(window).on('beforeunload', function() {
+        // Your code to execute before the page is unloaded
+        // For example, you can show a confirmation dialog here
+        return 'Are you sure you want to leave this page?';
+    });
+
     $(window).on('unload', function() {
         $.ajax({
             url: "{{ route('agent.logoff') }}",
