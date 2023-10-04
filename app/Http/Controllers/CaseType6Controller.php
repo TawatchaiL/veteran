@@ -174,4 +174,11 @@ class CaseType6Controller extends Controller
 
         return redirect('casetype')->with('success', 'ลบ ประเภทการติดต่อ เรียบร้อยแล้ว');
     } //
+    public function casetype($id)
+    {
+        $data = DB::table('crm_case_types')
+        ->whereRaw('contact_id = ' . $id . '')
+        ->get();
+        return response()->json(['data' => $data]);
+    }
 }

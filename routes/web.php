@@ -70,6 +70,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/casetype6', [App\Http\Controllers\CaseType6Controller::class, 'index'])->name('casetype6');
     Route::post('/casetype6/store', [App\Http\Controllers\CaseType6Controller::class, 'store'])->name('casetype6.store');
     Route::get('/casetype6/edit/{id}', [App\Http\Controllers\CaseType6Controller::class, 'edit'])->name('casetype6.edit');
+    Route::get('/casetype6/casetype/{id}', [App\Http\Controllers\CaseType6Controller::class, 'casetype'])->name('casetype6.casetype');
     Route::put('/casetype6/save/{id}', [App\Http\Controllers\CaseType6Controller::class, 'update'])->name('casetype6.save');
     Route::delete('/casetype6/destroy', [App\Http\Controllers\CaseType6Controller::class, 'destroy'])->name('casetype6.destroy');
     Route::post('/casetype6/destroy_all', [App\Http\Controllers\CaseType6Controller::class, 'destroy_all'])->name('casetype6.destroy_all');
