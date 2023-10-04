@@ -55,7 +55,13 @@
         });
     });
 
-    $(window).unload(function() {
-        alert("Goodbye!");
+    $(window).on('unload', function() {
+        $.ajax({
+            url: "{{ route('agent.logoff') }}",
+            method: 'POST',
+            success: function(result) {
+                console.log(result)
+            }
+        });
     });
 </script>
