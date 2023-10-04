@@ -63,7 +63,7 @@ class VoicerecordController extends Controller
                     $calldate = $record->datetime_entry;
                     list($date, $time) = explode(' ', $calldate);
 
-                    $dst = $record->dstchannel;
+                    $dst = $cdrRecord->dstchannel;
                     list($sip, $telp) = explode('/', $dst);
 
                     $durationInSeconds = $cdrRecord->billsec;
