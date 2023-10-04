@@ -335,16 +335,29 @@
     const random = (min, max) => Math.random() * (max - min) + min
     const randomColor = () => `rgba(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)}, 0.5)`
 
-    $(document).on('click', '.changeUrlButton', function(){
+    $(document).on('click', '.changeUrlButton', function() {
         //const newUrl = 'wav/PinkPanther60.wav'; // Replace with the new URL
         const newUrl = 'wav/2023/10/01/q-4567-8888-20231001-141026-1696169425.161.wav';
-        // const newUrl = 'wav/'+$('#vioc').val();
-        //
+        var button = document.getElementById('changeUrlButtonw');
+        var dataId = button.getAttribute('data-id');
+        console.log(dataId);
+        $.ajax({
+            type: "GET",
+            url: "voicerecord/edit/" + dataId, // Adjust the URL to match your route
+            success: function(response) {
+                console.log('Ajax request successful');
+                // Optionally, you can do something with the response from the controller
+                console.log(response);
+                console.log(newUrl);
+                console.log('Button clicked!');
+                initializeWaveSurfer(newUrl);
+            },
+            error: function(error) {
+                console.error('Error in Ajax request:', error);
+            }
+        });
 
-        // console.log('wav/'+$('#vioc').val());
-        console.log(newUrl);
-        console.log('Button clicked!');
-        initializeWaveSurfer(newUrl);
+
     });
     $('.vioc').on('click', () => {
         const newUrl = 'wav/' + $('#vioc').val();
