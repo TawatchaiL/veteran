@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
-class CaseTypeController extends Controller
+class CaseType6Controller extends Controller
 {
     /**
      * Create a new controller instance.

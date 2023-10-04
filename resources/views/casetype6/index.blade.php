@@ -100,11 +100,11 @@
 
     </section>
 
-    @include('casetype.create')
+    @include('casetype6.create')
 
-    @include('casetype.edit')
+    @include('casetype6.edit')
 @endsection
 
 @section('script')
-    @include('casetype.script')
+    @include('casetype6.script')
 @endsection
