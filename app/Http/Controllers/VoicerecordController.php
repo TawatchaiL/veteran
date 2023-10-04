@@ -59,10 +59,10 @@ class VoicerecordController extends Controller
         foreach ($remoteData2 as $record) {
             foreach ($remoteData as $cdrRecord) {
                 if ($record->uniqueid === $cdrRecord->uniqueid) {
-                    $calldate = $record->calldate; // Assuming $record->calldate is '2023-10-01 11:52:37'
-
+                    $calldate = $record->datetime_entry; // Assuming $record->calldate is '2023-10-01 11:52:37'
                     list($date, $time) = explode(' ', $calldate);
                     $combinedData = [
+
                         'uniqueid' => $record->uniqueid,
                         'cdate' => $date,
                         'ctime' => $time,
@@ -70,7 +70,7 @@ class VoicerecordController extends Controller
                         'telno' => $cdrRecord->src,
                         'agent' => $cdrRecord->dst,
                         'duration' => $record->billsec,
-                        'action' => $record->	recordingfile,
+                        'action' => $record->recordingfile,
                         // ...
                     ];
                     $datas[] = (object)$combinedData;
