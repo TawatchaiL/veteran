@@ -210,6 +210,7 @@
                                                         'id' => 'Addtelhome',
                                                         'placeholder' => 'เบอร์โทรศัพท์บ้าน',
                                                         'class' => 'form-control',
+                                                        'onkeydown' => 'validateNumber(event)',
                                                     ]) !!}
                                                 </div>
                                             </div>

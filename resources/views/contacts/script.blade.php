@@ -739,10 +739,10 @@
             });
         });
     });
-
-    $('#Addtelhome').on('onkeydown', function(e) {
-        if (48 > e.which || e.which > 57) {
-            if ( e.key.length === 1 ) e.preventDefault();
+    function validateNumber(event) {
+        var keyCode = event.which || event.keyCode;
+        if ((keyCode < 48 || keyCode > 57) && keyCode !== 8) {
+            event.preventDefault();
         }
-    }); 
+    }
 </script>
