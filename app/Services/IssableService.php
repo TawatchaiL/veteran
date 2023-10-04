@@ -131,6 +131,7 @@ class IssableService
     public function agent_logoff($phone)
     {
         $this->_agent = 'SIP/' . $phone;
+        //fix
         try {
             $oECCP = $this->_obtenerConexion();
             $response = $oECCP->logoutagent();
