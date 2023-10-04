@@ -55,7 +55,7 @@
         });
     });
 
-    /* $(window).on('beforeunload', function() {
+    $(window).on('beforeunload', function() {
         // Your code to execute before the page is unloaded
         // For example, you can show a confirmation dialog here
         return 'Are you sure you want to leave this page?';
@@ -63,43 +63,13 @@
 
     $(window).on('unload', function() {
         $.ajax({
-            url: "{{ route('agent.logoff') }}",
+            url: "{{ route('agent.logoff_out') }}",
             method: 'POST',
             success: function(result) {
                 console.log(result)
             }
         });
-    }); */
-
-    var pageIsReloading = false;
-
-    $(document).ready(function() {
-        // Set the flag when the page is about to be reloaded
-        $(window).on('beforeunload', function() {
-            if (!pageIsReloading) {
-                // Your code to execute before the page is unloaded
-                // For example, you can show a confirmation dialog here
-                return 'Are you sure you want to leave this page?';
-            }
-        });
-
-        $(window).on('unload', function() {
-            if (!pageIsReloading) {
-                $.ajax({
-                    url: "{{ route('agent.logoff_out') }}",
-                    method: 'POST',
-                    success: function(result) {
-                        console.log(result)
-                    }
-                });
-            }
-        });
-
-        // Listen for the "beforeunload" event triggered when the page is reloaded
-        $(window).on('beforeunload', function() {
-            pageIsReloading = true;
-        });
-
-
     });
+
+
 </script>
