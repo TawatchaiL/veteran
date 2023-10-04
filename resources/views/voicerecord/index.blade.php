@@ -153,7 +153,7 @@
             </div>
         </div>
     </section>
-    @include('voicerecord.create')
+    {{-- @include('voicerecord.create') --}}
 @endsection
 @section('script')
     @include('voicerecord.script')
