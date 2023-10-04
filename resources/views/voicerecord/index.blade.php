@@ -84,7 +84,7 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fa-solid fa-volume-high"></i> ไฟล์บันทึกเสียงสนทนา 1111111111
+                            <h3 class="card-title"><i class="fa-solid fa-volume-high"></i> ไฟล์บันทึกเสียงสนทนา
                             </h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="maximize">
@@ -139,7 +139,7 @@
                                             <th>เบอร์โทรศัพท์</th>
                                             <th>Agent ที่รับสาย</th>
                                             <th>เวลาที่ใช้สาย</th>
-                                            <th width="100px"></th>
+                                            <th width="100px">test</th>
                                         </tr>
                                     </thead>
                                     <tbody>
