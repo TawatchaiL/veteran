@@ -2,7 +2,7 @@
 <script src='dist/js/jspdf.min.js'></script>
 <script src="dist/js/jspdf.plugin.autotable.min.js"></script>
 <script src="/js/app.js?v=1"></script>
-
+{{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 <script type="module">
     import WaveSurfer from 'https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js'
     import Hover from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/hover.esm.js'
@@ -335,16 +335,35 @@
     const random = (min, max) => Math.random() * (max - min) + min
     const randomColor = () => `rgba(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)}, 0.5)`
 
-    $('.changeUrlButton').on('click', () => {
+    $(document).on('click', '.changeUrlButton', function() {
         //const newUrl = 'wav/PinkPanther60.wav'; // Replace with the new URL
-        const newUrl = 'wav/2023/10/01/q-4567-8888-20231001-141026-1696169425.161.wav';
-        // const newUrl = 'wav/'+$('#vioc').val();
+        // const newUrl = 'wav/2023/10/01/q-4567-8888-20231001-141026-1696169425.161.wav';
+        var button = document.getElementById('changeUrlButtonw');
+        var dataId = button.getAttribute('data-id');
+        console.log(dataId);
+        $.ajax({
+            type: "GET",
+            url: "voicerecord/edit/" + dataId, // Adjust the URL to match your route
+            success: function(response) {
+                console.log('Ajax request successful');
+                // Optionally, you can do something with the response from the controller
+                console.log(response);
+                console.log(response.voic); // Accessing voic property
+                console.log(response.remoteData2.datetime_entry); // Accessing remoteData2 property
+                // console.log(newUrl);
+                const newUrl = 'wav/' + response.voic;
 
-        console.log('wav/'+$('#vioc').val());
-        console.log(newUrl);
-        initializeWaveSurfer(newUrl);
+                console.log('Button clicked!');
+                initializeWaveSurfer(newUrl);
+            },
+            error: function(error) {
+                console.error('Error in Ajax request:', error);
+            }
+        });
+
+
     });
-    $('.vioc').on('click', function() {
+    $('.vioc').on('click', () => {
         const newUrl = 'wav/' + $('#vioc').val();
         console.log('wav/' + $('#vioc').val());
         console.log(newUrl);
