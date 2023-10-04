@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('crm_case_types', function (Blueprint $table) {
             $table->id();
+            $table->integer('parent_id')->nullable();
+            $table->string('name')->nullable();
+            $$table->integer('crmlev')->nullable();
+            $table->integer('crmlist')->nullable();
+            $table->string('agent')->nullable();
             $table->timestamps();
         });
     }
