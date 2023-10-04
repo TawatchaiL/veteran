@@ -335,25 +335,28 @@
     const random = (min, max) => Math.random() * (max - min) + min
     const randomColor = () => `rgba(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)}, 0.5)`
 
-    $('.changeUrlButton').on('click', () => {
-        //const newUrl = 'wav/PinkPanther60.wav'; // Replace with the new URL
-        const newUrl = 'wav/2023/10/01/q-4567-8888-20231001-141026-1696169425.161.wav';
-        // const newUrl = 'wav/'+$('#vioc').val();
+    // $('.changeUrlButton').on('click', () => {
+    //     //const newUrl = 'wav/PinkPanther60.wav'; // Replace with the new URL
+    //     const newUrl = 'wav/2023/10/01/q-4567-8888-20231001-141026-1696169425.161.wav';
+    //     // const newUrl = 'wav/'+$('#vioc').val();
+    //     //
 
-        console.log('wav/'+$('#vioc').val());
-        console.log(newUrl);
-        initializeWaveSurfer(newUrl);
-    });
-    $('.vioc').on('click', function() {
-        const newUrl = 'wav/' + $('#vioc').val();
-        console.log('wav/' + $('#vioc').val());
-        console.log(newUrl);
-        initializeWaveSurfer(newUrl);
-    });
+    //     console.log('wav/'+$('#vioc').val());
+    //     console.log(newUrl);
+    //     initializeWaveSurfer(newUrl);
+    // });
+    // $('.vioc').on('click', function() {
+    //     const newUrl = 'wav/' + $('#vioc').val();
+    //     console.log('wav/' + $('#vioc').val());
+    //     console.log(newUrl);
+    //     initializeWaveSurfer(newUrl);
+    // });
 
     $('#canclecomment').on('click', () => {
         document.getElementById('custom-dialog').style.display = 'none';
     });
+
+
 
     $('.modelClose').on('click', () => {
         console.log(wavesurfer);
