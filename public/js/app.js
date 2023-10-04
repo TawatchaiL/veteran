@@ -1,4 +1,5 @@
 var token = $('meta[name=csrf-token]').attr('content');
+import TimelinePlugin from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/timeline.esm.js'
 
 function formModal(route) {
     $.get(route, function (res) {
