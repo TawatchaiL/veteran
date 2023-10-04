@@ -11,10 +11,8 @@ use App\Services\IssableService;
 
 use App\Models\User;
 
-
 class PBXController extends Controller
 {
-
     protected $remote;
     protected $issable;
 
@@ -23,21 +21,25 @@ class PBXController extends Controller
      *
      * @return void
      */
-    public function __construct(AsteriskAmiService $asteriskAmiService) // Inject AsteriskAmiService
+    public function __construct(AsteriskAmiService $asteriskAmiService, IssableService $issableService)
     {
         $this->middleware('guest')->except('logout');
-        $this->remote = $asteriskAmiService; // Initialize $remote
-        $this->issable = new IssableService();
+        $this->remote = $asteriskAmiService;
+        $this->issable = $issableService;
     }
 
-    public function queue_agent_login()
+    public function loginAgentToQueue()
     {
         $user = Auth::user();
+
+        // Perform agent login action using IssableService
         $this->issable->agent_login($user->phone);
 
+        // Update user's phone_status
         $user->phone_status = "Ready";
         $user->save();
 
+        // Update 'number' in the 'call_center.agent' table
         DB::connection('remote_connection')
             ->table('call_center.agent')
             ->where('id', $user->agent_id)

@@ -19,4 +19,4 @@ Route::post('/agent_unbreak', function (Request $request) {
     return $result;
 })->name('agent.unbreak');
 
-Route::post('/agent_login', [App\Http\Controllers\PBXController::class, 'queue_agent_login'])->name('agent.login');
+Route::get('/agent_login', [App\Http\Controllers\PBXController::class, 'queue_agent_login'])->name('agent.login');
