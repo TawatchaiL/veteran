@@ -2,7 +2,7 @@
 <script src='dist/js/jspdf.min.js'></script>
 <script src="dist/js/jspdf.plugin.autotable.min.js"></script>
 <script src="/js/app.js?v=1"></script>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="module">
     import WaveSurfer from 'https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js'
     import Hover from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/hover.esm.js'
@@ -335,7 +335,7 @@
     const random = (min, max) => Math.random() * (max - min) + min
     const randomColor = () => `rgba(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)}, 0.5)`
 
-    $('.changeUrlButton').on('click', () => {
+    $(document).on('click', '.changeUrlButton', function(){
         //const newUrl = 'wav/PinkPanther60.wav'; // Replace with the new URL
         const newUrl = 'wav/2023/10/01/q-4567-8888-20231001-141026-1696169425.161.wav';
         // const newUrl = 'wav/'+$('#vioc').val();
