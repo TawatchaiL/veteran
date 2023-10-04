@@ -170,7 +170,8 @@ class LoginController extends Controller
 
                 $queueNames = $user->queues->pluck('queue_name')->implode(',');
                 $user->queue = $queueNames;
-                $user->phone_status = "Not Ready";
+                $user->phone_status_id = 0;
+                $user->phone_status = "ไม่พร้อมรับสาย";
                 $user->save();
 
 
@@ -211,7 +212,8 @@ class LoginController extends Controller
 
 
         $user->phone = '';
-        $user->phone_status = 'Not Ready';
+        $user->phone_status_id = 0;
+        $user->phone_status = "ไม่พร้อมรับสาย";
         $user->save();
 
         DB::connection('remote_connection')

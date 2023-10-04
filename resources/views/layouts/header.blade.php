@@ -51,7 +51,7 @@
         </li> --}}
         <li class="nav-item d-none d-sm-inline-block">
             <a class="nav-link" href="#" role="button">
-                <i class="fas fa-xl fa-user"></i> <b class="text-primary">{{ $temporaryPhoneStatus }}</b>
+                <i class="fas fa-xl fa-user"></i> <b class="text-primary" id="phone_state">{{ $temporaryPhoneStatus }}</b>
             </a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">

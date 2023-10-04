@@ -19,7 +19,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('phone')->nullable();
-            $table->string('queue')->nullable();
+            $table->string('phone_status_id')->nullable();
+            $table->integer('agent_id')->default(0);
             $table->string('phone_status')->nullable();
             $table->string('break_text')->nullable();
             $table->rememberToken();
