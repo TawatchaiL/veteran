@@ -54,4 +54,8 @@
             }
         });
     });
+
+    $(window).unload(function() {
+        alert("Goodbye!");
+    });
 </script>
