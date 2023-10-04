@@ -118,6 +118,20 @@
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
+            $.ajax({
+                url: "casetype6/casetype/0",
+                method: 'GET',
+                success: function(res) {
+                    var provinceOb = $('#casetype1');
+                    provinceOb.html('<option value="">เลือกประเภทการติดต่อ</option>');
+                    $.each(res.data, function(index, item) {
+                        provinceOb.append(
+                            $('<option></option>').val(item.code).html(item
+                                .name_th)
+                        );
+                    });
+                }
+            });
             $('#CreateModal').modal('show');
         });
 
