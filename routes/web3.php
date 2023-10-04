@@ -19,4 +19,6 @@ Route::post('/agent_unbreak', function (Request $request) {
     return $result;
 })->name('agent.unbreak'); */
 
-Route::get('/agent_login', [App\Http\Controllers\PBXController::class, 'loginAgentToQueue'])->name('agent.login');
+Route::group(['middleware' => ['auth']], function () {
+    Route::post('/agent_login', [App\Http\Controllers\PBXController::class, 'loginAgentToQueue'])->name('agent.login');
+});
