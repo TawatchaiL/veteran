@@ -173,6 +173,13 @@ class LoginController extends Controller
                 $user->phone_status = "Not Ready";
                 $user->save();
 
+
+                // Update 'number' in the 'call_center.agent' table
+                DB::connection('remote_connection')
+                    ->table('call_center.agent')
+                    ->where('id', $user->agent_id)
+                    ->update(['number' => $user->phone]);
+
                 //$this->issable->agent_login($user->phone);
                 //session(['temporary_phone' => Auth::user()->phone]);
 

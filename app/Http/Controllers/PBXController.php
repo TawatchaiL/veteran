@@ -38,12 +38,6 @@ class PBXController extends Controller
         $user->phone_status = "Ready";
         $user->save();
 
-        // Update 'number' in the 'call_center.agent' table
-        DB::connection('remote_connection')
-            ->table('call_center.agent')
-            ->where('id', $user->agent_id)
-            ->update(['number' => $user->phone]);
-
         return ['success' => true, 'message' => 'เข้าระบบรับสาย เรียบร้อยแล้ว'];
     }
 }
