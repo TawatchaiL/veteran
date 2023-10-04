@@ -55,19 +55,37 @@
         });
     });
 
-    $(window).on('beforeunload', function() {
-        // Your code to execute before the page is unloaded
-        // For example, you can show a confirmation dialog here
-        return 'คุณแน่ใจว่าจะปิดหน้าโปรแกรมใช่ไหม ถ้าใช่จะทำการออกจากระบบให้อัติโนมัติ?';
-    });
+    var pageIsReloading = false;
 
-    $(window).on('unload', function() {
-        $.ajax({
-            url: "{{ route('agent.logoff_out') }}",
-            method: 'POST',
-            success: function(result) {
-                console.log(result)
+    $(document).ready(function() {
+        // Set the flag when the page is about to be reloaded
+        $(window).on('beforeunload', function() {
+            if (!pageIsReloading) {
+                // Your code to execute before the page is unloaded
+                // For example, you can show a confirmation dialog here
+                return 'คุณแน่ใจว่าจะปิดหน้าโปรแกรมใช่ไหม ถ้าใช่จะทำการออกจากระบบให้อัติโนมัติ?';
             }
+        });
+
+        // Listen for the "beforeunload" event triggered when the page is reloaded
+        $(window).on('beforeunload', function() {
+            pageIsReloading = true;
+        });
+
+        // Handle the button click event to trigger the logoff action
+        $('#logoffButton').on('click', function() {
+            $.ajax({
+                url: "{{ route('agent.logoff_out') }}",
+                method: 'POST',
+                success: function(result) {
+                    console.log(result);
+                    // Handle success, e.g., show a message to the user
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                    // Handle error, e.g., display an error message
+                }
+            });
         });
     });
 </script>
