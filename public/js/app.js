@@ -5,6 +5,10 @@ function formModal(route) {
         $("#modal_form_content").empty();
         $('#modal_form_content').html(res);
         let wavesurfer;
+        let TimelinePlugin;
+        let Minimap;
+        let RegionsPlugin;
+        let Hover;
         const initializeWaveSurfer = (newUrl) => {
 
             //wav
