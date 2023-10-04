@@ -1,7 +1,5 @@
 <script>
     $(document).on('click', '#btn-agent-login', function(e) {
-        e.preventDefault();
-        alert();
         $.ajax({
             url: "/agent_login",
             method: 'POST',
@@ -12,7 +10,6 @@
     });
 
     $(document).on('click', '.button_break', function(e) {
-        e.preventDefault();
         var id = 2;
         var additionalData = {
             phone: 9999,
@@ -30,7 +27,6 @@
     });
 
     $(document).on('click', '.button_unbreak', function(e) {
-        e.preventDefault();
         var additionalData = {
             phone: 9999,
         };
