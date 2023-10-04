@@ -41,6 +41,12 @@
                             </select>
                         </div>
                     </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fas fa-list-ol"></i> ประเภทการติดต่อ:</strong>
+                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
@@ -51,6 +57,12 @@
                                 class="select2 form-control" id="casetype2"
                                 name="casetype2">
                             </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fas fa-list-ol"></i> ประเภทการติดต่อ:</strong>
+                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                         </div>
                     </div>
                 </div>
@@ -65,6 +77,12 @@
                             </select>
                         </div>
                     </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fas fa-list-ol"></i> ประเภทการติดต่อ:</strong>
+                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
@@ -75,6 +93,12 @@
                                 class="select2 form-control" id="casetype4"
                                 name="casetype4">
                             </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fas fa-list-ol"></i> ประเภทการติดต่อ:</strong>
+                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                         </div>
                     </div>
                 </div>
@@ -89,6 +113,12 @@
                             </select>
                         </div>
                     </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fas fa-list-ol"></i> ประเภทการติดต่อ:</strong>
+                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
@@ -101,8 +131,6 @@
                             </select>
                         </div>
                     </div>
-                </div>
-                <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
                             <strong><i class="fas fa-list-ol"></i> ประเภทการติดต่อ:</strong>
