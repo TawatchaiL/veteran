@@ -483,7 +483,7 @@
                         }
 
                         $.each(res.datax.emer, function(index, value) {
-                            $('#myTbl3e').append($('<tr>')
+                            $('#myTbl3e tbody').append($('<tr>')
                                 .append($('<td style="display:none;">')
                                     .append(value.id))
                                 .append($('<td width="30%">').append(
@@ -624,7 +624,7 @@
 </script>
 <script>
     $('#addRowBtn').click(function() {
-        $('#myTbl3').append($('<tr>')
+        $('#myTbl3 tbody').append($('<tr>')
             .append($('<td width="30%">').append(
                 '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="emergencyname" name="emergencyname[]" class="form-control has-feedback-left" value="" required="required"></div>'
             ))
@@ -639,7 +639,7 @@
             )));
     });
     $('#editRowBtne').click(function() {
-        $('#myTbl3e').append($('<tr>')
+        $('#myTbl3e tbody').append($('<tr>')
             .append($('<td style="display:none;">').append(''))
             .append($('<td width="30%">').append(
                 '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemergencyname" name="eemergencyname[]" class="form-control has-feedback-left" value="" required="required"></div>'

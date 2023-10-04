@@ -246,33 +246,6 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td width="30%">
-                                                    <div class="col-md-12 col-sm-12 col-xs-12">
-                                                        <input type="hidden" value="" name="emertypep[]" id="emertypep">
-                                                        <input type="text" id="emergencynamep" name="emergencynamep[]"
-                                                            class="form-control has-feedback-left" value=""
-                                                            required="required">
-                                                    </div>
-                                                </td>
-
-                                                <td width="10%">
-                                                    <div class="col-md-12 col-sm-12 col-xs-12">
-                                                        <input type="text" id="emerrelationp" name="emerrelationp[]"
-                                                            class="form-control has-feedback-left" value=""
-                                                            required="required">
-                                                    </div>
-                                                </td>
-                                                <td width="10%">
-                                                    <div class="col-md-12 col-sm-12 col-xs-12">
-                                                        <input type="text" id="emerphonep" name="emerphonep[]"
-                                                            class="form-control has-feedback-left" onkeydown="validateNumber(event)" value=""
-                                                            required="required">
-                                                    </div>
-                                                </td>
-                                                <td width="5%">
-                                                </td>
-                                            </tr>
                                             </tbody>
                                         </table>
                                     </div>
