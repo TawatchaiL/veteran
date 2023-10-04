@@ -62,6 +62,9 @@ class VoicerecordController extends Controller
                     $calldate = $record->datetime_entry; // Assuming $record->calldate is '2023-10-01 11:52:37'
                     list($date, $time) = explode(' ', $calldate);
                     $combinedData = [
+                        'id' => $record->id,
+                        'datetime_entry' => $record->datetime_entry,
+
 
                         'uniqueid' => $record->uniqueid,
                         'cdate' => $date,
