@@ -8,7 +8,9 @@
 {{-- --------------------------------------- --}}
 
 <div class="modal-header bg-primary">
-    <h4 class="modal-title"><i class="fa-solid fa-volume-high"></i> {{ $remoteData2->recordingfile }} </h4>
+    <h4 class="modal-title"><i class="fa-solid fa-volume-high"></i>
+        {{-- {{ $remoteData2->recordingfile }} --}}
+    </h4>
     <div class="closew"> <i class="fa-solid fa-clock"></i> ความยาว <span id="duration">00:00:00</span> นาที
     </div>
 
