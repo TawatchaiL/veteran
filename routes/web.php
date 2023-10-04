@@ -67,6 +67,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/casetype/destroy', [App\Http\Controllers\CaseTypeController::class, 'destroy'])->name('casetype.destroy');
     Route::post('/casetype/destroy_all', [App\Http\Controllers\CaseTypeController::class, 'destroy_all'])->name('casetype.destroy_all');
 
+    Route::get('/casetype6', [App\Http\Controllers\CaseType6Controller::class, 'index'])->name('casetype6');
+    Route::post('/casetype6/store', [App\Http\Controllers\CaseType6Controller::class, 'store'])->name('casetype6.store');
+    Route::get('/casetype6/edit/{id}', [App\Http\Controllers\CaseType6Controller::class, 'edit'])->name('casetype6.edit');
+    Route::put('/casetype6/save/{id}', [App\Http\Controllers\CaseType6Controller::class, 'update'])->name('casetype6.save');
+    Route::delete('/casetype6/destroy', [App\Http\Controllers\CaseType6Controller::class, 'destroy'])->name('casetype6.destroy');
+    Route::post('/casetype6/destroy_all', [App\Http\Controllers\CaseType6Controller::class, 'destroy_all'])->name('casetype6.destroy_all');
+
     Route::get('/cases', [App\Http\Controllers\CasesController::class, 'index'])->name('cases');
     Route::post('/cases/store', [App\Http\Controllers\CasesController::class, 'store'])->name('cases.store');
     Route::get('/cases/edit/{id}', [App\Http\Controllers\CasesController::class, 'edit'])->name('cases.edit');
