@@ -107,12 +107,12 @@
 <script src="plugins/dropzone/min/dropzone.min.js"></script>
 
 <script>
-const addemerphone = () => {
-    const tableBody = document.getElementById('myTbl3p').getElementsByTagName('tbody')[0];
+    const addemerphone = () => {
+        const tableBody = document.getElementById('myTbl3p').getElementsByTagName('tbody')[0];
 
-    document.getElementById('addRowBtnp').addEventListener('click', () => {
-        const newRow = document.createElement('tr');
-        newRow.innerHTML = `
+        document.getElementById('addRowBtnp').addEventListener('click', () => {
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
             <td width="30%">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <input type="hidden" value="" name="emertypep[]" class="emertypep"><input type="text" name="emergencynamep[]" class="form-control has-feedback-left" value="" required>
@@ -133,13 +133,13 @@ const addemerphone = () => {
             </td>
         `;
 
-        tableBody.appendChild(newRow);
+            tableBody.appendChild(newRow);
 
-        newRow.querySelector('.removeRowBtnp').addEventListener('click', () => {
-            tableBody.removeChild(newRow);
+            newRow.querySelector('.removeRowBtnp').addEventListener('click', () => {
+                tableBody.removeChild(newRow);
+            });
         });
-    });
-};
+    };
 
     /* const updateDigitalClock = () => {
         const now = new Date();
@@ -412,6 +412,7 @@ const addemerphone = () => {
                     $(".card-footer").css("display", "block")
                     $('.bclose').css('display', 'none');
                     addemerphone();
+
                     function validateNumber(event) {
                         var keyCode = event.which || event.keyCode;
                         if ((keyCode < 48 || keyCode > 57) && keyCode !== 8) {
@@ -430,11 +431,14 @@ const addemerphone = () => {
                             url: "thdistrict/district/" + provinceId,
                             method: 'GET',
                             success: function(res) {
-                                districtOb.html('<option value="">เลือกอำเภอ</option>');
-                                cartonOb.html('<option value="">เลือกตำบล</option>');
+                                districtOb.html(
+                                    '<option value="">เลือกอำเภอ</option>');
+                                cartonOb.html(
+                                    '<option value="">เลือกตำบล</option>');
                                 $.each(res.data, function(index, item) {
                                     districtOb.append(
-                                        $('<option></option>').val(item.code).html(item
+                                        $('<option></option>').val(
+                                            item.code).html(item
                                             .name_th)
                                     );
                                 });
@@ -449,10 +453,12 @@ const addemerphone = () => {
                             url: "thsubdistrict/subdistrict/" + districtId,
                             method: 'GET',
                             success: function(res) {
-                                cartonOb.html('<option value="">เลือกตำบล</option>');
+                                cartonOb.html(
+                                    '<option value="">เลือกตำบล</option>');
                                 $.each(res.data, function(index, item) {
                                     cartonOb.append(
-                                        $('<option></option>').val(item.code).html(item
+                                        $('<option></option>').val(
+                                            item.code).html(item
                                             .name_th)
                                     );
                                 });
@@ -460,144 +466,201 @@ const addemerphone = () => {
                         });
                     });
                     setTimeout(function() {
+                        $.ajax({
+                            url: "{{ route('thcity.city') }}",
+                            method: 'GET',
+                            success: function(res) {
+                                var provinceOb = $('#cityp');
+                                provinceOb.html(
+                                    '<option value="">เลือกจังหวัด</option>'
+                                );
+                                $.each(res.data, function(index,
+                                    item) {
+                                    provinceOb.append(
+                                        $('<option></option>')
+                                        .val(item.code)
+                                        .html(item.name_th)
+                                    );
+                                });
+                            }
+                        });
+
+                        setTimeout(function() {
+                            var telnop = $('#telnop').val();
                             $.ajax({
-                                url: "{{ route('thcity.city') }}",
+                                url: "contacts/popupedit/" + telnop,
                                 method: 'GET',
                                 success: function(res) {
-                                    var provinceOb = $('#cityp');
-                                    provinceOb.html(
-                                        '<option value="">เลือกจังหวัด</option>'
-                                        );
-                                    $.each(res.data, function(index,
-                                        item) {
-                                        provinceOb.append(
-                                            $('<option></option>')
-                                            .val(item.code)
-                                            .html(item.name_th)
-                                        );
+                                    $('#phonenosuccess').html(
+                                        '<h2 style="color: #1a16eb"><i class="fa-solid fa-user-tie"></i>' +
+                                        res.datax.datac.fname +
+                                        ' ' + res.datax.datac
+                                        .lname + '</h2>');
+                                    $('#contractid').val(res.datax.datac
+                                        .id);
+                                    $('#hnp').val(res.datax.datac.hn);
+                                    $('#adddatep').val(res.datax.datac
+                                        .adddate);
+                                    $('#fnamep').val(res.datax.datac
+                                        .fname);
+                                    $('#lnamep').val(res.datax.datac
+                                        .lname);
+                                    $('#homenop').val(res.datax.datac
+                                        .homeno);
+                                    $('#moop').val(res.datax.datac.moo);
+                                    $('#soip').val(res.datax.datac.soi);
+                                    $('#roadp').val(res.datax.datac
+                                        .road);
+                                    $('#cityp').val(res.datax.datac
+                                        .city);
+                                    $('#cityp').change();
+                                    setTimeout(function() {
+                                        $('#districtp').val(res
+                                            .datax.datac
+                                            .district);
+                                        $('#districtp')
+                                    .change();
+                                        setTimeout(function() {
+                                            $('#subdistrictp')
+                                                .val(res
+                                                    .datax
+                                                    .datac
+                                                    .subdistrict
+                                                    );
+                                        }, 500)
+                                    }, 500)
+                                    $('#postcodep').val(res.datax.datac
+                                        .postcode);
+                                    $('#telhomep').val(res.datax.datac
+                                        .telhome);
+                                    $('#phonenop').val(res.datax.datac
+                                        .phoneno);
+                                    $('#worknop').val(res.datax.datac
+                                        .workno);
+
+                                    var tbody = document.querySelector(
+                                        '#myTbl3p tbody');
+                                    while (tbody.firstChild) {
+                                        tbody.removeChild(tbody
+                                            .firstChild);
+                                    }
+                                    $.each(res.datax.emer, function(
+                                        index, value) {
+                                        $('#myTbl3p tbody')
+                                            .append($('<tr>')
+                                                .append($(
+                                                        '<td width="30%">'
+                                                        )
+                                                    .append(
+                                                        '<div class="col-md-12 col-sm-12 col-xs-12"><input type="hidden" value="' +
+                                                        value
+                                                        .id +
+                                                        '" name="emertypep[]" id="emertypep"><input type="text" id="emergencynamep" name="emergencynamep[]" class="form-control has-feedback-left" value="' +
+                                                        value
+                                                        .emergencyname +
+                                                        '" required="required"></div>'
+                                                        ))
+                                                .append($(
+                                                        '<td width="10%">'
+                                                        )
+                                                    .append(
+                                                        '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerrelation" name="emerrelationp[]" class="form-control has-feedback-left" value="' +
+                                                        value
+                                                        .emerrelation +
+                                                        '" required="required"></div>'
+                                                        ))
+                                                .append($(
+                                                        '<td width="10%">'
+                                                        )
+                                                    .append(
+                                                        '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone" name="emerphonep[]" class="form-control has-feedback-left" onkeydown="validateNumber(event)" value="' +
+                                                        value
+                                                        .emerphone +
+                                                        '" required="required"></div>'
+                                                        ))
+                                                .append($(
+                                                        '<td width="5%">'
+                                                        )
+                                                    .append(
+                                                        '<button type="button" name="deletem" id="deletem" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
+                                                    )));
                                     });
+
                                 }
                             });
-
-                                setTimeout(function() {
-                                    var telnop = $('#telnop').val();
-                                    $.ajax({
-                                    url: "contacts/popupedit/" + telnop,
-                                    method: 'GET',
-                                    success: function(res) {
-                                        $('#phonenosuccess').html('<h2 style="color: #1a16eb"><i class="fa-solid fa-user-tie"></i>' + res.datax.datac.fname + ' ' + res.datax.datac.lname + '</h2>');
-                                        $('#contractid').val(res.datax.datac.id);
-                                        $('#hnp').val(res.datax.datac.hn);
-                                        $('#adddatep').val(res.datax.datac.adddate);
-                                        $('#fnamep').val(res.datax.datac.fname);
-                                        $('#lnamep').val(res.datax.datac.lname);
-                                        $('#homenop').val(res.datax.datac.homeno);
-                                        $('#moop').val(res.datax.datac.moo);
-                                        $('#soip').val(res.datax.datac.soi);
-                                        $('#roadp').val(res.datax.datac.road);
-                                        $('#cityp').val(res.datax.datac.city);
-                                        $('#cityp').change();
-                                        setTimeout(function() {
-                                            $('#districtp').val(res.datax.datac.district);
-                                            $('#districtp').change();
-                                            setTimeout(function() {
-                                                $('#subdistrictp').val(res.datax.datac.subdistrict);
-                                            }, 500)
-                                        }, 500)
-                                        $('#postcodep').val(res.datax.datac.postcode);
-                                        $('#telhomep').val(res.datax.datac.telhome);
-                                        $('#phonenop').val(res.datax.datac.phoneno);
-                                        $('#worknop').val(res.datax.datac.workno);
-
-                                        var tbody = document.querySelector('#myTbl3p tbody');
-                                        while (tbody.firstChild) {
-                                        tbody.removeChild(tbody.firstChild);
-                                        }
-                                        $.each(res.datax.emer, function(index, value) {
-                                            $('#myTbl3p tbody').append($('<tr>')
-                                                .append($('<td width="30%">').append(
-                                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="hidden" value="' +
-                                                    value.id +
-                                                    '" name="emertypep[]" id="emertypep"><input type="text" id="emergencynamep" name="emergencynamep[]" class="form-control has-feedback-left" value="' +
-                                                    value.emergencyname +
-                                                    '" required="required"></div>'))
-                                                .append($('<td width="10%">').append(
-                                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerrelation" name="emerrelationp[]" class="form-control has-feedback-left" value="' +
-                                                    value.emerrelation +
-                                                    '" required="required"></div>'))
-                                                .append($('<td width="10%">').append(
-                                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone" name="emerphonep[]" class="form-control has-feedback-left" onkeydown="validateNumber(event)" value="' +
-                                                    value.emerphone +
-                                                    '" required="required"></div>'))
-                                                .append($('<td width="5%">').append(
-                                                    '<button type="button" name="deletem" id="deletem" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
-                                                )));
-                                        });
-
-                                    }
-                                });
-                            }, 500)
                         }, 500)
+                    }, 500)
 
                     $('#SubmitCreateFormPOP').click(function(e) {
                         var emergencyData = [];
-                            if($('#contractid').val()===""){
-                                $('#myTbl3p tbody tr').each(function() {
-                                        var emergencyname = $(this).find('input[name="emergencynamep[]"]').val();
-                                        var emerrelation = $(this).find('input[name="emerrelationp[]"]').val();
-                                        var emerphone = $(this).find('input[name="emerphonep[]"]').val();
-                                        var emergency = {
-                                            emergencyname: emergencyname,
-                                            emerrelation: emerrelation,
-                                            emerphone: emerphone
-                                        };
-                                        emergencyData.push(emergency);
-                                    });
-                                    var additionalData = {
-                                    hn: $('#hnp').val(),
-                                    adddate: $('#adddatep').val(),
-                                    fname: $('#fnamep').val(),
-                                    lname: $('#lnamep').val(),
-                                    homeno: $('#homenop').val(),
-                                    moo: $('#moop').val(),
-                                    soi: $('#soip').val(),
-                                    road: $('#roadp').val(),
-                                    city: $('#cityp').val(),
-                                    district: $('#districtp').val(),
-                                    subdistrict: $('#subdistrictp').val(),
-                                    postcode: $('#postcodep').val(),
-                                    telhome: $('#telhomep').val(),
-                                    phoneno: $('#phonenop').val(),
-                                    workno: $('#worknop').val(),
-                                    telno: $('#telnop').val(),
-                                    casetype1: $('#casetype1p').val(),
-                                    tranferstatus: $('#tranferstatusp').val(),
-                                    casedetail: $('#casedetailp').val(),
-                                    casestatus: $('#casestatusp').val(),
-                                    agent: $('#telnop').val(),
-                                    emergencyData: emergencyData,
-                                    _token: token
+                        if ($('#contractid').val() === "") {
+                            $('#myTbl3p tbody tr').each(function() {
+                                var emergencyname = $(this).find(
+                                    'input[name="emergencynamep[]"]').val();
+                                var emerrelation = $(this).find(
+                                    'input[name="emerrelationp[]"]').val();
+                                var emerphone = $(this).find(
+                                    'input[name="emerphonep[]"]').val();
+                                var emergency = {
+                                    emergencyname: emergencyname,
+                                    emerrelation: emerrelation,
+                                    emerphone: emerphone
                                 };
-                                $.ajax({
-                                    url: "{{ route('contacts.casescontract') }}",
-                                    method: 'post',
-                                    data: additionalData,
-                                    success: function(result) {
-                                        if (result.errors) {
-                                            $('.alert-danger-pop').html('');
-                                            $.each(result.errors, function(key, value) {
-                                                $('.alert-danger-pop').show();
-                                                $('.alert-danger-pop').append('<strong><li>' + value +
+                                emergencyData.push(emergency);
+                            });
+                            var additionalData = {
+                                hn: $('#hnp').val(),
+                                adddate: $('#adddatep').val(),
+                                fname: $('#fnamep').val(),
+                                lname: $('#lnamep').val(),
+                                homeno: $('#homenop').val(),
+                                moo: $('#moop').val(),
+                                soi: $('#soip').val(),
+                                road: $('#roadp').val(),
+                                city: $('#cityp').val(),
+                                district: $('#districtp').val(),
+                                subdistrict: $('#subdistrictp').val(),
+                                postcode: $('#postcodep').val(),
+                                telhome: $('#telhomep').val(),
+                                phoneno: $('#phonenop').val(),
+                                workno: $('#worknop').val(),
+                                telno: $('#telnop').val(),
+                                casetype1: $('#casetype1p').val(),
+                                tranferstatus: $('#tranferstatusp').val(),
+                                casedetail: $('#casedetailp').val(),
+                                casestatus: $('#casestatusp').val(),
+                                agent: $('#telnop').val(),
+                                emergencyData: emergencyData,
+                                _token: token
+                            };
+                            $.ajax({
+                                url: "{{ route('contacts.casescontract') }}",
+                                method: 'post',
+                                data: additionalData,
+                                success: function(result) {
+                                    if (result.errors) {
+                                        $('.alert-danger-pop').html('');
+                                        $.each(result.errors, function(key,
+                                            value) {
+                                            $('.alert-danger-pop')
+                                            .show();
+                                            $('.alert-danger-pop')
+                                                .append('<strong><li>' +
+                                                    value +
                                                     '</li></strong>');
-                                            });
-                                        } else {
-                                            $('.alert-danger-pop').hide();
-                                            $('.alert-success-pop').show();
-                                            $('.alert-success-pop').append('<strong><li>' + result.success +
-                                                '</li></strong>');
-                            var cardElement = document.getElementById($('#telnop').val()); // Replace 'yourCardId' with the actual ID of your card element
-                                cardElement.remove();
-                                            //$('#'.$('#telnop').val()).remove();
+                                        });
+                                    } else {
+                                        $('.alert-danger-pop').hide();
+                                        $('.alert-success-pop').show();
+                                        $('.alert-success-pop').append(
+                                            '<strong><li>' + result
+                                            .success +
+                                            '</li></strong>');
+                                        var cardElement = document
+                                            .getElementById($('#telnop')
+                                        .val()); // Replace 'yourCardId' with the actual ID of your card element
+                                        cardElement.remove();
+                                        //$('#'.$('#telnop').val()).remove();
                                         //$('#EditModal').modal('hide');
                                         //toastr.success(result.success, {
                                         //    timeOut: 5000
@@ -608,69 +671,81 @@ const addemerphone = () => {
 
                                         //}, 10000);
 
-                                        }
                                     }
-                                });
-                            }else{
-                                if (!confirm("ยืนยันการทำรายการ ?")) return;
-                                $('#myTbl3p tbody tr').each(function(index, tr) {
-                                    var emertype = $(this).find('input[name="emertypep[]"]').val();
-                                    var emergencyname = $(this).find('input[name="emergencynamep[]"]').val();
-                                    var emerrelation = $(this).find('input[name="emerrelationp[]"]').val();
-                                    var emerphone = $(this).find('input[name="emerphonep[]"]').val();
-                                    var emergency = {
-                                        emertype: emertype,
-                                        emergencyname: emergencyname,
-                                        emerrelation: emerrelation,
-                                        emerphone: emerphone
-                                    };
-                                    emergencyData.push(emergency);
-                                });
-                                var id = $('#contractid').val();
-                                var additionalData = {
-                                    hn: $('#hnp').val(),
-                                    adddate: $('#adddatep').val(),
-                                    fname: $('#fnamep').val(),
-                                    lname: $('#lnamep').val(),
-                                    homeno: $('#homenop').val(),
-                                    moo: $('#moop').val(),
-                                    soi: $('#soip').val(),
-                                    road: $('#roadp').val(),
-                                    city: $('#cityp').val(),
-                                    district: $('#districtp').val(),
-                                    subdistrict: $('#subdistrictp').val(),
-                                    postcode: $('#postcodep').val(),
-                                    telhome: $('#telhomep').val(),
-                                    phoneno: $('#phonenop').val(),
-                                    workno: $('#worknop').val(),
-                                    telno: $('#telnop').val(),
-                                    casetype1: $('#casetype1p').val(),
-                                    tranferstatus: $('#tranferstatusp').val(),
-                                    casedetail: $('#casedetailp').val(),
-                                    casestatus: $('#casestatusp').val(),
-                                    agent: $('#telnop').val(),
-                                    emergencyData: emergencyData
+                                }
+                            });
+                        } else {
+                            if (!confirm("ยืนยันการทำรายการ ?")) return;
+                            $('#myTbl3p tbody tr').each(function(index, tr) {
+                                var emertype = $(this).find(
+                                    'input[name="emertypep[]"]').val();
+                                var emergencyname = $(this).find(
+                                    'input[name="emergencynamep[]"]').val();
+                                var emerrelation = $(this).find(
+                                    'input[name="emerrelationp[]"]').val();
+                                var emerphone = $(this).find(
+                                    'input[name="emerphonep[]"]').val();
+                                var emergency = {
+                                    emertype: emertype,
+                                    emergencyname: emergencyname,
+                                    emerrelation: emerrelation,
+                                    emerphone: emerphone
                                 };
-                                $.ajax({
-                                    url: "contacts/casescontractupdate/" + id,
-                                    method: 'PUT',
-                                    data: additionalData,
+                                emergencyData.push(emergency);
+                            });
+                            var id = $('#contractid').val();
+                            var additionalData = {
+                                hn: $('#hnp').val(),
+                                adddate: $('#adddatep').val(),
+                                fname: $('#fnamep').val(),
+                                lname: $('#lnamep').val(),
+                                homeno: $('#homenop').val(),
+                                moo: $('#moop').val(),
+                                soi: $('#soip').val(),
+                                road: $('#roadp').val(),
+                                city: $('#cityp').val(),
+                                district: $('#districtp').val(),
+                                subdistrict: $('#subdistrictp').val(),
+                                postcode: $('#postcodep').val(),
+                                telhome: $('#telhomep').val(),
+                                phoneno: $('#phonenop').val(),
+                                workno: $('#worknop').val(),
+                                telno: $('#telnop').val(),
+                                casetype1: $('#casetype1p').val(),
+                                tranferstatus: $('#tranferstatusp').val(),
+                                casedetail: $('#casedetailp').val(),
+                                casestatus: $('#casestatusp').val(),
+                                agent: $('#telnop').val(),
+                                emergencyData: emergencyData
+                            };
+                            $.ajax({
+                                url: "contacts/casescontractupdate/" + id,
+                                method: 'PUT',
+                                data: additionalData,
 
-                                    success: function(result) {
-                                        if (result.errors) {
-                                            $('.alert-danger-pop').html('');
-                                            $.each(result.errors, function(key, value) {
-                                                $('.alert-danger-pop').show();
-                                                $('.alert-danger-pop').append('<strong><li>' + value +
+                                success: function(result) {
+                                    if (result.errors) {
+                                        $('.alert-danger-pop').html('');
+                                        $.each(result.errors, function(key,
+                                            value) {
+                                            $('.alert-danger-pop')
+                                            .show();
+                                            $('.alert-danger-pop')
+                                                .append('<strong><li>' +
+                                                    value +
                                                     '</li></strong>');
-                                            });
-                                        } else {
-                                            $('.alert-danger-pop').hide();
-                                            $('.alert-success-pop').show();
-                                            $('.alert-success-pop').append('<strong><li>' + result.success +
-                                                '</li></strong>');
-                                                var cardElement = document.getElementById($('#telnop').val()); // Replace 'yourCardId' with the actual ID of your card element
-                                cardElement.remove();
+                                        });
+                                    } else {
+                                        $('.alert-danger-pop').hide();
+                                        $('.alert-success-pop').show();
+                                        $('.alert-success-pop').append(
+                                            '<strong><li>' + result
+                                            .success +
+                                            '</li></strong>');
+                                        var cardElement = document
+                                            .getElementById($('#telnop')
+                                        .val()); // Replace 'yourCardId' with the actual ID of your card element
+                                        cardElement.remove();
                                         //$('#EditModal').modal('hide');
                                         //toastr.success(result.success, {
                                         //    timeOut: 5000
@@ -681,10 +756,10 @@ const addemerphone = () => {
 
                                         //}, 10000);
 
-                                        }
                                     }
-                                });
-                            }
+                                }
+                            });
+                        }
                     });
                 }
             });
@@ -740,6 +815,15 @@ const addemerphone = () => {
 
 
 @yield('script')
+
+<script>
+    $(window).on('beforeunload', function(e) {
+        // Display a confirmation dialog
+        var confirmationMessage = 'อย่าลืม Logout ออกจากระบบ?';
+        (e || window.event).returnValue = confirmationMessage;
+        return confirmationMessage;
+    });
+</script>
 
 </html>
 {{-- </x-laravel-ui-adminlte::adminlte-layout> --}}
