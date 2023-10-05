@@ -5,6 +5,8 @@
                 <h4 class="modal-title"><i class="fa-solid fa-volume-high"></i> <span id="vioc_name"> 09999999-1002-2023-08-01-110000.wav </span> </h4>
                 <div class="closew"> <i class="fa-solid fa-clock"></i> ความยาว <span id="duration">00:00:00</span> นาที
                 </div>
+                <input type="hidden" id="call_recording_id" value="">
+                <input type="hidden" id="uniqueid" value="">
 
                 {{-- <button type="button" class="close modelClose" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
