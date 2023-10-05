@@ -389,6 +389,52 @@
                     $('#AddName4').attr('disabled', true);
                 }   
         });
+        $('#casetype4').on('change', function() {
+            var parent_id = $(this).val();
+                if(parent_id != ''){    
+                    $.ajax({
+                        url: "casetype6/casetype/" + parent_id,
+                        method: 'GET',
+                        success: function(res) {
+                            $.each(res.data, function(index, item) {
+                                $('#casetype5').append(
+                                    $('<option></option>').val(item.id).html(item.name)
+                                );
+                            });
+                        }
+                    });
+                    $('#AddName4').attr('disabled', true);
+                    $('#casetype5').attr('disabled', false);
+                    $('#AddName5').attr('disabled', false);
+                }else{
+                    $('#AddName4').attr('disabled', false);
+                    $('#casetype5').attr('disabled', true);
+                    $('#AddName5').attr('disabled', true);
+                }   
+        });
+        $('#casetype5').on('change', function() {
+            var parent_id = $(this).val();
+                if(parent_id != ''){    
+                    $.ajax({
+                        url: "casetype6/casetype/" + parent_id,
+                        method: 'GET',
+                        success: function(res) {
+                            $.each(res.data, function(index, item) {
+                                $('#casetype6').append(
+                                    $('<option></option>').val(item.id).html(item.name)
+                                );
+                            });
+                        }
+                    });
+                    $('#AddName5').attr('disabled', true);
+                    $('#casetype6').attr('disabled', false);
+                    $('#AddName6').attr('disabled', false);
+                }else{
+                    $('#AddName5').attr('disabled', false);
+                    $('#casetype6').attr('disabled', true);
+                    $('#AddName6').attr('disabled', true);
+                }   
+        });
     //function changecasetype(event) {
     //    var selectno = parseInt(event.target.name.substring(8, 9));
         //if(selectnext < 7){
