@@ -182,6 +182,7 @@
                 method: 'post',
                 data: additionalData,
                 success: function(result) {
+                    alert(result);
                     if (result.errors) {
                         alert('OK1');
                         $('.alert-danger').html('');
