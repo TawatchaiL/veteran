@@ -166,6 +166,7 @@
             }
             for (let c = 1; c < 7; c++) {
                 if (!$('#AddName' + c).prop('disabled')) {
+                    alert('OK');
                     var crmname = $('#AddName' + c).val();
                     var p = c - 1;
                     var parent_id = $('#casetype' + p).val();
