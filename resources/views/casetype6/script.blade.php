@@ -332,6 +332,7 @@
                             });
                         }
                     });
+                    $('#AddName1').attr('disabled', true);
                     $('#casetype2').attr('disabled', false);
                     $('#AddName2').attr('disabled', false);
                 }    
