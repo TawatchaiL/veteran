@@ -337,27 +337,27 @@
                     $('#casetype2').attr('disabled', false);
                     $('#AddName2').attr('disabled', false);
 
-                    $('#casetype3').attr('disabled', false);
-                    $('#AddName3').attr('disabled', false);
-                    $('#casetype4').attr('disabled', false);
-                    $('#AddName4').attr('disabled', false);
-                    $('#casetype5').attr('disabled', false);
-                    $('#AddName5').attr('disabled', false);
-                    $('#casetype6').attr('disabled', false);
-                    $('#AddName6').attr('disabled', false);
+                    $('#casetype3').attr('disabled', true);
+                    $('#AddName3').attr('disabled', true);
+                    $('#casetype4').attr('disabled', true);
+                    $('#AddName4').attr('disabled', true);
+                    $('#casetype5').attr('disabled', true);
+                    $('#AddName5').attr('disabled', true);
+                    $('#casetype6').attr('disabled', true);
+                    $('#AddName6').attr('disabled', true);
                 }else{
                     $('#AddName1').attr('disabled', false);
                     $('#casetype2').attr('disabled', true);
                     $('#AddName2').attr('disabled', true);
 
-                    $('#casetype3').attr('disabled', false);
-                    $('#AddName3').attr('disabled', false);
-                    $('#casetype4').attr('disabled', false);
-                    $('#AddName4').attr('disabled', false);
-                    $('#casetype5').attr('disabled', false);
-                    $('#AddName5').attr('disabled', false);
-                    $('#casetype6').attr('disabled', false);
-                    $('#AddName6').attr('disabled', false);
+                    $('#casetype3').attr('disabled', true);
+                    $('#AddName3').attr('disabled', true);
+                    $('#casetype4').attr('disabled', true);
+                    $('#AddName4').attr('disabled', true);
+                    $('#casetype5').attr('disabled', true);
+                    $('#AddName5').attr('disabled', true);
+                    $('#casetype6').attr('disabled', true);
+                    $('#AddName6').attr('disabled', true);
                 }   
         });
 
@@ -379,23 +379,23 @@
                     $('#casetype3').attr('disabled', false);
                     $('#AddName3').attr('disabled', false);
 
-                    $('#casetype4').attr('disabled', false);
-                    $('#AddName4').attr('disabled', false);
-                    $('#casetype5').attr('disabled', false);
-                    $('#AddName5').attr('disabled', false);
-                    $('#casetype6').attr('disabled', false);
-                    $('#AddName6').attr('disabled', false);
+                    $('#casetype4').attr('disabled', true);
+                    $('#AddName4').attr('disabled', true);
+                    $('#casetype5').attr('disabled', true);
+                    $('#AddName5').attr('disabled', true);
+                    $('#casetype6').attr('disabled', true);
+                    $('#AddName6').attr('disabled', true);
                 }else{
                     $('#AddName2').attr('disabled', false);
                     $('#casetype3').attr('disabled', true);
                     $('#AddName3').attr('disabled', true);
 
-                    $('#casetype4').attr('disabled', false);
-                    $('#AddName4').attr('disabled', false);
-                    $('#casetype5').attr('disabled', false);
-                    $('#AddName5').attr('disabled', false);
-                    $('#casetype6').attr('disabled', false);
-                    $('#AddName6').attr('disabled', false);
+                    $('#casetype4').attr('disabled', true);
+                    $('#AddName4').attr('disabled', true);
+                    $('#casetype5').attr('disabled', true);
+                    $('#AddName5').attr('disabled', true);
+                    $('#casetype6').attr('disabled', true);
+                    $('#AddName6').attr('disabled', true);
                 }   
         });
         $('#casetype3').on('change', function() {
@@ -416,19 +416,19 @@
                     $('#casetype4').attr('disabled', false);
                     $('#AddName4').attr('disabled', false);
 
-                    $('#casetype5').attr('disabled', false);
-                    $('#AddName5').attr('disabled', false);
-                    $('#casetype6').attr('disabled', false);
-                    $('#AddName6').attr('disabled', false);
+                    $('#casetype5').attr('disabled', true);
+                    $('#AddName5').attr('disabled', true);
+                    $('#casetype6').attr('disabled', true);
+                    $('#AddName6').attr('disabled', true);
                 }else{
                     $('#AddName3').attr('disabled', false);
                     $('#casetype4').attr('disabled', true);
                     $('#AddName4').attr('disabled', true);
 
-                    $('#casetype5').attr('disabled', false);
-                    $('#AddName5').attr('disabled', false);
-                    $('#casetype6').attr('disabled', false);
-                    $('#AddName6').attr('disabled', false);
+                    $('#casetype5').attr('disabled', true);
+                    $('#AddName5').attr('disabled', true);
+                    $('#casetype6').attr('disabled', true);
+                    $('#AddName6').attr('disabled', true);
                 }   
         });
         $('#casetype4').on('change', function() {
@@ -449,15 +449,15 @@
                     $('#casetype5').attr('disabled', false);
                     $('#AddName5').attr('disabled', false);
 
-                    $('#casetype6').attr('disabled', false);
-                    $('#AddName6').attr('disabled', false);
+                    $('#casetype6').attr('disabled', true);
+                    $('#AddName6').attr('disabled', true);
                 }else{
                     $('#AddName4').attr('disabled', false);
                     $('#casetype5').attr('disabled', true);
                     $('#AddName5').attr('disabled', true);
 
-                    $('#casetype6').attr('disabled', false);
-                    $('#AddName6').attr('disabled', false);
+                    $('#casetype6').attr('disabled', true);
+                    $('#AddName6').attr('disabled', true);
                 }   
         });
         $('#casetype5').on('change', function() {
@@ -484,7 +484,7 @@
                 }   
         });
 
-        
+
     //function changecasetype(event) {
     //    var selectno = parseInt(event.target.name.substring(8, 9));
         //if(selectnext < 7){
