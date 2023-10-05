@@ -9,6 +9,7 @@
     };
 
     const sendAjaxRequest = (url, method, data = {}) => {
+        cosole.log(data)
         $.ajax({
             url,
             method,
@@ -79,12 +80,10 @@
 
     $(document).on('click', '.button_break', function(e) {
         e.preventDefault();
-        console.log($(this).data('id'));
         const bid = $(this).data('id');
         const additionalData = {
             id_break: bid,
         };
-        console.log(additionalData);
         sendAjaxRequest("{{ route('agent.break') }}", "POST", additionalData);
     });
 
