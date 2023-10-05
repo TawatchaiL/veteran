@@ -36,7 +36,7 @@ class CaseType6Controller extends Controller
 
         if ($request->ajax()) {
 
-            $datas = Case_type::orderBy("id", "desc")->get();
+            $datas = CrmCaseType::orderBy("id", "desc")->get();
             $state_text = array('ไม่เปิดใช้งาน', 'เปิดใช้งาน');
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
@@ -79,7 +79,7 @@ class CaseType6Controller extends Controller
     {
         //
         $validator =  Validator::make($request->all(), [
-            'name' => 'required|string|max:255|unique:case_types',
+            'name' => 'required|string|max:70',
             //'code' => 'required|string|max:10',
             'status' => 'required',
         ], [
@@ -95,7 +95,7 @@ class CaseType6Controller extends Controller
         }
 
         $input = $request->all();
-        $contract = Case_type::create($input);
+        $contract = CrmCaseType::create($input);
         return response()->json(['success' => 'เพิ่ม ประเภทการติดต่อ เรียบร้อยแล้ว']);
     }
 
@@ -116,7 +116,7 @@ class CaseType6Controller extends Controller
     public function edit($id)
     {
 
-        $data = Case_type::find($id);
+        $data = CrmCaseType::find($id);
         return response()->json(['data' => $data]);
     }
 
@@ -147,7 +147,7 @@ class CaseType6Controller extends Controller
             'status' => $request->get('status'),
         ];
 
-        $company = Case_type::find($id);
+        $company = CrmCaseType::find($id);
         $company->update($companyd);
 
         return response()->json(['success' => 'แก้ไข ประเภทการติดต่อ เรียบร้อยแล้ว']);
@@ -159,7 +159,7 @@ class CaseType6Controller extends Controller
     public function destroy(Request $request)
     {
         $id = $request->get('id');
-        Case_type::find($id)->delete();
+        CrmCaseType::find($id)->delete();
         return ['success' => true, 'message' => 'ลบ ประเภทการติดต่อ เรียบร้อยแล้ว'];
     }
 
@@ -169,7 +169,7 @@ class CaseType6Controller extends Controller
         $arr_del  = $request->get('table_records'); //$arr_ans is Array MacAddress
 
         for ($xx = 0; $xx < count($arr_del); $xx++) {
-            Case_type::find($arr_del[$xx])->delete();
+            CrmCaseType::find($arr_del[$xx])->delete();
         }
 
         return redirect('casetype')->with('success', 'ลบ ประเภทการติดต่อ เรียบร้อยแล้ว');
