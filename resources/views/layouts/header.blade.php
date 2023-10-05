@@ -95,9 +95,28 @@
     </ul>
 
     <ul class="navbar-nav ml-auto">
+        @php
+            switch ($temporaryPhoneStatusID) {
+                case 0:
+                    $temporaryPhoneColor = 'btn btn-secondary';
+                    break;
+                case 1:
+                    $temporaryPhoneColor = 'btn btn-success';
+                    break;
+                case 2:
+                    $temporaryPhoneColor = 'btn btn-warning';
+                    break;
+                case 3:
+                    $temporaryPhoneColor = '';
+                    break;
+                default:
+                    $temporaryPhoneColor = 'btn btn-secondary';
+                    break;
+            }
+        @endphp
 
         <li class="nav-item d-none d-sm-inline-block">
-            <a class="btn btn-secondary" role="button" id="ToolbarButton">
+            <a class="{{ $temporaryPhoneColor }}" role="button" id="ToolbarButton">
                 <span id="phone_state_icon">{!! $temporaryPhoneStatusIcon !!}</span> [
                 {{ $temporaryPhone }} : <span id="phone_state">{{ $temporaryPhoneStatus }}</span> ]
             </a>
