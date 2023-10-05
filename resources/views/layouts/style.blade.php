@@ -14,6 +14,14 @@
         max-width: 1100px !important;
     }
 
+    *.text-toolbar {
+        color: #000000;
+        font-size: 1.5em;
+        text-align: center;
+        vertical-align: middle;
+
+    }
+
     *.icon-gray {
         color: #6c757d;
         font-size: 1.5em;

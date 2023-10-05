@@ -116,9 +116,10 @@
 
         <li class="nav-item d-none d-sm-inline-block">
             <a class="btn" role="button" id="ToolbarButton">
-                <span id="phone_state_icon" class="{{ $temporaryPhoneColor }}">{!! $temporaryPhoneStatusIcon !!}</span>
-                <b>{{ Auth::user()->name }} [
-                    {{ $temporaryPhone }}</b> ] : <b id="phone_state"
+
+                <b class="text-toolbar">{{ Auth::user()->name }} [
+                    {{ $temporaryPhone }}</b> ] : <span id="phone_state_icon"
+                    class="{{ $temporaryPhoneColor }}">{!! $temporaryPhoneStatusIcon !!}</span> <b id="phone_state"
                     class="{{ $temporaryPhoneColor }}">{{ $temporaryPhoneStatus }}</b>
             </a>
         </li>
