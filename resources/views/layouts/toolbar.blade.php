@@ -146,21 +146,21 @@
                 {{--  <button class="btn btn-warning custom-button float-left mx-1 button_unbreak"><i
                         class="fas fa-clock"></i>
                     UnWarp </button> --}}
-                <div class="mx-1 px-1">
-                    &nbsp;<button {{ $logout_button }}
+                <div class="mx-2 px-2">
+                    <button {{ $logout_button }}
                         class="{{ $logout_button_class }} btn btn-danger custom-button float-right"
                         id="btn-system-logout">
                         <i class="fas fa-power-off"></i>
                         ออกจากระบบ
                     </button>
                 </div>
-                <div class="mx-1 px-1">
+                <div class="mx-2 px-2">
                     <button {{ $logoff_button }} id="btn-agent-logout"
                         class="{{ $logoff_button_class }} btn btn-secondary custom-button float-right"><i
                             class="fas fa-power-off"></i>
-                        ไม่พร้อมรับสาย </button>&nbsp;
+                        ไม่พร้อมรับสาย </button>
                 </div>
-                <div class="mx-1 px-1">
+                <div class="mx-2 px-2">
                     <button {{ $login_button }} id="btn-agent-login"
                         class="{{ $login_button_class }} btn btn-success custom-button mx-1 float-right"><i
                             class="fas fa-plug"></i>
