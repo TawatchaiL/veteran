@@ -17,21 +17,30 @@
     *.icon-gray {
         color: rgb(110, 107, 107);
         font-size: 1.5em;
+        text-align: center;
+        vertical-align: middle;
     }
 
     *.icon-green {
-        color: rgb(12, 157, 73);
+        color: #28a745;
         font-size: 1.5em;
+        text-align: center;
+        vertical-align: middle;
     }
 
     *.icon-yellow {
-        color: rgb(235, 177, 6);
+        color: #ffc107;
+        ;
         font-size: 1.5em;
+        text-align: center;
+        vertical-align: middle;
     }
 
     *.icon-red {
         color: rgb(193, 32, 11);
         font-size: 1.5em;
+        text-align: center;
+        vertical-align: middle;
     }
 
     .sidebar-item {
