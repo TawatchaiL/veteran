@@ -72,7 +72,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-3">
-                                <input {{ $dial_number }} style="height:70px" type="number" class="form-control"
+                                <input {{ $dial_number }} style="height:60px" type="number" class="form-control"
                                     maxlength="11" id="dial_number" name="dial_number" value=""
                                     placeholder="กรอกเบอร์" />
                             </div>
