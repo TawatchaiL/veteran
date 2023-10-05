@@ -77,8 +77,10 @@ class CaseType6Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
 
+
+        $input = $request->all();
+        $contract = CrmCaseType::create($input);
         return response()->json(['success' => 'เพิ่ม ประเภทการติดต่อ เรียบร้อยแล้ว']);
     }
 
