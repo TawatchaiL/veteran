@@ -5,7 +5,7 @@
             <a class="nav-link sidebar-toggle-btn" data-widget="pushmenu" href="#" role="button"><i
                     class="fas fa-bars"></i></a>
         </li>
-         <!-- <li class="nav-item dropdown user-menu">
+        <!-- <li class="nav-item dropdown user-menu">
             <a href="#" class="nav-link" {{-- dropdown-toggle" data-toggle="dropdown" --}}>
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/2048px-User_icon_2.svg.png"
                     height="150" class="user-image img-circle elevation-1" alt="User Image">
@@ -116,8 +116,10 @@
 
         <li class="nav-item d-none d-sm-inline-block">
             <a class="nav-link" role="button" id="ToolbarButton">
-                <span id="phone_state_icon" class="{{ $temporaryPhoneColor }}">{!! $temporaryPhoneStatusIcon !!}</span> {{ Auth::user()->name }} [
-                {{ $temporaryPhone }}  ] : <span id="phone_state">{{ $temporaryPhoneStatus }}</span>
+                <span id="phone_state_icon" class="{{ $temporaryPhoneColor }}">{!! $temporaryPhoneStatusIcon !!}</span>
+                <b>{{ Auth::user()->name }} [
+                    {{ $temporaryPhone }}</b> ] : <b id="phone_state"
+                    class="{{ $temporaryPhoneColor }}">{{ $temporaryPhoneStatus }}</b>
             </a>
         </li>
 
