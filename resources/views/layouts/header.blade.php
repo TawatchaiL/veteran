@@ -9,8 +9,8 @@
             <a href="#" class="nav-link" {{-- dropdown-toggle" data-toggle="dropdown" --}}>
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/2048px-User_icon_2.svg.png"
                     height="150" class="user-image img-circle elevation-1" alt="User Image">
-                <span class="d-none d-md-inline text-primary">{{ Auth::user()->name }} [
-                    {{ $temporaryPhone }} ]</span>
+                <b class="d-none d-md-inline text-toolbar">{{ Auth::user()->name }} [
+                    {{ $temporaryPhone }} ]</b>
             </a>
             <!--<ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <li class="user-header bg-info">

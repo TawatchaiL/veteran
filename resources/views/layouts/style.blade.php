@@ -15,7 +15,7 @@
     }
 
     *.text-toolbar {
-        color: #000000;
+        color: #007bff;;
         font-size: 1.2em;
         text-align: center;
         vertical-align: middle;
