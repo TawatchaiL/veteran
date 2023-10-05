@@ -79,7 +79,7 @@
 
     $(document).on('click', '.button_break', (e) => {
         e.preventDefault();
-        consolw.log($(this).data('id'));
+        console.log($(this).data('id'));
         const bid = $(this).data('id');
         const additionalData = {
             id_break: bid,
