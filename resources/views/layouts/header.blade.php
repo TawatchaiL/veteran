@@ -98,12 +98,18 @@
             switch ($temporaryPhoneStatusID) {
                 case 0:
                     $temporaryPhoneColor = 'btn btn-secondary';
+                    $dial_number = 'disabled';
+                    $dial_button = 'disabled';
                     break;
                 case 1:
                     $temporaryPhoneColor = 'btn btn-success';
+                    $dial_number = '';
+                    $dial_button = '';
                     break;
                 case 2:
                     $temporaryPhoneColor = 'btn btn-warning';
+                    $dial_number = '';
+                    $dial_button = '';
                     break;
                 case 3:
                     $temporaryPhoneColor = '';

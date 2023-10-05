@@ -26,6 +26,21 @@
         }
     };
 
+    const set_state_button = (id) => {
+        let dial_number = $('#dial_number');
+        let dial_button = $('#dial_button');
+        if (id === 0) {
+            dial_number.attr('disabled', true);
+            dial_button.attr('disabled', true);
+        } else if (id === 1) {
+            dial_number.attr('disabled', false);
+            dial_button.attr('disabled', false);
+        } else if (id === 2) {
+            dial_number.attr('disabled', false);
+            dial_button.attr('disabled', false);
+        }
+    };
+
     $(document).on('click', '#btn-agent-login', (e) => {
         e.preventDefault();
         sendAjaxRequest("{{ route('agent.login') }}", "POST");
@@ -54,5 +69,4 @@
         e.preventDefault();
         document.getElementById('logout-form').submit();
     });
-
 </script>

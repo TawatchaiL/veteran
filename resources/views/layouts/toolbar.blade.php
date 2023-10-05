@@ -13,7 +13,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-3">
-                                <input {{-- <?= $outbound_dis ?> --}} style="height:50px" type="number" class="form-control"
+                                <input {{ $dial_number }} style="height:50px" type="number" class="form-control"
                                     maxlength="11" id="dial_number" name="dial_number" value=""
                                     placeholder="กรอกเบอร์" />
                             </div>
@@ -23,8 +23,8 @@
                                         class="fa-solid fa-phone-volume"></i> รับสาย</button>
                             </div>
                             <div class="mx-1">
-                                <button {{-- <?= $outbound_dis ?> --}}
-                                    class="btn btn-lg custom-button btn-success button_dial"><i
+                                <button {{ $dial_button }} id="dial_button" name="dial_button"
+                                    class="btn btn-lg custom-button btn-success"><i
                                         class="fas fa-phone-square"></i> โทรออก</button>
                             </div>
                             <div class="mx-1">
