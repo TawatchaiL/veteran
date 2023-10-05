@@ -183,6 +183,7 @@
                 data: additionalData,
                 success: function(result) {
                     if (result.errors) {
+                        alert('OK1');
                         $('.alert-danger').html('');
                         $.each(result.errors, function(key, value) {
                             $('.alert-danger').show();
@@ -190,6 +191,7 @@
                                 '</li></strong>');
                         });
                     } else {
+                        alert('OK2');
                         $('.alert-danger').hide();
                         $('.alert-success').show();
                         $('.alert-success').append('<strong><li>' + result.success +
@@ -207,6 +209,7 @@
 
                 }
             });
+            alert('OK');
         });
 
         let id;
