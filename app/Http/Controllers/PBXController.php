@@ -37,7 +37,7 @@ class PBXController extends Controller
             // Update user's phone_status
             $user->phone_status_id = 1;
             $user->phone_status = "พร้อมรับสาย";
-            $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-check"></i>';
+            $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
             $user->save();
 
             return [
@@ -63,7 +63,7 @@ class PBXController extends Controller
             // Update user's phone_status
             $user->phone_status_id = 0;
             $user->phone_status = "ไม่พร้อมรับสาย";
-            $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-xmark"></i>';
+            $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-xmark"></i>';
             $user->save();
 
             return [
@@ -90,7 +90,7 @@ class PBXController extends Controller
             $user->phone = '';
             $user->phone_status_id = 0;
             $user->phone_status = "ไม่พร้อมรับสาย";
-            $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-xmark"></i>';
+            $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-xmark"></i>';
             $user->save();
 
             DB::connection('remote_connection')
@@ -116,7 +116,7 @@ class PBXController extends Controller
             // Update user's phone_status
             $user->phone_status_id = 2;
             $user->phone_status = "พักเบรค";
-            $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-clock"></i>';
+            $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-clock"></i>';
             $user->save();
 
             return [
@@ -142,7 +142,7 @@ class PBXController extends Controller
             // Update user's phone_status
             $user->phone_status_id = 1;
             $user->phone_status = "พร้อมรับสาย";
-            $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-check"></i>';
+            $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
             $user->save();
 
             return [
