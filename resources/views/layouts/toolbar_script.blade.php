@@ -56,6 +56,7 @@
             btn_agent_logout.prop('disabled', false);
             btn_agent_login.addClass("d-none");
         } else if (id === 2) {
+            performance_button.prop('disabled', true);
             break_group.addClass("d-none");
             btn_pause.prop('disabled', true);
             btn_unbreak.removeClass("d-none");
