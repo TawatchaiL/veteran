@@ -281,7 +281,7 @@
 
                     // const content = contentInput.value;
                     $.ajax({
-                        type: "POST",
+                        type: "get",
                         url: "/voicerecord/comment",
                         data: {
                             callRecordingId: callRecordingId,
