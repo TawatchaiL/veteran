@@ -166,13 +166,13 @@
             }
             for (let c = 1; c < 7; c++) {
                 if (!$('#AddName' + c).prop('disabled')) {
-                    var crmname = $('#AddName' + c).val();
-                    var l = c;
-                    var p = c - 1;
+                    crmname = $('#AddName' + c).val();
+                    l = c;
+                    p = c - 1;
                     if(c == 1){
-                        var parent_id = 0;
+                        parent_id = 0;
                     }else{
-                        var parent_id = $('#casetype' + p).val();
+                        parent_id = $('#casetype' + p).val();
                     }
                 }
             }
