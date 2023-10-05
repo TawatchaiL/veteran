@@ -435,6 +435,7 @@
                     $('#AddName6').attr('disabled', true);
                 }   
         });
+        
     //function changecasetype(event) {
     //    var selectno = parseInt(event.target.name.substring(8, 9));
         //if(selectnext < 7){
