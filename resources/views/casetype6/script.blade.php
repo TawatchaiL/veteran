@@ -316,9 +316,12 @@
     function changecasetype(event) {
         var selectno = parseInt(event.target.name.substring(8, 9));
         var selectnext = selectno + 1;
-        if(selectnext < 7){
-            $('#casetype' + selectnext).attr('disabled', false);
-            $('#AddName' + selectno).attr('disabled', false);
-        }
+        //if(selectnext < 7){
+            for (let i = selectno; i < 7; i++) {
+                $('#AddName' + selectno).attr('disabled', true);
+                $('#casetype' + selectnext).attr('disabled', false);
+                $('#AddName' + selectnext).attr('disabled', false);
+            }
+        //}
     }
 </script>
