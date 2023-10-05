@@ -40,7 +40,12 @@ class PBXController extends Controller
             $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-check"></i>';
             $user->save();
 
-            return ['success' => true, 'message' => $user->phone_status, 'icon' => $user->phone_status_icon];
+            return [
+                'success' => true,
+                'id' => $user->phone_status_id,
+                'message' => $user->phone_status,
+                'icon' => $user->phone_status_icon
+            ];
         } else {
             return ['success' => false, 'message' => 'error'];
         }
@@ -61,7 +66,12 @@ class PBXController extends Controller
             $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-xmark"></i>';
             $user->save();
 
-            return ['success' => true, 'message' => $user->phone_status, 'icon' => $user->phone_status_icon];
+            return [
+                'success' => true,
+                'id' => $user->phone_status_id,
+                'message' => $user->phone_status,
+                'icon' => $user->phone_status_icon
+            ];
         } else {
             return ['success' => false, 'message' => 'error'];
         }
@@ -109,7 +119,12 @@ class PBXController extends Controller
             $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-clock"></i>';
             $user->save();
 
-            return ['success' => true, 'message' => $user->phone_status, 'icon' => $user->phone_status_icon];
+            return [
+                'success' => true,
+                'id' => $user->phone_status_id,
+                'message' => $user->phone_status,
+                'icon' => $user->phone_status_icon
+            ];
         } else {
             return ['error' => false, 'message' => 'error'];
         }
@@ -130,7 +145,12 @@ class PBXController extends Controller
             $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-check"></i>';
             $user->save();
 
-            return ['success' => true, 'message' => $user->phone_status, 'icon' => $user->phone_status_icon];
+            return [
+                'success' => true,
+                'id' => $user->phone_status_id,
+                'message' => $user->phone_status,
+                'icon' => $user->phone_status_icon
+            ];
         } else {
             return ['error' => false, 'message' => 'error'];
         }
