@@ -348,6 +348,8 @@
                 console.log(response.remoteData2);
                 const newUrl = 'wav/' + response.voic;
                 $('#vioc_name').text(response.voic_name);
+                $('#call_recording_id').val(response.remoteData2.id);
+                $('#uniqueid').val(response.remoteData2.uniqueid);
                 // console.log('Button clicked!');
                 initializeWaveSurfer(newUrl);
             },
