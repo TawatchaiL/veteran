@@ -16,22 +16,22 @@
 
     *.icon-gray {
         color: rgb(110, 107, 107);
-        font-size: 1.8em;
+        font-size: 1.5em;
     }
 
     *.icon-green {
         color: rgb(12, 157, 73);
-        font-size: 1.8em;
+        font-size: 1.5em;
     }
 
     *.icon-yellow {
         color: rgb(235, 177, 6);
-        font-size: 1.8em;
+        font-size: 1.5em;
     }
 
     *.icon-red {
         color: rgb(193, 32, 11);
-        font-size: 1.8em;
+        font-size: 1.5em;
     }
 
     .sidebar-item {
