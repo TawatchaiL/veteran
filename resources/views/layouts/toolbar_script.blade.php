@@ -28,7 +28,7 @@
     };
 
     const set_state_button = (id) => {
-        alert(id)
+
         let performance_button = $('#performance_button');
         let break_group = $('#break_group');
         let btn_pause = $('#btn_pause');
@@ -38,6 +38,7 @@
         let btn_agent_login = $('#btn_agent_login');
 
         if (id === 0) {
+            alert(id)
             performance_button.prop('disabled', true);
             break_group.addClass("d-none");
             btn_pause.prop('disabled', true);
