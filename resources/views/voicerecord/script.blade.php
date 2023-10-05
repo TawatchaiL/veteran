@@ -235,7 +235,8 @@
 
         const customDialog = document.getElementById('custom-dialog');
         const contentInput = document.getElementById('content-input');
-        const uniqueId = $('#uniqueid').val();
+        const addContentButton = document.getElementById('add-content-button');
+
         wsRegions.enableDragSelection({
             color: 'rgba(255, 0, 0, 0.1)',
             //content: 'Region Content',
@@ -273,8 +274,9 @@
                     tooltip.style.paddingLeft = '10px';
                     customDialog.style.display = 'none'; // Close the dialog box
                     currentRegion.element.appendChild(tooltip);
-                    const addContentButton = document.getElementById('add-content-button');
                     const callRecordingId = $('#call_recording_id').val();
+                    const uniqueId = $('#uniqueid').val();
+
                     const content = contentInput.value;
                     $.ajax({
                         type: "POST",
