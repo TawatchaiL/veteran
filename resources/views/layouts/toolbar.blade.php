@@ -124,15 +124,15 @@
                     <button type="button" id="btn-pause" {{ $break_button }}
                         class="btn btn-warning custom-button  mx-1 dropdown-toggle dropdown-icon"
                         data-toggle="dropdown">
-                        <i class="fas fa-pause"></i> พัก <span class="sr-only">Toggle Dropdown</span>
+                        <i class="fa-solid fa-user-clock"></i> พักเบรค <span class="sr-only">Toggle Dropdown</span>
                     </button>
                     <div class="dropdown-menu" role="menu">
 
-                        <a class="dropdown-item button_break" href="#" data-id="2"><i class="fas fa-pause"></i>
+                        <a class="dropdown-item button_break" href="#" data-id="2">
                             Lunch</a>
-                        <a class="dropdown-item button_break" href="#" data-id="3"><i class="fas fa-pause"></i>
+                        <a class="dropdown-item button_break" href="#" data-id="3">
                             Toilet</a>
-                        <a class="dropdown-item button_break" href="#" data-id="4"><i class="fas fa-pause"></i>
+                        <a class="dropdown-item button_break" href="#" data-id="4">
                             Meeting</a>
                         <div class="dropdown-divider"></div>
 
@@ -149,7 +149,7 @@
                     <button {{ $logout_button }}
                         class="{{ $logout_button_class }} btn btn-danger custom-button float-right"
                         id="btn-system-logout">
-                        <i class="fas fa-power-off"></i> ออกจากระบบ
+                        <i class="fa-solid fa-user-xmark"></i> ออกจากระบบ
                     </button>
                 </div>
 
