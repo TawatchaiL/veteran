@@ -314,6 +314,6 @@
 
     });
     function changecasetype(event) {
-            alert(event.name);
+            alert(event.target.name);
         }
 </script>
