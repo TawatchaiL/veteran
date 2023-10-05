@@ -67,17 +67,17 @@
         }
     };
 
-    $(document).on('click', '#btn-agent-login', (e) => {
+    $(document).on('click', '#btn-agent-login', function(e) => {
         e.preventDefault();
         sendAjaxRequest("{{ route('agent.login') }}", "POST");
     });
 
-    $(document).on('click', '#btn-agent-logout', (e) => {
+    $(document).on('click', '#btn-agent-logout', function(e) => {
         e.preventDefault();
         sendAjaxRequest("{{ route('agent.logoff') }}", "POST");
     });
 
-    $(document).on('click', '.button_break', (e) => {
+    $(document).on('click', '.button_break', function(e) => {
         e.preventDefault();
         console.log($(this).data('id'));
         const bid = $(this).data('id');
@@ -88,12 +88,12 @@
         sendAjaxRequest("{{ route('agent.break') }}", "POST", additionalData);
     });
 
-    $(document).on('click', '.button_unbreak', (e) => {
+    $(document).on('click', '.button_unbreak', function(e) => {
         e.preventDefault();
         sendAjaxRequest("{{ route('agent.unbreak') }}", "POST");
     });
 
-    $(document).on('click', '#btn-system-logout', (e) => {
+    $(document).on('click', '#btn-system-logout', function(e) => {
         e.preventDefault();
         document.getElementById('logout-form').submit();
     });
