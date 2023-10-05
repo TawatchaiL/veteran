@@ -97,7 +97,7 @@
     <ul class="navbar-nav ml-auto">
 
         <li class="nav-item d-none d-sm-inline-block">
-            <a class="btn btn-secoundary" role="button" id="ToolbarButton">
+            <a class="btn btn-secondary" role="button" id="ToolbarButton">
                 <span id="phone_state_icon">{!! $temporaryPhoneStatusIcon !!}</span> [
                 {{ $temporaryPhone }} : <span id="phone_state">{{ $temporaryPhoneStatus }}</span> ]
             </a>
