@@ -9,7 +9,7 @@
     };
 
     const sendAjaxRequest = (url, method, data = {}) => {
-        cosole.log(data)
+        console.log(data)
         $.ajax({
             url,
             method,
