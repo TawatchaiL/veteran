@@ -311,8 +311,9 @@
         //$('#casetype'+1).on('change', function() {
         //        alert('OK');
         //});
-        function changecasetype(event) {
+
+    });
+    function changecasetype(event) {
             alert('OK');
         }
-    });
 </script>
