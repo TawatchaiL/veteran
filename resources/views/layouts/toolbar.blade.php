@@ -10,8 +10,8 @@
             $break_button_class = '';
             $unbreak_button = 'disabled';
             $unbreak_button_class = 'd-none';
-            $logout_button = '';
-            $logout_button_class = '';
+            //$logout_button = '';
+            //$logout_button_class = '';
             $logoff_button = 'disabled';
             $logoff_button_class = 'd-none';
             $login_button = '';
@@ -27,8 +27,8 @@
             $break_button_class = '';
             $unbreak_button = 'disabled';
             $unbreak_button_class = 'd-none';
-            $logout_button = 'disabled';
-            $logout_button_class = '';
+            //$logout_button = 'disabled';
+            //$logout_button_class = '';
             $logoff_button = '';
             $logoff_button_class = '';
             $login_button = '';
@@ -44,8 +44,8 @@
             $break_button_class = 'd-none';
             $unbreak_button = '';
             $unbreak_button_class = '';
-            $logout_button = 'disabled';
-            $logout_button_class = '';
+            //$logout_button = 'disabled';
+            //$logout_button_class = '';
             $logoff_button = '';
             $logoff_button_class = 'd-none';
             $login_button = '';
