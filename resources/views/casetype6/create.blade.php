@@ -37,7 +37,7 @@
                             <strong><i class="fa-regular fa-message"></i> ประเภทเคส:</strong>
                             <select style="width: 100%;"
                                 class="select2 form-control" id="casetype1"
-                                name="casetype1">
+                                name="casetype1" onchange="changecasetype(event)">
                             </select>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                                 รายละเอียดเคส:</strong>
                             <select style="width: 100%;"
                                 class="select2 form-control" id="casetype2"
-                                name="casetype2">
+                                name="casetype2" onchange="changecasetype(event)">
                             </select>
                         </div>
                     </div>

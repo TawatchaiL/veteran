@@ -308,9 +308,11 @@
             }); //end ajax
         })
 
-        $('#casetype'+1).on('change', function() {
-                alert('OK');
-        });
-
+        //$('#casetype'+1).on('change', function() {
+        //        alert('OK');
+        //});
+        function changecasetype(event) {
+            alert('OK');
+        }
     });
 </script>
