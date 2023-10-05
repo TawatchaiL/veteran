@@ -321,6 +321,11 @@
 
     $('#casetype1').on('change', function() {
             var parent_id = $(this).val();
+            $('#casetype2').html('<option value="">เลือกรายละเอียดเคส</option>');
+            $('#casetype3').html('<option value="">เลือกรายละเอียดเคสย่อย</option>');
+            $('#casetype4').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
+            $('#casetype5').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
+            $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
                 if(parent_id != ''){    
                     $.ajax({
                         url: "casetype6/casetype/" + parent_id,
@@ -363,6 +368,10 @@
 
         $('#casetype2').on('change', function() {
             var parent_id = $(this).val();
+            $('#casetype3').html('<option value="">เลือกรายละเอียดเคสย่อย</option>');
+            $('#casetype4').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
+            $('#casetype5').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
+            $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
                 if(parent_id != ''){    
                     $.ajax({
                         url: "casetype6/casetype/" + parent_id,
@@ -400,6 +409,9 @@
         });
         $('#casetype3').on('change', function() {
             var parent_id = $(this).val();
+            $('#casetype4').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
+            $('#casetype5').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
+            $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
                 if(parent_id != ''){    
                     $.ajax({
                         url: "casetype6/casetype/" + parent_id,
@@ -433,6 +445,8 @@
         });
         $('#casetype4').on('change', function() {
             var parent_id = $(this).val();
+            $('#casetype5').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
+            $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
                 if(parent_id != ''){    
                     $.ajax({
                         url: "casetype6/casetype/" + parent_id,
@@ -462,6 +476,7 @@
         });
         $('#casetype5').on('change', function() {
             var parent_id = $(this).val();
+            $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
                 if(parent_id != ''){    
                     $.ajax({
                         url: "casetype6/casetype/" + parent_id,
