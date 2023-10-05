@@ -308,6 +308,9 @@
             }); //end ajax
         })
 
+        $('#casetype'+1).on('change', function() {
+                alert('OK');
+        });
 
     });
 </script>
