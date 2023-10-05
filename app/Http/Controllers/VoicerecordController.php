@@ -146,11 +146,11 @@ class VoicerecordController extends Controller
         // dd($remoteData2, $id);
         // $data =  $remoteData2->where('id',$id);
         $voic = $remoteData2->recordingfile;
-
-        dd($voic);
+        $voic_name = substr($voic, 14);
+        // dd($voic);
 
         // return view('voicerecord.create', compact('voic'));
-        return response()->json(['voic' => $voic, 'remoteData2' => $remoteData2]);
+        return response()->json(['voic' => $voic, 'remoteData2' => $remoteData2,'voic_name' => $voic_name]);
         // return view('voicerecord.create_run',[
         //     'voic' => $voic,
         //     'remoteData2' => $remoteData2,
