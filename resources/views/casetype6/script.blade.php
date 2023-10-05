@@ -173,7 +173,7 @@
                 }
             }
             var additionalData = {
-                parent_id: $('#Edithn').val(),
+                parent_id: parent_id,
                 name: crmname,
                 crmlev: crmlev,
                 status: sstatus,
