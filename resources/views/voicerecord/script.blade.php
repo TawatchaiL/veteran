@@ -269,12 +269,31 @@
 
                     // Create a tooltip element
                     const tooltip = document.createElement('div');
-                    const content = contentInput.value;
                     tooltip.className = 'region-tooltip';
                     tooltip.textContent = content; // Replace with your tooltip text
                     tooltip.style.paddingLeft = '10px';
                     customDialog.style.display = 'none'; // Close the dialog box
                     currentRegion.element.appendChild(tooltip);
+                    const callRecordingId = $('#call_recording_id').val();
+                    const uniqueId = $('#uniqueid').val();
+
+                    const content = contentInput.value;
+                    $.ajax({
+                        type: "POST",
+                        url: "/voicerecord/comment",
+                        data: {
+                            callRecordingId: callRecordingId,
+                            uniqueId: uniqueId,
+                            content: content
+                        },
+                        success: function(response) {
+                            // Handle success response if needed
+                        },
+                        error: function(error) {
+                            // Handle error if needed
+                        }
+                    });
+
                 }
             });
 

@@ -156,4 +156,10 @@ class VoicerecordController extends Controller
         //     'remoteData2' => $remoteData2,
         // ]);
     }
+
+    public function comment(Request $request){
+
+        dd($request);
+
+    }
 }
