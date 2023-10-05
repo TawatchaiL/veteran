@@ -19,6 +19,8 @@
         font-size: 1.5em;
         text-align: center;
         vertical-align: middle;
+        display: inline-block;
+        padding: 0.375rem 0.75rem;
     }
 
     *.icon-green {
@@ -26,14 +28,17 @@
         font-size: 1.5em;
         text-align: center;
         vertical-align: middle;
+        display: inline-block;
+        padding: 0.375rem 0.75rem;
     }
 
     *.icon-yellow {
         color: #ffc107;
-        ;
         font-size: 1.5em;
         text-align: center;
         vertical-align: middle;
+        display: inline-block;
+        padding: 0.375rem 0.75rem;
     }
 
     *.icon-red {
@@ -41,6 +46,8 @@
         font-size: 1.5em;
         text-align: center;
         vertical-align: middle;
+        display: inline-block;
+        padding: 0.375rem 0.75rem;
     }
 
     .sidebar-item {
