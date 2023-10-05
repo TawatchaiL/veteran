@@ -1,8 +1,21 @@
 @php
     switch ($temporaryPhoneStatusID) {
         case 0:
-            $dial_number = 'disabled';
-            $dial_button = 'disabled';
+            $dial_number = '';
+            $dial_button = '';
+            $transfer_button = '';
+            $performance_button = 'disabled';
+            $conf_button = '';
+            $break_button = 'disabled';
+            $break_button_class = 'd-none';
+            $unbreak_button = 'disabled';
+            $unbreak_button_class = 'd-none';
+            $logout_button = '';
+            $logout_button_class = '';
+            $logoff_button = 'disabled';
+            $logff_button_class = 'd-npne';
+            $login_button = '';
+            $login_button_class = '';
             break;
         case 1:
             $dial_number = '';
@@ -33,15 +46,15 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-3">
-                                <input {{ $dial_number }} style="height:50px" type="number" class="form-control"
+                                <input {{ $dial_number }} style="height:70px" type="number" class="form-control"
                                     maxlength="11" id="dial_number" name="dial_number" value=""
                                     placeholder="กรอกเบอร์" />
                             </div>
-                            <div class="mx-1">
-                                <button {{-- <?= $outbound_dis ?> --}}
+                            {{-- <div class="mx-1">
+                                <button
                                     class="btn custom-button btn-success button_dial"><i
                                         class="fa-solid fa-phone-volume"></i> รับสาย</button>
-                            </div>
+                            </div> --}}
                             <div class="mx-1">
                                 <button {{ $dial_button }} id="dial_button" name="dial_button"
                                     class="btn custom-button btn-success"><i class="fas fa-phone-square"></i>
@@ -51,7 +64,7 @@
                                 {{--  <button  <?= $outbound_dis ?>  class="btn btn-warning button_tranfer"><i
                                         class="fas fa-random"></i> โอนสาย</button> --}}
                                 <div class="btn-group">
-                                    <button type="button"
+                                    <button type="button" id="tranfer_button" {{ $transfer_button }}
                                         class="btn btn-success custom-button dropdown-toggle dropdown-icon"
                                         data-toggle="dropdown">
                                         <i class="fas fa-random"></i> โอนสาย <span class="sr-only">Toggle
@@ -67,14 +80,14 @@
                                 </div>
                             </div>
                             <div class="mx-1">
-                                <button {{-- <?= $outbound_dis ?> --}}
+                                <button {{ $performance_button }} id="performance_button"
                                     class="btn custom-button btn-success button_conf"><i class="fas fa-star"></i>
                                     ประเมิน</button>
                             </div>
                             <div class="mx-1">
-                                <button {{-- <?= $outbound_dis ?> --}}
-                                    class="btn custom-button btn-success button_conf"><i
-                                        class="fas fa-handshake"></i> ประชุมสาย</button>
+                                <button {{ $conf_button }} id="conf_button"
+                                    class="btn custom-button btn-success button_conf"><i class="fas fa-handshake"></i>
+                                    ประชุมสาย</button>
                             </div>
                         </div>
                     </div>
@@ -82,7 +95,7 @@
             </div>
             <div class="card-footer text-muted">
                 <div class="btn-group float-left {{-- <?= $break_class ?> --}}" id="break_group">
-                    <button type="button" id="btn-pause"
+                    <button type="button" id="btn-pause" {{ $break_button }}
                         class="btn btn-warning custom-button  mx-1 dropdown-toggle dropdown-icon"
                         data-toggle="dropdown">
                         <i class="fas fa-pause"></i> พัก <span class="sr-only">Toggle Dropdown</span>
@@ -100,21 +113,21 @@
 
                     </div>
                 </div>
-                <button class="btn btn-warning custom-button float-left mx-1 button_unbreak"><i
-                        class="fas fa-clock"></i>
+                <button {{ $unbreak_button }} class="btn btn-warning custom-button float-left mx-1 button_unbreak"
+                    id="btn-unbreak"><i class="fas fa-clock"></i>
                     หยุดพัก </button>
-                <button class="btn btn-warning custom-button float-left mx-1 button_unbreak"><i
+                {{--  <button class="btn btn-warning custom-button float-left mx-1 button_unbreak"><i
                         class="fas fa-clock"></i>
-                    UnWarp </button>
+                    UnWarp </button> --}}
 
-                <button class="btn btn-danger custom-button float-right" id="btn-system-logout">
+                <button {{ $logout_button }} class="btn btn-danger custom-button float-right" id="btn-system-logout">
                     <i class="fas fa-power-off"></i>
                     ออกจากระบบ
                 </button>
-                <button {{-- <?= $logoff_dis ?> --}} id="btn-agent-logout"
+                <button {{ $logoff_button }} id="btn-agent-logout"
                     class="btn btn-secondary custom-button float-right"><i class="fas fa-power-off"></i>
                     ไม่พร้อมรับสาย </button>
-                <button {{-- <?= $logoff_dis ?> --}} id="btn-agent-login"
+                <button {{ $login_button }} id="btn-agent-login"
                     class="btn btn-success custom-button mx-1 float-right"><i class="fas fa-plug"></i>
                     พร้อมรับสาย </button>
 
