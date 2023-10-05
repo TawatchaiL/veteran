@@ -83,6 +83,7 @@
         const additionalData = {
             id_break: bid,
         };
+        console.log(additionalData);
         sendAjaxRequest("{{ route('agent.break') }}", "POST", additionalData);
     });
 
