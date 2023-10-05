@@ -11,7 +11,7 @@
     }
 
     .modal-xxl {
-        max-width: 1500px !important;
+        max-width: 1000px !important;
     }
 
     .sidebar-item {

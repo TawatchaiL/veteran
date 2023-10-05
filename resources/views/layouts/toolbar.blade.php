@@ -7,7 +7,7 @@
             $performance_button = 'disabled';
             $conf_button = '';
             $break_button = 'disabled';
-            $break_button_class = 'd-none';
+            $break_button_class = '';
             $unbreak_button = 'disabled';
             $unbreak_button_class = 'd-none';
             $logout_button = '';
@@ -94,7 +94,7 @@
                 </div>
             </div>
             <div class="card-footer text-muted">
-                <div class="btn-group float-left {{-- <?= $break_class ?> --}}" id="break_group">
+                <div class="btn-group float-left {{ $break_button_class }}" id="break_group">
                     <button type="button" id="btn-pause" {{ $break_button }}
                         class="btn btn-warning custom-button  mx-1 dropdown-toggle dropdown-icon"
                         data-toggle="dropdown">
@@ -113,22 +113,26 @@
 
                     </div>
                 </div>
-                <button {{ $unbreak_button }} class="btn btn-warning custom-button float-left mx-1 button_unbreak"
+                <button {{ $unbreak_button }}
+                    class="{{ $unbreak_button_class }} btn btn-warning custom-button float-left mx-1 button_unbreak"
                     id="btn-unbreak"><i class="fas fa-clock"></i>
                     หยุดพัก </button>
                 {{--  <button class="btn btn-warning custom-button float-left mx-1 button_unbreak"><i
                         class="fas fa-clock"></i>
                     UnWarp </button> --}}
 
-                <button {{ $logout_button }} class="btn btn-danger custom-button float-right" id="btn-system-logout">
+                <button {{ $logout_button }}
+                    class="{{ $logout_button_class }} btn btn-danger custom-button float-right" id="btn-system-logout">
                     <i class="fas fa-power-off"></i>
                     ออกจากระบบ
                 </button>
                 <button {{ $logoff_button }} id="btn-agent-logout"
-                    class="btn btn-secondary custom-button float-right"><i class="fas fa-power-off"></i>
+                    class="{{ $logoff_button_class }} btn btn-secondary custom-button float-right"><i
+                        class="fas fa-power-off"></i>
                     ไม่พร้อมรับสาย </button>
                 <button {{ $login_button }} id="btn-agent-login"
-                    class="btn btn-success custom-button mx-1 float-right"><i class="fas fa-plug"></i>
+                    class="{{ $login_button_class }} btn btn-success custom-button mx-1 float-right"><i
+                        class="fas fa-plug"></i>
                     พร้อมรับสาย </button>
 
 
