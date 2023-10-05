@@ -36,7 +36,7 @@ class CaseType6Controller extends Controller
 
         if ($request->ajax()) {
 
-            $datas = CrmCaseType::orderBy("id", "desc")->get();
+            $datas = Case_type::orderBy("id", "desc")->get();
             $state_text = array('ไม่เปิดใช้งาน', 'เปิดใช้งาน');
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
