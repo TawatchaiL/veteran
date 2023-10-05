@@ -176,7 +176,6 @@
                 name: crmname,
                 crmlev: c,
                 status: sstatus,
-                _token: token,
             };
             $.ajax({
                 url: "{{ route('casetype6.store') }}",
