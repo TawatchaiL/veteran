@@ -185,12 +185,6 @@ class LoginController extends Controller
                 //$this->issable->agent_login($user->phone);
                 //session(['temporary_phone' => Auth::user()->phone]);
 
-                /* $this->remote->QueuePause('4567', "SIP/9999", 'false', '');
-                $this->remote->QueueRemove('4567', "SIP/9999");
-                $this->remote->QueueAdd('4567', "SIP/9999", 0, "Agent1", "hint:9999@ext-local");
-                $this->remote->QueuePause('4567', "SIP/9999", 'true', 'Toilet'); */
-                //$this->remote->queue_log_in($queueNames, $request->phone);
-
             }
 
             return $this->sendLoginResponse($request);

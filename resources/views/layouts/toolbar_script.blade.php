@@ -1,64 +1,52 @@
 <script>
-    $(document).on('click', '#btn-agent-login', function(e) {
-        e.preventDefault();
+    const updateUI = (result) => {
+        console.log(result);
+        $('#phone_state').html(result.message);
+        $('#phone_state_icon').html(result.icon);
+        $('#ToolbarButton').removeClass().addClass(get_state_color(result.id));
+        $('#ToolbarModal').modal('hide');
+    };
+
+    const sendAjaxRequest = (url, method, data = {}) => {
         $.ajax({
-            url: "{{ route('agent.login') }}",
-            method: 'POST',
-            success: function(result) {
-                console.log(result)
-                $('#phone_state').html(result.message);
-                $('#phone_state_icon').html(result.icon);
-                $('#ToolbarModal').modal('hide');
-            }
+            url,
+            method,
+            data,
+            success: updateUI,
         });
+    };
+
+    const get_state_color = (id) => {
+        if (id === 0) {
+            return 'btn btn-secondary';
+        } else if (id === 1) {
+            return 'btn btn-success';
+        } else if (id === 2) {
+            return 'btn btn-warning';
+        }
+    };
+
+    $(document).on('click', '#btn-agent-login', (e) => {
+        e.preventDefault();
+        sendAjaxRequest("{{ route('agent.login') }}", "POST");
     });
 
-    $(document).on('click', '#btn-agent-logout', function(e) {
+    $(document).on('click', '#btn-agent-logout', (e) => {
         e.preventDefault();
-        $.ajax({
-            url: "{{ route('agent.logoff') }}",
-            method: 'POST',
-            success: function(result) {
-                console.log(result)
-                $('#phone_state').html(result.message);
-                $('#phone_state_icon').html(result.icon);
-                $('#ToolbarModal').modal('hide');
-            }
-        });
+        sendAjaxRequest("{{ route('agent.logoff') }}", "POST");
     });
 
-    let bid;
-    $(document).on('click', '.button_break', function(e) {
+    $(document).on('click', '.button_break', (e) => {
         e.preventDefault();
-        var bid = $(this).data('id');
-        var additionalData = {
+        const bid = $(this).data('id');
+        const additionalData = {
             id_break: bid,
         };
-        $.ajax({
-            url: "{{ route('agent.break') }}",
-            method: 'POST',
-            data: additionalData,
-
-            success: function(result) {
-                console.log(result)
-                $('#phone_state').html(result.message);
-                $('#phone_state_icon').html(result.icon);
-                $('#ToolbarModal').modal('hide');
-            }
-        });
+        sendAjaxRequest("{{ route('agent.break') }}", "POST", additionalData);
     });
 
-    $(document).on('click', '.button_unbreak', function(e) {
+    $(document).on('click', '.button_unbreak', (e) => {
         e.preventDefault();
-        $.ajax({
-            url: "{{ route('agent.unbreak') }}",
-            method: 'POST',
-            success: function(result) {
-                console.log(result)
-                $('#phone_state').html(result.message);
-                $('#phone_state_icon').html(result.icon);
-                $('#ToolbarModal').modal('hide');
-            }
-        });
+        sendAjaxRequest("{{ route('agent.unbreak') }}", "POST");
     });
 </script>
