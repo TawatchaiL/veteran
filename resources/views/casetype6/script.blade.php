@@ -314,7 +314,7 @@
 
     });
     function changecasetype(event) {
-            alert(event.target.name.substring(7, 8)); 
+            alert(event.target.name.substring(8, 9)); 
             $('#casetype2').attr('disabled', false);
     }
 </script>
