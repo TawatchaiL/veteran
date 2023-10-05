@@ -166,8 +166,8 @@
             }
             for (let c = 1; c < 7; c++) {
                 if (!$('#AddName' + c).prop('disabled')) {
-                    alert($('#AddName' + c).attr('name').substring(7, 8));
-                    var crmlev = parseInt($('#AddName' + c).attr('name').substring(7, 8));
+                    alert($('#AddName' + c).target.name.substring(7, 8));
+                    var crmlev = parseInt($('#AddName' + c).target.name.substring(7, 8));
                     var crmname = $('#AddName' + c).val();
                     var p = c - 1;
                     var parent_id = $('#casetype' + p).val();
