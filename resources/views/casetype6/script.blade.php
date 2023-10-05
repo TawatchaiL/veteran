@@ -332,6 +332,8 @@
                             });
                         }
                     });
+                    $('#casetype2').attr('disabled', false);
+                    $('#AddName2').attr('disabled', false);
                 }    
         });
     //function changecasetype(event) {
