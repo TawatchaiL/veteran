@@ -236,7 +236,8 @@
         const customDialog = document.getElementById('custom-dialog');
         const contentInput = document.getElementById('content-input');
         const addContentButton = document.getElementById('add-content-button');
-
+        // const callRecordingId = $('#call_recording_id').val();
+        // const uniqueId = $('#uniqueid').val();
         wsRegions.enableDragSelection({
             color: 'rgba(255, 0, 0, 0.1)',
             //content: 'Region Content',
@@ -269,6 +270,7 @@
 
                     // Create a tooltip element
                     const tooltip = document.createElement('div');
+                    const content = contentInput.value;
                     tooltip.className = 'region-tooltip';
                     tooltip.textContent = content; // Replace with your tooltip text
                     tooltip.style.paddingLeft = '10px';
@@ -277,7 +279,7 @@
                     const callRecordingId = $('#call_recording_id').val();
                     const uniqueId = $('#uniqueid').val();
 
-                    const content = contentInput.value;
+                    // const content = contentInput.value;
                     $.ajax({
                         type: "POST",
                         url: "/voicerecord/comment",
