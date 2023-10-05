@@ -147,7 +147,7 @@
                         class="fas fa-clock"></i>
                     UnWarp </button> --}}
                 <div class="mx-1 px-1">
-                    <button {{ $logout_button }}
+                    &nbsp;<button {{ $logout_button }}
                         class="{{ $logout_button_class }} btn btn-danger custom-button float-right"
                         id="btn-system-logout">
                         <i class="fas fa-power-off"></i>
@@ -158,7 +158,7 @@
                     <button {{ $logoff_button }} id="btn-agent-logout"
                         class="{{ $logoff_button_class }} btn btn-secondary custom-button float-right"><i
                             class="fas fa-power-off"></i>
-                        ไม่พร้อมรับสาย </button>
+                        ไม่พร้อมรับสาย </button>&nbsp;
                 </div>
                 <div class="mx-1 px-1">
                     <button {{ $login_button }} id="btn-agent-login"
