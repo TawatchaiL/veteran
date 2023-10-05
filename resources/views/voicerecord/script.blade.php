@@ -336,14 +336,18 @@
     const randomColor = () => `rgba(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)}, 0.5)`
 
     $(document).on('click', '.changeUrlButton', function() {
-        var dataId = $(this).data('id');
+        //const newUrl = 'wav/PinkPanther60.wav'; // Replace with the new URL
+        // const newUrl = 'wav/2023/10/01/q-4567-8888-20231001-141026-1696169425.161.wav';
+        var dataId = $(this).data('id'); // Use $(this) to refer to the clicked button
+
         $.ajax({
             type: "GET",
             url: "voicerecord/edit/" + dataId,
             success: function(response) {
                 console.log(response.voic);
                 const newUrl = 'wav/' + response.voic;
-                console.log(newUrl);
+
+                // console.log('Button clicked!');
                 initializeWaveSurfer(newUrl);
             },
             error: function(error) {
