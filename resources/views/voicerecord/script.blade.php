@@ -363,12 +363,7 @@
 
 
     });
-    $('.vioc').on('click', () => {
-        const newUrl = 'wav/' + $('#vioc').val();
-        console.log('wav/' + $('#vioc').val());
-        console.log(newUrl);
-        initializeWaveSurfer(newUrl);
-    });
+    
 
     $('#canclecomment').on('click', () => {
         document.getElementById('custom-dialog').style.display = 'none';
