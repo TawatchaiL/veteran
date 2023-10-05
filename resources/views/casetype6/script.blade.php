@@ -317,8 +317,9 @@
         var selectno = parseInt(event.target.name.substring(8, 9));
         var selectnext = selectno + 1;
         if(selectnext < 7){
+            $('#AddName' + selectno).attr('disabled', true);
             $('#casetype' + selectnext).attr('disabled', false);
-            $('#AddName' + selectno).attr('disabled', false);
+            $('#AddName' + selectnext).attr('disabled', false);
         }
     }
 </script>
