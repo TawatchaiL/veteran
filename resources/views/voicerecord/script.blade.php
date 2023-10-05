@@ -336,23 +336,13 @@
     const randomColor = () => `rgba(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)}, 0.5)`
 
     $(document).on('click', '.changeUrlButton', function() {
-        //const newUrl = 'wav/PinkPanther60.wav'; // Replace with the new URL
-        // const newUrl = 'wav/2023/10/01/q-4567-8888-20231001-141026-1696169425.161.wav';
-        var dataId = $(this).data('id'); // Use $(this) to refer to the clicked button
-        console.log(dataId);
-
+        var dataId = $(this).data('id');
         $.ajax({
             type: "GET",
-            url: "voicerecord/edit/" + dataId, // Adjust the URL to match your route
+            url: "voicerecord/edit/" + dataId,
             success: function(response) {
-                // console.log('Ajax request successful');
-                // Optionally, you can do something with the response from the controller
-                // console.log(response);
                 console.log(response.voic);
-                // console.log(response.remoteData2.datetime_entry);
-                // console.log(newUrl);
                 const newUrl = 'wav/' + response.voic;
-
                 // console.log('Button clicked!');
                 initializeWaveSurfer(newUrl);
             },
@@ -363,12 +353,7 @@
 
 
     });
-    $('.vioc').on('click', () => {
-        const newUrl = 'wav/' + $('#vioc').val();
-        console.log('wav/' + $('#vioc').val());
-        console.log(newUrl);
-        initializeWaveSurfer(newUrl);
-    });
+
 
     $('#canclecomment').on('click', () => {
         document.getElementById('custom-dialog').style.display = 'none';
