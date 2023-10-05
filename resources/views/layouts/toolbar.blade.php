@@ -13,13 +13,26 @@
             $logout_button = '';
             $logout_button_class = '';
             $logoff_button = 'disabled';
-            $logff_button_class = 'd-npne';
+            $logoff_button_class = 'd-npne';
             $login_button = '';
             $login_button_class = '';
             break;
         case 1:
-            $dial_number = '';
+        $dial_number = '';
             $dial_button = '';
+            $transfer_button = '';
+            $performance_button = '';
+            $conf_button = '';
+            $break_button = '';
+            $break_button_class = '';
+            $unbreak_button = 'disabled';
+            $unbreak_button_class = 'd-none';
+            $logout_button = '';
+            $logout_button_class = 'd-none';
+            $logoff_button = '';
+            $logoff_button_class = '';
+            $login_button = '';
+            $login_button_class = '';
             break;
         case 2:
             $dial_number = '';
