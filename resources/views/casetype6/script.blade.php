@@ -171,6 +171,7 @@
                     var parent_id = $('#casetype' + p).val();
                 }
             }
+            alert(parent_id);
             var additionalData = {
                 parent_id: parent_id,
                 name: crmname,
