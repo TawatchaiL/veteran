@@ -319,7 +319,9 @@
             for (let i = selectno; i < 7; i++) {
                 var selectnext = i + 1;
                     if($('#casetype' + i).val() == ''){
-                        alert('OK');
+                        $('#AddName' + i).attr('disabled', false);
+                    }else{
+                        $('#AddName' + i).attr('disabled', true);
                     }
 
                 //$('#casetype' + selectnext).attr('disabled', true);
