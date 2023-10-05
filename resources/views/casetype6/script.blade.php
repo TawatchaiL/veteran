@@ -318,7 +318,7 @@
         //if(selectnext < 7){
             for (let i = selectno; i < 7; i++) {
                 var selectnext = i + 1;
-                    if($('#casetype' + i).val == ''){
+                    if($('#casetype' + i).val() == ''){
                         alert('OK');
                     }
 
