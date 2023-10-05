@@ -4,7 +4,7 @@
         $('#phone_state').html(result.message);
         $('#phone_state_icon').html(result.icon);
         $('#ToolbarButton').removeClass().addClass(get_state_color(result.id));
-        set_state_button(result.id)
+        set_state_button(result.id);
         $('#ToolbarModal').modal('hide');
     };
 
@@ -18,28 +18,36 @@
     };
 
     const get_state_color = (id) => {
-        if (id === 0) {
-            return 'btn btn-secondary';
-        } else if (id === 1) {
-            return 'btn btn-success';
-        } else if (id === 2) {
-            return 'btn btn-warning';
-        }
+        const classMap = {
+            0: 'btn btn-secondary',
+            1: 'btn btn-success',
+            2: 'btn btn-warning',
+        };
+        return classMap[id] || '';
+    };
+
+    const toggleButtonState = (element, enabled) => {
+        element.prop('disabled', !enabled);
     };
 
     const set_state_button = (id) => {
-        let dial_number = $('#dial_number');
-        let dial_button = $('#dial_button');
-        if (id === 0) {
-            dial_number.attr('disabled', true);
-            dial_button.attr('disabled', true);
-        } else if (id === 1) {
-            dial_number.attr('disabled', false);
-            dial_button.attr('disabled', false);
-        } else if (id === 2) {
-            dial_number.attr('disabled', false);
-            dial_button.attr('disabled', false);
-        }
+        const buttonElements = {
+            performance_button: $('#performance_button'),
+            break_group: $('#break_group'),
+            btn_pause: $('#btn_pause'),
+            btn_unbreak: $('#btn_unbreak'),
+            btn_system_logout: $('#btn_system_logout'),
+            btn_agent_logout: $('#btn_agent_logout'),
+            btn_agent_login: $('#btn_agent_login'),
+        };
+
+        toggleButtonState(buttonElements.performance_button, id === 1);
+        toggleButtonState(buttonElements.break_group, id !== 0);
+        toggleButtonState(buttonElements.btn_pause, id === 0);
+        toggleButtonState(buttonElements.btn_unbreak, id === 2);
+        toggleButtonState(buttonElements.btn_system_logout, id === 0);
+        toggleButtonState(buttonElements.btn_agent_logout, id === 1);
+        toggleButtonState(buttonElements.btn_agent_login, id === 0);
     };
 
     $(document).on('click', '#btn-agent-login', (e) => {
