@@ -343,7 +343,7 @@
             success: function(response) {
                 console.log(response.voic);
                 const newUrl = 'wav/' + response.voic;
-                // console.log('Button clicked!');
+                console.log(newUrl);
                 initializeWaveSurfer(newUrl);
             },
             error: function(error) {
