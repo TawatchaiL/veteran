@@ -172,7 +172,6 @@
                     }else{
                         var p = c - 1;
                     }
-                    var p = c - 1;
                     var parent_id = $('#casetype' + p).val();
                 }
             }
