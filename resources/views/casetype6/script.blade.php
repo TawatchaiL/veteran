@@ -174,7 +174,7 @@
             var additionalData = {
                 parent_id: parent_id,
                 name: crmname,
-                crmlev: c,
+                crmlev: p,
                 status: sstatus,
             };
             alert('OK1');
