@@ -314,7 +314,8 @@
 
     });
     function changecasetype(event) {
-            alert(event.target.name.substring(8, 9)); 
-            $('#casetype2').attr('disabled', false);
+        var selectno = parseInt(event.target.name.substring(8, 9));
+        var selectnext = selectno + 1;
+        $('#casetype' + selectnext).attr('disabled', false);
     }
 </script>
