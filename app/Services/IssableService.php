@@ -150,7 +150,7 @@ class IssableService
         $this->_agent = 'SIP/' . $phone;
         //try {
             $oECCP = $this->_obtenerConexion('ECCP');
-            $respuesta = $oECCP->pauseagent((int)$idBreak);
+            $respuesta = $oECCP->pauseagent(2);
             dd($respuesta);
             if (isset($respuesta->failure)) {
                 $this->errMsg = 'Unable to start break' . ' - ' . $this->_formatoErrorECCP($respuesta);
