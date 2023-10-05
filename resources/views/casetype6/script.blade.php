@@ -318,10 +318,15 @@
         //if(selectnext < 7){
             for (let i = selectno; i < 7; i++) {
                 var selectnext = i + 1;
-                $('#casetype' + selectnext).attr('disabled', true);
-                $('#AddName' + selectno).attr('disabled', true);
-                $('#casetype' + selectnext).attr('disabled', false);
-                $('#AddName' + selectnext).attr('disabled', false);
+                    if($('#casetype' + i).val() == ''){
+                        alert('OK');
+                    }
+
+                //$('#casetype' + selectnext).attr('disabled', true);
+                //$('#AddName' + selectno).attr('disabled', true);
+
+                //$('#casetype' + selectnext).attr('disabled', false);
+                //$('#AddName' + selectnext).attr('disabled', false);
             }
         //}
     }
