@@ -32,7 +32,7 @@ class PBXController extends Controller
 
         if ($user) {
             // Perform agent login action using IssableService
-            $this->issable->agent_login($user->phone);
+            $ret = $this->issable->agent_login($user->phone);
 
             // Update user's phone_status
             $user->phone_status_id = 1;
@@ -40,14 +40,18 @@ class PBXController extends Controller
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
             $user->save();
 
-            return [
-                'success' => true,
-                'id' => $user->phone_status_id,
-                'message' => $user->phone_status,
-                'icon' => $user->phone_status_icon
-            ];
+            if ($ret == true) {
+                return [
+                    'success' => true,
+                    'id' => $user->phone_status_id,
+                    'message' => $user->phone_status,
+                    'icon' => $user->phone_status_icon
+                ];
+            } else {
+                return ['success' => false, 'message' => 'login error'];
+            }
         } else {
-            return ['success' => false, 'message' => 'error'];
+            return ['success' => false, 'message' => 'login error'];
         }
     }
 
@@ -58,7 +62,7 @@ class PBXController extends Controller
 
         if ($user) {
             // Perform agent login action using IssableService
-            $this->issable->agent_logoff($user->phone);
+            $ret = $this->issable->agent_logoff($user->phone);
 
             // Update user's phone_status
             $user->phone_status_id = 0;
@@ -66,14 +70,18 @@ class PBXController extends Controller
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-xmark"></i>';
             $user->save();
 
-            return [
-                'success' => true,
-                'id' => $user->phone_status_id,
-                'message' => $user->phone_status,
-                'icon' => $user->phone_status_icon
-            ];
+            if ($ret == true) {
+                return [
+                    'success' => true,
+                    'id' => $user->phone_status_id,
+                    'message' => $user->phone_status,
+                    'icon' => $user->phone_status_icon
+                ];
+            } else {
+                return ['success' => false, 'message' => 'login error'];
+            }
         } else {
-            return ['success' => false, 'message' => 'error'];
+            return ['success' => false, 'message' => 'logoff error'];
         }
     }
 
@@ -84,7 +92,7 @@ class PBXController extends Controller
 
         if ($user) {
             // Perform agent login action using IssableService
-            $this->issable->agent_logoff($user->phone);
+            $ret = $this->issable->agent_logoff($user->phone);
 
             // Update user's phone_status
             $user->phone = '';
@@ -111,7 +119,7 @@ class PBXController extends Controller
 
         if ($user) {
             // Perform agent login action using IssableService
-            $break = $this->issable->agent_break($user->phone, $request->get('id_break'));
+            $ret = $this->issable->agent_break($user->phone, $request->get('id_break'));
 
             // Update user's phone_status
             $user->phone_status_id = 2;
@@ -119,12 +127,16 @@ class PBXController extends Controller
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-clock"></i>';
             $user->save();
 
-            return [
-                'success' => true,
-                'id' => $user->phone_status_id,
-                'message' => $user->phone_status,
-                'icon' => $user->phone_status_icon
-            ];
+            if ($ret == true) {
+                return [
+                    'success' => true,
+                    'id' => $user->phone_status_id,
+                    'message' => $user->phone_status,
+                    'icon' => $user->phone_status_icon
+                ];
+            } else {
+                return ['success' => false, 'message' => 'login error'];
+            }
         } else {
             return ['error' => false, 'message' => 'error'];
         }
@@ -137,7 +149,7 @@ class PBXController extends Controller
 
         if ($user) {
             // Perform agent login action using IssableService
-            $this->issable->agent_unbreak($user->phone);
+            $ret = $this->issable->agent_unbreak($user->phone);
 
             // Update user's phone_status
             $user->phone_status_id = 1;
@@ -145,12 +157,16 @@ class PBXController extends Controller
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
             $user->save();
 
-            return [
-                'success' => true,
-                'id' => $user->phone_status_id,
-                'message' => $user->phone_status,
-                'icon' => $user->phone_status_icon
-            ];
+            if ($ret == true) {
+                return [
+                    'success' => true,
+                    'id' => $user->phone_status_id,
+                    'message' => $user->phone_status,
+                    'icon' => $user->phone_status_icon
+                ];
+            } else {
+                return ['success' => false, 'message' => 'login error'];
+            }
         } else {
             return ['error' => false, 'message' => 'error'];
         }

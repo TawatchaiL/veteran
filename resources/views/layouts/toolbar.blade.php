@@ -128,12 +128,12 @@
                     </button>
                     <div class="dropdown-menu" role="menu">
 
-                        <a class="dropdown-item button_break" href="#" data-id="1"><i class="fas fa-pause"></i>
-                            ทานข้าว</a>
                         <a class="dropdown-item button_break" href="#" data-id="2"><i class="fas fa-pause"></i>
-                            เข้าห้องน้ำ</a>
+                            Lunch</a>
                         <a class="dropdown-item button_break" href="#" data-id="3"><i class="fas fa-pause"></i>
-                            ประชุม</a>
+                            Toilet</a>
+                        <a class="dropdown-item button_break" href="#" data-id="4"><i class="fas fa-pause"></i>
+                            Meeting</a>
                         <div class="dropdown-divider"></div>
 
 

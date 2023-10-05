@@ -1,6 +1,6 @@
 <script>
     const updateUI = (result) => {
-        //console.log(result);
+        console.log(result);
         $('#phone_state').html(result.message);
         $('#phone_state_icon').html(result.icon);
         $('#phone_state').removeClass().addClass(get_state_color(result.id));
