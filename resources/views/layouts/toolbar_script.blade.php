@@ -30,15 +30,39 @@
     const set_state_button = (id) => {
         let dial_number = $('#dial_number');
         let dial_button = $('#dial_button');
+        let tranfer_button = $('#dial_number');
+        let performance_button = $('#dial_number');
+        let conf_button = $('#dial_number');
+        let break_group = $('#dial_number');
+        let btn_pause = $('#dial_number');
+        let btn_unbreak = $('#dial_number');
+        let btn_system_logout = $('#dial_number');
+        let btn_agent_logout = $('#dial_number');
+        let btn_agent_login = $('#dial_number');
+
         if (id === 0) {
-            dial_number.attr('disabled', true);
-            dial_button.attr('disabled', true);
+            performance_button.attr('disabled', true);
+            break_group.addClass("d-none");
+            btn_pause.attr('disabled', true);
+            btn_unbreak.addClass("d-none");
+            btn_system_logout.attr('disabled', false);
+            btn_agent_logout.addClass("d-none");
+            btn_agent_login.attr('disabled', false);
         } else if (id === 1) {
-            dial_number.attr('disabled', false);
-            dial_button.attr('disabled', false);
+            performance_button.attr('disabled', false);
+            break_group.removeClass("d-none");
+            btn_pause.attr('disabled', false);
+            btn_unbreak.addClass("d-none");
+            btn_system_logout.attr('disabled', true);
+            btn_agent_logout.removeClass("d-none");
+            btn_agent_login.addClass("d-none");
         } else if (id === 2) {
-            dial_number.attr('disabled', false);
-            dial_button.attr('disabled', false);
+            break_group.removeClass("d-none");
+            btn_pause.attr('disabled', true);
+            btn_unbreak.removeClass("d-none");
+            btn_system_logout.attr('disabled', true);
+            btn_agent_logout.addClass("d-none");
+            btn_agent_login.addClass("d-none");
         }
     };
 
