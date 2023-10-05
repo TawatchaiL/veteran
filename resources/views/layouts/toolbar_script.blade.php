@@ -31,11 +31,11 @@
 
         const performance_button = $('#performance_button');
         const break_group = $('#break_group');
-        const btn_pause = $('#btn_pause');
-        const btn_unbreak = $('#btn_unbreak');
-        const btn_system_logout = $('#btn_system_logout');
-        const btn_agent_logout = $('#btn_agent_logout');
-        const btn_agent_login = $('#btn_agent_login');
+        const btn_pause = $('#btn-pause');
+        const btn_unbreak = $('#btn-unbreak');
+        const btn_system_logout = $('#btn-system-logout');
+        const btn_agent_logout = $('#btn-agent-logout');
+        const btn_agent_login = $('#btn-agent-login');
 
         if (id === 0) {
             performance_button.prop('disabled', true);
