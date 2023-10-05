@@ -519,14 +519,14 @@
                                             .datax.datac
                                             .district);
                                         $('#districtp')
-                                    .change();
+                                            .change();
                                         setTimeout(function() {
                                             $('#subdistrictp')
                                                 .val(res
                                                     .datax
                                                     .datac
                                                     .subdistrict
-                                                    );
+                                                );
                                         }, 500)
                                     }, 500)
                                     $('#postcodep').val(res.datax.datac
@@ -550,7 +550,7 @@
                                             .append($('<tr>')
                                                 .append($(
                                                         '<td width="30%">'
-                                                        )
+                                                    )
                                                     .append(
                                                         '<div class="col-md-12 col-sm-12 col-xs-12"><input type="hidden" value="' +
                                                         value
@@ -559,28 +559,28 @@
                                                         value
                                                         .emergencyname +
                                                         '" required="required"></div>'
-                                                        ))
+                                                    ))
                                                 .append($(
                                                         '<td width="10%">'
-                                                        )
+                                                    )
                                                     .append(
                                                         '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerrelation" name="emerrelationp[]" class="form-control has-feedback-left" value="' +
                                                         value
                                                         .emerrelation +
                                                         '" required="required"></div>'
-                                                        ))
+                                                    ))
                                                 .append($(
                                                         '<td width="10%">'
-                                                        )
+                                                    )
                                                     .append(
                                                         '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone" name="emerphonep[]" class="form-control has-feedback-left" onkeydown="validateNumber(event)" value="' +
                                                         value
                                                         .emerphone +
                                                         '" required="required"></div>'
-                                                        ))
+                                                    ))
                                                 .append($(
                                                         '<td width="5%">'
-                                                        )
+                                                    )
                                                     .append(
                                                         '<button type="button" name="deletem" id="deletem" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
                                                     )));
@@ -643,7 +643,7 @@
                                         $.each(result.errors, function(key,
                                             value) {
                                             $('.alert-danger-pop')
-                                            .show();
+                                                .show();
                                             $('.alert-danger-pop')
                                                 .append('<strong><li>' +
                                                     value +
@@ -658,7 +658,8 @@
                                             '</li></strong>');
                                         var cardElement = document
                                             .getElementById($('#telnop')
-                                        .val()); // Replace 'yourCardId' with the actual ID of your card element
+                                                .val()
+                                                ); // Replace 'yourCardId' with the actual ID of your card element
                                         cardElement.remove();
                                         //$('#'.$('#telnop').val()).remove();
                                         //$('#EditModal').modal('hide');
@@ -729,7 +730,7 @@
                                         $.each(result.errors, function(key,
                                             value) {
                                             $('.alert-danger-pop')
-                                            .show();
+                                                .show();
                                             $('.alert-danger-pop')
                                                 .append('<strong><li>' +
                                                     value +
@@ -744,7 +745,8 @@
                                             '</li></strong>');
                                         var cardElement = document
                                             .getElementById($('#telnop')
-                                        .val()); // Replace 'yourCardId' with the actual ID of your card element
+                                                .val()
+                                                ); // Replace 'yourCardId' with the actual ID of your card element
                                         cardElement.remove();
                                         //$('#EditModal').modal('hide');
                                         //toastr.success(result.success, {
@@ -783,7 +785,7 @@
         }
 
 
-        $(document).on('click', '#ToolbarButton', function(e) {
+        $(document).on('click', '#ToolbarButton, #user_button', function(e) {
             e.preventDefault();
             $('#ToolbarModal').modal('show');
         });
