@@ -177,7 +177,7 @@
                 crmlev: p,
                 status: sstatus,
             };
-            alert('OK1');
+            alert(sstatus);
             $.ajax({
                 url: "{{ route('casetype6.store') }}",
                 method: 'post',
@@ -185,7 +185,6 @@
                 success: function(result) {
                     alert(result);
                     if (result.errors) {
-                        alert('OK1');
                         $('.alert-danger').html('');
                         $.each(result.errors, function(key, value) {
                             $('.alert-danger').show();
@@ -193,7 +192,6 @@
                                 '</li></strong>');
                         });
                     } else {
-                        alert('OK2');
                         $('.alert-danger').hide();
                         $('.alert-success').show();
                         $('.alert-success').append('<strong><li>' + result.success +
@@ -211,7 +209,6 @@
 
                 }
             });
-            alert('OK');
         });
 
         let id;
