@@ -3,7 +3,8 @@
         console.log(result);
         $('#phone_state').html(result.message);
         $('#phone_state_icon').html(result.icon);
-        $('#ToolbarButton').removeClass().addClass(get_state_color(result.id));
+        $('#phone_state').removeClass().addClass(get_state_color(result.id));
+        $('#phone_icon').removeClass().addClass(get_state_color(result.id));
         set_state_button(result.id);
         $('#ToolbarModal').modal('hide');
     };
@@ -20,11 +21,11 @@
 
     const get_state_color = (id) => {
         if (id === 0) {
-            return 'btn btn-secondary';
+            return 'icon-gray';
         } else if (id === 1) {
-            return 'btn btn-success';
+            return 'icon-green';
         } else if (id === 2) {
-            return 'btn btn-warning';
+            return 'icon-yellow';
         }
     };
 
