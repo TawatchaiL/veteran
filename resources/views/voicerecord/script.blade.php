@@ -346,7 +346,7 @@
             success: function(response) {
                 console.log(response.voic);
                 const newUrl = 'wav/' + response.voic;
-
+                $('#vioc_name').text(response.voic_name);
                 // console.log('Button clicked!');
                 initializeWaveSurfer(newUrl);
             },
