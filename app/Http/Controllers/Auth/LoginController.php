@@ -178,15 +178,15 @@ class LoginController extends Controller
                 $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
                 $user->save();
 
-                $ret = $this->issable->agent_login($user->phone);
-                dd($ret);
-
 
                 // Update 'number' in the 'call_center.agent' table
                 DB::connection('remote_connection')
                     ->table('call_center.agent')
                     ->where('id', $user->agent_id)
                     ->update(['number' => $user->phone]);
+
+                $ret = $this->issable->agent_login($user->phone);
+
 
                 //$this->issable->agent_login($user->phone);
                 //session(['temporary_phone' => Auth::user()->phone]);
