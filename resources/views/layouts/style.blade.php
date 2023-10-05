@@ -10,8 +10,12 @@
         /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); */
     }
 
-    .sidebar-item {s
-        white-space: nowrap;
+    .modal-xxl {
+        max-width: 1500px !important;
+    }
+
+    .sidebar-item {
+        s white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         font-size: 12px;
@@ -141,5 +145,9 @@
         background-color: #333;
         color: white;
         border-radius: 0.2em;
+    }
+
+    .custom-button {
+        width: 170px;
     }
 </style>

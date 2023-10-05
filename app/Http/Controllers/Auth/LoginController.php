@@ -172,6 +172,7 @@ class LoginController extends Controller
                 $user->queue = $queueNames;
                 $user->phone_status_id = 0;
                 $user->phone_status = "ไม่พร้อมรับสาย";
+                $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-xmark"></i>';
                 $user->save();
 
 
@@ -214,6 +215,7 @@ class LoginController extends Controller
         $user->phone = '';
         $user->phone_status_id = 0;
         $user->phone_status = "ไม่พร้อมรับสาย";
+        $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-xmark"></i>';
         $user->save();
 
         DB::connection('remote_connection')

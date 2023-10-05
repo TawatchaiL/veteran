@@ -7,6 +7,7 @@
             success: function(result) {
                 console.log(result)
                 $('#phone_state').html(result.message);
+                $('#phone_state_icon').html(result.icon);
                 $('#ToolbarModal').modal('hide');
             }
         });
@@ -20,43 +21,44 @@
             success: function(result) {
                 console.log(result)
                 $('#phone_state').html(result.message);
+                $('#phone_state_icon').html(result.icon);
                 $('#ToolbarModal').modal('hide');
             }
         });
     });
 
+    let bid;
     $(document).on('click', '.button_break', function(e) {
         e.preventDefault();
-        var id = 2;
+        var bid = $(this).data('id');
         var additionalData = {
-            phone: 9999,
-            break_id: id,
+            id_break: bid,
         };
         $.ajax({
-            url: "/agent_break",
+            url: "{{ route('agent.break') }}",
             method: 'POST',
             data: additionalData,
 
             success: function(result) {
                 console.log(result)
+                $('#phone_state').html(result.message);
+                $('#phone_state_icon').html(result.icon);
+                $('#ToolbarModal').modal('hide');
             }
         });
     });
 
     $(document).on('click', '.button_unbreak', function(e) {
         e.preventDefault();
-        var additionalData = {
-            phone: 9999,
-        };
         $.ajax({
-            url: "/agent_unbreak",
+            url: "{{ route('agent.unbreak') }}",
             method: 'POST',
-            data: additionalData,
-
             success: function(result) {
                 console.log(result)
+                $('#phone_state').html(result.message);
+                $('#phone_state_icon').html(result.icon);
+                $('#ToolbarModal').modal('hide');
             }
         });
     });
-
 </script>
