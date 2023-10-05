@@ -148,7 +148,6 @@ class IssableService
     public function agent_break($phone, $idBreak)
     {
         $this->_agent = 'SIP/' . $phone;
-        dd($idBreak);
         try {
             $oECCP = $this->_obtenerConexion('ECCP');
             $respuesta = $oECCP->pauseagent($idBreak);
