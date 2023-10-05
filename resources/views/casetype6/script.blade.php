@@ -320,6 +320,8 @@
                 var selectnext = i + 1;
                     if($('#casetype' + i).val() == ''){
                         $('#AddName' + i).attr('disabled', false);
+                        $('#casetype' + selectnext).attr('disabled', true);
+                        $('#AddName' + selectnext).attr('disabled', true);
                     }else{
                         $('#AddName' + i).attr('disabled', true);
                         $('#casetype' + selectnext).attr('disabled', false);
