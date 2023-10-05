@@ -58,7 +58,7 @@
     }
 @endphp
 <div class="modal fade" id="ToolbarModal">
-    <div class="modal-dialog modal-xxl">
+    <div class="modal-dialog modal-xxl-toolbar">
         <div class="modal-content">
             <div class="modal-header bg-primary">
                 <h4 class="modal-title">{{-- <i class="fas fa-wrench"></i> --}} <i class="fas fa-spin fa-gear"></i> Agent ToolBar [

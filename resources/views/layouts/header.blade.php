@@ -97,26 +97,26 @@
         @php
             switch ($temporaryPhoneStatusID) {
                 case 0:
-                    $temporaryPhoneColor = 'btn btn-secondary';
+                    $temporaryPhoneColor = 'icon-gray';
                     break;
                 case 1:
-                    $temporaryPhoneColor = 'btn btn-success';
+                    $temporaryPhoneColor = 'icon-green';
                     break;
                 case 2:
-                    $temporaryPhoneColor = 'btn btn-warning';
+                    $temporaryPhoneColor = 'icon-yellow';
                     break;
                 case 3:
                     $temporaryPhoneColor = '';
                     break;
                 default:
-                    $temporaryPhoneColor = 'btn btn-secondary';
+                    $temporaryPhoneColor = 'icon-gray';
                     break;
             }
         @endphp
 
         <li class="nav-item d-none d-sm-inline-block">
-            <a class="{{ $temporaryPhoneColor }}" role="button" id="ToolbarButton">
-                <span id="phone_state_icon">{!! $temporaryPhoneStatusIcon !!}</span> {{ Auth::user()->name }} [
+            <a class="nav-link" role="button" id="ToolbarButton">
+                <span id="phone_state_icon" class="{{ $temporaryPhoneColor }}">{!! $temporaryPhoneStatusIcon !!}</span> {{ Auth::user()->name }} [
                 {{ $temporaryPhone }}  ] : <span id="phone_state">{{ $temporaryPhoneStatus }}</span>
             </a>
         </li>

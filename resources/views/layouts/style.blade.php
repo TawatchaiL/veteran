@@ -10,9 +10,14 @@
         /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); */
     }
 
-    .modal-xxl {
+    .modal-xxl-toolbar {
         max-width: 1100px !important;
     }
+
+    *.icon-gray {color: rgb(110, 107, 107)}
+    *.icon-green {color: rgb(12, 157, 73)}
+    *.icon-yellow {color: rgb(235, 177, 6)}
+    *.icon-red {color: rgb(193, 32, 11)}
 
     .sidebar-item {
         s white-space: nowrap;
