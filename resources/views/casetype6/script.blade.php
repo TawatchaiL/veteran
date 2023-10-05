@@ -166,7 +166,6 @@
             }
             for (let c = 1; c < 7; c++) {
                 if (!$('#AddName' + c).prop('disabled')) {
-                    alert($('#AddName' + c).target.name.substring(7, 8));
                     var crmlev = parseInt($('#AddName' + c).target.name.substring(7, 8));
                     var crmname = $('#AddName' + c).val();
                     var p = c - 1;
@@ -176,7 +175,7 @@
             var additionalData = {
                 parent_id: parent_id,
                 name: crmname,
-                crmlev: crmlev,
+                crmlev: c,
                 status: sstatus,
                 _token: token,
             };
