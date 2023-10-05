@@ -169,10 +169,15 @@ class LoginController extends Controller
                 }
 
                 $queueNames = $user->queues->pluck('queue_name')->implode(',');
+                $this->issable->agent_login($user->phone);
+
                 $user->queue = $queueNames;
-                $user->phone_status_id = 0;
+                /* $user->phone_status_id = 0;
                 $user->phone_status = "ไม่พร้อมรับสาย";
-                $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-xmark"></i>';
+                $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-xmark"></i>'; */
+                $user->phone_status_id = 1;
+                $user->phone_status = "พร้อมรับสาย";
+                $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
                 $user->save();
 
 

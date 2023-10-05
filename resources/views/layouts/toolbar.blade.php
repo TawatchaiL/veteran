@@ -157,8 +157,7 @@
                 <div class="mx-2 px-2">
                     <button {{ $logout_button }}
                         class="{{ $logout_button_class }} btn btn-danger custom-button float-right"
-                        id="btn-system-logout">
-                         <i class="fas fa-power-off"></i> ออกจากระบบ
+                        id="btn-system-logout"><i class="fas fa-power-off"></i> ออกจากระบบ
                     </button>
                 </div>
 
@@ -166,8 +165,7 @@
                     <!-- Add margin-right to create space -->
                     <button {{ $logoff_button }} id="btn-agent-logout"
                         class="{{ $logoff_button_class }} btn btn-secondary custom-button float-right"
-                        style="margin-right: 10px;">
-                        <i class="fa-solid fa-user-xmark"></i> ไม่พร้อมรับสาย
+                        style="margin-right: 10px;"><i class="fa-solid fa-user-xmark"></i> ไม่พร้อมรับสาย
                     </button>
                 </div>
 
