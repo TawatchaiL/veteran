@@ -187,7 +187,7 @@
     }
 
     .custom-button {
-        width: 170px;
+        width: 175px;
         height: 60px;
         font-size: 1.2em;
     }

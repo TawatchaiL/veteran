@@ -169,7 +169,8 @@ class LoginController extends Controller
                 }
 
                 $queueNames = $user->queues->pluck('queue_name')->implode(',');
-                $this->issable->agent_login($user->phone);
+                $ret = $this->issable->agent_login($user->phone);
+                dd($ret);
 
                 $user->queue = $queueNames;
                 /* $user->phone_status_id = 0;
