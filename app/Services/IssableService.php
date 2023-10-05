@@ -148,19 +148,19 @@ class IssableService
     public function agent_break($phone, $idBreak)
     {
         $this->_agent = 'SIP/' . $phone;
-        //try {
+        dd($idBreak);
+        try {
             $oECCP = $this->_obtenerConexion('ECCP');
             $respuesta = $oECCP->pauseagent($idBreak);
-            dd($respuesta);
             if (isset($respuesta->failure)) {
                 $this->errMsg = 'Unable to start break' . ' - ' . $this->_formatoErrorECCP($respuesta);
                 return FALSE;
             }
-            //return TRUE;
-        //} catch (Exception $e) {
-            //$this->errMsg = '(internal) pauseagent: ' . $e->getMessage();
-            //return FALSE;
-        //}
+            return TRUE;
+        } catch (Exception $e) {
+            $this->errMsg = '(internal) pauseagent: ' . $e->getMessage();
+            return FALSE;
+        }
     }
 
     public function agent_unbreak($phone)
