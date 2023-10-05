@@ -164,15 +164,25 @@
             } else {
                 sstatus = 0;
             }
-
+            for (let c = 1; c < 7; c++) {
+                if (!$('#AddName' + c).prop('disabled')) {
+                    var crmlev = parseInt($('#AddName' + c).attr('name').substring(7, 8));
+                    var crmname = $('#AddName' + c).val();
+                    var p = c - 1;
+                    var parent_id = $('#casetype' + p).val();
+                }
+            }
+            var additionalData = {
+                parent_id: parent_id,
+                name: crmname,
+                crmlev: crmlev,
+                status: sstatus,
+                _token: token,
+            };
             $.ajax({
-                url: "{{ route('casetype.store') }}",
+                url: "{{ route('casetype6.store') }}",
                 method: 'post',
-                data: {
-                    name: $('#AddName').val(),
-                    status: sstatus,
-                    _token: token,
-                },
+                data: additionalData,
                 success: function(result) {
                     if (result.errors) {
                         $('.alert-danger').html('');
@@ -213,7 +223,7 @@
 
             id = $(this).data('id');
             $.ajax({
-                url: "casetype/edit/" + id,
+                url: "casetype6/edit/" + id,
                 method: 'GET',
                 success: function(res) {
                     console.log(res);
