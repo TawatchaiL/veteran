@@ -132,6 +132,11 @@
                     });
                 }
             });
+            $('#casetype2').html('<option value="">เลือกรายละเอียดเคส</option>');
+            $('#casetype3').html('<option value="">เลือกรายละเอียดเคสย่อย</option>');
+            $('#casetype4').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
+            $('#casetype5').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
+            $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
             $('#casetype2').attr('disabled', true);
             $('#casetype3').attr('disabled', true);
             $('#casetype4').attr('disabled', true);
@@ -316,11 +321,6 @@
 
     $('#casetype1').on('change', function() {
             var parent_id = $(this).val();
-            $('#casetype2').html('<option value="">เลือกรายละเอียดเคส</option>');
-            $('#casetype3').html('<option value="">เลือกรายละเอียดเคสย่อย</option>');
-            $('#casetype4').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
-            $('#casetype5').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
-            $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
                 if(parent_id != ''){    
                     $.ajax({
                         url: "casetype6/casetype/" + parent_id,
@@ -336,16 +336,15 @@
                     $('#AddName1').attr('disabled', true);
                     $('#casetype2').attr('disabled', false);
                     $('#AddName2').attr('disabled', false);
-                }    
+                }else{
+                    $('#AddName1').attr('disabled', false);
+                    $('#casetype2').attr('disabled', true);
+                    $('#AddName2').attr('disabled', true);
+                }   
         });
 
         $('#casetype2').on('change', function() {
             var parent_id = $(this).val();
-            //$('#casetype2').html('<option value="">เลือกรายละเอียดเคส</option>');
-            //$('#casetype3').html('<option value="">เลือกรายละเอียดเคสย่อย</option>');
-            //$('#casetype4').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
-            //$('#casetype5').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
-            //$('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
                 if(parent_id != ''){    
                     $.ajax({
                         url: "casetype6/casetype/" + parent_id,
@@ -361,7 +360,34 @@
                     $('#AddName2').attr('disabled', true);
                     $('#casetype3').attr('disabled', false);
                     $('#AddName3').attr('disabled', false);
-                }    
+                }else{
+                    $('#AddName2').attr('disabled', false);
+                    $('#casetype3').attr('disabled', true);
+                    $('#AddName3').attr('disabled', true);
+                }   
+        });
+        $('#casetype3').on('change', function() {
+            var parent_id = $(this).val();
+                if(parent_id != ''){    
+                    $.ajax({
+                        url: "casetype6/casetype/" + parent_id,
+                        method: 'GET',
+                        success: function(res) {
+                            $.each(res.data, function(index, item) {
+                                $('#casetype4').append(
+                                    $('<option></option>').val(item.id).html(item.name)
+                                );
+                            });
+                        }
+                    });
+                    $('#AddName3').attr('disabled', true);
+                    $('#casetype4').attr('disabled', false);
+                    $('#AddName4').attr('disabled', false);
+                }else{
+                    $('#AddName3').attr('disabled', false);
+                    $('#casetype4').attr('disabled', true);
+                    $('#AddName4').attr('disabled', true);
+                }   
         });
     //function changecasetype(event) {
     //    var selectno = parseInt(event.target.name.substring(8, 9));
