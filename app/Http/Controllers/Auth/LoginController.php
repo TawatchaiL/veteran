@@ -169,9 +169,6 @@ class LoginController extends Controller
                 }
 
                 $queueNames = $user->queues->pluck('queue_name')->implode(',');
-                $ret = $this->issable->agent_login($user->phone);
-                dd($ret);
-
                 $user->queue = $queueNames;
                 /* $user->phone_status_id = 0;
                 $user->phone_status = "ไม่พร้อมรับสาย";
@@ -180,6 +177,9 @@ class LoginController extends Controller
                 $user->phone_status = "พร้อมรับสาย";
                 $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
                 $user->save();
+
+                $ret = $this->issable->agent_login($user->phone);
+                dd($ret);
 
 
                 // Update 'number' in the 'call_center.agent' table
