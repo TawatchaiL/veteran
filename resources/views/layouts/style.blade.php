@@ -19,12 +19,6 @@
         font-size: 1.5em;
         text-align: center;
         vertical-align: middle;
-        display: inline-block;
-        padding: 0.375rem 0.75rem;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
     }
 
     *.icon-green {
@@ -32,12 +26,7 @@
         font-size: 1.5em;
         text-align: center;
         vertical-align: middle;
-        display: inline-block;
-        padding: 0.375rem 0.75rem;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
+
     }
 
     *.icon-yellow {
@@ -45,12 +34,7 @@
         font-size: 1.5em;
         text-align: center;
         vertical-align: middle;
-        display: inline-block;
-        padding: 0.375rem 0.75rem;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
+
     }
 
     *.icon-red {
@@ -58,12 +42,7 @@
         font-size: 1.5em;
         text-align: center;
         vertical-align: middle;
-        display: inline-block;
-        padding: 0.375rem 0.75rem;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
+
     }
 
     .sidebar-item {
