@@ -2,7 +2,8 @@
     <div class="modal-dialog modal-xxxl">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <h4 class="modal-title"><i class="fa-solid fa-volume-high"></i> <span id="vioc_name"> 09999999-1002-2023-08-01-110000.wav </span> </h4>
+                <h4 class="modal-title"><i class="fa-solid fa-volume-high"></i> <span id="vioc_name">
+                        09999999-1002-2023-08-01-110000.wav </span> </h4>
                 <div class="closew"> <i class="fa-solid fa-clock"></i> ความยาว <span id="duration">00:00:00</span> นาที
                 </div>
 
@@ -107,27 +108,30 @@
                     </div>
                 </div>
 
+                <form action="#">
+                    @csrf
+                    <input type="hidden" id="call_recording_id" value="">
+                    <input type="hidden" id="uniqueid" value="">
 
-                <input type="hidden" id="call_recording_id" value="">
-                <input type="hidden" id="uniqueid" value="">
-                
-                <div class="row" id="custom-dialog" style="display: none;">
-                    <div class="col-xs-4 col-sm-4 col-md-4">
-                        <div class="form-group">
-                            <label for="content-input">ระบุ Comment:</label>
-                            <input type="text" id="content-input" class="form-control">
-                        </div>
+                    <div class="row" id="custom-dialog" style="display: none;">
+                        <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="form-group">
+                                <label for="content-input">ระบุ Comment:</label>
+                                <input type="text" id="content-input" class="form-control">
+                            </div>
 
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-6">
-                        <div class="form-group">
-                            <button type="button" class="btn btn-success" id="add-content-button"><i
-                                    class="fas fa-download"></i> บันทึก</button>
-                            <button type="button" class="btn btn-danger" id="canclecomment"><i
-                                    class="fas fa-door-closed"></i> ยกเลิก</button>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <button type="button" class="btn btn-success" id="add-content-button"><i
+                                        class="fas fa-download"></i> บันทึก</button>
+                                <button type="button" class="btn btn-danger" id="canclecomment"><i
+                                        class="fas fa-door-closed"></i> ยกเลิก</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
+
 
 
                 {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
