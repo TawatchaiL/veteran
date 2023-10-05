@@ -35,7 +35,7 @@
     }
 
     .sidebar-item {
-        s white-space: nowrap;
+        white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         font-size: 12px;
