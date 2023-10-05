@@ -13,5 +13,6 @@ class CrmCaseType extends Model
         'name',
         'crmlev',
         'crmlist',
+        'status',
     ];
 }
