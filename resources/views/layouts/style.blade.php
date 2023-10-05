@@ -14,10 +14,25 @@
         max-width: 1100px !important;
     }
 
-    *.icon-gray {color: rgb(110, 107, 107)}
-    *.icon-green {color: rgb(12, 157, 73)}
-    *.icon-yellow {color: rgb(235, 177, 6)}
-    *.icon-red {color: rgb(193, 32, 11)}
+    *.icon-gray {
+        color: rgb(110, 107, 107);
+        font-size: 2.5em;
+    }
+
+    *.icon-green {
+        color: rgb(12, 157, 73);
+        font-size: 2.5em;
+    }
+
+    *.icon-yellow {
+        color: rgb(235, 177, 6);
+        font-size: 2.5em;
+    }
+
+    *.icon-red {
+        color: rgb(193, 32, 11);
+        font-size: 2.5em;
+    }
 
     .sidebar-item {
         s white-space: nowrap;
@@ -154,6 +169,7 @@
 
     .custom-button {
         width: 170px;
-        height: 70px;;
+        height: 70px;
+        ;
     }
 </style>
