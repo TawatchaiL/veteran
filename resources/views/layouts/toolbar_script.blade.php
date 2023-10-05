@@ -29,39 +29,35 @@
 
     const set_state_button = (id) => {
         alert(id)
-        let dial_number = $('#dial_number');
-        let dial_button = $('#dial_button');
-        let tranfer_button = $('#dial_number');
-        let performance_button = $('#dial_number');
-        let conf_button = $('#dial_number');
-        let break_group = $('#dial_number');
-        let btn_pause = $('#dial_number');
-        let btn_unbreak = $('#dial_number');
-        let btn_system_logout = $('#dial_number');
-        let btn_agent_logout = $('#dial_number');
-        let btn_agent_login = $('#dial_number');
+        let performance_button = $('#performance_button');
+        let break_group = $('#break_group');
+        let btn_pause = $('#btn_pause');
+        let btn_unbreak = $('#btn_unbreak');
+        let btn_system_logout = $('#btn_system_logout');
+        let btn_agent_logout = $('#btn_agent_logout');
+        let btn_agent_login = $('#btn_agent_login');
 
         if (id === 0) {
-            performance_button.attr('disabled', true);
+            performance_button.prop('disabled', true);
             break_group.addClass("d-none");
-            btn_pause.attr('disabled', true);
+            btn_pause.prop('disabled', true);
             btn_unbreak.addClass("d-none");
-            btn_system_logout.attr('disabled', false);
+            btn_system_logout.prop('disabled', false);
             btn_agent_logout.addClass("d-none");
-            btn_agent_login.attr('disabled', false);
+            btn_agent_login.prop('disabled', false);
         } else if (id === 1) {
-            performance_button.attr('disabled', false);
+            performance_button.prop('disabled', false);
             break_group.removeClass("d-none");
-            btn_pause.attr('disabled', false);
+            btn_pause.prop('disabled', false);
             btn_unbreak.addClass("d-none");
-            btn_system_logout.attr('disabled', true);
+            btn_system_logout.prop('disabled', true);
             btn_agent_logout.removeClass("d-none");
             btn_agent_login.addClass("d-none");
         } else if (id === 2) {
             break_group.removeClass("d-none");
-            btn_pause.attr('disabled', true);
+            btn_pause.prop('disabled', true);
             btn_unbreak.removeClass("d-none");
-            btn_system_logout.attr('disabled', true);
+            btn_system_logout.prop('disabled', true);
             btn_agent_logout.addClass("d-none");
             btn_agent_login.addClass("d-none");
         }
