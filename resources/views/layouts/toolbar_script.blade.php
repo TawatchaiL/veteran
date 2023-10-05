@@ -49,4 +49,10 @@
         e.preventDefault();
         sendAjaxRequest("{{ route('agent.unbreak') }}", "POST");
     });
+
+    $(document).on('click', '#btn-system-logout', (e) => {
+        e.preventDefault();
+        document.getElementById('logout-form').submit();
+    });
+
 </script>

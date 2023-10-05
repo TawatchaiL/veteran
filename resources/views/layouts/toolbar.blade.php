@@ -87,6 +87,10 @@
                         class="fas fa-clock"></i>
                     UnWarp </button>
 
+                <button class="btn btn-lg btn-danger custom-button float-right" id="btn-system-logout">
+                    <i class="fas fa-power-off"></i>
+                    ออกจากระบบ
+                </button>
                 <button {{-- <?= $logoff_dis ?> --}} id="btn-agent-logout"
                     class="btn btn-lg btn-secondary custom-button float-right"><i class="fas fa-power-off"></i>
                     ไม่พร้อมรับสาย </button>
@@ -94,10 +98,7 @@
                     class="btn btn-lg btn-success custom-button mx-1 float-right"><i class="fas fa-plug"></i>
                     พร้อมรับสาย </button>
 
-                <a href="#" class="btn btn-danger btn-flat float-right"
-                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    ออกจากระบบ
-                </a>
+
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
