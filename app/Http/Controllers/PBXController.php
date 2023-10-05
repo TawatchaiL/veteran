@@ -122,8 +122,14 @@ class PBXController extends Controller
             $ret = $this->issable->agent_break($user->phone, $request->get('id_break'));
 
             // Update user's phone_status
+
+            $resultb = DB::connection('remote_connection')
+                ->table('call_center.break')
+                ->where('id', $request->get('id_break'))
+                ->first();
+
             $user->phone_status_id = 2;
-            $user->phone_status = "พักเบรค";
+            $user->phone_status =  $resultb->name;
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-clock"></i>';
             $user->save();
 

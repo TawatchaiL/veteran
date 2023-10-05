@@ -1,16 +1,25 @@
 <script>
     const updateUI = (result) => {
-        console.log(result);
-        $('#phone_state').html(result.message);
-        $('#phone_state_icon').html(result.icon);
-        $('#phone_state').removeClass().addClass(get_state_color(result.id));
-        $('#phone_state_icon').removeClass().addClass(get_state_color(result.id));
-        set_state_button(result.id);
-        $('#ToolbarModal').modal('hide');
+        //console.log(result);
+        if (result.success == true) {
+            toastr.success('เปลี่ยนสถานะ เรียบร้อยแล้ว', {
+                timeOut: 5000
+            });
+            $('#phone_state').html(result.message);
+            $('#phone_state_icon').html(result.icon);
+            $('#phone_state').removeClass().addClass(get_state_color(result.id));
+            $('#phone_state_icon').removeClass().addClass(get_state_color(result.id));
+            set_state_button(result.id);
+            $('#ToolbarModal').modal('hide');
+        } else {
+            toastr.error('เปลี่ยนสถานะ ไม่สำเร็จ', {
+                timeOut: 5000
+            });
+        }
+
     };
 
     const sendAjaxRequest = (url, method, data = {}) => {
-        console.log(data)
         $.ajax({
             url,
             method,
