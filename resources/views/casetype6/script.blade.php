@@ -320,17 +320,19 @@
             $('#casetype4').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
             $('#casetype5').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
             $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
-            $.ajax({
-                url: "casetype6/casetype/" + parent_id,
-                method: 'GET',
-                success: function(res) {
-                    $.each(res.data, function(index, item) {
-                        $('#casetype2').append(
-                            $('<option></option>').val(item.id).html(item.name)
-                        );
+                if(parent_id != ''){    
+                    $.ajax({
+                        url: "casetype6/casetype/" + parent_id,
+                        method: 'GET',
+                        success: function(res) {
+                            $.each(res.data, function(index, item) {
+                                $('#casetype2').append(
+                                    $('<option></option>').val(item.id).html(item.name)
+                                );
+                            });
+                        }
                     });
-                }
-            });
+                }    
         });
     //function changecasetype(event) {
     //    var selectno = parseInt(event.target.name.substring(8, 9));
