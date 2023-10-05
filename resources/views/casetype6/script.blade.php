@@ -177,13 +177,11 @@
                 crmlev: p,
                 status: sstatus,
             };
-            alert(sstatus);
             $.ajax({
                 url: "{{ route('casetype6.store') }}",
                 method: 'post',
                 data: additionalData,
                 success: function(result) {
-                    alert(result);
                     if (result.errors) {
                         $('.alert-danger').html('');
                         $.each(result.errors, function(key, value) {
