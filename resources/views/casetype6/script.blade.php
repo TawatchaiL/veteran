@@ -260,7 +260,7 @@
             }
 
             $.ajax({
-                url: "casetype/save/" + id,
+                url: "casetype6/save/" + id,
                 method: 'PUT',
                 data: {
                     name: $('#EditName').val(),
@@ -307,7 +307,7 @@
             $.ajax({
                 type: "POST",
                 dataType: 'JSON',
-                url: "casetype/destroy/",
+                url: "casetype6/destroy/",
                 data: {
                     id: rowid,
                     _method: 'delete',
