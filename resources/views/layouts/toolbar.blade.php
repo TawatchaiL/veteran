@@ -35,7 +35,7 @@
             $login_button_class = 'd-none';
             break;
         case 2:
-        $dial_number = '';
+            $dial_number = '';
             $dial_button = '';
             $transfer_button = '';
             $performance_button = 'disabled';
@@ -146,20 +146,26 @@
                 {{--  <button class="btn btn-warning custom-button float-left mx-1 button_unbreak"><i
                         class="fas fa-clock"></i>
                     UnWarp </button> --}}
-
-                <button {{ $logout_button }}
-                    class="{{ $logout_button_class }} btn btn-danger custom-button float-right" id="btn-system-logout">
-                    <i class="fas fa-power-off"></i>
-                    ออกจากระบบ
-                </button>
-                <button {{ $logoff_button }} id="btn-agent-logout"
-                    class="{{ $logoff_button_class }} btn btn-secondary custom-button float-right"><i
-                        class="fas fa-power-off"></i>
-                    ไม่พร้อมรับสาย </button>
-                <button {{ $login_button }} id="btn-agent-login"
-                    class="{{ $login_button_class }} btn btn-success custom-button mx-1 float-right"><i
-                        class="fas fa-plug"></i>
-                    พร้อมรับสาย </button>
+                <div class="mx-1">
+                    <button {{ $logout_button }}
+                        class="{{ $logout_button_class }} btn btn-danger custom-button float-right"
+                        id="btn-system-logout">
+                        <i class="fas fa-power-off"></i>
+                        ออกจากระบบ
+                    </button>
+                </div>
+                <div class="mx-1">
+                    <button {{ $logoff_button }} id="btn-agent-logout"
+                        class="{{ $logoff_button_class }} btn btn-secondary custom-button float-right"><i
+                            class="fas fa-power-off"></i>
+                        ไม่พร้อมรับสาย </button>
+                </div>
+                <div class="mx-1">
+                    <button {{ $login_button }} id="btn-agent-login"
+                        class="{{ $login_button_class }} btn btn-success custom-button mx-1 float-right"><i
+                            class="fas fa-plug"></i>
+                        พร้อมรับสาย </button>
+                </div>
 
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

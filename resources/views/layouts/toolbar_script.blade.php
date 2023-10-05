@@ -44,7 +44,7 @@
             btn_unbreak.addClass("d-none");
             btn_system_logout.prop('disabled', false);
             btn_agent_logout.addClass("d-none");
-            btn_agent_logout.removeClass("d-none");
+            btn_agent_login.removeClass("d-none");
             btn_agent_login.prop('disabled', false);
         } else if (id === 1) {
             performance_button.prop('disabled', false);
@@ -52,7 +52,7 @@
             btn_pause.prop('disabled', false);
             btn_unbreak.addClass("d-none");
             btn_system_logout.prop('disabled', true);
-            btn_agent_logout.addClass("d-none");
+            btn_agent_logout.removeClass("d-none");
             btn_agent_login.addClass("d-none");
         } else if (id === 2) {
             break_group.removeClass("d-none");
