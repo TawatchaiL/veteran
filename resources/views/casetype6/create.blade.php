@@ -56,6 +56,8 @@
                             <select style="width: 100%;"
                                 class="select2 form-control" id="casetype2"
                                 name="casetype2" onchange="changecasetype(event)">
+                                <option value="5">รหัสผู้ติดต่อ</option>
+                                <option value="6">ชื่อผู้ติดต่อ</option>
                             </select>
                         </div>
                     </div>
@@ -73,7 +75,9 @@
                                 รายละเอียดเคสย่อย:</strong>
                             <select style="width: 100%;"
                                 class="select2 form-control" id="casetype3"
-                                name="casetype3">
+                                name="casetype3" onchange="changecasetype(event)">
+                                <option value="5">รหัสผู้ติดต่อ</option>
+                                <option value="6">ชื่อผู้ติดต่อ</option>
                             </select>
                         </div>
                     </div>
@@ -91,7 +95,9 @@
                                 เพิ่มเติม 1:</strong>
                             <select style="width: 100%;"
                                 class="select2 form-control" id="casetype4"
-                                name="casetype4">
+                                name="casetype4" onchange="changecasetype(event)">
+                                <option value="5">รหัสผู้ติดต่อ</option>
+                                <option value="6">ชื่อผู้ติดต่อ</option>
                             </select>
                         </div>
                     </div>
@@ -110,7 +116,9 @@
                                 เพิ่มเติม 2:</strong>
                             <select style="width: 100%;"
                                 class="select2 form-control" id="casetype5"
-                                name="casetype5">
+                                name="casetype5" onchange="changecasetype(event)">
+                                <option value="5">รหัสผู้ติดต่อ</option>
+                                <option value="6">ชื่อผู้ติดต่อ</option>
                             </select>
                         </div>
                     </div>
@@ -129,7 +137,9 @@
                                 เพิ่มเติม 3:</strong>
                             <select style="width: 100%;"
                                 class="select2 form-control" id="casetype6"
-                                name="casetype6">
+                                name="casetype6" onchange="changecasetype(event)">
+                                <option value="5">รหัสผู้ติดต่อ</option>
+                                <option value="6">ชื่อผู้ติดต่อ</option>
                             </select>
                         </div>
                     </div>
