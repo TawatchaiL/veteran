@@ -118,7 +118,7 @@
             <a class="btn" role="button" id="ToolbarButton">
 
                 <b class="text-toolbar">{{ Auth::user()->name }} [
-                    {{ $temporaryPhone }}</b> ] : <span id="phone_state_icon"
+                    {{ $temporaryPhone }} ]</b>  : <span id="phone_state_icon"
                     class="{{ $temporaryPhoneColor }}">{!! $temporaryPhoneStatusIcon !!}</span> <b id="phone_state"
                     class="{{ $temporaryPhoneColor }}">{{ $temporaryPhoneStatus }}</b>
             </a>
