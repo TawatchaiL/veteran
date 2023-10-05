@@ -29,13 +29,13 @@
 
     const set_state_button = (id) => {
 
-        let performance_button = $('#performance_button');
-        let break_group = $('#break_group');
-        let btn_pause = $('#btn_pause');
-        let btn_unbreak = $('#btn_unbreak');
-        let btn_system_logout = $('#btn_system_logout');
-        let btn_agent_logout = $('#btn_agent_logout');
-        let btn_agent_login = $('#btn_agent_login');
+        const performance_button = $('#performance_button');
+        const break_group = $('#break_group');
+        const btn_pause = $('#btn_pause');
+        const btn_unbreak = $('#btn_unbreak');
+        const btn_system_logout = $('#btn_system_logout');
+        const btn_agent_logout = $('#btn_agent_logout');
+        const btn_agent_login = $('#btn_agent_login');
 
         if (id === 0) {
             alert(id)
