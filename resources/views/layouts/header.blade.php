@@ -5,13 +5,13 @@
             <a class="nav-link sidebar-toggle-btn" data-widget="pushmenu" href="#" role="button"><i
                     class="fas fa-bars"></i></a>
         </li>
-        <!-- <li class="nav-item dropdown user-menu">
+        <li class="nav-item dropdown user-menu">
             <a href="#" class="nav-link" {{-- dropdown-toggle" data-toggle="dropdown" --}}>
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/2048px-User_icon_2.svg.png"
                     height="150" class="user-image img-circle elevation-1" alt="User Image">
                 <span class="d-none d-md-inline text-primary">{{ Auth::user()->name }}</span>
             </a>
-           <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <!--<ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <li class="user-header bg-info">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/2048px-User_icon_2.svg.png"
                         height="100" class="img-circle elevation-1" alt="User Image">
@@ -42,12 +42,12 @@
                         @csrf
                     </form>
                 </li>
-            </ul>
-        </li>-->
-        <li class="nav-item d-none d-sm-inline-block"><a href="#" class="nav-link"> [ <i
+            </ul>-->
+        </li>
+      {{--   <li class="nav-item d-none d-sm-inline-block"><a href="#" class="nav-link"> [ <i
                     class="fa-solid fa-lg fa-truck-medical"></i>
                 <b class="text-primary"> โรงพยาบาลพุทธชินราช พิษณุโลก</b> ]
-            </a></li>
+            </a></li> --}}
 
 
         <!--<li class="nav-item d-none d-sm-inline-block">
@@ -118,7 +118,7 @@
             <a class="btn" role="button" id="ToolbarButton">
 
                 <b class="text-toolbar">{{ Auth::user()->name }} [
-                    {{ $temporaryPhone }} ]</b>  : <span id="phone_state_icon"
+                    {{ $temporaryPhone }} ]</b> : <span id="phone_state_icon"
                     class="{{ $temporaryPhoneColor }}">{!! $temporaryPhoneStatusIcon !!}</span> <b id="phone_state"
                     class="{{ $temporaryPhoneColor }}">{{ $temporaryPhoneStatus }}</b>
             </a>
