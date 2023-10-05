@@ -322,6 +322,8 @@
                         $('#AddName' + i).attr('disabled', false);
                     }else{
                         $('#AddName' + i).attr('disabled', true);
+                        $('#casetype' + selectnext).attr('disabled', false);
+                        $('#AddName' + selectnext).attr('disabled', true);
                     }
 
                 //$('#casetype' + selectnext).attr('disabled', true);
