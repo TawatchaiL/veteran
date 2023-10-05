@@ -177,6 +177,7 @@
                 crmlev: c,
                 status: sstatus,
             };
+            alert('OK1');
             $.ajax({
                 url: "{{ route('casetype6.store') }}",
                 method: 'post',
