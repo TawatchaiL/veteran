@@ -1,3 +1,23 @@
+@php
+    switch ($temporaryPhoneStatusID) {
+        case 0:
+            $dial_number = 'disabled';
+            $dial_button = 'disabled';
+            break;
+        case 1:
+            $dial_number = '';
+            $dial_button = '';
+            break;
+        case 2:
+            $dial_number = '';
+            $dial_button = '';
+            break;
+        case 3:
+            break;
+        default:
+            break;
+    }
+@endphp
 <div class="modal fade" id="ToolbarModal">
     <div class="modal-dialog modal-xxl">
         <div class="modal-content">
@@ -24,8 +44,8 @@
                             </div>
                             <div class="mx-1">
                                 <button {{ $dial_button }} id="dial_button" name="dial_button"
-                                    class="btn btn-lg custom-button btn-success"><i
-                                        class="fas fa-phone-square"></i> โทรออก</button>
+                                    class="btn btn-lg custom-button btn-success"><i class="fas fa-phone-square"></i>
+                                    โทรออก</button>
                             </div>
                             <div class="mx-1">
                                 {{--  <button  <?= $outbound_dis ?>  class="btn btn-lg btn-warning button_tranfer"><i
