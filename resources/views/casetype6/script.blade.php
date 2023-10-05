@@ -313,27 +313,45 @@
         //});
 
     });
-    function changecasetype(event) {
-        var selectno = parseInt(event.target.name.substring(8, 9));
+    $('#casetype1').on('change', function() {
+            var parent_id = $(this).val();
+            $('#casetype2').html('<option value="">เลือกรายละเอียดเคส</option>');
+            $.ajax({
+                url: "casetype6/casetype/" + parent_id,
+                method: 'GET',
+                success: function(res) {
+                    //EdistrictOb.html('<option value="">เลือกอำเภอ</option>');
+                    //EcartonOb.html('<option value="">เลือกตำบล</option>');
+                    $.each(res.data, function(index, item) {
+                        $('#casetype2').append(
+                            $('<option></option>').val(item.id).html(item
+                                .name)
+                        );
+                    });
+                }
+            });
+        });
+    //function changecasetype(event) {
+    //    var selectno = parseInt(event.target.name.substring(8, 9));
         //if(selectnext < 7){
-            for (let i = selectno; i < 7; i++) {
-                var selectnext = i + 1;
-                    if($('#casetype' + i).val() == ''){
-                        $('#AddName' + i).attr('disabled', false);
-                        $('#casetype' + selectnext).attr('disabled', true);
-                        $('#AddName' + selectnext).attr('disabled', true);
-                    }else{
-                        $('#AddName' + i).attr('disabled', true);
-                        $('#casetype' + selectnext).attr('disabled', false);
-                        $('#AddName' + selectnext).attr('disabled', true);
-                    }
+    //        for (let i = selectno; i < 7; i++) {
+    //            var selectnext = i + 1;
+    //                if($('#casetype' + i).val() == ''){
+    //                    $('#AddName' + i).attr('disabled', false);
+    //                    $('#casetype' + selectnext).attr('disabled', true);
+    //                    $('#AddName' + selectnext).attr('disabled', true);
+    //                }else{
+    //                    $('#AddName' + i).attr('disabled', true);
+    //                    $('#casetype' + selectnext).attr('disabled', false);
+    //                    $('#AddName' + selectnext).attr('disabled', true);
+    //                }
 
                 //$('#casetype' + selectnext).attr('disabled', true);
                 //$('#AddName' + selectno).attr('disabled', true);
 
                 //$('#casetype' + selectnext).attr('disabled', false);
                 //$('#AddName' + selectnext).attr('disabled', false);
-            }
+    //        }
         //}
-    }
+    //}
 </script>
