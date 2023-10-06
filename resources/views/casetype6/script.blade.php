@@ -301,7 +301,6 @@
             var rowid = $(this).data('rowid')
             var el = $(this)
             if (!rowid) return;
-            alert(rowid); 
             $.ajax({
                 type: "POST",
                 dataType: 'JSON',
@@ -315,7 +314,7 @@
                     console.log(data);
                     if (data.success) {
                         toastr.success(data.message, {
-                            timeOut: 4000
+                            timeOut: 5000
                         });
                         table.row(el.parents('tr'))
                             .remove()
