@@ -176,7 +176,6 @@
                     }
                 }
             }
-            alert(parent_id);
             var additionalData = {
                 parent_id: parent_id,
                 name: crmname,
