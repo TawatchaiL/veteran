@@ -107,17 +107,6 @@ class LoginController extends Controller
                 ->withErrors(['email' => 'หมายเลขโทรศัพท์ไม่พร้อมใช้งาน']);
         }
 
-        //check in use
-        $inuseCount = User::where('phone', $request->get('phone'))
-            //->where('agent_id', '!=', $user->id)
-            ->count();
-
-        if ($inuseCount > 0) {
-            //$this->logoff_to_login_phone_error('หมายเลขโทรศัพท์ถูกใช้งานแล้ว');
-            return redirect()->route('login')
-                ->with('login_error', 'หมายเลขโทรศัพท์ถูกใช้งานแล้ว')
-                ->withErrors(['email' => 'หมายเลขโทรศัพท์ถูกใช้งานแล้ว']);
-        }
 
         if ($this->attemptLogin($request)) {
             // Update the user's phone if provided
@@ -138,8 +127,21 @@ class LoginController extends Controller
                         ->withErrors(['email' => 'กรุณาติดต่อผู้ดูแลระบบ']);
                 }
 
+                //check in use
+                $inuseCount = DB::connection('remote_connection')
+                    ->table('call_center.audit')
+                    ->where('id_agent', '!=', $user->agent_id)
+                    ->whereNull('datetime_end')
+                    ->count();
 
-                //check active
+                if ($inuseCount > 0) {
+                    //$this->logoff_to_login_phone_error('หมายเลขโทรศัพท์ถูกใช้งานแล้ว');
+                    return redirect()->route('login')
+                        ->with('login_error', 'หมายเลขโทรศัพท์ถูกใช้งานแล้ว')
+                        ->withErrors(['email' => 'หมายเลขโทรศัพท์ถูกใช้งานแล้ว']);
+                }
+
+
                 $not_logout = DB::connection('remote_connection')
                     ->table('call_center.audit')
                     ->where('id_agent', $user->agent_id)
