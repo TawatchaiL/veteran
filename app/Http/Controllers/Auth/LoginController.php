@@ -141,13 +141,17 @@ class LoginController extends Controller
 
                 //check active
                 $not_logout = DB::connection('remote_connection')
-                    ->table('call_center.agent')
-                    ->where('id', $user->agent_id)
-                    ->whereNull('logout_datetime')
+                    ->table('call_center.audit')
+                    ->where('id_agent', $user->agent_id)
+                    ->whereNull('datetime_end')
                     ->get();
                 //check login again with same phone and same agent  and logout_datetime IS NULL
                 if (count($not_logout) > 0) {
-                    $this->clear_login($user->agent_id, $not_logout[0]->number);
+                    $not_logout_agent = DB::connection('remote_connection')
+                        ->table('call_center.agent')
+                        ->where('id', $user->agent_id)
+                        ->get();
+                    $this->clear_login($user->agent_id, $not_logout_agent[0]->number);
                 }
 
                 $queueNames = $user->queues->pluck('queue_name')->implode(',');
