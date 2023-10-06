@@ -301,8 +301,7 @@
             var rowid = $(this).data('rowid')
             var el = $(this)
             if (!rowid) return;
-alert('OK');
-
+alert(rowid);
             $.ajax({
                 type: "POST",
                 dataType: 'JSON',
