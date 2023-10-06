@@ -176,7 +176,6 @@
                     }
                 }
             }
-            alert(parent_id);
             var additionalData = {
                 parent_id: parent_id,
                 name: crmname,
@@ -302,8 +301,6 @@
             var rowid = $(this).data('rowid')
             var el = $(this)
             if (!rowid) return;
-
-
             $.ajax({
                 type: "POST",
                 dataType: 'JSON',

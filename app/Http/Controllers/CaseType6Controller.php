@@ -172,7 +172,7 @@ class CaseType6Controller extends Controller
             CrmCaseType::find($arr_del[$xx])->delete();
         }
 
-        return redirect('casetype')->with('success', 'ลบ ประเภทการติดต่อ เรียบร้อยแล้ว');
+        return redirect('casetype6')->with('success', 'ลบ ประเภทการติดต่อ เรียบร้อยแล้ว');
     } //
     public function casetype($id)
     {

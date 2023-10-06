@@ -256,10 +256,11 @@
             const button = document.createElement('button');
             button.className = 'remove-region-button';
             button.textContent = 'X';
-
             customDialog.style.display = 'block';
 
-            addContentButton.addEventListener('click', () => {
+            document.getElementById('add-content-button').addEventListener('click', function(e) {
+            // addContentButton.addEventListener('click', () => {
+                e.preventDefault();
                 if (currentRegion) {
                     // Remove any existing tooltips in the current region
                     const existingTooltips = currentRegion.element.querySelectorAll(
@@ -278,11 +279,15 @@
                     currentRegion.element.appendChild(tooltip);
                     const callRecordingId = $('#call_recording_id').val();
                     const uniqueId = $('#uniqueid').val();
-
+                    const csrfToken = document.querySelector('meta[name="csrf-token"]')
+                        .getAttribute('content');
                     // const content = contentInput.value;
                     $.ajax({
-                        type: "POST",
+                        type: "get",
                         url: "/voicerecord/comment",
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken
+                        },
                         data: {
                             callRecordingId: callRecordingId,
                             uniqueId: uniqueId,

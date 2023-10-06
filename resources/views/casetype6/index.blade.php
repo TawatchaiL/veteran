@@ -68,7 +68,7 @@
                                     });
                                 </script>
                             @endif
-                            <form method="post" action="{{ route('casetype.destroy_all') }}" name="delete_all"
+                            <form method="post" action="{{ route('casetype6.destroy_all') }}" name="delete_all"
                                 id="delete_all">
                                 @csrf
                                 @method('POST')
