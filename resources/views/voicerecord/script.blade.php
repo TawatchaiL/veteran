@@ -246,7 +246,7 @@
         let currentRegion;
 
         // Debug statement to check if the code leading up to onRegionCreated is executing
-        console.log('Before onRegionCreated');
+        // console.log('Before onRegionCreated');
 
         // Add a listener for the region-created event
         wsRegions.on('region-created', (region) => {
@@ -282,6 +282,7 @@
                     const uniqueId = $('#uniqueid').val();
                     const csrfToken = document.querySelector('meta[name="csrf-token"]') .getAttribute('content');
                     // const content = contentInput.value;
+                    //end
                     $.ajax({
                         type: "get",
                         url: "/voicerecord/comment",
