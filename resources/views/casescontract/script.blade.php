@@ -504,7 +504,7 @@
                 caseid2: $('#casetype2').val(),
                 casetype3: $('#casetype3 option:selected').text(),
                 caseid3: $('#casetype3').val(),
-                casetype4: $('#casetype4 option:selected').text(),
+                casetype4: ($('#casetype4').val() !== '') ? $('#casetype4 option:selected').text() : undefined,
                 caseid4: ($('#casetype4').val() !== '') ? $('#casetype4').val() : undefined,
                 casetype5: $('#casetype5 option:selected').text(),
                 caseid5: ($('#casetype5').val() !== '') ? $('#casetype5').val() : undefined,
