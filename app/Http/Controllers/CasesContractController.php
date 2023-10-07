@@ -139,6 +139,15 @@ class CasesContractController extends Controller
      */
     public function store(Request $request)
     {
+        $validator =  Validator::make($request->all(), [
+            'casetype1' => 'required|string|max:50',
+        ]);
+
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all()]);
+        }
+
 
         return response()->json(['success' => 'เพิ่ม เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
     }
