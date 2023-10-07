@@ -148,7 +148,8 @@ class CasesContractController extends Controller
             return response()->json(['errors' => $validator->errors()->all()]);
         }
 
-
+        $input = $request->all();
+        $contract = CrmCase::create($input);
         return response()->json(['success' => 'เพิ่ม เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
     }
 
