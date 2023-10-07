@@ -489,6 +489,7 @@ class ContactController extends Controller
             'district' => 'required|string|max:8',
             'subdistrict' => 'required|string|max:8',
         ];
+
         $valimess = [
             'fname.required' => 'กรุณากรอกชื่อ',
             'lname.required' => 'กรุณากรอกนามสกุล',
@@ -497,6 +498,7 @@ class ContactController extends Controller
             'district.required' => 'กรุณาเลือกอำเภอ',
             'subdistrict.required' => 'กรุณาเลือกตำบล',
         ];
+
         if ($request->input('telhome') == "" && $request->input('phoneno') == "" && $request->input('workno') == "") {
             $valifield = array_merge($valifield, ['telhome' => 'required|string|max:25']);
             $valimess = array_merge($valimess, ['telhome.required' => 'กรุณากรอกเบอร์โทรศัพท์บ้าน หรือ เบอร์โทรศัทพ์มือถือ หรือ เบอร์โทรศัพท์ทีทำงาน']);
