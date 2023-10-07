@@ -564,9 +564,6 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
-
-
-
             id = $(this).data('id');
             $.ajax({
                 url: "casescontract/edit/" + id,

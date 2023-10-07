@@ -143,7 +143,7 @@ class CasesContractController extends Controller
         $validator =  Validator::make($request->all(), [
             'casetype1' => 'required|string|max:50',
         ]);
-        
+
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);
         }
@@ -167,7 +167,7 @@ class CasesContractController extends Controller
     public function edit($id)
     {
 
-        $data = Cases::find($id);
+        $data = CrmCase::find($id);
         return response()->json(['data' => $data]);
     }
 
@@ -197,7 +197,7 @@ class CasesContractController extends Controller
             'casestatus' => $request->get('casestatus'),
         ];
 
-       $company = Cases::find($id);
+       $company = CrmCase::find($id);
        $company->update($companyd);
 
         return response()->json(['success' => 'แก้ไข เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
@@ -209,7 +209,7 @@ class CasesContractController extends Controller
     public function destroy(Request $request)
     {
         $id = $request->get('id');
-        Cases::find($id)->delete();
+        CrmCase::find($id)->delete();
         return ['success' => true, 'message' => 'ลบ เรื่องที่ติดต่อ เรียบร้อยแล้ว'];
     }
 
@@ -219,7 +219,7 @@ class CasesContractController extends Controller
         $arr_del  = $request->get('table_records'); //$arr_ans is Array MacAddress
 
         for ($xx = 0; $xx < count($arr_del); $xx++) {
-            Cases::find($arr_del[$xx])->delete();
+            CrmCase::find($arr_del[$xx])->delete();
         }
 
         return redirect('casescontract?id='.$request->get('Delcontact_id'))->with('success', 'ลบ เรื่องที่ติดต่อ เรียบร้อยแล้ว');
