@@ -132,10 +132,10 @@ class ContactController extends Controller
             $contact_lname = "ละเอียด";
         }
         $datap = DB::table('crm_contacts')
-        ->where('phoneno', '=', $con)
-        ->orWhere('telhome', '=', $con)
-        ->orWhere('workno', '=', $con)
-        ->get();
+            ->where('phoneno', '=', $con)
+            ->orWhere('telhome', '=', $con)
+            ->orWhere('workno', '=', $con)
+            ->get();
         $case_type = Case_type::orderBy("id", "asc")->get();
         $template = 'contacts.contact-create';
         $htmlContent = View::make($template, [
@@ -149,23 +149,23 @@ class ContactController extends Controller
     public function popup()
     {
         $datac = DB::table('crm_incoming')
-        ->where('status', '=', "0")
-        ->get();
+            ->where('status', '=', "0")
+            ->get();
         $html = '';
         foreach ($datac as $item) {
             $datap = DB::table('crm_contacts')
-            ->where('phoneno', '=', $item->telno)
-            ->orWhere('telhome', '=', $item->telno)
-            ->orWhere('workno', '=', $item->telno)
-            ->count();
-            if($datap > 0){
-                $statusText = "(ผู้ติดต่อในระบบ)";    
-            }else{
+                ->where('phoneno', '=', $item->telno)
+                ->orWhere('telhome', '=', $item->telno)
+                ->orWhere('workno', '=', $item->telno)
+                ->count();
+            if ($datap > 0) {
+                $statusText = "(ผู้ติดต่อในระบบ)";
+            } else {
                 $statusText = "(ผู้ติดต่อใหม่)&nbsp;&nbsp;&nbsp;";
             }
-            $html .= '<div class="card card-danger custom-bottom-right-card d-none d-md-block" data-id="'.$item->telno.'" id="'.$item->telno.'">
+            $html .= '<div class="card card-danger custom-bottom-right-card d-none d-md-block" data-id="' . $item->telno . '" id="' . $item->telno . '">
             <div class="card-header">
-            <h4 class="card-title"> <i class="fa-solid fa-triangle-exclamation fa-beat" style="--fa-beat-scale: 1.5;"></i> '.$item->telno.' '.$statusText.'</h4>
+            <h4 class="card-title"> <i class="fa-solid fa-triangle-exclamation fa-beat" style="--fa-beat-scale: 1.5;"></i> ' . $item->telno . ' ' . $statusText . '</h4>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="maximize">
                     <i class="fas fa-expand"></i>
@@ -175,7 +175,7 @@ class ContactController extends Controller
                 </button>
             </div>
             </div>
-            <div class="card-body card-content pop_content" id="pop_'.$item->telno.'">
+            <div class="card-body card-content pop_content" id="pop_' . $item->telno . '">
             <!-- Card content goes here -->
             </div>
             <div class="card-footer text-muted bclose">
@@ -292,23 +292,26 @@ class ContactController extends Controller
         ];
         return response()->json(['datax' => $data]);
     }
+
     public function incoming(Request $request)
     {
         DB::table('crm_incoming')->insert([
             'telno' => $request->input('telno'),
             'agentno' => $request->input('agentno'),
-            'calltime' => date("Y-m-d H:i:s")
+            'calltime' => date("Y-m-d H:i:s"),
+            'status' => 0
         ]);
         return response()->json(['success' => 'บันทักข้อมูลเรียบร้อยแล้ว']);
     }
+
     public function popupedit($telnop)
     {
         //$datac = CrmContact::find('20');
         $datac = DB::table('crm_contacts')
-        ->where('phoneno', '=', $telnop)
-        ->orWhere('telhome', '=', $telnop)
-        ->orWhere('workno', '=', $telnop)
-        ->get();
+            ->where('phoneno', '=', $telnop)
+            ->orWhere('telhome', '=', $telnop)
+            ->orWhere('workno', '=', $telnop)
+            ->get();
         //$data = CrmPhoneEmergency::find($id);
         $emer = DB::table('crm_phone_emergencies')
             //->whereRaw('contact_id = 20')
@@ -409,7 +412,7 @@ class ContactController extends Controller
 
     public function casescontract(Request $request)
     {
-        
+
         $valifield = [
             'hn' => 'required|string|max:10',
             'fname' => 'required|string|max:50',
