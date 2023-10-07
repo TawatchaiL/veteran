@@ -649,12 +649,6 @@
                 positionCards();
             });
 
-
-        $(document).on('click', '#ToolbarButton, #user_button', function(e) {
-            e.preventDefault();
-            $('#ToolbarModal').modal('show');
-        });
-
     });
 </script>
 

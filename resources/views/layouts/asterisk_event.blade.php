@@ -479,6 +479,7 @@
 						</div>
 
 					</div>`);
+                $('#ToolbarModal').modal('show');
 
 
             }
