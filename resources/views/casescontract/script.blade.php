@@ -510,20 +510,20 @@
                 additionalData.caseid2 = $('#casetype2').val();
             }
             if($('#casetype3').val() !== ''){
-                additionalData.casetype2 = $('#casetype3 option:selected').text();
-                additionalData.caseid2 = $('#casetype3').val();
+                additionalData.casetype3= $('#casetype3 option:selected').text();
+                additionalData.caseid3 = $('#casetype3').val();
             }
             if($('#casetype4').val() !== ''){
-                additionalData.casetype2 = $('#casetype4 option:selected').text();
-                additionalData.caseid2 = $('#casetype4').val();
+                additionalData.casetype4 = $('#casetype4 option:selected').text();
+                additionalData.caseid4 = $('#casetype4').val();
             }
             if($('#casetype5').val() !== ''){
-                additionalData.casetype2 = $('#casetype5 option:selected').text();
-                additionalData.caseid2 = $('#casetype5').val();
+                additionalData.casetype5 = $('#casetype5 option:selected').text();
+                additionalData.caseid5 = $('#casetype5').val();
             }
             if($('#casetype6').val() !== ''){
-                additionalData.casetype2 = $('#casetype6 option:selected').text();
-                additionalData.caseid2 = $('#casetype6').val();
+                additionalData.casetype6 = $('#casetype6 option:selected').text();
+                additionalData.caseid6 = $('#casetype6').val();
             }
             $.ajax({
                 url: "{{ route('casescontract.store') }}",
