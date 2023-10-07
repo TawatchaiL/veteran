@@ -635,8 +635,6 @@
             var rowid = $(this).data('rowid')
             var el = $(this)
             if (!rowid) return;
-
-
             $.ajax({
                 type: "POST",
                 dataType: 'JSON',
@@ -657,8 +655,8 @@
                             .draw();
                     }
                 }
-            }); //end
-        })
+            });
+        });
         $('#casetype1').on('change', function() {
             var parent_id = $(this).val();
             $('#casetype2').html('<option value="">เลือกรายละเอียดเคส</option>');
