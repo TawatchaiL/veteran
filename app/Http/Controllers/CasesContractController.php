@@ -143,8 +143,7 @@ class CasesContractController extends Controller
         $validator =  Validator::make($request->all(), [
             'casetype1' => 'required|string|max:50',
         ]);
-
-
+        
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);
         }
