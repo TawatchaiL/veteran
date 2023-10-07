@@ -374,6 +374,8 @@
                 $('#main_header').removeClass("card-primary");
                 $('#main_header').addClass("card-secondary");
                 $('#state_overlay').removeClass("d-none");
+                $('#phone_state').addClass('d-none');
+                $('#phone_state_icon').addClass('d-none');
                 $('#ToolbarModal').modal('show');
             } else {
                 $('#state_overlay').addClass("d-none");
@@ -388,6 +390,9 @@
                 } else if (data.status == 16 || data.status == 17) {
                     $('#main_header').addClass("card-danger");
                 }
+
+                $('#phone_state').removeClass('d-none')
+                $('#phone_state_icon').removeClass('d-none')
 
                 $('#ToolbarModal').modal('hide');
 
@@ -591,20 +596,20 @@
         if (data.extension) {
             if (data.extension.match(exten)) {
                 $.ajax({
-                url: "{{ route('agent.hang') }}",
-                method: 'post',
-                data: {
-                    _token: token,
-                },
-                success: function(result) {
-                    alert_success('OK', 'วางสายเรียบร้อยแล้ว', '');
-                    $('#phone_state').html(result.message);
-                    $('#phone_state_icon').html(result.icon);
-                    $('#phone_state').removeClass().addClass(get_state_color(result.id));
-                    $('#phone_state_icon').removeClass().addClass(get_state_color(result.id));
-                    positionCards();
-                }
-            });
+                    url: "{{ route('agent.hang') }}",
+                    method: 'post',
+                    data: {
+                        _token: token,
+                    },
+                    success: function(result) {
+                        alert_success('OK', 'วางสายเรียบร้อยแล้ว', '');
+                        $('#phone_state').html(result.message);
+                        $('#phone_state_icon').html(result.icon);
+                        $('#phone_state').removeClass().addClass(get_state_color(result.id));
+                        $('#phone_state_icon').removeClass().addClass(get_state_color(result.id));
+                        positionCards();
+                    }
+                });
                 //console.log(data)
                 if (data.luniq) {
                     $('#' + data.luniq.replace('.', '')).remove();
