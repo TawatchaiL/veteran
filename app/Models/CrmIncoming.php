@@ -9,7 +9,7 @@ class CrmIncoming extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'telno', 'calltime', 'status'
+        'telno', 'agentno', 'calltime', 'status'
     ];
 
 }
