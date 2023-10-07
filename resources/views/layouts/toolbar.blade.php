@@ -91,7 +91,7 @@
             break;
     }
 @endphp
-<div class="modal fade" id="ToolbarModal">
+<div class="modal fade" id="ToolbarModal" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-xxl-toolbar">
         <div class="modal-content">
             <div class="modal-header bg-primary">
@@ -157,7 +157,8 @@
                 </div>
             </div>
             <div class="overlay d-none" id="state_overlay">
-                <i class="fa-solid fa-xl fa-phone-slash"></i> หมายเลขโทรศัพท์ ไม่พร้อมใช้งาน กรุณาตรวจสอบ
+                <h4><i class="fa-solid fa-xl fa-phone-slash icon-red"></i> หมายเลขโทรศัพท์ ไม่พร้อมใช้งาน กรุณาตรวจสอบ
+                </h4>
             </div>
             <div class="card-footer text-muted">
                 <div class="btn-group float-left {{ $break_button_class }}" id="break_group">
