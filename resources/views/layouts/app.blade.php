@@ -106,7 +106,7 @@
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="plugins/dropzone/min/dropzone.min.js"></script>
 
-@include('layouts.asterisk')
+@include('layouts.asterisk_event')
 @include('layouts.footer_script')
 @include('layouts.toolbar_script')
 <script>

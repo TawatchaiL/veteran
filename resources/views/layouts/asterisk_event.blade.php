@@ -1,4 +1,4 @@
-<script src="<?= $even_serv['ADDRESS']; ?>/socket.io/socket.io.js"></script>
+<script src="{{ config('asterisk.event_serv.event_serv') }}/socket.io/socket.io.js"></script>
 	<!-- <script src="<?php echo site_url('resources/js/asterisk.js'); ?>"></script> -->
 	<script>
 		let alert_danger = (title, message, subtitle) => {
