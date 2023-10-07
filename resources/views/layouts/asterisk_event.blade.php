@@ -512,8 +512,7 @@
                     _token: token,
                 },
                 success: function(result) {
-
-
+                    alert_success('OK', 'คุณรับสายแล้วกรุณาเปิด popup', '');
                 }
             });
 
