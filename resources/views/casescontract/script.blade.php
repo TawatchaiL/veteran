@@ -496,7 +496,6 @@
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
-            alert($('#casetype5').val()); 
             var additionalData = {
                 contact_id: $('#Addid').val(),
                 casetype1: $('#casetype1 option:selected').text(),
@@ -522,7 +521,6 @@
                 data: additionalData,
                 success: function(result) {
                     if (result.errors) {
-                        alert('O K');
                         $('.alert-danger').html('');
                         $.each(result.errors, function(key, value) {
                             $('.alert-danger').show();
