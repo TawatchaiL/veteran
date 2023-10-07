@@ -251,7 +251,7 @@
         // Add a listener for the region-created event
         wsRegions.on('region-created', (region) => {
             // Callback code
-            console.log('Region Created:', region);
+            // console.log('Region Created:', region);
 
             const button = document.createElement('button');
             button.className = 'remove-region-button';
@@ -280,8 +280,7 @@
 
                     const callRecordingId = $('#call_recording_id').val();
                     const uniqueId = $('#uniqueid').val();
-                    const csrfToken = document.querySelector('meta[name="csrf-token"]')
-                        .getAttribute('content');
+                    const csrfToken = document.querySelector('meta[name="csrf-token"]') .getAttribute('content');
                     // const content = contentInput.value;
                     $.ajax({
                         type: "get",
@@ -316,7 +315,7 @@
 
             currentRegion = region;
 
-            console.log(currentRegion);
+            // console.log(currentRegion);
         });
 
         wsRegions.on('region-updated', (region) => {
