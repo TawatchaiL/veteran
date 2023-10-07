@@ -513,6 +513,7 @@
                 },
                 success: function(result) {
                     alert_success('OK', 'คุณรับสายแล้วกรุณาเปิด popup', '');
+                    positionCards();
                 }
             });
 
