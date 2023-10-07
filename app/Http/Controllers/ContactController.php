@@ -292,7 +292,15 @@ class ContactController extends Controller
         ];
         return response()->json(['datax' => $data]);
     }
-
+    public function incoming(Request $request)
+    {
+        DB::table('crm_incoming')->insert([
+            'telno' => $request->input('telno'),
+            'agentno' => $request->input('agentno'),
+            'calltime' => date("Y-m-d H:i:s")
+        ]);
+        return response()->json(['success' => 'บันทักข้อมูลเรียบร้อยแล้ว']);
+    }
     public function popupedit($telnop)
     {
         //$datac = CrmContact::find('20');
