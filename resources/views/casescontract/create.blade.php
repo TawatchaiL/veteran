@@ -60,7 +60,7 @@
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-code"></i><input type="hidden" value="{{$contacts[0]->id}}" name="Addid" id="Addid"> HN:</strong>
                                                     {!! Form::text('hn', $contacts[0]->hn , [
-                                                        'id' => 'Addhn',
+                                                        'id' => 'hn',
                                                         'placeholder' => 'HN',
                                                         'class' => 'form-control',
                                                         'readonly' => true,
@@ -71,7 +71,7 @@
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> ชื่อ-สกุล :</strong>
                                                     {!! Form::text('name', $contacts[0]->fname.' '.$contacts[0]->lname, [
-                                                        'id' => 'AddName',
+                                                        'id' => 'Name',
                                                         'placeholder' => 'Name',
                                                         'class' => 'form-control',
                                                         'readonly' => true,
@@ -152,7 +152,7 @@
                                                         รายละเอียด:</strong>
                                                     {!! Form::textarea('casedetail', null, [
                                                         'rows' => 4,
-                                                        'id' => 'AddDetail',
+                                                        'id' => 'Detail',
                                                         'class' => 'form-control',
                                                     ]) !!}
                                                 </div>
@@ -173,7 +173,7 @@
                                                         :</strong>
                                                     <select style="width: 100%;"
                                                         class="select2 form-control"
-                                                        id="Addtranferstatus" name="tranferstatus">
+                                                        id="tranferstatus" name="tranferstatus">
                                                         <option value="1">รับสาย</option>
                                                         <option value="2">ไม่รับสาย</option>
                                                         <option value="3">สายไม่ว่าง</option>
@@ -186,7 +186,7 @@
                                                         :</strong>
                                                     <select style="width: 100%;"
                                                         class="select2 form-control"
-                                                        id="Addcasestatus" name="casestatus">
+                                                        id="casestatus" name="casestatus">
                                                         <option value="ปิดเคส">ปิดเคส</option>
                                                         <option value="กำลังดำเนินการ">กำลังดำเนินการ</option>
                                                     </select>

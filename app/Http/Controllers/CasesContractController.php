@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CrmCase;
 use App\Models\Cases;
 use App\Models\Case_type;
 use Illuminate\Http\Request;
@@ -140,7 +141,7 @@ class CasesContractController extends Controller
     public function store(Request $request)
     {
         $validator =  Validator::make($request->all(), [
-            'casetype1' => 'required|string|max:20',
+            'casetype1' => 'required|string|max:50',
         ]);
 
 
@@ -149,7 +150,7 @@ class CasesContractController extends Controller
         }
 
         $input = $request->all();
-        $contract = Cases::create($input);
+        $contract = CrmCase::create($input);
         return response()->json(['success' => 'เพิ่ม เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
     }
 

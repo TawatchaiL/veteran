@@ -486,11 +486,6 @@
             $('#casetype4').attr('disabled', true);
             $('#casetype5').attr('disabled', true);
             $('#casetype6').attr('disabled', true);
-            $('#AddName2').attr('disabled', true);
-            $('#AddName3').attr('disabled', true);
-            $('#AddName4').attr('disabled', true);
-            $('#AddName5').attr('disabled', true);
-            $('#AddName6').attr('disabled', true);
             $('#CreateModal').modal('show');
         });
 
@@ -501,22 +496,33 @@
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
-
+            alert($('#casetype5').val()); 
             var additionalData = {
                 contact_id: $('#Addid').val(),
-                casetype1: $('#Addcasetype1').val(),
-                casedetail: $('#AddDetail').val(),
-                tranferstatus: $('#Addtranferstatus option:selected').text(),
-                casestatus: $('#Addcasestatus option:selected').text(),
-                _token: token
+                casetype1: $('#casetype1 option:selected').text(),
+                caseid1: $('#casetype1').val(),
+                casetype2: $('#casetype2 option:selected').text(),
+                caseid2: $('#casetype2').val(),
+                casetype3: $('#casetype3 option:selected').text(),
+                caseid3: $('#casetype3').val(),
+                casetype4: $('#casetype4 option:selected').text(),
+                caseid4: $('#casetype4').val(),
+                casetype5: $('#casetype5 option:selected').text(),
+                caseid5: $('#casetype5').val(),
+                casetype6: $('#casetype6 option:selected').text(),
+                caseid6: $('#casetype6').val(),
+                casedetail: $('#Deail').val(),
+                tranferstatus: $('#tranferstatus option:selected').text(),
+                casestatus: $('#casestatus option:selected').text(),
+                _token: token 
             };
-
             $.ajax({
                 url: "{{ route('casescontract.store') }}",
                 method: 'post',
                 data: additionalData,
                 success: function(result) {
                     if (result.errors) {
+                        alert('O K');
                         $('.alert-danger').html('');
                         $.each(result.errors, function(key, value) {
                             $('.alert-danger').show();
@@ -667,31 +673,19 @@
                             });
                         }
                     });
-                    $('#AddName1').attr('disabled', true);
                     $('#casetype2').attr('disabled', false);
-                    $('#AddName2').attr('disabled', false);
 
                     $('#casetype3').attr('disabled', true);
-                    $('#AddName3').attr('disabled', true);
                     $('#casetype4').attr('disabled', true);
-                    $('#AddName4').attr('disabled', true);
                     $('#casetype5').attr('disabled', true);
-                    $('#AddName5').attr('disabled', true);
                     $('#casetype6').attr('disabled', true);
-                    $('#AddName6').attr('disabled', true);
                 }else{
-                    $('#AddName1').attr('disabled', false);
                     $('#casetype2').attr('disabled', true);
-                    $('#AddName2').attr('disabled', true);
 
                     $('#casetype3').attr('disabled', true);
-                    $('#AddName3').attr('disabled', true);
                     $('#casetype4').attr('disabled', true);
-                    $('#AddName4').attr('disabled', true);
                     $('#casetype5').attr('disabled', true);
-                    $('#AddName5').attr('disabled', true);
                     $('#casetype6').attr('disabled', true);
-                    $('#AddName6').attr('disabled', true);
                 }   
         });
 
@@ -713,27 +707,17 @@
                             });
                         }
                     });
-                    $('#AddName2').attr('disabled', true);
                     $('#casetype3').attr('disabled', false);
-                    $('#AddName3').attr('disabled', false);
 
                     $('#casetype4').attr('disabled', true);
-                    $('#AddName4').attr('disabled', true);
                     $('#casetype5').attr('disabled', true);
-                    $('#AddName5').attr('disabled', true);
                     $('#casetype6').attr('disabled', true);
-                    $('#AddName6').attr('disabled', true);
                 }else{
-                    $('#AddName2').attr('disabled', false);
                     $('#casetype3').attr('disabled', true);
-                    $('#AddName3').attr('disabled', true);
 
                     $('#casetype4').attr('disabled', true);
-                    $('#AddName4').attr('disabled', true);
                     $('#casetype5').attr('disabled', true);
-                    $('#AddName5').attr('disabled', true);
                     $('#casetype6').attr('disabled', true);
-                    $('#AddName6').attr('disabled', true);
                 }   
         });
         $('#casetype3').on('change', function() {
@@ -753,23 +737,15 @@
                             });
                         }
                     });
-                    $('#AddName3').attr('disabled', true);
                     $('#casetype4').attr('disabled', false);
-                    $('#AddName4').attr('disabled', false);
 
                     $('#casetype5').attr('disabled', true);
-                    $('#AddName5').attr('disabled', true);
                     $('#casetype6').attr('disabled', true);
-                    $('#AddName6').attr('disabled', true);
                 }else{
-                    $('#AddName3').attr('disabled', false);
                     $('#casetype4').attr('disabled', true);
-                    $('#AddName4').attr('disabled', true);
 
                     $('#casetype5').attr('disabled', true);
-                    $('#AddName5').attr('disabled', true);
                     $('#casetype6').attr('disabled', true);
-                    $('#AddName6').attr('disabled', true);
                 }   
         });
         $('#casetype4').on('change', function() {
@@ -788,19 +764,13 @@
                             });
                         }
                     });
-                    $('#AddName4').attr('disabled', true);
                     $('#casetype5').attr('disabled', false);
-                    $('#AddName5').attr('disabled', false);
 
                     $('#casetype6').attr('disabled', true);
-                    $('#AddName6').attr('disabled', true);
                 }else{
-                    $('#AddName4').attr('disabled', false);
                     $('#casetype5').attr('disabled', true);
-                    $('#AddName5').attr('disabled', true);
 
                     $('#casetype6').attr('disabled', true);
-                    $('#AddName6').attr('disabled', true);
                 }   
         });
         $('#casetype5').on('change', function() {
@@ -818,13 +788,9 @@
                             });
                         }
                     });
-                    $('#AddName5').attr('disabled', true);
                     $('#casetype6').attr('disabled', false);
-                    $('#AddName6').attr('disabled', false);
                 }else{
-                    $('#AddName5').attr('disabled', false);
                     $('#casetype6').attr('disabled', true);
-                    $('#AddName6').attr('disabled', true);
                 }   
         });
 
