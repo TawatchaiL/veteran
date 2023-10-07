@@ -15,7 +15,7 @@ return [
         'eccp_password' => env('ECCP_PASSWORD', 'agentconsole'),
     ],
     'event_serv' => [
-        'address' => env('EVENT_SERV_ADDRESS', 'http://192.168.10.17:3000'),
+        'address' => env('EVENT_SERV_ADDRESS', 'http://10.148.0.4:3000'),
     ],
     'gateway' => [
         'name' => env('GATEWAY_NAME', 'rsiippbx'),
