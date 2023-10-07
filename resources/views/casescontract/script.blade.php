@@ -492,7 +492,6 @@
             $('#AddName5').attr('disabled', true);
             $('#AddName6').attr('disabled', true);
             $('#CreateModal').modal('show');
-            $('#CreateModal').modal('show');
         });
 
 
