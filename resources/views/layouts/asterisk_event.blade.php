@@ -1,5 +1,4 @@
-<script src="{{ config('asterisk.event_serv.address') }}/socket.io/socket.io.js"></script>
-	<!-- <script src="resources/js/asterisk.js"></script> -->
+{{-- <script src="{{ config('asterisk.event_serv.address') }}/socket.io/socket.io.js"></script>
 	<script>
 		let alert_danger = (title, message, subtitle) => {
 			$(document).Toasts('create', {
@@ -622,3 +621,4 @@
 			socket.emit('join', 'Bye from client');
 		});
 	</script>
+ --}}
