@@ -129,9 +129,9 @@ class LoginController extends Controller
 
                 //check in use
                 $inuseCount = DB::connection('remote_connection')
-                    ->table('call_center.audit')
-                    ->where('id_agent', '!=', $user->agent_id)
-                    ->whereNull('datetime_end')
+                    ->table('call_center.agent')
+                    ->where('id', '!=', $user->agent_id)
+                    ->where('number', '=', $request->phone)
                     ->count();
 
                 if ($inuseCount > 0) {
