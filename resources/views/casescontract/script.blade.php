@@ -500,7 +500,7 @@
                 contact_id: $('#Addid').val(),
                 casetype1: $('#casetype1 option:selected').text(),
                 caseid1: $('#casetype1').val(),
-                casedetail: $('#Deail').val(),
+                casedetail: $('#Detail').val(),
                 tranferstatus: $('#tranferstatus option:selected').text(),
                 casestatus: $('#casestatus option:selected').text(),
                 _token: token 
