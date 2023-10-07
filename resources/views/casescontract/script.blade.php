@@ -496,6 +496,7 @@
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
+            alert($('#casetype5 option:selected').text());
             var additionalData = {
                 contact_id: $('#Addid').val(),
                 casetype1: $('#casetype1 option:selected').text(),
@@ -504,8 +505,12 @@
                 caseid2: $('#casetype2').val(),
                 casetype3: $('#casetype3 option:selected').text(),
                 caseid3: $('#casetype3').val(),
-                casetype4: (!$('#casetype4').prop('disabled')) ? $('#casetype4 option:selected').text() :'',
-                caseid4: (!$('#casetype4').prop('disabled')) ? $('#casetype4').val() :'',
+                casetype4: $('#casetype4 option:selected').text(),
+                caseid4: $('#casetype4').val(),
+                casetype5: $('#casetype5 option:selected').text(),
+                caseid5: $('#casetype5').val(),
+                casetype6: $('#casetype6 option:selected').text(),
+                caseid6: $('#casetype6').val(),
                 casedetail: $('#Detail').val(),
                 tranferstatus: $('#tranferstatus option:selected').text(),
                 casestatus: $('#casestatus option:selected').text(),
