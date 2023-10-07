@@ -14,6 +14,13 @@
     //updateDigitalClock();
     //setInterval(updateDigitalClock, 1000);
 
+    var token = ''
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     const updateWeather = (lat, lon) => {
         const weatherElement = document.getElementById('weather');
 
@@ -132,12 +139,7 @@
         });
 
         //$('#ToolbarModal').modal('show');
-        var token = ''
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+
 
     });
 
