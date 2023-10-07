@@ -277,6 +277,7 @@
                     tooltip.style.paddingLeft = '10px';
                     customDialog.style.display = 'none'; // Close the dialog box
                     currentRegion.element.appendChild(tooltip);
+
                     const callRecordingId = $('#call_recording_id').val();
                     const uniqueId = $('#uniqueid').val();
                     const csrfToken = document.querySelector('meta[name="csrf-token"]')
@@ -314,6 +315,8 @@
             region.element.appendChild(button);
 
             currentRegion = region;
+
+            console.log(currentRegion);
         });
 
         wsRegions.on('region-updated', (region) => {
