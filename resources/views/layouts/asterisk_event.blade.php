@@ -328,7 +328,7 @@
 							</div>
 
 							<div class="card-footer text-muted text-right">
-							<a href="#" class="btn btn-lg btn-danger hangup_call" data-id="${strArray[0]}"><i class="fa-solid fa-phone-slash"></i> Hangup</a>
+							<a href="#" class="btn btn-lg btn-danger hangup_call" data-id="${strArray[0]}"><i class="fa-solid fa-phone-slash"></i> วางสาย</a>
 
 							</div>
 						</div>
@@ -350,8 +350,8 @@
 
                 if (calls_active !== 0) {
                     $('#btn-pause').attr('disabled', true);
-                    $('#btn-state').attr('disabled', true);
-                    $('#btn-logout').attr('disabled', true);
+                    $('#btn-system-logout').attr('disabled', true);
+                    $('#btn-agent-logout').attr('disabled', true);
                 }
             });
         });
@@ -380,8 +380,8 @@
                 if (data.status == 0) {
                     $('#main_header').addClass("card-primary");
                     $('#btn-pause').attr('disabled', false);
-                    $('#btn-state').attr('disabled', false);
-                    $('#btn-logout').attr('disabled', false);
+                    $('#btn-system-logout').attr('disabled', false);
+                    $('#btn-agent-logout').attr('disabled', false);
                 } else if (data.status == 1 || data.status == 2 || data.status == 8 || data.status == 9) {
                     $('#main_header').addClass("card-danger");
                 } else if (data.status == 16 || data.status == 17) {
@@ -406,7 +406,8 @@
                     $('.button_conf').attr('disabled', false);
                     $('#btn-wrap').attr('disabled', true);
                     $('#btn-pause').attr('disabled', false);
-                    $('#btn-logout').attr('disabled', false);
+                    $('#btn-system-logout').attr('disabled', false);
+                    $('#btn-agent-logout').attr('disabled', false);
                     $('.button_unbreak').addClass("d-none");
                     $('#break_group').removeClass("d-none");
                     $('#break_text').remove();
@@ -451,7 +452,7 @@
             }
 
             let state_icon = '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
-            let state = 'Ringing';
+            let state = 'สายเข้า';
 
             if (!$('#' + data.luniq.replace('.', '')).length) {
 
@@ -473,7 +474,7 @@
 							</div>
 							<div class="card-footer text-muted text-right">
 
-							<a href="#" class="btn btn-lg btn-danger hangup_call" data-id="${data.extension}"><i class="fa-solid fa-phone-slash"></i> Hangup</a>
+							<a href="#" class="btn btn-lg btn-danger hangup_call" data-id="${data.extension}"><i class="fa-solid fa-phone-slash"></i> วางสาย</a>
 
 							</div>
 						</div>
@@ -485,8 +486,8 @@
             }
 
             $('#btn-pause').attr('disabled', true);
-            $('#btn-state').attr('disabled', true);
-            $('#btn-logout').attr('disabled', true);
+            $('#btn-system-logout').attr('disabled', true);
+            $('#btn-agent-logout').attr('disabled', true);
 
         }
         //call_list();
@@ -498,7 +499,7 @@
             console.log(data);
 
             $('#state_' + data.luniq.replace('.', '')).html(
-                '<i class="fa-solid fa-phone-volume fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i> Talking'
+                '<i class="fa-solid fa-phone-volume fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i> กำลังสนทนา'
             );
             $('#color_' + data.luniq.replace('.', '')).removeClass("card-danger");
             $('#color_' + data.luniq.replace('.', '')).addClass("card-success");
@@ -595,7 +596,8 @@
                             $('#btn-wrap').attr('disabled', false);
                             $('.button_unbreak').attr('disabled', true);
                             $('.button_unbreak').removeClass("d-none");
-                            $('#btn-logout').attr('disabled', true);
+                            $('#btn-system-logout').attr('disabled', true);
+                            $('#btn-agent-logout').attr('disabled', true);
                             $('#break_group').addClass("d-none");
                             $('#sub_header').append(
                                 `<div id="break_text"><i class="fas fa-pause"></i> Wrap UP (${dataw})</div>`
