@@ -374,6 +374,7 @@
                 $('#main_header').removeClass("card-primary");
                 $('#main_header').addClass("card-secondary");
                 $('#state_overlay').removeClass("d-none");
+                $('#ToolbarModal').modal('show');
             } else {
                 $('#state_overlay').addClass("d-none");
                 $('#main_header').removeClass("card-secondary card-danger");
@@ -387,6 +388,8 @@
                 } else if (data.status == 16 || data.status == 17) {
                     $('#main_header').addClass("card-danger");
                 }
+
+                $('#ToolbarModal').modal('hide');
 
 
             }
