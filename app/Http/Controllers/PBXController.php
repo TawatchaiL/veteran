@@ -177,4 +177,57 @@ class PBXController extends Controller
             return ['error' => false, 'message' => 'error'];
         }
     }
+
+    public function AgentRing(Request $request)
+    {
+        // Retrieve the authenticated user
+        $user = Auth::user();
+
+        if ($user) {
+            // Update user's phone_status
+
+            DB::table('crm_incoming')->insert([
+                'telno' => $request->input('telno'),
+                'agentno' => $request->input('agentno'),
+                'calltime' => date("Y-m-d H:i:s"),
+                'status' => 0
+            ]);
+
+            $user->phone_status_id = 4;
+            $user->phone_status = "สายเข้าจาก ".$request->input('telno');
+            $user->phone_status_icon = '<i class="fa-solid fa-bell fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i>';
+            $user->save();
+            return [
+                'success' => true,
+                'id' => $user->phone_status_id,
+                'message' => $user->phone_status,
+                'icon' => $user->phone_status_icon
+            ];
+        } else {
+            return ['error' => false, 'message' => 'error'];
+        }
+    }
+
+    public function AgentTalk(Request $request)
+    {
+        // Retrieve the authenticated user
+        $user = Auth::user();
+
+        if ($user) {
+            // Update user's phone_status
+
+            $user->phone_status_id = 5;
+            $user->phone_status = "กำลังสนทนากับ ".$request->input('telno');
+            $user->phone_status_icon = '<i class="fa-solid fa-phone-volume fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i>';
+            $user->save();
+            return [
+                'success' => true,
+                'id' => $user->phone_status_id,
+                'message' => $user->phone_status,
+                'icon' => $user->phone_status_icon
+            ];
+        } else {
+            return ['error' => false, 'message' => 'error'];
+        }
+    }
 }

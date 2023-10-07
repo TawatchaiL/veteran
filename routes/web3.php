@@ -25,5 +25,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/agent_logoff_out', [App\Http\Controllers\PBXController::class, 'logoffAgentFromQueueAndLogout'])->name('agent.logoff_out');
     Route::post('/agent_break', [App\Http\Controllers\PBXController::class, 'AgentBreak'])->name('agent.break');
     Route::post('/agent_unbreak', [App\Http\Controllers\PBXController::class, 'AgentUnBreak'])->name('agent.unbreak');
+    Route::post('/agent_ring', [App\Http\Controllers\PBXController::class, 'AgentRing'])->name('agent.ring');
+    Route::post('/agent_talk', [App\Http\Controllers\PBXController::class, 'AgentTalk'])->name('agent.talk');
 });
 

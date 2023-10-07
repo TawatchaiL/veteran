@@ -3,9 +3,9 @@
         case 0:
             $dial_number = '';
             $dial_button = '';
-            $transfer_button = '';
+            $transfer_button = 'disabled';
             $performance_button = 'disabled';
-            $conf_button = '';
+            $conf_button = 'disabled';
             $break_button = 'disabled';
             $break_button_class = '';
             $unbreak_button = 'disabled';
@@ -20,9 +20,9 @@
         case 1:
             $dial_number = '';
             $dial_button = '';
-            $transfer_button = '';
-            $performance_button = '';
-            $conf_button = '';
+            $transfer_button = 'disabled';
+            $performance_button = 'disabled';
+            $conf_button = 'disabled';
             $break_button = '';
             $break_button_class = '';
             $unbreak_button = 'disabled';
@@ -37,9 +37,9 @@
         case 2:
             $dial_number = '';
             $dial_button = '';
-            $transfer_button = '';
+            $transfer_button = 'disabled';
             $performance_button = 'disabled';
-            $conf_button = '';
+            $conf_button = 'disabled';
             $break_button = '';
             $break_button_class = 'd-none';
             $unbreak_button = '';
@@ -52,6 +52,40 @@
             $login_button_class = 'd-none';
             break;
         case 3:
+            break;
+        case 4:
+            $dial_number = '';
+            $dial_button = '';
+            $transfer_button = 'disabled';
+            $performance_button = 'disabled';
+            $conf_button = 'disabled';
+            $break_button = 'disabled';
+            $break_button_class = 'd-none';
+            $unbreak_button = 'disabled';
+            $unbreak_button_class = 'd-none';
+            $logout_button = 'disabled';
+            $logout_button_class = '';
+            $logoff_button = 'disabled';
+            $logoff_button_class = 'd-none';
+            $login_button = '';
+            $login_button_class = 'd-none';
+            break;
+        case 5:
+            $dial_number = '';
+            $dial_button = '';
+            $transfer_button = '';
+            $performance_button = '';
+            $conf_button = '';
+            $break_button = '';
+            $break_button_class = 'd-none';
+            $unbreak_button = '';
+            $unbreak_button_class = '';
+            $logout_button = '';
+            $logout_button_class = '';
+            $logoff_button = '';
+            $logoff_button_class = 'd-none';
+            $login_button = '';
+            $login_button_class = 'd-none';
             break;
         default:
             break;

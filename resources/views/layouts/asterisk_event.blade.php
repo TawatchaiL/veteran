@@ -442,6 +442,19 @@
         if (data.extension.match(exten)) {
             console.log(data);
 
+            $.ajax({
+                url: "{{ route('agent.ring') }}",
+                method: 'post',
+                data: {
+                    telno: data.cid,
+                    agentno: data.dstnumber,
+                    _token: token,
+                },
+                success: function(result) {
+                    alert_danger('OK', 'มีสายเข้าจาก '+data.cid+' dกรุณารับสาย', '');
+                }
+            });
+
             if (data.variable) {
                 let mstrArray = data.variable.split("|");
                 mcallivr = mstrArray[4].split(":");
@@ -506,7 +519,7 @@
             $('#call_' + data.luniq.replace('.', '')).removeAttr("disabled");
 
             $.ajax({
-                url: "{{ route('contacts.incoming') }}",
+                url: "{{ route('agent.talk') }}",
                 method: 'post',
                 data: {
                     telno: data.cid,

@@ -109,6 +109,12 @@
                 case 3:
                     $temporaryPhoneColor = '';
                     break;
+                case 4:
+                    $temporaryPhoneColor = 'icon-red';
+                    break;
+                case 5:
+                    $temporaryPhoneColor = 'icon-red';
+                    break;
                 default:
                     $temporaryPhoneColor = 'icon-gray';
                     break;
