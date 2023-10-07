@@ -522,7 +522,7 @@
                 data: additionalData,
                 success: function(result) {
                     if (result.errors) {
-                        alert('O  K');
+                        alert('O K');
                         $('.alert-danger').html('');
                         $.each(result.errors, function(key, value) {
                             $('.alert-danger').show();
