@@ -505,34 +505,35 @@
                 casestatus: $('#casestatus option:selected').text(),
                 _token: token 
             };
-            if($('#casetype2').val() != ''){
+            if($('#casetype2').val() !== ''){
                 var additionalData2 = {
                     casetype2: $('#casetype2 option:selected').text(),
                     caseid2: $('#casetype2').val()
                 };
                 var additionalData = { additionalData, additionalData2 };
             }
-            if($('#casetype3').val() != ''){
+            if($('#casetype3').val() !== ''){
                 var additionalData3 = {
                     casetype3: $('#casetype3 option:selected').text(),
                     caseid3: $('#casetype3').val()
                 };
                 var additionalData = { additionalData, additionalData3 };
             }
-            if($('#casetype4').val() != ''){
+            if($('#casetype4').val() !== ''){
                 var additionalData4 = {
                     casetype4: $('#casetype4 option:selected').text(),
                     caseid4: $('#casetype4').val()
                 };
                 var additionalData = { additionalData, additionalData4};
-            if($('#casetype5').val() != ''){
+            }
+            if($('#casetype5').val() !== ''){
                 var additionalData5 = {
                     casetype5: $('#casetype5 option:selected').text(),
                     caseid5: $('#casetype5').val()
                 };
                 var additionalData = { additionalData, additionalData5 };
             }
-            if($('#casetype6').val() != ''){
+            if($('#casetype6').val() !== ''){
                 var additionalData6 = {
                     casetype6: $('#casetype6 option:selected').text(),
                     caseid6: $('#casetype6').val()
