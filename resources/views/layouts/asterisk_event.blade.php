@@ -379,7 +379,7 @@
                 $('#ToolbarModal').modal('show');
             } else {
                 $('#state_overlay').addClass("d-none");
-                $('#main_header').removeClass("card-secondary card-danger");
+                $('#main_header').removeClass("card-primary card-secondary card-danger");
                 if (data.status == 0) {
                     $('#main_header').addClass("card-primary");
                     $('#btn-pause').attr('disabled', false);
