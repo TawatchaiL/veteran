@@ -496,7 +496,7 @@
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
-            alert($('#casetype5 option:selected').text()); 
+            alert($('#casetype5').val()); 
             var additionalData = {
                 contact_id: $('#Addid').val(),
                 casetype1: $('#casetype1 option:selected').text(),
