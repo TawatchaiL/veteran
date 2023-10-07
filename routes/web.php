@@ -33,7 +33,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('roles', RoleController::class);
 
     Route::get('/contacts', [App\Http\Controllers\ContactController::class, 'index'])->name('contacts');
-    Route::get('/contacts/incoming', [App\Http\Controllers\ContactController::class, 'incoming'])->name('contacts.incoming');
+    Route::post('/contacts/incoming', [App\Http\Controllers\ContactController::class, 'incoming'])->name('contacts.incoming');
     Route::get('/contacts/popup', [App\Http\Controllers\ContactController::class, 'popup'])->name('contacts.popup');
     Route::get('/contacts/running', [App\Http\Controllers\ContactController::class, 'create'])->name('contacts.running');
     Route::post('/contacts/store', [App\Http\Controllers\ContactController::class, 'store'])->name('contacts.store');
