@@ -496,33 +496,41 @@
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
-            alert($('#casetype5').val()); 
             var additionalData = {
                 contact_id: $('#Addid').val(),
                 casetype1: $('#casetype1 option:selected').text(),
                 caseid1: $('#casetype1').val(),
-                casetype2: $('#casetype2 option:selected').text(),
-                caseid2: $('#casetype2').val(),
-                casetype3: $('#casetype3 option:selected').text(),
-                caseid3: $('#casetype3').val(),
-                casetype4: $('#casetype4 option:selected').text(),
-                caseid4: $('#casetype4').val(),
-                casetype5: $('#casetype5 option:selected').text(),
-                caseid5: $('#casetype5').val(),
-                casetype6: $('#casetype6 option:selected').text(),
-                caseid6: $('#casetype6').val(),
                 casedetail: $('#Deail').val(),
                 tranferstatus: $('#tranferstatus option:selected').text(),
                 casestatus: $('#casestatus option:selected').text(),
                 _token: token 
             };
+            if($('#casetype2').val() !== ''){
+                additionalData.casetype2 = $('#casetype2 option:selected').text();
+                additionalData.caseid2 = $('#casetype2').val();
+            }
+            if($('#casetype3').val() !== ''){
+                additionalData.casetype3= $('#casetype3 option:selected').text();
+                additionalData.caseid3 = $('#casetype3').val();
+            }
+            if($('#casetype4').val() !== ''){
+                additionalData.casetype4 = $('#casetype4 option:selected').text();
+                additionalData.caseid4 = $('#casetype4').val();
+            }
+            if($('#casetype5').val() !== ''){
+                additionalData.casetype5 = $('#casetype5 option:selected').text();
+                additionalData.caseid5 = $('#casetype5').val();
+            }
+            if($('#casetype6').val() !== ''){
+                additionalData.casetype6 = $('#casetype6 option:selected').text();
+                additionalData.caseid6 = $('#casetype6').val();
+            }
             $.ajax({
                 url: "{{ route('casescontract.store') }}",
                 method: 'post',
                 data: additionalData,
                 success: function(result) {
                     if (result.errors) {
-                        alert('O K');
                         $('.alert-danger').html('');
                         $.each(result.errors, function(key, value) {
                             $('.alert-danger').show();
