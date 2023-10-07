@@ -295,9 +295,9 @@ class ContactController extends Controller
     public function incoming(Request $request)
     {
         DB::table('crm_incoming')->insert([
-            'telno' => 'kayla@example.com',
-            'agentno' => 0,
-            'calltime' => 0
+            'telno' => $request->input('telno'),
+            'agentno' => $request->input('agentno'),
+            'calltime' => $request->input('calltime')
         ]);
         return response()->json(['success' => 'บันทักข้อมูลเรียบร้อยแล้ว']);
     }
