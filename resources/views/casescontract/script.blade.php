@@ -504,6 +504,8 @@
                 caseid2: $('#casetype2').val(),
                 casetype3: $('#casetype3 option:selected').text(),
                 caseid3: $('#casetype3').val(),
+                casetype4: $('#casetype4 option:selected').text(),
+                caseid4: $('#casetype4').val(),
                 casedetail: $('#Detail').val(),
                 tranferstatus: $('#tranferstatus option:selected').text(),
                 casestatus: $('#casestatus option:selected').text(),
