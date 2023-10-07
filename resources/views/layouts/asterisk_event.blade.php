@@ -124,8 +124,8 @@
                 $('#break_group').addClass("d-none");
                 $('#sub_header').append('<div id="break_text"><i class="fas fa-pause"></i> ' + rowid +
                     '</div>');
-                $('.modal-header').removeClass("card-primary");
-                $('.modal-header').addClass("card-warning");
+                $('#toolbar_header').removeClass("card-primary");
+                $('#toolbar_header').addClass("card-warning");
                 alert_success('OK', 'Pause Success', '');
             }
 
@@ -141,8 +141,8 @@
                 $('.button_unbreak').addClass("d-none");
                 $('#break_group').removeClass("d-none");
                 $('#break_text').remove();
-                $('.modal-header').addClass("card-primary");
-                $('.modal-header').removeClass("card-warning");
+                $('#toolbar_header').addClass("card-primary");
+                $('#toolbar_header').removeClass("card-warning");
                 alert_success('OK', 'UnPause Success', '');
             }
         });
@@ -224,8 +224,8 @@
                 $('.button_unbreak').addClass("d-none");
                 $('#break_group').removeClass("d-none");
                 $('#break_text').remove();
-                $('.modal-header').addClass("card-primary");
-                $('.modal-header').removeClass("card-warning");
+                $('#toolbar_header').addClass("card-primary");
+                $('#toolbar_header').removeClass("card-warning");
                 alert_success('OK', 'Complete Call Success', '');
             }
 
@@ -371,25 +371,25 @@
     socket.on('event', data => {
         if (data.extension == exten) {
             if (data.status == 4 || data.status == -1) {
-                $('.modal-header').removeClass("card-primary");
-                $('.modal-header').addClass("card-secondary");
+                $('#toolbar_header').removeClass("card-primary");
+                $('#toolbar_header').addClass("card-secondary");
                 $('#state_overlay').removeClass("d-none");
                 $('#phone_state').addClass('d-none');
                 $('#phone_state_icon').addClass('d-none');
                 $('#ToolbarModal').modal('show');
             } else {
                 $('#state_overlay').addClass("d-none");
-                $('.modal-header').removeClass("card-primary card-secondary card-danger");
+                $('#toolbar_header').removeClass("card-primary card-secondary card-danger");
                 if (data.status == 0) {
-                    $('.modal-header').addClass("card-primary");
+                    $('#toolbar_header').addClass("card-primary");
                     $('#btn-pause').attr('disabled', false);
                     $('#btn-system-logout').attr('disabled', false);
                     $('#btn-agent-logout').attr('disabled', false);
                     $('#ToolbarModal').modal('hide');
                 } else if (data.status == 1 || data.status == 2 || data.status == 8 || data.status == 9) {
-                    $('.modal-header').addClass("card-danger");
+                    $('#toolbar_header').addClass("card-danger");
                 } else if (data.status == 16 || data.status == 17) {
-                    $('.modal-header').addClass("card-danger");
+                    $('#toolbar_header').addClass("card-danger");
                 }
 
                 $('#phone_state').removeClass('d-none')
@@ -418,8 +418,8 @@
                     $('.button_unbreak').addClass("d-none");
                     $('#break_group').removeClass("d-none");
                     $('#break_text').remove();
-                    $('.modal-header').addClass("card-primary");
-                    $('.modal-header').removeClass("card-warning");
+                    $('#toolbar_header').addClass("card-primary");
+                    $('#toolbar_header').removeClass("card-warning");
                     //alert_success('OK', 'Complete Call Success', '');
                 }
 
@@ -646,8 +646,8 @@
                             $('#sub_header').append(
                                 `<div id="break_text"><i class="fas fa-pause"></i> Wrap UP (${dataw})</div>`
                             );
-                            $('.modal-header').removeClass("card-primary");
-                            $('.modal-header').addClass("card-warning");
+                            $('#toolbar_header').removeClass("card-primary");
+                            $('#toolbar_header').addClass("card-warning");
                             alert_success('OK', 'Call End', '');
                             //});
                         }
@@ -693,8 +693,8 @@
                         $('#sub_header').append(
                             `<div id="break_text"><i class="fas fa-pause"></i> Wrap UP (${dataw})</div>`
                         );
-                        $('.modal-header').removeClass("card-primary");
-                        $('.modal-header').addClass("card-warning");
+                        $('#toolbar_header').removeClass("card-primary");
+                        $('#toolbar_header').addClass("card-warning");
                         alert_success('OK', 'Call End', '');
                         //});
                     }

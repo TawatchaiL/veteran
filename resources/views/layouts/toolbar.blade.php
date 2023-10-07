@@ -94,7 +94,7 @@
 <div class="modal fade" id="ToolbarModal" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-xxl-toolbar">
         <div class="modal-content">
-            <div class="modal-header bg-primary" id="main_header">
+            <div class="modal-header bg-primary" id="toolbar_header">
                 <h4 class="modal-title">{{-- <i class="fas fa-wrench"></i> --}} <i class="fas fa-spin fa-gear"></i> Agent ToolBar [
                     {{ $temporaryPhone }} ]</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
