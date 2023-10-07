@@ -462,6 +462,36 @@
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
+            $.ajax({
+                url: "casetype6/casetype/0",
+                method: 'GET',
+                success: function(res) {
+                    var provinceOb = $('#casetype1');
+                    provinceOb.html('<option value="">เลือกประเภทการติดต่อ</option>');
+                    $.each(res.data, function(index, item) {
+                        provinceOb.append(
+                            $('<option></option>').val(item.id).html(item
+                                .name)
+                        );
+                    });
+                }
+            });
+            $('#casetype2').html('<option value="">เลือกรายละเอียดเคส</option>');
+            $('#casetype3').html('<option value="">เลือกรายละเอียดเคสย่อย</option>');
+            $('#casetype4').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
+            $('#casetype5').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
+            $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
+            $('#casetype2').attr('disabled', true);
+            $('#casetype3').attr('disabled', true);
+            $('#casetype4').attr('disabled', true);
+            $('#casetype5').attr('disabled', true);
+            $('#casetype6').attr('disabled', true);
+            $('#AddName2').attr('disabled', true);
+            $('#AddName3').attr('disabled', true);
+            $('#AddName4').attr('disabled', true);
+            $('#AddName5').attr('disabled', true);
+            $('#AddName6').attr('disabled', true);
+            $('#CreateModal').modal('show');
             $('#CreateModal').modal('show');
         });
 
