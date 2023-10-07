@@ -500,21 +500,45 @@
                 contact_id: $('#Addid').val(),
                 casetype1: $('#casetype1 option:selected').text(),
                 caseid1: $('#casetype1').val(),
-                casetype2: $('#casetype2 option:selected').text(),
-                caseid2: $('#casetype2').val(),
-                casetype3: $('#casetype3 option:selected').text(),
-                caseid3: $('#casetype3').val(),
-                casetype4: ($('#casetype4').val() !== '') ? $('#casetype4 option:selected').text() : undefined,
-                caseid4: ($('#casetype4').val() !== '') ? $('#casetype4').val() : undefined,
-                casetype5: ($('#casetype5').val() !== '') ? $('#casetype5 option:selected').text() : undefined,
-                caseid5: ($('#casetype5').val() !== '') ? $('#casetype5').val() : undefined,
-                casetype6: ($('#casetype6').val() !== '') ? $('#casetype6 option:selected').text() : undefined,
-                caseid6: ($('#casetype6').val)() !== '') ? $('#casetype6').val() : undefined,
                 casedetail: $('#Deail').val(),
                 tranferstatus: $('#tranferstatus option:selected').text(),
                 casestatus: $('#casestatus option:selected').text(),
                 _token: token 
             };
+            if($('#casetype2').val() != ''){
+                var additionalData2 = {
+                    casetype2: $('#casetype2 option:selected').text(),
+                    caseid2: $('#casetype2').val()
+                };
+                var additionalData = { additionalData, additionalData2 };
+            }
+            if($('#casetype3').val() != ''){
+                var additionalData3 = {
+                    casetype3: $('#casetype3 option:selected').text(),
+                    caseid3: $('#casetype3').val()
+                };
+                var additionalData = { additionalData, additionalData3 };
+            }
+            if($('#casetype4').val() != ''){
+                var additionalData4 = {
+                    casetype4: $('#casetype4 option:selected').text(),
+                    caseid4: $('#casetype4').val()
+                };
+                var additionalData = { additionalData, additionalData4};
+            if($('#casetype5').val() != ''){
+                var additionalData5 = {
+                    casetype5: $('#casetype5 option:selected').text(),
+                    caseid5: $('#casetype5').val()
+                };
+                var additionalData = { additionalData, additionalData5 };
+            }
+            if($('#casetype6').val() != ''){
+                var additionalData6 = {
+                    casetype6: $('#casetype6 option:selected').text(),
+                    caseid6: $('#casetype6').val()
+                };
+                var additionalData = { additionalData, additionalData6 };
+            }
             $.ajax({
                 url: "{{ route('casescontract.store') }}",
                 method: 'post',
