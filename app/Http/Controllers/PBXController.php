@@ -230,4 +230,26 @@ class PBXController extends Controller
             return ['error' => false, 'message' => 'error'];
         }
     }
+
+    public function AgentHang(Request $request)
+    {
+        // Retrieve the authenticated user
+        $user = Auth::user();
+
+        if ($user) {
+            // Update user's phone_status
+            $user->phone_status_id = 1;
+            $user->phone_status = "พร้อมรับสาย";
+            $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
+            $user->save();
+            return [
+                'success' => true,
+                'id' => $user->phone_status_id,
+                'message' => $user->phone_status,
+                'icon' => $user->phone_status_icon
+            ];
+        } else {
+            return ['error' => false, 'message' => 'error'];
+        }
+    }
 }

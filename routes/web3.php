@@ -27,5 +27,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/agent_unbreak', [App\Http\Controllers\PBXController::class, 'AgentUnBreak'])->name('agent.unbreak');
     Route::post('/agent_ring', [App\Http\Controllers\PBXController::class, 'AgentRing'])->name('agent.ring');
     Route::post('/agent_talk', [App\Http\Controllers\PBXController::class, 'AgentTalk'])->name('agent.talk');
+    Route::post('/agent_hang', [App\Http\Controllers\PBXController::class, 'AgentHang'])->name('agent.hang');
 });
 

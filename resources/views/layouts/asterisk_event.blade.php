@@ -586,6 +586,21 @@
     socket.on('hangup', data => {
         if (data.extension) {
             if (data.extension.match(exten)) {
+                $.ajax({
+                url: "{{ route('agent.hang') }}",
+                method: 'post',
+                data: {
+                    _token: token,
+                },
+                success: function(result) {
+                    alert_success('OK', 'วางสายเรียบร้อยแล้ว', '');
+                    $('#phone_state').html(result.message);
+                    $('#phone_state_icon').html(result.icon);
+                    $('#phone_state').removeClass().addClass(get_state_color(result.id));
+                    $('#phone_state_icon').removeClass().addClass(get_state_color(result.id));
+                    positionCards();
+                }
+            });
                 //console.log(data)
                 if (data.luniq) {
                     $('#' + data.luniq.replace('.', '')).remove();
