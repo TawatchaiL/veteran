@@ -655,7 +655,7 @@
                             .draw();
                     }
                 }
-            }); //end
+            });
         });
         $('#casetype1').on('change', function() {
             var parent_id = $(this).val();
