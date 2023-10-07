@@ -106,9 +106,9 @@
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="plugins/dropzone/min/dropzone.min.js"></script>
 
-@include('layouts.asterisk_event')
 @include('layouts.footer_script')
 @include('layouts.toolbar_script')
+@include('layouts.asterisk_event')
 <script>
     const addemerphone = () => {
         const tableBody = document.getElementById('myTbl3p').getElementsByTagName('tbody')[0];
