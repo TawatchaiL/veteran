@@ -495,7 +495,8 @@
             $('.alert-danger').html('');
             $('.alert-danger').hide();
             $('.alert-success').html('');
-            $('.alert-success').hide();s
+            $('.alert-success').hide();
+            alert('OK1');
             var additionalData = {
                 contact_id: $('#Addid').val(),
                 casetype1: $('#casetype1 option:selected').text(),
@@ -515,7 +516,7 @@
                 casestatus: $('#casestatus option:selected').text(),
                 _token: token
             };
-
+            alert('OK2');
             $.ajax({
                 url: "{{ route('casescontract.store') }}",
                 method: 'post',
