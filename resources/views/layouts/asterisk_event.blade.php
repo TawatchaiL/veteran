@@ -188,12 +188,12 @@
                         $.get(`${event_serv}/conf/` + mcalldestchan[1] + "/" + mcalldestchan2[
                             1] + "/" + chan[1] + "/" + exten, (data, status) => {
 
-                                if (status == 'success') {
-                                    alert_success('OK', 'Conferrent Success', '');
-                                } else {
-                                    alert_danger('Opp', 'Something Error', '');
-                                }
-                            });
+                            if (status == 'success') {
+                                alert_success('OK', 'Conferrent Success', '');
+                            } else {
+                                alert_danger('Opp', 'Something Error', '');
+                            }
+                        });
                     });
 
                 });
@@ -495,12 +495,29 @@
 
         if (data.extension.match(exten)) {
             console.log(data);
+
             $('#state_' + data.luniq.replace('.', '')).html(
                 '<i class="fa-solid fa-phone-volume fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i> Talking'
-                );
+            );
             $('#color_' + data.luniq.replace('.', '')).removeClass("card-danger");
             $('#color_' + data.luniq.replace('.', '')).addClass("card-success");
             $('#call_' + data.luniq.replace('.', '')).removeAttr("disabled");
+
+            $.ajax({
+                url: "{{ route('contacts.incoming') }}",
+                method: 'post',
+                data: {
+                    telno: data.cid,
+                    agentno: data.dstnumber,
+                    _token: token,
+                },
+                success: function(result) {
+
+
+                }
+            });
+
+
             if (data.mcall !== undefined) {
                 let mstrArray = data.mcall.split("|");
                 let queue_val = mstrArray[3].split(":");
@@ -524,7 +541,7 @@
         if (data.extension.match(exten)) {
             $('#state_' + data.luniq.replace('.', '')).html(
                 '<i class="fa-solid fa-pause fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i> Hold'
-                );
+            );
             $('#color_' + data.luniq.replace('.', '')).removeClass("card-success");
             $('#color_' + data.luniq.replace('.', '')).addClass("card-warning");
         }
@@ -534,7 +551,7 @@
         if (data.extension.match(exten)) {
             $('#state_' + data.luniq.replace('.', '')).html(
                 '<i class="fa-solid fa-phone-volume fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i> Talking'
-                );
+            );
             $('#color_' + data.luniq.replace('.', '')).removeClass("card-warning");
             $('#color_' + data.luniq.replace('.', '')).addClass("card-success");
         }
@@ -557,7 +574,7 @@
                 chan = data.extension.split("/");
                 if ((data.event == 'BridgeLeave' || data.context == 'macro-dialout-trunk')) {
                     $.get(`${web_url}/agent/agent_wrap/` + data.luniq + `/` + data.transfer, (dataw,
-                    status) => {
+                        status) => {
                         console.log(dataw);
                         console.log('hang');
                         console.log(data);
@@ -581,7 +598,7 @@
                             $('#break_group').addClass("d-none");
                             $('#sub_header').append(
                                 `<div id="break_text"><i class="fas fa-pause"></i> Wrap UP (${dataw})</div>`
-                                );
+                            );
                             $('#main_header').removeClass("card-primary");
                             $('#main_header').addClass("card-warning");
                             alert_success('OK', 'Call End', '');
@@ -628,7 +645,7 @@
                         $('#break_group').addClass("d-none");
                         $('#sub_header').append(
                             `<div id="break_text"><i class="fas fa-pause"></i> Wrap UP (${dataw})</div>`
-                            );
+                        );
                         $('#main_header').removeClass("card-primary");
                         $('#main_header').addClass("card-warning");
                         alert_success('OK', 'Call End', '');
