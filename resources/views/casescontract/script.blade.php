@@ -540,7 +540,7 @@
                 };
                 var additionalData = { additionalData, additionalData6 };
             }
-            alert('OK');
+            alert('O K');
             $.ajax({
                 url: "{{ route('casescontract.store') }}",
                 method: 'post',
