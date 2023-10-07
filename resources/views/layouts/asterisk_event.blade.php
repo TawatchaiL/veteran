@@ -451,7 +451,11 @@
                     _token: token,
                 },
                 success: function(result) {
-                    alert_danger('OK', 'มีสายเข้าจาก '+data.cid+' dกรุณารับสาย', '');
+                    alert_danger('OK', 'มีสายเข้าจาก ' + data.cid + ' กรุณารับสาย', '');
+                    $('#phone_state').html(result.message);
+                    $('#phone_state_icon').html(result.icon);
+                    $('#phone_state').removeClass().addClass(get_state_color(result.id));
+                    $('#phone_state_icon').removeClass().addClass(get_state_color(result.id));
                 }
             });
 
@@ -528,6 +532,10 @@
                 },
                 success: function(result) {
                     alert_success('OK', 'คุณรับสายแล้วกรุณาเปิด popup', '');
+                    $('#phone_state').html(result.message);
+                    $('#phone_state_icon').html(result.icon);
+                    $('#phone_state').removeClass().addClass(get_state_color(result.id));
+                    $('#phone_state_icon').removeClass().addClass(get_state_color(result.id));
                     positionCards();
                 }
             });

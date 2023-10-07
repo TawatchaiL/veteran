@@ -35,6 +35,10 @@
             return 'icon-green';
         } else if (id === 2) {
             return 'icon-yellow';
+        } else if (id === 4) {
+            return 'icon-red';
+        } else if (id === 5) {
+            return 'icon-red';
         }
     };
 
