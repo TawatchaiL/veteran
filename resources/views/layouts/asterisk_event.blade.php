@@ -497,7 +497,7 @@
 						</div>
 
 					</div>`);
-                $('#ToolbarModal').modal('show');
+                //$('#ToolbarModal').modal('show');
 
 
             }
@@ -537,6 +537,7 @@
                     $('#phone_state').removeClass().addClass(get_state_color(result.id));
                     $('#phone_state_icon').removeClass().addClass(get_state_color(result.id));
                     positionCards();
+                    $('#ToolbarModal').modal('show');
                 }
             });
 
