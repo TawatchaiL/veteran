@@ -118,6 +118,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="row" id="call_list">
+
+                </div>
             </div>
             <div class="card-footer text-muted">
                 <div class="btn-group float-left {{ $break_button_class }}" id="break_group">
