@@ -522,6 +522,7 @@
                 data: additionalData,
                 success: function(result) {
                     if (result.errors) {
+                        alert('OK');
                         $('.alert-danger').html('');
                         $.each(result.errors, function(key, value) {
                             $('.alert-danger').show();
