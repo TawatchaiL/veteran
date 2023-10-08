@@ -71,6 +71,25 @@
                 $('#state_overlay').addClass("d-none");
                 $('#toolbar_header').removeClass("card-primary card-secondary card-danger");
                 if (data.status == 0) {
+                    $.ajax({
+                        url: "{{ route('agent.hang') }}",
+                        method: 'post',
+                        async: false,
+                        data: {
+                            _token: token,
+                        },
+                        success: function(result) {
+                            //alert_success('OK', 'วางสายเรียบร้อยแล้ว', '');
+                            $('#phone_state').html(result.message);
+                            $('#phone_state_icon').html(result.icon);
+                            $('#phone_state').removeClass().addClass(get_state_color(result
+                            .id));
+                            $('#phone_state_icon').removeClass().addClass(get_state_color(result
+                                .id));
+                            set_state_button(result.id);
+                            positionCards();
+                        }
+                    });
                     $('#toolbar_header').addClass("card-primary");
                     $('#ToolbarModal').modal('hide');
                 } else if (data.status == 1 || data.status == 2 || data.status == 8 || data.status == 9) {
@@ -283,7 +302,7 @@
     socket.on('hangup', data => {
         if (data.extension) {
             if (data.extension.match(exten)) {
-                $.ajax({
+                /* $.ajax({
                     url: "{{ route('agent.hang') }}",
                     method: 'post',
                     async: false,
@@ -300,7 +319,7 @@
                         set_state_button(result.id);
                         positionCards();
                     }
-                });
+                }); */
                 //console.log(data)
                 if (data.luniq) {
                     $('#' + data.luniq.replace('.', '')).remove();
