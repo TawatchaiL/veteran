@@ -587,7 +587,7 @@
             $('#casetype5').attr('disabled', true);
             $('#casetype6').attr('disabled', true);
             $.ajax({
-                url: "casescontract/edit/" + id,
+                url: "cases/edit/" + id,
                 method: 'GET',
                 success: function(res) {
                     console.log(res);
