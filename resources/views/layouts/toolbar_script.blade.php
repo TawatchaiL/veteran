@@ -1,5 +1,11 @@
 <script>
     const web_url = '{{ url('/') }}';
+    const agent_username = '{{ $temporaryPhone }}';
+    const exten = '{{ $temporaryPhone }}';
+    const account_code = '';
+    const event_serv = '{{ config('asterisk.event_serv.address') }}';
+    let obj = {};
+
     const updateUI = (result) => {
         console.log(result);
         if (result.success == true) {
