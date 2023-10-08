@@ -309,16 +309,12 @@ class PBXController extends Controller
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-plug-circle-exclamation fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1;"></i>';
             $user->save();
 
-            if ($ret == true) {
-                return [
-                    'success' => true,
-                    'id' => $user->phone_status_id,
-                    'message' => $user->phone_status,
-                    'icon' => $user->phone_status_icon
-                ];
-            } else {
-                return ['success' => false, 'message' => 'login error'];
-            }
+            return [
+                'success' => true,
+                'id' => $user->phone_status_id,
+                'message' => $user->phone_status,
+                'icon' => $user->phone_status_icon
+            ];
         } else {
             return ['error' => false, 'message' => 'error'];
         }
