@@ -572,8 +572,8 @@
                     console.log(res);
                     //$('#Editcasetype1e').val(res.data.casetype1);
                     $('#Detail').val(res.data.casedetail);
-                    $('#tranferstatus').val(res.data.tranferstatus);
-                    $('#casestatus').val(res.data.casestatus);
+                    //$('#Edittranferstatuse').val(res.data.tranferstatus);
+                    //$('#Editcasestatuse').val(res.data.casestatus);
                     $('#CreateModal').modal('show');
                 }
             });
