@@ -253,9 +253,10 @@ class PBXController extends Controller
                     $resultb = DB::connection('remote_connection')
                         ->table('call_center.break')
                         ->where('id', $inbreak[0]->id_break)
-                        ->first();
+                        ->first(); // Use first() instead of get() to get a single object
+
                     $user->phone_status_id = 2;
-                    $user->phone_status =  $resultb[0]->name;
+                    $user->phone_status =  $resultb->name; // Use object notation
                     $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-clock"></i>';
                 } else {
                     $user->phone_status_id = 1;

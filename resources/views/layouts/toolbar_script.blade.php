@@ -20,7 +20,6 @@
     };
 
     const check_state = () => {
-        alert();
         sendAjaxRequest("{{ route('agent.status') }}", "POST");
     }
 
