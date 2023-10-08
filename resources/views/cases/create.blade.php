@@ -60,7 +60,7 @@
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-code"></i><input type="hidden" value="" name="Addid" id="Addid"> HN:</strong>
                                                     {!! Form::text('hn', null , [
-                                                        'id' => 'hn',
+                                                        'id' => 'Hn',
                                                         'placeholder' => 'HN',
                                                         'class' => 'form-control',
                                                         'readonly' => true,
