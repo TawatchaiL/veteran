@@ -462,6 +462,7 @@
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
+            actions = 'add';
             $.ajax({
                 url: "casetype6/casetype/0",
                 method: 'GET',
@@ -490,15 +491,17 @@
             $('#CreateModal').modal('show');
         });
 
-        let id;
+        
         $('#SubmitCreateForm').click(function(e) {
+            if(actions == 'edit'){
+                if (!confirm("ยืนยันการทำรายการ ?")) return;
+            }
             e.preventDefault();
             $('.alert-danger').html('');
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
-            id = $(this).data('id');
-            alert(id);
+
             var additionalData = {
                 contact_id: $('#Addid').val(),
                 casetype1: $('#casetype1 option:selected').text(),
@@ -528,8 +531,15 @@
                 additionalData.casetype6 = $('#casetype6 option:selected').text();
                 additionalData.caseid6 = $('#casetype6').val();
             }
+
+            if(actions == 'add'){
+                urls = "{{ route('casescontract.store') }}";
+            }else if(actions == 'edit'){
+                urls = "casescontract/save/" + id;
+            }
+            alert(urls);
             $.ajax({
-                url: "{{ route('casescontract.store') }}",
+                url: urls,
                 method: 'post',
                 data: additionalData,
                 success: function(result) {
@@ -557,14 +567,15 @@
         });
 
 
-        
+        let id;
+        let actions;
         $(document).on('click', '#getEditData', function(e) {
             e.preventDefault();
             $('.alert-danger').html('');
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
-
+            actions = 'edit';
             id = $(this).data('id');
             $.ajax({
                 url: "casetype6/casetype/0",
