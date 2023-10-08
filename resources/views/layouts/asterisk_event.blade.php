@@ -381,7 +381,6 @@
                 $('#toolbar_header').removeClass("card-primary card-secondary card-danger");
                 if (data.status == 0) {
                     $('#toolbar_header').addClass("card-primary");
-                    await check_state(); // Use await here
                     $('#ToolbarModal').modal('hide');
                 } else if (data.status == 1 || data.status == 2 || data.status == 8 || data.status == 9) {
                     $('#toolbar_header').addClass("card-danger");
@@ -602,6 +601,7 @@
                         $('#phone_state_icon').html(result.icon);
                         $('#phone_state').removeClass().addClass(get_state_color(result.id));
                         $('#phone_state_icon').removeClass().addClass(get_state_color(result.id));
+                        check_state();
                         positionCards();
                     }
                 });
