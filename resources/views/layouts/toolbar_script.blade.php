@@ -1,6 +1,6 @@
 <script>
     const updateUI = (result) => {
-        //console.log(result);
+        console.log(result);
         if (result.success == true) {
             toastr.success('เปลี่ยนสถานะ เรียบร้อยแล้ว', {
                 timeOut: 5000
@@ -20,6 +20,7 @@
     };
 
     const check_state = () => {
+        alert();
         sendAjaxRequest("{{ route('agent.status') }}", "POST");
     }
 
