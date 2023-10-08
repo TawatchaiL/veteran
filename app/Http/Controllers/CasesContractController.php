@@ -195,6 +195,11 @@ class CasesContractController extends Controller
             'tranferstatus' => $request->get('tranferstatus'),
             'casedetail' => $request->get('casedetail'),
             'casestatus' => $request->get('casestatus'),
+            'casetype2' => $request->get('casetype2'),
+            'casetype3' => $request->get('casetype3'),
+            'casetype4' => $request->get('casetype4'),
+            'casetype4' => $request->get('casetype5'),
+            'casetype6' => $request->get('casetype6'),
         ];
 
        $company = CrmCase::find($id);
