@@ -599,6 +599,25 @@
                     $('#casestatus').val(res.data.casestatus);
                     $('#casetype1').val(res.data.caseid1);
                     $('#casetype1').change();
+                    if(res.data.caseid2 != 0){
+                        $('#casetype2').val(res.data.caseid2);
+                        $('#casetype2').change();
+                    }
+                    if(res.data.caseid3 != 0){
+                        $('#casetype3').val(res.data.caseid3);
+                        $('#casetype3').change();
+                    }
+                    if(res.data.caseid4 != 0){
+                        $('#casetype4').val(res.data.caseid4);
+                        $('#casetype4').change();
+                    }
+                    if(res.data.caseid5 != 0){
+                        $('#casetype5').val(res.data.caseid5);
+                        $('#casetype5').change();
+                    }
+                    if(res.data.caseid6 != 0){
+                        $('#casetype6').val(res.data.caseid6);
+                    }
                     $('#CreateModal').modal('show');
                 }
             });
