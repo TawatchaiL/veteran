@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cases;
+use App\Models\CrmCase;
 use App\Models\Case_type;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
