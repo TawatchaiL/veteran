@@ -28,6 +28,7 @@
             url,
             method,
             data,
+            async: false,
             success: updateUI,
         });
     };
