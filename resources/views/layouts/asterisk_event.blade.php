@@ -613,9 +613,9 @@
                 //if (data.extension.match(exten)) {
                 //(data.event == 'DialEnd' &&
                 //|| data.event == 'BlindTransfer'
-                chan = data.extension.split("/");
+                 /* chan = data.extension.split("/");
                 if ((data.event == 'BridgeLeave' || data.context == 'macro-dialout-trunk')) {
-                   /*  $.get(`${web_url}/agent/agent_wrap/` + data.luniq + `/` + data.transfer, (dataw,
+                   $.get(`${web_url}/agent/agent_wrap/` + data.luniq + `/` + data.transfer, (dataw,
                         status) => {
                         console.log(dataw);
                         console.log('hang');
@@ -649,8 +649,8 @@
                         }
 
 
-                    }); */
-                }
+                    });
+                }*/
 
                 //}
 
