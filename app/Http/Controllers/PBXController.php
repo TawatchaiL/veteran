@@ -245,9 +245,21 @@ class PBXController extends Controller
                 ->get();
             //check login again with same phone and same agent  and logout_datetime IS NULL
             if (count($inqueue) > 0) {
-                $user->phone_status_id = 1;
-                $user->phone_status = "พร้อมรับสาย";
-                $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
+                $inbreak = DB::connection('remote_connection')
+                    ->table('call_center.audit')
+                    ->where('id_agent', $user->agent_id)
+                    ->whereNotNull('id_break') // corrected method name
+                    ->whereNull('datetime_end')
+                    ->first();
+                if (count($inbreak) > 0) {
+                    $user->phone_status_id = 2;
+                    $user->phone_status =  $inbreak->name;
+                    $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-clock"></i>';
+                } else {
+                    $user->phone_status_id = 1;
+                    $user->phone_status = "พร้อมรับสาย";
+                    $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
+                }
             } else {
                 $user->phone_status_id = 0;
                 $user->phone_status = "ไม่พร้อมรับสาย";
