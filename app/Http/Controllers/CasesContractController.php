@@ -192,15 +192,37 @@ class CasesContractController extends Controller
 
         $companyd = [
             'casetype1' => $request->get('casetype1'),
+            'caseid1' => $request->get('caseid1'),
             'tranferstatus' => $request->get('tranferstatus'),
             'casedetail' => $request->get('casedetail'),
             'casestatus' => $request->get('casestatus'),
-            'casetype2' => $request->get('casetype2'),
-            'casetype3' => $request->get('casetype3'),
-            'casetype4' => $request->get('casetype4'),
-            'casetype4' => $request->get('casetype5'),
-            'casetype6' => $request->get('casetype6'),
         ];
+
+        if (!empty($request->get('casetype2'))) {
+            $companyd = array_merge($companyd, ['casetype2' => $request->get('casetype2'), 'caseid2' => $request->get('caseid2')]);
+        }else{
+            $companyd = array_merge($companyd, ['casetype2' => '', 'caseid2' => 0]);
+        }
+        if (!empty($request->get('casetype3'))) {
+            $companyd = array_merge($companyd, ['casetype3' => $request->get('casetype3'), 'caseid3' => $request->get('caseid3')]);
+        }else{
+            $companyd = array_merge($companyd, ['casetype3' => '', 'caseid3' => 0]);
+        }
+        if (!empty($request->get('casetype4'))) {
+            $companyd = array_merge($companyd, ['casetype4' => $request->get('casetype4'), 'caseid4' => $request->get('caseid4')]);
+        }else{
+            $companyd = array_merge($companyd, ['casetype4' => '', 'caseid4' => 0]);
+        }
+        if (!empty($request->get('casetype5'))) {
+            $companyd = array_merge($companyd, ['casetype5' => $request->get('casetype5'), 'caseid5' => $request->get('caseid5')]);
+        }else{
+            $companyd = array_merge($companyd, ['casetype5' => '', 'caseid5' => 0]);
+        }
+        if (!empty($request->get('casetype6'))) {
+            $companyd = array_merge($companyd, ['casetype6' => $request->get('casetype6'), 'caseid6' => $request->get('caseid6')]);
+        }else{
+            $companyd = array_merge($companyd, ['casetype6' => '', 'caseid6' => 0]);
+        }
 
        $company = CrmCase::find($id);
        $company->update($companyd);
