@@ -58,10 +58,10 @@
                                         <div class="row">
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <strong><i class="fas fa-code"></i> HN:</strong>
-                                                    {!! Form::text('name', '000001', [
-                                                        'id' => 'AddName',
-                                                        'placeholder' => 'Name',
+                                                    <strong><i class="fas fa-code"></i><input type="hidden" value="{{$contacts[0]->id}}" name="Addid" id="Addid"> HN:</strong>
+                                                    {!! Form::text('hn', $contacts[0]->hn , [
+                                                        'id' => 'hn',
+                                                        'placeholder' => 'HN',
                                                         'class' => 'form-control',
                                                         'readonly' => true,
                                                     ]) !!}
@@ -70,8 +70,8 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> ชื่อ-สกุล :</strong>
-                                                    {!! Form::text('name', 'นายสมมุติ ไม่สบาย', [
-                                                        'id' => 'AddName',
+                                                    {!! Form::text('name', $contacts[0]->fname.' '.$contacts[0]->lname, [
+                                                        'id' => 'Name',
                                                         'placeholder' => 'Name',
                                                         'class' => 'form-control',
                                                         'readonly' => true,
@@ -150,9 +150,9 @@
                                                 <div class="form-group">
                                                     <strong><i class="fa-regular fa-comment-dots"></i>
                                                         รายละเอียด:</strong>
-                                                    {!! Form::textarea('detail', null, [
+                                                    {!! Form::textarea('casedetail', null, [
                                                         'rows' => 4,
-                                                        'id' => 'AddDetail',
+                                                        'id' => 'Detail',
                                                         'class' => 'form-control',
                                                     ]) !!}
                                                 </div>
@@ -172,11 +172,11 @@
                                                     <strong><i class="fas fa-shuffle"></i> สถานะการโอนสาย
                                                         :</strong>
                                                     <select style="width: 100%;"
-                                                        class="select2 select2_tranfer form-control"
-                                                        id="tranferstatus" name="tranferstatus" multiple="multiple">
-                                                        <option value="1">รับสาย</option>
-                                                        <option value="2">ไม่รับสาย</option>
-                                                        <option value="3">สายไม่ว่าง</option>
+                                                        class="select2 form-control"
+                                                        id="tranferstatus" name="tranferstatus">
+                                                        <option value="รับสาย">รับสาย</option>
+                                                        <option value="ไม่รับสาย">ไม่รับสาย</option>
+                                                        <option value="สายไม่ว่าง">สายไม่ว่าง</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -185,10 +185,10 @@
                                                     <strong><i class="fas fa-arrows-rotate"></i> สถานะการเคส
                                                         :</strong>
                                                     <select style="width: 100%;"
-                                                        class="select2 select2_casestatus form-control"
-                                                        id="casestatus" name="casestatus" multiple="multiple">
-                                                        <option value="1">ปิดเคส</option>
-                                                        <option value="2">กำลังดำเนินการ</option>
+                                                        class="select2 form-control"
+                                                        id="casestatus" name="casestatus">
+                                                        <option value="ปิดเคส">ปิดเคส</option>
+                                                        <option value="กำลังดำเนินการ">กำลังดำเนินการ</option>
                                                     </select>
                                                 </div>
                                             </div>
