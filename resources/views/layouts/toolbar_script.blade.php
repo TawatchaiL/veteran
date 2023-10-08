@@ -514,10 +514,7 @@
     @endphp
     set_state_button(-1);
     $('#phone_state').html(result.message);
-    $('#phone_state_icon').html(result.icon);
-    $('#phone_state').removeClass().addClass(get_state_color(result.id));
-    $('#phone_state_icon').removeClass().addClass(get_state_color(result
-        .id));
+    $('#state_overlay').removeClass("d-none");
     $('#ToolbarModal').modal('show');
     @php
        }
