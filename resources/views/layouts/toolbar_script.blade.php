@@ -93,7 +93,9 @@
             btn_unbreak.prop('disabled', false);
             //btn_system_logout.prop('disabled', true);
             btn_agent_logout.addClass("d-none");
+            btn_agent_logout.prop('disabled', true);
             btn_agent_login.addClass("d-none");
+            btn_agent_login.prop('disabled', true);
         } else if (id === 4) {
             performance_button.prop('disabled', false);
             tranfer_button.prop('disabled', false);
