@@ -166,7 +166,6 @@
                 //});
 
                 $('.custom-bottom-right-card').each(function(index) {
-                    alert(index);
                     var cardPosition = {
                         right: (20 + (index % 4 * 320)) + 'px',
                         top: (Math.floor(index / 4) * (160+35)) + 'px',
