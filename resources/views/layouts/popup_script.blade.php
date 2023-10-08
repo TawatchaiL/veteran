@@ -493,7 +493,8 @@
                             phoneno: $('#phonenop').val(),
                             workno: $('#worknop').val(),
                             telno: $('#telnop').val(),
-                            casetype1: $('#casetype1p').val(),
+                            casetype1: $('#casetype1p option:selected').text(),
+                            caseid1: $('#casetype1p').val(),
                             tranferstatus: $('#tranferstatusp').val(),
                             casedetail: $('#casedetailp').val(),
                             casestatus: $('#casestatusp').val(),
@@ -501,6 +502,26 @@
                             emergencyData: emergencyData,
                             _token: token
                         };
+                            if($('#casetype2p').val() !== ''){
+                                additionalData.casetype2 = $('#casetype2p option:selected').text();
+                                additionalData.caseid2 = $('#casetype2p').val();
+                            }
+                            if($('#casetype3p').val() !== ''){
+                                additionalData.casetype3= $('#casetype3p option:selected').text();
+                                additionalData.caseid3 = $('#casetype3p').val();
+                            }
+                            if($('#casetype4p').val() !== ''){
+                                additionalData.casetype4 = $('#casetype4p option:selected').text();
+                                additionalData.caseid4 = $('#casetype4p').val();
+                            }
+                            if($('#casetype5p').val() !== ''){
+                                additionalData.casetype5 = $('#casetype5p option:selected').text();
+                                additionalData.caseid5 = $('#casetype5p').val();
+                            }
+                            if($('#casetype6p').val() !== ''){
+                                additionalData.casetype6 = $('#casetype6p option:selected').text();
+                                additionalData.caseid6 = $('#casetype6p').val();
+                            }
                         $.ajax({
                             url: "{{ route('contacts.casescontract') }}",
                             method: 'post',
@@ -580,13 +601,34 @@
                             phoneno: $('#phonenop').val(),
                             workno: $('#worknop').val(),
                             telno: $('#telnop').val(),
-                            casetype1: $('#casetype1p').val(),
+                            casetype1: $('#casetype1p option:selected').text(),
+                            caseid1: $('#casetype1p').val(),
                             tranferstatus: $('#tranferstatusp').val(),
                             casedetail: $('#casedetailp').val(),
                             casestatus: $('#casestatusp').val(),
                             agent: $('#telnop').val(),
                             emergencyData: emergencyData
                         };
+                            if($('#casetype2p').val() !== ''){
+                                additionalData.casetype2 = $('#casetype2p option:selected').text();
+                                additionalData.caseid2 = $('#casetype2p').val();
+                            }
+                            if($('#casetype3p').val() !== ''){
+                                additionalData.casetype3= $('#casetype3p option:selected').text();
+                                additionalData.caseid3 = $('#casetype3p').val();
+                            }
+                            if($('#casetype4p').val() !== ''){
+                                additionalData.casetype4 = $('#casetype4p option:selected').text();
+                                additionalData.caseid4 = $('#casetype4p').val();
+                            }
+                            if($('#casetype5p').val() !== ''){
+                                additionalData.casetype5 = $('#casetype5p option:selected').text();
+                                additionalData.caseid5 = $('#casetype5p').val();
+                            }
+                            if($('#casetype6p').val() !== ''){
+                                additionalData.casetype6 = $('#casetype6p option:selected').text();
+                                additionalData.caseid6 = $('#casetype6p').val();
+                            }
                         $.ajax({
                             url: "contacts/casescontractupdate/" + id,
                             method: 'PUT',
