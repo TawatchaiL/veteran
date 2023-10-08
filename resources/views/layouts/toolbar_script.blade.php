@@ -19,7 +19,7 @@
     const phone_state = $('#phone_state');
     const phone_state_icon = $('#phone_state_icon');
     const toolbar_modal = $('#ToolbarModal');
-    const state_overla = $('#state_overlay');
+    const state_overlay = $('#state_overlay');
 
     const updateUI = (result) => {
         console.log(result);
