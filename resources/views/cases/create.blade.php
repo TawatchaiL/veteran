@@ -58,28 +58,13 @@
                                         <div class="row">
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <strong><i class="fas fa-code"></i><input type="hidden" value="{{$contacts[0]->id}}" name="Addid" id="Addid"> HN:</strong>
-                                                    {!! Form::text('hn', $contacts[0]->hn , [
-                                                        'id' => 'hn',
-                                                        'placeholder' => 'HN',
-                                                        'class' => 'form-control',
-                                                        'readonly' => true,
-                                                    ]) !!}
                                                 </div>
                                             </div>
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <strong><i class="fas fa-user-tie"></i> ชื่อ-สกุล :</strong>
-                                                    {!! Form::text('name', $contacts[0]->fname.' '.$contacts[0]->lname, [
-                                                        'id' => 'Name',
-                                                        'placeholder' => 'Name',
-                                                        'class' => 'form-control',
-                                                        'readonly' => true,
-                                                    ]) !!}
                                                 </div>
                                             </div>
                                         </div>
-
                                         <div class="row">
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
