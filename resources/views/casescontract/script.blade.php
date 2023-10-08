@@ -592,10 +592,11 @@
                 method: 'GET',
                 success: function(res) {
                     console.log(res);
-                    $('#casetype1').val(res.data.caseid1);
                     $('#Detail').val(res.data.casedetail);
                     $('#tranferstatus').val(res.data.tranferstatus);
                     $('#casestatus').val(res.data.casestatus);
+                    $('#casetype1').val(res.data.caseid1);
+                    $('#casetype1').change();
                     $('#CreateModal').modal('show');
                 }
             });
