@@ -68,7 +68,22 @@
         const toolbar_header = $('#toolbar_header');
 
 
-        if (id === 0) {
+        if (id === -1) {
+            performance_button.prop('disabled', true);
+            tranfer_button.prop('disabled', true);
+            conf_button.prop('disabled', true);
+            break_group.addClass("d-none");
+            btn_pause.prop('disabled', true);
+            btn_unbreak.addClass("d-none");
+            btn_agent_logout.addClass("d-none");
+            btn_agent_logout.prop('disabled', true);
+            btn_agent_logoff.addClass("d-none");
+            btn_agent_logoff.prop('disabled', true);
+            btn_agent_login.addClass("d-none");
+            btn_agent_login.prop('disabled', true);
+            toolbar_header.removeClass("");
+            toolbar_header.addClass("card-secondary");
+        } else if (id === 0) {
             performance_button.prop('disabled', true);
             tranfer_button.prop('disabled', true);
             conf_button.prop('disabled', true);

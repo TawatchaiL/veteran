@@ -47,12 +47,25 @@
     socket.on('event', async (data) => {
         if (data.extension == exten) {
             if (data.status == 4 || data.status == -1) {
+                $.ajax({
+                    url: "{{ route('agent.phone_unregis') }}",
+                    method: 'post',
+                    async: false,
+                    success: function(result) {
+                        alert_danger('Phone', 'โทรศัพท์ไม่พร้อมใช้งาน กรุณาตรวจสอบ');
+                        $('#phone_state').html(result.message);
+                        $('#phone_state_icon').html(result.icon);
+                        $('#phone_state').removeClass().addClass(get_state_color(result.id));
+                        $('#phone_state_icon').removeClass().addClass(get_state_color(result
+                            .id));
+                        set_state_button(result.id);
+                    }
+                });
                 $('#toolbar_header').removeClass("card-primary");
                 $('#toolbar_header').addClass("card-secondary");
                 $('#state_overlay').removeClass("d-none");
                 $('#phone_state').addClass('d-none');
                 $('#phone_state_icon').addClass('d-none');
-                await check_state(); // Use await here
                 $('#ToolbarModal').modal('show');
             } else {
                 $('#state_overlay').addClass("d-none");
