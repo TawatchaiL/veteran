@@ -592,7 +592,7 @@
                 $.ajax({
                     url: "{{ route('agent.hang') }}",
                     method: 'post',
-                    async: false;
+                    async: false,
                     data: {
                         _token: token,
                     },
