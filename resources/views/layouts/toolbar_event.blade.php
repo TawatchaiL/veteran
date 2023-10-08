@@ -75,12 +75,10 @@
                             _token: token,
                         },
                         success: function(result) {
-                            $phone_state.html(result.message);
+                            phone_state.html(result.message);
                             phone_state_icon.html(result.icon);
-                            phone_state.removeClass().addClass(get_state_color(result
-                                .id));
-                            phone_state_icon.removeClass().addClass(get_state_color(result
-                                .id));
+                            phone_state.removeClass().addClass(get_state_color(result.id));
+                            phone_state_icon.removeClass().addClass(get_state_color(result.id));
                             set_state_button(result.id);
                             positionCards();
                         }
