@@ -41,7 +41,9 @@
     };
 
     const get_state_color = (id) => {
-        if (id === 0) {
+        if (id === -1) {
+            return 'icon-gray';
+        } else if (id === 0) {
             return 'icon-gray';
         } else if (id === 1) {
             return 'icon-green';

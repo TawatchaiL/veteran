@@ -174,7 +174,7 @@
                 </div>
             </div>
             <div class="overlay d-none" id="state_overlay">
-                <h4><i class="fa-solid fa-xl fa-phone-slash"></i> <span>หมายเลขโทรศัพท์
+                <h4><i class="fa-solid fa-xl fa-phone-slash"></i> <span class="icon-black">หมายเลขโทรศัพท์
                         ไม่พร้อมใช้งาน กรุณาตรวจสอบ</span>
                 </h4>
             </div>

@@ -29,6 +29,13 @@
         vertical-align: middle;
     }
 
+    *.icon-black {
+        color: #000000;
+        font-size: 1.5em;
+        text-align: center;
+        vertical-align: middle;
+    }
+
     *.icon-green {
         color: #28a745;
         font-size: 1.5em;
