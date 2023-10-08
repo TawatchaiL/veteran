@@ -508,4 +508,18 @@
 
     //load call list on access page
     call_list();
+
+    @php
+       if ($temporaryPhoneStatusID==-1) {
+    @endphp
+    set_state_button(-1);
+    $('#phone_state').html(result.message);
+    $('#phone_state_icon').html(result.icon);
+    $('#phone_state').removeClass().addClass(get_state_color(result.id));
+    $('#phone_state_icon').removeClass().addClass(get_state_color(result
+        .id));
+    $('#ToolbarModal').modal('show');
+    @php
+       }
+    @endphp
 </script>
