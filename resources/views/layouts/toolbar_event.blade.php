@@ -64,8 +64,8 @@
                 $('#toolbar_header').removeClass("card-primary");
                 $('#toolbar_header').addClass("card-secondary");
                 $('#state_overlay').removeClass("d-none");
-                $('#phone_state').addClass('d-none');
-                $('#phone_state_icon').addClass('d-none');
+                /* $('#phone_state').addClass('d-none');
+                $('#phone_state_icon').addClass('d-none'); */
                 $('#ToolbarModal').modal('show');
             } else {
                 $('#state_overlay').addClass("d-none");

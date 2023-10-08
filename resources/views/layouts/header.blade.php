@@ -97,6 +97,9 @@
     <ul class="navbar-nav ml-auto">
         @php
             switch ($temporaryPhoneStatusID) {
+                case -1:
+                    $temporaryPhoneColor = 'icon-gray';
+                    break;
                 case 0:
                     $temporaryPhoneColor = 'icon-gray';
                     break;
