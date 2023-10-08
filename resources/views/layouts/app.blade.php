@@ -168,7 +168,7 @@
                 $('.custom-bottom-right-card').each(function(index) {
                     var cardPosition = {
                         right: (20 + (index % 4 * 320)) + 'px',
-                        top: (35 + Math.floor(index / 4) * 320) + 'px',
+                        top: (35 + Math.floor(index / 4) * (320 + cardBodyHeight)) + 'px',
                         isMaximized: false,
                     };
                     cardPositions.push(cardPosition);
