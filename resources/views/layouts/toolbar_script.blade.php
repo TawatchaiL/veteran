@@ -75,8 +75,11 @@
 
         if (id === -1) {
             performance_button.prop('disabled', true);
+            performance_button.addClass("d-none");
             tranfer_button.prop('disabled', true);
+            tranfer_button.addClass("d-none")
             conf_button.prop('disabled', true);
+            conf_button.addClass("d-none")
             break_group.addClass("d-none");
             btn_pause.prop('disabled', true);
             btn_unbreak.addClass("d-none");
@@ -90,8 +93,11 @@
             toolbar_header.addClass("card-secondary");
         } else if (id === 0) {
             performance_button.prop('disabled', true);
+            performance_button.removeClass("d-none");
             tranfer_button.prop('disabled', true);
+            tranfer_button.removeClass("d-none");
             conf_button.prop('disabled', true);
+            conf_button.removeClass("d-none");
             break_group.addClass("d-none");
             btn_pause.prop('disabled', true);
             btn_unbreak.addClass("d-none");
@@ -105,8 +111,11 @@
             toolbar_header.addClass("card-secondary");
         } else if (id === 1) {
             performance_button.prop('disabled', true);
+            performance_button.removeClass("d-none");
             tranfer_button.prop('disabled', true);
+            tranfer_button.removeClass("d-none");
             conf_button.prop('disabled', true);
+            conf_button.removeClass("d-none");
             break_group.removeClass("d-none");
             btn_pause.prop('disabled', false);
             btn_unbreak.addClass("d-none");
@@ -121,8 +130,11 @@
             toolbar_header.addClass("card-success");
         } else if (id === 2) {
             performance_button.prop('disabled', true);
+            performance_button.removeClass("d-none");
             tranfer_button.prop('disabled', true);
+            tranfer_button.removeClass("d-none");
             conf_button.prop('disabled', true);
+            conf_button.removeClass("d-none");
             break_group.addClass("d-none");
             btn_pause.prop('disabled', true);
             btn_unbreak.removeClass("d-none");
@@ -137,8 +149,11 @@
             toolbar_header.addClass("card-warning");
         } else if (id === 4) {
             performance_button.prop('disabled', false);
+            performance_button.removeClass("d-none");
             tranfer_button.prop('disabled', false);
+            tranfer_button.removeClass("d-none");
             conf_button.prop('disabled', false);
+            conf_button.removeClass("d-none");
             break_group.addClass("d-none");
             btn_pause.prop('disabled', true);
             btn_unbreak.addClass("d-none");
@@ -154,8 +169,11 @@
             toolbar_header.addClass("card-danger");
         } else if (id === 5) {
             performance_button.prop('disabled', false);
+            performance_button.removeClass("d-none");
             tranfer_button.prop('disabled', false);
+            tranfer_button.removeClass("d-none");
             conf_button.prop('disabled', false);
+            conf_button.removeClass("d-none");
             break_group.addClass("d-none");
             btn_pause.prop('disabled', true);
             btn_unbreak.addClass("d-none");
