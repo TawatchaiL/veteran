@@ -164,7 +164,7 @@
                 //    $(this).css('bottom', '35px');
                  //   $(this).delay(index * 100).fadeIn();
                 //});
-                
+
                 $('.custom-bottom-right-card').each(function(index) {
                     var cardPosition = {
                         right: (20 + (index % 4 * 320)) + 'px',
@@ -293,6 +293,7 @@
                         $.ajax({
                             url: "contacts/popupedit/" + telnop,
                             method: 'GET',
+                            async: false,
                             success: function(res) {
                                 $('#phonenosuccess').html(
                                     '<h2 style="color: #1a16eb"><i class="fa-solid fa-user-tie"></i>' +
