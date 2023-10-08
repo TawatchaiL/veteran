@@ -572,12 +572,12 @@
                     console.log(res);
                     //$('#Editcasetype1e').val(res.data.casetype1);
                     $('#Detail').val(res.data.casedetail);
-                    //$('#Edittranferstatuse').val(res.data.tranferstatus);
-                    //$('#Editcasestatuse').val(res.data.casestatus);
+                    $('#Edittranferstatuse').val(res.data.tranferstatus);
+                    $('#Editcasestatuse').val(res.data.casestatus);
                     $('#CreateModal').modal('show');
                 }
             });
-            -//$('#Detail').val('1234');
+            //$('#Detail').val('1234');
         })
 
         $('#SubmitEditForm').click(function(e) {
