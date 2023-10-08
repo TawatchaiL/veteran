@@ -591,8 +591,8 @@
                 method: 'GET',
                 success: function(res) {
                     console.log(res);
-                    $('#hn').val(res.data.hn);
-                    $('#name').val(res.data.name);
+                    $('#Hn').val(res.data.hn);
+                    $('#Name').val(res.data.name);
                     $('#Detail').val(res.data.casedetail);
                     $('#tranferstatus').val(res.data.tranferstatus);
                     $('#casestatus').val(res.data.casestatus);
