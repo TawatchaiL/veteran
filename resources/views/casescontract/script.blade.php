@@ -490,13 +490,15 @@
             $('#CreateModal').modal('show');
         });
 
-
+        let id;
         $('#SubmitCreateForm').click(function(e) {
             e.preventDefault();
             $('.alert-danger').html('');
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
+            id = $(this).data('id');
+            alert(id);
             var additionalData = {
                 contact_id: $('#Addid').val(),
                 casetype1: $('#casetype1 option:selected').text(),
@@ -555,7 +557,7 @@
         });
 
 
-        let id;
+        
         $(document).on('click', '#getEditData', function(e) {
             e.preventDefault();
             $('.alert-danger').html('');
