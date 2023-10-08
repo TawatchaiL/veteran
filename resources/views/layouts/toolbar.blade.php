@@ -31,7 +31,7 @@
             $logout_button_class = '';
             $logoff_button = '';
             $logoff_button_class = '';
-            $login_button = '';
+            $login_button = 'disabled';
             $login_button_class = 'd-none';
             break;
         case 2:
