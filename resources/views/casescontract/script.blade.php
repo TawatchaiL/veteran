@@ -465,6 +465,7 @@
             $.ajax({
                 url: "casetype6/casetype/0",
                 method: 'GET',
+                async: false,
                 success: function(res) {
                     var provinceOb = $('#casetype1');
                     provinceOb.html('<option value="">เลือกประเภทการติดต่อ</option>');
@@ -566,6 +567,7 @@
             $.ajax({
                 url: "casetype6/casetype/0",
                 method: 'GET',
+                async: false,
                 success: function(res) {
                     var provinceOb = $('#casetype1');
                     provinceOb.html('<option value="">เลือกประเภทการติดต่อ</option>');
@@ -691,6 +693,7 @@
                     $.ajax({
                         url: "casetype6/casetype/" + parent_id,
                         method: 'GET',
+                        async: false,
                         success: function(res) {
                             $.each(res.data, function(index, item) {
                                 $('#casetype2').append(
@@ -725,6 +728,7 @@
                     $.ajax({
                         url: "casetype6/casetype/" + parent_id,
                         method: 'GET',
+                        async: false,
                         success: function(res) {
                             $.each(res.data, function(index, item) {
                                 $('#casetype3').append(
@@ -755,6 +759,7 @@
                     $.ajax({
                         url: "casetype6/casetype/" + parent_id,
                         method: 'GET',
+                        async: false,
                         success: function(res) {
                             $.each(res.data, function(index, item) {
                                 $('#casetype4').append(
@@ -782,6 +787,7 @@
                     $.ajax({
                         url: "casetype6/casetype/" + parent_id,
                         method: 'GET',
+                        async: false,
                         success: function(res) {
                             $.each(res.data, function(index, item) {
                                 $('#casetype5').append(
@@ -806,6 +812,7 @@
                     $.ajax({
                         url: "casetype6/casetype/" + parent_id,
                         method: 'GET',
+                        async: false,
                         success: function(res) {
                             $.each(res.data, function(index, item) {
                                 $('#casetype6').append(
