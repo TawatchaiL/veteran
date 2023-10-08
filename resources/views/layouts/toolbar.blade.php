@@ -1,5 +1,22 @@
 @php
     switch ($temporaryPhoneStatusID) {
+        case -1:
+            $dial_number = '';
+            $dial_button = '';
+            $transfer_button = 'disabled';
+            $performance_button = 'disabled';
+            $conf_button = 'disabled';
+            $break_button = 'disabled';
+            $break_button_class = 'd-none';
+            $unbreak_button = 'disabled';
+            $unbreak_button_class = 'd-none';
+            $logout_button = 'disabled';
+            $logout_button_class = 'd-none';
+            $logoff_button = 'disabled';
+            $logoff_button_class = 'd-none';
+            $login_button = 'disabled';
+            $login_button_class = 'd-none';
+            break;
         case 0:
             $dial_number = '';
             $dial_button = '';
