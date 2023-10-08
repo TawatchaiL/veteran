@@ -192,6 +192,7 @@ class CasesContractController extends Controller
 
         $companyd = [
             'casetype1' => $request->get('casetype1'),
+            'caseid1' => $request->get('caseid1'),
             'tranferstatus' => $request->get('tranferstatus'),
             'casedetail' => $request->get('casedetail'),
             'casestatus' => $request->get('casestatus'),
