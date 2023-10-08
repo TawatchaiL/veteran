@@ -155,18 +155,29 @@
                 //console.log(response.html)
                 $('#dpopup').html(response.html);
                 // Position the cards after dynamic content is loaded
+                //$('.custom-bottom-right-card').each(function(index) {
+                //    cardPositions.push({
+                //        right: (20 + (index * 320)) + 'px',
+                //        isMaximized: false,
+                //    });
+                //    $(this).css('right', cardPositions[index].right);
+                //    $(this).css('bottom', '35px');
+                 //   $(this).delay(index * 100).fadeIn();
+                //});
                 $('.custom-bottom-right-card').each(function(index) {
-                    cardPositions.push({
-                        right: (20 + (index * 320)) + 'px',
+                    var cardPosition = {
+                        right: (20 + (index % 4 * 320)) + 'px',
+                        top: (35 + Math.floor(index / 4) * 320) + 'px',
                         isMaximized: false,
-                    });
-                    $(this).css('right', cardPositions[index].right);
-                    $(this).css('bottom', '35px');
+                    };
+                    cardPositions.push(cardPosition);
+                    $(this).css('right', cardPosition.right);
+                    $(this).css('top', cardPosition.top);
                     $(this).delay(index * 100).fadeIn();
                 });
             },
             error: function(xhr, status, error) {
-                // Handle  error
+                // Handle error
             }
         });
     }
