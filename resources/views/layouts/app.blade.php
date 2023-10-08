@@ -175,7 +175,7 @@
                 //    $(this).css('right', cardPosition.right);
                 //    $(this).css('top', cardPosition.top);
                 //    $(this).delay(index * 100).fadeIn();
-                });
+                //});
             },
             error: function(xhr, status, error) {
                 // Handle error
