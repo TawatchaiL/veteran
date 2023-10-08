@@ -513,7 +513,6 @@
        if ($temporaryPhoneStatusID==-1) {
     @endphp
     set_state_button(-1);
-    $('#phone_state').html(result.message);
     $('#state_overlay').removeClass("d-none");
     $('#ToolbarModal').modal('show');
     @php
