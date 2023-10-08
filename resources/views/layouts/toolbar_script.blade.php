@@ -55,8 +55,8 @@
         const break_group = $('#break_group');
         const btn_pause = $('#btn-pause');
         const btn_unbreak = $('#btn-unbreak');
-        const btn_system_logout = $('#btn-system-logout');
-        const btn_agent_logout = $('#btn-agent-logout');
+        const btn_agent_logout = $('#btn-system-logout');
+        const btn_agent_logoff = $('#btn-agent-logout');
         const btn_agent_login = $('#btn-agent-login');
 
 
@@ -67,7 +67,6 @@
             break_group.addClass("d-none");
             btn_pause.prop('disabled', true);
             btn_unbreak.addClass("d-none");
-            //btn_system_logout.prop('disabled', false);
             btn_agent_logout.removeClass("d-none");
             btn_agent_logout.prop('disabled', false);
             btn_agent_logoff.addClass("d-none");
@@ -82,9 +81,10 @@
             btn_pause.prop('disabled', false);
             btn_unbreak.addClass("d-none");
             btn_unbreak.prop('disabled', true);
-            //btn_system_logout.prop('disabled', true);
             btn_agent_logout.removeClass("d-none");
             btn_agent_logout.prop('disabled', false);
+            btn_agent_logoff.removeClass("d-none");
+            btn_agent_logoff.prop('disabled', false);
             btn_agent_login.prop('disabled', true);
             btn_agent_login.addClass("d-none");
         } else if (id === 2) {
@@ -95,9 +95,10 @@
             btn_pause.prop('disabled', true);
             btn_unbreak.removeClass("d-none");
             btn_unbreak.prop('disabled', false);
-            //btn_system_logout.prop('disabled', true);
-            btn_agent_logout.addClass("d-none");
-            btn_agent_logout.prop('disabled', true);
+            btn_agent_logout.removeClass("d-none");
+            btn_agent_logout.prop('disabled', false);
+            btn_agent_logoff.addClass("d-none");
+            btn_agent_logoff.prop('disabled', true);
             btn_agent_login.addClass("d-none");
             btn_agent_login.prop('disabled', true);
         } else if (id === 4) {
@@ -106,11 +107,12 @@
             conf_button.prop('disabled', false);
             break_group.addClass("d-none");
             btn_pause.prop('disabled', true);
-            btn_unbreak.removeClass("d-none");
-            btn_unbreak.prop('disabled', false);
-            //btn_system_logout.prop('disabled', true);
+            btn_unbreak.addClass("d-none");
+            btn_unbreak.prop('disabled', true);
             btn_agent_logout.addClass("d-none");
-            btn_agent_login.addClass("d-none");
+            btn_agent_logout.prop('disabled', true);
+            btn_agent_logoff.addClass("d-none");
+            btn_agent_logoff.prop('disabled', true);
             btn_agent_logout.prop('disabled', true);
             btn_agent_login.prop('disabled', true);
         } else if (id === 5) {
@@ -119,11 +121,12 @@
             conf_button.prop('disabled', false);
             break_group.addClass("d-none");
             btn_pause.prop('disabled', true);
-            btn_unbreak.removeClass("d-none");
-            btn_unbreak.prop('disabled', false);
-            //btn_system_logout.prop('disabled', true);
+            btn_unbreak.addClass("d-none");
+            btn_unbreak.prop('disabled', true);
             btn_agent_logout.addClass("d-none");
-            btn_agent_login.addClass("d-none");
+            btn_agent_logout.prop('disabled', true);
+            btn_agent_logoff.addClass("d-none");
+            btn_agent_logoff.prop('disabled', true);
             btn_agent_logout.prop('disabled', true);
             btn_agent_login.prop('disabled', true);
         }
