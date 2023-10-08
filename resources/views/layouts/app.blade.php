@@ -164,6 +164,7 @@
                 //    $(this).css('bottom', '35px');
                  //   $(this).delay(index * 100).fadeIn();
                 //});
+                
                 $('.custom-bottom-right-card').each(function(index) {
                     var cardPosition = {
                         right: (20 + (index % 4 * 320)) + 'px',
