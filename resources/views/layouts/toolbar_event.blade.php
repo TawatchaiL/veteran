@@ -52,24 +52,20 @@
                     method: 'post',
                     async: false,
                     success: function(result) {
-                        alert_danger('Phone', 'โทรศัพท์ไม่พร้อมใช้งาน กรุณาตรวจสอบ');
-                        $('#phone_state').html(result.message);
-                        $('#phone_state_icon').html(result.icon);
-                        $('#phone_state').removeClass().addClass(get_state_color(result.id));
-                        $('#phone_state_icon').removeClass().addClass(get_state_color(result
-                            .id));
+                        phone_state.html(result.message);
+                        phone_state_icon.html(result.icon);
+                        phone_state.removeClass().addClass(get_state_color(result.id));
+                        phone_state_icon.removeClass().addClass(get_state_color(result.id));
                         set_state_button(result.id);
                     }
                 });
-                $('#toolbar_header').removeClass("card-primary");
-                $('#toolbar_header').addClass("card-secondary");
-                $('#state_overlay').removeClass("d-none");
-                /* $('#phone_state').addClass('d-none');
-                $('#phone_state_icon').addClass('d-none'); */
-                $('#ToolbarModal').modal('show');
+                toolbar_header.removeClass("card-primary");
+                toolbar_header.addClass("card-secondary");
+                state_overlay.removeClass("d-none");
+                toolbar_modal.modal('show');
             } else {
-                $('#state_overlay').addClass("d-none");
-                $('#toolbar_header').removeClass("card-primary card-secondary card-danger");
+                state_overlay.addClass("d-none");
+                toolbar_header.removeClass("card-primary card-secondary card-danger");
                 if (data.status == 0) {
                     $.ajax({
                         url: "{{ route('agent.hang') }}",
@@ -79,27 +75,24 @@
                             _token: token,
                         },
                         success: function(result) {
-                            //alert_success('OK', 'วางสายเรียบร้อยแล้ว', '');
-                            $('#phone_state').html(result.message);
-                            $('#phone_state_icon').html(result.icon);
-                            $('#phone_state').removeClass().addClass(get_state_color(result
-                            .id));
-                            $('#phone_state_icon').removeClass().addClass(get_state_color(result
+                            $phone_state.html(result.message);
+                            phone_state_icon.html(result.icon);
+                            phone_state.removeClass().addClass(get_state_color(result
+                                .id));
+                            phone_state_icon.removeClass().addClass(get_state_color(result
                                 .id));
                             set_state_button(result.id);
                             positionCards();
                         }
                     });
-                    $('#toolbar_header').addClass("card-primary");
-                    $('#ToolbarModal').modal('hide');
+                    toolbar_header.addClass("card-primary");
+                    toolbar_modal.modal('hide');
                 } else if (data.status == 1 || data.status == 2 || data.status == 8 || data.status == 9) {
-                    $('#toolbar_header').addClass("card-danger");
+                    toolbar_header.addClass("card-danger");
                 } else if (data.status == 16 || data.status == 17) {
-                    $('#toolbar_header').addClass("card-danger");
+                    toolbar_header.addClass("card-danger");
                 }
 
-                $('#phone_state').removeClass('d-none')
-                $('#phone_state_icon').removeClass('d-none')
             }
         }
     });
