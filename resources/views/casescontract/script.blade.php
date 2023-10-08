@@ -592,7 +592,7 @@
                 method: 'GET',
                 success: function(res) {
                     console.log(res);
-                    //$('#Editcasetype1e').val(res.data.casetype1);
+                    $('#casetype1').val(res.data.caseid1);
                     $('#Detail').val(res.data.casedetail);
                     $('#tranferstatus').val(res.data.tranferstatus);
                     $('#casestatus').val(res.data.casestatus);

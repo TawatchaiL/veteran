@@ -174,9 +174,9 @@
                                                     <select style="width: 100%;"
                                                         class="select2 form-control"
                                                         id="tranferstatus" name="tranferstatus">
-                                                        <option value="1">รับสาย</option>
-                                                        <option value="2">ไม่รับสาย</option>
-                                                        <option value="3">สายไม่ว่าง</option>
+                                                        <option value="รับสาย">รับสาย</option>
+                                                        <option value="ไม่รับสาย">ไม่รับสาย</option>
+                                                        <option value="สายไม่ว่าง">สายไม่ว่าง</option>
                                                     </select>
                                                 </div>
                                             </div>
