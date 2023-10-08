@@ -55,8 +55,8 @@
         const break_group = $('#break_group');
         const btn_pause = $('#btn-pause');
         const btn_unbreak = $('#btn-unbreak');
-        const btn_system_logout = $('#btn-system-logout');
-        const btn_agent_logout = $('#btn-agent-logout');
+        const btn_agent_logout = $('#btn-system-logout');
+        const btn_agent_logoff = $('#btn-agent-logout');
         const btn_agent_login = $('#btn-agent-login');
 
 
