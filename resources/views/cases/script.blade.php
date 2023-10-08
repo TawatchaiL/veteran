@@ -516,10 +516,10 @@
             }
 
             if(actions == 'add'){
-                urls = "{{ route('casescontract.store') }}";
+                urls = "{{ route('cases.store') }}";
                 methods = 'post';
             }else if(actions == 'edit'){
-                urls = "casescontract/save/" + id;
+                urls = "cases/save/" + id;
                 methods = 'PUT';
             }
             $.ajax({
@@ -591,7 +591,6 @@
                 method: 'GET',
                 success: function(res) {
                     console.log(res);
-                    alert(res.data.hn);
                     $('#Hn').val(res.data.hn);
                     $('#Name').val(res.data.name);
                     $('#Detail').val(res.data.casedetail);
