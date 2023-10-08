@@ -667,7 +667,7 @@
 </script>
 
 @include('layouts.toolbar_script')
-@include('layouts.asterisk_event')
+@include('layouts.toolbar_event')
 
 @yield('script')
 
