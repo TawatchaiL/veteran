@@ -157,7 +157,7 @@
                 // Position the cards after dynamic content is loaded
                 $('.custom-bottom-right-card').each(function(index) {
                     cardPositions.push({
-                        right: (20 + (index * 300)) + 'px',
+                        right: (20 + (index * 320)) + 'px',
                         isMaximized: false,
                     });
                     $(this).css('right', cardPositions[index].right);
