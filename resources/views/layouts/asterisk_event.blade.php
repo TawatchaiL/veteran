@@ -446,6 +446,7 @@
             $.ajax({
                 url: "{{ route('agent.ring') }}",
                 method: 'post',
+                async: false,
                 data: {
                     telno: data.cid,
                     agentno: data.dstnumber,
@@ -526,6 +527,7 @@
             $.ajax({
                 url: "{{ route('agent.talk') }}",
                 method: 'post',
+                async: false,
                 data: {
                     telno: data.cid,
                     agentno: data.dstnumber,
