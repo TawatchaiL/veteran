@@ -534,13 +534,14 @@
 
             if(actions == 'add'){
                 urls = "{{ route('casescontract.store') }}";
+                methods = 'post';
             }else if(actions == 'edit'){
                 urls = "casescontract/save/" + id;
+                methods = 'PUT';
             }
-            alert(urls);
             $.ajax({
                 url: urls,
-                method: 'post',
+                method: methods,
                 data: additionalData,
                 success: function(result) {
                     if (result.errors) {
