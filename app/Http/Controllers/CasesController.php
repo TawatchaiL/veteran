@@ -140,16 +140,15 @@ class CasesController extends Controller
     public function store(Request $request)
     {
         $validator =  Validator::make($request->all(), [
-            'casetype1' => 'required|string|max:20',
+            'casetype1' => 'required|string|max:50',
         ]);
-
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);
         }
 
         $input = $request->all();
-        $contract = Cases::create($input);
+        $contract = CrmCase::create($input);
         return response()->json(['success' => 'เพิ่ม เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
     }
 
@@ -170,9 +169,9 @@ class CasesController extends Controller
         //$data = Cases::find($id);
         //return response()->json(['data' => $data]);
 
-        $data = Cases::join('crm_contacts', 'cases.contact_id', '=', 'crm_contacts.id')
-        ->select('cases.*','crm_contacts.hn as hn', DB::raw("concat(crm_contacts.fname, ' ', crm_contacts.lname) as name"))
-        ->where('cases.id', $id)
+        $data = CrmCase::join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
+        ->select('crm_cases.*','crm_contacts.hn as hn', DB::raw("concat(crm_contacts.fname, ' ', crm_contacts.lname) as name"))
+        ->where('crm_cases.id', $id)
         ->first();
 
         return response()->json(['data' => $data]);
@@ -199,12 +198,39 @@ class CasesController extends Controller
 
         $companyd = [
             'casetype1' => $request->get('casetype1'),
+            'caseid1' => $request->get('caseid1'),
             'tranferstatus' => $request->get('tranferstatus'),
             'casedetail' => $request->get('casedetail'),
             'casestatus' => $request->get('casestatus'),
         ];
 
-       $company = Cases::find($id);
+        if (!empty($request->get('casetype2'))) {
+            $companyd = array_merge($companyd, ['casetype2' => $request->get('casetype2'), 'caseid2' => $request->get('caseid2')]);
+        }else{
+            $companyd = array_merge($companyd, ['casetype2' => '', 'caseid2' => 0]);
+        }
+        if (!empty($request->get('casetype3'))) {
+            $companyd = array_merge($companyd, ['casetype3' => $request->get('casetype3'), 'caseid3' => $request->get('caseid3')]);
+        }else{
+            $companyd = array_merge($companyd, ['casetype3' => '', 'caseid3' => 0]);
+        }
+        if (!empty($request->get('casetype4'))) {
+            $companyd = array_merge($companyd, ['casetype4' => $request->get('casetype4'), 'caseid4' => $request->get('caseid4')]);
+        }else{
+            $companyd = array_merge($companyd, ['casetype4' => '', 'caseid4' => 0]);
+        }
+        if (!empty($request->get('casetype5'))) {
+            $companyd = array_merge($companyd, ['casetype5' => $request->get('casetype5'), 'caseid5' => $request->get('caseid5')]);
+        }else{
+            $companyd = array_merge($companyd, ['casetype5' => '', 'caseid5' => 0]);
+        }
+        if (!empty($request->get('casetype6'))) {
+            $companyd = array_merge($companyd, ['casetype6' => $request->get('casetype6'), 'caseid6' => $request->get('caseid6')]);
+        }else{
+            $companyd = array_merge($companyd, ['casetype6' => '', 'caseid6' => 0]);
+        }
+
+       $company = CrmCase::find($id);
        $company->update($companyd);
 
         return response()->json(['success' => 'แก้ไข เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
@@ -216,7 +242,7 @@ class CasesController extends Controller
     public function destroy(Request $request)
     {
         $id = $request->get('id');
-        Cases::find($id)->delete();
+        CrmCase::find($id)->delete();
         return ['success' => true, 'message' => 'ลบ เรื่องที่ติดต่อ เรียบร้อยแล้ว'];
     }
 
@@ -226,9 +252,9 @@ class CasesController extends Controller
         $arr_del  = $request->get('table_records'); //$arr_ans is Array MacAddress
 
         for ($xx = 0; $xx < count($arr_del); $xx++) {
-            Cases::find($arr_del[$xx])->delete();
+            CrmCase::find($arr_del[$xx])->delete();
         }
 
-        return redirect('cases.index')->with('success', 'ลบ เรื่องที่ติดต่อ เรียบร้อยแล้ว');
+        return redirect('casescontract?id='.$request->get('Delcontact_id'))->with('success', 'ลบ เรื่องที่ติดต่อ เรียบร้อยแล้ว');
     }
 }
