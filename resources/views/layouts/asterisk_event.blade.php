@@ -601,7 +601,7 @@
                         $('#phone_state_icon').html(result.icon);
                         $('#phone_state').removeClass().addClass(get_state_color(result.id));
                         $('#phone_state_icon').removeClass().addClass(get_state_color(result.id));
-                        check_state();
+                        //check_state();
                         positionCards();
                     }
                 });
