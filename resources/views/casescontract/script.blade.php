@@ -534,7 +534,7 @@
 
             if(actions == 'add'){
                 urls = "{{ route('casescontract.store') }}";
-            }else if(actions == 'add'){
+            }else if(actions == 'edit'){
                 urls = "casescontract/save/" + id;
             }
             alert(urls);
