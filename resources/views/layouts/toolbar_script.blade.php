@@ -6,6 +6,8 @@
     const event_serv = '{{ config('asterisk.event_serv.address') }}';
     let obj = {};
 
+    const dial_number = $('#dial_number');
+    const dial_button = $('#dial_button');
     const performance_button = $('#performance_button');
     const tranfer_button = $('#tranfer_button');
     const conf_button = $('#conf_button');
@@ -74,6 +76,10 @@
     const set_state_button = (id) => {
 
         if (id === -1) {
+            dial_number.addClass('d-none');
+            dial_number.prop('disabled', true);
+            dial_button.addClass('d-none');
+            dial_button.prop('disabled', true);
             performance_button.prop('disabled', true);
             performance_button.addClass("d-none");
             tranfer_button.prop('disabled', true);
@@ -92,6 +98,10 @@
             toolbar_header.removeClass("");
             toolbar_header.addClass("card-secondary");
         } else if (id === 0) {
+            dial_number.removeClass('d-none');
+            dial_number.prop('disabled', false);
+            dial_button.removeClass('d-none');
+            dial_button.prop('disabled', false);
             performance_button.prop('disabled', true);
             performance_button.removeClass("d-none");
             tranfer_button.prop('disabled', true);
@@ -110,6 +120,10 @@
             toolbar_header.removeClass("");
             toolbar_header.addClass("card-secondary");
         } else if (id === 1) {
+            dial_number.removeClass('d-none');
+            dial_number.prop('disabled', false);
+            dial_button.removeClass('d-none');
+            dial_button.prop('disabled', false);
             performance_button.prop('disabled', true);
             performance_button.removeClass("d-none");
             tranfer_button.prop('disabled', true);
@@ -129,6 +143,10 @@
             toolbar_header.removeClass("");
             toolbar_header.addClass("card-success");
         } else if (id === 2) {
+            dial_number.removeClass('d-none');
+            dial_number.prop('disabled', false);
+            dial_button.removeClass('d-none');
+            dial_button.prop('disabled', false);
             performance_button.prop('disabled', true);
             performance_button.removeClass("d-none");
             tranfer_button.prop('disabled', true);
@@ -148,6 +166,10 @@
             toolbar_header.removeClass("");
             toolbar_header.addClass("card-warning");
         } else if (id === 4) {
+            dial_number.removeClass('d-none');
+            dial_number.prop('disabled', false);
+            dial_button.removeClass('d-none');
+            dial_button.prop('disabled', false);
             performance_button.prop('disabled', false);
             performance_button.removeClass("d-none");
             tranfer_button.prop('disabled', false);
@@ -168,6 +190,10 @@
             toolbar_header.removeClass("");
             toolbar_header.addClass("card-danger");
         } else if (id === 5) {
+            dial_number.removeClass('d-none');
+            dial_number.prop('disabled', false);
+            dial_button.removeClass('d-none');
+            dial_button.prop('disabled', false);
             performance_button.prop('disabled', false);
             performance_button.removeClass("d-none");
             tranfer_button.prop('disabled', false);
