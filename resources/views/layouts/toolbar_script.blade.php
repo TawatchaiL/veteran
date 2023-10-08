@@ -50,6 +50,8 @@
     const set_state_button = (id) => {
 
         const performance_button = $('#performance_button');
+        const tranfer_button = $('#tranfer_button');
+        const conf_button = $('#conf_button');
         const break_group = $('#break_group');
         const btn_pause = $('#btn-pause');
         const btn_unbreak = $('#btn-unbreak');
@@ -57,8 +59,11 @@
         const btn_agent_logout = $('#btn-agent-logout');
         const btn_agent_login = $('#btn-agent-login');
 
+
         if (id === 0) {
             performance_button.prop('disabled', true);
+            tranfer_button.prop('disabled', true);
+            conf_button.prop('disabled', true);
             break_group.addClass("d-none");
             btn_pause.prop('disabled', true);
             btn_unbreak.addClass("d-none");
@@ -67,7 +72,9 @@
             btn_agent_login.removeClass("d-none");
             btn_agent_login.prop('disabled', false);
         } else if (id === 1) {
-            performance_button.prop('disabled', false);
+            performance_button.prop('disabled', true);
+            tranfer_button.prop('disabled', true);
+            conf_button.prop('disabled', true);
             break_group.removeClass("d-none");
             btn_pause.prop('disabled', false);
             btn_unbreak.addClass("d-none");
@@ -77,6 +84,30 @@
             btn_agent_login.addClass("d-none");
         } else if (id === 2) {
             performance_button.prop('disabled', true);
+            tranfer_button.prop('disabled', true);
+            conf_button.prop('disabled', true);
+            break_group.addClass("d-none");
+            btn_pause.prop('disabled', true);
+            btn_unbreak.removeClass("d-none");
+            btn_unbreak.prop('disabled', false);
+            //btn_system_logout.prop('disabled', true);
+            btn_agent_logout.addClass("d-none");
+            btn_agent_login.addClass("d-none");
+        } else if (id === 4) {
+            performance_button.prop('disabled', false);
+            tranfer_button.prop('disabled', false);
+            conf_button.prop('disabled', false);
+            break_group.addClass("d-none");
+            btn_pause.prop('disabled', true);
+            btn_unbreak.removeClass("d-none");
+            btn_unbreak.prop('disabled', false);
+            //btn_system_logout.prop('disabled', true);
+            btn_agent_logout.addClass("d-none");
+            btn_agent_login.addClass("d-none");
+        } else if (id === 5) {
+            performance_button.prop('disabled', false);
+            tranfer_button.prop('disabled', false);
+            conf_button.prop('disabled', false);
             break_group.addClass("d-none");
             btn_pause.prop('disabled', true);
             btn_unbreak.removeClass("d-none");

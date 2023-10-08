@@ -7,7 +7,7 @@
             $performance_button = 'disabled';
             $conf_button = 'disabled';
             $break_button = 'disabled';
-            $break_button_class = '';
+            $break_button_class = 'd-none';
             $unbreak_button = 'disabled';
             $unbreak_button_class = 'd-none';
             $logout_button = '';
