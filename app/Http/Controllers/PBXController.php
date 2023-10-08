@@ -237,23 +237,25 @@ class PBXController extends Controller
         $user = Auth::user();
 
         if ($user) {
-            // Update user's phone_status
             $inqueue = DB::connection('remote_connection')
                 ->table('call_center.audit')
                 ->where('id_agent', $user->agent_id)
                 ->whereNull('datetime_end')
                 ->get();
-            //check login again with same phone and same agent  and logout_datetime IS NULL
             if (count($inqueue) > 0) {
                 $inbreak = DB::connection('remote_connection')
                     ->table('call_center.audit')
                     ->where('id_agent', $user->agent_id)
-                    ->whereNotNull('id_break') // corrected method name
+                    ->whereNotNull('id_break')
                     ->whereNull('datetime_end')
                     ->get();
                 if (count($inbreak) > 0) {
+                    $resultb = DB::connection('remote_connection')
+                        ->table('call_center.break')
+                        ->where('id', $inbreak[0]->id_break)
+                        ->first();
                     $user->phone_status_id = 2;
-                    $user->phone_status =  $inbreak[0]->name;
+                    $user->phone_status =  $resultb[0]->name;
                     $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-clock"></i>';
                 } else {
                     $user->phone_status_id = 1;
