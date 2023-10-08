@@ -58,13 +58,28 @@
                                         <div class="row">
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
+                                                    <strong><i class="fas fa-code"></i><input type="hidden" value="" name="Addid" id="Addid"> HN:</strong>
+                                                    {!! Form::text('hn', null , [
+                                                        'id' => 'hn',
+                                                        'placeholder' => 'HN',
+                                                        'class' => 'form-control',
+                                                        'readonly' => true,
+                                                    ]) !!}
                                                 </div>
                                             </div>
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
+                                                    <strong><i class="fas fa-user-tie"></i> ชื่อ-สกุล :</strong>
+                                                    {!! Form::text('name', null, [
+                                                        'id' => 'Name',
+                                                        'placeholder' => 'Name',
+                                                        'class' => 'form-control',
+                                                        'readonly' => true,
+                                                    ]) !!}
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="row">
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
