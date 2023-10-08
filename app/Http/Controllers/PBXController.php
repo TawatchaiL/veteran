@@ -250,10 +250,10 @@ class PBXController extends Controller
                     ->where('id_agent', $user->agent_id)
                     ->whereNotNull('id_break') // corrected method name
                     ->whereNull('datetime_end')
-                    ->first();
+                    ->get();
                 if (count($inbreak) > 0) {
                     $user->phone_status_id = 2;
-                    $user->phone_status =  $inbreak->name;
+                    $user->phone_status =  $inbreak[0]->name;
                     $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-clock"></i>';
                 } else {
                     $user->phone_status_id = 1;
