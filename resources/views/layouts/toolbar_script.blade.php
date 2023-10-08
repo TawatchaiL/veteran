@@ -59,6 +59,7 @@
         const btn_agent_logout = $('#btn-system-logout');
         const btn_agent_logoff = $('#btn-agent-logout');
         const btn_agent_login = $('#btn-agent-login');
+        const toolbar_header = $('#toolbar_header');
 
 
         if (id === 0) {
@@ -74,6 +75,8 @@
             btn_agent_logoff.prop('disabled', true);
             btn_agent_login.removeClass("d-none");
             btn_agent_login.prop('disabled', false);
+            toolbar_header.removeClass("");
+            toolbar_header.addClass("card-secondary");
         } else if (id === 1) {
             performance_button.prop('disabled', true);
             tranfer_button.prop('disabled', true);
@@ -88,6 +91,8 @@
             btn_agent_logoff.prop('disabled', false);
             btn_agent_login.prop('disabled', true);
             btn_agent_login.addClass("d-none");
+            toolbar_header.removeClass("");
+            toolbar_header.addClass("card-success");
         } else if (id === 2) {
             performance_button.prop('disabled', true);
             tranfer_button.prop('disabled', true);
@@ -102,6 +107,8 @@
             btn_agent_logoff.prop('disabled', true);
             btn_agent_login.addClass("d-none");
             btn_agent_login.prop('disabled', true);
+            toolbar_header.removeClass("");
+            toolbar_header.addClass("card-warning");
         } else if (id === 4) {
             performance_button.prop('disabled', false);
             tranfer_button.prop('disabled', false);
@@ -117,6 +124,8 @@
             btn_agent_logout.prop('disabled', true);
             btn_agent_login.addClass("d-none");
             btn_agent_login.prop('disabled', true);
+            toolbar_header.removeClass("");
+            toolbar_header.addClass("card-danger");
         } else if (id === 5) {
             performance_button.prop('disabled', false);
             tranfer_button.prop('disabled', false);
@@ -132,6 +141,8 @@
             btn_agent_logout.prop('disabled', true);
             btn_agent_login.addClass("d-none");
             btn_agent_login.prop('disabled', true);
+            toolbar_header.removeClass("");
+            toolbar_header.addClass("card-danger");
         }
     };
 
