@@ -570,11 +570,11 @@
                 method: 'GET',
                 success: function(res) {
                     console.log(res);
-                    $('#Editcasetype1e').val(res.data.casetype1);
-                    $('#Editdetail').val(res.data.casedetail);
-                    $('#Edittranferstatuse').val(res.data.tranferstatus);
-                    $('#Editcasestatuse').val(res.data.casestatus);
-                    $('#EditModal').modal('show');
+                    //$('#Editcasetype1e').val(res.data.casetype1);
+                    $('#Detail').val(res.data.casedetail);
+                    //$('#Edittranferstatuse').val(res.data.tranferstatus);
+                    //$('#Editcasestatuse').val(res.data.casestatus);
+                    $('#CreateModal').modal('show');
                 }
             });
 
