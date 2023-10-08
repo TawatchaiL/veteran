@@ -252,4 +252,21 @@ class PBXController extends Controller
             return ['error' => false, 'message' => 'error'];
         }
     }
+
+    public function AgentStatus(Request $request)
+    {
+        // Retrieve the authenticated user
+        $user = Auth::user();
+
+        if ($user) {
+            return [
+                'success' => true,
+                'id' => $user->phone_status_id,
+                'message' => $user->phone_status,
+                'icon' => $user->phone_status_icon
+            ];
+        } else {
+            return ['error' => false, 'message' => 'error'];
+        }
+    }
 }

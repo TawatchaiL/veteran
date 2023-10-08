@@ -234,8 +234,6 @@
     })
 
 
-
-
     //hangup
     $(document).on('click', '.hangup_call', function(data) {
         if (!confirm("Are you sure to hangup?")) return;
@@ -376,15 +374,18 @@
                 $('#state_overlay').removeClass("d-none");
                 $('#phone_state').addClass('d-none');
                 $('#phone_state_icon').addClass('d-none');
+                check_state();
                 $('#ToolbarModal').modal('show');
             } else {
                 $('#state_overlay').addClass("d-none");
                 $('#toolbar_header').removeClass("card-primary card-secondary card-danger");
                 if (data.status == 0) {
                     $('#toolbar_header').addClass("card-primary");
-                    $('#btn-pause').attr('disabled', false);
+                    /* $('#btn-pause').attr('disabled', false);
                     $('#btn-system-logout').attr('disabled', false);
                     $('#btn-agent-logout').attr('disabled', false);
+                    $('#btn-agent-login') */
+                    check_state();
                     $('#ToolbarModal').modal('hide');
                 } else if (data.status == 1 || data.status == 2 || data.status == 8 || data.status == 9) {
                     $('#toolbar_header').addClass("card-danger");
