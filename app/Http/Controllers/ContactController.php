@@ -8,7 +8,7 @@ use App\Models\CrmContact;
 use App\Models\CrmPhoneEmergency;
 use App\Models\Department;
 use App\Models\Case_type;
-use App\Models\Cases;
+use App\Models\CrmCase;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\View;
@@ -462,10 +462,31 @@ class ContactController extends Controller
                 $Crmemergency->save();
             }
         }
-        $Crmcsae = new Cases();
+        $Crmcsae = new CrmCase();
         $Crmcsae->contact_id = $insertedId;
         $Crmcsae->telno = $request->input('telno');
         $Crmcsae->casetype1 = $request->input('casetype1');
+        $Crmcsae->caseid1 = $request->input('caseid1');
+        if($request->input('casetype2') != ""){
+            $Crmcsae->casetype1 = $request->input('casetype2');
+            $Crmcsae->caseid1 = $request->input('caseid2');
+        }
+        if($request->input('casetype3') != ""){
+            $Crmcsae->casetype1 = $request->input('casetype3');
+            $Crmcsae->caseid1 = $request->input('caseid3');
+        }
+        if($request->input('casetype4') != ""){
+            $Crmcsae->casetype1 = $request->input('casetype4');
+            $Crmcsae->caseid1 = $request->input('caseid4');
+        }
+        if($request->input('casetype5') != ""){
+            $Crmcsae->casetype1 = $request->input('casetype5');
+            $Crmcsae->caseid1 = $request->input('caseid5');
+        }
+        if($request->input('casetype6') != ""){
+            $Crmcsae->casetype1 = $request->input('casetype6');
+            $Crmcsae->caseid1 = $request->input('caseid6');
+        }
         $Crmcsae->tranferstatus = $request->input('tranferstatus');
         $Crmcsae->casedetail = $request->input('casedetail');
         $Crmcsae->casestatus = $request->input('casestatus');
@@ -558,10 +579,31 @@ class ContactController extends Controller
             }
         }
 
-        $Crmcsae = new Cases();
+        $Crmcsae = new CrmCase();
         $Crmcsae->contact_id = $id;
         $Crmcsae->telno = $request->get('telno');
-        $Crmcsae->casetype1 = $request->get('casetype1');
+        $Crmcsae->casetype1 = $request->input('casetype1');
+        $Crmcsae->caseid1 = $request->input('caseid1');
+        if($request->input('casetype2') != ""){
+            $Crmcsae->casetype1 = $request->input('casetype2');
+            $Crmcsae->caseid1 = $request->input('caseid2');
+        }
+        if($request->input('casetype3') != ""){
+            $Crmcsae->casetype1 = $request->input('casetype3');
+            $Crmcsae->caseid1 = $request->input('caseid3');
+        }
+        if($request->input('casetype4') != ""){
+            $Crmcsae->casetype1 = $request->input('casetype4');
+            $Crmcsae->caseid1 = $request->input('caseid4');
+        }
+        if($request->input('casetype5') != ""){
+            $Crmcsae->casetype1 = $request->input('casetype5');
+            $Crmcsae->caseid1 = $request->input('caseid5');
+        }
+        if($request->input('casetype6') != ""){
+            $Crmcsae->casetype1 = $request->input('casetype6');
+            $Crmcsae->caseid1 = $request->input('caseid6');
+        }
         $Crmcsae->tranferstatus = $request->get('tranferstatus');
         $Crmcsae->casedetail = $request->get('casedetail');
         $Crmcsae->casestatus = $request->get('casestatus');
