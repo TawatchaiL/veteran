@@ -602,6 +602,7 @@
                         $('#phone_state').removeClass().addClass(get_state_color(result.id));
                         $('#phone_state_icon').removeClass().addClass(get_state_color(result.id));
                         //check_state();
+                        set_state_button(result.id);
                         positionCards();
                     }
                 });
