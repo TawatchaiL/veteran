@@ -272,6 +272,7 @@
                     $.ajax({
                         url: "{{ route('thcity.city') }}",
                         method: 'GET',
+                        async: false,
                         success: function(res) {
                             var provinceOb = $('#cityp');
                             provinceOb.html(
