@@ -366,7 +366,7 @@
         socket.emit('join', 'Client Connect To Asterisk Event Serv');
     });
 
-    socket.on('event', data => {
+    socket.on('event', async (data) => {
         if (data.extension == exten) {
             if (data.status == 4 || data.status == -1) {
                 $('#toolbar_header').removeClass("card-primary");
@@ -374,18 +374,14 @@
                 $('#state_overlay').removeClass("d-none");
                 $('#phone_state').addClass('d-none');
                 $('#phone_state_icon').addClass('d-none');
-                check_state();
+                await check_state(); // Use await here
                 $('#ToolbarModal').modal('show');
             } else {
                 $('#state_overlay').addClass("d-none");
                 $('#toolbar_header').removeClass("card-primary card-secondary card-danger");
                 if (data.status == 0) {
                     $('#toolbar_header').addClass("card-primary");
-                    /* $('#btn-pause').attr('disabled', false);
-                    $('#btn-system-logout').attr('disabled', false);
-                    $('#btn-agent-logout').attr('disabled', false);
-                    $('#btn-agent-login') */
-                    check_state();
+                    await check_state(); // Use await here
                     $('#ToolbarModal').modal('hide');
                 } else if (data.status == 1 || data.status == 2 || data.status == 8 || data.status == 9) {
                     $('#toolbar_header').addClass("card-danger");
@@ -395,12 +391,10 @@
 
                 $('#phone_state').removeClass('d-none')
                 $('#phone_state_icon').removeClass('d-none')
-
-
             }
         }
-
     });
+
 
     socket.on('pause', data => {
 
