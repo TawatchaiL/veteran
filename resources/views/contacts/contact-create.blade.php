@@ -268,8 +268,8 @@
                                         <div class="form-group">
                                             <strong><i class="fa-regular fa-message"></i> ประเภทเคส:</strong>
                                             <select style="width: 100%;"
-                                                class="select2 form-control" id="casetype1"
-                                                name="casetype1">
+                                                class="select2 form-control" id="casetype1p"
+                                                name="casetype1p">
                                             </select>
                                         </div>
                                     </div>
@@ -278,8 +278,8 @@
                                             <strong><i class="fa-regular fa-comment-dots"></i>
                                                 รายละเอียดเคส:</strong>
                                             <select style="width: 100%;"
-                                                class="select2 form-control" id="casetype2"
-                                                name="casetype2">
+                                                class="select2 form-control" id="casetype2p"
+                                                name="casetype2p">
                                             </select>
                                         </div>
                                     </div>
@@ -290,8 +290,8 @@
                                             <strong><i class="fa-regular fa-comment-dots"></i>
                                                 รายละเอียดเคสย่อย:</strong>
                                             <select style="width: 100%;"
-                                                class="select2 form-control" id="casetype3"
-                                                name="casetype3">
+                                                class="select2 form-control" id="casetype3p"
+                                                name="casetype3p">
                                             </select>
                                         </div>
                                     </div>
@@ -300,8 +300,8 @@
                                             <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
                                                 เพิ่มเติม 1:</strong>
                                             <select style="width: 100%;"
-                                                class="select2 form-control" id="casetype4"
-                                                name="casetype4">
+                                                class="select2 form-control" id="casetype4p"
+                                                name="casetype4p">
                                             </select>
                                         </div>
                                     </div>
@@ -312,8 +312,8 @@
                                             <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
                                                 เพิ่มเติม 2:</strong>
                                             <select style="width: 100%;"
-                                                class="select2 form-control" id="casetype5"
-                                                name="casetype5">
+                                                class="select2 form-control" id="casetype5p"
+                                                name="casetype5p">
                                             </select>
                                         </div>
                                     </div>
@@ -322,8 +322,8 @@
                                             <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
                                                 เพิ่มเติม 3:</strong>
                                             <select style="width: 100%;"
-                                                class="select2 form-control" id="casetype6"
-                                                name="casetype6">
+                                                class="select2 form-control" id="casetype6p"
+                                                name="casetype6p">
                                             </select>
                                         </div>
                                     </div>
