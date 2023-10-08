@@ -1,7 +1,7 @@
 @php
     switch ($temporaryPhoneStatusID) {
         case -1:
-            $dial_number = '';
+            $dial_number = 'disabled';
             $dial_button = '';
             $transfer_button = 'disabled';
             $performance_button = 'disabled';
@@ -35,11 +35,15 @@
             $login_button_class = '';
             break;
         case 1:
-            $dial_number = '';
+        $dial_number_class = '';
             $dial_button = '';
+            $dial_button_class = '';
             $transfer_button = 'disabled';
+            $transfer_button_class = '';
             $performance_button = 'disabled';
+            $performance_button_class = '';
             $conf_button = 'disabled';
+            $conf_button_class = '';
             $break_button = '';
             $break_button_class = '';
             $unbreak_button = 'disabled';
@@ -52,11 +56,16 @@
             $login_button_class = 'd-none';
             break;
         case 2:
-            $dial_number = '';
+        $dial_number = '';
+            $dial_number_class = '';
             $dial_button = '';
+            $dial_button_class = '';
             $transfer_button = 'disabled';
+            $transfer_button_class = '';
             $performance_button = 'disabled';
+            $performance_button_class = '';
             $conf_button = 'disabled';
+            $conf_button_class = '';
             $break_button = '';
             $break_button_class = 'd-none';
             $unbreak_button = '';
@@ -72,36 +81,46 @@
             break;
         case 4:
             $dial_number = '';
+            $dial_number_class = '';
             $dial_button = '';
-            $transfer_button = 'disabled';
-            $performance_button = 'disabled';
-            $conf_button = 'disabled';
+            $dial_button_class = '';
+            $transfer_button = '';
+            $transfer_button_class = '';
+            $performance_button = '';
+            $performance_button_class = '';
+            $conf_button = '';
+            $conf_button_class = '';
             $break_button = 'disabled';
             $break_button_class = 'd-none';
             $unbreak_button = 'disabled';
             $unbreak_button_class = 'd-none';
             $logout_button = 'disabled';
-            $logout_button_class = '';
+            $logout_button_class = 'd-none';
             $logoff_button = 'disabled';
             $logoff_button_class = 'd-none';
-            $login_button = '';
+            $login_button = 'disabled';
             $login_button_class = 'd-none';
             break;
         case 5:
             $dial_number = '';
+            $dial_number_class = '';
             $dial_button = '';
+            $dial_button_class = '';
             $transfer_button = '';
+            $transfer_button_class = '';
             $performance_button = '';
+            $performance_button_class = '';
             $conf_button = '';
-            $break_button = '';
+            $conf_button_class = '';
+            $break_button = 'disabled';
             $break_button_class = 'd-none';
-            $unbreak_button = '';
-            $unbreak_button_class = '';
-            $logout_button = '';
-            $logout_button_class = '';
-            $logoff_button = '';
+            $unbreak_button = 'disabled';
+            $unbreak_button_class = 'd-none';
+            $logout_button = 'disabled';
+            $logout_button_class = 'd-none';
+            $logoff_button = 'disabled';
             $logoff_button_class = 'd-none';
-            $login_button = '';
+            $login_button = 'disabled';
             $login_button_class = 'd-none';
             break;
         default:
@@ -123,7 +142,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-3">
-                                <input {{ $dial_number }} style="height:60px" type="number" class="form-control"
+                                <input {{ $dial_number }} style="height:60px" type="number" class="{{ $dial_number_class }} form-control"
                                     maxlength="11" id="dial_number" name="dial_number" value=""
                                     placeholder="กรอกเบอร์" />
                             </div>
@@ -134,7 +153,7 @@
                             </div> --}}
                             <div class="mx-1">
                                 <button {{ $dial_button }} id="dial_button" name="dial_button"
-                                    class="btn custom-button btn-success"><i class="fas fa-phone-square"></i>
+                                    class="btn custom-button btn-success {{ $dial_button_class }}"><i class="fas fa-phone-square"></i>
                                     โทรออก</button>
                             </div>
                             <div class="mx-1">
@@ -142,7 +161,7 @@
                                         class="fas fa-random"></i> โอนสาย</button> --}}
                                 <div class="btn-group">
                                     <button type="button" id="tranfer_button" {{ $transfer_button }}
-                                        class="btn btn-success custom-button dropdown-toggle dropdown-icon"
+                                        class="{{ $transfer_button_class }} btn btn-success custom-button dropdown-toggle dropdown-icon"
                                         data-toggle="dropdown">
                                         <i class="fas fa-random"></i> โอนสาย <span class="sr-only">Toggle
                                             Dropdown</span>
@@ -158,12 +177,12 @@
                             </div>
                             <div class="mx-1">
                                 <button {{ $performance_button }} id="performance_button"
-                                    class="btn custom-button btn-success button_conf"><i class="fas fa-star"></i>
+                                    class="{{ $performance_button_class }} btn custom-button btn-success button_conf"><i class="fas fa-star"></i>
                                     ประเมิน</button>
                             </div>
                             <div class="mx-1">
                                 <button {{ $conf_button }} id="conf_button"
-                                    class="btn custom-button btn-success button_conf"><i class="fas fa-handshake"></i>
+                                    class="{{ $conf_button_class }} btn custom-button btn-success button_conf"><i class="fas fa-handshake"></i>
                                     ประชุมสาย</button>
                             </div>
                         </div>
