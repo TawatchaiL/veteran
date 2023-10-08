@@ -111,7 +111,7 @@
     });
 
 
-    //break
+   /*  //break
     $(".button_break").click(function() {
         if (!confirm("Are you sure to Break?")) return;
         let rowid = $(this).data("id")
@@ -147,7 +147,7 @@
             }
         });
 
-    })
+    }) */
 
 
     //call button
