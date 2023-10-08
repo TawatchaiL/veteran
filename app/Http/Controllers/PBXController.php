@@ -194,7 +194,7 @@ class PBXController extends Controller
             ]);
 
             $user->phone_status_id = 4;
-            $user->phone_status = "มีสายเข้าจาก < ".$request->input('telno')." >";
+            $user->phone_status = "มีสายเข้าจาก < " . $request->input('telno') . " >";
             $user->phone_status_icon = '<i class="fa-solid fa-bell fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i>';
             $user->save();
             return [
@@ -217,7 +217,7 @@ class PBXController extends Controller
             // Update user's phone_status
 
             $user->phone_status_id = 5;
-            $user->phone_status = "กำลังสนทนากับ < ".$request->input('telno')." >";
+            $user->phone_status = "กำลังสนทนากับ < " . $request->input('telno') . " >";
             $user->phone_status_icon = '<i class="fa-solid fa-phone-volume fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i>';
             $user->save();
             return [
@@ -238,9 +238,22 @@ class PBXController extends Controller
 
         if ($user) {
             // Update user's phone_status
-            $user->phone_status_id = 1;
-            $user->phone_status = "พร้อมรับสาย";
-            $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
+            $inqueue = DB::connection('remote_connection')
+                ->table('call_center.audit')
+                ->where('id_agent', $user->agent_id)
+                ->whereNull('datetime_end')
+                ->get();
+            //check login again with same phone and same agent  and logout_datetime IS NULL
+            if (count($inqueue) > 0) {
+                $user->phone_status_id = 1;
+                $user->phone_status = "พร้อมรับสาย";
+                $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
+            } else {
+                $user->phone_status_id = 0;
+                $user->phone_status = "ไม่พร้อมรับสาย";
+                $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-xmark"></i>';
+            }
+
             $user->save();
             return [
                 'success' => true,
