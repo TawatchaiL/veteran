@@ -69,6 +69,7 @@
             btn_unbreak.addClass("d-none");
             //btn_system_logout.prop('disabled', false);
             btn_agent_logout.addClass("d-none");
+            btn_agent_logout.prop('disabled', true);
             btn_agent_login.removeClass("d-none");
             btn_agent_login.prop('disabled', false);
         } else if (id === 1) {
@@ -78,6 +79,7 @@
             break_group.removeClass("d-none");
             btn_pause.prop('disabled', false);
             btn_unbreak.addClass("d-none");
+            btn_unbreak.prop('disabled', true);
             //btn_system_logout.prop('disabled', true);
             btn_agent_logout.removeClass("d-none");
             btn_agent_logout.prop('disabled', false);
@@ -107,6 +109,8 @@
             //btn_system_logout.prop('disabled', true);
             btn_agent_logout.addClass("d-none");
             btn_agent_login.addClass("d-none");
+            btn_agent_logout.prop('disabled', true);
+            btn_agent_login.prop('disabled', true);
         } else if (id === 5) {
             performance_button.prop('disabled', false);
             tranfer_button.prop('disabled', false);
@@ -118,6 +122,8 @@
             //btn_system_logout.prop('disabled', true);
             btn_agent_logout.addClass("d-none");
             btn_agent_login.addClass("d-none");
+            btn_agent_logout.prop('disabled', true);
+            btn_agent_login.prop('disabled', true);
         }
     };
 
