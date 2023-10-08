@@ -592,6 +592,7 @@
                 $.ajax({
                     url: "{{ route('agent.hang') }}",
                     method: 'post',
+                    async: false;
                     data: {
                         _token: token,
                     },
@@ -614,7 +615,7 @@
                 //|| data.event == 'BlindTransfer'
                 chan = data.extension.split("/");
                 if ((data.event == 'BridgeLeave' || data.context == 'macro-dialout-trunk')) {
-                    $.get(`${web_url}/agent/agent_wrap/` + data.luniq + `/` + data.transfer, (dataw,
+                   /*  $.get(`${web_url}/agent/agent_wrap/` + data.luniq + `/` + data.transfer, (dataw,
                         status) => {
                         console.log(dataw);
                         console.log('hang');
@@ -648,7 +649,7 @@
                         }
 
 
-                    });
+                    }); */
                 }
 
                 //}
