@@ -6,18 +6,33 @@
     const event_serv = '{{ config('asterisk.event_serv.address') }}';
     let obj = {};
 
+    const performance_button = $('#performance_button');
+    const tranfer_button = $('#tranfer_button');
+    const conf_button = $('#conf_button');
+    const break_group = $('#break_group');
+    const btn_pause = $('#btn-pause');
+    const btn_unbreak = $('#btn-unbreak');
+    const btn_agent_logout = $('#btn-system-logout');
+    const btn_agent_logoff = $('#btn-agent-logout');
+    const btn_agent_login = $('#btn-agent-login');
+    const toolbar_header = $('#toolbar_header');
+    const phone_state = $('#phone_state');
+    const phone_state_icon = $('#phone_state_icon');
+    const toolbar_modal = $('#ToolbarModal');
+    const state_overla = $('#state_overlay');
+
     const updateUI = (result) => {
         console.log(result);
         if (result.success == true) {
             toastr.success('เปลี่ยนสถานะ เรียบร้อยแล้ว', {
                 timeOut: 5000
             });
-            $('#phone_state').html(result.message);
-            $('#phone_state_icon').html(result.icon);
-            $('#phone_state').removeClass().addClass(get_state_color(result.id));
-            $('#phone_state_icon').removeClass().addClass(get_state_color(result.id));
+            phone_state.html(result.message);
+            phone_state_icon.html(result.icon);
+            phone_state.removeClass().addClass(get_state_color(result.id));
+            phone_state_icon.removeClass().addClass(get_state_color(result.id));
             set_state_button(result.id);
-            $('#ToolbarModal').modal('hide');
+            toolbar_modal.modal('hide');
         } else {
             toastr.error('เปลี่ยนสถานะ ไม่สำเร็จ', {
                 timeOut: 5000
@@ -57,18 +72,6 @@
     };
 
     const set_state_button = (id) => {
-
-        const performance_button = $('#performance_button');
-        const tranfer_button = $('#tranfer_button');
-        const conf_button = $('#conf_button');
-        const break_group = $('#break_group');
-        const btn_pause = $('#btn-pause');
-        const btn_unbreak = $('#btn-unbreak');
-        const btn_agent_logout = $('#btn-system-logout');
-        const btn_agent_logoff = $('#btn-agent-logout');
-        const btn_agent_login = $('#btn-agent-login');
-        const toolbar_header = $('#toolbar_header');
-
 
         if (id === -1) {
             performance_button.prop('disabled', true);
@@ -510,13 +513,12 @@
 
     //load call list on access page
     call_list();
-
     @php
        if ($temporaryPhoneStatusID==-1) {
     @endphp
     set_state_button(-1);
-    $('#state_overlay').removeClass("d-none");
-    $('#ToolbarModal').modal('show');
+    state_overlay.removeClass("d-none");
+    toolbar_modal.modal('show');
     @php
        }
     @endphp
