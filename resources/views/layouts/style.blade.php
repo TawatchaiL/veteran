@@ -138,9 +138,9 @@
     }
 
     .custom-bottom-right-card {
-        position: fixed;
+        /* position: fixed;
         bottom: 20px;
-        right: 20px;
+        right: 20px; */
         z-index: 1040;
     }
 
