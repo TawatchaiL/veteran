@@ -139,6 +139,7 @@ class CasesController extends Controller
      */
     public function store(Request $request)
     {
+        $user = Auth::user();
         $validator =  Validator::make($request->all(), [
             'casetype1' => 'required|string|max:50',
         ]);
@@ -148,6 +149,7 @@ class CasesController extends Controller
         }
 
         $input = $request->all();
+        $input = array_merge($input, ['agent' => $user->phone]);
         $contract = CrmCase::create($input);
         return response()->json(['success' => 'เพิ่ม เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
     }

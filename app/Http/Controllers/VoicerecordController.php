@@ -50,69 +50,88 @@ class VoicerecordController extends Controller
         //     ->select('call_recording.*', 'cdr.*') // Use * to select all columns, or specify the columns you want explicitly
         //     ->get();
         $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')->get();
-        $remoteData2 = DB::connection('remote_connection')->table('call_center.call_recording')->get();
+        $remoteData2 = DB::connection('remote_connection')->table('call_center.call_recording')->orderBy('id', 'desc')->get();
 
-        $datas = [];
 
-        foreach ($remoteData2 as $record) {
-            foreach ($remoteData as $cdrRecord) {
-                if ($record->uniqueid === $cdrRecord->uniqueid) {
 
-                    $calldate = $record->datetime_entry;
-                    list($date, $time) = explode(' ', $calldate);
+        // foreach ($remoteData2 as $record) {
+        //     foreach ($remoteData as $cdrRecord) {
+        //         if ($record->uniqueid === $cdrRecord->uniqueid) {
 
-                    $dst = $cdrRecord->dstchannel;
-                    if ($dst !== null && strpos($dst, 'SIP/') === 0) {
-                        list($sip, $no) = explode('/', $dst);
-                        list($telp, $lear) = explode('-', $no);
-                    } else {
-                    }
+        //             $calldate = $record->datetime_entry;
+        //             list($date, $time) = explode(' ', $calldate);
 
-                    $durationInSeconds = $cdrRecord->billsec;
-                    $hours = floor($durationInSeconds / 3600);
-                    $minutes = floor(($durationInSeconds % 3600) / 60);
-                    $seconds = $durationInSeconds % 60;
+        //             $dst = $cdrRecord->dstchannel;
+        //             if ($dst !== null && strpos($dst, 'SIP/') === 0) {
+        //                 list($sip, $no) = explode('/', $dst);
+        //                 list($telp, $lear) = explode('-', $no);
+        //             } else {
+        //             }
 
-                    $durationFormatted = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
-                    $combinedData = [
-                        'id' => $record->id,
-                        'datetime_entry' => $record->datetime_entry,
-                        'uniqueid' => $record->uniqueid,
-                        'cdate' => $date,
-                        'ctime' => $time,
-                        'telno' => $cdrRecord->src,
-                        'agent' => $telp,
-                        'duration' => $durationFormatted,
-                        'action' => $record->recordingfile,
-                    ];
-                    $datas[] = (object)$combinedData;
-                }
-            }
-        }
+        //             $durationInSeconds = $cdrRecord->billsec;
+        //             $hours = floor($durationInSeconds / 3600);
+        //             $minutes = floor(($durationInSeconds % 3600) / 60);
+        //             $seconds = $durationInSeconds % 60;
+
+        //             $durationFormatted = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
+        //             $combinedData = [
+        //                 'id' => $record->id,
+        //                 'datetime_entry' => $record->datetime_entry,
+        //                 'uniqueid' => $record->uniqueid,
+        //                 // 'cdate' => $date,
+        //                 // 'ctime' => $time,
+        //                 'telno' => $cdrRecord->src,
+        //                 // 'agent' => $telp,
+        //                 'duration' => $durationFormatted,
+        //                 'action' => $record->recordingfile,
+        //             ];
+        //             $datas[] = (object)$combinedData;
+        //         }
+        //     }
+        // }
         // dd($datas);
+        $datas = DB::connection('remote_connection')
+            ->table('asteriskcdrdb.cdr')
+            ->join('call_center.call_recording', 'asteriskcdrdb.cdr.uniqueid', '=', 'call_center.call_recording.uniqueid')
+            ->orderBy('id', 'desc')
+            ->get();
         if ($request->ajax()) {
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
                 })
-                // ->addColumn('duration', function ($row) {
-                //     $hours = str_pad(mt_rand(0, 23), 2, "0", STR_PAD_LEFT);
-                //     $minutes = str_pad(mt_rand(0, 59), 2, "0", STR_PAD_LEFT);
-                //     $seconds = str_pad(mt_rand(0, 59), 2, "0", STR_PAD_LEFT);
+                ->editColumn('cdate', function ($row) {
+                    $calldate = $row->datetime_entry;
+                    list($date, $time) = explode(' ', $calldate);
+                    return $date;
+                })
+                ->editColumn('ctime', function ($row) {
+                    $calldate = $row->datetime_entry;
+                    list($date, $time) = explode(' ', $calldate);
+                    return $time;
+                })
+                ->editColumn('telno', function ($row) {
+                    return $row->src;
+                })
+                ->editColumn('agent', function ($row) {
+                    $dst = $row->dstchannel;
+                    if ($dst !== null && strpos($dst, 'SIP/') === 0) {
+                        list($sip, $no) = explode('/', $dst);
+                        list($telp, $lear) = explode('-', $no);
+                        return $telp;
+                    } else {
+                        return null;
+                    }
+                })
+                ->editColumn('duration', function ($row) {
+                    $durationInSeconds = $row->billsec;
+                    $hours = floor($durationInSeconds / 3600);
+                    $minutes = floor(($durationInSeconds % 3600) / 60);
+                    $seconds = $durationInSeconds % 60;
 
-                //     $duration = "$hours:$minutes:$seconds";
-                //     return $duration;
-                // })
-                // ->addColumn('duration', function ($row) {
-                //     $durationInSeconds = $row->billsec;
-
-                //     $hours = floor($durationInSeconds / 3600);
-                //     $minutes = floor(($durationInSeconds % 3600) / 60);
-                //     $seconds = $durationInSeconds % 60;
-
-                //     $duration = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
-                //     return $duration;
-                // })
+                    $duration = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
+                    return $duration;
+                })
                 ->addColumn('action', function ($row) {
 
                     if (Gate::allows('contact-edit')) {
