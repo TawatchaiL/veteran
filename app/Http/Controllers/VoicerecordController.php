@@ -50,7 +50,7 @@ class VoicerecordController extends Controller
         //     ->select('call_recording.*', 'cdr.*') // Use * to select all columns, or specify the columns you want explicitly
         //     ->get();
         $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')->get();
-        $remoteData2 = DB::connection('remote_connection')->table('call_center.call_recording')->orderBy('id')->get();
+        $remoteData2 = DB::connection('remote_connection')->table('call_center.call_recording')->orderBy('id','desc')->get();
 
         $datas = [];
 
