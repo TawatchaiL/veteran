@@ -509,9 +509,9 @@
 
                     if (!$('#' + luniq.replace('.', '')).length) {
                         $('#dpopup').prepend(`<div class="col-md-3" id = "${luniq.replace('.', '')}">
-						<div class="card ${state_color}" id = "color_${luniq.replace('.', '')}">
+						<div class="card custom-bottom-right-card ${state_color}" id = "color_${luniq.replace('.', '')}" data-id="${mcallexten}">
 							<div class="card-header">
-								<h3 class="card-title" id = "state_${luniq.replace('.', '')}" data-id="${mcallexten}">  ${state_icon} ${state} ${mcallexten} </h3>
+								<h3 class="card-title" id = "state_${luniq.replace('.', '')}" >  ${state_icon} ${state} ${mcallexten} </h3>
 								<div class="card-tools">
 
 									<div ><input type="checkbox" style="width: 20px; height: 20px;" name="call[]" id="call[]" value="${strArray[0]}" ${check_box_state}></div>
@@ -525,7 +525,7 @@
 
 							<div class="card-footer text-muted text-right">
                                 <button type="button" class="btn btn-success bopen" data-card-widget="maximize"><i class="fa-solid fa-up-right-from-square"></i> เปิด</button>
-							<a href="#" class="btn btn-lg btn-danger hangup_call" data-id="${strArray[0]}"><i class="fa-solid fa-phone-slash"></i> วางสาย</a>
+							<a href="#" class="btn btn-danger hangup_call" data-id="${strArray[0]}"><i class="fa-solid fa-phone-slash"></i> วางสาย</a>
 
 							</div>
 						</div>
