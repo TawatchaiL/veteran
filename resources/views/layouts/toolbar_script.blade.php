@@ -507,7 +507,7 @@
 
 
                     if (!$('#' + luniq.replace('.', '')).length) {
-                        $('#dpopup').append(`<div class="col-md-3" id = "${luniq.replace('.', '')}">
+                        $('#dpopup').prepend(`<div class="col-md-3" id = "${luniq.replace('.', '')}">
 						<div class="card ${state_color}" id = "color_${luniq.replace('.', '')}">
 							<div class="card-header">
 								<h3 class="card-title" id = "state_${luniq.replace('.', '')}">  ${state_icon} ${state}  </h3>

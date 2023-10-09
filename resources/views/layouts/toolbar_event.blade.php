@@ -179,7 +179,7 @@
 
             if (!$('#' + data.luniq.replace('.', '')).length) {
 
-                $('#dpopup').append(`<div class="col-md-3 custom-bottom-right-card d-none d-md-block" id = "${data.luniq.replace('.', '')}">
+                $('#dpopup').prepend(`<div class="col-md-3 custom-bottom-right-card d-none d-md-block" id = "${data.luniq.replace('.', '')}">
 						<div class="card card-danger" id = "color_${data.luniq.replace('.', '')}">
 							<div class="card-header">
 								<h3 class="card-title" id = "state_${data.luniq.replace('.', '')}"> ${state_icon} ${state} </h3>
