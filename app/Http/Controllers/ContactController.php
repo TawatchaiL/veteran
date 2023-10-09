@@ -162,7 +162,7 @@ class ContactController extends Controller
                 ->orWhere('workno', '=', $item->telno)
                 ->count();
             if ($datap > 0) {
-                $statusText = "(ผู้ติดต่อในระบบ)";
+                $statusText = "(ผู้ติดต่อที่เคยบันทึกข้อมูลไว้แล้ว)";
             } else {
                 $statusText = "(ผู้ติดต่อใหม่)&nbsp;&nbsp;&nbsp;";
             }
