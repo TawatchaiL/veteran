@@ -163,145 +163,162 @@
                     var parent_id = $(this).val();
                     $('#casetype2p').html('<option value="">เลือกรายละเอียดเคส</option>');
                     $('#casetype3p').html('<option value="">เลือกรายละเอียดเคสย่อย</option>');
-                    $('#casetype4p').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
-                    $('#casetype5p').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
-                    $('#casetype6p').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
-                        if(parent_id != ''){
-                            $.ajax({
-                                url: "casetype6/casetype/" + parent_id,
-                                method: 'GET',
-                                async: false,
-                                success: function(res) {
-                                    $.each(res.data, function(index, item) {
-                                        $('#casetype2p').append(
-                                            $('<option></option>').val(item.id).html(item.name)
-                                        );
-                                    });
-                                }
-                            });
-                            $('#casetype2p').attr('disabled', false);
+                    $('#casetype4p').html(
+                    '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
+                    $('#casetype5p').html(
+                    '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
+                    $('#casetype6p').html(
+                    '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
+                    if (parent_id != '') {
+                        $.ajax({
+                            url: "casetype6/casetype/" + parent_id,
+                            method: 'GET',
+                            async: false,
+                            success: function(res) {
+                                $.each(res.data, function(index, item) {
+                                    $('#casetype2p').append(
+                                        $('<option></option>').val(item.id)
+                                        .html(item.name)
+                                    );
+                                });
+                            }
+                        });
+                        $('#casetype2p').attr('disabled', false);
 
-                            $('#casetype3p').attr('disabled', true);
-                            $('#casetype4p').attr('disabled', true);
-                            $('#casetype5p').attr('disabled', true);
-                            $('#casetype6p').attr('disabled', true);
-                        }else{
-                            $('#casetype2p').attr('disabled', true);
+                        $('#casetype3p').attr('disabled', true);
+                        $('#casetype4p').attr('disabled', true);
+                        $('#casetype5p').attr('disabled', true);
+                        $('#casetype6p').attr('disabled', true);
+                    } else {
+                        $('#casetype2p').attr('disabled', true);
 
-                            $('#casetype3p').attr('disabled', true);
-                            $('#casetype4p').attr('disabled', true);
-                            $('#casetype5p').attr('disabled', true);
-                            $('#casetype6p').attr('disabled', true);
-                        }
+                        $('#casetype3p').attr('disabled', true);
+                        $('#casetype4p').attr('disabled', true);
+                        $('#casetype5p').attr('disabled', true);
+                        $('#casetype6p').attr('disabled', true);
+                    }
                 });
 
                 $('#casetype2p').on('change', function() {
                     var parent_id = $(this).val();
                     $('#casetype3p').html('<option value="">เลือกรายละเอียดเคสย่อย</option>');
-                    $('#casetype4p').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
-                    $('#casetype5p').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
-                    $('#casetype6p').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
-                        if(parent_id != ''){
-                            $.ajax({
-                                url: "casetype6/casetype/" + parent_id,
-                                method: 'GET',
-                                async: false,
-                                success: function(res) {
-                                    $.each(res.data, function(index, item) {
-                                        $('#casetype3p').append(
-                                            $('<option></option>').val(item.id).html(item.name)
-                                        );
-                                    });
-                                }
-                            });
-                            $('#casetype3p').attr('disabled', false);
+                    $('#casetype4p').html(
+                    '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
+                    $('#casetype5p').html(
+                    '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
+                    $('#casetype6p').html(
+                    '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
+                    if (parent_id != '') {
+                        $.ajax({
+                            url: "casetype6/casetype/" + parent_id,
+                            method: 'GET',
+                            async: false,
+                            success: function(res) {
+                                $.each(res.data, function(index, item) {
+                                    $('#casetype3p').append(
+                                        $('<option></option>').val(item.id)
+                                        .html(item.name)
+                                    );
+                                });
+                            }
+                        });
+                        $('#casetype3p').attr('disabled', false);
 
-                            $('#casetype4p').attr('disabled', true);
-                            $('#casetype5p').attr('disabled', true);
-                            $('#casetype6p').attr('disabled', true);
-                        }else{
-                            $('#casetype3p').attr('disabled', true);
+                        $('#casetype4p').attr('disabled', true);
+                        $('#casetype5p').attr('disabled', true);
+                        $('#casetype6p').attr('disabled', true);
+                    } else {
+                        $('#casetype3p').attr('disabled', true);
 
-                            $('#casetype4p').attr('disabled', true);
-                            $('#casetype5p').attr('disabled', true);
-                            $('#casetype6p').attr('disabled', true);
-                        }
+                        $('#casetype4p').attr('disabled', true);
+                        $('#casetype5p').attr('disabled', true);
+                        $('#casetype6p').attr('disabled', true);
+                    }
                 });
                 $('#casetype3p').on('change', function() {
                     var parent_id = $(this).val();
-                    $('#casetype4p').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
-                    $('#casetype5p').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
-                    $('#casetype6p').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
-                        if(parent_id != ''){
-                            $.ajax({
-                                url: "casetype6/casetype/" + parent_id,
-                                method: 'GET',
-                                async: false,
-                                success: function(res) {
-                                    $.each(res.data, function(index, item) {
-                                        $('#casetype4p').append(
-                                            $('<option></option>').val(item.id).html(item.name)
-                                        );
-                                    });
-                                }
-                            });
-                            $('#casetype4p').attr('disabled', false);
+                    $('#casetype4p').html(
+                    '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
+                    $('#casetype5p').html(
+                    '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
+                    $('#casetype6p').html(
+                    '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
+                    if (parent_id != '') {
+                        $.ajax({
+                            url: "casetype6/casetype/" + parent_id,
+                            method: 'GET',
+                            async: false,
+                            success: function(res) {
+                                $.each(res.data, function(index, item) {
+                                    $('#casetype4p').append(
+                                        $('<option></option>').val(item.id)
+                                        .html(item.name)
+                                    );
+                                });
+                            }
+                        });
+                        $('#casetype4p').attr('disabled', false);
 
-                            $('#casetype5p').attr('disabled', true);
-                            $('#casetype6p').attr('disabled', true);
-                        }else{
-                            $('#casetype4p').attr('disabled', true);
+                        $('#casetype5p').attr('disabled', true);
+                        $('#casetype6p').attr('disabled', true);
+                    } else {
+                        $('#casetype4p').attr('disabled', true);
 
-                            $('#casetype5p').attr('disabled', true);
-                            $('#casetype6p').attr('disabled', true);
-                        }
+                        $('#casetype5p').attr('disabled', true);
+                        $('#casetype6p').attr('disabled', true);
+                    }
                 });
                 $('#casetype4p').on('change', function() {
                     var parent_id = $(this).val();
-                    $('#casetype5p').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
-                    $('#casetype6p').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
-                        if(parent_id != ''){
-                            $.ajax({
-                                url: "casetype6/casetype/" + parent_id,
-                                method: 'GET',
-                                async: false,
-                                success: function(res) {
-                                    $.each(res.data, function(index, item) {
-                                        $('#casetype5p').append(
-                                            $('<option></option>').val(item.id).html(item.name)
-                                        );
-                                    });
-                                }
-                            });
-                            $('#casetype5p').attr('disabled', false);
+                    $('#casetype5p').html(
+                    '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
+                    $('#casetype6p').html(
+                    '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
+                    if (parent_id != '') {
+                        $.ajax({
+                            url: "casetype6/casetype/" + parent_id,
+                            method: 'GET',
+                            async: false,
+                            success: function(res) {
+                                $.each(res.data, function(index, item) {
+                                    $('#casetype5p').append(
+                                        $('<option></option>').val(item.id)
+                                        .html(item.name)
+                                    );
+                                });
+                            }
+                        });
+                        $('#casetype5p').attr('disabled', false);
 
-                            $('#casetype6p').attr('disabled', true);
-                        }else{
-                            $('#casetype5p').attr('disabled', true);
+                        $('#casetype6p').attr('disabled', true);
+                    } else {
+                        $('#casetype5p').attr('disabled', true);
 
-                            $('#casetype6p').attr('disabled', true);
-                        }
+                        $('#casetype6p').attr('disabled', true);
+                    }
                 });
                 $('#casetype5p').on('change', function() {
                     var parent_id = $(this).val();
-                    $('#casetype6p').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
-                        if(parent_id != ''){
-                            $.ajax({
-                                url: "casetype6/casetype/" + parent_id,
-                                method: 'GET',
-                                async: false,
-                                success: function(res) {
-                                    $.each(res.data, function(index, item) {
-                                        $('#casetype6p').append(
-                                            $('<option></option>').val(item.id).html(item.name)
-                                        );
-                                    });
-                                }
-                            });
-                            $('#casetype6p').attr('disabled', false);
-                        }else{
-                            $('#casetype6p').attr('disabled', true);
-                        }
+                    $('#casetype6p').html(
+                    '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
+                    if (parent_id != '') {
+                        $.ajax({
+                            url: "casetype6/casetype/" + parent_id,
+                            method: 'GET',
+                            async: false,
+                            success: function(res) {
+                                $.each(res.data, function(index, item) {
+                                    $('#casetype6p').append(
+                                        $('<option></option>').val(item.id)
+                                        .html(item.name)
+                                    );
+                                });
+                            }
+                        });
+                        $('#casetype6p').attr('disabled', false);
+                    } else {
+                        $('#casetype6p').attr('disabled', true);
+                    }
                 });
 
                 setTimeout(function() {
@@ -436,20 +453,35 @@
                                 async: false,
                                 success: function(res) {
                                     var provinceOb = $('#casetype1p');
-                                    provinceOb.html('<option value="">เลือกประเภทการติดต่อ</option>');
-                                    $.each(res.data, function(index, item) {
+                                    provinceOb.html(
+                                        '<option value="">เลือกประเภทการติดต่อ</option>'
+                                        );
+                                    $.each(res.data, function(index,
+                                        item) {
                                         provinceOb.append(
-                                            $('<option></option>').val(item.id).html(item
+                                            $(
+                                                '<option></option>')
+                                            .val(item.id)
+                                            .html(item
                                                 .name)
                                         );
                                     });
                                 }
                             });
-                            $('#casetype2p').html('<option value="">เลือกรายละเอียดเคส</option>');
-                            $('#casetype3p').html('<option value="">เลือกรายละเอียดเคสย่อย</option>');
-                            $('#casetype4p').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
-                            $('#casetype5p').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
-                            $('#casetype6p').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
+                            $('#casetype2p').html(
+                                '<option value="">เลือกรายละเอียดเคส</option>');
+                            $('#casetype3p').html(
+                                '<option value="">เลือกรายละเอียดเคสย่อย</option>'
+                                );
+                            $('#casetype4p').html(
+                                '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>'
+                                );
+                            $('#casetype5p').html(
+                                '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>'
+                                );
+                            $('#casetype6p').html(
+                                '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>'
+                                );
                             $('#casetype2p').attr('disabled', true);
                             $('#casetype3p').attr('disabled', true);
                             $('#casetype4p').attr('disabled', true);
@@ -502,26 +534,26 @@
                             emergencyData: emergencyData,
                             _token: token
                         };
-                            if($('#casetype2p').val() !== ''){
-                                additionalData.casetype2 = $('#casetype2p option:selected').text();
-                                additionalData.caseid2 = $('#casetype2p').val();
-                            }
-                            if($('#casetype3p').val() !== ''){
-                                additionalData.casetype3= $('#casetype3p option:selected').text();
-                                additionalData.caseid3 = $('#casetype3p').val();
-                            }
-                            if($('#casetype4p').val() !== ''){
-                                additionalData.casetype4 = $('#casetype4p option:selected').text();
-                                additionalData.caseid4 = $('#casetype4p').val();
-                            }
-                            if($('#casetype5p').val() !== ''){
-                                additionalData.casetype5 = $('#casetype5p option:selected').text();
-                                additionalData.caseid5 = $('#casetype5p').val();
-                            }
-                            if($('#casetype6p').val() !== ''){
-                                additionalData.casetype6 = $('#casetype6p option:selected').text();
-                                additionalData.caseid6 = $('#casetype6p').val();
-                            }
+                        if ($('#casetype2p').val() !== '') {
+                            additionalData.casetype2 = $('#casetype2p option:selected').text();
+                            additionalData.caseid2 = $('#casetype2p').val();
+                        }
+                        if ($('#casetype3p').val() !== '') {
+                            additionalData.casetype3 = $('#casetype3p option:selected').text();
+                            additionalData.caseid3 = $('#casetype3p').val();
+                        }
+                        if ($('#casetype4p').val() !== '') {
+                            additionalData.casetype4 = $('#casetype4p option:selected').text();
+                            additionalData.caseid4 = $('#casetype4p').val();
+                        }
+                        if ($('#casetype5p').val() !== '') {
+                            additionalData.casetype5 = $('#casetype5p option:selected').text();
+                            additionalData.caseid5 = $('#casetype5p').val();
+                        }
+                        if ($('#casetype6p').val() !== '') {
+                            additionalData.casetype6 = $('#casetype6p option:selected').text();
+                            additionalData.caseid6 = $('#casetype6p').val();
+                        }
                         $.ajax({
                             url: "{{ route('contacts.casescontract') }}",
                             method: 'post',
@@ -609,26 +641,26 @@
                             agent: $('#telnop').val(),
                             emergencyData: emergencyData
                         };
-                            if($('#casetype2p').val() !== ''){
-                                additionalData.casetype2 = $('#casetype2p option:selected').text();
-                                additionalData.caseid2 = $('#casetype2p').val();
-                            }
-                            if($('#casetype3p').val() !== ''){
-                                additionalData.casetype3= $('#casetype3p option:selected').text();
-                                additionalData.caseid3 = $('#casetype3p').val();
-                            }
-                            if($('#casetype4p').val() !== ''){
-                                additionalData.casetype4 = $('#casetype4p option:selected').text();
-                                additionalData.caseid4 = $('#casetype4p').val();
-                            }
-                            if($('#casetype5p').val() !== ''){
-                                additionalData.casetype5 = $('#casetype5p option:selected').text();
-                                additionalData.caseid5 = $('#casetype5p').val();
-                            }
-                            if($('#casetype6p').val() !== ''){
-                                additionalData.casetype6 = $('#casetype6p option:selected').text();
-                                additionalData.caseid6 = $('#casetype6p').val();
-                            }
+                        if ($('#casetype2p').val() !== '') {
+                            additionalData.casetype2 = $('#casetype2p option:selected').text();
+                            additionalData.caseid2 = $('#casetype2p').val();
+                        }
+                        if ($('#casetype3p').val() !== '') {
+                            additionalData.casetype3 = $('#casetype3p option:selected').text();
+                            additionalData.caseid3 = $('#casetype3p').val();
+                        }
+                        if ($('#casetype4p').val() !== '') {
+                            additionalData.casetype4 = $('#casetype4p option:selected').text();
+                            additionalData.caseid4 = $('#casetype4p').val();
+                        }
+                        if ($('#casetype5p').val() !== '') {
+                            additionalData.casetype5 = $('#casetype5p option:selected').text();
+                            additionalData.caseid5 = $('#casetype5p').val();
+                        }
+                        if ($('#casetype6p').val() !== '') {
+                            additionalData.casetype6 = $('#casetype6p option:selected').text();
+                            additionalData.caseid6 = $('#casetype6p').val();
+                        }
                         $.ajax({
                             url: "contacts/casescontractupdate/" + id,
                             method: 'PUT',
@@ -719,7 +751,6 @@
                     // restore
                     $('#dpopup').html('');
                     positionCards();
-                    call_list();
 
                 }
 
@@ -747,7 +778,6 @@
                     // restore
                     $('#dpopup').html('');
                     positionCards();
-                    call_list();
 
                 }
 
@@ -768,7 +798,6 @@
                 // Call AJAX function for close
                 //closeCard(cardId);
                 positionCards();
-                call_list();
             });
 
     });
