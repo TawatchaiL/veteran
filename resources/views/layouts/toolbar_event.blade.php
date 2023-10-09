@@ -72,6 +72,7 @@
                         method: 'post',
                         async: false,
                         data: {
+                            extension: data.extension,
                             _token: token,
                         },
                         success: function(result) {

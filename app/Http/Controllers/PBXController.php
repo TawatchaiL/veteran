@@ -225,7 +225,7 @@ class PBXController extends Controller
             DB::table('crm_incoming')
                 ->where('uniqid', $request->input('uniqid'))
                 ->update([
-                    'status' => 0
+                    'status' => 1
                 ]);
 
             $user->phone_status_id = 5;
@@ -249,6 +249,14 @@ class PBXController extends Controller
         $user = Auth::user();
 
         if ($user) {
+
+            DB::table('crm_incoming')
+            ->where('agentno', $request->input('extension'))
+            ->where('status', 1)
+            ->update([
+                'status' => 0
+            ]);
+
             $inqueue = DB::connection('remote_connection')
                 ->table('call_center.audit')
                 ->where('id_agent', $user->agent_id)
