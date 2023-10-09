@@ -185,13 +185,16 @@ class PBXController extends Controller
 
         if ($user) {
             // Update user's phone_status
+            if ($request->input('context') == 'ext-queues') {
+                DB::table('crm_incoming')->insert([
+                    'uniqid' => $request->input('uniqid'),
+                    'telno' => $request->input('telno'),
+                    'agentno' => $request->input('agentno'),
+                    'calltime' => date("Y-m-d H:i:s"),
+                    'status' => 0
+                ]);
+            }
 
-            DB::table('crm_incoming')->insert([
-                'telno' => $request->input('telno'),
-                'agentno' => $request->input('agentno'),
-                'calltime' => date("Y-m-d H:i:s"),
-                'status' => 0
-            ]);
 
             $user->phone_status_id = 4;
             $user->phone_status = "มีสายเข้าจาก < " . $request->input('telno') . " >";

@@ -149,6 +149,8 @@
                 method: 'post',
                 async: false,
                 data: {
+                    uniqid: data.luniq,
+                    context: data.context,
                     telno: data.cid,
                     agentno: data.dstnumber,
                     _token: token,
