@@ -167,9 +167,9 @@ class ContactController extends Controller
                 $statusText = "(ผู้ติดต่อใหม่)&nbsp;&nbsp;&nbsp;";
             }
             /* style="width: 300px; height: 150px;"  */
-            $html .= '<div class="col-md-4"><div class="card card-danger custom-bottom-right-card d-none d-md-block" data-id="' . $item->telno . '" id="' . $item->telno . '" >
+            $html .= '<div class="col-md-3"><div class="card card-danger custom-bottom-right-card d-none d-md-block" data-id="' . $item->telno . '" id="' . $item->telno . '" >
             <div class="card-header">
-            <h4 class="card-title"> <i class="fa-solid fa-user fa-beat" style="--fa-beat-scale: 1.5;"></i> ' . $item->telno . ' ' . $statusText . '</h4>
+            <h4 class="card-title"> <i class="fa-solid fa-user fa-beat" style="--fa-beat-scale: 1.5;"></i> ' . $item->telno . ' </h4>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="maximize">
                     <i class="fas fa-expand"></i>
@@ -180,6 +180,7 @@ class ContactController extends Controller
             </div>
             </div>
             <div class="card-body card-content pop_content" id="pop_' . $item->telno . '">
+            ' . $statusText . '
             </div>
             <div class="card-footer text-muted bclose text-right">
             <button type="button" class="btn btn-success bopen" data-card-widget="maximize"><i class="fa-solid fa-up-right-from-square"></i> เปิด</button>
