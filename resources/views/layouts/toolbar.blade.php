@@ -209,12 +209,12 @@
                             <li class="nav-item">
                                 <a class="nav-link active" id="custom-tabs-one-call-tab" data-toggle="pill"
                                     href="#custom-tabs-one-call" role="tab" aria-controls="custom-tabs-one-call"
-                                    aria-selected="true">Call list</a>
+                                    aria-selected="true">รายการสายสนทนา</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="custom-tabs-one-popup-tab" data-toggle="pill"
                                     href="#custom-tabs-one-popup" role="tab" aria-controls="custom-tabs-one-popup"
-                                    aria-selected="false">Popup</a>
+                                    aria-selected="false">รายการ Popup ข้อมูลผู้ติดต่อ</a>
                             </li>
                         </ul>
                     </div>
