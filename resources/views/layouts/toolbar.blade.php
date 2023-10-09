@@ -204,7 +204,7 @@
                 </div>
                 <div class="row" id="call_list">
                 </div>
-                <div class="row card-container" id="dpopup">
+                <div class="row" id="dpopup">
                 </div>
             </div>
             <div class="overlay d-none" id="state_overlay">
