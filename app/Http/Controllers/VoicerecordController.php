@@ -80,7 +80,7 @@ class VoicerecordController extends Controller
                     $combinedData = [
                         'id' => $record->id,
                         'datetime_entry' => $record->datetime_entry,
-                        // 'uniqueid' => $record->uniqueid,
+                        'uniqueid' => $record->uniqueid,
                         // 'cdate' => $date,
                         // 'ctime' => $time,
                         'telno' => $cdrRecord->src,
@@ -107,6 +107,9 @@ class VoicerecordController extends Controller
                     $calldate = $row->datetime_entry;
                     list($date, $time) = explode(' ', $calldate);
                     return $time;
+                })
+                ->editColumn('telno', function ($row) {
+                    return $row->src; // Assuming 'src' is the column name for telephone number
                 })
                 ->editColumn('agent', function ($row) {
                     $dst = $row->dstchannel;
