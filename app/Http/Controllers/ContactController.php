@@ -166,17 +166,17 @@ class ContactController extends Controller
             } else {
                 $statusText = "(ผู้ติดต่อใหม่)&nbsp;&nbsp;&nbsp;";
             }
-            /* style="width: 300px; height: 150px;" */
-            $html .= '<div class="col-md-3"><div class="card card-danger custom-bottom-right-card d-none d-md-block" data-id="' . $item->telno . '" id="' . $item->telno . '" >
+            /* style="width: 300px; height: 150px;" fa-beat style="--fa-beat-scale: 1.5;"*/
+            $html .= '<div class="col-md-3"><div class="card card-success custom-bottom-right-card d-none d-md-block" data-id="' . $item->telno . '" id="' . $item->telno . '" >
             <div class="card-header">
-            <h4 class="card-title"> <i class="fa-solid fa-triangle-exclamation fa-beat" style="--fa-beat-scale: 1.5;"></i> ' . $item->telno . ' ' . $statusText . '</h4>
+            <h4 class="card-title"> <i class="fa-solid fa-triangle-exclamation"></i> ' . $item->telno . ' ' . $statusText . '</h4>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="maximize">
                     <i class="fas fa-expand"></i>
                 </button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                <!--<button type="button" class="btn btn-tool" data-card-widget="remove">
                     <i class="fas fa-times"></i>
-                </button>
+                </button> -->
             </div>
             </div>
             <div class="card-body card-content pop_content" id="pop_' . $item->telno . '">
