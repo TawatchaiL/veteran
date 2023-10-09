@@ -513,7 +513,9 @@
 							<div class="card-header">
 								<h3 class="card-title" id = "state_${luniq.replace('.', '')}" >  ${state_icon} ${state} ${mcallexten} </h3>
 								<div class="card-tools">
-
+                                    <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                                     <i class="fas fa-expand"></i>
+                                     </button>
 									<div ><input type="checkbox" style="width: 20px; height: 20px;" name="call[]" id="call[]" value="${strArray[0]}" ${check_box_state}></div>
 								</div>
 
@@ -525,12 +527,12 @@
 
 							<div class="card-footer text-muted text-right bclose">
                                 <button type="button" class="btn btn-success bopen" data-card-widget="maximize"><i class="fa-solid fa-up-right-from-square"></i> เปิด</button>
-							<a href="#" class="btn btn-danger hangup_call" data-id="${strArray[0]}"><i class="fa-solid fa-phone-slash"></i> วางสาย</a>
+							     <a href="#" class="btn btn-danger hangup_call" data-id="${strArray[0]}"><i class="fa-solid fa-phone-slash"></i> วางสาย</a>
 
 							</div>
 						</div>
 
-			</div>`);
+			             </div>`);
 
                         /* 	dur[luniq.replace('.', '')] = parseInt(strArray[11]);
                         	obj[luniq.replace('.', '')] = setInterval(function() {
