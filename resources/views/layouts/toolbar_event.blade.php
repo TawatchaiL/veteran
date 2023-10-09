@@ -140,8 +140,6 @@
 
     socket.on('ringing', data => {
 
-        let mcallivr = [];
-        let ivr_text = '';
         if (data.extension.match(exten)) {
             console.log(data);
 
@@ -157,7 +155,6 @@
                     _token: token,
                 },
                 success: function(result) {
-                    alert_danger('OK', 'มีสายเข้าจาก ' + data.cid + ' กรุณารับสาย', '');
                     $('#phone_state').html(result.message);
                     $('#phone_state_icon').html(result.icon);
                     $('#phone_state').removeClass().addClass(get_state_color(result.id));
@@ -167,41 +164,26 @@
                 }
             });
 
-            if (data.variable) {
-                let mstrArray = data.variable.split("|");
-                mcallivr = mstrArray[4].split(":");
-                ivr_text = `<br> <h4>IVR Press: ${mcallivr[1]} </h4>`;
-            }
-            if (mcallivr[1] == undefined) {
-                ivr_text = ``;
-            }
 
             let state_icon = '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
-            let state = 'Ring';
+            let state = 'Ringing';
 
             if (!$('#' + data.luniq.replace('.', '')).length) {
 
-                $('#call_list').prepend(`<div class="col-md-3 custom-bottom-right-card d-none d-md-block" id = "${data.luniq.replace('.', '')}">
+                $('#call_list').prepend(`<div class="col-md-3" id = "${data.luniq.replace('.', '')}">
 						<div class="card card-danger" id = "color_${data.luniq.replace('.', '')}">
 							<div class="card-header">
 								<h3 class="card-title" id = "state_${data.luniq.replace('.', '')}"> ${state_icon} ${state} ${data.cid}</h3>
 								<div class="card-tools">
-
 									<div ><input type="checkbox" style="width: 20px; height: 20px;" name="call[]" id="call_${data.luniq.replace('.', '')}" value="${data.extension}" disabled></div>
 								</div>
-
 							</div>
-
 							<div class="card-body card-content">
-								<!--<h2> ${data.cid} </h2> ${ivr_text}-->
 							</div>
 							<div class="card-footer text-muted text-right">
-
 							<a href="#" class="btn btn-danger hangup_call" data-id="${data.extension}"><i class="fa-solid fa-phone-slash"></i> วางสาย</a>
-
 							</div>
 						</div>
-
 					</div>`);
                 //$('#ToolbarModal').modal('show');
 
@@ -221,13 +203,13 @@
         if (data.extension.match(exten)) {
             console.log(data);
 
-            $('#state_' + data.luniq.replace('.', '')).html(
+           /*  $('#state_' + data.luniq.replace('.', '')).html(
                 '<i class="fa-solid fa-phone-volume fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i> กำลังสนทนา'
             );
             $('#color_' + data.luniq.replace('.', '')).removeClass("card-danger");
             $('#color_' + data.luniq.replace('.', '')).addClass("card-success");
             $('#call_' + data.luniq.replace('.', '')).removeAttr("disabled");
-
+ */
             $.ajax({
                 url: "{{ route('agent.talk') }}",
                 method: 'post',
@@ -239,7 +221,6 @@
                     _token: token,
                 },
                 success: function(result) {
-                    alert_success('OK', 'คุณรับสายแล้วกรุณาเปิด popup', '');
                     $('#phone_state').html(result.message);
                     $('#phone_state_icon').html(result.icon);
                     $('#phone_state').removeClass().addClass(get_state_color(result.id));
@@ -250,22 +231,6 @@
                 }
             });
 
-
-            /* if (data.mcall !== undefined) {
-                let mstrArray = data.mcall.split("|");
-                let queue_val = mstrArray[3].split(":");
-                let cid_val = mstrArray[1].split(":");
-                if (enable_popup == 1) {
-                    if (queue_val[1] !== '') {
-                        let result_url = popup_url.replace("{username}", agent_username).replace("{extension}",
-                            exten).replace("{phone}", cid_val[1]).replace("{queue}", queue_val[1]).replace(
-                            "{waittime}", data.duration).replace("{mcallprofile}", data.mcall);
-                        let win = window.open(result_url, '_popup');
-                        win.focus();
-                    }
-
-                }
-            } */
         }
         call_list();
     });
