@@ -558,7 +558,7 @@
     };
 
     //load call list on access page
-    call_list();
+    //call_list();
     @php
        if ($temporaryPhoneStatusID==-1) {
     @endphp
