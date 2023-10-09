@@ -188,14 +188,14 @@ class PBXController extends Controller
             if ($request->input('context') == 'ext-queues') {
                 DB::table('crm_incoming')
                     ->where('telno', $request->input('telno'))
+                    ->where('agentno', $request->input('agentno'))
                     ->delete();
                 DB::table('crm_incoming')->insert([
                     'uniqid' => $request->input('uniqid'),
                     'telno' => $request->input('telno'),
                     'agentno' => $request->input('agentno'),
                     'calltime' => date("Y-m-d H:i:s"),
-                    'status' => 0,
-                    'state' => 1,
+                    'status' => 1
                 ]);
             }
 
@@ -226,7 +226,7 @@ class PBXController extends Controller
             DB::table('crm_incoming')
                 ->where('uniqid', $request->input('uniqid'))
                 ->update([
-                    'state' => 2
+                    'status' => 0
                 ]);
 
             $user->phone_status_id = 5;
@@ -251,12 +251,12 @@ class PBXController extends Controller
 
         if ($user) {
 
-            DB::table('crm_incoming')
+            /* DB::table('crm_incoming')
             ->where('agentno', $request->input('extension'))
             ->where('status', 1)
             ->update([
-                'state' => 4
-            ]);
+                'status' => 0
+            ]); */
 
             $inqueue = DB::connection('remote_connection')
                 ->table('call_center.audit')
