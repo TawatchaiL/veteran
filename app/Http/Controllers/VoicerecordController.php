@@ -55,6 +55,7 @@ class VoicerecordController extends Controller
         $datas = DB::connection('remote_connection')
             ->table('asteriskcdrdb.cdr')
             ->join('call_center.call_recording', 'asteriskcdrdb.cdr.uniqueid', '=', 'call_center.call_recording.uniqueid')
+            ->orderBy('id', 'desc')
             ->get();
 
         // foreach ($remoteData2 as $record) {
