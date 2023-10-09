@@ -186,6 +186,9 @@ class PBXController extends Controller
         if ($user) {
             // Update user's phone_status
             if ($request->input('context') == 'ext-queues') {
+                DB::table('crm_incoming')
+                    ->where('telno', $request->input('telno'))
+                    ->delete();
                 DB::table('crm_incoming')->insert([
                     'uniqid' => $request->input('uniqid'),
                     'telno' => $request->input('telno'),
