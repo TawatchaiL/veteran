@@ -92,30 +92,50 @@ class VoicerecordController extends Controller
         //         }
         //     }
         // }
-        dd($datas);
+        // dd($datas);
         if ($request->ajax()) {
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
                 })
-                // ->addColumn('duration', function ($row) {
-                //     $hours = str_pad(mt_rand(0, 23), 2, "0", STR_PAD_LEFT);
-                //     $minutes = str_pad(mt_rand(0, 59), 2, "0", STR_PAD_LEFT);
-                //     $seconds = str_pad(mt_rand(0, 59), 2, "0", STR_PAD_LEFT);
+                ->editColumn('cdate', function ($row) {
+                    $calldate = $row->datetime_entry;
+                    list($date, $time) = explode(' ', $calldate);
+                    return $date;
+                })
+                ->editColumn('ctime', function ($row) {
+                    $calldate = $row->datetime_entry;
+                    list($date, $time) = explode(' ', $calldate);
+                    return $time;
+                })
+                ->editColumn('agent', function ($row) {
+                    $dst = $row->dstchannel;
+                    if ($dst !== null && strpos($dst, 'SIP/') === 0) {
+                        list($sip, $no) = explode('/', $dst);
+                        list($telp, $lear) = explode('-', $no);
+                        return $telp;
+                    } else {
+                        return null; // or handle it differently if needed
+                    }
+                })
+                ->editColumn('duration', function ($row) {
+                    $durationInSeconds = $row->billsec;
+                    $hours = floor($durationInSeconds / 3600);
+                    $minutes = floor(($durationInSeconds % 3600) / 60);
+                    $seconds = $durationInSeconds % 60;
 
-                //     $duration = "$hours:$minutes:$seconds";
-                //     return $duration;
-                // })
-                // ->addColumn('duration', function ($row) {
-                //     $durationInSeconds = $row->billsec;
+                    $duration = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
+                    return $duration;
+                })->make(true)
+                ->editColumn('duration', function ($row) {
+                    $durationInSeconds = $row->billsec;
+                    $hours = floor($durationInSeconds / 3600);
+                    $minutes = floor(($durationInSeconds % 3600) / 60);
+                    $seconds = $durationInSeconds % 60;
 
-                //     $hours = floor($durationInSeconds / 3600);
-                //     $minutes = floor(($durationInSeconds % 3600) / 60);
-                //     $seconds = $durationInSeconds % 60;
-
-                //     $duration = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
-                //     return $duration;
-                // })
+                    $duration = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
+                    return $duration;
+                })->make(true)
                 ->addColumn('action', function ($row) {
 
                     if (Gate::allows('contact-edit')) {
