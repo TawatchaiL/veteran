@@ -414,6 +414,8 @@ class ContactController extends Controller
 
     public function casescontract(Request $request)
     {
+        //$user = Auth::user();
+        //$user->phone
 
         $valifield = [
             'hn' => 'required|string|max:10',
