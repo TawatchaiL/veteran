@@ -55,6 +55,7 @@ class VoicerecordController extends Controller
         $datas = DB::connection('remote_connection')
             ->table('asteriskcdrdb.cdr')
             ->join('call_center.call_recording', 'asteriskcdrdb.cdr.uniqueid', '=', 'call_center.call_recording.uniqueid')
+            ->orderBy('id', 'desc')
             ->get();
 
         // foreach ($remoteData2 as $record) {
@@ -81,10 +82,10 @@ class VoicerecordController extends Controller
         //                 'id' => $record->id,
         //                 'datetime_entry' => $record->datetime_entry,
         //                 'uniqueid' => $record->uniqueid,
-        //                 'cdate' => $date,
-        //                 'ctime' => $time,
+        //                 // 'cdate' => $date,
+        //                 // 'ctime' => $time,
         //                 'telno' => $cdrRecord->src,
-        //                 'agent' => $telp,
+        //                 // 'agent' => $telp,
         //                 'duration' => $durationFormatted,
         //                 'action' => $record->recordingfile,
         //             ];
@@ -108,6 +109,9 @@ class VoicerecordController extends Controller
                     list($date, $time) = explode(' ', $calldate);
                     return $time;
                 })
+                ->editColumn('telno', function ($row) {
+                    return $row->src;
+                })
                 ->editColumn('agent', function ($row) {
                     $dst = $row->dstchannel;
                     if ($dst !== null && strpos($dst, 'SIP/') === 0) {
@@ -115,7 +119,7 @@ class VoicerecordController extends Controller
                         list($telp, $lear) = explode('-', $no);
                         return $telp;
                     } else {
-                        return null; // or handle it differently if needed
+                        return null;
                     }
                 })
                 ->editColumn('duration', function ($row) {
@@ -126,16 +130,8 @@ class VoicerecordController extends Controller
 
                     $duration = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
                     return $duration;
-                })->make(true)
-                ->editColumn('duration', function ($row) {
-                    $durationInSeconds = $row->billsec;
-                    $hours = floor($durationInSeconds / 3600);
-                    $minutes = floor(($durationInSeconds % 3600) / 60);
-                    $seconds = $durationInSeconds % 60;
+                })
 
-                    $duration = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
-                    return $duration;
-                })->make(true)
                 ->addColumn('action', function ($row) {
 
                     if (Gate::allows('contact-edit')) {
