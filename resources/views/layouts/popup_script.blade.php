@@ -570,8 +570,6 @@
                                                 value +
                                                 '</li></strong>');
                                     });
-                                    var alertOffset = $('.alert-danger-pop').offset().top;
-                                    $('html, body').animate({ scrollTop: alertOffset }, 'fast');
                                 } else {
                                     $('.alert-danger-pop').hide();
                                     $('.alert-success-pop').show();
@@ -589,10 +587,8 @@
                                     //toastr.success(result.success, {
                                     //    timeOut: 5000
                                     //});
-                                    //$('#Listview').DataTable().ajax.reload();
                                     //setTimeout(function() {
                                     //$('.alert-success').hide();
-
                                     //}, 10000);
 
                                 }
@@ -680,8 +676,6 @@
                                                 value +
                                                 '</li></strong>');
                                     });
-                                    var alertOffset = $('.alert-danger-pop').offset().top;
-                                    $('html, body').animate({ scrollTop: alertOffset }, 'fast');
                                 } else {
                                     $('.alert-danger-pop').hide();
                                     $('.alert-success-pop').show();
