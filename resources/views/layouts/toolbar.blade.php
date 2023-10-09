@@ -202,10 +202,42 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" id="call_list">
+
+                <div class="card card-primary card-tabs">
+                    <div class="card-header p-0 pt-1">
+                        <ul class="nav nav-tabs" id="custom-tabs-one-call" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="custom-tabs-one-call-tab" data-toggle="pill"
+                                    href="#custom-tabs-one-call" role="tab" aria-controls="custom-tabs-one-call"
+                                    aria-selected="true">Calllist</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="custom-tabs-one-popup-tab" data-toggle="pill"
+                                    href="#custom-tabs-one-popup" role="tab" aria-controls="custom-tabs-one-popup"
+                                    aria-selected="false">Popup</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content" id="custom-tabs-one-tabContent">
+                            <div class="tab-pane fade show active" id="custom-tabs-one-call" role="tabpanel"
+                                aria-labelledby="custom-tabs-one-call-tab">
+                                <div class="row" id="call_list">
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade" id="custom-tabs-one-popup" role="tabpanel"
+                                aria-labelledby="custom-tabs-one-popup-tab">
+                                <div class="row" id="dpopup">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
-                <div class="row" id="dpopup">
-                </div>
+
+
             </div>
             <div class="overlay d-none" id="state_overlay">
                 <h4><i class="fa-solid icon-black fa-xl fa-phone-slash"></i> <span class="icon-black">หมายเลขโทรศัพท์
@@ -217,7 +249,8 @@
                     <button type="button" id="btn-pause" {{ $break_button }}
                         class="btn btn-warning custom-button  mx-1 dropdown-toggle dropdown-icon"
                         data-toggle="dropdown">
-                        <i class="fa-solid fa-user-clock"></i> พักเบรค <span class="sr-only">Toggle Dropdown</span>
+                        <i class="fa-solid fa-user-clock"></i> พักเบรค <span class="sr-only">Toggle
+                            Dropdown</span>
                     </button>
                     <div class="dropdown-menu" role="menu">
 
