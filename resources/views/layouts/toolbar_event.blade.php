@@ -152,7 +152,7 @@
                     uniqid: data.luniq,
                     context: data.context,
                     telno: data.cid,
-                    agentno: data.dstnumber,
+                    agentno: data.destexten,
                     _token: token,
                 },
                 success: function(result) {
