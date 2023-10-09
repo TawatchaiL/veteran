@@ -203,17 +203,11 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <div id="call_list">
-                        </div>
+                    <div class="col-md-12" id="call_list">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="card-container" id="dpopup">
-
-                        </div>
-                    </div>
+                    <div class="col-md-12" class="card-container" id="dpopup"></div>
                 </div>
             </div>
             <div class="overlay d-none" id="state_overlay">
