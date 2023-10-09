@@ -251,7 +251,7 @@
         // Add a listener for the region-created event
         wsRegions.on('region-created', (region) => {
             // Callback code
-            // console.log('Region Created:', region);
+            console.log('Region Created:', region);
 
             const button = document.createElement('button');
             button.className = 'remove-region-button';
@@ -263,8 +263,7 @@
                 e.preventDefault();
                 if (currentRegion) {
                     // Remove any existing tooltips in the current region
-                    const existingTooltips = currentRegion.element.querySelectorAll(
-                        '.region-tooltip');
+                    const existingTooltips = currentRegion.element.querySelectorAll('.region-tooltip');
                     existingTooltips.forEach((tooltip) => {
                         tooltip.remove();
                     });
