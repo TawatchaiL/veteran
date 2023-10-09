@@ -499,10 +499,7 @@ class ContactController extends Controller
         $Crmcsae->casestatus = $request->input('casestatus');
         $Crmcsae->agent = $user->phone;
         $Crmcsae->save();
-        //DB::table('crm_phone_emergencies')->insert([
-        //    ['contact_id' => $insertedId, 'emergencyname' => '1', 'emerrelation' => '2', 'emerphone' => '3'],
-        //    ['contact_id' => $insertedId, 'emergencyname' => '4', 'emerrelation' => '5', 'emerphone' => '6'],
-        //]);
+
         DB::table('crm_incoming')->where('telno',  $request->input('telno'))->delete();
         //DB::table('crm_incoming')
         //->where('telno', $request->input('telno'))
