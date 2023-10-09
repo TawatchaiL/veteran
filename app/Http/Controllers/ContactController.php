@@ -148,8 +148,10 @@ class ContactController extends Controller
 
     public function popup()
     {
+        $user = Auth::user();
         $datac = DB::table('crm_incoming')
             ->where('status', '=', "0")
+            ->where('agentno', '=', $user->phone)
             ->orderBy('id', 'desc')
             ->get();
         $html = '';
