@@ -344,6 +344,7 @@
 
                     setTimeout(function() {
                         var telnop = $('#telnop').val();
+                        $('#homenop').val(telnop);
                         $.ajax({
                             url: "contacts/popupedit/" + telnop,
                             method: 'GET',
