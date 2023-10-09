@@ -160,7 +160,6 @@ class VoicerecordController extends Controller
 
     public function comment(Request $request)
     {
-
         // dd($request);
         //start work
         // $callRecordingId = $request->input('callRecordingId');
@@ -169,7 +168,6 @@ class VoicerecordController extends Controller
         // $start = $request->input('start');
         // $end = $request->input('end');
 
-
         // Comment::create([
         //     'call_recording_id' => $callRecordingId,
         //     'uniqueid' => $uniqueId,
@@ -177,11 +175,9 @@ class VoicerecordController extends Controller
         //     'start' => $start,
         //     'end' => $end,
         // ]);
-
         $input = $request->all();
         Comment::create($input);
-
-        dd($request,$input);
+        // dd($request,$input);
         return response()->json(['message' => 'Comment saved successfully']);
     }
 }

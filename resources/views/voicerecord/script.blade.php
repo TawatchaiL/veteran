@@ -299,6 +299,7 @@
                         },
                         success: function(response) {
                             // Handle success response if needed
+                            console.log(response.message);
                         },
                         error: function(error) {
                             // Handle error if needed
