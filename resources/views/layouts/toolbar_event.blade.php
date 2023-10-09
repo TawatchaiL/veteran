@@ -233,6 +233,7 @@
                 method: 'post',
                 async: false,
                 data: {
+                    uniqid: data.luniq,
                     telno: data.cid,
                     agentno: data.dstnumber,
                     _token: token,

@@ -194,7 +194,7 @@ class PBXController extends Controller
                     'telno' => $request->input('telno'),
                     'agentno' => $request->input('agentno'),
                     'calltime' => date("Y-m-d H:i:s"),
-                    'status' => 0
+                    'status' => 2
                 ]);
             }
 
@@ -221,6 +221,12 @@ class PBXController extends Controller
 
         if ($user) {
             // Update user's phone_status
+
+            DB::table('crm_incoming')
+                ->where('uniqid', $request->input('uniqid'))
+                ->update([
+                    'status' => 0
+                ]);
 
             $user->phone_status_id = 5;
             $user->phone_status = "กำลังสนทนากับ < " . $request->input('telno') . " >";
