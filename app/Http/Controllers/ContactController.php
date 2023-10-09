@@ -515,6 +515,7 @@ class ContactController extends Controller
     {
         $user = Auth::user();
         $valifield = [
+            'hn' => 'required|string|max:10',
             'fname' => 'required|string|max:50',
             'lname' => 'required|string|max:50',
             'homeno' => 'required|string|max:10',
@@ -523,8 +524,8 @@ class ContactController extends Controller
             'subdistrict' => 'required|string|max:8',
             'casetype1' => 'required|string|max:50',
         ];
-
         $valimess = [
+            'hn.required' => 'กรุณากรอกรหัสผู้ติดต่อ',
             'fname.required' => 'กรุณากรอกชื่อ',
             'lname.required' => 'กรุณากรอกนามสกุล',
             'homeno.required' => 'กรุณากรอกบ้านเลขที่',
@@ -533,13 +534,12 @@ class ContactController extends Controller
             'subdistrict.required' => 'กรุณาเลือกตำบล',
             'casetype1.required' => 'กรุณาเลือกประเภทการติดต่อ',
         ];
-
         if ($request->input('telhome') == "" && $request->input('phoneno') == "" && $request->input('workno') == "") {
             $valifield = array_merge($valifield, ['telhome' => 'required|string|max:25']);
             $valimess = array_merge($valimess, ['telhome.required' => 'กรุณากรอกเบอร์โทรศัพท์บ้าน หรือ เบอร์โทรศัทพ์มือถือ หรือ เบอร์โทรศัพท์ทีทำงาน']);
         }
-        if (!empty($request->eemergencyData)) {
-            foreach ($request->eemergencyData as $edata) {
+        if (!empty($request->emergencyData)) {
+            foreach ($request->emergencyData as $edata) {
                 if ($edata['emergencyname'] == "" || $edata['emerrelation'] == "" || $edata['emerphone'] == "") {
                     $valifield = array_merge($valifield, ['checkemer' => 'required|string|max:50']);
                     $valimess = array_merge($valimess, ['checkemer.required' => 'กรุณาตรวจสอบข้อมูล ชื่อบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน']);
