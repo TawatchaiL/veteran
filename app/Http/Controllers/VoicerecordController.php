@@ -52,11 +52,7 @@ class VoicerecordController extends Controller
         $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')->get();
         $remoteData2 = DB::connection('remote_connection')->table('call_center.call_recording')->orderBy('id', 'desc')->get();
 
-        $datas = DB::connection('remote_connection')
-            ->table('asteriskcdrdb.cdr')
-            ->join('call_center.call_recording', 'asteriskcdrdb.cdr.uniqueid', '=', 'call_center.call_recording.uniqueid')
-            ->orderBy('id', 'desc')
-            ->get();
+
 
         // foreach ($remoteData2 as $record) {
         //     foreach ($remoteData as $cdrRecord) {
@@ -94,6 +90,11 @@ class VoicerecordController extends Controller
         //     }
         // }
         // dd($datas);
+        $datas = DB::connection('remote_connection')
+            ->table('asteriskcdrdb.cdr')
+            ->join('call_center.call_recording', 'asteriskcdrdb.cdr.uniqueid', '=', 'call_center.call_recording.uniqueid')
+            ->orderBy('id', 'desc')
+            ->get();
         if ($request->ajax()) {
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
@@ -131,7 +132,6 @@ class VoicerecordController extends Controller
                     $duration = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
                     return $duration;
                 })
-
                 ->addColumn('action', function ($row) {
 
                     if (Gate::allows('contact-edit')) {
