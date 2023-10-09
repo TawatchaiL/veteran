@@ -454,10 +454,7 @@
         let mcallprofile = '';
         let mcallexten = '';
         let luniq = '';
-        let mcallivr = [];
         let mstrArray = [];
-        let mcallivr_val = '';
-        let dur = [];
         let calls_active = 0;
 
 
@@ -466,9 +463,8 @@
             await data.forEach((item, index) => {
                 let strArray = item.split("!");
                 let chan = strArray[0].split("/");
-                mcallivr = [];
+
                 $.get(`${event_serv}/chans_variable/` + chan[1], (data, status) => {
-                    console.log(data)
 
                     luniq = data[0][1];
                     luniqrd = luniq.replace('.', '');
@@ -477,14 +473,7 @@
                     mcalldestchan = data[3][1];
 
 
-                    if (mcallprofile !== undefined) {
-                        mstrArray = mcallprofile.split("|");
-                        mcallivr = mstrArray[4].split(":");
-                        mcallivr_val = mcallivr[1];
-                        ivr_text = `<br> <h4>IVR Press: ${mcallivr[1]}</h4>`;
-                    } else {
-                        ivr_text = ``;
-                    }
+
 
                     if (strArray[4] == 'Ringing' || strArray[4] == 'Ring') {
                         state = 'Ringing'
@@ -525,23 +514,15 @@
 
 			             </div>`);
 
-                        /* 	dur[luniq.replace('.', '')] = parseInt(strArray[11]);
-                        	obj[luniq.replace('.', '')] = setInterval(function() {
-                        		dur[luniq.replace('.', '')] = dur[luniq.replace('.', '')] + 1;
-                        		console.log(dur[luniq.replace('.', '')])
-                        		console.log(luniq.replace('.', ''))
-                        		$('#state_' + luniq.replace('.', '')).html(`${state_icon} ${state} (${toHoursAndMinutes(dur[luniq.replace('.', '')])})`);
-                        	}, 1000); */
-
                     }
 
                 });
                 calls_active += 1;
 
                 if (calls_active !== 0) {
-                    $('#btn-pause').attr('disabled', true);
-                    $('#btn-system-logout').attr('disabled', true);
-                    $('#btn-agent-logout').attr('disabled', true);
+                    btn-pause.attr('disabled', true);
+                    btn-agent-logout.attr('disabled', true);
+                    btn-agent-logoff.attr('disabled', true);
                 }
             });
         });
