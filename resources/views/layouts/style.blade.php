@@ -11,7 +11,7 @@
     }
 
     .modal-xxl-toolbar {
-        max-width: 1100px !important;
+        max-width: 1200px !important;
     }
 
     *.text-toolbar {
