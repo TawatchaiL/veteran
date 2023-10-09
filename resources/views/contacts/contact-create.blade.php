@@ -206,7 +206,7 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์มือถือ :</strong>
-                                            {!! Form::text('phonenop', (strlen($telephone) > 9) ? $telephone : '', [
+                                            {!! Form::text('phonenop', (strlen($telephone) <= 10) ? $telephone : '', [
                                                 'id' => 'phonenop',
                                                 'placeholder' => 'เบอร์โทรศัพท์มือถือ',
                                                 'class' => 'form-control',
