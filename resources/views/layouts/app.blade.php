@@ -61,9 +61,9 @@
             @yield('content')
         </div>
 
-        <div class="card-container" id="dpopup">
+        {{-- <div class="card-container" id="dpopup">
 
-        </div>
+        </div> --}}
 
         <!-- Main Footer -->
         @include('layouts.footer')

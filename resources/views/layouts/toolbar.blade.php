@@ -205,6 +205,9 @@
                 <div class="row" id="call_list">
 
                 </div>
+                <div class="card-container" id="dpopup">
+
+                </div>
             </div>
             <div class="overlay d-none" id="state_overlay">
                 <h4><i class="fa-solid icon-black fa-xl fa-phone-slash"></i> <span class="icon-black">หมายเลขโทรศัพท์

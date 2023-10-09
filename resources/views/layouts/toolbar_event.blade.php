@@ -408,8 +408,6 @@
         }
     });
 
-
-
     socket.on('disconnect', data => {
         socket.emit('join', 'Bye from client');
     });
