@@ -414,8 +414,8 @@ class ContactController extends Controller
 
     public function casescontract(Request $request)
     {
-        //$user = Auth::user();
-        //$user->phone
+        $user = Auth::user();
+        
 
         $valifield = [
             'hn' => 'required|string|max:10',
@@ -494,7 +494,7 @@ class ContactController extends Controller
         $Crmcsae->tranferstatus = $request->input('tranferstatus');
         $Crmcsae->casedetail = $request->input('casedetail');
         $Crmcsae->casestatus = $request->input('casestatus');
-        $Crmcsae->agent = $request->input('agent');
+        $Crmcsae->agent = $user->phone;
         $Crmcsae->save();
         //DB::table('crm_phone_emergencies')->insert([
         //    ['contact_id' => $insertedId, 'emergencyname' => '1', 'emerrelation' => '2', 'emerphone' => '3'],
@@ -506,6 +506,7 @@ class ContactController extends Controller
 
     public function casescontractupdate(Request $request, $id)
     {
+        $user = Auth::user();
         $valifield = [
             'fname' => 'required|string|max:50',
             'lname' => 'required|string|max:50',
@@ -611,7 +612,7 @@ class ContactController extends Controller
         $Crmcsae->tranferstatus = $request->get('tranferstatus');
         $Crmcsae->casedetail = $request->get('casedetail');
         $Crmcsae->casestatus = $request->get('casestatus');
-        $Crmcsae->agent = $request->get('agent');
+        $Crmcsae->agent = $user->phone;
         $Crmcsae->save();
 
         DB::table('crm_incoming')->where('telno',  $request->input('telno'))->delete();
