@@ -139,6 +139,7 @@ class CasesController extends Controller
      */
     public function store(Request $request)
     {
+        $user = Auth::user();
         $validator =  Validator::make($request->all(), [
             'casetype1' => 'required|string|max:50',
         ]);
