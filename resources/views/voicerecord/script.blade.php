@@ -294,8 +294,8 @@
                             callRecordingId: callRecordingId,
                             uniqueId: uniqueId,
                             content: content,
-                            start: region.startTime,
-                            end: region.endTime,
+                            start: region.start,
+                            end: region.end,
                         },
                         success: function(response) {
                             // Handle success response if needed
