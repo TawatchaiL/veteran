@@ -259,11 +259,12 @@
             customDialog.style.display = 'block';
 
             document.getElementById('add-content-button').addEventListener('click', function(e) {
-            // addContentButton.addEventListener('click', () => {
+                // addContentButton.addEventListener('click', () => {
                 e.preventDefault();
                 if (currentRegion) {
                     // Remove any existing tooltips in the current region
-                    const existingTooltips = currentRegion.element.querySelectorAll('.region-tooltip');
+                    const existingTooltips = currentRegion.element.querySelectorAll(
+                        '.region-tooltip');
                     existingTooltips.forEach((tooltip) => {
                         tooltip.remove();
                     });
@@ -279,7 +280,8 @@
 
                     const callRecordingId = $('#call_recording_id').val();
                     const uniqueId = $('#uniqueid').val();
-                    const csrfToken = document.querySelector('meta[name="csrf-token"]') .getAttribute('content');
+                    const csrfToken = document.querySelector('meta[name="csrf-token"]')
+                        .getAttribute('content');
                     // const content = contentInput.value;
                     //end
                     $.ajax({
@@ -291,7 +293,9 @@
                         data: {
                             callRecordingId: callRecordingId,
                             uniqueId: uniqueId,
-                            content: content
+                            content: content,
+                            start: region.startTime,
+                            end: region.endTime,
                         },
                         success: function(response) {
                             // Handle success response if needed
