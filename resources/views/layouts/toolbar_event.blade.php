@@ -163,11 +163,11 @@
                     $('#phone_state').removeClass().addClass(get_state_color(result.id));
                     $('#phone_state_icon').removeClass().addClass(get_state_color(result.id));
                     set_state_button(result.id);
-                    positionCards();
+                    //positionCards();
                 }
             });
 
-           /*  if (data.variable) {
+            if (data.variable) {
                 let mstrArray = data.variable.split("|");
                 mcallivr = mstrArray[4].split(":");
                 ivr_text = `<br> <h4>IVR Press: ${mcallivr[1]} </h4>`;
@@ -181,7 +181,7 @@
 
             if (!$('#' + data.luniq.replace('.', '')).length) {
 
-                $('#dpopup').prepend(`<div class="col-md-3 custom-bottom-right-card d-none d-md-block" id = "${data.luniq.replace('.', '')}">
+                $('#call_list').prepend(`<div class="col-md-3 custom-bottom-right-card d-none d-md-block" id = "${data.luniq.replace('.', '')}">
 						<div class="card card-danger" id = "color_${data.luniq.replace('.', '')}">
 							<div class="card-header">
 								<h3 class="card-title" id = "state_${data.luniq.replace('.', '')}"> ${state_icon} ${state} ${data.cid}</h3>
@@ -206,7 +206,7 @@
                 //$('#ToolbarModal').modal('show');
 
 
-            } */
+            }
 
             $('#btn-pause').attr('disabled', true);
             $('#btn-system-logout').attr('disabled', true);
@@ -221,12 +221,12 @@
         if (data.extension.match(exten)) {
             console.log(data);
 
-            /* $('#state_' + data.luniq.replace('.', '')).html(
+            $('#state_' + data.luniq.replace('.', '')).html(
                 '<i class="fa-solid fa-phone-volume fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i> กำลังสนทนา'
             );
             $('#color_' + data.luniq.replace('.', '')).removeClass("card-danger");
             $('#color_' + data.luniq.replace('.', '')).addClass("card-success");
-            $('#call_' + data.luniq.replace('.', '')).removeAttr("disabled"); */
+            $('#call_' + data.luniq.replace('.', '')).removeAttr("disabled");
 
             $.ajax({
                 url: "{{ route('agent.talk') }}",
@@ -267,7 +267,7 @@
                 }
             } */
         }
-        //call_list();
+        call_list();
     });
 
     socket.on('hold', data => {
