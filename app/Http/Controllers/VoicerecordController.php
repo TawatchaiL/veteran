@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 
@@ -150,17 +151,37 @@ class VoicerecordController extends Controller
         // dd($voic);
 
         // return view('voicerecord.create', compact('voic'));
-        return response()->json(['voic' => $voic, 'remoteData2' => $remoteData2,'voic_name' => $voic_name]);
+        return response()->json(['voic' => $voic, 'remoteData2' => $remoteData2, 'voic_name' => $voic_name]);
         // return view('voicerecord.create_run',[
         //     'voic' => $voic,
         //     'remoteData2' => $remoteData2,
         // ]);
     }
 
-    public function comment(Request $request){
+    public function comment(Request $request)
+    {
 
-        dd($request);
+        // dd($request);
         //start work
+        // $callRecordingId = $request->input('callRecordingId');
+        // $uniqueId = $request->input('uniqueId');
+        // $content = $request->input('content');
+        // $start = $request->input('start');
+        // $end = $request->input('end');
 
+
+        // Comment::create([
+        //     'call_recording_id' => $callRecordingId,
+        //     'uniqueid' => $uniqueId,
+        //     'comment' => $content,
+        //     'start' => $start,
+        //     'end' => $end,
+        // ]);
+
+        $input = $request->all();
+        Comment::create($input);
+
+        dd($request,$input);
+        return response()->json(['message' => 'Comment saved successfully']);
     }
 }

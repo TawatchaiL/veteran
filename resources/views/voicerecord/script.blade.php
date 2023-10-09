@@ -291,9 +291,9 @@
                             'X-CSRF-TOKEN': csrfToken
                         },
                         data: {
-                            callRecordingId: callRecordingId,
-                            uniqueId: uniqueId,
-                            content: content,
+                            call_recording_id: callRecordingId,
+                            uniqueid: uniqueId,
+                            comment: content,
                             start: region.start,
                             end: region.end,
                         },
