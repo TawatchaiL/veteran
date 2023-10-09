@@ -129,7 +129,7 @@ class VoicerecordController extends Controller
 
                     $duration = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
                     return $duration;
-                })->make(true)
+                })
 
                 ->addColumn('action', function ($row) {
 
