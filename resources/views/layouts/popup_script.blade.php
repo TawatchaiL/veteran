@@ -570,6 +570,7 @@
                                                 value +
                                                 '</li></strong>');
                                     });
+                                    $('html, body').animate({ scrollTop: 0 }, 'fast');
                                 } else {
                                     $('.alert-danger-pop').hide();
                                     $('.alert-success-pop').show();
@@ -678,6 +679,7 @@
                                                 value +
                                                 '</li></strong>');
                                     });
+                                    $('html, body').animate({ scrollTop: 0 }, 'fast');
                                 } else {
                                     $('.alert-danger-pop').hide();
                                     $('.alert-success-pop').show();
