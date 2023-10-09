@@ -57,41 +57,41 @@ class VoicerecordController extends Controller
             ->join('call_center.call_recording', 'asteriskcdrdb.cdr.uniqueid', '=', 'call_center.call_recording.uniqueid')
             ->get();
 
-        foreach ($remoteData2 as $record) {
-            foreach ($remoteData as $cdrRecord) {
-                if ($record->uniqueid === $cdrRecord->uniqueid) {
+        // foreach ($remoteData2 as $record) {
+        //     foreach ($remoteData as $cdrRecord) {
+        //         if ($record->uniqueid === $cdrRecord->uniqueid) {
 
-                    $calldate = $record->datetime_entry;
-                    list($date, $time) = explode(' ', $calldate);
+        //             $calldate = $record->datetime_entry;
+        //             list($date, $time) = explode(' ', $calldate);
 
-                    $dst = $cdrRecord->dstchannel;
-                    if ($dst !== null && strpos($dst, 'SIP/') === 0) {
-                        list($sip, $no) = explode('/', $dst);
-                        list($telp, $lear) = explode('-', $no);
-                    } else {
-                    }
+        //             $dst = $cdrRecord->dstchannel;
+        //             if ($dst !== null && strpos($dst, 'SIP/') === 0) {
+        //                 list($sip, $no) = explode('/', $dst);
+        //                 list($telp, $lear) = explode('-', $no);
+        //             } else {
+        //             }
 
-                    $durationInSeconds = $cdrRecord->billsec;
-                    $hours = floor($durationInSeconds / 3600);
-                    $minutes = floor(($durationInSeconds % 3600) / 60);
-                    $seconds = $durationInSeconds % 60;
+        //             $durationInSeconds = $cdrRecord->billsec;
+        //             $hours = floor($durationInSeconds / 3600);
+        //             $minutes = floor(($durationInSeconds % 3600) / 60);
+        //             $seconds = $durationInSeconds % 60;
 
-                    $durationFormatted = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
-                    $combinedData = [
-                        'id' => $record->id,
-                        'datetime_entry' => $record->datetime_entry,
-                        'uniqueid' => $record->uniqueid,
-                        // 'cdate' => $date,
-                        // 'ctime' => $time,
-                        'telno' => $cdrRecord->src,
-                        // 'agent' => $telp,
-                        'duration' => $durationFormatted,
-                        'action' => $record->recordingfile,
-                    ];
-                    $datas[] = (object)$combinedData;
-                }
-            }
-        }
+        //             $durationFormatted = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
+        //             $combinedData = [
+        //                 'id' => $record->id,
+        //                 'datetime_entry' => $record->datetime_entry,
+        //                 'uniqueid' => $record->uniqueid,
+        //                 // 'cdate' => $date,
+        //                 // 'ctime' => $time,
+        //                 'telno' => $cdrRecord->src,
+        //                 // 'agent' => $telp,
+        //                 'duration' => $durationFormatted,
+        //                 'action' => $record->recordingfile,
+        //             ];
+        //             $datas[] = (object)$combinedData;
+        //         }
+        //     }
+        // }
         // dd($datas);
         if ($request->ajax()) {
             return datatables()->of($datas)
@@ -109,7 +109,7 @@ class VoicerecordController extends Controller
                     return $time;
                 })
                 ->editColumn('telno', function ($row) {
-                    return $row->src; // Assuming 'src' is the column name for telephone number
+                    return $row->src;
                 })
                 ->editColumn('agent', function ($row) {
                     $dst = $row->dstchannel;
@@ -118,7 +118,7 @@ class VoicerecordController extends Controller
                         list($telp, $lear) = explode('-', $no);
                         return $telp;
                     } else {
-                        return null; // or handle it differently if needed
+                        return null;
                     }
                 })
                 ->editColumn('duration', function ($row) {
