@@ -202,10 +202,21 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" id="call_list">
-                </div>
-                <div class="row" id="dpopup">
-                </div>
+                <fieldset>
+                    <legend>
+                        รายการสายสนทนา:
+                    </legend>
+                    <div class="row" id="call_list">
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>
+                        รายการข้อมูลผู้ติดต่อ:
+                    </legend>
+                    <div class="row" id="dpopup">
+                    </div>
+                </fieldset>
+
             </div>
             <div class="overlay d-none" id="state_overlay">
                 <h4><i class="fa-solid icon-black fa-xl fa-phone-slash"></i> <span class="icon-black">หมายเลขโทรศัพท์
