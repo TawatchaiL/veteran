@@ -191,7 +191,7 @@
 
 							</div>
 
-							<div class="card-body">
+							<div class="card-body card-content">
 								<!--<h2> ${data.cid} </h2> ${ivr_text}-->
 							</div>
 							<div class="card-footer text-muted text-right">

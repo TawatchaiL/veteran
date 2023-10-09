@@ -519,11 +519,11 @@
 
 							</div>
 
-							<div class="card-body">
+							<div class="card-body card-content">
 								<!--<h2> ${mcallexten} </h2> ${ivr_text}-->
 							</div>
 
-							<div class="card-footer text-muted text-right">
+							<div class="card-footer text-muted text-right bclose">
                                 <button type="button" class="btn btn-success bopen" data-card-widget="maximize"><i class="fa-solid fa-up-right-from-square"></i> เปิด</button>
 							<a href="#" class="btn btn-danger hangup_call" data-id="${strArray[0]}"><i class="fa-solid fa-phone-slash"></i> วางสาย</a>
 
