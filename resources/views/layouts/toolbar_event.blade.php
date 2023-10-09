@@ -177,7 +177,7 @@
 
             if (!$('#' + data.luniq.replace('.', '')).length) {
 
-                $('#call_list').append(`<div class="col-md-4" id = "${data.luniq.replace('.', '')}">
+                $('#call_list').append(`<div class="col-md-3" id = "${data.luniq.replace('.', '')}">
 						<div class="card card-danger" id = "color_${data.luniq.replace('.', '')}">
 							<div class="card-header">
 								<h3 class="card-title" id = "state_${data.luniq.replace('.', '')}"> ${state_icon} ${state} </h3>
