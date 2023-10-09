@@ -520,9 +520,9 @@
                 calls_active += 1;
 
                 if (calls_active !== 0) {
-                    btn-pause.attr('disabled', true);
-                    btn-agent-logout.attr('disabled', true);
-                    btn-agent-logoff.attr('disabled', true);
+                    btn_pause.attr('disabled', true);
+                    btn_agent_logout.attr('disabled', true);
+                    btn_agent_logoff.attr('disabled', true);
                 }
             });
         });
@@ -531,6 +531,9 @@
 
     //load call list on access page
     call_list();
+
+
+    
     @php
        if ($temporaryPhoneStatusID==-1) {
     @endphp

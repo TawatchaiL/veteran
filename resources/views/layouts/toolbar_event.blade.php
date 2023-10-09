@@ -190,9 +190,9 @@
 
             }
 
-            btn-pause.attr('disabled', true);
-            btn-agent-logout.attr('disabled', true);
-            btn-agent-logoff.attr('disabled', true);
+            btn_pause.attr('disabled', true);
+            btn_agent_logout.attr('disabled', true);
+            btn_agent_logoff.attr('disabled', true);
 
         }
         //call_list();
