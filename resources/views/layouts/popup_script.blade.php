@@ -719,6 +719,7 @@
                     // restore
                     $('#dpopup').html('');
                     positionCards();
+                    call_list();
 
                 }
 
@@ -746,6 +747,7 @@
                     // restore
                     $('#dpopup').html('');
                     positionCards();
+                    call_list();
 
                 }
 
@@ -766,6 +768,7 @@
                 // Call AJAX function for close
                 //closeCard(cardId);
                 positionCards();
+                call_list();
             });
 
     });
