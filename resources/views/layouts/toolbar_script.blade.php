@@ -508,7 +508,7 @@
 
 
                     if (!$('#' + luniq.replace('.', '')).length) {
-                        $('#dpopup').prepend(`<div class="col-md-3" id = "${luniq.replace('.', '')}">
+                        $('#call_list').prepend(`<div class="col-md-3" id = "${luniq.replace('.', '')}">
 						<div class="card custom-bottom-right-card ${state_color}" id = "color_${luniq.replace('.', '')}" data-id="${mcallexten}">
 							<div class="card-header">
 								<h3 class="card-title" id = "state_${luniq.replace('.', '')}" >  ${state_icon} ${state} ${mcallexten} </h3>
@@ -558,7 +558,7 @@
     };
 
     //load call list on access page
-    //call_list();
+    call_list();
     @php
        if ($temporaryPhoneStatusID==-1) {
     @endphp
