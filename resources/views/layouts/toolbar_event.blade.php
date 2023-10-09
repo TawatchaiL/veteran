@@ -85,7 +85,7 @@
                         }
                     });
                     toolbar_header.addClass("card-primary");
-                    toolbar_modal.modal('hide');
+                    //toolbar_modal.modal('hide');
                 } else if (data.status == 1 || data.status == 2 || data.status == 8 || data.status == 9) {
                     toolbar_header.addClass("card-danger");
                 } else if (data.status == 16 || data.status == 17) {
@@ -176,14 +176,14 @@
             }
 
             let state_icon = '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
-            let state = 'สายเข้า';
+            let state = 'Ring';
 
             if (!$('#' + data.luniq.replace('.', '')).length) {
 
                 $('#dpopup').prepend(`<div class="col-md-3 custom-bottom-right-card d-none d-md-block" id = "${data.luniq.replace('.', '')}">
 						<div class="card card-danger" id = "color_${data.luniq.replace('.', '')}">
 							<div class="card-header">
-								<h3 class="card-title" id = "state_${data.luniq.replace('.', '')}"> ${state_icon} ${state} </h3>
+								<h3 class="card-title" id = "state_${data.luniq.replace('.', '')}"> ${state_icon} ${state} ${data.cid}</h3>
 								<div class="card-tools">
 
 									<div ><input type="checkbox" style="width: 20px; height: 20px;" name="call[]" id="call_${data.luniq.replace('.', '')}" value="${data.extension}" disabled></div>
@@ -192,7 +192,7 @@
 							</div>
 
 							<div class="card-body">
-								<h2> ${data.cid} </h2> ${ivr_text}
+								<!--<h2> ${data.cid} </h2> ${ivr_text}-->
 							</div>
 							<div class="card-footer text-muted text-right">
 
