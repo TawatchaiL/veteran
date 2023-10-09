@@ -92,7 +92,7 @@ class VoicerecordController extends Controller
                 }
             }
         }
-        dd($datas);
+        // dd($datas);
         if ($request->ajax()) {
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
