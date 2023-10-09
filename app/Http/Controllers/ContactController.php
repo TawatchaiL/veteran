@@ -180,7 +180,6 @@ class ContactController extends Controller
             </div>
             </div>
             <div class="card-body card-content pop_content" id="pop_' . $item->telno . '">
-            <!-- Card content goes here -->
             </div>
             <div class="card-footer text-muted bclose text-right">
             <button type="button" class="btn btn-success bopen" data-card-widget="maximize"><i class="fa-solid fa-up-right-from-square"></i> เปิด</button>
