@@ -127,15 +127,7 @@ class VoicerecordController extends Controller
                     $duration = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
                     return $duration;
                 })->make(true)
-                ->editColumn('duration', function ($row) {
-                    $durationInSeconds = $row->billsec;
-                    $hours = floor($durationInSeconds / 3600);
-                    $minutes = floor(($durationInSeconds % 3600) / 60);
-                    $seconds = $durationInSeconds % 60;
-
-                    $duration = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
-                    return $duration;
-                })->make(true)
+                
                 ->addColumn('action', function ($row) {
 
                     if (Gate::allows('contact-edit')) {
