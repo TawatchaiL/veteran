@@ -263,8 +263,7 @@
                 e.preventDefault();
                 if (currentRegion) {
                     // Remove any existing tooltips in the current region
-                    const existingTooltips = currentRegion.element.querySelectorAll(
-                        '.region-tooltip');
+                    const existingTooltips = currentRegion.element.querySelectorAll('.region-tooltip');
                     existingTooltips.forEach((tooltip) => {
                         tooltip.remove();
                     });
@@ -280,8 +279,7 @@
 
                     const callRecordingId = $('#call_recording_id').val();
                     const uniqueId = $('#uniqueid').val();
-                    const csrfToken = document.querySelector('meta[name="csrf-token"]')
-                        .getAttribute('content');
+                    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
                     // const content = contentInput.value;
                     //end
                     $.ajax({
@@ -300,6 +298,7 @@
                         success: function(response) {
                             // Handle success response if needed
                             console.log(response.message);
+                            $('#CreateModal').modal('hide');
                         },
                         error: function(error) {
                             // Handle error if needed
