@@ -205,18 +205,17 @@
 
                 <div class="card card-primary card-tabs">
                     <div class="card-header p-0 pt-1">
-                        <ul class="nav nav-tabs" id="custom-tabs-one-call" role="tablist">
+                        <ul class="nav nav-tabs" id="custom-tabs-one" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="custom-tabs-one-call-tab" data-toggle="pill"
                                     href="#custom-tabs-one-call" role="tab" aria-controls="custom-tabs-one-call"
-                                    aria-selected="true">Calllist</a>
+                                    aria-selected="true">Call list</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="custom-tabs-one-popup-tab" data-toggle="pill"
                                     href="#custom-tabs-one-popup" role="tab" aria-controls="custom-tabs-one-popup"
                                     aria-selected="false">Popup</a>
                             </li>
-
                         </ul>
                     </div>
                     <div class="card-body">
@@ -224,20 +223,20 @@
                             <div class="tab-pane fade show active" id="custom-tabs-one-call" role="tabpanel"
                                 aria-labelledby="custom-tabs-one-call-tab">
                                 <div class="row" id="call_list">
+                                    <!-- Content for the Call list tab -->
+                                    <!-- You can add content here -->
                                 </div>
-
                             </div>
                             <div class="tab-pane fade" id="custom-tabs-one-popup" role="tabpanel"
                                 aria-labelledby="custom-tabs-one-popup-tab">
                                 <div class="row" id="dpopup">
+                                    <!-- Content for the Popup tab -->
+                                    <!-- You can add content here -->
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
-
-
             </div>
             <div class="overlay d-none" id="state_overlay">
                 <h4><i class="fa-solid icon-black fa-xl fa-phone-slash"></i> <span class="icon-black">หมายเลขโทรศัพท์
