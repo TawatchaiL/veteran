@@ -195,7 +195,7 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์บ้าน:</strong>
-                                            {!! Form::text('telhomep', null, [
+                                            {!! Form::text('telhomep', @if(strlen($telephone) < 10) {{ $telephone }} @endif, [
                                                 'id' => 'telhomep',
                                                 'placeholder' => 'เบอร์โทรศัพท์บ้าน',
                                                 'class' => 'form-control',
@@ -206,7 +206,7 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์มือถือ :</strong>
-                                            {!! Form::text('phonenop', null, [
+                                            {!! Form::text('phonenop', @if(strlen($telephone) <= 10) {{ $telephone }} @endif, [
                                                 'id' => 'phonenop',
                                                 'placeholder' => 'เบอร์โทรศัพท์มือถือ',
                                                 'class' => 'form-control',
