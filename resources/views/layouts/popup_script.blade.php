@@ -747,10 +747,12 @@
                     // Card is not minimized
                     //card.css('right', '-300px'); // Adjust as needed
                     card.css('z-index', '99999');
+                    $('body').css('overflow', 'hidden');
                     maximizeCard(cardId);
 
                 } else {
                     // restore
+                    $('body').css('overflow', 'auto');
                     $('#dpopup').html('');
                     positionCards();
 
@@ -799,6 +801,7 @@
                 var cardId = card.data('id');
                 // Call AJAX function for close
                 //closeCard(cardId);
+                $('body').css('overflow', 'auto');
                 positionCards();
             });
 
