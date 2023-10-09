@@ -148,6 +148,7 @@ class CasesController extends Controller
         }
 
         $input = $request->all();
+        $input = array_merge($input, ['agent' => $user->phone]);
         $contract = CrmCase::create($input);
         return response()->json(['success' => 'เพิ่ม เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
     }
