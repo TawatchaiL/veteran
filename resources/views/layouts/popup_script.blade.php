@@ -570,7 +570,8 @@
                                                 value +
                                                 '</li></strong>');
                                     });
-                                    window.scrollTo(0, 0);
+                                    var alertOffset = $('.alert-danger-pop').offset().top;
+                                    $('html, body').animate({ scrollTop: alertOffset }, 'fast');
                                 } else {
                                     $('.alert-danger-pop').hide();
                                     $('.alert-success-pop').show();
@@ -679,7 +680,8 @@
                                                 value +
                                                 '</li></strong>');
                                     });
-                                    window.scrollTo(0, 0);
+                                    var alertOffset = $('.alert-danger-pop').offset().top;
+                                    $('html, body').animate({ scrollTop: alertOffset }, 'fast');
                                 } else {
                                     $('.alert-danger-pop').hide();
                                     $('.alert-success-pop').show();
