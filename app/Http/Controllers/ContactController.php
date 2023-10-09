@@ -427,6 +427,7 @@ class ContactController extends Controller
             'city' => 'required|string|max:8',
             'district' => 'required|string|max:8',
             'subdistrict' => 'required|string|max:8',
+            'casetype1' => 'required|string|max:50',
         ];
         $valimess = [
             'hn.required' => 'กรุณากรอกรหัสผู้ติดต่อ',
@@ -436,6 +437,7 @@ class ContactController extends Controller
             'city.required' => 'กรุณาเลือกจังหวัด',
             'district.required' => 'กรุณาเลือกอำเภอ',
             'subdistrict.required' => 'กรุณาเลือกตำบล',
+            'casetype1.required' => 'กรุณาเลือกประเภทการติดต่อ',
         ];
         if ($request->input('telhome') == "" && $request->input('phoneno') == "" && $request->input('workno') == "") {
             $valifield = array_merge($valifield, ['telhome' => 'required|string|max:25']);
@@ -519,6 +521,7 @@ class ContactController extends Controller
             'city' => 'required|string|max:8',
             'district' => 'required|string|max:8',
             'subdistrict' => 'required|string|max:8',
+            'casetype1' => 'required|string|max:50',
         ];
 
         $valimess = [
@@ -528,6 +531,7 @@ class ContactController extends Controller
             'city.required' => 'กรุณาเลือกจังหวัด',
             'district.required' => 'กรุณาเลือกอำเภอ',
             'subdistrict.required' => 'กรุณาเลือกตำบล',
+            'casetype1.required' => 'กรุณาเลือกประเภทการติดต่อ',
         ];
 
         if ($request->input('telhome') == "" && $request->input('phoneno') == "" && $request->input('workno') == "") {
