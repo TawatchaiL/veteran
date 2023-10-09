@@ -176,6 +176,8 @@ class CasesContractController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user = Auth::user();
+        
         $rules = [
             'casetype1' => 'required|string|max:20',
             //'postcode' => 'integer|max:10',
@@ -195,6 +197,7 @@ class CasesContractController extends Controller
             'tranferstatus' => $request->get('tranferstatus'),
             'casedetail' => $request->get('casedetail'),
             'casestatus' => $request->get('casestatus'),
+            'agent' => $user->phone,
         ];
 
         if (!empty($request->get('casetype2'))) {
