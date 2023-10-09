@@ -155,12 +155,12 @@
                     _token: token,
                 },
                 success: function(result) {
-                    $('#phone_state').html(result.message);
-                    $('#phone_state_icon').html(result.icon);
-                    $('#phone_state').removeClass().addClass(get_state_color(result.id));
-                    $('#phone_state_icon').removeClass().addClass(get_state_color(result.id));
+                    phone_state.html(result.message);
+                    phone_state_icon.html(result.icon);
+                    phone_state.removeClass().addClass(get_state_color(result.id));
+                    phone_state_icon.removeClass().addClass(get_state_color(result.id));
                     set_state_button(result.id);
-                    //positionCards();
+                    positionCards();
                 }
             });
 
@@ -190,9 +190,9 @@
 
             }
 
-            $('#btn-pause').attr('disabled', true);
-            $('#btn-system-logout').attr('disabled', true);
-            $('#btn-agent-logout').attr('disabled', true);
+            btn-pause.attr('disabled', true);
+            btn-agent-logout.attr('disabled', true);
+            btn-agent-logoff.attr('disabled', true);
 
         }
         //call_list();
@@ -203,13 +203,6 @@
         if (data.extension.match(exten)) {
             console.log(data);
 
-           /*  $('#state_' + data.luniq.replace('.', '')).html(
-                '<i class="fa-solid fa-phone-volume fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i> กำลังสนทนา'
-            );
-            $('#color_' + data.luniq.replace('.', '')).removeClass("card-danger");
-            $('#color_' + data.luniq.replace('.', '')).addClass("card-success");
-            $('#call_' + data.luniq.replace('.', '')).removeAttr("disabled");
- */
             $.ajax({
                 url: "{{ route('agent.talk') }}",
                 method: 'post',
@@ -221,18 +214,19 @@
                     _token: token,
                 },
                 success: function(result) {
-                    $('#phone_state').html(result.message);
-                    $('#phone_state_icon').html(result.icon);
-                    $('#phone_state').removeClass().addClass(get_state_color(result.id));
-                    $('#phone_state_icon').removeClass().addClass(get_state_color(result.id));
+                    phone_state.html(result.message);
+                    phone_state_icon.html(result.icon);
+                    phone_state.removeClass().addClass(get_state_color(result.id));
+                    phone_state_icon.removeClass().addClass(get_state_color(result.id));
                     set_state_button(result.id);
                     positionCards();
-                    $('#ToolbarModal').modal('show');
+                    call_list();
+                    toolbar_modal.modal('show');
                 }
             });
 
         }
-        call_list();
+
     });
 
     socket.on('hold', data => {
