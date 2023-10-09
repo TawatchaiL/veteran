@@ -167,7 +167,7 @@ class ContactController extends Controller
                 $statusText = "(ผู้ติดต่อใหม่)&nbsp;&nbsp;&nbsp;";
             }
             /* style="width: 300px; height: 150px;" fa-beat style="--fa-beat-scale: 1.5;"*/
-            $html .= '<div class="col-md-3"><div class="card card-success custom-bottom-right-card d-none d-md-block" data-id="' . $item->telno . '" id="' . $item->telno . '" >
+            $html .= '<div class="col-md-4"><div class="card card-info custom-bottom-right-card d-none d-md-block" data-id="' . $item->telno . '" id="' . $item->telno . '" >
             <div class="card-header">
             <h4 class="card-title"> <i class="fa-solid fa-triangle-exclamation"></i> ' . $item->telno . ' ' . $statusText . '</h4>
             <div class="card-tools">
