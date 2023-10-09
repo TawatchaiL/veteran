@@ -523,6 +523,7 @@
                     btn_pause.attr('disabled', true);
                     btn_agent_logout.attr('disabled', true);
                     btn_agent_logoff.attr('disabled', true);
+                    toolbar_modal.modal('show');
                 }
             });
         });
@@ -533,7 +534,7 @@
     call_list();
 
 
-    
+
     @php
        if ($temporaryPhoneStatusID==-1) {
     @endphp
