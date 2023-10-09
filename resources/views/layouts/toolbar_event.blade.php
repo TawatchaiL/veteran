@@ -179,13 +179,11 @@
 
             if (!$('#' + data.luniq.replace('.', '')).length) {
 
-                $('#call_list').append(`<div class="col-md-3" id = "${data.luniq.replace('.', '')}">
+                $('#dpopup').append(`<div class="col-md-3 custom-bottom-right-card d-none d-md-block" id = "${data.luniq.replace('.', '')}">
 						<div class="card card-danger" id = "color_${data.luniq.replace('.', '')}">
 							<div class="card-header">
 								<h3 class="card-title" id = "state_${data.luniq.replace('.', '')}"> ${state_icon} ${state} </h3>
 								<div class="card-tools">
-									<!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-									</button> -->
 
 									<div ><input type="checkbox" style="width: 20px; height: 20px;" name="call[]" id="call_${data.luniq.replace('.', '')}" value="${data.extension}" disabled></div>
 								</div>
@@ -197,7 +195,7 @@
 							</div>
 							<div class="card-footer text-muted text-right">
 
-							<a href="#" class="btn btn-lg btn-danger hangup_call" data-id="${data.extension}"><i class="fa-solid fa-phone-slash"></i> วางสาย</a>
+							<a href="#" class="btn btn-danger hangup_call" data-id="${data.extension}"><i class="fa-solid fa-phone-slash"></i> วางสาย</a>
 
 							</div>
 						</div>
