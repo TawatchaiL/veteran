@@ -501,6 +501,9 @@ class ContactController extends Controller
         //    ['contact_id' => $insertedId, 'emergencyname' => '4', 'emerrelation' => '5', 'emerphone' => '6'],
         //]);
         DB::table('crm_incoming')->where('telno',  $request->input('telno'))->delete();
+        //DB::table('crm_incoming')
+        //->where('telno', $request->input('telno'))
+        //->update(['status' => '1']);
         return response()->json(['success' => 'เพิ่ม รายผู้ติดต่อ เรียบร้อยแล้ว']);
     }
 
