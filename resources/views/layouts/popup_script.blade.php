@@ -570,6 +570,8 @@
                                                 value +
                                                 '</li></strong>');
                                     });
+                                    var hiddenField = document.getElementById("contractid");
+                                    hiddenField.focus();
                                 } else {
                                     $('.alert-danger-pop').hide();
                                     $('.alert-success-pop').show();
@@ -676,6 +678,8 @@
                                                 value +
                                                 '</li></strong>');
                                     });
+                                    var hiddenField = document.getElementById("contractid");
+                                    hiddenField.focus();
                                 } else {
                                     $('.alert-danger-pop').hide();
                                     $('.alert-success-pop').show();
