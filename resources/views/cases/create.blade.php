@@ -63,7 +63,7 @@
                                                         'id' => 'Hn',
                                                         'placeholder' => 'HN',
                                                         'class' => 'form-control',
-                                                        'readonly' => true,
+                                                        'readonly' => false,
                                                     ]) !!}
                                                     <ul id="suggestions"></ul>
                                                 </div>

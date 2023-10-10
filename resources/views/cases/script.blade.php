@@ -448,6 +448,27 @@
             actions = 'add';
 
             $.ajax({
+            url: '',
+            method: 'POST',
+            async: false,
+            data: { query: query },
+            success: function(data) {
+                var suggestions = JSON.parse(data);
+                var suggestionsList = $('#suggestions');
+                suggestionsList.empty();
+
+                suggestions.forEach(function(item) {
+                    suggestionsList.append('<li>' + item + '</li>');
+                });
+
+                suggestionsList.on('click', 'li', function() {
+                    $('#Hn').val($(this).text());
+                    suggestionsList.empty();
+                });
+            }
+            });
+
+            $.ajax({
                 url: "casetype6/casetype/0",
                 method: 'GET',
                 async: false,
