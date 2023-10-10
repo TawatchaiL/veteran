@@ -24,7 +24,6 @@ class CasesController extends Controller
     }
     public function index(Request $request)
     {
-        //$request->get('id');
         if ($request->ajax()) {
             if (!empty($request->get('sdate'))) {
                 $dateRange = $request->input('sdate');
