@@ -447,7 +447,7 @@
             $('.alert-success').hide();
             actions = 'add';
             //_token: token
-            $('#searchBox').on('input', function() {
+            $('#Hn').on('input', function() {
                 var query = $(this).val();
                     $.ajax({
                     url: 'casetype6/seachcontact',
