@@ -237,7 +237,7 @@ class CasesController extends Controller
     public function destroy_all(Request $request)
     {
 
-        $arr_del  = $request->get('table_records'); //$arr_ans is Array MacAddress
+        $arr_del  = $request->get('table_records');
 
         for ($xx = 0; $xx < count($arr_del); $xx++) {
             CrmCase::find($arr_del[$xx])->delete();
