@@ -454,13 +454,15 @@
                     method: 'GET',
                     async: false,
                     success: function(data) {
-                        alert(data.length);
-                        var suggestions = JSON.parse(data);
+                        //alert(data.length);
+                        //var suggestions = JSON.parse(data);
                         var suggestionsList = $('#suggestions');
                         suggestionsList.empty();
-                        suggestions.forEach(function(item) {
+                        //suggestions.forEach(function(item) {
+                            $.each(data, function(index, item) {
                             suggestionsList.append('<li>' + item + '</li>');
                         });
+                        //});
 
                         suggestionsList.on('click', 'li', function() {
                             $('#Hn').val($(this).text());
