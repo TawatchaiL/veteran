@@ -570,7 +570,7 @@
                                                 value +
                                                 '</li></strong>');
                                     });
-                                    $this().scrollTo(0,0);
+                                    alert(JSON.stringify(result.errors));
                                 } else {
                                     $('.alert-danger-pop').hide();
                                     $('.alert-success-pop').show();
@@ -677,7 +677,7 @@
                                                 value +
                                                 '</li></strong>');
                                     });
-                                    $this().scrollTo(0,0);
+                                    alert(JSON.stringify(result.errors));
                                 } else {
                                     $('.alert-danger-pop').hide();
                                     $('.alert-success-pop').show();
