@@ -450,7 +450,7 @@
             $('#Hn').on('input', function() {
                 var query = $(this).val();
                     $.ajax({
-                    url: 'casetype6/seachcontact/' + query,
+                    url: 'cases/seachcontact/' + query,
                     method: 'GET',
                     async: false,
                     success: function(data) {
