@@ -449,6 +449,7 @@
             //_token: token
             $('#Hn').on('input', function() {
                 var query = $(this).val();
+                alert(query);
                     $.ajax({
                     url: 'casetype6/seachcontact/' + query,
                     method: 'GET',
