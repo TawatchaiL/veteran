@@ -570,9 +570,9 @@
                                                 value +
                                                 '</li></strong>');
                                     });
-                                    input.addEventListener('keyup', (event) => {
-
-                                    });
+                                    var e = jQuery.Event("keydown");
+                                    e.which = 38; 
+                                    $(document).trigger(e);
                                 } else {
                                     $('.alert-danger-pop').hide();
                                     $('.alert-success-pop').show();
