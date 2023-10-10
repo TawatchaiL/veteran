@@ -570,9 +570,7 @@
                                                 value +
                                                 '</li></strong>');
                                     });
-                                    var e = jQuery.Event("keydown");
-                                    e.which = 38; 
-                                    $(document).trigger(e);
+                                    document.addEventListener("keydown", function(event) {});
                                 } else {
                                     $('.alert-danger-pop').hide();
                                     $('.alert-success-pop').show();
