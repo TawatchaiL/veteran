@@ -260,6 +260,10 @@ class ContactController extends Controller
                 $Crmemergency->save();
             }
         }
+        //DB::table('crm_phone_emergencies')->insert([
+        //    ['contact_id' => $insertedId, 'emergencyname' => '1', 'emerrelation' => '2', 'emerphone' => '3'],
+        //    ['contact_id' => $insertedId, 'emergencyname' => '4', 'emerrelation' => '5', 'emerphone' => '6'],
+        //]);
         return response()->json(['success' => 'เพิ่ม รายผู้ติดต่อ เรียบร้อยแล้ว']);
     }
 
