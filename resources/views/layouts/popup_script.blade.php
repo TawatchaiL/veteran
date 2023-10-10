@@ -570,8 +570,7 @@
                                                 value +
                                                 '</li></strong>');
                                     });
-                                    var hiddenField = document.getElementById("hnp");
-                                    hiddenField.focus();
+                                    window.scrollTo(0,0);
                                 } else {
                                     $('.alert-danger-pop').hide();
                                     $('.alert-success-pop').show();
@@ -678,8 +677,7 @@
                                                 value +
                                                 '</li></strong>');
                                     });
-                                    var hiddenField = document.getElementById("hnp");
-                                    hiddenField.focus();
+                                    window.scrollTo(0,0);
                                 } else {
                                     $('.alert-danger-pop').hide();
                                     $('.alert-success-pop').show();
