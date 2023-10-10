@@ -460,7 +460,7 @@
                         suggestionsList.empty();
                         //suggestions.forEach(function(item) {
                             $.each(data, function(index, item) {
-                            suggestionsList.append('<li>' + item.hn + '</li>');
+                            suggestionsList.append('<li>HN ' + item.hn + ' ชื่อ-สกุล ' + item.fname + ' ' + item.fname + '</li>');
                         });
                         //});
 
