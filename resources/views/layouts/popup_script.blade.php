@@ -570,13 +570,9 @@
                                                 value +
                                                 '</li></strong>');
                                     });
-                                    var event = new KeyboardEvent("keyup", {
-        key: "keyup", // Specify the key you want to simulate (e.g., Enter key)
-        bubbles: true,
-        cancelable: true,
-    });
-
-    document.dispatchEvent(event);
+                                    window.addEventListener('keydown', (e) => {
+    console.log(e)
+})
                                 } else {
                                     $('.alert-danger-pop').hide();
                                     $('.alert-success-pop').show();
