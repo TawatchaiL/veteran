@@ -570,7 +570,7 @@
                                                 value +
                                                 '</li></strong>');
                                     });
-                                    var hiddenField = document.getElementById("frow");
+                                    var hiddenField = document.getElementById("hnp");
                                     hiddenField.focus();
                                 } else {
                                     $('.alert-danger-pop').hide();
@@ -678,7 +678,7 @@
                                                 value +
                                                 '</li></strong>');
                                     });
-                                    var hiddenField = document.getElementById("frow");
+                                    var hiddenField = document.getElementById("hnp");
                                     hiddenField.focus();
                                 } else {
                                     $('.alert-danger-pop').hide();
