@@ -569,8 +569,8 @@
                                             .append('<strong><li>' +
                                                 value +
                                                 '</li></strong>');
+                                                alert(key);
                                     });
-                                    document.location.href = '#top';
                                 } else {
                                     $('.alert-danger-pop').hide();
                                     $('.alert-success-pop').show();
@@ -677,7 +677,6 @@
                                                 value +
                                                 '</li></strong>');
                                     });
-                                    document.location.href = '#top';
                                 } else {
                                     $('.alert-danger-pop').hide();
                                     $('.alert-success-pop').show();
