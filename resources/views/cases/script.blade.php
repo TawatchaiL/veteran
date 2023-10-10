@@ -455,7 +455,7 @@
                     async: false,
                     success: function(data) {
                         alert(data.data);
-                        var suggestions = JSON.parse(data);
+                        var suggestions = JSON.parse(data.data);
                         var suggestionsList = $('#suggestions');
                         suggestionsList.empty();
 
