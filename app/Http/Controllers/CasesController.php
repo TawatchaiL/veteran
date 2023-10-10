@@ -131,9 +131,9 @@ class CasesController extends Controller
     public function seachcontact($id)
     {
         //$data = CrmContact::select('crm_contacts.hn as hn')
-        $data = DB::table('crm_contacts')->select('crm_contacts.hn as hn')
-        ->where('crm_contacts.phoneno', 'like', '%' . $id . '%')
-        ->get();
+        //$data = DB::table('crm_contacts')->select('crm_contacts.hn as hn')
+        //->where('crm_contacts.phoneno', 'like', '%' . $id . '%')
+        //->get();
        // $data = CrmContact::find($id);
        $data = ['hn' => 't', 'hn' => 'y'];
         return response()->json(['data' => $data]);
