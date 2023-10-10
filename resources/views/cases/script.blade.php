@@ -446,27 +446,30 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
             actions = 'add';
+            //_token: token
+            $('#searchBox').on('input', function() {
+                var query = $(this).val();
+                    $.ajax({
+                    url: 'casetype6/seachcontact',
+                    method: 'POST',
+                    async: false,
+                    data: { query: query },
+                    success: function(data) {
+                        var suggestions = JSON.parse(data);
+                        var suggestionsList = $('#suggestions');
+                        suggestionsList.empty();
 
-            $.ajax({
-            url: '',
-            method: 'POST',
-            async: false,
-            data: { query: query },
-            success: function(data) {
-                var suggestions = JSON.parse(data);
-                var suggestionsList = $('#suggestions');
-                suggestionsList.empty();
+                        suggestions.forEach(function(item) {
+                            suggestionsList.append('<li>' + item + '</li>');
+                        });
 
-                suggestions.forEach(function(item) {
-                    suggestionsList.append('<li>' + item + '</li>');
+                        suggestionsList.on('click', 'li', function() {
+                            $('#Hn').val($(this).text());
+                            suggestionsList.empty();
+                        });
+                    }
+                    });
                 });
-
-                suggestionsList.on('click', 'li', function() {
-                    $('#Hn').val($(this).text());
-                    suggestionsList.empty();
-                });
-            }
-            });
 
             $.ajax({
                 url: "casetype6/casetype/0",
