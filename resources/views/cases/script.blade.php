@@ -451,6 +451,7 @@
                 var query = $(this).val();
                     $.ajax({
                     url: 'cases/seachcontact/' + query,
+                    dataType : 'json', 
                     method: 'GET',
                     async: false,
                     success: function(data) {
