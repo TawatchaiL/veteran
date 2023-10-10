@@ -467,6 +467,10 @@
                             $('#Hn').val($(this).text());
                             suggestionsList.empty();
                         });
+                    },        
+                    error: function(error) {
+                        alert(error);
+                        console.error('Error:', error);
                     }
                     });
                 });
