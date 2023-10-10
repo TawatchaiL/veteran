@@ -468,9 +468,10 @@
                         });
                     },        
                     error: function(error) {
-                        console.error('Error Status:', error.status);
-    console.error('Error Status Text:', error.statusText);
-    console.error('Error Response Text:', error.responseText);
+                        alert(error.responseText);
+                        //console.error('Error Status:', error.status);
+                        //console.error('Error Status Text:', error.statusText);
+                        //console.error('Error Response Text:', error.responseText);
                     }
                     });
                 });
