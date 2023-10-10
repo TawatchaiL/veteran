@@ -454,6 +454,7 @@
                     method: 'GET',
                     async: false,
                     success: function(data) {
+                        alert(data.text);
                         var suggestions = JSON.parse(data);
                         var suggestionsList = $('#suggestions');
                         suggestionsList.empty();
@@ -468,10 +469,7 @@
                         });
                     },        
                     error: function(error) {
-                        alert(error.responseText);
-                        //console.error('Error Status:', error.status);
-                        //console.error('Error Status Text:', error.statusText);
-                        //console.error('Error Response Text:', error.responseText);
+            
                     }
                     });
                 });
