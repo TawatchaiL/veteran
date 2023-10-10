@@ -454,8 +454,8 @@
                     method: 'GET',
                     async: false,
                     success: function(data) {
-                        alert(data.success);
-                        var suggestions = JSON.parse(data.data);
+                        alert(data.hn);
+                        var suggestions = JSON.parse(data.hn);
                         var suggestionsList = $('#suggestions');
                         suggestionsList.empty();
 
