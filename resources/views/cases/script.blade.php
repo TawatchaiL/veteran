@@ -458,7 +458,6 @@
                         var suggestions = JSON.parse(data);
                         var suggestionsList = $('#suggestions');
                         suggestionsList.empty();
-alert(suggestions);
                         suggestions.forEach(function(item) {
                             suggestionsList.append('<li>' + item + '</li>');
                         });
@@ -469,7 +468,7 @@ alert(suggestions);
                         });
                     },        
                     error: function(error) {
-            
+                        console.log('Error:', error);
                     }
                     });
                 });
