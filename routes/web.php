@@ -77,7 +77,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/casetype6/destroy_all', [App\Http\Controllers\CaseType6Controller::class, 'destroy_all'])->name('casetype6.destroy_all');
 
     Route::get('/cases', [App\Http\Controllers\CasesController::class, 'index'])->name('cases');
-    Route::get('/cases/seachcontact/{id}', [App\Http\Controllers\CaseTypeController::class, 'seachcontact'])->name('cases.seachcontact');
+    Route::get('/cases/seachcontact/{id}', [App\Http\Controllers\CasesController::class, 'seachcontact'])->name('cases.seachcontact');
     Route::post('/cases/store', [App\Http\Controllers\CasesController::class, 'store'])->name('cases.store');
     Route::get('/cases/edit/{id}', [App\Http\Controllers\CasesController::class, 'edit'])->name('cases.edit');
     Route::put('/cases/save/{id}', [App\Http\Controllers\CasesController::class, 'update'])->name('cases.save');
