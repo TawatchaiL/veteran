@@ -211,7 +211,6 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         //
-
         $valifield = [
             'hn' => 'required|string|max:10',
             'fname' => 'required|string|max:50',
