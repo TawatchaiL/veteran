@@ -22,9 +22,6 @@ class CasesController extends Controller
         $this->middleware('permission:case-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:case-delete', ['only' => ['destroy']]);
     }
-    /**
-     * Display a listing of the resource.
-     */
     public function index(Request $request)
     {
         //$id = request('id');
