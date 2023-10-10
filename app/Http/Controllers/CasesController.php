@@ -135,9 +135,6 @@ class CasesController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function seachcontact(Request $request)
     {
         $data = CrmContact::select('crm_contacts.hn as hn', 'crm_contacts.fname', 'crm_contacts.lname')
