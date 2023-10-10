@@ -161,7 +161,6 @@ class CasesController extends Controller
     {
 
         //$data = Cases::find($id);
-        //return response()->json(['data' => $data]);
 
         $data = CrmCase::join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
         ->select('crm_cases.*','crm_contacts.hn as hn', DB::raw("concat(crm_contacts.fname, ' ', crm_contacts.lname) as name"))
