@@ -230,9 +230,6 @@ class CasesController extends Controller
         return response()->json(['success' => 'แก้ไข เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Request $request)
     {
         $id = $request->get('id');
