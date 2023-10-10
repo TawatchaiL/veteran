@@ -449,13 +449,10 @@
             //_token: token
             $('#Hn').on('input', function() {
                 var query = $(this).val();
-                alert('OK');
                     $.ajax({
-                    url: 'casetype6/seachcontact',
-                    method: 'POST',
+                    url: 'casetype6/seachcontact/' + query,
+                    method: 'GET',
                     async: false,
-                    data: { query: query, 
-                         _token: token },
                     success: function(data) {
                         var suggestions = JSON.parse(data);
                         var suggestionsList = $('#suggestions');
