@@ -138,7 +138,7 @@ class CasesController extends Controller
         //$data = CrmContact::select('crm_contacts.hn as hn')
         //->where('crm_contacts.phoneno', 'like', '%' . $id . '%')
         //->get();
-        $data = ['test','test2'];
+        $data = ['0' => 'test','1' => 'test2'];
         return response()->json(['data' => $data]);
     }
 
