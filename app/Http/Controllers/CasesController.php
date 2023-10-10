@@ -159,17 +159,6 @@ class CasesController extends Controller
         return response()->json(['success' => 'เพิ่ม เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    //public function show(Order $order)
-    //{
-    //
-    //}
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit($id)
     {
 
