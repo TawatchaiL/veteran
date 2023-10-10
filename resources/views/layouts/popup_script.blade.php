@@ -570,7 +570,7 @@
                                                 value +
                                                 '</li></strong>');
                                     });
-                                    $('#' + cardId).scrollTo(0,0);
+                                    $this().scrollTo(0,0);
                                 } else {
                                     $('.alert-danger-pop').hide();
                                     $('.alert-success-pop').show();
@@ -677,7 +677,7 @@
                                                 value +
                                                 '</li></strong>');
                                     });
-                                    $('#' + cardId).scrollTo(0,0);
+                                    $this().scrollTo(0,0);
                                 } else {
                                     $('.alert-danger-pop').hide();
                                     $('.alert-success-pop').show();
