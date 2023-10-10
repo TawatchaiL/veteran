@@ -79,7 +79,6 @@ class CasesController extends Controller
                 ->where('crm_contacts.fname', 'like', '%' . $request->input('seachtext') . '%')
                 ->orWhere('crm_contacts.lname', 'like', '%' . $request->input('seachtext') . '%')
                 ->whereRaw('crm_cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
-                //->where('crm_cases.contact_id', '=', request('id'))
                 ->get();
             }else if ($request->input('seachtype') === "5") {
                 $datas = DB::table('crm_cases')
@@ -126,7 +125,7 @@ class CasesController extends Controller
 
     public function create()
     {
-        //
+        
     }
 
     public function seachcontact($id)
