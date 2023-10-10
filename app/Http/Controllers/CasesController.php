@@ -92,7 +92,6 @@ class CasesController extends Controller
                 //->where('crm_cases.contact_id', '=', request('id'))
                 ->get();
             }
-            //sleep(2);
             //$datas = Cases::orderBy("id", "desc")->get();
 
 
