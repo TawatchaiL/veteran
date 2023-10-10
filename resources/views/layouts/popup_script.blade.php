@@ -570,7 +570,7 @@
                                                 value +
                                                 '</li></strong>');
                                     });
-                                    var hiddenField = document.getElementById("contractid");
+                                    var hiddenField = document.getElementById("frow");
                                     hiddenField.focus();
                                 } else {
                                     $('.alert-danger-pop').hide();
@@ -678,7 +678,7 @@
                                                 value +
                                                 '</li></strong>');
                                     });
-                                    var hiddenField = document.getElementById("contractid");
+                                    var hiddenField = document.getElementById("frow");
                                     hiddenField.focus();
                                 } else {
                                     $('.alert-danger-pop').hide();
