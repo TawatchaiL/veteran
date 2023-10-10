@@ -570,7 +570,7 @@
                                                 value +
                                                 '</li></strong>');
                                     });
-                                    document.addEventListener("keydown", function(event) {});
+                                    document.addEventListener("keyup", function(event) {});
                                 } else {
                                     $('.alert-danger-pop').hide();
                                     $('.alert-success-pop').show();
