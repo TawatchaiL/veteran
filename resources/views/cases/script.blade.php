@@ -447,6 +447,32 @@
             $('.alert-success').hide();
             actions = 'add';
             //_token: token
+            $('#Hn').on('input', function() {
+                var query = $(this).val();
+                    $.ajax({
+                    url: 'cases/seachcontact/' + query,
+                    method: 'GET',
+                    async: false,
+                    success: function(data) {
+                        alert(data.success);
+                        var suggestions = JSON.parse(data.data);
+                        var suggestionsList = $('#suggestions');
+                        suggestionsList.empty();
+
+                        suggestions.forEach(function(item) {
+                            suggestionsList.append('<li>' + item + '</li>');
+                        });
+
+                        suggestionsList.on('click', 'li', function() {
+                            $('#Hn').val($(this).text());
+                            suggestionsList.empty();
+                        });
+                    },        
+                    error: function(error) {
+            
+                    }
+                    });
+                });
             $.ajax({
                 url: "casetype6/casetype/0",
                 method: 'GET',
