@@ -569,7 +569,9 @@
                                             .append('<strong><li>' +
                                                 value +
                                                 '</li></strong>');
-                                                alert(key);
+                                    });
+                                    input.addEventListener('keyup', (event) => {
+
                                     });
                                 } else {
                                     $('.alert-danger-pop').hide();
