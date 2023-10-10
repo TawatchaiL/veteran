@@ -453,7 +453,8 @@
                     url: 'casetype6/seachcontact',
                     method: 'POST',
                     async: false,
-                    data: { query: query },
+                    data: { query: query, 
+                         _token: token },
                     success: function(data) {
                         var suggestions = JSON.parse(data);
                         var suggestionsList = $('#suggestions');
