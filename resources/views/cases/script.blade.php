@@ -460,7 +460,7 @@
                         suggestionsList.empty();
                         //suggestions.forEach(function(item) {
                             $.each(data, function(index, item) {
-                            suggestionsList.append('<li>' + item + '</li>');
+                            suggestionsList.append('<li>' + item.hn + '</li>');
                         });
                         //});
 
