@@ -183,7 +183,7 @@ class ContactController extends Controller
             }
 
             $html = '<div class="col-md-12">
-            <div class="card-body card-content pop_content" id="pop_' . $item->telno . '">
+            <div class=" pop_content" id="pop_' . $item->telno . '">
             ' . $statusText . '
             </div></div>';
             $tab_link .= '<li class="nav-item">
