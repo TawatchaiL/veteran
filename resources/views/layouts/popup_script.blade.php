@@ -606,6 +606,13 @@
                                             .val()
                                         ); // Replace 'yourCardId' with the actual ID of your card element
                                     cardElement.remove();
+
+                                    $(`#custom-tabs-pop-${cardElement}-tab`).closest(
+                                        '.nav-item').remove();
+
+                                    // Remove the tab content by ID
+                                    $(`#custom-tabs-pop-${cardElement}`).remove();
+
                                     //$('#'.$('#telnop').val()).remove();
                                     //$('#EditModal').modal('hide');
                                     //toastr.success(result.success, {
@@ -712,6 +719,11 @@
                                             .val()
                                         ); // Replace 'yourCardId' with the actual ID of your card element
                                     cardElement.remove();
+                                    $(`#custom-tabs-pop-${cardElement}-tab`).closest(
+                                        '.nav-item').remove();
+
+                                    // Remove the tab content by ID
+                                    $(`#custom-tabs-pop-${cardElement}`).remove();
                                     //$('#EditModal').modal('hide');
                                     //toastr.success(result.success, {
                                     //    timeOut: 5000
