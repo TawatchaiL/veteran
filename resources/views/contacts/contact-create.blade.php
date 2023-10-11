@@ -21,7 +21,7 @@
         </div>
         <div id="phonenosuccess" class="text-center">
         </div>
-        <div class="card card-primary card-tabs">
+        <div class="card card-success card-tabs">
             <div class="card-header p-0 pt-1">
                 <ul class="nav nav-tabs" id="custom-tabs-one-tabp" role="tablist">
                     <li class="nav-item">
