@@ -202,7 +202,10 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="row" id="call_list">
+                    <!-- Content for the Call list tab -->
+                    <!-- You can add content here -->
+                </div>
                 <div class="card card-primary card-tabs">
                     <div class="card-header p-0 pt-1">
                         <ul class="nav nav-tabs" id="custom-tabs-pop" role="tablist">
@@ -222,10 +225,7 @@
                         <div class="tab-content" id="custom-tabs-pop-tabContent">
                             <div class="tab-pane fade show active" id="custom-tabs-pop-call" role="tabpanel"
                                 aria-labelledby="custom-tabs-pop-call-tab">
-                                <div class="row" id="call_list">
-                                    <!-- Content for the Call list tab -->
-                                    <!-- You can add content here -->
-                                </div>
+
                             </div>
                             <div class="tab-pane fade" id="custom-tabs-pop-popup" role="tabpanel"
                                 aria-labelledby="custom-tabs-pop-popup-tab">
