@@ -33,12 +33,12 @@ class PBXController extends Controller
 
         if ($user) {
             if ($request->get('atxfer') == 1) {
-                $atxfer = TRUE;
+                $ret = $this->issable->atx_transfer($user->phone, $request->get('number'));
             } else {
-                $atxfer = FALSE;
+                $ret = $this->issable->transfer($user->phone, $request->get('number'));
             }
 
-            $ret = $this->issable->transfer($user->phone, $request->get('number'),  $atxfer);
+
             if ($ret == true) {
                 return [
                     'success' => true,
