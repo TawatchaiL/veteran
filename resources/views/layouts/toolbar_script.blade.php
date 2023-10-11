@@ -305,21 +305,21 @@
                         }
                     }); */
                     $.ajax({
-                    url: "{{ route('tranfer') }}",
-                    method: 'post',
-                    data: {
+                        url: "{{ route('tranfer') }}",
+                        method: 'post',
+                        data: {
                             number: chan[1],
                             _token: token,
                         },
-                    async: false,
-                    success: function(result) {
-                        if (result.success == true) {
-                        alert_success('OK', 'โอนสายสำเร็จ', '');
-                        } else {
-                            alert_danger('Oop', 'โอนสายwไม่สำเร็จ', '');
+                        async: false,
+                        success: function(result) {
+                            if (result.success == true) {
+                                alert_success('OK', 'โอนสายสำเร็จ', '');
+                            } else {
+                                alert_danger('Oop', 'โอนสาย ไม่สำเร็จ', '');
+                            }
                         }
-                    }
-                });
+                    });
                     //}
                 } else {
                     alert_danger('Opp', 'กรุณาระบุหมายเลขที่จะโอนสาน', '');
