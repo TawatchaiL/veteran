@@ -2,7 +2,7 @@
     const web_url = '{{ url('/') }}';
     const agent_username = '{{ $temporaryPhone }}';
     const exten = '{{ $temporaryPhone }}';
-    const account_code = '';
+    const account_code = exten;
     const event_serv = '{{ config('asterisk.event_serv.address') }}';
     let obj = {};
 
@@ -399,19 +399,19 @@
 
 
     //call button
-    $(".button_dial").click(function() {
-        let call_number = $('#dial_number').val();
+    dial_button.click(function() {
+        let call_number = dial_number.val();
         if (call_number !== '') {
             $.get(`${event_serv}/dial/` + call_number + "/" + exten + "/" + account_code, (data, status) => {
                 if (status == 'success') {
-                    alert_success('OK', 'Dial Success', '');
-                    $('#dial_number').val('');
+                    alert_success('OK', 'โทรออกสำเร็จ', '');
+                    dial_number.val('');
                 } else {
                     alert_danger('Opp', 'Something Error', '');
                 }
             });
         } else {
-            alert_danger('Opp', 'Please input  number to dial ', '');
+            alert_danger('Opp', 'กรุณาระบุหมายเลขที่จะโทร ', '');
         }
 
     });
