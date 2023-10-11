@@ -266,32 +266,19 @@
                 <div class="card card-primary card-tabs">
                     <div class="card-header p-0 pt-1">
                         <ul class="nav nav-tabs" id="custom-tabs-pop" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="custom-tabs-pop-call-tab" data-toggle="pill"
-                                    href="#custom-tabs-pop-call" role="tab" aria-controls="custom-tabs-pop-call"
-                                    aria-selected="true">รายการสายสนทนา</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="custom-tabs-pop-popup-tab" data-toggle="pill"
-                                    href="#custom-tabs-pop-popup" role="tab" aria-controls="custom-tabs-pop-popup"
-                                    aria-selected="false">รายการ Popup ข้อมูลผู้ติดต่อ</a>
-                            </li>
+
                         </ul>
                     </div>
                     <div class="card-body">
                         <div class="tab-content" id="custom-tabs-pop-tabContent">
-                            <div class="tab-pane fade show active" id="custom-tabs-pop-call" role="tabpanel"
-                                aria-labelledby="custom-tabs-pop-call-tab">
 
-                            </div>
-                            <div class="tab-pane fade" id="custom-tabs-pop-popup" role="tabpanel"
-                                aria-labelledby="custom-tabs-pop-popup-tab">
-                                <div class="row" id="dpopup">
-                                    <!-- Content for the Popup tab -->
-                                    <!-- You can add content here -->
-                                </div>
-                            </div>
                         </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <button type="button" class="btn btn-lg btn-success float-right" id="SubmitCreateFormPOP"><i
+                                class="fas fa-download"></i>
+                            บันทึกข้อมูล</button>
+
                     </div>
                 </div>
             </div>
