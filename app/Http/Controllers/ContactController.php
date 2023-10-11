@@ -155,6 +155,8 @@ class ContactController extends Controller
             ->orderBy('id', 'desc')
             ->get();
         $html = '';
+        $tab_link = '';
+        $tab_content = '';
         foreach ($datac as $item) {
             $datap = DB::table('crm_contacts')
                 ->where('phoneno', '=', $item->telno)
@@ -167,7 +169,8 @@ class ContactController extends Controller
                 $statusText = "(ผู้ติดต่อใหม่)&nbsp;&nbsp;&nbsp;";
             }
             /* style="width: 300px; height: 150px;"  */
-            $html .= '<div class="col-md-3"><div class="card card-danger custom-bottom-right-card d-none d-md-block" data-id="' . $item->telno . '" id="' . $item->telno . '" >
+
+            $html = '<div class="col-md-3"><div class="card card-danger custom-bottom-right-card d-none d-md-block" data-id="' . $item->telno . '" id="' . $item->telno . '" >
             <div class="card-header">
             <h4 class="card-title"> <i class="fa-solid fa-user fa-beat" style="--fa-beat-scale: 1.5;"></i> ' . $item->telno . ' </h4>
             <div class="card-tools">
@@ -186,10 +189,23 @@ class ContactController extends Controller
             <button type="button" class="btn btn-success bopen" data-card-widget="maximize"><i class="fa-solid fa-up-right-from-square"></i> เปิด</button>
             </div>
             </div></div>';
+            $tab_link .= '<li class="nav-item">
+            <a class="nav-link" id="custom-tabs-pop-' . $item->telno . '-tab" data-toggle="pill"
+                href="#custom-tabs-pop-' . $item->telno . '" role="tab" aria-controls="custom-tabs-pop-' . $item->telno . '"
+                aria-selected="false">' . $item->telno . '</a>
+            </li>';
+            $tab_content .= '<div class="tab-pane fade" id="custom-tabs-pop-' . $item->telno . '" role="tabpanel"
+            aria-labelledby="custom-tabs-pop-' . $item->telno . '-tab">
+            <div class="row" id="dpopup_' . $item->telno . '">
+            ' . $html . '
+            </div>
+        </div>';
         }
 
         return response()->json([
-            'html' =>  $html
+            'html' =>  $html,
+            'tab_link' => $tab_link,
+            'tab_content' => $tab_content
         ]);
     }
 
