@@ -45,7 +45,7 @@
         var i, tabcontent, tablinks;
 
         // Get all elements with class="tabcontent" and hide them
-        tabcontent = document.getElementsByClassName("custom-tabs-pop");
+        tabcontent = document.getElementsByClassName("custom-tabs-pop-tabContent");
         //for (i = 0; i < tabcontent.length; i++) {
         //tabcontent[i].style.display = "none";
         //}
