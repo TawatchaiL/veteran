@@ -9,22 +9,23 @@
             style="display: none;">
 
             <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true"></span>
+                <span aria-hidden="true">&times;</span>
             </button>
         </div>
 
         {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
-        <div class="text-center">
-            {{-- <h1 style="color: #1a16eb"><i class="fa-solid fa-id-card-clip"></i><input type="hidden" value=""
-                    name="contractid" id="contractid"><input type="hidden" value="{{ $telephone }}" name="telnop"
-                    id="telnop"> {{ $telephone }}</h1> --}}
+        <div class="text-center"><input type="hidden" value="" name="contractid" id="contractid"><input
+                type="hidden" value="{{ $telephone }}" name="telnop" id="telnop">
+            {{-- <h1 style="color: #1a16eb"><i class="fa-solid fa-id-card-clip"></i> {{ $telephone }}</h1> --}}
         </div>
         <div id="phonenosuccess" class="text-center">
         </div>
-        <div class="card card-success card-tabs">
+        <div class="card card-success card-outline card-outline-tabs">
             <div class="card-header p-0 pt-1">
                 <ul class="nav nav-tabs" id="custom-tabs-one-tabp" role="tablist">
-                    <li class="pt-2 px-3"><h3 class="card-title" id="contact_name"></h3></li>
+                    <li class="pt-2 px-3">
+                        <h3 class="card-title" id="contact_name"></h3>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link active" id="custom-tabs-one-home-tabp" data-toggle="pill"
                             href="#custom-tabs-one-homep" role="tab" aria-controls="custom-tabs-one-homep"
