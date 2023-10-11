@@ -358,6 +358,8 @@
 
                     setTimeout(function() {
                         var telnop = $('#telnop').val();
+                        $('#phonenosuccess').html(
+                                    '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ผู้ติดต่อใหม่</h3>');
                         $.ajax({
                             url: "contacts/popupedit/" + telnop,
                             method: 'GET',
@@ -463,6 +465,7 @@
 
                             }
                         });
+
                         setTimeout(function() {
                             $.ajax({
                                 url: "casetype6/casetype/0",
