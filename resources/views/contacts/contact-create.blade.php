@@ -18,7 +18,7 @@
                 type="hidden" value="{{ $telephone }}" name="telnop" id="telnop">
             {{-- <h1 style="color: #1a16eb"><i class="fa-solid fa-id-card-clip"></i> {{ $telephone }}</h1> --}}
         </div>
-        <div id="phonenosuccess" class="text-center">
+        <div id="phonenosuccess" class="text-end">
         </div>
         <div class="card card-success card-outline card-outline-tabs">
             <div class="card-header p-0 pt-1">
