@@ -601,17 +601,15 @@
                                         '<strong><li>' + result
                                         .success +
                                         '</li></strong>');
-                                    var cardElement = document
-                                        .getElementById($('#telnop')
-                                            .val()
-                                        ); // Replace 'yourCardId' with the actual ID of your card element
-                                    //cardElement.remove();
+                                    var cardElementId = $('#telnop')
+                                        .val(); // Get the value from the input
 
-                                    $(`#custom-tabs-pop-${cardElement}-tab`).closest(
+                                    // Remove the tab link by ID
+                                    $(`#custom-tabs-pop-${cardElementId}-tab`).closest(
                                         '.nav-item').remove();
 
                                     // Remove the tab content by ID
-                                    $(`#custom-tabs-pop-${cardElement}`).remove();
+                                    $(`#custom-tabs-pop-${cardElementId}`).remove();
 
                                     //$('#'.$('#telnop').val()).remove();
                                     //$('#EditModal').modal('hide');
@@ -714,16 +712,15 @@
                                         '<strong><li>' + result
                                         .success +
                                         '</li></strong>');
-                                    var cardElement = document
-                                        .getElementById($('#telnop')
-                                            .val()
-                                        ); // Replace 'yourCardId' with the actual ID of your card element
-                                    //ardElement.remove();
-                                    $(`#custom-tabs-pop-${cardElement}-tab`).closest(
+                                    var cardElementId = $('#telnop')
+                                .val(); // Get the value from the input
+
+                                    // Remove the tab link by ID
+                                    $(`#custom-tabs-pop-${cardElementId}-tab`).closest(
                                         '.nav-item').remove();
 
                                     // Remove the tab content by ID
-                                    $(`#custom-tabs-pop-${cardElement}`).remove();
+                                    $(`#custom-tabs-pop-${cardElementId}`).remove();
                                     //$('#EditModal').modal('hide');
                                     //toastr.success(result.success, {
                                     //    timeOut: 5000
