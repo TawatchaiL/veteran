@@ -1,5 +1,5 @@
 <div class="row" style="display: flex; justify-content: center; align-items: center;">
-    <div class="col-md-10 col-sm-10 col-lg-10">
+    <div class="col-md-12 col-sm-12 col-lg-12">
         <div class="alert alert-danger alert-danger-pop alert-dismissible fade show" role="alert" style="display: none;">
             <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
