@@ -23,6 +23,7 @@
         <div class="card card-success card-outline card-outline-tabs">
             <div class="card-header p-0 pt-1">
                 <ul class="nav nav-tabs" id="custom-tabs-one-tabp" role="tablist">
+                    <li class="rightside" role="presentation" id="phonenosuccess"></li>
                     {{--   <li class="pt-2 px-3">
                         <h3 class="card-title" id="contact_name"></h3>
                     </li> --}}
@@ -41,7 +42,7 @@
                             href="#custom-tabs-one-casep" role="tab" aria-controls="custom-tabs-one-casep"
                             aria-selected="true">ข้อมูลเรื่องที่ติดต่อ</a>
                     </li>
-                    <li class="rightside" role="presentation" id="phonenosuccess"></li>
+
                 </ul>
             </div>
             <div class="card-body">
