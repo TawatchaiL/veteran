@@ -201,7 +201,7 @@ class ContactController extends Controller
             </div>
             </div></div>';
             $tab_link .= '<li class="nav-item">
-            <a class="nav-link ' . $tab_link_active . '" id="custom-tabs-pop-' . $item->telno . '-tab" data-toggle="pill"
+            <a class="nav-link ' . $tab_link_active . '" id="custom-tabs-pop-' . $item->telno . '-tab" data-toggle="pill" data-id="' . $item->telno . '"
                 href="#custom-tabs-pop-' . $item->telno . '" role="tab" aria-controls="custom-tabs-pop-' . $item->telno . '"
                 aria-selected="false">' . $item->telno . '</a>
             </li>';
