@@ -367,10 +367,10 @@
                             async: false,
                             success: function(res) {
                                 $('#phonenosuccess').html(
-                                    '<h2 style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ' +
+                                    '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ' +
                                     res.datax.datac.fname +
                                     ' ' + res.datax.datac
-                                    .lname + '</h2>');
+                                    .lname + '</h3>');
                                 /* $('#contact_name').html(res.datax.datac.fname +
                                     ' ' + res.datax.datac
                                     .lname); */
