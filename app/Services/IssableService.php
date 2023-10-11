@@ -108,20 +108,21 @@ class IssableService
     public function transfer($sTransferExt, $bAtxfer = FALSE)
     {
         $this->errMsg = '';
-        try {
+        //try {
             $oECCP = $this->_obtenerConexion('ECCP');
             $respuesta = $bAtxfer
                 ? $oECCP->atxfercall($sTransferExt)
                 : $oECCP->transfercall($sTransferExt);
+                dd($respuesta);
             if (isset($respuesta->failure)) {
                 $this->errMsg = 'Unable to transfer call' . ' - ' . $this->_formatoErrorECCP($respuesta);
                 return FALSE;
             }
             return TRUE;
-        } catch (Exception $e) {
-            $this->errMsg = '(internal) transfercall: ' . $e->getMessage();
-            return FALSE;
-        }
+        //} catch (Exception $e) {
+        //    $this->errMsg = '(internal) transfercall: ' . $e->getMessage();
+        //    return FALSE;
+        //}
     }
 
 
