@@ -109,7 +109,7 @@
             success: async function(response) {
                 //$('#' + cardId).removeClass('card-danger');
                 //$('#' + cardId).addClass('card-success');
-                await $('#pop_' + cardId).html(response.html);
+                await $('#pop_' + dataId).html(response.html);
                 //$(".card-footer").css("display", "block")
                 //$('.bclose').css('display', 'none');
                 addemerphone();
