@@ -572,7 +572,7 @@
                     btn_pause.attr('disabled', true);
                     btn_agent_logout.attr('disabled', true);
                     btn_agent_logoff.attr('disabled', true);
-                    popup_tab.click();
+                    //popup_tab.click();
                     toolbar_modal.modal('show');
                 }
             });
