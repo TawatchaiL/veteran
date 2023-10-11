@@ -19,13 +19,13 @@
                         set_state_button(result.id);
                     }
                 });
-                toolbar_header.removeClass("card-primary");
-                toolbar_header.addClass("card-secondary");
+                toolbar_header.removeClass("bg-primary");
+                toolbar_header.addClass("bg-secondary");
                 state_overlay.removeClass("d-none");
                 toolbar_modal.modal('show');
             } else {
                 state_overlay.addClass("d-none");
-                toolbar_header.removeClass("card-primary card-secondary card-danger");
+                toolbar_header.removeClass("bg-primary bg-secondary bg-danger");
                 if (data.status == 0) {
                     $.ajax({
                         url: "{{ route('agent.hang') }}",
@@ -41,12 +41,12 @@
                             positionCards();
                         }
                     });
-                    toolbar_header.addClass("card-primary");
+                    toolbar_header.addClass("bg-primary");
                     //toolbar_modal.modal('hide');
                 } else if (data.status == 1 || data.status == 2 || data.status == 8 || data.status == 9) {
-                    toolbar_header.addClass("card-danger");
+                    toolbar_header.addClass("bg-danger");
                 } else if (data.status == 16 || data.status == 17) {
-                    toolbar_header.addClass("card-danger");
+                    toolbar_header.addClass("bg-danger");
                 }
 
             }
@@ -274,7 +274,7 @@
                 //}
 
             }
-          
+
         }
     });
 
