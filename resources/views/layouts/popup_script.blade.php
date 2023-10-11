@@ -41,15 +41,7 @@
 
     $('#custom-tabs-pop').on('click', '.nav-link', function() {
         let dataId = $(this).data('id');
-        
-        var i, tabcontent, tablinks;
-
-        // Get all elements with class="tabcontent" and hide them
-        tabcontent = document.getElementsByClassName("custom-tabs-pop-tabContent");
-        //for (i = 0; i < tabcontent.length; i++) {
-        //tabcontent[i].style.display = "none";
-        //}
-                alert(tabcontent.length);
+                alert($(this).index('a[data-toggle="tab"]'));
         maximizeCard(dataId);
     });
 
