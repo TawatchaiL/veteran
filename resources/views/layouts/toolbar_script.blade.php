@@ -308,7 +308,7 @@
                         url: "{{ route('tranfer') }}",
                         method: 'post',
                         data: {
-                            number: chan[1],
+                            number: call_number,
                             _token: token,
                         },
                         async: false,

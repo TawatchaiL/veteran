@@ -109,7 +109,7 @@ class IssableService
     {
         $this->errMsg = '';
         $this->_agent = 'SIP/' . $phone;
-        $trannum = explode("-", $sTransferExt);
+        $trannum = $sTransferExt;
         //try {
         $oECCP = $this->_obtenerConexion('ECCP');
         $respuesta = $bAtxfer
