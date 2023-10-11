@@ -200,8 +200,8 @@
                                     ประชุมสาย</button>
                             </div>
                         </div>
-                        <div class="row clearfix">
-
+                        <div class="row">
+                            <br>
                         </div>
                         <div class="row" id="call_list">
                             <!-- Content for the Call list tab -->
