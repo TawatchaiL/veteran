@@ -602,23 +602,16 @@
                                         .success +
                                         '</li></strong>');
                                     var cardElementId = $('#telnop')
-                                        .val(); // Get the value from the input
+                                        .val();
 
-                                    // Remove the tab link by ID
                                     $(`#custom-tabs-pop-${cardElementId}-tab`).closest(
                                         '.nav-item').remove();
-
-                                    // Remove the tab content by ID
                                     $(`#custom-tabs-pop-${cardElementId}`).remove();
+                                    toastr.success('บันทึกข้อมูลเรียบร้อยแล้ว', {
+                                        timeOut: 5000
+                                    });
 
-                                    //$('#'.$('#telnop').val()).remove();
-                                    //$('#EditModal').modal('hide');
-                                    //toastr.success(result.success, {
-                                    //    timeOut: 5000
-                                    //});
-                                    //setTimeout(function() {
-                                    //$('.alert-success').hide();
-                                    //}, 10000);
+                                    $('.alert-success').hide();
 
                                 }
                             }
@@ -713,23 +706,17 @@
                                         .success +
                                         '</li></strong>');
                                     var cardElementId = $('#telnop')
-                                .val(); // Get the value from the input
+                                        .val();
 
-                                    // Remove the tab link by ID
                                     $(`#custom-tabs-pop-${cardElementId}-tab`).closest(
                                         '.nav-item').remove();
-
-                                    // Remove the tab content by ID
                                     $(`#custom-tabs-pop-${cardElementId}`).remove();
-                                    //$('#EditModal').modal('hide');
-                                    //toastr.success(result.success, {
-                                    //    timeOut: 5000
-                                    //});
-                                    //$('#Listview').DataTable().ajax.reload();
-                                    //setTimeout(function() {
-                                    //$('.alert-success').hide();
+                                    toastr.success('บันทึกข้อมูลเรียบร้อยแล้ว', {
+                                        timeOut: 5000
+                                    });
 
-                                    //}, 10000);
+                                    $('.alert-success').hide();
+
 
                                 }
                             }
