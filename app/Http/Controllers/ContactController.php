@@ -150,9 +150,10 @@ class ContactController extends Controller
     {
         $user = Auth::user();
         $datac = DB::table('crm_incoming')
-            //->where('status', '=', "0")
-            //->orWhere('status', '=', "1")
             ->where('agentno', '=', $user->phone)
+            ->orWhere('status', '=', "0")
+            ->orWhere('status', '=', "1")
+            
             ->orderBy('id', 'desc')
             ->get();
         $html = '';
