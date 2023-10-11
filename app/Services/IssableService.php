@@ -105,23 +105,25 @@ class IssableService
     }
 
 
-    public function transfer($sTransferExt, $bAtxfer = FALSE)
+    public function transfer($phone, $sTransferExt, $bAtxfer = FALSE)
     {
         $this->errMsg = '';
-        try {
-            $oECCP = $this->_obtenerConexion('ECCP');
-            $respuesta = $bAtxfer
-                ? $oECCP->atxfercall($sTransferExt)
-                : $oECCP->transfercall($sTransferExt);
-            if (isset($respuesta->failure)) {
-                $this->errMsg = 'Unable to transfer call' . ' - ' . $this->_formatoErrorECCP($respuesta);
-                return FALSE;
-            }
-            return TRUE;
-        } catch (Exception $e) {
-            $this->errMsg = '(internal) transfercall: ' . $e->getMessage();
+        $this->_agent = 'SIP/' . $phone;
+        //try {
+        $oECCP = $this->_obtenerConexion('ECCP');
+        $respuesta = $bAtxfer
+            ? $oECCP->atxfercall($sTransferExt)
+            : $oECCP->transfercall($sTransferExt);
+        dd($respuesta);
+        if (isset($respuesta->failure)) {
+            $this->errMsg = 'Unable to transfer call' . ' - ' . $this->_formatoErrorECCP($respuesta);
             return FALSE;
         }
+        return TRUE;
+        //} catch (Exception $e) {
+        //    $this->errMsg = '(internal) transfercall: ' . $e->getMessage();
+        //    return FALSE;
+        //}
     }
 
 

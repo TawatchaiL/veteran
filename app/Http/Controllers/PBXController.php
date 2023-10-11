@@ -28,8 +28,11 @@ class PBXController extends Controller
     public function call_tranfer(Request $request)
     {
         // Retrieve the authenticated user
-        $ret = $this->issable->transfer($request->get('number'), FALSE);
-        if ($ret) {
+
+        $user = Auth::user();
+
+        if ($user) {
+            $ret = $this->issable->transfer($user->phone, $request->get('number'), FALSE);
             if ($ret == true) {
                 return [
                     'success' => true,
