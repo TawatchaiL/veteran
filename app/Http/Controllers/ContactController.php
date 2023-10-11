@@ -157,6 +157,7 @@ class ContactController extends Controller
         $html = '';
         $tab_link = '';
         $tab_content = '';
+        $i = 1;
         foreach ($datac as $item) {
             $datap = DB::table('crm_contacts')
                 ->where('phoneno', '=', $item->telno)
@@ -170,7 +171,17 @@ class ContactController extends Controller
             }
             /* style="width: 300px; height: 150px;"  */
 
-            $html = '<div class="col-md-3"><div class="card card-danger custom-bottom-right-card d-none d-md-block" data-id="' . $item->telno . '" id="' . $item->telno . '" >
+            if ($i == 1) {
+                $tab_link_active = 'active';
+                $tab_content_active = 'show active';
+                $card_active = 'card-danger';
+            } else {
+                $tab_link_active = '';
+                $tab_content_active = '';
+                $card_active = 'card-secondary';
+            }
+
+            $html = '<div class="col-md-3"><div class="card ' . $card_active . ' custom-bottom-right-card d-none d-md-block" data-id="' . $item->telno . '" id="' . $item->telno . '" >
             <div class="card-header">
             <h4 class="card-title"> <i class="fa-solid fa-user fa-beat" style="--fa-beat-scale: 1.5;"></i> ' . $item->telno . ' </h4>
             <div class="card-tools">
@@ -190,16 +201,17 @@ class ContactController extends Controller
             </div>
             </div></div>';
             $tab_link .= '<li class="nav-item">
-            <a class="nav-link" id="custom-tabs-pop-' . $item->telno . '-tab" data-toggle="pill"
+            <a class="nav-link ' . $tab_link_active . '" id="custom-tabs-pop-' . $item->telno . '-tab" data-toggle="pill"
                 href="#custom-tabs-pop-' . $item->telno . '" role="tab" aria-controls="custom-tabs-pop-' . $item->telno . '"
                 aria-selected="false">' . $item->telno . '</a>
             </li>';
-            $tab_content .= '<div class="tab-pane fade" id="custom-tabs-pop-' . $item->telno . '" role="tabpanel"
+            $tab_content .= '<div class="tab-pane fade ' . $tab_content_active . '" id="custom-tabs-pop-' . $item->telno . '" role="tabpanel"
             aria-labelledby="custom-tabs-pop-' . $item->telno . '-tab">
             <div class="row" id="dpopup_' . $item->telno . '">
             ' . $html . '
             </div>
         </div>';
+            $i++;
         }
 
         return response()->json([
