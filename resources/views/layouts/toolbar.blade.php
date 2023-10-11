@@ -200,12 +200,69 @@
                                     ประชุมสาย</button>
                             </div>
                         </div>
+                        <div class="row" id="call_list">
+                            <!-- Content for the Call list tab -->
+                            <!-- You can add content here -->
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <div class="btn-group float-left {{ $break_button_class }}" id="break_group">
+                            <button type="button" id="btn-pause" {{ $break_button }}
+                                class="btn btn-warning custom-button  mx-1 dropdown-toggle dropdown-icon"
+                                data-toggle="dropdown">
+                                <i class="fa-solid fa-user-clock"></i> พักเบรค <span class="sr-only">Toggle
+                                    Dropdown</span>
+                            </button>
+                            <div class="dropdown-menu" role="menu">
+
+                                <a class="dropdown-item button_break" href="#" data-id="2">
+                                    Lunch</a>
+                                <a class="dropdown-item button_break" href="#" data-id="3">
+                                    Toilet</a>
+                                <a class="dropdown-item button_break" href="#" data-id="4">
+                                    Meeting</a>
+                                <div class="dropdown-divider"></div>
+
+
+                            </div>
+                        </div>
+
+                        <div class="mx-2 px-2">
+                            <button {{ $login_button }} id="btn-agent-login"
+                                class="{{ $login_button_class }} btn btn-success custom-button mx-1 float-left">
+                                <i class="fas fa-plug"></i> พร้อมรับสาย
+                            </button>
+                        </div>
+                        <div class="mx-2 px-2">
+                            <button {{ $unbreak_button }}
+                                class="{{ $unbreak_button_class }} btn btn-warning custom-button float-left mx-1 button_unbreak"
+                                id="btn-unbreak">
+                                <i class="fas fa-clock"></i> หยุดพัก
+                            </button>
+                        </div>
+
+                        <div class="mx-2 px-2">
+                            <button {{ $logout_button }}
+                                class="{{ $logout_button_class }} btn btn-danger custom-button float-right"
+                                id="btn-system-logout"><i class="fas fa-power-off"></i> ออกจากระบบ
+                            </button>
+                        </div>
+
+                        <div class="mx-2 px-2">
+                            <!-- Add margin-right to create space -->
+                            <button {{ $logoff_button }} id="btn-agent-logout"
+                                class="{{ $logoff_button_class }} btn btn-secondary custom-button float-right"
+                                style="margin-right: 10px;"><i class="fa-solid fa-user-xmark"></i> ไม่พร้อมรับสาย
+                            </button>
+                        </div>
+
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                     </div>
                 </div>
-                <div class="row" id="call_list">
-                    <!-- Content for the Call list tab -->
-                    <!-- You can add content here -->
-                </div>
+
                 <div class="card card-primary card-tabs">
                     <div class="card-header p-0 pt-1">
                         <ul class="nav nav-tabs" id="custom-tabs-pop" role="tablist">
@@ -243,62 +300,7 @@
                         ไม่พร้อมใช้งาน กรุณาตรวจสอบ</span>
                 </h4>
             </div>
-            <div class="card-footer text-muted">
-                <div class="btn-group float-left {{ $break_button_class }}" id="break_group">
-                    <button type="button" id="btn-pause" {{ $break_button }}
-                        class="btn btn-warning custom-button  mx-1 dropdown-toggle dropdown-icon"
-                        data-toggle="dropdown">
-                        <i class="fa-solid fa-user-clock"></i> พักเบรค <span class="sr-only">Toggle
-                            Dropdown</span>
-                    </button>
-                    <div class="dropdown-menu" role="menu">
 
-                        <a class="dropdown-item button_break" href="#" data-id="2">
-                            Lunch</a>
-                        <a class="dropdown-item button_break" href="#" data-id="3">
-                            Toilet</a>
-                        <a class="dropdown-item button_break" href="#" data-id="4">
-                            Meeting</a>
-                        <div class="dropdown-divider"></div>
-
-
-                    </div>
-                </div>
-
-                <div class="mx-2 px-2">
-                    <button {{ $login_button }} id="btn-agent-login"
-                        class="{{ $login_button_class }} btn btn-success custom-button mx-1 float-left">
-                        <i class="fas fa-plug"></i> พร้อมรับสาย
-                    </button>
-                </div>
-                <div class="mx-2 px-2">
-                    <button {{ $unbreak_button }}
-                        class="{{ $unbreak_button_class }} btn btn-warning custom-button float-left mx-1 button_unbreak"
-                        id="btn-unbreak">
-                        <i class="fas fa-clock"></i> หยุดพัก
-                    </button>
-                </div>
-
-                <div class="mx-2 px-2">
-                    <button {{ $logout_button }}
-                        class="{{ $logout_button_class }} btn btn-danger custom-button float-right"
-                        id="btn-system-logout"><i class="fas fa-power-off"></i> ออกจากระบบ
-                    </button>
-                </div>
-
-                <div class="mx-2 px-2">
-                    <!-- Add margin-right to create space -->
-                    <button {{ $logoff_button }} id="btn-agent-logout"
-                        class="{{ $logoff_button_class }} btn btn-secondary custom-button float-right"
-                        style="margin-right: 10px;"><i class="fa-solid fa-user-xmark"></i> ไม่พร้อมรับสาย
-                    </button>
-                </div>
-
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
-            </div>
         </div>
     </div>
 </div>

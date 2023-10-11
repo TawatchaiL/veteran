@@ -274,7 +274,7 @@
                 //}
 
             }
-            //clearInterval(obj[data.luniq.replace('.', '')]);
+          
         }
     });
 
