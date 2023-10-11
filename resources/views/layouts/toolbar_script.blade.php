@@ -309,7 +309,7 @@
                         method: 'post',
                         data: {
                             number: call_number,
-                            atxfer: false,
+                            atxfer: 0,
                             _token: token,
                         },
                         async: false,
@@ -323,7 +323,7 @@
                     });
                     //}
                 } else {
-                    alert_danger('Opp', 'กรุณาระบุหมายเลขที่จะโอนสาน', '');
+                    alert_danger('Opp', 'กรุณาระบุหมายเลขที่จะโอนสาย', '');
                 }
 
             }
@@ -357,7 +357,7 @@
                         method: 'post',
                         data: {
                             number: call_number,
-                            atxfer: true,
+                            atxfer: 1,
                             _token: token,
                         },
                         async: false,
@@ -371,7 +371,7 @@
                     });
                     //}
                  } else {
-                    alert_danger('Opp', 'กรุณาระบุหมายเลขที่จะโอนสาน', '');
+                    alert_danger('Opp', 'กรุณาระบุหมายเลขที่จะโอนสาย', '');
                 }
 
             }
