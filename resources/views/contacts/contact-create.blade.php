@@ -5,7 +5,8 @@
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <div class="alert alert-success alert-success-pop alert-dismissible fade show" role="alert" style="display: none;">
+        <div class="alert alert-success alert-success-pop alert-dismissible fade show" role="alert"
+            style="display: none;">
 
             <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true"></span>
@@ -14,7 +15,9 @@
 
         {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
         <div class="text-center">
-            <h1 style="color: #1a16eb"><i class="fa-solid fa-id-card-clip"></i><input type="hidden" value="" name="contractid" id="contractid"><input type="hidden" value="{{ $telephone }}" name="telnop" id="telnop"> {{ $telephone }}</h1>
+            <h1 style="color: #1a16eb"><i class="fa-solid fa-id-card-clip"></i><input type="hidden" value=""
+                    name="contractid" id="contractid"><input type="hidden" value="{{ $telephone }}" name="telnop"
+                    id="telnop"> {{ $telephone }}</h1>
         </div>
         <div id="phonenosuccess" class="text-center">
         </div>
@@ -144,8 +147,8 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fa-solid fa-city"></i> จังหวัด :</strong>
-                                            <select style="width: 100%;" class="select2 form-control"
-                                                id="cityp" name="cityp">
+                                            <select style="width: 100%;" class="select2 form-control" id="cityp"
+                                                name="cityp">
                                             </select>
                                         </div>
                                     </div>
@@ -153,8 +156,8 @@
                                         <div class="form-group">
                                             <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
                                                 อำเภอ:</strong>
-                                            <select style="width: 100%;" class="select2 form-control"
-                                                id="districtp" name="districtp">
+                                            <select style="width: 100%;" class="select2 form-control" id="districtp"
+                                                name="districtp">
                                             </select>
                                         </div>
                                     </div>
@@ -266,8 +269,7 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <strong><i class="fa-regular fa-message"></i> ประเภทเคส:</strong>
-                                            <select style="width: 100%;"
-                                                class="select2 form-control" id="casetype1p"
+                                            <select style="width: 100%;" class="select2 form-control" id="casetype1p"
                                                 name="casetype1p">
                                             </select>
                                         </div>
@@ -276,8 +278,7 @@
                                         <div class="form-group">
                                             <strong><i class="fa-regular fa-comment-dots"></i>
                                                 รายละเอียดเคส:</strong>
-                                            <select style="width: 100%;"
-                                                class="select2 form-control" id="casetype2p"
+                                            <select style="width: 100%;" class="select2 form-control" id="casetype2p"
                                                 name="casetype2p">
                                             </select>
                                         </div>
@@ -288,8 +289,7 @@
                                         <div class="form-group">
                                             <strong><i class="fa-regular fa-comment-dots"></i>
                                                 รายละเอียดเคสย่อย:</strong>
-                                            <select style="width: 100%;"
-                                                class="select2 form-control" id="casetype3p"
+                                            <select style="width: 100%;" class="select2 form-control" id="casetype3p"
                                                 name="casetype3p">
                                             </select>
                                         </div>
@@ -298,8 +298,7 @@
                                         <div class="form-group">
                                             <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
                                                 เพิ่มเติม 1:</strong>
-                                            <select style="width: 100%;"
-                                                class="select2 form-control" id="casetype4p"
+                                            <select style="width: 100%;" class="select2 form-control" id="casetype4p"
                                                 name="casetype4p">
                                             </select>
                                         </div>
@@ -310,8 +309,7 @@
                                         <div class="form-group">
                                             <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
                                                 เพิ่มเติม 2:</strong>
-                                            <select style="width: 100%;"
-                                                class="select2 form-control" id="casetype5p"
+                                            <select style="width: 100%;" class="select2 form-control" id="casetype5p"
                                                 name="casetype5p">
                                             </select>
                                         </div>
@@ -320,8 +318,7 @@
                                         <div class="form-group">
                                             <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
                                                 เพิ่มเติม 3:</strong>
-                                            <select style="width: 100%;"
-                                                class="select2 form-control" id="casetype6p"
+                                            <select style="width: 100%;" class="select2 form-control" id="casetype6p"
                                                 name="casetype6p">
                                             </select>
                                         </div>
@@ -365,8 +362,7 @@
                                         <div class="form-group">
                                             <strong><i class="fas fa-arrows-rotate"></i> สถานะการเคส
                                                 :</strong>
-                                            <select class="select2 form-control" id="casestatusp"
-                                                name="casestatusp">
+                                            <select class="select2 form-control" id="casestatusp" name="casestatusp">
                                                 <option value="ปิดเคส">ปิดเคส</option>
                                                 <option value="กำลังดำเนินการ">กำลังดำเนินการ</option>
                                             </select>
