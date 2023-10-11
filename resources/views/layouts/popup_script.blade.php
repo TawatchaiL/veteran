@@ -605,7 +605,7 @@
                                         .getElementById($('#telnop')
                                             .val()
                                         ); // Replace 'yourCardId' with the actual ID of your card element
-                                    cardElement.remove();
+                                    //cardElement.remove();
 
                                     $(`#custom-tabs-pop-${cardElement}-tab`).closest(
                                         '.nav-item').remove();
@@ -718,7 +718,7 @@
                                         .getElementById($('#telnop')
                                             .val()
                                         ); // Replace 'yourCardId' with the actual ID of your card element
-                                    cardElement.remove();
+                                    //ardElement.remove();
                                     $(`#custom-tabs-pop-${cardElement}-tab`).closest(
                                         '.nav-item').remove();
 
