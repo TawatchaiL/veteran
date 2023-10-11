@@ -35,9 +35,15 @@
 
 
     const removeAllTabs = () => {
-        $('#custom-tabs-pop').empty(); // Remove the tab links
-        $('#custom-tabs-pop-tabContent').empty(); // Remove the tab content
+        $('#custom-tabs-pop').empty();
+        $('#custom-tabs-pop-tabContent').empty();
     };
+
+    $('#custom-tabs-pop').on('click', '.nav-link', function() {
+        let dataId = $(this).data('id');
+        maximizeCard(dataId);
+    });
+
     //popup card
     function positionCards() {
         var cardPositions = [];
@@ -54,7 +60,7 @@
                 maximizeCard(response.active_id);
                 //$('#dpopup').html(response.html);
                 // Position the cards after dynamic content is loaded
-                $('.custom-bottom-right-card').each(function(index) {
+               /*  $('.custom-bottom-right-card').each(function(index) {
                     cardPositions.push({
                         //right: (20 + (index * 320)) + 'px',
                         isMaximized: false,
@@ -62,7 +68,7 @@
                     //$(this).css('right', cardPositions[index].right);
                     //$(this).css('bottom', '35px');
                     //$(this).delay(index * 100).fadeIn();
-                });
+                }); */
 
                 //$('.custom-bottom-right-card').each(function(index) {
                 //    var cardPosition = {
@@ -99,10 +105,7 @@
         });
     }
 
-    $('#custom-tabs-pop').on('click', '.nav-link', function() {
-        let dataId = $(this).data('id');
-        maximizeCard(dataId);
-    });
+
 
     // Maximize card AJAX function
     function maximizeCard(cardId) {
