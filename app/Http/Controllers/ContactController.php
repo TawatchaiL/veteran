@@ -194,7 +194,7 @@ class ContactController extends Controller
             </li>';
             $tab_content .= '<div class="tab-pane fade ' . $tab_content_active . '" id="custom-tabs-pop-' . $item->telno . '" role="tabpanel"
             aria-labelledby="custom-tabs-pop-' . $item->telno . '-tab">
-            <div class="row" id="dpopup_' . $item->telno . '">
+            <div class="row col-md-12" id="dpopup_' . $item->telno . '">
             ' . $html . '
             </div>
         </div>';
