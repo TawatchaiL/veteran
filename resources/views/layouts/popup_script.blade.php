@@ -51,7 +51,7 @@
                 removeAllTabs();
                 $('#custom-tabs-pop').prepend(response.tab_link);
                 $('#custom-tabs-pop-tabContent').prepend(response.tab_content);
-                $('#dpopup').html(response.html);
+                //$('#dpopup').html(response.html);
                 // Position the cards after dynamic content is loaded
                 $('.custom-bottom-right-card').each(function(index) {
                     cardPositions.push({

@@ -215,7 +215,6 @@ class ContactController extends Controller
         }
 
         return response()->json([
-            'html' =>  $html,
             'tab_link' => $tab_link,
             'tab_content' => $tab_content
         ]);
