@@ -98,7 +98,7 @@
         });
     }
 
-    $('#custom-tabs-one').on('click', '.nav-link', function() {
+    $('#custom-tabs-pop').on('click', '.nav-link', function() {
         let dataId = $(this).data('id');
         $.ajax({
             url: '{{ route('contacts.popup_content') }}',
