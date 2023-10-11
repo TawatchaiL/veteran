@@ -60,15 +60,15 @@
                 maximizeCard(response.active_id);
                 //$('#dpopup').html(response.html);
                 // Position the cards after dynamic content is loaded
-               /*  $('.custom-bottom-right-card').each(function(index) {
-                    cardPositions.push({
-                        //right: (20 + (index * 320)) + 'px',
-                        isMaximized: false,
-                    });
-                    //$(this).css('right', cardPositions[index].right);
-                    //$(this).css('bottom', '35px');
-                    //$(this).delay(index * 100).fadeIn();
-                }); */
+                /*  $('.custom-bottom-right-card').each(function(index) {
+                     cardPositions.push({
+                         //right: (20 + (index * 320)) + 'px',
+                         isMaximized: false,
+                     });
+                     //$(this).css('right', cardPositions[index].right);
+                     //$(this).css('bottom', '35px');
+                     //$(this).delay(index * 100).fadeIn();
+                 }); */
 
                 //$('.custom-bottom-right-card').each(function(index) {
                 //    var cardPosition = {
@@ -371,6 +371,9 @@
                                     res.datax.datac.fname +
                                     ' ' + res.datax.datac
                                     .lname + '</h2>');
+                                $('#contact_name').html(res.datax.datac.fname +
+                                    ' ' + res.datax.datac
+                                    .lname);
                                 $('#contractid').val(res.datax.datac
                                     .id);
                                 $('#hnp').val(res.datax.datac.hn);
