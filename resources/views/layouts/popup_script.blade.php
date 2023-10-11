@@ -41,6 +41,8 @@
 
     $('#custom-tabs-pop').on('click', '.nav-link', function() {
         let dataId = $(this).data('id');
+        var $tabs = $('#custom-tabs-pop').tabs();  
+        alert($tabs.tabs('length'));
         maximizeCard(dataId);
     });
 
