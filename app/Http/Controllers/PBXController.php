@@ -25,6 +25,23 @@ class PBXController extends Controller
         $this->issable = $issableService;
     }
 
+    public function call_tranfer(Request $request)
+    {
+        // Retrieve the authenticated user
+        $ret = $this->issable->transfer($request->get('number'), FALSE);
+        if ($ret) {
+            if ($ret == true) {
+                return [
+                    'success' => true,
+                ];
+            } else {
+                return ['success' => false, 'message' => 'error'];
+            }
+        } else {
+            return ['error' => false, 'message' => 'error'];
+        }
+    }
+
     public function loginAgentToQueue()
     {
         // Retrieve the authenticated user
@@ -111,6 +128,7 @@ class PBXController extends Controller
             return ['error' => false, 'message' => 'error'];
         }
     }
+
 
     public function AgentBreak(Request $request)
     {
@@ -252,9 +270,9 @@ class PBXController extends Controller
         if ($user) {
 
             DB::table('crm_incoming')
-            ->where('agentno', $request->input('extension'))
-            ->where('status', 1)
-            ->delete();
+                ->where('agentno', $request->input('extension'))
+                ->where('status', 1)
+                ->delete();
 
             $inqueue = DB::connection('remote_connection')
                 ->table('call_center.audit')

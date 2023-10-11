@@ -104,6 +104,27 @@ class IssableService
         }
     }
 
+
+    public function transfer($sTransferExt, $bAtxfer = FALSE)
+    {
+        $this->errMsg = '';
+        try {
+            $oECCP = $this->_obtenerConexion('ECCP');
+            $respuesta = $bAtxfer
+                ? $oECCP->atxfercall($sTransferExt)
+                : $oECCP->transfercall($sTransferExt);
+            if (isset($respuesta->failure)) {
+                $this->errMsg = 'Unable to transfer call' . ' - ' . $this->_formatoErrorECCP($respuesta);
+                return FALSE;
+            }
+            return TRUE;
+        } catch (Exception $e) {
+            $this->errMsg = '(internal) transfercall: ' . $e->getMessage();
+            return FALSE;
+        }
+    }
+
+
     public function agent_login($phone)
     {
         $this->_agent = 'SIP/' . $phone;

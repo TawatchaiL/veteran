@@ -53,16 +53,6 @@
         })
     }
 
-    let toHoursAndMinutes = (totalSeconds) => {
-        const totalMinutes = Math.floor(totalSeconds / 60);
-        const seconds = totalSeconds % 60;
-        const hours = Math.floor(totalMinutes / 60);
-        const minutes = totalMinutes % 60;
-
-        return String(hours).padStart(2, '0') + ':' + String(minutes).padStart(2, '0') + ':' + String(seconds)
-            .padStart(2, '0')
-    }
-
     const updateUI = (result) => {
         console.log(result);
         if (result.success == true) {
@@ -307,21 +297,37 @@
                     //if (confirm("Click OK to Tranfer?")) {
                     let tranfer_chan = $("input[type='checkbox']").val();
                     let chan = tranfer_chan.split("/");
-                    $.get(`${event_serv}/tranfer/` + call_number + "/" + chan[1], (data, status) => {
+                    /* $.get(`${event_serv}/tranfer/` + call_number + "/" + chan[1], (data, status) => {
                         if (data.response == 'Success') {
                             alert_success('OK', 'Tranfer Success', '');
                         } else {
                             alert_danger('Opp', 'หมายเลขปลายทางไม่สามารถติดต่อได้', '');
                         }
-                    });
+                    }); */
+                    $.ajax({
+                    url: "{{ route('tranfer') }}",
+                    method: 'post',
+                    data: {
+                            number: chan[1],
+                            _token: token,
+                        },
+                    async: false,
+                    success: function(result) {
+                        if (result.success == true) {
+                        alert_success('OK', 'โอนสายสำเร็จ', '');
+                        } else {
+                            alert_danger('Oop', 'โอนสายwไม่สำเร็จ', '');
+                        }
+                    }
+                });
                     //}
                 } else {
-                    alert_danger('Opp', 'Please input tranfer to number', '');
+                    alert_danger('Opp', 'กรุณาระบุหมายเลขที่จะโอนสาน', '');
                 }
 
             }
         } else {
-            alert_danger('Opp', 'Please select call to tranfer', '');
+            alert_danger('Opp', 'กรุณาระบุสายที่จะโอนสาย', '');
 
         }
     });
