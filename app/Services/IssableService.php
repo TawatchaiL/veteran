@@ -109,12 +109,12 @@ class IssableService
     {
         $this->errMsg = '';
         $this->_agent = 'SIP/' . $phone;
+        dd($sTransferExt);
         //try {
         $oECCP = $this->_obtenerConexion('ECCP');
         $respuesta = $bAtxfer
             ? $oECCP->atxfercall($sTransferExt)
             : $oECCP->transfercall($sTransferExt);
-        dd($respuesta);
         if (isset($respuesta->failure)) {
             $this->errMsg = 'Unable to transfer call' . ' - ' . $this->_formatoErrorECCP($respuesta);
             return FALSE;
