@@ -32,7 +32,7 @@ class PBXController extends Controller
         $user = Auth::user();
 
         if ($user) {
-            $ret = $this->issable->transfer($user->phone, $request->get('number'), FALSE);
+            $ret = $this->issable->transfer($user->phone, $request->get('number'),  $request->get('atxfer'));
             if ($ret == true) {
                 return [
                     'success' => true,

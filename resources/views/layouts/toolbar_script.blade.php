@@ -309,6 +309,7 @@
                         method: 'post',
                         data: {
                             number: call_number,
+                            atxfer: false,
                             _token: token,
                         },
                         async: false,
@@ -344,21 +345,38 @@
                     //if (confirm("Click OK to Tranfer?")) {
                     let tranfer_chan = $("input[type='checkbox']").val();
                     let chan = tranfer_chan.split("/");
-                    $.get(`${event_serv}/atx_tranfer/` + call_number + "/" + chan[1], (data, status) => {
+                    /* $.get(`${event_serv}/atx_tranfer/` + call_number + "/" + chan[1], (data, status) => {
                         if (status == 'success') {
                             alert_success('OK', 'Tranfer Success', '');
                         } else {
                             alert_danger('Opp', 'Something Error', '');
                         }
+                    }); */
+                    $.ajax({
+                        url: "{{ route('tranfer') }}",
+                        method: 'post',
+                        data: {
+                            number: call_number,
+                            atxfer: true,
+                            _token: token,
+                        },
+                        async: false,
+                        success: function(result) {
+                            if (result.success == true) {
+                                alert_success('OK', 'โอนสายสำเร็จ', '');
+                            } else {
+                                alert_danger('Oop', 'โอนสาย ไม่สำเร็จ', '');
+                            }
+                        }
                     });
                     //}
-                } else {
-                    alert_danger('Opp', 'Please input tranfer to number', '');
+                    else {
+                    alert_danger('Opp', 'กรุณาระบุหมายเลขที่จะโอนสาน', '');
                 }
 
             }
         } else {
-            alert_danger('Opp', 'Please select call to tranfer', '');
+            alert_danger('Opp', 'กรุณาระบุสายที่จะโอนสาย', '');
 
         }
 
