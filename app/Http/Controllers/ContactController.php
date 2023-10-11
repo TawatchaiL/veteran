@@ -182,7 +182,7 @@ class ContactController extends Controller
                 $tab_active = 'card-secondary';
             }
 
-            $html = '<div class="col-md-3"><div class="card ' . $card_active . ' custom-bottom-right-card d-none d-md-block" data-id="' . $item->telno . '" id="' . $item->telno . '" >
+            $html = '<div class="col-md-3"><div class="card ' . $tab_active . ' custom-bottom-right-card d-none d-md-block" data-id="' . $item->telno . '" id="' . $item->telno . '" >
             <div class="card-header">
             <h4 class="card-title"> <i class="fa-solid fa-user fa-beat" style="--fa-beat-scale: 1.5;"></i> ' . $item->telno . ' </h4>
             <div class="card-tools">
