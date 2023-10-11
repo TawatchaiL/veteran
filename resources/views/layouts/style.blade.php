@@ -4,6 +4,10 @@
         /* Adjust the value to your desired space */
     }
 
+    .popup-tab-font-size {
+        font-size: 18px;
+    }
+
     .card {
         background-color: white;
         border-radius: 6px;
@@ -15,7 +19,8 @@
     }
 
     *.text-toolbar {
-        color: #007bff;;
+        color: #007bff;
+        ;
         font-size: 1.2em;
         text-align: center;
         vertical-align: middle;
