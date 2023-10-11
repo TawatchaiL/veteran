@@ -14,7 +14,7 @@
         </div>
 
         {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
-        <div class="text-left"><input type="hidden" value="" name="contractid" id="contractid"><input
+        <div class="text-end"><input type="hidden" value="" name="contractid" id="contractid"><input
                 type="hidden" value="{{ $telephone }}" name="telnop" id="telnop">
             {{-- <h1 style="color: #1a16eb"><i class="fa-solid fa-id-card-clip"></i> {{ $telephone }}</h1> --}}
         </div>
