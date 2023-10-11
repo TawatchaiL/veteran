@@ -156,9 +156,6 @@ class CasesController extends Controller
 
     public function edit($id)
     {
-
-        //$data = Cases::find($id);
-
         $data = CrmCase::join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
         ->select('crm_cases.*','crm_contacts.hn as hn', DB::raw("concat(crm_contacts.fname, ' ', crm_contacts.lname) as name"))
         ->where('crm_cases.id', $id)
