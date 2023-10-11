@@ -371,9 +371,9 @@
                                     res.datax.datac.fname +
                                     ' ' + res.datax.datac
                                     .lname + '</h2>');
-                                $('#contact_name').html(res.datax.datac.fname +
+                                /* $('#contact_name').html(res.datax.datac.fname +
                                     ' ' + res.datax.datac
-                                    .lname);
+                                    .lname); */
                                 $('#contractid').val(res.datax.datac
                                     .id);
                                 $('#hnp').val(res.datax.datac.hn);
