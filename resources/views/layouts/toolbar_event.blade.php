@@ -57,6 +57,9 @@
     socket.on('pause', data => {
         console.log(data);
         if (data.extension.match(exten) && data.paused == 0) {
+            toolbar_header.removeClass("bg-warning");
+            toolbar_header.addClass("bg-primary");
+
             $.get(`${web_url}/agent/clear_pause/`, (data, status) => {
                 if (data == 'success') {
                     $('#dial_number').attr('disabled', false);
@@ -70,12 +73,13 @@
                     $('.button_unbreak').addClass("d-none");
                     $('#break_group').removeClass("d-none");
                     $('#break_text').remove();
-                    $('#toolbar_header').addClass("card-primary");
-                    $('#toolbar_header').removeClass("card-warning");
                     //alert_success('OK', 'Complete Call Success', '');
                 }
 
             });
+        } else if (data.extension.match(exten) && data.paused == 1) {
+            toolbar_header.removeClass("bg-primary bg-secondary bg-danger");
+            toolbar_header.addClass("bg-warning");
         }
     });
 
