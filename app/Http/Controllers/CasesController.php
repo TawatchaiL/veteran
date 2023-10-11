@@ -47,7 +47,7 @@ class CasesController extends Controller
                 $datas = DB::table('crm_cases')
                 ->select('crm_cases.id as id','hn', DB::raw("concat(fname, ' ', lname) as name"),'phoneno', 'crm_cases.created_at', 'crm_cases.casetype1 as casename', 'casestatus', 'tranferstatus', 'agent')
                 ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
-                //->join('case_types', 'crm_cases.casetype1', '=', 'case_types.id')
+
                 ->where('casestatus', '=', 'กำลังดำเนินการ')
                 ->whereRaw('crm_cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
                 //->where('crm_cases.contact_id', '=', request('id'))
