@@ -8,6 +8,11 @@
         font-size: 18px;
     }
 
+    li.rightside {
+        float: right;
+        line-height: 34px;
+    }
+
     .card {
         background-color: white;
         border-radius: 6px;

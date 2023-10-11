@@ -18,12 +18,12 @@
                 type="hidden" value="{{ $telephone }}" name="telnop" id="telnop">
             {{-- <h1 style="color: #1a16eb"><i class="fa-solid fa-id-card-clip"></i> {{ $telephone }}</h1> --}}
         </div>
-        <div id="phonenosuccess" class="text-right">
+        <div  class="text-right">
         </div>
         <div class="card card-success card-outline card-outline-tabs">
             <div class="card-header p-0 pt-1">
                 <ul class="nav nav-tabs" id="custom-tabs-one-tabp" role="tablist">
-                  {{--   <li class="pt-2 px-3">
+                    {{--   <li class="pt-2 px-3">
                         <h3 class="card-title" id="contact_name"></h3>
                     </li> --}}
                     <li class="nav-item">
@@ -41,6 +41,7 @@
                             href="#custom-tabs-one-casep" role="tab" aria-controls="custom-tabs-one-casep"
                             aria-selected="true">ข้อมูลเรื่องที่ติดต่อ</a>
                     </li>
+                    <li class="rightside" role="presentation" id="phonenosuccess"></li>
                 </ul>
             </div>
             <div class="card-body">
