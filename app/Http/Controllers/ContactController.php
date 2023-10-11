@@ -151,6 +151,7 @@ class ContactController extends Controller
         $user = Auth::user();
         $datac = DB::table('crm_incoming')
             ->where('status', '=', "0")
+            ->orWhere('status', '=', "1")
             ->where('agentno', '=', $user->phone)
             ->orderBy('id', 'desc')
             ->get();
