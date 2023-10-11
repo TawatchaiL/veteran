@@ -174,11 +174,12 @@ class ContactController extends Controller
             if ($i == 1) {
                 $tab_link_active = 'active';
                 $tab_content_active = 'show active';
-                $card_active = 'card-danger';
+                $tab_active = 'card-danger';
+                $active_id = $item->telno;
             } else {
                 $tab_link_active = '';
                 $tab_content_active = '';
-                $card_active = 'card-secondary';
+                $tab_active = 'card-secondary';
             }
 
             $html = '<div class="col-md-3"><div class="card ' . $card_active . ' custom-bottom-right-card d-none d-md-block" data-id="' . $item->telno . '" id="' . $item->telno . '" >
@@ -216,7 +217,8 @@ class ContactController extends Controller
 
         return response()->json([
             'tab_link' => $tab_link,
-            'tab_content' => $tab_content
+            'tab_content' => $tab_content,
+            'active_id' => $active_id
         ]);
     }
 
