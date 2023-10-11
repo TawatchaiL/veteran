@@ -33,7 +33,7 @@
             subtitle: subtitle,
             icon: 'fas fa-bell',
             autohide: true,
-            zIndex: 99999
+            zIndex: 99999,
             fade: true,
             delay: 3000
         })
@@ -47,7 +47,7 @@
             subtitle: subtitle,
             icon: 'fas fa-bell',
             autohide: true,
-            zIndex: 99999
+            zIndex: 99999,
             fade: true,
             delay: 3000
         })
