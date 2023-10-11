@@ -55,9 +55,8 @@
 
 
     socket.on('pause', data => {
-
+        console.log(data);
         if (data.extension.match(exten) && data.paused == 0) {
-            console.log(data);
             $.get(`${web_url}/agent/clear_pause/`, (data, status) => {
                 if (data == 'success') {
                     $('#dial_number').attr('disabled', false);
