@@ -1,6 +1,5 @@
 <script src="{{ config('asterisk.event_serv.address') }}/socket.io/socket.io.js"></script>
 <script>
-
     //event socket
     const socket = io.connect(`${event_serv}`);
     socket.on('connect', data => {
@@ -15,7 +14,7 @@
                     method: 'post',
                     async: false,
                     success: function(result) {
-                        set_state_icon(result.id,result.icon,result.message);
+                        set_state_icon(result.id, result.icon, result.message);
                         set_state_button(result.id);
                     }
                 });
@@ -36,7 +35,7 @@
                             _token: token,
                         },
                         success: function(result) {
-                            set_state_icon(result.id,result.icon,result.message);
+                            set_state_icon(result.id, result.icon, result.message);
                             set_state_button(result.id);
                             positionCards();
                         }
@@ -59,24 +58,6 @@
         if (data.extension.match(exten) && data.paused == 0) {
             toolbar_header.removeClass("bg-warning");
             toolbar_header.addClass("bg-primary");
-
-            $.get(`${web_url}/agent/clear_pause/`, (data, status) => {
-                if (data == 'success') {
-                    $('#dial_number').attr('disabled', false);
-                    $('.button_dial').attr('disabled', false);
-                    $('.button_tranfer').attr('disabled', false);
-                    $('.button_conf').attr('disabled', false);
-                    $('#btn-wrap').attr('disabled', true);
-                    $('#btn-pause').attr('disabled', false);
-                    $('#btn-system-logout').attr('disabled', false);
-                    $('#btn-agent-logout').attr('disabled', false);
-                    $('.button_unbreak').addClass("d-none");
-                    $('#break_group').removeClass("d-none");
-                    $('#break_text').remove();
-                    //alert_success('OK', 'Complete Call Success', '');
-                }
-
-            });
         } else if (data.extension.match(exten) && data.paused == 1) {
             toolbar_header.removeClass("bg-primary bg-secondary bg-danger");
             toolbar_header.addClass("bg-warning");
@@ -115,7 +96,7 @@
                     _token: token,
                 },
                 success: function(result) {
-                    set_state_icon(result.id,result.icon,result.message);
+                    set_state_icon(result.id, result.icon, result.message);
                     set_state_button(result.id);
                     positionCards();
                 }
@@ -142,7 +123,7 @@
 							</div>
 						</div>
 					</div>`);
-                //$('#ToolbarModal').modal('show');
+                    //toolbar_modal.modal('show');
 
 
             }
@@ -171,7 +152,7 @@
                     _token: token,
                 },
                 success: function(result) {
-                    set_state_icon(result.id,result.icon,result.message);
+                    set_state_icon(result.id, result.icon, result.message);
                     set_state_button(result.id);
                     positionCards();
                     call_list();
