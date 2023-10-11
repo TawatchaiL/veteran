@@ -1,42 +1,5 @@
 <script src="{{ config('asterisk.event_serv.address') }}/socket.io/socket.io.js"></script>
 <script>
-    let alert_danger = (title, message, subtitle) => {
-        $(document).Toasts('create', {
-            body: message,
-            title: title,
-            class: 'bg-danger mr-2 mt-2',
-            subtitle: subtitle,
-            icon: 'fas fa-bell',
-            autohide: true,
-            fade: true,
-            delay: 3000
-        })
-    }
-
-    let alert_success = (title, message, subtitle) => {
-        $(document).Toasts('create', {
-            body: message,
-            title: title,
-            class: 'bg-success mr-2 mt-2',
-            subtitle: subtitle,
-            icon: 'fas fa-bell',
-            autohide: true,
-            fade: true,
-            delay: 3000
-        })
-    }
-
-    let toHoursAndMinutes = (totalSeconds) => {
-        const totalMinutes = Math.floor(totalSeconds / 60);
-        const seconds = totalSeconds % 60;
-        const hours = Math.floor(totalMinutes / 60);
-        const minutes = totalMinutes % 60;
-
-        return String(hours).padStart(2, '0') + ':' + String(minutes).padStart(2, '0') + ':' + String(seconds)
-            .padStart(2, '0')
-    }
-
-
 
     //event socket
     const socket = io.connect(`${event_serv}`);
@@ -52,10 +15,7 @@
                     method: 'post',
                     async: false,
                     success: function(result) {
-                        phone_state.html(result.message);
-                        phone_state_icon.html(result.icon);
-                        phone_state.removeClass().addClass(get_state_color(result.id));
-                        phone_state_icon.removeClass().addClass(get_state_color(result.id));
+                        set_state_icon(result.id,result.icon,result.message);
                         set_state_button(result.id);
                     }
                 });
@@ -76,10 +36,7 @@
                             _token: token,
                         },
                         success: function(result) {
-                            phone_state.html(result.message);
-                            phone_state_icon.html(result.icon);
-                            phone_state.removeClass().addClass(get_state_color(result.id));
-                            phone_state_icon.removeClass().addClass(get_state_color(result.id));
+                            set_state_icon(result.id,result.icon,result.message);
                             set_state_button(result.id);
                             positionCards();
                         }
@@ -155,10 +112,7 @@
                     _token: token,
                 },
                 success: function(result) {
-                    phone_state.html(result.message);
-                    phone_state_icon.html(result.icon);
-                    phone_state.removeClass().addClass(get_state_color(result.id));
-                    phone_state_icon.removeClass().addClass(get_state_color(result.id));
+                    set_state_icon(result.id,result.icon,result.message);
                     set_state_button(result.id);
                     positionCards();
                 }
@@ -166,7 +120,7 @@
 
 
             let state_icon = '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
-            let state = 'Ringing';
+            let state = 'กำลังรอสาย';
 
             if (!$('#' + data.luniq.replace('.', '')).length) {
 
@@ -214,10 +168,7 @@
                     _token: token,
                 },
                 success: function(result) {
-                    phone_state.html(result.message);
-                    phone_state_icon.html(result.icon);
-                    phone_state.removeClass().addClass(get_state_color(result.id));
-                    phone_state_icon.removeClass().addClass(get_state_color(result.id));
+                    set_state_icon(result.id,result.icon,result.message);
                     set_state_button(result.id);
                     positionCards();
                     call_list();

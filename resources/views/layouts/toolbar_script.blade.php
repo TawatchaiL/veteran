@@ -21,7 +21,47 @@
     const phone_state = $('#phone_state');
     const phone_state_icon = $('#phone_state_icon');
     const toolbar_modal = $('#ToolbarModal');
+    const popup_tab = $("#custom-tabs-one-popup-tab");
+    const call_tab = $("#custom-tabs-one-call-tab");
     const state_overlay = $('#state_overlay');
+
+    let alert_danger = (title, message, subtitle) => {
+        $(document).Toasts('create', {
+            body: message,
+            title: title,
+            class: 'bg-danger mr-2 mt-2',
+            subtitle: subtitle,
+            icon: 'fas fa-bell',
+            autohide: true,
+            zIndex: 99999
+            fade: true,
+            delay: 3000
+        })
+    }
+
+    let alert_success = (title, message, subtitle) => {
+        $(document).Toasts('create', {
+            body: message,
+            title: title,
+            class: 'bg-success mr-2 mt-2',
+            subtitle: subtitle,
+            icon: 'fas fa-bell',
+            autohide: true,
+            zIndex: 99999
+            fade: true,
+            delay: 3000
+        })
+    }
+
+    let toHoursAndMinutes = (totalSeconds) => {
+        const totalMinutes = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
+        const hours = Math.floor(totalMinutes / 60);
+        const minutes = totalMinutes % 60;
+
+        return String(hours).padStart(2, '0') + ':' + String(minutes).padStart(2, '0') + ':' + String(seconds)
+            .padStart(2, '0')
+    }
 
     const updateUI = (result) => {
         console.log(result);
@@ -29,10 +69,7 @@
             toastr.success('เปลี่ยนสถานะ เรียบร้อยแล้ว', {
                 timeOut: 5000
             });
-            phone_state.html(result.message);
-            phone_state_icon.html(result.icon);
-            phone_state.removeClass().addClass(get_state_color(result.id));
-            phone_state_icon.removeClass().addClass(get_state_color(result.id));
+            set_state_icon(result.id, result.icon, result.message);
             set_state_button(result.id);
             toolbar_modal.modal('hide');
         } else {
@@ -57,7 +94,7 @@
         });
     };
 
-    const get_state_color = (id) => {
+    const get_state_color = (id, icon, message) => {
         if (id === -1) {
             return 'icon-gray';
         } else if (id === 0) {
@@ -72,6 +109,13 @@
             return 'icon-red';
         }
     };
+
+    const set_state_icon = (id, icon, message) => {
+        phone_state.html(message);
+        phone_state_icon.html(icon);
+        phone_state.removeClass().addClass(get_state_color(id));
+        phone_state_icon.removeClass().addClass(get_state_color(id));
+    }
 
     const set_state_button = (id) => {
 
@@ -97,6 +141,11 @@
             btn_agent_login.prop('disabled', true);
             toolbar_header.removeClass("");
             toolbar_header.addClass("card-secondary");
+
+            phone_state.html(result.message);
+            phone_state_icon.html(result.icon);
+            phone_state.removeClass().addClass(get_state_color(result.id));
+            phone_state_icon.removeClass().addClass(get_state_color(result.id));
         } else if (id === 0) {
             dial_number.removeClass('d-none');
             dial_number.prop('disabled', false);
@@ -476,13 +525,13 @@
 
 
                     if (strArray[4] == 'Ringing' || strArray[4] == 'Ring') {
-                        state = 'Ringing'
+                        state = 'กำลังรอสาย'
                         state_icon =
                             '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
                         state_color = 'card-danger';
                         check_box_state = 'disabled';
                     } else if (strArray[4] == 'Up' && strArray[12] == '') {
-                        state = 'Ringing'
+                        state = 'กำลังรอสาย'
                         state_icon =
                             '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
                         state_color = 'card-danger';
@@ -523,6 +572,7 @@
                     btn_pause.attr('disabled', true);
                     btn_agent_logout.attr('disabled', true);
                     btn_agent_logoff.attr('disabled', true);
+                    popup_tab.click();
                     toolbar_modal.modal('show');
                 }
             });
@@ -532,9 +582,6 @@
 
     //load call list on access page
     call_list();
-
-
-
     @php
        if ($temporaryPhoneStatusID==-1) {
     @endphp
