@@ -53,48 +53,38 @@
         })
     }
 
-
-
     const updateUI = (result) => {
         console.log(result);
-        if (result.success === true) {
-            toastr.success('Status changed successfully', {
+        if (result.success == true) {
+            toastr.success('เปลี่ยนสถานะ เรียบร้อยแล้ว', {
                 timeOut: 5000
             });
             set_state_icon(result.id, result.icon, result.message);
             set_state_button(result.id);
             toolbar_modal.modal('hide');
         } else {
-            toastr.error('Failed to change status', {
+            toastr.error('เปลี่ยนสถานะ ไม่สำเร็จ', {
                 timeOut: 5000
             });
         }
+
     };
 
-    const check_state = async () => {
-        try {
-            const response = await sendAjaxRequest("{{ route('agent.status') }}", "POST");
-            updateUI(response);
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    };
+    const check_state = () => {
+        sendAjaxRequest("{{ route('agent.status') }}", "POST");
+    }
 
     const sendAjaxRequest = (url, method, data = {}) => {
-        return new Promise((resolve, reject) => {
-            $.ajax({
-                url,
-                method,
-                data,
-                success: (data) => {
-                    resolve(data);
-                },
-                error: (xhr, status, error) => {
-                    reject(error);
-                }
-            });
+        $.ajax({
+            url,
+            method,
+            data,
+            async: false,
+            success: updateUI,
         });
     };
+
+
 
     const get_state_color = (id, icon, message) => {
         if (id === -1) {
@@ -262,49 +252,28 @@
         }
     };
 
-    // Event handlers using async/await and Promises
-    $(document).on('click', '#btn-agent-login', async function(e) {
+    $(document).on('click', '#btn-agent-login', function(e) {
         e.preventDefault();
-        try {
-            const response = await sendAjaxRequest("{{ route('agent.login') }}", "POST");
-            updateUI(response);
-        } catch (error) {
-            console.error('Error:', error);
-        }
+        sendAjaxRequest("{{ route('agent.login') }}", "POST");
     });
 
-    $(document).on('click', '#btn-agent-logout', async function(e) {
+    $(document).on('click', '#btn-agent-logout', function(e) {
         e.preventDefault();
-        try {
-            const response = await sendAjaxRequest("{{ route('agent.logoff') }}", "POST");
-            updateUI(response);
-        } catch (error) {
-            console.error('Error:', error);
-        }
+        sendAjaxRequest("{{ route('agent.logoff') }}", "POST");
     });
 
-    $(document).on('click', '.button_break', async function(e) {
+    $(document).on('click', '.button_break', function(e) {
         e.preventDefault();
         const bid = $(this).data('id');
         const additionalData = {
             id_break: bid,
         };
-        try {
-            const response = await sendAjaxRequest("{{ route('agent.break') }}", "POST", additionalData);
-            updateUI(response);
-        } catch (error) {
-            console.error('Error:', error);
-        }
+        sendAjaxRequest("{{ route('agent.break') }}", "POST", additionalData);
     });
 
-    $(document).on('click', '.button_unbreak', async function(e) {
+    $(document).on('click', '.button_unbreak', function(e) {
         e.preventDefault();
-        try {
-            const response = await sendAjaxRequest("{{ route('agent.unbreak') }}", "POST");
-            updateUI(response);
-        } catch (error) {
-            console.error('Error:', error);
-        }
+        sendAjaxRequest("{{ route('agent.unbreak') }}", "POST");
     });
 
     $(document).on('click', '#btn-system-logout', function(e) {
@@ -312,6 +281,105 @@
         document.getElementById('logout-form').submit();
     });
 
+
+
+
+    //blind tranfer
+    $(".button_tranfer").click(function() {
+        let len = $('input[name="call[]"]:checked').length;
+        if (len > 0) {
+            if (len > 1) {
+                alert_danger('Opp', 'Can Not Tranfer More Than 1 Call', '');
+            } else {
+                let call_number = $('#dial_number').val();
+                if (call_number !== '') {
+                    //if (confirm("Click OK to Tranfer?")) {
+                    let tranfer_chan = $("input[type='checkbox']").val();
+                    let chan = tranfer_chan.split("/");
+                    /* $.get(`${event_serv}/tranfer/` + call_number + "/" + chan[1], (data, status) => {
+                        if (data.response == 'Success') {
+                            alert_success('OK', 'Tranfer Success', '');
+                        } else {
+                            alert_danger('Opp', 'หมายเลขปลายทางไม่สามารถติดต่อได้', '');
+                        }
+                    }); */
+                    $.ajax({
+                        url: "{{ route('tranfer') }}",
+                        method: 'post',
+                        data: {
+                            number: call_number,
+                            atxfer: 0,
+                            _token: token,
+                        },
+                        async: false,
+                        success: function(result) {
+                            if (result.success == true) {
+                                alert_success('OK', 'โอนสายสำเร็จ', '');
+                            } else {
+                                alert_danger('Oop', 'โอนสาย ไม่สำเร็จ', '');
+                            }
+                        }
+                    });
+                    //}
+                } else {
+                    alert_danger('Opp', 'กรุณาระบุหมายเลขที่จะโอนสาย', '');
+                }
+
+            }
+        } else {
+            alert_danger('Opp', 'กรุณาระบุสายที่จะโอนสาย', '');
+
+        }
+    });
+
+    //atx tranfer
+    $(".button_atx_tranfer").click(function() {
+        let len = $('input[name="call[]"]:checked').length;
+        if (len > 0) {
+            if (len > 1) {
+                alert_danger('Opp', 'Can Not Tranfer More Than 1 Call', '');
+            } else {
+                let call_number = $('#dial_number').val();
+                if (call_number !== '') {
+                    //if (confirm("Click OK to Tranfer?")) {
+                    let tranfer_chan = $("input[type='checkbox']").val();
+                    let chan = tranfer_chan.split("/");
+                    /* $.get(`${event_serv}/atx_tranfer/` + call_number + "/" + chan[1], (data, status) => {
+                        if (status == 'success') {
+                            alert_success('OK', 'Tranfer Success', '');
+                        } else {
+                            alert_danger('Opp', 'Something Error', '');
+                        }
+                    }); */
+                    $.ajax({
+                        url: "{{ route('tranfer') }}",
+                        method: 'post',
+                        data: {
+                            number: call_number,
+                            atxfer: 1,
+                            _token: token,
+                        },
+                        async: false,
+                        success: function(result) {
+                            if (result.success == true) {
+                                alert_success('OK', 'โอนสายสำเร็จ', '');
+                            } else {
+                                alert_danger('Oop', 'โอนสาย ไม่สำเร็จ', '');
+                            }
+                        }
+                    });
+                    //}
+                } else {
+                    alert_danger('Opp', 'กรุณาระบุหมายเลขที่จะโอนสาย', '');
+                }
+
+            }
+        } else {
+            alert_danger('Opp', 'กรุณาระบุสายที่จะโอนสาย', '');
+
+        }
+
+    });
 
 
     /*  //break
@@ -352,62 +420,6 @@
 
      }) */
 
-    // Function to perform transfer
-    function performTransfer(atxfer) {
-        return new Promise(async (resolve, reject) => {
-            const checkedCalls = $('input[name="call[]"]:checked');
-            const len = checkedCalls.length;
-
-            if (len !== 1) {
-                return reject('Can Not Transfer More Than 1 Call');
-            }
-
-            const callNumber = $('#dial_number').val();
-
-            if (callNumber === '') {
-                return reject('Please specify the number to transfer the call to');
-            }
-
-            const tranferChan = $("input[type='checkbox']").val();
-            const chan = tranferChan.split('/');
-
-            try {
-                const result = await sendAjaxRequest("{{ route('tranfer') }}", {
-                    number: callNumber,
-                    atxfer,
-                    _token: token
-                });
-
-                if (result.success === true) {
-                    resolve('Transfer Success');
-                } else {
-                    reject('Transfer Failed');
-                }
-            } catch (error) {
-                reject('An error occurred during the transfer');
-            }
-        });
-    }
-
-    // Event handler for blind transfer
-    $(".button_tranfer").click(async function() {
-        try {
-            const result = await performTransfer(0);
-            alert_success('OK', result, '');
-        } catch (error) {
-            alert_danger('Opp', error, '');
-        }
-    });
-
-    // Event handler for atx transfer
-    $(".button_atx_tranfer").click(async function() {
-        try {
-            const result = await performTransfer(1);
-            alert_success('OK', result, '');
-        } catch (error) {
-            alert_danger('Opp', error, '');
-        }
-    });
 
     //call button
     dial_button.click(function() {
@@ -531,6 +543,9 @@
                     mcallprofile = data[1][1];
                     mcallexten = data[2][1];
                     mcalldestchan = data[3][1];
+
+
+
 
                     if (strArray[4] == 'Ringing' || strArray[4] == 'Ring') {
                         state = 'กำลังรอสาย'
