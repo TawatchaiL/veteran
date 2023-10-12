@@ -341,7 +341,7 @@
                         method: 'GET',
                         async: false,
                         success: function(res) {
-                            var provinceOb = $('#cityp');
+                            var provinceOb = $('#cityp'+cardId);
                             provinceOb.html(
                                 '<option value="">เลือกจังหวัด</option>'
                             );
