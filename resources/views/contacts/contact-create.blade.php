@@ -28,17 +28,17 @@
                         <h3 class="card-title" id="contact_name"></h3>
                     </li> --}}
                     <li class="nav-item">
-                        <a class="nav-link active" id="custom-tabs-one-home-tabp" data-toggle="pill"
+                        <a class="nav-link active" id="custom-tabs-one-home-tabp{{$cardid}}" data-toggle="pill"
                             href="#custom-tabs-one-homep{{$cardid}}" role="tab" aria-controls="custom-tabs-one-homep{{$cardid}}"
                             aria-selected="true">ข้อมูลผู้ติดต่อ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="custom-tabs-one-profile-tabp" data-toggle="pill"
+                        <a class="nav-link" id="custom-tabs-one-profile-tabp{{$cardid}}" data-toggle="pill"
                             href="#custom-tabs-one-profilep{{$cardid}}" role="tab" aria-controls="custom-tabs-one-profilep{{$cardid}}"
                             aria-selected="false">ข้อมูลเบอร์ติดต่อ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="custom-tabs-one-case-tabp" data-toggle="pill"
+                        <a class="nav-link" id="custom-tabs-one-case-tabp{{$cardid}}" data-toggle="pill"
                             href="#custom-tabs-one-casep{{$cardid}}" role="tab" aria-controls="custom-tabs-one-casep{{$cardid}}"
                             aria-selected="true">ข้อมูลเรื่องที่ติดต่อ</a>
                     </li>
@@ -48,7 +48,7 @@
             <div class="card-body">
                 <div class="tab-content" id="custom-tabs-one-tabContentp">
                     <div class="tab-pane fade show active" id="custom-tabs-one-homep{{$cardid}}" role="tabpanel"
-                        aria-labelledby="custom-tabs-one-home-tabp">
+                        aria-labelledby="custom-tabs-one-home-tabp{{$cardid}}">
 
                         <div class="row">
 
@@ -183,7 +183,7 @@
                     </div>
 
                     <div class="tab-pane fade" id="custom-tabs-one-profilep{{$cardid}}" role="tabpanel"
-                        aria-labelledby="custom-tabs-one-profile-tabp">
+                        aria-labelledby="custom-tabs-one-profile-tabp{{$cardid}}">
 
                         <div class="row">
 
@@ -254,7 +254,7 @@
                     </div>
 
                     <div class="tab-pane fade" id="custom-tabs-one-casep{{$cardid}}" role="tabpanel"
-                        aria-labelledby="custom-tabs-one-case-tabp">
+                        aria-labelledby="custom-tabs-one-case-tabp{{$cardid}}">
 
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6">
