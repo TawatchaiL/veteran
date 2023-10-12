@@ -352,14 +352,14 @@
 
                     setTimeout(function() {
                         var telnop = $('#telnop'+cardId).val();
-                        $('#phonenosuccess').html(
+                        $('#phonenosuccess'+cardId).html(
                                     '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ผู้ติดต่อใหม่</h3>');
                         $.ajax({
                             url: "contacts/popupedit/" + telnop,
                             method: 'GET',
                             async: false,
                             success: function(res) {
-                                $('#phonenosuccess').html(
+                                $('#phonenosuccess'+cardId).html(
                                     '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ' +
                                     res.datax.datac.fname +
                                     ' ' + res.datax.datac

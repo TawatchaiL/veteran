@@ -22,8 +22,8 @@
         </div>
         <div class="card card-success card-outline card-outline-tabs">
             <div class="card-header p-0 pt-1">
-                <ul class="nav nav-tabs" id="custom-tabs-one-tabp{{$cardid}}" role="tablist">
-                    <li class="pt-2 px-3" id="phonenosuccess"> </li>
+                <ul class="nav nav-tabs" id="custom-tabs-one-tabp" role="tablist">
+                    <li class="pt-2 px-3" id="phonenosuccess{{$cardid}}"> </li>
                     {{--   <li class="pt-2 px-3">
                         <h3 class="card-title" id="contact_name"></h3>
                     </li> --}}
