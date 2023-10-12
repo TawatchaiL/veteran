@@ -118,8 +118,7 @@ class ContactController extends Controller
             ->orderBy("name", "asc")->get();
 
 
-        return view('contacts.index')->with(['centre' => $centre])
-            /*  ->with(['term' => $term]) */;
+        return view('contacts.index')->with(['centre' => $centre]);
     }
 
     public function popup_content(Request $request)
