@@ -367,32 +367,32 @@
                                 /* $('#contact_name').html(res.datax.datac.fname +
                                     ' ' + res.datax.datac
                                     .lname); */
-                                $('#contractid').val(res.datax.datac
+                                $('#contractid'+cardId).val(res.datax.datac
                                     .id);
-                                $('#hnp').val(res.datax.datac.hn);
-                                $('#adddatep').val(res.datax.datac
+                                $('#hnp'+cardId).val(res.datax.datac.hn);
+                                $('#adddatep'+cardId).val(res.datax.datac
                                     .adddate);
-                                $('#fnamep').val(res.datax.datac
+                                $('#fnamep'+cardId).val(res.datax.datac
                                     .fname);
-                                $('#lnamep').val(res.datax.datac
+                                $('#lnamep'+cardId).val(res.datax.datac
                                     .lname);
-                                $('#homenop').val(res.datax.datac
+                                $('#homenop'+cardId).val(res.datax.datac
                                     .homeno);
-                                $('#moop').val(res.datax.datac.moo);
-                                $('#soip').val(res.datax.datac.soi);
-                                $('#roadp').val(res.datax.datac
+                                $('#moop'+cardId).val(res.datax.datac.moo);
+                                $('#soip'+cardId).val(res.datax.datac.soi);
+                                $('#roadp'+cardId).val(res.datax.datac
                                     .road);
-                                $('#cityp').val(res.datax.datac
+                                $('#cityp'+cardId).val(res.datax.datac
                                     .city);
-                                $('#cityp').change();
+                                $('#cityp'+cardId).change();
                                 setTimeout(function() {
-                                    $('#districtp').val(res
+                                    $('#districtp'+cardId).val(res
                                         .datax.datac
                                         .district);
-                                    $('#districtp')
+                                    $('#districtp'+cardId)
                                         .change();
                                     setTimeout(function() {
-                                        $('#subdistrictp')
+                                        $('#subdistrictp'+cardId)
                                             .val(res
                                                 .datax
                                                 .datac
@@ -400,13 +400,13 @@
                                             );
                                     }, 500)
                                 }, 500)
-                                $('#postcodep').val(res.datax.datac
+                                $('#postcodep'+cardId).val(res.datax.datac
                                     .postcode);
-                                $('#telhomep').val(res.datax.datac
+                                $('#telhomep'+cardId).val(res.datax.datac
                                     .telhome);
-                                $('#phonenop').val(res.datax.datac
+                                $('#phonenop'+cardId).val(res.datax.datac
                                     .phoneno);
-                                $('#worknop').val(res.datax.datac
+                                $('#worknop'+cardId).val(res.datax.datac
                                     .workno);
 
                                 var tbody = document.querySelector(
@@ -524,49 +524,49 @@
                             emergencyData.push(emergency);
                         });
                         var additionalData = {
-                            hn: $('#hnp').val(),
-                            adddate: $('#adddatep').val(),
-                            fname: $('#fnamep').val(),
-                            lname: $('#lnamep').val(),
-                            homeno: $('#homenop').val(),
-                            moo: $('#moop').val(),
-                            soi: $('#soip').val(),
-                            road: $('#roadp').val(),
-                            city: $('#cityp').val(),
-                            district: $('#districtp').val(),
-                            subdistrict: $('#subdistrictp').val(),
-                            postcode: $('#postcodep').val(),
-                            telhome: $('#telhomep').val(),
-                            phoneno: $('#phonenop').val(),
-                            workno: $('#worknop').val(),
-                            telno: $('#telnop').val(),
-                            casetype1: $('#casetype1p option:selected').text(),
-                            caseid1: $('#casetype1p').val(),
-                            tranferstatus: $('#tranferstatusp').val(),
-                            casedetail: $('#casedetailp').val(),
-                            casestatus: $('#casestatusp').val(),
-                            agent: $('#telnop').val(),
+                            hn: $('#hnp'+cardId).val(),
+                            adddate: $('#adddatep'+cardId).val(),
+                            fname: $('#fnamep'+cardId).val(),
+                            lname: $('#lnamep'+cardId).val(),
+                            homeno: $('#homenop'+cardId).val(),
+                            moo: $('#moop'+cardId).val(),
+                            soi: $('#soip'+cardId).val(),
+                            road: $('#roadp'+cardId).val(),
+                            city: $('#cityp'+cardId).val(),
+                            district: $('#districtp'+cardId).val(),
+                            subdistrict: $('#subdistrictp'+cardId).val(),
+                            postcode: $('#postcodep'+cardId).val(),
+                            telhome: $('#telhomep'+cardId).val(),
+                            phoneno: $('#phonenop'+cardId).val(),
+                            workno: $('#worknop'+cardId).val(),
+                            telno: $('#telnop'+cardId).val(),
+                            casetype1: $('#casetype1p'+cardId+' option:selected').text(),
+                            caseid1: $('#casetype1p'+cardId).val(),
+                            tranferstatus: $('#tranferstatusp'+cardId).val(),
+                            casedetail: $('#casedetailp'+cardId).val(),
+                            casestatus: $('#casestatusp'+cardId).val(),
+                            agent: $('#telnop'+cardId).val(),
                             emergencyData: emergencyData,
                             _token: token
                         };
-                        if ($('#casetype2p').val() !== '') {
-                            additionalData.casetype2 = $('#casetype2p option:selected').text();
+                        if ($('#casetype2p'+cardId).val() !== '') {
+                            additionalData.casetype2 = $('#casetype2p'+cardId+' option:selected').text();
                             additionalData.caseid2 = $('#casetype2p').val();
                         }
-                        if ($('#casetype3p').val() !== '') {
-                            additionalData.casetype3 = $('#casetype3p option:selected').text();
+                        if ($('#casetype3p'+cardId).val() !== '') {
+                            additionalData.casetype3 = $('#casetype3p'+cardId+' option:selected').text();
                             additionalData.caseid3 = $('#casetype3p').val();
                         }
-                        if ($('#casetype4p').val() !== '') {
-                            additionalData.casetype4 = $('#casetype4p option:selected').text();
+                        if ($('#casetype4p'+cardId).val() !== '') {
+                            additionalData.casetype4 = $('#casetype4p'+cardId+' option:selected').text();
                             additionalData.caseid4 = $('#casetype4p').val();
                         }
-                        if ($('#casetype5p').val() !== '') {
-                            additionalData.casetype5 = $('#casetype5p option:selected').text();
+                        if ($('#casetype5p'+cardId).val() !== '') {
+                            additionalData.casetype5 = $('#casetype5p'+cardId+' option:selected').text();
                             additionalData.caseid5 = $('#casetype5p').val();
                         }
-                        if ($('#casetype6p').val() !== '') {
-                            additionalData.casetype6 = $('#casetype6p option:selected').text();
+                        if ($('#casetype6p'+cardId).val() !== '') {
+                            additionalData.casetype6 = $('#casetype6p'+cardId+' option:selected').text();
                             additionalData.caseid6 = $('#casetype6p').val();
                         }
                         $.ajax({
@@ -629,51 +629,51 @@
                             };
                             emergencyData.push(emergency);
                         });
-                        var id = $('#contractid').val();
+                        var id = $('#contractid'+cardId).val();
                         var additionalData = {
-                            hn: $('#hnp').val(),
-                            adddate: $('#adddatep').val(),
-                            fname: $('#fnamep').val(),
-                            lname: $('#lnamep').val(),
-                            homeno: $('#homenop').val(),
-                            moo: $('#moop').val(),
-                            soi: $('#soip').val(),
-                            road: $('#roadp').val(),
-                            city: $('#cityp').val(),
-                            district: $('#districtp').val(),
-                            subdistrict: $('#subdistrictp').val(),
-                            postcode: $('#postcodep').val(),
-                            telhome: $('#telhomep').val(),
-                            phoneno: $('#phonenop').val(),
-                            workno: $('#worknop').val(),
-                            telno: $('#telnop').val(),
-                            casetype1: $('#casetype1p option:selected').text(),
-                            caseid1: $('#casetype1p').val(),
-                            tranferstatus: $('#tranferstatusp').val(),
-                            casedetail: $('#casedetailp').val(),
-                            casestatus: $('#casestatusp').val(),
-                            agent: $('#telnop').val(),
+                            hn: $('#hnp'+cardId).val(),
+                            adddate: $('#adddatep'+cardId).val(),
+                            fname: $('#fnamep'+cardId).val(),
+                            lname: $('#lnamep'+cardId).val(),
+                            homeno: $('#homenop'+cardId).val(),
+                            moo: $('#moop'+cardId).val(),
+                            soi: $('#soip'+cardId).val(),
+                            road: $('#roadp'+cardId).val(),
+                            city: $('#cityp'+cardId).val(),
+                            district: $('#districtp'+cardId).val(),
+                            subdistrict: $('#subdistrictp'+cardId).val(),
+                            postcode: $('#postcodep'+cardId).val(),
+                            telhome: $('#telhomep'+cardId).val(),
+                            phoneno: $('#phonenop'+cardId).val(),
+                            workno: $('#worknop'+cardId).val(),
+                            telno: $('#telnop'+cardId).val(),
+                            casetype1: $('#casetype1p'+cardId+'option:selected').text(),
+                            caseid1: $('#casetype1p'+cardId).val(),
+                            tranferstatus: $('#tranferstatusp'+cardId).val(),
+                            casedetail: $('#casedetailp'+cardId).val(),
+                            casestatus: $('#casestatusp'+cardId).val(),
+                            agent: $('#telnop'+cardId).val(),
                             emergencyData: emergencyData
                         };
-                        if ($('#casetype2p').val() !== '') {
-                            additionalData.casetype2 = $('#casetype2p option:selected').text();
-                            additionalData.caseid2 = $('#casetype2p').val();
+                        if ($('#casetype2p'+cardId).val() !== '') {
+                            additionalData.casetype2 = $('#casetype2p'+cardId+'option:selected').text();
+                            additionalData.caseid2 = $('#casetype2p'+cardId).val();
                         }
-                        if ($('#casetype3p').val() !== '') {
-                            additionalData.casetype3 = $('#casetype3p option:selected').text();
-                            additionalData.caseid3 = $('#casetype3p').val();
+                        if ($('#casetype3p'+cardId).val() !== '') {
+                            additionalData.casetype3 = $('#casetype3p'+cardId+'option:selected').text();
+                            additionalData.caseid3 = $('#casetype3p'+cardId).val();
                         }
-                        if ($('#casetype4p').val() !== '') {
-                            additionalData.casetype4 = $('#casetype4p option:selected').text();
-                            additionalData.caseid4 = $('#casetype4p').val();
+                        if ($('#casetype4p'+cardId).val() !== '') {
+                            additionalData.casetype4 = $('#casetype4p'+cardId+'option:selected').text();
+                            additionalData.caseid4 = $('#casetype4p'+cardId).val();
                         }
-                        if ($('#casetype5p').val() !== '') {
-                            additionalData.casetype5 = $('#casetype5p option:selected').text();
-                            additionalData.caseid5 = $('#casetype5p').val();
+                        if ($('#casetype5p'+cardId).val() !== '') {
+                            additionalData.casetype5 = $('#casetype5p'+cardId+'option:selected').text();
+                            additionalData.caseid5 = $('#casetype5p'+cardId).val();
                         }
-                        if ($('#casetype6p').val() !== '') {
-                            additionalData.casetype6 = $('#casetype6p option:selected').text();
-                            additionalData.caseid6 = $('#casetype6p').val();
+                        if ($('#casetype6p'+cardId).val() !== '') {
+                            additionalData.casetype6 = $('#casetype6p'+cardId+'option:selected').text();
+                            additionalData.caseid6 = $('#casetype6p'+cardId).val();
                         }
                         $.ajax({
                             url: "contacts/casescontractupdate/" + id,
