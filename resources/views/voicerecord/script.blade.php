@@ -105,21 +105,16 @@
         volumeInput.addEventListener('change', onChangeVolume);
 
 
-        // const fetchTooltipsFromDB = () => {
-        //     // Perform an API request or database query to retrieve tooltip data
-        //     return [{
-        //             startTime: ,
-        //             endTime: ,
-        //             content:
-        //         },
-        //         {
-        //             startTime: ,
-        //             endTime: ,
-        //             content:
-        //         },
-        //         // More tooltip data...
-        //     ];
-        // };
+        const fetchTooltipsFromDB = () => {
+            // Perform an API request or database query to retrieve tooltip data
+            return [{
+                    startTime: null,
+                    endTime: null,
+                    content: null,
+                }
+                // More tooltip data...
+            ];
+        };
 
         const updateTimer = () => {
             const formattedTime = secondsToTimestamp(wavesurfer.getCurrentTime());
