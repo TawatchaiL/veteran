@@ -262,10 +262,11 @@
 
             document.getElementById('add-content-button').addEventListener('click', function(e) {
                 // addContentButton.addEventListener('click', () => {
+                    console.log('current Region'+currentRegion);
+
                 e.preventDefault();
                 if (currentRegion) {
 
-                    console.log(currentRegion);
                     // Remove any existing tooltips in the current region
                     const existingTooltips = currentRegion.element.querySelectorAll('.region-tooltip');
                     existingTooltips.forEach((tooltip) => {
