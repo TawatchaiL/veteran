@@ -41,7 +41,8 @@
 
     $('#custom-tabs-pop').on('click', '.nav-link', function() {
         let dataId = $(this).data('id');
-        maximizeCard(dataId);
+        //maximizeCard(dataId);
+        listcontact(dataId);
     });
 
     //popup card
@@ -57,7 +58,8 @@
                 removeAllTabs();
                 $('#custom-tabs-pop').prepend(response.tab_link);
                 $('#custom-tabs-pop-tabContent').prepend(response.tab_content);
-                maximizeCard(response.active_id);
+                //maximizeCard(response.active_id);
+                listcontact(response.active_id);
                 //$('#dpopup').html(response.html);
                 // Position the cards after dynamic content is loaded
                 /*  $('.custom-bottom-right-card').each(function(index) {
@@ -715,6 +717,24 @@
                         });
                     }
                 });
+            }
+        });
+    }
+
+    function listcontact(cardId) {
+        $.ajax({
+            url: '{{ route('casescontract.popupcontact') }}',
+            type: 'POST',
+            data: {
+                cardId: cardId
+            },
+            success: async function(response) {
+                $('#' + cardId).removeClass('card-danger');
+                $('#' + cardId).addClass('card-success');
+                await $('#pop_' + cardId).html(response.html);
+                $(".card-footer").css("display", "block")
+                $('.bclose').css('display', 'none');
+
             }
         });
     }
