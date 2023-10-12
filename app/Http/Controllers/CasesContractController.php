@@ -238,7 +238,7 @@ class CasesContractController extends Controller
             ->orWhere('workno', '=', $con)
             ->get();
         $case_type = Case_type::orderBy("id", "asc")->get();
-        $template = 'casescontract';
+        $template = 'casescontract.index';
         $htmlContent = View::make($template, [
             'cardid' => $con, 'telephone' => $con
         ])->render();
