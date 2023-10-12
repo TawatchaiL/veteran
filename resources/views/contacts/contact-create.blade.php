@@ -1,11 +1,11 @@
 <div class="row" style="display: flex; justify-content: center; align-items: center;">
     <div class="col-md-12 col-sm-12 col-lg-12">
-        <div class="alert alert-danger alert-danger-pop alert-dismissible fade show" role="alert" style="display: none;">
+        <div class="alert alert-danger alert-danger-pop{{$cardid}} alert-dismissible fade show" role="alert" style="display: none;">
             <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <div class="alert alert-success alert-success-pop alert-dismissible fade show" role="alert"
+        <div class="alert alert-success alert-success-pop{{$cardid}} alert-dismissible fade show" role="alert"
             style="display: none;">
 
             <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">

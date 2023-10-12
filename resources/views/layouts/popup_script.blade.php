@@ -508,7 +508,7 @@
 
                 $('#SubmitCreateFormPOP').click(function(e) {
                     var emergencyData = [];
-                    if ($('#contractid').val() === "") {
+                    if ($('#contractid'+cardId).val() === "") {
                         $('#myTbl3p'+cardId+' tbody tr').each(function() {
                             var emergencyname = $(this).find(
                                 'input[name="emergencynamep'+cardId+'[]"]').val();
@@ -575,12 +575,12 @@
                             data: additionalData,
                             success: function(result) {
                                 if (result.errors) {
-                                    $('.alert-danger-pop').html('');
+                                    $('.alert-danger-pop'+cardId).html('');
                                     $.each(result.errors, function(key,
                                         value) {
-                                        $('.alert-danger-pop')
+                                        $('.alert-danger-pop'+cardId)
                                             .show();
-                                        $('.alert-danger-pop')
+                                        $('.alert-danger-pop'+cardId)
                                             .append('<strong><li>' +
                                                 value +
                                                 '</li></strong>');
@@ -589,13 +589,13 @@
                                         console.log(e)
                                     })
                                 } else {
-                                    $('.alert-danger-pop').hide();
-                                    $('.alert-success-pop').show();
-                                    $('.alert-success-pop').append(
+                                    $('.alert-danger-pop'+cardId).hide();
+                                    $('.alert-success-pop'+cardId).show();
+                                    $('.alert-success-pop'+cardId).append(
                                         '<strong><li>' + result
                                         .success +
                                         '</li></strong>');
-                                    var cardElementId = $('#telnop')
+                                    var cardElementId = $('#telnop'+cardId)
                                         .val();
 
                                     $(`#custom-tabs-pop-${cardElementId}-tab`).closest(
@@ -605,7 +605,7 @@
                                         timeOut: 5000
                                     });
 
-                                    $('.alert-success').hide();
+                                    $('.alert-success'+cardId).hide();
 
                                 }
                             }
@@ -682,24 +682,24 @@
 
                             success: function(result) {
                                 if (result.errors) {
-                                    $('.alert-danger-pop').html('');
+                                    $('.alert-danger-pop'+cardId).html('');
                                     $.each(result.errors, function(key,
                                         value) {
-                                        $('.alert-danger-pop')
+                                        $('.alert-danger-pop'+cardId)
                                             .show();
-                                        $('.alert-danger-pop')
+                                        $('.alert-danger-pop'+cardId)
                                             .append('<strong><li>' +
                                                 value +
                                                 '</li></strong>');
                                     });
                                 } else {
-                                    $('.alert-danger-pop').hide();
-                                    $('.alert-success-pop').show();
-                                    $('.alert-success-pop').append(
+                                    $('.alert-danger-pop'+cardId).hide();
+                                    $('.alert-success-pop'+cardId).show();
+                                    $('.alert-success-pop'+cardId).append(
                                         '<strong><li>' + result
                                         .success +
                                         '</li></strong>');
-                                    var cardElementId = $('#telnop')
+                                    var cardElementId = $('#telnop'+cardId)
                                         .val();
 
                                     $(`#custom-tabs-pop-${cardElementId}-tab`).closest(
@@ -709,7 +709,7 @@
                                         timeOut: 5000
                                     });
 
-                                    $('.alert-success').hide();
+                                    $('.alert-success'+cardId).hide();
                                 }
                             }
                         });
