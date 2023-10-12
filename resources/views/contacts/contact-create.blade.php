@@ -14,8 +14,8 @@
         </div>
 
         {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
-        <div class="text-end"><input type="hidden" value="" name="contractid{{$cardid}}" id="contractid{{$cardid}}"><input
-                type="hidden" value="{{ $telephone }}" name="telnop{{$cardid}}" id="telnop">
+        <div class="text-end"><input type="hidden" value="" name="contractid" id="contractid"><input
+                type="hidden" value="{{ $telephone }}" name="telnop" id="telnop">
             {{-- <h1 style="color: #1a16eb"><i class="fa-solid fa-id-card-clip"></i> {{ $telephone }}</h1> --}}
         </div>
         <div  class="text-right">
@@ -23,7 +23,7 @@
         <div class="card card-success card-outline card-outline-tabs">
             <div class="card-header p-0 pt-1">
                 <ul class="nav nav-tabs" id="custom-tabs-one-tabp" role="tablist">
-                    <li class="pt-2 px-3" id="phonenosuccess{{$cardid}}"> </li>
+                    <li class="pt-2 px-3" id="phonenosuccess"> </li>
                     {{--   <li class="pt-2 px-3">
                         <h3 class="card-title" id="contact_name"></h3>
                     </li> --}}
@@ -181,8 +181,6 @@
                             </div>
                         </div>
                     </div>
-
-
 
                     <div class="tab-pane fade" id="custom-tabs-one-profilep" role="tabpanel"
                         aria-labelledby="custom-tabs-one-profile-tabp">
