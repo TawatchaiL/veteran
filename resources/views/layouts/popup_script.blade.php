@@ -509,7 +509,7 @@
                 $('#SubmitCreateFormPOP').click(function(e) {
                     var emergencyData = [];
                     if ($('#contractid').val() === "") {
-                        $('#myTbl3p tbody tr').each(function() {
+                        $('#myTbl3p'+cardId+' tbody tr').each(function() {
                             var emergencyname = $(this).find(
                                 'input[name="emergencynamep'+cardId+'[]"]').val();
                             var emerrelation = $(this).find(
@@ -612,7 +612,7 @@
                         });
                     } else {
                         if (!confirm("ยืนยันการทำรายการ ?")) return;
-                        $('#myTbl3p tbody tr').each(function(index, tr) {
+                        $('#myTbl3p'+cardId+' tbody tr').each(function(index, tr) {
                             var emertype = $(this).find(
                                 'input[name="emertypep'+cardId+'[]"]').val();
                             var emergencyname = $(this).find(
@@ -710,8 +710,6 @@
                                     });
 
                                     $('.alert-success').hide();
-
-
                                 }
                             }
                         });
