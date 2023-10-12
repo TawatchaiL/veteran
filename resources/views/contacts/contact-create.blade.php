@@ -227,7 +227,7 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <table id="myTbl3p"
+                                <table id="myTbl3p{{$cardid}}"
                                     class="table table-striped table-bordered responsive-utilities jambo_table "
                                     width="400">
                                     <thead>

@@ -1,6 +1,6 @@
 <script>
-    const addemerphone = () => {
-        const tableBody = document.getElementById('myTbl3p').getElementsByTagName('tbody')[0];
+    const addemerphone = (cardid) => {
+        const tableBody = document.getElementById('myTbl3p'+cardid).getElementsByTagName('tbody')[0];
 
         document.getElementById('addRowBtnp').addEventListener('click', () => {
             const newRow = document.createElement('tr');
@@ -118,7 +118,7 @@
                 await $('#pop_' + cardId).html(response.html);
                 $(".card-footer").css("display", "block")
                 $('.bclose').css('display', 'none');
-                //addemerphone();
+                addemerphone(cardId);
 
 
                 var provinceOb = $('#cityp'+cardId);
