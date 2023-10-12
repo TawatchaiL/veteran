@@ -55,8 +55,8 @@
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <strong><i class="fas fa-code"></i> รหัสผู้ติดต่อ:</strong>
-                                    {!! Form::text('hnp', '', [
-                                        'id' => 'hnp',
+                                    {!! Form::text('hnp'.$cardid, '', [
+                                        'id' => 'hnp'.$cardid,
                                         'placeholder' => 'รหัสผู้ติดต่อ',
                                         'class' => 'form-control',
                                         'readonly' => false,
@@ -66,8 +66,8 @@
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <strong><i class="fas fa-calendar"></i> วันที่บันทึก:</strong>
-                                    {!! Form::text('adddatep', date('Y-m-d'), [
-                                        'id' => 'adddatep',
+                                    {!! Form::text('adddatep'.$cardid, date('Y-m-d'), [
+                                        'id' => 'adddatep'.$cardid,
                                         'placeholder' => 'วันที่บันทึก',
                                         'class' => 'AddDate form-control',
                                         'data-target' => '#reservationdate',
@@ -81,14 +81,14 @@
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <strong><i class="fas fa-user-tie"></i> ชื่อ:</strong>
-                                    {!! Form::text('fnamep', null, ['id' => 'fnamep', 'placeholder' => 'ชื่อ', 'class' => 'form-control']) !!}
+                                    {!! Form::text('fnamep'.$cardid, null, ['id' => 'fnamep'.$cardid, 'placeholder' => 'ชื่อ', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <strong><i class="fas fa-user-tie"></i> นามสกุล:</strong>
-                                    {!! Form::text('lnamep', null, [
-                                        'id' => 'lnamep',
+                                    {!! Form::text('lnamep'.$cardid, null, [
+                                        'id' => 'lnamep'.$cardid,
                                         'placeholder' => 'นามสกุล',
                                         'class' => 'form-control',
                                     ]) !!}
@@ -100,8 +100,8 @@
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <strong><i class="fas fa-home"></i> บ้านเลขที่:</strong>
-                                    {!! Form::text('homenop', null, [
-                                        'id' => 'homenop',
+                                    {!! Form::text('homenop'.$cardid, null, [
+                                        'id' => 'homenop'.$cardid,
                                         'placeholder' => 'บ้านเลขที่',
                                         'class' => 'form-control',
                                     ]) !!}
@@ -110,8 +110,8 @@
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <strong><i class="fa-solid fa-people-roof"></i> หมู่:</strong>
-                                    {!! Form::text('moop', null, [
-                                        'id' => 'moop',
+                                    {!! Form::text('moop'.$cardid, null, [
+                                        'id' => 'moop'.$cardid,
                                         'placeholder' => 'หมู่',
                                         'class' => 'form-control',
                                     ]) !!}
@@ -122,8 +122,8 @@
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <strong><i class="fa-solid fa-people-roof"></i> ซอย :</strong>
-                                    {!! Form::text('soip', null, [
-                                        'id' => 'soip',
+                                    {!! Form::text('soip'.$cardid, null, [
+                                        'id' => 'soip'.$cardid,
                                         'placeholder' => 'ซอย',
                                         'class' => 'form-control',
                                     ]) !!}
@@ -132,8 +132,8 @@
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <strong><i class="fas fa-road"></i> ถนน :</strong>
-                                    {!! Form::text('roadp', null, [
-                                        'id' => 'roadp',
+                                    {!! Form::text('roadp'.$cardid, null, [
+                                        'id' => 'roadp'.$cardid,
                                         'placeholder' => 'ถนน',
                                         'class' => 'form-control',
                                     ]) !!}
@@ -144,8 +144,8 @@
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <strong><i class="fa-solid fa-city"></i> จังหวัด :</strong>
-                                    <select style="width: 100%;" class="select2 form-control" id="cityp"
-                                        name="cityp">
+                                    <select style="width: 100%;" class="select2 form-control" id="cityp{{$cardid}}"
+                                        name="cityp{{$cardid}}">
                                     </select>
                                 </div>
                             </div>
@@ -153,8 +153,8 @@
                                 <div class="form-group">
                                     <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
                                         อำเภอ:</strong>
-                                    <select style="width: 100%;" class="select2 form-control" id="districtp"
-                                        name="districtp">
+                                    <select style="width: 100%;" class="select2 form-control" id="districtp{{$cardid}}"
+                                        name="districtp{{$cardid}}">
                                     </select>
                                 </div>
                             </div>
@@ -164,16 +164,16 @@
                                 <div class="form-group">
                                     <strong><i class="fa-solid fa-building-circle-arrow-right"></i> ตำบล
                                         :</strong>
-                                    <select style="width: 100%;" class="select2 form-control" id="subdistrictp"
-                                        name="subdistrictp">
+                                    <select style="width: 100%;" class="select2 form-control" id="subdistrictp{{$cardid}}"
+                                        name="subdistrictp{{$cardid}}">
                                     </select>
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <strong><i class="fas fa-code"></i> รหัสไปรษณีย์:</strong>
-                                    {!! Form::text('postcodep', null, [
-                                        'id' => 'postcodep',
+                                    {!! Form::text('postcodep'.$cardid, null, [
+                                        'id' => 'postcodep'.$cardid,
                                         'placeholder' => 'รหัสไปรษณีย์',
                                         'class' => 'form-control',
                                     ]) !!}
@@ -192,8 +192,8 @@
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์บ้าน:</strong>
-                                    {!! Form::text('telhomep', null, [
-                                        'id' => 'telhomep',
+                                    {!! Form::text('telhomep'.$cardid, null, [
+                                        'id' => 'telhomep'.$cardid,
                                         'placeholder' => 'เบอร์โทรศัพท์บ้าน',
                                         'class' => 'form-control',
                                         'onkeydown' => 'validateNumber(event)',
@@ -203,8 +203,8 @@
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์มือถือ :</strong>
-                                    {!! Form::text('phonenop', null, [
-                                        'id' => 'phonenop',
+                                    {!! Form::text('phonenop'.$cardid, null, [
+                                        'id' => 'phonenop'.$cardid,
                                         'placeholder' => 'เบอร์โทรศัพท์มือถือ',
                                         'class' => 'form-control',
                                         'onkeydown' => 'validateNumber(event)',
@@ -218,8 +218,8 @@
                                 <div class="form-group">
                                     <strong><i class="fas fa-phone"></i>
                                         เบอร์โทรศัพท์ที่ทำงาน:</strong>
-                                    {!! Form::text('worknop', null, [
-                                        'id' => 'worknop',
+                                    {!! Form::text('worknop'.$cardid, null, [
+                                        'id' => 'worknop'.$cardid,
                                         'placeholder' => 'เบอร์โทรศัพท์ที่ทำงาน',
                                         'class' => 'form-control',
                                         'onkeydown' => 'validateNumber(event)',

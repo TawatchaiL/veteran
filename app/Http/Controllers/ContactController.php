@@ -139,7 +139,7 @@ class ContactController extends Controller
         $case_type = Case_type::orderBy("id", "asc")->get();
         $template = 'contacts.contact-create';
         $htmlContent = View::make($template, [
-            'telephone' => $con, 'contact_name' => $contact_name, 'contact_lname' => $contact_lname, 'casetype' => $case_type
+            'cardid' => $request->get('cardId'), 'telephone' => $con, 'contact_name' => $contact_name, 'contact_lname' => $contact_lname, 'casetype' => $case_type
         ])->render();
         return response()->json([
             'html' =>  $htmlContent,
