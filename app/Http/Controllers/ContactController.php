@@ -35,9 +35,6 @@ class ContactController extends Controller
         $this->middleware('permission:contact-delete', ['only' => ['destroy']]);
     }
 
-    /**
-     * Display a listing of the resource.
-     */
     public function index(Request $request)
     {
         if ($request->ajax()) {
