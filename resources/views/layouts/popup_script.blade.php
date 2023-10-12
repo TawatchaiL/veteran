@@ -466,7 +466,7 @@
                                 method: 'GET',
                                 async: false,
                                 success: function(res) {
-                                    var provinceOb = $('#casetype1p');
+                                    var provinceOb = $('#casetype1p'+cardId);
                                     provinceOb.html(
                                         '<option value="">เลือกประเภทการติดต่อ</option>'
                                     );
@@ -483,25 +483,25 @@
                                     });
                                 }
                             });
-                            $('#casetype2p').html(
+                            $('#casetype2p'+cardId).html(
                                 '<option value="">เลือกรายละเอียดเคส</option>');
-                            $('#casetype3p').html(
+                            $('#casetype3p'+cardId).html(
                                 '<option value="">เลือกรายละเอียดเคสย่อย</option>'
                             );
-                            $('#casetype4p').html(
+                            $('#casetype4p'+cardId).html(
                                 '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>'
                             );
-                            $('#casetype5p').html(
+                            $('#casetype5p'+cardId).html(
                                 '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>'
                             );
-                            $('#casetype6p').html(
+                            $('#casetype6p'+cardId).html(
                                 '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>'
                             );
-                            $('#casetype2p').attr('disabled', true);
-                            $('#casetype3p').attr('disabled', true);
-                            $('#casetype4p').attr('disabled', true);
-                            $('#casetype5p').attr('disabled', true);
-                            $('#casetype6p').attr('disabled', true);
+                            $('#casetype2p'+cardId).attr('disabled', true);
+                            $('#casetype3p'+cardId).attr('disabled', true);
+                            $('#casetype4p'+cardId).attr('disabled', true);
+                            $('#casetype5p'+cardId).attr('disabled', true);
+                            $('#casetype6p'+cardId).attr('disabled', true);
                         }, 500)
                     }, 500)
                 }, 500)
