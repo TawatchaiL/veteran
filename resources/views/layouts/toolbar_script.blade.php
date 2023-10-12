@@ -33,7 +33,7 @@
             subtitle: subtitle,
             icon: 'fas fa-bell',
             autohide: true,
-            zIndex: 9999999,
+            zIndex: 99999999,
             fade: true,
             delay: 3000
         })
@@ -47,7 +47,7 @@
             subtitle: subtitle,
             icon: 'fas fa-bell',
             autohide: true,
-            zIndex: 9999999,
+            zIndex: 99999999,
             fade: true,
             delay: 3000
         })
@@ -440,11 +440,11 @@
     });
 
     //conf
-    $(".button_conf").click(function() {
+    conf_button.click(function() {
         let len = $('input[name="call[]"]:checked').length;
         if (len > 0) {
             if (len !== 2) {
-                alert_danger('Opp', 'Please Select 2 Call', '');
+                alert_danger('Opp', 'กรุณาเลือกสายสองสายขึ้นไป', '');
             } else {
                 let chan = []
                 $('input[name="call[]"]:checked').each(function() {
@@ -460,7 +460,7 @@
                             1] + "/" + chan[1] + "/" + exten, (data, status) => {
 
                             if (status == 'success') {
-                                alert_success('OK', 'Conferrent Success', '');
+                                alert_success('OK', 'ประชุมสายสำเร็จ', '');
                             } else {
                                 alert_danger('Opp', 'Something Error', '');
                             }
@@ -471,7 +471,7 @@
 
             }
         } else {
-            alert_danger('Opp', 'Please select call to conferrence', '');
+            alert_danger('Opp', 'กรุณาเลือกสายที่จะประชุม', '');
 
         }
 
@@ -507,7 +507,7 @@
 
     //hangup
     $(document).on('click', '.hangup_call', function(data) {
-        if (!confirm("Are you sure to hangup?")) return;
+        if (!confirm("ยืนยันการวางสาย?")) return;
         let rowid = $(this).data("id")
 
         if (!rowid) return;
@@ -543,9 +543,6 @@
                     mcallprofile = data[1][1];
                     mcallexten = data[2][1];
                     mcalldestchan = data[3][1];
-
-
-
 
                     if (strArray[4] == 'Ringing' || strArray[4] == 'Ring') {
                         state = 'กำลังรอสาย'
