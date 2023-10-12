@@ -647,7 +647,7 @@
                             phoneno: $('#phonenop'+cardId).val(),
                             workno: $('#worknop'+cardId).val(),
                             telno: $('#telnop'+cardId).val(),
-                            casetype1: $('#casetype1p'+cardId+'option:selected').text(),
+                            casetype1: $('#casetype1p'+cardId+' option:selected').text(),
                             caseid1: $('#casetype1p'+cardId).val(),
                             tranferstatus: $('#tranferstatusp'+cardId).val(),
                             casedetail: $('#casedetailp'+cardId).val(),
@@ -656,23 +656,23 @@
                             emergencyData: emergencyData
                         };
                         if ($('#casetype2p'+cardId).val() !== '') {
-                            additionalData.casetype2 = $('#casetype2p'+cardId+'option:selected').text();
+                            additionalData.casetype2 = $('#casetype2p'+cardId+' option:selected').text();
                             additionalData.caseid2 = $('#casetype2p'+cardId).val();
                         }
                         if ($('#casetype3p'+cardId).val() !== '') {
-                            additionalData.casetype3 = $('#casetype3p'+cardId+'option:selected').text();
+                            additionalData.casetype3 = $('#casetype3p'+cardId+' option:selected').text();
                             additionalData.caseid3 = $('#casetype3p'+cardId).val();
                         }
                         if ($('#casetype4p'+cardId).val() !== '') {
-                            additionalData.casetype4 = $('#casetype4p'+cardId+'option:selected').text();
+                            additionalData.casetype4 = $('#casetype4p'+cardId+' option:selected').text();
                             additionalData.caseid4 = $('#casetype4p'+cardId).val();
                         }
                         if ($('#casetype5p'+cardId).val() !== '') {
-                            additionalData.casetype5 = $('#casetype5p'+cardId+'option:selected').text();
+                            additionalData.casetype5 = $('#casetype5p'+cardId+' option:selected').text();
                             additionalData.caseid5 = $('#casetype5p'+cardId).val();
                         }
                         if ($('#casetype6p'+cardId).val() !== '') {
-                            additionalData.casetype6 = $('#casetype6p'+cardId+'option:selected').text();
+                            additionalData.casetype6 = $('#casetype6p'+cardId+' option:selected').text();
                             additionalData.caseid6 = $('#casetype6p'+cardId).val();
                         }
                         $.ajax({
