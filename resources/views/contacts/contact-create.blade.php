@@ -15,30 +15,30 @@
 
         {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
         <div class="text-end"><input type="hidden" value="" name="contractid{{$cardid}}" id="contractid{{$cardid}}"><input
-                type="hidden" value="{{ $telephone }}" name="telnop{{$cardid}}" id="telnop{{$cardid}}">
+                type="hidden" value="{{ $telephone }}" name="telnop{{$cardid}}" id="telnop">
             {{-- <h1 style="color: #1a16eb"><i class="fa-solid fa-id-card-clip"></i> {{ $telephone }}</h1> --}}
         </div>
         <div  class="text-right">
         </div>
         <div class="card card-success card-outline card-outline-tabs">
             <div class="card-header p-0 pt-1">
-                <ul class="nav nav-tabs" id="custom-tabs-one-tabp{{$cardid}}" role="tablist">
+                <ul class="nav nav-tabs" id="custom-tabs-one-tabp" role="tablist">
                     <li class="pt-2 px-3" id="phonenosuccess{{$cardid}}"> </li>
                     {{--   <li class="pt-2 px-3">
                         <h3 class="card-title" id="contact_name"></h3>
                     </li> --}}
                     <li class="nav-item">
-                        <a class="nav-link active" id="custom-tabs-one-home-tabp{{$cardid}}" data-toggle="pill"
+                        <a class="nav-link active" id="custom-tabs-one-home-tabp" data-toggle="pill"
                             href="#custom-tabs-one-homep" role="tab" aria-controls="custom-tabs-one-homep"
                             aria-selected="true">ข้อมูลผู้ติดต่อ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="custom-tabs-one-profile-tabp{{$cardid}}" data-toggle="pill"
+                        <a class="nav-link" id="custom-tabs-one-profile-tabp" data-toggle="pill"
                             href="#custom-tabs-one-profilep" role="tab" aria-controls="custom-tabs-one-profilep"
                             aria-selected="false">ข้อมูลเบอร์ติดต่อ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="custom-tabs-one-case-tabp{{$cardid}}" data-toggle="pill"
+                        <a class="nav-link" id="custom-tabs-one-case-tabp" data-toggle="pill"
                             href="#custom-tabs-one-casep" role="tab" aria-controls="custom-tabs-one-casep"
                             aria-selected="true">ข้อมูลเรื่องที่ติดต่อ</a>
                     </li>
@@ -46,8 +46,8 @@
                 </ul>
             </div>
             <div class="card-body">
-                <div class="tab-content" id="custom-tabs-one-tabContentp{{$cardid}}">
-                    <div class="tab-pane fade show active" id="custom-tabs-one-homep{{$cardid}}" role="tabpanel"
+                <div class="tab-content" id="custom-tabs-one-tabContentp">
+                    <div class="tab-pane fade show active" id="custom-tabs-one-homep" role="tabpanel"
                         aria-labelledby="custom-tabs-one-home-tabp">
 
                         <div class="row">
@@ -184,7 +184,7 @@
 
 
 
-                    <div class="tab-pane fade" id="custom-tabs-one-profilep{{$cardid}}" role="tabpanel"
+                    <div class="tab-pane fade" id="custom-tabs-one-profilep" role="tabpanel"
                         aria-labelledby="custom-tabs-one-profile-tabp">
 
                         <div class="row">
@@ -255,7 +255,7 @@
                         </div>
                     </div>
 
-                    <div class="tab-pane fade" id="custom-tabs-one-casep{{$cardid}}" role="tabpanel"
+                    <div class="tab-pane fade" id="custom-tabs-one-casep" role="tabpanel"
                         aria-labelledby="custom-tabs-one-case-tabp">
 
                         <div class="row">
