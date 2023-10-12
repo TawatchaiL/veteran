@@ -48,7 +48,7 @@
             <div class="card-body">
                 <div class="tab-content" id="custom-tabs-one-tabContentp{{$cardid}}">
                     <div class="tab-pane fade show active" id="custom-tabs-one-homep{{$cardid}}" role="tabpanel"
-                        aria-labelledby="custom-tabs-one-home-tabp{{$cardid}}">
+                        aria-labelledby="custom-tabs-one-home-tabp">
 
                         <div class="row">
 
@@ -185,7 +185,7 @@
 
 
                     <div class="tab-pane fade" id="custom-tabs-one-profilep{{$cardid}}" role="tabpanel"
-                        aria-labelledby="custom-tabs-one-profile-tabp{{$cardid}}">
+                        aria-labelledby="custom-tabs-one-profile-tabp">
 
                         <div class="row">
 
@@ -256,7 +256,7 @@
                     </div>
 
                     <div class="tab-pane fade" id="custom-tabs-one-casep{{$cardid}}" role="tabpanel"
-                        aria-labelledby="custom-tabs-one-case-tabp{{$cardid}}">
+                        aria-labelledby="custom-tabs-one-case-tabp">
 
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6">
