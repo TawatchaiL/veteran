@@ -605,7 +605,7 @@
                                         timeOut: 5000
                                     });
 
-                                    $('.alert-success'+cardId).hide();
+                                    $('.alert-success-pop'+cardId).hide();
 
                                 }
                             }
@@ -709,7 +709,7 @@
                                         timeOut: 5000
                                     });
 
-                                    $('.alert-success'+cardId).hide();
+                                    $('.alert-success-pop'+cardId).hide();
                                 }
                             }
                         });
