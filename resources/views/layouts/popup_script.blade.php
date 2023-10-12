@@ -83,7 +83,7 @@
                 //});
             },
             error: function(xhr, status, error) {
-                // Handle error
+
             }
         });
     }
@@ -118,20 +118,14 @@
                 await $('#pop_' + cardId).html(response.html);
                 $(".card-footer").css("display", "block")
                 $('.bclose').css('display', 'none');
-                addemerphone();
+                //addemerphone();
 
-                function validateNumber(event) {
-                    var keyCode = event.which || event.keyCode;
-                    if ((keyCode < 48 || keyCode > 57) && keyCode !== 8) {
-                        event.preventDefault();
-                    }
-                }
-                var provinceOb = $('#cityp');
-                var districtOb = $('#districtp');
-                var cartonOb = $('#subdistrictp');
 
-                // on change province
-                $('#cityp').on('change', function() {
+                var provinceOb = $('#cityp'+cardId);
+                var districtOb = $('#districtp'+cardId);
+                var cartonOb = $('#subdistrictp'+cardId);
+
+                $('#cityp'+cardId).on('change', function() {
                     var provinceId = $(this).val();
                     districtOb.html('<option value="">เลือกอำเภอ</option>');
                     $.ajax({
@@ -341,7 +335,7 @@
                         method: 'GET',
                         async: false,
                         success: function(res) {
-                            var provinceOb = $('#cityp');
+                            var provinceOb = $('#cityp'+cardId);
                             provinceOb.html(
                                 '<option value="">เลือกจังหวัด</option>'
                             );
@@ -725,6 +719,13 @@
                 });
             }
         });
+    }
+
+    function validateNumberp(event) {
+                    var keyCode = event.which || event.keyCode;
+                    if ((keyCode < 48 || keyCode > 57) && keyCode !== 8) {
+                        event.preventDefault();
+                    }
     }
 
     // Close card AJAX function

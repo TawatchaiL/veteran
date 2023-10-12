@@ -196,7 +196,7 @@
                                         'id' => 'telhomep'.$cardid,
                                         'placeholder' => 'เบอร์โทรศัพท์บ้าน',
                                         'class' => 'form-control',
-                                        'onkeydown' => 'validateNumberp(event)',
+                                        'onkeydown' => 'validateNumber(event)',
                                     ]) !!}
                                 </div>
                             </div>
@@ -207,7 +207,7 @@
                                         'id' => 'phonenop'.$cardid,
                                         'placeholder' => 'เบอร์โทรศัพท์มือถือ',
                                         'class' => 'form-control',
-                                        'onkeydown' => 'validateNumberp(event)',
+                                        'onkeydown' => 'validateNumber(event)',
                                     ]) !!}
                                 </div>
                             </div>
@@ -222,7 +222,7 @@
                                         'id' => 'worknop'.$cardid,
                                         'placeholder' => 'เบอร์โทรศัพท์ที่ทำงาน',
                                         'class' => 'form-control',
-                                        'onkeydown' => 'validateNumberp(event)',
+                                        'onkeydown' => 'validateNumber(event)',
                                     ]) !!}
                                 </div>
                             </div>
@@ -248,7 +248,7 @@
                             </div>
                             <div class="col-md-12" align="right">
 
-                                <button type="button" id="addRowBtnp{{$cardid}}" class="btn btn-warning btnAddg"><i
+                                <button type="button" id="addRowBtnp" class="btn btn-warning btnAddg"><i
                                         class="fa-solid fa-plus"></i>
                                     เพิ่มบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน</button>
                             </div>
@@ -262,8 +262,8 @@
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <strong><i class="fa-regular fa-message"></i> ประเภทเคส:</strong>
-                                    <select style="width: 100%;" class="select2 form-control" id="casetype1p{{$cardid}}"
-                                        name="casetype1p{{$cardid}}">
+                                    <select style="width: 100%;" class="select2 form-control" id="casetype1p"
+                                        name="casetype1p">
                                     </select>
                                 </div>
                             </div>
@@ -271,8 +271,8 @@
                                 <div class="form-group">
                                     <strong><i class="fa-regular fa-comment-dots"></i>
                                         รายละเอียดเคส:</strong>
-                                    <select style="width: 100%;" class="select2 form-control" id="casetype2p{{$cardid}}"
-                                        name="casetype2p{{$cardid}}">
+                                    <select style="width: 100%;" class="select2 form-control" id="casetype2p"
+                                        name="casetype2p">
                                     </select>
                                 </div>
                             </div>
@@ -282,8 +282,8 @@
                                 <div class="form-group">
                                     <strong><i class="fa-regular fa-comment-dots"></i>
                                         รายละเอียดเคสย่อย:</strong>
-                                    <select style="width: 100%;" class="select2 form-control" id="casetype3p{{$cardid}}"
-                                        name="casetype3p{{$cardid}}">
+                                    <select style="width: 100%;" class="select2 form-control" id="casetype3p"
+                                        name="casetype3p">
                                     </select>
                                 </div>
                             </div>
@@ -291,8 +291,8 @@
                                 <div class="form-group">
                                     <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
                                         เพิ่มเติม 1:</strong>
-                                    <select style="width: 100%;" class="select2 form-control" id="casetype4p{{$cardid}}"
-                                        name="casetype4p{{$cardid}}">
+                                    <select style="width: 100%;" class="select2 form-control" id="casetype4p"
+                                        name="casetype4p">
                                     </select>
                                 </div>
                             </div>
@@ -302,8 +302,8 @@
                                 <div class="form-group">
                                     <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
                                         เพิ่มเติม 2:</strong>
-                                    <select style="width: 100%;" class="select2 form-control" id="casetype5p{{$cardid}}"
-                                        name="casetype5p{{$cardid}}">
+                                    <select style="width: 100%;" class="select2 form-control" id="casetype5p"
+                                        name="casetype5p">
                                     </select>
                                 </div>
                             </div>
@@ -311,8 +311,8 @@
                                 <div class="form-group">
                                     <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
                                         เพิ่มเติม 3:</strong>
-                                    <select style="width: 100%;" class="select2 form-control" id="casetype6p{{$cardid}}"
-                                        name="casetype6p{{$cardid}}">
+                                    <select style="width: 100%;" class="select2 form-control" id="casetype6p"
+                                        name="casetype6p">
                                     </select>
                                 </div>
                             </div>
@@ -322,9 +322,9 @@
                                 <div class="form-group">
                                     <strong><i class="fa-regular fa-comment-dots"></i>
                                         รายละเอียด:</strong>
-                                    {!! Form::textarea('casedetailp'.$cardid, null, [
+                                    {!! Form::textarea('casedetailp', null, [
                                         'rows' => 4,
-                                        'id' => 'casedetailp'.$cardid,
+                                        'id' => 'casedetailp',
                                         'class' => 'form-control',
                                     ]) !!}
                                 </div>
@@ -339,7 +339,7 @@
                                 <div class="form-group">
                                     <strong><i class="fas fa-shuffle"></i> สถานะการโอนสาย
                                         :</strong>
-                                    <select class="select2 form-control" id="tranferstatusp{{$cardid}}" name="tranferstatusp{{$cardid}}>
+                                    <select class="select2 form-control" id="tranferstatusp" name="tranferstatusp">
                                         <option value="รับสาย">รับสาย</option>
                                         <option value="ไม่รับสาย">ไม่รับสาย</option>
                                         <option value="สายไม่ว่าง">สายไม่ว่าง</option>
@@ -350,7 +350,7 @@
                                 <div class="form-group">
                                     <strong><i class="fas fa-arrows-rotate"></i> สถานะการเคส
                                         :</strong>
-                                    <select class="select2 form-control" id="casestatusp{{$cardid}}" name="casestatusp{{$cardid}}">
+                                    <select class="select2 form-control" id="casestatusp" name="casestatusp">
                                         <option value="ปิดเคส">ปิดเคส</option>
                                         <option value="กำลังดำเนินการ">กำลังดำเนินการ</option>
                                     </select>

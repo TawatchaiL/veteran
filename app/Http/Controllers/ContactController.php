@@ -139,7 +139,7 @@ class ContactController extends Controller
         $case_type = Case_type::orderBy("id", "asc")->get();
         $template = 'contacts.contact-create';
         $htmlContent = View::make($template, [
-            'telephone' => $con, 'contact_name' => $contact_name, 'contact_lname' => $contact_lname, 'casetype' => $case_type
+            'cardid' => $con, 'telephone' => $con, 'contact_name' => $contact_name, 'contact_lname' => $contact_lname, 'casetype' => $case_type
         ])->render();
         return response()->json([
             'html' =>  $htmlContent,
@@ -208,16 +208,9 @@ class ContactController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //$rnumber = studentRunningNumber::pre_generate(Auth::user()->department->code);
-        //dd($rnumber);
-        /* return response()->json([
-            'running' =>  $rnumber
-        ]); */
+
     }
 
     /**

@@ -108,15 +108,10 @@
         const fetchTooltipsFromDB = () => {
             // Perform an API request or database query to retrieve tooltip data
             return [{
-                    startTime: 10,
-                    endTime: 15,
-                    content: 'ทดสอบ'
-                },
-                {
-                    startTime: 20,
-                    endTime: 25,
-                    content: 'เสียงชัดเจน'
-                },
+                    startTime: null,
+                    endTime: null,
+                    content: null,
+                }
                 // More tooltip data...
             ];
         };
