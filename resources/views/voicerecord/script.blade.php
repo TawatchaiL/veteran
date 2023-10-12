@@ -256,7 +256,7 @@
             button.addEventListener('click', () => {
                 // Remove the region when the button is clicked
                 region.remove();
-                console.log(region);
+                // console.log(region);
 
             });
 
@@ -264,6 +264,8 @@
                 // addContentButton.addEventListener('click', () => {
                 e.preventDefault();
                 if (currentRegion) {
+
+                    console.log(currentRegion);
                     // Remove any existing tooltips in the current region
                     const existingTooltips = currentRegion.element.querySelectorAll('.region-tooltip');
                     existingTooltips.forEach((tooltip) => {
