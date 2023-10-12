@@ -226,18 +226,6 @@ class CasesContractController extends Controller
     public function popupcontact(Request $request)
     {
         $con = $request->get('cardId');
-        $contact_name = "";
-        $contact_lname = "";
-        if ($con == "0877777777") {
-            $contact_name = "กิจวรรณ";
-            $contact_lname = "ละเอียด";
-        }
-        $datap = DB::table('crm_contacts')
-            ->where('phoneno', '=', $con)
-            ->orWhere('telhome', '=', $con)
-            ->orWhere('workno', '=', $con)
-            ->get();
-        $case_type = Case_type::orderBy("id", "asc")->get();
         $template = 'casescontract.index';
         $htmlContent = View::make($template, [
             'cardid' => $con, 'telephone' => $con
