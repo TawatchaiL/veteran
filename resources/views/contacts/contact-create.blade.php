@@ -46,7 +46,7 @@
                 </ul>
             </div>
             <div class="card-body">
-                <div class="tab-content" id="custom-tabs-one-tabContentp{{$cardid}}">
+                <div class="tab-content" id="custom-tabs-one-tabContentp">
                     <div class="tab-pane fade show active" id="custom-tabs-one-homep" role="tabpanel"
                         aria-labelledby="custom-tabs-one-home-tabp">
 
