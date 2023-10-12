@@ -243,7 +243,7 @@
                         $('#casetype6p'+cardId).attr('disabled', true);
                     }
                 });
-                $('#casetype3p').on('change', function() {
+                $('#casetype3p'+cardId).on('change', function() {
                     var parent_id = $(this).val();
                     $('#casetype4p'+cardId).html(
                         '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
