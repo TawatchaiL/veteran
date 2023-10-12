@@ -118,8 +118,8 @@
                 await $('#pop_' + cardId).html(response.html);
                 $(".card-footer").css("display", "block")
                 $('.bclose').css('display', 'none');
-                addemerphone(cardId);
 
+                //addemerphone(cardId);
 
                 var provinceOb = $('#cityp'+cardId);
                 var districtOb = $('#districtp'+cardId);
