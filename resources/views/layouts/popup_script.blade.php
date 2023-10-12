@@ -551,23 +551,23 @@
                         };
                         if ($('#casetype2p'+cardId).val() !== '') {
                             additionalData.casetype2 = $('#casetype2p'+cardId+' option:selected').text();
-                            additionalData.caseid2 = $('#casetype2p').val();
+                            additionalData.caseid2 = $('#casetype2p'+cardId).val();
                         }
                         if ($('#casetype3p'+cardId).val() !== '') {
                             additionalData.casetype3 = $('#casetype3p'+cardId+' option:selected').text();
-                            additionalData.caseid3 = $('#casetype3p').val();
+                            additionalData.caseid3 = $('#casetype3p'+cardId).val();
                         }
                         if ($('#casetype4p'+cardId).val() !== '') {
                             additionalData.casetype4 = $('#casetype4p'+cardId+' option:selected').text();
-                            additionalData.caseid4 = $('#casetype4p').val();
+                            additionalData.caseid4 = $('#casetype4p'+cardId).val();
                         }
                         if ($('#casetype5p'+cardId).val() !== '') {
                             additionalData.casetype5 = $('#casetype5p'+cardId+' option:selected').text();
-                            additionalData.caseid5 = $('#casetype5p').val();
+                            additionalData.caseid5 = $('#casetype5p'+cardId).val();
                         }
                         if ($('#casetype6p'+cardId).val() !== '') {
                             additionalData.casetype6 = $('#casetype6p'+cardId+' option:selected').text();
-                            additionalData.caseid6 = $('#casetype6p').val();
+                            additionalData.caseid6 = $('#casetype6p'+cardId).val();
                         }
                         $.ajax({
                             url: "{{ route('contacts.casescontract') }}",
