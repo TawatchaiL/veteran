@@ -69,11 +69,11 @@
 
         if (data.extension.match(exten)) {
             console.log(data)
-            $.get(`${web_url}/agent/kick/`, (dataw, status) => {
-                if (dataw) {
-                    window.location.replace(`${web_url}/auth/agent_kick`);
-                }
-            });
+            //$.get(`${web_url}/agent/kick/`, (dataw, status) => {
+            //if (dataw) {
+            window.location.replace(`${web_url}/logout?kick=1`);
+            //}
+            //});
         }
 
     });
@@ -123,7 +123,7 @@
 							</div>
 						</div>
 					</div>`);
-                    //toolbar_modal.modal('show');
+                //toolbar_modal.modal('show');
 
 
             }

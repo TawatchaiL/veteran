@@ -187,6 +187,7 @@ class LoginController extends Controller
         return $this->sendFailedLoginResponse($request);
     }
 
+
     public function clear_login($agent_id, $phone)
     {
 
@@ -225,7 +226,11 @@ class LoginController extends Controller
         $this->guard()->logout();
         $request->session()->invalidate();
 
-        return redirect('/');
+        if ($request->get('kick') == 1) {
+            redirect('/')->withErrors(['phone' => 'คุณถูกเตะออกจาก ระบบ กรุณาเข้าสู่ระบบอีกครั้ง']);
+        } else {
+            return redirect('/');
+        }
     }
 
     public function showLoginForm()
