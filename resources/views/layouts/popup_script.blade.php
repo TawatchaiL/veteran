@@ -511,11 +511,11 @@
                     if ($('#contractid').val() === "") {
                         $('#myTbl3p tbody tr').each(function() {
                             var emergencyname = $(this).find(
-                                'input[name="emergencynamep[]"]').val();
+                                'input[name="emergencynamep'+cardId+'[]"]').val();
                             var emerrelation = $(this).find(
-                                'input[name="emerrelationp[]"]').val();
+                                'input[name="emerrelationp'+cardId+'[]"]').val();
                             var emerphone = $(this).find(
-                                'input[name="emerphonep[]"]').val();
+                                'input[name="emerphonep'+cardId+'[]"]').val();
                             var emergency = {
                                 emergencyname: emergencyname,
                                 emerrelation: emerrelation,
@@ -614,13 +614,13 @@
                         if (!confirm("ยืนยันการทำรายการ ?")) return;
                         $('#myTbl3p tbody tr').each(function(index, tr) {
                             var emertype = $(this).find(
-                                'input[name="emertypep[]"]').val();
+                                'input[name="emertypep'+cardId+'[]"]').val();
                             var emergencyname = $(this).find(
-                                'input[name="emergencynamep[]"]').val();
+                                'input[name="emergencynamep'+cardId+'[]"]').val();
                             var emerrelation = $(this).find(
-                                'input[name="emerrelationp[]"]').val();
+                                'input[name="emerrelationp'+cardId+'[]"]').val();
                             var emerphone = $(this).find(
-                                'input[name="emerphonep[]"]').val();
+                                'input[name="emerphonep'+cardId+'[]"]').val();
                             var emergency = {
                                 emertype: emertype,
                                 emergencyname: emergencyname,
