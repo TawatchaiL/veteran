@@ -119,6 +119,7 @@ class ContactController extends Controller
 
 
         return view('contacts.index')->with(['centre' => $centre])
+            /*  ->with(['term' => $term]) */;
     }
 
     public function popup_content(Request $request)
@@ -218,6 +219,10 @@ class ContactController extends Controller
             'running' =>  $rnumber
         ]); */
     }
+
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
         //
