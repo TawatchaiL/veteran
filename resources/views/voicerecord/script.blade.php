@@ -256,6 +256,8 @@
             button.addEventListener('click', () => {
                 // Remove the region when the button is clicked
                 region.remove();
+                console.log(region);
+
             });
 
             document.getElementById('add-content-button').addEventListener('click', function(e) {
