@@ -282,9 +282,6 @@ class ContactController extends Controller
         return response()->json(['success' => 'เพิ่ม รายผู้ติดต่อ เรียบร้อยแล้ว']);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
