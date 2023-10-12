@@ -121,12 +121,12 @@
                 //addemerphone();
 
 
-                var provinceOb = $('#cityp');
-                var districtOb = $('#districtp');
-                var cartonOb = $('#subdistrictp');
+                var provinceOb = $('#cityp'+cardId);
+                var districtOb = $('#districtp'+cardId);
+                var cartonOb = $('#subdistrictp'+cardId);
 
                 // on change province
-                $('#cityp').on('change', function() {
+                $('#cityp'+cardId).on('change', function() {
                     var provinceId = $(this).val();
                     districtOb.html('<option value="">เลือกอำเภอ</option>');
                     $.ajax({
