@@ -506,7 +506,7 @@
                     }, 500)
                 }, 500)
 
-                $('#SubmitCreateFormPOP').click(function(e) {
+                $('#SubmitCreateFormP'+cardId).click(function(e) {
                     var emergencyData = [];
                     alert(cardId);
                     if ($('#contractid'+cardId).val() === "") {
