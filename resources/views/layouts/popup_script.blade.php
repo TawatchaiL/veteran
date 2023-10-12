@@ -125,7 +125,6 @@
                 var districtOb = $('#districtp'+cardId);
                 var cartonOb = $('#subdistrictp'+cardId);
 
-                // on change province
                 $('#cityp'+cardId).on('change', function() {
                     var provinceId = $(this).val();
                     districtOb.html('<option value="">เลือกอำเภอ</option>');
