@@ -207,7 +207,7 @@ class ContactController extends Controller
             'active_id' => $active_id
         ]);
     }
-f
+
     public function create()
     {
         //$rnumber = studentRunningNumber::pre_generate(Auth::user()->department->code);
