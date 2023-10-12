@@ -219,10 +219,6 @@ class ContactController extends Controller
             'running' =>  $rnumber
         ]); */
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         //
