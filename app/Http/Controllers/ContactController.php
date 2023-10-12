@@ -321,7 +321,6 @@ class ContactController extends Controller
 
     public function popupedit($telnop)
     {
-        //$datac = CrmContact::find('20');
         $datac = DB::table('crm_contacts')
             ->where('phoneno', '=', $telnop)
             ->orWhere('telhome', '=', $telnop)
