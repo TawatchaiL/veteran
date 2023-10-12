@@ -508,7 +508,6 @@
 
                 $('#SubmitCreateFormP'+cardId).click(function(e) {
                     var emergencyData = [];
-                    alert(cardId);
                     if ($('#contractid'+cardId).val() === "") {
                         $('#myTbl3p'+cardId+' tbody tr').each(function() {
                             var emergencyname = $(this).find(
