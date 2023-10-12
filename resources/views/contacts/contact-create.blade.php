@@ -196,7 +196,7 @@
                                         'id' => 'telhomep'.$cardid,
                                         'placeholder' => 'เบอร์โทรศัพท์บ้าน',
                                         'class' => 'form-control',
-                                        'onkeydown' => 'validateNumber(event)',
+                                        'onkeydown' => 'validateNumberp(event)',
                                     ]) !!}
                                 </div>
                             </div>
@@ -207,7 +207,7 @@
                                         'id' => 'phonenop'.$cardid,
                                         'placeholder' => 'เบอร์โทรศัพท์มือถือ',
                                         'class' => 'form-control',
-                                        'onkeydown' => 'validateNumber(event)',
+                                        'onkeydown' => 'validateNumberp(event)',
                                     ]) !!}
                                 </div>
                             </div>
@@ -222,7 +222,7 @@
                                         'id' => 'worknop'.$cardid,
                                         'placeholder' => 'เบอร์โทรศัพท์ที่ทำงาน',
                                         'class' => 'form-control',
-                                        'onkeydown' => 'validateNumber(event)',
+                                        'onkeydown' => 'validateNumberp(event)',
                                     ]) !!}
                                 </div>
                             </div>
