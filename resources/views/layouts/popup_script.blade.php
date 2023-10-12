@@ -508,8 +508,8 @@
 
                 $('#SubmitCreateFormPOP').click(function(e) {
                     var emergencyData = [];
+                    alert(cardId);
                     if ($('#contractid'+cardId).val() === "") {
-                        alert('add');
                         $('#myTbl3p'+cardId+' tbody tr').each(function() {
                             var emergencyname = $(this).find(
                                 'input[name="emergencynamep'+cardId+'[]"]').val();
