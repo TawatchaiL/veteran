@@ -53,7 +53,7 @@
         })
     }
 
-    const updateUI = (result) => {
+    /* const updateUI = (result) => {
         console.log(result);
         if (result.success == true) {
             toastr.success('เปลี่ยนสถานะ เรียบร้อยแล้ว', {
@@ -81,6 +81,47 @@
             data,
             async: false,
             success: updateUI,
+        });
+    }; */
+
+    const updateUI = (result) => {
+        console.log(result);
+        if (result.success === true) {
+            toastr.success('Status changed successfully', {
+                timeOut: 5000
+            });
+            set_state_icon(result.id, result.icon, result.message);
+            set_state_button(result.id);
+            toolbar_modal.modal('hide');
+        } else {
+            toastr.error('Failed to change status', {
+                timeOut: 5000
+            });
+        }
+    };
+
+    const check_state = async () => {
+        try {
+            const response = await sendAjaxRequest("{{ route('agent.status') }}", "POST");
+            updateUI(response);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
+    const sendAjaxRequest = (url, method, data = {}) => {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url,
+                method,
+                data,
+                success: (data) => {
+                    resolve(data);
+                },
+                error: (xhr, status, error) => {
+                    reject(error);
+                }
+            });
         });
     };
 
@@ -255,7 +296,7 @@
         }
     };
 
-    $(document).on('click', '#btn-agent-login', function(e) {
+    /* $(document).on('click', '#btn-agent-login', function(e) {
         e.preventDefault();
         sendAjaxRequest("{{ route('agent.login') }}", "POST");
     });
@@ -277,6 +318,56 @@
     $(document).on('click', '.button_unbreak', function(e) {
         e.preventDefault();
         sendAjaxRequest("{{ route('agent.unbreak') }}", "POST");
+    });
+
+    $(document).on('click', '#btn-system-logout', function(e) {
+        e.preventDefault();
+        document.getElementById('logout-form').submit();
+    }); */
+
+    // Event handlers using async/await and Promises
+    $(document).on('click', '#btn-agent-login', async function(e) {
+        e.preventDefault();
+        try {
+            const response = await sendAjaxRequest("{{ route('agent.login') }}", "POST");
+            updateUI(response);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    });
+
+    $(document).on('click', '#btn-agent-logout', async function(e) {
+        e.preventDefault();
+        try {
+            const response = await sendAjaxRequest("{{ route('agent.logoff') }}", "POST");
+            updateUI(response);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    });
+
+    $(document).on('click', '.button_break', async function(e) {
+        e.preventDefault();
+        const bid = $(this).data('id');
+        const additionalData = {
+            id_break: bid,
+        };
+        try {
+            const response = await sendAjaxRequest("{{ route('agent.break') }}", "POST", additionalData);
+            updateUI(response);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    });
+
+    $(document).on('click', '.button_unbreak', async function(e) {
+        e.preventDefault();
+        try {
+            const response = await sendAjaxRequest("{{ route('agent.unbreak') }}", "POST");
+            updateUI(response);
+        } catch (error) {
+            console.error('Error:', error);
+        }
     });
 
     $(document).on('click', '#btn-system-logout', function(e) {
@@ -370,7 +461,7 @@
                         }
                     });
                     //}
-                 } else {
+                } else {
                     alert_danger('Opp', 'กรุณาระบุหมายเลขที่จะโอนสาย', '');
                 }
 
