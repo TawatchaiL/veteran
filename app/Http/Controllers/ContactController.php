@@ -210,11 +210,7 @@ class ContactController extends Controller
 
     public function create()
     {
-        //$rnumber = studentRunningNumber::pre_generate(Auth::user()->department->code);
-        //dd($rnumber);
-        /* return response()->json([
-            'running' =>  $rnumber
-        ]); */
+
     }
 
     /**
