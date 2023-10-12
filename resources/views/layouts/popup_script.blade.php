@@ -410,14 +410,14 @@
                                     .workno);
 
                                 var tbody = document.querySelector(
-                                    '#myTbl3p tbody');
+                                    '#myTbl3p'+cardId+' tbody');
                                 while (tbody.firstChild) {
                                     tbody.removeChild(tbody
                                         .firstChild);
                                 }
                                 $.each(res.datax.emer, function(
                                     index, value) {
-                                    $('#myTbl3p tbody')
+                                    $('#myTbl3p'+cardId+' tbody')
                                         .append($('<tr>')
                                             .append($(
                                                     '<td width="30%">'
@@ -426,7 +426,7 @@
                                                     '<div class="col-md-12 col-sm-12 col-xs-12"><input type="hidden" value="' +
                                                     value
                                                     .id +
-                                                    '" name="emertypep[]" id="emertypep"><input type="text" id="emergencynamep" name="emergencynamep[]" class="form-control has-feedback-left" value="' +
+                                                    '" name="emertypep'+cardId+'[]" id="emertypep'+cardId+'"><input type="text" id="emergencynamep'+cardId+'" name="emergencynamep'+cardId+'[]" class="form-control has-feedback-left" value="' +
                                                     value
                                                     .emergencyname +
                                                     '" required="required"></div>'
@@ -435,7 +435,7 @@
                                                     '<td width="10%">'
                                                 )
                                                 .append(
-                                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerrelation" name="emerrelationp[]" class="form-control has-feedback-left" value="' +
+                                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerrelation'+cardId+'" name="emerrelationp'+cardId+'[]" class="form-control has-feedback-left" value="' +
                                                     value
                                                     .emerrelation +
                                                     '" required="required"></div>'
@@ -444,7 +444,7 @@
                                                     '<td width="10%">'
                                                 )
                                                 .append(
-                                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone" name="emerphonep[]" class="form-control has-feedback-left" onkeydown="validateNumber(event)" value="' +
+                                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone'+cardId+'" name="emerphonep'+cardId+'[]" class="form-control has-feedback-left" onkeydown="validateNumberp(event)" value="' +
                                                     value
                                                     .emerphone +
                                                     '" required="required"></div>'
@@ -453,7 +453,7 @@
                                                     '<td width="5%">'
                                                 )
                                                 .append(
-                                                    '<button type="button" name="deletem" id="deletem" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
+                                                    '<button type="button" name="deletem'+cardId+'" id="deletem'+cardId+'" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
                                                 )));
                                 });
 
