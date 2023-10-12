@@ -57,8 +57,6 @@
                 removeAllTabs();
                 $('#custom-tabs-pop').prepend(response.tab_link);
                 $('#custom-tabs-pop-tabContent').prepend(response.tab_content);
-                alert(response.tab_link);
-                alert(response.tab_content);
                 maximizeCard(response.active_id);
                 //$('#dpopup').html(response.html);
                 // Position the cards after dynamic content is loaded

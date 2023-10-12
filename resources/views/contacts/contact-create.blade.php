@@ -29,17 +29,17 @@
                     </li> --}}
                     <li class="nav-item">
                         <a class="nav-link active" id="custom-tabs-one-home-tabp{{$cardid}}" data-toggle="pill"
-                            href="#custom-tabs-one-homep{{$cardid}}" role="tab" aria-controls="custom-tabs-one-homep{{$cardid}}"
+                            href="#custom-tabs-one-homep" role="tab" aria-controls="custom-tabs-one-homep"
                             aria-selected="true">ข้อมูลผู้ติดต่อ</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="custom-tabs-one-profile-tabp{{$cardid}}" data-toggle="pill"
-                            href="#custom-tabs-one-profilep{{$cardid}}" role="tab" aria-controls="custom-tabs-one-profilep{{$cardid}}"
+                            href="#custom-tabs-one-profilep" role="tab" aria-controls="custom-tabs-one-profilep"
                             aria-selected="false">ข้อมูลเบอร์ติดต่อ</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="custom-tabs-one-case-tabp{{$cardid}}" data-toggle="pill"
-                            href="#custom-tabs-one-casep{{$cardid}}" role="tab" aria-controls="custom-tabs-one-casep{{$cardid}}"
+                            href="#custom-tabs-one-casep" role="tab" aria-controls="custom-tabs-one-casep"
                             aria-selected="true">ข้อมูลเรื่องที่ติดต่อ</a>
                     </li>
 
