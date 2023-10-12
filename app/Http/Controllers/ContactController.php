@@ -119,7 +119,6 @@ class ContactController extends Controller
 
 
         return view('contacts.index')->with(['centre' => $centre])
-            /*  ->with(['term' => $term]) */;
     }
 
     public function popup_content(Request $request)
