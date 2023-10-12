@@ -1,11 +1,11 @@
 <div class="row" style="display: flex; justify-content: center; align-items: center;">
     <div class="col-md-12 col-sm-12 col-lg-12">
-        <div class="alert alert-danger alert-danger-pop alert-dismissible fade show" role="alert" style="display: none;">
+        <div class="alert alert-danger alert-danger-pop{{$cardid}} alert-dismissible fade show" role="alert" style="display: none;">
             <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <div class="alert alert-success alert-success-pop alert-dismissible fade show" role="alert"
+        <div class="alert alert-success alert-success-pop{{$cardid}} alert-dismissible fade show" role="alert"
             style="display: none;">
 
             <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
@@ -14,8 +14,8 @@
         </div>
 
         {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
-        <div class="text-end"><input type="hidden" value="" name="contractid" id="contractid"><input
-                type="hidden" value="{{ $telephone }}" name="telnop" id="telnop">
+        <div class="text-end"><input type="hidden" value="" name="contractid{{$cardid}}" id="contractid{{$cardid}}"><input
+                type="hidden" value="{{ $telephone }}" name="telnop{{$cardid}}" id="telnop{{$cardid}}">
             {{-- <h1 style="color: #1a16eb"><i class="fa-solid fa-id-card-clip"></i> {{ $telephone }}</h1> --}}
         </div>
         <div  class="text-right">
@@ -23,23 +23,23 @@
         <div class="card card-success card-outline card-outline-tabs">
             <div class="card-header p-0 pt-1">
                 <ul class="nav nav-tabs" id="custom-tabs-one-tabp" role="tablist">
-                    <li class="pt-2 px-3" id="phonenosuccess"> </li>
+                    <li class="pt-2 px-3" id="phonenosuccess{{$cardid}}"> </li>
                     {{--   <li class="pt-2 px-3">
                         <h3 class="card-title" id="contact_name"></h3>
                     </li> --}}
                     <li class="nav-item">
-                        <a class="nav-link active" id="custom-tabs-one-home-tabp" data-toggle="pill"
-                            href="#custom-tabs-one-homep" role="tab" aria-controls="custom-tabs-one-homep"
+                        <a class="nav-link active" id="custom-tabs-one-home-tabp{{$cardid}}" data-toggle="pill"
+                            href="#custom-tabs-one-homep{{$cardid}}" role="tab" aria-controls="custom-tabs-one-homep{{$cardid}}"
                             aria-selected="true">ข้อมูลผู้ติดต่อ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="custom-tabs-one-profile-tabp" data-toggle="pill"
-                            href="#custom-tabs-one-profilep" role="tab" aria-controls="custom-tabs-one-profilep"
+                        <a class="nav-link" id="custom-tabs-one-profile-tabp{{$cardid}}" data-toggle="pill"
+                            href="#custom-tabs-one-profilep{{$cardid}}" role="tab" aria-controls="custom-tabs-one-profilep{{$cardid}}"
                             aria-selected="false">ข้อมูลเบอร์ติดต่อ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="custom-tabs-one-case-tabp" data-toggle="pill"
-                            href="#custom-tabs-one-casep" role="tab" aria-controls="custom-tabs-one-casep"
+                        <a class="nav-link" id="custom-tabs-one-case-tabp{{$cardid}}" data-toggle="pill"
+                            href="#custom-tabs-one-casep{{$cardid}}" role="tab" aria-controls="custom-tabs-one-casep{{$cardid}}"
                             aria-selected="true">ข้อมูลเรื่องที่ติดต่อ</a>
                     </li>
 
@@ -47,8 +47,8 @@
             </div>
             <div class="card-body">
                 <div class="tab-content" id="custom-tabs-one-tabContentp">
-                    <div class="tab-pane fade show active" id="custom-tabs-one-homep" role="tabpanel"
-                        aria-labelledby="custom-tabs-one-home-tabp">
+                    <div class="tab-pane fade show active" id="custom-tabs-one-homep{{$cardid}}" role="tabpanel"
+                        aria-labelledby="custom-tabs-one-home-tabp{{$cardid}}">
 
                         <div class="row">
 
@@ -182,10 +182,8 @@
                         </div>
                     </div>
 
-
-
-                    <div class="tab-pane fade" id="custom-tabs-one-profilep" role="tabpanel"
-                        aria-labelledby="custom-tabs-one-profile-tabp">
+                    <div class="tab-pane fade" id="custom-tabs-one-profilep{{$cardid}}" role="tabpanel"
+                        aria-labelledby="custom-tabs-one-profile-tabp{{$cardid}}">
 
                         <div class="row">
 
@@ -229,7 +227,7 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <table id="myTbl3p"
+                                <table id="myTbl3p{{$cardid}}"
                                     class="table table-striped table-bordered responsive-utilities jambo_table "
                                     width="400">
                                     <thead>
@@ -255,8 +253,8 @@
                         </div>
                     </div>
 
-                    <div class="tab-pane fade" id="custom-tabs-one-casep" role="tabpanel"
-                        aria-labelledby="custom-tabs-one-case-tabp">
+                    <div class="tab-pane fade" id="custom-tabs-one-casep{{$cardid}}" role="tabpanel"
+                        aria-labelledby="custom-tabs-one-case-tabp{{$cardid}}">
 
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6">
@@ -366,6 +364,9 @@
         </div>
 
         {!! Form::close() !!}
+        <div class="modal-footer {{-- justify-content-between --}}">
+            <button type="button" class="btn btn-success" id="SubmitCreateFormP{{$cardid}}"><i class="fas fa-download"></i>
+                บันทึกข้อมูล</button>
     </div>
 
 </div>

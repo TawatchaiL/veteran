@@ -208,9 +208,16 @@ class ContactController extends Controller
         ]);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
-
+        //$rnumber = studentRunningNumber::pre_generate(Auth::user()->department->code);
+        //dd($rnumber);
+        /* return response()->json([
+            'running' =>  $rnumber
+        ]); */
     }
 
     /**
@@ -268,19 +275,12 @@ class ContactController extends Controller
                 $Crmemergency->save();
             }
         }
-        //DB::table('crm_phone_emergencies')->insert([
-        //    ['contact_id' => $insertedId, 'emergencyname' => '1', 'emerrelation' => '2', 'emerphone' => '3'],
-        //    ['contact_id' => $insertedId, 'emergencyname' => '4', 'emerrelation' => '5', 'emerphone' => '6'],
-        //]);
         return response()->json(['success' => 'เพิ่ม รายผู้ติดต่อ เรียบร้อยแล้ว']);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**
@@ -317,7 +317,6 @@ class ContactController extends Controller
 
     public function popupedit($telnop)
     {
-        //$datac = CrmContact::find('20');
         $datac = DB::table('crm_contacts')
             ->where('phoneno', '=', $telnop)
             ->orWhere('telhome', '=', $telnop)
@@ -337,9 +336,6 @@ class ContactController extends Controller
     }
 
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, $id)
     {
         $valifield = [

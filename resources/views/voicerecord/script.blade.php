@@ -253,10 +253,20 @@
             button.textContent = 'X';
             customDialog.style.display = 'block';
 
+            button.addEventListener('click', () => {
+                // Remove the region when the button is clicked
+                region.remove();
+                // console.log(region);
+
+            });
+
             document.getElementById('add-content-button').addEventListener('click', function(e) {
                 // addContentButton.addEventListener('click', () => {
+                    console.log('current Region'+currentRegion);
+
                 e.preventDefault();
                 if (currentRegion) {
+
                     // Remove any existing tooltips in the current region
                     const existingTooltips = currentRegion.element.querySelectorAll('.region-tooltip');
                     existingTooltips.forEach((tooltip) => {
@@ -266,6 +276,7 @@
                     // Create a tooltip element
                     const tooltip = document.createElement('div');
                     const content = contentInput.value;
+
                     tooltip.className = 'region-tooltip';
                     tooltip.textContent = content; // Replace with your tooltip text
                     tooltip.style.paddingLeft = '10px';
@@ -304,10 +315,7 @@
             });
 
             // Attach a click event handler to the button
-            button.addEventListener('click', () => {
-                // Remove the region when the button is clicked
-                region.remove();
-            });
+
 
             // Append the button to the region element
             region.element.appendChild(button);

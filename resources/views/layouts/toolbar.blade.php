@@ -277,12 +277,6 @@
 
                         </div>
                     </div>
-                    <div class="card-footer text-muted">
-                        <button type="button" class="btn btn-lg btn-success float-right" id="SubmitCreateFormPOP"><i
-                                class="fas fa-download"></i>
-                            บันทึกข้อมูล</button>
-
-                    </div>
                 </div>
             </div>
             <div class="overlay d-none" id="state_overlay">
