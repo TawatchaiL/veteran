@@ -203,9 +203,9 @@
 
 
     socket.on('hangup', data => {
-        console.log(data);
         if (data.extension) {
             if (data.extension.match(exten)) {
+                console.log(data);
                 /* $.ajax({
                     url: "{{ route('agent.hang') }}",
                     method: 'post',
