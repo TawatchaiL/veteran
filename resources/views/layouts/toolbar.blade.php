@@ -69,6 +69,8 @@
             $logoff_button_class = '';
             $login_button = 'disabled';
             $login_button_class = 'd-none';
+            $toolbar_card = '';
+            $popup_tab_main = '';
             break;
         case 2:
             $dial_number = '';
