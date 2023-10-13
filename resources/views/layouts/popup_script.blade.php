@@ -887,25 +887,17 @@
             var href = $(e.target).attr("href");
             var targetTab = href.replace("#custom-tabs-pop-", "");
 
-            // Use a variable to control tab switch
-            var allowTabSwitch = false;
 
             // Display a confirmation dialog
-            allowTabSwitch = ezBSAlert({
+            ezBSAlert({
                 type: "confirm",
                 messageText: "ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab +
                     " ? \nกรุณาบันทึกข้อมูลก่อนเปลี่ยน Tab",
                 alertType: "info",
-            }).done(function(c) {
-                return c; // Allow tab switch
-                // Check whether to allow or prevent the tab switch
-
+            }).fail(function(c) {
+                e.preventDefault();
             });
 
-            console.log(allowTabSwitch)
-            if (!allowTabSwitch) {
-                e.preventDefault(); // Prevent tab switch
-            }
         });
 
 
