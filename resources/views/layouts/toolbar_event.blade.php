@@ -30,7 +30,7 @@
                 popup_tab_main.removeClass("d-none");
                 toolbar_header.removeClass("bg-primary bg-secondary bg-danger");
                 if (data.status == 0) {
-                    $.ajax({
+                    /* $.ajax({
                         url: "{{ route('agent.hang') }}",
                         method: 'post',
                         async: false,
@@ -43,7 +43,7 @@
                             set_state_button(result.id);
                             positionCards();
                         }
-                    });
+                    }); */
                     toolbar_header.addClass("bg-primary");
                     //toolbar_modal.modal('hide');
                 } else if (data.status == 1 || data.status == 2 || data.status == 8 || data.status == 9) {
