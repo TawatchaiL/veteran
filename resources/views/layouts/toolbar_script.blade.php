@@ -289,7 +289,7 @@
         let len = $('input[name="call[]"]:checked').length;
         if (len > 0) {
             if (len > 1) {
-                alert_danger('Opp', 'Can Not Tranfer More Than 1 Call', '');
+                alert_danger('Opp', 'ไม่สามารถโอนสายมากกว่า 1 สายต่อครั้ง', '');
             } else {
                 let call_number = $('#dial_number').val();
                 if (call_number !== '') {
@@ -337,7 +337,7 @@
         let len = $('input[name="call[]"]:checked').length;
         if (len > 0) {
             if (len > 1) {
-                alert_danger('Opp', 'Can Not Tranfer More Than 1 Call', '');
+                alert_danger('Opp', 'ไม่สามารถโอนสายมากกว่า 1 สายต่อครั้ง', '');
             } else {
                 let call_number = $('#dial_number').val();
                 if (call_number !== '') {

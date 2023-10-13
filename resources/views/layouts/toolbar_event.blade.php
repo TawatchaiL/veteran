@@ -78,6 +78,9 @@
                 url: "{{ route('agent.status') }}",
                 method: 'post',
                 async: false,
+                data: {
+                    _token: token,
+                },
                 success: function(result) {
                     console.log(result)
                     if (result.id !== 0) {
