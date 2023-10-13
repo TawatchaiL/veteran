@@ -876,10 +876,11 @@
         $(document).on('show.bs.tab', '#custom-tabs-pop a[data-toggle="pill"]',
             function(e) {
                 // Determine which tab is being switched to
-                var targetTab = $(e.target).attr("href");
+                var href = $(e.target).attr("href");
+                var targetTab = href.replace("#custom-tabs-pop-", "");
 
                 // Display a confirmation dialog
-                if (!confirm("Are you sure you want to switch to " + targetTab + "?")) {
+                if (!confirm("ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab + "? \n กรุณาบันทึกข้อมุลก่อนเปลี่ยน Tab")) {
                     // If the user cancels, prevent the tab switch
                     e.preventDefault();
                 }
