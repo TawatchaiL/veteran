@@ -171,11 +171,9 @@
 
     </section>
 
-    @include('casescontract.create')
 
-    @include('casescontract.edit')
 @endsection
 
 @section('script')
-    @include('casescontract.script')
+
 @endsection
