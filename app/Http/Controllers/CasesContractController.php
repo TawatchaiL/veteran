@@ -229,7 +229,7 @@ class CasesContractController extends Controller
         $con = $request->get('cardId');
         $template = 'casescontract.index';
         $htmlContent = View::make($template, [
-            'cardid' => $con, 'telephone' => $con, 'contacts' => ['hn' => 'hn1', 'fname' => 'hn2', 'lname' => 'hn3']
+            'cardid' => $con, 'telephone' => $con
         ])->render();
         return response()->json([
             'html' =>  $htmlContent,
