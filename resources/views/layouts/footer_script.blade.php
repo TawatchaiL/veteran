@@ -273,6 +273,42 @@
     }
 
 
+   /*  $(document).ready(function() {
+        $("#btnAlert").on("click", function() {
+            var prom = ezBSAlert({
+                messageText: "hello world",
+                alertType: "danger"
+            }).done(function(e) {
+                $("body").append('<div>Callback from alert</div>');
+            });
+        });
+
+        $("#btnConfirm").on("click", function() {
+            ezBSAlert({
+                type: "confirm",
+                messageText: "hello world",
+                alertType: "info"
+            }).done(function(e) {
+                $("body").append('<div>Callback from confirm ' + e + '</div>');
+            });
+        });
+
+        $("#btnPrompt").on("click", function() {
+            ezBSAlert({
+                type: "prompt",
+                messageText: "Enter Something",
+                alertType: "primary"
+            }).done(function(e) {
+                ezBSAlert({
+                    messageText: "You entered: " + e,
+                    alertType: "success"
+                });
+            });
+        });
+
+    });
+ */
+
     toastr.options = {
         "closeButton": true,
         "debug": false,

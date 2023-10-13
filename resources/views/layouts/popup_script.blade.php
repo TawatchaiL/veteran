@@ -882,25 +882,30 @@
                 positionCards();
             });
 
-        $(document).on('show.bs.tab', '#custom-tabs-pop a[data-toggle="pill"]', function(e) {
-            // Determine which tab is being switched to
-            var href = $(e.target).attr("href");
-            var targetTab = href.replace("#custom-tabs-pop-", "");
+        $(document).on('show.bs.tab', '#custom-tabs-pop a[data-toggle="pill"]',
+            function(e) {
+                // Determine which tab is being switched to
+                var href = $(e.target).attr("href");
+                var targetTab = href.replace("#custom-tabs-pop-", "");
 
-            ezBSAlert({
-                type: "confirm",
-                messageText: "ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab +
-                    " ? \nกรุณาบันทึกข้อมูลก่อนเปลี่ยน Tab",
-                alertType: "info",
-            }).done(function(confirmed) {
-                if (!confirmed) {
-                    e.preventDefault(); // Prevent tab switch
-                }
+                // Display a confirmation dialog
+                /* if (!confirm("ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab +
+                        " ? \nกรุณาบันทึกข้อมุลก่อนเปลี่ยน Tab")) {
+                    // If the user cancels, prevent the tab switch
+                    e.preventDefault();
+                } */
+
+                ezBSAlert({
+                    type: "confirm",
+                    messageText: "hello world",
+                    alertType: "info"
+                }).done(function(e) {
+                    if (e===false) {
+                        e.preventDefault();
+                    }
+                });
+
             });
-
-
-        });
-
 
     });
 </script>
