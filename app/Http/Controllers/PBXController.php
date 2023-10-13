@@ -334,7 +334,7 @@ class PBXController extends Controller
         if ($user) {
 
             $indb = DB::connection('remote_connection')
-                ->table('call_center.warp_data')
+                ->table('call_center.wrap_data')
                 ->where('uniqid', $request->get('uniqid'))
                 ->get();
             if (count($indb) == 0) {
@@ -345,13 +345,13 @@ class PBXController extends Controller
                     'wrap_start' => date("Y-m-d H:i:s"),
                 ];
 
-                $insert = DB::connection('remote_connection')->table('warp_data')->insert($dataToInsert);
+                $insert = DB::connection('remote_connection')->table('wrap_data')->insert($dataToInsert);
             }
 
             $ret = $this->issable->agent_break($user->phone, 5);
 
             $user->phone_status_id = 3;
-            $user->phone_status =  'Warp UP';
+            $user->phone_status =  'Wrap UP';
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-clock"></i>';
             $user->save();
 
@@ -376,22 +376,22 @@ class PBXController extends Controller
         if ($user) {
 
             $resultb = DB::connection('remote_connection')
-                ->table('call_center.warp_data')
+                ->table('call_center.wrap_data')
                 ->where('id_agent', $user->agent_id)
-                ->whereNull('warp_end')
+                ->whereNull('wrap_end')
                 ->first();
 
-            $warp_end = Carbon::now();
-            $warp_start = Carbon::parse($resultb->warp_start);
+            $wrap_end = Carbon::now();
+            $wrap_start = Carbon::parse($resultb->wrap_start);
 
-            $duration = $warp_start->diffInSeconds($warp_end);
+            $duration = $wrap_start->diffInSeconds($wrap_end);
 
             DB::connection('remote_connection')
-                ->table('call_center.warp_data')
+                ->table('call_center.wrap_data')
                 ->where('id_agent', $user->agent_id)
-                ->whereNull('warp_end')
+                ->whereNull('wrap_end')
                 ->update([
-                    'warp_end' => $warp_end,
+                    'wrap_end' => $wrap_end,
                     'duration' => $duration,
                 ]);
 
