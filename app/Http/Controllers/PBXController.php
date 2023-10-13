@@ -347,6 +347,8 @@ class PBXController extends Controller
                 $insert = DB::connection('remote_connection')->table('warp_data')->insert($dataToInsert);
             }
 
+            $ret = $this->issable->agent_break($user->phone, 5);
+
             $user->phone_status_id = 3;
             $user->phone_status =  'Warp UP';
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-clock"></i>';
