@@ -204,13 +204,11 @@ class LoginController extends Controller
     {
         // Clear the temporary phone from the session
         //$request->session()->forget('temporary_phone');
-        dd($request->get('kick'));
         $user = Auth::user();
         //$this->remote->queue_log_off($user->queue, $user->phone);
         if ($user->phone_status !== "Not Ready") {
             $this->issable->agent_logoff($user->phone);
         }
-
 
         $user->phone = '';
         $user->phone_status_id = 0;
@@ -227,7 +225,7 @@ class LoginController extends Controller
         $request->session()->invalidate();
 
         if ($request->get('kick') == 1) {
-            redirect('/')->withErrors(['phone' => 'คุณถูกเตะออกจาก ระบบ กรุณาเข้าสู่ระบบอีกครั้ง']);
+            return redirect('/')->withErrors(['phone' => 'คุณถูกเตะออกจาก ระบบ กรุณาเข้าสู่ระบบอีกครั้ง']);
         } else {
             return redirect('/');
         }
