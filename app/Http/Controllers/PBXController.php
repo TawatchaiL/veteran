@@ -87,14 +87,13 @@ class PBXController extends Controller
         $user = Auth::user();
 
         if ($user) {
-            // Perform agent login action using IssableService
-            $ret = $this->issable->agent_logoff($user->phone);
-
             // Update user's phone_status
             $user->phone_status_id = 0;
             $user->phone_status = "ไม่พร้อมรับสาย";
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-xmark"></i>';
             $user->save();
+
+            $ret = $this->issable->agent_logoff($user->phone);
 
             if ($ret == true) {
                 return [

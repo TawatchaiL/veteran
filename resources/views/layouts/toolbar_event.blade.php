@@ -68,12 +68,22 @@
     socket.on('qlogoff', data => {
 
         if (data.extension.match(exten)) {
-            console.log(data)
-            //$.get(`${web_url}/agent/kick/`, (dataw, status) => {
-            //if (dataw) {
-            window.location.replace(`${web_url}/logout?kick=1`);
-            //}
-            //});
+            /*  console.log(data)
+             $.get(`${web_url}/agent_kick/`, (dataw, status) => {
+                 if (dataw) {
+                     window.location.replace(`${web_url}/logout?kick=1`);
+                 }
+             }); */
+            $.ajax({
+                url: "{{ route('agent.status') }}",
+                method: 'post',
+                async: false,
+                success: function(result) {
+                    if (result.id !== 0) {
+                        window.location.replace(`${web_url}/logout?kick=1`);
+                    }
+                }
+            });
         }
 
     });
