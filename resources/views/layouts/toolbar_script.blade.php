@@ -311,6 +311,11 @@
         sendAjaxRequest("{{ route('agent.unbreak') }}", "POST");
     });
 
+    $(document).on('click', '#btn-unwarp', function(e) {
+        e.preventDefault();
+        sendAjaxRequest("{{ route('agent.unbreak') }}", "POST");
+    });
+
     $(document).on('click', '#btn-system-logout', function(e) {
         e.preventDefault();
         document.getElementById('logout-form').submit();
