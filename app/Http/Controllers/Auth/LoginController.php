@@ -225,7 +225,7 @@ class LoginController extends Controller
         $request->session()->invalidate();
 
 
-        return redirect('/')->withErrors(['phone' => 'คุณถูกเตะออกจาก ระบบ กรุณาเข้าสู่ระบบอีกครั้ง']);
+        return redirect('/');
     }
 
 
