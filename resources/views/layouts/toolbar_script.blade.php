@@ -225,6 +225,7 @@
             btn_pause.prop('disabled', true);
             btn_unbreak.addClass("d-none");
             btn_unbreak.prop('disabled', true);
+            btn_unwarp.prop('disabled', false);
             btn_unwarp.removeClass("d-none");
             btn_agent_logout.addClass("d-none");
             btn_agent_logout.prop('disabled', true);
