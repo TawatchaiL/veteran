@@ -314,7 +314,7 @@
 
     $(document).on('click', '#btn-unwarp', function(e) {
         e.preventDefault();
-        sendAjaxRequest("{{ route('agent.unbreak') }}", "POST");
+        sendAjaxRequest("{{ route('agent.unwarp') }}", "POST");
     });
 
     $(document).on('click', '#btn-system-logout', function(e) {
