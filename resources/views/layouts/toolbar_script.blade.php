@@ -460,6 +460,34 @@
 
      }) */
 
+     //unwrap
+    /* $(".button_complete").click(function() {
+        if (!confirm("Are you sure to Complete Call?")) return;
+        let rowid = $(this).data("id")
+
+        if (!rowid) return;
+        $.get(`${web_url}/agent/agent_unwrap/` + rowid, (data, status) => {
+            if (data == 'success') {
+                $('#dial_number').attr('disabled', false);
+                $('.button_dial').attr('disabled', false);
+                $('.button_tranfer').attr('disabled', false);
+                $('.button_conf').attr('disabled', false);
+                $('#btn-wrap').attr('disabled', true);
+                $('#btn-pause').attr('disabled', false);
+                $('#btn-logout').attr('disabled', false);
+                $('.button_unbreak').addClass("d-none");
+                $('#break_group').removeClass("d-none");
+                $('#break_text').remove();
+                $('#toolbar_header').addClass("card-primary");
+                $('#toolbar_header').removeClass("card-warning");
+                alert_success('OK', 'Complete Call Success', '');
+            }
+
+        });
+
+    }) */
+
+
 
     //call button
     dial_button.click(function() {
@@ -516,33 +544,6 @@
         }
 
     });
-
-    //unwrap
-    $(".button_complete").click(function() {
-        if (!confirm("Are you sure to Complete Call?")) return;
-        let rowid = $(this).data("id")
-
-        if (!rowid) return;
-        $.get(`${web_url}/agent/agent_unwrap/` + rowid, (data, status) => {
-            if (data == 'success') {
-                $('#dial_number').attr('disabled', false);
-                $('.button_dial').attr('disabled', false);
-                $('.button_tranfer').attr('disabled', false);
-                $('.button_conf').attr('disabled', false);
-                $('#btn-wrap').attr('disabled', true);
-                $('#btn-pause').attr('disabled', false);
-                $('#btn-logout').attr('disabled', false);
-                $('.button_unbreak').addClass("d-none");
-                $('#break_group').removeClass("d-none");
-                $('#break_text').remove();
-                $('#toolbar_header').addClass("card-primary");
-                $('#toolbar_header').removeClass("card-warning");
-                alert_success('OK', 'Complete Call Success', '');
-            }
-
-        });
-
-    })
 
 
     //hangup

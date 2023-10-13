@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Services\AsteriskAmiService;
 use App\Services\IssableService;
 use Illuminate\Support\Facades\Session;
+use Carbon\Carbon;
 
 class PBXController extends Controller
 {
@@ -366,6 +367,56 @@ class PBXController extends Controller
             }
         }
     }
+
+    public function AgentUnWarp(Request $request)
+    {
+
+        $user = Auth::user();
+
+        if ($user) {
+
+            $resultb = DB::connection('remote_connection')
+                ->table('call_center.warp_data')
+                ->where('id_agent', $user->agent_id)
+                ->whereNull('warp_end')
+                ->first();
+
+            $warp_end = Carbon::now();
+            $warp_start = Carbon::parse($resultb->warp_start);
+
+            $duration = $warp_start->diffInSeconds($warp_end);
+
+            DB::connection('remote_connection')
+                ->table('call_center.warp_data')
+                ->where('id_agent', $user->agent_id)
+                ->whereNull('warp_end')
+                ->update([
+                    'warp_end' => $warp_end,
+                    'duration' => $duration,
+                ]);
+
+            $ret = $this->issable->agent_unbreak($user->phone);
+
+            $user->phone_status_id = 1;
+            $user->phone_status = "พร้อมรับสาย";
+            $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
+            $user->save();
+
+            if ($ret == true) {
+                return [
+                    'success' => true,
+                    'id' => $user->phone_status_id,
+                    'message' => $user->phone_status,
+                    'icon' => $user->phone_status_icon
+                ];
+            } else {
+                return ['success' => false, 'message' => 'login error'];
+            }
+        } else {
+            return ['error' => false, 'message' => 'error'];
+        }
+    }
+
 
     public function AgentStatus()
     {
