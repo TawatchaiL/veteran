@@ -44,7 +44,7 @@
                             positionCards();
                         }
                     });
-                    toolbar_header.addClass("bg-primary");
+                    //toolbar_header.addClass("bg-primary");
                     //toolbar_modal.modal('hide');
                 } else if (data.status == 1 || data.status == 2 || data.status == 8 || data.status == 9) {
                     toolbar_header.addClass("bg-danger");
@@ -232,7 +232,7 @@
                 //(data.event == 'DialEnd' &&
                 //|| data.event == 'BlindTransfer'
                 //chan = data.extension.split("/");
-                if ((data.event == 'BridgeLeave')) {
+                if ((data.event == 'BridgeLeave') && (data.context == 'ext-queues')) {
 
                     $.ajax({
                         url: "{{ route('agent.warp') }}",
