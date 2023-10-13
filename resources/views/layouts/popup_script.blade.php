@@ -882,40 +882,42 @@
                 positionCards();
             });
 
-        $(document).on('show.bs.tab', '#custom-tabs-pop a[data-toggle="pill"]',
+        /* $(document).on('show.bs.tab', '#custom-tabs-pop a[data-toggle="pill"]',
             function(e) {
                 // Determine which tab is being switched to
                 var href = $(e.target).attr("href");
                 var targetTab = href.replace("#custom-tabs-pop-", "");
 
                 // Display a confirmation dialog
-                /* if (!confirm("ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab +
+                if (!confirm("ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab +
                         " ? \nกรุณาบันทึกข้อมุลก่อนเปลี่ยน Tab")) {
                     // If the user cancels, prevent the tab switch
                     e.preventDefault();
-                } */
-                ezBSAlert({
-                    type: "confirm",
-                    messageText: "ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab +
-                        " ? \nกรุณาบันทึกข้อมุลก่อนเปลี่ยน Tab",
-                    alertType: "info"
-                }).done(function(e) {
-                    return true;
-                });
+                }
+
             });
+ */
 
-
-        $('#myTabs a').click(function(e) {
+        $('#custom-tabs-pop a').click(function(e) {
             e.preventDefault()
-            var areYouSure = confirm(
-                'If you sure you wish to leave this tab?  Any data entered will NOT be saved.  To save information, use the Save buttons.'
-            );
-            if (areYouSure === true) {
+            /*  var areYouSure = confirm(
+                 'If you sure you wish to leave this tab?  Any data entered will NOT be saved.  To save information, use the Save buttons.'
+             );
+             if (areYouSure === true) {
+                 $(this).tab('show')
+             } else {
+                 // do other stuff
+                 return false;
+             } */
+
+            ezBSAlert({
+                type: "confirm",
+                messageText: "ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab +
+                    " ? \nกรุณาบันทึกข้อมุลก่อนเปลี่ยน Tab",
+                alertType: "info"
+            }).done(function(e) {
                 $(this).tab('show')
-            } else {
-                // do other stuff
-                return false;
-            }
+            });
         })
 
 
