@@ -900,7 +900,7 @@
                     messageText: "hello world",
                     alertType: "info"
                 }).done(function(c) {
-                    if (!c) {
+                    if (c==false) {
                         e.preventDefault();
                     }
                 });
