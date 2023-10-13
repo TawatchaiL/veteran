@@ -883,7 +883,7 @@
             });
 
         $(document).on('show.bs.tab', '#custom-tabs-pop a[data-toggle="pill"]',
-            function(e) {
+            async function(e) {
                 // Determine which tab is being switched to
                 var href = $(e.target).attr("href");
                 var targetTab = href.replace("#custom-tabs-pop-", "");
@@ -895,12 +895,12 @@
                     e.preventDefault();
                 } */
 
-                ezBSAlert({
+                await ezBSAlert({
                     type: "confirm",
                     messageText: "hello world",
                     alertType: "info"
                 }).done(function(c) {
-                    if (c==false) {
+                    if (c == false) {
                         e.preventDefault();
                     }
                 });
