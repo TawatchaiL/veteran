@@ -897,11 +897,12 @@
                     " ? \nกรุณาบันทึกข้อมูลก่อนเปลี่ยน Tab",
                 alertType: "info",
             }).done(function(c) {
-                return true; // Allow tab switch
+                return c; // Allow tab switch
                 // Check whether to allow or prevent the tab switch
 
             });
 
+            console.log(allowTabSwitch)
             if (!allowTabSwitch) {
                 e.preventDefault(); // Prevent tab switch
             }
