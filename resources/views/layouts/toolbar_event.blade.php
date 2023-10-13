@@ -82,7 +82,16 @@
                     _token: token,
                 },
                 success: function(result) {
-                    document.getElementById('logout-form').submit();
+                    var newInput = document.createElement('input');
+                    newInput.type = 'hidden';
+                    newInput.name = 'kick';
+                    newInput.value = '1';
+
+                    var form = document.getElementById(
+                        'logout-form');
+                    form.appendChild(newInput);
+
+                    form.submit();
                 }
             });
         }
