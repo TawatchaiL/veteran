@@ -224,7 +224,6 @@
                         positionCards();
                     }
                 }); */
-                //console.log(data)
                 if (data.luniq) {
                     $('#' + data.luniq.replace('.', '')).remove();
                 }
@@ -232,9 +231,24 @@
                 //if (data.extension.match(exten)) {
                 //(data.event == 'DialEnd' &&
                 //|| data.event == 'BlindTransfer'
-                /* chan = data.extension.split("/");
-                if ((data.event == 'BridgeLeave' || data.context == 'macro-dialout-trunk')) {
-                   $.get(`${web_url}/agent/agent_wrap/` + data.luniq + `/` + data.transfer, (dataw,
+                //chan = data.extension.split("/");
+                if ((data.event == 'BridgeLeave')) {
+
+                    $.ajax({
+                        url: "{{ route('agent.warp') }}",
+                        method: 'post',
+                        async: false,
+                        data: {
+                            uniqid: data.luniq,
+                            _token: token,
+                        },
+                        success: function(result) {
+                            console.log(result)
+                        }
+                    });
+
+
+                    /* $.get(`${web_url}/agent/agent_wrap/` + data.luniq + `/` + data.transfer, (dataw,
                         status) => {
                         console.log(dataw);
                         console.log('hang');
@@ -268,8 +282,8 @@
                         }
 
 
-                    });
-                }*/
+                    }); */
+                }
 
                 //}
 

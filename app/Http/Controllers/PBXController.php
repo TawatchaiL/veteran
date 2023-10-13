@@ -327,6 +327,37 @@ class PBXController extends Controller
         }
     }
 
+    public function AgentWarp(Request $request)
+    {
+        $user = Auth::user();
+        if ($user) {
+            $dataToInsert = [
+                'id_agent' => $user->agent_id,
+                'phone' => $user->phone,
+                'uniqid' => $request->get('uniqid'),
+                'wrap_start' => date("Y-m-d H:i:s"),
+            ];
+
+            $insert = DB::connection('remote_connection')->table('call_center_data')->insert($dataToInsert);
+
+            $user->phone_status_id = 3;
+            $user->phone_status =  'Warp UP';
+            $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-clock"></i>';
+            $user->save();
+
+            if ($insert == true) {
+                return [
+                    'success' => true,
+                    'id' => $user->phone_status_id,
+                    'message' => $user->phone_status,
+                    'icon' => $user->phone_status_icon
+                ];
+            } else {
+                return ['success' => false, 'message' => 'login error'];
+            }
+        }
+    }
+
     public function AgentStatus()
     {
         // Retrieve the authenticated user
