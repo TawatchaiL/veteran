@@ -85,13 +85,14 @@
                     console.log(result)
                     if (result.id !== 0) {
                         //window.location.replace(`${web_url}/logout?kick=1`);
+                        var ntoken = "{{ csrf_token() }}";
                         $.ajax({
                             url: "{{ route('logout') }}",
                             method: 'post',
                             async: false,
                             data: {
                                 kick: 1,
-                                _token: token,
+                                _token: ntoken,
                             },
                             success: function(result) {
                                 console.log(result)
