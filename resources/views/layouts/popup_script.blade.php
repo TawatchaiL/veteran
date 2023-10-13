@@ -910,11 +910,17 @@
                     e.preventDefault();
                 } */
 
-                AsyncConfirmYesNo(
-                    "Yes & No Confirmation Box",
-                    "Are you hungry?", console.log(),
-                    e.preventDefault()
-                );
+                var $confirm = $("#modalConfirmYesNo");
+                $confirm.modal('show');
+                $("#lblTitleConfirmYesNo").html(title);
+                $("#lblMsgConfirmYesNo").html(msg);
+                $("#btnYesConfirmYesNo").off('click').click(function() {
+                    $confirm.modal("hide");
+                });
+                $("#btnNoConfirmYesNo").off('click').click(function() {
+                    e.preventDefault();
+                    $confirm.modal("hide");
+                });
 
             });
 
