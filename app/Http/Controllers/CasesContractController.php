@@ -162,10 +162,6 @@ class CasesContractController extends Controller
         return response()->json(['data' => $data]);
     }
 
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, $id)
     {
         $user = Auth::user();
