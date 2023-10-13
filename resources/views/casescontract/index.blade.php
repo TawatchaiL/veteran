@@ -140,7 +140,7 @@
                                                 <tr>
                                                     <th width="5%"><input type="checkbox" id="check-all"
                                                             class="flat"></th>
-                                                    <th>HN<input type="hidden" value="{{$contacts[0]->id}}" name="Delcontact_id" id="Delcontact_id"></th>
+                                                    <th>HN<input type="hidden" value="" name="Delcontact_id" id="Delcontact_id"></th>
                                                     <th>ชื่อสกุล</th>
                                                     <th>เบอร์โทร</th>
                                                     <th>วันที่ทำรายการ</th>
