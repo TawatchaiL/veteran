@@ -893,7 +893,7 @@
                     " ? \nกรุณาบันทึกข้อมูลก่อนเปลี่ยน Tab",
                 alertType: "info",
             }).fail(function(c) {
-                c.preventDefault();
+                e.preventDefault();
             });
 
 
