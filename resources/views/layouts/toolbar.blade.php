@@ -15,6 +15,8 @@
             $break_button_class = 'd-none';
             $unbreak_button = 'disabled';
             $unbreak_button_class = 'd-none';
+            $unwarp_button = 'disabled';
+            $unwarp_button_class = 'd-none';
             $logout_button = 'disabled';
             $logout_button_class = 'd-none';
             $logoff_button = 'disabled';
@@ -23,7 +25,7 @@
             $login_button_class = 'd-none';
             $toolbar_card = 'd-none';
             $popup_tab_main = 'd-none';
-            $toolbar_header = "bg-secondary";
+            $toolbar_header = 'bg-secondary';
             break;
         case 0:
             $dial_number = '';
@@ -40,6 +42,8 @@
             $break_button_class = 'd-none';
             $unbreak_button = 'disabled';
             $unbreak_button_class = 'd-none';
+            $unwarp_button = 'disabled';
+            $unwarp_button_class = 'd-none';
             $logout_button = '';
             $logout_button_class = '';
             $logoff_button = 'disabled';
@@ -48,7 +52,7 @@
             $login_button_class = '';
             $toolbar_card = '';
             $popup_tab_main = '';
-            $toolbar_header = "bg-secondary";
+            $toolbar_header = 'bg-secondary';
             break;
         case 1:
             $dial_number = '';
@@ -65,6 +69,8 @@
             $break_button_class = '';
             $unbreak_button = 'disabled';
             $unbreak_button_class = 'd-none';
+            $unwarp_button = 'disabled';
+            $unwarp_button_class = 'd-none';
             $logout_button = '';
             $logout_button_class = '';
             $logoff_button = '';
@@ -73,7 +79,7 @@
             $login_button_class = 'd-none';
             $toolbar_card = '';
             $popup_tab_main = '';
-            $toolbar_header = "bg-primary";
+            $toolbar_header = 'bg-primary';
             break;
         case 2:
             $dial_number = '';
@@ -90,6 +96,8 @@
             $break_button_class = 'd-none';
             $unbreak_button = '';
             $unbreak_button_class = '';
+            $unwarp_button = 'disabled';
+            $unwarp_button_class = 'd-none';
             $logout_button = '';
             $logout_button_class = '';
             $logoff_button = 'disabled';
@@ -98,9 +106,34 @@
             $login_button_class = 'd-none';
             $toolbar_card = '';
             $popup_tab_main = '';
-            $toolbar_header = "bg-warning";
+            $toolbar_header = 'bg-warning';
             break;
         case 3:
+            $dial_number = '';
+            $dial_number_class = '';
+            $dial_button = '';
+            $dial_button_class = '';
+            $transfer_button = 'disabled';
+            $transfer_button_class = '';
+            $performance_button = 'disabled';
+            $performance_button_class = '';
+            $conf_button = 'disabled';
+            $conf_button_class = '';
+            $break_button = 'disabled';
+            $break_button_class = 'd-none';
+            $unbreak_button = 'disabled';
+            $unbreak_button_class = 'd-none';
+            $unwarp_button = '';
+            $unwarp_button_class = '';
+            $logout_button = '';
+            $logout_button_class = '';
+            $logoff_button = 'disabled';
+            $logoff_button_class = 'd-none';
+            $login_button = 'disabled';
+            $login_button_class = 'd-none';
+            $toolbar_card = '';
+            $popup_tab_main = '';
+            $toolbar_header = 'bg-warning';
             break;
         case 4:
             $dial_number = '';
@@ -125,7 +158,7 @@
             $login_button_class = 'd-none';
             $toolbar_card = '';
             $popup_tab_main = '';
-            $toolbar_header = "bg-danger";
+            $toolbar_header = 'bg-danger';
             break;
         case 5:
             $dial_number = '';
@@ -150,7 +183,7 @@
             $login_button_class = 'd-none';
             $toolbar_card = '';
             $popup_tab_main = '';
-            $toolbar_header = "bg-danger";
+            $toolbar_header = 'bg-danger';
             break;
         default:
             break;
@@ -167,7 +200,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="card {{ $toolbar_card }}" id="toolbar_card" >
+                <div class="card {{ $toolbar_card }}" id="toolbar_card">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-3">
@@ -247,6 +280,10 @@
 
                             </div>
                         </div>
+                        <button {{ $unwarp_button }} id="btn-unwarp"
+                            class="{{ $unwarp_button_class }} btn btn-warning custom-button mx-1 float-left">
+                            <i class="fas fa-clock"></i> Stop Warpup
+                        </button>
 
                         <div class="mx-2 px-2">
                             <button {{ $login_button }} id="btn-agent-login"
@@ -284,7 +321,7 @@
                     </div>
                 </div>
 
-                <div class="card card-primary card-tabs {{ $popup_tab_main }}" id="popup_tab_main" >
+                <div class="card card-primary card-tabs {{ $popup_tab_main }}" id="popup_tab_main">
                     <div class="card-header p-0 pt-1">
                         <ul class="nav nav-tabs" id="custom-tabs-pop" role="tablist">
 
