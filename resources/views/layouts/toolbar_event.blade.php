@@ -41,7 +41,7 @@
                         success: function(result) {
                             set_state_icon(result.id, result.icon, result.message);
                             set_state_button(result.id);
-                            positionCards();
+                            //positionCards();
                         }
                     });
                     //toolbar_header.addClass("bg-primary");
