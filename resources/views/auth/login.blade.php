@@ -86,6 +86,12 @@
         <div class="card" style="box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);">
             <div class="card" style="">
                 <div class="card-body login-card-body">
+
+                    @if (isset($error))
+                        <div class="alert alert-danger">
+                            {{ $error }}
+                        </div>
+                    @endif
                     <p class="login-box-msg">กรุณาเข้าสู่ระบบเพื่อเริ่มใช้งาน</p>
 
                     <form method="post" action="{{ url('/login') }}">
