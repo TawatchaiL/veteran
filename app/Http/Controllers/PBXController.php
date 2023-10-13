@@ -345,13 +345,8 @@ class PBXController extends Controller
 
     public function AgentKick(Request $request)
     {
-        $agent_status = $this->AgentStatus();
-        if ($agent_status['id'] !== 0) {
-            Auth::logout();
-            return redirect('/login')->withErrors(['phone' => 'คุณถูกเตะออกจาก ระบบ กรุณาเข้าสู่ระบบอีกครั้ง']);
-        } else {
-            return true;
-        }
+        Auth::logout();
+        return redirect('/login')->withErrors(['phone' => 'คุณถูกเตะออกจาก ระบบ กรุณาเข้าสู่ระบบอีกครั้ง']);
     }
 
     public function AgentPhoneUnregis(Request $request)
