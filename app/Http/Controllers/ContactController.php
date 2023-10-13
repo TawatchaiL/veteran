@@ -123,10 +123,6 @@ class ContactController extends Controller
         $con = $request->get('cardId');
         $contact_name = "";
         $contact_lname = "";
-        if ($con == "0877777777") {
-            $contact_name = "กิจวรรณ";
-            $contact_lname = "ละเอียด";
-        }
         $datap = DB::table('crm_contacts')
             ->where('phoneno', '=', $con)
             ->orWhere('telhome', '=', $con)
@@ -276,7 +272,7 @@ class ContactController extends Controller
 
     public function show(string $id)
     {
-        
+
     }
 
     /**
