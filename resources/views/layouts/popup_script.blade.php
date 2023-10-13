@@ -898,27 +898,24 @@
             });
  */
 
-        $('#custom-tabs-pop a').click(function(e) {
-            e.preventDefault()
-            /*  var areYouSure = confirm(
-                 'If you sure you wish to leave this tab?  Any data entered will NOT be saved.  To save information, use the Save buttons.'
-             );
-             if (areYouSure === true) {
-                 $(this).tab('show')
-             } else {
-                 // do other stuff
-                 return false;
-             } */
+        $('#custom-tabs-pop li a').click(function(e) {
+            e.preventDefault();
+            const targetTab = $(this).attr("href");
 
             ezBSAlert({
                 type: "confirm",
                 messageText: "ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab +
                     " ? \nกรุณาบันทึกข้อมุลก่อนเปลี่ยน Tab",
-                alertType: "info"
-            }).done(function(e) {
-                $(this).tab('show')
+                alertType: "info",
+            }).done(function(confirmed) {
+                if (confirmed) {
+                    $(this).tab('show');
+                } else {
+                    // If not confirmed, you can do other stuff or return false.
+                    return false;
+                }
             });
-        })
+        });
 
 
     });
