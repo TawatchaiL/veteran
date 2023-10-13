@@ -35,6 +35,7 @@ class User extends Authenticatable
         'phone_status',
         'phone_status_icon',
         'break_text',
+        'login_time',
     ];
 
     /**

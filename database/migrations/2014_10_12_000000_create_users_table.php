@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('agent_id')->default(0);
             $table->string('name');
             $table->string('email')->unique();
+            $table->timestamp('login_time')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('queue')->nullable();

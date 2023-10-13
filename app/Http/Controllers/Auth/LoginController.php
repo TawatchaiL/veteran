@@ -14,6 +14,8 @@ use App\Services\AsteriskAmiService;
 use App\Services\IssableService;
 
 use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 
 
 class LoginController extends Controller
@@ -164,8 +166,10 @@ class LoginController extends Controller
                 $user->phone_status_id = 1;
                 $user->phone_status = "พร้อมรับสาย";
                 $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
+                $user->login_time = Carbon::now();
                 $user->save();
 
+                Session::put('login_time', $user->login_time);
 
                 // Update 'number' in the 'call_center.agent' table
                 DB::connection('remote_connection')

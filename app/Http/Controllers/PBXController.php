@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Services\AsteriskAmiService;
 use App\Services\IssableService;
+use Illuminate\Support\Facades\Session;
 
 class PBXController extends Controller
 {
@@ -345,8 +346,18 @@ class PBXController extends Controller
 
     public function AgentKick(Request $request)
     {
-        Auth::logout();
-        return redirect('/login')->withErrors(['phone' => 'คุณถูกเตะออกจาก ระบบ กรุณาเข้าสู่ระบบอีกครั้ง']);
+        $loginTimeSession = Session::get('login_time');
+        $user = Auth::user();
+
+        if ($user && $loginTimeSession !== $user->login_time) {
+            // Logout the user
+            Auth::logout();
+
+            // Redirect to the login page with an error message
+            return redirect('/login')->withErrors(['phone' => 'คุณถูกเตะออกจาก ระบบ กรุณาเข้าสู่ระบบอีกครั้ง']);
+        }
+
+        // If the login times match or if the user is not authenticated, continue with the application
     }
 
     public function AgentPhoneUnregis(Request $request)
