@@ -896,8 +896,9 @@
                 alertType: "info",
             }).done(function(confirmed) {
                 if (!confirmed) {
-                    // If not confirmed, prevent the tab switch
-                   return false;
+                    return false;
+                } else {
+                    return true;
                 }
             });
         });
