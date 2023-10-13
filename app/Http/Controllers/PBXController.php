@@ -354,7 +354,10 @@ class PBXController extends Controller
             Auth::logout();
 
             // Redirect to the login page with an error message
-            return view('auth.login')->with(['error' => 'คุณถูกเตะออกจาก ระบบ กรุณาเข้าสู่ระบบอีกครั้ง']);
+            //return view('auth.login')->with(['error' => 'คุณถูกเตะออกจาก ระบบ กรุณาเข้าสู่ระบบอีกครั้ง']);
+            return 1;
+        } else {
+            return 0;
         }
 
         // If the login times match or if the user is not authenticated, continue with the application

@@ -83,7 +83,10 @@
                 },
                 success: function(result) {
                     console.log(result)
-                    //window.location.replace(`${web_url}/kick`);
+                    if (result==1) {
+                        window.location.replace(`${web_url}/login`);
+                    }
+
                 }
             });
         }
