@@ -204,7 +204,7 @@ class LoginController extends Controller
     {
         // Clear the temporary phone from the session
         //$request->session()->forget('temporary_phone');
-
+        dd($request->get('kick'));
         $user = Auth::user();
         //$this->remote->queue_log_off($user->queue, $user->phone);
         if ($user->phone_status !== "Not Ready") {
@@ -222,7 +222,7 @@ class LoginController extends Controller
             ->table('call_center.agent')
             ->where('id', $user->agent_id)
             ->update(['number' => 0]);
- dd($request->get('kick'));
+
         $this->guard()->logout();
         $request->session()->invalidate();
 
