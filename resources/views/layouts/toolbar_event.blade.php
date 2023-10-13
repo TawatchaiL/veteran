@@ -84,7 +84,7 @@
                 success: function(result) {
                     console.log(result)
                     if (result == 1) {
-                        const errorMessage = "คุณถูกเตะออกจาก ระบบ กรุณาเข้าสู่ระบบอีกครั้ง";
+                        const errorMessage = "คุณถูกเตะออกจากระบบ กรุณาล็อกอิน";
 
                         // Encode the message to be URL-friendly
                         const encodedErrorMessage = encodeURIComponent(errorMessage);
