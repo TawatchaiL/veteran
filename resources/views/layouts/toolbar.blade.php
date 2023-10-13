@@ -266,7 +266,7 @@
                     </div>
                 </div>
 
-                <div class="card card-primary card-tabs" id="popup_tab">
+                <div class="card card-primary card-tabs" id="popup_tab_main">
                     <div class="card-header p-0 pt-1">
                         <ul class="nav nav-tabs" id="custom-tabs-pop" role="tablist">
 
