@@ -149,7 +149,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="card">
+                <div class="card" id="toolbar_card">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-3">
@@ -266,7 +266,7 @@
                     </div>
                 </div>
 
-                <div class="card card-primary card-tabs">
+                <div class="card card-primary card-tabs" id="popup_tab">
                     <div class="card-header p-0 pt-1">
                         <ul class="nav nav-tabs" id="custom-tabs-pop" role="tablist">
 
