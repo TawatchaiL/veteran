@@ -910,26 +910,16 @@
                     e.preventDefault();
                 } */
 
-                /* AsyncConfirmYesNo(
+                AsyncConfirmYesNo(
                     "Yes & No Confirmation Box",
                     "Are you hungry?",
-                    MyYesFunction,
-                    MyNoFunction
-                ); */
-
-                var $confirm = $("#modalConfirmYesNo");
-                $confirm.modal('show');
-                $("#lblTitleConfirmYesNo").html('Confirm');
-                $("#lblMsgConfirmYesNo").html("ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab +
-                        " ? \nกรุณาบันทึกข้อมุลก่อนเปลี่ยน Tab");
-                $("#btnYesConfirmYesNo").off('click').click(function() {
-                    $confirm.modal("hide");
-                });
-                $("#btnNoConfirmYesNo").off('click').click(function() {
-                    e.preventDefault();
-                    $confirm.modal("hide");
-                });
-
+                    function() {
+                        console.log("Yes");
+                    },
+                    function() {
+                        e.preventDefault();
+                    }
+                );
             });
 
     });
