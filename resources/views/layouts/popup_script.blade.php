@@ -891,13 +891,13 @@
             var allowTabSwitch = false;
 
             // Display a confirmation dialog
-            ezBSAlert({
+            allowTabSwitch = ezBSAlert({
                 type: "confirm",
                 messageText: "ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab +
                     " ? \nกรุณาบันทึกข้อมูลก่อนเปลี่ยน Tab",
                 alertType: "info",
             }).done(function(c) {
-                allowTabSwitch = true; // Allow tab switch
+                return true; // Allow tab switch
                 // Check whether to allow or prevent the tab switch
 
             });
