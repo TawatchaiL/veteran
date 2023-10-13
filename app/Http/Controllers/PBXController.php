@@ -326,7 +326,7 @@ class PBXController extends Controller
         }
     }
 
-    public function AgentStatus(Request $request)
+    public function AgentStatus()
     {
         // Retrieve the authenticated user
         $user = Auth::user();
@@ -340,6 +340,34 @@ class PBXController extends Controller
             ];
         } else {
             return ['error' => false, 'message' => 'error'];
+        }
+    }
+
+    public function AgentKick(Request $request)
+    {
+        $agent_status = $this->AgentStatus();
+        if ($agent_status['id'] == 0) {
+            $user = Auth::user();
+
+            if ($user->phone_status !== "Not Ready") {
+                $this->issable->agent_logoff($user->phone);
+            }
+
+            $user->phone = '';
+            $user->phone_status_id = 0;
+            $user->phone_status = "ไม่พร้อมรับสาย";
+            $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-xmark"></i>';
+            $user->save();
+
+            DB::connection('remote_connection')
+                ->table('call_center.agent')
+                ->where('id', $user->agent_id)
+                ->update(['number' => 0]);
+
+            Auth::logout();
+            return redirect('/')->withErrors(['phone' => 'คุณถูกเตะออกจาก ระบบ กรุณาเข้าสู่ระบบอีกครั้ง']);
+        } else {
+            return true;
         }
     }
 

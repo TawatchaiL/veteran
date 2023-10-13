@@ -75,14 +75,14 @@
                  }
              }); */
             $.ajax({
-                url: "{{ route('agent.status') }}",
+                url: "{{ route('agent.kick') }}",
                 method: 'post',
                 async: false,
                 data: {
                     _token: token,
                 },
                 success: function(result) {
-                    window.location.replace(`${web_url}/kick`);
+                    //window.location.replace(`${web_url}/kick`);
                 }
             });
         }
