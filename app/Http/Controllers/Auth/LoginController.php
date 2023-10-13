@@ -211,7 +211,7 @@ class LoginController extends Controller
         //$request->session()->forget('temporary_phone');
         $user = Auth::user();
         //$this->remote->queue_log_off($user->queue, $user->phone);
-        if ($user->phone_status !== "Not Ready") {
+        if ($user->phone_status_id !== 0) {
             $this->issable->agent_logoff($user->phone);
         }
 
