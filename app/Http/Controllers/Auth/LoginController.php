@@ -221,11 +221,10 @@ class LoginController extends Controller
             ->where('id', $user->agent_id)
             ->update(['number' => 0]);
 
-        $this->guard()->logout();
-        $request->session()->invalidate();
+            Auth::logout();
 
 
-        return redirect('/');
+        return redirect('/')->withErrors(['phone' => 'คุณถูกเตะออกจาก ระบบ กรุณาเข้าสู่ระบบอีกครั้ง']);
     }
 
 
