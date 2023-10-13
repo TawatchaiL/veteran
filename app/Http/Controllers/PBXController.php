@@ -338,7 +338,7 @@ class PBXController extends Controller
                 'wrap_start' => date("Y-m-d H:i:s"),
             ];
 
-            $insert = DB::connection('remote_connection')->table('call_center_data')->insert($dataToInsert);
+            $insert = DB::connection('remote_connection')->table('warp_data')->insert($dataToInsert);
 
             $user->phone_status_id = 3;
             $user->phone_status =  'Warp UP';
