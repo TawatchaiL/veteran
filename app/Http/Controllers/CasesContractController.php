@@ -234,9 +234,7 @@ class CasesContractController extends Controller
             'html' =>  $htmlContent,
         ]);
     }
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(Request $request)
     {
         $id = $request->get('id');
