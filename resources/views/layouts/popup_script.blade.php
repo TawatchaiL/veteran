@@ -895,11 +895,11 @@
                     e.preventDefault();
                 } */
 
-                await ezBSAlert({
+                 ezBSAlert({
                     type: "confirm",
                     messageText: "hello world",
                     alertType: "info"
-                }).done(function(c) {
+                }).done(await function(c) {
                     if (c == false) {
                         e.preventDefault();
                     }
