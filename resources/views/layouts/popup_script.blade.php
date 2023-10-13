@@ -897,30 +897,40 @@
             });
         }
 
-        $(document).on('show.bs.tab', '#custom-tabs-pop a[data-toggle="pill"]',
-            async function(e) {
-                // Determine which tab is being switched to
-                var href = $(e.target).attr("href");
-                var targetTab = href.replace("#custom-tabs-pop-", "");
+        $(document).on('show.bs.tab', '#custom-tabs-pop a[data-toggle="pill"]', async function(e) {
+            // Determine which tab is being switched to
+            var href = $(e.target).attr("href");
+            var targetTab = href.replace("#custom-tabs-pop-", "");
 
-                // Display a confirmation dialog
-                /* if (!confirm("ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab +
-                        " ? \nกรุณาบันทึกข้อมุลก่อนเปลี่ยน Tab")) {
-                    // If the user cancels, prevent the tab switch
-                    e.preventDefault();
-                } */
+            // Use a variable to control tab switch
+            var allowTabSwitch = false;
 
-                AsyncConfirmYesNo(
-                    "Yes & No Confirmation Box",
-                    "Are you hungry?",
-                    function() {
-                        console.log("Yes");
-                    },
-                    function() {
-                        e.preventDefault();
-                    }
-                );
-            });
+            // Display a confirmation dialog
+            try {
+                await new Promise((resolve) => {
+                    AsyncConfirmYesNo(
+                        "Tab Switch Confirmation",
+                        "Are you sure you want to switch to " + targetTab +
+                        "? Please save your data before switching.",
+                        function() {
+                            console.log("Yes, switching tabs");
+                            allowTabSwitch = true;
+                            resolve();
+                        },
+                        function() {
+                            console.log("No, preventing tab switch");
+                            resolve();
+                        }
+                    );
+                });
+
+                if (!allowTabSwitch) {
+                    e.preventDefault(); // Prevent tab switch
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        });
 
     });
 </script>
