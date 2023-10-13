@@ -79,6 +79,7 @@
                 method: 'post',
                 async: false,
                 success: function(result) {
+                    console.log(result)
                     if (result.id !== 0) {
                         //window.location.replace(`${web_url}/logout?kick=1`);
                         $.ajax({
@@ -90,7 +91,7 @@
                                 _token: token,
                             },
                             success: function(result) {
-
+                                console.log(result)
                             }
                         });
                     }
