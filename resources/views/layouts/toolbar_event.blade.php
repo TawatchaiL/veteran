@@ -82,6 +82,7 @@
                     _token: token,
                 },
                 success: function(result) {
+                    console.log(result)
                     //window.location.replace(`${web_url}/kick`);
                 }
             });
