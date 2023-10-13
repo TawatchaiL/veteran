@@ -80,7 +80,19 @@
                 async: false,
                 success: function(result) {
                     if (result.id !== 0) {
-                        window.location.replace(`${web_url}/logout?kick=1`);
+                        //window.location.replace(`${web_url}/logout?kick=1`);
+                        $.ajax({
+                            url: "{{ route('logout') }}",
+                            method: 'post',
+                            async: false,
+                            data: {
+                                kick: 1,
+                                _token: token,
+                            },
+                            success: function(result) {
+
+                            }
+                        });
                     }
                 }
             });
