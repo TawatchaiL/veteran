@@ -54,10 +54,36 @@
             url: '{{ route('contacts.popup') }}',
             type: 'get',
             success: function(response) {
+                // Handle success
+                //console.log(response.html)
                 removeAllTabs();
                 $('#custom-tabs-pop').prepend(response.tab_link);
                 $('#custom-tabs-pop-tabContent').prepend(response.tab_content);
                 maximizeCard(response.active_id);
+                //listcontact(response.active_id);
+                //$('#dpopup').html(response.html);
+                // Position the cards after dynamic content is loaded
+                /*  $('.custom-bottom-right-card').each(function(index) {
+                     cardPositions.push({
+                         //right: (20 + (index * 320)) + 'px',
+                         isMaximized: false,
+                     });
+                     //$(this).css('right', cardPositions[index].right);
+                     //$(this).css('bottom', '35px');
+                     //$(this).delay(index * 100).fadeIn();
+                 }); */
+
+                //$('.custom-bottom-right-card').each(function(index) {
+                //    var cardPosition = {
+                //        right: (20 + (index % 4 * 320)) + 'px',
+                //        top: (35 + Math.floor(index / 4) * 160) + 'px',
+                //        isMaximized: false,
+                //    };
+                //    cardPositions.push(cardPosition);
+                //    $(this).css('right', cardPosition.right);
+                //    $(this).css('top', cardPosition.top);
+                //    $(this).delay(index * 100).fadeIn();
+                //});
             },
             error: function(xhr, status, error) {
 
@@ -65,6 +91,22 @@
         });
     }
 
+    // Minimize card AJAX function
+    function minimizeCard(cardId) {
+        $.ajax({
+            url: 'your_minimize_url',
+            type: 'POST',
+            data: {
+                cardId: cardId
+            },
+            success: function(response) {
+                // Handle success
+            },
+            error: function(xhr, status, error) {
+                // Handle error
+            }
+        });
+    }
     // Maximize card AJAX function
     function maximizeCard(cardId) {
         $.ajax({
@@ -735,10 +777,102 @@
         }
     }
 
+    // Close card AJAX function
+    function closeCard(cardId) {
+        $.ajax({
+            url: 'your_close_url',
+            type: 'POST',
+            data: {
+                cardId: cardId
+            },
+            success: function(response) {
+                // Handle success
+            },
+            error: function(xhr, status, error) {
+                // Handle error
+            }
+        });
+    }
+
 
 
     $(document).ready(function() {
+
+
         positionCards();
+
+        // Handle card maximize
+        $(document).on('click', '.custom-bottom-right-card .card-tools [data-card-widget="maximize"]',
+            function() {
+
+                var card = $(this).closest('.custom-bottom-right-card');
+                var cardIndex = card.index();
+                var cardId = card.data('id');
+
+                if (!card.hasClass('collapsed-card')) {
+                    // Card is not minimized
+                    //card.css('right', '-300px'); // Adjust as needed
+                    card.css('z-index', '99999');
+                    $('body').css('overflow', 'hidden');
+                    maximizeCard(cardId);
+
+                } else {
+                    // restore
+                    $('body').css('overflow', 'auto');
+                    $('#dpopup').html('');
+                    positionCards();
+
+                }
+
+                // Toggle minimized class
+                card.toggleClass('collapsed-card');
+
+
+
+            });
+
+        $(document).on('click', '.custom-bottom-right-card .card-footer .bopen[data-card-widget="maximize"]',
+            function() {
+
+                var card = $(this).closest('.custom-bottom-right-card');
+                var cardIndex = card.index();
+                var cardId = card.data('id');
+
+                if (!card.hasClass('collapsed-card')) {
+                    // Card is not minimized
+                    //card.css('right', '-300px'); // Adjust as needed
+                    card.css('z-index', '99999');
+                    $('body').css('overflow', 'hidden');
+                    maximizeCard(cardId);
+
+                } else {
+                    // restore
+                    $('#dpopup').html('');
+                    $('body').css('overflow', 'auto');
+                    positionCards();
+
+                }
+
+                // Toggle minimized class
+                card.toggleClass('collapsed-card');
+
+
+
+            });
+
+
+        // Handle card close
+        $(document).on('click', '.custom-bottom-right-card .card-tools [data-card-widget="remove"]',
+            function() {
+                var card = $(this).closest('.custom-bottom-right-card');
+                var cardIndex = card.index();
+                var cardId = card.data('id');
+                // Call AJAX function for close
+                //closeCard(cardId);
+                $('body').css('overflow', 'auto');
+                positionCards();
+            });
+
         $(document).on('show.bs.tab', '#custom-tabs-pop a[data-toggle="pill"]',
             function(e) {
                 // Determine which tab is being switched to
@@ -746,7 +880,7 @@
                 var targetTab = href.replace("#custom-tabs-pop-", "");
 
                 // Display a confirmation dialog
-                if (!confirm("ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab + "? \nกรุณาบันทึกข้อมุลก่อนเปลี่ยน Tab")) {
+                if (!confirm("ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab + " ? \nกรุณาบันทึกข้อมุลก่อนเปลี่ยน Tab")) {
                     // If the user cancels, prevent the tab switch
                     e.preventDefault();
                 }
