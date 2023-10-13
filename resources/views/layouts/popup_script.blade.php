@@ -892,10 +892,11 @@
                 messageText: "ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab +
                     " ? \nกรุณาบันทึกข้อมูลก่อนเปลี่ยน Tab",
                 alertType: "info",
-            }).fail(function(c) {
-                e.preventDefault();
+            }).done(function(confirmed) {
+                if (!confirmed) {
+                    e.preventDefault(); // Prevent tab switch
+                }
             });
-
 
 
         });
