@@ -87,9 +87,9 @@
             <div class="card" style="">
                 <div class="card-body login-card-body">
 
-                    @if (isset($error))
+                    @if (request()->has('error'))
                         <div class="alert alert-danger">
-                            {{ $error }}
+                            {{ urldecode(request('error')) }}
                         </div>
                     @endif
                     <p class="login-box-msg">กรุณาเข้าสู่ระบบเพื่อเริ่มใช้งาน</p>

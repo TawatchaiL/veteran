@@ -83,8 +83,14 @@
                 },
                 success: function(result) {
                     console.log(result)
-                    if (result==1) {
-                        window.location.replace(`${web_url}/login`);
+                    if (result == 1) {
+                        const errorMessage = "คุณถูกเตะออกจาก ระบบ กรุณาเข้าสู่ระบบอีกครั้ง";
+
+                        // Encode the message to be URL-friendly
+                        const encodedErrorMessage = encodeURIComponent(errorMessage);
+
+                        // Redirect to the login page with the error message in the query string
+                        window.location.replace(`${web_url}/login?error=${encodedErrorMessage}`);
                     }
 
                 }
