@@ -912,7 +912,7 @@
 
                 AsyncConfirmYesNo(
                     "Yes & No Confirmation Box",
-                    "Are you hungry?", ,
+                    "Are you hungry?", console.log(),
                     e.preventDefault()
                 );
 
