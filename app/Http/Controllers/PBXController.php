@@ -365,9 +365,9 @@ class PBXController extends Controller
                 ->update(['number' => 0]);
 
             Auth::logout();
-            return true;
+            return redirect('/')->withErrors(['phone' => 'คุณถูกเตะออกจาก ระบบ กรุณาเข้าสู่ระบบอีกครั้ง']);
         } else {
-            return false;
+            return true;
         }
     }
 
