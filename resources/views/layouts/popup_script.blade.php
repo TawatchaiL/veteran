@@ -882,6 +882,21 @@
                 positionCards();
             });
 
+        function AsyncConfirmYesNo(title, msg, yesFn, noFn) {
+            var $confirm = $("#modalConfirmYesNo");
+            $confirm.modal('show');
+            $("#lblTitleConfirmYesNo").html(title);
+            $("#lblMsgConfirmYesNo").html(msg);
+            $("#btnYesConfirmYesNo").off('click').click(function() {
+                yesFn();
+                $confirm.modal("hide");
+            });
+            $("#btnNoConfirmYesNo").off('click').click(function() {
+                noFn();
+                $confirm.modal("hide");
+            });
+        }
+
         $(document).on('show.bs.tab', '#custom-tabs-pop a[data-toggle="pill"]',
             async function(e) {
                 // Determine which tab is being switched to
@@ -895,15 +910,11 @@
                     e.preventDefault();
                 } */
 
-                 ezBSAlert({
-                    type: "confirm",
-                    messageText: "hello world",
-                    alertType: "info"
-                }).done(await function(c) {
-                    if (c == false) {
-                        e.preventDefault();
-                    }
-                });
+                AsyncConfirmYesNo(
+                    "Yes & No Confirmation Box",
+                    "Are you hungry?", ,
+                    e.preventDefault()
+                );
 
             });
 
