@@ -888,15 +888,17 @@
             var targetTab = href.replace("#custom-tabs-pop-", "");
 
 
-            // Display a confirmation dialog
+
             ezBSAlert({
                 type: "confirm",
                 messageText: "ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab +
                     " ? \nกรุณาบันทึกข้อมูลก่อนเปลี่ยน Tab",
                 alertType: "info",
-            }).fail(function(c) {
-                e.preventDefault();
+            }).done(function(c) {
+                return true;
             });
+
+            e.preventDefault();
 
         });
 
