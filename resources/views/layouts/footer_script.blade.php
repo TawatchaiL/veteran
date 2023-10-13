@@ -257,7 +257,7 @@
             $('#ezAlerts').modal({
                 show: false,
                 backdrop: backd,
-                keyboard: keyb
+                keyboard: keyb === "true",
             }).on('hidden.bs.modal', function(e) {
                 $('#ezAlerts').remove();
                 deferredObject.resolve(calbackParam);
