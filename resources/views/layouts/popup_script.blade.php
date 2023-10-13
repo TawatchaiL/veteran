@@ -882,7 +882,7 @@
                 positionCards();
             });
 
-        $('#custom-tabs-pop a[data-toggle="pill"]').on('show.bs.tab', function(e) {
+        $('.custom-tabs-pop a[data-toggle="pill"]').on('show.bs.tab', function(e) {
             // Determine which tab is being switched to
             var targetTab = $(e.target).attr("href");
 
