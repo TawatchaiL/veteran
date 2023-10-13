@@ -896,18 +896,15 @@
                 messageText: "ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab +
                     " ? \nกรุณาบันทึกข้อมูลก่อนเปลี่ยน Tab",
                 alertType: "info",
-            }).done(function(confirmed) {
-                if (confirmed) {
-                    allowTabSwitch = true; // Allow tab switch
-                } else {
-                    allowTabSwitch = false; // Prevent tab switch
-                }
-
+            }).done(function(c) {
+                allowTabSwitch = true; // Allow tab switch
                 // Check whether to allow or prevent the tab switch
-                if (!allowTabSwitch) {
-                    e.preventDefault(); // Prevent tab switch
-                }
+
             });
+
+            if (!allowTabSwitch) {
+                e.preventDefault(); // Prevent tab switch
+            }
         });
 
 
