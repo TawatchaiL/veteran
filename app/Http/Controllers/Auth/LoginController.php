@@ -200,11 +200,8 @@ class LoginController extends Controller
     }
 
 
-    public function logout(Request $request)
+    public function kick(Request $request)
     {
-
-        $kick = $request->get('kick');
-        dd($kick);
         // Clear the temporary phone from the session
         //$request->session()->forget('temporary_phone');
         $user = Auth::user();
@@ -227,11 +224,38 @@ class LoginController extends Controller
         $this->guard()->logout();
         $request->session()->invalidate();
 
-        if ($request->get('kick') == 1) {
-            return redirect('/')->withErrors(['phone' => 'คุณถูกเตะออกจาก ระบบ กรุณาเข้าสู่ระบบอีกครั้ง']);
-        } else {
-            return redirect('/');
+
+        return redirect('/')->withErrors(['phone' => 'คุณถูกเตะออกจาก ระบบ กรุณาเข้าสู่ระบบอีกครั้ง']);
+    }
+
+
+    public function logout(Request $request)
+    {
+
+        // Clear the temporary phone from the session
+        //$request->session()->forget('temporary_phone');
+        $user = Auth::user();
+        //$this->remote->queue_log_off($user->queue, $user->phone);
+        if ($user->phone_status !== "Not Ready") {
+            $this->issable->agent_logoff($user->phone);
         }
+
+        $user->phone = '';
+        $user->phone_status_id = 0;
+        $user->phone_status = "ไม่พร้อมรับสาย";
+        $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-xmark"></i>';
+        $user->save();
+
+        DB::connection('remote_connection')
+            ->table('call_center.agent')
+            ->where('id', $user->agent_id)
+            ->update(['number' => 0]);
+
+        $this->guard()->logout();
+        $request->session()->invalidate();
+
+
+        return redirect('/');
     }
 
     public function showLoginForm()
