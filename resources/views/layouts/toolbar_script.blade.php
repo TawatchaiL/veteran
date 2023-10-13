@@ -14,6 +14,7 @@
     const break_group = $('#break_group');
     const btn_pause = $('#btn-pause');
     const btn_unbreak = $('#btn-unbreak');
+    const btn_unwarp = $('#btn-unwarp');
     const btn_agent_logout = $('#btn-system-logout');
     const btn_agent_logoff = $('#btn-agent-logout');
     const btn_agent_login = $('#btn-agent-login');
@@ -97,6 +98,8 @@
             return 'icon-green';
         } else if (id === 2) {
             return 'icon-yellow';
+        } else if (id === 3) {
+            return 'icon-yellow';
         } else if (id === 4) {
             return 'icon-red';
         } else if (id === 5) {
@@ -127,6 +130,7 @@
             break_group.addClass("d-none");
             btn_pause.prop('disabled', true);
             btn_unbreak.addClass("d-none");
+            btn_unwarp.addClass("d-none");
             btn_agent_logout.addClass("d-none");
             btn_agent_logout.prop('disabled', true);
             btn_agent_logoff.addClass("d-none");
@@ -149,6 +153,7 @@
             break_group.addClass("d-none");
             btn_pause.prop('disabled', true);
             btn_unbreak.addClass("d-none");
+            btn_unwarp.addClass("d-none");
             btn_agent_logout.removeClass("d-none");
             btn_agent_logout.prop('disabled', false);
             btn_agent_logoff.addClass("d-none");
@@ -172,6 +177,7 @@
             btn_pause.prop('disabled', false);
             btn_unbreak.addClass("d-none");
             btn_unbreak.prop('disabled', true);
+            btn_unwarp.addClass("d-none");
             btn_agent_logout.removeClass("d-none");
             btn_agent_logout.prop('disabled', false);
             btn_agent_logoff.removeClass("d-none");
@@ -195,8 +201,33 @@
             btn_pause.prop('disabled', true);
             btn_unbreak.removeClass("d-none");
             btn_unbreak.prop('disabled', false);
+            btn_unwarp.addClass("d-none");
             btn_agent_logout.removeClass("d-none");
             btn_agent_logout.prop('disabled', false);
+            btn_agent_logoff.addClass("d-none");
+            btn_agent_logoff.prop('disabled', true);
+            btn_agent_login.addClass("d-none");
+            btn_agent_login.prop('disabled', true);
+            toolbar_header.removeClass("");
+            toolbar_header.addClass("card-warning");
+        } else if (id === 3) {
+            dial_number.removeClass('d-none');
+            dial_number.prop('disabled', false);
+            dial_button.removeClass('d-none');
+            dial_button.prop('disabled', false);
+            performance_button.prop('disabled', true);
+            performance_button.removeClass("d-none");
+            tranfer_button.prop('disabled', true);
+            tranfer_button.removeClass("d-none");
+            conf_button.prop('disabled', true);
+            conf_button.removeClass("d-none");
+            break_group.addClass("d-none");
+            btn_pause.prop('disabled', true);
+            btn_unbreak.addClass("d-none");
+            btn_unbreak.prop('disabled', true);
+            btn_unwarp.removeClass("d-none");
+            btn_agent_logout.addClass("d-none");
+            btn_agent_logout.prop('disabled', true);
             btn_agent_logoff.addClass("d-none");
             btn_agent_logoff.prop('disabled', true);
             btn_agent_login.addClass("d-none");
@@ -218,6 +249,7 @@
             btn_pause.prop('disabled', true);
             btn_unbreak.addClass("d-none");
             btn_unbreak.prop('disabled', true);
+            btn_unwarp.addClass("d-none");
             btn_agent_logout.addClass("d-none");
             btn_agent_logout.prop('disabled', true);
             btn_agent_logoff.addClass("d-none");
@@ -242,6 +274,7 @@
             btn_pause.prop('disabled', true);
             btn_unbreak.addClass("d-none");
             btn_unbreak.prop('disabled', true);
+            btn_unwarp.addClass("d-none");
             btn_agent_logout.addClass("d-none");
             btn_agent_logout.prop('disabled', true);
             btn_agent_logoff.addClass("d-none");

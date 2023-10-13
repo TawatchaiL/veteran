@@ -110,7 +110,7 @@
                     $temporaryPhoneColor = 'icon-yellow';
                     break;
                 case 3:
-                    $temporaryPhoneColor = '';
+                    $temporaryPhoneColor = 'icon-yellow';
                     break;
                 case 4:
                     $temporaryPhoneColor = 'icon-red';
