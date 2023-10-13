@@ -899,8 +899,8 @@
                     type: "confirm",
                     messageText: "hello world",
                     alertType: "info"
-                }).done(function(e) {
-                    if (e===false) {
+                }).done(function(c) {
+                    if (c===false) {
                         e.preventDefault();
                     }
                 });
