@@ -68,12 +68,6 @@
     socket.on('qlogoff', data => {
 
         if (data.extension.match(exten)) {
-            /*  console.log(data)
-             $.get(`${web_url}/agent_kick/`, (dataw, status) => {
-                 if (dataw) {
-                     window.location.replace(`${web_url}/logout?kick=1`);
-                 }
-             }); */
             $.ajax({
                 url: "{{ route('agent.kick') }}",
                 method: 'post',
@@ -85,11 +79,7 @@
                     console.log(result)
                     if (result == 1) {
                         const errorMessage = "คุณถูกเตะออกจากระบบ กรุณาล็อกอิน";
-
-                        // Encode the message to be URL-friendly
                         const encodedErrorMessage = encodeURIComponent(errorMessage);
-
-                        // Redirect to the login page with the error message in the query string
                         window.location.replace(`${web_url}/login?error=${encodedErrorMessage}`);
                     }
 
