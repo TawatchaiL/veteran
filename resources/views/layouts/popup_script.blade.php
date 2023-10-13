@@ -884,8 +884,6 @@
 
         $(document).on('show.bs.tab', '#custom-tabs-pop a[data-toggle="pill"]', function() {
             // Determine which tab is being switched to
-            var href = $(e.target).attr("href");
-            var targetTab = href.replace("#custom-tabs-pop-", "");
 
             ezBSAlert({
                 type: "confirm",
@@ -893,6 +891,9 @@
                     " ? \nกรุณาบันทึกข้อมูลก่อนเปลี่ยน Tab",
                 alertType: "info",
             }).fail(function(e) {
+                var href = $(e.target).attr("href");
+                var targetTab = href.replace("#custom-tabs-pop-", "");
+
                 e.preventDefault();
             });
 
