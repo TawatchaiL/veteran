@@ -348,7 +348,7 @@ class PBXController extends Controller
         $agent_status = $this->AgentStatus();
         if ($agent_status['id'] !== 0) {
             Auth::logout();
-            return redirect('/')->withErrors(['phone' => 'คุณถูกเตะออกจาก ระบบ กรุณาเข้าสู่ระบบอีกครั้ง']);
+            return redirect('/login')->withErrors(['phone' => 'คุณถูกเตะออกจาก ระบบ กรุณาเข้าสู่ระบบอีกครั้ง']);
         } else {
             return true;
         }
