@@ -900,7 +900,7 @@
                         " ? \nกรุณาบันทึกข้อมุลก่อนเปลี่ยน Tab",
                     alertType: "info"
                 }).done(function(e) {
-                    e.preventDefault();
+                    return true;
                 });
             });
 
