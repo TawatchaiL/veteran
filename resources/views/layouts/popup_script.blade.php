@@ -116,13 +116,20 @@
                 cardId: cardId
             },
             success: async function(response) {
-                $('#' + cardId).removeClass('card-danger');
-                $('#' + cardId).addClass('card-success');
                 await $('#pop_' + cardId).html(response.html);
-                $(".card-footer").css("display", "block")
-                $('.bclose').css('display', 'none');
-
                 //addemerphone(cardId);
+
+                $('.custom-tabs-pop a[data-toggle="pill"]').on('show.bs.tab', function(e) {
+                    // Determine which tab is being switched to
+                    var targetTab = $(e.target).attr("href");
+
+                    // Display a confirmation dialog
+                    if (!confirm("Are you sure you want to switch to " + targetTab + "?")) {
+                        // If the user cancels, prevent the tab switch
+                        e.preventDefault();
+                    }
+                });
+
 
                 var provinceOb = $('#cityp' + cardId);
                 var districtOb = $('#districtp' + cardId);
@@ -882,16 +889,6 @@
                 positionCards();
             });
 
-        $('.custom-tabs-pop a[data-toggle="pill"]').on('show.bs.tab', function(e) {
-            // Determine which tab is being switched to
-            var targetTab = $(e.target).attr("href");
-
-            // Display a confirmation dialog
-            if (!confirm("Are you sure you want to switch to " + targetTab + "?")) {
-                // If the user cancels, prevent the tab switch
-                e.preventDefault();
-            }
-        });
 
     });
 </script>
