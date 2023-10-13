@@ -21,6 +21,8 @@
             $logoff_button_class = 'd-none';
             $login_button = 'disabled';
             $login_button_class = 'd-none';
+            $toolbar_card = 'd-none';
+            $popup_tab_main = 'd-none';
             break;
         case 0:
             $dial_number = '';
@@ -43,6 +45,8 @@
             $logoff_button_class = 'd-none';
             $login_button = '';
             $login_button_class = '';
+            $toolbar_card = '';
+            $popup_tab_main = '';
             break;
         case 1:
             $dial_number = '';
@@ -87,6 +91,8 @@
             $logoff_button_class = 'd-none';
             $login_button = 'disabled';
             $login_button_class = 'd-none';
+            $toolbar_card = '';
+            $popup_tab_main = '';
             break;
         case 3:
             break;
@@ -111,6 +117,8 @@
             $logoff_button_class = 'd-none';
             $login_button = 'disabled';
             $login_button_class = 'd-none';
+            $toolbar_card = '';
+            $popup_tab_main = '';
             break;
         case 5:
             $dial_number = '';
@@ -133,6 +141,8 @@
             $logoff_button_class = 'd-none';
             $login_button = 'disabled';
             $login_button_class = 'd-none';
+            $toolbar_card = '';
+            $popup_tab_main = '';
             break;
         default:
             break;
@@ -149,7 +159,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="card" id="toolbar_card">
+                <div class="card" id="toolbar_card" {{ $toolbar_card }}>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-3">
@@ -266,7 +276,7 @@
                     </div>
                 </div>
 
-                <div class="card card-primary card-tabs" id="popup_tab_main">
+                <div class="card card-primary card-tabs" id="popup_tab_main" {{ $popup_tab_main }}>
                     <div class="card-header p-0 pt-1">
                         <ul class="nav nav-tabs" id="custom-tabs-pop" role="tablist">
 
@@ -280,11 +290,15 @@
                 </div>
             </div>
             <div class="overlay d-none" id="state_overlay">
-                <h4><i class="fa-solid icon-black fa-xl fa-phone-slash"></i> <span class="icon-black">หมายเลขโทรศัพท์
-                        ไม่พร้อมใช้งาน กรุณาตรวจสอบ</span>
-                </h4>
+                <div class="card" id="toolbar_card">
+                    <div class="card-body">
+                        <h4><i class="fa-solid icon-black fa-xl fa-phone-slash"></i> <span
+                                class="icon-black">หมายเลขโทรศัพท์
+                                ไม่พร้อมใช้งาน กรุณาตรวจสอบ</span>
+                        </h4>
+                    </div>
+                </div>
             </div>
-
         </div>
     </div>
 </div>
