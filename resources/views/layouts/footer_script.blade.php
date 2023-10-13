@@ -146,30 +146,25 @@
 
     });
 
-    const ezBSAlert = (options) => {
-        const deferredObject = $.Deferred();
-        const defaults = {
-            type: "alert",
-            modalSize: "modal-sm",
-            okButtonText: "Ok",
-            cancelButtonText: "Cancel",
-            yesButtonText: "Yes",
-            noButtonText: "No",
-            headerText: "Attention",
-            messageText: "Message",
-            alertType: "default",
-            inputFieldType: "text",
-        };
+    function ezBSAlert(options) {
+        var deferredObject = $.Deferred();
+        var defaults = {
+            type: "alert", //alert, prompt,confirm
+            modalSize: 'modal-sm', //modal-sm, modal-lg
+            okButtonText: 'Ok',
+            cancelButtonText: 'Cancel',
+            yesButtonText: 'Yes',
+            noButtonText: 'No',
+            headerText: 'Attention',
+            messageText: 'Message',
+            alertType: 'default', //default, primary, success, info, warning, danger
+            inputFieldType: 'text', //could ask for number,email,etc
+        }
+        $.extend(defaults, options);
 
-        const settings = {
-            ...defaults,
-            ...options
-        };
-
-        const _show = () => {
-            let headClass = "navbar-default";
-
-            switch (settings.alertType) {
+        var _show = function() {
+            var headClass = "navbar-default";
+            switch (defaults.alertType) {
                 case "primary":
                     headClass = "alert-primary";
                     break;
@@ -186,104 +181,97 @@
                     headClass = "alert-danger";
                     break;
             }
+            $('BODY').append(
+                '<div id="ezAlerts" class="modal fade">' +
+                '<div class="modal-dialog" class="' + defaults.modalSize + '">' +
+                '<div class="modal-content">' +
+                '<div id="ezAlerts-header" class="modal-header ' + headClass + '">' +
+                '<button id="close-button" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>' +
+                '<h4 id="ezAlerts-title" class="modal-title">Modal title</h4>' +
+                '</div>' +
+                '<div id="ezAlerts-body" class="modal-body">' +
+                '<div id="ezAlerts-message" ></div>' +
+                '</div>' +
+                '<div id="ezAlerts-footer" class="modal-footer">' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>'
+            );
 
-            $("BODY").append(`
-      <div id="ezAlerts" class="modal fade">
-        <div class="modal-dialog ${settings.modalSize}">
-          <div class="modal-content">
-            <div id="ezAlerts-header" class="modal-header ${headClass}">
-              <button id="close-button" type="button" class="close" data-dismiss="modal">
-                <span aria-hidden="true">×</span>
-                <span class="sr-only">Close</span>
-              </button>
-              <h4 id="ezAlerts-title" class="modal-title">Modal title</h4>
-            </div>
-            <div id="ezAlerts-body" class="modal-body">
-              <div id="ezAlerts-message"></div>
-            </div>
-            <div id="ezAlerts-footer" class="modal-footer">
-            </div>
-          </div>
-        </div>
-      </div>
-    `);
-
-            $(".modal-header").css({
-                padding: "15px 15px",
-                "-webkit-border-top-left-radius": "5px",
-                "-webkit-border-top-right-radius": "5px",
-                "-moz-border-radius-topleft": "5px",
-                "-moz-border-radius-topright": "5px",
-                "border-top-left-radius": "5px",
-                "border-top-right-radius": "5px",
+            $('.modal-header').css({
+                'padding': '15px 15px',
+                '-webkit-border-top-left-radius': '5px',
+                '-webkit-border-top-right-radius': '5px',
+                '-moz-border-radius-topleft': '5px',
+                '-moz-border-radius-topright': '5px',
+                'border-top-left-radius': '5px',
+                'border-top-right-radius': '5px'
             });
 
-            $("#ezAlerts-title").text(settings.headerText);
-            $("#ezAlerts-message").html(settings.messageText);
+            $('#ezAlerts-title').text(defaults.headerText);
+            $('#ezAlerts-message').html(defaults.messageText);
 
-            let keyb = "false";
-            let backd = "static";
-            let calbackParam = "";
-
-            switch (settings.type) {
-                case "alert":
+            var keyb = "false",
+                backd = "static";
+            var calbackParam = "";
+            switch (defaults.type) {
+                case 'alert':
                     keyb = "true";
                     backd = "true";
-                    $("#ezAlerts-footer").html(
-                            `<button class="btn btn-${settings.alertType}">${settings.okButtonText}</button>`)
-                        .on("click", ".btn", function() {
-                            calbackParam = true;
-                            $("#ezAlerts").modal("hide");
-                        });
+                    $('#ezAlerts-footer').html('<button class="btn btn-' + defaults.alertType + '">' + defaults
+                        .okButtonText + '</button>').on('click', ".btn", function() {
+                        calbackParam = true;
+                        $('#ezAlerts').modal('hide');
+                    });
                     break;
-                case "confirm":
-                    let btnhtml =
-                        `<button id="ezok-btn" class="btn btn-primary">${settings.yesButtonText}</button>`;
-                    if (settings.noButtonText && settings.noButtonText.length > 0) {
-                        btnhtml +=
-                            `<button id="ezclose-btn" class="btn btn-default">${settings.noButtonText}</button>`;
+                case 'confirm':
+                    var btnhtml = '<button id="ezok-btn" class="btn btn-primary">' + defaults.yesButtonText +
+                        '</button>';
+                    if (defaults.noButtonText && defaults.noButtonText.length > 0) {
+                        btnhtml += '<button id="ezclose-btn" class="btn btn-default">' + defaults.noButtonText +
+                            '</button>';
                     }
-                    $("#ezAlerts-footer").html(btnhtml).on("click", "button", function(e) {
-                        if (e.target.id === "ezok-btn") {
+                    $('#ezAlerts-footer').html(btnhtml).on('click', 'button', function(e) {
+                        if (e.target.id === 'ezok-btn') {
                             calbackParam = true;
-                            $("#ezAlerts").modal("hide");
-                        } else if (e.target.id === "ezclose-btn") {
+                            $('#ezAlerts').modal('hide');
+                        } else if (e.target.id === 'ezclose-btn') {
                             calbackParam = false;
-                            $("#ezAlerts").modal("hide");
+                            $('#ezAlerts').modal('hide');
                         }
                     });
                     break;
-                case "prompt":
-                    $("#ezAlerts-message").html(settings.messageText +
-                        '<br /><br /><div class="form-group"><input type="' + settings.inputFieldType +
+                case 'prompt':
+                    $('#ezAlerts-message').html(defaults.messageText +
+                        '<br /><br /><div class="form-group"><input type="' + defaults.inputFieldType +
                         '" class="form-control" id="prompt" /></div>');
-                    $("#ezAlerts-footer").html(
-                        `<button class="btn btn-primary">${settings.okButtonText}</button>`).on("click",
-                        ".btn",
-                        function() {
-                            calbackParam = $("#prompt").val();
-                            $("#ezAlerts").modal("hide");
-                        });
+                    $('#ezAlerts-footer').html('<button class="btn btn-primary">' + defaults.okButtonText +
+                        '</button>').on('click', ".btn", function() {
+                        calbackParam = $('#prompt').val();
+                        $('#ezAlerts').modal('hide');
+                    });
                     break;
             }
 
-            $("#ezAlerts").modal({
+            $('#ezAlerts').modal({
                 show: false,
                 backdrop: backd,
-                keyboard: keyb,
-            }).on("hidden.bs.modal", function(e) {
-                $("#ezAlerts").remove();
+                keyboard: keyb
+            }).on('hidden.bs.modal', function(e) {
+                $('#ezAlerts').remove();
                 deferredObject.resolve(calbackParam);
-            }).on("shown.bs.modal", function(e) {
-                if ($("#prompt").length > 0) {
-                    $("#prompt").focus();
+            }).on('shown.bs.modal', function(e) {
+                if ($('#prompt').length > 0) {
+                    $('#prompt').focus();
                 }
-            }).modal("show");
-        };
+            }).modal('show');
+        }
 
         _show();
         return deferredObject.promise();
-    };
+    }
+
 
     toastr.options = {
         "closeButton": true,
