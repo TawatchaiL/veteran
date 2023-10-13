@@ -331,14 +331,21 @@ class PBXController extends Controller
     {
         $user = Auth::user();
         if ($user) {
-            $dataToInsert = [
-                'id_agent' => $user->agent_id,
-                'phone' => $user->phone,
-                'uniqid' => $request->get('uniqid'),
-                'wrap_start' => date("Y-m-d H:i:s"),
-            ];
 
-            $insert = DB::connection('remote_connection')->table('warp_data')->insert($dataToInsert);
+            $indb = DB::connection('remote_connection')
+                ->table('call_center.warp_data')
+                ->where('uniqid', $request->get('uniqid'))
+                ->get();
+            if (count($indb) == 0) {
+                $dataToInsert = [
+                    'id_agent' => $user->agent_id,
+                    'phone' => $user->phone,
+                    'uniqid' => $request->get('uniqid'),
+                    'wrap_start' => date("Y-m-d H:i:s"),
+                ];
+
+                $insert = DB::connection('remote_connection')->table('warp_data')->insert($dataToInsert);
+            }
 
             $user->phone_status_id = 3;
             $user->phone_status =  'Warp UP';
@@ -360,7 +367,7 @@ class PBXController extends Controller
 
     public function AgentStatus()
     {
-        // Retrieve the authenticated user
+
         $user = Auth::user();
 
         if ($user) {
@@ -381,17 +388,11 @@ class PBXController extends Controller
         $user = Auth::user();
 
         if ($user && $loginTimeSession !== $user->login_time) {
-            // Logout the user
             Auth::logout();
-
-            // Redirect to the login page with an error message
-            //return view('auth.login')->with(['error' => 'คุณถูกเตะออกจาก ระบบ กรุณาเข้าสู่ระบบอีกครั้ง']);
             return 1;
         } else {
             return 0;
         }
-
-        // If the login times match or if the user is not authenticated, continue with the application
     }
 
     public function AgentPhoneUnregis(Request $request)
