@@ -232,7 +232,7 @@
                 //(data.event == 'DialEnd' &&
                 //|| data.event == 'BlindTransfer'
                 //chan = data.extension.split("/");
-                if ((data.event == 'BridgeLeave') && (data.context == 'ext-queues')) {
+                if ((data.event == 'BridgeLeave')) {
 
                     $.ajax({
                         url: "{{ route('agent.warp') }}",
