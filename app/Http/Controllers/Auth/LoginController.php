@@ -222,7 +222,7 @@ class LoginController extends Controller
             ->table('call_center.agent')
             ->where('id', $user->agent_id)
             ->update(['number' => 0]);
-
+ dd($request->get('kick'));
         $this->guard()->logout();
         $request->session()->invalidate();
 
