@@ -873,17 +873,17 @@
                 positionCards();
             });
 
+        $(document).on('show.bs.tab', '#custom-tabs-pop a[data-toggle="pill"]',
+            function(e) {
+                // Determine which tab is being switched to
+                var targetTab = $(e.target).attr("href");
 
-        $('#custom-tabs-pop a[data-toggle="pill"]').on('show.bs.tab', function(e) {
-            // Determine which tab is being switched to
-            var targetTab = $(e.target).attr("href");
-
-            // Display a confirmation dialog
-            if (!confirm("Are you sure you want to switch to " + targetTab + "?")) {
-                // If the user cancels, prevent the tab switch
-                e.preventDefault();
-            }
-        });
+                // Display a confirmation dialog
+                if (!confirm("Are you sure you want to switch to " + targetTab + "?")) {
+                    // If the user cancels, prevent the tab switch
+                    e.preventDefault();
+                }
+            });
 
 
         $('#myTabs a').click(function(e) {
