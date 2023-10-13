@@ -202,6 +202,9 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
+
+        $kick = $request->get('kick');
+        dd($kick);
         // Clear the temporary phone from the session
         //$request->session()->forget('temporary_phone');
         $user = Auth::user();
