@@ -346,7 +346,7 @@ class PBXController extends Controller
     public function AgentKick(Request $request)
     {
         $agent_status = $this->AgentStatus();
-        if ($agent_status['id'] == 0) {
+        if ($agent_status['id'] !== 0) {
             $user = Auth::user();
 
             if ($user->phone_status !== "Not Ready") {
