@@ -127,9 +127,6 @@ class CasesContractController extends Controller
         $contacts = DB::table('crm_contacts')->whereRaw('id = '.request('id').'')->get();
         return view('casescontract.index')->with(['casetype' => $company,'contacts' => $contacts]);
     }
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //
