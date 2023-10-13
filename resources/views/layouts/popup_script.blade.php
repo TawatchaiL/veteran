@@ -888,6 +888,7 @@
             var targetTab = href.replace("#custom-tabs-pop-", "");
 
             // Display a confirmation dialog
+            e.preventDefault();
             ezBSAlert({
                 type: "confirm",
                 messageText: "ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab +
@@ -896,7 +897,7 @@
             }).done(function(confirmed) {
                 if (!confirmed) {
                     // If not confirmed, prevent the tab switch
-                    e.preventDefault();
+                   return false;
                 }
             });
         });
