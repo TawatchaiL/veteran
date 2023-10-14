@@ -779,7 +779,7 @@
         });
     }
     function testtest(pp){
-        var href = $('.nav-tabs a[href="#'pp'"]').attr("href");
+        var href = $('.nav-tabs a[href="#'+pp+'"]').attr("href");
         var currentTabContent = $(href);
 
         currentTabContent.empty();
