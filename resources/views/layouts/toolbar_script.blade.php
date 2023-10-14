@@ -323,59 +323,6 @@
     });
 
 
-    function AsyncConfirmYesNo(title, msg, yesFn, noFn) {
-            var $confirm = $("#modalConfirmYesNo");
-            $confirm.modal('show');
-            $("#lblTitleConfirmYesNo").html(title);
-            $("#lblMsgConfirmYesNo").html(msg);
-            $("#btnYesConfirmYesNo").off('click').click(function() {
-                yesFn();
-                $confirm.modal("hide");
-            });
-            $("#btnNoConfirmYesNo").off('click').click(function() {
-                noFn();
-                $confirm.modal("hide");
-            });
-        }
-
-       /*  $(document).on('show.bs.tab', '#custom-tabs-pop a[data-toggle="pill"]',
-            async function(e) {
-                // Determine which tab is being switched to
-                var href = $(e.target).attr("href");
-                var targetTab = href.replace("#custom-tabs-pop-", "");
-
-                // Display a confirmation dialog
-                if (!confirm("ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab +
-                        " ? \nกรุณาบันทึกข้อมุลก่อนเปลี่ยน Tab")) {
-                    // If the user cancels, prevent the tab switch
-                    e.preventDefault();
-                }
-
-            }); */
-        $(document).on('click', '#custom-tabs-pop-*',async function(e) {
-
-            /* var areYouSure = confirm(
-                'If you sure you wish to leave this tab?  Any data entered will NOT be saved.  To save information, use the Save buttons.'
-                );
-            if (areYouSure === true) {
-                $(this).tab('show')
-            } else {
-                // do other stuff
-                return false;
-            } */
-            await AsyncConfirmYesNo(
-                    "Yes & No Confirmation Box",
-                    "Are you hungry?",
-                    function() {
-                        $(this).tab('show')
-                    },
-                    function() {
-                        e.preventDefault()
-                    }
-                );
-        })
-
-
 
     //blind tranfer
     $(".button_tranfer").click(function() {

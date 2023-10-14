@@ -227,7 +227,6 @@
                 if (data.luniq) {
                     $('#' + data.luniq.replace('.', '')).remove();
                 }
-                call_list();
                 //if (data.extension.match(exten)) {
                 //(data.event == 'DialEnd' &&
                 //|| data.event == 'BlindTransfer'
@@ -244,6 +243,7 @@
                         },
                         success: function(result) {
                             console.log(result)
+                            call_list();
                         }
                     });
 
