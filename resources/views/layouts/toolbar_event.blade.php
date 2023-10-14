@@ -249,8 +249,10 @@
                             uniqid: data.luniq,
                             _token: token,
                         },
-                        success: function(result) {
+                        success: async function(result) {
                             console.log(result)
+                            await set_state_icon(result.id, result.icon, result.message);
+                            await set_state_button(result.id);
                             call_list();
                         }
                     });
