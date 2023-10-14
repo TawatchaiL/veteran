@@ -391,9 +391,9 @@ $(document).ready(function () {
             if (len > 1) {
                 //alert_danger('Opp', 'ไม่สามารถโอนสายมากกว่า 1 สายต่อครั้ง', '');
                 const prom = ezBSAlert({
-                    headerText: "Error",
+                    headerText: "Notice",
       messageText: "ไม่สามารถโอนสายมากกว่า 1 สายต่อครั้ง",
-      alertType: "danger",
+      alertType: "info",
     });
             } else {
                 let call_number = $('#dial_number').val();

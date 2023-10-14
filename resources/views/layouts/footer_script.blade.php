@@ -151,7 +151,7 @@
         var defaults = {
             type: "alert", //alert, prompt,confirm
             modalSize: 'modal-sm', //modal-sm, modal-lg
-            okButtonText: 'Ok',
+            okButtonText: 'OK',
             cancelButtonText: 'Cancel',
             yesButtonText: 'Yes',
             noButtonText: 'No',
@@ -186,8 +186,8 @@
                 '<div class="modal-dialog" class="' + defaults.modalSize + '">' +
                 '<div class="modal-content">' +
                 '<div id="ezAlerts-header" class="modal-header ' + headClass + '">' +
-                '<button id="close-button" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>' +
                 '<h4 id="ezAlerts-title" class="modal-title">Modal title</h4>' +
+                '<button id="close-button" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>' +
                 '</div>' +
                 '<div id="ezAlerts-body" class="modal-body">' +
                 '<div id="ezAlerts-message" ></div>' +
