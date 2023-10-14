@@ -33,7 +33,9 @@
                                                     <td>{{ $contact->telhome }}</td>
                                                     <td>{{ $contact->workno }}</td>
                                                     <td>{{ $contact->created_at }}</td>
-                                                    <td width="120px"></td>
+                                                    <td width="150px">
+                                                        <button type="button" class="form-control btn btn-success" id="btncontact" onclick="maximizeCard({{ $con }})">
+                                                        <i class="fas fa-search"></i></button></td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>
