@@ -684,14 +684,17 @@
                 messageText: "ยืนยันการวางสาย?",
                 alertType: "info",
             }).done(function(e) {
-                let rowid = $(this).data("id")
+                if (e==true) {
+                    let rowid = $(this).data("id")
 
-        if (!rowid) return;
-        let chan = rowid.split("/");
+if (!rowid) return;
+let chan = rowid.split("/");
 
-        $.get(`${event_serv}/hangup/` + chan[1], (data, status) => {
+$.get(`${event_serv}/hangup/` + chan[1], (data, status) => {
 
-        });
+});
+
+                }
 
             });
 
