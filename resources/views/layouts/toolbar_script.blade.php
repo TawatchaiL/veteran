@@ -332,6 +332,7 @@
             },
             async: true, // Use async:true for better performance
             success: function(result) {
+                console.log(result)
                 result.forEach(function(item) {
                     var newDropdownItem = $("<a>").attr({
                         class: "dropdown-item button_break",
