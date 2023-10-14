@@ -338,7 +338,7 @@
                         class: "dropdown-item button_break",
                         href: "#",
                         "data-id": item.id
-                    }).text(item.text);
+                    }).text(item.name);
 
                     $("#pause_list").append(newDropdownItem);
                 });
