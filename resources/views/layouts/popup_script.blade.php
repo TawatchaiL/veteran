@@ -778,13 +778,6 @@
             }
         });
     }
-    function testtest(pp){
-        //var href = $('.nav-tabs a[href="#'+pp+'"]').attr("href");
-        //var currentTabContent = $(href);
-
-        //currentTabContent.empty();
-        $('.nav-tabs a[href="#'+pp+'"]').empty();
-    }
 
     function validateNumberp(event) {
         var keyCode = event.which || event.keyCode;
@@ -931,6 +924,14 @@
                 return false;
             }
         })
+
+        function testtest(pp){
+        //var href = $('.nav-tabs a[href="#'+pp+'"]').attr("href");
+        //var currentTabContent = $(href);
+
+        //currentTabContent.empty();
+        $('.nav-tabs a[href="#' + pp + '"]').empty();
+    }
 
     });
 </script>
