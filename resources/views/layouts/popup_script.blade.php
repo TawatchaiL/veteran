@@ -1,5 +1,6 @@
 <script>
     const addemerphone = (cardid) => {
+        alert('OK');
         const tableBody = document.getElementById('myTbl3p' + cardid).getElementsByTagName('tbody')[0];
 
         document.getElementById('addRowBtnp' + cardid).addEventListener('click', () => {
