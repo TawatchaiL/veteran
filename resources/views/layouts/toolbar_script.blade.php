@@ -56,12 +56,12 @@
         })
     }
 
-    $('#ToolbarModal').on('hidden.bs.modal', function (e) {
+    toolbar_modal.on('hidden.bs.modal', function (e) {
         $('.modal').css('overflow-y', 'hidden');
         $('body').css("overflow-y", "auto");
     });
 
-    $('#ToolbarModal').on('shown.bs.modal', function (e) {
+    toolbar_modal.on('shown.bs.modal', function (e) {
         $('.modal').css('overflow-y', 'auto');
         $('body').css("overflow-y", "hidden");
     });
@@ -662,11 +662,11 @@
                 headerText: "Notice",
                 messageText: "กรุณาระบุหมายเลขที่จะโทร",
                 alertType: "info",
-            }).done(function(e) {
+            })/* .done(function(e) {
                 $('body').css("overflow-y", "hidden");
                 //$('.modal').css("overflow", "hidden");
                 $('.modal').css("overflow-y", "auto");
-            });
+            }); */
         }
 
     });
