@@ -220,6 +220,7 @@ class PBXController extends Controller
                     ->delete();
                 DB::table('crm_incoming')->insert([
                     'uniqid' => $request->input('uniqid'),
+                    'context' => $request->input('context'),
                     'telno' => $request->input('telno'),
                     'agentno' => $request->input('agentno'),
                     'calltime' => date("Y-m-d H:i:s"),

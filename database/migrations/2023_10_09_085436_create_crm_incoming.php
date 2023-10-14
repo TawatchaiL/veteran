@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('crm_incoming', function (Blueprint $table) {
             $table->id();
             $table->string('uniqid', 255)->nullable();
+            $table->string('context', 255)->nullable();
             $table->string('telno', 15)->nullable();
             $table->string('agentno', 10)->nullable();
             $table->dateTime('calltime');
