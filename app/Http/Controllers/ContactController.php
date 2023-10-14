@@ -154,7 +154,7 @@ class ContactController extends Controller
             ->orWhere('status', '=', "0")
             ->orWhere('status', '=', "1")
             ->orderBy('id', 'desc')
-            ->groupBy('id')
+            //->groupBy('id')
             ->get();
         $html = '';
         $tab_link = '';
