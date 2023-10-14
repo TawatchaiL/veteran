@@ -27,6 +27,17 @@ class PBXController extends Controller
         $this->issable = $issableService;
     }
 
+    public function pause_list()
+    {
+        $resultb = DB::connection('remote_connection')
+            ->table('call_center.break')
+            ->where('tipo', 'B')
+            ->where('id', '!=', 5)
+            ->get();
+
+        return response()->json($resultb);
+    }
+
     public function call_tranfer(Request $request)
     {
 

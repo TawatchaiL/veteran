@@ -259,8 +259,7 @@
                             <br>
                         </div>
                         <div class="row" id="call_list">
-                            <!-- Content for the Call list tab -->
-                            <!-- You can add content here -->
+
                         </div>
                     </div>
                     <div class="card-footer text-muted">
@@ -271,7 +270,7 @@
                                 <i class="fa-solid fa-user-clock"></i> พักเบรค <span class="sr-only">Toggle
                                     Dropdown</span>
                             </button>
-                            <div class="dropdown-menu" role="menu">
+                            <div class="dropdown-menu" role="menu" id="pause_list">
 
                                 <a class="dropdown-item button_break" href="#" data-id="2">
                                     Lunch</a>

@@ -323,6 +323,29 @@
     });
 
 
+    btn_pause.click(function() {
+        $.ajax({
+            url: "{{ route('pause_list') }}",
+            method: 'post',
+            data: {
+                _token: token,
+            },
+            async: true, // Use async:true for better performance
+            success: function(result) {
+                result.forEach(function(item) {
+                    var newDropdownItem = $("<a>").attr({
+                        class: "dropdown-item button_break",
+                        href: "#",
+                        "data-id": item.id
+                    }).text(item.text);
+
+                    $("#pause_list").append(newDropdownItem);
+                });
+            }
+        });
+    });
+
+
 
     //blind tranfer
     $(".button_tranfer").click(function() {
@@ -460,7 +483,7 @@
 
      }) */
 
-     //unwrap
+    //unwrap
     /* $(".button_complete").click(function() {
         if (!confirm("Are you sure to Complete Call?")) return;
         let rowid = $(this).data("id")

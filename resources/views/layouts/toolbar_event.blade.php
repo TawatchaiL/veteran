@@ -1,6 +1,5 @@
 <script src="{{ config('asterisk.event_serv.address') }}/socket.io/socket.io.js"></script>
 <script>
-    //event socket
     const socket = io.connect(`${event_serv}`);
     socket.on('connect', data => {
         socket.emit('join', 'Client Connect To Asterisk Event Serv');
@@ -149,20 +148,20 @@
             if (!$('#' + data.luniq.replace('.', '')).length) {
 
                 $('#call_list').prepend(`<div class="col-md-3" id = "${data.luniq.replace('.', '')}">
-						<div class="card card-danger" id = "color_${data.luniq.replace('.', '')}">
-							<div class="card-header">
-								<h3 class="card-title" id = "state_${data.luniq.replace('.', '')}"> ${state_icon} ${state} ${data.cid}</h3>
-								<div class="card-tools">
-									<div ><input type="checkbox" style="width: 20px; height: 20px;" name="call[]" id="call_${data.luniq.replace('.', '')}" value="${data.extension}" disabled></div>
-								</div>
-							</div>
-							<div class="card-body card-content">
-							</div>
-							<div class="card-footer text-muted text-right">
-							<a href="#" class="btn btn-danger hangup_call" data-id="${data.extension}"><i class="fa-solid fa-phone-slash"></i> วางสาย</a>
-							</div>
-						</div>
-					</div>`);
+                <div class="card card-danger" id = "color_${data.luniq.replace('.', '')}">
+                    <div class="card-header">
+                        <h3 class="card-title" id = "state_${data.luniq.replace('.', '')}"> ${state_icon} ${state} ${data.cid}</h3>
+                        <div class="card-tools">
+                            <div ><input type="checkbox" style="width: 20px; height: 20px;" name="call[]" id="call_${data.luniq.replace('.', '')}" value="${data.extension}" disabled></div>
+                        </div>
+                    </div>
+                    <div class="card-body card-content">
+                    </div>
+                    <div class="card-footer text-muted text-right">
+                    <a href="#" class="btn btn-danger hangup_call" data-id="${data.extension}"><i class="fa-solid fa-phone-slash"></i> วางสาย</a>
+                    </div>
+                </div>
+            </div>`);
                 //toolbar_modal.modal('show');
 
 
