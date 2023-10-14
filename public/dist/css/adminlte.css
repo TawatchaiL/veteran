@@ -6556,7 +6556,8 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
 }
 
 .modal-open {
-    overflow: hidden;
+    /* overflow: hidden; */
+    overflow-y: scroll !important;
 }
 
 .modal-open .modal {
@@ -6572,8 +6573,9 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
     display: none;
     width: 100%;
     height: 100%;
-    /* overflow: hidden; */
-    overflow-y: scroll !important;
+    overflow: hidden;
+    /* meeh */
+    /* overflow-y: scroll !important; */
     outline: 0;
 }
 
