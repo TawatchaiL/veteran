@@ -127,6 +127,10 @@
 
                 //addemerphone(cardId);
 
+                $('#addRowBtnp' + cardId).on('click', function() {
+                    alert('OK');
+                });
+
                 var provinceOb = $('#cityp' + cardId);
                 var districtOb = $('#districtp' + cardId);
                 var cartonOb = $('#subdistrictp' + cardId);
