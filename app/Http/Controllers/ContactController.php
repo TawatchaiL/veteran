@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Models\CrmContact;
 use App\Models\CrmPhoneEmergency;
 use App\Models\Department;
-use App\Models\Case_type;
 use App\Models\CrmCase;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Gate;
@@ -129,7 +128,6 @@ class ContactController extends Controller
             ->orWhere('workno', '=', $con)
             ->get();
         $contactcount = count($datap);
-        $case_type = Case_type::orderBy("id", "asc")->get();
         //if($contactcount > 1){
         //    $template = 'casescontract.contactpop';
         //    $htmlContent = View::make($template, [
@@ -138,7 +136,7 @@ class ContactController extends Controller
         //}else{
             $template = 'contacts.contact-create';
             $htmlContent = View::make($template, [
-                'cardid' => $con, 'telephone' => $con, 'contact_name' => $contact_name, 'contact_lname' => $contact_lname, 'casetype' => $case_type
+                'cardid' => $con, 'telephone' => $con, 'contact_name' => $contact_name, 'contact_lname' => $contact_lname
             ])->render();
         //}
         return response()->json([
