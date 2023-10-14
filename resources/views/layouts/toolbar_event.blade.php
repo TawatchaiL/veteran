@@ -21,8 +21,8 @@
                         set_state_button(result.id);
                     }
                 });
-                toolbar_header.removeClass("bg-primary");
-                toolbar_header.addClass("bg-secondary");
+                /* toolbar_header.removeClass("bg-primary");
+                toolbar_header.addClass("bg-secondary"); */
                 state_overlay.removeClass("d-none");
                 toolbar_card.addClass("d-none");
                 popup_tab_main.addClass("d-none");
@@ -31,7 +31,6 @@
                 state_overlay.addClass("d-none");
                 toolbar_card.removeClass("d-none");
                 popup_tab_main.removeClass("d-none");
-                toolbar_header.removeClass("bg-primary bg-secondary bg-danger");
                 $.ajax({
                     url: "{{ route('agent.hang') }}",
                     method: 'post',
@@ -47,7 +46,6 @@
                         //positionCards();
                     }
                 });
-                //toolbar_header.addClass("bg-primary");
                 //toolbar_modal.modal('hide');
             }
         }
@@ -78,7 +76,6 @@
         }
     });
 
-    //logoff by remove queue member
     socket.on('qlogoff', data => {
 
         if (data.extension.match(exten)) {
