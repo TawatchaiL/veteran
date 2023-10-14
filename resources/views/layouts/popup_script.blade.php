@@ -771,7 +771,6 @@
                 await $('#pop_' + cardId).html(response.html);
                 $(".card-footer").css("display", "block")
                 $('.bclose').css('display', 'none');
-                alert();
             },
             error: function(xhr, status, error) {
                 //alert('error');
