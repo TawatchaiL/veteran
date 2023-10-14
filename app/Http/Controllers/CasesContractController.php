@@ -129,7 +129,7 @@ class CasesContractController extends Controller
     }
     public function create()
     {
-        //
+        
     }
 
     /**
