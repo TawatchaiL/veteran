@@ -255,6 +255,7 @@ class PBXController extends Controller
             DB::table('crm_incoming')
                 ->where('uniqid', $request->input('uniqid'))
                 ->update([
+                    'agentno' => $request->input('agentno'),
                     'status' => 0
                 ]);
 
@@ -338,38 +339,44 @@ class PBXController extends Controller
     {
         $user = Auth::user();
         if ($user) {
+            $context = DB::table('crm_incoming')
+                ->where('uniqid', $request->input('uniqid'))->first();
 
-            $indb = DB::connection('remote_connection')
-                ->table('call_center.wrap_data')
-                ->where('uniqid', $request->get('uniqid'))
-                ->get();
-            if (count($indb) == 0) {
-                $dataToInsert = [
-                    'id_agent' => $user->agent_id,
-                    'phone' => $user->phone,
-                    'uniqid' => $request->get('uniqid'),
-                    'wrap_start' => date("Y-m-d H:i:s"),
-                ];
+            if ($context->context == "ext-queues") {
+                $indb = DB::connection('remote_connection')
+                    ->table('call_center.wrap_data')
+                    ->where('uniqid', $request->get('uniqid'))
+                    ->get();
+                if (count($indb) == 0) {
+                    $dataToInsert = [
+                        'id_agent' => $user->agent_id,
+                        'phone' => $user->phone,
+                        'uniqid' => $request->get('uniqid'),
+                        'wrap_start' => date("Y-m-d H:i:s"),
+                    ];
 
-                $insert = DB::connection('remote_connection')->table('wrap_data')->insert($dataToInsert);
-            }
+                    $insert = DB::connection('remote_connection')->table('wrap_data')->insert($dataToInsert);
+                }
 
-            $ret = $this->issable->agent_break($user->phone, 5);
+                $ret = $this->issable->agent_break($user->phone, 5);
 
-            $user->phone_status_id = 3;
-            $user->phone_status =  'Wrap UP';
-            $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-clock"></i>';
-            $user->save();
+                $user->phone_status_id = 3;
+                $user->phone_status =  'Wrap UP';
+                $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-clock"></i>';
+                $user->save();
 
-            if ($insert == true) {
-                return [
-                    'success' => true,
-                    'id' => $user->phone_status_id,
-                    'message' => $user->phone_status,
-                    'icon' => $user->phone_status_icon
-                ];
+                if ($insert == true) {
+                    return [
+                        'success' => true,
+                        'id' => $user->phone_status_id,
+                        'message' => $user->phone_status,
+                        'icon' => $user->phone_status_icon
+                    ];
+                } else {
+                    return ['success' => false, 'message' => 'login error'];
+                }
             } else {
-                return ['success' => false, 'message' => 'login error'];
+                return ['success' => false, 'message' => 'not queue call'];
             }
         }
     }

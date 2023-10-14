@@ -105,7 +105,8 @@
 
         if (data.extension.match(exten)) {
             console.log(data);
-
+            let peer = data.extension.split("-");
+            let peern = peer.split("/");
             $.ajax({
                 url: "{{ route('agent.ring') }}",
                 method: 'post',
@@ -114,7 +115,7 @@
                     uniqid: data.luniq,
                     context: data.context,
                     telno: data.cid,
-                    agentno: data.destexten,
+                    agentno: peern[1],
                     _token: token,
                 },
                 success: function(result) {
