@@ -353,7 +353,7 @@
 
             }); */
         $(document).on('click', '#custom-tabs-pop a', function(e) {
-            e.preventDefault()
+
             /* var areYouSure = confirm(
                 'If you sure you wish to leave this tab?  Any data entered will NOT be saved.  To save information, use the Save buttons.'
                 );
@@ -370,7 +370,7 @@
                         $(this).tab('show')
                     },
                     function() {
-                        return false;
+                        e.preventDefault()
                     }
                 );
         })
