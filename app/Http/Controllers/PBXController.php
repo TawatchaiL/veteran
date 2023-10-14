@@ -370,16 +370,12 @@ class PBXController extends Controller
                 $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-clock"></i>';
                 $user->save();
 
-                if ($insert == true) {
-                    return [
-                        'success' => true,
-                        'id' => $user->phone_status_id,
-                        'message' => $user->phone_status,
-                        'icon' => $user->phone_status_icon
-                    ];
-                } else {
-                    return ['success' => false, 'message' => 'login error'];
-                }
+                return [
+                    'success' => true,
+                    'id' => $user->phone_status_id,
+                    'message' => $user->phone_status,
+                    'icon' => $user->phone_status_icon
+                ];
             } else {
                 $user->phone_status_id = 1;
                 $user->phone_status = "พร้อมรับสาย";
