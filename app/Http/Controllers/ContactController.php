@@ -130,6 +130,7 @@ class ContactController extends Controller
             ->get();
         $contactcount = count($datap);
         $case_type = Case_type::orderBy("id", "asc")->get();
+        $contactcount = 2;
         if($contactcount > 1){
             $template = 'casescontract.contactpop';
             $htmlContent = View::make($template, [
