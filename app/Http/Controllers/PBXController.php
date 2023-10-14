@@ -379,10 +379,10 @@ class PBXController extends Controller
                     'icon' => $user->phone_status_icon
                 ];
             } else {
-                $user->phone_status_id = 1;
+                /* $user->phone_status_id = 1;
                 $user->phone_status = "พร้อมรับสาย";
                 $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
-                $user->save();
+                $user->save(); */
                 return [
                     'success' => true,
                     'id' => $user->phone_status_id,
