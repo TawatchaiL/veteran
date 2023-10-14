@@ -677,7 +677,7 @@
     //hangup
     $(document).on('click', '.hangup_call', function(data) {
         //if (!confirm("ยืนยันการวางสาย?")) return;
-
+        let rowid = $(this).data("id")
         ezBSAlert({
                 type: "confirm",
                 headerText: "Confirm",
@@ -685,7 +685,7 @@
                 alertType: "info",
             }).done(function(e) {
                 if (e==true) {
-                    let rowid = $(this).data("id")
+
 
 if (!rowid) return;
 let chan = rowid.split("/");
