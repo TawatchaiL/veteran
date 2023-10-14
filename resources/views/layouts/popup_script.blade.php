@@ -42,6 +42,9 @@
 
     $('#custom-tabs-pop').on('click', '.nav-link', function() {
         let dataId = $(this).data('id');
+        var currentTabContent = $(href);
+
+currentTabContent.empty();
         maximizeCard(dataId);
         //listcontact(dataId);
     });
