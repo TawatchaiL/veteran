@@ -56,6 +56,10 @@
         })
     }
 
+    $('#ToolbarModal').on('hidden.bs.modal', function (e) {
+        $('body').css("overflow-y", "auto");
+    });
+
     $(document).ready(function() {
         $("#btnAlert").on("click", function() {
             const prom = ezBSAlert({
