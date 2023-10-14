@@ -42,6 +42,9 @@
 
     $('#custom-tabs-pop').on('click', '.nav-link', function() {
         let dataId = $(this).data('id');
+        var currentTabContent = $(href);
+
+currentTabContent.empty();
         maximizeCard(dataId);
         //listcontact(dataId);
     });
@@ -901,10 +904,6 @@
                 // Determine which tab is being switched to
                 var href = $(e.target).attr("href");
                 var targetTab = href.replace("#custom-tabs-pop-", "");
-
-                var currentTabContent = $(href);
-
-currentTabContent.empty();
 
                 // Display a confirmation dialog
                 if (!confirm("ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab +
