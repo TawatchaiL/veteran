@@ -330,7 +330,16 @@
 
     $(document).on('click', '#btn-agent-logout', function(e) {
         e.preventDefault();
-        sendAjaxRequest("{{ route('agent.logoff') }}", "POST");
+        ezBSAlert({
+            type: "confirm",
+            headerText: "Confirm",
+            messageText: "ยืนยันการออกจากระบบรับสาย?",
+            alertType: "info",
+        }).done(function(r) {
+            if (r == true) {
+                sendAjaxRequest("{{ route('agent.logoff') }}", "POST");
+            }
+        });
     });
 
     $(document).on('click', '.button_break', function(e) {
@@ -344,17 +353,48 @@
 
     $(document).on('click', '.button_unbreak', function(e) {
         e.preventDefault();
-        sendAjaxRequest("{{ route('agent.unbreak') }}", "POST");
+        ezBSAlert({
+            type: "confirm",
+            headerText: "Confirm",
+            messageText: "ยืนยันการหยุดพัก?",
+            alertType: "info",
+        }).done(function(r) {
+            if (r == true) {
+                sendAjaxRequest("{{ route('agent.unbreak') }}", "POST");
+            }
+
+        });
+
     });
 
     $(document).on('click', '#btn-unwarp', function(e) {
         e.preventDefault();
-        sendAjaxRequest("{{ route('agent.unwarp') }}", "POST");
+        ezBSAlert({
+            type: "confirm",
+            headerText: "Confirm",
+            messageText: "ยืนยันการ Stop WrapUP",
+            alertType: "info",
+        }).done(function(r) {
+            if (r == true) {
+                sendAjaxRequest("{{ route('agent.unwarp') }}", "POST");
+            }
+
+        });
     });
 
     $(document).on('click', '#btn-system-logout', function(e) {
         e.preventDefault();
-        document.getElementById('logout-form').submit();
+        ezBSAlert({
+            type: "confirm",
+            headerText: "Confirm",
+            messageText: "ยืนยันการออกจากระบบ?",
+            alertType: "info",
+        }).done(function(r) {
+            if (r == true) {
+                document.getElementById('logout-form').submit();
+            }
+        });
+
     });
 
 
@@ -642,7 +682,6 @@
                             1] + "/" + chan[1] + "/" + exten, (data, status) => {
 
                             if (status == 'success') {
-
                                 const prom = ezBSAlert({
                                     headerText: "OK",
                                     messageText: "ประชุมสายสำเร็จ",
@@ -679,24 +718,25 @@
         //if (!confirm("ยืนยันการวางสาย?")) return;
         let rowid = $(this).data("id")
         ezBSAlert({
-                type: "confirm",
-                headerText: "Confirm",
-                messageText: "ยืนยันการวางสาย?",
-                alertType: "info",
-            }).done(function(e) {
-                if (e==true) {
+            type: "confirm",
+            headerText: "Confirm",
+            messageText: "ยืนยันการวางสาย?",
+            alertType: "info",
+        }).done(function(e) {
+            if (e == true) {
+                if (!rowid) return;
+                let chan = rowid.split("/");
 
+                $.get(`${event_serv}/hangup/` + chan[1], (data, status) => {
+                    const prom = ezBSAlert({
+                        headerText: "OK",
+                        messageText: "วางสายสำเร็จ",
+                        alertType: "success",
+                    });
+                });
+            }
 
-if (!rowid) return;
-let chan = rowid.split("/");
-
-$.get(`${event_serv}/hangup/` + chan[1], (data, status) => {
-
-});
-
-                }
-
-            });
+        });
 
     })
 
