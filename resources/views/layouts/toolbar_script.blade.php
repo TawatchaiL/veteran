@@ -61,6 +61,11 @@
         $('body').css("overflow-y", "auto");
     });
 
+    $('#ToolbarModal').on('shown.bs.modal', function (e) {
+        $('.modal').css('overflow-y', 'auto');
+        $('body').css("overflow-y", "hidden");
+    });
+
     $(document).ready(function() {
         $("#btnAlert").on("click", function() {
             const prom = ezBSAlert({
