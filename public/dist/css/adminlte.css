@@ -6577,6 +6577,7 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
 }
 
 .modal-dialog {
+    overflow-y: initial !important;
     position: relative;
     width: auto;
     margin: 0.5rem;
