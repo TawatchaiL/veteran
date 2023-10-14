@@ -352,7 +352,7 @@
                 }
 
             }); */
-        $(document).on('click', '#custom-tabs-pop a',async function(e) {
+        $(document).on('click', '#custom-tabs-pop-*',async function(e) {
 
             /* var areYouSure = confirm(
                 'If you sure you wish to leave this tab?  Any data entered will NOT be saved.  To save information, use the Save buttons.'
