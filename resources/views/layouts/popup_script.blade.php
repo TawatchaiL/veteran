@@ -1,9 +1,10 @@
 <script>
     const addemerphone = (cardid) => {
-        alert('OK');
+        
         const tableBody = document.getElementById('myTbl3p' + cardid).getElementsByTagName('tbody')[0];
 
         document.getElementById('addRowBtnp' + cardid).addEventListener('click', () => {
+            alert('OK');
             const newRow = document.createElement('tr');
             newRow.innerHTML = `
             <td width="30%">
