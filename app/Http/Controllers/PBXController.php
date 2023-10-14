@@ -461,7 +461,7 @@ class PBXController extends Controller
     public function AgentKick(Request $request)
     {
         $loginTimeSession = Session::get('login_time');
-        dd($loginTimeSession);
+        dd($loginTimeSession->format('Y-m-d H:i:s'));
         $user = Auth::user();
 
         if ($user && $loginTimeSession !== $user->login_time) {
