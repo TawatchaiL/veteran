@@ -129,7 +129,7 @@ class ContactController extends Controller
             ->orWhere('workno', '=', $con)
             ->get();
         $case_type = Case_type::orderBy("id", "asc")->get();
-        $template = 'contacts.contactpop';
+        $template = 'contacts.contact-create';
         $htmlContent = View::make($template, [
             'cardid' => $con, 'telephone' => $con, 'contact_name' => $contact_name, 'contact_lname' => $contact_lname, 'casetype' => $case_type
         ])->render();
