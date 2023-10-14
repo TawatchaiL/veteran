@@ -9,15 +9,9 @@
 
     socket.on('peerstatus', async (data) => {
         console.log(data);
-        let peer = data.peer.split("/");
-        if (peer == exten) {
-            console.log(data.peerstatus)
-        }
-    });
-
-    socket.on('event', async (data) => {
-        if (data.extension == exten) {
-            if (data.status == 4 || data.status == -1) {
+        let peer = data.extension.split("/");
+        if (peer[1] == exten) {
+            if (data.status == 'Unregistered') {
                 $.ajax({
                     url: "{{ route('agent.phone_unregis') }}",
                     method: 'post',
@@ -27,41 +21,46 @@
                         set_state_button(result.id);
                     }
                 });
-                toolbar_header.removeClass("bg-primary");
-                toolbar_header.addClass("bg-secondary");
+                /* toolbar_header.removeClass("bg-primary");
+                toolbar_header.addClass("bg-secondary"); */
                 state_overlay.removeClass("d-none");
                 toolbar_card.addClass("d-none");
                 popup_tab_main.addClass("d-none");
                 toolbar_modal.modal('show');
-            } else {
+            } else if (data.status == 'Registered') {
                 state_overlay.addClass("d-none");
                 toolbar_card.removeClass("d-none");
                 popup_tab_main.removeClass("d-none");
-                toolbar_header.removeClass("bg-primary bg-secondary bg-danger");
-                if (data.status == 0) {
-                    $.ajax({
-                        url: "{{ route('agent.hang') }}",
-                        method: 'post',
-                        async: false,
-                        data: {
-                            extension: data.extension,
-                            _token: token,
-                        },
-                        success: function(result) {
-                            set_state_icon(result.id, result.icon, result.message);
-                            set_state_button(result.id);
-                            //positionCards();
-                        }
-                    });
-                    //toolbar_header.addClass("bg-primary");
-                    //toolbar_modal.modal('hide');
-                } else if (data.status == 1 || data.status == 2 || data.status == 8 || data.status == 9) {
-                    toolbar_header.addClass("bg-danger");
-                } else if (data.status == 16 || data.status == 17) {
-                    toolbar_header.addClass("bg-danger");
-                }
-
+                $.ajax({
+                    url: "{{ route('agent.hang') }}",
+                    method: 'post',
+                    async: false,
+                    data: {
+                        extension: data.extension,
+                        _token: token,
+                    },
+                    success: function(result) {
+                        console.log(result)
+                        set_state_icon(result.id, result.icon, result.message);
+                        set_state_button(result.id);
+                        //positionCards();
+                    }
+                });
+                //toolbar_modal.modal('hide');
             }
+        }
+    });
+
+    socket.on('event', async (data) => {
+        if (data.extension == exten) {
+            if (data.status == 4 || data.status == -1) {
+
+            } else if (data.status == 1 || data.status == 2 || data.status == 8 || data.status == 9) {
+                toolbar_header.addClass("bg-danger");
+            } else if (data.status == 16 || data.status == 17) {
+                toolbar_header.addClass("bg-danger");
+            }
+
         }
     });
 
@@ -77,7 +76,6 @@
         }
     });
 
-    //logoff by remove queue member
     socket.on('qlogoff', data => {
 
         if (data.extension.match(exten)) {
@@ -107,7 +105,8 @@
 
         if (data.extension.match(exten)) {
             console.log(data);
-
+            let peer = data.extension.split("-");
+            let peern = peer[0].split("/");
             $.ajax({
                 url: "{{ route('agent.ring') }}",
                 method: 'post',
@@ -116,7 +115,7 @@
                     uniqid: data.luniq,
                     context: data.context,
                     telno: data.cid,
-                    agentno: data.destexten,
+                    agentno: peern[1],
                     _token: token,
                 },
                 success: function(result) {
