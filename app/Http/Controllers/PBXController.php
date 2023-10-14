@@ -342,7 +342,7 @@ class PBXController extends Controller
             $context = DB::table('crm_incoming')
                 ->where('uniqid', $request->input('uniqid'))->first();
 
-            if ($context->context == "ext-queues") {
+            if ($context !== null && $context->context == "ext-queues") {
                 $indb = DB::connection('remote_connection')
                     ->table('call_center.wrap_data')
                     ->where('uniqid', $request->get('uniqid'))
