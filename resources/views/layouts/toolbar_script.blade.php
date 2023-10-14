@@ -56,39 +56,39 @@
         })
     }
 
-$(document).ready(function () {
-  $("#btnAlert").on("click", function () {
-    const prom = ezBSAlert({
-      messageText: "hello world",
-      alertType: "danger",
-    }).done(function (e) {
-      $("body").append("<div>Callback from alert</div>");
-    });
-  });
+    $(document).ready(function() {
+        $("#btnAlert").on("click", function() {
+            const prom = ezBSAlert({
+                messageText: "hello world",
+                alertType: "danger",
+            }).done(function(e) {
+                $("body").append("<div>Callback from alert</div>");
+            });
+        });
 
-  $("#btnConfirm").on("click", function () {
-    ezBSAlert({
-      type: "confirm",
-      messageText: "hello world",
-      alertType: "info",
-    }).done(function (e) {
-      $("body").append(`<div>Callback from confirm ${e}</div>`);
-    });
-  });
+        $("#btnConfirm").on("click", function() {
+            ezBSAlert({
+                type: "confirm",
+                messageText: "hello world",
+                alertType: "info",
+            }).done(function(e) {
+                $("body").append(`<div>Callback from confirm ${e}</div>`);
+            });
+        });
 
-  $("#btnPrompt").on("click", function () {
-    ezBSAlert({
-      type: "prompt",
-      messageText: "Enter Something",
-      alertType: "primary",
-    }).done(function (e) {
-      ezBSAlert({
-        messageText: "You entered: " + e,
-        alertType: "success",
-      });
+        $("#btnPrompt").on("click", function() {
+            ezBSAlert({
+                type: "prompt",
+                messageText: "Enter Something",
+                alertType: "primary",
+            }).done(function(e) {
+                ezBSAlert({
+                    messageText: "You entered: " + e,
+                    alertType: "success",
+                });
+            });
+        });
     });
-  });
-});
 
 
     const updateUI = (result) => {
@@ -389,12 +389,11 @@ $(document).ready(function () {
         let len = $('input[name="call[]"]:checked').length;
         if (len > 0) {
             if (len > 1) {
-                //alert_danger('Opp', 'ไม่สามารถโอนสายมากกว่า 1 สายต่อครั้ง', '');
                 const prom = ezBSAlert({
                     headerText: "Notice",
-      messageText: "ไม่สามารถโอนสายมากกว่า 1 สายต่อครั้ง",
-      alertType: "info",
-    });
+                    messageText: "ไม่สามารถโอนสายมากกว่า 1 สายต่อครั้ง",
+                    alertType: "info",
+                });
             } else {
                 let call_number = $('#dial_number').val();
                 if (call_number !== '') {
@@ -419,21 +418,36 @@ $(document).ready(function () {
                         async: false,
                         success: function(result) {
                             if (result.success == true) {
-                                alert_success('OK', 'โอนสายสำเร็จ', '');
+                                const prom = ezBSAlert({
+                                    headerText: "OK",
+                                    messageText: "โอนสายสำเร็จ",
+                                    alertType: "success",
+                                });
                             } else {
-                                alert_danger('Oop', 'โอนสาย ไม่สำเร็จ', '');
+                                const prom = ezBSAlert({
+                                    headerText: "Error",
+                                    messageText: "โอนสาย ไม่สำเร็จ",
+                                    alertType: "danger",
+                                });
                             }
                         }
                     });
                     //}
                 } else {
-                    alert_danger('Opp', 'กรุณาระบุหมายเลขที่จะโอนสาย', '');
+                    const prom = ezBSAlert({
+                        headerText: "Notice",
+                        messageText: "กรุณาระบุหมายเลขที่จะโอนสาย",
+                        alertType: "info",
+                    });
                 }
 
             }
         } else {
-            alert_danger('Opp', 'กรุณาระบุสายที่จะโอนสาย', '');
-
+            const prom = ezBSAlert({
+                headerText: "Notice",
+                messageText: "กรุณาระบุสายที่จะโอนสาย",
+                alertType: "info",
+            });
         }
     });
 
@@ -442,7 +456,11 @@ $(document).ready(function () {
         let len = $('input[name="call[]"]:checked').length;
         if (len > 0) {
             if (len > 1) {
-                alert_danger('Opp', 'ไม่สามารถโอนสายมากกว่า 1 สายต่อครั้ง', '');
+                const prom = ezBSAlert({
+                    headerText: "Notice",
+                    messageText: "ไม่สามารถโอนสายมากกว่า 1 สายต่อครั้ง",
+                    alertType: "info",
+                });
             } else {
                 let call_number = $('#dial_number').val();
                 if (call_number !== '') {
@@ -467,21 +485,36 @@ $(document).ready(function () {
                         async: false,
                         success: function(result) {
                             if (result.success == true) {
-                                alert_success('OK', 'โอนสายสำเร็จ', '');
+                                const prom = ezBSAlert({
+                                    headerText: "OK",
+                                    messageText: "โอนสายสำเร็จ",
+                                    alertType: "success",
+                                });
                             } else {
-                                alert_danger('Oop', 'โอนสาย ไม่สำเร็จ', '');
+                                const prom = ezBSAlert({
+                                    headerText: "Error",
+                                    messageText: "โอนสาย ไม่สำเร็จ",
+                                    alertType: "danger",
+                                });
                             }
                         }
                     });
                     //}
                 } else {
-                    alert_danger('Opp', 'กรุณาระบุหมายเลขที่จะโอนสาย', '');
+                    const prom = ezBSAlert({
+                        headerText: "Notice",
+                        messageText: "กรุณาระบุหมายเลขที่จะโอนสาย",
+                        alertType: "info",
+                    });
                 }
 
             }
         } else {
-            alert_danger('Opp', 'กรุณาระบุสายที่จะโอนสาย', '');
-
+            const prom = ezBSAlert({
+                headerText: "Notice",
+                messageText: "กรุณาระบุสายที่จะโอนสาย",
+                alertType: "info",
+            });
         }
 
     });
@@ -560,14 +593,26 @@ $(document).ready(function () {
         if (call_number !== '') {
             $.get(`${event_serv}/dial/` + call_number + "/" + exten + "/" + account_code, (data, status) => {
                 if (status == 'success') {
-                    alert_success('OK', 'โทรออกสำเร็จ', '');
+                    const prom = ezBSAlert({
+                        headerText: "OK",
+                        messageText: "โทรออกสำเร็จ",
+                        alertType: "success",
+                    });
                     dial_number.val('');
                 } else {
-                    alert_danger('Opp', 'Something Error', '');
+                    const prom = ezBSAlert({
+                        headerText: "Error",
+                        messageText: "โทรออก ไม่สำเร็จ",
+                        alertType: "danger",
+                    });
                 }
             });
         } else {
-            alert_danger('Opp', 'กรุณาระบุหมายเลขที่จะโทร ', '');
+            const prom = ezBSAlert({
+                headerText: "Notice",
+                messageText: "กรุณาระบุหมายเลขที่จะโทร",
+                alertType: "info",
+            });
         }
 
     });
@@ -577,7 +622,11 @@ $(document).ready(function () {
         let len = $('input[name="call[]"]:checked').length;
         if (len > 0) {
             if (len !== 2) {
-                alert_danger('Opp', 'กรุณาเลือกสายสองสายขึ้นไป', '');
+                const prom = ezBSAlert({
+                    headerText: "Notice",
+                    messageText: "กรุณาเลือกสายสองสายขึ้นไป",
+                    alertType: "info",
+                });
             } else {
                 let chan = []
                 $('input[name="call[]"]:checked').each(function() {
@@ -593,9 +642,19 @@ $(document).ready(function () {
                             1] + "/" + chan[1] + "/" + exten, (data, status) => {
 
                             if (status == 'success') {
-                                alert_success('OK', 'ประชุมสายสำเร็จ', '');
+
+                                const prom = ezBSAlert({
+                                    headerText: "OK",
+                                    messageText: "ประชุมสายสำเร็จ",
+                                    alertType: "success",
+                                });
                             } else {
-                                alert_danger('Opp', 'Something Error', '');
+
+                                const prom = ezBSAlert({
+                                    headerText: "Error",
+                                    messageText: "ประชุมสาย ไม่สำเร็จ",
+                                    alertType: "danger",
+                                });
                             }
                         });
                     });
@@ -604,7 +663,11 @@ $(document).ready(function () {
 
             }
         } else {
-            alert_danger('Opp', 'กรุณาเลือกสายที่จะประชุม', '');
+            const prom = ezBSAlert({
+                headerText: "Notice",
+                messageText: "กรุณาเลือกสายที่จะประชุม",
+                alertType: "info",
+            });
 
         }
 
