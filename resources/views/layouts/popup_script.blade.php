@@ -779,10 +779,10 @@
         });
     }
     function testtest(pp){
-        alert(pp);
-        //var currentTabContent = $(href);
+        var href = $('.nav-tabs a[href="#'pp'"]').attr("href");
+        var currentTabContent = $(href);
 
-        //currentTabContent.empty();
+        currentTabContent.empty();
     }
 
     function validateNumberp(event) {
