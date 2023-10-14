@@ -89,26 +89,28 @@ class PBXController extends Controller
         $user = Auth::user();
 
         if ($user) {
-            // Update user's phone_status
-            $user->phone_status_id = 0;
-            $user->phone_status = "ไม่พร้อมรับสาย";
-            $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-xmark"></i>';
-            $user->save();
 
-            $ret = $this->issable->agent_logoff($user->phone);
+            if ($user->phone_status_id !== 0) {
+                $user->phone_status_id = 0;
+                $user->phone_status = "ไม่พร้อมรับสาย";
+                $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-xmark"></i>';
+                $user->save();
 
-            if ($ret == true) {
-                return [
-                    'success' => true,
-                    'id' => $user->phone_status_id,
-                    'message' => $user->phone_status,
-                    'icon' => $user->phone_status_icon
-                ];
+                $ret = $this->issable->agent_logoff($user->phone);
+
+                if ($ret == true) {
+                    return [
+                        'success' => true,
+                        'id' => $user->phone_status_id,
+                        'message' => $user->phone_status,
+                        'icon' => $user->phone_status_icon
+                    ];
+                } else {
+                    return ['success' => false, 'message' => 'login error'];
+                }
             } else {
-                return ['success' => false, 'message' => 'login error'];
+                return ['success' => false, 'message' => 'logoff error'];
             }
-        } else {
-            return ['success' => false, 'message' => 'logoff error'];
         }
     }
 
