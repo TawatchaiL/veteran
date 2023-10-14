@@ -128,7 +128,31 @@
                 //addemerphone(cardId);
 
                 $('#addRowBtnp' + cardId).on('click', function() {
-                    alert('OK');
+                    $('#myTbl3p' + cardId + ' tbody')
+                        .append($('<tr>')
+                            .append($('<td width="30%">')
+                                .append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="hidden" value="" name="emertypep' + cardId +'[]" id="emertypep' + cardId + '"><input type="text" id="emergencynamep' + cardId + '" name="emergencynamep' + cardId + '[]" class="form-control has-feedback-left" value="" required="required"></div>'
+                                ))
+                            .append($('<td width="10%">').append(
+                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerrelation' +
+                                    cardId +
+                                    '" name="emerrelationp' +
+                                    cardId +
+                                    '[]" class="form-control has-feedback-left" value="" required="required"></div>'
+                                ))
+                            .append($('<td width="10%">').append(
+                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone' +
+                                    cardId +
+                                    '" name="emerphonep' +
+                                    cardId +
+                                    '[]" class="form-control has-feedback-left" onkeydown="validateNumberp(event)" value="" required="required"></div>'
+                                ))
+                            .append($('<td width="5%">').append('<button type="button" name="deletem' +
+                                    cardId +
+                                    '" id="deletem' +
+                                    cardId +
+                                    '" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
+                                )));
                 });
 
                 var provinceOb = $('#cityp' + cardId);
