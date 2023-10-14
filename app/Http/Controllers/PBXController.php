@@ -29,7 +29,6 @@ class PBXController extends Controller
 
     public function call_tranfer(Request $request)
     {
-        // Retrieve the authenticated user
 
         $user = Auth::user();
 
@@ -55,14 +54,13 @@ class PBXController extends Controller
 
     public function loginAgentToQueue()
     {
-        // Retrieve the authenticated user
+
         $user = Auth::user();
 
         if ($user) {
-            // Perform agent login action using IssableService
+
             $ret = $this->issable->agent_login($user->phone);
 
-            // Update user's phone_status
             $user->phone_status_id = 1;
             $user->phone_status = "พร้อมรับสาย";
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
@@ -85,11 +83,12 @@ class PBXController extends Controller
 
     public function logoffAgentFromQueue()
     {
-        // Retrieve the authenticated user
+
         $user = Auth::user();
 
         if ($user) {
 
+            //check if not already logoff
             if ($user->phone_status_id !== 0) {
                 $user->phone_status_id = 0;
                 $user->phone_status = "ไม่พร้อมรับสาย";
@@ -116,14 +115,13 @@ class PBXController extends Controller
 
     public function logoffAgentFromQueueAndLogout()
     {
-        // Retrieve the authenticated user
+
         $user = Auth::user();
 
         if ($user) {
-            // Perform agent login action using IssableService
+
             $ret = $this->issable->agent_logoff($user->phone);
 
-            // Update user's phone_status
             $user->phone = '';
             $user->phone_status_id = 0;
             $user->phone_status = "ไม่พร้อมรับสาย";
@@ -144,14 +142,12 @@ class PBXController extends Controller
 
     public function AgentBreak(Request $request)
     {
-        // Retrieve the authenticated user
+
         $user = Auth::user();
 
         if ($user) {
-            // Perform agent login action using IssableService
-            $ret = $this->issable->agent_break($user->phone, $request->get('id_break'));
 
-            // Update user's phone_status
+            $ret = $this->issable->agent_break($user->phone, $request->get('id_break'));
 
             $resultb = DB::connection('remote_connection')
                 ->table('call_center.break')
@@ -180,14 +176,13 @@ class PBXController extends Controller
 
     public function AgentUnBreak(Request $request)
     {
-        // Retrieve the authenticated user
+
         $user = Auth::user();
 
         if ($user) {
-            // Perform agent login action using IssableService
+
             $ret = $this->issable->agent_unbreak($user->phone);
 
-            // Update user's phone_status
             $user->phone_status_id = 1;
             $user->phone_status = "พร้อมรับสาย";
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
@@ -210,11 +205,11 @@ class PBXController extends Controller
 
     public function AgentRing(Request $request)
     {
-        // Retrieve the authenticated user
+
         $user = Auth::user();
 
         if ($user) {
-            // Update user's phone_status
+            //check if queue call send to popup record
             if ($request->input('context') == 'ext-queues') {
                 DB::table('crm_incoming')
                     ->where('telno', $request->input('telno'))
@@ -248,11 +243,10 @@ class PBXController extends Controller
 
     public function AgentTalk(Request $request)
     {
-        // Retrieve the authenticated user
+
         $user = Auth::user();
 
         if ($user) {
-            // Update user's phone_status
 
             DB::table('crm_incoming')
                 ->where('uniqid', $request->input('uniqid'))
@@ -278,7 +272,6 @@ class PBXController extends Controller
 
     public function AgentHang(Request $request)
     {
-        // Retrieve the authenticated user
         $user = Auth::user();
 
         if ($user) {
@@ -304,7 +297,7 @@ class PBXController extends Controller
                     $resultb = DB::connection('remote_connection')
                         ->table('call_center.break')
                         ->where('id', $inbreak[0]->id_break)
-                        ->first(); // Use first() instead of get() to get a single object
+                        ->first();
 
                     if ($inbreak[0]->id_break == 5) {
                         $user->phone_status_id = 3;
@@ -312,7 +305,7 @@ class PBXController extends Controller
                         $user->phone_status_id = 2;
                     }
 
-                    $user->phone_status =  $resultb->name; // Use object notation
+                    $user->phone_status =  $resultb->name;
                     $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-clock"></i>';
                 } else {
                     $user->phone_status_id = 1;
@@ -383,6 +376,7 @@ class PBXController extends Controller
                 $user->phone_status = "พร้อมรับสาย";
                 $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
                 $user->save(); */
+                //in not queue get status from pbx and db
                 return [
                     'success' => true,
                     'id' => $user->phone_status_id,
@@ -463,7 +457,6 @@ class PBXController extends Controller
     public function AgentKick(Request $request)
     {
         $loginTimeSession = Session::get('login_time');
-        //dd($loginTimeSession->format('Y-m-d H:i:s'));
         $user = Auth::user();
 
         if ($user && $loginTimeSession->format('Y-m-d H:i:s') !== $user->login_time) {
