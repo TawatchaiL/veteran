@@ -57,6 +57,7 @@
     }
 
     $('#ToolbarModal').on('hidden.bs.modal', function (e) {
+        $('.modal').css('overflow-y', 'hidden');
         $('body').css("overflow-y", "auto");
     });
 
@@ -658,6 +659,7 @@
                 alertType: "info",
             }).done(function(e) {
                 $('body').css("overflow-y", "hidden");
+                $('.modal').css("overflow", "hidden");
                 $('.modal').css("overflow-y", "auto");
             });
         }
