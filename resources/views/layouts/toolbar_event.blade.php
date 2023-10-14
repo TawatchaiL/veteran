@@ -106,7 +106,7 @@
         if (data.extension.match(exten)) {
             console.log(data);
             let peer = data.extension.split("-");
-            let peern = peer.split("/");
+            let peern = peer[0].split("/");
             $.ajax({
                 url: "{{ route('agent.ring') }}",
                 method: 'post',
