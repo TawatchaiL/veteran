@@ -219,7 +219,8 @@ class CasesContractController extends Controller
 
     public function popupcontact(Request $request)
     {
-        $con = $request->get('cardId');
+        //$con = $request->get('cardId');
+        $con = $request->input('cardId');
         $template = 'casescontract.index';
         $htmlContent = View::make($template, [
             'cardid' => $con, 'telephone' => $con
