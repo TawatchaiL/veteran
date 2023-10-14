@@ -897,7 +897,7 @@
             });
         }
 
-        $(document).on('show.bs.tab', '#custom-tabs-pop a[data-toggle="pill"]',
+       /*  $(document).on('show.bs.tab', '#custom-tabs-pop a[data-toggle="pill"]',
             async function(e) {
                 // Determine which tab is being switched to
                 var href = $(e.target).attr("href");
@@ -910,9 +910,9 @@
                     e.preventDefault();
                 }
 
-            });
+            }); */
 
-        $('#custom-tabs-pop a').click(function(e) {
+        $('#custom-tabs-pop a[data-toggle="pill"]').click(function(e) {
             e.preventDefault()
             var areYouSure = confirm(
                 'If you sure you wish to leave this tab?  Any data entered will NOT be saved.  To save information, use the Save buttons.'
