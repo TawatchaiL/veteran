@@ -251,6 +251,8 @@
                         },
                         success: function(result) {
                             console.log(result)
+                            set_state_icon(result.id, result.icon, result.message);
+                            set_state_button(result.id);
                             call_list();
                         }
                     });
