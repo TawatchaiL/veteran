@@ -56,8 +56,6 @@
         if (data.extension == exten) {
             if (data.status == 4 || data.status == -1) {
 
-            } else {
-
             } else if (data.status == 1 || data.status == 2 || data.status == 8 || data.status == 9) {
                 toolbar_header.addClass("bg-danger");
             } else if (data.status == 16 || data.status == 17) {
