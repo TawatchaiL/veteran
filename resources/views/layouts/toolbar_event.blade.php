@@ -8,7 +8,8 @@
 
 
     socket.on('peerstatus', async (data) => {
-        let peer = data.extension.split("/");
+        console.log(data);
+        let peer = data.peer.split("/");
         if (peer == exten) {
             console.log(data.peerstatus)
         }
