@@ -22,6 +22,7 @@
     const phone_state = $('#phone_state');
     const phone_state_icon = $('#phone_state_icon');
     const toolbar_modal = $('#ToolbarModal');
+    const modalc = $('.modal');
     const popup_tab = $("#custom-tabs-one-popup-tab");
     const call_tab = $("#custom-tabs-one-call-tab");
     const state_overlay = $('#state_overlay');
@@ -56,12 +57,12 @@
         })
     }
 
-    toolbar_modal.on('hidden.bs.modal', function (e) {
+    modalc.on('hidden.bs.modal', function (e) {
         $('.modal').css('overflow-y', 'hidden');
         $('body').css("overflow-y", "auto");
     });
 
-    toolbar_modal.on('shown.bs.modal', function (e) {
+    modalc.on('shown.bs.modal', function (e) {
         $('.modal').css('overflow-y', 'auto');
         $('body').css("overflow-y", "hidden");
     });
