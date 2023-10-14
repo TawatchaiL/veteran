@@ -271,16 +271,6 @@
                                     Dropdown</span>
                             </button>
                             <div class="dropdown-menu" role="menu" id="pause_list">
-
-                               {{--  <a class="dropdown-item button_break" href="#" data-id="2">
-                                    Lunch</a>
-                                <a class="dropdown-item button_break" href="#" data-id="3">
-                                    Toilet</a>
-                                <a class="dropdown-item button_break" href="#" data-id="4">
-                                    Meeting</a>
-                                <div class="dropdown-divider"></div> --}}
-
-
                             </div>
                         </div>
                         <button {{ $unwarp_button }} id="btn-unwarp"
