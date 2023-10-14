@@ -6,6 +6,14 @@
         socket.emit('join', 'Client Connect To Asterisk Event Serv');
     });
 
+
+    socket.on('peerstatus', async (data) => {
+        let peer = data.extension.split("/");
+        if (peer == exten) {
+            console.log(data.peerstatus)
+        }
+    });
+
     socket.on('event', async (data) => {
         if (data.extension == exten) {
             if (data.status == 4 || data.status == -1) {
