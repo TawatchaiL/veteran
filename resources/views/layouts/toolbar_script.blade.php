@@ -185,7 +185,7 @@
             btn_agent_login.prop('disabled', true);
             btn_agent_login.addClass("d-none");
             toolbar_header.removeClass("");
-            toolbar_header.addClass("card-success");
+            toolbar_header.addClass("card-primary");
         } else if (id === 2) {
             dial_number.removeClass('d-none');
             dial_number.prop('disabled', false);
