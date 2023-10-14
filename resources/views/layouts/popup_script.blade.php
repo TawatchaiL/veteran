@@ -765,7 +765,7 @@
                 cardId: cardId
             },
             success: async function(response) {
-                alert(response.html);
+                //alert(response.html);
                 $('#' + cardId).removeClass('card-danger');
                 $('#' + cardId).addClass('card-success');
                 await $('#pop_' + cardId).html(response.html);
@@ -774,7 +774,7 @@
                 alert();
             },
             error: function(xhr, status, error) {
-                alert('error');
+                //alert('error');
             }
         });
     }
