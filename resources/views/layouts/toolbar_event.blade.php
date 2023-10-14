@@ -10,7 +10,7 @@
     socket.on('peerstatus', async (data) => {
         console.log(data);
         let peer = data.extension.split("/");
-        if (peer == exten) {
+        if (peer[1] == exten) {
             if (data.status == 'Unregistered') {
                 $.ajax({
                     url: "{{ route('agent.phone_unregis') }}",
