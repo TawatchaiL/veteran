@@ -137,8 +137,8 @@
             btn_agent_logoff.prop('disabled', true);
             btn_agent_login.addClass("d-none");
             btn_agent_login.prop('disabled', true);
-            toolbar_header.removeClass("card-primary card-danger card-warning");
-            toolbar_header.addClass("card-secondary");
+            toolbar_header.removeClass();
+            toolbar_header.addClass("modal-header card-secondary");
         } else if (id === 0) {
             dial_number.removeClass('d-none');
             dial_number.prop('disabled', false);
@@ -160,8 +160,8 @@
             btn_agent_logoff.prop('disabled', true);
             btn_agent_login.removeClass("d-none");
             btn_agent_login.prop('disabled', false);
-            toolbar_header.removeClass("card-primary card-danger card-warning");
-            toolbar_header.addClass("card-secondary");
+            toolbar_header.removeClass();
+            toolbar_header.addClass("modal-header card-secondary");
         } else if (id === 1) {
             dial_number.removeClass('d-none');
             dial_number.prop('disabled', false);
@@ -184,8 +184,8 @@
             btn_agent_logoff.prop('disabled', false);
             btn_agent_login.prop('disabled', true);
             btn_agent_login.addClass("d-none");
-            toolbar_header.removeClass("card-secondary card-danger card-warning");
-            toolbar_header.addClass("card-primary");
+            toolbar_header.removeClass();
+            toolbar_header.addClass("modal-header card-primary");
         } else if (id === 2) {
             dial_number.removeClass('d-none');
             dial_number.prop('disabled', false);
@@ -208,8 +208,8 @@
             btn_agent_logoff.prop('disabled', true);
             btn_agent_login.addClass("d-none");
             btn_agent_login.prop('disabled', true);
-            toolbar_header.removeClass("card-primary card-danger card-secondary");
-            toolbar_header.addClass("card-warning");
+            toolbar_header.removeClass();
+            toolbar_header.addClass("modal-header card-warning");
         } else if (id === 3) {
             dial_number.removeClass('d-none');
             dial_number.prop('disabled', false);
@@ -233,8 +233,8 @@
             btn_agent_logoff.prop('disabled', true);
             btn_agent_login.addClass("d-none");
             btn_agent_login.prop('disabled', true);
-            toolbar_header.removeClass("card-primary card-danger card-secondary");
-            toolbar_header.addClass("card-warning");
+            toolbar_header.removeClass();
+            toolbar_header.addClass("modal-header card-warning");
         } else if (id === 4) {
             dial_number.removeClass('d-none');
             dial_number.prop('disabled', false);
@@ -258,8 +258,8 @@
             btn_agent_logout.prop('disabled', true);
             btn_agent_login.addClass("d-none");
             btn_agent_login.prop('disabled', true);
-            toolbar_header.removeClass("card-primary card-warning card-secondary");
-            toolbar_header.addClass("card-danger");
+            toolbar_header.removeClass();
+            toolbar_header.addClass("modal-header card-danger");
         } else if (id === 5) {
             dial_number.removeClass('d-none');
             dial_number.prop('disabled', false);
@@ -283,8 +283,8 @@
             btn_agent_logout.prop('disabled', true);
             btn_agent_login.addClass("d-none");
             btn_agent_login.prop('disabled', true);
-            toolbar_header.removeClass("card-primary card-warning card-secondary");
-            toolbar_header.addClass("card-danger");
+            toolbar_header.removeClass();
+            toolbar_header.addClass("modal-header card-danger");
         }
     };
 
