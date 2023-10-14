@@ -303,7 +303,12 @@ class PBXController extends Controller
                         ->where('id', $inbreak[0]->id_break)
                         ->first(); // Use first() instead of get() to get a single object
 
-                    $user->phone_status_id = 2;
+                    if ($inbreak[0]->id_break == 5) {
+                        $user->phone_status_id = 3;
+                    } else {
+                        $user->phone_status_id = 2;
+                    }
+
                     $user->phone_status =  $resultb->name; // Use object notation
                     $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-clock"></i>';
                 } else {

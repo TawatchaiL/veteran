@@ -31,7 +31,7 @@
                 toolbar_header.removeClass("bg-primary bg-secondary bg-danger");
                 if (data.status == 0) {
                     $.ajax({
-                        url: "{{ route('agent.status') }}",
+                        url: "{{ route('agent.hang') }}",
                         method: 'post',
                         async: false,
                         data: {
