@@ -370,7 +370,7 @@ class PBXController extends Controller
                 $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-clock"></i>';
                 $user->save();
 
-                if ($insert == true) {
+                if ($insert) {
                     return [
                         'success' => true,
                         'id' => $user->phone_status_id,
