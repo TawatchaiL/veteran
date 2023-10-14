@@ -128,11 +128,19 @@ class ContactController extends Controller
             ->orWhere('telhome', '=', $con)
             ->orWhere('workno', '=', $con)
             ->get();
+        $contactcount = count($datap);
         $case_type = Case_type::orderBy("id", "asc")->get();
-        $template = 'contacts.contact-create';
-        $htmlContent = View::make($template, [
-            'cardid' => $con, 'telephone' => $con, 'contact_name' => $contact_name, 'contact_lname' => $contact_lname, 'casetype' => $case_type
-        ])->render();
+        if($contactcount > 1){
+            $template = 'contacts.contact-create';
+            $htmlContent = View::make($template, [
+                'cardid' => $con, 'telephone' => $con, 'contact_name' => $contact_name, 'contact_lname' => $contact_lname, 'casetype' => $case_type
+            ])->render();
+        }else{
+            $template = 'casescontract.contactpop';
+            $htmlContent = View::make($template, [
+                'cardid' => $con, 'telephone' => $con, 'contactd' => $datap
+            ])->render();
+        }
         return response()->json([
             'html' =>  $htmlContent,
         ]);
