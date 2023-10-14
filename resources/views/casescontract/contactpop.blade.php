@@ -34,8 +34,8 @@
                                                     <td>{{ $contact->workno }}</td>
                                                     <td>{{ $contact->created_at }}</td>
                                                     <td width="150px">
-                                                        <button type="button" class="form-control btn btn-success" id="btncontact" onclick="alert('OK');">
-                                                        <i class="fas fa-search"></i></button></td>
+                                                        <button type="button" class="form-control btn btn-success" id="btncontact" value="บันทึกข้อมูล" onclick="alert('OK');">
+                                                        </button></td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>

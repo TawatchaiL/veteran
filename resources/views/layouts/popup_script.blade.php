@@ -902,6 +902,10 @@
                 var href = $(e.target).attr("href");
                 var targetTab = href.replace("#custom-tabs-pop-", "");
 
+                var currentTabContent = $(href);
+
+currentTabContent.empty();
+
                 // Display a confirmation dialog
                 if (!confirm("ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab +
                         " ? \nกรุณาบันทึกข้อมุลก่อนเปลี่ยน Tab")) {
