@@ -43,7 +43,7 @@
     $('#custom-tabs-pop').on('click', '.nav-link', function() {
         let dataId = $(this).data('id');
         //maximizeCard(dataId);
-        listcontact(dataId);
+        แlistcontact(dataId);
     });
 
     //popup card
