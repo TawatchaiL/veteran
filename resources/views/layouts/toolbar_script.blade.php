@@ -652,6 +652,8 @@
                 headerText: "Notice",
                 messageText: "กรุณาระบุหมายเลขที่จะโทร",
                 alertType: "info",
+            }).done(function(e) {
+                $('body').css("overflow-y", "hidden");
             });
         }
 
