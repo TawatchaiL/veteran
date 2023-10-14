@@ -42,9 +42,7 @@
 
     $('#custom-tabs-pop').on('click', '.nav-link', function() {
         let dataId = $(this).data('id');
-        var currentTabContent = $(href);
 
-currentTabContent.empty();
         maximizeCard(dataId);
         //listcontact(dataId);
     });
@@ -779,6 +777,12 @@ currentTabContent.empty();
                 //alert('error');
             }
         });
+    }
+    function testtest(pp){
+        alert(pp);
+        //var currentTabContent = $(href);
+
+        //currentTabContent.empty();
     }
 
     function validateNumberp(event) {
