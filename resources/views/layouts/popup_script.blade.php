@@ -779,10 +779,11 @@
         });
     }
     function testtest(pp){
-        var href = $('.nav-tabs a[href="#'+pp+'"]').attr("href");
-        var currentTabContent = $(href);
+        //var href = $('.nav-tabs a[href="#'+pp+'"]').attr("href");
+        //var currentTabContent = $(href);
 
-        currentTabContent.empty();
+        //currentTabContent.empty();
+        $('.nav-tabs a[href="#'+pp+'"]').empty();
     }
 
     function validateNumberp(event) {
