@@ -2,31 +2,9 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-address-book"></i> รายชื่อผู้ติดต่อ</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="maximize">
-                                    <i class="fas fa-expand"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                {{-- <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                                    <i class="fas fa-times"></i>
-                                </button> --}}
-                            </div>
                         </div>
 
                         <div class="card-body">
-                            @if ($message = Session::get('success'))
-                                {{--  <div class="alert alert-success">
-                                    <p>{{ $message }}</p>
-                                </div> --}}
-                                <script>
-                                    toastr.success('{{ $message }}', {
-                                        timeOut: 5000
-                                    });
-                                </script>
-                            @endif
                             <div class="row ">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="row float-lg-left">
