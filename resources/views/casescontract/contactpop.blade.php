@@ -34,7 +34,7 @@
                                                     <td>{{ $contact->workno }}</td>
                                                     <td>{{ $contact->created_at }}</td>
                                                     <td width="150px">
-                                                        <button type="button" class="form-control btn btn-success" id="btncontact" value="บันทึกข้อมูล" onclick="testtest('{{ $cardid }}');">
+                                                        <button type="button" class="form-control btn btn-success" id="btncontact" onclick="testtest('{{ $cardid }}');">บันทึกข้อมูล
                                                         </button></td>
                                                 </tr>
                                                 @endforeach

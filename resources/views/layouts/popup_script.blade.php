@@ -774,15 +774,16 @@
                 $('.bclose').css('display', 'none');
             },
             error: function(xhr, status, error) {
-                //alert('error');
+
             }
         });
     }
     function testtest(pp){
-        alert(pp);
+        //var href = $('.nav-tabs a[href="#'+pp+'"]').attr("href");
         //var currentTabContent = $(href);
 
         //currentTabContent.empty();
+        $('.nav-tabs a[href="#'+pp+'"]').empty();
     }
 
     function validateNumberp(event) {
