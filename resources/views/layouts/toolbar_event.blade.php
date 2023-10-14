@@ -239,7 +239,7 @@
                 //(data.event == 'DialEnd' &&
                 //|| data.event == 'BlindTransfer'
                 //chan = data.extension.split("/");
-                if ((data.event == 'BridgeLeave')) {
+                //if ((data.event == 'BridgeLeave')) {
 
                     $.ajax({
                         url: "{{ route('agent.warp') }}",
@@ -293,7 +293,7 @@
 
 
                     }); */
-                }
+                //}
 
                 //}
 
