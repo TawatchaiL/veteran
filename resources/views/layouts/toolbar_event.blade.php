@@ -54,13 +54,13 @@
     socket.on('event', async (data) => {
         if (data.extension == exten) {
             if (data.status == 4 || data.status == -1) {
-                toolbar_header.addClass("bg-secondary");
+                //toolbar_header.addClass("bg-secondary");
             } else if (data.status == 0) {
-                toolbar_header.addClass("bg-primary");
+                //toolbar_header.addClass("bg-primary");
             } else if (data.status == 1 || data.status == 2 || data.status == 8 || data.status == 9) {
-                toolbar_header.addClass("bg-danger");
+                //toolbar_header.addClass("bg-danger");
             } else if (data.status == 16 || data.status == 17) {
-                toolbar_header.addClass("bg-danger");
+                //toolbar_header.addClass("bg-danger");
             }
 
         }
@@ -70,11 +70,11 @@
     socket.on('pause', data => {
         console.log(data);
         if (data.extension.match(exten) && data.paused == 0) {
-            toolbar_header.removeClass("bg-warning");
-            toolbar_header.addClass("bg-primary");
+            /* toolbar_header.removeClass("bg-warning");
+            toolbar_header.addClass("bg-primary"); */
         } else if (data.extension.match(exten) && data.paused == 1) {
-            toolbar_header.removeClass("bg-primary bg-secondary bg-danger");
-            toolbar_header.addClass("bg-warning");
+            /* toolbar_header.removeClass("bg-primary bg-secondary bg-danger");
+            toolbar_header.addClass("bg-warning"); */
         }
     });
 
