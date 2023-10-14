@@ -904,7 +904,6 @@
 
                 var currentTabContent = $(href);
 
-// Clear the content of the current tab
 currentTabContent.empty();
 
                 // Display a confirmation dialog
