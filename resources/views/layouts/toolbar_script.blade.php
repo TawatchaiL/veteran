@@ -323,17 +323,19 @@
     });
 
 
-    function AsyncConfirmYesNo(title, msg, yesFn, noFn) {
+    function AsyncConfirmYesNo(title, msg/* , yesFn, noFn */) {
             var $confirm = $("#modalConfirmYesNo");
             $confirm.modal('show');
             $("#lblTitleConfirmYesNo").html(title);
             $("#lblMsgConfirmYesNo").html(msg);
             $("#btnYesConfirmYesNo").off('click').click(function() {
-                yesFn();
+                //yesFn();
+                return true;
                 $confirm.modal("hide");
             });
             $("#btnNoConfirmYesNo").off('click').click(function() {
-                noFn();
+                //noFn();
+                return false;
                 $confirm.modal("hide");
             });
         }
@@ -363,16 +365,23 @@
                 // do other stuff
                 return false;
             } */
-            AsyncConfirmYesNo(
+            var areYouSure = AsyncConfirmYesNo(
                     "Yes & No Confirmation Box",
-                    "Are you hungry?",
+                    "Are you hungry?"/* ,
                     function() {
                         $(this).tab('show')
                     },
                     function() {
-                        return false;
-                    }
+                        e.preventDefault()
+                    } */
                 );
+
+                if (areYouSure === true) {
+                $(this).tab('show')
+            } else {
+                // do other stuff
+                return false;
+            }
         })
 
 
