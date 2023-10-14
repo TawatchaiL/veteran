@@ -22,9 +22,7 @@ class CasesContractController extends Controller
         $this->middleware('permission:case-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:case-delete', ['only' => ['destroy']]);
     }
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index(Request $request)
     {
         //$id = request('id');
@@ -97,8 +95,6 @@ class CasesContractController extends Controller
                 ->where('crm_cases.contact_id', '=', request('id'))
                 ->get();
             }
-            //sleep(2);
-            //$datas = Cases::orderBy("id", "desc")->get();
 
 
             return datatables()->of($datas)

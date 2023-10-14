@@ -130,17 +130,17 @@ class ContactController extends Controller
             ->get();
         $contactcount = count($datap);
         $case_type = Case_type::orderBy("id", "asc")->get();
-        if($contactcount > 1){
-            $template = 'casescontract.contactpop';
-            $htmlContent = View::make($template, [
-                'cardid' => $con, 'telephone' => $con, 'contactd' => $datap
-            ])->render();
-        }else{
+        //if($contactcount > 1){
+        //    $template = 'casescontract.contactpop';
+        //    $htmlContent = View::make($template, [
+        //        'cardid' => $con, 'telephone' => $con, 'contactd' => $datap
+        //    ])->render();
+        //}else{
             $template = 'contacts.contact-create';
             $htmlContent = View::make($template, [
                 'cardid' => $con, 'telephone' => $con, 'contact_name' => $contact_name, 'contact_lname' => $contact_lname, 'casetype' => $case_type
             ])->render();
-        }
+        //}
         return response()->json([
             'html' =>  $htmlContent,
         ]);
@@ -154,6 +154,7 @@ class ContactController extends Controller
             ->orWhere('status', '=', "0")
             ->orWhere('status', '=', "1")
             ->orderBy('id', 'desc')
+            ->groupBy('telno')
             ->get();
         $html = '';
         $tab_link = '';

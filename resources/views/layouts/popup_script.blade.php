@@ -1,38 +1,40 @@
 <script>
-    const addemerphone = (cardid) => {
-        const tableBody = document.getElementById('myTbl3p' + cardid).getElementsByTagName('tbody')[0];
+    //const addemerphone = (cardid) => {
+        
+    //    const tableBody = document.getElementById('myTbl3p' + cardid).getElementsByTagName('tbody')[0];
 
-        document.getElementById('addRowBtnp' + cardid).addEventListener('click', () => {
-            const newRow = document.createElement('tr');
-            newRow.innerHTML = `
-            <td width="30%">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <input type="hidden" value="" name="emertypep` + cardid +
-                `[]" class="emertypep"><input type="text" name="emergencynamep` + cardid + `[]" class="form-control has-feedback-left" value="" required>
-                </div>
-            </td>
-            <td width="10%">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <input type="text" name="emerrelationp` + cardid + `[]" class="form-control has-feedback-left" value="" required>
-                </div>
-            </td>
-            <td width="10%">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <input type="text" name="emerphonep` + cardid + `[]" class="form-control has-feedback-left" onkeydown="validateNumber(event)" value="" required>
-                </div>
-            </td>
-            <td width="5%">
-                <button type="button" class="btn btn-sm btn-danger removeRowBtnp"><i class="fa fa-minus"></i></button>
-            </td>
-        `;
+    //    document.getElementById('addRowBtnp' + cardid).addEventListener('click', () => {
+    //        alert('OK');
+    //        const newRow = document.createElement('tr');
+    //        newRow.innerHTML = `
+    //        <td width="30%">
+    //            <div class="col-md-12 col-sm-12 col-xs-12">
+    //                <input type="hidden" value="" name="emertypep` + cardid +
+    //            `[]" class="emertypep"><input type="text" name="emergencynamep` + cardid + `[]" class="form-control has-feedback-left" value="" required>
+    //            </div>
+    ///        </td>
+    //        <td width="10%">
+    //            <div class="col-md-12 col-sm-12 col-xs-12">
+    //                <input type="text" name="emerrelationp` + cardid + `[]" class="form-control has-feedback-left" value="" required>
+    //            </div>
+    //        </td>
+    //        <td width="10%">
+    //            <div class="col-md-12 col-sm-12 col-xs-12">
+    //                <input type="text" name="emerphonep` + cardid + `[]" class="form-control has-feedback-left" onkeydown="validateNumber(event)" value="" required>
+    //            </div>
+    //        </td>
+    //        <td width="5%">
+    //            <button type="button" class="btn btn-sm btn-danger removeRowBtnp"><i class="fa fa-minus"></i></button>
+    //        </td>
+    //    `;
+//
+    //        tableBody.appendChild(newRow);
 
-            tableBody.appendChild(newRow);
-
-            newRow.querySelector('.removeRowBtnp').addEventListener('click', () => {
-                tableBody.removeChild(newRow);
-            });
-        });
-    };
+     //       newRow.querySelector('.removeRowBtnp').addEventListener('click', () => {
+    //            tableBody.removeChild(newRow);
+    //        });
+    //   });
+   // };
 
 
     const removeAllTabs = () => {
@@ -124,6 +126,34 @@
                 $('.bclose').css('display', 'none');
 
                 //addemerphone(cardId);
+
+                $('#addRowBtnp' + cardId).on('click', function() {
+                    $('#myTbl3p' + cardId + ' tbody')
+                        .append($('<tr>')
+                            .append($('<td width="30%">')
+                                .append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="hidden" value="" name="emertypep' + cardId +'[]" id="emertypep' + cardId + '"><input type="text" id="emergencynamep' + cardId + '" name="emergencynamep' + cardId + '[]" class="form-control has-feedback-left" value="" required="required"></div>'
+                                ))
+                            .append($('<td width="10%">').append(
+                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerrelation' +
+                                    cardId +
+                                    '" name="emerrelationp' +
+                                    cardId +
+                                    '[]" class="form-control has-feedback-left" value="" required="required"></div>'
+                                ))
+                            .append($('<td width="10%">').append(
+                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone' +
+                                    cardId +
+                                    '" name="emerphonep' +
+                                    cardId +
+                                    '[]" class="form-control has-feedback-left" onkeydown="validateNumberp(event)" value="" required="required"></div>'
+                                ))
+                            .append($('<td width="5%">').append('<button type="button" name="deletem' +
+                                    cardId +
+                                    '" id="deletem' +
+                                    cardId +
+                                    '" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
+                                )));
+                });
 
                 var provinceOb = $('#cityp' + cardId);
                 var districtOb = $('#districtp' + cardId);
@@ -778,14 +808,7 @@
             }
         });
     }
-    function testtest(pp){
-            alert(pp);
-        //var href = $('.nav-tabs a[href="#'+pp+'"]').attr("href");
-        //var currentTabContent = $(href);
 
-        //currentTabContent.empty();
-        $('#' + pp).empty();
-    }
     function validateNumberp(event) {
         var keyCode = event.which || event.keyCode;
         if ((keyCode < 48 || keyCode > 57) && keyCode !== 8) {
