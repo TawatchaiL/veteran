@@ -6573,8 +6573,8 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    /* meeh */
-    overflow-y: auto !important;
+    /* meeh
+    overflow-y: auto !important;*/
     outline: 0;
 }
 

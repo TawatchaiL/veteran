@@ -658,6 +658,7 @@
                 alertType: "info",
             }).done(function(e) {
                 $('body').css("overflow-y", "hidden");
+                $('.modal').css("overflow-y", "auto");
             });
         }
 
