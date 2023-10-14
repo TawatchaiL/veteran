@@ -67,7 +67,6 @@ body {
     color: #212529;
     text-align: left;
     background-color: #fff;
-    overflow-y: scroll !important;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -6562,7 +6561,8 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
 
 .modal-open .modal {
     overflow-x: hidden;
-    overflow-y: auto;
+    /* overflow-y: auto; */
+    overflow-y: scroll !important;
 }
 
 .modal {
