@@ -774,7 +774,7 @@
                 $('.bclose').css('display', 'none');
             },
             error: function(xhr, status, error) {
-                //alert('error');
+
             }
         });
     }
