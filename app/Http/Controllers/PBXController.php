@@ -339,6 +339,11 @@ class PBXController extends Controller
     {
         $user = Auth::user();
         if ($user) {
+            /*  DB::table('crm_incoming')
+            ->where('agentno', $user->phone)
+            ->where('status', 1)
+            ->delete(); */
+
             $context = DB::table('crm_incoming')
                 ->where('uniqid', $request->input('uniqid'))->first();
 
