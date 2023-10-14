@@ -354,7 +354,7 @@
                 }
 
             }); */
-        $(document).on('click', '#custom-tabs-pop a', function(e) {
+        $(document).on('click', '#custom-tabs-pop a', async function(e) {
             e.preventDefault()
             /* var areYouSure = confirm(
                 'If you sure you wish to leave this tab?  Any data entered will NOT be saved.  To save information, use the Save buttons.'
@@ -365,7 +365,7 @@
                 // do other stuff
                 return false;
             } */
-            var areYouSure = AsyncConfirmYesNo(
+            var  areYouSure = await AsyncConfirmYesNo(
                     "Yes & No Confirmation Box",
                     "Are you hungry?"/* ,
                     function() {
