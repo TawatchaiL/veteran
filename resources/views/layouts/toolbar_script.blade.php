@@ -653,7 +653,7 @@
                 messageText: "กรุณาระบุหมายเลขที่จะโทร",
                 alertType: "info",
             }).done(function(e) {
-                $('body').css("overflow", "auto");
+                $('body').css("overflow-y", "scroll");
             });
         }
 
