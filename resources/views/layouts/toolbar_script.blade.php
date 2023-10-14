@@ -323,19 +323,17 @@
     });
 
 
-    function AsyncConfirmYesNo(title, msg/* , yesFn, noFn */) {
+    function AsyncConfirmYesNo(title, msg, yesFn, noFn) {
             var $confirm = $("#modalConfirmYesNo");
             $confirm.modal('show');
             $("#lblTitleConfirmYesNo").html(title);
             $("#lblMsgConfirmYesNo").html(msg);
             $("#btnYesConfirmYesNo").off('click').click(function() {
-                //yesFn();
-                return true;
+                yesFn();
                 $confirm.modal("hide");
             });
             $("#btnNoConfirmYesNo").off('click').click(function() {
-                //noFn();
-                return false;
+                noFn();
                 $confirm.modal("hide");
             });
         }
@@ -354,8 +352,8 @@
                 }
 
             }); */
-        $(document).on('click', '#custom-tabs-pop a', function(e) {
-            e.preventDefault()
+        $(document).on('click', '#custom-tabs-pop-*',async function(e) {
+
             /* var areYouSure = confirm(
                 'If you sure you wish to leave this tab?  Any data entered will NOT be saved.  To save information, use the Save buttons.'
                 );
@@ -365,23 +363,16 @@
                 // do other stuff
                 return false;
             } */
-            var areYouSure = AsyncConfirmYesNo(
+            await AsyncConfirmYesNo(
                     "Yes & No Confirmation Box",
-                    "Are you hungry?"/* ,
+                    "Are you hungry?",
                     function() {
                         $(this).tab('show')
                     },
                     function() {
                         e.preventDefault()
-                    } */
+                    }
                 );
-
-                if (areYouSure === true) {
-                $(this).tab('show')
-            } else {
-                // do other stuff
-                return false;
-            }
         })
 
 
