@@ -220,9 +220,14 @@ class CasesContractController extends Controller
     public function popupcontact(Request $request)
     {
         $con = $request->get('cardId');
+        $datap = DB::table('crm_contacts')
+        //->where('phoneno', '=', $con)
+       // ->orWhere('telhome', '=', $con)
+        //->orWhere('workno', '=', $con)
+        ->get();
         $template = 'casescontract.contactpop';
         $htmlContent = View::make($template, [
-            'cardid' => $con, 'telephone' => $con
+            'cardid' => $con, 'telephone' => $con, 'contactd' => $datap
         ])->render();
         return response()->json([
             'html' =>  $htmlContent,

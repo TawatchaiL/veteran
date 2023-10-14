@@ -7,10 +7,6 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <form method="post" action="{{ route('contacts.destroy_all') }}" name="delete_all"
-                                        id="delete_all">
-                                        @csrf
-                                        @method('POST')
                                         <table id="Listview"
                                             class="display nowrap table table-bordered table-striped table-hover">
                                             <thead>
@@ -24,14 +20,22 @@
                                                     <th>เบอร์โทรศัพท์มือถือ</th>
                                                     <th>วันที่บันทึก</th>
                                                     <th width="120px"></th>
-                                                    <th>More</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-
+                                                @foreach($contactd as $contact)
+                                                <tr>
+                                                    <td><input type="checkbox" class="flat"></td>
+                                                    <td>{{ $contact->hn }}</td>
+                                                    <td>{{ $contact->fname }} {{ $contact->lname }}</td>
+                                                    <td>{{ $contact->telhome }}</td>
+                                                    <td>{{ $contact->workno }}</td>
+                                                    <td>{{ $contact->created_at }}</td>
+                                                    <td width="120px"></td>
+                                                </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
-                                    </form>
                                 </div>
                             </div>
                         </div>
