@@ -125,14 +125,13 @@
         @endphp
 
         <li class="nav-item d-none d-sm-inline-block">
-            <a class="btn" role="button" id="ToolbarButton">
+            <a class="btn nav-link" role="button" id="ToolbarButton">
 
                 {{-- <b class="text-toolbar">{{ Auth::user()->name }} [
                     {{ $temporaryPhone }} ]</b> : --}} <span id="phone_state_icon"
                     class="{{ $temporaryPhoneColor }}">{!! $temporaryPhoneStatusIcon !!}</span> <b id="phone_state"
                     class="{{ $temporaryPhoneColor }}">{{ $temporaryPhoneStatus }}</b> &nbsp;&nbsp;
-                <a class="nav-link" href="#" role="button"><i
-                        class="fa-solid fa-xl fa-circle-chevron-down"></i></a>
+                <i class="fa-solid fa-xl fa-circle-chevron-down"></i>
             </a>
         </li>
 
