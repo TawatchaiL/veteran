@@ -45,7 +45,7 @@
     $('#custom-tabs-pop').on('click', '.nav-link', function() {
         let dataId = $(this).data('id');
 
-        maximizeCard(dataId);
+        //maximizeCard(dataId);
     });
 
     //popup card
@@ -832,7 +832,6 @@
                     await $('#custom-tabs-pop-' + datatId).html(response.html);
                     $(".card-footer").css("display", "block")
                     $('.bclose').css('display', 'none');
-                    maximizeCard(cardId);
                 }
             });
         });
