@@ -849,9 +849,9 @@
                     cardId: cardId
                 },
                 success: async function(response) {
-                    $('#' + cardId).removeClass('card-danger');
-                    $('#' + cardId).addClass('card-success');
-                    await $('#pop_' + cardId).html(response.html);
+                    $('#' + datatId).removeClass('card-danger');
+                    $('#' + datatId).addClass('card-success');
+                    await $('#pop_' + datatId).html(response.html);
                     $(".card-footer").css("display", "block")
                     $('.bclose').css('display', 'none');
                 }
