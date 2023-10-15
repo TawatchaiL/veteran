@@ -179,12 +179,12 @@ class ContactController extends Controller
             if($contactcount > 1){
                 $template = 'casescontract.contactpop';
                 $statusText = View::make($template, [
-                    'cardid' => $con, 'telephone' => $con, 'contactd' => $datap
+                    'cardid' => $item->telno, 'telephone' => $item->telno, 'contactd' => $datap
                 ])->render();
             }else{
                 $template = 'contacts.contact-create';
                 $statusText = View::make($template, [
-                    'cardid' => $con, 'telephone' => $con, 'contact_name' => $contact_name, 'contact_lname' => $contact_lname
+                    'cardid' => $item->telno, 'telephone' => $item->telno
                 ])->render();
             }
             //$datap = DB::table('crm_contacts')
