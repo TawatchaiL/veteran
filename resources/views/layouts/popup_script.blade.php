@@ -46,10 +46,8 @@
         let dataId = $(this).data('id');
 
         if($('#pop_'+dataId).text() == '(ผู้ติดต่อที่เคยบันทึกข้อมูลไว้แล้ว)' || $('#pop_'+dataId).text() == '(ผู้ติดต่อใหม่)'){
-            alert('OK');
+            maximizeCard(dataId);
         }
-        alert($('#pop_'+dataId).html().length);
-        //maximizeCard(dataId);
     });
 
     function positionCards() {
