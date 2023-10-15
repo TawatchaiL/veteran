@@ -818,7 +818,7 @@
                 let datatId = $(this).data("tabid");
                 let contactid = $(this).data("id");
             //alert($(this).attr("id"));
-            $('#custom-tabs-pop-' + datatId).empty();
+            
             alert('OK');
             $.ajax({
                 url: '{{ route('contacts.popupcontact') }}',
@@ -829,6 +829,7 @@
                 },
                 success: async function(response) {
                     alert('OK2');
+                    $('#custom-tabs-pop-' + datatId).empty();
                     $('#' + datatId).removeClass('card-danger');
                     $('#' + datatId).addClass('card-success');
                     await $('#custom-tabs-pop-' + datatId).html(response.html);
