@@ -127,6 +127,7 @@
 
                 $(".empty-button").on("click", function() {
                     alert($(this).data("id"));
+                    alert($(this).id);
                     $('#custom-tabs-pop-' + cardId).empty();
                 });
 
