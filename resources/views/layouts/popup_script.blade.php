@@ -55,7 +55,6 @@
             url: '{{ route('contacts.popup') }}',
             type: 'get',
             success: function(response) {
-                // Handle success
                 //console.log(response.html)
                 removeAllTabs();
             
