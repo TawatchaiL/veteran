@@ -841,8 +841,21 @@
                 let datatId = $(this).data("tabid");
             //alert($(this).attr("id"));
             $('#custom-tabs-pop-' + datatId).empty();
-            alert(datatId);
-            maximizeCard(datatId);
+            //maximizeCard(datatId);
+            $.ajax({
+                url: '{{ route('contacts.popup_content') }}',
+                type: 'POST',
+                data: {
+                    cardId: cardId
+                },
+                success: async function(response) {
+                    $('#' + cardId).removeClass('card-danger');
+                    $('#' + cardId).addClass('card-success');
+                    await $('#pop_' + cardId).html(response.html);
+                    $(".card-footer").css("display", "block")
+                    $('.bclose').css('display', 'none');
+                }
+            });
         });
         // Handle card maximize
         $(document).on('click', '.custom-bottom-right-card .card-tools [data-card-widget="maximize"]',
