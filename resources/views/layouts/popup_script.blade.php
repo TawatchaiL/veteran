@@ -129,7 +129,7 @@
                 $('#empty-button' + cardId).on("click", function() {
                 // Empty the tab content
                 alert('OK');
-                $("#tab-content-inner").empty();
+                $('#custom-tabs-pop-' + cardId).empty();
                 });
                 $('#addRowBtnp' + cardId).on('click', function() {
                     $('#myTbl3p' + cardId + ' tbody')
