@@ -142,6 +142,7 @@ class ContactController extends Controller
             'html' =>  $htmlContent,
         ]);
     }
+
     public function popupcontact(Request $request)
     {
         $con = $request->get('contactid');
@@ -149,7 +150,7 @@ class ContactController extends Controller
         $datap = DB::table('crm_contacts')
         ->where('id', '=', $con)
         ->get();
-        $template = 'contacts.contactpop';
+        $template = 'contacts.contact-create';
         $htmlContent = View::make($template, [
             'cardid' => $cards, 'telephone' => $cards, 'contactd' => $datap
         ])->render();

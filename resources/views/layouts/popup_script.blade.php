@@ -821,7 +821,7 @@
             
             alert('OK');
             $.ajax({
-                url: '{{ route('contacts.popup_content') }}',
+                url: '{{ route('contacts.popupcontact') }}',
                 type: 'POST',
                 data: {
                     contactid: contactid,
