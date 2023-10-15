@@ -125,7 +125,9 @@
                 $(".card-footer").css("display", "block")
                 $('.bclose').css('display', 'none');
 
-                $('#empty-button' + cardId).on("click", function() {
+                $(".empty-button").on("click", function() {
+                //$('#empty-button' + cardId).on("click", function() {
+                    alert('OK');
                     $('#custom-tabs-pop-' + cardId).empty();
                 });
 
