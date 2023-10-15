@@ -130,7 +130,7 @@
                 {{-- <b class="text-toolbar">{{ Auth::user()->name }} [
                     {{ $temporaryPhone }} ]</b> : --}} <span id="phone_state_icon"
                     class="{{ $temporaryPhoneColor }}">{!! $temporaryPhoneStatusIcon !!}</span> <b id="phone_state"
-                    class="{{ $temporaryPhoneColor }}">{{ $temporaryPhoneStatus }}</b>
+                    class="{{ $temporaryPhoneColor }}">{{ $temporaryPhoneStatus }}</b> <i class="fa-solid fa-xl fa-chevron-down"></i>
             </a>
         </li>
 
