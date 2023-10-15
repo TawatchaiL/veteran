@@ -126,7 +126,11 @@
                 $('.bclose').css('display', 'none');
 
                 //addemerphone(cardId);
-
+                $('#empty-button' + cardId).on("click", function() {
+                // Empty the tab content
+                alert('OK');
+                $("#tab-content-inner").empty();
+                });
                 $('#addRowBtnp' + cardId).on('click', function() {
                     $('#myTbl3p' + cardId + ' tbody')
                         .append($('<tr>')
@@ -839,11 +843,6 @@
 
 
         positionCards();
-        
-        $("#empty-button").on("click", function() {
-        // Empty the tab content
-        $("#tab-content-inner").empty();
-        });
 
         // Handle card maximize
         $(document).on('click', '.custom-bottom-right-card .card-tools [data-card-widget="maximize"]',

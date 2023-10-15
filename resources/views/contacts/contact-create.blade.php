@@ -354,6 +354,8 @@
                                 </div>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>
@@ -362,7 +364,7 @@
 
         {!! Form::close() !!}
         <div class="modal-footer {{-- justify-content-between --}}">
-            <button type="button" class="btn btn-success" id="empty-button"><i class="fas fa-download"></i>
+            <button type="button" class="btn btn-success" id="empty-button{{$cardid}}"><i class="fas fa-download"></i>
                 บันทึกข้อมูล</button>
     </div>
 
