@@ -827,6 +827,7 @@
                     cardid: datatId
                 },
                 success: async function(response) {
+                    alert('OK');
                     $('#' + datatId).removeClass('card-danger');
                     $('#' + datatId).addClass('card-success');
                     await $('#custom-tabs-pop-' + datatId).html(response.html);
