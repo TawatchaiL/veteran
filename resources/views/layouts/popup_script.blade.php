@@ -125,12 +125,10 @@
                 $(".card-footer").css("display", "block")
                 $('.bclose').css('display', 'none');
 
-                //addemerphone(cardId);
                 $('#empty-button' + cardId).on("click", function() {
-                // Empty the tab content
-                alert('OK');
-                $('#custom-tabs-pop-' + cardId).empty();
+                    $('#custom-tabs-pop-' + cardId).empty();
                 });
+
                 $('#addRowBtnp' + cardId).on('click', function() {
                     $('#myTbl3p' + cardId + ' tbody')
                         .append($('<tr>')
