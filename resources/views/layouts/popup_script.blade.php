@@ -840,7 +840,7 @@
             function() {
             //alert($(this).attr("id"));
             $('#custom-tabs-pop-' + $(this).data("tabid")).empty();
-            maximizeCard(cardId);
+            maximizeCard($(this).data("tabid"));
         });
         // Handle card maximize
         $(document).on('click', '.custom-bottom-right-card .card-tools [data-card-widget="maximize"]',
