@@ -45,7 +45,7 @@
     $('#custom-tabs-pop').on('click', '.nav-link', function() {
         let dataId = $(this).data('id');
 
-        //maximizeCard(dataId);
+        maximizeCard(dataId);
     });
 
     //popup card
@@ -59,6 +59,9 @@
                 // Handle success
                 //console.log(response.html)
                 removeAllTabs();
+                
+                alert(response.tab_link);
+                alert(response.tab_content);
                 $('#custom-tabs-pop').prepend(response.tab_link);
                 $('#custom-tabs-pop-tabContent').prepend(response.tab_content);
                 maximizeCard(response.active_id);
