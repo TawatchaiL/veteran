@@ -831,17 +831,17 @@
         });
     }
 
-    $(".empty-button").on("click", function() {
-        alert($(this).data("id"));
-        alert($(this).data("tabid"));
-        //alert($(this).attr("id"));
-        $('#custom-tabs-pop-' + $(this).data("tabid")).empty();
-    });
-
     $(document).ready(function() {
 
 
         positionCards();
+
+        $(".empty-button").on("click", function() {
+            alert($(this).data("id"));
+            alert($(this).data("tabid"));
+            //alert($(this).attr("id"));
+            $('#custom-tabs-pop-' + $(this).data("tabid")).empty();
+        });
 
         // Handle card maximize
         $(document).on('click', '.custom-bottom-right-card .card-tools [data-card-widget="maximize"]',
