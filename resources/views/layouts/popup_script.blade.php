@@ -845,7 +845,6 @@
                 var cardId = card.data('id');
 
                 if (!card.hasClass('collapsed-card')) {
-                    // Card is not minimized
                     //card.css('right', '-300px'); // Adjust as needed
                     card.css('z-index', '99999');
                     $('body').css('overflow', 'hidden');
