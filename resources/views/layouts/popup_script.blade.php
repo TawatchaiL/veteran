@@ -857,8 +857,6 @@
                     positionCards();
 
                 }
-
-                // Toggle minimized class
                 card.toggleClass('collapsed-card');
 
 
