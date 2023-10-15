@@ -835,7 +835,7 @@
                 }
             });
         });
-        // Handle card maximize
+
         $(document).on('click', '.custom-bottom-right-card .card-tools [data-card-widget="maximize"]',
             function() {
 
