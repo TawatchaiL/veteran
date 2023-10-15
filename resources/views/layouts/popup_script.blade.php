@@ -823,7 +823,7 @@
                 url: '{{ route('contacts.popupcontact') }}',
                 type: 'POST',
                 data: {
-                    contactid: contactid
+                    contactid: contactid,
                     cardid: datatId
                 },
                 success: async function(response) {
