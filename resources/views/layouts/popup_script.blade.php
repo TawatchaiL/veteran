@@ -97,7 +97,6 @@
         });
     }
 
-    // Minimize card AJAX function
     function minimizeCard(cardId) {
         $.ajax({
             url: 'your_minimize_url',
