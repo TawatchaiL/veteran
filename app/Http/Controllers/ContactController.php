@@ -111,8 +111,6 @@ class ContactController extends Controller
 
         $centre = Department::where([['status', '1']])
             ->orderBy("name", "asc")->get();
-
-
         return view('contacts.index')->with(['centre' => $centre]);
     }
 
