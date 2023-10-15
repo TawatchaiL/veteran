@@ -786,27 +786,6 @@
         });
     }
 
-    function listcontact(cardId) {
-        $.ajax({
-            url: '{{ route('casescontract.popupcontact') }}',
-            type: 'POST',
-            data: {
-                cardId: cardId
-            },
-            success: async function(response) {
-                //alert(response.html);
-                $('#' + cardId).removeClass('card-danger');
-                $('#' + cardId).addClass('card-success');
-                await $('#pop_' + cardId).html(response.html);
-                $(".card-footer").css("display", "block")
-                $('.bclose').css('display', 'none');
-            },
-            error: function(xhr, status, error) {
-
-            }
-        });
-    }
-
     function validateNumberp(event) {
         var keyCode = event.which || event.keyCode;
         if ((keyCode < 48 || keyCode > 57) && keyCode !== 8) {
