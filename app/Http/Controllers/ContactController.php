@@ -171,15 +171,32 @@ class ContactController extends Controller
         $i = 1;
         foreach ($datac as $item) {
             $datap = DB::table('crm_contacts')
-                ->where('phoneno', '=', $item->telno)
-                ->orWhere('telhome', '=', $item->telno)
-                ->orWhere('workno', '=', $item->telno)
-                ->count();
-            if ($datap > 0) {
-                $statusText = "(ผู้ติดต่อที่เคยบันทึกข้อมูลไว้แล้ว)";
-            } else {
-                $statusText = "(ผู้ติดต่อใหม่)&nbsp;&nbsp;&nbsp;";
+            ->where('phoneno', '=', $con)
+            ->orWhere('telhome', '=', $con)
+            ->orWhere('workno', '=', $con)
+            ->get();
+            $contactcount = count($datap);
+            if($contactcount > 1){
+                $template = 'casescontract.contactpop';
+                $statusText = View::make($template, [
+                    'cardid' => $con, 'telephone' => $con, 'contactd' => $datap
+                ])->render();
+            }else{
+                $template = 'contacts.contact-create';
+                $statusText = View::make($template, [
+                    'cardid' => $con, 'telephone' => $con, 'contact_name' => $contact_name, 'contact_lname' => $contact_lname
+                ])->render();
             }
+            //$datap = DB::table('crm_contacts')
+            //    ->where('phoneno', '=', $item->telno)
+            //    ->orWhere('telhome', '=', $item->telno)
+            //    ->orWhere('workno', '=', $item->telno)
+            //   ->count();
+            //if ($datap > 0) {
+            //    $statusText = "(ผู้ติดต่อที่เคยบันทึกข้อมูลไว้แล้ว)";
+            //} else {
+            //    $statusText = "(ผู้ติดต่อใหม่)&nbsp;&nbsp;&nbsp;";
+            //}
             /* style="width: 300px; height: 150px;"  */
 
             if ($i == 1) {

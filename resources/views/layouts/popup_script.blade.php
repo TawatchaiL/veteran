@@ -45,7 +45,7 @@
     $('#custom-tabs-pop').on('click', '.nav-link', function() {
         let dataId = $(this).data('id');
 
-        maximizeCard(dataId);
+        //maximizeCard(dataId);
     });
 
     //popup card
@@ -63,10 +63,7 @@
                 $('#custom-tabs-pop').prepend(response.tab_link);
                 $('#custom-tabs-pop-tabContent').prepend(response.tab_content);
 
-                $('nav#custom-tabs-pop').each(function() {
-                        alert(this.data('id'));
-                });
-                //maximizeCard(response.active_id);
+                maximizeCard(response.active_id);
                 //$('#dpopup').html(response.html);
                 // Position the cards after dynamic content is loaded
                 /*  $('.custom-bottom-right-card').each(function(index) {
