@@ -211,9 +211,7 @@ class ContactController extends Controller
             }
 
             $html = '<div class="col-md-12">
-            <div class=" pop_content" id="pop_' . $item->telno . '">
-            ' . $statusText . '
-            </div></div>';
+            <div class=" pop_content" id="pop_' . $item->telno . '">' . $statusText . '</div></div>';
             $tab_link .= '<li class="nav-item">
             <a class="popup-tab-font-size nav-link ' . $tab_link_active . '" id="custom-tabs-pop-' . $item->telno . '-tab" data-toggle="pill" data-id="' . $item->telno . '"
                 href="#custom-tabs-pop-' . $item->telno . '" role="tab" aria-controls="custom-tabs-pop-' . $item->telno . '"
