@@ -126,8 +126,7 @@
                 $('.bclose').css('display', 'none');
 
                 $(".empty-button").on("click", function() {
-                //$('#empty-button' + cardId).on("click", function() {
-                    alert('OK');
+                    alert($(this).data("id"));
                     $('#custom-tabs-pop-' + cardId).empty();
                 });
 
