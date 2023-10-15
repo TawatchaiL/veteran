@@ -171,9 +171,9 @@ class ContactController extends Controller
         $i = 1;
         foreach ($datac as $item) {
             $datap = DB::table('crm_contacts')
-            ->where('phoneno', '=', $con)
-            ->orWhere('telhome', '=', $con)
-            ->orWhere('workno', '=', $con)
+            ->where('phoneno', '=', $item->telno)
+            ->orWhere('telhome', '=', $item->telno)
+            ->orWhere('workno', '=', $item->telno)
             ->get();
             $contactcount = count($datap);
             if($contactcount > 1){
