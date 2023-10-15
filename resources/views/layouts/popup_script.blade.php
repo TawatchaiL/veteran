@@ -836,16 +836,8 @@
 
         positionCards();
 
-        //$(".empty-button").on("click", function() {
-        //    alert($(this).data("id"));
-        //    alert($(this).data("tabid"));
-            //alert($(this).attr("id"));
-        //    $('#custom-tabs-pop-' + $(this).data("tabid")).empty();
-        //});
         $(document).on('click', '.empty-button',
             function() {
-            alert($(this).data("id"));
-            alert($(this).data("tabid"));
             //alert($(this).attr("id"));
             $('#custom-tabs-pop-' + $(this).data("tabid")).empty();
         });
