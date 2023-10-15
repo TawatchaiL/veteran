@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/contacts', [App\Http\Controllers\ContactController::class, 'index'])->name('contacts');
     Route::post('/contacts/incoming', [App\Http\Controllers\ContactController::class, 'incoming'])->name('contacts.incoming');
+    Route::post('/contacts/popupcontact', [App\Http\Controllers\ContactController::class, 'popupcontact'])->name('contacts.popupcontact');
     Route::get('/contacts/popup', [App\Http\Controllers\ContactController::class, 'popup'])->name('contacts.popup');
     Route::get('/contacts/running', [App\Http\Controllers\ContactController::class, 'create'])->name('contacts.running');
     Route::post('/contacts/store', [App\Http\Controllers\ContactController::class, 'store'])->name('contacts.store');
@@ -85,7 +86,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/cases/destroy_all', [App\Http\Controllers\CasesController::class, 'destroy_all'])->name('cases.destroy_all');
 
     Route::get('/casescontract', [App\Http\Controllers\CasesContractController::class, 'index'])->name('casescontract.index');
-    Route::post('/casescontract/popupcontact', [App\Http\Controllers\CasesContractController::class, 'popupcontact'])->name('casescontract.popupcontact');
     Route::post('/casescontract/store', [App\Http\Controllers\CasesContractController::class, 'store'])->name('casescontract.store');
     Route::get('/casescontract/edit/{id}', [App\Http\Controllers\CasesContractController::class, 'edit'])->name('casescontract.edit');
     Route::put('/casescontract/save/{id}', [App\Http\Controllers\CasesContractController::class, 'update'])->name('cacasescontractses.save');

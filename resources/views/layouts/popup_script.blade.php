@@ -839,14 +839,14 @@
         $(document).on('click', '.selectcontactp-button',
             function() {
                 let datatId = $(this).data("tabid");
+                let contactid = $(this).data("id");
             //alert($(this).attr("id"));
             $('#custom-tabs-pop-' + datatId).empty();
-            //maximizeCard(datatId);
             $.ajax({
-                url: '{{ route('contacts.popup_content') }}',
+                url: '{{ route('contacts.popupcontact') }}',
                 type: 'POST',
                 data: {
-                    cardId: datatId
+                    contactid: contactid
                 },
                 success: async function(response) {
                     $('#' + datatId).removeClass('card-danger');
