@@ -125,7 +125,7 @@
         @endphp
 
         <li class="nav-item d-none d-sm-inline-block">
-            <a class="btn nav-link" role="button" id="ToolbarButton">
+            <a class="nav-link" role="button" id="ToolbarButton">
 
                 {{-- <b class="text-toolbar">{{ Auth::user()->name }} [
                     {{ $temporaryPhone }} ]</b> : --}} <span id="phone_state_icon"
