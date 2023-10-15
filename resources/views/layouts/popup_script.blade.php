@@ -125,13 +125,6 @@
                 $(".card-footer").css("display", "block")
                 $('.bclose').css('display', 'none');
 
-                $(".empty-button").on("click", function() {
-                    alert($(this).data("id"));
-                    alert($(this).data("tid"));
-                    alert($(this).attr("id"));
-                    $('#custom-tabs-pop-' + $(this).attr("id")).empty();
-                });
-
                 $('#addRowBtnp' + cardId).on('click', function() {
                     $('#myTbl3p' + cardId + ' tbody')
                         .append($('<tr>')
@@ -838,7 +831,12 @@
         });
     }
 
-
+    $(".empty-button").on("click", function() {
+        alert($(this).data("id"));
+        alert($(this).data("tabid"));
+        //alert($(this).attr("id"));
+        $('#custom-tabs-pop-' + $(this).data("tabid")).empty();
+    });
 
     $(document).ready(function() {
 
