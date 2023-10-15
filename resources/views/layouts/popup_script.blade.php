@@ -830,11 +830,11 @@
                 success: async function(response) {
                     //$('#custom-tabs-pop-' + datatId).empty();
                     alert(response.html);
-                    $('#' + datatId).removeClass('card-danger');
-                    $('#' + datatId).addClass('card-success');
+                    //$('#' + datatId).removeClass('card-danger');
+                    //$('#' + datatId).addClass('card-success');
                     await $('#custom-tabs-pop-' + datatId).html(response.html);
-                    $(".card-footer").css("display", "block")
-                    $('.bclose').css('display', 'none');
+                    //$(".card-footer").css("display", "block")
+                    //$('.bclose').css('display', 'none');
                 }
             });
         });
