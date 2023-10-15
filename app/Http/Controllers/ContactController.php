@@ -60,7 +60,6 @@ class ContactController extends Controller
             } else if ($request->input('seachtype') === "2") {
                 $datas = DB::table('crm_contacts')->where('telhome', '=', $request->input('seachtext'))
                     ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
-                    //->whereBetween('adddate', [$startDate, $endDate])
                     ->get();
             } else if ($request->input('seachtype') === "3") {
                 $datas = DB::table('crm_contacts')->where('phoneno', '=', $request->input('seachtext'))
