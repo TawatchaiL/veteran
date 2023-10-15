@@ -47,7 +47,6 @@
         //maximizeCard(dataId);
     });
 
-    //popup card
     function positionCards() {
         var cardPositions = [];
 
