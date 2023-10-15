@@ -164,6 +164,7 @@ class ContactController extends Controller
             ->where('agentno', '=', $user->phone)
             ->orWhere('status', '=', "0")
             ->orWhere('status', '=', "1")
+            //->groupBy('telno')
             ->orderBy('id', 'desc')
             ->get();
         $html = '';
