@@ -846,7 +846,7 @@
                 url: '{{ route('contacts.popup_content') }}',
                 type: 'POST',
                 data: {
-                    cardId: cardId
+                    cardId: datatId
                 },
                 success: async function(response) {
                     $('#' + datatId).removeClass('card-danger');
