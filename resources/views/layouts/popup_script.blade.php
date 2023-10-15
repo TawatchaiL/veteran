@@ -127,8 +127,9 @@
 
                 $(".empty-button").on("click", function() {
                     alert($(this).data("id"));
+                    alert($(this).data("tid"));
                     alert($(this).attr("id"));
-                    $('#custom-tabs-pop-' + cardId).empty();
+                    $('#custom-tabs-pop-' + $(this).attr("id")).empty();
                 });
 
                 $('#addRowBtnp' + cardId).on('click', function() {
