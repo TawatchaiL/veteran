@@ -195,7 +195,7 @@ class ContactController extends Controller
             if ($datap > 0) {
                 $statusText = "(ผู้ติดต่อที่เคยบันทึกข้อมูลไว้แล้ว)";
             } else {
-                $statusText = "(ผู้ติดต่อใหม่)&nbsp;&nbsp;&nbsp;";
+                $statusText = "(ผู้ติดต่อใหม่)";
             }
             /* style="width: 300px; height: 150px;"  */
 

@@ -44,6 +44,10 @@
 
     $('#custom-tabs-pop').on('click', '.nav-link', function() {
         let dataId = $(this).data('id');
+
+        if($('#pop_'+dataId).text() == '(ผู้ติดต่อที่เคยบันทึกข้อมูลไว้แล้ว)' || $('#pop_'+dataId).text() == '(ผู้ติดต่อใหม่)'){
+            alert('OK');
+        }
         alert($('#pop_'+dataId).text());
         //maximizeCard(dataId);
     });
