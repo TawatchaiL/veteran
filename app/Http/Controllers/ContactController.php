@@ -144,13 +144,14 @@ class ContactController extends Controller
     }
     public function popupcontact(Request $request)
     {
-        $con = $request->get('cardId');
+        $con = $request->get('contactid');
+        $cards = $request->get('cardid');
         $datap = DB::table('crm_contacts')
         ->where('id', '=', $con)
         ->get();
         $template = 'contacts.contactpop';
         $htmlContent = View::make($template, [
-            'cardid' => $con, 'telephone' => $con, 'contactd' => $datap
+            'cardid' => $cards, 'telephone' => $cards, 'contactd' => $datap
         ])->render();
         return response()->json([
             'html' =>  $htmlContent,

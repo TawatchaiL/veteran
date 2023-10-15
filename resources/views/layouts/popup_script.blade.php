@@ -824,6 +824,7 @@
                 type: 'POST',
                 data: {
                     contactid: contactid
+                    cardid: datatId
                 },
                 success: async function(response) {
                     $('#' + datatId).removeClass('card-danger');
