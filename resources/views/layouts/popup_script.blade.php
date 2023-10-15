@@ -838,9 +838,11 @@
 
         $(document).on('click', '.selectcontactp-button',
             function() {
+                let datatId = $(this).data("tabid");
             //alert($(this).attr("id"));
-            $('#custom-tabs-pop-' + $(this).data("tabid")).empty();
-            maximizeCard($(this).data("tabid"));
+            $('#custom-tabs-pop-' + datatId).empty();
+            alert(datatId);
+            maximizeCard(datatId);
         });
         // Handle card maximize
         $(document).on('click', '.custom-bottom-right-card .card-tools [data-card-widget="maximize"]',
