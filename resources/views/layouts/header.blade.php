@@ -93,8 +93,8 @@
         </li> --}}
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
-                <i class="far fa-comments"></i>
-                <span class="badge badge-danger navbar-badge">รายการผู้ติดต่อที่ยังไม่ได้บันทึก 3</span>
+                <i class="far fa-xl fa-comments"></i>
+                <span class="badge badge-danger navbar-badge">3</span>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <a href="#" class="dropdown-item">
