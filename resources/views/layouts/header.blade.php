@@ -131,7 +131,7 @@
                     {{ $temporaryPhone }} ]</b> : --}} <span id="phone_state_icon"
                     class="{{ $temporaryPhoneColor }}">{!! $temporaryPhoneStatusIcon !!}</span> <b id="phone_state"
                     class="{{ $temporaryPhoneColor }}">{{ $temporaryPhoneStatus }}</b> &nbsp;&nbsp;
-                <i class="fa-solid fa-xl fa-circle-chevron-down"></i>
+                <b><i class="fa-solid fa-xl fa-circle-chevron-down"></i></b>
             </a>
         </li>
 
