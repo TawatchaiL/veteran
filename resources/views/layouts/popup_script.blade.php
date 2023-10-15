@@ -48,7 +48,7 @@
         if($('#pop_'+dataId).text() == '(ผู้ติดต่อที่เคยบันทึกข้อมูลไว้แล้ว)' || $('#pop_'+dataId).text() == '(ผู้ติดต่อใหม่)'){
             alert('OK');
         }
-        alert($('#pop_'+dataId).text());
+        alert($('#pop_'+dataId).text().length);
         //maximizeCard(dataId);
     });
 
@@ -104,7 +104,7 @@
                 cardId: cardId
             },
             success: function(response) {
-                
+
             },
             error: function(xhr, status, error) {
                 // Handle error
