@@ -851,7 +851,7 @@
                 success: async function(response) {
                     $('#' + datatId).removeClass('card-danger');
                     $('#' + datatId).addClass('card-success');
-                    await $('#pop_' + datatId).html(response.html);
+                    await $('#custom-tabs-pop-' + datatId).html(response.html);
                     $(".card-footer").css("display", "block")
                     $('.bclose').css('display', 'none');
                 }
