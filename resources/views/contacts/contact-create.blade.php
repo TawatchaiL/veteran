@@ -245,7 +245,7 @@
                             </div>
                             <div class="col-md-12" align="right">
 
-                                <button type="button" id="addRowBtnp{{$cardid}}" class="btn btn-warning btnAddg"><i
+                                <button type="button" id="addRowBtnp{{$cardid}}" class="btn btn-warning btnAddg addRowBtnp-button" data-id="" data-tabid="{{ $cardid }}"><i
                                         class="fa-solid fa-plus"></i>
                                     เพิ่มบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน</button>
                             </div>
