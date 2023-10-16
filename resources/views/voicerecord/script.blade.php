@@ -220,17 +220,17 @@
                     end,
                     comment
                 }) => {
-                    if (startTime !== null && endTime !== null && content !== null) {
+                    if (start !== null && end !== null && comment !== null) {
                         const region = wsRegions.addRegion({
                             start: start,
-                            end: start,
+                            end: end,
                             color: 'rgba(255, 0, 0, 0.1)'
                         });
 
                         const tooltip = document.createElement('div');
                         tooltip.className = 'region-tooltip';
                         tooltip.style.paddingLeft = '10px';
-                        tooltip.textContent = content;
+                        tooltip.textContent = comment;
 
                         region.element.appendChild(tooltip);
                         customDialog.style.display = 'none';
