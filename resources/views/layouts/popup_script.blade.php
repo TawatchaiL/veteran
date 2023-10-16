@@ -763,18 +763,16 @@
         });
         
         $(document).on("change", ".districtpchang", function () {
-                alert('OK');
                 let datatId = $(this).data("tabid");
                 var cartonOb = $('#subdistrictp' + datatId);
-                cartonOb.html('<option value="">เลือกตำบล</option>');
+                //cartonOb.html('<option value="">เลือกตำบล</option>');
                 $.ajax({
                     url: "thsubdistrict/subdistrict/" + $(this).val(),
                     method: 'GET',
                     success: function(res) {
-                        cartonOb.html(
-                            '<option value="">เลือกตำบล</option>');
+                        cartonOb.html('<option value="">เลือกตำบล</option>');
                         $.each(res.data, function(index, item) {
-                            districtOb.append(
+                            cartonOb.append(
                                 $('<option></option>').val(item.code).html(item.name_th)
                             );
                         });
