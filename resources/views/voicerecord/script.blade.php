@@ -240,9 +240,11 @@
                 console.log('start : ' + region.start);
 
                 const commentId = region.id;
+                const csrfToken = document.querySelector('meta[name="csrf-token"]')
+                        .getAttribute('content');
                 $.ajax({
                     type: "DELETE",
-                    url: 'route("voicerecord.destroy")'+commentId,
+                    url: 'route("voicerecord.destroy")' + commentId,
                     headers: {
                         'X-CSRF-TOKEN': csrfToken
                     },
@@ -252,8 +254,7 @@
                         console.log(response.message);
 
                     },
-                    error: function(error) {
-                    }
+                    error: function(error) {}
                 });
             });
 
