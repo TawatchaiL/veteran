@@ -252,6 +252,8 @@
                     success: function(response) {
                         region.remove();
                         console.log(response.message);
+                        $('#CreateModal').modal('hide');
+
 
                     },
                     error: function(error) {}
@@ -267,12 +269,9 @@
                 if (currentRegion) {
 
                     // Remove any existing tooltips in the current region
-                    const existingTooltips = currentRegion.element.querySelectorAll(
-                        '.region-tooltip');
+                    const existingTooltips = currentRegion.element.querySelectorAll('.region-tooltip');
                     existingTooltips.forEach((tooltip) => {
                         tooltip.remove();
-                        // console.log('comments_id2 : ' + tooltipsData.id);
-
                     });
 
                     // Create a tooltip element
