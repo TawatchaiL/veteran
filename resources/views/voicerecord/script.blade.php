@@ -243,23 +243,6 @@
                 // Handle the case where tooltipsData is null
                 console.log('Tooltips data is null');
             }
-
-            /*  // Create a button to remove the region
-            const regionButton = document.createElement('button');
-            regionButton.className = 'remove-region-button';
-            regionButton.textContent = 'X';
-
-            // Add a click event listener to remove the region when the button is clicked
-            regionButton.addEventListener('click', () => {
-                const activeRegion = wsRegions.getActiveRegion();
-                if (activeRegion) {
-                    activeRegion.remove();
-                }
-            });
-           */
-            // Append the button to the container
-            //const container = document.querySelector('#waveform-container');
-            //container.appendChild(regionButton);
         });
 
         const customDialog = document.getElementById('custom-dialog');
@@ -347,16 +330,8 @@
 
                 }
             });
-
-            // Attach a click event handler to the button
-
-
-            // Append the button to the region element
             region.element.appendChild(button);
-
             currentRegion = region;
-
-            // console.log(currentRegion);
         });
 
         wsRegions.on('region-updated', (region) => {
@@ -408,7 +383,6 @@
         //const newUrl = 'wav/PinkPanther60.wav'; // Replace with the new URL
         // const newUrl = 'wav/2023/10/01/q-4567-8888-20231001-141026-1696169425.161.wav';
         var dataId = $(this).data('id'); // Use $(this) to refer to the clicked button
-
         $.ajax({
             type: "GET",
             url: "voicerecord/edit/" + dataId,
@@ -419,15 +393,14 @@
                 $('#vioc_name').text(response.voic_name);
                 $('#call_recording_id').val(response.remoteData2.id);
                 $('#uniqueid').val(response.remoteData2.uniqueid);
-                // console.log('Button clicked!');
+                const tooltipsData = response.tooltips;
+                console.log(tooltipsData);
                 initializeWaveSurfer(newUrl);
             },
             error: function(error) {
                 console.error('Error in Ajax request:', error);
             }
         });
-
-
     });
 
 
