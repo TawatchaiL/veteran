@@ -91,6 +91,7 @@
             gg
             </a>
         </li> --}}
+        @if (empty($sidebarc))
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-xl fa-comments"></i>
@@ -101,7 +102,7 @@
 
             </div>
         </li>
-
+        @endif
 
     </ul>
 
