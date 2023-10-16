@@ -577,20 +577,41 @@
         positionCards();
         //casetype changes
         $(document).on("change", ".casetypechang", function () {
-                    let cardId = $(this).data("tabid");
-                    let levcase = $(this).data("lev");
+                    var cardId = $(this).data("tabid");
+                    var levcase = $(this).data("lev");
                     var parent_id = $(this).val();
                     var nextcase = levcase + 1;
-                    //$('#casetype2p' + cardId).html('<option value="">เลือกรายละเอียดเคส</option>');
-                    //$('#casetype3p' + cardId).html('<option value="">เลือกรายละเอียดเคสย่อย</option>');
-                    //$('#casetype4p' + cardId).html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
-                    //$('#casetype5p' + cardId).html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
-                    //$('#casetype6p' + cardId).html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
+                    alert(nextcase);
+                    $('#casetype2p' + cardId).html('<option value="">เลือกรายละเอียดเคส</option>');
+                    $('#casetype3p' + cardId).html('<option value="">เลือกรายละเอียดเคสย่อย</option>');
+                    $('#casetype4p' + cardId).html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
+                    $('#casetype5p' + cardId).html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
+                    $('#casetype6p' + cardId).html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
                     if (parent_id != '' && levcase < 6) {
-                        alert('OK');
-
+                        $.ajax({
+                            url: "casetype6/casetype/" + parent_id,
+                            method: 'GET',
+                            async: false,
+                            success: function(res) {
+                                $.each(res.data, function(index, item) {
+                                    $('#casetype' + nextcase + 'p' + cardId).append(
+                                        $('<option></option>').val(item.id)
+                                        .html(item.name)
+                                    );
+                                });
+                            }
+                        });
+                        $('#casetype2p' + cardId).attr('disabled', false);
+                        $('#casetype3p' + cardId).attr('disabled', true);
+                        $('#casetype4p' + cardId).attr('disabled', true);
+                        $('#casetype5p' + cardId).attr('disabled', true);
+                        $('#casetype6p' + cardId).attr('disabled', true);
                     } else {
-                        alert('NOOK');
+                        $('#casetype2p' + cardId).attr('disabled', true);
+                        $('#casetype3p' + cardId).attr('disabled', true);
+                        $('#casetype4p' + cardId).attr('disabled', true);
+                        $('#casetype5p' + cardId).attr('disabled', true);
+                        $('#casetype6p' + cardId).attr('disabled', true);
                     }
         });
         //province changes
