@@ -185,30 +185,64 @@
             wavesurfer.setVolume(0.4);
             document.querySelector('#volume').value = wavesurfer.getVolume();
 
+            // const tooltipsData = fetchTooltipsFromDB();
+            // // Iterate through the tooltip data and add tooltips to the waveform
+            // tooltipsData.forEach(({
+            //     startTime,
+            //     endTime,
+            //     content
+            // }) => {
+            //     // Create a region for each tooltip
+            //     const region = wsRegions.addRegion({
+            //         start: startTime,
+            //         end: endTime,
+            //         color: 'rgba(255, 0, 0, 0.1)', // Set your desired tooltip color
+            //     });
+
+            //     const tooltip = document.createElement('div');
+            //     tooltip.className = 'region-tooltip';
+            //     tooltip.style.paddingLeft = '10px';
+            //     tooltip.textContent = content;
+
+            //     // Attach the tooltip to the region's element
+            //     region.element.appendChild(tooltip);
+            //     customDialog.style.display = 'none';
+
+            // });
+
+            //test null
+
             const tooltipsData = fetchTooltipsFromDB();
-            // Iterate through the tooltip data and add tooltips to the waveform
-            tooltipsData.forEach(({
-                startTime,
-                endTime,
-                content
-            }) => {
-                // Create a region for each tooltip
-                const region = wsRegions.addRegion({
-                    start: startTime,
-                    end: endTime,
-                    color: 'rgba(255, 0, 0, 0.1)', // Set your desired tooltip color
+
+            if (tooltipsData) {
+                tooltipsData.forEach(({
+                    startTime,
+                    endTime,
+                    content
+                }) => {
+                    if (startTime !== null && endTime !== null && content !== null) {
+                        const region = wsRegions.addRegion({
+                            start: startTime,
+                            end: endTime,
+                            color: 'rgba(255, 0, 0, 0.1)'
+                        });
+
+                        const tooltip = document.createElement('div');
+                        tooltip.className = 'region-tooltip';
+                        tooltip.style.paddingLeft = '10px';
+                        tooltip.textContent = content;
+
+                        region.element.appendChild(tooltip);
+                        customDialog.style.display = 'none';
+                    } else {
+                        // Handle the case where any of the properties is null
+                        console.log('One or more properties are null in the tooltip data');
+                    }
                 });
-
-                const tooltip = document.createElement('div');
-                tooltip.className = 'region-tooltip';
-                tooltip.style.paddingLeft = '10px';
-                tooltip.textContent = content;
-
-                // Attach the tooltip to the region's element
-                region.element.appendChild(tooltip);
-                customDialog.style.display = 'none';
-
-            });
+            } else {
+                // Handle the case where tooltipsData is null
+                console.log('Tooltips data is null');
+            }
 
             /*  // Create a button to remove the region
             const regionButton = document.createElement('button');
@@ -247,29 +281,27 @@
         wsRegions.on('region-created', (region) => {
             // Callback code
             console.log('Region Created:', region);
-
             const button = document.createElement('button');
             button.className = 'remove-region-button';
             button.textContent = 'X';
             customDialog.style.display = 'block';
-
             button.addEventListener('click', () => {
                 // Remove the region when the button is clicked
                 region.remove();
                 console.log(region);
 
             });
-
             document.getElementById('add-content-button').addEventListener('click', function(e) {
                 // addContentButton.addEventListener('click', () => {
-                    console.log('current Region');
-                    console.log(currentRegion);
+                console.log('current Region');
+                console.log(currentRegion);
 
                 e.preventDefault();
                 if (currentRegion) {
 
                     // Remove any existing tooltips in the current region
-                    const existingTooltips = currentRegion.element.querySelectorAll('.region-tooltip');
+                    const existingTooltips = currentRegion.element.querySelectorAll(
+                        '.region-tooltip');
                     existingTooltips.forEach((tooltip) => {
                         tooltip.remove();
                     });
@@ -286,7 +318,8 @@
 
                     const callRecordingId = $('#call_recording_id').val();
                     const uniqueId = $('#uniqueid').val();
-                    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                    const csrfToken = document.querySelector('meta[name="csrf-token"]')
+                        .getAttribute('content');
                     // const content = contentInput.value;
                     //end
                     $.ajax({
