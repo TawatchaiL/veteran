@@ -905,7 +905,7 @@
             if (areYouSure === true) {
                 $(this).tab('show')
             } else {
-                /// do other stuff
+                // do other stuff
                 return false;
             }
         })
