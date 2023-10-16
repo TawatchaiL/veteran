@@ -32,5 +32,4 @@ Route::get('manon', function (Request $request) {
 
 Route::get('/voicerecord/edit/{id}', [App\Http\Controllers\VoicerecordController::class, 'edit'])->name('voicerecord.edit');
 Route::get('/voicerecord/comment', [App\Http\Controllers\VoicerecordController::class, 'comment'])->name('voicerecord.comment');
-
-
+Route::delete('/voicerecord/comment/{id}', [App\Http\Controllers\VoicerecordController::class, 'destroy'])->name('voicerecord.destroy');

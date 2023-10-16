@@ -210,23 +210,6 @@ class CasesContractController extends Controller
         return response()->json(['success' => 'แก้ไข เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
     }
 
-    public function popupcontact(Request $request)
-    {
-        $con = $request->get('cardId');
-        $datap = DB::table('crm_contacts')
-        ->where('phoneno', '=', $con)
-        ->orWhere('telhome', '=', $con)
-        ->orWhere('workno', '=', $con)
-        ->get();
-        $template = 'casescontract.contactpop';
-        $htmlContent = View::make($template, [
-            'cardid' => $con, 'telephone' => $con, 'contactd' => $datap
-        ])->render();
-        return response()->json([
-            'html' =>  $htmlContent,
-        ]);
-    }
-
     public function destroy(Request $request)
     {
         $id = $request->get('id');

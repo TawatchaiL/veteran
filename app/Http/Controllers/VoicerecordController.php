@@ -153,50 +153,47 @@ class VoicerecordController extends Controller
     }
     public function edit($id)
     {
-
-        // dd($id);
-        // $remoteData2 = DB::connection('remote_connection')->table('call_center.call_recording')
-        // // ->where('id',$id)
-        // ->get();
-
         $remoteData2 = DB::connection('remote_connection')->table('call_center.call_recording')
             ->where('id', $id)
             ->first();
-
-        // dd($remoteData2, $id);
-        // $data =  $remoteData2->where('id',$id);
         $voic = $remoteData2->recordingfile;
         $voic_name = substr($voic, 14);
-        // dd($voic);
-
-        // return view('voicerecord.create', compact('voic'));
-        return response()->json(['voic' => $voic, 'remoteData2' => $remoteData2, 'voic_name' => $voic_name]);
-        // return view('voicerecord.create_run',[
-        //     'voic' => $voic,
-        //     'remoteData2' => $remoteData2,
-        // ]);
+        $tooltips = Comment::where('call_recording_id', $id)->get();
+        return response()->json(['voic' => $voic, 'remoteData2' => $remoteData2, 'voic_name' => $voic_name, 'tooltips' => $tooltips]);
     }
 
     public function comment(Request $request)
     {
-        // dd($request);
-        //start work
-        // $callRecordingId = $request->input('callRecordingId');
-        // $uniqueId = $request->input('uniqueId');
-        // $content = $request->input('content');
-        // $start = $request->input('start');
-        // $end = $request->input('end');
+        $call_recording_id = $request->call_recording_id;
+        $uniqueid = $request->uniqueid;
+        $start = $request->start;
+        $end = $request->end;
 
-        // Comment::create([
-        //     'call_recording_id' => $callRecordingId,
-        //     'uniqueid' => $uniqueId,
-        //     'comment' => $content,
-        //     'start' => $start,
-        //     'end' => $end,
-        // ]);
-        $input = $request->all();
-        Comment::create($input);
-        // dd($request,$input);
-        return response()->json(['message' => 'Comment saved successfully']);
+        $check_data = Comment::where([
+            ['call_recording_id', $call_recording_id],
+            ['uniqueid', $uniqueid],
+            ['start', $start],
+            ['end', $end]
+        ])->get();
+
+        if (count($check_data) > 0) {
+            return response()->json(['message' => 'ข้อมูลซ้ำ']);
+        } else {
+            $input = $request->all();
+            Comment::create($input);
+            return response()->json(['message' => 'Comment saved successfully']);
+        }
+    }
+    public function destroy($id)
+    {
+        // Code to delete the comment with the given ID
+        $comment = Comment::find($id);
+
+        if (!$comment) {
+            return response()->json(['message' => 'Comment not found'], 404);
+        }
+
+        $comment->delete();
+        return response()->json(['message' => 'Comment deleted successfully']);
     }
 }

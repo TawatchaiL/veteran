@@ -60,7 +60,6 @@ class ContactController extends Controller
             } else if ($request->input('seachtype') === "2") {
                 $datas = DB::table('crm_contacts')->where('telhome', '=', $request->input('seachtext'))
                     ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
-                    //->whereBetween('adddate', [$startDate, $endDate])
                     ->get();
             } else if ($request->input('seachtype') === "3") {
                 $datas = DB::table('crm_contacts')->where('phoneno', '=', $request->input('seachtext'))
@@ -112,8 +111,6 @@ class ContactController extends Controller
 
         $centre = Department::where([['status', '1']])
             ->orderBy("name", "asc")->get();
-
-
         return view('contacts.index')->with(['centre' => $centre]);
     }
 
@@ -128,22 +125,37 @@ class ContactController extends Controller
             ->orWhere('workno', '=', $con)
             ->get();
         $contactcount = count($datap);
-        //if($contactcount > 1){
-        //    $template = 'casescontract.contactpop';
-        //    $htmlContent = View::make($template, [
-        //        'cardid' => $con, 'telephone' => $con, 'contactd' => $datap
-        //    ])->render();
-        //}else{
+        if($contactcount > 1){
+            $template = 'casescontract.contactpop';
+            $htmlContent = View::make($template, [
+                'cardid' => $con, 'telephone' => $con, 'contactd' => $datap
+            ])->render();
+        }else{
             $template = 'contacts.contact-create';
             $htmlContent = View::make($template, [
                 'cardid' => $con, 'telephone' => $con, 'contact_name' => $contact_name, 'contact_lname' => $contact_lname
             ])->render();
-        //}
+        }
         return response()->json([
             'html' =>  $htmlContent,
         ]);
     }
 
+    public function popupcontact(Request $request)
+    {
+        $con = $request->get('contactid');
+        $cards = $request->get('cardid');
+        $datap = DB::table('crm_contacts')
+        ->where('id', '=', $con)
+        ->get();
+        $template = 'contacts.contact-create';
+        $htmlContent = View::make($template, [
+            'cardid' => $cards, 'telephone' => $cards, 'contactd' => $datap
+        ])->render();
+        return response()->json([
+            'html' =>  $htmlContent,
+        ]);
+    }
     public function popup()
     {
         $user = Auth::user();
@@ -151,7 +163,6 @@ class ContactController extends Controller
             ->where('agentno', '=', $user->phone)
             ->orWhere('status', '=', "0")
             ->orWhere('status', '=', "1")
-            //->groupBy('telno')
             ->orderBy('id', 'desc')
             ->get();
         $html = '';
@@ -159,15 +170,32 @@ class ContactController extends Controller
         $tab_content = '';
         $i = 1;
         foreach ($datac as $item) {
+            //$datap = DB::table('crm_contacts')
+            //->where('phoneno', '=', $item->telno)
+            //->orWhere('telhome', '=', $item->telno)
+            //->orWhere('workno', '=', $item->telno)
+            //->get();
+            //$contactcount = count($datap);
+            //if($contactcount > 1){
+            //    $template = 'casescontract.contactpop';
+            //    $statusText = View::make($template, [
+            //        'cardid' => $item->telno, 'telephone' => $item->telno, 'contactd' => $datap
+            //    ])->render();
+            //}else{
+            //    $template = 'contacts.contact-create';
+            //    $statusText = View::make($template, [
+            //        'cardid' => $item->telno, 'telephone' => $item->telno
+            //    ])->render();
+            //}
             $datap = DB::table('crm_contacts')
                 ->where('phoneno', '=', $item->telno)
                 ->orWhere('telhome', '=', $item->telno)
                 ->orWhere('workno', '=', $item->telno)
-                ->count();
+               ->count();
             if ($datap > 0) {
                 $statusText = "(ผู้ติดต่อที่เคยบันทึกข้อมูลไว้แล้ว)";
             } else {
-                $statusText = "(ผู้ติดต่อใหม่)&nbsp;&nbsp;&nbsp;";
+                $statusText = "(ผู้ติดต่อใหม่)";
             }
             /* style="width: 300px; height: 150px;"  */
 
@@ -183,9 +211,7 @@ class ContactController extends Controller
             }
 
             $html = '<div class="col-md-12">
-            <div class=" pop_content" id="pop_' . $item->telno . '">
-            ' . $statusText . '
-            </div></div>';
+            <div class=" pop_content" id="pop_' . $item->telno . '">' . $statusText . '</div></div>';
             $tab_link .= '<li class="nav-item">
             <a class="popup-tab-font-size nav-link ' . $tab_link_active . '" id="custom-tabs-pop-' . $item->telno . '-tab" data-toggle="pill" data-id="' . $item->telno . '"
                 href="#custom-tabs-pop-' . $item->telno . '" role="tab" aria-controls="custom-tabs-pop-' . $item->telno . '"
@@ -207,24 +233,13 @@ class ContactController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //$rnumber = studentRunningNumber::pre_generate(Auth::user()->department->code);
-        //dd($rnumber);
-        /* return response()->json([
-            'running' =>  $rnumber
-        ]); */
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
         $valifield = [
             'hn' => 'required|string|max:10',
             'fname' => 'required|string|max:50',
@@ -292,7 +307,6 @@ class ContactController extends Controller
     {
 
         $datac = CrmContact::find($id);
-        //$data = CrmPhoneEmergency::find($id);
         $emer = DB::table('crm_phone_emergencies')
             ->whereRaw('contact_id = ' . $id . '')
             ->get();
@@ -321,9 +335,7 @@ class ContactController extends Controller
             ->orWhere('telhome', '=', $telnop)
             ->orWhere('workno', '=', $telnop)
             ->get();
-        //$data = CrmPhoneEmergency::find($id);
         $emer = DB::table('crm_phone_emergencies')
-            //->whereRaw('contact_id = 20')
             ->where('contact_id', '=', $datac['0']->id)
             ->get();
 
@@ -627,9 +639,6 @@ class ContactController extends Controller
         return response()->json(['success' => 'แก้ไข ผู้ติดต่อ เรียบร้อยแล้ว']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Request $request)
     {
         $id = $request->get('id');
@@ -641,7 +650,7 @@ class ContactController extends Controller
     public function destroy_all(Request $request)
     {
 
-        $arr_del  = $request->get('table_records'); //$arr_ans is Array MacAddress
+        $arr_del  = $request->get('table_records');
 
         for ($xx = 0; $xx < count($arr_del); $xx++) {
             CrmContact::find($arr_del[$xx])->delete();

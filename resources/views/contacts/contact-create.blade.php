@@ -144,7 +144,7 @@
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <strong><i class="fa-solid fa-city"></i> จังหวัด :</strong>
-                                    <select style="width: 100%;" class="select2 form-control" id="cityp{{$cardid}}"
+                                    <select style="width: 100%;" class="select2 form-control citypchang" id="cityp{{$cardid}}" data-tabid="{{$cardid}}"
                                         name="cityp{{$cardid}}">
                                     </select>
                                 </div>
@@ -153,7 +153,7 @@
                                 <div class="form-group">
                                     <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
                                         อำเภอ:</strong>
-                                    <select style="width: 100%;" class="select2 form-control" id="districtp{{$cardid}}"
+                                    <select style="width: 100%;" class="select2 form-control districtpchang" id="districtp{{$cardid}}" data-tabid="{{$cardid}}"
                                         name="districtp{{$cardid}}">
                                     </select>
                                 </div>
@@ -245,7 +245,7 @@
                             </div>
                             <div class="col-md-12" align="right">
 
-                                <button type="button" id="addRowBtnp{{$cardid}}" class="btn btn-warning btnAddg"><i
+                                <button type="button" id="addRowBtnp{{$cardid}}" class="btn btn-warning btnAddg addRowBtnp-button" data-id="" data-tabid="{{ $cardid }}"><i
                                         class="fa-solid fa-plus"></i>
                                     เพิ่มบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน</button>
                             </div>

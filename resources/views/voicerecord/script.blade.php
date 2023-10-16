@@ -13,7 +13,7 @@
     let wavesurfer; // Declare the wavesurfer variable
 
     // Function to create and initialize WaveSurfer
-    const initializeWaveSurfer = (newUrl) => {
+    const initializeWaveSurfer = (newUrl, tooltipsData) => {
 
         //wav
         // Create a second timeline
@@ -184,91 +184,100 @@
 
             wavesurfer.setVolume(0.4);
             document.querySelector('#volume').value = wavesurfer.getVolume();
+            if (tooltipsData) {
+                tooltipsData.forEach(({
+                    id,
+                    start,
+                    end,
+                    comment
+                }) => {
+                    if (id !== null && start !== null && end !== null && comment !== null) {
+                        const region = wsRegions.addRegion({
+                            id: id,
+                            start: start,
+                            end: end,
+                            color: 'rgba(255, 0, 0, 0.1)'
+                        });
 
-            const tooltipsData = fetchTooltipsFromDB();
-            // Iterate through the tooltip data and add tooltips to the waveform
-            tooltipsData.forEach(({
-                startTime,
-                endTime,
-                content
-            }) => {
-                // Create a region for each tooltip
-                const region = wsRegions.addRegion({
-                    start: startTime,
-                    end: endTime,
-                    color: 'rgba(255, 0, 0, 0.1)', // Set your desired tooltip color
+                        // Create a tooltip element
+                        const tooltip = document.createElement('div');
+                        tooltip.className = 'region-tooltip';
+                        tooltip.style.paddingLeft = '10px';
+                        tooltip.textContent = comment;
+
+                        // Attach the tooltip to the region's element
+                        region.element.appendChild(tooltip);
+                        customDialog.style.display = 'none';
+                    } else {
+                        // Handle the case where any of the properties is null
+                        console.log('One or more properties are null in the tooltip data');
+                    }
                 });
-
-                const tooltip = document.createElement('div');
-                tooltip.className = 'region-tooltip';
-                tooltip.style.paddingLeft = '10px';
-                tooltip.textContent = content;
-
-                // Attach the tooltip to the region's element
-                region.element.appendChild(tooltip);
-                customDialog.style.display = 'none';
-
-            });
-
-            /*  // Create a button to remove the region
-            const regionButton = document.createElement('button');
-            regionButton.className = 'remove-region-button';
-            regionButton.textContent = 'X';
-
-            // Add a click event listener to remove the region when the button is clicked
-            regionButton.addEventListener('click', () => {
-                const activeRegion = wsRegions.getActiveRegion();
-                if (activeRegion) {
-                    activeRegion.remove();
-                }
-            });
-           */
-            // Append the button to the container
-            //const container = document.querySelector('#waveform-container');
-            //container.appendChild(regionButton);
+            } else {
+                // Handle the case where tooltipsData is null
+                console.log('Tooltips data is null');
+            }
         });
-
         const customDialog = document.getElementById('custom-dialog');
         const contentInput = document.getElementById('content-input');
         const addContentButton = document.getElementById('add-content-button');
-        // const callRecordingId = $('#call_recording_id').val();
-        // const uniqueId = $('#uniqueid').val();
         wsRegions.enableDragSelection({
             color: 'rgba(255, 0, 0, 0.1)',
             //content: 'Region Content',
         });
 
         let currentRegion;
-
-        // Debug statement to check if the code leading up to onRegionCreated is executing
-        // console.log('Before onRegionCreated');
-
-        // Add a listener for the region-created event
         wsRegions.on('region-created', (region) => {
             // Callback code
-            console.log('Region Created:', region);
-
+            // console.log('Region Created:', region);
             const button = document.createElement('button');
             button.className = 'remove-region-button';
             button.textContent = 'X';
             customDialog.style.display = 'block';
 
             button.addEventListener('click', () => {
-                // Remove the region when the button is clicked
-                region.remove();
-                // console.log(region);
+                // console.log('comments_id : ' + region.id);
+                // console.log('start : ' + region.start);
 
+                const commentId = region.id;
+                const csrfToken = document.querySelector('meta[name="csrf-token"]')
+                    .getAttribute('content');
+                $.ajax({
+                    type: "DELETE",
+                    url: '/voicerecord/comment/' + commentId,
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken
+                    },
+
+                    success: function(response) {
+                        region.remove();
+                        $('#CreateModal').modal('hide');
+                        // console.log(wavesurfer);
+                        // if (wavesurfer) {
+                        //     // Destroy the WaveSurfer instance to clear it
+                        //     wavesurfer.destroy();
+                        //     wavesurfer = null; // Set wavesurfer to null to indicate it's destroyed
+                        // }
+
+                        console.log(response.message);
+
+
+                    },
+                    error: function(error) {}
+                });
             });
 
             document.getElementById('add-content-button').addEventListener('click', function(e) {
                 // addContentButton.addEventListener('click', () => {
-                    console.log('current Region'+currentRegion);
+                // console.log('current Region');
+                // console.log(currentRegion);
 
                 e.preventDefault();
                 if (currentRegion) {
 
                     // Remove any existing tooltips in the current region
-                    const existingTooltips = currentRegion.element.querySelectorAll('.region-tooltip');
+                    const existingTooltips = currentRegion.element.querySelectorAll(
+                        '.region-tooltip');
                     existingTooltips.forEach((tooltip) => {
                         tooltip.remove();
                     });
@@ -285,7 +294,8 @@
 
                     const callRecordingId = $('#call_recording_id').val();
                     const uniqueId = $('#uniqueid').val();
-                    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                    const csrfToken = document.querySelector('meta[name="csrf-token"]')
+                        .getAttribute('content');
                     // const content = contentInput.value;
                     //end
                     $.ajax({
@@ -313,18 +323,11 @@
 
                 }
             });
-
-            // Attach a click event handler to the button
-
-
-            // Append the button to the region element
             region.element.appendChild(button);
-
             currentRegion = region;
-
-            // console.log(currentRegion);
         });
 
+        //รอทำ พน อัพเดต
         wsRegions.on('region-updated', (region) => {
             console.log('Updated region', region)
         })
@@ -374,26 +377,26 @@
         //const newUrl = 'wav/PinkPanther60.wav'; // Replace with the new URL
         // const newUrl = 'wav/2023/10/01/q-4567-8888-20231001-141026-1696169425.161.wav';
         var dataId = $(this).data('id'); // Use $(this) to refer to the clicked button
-
         $.ajax({
             type: "GET",
             url: "voicerecord/edit/" + dataId,
             success: function(response) {
-                console.log(response.voic);
-                console.log(response.remoteData2);
+                // console.log(response.voic);
+                // console.log(response.remoteData2);
                 const newUrl = 'wav/' + response.voic;
                 $('#vioc_name').text(response.voic_name);
                 $('#call_recording_id').val(response.remoteData2.id);
                 $('#uniqueid').val(response.remoteData2.uniqueid);
-                // console.log('Button clicked!');
-                initializeWaveSurfer(newUrl);
+                const tooltipsData = response.tooltips;
+                // console.log("tooltipsData");
+                // console.log(tooltipsData);
+
+                initializeWaveSurfer(newUrl, tooltipsData);
             },
             error: function(error) {
                 console.error('Error in Ajax request:', error);
             }
         });
-
-
     });
 
 
