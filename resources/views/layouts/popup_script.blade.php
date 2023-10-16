@@ -836,6 +836,21 @@
                     $(".card-footer").css("display", "block")
                     $('.bclose').css('display', 'none');
                     
+                    $.ajax({
+                        url: "{{ route('thcity.city') }}",
+                        method: 'GET',
+                        async: false,
+                        success: function(res) {
+                            var provinceOb = $('#cityp' + cardId);
+                            provinceOb.html(
+                                '<option value="">เลือกจังหวัด</option>'
+                            );
+                            $.each(res.data, function(index,
+                                item) {
+                                provinceOb.append($('<option></option>').val(item.code).html(item.name_th));
+                            });
+                        }
+                    });
                 }
             });
         });
