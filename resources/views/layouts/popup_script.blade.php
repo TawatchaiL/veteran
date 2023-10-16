@@ -63,6 +63,7 @@
                 $('#custom-tabs-pop').prepend(response.tab_link);
                 $('#custom-tabs-pop-tabContent').prepend(response.tab_content);
                 $('#hold_tab').html(response.hold_tab);
+                $('#hold_tab_content').html(response.hold_tab_content);
 
                 maximizeCard(response.active_id);
                 //$('#dpopup').html(response.html);

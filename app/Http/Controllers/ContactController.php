@@ -125,12 +125,12 @@ class ContactController extends Controller
             ->orWhere('workno', '=', $con)
             ->get();
         $contactcount = count($datap);
-        if($contactcount > 1){
+        if ($contactcount > 1) {
             $template = 'casescontract.contactpop';
             $htmlContent = View::make($template, [
                 'cardid' => $con, 'telephone' => $con, 'contactd' => $datap
             ])->render();
-        }else{
+        } else {
             $template = 'contacts.contact-create';
             $htmlContent = View::make($template, [
                 'cardid' => $con, 'telephone' => $con, 'contact_name' => $contact_name, 'contact_lname' => $contact_lname
@@ -146,8 +146,8 @@ class ContactController extends Controller
         $con = $request->get('contactid');
         $cards = $request->get('cardid');
         $datap = DB::table('crm_contacts')
-        ->where('id', '=', $con)
-        ->get();
+            ->where('id', '=', $con)
+            ->get();
         $template = 'contacts.contact-create';
         $htmlContent = View::make($template, [
             'cardid' => $cards, 'telephone' => $cards, 'contactd' => $datap
@@ -168,6 +168,7 @@ class ContactController extends Controller
         $html = '';
         $tab_link = '';
         $tab_content = '';
+        $tab_hold = "";
         $i = 1;
         foreach ($datac as $item) {
             //$datap = DB::table('crm_contacts')
@@ -191,7 +192,7 @@ class ContactController extends Controller
                 ->where('phoneno', '=', $item->telno)
                 ->orWhere('telhome', '=', $item->telno)
                 ->orWhere('workno', '=', $item->telno)
-               ->count();
+                ->count();
             if ($datap > 0) {
                 $statusText = "(ผู้ติดต่อที่เคยบันทึกข้อมูลไว้แล้ว)";
             } else {
@@ -223,6 +224,22 @@ class ContactController extends Controller
             ' . $html . '
             </div>
         </div>';
+
+            $tab_hold .= ' <a href="#" class="dropdown-item">
+                <div class="media">
+                    <img src="' . asset('images/user.png') . '" alt="..." class="img-size-50 mr-3 img-circle">
+                    <div class="media-body">
+                        <h3 class="dropdown-item-title">
+                        ' . $item->telno . '
+                            <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                        </h3>
+                        <p class="text-sm">' . $statusText . '</p>
+                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                    </div>
+                </div>
+
+            </a>
+            <div class="dropdown-divider"></div>';
             $i++;
         }
 
@@ -230,13 +247,13 @@ class ContactController extends Controller
             'tab_link' => $tab_link,
             'tab_content' => $tab_content,
             'active_id' => $active_id,
-            'hold_tab' => $i
+            'hold_tab' => $i - 1,
+            'hold_tab_content' => $tab_hold
         ]);
     }
 
     public function create()
     {
-
     }
 
     public function store(Request $request)
@@ -295,7 +312,6 @@ class ContactController extends Controller
 
     public function show(string $id)
     {
-
     }
 
     /**
