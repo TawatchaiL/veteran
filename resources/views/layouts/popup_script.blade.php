@@ -882,29 +882,32 @@
             });
         }
 
+        $(document).on('show.bs.tab', '#custom-tabs-pop a[data-toggle="pill"]',
+            function(e) {
+                // Determine which tab is being switched to
+                var href = $(e.target).attr("href");
+                var targetTab = href.replace("#custom-tabs-pop-", "");
 
-        var triggerTabList = [].slice.call(document.querySelectorAll('#custom-tabs-pop a'))
-        triggerTabList.forEach(function(triggerEl) {
-            var tabTrigger = new bootstrap.Tab(triggerEl)
+                // Display a confirmation dialog
+                if (!confirm("ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab +
+                        " ? \nกรุณาบันทึกข้อมุลก่อนเปลี่ยน Tab")) {
+                    // If the user cancels, prevent the tab switch
+                    e.preventDefault();
+                }
 
-            triggerEl.addEventListener('click', function(event) {
-                event.preventDefault()
-                ezBSAlert({
-                    type: "confirm",
-                    headerText: "Confirm",
-                    messageText: "ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab +
-                        " ? \nกรุณาบันทึกข้อมุลก่อนเปลี่ยน Tab",
-                    alertType: "info",
-                }).done(function(r) {
-                    if (r == true) {
-                        tabTrigger.show()
-                    }
+            });
 
-                });
-                tabTrigger.show()
-            })
+        $('#myTabs a').click(function(e) {
+            e.preventDefault()
+            var areYouSure = confirm(
+                'If you sure you wish to leave this tab?  Any data entered will NOT be saved.  To save information, use the Save buttons.'
+            );
+            if (areYouSure === true) {
+                $(this).tab('show')
+            } else {
+                /// do other stuff
+                return false;
+            }
         })
-
-
     });
 </script>
