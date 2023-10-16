@@ -841,12 +841,11 @@
                         method: 'GET',
                         async: false,
                         success: function(res) {
-                            var provinceOb = $('#cityp' + cardId);
+                            var provinceOb = $('#cityp' + datatId);
                             provinceOb.html(
                                 '<option value="">เลือกจังหวัด</option>'
                             );
-                            $.each(res.data, function(index,
-                                item) {
+                            $.each(res.data, function(index,item) {
                                 provinceOb.append($('<option></option>').val(item.code).html(item.name_th));
                             });
                         }
