@@ -767,7 +767,8 @@
         positionCards();
 
         $(document).on("change", ".citypchang", function () {
-            alert($(this).val());
+            alert($(this).name);
+
         });
 
         $(document).on('click', '.addRowBtnp-button',
