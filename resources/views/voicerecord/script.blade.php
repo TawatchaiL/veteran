@@ -216,9 +216,9 @@
 
             if (tooltipsData) {
                 tooltipsData.forEach(({
-                    startTime,
-                    endTime,
-                    content
+                    start,
+                    end,
+                    comment
                 }) => {
                     if (startTime !== null && endTime !== null && content !== null) {
                         const region = wsRegions.addRegion({
