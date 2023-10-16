@@ -157,7 +157,6 @@ class CasesContractController extends Controller
         
         $rules = [
             'casetype1' => 'required|string|max:20',
-            //'postcode' => 'integer|max:10',
 
         ];
 
