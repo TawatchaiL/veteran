@@ -244,7 +244,7 @@
                         .getAttribute('content');
                 $.ajax({
                     type: "DELETE",
-                    url: 'route("voicerecord.destroy")' + commentId,
+                    url: '/voicerecord/comment/' + commentId, 
                     headers: {
                         'X-CSRF-TOKEN': csrfToken
                     },
