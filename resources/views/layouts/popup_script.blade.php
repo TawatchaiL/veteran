@@ -53,7 +53,7 @@
 
     function positionCards() {
         var cardPositions = [];
-
+alert('OK');
         $.ajax({
             url: '{{ route('contacts.popup') }}',
             type: 'get',
