@@ -557,7 +557,7 @@
         }
     }
 
-    // Close card AJAX function
+    /// Close card AJAX function
     function closeCard(cardId) {
         $.ajax({
             url: 'your_close_url',
