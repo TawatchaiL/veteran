@@ -158,9 +158,7 @@ class VoicerecordController extends Controller
             ->first();
         $voic = $remoteData2->recordingfile;
         $voic_name = substr($voic, 14);
-
         $tooltips = Comment::where('call_recording_id', $id)->get();
-
         return response()->json(['voic' => $voic, 'remoteData2' => $remoteData2, 'voic_name' => $voic_name, 'tooltips' => $tooltips]);
     }
 
