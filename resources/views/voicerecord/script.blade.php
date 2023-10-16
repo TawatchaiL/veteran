@@ -381,7 +381,7 @@
                 $('#uniqueid').val(response.remoteData2.uniqueid);
                 const tooltipsData = response.tooltips;
                 // console.log("tooltipsData");
-                console.log(tooltipsData);
+                // console.log(tooltipsData);
 
                 initializeWaveSurfer(newUrl, tooltipsData);
             },
