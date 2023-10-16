@@ -762,12 +762,12 @@
                 });
         });
         
-        $(document).on("change", ".citypchang", function () {
+        $(document).on("change", ".districtpchang", function () {
                 let datatId = $(this).data("tabid");
                 var cartonOb = $('#subdistrictp' + datatId);
                 cartonOb.html('<option value="">เลือกตำบล</option>');
                 $.ajax({
-                    url: "thdistrict/district/" + $(this).val(),
+                    url: "thsubdistrict/subdistrict/" + $(this).val(),
                     method: 'GET',
                     success: function(res) {
                         cartonOb.html(
