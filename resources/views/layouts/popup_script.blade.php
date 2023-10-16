@@ -764,10 +764,9 @@
                 let datatId = $(this).data("tabid");
                 var districtOb = $('#districtp' + datatId);
                 var cartonOb = $('#subdistrictp' + datatId);
-                var provinceId = $(this).val();
                 districtOb.html('<option value="">เลือกอำเภอ</option>');
                 $.ajax({
-                    url: "thdistrict/district/" + provinceId,
+                    url: "thdistrict/district/" + $(this).val(),
                     method: 'GET',
                     success: function(res) {
                         districtOb.html(
