@@ -874,7 +874,7 @@
             });
         }
 
-        $(document).on('show.bs.tab', '#custom-tabs-pop a[data-toggle="pill"]',
+        $(document).on('click', '#custom-tabs-pop a[data-toggle="pill"]',
             function(e) {
                 // Determine which tab is being switched to
                 var href = $(e.target).attr("href");
