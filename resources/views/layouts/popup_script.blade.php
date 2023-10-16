@@ -603,19 +603,19 @@
                         }
                     } else {
                         for (let i = nextcase; i < 7; i++) {
-                            if(i == 2){
+                            if(i === 2){
                                 $('#casetype2p' + cardId).html('<option value="">เลือกรายละเอียดเคส</option>');
                             }
-                            if(i == 3){
+                            if(i === 3){
                                 $('#casetype3p' + cardId).html('<option value="">เลือกรายละเอียดเคสย่อย</option>');
                             }
-                            if(i == 4){
+                            if(i === 4){
                                 $('#casetype4p' + cardId).html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
                             }
-                            if(i == 5){
+                            if(i === 5){
                                 $('#casetype5p' + cardId).html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
                             }
-                            if(i == 6){
+                            if(i === 6){
                                 $('#casetype6p' + cardId).html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
                             }
                                 $('#casetype' + i + 'p' + cardId).attr('disabled', true);
