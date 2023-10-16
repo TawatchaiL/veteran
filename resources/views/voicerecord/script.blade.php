@@ -251,13 +251,14 @@
 
                     success: function(response) {
                         region.remove();
-                        // $('#CreateModal').modal('hide');
+                        $('#CreateModal').modal('hide');
                         // console.log(wavesurfer);
-                        if (wavesurfer) {
-                            // Destroy the WaveSurfer instance to clear it
-                            wavesurfer.destroy();
-                            wavesurfer = null; // Set wavesurfer to null to indicate it's destroyed
-                        }
+                        // if (wavesurfer) {
+                        //     // Destroy the WaveSurfer instance to clear it
+                        //     wavesurfer.destroy();
+                        //     wavesurfer = null; // Set wavesurfer to null to indicate it's destroyed
+                        // }
+
                         console.log(response.message);
 
 
@@ -326,6 +327,7 @@
             currentRegion = region;
         });
 
+        //รอทำ พน อัพเดต
         wsRegions.on('region-updated', (region) => {
             console.log('Updated region', region)
         })

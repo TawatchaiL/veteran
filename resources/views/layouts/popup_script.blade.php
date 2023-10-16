@@ -1,6 +1,6 @@
 <script>
     //const addemerphone = (cardid) => {
-        
+
     //    const tableBody = document.getElementById('myTbl3p' + cardid).getElementsByTagName('tbody')[0];
 
     //    document.getElementById('addRowBtnp' + cardid).addEventListener('click', () => {
@@ -27,14 +27,14 @@
     //            <button type="button" class="btn btn-sm btn-danger removeRowBtnp"><i class="fa fa-minus"></i></button>
     //        </td>
     //    `;
-//
+    //
     //        tableBody.appendChild(newRow);
 
-     //       newRow.querySelector('.removeRowBtnp').addEventListener('click', () => {
+    //       newRow.querySelector('.removeRowBtnp').addEventListener('click', () => {
     //            tableBody.removeChild(newRow);
     //        });
     //   });
-   // };
+    // };
 
 
     const removeAllTabs = () => {
@@ -45,7 +45,8 @@
     $('#custom-tabs-pop').on('click', '.nav-link', function() {
         let dataId = $(this).data('id');
 
-        if($('#pop_'+dataId).text() == '(ผู้ติดต่อที่เคยบันทึกข้อมูลไว้แล้ว)' || $('#pop_'+dataId).text() == '(ผู้ติดต่อใหม่)'){
+        if ($('#pop_' + dataId).text() == '(ผู้ติดต่อที่เคยบันทึกข้อมูลไว้แล้ว)' || $('#pop_' + dataId)
+            .text() == '(ผู้ติดต่อใหม่)') {
             maximizeCard(dataId);
         }
     });
@@ -59,9 +60,11 @@
             success: function(response) {
                 //console.log(response.html)
                 removeAllTabs();
-            
+
                 $('#custom-tabs-pop').prepend(response.tab_link);
                 $('#custom-tabs-pop-tabContent').prepend(response.tab_content);
+                $('#hold_tab').html(response.hold_tab);
+                $('#hold_tab_content').html(response.hold_tab_content);
 
                 maximizeCard(response.active_id);
                 //$('#dpopup').html(response.html);
@@ -640,140 +643,159 @@
                     }
         });
         //province changes
-        $(document).on("change", ".citypchang", function () {
-                let datatId = $(this).data("tabid");
-                var districtOb = $('#districtp' + datatId);
-                var cartonOb = $('#subdistrictp' + datatId);
-                districtOb.html('<option value="">เลือกอำเภอ</option>');
-                $.ajax({
-                    url: "thdistrict/district/" + $(this).val(),
-                    method: 'GET',
-                    success: function(res) {
-                        districtOb.html(
-                            '<option value="">เลือกอำเภอ</option>');
-                        cartonOb.html(
-                            '<option value="">เลือกตำบล</option>');
-                        $.each(res.data, function(index, item) {
-                            districtOb.append(
-                                $('<option></option>').val(item.code).html(item.name_th)
-                            );
-                        });
-                    }
-                });
+        $(document).on("change", ".citypchang", function() {
+            let datatId = $(this).data("tabid");
+            var districtOb = $('#districtp' + datatId);
+            var cartonOb = $('#subdistrictp' + datatId);
+            districtOb.html('<option value="">เลือกอำเภอ</option>');
+            $.ajax({
+                url: "thdistrict/district/" + $(this).val(),
+                method: 'GET',
+                success: function(res) {
+                    districtOb.html(
+                        '<option value="">เลือกอำเภอ</option>');
+                    cartonOb.html(
+                        '<option value="">เลือกตำบล</option>');
+                    $.each(res.data, function(index, item) {
+                        districtOb.append(
+                            $('<option></option>').val(item.code).html(item
+                                .name_th)
+                        );
+                    });
+                }
+            });
         });
-        
-        $(document).on("change", ".districtpchang", function () {
-                let datatId = $(this).data("tabid");
-                var cartonOb = $('#subdistrictp' + datatId);
-                //cartonOb.html('<option value="">เลือกตำบล</option>');
-                $.ajax({
-                    url: "thsubdistrict/subdistrict/" + $(this).val(),
-                    method: 'GET',
-                    success: function(res) {
-                        cartonOb.html('<option value="">เลือกตำบล</option>');
-                        $.each(res.data, function(index, item) {
-                            cartonOb.append(
-                                $('<option></option>').val(item.code).html(item.name_th)
-                            );
-                        });
-                    }
-                });
+
+        $(document).on("change", ".districtpchang", function() {
+            let datatId = $(this).data("tabid");
+            var cartonOb = $('#subdistrictp' + datatId);
+            //cartonOb.html('<option value="">เลือกตำบล</option>');
+            $.ajax({
+                url: "thsubdistrict/subdistrict/" + $(this).val(),
+                method: 'GET',
+                success: function(res) {
+                    cartonOb.html('<option value="">เลือกตำบล</option>');
+                    $.each(res.data, function(index, item) {
+                        cartonOb.append(
+                            $('<option></option>').val(item.code).html(item
+                                .name_th)
+                        );
+                    });
+                }
+            });
         });
         //Add new phone emergency
         $(document).on('click', '.addRowBtnp-button',
             function() {
                 let cardId = $(this).data("tabid");
-                    $('#myTbl3p' + cardId + ' tbody')
-                        .append($('<tr>')
-                            .append($('<td width="30%">')
-                                .append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="hidden" value="" name="emertypep' + cardId +'[]" id="emertypep' + cardId + '"><input type="text" id="emergencynamep' + cardId + '" name="emergencynamep' + cardId + '[]" class="form-control has-feedback-left" value="" required="required"></div>'
-                                ))
-                            .append($('<td width="10%">').append(
-                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerrelation' +
-                                    cardId +
-                                    '" name="emerrelationp' +
-                                    cardId +
-                                    '[]" class="form-control has-feedback-left" value="" required="required"></div>'
-                                ))
-                            .append($('<td width="10%">').append(
-                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone' +
-                                    cardId +
-                                    '" name="emerphonep' +
-                                    cardId +
-                                    '[]" class="form-control has-feedback-left" onkeydown="validateNumberp(event)" value="" required="required"></div>'
-                                ))
-                            .append($('<td width="5%">').append('<button type="button" name="deletem' +
-                                    cardId +
-                                    '" id="deletem' +
-                                    cardId +
-                                    '" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
-                    )));
-        });
+                $('#myTbl3p' + cardId + ' tbody')
+                    .append($('<tr>')
+                        .append($('<td width="30%">')
+                            .append(
+                                '<div class="col-md-12 col-sm-12 col-xs-12"><input type="hidden" value="" name="emertypep' +
+                                cardId + '[]" id="emertypep' + cardId +
+                                '"><input type="text" id="emergencynamep' + cardId +
+                                '" name="emergencynamep' + cardId +
+                                '[]" class="form-control has-feedback-left" value="" required="required"></div>'
+                            ))
+                        .append($('<td width="10%">').append(
+                            '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerrelation' +
+                            cardId +
+                            '" name="emerrelationp' +
+                            cardId +
+                            '[]" class="form-control has-feedback-left" value="" required="required"></div>'
+                        ))
+                        .append($('<td width="10%">').append(
+                            '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone' +
+                            cardId +
+                            '" name="emerphonep' +
+                            cardId +
+                            '[]" class="form-control has-feedback-left" onkeydown="validateNumberp(event)" value="" required="required"></div>'
+                        ))
+                        .append($('<td width="5%">').append('<button type="button" name="deletem' +
+                            cardId +
+                            '" id="deletem' +
+                            cardId +
+                            '" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
+                        )));
+            });
         // contact list to from
         $(document).on('click', '.selectcontactp-button',
             function() {
                 let datatId = $(this).data("tabid");
                 let contactid = $(this).data("id");
-            //alert($(this).attr("id"));
+                //alert($(this).attr("id"));
                 $('#custom-tabs-pop-' + datatId).empty();
-            $.ajax({
-                url: '{{ route('contacts.popupcontact') }}',
-                type: 'POST',
-                data: {
-                    contactid: contactid,
-                    cardid: datatId
-                },
-                success: async function(response) {
-                    $('#' + datatId).removeClass('card-danger');
-                    $('#' + datatId).addClass('card-success');
-                    await $('#custom-tabs-pop-' + datatId).html(response.html);
-                    $(".card-footer").css("display", "block")
-                    $('.bclose').css('display', 'none');
-                    
-                    $.ajax({
-                        url: "{{ route('thcity.city') }}",
-                        method: 'GET',
-                        async: false,
-                        success: function(res) {
-                            var provinceOb = $('#cityp' + datatId);
-                            provinceOb.html(
-                                '<option value="">เลือกจังหวัด</option>'
-                            );
-                            $.each(res.data, function(index,item) {
-                                provinceOb.append($('<option></option>').val(item.code).html(item.name_th));
-                            });
-                        }
-                    });
+                $.ajax({
+                    url: '{{ route('contacts.popupcontact') }}',
+                    type: 'POST',
+                    data: {
+                        contactid: contactid,
+                        cardid: datatId
+                    },
+                    success: async function(response) {
+                        $('#' + datatId).removeClass('card-danger');
+                        $('#' + datatId).addClass('card-success');
+                        await $('#custom-tabs-pop-' + datatId).html(response.html);
+                        $(".card-footer").css("display", "block")
+                        $('.bclose').css('display', 'none');
 
-                    $.ajax({
-                        url: "casetype6/casetype/0",
-                        method: 'GET',
-                        async: false,
-                        success: function(res) {
-                            var caseOb = $('#casetype1p' + datatId);
-                            caseOb.html(
-                                '<option value="">เลือกประเภทการติดต่อ</option>'
-                            );
-                            $.each(res.data, function(index, item) {
-                                    caseOb.append(
-                                    $('<option></option>').val(item.id).html(item.name)
+                        $.ajax({
+                            url: "{{ route('thcity.city') }}",
+                            method: 'GET',
+                            async: false,
+                            success: function(res) {
+                                var provinceOb = $('#cityp' + datatId);
+                                provinceOb.html(
+                                    '<option value="">เลือกจังหวัด</option>'
                                 );
-                            });
-                            $('#casetype2p' + cardId).html('<option value="">เลือกรายละเอียดเคส</option>');
-                            $('#casetype3p' + cardId).html('<option value="">เลือกรายละเอียดเคสย่อย</option>');
-                            $('#casetype4p' + cardId).html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
-                            $('#casetype5p' + cardId).html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
-                            $('#casetype6p' + cardId).html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
-                            $('#casetype2p' + cardId).attr('disabled', true);
-                            $('#casetype3p' + cardId).attr('disabled', true);
-                            $('#casetype4p' + cardId).attr('disabled', true);
-                            $('#casetype5p' + cardId).attr('disabled', true);
-                            $('#casetype6p' + cardId).attr('disabled', true);
-                        }
-                    });
-                }
+                                $.each(res.data, function(index, item) {
+                                    provinceOb.append($('<option></option>')
+                                        .val(item.code).html(item
+                                            .name_th));
+                                });
+                            }
+                        });
+
+                        $.ajax({
+                            url: "casetype6/casetype/0",
+                            method: 'GET',
+                            async: false,
+                            success: function(res) {
+                                var caseOb = $('#casetype1p' + datatId);
+                                caseOb.html(
+                                    '<option value="">เลือกประเภทการติดต่อ</option>'
+                                );
+                                $.each(res.data, function(index, item) {
+                                    caseOb.append(
+                                        $('<option></option>').val(item
+                                            .id).html(item.name)
+                                    );
+                                });
+                            }
+                        });
+                        $('#casetype2p' + cardId).html(
+                            '<option value="">เลือกรายละเอียดเคส</option>');
+                        $('#casetype3p' + cardId).html(
+                            '<option value="">เลือกรายละเอียดเคสย่อย</option>'
+                        );
+                        $('#casetype4p' + cardId).html(
+                            '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>'
+                        );
+                        $('#casetype5p' + cardId).html(
+                            '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>'
+                        );
+                        $('#casetype6p' + cardId).html(
+                            '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>'
+                        );
+                        $('#casetype2p' + cardId).attr('disabled', true);
+                        $('#casetype3p' + cardId).attr('disabled', true);
+                        $('#casetype4p' + cardId).attr('disabled', true);
+                        $('#casetype5p' + cardId).attr('disabled', true);
+                        $('#casetype6p' + cardId).attr('disabled', true);
+                    }
+                });
             });
-        });
 
         $(document).on('click', '.custom-bottom-right-card .card-tools [data-card-widget="maximize"]',
             function() {
@@ -865,11 +887,25 @@
                 var targetTab = href.replace("#custom-tabs-pop-", "");
 
                 // Display a confirmation dialog
-                if (!confirm("ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab +
+                /* if (!confirm("ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab +
                         " ? \nกรุณาบันทึกข้อมุลก่อนเปลี่ยน Tab")) {
                     // If the user cancels, prevent the tab switch
                     e.preventDefault();
-                }
+                } */
+                ezBSAlert({
+                    type: "confirm",
+                    headerText: "Confirm",
+                    messageText: "ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab +
+                        " ? \nกรุณาบันทึกข้อมุลก่อนเปลี่ยน Tab",
+                    alertType: "info",
+                }).done(function(r) {
+                    if (r == true) {
+                        $(e.target).tab('show');
+                    } else {
+                        e.preventDefault();
+                    }
+
+                });
 
             });
 
@@ -877,7 +913,7 @@
             e.preventDefault()
             var areYouSure = confirm(
                 'If you sure you wish to leave this tab?  Any data entered will NOT be saved.  To save information, use the Save buttons.'
-                );
+            );
             if (areYouSure === true) {
                 $(this).tab('show')
             } else {
