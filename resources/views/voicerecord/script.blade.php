@@ -13,7 +13,7 @@
     let wavesurfer; // Declare the wavesurfer variable
 
     // Function to create and initialize WaveSurfer
-    const initializeWaveSurfer = (newUrl) => {
+    const initializeWaveSurfer = (newUrl,tooltipsData) => {
 
         //wav
         // Create a second timeline
@@ -212,7 +212,7 @@
 
             //test null
 
-            const tooltipsData = fetchTooltipsFromDB();
+            // const tooltipsData = fetchTooltipsFromDB();
 
             if (tooltipsData) {
                 tooltipsData.forEach(({
@@ -396,39 +396,8 @@
                 const tooltipsData = response.tooltips;
                 // console.log("tooltipsData");
                 console.log(tooltipsData);
-                const wsRegions = wavesurfer.registerPlugin(RegionsPlugin.create())
 
-                if (Array.isArray(tooltipsData)) {
-                    tooltipsData.forEach(({
-                        start,
-                        end,
-                        comment
-                    }) => {
-                        if (start !== null && end !== null && comment !== null) {
-                            const region = wsRegions.addRegion({
-                                start: parseFloat(start), // Convert to a number
-                                end: parseFloat(end), // Convert to a number
-                                color: 'rgba(255, 0, 0, 0.1)'
-                            });
-
-                            const tooltip = document.createElement('div');
-                            tooltip.className = 'region-tooltip';
-                            tooltip.style.paddingLeft = '10px';
-                            tooltip.textContent = comment;
-
-                            region.element.appendChild(tooltip);
-                            customDialog.style.display = 'none';
-                        } else {
-                            console.log(
-                                'One or more properties are null in the tooltip data');
-                        }
-                    });
-                } else {
-                    console.log('Tooltips data is not in the expected format');
-                }
-
-
-                initializeWaveSurfer(newUrl);
+                initializeWaveSurfer(newUrl,tooltipsData);
             },
             error: function(error) {
                 console.error('Error in Ajax request:', error);
