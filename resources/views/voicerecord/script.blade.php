@@ -373,8 +373,8 @@
             type: "GET",
             url: "voicerecord/edit/" + dataId,
             success: function(response) {
-                console.log(response.voic);
-                console.log(response.remoteData2);
+                // console.log(response.voic);
+                // console.log(response.remoteData2);
                 const newUrl = 'wav/' + response.voic;
                 $('#vioc_name').text(response.voic_name);
                 $('#call_recording_id').val(response.remoteData2.id);
