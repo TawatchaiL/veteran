@@ -159,16 +159,31 @@ class VoicerecordController extends Controller
         $voic = $remoteData2->recordingfile;
         $voic_name = substr($voic, 14);
 
-        $tooltips = Comment::where('call_recording_id',$id)->get();
+        $tooltips = Comment::where('call_recording_id', $id)->get();
 
-        return response()->json(['voic' => $voic, 'remoteData2' => $remoteData2, 'voic_name' => $voic_name,'tooltips'=>$tooltips]);
+        return response()->json(['voic' => $voic, 'remoteData2' => $remoteData2, 'voic_name' => $voic_name, 'tooltips' => $tooltips]);
     }
 
     public function comment(Request $request)
     {
-        $input = $request->all();
-        Comment::create($input);
-        dd($request,$input);
-        return response()->json(['message' => 'Comment saved successfully']);
+        $call_recording_id = $request->call_recording_id;
+        $uniqueid = $request->uniqueid;
+        $start = $request->start;
+        $end = $request->end;
+
+        $check_data = Comment::where([
+            ['call_recording_id', $call_recording_id],
+            ['uniqueid', $uniqueid],
+            ['start', $start],
+            ['end', $end]
+        ])->get();
+
+        if (count($check_data) > 0) {
+            return response()->json(['message' => 'ข้อมูลซ้ำ']);
+        } else {
+            $input = $request->all();
+            Comment::create($input);
+            return response()->json(['message' => 'Comment saved successfully']);
+        }
     }
 }
