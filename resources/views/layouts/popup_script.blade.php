@@ -581,6 +581,7 @@
                     var levcase = $(this).data("lev");
                     var parent_id = $(this).val();
                     var nextcase = levcase + 1;
+                    var discase = nextcase + 1;
                     //$('#casetype2p' + cardId).html('<option value="">เลือกรายละเอียดเคส</option>');
                     //$('#casetype3p' + cardId).html('<option value="">เลือกรายละเอียดเคสย่อย</option>');
                     //$('#casetype4p' + cardId).html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
@@ -602,7 +603,7 @@
                         });
                         
                         $('#casetype' + nextcase + 'p' + cardId).attr('disabled', false);
-                        for (let i = (nextcase+1); i < 7; i++) {
+                        for (let i = discase; i < 7; i++) {
                             alert(i);
                             $('#casetype' + nextcase + 'p' + cardId).attr('disabled', true);
                         }
