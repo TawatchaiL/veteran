@@ -241,7 +241,7 @@
 
                 const commentId = region.id;
                 const csrfToken = document.querySelector('meta[name="csrf-token"]')
-                        .getAttribute('content');
+                    .getAttribute('content');
                 $.ajax({
                     type: "DELETE",
                     url: '/voicerecord/comment/' + commentId,
@@ -253,6 +253,14 @@
                         region.remove();
                         console.log(response.message);
                         $('#CreateModal').modal('hide');
+                        // console.log(wavesurfer);
+                        if (wavesurfer) {
+
+                            // Destroy the WaveSurfer instance to clear it
+                            wavesurfer.destroy();
+                            wavesurfer =
+                            null; // Set wavesurfer to null to indicate it's destroyed
+                        }
 
 
                     },
@@ -269,7 +277,8 @@
                 if (currentRegion) {
 
                     // Remove any existing tooltips in the current region
-                    const existingTooltips = currentRegion.element.querySelectorAll('.region-tooltip');
+                    const existingTooltips = currentRegion.element.querySelectorAll(
+                        '.region-tooltip');
                     existingTooltips.forEach((tooltip) => {
                         tooltip.remove();
                     });
