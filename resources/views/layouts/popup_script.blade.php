@@ -604,12 +604,11 @@
                         
                         $('#casetype' + nextcase + 'p' + cardId).attr('disabled', false);
                         for (let i = discase; i < 7; i++) {
-                            alert(i);
-                            $('#casetype' + nextcase + 'p' + cardId).attr('disabled', true);
+                            $('#casetype' + i + 'p' + cardId).attr('disabled', true);
                         }
                     } else {
                         for (let i = nextcase; i < 7; i++) {
-                            $('#casetype' + nextcase + 'p' + cardId).attr('disabled', true);
+                            $('#casetype' + i + 'p' + cardId).attr('disabled', true);
                         }
                     }
         });
