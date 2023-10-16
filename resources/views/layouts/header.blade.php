@@ -92,16 +92,16 @@
             </a>
         </li> --}}
         @if (empty($sidebarc))
-        <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="#">
-                <i class="far fa-xl fa-comments"></i>
-                <span class="badge badge-danger navbar-badge" id="hold_tab">0</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" id="hold_tab_content">
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="far fa-xl fa-comments"></i>
+                    <span class="badge badge-danger navbar-badge" id="hold_tab">0</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" id="hold_tab_content">
 
 
-            </div>
-        </li>
+                </div>
+            </li>
         @endif
 
     </ul>
@@ -135,18 +135,18 @@
                     break;
             }
         @endphp
+        @if (empty($sidebarc))
+            <li class="nav-item d-none d-sm-inline-block">
+                <a class="btn" id="ToolbarButton">
 
-        <li class="nav-item d-none d-sm-inline-block">
-            <a class="btn" id="ToolbarButton">
-
-                {{-- <b class="text-toolbar">{{ Auth::user()->name }} [
+                    {{-- <b class="text-toolbar">{{ Auth::user()->name }} [
                     <div></div>
                     {{ $temporaryPhone }} ]</b> : --}} <span id="phone_state_icon"
-                    class="{{ $temporaryPhoneColor }}">{!! $temporaryPhoneStatusIcon !!}</span> <b id="phone_state"
-                    class="{{ $temporaryPhoneColor }}">{{ $temporaryPhoneStatus }}</b> &nbsp;&nbsp;
-                <b><i class="fa-solid fa-xl icon-gray fa-circle-chevron-down"></i></b>
-            </a>
-        </li>
-
+                        class="{{ $temporaryPhoneColor }}">{!! $temporaryPhoneStatusIcon !!}</span> <b id="phone_state"
+                        class="{{ $temporaryPhoneColor }}">{{ $temporaryPhoneStatus }}</b> &nbsp;&nbsp;
+                    <b><i class="fa-solid fa-xl icon-gray fa-circle-chevron-down"></i></b>
+                </a>
+            </li>
+        @endif
     </ul>
 </nav>
