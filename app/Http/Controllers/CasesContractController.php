@@ -26,7 +26,6 @@ class CasesContractController extends Controller
     public function index(Request $request)
     {
         //$id = request('id');
-        //$request->get('id');
         if ($request->ajax()) {
             if (!empty($request->get('sdate'))) {
                 $dateRange = $request->input('sdate');
