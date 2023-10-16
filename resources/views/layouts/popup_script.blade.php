@@ -53,7 +53,6 @@
 
     function positionCards() {
         var cardPositions = [];
-alert('OK');
         $.ajax({
             url: '{{ route('contacts.popup') }}',
             type: 'get',
@@ -576,7 +575,7 @@ alert('OK');
 
     $(document).ready(function() {
 
-
+alert('OK');
         positionCards();
         //casetype changes
         $(document).on("change", ".casetypechang", function () {
