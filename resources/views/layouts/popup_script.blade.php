@@ -124,26 +124,6 @@
                 $(".card-footer").css("display", "block")
                 $('.bclose').css('display', 'none');
 
-                districtOb.on('change', function() {
-                    var districtId = $(this).val();
-                    cartonOb.html('<option value="">เลือกตำบล</option>');
-                    $.ajax({
-                        url: "thsubdistrict/subdistrict/" + districtId,
-                        method: 'GET',
-                        success: function(res) {
-                            cartonOb.html(
-                                '<option value="">เลือกตำบล</option>');
-                            $.each(res.data, function(index, item) {
-                                cartonOb.append(
-                                    $('<option></option>').val(
-                                        item.code).html(item
-                                        .name_th)
-                                );
-                            });
-                        }
-                    });
-                });
-
                 $('#casetype1p' + cardId).on('change', function() {
                     var parent_id = $(this).val();
                     $('#casetype2p' + cardId).html('<option value="">เลือกรายละเอียดเคส</option>');
