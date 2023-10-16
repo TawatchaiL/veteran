@@ -516,9 +516,7 @@ class ContactController extends Controller
         $Crmcsae->save();
 
         DB::table('crm_incoming')->where('telno',  $request->input('telno'))->delete();
-        //DB::table('crm_incoming')
-        //->where('telno', $request->input('telno'))
-        //->update(['status' => '1']);
+
         return response()->json(['success' => 'เพิ่ม รายผู้ติดต่อ เรียบร้อยแล้ว']);
     }
 
