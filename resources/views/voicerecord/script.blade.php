@@ -251,7 +251,6 @@
 
                     success: function(response) {
                         region.remove();
-                        console.log(response.message);
                         // $('#CreateModal').modal('hide');
                         // console.log(wavesurfer);
                         if (wavesurfer) {
@@ -259,6 +258,7 @@
                             wavesurfer.destroy();
                             wavesurfer = null; // Set wavesurfer to null to indicate it's destroyed
                         }
+                        console.log(response.message);
 
 
                     },
