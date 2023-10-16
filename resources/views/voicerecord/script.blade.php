@@ -241,7 +241,7 @@
 
                 const commentId = region.id;
                 const csrfToken = document.querySelector('meta[name="csrf-token"]')
-                        .getAttribute('content');
+                    .getAttribute('content');
                 $.ajax({
                     type: "DELETE",
                     url: '/voicerecord/comment/' + commentId,
@@ -251,7 +251,15 @@
 
                     success: function(response) {
                         region.remove();
+                        // $('#CreateModal').modal('hide');
+                        // console.log(wavesurfer);
+                        if (wavesurfer) {
+                            // Destroy the WaveSurfer instance to clear it
+                            wavesurfer.destroy();
+                            wavesurfer = null; // Set wavesurfer to null to indicate it's destroyed
+                        }
                         console.log(response.message);
+
 
                     },
                     error: function(error) {}
@@ -260,8 +268,8 @@
 
             document.getElementById('add-content-button').addEventListener('click', function(e) {
                 // addContentButton.addEventListener('click', () => {
-                console.log('current Region');
-                console.log(currentRegion);
+                // console.log('current Region');
+                // console.log(currentRegion);
 
                 e.preventDefault();
                 if (currentRegion) {
@@ -271,8 +279,6 @@
                         '.region-tooltip');
                     existingTooltips.forEach((tooltip) => {
                         tooltip.remove();
-                        // console.log('comments_id2 : ' + tooltipsData.id);
-
                     });
 
                     // Create a tooltip element
@@ -373,15 +379,15 @@
             type: "GET",
             url: "voicerecord/edit/" + dataId,
             success: function(response) {
-                console.log(response.voic);
-                console.log(response.remoteData2);
+                // console.log(response.voic);
+                // console.log(response.remoteData2);
                 const newUrl = 'wav/' + response.voic;
                 $('#vioc_name').text(response.voic_name);
                 $('#call_recording_id').val(response.remoteData2.id);
                 $('#uniqueid').val(response.remoteData2.uniqueid);
                 const tooltipsData = response.tooltips;
                 // console.log("tooltipsData");
-                console.log(tooltipsData);
+                // console.log(tooltipsData);
 
                 initializeWaveSurfer(newUrl, tooltipsData);
             },
