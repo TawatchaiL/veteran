@@ -776,7 +776,7 @@
                 // Handle success
             },
             error: function(xhr, status, error) {
-                // Handle error
+
             }
         });
     }
