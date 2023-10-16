@@ -875,7 +875,7 @@
         }
 
         $(document).on('show.bs.tab', '#custom-tabs-pop a[data-toggle="pill"]',
-            async function(e) {
+            function(e) {
                 // Determine which tab is being switched to
                 var href = $(e.target).attr("href");
                 var targetTab = href.replace("#custom-tabs-pop-", "");
@@ -894,8 +894,10 @@
                     alertType: "info",
                 }).done(function(r) {
                     if (r == true) {
+                        console.log('xxxx')
                         $(e.target).tab('show');
                     } else {
+                        console.log('xcccxxx')
                         e.preventDefault();
                     }
 
