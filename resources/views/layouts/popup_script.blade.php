@@ -894,18 +894,5 @@
                 }
 
             });
-
-        $('#myTabs a').click(function(e) {
-            e.preventDefault()
-            var areYouSure = confirm(
-                'If you sure you wish to leave this tab?  Any data entered will NOT be saved.  To save information, use the Save buttons.'
-            );
-            if (areYouSure === true) {
-                $(this).tab('show')
-            } else {
-                // do other stuff
-                return false;
-            }
-        })
     });
 </script>
