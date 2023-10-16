@@ -194,7 +194,7 @@ class ContactController extends Controller
                 ->orWhere('workno', '=', $item->telno)
                 ->count();
             if ($datap > 0) {
-                $statusText = "(ผู้ติดต่อที่เคยบันทึกข้อมูลไว้แล้ว)";
+                $statusText = "(ผู้ติดต่อที่เคยบันทึกข้อมูลไว้)";
             } else {
                 $statusText = "(ผู้ติดต่อใหม่)";
             }
@@ -225,8 +225,8 @@ class ContactController extends Controller
             </div>
         </div>';
 
-            $tab_hold .= ' <a href="#" class="dropdown-item">
-                <div class="media">
+            $tab_hold .= ' <a href="#" class="dropdown-item hold_tab_a">
+                <div class="media ">
                     <img src="' . asset('images/user.png') . '" alt="..." class="img-size-50 mr-3 img-circle">
                     <div class="media-body">
                         <h3 class="dropdown-item-title">
@@ -234,12 +234,13 @@ class ContactController extends Controller
                             <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
                         </h3>
                         <p class="text-sm">' . $statusText . '</p>
-                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i>' . $item->calltime . '</p>
                     </div>
                 </div>
 
             </a>
             <div class="dropdown-divider"></div>';
+            $tab_hold .='<a href="#" class="dropdown-item dropdown-footer" id="hold_tab_list">ดูรายการผู้ติดต่อ</a>';
             $i++;
         }
 

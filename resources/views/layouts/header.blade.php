@@ -98,7 +98,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" id="hold_tab_content">
 
-                <a href="#" class="dropdown-item dropdown-footer" id="hold_tab_list">ดูรายการผู้ติดต่อ</a>
+
             </div>
         </li>
 
