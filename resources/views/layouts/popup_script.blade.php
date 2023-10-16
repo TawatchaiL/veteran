@@ -835,6 +835,7 @@
                     await $('#custom-tabs-pop-' + datatId).html(response.html);
                     $(".card-footer").css("display", "block")
                     $('.bclose').css('display', 'none');
+                    
                 }
             });
         });
