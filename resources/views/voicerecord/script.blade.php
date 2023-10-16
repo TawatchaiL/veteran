@@ -260,8 +260,8 @@
 
             document.getElementById('add-content-button').addEventListener('click', function(e) {
                 // addContentButton.addEventListener('click', () => {
-                console.log('current Region');
-                console.log(currentRegion);
+                // console.log('current Region');
+                // console.log(currentRegion);
 
                 e.preventDefault();
                 if (currentRegion) {
