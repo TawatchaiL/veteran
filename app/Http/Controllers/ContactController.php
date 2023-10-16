@@ -307,7 +307,6 @@ class ContactController extends Controller
     {
 
         $datac = CrmContact::find($id);
-        //$data = CrmPhoneEmergency::find($id);
         $emer = DB::table('crm_phone_emergencies')
             ->whereRaw('contact_id = ' . $id . '')
             ->get();
