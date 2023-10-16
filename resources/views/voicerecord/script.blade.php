@@ -396,6 +396,7 @@
                 const tooltipsData = response.tooltips;
                 // console.log("tooltipsData");
                 console.log(tooltipsData);
+                const wsRegions = wavesurfer.registerPlugin(RegionsPlugin.create())
 
                 if (Array.isArray(tooltipsData)) {
                     tooltipsData.forEach(({
