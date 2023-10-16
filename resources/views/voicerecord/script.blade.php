@@ -13,7 +13,7 @@
     let wavesurfer; // Declare the wavesurfer variable
 
     // Function to create and initialize WaveSurfer
-    const initializeWaveSurfer = (newUrl,tooltipsData) => {
+    const initializeWaveSurfer = (newUrl, tooltipsData) => {
 
         //wav
         // Create a second timeline
@@ -286,9 +286,12 @@
                 if (currentRegion) {
 
                     // Remove any existing tooltips in the current region
-                    const existingTooltips = currentRegion.element.querySelectorAll('.region-tooltip');
+                    const existingTooltips = currentRegion.element.querySelectorAll(
+                        '.region-tooltip');
                     existingTooltips.forEach((tooltip) => {
                         tooltip.remove();
+                        console.log('comments_id2 : ' + tooltipsData.id);
+
                     });
 
                     // Create a tooltip element
@@ -399,7 +402,7 @@
                 // console.log("tooltipsData");
                 console.log(tooltipsData);
 
-                initializeWaveSurfer(newUrl,tooltipsData);
+                initializeWaveSurfer(newUrl, tooltipsData);
             },
             error: function(error) {
                 console.error('Error in Ajax request:', error);
