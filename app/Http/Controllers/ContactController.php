@@ -240,9 +240,11 @@ class ContactController extends Controller
 
             </a>
             <div class="dropdown-divider"></div>';
-            $tab_hold .='<a href="#" class="dropdown-item dropdown-footer" id="hold_tab_list">ดูรายการผู้ติดต่อ</a>';
+
             $i++;
         }
+
+        $tab_hold .= '<a href="#" class="dropdown-item dropdown-footer" id="hold_tab_list">ดูรายการผู้ติดต่อ</a>';
 
         return response()->json([
             'tab_link' => $tab_link,
