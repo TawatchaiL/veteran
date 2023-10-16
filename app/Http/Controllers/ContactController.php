@@ -229,7 +229,8 @@ class ContactController extends Controller
         return response()->json([
             'tab_link' => $tab_link,
             'tab_content' => $tab_content,
-            'active_id' => $active_id
+            'active_id' => $active_id,
+            'hold_tab' => $i
         ]);
     }
 

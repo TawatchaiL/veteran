@@ -1,6 +1,6 @@
 <script>
     //const addemerphone = (cardid) => {
-        
+
     //    const tableBody = document.getElementById('myTbl3p' + cardid).getElementsByTagName('tbody')[0];
 
     //    document.getElementById('addRowBtnp' + cardid).addEventListener('click', () => {
@@ -59,9 +59,10 @@
             success: function(response) {
                 //console.log(response.html)
                 removeAllTabs();
-            
+
                 $('#custom-tabs-pop').prepend(response.tab_link);
                 $('#custom-tabs-pop-tabContent').prepend(response.tab_content);
+                $('#hold_tab').html(response.hold_tab);
 
                 maximizeCard(response.active_id);
                 //$('#dpopup').html(response.html);
@@ -761,7 +762,7 @@
                     }
                 });
         });
-        
+
         $(document).on("change", ".districtpchang", function () {
                 let datatId = $(this).data("tabid");
                 var cartonOb = $('#subdistrictp' + datatId);
@@ -829,7 +830,7 @@
                     await $('#custom-tabs-pop-' + datatId).html(response.html);
                     $(".card-footer").css("display", "block")
                     $('.bclose').css('display', 'none');
-                    
+
                     $.ajax({
                         url: "{{ route('thcity.city') }}",
                         method: 'GET',
