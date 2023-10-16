@@ -184,35 +184,6 @@
 
             wavesurfer.setVolume(0.4);
             document.querySelector('#volume').value = wavesurfer.getVolume();
-
-            // const tooltipsData = fetchTooltipsFromDB();
-            // // Iterate through the tooltip data and add tooltips to the waveform
-            // tooltipsData.forEach(({
-            //     startTime,
-            //     endTime,
-            //     content
-            // }) => {
-            //     // Create a region for each tooltip
-            //     const region = wsRegions.addRegion({
-            //         start: startTime,
-            //         end: endTime,
-            //         color: 'rgba(255, 0, 0, 0.1)', // Set your desired tooltip color
-            //     });
-
-            //     const tooltip = document.createElement('div');
-            //     tooltip.className = 'region-tooltip';
-            //     tooltip.style.paddingLeft = '10px';
-            //     tooltip.textContent = content;
-
-            //     // Attach the tooltip to the region's element
-            //     region.element.appendChild(tooltip);
-            //     customDialog.style.display = 'none';
-
-            // });
-
-            //test null
-
-            // const tooltipsData = fetchTooltipsFromDB();
             if (tooltipsData) {
                 tooltipsData.forEach(({
                     id,
@@ -267,10 +238,23 @@
             button.addEventListener('click', () => {
                 console.log('comments_id : ' + region.id);
                 console.log('start : ' + region.start);
-                region.remove();
-                console.log(region);
 
+                const commentId = region.id;
+                $.ajax({
+                    type: "DELETE",
+                    url: 'route("voicerecord.destroy")'+commentId,
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken
+                    },
 
+                    success: function(response) {
+                        region.remove();
+                        console.log(response.message);
+
+                    },
+                    error: function(error) {
+                    }
+                });
             });
 
             document.getElementById('add-content-button').addEventListener('click', function(e) {

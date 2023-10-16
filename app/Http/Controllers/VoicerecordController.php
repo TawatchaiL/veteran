@@ -184,4 +184,16 @@ class VoicerecordController extends Controller
             return response()->json(['message' => 'Comment saved successfully']);
         }
     }
+    public function destroy($id)
+    {
+        // Code to delete the comment with the given ID
+        $comment = Comment::find($id);
+
+        if (!$comment) {
+            return response()->json(['message' => 'Comment not found'], 404);
+        }
+
+        $comment->delete();
+        return response()->json(['message' => 'Comment deleted successfully']);
+    }
 }
