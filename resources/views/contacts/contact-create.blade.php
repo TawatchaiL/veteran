@@ -153,7 +153,7 @@
                                 <div class="form-group">
                                     <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
                                         อำเภอ:</strong>
-                                    <select style="width: 100%;" class="select2 form-control" id="districtp{{$cardid}}"
+                                    <select style="width: 100%;" class="select2 form-control districtpchang" id="districtp{{$cardid}}" data-tabid="{{$cardid}}"
                                         name="districtp{{$cardid}}">
                                     </select>
                                 </div>

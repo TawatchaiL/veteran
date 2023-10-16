@@ -739,7 +739,7 @@
 
 
         positionCards();
-
+        //province changes
         $(document).on("change", ".citypchang", function () {
                 let datatId = $(this).data("tabid");
                 var districtOb = $('#districtp' + datatId);
@@ -761,7 +761,26 @@
                     }
                 });
         });
-
+        
+        $(document).on("change", ".citypchang", function () {
+                let datatId = $(this).data("tabid");
+                var cartonOb = $('#subdistrictp' + datatId);
+                cartonOb.html('<option value="">เลือกตำบล</option>');
+                $.ajax({
+                    url: "thdistrict/district/" + $(this).val(),
+                    method: 'GET',
+                    success: function(res) {
+                        cartonOb.html(
+                            '<option value="">เลือกตำบล</option>');
+                        $.each(res.data, function(index, item) {
+                            districtOb.append(
+                                $('<option></option>').val(item.code).html(item.name_th)
+                            );
+                        });
+                    }
+                });
+        });
+        //Add new phone emergency
         $(document).on('click', '.addRowBtnp-button',
             function() {
                 let cardId = $(this).data("tabid");
@@ -791,7 +810,7 @@
                                     '" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
                     )));
         });
-
+        // contact list to from
         $(document).on('click', '.selectcontactp-button',
             function() {
                 let datatId = $(this).data("tabid");
