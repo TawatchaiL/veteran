@@ -891,7 +891,7 @@
                 // Display a confirmation dialog
                 if (!confirm("ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab +
                         " ? \nกรุณาบันทึกข้อมุลก่อนเปลี่ยน Tab")) {
-                    // If the user cancels, prevent the tab switch
+                    /// If the user cancels, prevent the tab switch
                     e.preventDefault();
                 }
 
