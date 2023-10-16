@@ -268,12 +268,15 @@
             button.className = 'remove-region-button';
             button.textContent = 'X';
             customDialog.style.display = 'block';
+
             button.addEventListener('click', () => {
                 // Remove the region when the button is clicked
                 region.remove();
                 console.log(region);
+                console.log('comments_id : ' + tooltipsData.id);
 
             });
+
             document.getElementById('add-content-button').addEventListener('click', function(e) {
                 // addContentButton.addEventListener('click', () => {
                 console.log('current Region');
@@ -283,8 +286,7 @@
                 if (currentRegion) {
 
                     // Remove any existing tooltips in the current region
-                    const existingTooltips = currentRegion.element.querySelectorAll(
-                        '.region-tooltip');
+                    const existingTooltips = currentRegion.element.querySelectorAll('.region-tooltip');
                     existingTooltips.forEach((tooltip) => {
                         tooltip.remove();
                     });
