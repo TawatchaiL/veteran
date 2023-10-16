@@ -229,22 +229,22 @@
         let currentRegion;
         wsRegions.on('region-created', (region) => {
             // Callback code
-            console.log('Region Created:', region);
+            // console.log('Region Created:', region);
             const button = document.createElement('button');
             button.className = 'remove-region-button';
             button.textContent = 'X';
             customDialog.style.display = 'block';
 
             button.addEventListener('click', () => {
-                console.log('comments_id : ' + region.id);
-                console.log('start : ' + region.start);
+                // console.log('comments_id : ' + region.id);
+                // console.log('start : ' + region.start);
 
                 const commentId = region.id;
                 const csrfToken = document.querySelector('meta[name="csrf-token"]')
                         .getAttribute('content');
                 $.ajax({
                     type: "DELETE",
-                    url: '/voicerecord/comment/' + commentId, 
+                    url: '/voicerecord/comment/' + commentId,
                     headers: {
                         'X-CSRF-TOKEN': csrfToken
                     },
@@ -271,7 +271,7 @@
                         '.region-tooltip');
                     existingTooltips.forEach((tooltip) => {
                         tooltip.remove();
-                        console.log('comments_id2 : ' + tooltipsData.id);
+                        // console.log('comments_id2 : ' + tooltipsData.id);
 
                     });
 
