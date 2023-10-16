@@ -168,7 +168,7 @@ class VoicerecordController extends Controller
     {
         $input = $request->all();
         Comment::create($input);
-        // dd($request,$input);
+        dd($request,$input);
         return response()->json(['message' => 'Comment saved successfully']);
     }
 }
