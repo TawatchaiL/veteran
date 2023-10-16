@@ -252,14 +252,12 @@
                     success: function(response) {
                         region.remove();
                         console.log(response.message);
-                        $('#CreateModal').modal('hide');
+                        // $('#CreateModal').modal('hide');
                         // console.log(wavesurfer);
                         if (wavesurfer) {
-
                             // Destroy the WaveSurfer instance to clear it
                             wavesurfer.destroy();
-                            wavesurfer =
-                            null; // Set wavesurfer to null to indicate it's destroyed
+                            wavesurfer = null; // Set wavesurfer to null to indicate it's destroyed
                         }
 
 
