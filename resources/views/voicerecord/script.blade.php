@@ -213,25 +213,28 @@
             //test null
 
             // const tooltipsData = fetchTooltipsFromDB();
-
             if (tooltipsData) {
                 tooltipsData.forEach(({
+                    id,
                     start,
                     end,
                     comment
                 }) => {
-                    if (start !== null && end !== null && comment !== null) {
+                    if (id !== null && start !== null && end !== null && comment !== null) {
                         const region = wsRegions.addRegion({
+                            id: id,
                             start: start,
                             end: end,
                             color: 'rgba(255, 0, 0, 0.1)'
                         });
 
+                        // Create a tooltip element
                         const tooltip = document.createElement('div');
                         tooltip.className = 'region-tooltip';
                         tooltip.style.paddingLeft = '10px';
                         tooltip.textContent = comment;
 
+                        // Attach the tooltip to the region's element
                         region.element.appendChild(tooltip);
                         customDialog.style.display = 'none';
                     } else {
@@ -244,23 +247,15 @@
                 console.log('Tooltips data is null');
             }
         });
-
         const customDialog = document.getElementById('custom-dialog');
         const contentInput = document.getElementById('content-input');
         const addContentButton = document.getElementById('add-content-button');
-        // const callRecordingId = $('#call_recording_id').val();
-        // const uniqueId = $('#uniqueid').val();
         wsRegions.enableDragSelection({
             color: 'rgba(255, 0, 0, 0.1)',
             //content: 'Region Content',
         });
 
         let currentRegion;
-
-        // Debug statement to check if the code leading up to onRegionCreated is executing
-        // console.log('Before onRegionCreated');
-
-        // Add a listener for the region-created event
         wsRegions.on('region-created', (region) => {
             // Callback code
             console.log('Region Created:', region);
@@ -270,10 +265,11 @@
             customDialog.style.display = 'block';
 
             button.addEventListener('click', () => {
-                // Remove the region when the button is clicked
+                console.log('comments_id : ' + region.id);
+                console.log('start : ' + region.start);
                 region.remove();
                 console.log(region);
-                console.log('comments_id : ' + tooltipsData.id);
+
 
             });
 
