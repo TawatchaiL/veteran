@@ -603,6 +603,7 @@
                         
                         $('#casetype' + nextcase + 'p' + cardId).attr('disabled', false);
                         for (let i = (nextcase+1); i < 7; i++) {
+                            alert(i);
                             $('#casetype' + nextcase + 'p' + cardId).attr('disabled', true);
                         }
                     } else {
