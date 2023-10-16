@@ -127,14 +127,10 @@
                 $('#casetype1p' + cardId).on('change', function() {
                     var parent_id = $(this).val();
                     $('#casetype2p' + cardId).html('<option value="">เลือกรายละเอียดเคส</option>');
-                    $('#casetype3p' + cardId).html(
-                        '<option value="">เลือกรายละเอียดเคสย่อย</option>');
-                    $('#casetype4p' + cardId).html(
-                        '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
-                    $('#casetype5p' + cardId).html(
-                        '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
-                    $('#casetype6p' + cardId).html(
-                        '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
+                    $('#casetype3p' + cardId).html('<option value="">เลือกรายละเอียดเคสย่อย</option>');
+                    $('#casetype4p' + cardId).html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
+                    $('#casetype5p' + cardId).html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
+                    $('#casetype6p' + cardId).html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
                     if (parent_id != '') {
                         $.ajax({
                             url: "casetype6/casetype/" + parent_id,
@@ -150,14 +146,12 @@
                             }
                         });
                         $('#casetype2p' + cardId).attr('disabled', false);
-
                         $('#casetype3p' + cardId).attr('disabled', true);
                         $('#casetype4p' + cardId).attr('disabled', true);
                         $('#casetype5p' + cardId).attr('disabled', true);
                         $('#casetype6p' + cardId).attr('disabled', true);
                     } else {
                         $('#casetype2p' + cardId).attr('disabled', true);
-
                         $('#casetype3p' + cardId).attr('disabled', true);
                         $('#casetype4p' + cardId).attr('disabled', true);
                         $('#casetype5p' + cardId).attr('disabled', true);
@@ -190,13 +184,11 @@
                             }
                         });
                         $('#casetype3p' + cardId).attr('disabled', false);
-
                         $('#casetype4p' + cardId).attr('disabled', true);
                         $('#casetype5p' + cardId).attr('disabled', true);
                         $('#casetype6p' + cardId).attr('disabled', true);
                     } else {
                         $('#casetype3p' + cardId).attr('disabled', true);
-
                         $('#casetype4p' + cardId).attr('disabled', true);
                         $('#casetype5p' + cardId).attr('disabled', true);
                         $('#casetype6p' + cardId).attr('disabled', true);
@@ -739,6 +731,24 @@
 
 
         positionCards();
+        //casetype changes
+        $(document).on("change", ".casetypechang", function () {
+                    let cardId = $(this).data("tabid");
+                    let levcase = $(this).data("lev");
+                    var parent_id = $(this).val();
+                    var nextcase = levcase + 1;
+                    //$('#casetype2p' + cardId).html('<option value="">เลือกรายละเอียดเคส</option>');
+                    //$('#casetype3p' + cardId).html('<option value="">เลือกรายละเอียดเคสย่อย</option>');
+                    //$('#casetype4p' + cardId).html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
+                    //$('#casetype5p' + cardId).html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
+                    //$('#casetype6p' + cardId).html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
+                    if (parent_id != '' && levcase < 6) {
+                        alert('OK');
+
+                    } else {
+                        alert('NOOK');
+                    }
+        });
         //province changes
         $(document).on("change", ".citypchang", function () {
                 let datatId = $(this).data("tabid");
@@ -861,20 +871,11 @@
                             });
                         }
                     });
-                    $('#casetype2p' + cardId).html(
-                        '<option value="">เลือกรายละเอียดเคส</option>');
-                    $('#casetype3p' + cardId).html(
-                        '<option value="">เลือกรายละเอียดเคสย่อย</option>'
-                    );
-                    $('#casetype4p' + cardId).html(
-                        '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>'
-                    );
-                    $('#casetype5p' + cardId).html(
-                        '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>'
-                    );
-                    $('#casetype6p' + cardId).html(
-                        '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>'
-                    );
+                    $('#casetype2p' + cardId).html('<option value="">เลือกรายละเอียดเคส</option>');
+                    $('#casetype3p' + cardId).html('<option value="">เลือกรายละเอียดเคสย่อย</option>');
+                    $('#casetype4p' + cardId).html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
+                    $('#casetype5p' + cardId).html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
+                    $('#casetype6p' + cardId).html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
                     $('#casetype2p' + cardId).attr('disabled', true);
                     $('#casetype3p' + cardId).attr('disabled', true);
                     $('#casetype4p' + cardId).attr('disabled', true);

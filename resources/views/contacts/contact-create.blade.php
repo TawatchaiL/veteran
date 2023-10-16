@@ -259,8 +259,8 @@
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <strong><i class="fa-regular fa-message"></i> ประเภทเคส:</strong>
-                                    <select style="width: 100%;" class="select2 form-control" id="casetype1p{{$cardid}}"
-                                        name="casetype1p{{$cardid}}">
+                                    <select style="width: 100%;" class="select2 form-control casetypechang" id="casetype1p{{$cardid}}"
+                                        name="casetype1p{{$cardid}}" data-tabid="{{$cardid}}" data-lev="1">
                                     </select>
                                 </div>
                             </div>
@@ -268,8 +268,8 @@
                                 <div class="form-group">
                                     <strong><i class="fa-regular fa-comment-dots"></i>
                                         รายละเอียดเคส:</strong>
-                                    <select style="width: 100%;" class="select2 form-control" id="casetype2p{{$cardid}}"
-                                        name="casetype2p{{$cardid}}">
+                                    <select style="width: 100%;" class="select2 form-control casetypechang" id="casetype2p{{$cardid}}"
+                                        name="casetype2p{{$cardid}}" data-tabid="{{$cardid}}" data-lev="2">
                                     </select>
                                 </div>
                             </div>
@@ -279,8 +279,8 @@
                                 <div class="form-group">
                                     <strong><i class="fa-regular fa-comment-dots"></i>
                                         รายละเอียดเคสย่อย:</strong>
-                                    <select style="width: 100%;" class="select2 form-control" id="casetype3p{{$cardid}}"
-                                        name="casetype3p{{$cardid}}">
+                                    <select style="width: 100%;" class="select2 form-control casetypechang" id="casetype3p{{$cardid}}"
+                                        name="casetype3p{{$cardid}}" data-tabid="{{$cardid}}" data-lev="3">
                                     </select>
                                 </div>
                             </div>
@@ -288,8 +288,8 @@
                                 <div class="form-group">
                                     <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
                                         เพิ่มเติม 1:</strong>
-                                    <select style="width: 100%;" class="select2 form-control" id="casetype4p{{$cardid}}"
-                                        name="casetype4p{{$cardid}}">
+                                    <select style="width: 100%;" class="select2 form-control casetypechang" id="casetype4p{{$cardid}}"
+                                        name="casetype4p{{$cardid}}" data-tabid="{{$cardid}}" data-lev="4">
                                     </select>
                                 </div>
                             </div>
@@ -299,8 +299,8 @@
                                 <div class="form-group">
                                     <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
                                         เพิ่มเติม 2:</strong>
-                                    <select style="width: 100%;" class="select2 form-control" id="casetype5p{{$cardid}}"
-                                        name="casetype5p{{$cardid}}">
+                                    <select style="width: 100%;" class="select2 form-control casetypechang" id="casetype5p{{$cardid}}"
+                                        name="casetype5p{{$cardid}}" data-tabid="{{$cardid}}" data-lev="5">
                                     </select>
                                 </div>
                             </div>
@@ -308,8 +308,8 @@
                                 <div class="form-group">
                                     <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
                                         เพิ่มเติม 3:</strong>
-                                    <select style="width: 100%;" class="select2 form-control" id="casetype6p{{$cardid}}"
-                                        name="casetype6p{{$cardid}}">
+                                    <select style="width: 100%;" class="select2 form-control casetypechang" id="casetype6p{{$cardid}}"
+                                        name="casetype6p{{$cardid}}" data-tabid="{{$cardid}}" data-lev="6">
                                     </select>
                                 </div>
                             </div>
