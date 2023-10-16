@@ -763,6 +763,7 @@
         });
         
         $(document).on("change", ".districtpchang", function () {
+                alert('OK');
                 let datatId = $(this).data("tabid");
                 var cartonOb = $('#subdistrictp' + datatId);
                 cartonOb.html('<option value="">เลือกตำบล</option>');
