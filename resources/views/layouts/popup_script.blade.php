@@ -162,9 +162,6 @@
                                     res.datax.datac.fname +
                                     ' ' + res.datax.datac
                                     .lname + '</h3>');
-                                /* $('#contact_name').html(res.datax.datac.fname +
-                                    ' ' + res.datax.datac
-                                    .lname); */
                                 $('#contractid' + cardId).val(res.datax.datac
                                     .id);
                                 $('#hnp' + cardId).val(res.datax.datac.hn);
@@ -574,8 +571,6 @@
     }
 
     $(document).ready(function() {
-
-alert('OK');
         positionCards();
         //casetype changes
         $(document).on("change", ".casetypechang", function () {
@@ -795,7 +790,11 @@ alert('OK');
                     }
                 });
             });
-
+// Save data
+        $(document).on('click', '.SubmitCreateFormP-button',
+        function() {
+            
+        });
         $(document).on('click', '.custom-bottom-right-card .card-tools [data-card-widget="maximize"]',
             function() {
 
