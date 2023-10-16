@@ -216,14 +216,14 @@
 
             if (tooltipsData) {
                 tooltipsData.forEach(({
-                    startTime,
-                    endTime,
-                    content
+                    start,
+                    end,
+                    comment
                 }) => {
                     if (startTime !== null && endTime !== null && content !== null) {
                         const region = wsRegions.addRegion({
-                            start: startTime,
-                            end: endTime,
+                            start: start,
+                            end: start,
                             color: 'rgba(255, 0, 0, 0.1)'
                         });
 
