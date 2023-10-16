@@ -759,18 +759,18 @@
                                     $('<option></option>').val(item.id).html(item.name)
                                 );
                             });
+                            $('#casetype2p' + cardId).html('<option value="">เลือกรายละเอียดเคส</option>');
+                            $('#casetype3p' + cardId).html('<option value="">เลือกรายละเอียดเคสย่อย</option>');
+                            $('#casetype4p' + cardId).html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
+                            $('#casetype5p' + cardId).html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
+                            $('#casetype6p' + cardId).html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
+                            $('#casetype2p' + cardId).attr('disabled', true);
+                            $('#casetype3p' + cardId).attr('disabled', true);
+                            $('#casetype4p' + cardId).attr('disabled', true);
+                            $('#casetype5p' + cardId).attr('disabled', true);
+                            $('#casetype6p' + cardId).attr('disabled', true);
                         }
                     });
-                    $('#casetype2p' + cardId).html('<option value="">เลือกรายละเอียดเคส</option>');
-                    $('#casetype3p' + cardId).html('<option value="">เลือกรายละเอียดเคสย่อย</option>');
-                    $('#casetype4p' + cardId).html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
-                    $('#casetype5p' + cardId).html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
-                    $('#casetype6p' + cardId).html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
-                    $('#casetype2p' + cardId).attr('disabled', true);
-                    $('#casetype3p' + cardId).attr('disabled', true);
-                    $('#casetype4p' + cardId).attr('disabled', true);
-                    $('#casetype5p' + cardId).attr('disabled', true);
-                    $('#casetype6p' + cardId).attr('disabled', true);
                 }
             });
         });
