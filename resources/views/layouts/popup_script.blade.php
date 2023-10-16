@@ -607,6 +607,7 @@
                                 $('#casetype2p' + cardId).html('<option value="">เลือกรายละเอียดเคส</option>');
                             }
                             if(i === 3){
+                                alert('OK');
                                 $('#casetype3p' + cardId).html('<option value="">เลือกรายละเอียดเคสย่อย</option>');
                             }
                             if(i === 4){
