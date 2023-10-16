@@ -128,27 +128,7 @@
                 var districtOb = $('#districtp' + cardId);
                 var cartonOb = $('#subdistrictp' + cardId);
 
-                $('#cityp' + cardId).on('change', function() {
-                    var provinceId = $(this).val();
-                    districtOb.html('<option value="">เลือกอำเภอ</option>');
-                    $.ajax({
-                        url: "thdistrict/district/" + provinceId,
-                        method: 'GET',
-                        success: function(res) {
-                            districtOb.html(
-                                '<option value="">เลือกอำเภอ</option>');
-                            cartonOb.html(
-                                '<option value="">เลือกตำบล</option>');
-                            $.each(res.data, function(index, item) {
-                                districtOb.append(
-                                    $('<option></option>').val(
-                                        item.code).html(item
-                                        .name_th)
-                                );
-                            });
-                        }
-                    });
-                });
+
 
                 districtOb.on('change', function() {
                     var districtId = $(this).val();
@@ -785,6 +765,10 @@
 
 
         positionCards();
+
+        $(document).on("change", ".citypchang", function () {
+            alert($(this).val());
+        });
 
         $(document).on('click', '.addRowBtnp-button',
             function() {
