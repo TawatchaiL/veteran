@@ -394,7 +394,39 @@
                 $('#call_recording_id').val(response.remoteData2.id);
                 $('#uniqueid').val(response.remoteData2.uniqueid);
                 const tooltipsData = response.tooltips;
+                // console.log("tooltipsData");
                 console.log(tooltipsData);
+
+                if (Array.isArray(tooltipsData)) {
+                    tooltipsData.forEach(({
+                        start,
+                        end,
+                        comment
+                    }) => {
+                        if (start !== null && end !== null && comment !== null) {
+                            const region = wsRegions.addRegion({
+                                start: parseFloat(start), // Convert to a number
+                                end: parseFloat(end), // Convert to a number
+                                color: 'rgba(255, 0, 0, 0.1)'
+                            });
+
+                            const tooltip = document.createElement('div');
+                            tooltip.className = 'region-tooltip';
+                            tooltip.style.paddingLeft = '10px';
+                            tooltip.textContent = comment;
+
+                            region.element.appendChild(tooltip);
+                            customDialog.style.display = 'none';
+                        } else {
+                            console.log(
+                                'One or more properties are null in the tooltip data');
+                        }
+                    });
+                } else {
+                    console.log('Tooltips data is not in the expected format');
+                }
+
+
                 initializeWaveSurfer(newUrl);
             },
             error: function(error) {
