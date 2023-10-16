@@ -616,7 +616,7 @@
                                 });
                             }
                         });
-                        
+
                         $('#casetype' + nextcase + 'p' + cardId).attr('disabled', false);
                         for (let i = discase; i < 7; i++) {
                             $('#casetype' + i + 'p' + cardId).attr('disabled', true);
@@ -890,7 +890,7 @@
                 /* if (!confirm("ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab +
                         " ? \nกรุณาบันทึกข้อมุลก่อนเปลี่ยน Tab")) {
                     // If the user cancels, prevent the tab switch
-                    e.preventDefault();
+                    e.preventDefault();/
                 } */
                 ezBSAlert({
                     type: "confirm",
