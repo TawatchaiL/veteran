@@ -144,7 +144,7 @@
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <strong><i class="fa-solid fa-city"></i> จังหวัด :</strong>
-                                    <select style="width: 100%;" class="select2 form-control citypchang" id="cityp{{$cardid}}"
+                                    <select style="width: 100%;" class="select2 form-control citypchang" id="cityp{{$cardid}}" data-tabid="{{$cardid}}"
                                         name="cityp{{$cardid}}">
                                     </select>
                                 </div>

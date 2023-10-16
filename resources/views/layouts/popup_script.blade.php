@@ -767,7 +767,7 @@
         positionCards();
 
         $(document).on("change", ".citypchang", function () {
-            alert($(this).name);
+            alert($(this).data("tabid"));
 
         });
 
