@@ -851,7 +851,7 @@
         $('#searchButton').on('click', function() {
             var agen = $('#agen').val();
             var telp = $('#telp').val();
-
+            console.log(telp);
             if (agen == '' && telp == '') {
                 toastr.error('Please input agen or telp', {
                     timeOut: 5000
