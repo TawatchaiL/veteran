@@ -579,6 +579,8 @@
             if (savedKeyword) {
                 $('#keyword').val(savedKeyword);
             }
+            console.log(startDate);
+            console.log(endDate);
         }
         // Call the function to set initial field values on page load
         retrieveFieldValues();
@@ -615,24 +617,10 @@
                     //d.search = $('input[type="search"]').val();
                 }
             },
-            /*"aoColumnDefs": [
-            {
-            'bSortable': true,
-            'aTargets': [0]
-            } //disables sorting for column one
-            ],
-            "searching": false,
-            "lengthChange": false,
-            "paging": false,
-            'iDisplayLength': 10,
-            "sPaginationType": "full_numbers",
-            "dom": 'T<"clear">lfrtip',
-                */
 
             dom: 'Bfrtip',
             paging: true,
             searching: true,
-
             serverSide: true,
             processing: true,
             language: {
@@ -834,7 +822,22 @@
                     className: 'no-print'
                 },
             ]
+
+            /*"aoColumnDefs": [
+            {
+            'bSortable': true,
+            'aTargets': [0]
+            } //disables sorting for column one
+            ],
+            "searching": false,
+            "lengthChange": false,
+            "paging": false,
+            'iDisplayLength': 10,
+            "sPaginationType": "full_numbers",
+            "dom": 'T<"clear">lfrtip',
+                */
         });
+
         function storeFieldValues() {
             var dateStart = $('#reservation').val();
             var searchType = $('#search_type').val();
