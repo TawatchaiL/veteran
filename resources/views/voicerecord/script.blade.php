@@ -296,8 +296,6 @@
                     const uniqueId = $('#uniqueid').val();
                     const csrfToken = document.querySelector('meta[name="csrf-token"]')
                         .getAttribute('content');
-                    // const content = contentInput.value;
-                    //end
                     $.ajax({
                         type: "get",
                         url: "/voicerecord/comment",
@@ -312,12 +310,10 @@
                             end: region.end,
                         },
                         success: function(response) {
-                            // Handle success response if needed
                             console.log(response.message);
                             $('#CreateModal').modal('hide');
                         },
                         error: function(error) {
-                            // Handle error if needed
                         }
                     });
 
@@ -342,19 +338,13 @@
                     'X-CSRF-TOKEN': csrfToken
                 },
                 data: {
-                    // call_recording_id: callRecordingId,
-                    // uniqueid: uniqueId,
-                    // comment: content,
                     start: region.start,
                     end: region.end,
                 },
                 success: function(response) {
-                    // Handle success response if needed
                     console.log(response.message);
-                    // $('#CreateModal').modal('hide');
                 },
                 error: function(error) {
-                    // Handle error if needed
                 }
             });
         })
