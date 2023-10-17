@@ -588,8 +588,7 @@
             if (savedKeyword) {
                 $('#keyword').val(savedKeyword);
             }
-            console.log(startDate);
-            console.log(endDate);
+
         }
         // Call the function to set initial field values on page load
         retrieveFieldValues();
@@ -618,8 +617,7 @@
             }
         });
 
-
-        var table = $('#Listview').DataTable({
+        const table_option ={
 
             ajax: {
                 data: function(d) {
@@ -845,9 +843,9 @@
             "sPaginationType": "full_numbers",
             "dom": 'T<"clear">lfrtip',
                 */
-        });
 
-
+        };
+        var table = $('#Listview').DataTable(table_option);
 
         $('#exportPDFButton').on('click', function() {
             table.button('3').trigger();
