@@ -35,17 +35,29 @@ class VoicerecordController extends Controller
         $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')->get();
         $remoteData2 = DB::connection('remote_connection')->table('call_center.call_recording')->orderBy('id', 'desc')->get();
         // dd($datas);
-        $datas = DB::connection('remote_connection')
+        $datass = DB::connection('remote_connection')
             ->table('asteriskcdrdb.cdr')
             ->join('call_center.call_recording', 'asteriskcdrdb.cdr.uniqueid', '=', 'call_center.call_recording.uniqueid')
-            ->orderBy('id', 'desc')
-            ->get();
+            ->orderBy('id', 'desc');
+
         $agens = User::all();
 
-        dd($request);
+        // dd($request);
 
         if ($request->ajax()) {
+            if (!empty($request->get('sdate'))) {
+                $dateRange = $request->input('sdate');
+                if ($dateRange) {
+                    $dateRangeArray = explode(' - ', $dateRange);
 
+                    if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
+                        $startDate = $dateRangeArray[0];
+                        $endDate = $dateRangeArray[1];
+                        $datass->whereBetween('contacts.start_date', [$startDate, $endDate]);
+                    }
+                }
+            }
+            $datas = $datass->get();
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
