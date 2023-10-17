@@ -65,7 +65,7 @@
                                             <select style="width: 100%;" class="select2 form-control" id="casetype3"
                                                 name="casetype3">
                                                 <option value="" selected>ทั้งหมด</option>
-                                                @foreach ($datas as $value)
+                                                {{-- @foreach ($datas as $value)
                                                     @php
                                                         $agen_select = '';
                                                         $dst = '';
@@ -77,10 +77,13 @@
                                                                 [$sip, $no] = explode('/', $dst);
                                                                 [$telp, $lear] = explode('-', $no);
                                                             }
-                                                        } 
+                                                        }
                                                     @endphp
                                                     <option value="{{ $dst }}" selected>{{ $telp }}
                                                     </option>
+                                                @endforeach --}}
+                                                @foreach ($agens as $agen)
+                                                <option value="{{ $agen }}" selected>{{ $agen }}</option>
                                                 @endforeach
                                             </select>
                                         </div>

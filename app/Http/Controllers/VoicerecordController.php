@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 
@@ -95,7 +96,7 @@ class VoicerecordController extends Controller
             ->join('call_center.call_recording', 'asteriskcdrdb.cdr.uniqueid', '=', 'call_center.call_recording.uniqueid')
             ->orderBy('id', 'desc')
             ->get();
-
+        $agens = User::all();
 
 
         if ($request->ajax()) {
@@ -155,6 +156,7 @@ class VoicerecordController extends Controller
         return view('voicerecord.index',[
 
             'datas' => $datas,
+            'agen'=> $agens,
 
         ]);
     }
