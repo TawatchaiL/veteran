@@ -83,7 +83,7 @@
                                                     </option>
                                                 @endforeach --}}
                                                 @foreach ($agens as $agen)
-                                                <option value="{{ $agen }}" selected>{{ $agen }}</option>
+                                                <option value="{{ $agen->phone }}" selected>{{ $agen->phone }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
