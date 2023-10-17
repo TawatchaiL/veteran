@@ -67,17 +67,19 @@
                                                 <option value="" selected>ทั้งหมด</option>
                                                 @foreach ($datas as $value)
                                                     @php
-
                                                         $agen_select = '';
-                                                        $dst = $datas->dstchannel;
-                                                        if ($dst !== null && strpos($dst, 'SIP/') === 0) {
-                                                            [$sip, $no] = explode('/', $dst);
-                                                            [$telp, $lear] = explode('-', $no);
+                                                        if ($datas->dstchannel) {
+                                                            # code...
+                                                            $dst = $datas->dstchannel;
+                                                            if ($dst !== null && strpos($dst, 'SIP/') === 0) {
+                                                                [$sip, $no] = explode('/', $dst);
+                                                                [$telp, $lear] = explode('-', $no);
+                                                            }
                                                         }
 
                                                     @endphp
-                                                <option value="{{ $dst }}" selected>{{ $telp }}</option>
-
+                                                    <option value="{{ $dst }}" selected>{{ $telp }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </div>
