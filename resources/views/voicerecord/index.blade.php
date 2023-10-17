@@ -56,7 +56,7 @@
                                                 name="agen">
                                                 <option value="" selected>ทั้งหมด</option>
                                                 @foreach ($agens as $agen)
-                                                    <option value="{{ $agen->phone }}">{{ $agen->phone ?? 'ไม่พบเบอร์โทรศัพท์'}} </option>
+                                                    <option value="{{ $agen->user }}">{{ $agen->user ?? 'ไม่พบเบอร์โทรศัพท์'}} </option>
                                                 @endforeach
                                             </select>
                                         </div>

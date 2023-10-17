@@ -40,16 +40,16 @@ class VoicerecordController extends Controller
             ->join('call_center.call_recording', 'asteriskcdrdb.cdr.uniqueid', '=', 'call_center.call_recording.uniqueid')
             ->orderBy('id', 'desc');
 
-        $agens = User::all();
-        $remoteData3 = DB::connection('remote_connection')->table('asterisk.devices')->get();
+        // $agens = User::all();
+        $agens = DB::connection('remote_connection')->table('asterisk.devices')->get();
 
-        foreach ($remoteData3 as $data) {
+        foreach ($agens as $data) {
             $user = $data->user;
             // Now you can use $user in your code
             // For example, you can echo it to display it
             echo "User: $user";
         }
-        dd($remoteData3);
+        dd($agens);
 
         if ($request->ajax()) {
 
