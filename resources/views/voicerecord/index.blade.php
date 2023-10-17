@@ -68,21 +68,19 @@
                                                 @foreach ($datas as $value)
                                                     @php
                                                         $agen_select = '';
-                                                        if (isset($datas->dstchannel)) {
+                                                        if (isset($value->dstchannel)) {
                                                             # code...
-                                                            $dst = $datas->dstchannel;
+                                                            $dst = $value->dstchannel;
                                                             if ($dst !== null && strpos($dst, 'SIP/') === 0) {
                                                                 [$sip, $no] = explode('/', $dst);
                                                                 [$telp, $lear] = explode('-', $no);
                                                             }
-                                                        }else {
-
+                                                        } else {
                                                             $dst = '';
                                                             $telp = '';
                                                         }
-
                                                     @endphp
-                                                    <option value="{{ $dst }}" selected>{{ $telp}}</option>
+                                                    <option value="{{ $dst }}" selected>{{ $telp }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
