@@ -867,9 +867,8 @@
                 }else if(agen !== ''){
                     table.column(5).search(agen).draw();
 
-                }else{
+                }else if(telp !== ''){
                     table.column(4).search(telp).draw();
-
                 }
 
             }
