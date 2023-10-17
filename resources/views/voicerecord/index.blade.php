@@ -23,33 +23,21 @@
                         <div class="card-body">
                             <div class="col-sm-12">
                                 <ol class="breadcrumb float-sm-center">
-                                    {{-- <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Users Management</li> --}}
-                                    <div class="col-xs-2 col-sm-2 col-md-2">
-                                        <div class="form-group">
-                                            <strong><i class="fas fa-calendar"></i> วันที่เริ่ม:</strong>
-                                            {{-- {!! Form::text('start_date', null, [
-                                                'id' => 'SDate',
-                                                'placeholder' => '',
-                                                'class' => 'SDate form-control',
-                                                'data-target' => '#reservationdate',
-                                            ]) !!} --}}
-                                            <input type="text" name="start_date" id="SDate"
-                                                class="SDate form-control" data-target="#reservationdate" placeholder="" value="{{ date('Y-m-d') }}" autocomplete="off">
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-2 col-sm-2 col-md-2">
-                                        <div class="form-group">
-                                            <strong><i class="fas fa-calendar"></i> วันที่สิ้นสุด:</strong>
-                                            {{-- {!! Form::text('end_date', null, [
-                                                'id' => 'EDate',
-                                                'placeholder' => '',
-                                                'class' => 'EDate form-control',
-                                                'data-target' => '#reservationdate',
-                                            ]) !!} --}}
-                                            <input type="text" name="end_date" id="EDate" class="EDate form-control"
-                                                data-target="#reservationdate" placeholder="" value="{{ date('Y-m-d')}}" autocomplete="off">
+                                    <div class="row float-lg-left">
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <div class="form-group">
+                                                <strong>
+                                                    Start Date Filter:</strong>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">
+                                                            <i class="far fa-calendar-alt"></i>
+                                                        </span>
+                                                    </div>
+                                                    <input type="text" class="form-control float-right" id="reservation">
+                                                </div>
 
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2">

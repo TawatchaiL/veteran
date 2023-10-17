@@ -550,7 +550,23 @@
         $(".EDate").datepicker({
             dateFormat: "yy-mm-dd"
         });
+        let daterange = () => {
+            $('#reservation').daterangepicker({
+                startDate: startDate,
+                endDate: endDate,
+                locale: {
+                    format: 'YYYY-MM'
+                }
+            });
 
+            // Apply the custom date range filter on input change
+            $('#reservation').on('apply.daterangepicker', function() {
+                table.draw();
+                storeFieldValues();
+            });
+        }
+
+        daterange();
 
         //$.noConflict();
         var token = ''
