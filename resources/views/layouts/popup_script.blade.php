@@ -582,6 +582,7 @@
         $(document).on('click', '.SubmitCreateFormP-button', function() {
             let cardId = $(this).data("tabid");
             var emergencyData = [];
+            alert('OK');
             if ($('#contractid' + cardId).val() === "") {
                 $('#myTbl3p' + cardId + ' tbody tr').each(function() {
                     var emergencyname = $(this).find(
