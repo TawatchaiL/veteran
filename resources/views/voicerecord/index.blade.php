@@ -35,7 +35,7 @@
                                                 'data-target' => '#reservationdate',
                                             ]) !!} --}}
                                             <input type="text" name="start_date" id="SDate"
-                                                class="SDate form-control" data-target="#reservationdate" placeholder="">
+                                                class="SDate form-control" data-target="#reservationdate" placeholder="" value="{{ date('Y-m-d') }}">
                                         </div>
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2">
@@ -48,42 +48,25 @@
                                                 'data-target' => '#reservationdate',
                                             ]) !!} --}}
                                             <input type="text" name="end_date" id="EDate" class="EDate form-control"
-                                                data-target="#reservationdate" placeholder="">
+                                                data-target="#reservationdate" placeholder="" value="{{ date('Y-m-d')}}">
 
                                         </div>
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
                                             <strong><i class="fas fa-square-phone"></i> เบอร์โทรศัพท์:</strong>
-                                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => '', 'class' => 'form-control']) !!}
+                                            {!! Form::text('telp', null, ['id' => 'telp', 'placeholder' => '', 'class' => 'form-control']) !!}
+                                            <input type="text" name="telp" id="telp" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
                                             <strong><i class="fas fa-user"></i>
                                                 Agent ที่รับสาย:</strong>
-                                            <select style="width: 100%;" class="select2 form-control" id="casetype3"
-                                                name="casetype3">
+                                            <select style="width: 100%;" class="select2 form-control" id="casetype3" name="casetype3">
                                                 <option value="" selected>ทั้งหมด</option>
-                                                {{-- @foreach ($datas as $value)
-                                                    @php
-                                                        $agen_select = '';
-                                                        $dst = '';
-                                                        $telp = '';
-                                                        if (isset($value->dstchannel)) {
-                                                            # code...
-                                                            $dst = $value->dstchannel;
-                                                            if ($dst !== null && strpos($dst, 'SIP/') === 0) {
-                                                                [$sip, $no] = explode('/', $dst);
-                                                                [$telp, $lear] = explode('-', $no);
-                                                            }
-                                                        }
-                                                    @endphp
-                                                    <option value="{{ $dst }}" selected>{{ $telp }}
-                                                    </option>
-                                                @endforeach --}}
                                                 @foreach ($agens as $agen)
-                                                <option value="{{ $agen->phone }}" selected>{{ $agen->phone }}</option>
+                                                    <option value="{{ $agen->phone }}" selected>{{ $agen->phone }}  </option>
                                                 @endforeach
                                             </select>
                                         </div>
