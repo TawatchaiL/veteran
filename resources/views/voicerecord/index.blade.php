@@ -35,7 +35,7 @@
                                                 'data-target' => '#reservationdate',
                                             ]) !!} --}}
                                             <input type="text" name="start_date" id="SDate"
-                                                class="SDate form-control" data-target="#reservationdate" placeholder="" value="{{ date('Y-m-d') }}">
+                                                class="SDate form-control" data-target="#reservationdate" placeholder="" value="{{ date('Y-m-d') }}" autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2">
@@ -48,7 +48,7 @@
                                                 'data-target' => '#reservationdate',
                                             ]) !!} --}}
                                             <input type="text" name="end_date" id="EDate" class="EDate form-control"
-                                                data-target="#reservationdate" placeholder="" value="{{ date('Y-m-d')}}">
+                                                data-target="#reservationdate" placeholder="" value="{{ date('Y-m-d')}}" autocomplete="off">
 
                                         </div>
                                     </div>
@@ -56,7 +56,7 @@
                                         <div class="form-group">
                                             <strong><i class="fas fa-square-phone"></i> เบอร์โทรศัพท์:</strong>
                                             {{-- {!! Form::text('telp', null, ['id' => 'telp', 'placeholder' => '', 'class' => 'form-control']) !!} --}}
-                                            <input type="text" name="telp" id="telp" class="form-control">
+                                            <input type="text" name="telp" id="telp" class="form-control" autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2">
