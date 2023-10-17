@@ -555,7 +555,7 @@
                 // startDate: startDate,
                 // endDate: endDate,
                 locale: {
-                    format: 'YYYY-MM'
+                    format: 'YYYY-MM-DD'
                 }
             });
 
