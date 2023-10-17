@@ -238,6 +238,7 @@
             button.addEventListener('click', () => {
                 // console.log('comments_id : ' + region.id);
                 // console.log('start : ' + region.start);
+                region.remove();
 
                 const commentId = region.id;
                 const csrfToken = document.querySelector('meta[name="csrf-token"]')
