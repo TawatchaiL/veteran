@@ -554,48 +554,28 @@
                                     res.datax.datac.fname +
                                     ' ' + res.datax.datac
                                     .lname + '</h3>');
-                                $('#contractid' + cardId).val(res.datax.datac
-                                    .id);
+                                $('#contractid' + cardId).val(res.datax.datac.id);
                                 $('#hnp' + cardId).val(res.datax.datac.hn);
-                                $('#adddatep' + cardId).val(res.datax.datac
-                                    .adddate);
-                                $('#fnamep' + cardId).val(res.datax.datac
-                                    .fname);
-                                $('#lnamep' + cardId).val(res.datax.datac
-                                    .lname);
-                                $('#homenop' + cardId).val(res.datax.datac
-                                    .homeno);
+                                $('#adddatep' + cardId).val(res.datax.datac.adddate);
+                                $('#fnamep' + cardId).val(res.datax.datac.fname);
+                                $('#lnamep' + cardId).val(res.datax.datac.lname);
+                                $('#homenop' + cardId).val(res.datax.datac.homeno);
                                 $('#moop' + cardId).val(res.datax.datac.moo);
                                 $('#soip' + cardId).val(res.datax.datac.soi);
-                                $('#roadp' + cardId).val(res.datax.datac
-                                    .road);
-                                $('#cityp' + cardId).val(res.datax.datac
-                                    .city);
+                                $('#roadp' + cardId).val(res.datax.datac.road);
+                                $('#cityp' + cardId).val(res.datax.datac.city);
                                 $('#cityp' + cardId).change();
                                 setTimeout(function() {
-                                    $('#districtp' + cardId).val(res
-                                        .datax.datac
-                                        .district);
-                                    $('#districtp' + cardId)
-                                        .change();
+                                    $('#districtp' + cardId).val(res.datax.datac.district);
+                                    $('#districtp' + cardId).change();
                                     setTimeout(function() {
-                                        $('#subdistrictp' +
-                                                cardId)
-                                            .val(res
-                                                .datax
-                                                .datac
-                                                .subdistrict
-                                            );
+                                        $('#subdistrictp' + cardId).val(res.datax.datac.subdistrict);
                                     }, 500)
                                 }, 500)
-                                $('#postcodep' + cardId).val(res.datax.datac
-                                    .postcode);
-                                $('#telhomep' + cardId).val(res.datax.datac
-                                    .telhome);
-                                $('#phonenop' + cardId).val(res.datax.datac
-                                    .phoneno);
-                                $('#worknop' + cardId).val(res.datax.datac
-                                    .workno);
+                                $('#postcodep' + cardId).val(res.datax.datac.postcode);
+                                $('#telhomep' + cardId).val(res.datax.datac.telhome);
+                                $('#phonenop' + cardId).val(res.datax.datac.phoneno);
+                                $('#worknop' + cardId).val(res.datax.datac.workno);
 
                                 var tbody = document.querySelector(
                                     '#myTbl3p' + cardId + ' tbody');
