@@ -43,13 +43,13 @@ class VoicerecordController extends Controller
         // $agens = User::all();
         $agens = DB::connection('remote_connection')->table('asterisk.devices')->get();
 
-        foreach ($agens as $data) {
-            $user = $data->user;
-            // Now you can use $user in your code
-            // For example, you can echo it to display it
-            echo "User: $user";
-        }
-        dd($agens);
+        // foreach ($agens as $data) {
+        //     $user = $data->user;
+        //     // Now you can use $user in your code
+        //     // For example, you can echo it to display it
+        //     echo "User: $user";
+        // }
+        // dd($agens);
 
         if ($request->ajax()) {
 
