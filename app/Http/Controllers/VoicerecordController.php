@@ -41,7 +41,7 @@ class VoicerecordController extends Controller
             ->orderBy('id', 'desc');
 
         // $agens = User::all();
-        $agens = DB::connection('remote_connection')->table('asterisk.devices')->get();
+        $agens = DB::connection('remote_connection')->table('asterisk.devices')->orderBy('id', 'desc')->get();
 
         // foreach ($agens as $data) {
         //     $user = $data->user;
