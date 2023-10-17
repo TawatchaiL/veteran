@@ -84,7 +84,7 @@ class VoicerecordController extends Controller
                         list($telp, $lear) = explode('-', $no);
                         return $telp;
                     } else {
-                        return null;
+                        return 'ไม่พบเบอร์โทรศัพท์';
                     }
                 })
                 ->editColumn('duration', function ($row) {
