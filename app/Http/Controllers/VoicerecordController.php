@@ -164,9 +164,9 @@ class VoicerecordController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'comment' => 'required|string|max:255',
-        ]);
+        // $request->validate([
+        //     'comment' => 'required|string|max:255',
+        // ]);
         $comment = Comment::findOrFail($id);
         $input = $request->all();
         $comment->update($input);
