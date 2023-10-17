@@ -34,7 +34,8 @@
                                                 'class' => 'SDate form-control',
                                                 'data-target' => '#reservationdate',
                                             ]) !!} --}}
-                                            <input type="text" name="start_date" id="SDate" class="SDate form-control" data-target="#reservationdate" placeholder="">
+                                            <input type="text" name="start_date" id="SDate"
+                                                class="SDate form-control" data-target="#reservationdate" placeholder="">
                                         </div>
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2">
@@ -46,7 +47,8 @@
                                                 'class' => 'EDate form-control',
                                                 'data-target' => '#reservationdate',
                                             ]) !!} --}}
-                                            <input type="text" name="end_date" id="EDate" class="EDate form-control" data-target="#reservationdate" placeholder="">
+                                            <input type="text" name="end_date" id="EDate" class="EDate form-control"
+                                                data-target="#reservationdate" placeholder="">
 
                                         </div>
                                     </div>
@@ -63,6 +65,20 @@
                                             <select style="width: 100%;" class="select2 form-control" id="casetype3"
                                                 name="casetype3">
                                                 <option value="" selected>ทั้งหมด</option>
+                                                @foreach ($datas as $value)
+                                                    @php
+
+                                                        $agen_select = '';
+                                                        $dst = $datas->dstchannel;
+                                                        if ($dst !== null && strpos($dst, 'SIP/') === 0) {
+                                                            [$sip, $no] = explode('/', $dst);
+                                                            [$telp, $lear] = explode('-', $no);
+                                                        }
+
+                                                    @endphp
+                                                <option value="{{ $dst }}" selected>{{ $telp }}</option>
+
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>

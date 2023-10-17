@@ -95,6 +95,9 @@ class VoicerecordController extends Controller
             ->join('call_center.call_recording', 'asteriskcdrdb.cdr.uniqueid', '=', 'call_center.call_recording.uniqueid')
             ->orderBy('id', 'desc')
             ->get();
+
+
+
         if ($request->ajax()) {
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
@@ -149,7 +152,11 @@ class VoicerecordController extends Controller
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
 
-        return view('voicerecord.index');
+        return view('voicerecord.index',[
+
+            'datas' => $datas,
+
+        ]);
     }
     public function edit($id)
     {
