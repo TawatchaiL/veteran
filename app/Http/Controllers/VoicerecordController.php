@@ -31,65 +31,9 @@ class VoicerecordController extends Controller
      */
     public function index(Request $request)
     {
-        // $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')->get();
 
-        // $datas = DB::table('cases')
-        //     ->select(DB::raw('DATE(created_at) as cdate'), DB::raw('TIME(created_at) as ctime'), 'telno', 'agent', 'id')
-        //     ->get();
-        // $datas = DB::table('cases')
-        //     ->join('remote_connection.asteriskcdrdb.cdr', 'cases.uniqueid', '=', 'cdr.uniqueid')
-        //     ->select(DB::raw('DATE(cases.created_at) as cdate'), DB::raw('TIME(cases.created_at) as ctime'), 'cases.telno', 'cases.agent', 'cases.id')
-        //     ->get();
-
-
-        // $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')->get();
-        // // $remoteData2 = DB::connection('remote_connection2')->table('call_center.call_recording')->get();
-
-        // $datas = DB::connection('remote_connection')
-        //     ->table('call_center.call_recording')
-        //     ->join('remote_connection.asteriskcdrdb.cdr', 'call_recording.uniqueid', '=', 'cdr.uniqueid')
-        //     ->select('call_recording.*', 'cdr.*') // Use * to select all columns, or specify the columns you want explicitly
-        //     ->get();
         $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')->get();
         $remoteData2 = DB::connection('remote_connection')->table('call_center.call_recording')->orderBy('id', 'desc')->get();
-
-
-
-        // foreach ($remoteData2 as $record) {
-        //     foreach ($remoteData as $cdrRecord) {
-        //         if ($record->uniqueid === $cdrRecord->uniqueid) {
-
-        //             $calldate = $record->datetime_entry;
-        //             list($date, $time) = explode(' ', $calldate);
-
-        //             $dst = $cdrRecord->dstchannel;
-        //             if ($dst !== null && strpos($dst, 'SIP/') === 0) {
-        //                 list($sip, $no) = explode('/', $dst);
-        //                 list($telp, $lear) = explode('-', $no);
-        //             } else {
-        //             }
-
-        //             $durationInSeconds = $cdrRecord->billsec;
-        //             $hours = floor($durationInSeconds / 3600);
-        //             $minutes = floor(($durationInSeconds % 3600) / 60);
-        //             $seconds = $durationInSeconds % 60;
-
-        //             $durationFormatted = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
-        //             $combinedData = [
-        //                 'id' => $record->id,
-        //                 'datetime_entry' => $record->datetime_entry,
-        //                 'uniqueid' => $record->uniqueid,
-        //                 // 'cdate' => $date,
-        //                 // 'ctime' => $time,
-        //                 'telno' => $cdrRecord->src,
-        //                 // 'agent' => $telp,
-        //                 'duration' => $durationFormatted,
-        //                 'action' => $record->recordingfile,
-        //             ];
-        //             $datas[] = (object)$combinedData;
-        //         }
-        //     }
-        // }
         // dd($datas);
         $datas = DB::connection('remote_connection')
             ->table('asteriskcdrdb.cdr')
@@ -98,8 +42,10 @@ class VoicerecordController extends Controller
             ->get();
         $agens = User::all();
 
+        dd($request);
 
         if ($request->ajax()) {
+
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
