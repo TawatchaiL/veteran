@@ -23,8 +23,8 @@
                         <div class="card-body">
                             <div class="col-sm-12">
                                 <ol class="breadcrumb float-sm-center">
-                                    <div class="row float-lg-left">
-                                        <div class="col-xs-12 col-sm-12 col-md-12">
+
+                                        <div class="col-xs-2 col-sm-2 col-md-2">
                                             <div class="form-group">
                                                 <strong>
                                                     Start Date Filter:</strong>
@@ -39,7 +39,7 @@
 
                                             </div>
                                         </div>
-                                    </div>
+
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
                                             <strong><i class="fas fa-square-phone"></i> เบอร์โทรศัพท์:</strong>
