@@ -68,7 +68,7 @@
                                                 @foreach ($datas as $value)
                                                     @php
                                                         $agen_select = '';
-                                                        if ($datas->dstchannel) {
+                                                        if (isset($datas->dstchannel)) {
                                                             # code...
                                                             $dst = $datas->dstchannel;
                                                             if ($dst !== null && strpos($dst, 'SIP/') === 0) {
@@ -78,8 +78,7 @@
                                                         }
 
                                                     @endphp
-                                                    <option value="{{ $dst }}" selected>{{ $telp }}
-                                                    </option>
+                                                    <option value="{{ $dst }}" selected>{{ $telp }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
