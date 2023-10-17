@@ -314,8 +314,7 @@
                             console.log(response.message);
                             $('#CreateModal').modal('hide');
                         },
-                        error: function(error) {
-                        }
+                        error: function(error) {}
                     });
 
                 }
@@ -331,7 +330,7 @@
             console.log('Updated region', region)
             const regionId = region.id;
             const csrfToken = document.querySelector('meta[name="csrf-token"]')
-                        .getAttribute('content');
+                .getAttribute('content');
             $.ajax({
                 type: "POST",
                 url: "/voicerecord/comment/update/" + regionId,
@@ -345,8 +344,7 @@
                 success: function(response) {
                     console.log(response.message);
                 },
-                error: function(error) {
-                }
+                error: function(error) {}
             });
         })
 
@@ -550,22 +548,55 @@
         $(".EDate").datepicker({
             dateFormat: "yy-mm-dd"
         });
+
+
+        var startDate;
+        var endDate;
+
+        function datesearch() {
+            var currentDate = moment();
+            // Set the start date to 7 days before today
+            startDate = moment(currentDate).subtract(7, 'days').format('YYYY-MM-DD');
+            // Set the end date to the end of the current month
+            endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
+        }
+
+        function retrieveFieldValues() {
+            var saveddateStart = localStorage.getItem('dateStart');
+            var savedSearchType = localStorage.getItem('searchType');
+            var savedKeyword = localStorage.getItem('keyword');
+            // Set field values from local storage
+            if (saveddateStart) {
+                var dateParts = saveddateStart.split(' - ');
+                startDate = dateParts[0];
+                endDate = dateParts[1];
+            } else {
+                datesearch();
+            }
+            if (savedSearchType) {
+                $('#search_type').val(savedSearchType);
+            }
+            if (savedKeyword) {
+                $('#keyword').val(savedKeyword);
+            }
+        }
+        // Call the function to set initial field values on page load
+        retrieveFieldValues();
+
         let daterange = () => {
             $('#reservation').daterangepicker({
-                // startDate: startDate,
-                // endDate: endDate,
+                startDate: startDate,
+                endDate: endDate,
                 locale: {
                     format: 'YYYY-MM-DD'
                 }
             });
-
             // Apply the custom date range filter on input change
             $('#reservation').on('apply.daterangepicker', function() {
                 table.draw();
                 storeFieldValues();
             });
         }
-
         daterange();
 
         //$.noConflict();
@@ -578,6 +609,12 @@
 
 
         var table = $('#Listview').DataTable({
+            ajax: {
+                data: function(d) {
+                    d.sdate = $('#reservation').val();
+                    //d.search = $('input[type="search"]').val();
+                }
+            },
             /*"aoColumnDefs": [
             {
             'bSortable': true,
@@ -591,10 +628,11 @@
             "sPaginationType": "full_numbers",
             "dom": 'T<"clear">lfrtip',
                 */
+
             dom: 'Bfrtip',
             paging: true,
             searching: false,
-            ajax: '',
+
             serverSide: true,
             processing: true,
             language: {
