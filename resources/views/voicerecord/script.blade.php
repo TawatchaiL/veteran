@@ -862,14 +862,14 @@
                 $.fn.dataTable.ext.search.pop();
 
                 if (agen !== '' && telp !== '') {
-                    table.column(4).search(telp).draw();
-                    table.column(5).search(agen).draw();
+                    table.column(3).search(telp).draw();
+                    table.column(4).search(agen).draw();
                 }
                 if(telp !== ''){
-                    table.column(4).search(telp).draw();
+                    table.column(3).search(telp).draw();
                 }
                 if(agen !== ''){
-                    table.column(5).search(agen).draw();
+                    table.column(4).search(agen).draw();
 
                 }
 
