@@ -55,7 +55,7 @@
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
                                             <strong><i class="fas fa-square-phone"></i> เบอร์โทรศัพท์:</strong>
-                                            {!! Form::text('telp', null, ['id' => 'telp', 'placeholder' => '', 'class' => 'form-control']) !!}
+                                            {{-- {!! Form::text('telp', null, ['id' => 'telp', 'placeholder' => '', 'class' => 'form-control']) !!} --}}
                                             <input type="text" name="telp" id="telp" class="form-control">
                                         </div>
                                     </div>
