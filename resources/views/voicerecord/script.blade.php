@@ -552,8 +552,8 @@
         });
         let daterange = () => {
             $('#reservation').daterangepicker({
-                startDate: startDate,
-                endDate: endDate,
+                // startDate: startDate,
+                // endDate: endDate,
                 locale: {
                     format: 'YYYY-MM'
                 }
