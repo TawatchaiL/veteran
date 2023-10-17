@@ -45,6 +45,7 @@ class VoicerecordController extends Controller
         // dd($request);
 
         if ($request->ajax()) {
+
             if (!empty($request->get('sdate'))) {
                 $dateRange = $request->input('sdate');
                 if ($dateRange) {
@@ -53,10 +54,11 @@ class VoicerecordController extends Controller
                     if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
                         $startDate = $dateRangeArray[0];
                         $endDate = $dateRangeArray[1];
-                        $datass->whereBetween('contacts.start_date', [$startDate, $endDate]);
+                        $datass->whereBetween('datetime_entry', [$startDate, $endDate]);
                     }
                 }
             }
+
             $datas = $datass->get();
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
