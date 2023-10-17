@@ -28,23 +28,26 @@
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
                                             <strong><i class="fas fa-calendar"></i> วันที่เริ่ม:</strong>
-                                            {!! Form::text('start_date', null, [
+                                            {{-- {!! Form::text('start_date', null, [
                                                 'id' => 'SDate',
                                                 'placeholder' => '',
                                                 'class' => 'SDate form-control',
                                                 'data-target' => '#reservationdate',
-                                            ]) !!}
+                                            ]) !!} --}}
+                                            <input type="text" name="start_date" id="SDate" class="SDate form-control" data-target="#reservationdate" placeholder="">
                                         </div>
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
                                             <strong><i class="fas fa-calendar"></i> วันที่สิ้นสุด:</strong>
-                                            {!! Form::text('end_date', null, [
+                                            {{-- {!! Form::text('end_date', null, [
                                                 'id' => 'EDate',
                                                 'placeholder' => '',
                                                 'class' => 'EDate form-control',
                                                 'data-target' => '#reservationdate',
-                                            ]) !!}
+                                            ]) !!} --}}
+                                            <input type="text" name="end_date" id="EDate" class="EDate form-control" data-target="#reservationdate" placeholder="">
+
                                         </div>
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2">
