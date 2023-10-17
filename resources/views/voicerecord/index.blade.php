@@ -65,6 +65,14 @@
                                                 <i class="fas fa-search"></i> ค้นหา </button>
                                         </div>
                                     </div>
+                                    <div class="col-xs-2 col-sm-2 col-md-2" style="align-items: flex-end;">
+                                        <div class="form-group">
+                                            <strong>&nbsp;</strong>
+
+                                            <button type="button" class="form-control btn bg-gradient-warning"
+                                                id="resetSearchButton"><i class="fa-solid fa-rotate"></i></button>
+                                        </div>
+                                    </div>
                                 </ol>
                             </div>
                         </div>

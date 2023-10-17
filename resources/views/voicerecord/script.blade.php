@@ -874,6 +874,31 @@
             }
         });
 
+        $('#resetSearchButton').on('click', async function() {
+            localStorage.removeItem('dateStart');
+            localStorage.removeItem('searchType');
+            localStorage.removeItem('keyword');
+
+            // Set field values to empty
+            $('#search_type').val('');
+            $('#keyword').val('');
+
+            $('#Listview').html('');
+
+            // Clear DataTable state
+            if (table) {
+                table.state.clear();
+                await table.destroy();
+            }
+            // Set the date range back to its default
+            var currentDate = moment();
+            var startDate = moment(currentDate).subtract(7, 'days').format('YYYY-MM-DD');
+            var endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
+            daterange();
+            table = $('#Listview').DataTable(table_option);
+            table.draw();
+        });
+
         $('#exportPDFButton').on('click', function() {
             table.button('3').trigger();
         });
