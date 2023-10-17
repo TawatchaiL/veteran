@@ -75,10 +75,14 @@
                                                                 [$sip, $no] = explode('/', $dst);
                                                                 [$telp, $lear] = explode('-', $no);
                                                             }
+                                                        }else {
+
+                                                            $dst = '';
+                                                            $telp = '';
                                                         }
 
                                                     @endphp
-                                                    <option value="{{ $dst }}" selected>{{ $telp }}</option>
+                                                    <option value="{{ $dst }}" selected>{{ $telp}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
