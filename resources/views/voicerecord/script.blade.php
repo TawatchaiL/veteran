@@ -323,13 +323,38 @@
 
                 }
             });
+
             region.element.appendChild(button);
             currentRegion = region;
+
         });
 
         //รอทำ พน อัพเดต
         wsRegions.on('region-updated', (region) => {
             console.log('Updated region', region)
+            const regionId = region.id;
+            $.ajax({
+                type: "get",
+                url: "/voicerecord/comment/update" + regionId,
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken
+                },
+                data: {
+                    call_recording_id: callRecordingId,
+                    uniqueid: uniqueId,
+                    comment: content,
+                    start: region.start,
+                    end: region.end,
+                },
+                success: function(response) {
+                    // Handle success response if needed
+                    console.log(response.message);
+                    // $('#CreateModal').modal('hide');
+                },
+                error: function(error) {
+                    // Handle error if needed
+                }
+            });
         })
 
         // Loop a region on click

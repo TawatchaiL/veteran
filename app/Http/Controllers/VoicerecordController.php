@@ -162,6 +162,17 @@ class VoicerecordController extends Controller
         return response()->json(['voic' => $voic, 'remoteData2' => $remoteData2, 'voic_name' => $voic_name, 'tooltips' => $tooltips]);
     }
 
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'comment' => 'required|string|max:255',
+        ]);
+        $comment = Comment::findOrFail($id);
+        $input = $request->all();
+        $comment->update($input);
+
+        return response()->json(['message' => 'Comment updated successfully']);
+    }
     public function comment(Request $request)
     {
         $call_recording_id = $request->call_recording_id;
