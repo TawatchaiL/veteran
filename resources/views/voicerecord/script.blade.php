@@ -560,7 +560,16 @@
             // Set the end date to the end of the current month
             endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
         }
+        function storeFieldValues() {
+            var dateStart = $('#reservation').val();
+            var searchType = $('#search_type').val();
+            var keyword = $('#keyword').val();
 
+            // Store values in local storage
+            localStorage.setItem('dateStart', dateStart);
+            localStorage.setItem('searchType', searchType);
+            localStorage.setItem('keyword', keyword);
+        }
         function retrieveFieldValues() {
             var saveddateStart = localStorage.getItem('dateStart');
             var savedSearchType = localStorage.getItem('searchType');
@@ -611,13 +620,13 @@
 
 
         var table = $('#Listview').DataTable({
+
             ajax: {
                 data: function(d) {
                     d.sdate = $('#reservation').val();
                     //d.search = $('input[type="search"]').val();
                 }
             },
-
             dom: 'Bfrtip',
             paging: true,
             searching: true,
@@ -838,16 +847,7 @@
                 */
         });
 
-        function storeFieldValues() {
-            var dateStart = $('#reservation').val();
-            var searchType = $('#search_type').val();
-            var keyword = $('#keyword').val();
 
-            // Store values in local storage
-            localStorage.setItem('dateStart', dateStart);
-            localStorage.setItem('searchType', searchType);
-            localStorage.setItem('keyword', keyword);
-        }
 
         $('#exportPDFButton').on('click', function() {
             table.button('3').trigger();
