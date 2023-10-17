@@ -505,6 +505,7 @@
         $(document).on('click', '.selectcontactp-button',
             function() {
                 let datatId = $(this).data("tabid");
+                let cardId = $(this).data("tabid");
                 let contactid = $(this).data("id");
                 //alert($(this).attr("id"));
                 $('#custom-tabs-pop-' + datatId).empty();
@@ -536,6 +537,134 @@
                                         .val(item.code).html(item
                                             .name_th));
                                 });
+                            }
+                        });
+
+                        var telnop = $('#telnop' + cardId).val();
+                        $('#phonenosuccess' + cardId).html(
+                            '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ผู้ติดต่อใหม่</h3>'
+                        );
+                        $.ajax({
+                            url: "contacts/popupedit/" + telnop,
+                            method: 'GET',
+                            async: false,
+                            success: function(res) {
+                                $('#phonenosuccess' + cardId).html(
+                                    '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ' +
+                                    res.datax.datac.fname +
+                                    ' ' + res.datax.datac
+                                    .lname + '</h3>');
+                                $('#contractid' + cardId).val(res.datax.datac
+                                    .id);
+                                $('#hnp' + cardId).val(res.datax.datac.hn);
+                                $('#adddatep' + cardId).val(res.datax.datac
+                                    .adddate);
+                                $('#fnamep' + cardId).val(res.datax.datac
+                                    .fname);
+                                $('#lnamep' + cardId).val(res.datax.datac
+                                    .lname);
+                                $('#homenop' + cardId).val(res.datax.datac
+                                    .homeno);
+                                $('#moop' + cardId).val(res.datax.datac.moo);
+                                $('#soip' + cardId).val(res.datax.datac.soi);
+                                $('#roadp' + cardId).val(res.datax.datac
+                                    .road);
+                                $('#cityp' + cardId).val(res.datax.datac
+                                    .city);
+                                $('#cityp' + cardId).change();
+                                setTimeout(function() {
+                                    $('#districtp' + cardId).val(res
+                                        .datax.datac
+                                        .district);
+                                    $('#districtp' + cardId)
+                                        .change();
+                                    setTimeout(function() {
+                                        $('#subdistrictp' +
+                                                cardId)
+                                            .val(res
+                                                .datax
+                                                .datac
+                                                .subdistrict
+                                            );
+                                    }, 500)
+                                }, 500)
+                                $('#postcodep' + cardId).val(res.datax.datac
+                                    .postcode);
+                                $('#telhomep' + cardId).val(res.datax.datac
+                                    .telhome);
+                                $('#phonenop' + cardId).val(res.datax.datac
+                                    .phoneno);
+                                $('#worknop' + cardId).val(res.datax.datac
+                                    .workno);
+
+                                var tbody = document.querySelector(
+                                    '#myTbl3p' + cardId + ' tbody');
+                                while (tbody.firstChild) {
+                                    tbody.removeChild(tbody
+                                        .firstChild);
+                                }
+                                $.each(res.datax.emer, function(
+                                    index, value) {
+                                    $('#myTbl3p' + cardId + ' tbody')
+                                        .append($('<tr>')
+                                            .append($(
+                                                    '<td width="30%">'
+                                                )
+                                                .append(
+                                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="hidden" value="' +
+                                                    value
+                                                    .id +
+                                                    '" name="emertypep' +
+                                                    cardId +
+                                                    '[]" id="emertypep' +
+                                                    cardId +
+                                                    '"><input type="text" id="emergencynamep' +
+                                                    cardId +
+                                                    '" name="emergencynamep' +
+                                                    cardId +
+                                                    '[]" class="form-control has-feedback-left" value="' +
+                                                    value
+                                                    .emergencyname +
+                                                    '" required="required"></div>'
+                                                ))
+                                            .append($(
+                                                    '<td width="10%">'
+                                                )
+                                                .append(
+                                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerrelation' +
+                                                    cardId +
+                                                    '" name="emerrelationp' +
+                                                    cardId +
+                                                    '[]" class="form-control has-feedback-left" value="' +
+                                                    value
+                                                    .emerrelation +
+                                                    '" required="required"></div>'
+                                                ))
+                                            .append($(
+                                                    '<td width="10%">'
+                                                )
+                                                .append(
+                                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone' +
+                                                    cardId +
+                                                    '" name="emerphonep' +
+                                                    cardId +
+                                                    '[]" class="form-control has-feedback-left" onkeydown="validateNumberp(event)" value="' +
+                                                    value
+                                                    .emerphone +
+                                                    '" required="required"></div>'
+                                                ))
+                                            .append($(
+                                                    '<td width="5%">'
+                                                )
+                                                .append(
+                                                    '<button type="button" name="deletem' +
+                                                    cardId +
+                                                    '" id="deletem' +
+                                                    cardId +
+                                                    '" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
+                                                )));
+                                });
+
                             }
                         });
 
@@ -582,7 +711,6 @@
         $(document).on('click', '.SubmitCreateFormP-button', function() {
             let cardId = $(this).data("tabid");
             var emergencyData = [];
-            alert('OK');
             if ($('#contractid' + cardId).val() === "") {
                 $('#myTbl3p' + cardId + ' tbody tr').each(function() {
                     var emergencyname = $(this).find(
