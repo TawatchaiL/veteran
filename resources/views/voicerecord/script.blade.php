@@ -336,8 +336,8 @@
             const csrfToken = document.querySelector('meta[name="csrf-token"]')
                         .getAttribute('content');
             $.ajax({
-                type: "get",
-                url: "/voicerecord/comment/update" + regionId,
+                type: "post",
+                url: "/voicerecord/comment/update/" + regionId,
                 headers: {
                     'X-CSRF-TOKEN': csrfToken
                 },
