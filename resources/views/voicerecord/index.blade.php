@@ -24,37 +24,39 @@
                             <div class="col-sm-12">
                                 <ol class="breadcrumb float-sm-center">
 
-                                        <div class="col-xs-2 col-sm-2 col-md-2">
-                                            <div class="form-group">
-                                                <strong>
-                                                    Start Date Filter:</strong>
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text">
-                                                            <i class="far fa-calendar-alt"></i>
-                                                        </span>
-                                                    </div>
-                                                    <input type="text" class="form-control float-right" id="reservation">
+                                    <div class="col-xs-2 col-sm-2 col-md-2">
+                                        <div class="form-group">
+                                            <strong>
+                                                Start Date Filter:</strong>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="far fa-calendar-alt"></i>
+                                                    </span>
                                                 </div>
-
+                                                <input type="text" class="form-control float-right" id="reservation">
                                             </div>
+
                                         </div>
+                                    </div>
 
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
                                             <strong><i class="fas fa-square-phone"></i> เบอร์โทรศัพท์:</strong>
                                             {{-- {!! Form::text('telp', null, ['id' => 'telp', 'placeholder' => '', 'class' => 'form-control']) !!} --}}
-                                            <input type="text" name="telp" id="telp" class="form-control" autocomplete="off">
+                                            <input type="text" name="telp" id="telp" class="form-control"
+                                                autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
                                             <strong><i class="fas fa-user"></i>
                                                 Agent ที่รับสาย:</strong>
-                                            <select style="width: 100%;" class="select2 form-control" id="agen" name="agen">
+                                            <select style="width: 100%;" class="select2 form-control" id="agen"
+                                                name="agen">
                                                 <option value="" selected>ทั้งหมด</option>
                                                 @foreach ($agens as $agen)
-                                                    <option value="{{ $agen->phone }}">{{ $agen->phone }}  </option>
+                                                    <option value="{{ $agen->phone }}">{{ $agen->phone }} </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -67,11 +69,11 @@
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2 align-self-end">
                                         <div class="form-group">
-
-                                            <button type="button" class="form-control btn bg-gradient-warning"
-                                                id="resetSearchButton"><i class="fa-solid fa-rotate"></i></button>
+                                            <button type="button" class="btn bg-gradient-warning" id="resetSearchButton"> <i class="fa-solid fa-rotate"></i> reset </button>
+                                            {{-- <button type="button" class="btn bg-gradient-warning" id="resetSearchButton"><i class="fa-solid fa-rotate"></i></button> --}}
                                         </div>
                                     </div>
+
                                 </ol>
                             </div>
                         </div>
