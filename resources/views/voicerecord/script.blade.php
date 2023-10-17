@@ -333,6 +333,8 @@
         wsRegions.on('region-updated', (region) => {
             console.log('Updated region', region)
             const regionId = region.id;
+            const csrfToken = document.querySelector('meta[name="csrf-token"]')
+                        .getAttribute('content');
             $.ajax({
                 type: "get",
                 url: "/voicerecord/comment/update" + regionId,
