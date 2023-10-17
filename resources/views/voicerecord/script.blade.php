@@ -833,6 +833,16 @@
                 },
             ]
         });
+        function storeFieldValues() {
+            var dateStart = $('#reservation').val();
+            var searchType = $('#search_type').val();
+            var keyword = $('#keyword').val();
+
+            // Store values in local storage
+            localStorage.setItem('dateStart', dateStart);
+            localStorage.setItem('searchType', searchType);
+            localStorage.setItem('keyword', keyword);
+        }
 
         $('#exportPDFButton').on('click', function() {
             table.button('3').trigger();
