@@ -847,7 +847,7 @@
         };
         var table = $('#Listview').DataTable(table_option);
 
-
+        console.log(table);
         $('#searchButton').on('click', function() {
             var agen = $('#agen').val();
             var telp = $('#telp').val();
