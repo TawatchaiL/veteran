@@ -66,7 +66,7 @@
                                             <select style="width: 100%;" class="select2 form-control" id="casetype3" name="casetype3">
                                                 <option value="" selected>ทั้งหมด</option>
                                                 @foreach ($agens as $agen)
-                                                    <option value="{{ $agen->phone }}" selected>{{ $agen->phone }}  </option>
+                                                    <option value="{{ $agen->phone }}">{{ $agen->phone }}  </option>
                                                 @endforeach
                                             </select>
                                         </div>
