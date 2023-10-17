@@ -71,7 +71,6 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <button type="button" class="btn bg-gradient-warning" id="resetSearchButton"> <i class="fa-solid fa-rotate"></i> Reset </button>
-                                                    {{-- <button type="button" class="btn bg-gradient-warning" id="resetSearchButton"><i class="fa-solid fa-rotate"></i></button> --}}
                                                 </div>
                                             </div>
                                         </div>
