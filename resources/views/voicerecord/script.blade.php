@@ -880,8 +880,8 @@
             localStorage.removeItem('keyword');
 
             // Set field values to empty
-            $('#search_type').val('');
-            $('#keyword').val('');
+            $('#telp').val('');
+            $('#agen').val('');
 
             $('#Listview').html('');
 
