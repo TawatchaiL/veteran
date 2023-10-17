@@ -156,7 +156,7 @@ class VoicerecordController extends Controller
         return view('voicerecord.index',[
 
             'datas' => $datas,
-            'agen'=> $agens,
+            'agens'=> $agens,
 
         ]);
     }
