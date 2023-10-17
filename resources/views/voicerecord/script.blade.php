@@ -847,6 +847,34 @@
         };
         var table = $('#Listview').DataTable(table_option);
 
+
+        $('#searchButton').on('click', function() {
+            var agen = $('#agen').val();
+            var telp = $('#telp').val();
+
+            if (agen == '' && telp == '') {
+                toastr.error('Please input agen or telp', {
+                    timeOut: 5000
+                });
+
+            } else {
+                table.search('').draw();
+                $.fn.dataTable.ext.search.pop();
+
+                if (agen !== '' && telp !== '') {
+                    table.column(4).search(telp).draw();
+                    table.column(5).search(agen).draw();
+                }else if(agen !== ''){
+                    table.column(5).search(agen).draw();
+
+                }else{
+                    table.column(4).search(telp).draw();
+
+                }
+
+            }
+        });
+
         $('#exportPDFButton').on('click', function() {
             table.button('3').trigger();
         });
