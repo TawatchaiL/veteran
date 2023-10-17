@@ -631,7 +631,7 @@
 
             dom: 'Bfrtip',
             paging: true,
-            searching: false,
+            searching: true,
 
             serverSide: true,
             processing: true,
@@ -796,6 +796,8 @@
                     return '#bfbfbf'; // Border color for vertical lines
                 }
             },
+            stateSave: true,
+
             responsive: true,
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
