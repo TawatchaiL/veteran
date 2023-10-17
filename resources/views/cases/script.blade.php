@@ -648,7 +648,6 @@
                     $('#CreateModal').modal('show');
                 }
             });
-            //$('#Detail').val('1234');
         })
 
         $('#SubmitEditForm').click(function(e) {
