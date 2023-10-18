@@ -113,6 +113,7 @@
     }
     // Maximize card AJAX function
     function maximizeCard(cardId) {
+        alert('OK');
         $.ajax({
             url: '{{ route('contacts.popup_content') }}',
             type: 'POST',
@@ -342,7 +343,7 @@
                 cardId: cardId
             },
             success: function(response) {
-
+                // Handle success
             },
             error: function(xhr, status, error) {
 
@@ -351,7 +352,7 @@
     }
 
     $(document).ready(function() {
-        positionCards();
+        //positionCards();
         //casetype changes
         $(document).on("change", ".casetypechang", function() {
             var cardId = $(this).data("tabid");
@@ -908,6 +909,60 @@
                 });
             }
         });
+        $(document).on('click', '.custom-bottom-right-card .card-tools [data-card-widget="maximize"]',
+            function() {
+
+                var card = $(this).closest('.custom-bottom-right-card');
+                var cardIndex = card.index();
+                var cardId = card.data('id');
+
+                if (!card.hasClass('collapsed-card')) {
+                    //card.css('right', '-300px'); // Adjust as needed
+                    card.css('z-index', '99999');
+                    $('body').css('overflow', 'hidden');
+                    maximizeCard(cardId);
+
+                } else {
+                    // restore
+                    $('body').css('overflow', 'auto');
+                    $('#dpopup').html('');
+                    positionCards();
+
+                }
+                card.toggleClass('collapsed-card');
+
+
+
+            });
+
+        $(document).on('click', '.custom-bottom-right-card .card-footer .bopen[data-card-widget="maximize"]',
+            function() {
+
+                var card = $(this).closest('.custom-bottom-right-card');
+                var cardIndex = card.index();
+                var cardId = card.data('id');
+
+                if (!card.hasClass('collapsed-card')) {
+                    // Card is not minimized
+                    //card.css('right', '-300px'); // Adjust as needed
+                    card.css('z-index', '99999');
+                    $('body').css('overflow', 'hidden');
+                    maximizeCard(cardId);
+
+                } else {
+                    // restore
+                    $('#dpopup').html('');
+                    $('body').css('overflow', 'auto');
+                    positionCards();
+
+                }
+
+                // Toggle minimized class
+                card.toggleClass('collapsed-card');
+
+
+
+            });
 
 
         // Handle card close
