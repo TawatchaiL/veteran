@@ -920,7 +920,7 @@
                     //card.css('right', '-300px'); // Adjust as needed
                     card.css('z-index', '99999');
                     $('body').css('overflow', 'hidden');
-                    maximizeCard(cardId);
+                    //maximizeCard(cardId);
 
                 } else {
                     // restore
