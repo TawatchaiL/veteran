@@ -923,7 +923,6 @@ alert('NO1');
                     maximizeCard(cardId);
 
                 } else {
-                    // restore
                     $('body').css('overflow', 'auto');
                     $('#dpopup').html('');
                     positionCards();
