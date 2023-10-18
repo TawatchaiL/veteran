@@ -507,6 +507,7 @@
                 let datatId = $(this).data("tabid");
                 let cardId = $(this).data("tabid");
                 let contactid = $(this).data("id");
+                alert(contactid);
                 //alert($(this).attr("id"));
                 $('#custom-tabs-pop-' + datatId).empty();
                 $.ajax({
