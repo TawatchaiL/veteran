@@ -911,7 +911,7 @@
         });
         $(document).on('click', '.custom-bottom-right-card .card-tools [data-card-widget="maximize"]',
             function() {
-alert('TEST');
+alert('NO1');
                 var card = $(this).closest('.custom-bottom-right-card');
                 var cardIndex = card.index();
                 var cardId = card.data('id');
@@ -937,7 +937,7 @@ alert('TEST');
 
         $(document).on('click', '.custom-bottom-right-card .card-footer .bopen[data-card-widget="maximize"]',
             function() {
-
+                alert('NO2');
                 var card = $(this).closest('.custom-bottom-right-card');
                 var cardIndex = card.index();
                 var cardId = card.data('id');
