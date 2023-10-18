@@ -1,4 +1,40 @@
 <script>
+    //const addemerphone = (cardid) => {
+
+    //    const tableBody = document.getElementById('myTbl3p' + cardid).getElementsByTagName('tbody')[0];
+
+    //    document.getElementById('addRowBtnp' + cardid).addEventListener('click', () => {
+    //        alert('OK');
+    //        const newRow = document.createElement('tr');
+    //        newRow.innerHTML = `
+    //        <td width="30%">
+    //            <div class="col-md-12 col-sm-12 col-xs-12">
+    //                <input type="hidden" value="" name="emertypep` + cardid +
+    //            `[]" class="emertypep"><input type="text" name="emergencynamep` + cardid + `[]" class="form-control has-feedback-left" value="" required>
+    //            </div>
+    ///        </td>
+    //        <td width="10%">
+    //            <div class="col-md-12 col-sm-12 col-xs-12">
+    //                <input type="text" name="emerrelationp` + cardid + `[]" class="form-control has-feedback-left" value="" required>
+    //            </div>
+    //        </td>
+    //        <td width="10%">
+    //            <div class="col-md-12 col-sm-12 col-xs-12">
+    //                <input type="text" name="emerphonep` + cardid + `[]" class="form-control has-feedback-left" onkeydown="validateNumber(event)" value="" required>
+    //            </div>
+    //        </td>
+    //        <td width="5%">
+    //            <button type="button" class="btn btn-sm btn-danger removeRowBtnp"><i class="fa fa-minus"></i></button>
+    //        </td>
+    //    `;
+    //
+    //        tableBody.appendChild(newRow);
+
+    //       newRow.querySelector('.removeRowBtnp').addEventListener('click', () => {
+    //            tableBody.removeChild(newRow);
+    //        });
+    //   });
+    // };
 
 
     const removeAllTabs = () => {
@@ -509,7 +545,7 @@
                             '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ผู้ติดต่อใหม่</h3>'
                         );
                         $.ajax({
-                            url: "contacts/popupedit/" + contactid,
+                            url: "contacts/popupedit/" + cardId,
                             method: 'GET',
                             async: false,
                             success: function(res) {
