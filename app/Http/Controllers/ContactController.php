@@ -351,9 +351,9 @@ class ContactController extends Controller
     public function popupedit($telnop)
     {
         $datac = DB::table('crm_contacts')
-            ->where('phoneno', '=', $telnop)
-            ->orWhere('telhome', '=', $telnop)
-            ->orWhere('workno', '=', $telnop)
+            ->where('id', '=', $telnop)
+            //->orWhere('telhome', '=', $telnop)
+            //->orWhere('workno', '=', $telnop)
             ->get();
         $emer = DB::table('crm_phone_emergencies')
             ->where('contact_id', '=', $datac['0']->id)
