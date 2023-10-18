@@ -133,7 +133,7 @@ class ContactController extends Controller
         } else {
             $template = 'contacts.contact-create';
             $htmlContent = View::make($template, [
-                'cardid' => $con, 'telephone' => $con, 'contact_name' => $contact_name, 'contact_lname' => $contact_lname
+                'cardid' => $con, 'telephone' => $con, 'contactd' => $datap
             ])->render();
         }
         return response()->json([
@@ -351,9 +351,9 @@ class ContactController extends Controller
     public function popupedit($telnop)
     {
         $datac = DB::table('crm_contacts')
-            ->where('phoneno', '=', $telnop)
-            ->orWhere('telhome', '=', $telnop)
-            ->orWhere('workno', '=', $telnop)
+            ->where('id', '=', $telnop)
+            //->orWhere('telhome', '=', $telnop)
+            //->orWhere('workno', '=', $telnop)
             ->get();
         $emer = DB::table('crm_phone_emergencies')
             ->where('contact_id', '=', $datac['0']->id)

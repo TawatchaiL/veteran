@@ -113,7 +113,6 @@
     }
 
     function maximizeCard(cardId) {
-        alert('OK');
         $.ajax({
             url: '{{ route('contacts.popup_content') }}',
             type: 'POST',
@@ -154,7 +153,7 @@
                             '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ผู้ติดต่อใหม่</h3>'
                         );
                         $.ajax({
-                            url: "contacts/popupedit/" + telnop,
+                            url: "contacts/popupedit/" + $('#contractid' + cardId).val(),
                             method: 'GET',
                             async: false,
                             success: function(res) {
@@ -546,7 +545,7 @@
                             '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ผู้ติดต่อใหม่</h3>'
                         );
                         $.ajax({
-                            url: "contacts/popupedit/" + telnop,
+                            url: "contacts/popupedit/" + contactid,
                             method: 'GET',
                             async: false,
                             success: function(res) {
