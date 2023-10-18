@@ -342,7 +342,7 @@
                 cardId: cardId
             },
             success: function(response) {
-                // Handle success
+
             },
             error: function(xhr, status, error) {
 
