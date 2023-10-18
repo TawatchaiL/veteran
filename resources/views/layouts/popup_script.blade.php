@@ -351,7 +351,7 @@
     }
 
     $(document).ready(function() {
-        positionCards();
+        //positionCards();
         //casetype changes
         $(document).on("change", ".casetypechang", function() {
             var cardId = $(this).data("tabid");
@@ -507,7 +507,6 @@
                 let datatId = $(this).data("tabid");
                 let cardId = $(this).data("tabid");
                 let contactid = $(this).data("id");
-                alert(contactid);
                 //alert($(this).attr("id"));
                 $('#custom-tabs-pop-' + datatId).empty();
                 $.ajax({
@@ -911,7 +910,7 @@
         });
         $(document).on('click', '.custom-bottom-right-card .card-tools [data-card-widget="maximize"]',
             function() {
-alert('NO1');
+
                 var card = $(this).closest('.custom-bottom-right-card');
                 var cardIndex = card.index();
                 var cardId = card.data('id');
@@ -923,6 +922,7 @@ alert('NO1');
                     maximizeCard(cardId);
 
                 } else {
+                    // restore
                     $('body').css('overflow', 'auto');
                     $('#dpopup').html('');
                     positionCards();
@@ -936,7 +936,7 @@ alert('NO1');
 
         $(document).on('click', '.custom-bottom-right-card .card-footer .bopen[data-card-widget="maximize"]',
             function() {
-                alert('NO2');
+
                 var card = $(this).closest('.custom-bottom-right-card');
                 var cardIndex = card.index();
                 var cardId = card.data('id');
