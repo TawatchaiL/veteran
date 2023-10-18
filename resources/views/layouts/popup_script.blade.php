@@ -111,7 +111,7 @@
             }
         });
     }
-
+    // Maximize card AJAX function
     function maximizeCard(cardId) {
         alert('OK');
         $.ajax({
@@ -352,7 +352,7 @@
     }
 
     $(document).ready(function() {
-        //positionCards();
+        positionCards();
         //casetype changes
         $(document).on("change", ".casetypechang", function() {
             var cardId = $(this).data("tabid");
