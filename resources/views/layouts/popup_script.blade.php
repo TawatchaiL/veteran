@@ -111,7 +111,7 @@
             }
         });
     }
-    // Maximize card AJAX function
+
     function maximizeCard(cardId) {
         alert('OK');
         $.ajax({
