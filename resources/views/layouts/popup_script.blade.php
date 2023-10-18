@@ -911,7 +911,7 @@
         });
         $(document).on('click', '.custom-bottom-right-card .card-tools [data-card-widget="maximize"]',
             function() {
-
+alert('TEST');
                 var card = $(this).closest('.custom-bottom-right-card');
                 var cardIndex = card.index();
                 var cardId = card.data('id');
@@ -920,7 +920,7 @@
                     //card.css('right', '-300px'); // Adjust as needed
                     card.css('z-index', '99999');
                     $('body').css('overflow', 'hidden');
-                    //maximizeCard(cardId);
+                    maximizeCard(cardId);
 
                 } else {
                     // restore
