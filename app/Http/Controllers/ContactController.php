@@ -512,11 +512,8 @@ class ContactController extends Controller
         $Crmcsae->agent = $user->phone;
         $Crmcsae->save();
 
-        $incomea = [
-            'status' => '2',
-        ];
-        CrmIncoming::where('telno', $request->input('telno'))
-        ->update($incomea);
+        //CrmIncoming::where('telno', $request->input('telno'))->update('status' => '2');
+        DB::table('crm_incoming')->where('telno', $request->input('telno'))->update(['status' => '2']);
         //$income = CrmIncoming::find($edata['emertype']);
         //$income->update($incomea);
         //DB::table('crm_incoming')->where('telno',  $request->input('telno'))->delete();
@@ -637,11 +634,8 @@ class ContactController extends Controller
         $Crmcsae->agent = $user->phone;
         $Crmcsae->save();
 
-        $incomea = [
-            'status' => '2',
-        ];
-        CrmIncoming::where('telno', $request->input('telno'))
-        ->update($incomea);
+        //CrmIncoming::where('telno', $request->input('telno'))->update('status' => '2');
+        DB::table('crm_incoming')->where('telno', $request->input('telno'))->update(['status' => '2']);
         //$income = CrmIncoming::find($edata['emertype']);
         //$income->update($incomea);
         //DB::table('crm_incoming')->where('telno',  $request->input('telno'))->delete();
