@@ -9,9 +9,9 @@
 
     $('#custom-tabs-pop').on('click', '.nav-link', function() {
         let dataId = $(this).data('id');
-        if ($('#pop_' + dataId).text() == '(ผู้ติดต่อที่เคยบันทึกข้อมูลไว้แล้ว)' || $('#pop_' + dataId).text() == '(ผู้ติดต่อใหม่)') {
+        //if ($('#pop_' + dataId).text() == '(ผู้ติดต่อที่เคยบันทึกข้อมูลไว้แล้ว)' || $('#pop_' + dataId).text() == '(ผู้ติดต่อใหม่)') {
             maximizeCard(dataId);
-        }
+        //}
     });
 
     function positionCards() {
@@ -954,17 +954,17 @@
             });
         }
 
-       // $(document).on('show.bs.tab', '#custom-tabs-pop a[data-toggle="pill"]',
-        //    function(e) {
+        $(document).on('show.bs.tab', '#custom-tabs-pop a[data-toggle="pill"]',
+            function(e) {
 
-        //        var href = $(e.target).attr("href");
-       //        var targetTab = href.replace("#custom-tabs-pop-", "");
+                var href = $(e.target).attr("href");
+                var targetTab = href.replace("#custom-tabs-pop-", "");
 
-       //         if (!confirm("ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab +
-        //                " ? \nกรุณาบันทึกข้อมุลก่อนเปลี่ยน Tab")) {
-       //             e.preventDefault();
-        //       }
+                if (!confirm("ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab +
+                        " ? \nกรุณาบันทึกข้อมุลก่อนเปลี่ยน Tab")) {
+                    e.preventDefault();
+                }
 
-        //    });
+            });
     });
 </script>
