@@ -201,12 +201,17 @@ class ContactController extends Controller
     public function popup()
     {
         $user = Auth::user();
-        $datac = DB::table('crm_incoming')
-            ->where('agentno', '=', $user->phone)
-            ->orWhere('status', '=', "0")
-            ->orWhere('status', '=', "1")
-            ->orderBy('id', 'desc')
-            ->get();
+        //$datac = DB::table('crm_incoming')
+        //    ->where('agentno', '=', $user->phone)
+        //    ->orWhere('status', '=', "0")
+        //    ->orWhere('status', '=', "1")
+        //    ->orderBy('id', 'desc')
+        //    ->get();
+        $datac = CrmIncoming::where(function($query) use ($user) {
+            $query->where('agentno', $user->phone);
+        })->where(function($query) {
+            $query->orWhere('status', '0')->orWhere('status', '1');
+        })->get();
         $html = '';
         $tab_link = '';
         $tab_content = '';
