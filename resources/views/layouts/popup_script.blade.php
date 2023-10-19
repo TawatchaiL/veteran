@@ -1,7 +1,4 @@
 <script>
-
-
-
     const removeAllTabs = () => {
         $('#custom-tabs-pop').empty();
         $('#custom-tabs-pop-tabContent').empty();
