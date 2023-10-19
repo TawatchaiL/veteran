@@ -505,13 +505,13 @@
                             }
                         });
 
-                        let telnop = $('#telnop' + cardId).val();
+                        //let telnop = $('#telnop' + cardId).val();
                         $('#phonenosuccess' + cardId).html(
                             '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ผู้ติดต่อใหม่</h3>'
                         );
                         
                         $.ajax({
-                            url: "contacts/popupedit/" + telnop,
+                            url: "contacts/popupedit/" + contactid,
                             method: 'GET',
                             async: false,
                             success: function(res) {
