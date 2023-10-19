@@ -515,8 +515,10 @@ class ContactController extends Controller
         $incomea = [
             'status' => '2',
         ];
-        $income = CrmIncoming::find($edata['emertype']);
-        $income->update($incomea);
+        CrmIncoming::where('telno', $request->input('telno'))
+        ->update($incomea);
+        //$income = CrmIncoming::find($edata['emertype']);
+        //$income->update($incomea);
         //DB::table('crm_incoming')->where('telno',  $request->input('telno'))->delete();
 
         return response()->json(['success' => 'เพิ่ม รายผู้ติดต่อ เรียบร้อยแล้ว']);
@@ -638,8 +640,10 @@ class ContactController extends Controller
         $incomea = [
             'status' => '2',
         ];
-        $income = CrmIncoming::find($edata['emertype']);
-        $income->update($incomea);
+        CrmIncoming::where('telno', $request->input('telno'))
+        ->update($incomea);
+        //$income = CrmIncoming::find($edata['emertype']);
+        //$income->update($incomea);
         //DB::table('crm_incoming')->where('telno',  $request->input('telno'))->delete();
         return response()->json(['success' => 'บันทึกข้อมูล เรียบร้อยแล้ว']);
     }
