@@ -193,6 +193,8 @@ class ContactController extends Controller
                     'emer' => $emer,
                 ];
                 return response()->json(['datax' => $data]);
+        }else{
+                return response()->json(['datax' => []]);  
         }
     }
 
