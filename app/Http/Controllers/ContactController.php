@@ -207,10 +207,11 @@ class ContactController extends Controller
         //    ->orWhere('status', '=', "1")
         //    ->orderBy('id', 'desc')
         //    ->get();
-        $datac = CrmIncoming::where(function($query) use ($user) {
-            $query->where('agentno', $user->phone);
-        })->where(function($query) {
-            $query->orWhere('status', '0')->orWhere('status', '1');
+
+        $datac = CrmIncoming::where('agentno', '=', $user->phone)
+        ->orWhere(function ($query) {
+            $query->orWhere('status', '=', '0')
+                ->orWhere('status', '=', '1');
         })->get();
         $html = '';
         $tab_link = '';
