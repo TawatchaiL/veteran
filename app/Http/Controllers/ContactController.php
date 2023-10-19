@@ -133,7 +133,7 @@ class ContactController extends Controller
         } else {
             $template = 'contacts.contact-create';
             $htmlContent = View::make($template, [
-                'cardid' => $con, 'telephone' => $con, 'contactd' => $datap, 'contactid' => '1'
+                'cardid' => $con, 'telephone' => $con, 'contactd' => $datap, 'contactidp' => '1'
             ])->render();
         }
         return response()->json([
