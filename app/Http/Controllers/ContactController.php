@@ -183,10 +183,12 @@ class ContactController extends Controller
             ->orWhere('telhome', '=', $telnop)
             ->orWhere('workno', '=', $telnop)
             ->get();
-        $emer = DB::table('crm_phone_emergencies')
-            ->where('contact_id', '=', $datac[0]->id)
-            ->get();
-
+        $contactcount = count($datac);
+        if ($contactcount > 0) {
+            $emer = DB::table('crm_phone_emergencies')
+                ->where('contact_id', '=', $datac[0]->id)
+                ->get();
+        }
         $data = [
             'datac' => $datac[0],
             'emer' => $emer,
