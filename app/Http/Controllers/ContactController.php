@@ -192,11 +192,8 @@ class ContactController extends Controller
                     'datac' => $datac[0],
                     'emer' => $emer,
                 ];
-        }else{
-            $data = [];
+                return response()->json(['datax' => $data]);
         }
-        
-        return response()->json(['datax' => $data]);
     }
 
     public function popup()
