@@ -512,7 +512,12 @@ class ContactController extends Controller
         $Crmcsae->agent = $user->phone;
         $Crmcsae->save();
 
-        DB::table('crm_incoming')->where('telno',  $request->input('telno'))->delete();
+        $incomea = [
+            'status' => '2',
+        ];
+        $income = CrmIncoming::find($edata['emertype']);
+        $income->update($incomea);
+        //DB::table('crm_incoming')->where('telno',  $request->input('telno'))->delete();
 
         return response()->json(['success' => 'เพิ่ม รายผู้ติดต่อ เรียบร้อยแล้ว']);
     }
@@ -630,8 +635,13 @@ class ContactController extends Controller
         $Crmcsae->agent = $user->phone;
         $Crmcsae->save();
 
-        DB::table('crm_incoming')->where('telno',  $request->input('telno'))->delete();
-        return response()->json(['success' => 'แก้ไข ผู้ติดต่อ เรียบร้อยแล้ว']);
+        $incomea = [
+            'status' => '2',
+        ];
+        $income = CrmIncoming::find($edata['emertype']);
+        $income->update($incomea);
+        //DB::table('crm_incoming')->where('telno',  $request->input('telno'))->delete();
+        return response()->json(['success' => 'บันทึกข้อมูล เรียบร้อยแล้ว']);
     }
 
     public function destroy(Request $request)
