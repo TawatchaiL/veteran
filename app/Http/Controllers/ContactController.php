@@ -116,7 +116,7 @@ class ContactController extends Controller
 
     public function popup_content(Request $request)
     {
-        $con = $request->get('cardId');
+        $con = $request->input('cardId');
         $contact_name = "";
         $contact_lname = "";
         $datap = DB::table('crm_contacts')
