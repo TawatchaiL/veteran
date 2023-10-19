@@ -176,6 +176,25 @@ class ContactController extends Controller
         return response()->json(['datax' => $data]);
     }
 
+    public function popupeditphone($telnop)
+    {
+        $datac = DB::table('crm_contacts')
+        //->where('id', '=', $telnop)
+            ->where('phoneno', '=', $telnop)
+            ->orWhere('telhome', '=', $telnop)
+            ->orWhere('workno', '=', $telnop)
+            ->get();
+        $emer = DB::table('crm_phone_emergencies')
+            ->where('contact_id', '=', $datac[0]->id)
+            ->get();
+
+        $data = [
+            'datac' => $datac[0],
+            'emer' => $emer,
+        ];
+        return response()->json(['datax' => $data]);
+    }
+
     public function popup()
     {
         $user = Auth::user();
