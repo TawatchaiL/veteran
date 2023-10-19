@@ -346,7 +346,6 @@ class ContactController extends Controller
     {
         $datac = DB::table('crm_contacts')
         ->where('id', '=', $telnop)
-            //->where('phoneno', '=', $telnop)
             //->orWhere('telhome', '=', $telnop)
             //->orWhere('workno', '=', $telnop)
             ->get();
