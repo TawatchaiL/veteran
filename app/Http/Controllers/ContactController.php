@@ -188,11 +188,14 @@ class ContactController extends Controller
             $emer = DB::table('crm_phone_emergencies')
                 ->where('contact_id', '=', $datac[0]->id)
                 ->get();
+                $data = [
+                    'datac' => $datac[0],
+                    'emer' => $emer,
+                ];
+        }else{
+            $data = [];
         }
-        $data = [
-            'datac' => $datac[0],
-            'emer' => $emer,
-        ];
+        
         return response()->json(['datax' => $data]);
     }
 
