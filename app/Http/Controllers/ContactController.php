@@ -209,9 +209,9 @@ class ContactController extends Controller
         //    ->get();
 
         $datac = DB::table('crm_incoming')->where('agentno', '=', $user->phone)
-        ->orWhere(function ($query) {
+        ->where(function ($query) {
             $query->orWhere('status', '=', '0')
-                ->orWhere('status', '=', '1');
+                  ->orWhere('status', '=', '1');
         })->get();
         $html = '';
         $tab_link = '';
