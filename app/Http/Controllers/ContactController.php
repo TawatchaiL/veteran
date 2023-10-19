@@ -212,7 +212,9 @@ class ContactController extends Controller
         ->where(function ($query) {
             $query->orWhere('status', '=', '0')
                   ->orWhere('status', '=', '1');
-        })->get();
+        })->orderBy('id', 'desc')
+        ->get();
+
         $html = '';
         $tab_link = '';
         $tab_content = '';
