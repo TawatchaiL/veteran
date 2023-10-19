@@ -8,10 +8,11 @@
     };
 
     $('#custom-tabs-pop').on('click', '.nav-link', function() {
-        let dataId = $(this).data('id');
-        //if ($('#pop_' + dataId).text() == '(ผู้ติดต่อที่เคยบันทึกข้อมูลไว้แล้ว)' || $('#pop_' + dataId).text() == '(ผู้ติดต่อใหม่)') {
+        var dataId = $(this).data('id');
+        alert(dataId);
+        if ($('#pop_' + dataId).text() == '(ผู้ติดต่อที่เคยบันทึกข้อมูลไว้แล้ว)' || $('#pop_' + dataId).text() == '(ผู้ติดต่อใหม่)') {
             maximizeCard(dataId);
-        //}
+        }
     });
 
     function positionCards() {
