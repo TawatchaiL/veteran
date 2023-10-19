@@ -481,7 +481,7 @@
                         $('#phonenosuccess' + cardId).html(
                             '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ผู้ติดต่อใหม่</h3>'
                         );
-                        
+                        alert(contactid);
                         $.ajax({
                             url: "contacts/popupedit/" + contactid,
                             method: 'GET',
