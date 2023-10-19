@@ -10,8 +10,7 @@
     $('#custom-tabs-pop').on('click', '.nav-link', function() {
         let dataId = $(this).data('id');
 alert('OK');
-        if ($('#pop_' + dataId).text() == '(ผู้ติดต่อที่เคยบันทึกข้อมูลไว้แล้ว)' || $('#pop_' + dataId)
-            .text() == '(ผู้ติดต่อใหม่)') {
+        if ($('#pop_' + dataId).text() == '(ผู้ติดต่อที่เคยบันทึกข้อมูลไว้แล้ว)' || $('#pop_' + dataId).text() == '(ผู้ติดต่อใหม่)') {
                 alert('OK1');
             maximizeCard(dataId);
         }
