@@ -190,23 +190,6 @@ class ContactController extends Controller
         $tab_hold = "";
         $i = 1;
         foreach ($datac as $item) {
-            //$datap = DB::table('crm_contacts')
-            //->where('phoneno', '=', $item->telno)
-            //->orWhere('telhome', '=', $item->telno)
-            //->orWhere('workno', '=', $item->telno)
-            //->get();
-            //$contactcount = count($datap);
-            //if($contactcount > 1){
-            //    $template = 'casescontract.contactpop';
-            //    $statusText = View::make($template, [
-            //        'cardid' => $item->telno, 'telephone' => $item->telno, 'contactd' => $datap
-            //    ])->render();
-            //}else{
-            //    $template = 'contacts.contact-create';
-            //    $statusText = View::make($template, [
-            //        'cardid' => $item->telno, 'telephone' => $item->telno
-            //    ])->render();
-            //}
             $datap = DB::table('crm_contacts')
                 ->where('phoneno', '=', $item->telno)
                 ->orWhere('telhome', '=', $item->telno)
