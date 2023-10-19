@@ -9,7 +9,7 @@
 
     $('#custom-tabs-pop').on('click', '.nav-link', function() {
         var dataId = $(this).data('id');
-        alert(dataId);
+        alert($('#pop_' + dataId).text());
         if ($('#pop_' + dataId).text() == '(ผู้ติดต่อที่เคยบันทึกข้อมูลไว้แล้ว)' || $('#pop_' + dataId).text() == '(ผู้ติดต่อใหม่)') {
             maximizeCard(dataId);
         }
