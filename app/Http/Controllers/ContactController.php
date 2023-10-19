@@ -208,12 +208,13 @@ class ContactController extends Controller
         //    ->orderBy('id', 'desc')
         //    ->get();
 
-        $datac = DB::table('crm_incoming')->where('agentno', '=', $user->phone)
+        $datac = DB::table('crm_incoming')
+        ->orderBy('id', 'desc')
+        ->where('agentno', '=', $user->phone)
         ->where(function ($query) {
             $query->orWhere('status', '=', '0')
                   ->orWhere('status', '=', '1');
-        })->orderBy('id', 'desc')
-        ->get();
+        })->get();
 
         $html = '';
         $tab_link = '';
