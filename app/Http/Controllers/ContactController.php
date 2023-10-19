@@ -208,7 +208,7 @@ class ContactController extends Controller
         //    ->orderBy('id', 'desc')
         //    ->get();
 
-        $datac = CrmIncoming::where('agentno', '=', $user->phone)
+        $datac = DB::table('crm_incoming')->where('agentno', '=', $user->phone)
         ->orWhere(function ($query) {
             $query->orWhere('status', '=', '0')
                 ->orWhere('status', '=', '1');
