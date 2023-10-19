@@ -10,7 +10,7 @@
     $('#custom-tabs-pop').on('click', '.nav-link', function() {
         var dataId = $(this).data('id');
         var datatext = $('#pop_' + dataId).text();
-        if (datatext === '(ผู้ติดต่อที่เคยบันทึกข้อมูลไว้แล้ว)' || datatext === '(ผู้ติดต่อใหม่)') {
+        if (datatext === '(ผู้ติดต่อที่เคยบันทึกข้อมูลไว้)' || datatext === '(ผู้ติดต่อใหม่)') {
             maximizeCard(dataId);
         }
     });
