@@ -156,6 +156,25 @@ class ContactController extends Controller
             'html' =>  $htmlContent,
         ]);
     }
+
+    public function popupedit($telnop)
+    {
+        $datac = DB::table('crm_contacts')
+            ->where('phoneno', '=', $telnop)
+            ->orWhere('telhome', '=', $telnop)
+            ->orWhere('workno', '=', $telnop)
+            ->get();
+        $emer = DB::table('crm_phone_emergencies')
+            ->where('contact_id', '=', $datac['0']->id)
+            ->get();
+
+        $data = [
+            'datac' => $datac['0'],
+            'emer' => $emer,
+        ];
+        return response()->json(['datax' => $data]);
+    }
+
     public function popup()
     {
         $user = Auth::user();
@@ -341,25 +360,6 @@ class ContactController extends Controller
         ]);
         return response()->json(['success' => 'บันทักข้อมูลเรียบร้อยแล้ว']);
     }
-
-    public function popupedit($telnop)
-    {
-        $datac = DB::table('crm_contacts')
-        ->where('id', '=', $telnop)
-            //->orWhere('telhome', '=', $telnop)
-            //->orWhere('workno', '=', $telnop)
-            ->get();
-        $emer = DB::table('crm_phone_emergencies')
-            ->where('contact_id', '=', $datac['0']->id)
-            ->get();
-
-        $data = [
-            'datac' => $datac['0'],
-            'emer' => $emer,
-        ];
-        return response()->json(['datax' => $data]);
-    }
-
 
     public function update(Request $request, $id)
     {
