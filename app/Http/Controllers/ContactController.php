@@ -194,7 +194,7 @@ class ContactController extends Controller
                 ];
                 return response()->json(['datax' => $data]);
         }else{
-                return response()->json(['datax' => []]);  
+                return response()->json(['datax' => []]);
         }
     }
 
@@ -234,6 +234,7 @@ class ContactController extends Controller
             }
             /* style="width: 300px; height: 150px;"  */
 
+            $active_id = '';
             if ($i == 1) {
                 $tab_link_active = 'active';
                 $tab_content_active = 'show active';
