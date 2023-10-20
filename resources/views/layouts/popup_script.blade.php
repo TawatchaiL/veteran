@@ -50,7 +50,7 @@
             }
         });
     }
-    // Maximize card AJAX function
+    /// Maximize card AJAX function
     function maximizeCard(cardId) {
         $.ajax({
             url: '{{ route('contacts.popup_content') }}',
