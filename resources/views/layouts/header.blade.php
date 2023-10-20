@@ -139,7 +139,7 @@
                 </a></li>
             <li class="nav-item d-none d-sm-inline-block">
                 <a class="nav-link" data-widget="fullscreen">
-                    <i class="fas fa-xl fa-expand-arrows-alt"></i> ขยาย/ย่อ หน้าจอ
+                    <i class="fas fa-xl fa-expand-arrows-alt"></i> <b class="text-primary">ขยาย/ย่อ หน้าจอ</b>
                 </a>
             </li>
         @endif

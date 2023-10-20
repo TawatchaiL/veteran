@@ -18,8 +18,9 @@
                 <div class="col-sm-12" style="text-align: right;">
                     <label for="redirectSelect">Queue:</label>
                     <select id="redirectSelect">
-                        <option value="4567">Option 1</option>
-                        <option value="5678">Option 2</option>
+                        @foreach ($queue as $queueItem)
+                            <option value="{{ $queueItem->extension }}">{{ $queueItem->destscr }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -535,7 +536,7 @@
                 const selectedOption = selectElement.val();
                 if (selectedOption) {
                     localStorage.setItem('selectedOption',
-                    selectedOption); // Store the selected option in local storage
+                        selectedOption); // Store the selected option in local storage
                 }
             });
         });

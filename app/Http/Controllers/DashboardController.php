@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -24,6 +27,8 @@ class DashboardController extends Controller
     public function index()
     {
         $sidebarc = "sidebar-collapse";
-        return view('dashboard.index')->with(['sidebarc' => $sidebarc]);
+        $queue = DB::connection('remote_connection')->table('asterisk.queues_config')->get();
+        return view('dashboard.index')->with(['sidebarc' => $sidebarc])
+            ->with(['queue' => $queue]);
     }
 }
