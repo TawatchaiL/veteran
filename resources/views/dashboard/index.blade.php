@@ -19,7 +19,7 @@
                     <label for="redirectSelect">Queue:</label>
                     <select id="redirectSelect">
                         @foreach ($queue as $queueItem)
-                            <option value="{{ $queueItem->extension }}">{{ $queueItem->destscr }}</option>
+                            <option value="{{ $queueItem->extension }}">{{ $queueItem->descr }}</option>
                         @endforeach
                     </select>
                 </div>
