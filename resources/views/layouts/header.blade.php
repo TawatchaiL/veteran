@@ -138,7 +138,7 @@
                     <b class="text-primary"> หน้าหลัก </b> ]
                 </a></li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a class="btn btn-success" data-widget="fullscreen" role="button">
+                <a class="nav-link" data-widget="fullscreen">
                     <i class="fas fa-xl fa-expand-arrows-alt"></i> ขยาย/ย่อ หน้าจอ
                 </a>
             </li>
