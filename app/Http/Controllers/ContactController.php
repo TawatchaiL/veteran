@@ -215,7 +215,7 @@ class ContactController extends Controller
                 $query->orWhere('status', '=', '0')
                     ->orWhere('status', '=', '1');
             })->get();
-
+            dd($datac);
         
         $html = '';
         $tab_link = '';
@@ -223,8 +223,7 @@ class ContactController extends Controller
         $tab_hold = "";
         $active_id = '';
         $i = 1;
-        if (is_array($datac)) {
-            dd($datac);
+        if (!$datac->isEmpty()) {
             foreach ($datac as $item) {
                 $datap = DB::table('crm_contacts')
                     ->where('phoneno', '=', $item->telno)
