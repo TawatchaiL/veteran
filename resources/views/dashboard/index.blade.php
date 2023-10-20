@@ -15,7 +15,7 @@
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-12">
+                <div class="col-sm-12" style="text-align: right;">
                     <label for="redirectSelect">Queue:</label>
                     <select id="redirectSelect">
                         <option value="4567">Option 1</option>
