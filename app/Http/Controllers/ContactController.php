@@ -116,7 +116,7 @@ class ContactController extends Controller
 
     public function popup_content(Request $request)
     {
-        $con = $request->get('cardId');
+        $con = $request->input('cardId');
         $contact_name = "";
         $contact_lname = "";
         $datap = DB::table('crm_contacts')
@@ -133,14 +133,14 @@ class ContactController extends Controller
         } else {
             $template = 'contacts.contact-create';
             $htmlContent = View::make($template, [
-                'cardid' => $con, 'telephone' => $con, 'contact_name' => $contact_name, 'contact_lname' => $contact_lname
+                'cardid' => $con, 'telephone' => $con, 'contactd' => $datap
             ])->render();
         }
         return response()->json([
             'html' =>  $htmlContent,
         ]);
     }
-
+////edit
     public function popupcontact(Request $request)
     {
         $con = $request->get('contactid');
@@ -156,38 +156,72 @@ class ContactController extends Controller
             'html' =>  $htmlContent,
         ]);
     }
+
+    public function popupedit($telnop)
+    {
+        $datac = DB::table('crm_contacts')
+        ->where('id', '=', $telnop)
+            //->where('phoneno', '=', $telnop)
+            //->orWhere('telhome', '=', $telnop)
+            //->orWhere('workno', '=', $telnop)
+            ->get();
+        $emer = DB::table('crm_phone_emergencies')
+            ->where('contact_id', '=', $datac[0]->id)
+            ->get();
+
+        $data = [
+            'datac' => $datac[0],
+            'emer' => $emer,
+        ];
+        return response()->json(['datax' => $data]);
+    }
+
+    public function popupeditphone($telnop)
+    {
+        $datac = DB::table('crm_contacts')
+            ->where('phoneno', '=', $telnop)
+            ->orWhere('telhome', '=', $telnop)
+            ->orWhere('workno', '=', $telnop)
+            ->get();
+        $contactcount = count($datac);
+        if ($contactcount > 0) {
+            $emer = DB::table('crm_phone_emergencies')
+                ->where('contact_id', '=', $datac[0]->id)
+                ->get();
+                $data = [
+                    'datac' => $datac[0],
+                    'emer' => $emer,
+                ];
+                return response()->json(['datax' => $data]);
+        }else{
+                return response()->json(['datax' => []]);  
+        }
+    }
+
     public function popup()
     {
         $user = Auth::user();
+        //$datac = DB::table('crm_incoming')
+        //    ->where('agentno', '=', $user->phone)
+        //    ->orWhere('status', '=', "0")
+        //    ->orWhere('status', '=', "1")
+        //    ->orderBy('id', 'desc')
+        //    ->get();
+
         $datac = DB::table('crm_incoming')
-            ->where('agentno', '=', $user->phone)
-            ->orWhere('status', '=', "0")
-            ->orWhere('status', '=', "1")
-            ->orderBy('id', 'desc')
-            ->get();
+        ->orderBy('id', 'desc')
+        ->where('agentno', '=', $user->phone)
+        ->where(function ($query) {
+            $query->orWhere('status', '=', '0')
+                  ->orWhere('status', '=', '1');
+        })->get();
+
         $html = '';
         $tab_link = '';
         $tab_content = '';
         $tab_hold = "";
         $i = 1;
         foreach ($datac as $item) {
-            //$datap = DB::table('crm_contacts')
-            //->where('phoneno', '=', $item->telno)
-            //->orWhere('telhome', '=', $item->telno)
-            //->orWhere('workno', '=', $item->telno)
-            //->get();
-            //$contactcount = count($datap);
-            //if($contactcount > 1){
-            //    $template = 'casescontract.contactpop';
-            //    $statusText = View::make($template, [
-            //        'cardid' => $item->telno, 'telephone' => $item->telno, 'contactd' => $datap
-            //    ])->render();
-            //}else{
-            //    $template = 'contacts.contact-create';
-            //    $statusText = View::make($template, [
-            //        'cardid' => $item->telno, 'telephone' => $item->telno
-            //    ])->render();
-            //}
             $datap = DB::table('crm_contacts')
                 ->where('phoneno', '=', $item->telno)
                 ->orWhere('telhome', '=', $item->telno)
@@ -317,12 +351,6 @@ class ContactController extends Controller
     {
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
 
@@ -347,25 +375,6 @@ class ContactController extends Controller
         ]);
         return response()->json(['success' => 'บันทักข้อมูลเรียบร้อยแล้ว']);
     }
-
-    public function popupedit($telnop)
-    {
-        $datac = DB::table('crm_contacts')
-            ->where('phoneno', '=', $telnop)
-            ->orWhere('telhome', '=', $telnop)
-            ->orWhere('workno', '=', $telnop)
-            ->get();
-        $emer = DB::table('crm_phone_emergencies')
-            ->where('contact_id', '=', $datac['0']->id)
-            ->get();
-
-        $data = [
-            'datac' => $datac['0'],
-            'emer' => $emer,
-        ];
-        return response()->json(['datax' => $data]);
-    }
-
 
     public function update(Request $request, $id)
     {
@@ -535,7 +544,11 @@ class ContactController extends Controller
         $Crmcsae->agent = $user->phone;
         $Crmcsae->save();
 
-        DB::table('crm_incoming')->where('telno',  $request->input('telno'))->delete();
+        //CrmIncoming::where('telno', $request->input('telno'))->update('status' => '2');
+        DB::table('crm_incoming')->where('telno', $request->input('telno'))->update(['status' => '2']);
+        //$income = CrmIncoming::find($edata['emertype']);
+        //$income->update($incomea);
+        //DB::table('crm_incoming')->where('telno',  $request->input('telno'))->delete();
 
         return response()->json(['success' => 'เพิ่ม รายผู้ติดต่อ เรียบร้อยแล้ว']);
     }
@@ -653,8 +666,12 @@ class ContactController extends Controller
         $Crmcsae->agent = $user->phone;
         $Crmcsae->save();
 
-        DB::table('crm_incoming')->where('telno',  $request->input('telno'))->delete();
-        return response()->json(['success' => 'แก้ไข ผู้ติดต่อ เรียบร้อยแล้ว']);
+        //CrmIncoming::where('telno', $request->input('telno'))->update('status' => '2');
+        DB::table('crm_incoming')->where('telno', $request->input('telno'))->update(['status' => '2']);
+        //$income = CrmIncoming::find($edata['emertype']);
+        //$income->update($incomea);
+        //DB::table('crm_incoming')->where('telno',  $request->input('telno'))->delete();
+        return response()->json(['success' => 'บันทึกข้อมูล เรียบร้อยแล้ว']);
     }
 
     public function destroy(Request $request)
