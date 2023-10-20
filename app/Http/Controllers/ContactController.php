@@ -220,6 +220,7 @@ class ContactController extends Controller
         $tab_link = '';
         $tab_content = '';
         $tab_hold = "";
+        $active_id = '';
         $i = 1;
         foreach ($datac as $item) {
             $datap = DB::table('crm_contacts')
@@ -234,7 +235,7 @@ class ContactController extends Controller
             }
             /* style="width: 300px; height: 150px;"  */
 
-            $active_id = '';
+
             if ($i == 1) {
                 $tab_link_active = 'active';
                 $tab_content_active = 'show active';
