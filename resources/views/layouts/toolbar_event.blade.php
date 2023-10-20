@@ -12,10 +12,10 @@
         if (peer[1] == exten) {
             if (data.status == 'Unregistered') {
                 $.ajax({
-                    url: "{{ route('agent.phone_unregis') }}",
-                    method: 'post',
-                    async: false,
-                    success: function(result) {
+                    url: "{{ route('agent.phone_unregis') }}"
+                    , method: 'post'
+                    , async: false
+                    , success: function(result) {
                         set_state_icon(result.id, result.icon, result.message);
                         set_state_button(result.id);
                     }
@@ -31,14 +31,14 @@
                 toolbar_card.removeClass("d-none");
                 popup_tab_main.removeClass("d-none");
                 $.ajax({
-                    url: "{{ route('agent.hang') }}",
-                    method: 'post',
-                    async: false,
-                    data: {
-                        extension: data.extension,
-                        _token: token,
-                    },
-                    success: function(result) {
+                    url: "{{ route('agent.hang') }}"
+                    , method: 'post'
+                    , async: false
+                    , data: {
+                        extension: data.extension
+                        , _token: token
+                    , }
+                    , success: function(result) {
                         console.log(result)
                         set_state_icon(result.id, result.icon, result.message);
                         set_state_button(result.id);
@@ -57,14 +57,14 @@
             } else if (data.status == 0) {
                 //toolbar_header.addClass("bg-primary");
                 $.ajax({
-                    url: "{{ route('agent.hang') }}",
-                    method: 'post',
-                    async: false,
-                    data: {
-                        extension: data.extension,
-                        _token: token,
-                    },
-                    success: function(result) {
+                    url: "{{ route('agent.hang') }}"
+                    , method: 'post'
+                    , async: false
+                    , data: {
+                        extension: data.extension
+                        , _token: token
+                    , }
+                    , success: function(result) {
                         console.log(result)
                         set_state_icon(result.id, result.icon, result.message);
                         set_state_button(result.id);
@@ -96,13 +96,13 @@
 
         if (data.extension.match(exten)) {
             $.ajax({
-                url: "{{ route('agent.kick') }}",
-                method: 'post',
-                async: false,
-                data: {
-                    _token: token,
-                },
-                success: function(result) {
+                url: "{{ route('agent.kick') }}"
+                , method: 'post'
+                , async: false
+                , data: {
+                    _token: token
+                , }
+                , success: function(result) {
                     console.log(result)
                     if (result == 1) {
                         const errorMessage = "คุณถูกเตะออกจากระบบ กรุณาล็อกอิน";
@@ -124,17 +124,17 @@
             let peer = data.extension.split("-");
             let peern = peer[0].split("/");
             $.ajax({
-                url: "{{ route('agent.ring') }}",
-                method: 'post',
-                async: false,
-                data: {
-                    uniqid: data.luniq,
-                    context: data.context,
-                    telno: data.cid,
-                    agentno: peern[1],
-                    _token: token,
-                },
-                success: function(result) {
+                url: "{{ route('agent.ring') }}"
+                , method: 'post'
+                , async: false
+                , data: {
+                    uniqid: data.luniq
+                    , context: data.context
+                    , telno: data.cid
+                    , agentno: peern[1]
+                    , _token: token
+                , }
+                , success: function(result) {
                     set_state_icon(result.id, result.icon, result.message);
                     set_state_button(result.id);
                     positionCards();
@@ -181,16 +181,16 @@
             console.log(data);
 
             $.ajax({
-                url: "{{ route('agent.talk') }}",
-                method: 'post',
-                async: false,
-                data: {
-                    uniqid: data.luniq,
-                    telno: data.cid,
-                    agentno: data.dstnumber,
-                    _token: token,
-                },
-                success: function(result) {
+                url: "{{ route('agent.talk') }}"
+                , method: 'post'
+                , async: false
+                , data: {
+                    uniqid: data.luniq
+                    , telno: data.cid
+                    , agentno: data.dstnumber
+                    , _token: token
+                , }
+                , success: function(result) {
                     set_state_icon(result.id, result.icon, result.message);
                     set_state_button(result.id);
                     positionCards();
@@ -258,14 +258,14 @@
                 if ((data.event == 'BridgeLeave' || data.event == 'SoftHangupRequest')) {
 
                     $.ajax({
-                        url: "{{ route('agent.warp') }}",
-                        method: 'post',
-                        async: false,
-                        data: {
-                            uniqid: data.luniq,
-                            _token: token,
-                        },
-                        success: function(result) {
+                        url: "{{ route('agent.warp') }}"
+                        , method: 'post'
+                        , async: false
+                        , data: {
+                            uniqid: data.luniq
+                            , _token: token
+                        , }
+                        , success: function(result) {
                             console.log(result)
                             set_state_icon(result.id, result.icon, result.message);
                             set_state_button(result.id);
@@ -367,4 +367,5 @@
     socket.on('disconnect', data => {
         socket.emit('join', 'Bye from client');
     });
+
 </script>

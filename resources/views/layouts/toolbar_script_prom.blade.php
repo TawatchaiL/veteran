@@ -1,9 +1,10 @@
 <script>
-    const web_url = '{{ url('/') }}';
+    const web_url = '{{ url(' / ') }}';
     const agent_username = '{{ $temporaryPhone }}';
     const exten = '{{ $temporaryPhone }}';
     const account_code = exten;
-    const event_serv = '{{ config('asterisk.event_serv.address') }}';
+    const event_serv = '{{ config('
+    asterisk.event_serv.address ') }}';
     let obj = {};
 
     const dial_number = $('#dial_number');
@@ -27,29 +28,29 @@
 
     let alert_danger = (title, message, subtitle) => {
         $(document).Toasts('create', {
-            body: message,
-            title: title,
-            class: 'bg-danger mr-2 mt-2',
-            subtitle: subtitle,
-            icon: 'fas fa-bell',
-            autohide: true,
-            zIndex: 9999999,
-            fade: true,
-            delay: 3000
+            body: message
+            , title: title
+            , class: 'bg-danger mr-2 mt-2'
+            , subtitle: subtitle
+            , icon: 'fas fa-bell'
+            , autohide: true
+            , zIndex: 9999999
+            , fade: true
+            , delay: 3000
         })
     }
 
     let alert_success = (title, message, subtitle) => {
         $(document).Toasts('create', {
-            body: message,
-            title: title,
-            class: 'bg-success mr-2 mt-2',
-            subtitle: subtitle,
-            icon: 'fas fa-bell',
-            autohide: true,
-            zIndex: 9999999,
-            fade: true,
-            delay: 3000
+            body: message
+            , title: title
+            , class: 'bg-success mr-2 mt-2'
+            , subtitle: subtitle
+            , icon: 'fas fa-bell'
+            , autohide: true
+            , zIndex: 9999999
+            , fade: true
+            , delay: 3000
         })
     }
 
@@ -83,13 +84,13 @@
     const sendAjaxRequest = (url, method, data = {}) => {
         return new Promise((resolve, reject) => {
             $.ajax({
-                url,
-                method,
-                data,
-                success: (data) => {
+                url
+                , method
+                , data
+                , success: (data) => {
                     resolve(data);
-                },
-                error: (xhr, status, error) => {
+                }
+                , error: (xhr, status, error) => {
                     reject(error);
                 }
             });
@@ -287,8 +288,8 @@
         e.preventDefault();
         const bid = $(this).data('id');
         const additionalData = {
-            id_break: bid,
-        };
+            id_break: bid
+        , };
         try {
             const response = await sendAjaxRequest("{{ route('agent.break') }}", "POST", additionalData);
             updateUI(response);
@@ -373,9 +374,9 @@
 
             try {
                 const result = await sendAjaxRequest("{{ route('tranfer') }}", {
-                    number: callNumber,
-                    atxfer,
-                    _token: token
+                    number: callNumber
+                    , atxfer
+                    , _token: token
                 });
 
                 if (result.success === true) {
@@ -591,12 +592,13 @@
     //load call list on access page
     call_list();
     @php
-       if ($temporaryPhoneStatusID==-1) {
+    if ($temporaryPhoneStatusID == -1) {
+        @endphp
+        set_state_button(-1);
+        state_overlay.removeClass("d-none");
+        toolbar_modal.modal('show');
+        @php
+    }
     @endphp
-    set_state_button(-1);
-    state_overlay.removeClass("d-none");
-    toolbar_modal.modal('show');
-    @php
-       }
-    @endphp
+
 </script>

@@ -45,7 +45,7 @@
                 </li>
             </ul>-->
         </li>
-        {{--   <li class="nav-item d-none d-sm-inline-block"><a href="#" class="nav-link"> [ <i
+        {{-- <li class="nav-item d-none d-sm-inline-block"><a href="#" class="nav-link"> [ <i
                     class="fa-solid fa-lg fa-truck-medical"></i>
                 <b class="text-primary"> โรงพยาบาลพุทธชินราช พิษณุโลก</b> ]
             </a></li> --}}
@@ -56,16 +56,16 @@
                 <i class="fas fa-xl fa-spin fa-gear"></i> Agent ToolBar
             </a>{{-- faa-shake animated faa-slow fa-wrench --}}
         </li>-->
-        {{--  <li class="nav-item d-none d-sm-inline-block">
+        {{-- <li class="nav-item d-none d-sm-inline-block">
             <a class="btn btn-success" data-widget="fullscreen" role="button">
                 <i class="fas fa-xl fa-expand-arrows-alt"></i> ขยาย/ย่อ หน้าจอ
             </a>
         </li> --}}
         @if (!empty($sidebarc))
-            <li class="nav-item d-none d-sm-inline-block"><a href="/" class="nav-link"> [ <i
-                        class="fa-solid fa-lg fa-home"></i>
-                    <b class="text-primary"> หน้าหลัก </b> ]
-                </a></li>
+        <li class="nav-item d-none d-sm-inline-block"><a href="/" class="nav-link"> [ <i
+                    class="fa-solid fa-lg fa-home"></i>
+                <b class="text-primary"> หน้าหลัก </b> ]
+            </a></li>
         @endif
 
 
@@ -75,9 +75,9 @@
 
             </a>
         </li>
-       <li class="nav-item d-none d-sm-inline-block">
+        <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">
-                <span class="digital-clock"> <i class="fas fa-clock"></i>  เวลา: &nbsp;
+                <span class="digital-clock"> <i class="fas fa-clock"></i> เวลา: &nbsp;
                     <div id="hours" class="digit">00</div>
                     <span>:</span>
                     <div id="minutes" class="digit">00</div>
@@ -88,61 +88,61 @@
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">
-            gg
+                gg
             </a>
         </li> --}}
         @if (empty($sidebarc))
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="far fa-xl fa-comments"></i>
-                    <span class="badge badge-danger navbar-badge" id="hold_tab">0</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" id="hold_tab_content">
+        <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+                <i class="far fa-xl fa-comments"></i>
+                <span class="badge badge-danger navbar-badge" id="hold_tab">0</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" id="hold_tab_content">
 
 
-                </div>
-            </li>
+            </div>
+        </li>
         @endif
 
     </ul>
 
     <ul class="navbar-nav ml-auto">
         @php
-            switch ($temporaryPhoneStatusID) {
-                case -1:
-                    $temporaryPhoneColor = 'icon-gray';
-                    break;
-                case 0:
-                    $temporaryPhoneColor = 'icon-gray';
-                    break;
-                case 1:
-                    $temporaryPhoneColor = 'icon-green';
-                    break;
-                case 2:
-                    $temporaryPhoneColor = 'icon-yellow';
-                    break;
-                case 3:
-                    $temporaryPhoneColor = 'icon-yellow';
-                    break;
-                case 4:
-                    $temporaryPhoneColor = 'icon-red';
-                    break;
-                case 5:
-                    $temporaryPhoneColor = 'icon-red';
-                    break;
-                default:
-                    $temporaryPhoneColor = 'icon-gray';
-                    break;
-            }
+        switch ($temporaryPhoneStatusID) {
+        case -1:
+        $temporaryPhoneColor = 'icon-gray';
+        break;
+        case 0:
+        $temporaryPhoneColor = 'icon-gray';
+        break;
+        case 1:
+        $temporaryPhoneColor = 'icon-green';
+        break;
+        case 2:
+        $temporaryPhoneColor = 'icon-yellow';
+        break;
+        case 3:
+        $temporaryPhoneColor = 'icon-yellow';
+        break;
+        case 4:
+        $temporaryPhoneColor = 'icon-red';
+        break;
+        case 5:
+        $temporaryPhoneColor = 'icon-red';
+        break;
+        default:
+        $temporaryPhoneColor = 'icon-gray';
+        break;
+        }
         @endphp
         @if (empty($sidebarc))
-            <li class="nav-item d-none d-sm-inline-block">
-                <a class="btn" id="ToolbarButton"><span id="phone_state_icon"
-                        class="{{ $temporaryPhoneColor }}">{!! $temporaryPhoneStatusIcon !!}</span> <b id="phone_state"
-                        class="{{ $temporaryPhoneColor }}">{{ $temporaryPhoneStatus }}</b> &nbsp;&nbsp;
-                    <b><i class="fa-solid fa-xl icon-gray fa-circle-chevron-down"></i></b>
-                </a>
-            </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a class="btn" id="ToolbarButton"><span id="phone_state_icon" class="{{ $temporaryPhoneColor }}">{!!
+                    $temporaryPhoneStatusIcon !!}</span> <b id="phone_state" class="{{ $temporaryPhoneColor }}">{{
+                    $temporaryPhoneStatus }}</b> &nbsp;&nbsp;
+                <b><i class="fa-solid fa-xl icon-gray fa-circle-chevron-down"></i></b>
+            </a>
+        </li>
         @endif
     </ul>
 </nav>

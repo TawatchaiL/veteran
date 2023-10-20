@@ -1,203 +1,204 @@
 @php
-    switch ($temporaryPhoneStatusID) {
-        case -1:
-            $dial_number = 'disabled';
-            $dial_number_class = 'd-none';
-            $dial_button = 'disabled';
-            $dial_button_class = 'd-none';
-            $transfer_button = 'disabled';
-            $transfer_button_class = 'd-none';
-            $performance_button = 'disabled';
-            $performance_button_class = 'd-none';
-            $conf_button = 'disabled';
-            $conf_button_class = 'd-none';
-            $break_button = 'disabled';
-            $break_button_class = 'd-none';
-            $unbreak_button = 'disabled';
-            $unbreak_button_class = 'd-none';
-            $unwarp_button = 'disabled';
-            $unwarp_button_class = 'd-none';
-            $logout_button = 'disabled';
-            $logout_button_class = 'd-none';
-            $logoff_button = 'disabled';
-            $logoff_button_class = 'd-none';
-            $login_button = 'disabled';
-            $login_button_class = 'd-none';
-            $toolbar_card = 'd-none';
-            $popup_tab_main = 'd-none';
-            $toolbar_header = 'bg-secondary';
-            break;
-        case 0:
-            $dial_number = '';
-            $dial_number_class = '';
-            $dial_button = '';
-            $dial_button_class = '';
-            $transfer_button = 'disabled';
-            $transfer_button_class = '';
-            $performance_button = 'disabled';
-            $performance_button_class = '';
-            $conf_button = 'disabled';
-            $conf_button_class = '';
-            $break_button = 'disabled';
-            $break_button_class = 'd-none';
-            $unbreak_button = 'disabled';
-            $unbreak_button_class = 'd-none';
-            $unwarp_button = 'disabled';
-            $unwarp_button_class = 'd-none';
-            $logout_button = '';
-            $logout_button_class = '';
-            $logoff_button = 'disabled';
-            $logoff_button_class = 'd-none';
-            $login_button = '';
-            $login_button_class = '';
-            $toolbar_card = '';
-            $popup_tab_main = '';
-            $toolbar_header = 'bg-secondary';
-            break;
-        case 1:
-            $dial_number = '';
-            $dial_number_class = '';
-            $dial_button = '';
-            $dial_button_class = '';
-            $transfer_button = 'disabled';
-            $transfer_button_class = '';
-            $performance_button = 'disabled';
-            $performance_button_class = '';
-            $conf_button = 'disabled';
-            $conf_button_class = '';
-            $break_button = '';
-            $break_button_class = '';
-            $unbreak_button = 'disabled';
-            $unbreak_button_class = 'd-none';
-            $unwarp_button = 'disabled';
-            $unwarp_button_class = 'd-none';
-            $logout_button = '';
-            $logout_button_class = '';
-            $logoff_button = '';
-            $logoff_button_class = '';
-            $login_button = 'disabled';
-            $login_button_class = 'd-none';
-            $toolbar_card = '';
-            $popup_tab_main = '';
-            $toolbar_header = 'bg-primary';
-            break;
-        case 2:
-            $dial_number = '';
-            $dial_number_class = '';
-            $dial_button = '';
-            $dial_button_class = '';
-            $transfer_button = 'disabled';
-            $transfer_button_class = '';
-            $performance_button = 'disabled';
-            $performance_button_class = '';
-            $conf_button = 'disabled';
-            $conf_button_class = '';
-            $break_button = '';
-            $break_button_class = 'd-none';
-            $unbreak_button = '';
-            $unbreak_button_class = '';
-            $unwarp_button = 'disabled';
-            $unwarp_button_class = 'd-none';
-            $logout_button = '';
-            $logout_button_class = '';
-            $logoff_button = 'disabled';
-            $logoff_button_class = 'd-none';
-            $login_button = 'disabled';
-            $login_button_class = 'd-none';
-            $toolbar_card = '';
-            $popup_tab_main = '';
-            $toolbar_header = 'bg-warning';
-            break;
-        case 3:
-            $dial_number = '';
-            $dial_number_class = '';
-            $dial_button = '';
-            $dial_button_class = '';
-            $transfer_button = 'disabled';
-            $transfer_button_class = '';
-            $performance_button = 'disabled';
-            $performance_button_class = '';
-            $conf_button = 'disabled';
-            $conf_button_class = '';
-            $break_button = 'disabled';
-            $break_button_class = 'd-none';
-            $unbreak_button = 'disabled';
-            $unbreak_button_class = 'd-none';
-            $unwarp_button = '';
-            $unwarp_button_class = '';
-            $logout_button = 'disabled';
-            $logout_button_class = 'd-none';
-            $logoff_button = 'disabled';
-            $logoff_button_class = 'd-none';
-            $login_button = 'disabled';
-            $login_button_class = 'd-none';
-            $toolbar_card = '';
-            $popup_tab_main = '';
-            $toolbar_header = 'bg-warning';
-            break;
-        case 4:
-            $dial_number = '';
-            $dial_number_class = '';
-            $dial_button = '';
-            $dial_button_class = '';
-            $transfer_button = '';
-            $transfer_button_class = '';
-            $performance_button = '';
-            $performance_button_class = '';
-            $conf_button = '';
-            $conf_button_class = '';
-            $break_button = 'disabled';
-            $break_button_class = 'd-none';
-            $unbreak_button = 'disabled';
-            $unbreak_button_class = 'd-none';
-            $unwarp_button = 'disabled';
-            $unwarp_button_class = 'd-none';
-            $logout_button = 'disabled';
-            $logout_button_class = 'd-none';
-            $logoff_button = 'disabled';
-            $logoff_button_class = 'd-none';
-            $login_button = 'disabled';
-            $login_button_class = 'd-none';
-            $toolbar_card = '';
-            $popup_tab_main = '';
-            $toolbar_header = 'bg-danger';
-            break;
-        case 5:
-            $dial_number = '';
-            $dial_number_class = '';
-            $dial_button = '';
-            $dial_button_class = '';
-            $transfer_button = '';
-            $transfer_button_class = '';
-            $performance_button = '';
-            $performance_button_class = '';
-            $conf_button = '';
-            $conf_button_class = '';
-            $break_button = 'disabled';
-            $break_button_class = 'd-none';
-            $unbreak_button = 'disabled';
-            $unbreak_button_class = 'd-none';
-            $unwarp_button = 'disabled';
-            $unwarp_button_class = 'd-none';
-            $logout_button = 'disabled';
-            $logout_button_class = 'd-none';
-            $logoff_button = 'disabled';
-            $logoff_button_class = 'd-none';
-            $login_button = 'disabled';
-            $login_button_class = 'd-none';
-            $toolbar_card = '';
-            $popup_tab_main = '';
-            $toolbar_header = 'bg-danger';
-            break;
-        default:
-            break;
-    }
+switch ($temporaryPhoneStatusID) {
+case -1:
+$dial_number = 'disabled';
+$dial_number_class = 'd-none';
+$dial_button = 'disabled';
+$dial_button_class = 'd-none';
+$transfer_button = 'disabled';
+$transfer_button_class = 'd-none';
+$performance_button = 'disabled';
+$performance_button_class = 'd-none';
+$conf_button = 'disabled';
+$conf_button_class = 'd-none';
+$break_button = 'disabled';
+$break_button_class = 'd-none';
+$unbreak_button = 'disabled';
+$unbreak_button_class = 'd-none';
+$unwarp_button = 'disabled';
+$unwarp_button_class = 'd-none';
+$logout_button = 'disabled';
+$logout_button_class = 'd-none';
+$logoff_button = 'disabled';
+$logoff_button_class = 'd-none';
+$login_button = 'disabled';
+$login_button_class = 'd-none';
+$toolbar_card = 'd-none';
+$popup_tab_main = 'd-none';
+$toolbar_header = 'bg-secondary';
+break;
+case 0:
+$dial_number = '';
+$dial_number_class = '';
+$dial_button = '';
+$dial_button_class = '';
+$transfer_button = 'disabled';
+$transfer_button_class = '';
+$performance_button = 'disabled';
+$performance_button_class = '';
+$conf_button = 'disabled';
+$conf_button_class = '';
+$break_button = 'disabled';
+$break_button_class = 'd-none';
+$unbreak_button = 'disabled';
+$unbreak_button_class = 'd-none';
+$unwarp_button = 'disabled';
+$unwarp_button_class = 'd-none';
+$logout_button = '';
+$logout_button_class = '';
+$logoff_button = 'disabled';
+$logoff_button_class = 'd-none';
+$login_button = '';
+$login_button_class = '';
+$toolbar_card = '';
+$popup_tab_main = '';
+$toolbar_header = 'bg-secondary';
+break;
+case 1:
+$dial_number = '';
+$dial_number_class = '';
+$dial_button = '';
+$dial_button_class = '';
+$transfer_button = 'disabled';
+$transfer_button_class = '';
+$performance_button = 'disabled';
+$performance_button_class = '';
+$conf_button = 'disabled';
+$conf_button_class = '';
+$break_button = '';
+$break_button_class = '';
+$unbreak_button = 'disabled';
+$unbreak_button_class = 'd-none';
+$unwarp_button = 'disabled';
+$unwarp_button_class = 'd-none';
+$logout_button = '';
+$logout_button_class = '';
+$logoff_button = '';
+$logoff_button_class = '';
+$login_button = 'disabled';
+$login_button_class = 'd-none';
+$toolbar_card = '';
+$popup_tab_main = '';
+$toolbar_header = 'bg-primary';
+break;
+case 2:
+$dial_number = '';
+$dial_number_class = '';
+$dial_button = '';
+$dial_button_class = '';
+$transfer_button = 'disabled';
+$transfer_button_class = '';
+$performance_button = 'disabled';
+$performance_button_class = '';
+$conf_button = 'disabled';
+$conf_button_class = '';
+$break_button = '';
+$break_button_class = 'd-none';
+$unbreak_button = '';
+$unbreak_button_class = '';
+$unwarp_button = 'disabled';
+$unwarp_button_class = 'd-none';
+$logout_button = '';
+$logout_button_class = '';
+$logoff_button = 'disabled';
+$logoff_button_class = 'd-none';
+$login_button = 'disabled';
+$login_button_class = 'd-none';
+$toolbar_card = '';
+$popup_tab_main = '';
+$toolbar_header = 'bg-warning';
+break;
+case 3:
+$dial_number = '';
+$dial_number_class = '';
+$dial_button = '';
+$dial_button_class = '';
+$transfer_button = 'disabled';
+$transfer_button_class = '';
+$performance_button = 'disabled';
+$performance_button_class = '';
+$conf_button = 'disabled';
+$conf_button_class = '';
+$break_button = 'disabled';
+$break_button_class = 'd-none';
+$unbreak_button = 'disabled';
+$unbreak_button_class = 'd-none';
+$unwarp_button = '';
+$unwarp_button_class = '';
+$logout_button = 'disabled';
+$logout_button_class = 'd-none';
+$logoff_button = 'disabled';
+$logoff_button_class = 'd-none';
+$login_button = 'disabled';
+$login_button_class = 'd-none';
+$toolbar_card = '';
+$popup_tab_main = '';
+$toolbar_header = 'bg-warning';
+break;
+case 4:
+$dial_number = '';
+$dial_number_class = '';
+$dial_button = '';
+$dial_button_class = '';
+$transfer_button = '';
+$transfer_button_class = '';
+$performance_button = '';
+$performance_button_class = '';
+$conf_button = '';
+$conf_button_class = '';
+$break_button = 'disabled';
+$break_button_class = 'd-none';
+$unbreak_button = 'disabled';
+$unbreak_button_class = 'd-none';
+$unwarp_button = 'disabled';
+$unwarp_button_class = 'd-none';
+$logout_button = 'disabled';
+$logout_button_class = 'd-none';
+$logoff_button = 'disabled';
+$logoff_button_class = 'd-none';
+$login_button = 'disabled';
+$login_button_class = 'd-none';
+$toolbar_card = '';
+$popup_tab_main = '';
+$toolbar_header = 'bg-danger';
+break;
+case 5:
+$dial_number = '';
+$dial_number_class = '';
+$dial_button = '';
+$dial_button_class = '';
+$transfer_button = '';
+$transfer_button_class = '';
+$performance_button = '';
+$performance_button_class = '';
+$conf_button = '';
+$conf_button_class = '';
+$break_button = 'disabled';
+$break_button_class = 'd-none';
+$unbreak_button = 'disabled';
+$unbreak_button_class = 'd-none';
+$unwarp_button = 'disabled';
+$unwarp_button_class = 'd-none';
+$logout_button = 'disabled';
+$logout_button_class = 'd-none';
+$logoff_button = 'disabled';
+$logoff_button_class = 'd-none';
+$login_button = 'disabled';
+$login_button_class = 'd-none';
+$toolbar_card = '';
+$popup_tab_main = '';
+$toolbar_header = 'bg-danger';
+break;
+default:
+break;
+}
 @endphp
 <div class="modal fade" id="ToolbarModal" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-xxl-toolbar">
         <div class="modal-content">
             <div class="modal-header {{ $toolbar_header }}" id="toolbar_header">
-                <h4 class="modal-title">{{-- <i class="fas fa-wrench"></i> --}} <i class="fas fa-spin fa-gear"></i> Agent ToolBar [
+                <h4 class="modal-title">{{-- <i class="fas fa-wrench"></i> --}} <i class="fas fa-spin fa-gear"></i>
+                    Agent ToolBar [
                     {{ $temporaryPhone }} ]</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -213,8 +214,7 @@
                                     name="dial_number" value="" placeholder="กรอกเบอร์" />
                             </div>
                             {{-- <div class="mx-1">
-                                <button
-                                    class="btn custom-button btn-success button_dial"><i
+                                <button class="btn custom-button btn-success button_dial"><i
                                         class="fa-solid fa-phone-volume"></i> รับสาย</button>
                             </div> --}}
                             <div class="mx-1">
@@ -224,7 +224,7 @@
                                     โทรออก</button>
                             </div>
                             <div class="mx-1">
-                                {{--  <button  <?= $outbound_dis ?>  class="btn btn-warning button_tranfer"><i
+                                {{-- <button <?=$outbound_dis ?> class="btn btn-warning button_tranfer"><i
                                         class="fas fa-random"></i> โอนสาย</button> --}}
                                 <div class="btn-group">
                                     <button type="button" id="tranfer_button" {{ $transfer_button }}
@@ -234,8 +234,8 @@
                                             Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu" role="menu">
-                                        <a class="dropdown-item button_tranfer" href="#"><i
-                                                class="fas fa-random"></i> Blind Tranfer</a>
+                                        <a class="dropdown-item button_tranfer" href="#"><i class="fas fa-random"></i>
+                                            Blind Tranfer</a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item button_atx_tranfer" href="#"><i
                                                 class="fas fa-random"></i> Attendant Tranfer</a>
