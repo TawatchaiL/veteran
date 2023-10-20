@@ -295,7 +295,7 @@ class ContactController extends Controller
     
                 </a>
                 <div class="dropdown-divider"></div>';
-            $i = 1;
+            $i = 2;
         }
 
 
