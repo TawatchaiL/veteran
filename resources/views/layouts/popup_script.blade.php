@@ -13,7 +13,6 @@
     });
 
     function positionCards() {
-        alert('OK');
         var cardPositions = [];
         $.ajax({
             url: '{{ route('contacts.popup') }}',
