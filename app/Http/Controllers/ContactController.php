@@ -215,7 +215,6 @@ class ContactController extends Controller
                 $query->orWhere('status', '=', '0')
                     ->orWhere('status', '=', '1');
             })->get();
-            dd($datac);
         
         $html = '';
         $tab_link = '';
