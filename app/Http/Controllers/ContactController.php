@@ -140,7 +140,7 @@ class ContactController extends Controller
             'html' =>  $htmlContent,
         ]);
     }
-////edit
+    ////edit
     public function popupcontact(Request $request)
     {
         $con = $request->get('contactid');
@@ -160,7 +160,7 @@ class ContactController extends Controller
     public function popupedit($telnop)
     {
         $datac = DB::table('crm_contacts')
-        ->where('id', '=', $telnop)
+            ->where('id', '=', $telnop)
             //->where('phoneno', '=', $telnop)
             //->orWhere('telhome', '=', $telnop)
             //->orWhere('workno', '=', $telnop)
@@ -188,13 +188,13 @@ class ContactController extends Controller
             $emer = DB::table('crm_phone_emergencies')
                 ->where('contact_id', '=', $datac[0]->id)
                 ->get();
-                $data = [
-                    'datac' => $datac[0],
-                    'emer' => $emer,
-                ];
-                return response()->json(['datax' => $data]);
-        }else{
-                return response()->json(['datax' => []]);
+            $data = [
+                'datac' => $datac[0],
+                'emer' => $emer,
+            ];
+            return response()->json(['datax' => $data]);
+        } else {
+            return response()->json(['datax' => []]);
         }
     }
 
@@ -209,12 +209,12 @@ class ContactController extends Controller
         //    ->get();
 
         $datac = DB::table('crm_incoming')
-        ->orderBy('id', 'desc')
-        ->where('agentno', '=', $user->phone)
-        ->where(function ($query) {
-            $query->orWhere('status', '=', '0')
-                  ->orWhere('status', '=', '1');
-        })->get();
+            ->orderBy('id', 'desc')
+            ->where('agentno', '=', $user->phone)
+            ->where(function ($query) {
+                $query->orWhere('status', '=', '0')
+                    ->orWhere('status', '=', '1');
+            })->get();
 
         $html = '';
         $tab_link = '';
@@ -222,63 +222,82 @@ class ContactController extends Controller
         $tab_hold = "";
         $active_id = '';
         $i = 1;
-        foreach ($datac as $item) {
-            $datap = DB::table('crm_contacts')
-                ->where('phoneno', '=', $item->telno)
-                ->orWhere('telhome', '=', $item->telno)
-                ->orWhere('workno', '=', $item->telno)
-                ->count();
-            if ($datap > 0) {
-                $statusText = "(ผู้ติดต่อที่เคยบันทึกข้อมูลไว้)";
-            } else {
-                $statusText = "(ผู้ติดต่อใหม่)";
-            }
-            /* style="width: 300px; height: 150px;"  */
+        if (is_array($datac)) {
+            foreach ($datac as $item) {
+                $datap = DB::table('crm_contacts')
+                    ->where('phoneno', '=', $item->telno)
+                    ->orWhere('telhome', '=', $item->telno)
+                    ->orWhere('workno', '=', $item->telno)
+                    ->count();
+                if ($datap > 0) {
+                    $statusText = "(ผู้ติดต่อที่เคยบันทึกข้อมูลไว้)";
+                } else {
+                    $statusText = "(ผู้ติดต่อใหม่)";
+                }
+                /* style="width: 300px; height: 150px;"  */
 
 
-            if ($i == 1) {
-                $tab_link_active = 'active';
-                $tab_content_active = 'show active';
-                $tab_active = 'card-danger';
-                $active_id = $item->telno;
-            } else {
-                $tab_link_active = '';
-                $tab_content_active = '';
-                $tab_active = 'card-secondary';
-            }
+                if ($i == 1) {
+                    $tab_link_active = 'active';
+                    $tab_content_active = 'show active';
+                    $tab_active = 'card-danger';
+                    $active_id = $item->telno;
+                } else {
+                    $tab_link_active = '';
+                    $tab_content_active = '';
+                    $tab_active = 'card-secondary';
+                }
 
-            $html = '<div class="col-md-12">
-            <div class=" pop_content" id="pop_' . $item->telno . '">' . $statusText . '</div></div>';
-            $tab_link .= '<li class="nav-item">
-            <a class="popup-tab-font-size nav-link ' . $tab_link_active . '" id="custom-tabs-pop-' . $item->telno . '-tab" data-toggle="pill" data-id="' . $item->telno . '"
-                href="#custom-tabs-pop-' . $item->telno . '" role="tab" aria-controls="custom-tabs-pop-' . $item->telno . '"
-                aria-selected="false">' . $item->telno . '</a>
-            </li>';
-            $tab_content .= '<div class="tab-pane fade ' . $tab_content_active . '" id="custom-tabs-pop-' . $item->telno . '" role="tabpanel"
-            aria-labelledby="custom-tabs-pop-' . $item->telno . '-tab">
-            <div class="row" id="dpopup_' . $item->telno . '">
-            ' . $html . '
-            </div>
-        </div>';
-
-            $tab_hold .= ' <a href="#" class="dropdown-item hold_tab_a">
-                <div class="media ">
-                    <img src="' . asset('images/user.png') . '" alt="..." class="img-size-50 mr-3 img-circle">
-                    <div class="media-body">
-                        <h3 class="dropdown-item-title">
-                        ' . $item->telno . '
-                            <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                        </h3>
-                        <p class="text-sm">' . $statusText . '</p>
-                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i>' . $item->calltime . '</p>
-                    </div>
+                $html = '<div class="col-md-12">
+                <div class=" pop_content" id="pop_' . $item->telno . '">' . $statusText . '</div></div>';
+                $tab_link .= '<li class="nav-item">
+                <a class="popup-tab-font-size nav-link ' . $tab_link_active . '" id="custom-tabs-pop-' . $item->telno . '-tab" data-toggle="pill" data-id="' . $item->telno . '"
+                    href="#custom-tabs-pop-' . $item->telno . '" role="tab" aria-controls="custom-tabs-pop-' . $item->telno . '"
+                    aria-selected="false">' . $item->telno . '</a>
+                </li>';
+                $tab_content .= '<div class="tab-pane fade ' . $tab_content_active . '" id="custom-tabs-pop-' . $item->telno . '" role="tabpanel"
+                aria-labelledby="custom-tabs-pop-' . $item->telno . '-tab">
+                <div class="row" id="dpopup_' . $item->telno . '">
+                ' . $html . '
                 </div>
+            </div>';
 
-            </a>
-            <div class="dropdown-divider"></div>';
+                $tab_hold .= ' <a href="#" class="dropdown-item hold_tab_a">
+                    <div class="media ">
+                        <img src="' . asset('images/user.png') . '" alt="..." class="img-size-50 mr-3 img-circle">
+                        <div class="media-body">
+                            <h3 class="dropdown-item-title">
+                            ' . $item->telno . '
+                                <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                            </h3>
+                            <p class="text-sm">' . $statusText . '</p>
+                            <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i>' . $item->calltime . '</p>
+                        </div>
+                    </div>
+    
+                </a>
+                <div class="dropdown-divider"></div>';
 
-            $i++;
+                $i++;
+            }
+        } else {
+            $tab_hold .= ' <a href="#" class="dropdown-item hold_tab_a">
+                    <div class="media ">
+                        <img src="' . asset('images/user.png') . '" alt="..." class="img-size-50 mr-3 img-circle">
+                        <div class="media-body">
+                            <h3 class="dropdown-item-title">
+                            ยังไม่มีร่ยการผู้ติดต่อ
+                            </h3>
+                            <p class="text-sm"></p>
+                            <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i></p>
+                        </div>
+                    </div>
+    
+                </a>
+                <div class="dropdown-divider"></div>';
+            $i = 1;
         }
+
 
         $tab_hold .= '<a href="#" class="dropdown-item dropdown-footer" id="hold_tab_list">ดูรายการผู้ติดต่อ</a>';
 
