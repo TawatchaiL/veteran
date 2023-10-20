@@ -15,7 +15,7 @@
     function positionCards() {
         var cardPositions = [];
         $.ajax({
-            url: '{{ route('contacts.popup ') }}',
+            url: '{{ route('contacts.popup') }}',
             type: 'get',
             success: function(response) {
                 if (response.tab_link !== '') {
@@ -53,8 +53,7 @@
     /// Maximize card AJAX function
     function maximizeCard(cardId) {
         $.ajax({
-            url: '{{ route('
-            contacts.popup_content ') }}',
+            url: '{{ route('contacts.popup_content') }}',
             type: 'POST',
             data: {
                 cardId: cardId
@@ -456,8 +455,7 @@
                 //alert($(this).attr("id"));
                 $('#custom-tabs-pop-' + datatId).empty();
                 $.ajax({
-                    url: '{{ route('
-                    contacts.popupcontact ') }}',
+                    url: '{{ route('contacts.popupcontact') }}',
                     type: 'POST',
                     data: {
                         contactid: contactid,
