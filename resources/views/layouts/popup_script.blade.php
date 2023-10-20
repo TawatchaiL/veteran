@@ -18,7 +18,7 @@
             url: '{{ route('contacts.popup') }}',
             type: 'get',
             success: function(response) {
-                console.log(response)
+                if (tab_link !== '') {
                 removeAllTabs();
 
                 $('#custom-tabs-pop').prepend(response.tab_link);
@@ -27,6 +27,7 @@
                 $('#hold_tab_content').html(response.hold_tab_content);
 
                 maximizeCard(response.active_id);
+                }
             },
             error: function(xhr, status, error) {
 
