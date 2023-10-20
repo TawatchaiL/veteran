@@ -1,40 +1,6 @@
 @extends('layouts.app_top')
 @section('style')
-    <style>
-        .alignment {
-            text-align: center;
-            font-size: 32px;
-        }
-
-        p.font {
-            font-size: 76px;
-            font-weight: normal;
-            margin: 0;
-            color: #4b7ef5
-        }
-
-        .info-box-number {
-            font-size: 24px;
-            font-weight: normal;
-            margin: 0;
-            color: #4b7ef5
-        }
-
-        .status-icon {
-            font-size: 1.2em;
-            /* Adjust the size of the icon */
-            margin-right: 5px;
-            /* Add some spacing between the icon and text */
-        }
-
-        .offline {
-            color: gray;
-        }
-
-        .online {
-            color: green;
-        }
-    </style>
+    @include('dashboard.style')
 @endsection
 
 @section('content')
@@ -49,11 +15,12 @@
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
-
-                </div>
-                <div class="col-sm-6">
-
+                <div class="col-sm-12">
+                    <label for="redirectSelect">Queue:</label>
+                    <select id="redirectSelect">
+                        <option value="4567">Option 1</option>
+                        <option value="5678">Option 2</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -67,7 +34,8 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-success"><i class="fa-solid fa-arrow-right-to-bracket"></i></span>
+                                <span class="info-box-icon bg-success"><i
+                                        class="fa-solid fa-arrow-right-to-bracket"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text">สายทั้งหมด</span>
                                     <span class="info-box-number">0 ครั้ง</span>
@@ -550,6 +518,28 @@
 @endsection
 
 @section('script')
+    <script type="module">
+        $(document).ready(() => {
+            const selectElement = $('#redirectSelect');
+
+            // Check if a selected option is stored in local storage
+            const storedOption = localStorage.getItem('selectedOption');
+
+            if (storedOption) {
+                // If a stored option exists, set it as the selected value
+                selectElement.val(storedOption);
+            }
+
+            // Add an event listener to update local storage when an option is selected
+            selectElement.on('change', () => {
+                const selectedOption = selectElement.val();
+                if (selectedOption) {
+                    localStorage.setItem('selectedOption',
+                    selectedOption); // Store the selected option in local storage
+                }
+            });
+        });
+    </script>
     <script language="javascript" type="text/javascript">
         function generateRandomData(length) {
             const data = [];
@@ -765,16 +755,16 @@
                 toolbox: {
                     show: true,
                     feature: {
-                       /*  dataZoom: {
-                            yAxisIndex: 'none'
-                        },
-                        dataView: {
-                            readOnly: false
-                        },
-                        magicType: {
-                            type: ['line', 'bar']
-                        },
-                        restore: {}, */
+                        /*  dataZoom: {
+                             yAxisIndex: 'none'
+                         },
+                         dataView: {
+                             readOnly: false
+                         },
+                         magicType: {
+                             type: ['line', 'bar']
+                         },
+                         restore: {}, */
                         saveAsImage: {}
                     }
                 },
