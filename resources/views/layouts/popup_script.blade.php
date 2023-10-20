@@ -4,7 +4,7 @@
         $('#custom-tabs-pop-tabContent').empty();
     };
 
-    $('#custom-tabs-pop').on('click', '.nav-link', function () {
+    $('#custom-tabs-pop').on('click', '.nav-link', function() {
         var dataId = $(this).data('id');
         var datatext = $('#pop_' + dataId).text();
         if (datatext === '(ผู้ติดต่อที่เคยบันทึกข้อมูลไว้)' || datatext === '(ผู้ติดต่อใหม่)') {
@@ -15,21 +15,21 @@
     function positionCards() {
         var cardPositions = [];
         $.ajax({
-            url: '{{ route('contacts.popup') }}',
+            url: '{{ route('contacts.popup ') }}',
             type: 'get',
-            success: function (response) {
+            success: function(response) {
                 if (response.tab_link !== '') {
                     removeAllTabs();
 
                     $('#custom-tabs-pop').prepend(response.tab_link);
                     $('#custom-tabs-pop-tabContent').prepend(response.tab_content);
-                    $('#hold_tab').html(response.hold_tab);
-                    $('#hold_tab_content').html(response.hold_tab_content);
 
                     maximizeCard(response.active_id);
                 }
+                $('#hold_tab').html(response.hold_tab);
+                $('#hold_tab_content').html(response.hold_tab_content);
             },
-            error: function (xhr, status, error) {
+            error: function(xhr, status, error) {
 
             }
         });
@@ -42,10 +42,10 @@
             data: {
                 cardId: cardId
             },
-            success: function (response) {
+            success: function(response) {
 
             },
-            error: function (xhr, status, error) {
+            error: function(xhr, status, error) {
 
             }
         });
@@ -53,29 +53,30 @@
     /// Maximize card AJAX function
     function maximizeCard(cardId) {
         $.ajax({
-            url: '{{ route('contacts.popup_content') }}',
+            url: '{{ route('
+            contacts.popup_content ') }}',
             type: 'POST',
             data: {
                 cardId: cardId
             },
-            success: async function (response) {
+            success: async function(response) {
                 $('#' + cardId).removeClass('card-danger');
                 $('#' + cardId).addClass('card-success');
                 await $('#pop_' + cardId).html(response.html);
                 $(".card-footer").css("display", "block")
                 $('.bclose').css('display', 'none');
 
-                setTimeout(function () {
+                setTimeout(function() {
                     $.ajax({
                         url: "{{ route('thcity.city') }}",
                         method: 'GET',
                         async: false,
-                        success: function (res) {
+                        success: function(res) {
                             var provinceOb = $('#cityp' + cardId);
                             provinceOb.html(
                                 '<option value="">เลือกจังหวัด</option>'
                             );
-                            $.each(res.data, function (index,
+                            $.each(res.data, function(index,
                                 item) {
                                 provinceOb.append(
                                     $('<option></option>')
@@ -86,7 +87,7 @@
                         }
                     });
 
-                    setTimeout(function () {
+                    setTimeout(function() {
                         //let contactid = $('#contractid' + cardId).val();
                         var telnop = $('#telnop' + cardId).val();
                         $('#phonenosuccess' + cardId).html(
@@ -96,7 +97,7 @@
                             url: "contacts/popupeditphone/" + telnop,
                             method: 'GET',
                             async: false,
-                            success: function (res) {
+                            success: function(res) {
                                 if (res.datax.length > 0) {
                                     $('#phonenosuccess' + cardId).html(
                                         '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ' +
@@ -124,13 +125,13 @@
                                     $('#cityp' + cardId).val(res.datax.datac
                                         .city);
                                     $('#cityp' + cardId).change();
-                                    setTimeout(function () {
+                                    setTimeout(function() {
                                         $('#districtp' + cardId).val(res
                                             .datax.datac
                                             .district);
                                         $('#districtp' + cardId)
                                             .change();
-                                        setTimeout(function () {
+                                        setTimeout(function() {
                                             $('#subdistrictp' +
                                                     cardId)
                                                 .val(res
@@ -155,7 +156,7 @@
                                         tbody.removeChild(tbody
                                             .firstChild);
                                     }
-                                    $.each(res.datax.emer, function (
+                                    $.each(res.datax.emer, function(
                                         index, value) {
                                         $('#myTbl3p' + cardId +
                                                 ' tbody')
@@ -221,18 +222,18 @@
                             }
                         });
 
-                        setTimeout(function () {
+                        setTimeout(function() {
                             $.ajax({
                                 url: "casetype6/casetype/0",
                                 method: 'GET',
                                 async: false,
-                                success: function (res) {
+                                success: function(res) {
                                     var provinceOb = $('#casetype1p' +
                                         cardId);
                                     provinceOb.html(
                                         '<option value="">เลือกประเภทการติดต่อ</option>'
                                     );
-                                    $.each(res.data, function (index,
+                                    $.each(res.data, function(index,
                                         item) {
                                         provinceOb.append(
                                             $(
@@ -286,19 +287,19 @@
             data: {
                 cardId: cardId
             },
-            success: function (response) {
+            success: function(response) {
                 // Handle success
             },
-            error: function (xhr, status, error) {
+            error: function(xhr, status, error) {
 
             }
         });
     }
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         positionCards();
         //casetype changes
-        $(document).on("change", ".casetypechang", function () {
+        $(document).on("change", ".casetypechang", function() {
             var cardId = $(this).data("tabid");
             var levcase = $(this).data("lev");
             var parent_id = $(this).val();
@@ -330,8 +331,8 @@
                     url: "casetype6/casetype/" + parent_id,
                     method: 'GET',
                     async: false,
-                    success: function (res) {
-                        $.each(res.data, function (index, item) {
+                    success: function(res) {
+                        $.each(res.data, function(index, item) {
                             $('#casetype' + nextcase + 'p' + cardId).append(
                                 $('<option></option>').val(item.id)
                                 .html(item.name)
@@ -370,7 +371,7 @@
             }
         });
         //province changes
-        $(document).on("change", ".citypchang", function () {
+        $(document).on("change", ".citypchang", function() {
             let datatId = $(this).data("tabid");
             var districtOb = $('#districtp' + datatId);
             var cartonOb = $('#subdistrictp' + datatId);
@@ -378,12 +379,12 @@
             $.ajax({
                 url: "thdistrict/district/" + $(this).val(),
                 method: 'GET',
-                success: function (res) {
+                success: function(res) {
                     districtOb.html(
                         '<option value="">เลือกอำเภอ</option>');
                     cartonOb.html(
                         '<option value="">เลือกตำบล</option>');
-                    $.each(res.data, function (index, item) {
+                    $.each(res.data, function(index, item) {
                         districtOb.append(
                             $('<option></option>').val(item.code).html(item
                                 .name_th)
@@ -393,16 +394,16 @@
             });
         });
 
-        $(document).on("change", ".districtpchang", function () {
+        $(document).on("change", ".districtpchang", function() {
             let datatId = $(this).data("tabid");
             var cartonOb = $('#subdistrictp' + datatId);
             //cartonOb.html('<option value="">เลือกตำบล</option>');
             $.ajax({
                 url: "thsubdistrict/subdistrict/" + $(this).val(),
                 method: 'GET',
-                success: function (res) {
+                success: function(res) {
                     cartonOb.html('<option value="">เลือกตำบล</option>');
-                    $.each(res.data, function (index, item) {
+                    $.each(res.data, function(index, item) {
                         cartonOb.append(
                             $('<option></option>').val(item.code).html(item
                                 .name_th)
@@ -413,7 +414,7 @@
         });
         //Add new phone emergency
         $(document).on('click', '.addRowBtnp-button',
-            function () {
+            function() {
                 let cardId = $(this).data("tabid");
                 $('#myTbl3p' + cardId + ' tbody')
                     .append($('<tr>')
@@ -448,20 +449,21 @@
             });
         // contact list to from
         $(document).on('click', '.selectcontactp-button',
-            function () {
+            function() {
                 let datatId = $(this).data("tabid");
                 let cardId = $(this).data("tabid");
                 let contactid = $(this).data("id");
                 //alert($(this).attr("id"));
                 $('#custom-tabs-pop-' + datatId).empty();
                 $.ajax({
-                    url: '{{ route('contacts.popupcontact') }}',
+                    url: '{{ route('
+                    contacts.popupcontact ') }}',
                     type: 'POST',
                     data: {
                         contactid: contactid,
                         cardid: datatId
                     },
-                    success: async function (response) {
+                    success: async function(response) {
                         $('#' + datatId).removeClass('card-danger');
                         $('#' + datatId).addClass('card-success');
                         await $('#custom-tabs-pop-' + datatId).html(response.html);
@@ -472,12 +474,12 @@
                             url: "{{ route('thcity.city') }}",
                             method: 'GET',
                             async: false,
-                            success: function (res) {
+                            success: function(res) {
                                 var provinceOb = $('#cityp' + datatId);
                                 provinceOb.html(
                                     '<option value="">เลือกจังหวัด</option>'
                                 );
-                                $.each(res.data, function (index, item) {
+                                $.each(res.data, function(index, item) {
                                     provinceOb.append($('<option></option>')
                                         .val(item.code).html(item
                                             .name_th));
@@ -493,7 +495,7 @@
                             url: "contacts/popupedit/" + contactid,
                             method: 'GET',
                             async: false,
-                            success: function (res) {
+                            success: function(res) {
                                 $('#phonenosuccess' + cardId).html(
                                     '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ' +
                                     res.datax.datac.fname +
@@ -511,11 +513,11 @@
                                 $('#roadp' + cardId).val(res.datax.datac.road);
                                 $('#cityp' + cardId).val(res.datax.datac.city);
                                 $('#cityp' + cardId).change();
-                                setTimeout(function () {
+                                setTimeout(function() {
                                     $('#districtp' + cardId).val(res.datax
                                         .datac.district);
                                     $('#districtp' + cardId).change();
-                                    setTimeout(function () {
+                                    setTimeout(function() {
                                         $('#subdistrictp' + cardId)
                                             .val(res.datax.datac
                                                 .subdistrict);
@@ -535,7 +537,7 @@
                                     tbody.removeChild(tbody
                                         .firstChild);
                                 }
-                                $.each(res.datax.emer, function (
+                                $.each(res.datax.emer, function(
                                     index, value) {
                                     $('#myTbl3p' + cardId + ' tbody')
                                         .append($('<tr>')
@@ -604,12 +606,12 @@
                             url: "casetype6/casetype/0",
                             method: 'GET',
                             async: false,
-                            success: function (res) {
+                            success: function(res) {
                                 var caseOb = $('#casetype1p' + datatId);
                                 caseOb.html(
                                     '<option value="">เลือกประเภทการติดต่อ</option>'
                                 );
-                                $.each(res.data, function (index, item) {
+                                $.each(res.data, function(index, item) {
                                     caseOb.append(
                                         $('<option></option>').val(item
                                             .id).html(item.name)
@@ -640,11 +642,11 @@
                 });
             });
         // Save data asdf
-        $(document).on('click', '.SubmitCreateFormP-button', function () {
+        $(document).on('click', '.SubmitCreateFormP-button', function() {
             let cardId = $(this).data("tabid");
             var emergencyData = [];
             if ($('#contractid' + cardId).val() === "") {
-                $('#myTbl3p' + cardId + ' tbody tr').each(function () {
+                $('#myTbl3p' + cardId + ' tbody tr').each(function() {
                     var emergencyname = $(this).find(
                         'input[name="emergencynamep' + cardId + '[]"]').val();
                     var emerrelation = $(this).find(
@@ -713,10 +715,10 @@
                     url: "{{ route('contacts.casescontract') }}",
                     method: 'post',
                     data: additionalData,
-                    success: function (result) {
+                    success: function(result) {
                         if (result.errors) {
                             $('.alert-danger-pop' + cardId).html('');
-                            $.each(result.errors, function (key,
+                            $.each(result.errors, function(key,
                                 value) {
                                 $('.alert-danger-pop' + cardId)
                                     .show();
@@ -752,7 +754,7 @@
                 });
             } else {
                 if (!confirm("ยืนยันการทำรายการ ?")) return;
-                $('#myTbl3p' + cardId + ' tbody tr').each(function (index, tr) {
+                $('#myTbl3p' + cardId + ' tbody tr').each(function(index, tr) {
                     var emertype = $(this).find(
                         'input[name="emertypep' + cardId + '[]"]').val();
                     var emergencyname = $(this).find(
@@ -825,10 +827,10 @@
                     method: 'PUT',
                     data: additionalData,
 
-                    success: function (result) {
+                    success: function(result) {
                         if (result.errors) {
                             $('.alert-danger-pop' + cardId).html('');
-                            $.each(result.errors, function (key,
+                            $.each(result.errors, function(key,
                                 value) {
                                 $('.alert-danger-pop' + cardId)
                                     .show();
@@ -861,7 +863,7 @@
             }
         });
         $(document).on('click', '.custom-bottom-right-card .card-tools [data-card-widget="maximize"]',
-            function () {
+            function() {
 
                 var card = $(this).closest('.custom-bottom-right-card');
                 var cardIndex = card.index();
@@ -887,7 +889,7 @@
             });
 
         $(document).on('click', '.custom-bottom-right-card .card-footer .bopen[data-card-widget="maximize"]',
-            function () {
+            function() {
 
                 var card = $(this).closest('.custom-bottom-right-card');
                 var cardIndex = card.index();
@@ -918,7 +920,7 @@
 
         // Handle card close
         $(document).on('click', '.custom-bottom-right-card .card-tools [data-card-widget="remove"]',
-            function () {
+            function() {
                 var card = $(this).closest('.custom-bottom-right-card');
                 var cardIndex = card.index();
                 var cardId = card.data('id');
@@ -933,18 +935,18 @@
             $confirm.modal('show');
             $("#lblTitleConfirmYesNo").html(title);
             $("#lblMsgConfirmYesNo").html(msg);
-            $("#btnYesConfirmYesNo").off('click').click(function () {
+            $("#btnYesConfirmYesNo").off('click').click(function() {
                 yesFn();
                 $confirm.modal("hide");
             });
-            $("#btnNoConfirmYesNo").off('click').click(function () {
+            $("#btnNoConfirmYesNo").off('click').click(function() {
                 noFn();
                 $confirm.modal("hide");
             });
         }
 
         $(document).on('show.bs.tab', '#custom-tabs-pop a[data-toggle="pill"]',
-            function (e) {
+            function(e) {
 
                 var href = $(e.target).attr("href");
                 var targetTab = href.replace("#custom-tabs-pop-", "");
@@ -956,5 +958,4 @@
 
             });
     });
-
 </script>
