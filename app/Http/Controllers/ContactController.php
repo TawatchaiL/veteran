@@ -286,7 +286,7 @@ class ContactController extends Controller
                         <img src="' . asset('images/user.png') . '" alt="..." class="img-size-50 mr-3 img-circle">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
-                            ยังไม่มีร่ยการผู้ติดต่อ
+                            ยังไม่มีรายการผู้ติดต่อ
                             </h3>
                             <p class="text-sm"></p>
                             <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i></p>
@@ -295,7 +295,7 @@ class ContactController extends Controller
     
                 </a>
                 <div class="dropdown-divider"></div>';
-            $i = 2;
+            $i = 1;
         }
 
 
