@@ -32,29 +32,29 @@
 
     let alert_danger = (title, message, subtitle) => {
         $(document).Toasts('create', {
-            body: message
-            , title: title
-            , class: 'bg-danger mr-2 mt-2'
-            , subtitle: subtitle
-            , icon: 'fas fa-bell'
-            , autohide: true
-            , zIndex: 99999999
-            , fade: true
-            , delay: 3000
+            body: message,
+            title: title,
+            class: 'bg-danger mr-2 mt-2',
+            subtitle: subtitle,
+            icon: 'fas fa-bell',
+            autohide: true,
+            zIndex: 99999999,
+            fade: true,
+            delay: 3000
         })
     }
 
     let alert_success = (title, message, subtitle) => {
         $(document).Toasts('create', {
-            body: message
-            , title: title
-            , class: 'bg-success mr-2 mt-2'
-            , subtitle: subtitle
-            , icon: 'fas fa-bell'
-            , autohide: true
-            , zIndex: 99999999
-            , fade: true
-            , delay: 3000
+            body: message,
+            title: title,
+            class: 'bg-success mr-2 mt-2',
+            subtitle: subtitle,
+            icon: 'fas fa-bell',
+            autohide: true,
+            zIndex: 99999999,
+            fade: true,
+            delay: 3000
         })
     }
 
@@ -71,33 +71,33 @@
     $(document).ready(function() {
         $("#btnAlert").on("click", function() {
             const prom = ezBSAlert({
-                messageText: "hello world"
-                , alertType: "danger"
-            , }).done(function(e) {
+                messageText: "hello world",
+                alertType: "danger",
+            }).done(function(e) {
                 $("body").append("<div>Callback from alert</div>");
             });
         });
 
         $("#btnConfirm").on("click", function() {
             ezBSAlert({
-                type: "confirm"
-                , messageText: "hello world"
-                , alertType: "info"
-            , }).done(function(e) {
+                type: "confirm",
+                messageText: "hello world",
+                alertType: "info",
+            }).done(function(e) {
                 $("body").append(`<div>Callback from confirm ${e}</div>`);
             });
         });
 
         $("#btnPrompt").on("click", function() {
             ezBSAlert({
-                type: "prompt"
-                , messageText: "Enter Something"
-                , alertType: "primary"
-            , }).done(function(e) {
+                type: "prompt",
+                messageText: "Enter Something",
+                alertType: "primary",
+            }).done(function(e) {
                 ezBSAlert({
-                    messageText: "You entered: " + e
-                    , alertType: "success"
-                , });
+                    messageText: "You entered: " + e,
+                    alertType: "success",
+                });
             });
         });
     });
@@ -126,12 +126,12 @@
 
     const sendAjaxRequest = (url, method, data = {}) => {
         $.ajax({
-            url
-            , method
-            , data
-            , async: false
-            , success: updateUI
-        , });
+            url,
+            method,
+            data,
+            async: false,
+            success: updateUI,
+        });
     };
 
 
@@ -343,11 +343,11 @@
     $(document).on('click', '#btn-agent-logout', function(e) {
         e.preventDefault();
         ezBSAlert({
-            type: "confirm"
-            , headerText: "Confirm"
-            , messageText: "ยืนยันการออกจากระบบรับสาย?"
-            , alertType: "info"
-        , }).done(function(r) {
+            type: "confirm",
+            headerText: "Confirm",
+            messageText: "ยืนยันการออกจากระบบรับสาย?",
+            alertType: "info",
+        }).done(function(r) {
             if (r == true) {
                 sendAjaxRequest("{{ route('agent.logoff') }}", "POST");
             }
@@ -358,19 +358,19 @@
         e.preventDefault();
         const bid = $(this).data('id');
         const additionalData = {
-            id_break: bid
-        , };
+            id_break: bid,
+        };
         sendAjaxRequest("{{ route('agent.break') }}", "POST", additionalData);
     });
 
     $(document).on('click', '.button_unbreak', function(e) {
         e.preventDefault();
         ezBSAlert({
-            type: "confirm"
-            , headerText: "Confirm"
-            , messageText: "ยืนยันการหยุดพัก?"
-            , alertType: "info"
-        , }).done(function(r) {
+            type: "confirm",
+            headerText: "Confirm",
+            messageText: "ยืนยันการหยุดพัก?",
+            alertType: "info",
+        }).done(function(r) {
             if (r == true) {
                 sendAjaxRequest("{{ route('agent.unbreak') }}", "POST");
             }
@@ -382,11 +382,11 @@
     $(document).on('click', '#btn-unwarp', function(e) {
         e.preventDefault();
         ezBSAlert({
-            type: "confirm"
-            , headerText: "Confirm"
-            , messageText: "ยืนยันการ Stop WrapUP"
-            , alertType: "info"
-        , }).done(function(r) {
+            type: "confirm",
+            headerText: "Confirm",
+            messageText: "ยืนยันการ Stop WrapUP",
+            alertType: "info",
+        }).done(function(r) {
             if (r == true) {
                 sendAjaxRequest("{{ route('agent.unwarp') }}", "POST");
             }
@@ -397,11 +397,11 @@
     $(document).on('click', '#btn-system-logout', function(e) {
         e.preventDefault();
         ezBSAlert({
-            type: "confirm"
-            , headerText: "Confirm"
-            , messageText: "ยืนยันการออกจากระบบ?"
-            , alertType: "info"
-        , }).done(function(r) {
+            type: "confirm",
+            headerText: "Confirm",
+            messageText: "ยืนยันการออกจากระบบ?",
+            alertType: "info",
+        }).done(function(r) {
             if (r == true) {
                 document.getElementById('logout-form').submit();
             }
@@ -412,20 +412,20 @@
 
     btn_pause.click(function() {
         $.ajax({
-            url: "{{ route('pause_list') }}"
-            , method: 'post'
-            , data: {
-                _token: token
-            , }
-            , async: true, // Use async:true for better performance
+            url: "{{ route('pause_list') }}",
+            method: 'post',
+            data: {
+                _token: token,
+            },
+            async: true, // Use async:true for better performance
             success: function(result) {
                 console.log(result)
                 $("#pause_list").empty();
                 result.forEach(function(item) {
                     var newDropdownItem = $("<a>").attr({
-                        class: "dropdown-item button_break"
-                        , href: "#"
-                        , "data-id": item.id
+                        class: "dropdown-item button_break",
+                        href: "#",
+                        "data-id": item.id
                     }).text(item.name);
 
                     $("#pause_list").append(newDropdownItem);
@@ -442,10 +442,10 @@
         if (len > 0) {
             if (len > 1) {
                 const prom = ezBSAlert({
-                    headerText: "Notice"
-                    , messageText: "ไม่สามารถโอนสายมากกว่า 1 สายต่อครั้ง"
-                    , alertType: "info"
-                , });
+                    headerText: "Notice",
+                    messageText: "ไม่สามารถโอนสายมากกว่า 1 สายต่อครั้ง",
+                    alertType: "info",
+                });
             } else {
                 let call_number = $('#dial_number').val();
                 if (call_number !== '') {
@@ -460,46 +460,46 @@
                         }
                     }); */
                     $.ajax({
-                        url: "{{ route('tranfer') }}"
-                        , method: 'post'
-                        , data: {
-                            number: call_number
-                            , atxfer: 0
-                            , _token: token
-                        , }
-                        , async: false
-                        , success: function(result) {
+                        url: "{{ route('tranfer') }}",
+                        method: 'post',
+                        data: {
+                            number: call_number,
+                            atxfer: 0,
+                            _token: token,
+                        },
+                        async: false,
+                        success: function(result) {
                             if (result.success == true) {
                                 const prom = ezBSAlert({
-                                    headerText: "OK"
-                                    , messageText: "โอนสายสำเร็จ"
-                                    , alertType: "success"
-                                , });
+                                    headerText: "OK",
+                                    messageText: "โอนสายสำเร็จ",
+                                    alertType: "success",
+                                });
                             } else {
                                 const prom = ezBSAlert({
-                                    headerText: "Error"
-                                    , messageText: "โอนสาย ไม่สำเร็จ"
-                                    , alertType: "danger"
-                                , });
+                                    headerText: "Error",
+                                    messageText: "โอนสาย ไม่สำเร็จ",
+                                    alertType: "danger",
+                                });
                             }
                         }
                     });
                     //}
                 } else {
                     const prom = ezBSAlert({
-                        headerText: "Notice"
-                        , messageText: "กรุณาระบุหมายเลขที่จะโอนสาย"
-                        , alertType: "info"
-                    , });
+                        headerText: "Notice",
+                        messageText: "กรุณาระบุหมายเลขที่จะโอนสาย",
+                        alertType: "info",
+                    });
                 }
 
             }
         } else {
             const prom = ezBSAlert({
-                headerText: "Notice"
-                , messageText: "กรุณาระบุสายที่จะโอนสาย"
-                , alertType: "info"
-            , });
+                headerText: "Notice",
+                messageText: "กรุณาระบุสายที่จะโอนสาย",
+                alertType: "info",
+            });
         }
     });
 
@@ -509,10 +509,10 @@
         if (len > 0) {
             if (len > 1) {
                 const prom = ezBSAlert({
-                    headerText: "Notice"
-                    , messageText: "ไม่สามารถโอนสายมากกว่า 1 สายต่อครั้ง"
-                    , alertType: "info"
-                , });
+                    headerText: "Notice",
+                    messageText: "ไม่สามารถโอนสายมากกว่า 1 สายต่อครั้ง",
+                    alertType: "info",
+                });
             } else {
                 let call_number = $('#dial_number').val();
                 if (call_number !== '') {
@@ -527,46 +527,46 @@
                         }
                     }); */
                     $.ajax({
-                        url: "{{ route('tranfer') }}"
-                        , method: 'post'
-                        , data: {
-                            number: call_number
-                            , atxfer: 1
-                            , _token: token
-                        , }
-                        , async: false
-                        , success: function(result) {
+                        url: "{{ route('tranfer') }}",
+                        method: 'post',
+                        data: {
+                            number: call_number,
+                            atxfer: 1,
+                            _token: token,
+                        },
+                        async: false,
+                        success: function(result) {
                             if (result.success == true) {
                                 const prom = ezBSAlert({
-                                    headerText: "OK"
-                                    , messageText: "โอนสายสำเร็จ"
-                                    , alertType: "success"
-                                , });
+                                    headerText: "OK",
+                                    messageText: "โอนสายสำเร็จ",
+                                    alertType: "success",
+                                });
                             } else {
                                 const prom = ezBSAlert({
-                                    headerText: "Error"
-                                    , messageText: "โอนสาย ไม่สำเร็จ"
-                                    , alertType: "danger"
-                                , });
+                                    headerText: "Error",
+                                    messageText: "โอนสาย ไม่สำเร็จ",
+                                    alertType: "danger",
+                                });
                             }
                         }
                     });
                     //}
                 } else {
                     const prom = ezBSAlert({
-                        headerText: "Notice"
-                        , messageText: "กรุณาระบุหมายเลขที่จะโอนสาย"
-                        , alertType: "info"
-                    , });
+                        headerText: "Notice",
+                        messageText: "กรุณาระบุหมายเลขที่จะโอนสาย",
+                        alertType: "info",
+                    });
                 }
 
             }
         } else {
             const prom = ezBSAlert({
-                headerText: "Notice"
-                , messageText: "กรุณาระบุสายที่จะโอนสาย"
-                , alertType: "info"
-            , });
+                headerText: "Notice",
+                messageText: "กรุณาระบุสายที่จะโอนสาย",
+                alertType: "info",
+            });
         }
 
     });
@@ -646,25 +646,25 @@
             $.get(`${api_serv}/dial/` + call_number + "/" + exten + "/" + account_code, (data, status) => {
                 if (status == 'success') {
                     const prom = ezBSAlert({
-                        headerText: "OK"
-                        , messageText: "โทรออกสำเร็จ"
-                        , alertType: "success"
-                    , });
+                        headerText: "OK",
+                        messageText: "โทรออกสำเร็จ",
+                        alertType: "success",
+                    });
                     dial_number.val('');
                 } else {
                     const prom = ezBSAlert({
-                        headerText: "Error"
-                        , messageText: "โทรออก ไม่สำเร็จ"
-                        , alertType: "danger"
-                    , });
+                        headerText: "Error",
+                        messageText: "โทรออก ไม่สำเร็จ",
+                        alertType: "danger",
+                    });
                 }
             });
         } else {
             const prom = ezBSAlert({
-                headerText: "Notice"
-                , messageText: "กรุณาระบุหมายเลขที่จะโทร"
-                , alertType: "info"
-            , })
+                headerText: "Notice",
+                messageText: "กรุณาระบุหมายเลขที่จะโทร",
+                alertType: "info",
+            })
             /* .done(function(e) {
                             $('body').css("overflow-y", "hidden");
                             //$('.modal').css("overflow", "hidden");
@@ -680,10 +680,10 @@
         if (len > 0) {
             if (len !== 2) {
                 const prom = ezBSAlert({
-                    headerText: "Notice"
-                    , messageText: "กรุณาเลือกสายสองสายขึ้นไป"
-                    , alertType: "info"
-                , });
+                    headerText: "Notice",
+                    messageText: "กรุณาเลือกสายสองสายขึ้นไป",
+                    alertType: "info",
+                });
             } else {
                 let chan = []
                 $('input[name="call[]"]:checked').each(function() {
@@ -700,17 +700,17 @@
 
                             if (status == 'success') {
                                 const prom = ezBSAlert({
-                                    headerText: "OK"
-                                    , messageText: "ประชุมสายสำเร็จ"
-                                    , alertType: "success"
-                                , });
+                                    headerText: "OK",
+                                    messageText: "ประชุมสายสำเร็จ",
+                                    alertType: "success",
+                                });
                             } else {
 
                                 const prom = ezBSAlert({
-                                    headerText: "Error"
-                                    , messageText: "ประชุมสาย ไม่สำเร็จ"
-                                    , alertType: "danger"
-                                , });
+                                    headerText: "Error",
+                                    messageText: "ประชุมสาย ไม่สำเร็จ",
+                                    alertType: "danger",
+                                });
                             }
                         });
                     });
@@ -720,10 +720,10 @@
             }
         } else {
             const prom = ezBSAlert({
-                headerText: "Notice"
-                , messageText: "กรุณาเลือกสายที่จะประชุม"
-                , alertType: "info"
-            , });
+                headerText: "Notice",
+                messageText: "กรุณาเลือกสายที่จะประชุม",
+                alertType: "info",
+            });
 
         }
 
@@ -735,21 +735,21 @@
         //if (!confirm("ยืนยันการวางสาย?")) return;
         let rowid = $(this).data("id")
         ezBSAlert({
-            type: "confirm"
-            , headerText: "Confirm"
-            , messageText: "ยืนยันการวางสาย?"
-            , alertType: "info"
-        , }).done(function(e) {
+            type: "confirm",
+            headerText: "Confirm",
+            messageText: "ยืนยันการวางสาย?",
+            alertType: "info",
+        }).done(function(e) {
             if (e == true) {
                 if (!rowid) return;
                 let chan = rowid.split("/");
 
                 $.get(`${api_serv}/hangup/` + chan[1], (data, status) => {
                     const prom = ezBSAlert({
-                        headerText: "OK"
-                        , messageText: "วางสายสำเร็จ"
-                        , alertType: "success"
-                    , });
+                        headerText: "OK",
+                        messageText: "วางสายสำเร็จ",
+                        alertType: "success",
+                    });
                 });
             }
 
@@ -849,5 +849,4 @@
         @php
     }
     @endphp
-
 </script>

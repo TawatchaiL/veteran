@@ -273,7 +273,7 @@
     }
 
 
-   /*  $(document).ready(function() {
+    /*  $(document).ready(function() {
         $("#btnAlert").on("click", function() {
             var prom = ezBSAlert({
                 messageText: "hello world",
