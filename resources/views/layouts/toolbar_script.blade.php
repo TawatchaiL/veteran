@@ -695,7 +695,7 @@
                     $.get(`${api_serv}/chans_variable/` + chan[1], (data2, status2) => {
                         mcalldestchan = data[3][1].split("/");
                         mcalldestchan2 = data2[3][1].split("/");
-                        $.get(`${event_serv}/conf/` + mcalldestchan[1] + "/" + mcalldestchan2[
+                        $.get(`${api_serv}/conf/` + mcalldestchan[1] + "/" + mcalldestchan2[
                             1] + "/" + chan[1] + "/" + exten, (data, status) => {
 
                             if (status == 'success') {
