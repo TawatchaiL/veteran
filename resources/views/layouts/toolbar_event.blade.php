@@ -1,6 +1,6 @@
-<script src="{{ config('asterisk.event_serv.address') }}/socket.io/socket.io.js"></script>
+<script src="{{ config('asterisk.toolbar_serv.address') }}/socket.io/socket.io.js"></script>
 <script>
-    const socket = io.connect(`${event_serv}`);
+    const socket = io.connect(`${toolbar_serv}`);
     socket.on('connect', data => {
         socket.emit('join', 'Client Connect To Asterisk Event Serv');
     });

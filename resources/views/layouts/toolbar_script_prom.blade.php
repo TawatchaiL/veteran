@@ -1,10 +1,10 @@
 <script>
-    const web_url = '{{ url(' / ') }}';
+    const web_url = '{{ url('/') }}';
     const agent_username = '{{ $temporaryPhone }}';
     const exten = '{{ $temporaryPhone }}';
     const account_code = exten;
-    const event_serv = '{{ config('
-    asterisk.event_serv.address ') }}';
+    const toolbar_serv = '{{ config('asterisk.toolbar_serv.address') }}';
+    const api_serv = '{{ config('asterisk.api_serv.address') }}';
     let obj = {};
 
     const dial_number = $('#dial_number');

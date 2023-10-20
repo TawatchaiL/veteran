@@ -3,7 +3,8 @@
     const agent_username = '{{ $temporaryPhone }}';
     const exten = '{{ $temporaryPhone }}';
     const account_code = exten;
-    const event_serv = '{{ config('asterisk.event_serv.address') }}';
+    const toolbar_serv = '{{ config('asterisk.toolbar_serv.address') }}';
+    const api_serv = '{{ config('asterisk.api_serv.address') }}';
     let obj = {};
 
     const dial_number = $('#dial_number');
@@ -642,7 +643,7 @@
     dial_button.click(function() {
         let call_number = dial_number.val();
         if (call_number !== '') {
-            $.get(`${event_serv}/dial/` + call_number + "/" + exten + "/" + account_code, (data, status) => {
+            $.get(`${api_serv}/dial/` + call_number + "/" + exten + "/" + account_code, (data, status) => {
                 if (status == 'success') {
                     const prom = ezBSAlert({
                         headerText: "OK"
@@ -690,8 +691,8 @@
                     chan.push(bv[1]);
                 });
 
-                $.get(`${event_serv}/chans_variable/` + chan[0], (data, status) => {
-                    $.get(`${event_serv}/chans_variable/` + chan[1], (data2, status2) => {
+                $.get(`${api_serv}/chans_variable/` + chan[0], (data, status) => {
+                    $.get(`${api_serv}/chans_variable/` + chan[1], (data2, status2) => {
                         mcalldestchan = data[3][1].split("/");
                         mcalldestchan2 = data2[3][1].split("/");
                         $.get(`${event_serv}/conf/` + mcalldestchan[1] + "/" + mcalldestchan2[
@@ -743,7 +744,7 @@
                 if (!rowid) return;
                 let chan = rowid.split("/");
 
-                $.get(`${event_serv}/hangup/` + chan[1], (data, status) => {
+                $.get(`${api_serv}/hangup/` + chan[1], (data, status) => {
                     const prom = ezBSAlert({
                         headerText: "OK"
                         , messageText: "วางสายสำเร็จ"
@@ -767,13 +768,13 @@
         let calls_active = 0;
 
 
-        $.get(`${event_serv}/chans/` + exten, async (data, status) => {
+        $.get(`${api_serv}/chans/` + exten, async (data, status) => {
 
             await data.forEach((item, index) => {
                 let strArray = item.split("!");
                 let chan = strArray[0].split("/");
 
-                $.get(`${event_serv}/chans_variable/` + chan[1], (data, status) => {
+                $.get(`${api_serv}/chans_variable/` + chan[1], (data, status) => {
 
                     luniq = data[0][1];
                     luniqrd = luniq.replace('.', '');
