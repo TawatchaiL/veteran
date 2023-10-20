@@ -18,6 +18,7 @@
             url: '{{ route('contacts.popup') }}',
             type: 'get',
             success: function(response) {
+                console.log(response)
                 removeAllTabs();
 
                 $('#custom-tabs-pop').prepend(response.tab_link);
