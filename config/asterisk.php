@@ -14,8 +14,14 @@ return [
         'eccp_user' => env('ECCP_USER', 'agentconsole'),
         'eccp_password' => env('ECCP_PASSWORD', 'agentconsole'),
     ],
-    'event_serv' => [
-        'address' => env('EVENT_SERV_ADDRESS', 'http://10.148.0.4:3000'),
+    'toolbar_serv' => [
+        'address' => env('TOOLBAR_SERV_ADDRESS', 'http://10.148.0.4:3001'),
+    ],
+    'api_serv' => [
+        'address' => env('API_SERV_ADDRESS', 'http://10.148.0.4:3000'),
+    ],
+    'dashboard_serv' => [
+        'address' => env('DASHBOARD_SERV_ADDRESS', 'http://10.148.0.4:3002'),
     ],
     'gateway' => [
         'name' => env('GATEWAY_NAME', 'rsiippbx'),
