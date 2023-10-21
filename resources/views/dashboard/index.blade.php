@@ -49,14 +49,14 @@
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="row float-lg-left">
-                        <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="col-xs-4 col-sm-4 col-md-4">
 
                         </div>
                     </div>
                     <div class="row float-lg-right">
-                        <div class="col-xs-4 col-sm-4 col-md-4">
+                        <div class="col-xs-8 col-sm-8 col-md-8">
 
-                            <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <strong><i class="fa-regular fa-keyboard"></i>
                                         Queue:</strong>
