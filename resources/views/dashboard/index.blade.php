@@ -16,12 +16,14 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-3" style="text-align: right;">
-                    <label for="redirectSelect">Queue:</label>
-                    <select id="redirectSelect" class="custom-select form-control-border">
-                        @foreach ($queue as $queueItem)
-                            <option value="{{ $queueItem->extension }}">{{ $queueItem->descr }}</option>
-                        @endforeach
-                    </select>
+                    <div class="form-group">
+                        <label for="redirectSelect">Queue:</label>
+                        <select id="redirectSelect" class="custom-select form-control-border">
+                            @foreach ($queue as $queueItem)
+                                <option value="{{ $queueItem->extension }}">{{ $queueItem->descr }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
