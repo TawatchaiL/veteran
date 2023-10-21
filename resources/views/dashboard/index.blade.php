@@ -31,7 +31,7 @@
 
     <section class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
+
                 {{--   <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item">
                         <div class="form-group row">
@@ -76,7 +76,7 @@
                     </div>
 
                 </div>
-            </div>
+
     </section>
 
     <section class="content">
