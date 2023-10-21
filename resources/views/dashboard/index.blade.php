@@ -31,52 +31,21 @@
 
     <section class="content-header">
         <div class="container-fluid">
-
-                {{--   <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item">
-                        <div class="form-group row">
-                            <label for="redirectSelect" class="col-sm-4 col-form-label">Queue:</label>
-                            <div class="col-sm-6">
-                                <select id="redirectSelect" class="custom-select form-control-border">
-                                    @foreach ($queue as $queueItem)
-                                        <option value="{{ $queueItem->extension }}">{{ $queueItem->descr }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </li>
-                </ol> --}}
-
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="row float-lg-left">
-                        <div class="col-xs-4 col-sm-4 col-md-4">
-
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item">
+                    <div class="form-group row">
+                        <label for="redirectSelect" class="col-sm-4 col-form-label text-sm-end">Queue:</label>
+                        <div class="col-sm-6">
+                            <select id="redirectSelect" class="custom-select form-control-border">
+                                @foreach ($queue as $queueItem)
+                                    <option value="{{ $queueItem->extension }}">{{ $queueItem->descr }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
-                    <div class="row float-lg-right">
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-
-                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                <div class="form-group">
-                                    <strong><i class="fa-regular fa-keyboard"></i>
-                                        Queue:</strong>
-                                    <select id="redirectSelect" class="custom-select form-control-border">
-                                        @foreach ($queue as $queueItem)
-                                            <option value="{{ $queueItem->extension }}">{{ $queueItem->descr }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-xs-2 col-sm-2 col-md-2">
-                                <strong>&nbsp;</strong>
-                                <button type="button" class="form-control btn btn-success" id="btnsearch">
-                                    <i class="fas fa-search"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
+                </li>
+            </ol>
+        </div>
     </section>
 
     <section class="content">
