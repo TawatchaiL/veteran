@@ -50,7 +50,7 @@
 <body class="hold-transition layout-top-nav layout-fixed layout-footer-fixed">
     <div class="wrapper">
         <!-- Main Header -->
-        @include('layouts.header')
+        @include('layouts.header_dashboard')
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper main_content">
