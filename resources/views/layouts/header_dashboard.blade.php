@@ -10,8 +10,8 @@
                 <b class="text-primary"> หน้าหลัก </b> ]
             </a></li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link" data-widget="fullscreen">
-                <i class="fas fa-xl fa-expand-arrows-alt"></i> <b class="text-primary">ขยาย/ย่อ หน้าจอ</b>
+            <a class="nav-link" data-widget="fullscreen"> [
+                <i class="fas fa-xl fa-expand-arrows-alt"></i> <b class="text-primary">ขยาย/ย่อ หน้าจอ</b> ]
             </a>
         </li>
     </ul>
@@ -20,8 +20,8 @@
 
         <li>
             <div class="form-group row">
-                <label for="redirectSelect" class="col-sm-4 col-form-label text-sm-end"> <b
-                        class="text-primary">Queue:</b></label>
+                <label for="redirectSelect" class="col-sm-4 col-form-label text-sm-end"> <i
+                        class="fa-solid fa-arrow-up-1-9"></i> <b class="text-primary">Queue:</b></label>
                 <div class="col-sm-8">
                     <select id="redirectSelect" class="custom-select form-control-border">
                         @foreach ($queue as $queueItem)
