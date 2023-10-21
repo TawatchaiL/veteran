@@ -31,20 +31,22 @@
 
     <section class="content-header">
         <div class="container-fluid">
-            <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item">
-                    <div class="form-group row">
-                        <label for="redirectSelect" class="col-sm-4 col-form-label">Queue:</label>
-                        <div class="col-sm-6">
-                            <select id="redirectSelect" class="custom-select form-control-border">
-                                @foreach ($queue as $queueItem)
-                                    <option value="{{ $queueItem->extension }}">{{ $queueItem->descr }}</option>
-                                @endforeach
-                            </select>
+            <div class="col-12">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item">
+                        <div class="form-group row">
+                            <label for="redirectSelect" class="col-sm-4 col-form-label">Queue:</label>
+                            <div class="col-sm-6">
+                                <select id="redirectSelect" class="custom-select form-control-border">
+                                    @foreach ($queue as $queueItem)
+                                        <option value="{{ $queueItem->extension }}">{{ $queueItem->descr }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                </li>
-            </ol>
+                    </li>
+                </ol>
+            </div>
         </div>
     </section>
 
