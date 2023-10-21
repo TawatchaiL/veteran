@@ -15,7 +15,7 @@
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-12" style="text-align: right;">
+                <div class="col-sm-3" style="text-align: right;">
                     <label for="redirectSelect">Queue:</label>
                     <select id="redirectSelect" class="custom-select form-control-border">
                         @foreach ($queue as $queueItem)
