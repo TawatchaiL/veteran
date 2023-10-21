@@ -45,8 +45,9 @@
                             </div>
                         </div>
                     </li>
+
+                </ol>
             </div>
-            </ol>
         </div>
     </section>
 
