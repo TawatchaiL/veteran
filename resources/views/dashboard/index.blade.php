@@ -12,22 +12,15 @@
         <img id="signature-image" src="" alt="Signature Image">
     </div> --}}
 
-    {{--  <section class="content-header">
+    <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-3" style="text-align: right;">
-                    <div class="form-group">
-                        <label for="redirectSelect">Queue:</label>
-                        <select id="redirectSelect" class="custom-select form-control-border">
-                            @foreach ($queue as $queueItem)
-                                <option value="{{ $queueItem->extension }}">{{ $queueItem->descr }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+
                 </div>
             </div>
         </div>
-    </section> --}}
+    </section>
     <section class="content">
         <div class="container-fluid">
             <div class="row">
