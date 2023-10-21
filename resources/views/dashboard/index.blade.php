@@ -34,8 +34,9 @@
             <div class="row mb-2">
                 <div class="col-sm-12">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"> <label for="redirectSelect">Queue:</label></li>
-                        <li class="breadcrumb-item active"><select id="redirectSelect"
+                        <li class="breadcrumb-item">
+                            <label for="redirectSelect">Queue:</label>
+                            <select id="redirectSelect"
                                 class="custom-select form-control-border">
                                 @foreach ($queue as $queueItem)
                                     <option value="{{ $queueItem->extension }}">{{ $queueItem->descr }}</option>
