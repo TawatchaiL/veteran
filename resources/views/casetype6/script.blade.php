@@ -339,6 +339,7 @@
             var parent_id = $(this).val();
             var nextcase = levcase + 1;
             var discase = nextcase + 1;
+            alert('OK');
             if (parent_id != '' && levcase < 6) {
                 for (let i = nextcase; i < 7; i++) {
                     if (i === 2) {
