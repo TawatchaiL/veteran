@@ -33,7 +33,7 @@
                 } else {
                     status = `<span style="font-size: 1em; color: #ff9900;">
                     <i class="fa-solid fa-user-clock"></i></span> พักสาย ( ${res.pausedreason} )`
-                    state_dur =duration_time(res.lastpause);
+                    state_dur = duration_time(res.lastpause);
                 }
             } else if (res.status == 6) {
                 status = `<span style="font-size: 1em; color: red;">
@@ -47,13 +47,14 @@
             } else if (res.status == 1) {
                 status = `<span style="font-size: 1em; color: green;">
                     <i class="fa-solid fa-user-check"></i></span> พร้อมรับสาย`
-                    state_dur =duration_time(res.lastcall);
+                state_dur = duration_time(res.lastcall);
 
             }
 
             $('#' + res.name + '_status').html(status);
             $('#' + res.name + '_phone').html(phone_status);
-            $('#' + res.name + '_queue').html(res.queue);state_dur
+            $('#' + res.name + '_queue').html(res.queue);
+            state_dur
             $('#' + res.name + '_duration').html(state_dur);
         }
 
@@ -85,19 +86,20 @@
             queue: storedOption,
         });
     }, 1000); */
+
     let duration_time = (timestamp) => {
         let presentTimestamp = Math.floor(Date.now() / 1000);
-
-        // Calculate the difference in seconds
         let timeDifference = presentTimestamp - timestamp;
 
-        // Convert the time difference into hours, minutes, and seconds
         let hours = Math.floor(timeDifference / 3600);
         let minutes = Math.floor((timeDifference % 3600) / 60);
         let seconds = timeDifference % 60;
 
-        // Create a string to represent the duration
-        let duration = `${hours}:${minutes}:${seconds}`;
+        let formattedHours = String(hours).padStart(2, '0');
+        let formattedMinutes = String(minutes).padStart(2, '0');
+        let formattedSeconds = String(seconds).padStart(2, '0');
+
+        const duration = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
         return duration;
     }
 
