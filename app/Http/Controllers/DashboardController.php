@@ -52,6 +52,7 @@ class DashboardController extends Controller
 
         $html = ''; // Initialize an empty string to store the HTML
 
+        $x = 1;
         if (!$agents->isEmpty()) {
             foreach ($agents as $agent) {
                 // Assuming you have access to the relevant agent data like $agent_name_array
@@ -59,7 +60,7 @@ class DashboardController extends Controller
                 $agentName = $agent_name_array[$agent->agent_id] ?? 'Unknown'; // Replace 'Unknown' with a default value if needed
 
                 $html .= '<tr id="' . $agentName . '">
-                    <td>' . $agent->id . '</td>
+                    <td>' . $x . '</td>
                     <td>' . $agent->phone . '</td>
                     <td><i class="fa-solid fa-user"></i> ' . $agent->name . '</td>
                     <td><i class="fas fa-power-off status-icon offline"></i>
@@ -70,6 +71,7 @@ class DashboardController extends Controller
                     <td></td>
                     <td><img src="' . asset('images/pauseagent.gif') . '"><img src="' . asset('images/logout-icon.png') . '"></td>
                 </tr>';
+                $x++;
             }
         }
     }
