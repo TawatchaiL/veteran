@@ -122,7 +122,8 @@
 
     let duration_miltime = (timestamp) => {
         let presentTimestamp = Math.floor(Date.now() / 1000);
-        let timeDifference = presentTimestamp - (timestamp/1000);
+        let milltodec = (timestamp / 1000);
+        let timeDifference = presentTimestamp - milltodec;
 
         let hours = Math.floor(timeDifference / 3600);
         let minutes = Math.floor((timeDifference % 3600) / 60);
