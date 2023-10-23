@@ -376,8 +376,10 @@
                 });
 
                 $('#casetype' + nextcase).attr('disabled', false);
+                $('#AddName2' + nextcase).attr('disabled', false);
                 for (let i = discase; i < 7; i++) {
                     $('#casetype' + i).attr('disabled', true);
+                    $('#AddName2' + i).attr('disabled', false);
                 }
             } else {
                 for (let i = nextcase; i < 7; i++) {
