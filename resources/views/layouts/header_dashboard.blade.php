@@ -25,7 +25,7 @@
                 <div class="col-sm-6">
                     <select id="redirectSelect" class="custom-select form-control-border">
                         @foreach ($queue as $queueItem)
-                            <option value="{{ $queueItem->extension }}">{{ $queueItem->descr }}</option>
+                            <option value="{{ $queueItem->extension }}">{{ $queueItem->extension }} ({{ $queueItem->descr }})</option>
                         @endforeach
                     </select>
                 </div>
