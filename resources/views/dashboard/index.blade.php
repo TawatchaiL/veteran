@@ -307,11 +307,11 @@
                                                         <thead>
                                                             <tr>
                                                                 <th>#</th>
-                                                                <th>หมายเลข Agent</th>
                                                                 <th>ชื่อ Agent</th>
+                                                                <th>หมายเลข Agent</th>
                                                                 <th>สถานะ</th>
-                                                                <th>หมายเลขผู้โทร</th>
                                                                 <th>ระยะเวลา</th>
+                                                                <th>หมายเลขผู้โทร</th>
                                                                 <th>Queue</th>
                                                                 <th></th>
                                                             </tr>

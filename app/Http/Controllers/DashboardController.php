@@ -61,13 +61,13 @@ class DashboardController extends Controller
 
                 $html .= '<tr id="' . $agentName . '">
                     <td>' . $x . '</td>
-                    <td>' . $agent->phone . '</td>
                     <td><i class="fa-solid fa-user"></i> ' . $agent->name . '</td>
+                    <td>' . $agent->phone . '</td>
                     <td><i class="fas fa-power-off status-icon offline"></i>
                         <font class="offline">Offline</font>
                     </td>
-                    <td></td>
                     <td>00:00:00</td>
+                    <td></td>
                     <td></td>
                     <td><img src="' . asset('images/pauseagent.gif') . '"><img src="' . asset('images/logout-icon.png') . '"></td>
                 </tr>';

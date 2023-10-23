@@ -1,39 +1,39 @@
 <script type="module">
+    let get_agent = () => {
+        $.ajax({
+            url: '{{ route('dashboard.agent_list') }}',
+            type: 'post',
+            data: {
+                queue: selectedOption,
+                _token: token,
+            },
+            success: function(response) {
+                console.log(response);
+                $('#agent_list tbody').html(response.html);
+            },
+            error: function(xhr, status, error) {
+                // Handle errors
+            }
+        });
+    }
     $(document).ready(() => {
         const selectElement = $('#redirectSelect');
-
-        // Check if a selected option is stored in local storage
         const storedOption = localStorage.getItem('selectedOption');
 
         if (storedOption) {
-            // If a stored option exists, set it as the selected value
             selectElement.val(storedOption);
         }
 
-        // Add an event listener to update local storage when an option is selected
+        get_agent();
+
         selectElement.on('change', () => {
             const selectedOption = selectElement.val();
             if (selectedOption) {
                 localStorage.setItem('selectedOption',
-                selectedOption); // Store the selected option in local storage
+                    selectedOption);
             }
 
-            // Pass the selected option to the server using a POST request
-            $.ajax({
-                url: '{{ route('dashboard.agent_list') }}',
-                type: 'post',
-                data: {
-                    queue: selectedOption,
-                    _token: token,
-                }, // Include selectedOption as a data parameter
-                success: function(response) {
-                    console.log(response);
-                    $('#agent_list tbody').html(response.html);
-                },
-                error: function(xhr, status, error) {
-                    // Handle errors
-                }
-            });
+            get_agent();
         });
     });
 </script>
