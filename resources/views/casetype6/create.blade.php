@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6">
-                        <div class="form-group" id=typelev1>
+                        <div class="form-group" id="typelev1">
                             <strong><i class="fas fa-list-ol"></i> ประเภทเคส:</strong>
                             {!! Form::text('name1', null, ['id' => 'AddName1', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                         </div>
@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6">
-                        <div class="form-group" id=typelev2>
+                        <div class="form-group" id="typelev2">
                             <strong><i class="fas fa-list-ol"></i> รายละเอียดเคส:</strong>
                             {!! Form::text('name2', null, ['id' => 'AddName2', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                         </div>
@@ -78,7 +78,7 @@
                         </div>
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6">
-                        <div class="form-group">
+                        <div class="form-group" id="typelev3">
                             <strong><i class="fas fa-list-ol"></i> รายละเอียดเคสย่อย:</strong>
                             {!! Form::text('name3', null, ['id' => 'AddName3', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                         </div>
@@ -96,7 +96,7 @@
                         </div>
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6">
-                        <div class="form-group">
+                        <div class="form-group" id="typelev4">
                             <strong><i class="fas fa-list-ol"></i> รายละเอียดเคส
                                 เพิ่มเติม 1:</strong>
                             {!! Form::text('name4', null, ['id' => 'AddName4', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
@@ -115,7 +115,7 @@
                         </div>
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6">
-                        <div class="form-group">
+                        <div class="form-group" id="typelev5">
                             <strong><i class="fas fa-list-ol"></i> รายละเอียดเคส
                                 เพิ่มเติม 2:</strong>
                             {!! Form::text('name5', null, ['id' => 'AddName5', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
@@ -134,7 +134,7 @@
                         </div>
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6">
-                        <div class="form-group">
+                        <div class="form-group" id="typelev6">
                             <strong><i class="fas fa-list-ol"></i> รายละเอียดเคส
                                 เพิ่มเติม 3:</strong>
                             {!! Form::text('name6', null, ['id' => 'AddName6', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
