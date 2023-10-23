@@ -120,10 +120,15 @@
         return duration;
     }
 
-    let duration_miltime = (timestamp) => {
+    let duration_miltime = (timestampMilliseconds) => {
+        // Get the current timestamp for the present time (in seconds)
         let presentTimestamp = Math.floor(Date.now() / 1000);
-        let milltodec = (timestamp / 1000);
-        let timeDifference = presentTimestamp - milltodec;
+
+        // Convert the provided timestamp in milliseconds to seconds
+        let timestampSeconds = timestampMilliseconds / 1000;
+
+        // Calculate the time difference in seconds
+        let timeDifference = presentTimestamp - timestampSeconds;
 
         let hours = Math.floor(timeDifference / 3600);
         let minutes = Math.floor((timeDifference % 3600) / 60);
