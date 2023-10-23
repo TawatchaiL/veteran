@@ -17,7 +17,8 @@
         if (res.queue == storedOption) {
             let exts = res.location.split('/');
             if (res.status == 5 || res.status == 0) {
-                phone_status = '<u> ' + exts[1] + ' </u>'
+                phone_status = `<span style="font-size: 1em; color: red;">
+                    <i class="fa-solid fa-triangle-exclamation"></i></span> ` + exts[1]
                 status = 'โทรศัพท์ไม่พร้อมใช้งาน'
             } else {
                 phone_status = exts[1]
@@ -26,13 +27,17 @@
             if (res.paused == 1) {
                 status = 'พักสาย ( ' + res.pausedreason + ' )'
             } else if (res.status == 6) {
-                status = 'สายเรียก'
+                status = `<span style="font-size: 1em; color: red;">
+                    <i class="fa-solid fa-bell"></i></span> กำลังรอสาย`
             } else if (res.status == 2) {
-                status = 'กำลังสนทนา'
+                status = `<span style="font-size: 1em; color: red;">
+                    <i class="fa-solid fa-phone-volume"></i></span> กำลังสนทนา`
             } else if (res.status == 8) {
-                status = 'กำลังพักสาย'
+                status = `<span style="font-size: 1em; color: yellow;">
+                    <i class="fa-solid fa-phone-volume"></i></span> กำลังพักสาย`
             } else if (res.status == 1) {
-                status = 'พร้อมรับสาย'
+                status = `<span style="font-size: 1em; color: green;">
+                    <i class="fa-solid fa-phone-volume"></i></span> พร้อมรับสาย`
             }
 
             $('#' + res.name + '_status').html(status);
