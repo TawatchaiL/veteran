@@ -9,7 +9,7 @@
     });
 
     setInterval(() => {
-        io.sockets.emit('getqueue', {
+        sockets.emit('getqueue', {
             queue: storedOption,
         })
     }, 1000)
