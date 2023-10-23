@@ -73,6 +73,10 @@ class DashboardController extends Controller
                 </tr>';
                 $x++;
             }
+
         }
+        return response()->json([
+            'html' => $html
+        ]);
     }
 }
