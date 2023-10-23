@@ -302,7 +302,7 @@
                                                 </div>
 
                                                 <div class="card-body table-responsive p-0">
-                                                    <table
+                                                    <table id="agent_list"
                                                         class="table table-striped table-bordered table-hover text-nowrap">
                                                         <thead>
                                                             <tr>
@@ -317,58 +317,7 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td>1234</td>
-                                                                <td><i class="fa-solid fa-user"></i> Agent1</td>
-                                                                <td><i class="fas fa-power-off status-icon offline"></i>
-                                                                    <font class="offline">Offline</font>
-                                                                </td>
-                                                                <td></td>
-                                                                <td>00:00:00</td>
-                                                                <td></td>
-                                                                <td><img src="{{ asset('images/pauseagent.gif') }}"><img
-                                                                        src="{{ asset('images/logout-icon.png') }}"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>2</td>
-                                                                <td>1235</td>
-                                                                <td><i class="fa-solid fa-user"></i> Agent2</td>
-                                                                <td> <i class="fas fa-power-off status-icon offline"></i>
-                                                                    <font class="offline">Offline</font>
-                                                                </td>
-                                                                <td></td>
-                                                                <td>00:00:00</td>
-                                                                <td></td>
-                                                                <td><img src="{{ asset('images/pauseagent.gif') }}"><img
-                                                                        src="{{ asset('images/logout-icon.png') }}"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>3</td>
-                                                                <td>1236</td>
-                                                                <td><i class="fa-solid fa-user"></i> Agent3</td>
-                                                                <td><i class="fa-solid fa-plug status-icon online"></i>
-                                                                    <font class="online">Online</font>
-                                                                </td>
-                                                                <td></td>
-                                                                <td>00:00:00</td>
-                                                                <td></td>
-                                                                <td><img src="{{ asset('images/pauseagent.gif') }}"><img
-                                                                        src="{{ asset('images/logout-icon.png') }}"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>4</td>
-                                                                <td>1237</td>
-                                                                <td><i class="fa-solid fa-user"></i> Agent4</td>
-                                                                <td> <i class="fas fa-power-off status-icon offline"></i>
-                                                                    <font class="offline">Offline</font>
-                                                                </td>
-                                                                <td></td>
-                                                                <td>00:00:00</td>
-                                                                <td></td>
-                                                                <td><img src="{{ asset('images/pauseagent.gif') }}"><img
-                                                                        src="{{ asset('images/logout-icon.png') }}"></td>
-                                                            </tr>
+
                                                         </tbody>
                                                     </table>
                                                 </div>

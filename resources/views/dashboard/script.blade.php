@@ -28,6 +28,7 @@
                 }, // Include selectedOption as a data parameter
                 success: function(response) {
                     console.log(response);
+                    $('#agent_list tbody').html(response.html);
                 },
                 error: function(xhr, status, error) {
                     // Handle errors

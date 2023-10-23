@@ -46,11 +46,30 @@ class DashboardController extends Controller
             $agent_name_array[$agent->id] = $agent->name;
         }
 
-        $agents = User::where('queue', 'LIKE', '%' . $request->get('queue') . '%')->get();
+        $agents = User::where('queue', 'LIKE', '%' . $request->get('queue') . '%')
+            ->orderBy('id', 'asc')
+            ->get();
+
+        $html = ''; // Initialize an empty string to store the HTML
 
         if (!$agents->isEmpty()) {
             foreach ($agents as $agent) {
-                dd($agent_name_array[$agent->agent_id]);
+                // Assuming you have access to the relevant agent data like $agent_name_array
+
+                $agentName = $agent_name_array[$agent->agent_id] ?? 'Unknown'; // Replace 'Unknown' with a default value if needed
+
+                $html .= '<tr id="' . $agentName . '">
+                    <td>' . $agent->id . '</td>
+                    <td>' . $agent->phone . '</td>
+                    <td><i class="fa-solid fa-user"></i> ' . $agent->name . '</td>
+                    <td><i class="fas fa-power-off status-icon offline"></i>
+                        <font class="offline">Offline</font>
+                    </td>
+                    <td></td>
+                    <td>00:00:00</td>
+                    <td></td>
+                    <td><img src="' . asset('images/pauseagent.gif') . '"><img src="' . asset('images/logout-icon.png') . '"></td>
+                </tr>';
             }
         }
     }
