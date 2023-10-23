@@ -379,10 +379,10 @@
                 $('#AddName' + nextcase).attr('disabled', false);
                 $('#typelev' + nextcase).show();
                 
-                if(levcase > 1){
-                    $('#typelev' + levcase).hide();
-                }else{
+                if(levcase == 1 && parent_id == ''){
                     $('#typelev1').show();
+                }else{
+                    $('#typelev' + levcase).hide();
                 }
                 
                 for (let i = discase; i < 7; i++) {
