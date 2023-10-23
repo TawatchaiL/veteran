@@ -2,9 +2,17 @@
 <script>
     const dashboard_serv = '{{ config('asterisk.dashboard_serv.address') }}';
     const socket = io.connect(`${dashboard_serv}`);
+    const storedOption = localStorage.getItem('selectedOption');
+
     socket.on('connect', data => {
         socket.emit('join', 'Client Connect To Asterisk Event Serv');
     });
+
+    setInterval(() => {
+        io.sockets.emit('getqueue', {
+            queue: storedOption,
+        })
+    }, 1000)
 
     let get_agent = (selectedOption) => {
         $.ajax({
@@ -25,7 +33,6 @@
     }
     $(document).ready(() => {
         const selectElement = $('#redirectSelect');
-        const storedOption = localStorage.getItem('selectedOption');
 
         if (storedOption) {
             selectElement.val(storedOption);
