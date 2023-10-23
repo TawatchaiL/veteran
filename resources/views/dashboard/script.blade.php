@@ -36,8 +36,10 @@
                     state_dur = duration_time(res.lastpause);
                 }
             } else if (res.status == 6) {
+                let ring_cid = localStorage.getItem(res.name + '_rid_cid');
                 status = `<span style="font-size: 1em; color: red;">
                     <i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i></span> กำลังรอสาย`
+                $('#' + res.membername + '_src').html(ring_cid);
             } else if (res.status == 2) {
                 status = `<span style="font-size: 1em; color: red;">
                     <i class="fa-solid fa-phone-volume fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังสนทนา`
@@ -48,11 +50,11 @@
                 console.log(res.lastpause)
                 status = `<span style="font-size: 1em; color: green;">
                     <i class="fa-solid fa-user-check"></i></span> พร้อมรับสาย`
-                    if (res.lastpause=='0') {
-                        state_dur = duration_time(res.lastcall);
-                    } else {
-                        state_dur = duration_time(res.lastpause);
-                    }
+                if (res.lastpause == '0') {
+                    state_dur = duration_time(res.lastcall);
+                } else {
+                    state_dur = duration_time(res.lastpause);
+                }
             }
 
             $('#' + res.name + '_status').html(status);
@@ -87,6 +89,8 @@
     socket.on('agentcalled', async (response) => {
         console.log(response)
         let res = response.data;
+        localStorage.setItem(MemberName + '_ring_cid',
+            res.calleridnum);
         //timestamp
         $('#' + res.membername + '_src').html(res.calleridnum);
     });
