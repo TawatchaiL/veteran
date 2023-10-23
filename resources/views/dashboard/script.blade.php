@@ -4,15 +4,15 @@
     const socket = io.connect(`${dashboard_serv}`);
     const storedOption = localStorage.getItem('selectedOption');
 
-    socket.on('connect', data => {
+    socket.on('connect', () => {
         socket.emit('join', 'Client Connect To Asterisk Event Serv');
     });
 
     setInterval(() => {
-        sockets.emit('getqueue', {
+        socket.emit('getqueue', {
             queue: storedOption,
-        })
-    }, 1000)
+        });
+    }, 1000);
 
     let get_agent = (selectedOption) => {
         $.ajax({
