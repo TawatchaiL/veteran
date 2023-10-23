@@ -377,11 +377,11 @@
 
                 $('#casetype' + nextcase).attr('disabled', false);
                 $('#AddName2' + nextcase).attr('disabled', false);
-                $('#casetype' + i).show();
+                $('#AddName2' + i).show();
                 for (let i = discase; i < 7; i++) {
                     $('#casetype' + i).attr('disabled', true);
                     $('#AddName' + i).attr('disabled', true);
-                    $('#casetype' + i).hide();
+                    $('#AddName' + i).hide();
                 }
             } else {
                 for (let i = nextcase; i < 7; i++) {
