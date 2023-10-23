@@ -36,7 +36,7 @@
                     state_dur = duration_time(res.lastpause);
                 }
             } else if (res.status == 6) {
-                let ring_cid = localStorage.getItem(res.name + '_rid_cid');
+                let ring_cid = localStorage.getItem(res.name + '_ring_cid');
                 status = `<span style="font-size: 1em; color: red;">
                     <i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i></span> กำลังรอสาย`
                 $('#' + res.name + '_src').html(ring_cid);
