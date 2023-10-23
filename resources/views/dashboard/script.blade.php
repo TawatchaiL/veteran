@@ -41,7 +41,7 @@
                 status = `<span style="font-size: 1em; color: red;">
                     <i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i></span> กำลังรอสาย`
                 $('#' + res.name + '_src').html(ring_cid);
-                state_dur = duration_time(ring_time);
+                state_dur = duration_miltime(ring_time);
             } else if (res.status == 2) {
                 status = `<span style="font-size: 1em; color: red;">
                     <i class="fa-solid fa-phone-volume fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังสนทนา`
@@ -119,6 +119,23 @@
         const duration = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
         return duration;
     }
+
+    let duration_miltime = (timestamp) => {
+        let presentTimestamp = Math.floor(Date.now() / 1000);
+        let timeDifference = presentTimestamp - (timestamp/1000);
+
+        let hours = Math.floor(timeDifference / 3600);
+        let minutes = Math.floor((timeDifference % 3600) / 60);
+        let seconds = timeDifference % 60;
+
+        let formattedHours = String(hours).padStart(2, '0');
+        let formattedMinutes = String(minutes).padStart(2, '0');
+        let formattedSeconds = String(seconds).padStart(2, '0');
+
+        const duration = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+        return duration;
+    }
+
 
     let get_agent = (selectedOption) => {
         $.ajax({
