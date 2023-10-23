@@ -37,9 +37,11 @@
                 }
             } else if (res.status == 6) {
                 let ring_cid = localStorage.getItem(res.name + '_ring_cid');
+                let ring_time = localStorage.getItem(res.name + '_ring_time');
                 status = `<span style="font-size: 1em; color: red;">
                     <i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i></span> กำลังรอสาย`
                 $('#' + res.name + '_src').html(ring_cid);
+                state_dur = duration_time(ring_time);
             } else if (res.status == 2) {
                 status = `<span style="font-size: 1em; color: red;">
                     <i class="fa-solid fa-phone-volume fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังสนทนา`
@@ -91,7 +93,8 @@
         let res = response.data;
         localStorage.setItem(res.membername + '_ring_cid',
             res.calleridnum);
-        //timestamp
+        localStorage.setItem(res.membername + '_ring_time',
+            res.timestamp);
         $('#' + res.membername + '_src').html(res.calleridnum);
     });
 
