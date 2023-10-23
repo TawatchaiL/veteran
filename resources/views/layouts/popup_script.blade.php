@@ -97,7 +97,7 @@
                             method: 'GET',
                             async: false,
                             success: function(res) {
-                                alert(res.datax.datac[0].length);
+                                alert(res.datax.datac.fname);
                                 if (res.datax.datac.length > 0) {
                                     $('#phonenosuccess' + cardId).html(
                                         '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ' +
