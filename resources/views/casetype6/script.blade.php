@@ -382,7 +382,7 @@
                 if(levcase > 1){
                     $('#typelev' + levcase).hide();
                 }else{
-                    $('#typelev' + levcase).show();
+                    $('#typelev1').show();
                 }
                 
                 for (let i = discase; i < 7; i++) {
