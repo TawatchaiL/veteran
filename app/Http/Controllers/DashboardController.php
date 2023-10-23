@@ -31,4 +31,24 @@ class DashboardController extends Controller
         return view('dashboard.index')->with(['sidebarc' => $sidebarc])
             ->with(['queue' => $queue]);
     }
+
+
+    public function getAgentList(Request $request)
+    {
+        $agents = DB::connection('mysql')
+            ->table('users')
+            ->join('remote_connection.call_center.agent', 'users.agent_id', '=', 'agent.id')
+            ->select('users.*', 'callcenter.agent.*') // Use the table alias 'callcenter.agent' to avoid column name conflicts
+            ->where('users.queue', 'LIKE', '%' . $request->get('queue') . '%')
+            ->get();
+
+        // Now, $agents contains the result of the join across local and remote databases.
+        dd($agents);
+
+        if (!$agents->isEmpty()) {
+            foreach ($agents as $agent) {
+                // Process the $agent data as needed
+            }
+        }
+    }
 }

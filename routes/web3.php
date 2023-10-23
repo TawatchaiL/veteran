@@ -35,4 +35,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/tranfer', [App\Http\Controllers\PBXController::class, 'call_tranfer'])->name('tranfer');
     Route::post('/agent_kick', [App\Http\Controllers\PBXController::class, 'AgentKick'])->name('agent.kick');
     Route::post('/pause_list', [App\Http\Controllers\PBXController::class, 'pause_list'])->name('pause_list');
+
+    Route::get('/agent_list', [App\Http\Controllers\DashboardController::class, 'getAgentList'])->name('dashboard.agent_list');
 });
