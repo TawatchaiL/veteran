@@ -12,7 +12,6 @@
         console.log(data)
         $('#' + data.data.name + '_status').html(data.data.status);
     });
-    queuemember
 
     /* setInterval(() => {
         socket.emit('getqueue', {
