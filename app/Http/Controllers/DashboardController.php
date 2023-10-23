@@ -35,8 +35,7 @@ class DashboardController extends Controller
 
     public function getAgentList(Request $request)
     {
-        $agents = DB::connection('mysql')
-            ->table('users')
+        $agents = DB::table('users')
             ->join('remote_connection.call_center.agent', 'users.agent_id', '=', 'call_center.agent.id')
             ->select('users.*', 'callcenter.agent.*')
             ->where('users.queue', 'LIKE', '%' . $request->get('queue') . '%')
