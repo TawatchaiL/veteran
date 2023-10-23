@@ -378,11 +378,11 @@
                 $('#casetype' + nextcase).attr('disabled', false);
                 $('#AddName' + nextcase).attr('disabled', false);
                 $('#typelev' + nextcase).show();
-                alert(parent_id);
-                if(parent_id === ''){
-                    $('#typelev' + levcase).show();
-                }else{
+
+                if(parent_id != ''){
                     $('#typelev' + levcase).hide();
+                }else{
+                    $('#typelev' + levcase).show();
                 }
                 
                 for (let i = discase; i < 7; i++) {
