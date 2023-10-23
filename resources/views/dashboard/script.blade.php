@@ -12,16 +12,28 @@
         //console.log(response)
         const storedOption = localStorage.getItem('selectedOption');
         let res = response.data;
-        let status;
+        let status = '';
+        let phone_status = '';
         if (res.queue == storedOption) {
             let exts = res.location.split('/');
+            if (res.status == 5 || res.status == 0) {
+                phone_status = exts[1] + ' โทรศัพท์ไม่พร้อม'
+            } else {
+                phone_status = exts[1]
+            }
+
             if (res.paused == 1) {
                 status = 'พักสาย ( ' + res.pausedreason + ' )'
-            } else if (res.incall == 1) {
-                status = 'สายเข้า' + res.status
+            } else if (res.status == 6) {
+                status = 'สายเรียก'
+            } else if (res.status == 2) {
+                status = 'กำลังสนทนา'
+            } else if (res.status == 8) {
+                status = 'กำลังพักสาย'
             } else if (res.status == 1) {
                 status = 'พร้อมรับสาย'
             }
+
             $('#' + res.name + '_status').html(status);
             $('#' + res.name + '_phone').html(exts[1]);
             $('#' + res.name + '_queue').html(res.queue);
