@@ -42,7 +42,7 @@ class DashboardController extends Controller
             ->where('users.queue', 'LIKE', '%' . $request->get('queue') . '%')
             ->get();
 
-        // Now, $agents contains the result of the join across local and remote databases.
+        /// Now, $agents contains the result of the join across local and remote databases.
         dd($agents);
 
         if (!$agents->isEmpty()) {
