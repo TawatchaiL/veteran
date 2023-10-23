@@ -376,8 +376,8 @@
                 });
 
                 $('#casetype' + nextcase).attr('disabled', false);
-                $('#AddName2' + nextcase).attr('disabled', false);
-                $('#AddName2' + nextcase).show();
+                $('#AddName' + nextcase).attr('disabled', false);
+                $('#AddName' + nextcase).show();
                 for (let i = discase; i < 7; i++) {
                     $('#casetype' + i).attr('disabled', true);
                     $('#AddName' + i).attr('disabled', true);
