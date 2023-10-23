@@ -24,7 +24,7 @@
             selectElement.val(storedOption);
         }
 
-        get_agent(selectedOption);
+        get_agent(storedOption);
 
         selectElement.on('change', () => {
             const selectedOption = selectElement.val();
