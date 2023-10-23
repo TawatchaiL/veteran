@@ -339,6 +339,7 @@
             var parent_id = $(this).val();
             var nextcase = levcase + 1;
             var discase = nextcase + 1;
+            alert('OK');
             if (parent_id != '' && levcase < 6) {
                 for (let i = nextcase; i < 7; i++) {
                     if (i === 2) {
@@ -376,12 +377,12 @@
                 });
 
                 $('#casetype' + nextcase).attr('disabled', false);
-                $('#AddName2' + nextcase).attr('disabled', false);
-                $('#AddName2' + i).show();
+                $('#AddName' + nextcase).attr('disabled', false);
+                $('#typelev' + nextcase).show();
                 for (let i = discase; i < 7; i++) {
                     $('#casetype' + i).attr('disabled', true);
                     $('#AddName' + i).attr('disabled', true);
-                    $('#AddName' + i).hide();
+                    $('#typelev' + i).hide();
                 }
             } else {
                 for (let i = nextcase; i < 7; i++) {
@@ -405,6 +406,7 @@
                             '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
                     }
                     $('#casetype' + i).attr('disabled', true);
+                    $('#typelev' + i).hide();
                 }
             }
         });
