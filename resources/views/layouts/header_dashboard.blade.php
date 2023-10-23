@@ -20,7 +20,7 @@
         <li class="nav-item d-sm-inline-block">
             <div class="form-group row">
                 <label for="redirectSelect" class="col-sm-4 col-form-label text-sm-end"> <i
-                        class="fa-solid fa-xl fa-arrow-up-1-9"></i> <b class="text-primary">Queue </b></label>
+                        class="fa-solid fa-xl fa-arrow-up-1-9"></i> </label>
                 <div class="col-sm-8">
                     <select id="redirectSelect" class="custom-select form-control-border">
                         @foreach ($queue as $queueItem)
