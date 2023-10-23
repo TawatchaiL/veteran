@@ -335,10 +335,10 @@
         //        alert('OK');
         //});
         $(document).on("change", ".casetype6chang", function() {
-            var levcase = $(this).data("lev");
-            var parent_id = $(this).val();
-            var nextcase = levcase + 1;
-            var discase = nextcase + 1;
+            let levcase = $(this).data("lev");
+            let parent_id = $(this).val();
+            let nextcase = levcase + 1;
+            let discase = nextcase + 1;
             if (parent_id != '' && levcase < 6) {
                 for (let i = nextcase; i < 7; i++) {
                     if (i === 2) {
