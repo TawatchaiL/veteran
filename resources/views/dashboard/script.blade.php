@@ -125,7 +125,7 @@
         let presentTimestamp = Math.floor(Date.now() / 1000);
 
         // Convert the provided timestamp in milliseconds to seconds
-        let timestampSeconds = timestampMilliseconds / 1000;
+        let timestampSeconds = Math.floor(timestampMilliseconds);
 
         // Calculate the time difference in seconds
         let timeDifference = presentTimestamp - timestampSeconds;
