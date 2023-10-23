@@ -118,6 +118,8 @@
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
+            $('.form').trigger('reset');
+
             $.ajax({
                 url: "casetype6/casetype/0",
                 method: 'GET',
