@@ -43,8 +43,12 @@
                 $('#' + res.name + '_src').html(ring_cid);
                 state_dur = duration_miltime(ring_time);
             } else if (res.status == 2) {
+                let ans_cid = localStorage.getItem(res.name + '_ans_cid');
+                let ans_time = localStorage.getItem(res.name + '_ans_time');
                 status = `<span style="font-size: 1em; color: red;">
                     <i class="fa-solid fa-phone-volume fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังสนทนา`
+                $('#' + res.name + '_src').html(ans_cid);
+                state_dur = duration_miltime(ans_time);
             } else if (res.status == 8) {
                 status = `<span style="font-size: 1em; color: #ff9900;">
                     <i class="fa-solid fa-user-clock fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังพักสาย`
@@ -97,6 +101,17 @@
             res.timestamp);
         $('#' + res.membername + '_src').html(res.calleridnum);
     });
+
+    socket.on('agentconnect', async (response) => {
+        console.log(response)
+        let res = response.data;
+        localStorage.setItem(res.membername + '_ans_cid',
+            res.calleridnum);
+        localStorage.setItem(res.membername + '_ans_time',
+            Math.floor(Date.now() / 1000));
+        $('#' + res.membername + '_src').html(res.calleridnum);
+    });
+
 
     /* setInterval(() => {
         socket.emit('getqueue', {
