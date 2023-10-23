@@ -38,7 +38,7 @@ class DashboardController extends Controller
         $agents = DB::connection('mysql')
             ->table('users')
             ->join('remote_connection.call_center.agent', 'users.agent_id', '=', 'call_center.agent.id')
-            ->select('users.*', 'callcenter.agent.*') // Use the table alias 'callcenter.agent' to avoid column name conflicts
+            ->select('users.*', 'callcenter.agent.*')
             ->where('users.queue', 'LIKE', '%' . $request->get('queue') . '%')
             ->get();
 
