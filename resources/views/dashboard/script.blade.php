@@ -18,7 +18,7 @@
             if (res.paused == 1) {
                 status = 'พักสาย ( ' + res.pausedreason + ' )'
             } else if (res.incall == 1) {
-                status = 'สายเข้า'
+                status = 'สายเข้า' + res.status
             } else if (res.status == 1) {
                 status = 'พร้อมรับสาย'
             }
