@@ -47,14 +47,16 @@
             } else if (res.status == 1) {
                 status = `<span style="font-size: 1em; color: green;">
                     <i class="fa-solid fa-user-check"></i></span> พร้อมรับสาย`
-                state_dur = duration_time(res.lastcall);
-
+                    if (res.lastpause=='0') {
+                        state_dur = duration_time(res.lastcall);
+                    } else {
+                        state_dur = duration_time(res.lastpause);
+                    }
             }
 
             $('#' + res.name + '_status').html(status);
             $('#' + res.name + '_phone').html(phone_status);
             $('#' + res.name + '_queue').html(res.queue);
-            state_dur
             $('#' + res.name + '_duration').html(state_dur);
         }
 
@@ -79,6 +81,10 @@
             $('#' + res.name + '_queue').html(res.queue);
         } */
 
+    });
+
+    socket.on('agentcalled', async (response) => {
+        console.log(response)
     });
 
     /* setInterval(() => {
