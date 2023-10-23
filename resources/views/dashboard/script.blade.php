@@ -1,5 +1,5 @@
 <script type="module">
-    let get_agent = () => {
+    let get_agent = (selectedOption) => {
         $.ajax({
             url: '{{ route('dashboard.agent_list') }}',
             type: 'post',
@@ -24,7 +24,7 @@
             selectElement.val(storedOption);
         }
 
-        get_agent();
+        get_agent(selectedOption);
 
         selectElement.on('change', () => {
             const selectedOption = selectElement.val();
@@ -33,7 +33,7 @@
                     selectedOption);
             }
 
-            get_agent();
+            get_agent(selectedOption);
         });
     });
 </script>
