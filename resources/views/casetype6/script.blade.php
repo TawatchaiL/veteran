@@ -334,7 +334,77 @@
         //$('#casetype'+1).on('change', function() {
         //        alert('OK');
         //});
+        $(document).on("change", ".casetype6chang", function() {
+            var cardId = $(this).data("tabid");
+            var levcase = $(this).data("lev");
+            var parent_id = $(this).val();
+            var nextcase = levcase + 1;
+            var discase = nextcase + 1;
+            if (parent_id != '' && levcase < 6) {
+                for (let i = nextcase; i < 7; i++) {
+                    if (i === 2) {
+                        $('#casetype2p' + cardId).html('<option value="">เลือกรายละเอียดเคส</option>');
+                    }
+                    if (i === 3) {
+                        $('#casetype3p' + cardId).html(
+                            '<option value="">เลือกรายละเอียดเคสย่อย</option>');
+                    }
+                    if (i === 4) {
+                        $('#casetype4p' + cardId).html(
+                            '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
+                    }
+                    if (i === 5) {
+                        $('#casetype5p' + cardId).html(
+                            '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
+                    }
+                    if (i === 6) {
+                        $('#casetype6p' + cardId).html(
+                            '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
+                    }
+                }
+                $.ajax({
+                    url: "casetype6/casetype/" + parent_id,
+                    method: 'GET',
+                    async: false,
+                    success: function(res) {
+                        $.each(res.data, function(index, item) {
+                            $('#casetype' + nextcase + 'p' + cardId).append(
+                                $('<option></option>').val(item.id)
+                                .html(item.name)
+                            );
+                        });
+                    }
+                });
 
+                $('#casetype' + nextcase + 'p' + cardId).attr('disabled', false);
+                for (let i = discase; i < 7; i++) {
+                    $('#casetype' + i + 'p' + cardId).attr('disabled', true);
+                }
+            } else {
+                for (let i = nextcase; i < 7; i++) {
+                    if (i === 2) {
+                        $('#casetype2p' + cardId).html('<option value="">เลือกรายละเอียดเคส</option>');
+                    }
+                    if (i === 3) {
+                        $('#casetype3p' + cardId).html(
+                            '<option value="">เลือกรายละเอียดเคสย่อย</option>');
+                    }
+                    if (i === 4) {
+                        $('#casetype4p' + cardId).html(
+                            '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
+                    }
+                    if (i === 5) {
+                        $('#casetype5p' + cardId).html(
+                            '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
+                    }
+                    if (i === 6) {
+                        $('#casetype6p' + cardId).html(
+                            '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
+                    }
+                    $('#casetype' + i + 'p' + cardId).attr('disabled', true);
+                }
+            }
+        });
     });
 
     $('#casetype1').on('change', function() {
