@@ -34,10 +34,10 @@
                     <i class="fa-solid fa-phone-volume"></i></span> กำลังสนทนา`
             } else if (res.status == 8) {
                 status = `<span style="font-size: 1em; color: yellow;">
-                    <i class="fa-solid fa-phone-volume"></i></span> กำลังพักสาย`
+                    <i class="fa-solid fa-user-clock"></i></span> กำลังพักสาย`
             } else if (res.status == 1) {
                 status = `<span style="font-size: 1em; color: green;">
-                    <i class="fa-solid fa-phone-volume"></i></span> พร้อมรับสาย`
+                    <i class="fa-solid fa-user-check"></i></span> พร้อมรับสาย`
             }
 
             $('#' + res.name + '_status').html(status);
