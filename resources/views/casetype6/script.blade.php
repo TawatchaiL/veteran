@@ -379,8 +379,8 @@
                 $('#AddName2' + nextcase).attr('disabled', false);
                 for (let i = discase; i < 7; i++) {
                     $('#casetype' + i).attr('disabled', true);
-                    $('#AddName2' + i).attr('disabled', true);
-                    $('#typelev2' + i).hide();
+                    $('#AddName' + i).attr('disabled', true);
+                    $('#typelev' + i).hide();
                 }
             } else {
                 for (let i = nextcase; i < 7; i++) {
