@@ -85,6 +85,9 @@
 
     socket.on('agentcalled', async (response) => {
         console.log(response)
+        let res = response.data;
+        //timestamp
+        $('#' + res.membername + '_src').html(res.calleridnum);
     });
 
     /* setInterval(() => {
