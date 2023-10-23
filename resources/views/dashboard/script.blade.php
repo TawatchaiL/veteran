@@ -25,16 +25,22 @@
             }
 
             if (res.paused == 1) {
-                status = 'พักสาย ( ' + res.pausedreason + ' )'
+                if (res.pausedreason == 'Warp UP') {
+                    status = `<span style="font-size: 1em; color: #ff9900;">
+                        <i class="fa-solid fa-user-pen"></i></span> Warp UP`
+                } else {
+                    status = `<span style="font-size: 1em; color: #ff9900;">
+                    <i class="fa-solid fa-user-clock"></i></span> พักสาย ( ${res.pausedreason} )`
+                }
             } else if (res.status == 6) {
                 status = `<span style="font-size: 1em; color: red;">
-                    <i class="fa-solid fa-bell"></i></span> กำลังรอสาย`
+                    <i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i></span> กำลังรอสาย`
             } else if (res.status == 2) {
                 status = `<span style="font-size: 1em; color: red;">
-                    <i class="fa-solid fa-phone-volume"></i></span> กำลังสนทนา`
+                    <i class="fa-solid fa-phone-volume fa-beat" style="--fa-beat-scale: 2.0;"></i></span> กำลังสนทนา`
             } else if (res.status == 8) {
-                status = `<span style="font-size: 1em; color: yellow;">
-                    <i class="fa-solid fa-user-clock"></i></span> กำลังพักสาย`
+                status = `<span style="font-size: 1em; color: #ff9900;">
+                    <i class="fa-solid fa-user-clock fa-beat" style="--fa-beat-scale: 2.0;"></i></span> กำลังพักสาย`
             } else if (res.status == 1) {
                 status = `<span style="font-size: 1em; color: green;">
                     <i class="fa-solid fa-user-check"></i></span> พร้อมรับสาย`
