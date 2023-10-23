@@ -97,8 +97,8 @@
                             method: 'GET',
                             async: false,
                             success: function(res) {
-                                alert(res.datax.datac.length);
-                                if (res.datax.datac.length > 0) {
+                                //alert(res.datax.datac.length);
+                                //if (res.datax.datac.length > 0) {
                                     $('#phonenosuccess' + cardId).html(
                                         '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ' +
                                         res.datax.datac.fname +
@@ -218,7 +218,7 @@
                                                         '" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
                                                     )));
                                     });
-                                }
+                                //}
                             }
                         });
 
