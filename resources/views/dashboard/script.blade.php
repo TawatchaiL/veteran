@@ -10,6 +10,7 @@
 
     socket.on('queuemember', async (data) => {
         console.log(data)
+        $('#' + data.data.name + '_status').html(data.data.status);
     });
     queuemember
 
