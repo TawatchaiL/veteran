@@ -9,7 +9,7 @@
     });
 
     socket.on('queuemember', async (response) => {
-        console.log(response)
+        //console.log(response)
         const storedOption = localStorage.getItem('selectedOption');
         let res = response.data;
         let status;
@@ -26,6 +26,27 @@
             $('#' + res.name + '_phone').html(exts[1]);
             $('#' + res.name + '_queue').html(res.queue);
         }
+
+    });
+
+    socket.on('queuememberstatus', async (response) => {
+        console.log(response)
+        /* const storedOption = localStorage.getItem('selectedOption');
+        let res = response.data;
+        let status;
+        if (res.queue == storedOption) {
+            let exts = res.location.split('/');
+            if (res.paused == 1) {
+                status = 'พักสาย ( ' + res.pausedreason + ' )'
+            } else if (res.incall == 1) {
+                status = 'สายเข้า' + res.status
+            } else if (res.status == 1) {
+                status = 'พร้อมรับสาย'
+            }
+            $('#' + res.name + '_status').html(status);
+            $('#' + res.name + '_phone').html(exts[1]);
+            $('#' + res.name + '_queue').html(res.queue);
+        } */
 
     });
 
