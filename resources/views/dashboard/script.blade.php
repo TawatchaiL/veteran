@@ -17,7 +17,8 @@
         if (res.queue == storedOption) {
             let exts = res.location.split('/');
             if (res.status == 5 || res.status == 0) {
-                phone_status = exts[1] + ' โทรศัพท์ไม่พร้อม'
+                phone_status = '<u> ' + exts[1] + ' </u>'
+                status = 'โทรศัพท์ไม่พร้อมใช้งาน'
             } else {
                 phone_status = exts[1]
             }
@@ -35,7 +36,7 @@
             }
 
             $('#' + res.name + '_status').html(status);
-            $('#' + res.name + '_phone').html(exts[1]);
+            $('#' + res.name + '_phone').html(phone_status);
             $('#' + res.name + '_queue').html(res.queue);
         }
 
