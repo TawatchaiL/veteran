@@ -11,10 +11,12 @@
     socket.on('queuemember', async (response) => {
         console.log(response)
         const storedOption = localStorage.getItem('selectedOption');
-        if (response.data.queue==storedOption) {
-            $('#' + response.data.name + '_status').html(response.data.status);
-            $('#' + response.data.name + '_phone').html(response.data.status);
-            $('#' + response.data.name + '_queue').html(response.data.queue);
+        let res = response.data;
+        if (res.queue == storedOption) {
+            let exts = res.location.split('/');
+            $('#' + res.name + '_status').html(res.status);
+            $('#' + res.name + '_phone').html(exts[1]);
+            $('#' + res.name + '_queue').html(res.queue);
         }
 
     });
