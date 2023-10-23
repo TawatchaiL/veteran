@@ -190,7 +190,7 @@ class ContactController extends Controller
                 ->get();
             $data = [
                 'datac' => $datac[0],
-                'emer' => $emer,
+                'emer' => $emer
             ];
             return response()->json(['datax' => $data]);
         } else {
@@ -201,12 +201,6 @@ class ContactController extends Controller
     public function popup()
     {
         $user = Auth::user();
-        //$datac = DB::table('crm_incoming')
-        //    ->where('agentno', '=', $user->phone)
-        //    ->orWhere('status', '=', "0")
-        //    ->orWhere('status', '=', "1")
-        //    ->orderBy('id', 'desc')
-        //    ->get();
 
         $datac = DB::table('crm_incoming')
             ->orderBy('id', 'desc')
