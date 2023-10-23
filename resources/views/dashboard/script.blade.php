@@ -45,6 +45,7 @@
                 status = `<span style="font-size: 1em; color: #ff9900;">
                     <i class="fa-solid fa-user-clock fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังพักสาย`
             } else if (res.status == 1) {
+                console.log(res.lastpause)
                 status = `<span style="font-size: 1em; color: green;">
                     <i class="fa-solid fa-user-check"></i></span> พร้อมรับสาย`
                     if (res.lastpause=='0') {
