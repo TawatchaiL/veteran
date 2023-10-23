@@ -149,11 +149,11 @@
             $('#AddName4').attr('disabled', true);
             $('#AddName5').attr('disabled', true);
             $('#AddName6').attr('disabled', true);
-            $('#AddName2').hide();
-            $('#AddName3').hide();
-            $('#AddName4').hide();
-            $('#AddName5').hide();
-            $('#AddName6').hide();
+            $('#typelev2').hide();
+            $('#typelev3').hide();
+            $('#typelev4').hide();
+            $('#typelev5').hide();
+            $('#typelev6').hide();
             $('#CreateModal').modal('show');
         });
 
@@ -377,11 +377,11 @@
 
                 $('#casetype' + nextcase).attr('disabled', false);
                 $('#AddName' + nextcase).attr('disabled', false);
-                $('#AddName' + nextcase).show();
+                $('#typelev' + nextcase).show();
                 for (let i = discase; i < 7; i++) {
                     $('#casetype' + i).attr('disabled', true);
                     $('#AddName' + i).attr('disabled', true);
-                    $('#AddName' + i).hide();
+                    $('#typelev' + i).hide();
                 }
             } else {
                 for (let i = nextcase; i < 7; i++) {
@@ -405,6 +405,7 @@
                             '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
                     }
                     $('#casetype' + i).attr('disabled', true);
+                    $('#typelev' + i).hide();
                 }
             }
         });
