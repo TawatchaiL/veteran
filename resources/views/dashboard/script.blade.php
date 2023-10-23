@@ -39,7 +39,7 @@
                 let ring_cid = localStorage.getItem(res.name + '_rid_cid');
                 status = `<span style="font-size: 1em; color: red;">
                     <i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i></span> กำลังรอสาย`
-                $('#' + res.membername + '_src').html(ring_cid);
+                $('#' + res.name + '_src').html(ring_cid);
             } else if (res.status == 2) {
                 status = `<span style="font-size: 1em; color: red;">
                     <i class="fa-solid fa-phone-volume fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังสนทนา`
