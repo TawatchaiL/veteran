@@ -35,14 +35,13 @@ class DashboardController extends Controller
 
     public function getAgentList(Request $request)
     {
+        $agent_name = DB::connection('remote_connection')->table('call_center.agebt')->select('id', 'name')->get();
+        $agent_name_array[$agent_name->id] = $agent_name->name;
         $agents = User::where('queue', 'LIKE', '%' . $request->get('queue') . '%')->get();
-
-        /// Now, $agents contains the result of the join across local and remote databases.
-        dd($agents);
 
         if (!$agents->isEmpty()) {
             foreach ($agents as $agent) {
-                // Process the $agent data as needed
+               dd($agent_name_array[$agent->agent_id]);
             }
         }
     }
