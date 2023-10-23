@@ -8,11 +8,11 @@
         socket.emit('join', 'Client Connect To Asterisk Event Serv');
     });
 
-    setInterval(() => {
+    /* setInterval(() => {
         socket.emit('getqueue', {
             queue: storedOption,
         });
-    }, 1000);
+    }, 1000); */
 
     let get_agent = (selectedOption) => {
         $.ajax({
