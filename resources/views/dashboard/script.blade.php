@@ -23,7 +23,8 @@
                 url: '{{ route('dashboard.agent_list') }}',
                 type: 'post',
                 data: {
-                    queue: selectedOption
+                    queue: selectedOption,
+                    _token: token,
                 }, // Include selectedOption as a data parameter
                 success: function(response) {
                     console.log(response);
