@@ -19,9 +19,9 @@
     <ul class="navbar-nav ml-auto">
         <li class="nav-item d-sm-inline-block">
             <div class="form-group row">
-                <label for="redirectSelect" class="col-sm-4 col-form-label text-sm-end"> <i
-                        class="fa-solid fa-xl fa-arrow-up-1-9"></i> </label>
-                <div class="col-sm-8 nav-link">
+                <label for="redirectSelect" class="col-sm-2 col-form-label text-sm-end"> <i
+                        class="fas fa-xl fa-arrow-up-1-9"></i> </label>
+                <div class="col-sm-10">
                     <select id="redirectSelect" class="custom-select form-control-border">
                         @foreach ($queue as $queueItem)
                             <option value="{{ $queueItem->extension }}">{{ $queueItem->extension }} ({{ $queueItem->descr }})</option>
