@@ -149,11 +149,11 @@
             $('#AddName4').attr('disabled', true);
             $('#AddName5').attr('disabled', true);
             $('#AddName6').attr('disabled', true);
-            $('#typelev2').hide();
-            $('#typelev3').hide();
-            $('#typelev4').hide();
-            $('#typelev5').hide();
-            $('#typelev6').hide();
+            $('#AddName2').hide();
+            $('#AddName3').hide();
+            $('#AddName4').hide();
+            $('#AddName5').hide();
+            $('#AddName6').hide();
             $('#CreateModal').modal('show');
         });
 
