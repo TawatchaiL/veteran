@@ -37,10 +37,10 @@
                     <i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i></span> กำลังรอสาย`
             } else if (res.status == 2) {
                 status = `<span style="font-size: 1em; color: red;">
-                    <i class="fa-solid fa-phone-volume fa-beat" style="--fa-beat-scale: 2.0;"></i></span> กำลังสนทนา`
+                    <i class="fa-solid fa-phone-volume fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังสนทนา`
             } else if (res.status == 8) {
                 status = `<span style="font-size: 1em; color: #ff9900;">
-                    <i class="fa-solid fa-user-clock fa-beat" style="--fa-beat-scale: 2.0;"></i></span> กำลังพักสาย`
+                    <i class="fa-solid fa-user-clock fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังพักสาย`
             } else if (res.status == 1) {
                 status = `<span style="font-size: 1em; color: green;">
                     <i class="fa-solid fa-user-check"></i></span> พร้อมรับสาย`

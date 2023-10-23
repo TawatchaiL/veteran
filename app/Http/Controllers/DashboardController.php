@@ -62,13 +62,13 @@ class DashboardController extends Controller
                 $html .= '<tr id="' . $agentName . '">
                     <td>' . $x . '</td>
                     <td><i class="fa-solid fa-user"></i> ' . $agent->name . '</td>
-                    <td id="' . $agentName . '_phone">' . $agent->phone . '</td>
-                    <td id="' . $agentName . '_status"><i class="fas fa-power-off status-icon offline"></i>
-                        <font class="offline">Offline</font>
+                    <td style="text-align: center;" id="' . $agentName . '_phone">' . $agent->phone . '</td>
+                    <td id="' . $agentName . '_status"><i class="fa-solid fa-user-xmark status-icon offline"></i>
+                        <font class="offline">ไม่พร้อมรับสาย</font>
                     </td>
-                    <td id="' . $agentName . '_duration">00:00:00</td>
-                    <td id="' . $agentName . '_queue"></td>
-                    <td></td>
+                    <td style="text-align: center;" id="' . $agentName . '_duration">00:00:00</td>
+                    <td style="text-align: center;" id="' . $agentName . '_src"></td>
+                    <td style="text-align: center;" id="' . $agentName . '_queue"></td>
                     <td><img src="' . asset('images/pauseagent.gif') . '"><img src="' . asset('images/logout-icon.png') . '"></td>
                 </tr>';
                 $x++;
