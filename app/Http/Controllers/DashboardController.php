@@ -35,13 +35,22 @@ class DashboardController extends Controller
 
     public function getAgentList(Request $request)
     {
-        $agent_name = DB::connection('remote_connection')->table('call_center.agent')->select('id', 'name')->get();
-        $agent_name_array[$agent_name->id] = $agent_name->name;
+        $agent_names = DB::connection('remote_connection')
+            ->table('call_center.agent')
+            ->select('id', 'name')
+            ->get();
+
+        $agent_name_array = [];
+
+        foreach ($agent_names as $agent) {
+            $agent_name_array[$agent->id] = $agent->name;
+        }
+
         $agents = User::where('queue', 'LIKE', '%' . $request->get('queue') . '%')->get();
 
         if (!$agents->isEmpty()) {
             foreach ($agents as $agent) {
-               dd($agent_name_array[$agent->agent_id]);
+                dd($agent_name_array[$agent->agent_id]);
             }
         }
     }
