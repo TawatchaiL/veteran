@@ -92,12 +92,12 @@
                         $('#phonenosuccess' + cardId).html(
                             '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ผู้ติดต่อใหม่</h3>'
                         );
-                        
                         $.ajax({
                             url: "contacts/popupeditphone/" + telnop,
                             method: 'GET',
                             async: false,
-                            success: function(res) {alert('OK');
+                            success: function(res) {
+                                alert(res.datax.length);
                                 if (res.datax.length > 0) {
                                     $('#phonenosuccess' + cardId).html(
                                         '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ' +
