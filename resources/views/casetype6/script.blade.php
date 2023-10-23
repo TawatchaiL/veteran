@@ -378,9 +378,12 @@
                 $('#casetype' + nextcase).attr('disabled', false);
                 $('#AddName' + nextcase).attr('disabled', false);
                 $('#typelev' + nextcase).show();
-                //if(levcase > 1){
+                
+                if(levcase > 1){
                     $('#typelev' + levcase).hide();
-                //}
+                }else{
+                    $('#typelev' + levcase).show();
+                }
                 
                 for (let i = discase; i < 7; i++) {
                     $('#casetype' + i).attr('disabled', true);
