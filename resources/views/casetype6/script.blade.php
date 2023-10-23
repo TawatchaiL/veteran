@@ -343,22 +343,22 @@
             if (parent_id != '' && levcase < 6) {
                 for (let i = nextcase; i < 7; i++) {
                     if (i === 2) {
-                        $('#casetype2p' + cardId).html('<option value="">เลือกรายละเอียดเคส</option>');
+                        $('#casetype2' + cardId).html('<option value="">เลือกรายละเอียดเคส</option>');
                     }
                     if (i === 3) {
-                        $('#casetype3p' + cardId).html(
+                        $('#casetype3' + cardId).html(
                             '<option value="">เลือกรายละเอียดเคสย่อย</option>');
                     }
                     if (i === 4) {
-                        $('#casetype4p' + cardId).html(
+                        $('#casetype4' + cardId).html(
                             '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
                     }
                     if (i === 5) {
-                        $('#casetype5p' + cardId).html(
+                        $('#casetype5' + cardId).html(
                             '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
                     }
                     if (i === 6) {
-                        $('#casetype6p' + cardId).html(
+                        $('#casetype6' + cardId).html(
                             '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
                     }
                 }
@@ -376,32 +376,32 @@
                     }
                 });
 
-                $('#casetype' + nextcase + 'p' + cardId).attr('disabled', false);
+                $('#casetype' + nextcase + '' + cardId).attr('disabled', false);
                 for (let i = discase; i < 7; i++) {
-                    $('#casetype' + i + 'p' + cardId).attr('disabled', true);
+                    $('#casetype' + i + '' + cardId).attr('disabled', true);
                 }
             } else {
                 for (let i = nextcase; i < 7; i++) {
                     if (i === 2) {
-                        $('#casetype2p' + cardId).html('<option value="">เลือกรายละเอียดเคส</option>');
+                        $('#casetype2' + cardId).html('<option value="">เลือกรายละเอียดเคส</option>');
                     }
                     if (i === 3) {
-                        $('#casetype3p' + cardId).html(
+                        $('#casetype3' + cardId).html(
                             '<option value="">เลือกรายละเอียดเคสย่อย</option>');
                     }
                     if (i === 4) {
-                        $('#casetype4p' + cardId).html(
+                        $('#casetype4' + cardId).html(
                             '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
                     }
                     if (i === 5) {
-                        $('#casetype5p' + cardId).html(
+                        $('#casetype5' + cardId).html(
                             '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
                     }
                     if (i === 6) {
-                        $('#casetype6p' + cardId).html(
+                        $('#casetype6' + cardId).html(
                             '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
                     }
-                    $('#casetype' + i + 'p' + cardId).attr('disabled', true);
+                    $('#casetype' + i + '' + cardId).attr('disabled', true);
                 }
             }
         });
