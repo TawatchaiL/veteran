@@ -149,6 +149,11 @@
             $('#AddName4').attr('disabled', true);
             $('#AddName5').attr('disabled', true);
             $('#AddName6').attr('disabled', true);
+            $('#AddName2').hide();
+            $('#AddName3').hide();
+            $('#AddName4').hide();
+            $('#AddName5').hide();
+            $('#AddName6').hide();
             $('#CreateModal').modal('show');
         });
 
