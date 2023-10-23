@@ -89,7 +89,7 @@
     socket.on('agentcalled', async (response) => {
         console.log(response)
         let res = response.data;
-        localStorage.setItem(MemberName + '_ring_cid',
+        localStorage.setItem(res.membername + '_ring_cid',
             res.calleridnum);
         //timestamp
         $('#' + res.membername + '_src').html(res.calleridnum);
