@@ -190,7 +190,7 @@ class ContactController extends Controller
                 ->get();
             $data = [
                 'datac' => $datac[0],
-                'emer' => $emer,
+                'emer' => $emer
             ];
             return response()->json(['datax' => $data]);
         } else {
