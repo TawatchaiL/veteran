@@ -8,6 +8,11 @@
         socket.emit('join', 'Client Connect To Asterisk Event Serv');
     });
 
+    socket.on('queuemember', async (data) => {
+        console.log(data)
+    });
+    queuemember
+
     /* setInterval(() => {
         socket.emit('getqueue', {
             queue: storedOption,
