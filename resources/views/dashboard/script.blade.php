@@ -8,9 +8,14 @@
         socket.emit('join', 'Client Connect To Asterisk Event Serv');
     });
 
-    socket.on('queuemember', async (data) => {
-        console.log(data)
-        $('#' + data.data.name + '_status').html(data.data.status);
+    socket.on('queuemember', async (response) => {
+        console.log(response)
+        if (response.data.queue==storedOption) {
+            $('#' + response.data.name + '_status').html(response.data.status);
+            $('#' + response.data.name + '_phone').html(response.data.status);
+            $('#' + response.data.name + '_queue').html(response.data.queue);
+        }
+
     });
 
     /* setInterval(() => {
