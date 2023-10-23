@@ -1,4 +1,11 @@
-<script type="module">
+<script src="{{ config('asterisk.dashboard_serv.address') }}/socket.io/socket.io.js"></script>
+<script>
+    const dashboard_serv = '{{ config('asterisk.dashboard_serv.address') }}';
+    const socket = io.connect(`${toolbar_serv}`);
+    socket.on('connect', data => {
+        socket.emit('join', 'Client Connect To Asterisk Event Serv');
+    });
+
     let get_agent = (selectedOption) => {
         $.ajax({
             url: '{{ route('dashboard.agent_list') }}',
