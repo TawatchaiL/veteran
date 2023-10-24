@@ -172,11 +172,19 @@
         let html = '';
 
         dataArray.forEach((item) => {
+            let parsedNumber = parseInt(item.wait);
+            let hours = Math.floor(parsedNumber / 3600);
+            let minutes = Math.floor((parsedNumber % 3600) / 60);
+            let seconds = parsedNumber % 60;
+
+            let formattedTime =
+                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
             html += `
             <tr>
                 <td>${item.position}</td>
-                <td><i class="fa-solid fa-user-clock"></i> ${item.channel}</td>
-                <td>00:02:00</td>
+                <td><i class="fa-solid fa-user-clock"></i> ${item.calleridnum}</td>
+                <td>${formattedTime}</td>
             </tr>`;
         });
 
