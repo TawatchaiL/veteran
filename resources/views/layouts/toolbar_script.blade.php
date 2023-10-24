@@ -40,7 +40,7 @@
             autohide: true,
             zIndex: 99999999,
             fade: true,
-            delay: 12000
+            delay: 20000
         })
     }
 
@@ -54,7 +54,7 @@
             autohide: true,
             zIndex: 99999999,
             fade: true,
-            delay: 12000
+            delay: 20000
         })
     }
 
