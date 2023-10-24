@@ -20,9 +20,9 @@
         let ans_cid = '';
         let ans_time = '';
         let loginTime = '';
+        let exts = res.location.split('/');
 
         if (res.queue == storedOption) {
-            let exts = res.location.split('/');
             if (res.status == 5 || res.status == 0) {
                 phone_status = `<span style="font-size: 1em; color: red;">
                     <i class="fa-solid fa-triangle-exclamation"></i></span> ` + exts[1]
