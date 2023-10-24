@@ -13,7 +13,6 @@
     });
 
     socket.on('queueentry', async (response) => {
-        console.log(response)
         waitData[response.data.uniqueid] = response.data;
         $('#queue_wait').html(Object.keys(waitData).length);
     });

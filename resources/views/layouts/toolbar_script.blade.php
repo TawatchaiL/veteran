@@ -6,6 +6,7 @@
     const toolbar_serv = '{{ config('asterisk.toolbar_serv.address') }}';
     const api_serv = '{{ config('asterisk.api_serv.address') }}';
     let obj = {};
+    let waitData = {};
 
     const dial_number = $('#dial_number');
     const dial_button = $('#dial_button');
