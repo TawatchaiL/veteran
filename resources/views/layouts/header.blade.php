@@ -126,7 +126,7 @@
         @if (empty($sidebarc))
             <li class="nav-item d-none d-sm-inline-block">
                 <a class="nav-link icon-gray" href="#"><i class="fa-solid fa-xl fa-arrow-down-1-9"></i> สายรอคิว <b
-                        class="text-primary" id="queue_wait">0</b></a>
+                        class="text-primary" style="font-size: 2em" id="queue_wait">0</b></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
                 <a class="btn" id="ToolbarButton"><span id="phone_state_icon"
