@@ -6,8 +6,8 @@
     });
 
     socket.on('queuecallerjoin', async (response) => {
-        alert_danger('Alert', 'มีสายเข้าจาก '+response.data.calleridnum, '');
-        alert_danger('Alert', 'มีสายรอในคิว '+response.data.count, '');
+        alert_danger('Alert', 'มีสายเข้าจากหมายเลข ' + response.data.calleridnum, '');
+        alert_danger('Alert', 'มีสายรอในคิว ' + response.data.count + ' สาย', '');
     });
 
     socket.on('peerstatus', async (data) => {
