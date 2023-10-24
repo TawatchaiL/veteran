@@ -163,6 +163,7 @@
 
     socket.on('queueentry', async (response) => {
         waitData[response.data.uniqueid] = response.data;
+        console.log(waitData);
     });
 
     socket.on('queuecallerjoin', async (response) => {
