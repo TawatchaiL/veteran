@@ -335,11 +335,12 @@
         //        alert('OK');
         //});
         $(document).on("change", ".casetype6chang", function() {
-            alert('OK');
             let levcase = $(this).data("lev");
             let parent_id = $(this).val();
             let nextcase = levcase + 1;
             let discase = nextcase + 1;
+            alert('OK');
+            alert(parent_id);
             if (parent_id != '' && levcase < 6) {
                 for (let i = nextcase; i < 7; i++) {
                     if (i === 2) {
