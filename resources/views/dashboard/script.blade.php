@@ -202,7 +202,9 @@
     socket.on('queuecallerleave', async (response) => {
         const tableBody = $('#waiting_list tbody');
         await delete waitData[response.data.uniqueid];
-        tableBody.html('');
+        if (Object.keys(waitData).length === 0) {
+            tableBody.html('');
+        }
         console.log(waitData);
     });
 
