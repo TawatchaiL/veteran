@@ -216,7 +216,7 @@
             },
             success: function(response) {
                 response.agent_arr.forEach(element => {
-                    ccall_list(element);
+                    call_list(element);
                 });
                 $('#agent_list tbody').html(response.html);
 
