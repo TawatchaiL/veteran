@@ -162,17 +162,36 @@
     });
 
     socket.on('queueentry', async (response) => {
+        const storedOption = localStorage.getItem('selectedOption');
         waitData[response.data.uniqueid] = response.data;
+        console.log(waitData);
+
+        const tableBody = $('#waiting_list tbody');
 
         let dataArray = Object.values(waitData);
         dataArray.sort((a, b) => parseInt(a.position) - parseInt(b.position));
+
+        let html = '';
+
         dataArray.forEach((item) => {
-            $('#waiting_list tbody').append(`<tr>
-            <td>${item.position}</td>
-            <td><i class="fa-solid fa-user-clock"></i> 0819152998</td>
-            <td>00:02:00</td>
-            </tr>`);
+            let parsedNumber = parseInt(item.wait);
+            let hours = Math.floor(parsedNumber / 3600);
+            let minutes = Math.floor((parsedNumber % 3600) / 60);
+            let seconds = parsedNumber % 60;
+
+            let formattedTime =
+                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            if (item.queue == storedOption) {
+                html += `
+            <tr>
+                <td>${item.position}</td>
+                <td><i class="fa-solid fa-user-clock"></i> ${item.calleridnum}</td>
+                <td>${formattedTime}</td>
+            </tr>`;
+            }
         });
+
+        tableBody.html(html);
     });
 
     socket.on('queuecallerjoin', async (response) => {
@@ -181,7 +200,9 @@
     });
 
     socket.on('queuecallerleave', async (response) => {
+        const tableBody = $('#waiting_list tbody');
         await delete waitData[response.data.uniqueid];
+        tableBody.html('');
         console.log(waitData);
     });
 
