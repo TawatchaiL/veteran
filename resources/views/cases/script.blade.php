@@ -454,15 +454,11 @@
                     method: 'GET',
                     async: false,
                     success: function(data) {
-                        //alert(data.length);
-                        //var suggestions = JSON.parse(data);
                         var suggestionsList = $('#suggestions');
                         suggestionsList.empty();
-                        //suggestions.forEach(function(item) {
                             $.each(data, function(index, item) {
-                            suggestionsList.append('<li>HN ' + item.hn + ' ชื่อ-สกุล ' + item.fname + ' ' + item.fname + '</li>');
+                            suggestionsList.append('' + item.hn + ' ชื่อ-สกุล ' + item.fname + ' ' + item.fname + '');
                         });
-                        //});
 
                         suggestionsList.on('click', 'li', function() {
                             var myArray = $(this).text().split(" ชื่อ-สกุล ");
