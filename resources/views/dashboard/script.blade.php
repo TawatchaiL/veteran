@@ -162,6 +162,7 @@
     });
 
     socket.on('queueentry', async (response) => {
+        console.log(response);
         waitData[response.data.uniqueid] = response.data;
         console.log(waitData);
     });
