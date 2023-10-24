@@ -255,11 +255,33 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="custom-tabs-one-casedetailp{{$cardid}}" role="tabpanel"
-                        aria-labelledby="custom-tabs-one-casedetail-tabp{{$cardid}}">
-
-
-
+                    <div class="tab-pane fade" id="custom-tabs-one-casedetailp{{$cardid}}" role="tabpanel" aria-labelledby="custom-tabs-one-casedetail-tabp{{$cardid}}">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <table id="Listview" class="display nowrap table table-bordered table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>ประเภทเคส</th>
+                                            <th>รายละเอียดเคส</th>
+                                            <th>สถานะเคส</th>
+                                            <th>สถานะการโอนสาย</th>
+                                            <th>วันที่ทำรายการ</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($cases as $casesl)
+                                        <tr>
+                                            <td>{{ $casesl->casetype1 }}</td>
+                                            <td>{{ $casesl->casedetail }}</td>
+                                            <td>{{ $casesl->casestatus }}</td>
+                                            <td>{{ $casesl->tranferstatus }}</td>
+                                            <td>{{ $casesl->created_at }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>        
                     </div>
                     <div class="tab-pane fade" id="custom-tabs-one-casep{{$cardid}}" role="tabpanel"
                         aria-labelledby="custom-tabs-one-case-tabp{{$cardid}}">
