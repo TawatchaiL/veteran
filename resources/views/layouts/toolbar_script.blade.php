@@ -30,7 +30,7 @@
     const state_overlay = $('#state_overlay');
     const toolbar_card = $('#toolbar_card');
     const popup_tab_main = $('#popup_tab_main');
-
+    const elem_queue = document.getElementById("queue_wait");;
 
 
     let alert_danger = (title, message, subtitle) => {
@@ -108,7 +108,6 @@
     });
 
     const changeText = (text) => {
-        const elem_queue = $('#queue_wait');
         elem_queue.classList.add('hide_text');
         setTimeout(function() {
             elem_queue.innerHTML = text;
