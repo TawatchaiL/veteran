@@ -366,7 +366,6 @@ class ContactController extends Controller
 
     public function edit($id)
     {
-
         $datac = CrmContact::find($id);
         $emer = DB::table('crm_phone_emergencies')
             ->whereRaw('contact_id = ' . $id . '')
