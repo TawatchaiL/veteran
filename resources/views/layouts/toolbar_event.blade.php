@@ -12,6 +12,11 @@
             .data.position, '');
     });
 
+    socket.on('queueentry', async (response) => {
+        waitData[response.data.uniqueid] = response.data;
+        $('#queue_wait').html(Object.keys(waitData).length);
+    });
+
     socket.on('peerstatus', async (data) => {
         console.log(data);
         let peer = data.extension.split("/");
