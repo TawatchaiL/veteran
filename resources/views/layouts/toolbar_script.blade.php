@@ -34,7 +34,7 @@
         $(document).Toasts('create', {
             body: message,
             title: title,
-            class: 'bg-danger mr-2 mt-2',
+            class: 'bg-danger mr-2 mb-2',
             subtitle: subtitle,
             icon: 'fas fa-bell',
             autohide: true,
@@ -49,7 +49,7 @@
         $(document).Toasts('create', {
             body: message,
             title: title,
-            class: 'bg-success mr-2 mt-2',
+            class: 'bg-success mr-2 mb-2',
             subtitle: subtitle,
             icon: 'fas fa-bell',
             autohide: true,
