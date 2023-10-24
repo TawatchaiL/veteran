@@ -20,7 +20,7 @@
     socket.on('queuecallerleave', async (response) => {
         await delete waitData[response.data.uniqueid];
         if (Object.keys(waitData).length === 0) {
-            $('#waiting_total').html('0');
+            $('#queue_wait').html('0');
         }
         console.log(waitData);
     });
