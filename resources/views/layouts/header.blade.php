@@ -125,7 +125,8 @@
         @endphp
         @if (empty($sidebarc))
             <li class="nav-item d-none d-sm-inline-block">
-                <a class="nav-link icon-gray" href="#"><i class="fa-solid fa-xl fa-arrows-rotate"></i> สายรอคิว 0</a>
+                <a class="nav-link icon-gray" href="#"><i class="fa-solid fa-xl fa-arrows-rotate"></i> สายรอคิว <b
+                        class="text-primary">0</b></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
                 <a class="btn" id="ToolbarButton"><span id="phone_state_icon"
