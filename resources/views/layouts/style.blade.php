@@ -24,8 +24,13 @@
     }
 
 
-    #queuediv {
-        transition: opacity 400ms;
+    #queue_wait {
+        opacity: 1;
+        transition: opacity 0.5s;
+    }
+
+    .hide_text {
+        opacity: 0 !important;
     }
 
     *.text-toolbar {

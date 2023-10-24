@@ -30,8 +30,8 @@
     const state_overlay = $('#state_overlay');
     const toolbar_card = $('#toolbar_card');
     const popup_tab_main = $('#popup_tab_main');
-    const elem = document.getElementById("queuediv");
-const elemContainer = document.getElementById("queue_wait");
+    const elem_queue = document.getElementById("queue_wait");
+
 
     let alert_danger = (title, message, subtitle) => {
         $(document).Toasts('create', {
@@ -107,14 +107,13 @@ const elemContainer = document.getElementById("queue_wait");
         });
     });
 
-    function showText() {
-    elemContainer.style.opacity = 1;
-}
-function changeText(text) {
-    elemContainer.style.opacity = 0;
-    elem.innerHTML = text;
-    setTimeout (showText, 500);
+    function changeText(text) {
+        elem_queue.classList.add('hide_text');
+    setTimeout(function () {
+        elem_queue.innerHTML = text;
+        elem_queue.classList.remove('hide_text');
 
+    }, 500);
 }
 
     const updateUI = (result) => {
