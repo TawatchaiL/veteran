@@ -125,15 +125,14 @@
         @endphp
         @if (empty($sidebarc))
             <li class="nav-item d-none d-sm-inline-block">
+                <a class="nav-link icon-gray" href="#"><i class="fa-solid fa-xl fa-arrows-rotate"></i> สายรอคิว 0</a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
                 <a class="btn" id="ToolbarButton"><span id="phone_state_icon"
                         class="{{ $temporaryPhoneColor }}">{!! $temporaryPhoneStatusIcon !!}</span> <b id="phone_state"
                         class="{{ $temporaryPhoneColor }}">{{ $temporaryPhoneStatus }}</b> &nbsp;&nbsp;
                     <b><i class="fa-solid fa-xl icon-gray fa-circle-chevron-down"></i></b>
                 </a>
-            </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a class="nav-link"  href="#" ><i
-                    class="fas fa-xl fa-user"></i> สายรอคิว 0</a>
             </li>
         @endif
         @if (!empty($sidebarc))
