@@ -191,7 +191,7 @@
 
                         <div class="row">
 
-                            <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="col-xs-5 col-sm-5 col-md-5">
                                 <div class="form-group">
                                     <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์บ้าน:</strong>
                                     {!! Form::text('telhomep'.$cardid, null, [
@@ -202,9 +202,9 @@
                                     ]) !!}
                                 </div>
                             </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6"><i class="fa-regular fa-paste" style="position: absolute; bottom: 0;"></i>
+                            <div class="col-xs-1 col-sm-1 col-md-1"><i class="fa-regular fa-paste" style="position: absolute; bottom: 0;"></i>
                             </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="col-xs-5 col-sm-5 col-md-5">
                                 <div class="form-group">
                                     <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์มือถือ :</strong>
                                     {!! Form::text('phonenop'.$cardid, null, [
@@ -215,11 +215,11 @@
                                     ]) !!}
                                 </div>
                             </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6"><i class="fa-regular fa-paste" style="position: absolute; bottom: 0;"></i>
+                            <div class="col-xs-1 col-sm-1 col-md-1"><i class="fa-regular fa-paste" style="position: absolute; bottom: 0;"></i>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="col-xs-5 col-sm-5 col-md-5">
                                 <div class="form-group">
                                     <strong><i class="fas fa-phone"></i>
                                         เบอร์โทรศัพท์ที่ทำงาน:</strong>
@@ -231,7 +231,7 @@
                                     ]) !!}
                                 </div>
                             </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6"><i class="fa-regular fa-paste" style="position: absolute; bottom: 0;"></i>
+                            <div class="col-xs-1 col-sm-1 col-md-1"><i class="fa-regular fa-paste" style="position: absolute; bottom: 0;"></i>
                             </div>
                         </div>
                         <div class="row">
