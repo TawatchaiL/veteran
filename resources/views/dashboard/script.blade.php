@@ -21,7 +21,7 @@
                 let strArray = item.split("!");
                 let chan = strArray[0].split("/");
 
-                $.get(`${api_serv}/chans_variable/` + exten, (data, status) => {
+                $.get(`${api_serv}/chans_variable/` + chan[1], (data, status) => {
 
                     luniq = data[0][1];
                     luniqrd = luniq.replace('.', '');
@@ -31,23 +31,23 @@
                     mcalluniq = data[4][1];
 
                     if (strArray[4] == 'Ringing' || strArray[4] == 'Ring') {
-                        localStorage.setItem(exten + '_ring_cid',
+                        localStorage.setItem(chan[1] + '_ring_cid',
                             mcallexten);
-                        localStorage.setItem(exten + '_ring_time',
+                        localStorage.setItem(chan[1] + '_ring_time',
                             mcalluniq);
-                        $('#' + exten + '_src').html(mcallexten);
+                        $('#' + chan[1] + '_src').html(mcallexten);
                     } else if (strArray[4] == 'Up' && strArray[12] == '') {
-                        localStorage.setItem(exten + '_ring_cid',
+                        localStorage.setItem(chan[1] + '_ring_cid',
                             mcallexten);
-                        localStorage.setItem(exten + '_ring_time',
+                        localStorage.setItem(chan[1] + '_ring_time',
                             mcalluniq);
-                        $('#' + exten + '_src').html(mcallexten);
+                        $('#' + chan[1] + '_src').html(mcallexten);
                     } else if (strArray[4] == 'Up') {
-                        localStorage.setItem(exten + '_ans_cid',
+                        localStorage.setItem(chan[1] + '_ans_cid',
                             mcallexten);
-                        localStorage.setItem(exten + '_ans_time',
+                        localStorage.setItem(chan[1] + '_ans_time',
                             mcalluniq);
-                        $('#' + exten + '_src').html(mcallexten);
+                        $('#' + chan[1] + '_src').html(mcallexten);
                     }
 
                 });
