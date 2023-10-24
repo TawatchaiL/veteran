@@ -64,6 +64,7 @@
                 if (res.lastpause == 0) {
                     if (res.lastcall == 0) {
                         loginTime = new Date($(exts[1] + '_login').val()).getTime() / 1000;
+                        console.log(loginTime)
                         state_dur = duration_time(loginTime);
                     } else {
                         state_dur = duration_time(res.lastcall);
@@ -178,6 +179,7 @@
                 _token: token,
             },
             success: function(response) {
+                console.log(response.html)
                 $('#agent_list tbody').html(response.html);
             },
             error: function(xhr, status, error) {
