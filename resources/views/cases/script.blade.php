@@ -454,18 +454,16 @@
                     method: 'GET',
                     async: false,
                     success: function(data) {
-                        //alert(data.length);
-                        //var suggestions = JSON.parse(data);
                         var suggestionsList = $('#suggestions');
                         suggestionsList.empty();
-                        //suggestions.forEach(function(item) {
                             $.each(data, function(index, item) {
-                            suggestionsList.append('<li>HN ' + item.hn + ' ชื่อ-สกุล ' + item.fname + ' ' + item.fname + '</li>');
+                            suggestionsList.append('<li>' + item.hn + ' ชื่อ-สกุล ' + item.fname + ' ' + item.fname + '</li>');
                         });
-                        //});
 
                         suggestionsList.on('click', 'li', function() {
-                            $('#Hn').val($(this).text());
+                            var myArray = $(this).text().split(" ชื่อ-สกุล ");
+                            $('#Hn').val(myArray[0]);
+                            $('#Name').val(myArray[1]);
                             suggestionsList.empty();
                         });
                     },        
