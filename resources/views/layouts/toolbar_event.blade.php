@@ -14,13 +14,13 @@
 
     socket.on('queueentry', async (response) => {
         waitData[response.data.uniqueid] = response.data;
-        $('#queue_wait').html(Object.keys(waitData).length);
+        $('#queue_wait').html(`( ${Object.keys(waitData).length} )`);
     });
 
     socket.on('queuecallerleave', async (response) => {
         await delete waitData[response.data.uniqueid];
         if (Object.keys(waitData).length === 0) {
-            $('#queue_wait').html('0');
+            $('#queue_wait').html('( 0 )');
         }
         console.log(waitData);
     });
