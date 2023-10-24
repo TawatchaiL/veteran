@@ -164,15 +164,14 @@
     socket.on('queueentry', async (response) => {
         waitData[response.data.uniqueid] = response.data;
 
-        let dataArray = Object.values(data);
+        let dataArray = Object.values(waitData);
         dataArray.sort((a, b) => parseInt(a.position) - parseInt(b.position));
         dataArray.forEach((item) => {
-
             $('#waiting_list tbody').append(`<tr>
-                                <td>1</td>
-                                <td><i class="fa-solid fa-user-clock"></i> 0819152998</td>
-                                <td>00:02:00</td>
-                            </tr>`);
+            <td>${item.position}</td>
+            <td><i class="fa-solid fa-user-clock"></i> 0819152998</td>
+            <td>00:02:00</td>
+            </tr>`);
         });
     });
 
