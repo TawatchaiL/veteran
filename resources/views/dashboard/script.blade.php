@@ -215,9 +215,11 @@
                 _token: token,
             },
             success: function(response) {
-                console.log(response.agent_arr)
+                response.agent_arr.forEach(element => {
+                    ccall_list(element);
+                });
                 $('#agent_list tbody').html(response.html);
-                //call_list();
+
             },
             error: function(xhr, status, error) {
                 // Handle errors
