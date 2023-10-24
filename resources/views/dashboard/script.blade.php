@@ -162,7 +162,12 @@
     });
 
     socket.on('queueentry', async (response) => {
+        //waitData[response.data.uniqueid] = response.data;
+    });
+
+    socket.on('queuecallerjoin', async (response) => {
         waitData[response.data.uniqueid] = response.data;
+        console.log(waitData);
     });
 
     socket.on('queuecallerleave', async (response) => {
