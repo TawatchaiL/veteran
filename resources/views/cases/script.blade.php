@@ -457,13 +457,13 @@
                         var suggestionsList = $('#suggestions');
                         suggestionsList.empty();
                             $.each(data, function(index, item) {
-                            suggestionsList.append('<li>' + item.hn + ' ชื่อ-สกุล ' + item.fname + ' ' + item.fname + '</li>');
+                            suggestionsList.append('<li data-id="' + item.id + '" data-hn="' + item.hn + '" data-name="' + item.fname + ' ' + item.fname + '">HN ' + item.hn + ' ชื่อ-สกุล ' + item.fname + ' ' + item.fname + '</li>');
                         });
 
                         suggestionsList.on('click', 'li', function() {
-                            var myArray = $(this).text().split(" ชื่อ-สกุล ");
-                            $('#Hn').val(myArray[0]);
-                            $('#Name').val(myArray[1]);
+                            $('#Addid').val($(this).data('id'););
+                            $('#Hn').val($(this).data('hn'););
+                            $('#Name').val($(this).data('name'););
                             suggestionsList.empty();
                         });
                     },        
