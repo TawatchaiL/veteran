@@ -157,7 +157,7 @@
     });
 
     socket.on('queueparams', async (response) => {
-        console.log(response)
+        //console.log(response)
     });
 
     socket.on('queueentry', async (response) => {
