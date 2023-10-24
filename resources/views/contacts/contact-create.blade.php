@@ -202,6 +202,8 @@
                                     ]) !!}
                                 </div>
                             </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6"><i class="fa-regular fa-paste" style="position: absolute; bottom: 0;"></i>
+                            </div>
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์มือถือ :</strong>
@@ -212,6 +214,8 @@
                                         'onkeydown' => 'validateNumberp(event)',
                                     ]) !!}
                                 </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6"><i class="fa-regular fa-paste" style="position: absolute; bottom: 0;"></i>
                             </div>
                         </div>
                         <div class="row">
@@ -227,7 +231,7 @@
                                     ]) !!}
                                 </div>
                             </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6"><i class="fa-regular fa-paste"></i>
+                            <div class="col-xs-6 col-sm-6 col-md-6"><i class="fa-regular fa-paste" style="position: absolute; bottom: 0;"></i>
                             </div>
                         </div>
                         <div class="row">
