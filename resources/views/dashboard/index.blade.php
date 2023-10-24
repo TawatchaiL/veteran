@@ -366,7 +366,7 @@
                                                 </div>
 
                                                 <div class="card-body table-responsive p-0">
-                                                    <table
+                                                    <table id="waiting_list"
                                                         class="table table-striped table-bordered table-hover text-nowrap">
                                                         <thead>
                                                             <tr>
@@ -376,26 +376,6 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td><i class="fa-solid fa-user-clock"></i> 0819152998</td>
-                                                                <td>00:02:00</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>2</td>
-                                                                <td><i class="fa-solid fa-user-clock"></i> 0819162778</td>
-                                                                <td>00:01:15</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>3</td>
-                                                                <td><i class="fa-solid fa-user-clock"></i> 0813152898</td>
-                                                                <td>00:01:00</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>4</td>
-                                                                <td><i class="fa-solid fa-user-clock"></i> 0813482977</td>
-                                                                <td>00:00:20</td>
-                                                            </tr>
                                                         </tbody>
                                                     </table>
                                                 </div>
