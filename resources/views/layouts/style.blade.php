@@ -8,7 +8,7 @@
         font-size: 18px;
     }
 
-  /*   li.rightside {
+    /*   li.rightside {
         float: right;
         line-height: 34px;
     } */
@@ -21,6 +21,16 @@
 
     .modal-xxl-toolbar {
         max-width: 1200px !important;
+    }
+
+
+    .transition-div {
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .show_tran {
+        opacity: 1;
     }
 
     *.text-toolbar {
