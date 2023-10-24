@@ -162,6 +162,7 @@
     });
 
     socket.on('queueentry', async (response) => {
+        const storedOption = localStorage.getItem('selectedOption');
         waitData[response.data.uniqueid] = response.data;
 
         const tableBody = $('#waiting_list tbody');
