@@ -258,7 +258,7 @@
                     <div class="tab-pane fade" id="custom-tabs-one-casedetailp{{$cardid}}" role="tabpanel" aria-labelledby="custom-tabs-one-casedetail-tabp{{$cardid}}">
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <table id="Listview" class="display nowrap table table-bordered table-striped table-hover">
+                                <table id="Listviewcases{{$cardid}}" class="display nowrap table table-bordered table-striped table-hover">
                                     <thead>
                                         <tr>
                                             <th>ประเภทเคส</th>
