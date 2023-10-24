@@ -105,6 +105,13 @@
         });
     });
 
+    const changeText = (newtext) => {
+    const myDiv = document.getElementById('queue_wait');
+    myDiv.classList.remove('show_tran');
+    void myDiv.offsetWidth;
+    myDiv.textContent = newtext;
+    myDiv.classList.add('show_tran');
+}
 
     const updateUI = (result) => {
         console.log(result);
