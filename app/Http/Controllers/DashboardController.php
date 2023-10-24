@@ -50,25 +50,23 @@ class DashboardController extends Controller
             ->orderBy('id', 'asc')
             ->get();
 
-        $html = ''; // Initialize an empty string to store the HTML
+        $html = '';
 
         $x = 1;
         if (!$agents->isEmpty()) {
             foreach ($agents as $agent) {
-                // Assuming you have access to the relevant agent data like $agent_name_array
+                //$agentName = $agent_name_array[$agent->agent_id] ?? 'Unknown';
 
-                $agentName = $agent_name_array[$agent->agent_id] ?? 'Unknown'; // Replace 'Unknown' with a default value if needed
-
-                $html .= '<tr id="' . $agentName . '">
+                $html .= '<tr id="' . $agent->phone . '">
                     <td>' . $x . '<input type="hidden" id="' . $agent->phone . '_login" value="' . $agent->login_time . '"></td>
                     <td><i class="fa-solid fa-user"></i> ' . $agent->name . '</td>
-                    <td style="text-align: center;" id="' . $agentName . '_phone">' . $agent->phone . '</td>
-                    <td id="' . $agentName . '_status"><i class="fa-solid fa-user-xmark status-icon offline"></i>
+                    <td style="text-align: center;" id="' . $agent->phone . '_phone">' . $agent->phone . '</td>
+                    <td id="' . $agent->phone . '_status"><i class="fa-solid fa-user-xmark status-icon offline"></i>
                         <font class="offline">ไม่พร้อมรับสาย</font>
                     </td>
-                    <td style="text-align: center;" id="' . $agentName . '_duration">00:00:00</td>
-                    <td style="text-align: center;" id="' . $agentName . '_src"></td>
-                    <td style="text-align: center;" id="' . $agentName . '_queue"></td>
+                    <td style="text-align: center;" id="' . $agent->phone . '_duration">00:00:00</td>
+                    <td style="text-align: center;" id="' . $agent->phone . '_src"></td>
+                    <td style="text-align: center;" id="' . $agent->phone . '_queue"></td>
                     <td><img src="' . asset('images/pauseagent.gif') . '"><img src="' . asset('images/logout-icon.png') . '"></td>
                 </tr>';
                 $x++;

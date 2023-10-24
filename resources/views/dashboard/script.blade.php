@@ -21,15 +21,16 @@
         let ans_time = '';
         let loginTime = '';
         let exts = res.location.split('/');
-        const div_src = $('#' + res.name + '_src');
+        let phone_number = exts[1];
+        const div_src = $('#' + phone_number + '_src');
 
         if (res.queue == storedOption) {
             if (res.status == 5 || res.status == 0) {
                 phone_status = `<span style="font-size: 1em; color: red;">
-                    <i class="fa-solid fa-triangle-exclamation"></i></span> ` + exts[1]
+                    <i class="fa-solid fa-triangle-exclamation"></i></span> ` + phone_number
                 status = 'โทรศัพท์ไม่พร้อมใช้งาน'
             } else {
-                phone_status = exts[1]
+                phone_status = phone_number
             }
 
             if (res.paused == 1) {
@@ -43,15 +44,15 @@
                     state_dur = duration_time(res.lastpause);
                 }
             } else if (res.status == 6) {
-                ring_cid = localStorage.getItem(res.name + '_ring_cid');
-                ring_time = localStorage.getItem(res.name + '_ring_time');
+                ring_cid = localStorage.getItem(phone_number + '_ring_cid');
+                ring_time = localStorage.getItem(phone_number + '_ring_time');
                 status = `<span style="font-size: 1em; color: red;">
                     <i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i></span> กำลังรอสาย`
                 div_src.html(ring_cid);
                 state_dur = duration_miltime(ring_time);
             } else if (res.status == 2) {
-                ans_cid = localStorage.getItem(res.name + '_ans_cid');
-                ans_time = localStorage.getItem(res.name + '_ans_time');
+                ans_cid = localStorage.getItem(phone_number + '_ans_cid');
+                ans_time = localStorage.getItem(phone_number + '_ans_time');
                 status = `<span style="font-size: 1em; color: red;">
                     <i class="fa-solid fa-phone-volume fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังสนทนา`
                 div_src.html(ans_cid);
@@ -74,10 +75,10 @@
                 }
             }
 
-            $('#' + res.name + '_status').html(status);
-            $('#' + res.name + '_phone').html(phone_status);
-            $('#' + res.name + '_queue').html(res.queue);
-            $('#' + res.name + '_duration').html(state_dur);
+            $('#' + phone_number + '_status').html(status);
+            $('#' + phone_number + '_phone').html(phone_status);
+            $('#' + phone_number + '_queue').html(res.queue);
+            $('#' + phone_number + '_duration').html(state_dur);
         }
 
     });
@@ -89,21 +90,21 @@
     socket.on('agentcalled', async (response) => {
         console.log(response)
         let res = response.data;
-        localStorage.setItem(res.membername + '_ring_cid',
+        localStorage.setItem(res.destcalleridnum + '_ring_cid',
             res.calleridnum);
-        localStorage.setItem(res.membername + '_ring_time',
+        localStorage.setItem(res.destcalleridnum + '_ring_time',
             res.timestamp);
-        $('#' + res.membername + '_src').html(res.calleridnum);
+        $('#' + res.destcalleridnum + '_src').html(res.calleridnum);
     });
 
     socket.on('agentconnect', async (response) => {
         console.log(response)
         let res = response.data;
-        localStorage.setItem(res.membername + '_ans_cid',
+        localStorage.setItem(res.destcalleridnum + '_ans_cid',
             res.calleridnum);
-        localStorage.setItem(res.membername + '_ans_time',
+        localStorage.setItem(res.destcalleridnum + '_ans_time',
             Math.floor(Date.now() / 1000));
-        $('#' + res.membername + '_src').html(res.calleridnum);
+        $('#' + res.destcalleridnum + '_src').html(res.calleridnum);
     });
 
 
