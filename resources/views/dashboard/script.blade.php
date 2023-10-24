@@ -15,6 +15,10 @@
         let status = '';
         let phone_status = '';
         let state_dur = '';
+        let ring_cid = '';
+        let ring_time = '';
+        let ans_cid = '';
+        let ans_time = '';
         if (res.queue == storedOption) {
             let exts = res.location.split('/');
             if (res.status == 5 || res.status == 0) {
@@ -36,15 +40,15 @@
                     state_dur = duration_time(res.lastpause);
                 }
             } else if (res.status == 6) {
-                let ring_cid = localStorage.getItem(res.name + '_ring_cid');
-                let ring_time = localStorage.getItem(res.name + '_ring_time');
+                ring_cid = localStorage.getItem(res.name + '_ring_cid');
+                ring_time = localStorage.getItem(res.name + '_ring_time');
                 status = `<span style="font-size: 1em; color: red;">
                     <i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i></span> กำลังรอสาย`
                 $('#' + res.name + '_src').html(ring_cid);
                 state_dur = duration_miltime(ring_time);
             } else if (res.status == 2) {
-                let ans_cid = localStorage.getItem(res.name + '_ans_cid');
-                let ans_time = localStorage.getItem(res.name + '_ans_time');
+                ans_cid = localStorage.getItem(res.name + '_ans_cid');
+                ans_time = localStorage.getItem(res.name + '_ans_time');
                 status = `<span style="font-size: 1em; color: red;">
                     <i class="fa-solid fa-phone-volume fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังสนทนา`
                 $('#' + res.name + '_src').html(ans_cid);
@@ -53,11 +57,15 @@
                 status = `<span style="font-size: 1em; color: #ff9900;">
                     <i class="fa-solid fa-user-clock fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังพักสาย`
             } else if (res.status == 1) {
-                console.log(res.lastpause)
                 status = `<span style="font-size: 1em; color: green;">
                     <i class="fa-solid fa-user-check"></i></span> พร้อมรับสาย`
                 if (res.lastpause == 0) {
-                    state_dur = duration_time(res.lastcall);
+                    if (res.lastcall == 0) {
+                        state_dur = duration_time({{ $temporaryLogintime }});
+                    } else {
+                        state_dur = duration_time(res.lastcall);
+                    }
+
                 } else {
                     state_dur = duration_time(res.lastpause);
                 }
