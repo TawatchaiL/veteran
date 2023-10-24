@@ -161,7 +161,11 @@
     });
 
     socket.on('queueentry', async (response) => {
-        console.log(response)
+        //console.log(response)
+        const waitArray = [];
+        waitArray[response.position] = response;
+
+        console.log(waitArray);
     });
 
     /* setInterval(() => {
