@@ -188,7 +188,6 @@
             </tr>`;
         });
 
-        // Update the table body with the new HTML content
         tableBody.html(html);
     });
 
