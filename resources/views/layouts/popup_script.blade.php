@@ -183,6 +183,21 @@
                                                         '" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
                                                     )));
                                     });
+
+                                    $.each(res.datax.cases, function(index, value) {
+                                        $('#Listviewcases' + cardId + ' tbody').append($('<tr>')
+                                                .append($('<td>')
+                                                    .append('<div class="col-md-12 col-sm-12 col-xs-12">' + value.casetype1 + '</div>'))
+                                                .append($('<td>')
+                                                    .append('<div class="col-md-12 col-sm-12 col-xs-12">' + value.casedetail + '</div>'))
+                                                .append($('<td>' )
+                                                    .append('<div class="col-md-12 col-sm-12 col-xs-12">' + value.casestatus + '</div>'))
+                                                .append($('<td>' )
+                                                    .append('<div class="col-md-12 col-sm-12 col-xs-12">' + value.tranferstatus + '</div>'))
+                                                .append($('<td>' )
+                                                    .append('<div class="col-md-12 col-sm-12 col-xs-12">' + value.created_at + '</div>'))
+                                        );
+                                    });
                                 }
                             }
                         });
