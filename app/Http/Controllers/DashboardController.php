@@ -70,10 +70,12 @@ class DashboardController extends Controller
                     <td><img src="' . asset('images/pauseagent.gif') . '"><img src="' . asset('images/logout-icon.png') . '"></td>
                 </tr>';
                 $x++;
+                $agent_arr[] = $agent->phone;
             }
         }
         return response()->json([
-            'html' => $html
+            'html' => $html,
+            'agent_arr' => $agent_arr
         ]);
     }
 }

@@ -6,7 +6,7 @@
     const storedOption = localStorage.getItem('selectedOption');
 
 
-    let call_list = () => {
+    let call_list = (exten) => {
         let mcallprofile = '';
         let mcallexten = '';
         let luniq = '';
@@ -55,14 +55,14 @@
         });
     };
 
-    call_list();
+
 
     socket.on('connect', () => {
         socket.emit('join', 'Client Connect To Asterisk Event Serv');
     });
 
     socket.on('queuemember', async (response) => {
-        console.log(response)
+        //console.log(response)
         const storedOption = localStorage.getItem('selectedOption');
         let res = response.data;
         let status = '';
@@ -215,7 +215,9 @@
                 _token: token,
             },
             success: function(response) {
+                console.log(response.agent_arr)
                 $('#agent_list tbody').html(response.html);
+                //call_list();
             },
             error: function(xhr, status, error) {
                 // Handle errors
