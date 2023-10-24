@@ -461,9 +461,9 @@
                         });
 
                         suggestionsList.on('click', 'li', function() {
-                            $('#Addid').val($(this).data('id'););
-                            $('#Hn').val($(this).data('hn'););
-                            $('#Name').val($(this).data('name'););
+                            $('#Addid').val($(this).data('id'));
+                            $('#Hn').val($(this).data('hn'));
+                            $('#Name').val($(this).data('name'));
                             suggestionsList.empty();
                         });
                     },        
