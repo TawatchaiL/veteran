@@ -24,9 +24,6 @@
 
                 $.get(`${api_serv}/chans_variable/` + chan[1], (data, status) => {
 
-                    luniq = data[0][1];
-                    luniqrd = luniq.replace('.', '');
-                    mcallprofile = data[1][1];
                     mcallexten = data[2][1];
                     mcallqueue = data[3][1];
                     mcalluniq = data[4][1];
@@ -140,7 +137,7 @@
     });
 
     socket.on('agentcalled', async (response) => {
-        console.log(response)
+        //console.log(response)
         let res = response.data;
         localStorage.setItem(res.destcalleridnum + '_ring_cid',
             res.calleridnum);
@@ -150,7 +147,7 @@
     });
 
     socket.on('agentconnect', async (response) => {
-        console.log(response)
+        //console.log(response)
         let res = response.data;
         localStorage.setItem(res.destcalleridnum + '_ans_cid',
             res.calleridnum);
@@ -159,6 +156,13 @@
         $('#' + res.destcalleridnum + '_src').html(res.calleridnum);
     });
 
+    socket.on('queueparams', async (response) => {
+        console.log(response)
+    });
+
+    socket.on('queueentry', async (response) => {
+        console.log(response)
+    });
 
     /* setInterval(() => {
         socket.emit('getqueue', {
