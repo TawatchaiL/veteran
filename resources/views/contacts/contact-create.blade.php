@@ -199,7 +199,7 @@
                                         'placeholder' => 'เบอร์โทรศัพท์บ้าน',
                                         'class' => 'form-control',
                                         'onkeydown' => 'validateNumberp(event)',
-                                    ]) !!} <i class="fa-regular fa-paste"></i>
+                                    ]) !!}
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6">
@@ -210,7 +210,7 @@
                                         'placeholder' => 'เบอร์โทรศัพท์มือถือ',
                                         'class' => 'form-control',
                                         'onkeydown' => 'validateNumberp(event)',
-                                    ]) !!} <i class="fa-regular fa-paste"></i>
+                                    ]) !!}
                                 </div>
                             </div>
                         </div>
@@ -225,7 +225,7 @@
                                         'placeholder' => 'เบอร์โทรศัพท์ที่ทำงาน',
                                         'class' => 'form-control',
                                         'onkeydown' => 'validateNumberp(event)',
-                                    ]) !!} <i class="fa-regular fa-paste"></i>
+                                    ]) !!}
                                 </div>
                             </div>
                         </div>
