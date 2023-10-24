@@ -10,6 +10,7 @@
         let mcallprofile = '';
         let mcallexten = '';
         let luniq = '';
+        let uniq = '';
         let mstrArray = [];
         let calls_active = 0;
 
@@ -22,33 +23,33 @@
 
                 $.get(`${api_serv}/chans_variable/` + chan[1], (data, status) => {
 
-                    console.log(data)
                     luniq = data[0][1];
                     luniqrd = luniq.replace('.', '');
                     mcallprofile = data[1][1];
                     mcallexten = data[2][1];
-                    mcalldestchan = data[3][1];
+                    mcallqueue = data[3][1];
+                    mcalluniq = data[4][1];
 
-                    /* if (strArray[4] == 'Ringing' || strArray[4] == 'Ring') {
+                    if (strArray[4] == 'Ringing' || strArray[4] == 'Ring') {
                         localStorage.setItem(chan[1] + '_ring_cid',
-                        mcallexten);
+                            mcallexten);
                         localStorage.setItem(chan[1] + '_ring_time',
-                            res.timestamp);
+                            mcalluniq);
                         $('#' + chan[1] + '_src').html(mcallexten);
                     } else if (strArray[4] == 'Up' && strArray[12] == '') {
-                        state = 'กำลังรอสาย'
-                        state_icon =
-                            '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
-                        state_color = 'card-danger';
-                        check_box_state = 'disabled';
+                        localStorage.setItem(chan[1] + '_ring_cid',
+                            mcallexten);
+                        localStorage.setItem(chan[1] + '_ring_time',
+                            mcalluniq);
+                        $('#' + chan[1] + '_src').html(mcallexten);
                     } else if (strArray[4] == 'Up') {
-                        state = 'กำลังสนทนา'
-                        state_icon =
-                            '<i class="fa-solid fa-phone-volume fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i>';
-                        state_color = 'card-success';
-                        check_box_state = '';
+                        localStorage.setItem(chan[1] + '_ring_cid',
+                            mcallexten);
+                        localStorage.setItem(chan[1] + '_ring_time',
+                            mcalluniq);
+                        $('#' + chan[1] + '_src').html(mcallexten);
                     }
- */
+
                 });
                 calls_active += 1;
             });
@@ -226,6 +227,7 @@
             }
         });
     }
+
     $(document).ready(() => {
         const selectElement = $('#redirectSelect');
 
