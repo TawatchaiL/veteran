@@ -20,10 +20,10 @@
             await data.forEach((item, index) => {
                 let strArray = item.split("!");
                 let chan = strArray[0].split("/");
-                console.log(chan[1])
+                let phone = exten;
 
                 $.get(`${api_serv}/chans_variable/` + chan[1], (data, status) => {
-                    console.log(data)
+
                     luniq = data[0][1];
                     luniqrd = luniq.replace('.', '');
                     mcallprofile = data[1][1];
@@ -32,19 +32,19 @@
                     mcalluniq = data[4][1];
 
                     if (strArray[4] == 'Ringing' || strArray[4] == 'Ring') {
-                        localStorage.setItem(chan[1] + '_ring_cid',
+                        localStorage.setItem(phone + '_ring_cid',
                             mcallexten);
-                        localStorage.setItem(chan[1] + '_ring_time',
+                        localStorage.setItem(phone + '_ring_time',
                             mcalluniq);
                     } else if (strArray[4] == 'Up' && strArray[12] == '') {
-                        localStorage.setItem(chan[1] + '_ring_cid',
+                        localStorage.setItem(phone + '_ring_cid',
                             mcallexten);
-                        localStorage.setItem(chan[1] + '_ring_time',
+                        localStorage.setItem(phone + '_ring_time',
                             mcalluniq);
                     } else if (strArray[4] == 'Up') {
-                        localStorage.setItem(chan[1] + '_ans_cid',
+                        localStorage.setItem(phone + '_ans_cid',
                             mcallexten);
-                        localStorage.setItem(chan[1] + '_ans_time',
+                        localStorage.setItem(phone + '_ans_time',
                             mcalluniq);
                     }
 
