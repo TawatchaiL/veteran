@@ -4,6 +4,7 @@
     const api_serv = '{{ config('asterisk.api_serv.address') }}';
     const socket = io.connect(`${dashboard_serv}`);
     const storedOption = localStorage.getItem('selectedOption');
+    let waitData = {};
 
 
     let call_list = (exten) => {
@@ -161,8 +162,8 @@
     });
 
     socket.on('queueentry', async (response) => {
-        let waitData = {};
-        waitData[response.data.position] = 1;
+
+        waitData[response.data.position] = response.data;
 
         console.log(waitData);
     });
