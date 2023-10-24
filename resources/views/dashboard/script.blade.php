@@ -164,15 +164,24 @@
     socket.on('queueentry', async (response) => {
         waitData[response.data.uniqueid] = response.data;
 
+        const tableBody = $('#waiting_list tbody');
+
         let dataArray = Object.values(waitData);
         dataArray.sort((a, b) => parseInt(a.position) - parseInt(b.position));
+
+        let html = '';
+
         dataArray.forEach((item) => {
-            $('#waiting_list tbody').append(`<tr>
-            <td>${item.position}</td>
-            <td><i class="fa-solid fa-user-clock"></i> 0819152998</td>
-            <td>00:02:00</td>
-            </tr>`);
+            html += `
+            <tr>
+                <td>${item.position}</td>
+                <td><i class="fa-solid fa-user-clock"></i> ${item.channel}</td>
+                <td>00:02:00</td>
+            </tr>`;
         });
+
+        // Update the table body with the new HTML content
+        tableBody.html(html);
     });
 
     socket.on('queuecallerjoin', async (response) => {
