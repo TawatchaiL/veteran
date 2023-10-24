@@ -181,7 +181,7 @@
                                                 <div class="col-md-6 col-sm-6 col-xs-6">
                                                     <!-- class alignment ไว้ทำ css -->
                                                     <div class="alignment info-box-number" id="">
-                                                        <p class="font" id="waiting_4071">0</p>
+                                                        <p class="font" id="waiting_total">0</p>
                                                     </div>
                                                     <p class="alignment"><i class="fa-solid fa-user-clock"></i>
                                                         สายที่ <br>กำลังรอสาย</p>
@@ -189,7 +189,7 @@
 
                                                 <div class="col-md-6 col-sm-6 col-xs-6">
                                                     <div class="alignment info-box-number">
-                                                        <p class="font" id="active_4071">0</p>
+                                                        <p class="font" id="active_total">0</p>
                                                     </div>
                                                     <p class="alignment"><i class="fa-solid fa-phone-volume"></i>
                                                         สายที่<br>กำลังสนทนา</p>

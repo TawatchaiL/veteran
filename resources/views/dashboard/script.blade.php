@@ -172,6 +172,7 @@
         dataArray.sort((a, b) => parseInt(a.position) - parseInt(b.position));
 
         let html = '';
+        let waiting_total = 0;
 
         dataArray.forEach((item) => {
             let parsedNumber = parseInt(item.wait);
@@ -189,10 +190,12 @@
                     <td>${formattedTime}</td>
                     <td>${item.connectedlinenum === 'unknown' ? '-' : item.connectedlinenum}</td>
                 </tr>`;
+                waiting_total++;
             }
         });
 
         tableBody.html(html);
+        $('#waiting_total').html(waiting_total);
     });
 
     socket.on('queuecallerjoin', async (response) => {
@@ -205,6 +208,7 @@
         await delete waitData[response.data.uniqueid];
         if (Object.keys(waitData).length === 0) {
             tableBody.html('<tr><td colspan="4" style="text-align: center;">ยังไม่มีสายรอในคิว</td></tr>');
+            $('#waiting_total').html('0');
         }
         console.log(waitData);
     });
