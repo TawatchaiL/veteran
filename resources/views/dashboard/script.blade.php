@@ -162,8 +162,14 @@
     });
 
     socket.on('queueentry', async (response) => {
+        waitData[response.data.uniqueid] = response.data;
+    });
 
-        waitData[response.data.position] = response.data;
+    socket.on('queuecallerleave', async (response) => {
+
+        if (waitData[response.uniqueid]) {
+            delete waitData[response.uniqueid];
+        }
 
         console.log(waitData);
     });
