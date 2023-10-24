@@ -63,8 +63,8 @@
                     <i class="fa-solid fa-user-check"></i></span> พร้อมรับสาย`
                 if (res.lastpause == 0) {
                     if (res.lastcall == 0) {
-                        loginTime = new Date($(exts[1] + '_login').val()).getTime() / 1000;
-                        console.log($(exts[1] + '_login').val())
+                        loginTime = new Date($('#' + exts[1] + '_login').val()).getTime() / 1000;
+                        console.log($('#' + exts[1] + '_login').val()).val())
                         state_dur = duration_time(loginTime);
                     } else {
                         state_dur = duration_time(res.lastcall);
