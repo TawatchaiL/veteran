@@ -161,11 +161,10 @@
     });
 
     socket.on('queueentry', async (response) => {
-        //console.log(response)
-        let waitArray = [];
-        waitArray[response.data.position] = 1;
+        let waitData = {};
+        waitData[response.data.position] = 1;
 
-        console.log(waitArray);
+        console.log(waitData);
     });
 
     /* setInterval(() => {
