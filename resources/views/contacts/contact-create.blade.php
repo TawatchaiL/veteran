@@ -202,7 +202,7 @@
                                     ]) !!}
                                 </div>
                             </div>
-                            <div class="col-xs-1 col-sm-1 col-md-1"><i class="fa-regular fa-paste" style="position: absolute; bottom: 0;"></i>
+                            <div class="col-xs-1 col-sm-1 col-md-1"><strong><i class="fa-regular fa-paste" style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);"></i></strong>
                             </div>
                             <div class="col-xs-5 col-sm-5 col-md-5">
                                 <div class="form-group">
@@ -215,7 +215,7 @@
                                     ]) !!}
                                 </div>
                             </div>
-                            <div class="col-xs-1 col-sm-1 col-md-1"><i class="fa-regular fa-paste" style="position: absolute; bottom: 0;"></i>
+                            <div class="col-xs-1 col-sm-1 col-md-1"><strong><i class="fa-regular fa-paste" style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);"></i></strong>
                             </div>
                         </div>
                         <div class="row">
@@ -231,7 +231,7 @@
                                     ]) !!}
                                 </div>
                             </div>
-                            <div class="col-xs-1 col-sm-1 col-md-1"><i class="fa-regular fa-paste" style="position: absolute; bottom: 0;"></i>
+                            <div class="col-xs-1 col-sm-1 col-md-1"><strong><i class="fa-regular fa-paste" style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);"></i></strong>
                             </div>
                         </div>
                         <div class="row">
