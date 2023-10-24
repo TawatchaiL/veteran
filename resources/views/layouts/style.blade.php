@@ -55,7 +55,7 @@
 
     *.icon-blue {
         color: #1d2ae1;
-        font-size: 1.5em;
+        font-size: 1.7em;
         text-align: center;
         vertical-align: middle;
 
