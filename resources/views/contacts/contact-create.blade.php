@@ -269,15 +269,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($cases as $casesl)
                                         <tr>
-                                            <td>{{ $casesl->casetype1 }}</td>
-                                            <td>{{ $casesl->casedetail }}</td>
-                                            <td>{{ $casesl->casestatus }}</td>
-                                            <td>{{ $casesl->tranferstatus }}</td>
-                                            <td>{{ $casesl->created_at }}</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
                                         </tr>
-                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
