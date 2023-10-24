@@ -361,6 +361,7 @@
                             '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
                     }
                 }
+                if(parent_id != ''){
                 $.ajax({
                     url: "casetype6/casetype/" + parent_id,
                     method: 'GET',
@@ -374,7 +375,7 @@
                         });
                     }
                 });
-
+                }
                 $('#casetype' + nextcase).attr('disabled', false);
                 $('#AddName' + nextcase).attr('disabled', false);
                 $('#typelev' + nextcase).show();
