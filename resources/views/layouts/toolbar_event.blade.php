@@ -17,6 +17,14 @@
         $('#queue_wait').html(Object.keys(waitData).length);
     });
 
+    socket.on('queuecallerleave', async (response) => {
+        await delete waitData[response.data.uniqueid];
+        if (Object.keys(waitData).length === 0) {
+            $('#waiting_total').html('0');
+        }
+        console.log(waitData);
+    });
+
     socket.on('peerstatus', async (data) => {
         console.log(data);
         let peer = data.extension.split("/");
