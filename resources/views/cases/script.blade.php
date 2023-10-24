@@ -457,7 +457,7 @@
                         var suggestionsList = $('#suggestions');
                         suggestionsList.empty();
                             $.each(data, function(index, item) {
-                            suggestionsList.append('' + item.hn + ' ชื่อ-สกุล ' + item.fname + ' ' + item.fname + '');
+                            suggestionsList.append('<li>' + item.hn + ' ชื่อ-สกุล ' + item.fname + ' ' + item.fname + '</li>');
                         });
 
                         suggestionsList.on('click', 'li', function() {
