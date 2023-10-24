@@ -165,6 +165,7 @@ class ContactController extends Controller
             ->get();
         $cases = DB::table('crm_cases')
             ->where('contact_id', '=', $datac[0]->id)
+            ->orderBy('created_at', 'desc')
             ->get();
         $emer = DB::table('crm_phone_emergencies')
             ->where('contact_id', '=', $datac[0]->id)
@@ -189,6 +190,7 @@ class ContactController extends Controller
         if ($contactcount > 0) {
             $cases = DB::table('crm_cases')
             ->where('contact_id', '=', $datac[0]->id)
+            ->orderBy('created_at', 'desc')
             ->get();
             $emer = DB::table('crm_phone_emergencies')
                 ->where('contact_id', '=', $datac[0]->id)

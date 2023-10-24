@@ -520,16 +520,9 @@
                                     index, value) {
                                     $('#myTbl3p' + cardId + ' tbody')
                                         .append($('<tr>')
-                                            .append($(
-                                                    '<td width="30%">'
-                                                )
-                                                .append(
-                                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="hidden" value="' +
-                                                    value
-                                                    .id +
-                                                    '" name="emertypep' +
-                                                    cardId +
-                                                    '[]" id="emertypep' +
+                                            .append($('<td width="30%">')
+                                                .append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="hidden" value="' +
+                                                    value.id + '" name="emertypep' + cardId + '[]" id="emertypep' +
                                                     cardId +
                                                     '"><input type="text" id="emergencynamep' +
                                                     cardId +
@@ -540,11 +533,8 @@
                                                     .emergencyname +
                                                     '" required="required"></div>'
                                                 ))
-                                            .append($(
-                                                    '<td width="10%">'
-                                                )
-                                                .append(
-                                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerrelation' +
+                                            .append($('<td width="10%">')
+                                                .append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerrelation' +
                                                     cardId +
                                                     '" name="emerrelationp' +
                                                     cardId +
@@ -553,11 +543,8 @@
                                                     .emerrelation +
                                                     '" required="required"></div>'
                                                 ))
-                                            .append($(
-                                                    '<td width="10%">'
-                                                )
-                                                .append(
-                                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone' +
+                                            .append($('<td width="10%">')
+                                                .append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone' +
                                                     cardId +
                                                     '" name="emerphonep' +
                                                     cardId +
@@ -566,11 +553,8 @@
                                                     .emerphone +
                                                     '" required="required"></div>'
                                                 ))
-                                            .append($(
-                                                    '<td width="5%">'
-                                                )
-                                                .append(
-                                                    '<button type="button" name="deletem' +
+                                            .append($('<td width="5%">')
+                                                .append('<button type="button" name="deletem' +
                                                     cardId +
                                                     '" id="deletem' +
                                                     cardId +
