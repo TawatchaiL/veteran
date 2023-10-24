@@ -372,10 +372,14 @@
                                                             <tr>
                                                                 <th>#</th>
                                                                 <th>หมายเลขผู้โทร</th>
-                                                                <th>ระยะเวลา</th>
+                                                                <th>ระยะเวลารอสาย</th>
+                                                                <th>Agent</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                            <tr>
+                                                                <td colspan="4"> ยังไม่มีสายรอในคิว</td>
+                                                            </tr>
                                                         </tbody>
                                                     </table>
                                                 </div>
