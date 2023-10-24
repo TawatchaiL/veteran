@@ -379,7 +379,7 @@
                 $('#AddName' + nextcase).attr('disabled', false);
                 $('#typelev' + nextcase).show();
 
-                if(parent_id != ''){
+                if(parent_id !== ''){
                     $('#typelev' + levcase).hide();
                 }else{
                     $('#typelev' + levcase).show();
