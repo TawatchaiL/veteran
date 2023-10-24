@@ -202,9 +202,14 @@
 
     socket.on('queuecallerleave', async (response) => {
         const tableBody = $('#waiting_list tbody');
-        $(`#tr_${response.data.uniqueid}`).remove();
-        delete waitData[response.data.uniqueid];
-        console.log(waitData);
+        const rowId = `tr_${response.data.uniqueid}`;
+        const rowToRemove = tableBody.find(`#${rowId}`);
+
+        if (rowToRemove.length) {
+            rowToRemove.remove();
+            delete waitData[response.data.uniqueid];
+            console.log(waitData);
+        }
     });
 
     /* setInterval(() => {
