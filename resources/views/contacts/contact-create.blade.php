@@ -215,7 +215,6 @@
                             </div>
                         </div>
                         <div class="row">
-
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <strong><i class="fas fa-phone"></i>
@@ -227,6 +226,8 @@
                                         'onkeydown' => 'validateNumberp(event)',
                                     ]) !!}
                                 </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6"><i class="fa-regular fa-paste"></i>
                             </div>
                         </div>
                         <div class="row">
