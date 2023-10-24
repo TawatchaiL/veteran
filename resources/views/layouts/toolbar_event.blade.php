@@ -5,6 +5,10 @@
         socket.emit('join', 'Client Connect To Asterisk Event Serv');
     });
 
+    socket.on('queuecallerjoin', async (response) => {
+        alert_danger('Alert', 'มีสายเข้าจาก '+response.data.calleridnum, '');
+        alert_danger('Alert', 'มีสายรอในคิว '+response.data.count, '');
+    });
 
     socket.on('peerstatus', async (data) => {
         console.log(data);
