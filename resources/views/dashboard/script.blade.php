@@ -21,6 +21,7 @@
         let ans_time = '';
         let loginTime = '';
         let exts = res.location.split('/');
+        const div_src = $('#' + res.name + '_src');
 
         if (res.queue == storedOption) {
             if (res.status == 5 || res.status == 0) {
@@ -46,14 +47,14 @@
                 ring_time = localStorage.getItem(res.name + '_ring_time');
                 status = `<span style="font-size: 1em; color: red;">
                     <i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i></span> กำลังรอสาย`
-                $('#' + res.name + '_src').html(ring_cid);
+                div_src.html(ring_cid);
                 state_dur = duration_miltime(ring_time);
             } else if (res.status == 2) {
                 ans_cid = localStorage.getItem(res.name + '_ans_cid');
                 ans_time = localStorage.getItem(res.name + '_ans_time');
                 status = `<span style="font-size: 1em; color: red;">
                     <i class="fa-solid fa-phone-volume fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังสนทนา`
-                $('#' + res.name + '_src').html(ans_cid);
+                div_src.html(ans_cid);
                 state_dur = duration_miltime(ans_time);
             } else if (res.status == 8) {
                 status = `<span style="font-size: 1em; color: #ff9900;">
@@ -64,12 +65,10 @@
                 if (res.lastpause == 0) {
                     if (res.lastcall == 0) {
                         loginTime = new Date($('#' + exts[1] + '_login').val()).getTime() / 1000;
-                        console.log($('#' + exts[1] + '_login').val())
                         state_dur = duration_time(loginTime);
                     } else {
                         state_dur = duration_time(res.lastcall);
                     }
-
                 } else {
                     state_dur = duration_time(res.lastpause);
                 }
@@ -85,23 +84,6 @@
 
     socket.on('queuememberstatus', async (response) => {
         console.log(response)
-        /* const storedOption = localStorage.getItem('selectedOption');
-        let res = response.data;
-        let status;
-        if (res.queue == storedOption) {
-            let exts = res.location.split('/');
-            if (res.paused == 1) {
-                status = 'พักสาย ( ' + res.pausedreason + ' )'
-            } else if (res.incall == 1) {
-                status = 'สายเข้า' + res.status
-            } else if (res.status == 1) {
-                status = 'พร้อมรับสาย'
-            }
-            $('#' + res.name + '_status').html(status);
-            $('#' + res.name + '_phone').html(exts[1]);
-            $('#' + res.name + '_queue').html(res.queue);
-        } */
-
     });
 
     socket.on('agentcalled', async (response) => {
@@ -179,7 +161,6 @@
                 _token: token,
             },
             success: function(response) {
-                console.log(response.html)
                 $('#agent_list tbody').html(response.html);
             },
             error: function(xhr, status, error) {
