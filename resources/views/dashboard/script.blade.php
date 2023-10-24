@@ -14,13 +14,13 @@
         let calls_active = 0;
 
 
-        $.get(`${event_serv}/chans/` + exten, async (data, status) => {
+        $.get(`${api_serv}/chans/` + exten, async (data, status) => {
 
             await data.forEach((item, index) => {
                 let strArray = item.split("!");
                 let chan = strArray[0].split("/");
 
-                $.get(`${event_serv}/chans_variable/` + chan[1], (data, status) => {
+                $.get(`${api_serv}/chans_variable/` + chan[1], (data, status) => {
 
                     console.log(data)
                     luniq = data[0][1];
