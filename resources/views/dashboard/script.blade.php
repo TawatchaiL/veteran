@@ -162,8 +162,8 @@
 
     socket.on('queueentry', async (response) => {
         //console.log(response)
-        const waitArray = [];
-        waitArray[response.position] = response;
+        let waitArray = [];
+        waitArray[response.data.position] = response.data;
 
         console.log(waitArray);
     });
