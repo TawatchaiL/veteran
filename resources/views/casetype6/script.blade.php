@@ -339,8 +339,6 @@
             let parent_id = $(this).val();
             let nextcase = levcase + 1;
             let discase = nextcase + 1;
-            alert('OK');
-            alert(parent_id);
             if (parent_id != '' && levcase < 6) {
                 for (let i = nextcase; i < 7; i++) {
                     if (i === 2) {
@@ -381,13 +379,8 @@
                 $('#casetype' + nextcase).attr('disabled', false);
                 $('#AddName' + nextcase).attr('disabled', false);
                 $('#typelev' + nextcase).show();
+                $('#typelev' + levcase).hide();
 
-                if(parent_id === ''){
-                    $('#typelev' + levcase).show();
-                }else{
-                    $('#typelev' + levcase).hide();
-                }
-                
                 for (let i = discase; i < 7; i++) {
                     $('#casetype' + i).attr('disabled', true);
                     $('#AddName' + i).attr('disabled', true);
@@ -417,6 +410,7 @@
                     $('#casetype' + i).attr('disabled', true);
                     $('#typelev' + i).hide();
                 }
+                $('#typelev' + levcase).show();
             }
         });
     });
