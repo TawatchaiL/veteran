@@ -378,7 +378,7 @@
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td colspan="4"> ยังไม่มีสายรอในคิว</td>
+                                                                <td colspan="4" style="text-align: center;"> ยังไม่มีสายรอในคิว</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>

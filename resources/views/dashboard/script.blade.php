@@ -187,7 +187,7 @@
                     <td>${item.position}</td>
                     <td><i class="fa-solid fa-user-clock"></i> ${item.calleridnum}</td>
                     <td>${formattedTime}</td>
-                    <td>${item.connectedlinenum === 'unknown' ? '' : item.connectedlinenum}</td>
+                    <td>${item.connectedlinenum === 'unknown' ? '-' : item.connectedlinenum}</td>
                 </tr>`;
             }
         });
@@ -204,7 +204,7 @@
         const tableBody = $('#waiting_list tbody');
         await delete waitData[response.data.uniqueid];
         if (Object.keys(waitData).length === 0) {
-            tableBody.html(`<tr><td colspan="4"> ยังไม่มีสายรอในคิว</td></tr>`);
+            tableBody.html('<tr><td colspan="4" style="text-align: center;">ยังไม่มีสายรอในคิว</td></tr>');
         }
         console.log(waitData);
     });
