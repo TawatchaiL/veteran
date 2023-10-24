@@ -164,7 +164,6 @@
     socket.on('queueentry', async (response) => {
         const storedOption = localStorage.getItem('selectedOption');
         waitData[response.data.uniqueid] = response.data;
-        console.log(waitData);
 
         const tableBody = $('#waiting_list tbody');
 
@@ -174,14 +173,15 @@
         let html = '';
 
         dataArray.forEach((item) => {
-            let parsedNumber = parseInt(item.wait);
-            let hours = Math.floor(parsedNumber / 3600);
-            let minutes = Math.floor((parsedNumber % 3600) / 60);
-            let seconds = parsedNumber % 60;
-
-            let formattedTime =
-                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
             if (item.queue == storedOption) {
+                let parsedNumber = parseInt(item.wait);
+                let hours = Math.floor(parsedNumber / 3600);
+                let minutes = Math.floor((parsedNumber % 3600) / 60);
+                let seconds = parsedNumber % 60;
+
+                let formattedTime =
+                    `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
                 html += `
                 <tr id="tr_${item.uniqueid}">
                     <td>${item.position}</td>
@@ -195,14 +195,15 @@
     });
 
     socket.on('queuecallerjoin', async (response) => {
-        //waitData[response.data.uniqueid] = response.data;
-        //console.log(waitData);
+        // If you want to update the waitData with join events, uncomment and adapt this section
+        // waitData[response.data.uniqueid] = response.data;
+        // console.log(waitData);
     });
 
     socket.on('queuecallerleave', async (response) => {
         const tableBody = $('#waiting_list tbody');
-        await delete waitData[response.data.uniqueid];
-        $('#tr_' + response.data.uniqueid).remove();
+        $(`#tr_${response.data.uniqueid}`).remove();
+        delete waitData[response.data.uniqueid];
         console.log(waitData);
     });
 
