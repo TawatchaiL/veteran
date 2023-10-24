@@ -131,6 +131,10 @@
                     <b><i class="fa-solid fa-xl icon-gray fa-circle-chevron-down"></i></b>
                 </a>
             </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a class="nav-link"  href="#" ><i
+                    class="fas fa-xl fa-user"></i> สายรอคิว 0</a>
+            </li>
         @endif
         @if (!empty($sidebarc))
             <li class="nav-item d-none d-sm-inline-block"><a href="/" class="nav-link"> [ <i
