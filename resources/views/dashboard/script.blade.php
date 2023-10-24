@@ -183,11 +183,11 @@
                 `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
             if (item.queue == storedOption) {
                 html += `
-            <tr>
-                <td>${item.position}</td>
-                <td><i class="fa-solid fa-user-clock"></i> ${item.calleridnum}</td>
-                <td>${formattedTime}</td>
-            </tr>`;
+                <tr id="tr_${item.uniqueid}">
+                    <td>${item.position}</td>
+                    <td><i class="fa-solid fa-user-clock"></i> ${item.calleridnum}</td>
+                    <td>${formattedTime}</td>
+                </tr>`;
             }
         });
 
@@ -202,7 +202,7 @@
     socket.on('queuecallerleave', async (response) => {
         const tableBody = $('#waiting_list tbody');
         await delete waitData[response.data.uniqueid];
-        tableBody.html('');
+        $('#tr_' + response.data.uniqueid).remove();
         console.log(waitData);
     });
 
