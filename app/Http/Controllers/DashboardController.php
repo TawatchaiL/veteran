@@ -60,7 +60,7 @@ class DashboardController extends Controller
                 $agentName = $agent_name_array[$agent->agent_id] ?? 'Unknown'; // Replace 'Unknown' with a default value if needed
 
                 $html .= '<tr id="' . $agentName . '">
-                    <td>' . $x . '</td>
+                    <td>' . $x . '<input type="hidden" id="' . $agent->phone . '_login" value="' . $agents->login_time . '"></td>
                     <td><i class="fa-solid fa-user"></i> ' . $agent->name . '</td>
                     <td style="text-align: center;" id="' . $agentName . '_phone">' . $agent->phone . '</td>
                     <td id="' . $agentName . '_status"><i class="fa-solid fa-user-xmark status-icon offline"></i>
@@ -73,7 +73,6 @@ class DashboardController extends Controller
                 </tr>';
                 $x++;
             }
-
         }
         return response()->json([
             'html' => $html

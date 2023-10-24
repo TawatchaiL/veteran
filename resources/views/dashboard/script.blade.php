@@ -11,7 +11,6 @@
     socket.on('queuemember', async (response) => {
         console.log(response)
         const storedOption = localStorage.getItem('selectedOption');
-        let loginTime = new Date('{{ $temporaryLogintime }}').getTime() / 1000;
         let res = response.data;
         let status = '';
         let phone_status = '';
@@ -20,6 +19,8 @@
         let ring_time = '';
         let ans_cid = '';
         let ans_time = '';
+        let loginTime = '';
+
         if (res.queue == storedOption) {
             let exts = res.location.split('/');
             if (res.status == 5 || res.status == 0) {
@@ -62,6 +63,7 @@
                     <i class="fa-solid fa-user-check"></i></span> พร้อมรับสาย`
                 if (res.lastpause == 0) {
                     if (res.lastcall == 0) {
+                        loginTime = new Date($(exts[1] + '_login').val()).getTime() / 1000;
                         state_dur = duration_time(loginTime);
                     } else {
                         state_dur = duration_time(res.lastcall);
