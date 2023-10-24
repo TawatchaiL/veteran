@@ -166,12 +166,12 @@
     });
 
     socket.on('queuecallerjoin', async (response) => {
-        waitData[response.data.uniqueid] = response.data;
-        console.log(waitData);
+        //waitData[response.data.uniqueid] = response.data;
+        //console.log(waitData);
     });
 
     socket.on('queuecallerleave', async (response) => {
-        await delete waitData[response.uniqueid];
+        await delete waitData[response.data.uniqueid];
         console.log(waitData);
     });
 
