@@ -171,9 +171,7 @@
     });
 
     socket.on('queuecallerleave', async (response) => {
-        if (waitData.hasOwnProperty(response.uniqueid)) {
-            await delete waitData[response.uniqueid];
-        }
+        await delete waitData[response.uniqueid];
         console.log(waitData);
     });
 
