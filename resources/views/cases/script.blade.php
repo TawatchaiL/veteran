@@ -465,7 +465,9 @@
                         //});
 
                         suggestionsList.on('click', 'li', function() {
-                            $('#Hn').val($(this).text());
+                            var myArray = $(this).text().split(" ชื่อ-สกุล ");
+                            $('#Hn').val(myArray[0]);
+                            $('#Name').val(myArray[1]);
                             suggestionsList.empty();
                         });
                     },        
