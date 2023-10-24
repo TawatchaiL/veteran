@@ -30,6 +30,8 @@
     const state_overlay = $('#state_overlay');
     const toolbar_card = $('#toolbar_card');
     const popup_tab_main = $('#popup_tab_main');
+    const elem = document.getElementById("queuediv");
+const elemContainer = document.getElementById("queue_wait");
 
     let alert_danger = (title, message, subtitle) => {
         $(document).Toasts('create', {
@@ -105,12 +107,14 @@
         });
     });
 
-    const changeText = (newtext) => {
-    const myDiv = document.getElementById('queue_wait');
-    myDiv.classList.remove('show_tran');
-    void myDiv.offsetWidth;
-    myDiv.textContent = newtext;
-    myDiv.classList.add('show_tran');
+    function showText() {
+    elemContainer.style.opacity = 1;
+}
+function changeText(text) {
+    elemContainer.style.opacity = 0;
+    elem.innerHTML = text;
+    setTimeout (showText, 500);
+
 }
 
     const updateUI = (result) => {

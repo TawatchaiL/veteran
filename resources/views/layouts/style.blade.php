@@ -24,13 +24,8 @@
     }
 
 
-    .transition-div {
-        opacity: 0;
-        transition: opacity 0.3s;
-    }
-
-    .show_tran {
-        opacity: 1;
+    #queuediv {
+        transition: opacity 400ms;
     }
 
     *.text-toolbar {
