@@ -103,60 +103,36 @@
                                         res.datax.datac.fname +
                                         ' ' + res.datax.datac
                                         .lname + '</h3>');
-                                    $('#contractid' + cardId).val(res.datax
-                                        .datac
-                                        .id);
+                                    $('#contractid' + cardId).val(res.datax.datac.id);
                                     $('#hnp' + cardId).val(res.datax.datac.hn);
-                                    $('#adddatep' + cardId).val(res.datax.datac
-                                        .adddate);
-                                    $('#fnamep' + cardId).val(res.datax.datac
-                                        .fname);
-                                    $('#lnamep' + cardId).val(res.datax.datac
-                                        .lname);
-                                    $('#homenop' + cardId).val(res.datax.datac
-                                        .homeno);
-                                    $('#moop' + cardId).val(res.datax.datac
-                                        .moo);
-                                    $('#soip' + cardId).val(res.datax.datac
-                                        .soi);
-                                    $('#roadp' + cardId).val(res.datax.datac
-                                        .road);
-                                    $('#cityp' + cardId).val(res.datax.datac
-                                        .city);
+                                    $('#adddatep' + cardId).val(res.datax.datac.adddate);
+                                    $('#fnamep' + cardId).val(res.datax.datac.fname);
+                                    $('#lnamep' + cardId).val(res.datax.datac.lname);
+                                    $('#homenop' + cardId).val(res.datax.datac.homeno);
+                                    $('#moop' + cardId).val(res.datax.datac.moo);
+                                    $('#soip' + cardId).val(res.datax.datac.soi);
+                                    $('#roadp' + cardId).val(res.datax.datac.road);
+                                    $('#cityp' + cardId).val(res.datax.datac.city);
                                     $('#cityp' + cardId).change();
                                     setTimeout(function() {
-                                        $('#districtp' + cardId).val(res
-                                            .datax.datac
-                                            .district);
+                                        $('#districtp' + cardId).val(res.datax.datac.district);
                                         $('#districtp' + cardId)
                                             .change();
                                         setTimeout(function() {
-                                            $('#subdistrictp' +
-                                                    cardId)
-                                                .val(res
-                                                    .datax
-                                                    .datac
-                                                    .subdistrict
-                                                );
+                                            $('#subdistrictp' + cardId).val(res.datax.datac.subdistrict);
                                         }, 500)
                                     }, 500)
-                                    $('#postcodep' + cardId).val(res.datax.datac
-                                        .postcode);
-                                    $('#telhomep' + cardId).val(res.datax.datac
-                                        .telhome);
-                                    $('#phonenop' + cardId).val(res.datax.datac
-                                        .phoneno);
-                                    $('#worknop' + cardId).val(res.datax.datac
-                                        .workno);
+                                    $('#postcodep' + cardId).val(res.datax.datac.postcode);
+                                    $('#telhomep' + cardId).val(res.datax.datac.telhome);
+                                    $('#phonenop' + cardId).val(res.datax.datac.phoneno);
+                                    $('#worknop' + cardId).val(res.datax.datac.workno);
 
                                     var tbody = document.querySelector(
                                         '#myTbl3p' + cardId + ' tbody');
                                     while (tbody.firstChild) {
-                                        tbody.removeChild(tbody
-                                            .firstChild);
+                                        tbody.removeChild(tbody.firstChild);
                                     }
-                                    $.each(res.datax.emer, function(
-                                        index, value) {
+                                    $.each(res.datax.emer, function(index, value) {
                                         $('#myTbl3p' + cardId +
                                                 ' tbody')
                                             .append($('<tr>')
@@ -165,24 +141,14 @@
                                                     )
                                                     .append(
                                                         '<div class="col-md-12 col-sm-12 col-xs-12"><input type="hidden" value="' +
-                                                        value
-                                                        .id +
-                                                        '" name="emertypep' +
-                                                        cardId +
-                                                        '[]" id="emertypep' +
-                                                        cardId +
-                                                        '"><input type="text" id="emergencynamep' +
-                                                        cardId +
-                                                        '" name="emergencynamep' +
-                                                        cardId +
-                                                        '[]" class="form-control has-feedback-left" value="' +
-                                                        value
-                                                        .emergencyname +
+                                                        value.id +
+                                                        '" name="emertypep' + cardId +
+                                                        '[]" id="emertypep' + cardId +
+                                                        '"><input type="text" id="emergencynamep' + cardId +
+                                                        '" name="emergencynamep' + cardId +
+                                                        '[]" class="form-control has-feedback-left" value="' + value.emergencyname +
                                                         '" required="required"></div>'
-                                                    ))
-                                                .append($(
-                                                        '<td width="10%">'
-                                                    )
+                                                    )).append($('<td width="10%">')
                                                     .append(
                                                         '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerrelation' +
                                                         cardId +

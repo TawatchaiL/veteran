@@ -266,18 +266,18 @@
                                             <th>สถานะเคส</th>
                                             <th>สถานะการโอนสาย</th>
                                             <th>วันที่ทำรายการ</th>
-                                            <th width="120px"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($cases as $casesl)
                                         <tr>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
-                                            <td width="150px"><button type="button" data-id="" data-tabid="" class="form-control btn btn-success selectcontactp-button">บันทึกข้อมูล</button></td>
+                                            <td>{{ $casesl->casetype1 }}</td>
+                                            <td>{{ $casesl->casedetail }}</td>
+                                            <td>{{ $casesl->casestatus }}</td>
+                                            <td>{{ $casesl->tranferstatus }}</td>
+                                            <td>{{ $casesl->created_at }}</td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

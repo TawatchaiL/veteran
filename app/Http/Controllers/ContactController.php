@@ -136,9 +136,7 @@ class ContactController extends Controller
                 'cardid' => $con, 'telephone' => $con, 'contactd' => $datap
             ])->render();
         }
-        return response()->json([
-            'html' =>  $htmlContent,
-        ]);
+        return response()->json(['html' =>  $htmlContent,]);
     }
     ////edit
     public function popupcontact(Request $request)
@@ -165,12 +163,16 @@ class ContactController extends Controller
             //->orWhere('telhome', '=', $telnop)
             //->orWhere('workno', '=', $telnop)
             ->get();
+        $cases = DB::table('crm_cases')
+            ->where('contact_id', '=', $datac[0]->id)
+            ->get();
         $emer = DB::table('crm_phone_emergencies')
             ->where('contact_id', '=', $datac[0]->id)
             ->get();
 
         $data = [
             'datac' => $datac[0],
+            'cases' => $cases,
             'emer' => $emer,
         ];
         return response()->json(['datax' => $data]);
@@ -185,11 +187,15 @@ class ContactController extends Controller
             ->get();
         $contactcount = count($datac);
         if ($contactcount > 0) {
+            $cases = DB::table('crm_cases')
+            ->where('contact_id', '=', $datac[0]->id)
+            ->get();
             $emer = DB::table('crm_phone_emergencies')
                 ->where('contact_id', '=', $datac[0]->id)
                 ->get();
             $data = [
                 'datac' => $datac[0],
+                'cases' => $cases,
                 'emer' => $emer
             ];
             return response()->json(['datax' => $data]);
