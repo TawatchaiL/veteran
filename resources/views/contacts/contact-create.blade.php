@@ -193,7 +193,7 @@
 
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <strong><i class="fas fa-phone fa-xs fa-angle-right nav-icon"></i> เบอร์โทรศัพท์บ้าน:</strong>
+                                    <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์บ้าน:</strong>
                                     {!! Form::text('telhomep'.$cardid, null, [
                                         'id' => 'telhomep'.$cardid,
                                         'placeholder' => 'เบอร์โทรศัพท์บ้าน',
