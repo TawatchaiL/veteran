@@ -1,8 +1,61 @@
 <script src="{{ config('asterisk.dashboard_serv.address') }}/socket.io/socket.io.js"></script>
 <script>
     const dashboard_serv = '{{ config('asterisk.dashboard_serv.address') }}';
+    const api_serv = '{{ config('asterisk.api_serv.address') }}';
     const socket = io.connect(`${dashboard_serv}`);
     const storedOption = localStorage.getItem('selectedOption');
+
+
+    let call_list = () => {
+        let mcallprofile = '';
+        let mcallexten = '';
+        let luniq = '';
+        let mstrArray = [];
+        let calls_active = 0;
+
+
+        $.get(`${event_serv}/chans/` + exten, async (data, status) => {
+
+            await data.forEach((item, index) => {
+                let strArray = item.split("!");
+                let chan = strArray[0].split("/");
+
+                $.get(`${event_serv}/chans_variable/` + chan[1], (data, status) => {
+
+                    console.log(data)
+                    luniq = data[0][1];
+                    luniqrd = luniq.replace('.', '');
+                    mcallprofile = data[1][1];
+                    mcallexten = data[2][1];
+                    mcalldestchan = data[3][1];
+
+                    /* if (strArray[4] == 'Ringing' || strArray[4] == 'Ring') {
+                        localStorage.setItem(chan[1] + '_ring_cid',
+                        mcallexten);
+                        localStorage.setItem(chan[1] + '_ring_time',
+                            res.timestamp);
+                        $('#' + chan[1] + '_src').html(mcallexten);
+                    } else if (strArray[4] == 'Up' && strArray[12] == '') {
+                        state = 'กำลังรอสาย'
+                        state_icon =
+                            '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
+                        state_color = 'card-danger';
+                        check_box_state = 'disabled';
+                    } else if (strArray[4] == 'Up') {
+                        state = 'กำลังสนทนา'
+                        state_icon =
+                            '<i class="fa-solid fa-phone-volume fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i>';
+                        state_color = 'card-success';
+                        check_box_state = '';
+                    }
+ */
+                });
+                calls_active += 1;
+            });
+        });
+    };
+
+    call_list();
 
     socket.on('connect', () => {
         socket.emit('join', 'Client Connect To Asterisk Event Serv');
