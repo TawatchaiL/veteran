@@ -20,6 +20,7 @@
             await data.forEach((item, index) => {
                 let strArray = item.split("!");
                 let chan = strArray[0].split("/");
+                console.log(chan[1])
 
                 $.get(`${api_serv}/chans_variable/` + chan[1], (data, status) => {
                     console.log(data)
@@ -35,19 +36,16 @@
                             mcallexten);
                         localStorage.setItem(chan[1] + '_ring_time',
                             mcalluniq);
-                        $('#' + chan[1] + '_src').html(mcallexten);
                     } else if (strArray[4] == 'Up' && strArray[12] == '') {
                         localStorage.setItem(chan[1] + '_ring_cid',
                             mcallexten);
                         localStorage.setItem(chan[1] + '_ring_time',
                             mcalluniq);
-                        $('#' + chan[1] + '_src').html(mcallexten);
                     } else if (strArray[4] == 'Up') {
                         localStorage.setItem(chan[1] + '_ans_cid',
                             mcallexten);
                         localStorage.setItem(chan[1] + '_ans_time',
                             mcalluniq);
-                        $('#' + chan[1] + '_src').html(mcallexten);
                     }
 
                 });
