@@ -335,6 +335,7 @@
         //        alert('OK');
         //});
         $(document).on("change", ".casetype6chang", function() {
+            alert('OK');
             let levcase = $(this).data("lev");
             let parent_id = $(this).val();
             let nextcase = levcase + 1;
@@ -379,7 +380,7 @@
                 $('#casetype' + nextcase).attr('disabled', false);
                 $('#AddName' + nextcase).attr('disabled', false);
                 $('#typelev' + nextcase).show();
-alert(levcase);
+
                 if(parent_id === ''){
                     $('#typelev' + levcase).show();
                 }else{
