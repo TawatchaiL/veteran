@@ -9,7 +9,7 @@
     });
 
     socket.on('queuemember', async (response) => {
-        //console.log(response)
+        console.log(response)
         const storedOption = localStorage.getItem('selectedOption');
         let res = response.data;
         let status = '';
