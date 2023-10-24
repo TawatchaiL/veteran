@@ -56,7 +56,7 @@
                 console.log(res.lastpause)
                 status = `<span style="font-size: 1em; color: green;">
                     <i class="fa-solid fa-user-check"></i></span> พร้อมรับสาย`
-                if (res.lastpause == '0') {
+                if (res.lastpause == 0) {
                     state_dur = duration_time(res.lastcall);
                 } else {
                     state_dur = duration_time(res.lastpause);
@@ -167,7 +167,6 @@
                 _token: token,
             },
             success: function(response) {
-                console.log(response);
                 $('#agent_list tbody').html(response.html);
             },
             error: function(xhr, status, error) {
