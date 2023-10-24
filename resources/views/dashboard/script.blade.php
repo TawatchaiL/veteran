@@ -163,7 +163,7 @@
     socket.on('queueentry', async (response) => {
         //console.log(response)
         let waitArray = [];
-        waitArray[response.data.position] = response.data;
+        waitArray[response.data.position] = 1;
 
         console.log(waitArray);
     });
