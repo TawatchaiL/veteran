@@ -9,10 +9,9 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="tab-pane fade" id="custom-tabs-one-casedetailp{{$cardid}}" role="tabpanel" aria-labelledby="custom-tabs-one-casedetail-tabp{{$cardid}}">
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
-                            <table id="Listviewcases{{$cardid}}" class="display nowrap table table-bordered table-striped table-hover">
+                            <table id="ListviewComment" class="display nowrap table table-bordered table-striped table-hover">
                                 <thead>
                                     <tr>
                                         <th>ประเภทเคส</th>
@@ -27,7 +26,6 @@
                             </table>
                         </div>
                     </div>        
-                </div>
             </div>
             <div class="modal-footer {{-- justify-content-between --}}">
                 <button type="button" class="btn btn-success" id="SubmitCommentForm"><i class="fas fa-download"></i>
