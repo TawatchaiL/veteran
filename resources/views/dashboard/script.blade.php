@@ -1,6 +1,6 @@
-<script src="{{ config('asterisk.dashboard_serv.address') }}/socket.io/socket.io.js"></script>
+<script src="{{ config('asterisk.toolbar_serv.address') }}/socket.io/socket.io.js"></script>
 <script>
-    const dashboard_serv = '{{ config('asterisk.dashboard_serv.address') }}';
+    const dashboard_serv = '{{ config('asterisk.toolbar_serv.address') }}';
     const api_serv = '{{ config('asterisk.api_serv.address') }}';
     const socket = io.connect(`${dashboard_serv}`);
     const storedOption = localStorage.getItem('selectedOption');
