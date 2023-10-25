@@ -12,9 +12,46 @@
             .data.position, '');
     });
 
+
     socket.on('queueentry', async (response) => {
         waitData[response.data.uniqueid] = response.data;
         //$('#queue_wait').html(`( ${Object.keys(waitData).length} )`);
+        const tableBody = $('#queue_wait_list');
+
+        let dataArray = Object.values(waitData);
+        dataArray.sort((a, b) => parseInt(a.position) - parseInt(b.position));
+
+        let html = '';
+        dataArray.forEach((item) => {
+            let parsedNumber = parseInt(item.wait);
+            let hours = Math.floor(parsedNumber / 3600);
+            let minutes = Math.floor((parsedNumber % 3600) / 60);
+            let seconds = parsedNumber % 60;
+
+            let formattedTime =
+                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            if (item.queue == storedOption) {
+                html += `
+                <a href="#" class="dropdown-item hold_tab_a">
+                    <div class="media ">
+                        <img src="{{ asset('images/user.png') }}" alt="..." class="img-size-50 mr-3 img-circle">
+                        <div class="media-body">
+                            <h3 class="dropdown-item-title">
+                                ${item.calleridnum}
+                                <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                            </h3>
+                            <p class="text-sm">ลำดับที่ ${item.position}</p>
+                            <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i>${formattedTime}</p>
+                            <p class="text-sm text-muted">Agent ${item.connectedlinenum === 'unknown' ? '-' : item.connectedlinenum}</p>
+                        </div>
+                    </div>
+
+                </a>
+                <div class="dropdown-divider"></div>`;
+            }
+        });
+
+        tableBody.html(html);
         changeText(`( ${Object.keys(waitData).length} )`);
     });
 
@@ -24,7 +61,6 @@
             //$('#queue_wait').html('( 0 )');
             changeText('( 0 )');
         }
-        console.log(waitData);
     });
 
     socket.on('peerstatus', async (data) => {
