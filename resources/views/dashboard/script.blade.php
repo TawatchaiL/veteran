@@ -574,7 +574,7 @@
 
     socket.on('hangup', async (data) => {
         console.log(data)
-        parts = inputString.split('/');
+        parts = data.extension.split('/');
         extractedNumber = parts[1].split('-')[0];
         await delete active_call[extractedNumber];
         if (Object.keys(active_call).length === 0) {
