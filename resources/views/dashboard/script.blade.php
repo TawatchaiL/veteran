@@ -628,11 +628,16 @@
     socket.on('queuecallerjoin', async (response) => {
         //waitData[response.data.uniqueid] = response.data;
         //console.log(waitData);
+
     });
 
     socket.on('queuecallerabandon', async (response) => {
         //waitData[response.data.uniqueid] = response.data;
-        console.log(response);
+        //console.log(response);
+        await delete active_call[response.data.connectedlinenum];
+        if (Object.keys(active_call).length === 0) {
+            active_div.html('0');
+        }
     });
 
     socket.on('queuecallerleave', async (response) => {
