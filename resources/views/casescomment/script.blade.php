@@ -517,15 +517,23 @@
 
         $(document).on('click', '.btn-viewcomment', function() {
             id = $(this).data('id');
-            $('#RecoreModal').modal('show');
-            //$.ajax({
-            //    url: "casescomment/edit/" + id,
-           //     method: 'GET',
-            //    success: function(res) {
-
-             //       $('#CommmentModal').modal('show');
-            //    }
-            //});
+            $.ajax({
+                url: "casescomment/records" + id,
+                method: 'GET',
+                success: function(res) {
+                    $.each(res.data, function(index, value) {
+                                        $('#Listviewcases' + cardId + ' tbody').append($('<tr>')
+                                                .append($('<td>')
+                                                    .append('<div class="col-md-12 col-sm-12 col-xs-12">' + value.comment + '</div>'))
+                                                .append($('<td>')
+                                                    .append('<div class="col-md-12 col-sm-12 col-xs-12">' + value.agent + '</div>'))
+                                                .append($('<td>')
+                                                    .append('<div class="col-md-12 col-sm-12 col-xs-12">' + value.created_at + '</div>'))
+                                        );
+                                    });
+                    $('#RecoreModal').modal('show');
+                }
+            });
         });
 
 

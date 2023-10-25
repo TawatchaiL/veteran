@@ -14,10 +14,8 @@
                             <table id="ListviewComment" class="display nowrap table table-bordered table-striped table-hover">
                                 <thead>
                                     <tr>
-                                        <th>ประเภทเคส</th>
-                                        <th>รายละเอียดเคส</th>
-                                        <th>สถานะเคส</th>
-                                        <th>สถานะการโอนสาย</th>
+                                        <th>การแสดงความคิดเห็น</th>
+                                        <th>Agent</th>
                                         <th>วันที่ทำรายการ</th>
                                     </tr>
                                 </thead>
