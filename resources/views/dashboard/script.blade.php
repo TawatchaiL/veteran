@@ -204,76 +204,80 @@
     pie4071.setOption(option4071);
 
     let pie4072 = echarts.init(document.getElementById("mainbc2_4072"));
-    let option4072 = {
-        title: {
-            show: false,
-            text: 'Referer of a Website',
-            subtext: 'Fake Data',
-            left: 'center'
-        },
-        toolbox: {
-            show: true,
-            feature: {
-                /*  dataZoom: {
-                     yAxisIndex: 'none'
-                 },
-                 dataView: {
-                     readOnly: false
-                 },
-                 magicType: {
-                     type: ['line', 'bar']
-                 },
-                 restore: {}, */
-                saveAsImage: {}
-            }
-        },
-        tooltip: {
-            trigger: 'item'
-        },
-        /* legend: {
-            orient: 'vertical',
-            left: 'left'
-        }, */
-        legend: {
-            top: '5%',
-            left: 'center'
-        },
-        series: [{
-            name: 'Status',
-            type: 'pie',
-            selectedMode: 'single',
-            radius: '60%',
-            center: ['50%', '55%'],
-            data: [{
-                    value: 0,
-                    name: 'Offline'
-                },
-                {
-                    value: 0,
-                    name: 'Ready'
-                },
-                {
-                    value: 0,
-                    name: 'Pause'
-                },
-                {
-                    value: 0,
-                    name: 'Busy',
-                    selected: true
-                },
-
-            ],
-            emphasis: {
-                itemStyle: {
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+    let agent_status_chart = () => {
+        let option4072 = {
+            title: {
+                show: false,
+                text: 'Referer of a Website',
+                subtext: 'Fake Data',
+                left: 'center'
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    /*  dataZoom: {
+                         yAxisIndex: 'none'
+                     },
+                     dataView: {
+                         readOnly: false
+                     },
+                     magicType: {
+                         type: ['line', 'bar']
+                     },
+                     restore: {}, */
+                    saveAsImage: {}
                 }
-            }
-        }]
-    };
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+            /* legend: {
+                orient: 'vertical',
+                left: 'left'
+            }, */
+            legend: {
+                top: '5%',
+                left: 'center'
+            },
+            series: [{
+                name: 'Status',
+                type: 'pie',
+                selectedMode: 'single',
+                radius: '60%',
+                center: ['50%', '55%'],
+                data: [{
+                        value: 0,
+                        name: 'Offline'
+                    },
+                    {
+                        value: 0,
+                        name: 'Ready'
+                    },
+                    {
+                        value: 0,
+                        name: 'Pause'
+                    },
+                    {
+                        value: 0,
+                        name: 'Busy',
+                        selected: true
+                    },
 
-    pie4072.setOption(option4072);
+                ],
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }]
+        };
+        return pie4072;
+    }
+
+
+    pie4072.setOption(agent_status_chart());
     window.addEventListener('resize', pie4072.resize);
     //})
 
