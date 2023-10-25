@@ -517,12 +517,10 @@
 
         $(document).on('click', '.btn-viewcomment', function() {
             let id = $(this).data('rowid');
-            alert(id);
             $.ajax({
                 url: "casescomment/records/" + id,
                 method: 'GET',
                 success: function(res) {
-                    alert(res.data.length);
                     $.each(res.data, function(index, value) {
                                         $('#ListviewComment tbody').append($('<tr>')
                                                 .append($('<td>')
