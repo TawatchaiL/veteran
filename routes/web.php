@@ -78,7 +78,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/casetype6/destroy', [App\Http\Controllers\CaseType6Controller::class, 'destroy'])->name('casetype6.destroy');
     Route::post('/casetype6/destroy_all', [App\Http\Controllers\CaseType6Controller::class, 'destroy_all'])->name('casetype6.destroy_all');
 
-    Route::get('/cases', [App\Http\Controllers\CasesCommentController::class, 'index'])->name('cases');
+    Route::get('/cases', [App\Http\Controllers\CasesController::class, 'index'])->name('cases');
     Route::get('/cases/seachcontact/{id}', [App\Http\Controllers\CasesController::class, 'seachcontact'])->name('cases.seachcontact');
     Route::post('/cases/store', [App\Http\Controllers\CasesController::class, 'store'])->name('cases.store');
     Route::get('/cases/edit/{id}', [App\Http\Controllers\CasesController::class, 'edit'])->name('cases.edit');
@@ -86,7 +86,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/cases/destroy', [App\Http\Controllers\CasesController::class, 'destroy'])->name('cases.destroy');
     Route::post('/cases/destroy_all', [App\Http\Controllers\CasesController::class, 'destroy_all'])->name('cases.destroy_all');
 
-    Route::get('/casescomment', [App\Http\Controllers\CasesCommentController::class, 'index'])->name('casescomment');
+    Route::view('/casescomment', 'welcome');
+    //Route::get('/casescomment', [App\Http\Controllers\CasesCommentController::class, 'index'])->name('casescomment');
     Route::get('/casescomment/edit/{id}', [App\Http\Controllers\CasesCommentController::class, 'edit'])->name('casescomment.edit');
     Route::put('/casescomment/save/{id}', [App\Http\Controllers\CasesCommentController::class, 'update'])->name('casescomment.save');
 
