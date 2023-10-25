@@ -157,8 +157,8 @@ class CasesCommentController extends Controller
 
         $case_id = $request->input('case_id');
         $comment = $request->input('comment');
-        //$agent = $user;
-        $data=array('case_id'=>$case_id,'comment'=>$comment);
+        $agent = $user->phone;
+        $data=array('case_id'=>$case_id,'comment'=>$comment,'agent'=>$agent);
         DB::table('crm_case_comments')->insert($data);
 
         return response()->json(['success' => 'แสดงความคิดเห็น เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
