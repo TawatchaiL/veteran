@@ -215,7 +215,7 @@
                                     ]) !!}
                                 </div>
                             </div>
-                            <div class="col-xs-1 col-sm-1 col-md-1" style="translateY(25%)"><strong><i class="fa-regular fa-paste fa-2xl"></i></strong>
+                            <div class="col-xs-1 col-sm-1 col-md-1" style="align-items: flex-end;"><strong>&nbsp;</strong><strong><i class="fa-regular fa-paste fa-2xl"></i></strong>
                             </div>
                         </div>
                         <div class="row">
