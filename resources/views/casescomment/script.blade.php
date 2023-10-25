@@ -521,7 +521,9 @@
                 url: "casescomment/records/" + id,
                 method: 'GET',
                 success: function(res) {
+                    alert('OK');
                     $.each(res.data, function(index, value) {
+                        alert('OK2');
                                         $('#ListviewComment tbody').append($('<tr>')
                                                 .append($('<td>')
                                                     .append('<div class="col-md-12 col-sm-12 col-xs-12">' + value.comment + '</div>'))
