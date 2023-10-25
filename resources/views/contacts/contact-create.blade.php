@@ -191,7 +191,7 @@
 
                         <div class="row">
 
-                            <div class="col-xs-5 col-sm-5 col-md-5" style="position: absolute;top: 50px;">
+                            <div class="col-xs-5 col-sm-5 col-md-5">
                                 <div class="form-group">
                                     <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์บ้าน:</strong>
                                     {!! Form::text('telhomep'.$cardid, null, [
@@ -202,7 +202,7 @@
                                     ]) !!}
                                 </div>
                             </div>
-                            <div class="col-xs-1 col-sm-1 col-md-1" style="translateY(25%)"><strong><i class="fa-regular fa-paste fa-2xl"></i></strong>
+                            <div class="col-xs-1 col-sm-1 col-md-1" style="position: absolute;top: 50px;"><strong><i class="fa-regular fa-paste fa-2xl"></i></strong>
                             </div>
                             <div class="col-xs-5 col-sm-5 col-md-5">
                                 <div class="form-group">
