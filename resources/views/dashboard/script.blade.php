@@ -630,6 +630,11 @@
         //console.log(waitData);
     });
 
+    socket.on('queuecallerabandon', async (response) => {
+        //waitData[response.data.uniqueid] = response.data;
+        console.log(response);
+    });
+
     socket.on('queuecallerleave', async (response) => {
         const tableBody = $('#waiting_list tbody');
         await delete waitData[response.data.uniqueid];
