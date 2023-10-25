@@ -58,26 +58,22 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-xs-6 col-sm-6 col-md-6">
-                                                    <strong><i class="fas fa-code"></i> HN: </strong>
-                                                    <div id="chn"></div>
+                                                    <strong><i class="fas fa-code"></i> HN : <div id="cHn"></div></strong>                                              
                                             </div>
                                             <div class="col-xs-6 col-sm-6 col-md-6">
-                                                    <strong><i class="fas fa-user-tie"></i> ชื่อ-สกุล :</strong>
-                                                    <div id="cName"></div>
+                                                    <strong><i class="fas fa-user-tie"></i> ชื่อ-สกุล : <div id="cName"></div></strong>                                    
                                             </div>
                                         </div>
 
                                         <div class="row">
                                             <div class="col-xs-6 col-sm-6 col-md-6">
-                                                    <strong><i class="fa-regular fa-message"></i> ประเภทเคส:</strong>
-                                                    <div id="cDetail"></div>
+                                                    <strong><i class="fa-regular fa-message"></i> ประเภทเคส : <div id="cCasetype1"></div></strong>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                     <strong><i class="fa-regular fa-comment-dots"></i>
-                                                        รายละเอียด:</strong>
-                                                        <div id="cDetail"></div>
+                                                        รายละเอียด : <div id="cDetail"></div></strong>
                                             </div>
                                         </div>
 
@@ -88,13 +84,10 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-xs-6 col-sm-6 col-md-6">
-                                                    <strong><i class="fas fa-shuffle"></i> สถานะการโอนสาย : </strong>
-                                                    <div id="cTranferstatus"></div>
+                                                    <strong><i class="fas fa-shuffle"></i> สถานะการโอนสาย : <div id="cTranferstatus"></div></strong>
                                             </div>
                                             <div class="col-xs-6 col-sm-6 col-md-6">
-                                                    <strong><i class="fas fa-arrows-rotate"></i> สถานะการเคส
-                                                        :</strong>
-                                                        <div id="cCasestatus"></div>
+                                                    <strong><i class="fas fa-arrows-rotate"></i> สถานะการเคส : <div id="cCasestatus"></div></strong>   
                                             </div>
                                         </div>
 

@@ -454,10 +454,10 @@
                 success: function(res) {
                     $('#cHn').text(res.data.hn);
                     $('#cName').text(res.data.name);
-                    $('#cCasetype1').val(res.data.casetype1);
-                    $('#cDetail').val(res.data.casedetail);
-                    $('#cTranferstatus').val(res.data.tranferstatus);
-                    $('#cCasestatus').val(res.data.casestatus);
+                    $('#cCasetype1').text(res.data.casetype1);
+                    $('#cDetail').text(res.data.casedetail);
+                    $('#cTranferstatus').text(res.data.tranferstatus);
+                    $('#cCasestatus').text(res.data.casestatus);
                     $('#CommmentModal').modal('show');
                 }
             });
