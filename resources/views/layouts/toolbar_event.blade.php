@@ -6,6 +6,8 @@
     });
 
     socket.on('queuecallerjoin', async (response) => {
+        const dropdownButton = $('#queue_wait_button');
+        dropdownButton.click();
         //alert_danger('Alert', 'มีสายรอในคิว ' + response.data.count + ' สาย', '');
         alert_danger('Alert สายเข้าจาก ' + response.data.calleridnum, 'มีสายเข้าคิวจากหมายเลข: ' + response
             .data.calleridnum + '<br>ในลำดับ: ' + response
@@ -30,7 +32,7 @@
 
             let formattedTime =
                 `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-                html += `
+            html += `
                 <a href="#" class="dropdown-item">
                     <div class="media ">
                         <img src="{{ asset('images/user.png') }}" alt="..." class="img-size-50 mr-3 img-circle">

@@ -35,7 +35,6 @@
 
     let alert_danger = (title, message, subtitle) => {
         $(document).Toasts('create', {
-            positionClass: "toast-top-center",
             body: message,
             title: title,
             class: 'bg-danger mr-2 mb-2',
@@ -45,20 +44,12 @@
             zIndex: 99999999,
             fade: true,
             delay: 15000,
-            //position: 'topCenter'
-            showEasing: "swing",
-            hideEasing: "linear",
-            showMethod: "fadeIn",
-            hideMethod: "fadeOut",
-            newestOnTop: true,
-            progressBar: true,
-
+            position: 'bottomRight'
         })
     }
 
     let alert_success = (title, message, subtitle) => {
         $(document).Toasts('create', {
-            positionClass: "toast-top-center",
             body: message,
             title: title,
             class: 'bg-success mr-2 mb-2',
@@ -68,14 +59,7 @@
             zIndex: 99999999,
             fade: true,
             delay: 15000,
-            //position: 'topCenter'
-            showEasing: "swing",
-            hideEasing: "linear",
-            showMethod: "fadeIn",
-            hideMethod: "fadeOut",
-            newestOnTop: true,
-            progressBar: true,
-
+            position: 'bottomRight'
         })
     }
 
