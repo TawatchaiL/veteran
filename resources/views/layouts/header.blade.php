@@ -127,15 +127,17 @@
             <li class="nav-item d-none d-sm-inline-block">
                 <a class="btn" data-toggle="dropdown" href="#" id="queue_wait_button"><span
                         class="icon-gray"><i class="fa-solid fa-xl fa-arrow-up-1-9"></i> สายรอคิว
-                    </span><span id="queuediv"><b class="icon-blue" id="queue_wait">( 0 )</b></span> <b><i
-                            class="fa-solid  icon-gray fa-circle-chevron-down"></i></b></a>
+                    </span><span id="queuediv"><b class="icon-blue" id="queue_wait">( 0 )</b></span>
+                    {{-- <b><i
+                            class="fa-solid  icon-gray fa-circle-chevron-down"></i></b> --}}</a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" id="queue_wait_list">
                     <a href="#" class="dropdown-item hold_tab_a">
                         <div class="media ">
-                            <img src="{{ asset('images/user.png') }}" alt="..." class="img-size-50 mr-3 img-circle">
+                            <img src="{{ asset('images/user.png') }}" alt="..."
+                                class="img-size-50 mr-3 img-circle">
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
-                                ยังไม่มีสายรออยุ่ในคิว
+                                    ยังไม่มีสายรออยุ่ในคิว
                                 </h3>
                             </div>
                         </div>
