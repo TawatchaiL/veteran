@@ -1,3 +1,4 @@
+<script src="{{ config('asterisk.toolbar_serv.address') }}/socket.io/socket.io.js"></script>
 <script language="javascript" type="text/javascript">
     function generateRandomData(length) {
         const data = [];
@@ -401,9 +402,8 @@
     setInterval(function() {
         c();
     }, 30000);
-</script>
-<script src="{{ config('asterisk.toolbar_serv.address') }}/socket.io/socket.io.js"></script>
-<script>
+
+
     const dashboard_serv = '{{ config('asterisk.toolbar_serv.address') }}';
     const api_serv = '{{ config('asterisk.api_serv.address') }}';
     const socket = io.connect(`${dashboard_serv}`);
