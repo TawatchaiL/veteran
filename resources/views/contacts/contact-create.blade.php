@@ -202,7 +202,7 @@
                                     ]) !!}
                                 </div>
                             </div>
-                            <div class="col-xs-1 col-sm-1 col-md-1" style="position: absolute;top: 50px;"><strong><i class="fa-regular fa-paste fa-2xl"></i></strong>
+                            <div class="col-xs-1 col-sm-1 col-md-1" style="vertical-align: sub;"><strong><i class="fa-regular fa-paste fa-2xl"></i></strong>
                             </div>
                             <div class="col-xs-5 col-sm-5 col-md-5">
                                 <div class="form-group">
