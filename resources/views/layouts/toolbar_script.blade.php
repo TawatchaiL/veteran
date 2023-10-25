@@ -43,8 +43,8 @@
             autohide: true,
             zIndex: 99999999,
             fade: true,
-            delay: 20000,
-            position: 'bottomRight'
+            delay: 15000,
+            //position: 'bottomRight'
         })
     }
 
@@ -58,8 +58,8 @@
             autohide: true,
             zIndex: 99999999,
             fade: true,
-            delay: 20000,
-            position: 'bottomRight'
+            delay: 15000,
+            //position: 'bottomRight'
         })
     }
 
