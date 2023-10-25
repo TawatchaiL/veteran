@@ -64,7 +64,18 @@
         const tableBody = $('#queue_wait_list');
         if (Object.keys(waitData).length === 0) {
             //$('#queue_wait').html('( 0 )');
-            tableBody.html('');
+            tableBody.html(`<a href="#" class="dropdown-item hold_tab_a">
+                        <div class="media ">
+                            <img src="{{ asset('images/user.png') }}" alt="..." class="img-size-50 mr-3 img-circle">
+                            <div class="media-body">
+                                <h3 class="dropdown-item-title">
+                                ยังไม่มีสายรออยุ่ในคิว
+                                </h3>
+                            </div>
+                        </div>
+
+                    </a>
+                    <div class="dropdown-divider"></div>`);
             changeText('( 0 )');
             isDropdownClicked = false;
         }
