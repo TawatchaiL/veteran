@@ -25,7 +25,7 @@
 @can('case-list')
     <li class="nav-item">
         <a href="{{ route('casescomment') }}" class="nav-link {{ Request::is('casescomment') ? 'active' : '' }}">
-            <i class="fas fa-clipboard nav-icon"></i>
+            <i class="fa-solid fa-comment"></i>
             <p>ความคิดเห็นเรื่องที่ติดต่อ</p>
         </a>
     </li>
