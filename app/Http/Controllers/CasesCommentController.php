@@ -151,11 +151,11 @@ class CasesCommentController extends Controller
             return response()->json(['errors' => $validator->errors()->all()]);
         }
 
-        //$input = $request->all();
+        $input = $request->all();
         //$input = array_merge($input, ['agent' => $user]);
-        //$contract = CrmCaseComment::create($input);
+        $contract = CrmCaseComment::create($input);
 
-        $case_id = $request->get('case_id');
+        //$case_id = $request->get('case_id');
         //$comment = $request->input('comment');
         //$agent = $user;
         //$data=array('case_id'=>$case_id,'comment'=>$comment,'agent'=>$agent);
