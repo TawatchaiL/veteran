@@ -455,6 +455,11 @@
                     $('#cHn').text(res.data.hn);
                     $('#cName').text(res.data.name);
                     $('#cCasetype1').text(res.data.casetype1);
+                    $('#cCasetype2').text(res.data.casetype2);
+                    $('#cCasetype3').text(res.data.casetype3);
+                    $('#cCasetype4').text(res.data.casetype4);
+                    $('#cCasetype5').text(res.data.casetype5);
+                    $('#cCasetype6').text(res.data.casetype6);
                     $('#cDetail').text(res.data.casedetail);
                     $('#cTranferstatus').text(res.data.tranferstatus);
                     $('#cCasestatus').text(res.data.casestatus);
@@ -463,7 +468,7 @@
             });
         })
 
-        $('#SubmitEditForm').click(function(e) {
+        $('#SubmitCommentForm').click(function(e) {
             if (!confirm("ยืนยันการทำรายการ ?")) return;
             e.preventDefault();
 
@@ -473,13 +478,11 @@
             $('.alert-success').hide();
 
             var additionalData = {
-                casetype1: $('#Editcasetype1e').val(),
-                tranferstatus: $('#Edittranferstatuse option:selected').text(),
-                casedetail: $('#Editdetail').val(),
-                casestatus: $('#Editcasestatuse option:selected').text(),
+                case_id: $('#id').val(),
+                comment: $('#cComment').val(),
             };
             $.ajax({
-                url: "cases/save/" + id,
+                url: "casescomment/save/" + id,
                 method: 'PUT',
                 data: additionalData,
 
@@ -497,7 +500,7 @@
                         $('.alert-success').show();
                         $('.alert-success').append('<strong><li>' + result.success +
                             '</li></strong>');
-                        $('#EditModal').modal('hide');
+                        $('#CommmentModal').modal('hide');
                         toastr.success(result.success, {
                             timeOut: 5000
                         });
