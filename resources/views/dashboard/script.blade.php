@@ -227,7 +227,7 @@
             },
             series: [{
                 name: 'Status',
-                color: ['#b5b5ff', '#46c184', '#fed343', '#ff9900', '#f46884'],
+                color: ['#bbbbbb', '#46c184', '#fed343', '#ff9900', '#f46884'],
                 type: 'pie',
                 selectedMode: 'single',
                 radius: '60%',
@@ -544,8 +544,8 @@
             $('#' + phone_number + '_queue').html(res.queue);
             $('#' + phone_number + '_duration').html(state_dur);
 
-            let num_active = Object.keys(active_call).length;
             let num_ring = Object.keys(ring_call).length;
+            let num_active = Object.keys(active_call).length + num_ring;
             let num_pause = Object.keys(pause_total).length;
             let num_warp = Object.keys(warp_total).length;
             let num_ready = Object.keys(ready_total).length - (num_active + num_ring);
@@ -575,7 +575,6 @@
     });
 
     socket.on('hangup', async (data) => {
-        console.log(data)
         if (data.extension) {
             var splitResult = data.extension.split('/');
             if (splitResult.length >= 2) {
