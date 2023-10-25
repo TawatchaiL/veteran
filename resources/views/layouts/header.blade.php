@@ -125,9 +125,10 @@
         @endphp
         @if (empty($sidebarc))
             <li class="nav-item d-none d-sm-inline-block">
-                <a class="btn" data-toggle="dropdown" href="#" id="queue_wait_button"><span class="icon-gray"><i
-                            class="fa-solid fa-xl fa-arrow-up-1-9"></i> สายรอคิว
-                    </span><span id="queuediv"><b class="icon-blue" id="queue_wait">( 0 )</b></span></a>
+                <a class="btn" data-toggle="dropdown" href="#" id="queue_wait_button"><span
+                        class="icon-gray"><i class="fa-solid fa-xl fa-arrow-up-1-9"></i> สายรอคิว
+                    </span><span id="queuediv"><b class="icon-blue" id="queue_wait">( 0 )</b></span> <b><i
+                            class="fa-solid  icon-gray fa-circle-chevron-down"></i></b></a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" id="queue_wait_list">
 
 
@@ -137,7 +138,7 @@
                 <a class="btn" id="ToolbarButton"><span id="phone_state_icon"
                         class="{{ $temporaryPhoneColor }}">{!! $temporaryPhoneStatusIcon !!}</span> <b id="phone_state"
                         class="{{ $temporaryPhoneColor }}">{{ $temporaryPhoneStatus }}</b> &nbsp;&nbsp;
-                    <b><i class="fa-solid fa-xl icon-gray fa-circle-chevron-down"></i></b>
+                    <b><i class="fa-solid icon-gray fa-circle-chevron-down"></i></b>
                 </a>
             </li>
         @endif
