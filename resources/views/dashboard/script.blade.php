@@ -564,6 +564,14 @@
         }
     });
 
+    socket.on('agentdump', async (response) => {
+        await delete active_call[response.data.connectedlinenum];
+        if (Object.keys(active_call).length === 0) {
+            active_div.html('0');
+        }
+    });
+
+
     socket.on('agentcalled', async (response) => {
         //console.log(response)
         let res = response.data;
