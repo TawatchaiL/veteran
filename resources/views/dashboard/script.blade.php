@@ -204,8 +204,9 @@
     pie4071.setOption(option4071);
 
 
-    let agent_status_chart = (offline, online, pause, warp,busy) => {
+    let agent_status_chart = (offline, online, pause, warp, busy) => {
         let option4072 = {
+            colors: ['#c4c4ff', '#66DA26', '#fed343','#ff9900','#E91E63'],
             title: {
                 show: false,
                 text: 'Referer of a Website',
