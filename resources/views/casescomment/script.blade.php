@@ -449,32 +449,7 @@
             actions = 'edit';
             id = $(this).data('id');
             $.ajax({
-                url: "casetype6/casetype/0",
-                method: 'GET',
-                async: false,
-                success: function(res) {
-                    var provinceOb = $('#casetype1');
-                    provinceOb.html('<option value="">เลือกประเภทการติดต่อ</option>');
-                    $.each(res.data, function(index, item) {
-                        provinceOb.append(
-                            $('<option></option>').val(item.id).html(item
-                                .name)
-                        );
-                    });
-                }
-            });
-            $('#casetype2').html('<option value="">เลือกรายละเอียดเคส</option>');
-            $('#casetype3').html('<option value="">เลือกรายละเอียดเคสย่อย</option>');
-            $('#casetype4').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
-            $('#casetype5').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
-            $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
-            $('#casetype2').attr('disabled', true);
-            $('#casetype3').attr('disabled', true);
-            $('#casetype4').attr('disabled', true);
-            $('#casetype5').attr('disabled', true);
-            $('#casetype6').attr('disabled', true);
-            $.ajax({
-                url: "cases/edit/" + id,
+                url: "casescomment/edit/" + id,
                 method: 'GET',
                 success: function(res) {
                     console.log(res);
@@ -504,7 +479,7 @@
                     if(res.data.caseid6 != 0){
                         $('#casetype6').val(res.data.caseid6);
                     }
-                    $('#CreateModal').modal('show');
+                    $('#CommmentModal').modal('show');
                 }
             });
         })

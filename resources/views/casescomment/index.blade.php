@@ -15,17 +15,6 @@
                     <ol class="breadcrumb float-sm-right">
                         {{-- <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item active">Users Management</li> --}}
-
-                        @can('case-delete')
-                            <button type="button" class="btn btn-danger delete_all_button"><i class="fa fa-trash"></i>
-                                ลบทั้งหมด</button>
-                        @else
-                            <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
-                                title="คุณไม่มีสิทธิ์ในส่วนนี้">
-                                <button type="button" class="btn btn-danger disabled"><i class="fa fa-trash"></i>
-                                    ลบทั้งหมด</button>
-                            </span>
-                        @endcan
                     </ol>
 
                 </div>
