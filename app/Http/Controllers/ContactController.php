@@ -212,7 +212,8 @@ class ContactController extends Controller
 
         $datac = DB::table('crm_incoming')
             ->orderBy('id', 'desc')
-            ->where('agentno', '=', $user->phone)
+            //->where('agentno', '=', $user->phone)
+            ->where('agent_id', '=', $user->id)
             ->where(function ($query) {
                 $query->orWhere('status', '=', '0')
                     ->orWhere('status', '=', '1');

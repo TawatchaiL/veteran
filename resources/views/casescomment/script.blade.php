@@ -522,7 +522,7 @@
                 method: 'GET',
                 success: function(res) {
                     $.each(res.data, function(index, value) {
-                                        $('#Listviewcases' + cardId + ' tbody').append($('<tr>')
+                                        $('#ListviewComment tbody').append($('<tr>')
                                                 .append($('<td>')
                                                     .append('<div class="col-md-12 col-sm-12 col-xs-12">' + value.comment + '</div>'))
                                                 .append($('<td>')

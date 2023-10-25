@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('uniqid', 255)->nullable();
             $table->string('context', 255)->nullable();
             $table->string('telno', 15)->nullable();
+            $table->integer('agent_id')->nullable();
             $table->string('agentno', 10)->nullable();
             $table->dateTime('calltime');
             $table->integer('status')->nullable();
