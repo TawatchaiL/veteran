@@ -452,7 +452,7 @@
                 url: "casescomment/edit/" + id,
                 method: 'GET',
                 success: function(res) {
-                    console.log(res);
+                    alert(res.data.hn);
                     $('#Hn').val(res.data.hn);
                     $('#Name').val(res.data.name);
                     $('#Detail').val(res.data.casedetail);
