@@ -5,8 +5,6 @@
     const account_code = exten;
     const toolbar_serv = '{{ config('asterisk.toolbar_serv.address') }}';
     const api_serv = '{{ config('asterisk.api_serv.address') }}';
-    let obj = {};
-    let waitData = {};
 
     const dial_number = $('#dial_number');
     const dial_button = $('#dial_button');
@@ -31,6 +29,9 @@
     const toolbar_card = $('#toolbar_card');
     const popup_tab_main = $('#popup_tab_main');
     const elem_queue = document.getElementById("queue_wait");
+
+    let obj = {};
+    let waitData = {};
     let isDropdownClicked = false;
 
 
