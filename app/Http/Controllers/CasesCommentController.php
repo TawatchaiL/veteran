@@ -100,9 +100,9 @@ class CasesCommentController extends Controller
                 })
                 ->addColumn('action', function ($row) {
                     if (Gate::allows('case-edit')) {
-                        $html = '<button type="button" class="btn btn-sm btn-warning btn-edit" id="getCommentData" data-id="' . $row->id . '"><i class="fa fa-edit"></i> เพิ่มความคิดเห็น</button> ';
+                        $html = '<button type="button" class="btn btn-sm btn-warning btn-edit" id="getCommentData" data-id="' . $row->id . '"><i class="fa fa-edit"></i> แสดงความคิดเห็น</button> ';
                     } else {
-                        $html = '<button type="button" class="btn btn-sm btn-warning disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-edit"></i> เพิ่มความคิดเห็น</button> ';
+                        $html = '<button type="button" class="btn btn-sm btn-warning disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-edit"></i> แสดงความคิดเห็น</button> ';
                     }
                     if (Gate::allows('case-delete')) {
                         $html .= '<button type="button" data-rowid="' . $row->id . '" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i> ลบ</button>';
