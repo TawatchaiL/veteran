@@ -574,11 +574,19 @@
 
     socket.on('hangup', async (data) => {
         console.log(data)
-        parts = data.extension.split('/');
-        extractedNumber = parts[1].split('-')[0];
-        await delete active_call[extractedNumber];
-        if (Object.keys(active_call).length === 0) {
-            active_div.html('0');
+        if (data.extension) {
+            var splitResult = data.extension.split('/');
+            if (splitResult.length >= 2) {
+                var extractedNumber = splitResult[1].split('-')[0];
+                await delete active_call[extractedNumber];
+                if (Object.keys(active_call).length === 0) {
+                    active_div.html('0');
+                }
+            } else {
+                console.log("Invalid extension format");
+            }
+        } else {
+            console.log("Extension property is missing in the data object");
         }
     });
 
