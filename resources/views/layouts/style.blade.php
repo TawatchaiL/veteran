@@ -33,6 +33,12 @@
         opacity: 0 !important;
     }
 
+    .toast-top-center {
+        top: 12px;
+        margin: 0 auto;
+        left: 50%;
+    }
+
     *.text-toolbar {
         color: #007bff;
         ;
