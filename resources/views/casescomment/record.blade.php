@@ -9,7 +9,25 @@
                 </button>
             </div>
             <div class="modal-body">
-12345
+                <div class="tab-pane fade" id="custom-tabs-one-casedetailp{{$cardid}}" role="tabpanel" aria-labelledby="custom-tabs-one-casedetail-tabp{{$cardid}}">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <table id="Listviewcases{{$cardid}}" class="display nowrap table table-bordered table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ประเภทเคส</th>
+                                        <th>รายละเอียดเคส</th>
+                                        <th>สถานะเคส</th>
+                                        <th>สถานะการโอนสาย</th>
+                                        <th>วันที่ทำรายการ</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>        
+                </div>
             </div>
             <div class="modal-footer {{-- justify-content-between --}}">
                 <button type="button" class="btn btn-success" id="SubmitCommentForm"><i class="fas fa-download"></i>
