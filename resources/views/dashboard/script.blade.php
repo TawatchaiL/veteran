@@ -136,6 +136,7 @@
             $('#' + phone_number + '_phone').html(phone_status);
             $('#' + phone_number + '_queue').html(res.queue);
             $('#' + phone_number + '_duration').html(state_dur);
+            console.log(active_call)
             active_div.html(active_call.length);
         }
 
