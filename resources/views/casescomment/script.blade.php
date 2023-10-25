@@ -455,6 +455,11 @@
                     $('#cHn').text(res.data.hn);
                     $('#cName').text(res.data.name);
                     $('#cCasetype1').text(res.data.casetype1);
+                    $('#cCasetype2').text(res.data.casetype2);
+                    $('#cCasetype3').text(res.data.casetype3);
+                    $('#cCasetype4').text(res.data.casetype4);
+                    $('#cCasetype5').text(res.data.casetype5);
+                    $('#cCasetype6').text(res.data.casetype6);
                     $('#cDetail').text(res.data.casedetail);
                     $('#cTranferstatus').text(res.data.tranferstatus);
                     $('#cCasestatus').text(res.data.casestatus);
