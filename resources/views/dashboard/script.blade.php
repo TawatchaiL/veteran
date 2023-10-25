@@ -403,7 +403,7 @@
     let pause_total = {};
     let warp_total = {};
     let ready_total = {};
-    let offline_total = {};
+    let offline_total = 0;
 
     pie4072.setOption(agent_status_chart(0, 0, 0, 0));
     window.addEventListener('resize', pie4072.resize);
@@ -540,9 +540,10 @@
             let num_active = Object.keys(active_call).length;
             let num_pause = Object.keys(pause_total).length;
             let num_ready = Object.keys(ready_total).length;
+            let num_offline = offline_total - (num_active + num_pause + num_ready)
 
             active_div.html(num_active);
-            pie4072.setOption(agent_status_chart(2, num_ready, num_pause, num_active));
+            pie4072.setOption(agent_status_chart(num_offline, num_ready, num_pause, num_active));
         }
 
     });
@@ -687,10 +688,13 @@
                 _token: token,
             },
             success: function(response) {
+                let a = 0;
                 response.agent_arr.forEach(element => {
                     call_list(element);
+                    a++;
                 });
                 $('#agent_list tbody').html(response.html);
+                offline_total = a;
 
             },
             error: function(xhr, status, error) {
