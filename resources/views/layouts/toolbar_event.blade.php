@@ -7,10 +7,11 @@
 
     socket.on('queuecallerjoin', async (response) => {
         const dropdownButton = $('#queue_wait_button');
-        if (dropdownButton && !isDropdownClicked) {
+        if (dropdownButton.length > 0 && !isDropdownClicked) {
             dropdownButton.click();
             isDropdownClicked = true;
         }
+
         //alert_danger('Alert', 'มีสายรอในคิว ' + response.data.count + ' สาย', '');
         /*  alert_danger('Alert สายเข้าจาก ' + response.data.calleridnum, 'มีสายเข้าคิวจากหมายเลข: ' + response
              .data.calleridnum + '<br>ในลำดับ: ' + response
