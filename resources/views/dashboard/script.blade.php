@@ -22,7 +22,7 @@
         return labels;
     }
 
-    $(document).ready(function() {
+    //$(document).ready(function() {
         var options_c = {
             series: [7, 2, 4, 3],
             chart: {
@@ -202,8 +202,8 @@
 
         pie4071.setOption(option4071);
 
-        var pie4072 = echarts.init(document.getElementById("mainbc2_4072"));
-        var option4072 = {
+        let pie4072 = echarts.init(document.getElementById("mainbc2_4072"));
+        let option4072 = {
             title: {
                 show: false,
                 text: 'Referer of a Website',
@@ -274,7 +274,7 @@
 
         pie4072.setOption(option4072);
         window.addEventListener('resize', pie4072.resize);
-    })
+    //})
 
     option = {
         series: [{
