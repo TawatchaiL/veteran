@@ -31,7 +31,7 @@
             let formattedTime =
                 `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
                 html += `
-                <a href="#" class="dropdown-item hold_tab_a">
+                <a href="#" class="dropdown-item">
                     <div class="media ">
                         <img src="{{ asset('images/user.png') }}" alt="..." class="img-size-50 mr-3 img-circle">
                         <div class="media-body">
@@ -55,8 +55,10 @@
 
     socket.on('queuecallerleave', async (response) => {
         await delete waitData[response.data.uniqueid];
+        const tableBody = $('#queue_wait_list');
         if (Object.keys(waitData).length === 0) {
             //$('#queue_wait').html('( 0 )');
+            tableBody.html('');
             changeText('( 0 )');
         }
     });
