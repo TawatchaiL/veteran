@@ -61,7 +61,7 @@
                                                     <strong><i class="fas fa-code"></i> HN : <div id="cHn"></div></strong>                                              
                                             </div>
                                             <div class="col-xs-6 col-sm-6 col-md-6">
-                                                    <strong><i class="fas fa-user-tie"></i> ชื่อ-สกุล : <div id="cName"></div></strong>                                    
+                                                    <strong><i class="fas fa-user-tie"></i> ชื่อ-สกุล : 123<div id="cName"></div></strong>                                    
                                             </div>
                                         </div>
 
