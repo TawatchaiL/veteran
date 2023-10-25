@@ -452,11 +452,12 @@
                 url: "casescomment/edit/" + id,
                 method: 'GET',
                 success: function(res) {
-                    $('#cHn').val(res.data.hn);
-                    $('#cName').val(res.data.name);
-                    $('#Detail').val(res.data.casedetail);
-                    $('#tranferstatus').val(res.data.tranferstatus);
-                    $('#casestatus').val(res.data.casestatus);
+                    $('#cHn').text(res.data.hn);
+                    $('#cName').text(res.data.name);
+                    $('#cCasetype1').val(res.data.casetype1);
+                    $('#cDetail').val(res.data.casedetail);
+                    $('#cTranferstatus').val(res.data.tranferstatus);
+                    $('#cCasestatus').val(res.data.casestatus);
                     $('#CommmentModal').modal('show');
                 }
             });
