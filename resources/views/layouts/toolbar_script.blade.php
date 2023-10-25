@@ -44,7 +44,7 @@
             zIndex: 99999999,
             fade: true,
             delay: 15000,
-            //position: 'bottomRight'
+            position: 'bottomRight'
         })
     }
 
@@ -59,7 +59,7 @@
             zIndex: 99999999,
             fade: true,
             delay: 15000,
-            //position: 'bottomRight'
+            position: 'bottomRight'
         })
     }
 
