@@ -151,13 +151,8 @@ class CasesCommentController extends Controller
             return response()->json(['errors' => $validator->errors()->all()]);
         }
 
-        //$CaseComment = new CrmCaseComment();
-        //$CaseComment->case_id = $request->input('case_id');
-        //$CaseComment->comment = $request->input('comment');
-        //$CaseComment->agent = $user;
-        //$CaseComment->save();
-
         $input = $request->all();
+        $input = array_merge($input, ['agent' => $user]);
         $contract = CrmCaseComment::create($input);
 
         return response()->json(['success' => 'แสดงความคิดเห็น เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
