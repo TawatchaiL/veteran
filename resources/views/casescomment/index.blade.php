@@ -161,7 +161,7 @@
 
     </section>
 
-    @include('casescomment.commment')
+    @include('casescomment.comment')
 @endsection
 
 @section('script')
