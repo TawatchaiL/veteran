@@ -126,34 +126,6 @@ class CasesCommentController extends Controller
         
     }
 
-    public function seachcontact($id)
-    {
-        //$data = CrmContact::select('crm_contacts.hn as hn')
-        //$data = DB::table('crm_contacts')->get();
-       // $data = CrmContact::find($id);
-       $data = CrmContact::select("id","hn", "fname", "lname")
-       ->where('hn', 'LIKE', '%'. $id. '%')
-       ->get();
-       return response()->json($data);
-    }
-
-    public function store(Request $request)
-    {
-        $user = Auth::user();
-        $validator =  Validator::make($request->all(), [
-            'casetype1' => 'required|string|max:50',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()->all()]);
-        }
-
-        $input = $request->all();
-        $input = array_merge($input, ['agent' => $user->phone]);
-        $contract = CrmCase::create($input);
-        return response()->json(['success' => 'เพิ่ม เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
-    }
-
     public function edit($id)
     {
         $data = CrmCase::join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
@@ -219,24 +191,5 @@ class CasesCommentController extends Controller
        $company->update($companyd);
 
         return response()->json(['success' => 'แก้ไข เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
-    }
-
-    public function destroy(Request $request)
-    {
-        $id = $request->get('id');
-        CrmCase::find($id)->delete();
-        return ['success' => true, 'message' => 'ลบ เรื่องที่ติดต่อ เรียบร้อยแล้ว'];
-    }
-
-    public function destroy_all(Request $request)
-    {
-
-        $arr_del  = $request->get('table_records');
-
-        for ($xx = 0; $xx < count($arr_del); $xx++) {
-            CrmCase::find($arr_del[$xx])->delete();
-        }
-
-        return redirect('casescontract')->with('success', 'ลบ เรื่องที่ติดต่อ เรียบร้อยแล้ว');
     }
 }
