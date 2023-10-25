@@ -151,15 +151,15 @@ class CasesCommentController extends Controller
             return response()->json(['errors' => $validator->errors()->all()]);
         }
 
-        //$input = $request->all();
-        //$input = array_merge($input, ['agent' => $user]);
-        //$contract = CrmCaseComment::create($input);
+        $input = $request->all();
+        $input = array_merge($input, ['agent' => $user->phone]);
+        $contract = CrmCaseComment::create($input);
 
-        $case_id = $request->input('case_id');
-        $comment = $request->input('comment');
-        $agent = $user->phone;
-        $data=array('case_id'=>$case_id,'comment'=>$comment,'agent'=>$agent);
-        DB::table('crm_case_comments')->insert($data);
+        //$case_id = $request->input('case_id');
+        //$comment = $request->input('comment');
+        //$agent = $user->phone;
+        //$data=array('case_id'=>$case_id,'comment'=>$comment,'agent'=>$agent);
+        //DB::table('crm_case_comments')->insert($data);
 
         return response()->json(['success' => 'แสดงความคิดเห็น เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
     }
