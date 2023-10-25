@@ -516,7 +516,8 @@
         });
 
         $(document).on('click', '.btn-viewcomment', function() {
-            id = $(this).data('id');
+            let id = $(this).data('id');
+            alert(id);
             $.ajax({
                 url: "casescomment/records/" + id,
                 method: 'GET',
