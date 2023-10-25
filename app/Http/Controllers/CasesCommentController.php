@@ -129,17 +129,18 @@ class CasesCommentController extends Controller
 
     public function records($id)
     {
-        $data = CrmCase::join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
-        ->select('crm_cases.*','crm_contacts.hn as hn', DB::raw("concat(crm_contacts.fname, ' ', crm_contacts.lname) as name"))
-        ->where('crm_cases.id', $id)
-        ->first();
+        $data = CrmCaseComment::where('case_id', $id)->get();
 
         return response()->json(['data' => $data]);
+
     }
 
     public function edit($id)
     {
-        $data = CrmCaseComment::where('case_id', $id)->get();
+        $data = CrmCase::join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
+        ->select('crm_cases.*','crm_contacts.hn as hn', DB::raw("concat(crm_contacts.fname, ' ', crm_contacts.lname) as name"))
+        ->where('crm_cases.id', $id)
+        ->first();
 
         return response()->json(['data' => $data]);
     }
