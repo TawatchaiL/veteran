@@ -7,7 +7,6 @@
 
     socket.on('queuecallerjoin', async (response) => {
         const dropdownButton = $('#queue_wait_button');
-        let isDropdownClicked = false;
         if (dropdownButton && !isDropdownClicked) {
             dropdownButton.click();
             isDropdownClicked = true;
@@ -66,6 +65,7 @@
             //$('#queue_wait').html('( 0 )');
             tableBody.html('');
             changeText('( 0 )');
+            isDropdownClicked = false;
         }
     });
 
