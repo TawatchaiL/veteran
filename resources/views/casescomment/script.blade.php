@@ -500,7 +500,7 @@
                         $('.alert-success').show();
                         $('.alert-success').append('<strong><li>' + result.success +
                             '</li></strong>');
-                        $('#EditModal').modal('hide');
+                        $('#CommmentModal').modal('hide');
                         toastr.success(result.success, {
                             timeOut: 5000
                         });
