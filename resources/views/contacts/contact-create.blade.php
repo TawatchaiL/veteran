@@ -203,7 +203,7 @@
                                 </div>
                             </div>
                             <div class="col-xs-1 col-sm-1 col-md-1" style="align-items: flex-end;"><strong>&nbsp;</strong>
-                                <button type="button" class="form-control btn btn-warning" id="btnreset">
+                                <button type="button" class="form-control btn btn-success btnpnumber" data-tagetp="telhomep" data-tabid="{{ $cardid }}">
                                 <i class="fa-regular fa-paste fa-2xl"></i></button>
                             </div>
                             <div class="col-xs-5 col-sm-5 col-md-5">
@@ -218,7 +218,7 @@
                                 </div>
                             </div>
                             <div class="col-xs-1 col-sm-1 col-md-1" style="align-items: flex-end;"><strong>&nbsp;</strong>
-                                <button type="button" class="form-control btn btn-warning" id="btnreset">
+                                <button type="button" class="form-control btn btn-success btnpnumber" data-tagetp="phonenop" data-tabid="{{ $cardid }}">
                                 <i class="fa-regular fa-paste fa-2xl"></i></button>
                             </div>
                         </div>
@@ -236,7 +236,7 @@
                                 </div>
                             </div>
                             <div class="col-xs-1 col-sm-1 col-md-1" style="align-items: flex-end;"><strong>&nbsp;</strong>
-                                <button type="button" class="form-control btn btn-warning" id="btnreset">
+                                <button type="button" class="form-control btn btn-success btnpnumber" data-tagetp="worknop" data-tabid="{{ $cardid }}">
                                 <i class="fa-regular fa-paste fa-2xl"></i></button>
                             </div>
                         </div>
