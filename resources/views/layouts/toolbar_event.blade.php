@@ -30,7 +30,6 @@
 
             let formattedTime =
                 `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-            if (item.queue == storedOption) {
                 html += `
                 <a href="#" class="dropdown-item hold_tab_a">
                     <div class="media ">
@@ -48,7 +47,6 @@
 
                 </a>
                 <div class="dropdown-divider"></div>`;
-            }
         });
 
         tableBody.html(html);
