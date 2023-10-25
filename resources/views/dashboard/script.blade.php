@@ -227,7 +227,7 @@
             },
             series: [{
                 name: 'Status',
-                color: ['#b5b5ff', '#46c184', '#fed343','#ff9900','#f46884'],
+                color: ['#b5b5ff', '#46c184', '#fed343', '#ff9900', '#f46884'],
                 type: 'pie',
                 selectedMode: 'single',
                 radius: '60%',
@@ -574,6 +574,12 @@
 
     socket.on('hangup', data => {
         console.log(data)
+        parts = inputString.split('/');
+        extractedNumber = parts[1].split('-')[0];
+        await delete active_call[extractedNumber];
+        if (Object.keys(active_call).length === 0) {
+            active_div.html('0');
+        }
     });
 
 
