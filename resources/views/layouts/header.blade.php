@@ -128,7 +128,7 @@
                 <a class="btn" data-toggle="dropdown" href="#" id="queue_wait_button"><span class="icon-gray"><i
                             class="fa-solid fa-xl fa-arrow-up-1-9"></i> สายรอคิว
                     </span><span id="queuediv"><b class="icon-blue" id="queue_wait">( 0 )</b></span></a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" id="queue_wait_list">
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left" id="queue_wait_list">
 
 
                 </div>

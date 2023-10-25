@@ -6,12 +6,16 @@
     });
 
     socket.on('queuecallerjoin', async (response) => {
-        const dropdownButton = $('#queue_wait_list');
-        dropdownMenu.classList.add('show');
+        const dropdownButton = $('#queue_wait_button');
+        let isDropdownClicked = false;
+        if (dropdownButton && !isDropdownClicked) {
+            dropdownButton.click();
+            isDropdownClicked = true;
+        }
         //alert_danger('Alert', 'มีสายรอในคิว ' + response.data.count + ' สาย', '');
-       /*  alert_danger('Alert สายเข้าจาก ' + response.data.calleridnum, 'มีสายเข้าคิวจากหมายเลข: ' + response
-            .data.calleridnum + '<br>ในลำดับ: ' + response
-            .data.position, ''); */
+        /*  alert_danger('Alert สายเข้าจาก ' + response.data.calleridnum, 'มีสายเข้าคิวจากหมายเลข: ' + response
+             .data.calleridnum + '<br>ในลำดับ: ' + response
+             .data.position, ''); */
     });
 
 
