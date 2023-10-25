@@ -24,257 +24,257 @@
     }
 
     //$(document).ready(function() {
-        var options_c = {
-            series: [7, 2, 4, 3],
-            chart: {
-                type: 'donut',
-                //width: 460,
-                height: 330,
+    var options_c = {
+        series: [7, 2, 4, 3],
+        chart: {
+            type: 'donut',
+            //width: 460,
+            height: 330,
+        },
+        colors: ['#cacaca', '#fed343', '#66DA26', '#E91E63', '#2E93fA', '#A5978B', '#C7F464', '#81D4FA',
+            '#4ECDC4', '#FD6A6A'
+        ],
+        title: {
+            //text: 'ประเทศที่ดูมากที่สุด ประจำวันที่ 2023-06-30 - 2023-06-30',
+            align: 'left',
+            margin: 10,
+            offsetX: 0,
+            offsetY: 0,
+            floating: false,
+            style: {
+                fontSize: '14px',
+                fontWeight: 'bold',
+                //fontFamily: undefined,
+                color: '#263238'
             },
-            colors: ['#cacaca', '#fed343', '#66DA26', '#E91E63', '#2E93fA', '#A5978B', '#C7F464', '#81D4FA',
-                '#4ECDC4', '#FD6A6A'
-            ],
-            title: {
-                //text: 'ประเทศที่ดูมากที่สุด ประจำวันที่ 2023-06-30 - 2023-06-30',
-                align: 'left',
-                margin: 10,
-                offsetX: 0,
-                offsetY: 0,
-                floating: false,
-                style: {
-                    fontSize: '14px',
-                    fontWeight: 'bold',
-                    //fontFamily: undefined,
-                    color: '#263238'
+        },
+
+        labels: ['Offline', 'Pause', 'Ready', 'Busy'],
+        responsive: [{
+            breakpoint: 200,
+            options: {
+                chart: {
+                    width: 300,
                 },
-            },
-
-            labels: ['Offline', 'Pause', 'Ready', 'Busy'],
-            responsive: [{
-                breakpoint: 200,
-                options: {
-                    chart: {
-                        width: 300,
-                    },
-                    legend: {
-                        position: 'bottom'
-                    }
+                legend: {
+                    position: 'bottom'
                 }
-            }]
-        };
+            }
+        }]
+    };
 
-        //var chart_c = new ApexCharts(document.querySelector("#chart_c"), options_c);
-        //chart_c.render();
+    //var chart_c = new ApexCharts(document.querySelector("#chart_c"), options_c);
+    //chart_c.render();
 
 
-        var pie4071 = echarts.init(document.getElementById("mainbc2_4071"));
+    var pie4071 = echarts.init(document.getElementById("mainbc2_4071"));
 
-        option4071 = {
-            series: [{
-                    type: 'gauge',
-                    center: ["50%", "60%"],
-                    startAngle: 200,
-                    endAngle: -20,
-                    min: 0,
-                    max: 100,
-                    splitNumber: 5,
-                    itemStyle: {
-                        color: '#ff8484',
-                        shadowColor: '#ff6633',
-                        shadowBlur: 10,
-                        shadowOffsetX: 2,
-                        shadowOffsetY: 2
-                    },
-                    progress: {
-                        show: true,
+    option4071 = {
+        series: [{
+                type: 'gauge',
+                center: ["50%", "60%"],
+                startAngle: 200,
+                endAngle: -20,
+                min: 0,
+                max: 100,
+                splitNumber: 5,
+                itemStyle: {
+                    color: '#ff8484',
+                    shadowColor: '#ff6633',
+                    shadowBlur: 10,
+                    shadowOffsetX: 2,
+                    shadowOffsetY: 2
+                },
+                progress: {
+                    show: true,
+                    width: 20
+                },
+
+                pointer: {
+                    show: false,
+                },
+                axisLine: {
+                    lineStyle: {
                         width: 20
+                    }
+                },
+                axisTick: {
+                    distance: -45,
+                    splitNumber: 5,
+                    lineStyle: {
+                        width: 2,
+                        color: '#999'
+                    }
+                },
+                splitLine: {
+                    distance: -45,
+                    length: 14,
+                    lineStyle: {
+                        width: 2,
+                        color: '#999'
+                    }
+                },
+                axisLabel: {
+                    distance: -20,
+                    color: '#999',
+                    fontSize: 12
+                },
+                anchor: {
+                    show: true,
+                    showAbove: true,
+                    color: '#000000',
+                    size: 10,
+                    itemStyle: {
+                        borderWidth: 3,
                     },
+                },
+                title: {
+                    show: false
+                },
+                detail: {
+                    valueAnimation: true,
+                    width: '60%',
+                    lineHeight: 40,
+                    height: '15%',
+                    borderRadius: 8,
+                    /* offsetCenter: [0, '-15%'], */
+                    fontSize: 20,
+                    fontWeight: 'bolder',
+                    formatter: '{value} %',
+                    color: '#000000'
+                },
+                data: [{
+                    value: 73
+                }]
+            },
 
-                    pointer: {
-                        show: false,
+            {
+                type: 'gauge',
+                center: ["50%", "60%"],
+                startAngle: 200,
+                endAngle: -20,
+                min: 0,
+                max: 100,
+                itemStyle: {
+                    color: '#ff8484',
+                    shadowColor: '#ff6633',
+                    shadowBlur: 10,
+                    shadowOffsetX: 2,
+                    shadowOffsetY: 2
+                },
+                progress: {
+                    show: true,
+                    width: 8
+                },
+                anchor: {
+                    show: false
+                },
+                axisLine: {
+                    show: false,
+                    roundCap: false,
+                    lineStyle: {
+                        width: 12,
+                        color: [
+                            [0.1, '#00C853'],
+                            [0.8, '#FFD740'],
+                            [1, '#ff8484'],
+                        ],
                     },
-                    axisLine: {
-                        lineStyle: {
-                            width: 20
-                        }
-                    },
-                    axisTick: {
-                        distance: -45,
-                        splitNumber: 5,
-                        lineStyle: {
-                            width: 2,
-                            color: '#999'
-                        }
-                    },
-                    splitLine: {
-                        distance: -45,
-                        length: 14,
-                        lineStyle: {
-                            width: 2,
-                            color: '#999'
-                        }
-                    },
-                    axisLabel: {
-                        distance: -20,
-                        color: '#999',
-                        fontSize: 12
-                    },
-                    anchor: {
-                        show: true,
-                        showAbove: true,
-                        color: '#000000',
-                        size: 10,
-                        itemStyle: {
-                            borderWidth: 3,
-                        },
-                    },
-                    title: {
-                        show: false
-                    },
-                    detail: {
-                        valueAnimation: true,
-                        width: '60%',
-                        lineHeight: 40,
-                        height: '15%',
-                        borderRadius: 8,
-                        /* offsetCenter: [0, '-15%'], */
-                        fontSize: 20,
-                        fontWeight: 'bolder',
-                        formatter: '{value} %',
-                        color: '#000000'
-                    },
-                    data: [{
-                        value: 73
-                    }]
+                },
+                axisTick: {
+                    show: false,
+                },
+                splitLine: {
+                    show: false
+                },
+                axisLabel: {
+                    show: false
+                },
+                detail: {
+                    show: false
+                },
+                data: [{
+                    value: 73,
+                }]
+
+            }
+        ],
+    };
+
+    pie4071.setOption(option4071);
+
+    let pie4072 = echarts.init(document.getElementById("mainbc2_4072"));
+    let option4072 = {
+        title: {
+            show: false,
+            text: 'Referer of a Website',
+            subtext: 'Fake Data',
+            left: 'center'
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                /*  dataZoom: {
+                     yAxisIndex: 'none'
+                 },
+                 dataView: {
+                     readOnly: false
+                 },
+                 magicType: {
+                     type: ['line', 'bar']
+                 },
+                 restore: {}, */
+                saveAsImage: {}
+            }
+        },
+        tooltip: {
+            trigger: 'item'
+        },
+        /* legend: {
+            orient: 'vertical',
+            left: 'left'
+        }, */
+        legend: {
+            top: '5%',
+            left: 'center'
+        },
+        series: [{
+            name: 'Status',
+            type: 'pie',
+            selectedMode: 'single',
+            radius: '60%',
+            center: ['50%', '55%'],
+            data: [{
+                    value: 0,
+                    name: 'Offline'
+                },
+                {
+                    value: 0,
+                    name: 'Ready'
+                },
+                {
+                    value: 0,
+                    name: 'Pause'
+                },
+                {
+                    value: 0,
+                    name: 'Busy',
+                    selected: true
                 },
 
-                {
-                    type: 'gauge',
-                    center: ["50%", "60%"],
-                    startAngle: 200,
-                    endAngle: -20,
-                    min: 0,
-                    max: 100,
-                    itemStyle: {
-                        color: '#ff8484',
-                        shadowColor: '#ff6633',
-                        shadowBlur: 10,
-                        shadowOffsetX: 2,
-                        shadowOffsetY: 2
-                    },
-                    progress: {
-                        show: true,
-                        width: 8
-                    },
-                    anchor: {
-                        show: false
-                    },
-                    axisLine: {
-                        show: false,
-                        roundCap: false,
-                        lineStyle: {
-                            width: 12,
-                            color: [
-                                [0.1, '#00C853'],
-                                [0.8, '#FFD740'],
-                                [1, '#ff8484'],
-                            ],
-                        },
-                    },
-                    axisTick: {
-                        show: false,
-                    },
-                    splitLine: {
-                        show: false
-                    },
-                    axisLabel: {
-                        show: false
-                    },
-                    detail: {
-                        show: false
-                    },
-                    data: [{
-                        value: 73,
-                    }]
-
-                }
             ],
-        };
-
-        pie4071.setOption(option4071);
-
-        let pie4072 = echarts.init(document.getElementById("mainbc2_4072"));
-        let option4072 = {
-            title: {
-                show: false,
-                text: 'Referer of a Website',
-                subtext: 'Fake Data',
-                left: 'center'
-            },
-            toolbox: {
-                show: true,
-                feature: {
-                    /*  dataZoom: {
-                         yAxisIndex: 'none'
-                     },
-                     dataView: {
-                         readOnly: false
-                     },
-                     magicType: {
-                         type: ['line', 'bar']
-                     },
-                     restore: {}, */
-                    saveAsImage: {}
+            emphasis: {
+                itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
                 }
-            },
-            tooltip: {
-                trigger: 'item'
-            },
-            /* legend: {
-                orient: 'vertical',
-                left: 'left'
-            }, */
-            legend: {
-                top: '5%',
-                left: 'center'
-            },
-            series: [{
-                name: 'Status',
-                type: 'pie',
-                selectedMode: 'single',
-                radius: '60%',
-                center: ['50%', '55%'],
-                data: [{
-                        value: 0,
-                        name: 'Offline'
-                    },
-                    {
-                        value: 0,
-                        name: 'Ready'
-                    },
-                    {
-                        value: 0,
-                        name: 'Pause'
-                    },
-                    {
-                        value: 0,
-                        name: 'Busy',
-                        selected: true
-                    },
+            }
+        }]
+    };
 
-                ],
-                emphasis: {
-                    itemStyle: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                }
-            }]
-        };
-
-        pie4072.setOption(option4072);
-        window.addEventListener('resize', pie4072.resize);
+    pie4072.setOption(option4072);
+    window.addEventListener('resize', pie4072.resize);
     //})
 
     option = {
@@ -473,262 +473,284 @@
     });
 
     socket.on('queuemember', async (response) => {
-        //console.log(response)
-        const storedOption = localStorage.getItem('selectedOption');
-        let res = response.data;
-        let status = '';
-        let phone_status = '';
-        let state_dur = '';
-        let ring_cid = '';
-        let ring_time = '';
-        let ans_cid = '';
-        let ans_time = '';
-        let loginTime = '';
-        let exts = res.location.split('/');
-        let phone_number = exts[1];
-        const div_src = $('#' + phone_number + '_src');
+                //console.log(response)
+                const storedOption = localStorage.getItem('selectedOption');
+                let res = response.data;
+                let status = '';
+                let phone_status = '';
+                let state_dur = '';
+                let ring_cid = '';
+                let ring_time = '';
+                let ans_cid = '';
+                let ans_time = '';
+                let loginTime = '';
+                let exts = res.location.split('/');
+                let phone_number = exts[1];
+                const div_src = $('#' + phone_number + '_src');
 
-        if (res.queue == storedOption) {
-            if (res.status == 5 || res.status == 0) {
-                phone_status = `<span style="font-size: 1em; color: red;">
+                if (res.queue == storedOption) {
+                    if (res.status == 5 || res.status == 0) {
+                        phone_status = `<span style="font-size: 1em; color: red;">
                     <i class="fa-solid fa-triangle-exclamation"></i></span> ` + phone_number
-                status = 'โทรศัพท์ไม่พร้อมใช้งาน'
-            } else {
-                phone_status = phone_number
-            }
-
-            if (res.paused == 1) {
-                if (res.pausedreason == 'Warp UP') {
-                    status = `<span style="font-size: 1em; color: #ff9900;">
-                        <i class="fa-solid fa-user-pen"></i></span> Warp UP`
-                    state_dur = duration_time(res.lastpause);
-                    warp_total[phone_number] = 1;
-                } else {
-                    status = `<span style="font-size: 1em; color: #ff9900;">
-                    <i class="fa-solid fa-user-clock"></i></span> พักสาย ( ${res.pausedreason} )`
-                    state_dur = duration_time(res.lastpause);
-                    pause_total[phone_number] = 1;
-                }
-            } else if (res.status == 6) {
-                ring_cid = localStorage.getItem(phone_number + '_ring_cid');
-                ring_time = localStorage.getItem(phone_number + '_ring_time');
-                status = `<span style="font-size: 1em; color: red;">
-                    <i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i></span> กำลังรอสาย`
-                div_src.html(ring_cid);
-                state_dur = duration_miltime(ring_time);
-            } else if (res.status == 2) {
-                ans_cid = localStorage.getItem(phone_number + '_ans_cid');
-                ans_time = localStorage.getItem(phone_number + '_ans_time');
-                status = `<span style="font-size: 1em; color: red;">
-                    <i class="fa-solid fa-phone-volume fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังสนทนา`
-                div_src.html(ans_cid);
-                state_dur = duration_miltime(ans_time);
-                active_call[phone_number] = 1;
-            } else if (res.status == 8) {
-                active_call[phone_number] = 1;
-                status = `<span style="font-size: 1em; color: #ff9900;">
-                    <i class="fa-solid fa-user-clock fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังพักสาย`
-            } else if (res.status == 1) {
-                ready_total[phone_number] = 1;
-                status = `<span style="font-size: 1em; color: green;">
-                    <i class="fa-solid fa-user-check"></i></span> พร้อมรับสาย`
-                if (res.lastpause == 0) {
-                    if (res.lastcall == 0) {
-                        loginTime = new Date($('#' + exts[1] + '_login').val()).getTime() / 1000;
-                        state_dur = duration_time(loginTime);
+                        status = 'โทรศัพท์ไม่พร้อมใช้งาน'
                     } else {
-                        state_dur = duration_time(res.lastcall);
+                        phone_status = phone_number
                     }
-                } else {
-                    state_dur = duration_time(res.lastpause);
+
+                    if (res.paused == 1) {
+                        if (res.pausedreason == 'Warp UP') {
+                            status = `<span style="font-size: 1em; color: #ff9900;">
+                        <i class="fa-solid fa-user-pen"></i></span> Warp UP`
+                            state_dur = duration_time(res.lastpause);
+                            warp_total[phone_number] = 1;
+                        } else {
+                            status = `<span style="font-size: 1em; color: #ff9900;">
+                    <i class="fa-solid fa-user-clock"></i></span> พักสาย ( ${res.pausedreason} )`
+                            state_dur = duration_time(res.lastpause);
+                            pause_total[phone_number] = 1;
+                        }
+                    } else if (res.status == 6) {
+                        ring_cid = localStorage.getItem(phone_number + '_ring_cid');
+                        ring_time = localStorage.getItem(phone_number + '_ring_time');
+                        status = `<span style="font-size: 1em; color: red;">
+                    <i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i></span> กำลังรอสาย`
+                        div_src.html(ring_cid);
+                        state_dur = duration_miltime(ring_time);
+                    } else if (res.status == 2) {
+                        ans_cid = localStorage.getItem(phone_number + '_ans_cid');
+                        ans_time = localStorage.getItem(phone_number + '_ans_time');
+                        status = `<span style="font-size: 1em; color: red;">
+                    <i class="fa-solid fa-phone-volume fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังสนทนา`
+                        div_src.html(ans_cid);
+                        state_dur = duration_miltime(ans_time);
+                        active_call[phone_number] = 1;
+                    } else if (res.status == 8) {
+                        active_call[phone_number] = 1;
+                        status = `<span style="font-size: 1em; color: #ff9900;">
+                    <i class="fa-solid fa-user-clock fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังพักสาย`
+                    } else if (res.status == 1) {
+                        ready_total[phone_number] = 1;
+                        status = `<span style="font-size: 1em; color: green;">
+                    <i class="fa-solid fa-user-check"></i></span> พร้อมรับสาย`
+                        if (res.lastpause == 0) {
+                            if (res.lastcall == 0) {
+                                loginTime = new Date($('#' + exts[1] + '_login').val()).getTime() / 1000;
+                                state_dur = duration_time(loginTime);
+                            } else {
+                                state_dur = duration_time(res.lastcall);
+                            }
+                        } else {
+                            state_dur = duration_time(res.lastpause);
+                        }
+                    }
+
+                    $('#' + phone_number + '_status').html(status);
+                    $('#' + phone_number + '_phone').html(phone_status);
+                    $('#' + phone_number + '_queue').html(res.queue);
+                    $('#' + phone_number + '_duration').html(state_dur);
+                    active_div.html(Object.keys(active_call).length);
+
+                     option4072 = {
+                        series: [{
+                                name: 'Series 1',
+                                type: 'pie',
+                                // Other properties for series 1
+                                data: 2, // Your data here
+                            },
+                            {
+                                name: 'Series 2',
+                                type: 'pie',
+                                // Other properties for series 2
+                                data: Object.keys(ready_total).length, // Your data here
+                            },
+                            {
+                                name: 'Series 3',
+                                type: 'pie',
+                                // Other properties for series 3
+                                data: Object.keys(pause_total).length, // Your data here
+                            },
+                            {
+                                name: 'Series 4',
+                                type: 'pie',
+                                // Other properties for series 4
+                                data: Object.keys(active_call).length, // Your data here
+                            }
+                        ],
+
+                    }
+                    pie4072.setOption(option4072);
+
+                });
+
+            socket.on('queuememberstatus', async (response) => {});
+
+            socket.on('agentcomplete', async (response) => {
+                await delete active_call[response.data.connectedlinenum];
+                if (Object.keys(active_call).length === 0) {
+                    active_div.html('0');
                 }
-            }
+            });
 
-            $('#' + phone_number + '_status').html(status);
-            $('#' + phone_number + '_phone').html(phone_status);
-            $('#' + phone_number + '_queue').html(res.queue);
-            $('#' + phone_number + '_duration').html(state_dur);
-            active_div.html(Object.keys(active_call).length);
+            socket.on('agentcalled', async (response) => {
+                //console.log(response)
+                let res = response.data;
+                localStorage.setItem(res.destcalleridnum + '_ring_cid',
+                    res.calleridnum);
+                localStorage.setItem(res.destcalleridnum + '_ring_time',
+                    res.timestamp);
+                $('#' + res.destcalleridnum + '_src').html(res.calleridnum);
+            });
 
-            option4072.series[0].data = 2;
-            option4072.series[1].data = Object.keys(ready_total).length;
-            option4072.series[2].data = Object.keys(pause_total).length;
-            option4072.series[3].data = Object.keys(active_call).length;
-            pie4072.setOption(option4072);
-        }
+            socket.on('agentconnect', async (response) => {
+                //console.log(response)
+                let res = response.data;
+                localStorage.setItem(res.destcalleridnum + '_ans_cid',
+                    res.calleridnum);
+                localStorage.setItem(res.destcalleridnum + '_ans_time',
+                    Math.floor(Date.now() / 1000));
+                $('#' + res.destcalleridnum + '_src').html(res.calleridnum);
+            });
 
-    });
+            socket.on('queueparams', async (response) => {
+                //console.log(response)
+            });
 
-    socket.on('queuememberstatus', async (response) => {
-    });
+            socket.on('queueentry', async (response) => {
+                const storedOption = localStorage.getItem('selectedOption');
+                waitData[response.data.uniqueid] = response.data;
+                console.log(waitData);
 
-    socket.on('agentcomplete', async (response) => {
-        await delete active_call[response.data.connectedlinenum];
-        if (Object.keys(active_call).length === 0) {
-            active_div.html('0');
-        }
-    });
+                const tableBody = $('#waiting_list tbody');
 
-    socket.on('agentcalled', async (response) => {
-        //console.log(response)
-        let res = response.data;
-        localStorage.setItem(res.destcalleridnum + '_ring_cid',
-            res.calleridnum);
-        localStorage.setItem(res.destcalleridnum + '_ring_time',
-            res.timestamp);
-        $('#' + res.destcalleridnum + '_src').html(res.calleridnum);
-    });
+                let dataArray = Object.values(waitData);
+                dataArray.sort((a, b) => parseInt(a.position) - parseInt(b.position));
 
-    socket.on('agentconnect', async (response) => {
-        //console.log(response)
-        let res = response.data;
-        localStorage.setItem(res.destcalleridnum + '_ans_cid',
-            res.calleridnum);
-        localStorage.setItem(res.destcalleridnum + '_ans_time',
-            Math.floor(Date.now() / 1000));
-        $('#' + res.destcalleridnum + '_src').html(res.calleridnum);
-    });
+                let html = '';
+                let waiting_total = 0;
 
-    socket.on('queueparams', async (response) => {
-        //console.log(response)
-    });
+                dataArray.forEach((item) => {
+                    let parsedNumber = parseInt(item.wait);
+                    let hours = Math.floor(parsedNumber / 3600);
+                    let minutes = Math.floor((parsedNumber % 3600) / 60);
+                    let seconds = parsedNumber % 60;
 
-    socket.on('queueentry', async (response) => {
-        const storedOption = localStorage.getItem('selectedOption');
-        waitData[response.data.uniqueid] = response.data;
-        console.log(waitData);
-
-        const tableBody = $('#waiting_list tbody');
-
-        let dataArray = Object.values(waitData);
-        dataArray.sort((a, b) => parseInt(a.position) - parseInt(b.position));
-
-        let html = '';
-        let waiting_total = 0;
-
-        dataArray.forEach((item) => {
-            let parsedNumber = parseInt(item.wait);
-            let hours = Math.floor(parsedNumber / 3600);
-            let minutes = Math.floor((parsedNumber % 3600) / 60);
-            let seconds = parsedNumber % 60;
-
-            let formattedTime =
-                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-            if (item.queue == storedOption) {
-                html += `
+                    let formattedTime =
+                        `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                    if (item.queue == storedOption) {
+                        html += `
                 <tr>
                     <td>${item.position}</td>
                     <td><i class="fa-solid fa-user-clock"></i> ${item.calleridnum}</td>
                     <td>${formattedTime}</td>
                     <td>${item.connectedlinenum === 'unknown' ? '-' : item.connectedlinenum}</td>
                 </tr>`;
-                waiting_total++;
-            }
-        });
-
-        tableBody.html(html);
-        waiting_div.html(waiting_total);
-    });
-
-    socket.on('queuecallerjoin', async (response) => {
-        //waitData[response.data.uniqueid] = response.data;
-        //console.log(waitData);
-    });
-
-    socket.on('queuecallerleave', async (response) => {
-        const tableBody = $('#waiting_list tbody');
-        await delete waitData[response.data.uniqueid];
-        if (Object.keys(waitData).length === 0) {
-            tableBody.html('<tr><td colspan="4" style="text-align: center;">ยังไม่มีสายรอในคิว</td></tr>');
-            waiting_div.html('0');
-        }
-        console.log(waitData);
-    });
-
-    /* setInterval(() => {
-        socket.emit('getqueue', {
-            queue: storedOption,
-        });
-    }, 1000); */
-
-    let duration_time = (timestamp) => {
-        let presentTimestamp = Math.floor(Date.now() / 1000);
-        let timeDifference = presentTimestamp - timestamp;
-
-        let hours = Math.floor(timeDifference / 3600);
-        let minutes = Math.floor((timeDifference % 3600) / 60);
-        let seconds = timeDifference % 60;
-
-        let formattedHours = String(hours).padStart(2, '0');
-        let formattedMinutes = String(minutes).padStart(2, '0');
-        let formattedSeconds = String(seconds).padStart(2, '0');
-
-        const duration = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
-        return duration;
-    }
-
-    let duration_miltime = (timestampMilliseconds) => {
-        // Get the current timestamp for the present time (in seconds)
-        let presentTimestamp = Math.floor(Date.now() / 1000);
-
-        // Convert the provided timestamp in milliseconds to seconds
-        let timestampSeconds = Math.floor(timestampMilliseconds);
-
-        // Calculate the time difference in seconds
-        let timeDifference = presentTimestamp - timestampSeconds;
-
-        let hours = Math.floor(timeDifference / 3600);
-        let minutes = Math.floor((timeDifference % 3600) / 60);
-        let seconds = timeDifference % 60;
-
-        let formattedHours = String(hours).padStart(2, '0');
-        let formattedMinutes = String(minutes).padStart(2, '0');
-        let formattedSeconds = String(seconds).padStart(2, '0');
-
-        const duration = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
-        return duration;
-    }
-
-
-    let get_agent = (selectedOption) => {
-        $.ajax({
-            url: '{{ route('dashboard.agent_list') }}',
-            type: 'post',
-            data: {
-                queue: selectedOption,
-                _token: token,
-            },
-            success: function(response) {
-                response.agent_arr.forEach(element => {
-                    call_list(element);
+                        waiting_total++;
+                    }
                 });
-                $('#agent_list tbody').html(response.html);
 
-            },
-            error: function(xhr, status, error) {
-                // Handle errors
+                tableBody.html(html);
+                waiting_div.html(waiting_total);
+            });
+
+            socket.on('queuecallerjoin', async (response) => {
+                //waitData[response.data.uniqueid] = response.data;
+                //console.log(waitData);
+            });
+
+            socket.on('queuecallerleave', async (response) => {
+                const tableBody = $('#waiting_list tbody');
+                await delete waitData[response.data.uniqueid];
+                if (Object.keys(waitData).length === 0) {
+                    tableBody.html(
+                        '<tr><td colspan="4" style="text-align: center;">ยังไม่มีสายรอในคิว</td></tr>');
+                    waiting_div.html('0');
+                }
+                console.log(waitData);
+            });
+
+            /* setInterval(() => {
+                socket.emit('getqueue', {
+                    queue: storedOption,
+                });
+            }, 1000); */
+
+            let duration_time = (timestamp) => {
+                let presentTimestamp = Math.floor(Date.now() / 1000);
+                let timeDifference = presentTimestamp - timestamp;
+
+                let hours = Math.floor(timeDifference / 3600);
+                let minutes = Math.floor((timeDifference % 3600) / 60);
+                let seconds = timeDifference % 60;
+
+                let formattedHours = String(hours).padStart(2, '0');
+                let formattedMinutes = String(minutes).padStart(2, '0');
+                let formattedSeconds = String(seconds).padStart(2, '0');
+
+                const duration = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+                return duration;
             }
-        });
-    }
 
-    $(document).ready(() => {
-        const selectElement = $('#redirectSelect');
+            let duration_miltime = (timestampMilliseconds) => {
+                // Get the current timestamp for the present time (in seconds)
+                let presentTimestamp = Math.floor(Date.now() / 1000);
 
-        if (storedOption) {
-            selectElement.val(storedOption);
-        }
+                // Convert the provided timestamp in milliseconds to seconds
+                let timestampSeconds = Math.floor(timestampMilliseconds);
 
-        get_agent(storedOption);
+                // Calculate the time difference in seconds
+                let timeDifference = presentTimestamp - timestampSeconds;
 
-        selectElement.on('change', () => {
-            const selectedOption = selectElement.val();
-            if (selectedOption) {
-                localStorage.setItem('selectedOption',
-                    selectedOption);
+                let hours = Math.floor(timeDifference / 3600);
+                let minutes = Math.floor((timeDifference % 3600) / 60);
+                let seconds = timeDifference % 60;
+
+                let formattedHours = String(hours).padStart(2, '0');
+                let formattedMinutes = String(minutes).padStart(2, '0');
+                let formattedSeconds = String(seconds).padStart(2, '0');
+
+                const duration = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+                return duration;
             }
 
-            get_agent(selectedOption);
-        });
-    });
+
+            let get_agent = (selectedOption) => {
+                $.ajax({
+                    url: '{{ route('dashboard.agent_list') }}',
+                    type: 'post',
+                    data: {
+                        queue: selectedOption,
+                        _token: token,
+                    },
+                    success: function(response) {
+                        response.agent_arr.forEach(element => {
+                            call_list(element);
+                        });
+                        $('#agent_list tbody').html(response.html);
+
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors
+                    }
+                });
+            }
+
+            $(document).ready(() => {
+                const selectElement = $('#redirectSelect');
+
+                if (storedOption) {
+                    selectElement.val(storedOption);
+                }
+
+                get_agent(storedOption);
+
+                selectElement.on('change', () => {
+                    const selectedOption = selectElement.val();
+                    if (selectedOption) {
+                        localStorage.setItem('selectedOption',
+                            selectedOption);
+                    }
+
+                    get_agent(selectedOption);
+                });
+            });
 </script>
-
