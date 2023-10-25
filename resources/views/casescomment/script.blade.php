@@ -478,7 +478,7 @@
             $('.alert-success').hide();
 
             var additionalData = {
-                case_id: $('#id').val(),
+                case_id: id,
                 comment: $('#cComment').val(),
             };
             $.ajax({
