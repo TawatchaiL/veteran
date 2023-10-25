@@ -572,6 +572,10 @@
         }
     });
 
+    socket.on('hangup', data => {
+        console.log(data)
+    });
+
 
     socket.on('agentcalled', async (response) => {
         //console.log(response)
