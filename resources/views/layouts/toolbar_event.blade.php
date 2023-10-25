@@ -46,7 +46,7 @@
                                 <span class="float-right text-sm text-danger"><i class="fa-solid fa-sync fa-spin"></i></span>
                             </h3>
                             <p class="text-sm">ลำดับที่ ${item.position}</p>
-                            <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i>${formattedTime}</p>
+                            <p class="text-sm text-muted"><i class="far fa-clock fa-bounce mr-1"></i>${formattedTime}</p>
                             <p class="text-sm text-muted">Agent ${item.connectedlinenum === 'unknown' ? '-' : item.connectedlinenum}</p>
                         </div>
                     </div>
