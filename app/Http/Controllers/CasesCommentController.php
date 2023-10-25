@@ -143,9 +143,7 @@ class CasesCommentController extends Controller
         $rules = [
             'comment' => 'required|string|max:20',
             //'postcode' => 'integer|max:10',
-
         ];
-
 
         $validator =  Validator::make($request->all(), $rules);
 
@@ -158,6 +156,9 @@ class CasesCommentController extends Controller
         //$CaseComment->comment = $request->input('comment');
         //$CaseComment->agent = $user;
         //$CaseComment->save();
+
+        $input = $request->all();
+        $contract = CaseComment::create($input);
 
         return response()->json(['success' => 'แสดงความคิดเห็น เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
     }
