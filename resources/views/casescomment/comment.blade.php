@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <h4 class="modal-title"><i class="fa-regular fa-clipboard"></i> แก้ไข เรื่องที่ติดต่อ</h4>
+                <h4 class="modal-title"><i class="fa-regular fa-clipboard"></i> แสดงความคิดเห็น เรื่องที่ติดต่อ</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -58,15 +58,8 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-xs-6 col-sm-6 col-md-6">
-                                                <div class="form-group">
-                                                    <strong><i class="fas fa-code"></i> HN:</strong>
-                                                    {!! Form::text('ehn', NULL, [
-                                                        'id' => 'Edithn',
-                                                        'placeholder' => 'Name',
-                                                        'class' => 'form-control',
-                                                        'readonly' => true,
-                                                    ]) !!}
-                                                </div>
+                                                    <strong><i class="fas fa-code"></i> HN: </strong>
+                                                    <div id="Edithn"></div>
                                             </div>
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
