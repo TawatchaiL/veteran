@@ -138,6 +138,7 @@ class LoginController extends Controller
 
                 if ($inuseCount > 0) {
                     //$this->logoff_to_login_phone_error('หมายเลขโทรศัพท์ถูกใช้งานแล้ว');
+                    auth()->logout();
                     return redirect()->route('login')
                         ->with('login_error', 'หมายเลขโทรศัพท์ถูกใช้งานแล้ว')
                         ->withErrors(['email' => 'หมายเลขโทรศัพท์ถูกใช้งานแล้ว']);
