@@ -59,18 +59,11 @@
                                         <div class="row">
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                     <strong><i class="fas fa-code"></i> HN: </strong>
-                                                    <div id="Hn"></div>
+                                                    <div id="chn"></div>
                                             </div>
                                             <div class="col-xs-6 col-sm-6 col-md-6">
-                                                <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> ชื่อ-สกุล :</strong>
-                                                    {!! Form::text('ename', NULL, [
-                                                        'id' => 'EditName',
-                                                        'placeholder' => 'Name',
-                                                        'class' => 'form-control',
-                                                        'readonly' => true,
-                                                    ]) !!}
-                                                </div>
+                                                    <div id="cName"></div>
                                             </div>
                                         </div>
 
