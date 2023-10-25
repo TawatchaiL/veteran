@@ -151,6 +151,7 @@
     </section>
 
     @include('casescomment.comment')
+    @include('casescomment.record')
 @endsection
 
 @section('script')
