@@ -9,7 +9,7 @@
     const waiting_div = $('#waiting_total');
 
     let waitData = {};
-    let active_call = 0;
+    let active_call = {};
 
 
     let call_list = (exten) => {
@@ -113,7 +113,7 @@
                     <i class="fa-solid fa-phone-volume fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังสนทนา`
                 div_src.html(ans_cid);
                 state_dur = duration_miltime(ans_time);
-                active_call += 1;
+                active_call[phone_number] = 1;
             } else if (res.status == 8) {
                 status = `<span style="font-size: 1em; color: #ff9900;">
                     <i class="fa-solid fa-user-clock fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังพักสาย`
@@ -136,7 +136,7 @@
             $('#' + phone_number + '_phone').html(phone_status);
             $('#' + phone_number + '_queue').html(res.queue);
             $('#' + phone_number + '_duration').html(state_dur);
-            active_div.html(active_call);
+            active_div.html(active_call.length);
         }
 
     });
