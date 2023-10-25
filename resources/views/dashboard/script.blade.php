@@ -227,7 +227,7 @@
             },
             series: [{
                 name: 'Status',
-                color: ['#c4c4ff', '#66DA26', '#fed343','#ff9900','#E91E63'],
+                color: ['#b5b5ff', '#46c184', '#fed343','#ff9900','#f46884'],
                 type: 'pie',
                 selectedMode: 'single',
                 radius: '60%',
