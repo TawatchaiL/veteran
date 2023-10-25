@@ -1,319 +1,3 @@
-<script src="{{ config('asterisk.toolbar_serv.address') }}/socket.io/socket.io.js"></script>
-<script>
-    const dashboard_serv = '{{ config('asterisk.toolbar_serv.address') }}';
-    const api_serv = '{{ config('asterisk.api_serv.address') }}';
-    const socket = io.connect(`${dashboard_serv}`);
-    const storedOption = localStorage.getItem('selectedOption');
-
-    const active_div = $('#active_total');
-    const waiting_div = $('#waiting_total');
-
-    let waitData = {};
-    let active_call = {};
-
-
-    let call_list = (exten) => {
-        let mcallprofile = '';
-        let mcallexten = '';
-        let luniq = '';
-        let uniq = '';
-        let mstrArray = [];
-        let calls_active = 0;
-
-
-        $.get(`${api_serv}/chans/` + exten, async (data, status) => {
-
-            await data.forEach((item, index) => {
-                let strArray = item.split("!");
-                let chan = strArray[0].split("/");
-                let phone = exten;
-
-                $.get(`${api_serv}/chans_variable/` + chan[1], (data, status) => {
-
-                    mcallexten = data[2][1];
-                    mcallqueue = data[3][1];
-                    mcalluniq = data[4][1];
-
-                    if (strArray[4] == 'Ringing' || strArray[4] == 'Ring') {
-                        localStorage.setItem(phone + '_ring_cid',
-                            mcallexten);
-                        localStorage.setItem(phone + '_ring_time',
-                            mcalluniq);
-                    } else if (strArray[4] == 'Up' && strArray[12] == '') {
-                        localStorage.setItem(phone + '_ring_cid',
-                            mcallexten);
-                        localStorage.setItem(phone + '_ring_time',
-                            mcalluniq);
-                    } else if (strArray[4] == 'Up') {
-                        localStorage.setItem(phone + '_ans_cid',
-                            mcallexten);
-                        localStorage.setItem(phone + '_ans_time',
-                            mcalluniq);
-                    }
-
-                });
-                calls_active += 1;
-            });
-            active_div.html(calls_active);
-        });
-    };
-
-
-
-    socket.on('connect', () => {
-        socket.emit('join', 'Client Connect To Asterisk Event Serv');
-    });
-
-    socket.on('queuemember', async (response) => {
-        //console.log(response)
-        const storedOption = localStorage.getItem('selectedOption');
-        let res = response.data;
-        let status = '';
-        let phone_status = '';
-        let state_dur = '';
-        let ring_cid = '';
-        let ring_time = '';
-        let ans_cid = '';
-        let ans_time = '';
-        let loginTime = '';
-        let exts = res.location.split('/');
-        let phone_number = exts[1];
-        const div_src = $('#' + phone_number + '_src');
-
-        if (res.queue == storedOption) {
-            if (res.status == 5 || res.status == 0) {
-                phone_status = `<span style="font-size: 1em; color: red;">
-                    <i class="fa-solid fa-triangle-exclamation"></i></span> ` + phone_number
-                status = 'โทรศัพท์ไม่พร้อมใช้งาน'
-            } else {
-                phone_status = phone_number
-            }
-
-            if (res.paused == 1) {
-                if (res.pausedreason == 'Warp UP') {
-                    status = `<span style="font-size: 1em; color: #ff9900;">
-                        <i class="fa-solid fa-user-pen"></i></span> Warp UP`
-                    state_dur = duration_time(res.lastpause);
-                } else {
-                    status = `<span style="font-size: 1em; color: #ff9900;">
-                    <i class="fa-solid fa-user-clock"></i></span> พักสาย ( ${res.pausedreason} )`
-                    state_dur = duration_time(res.lastpause);
-                }
-            } else if (res.status == 6) {
-                ring_cid = localStorage.getItem(phone_number + '_ring_cid');
-                ring_time = localStorage.getItem(phone_number + '_ring_time');
-                status = `<span style="font-size: 1em; color: red;">
-                    <i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i></span> กำลังรอสาย`
-                div_src.html(ring_cid);
-                state_dur = duration_miltime(ring_time);
-            } else if (res.status == 2) {
-                ans_cid = localStorage.getItem(phone_number + '_ans_cid');
-                ans_time = localStorage.getItem(phone_number + '_ans_time');
-                status = `<span style="font-size: 1em; color: red;">
-                    <i class="fa-solid fa-phone-volume fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังสนทนา`
-                div_src.html(ans_cid);
-                state_dur = duration_miltime(ans_time);
-                active_call[phone_number] = 1;
-            } else if (res.status == 8) {
-                active_call[phone_number] = 1;
-                status = `<span style="font-size: 1em; color: #ff9900;">
-                    <i class="fa-solid fa-user-clock fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังพักสาย`
-            } else if (res.status == 1) {
-                status = `<span style="font-size: 1em; color: green;">
-                    <i class="fa-solid fa-user-check"></i></span> พร้อมรับสาย`
-                if (res.lastpause == 0) {
-                    if (res.lastcall == 0) {
-                        loginTime = new Date($('#' + exts[1] + '_login').val()).getTime() / 1000;
-                        state_dur = duration_time(loginTime);
-                    } else {
-                        state_dur = duration_time(res.lastcall);
-                    }
-                } else {
-                    state_dur = duration_time(res.lastpause);
-                }
-            }
-
-            $('#' + phone_number + '_status').html(status);
-            $('#' + phone_number + '_phone').html(phone_status);
-            $('#' + phone_number + '_queue').html(res.queue);
-            $('#' + phone_number + '_duration').html(state_dur);
-            active_div.html(Object.keys(active_call).length);
-        }
-
-    });
-
-    socket.on('queuememberstatus', async (response) => {
-    });
-
-    socket.on('agentcomplete', async (response) => {
-        await delete active_call[response.data.connectedlinenum];
-        if (Object.keys(active_call).length === 0) {
-            active_div.html('0');
-        }
-    });
-
-    socket.on('agentcalled', async (response) => {
-        //console.log(response)
-        let res = response.data;
-        localStorage.setItem(res.destcalleridnum + '_ring_cid',
-            res.calleridnum);
-        localStorage.setItem(res.destcalleridnum + '_ring_time',
-            res.timestamp);
-        $('#' + res.destcalleridnum + '_src').html(res.calleridnum);
-    });
-
-    socket.on('agentconnect', async (response) => {
-        //console.log(response)
-        let res = response.data;
-        localStorage.setItem(res.destcalleridnum + '_ans_cid',
-            res.calleridnum);
-        localStorage.setItem(res.destcalleridnum + '_ans_time',
-            Math.floor(Date.now() / 1000));
-        $('#' + res.destcalleridnum + '_src').html(res.calleridnum);
-    });
-
-    socket.on('queueparams', async (response) => {
-        //console.log(response)
-    });
-
-    socket.on('queueentry', async (response) => {
-        const storedOption = localStorage.getItem('selectedOption');
-        waitData[response.data.uniqueid] = response.data;
-        console.log(waitData);
-
-        const tableBody = $('#waiting_list tbody');
-
-        let dataArray = Object.values(waitData);
-        dataArray.sort((a, b) => parseInt(a.position) - parseInt(b.position));
-
-        let html = '';
-        let waiting_total = 0;
-
-        dataArray.forEach((item) => {
-            let parsedNumber = parseInt(item.wait);
-            let hours = Math.floor(parsedNumber / 3600);
-            let minutes = Math.floor((parsedNumber % 3600) / 60);
-            let seconds = parsedNumber % 60;
-
-            let formattedTime =
-                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-            if (item.queue == storedOption) {
-                html += `
-                <tr>
-                    <td>${item.position}</td>
-                    <td><i class="fa-solid fa-user-clock"></i> ${item.calleridnum}</td>
-                    <td>${formattedTime}</td>
-                    <td>${item.connectedlinenum === 'unknown' ? '-' : item.connectedlinenum}</td>
-                </tr>`;
-                waiting_total++;
-            }
-        });
-
-        tableBody.html(html);
-        waiting_div.html(waiting_total);
-    });
-
-    socket.on('queuecallerjoin', async (response) => {
-        //waitData[response.data.uniqueid] = response.data;
-        //console.log(waitData);
-    });
-
-    socket.on('queuecallerleave', async (response) => {
-        const tableBody = $('#waiting_list tbody');
-        await delete waitData[response.data.uniqueid];
-        if (Object.keys(waitData).length === 0) {
-            tableBody.html('<tr><td colspan="4" style="text-align: center;">ยังไม่มีสายรอในคิว</td></tr>');
-            waiting_div.html('0');
-        }
-        console.log(waitData);
-    });
-
-    /* setInterval(() => {
-        socket.emit('getqueue', {
-            queue: storedOption,
-        });
-    }, 1000); */
-
-    let duration_time = (timestamp) => {
-        let presentTimestamp = Math.floor(Date.now() / 1000);
-        let timeDifference = presentTimestamp - timestamp;
-
-        let hours = Math.floor(timeDifference / 3600);
-        let minutes = Math.floor((timeDifference % 3600) / 60);
-        let seconds = timeDifference % 60;
-
-        let formattedHours = String(hours).padStart(2, '0');
-        let formattedMinutes = String(minutes).padStart(2, '0');
-        let formattedSeconds = String(seconds).padStart(2, '0');
-
-        const duration = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
-        return duration;
-    }
-
-    let duration_miltime = (timestampMilliseconds) => {
-        // Get the current timestamp for the present time (in seconds)
-        let presentTimestamp = Math.floor(Date.now() / 1000);
-
-        // Convert the provided timestamp in milliseconds to seconds
-        let timestampSeconds = Math.floor(timestampMilliseconds);
-
-        // Calculate the time difference in seconds
-        let timeDifference = presentTimestamp - timestampSeconds;
-
-        let hours = Math.floor(timeDifference / 3600);
-        let minutes = Math.floor((timeDifference % 3600) / 60);
-        let seconds = timeDifference % 60;
-
-        let formattedHours = String(hours).padStart(2, '0');
-        let formattedMinutes = String(minutes).padStart(2, '0');
-        let formattedSeconds = String(seconds).padStart(2, '0');
-
-        const duration = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
-        return duration;
-    }
-
-
-    let get_agent = (selectedOption) => {
-        $.ajax({
-            url: '{{ route('dashboard.agent_list') }}',
-            type: 'post',
-            data: {
-                queue: selectedOption,
-                _token: token,
-            },
-            success: function(response) {
-                response.agent_arr.forEach(element => {
-                    call_list(element);
-                });
-                $('#agent_list tbody').html(response.html);
-
-            },
-            error: function(xhr, status, error) {
-                // Handle errors
-            }
-        });
-    }
-
-    $(document).ready(() => {
-        const selectElement = $('#redirectSelect');
-
-        if (storedOption) {
-            selectElement.val(storedOption);
-        }
-
-        get_agent(storedOption);
-
-        selectElement.on('change', () => {
-            const selectedOption = selectElement.val();
-            if (selectedOption) {
-                localStorage.setItem('selectedOption',
-                    selectedOption);
-            }
-
-            get_agent(selectedOption);
-        });
-    });
-</script>
 <script language="javascript" type="text/javascript">
     function generateRandomData(length) {
         const data = [];
@@ -560,19 +244,19 @@
                 radius: '60%',
                 center: ['50%', '55%'],
                 data: [{
-                        value: 4,
+                        value: 0,
                         name: 'Offline'
                     },
                     {
-                        value: 3,
+                        value: 0,
                         name: 'Ready'
                     },
                     {
-                        value: 2,
+                        value: 0,
                         name: 'Pause'
                     },
                     {
-                        value: 5,
+                        value: 0,
                         name: 'Busy',
                         selected: true
                     },
@@ -718,3 +402,333 @@
         c();
     }, 30000);
 </script>
+<script src="{{ config('asterisk.toolbar_serv.address') }}/socket.io/socket.io.js"></script>
+<script>
+    const dashboard_serv = '{{ config('asterisk.toolbar_serv.address') }}';
+    const api_serv = '{{ config('asterisk.api_serv.address') }}';
+    const socket = io.connect(`${dashboard_serv}`);
+    const storedOption = localStorage.getItem('selectedOption');
+
+    const active_div = $('#active_total');
+    const waiting_div = $('#waiting_total');
+
+    let waitData = {};
+    let active_call = {};
+    let pause_total = {};
+    let warp_total = {};
+    let ready_total = {};
+    let offline_total = {};
+
+
+    let call_list = (exten) => {
+        let mcallprofile = '';
+        let mcallexten = '';
+        let luniq = '';
+        let uniq = '';
+        let mstrArray = [];
+        let calls_active = 0;
+
+
+        $.get(`${api_serv}/chans/` + exten, async (data, status) => {
+
+            await data.forEach((item, index) => {
+                let strArray = item.split("!");
+                let chan = strArray[0].split("/");
+                let phone = exten;
+
+                $.get(`${api_serv}/chans_variable/` + chan[1], (data, status) => {
+
+                    mcallexten = data[2][1];
+                    mcallqueue = data[3][1];
+                    mcalluniq = data[4][1];
+
+                    if (strArray[4] == 'Ringing' || strArray[4] == 'Ring') {
+                        localStorage.setItem(phone + '_ring_cid',
+                            mcallexten);
+                        localStorage.setItem(phone + '_ring_time',
+                            mcalluniq);
+                    } else if (strArray[4] == 'Up' && strArray[12] == '') {
+                        localStorage.setItem(phone + '_ring_cid',
+                            mcallexten);
+                        localStorage.setItem(phone + '_ring_time',
+                            mcalluniq);
+                    } else if (strArray[4] == 'Up') {
+                        localStorage.setItem(phone + '_ans_cid',
+                            mcallexten);
+                        localStorage.setItem(phone + '_ans_time',
+                            mcalluniq);
+                    }
+
+                });
+                calls_active += 1;
+            });
+            active_div.html(calls_active);
+        });
+    };
+
+
+
+    socket.on('connect', () => {
+        socket.emit('join', 'Client Connect To Asterisk Event Serv');
+    });
+
+    socket.on('queuemember', async (response) => {
+        //console.log(response)
+        const storedOption = localStorage.getItem('selectedOption');
+        let res = response.data;
+        let status = '';
+        let phone_status = '';
+        let state_dur = '';
+        let ring_cid = '';
+        let ring_time = '';
+        let ans_cid = '';
+        let ans_time = '';
+        let loginTime = '';
+        let exts = res.location.split('/');
+        let phone_number = exts[1];
+        const div_src = $('#' + phone_number + '_src');
+
+        if (res.queue == storedOption) {
+            if (res.status == 5 || res.status == 0) {
+                phone_status = `<span style="font-size: 1em; color: red;">
+                    <i class="fa-solid fa-triangle-exclamation"></i></span> ` + phone_number
+                status = 'โทรศัพท์ไม่พร้อมใช้งาน'
+            } else {
+                phone_status = phone_number
+            }
+
+            if (res.paused == 1) {
+                if (res.pausedreason == 'Warp UP') {
+                    status = `<span style="font-size: 1em; color: #ff9900;">
+                        <i class="fa-solid fa-user-pen"></i></span> Warp UP`
+                    state_dur = duration_time(res.lastpause);
+                    warp_total[phone_number] = 1;
+                } else {
+                    status = `<span style="font-size: 1em; color: #ff9900;">
+                    <i class="fa-solid fa-user-clock"></i></span> พักสาย ( ${res.pausedreason} )`
+                    state_dur = duration_time(res.lastpause);
+                    pause_total[phone_number] = 1;
+                }
+            } else if (res.status == 6) {
+                ring_cid = localStorage.getItem(phone_number + '_ring_cid');
+                ring_time = localStorage.getItem(phone_number + '_ring_time');
+                status = `<span style="font-size: 1em; color: red;">
+                    <i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i></span> กำลังรอสาย`
+                div_src.html(ring_cid);
+                state_dur = duration_miltime(ring_time);
+            } else if (res.status == 2) {
+                ans_cid = localStorage.getItem(phone_number + '_ans_cid');
+                ans_time = localStorage.getItem(phone_number + '_ans_time');
+                status = `<span style="font-size: 1em; color: red;">
+                    <i class="fa-solid fa-phone-volume fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังสนทนา`
+                div_src.html(ans_cid);
+                state_dur = duration_miltime(ans_time);
+                active_call[phone_number] = 1;
+            } else if (res.status == 8) {
+                active_call[phone_number] = 1;
+                status = `<span style="font-size: 1em; color: #ff9900;">
+                    <i class="fa-solid fa-user-clock fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังพักสาย`
+            } else if (res.status == 1) {
+                ready_total[phone_number] = 1;
+                status = `<span style="font-size: 1em; color: green;">
+                    <i class="fa-solid fa-user-check"></i></span> พร้อมรับสาย`
+                if (res.lastpause == 0) {
+                    if (res.lastcall == 0) {
+                        loginTime = new Date($('#' + exts[1] + '_login').val()).getTime() / 1000;
+                        state_dur = duration_time(loginTime);
+                    } else {
+                        state_dur = duration_time(res.lastcall);
+                    }
+                } else {
+                    state_dur = duration_time(res.lastpause);
+                }
+            }
+
+            $('#' + phone_number + '_status').html(status);
+            $('#' + phone_number + '_phone').html(phone_status);
+            $('#' + phone_number + '_queue').html(res.queue);
+            $('#' + phone_number + '_duration').html(state_dur);
+            active_div.html(Object.keys(active_call).length);
+
+            option4072.series[0].data = 2;
+            option4072.series[1].data = Object.keys(ready_total).length;
+            option4072.series[2].data = Object.keys(pause_total).length;
+            option4072.series[3].data = Object.keys(active_call).length;
+            pie4072.setOption(option4072);
+        }
+
+    });
+
+    socket.on('queuememberstatus', async (response) => {
+    });
+
+    socket.on('agentcomplete', async (response) => {
+        await delete active_call[response.data.connectedlinenum];
+        if (Object.keys(active_call).length === 0) {
+            active_div.html('0');
+        }
+    });
+
+    socket.on('agentcalled', async (response) => {
+        //console.log(response)
+        let res = response.data;
+        localStorage.setItem(res.destcalleridnum + '_ring_cid',
+            res.calleridnum);
+        localStorage.setItem(res.destcalleridnum + '_ring_time',
+            res.timestamp);
+        $('#' + res.destcalleridnum + '_src').html(res.calleridnum);
+    });
+
+    socket.on('agentconnect', async (response) => {
+        //console.log(response)
+        let res = response.data;
+        localStorage.setItem(res.destcalleridnum + '_ans_cid',
+            res.calleridnum);
+        localStorage.setItem(res.destcalleridnum + '_ans_time',
+            Math.floor(Date.now() / 1000));
+        $('#' + res.destcalleridnum + '_src').html(res.calleridnum);
+    });
+
+    socket.on('queueparams', async (response) => {
+        //console.log(response)
+    });
+
+    socket.on('queueentry', async (response) => {
+        const storedOption = localStorage.getItem('selectedOption');
+        waitData[response.data.uniqueid] = response.data;
+        console.log(waitData);
+
+        const tableBody = $('#waiting_list tbody');
+
+        let dataArray = Object.values(waitData);
+        dataArray.sort((a, b) => parseInt(a.position) - parseInt(b.position));
+
+        let html = '';
+        let waiting_total = 0;
+
+        dataArray.forEach((item) => {
+            let parsedNumber = parseInt(item.wait);
+            let hours = Math.floor(parsedNumber / 3600);
+            let minutes = Math.floor((parsedNumber % 3600) / 60);
+            let seconds = parsedNumber % 60;
+
+            let formattedTime =
+                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            if (item.queue == storedOption) {
+                html += `
+                <tr>
+                    <td>${item.position}</td>
+                    <td><i class="fa-solid fa-user-clock"></i> ${item.calleridnum}</td>
+                    <td>${formattedTime}</td>
+                    <td>${item.connectedlinenum === 'unknown' ? '-' : item.connectedlinenum}</td>
+                </tr>`;
+                waiting_total++;
+            }
+        });
+
+        tableBody.html(html);
+        waiting_div.html(waiting_total);
+    });
+
+    socket.on('queuecallerjoin', async (response) => {
+        //waitData[response.data.uniqueid] = response.data;
+        //console.log(waitData);
+    });
+
+    socket.on('queuecallerleave', async (response) => {
+        const tableBody = $('#waiting_list tbody');
+        await delete waitData[response.data.uniqueid];
+        if (Object.keys(waitData).length === 0) {
+            tableBody.html('<tr><td colspan="4" style="text-align: center;">ยังไม่มีสายรอในคิว</td></tr>');
+            waiting_div.html('0');
+        }
+        console.log(waitData);
+    });
+
+    /* setInterval(() => {
+        socket.emit('getqueue', {
+            queue: storedOption,
+        });
+    }, 1000); */
+
+    let duration_time = (timestamp) => {
+        let presentTimestamp = Math.floor(Date.now() / 1000);
+        let timeDifference = presentTimestamp - timestamp;
+
+        let hours = Math.floor(timeDifference / 3600);
+        let minutes = Math.floor((timeDifference % 3600) / 60);
+        let seconds = timeDifference % 60;
+
+        let formattedHours = String(hours).padStart(2, '0');
+        let formattedMinutes = String(minutes).padStart(2, '0');
+        let formattedSeconds = String(seconds).padStart(2, '0');
+
+        const duration = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+        return duration;
+    }
+
+    let duration_miltime = (timestampMilliseconds) => {
+        // Get the current timestamp for the present time (in seconds)
+        let presentTimestamp = Math.floor(Date.now() / 1000);
+
+        // Convert the provided timestamp in milliseconds to seconds
+        let timestampSeconds = Math.floor(timestampMilliseconds);
+
+        // Calculate the time difference in seconds
+        let timeDifference = presentTimestamp - timestampSeconds;
+
+        let hours = Math.floor(timeDifference / 3600);
+        let minutes = Math.floor((timeDifference % 3600) / 60);
+        let seconds = timeDifference % 60;
+
+        let formattedHours = String(hours).padStart(2, '0');
+        let formattedMinutes = String(minutes).padStart(2, '0');
+        let formattedSeconds = String(seconds).padStart(2, '0');
+
+        const duration = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+        return duration;
+    }
+
+
+    let get_agent = (selectedOption) => {
+        $.ajax({
+            url: '{{ route('dashboard.agent_list') }}',
+            type: 'post',
+            data: {
+                queue: selectedOption,
+                _token: token,
+            },
+            success: function(response) {
+                response.agent_arr.forEach(element => {
+                    call_list(element);
+                });
+                $('#agent_list tbody').html(response.html);
+
+            },
+            error: function(xhr, status, error) {
+                // Handle errors
+            }
+        });
+    }
+
+    $(document).ready(() => {
+        const selectElement = $('#redirectSelect');
+
+        if (storedOption) {
+            selectElement.val(storedOption);
+        }
+
+        get_agent(storedOption);
+
+        selectElement.on('change', () => {
+            const selectedOption = selectElement.val();
+            if (selectedOption) {
+                localStorage.setItem('selectedOption',
+                    selectedOption);
+            }
+
+            get_agent(selectedOption);
+        });
+    });
+</script>
+
