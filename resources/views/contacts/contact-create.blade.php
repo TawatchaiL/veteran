@@ -191,7 +191,7 @@
 
                         <div class="row">
 
-                            <div class="col-xs-5 col-sm-5 col-md-5">
+                            <div class="col-xs-5 col-sm-5 col-md-5" style="position: absolute;top: 50px;">
                                 <div class="form-group">
                                     <strong><i class="fas fa-phone"></i> เบอร์โทรศัพท์บ้าน:</strong>
                                     {!! Form::text('telhomep'.$cardid, null, [
