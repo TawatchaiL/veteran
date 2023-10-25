@@ -404,6 +404,7 @@
 
     let pie4072 = echarts.init(document.getElementById("mainbc2_4072"));
     let waitData = {};
+    let ring_call = {};
     let active_call = {};
     let pause_total = {};
     let warp_total = {};
@@ -509,7 +510,7 @@
                     <i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i></span> กำลังรอสาย`
                 div_src.html(ring_cid);
                 state_dur = duration_miltime(ring_time);
-                active_call[phone_number] = 1;
+                ring_call[phone_number] = 1;
             } else if (res.status == 2) {
                 ans_cid = localStorage.getItem(phone_number + '_ans_cid');
                 ans_time = localStorage.getItem(phone_number + '_ans_time');
@@ -544,10 +545,11 @@
             $('#' + phone_number + '_duration').html(state_dur);
 
             let num_active = Object.keys(active_call).length;
+            let num_ring = Object.keys(ring_call).length;
             let num_pause = Object.keys(pause_total).length;
             let num_warp = Object.keys(warp_total).length;
-            let num_ready = Object.keys(ready_total).length;
-            let num_offline = offline_total - (num_active + num_pause + num_ready)
+            let num_ready = Object.keys(ready_total).length - (num_active + num_ring);
+            let num_offline = offline_total - (num_ring + num_active + num_pause + num_ready)
 
             active_div.html(num_active);
             pie4072.setOption(agent_status_chart(num_offline, num_ready, num_pause, num_warp, num_active));
