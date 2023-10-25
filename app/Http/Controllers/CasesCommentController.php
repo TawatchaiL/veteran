@@ -155,10 +155,10 @@ class CasesCommentController extends Controller
         //$input = array_merge($input, ['agent' => $user]);
         //$contract = CrmCaseComment::create($input);
 
-        $case_id = $request->input('case_id');
-        $comment = $request->input('comment');
+        $case_id = $request->get('case_id');
+        $comment = $request->get('comment');
         $agent = $user;
-        $data=array('case_id'=>1,'comment'=>'123','agent'=>'8888');
+        $data=array('case_id'=>$case_id,'comment'=>$comment,'agent'=>$agent);
         DB::table('crm_case_comments')->insert($data);
 
         return response()->json(['success' => 'แสดงความคิดเห็น เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
