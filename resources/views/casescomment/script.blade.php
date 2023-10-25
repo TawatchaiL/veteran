@@ -479,7 +479,7 @@
 
             var additionalData = {
                 case_id: id,
-                comment: $('#cComment').val(),
+                comment: $('#cComment').val()
             };
             $.ajax({
                 url: "casescomment/save/" + id,
@@ -488,7 +488,6 @@
 
                 success: function(result) {
                     //console.log(result);
-                    alert(result);
                     if (result.errors) {
                         $('.alert-danger').html('');
                         $.each(result.errors, function(key, value) {
