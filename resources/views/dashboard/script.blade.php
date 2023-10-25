@@ -203,7 +203,7 @@
 
     pie4071.setOption(option4071);
 
-    let pie4072 = echarts.init(document.getElementById("mainbc2_4072"));
+
     let agent_status_chart = (offline, online, pause, busy) => {
         let option4072 = {
             title: {
@@ -261,10 +261,6 @@
         return option4072;
     }
 
-    // Set the ECharts option for the pie chart
-    pie4072.setOption(agent_status_chart(0, 0, 0, 0));
-    window.addEventListener('resize', pie4072.resize);
-    //})
 
     option = {
         series: [{
@@ -401,6 +397,7 @@
     const active_div = $('#active_total');
     const waiting_div = $('#waiting_total');
 
+    let pie4072 = echarts.init(document.getElementById("mainbc2_4072"));
     let waitData = {};
     let active_call = {};
     let pause_total = {};
@@ -408,6 +405,8 @@
     let ready_total = {};
     let offline_total = {};
 
+    pie4072.setOption(agent_status_chart(0, 0, 0, 0));
+    window.addEventListener('resize', pie4072.resize);
 
     let call_list = (exten) => {
         let mcallprofile = '';
