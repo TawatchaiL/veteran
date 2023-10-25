@@ -6,12 +6,12 @@
     });
 
     socket.on('queuecallerjoin', async (response) => {
-        const dropdownButton = $('#queue_wait_button');
-        dropdownButton.click();
+        const dropdownButton = $('#queue_wait_list');
+        dropdownMenu.classList.add('show');
         //alert_danger('Alert', 'มีสายรอในคิว ' + response.data.count + ' สาย', '');
-        alert_danger('Alert สายเข้าจาก ' + response.data.calleridnum, 'มีสายเข้าคิวจากหมายเลข: ' + response
+       /*  alert_danger('Alert สายเข้าจาก ' + response.data.calleridnum, 'มีสายเข้าคิวจากหมายเลข: ' + response
             .data.calleridnum + '<br>ในลำดับ: ' + response
-            .data.position, '');
+            .data.position, ''); */
     });
 
 
