@@ -30,7 +30,8 @@
     const state_overlay = $('#state_overlay');
     const toolbar_card = $('#toolbar_card');
     const popup_tab_main = $('#popup_tab_main');
-    const elem_queue = document.getElementById("queue_wait");;
+    const elem_queue = document.getElementById("queue_wait");
+    let isDropdownClicked = false;
 
 
     let alert_danger = (title, message, subtitle) => {
