@@ -553,26 +553,18 @@
             option4072 = {
                 series: [{
                         name: 'Series 1',
-                        type: 'pie',
-                        // Other properties for series 1
                         data: 2, // Your data here
                     },
                     {
                         name: 'Series 2',
-                        type: 'pie',
-                        // Other properties for series 2
                         data: Object.keys(ready_total).length, // Your data here
                     },
                     {
                         name: 'Series 3',
-                        type: 'pie',
-                        // Other properties for series 3
                         data: Object.keys(pause_total).length, // Your data here
                     },
                     {
                         name: 'Series 4',
-                        type: 'pie',
-                        // Other properties for series 4
                         data: Object.keys(active_call).length, // Your data here
                     }
                 ],
