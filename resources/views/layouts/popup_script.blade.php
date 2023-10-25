@@ -427,6 +427,13 @@
                             '" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
                         )));
             });
+            //Add phone number to textbox
+            $(document).on('click', '.btnpnumber',
+            function() {
+                let datatId = $(this).data("tabid");
+                let tagetp = $(this).data("tagetp");
+                $('#' + tagetp + datatId).val(datatId);
+            });
         // contact list to from
         $(document).on('click', '.selectcontactp-button',
             function() {
