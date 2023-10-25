@@ -572,7 +572,7 @@
         }
     });
 
-    socket.on('hangup', data => {
+    socket.on('hangup', async (data) => {
         console.log(data)
         parts = inputString.split('/');
         extractedNumber = parts[1].split('-')[0];
