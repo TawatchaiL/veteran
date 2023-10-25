@@ -488,6 +488,7 @@
 
                 success: function(result) {
                     //console.log(result);
+                    alert(result);
                     if (result.errors) {
                         $('.alert-danger').html('');
                         $.each(result.errors, function(key, value) {
