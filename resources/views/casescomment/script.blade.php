@@ -437,149 +437,10 @@
             "autoWidth": false,
             "responsive": true,
         });
-
-
-        $(document).on('click', '#CreateButton', function(e) {
-            e.preventDefault();
-            $('.alert-danger').html('');
-            $('.alert-danger').hide();
-            $('.alert-success').html('');
-            $('.alert-success').hide();
-            actions = 'add';
-            //_token: token
-            $('#Hn').on('input', function() {
-                var query = $(this).val();
-                    $.ajax({
-                    url: 'cases/seachcontact/' + query,
-                    method: 'GET',
-                    async: false,
-                    success: function(data) {
-                        var suggestionsList = $('#suggestions');
-                        suggestionsList.empty();
-                            $.each(data, function(index, item) {
-                            suggestionsList.append('<li data-id="' + item.id + '" data-hn="' + item.hn + '" data-name="' + item.fname + ' ' + item.fname + '">HN ' + item.hn + ' ชื่อ-สกุล ' + item.fname + ' ' + item.fname + '</li>');
-                        });
-
-                        suggestionsList.on('click', 'li', function() {
-                            $('#Addid').val($(this).data('id'));
-                            $('#Hn').val($(this).data('hn'));
-                            $('#Name').val($(this).data('name'));
-                            suggestionsList.empty();
-                        });
-                    },        
-                    error: function(error) {
-                        console.log('Error:', error);
-                    }
-                    });
-                });
-            $.ajax({
-                url: "casetype6/casetype/0",
-                method: 'GET',
-                async: false,
-                success: function(res) {
-                    var provinceOb = $('#casetype1');
-                    provinceOb.html('<option value="">เลือกประเภทการติดต่อ</option>');
-                    $.each(res.data, function(index, item) {
-                        provinceOb.append(
-                            $('<option></option>').val(item.id).html(item
-                                .name)
-                        );
-                    });
-                }
-            });
-            $('#casetype2').html('<option value="">เลือกรายละเอียดเคส</option>');
-            $('#casetype3').html('<option value="">เลือกรายละเอียดเคสย่อย</option>');
-            $('#casetype4').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
-            $('#casetype5').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
-            $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
-            $('#casetype2').attr('disabled', true);
-            $('#casetype3').attr('disabled', true);
-            $('#casetype4').attr('disabled', true);
-            $('#casetype5').attr('disabled', true);
-            $('#casetype6').attr('disabled', true);
-            $('#CreateModal').modal('show');
-        });
-
-        
-        $('#SubmitCreateForm').click(function(e) {
-            if(actions == 'edit'){
-                if (!confirm("ยืนยันการทำรายการ ?")) return;
-            }
-            e.preventDefault();
-            $('.alert-danger').html('');
-            $('.alert-danger').hide();
-            $('.alert-success').html('');
-            $('.alert-success').hide();
-
-            var additionalData = {
-                contact_id: $('#Addid').val(),
-                casetype1: $('#casetype1 option:selected').text(),
-                caseid1: $('#casetype1').val(),
-                casedetail: $('#Detail').val(),
-                tranferstatus: $('#tranferstatus option:selected').text(),
-                casestatus: $('#casestatus option:selected').text(),
-                _token: token 
-            };
-            if($('#casetype2').val() !== ''){
-                additionalData.casetype2 = $('#casetype2 option:selected').text();
-                additionalData.caseid2 = $('#casetype2').val();
-            }
-            if($('#casetype3').val() !== ''){
-                additionalData.casetype3= $('#casetype3 option:selected').text();
-                additionalData.caseid3 = $('#casetype3').val();
-            }
-            if($('#casetype4').val() !== ''){
-                additionalData.casetype4 = $('#casetype4 option:selected').text();
-                additionalData.caseid4 = $('#casetype4').val();
-            }
-            if($('#casetype5').val() !== ''){
-                additionalData.casetype5 = $('#casetype5 option:selected').text();
-                additionalData.caseid5 = $('#casetype5').val();
-            }
-            if($('#casetype6').val() !== ''){
-                additionalData.casetype6 = $('#casetype6 option:selected').text();
-                additionalData.caseid6 = $('#casetype6').val();
-            }
-
-            if(actions == 'add'){
-                urls = "{{ route('cases.store') }}";
-                methods = 'post';
-            }else if(actions == 'edit'){
-                urls = "cases/save/" + id;
-                methods = 'PUT';
-            }
-            $.ajax({
-                url: urls,
-                method: methods,
-                data: additionalData,
-                success: function(result) {
-                    if (result.errors) {
-                        $('.alert-danger').html('');
-                        $.each(result.errors, function(key, value) {
-                            $('.alert-danger').show();
-                            $('.alert-danger').append('<strong><li>' + value +
-                                '</li></strong>');
-                        });
-                    } else {
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('.alert-success').append('<strong><li>' + result.success +
-                            '</li></strong>');
-                        toastr.success(result.success, {
-                            timeOut: 5000
-                        });
-                        $('#Listview').DataTable().ajax.reload();
-                        $('.form').trigger('reset');
-                        $('#CreateModal').modal('hide');
-                    }
-                }
-            });
-        });
-
-
+    
         let id;
         let actions;
-        $(document).on('click', '#getEditData', function(e) {
+        $(document).on('click', '#getCommentData', function(e) {
             e.preventDefault();
             $('.alert-danger').html('');
             $('.alert-danger').hide();
@@ -588,32 +449,7 @@
             actions = 'edit';
             id = $(this).data('id');
             $.ajax({
-                url: "casetype6/casetype/0",
-                method: 'GET',
-                async: false,
-                success: function(res) {
-                    var provinceOb = $('#casetype1');
-                    provinceOb.html('<option value="">เลือกประเภทการติดต่อ</option>');
-                    $.each(res.data, function(index, item) {
-                        provinceOb.append(
-                            $('<option></option>').val(item.id).html(item
-                                .name)
-                        );
-                    });
-                }
-            });
-            $('#casetype2').html('<option value="">เลือกรายละเอียดเคส</option>');
-            $('#casetype3').html('<option value="">เลือกรายละเอียดเคสย่อย</option>');
-            $('#casetype4').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
-            $('#casetype5').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
-            $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
-            $('#casetype2').attr('disabled', true);
-            $('#casetype3').attr('disabled', true);
-            $('#casetype4').attr('disabled', true);
-            $('#casetype5').attr('disabled', true);
-            $('#casetype6').attr('disabled', true);
-            $.ajax({
-                url: "cases/edit/" + id,
+                url: "casescomment/edit/" + id,
                 method: 'GET',
                 success: function(res) {
                     console.log(res);
@@ -643,7 +479,7 @@
                     if(res.data.caseid6 != 0){
                         $('#casetype6').val(res.data.caseid6);
                     }
-                    $('#CreateModal').modal('show');
+                    $('#CommmentModal').modal('show');
                 }
             });
         })
