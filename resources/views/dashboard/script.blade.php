@@ -215,26 +215,12 @@
             toolbox: {
                 show: true,
                 feature: {
-                    /*  dataZoom: {
-                         yAxisIndex: 'none'
-                     },
-                     dataView: {
-                         readOnly: false
-                     },
-                     magicType: {
-                         type: ['line', 'bar']
-                     },
-                     restore: {}, */
                     saveAsImage: {}
                 }
             },
             tooltip: {
                 trigger: 'item'
             },
-            /* legend: {
-                orient: 'vertical',
-                left: 'left'
-            }, */
             legend: {
                 top: '5%',
                 left: 'center'
@@ -261,8 +247,7 @@
                         value: 0,
                         name: 'Busy',
                         selected: true
-                    },
-
+                    }
                 ],
                 emphasis: {
                     itemStyle: {
@@ -273,10 +258,10 @@
                 }
             }]
         };
-        return pie4072;
+        return option4072;
     }
 
-
+    // Set the ECharts option for the pie chart
     pie4072.setOption(agent_status_chart());
     window.addEventListener('resize', pie4072.resize);
     //})
