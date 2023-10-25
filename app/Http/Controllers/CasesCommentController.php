@@ -155,7 +155,7 @@ class CasesCommentController extends Controller
         //$input = array_merge($input, ['agent' => $user]);
         //$contract = CrmCaseComment::create($input);
 
-        $case_id = $request->input('case_id');
+        $case_id = $request->get('case_id');
         //$comment = $request->input('comment');
         //$agent = $user;
         //$data=array('case_id'=>$case_id,'comment'=>$comment,'agent'=>$agent);
