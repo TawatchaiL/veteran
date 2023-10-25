@@ -137,7 +137,7 @@
                                 class="img-size-50 mr-3 img-circle">
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
-                                    ยังไม่มีสายรออยุ่ในคิว
+                                    ยังไม่มีสายรออยู่ในคิว
                                 </h3>
                             </div>
                         </div>
