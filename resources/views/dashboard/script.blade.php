@@ -545,14 +545,15 @@
             $('#' + phone_number + '_duration').html(state_dur);
 
             let num_ring = Object.keys(ring_call).length;
-            let num_active = Object.keys(active_call).length + num_ring;
+            let num_active = Object.keys(active_call).length;
+            let num_busy = num_active + num_ring;
             let num_pause = Object.keys(pause_total).length;
             let num_warp = Object.keys(warp_total).length;
             let num_ready = Object.keys(ready_total).length - (num_active + num_ring);
-            let num_offline = offline_total - (num_ring + num_active + num_pause + num_ready)
+            let num_offline = offline_total - (num_busy + num_pause + num_ready)
 
             active_div.html(num_active);
-            pie4072.setOption(agent_status_chart(num_offline, num_ready, num_pause, num_warp, num_active));
+            pie4072.setOption(agent_status_chart(num_offline, num_ready, num_pause, num_warp, num_busy));
         }
 
     });
