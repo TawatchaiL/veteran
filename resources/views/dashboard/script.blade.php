@@ -115,6 +115,7 @@
                 state_dur = duration_miltime(ans_time);
                 active_call[phone_number] = 1;
             } else if (res.status == 8) {
+                active_call[phone_number] = 1;
                 status = `<span style="font-size: 1em; color: #ff9900;">
                     <i class="fa-solid fa-user-clock fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังพักสาย`
             } else if (res.status == 1) {
