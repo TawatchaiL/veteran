@@ -518,7 +518,7 @@
         $(document).on('click', '.btn-viewcomment', function() {
             id = $(this).data('id');
             $.ajax({
-                url: "casescomment/records" + id,
+                url: "casescomment/records/" + id,
                 method: 'GET',
                 success: function(res) {
                     $.each(res.data, function(index, value) {
