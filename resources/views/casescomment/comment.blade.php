@@ -113,6 +113,23 @@
 
                                     </div>
                                 </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                                    <strong><i class="fas fa-shuffle"></i> แสดงความคิดเห็น : </strong>
+                                                    {!! Form::text('cComment', null , [
+                                                        'id' => 'cComment',
+                                                        'placeholder' => '',
+                                                        'class' => 'form-control',
+                                                        'readonly' => false,
+                                                    ]) !!}
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
                             </div>
 
 
@@ -131,7 +148,7 @@
                 {!! Form::close() !!}
             </div>
             <div class="modal-footer {{-- justify-content-between --}}">
-                <button type="button" class="btn btn-success" id="SubmitEditForm"><i class="fas fa-download"></i>
+                <button type="button" class="btn btn-success" id="SubmitCommentForm"><i class="fas fa-download"></i>
                     บันทึกข้อมูล</button>
                 <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i
                         class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
