@@ -137,23 +137,19 @@
             $('#' + phone_number + '_phone').html(phone_status);
             $('#' + phone_number + '_queue').html(res.queue);
             $('#' + phone_number + '_duration').html(state_dur);
-            console.log(Object.keys(active_call).length)
             active_div.html(Object.keys(active_call).length);
         }
 
     });
 
     socket.on('queuememberstatus', async (response) => {
-        console.log(response)
     });
 
     socket.on('agentcomplete', async (response) => {
-        console.log(response)
         await delete active_call[response.data.connectedlinenum];
         if (Object.keys(active_call).length === 0) {
             active_div.html('0');
         }
-        console.log(waitData);
     });
 
     socket.on('agentcalled', async (response) => {
