@@ -204,7 +204,7 @@
     pie4071.setOption(option4071);
 
     let pie4072 = echarts.init(document.getElementById("mainbc2_4072"));
-    let agent_status_chart = () => {
+    let agent_status_chart = (offline, online, pause, busy) => {
         let option4072 = {
             title: {
                 show: false,
@@ -232,19 +232,19 @@
                 radius: '60%',
                 center: ['50%', '55%'],
                 data: [{
-                        value: 0,
+                        value: offline,
                         name: 'Offline'
                     },
                     {
-                        value: 0,
+                        value: online,
                         name: 'Ready'
                     },
                     {
-                        value: 0,
+                        value: pause,
                         name: 'Pause'
                     },
                     {
-                        value: 0,
+                        value: busy,
                         name: 'Busy',
                         selected: true
                     }
@@ -262,7 +262,7 @@
     }
 
     // Set the ECharts option for the pie chart
-    pie4072.setOption(agent_status_chart());
+    pie4072.setOption(agent_status_chart(0, 0, 0, 0));
     window.addEventListener('resize', pie4072.resize);
     //})
 
@@ -537,29 +537,13 @@
             $('#' + phone_number + '_phone').html(phone_status);
             $('#' + phone_number + '_queue').html(res.queue);
             $('#' + phone_number + '_duration').html(state_dur);
-            active_div.html(Object.keys(active_call).length);
 
-            option4072 = {
-                series: [{
-                        name: 'Series 1',
-                        data: 2, // Your data here
-                    },
-                    {
-                        name: 'Series 2',
-                        data: Object.keys(ready_total).length, // Your data here
-                    },
-                    {
-                        name: 'Series 3',
-                        data: Object.keys(pause_total).length, // Your data here
-                    },
-                    {
-                        name: 'Series 4',
-                        data: Object.keys(active_call).length, // Your data here
-                    }
-                ],
+            let num_active = Object.keys(active_call).length;
+            let num_pause = Object.keys(pause_total).length;
+            let num_ready = Object.keys(ready_total).length;
 
-            }
-            pie4072.setOption(option4072);
+            active_div.html(num_active);
+            pie4072.setOption(agent_status_chart(2, num_ready, num_pause, num_active));
         }
 
     });
