@@ -158,7 +158,7 @@ class CasesCommentController extends Controller
         //$CaseComment->save();
 
         $input = $request->all();
-        $contract = CaseComment::create($input);
+        $contract = CrmCaseComment::create($input);
 
         return response()->json(['success' => 'แสดงความคิดเห็น เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
     }
