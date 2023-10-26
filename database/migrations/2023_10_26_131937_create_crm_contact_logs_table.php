@@ -36,7 +36,7 @@ return new class extends Migration
             $table->datetime('updated_at');
             $table->string('modifyaction',10)->nullable();
             $table->string('modifyagent',10)->nullable();
-            $table->datetime('modifydate');
+            $table->timestamps('modifydate');
         });
     }
 
