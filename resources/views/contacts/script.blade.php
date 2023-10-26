@@ -369,8 +369,10 @@
             var additionalData = {
                 hn: $('#Addhn').val(),
                 adddate: $('#Addadddate').val(),
+                tname: $('#Addtname').val(),
                 fname: $('#Addfname').val(),
                 lname: $('#Addlname').val(),
+                bloodgroup: $('#Addbloodgroup').val(),
                 homeno: $('#Addhomeno').val(),
                 moo: $('#Addmoo').val(),
                 soi: $('#Addsoi').val(),

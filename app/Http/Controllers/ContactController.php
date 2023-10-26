@@ -317,8 +317,10 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
+        $user = Auth::user();
         $valifield = [
             'hn' => 'required|string|max:10',
+            'tname' => 'required|string|max:50',
             'fname' => 'required|string|max:50',
             'lname' => 'required|string|max:50',
             'homeno' => 'required|string|max:10',
@@ -328,6 +330,7 @@ class ContactController extends Controller
         ];
         $valimess = [
             'hn.required' => 'กรุณากรอกรหัสผู้ติดต่อ',
+            'tname.required' => 'กรุณาเลือกคำนำหน้าชื่อ',
             'fname.required' => 'กรุณากรอกชื่อ',
             'lname.required' => 'กรุณากรอกนามสกุล',
             'homeno.required' => 'กรุณากรอกบ้านเลขที่',
@@ -354,6 +357,7 @@ class ContactController extends Controller
         }
 
         $input = $request->all();
+        $input = array_merge($input, ['agent' => $user->id]);
         $contact = CrmContact::create($input);
         $insertedId = $contact->id;
         if (!empty($request->emergencyData)) {
@@ -363,6 +367,7 @@ class ContactController extends Controller
                 $Crmemergency->emergencyname = $edata['emergencyname'];
                 $Crmemergency->emerrelation = $edata['emerrelation'];
                 $Crmemergency->emerphone = $edata['emerphone'];
+                $Crmemergency->agent = $user->id;
                 $Crmemergency->save();
             }
         }
