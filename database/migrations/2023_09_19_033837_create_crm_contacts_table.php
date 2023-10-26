@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('fname')->nullable();
             $table->string('lname')->nullable();
             $table->string('lname')->nullable();
-            $table->string('bloodgroup',1)->nullable();
+            $table->string('bloodgroup',5)->nullable();
             $table->string('moo')->nullable();
             $table->string('road')->nullable();
             $table->string('soi')->nullable();

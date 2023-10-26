@@ -369,10 +369,10 @@
             var additionalData = {
                 hn: $('#Addhn').val(),
                 adddate: $('#Addadddate').val(),
-                tname: $('#Addtname option:selected').text(),
+                tname: $('#Addtname').val(),
                 fname: $('#Addfname').val(),
                 lname: $('#Addlname').val(),
-                bloodgroup: $('#Addbloodgroup option:selected').text(),
+                bloodgroup: $('#Addbloodgroup').val(),
                 homeno: $('#Addhomeno').val(),
                 moo: $('#Addmoo').val(),
                 soi: $('#Addsoi').val(),
@@ -538,14 +538,13 @@
                 };
                 eemergencyData.push(eemergency);
             });
-alert($('#Edittname').val());
             var additionalData = {
                 hn: $('#Edithn').val(),
                 adddate: $('#Editadddate').val(),
-                tname: $('#Edittname option:selected').text(),
+                tname: $('#Edittname').val(),
                 fname: $('#Editfname').val(),
                 lname: $('#Editlname').val(),
-                bloodgroup: $('#Editbloodgroup option:selected').text(),
+                bloodgroup: $('#Editbloodgroup').val(),
                 homeno: $('#Edithomeno').val(),
                 moo: $('#Editmoo').val(),
                 soi: $('#Editsoi').val(),
