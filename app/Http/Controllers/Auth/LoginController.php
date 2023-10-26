@@ -192,7 +192,7 @@ class LoginController extends Controller
                     ->where('id', $user->agent_id)
                     ->update(['number' => $user->phone]); */
 
-                $ret = $this->issable->agent_login($user->phone);
+                $this->issable->agent_login($user->phone);
 
 
                 //$this->issable->agent_login($user->phone);

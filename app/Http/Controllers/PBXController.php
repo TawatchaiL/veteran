@@ -363,6 +363,7 @@ class PBXController extends Controller
                 if (count($indb) == 0) {
                     $dataToInsert = [
                         'id_agent' => $user->agent_id,
+                        'crm_id' => $user->id,
                         'phone' => $user->phone,
                         'uniqid' => $request->get('uniqid'),
                         'wrap_start' => date("Y-m-d H:i:s"),
