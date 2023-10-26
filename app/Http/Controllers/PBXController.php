@@ -72,6 +72,12 @@ class PBXController extends Controller
 
             $ret = $this->issable->agent_login($user->phone);
 
+            DB::connection('remote_connection')
+                ->table('call_center.audit')
+                ->where('id_agent', $user->agent_id)
+                ->whereNull('datetime_end')
+                ->update(['crm_id' => $user->id]);
+
             $user->phone_status_id = 1;
             $user->phone_status = "พร้อมรับสาย";
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
@@ -131,7 +137,7 @@ class PBXController extends Controller
 
         if ($user) {
 
-            $ret = $this->issable->agent_logoff($user->phone);
+            $this->issable->agent_logoff($user->phone);
 
             $user->phone = '';
             $user->phone_status_id = 0;
@@ -363,6 +369,7 @@ class PBXController extends Controller
                 if (count($indb) == 0) {
                     $dataToInsert = [
                         'id_agent' => $user->agent_id,
+                        'crm_id' => $user->id,
                         'phone' => $user->phone,
                         'uniqid' => $request->get('uniqid'),
                         'wrap_start' => date("Y-m-d H:i:s"),
