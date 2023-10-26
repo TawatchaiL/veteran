@@ -501,6 +501,9 @@ class PBXController extends Controller
 
             $duration = $wrap_start->diffInSeconds($wrap_end);
 
+            $resulth = DB::table('crm_incoming')->where('uniqid', $request->get('uniqid'))->first();
+            $hold_duration = $resulth ? $resulth->holdtime : 0;
+
             DB::connection('remote_connection')
                 ->table('call_center.wrap_data')
                 ->where('id_agent', $user->agent_id)
@@ -514,6 +517,8 @@ class PBXController extends Controller
                 ->table('call_center.call_entry')
                 ->where('uniqueid', $resultb->uniqid)
                 ->update([
+                    'crm_id' => $user->id,
+                    'duration_hold' => $hold_duration,
                     'duration_warp' => $duration
                 ]);
 
