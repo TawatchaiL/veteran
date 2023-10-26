@@ -734,6 +734,7 @@
                 _token: token,
             },
             success: function(response) {
+                console.log(response)
                 response.agent_arr.forEach(element => {
                     call_list(element);
                 });
