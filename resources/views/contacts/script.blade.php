@@ -369,8 +369,10 @@
             var additionalData = {
                 hn: $('#Addhn').val(),
                 adddate: $('#Addadddate').val(),
+                tname: $('#Addtname').val(),
                 fname: $('#Addfname').val(),
                 lname: $('#Addlname').val(),
+                bloodgroup: $('#Addbloodgroup').val(),
                 homeno: $('#Addhomeno').val(),
                 moo: $('#Addmoo').val(),
                 soi: $('#Addsoi').val(),
@@ -455,8 +457,10 @@
                     success: function(res) {
                         $('#Edithn').val(res.datax.datac.hn);
                         $('#Editadddate').val(res.datax.datac.adddate);
+                        $('#Edittname').val(res.datax.datac.tname);
                         $('#Editfname').val(res.datax.datac.fname);
                         $('#Editlname').val(res.datax.datac.lname);
+                        $('#Editbloodgroup').val(res.datax.datac.bloodgroup);
                         $('#Edithomeno').val(res.datax.datac.homeno);
                         $('#Editmoo').val(res.datax.datac.moo);
                         $('#Editsoi').val(res.datax.datac.soi);
@@ -534,12 +538,13 @@
                 };
                 eemergencyData.push(eemergency);
             });
-
             var additionalData = {
                 hn: $('#Edithn').val(),
                 adddate: $('#Editadddate').val(),
+                tname: $('#Edittname').val(),
                 fname: $('#Editfname').val(),
                 lname: $('#Editlname').val(),
+                bloodgroup: $('#Editbloodgroup').val(),
                 homeno: $('#Edithomeno').val(),
                 moo: $('#Editmoo').val(),
                 soi: $('#Editsoi').val(),

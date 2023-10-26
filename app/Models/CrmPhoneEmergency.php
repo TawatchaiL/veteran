@@ -9,6 +9,6 @@ class CrmPhoneEmergency extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'contact_id', 'emergencyname', 'emerrelation', 'emerphone'
+        'contact_id', 'emergencyname', 'emerrelation', 'emerphone', 'agent'
     ];
 }

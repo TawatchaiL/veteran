@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('emergencyname')->nullable();
             $table->string('emerrelation')->nullable();
             $table->string('emerphone')->nullable();
+            $table->integer('agent')->nullable();
             $table->timestamps();
         });
     }
