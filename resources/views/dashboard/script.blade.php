@@ -613,7 +613,7 @@
 
 
     socket.on('agentcalled', async (response) => {
-        //console.log(response)
+        console.log(response)
         let res = response.data;
         localStorage.setItem(res.destcalleridnum + '_ring_cid',
             res.calleridnum);
