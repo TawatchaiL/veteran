@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\CrmContact;
 use App\Models\CrmPhoneEmergency;
+use App\Models\CrmContactLog;
 use App\Models\Department;
 use App\Models\CrmCase;
 use Spatie\Permission\Models\Role;
@@ -467,6 +468,10 @@ class ContactController extends Controller
         ];
 
         $contact = CrmContact::find($id);
+        //data to log
+        $contactl = array_merge($contact, ['modifyaction' => 'edit','modifyagent' => $user->id]);
+        CrmContact::create($contactl);
+
         $contact->update($contactd);
         if (!empty($request->eemergencyData)) {
             foreach ($request->eemergencyData as $edata) {
