@@ -117,12 +117,14 @@ class LoginController extends Controller
                 $user->phone = $request->phone;
 
                 //check active
-                $active = DB::connection('remote_connection')
+                $issable = DB::connection('remote_connection')
                     ->table('call_center.agent')
-                    ->where('id', $user->agent_id)
-                    ->get();
+                    //->where('id', $user->agent_id)
+                    ->where('number', $user->phone)
+                    ->orderBy('id','desc')
+                    ->first();
 
-                if ($active[0]->estatus == 'I') {
+                if ($issable->estatus == 'I') {
                     auth()->logout();
                     return redirect()->route('login')
                         ->with('login_error', 'กรุณาติดต่อผู้ดูแลระบบ')
@@ -130,10 +132,13 @@ class LoginController extends Controller
                 }
 
                 //check in use
-                $inuseCount = DB::connection('remote_connection')
+                /* $inuseCount = DB::connection('remote_connection')
                     ->table('call_center.agent')
                     ->where('id', '!=', $user->agent_id)
                     ->where('number', '=', $request->phone)
+                    ->count(); */
+                    $inuseCount = User::where('id', '!=', $user->id)
+                    ->where('phone', '=', $request->phone)
                     ->count();
 
                 if ($inuseCount > 0) {
@@ -142,6 +147,8 @@ class LoginController extends Controller
                     return redirect()->route('login')
                         ->with('login_error', 'หมายเลขโทรศัพท์ถูกใช้งานแล้ว')
                         ->withErrors(['email' => 'หมายเลขโทรศัพท์ถูกใช้งานแล้ว']);
+                } else {
+                        $user->agent_id = $issable->id;
                 }
 
 
@@ -173,10 +180,10 @@ class LoginController extends Controller
                 Session::put('login_time', $user->login_time);
 
                 // Update 'number' in the 'call_center.agent' table
-                DB::connection('remote_connection')
+                /* DB::connection('remote_connection')
                     ->table('call_center.agent')
                     ->where('id', $user->agent_id)
-                    ->update(['number' => $user->phone]);
+                    ->update(['number' => $user->phone]); */
 
                 $ret = $this->issable->agent_login($user->phone);
 
@@ -198,10 +205,10 @@ class LoginController extends Controller
 
         $this->issable->agent_logoff($phone);
         //update agent number
-        DB::connection('remote_connection')
+        /* DB::connection('remote_connection')
             ->table('call_center.agent')
             ->where('id', $agent_id)
-            ->update(['number' => 0]);
+            ->update(['number' => 0]); */
     }
 
 
@@ -222,10 +229,10 @@ class LoginController extends Controller
         $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-xmark"></i>';
         $user->save();
 
-        DB::connection('remote_connection')
+        /* DB::connection('remote_connection')
             ->table('call_center.agent')
             ->where('id', $user->agent_id)
-            ->update(['number' => 0]);
+            ->update(['number' => 0]); */
 
         $this->guard()->logout();
         $request->session()->invalidate();

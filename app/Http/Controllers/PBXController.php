@@ -139,10 +139,10 @@ class PBXController extends Controller
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-xmark"></i>';
             $user->save();
 
-            DB::connection('remote_connection')
+            /* DB::connection('remote_connection')
                 ->table('call_center.agent')
                 ->where('id', $user->agent_id)
-                ->update(['number' => 0]);
+                ->update(['number' => 0]); */
 
             Auth::logout();
         } else {
