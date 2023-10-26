@@ -468,9 +468,11 @@ class ContactController extends Controller
         ];
 
         $contact = CrmContact::find($id);
-        //data to log
+
+        $bindings = $contact->getBindings();
         //$contactl = array_merge($contact, ['modifyaction' => 'edit','modifyagent' => $user->id]);
-        //CrmContactLog::create($contact);
+
+        CrmContactLog::create($bindings);
 
         $contact->update($contactd);
         if (!empty($request->eemergencyData)) {
