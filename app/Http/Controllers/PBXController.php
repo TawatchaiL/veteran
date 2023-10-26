@@ -131,7 +131,7 @@ class PBXController extends Controller
 
         if ($user) {
 
-            $ret = $this->issable->agent_logoff($user->phone);
+            $this->issable->agent_logoff($user->phone);
 
             $user->phone = '';
             $user->phone_status_id = 0;

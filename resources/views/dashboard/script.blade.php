@@ -734,13 +734,11 @@
                 _token: token,
             },
             success: function(response) {
-                let a = 0;
                 response.agent_arr.forEach(element => {
                     call_list(element);
-                    a++;
                 });
                 $('#agent_list tbody').html(response.html);
-                offline_total = a;
+                offline_total = response.offline;
 
             },
             error: function(xhr, status, error) {

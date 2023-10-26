@@ -53,6 +53,7 @@ class DashboardController extends Controller
         $html = '';
 
         $x = 1;
+        $offline = 0;
         if (!$agents->isEmpty()) {
             foreach ($agents as $agent) {
                 //$agentName = $agent_name_array[$agent->agent_id] ?? 'Unknown';
@@ -74,11 +75,15 @@ class DashboardController extends Controller
                 if ($agent->phone) {
                     $agent_arr[] = $agent->phone;
                 }
+                if ($agent->phone_status_id == 0) {
+                    $offline++;
+                }
             }
         }
         return response()->json([
             'html' => $html,
-            'agent_arr' => $agent_arr
+            'agent_arr' => $agent_arr,
+            'offline' => $offline
         ]);
     }
 }
