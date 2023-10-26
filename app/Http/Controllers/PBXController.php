@@ -386,9 +386,9 @@ class PBXController extends Controller
 
                     DB::connection('remote_connection')->table('wrap_data')->insert($dataToInsert);
                     DB::connection('remote_connection')
-                    ->table('call_center.call_entry')
-                    ->where('uniqueid', $request->get('uniqid'))
-                    ->update(['crm_id' => $user->id]);
+                        ->table('call_center.call_entry')
+                        ->where('uniqueid', $request->get('uniqid'))
+                        ->update(['crm_id' => $user->id]);
                 }
 
                 $this->issable->agent_break($user->phone, $this->warp_id);
@@ -452,6 +452,11 @@ class PBXController extends Controller
                     'wrap_end' => $wrap_end,
                     'duration' => $duration,
                 ]);
+
+            DB::connection('remote_connection')
+                ->table('call_center.call_entry')
+                ->where('uniqueid', $resultb->uniqid)
+                ->update(['duration_warp' => $duration]);
 
             $ret = $this->issable->agent_unbreak($user->phone);
 
