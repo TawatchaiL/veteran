@@ -481,7 +481,7 @@
     });
 
     socket.on('queuemember', async (response) => {
-        //console.log(response)
+        console.log(response)
         const storedOption = localStorage.getItem('selectedOption');
         let res = response.data;
         let status = '';
@@ -749,7 +749,6 @@
                 _token: token,
             },
             success: function(response) {
-                console.log(response)
 
                 offline_list = response.agent_offline;
                 response.agent_offline.forEach(element => {
