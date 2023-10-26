@@ -257,7 +257,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="col-md-12">
-                                        <div id="mainbc2_4072" style="height:350px;"></div>
+                                        <div id="agent_status_chart" style="height:350px;"></div>
                                     </div>
                                 </div>
 

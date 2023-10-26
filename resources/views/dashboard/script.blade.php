@@ -205,7 +205,7 @@
 
 
     let agent_status_chart = (offline, online, pause, warp, busy) => {
-        let option4072 = {
+        let option = {
             title: {
                 show: false,
                 text: 'Referer of a Website',
@@ -263,7 +263,7 @@
                 }
             }]
         };
-        return option4072;
+        return option;
     }
 
 
@@ -402,7 +402,7 @@
     const active_div = $('#active_total');
     const waiting_div = $('#waiting_total');
 
-    let pie4072 = echarts.init(document.getElementById("mainbc2_4072"));
+    let div_agent_status_chart = echarts.init(document.getElementById("agent_status_chart"));
     let waitData = {};
     let ring_call = {};
     let active_call = {};
@@ -412,8 +412,8 @@
     let offline_total = 0;
     let offline_list = [];
 
-    pie4072.setOption(agent_status_chart(0, 0, 0, 0));
-    window.addEventListener('resize', pie4072.resize);
+    div_agent_status_chart.setOption(agent_status_chart(0, 0, 0, 0));
+    window.addEventListener('resize', div_agent_status_chart.resize);
 
     let call_list = (exten) => {
         let mcallprofile = '';
@@ -568,7 +568,8 @@
             let num_offline = offline_total;
 
             active_div.html(num_active);
-            pie4072.setOption(agent_status_chart(num_offline, num_ready, num_pause, num_warp, num_busy));
+            div_agent_status_chart.setOption(agent_status_chart(num_offline, num_ready, num_pause, num_warp,
+                num_busy));
         }
 
     });
