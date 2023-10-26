@@ -323,6 +323,7 @@ class ContactController extends Controller
             'tname' => 'required|string|max:50',
             'fname' => 'required|string|max:50',
             'lname' => 'required|string|max:50',
+            'bloodgroup' => 'required|string|max:50',
             'homeno' => 'required|string|max:10',
             'city' => 'required|string|max:8',
             'district' => 'required|string|max:8',
@@ -333,6 +334,7 @@ class ContactController extends Controller
             'tname.required' => 'กรุณาเลือกคำนำหน้าชื่อ',
             'fname.required' => 'กรุณากรอกชื่อ',
             'lname.required' => 'กรุณากรอกนามสกุล',
+            'bloodgroup.required' => 'กรุณาเลือกกรุ๊ปเลือด',
             'homeno.required' => 'กรุณากรอกบ้านเลขที่',
             'city.required' => 'กรุณาเลือกจังหวัด',
             'district.required' => 'กรุณาเลือกอำเภอ',
@@ -405,16 +407,20 @@ class ContactController extends Controller
     public function update(Request $request, $id)
     {
         $valifield = [
+            'tname' => 'required|string|max:50',
             'fname' => 'required|string|max:50',
             'lname' => 'required|string|max:50',
+            'bloodgroup' => 'required|string|max:50',
             'homeno' => 'required|string|max:10',
             'city' => 'required|string|max:8',
             'district' => 'required|string|max:8',
             'subdistrict' => 'required|string|max:8',
         ];
         $valimess = [
+            'tname.required' => 'กรุณาเลือกคำนำหน้าชื่อ',
             'fname.required' => 'กรุณากรอกชื่อ',
             'lname.required' => 'กรุณากรอกนามสกุล',
+            'bloodgroup.required' => 'กรุณาเลือกกรุ๊ปเลือด',
             'homeno.required' => 'กรุณากรอกบ้านเลขที่',
             'city.required' => 'กรุณาเลือกจังหวัด',
             'district.required' => 'กรุณาเลือกอำเภอ',

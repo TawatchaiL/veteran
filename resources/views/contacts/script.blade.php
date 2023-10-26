@@ -542,10 +542,10 @@
             var additionalData = {
                 hn: $('#Edithn').val(),
                 adddate: $('#Editadddate').val(),
-                fname: $('#Edittname').val(),
+                tname: $('#Edittname').val(),
                 fname: $('#Editfname').val(),
                 lname: $('#Editlname').val(),
-                fname: $('#Editbloodgroup').val(),
+                bloodgroup: $('#Editbloodgroup').val(),
                 homeno: $('#Edithomeno').val(),
                 moo: $('#Editmoo').val(),
                 soi: $('#Editsoi').val(),
