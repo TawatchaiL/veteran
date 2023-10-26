@@ -527,6 +527,7 @@
                 state_dur = duration_miltime(ring_time);
                 ring_call[phone_number] = 1;
             } else if (res.status == 2) {
+                call_list(phone_number);
                 ans_cid = localStorage.getItem(phone_number + '_ans_cid');
                 ans_time = localStorage.getItem(phone_number + '_ans_time');
                 status = `<span style="font-size: 1em; color: red;">
