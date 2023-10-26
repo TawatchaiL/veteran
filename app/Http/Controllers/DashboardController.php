@@ -70,7 +70,7 @@ class DashboardController extends Controller
                     <input type="hidden" id="' . $div . '_logoff" value="' . $agent->logoff_time . '">
                     </td>
                     <td><i class="fa-solid fa-user"></i> ' . $agent->name . '</td>
-                    <td style="text-align: center;" id="' . $div . '_phone">' . $div . '</td>
+                    <td style="text-align: center;" id="' . $div . '_phone">' . $agent->phone . '</td>
                     <td id="' . $div . '_status"><i class="fa-solid fa-user-xmark status-icon offline"></i>
                         <font class="offline">ไม่พร้อมรับสาย</font>
                     </td>

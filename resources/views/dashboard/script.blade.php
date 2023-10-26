@@ -563,6 +563,12 @@
     });
 
     socket.on('queuememberstatus', async (response) => {});
+    socket.on('pause', data => {
+        get_agent(storedOption);
+    });
+    socket.on('qlogoff', data => {
+        get_agent(storedOption);
+    });
 
     socket.on('agentcomplete', async (response) => {
         await delete active_call[response.data.connectedlinenum];
