@@ -550,7 +550,8 @@
             let num_pause = Object.keys(pause_total).length;
             let num_warp = Object.keys(warp_total).length;
             let num_ready = Object.keys(ready_total).length - (num_active + num_ring);
-            let num_offline = offline_total - (num_busy + num_pause + num_ready)
+            //let num_offline = offline_total - (num_busy + num_pause + num_ready)
+            let num_offline = offline_total;
 
             active_div.html(num_active);
             pie4072.setOption(agent_status_chart(num_offline, num_ready, num_pause, num_warp, num_busy));
