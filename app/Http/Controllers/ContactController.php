@@ -468,8 +468,8 @@ class ContactController extends Controller
         ];
 
         $contact = CrmContact::find($id);
-        $bindings = $contact->getBindings();
-        DB::table('crm_contact_logs')->insert($contact);
+        //$bindings = $contact->getBindings();
+        //DB::table('crm_contact_logs')->insert($contact);
         //$bindings = $contact->getBindings();
         //$contactl = array_merge($contact, ['modifyaction' => 'edit','modifyagent' => $user->id]);
 
