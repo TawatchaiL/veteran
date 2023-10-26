@@ -461,12 +461,7 @@
         });
     };
 
-    setInterval(function() {
-        offline_list.forEach(element => {
-            logoffTime = new Date($('#' + element + '_logoff').val()).getTime() / 1000;
-            $('#' + element + '_duration').html(duration_time(logoffTime));
-        });
-    }, 1000);
+
 
 
 
@@ -768,6 +763,12 @@
         }
 
         get_agent(storedOption);
+        setInterval(function() {
+            offline_list.forEach(element => {
+                logoffTime = new Date($('#' + element + '_logoff').val()).getTime() / 1000;
+                $('#' + element + '_duration').html(duration_time(logoffTime));
+            });
+        }, 1000);
 
         selectElement.on('change', () => {
             const selectedOption = selectElement.val();
