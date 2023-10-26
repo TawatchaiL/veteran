@@ -538,7 +538,7 @@
                 };
                 eemergencyData.push(eemergency);
             });
-
+alert($('#Edittname option:selected').text());
             var additionalData = {
                 hn: $('#Edithn').val(),
                 adddate: $('#Editadddate').val(),
