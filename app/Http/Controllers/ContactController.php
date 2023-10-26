@@ -447,8 +447,10 @@ class ContactController extends Controller
         $contactd = [
             'hn' => $request->get('hn'),
             'adddate' => $request->get('adddate'),
+            'tname' => $request->get('tname'),
             'fname' => $request->get('fname'),
             'lname' => $request->get('lname'),
+            'bloodgroup' => $request->get('bloodgroup'),
             'homeno' => $request->get('homeno'),
             'moo' => $request->get('moo'),
             'soi' => $request->get('soi'),
