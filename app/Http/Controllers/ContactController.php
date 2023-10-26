@@ -476,8 +476,6 @@ class ContactController extends Controller
             'tname' => $contact->tname,
             'fname' => $contact->fname,
             'lname' => $contact->lname,
-            'created_at' => $contact->created_at,
-            'updated_at' => $contact->updated_at,
             'bloodgroup' => $request->bloodgroup,
             'homeno' => $request->homeno,
             'moo' => $request->moo,
@@ -491,6 +489,8 @@ class ContactController extends Controller
             'phoneno' => $request->phoneno,
             'workno' => $request->workno,
             'agent' => $user->id,
+            'created_at' => $contact->created_at,
+            'updated_at' => $contact->updated_at,
             'modifyaction' => 'edit',
             'modifyagent' => $user->id,
         ];
