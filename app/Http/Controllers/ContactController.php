@@ -470,7 +470,7 @@ class ContactController extends Controller
         $contact = CrmContact::find($id);
 
         $contactlog = [
-           // 'id' => $request->id,
+            'id' => $request->id,
             'hn' => $request->hn,
             'adddate' => $contact->adddate,
             'tname' => $contact->tname,
@@ -480,7 +480,6 @@ class ContactController extends Controller
             'homeno' => $request->homeno,
             'moo' => $request->moo,
             'soi' => $request->soi,
-            'road' => $request->road,
             'road' => $request->road,
             'district' => $request->district,
             'subdistrict' => $request->subdistrict,
