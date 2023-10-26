@@ -89,6 +89,7 @@ class DashboardController extends Controller
         return response()->json([
             'html' => $html,
             'agent_arr' => $agent_arr,
+            'agent_offline' => $agent_offline,
             'offline' => $offline
         ]);
     }
