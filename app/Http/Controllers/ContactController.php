@@ -488,7 +488,7 @@ class ContactController extends Controller
             'telhome' => $request->telhome,
             'phoneno' => $request->phoneno,
             'workno' => $request->workno,
-            'agent' => $user->id,
+            'agent' => $request->agent,
             'created_at' => $contact->created_at,
             'updated_at' => $contact->updated_at,
             'modifyaction' => 'edit',
