@@ -121,15 +121,22 @@ class LoginController extends Controller
                     ->table('call_center.agent')
                     //->where('id', $user->agent_id)
                     ->where('number', $user->phone)
-                    ->orderBy('id','desc')
+                    ->orderBy('id', 'desc')
                     ->first();
-
-                if ($issable->estatus == 'I') {
+                if ($issable) {
+                    if ($issable->estatus == 'I') {
+                        auth()->logout();
+                        return redirect()->route('login')
+                            ->with('login_error', 'กรุณาติดต่อผู้ดูแลระบบ')
+                            ->withErrors(['email' => 'กรุณาติดต่อผู้ดูแลระบบ']);
+                    }
+                } else {
                     auth()->logout();
                     return redirect()->route('login')
                         ->with('login_error', 'กรุณาติดต่อผู้ดูแลระบบ')
                         ->withErrors(['email' => 'กรุณาติดต่อผู้ดูแลระบบ']);
                 }
+
 
                 //check in use
                 /* $inuseCount = DB::connection('remote_connection')
@@ -137,7 +144,7 @@ class LoginController extends Controller
                     ->where('id', '!=', $user->agent_id)
                     ->where('number', '=', $request->phone)
                     ->count(); */
-                    $inuseCount = User::where('id', '!=', $user->id)
+                $inuseCount = User::where('id', '!=', $user->id)
                     ->where('phone', '=', $request->phone)
                     ->count();
 
@@ -148,7 +155,7 @@ class LoginController extends Controller
                         ->with('login_error', 'หมายเลขโทรศัพท์ถูกใช้งานแล้ว')
                         ->withErrors(['email' => 'หมายเลขโทรศัพท์ถูกใช้งานแล้ว']);
                 } else {
-                        $user->agent_id = $issable->id;
+                    $user->agent_id = $issable->id;
                 }
 
 
