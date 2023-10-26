@@ -166,6 +166,13 @@ class PBXController extends Controller
 
             $ret = $this->issable->agent_break($user->phone, $request->get('id_break'));
 
+            DB::connection('remote_connection')
+                ->table('call_center.audit')
+                ->where('id_agent', $user->agent_id)
+                ->whereNotNull('id_break')
+                ->whereNull('datetime_end')
+                ->update(['crm_id' => $user->id]);
+
             $resultb = DB::connection('remote_connection')
                 ->table('call_center.break')
                 ->where('id', $request->get('id_break'))
@@ -379,6 +386,12 @@ class PBXController extends Controller
                 }
 
                 $ret = $this->issable->agent_break($user->phone, 5);
+                DB::connection('remote_connection')
+                    ->table('call_center.audit')
+                    ->where('id_agent', $user->agent_id)
+                    ->whereNotNull('id_break')
+                    ->whereNull('datetime_end')
+                    ->update(['crm_id' => $user->id]);
 
                 $user->phone_status_id = 3;
                 $user->phone_status =  'Wrap UP';
