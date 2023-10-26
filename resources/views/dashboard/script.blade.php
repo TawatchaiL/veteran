@@ -469,6 +469,17 @@
         socket.emit('join', 'Client Connect To Asterisk Event Serv');
     });
 
+    socket.on('queuememberstatus', async (response) => {});
+    socket.on('pause', data => {
+        get_agent(storedOption);
+    });
+    socket.on('qlogoff', data => {
+        get_agent(storedOption);
+    });
+    socket.on('qlogin', data => {
+        get_agent(storedOption);
+    });
+
     socket.on('queuemember', async (response) => {
         //console.log(response)
         const storedOption = localStorage.getItem('selectedOption');
@@ -562,13 +573,6 @@
 
     });
 
-    socket.on('queuememberstatus', async (response) => {});
-    socket.on('pause', data => {
-        get_agent(storedOption);
-    });
-    socket.on('qlogoff', data => {
-        get_agent(storedOption);
-    });
 
     socket.on('agentcomplete', async (response) => {
         await delete active_call[response.data.connectedlinenum];
