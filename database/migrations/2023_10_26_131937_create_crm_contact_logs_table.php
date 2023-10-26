@@ -32,14 +32,14 @@ return new class extends Migration
             $table->string('telhome')->nullable();
             $table->string('workno')->nullable();
             $table->integer('agent')->nullable();
-            $table->datetime('created_at');
-            $table->datetime('updated_at');
+            $table->dateTime('created_at', $precision = 0);
+            $table->dateTime('updated_at', $precision = 0);
             $table->string('modifyaction',10)->nullable();
             $table->string('modifyagent',10)->nullable();
             $table->timestamps('modifydate');
         });
     }
-
+    
     /**
      * Reverse the migrations.
      */
