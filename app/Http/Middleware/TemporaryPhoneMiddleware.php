@@ -23,11 +23,13 @@ class TemporaryPhoneMiddleware
         $temporaryPhoneStatus = $user ? $user->phone_status : '';
         $temporaryPhoneStatusIcon = $user ? $user->phone_status_icon : '';
         $temporaryLogintime = $user ? $user->login_time : '';
+        $temporaryLogofftime = $user ? $user->logoff_time : '';
         View::share('temporaryPhone', $temporaryPhone);
         View::share('temporaryPhoneStatusID', $temporaryPhoneStatusID);
         View::share('temporaryPhoneStatus', $temporaryPhoneStatus);
         View::share('temporaryPhoneStatusIcon', $temporaryPhoneStatusIcon);
         View::share('temporaryLogintime', $temporaryLogintime);
+        View::share('temporaryLogofftime', $temporaryLogofftime);
         return $next($request);
     }
 }

@@ -241,6 +241,7 @@ class LoginController extends Controller
         $user->phone_status_id = 0;
         $user->phone_status = "ไม่พร้อมรับสาย";
         $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-xmark"></i>';
+        $user->logoff_time = Carbon::now();
         $user->save();
 
         /* DB::connection('remote_connection')

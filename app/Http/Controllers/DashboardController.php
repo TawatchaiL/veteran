@@ -59,7 +59,9 @@ class DashboardController extends Controller
                 //$agentName = $agent_name_array[$agent->agent_id] ?? 'Unknown';
 
                 $html .= '<tr id="' . $agent->phone . '">
-                    <td>' . $x . '<input type="hidden" id="' . $agent->phone . '_login" value="' . $agent->login_time . '"></td>
+                    <td>' . $x . '<input type="hidden" id="' . $agent->phone . '_login" value="' . $agent->login_time . '">
+                    <input type="hidden" id="' . $agent->phone . '_logoff" value="' . $agent->logoff_time . '">
+                    </td>
                     <td><i class="fa-solid fa-user"></i> ' . $agent->name . '</td>
                     <td style="text-align: center;" id="' . $agent->phone . '_phone">' . $agent->phone . '</td>
                     <td id="' . $agent->phone . '_status"><i class="fa-solid fa-user-xmark status-icon offline"></i>
