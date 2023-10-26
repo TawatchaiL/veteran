@@ -406,6 +406,7 @@ class ContactController extends Controller
 
     public function update(Request $request, $id)
     {
+        $user = Auth::user();
         $valifield = [
             'tname' => 'required|string|max:50',
             'fname' => 'required|string|max:50',
@@ -462,6 +463,7 @@ class ContactController extends Controller
             'telhome' => $request->get('telhome'),
             'phoneno' => $request->get('phoneno'),
             'workno' => $request->get('workno'),
+            'agent' => $user->id,
         ];
 
         $contact = CrmContact::find($id);
@@ -474,12 +476,14 @@ class ContactController extends Controller
                     $Crmemergency->emergencyname = $edata['emergencyname'];
                     $Crmemergency->emerrelation = $edata['emerrelation'];
                     $Crmemergency->emerphone = $edata['emerphone'];
+                    $Crmemergency->agent = $user->id;
                     $Crmemergency->save();
                 } else {
                     $emerd = [
                         'emergencyname' => $edata['emergencyname'],
                         'emerrelation' => $edata['emerrelation'],
                         'emerphone' => $edata['emerphone'],
+                        'agent' => $user->id,
                     ];
 
                     $emer = CrmPhoneEmergency::find($edata['eemertype']);
@@ -535,6 +539,7 @@ class ContactController extends Controller
         }
         //
         $input = $request->all();
+        $input = array_merge($input, ['agent' => $user->id]);
         $contact = CrmContact::create($input);
         $insertedId = $contact->id;
         if (!empty($request->emergencyData)) {
@@ -544,6 +549,7 @@ class ContactController extends Controller
                 $Crmemergency->emergencyname = $edata['emergencyname'];
                 $Crmemergency->emerrelation = $edata['emerrelation'];
                 $Crmemergency->emerphone = $edata['emerphone'];
+                $Crmemergency->agent = $user->id;
                 $Crmemergency->save();
             }
         }
@@ -575,7 +581,7 @@ class ContactController extends Controller
         $Crmcsae->tranferstatus = $request->input('tranferstatus');
         $Crmcsae->casedetail = $request->input('casedetail');
         $Crmcsae->casestatus = $request->input('casestatus');
-        $Crmcsae->agent = $user->phone;
+        $Crmcsae->agent = $user->id;
         $Crmcsae->save();
 
         //CrmIncoming::where('telno', $request->input('telno'))->update('status' => '2');
@@ -643,6 +649,7 @@ class ContactController extends Controller
             'telhome' => $request->get('telhome'),
             'phoneno' => $request->get('phoneno'),
             'workno' => $request->get('workno'),
+            'agent' => $user->id,
         ];
 
         $contact = CrmContact::find($id);
@@ -655,12 +662,14 @@ class ContactController extends Controller
                     $Crmemergency->emergencyname = $edata['emergencyname'];
                     $Crmemergency->emerrelation = $edata['emerrelation'];
                     $Crmemergency->emerphone = $edata['emerphone'];
+                    $Crmemergency->agent = $user->id;
                     $Crmemergency->save();
                 } else {
                     $emerd = [
                         'emergencyname' => $edata['emergencyname'],
                         'emerrelation' => $edata['emerrelation'],
                         'emerphone' => $edata['emerphone'],
+                        'agent' => $user->id,
                     ];
 
                     $emer = CrmPhoneEmergency::find($edata['emertype']);
@@ -697,7 +706,7 @@ class ContactController extends Controller
         $Crmcsae->tranferstatus = $request->get('tranferstatus');
         $Crmcsae->casedetail = $request->get('casedetail');
         $Crmcsae->casestatus = $request->get('casestatus');
-        $Crmcsae->agent = $user->phone;
+        $Crmcsae->agent = $user->id;
         $Crmcsae->save();
 
         //CrmIncoming::where('telno', $request->input('telno'))->update('status' => '2');
