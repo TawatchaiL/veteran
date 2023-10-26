@@ -90,7 +90,7 @@
                                                     <strong><i class="fas fa-user-tie"></i> คำนำหน้าชื่อ:</strong>
                                                     <select style="width: 100%;"
                                                         class="select2 form-control"
-                                                        id="Edittname" name="Edittname">
+                                                        id="Edittname" name="etname">
                                                         <option value="">กรุณาเลือก</option>
                                                         <option value="เด็กชาย">เด็กชาย</option>
                                                         <option value="เด็กหญิง">เด็กหญิง</option>
@@ -119,7 +119,7 @@
                                                     <strong><i class="fas fa-user-tie"></i> กรุ๊ปเลือด:</strong>
                                                     <select style="width: 100%;"
                                                         class="select2 form-control"
-                                                        id="Editbloodgroup" name="Editbloodgroup">
+                                                        id="Editbloodgroup" name="ebloodgroup">
                                                         <option value="">กรุณาเลือก</option>
                                                         <option value="A">A</option>
                                                         <option value="B">B</option>
