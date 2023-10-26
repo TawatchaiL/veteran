@@ -518,7 +518,7 @@
                     pause_total[phone_number] = 1;
                 }
             } else if (res.status == 6) {
-                call_list();
+                call_list(phone_number);
                 ring_cid = localStorage.getItem(phone_number + '_ring_cid');
                 ring_time = localStorage.getItem(phone_number + '_ring_time');
                 status = `<span style="font-size: 1em; color: red;">
