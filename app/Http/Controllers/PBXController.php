@@ -15,6 +15,7 @@ class PBXController extends Controller
 {
     protected $remote;
     protected $issable;
+    protected $warp_id;
 
     /**
      * Create a new controller instance.
@@ -25,6 +26,7 @@ class PBXController extends Controller
     {
         $this->remote = $asteriskAmiService;
         $this->issable = $issableService;
+        $this->warp_id = config('asterisk.manager.warp_id');
     }
 
     public function pause_list()
@@ -32,7 +34,7 @@ class PBXController extends Controller
         $resultb = DB::connection('remote_connection')
             ->table('call_center.break')
             ->where('tipo', 'B')
-            ->where('id', '!=', 5)
+            ->where('id', '!=', $this->warp_id)
             ->get();
 
         return response()->json($resultb);
@@ -325,7 +327,7 @@ class PBXController extends Controller
                         ->where('id', $inbreak[0]->id_break)
                         ->first();
 
-                    if ($inbreak[0]->id_break == 5) {
+                    if ($inbreak[0]->id_break == $this->warp_id) {
                         $user->phone_status_id = 3;
                     } else {
                         $user->phone_status_id = 2;
@@ -389,7 +391,7 @@ class PBXController extends Controller
                     ->update(['crm_id' => $user->id]);
                 }
 
-                $this->issable->agent_break($user->phone, 5);
+                $this->issable->agent_break($user->phone, $this->warp_id);
                 DB::connection('remote_connection')
                     ->table('call_center.audit')
                     ->where('id_agent', $user->agent_id)

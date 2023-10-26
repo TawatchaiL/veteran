@@ -7,7 +7,7 @@ return [
         'password' => env('ASTERISK_MANAGER_PASSWORD', 'rsiippbx'),
         'port' => env('ASTERISK_MANAGER_PORT', '5038'),
         'remote_context' => env('ASTERISK_REMOTE_CONTEXT', 'ext-local'),
-
+        'warp_id' => env('WARP_ID', '5'),
     ],
     'eccp' => [
         'eccp_host' => env('ECCP_HOST', '10.148.0.4'),
