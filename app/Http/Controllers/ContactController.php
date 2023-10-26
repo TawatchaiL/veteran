@@ -470,7 +470,7 @@ class ContactController extends Controller
         $contact = CrmContact::find($id);
 
         $contactlog = [
-            'id' => $request->id,
+           // 'id' => $request->id,
             'hn' => $request->hn,
             'adddate' => $contact->adddate,
             'tname' => $contact->tname,
