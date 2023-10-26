@@ -481,6 +481,7 @@ class ContactController extends Controller
             'moo' => $contact->moo,
             'soi' => $contact->soi,
             'road' => $contact->road,
+            'city' => $contact->city,
             'district' => $contact->district,
             'subdistrict' => $contact->subdistrict,
             'postcode' => $contact->postcode,
