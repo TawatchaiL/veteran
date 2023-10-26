@@ -72,6 +72,12 @@ class PBXController extends Controller
 
             $ret = $this->issable->agent_login($user->phone);
 
+            DB::connection('remote_connection')
+                ->table('call_center.audit')
+                ->where('id_agent', $user->agent_id)
+                ->whereNull('datetime_end')
+                ->update(['crm_id' => $user->id]);
+
             $user->phone_status_id = 1;
             $user->phone_status = "พร้อมรับสาย";
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
