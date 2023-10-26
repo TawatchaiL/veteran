@@ -9,6 +9,7 @@ class CrmContact extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'id',
         'hn',
         'adddate',
         'tname',
