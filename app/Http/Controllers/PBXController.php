@@ -420,9 +420,14 @@ class PBXController extends Controller
             ->where('agentno', $user->phone)
             ->where('status', 1)
             ->delete(); */
+            $exten = $request->input('exten');
+            $ex_exten = explode("-",$exten);
+            $ex_phone = explode("/",$ex_exten[0]);
 
             $context = DB::table('crm_incoming')
-                ->where('uniqid', $request->input('uniqid'))->first();
+                ->where('uniqid', $request->input('uniqid'))
+                ->where('agent_id', $user->id)
+                ->first();
 
             if ($context !== null && $context->context == "ext-queues") {
                 $indb = DB::connection('remote_connection')
