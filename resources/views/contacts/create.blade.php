@@ -90,6 +90,7 @@
                                                     <select style="width: 100%;"
                                                         class="select2 form-control"
                                                         id="Addtname" name="Addtname">
+                                                        <option value="">กรุณาเลือก</option>
                                                         <option value="เด็กชาย">เด็กชาย</option>
                                                         <option value="เด็กหญิง">เด็กหญิง</option>
                                                         <option value="นาย">นาย</option>
@@ -118,6 +119,7 @@
                                                     <select style="width: 100%;"
                                                         class="select2 form-control"
                                                         id="Addbloodgroup" name="Addbloodgroup">
+                                                        <option value="">กรุณาเลือก</option>
                                                         <option value="A">A</option>
                                                         <option value="B">B</option>
                                                         <option value="AB">AB</option>
