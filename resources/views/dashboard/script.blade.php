@@ -410,6 +410,7 @@
     let warp_total = {};
     let ready_total = {};
     let offline_total = 0;
+    let offline_list = [];
 
     pie4072.setOption(agent_status_chart(0, 0, 0, 0));
     window.addEventListener('resize', pie4072.resize);
@@ -459,6 +460,13 @@
             active_div.html(calls_active);
         });
     };
+
+    setInterval(function() {
+        offline_list.forEach(element => {
+            logoffTime = new Date($('#' + element + '_logoff').val()).getTime() / 1000;
+            $('#' + element + '_duration').html(duration_time(logoffTime));
+        });
+    }, 1000);
 
 
 
@@ -529,7 +537,7 @@
                     <i class="fa-solid fa-user-check"></i></span> พร้อมรับสาย`
                 if (res.lastpause == 0) {
                     if (res.lastcall == 0) {
-                        loginTime = new Date($('#' + exts[1] + '_login').val()).getTime() / 1000;
+                        loginTime = new Date($('#' + phone_number + '_login').val()).getTime() / 1000;
                         state_dur = duration_time(loginTime);
                     } else {
                         state_dur = duration_time(res.lastcall);
@@ -736,9 +744,12 @@
             },
             success: function(response) {
                 console.log(response)
-                response.agent_arr.forEach(element => {
+
+                offline_list = response.agent_offline;
+                response.agent_offline.forEach(element => {
                     call_list(element);
                 });
+
                 $('#agent_list tbody').html(response.html);
                 offline_total = response.offline;
 

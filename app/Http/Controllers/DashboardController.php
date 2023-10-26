@@ -57,28 +57,32 @@ class DashboardController extends Controller
         if (!$agents->isEmpty()) {
             foreach ($agents as $agent) {
                 //$agentName = $agent_name_array[$agent->agent_id] ?? 'Unknown';
+                if ($agent->phone_status_id == 0) {
+                    $agent_offline[] = $agent->id;
+                    $offline++;
+                    $div = $agent->id;
+                } else {
+                    $div = $agent->phone;
+                }
 
-                $html .= '<tr id="' . $agent->phone . '">
-                    <td>' . $x . '<input type="hidden" id="' . $agent->phone . '_login" value="' . $agent->login_time . '">
-                    <input type="hidden" id="' . $agent->phone . '_logoff" value="' . $agent->logoff_time . '">
+                $html .= '<tr id="' . $div . '">
+                    <td>' . $x . '<input type="hidden" id="' . $div . '_login" value="' . $agent->login_time . '">
+                    <input type="hidden" id="' . $div . '_logoff" value="' . $agent->logoff_time . '">
                     </td>
                     <td><i class="fa-solid fa-user"></i> ' . $agent->name . '</td>
-                    <td style="text-align: center;" id="' . $agent->phone . '_phone">' . $agent->phone . '</td>
-                    <td id="' . $agent->phone . '_status"><i class="fa-solid fa-user-xmark status-icon offline"></i>
+                    <td style="text-align: center;" id="' . $div . '_phone">' . $div . '</td>
+                    <td id="' . $div . '_status"><i class="fa-solid fa-user-xmark status-icon offline"></i>
                         <font class="offline">ไม่พร้อมรับสาย</font>
                     </td>
-                    <td style="text-align: center;" id="' . $agent->phone . '_duration">00:00:00</td>
-                    <td style="text-align: center;" id="' . $agent->phone . '_src"></td>
-                    <td style="text-align: center;" id="' . $agent->phone . '_queue"></td>
+                    <td style="text-align: center;" id="' . $div . '_duration">00:00:00</td>
+                    <td style="text-align: center;" id="' . $div . '_src"></td>
+                    <td style="text-align: center;" id="' . $div . '_queue"></td>
                     <td><img src="' . asset('images/pauseagent.gif') . '"><img src="' . asset('images/logout-icon.png') . '"></td>
                 </tr>';
                 $x++;
 
                 if ($agent->phone) {
                     $agent_arr[] = $agent->phone;
-                }
-                if ($agent->phone_status_id == 0) {
-                    $offline++;
                 }
             }
         }
