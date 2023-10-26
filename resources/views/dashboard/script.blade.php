@@ -542,8 +542,8 @@
                 ready_total[phone_number] = 1;
                 status = `<span style="font-size: 1em; color: green;">
                     <i class="fa-solid fa-user-check"></i></span> พร้อมรับสาย`
-                if (res.lastpause == 0) {
-                    if (res.lastcall == 0) {
+                if (res.lastpause === 0) {
+                    if (res.lastcall === 0) {
                         loginTime = new Date($('#' + phone_number + '_login').val()).getTime() / 1000;
                         state_dur = duration_time(loginTime);
                     } else {
