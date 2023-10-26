@@ -224,9 +224,10 @@ class PBXController extends Controller
             if ($request->input('context') == 'ext-queues') {
                 DB::table('crm_incoming')
                     ->where('telno', $request->input('telno'))
-                    ->where('agentno', $request->input('agentno'))
+                    ->where('agent_id', $user->id)
                     ->delete();
                 DB::table('crm_incoming')->insert([
+                    'agent_id' => $user->id,
                     'uniqid' => $request->input('uniqid'),
                     'context' => $request->input('context'),
                     'telno' => $request->input('telno'),
@@ -288,7 +289,8 @@ class PBXController extends Controller
         if ($user) {
 
             DB::table('crm_incoming')
-                ->where('agentno', $request->input('extension'))
+                //->where('agentno', $request->input('extension'))
+                ->where('agent_id', $user->id)
                 ->where('status', 1)
                 ->delete();
 
