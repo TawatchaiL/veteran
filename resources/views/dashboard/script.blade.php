@@ -518,6 +518,9 @@
                     pause_total[phone_number] = 1;
                 }
             } else if (res.status == 6) {
+                //if (phone_number=='8888') {
+                console.log(res)
+                //}
                 ring_cid = localStorage.getItem(phone_number + '_ring_cid');
                 ring_time = localStorage.getItem(phone_number + '_ring_time');
                 status = `<span style="font-size: 1em; color: red;">
@@ -546,20 +549,11 @@
                     if (res.lastcall === '0') {
                         loginTime = new Date($('#' + phone_number + '_login').val()).getTime() / 1000;
                         state_dur = duration_time(loginTime);
-                        if (phone_number=='8888') {
-                console.log(1)
-              }
                     } else {
                         state_dur = duration_time(res.lastcall);
-                        if (phone_number=='8888') {
-                console.log(2)
-              }
                     }
                 } else {
                     state_dur = duration_time(res.lastpause);
-                    if (phone_number=='8888') {
-                console.log(3)
-              }
                 }
             }
 
