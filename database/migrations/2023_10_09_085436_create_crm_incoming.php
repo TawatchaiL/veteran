@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('agentno', 10)->nullable();
             $table->dateTime('calltime');
             $table->integer('status')->nullable();
-            $table->integer('state')->nullable();
+            $table->integer('holdtime', 10)->nullable();
             $table->timestamps();
         });
     }
