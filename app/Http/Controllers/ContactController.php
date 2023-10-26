@@ -481,6 +481,7 @@ class ContactController extends Controller
             'moo' => $contact->moo,
             'soi' => $contact->soi,
             'road' => $contact->road,
+            'city' => $contact->city,
             'district' => $contact->district,
             'subdistrict' => $contact->subdistrict,
             'postcode' => $contact->postcode,
@@ -490,6 +491,8 @@ class ContactController extends Controller
             'agent' => $contact->agent,
             'created_at' => $contact->created_at,
             'updated_at' => $contact->updated_at,
+            'modifyaction' => 'edit',
+            'modifyagent' => $user->id,
         ];
         //$bindings = $contact->getBindings();
         //DB::table('crm_contact_logs')->insert($contact);
