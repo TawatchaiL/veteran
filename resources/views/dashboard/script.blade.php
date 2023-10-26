@@ -518,9 +518,7 @@
                     pause_total[phone_number] = 1;
                 }
             } else if (res.status == 6) {
-                //if (phone_number=='8888') {
-                console.log(res)
-                //}
+                call_list();
                 ring_cid = localStorage.getItem(phone_number + '_ring_cid');
                 ring_time = localStorage.getItem(phone_number + '_ring_time');
                 status = `<span style="font-size: 1em; color: red;">
@@ -613,7 +611,7 @@
 
 
     socket.on('agentcalled', async (response) => {
-        console.log(response)
+        //console.log(response)
         let res = response.data;
         localStorage.setItem(res.destcalleridnum + '_ring_cid',
             res.calleridnum);
