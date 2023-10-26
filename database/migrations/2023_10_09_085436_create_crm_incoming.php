@@ -18,8 +18,9 @@ return new class extends Migration
             $table->string('telno', 15)->nullable();
             $table->integer('agent_id')->nullable();
             $table->string('agentno', 10)->nullable();
-            $table->dateTime('calltime');
+            $table->dateTime('calltime')->nullable();
             $table->integer('status')->nullable();
+            $table->dateTime('start_hold')->nullable();
             $table->integer('holdtime', 10)->nullable();
             $table->timestamps();
         });

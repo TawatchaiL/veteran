@@ -280,21 +280,44 @@
 
     socket.on('hold', data => {
         if (data.extension.match(exten)) {
-            $('#state_' + data.luniq.replace('.', '')).html(
-                '<i class="fa-solid fa-pause fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i> Hold'
-            );
-            $('#color_' + data.luniq.replace('.', '')).removeClass("card-danger");
-            $('#color_' + data.luniq.replace('.', '')).addClass("card-warning");
+            $.ajax({
+                url: "{{ route('agent.hold') }}",
+                method: 'post',
+                async: false,
+                data: {
+                    uniqid: data.luniq,
+                    _token: token,
+                },
+                success: function(result) {
+                    $('#state_' + data.luniq.replace('.', '')).html(
+                        '<i class="fa-solid fa-pause fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i> Hold'
+                    );
+                    $('#color_' + data.luniq.replace('.', '')).removeClass("card-danger");
+                    $('#color_' + data.luniq.replace('.', '')).addClass("card-warning");
+                }
+            });
         }
     });
 
     socket.on('unhold', data => {
         if (data.extension.match(exten)) {
-            $('#state_' + data.luniq.replace('.', '')).html(
-                '<i class="fa-solid fa-phone-volume fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i> Talking'
-            );
-            $('#color_' + data.luniq.replace('.', '')).removeClass("card-warning");
-            $('#color_' + data.luniq.replace('.', '')).addClass("card-danger");
+            $.ajax({
+                url: "{{ route('agent.unhold') }}",
+                method: 'post',
+                async: false,
+                data: {
+                    uniqid: data.luniq,
+                    _token: token,
+                },
+                success: function(result) {
+                    $('#state_' + data.luniq.replace('.', '')).html(
+                        '<i class="fa-solid fa-phone-volume fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i> Talking'
+                    );
+                    $('#color_' + data.luniq.replace('.', '')).removeClass("card-warning");
+                    $('#color_' + data.luniq.replace('.', '')).addClass("card-danger");
+                }
+            });
+
         }
 
     });
