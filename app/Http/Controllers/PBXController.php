@@ -297,6 +297,57 @@ class PBXController extends Controller
         }
     }
 
+    public function AgentHold(Request $request)
+    {
+
+        $user = Auth::user();
+
+        if ($user) {
+
+            DB::table('crm_incoming')
+                ->where('uniqid', $request->input('uniqid'))
+                ->update([
+                    'start_hold' => date("Y-m-d H:i:s"),
+                ]);
+
+            return [
+                'success' => true,
+            ];
+        } else {
+            return ['error' => false, 'message' => 'error'];
+        }
+    }
+
+    public function AgentUNHold(Request $request)
+    {
+
+        $user = Auth::user();
+
+        if ($user) {
+
+            $resultb =  DB::table('crm_incoming')
+                ->where('uniqid', $request->input('uniqid'))
+                ->first();
+
+            $unhold = Carbon::now();
+            $hold_start = Carbon::parse($resultb->start_hold);
+
+            $duration = $resultb->holdtime + $hold_start->diffInSeconds($unhold);
+
+            DB::table('crm_incoming')
+                ->where('uniqid', $request->input('uniqid'))
+                ->update([
+                    'holdtime' => $duration,
+                ]);
+
+            return [
+                'success' => true,
+            ];
+        } else {
+            return ['error' => false, 'message' => 'error'];
+        }
+    }
+
     public function AgentHang(Request $request)
     {
         $user = Auth::user();
