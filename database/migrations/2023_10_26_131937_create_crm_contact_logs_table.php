@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -32,14 +33,14 @@ return new class extends Migration
             $table->string('telhome')->nullable();
             $table->string('workno')->nullable();
             $table->integer('agent')->nullable();
-            $table->datetime('created_at');
-            $table->datetime('updated_at');
+            $table->dateTime('created_at');
+            $table->dateTime('updated_at');
             $table->string('modifyaction',10)->nullable();
             $table->string('modifyagent',10)->nullable();
-            $table->timestamps('modifydate');
+            $table->timestamp('modifydate')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }
-
+    
     /**
      * Reverse the migrations.
      */
