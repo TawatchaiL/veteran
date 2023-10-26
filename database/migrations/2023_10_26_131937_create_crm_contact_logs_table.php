@@ -32,11 +32,11 @@ return new class extends Migration
             $table->string('telhome')->nullable();
             $table->string('workno')->nullable();
             $table->integer('agent')->nullable();
-            $table->dateTime('created_at', $precision = 0);
-            $table->dateTime('updated_at', $precision = 0);
+            $table->dateTime('created_at');
+            $table->dateTime('updated_at');
             $table->string('modifyaction',10)->nullable();
             $table->string('modifyagent',10)->nullable();
-            $table->timestamps('modifydate');
+            $table->timestamp('modifydate');
         });
     }
     
