@@ -360,6 +360,7 @@
                         method: 'post',
                         async: false,
                         data: {
+                            exten: data.extension,
                             uniqid: data.luniq,
                             _token: token,
                         },
