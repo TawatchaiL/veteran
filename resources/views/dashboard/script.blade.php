@@ -481,7 +481,7 @@
     });
 
     socket.on('queuemember', async (response) => {
-        console.log(response)
+
         const storedOption = localStorage.getItem('selectedOption');
         let res = response.data;
         let status = '';
@@ -538,6 +538,7 @@
                 status = `<span style="font-size: 1em; color: #ff9900;">
                     <i class="fa-solid fa-user-clock fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังพักสาย`
             } else if (res.status == 1) {
+                console.log(response)
                 ready_total[phone_number] = 1;
                 status = `<span style="font-size: 1em; color: green;">
                     <i class="fa-solid fa-user-check"></i></span> พร้อมรับสาย`
