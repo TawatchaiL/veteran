@@ -11,8 +11,10 @@ class CrmContact extends Model
     protected $fillable = [
         'hn',
         'adddate',
+        'tname',
         'fname',
         'lname',
+        'bloodgroup',
         'homeno',
         'moo',
         'road',
@@ -24,5 +26,6 @@ class CrmContact extends Model
         'phoneno',
         'telhome',
         'workno',
+        'agent',
     ];
 }

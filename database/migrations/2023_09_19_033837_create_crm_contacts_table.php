@@ -15,9 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('hn')->nullable();
             $table->date('adddate')->nullable();
+            $table->string('tname',50)->nullable();
             $table->string('fname')->nullable();
             $table->string('lname')->nullable();
-            $table->string('homeno')->nullable();
+            $table->string('lname')->nullable();
+            $table->string('bloodgroup',1)->nullable();
             $table->string('moo')->nullable();
             $table->string('road')->nullable();
             $table->string('soi')->nullable();
@@ -28,6 +30,7 @@ return new class extends Migration
             $table->string('phoneno')->nullable();
             $table->string('telhome')->nullable();
             $table->string('workno')->nullable();
+            $table->integer('agent')->nullable();
             $table->timestamps();
         });
     }
