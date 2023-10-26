@@ -393,8 +393,6 @@
                     data: 'more',
                     name: 'more'
                 }
-
-
             ]
         });
         $('#btnsearch').click(function(e) {
