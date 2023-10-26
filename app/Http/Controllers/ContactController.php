@@ -475,13 +475,15 @@ class ContactController extends Controller
             'tname' => $contact->tname,
             'fname' => $contact->fname,
             'lname' => $contact->lname,
+            'created_at' => $contact->created_at,
+            'updated_at' => $contact->updated_at,
         ];
         //$bindings = $contact->getBindings();
         //DB::table('crm_contact_logs')->insert($contact);
         //$bindings = $contact->getBindings();
         $contactl = array_merge($contactlog, ['modifyaction' => 'edit','modifyagent' => $user->id]);
 
-        CrmContactLog::create($contactlog);
+        CrmContactLog::create($contactl);
 
         $contact->update($contactd);
         if (!empty($request->eemergencyData)) {
