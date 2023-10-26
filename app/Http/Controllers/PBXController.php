@@ -382,10 +382,14 @@ class PBXController extends Controller
                         'wrap_start' => date("Y-m-d H:i:s"),
                     ];
 
-                    $insert = DB::connection('remote_connection')->table('wrap_data')->insert($dataToInsert);
+                    DB::connection('remote_connection')->table('wrap_data')->insert($dataToInsert);
+                    DB::connection('remote_connection')
+                    ->table('call_center.call_entry')
+                    ->where('uniqueid', $request->get('uniqid'))
+                    ->update(['crm_id' => $user->id]);
                 }
 
-                $ret = $this->issable->agent_break($user->phone, 5);
+                $this->issable->agent_break($user->phone, 5);
                 DB::connection('remote_connection')
                     ->table('call_center.audit')
                     ->where('id_agent', $user->agent_id)
