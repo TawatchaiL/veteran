@@ -538,19 +538,28 @@
                 status = `<span style="font-size: 1em; color: #ff9900;">
                     <i class="fa-solid fa-user-clock fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังพักสาย`
             } else if (res.status == 1) {
-                console.log(response)
+
                 ready_total[phone_number] = 1;
                 status = `<span style="font-size: 1em; color: green;">
                     <i class="fa-solid fa-user-check"></i></span> พร้อมรับสาย`
-                if (res.lastpause == 0) {
-                    if (res.lastcall == 0) {
+                if (res.lastpause === 0) {
+                    if (res.lastcall === 0) {
                         loginTime = new Date($('#' + phone_number + '_login').val()).getTime() / 1000;
                         state_dur = duration_time(loginTime);
+                        if (phone_number=='8888') {
+                console.log(1)
+              }
                     } else {
                         state_dur = duration_time(res.lastcall);
+                        if (phone_number=='8888') {
+                console.log(2)
+              }
                     }
                 } else {
                     state_dur = duration_time(res.lastpause);
+                    if (phone_number=='8888') {
+                console.log(3)
+              }
                 }
             }
 
