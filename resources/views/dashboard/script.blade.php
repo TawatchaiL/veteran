@@ -577,8 +577,7 @@
                 ring_time = dbv[phone_number + '_time'];
                 ring_app = dbv[phone_number + '_app'];
                 ring_state = dbv[phone_number + '_state'];
-                div_src.html(ring_cid);
-                state_dur = duration_miltime(ring_time);
+
                 //console.log(ring_app)
                 let ring_text;
                 if (ring_app === 'AppQueue') {
@@ -589,6 +588,8 @@
                 }
                 status = `<span style="font-size: 1em; color: red;">
                     <i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i></span> ${ring_text}`
+                div_src.html(ring_cid);
+                state_dur = duration_miltime(ring_time);
             } else if (res.status == 2) {
                 call_list(phone_number);
 
@@ -597,8 +598,6 @@
                 ans_app = dbv[phone_number + '_app'];
                 ans_state = dbv[phone_number + '_state'];
                 state_dur = duration_miltime(ans_time);
-
-                div_src.html(ans_cid);
 
                 let ans_text;
                 if (ans_state === 'Up') {
@@ -613,6 +612,7 @@
 
                 status = `<span style="font-size: 1em; color: red;">
                     <i class="fa-solid fa-phone-volume fa-beat" style="--fa-beat-scale: 1.5;"></i></span> ${ans_text}`
+                div_src.html(ans_cid);
             } else if (res.status == 8) {
                 active_call[phone_number] = 1;
                 status = `<span style="font-size: 1em; color: #ff9900;">
