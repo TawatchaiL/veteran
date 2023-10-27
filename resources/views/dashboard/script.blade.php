@@ -585,7 +585,7 @@
                     ring_call[phone_number] = 1;
                     ring_text = 'กำลังรอสาย';
                 } else {
-                    ring_text = 'กำลังรอสายตรง';
+                    ring_text = 'กำลังรอสาย';
                 }
                 status = `<span style="font-size: 1em; color: red;">
                     <i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i></span> ${ring_text}`
