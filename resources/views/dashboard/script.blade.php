@@ -541,9 +541,9 @@
                 /* ring_cid = localStorage.getItem(phone_number + '_ring_cid');
                 ring_time = localStorage.getItem(phone_number + '_ring_time');
                 ring_app = localStorage.getItem(phone_number + '_ring_app'); */
-                ring_cid = dashboardVariables[phone + '_ring_cid'];
-                ring_time = dashboardVariables[phone + '_ring_time'];
-                ring_app = dashboardVariables[phone + '_ring_app'];
+                ring_cid = dashboardVariables[phone_number + '_ring_cid'];
+                ring_time = dashboardVariables[phone_number + '_ring_time'];
+                ring_app = dashboardVariables[phone_number + '_ring_app'];
                 div_src.html(ring_cid);
                 state_dur = duration_miltime(ring_time);
                 //console.log(ring_app)
@@ -560,9 +560,9 @@
                 call_list(phone_number);
                 /* ans_cid = localStorage.getItem(phone_number + '_ans_cid');
                 ans_time = localStorage.getItem(phone_number + '_ans_time'); */
-                ans_cid = dashboardVariables[phone + '_ans_cid'];
-                ans_time = dashboardVariables[phone + '_ans_time'];
-                ans_app = dashboardVariables[phone + '_ans_app'];
+                ans_cid = dashboardVariables[phone_number + '_ans_cid'];
+                ans_time = dashboardVariables[phone_number + '_ans_time'];
+                ans_app = dashboardVariables[phone_number + '_ans_app'];
                 div_src.html(ans_cid);
                 state_dur = duration_miltime(ans_time);
                 active_call[phone_number] = 1;
