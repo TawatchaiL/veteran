@@ -443,11 +443,15 @@
                             mcallexten);
                         localStorage.setItem(phone + '_ring_time',
                             mcalluniq);
+                        localStorage.setItem(phone + '_ring_app',
+                            mcallapp);
                     } else if (strArray[4] == 'Up' && strArray[12] == '') {
                         localStorage.setItem(phone + '_ring_cid',
                             mcallexten);
                         localStorage.setItem(phone + '_ring_time',
                             mcalluniq);
+                        localStorage.setItem(phone + '_ring_app',
+                            mcallapp);
                     } else if (strArray[4] == 'Up') {
                         localStorage.setItem(phone + '_ans_cid',
                             mcallexten);
@@ -525,11 +529,14 @@
                 call_list(phone_number);
                 ring_cid = localStorage.getItem(phone_number + '_ring_cid');
                 ring_time = localStorage.getItem(phone_number + '_ring_time');
+                ring_app = localStorage.getItem(phone_number + '_ring_app');
                 status = `<span style="font-size: 1em; color: red;">
                     <i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i></span> กำลังรอสาย`
                 div_src.html(ring_cid);
                 state_dur = duration_miltime(ring_time);
-                ring_call[phone_number] = 1;
+                if (ring_app === 'AppQueue') {
+                    ring_call[phone_number] = 1;
+                }
             } else if (res.status == 2) {
                 call_list(phone_number);
                 ans_cid = localStorage.getItem(phone_number + '_ans_cid');
