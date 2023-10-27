@@ -533,11 +533,12 @@
                 div_src.html(ring_cid);
                 state_dur = duration_miltime(ring_time);
                 //console.log(ring_app)
+                let ring_text;
                 if (ring_app === 'AppQueue') {
                     ring_call[phone_number] = 1;
-                    let ring_text = 'กำลังรอสาย';
+                    ring_text = 'กำลังรอสาย';
                 } else {
-                    let ring_text = 'สายตรง';
+                    ring_text = 'สายตรง';
                 }
                 status = `<span style="font-size: 1em; color: red;">
                     <i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i></span> ${ring_text}`
