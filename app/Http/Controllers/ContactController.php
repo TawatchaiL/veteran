@@ -862,19 +862,68 @@ class ContactController extends Controller
             CrmPhoneEmergency::where('contact_id', $emer->id)->delete();
         }
 
-        //DB::table('crm_phone_emergencies')->where('contact_id',  $id)->delete();
-
         return ['success' => true, 'message' => 'ลบ ผู้ติดต่อ เรียบร้อยแล้ว'];
     }
 
     public function destroy_all(Request $request)
     {
-
+        $user = Auth::user();
         $arr_del  = $request->get('table_records');
 
         for ($xx = 0; $xx < count($arr_del); $xx++) {
-            CrmContact::find($arr_del[$xx])->delete();
-            DB::table('crm_phone_emergencies')->where('contact_id',  $arr_del[$xx])->delete();
+            $contact = CrmContact::find($arr_del[$xx]);
+
+            $contactlog = [
+                'id' => $contact->id,
+                'hn' => $contact->hn,
+                'adddate' => $contact->adddate,
+                'tname' => $contact->tname,
+                'fname' => $contact->fname,
+                'lname' => $contact->lname,
+                'bloodgroup' => $contact->bloodgroup,
+                'homeno' => $contact->homeno,
+                'moo' => $contact->moo,
+                'soi' => $contact->soi,
+                'road' => $contact->road,
+                'city' => $contact->city,
+                'district' => $contact->district,
+                'subdistrict' => $contact->subdistrict,
+                'postcode' => $contact->postcode,
+                'telhome' => $contact->telhome,
+                'phoneno' => $contact->phoneno,
+                'workno' => $contact->workno,
+                'agent' => $contact->agent,
+                'created_at' => $contact->created_at,
+                'updated_at' => $contact->updated_at,
+                'modifyaction' => 'edit',
+                'modifyagent' => $user->id,
+            ];
+    
+            CrmContactLog::create($contactlog);
+    
+            $contact->delete();
+    
+            $emerdelete = CrmPhoneEmergency::where('contact_id', $id)->get();
+    
+            foreach ($emerdelete as $emer) {
+                $emerlog = [
+                    'id' => $emer->id,
+                    'contact_id' => $emer->contact_id,
+                    'emergencyname' => $emer->emergencyname,
+                    'emerrelation' => $emer->emerrelation,
+                    'emerphone' => $emer->emerphone,
+                    'agent' => $contact->agent,
+                    'created_at' => $contact->created_at,
+                    'updated_at' => $contact->updated_at,
+                    'modifyaction' => 'delete',
+                    'modifyagent' => $user->id,
+                ];
+                CrmPhoneEmergencyLog::create($emerlog);
+                CrmPhoneEmergency::where('contact_id', $emer->id)->delete();
+            }
+
+        //CrmContact::find($arr_del[$xx])->delete();
+        //DB::table('crm_phone_emergencies')->where('contact_id',  $arr_del[$xx])->delete();
         }
 
         return redirect('/contacts')->with('success', 'ลบ ผู้ติดต่อ เรียบร้อยแล้ว');
