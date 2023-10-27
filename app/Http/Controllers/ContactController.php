@@ -701,6 +701,35 @@ class ContactController extends Controller
         ];
 
         $contact = CrmContact::find($id);
+
+        $contactlog = [
+            'id' => $contact->id,
+            'hn' => $contact->hn,
+            'adddate' => $contact->adddate,
+            'tname' => $contact->tname,
+            'fname' => $contact->fname,
+            'lname' => $contact->lname,
+            'bloodgroup' => $contact->bloodgroup,
+            'homeno' => $contact->homeno,
+            'moo' => $contact->moo,
+            'soi' => $contact->soi,
+            'road' => $contact->road,
+            'city' => $contact->city,
+            'district' => $contact->district,
+            'subdistrict' => $contact->subdistrict,
+            'postcode' => $contact->postcode,
+            'telhome' => $contact->telhome,
+            'phoneno' => $contact->phoneno,
+            'workno' => $contact->workno,
+            'agent' => $contact->agent,
+            'created_at' => $contact->created_at,
+            'updated_at' => $contact->updated_at,
+            'modifyaction' => 'edit',
+            'modifyagent' => $user->id,
+        ];
+
+        CrmContactLog::create($contactlog);
+
         $contact->update($contactd);
         if (!empty($request->emergencyData)) {
             foreach ($request->emergencyData as $edata) {
@@ -721,6 +750,19 @@ class ContactController extends Controller
                     ];
 
                     $emer = CrmPhoneEmergency::find($edata['emertype']);
+                    $emerlog = [
+                        'id' => $emer->id,
+                        'contact_id' => $emer->contact_id,
+                        'emergencyname' => $emer->emergencyname,
+                        'emerrelation' => $emer->emerrelation,
+                        'emerphone' => $emer->emerphone,
+                        'agent' => $contact->agent,
+                        'created_at' => $contact->created_at,
+                        'updated_at' => $contact->updated_at,
+                        'modifyaction' => 'edit',
+                        'modifyagent' => $user->id,
+                    ];
+                    CrmPhoneEmergencyLog::create($emerlog);
                     $emer->update($emerd);
                 }
             }
