@@ -573,12 +573,15 @@
                 console.log(ans_app);
                 div_src.html(ans_cid);
                 state_dur = duration_miltime(ans_time);
-                active_call[phone_number] = 1;
+
                 let ans_text;
                 if (ans_state === 'Up') {
                     ans_text = 'กำลังสนทนา';
                 } else {
                     ans_text = 'กำลังรอสาย';
+                }
+                if (ans_app === 'AppQueue') {
+                    active_call[phone_number] = 1;
                 }
                 status = `<span style="font-size: 1em; color: red;">
                     <i class="fa-solid fa-phone-volume fa-beat" style="--fa-beat-scale: 1.5;"></i></span> ${ans_text}`
