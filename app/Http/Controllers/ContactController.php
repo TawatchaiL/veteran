@@ -498,7 +498,7 @@ class ContactController extends Controller
         //DB::table('crm_contact_logs')->insert($contact);
         //$bindings = $contact->getBindings();
 
-        CrmContactLog::create($contactlog);
+        CrmContactLog::create($contact);
 
         $contact->update($contactd);
         if (!empty($request->eemergencyData)) {
