@@ -513,6 +513,7 @@
                     status = `<span style="font-size: 1em; color: #ff9900;">
                     <i class="fa-solid fa-user-clock"></i></span> พักสาย ( ${res.pausedreason} )`
                 }
+                div_src.html('');
             } else if (res.status == 6) {
                 await call_list(phone_number);
                 /* ring_cid = localStorage.getItem(phone_number + '_ring_cid');
@@ -577,6 +578,7 @@
                 } else {
                     state_dur = duration_time(res.lastpause);
                 }
+                div_src.html('');
             }
 
             $('#' + phone_number + '_status').html(status);
