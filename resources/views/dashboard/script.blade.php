@@ -401,7 +401,7 @@
 
     const active_div = $('#active_total');
     const waiting_div = $('#waiting_total');
-    const dashboardVariables = {};
+    const dbv = {};
 
     let div_agent_status_chart = echarts.init(document.getElementById("agent_status_chart"));
     let waitData = {};
@@ -438,11 +438,13 @@
                     mcallqueue = data[3][1];
                     mcalluniq = data[4][1];
                     mcallapp = data[5][1];
+                    mcallstate = data[6][1].replace(/\s*\(\d+\)/, '');
 
                     if (strArray[4] == 'Ringing' || strArray[4] == 'Ring') {
-                        dashboardVariables[phone + '_ring_cid'] = mcallexten;
-                        dashboardVariables[phone + '_ring_time'] = mcalluniq;
-                        dashboardVariables[phone + '_ring_app'] = mcallapp;
+                        dbv[phone + '_cid'] = mcallexten;
+                        dbv[phone + '_time'] = mcalluniq;
+                        dbv[phone + '_app'] = mcallapp;
+                        dbv[phone + '_state'] = mcallstate;
 
                         /*  localStorage.setItem(phone + '_ring_cid',
                              mcallexten);
@@ -451,9 +453,10 @@
                          localStorage.setItem(phone + '_ring_app',
                              mcallapp); */
                     } else if (strArray[4] == 'Up' && strArray[12] == '') {
-                        dashboardVariables[phone + '_ring_cid'] = mcallexten;
-                        dashboardVariables[phone + '_ring_time'] = mcalluniq;
-                        dashboardVariables[phone + '_ring_app'] = mcallapp;
+                        dbv[phone + '_cid'] = mcallexten;
+                        dbv[phone + '_time'] = mcalluniq;
+                        dbv[phone + '_app'] = mcallapp;
+                        dbv[phone + '_state'] = mcallstate;
                         /* localStorage.setItem(phone + '_ring_cid',
                             mcallexten);
                         localStorage.setItem(phone + '_ring_time',
@@ -461,9 +464,10 @@
                         localStorage.setItem(phone + '_ring_app',
                             mcallapp); */
                     } else if (strArray[4] == 'Up') {
-                        dashboardVariables[phone + '_ans_cid'] = mcallexten;
-                        dashboardVariables[phone + '_ans_time'] = mcalluniq;
-                        dashboardVariables[phone + '_ans_app'] = mcallapp;
+                        dbv[phone + '_cid'] = mcallexten;
+                        dbv[phone + '_time'] = mcalluniq;
+                        dbv[phone + '_app'] = mcallapp;
+                        dbv[phone + '_state'] = mcallstate;
                         /* localStorage.setItem(phone + '_ans_cid',
                             mcallexten);
                         localStorage.setItem(phone + '_ans_time',
@@ -541,9 +545,10 @@
                 /* ring_cid = localStorage.getItem(phone_number + '_ring_cid');
                 ring_time = localStorage.getItem(phone_number + '_ring_time');
                 ring_app = localStorage.getItem(phone_number + '_ring_app'); */
-                ring_cid = dashboardVariables[phone_number + '_ring_cid'];
-                ring_time = dashboardVariables[phone_number + '_ring_time'];
-                ring_app = dashboardVariables[phone_number + '_ring_app'];
+                ring_cid = dbv[phone_number + '_cid'];
+                ring_time = dbv[phone_number + '_time'];
+                ring_app = dbv[phone_number + '_app'];
+                ring_state = dbv[phone_number + '_state'];
                 div_src.html(ring_cid);
                 state_dur = duration_miltime(ring_time);
                 //console.log(ring_app)
@@ -560,9 +565,11 @@
                 call_list(phone_number);
                 /* ans_cid = localStorage.getItem(phone_number + '_ans_cid');
                 ans_time = localStorage.getItem(phone_number + '_ans_time'); */
-                ans_cid = dashboardVariables[phone_number + '_ans_cid'];
-                ans_time = dashboardVariables[phone_number + '_ans_time'];
-                ans_app = dashboardVariables[phone_number + '_ans_app'];
+                ans_cid = dbv[phone_number + '_cid'];
+                ans_time = dbv[phone_number + '_time'];
+                ans_app = dbv[phone_number + '_app'];
+                ans_state = dbv[phone_number + '_state'];
+                console.log(ans_state);
                 div_src.html(ans_cid);
                 state_dur = duration_miltime(ans_time);
                 active_call[phone_number] = 1;
@@ -651,8 +658,8 @@
             res.calleridnum);
         localStorage.setItem(res.destcalleridnum + '_ring_time',
             res.timestamp); */
-        dashboardVariables[res.destcalleridnum + '_ring_cid'] = res.calleridnum;
-        dashboardVariables[res.destcalleridnum + '_ring_time'] = res.timestamp;
+        dbv[res.destcalleridnum + '_cid'] = res.calleridnum;
+        dbv[res.destcalleridnum + '_time'] = res.timestamp;
         $('#' + res.destcalleridnum + '_src').html(res.calleridnum);
     });
 
@@ -663,8 +670,8 @@
             res.calleridnum);
         localStorage.setItem(res.destcalleridnum + '_ans_time',
             Math.floor(Date.now() / 1000)); */
-        dashboardVariables[res.destcalleridnum + '_ans_cid'] = res.calleridnum;
-        dashboardVariables[res.destcalleridnum + '_ans_time'] = Math.floor(Date.now() / 1000);
+        dbv[res.destcalleridnum + '_cid'] = res.calleridnum;
+        dbv[res.destcalleridnum + '_time'] = Math.floor(Date.now() / 1000);
         $('#' + res.destcalleridnum + '_src').html(res.calleridnum);
     });
 
