@@ -810,7 +810,8 @@ class ContactController extends Controller
     public function destroy(Request $request)
     {
         $id = $request->get('id');
-        CrmContact::find($id)->delete();
+        $contact = CrmContact::find($id);
+        $contact->delete();
         DB::table('crm_phone_emergencies')->where('contact_id',  $id)->delete();
         return ['success' => true, 'message' => 'ลบ ผู้ติดต่อ เรียบร้อยแล้ว'];
     }
