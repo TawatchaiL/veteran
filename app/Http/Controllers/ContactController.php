@@ -171,6 +171,9 @@ class ContactController extends Controller
             ->get();
         $emer = DB::table('crm_phone_emergencies')
             ->where('contact_id', '=', $datac[0]->id)
+            ->orderBy('created_at', 'desc')
+            ->skip(0)
+            ->take(5)
             ->get();
 
         $data = [
