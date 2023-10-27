@@ -9,8 +9,7 @@
             <a href="#" id="user_button" class="btn" {{-- dropdown-toggle" data-toggle="dropdown" --}}>
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/2048px-User_icon_2.svg.png"
                     height="150" class="user-image img-circle elevation-1" alt="User Image">
-                <b class="d-none d-md-inline text-toolbar">{{ Auth::user()->name }} [
-                    {{ $temporaryPhone }} ]</b>
+                <b class="d-none d-md-inline text-toolbar">{{ Auth::user()->name }} </b>
             </a>
             <!--<ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <li class="user-header bg-info">
@@ -151,7 +150,8 @@
                 <a class="btn" id="ToolbarButton"><span id="phone_state_icon"
                         class="{{ $temporaryPhoneColor }}">{!! $temporaryPhoneStatusIcon !!}</span> <b id="phone_state"
                         class="{{ $temporaryPhoneColor }}">{{ $temporaryPhoneStatus }}</b> &nbsp;&nbsp;
-                    <b><i class="fa-solid icon-gray fa-circle-chevron-down"></i></b>
+                    [
+                    {{ $temporaryPhone }} ] <b><i class="fa-solid icon-gray fa-circle-chevron-down"></i></b>
                 </a>
             </li>
         @endif
