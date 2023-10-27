@@ -477,6 +477,12 @@ class ContactController extends Controller
             'fname' => $contact->fname,
             'lname' => $contact->lname,
             'bloodgroup' => $contact->bloodgroup,
+
+            'homeno' => $contact->homeno,
+            'moo' => $contact->moo,
+            'soi' => $contact->soi,
+            'road' => $contact->road,
+
             'agent' => $contact->agent,
             'created_at' => $contact->created_at,
             'updated_at' => $contact->updated_at,
