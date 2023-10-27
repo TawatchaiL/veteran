@@ -460,12 +460,12 @@
                     }
 
                 });
-                if (mcallapp !== 'AppQueue') {
+                /* if (mcallapp !== 'AppQueue') {
                     calls_active += 1;
-                }
+                } */
 
             });
-            active_div.html(calls_active);
+            /* active_div.html(calls_active); */
         });
     };
 
