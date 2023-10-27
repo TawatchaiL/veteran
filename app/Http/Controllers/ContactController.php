@@ -477,14 +477,11 @@ class ContactController extends Controller
             'fname' => $contact->fname,
             'lname' => $contact->lname,
             'bloodgroup' => $contact->bloodgroup,
-            'homeno' => $contact->homeno,
-            'moo' => $contact->moo,
-            'soi' => $contact->soi,
-            'road' => $contact->road,
-            'city' => $contact->city,
-            'district' => $contact->district,
-            'subdistrict' => $contact->subdistrict,
-            'postcode' => $contact->postcode,
+            'agent' => $contact->agent,
+            'created_at' => $contact->created_at,
+            'updated_at' => $contact->updated_at,
+            'modifyaction' => 'edit',
+            'modifyagent' => $user->id,
         ];
         //$bindings = $contact->getBindings();
         //DB::table('crm_contact_logs')->insert($contact);
