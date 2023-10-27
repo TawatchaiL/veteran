@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\CrmContact;
 use App\Models\CrmPhoneEmergency;
+use App\Models\CrmPhoneEmergencyLog;
 use App\Models\CrmContactLog;
 use App\Models\Department;
 use App\Models\CrmCase;
@@ -501,6 +502,7 @@ class ContactController extends Controller
         CrmContactLog::create($contactlog);
 
         $contact->update($contactd);
+
         if (!empty($request->eemergencyData)) {
             foreach ($request->eemergencyData as $edata) {
                 if ($edata['eemertype'] == '') {
@@ -520,6 +522,18 @@ class ContactController extends Controller
                     ];
 
                     $emer = CrmPhoneEmergency::find($edata['eemertype']);
+                    $emerlog = [
+                        'id' => $emer->id,
+                        'emergencyname' => $emer->id,
+                        'emerrelation' => $emer->id,
+                        'emerphone' => $emer->id,
+                        'agent' => $contact->agent,
+                        'created_at' => $contact->created_at,
+                        'updated_at' => $contact->updated_at,
+                        'modifyaction' => 'edit',
+                        'modifyagent' => $user->id,
+                    ];
+                    CrmPhoneEmergencyLog::create($emerlog);
                     $emer->update($emerd);
                 }
             }
