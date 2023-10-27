@@ -161,7 +161,8 @@ class LoginController extends Controller
 
                 $not_logout = DB::connection('remote_connection')
                     ->table('call_center.audit')
-                    ->where('id_agent', $issable->id)
+                    //->where('id_agent', $issable->id)
+                    ->where('crm_id', $user->id)
                     ->whereNull('id_break')
                     ->whereNull('datetime_end')
                     ->get();
