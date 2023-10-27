@@ -416,6 +416,13 @@
     div_agent_status_chart.setOption(agent_status_chart(0, 0, 0, 0));
     window.addEventListener('resize', div_agent_status_chart.resize);
 
+    let set_state = (phone, mcallexten, mcalluniq, mcallapp, mcallstate) => {
+        dbv[phone + '_cid'] = mcallexten;
+        dbv[phone + '_time'] = mcalluniq;
+        dbv[phone + '_app'] = mcallapp;
+        dbv[phone + '_state'] = mcallstate;
+    }
+
     let call_list = (exten) => {
         let mcallprofile = '';
         let mcallexten = '';
@@ -433,47 +440,13 @@
                 let phone = exten;
 
                 $.get(`${api_serv}/chans_variable/` + chan[1], (data, status) => {
-
                     mcallexten = data[2][1];
                     mcallqueue = data[3][1];
                     mcalluniq = data[4][1];
                     mcallapp = data[5][1];
                     mcallstate = data[6][1].replace(/\s*\(\d+\)/, '');
 
-                    if (strArray[4] == 'Ringing' || strArray[4] == 'Ring') {
-                        dbv[phone + '_cid'] = mcallexten;
-                        dbv[phone + '_time'] = mcalluniq;
-                        dbv[phone + '_app'] = mcallapp;
-                        dbv[phone + '_state'] = mcallstate;
-
-                        /*  localStorage.setItem(phone + '_ring_cid',
-                             mcallexten);
-                         localStorage.setItem(phone + '_ring_time',
-                             mcalluniq);
-                         localStorage.setItem(phone + '_ring_app',
-                             mcallapp); */
-                    } else if (strArray[4] == 'Up' && strArray[12] == '') {
-                        dbv[phone + '_cid'] = mcallexten;
-                        dbv[phone + '_time'] = mcalluniq;
-                        dbv[phone + '_app'] = mcallapp;
-                        dbv[phone + '_state'] = mcallstate;
-                        /* localStorage.setItem(phone + '_ring_cid',
-                            mcallexten);
-                        localStorage.setItem(phone + '_ring_time',
-                            mcalluniq);
-                        localStorage.setItem(phone + '_ring_app',
-                            mcallapp); */
-                    } else if (strArray[4] == 'Up') {
-                        dbv[phone + '_cid'] = mcallexten;
-                        dbv[phone + '_time'] = mcalluniq;
-                        dbv[phone + '_app'] = mcallapp;
-                        dbv[phone + '_state'] = mcallstate;
-                        /* localStorage.setItem(phone + '_ans_cid',
-                            mcallexten);
-                        localStorage.setItem(phone + '_ans_time',
-                            mcalluniq); */
-                    }
-
+                    set_state(exten, mcallexten, mcalluniq, mcallapp, mcallstate);
                 });
                 /* if (mcallapp !== 'AppQueue') {
                     calls_active += 1;
