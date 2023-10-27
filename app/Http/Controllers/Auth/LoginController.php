@@ -239,7 +239,7 @@ class LoginController extends Controller
         }
 
         $user->phone = '';
-        $user->agent_id = '';
+        $user->agent_id = 0;
         $user->phone_status_id = 0;
         $user->phone_status = "ไม่พร้อมรับสาย";
         $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-xmark"></i>';
