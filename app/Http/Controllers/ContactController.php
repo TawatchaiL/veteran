@@ -527,7 +527,7 @@ class ContactController extends Controller
                         'contact_id' => $emer->contact_id,
                         'emergencyname' => $emer->emergencyname,
                         'emerrelation' => $emer->emerrelation,
-                        'emerphone' => $emer->iemerphoned,
+                        'emerphone' => $emer->emerphone,
                         'agent' => $contact->agent,
                         'created_at' => $contact->created_at,
                         'updated_at' => $contact->updated_at,
