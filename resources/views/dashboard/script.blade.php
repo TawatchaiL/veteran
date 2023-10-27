@@ -534,6 +534,7 @@
                     <i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i></span> กำลังรอสาย`
                 div_src.html(ring_cid);
                 state_dur = duration_miltime(ring_time);
+                console.log(ring_app)
                 if (ring_app === 'AppQueue') {
                     ring_call[phone_number] = 1;
                 }
