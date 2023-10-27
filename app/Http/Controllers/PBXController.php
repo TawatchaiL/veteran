@@ -81,6 +81,7 @@ class PBXController extends Controller
                 ->update(['crm_id' => $user->id]);
 
             $user->phone_status_id = 1;
+            $user->agent_id = $user->id;
             $user->phone_status = "พร้อมรับสาย";
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
             $user->save();
@@ -143,6 +144,7 @@ class PBXController extends Controller
             $this->issable->agent_logoff($user->phone);
 
             $user->phone = '';
+            //$user->agent_id = '';
             $user->phone_status_id = 0;
             $user->phone_status = "ไม่พร้อมรับสาย";
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-xmark"></i>';

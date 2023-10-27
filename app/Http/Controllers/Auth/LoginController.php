@@ -161,7 +161,8 @@ class LoginController extends Controller
 
                 $not_logout = DB::connection('remote_connection')
                     ->table('call_center.audit')
-                    ->where('id_agent', $user->agent_id)
+                    ->where('id_agent', $issable->id)
+                    ->whereNull('id_break')
                     ->whereNull('datetime_end')
                     ->get();
                 //check login again with same phone and same agent  and logout_datetime IS NULL
@@ -238,6 +239,7 @@ class LoginController extends Controller
         }
 
         $user->phone = '';
+        $user->agent_id = '';
         $user->phone_status_id = 0;
         $user->phone_status = "ไม่พร้อมรับสาย";
         $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-xmark"></i>';
