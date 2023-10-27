@@ -270,7 +270,7 @@ class ContactController extends Controller
                 </div>
             </div>';
 
-                $tab_hold .= ' <a href="#" class="dropdown-item hold_tab_a" data-id="' . $item->telno . '">
+                $tab_hold .= ' <a href="#" class="dropdown-item hold_tab_a" data-id="' . $item->telno . '" data-tick="' . $item->uniqid . '">
                     <div class="media ">
                         <img src="' . asset('images/user.png') . '" alt="..." class="img-size-50 mr-3 img-circle">
                         <div class="media-body">
