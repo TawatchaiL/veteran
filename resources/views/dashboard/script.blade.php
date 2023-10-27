@@ -515,38 +515,41 @@
 
             if (res.paused == 1) {
                 if (res.pausedreason == 'Warp UP') {
-                    status = `<span style="font-size: 1em; color: #ff9900;">
-                        <i class="fa-solid fa-user-pen"></i></span> Warp UP`
                     state_dur = duration_time(res.lastpause);
                     warp_total[phone_number] = 1;
-                } else {
                     status = `<span style="font-size: 1em; color: #ff9900;">
-                    <i class="fa-solid fa-user-clock"></i></span> พักสาย ( ${res.pausedreason} )`
+                        <i class="fa-solid fa-user-pen"></i></span> Warp UP`
+                } else {
                     state_dur = duration_time(res.lastpause);
                     pause_total[phone_number] = 1;
+                    status = `<span style="font-size: 1em; color: #ff9900;">
+                    <i class="fa-solid fa-user-clock"></i></span> พักสาย ( ${res.pausedreason} )`
                 }
             } else if (res.status == 6) {
                 call_list(phone_number);
                 ring_cid = localStorage.getItem(phone_number + '_ring_cid');
                 ring_time = localStorage.getItem(phone_number + '_ring_time');
                 ring_app = localStorage.getItem(phone_number + '_ring_app');
-                status = `<span style="font-size: 1em; color: red;">
-                    <i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i></span> กำลังรอสาย`
                 div_src.html(ring_cid);
                 state_dur = duration_miltime(ring_time);
-                console.log(ring_app)
+                //console.log(ring_app)
                 if (ring_app === 'AppQueue') {
                     ring_call[phone_number] = 1;
+                    let ring_text = 'กำลังรอสาย';
+                } else {
+                    let ring_text = 'สายตรง';
                 }
+                status = `<span style="font-size: 1em; color: red;">
+                    <i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i></span> ${ring_text}`
             } else if (res.status == 2) {
                 call_list(phone_number);
                 ans_cid = localStorage.getItem(phone_number + '_ans_cid');
                 ans_time = localStorage.getItem(phone_number + '_ans_time');
-                status = `<span style="font-size: 1em; color: red;">
-                    <i class="fa-solid fa-phone-volume fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังสนทนา`
                 div_src.html(ans_cid);
                 state_dur = duration_miltime(ans_time);
                 active_call[phone_number] = 1;
+                status = `<span style="font-size: 1em; color: red;">
+                    <i class="fa-solid fa-phone-volume fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังสนทนา`
             } else if (res.status == 8) {
                 active_call[phone_number] = 1;
                 status = `<span style="font-size: 1em; color: #ff9900;">
