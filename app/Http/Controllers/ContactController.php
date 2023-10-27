@@ -842,7 +842,11 @@ class ContactController extends Controller
 
         $contact->delete();
 
-        $urgentReports = CrmPhoneEmergency::where('contact_id', $id)->delete();
+        $emerdelete = CrmPhoneEmergency::where('contact_id', $id)->get();
+
+        foreach ($emerdelete as $datas) {
+                CrmPhoneEmergencyLog::create($datas);
+        }
 
         //DB::table('crm_phone_emergencies')->where('contact_id',  $id)->delete();
 
