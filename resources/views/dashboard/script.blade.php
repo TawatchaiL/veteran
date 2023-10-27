@@ -436,6 +436,7 @@
                     mcallexten = data[2][1];
                     mcallqueue = data[3][1];
                     mcalluniq = data[4][1];
+                    mcallapp = data[5][1];
 
                     if (strArray[4] == 'Ringing' || strArray[4] == 'Ring') {
                         localStorage.setItem(phone + '_ring_cid',
@@ -455,7 +456,10 @@
                     }
 
                 });
-                calls_active += 1;
+                if (mcallapp !== 'AppQueue') {
+                    calls_active += 1;
+                }
+
             });
             active_div.html(calls_active);
         });
