@@ -810,6 +810,7 @@ class ContactController extends Controller
     public function destroy(Request $request)
     {
         $id = $request->get('id');
+        $user = Auth::user();
         $contact = CrmContact::find($id);
 
         $contactlog = [
