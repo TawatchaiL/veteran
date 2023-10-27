@@ -172,6 +172,7 @@ class LoginController extends Controller
                         ->where('id', $user->agent_id)
                         ->get();
                     $this->clear_login($user->agent_id, $not_logout_agent[0]->number);
+                    $this->issable->agent_logoff($not_logout_agent[0]->number);
                 }
 
                 $queueNames = $user->queues->pluck('queue_name')->implode(',');
