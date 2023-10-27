@@ -170,7 +170,8 @@ class LoginController extends Controller
                 if (count($not_logout) > 0) {
                     $not_logout_agent = DB::connection('remote_connection')
                         ->table('call_center.agent')
-                        ->where('id', $user->agent_id)
+                        //->where('id', $user->agent_id)
+                        ->where('id', $not_logout[0]->id_agent)
                         ->get();
                     $this->clear_login($user->agent_id, $not_logout_agent[0]->number);
                 }
