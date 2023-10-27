@@ -444,12 +444,12 @@
                         dashboardVariables[phone + '_ring_time'] = mcalluniq;
                         dashboardVariables[phone + '_ring_app'] = mcallapp;
 
-                       /*  localStorage.setItem(phone + '_ring_cid',
-                            mcallexten);
-                        localStorage.setItem(phone + '_ring_time',
-                            mcalluniq);
-                        localStorage.setItem(phone + '_ring_app',
-                            mcallapp); */
+                        /*  localStorage.setItem(phone + '_ring_cid',
+                             mcallexten);
+                         localStorage.setItem(phone + '_ring_time',
+                             mcalluniq);
+                         localStorage.setItem(phone + '_ring_app',
+                             mcallapp); */
                     } else if (strArray[4] == 'Up' && strArray[12] == '') {
                         dashboardVariables[phone + '_ring_cid'] = mcallexten;
                         dashboardVariables[phone + '_ring_time'] = mcalluniq;
@@ -647,20 +647,24 @@
     socket.on('agentcalled', async (response) => {
         //console.log(response)
         let res = response.data;
-        localStorage.setItem(res.destcalleridnum + '_ring_cid',
+        /* localStorage.setItem(res.destcalleridnum + '_ring_cid',
             res.calleridnum);
         localStorage.setItem(res.destcalleridnum + '_ring_time',
-            res.timestamp);
+            res.timestamp); */
+        dashboardVariables[res.destcalleridnum + '_ring_cid'] = res.calleridnum;
+        dashboardVariables[res.destcalleridnum + '_ring_time'] = res.timestamp;
         $('#' + res.destcalleridnum + '_src').html(res.calleridnum);
     });
 
     socket.on('agentconnect', async (response) => {
         //console.log(response)
         let res = response.data;
-        localStorage.setItem(res.destcalleridnum + '_ans_cid',
+        /* localStorage.setItem(res.destcalleridnum + '_ans_cid',
             res.calleridnum);
         localStorage.setItem(res.destcalleridnum + '_ans_time',
-            Math.floor(Date.now() / 1000));
+            Math.floor(Date.now() / 1000)); */
+        dashboardVariables[res.destcalleridnum + '_ans_cid'] = res.calleridnum;
+        dashboardVariables[res.destcalleridnum + '_ans_time'] = Math.floor(Date.now() / 1000);
         $('#' + res.destcalleridnum + '_src').html(res.calleridnum);
     });
 
