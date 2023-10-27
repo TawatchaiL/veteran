@@ -526,7 +526,7 @@
                     <i class="fa-solid fa-user-clock"></i></span> พักสาย ( ${res.pausedreason} )`
                 }
             } else if (res.status == 6) {
-                call_list(phone_number);
+                await call_list(phone_number);
                 ring_cid = localStorage.getItem(phone_number + '_ring_cid');
                 ring_time = localStorage.getItem(phone_number + '_ring_time');
                 ring_app = localStorage.getItem(phone_number + '_ring_app');
@@ -538,7 +538,7 @@
                     ring_call[phone_number] = 1;
                     ring_text = 'กำลังรอสาย';
                 } else {
-                    ring_text = 'สายตรง';
+                    ring_text = 'กำลังรอสายตรง';
                 }
                 status = `<span style="font-size: 1em; color: red;">
                     <i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i></span> ${ring_text}`
