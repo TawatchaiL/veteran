@@ -570,6 +570,7 @@
                 ans_app = dbv[phone_number + '_app'];
                 ans_state = dbv[phone_number + '_state'];
                 console.log(ans_state);
+                console.log(ans_app);
                 div_src.html(ans_cid);
                 state_dur = duration_miltime(ans_time);
                 active_call[phone_number] = 1;
