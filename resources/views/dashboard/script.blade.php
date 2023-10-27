@@ -393,7 +393,8 @@
         c();
     }, 30000);
 
-
+    const selectElement = $('#redirectSelect');
+    const div_agent_status_chart = echarts.init(document.getElementById("agent_status_chart"));
     const dashboard_serv = '{{ config('asterisk.toolbar_serv.address') }}';
     const api_serv = '{{ config('asterisk.api_serv.address') }}';
     const socket = io.connect(`${dashboard_serv}`);
@@ -403,7 +404,6 @@
     const waiting_div = $('#waiting_total');
     const dbv = {};
 
-    let div_agent_status_chart = echarts.init(document.getElementById("agent_status_chart"));
     let waitData = {};
     let ring_call = {};
     let active_call = {};
@@ -413,8 +413,69 @@
     let offline_total = 0;
     let offline_list = [];
 
-    div_agent_status_chart.setOption(agent_status_chart(0, 0, 0, 0));
-    window.addEventListener('resize', div_agent_status_chart.resize);
+    let duration_time = (timestamp) => {
+        let presentTimestamp = Math.floor(Date.now() / 1000);
+        let timeDifference = presentTimestamp - timestamp;
+
+        let hours = Math.floor(timeDifference / 3600);
+        let minutes = Math.floor((timeDifference % 3600) / 60);
+        let seconds = timeDifference % 60;
+
+        let formattedHours = String(hours).padStart(2, '0');
+        let formattedMinutes = String(minutes).padStart(2, '0');
+        let formattedSeconds = String(seconds).padStart(2, '0');
+
+        const duration = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+        return duration;
+    }
+
+    let duration_miltime = (timestampMilliseconds) => {
+        // Get the current timestamp for the present time (in seconds)
+        let presentTimestamp = Math.floor(Date.now() / 1000);
+
+        // Convert the provided timestamp in milliseconds to seconds
+        let timestampSeconds = Math.floor(timestampMilliseconds);
+
+        // Calculate the time difference in seconds
+        let timeDifference = presentTimestamp - timestampSeconds;
+
+        let hours = Math.floor(timeDifference / 3600);
+        let minutes = Math.floor((timeDifference % 3600) / 60);
+        let seconds = timeDifference % 60;
+
+        let formattedHours = String(hours).padStart(2, '0');
+        let formattedMinutes = String(minutes).padStart(2, '0');
+        let formattedSeconds = String(seconds).padStart(2, '0');
+
+        const duration = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+        return duration;
+    }
+
+    let get_agent = (selectedOption) => {
+        $.ajax({
+            url: '{{ route('dashboard.agent_list') }}',
+            type: 'post',
+            data: {
+                queue: selectedOption,
+                _token: token,
+            },
+            success: function(response) {
+
+                offline_list = response.agent_offline;
+                response.agent_offline.forEach(element => {
+                    call_list(element);
+                });
+
+                $('#agent_list tbody').html(response.html);
+                offline_total = response.offline;
+
+            },
+            error: function(xhr, status, error) {
+                // Handle errors
+            }
+        });
+    }
+
 
     let set_state = (phone, mcallexten, mcalluniq, mcallapp, mcallstate) => {
         dbv[phone + '_cid'] = mcallexten;
@@ -456,10 +517,6 @@
             /* active_div.html(calls_active); */
         });
     };
-
-
-
-
 
     socket.on('connect', () => {
         socket.emit('join', 'Client Connect To Asterisk Event Serv');
@@ -516,9 +573,6 @@
                 div_src.html('');
             } else if (res.status == 6) {
                 await call_list(phone_number);
-                /* ring_cid = localStorage.getItem(phone_number + '_ring_cid');
-                ring_time = localStorage.getItem(phone_number + '_ring_time');
-                ring_app = localStorage.getItem(phone_number + '_ring_app'); */
                 ring_cid = dbv[phone_number + '_cid'];
                 ring_time = dbv[phone_number + '_time'];
                 ring_app = dbv[phone_number + '_app'];
@@ -531,22 +585,20 @@
                     ring_call[phone_number] = 1;
                     ring_text = 'กำลังรอสาย';
                 } else {
-                    ring_text = 'กำลังรอสายตรง';
+                    ring_text = 'กำลังรอสาย';
                 }
                 status = `<span style="font-size: 1em; color: red;">
                     <i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i></span> ${ring_text}`
             } else if (res.status == 2) {
                 call_list(phone_number);
-                /* ans_cid = localStorage.getItem(phone_number + '_ans_cid');
-                ans_time = localStorage.getItem(phone_number + '_ans_time'); */
+
                 ans_cid = dbv[phone_number + '_cid'];
                 ans_time = dbv[phone_number + '_time'];
                 ans_app = dbv[phone_number + '_app'];
                 ans_state = dbv[phone_number + '_state'];
-                console.log(ans_state);
-                console.log(ans_app);
-                div_src.html(ans_cid);
                 state_dur = duration_miltime(ans_time);
+
+                div_src.html(ans_cid);
 
                 let ans_text;
                 if (ans_state === 'Up') {
@@ -554,9 +606,11 @@
                 } else {
                     ans_text = 'กำลังรอสาย';
                 }
+
                 if (ans_app === 'AppQueue') {
                     active_call[phone_number] = 1;
                 }
+
                 status = `<span style="font-size: 1em; color: red;">
                     <i class="fa-solid fa-phone-volume fa-beat" style="--fa-beat-scale: 1.5;"></i></span> ${ans_text}`
             } else if (res.status == 8) {
@@ -639,10 +693,6 @@
     socket.on('agentcalled', async (response) => {
         //console.log(response)
         let res = response.data;
-        /* localStorage.setItem(res.destcalleridnum + '_ring_cid',
-            res.calleridnum);
-        localStorage.setItem(res.destcalleridnum + '_ring_time',
-            res.timestamp); */
         dbv[res.destcalleridnum + '_cid'] = res.calleridnum;
         dbv[res.destcalleridnum + '_time'] = res.timestamp;
         $('#' + res.destcalleridnum + '_src').html(res.calleridnum);
@@ -651,10 +701,6 @@
     socket.on('agentconnect', async (response) => {
         //console.log(response)
         let res = response.data;
-        /* localStorage.setItem(res.destcalleridnum + '_ans_cid',
-            res.calleridnum);
-        localStorage.setItem(res.destcalleridnum + '_ans_time',
-            Math.floor(Date.now() / 1000)); */
         dbv[res.destcalleridnum + '_cid'] = res.calleridnum;
         dbv[res.destcalleridnum + '_time'] = Math.floor(Date.now() / 1000);
         $('#' + res.destcalleridnum + '_src').html(res.calleridnum);
@@ -733,78 +779,17 @@
         });
     }, 1000); */
 
-    let duration_time = (timestamp) => {
-        let presentTimestamp = Math.floor(Date.now() / 1000);
-        let timeDifference = presentTimestamp - timestamp;
-
-        let hours = Math.floor(timeDifference / 3600);
-        let minutes = Math.floor((timeDifference % 3600) / 60);
-        let seconds = timeDifference % 60;
-
-        let formattedHours = String(hours).padStart(2, '0');
-        let formattedMinutes = String(minutes).padStart(2, '0');
-        let formattedSeconds = String(seconds).padStart(2, '0');
-
-        const duration = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
-        return duration;
-    }
-
-    let duration_miltime = (timestampMilliseconds) => {
-        // Get the current timestamp for the present time (in seconds)
-        let presentTimestamp = Math.floor(Date.now() / 1000);
-
-        // Convert the provided timestamp in milliseconds to seconds
-        let timestampSeconds = Math.floor(timestampMilliseconds);
-
-        // Calculate the time difference in seconds
-        let timeDifference = presentTimestamp - timestampSeconds;
-
-        let hours = Math.floor(timeDifference / 3600);
-        let minutes = Math.floor((timeDifference % 3600) / 60);
-        let seconds = timeDifference % 60;
-
-        let formattedHours = String(hours).padStart(2, '0');
-        let formattedMinutes = String(minutes).padStart(2, '0');
-        let formattedSeconds = String(seconds).padStart(2, '0');
-
-        const duration = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
-        return duration;
-    }
-
-
-    let get_agent = (selectedOption) => {
-        $.ajax({
-            url: '{{ route('dashboard.agent_list') }}',
-            type: 'post',
-            data: {
-                queue: selectedOption,
-                _token: token,
-            },
-            success: function(response) {
-
-                offline_list = response.agent_offline;
-                response.agent_offline.forEach(element => {
-                    call_list(element);
-                });
-
-                $('#agent_list tbody').html(response.html);
-                offline_total = response.offline;
-
-            },
-            error: function(xhr, status, error) {
-                // Handle errors
-            }
-        });
-    }
 
     $(document).ready(() => {
-        const selectElement = $('#redirectSelect');
 
         if (storedOption) {
             selectElement.val(storedOption);
         }
 
         get_agent(storedOption);
+        div_agent_status_chart.setOption(agent_status_chart(0, 0, 0, 0));
+        window.addEventListener('resize', div_agent_status_chart.resize);
+
         setInterval(function() {
             offline_list.forEach(element => {
                 logoffTime = new Date($('#' + element + '_logoff').val()).getTime() / 1000;
