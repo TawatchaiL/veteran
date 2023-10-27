@@ -150,8 +150,8 @@
                 <a class="btn" id="ToolbarButton"><span id="phone_state_icon"
                         class="{{ $temporaryPhoneColor }}">{!! $temporaryPhoneStatusIcon !!}</span> <b id="phone_state"
                         class="{{ $temporaryPhoneColor }}">{{ $temporaryPhoneStatus }}</b> &nbsp;&nbsp;
-                    [
-                    {{ $temporaryPhone }} ] <b><i class="fa-solid icon-gray fa-circle-chevron-down"></i></b>
+                    <b> [
+                        {{ $temporaryPhone }} ] <i class="fa-solid icon-gray fa-circle-chevron-down"></i></b>
                 </a>
             </li>
         @endif
