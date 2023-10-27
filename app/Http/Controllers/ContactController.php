@@ -903,7 +903,7 @@ class ContactController extends Controller
     
             $contact->delete();
     
-            $emerdelete = CrmPhoneEmergency::where('contact_id', $id)->get();
+            $emerdelete = CrmPhoneEmergency::where('contact_id', $contact->id)->get();
     
             foreach ($emerdelete as $emer) {
                 $emerlog = [
