@@ -528,9 +528,9 @@ class ContactController extends Controller
                         'emergencyname' => $emer->emergencyname,
                         'emerrelation' => $emer->emerrelation,
                         'emerphone' => $emer->emerphone,
-                        'agent' => $contact->agent,
-                        'created_at' => $contact->created_at,
-                        'updated_at' => $contact->updated_at,
+                        'agent' => $emer->agent,
+                        'created_at' => $emer->created_at,
+                        'updated_at' => $emer->updated_at,
                         'modifyaction' => 'edit',
                         'modifyagent' => $user->id,
                     ];
@@ -756,9 +756,9 @@ class ContactController extends Controller
                         'emergencyname' => $emer->emergencyname,
                         'emerrelation' => $emer->emerrelation,
                         'emerphone' => $emer->emerphone,
-                        'agent' => $contact->agent,
-                        'created_at' => $contact->created_at,
-                        'updated_at' => $contact->updated_at,
+                        'agent' => $emer->agent,
+                        'created_at' => $emer->created_at,
+                        'updated_at' => $emer->updated_at,
                         'modifyaction' => 'edit',
                         'modifyagent' => $user->id,
                     ];
@@ -845,8 +845,21 @@ class ContactController extends Controller
 
         $emerdelete = CrmPhoneEmergency::where('contact_id', $id)->get();
 
-        foreach ($emerdelete as $datas) {
-                //CrmPhoneEmergencyLog::create($datas);
+        foreach ($emerdelete as $emer) {
+            $emerlog = [
+                'id' => $emer->id,
+                'contact_id' => $emer->contact_id,
+                'emergencyname' => $emer->emergencyname,
+                'emerrelation' => $emer->emerrelation,
+                'emerphone' => $emer->emerphone,
+                'agent' => $contact->agent,
+                'created_at' => $contact->created_at,
+                'updated_at' => $contact->updated_at,
+                'modifyaction' => 'delete',
+                'modifyagent' => $user->id,
+            ];
+            CrmPhoneEmergencyLog::create($emerlog);
+            CrmPhoneEmergency::where('contact_id', $emer->id)->delete();
         }
 
         //DB::table('crm_phone_emergencies')->where('contact_id',  $id)->delete();
