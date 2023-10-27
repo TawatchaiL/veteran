@@ -485,14 +485,6 @@ class ContactController extends Controller
             'district' => $contact->district,
             'subdistrict' => $contact->subdistrict,
             'postcode' => $contact->postcode,
-            'telhome' => $contact->telhome,
-            'phoneno' => $contact->phoneno,
-            'workno' => $contact->workno,
-            'agent' => $contact->agent,
-            'created_at' => $contact->created_at,
-            'updated_at' => $contact->updated_at,
-            'modifyaction' => 'edit',
-            'modifyagent' => $user->id,
         ];
         //$bindings = $contact->getBindings();
         //DB::table('crm_contact_logs')->insert($contact);
