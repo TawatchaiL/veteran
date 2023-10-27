@@ -524,9 +524,10 @@ class ContactController extends Controller
                     $emer = CrmPhoneEmergency::find($edata['eemertype']);
                     $emerlog = [
                         'id' => $emer->id,
-                        'emergencyname' => $emer->id,
-                        'emerrelation' => $emer->id,
-                        'emerphone' => $emer->id,
+                        'contact_id' => $emer->contact_id,
+                        'emergencyname' => $emer->emergencyname,
+                        'emerrelation' => $emer->emerrelation,
+                        'emerphone' => $emer->iemerphoned,
                         'agent' => $contact->agent,
                         'created_at' => $contact->created_at,
                         'updated_at' => $contact->updated_at,
