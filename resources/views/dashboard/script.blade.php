@@ -738,9 +738,15 @@
     socket.on('hangup', async (data) => {
         if (data.extension) {
             console.log(data.extension);
-            var splitResult = data.extension.split('/');
-            //if (splitResult.length >= 2) {
-            var extractedNumber = splitResult[1].split('-')[0];
+            var extractedNumber;
+            var splitResult
+            if (data.extension.includes('/')) {
+                splitResult = data.extension.split('/');
+                //if (splitResult.length >= 2) {
+                extractedNumber = splitResult[1].split('-')[0];
+            } else {
+                extractedNumber = data.extension
+            }
             await delete ring_call[extractedNumber];
             if (Object.keys(ring_call).length === 0) {
                 waiting_div.html('0');
