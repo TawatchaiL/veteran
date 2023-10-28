@@ -334,6 +334,7 @@
     const api_serv = '{{ config('asterisk.api_serv.address') }}';
     const socket = io.connect(`${dashboard_serv}`);
     const storedOption = localStorage.getItem('selectedOption');
+    const storedSLA = localStorage.getItem('sla_setting');
 
     const active_div = $('#active_total');
     const waiting_div = $('#waiting_total');
@@ -457,7 +458,6 @@
                 _token: token,
             },
             success: (data) => {
-                console.log(data);
                 avg_talk.html('')
                 avg_wait.html('')
                 total_talk.html('')
