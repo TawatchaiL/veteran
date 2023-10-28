@@ -808,7 +808,7 @@
         updateAvgData();
         setInterval(updateAvgData, 60000);
         updateSLAData(20);
-        setInterval(updateAvgData, 30000);
+        setInterval(updateSLAData, 30000);
 
         div_agent_status_chart.setOption(agent_status_chart(0, 0, 0, 0));
         window.addEventListener('resize', div_agent_status_chart.resize);
