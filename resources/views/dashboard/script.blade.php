@@ -560,6 +560,7 @@
 
 
     socket.on('queueparams', async (response) => {
+        const storedOption = localStorage.getItem('selectedOption');
         let res = response.data;
         if (res.queue == storedOption) {
             total_call = parseInt(res.completed) + parseInt(res.abandoned);
