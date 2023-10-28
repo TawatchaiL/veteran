@@ -22,17 +22,28 @@ class DashboardController extends Controller
         $this->middleware('auth');
     }
 
-    function formatDuration($durationString) {
-        try {
-            $interval = DateInterval::createFromDateString($durationString);
-            $zeroTime = new DateTime("00:00:00");
-            $zeroTime->add($interval);
-            $formattedDuration = $zeroTime->format('H:i:s');
+    public function formatDuration($durationString)
+    {
+        $HH = '00';
+        $MM = '00';
+        $SS = '00';
 
-            return $formattedDuration;
-        } catch (Exception $e) {
-            return false;
+        if ($durationString >= 3600) {
+            $HH = (int)($durationString / 3600);
+            $sec = $durationString % 3600;
+            if ($HH < 10) $HH = "0$HH";
         }
+
+        if ($sec >= 60) {
+            $MM = (int)($sec / 60);
+            $sec = $sec % 60;
+            if ($MM < 10) $MM = "0$MM";
+        }
+
+        $SS = $sec;
+        if ($SS < 10) $SS = "0$SS";
+
+        return $HH . ":" . $MM . ":" . $SS . "";
     }
 
     /**
@@ -54,10 +65,10 @@ class DashboardController extends Controller
             ->table('call_center.call_entry_today')
             ->select(
                 'queue_number',
-                DB::raw('SEC_TO_TIME(AVG(duration)) as avg_talk_time'),
-                DB::raw('SEC_TO_TIME(AVG(duration_wait)) as avg_hold_time'),
-                DB::raw('SEC_TO_TIME(SUM(duration)) as total_talk_time'),
-                DB::raw('SEC_TO_TIME(MAX(duration_wait)) as max_hold_time')
+                DB::raw('AVG(duration) as avg_talk_time'),
+                DB::raw('AVG(duration_wait) as avg_hold_time'),
+                DB::raw('SUM(duration) as total_talk_time'),
+                DB::raw('MAX(duration_wait) as max_hold_time')
             )
             ->groupBy('queue_number')
             ->get();
