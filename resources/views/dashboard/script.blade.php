@@ -736,6 +736,7 @@
     });
 
     socket.on('hangup', async (data) => {
+        console.log(data);
         if (data.extension) {
             var splitResult = data.extension.split('/');
             if (splitResult.length >= 2) {

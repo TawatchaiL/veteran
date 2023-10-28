@@ -232,6 +232,7 @@
 
         var startDate;
         var endDate;
+
         function datesearch() {
             var currentDate = moment();
             // Set the start date to 7 days before today
@@ -241,6 +242,7 @@
             startDate = moment().format('YYYY-MM-DD');
             endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
         }
+
         function datereset() {
             var currentDate = moment();
             startDate = moment().format('YYYY-MM-DD');
@@ -533,15 +535,21 @@
                 method: 'GET',
                 success: function(res) {
                     $.each(res.data, function(index, value) {
-                                        $('#ListviewComment tbody').append($('<tr>')
-                                                .append($('<td>')
-                                                    .append('<div class="col-md-12 col-sm-12 col-xs-12">' + value.comment + '</div>'))
-                                                .append($('<td>')
-                                                    .append('<div class="col-md-12 col-sm-12 col-xs-12">' + value.agent + '</div>'))
-                                                .append($('<td>')
-                                                    .append('<div class="col-md-12 col-sm-12 col-xs-12">' + value.created_at + '</div>'))
-                                        );
-                                    });
+                        $('#ListviewComment tbody').append($('<tr>')
+                            .append($('<td>')
+                                .append(
+                                    '<div class="col-md-12 col-sm-12 col-xs-12">' +
+                                    value.comment + '</div>'))
+                            .append($('<td>')
+                                .append(
+                                    '<div class="col-md-12 col-sm-12 col-xs-12">' +
+                                    value.agent + '</div>'))
+                            .append($('<td>')
+                                .append(
+                                    '<div class="col-md-12 col-sm-12 col-xs-12">' +
+                                    value.created_at + '</div>'))
+                        );
+                    });
                     $('#RecoreModal').modal('show');
                 }
             });
