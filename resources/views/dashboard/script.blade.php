@@ -480,7 +480,7 @@
     const updateSLAData = () => {
         const storedOption = localStorage.getItem('selectedOption');
         const storedSLA = localStorage.getItem('sla_setting');
-        if (storedSLA === '') {
+        if (storedSLA == '') {
             storedSLA = 20;
         }
         $.ajax({
