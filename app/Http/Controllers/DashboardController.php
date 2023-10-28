@@ -70,6 +70,8 @@ class DashboardController extends Controller
             ->groupBy('queue_number')
             ->get();
 
+            dd($queue);
+
         $formattedQueue = [];
 
         foreach ($queue as $item) {
@@ -77,8 +79,8 @@ class DashboardController extends Controller
             $formattedItem->queue_number = $item->queue_number;
             $formattedItem->avg_talk_time = $this->formatDuration($item->avg_talk_time);
             $formattedItem->avg_hold_time = $this->formatDuration($item->avg_hold_time);
-            $formattedItem->total_talk_time = $item->total_talk_time;
-            $formattedItem->max_hold_time = $item->max_hold_time;
+            $formattedItem->total_talk_time = $this->formatDuration($item->total_talk_time);
+            $formattedItem->max_hold_time = $this->formatDuration($item->max_hold_time);
 
             $formattedQueue[] = $formattedItem;
         }
