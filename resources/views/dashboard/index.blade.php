@@ -224,7 +224,7 @@
                                         <div class="col-md-12 text-center">
                                             <h6>สายที่รับภายใน
 
-                                                20 วินาที <i class="fa fa-edit" data-toggle="modal"
+                                                <span id="sla_setting"></span> วินาที <i class="fa fa-edit" data-toggle="modal"
                                                     data-target="#configModal"></i>
                                             </h6>
                                             <div id="agent_sla_chart" style="height:300px;"></div>
@@ -429,8 +429,8 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal"><i
                                 class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
-                        <button type="submit" class="btn btn-primary" id="set_sla"><i class="fas fa-download"></i>
-                            บันทึก</button>
+                       {{--  <button type="submit" class="btn btn-primary" id="set_sla"><i class="fas fa-download"></i>
+                            บันทึก</button> --}}
                     </div>
                 </form>
             </div>
