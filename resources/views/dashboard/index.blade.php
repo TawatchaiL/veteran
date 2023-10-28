@@ -56,7 +56,7 @@
                                 <div class="info-box-content">
                                     <span class="info-box-text"> เปอร์เซ็นต์
                                         สายที่พลาด</span>
-                                    <span class="info-box-number">0.0 %</span>
+                                    <span class="info-box-number"><span id="abandoned_percent">0.0</span> %</span>
                                 </div>
 
                             </div>

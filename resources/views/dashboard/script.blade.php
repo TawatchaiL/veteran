@@ -405,6 +405,7 @@
     const allcall = $('#allcall');
     const completed = $('#completed');
     const abandoned = $('#abandoned');
+    const abandoned_percent = $('#abandoned_percent');
     const dbv = {};
 
     let waitData = {};
@@ -418,6 +419,7 @@
     let total_call = '';
     let completed_call = '';
     let abandoned_call = '';
+    let abandonedPercentage = '';
 
     let duration_time = (timestamp) => {
         let presentTimestamp = Math.floor(Date.now() / 1000);
@@ -560,10 +562,12 @@
     socket.on('queueparams', async (response) => {
         let res = response.data;
         if (res.queue == storedOption) {
-            total_call = res.completed + res.abandoned;
+            total_call = parseInt(res.completed) + parseInt(res.abandoned);
+            abandonedPercentage = (parseFloat(res.abandoned) / total_call) * 100;
             allcall.html(total_call);
             completed.html(res.completed);
-            abandoned.html(res, abandonrd);
+            abandoned.html(res, abandoned);
+            abandoned_percent.html(abandonedPercentage);
         }
     });
 
