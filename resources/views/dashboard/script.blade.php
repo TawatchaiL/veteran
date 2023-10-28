@@ -737,17 +737,17 @@
 
     socket.on('hangup', async (data) => {
         if (data.extension) {
-            console.log(data);
+            console.log(data.extension);
             var splitResult = data.extension.split('/');
-            if (splitResult.length >= 2) {
-                var extractedNumber = splitResult[1].split('-')[0];
-                await delete ring_call[extractedNumber];
-                if (Object.keys(ring_call).length === 0) {
-                    waiting_div.html('0');
-                }
-            } else {
-                console.log("Invalid extension format");
+            //if (splitResult.length >= 2) {
+            var extractedNumber = splitResult[1].split('-')[0];
+            await delete ring_call[extractedNumber];
+            if (Object.keys(ring_call).length === 0) {
+                waiting_div.html('0');
             }
+            // } else {
+            //console.log("Invalid extension format");
+            //}
         } else {
             console.log("Extension property is missing in the data object");
         }
