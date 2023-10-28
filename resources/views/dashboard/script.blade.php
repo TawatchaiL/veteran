@@ -522,14 +522,17 @@
                 _token: token,
             },
             success: (data) => {
-               avg_talk.html('')
-               avg_wait.html('')
-               total_talk.html('')
-               max_wait.html('')
+                avg_talk.html('')
+                avg_wait.html('')
+                total_talk.html('')
+                max_wait.html('')
 
                 data.avg_data.forEach((item) => {
-                    if (item.queue_number==storedOption) {
+                    if (item.queue_number == storedOption) {
                         avg_talk.html(item.avg_talk_time)
+                        avg_wait.html(item.avg_hold_time)
+                        total_talk.html(${item.total_talk_time})
+                        max_wait.html(${item.max_hold_time})
                     }
                     /* avgDataElement.innerHTML += `
                     <div>
