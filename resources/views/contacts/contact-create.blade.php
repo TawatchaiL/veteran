@@ -37,16 +37,15 @@
                             aria-selected="false">ข้อมูลเบอร์ติดต่อ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="custom-tabs-one-casedetail-tabp{{$cardid}}" data-toggle="pill"
-                            href="#custom-tabs-one-casedetailp{{$cardid}}" role="tab" aria-controls="custom-tabs-one-casedetailp{{$cardid}}"
-                            aria-selected="false">ประวัติการติดต่อ</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" id="custom-tabs-one-case-tabp{{$cardid}}" data-toggle="pill"
                             href="#custom-tabs-one-casep{{$cardid}}" role="tab" aria-controls="custom-tabs-one-casep{{$cardid}}"
                             aria-selected="true">ข้อมูลเรื่องที่ติดต่อ</a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link" id="custom-tabs-one-casedetail-tabp{{$cardid}}" data-toggle="pill"
+                            href="#custom-tabs-one-casedetailp{{$cardid}}" role="tab" aria-controls="custom-tabs-one-casedetailp{{$cardid}}"
+                            aria-selected="false">ประวัติการติดต่อ</a>
+                    </li>
                 </ul>
             </div>
             <div class="card-body">
@@ -87,6 +86,7 @@
                                         class="select2 form-control"
                                         id="tnamep{{$cardid}}" name="tnamep{{$cardid}}">
                                         <option value="">กรุณาเลือก</option>
+                                        <option value="คุณ">คุณ</option>
                                         <option value="เด็กชาย">เด็กชาย</option>
                                         <option value="เด็กหญิง">เด็กหญิง</option>
                                         <option value="นาย">นาย</option>

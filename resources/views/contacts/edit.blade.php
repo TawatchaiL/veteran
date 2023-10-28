@@ -92,6 +92,7 @@
                                                         class="select2 form-control"
                                                         id="Edittname" name="etname">
                                                         <option value="">กรุณาเลือก</option>
+                                                        <option value="คุณ">คุณ</option>
                                                         <option value="เด็กชาย">เด็กชาย</option>
                                                         <option value="เด็กหญิง">เด็กหญิง</option>
                                                         <option value="นาย">นาย</option>
