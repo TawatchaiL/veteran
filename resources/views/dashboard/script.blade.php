@@ -522,6 +522,7 @@
                 _token: token,
             },
             success: (data) => {
+                console.log(data);
                 avg_talk.html('')
                 avg_wait.html('')
                 total_talk.html('')
