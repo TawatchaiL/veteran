@@ -39,9 +39,9 @@ class DashboardController extends Controller
             ->select(
                 'queue_number',
                 DB::raw('SEC_TO_TIME(AVG(duration)) as avg_talk_time'),
-                DB::raw('SEC_TO_TIME(AVG(duration_hold)) as avg_hold_time'),
+                DB::raw('SEC_TO_TIME(AVG(duration_wait)) as avg_hold_time'),
                 DB::raw('SEC_TO_TIME(SUM(duration)) as total_talk_time'),
-                DB::raw('SEC_TO_TIME(MAX(duration_hold)) as max_hold_time')
+                DB::raw('SEC_TO_TIME(MAX(duration_wait)) as max_hold_time')
             )
             ->groupBy('queue_number')
             ->get();
