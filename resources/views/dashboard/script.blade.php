@@ -736,8 +736,8 @@
     });
 
     socket.on('hangup', async (data) => {
-        console.log(data);
         if (data.extension) {
+            console.log(data);
             var splitResult = data.extension.split('/');
             if (splitResult.length >= 2) {
                 var extractedNumber = splitResult[1].split('-')[0];
