@@ -25,7 +25,7 @@
                                         class="fa-solid fa-arrow-right-to-bracket"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text">สายทั้งหมด</span>
-                                    <span class="info-box-number">0 ครั้ง</span>
+                                    <span class="info-box-number"><span id="allcall">0</span> ครั้ง</span>
                                 </div>
 
                             </div>
@@ -35,7 +35,7 @@
                                 <span class="info-box-icon bg-success"><i class="fa-regular fa-thumbs-up"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text">สายที่ได้รับ</span>
-                                    <span class="info-box-number">0 ครั้ง</span>
+                                    <span class="info-box-number"><span id="completed">0</span> ครั้ง</span>
                                 </div>
 
                             </div>
@@ -45,7 +45,7 @@
                                 <span class="info-box-icon bg-success"><i class="fa-solid fa-phone-slash"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text">สายที่พลาด</span>
-                                    <span class="info-box-number">0 ครั้ง</span>
+                                    <span class="info-box-number"><span id="abandoned">0</span> ครั้ง</span>
                                 </div>
 
                             </div>

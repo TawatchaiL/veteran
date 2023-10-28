@@ -402,6 +402,9 @@
 
     const active_div = $('#active_total');
     const waiting_div = $('#waiting_total');
+    const allcall = $('#allcall');
+    const completed = $('#completed');
+    const abandoned = $('#abandoned');
     const dbv = {};
 
     let waitData = {};
@@ -412,6 +415,9 @@
     let ready_total = {};
     let offline_total = 0;
     let offline_list = [];
+    let total_call = '';
+    let completed_call = '';
+    let abandoned_call = '';
 
     let duration_time = (timestamp) => {
         let presentTimestamp = Math.floor(Date.now() / 1000);
@@ -548,6 +554,54 @@
     });
     socket.on('qlogin', data => {
         get_agent(storedOption);
+    });
+
+
+    socket.on('queueparams', async (response) => {
+        let res = response.data;
+        if (res.queue == storedOption) {
+            total_call = res.completed + res.abandoned;
+            allcall.html(total_call);
+            completed.html(res.completed);
+            abandoned.html(res, abandonrd);
+        }
+    });
+
+    socket.on('queueentry', async (response) => {
+        const storedOption = localStorage.getItem('selectedOption');
+        waitData[response.data.uniqueid] = response.data;
+        //console.log(waitData);
+
+        const tableBody = $('#waiting_list tbody');
+
+        let dataArray = Object.values(waitData);
+        dataArray.sort((a, b) => parseInt(a.position) - parseInt(b.position));
+
+        let html = '';
+        let waiting_total = 0;
+
+        dataArray.forEach((item) => {
+            let parsedNumber = parseInt(item.wait);
+            let hours = Math.floor(parsedNumber / 3600);
+            let minutes = Math.floor((parsedNumber % 3600) / 60);
+            let seconds = parsedNumber % 60;
+
+            let formattedTime =
+                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            if (item.queue == storedOption) {
+                html += `
+                <tr>
+                    <td>${item.position}</td>
+                    <td><i class="fa-solid fa-user-clock"></i> ${item.calleridnum}</td>
+                    <td>${formattedTime}</td>
+                    <td>${item.connectedlinenum === 'unknown' ? '-' : item.connectedlinenum}</td>
+                </tr>`;
+                waiting_total++;
+            }
+        });
+
+        tableBody.html(html);
+        waiting_div.html(waiting_total);
     });
 
     socket.on('queuemember', async (response) => {
@@ -717,49 +771,6 @@
         $('#' + res.destcalleridnum + '_src').html(res.calleridnum);
     });
 
-    socket.on('queueparams', async (response) => {
-        let res = response.data;
-        if (res.queue == storedOption) {
-            console.log(response)
-        }
-    });
-
-    socket.on('queueentry', async (response) => {
-        const storedOption = localStorage.getItem('selectedOption');
-        waitData[response.data.uniqueid] = response.data;
-        //console.log(waitData);
-
-        const tableBody = $('#waiting_list tbody');
-
-        let dataArray = Object.values(waitData);
-        dataArray.sort((a, b) => parseInt(a.position) - parseInt(b.position));
-
-        let html = '';
-        let waiting_total = 0;
-
-        dataArray.forEach((item) => {
-            let parsedNumber = parseInt(item.wait);
-            let hours = Math.floor(parsedNumber / 3600);
-            let minutes = Math.floor((parsedNumber % 3600) / 60);
-            let seconds = parsedNumber % 60;
-
-            let formattedTime =
-                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-            if (item.queue == storedOption) {
-                html += `
-                <tr>
-                    <td>${item.position}</td>
-                    <td><i class="fa-solid fa-user-clock"></i> ${item.calleridnum}</td>
-                    <td>${formattedTime}</td>
-                    <td>${item.connectedlinenum === 'unknown' ? '-' : item.connectedlinenum}</td>
-                </tr>`;
-                waiting_total++;
-            }
-        });
-
-        tableBody.html(html);
-        waiting_div.html(waiting_total);
-    });
 
     socket.on('queuecallerjoin', async (response) => {
         //waitData[response.data.uniqueid] = response.data;
