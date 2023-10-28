@@ -718,6 +718,7 @@
     });
 
     socket.on('queueparams', async (response) => {
+        let res = response.data;
         if (res.queue == storedOption) {
             console.log(response)
         }
