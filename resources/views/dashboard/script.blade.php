@@ -244,7 +244,7 @@
     const completed = $('#completed');
     const abandoned = $('#abandoned');
     const abandoned_percent = $('#abandoned_percent');
-    const avg_talk = $('#avg_talk');
+    const avg_talk = document.getElementById("avg_talk");;
     const total_talk = $('#total_talk');
     const avg_wait = $('#avg_wait');
     const max_wait = $('#max_wait');
