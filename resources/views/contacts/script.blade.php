@@ -747,12 +747,8 @@
     function validateNumber(event) {
         var keyCode = event.which || event.keyCode;
         //if ((keyCode < 48 || keyCode > 57) && keyCode !== 8) {
-        //if ((keyCode < 48 || (keyCode > 57 && keyCode < 96) || keyCode > 105) && keyCode !== 8) {
-        if ((keyCode < 48 || keyCode > 57) && keyCode !== 8) {
+        if ((keyCode < 48 || (keyCode > 57 && keyCode < 96) || keyCode > 105) && keyCode !== 8) {
             event.preventDefault();
         } 
-        if ((keyCode < 96 || keyCode > 105) && keyCode !== 8) {
-            event.preventDefault();
-        }
     }
 </script>
