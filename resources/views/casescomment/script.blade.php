@@ -437,7 +437,7 @@
             "autoWidth": false,
             "responsive": true,
         });
-    
+
         let id;
         let actions;
         $(document).on('click', '#getCommentData', function(e) {
@@ -471,6 +471,17 @@
         $('#SubmitCommentForm').click(function(e) {
             if (!confirm("ยืนยันการทำรายการ ?")) return;
             e.preventDefault();
+
+            ezBSAlert({
+                type: "prompt",
+                messageText: "กรุณาระบุ Comment",
+                alertType: "primary"
+            }).done(function(e) {
+                ezBSAlert({
+                    messageText: "You entered: " + e,
+                    alertType: "success"
+                });
+            });
 
             $('.alert-danger').html('');
             $('.alert-danger').hide();

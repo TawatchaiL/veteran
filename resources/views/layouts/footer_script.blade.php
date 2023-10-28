@@ -273,8 +273,8 @@
     }
 
 
-    /*  $(document).ready(function() {
-        $("#btnAlert").on("click", function() {
+    $(document).ready(function() {
+        /*  $("#btnAlert").on("click", function() {
             var prom = ezBSAlert({
                 messageText: "hello world",
                 alertType: "danger"
@@ -291,7 +291,7 @@
             }).done(function(e) {
                 $("body").append('<div>Callback from confirm ' + e + '</div>');
             });
-        });
+        }); */
 
         $("#btnPrompt").on("click", function() {
             ezBSAlert({
@@ -307,7 +307,7 @@
         });
 
     });
- */
+
 
     toastr.options = {
         "closeButton": true,
