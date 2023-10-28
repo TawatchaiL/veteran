@@ -171,6 +171,9 @@ class ContactController extends Controller
             ->get();
         $emer = DB::table('crm_phone_emergencies')
             ->where('contact_id', '=', $datac[0]->id)
+            ->orderBy('created_at', 'desc')
+            ->skip(0)
+            ->take(5)
             ->get();
 
         $data = [
@@ -267,7 +270,7 @@ class ContactController extends Controller
                 </div>
             </div>';
 
-                $tab_hold .= ' <a href="#" class="dropdown-item hold_tab_a" data-id="' . $item->telno . '">
+                $tab_hold .= ' <a href="#" class="dropdown-item hold_tab_a" data-id="' . $item->telno . '" data-tick="' . $item->uniqid . '">
                     <div class="media ">
                         <img src="' . asset('images/user.png') . '" alt="..." class="img-size-50 mr-3 img-circle">
                         <div class="media-body">
@@ -528,9 +531,9 @@ class ContactController extends Controller
                         'emergencyname' => $emer->emergencyname,
                         'emerrelation' => $emer->emerrelation,
                         'emerphone' => $emer->emerphone,
-                        'agent' => $contact->agent,
-                        'created_at' => $contact->created_at,
-                        'updated_at' => $contact->updated_at,
+                        'agent' => $emer->agent,
+                        'created_at' => $emer->created_at,
+                        'updated_at' => $emer->updated_at,
                         'modifyaction' => 'edit',
                         'modifyagent' => $user->id,
                     ];
@@ -701,6 +704,35 @@ class ContactController extends Controller
         ];
 
         $contact = CrmContact::find($id);
+
+        $contactlog = [
+            'id' => $contact->id,
+            'hn' => $contact->hn,
+            'adddate' => $contact->adddate,
+            'tname' => $contact->tname,
+            'fname' => $contact->fname,
+            'lname' => $contact->lname,
+            'bloodgroup' => $contact->bloodgroup,
+            'homeno' => $contact->homeno,
+            'moo' => $contact->moo,
+            'soi' => $contact->soi,
+            'road' => $contact->road,
+            'city' => $contact->city,
+            'district' => $contact->district,
+            'subdistrict' => $contact->subdistrict,
+            'postcode' => $contact->postcode,
+            'telhome' => $contact->telhome,
+            'phoneno' => $contact->phoneno,
+            'workno' => $contact->workno,
+            'agent' => $contact->agent,
+            'created_at' => $contact->created_at,
+            'updated_at' => $contact->updated_at,
+            'modifyaction' => 'edit',
+            'modifyagent' => $user->id,
+        ];
+
+        CrmContactLog::create($contactlog);
+
         $contact->update($contactd);
         if (!empty($request->emergencyData)) {
             foreach ($request->emergencyData as $edata) {
@@ -721,6 +753,19 @@ class ContactController extends Controller
                     ];
 
                     $emer = CrmPhoneEmergency::find($edata['emertype']);
+                    $emerlog = [
+                        'id' => $emer->id,
+                        'contact_id' => $emer->contact_id,
+                        'emergencyname' => $emer->emergencyname,
+                        'emerrelation' => $emer->emerrelation,
+                        'emerphone' => $emer->emerphone,
+                        'agent' => $emer->agent,
+                        'created_at' => $emer->created_at,
+                        'updated_at' => $emer->updated_at,
+                        'modifyaction' => 'edit',
+                        'modifyagent' => $user->id,
+                    ];
+                    CrmPhoneEmergencyLog::create($emerlog);
                     $emer->update($emerd);
                 }
             }
@@ -768,19 +813,120 @@ class ContactController extends Controller
     public function destroy(Request $request)
     {
         $id = $request->get('id');
-        CrmContact::find($id)->delete();
-        DB::table('crm_phone_emergencies')->where('contact_id',  $id)->delete();
+        $user = Auth::user();
+        $contact = CrmContact::find($id);
+
+        $contactlog = [
+            'id' => $contact->id,
+            'hn' => $contact->hn,
+            'adddate' => $contact->adddate,
+            'tname' => $contact->tname,
+            'fname' => $contact->fname,
+            'lname' => $contact->lname,
+            'bloodgroup' => $contact->bloodgroup,
+            'homeno' => $contact->homeno,
+            'moo' => $contact->moo,
+            'soi' => $contact->soi,
+            'road' => $contact->road,
+            'city' => $contact->city,
+            'district' => $contact->district,
+            'subdistrict' => $contact->subdistrict,
+            'postcode' => $contact->postcode,
+            'telhome' => $contact->telhome,
+            'phoneno' => $contact->phoneno,
+            'workno' => $contact->workno,
+            'agent' => $contact->agent,
+            'created_at' => $contact->created_at,
+            'updated_at' => $contact->updated_at,
+            'modifyaction' => 'edit',
+            'modifyagent' => $user->id,
+        ];
+
+        CrmContactLog::create($contactlog);
+
+        $contact->delete();
+
+        $emerdelete = CrmPhoneEmergency::where('contact_id', $id)->get();
+
+        foreach ($emerdelete as $emer) {
+            $emerlog = [
+                'id' => $emer->id,
+                'contact_id' => $emer->contact_id,
+                'emergencyname' => $emer->emergencyname,
+                'emerrelation' => $emer->emerrelation,
+                'emerphone' => $emer->emerphone,
+                'agent' => $emer->agent,
+                'created_at' => $emer->created_at,
+                'updated_at' => $emer->updated_at,
+                'modifyaction' => 'delete',
+                'modifyagent' => $user->id,
+            ];
+            CrmPhoneEmergencyLog::create($emerlog);
+            CrmPhoneEmergency::where('contact_id', $emer->id)->delete();
+        }
+
         return ['success' => true, 'message' => 'ลบ ผู้ติดต่อ เรียบร้อยแล้ว'];
     }
 
     public function destroy_all(Request $request)
     {
-
+        $user = Auth::user();
         $arr_del  = $request->get('table_records');
 
         for ($xx = 0; $xx < count($arr_del); $xx++) {
-            CrmContact::find($arr_del[$xx])->delete();
-            DB::table('crm_phone_emergencies')->where('contact_id',  $arr_del[$xx])->delete();
+            $contact = CrmContact::find($arr_del[$xx]);
+
+            $contactlog = [
+                'id' => $contact->id,
+                'hn' => $contact->hn,
+                'adddate' => $contact->adddate,
+                'tname' => $contact->tname,
+                'fname' => $contact->fname,
+                'lname' => $contact->lname,
+                'bloodgroup' => $contact->bloodgroup,
+                'homeno' => $contact->homeno,
+                'moo' => $contact->moo,
+                'soi' => $contact->soi,
+                'road' => $contact->road,
+                'city' => $contact->city,
+                'district' => $contact->district,
+                'subdistrict' => $contact->subdistrict,
+                'postcode' => $contact->postcode,
+                'telhome' => $contact->telhome,
+                'phoneno' => $contact->phoneno,
+                'workno' => $contact->workno,
+                'agent' => $contact->agent,
+                'created_at' => $contact->created_at,
+                'updated_at' => $contact->updated_at,
+                'modifyaction' => 'edit',
+                'modifyagent' => $user->id,
+            ];
+    
+            CrmContactLog::create($contactlog);
+    
+            $contact->delete();
+    
+            $emerdelete = CrmPhoneEmergency::where('contact_id', $contact->id)->get();
+    
+            foreach ($emerdelete as $emer) {
+                $emerlog = [
+                    'id' => $emer->id,
+                    'contact_id' => $emer->contact_id,
+                    'emergencyname' => $emer->emergencyname,
+                    'emerrelation' => $emer->emerrelation,
+                    'emerphone' => $emer->emerphone,
+                    'agent' => $emer->agent,
+                    'created_at' => $emer->created_at,
+                    'updated_at' => $emer->updated_at,
+                    'modifyaction' => 'delete',
+                    'modifyagent' => $user->id,
+                ];
+                CrmPhoneEmergencyLog::create($emerlog);
+                CrmPhoneEmergency::where('contact_id', $emer->id)->delete();
+            }
+
+        //CrmContact::find($arr_del[$xx])->delete();
+        //DB::table('crm_phone_emergencies')->where('contact_id',  $arr_del[$xx])->delete();
         }
 
         return redirect('/contacts')->with('success', 'ลบ ผู้ติดต่อ เรียบร้อยแล้ว');

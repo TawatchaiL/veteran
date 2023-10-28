@@ -106,8 +106,10 @@
                                     $('#contractid' + cardId).val(res.datax.datac.id);
                                     $('#hnp' + cardId).val(res.datax.datac.hn);
                                     $('#adddatep' + cardId).val(res.datax.datac.adddate);
+                                    $('#tnamep' + cardId).val(res.datax.datac.tname);
                                     $('#fnamep' + cardId).val(res.datax.datac.fname);
                                     $('#lnamep' + cardId).val(res.datax.datac.lname);
+                                    $('#bloodgroupp' + cardId).val(res.datax.datac.bloodgroup);
                                     $('#homenop' + cardId).val(res.datax.datac.homeno);
                                     $('#moop' + cardId).val(res.datax.datac.moo);
                                     $('#soip' + cardId).val(res.datax.datac.soi);
@@ -489,10 +491,11 @@
                                     .lname + '</h3>');
                                 $('#contractid' + cardId).val(res.datax.datac.id);
                                 $('#hnp' + cardId).val(res.datax.datac.hn);
-                                $('#adddatep' + cardId).val(res.datax.datac
-                                    .adddate);
+                                $('#adddatep' + cardId).val(res.datax.datac.adddate);
+                                $('#tnamep' + cardId).val(res.datax.datac.tname);
                                 $('#fnamep' + cardId).val(res.datax.datac.fname);
                                 $('#lnamep' + cardId).val(res.datax.datac.lname);
+                                $('#bloodgroupp' + cardId).val(res.datax.datac.bloodgroup);
                                 $('#homenop' + cardId).val(res.datax.datac.homeno);
                                 $('#moop' + cardId).val(res.datax.datac.moo);
                                 $('#soip' + cardId).val(res.datax.datac.soi);
@@ -648,8 +651,10 @@
                 var additionalData = {
                     hn: $('#hnp' + cardId).val(),
                     adddate: $('#adddatep' + cardId).val(),
+                    tname: $('#tnamep' + cardId).val(),
                     fname: $('#fnamep' + cardId).val(),
                     lname: $('#lnamep' + cardId).val(),
+                    bloodgroup: $('#bloodgroupp' + cardId).val(),
                     homeno: $('#homenop' + cardId).val(),
                     moo: $('#moop' + cardId).val(),
                     soi: $('#soip' + cardId).val(),

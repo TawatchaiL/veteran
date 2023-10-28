@@ -80,14 +80,29 @@
                             </div>
                         </div>
                         <div class="row">
-                        </div>
-                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <strong><i class="fas fa-user-tie"></i> คำนำหน้าชื่อ:</strong>
+                                    <select style="width: 100%;"
+                                        class="select2 form-control"
+                                        id="tnamep{{$cardid}}" name="tnamep{{$cardid}}">
+                                        <option value="">กรุณาเลือก</option>
+                                        <option value="เด็กชาย">เด็กชาย</option>
+                                        <option value="เด็กหญิง">เด็กหญิง</option>
+                                        <option value="นาย">นาย</option>
+                                        <option value="นาง">นาง</option>
+                                        <option value="นางสาว">นางสาว</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <strong><i class="fas fa-user-tie"></i> ชื่อ:</strong>
                                     {!! Form::text('fnamep'.$cardid, null, ['id' => 'fnamep'.$cardid, 'placeholder' => 'ชื่อ', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <strong><i class="fas fa-user-tie"></i> นามสกุล:</strong>
@@ -98,8 +113,21 @@
                                     ]) !!}
                                 </div>
                             </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <strong><i class="fas fa-user-tie"></i> กรุ๊ปเลือด:</strong>
+                                    <select style="width: 100%;"
+                                        class="select2 form-control"
+                                        id="bloodgroupp{{$cardid}}" name="bloodgroupp{{$cardid}}">
+                                        <option value="">กรุณาเลือก</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="AB">AB</option>
+                                        <option value="O">O</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
@@ -365,7 +393,8 @@
                                 <div class="form-group">
                                     <strong><i class="fas fa-shuffle"></i> สถานะการโอนสาย
                                         :</strong>
-                                    <select class="select2 form-control" id="tranferstatusp{{$cardid}}" name="tranferstatusp{{$cardid}}>
+                                    <select class="select2 form-control" id="tranferstatusp{{$cardid}}" name="tranferstatusp{{$cardid}}">
+                                        <option value="ไม่มีการโอนสาย">ไม่มีการโอนสาย</option>
                                         <option value="รับสาย">รับสาย</option>
                                         <option value="ไม่รับสาย">ไม่รับสาย</option>
                                         <option value="สายไม่ว่าง">สายไม่ว่าง</option>
