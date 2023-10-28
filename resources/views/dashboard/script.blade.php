@@ -491,7 +491,7 @@
 
                 data.sla_data.forEach((item) => {
                     if (item.queue_number == storedOption) {
-                        agent_sla_chart.setOption(agent_sla_chart(item.percentage));
+                        div_agent_sla_chart.setOption(agent_sla_chart(item.percentage));
                     }
                 });
             },
