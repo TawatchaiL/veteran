@@ -31,7 +31,8 @@
 
     .hide_text {
         opacity: 0.5 !important;
-        background-color: #eff3d5;
+        background-color: #eef3cd;
+        border-radius: 10px;
     }
 
     .toast-top-center {
@@ -39,7 +40,7 @@
         margin: 0 auto;
         left: 50%;
     }
-f5f4d6
+
     *.text-toolbar {
         color: #007bff;
         ;
