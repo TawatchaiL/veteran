@@ -6,6 +6,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use DateInterval;
+use DateTime;
+use Exception;
 
 class DashboardController extends Controller
 {
@@ -17,6 +20,19 @@ class DashboardController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    function formatDuration($durationString) {
+        try {
+            $interval = DateInterval::createFromDateString($durationString);
+            $zeroTime = new DateTime("00:00:00");
+            $zeroTime->add($interval);
+            $formattedDuration = $zeroTime->format('H:i:s');
+
+            return $formattedDuration;
+        } catch (Exception $e) {
+            return false;
+        }
     }
 
     /**
@@ -51,8 +67,8 @@ class DashboardController extends Controller
         foreach ($queue as $item) {
             $formattedItem = new \stdClass();
             $formattedItem->queue_number = $item->queue_number;
-            $formattedItem->avg_talk_time = $item->avg_talk_time;
-            $formattedItem->avg_hold_time = $item->avg_hold_time;
+            $formattedItem->avg_talk_time = $this->formatDuration($item->avg_talk_time);
+            $formattedItem->avg_hold_time = $this->formatDuration($item->avg_hold_time);
             $formattedItem->total_talk_time = $item->total_talk_time;
             $formattedItem->max_hold_time = $item->max_hold_time;
 
