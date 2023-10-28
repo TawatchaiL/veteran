@@ -543,6 +543,34 @@
         });
     };
 
+    const updateSLAData = (sla) => {
+        const storedOption = localStorage.getItem('selectedOption');
+        $.ajax({
+            url: '{{ route('dashboard.sla_data') }}',
+            method: 'POST',
+            data: {
+                sla: sla,
+                _token: token,
+            },
+            success: (data) => {
+                console.log(data);
+
+                data.sla_data.forEach((item) => {
+                    if (item.queue_number == storedOption) {
+                        avg_talk.html(item.avg_talk_time)
+                        avg_wait.html(item.avg_hold_time)
+                        total_talk.html(item.total_talk_time)
+                        max_wait.html(item.max_hold_time)
+                    }
+                });
+            },
+            error: (error) => {
+                console.error('Error fetching data:', error);
+            },
+        });
+    };
+
+
     let call_list = (exten) => {
         let mcallprofile = '';
         let mcallexten = '';
@@ -848,6 +876,9 @@
         get_agent(storedOption);
         updateAvgData();
         setInterval(updateAvgData, 60000);
+        updateSLAData();
+        setInterval(updateAvgData, 30000);
+
         div_agent_status_chart.setOption(agent_status_chart(0, 0, 0, 0));
         window.addEventListener('resize', div_agent_status_chart.resize);
 

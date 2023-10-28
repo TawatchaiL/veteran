@@ -92,6 +92,30 @@ class DashboardController extends Controller
         ]);
     }
 
+    public function dashboard_sla_data(Request $request)
+    {
+        $sla = $request->get('sla');
+        $queue = DB::connection('remote_connection')
+            ->table('call_center.call_entry_today')
+            ->select(
+                'queue_number',
+                DB::raw('(COUNT(*) / (SELECT COUNT(*) FROM call_entry_today)) * 100 AS percentage'),
+            )
+            ->where('duration_wait', '<=', $sla)
+            ->groupBy('queue_number')
+            ->get();
+
+
+        $formattedQueue = $queue->map(function ($item) {
+            $item->percentage = number_format($item->percentage, 2);
+            return $item;
+        });
+
+        return response()->json([
+            'sla_data' => $formattedQueue,
+        ]);
+    }
+
     public function getAgentList(Request $request)
     {
         $agent_names = DB::connection('remote_connection')
