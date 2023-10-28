@@ -593,7 +593,6 @@
                 ring_app = dbv[phone_number + '_app'];
                 ring_state = dbv[phone_number + '_state'];
 
-                //console.log(ring_app)
                 let ring_text;
                 if (ring_app === 'AppQueue') {
                     ring_call[phone_number] = 1;
@@ -785,11 +784,6 @@
         console.log(waitData);
     });
 
-    /* setInterval(() => {
-        socket.emit('getqueue', {
-            queue: storedOption,
-        });
-    }, 1000); */
 
 
     $(document).ready(() => {
@@ -818,5 +812,11 @@
 
             get_agent(selectedOption);
         });
+
+        /* setInterval(() => {
+        socket.emit('getqueue', {
+            queue: storedOption,
+        });
+    }, 1000); */
     });
 </script>
