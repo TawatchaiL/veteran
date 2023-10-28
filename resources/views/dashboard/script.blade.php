@@ -730,7 +730,7 @@
 
         get_agent(storedOption);
         updateAvgData();
-        setInterval(updateAvgData, 60000);
+        setInterval(updateAvgData, 20000);
         updateSLAData();
         setInterval(updateSLAData, 30000);
         sla_count();
