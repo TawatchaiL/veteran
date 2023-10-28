@@ -402,7 +402,7 @@
 
     </section>
 
-    <div class="modal fade" id="configModal4071" tabindex="-1" role="dialog" aria-labelledby="configModalLabel"
+    <div class="modal fade" id="configModal" tabindex="-1" role="dialog" aria-labelledby="configModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -412,14 +412,14 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="" method="POST" id="4071">
+                <form action="" id="4071">
                     <div class="modal-body">
                         <label for="sla">เลือกระดับเวลาการให้บริการที่ต้องการแสดงผล :</label>
                         <select class="form-control" name="modal_sla" name="modal_sla">
                             <option value="5">5s</option>
                             <option value="10">10s</option>
                             <option value="15">15s</option>
-                            <option value="20" selected>20s</option>
+                            <option value="20">20s</option>
                             <option value="25">25s</option>
                             <option value="30">30s</option>
                         </select>
@@ -428,7 +428,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal"><i
                                 class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
-                        <button type="submit" class="btn btn-primary" id="save"><i class="fas fa-download"></i>
+                        <button type="submit" class="btn btn-primary" id="set_sla"><i class="fas fa-download"></i>
                             บันทึก</button>
                     </div>
                 </form>

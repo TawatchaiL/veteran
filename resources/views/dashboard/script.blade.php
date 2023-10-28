@@ -805,6 +805,13 @@
     });
 
 
+    $(document).on('click', '#set_sla', function(e) {
+        e.preventDefault();
+        let sla = $('#modal_sla').val();
+        console.log(sla);
+        //$('#CreateModal').modal('show');
+    });
+
 
     $(document).ready(() => {
 
