@@ -225,7 +225,7 @@
                                             <h6>สายที่รับภายใน
 
                                                 20 วินาที <i class="fa fa-edit" data-toggle="modal"
-                                                    data-target="#configModal4071"></i>
+                                                    data-target="#configModal"></i>
                                             </h6>
                                             <div id="agent_sla_chart" style="height:300px;"></div>
                                             <div class="float-right "><i class="fa fa-refresh fa-spin "></i> <span
@@ -378,7 +378,8 @@
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td colspan="4" style="text-align: center;"> ยังไม่มีสายรอในคิว</td>
+                                                                <td colspan="4" style="text-align: center;">
+                                                                    ยังไม่มีสายรอในคิว</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
