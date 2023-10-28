@@ -227,7 +227,7 @@
                                                 20 วินาที <i class="fa fa-edit" data-toggle="modal"
                                                     data-target="#configModal4071"></i>
                                             </h6>
-                                            <div id="mainbc2_4071" style="height:300px;"></div>
+                                            <div id="agent_sla_chart" style="height:300px;"></div>
                                             <div class="float-right "><i class="fa fa-refresh fa-spin "></i> <span
                                                     class="c" id="30"></span> sec</div>
                                         </div>
