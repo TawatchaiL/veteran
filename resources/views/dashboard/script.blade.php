@@ -517,7 +517,10 @@
         const storedOption = localStorage.getItem('selectedOption');
         $.ajax({
             url: '{{ route('dashboard.avg_data') }}',
-            method: 'GET',
+            method: 'POST',
+            data: {
+                _token: token,
+            },
             success: (data) => {
                avg_talk.html('')
                avg_wait.html('')
