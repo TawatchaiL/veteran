@@ -22,8 +22,9 @@ class DashboardController extends Controller
         $this->middleware('auth');
     }
 
-    function formatDuration($sec) {
-        $HH = '00'; $MM = '00'; $SS = '00';
+    function formatDuration($sec)
+    {
+        /*  $HH = '00'; $MM = '00'; $SS = '00';
 
 		if($sec >= 3600){
 			$HH = (int)($sec/3600);
@@ -40,7 +41,9 @@ class DashboardController extends Controller
 		$SS = $sec;
 		if( $SS < 10 ) $SS = "0$SS";
 
-		return $HH.":".$MM.":".$SS."";
+		return $HH.":".$MM.":".$SS.""; */
+        $t = round($sec);
+        return sprintf('%02d:%02d:%02d', ($t / 3600), ($t / 60 % 60), $t % 60);
     }
 
     /**
@@ -70,7 +73,6 @@ class DashboardController extends Controller
             ->groupBy('queue_number')
             ->get();
 
-            dd($queue);
 
         $formattedQueue = [];
 
