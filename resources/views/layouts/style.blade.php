@@ -31,7 +31,7 @@
 
     .hide_text {
         opacity: 0.5 !important;
-        background-color: #eff799;
+        background-color: #efbda2;
     }
 
     .toast-top-center {

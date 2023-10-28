@@ -244,10 +244,10 @@
     const completed = $('#completed');
     const abandoned = $('#abandoned');
     const abandoned_percent = $('#abandoned_percent');
-    const avg_talk = document.getElementById("avg_talk");;
-    const total_talk = $('#total_talk');
-    const avg_wait = $('#avg_wait');
-    const max_wait = $('#max_wait');
+    const avg_talk = document.getElementById("avg_talk");
+    const total_talk = document.getElementById("total_talk");
+    const avg_wait = document.getElementById("avg_wait");
+    const max_wait = document.getElementById("max_wait");
     const dbv = {};
 
     let waitData = {};
@@ -372,6 +372,9 @@
                         total_talk.html(item.total_talk_time)
                         max_wait.html(item.max_hold_time) */
                         changeText(avg_talk,item.avg_talk_time)
+                        changeText(avg_wait,item.avg_hold_time)
+                        changeText(total_talk,item.total_talk_time)
+                        changeText(max_wait,item.max_hold_time)
                     }
                 });
             },
