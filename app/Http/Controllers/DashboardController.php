@@ -46,21 +46,18 @@ class DashboardController extends Controller
             ->groupBy('queue_number')
             ->get();
 
-            dd($queue);
-
-        // Convert the duration fields from time format to "00:00:00"
+        // Format the duration fields as "00:00:00" using Carbon
         foreach ($queue as $item) {
-            $item->avg_talk_time = gmdate('H:i:s', strtotime($item->avg_talk_time));
-            $item->avg_hold_time = gmdate('H:i:s', strtotime($item->avg_hold_time));
-            $item->total_talk_time = gmdate('H:i:s', strtotime($item->total_talk_time));
-            $item->max_hold_time = gmdate('H:i:s', strtotime($item->max_hold_time));
+            $item->avg_talk_time = Carbon::createFromFormat('H:i:s', $item->avg_talk_time)->toTimeString();
+            $item->avg_hold_time = Carbon::createFromFormat('H:i:s', $item->avg_hold_time)->toTimeString();
+            $item->total_talk_time = Carbon::createFromFormat('H:i:s', $item->total_talk_time)->toTimeString();
+            $item->max_hold_time = Carbon::createFromFormat('H:i:s', $item->max_hold_time)->toTimeString();
         }
 
         return response()->json([
             'avg_data' => $queue,
         ]);
     }
-
     public function getAgentList(Request $request)
     {
         $agent_names = DB::connection('remote_connection')
