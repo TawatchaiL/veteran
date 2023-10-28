@@ -721,7 +721,6 @@
 
 
     socket.on('agentcomplete', async (response) => {
-        console.log(response)
         await delete active_call[response.data.connectedlinenum];
         if (Object.keys(active_call).length === 0) {
             active_div.html('0');
@@ -738,12 +737,10 @@
 
     socket.on('hangup', async (data) => {
         if (data.extension) {
-            console.log(data.extension);
             var extractedNumber;
             var splitResult
             if (data.extension.includes('/')) {
                 splitResult = data.extension.split('/');
-                //if (splitResult.length >= 2) {
                 extractedNumber = splitResult[1].split('-')[0];
             } else {
                 extractedNumber = data.extension
@@ -757,9 +754,6 @@
             if (Object.keys(active_call).length === 0) {
                 active_div.html('0');
             }
-            // } else {
-            //console.log("Invalid extension format");
-            //}
         } else {
             console.log("Extension property is missing in the data object");
         }
