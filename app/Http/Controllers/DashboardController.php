@@ -51,10 +51,10 @@ class DashboardController extends Controller
         foreach ($queue as $item) {
             $formattedItem = new \stdClass();
             $formattedItem->queue_number = $item->queue_number;
-            $formattedItem->avg_talk_time = Carbon::createFromFormat('H:i:s', $item->avg_talk_time)->toTimeString();
-            $formattedItem->avg_hold_time = Carbon::createFromFormat('H:i:s', $item->avg_hold_time)->toTimeString();
-            $formattedItem->total_talk_time = Carbon::createFromFormat('H:i:s', $item->total_talk_time)->toTimeString();
-            $formattedItem->max_hold_time = Carbon::createFromFormat('H:i:s', $item->max_hold_time)->toTimeString();
+            $formattedItem->avg_talk_time = $item->avg_talk_time;
+            $formattedItem->avg_hold_time = $item->avg_hold_time;
+            $formattedItem->total_talk_time = $item->total_talk_time;
+            $formattedItem->max_hold_time = $item->max_hold_time;
 
             $formattedQueue[] = $formattedItem;
         }
