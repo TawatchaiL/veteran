@@ -813,7 +813,7 @@
         localStorage.setItem('sla_setting',
             sla);
         updateSLAData();
-        $('#sla_setting').html(sla);
+        //$('#sla_setting').html(sla);
         //$('#CreateModal').modal('show');
     });
 
@@ -825,7 +825,7 @@
         }
         if (storedSLA) {
             selectSLA.val(storedSLA)
-            $('#sla_setting').html(storedSLA);
+            //$('#sla_setting').html(storedSLA);
         }
 
         get_agent(storedOption);

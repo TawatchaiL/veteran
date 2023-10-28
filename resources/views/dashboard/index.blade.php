@@ -223,8 +223,8 @@
                                     <div class="chart">
                                         <div class="col-md-12 text-center">
                                             <div class="d-flex justify-content-center align-items-center">
-                                                <h6 class="mb-0 mr-5">สายที่รับภายใน</h6>
-                                                <select style="width: 70px" class="form-control" name="modal_sla"
+                                                <h6 class="mb-0 mr-3">สายที่รับภายใน</h6>
+                                                <select style="width: 90px" class="form-control" name="modal_sla"
                                                     id="modal_sla">
                                                     <option value="5">5s</option>
                                                     <option value="10">10s</option>
@@ -239,10 +239,11 @@
                                                     <option value="55">55s</option>
                                                     <option value="60">60s</option>
                                                 </select>
-                                                <h6 class="ml-5 mb-0">วินาที</h6>
+                                                <h6 class="ml-3 mb-0">วินาที</h6>
                                             </div>
                                             <!-- {{-- <i class="fa fa-edit" data-toggle="modal" data-target="#configModal"></i> --}} -->
-                                            <div id="agent_sla_chart" style="height:300px;"></div>
+                                            <div class="d-flex justify-content-center align-items-center"
+                                                id="agent_sla_chart" style="height:300px;"></div>
                                             <div class="float-right "><i class="fa fa-refresh fa-spin "></i> <span
                                                     class="c" id="30"></span> sec</div>
                                         </div>
