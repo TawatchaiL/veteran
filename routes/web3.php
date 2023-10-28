@@ -39,4 +39,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/pause_list', [App\Http\Controllers\PBXController::class, 'pause_list'])->name('pause_list');
 
     Route::post('/agent_list', [App\Http\Controllers\DashboardController::class, 'getAgentList'])->name('dashboard.agent_list');
+    Route::post('/avg_data', [App\Http\Controllers\DashboardController::class, 'dashboard_avg_data'])->name('dashboard.avg_data');
 });

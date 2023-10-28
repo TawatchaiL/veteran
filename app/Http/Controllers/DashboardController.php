@@ -32,6 +32,32 @@ class DashboardController extends Controller
             ->with(['queue' => $queue]);
     }
 
+    public function dashboard_avg_data()
+    {
+        $queue = DB::connection('remote_connection')
+            ->table('call_center.call_entry_today')
+            ->select(
+                'queue_number',
+                DB::raw('SEC_TO_TIME(AVG(duration)) as avg_talk_time'),
+                DB::raw('SEC_TO_TIME(AVG(duration_hold)) as avg_hold_time'),
+                DB::raw('SEC_TO_TIME(SUM(duration)) as total_talk_time'),
+                DB::raw('SEC_TO_TIME(MAX(duration_hold)) as max_hold_time')
+            )
+            ->groupBy('queue_number')
+            ->get();
+
+        // Convert the duration fields from time format to "00:00:00"
+        foreach ($queue as $item) {
+            $item->avg_talk_time = gmdate('H:i:s', strtotime($item->avg_talk_time));
+            $item->avg_hold_time = gmdate('H:i:s', strtotime($item->avg_hold_time));
+            $item->total_talk_time = gmdate('H:i:s', strtotime($item->total_talk_time));
+            $item->max_hold_time = gmdate('H:i:s', strtotime($item->max_hold_time));
+        }
+
+        return response()->json([
+            'avg_data' => $queue,
+        ]);
+    }
 
     public function getAgentList(Request $request)
     {

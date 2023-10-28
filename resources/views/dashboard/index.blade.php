@@ -67,7 +67,7 @@
                                 <div class="info-box-content">
                                     <span class="info-box-text">เวลารอสายเฉลี่ย
                                         ต่อสาย</span>
-                                    <span class="info-box-number">00:00:12</span>
+                                    <span class="info-box-number"><span id="avg_wait">00:00:00</span></span>
                                 </div>
 
                             </div>
@@ -77,7 +77,7 @@
                                 <span class="info-box-icon bg-success"><i class="fa-solid fa-headset"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เวลาที่สนทนาทั้งหมด</span>
-                                    <span class="info-box-number">00:38:43</span>
+                                    <span class="info-box-number"><span id="total_talk">00:00:00</span></span>
                                 </div>
 
                             </div>
@@ -87,7 +87,7 @@
                                 <span class="info-box-icon bg-success"><i class="fa-solid fa-phone-volume"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เวลาสนทนาเฉลี่ยต่อสาย</span>
-                                    <span class="info-box-number"> 00:05:12</span>
+                                    <span class="info-box-number"><span id="avg_talk">00:00:00</span></span>
                                 </div>
 
                             </div>
@@ -97,7 +97,7 @@
                                 <span class="info-box-icon bg-success"><i class="fa-solid fa-clock"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เวลารอสายที่นานที่สุด</span>
-                                    <span class="info-box-number"> 00:06:12</span>
+                                    <span class="info-box-number"><span id="max_wait">00:00:00</span></span>
                                 </div>
 
                             </div>

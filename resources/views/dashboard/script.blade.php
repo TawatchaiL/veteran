@@ -406,6 +406,10 @@
     const completed = $('#completed');
     const abandoned = $('#abandoned');
     const abandoned_percent = $('#abandoned_percent');
+    const avg_talk = $('#avg_talk');
+    const tota;_talk = $('#total_talk');
+    const avg_wait = $('#avg_wait');
+    const max_wait = $('#max_wait');
     const dbv = {};
 
     let waitData = {};
@@ -508,6 +512,38 @@
 
         return ret_status;
     }
+
+    const updateAvgData = () => {
+        const storedOption = localStorage.getItem('selectedOption');
+        $.ajax({
+            url: '{{ route('dashboard.avg_data') }}',
+            method: 'GET',
+            success: (data) => {
+               avg_talk.html('')
+               avg_wait.html('')
+               total_talk.html('')
+               max_wait.html('')
+
+                data.avg_data.forEach((item) => {
+                    if (item.queue_number==storedOption) {
+                        avg_talk.html(item.avg_talk_time)
+                    }
+                    /* avgDataElement.innerHTML += `
+                    <div>
+                        Queue Number: ${item.queue_number}<br>
+                        Avg Talk Time: ${item.avg_talk_time}<br>
+                        Avg Hold Time: ${item.avg_hold_time}<br>
+                        Total Talk Time: ${item.total_talk_time}<br>
+                        Max Hold Time: ${item.max_hold_time}<br>
+                    </div>
+                `; */
+                });
+            },
+            error: (error) => {
+                console.error('Error fetching data:', error);
+            },
+        });
+    };
 
     let call_list = (exten) => {
         let mcallprofile = '';
@@ -812,6 +848,8 @@
         }
 
         get_agent(storedOption);
+        updateAvgData();
+        setInterval(updateAvgData, 60000);
         div_agent_status_chart.setOption(agent_status_chart(0, 0, 0, 0));
         window.addEventListener('resize', div_agent_status_chart.resize);
 
