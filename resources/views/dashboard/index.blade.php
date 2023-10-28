@@ -224,7 +224,7 @@
                                         <div class="col-md-12 text-center">
                                             <div class="d-flex justify-content-center align-items-center">
                                                 <h6 class="mb-0 mr-3">สายที่รับภายใน</h6>
-                                                <select style="width: 90px" class="form-control" name="modal_sla"
+                                                <select style="width: 80px" class="form-control" name="modal_sla"
                                                     id="modal_sla">
                                                     <option value="5">5s</option>
                                                     <option value="10">10s</option>
@@ -273,7 +273,8 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="col-md-12">
-                                        <div id="agent_status_chart" style="height:350px;"></div>
+                                        <div class="d-flex justify-content-center align-items-center"
+                                            id="agent_status_chart" style="height:350px;"></div>
                                     </div>
                                 </div>
 
