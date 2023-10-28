@@ -76,7 +76,7 @@
                         color: '#000000'
                     },
                     data: [{
-                        value: 73
+                        value: sla
                     }]
                 },
 
