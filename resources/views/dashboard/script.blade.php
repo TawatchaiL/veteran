@@ -566,8 +566,8 @@
             abandonedPercentage = (parseFloat(res.abandoned) / total_call) * 100;
             allcall.html(total_call);
             completed.html(res.completed);
-            abandoned.html(res, abandoned);
-            abandoned_percent.html(abandonedPercentage);
+            abandoned.html(res.abandoned);
+            abandoned_percent.html(abandonedPercentage.toFixed(2));
         }
     });
 
