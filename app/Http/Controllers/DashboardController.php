@@ -22,28 +22,25 @@ class DashboardController extends Controller
         $this->middleware('auth');
     }
 
-    public function formatDuration($durationString)
-    {
-        $HH = '00';
-        $MM = '00';
-        $SS = '00';
+    function formatDuration($sec) {
+        $HH = '00'; $MM = '00'; $SS = '00';
 
-        if ($durationString >= 3600) {
-            $HH = (int)($durationString / 3600);
-            $sec = $durationString % 3600;
-            if ($HH < 10) $HH = "0$HH";
-        }
+		if($sec >= 3600){
+			$HH = (int)($sec/3600);
+			$sec = $sec%3600;
+			if( $HH < 10 ) $HH = "0$HH";
+		}
 
-        if ($sec >= 60) {
-            $MM = (int)($sec / 60);
-            $sec = $sec % 60;
-            if ($MM < 10) $MM = "0$MM";
-        }
+		if( $sec >= 60 ){
+			$MM = (int)($sec/60);
+			$sec = $sec%60;
+			if( $MM < 10 ) $MM = "0$MM";
+		}
 
-        $SS = $sec;
-        if ($SS < 10) $SS = "0$SS";
+		$SS = $sec;
+		if( $SS < 10 ) $SS = "0$SS";
 
-        return $HH . ":" . $MM . ":" . $SS . "";
+		return $HH.":".$MM.":".$SS."";
     }
 
     /**
