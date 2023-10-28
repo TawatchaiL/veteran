@@ -46,6 +46,8 @@ class DashboardController extends Controller
             ->groupBy('queue_number')
             ->get();
 
+            dd($queue);
+
         // Convert the duration fields from time format to "00:00:00"
         foreach ($queue as $item) {
             $item->avg_talk_time = gmdate('H:i:s', strtotime($item->avg_talk_time));

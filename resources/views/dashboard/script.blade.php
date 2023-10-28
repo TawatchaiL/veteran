@@ -534,15 +534,6 @@
                         total_talk.html(item.total_talk_time)
                         max_wait.html(item.max_hold_time)
                     }
-                    /* avgDataElement.innerHTML += `
-                    <div>
-                        Queue Number: ${item.queue_number}<br>
-                        Avg Talk Time: ${item.avg_talk_time}<br>
-                        Avg Hold Time: ${item.avg_hold_time}<br>
-                        Total Talk Time: ${item.total_talk_time}<br>
-                        Max Hold Time: ${item.max_hold_time}<br>
-                    </div>
-                `; */
                 });
             },
             error: (error) => {
