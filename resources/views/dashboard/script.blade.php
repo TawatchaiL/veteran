@@ -477,18 +477,17 @@
         });
     };
 
-    const updateSLAData = (sla) => {
+    const updateSLAData = () => {
         const storedOption = localStorage.getItem('selectedOption');
+        const storedSLA = 20;
         $.ajax({
             url: '{{ route('dashboard.sla_data') }}',
             method: 'POST',
             data: {
-                sla: sla,
+                sla: storedSLA,
                 _token: token,
             },
             success: (data) => {
-                console.log(data);
-
                 data.sla_data.forEach((item) => {
                     if (item.queue_number == storedOption) {
                         div_agent_sla_chart.setOption(agent_sla_chart(item.percentage));
@@ -814,8 +813,8 @@
         get_agent(storedOption);
         updateAvgData();
         setInterval(updateAvgData, 60000);
-        updateSLAData(20);
-        setInterval(updateSLAData(20), 30000);
+        updateSLAData();
+        setInterval(updateSLAData(), 30000);
 
         div_agent_status_chart.setOption(agent_status_chart(0, 0, 0, 0));
         window.addEventListener('resize', div_agent_status_chart.resize);
