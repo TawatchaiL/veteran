@@ -484,6 +484,23 @@
         dbv[phone + '_state'] = mcallstate;
     }
 
+    let set_status = (status, text = '') => {
+        let ret_status = '';
+
+        const statusMap = {
+            'pause': `<span style="font-size: 1em; color: #ff9900;"><i class="fa-solid fa-user-clock"></i></span> พักสาย ( ${text} )`,
+            'warp': `<span style="font-size: 1em; color: #ff9900;"><i class="fa-solid fa-user-pen"></i></span> Warp UP`,
+            'ring': `<span style="font-size: 1em; color: red;"><i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i></span> ${text}`,
+            'answer': `<span style="font-size: 1em; color: red;"><i class="fa-solid fa-phone-volume fa-beat" style="--fa-beat-scale: 1.5;"></i></span> ${text}`,
+            'hold': `<span style="font-size: 1em; color: #ff9900;"><i class="fa-solid fa-user-clock fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังพักสาย`,
+            'ready': `<span style="font-size: 1em; color: green;"><i class="fa-solid fa-user-check"></i></span> พร้อมรับสาย`,
+        };
+
+        ret_status = statusMap[status] || '';
+
+        return ret_status;
+    }
+
     let call_list = (exten) => {
         let mcallprofile = '';
         let mcallexten = '';
@@ -562,13 +579,11 @@
                 if (res.pausedreason == 'Warp UP') {
                     state_dur = duration_time(res.lastpause);
                     warp_total[phone_number] = 1;
-                    status = `<span style="font-size: 1em; color: #ff9900;">
-                        <i class="fa-solid fa-user-pen"></i></span> Warp UP`
+                    status = set_status('warp', '');
                 } else {
                     state_dur = duration_time(res.lastpause);
                     pause_total[phone_number] = 1;
-                    status = `<span style="font-size: 1em; color: #ff9900;">
-                    <i class="fa-solid fa-user-clock"></i></span> พักสาย ( ${res.pausedreason} )`
+                    status = set_status('pause', res.pausedreason);
                 }
                 div_src.html('');
             } else if (res.status == 6) {
@@ -586,10 +601,10 @@
                 } else {
                     ring_text = 'กำลังรอสาย';
                 }
-                status = `<span style="font-size: 1em; color: red;">
-                    <i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i></span> ${ring_text}`
-                div_src.html(ring_cid);
+
                 state_dur = duration_miltime(ring_time);
+                status = set_status('ring', ring_text);
+                div_src.html(ring_cid);
             } else if (res.status == 2) {
                 call_list(phone_number);
 
@@ -610,18 +625,14 @@
                     active_call[phone_number] = 1;
                 }
 
-                status = `<span style="font-size: 1em; color: red;">
-                    <i class="fa-solid fa-phone-volume fa-beat" style="--fa-beat-scale: 1.5;"></i></span> ${ans_text}`
+                status = set_status('answer', ans_text);
                 div_src.html(ans_cid);
             } else if (res.status == 8) {
                 active_call[phone_number] = 1;
-                status = `<span style="font-size: 1em; color: #ff9900;">
-                    <i class="fa-solid fa-user-clock fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังพักสาย`
+                status = set_status('hold', '');
             } else if (res.status == 1) {
 
                 ready_total[phone_number] = 1;
-                status = `<span style="font-size: 1em; color: green;">
-                    <i class="fa-solid fa-user-check"></i></span> พร้อมรับสาย`
                 if (res.lastpause === '0') {
                     if (res.lastcall === '0') {
                         loginTime = new Date($('#' + phone_number + '_login').val()).getTime() / 1000;
@@ -632,6 +643,7 @@
                 } else {
                     state_dur = duration_time(res.lastpause);
                 }
+                status = set_status('ready', '');
                 div_src.html('');
             }
 
