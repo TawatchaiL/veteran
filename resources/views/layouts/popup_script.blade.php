@@ -255,8 +255,14 @@
     }
 
     function validateNumberp(event) {
-        var keyCode = event.which || event.keyCode;
-        if ((keyCode < 48 || (keyCode > 57 && keyCode < 96) || keyCode > 105) && keyCode !== 8) {
+        var allowedKeys = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+        var keyCode = event.key;
+
+        if (keyCode === "Backspace") {
+            return;
+        }
+
+        if (allowedKeys.indexOf(keyCode) === -1) {
             event.preventDefault();
         }
     }
