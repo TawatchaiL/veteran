@@ -407,7 +407,7 @@
     const abandoned = $('#abandoned');
     const abandoned_percent = $('#abandoned_percent');
     const avg_talk = $('#avg_talk');
-    const tota;_talk = $('#total_talk');
+    const total_talk = $('#total_talk');
     const avg_wait = $('#avg_wait');
     const max_wait = $('#max_wait');
     const dbv = {};
