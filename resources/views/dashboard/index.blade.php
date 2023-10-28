@@ -223,8 +223,15 @@
                                     <div class="chart">
                                         <div class="col-md-12 text-center">
                                             <h6>สายที่รับภายใน
-
-                                                <span id="sla_setting"></span> วินาที <i class="fa fa-edit" data-toggle="modal"
+                                                <select style="width: 20px" class="form-control" name="modal_sla" id="modal_sla">
+                                                    <option value="5">5s</option>
+                                                    <option value="10">10s</option>
+                                                    <option value="15">15s</option>
+                                                    <option value="20">20s</option>
+                                                    <option value="25">25s</option>
+                                                    <option value="30">30s</option>
+                                                </select>
+                                                {{-- <span id="sla_setting"></span> --}} วินาที <i class="fa fa-edit" data-toggle="modal"
                                                     data-target="#configModal"></i>
                                             </h6>
                                             <div id="agent_sla_chart" style="height:300px;"></div>
@@ -415,7 +422,7 @@
                 </div>
                 <form action="" id="4071">
                     <div class="modal-body">
-                        <label for="sla">เลือกระดับเวลาการให้บริการที่ต้องการแสดงผล :</label>
+                        {{--  <label for="sla">เลือกระดับเวลาการให้บริการที่ต้องการแสดงผล :</label>
                         <select class="form-control" name="modal_sla" id="modal_sla">
                             <option value="5">5s</option>
                             <option value="10">10s</option>
@@ -424,12 +431,12 @@
                             <option value="25">25s</option>
                             <option value="30">30s</option>
                         </select>
-                        <input type="hidden" name="queuesla" value="4071">
+                        <input type="hidden" name="queuesla" value="4071"> --}}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal"><i
                                 class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
-                       {{--  <button type="submit" class="btn btn-primary" id="set_sla"><i class="fas fa-download"></i>
+                        {{--  <button type="submit" class="btn btn-primary" id="set_sla"><i class="fas fa-download"></i>
                             บันทึก</button> --}}
                     </div>
                 </form>
