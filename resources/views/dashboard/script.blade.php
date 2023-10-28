@@ -531,8 +531,8 @@
                     if (item.queue_number == storedOption) {
                         avg_talk.html(item.avg_talk_time)
                         avg_wait.html(item.avg_hold_time)
-                        total_talk.html(${item.total_talk_time})
-                        max_wait.html(${item.max_hold_time})
+                        total_talk.html(item.total_talk_time)
+                        max_wait.html(item.max_hold_time)
                     }
                     /* avgDataElement.innerHTML += `
                     <div>
