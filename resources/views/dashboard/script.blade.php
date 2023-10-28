@@ -479,7 +479,10 @@
 
     const updateSLAData = () => {
         const storedOption = localStorage.getItem('selectedOption');
-        const storedSLA = 20;
+        const storedSLA = localStorage.getItem('sla_setting');
+        if (storedSLA === '') {
+            storedSLA = 20;
+        }
         $.ajax({
             url: '{{ route('dashboard.sla_data') }}',
             method: 'POST',
@@ -488,8 +491,6 @@
                 _token: token,
             },
             success: (data) => {
-                console.log(data);
-
                 data.sla_data.forEach((item) => {
                     if (item.queue_number == storedOption) {
                         div_agent_sla_chart.setOption(agent_sla_chart(item.percentage));
@@ -808,6 +809,9 @@
     $(document).on('click', '#set_sla', function(e) {
         e.preventDefault();
         let sla = $('#modal_sla').val();
+        localStorage.setItem('sla_setting',
+        sla);
+        updateSLAData();
         console.log(sla);
         //$('#CreateModal').modal('show');
     });

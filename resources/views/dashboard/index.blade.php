@@ -416,7 +416,7 @@
                 <form action="" id="4071">
                     <div class="modal-body">
                         <label for="sla">เลือกระดับเวลาการให้บริการที่ต้องการแสดงผล :</label>
-                        <select class="form-control" name="modal_sla" name="modal_sla">
+                        <select class="form-control" name="modal_sla" id="modal_sla">
                             <option value="5">5s</option>
                             <option value="10">10s</option>
                             <option value="15">15s</option>
