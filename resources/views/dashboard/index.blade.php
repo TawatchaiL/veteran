@@ -222,8 +222,10 @@
                                 <div class="card-body">
                                     <div class="chart">
                                         <div class="col-md-12 text-center">
-                                            <h6>สายที่รับภายใน <span id="sla_setting"></span> วินาที</h6>
-                                                <select style="width: 50px" class="form-control" name="modal_sla" id="modal_sla">
+                                            <div class="d-flex justify-content-center align-items-center">
+                                                <h6 class="mb-0">สายที่รับภายใน</h6>
+                                                <select style="width: 50px" class="form-control" name="modal_sla"
+                                                    id="modal_sla">
                                                     <option value="5">5s</option>
                                                     <option value="10">10s</option>
                                                     <option value="15">15s</option>
@@ -237,9 +239,9 @@
                                                     <option value="55">55s</option>
                                                     <option value="60">60s</option>
                                                 </select>
-                                                 {{-- <i class="fa fa-edit" data-toggle="modal"
-                                                    data-target="#configModal"></i> --}}
-
+                                                <h6 class="mb-0">วินาที</h6>
+                                            </div>
+                                            <!-- {{-- <i class="fa fa-edit" data-toggle="modal" data-target="#configModal"></i> --}} -->
                                             <div id="agent_sla_chart" style="height:300px;"></div>
                                             <div class="float-right "><i class="fa fa-refresh fa-spin "></i> <span
                                                     class="c" id="30"></span> sec</div>
