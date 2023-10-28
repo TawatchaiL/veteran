@@ -360,10 +360,10 @@
                 _token: token,
             },
             success: (data) => {
-                avg_talk.html('')
+                /* avg_talk.html('')
                 avg_wait.html('')
                 total_talk.html('')
-                max_wait.html('')
+                max_wait.html('') */
 
                 data.avg_data.forEach((item) => {
                     if (item.queue_number == storedOption) {
