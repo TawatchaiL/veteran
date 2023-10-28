@@ -752,6 +752,11 @@
             if (Object.keys(ring_call).length === 0) {
                 waiting_div.html('0');
             }
+
+            await delete active_call[extractedNumber];
+            if (Object.keys(active_call).length === 0) {
+                active_div.html('0');
+            }
             // } else {
             //console.log("Invalid extension format");
             //}
