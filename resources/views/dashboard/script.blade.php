@@ -676,7 +676,7 @@
     });
 
     socket.on('agentdump', async (response) => {
-        console.log(response)
+        //console.log(response)
         await delete active_call[response.data.connectedlinenum];
         if (Object.keys(active_call).length === 0) {
             active_div.html('0');
@@ -718,13 +718,13 @@
     });
 
     socket.on('queueparams', async (response) => {
-        //console.log(response)
+        console.log(response)
     });
 
     socket.on('queueentry', async (response) => {
         const storedOption = localStorage.getItem('selectedOption');
         waitData[response.data.uniqueid] = response.data;
-        console.log(waitData);
+        //console.log(waitData);
 
         const tableBody = $('#waiting_list tbody');
 
@@ -781,7 +781,7 @@
                 '<tr><td colspan="4" style="text-align: center;">ยังไม่มีสายรอในคิว</td></tr>');
             waiting_div.html('0');
         }
-        console.log(waitData);
+        //console.log(waitData);
     });
 
 
