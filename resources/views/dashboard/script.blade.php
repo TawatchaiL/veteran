@@ -27,7 +27,12 @@
                     },
                     axisLine: {
                         lineStyle: {
-                            width: 20
+                            width: 20,
+                            color: [
+                                [0.5, '#00C853'],
+                                [0.8, '#FFD740'],
+                                [1, '#ff8484'],
+                            ],
                         }
                     },
                     axisTick: {
@@ -107,7 +112,7 @@
                         lineStyle: {
                             width: 12,
                             color: [
-                                [0.1, '#00C853'],
+                                [0.5, '#00C853'],
                                 [0.8, '#FFD740'],
                                 [1, '#ff8484'],
                             ],
@@ -813,8 +818,6 @@
         localStorage.setItem('sla_setting',
             sla);
         updateSLAData();
-        //$('#sla_setting').html(sla);
-        //$('#CreateModal').modal('show');
     });
 
 
@@ -825,7 +828,6 @@
         }
         if (storedSLA) {
             selectSLA.val(storedSLA)
-            //$('#sla_setting').html(storedSLA);
         }
 
         get_agent(storedOption);

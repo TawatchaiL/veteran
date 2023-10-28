@@ -224,20 +224,20 @@
                                         <div class="col-md-12 text-center">
                                             <div class="d-flex justify-content-center align-items-center">
                                                 <h6 class="mb-0 mr-3">สายที่รับภายใน</h6>
-                                                <select style="width: 80px" class="form-control" name="modal_sla"
+                                                <select style="width: 75px" class="form-control" name="modal_sla"
                                                     id="modal_sla">
-                                                    <option value="5">5s</option>
-                                                    <option value="10">10s</option>
-                                                    <option value="15">15s</option>
-                                                    <option value="20">20s</option>
-                                                    <option value="25">25s</option>
-                                                    <option value="30">30s</option>
-                                                    <option value="35">35s</option>
-                                                    <option value="40">40s</option>
-                                                    <option value="45">45s</option>
-                                                    <option value="50">50s</option>
-                                                    <option value="55">55s</option>
-                                                    <option value="60">60s</option>
+                                                    <option value="5">5</option>
+                                                    <option value="10">10</option>
+                                                    <option value="15">15</option>
+                                                    <option value="20">20</option>
+                                                    <option value="25">25</option>
+                                                    <option value="30">30</option>
+                                                    <option value="35">35</option>
+                                                    <option value="40">40</option>
+                                                    <option value="45">45</option>
+                                                    <option value="50">50</option>
+                                                    <option value="55">55</option>
+                                                    <option value="60">60</option>
                                                 </select>
                                                 <h6 class="ml-3 mb-0">วินาที</h6>
                                             </div>
