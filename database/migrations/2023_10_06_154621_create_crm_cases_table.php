@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('tranferstatus')->nullable();
             $table->string('casedetail')->nullable();
             $table->string('casestatus')->nullable();
-            $table->string('agent')->nullable();
+            $table->integer('agent')->nullable();
             $table->timestamps();
         });
     }
