@@ -286,7 +286,8 @@
                     }
                 },
                 data: [{
-                    value: data
+                    value: data,
+                    state: state
                 }]
             }]
         };
