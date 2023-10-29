@@ -429,7 +429,7 @@
                 let phone = exten;
 
                 $.get(`${api_serv}/chans_variable/` + chan[1], (data, status) => {
-                    if (storedOption == mcallqueue = data[3][1]) {
+                    if (storedOption == data[3][1]) {
                         mcallexten = data[2][1];
                         mcallqueue = data[3][1];
                         mcalluniq = data[4][1];
