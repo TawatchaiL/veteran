@@ -286,7 +286,18 @@
 
     $(document).ready(function() {
         positionCards();
+
+        $.datepicker.setDefaults($.datepicker.regional['en']);
         $(".birthdayp").datepicker({
+            /*  onSelect: function() {
+                 table.draw();
+             }, */
+            dateFormat: 'yy-mm-dd',
+            changeMonth: true,
+            changeYear: true,
+            yearRange: '1980:2050',
+        });
+        $(".AddDate").datepicker({
             /*  onSelect: function() {
                  table.draw();
              }, */
