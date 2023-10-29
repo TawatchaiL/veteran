@@ -129,11 +129,18 @@ class CasesContractController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
-        $validator =  Validator::make($request->all(), [
+        $valifield =  Validator::make($request->all(), [
             'caseid1' => 'required|string|max:100',
             'casedetail' => 'required|string|max:200',
         ]);
-
+        $valimess = [
+            'caseid1.required' => 'กรุณาเลือกประเภทการติดต่อ',
+            'casedetail.required' => 'กรุณากรอกรายละเอียดที่ติดต่อ',
+        ];
+        $validator =  Validator::make($request->all(), $valifield, $valimess);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all()]);
+        }
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);
         }
@@ -155,13 +162,18 @@ class CasesContractController extends Controller
     {
         $user = Auth::user();
         
-        $rules = [
+        $valifield =  Validator::make($request->all(), [
             'caseid1' => 'required|string|max:100',
             'casedetail' => 'required|string|max:200',
+        ]);
+        $valimess = [
+            'caseid1.required' => 'กรุณาเลือกประเภทการติดต่อ',
+            'casedetail.required' => 'กรุณากรอกรายละเอียดที่ติดต่อ',
         ];
-
-
-        $validator =  Validator::make($request->all(), $rules);
+        $validator =  Validator::make($request->all(), $valifield, $valimess);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all()]);
+        }
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);
