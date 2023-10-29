@@ -115,6 +115,39 @@
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
+                                    <strong><i class="fas fa-user-tie"></i> เพศ:</strong>
+                                    <select style="width: 100%;"
+                                        class="select2 form-control"
+                                        id="sexp{{$cardid}}" name="sexp{{$cardid}}">
+                                        <option value="">กรุณาเลือก</option>
+                                        <option value="ชาย">ชาย</option>
+                                        <option value="หญิง">หญิง</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <strong><i class="fas fa-user-tie"></i> วันเกิด:</strong>
+                                    {!! Form::text('birthdayp'.$cardid, null, [
+                                        'id' => 'birthdayp'.$cardid,
+                                        'placeholder' => 'วันเกิด',
+                                        'class' => 'AddDate form-control birthdayp',
+                                        'data-target' => '#reservationdate',
+                                    ]) !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <strong><i class="fas fa-user-tie"></i> อายุ:</strong>
+                                    {!! Form::text('agep'.$cardid, null, ['id' => 'agep'.$cardid, 'placeholder' => 'อายุ', 'class' => 'form-control','readonly' => true]) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
                                     <strong><i class="fas fa-user-tie"></i> กรุ๊ปเลือด:</strong>
                                     <select style="width: 100%;"
                                         class="select2 form-control"

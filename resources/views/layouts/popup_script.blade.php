@@ -286,6 +286,10 @@
 
     $(document).ready(function() {
         positionCards();
+        //birth day change
+        $(document).on("change", ".birthdayp", function() {
+alert('OK');
+        });
         //casetype changes
         $(document).on("change", ".casetypechang", function() {
             var cardId = $(this).data("tabid");
