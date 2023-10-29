@@ -709,36 +709,7 @@ class ContactController extends Controller
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);
         }
-        $contactd = [
-            'hn' => $request->get('hn'),
-            'adddate' => $request->get('adddate'),
-            'tname' => $request->get('tname'),
-            'fname' => $request->get('fname'),
-            'lname' => $request->get('lname'),
-            'sex' => $request->get('sex'),
-            'birthday' => $request->get('birthday'),
-            'age' => $request->get('age'),
-            'bloodgroup' => $request->get('bloodgroup'),
-            'homeno' => $request->get('homeno'),
-            'moo' => $request->get('moo'),
-            'soi' => $request->get('soi'),
-            'road' => $request->get('road'),
-            'city' => $request->get('city'),
-            'district' => $request->get('district'),
-            'subdistrict' => $request->get('subdistrict'),
-            'postcode' => $request->get('postcode'),
-            'telhome' => $request->get('telhome'),
-            'phoneno' => $request->get('phoneno'),
-            'workno' => $request->get('workno'),
-            'agent' => $user->id,
-        ];
 
-        $contact = CrmContact::find($id);
-
-
-        //CrmContactLog::create($contactlog);
-
-        $contact->update($contactd);
         if (!empty($request->emergencyData)) {
             foreach ($request->emergencyData as $edata) {
                 if ($edata['emertype'] == '') {
