@@ -133,7 +133,7 @@
                                     {!! Form::text('birthdayp'.$cardid, null, [
                                         'id' => 'birthdayp'.$cardid,
                                         'placeholder' => 'วันเกิด',
-                                        'class' => 'AddDatep form-control',
+                                        'class' => 'AddDatep form-control Birthdayp',
                                         'data-target' => '#reservationdate',
                                     ]) !!}
                                 </div>

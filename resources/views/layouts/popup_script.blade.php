@@ -298,7 +298,7 @@
         });
 
         //birth day change
-        $(document).on("change", ".AddDatep", function() {
+        $(document).on("change", ".Birthdayp", function() {
         alert('OK');
         });
         //casetype changes
