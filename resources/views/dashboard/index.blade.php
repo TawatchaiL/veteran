@@ -176,7 +176,7 @@
                                     <div class="row chart">
                                         <div class="col-md-12">
                                             <div class="d-flex justify-content-center align-items-center"
-                                                id="queue_status_chart" style="height:250px;"></div>
+                                                id="queue_status_chart" style="height:350px;"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -205,7 +205,7 @@
                                     <div class="row chart">
                                         <div class="col-md-12">
                                             <div class="d-flex justify-content-center align-items-center"
-                                                id="queue_status_chart_talk" style="height:250px;"></div>
+                                                id="queue_status_chart_talk" style="height:350px;"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -242,9 +242,9 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-8">
 
-                            <div class="card card-primary" style="min-height: 405px">
+                            <div class="card card-primary" style="min-height: 440px">
                                 <div class="card-header">
                                     <h3 class="card-title"><i class="fa-solid fa-gauge"></i> สายที่รออยู่ในคิว ( Call
                                         Waiting ) </h3>
@@ -308,7 +308,7 @@
                         </div>
                         <div class="col-md-4">
 
-                            <div class="card card-primary" style="max-height: 405px">
+                            <div class="card card-primary" style="max-height: 440px">
                                 <div class="card-header">
                                     <h3 class="card-title"><i class="fa-solid fa-gauge"></i> ระดับการให้บริการ ( Service
                                         Level )</h3>
