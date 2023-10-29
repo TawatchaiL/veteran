@@ -184,9 +184,7 @@
         if (selectedMonth > currentMonth || (selectedMonth === currentMonth && selectedDate.getDate() > currentDate.getDate())) {
             age--;
         }
-
-        alert(age);
-        //console.log("Age is: " + age);
+        $("#Addage").val(age);
     });
 
         var table = $('#Listview').DataTable({

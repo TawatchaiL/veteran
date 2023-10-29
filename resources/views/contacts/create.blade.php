@@ -142,7 +142,7 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> อายุ:</strong>
-                                                    {!! Form::text('age', null, ['id' => 'Addage', 'placeholder' => 'อายุ', 'class' => 'form-control','readonly' => true]) !!}
+                                                    {!! Form::text('Addage', null, ['id' => 'Addage', 'placeholder' => 'อายุ', 'class' => 'form-control','readonly' => true]) !!}
                                                 </div>
                                             </div>
                                         </div>
