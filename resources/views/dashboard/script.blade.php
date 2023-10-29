@@ -706,8 +706,10 @@
                 active_call[phone_number] = 1;
                 status = set_status('hold', '');
             } else if (res.status == 1) {
-
+                delete warp_total[phone_number];
+                delete pause_total[phone_number];
                 ready_total[phone_number] = 1;
+
                 if (res.lastpause === '0') {
                     if (res.lastcall === '0') {
                         loginTime = new Date($('#' + phone_number + '_login').val()).getTime() / 1000;
@@ -871,6 +873,8 @@
         div_queue_status_chart.setOption(queue_status_chart(waiting_total));
         div_queue_status_chart_talk.setOption(queue_status_chart(active_call));
         window.addEventListener('resize', div_agent_status_chart.resize);
+        window.addEventListener('resize', div_queue_status_chart.resize);
+        window.addEventListener('resize', div_queue_status_chart_talk.resize);
 
         setInterval(function() {
             offline_list.forEach(element => {
