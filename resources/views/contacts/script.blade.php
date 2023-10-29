@@ -163,15 +163,6 @@
             changeYear: true,
             yearRange: '1980:2050',
         });
-        //$(".Addbirthday").datepicker({
-            /*  onSelect: function() {
-                 table.draw();
-             }, */
-        //    dateFormat: 'yy-mm-dd',
-        //    changeMonth: true,
-        //    changeYear: true,
-        //    yearRange: '1980:2050',
-        //});
 
         $("#Addbirthday").on("change", function() {
             var selectedDate = new Date($(this).val());

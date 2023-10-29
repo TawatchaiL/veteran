@@ -287,17 +287,9 @@
     $(document).ready(function() {
         positionCards();
 
-        $.datepicker.setDefaults($.datepicker.regional['en']);
-        $(".birthdayp").datepicker({
-            /*  onSelect: function() {
-                 table.draw();
-             }, */
-            dateFormat: 'yy-mm-dd',
-            changeMonth: true,
-            changeYear: true,
-            yearRange: '1980:2050',
-        });
-        $(".AddDatep").datepicker({
+        $.datepickerp.setDefaults($.datepicker.regional['en']);
+
+        $(".AddDatep").datepickerp({
             /*  onSelect: function() {
                  table.draw();
              }, */
