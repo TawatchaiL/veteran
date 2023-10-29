@@ -287,8 +287,10 @@
     $(document).ready(function() {
         positionCards();
         
-        $.datepickerp.setDefaults($.datepicker.regional['en']);
-        $(".AddDatep").datepickerp({
+        $.datepicker.setDefaults($.datepicker.regional['en']);
+        alert('OK');
+        $(".AddDatep").datepicker({
+            alert('OK2');
             /*  onSelect: function() {
                 table.draw();
             }, */
