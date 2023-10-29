@@ -282,7 +282,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-7">
 
                             <div class="card card-primary" style="min-height: 405px">
                                 <div class="card-header">
@@ -347,7 +347,7 @@
 
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-5">
 
                             <div class="card card-primary" style="min-height: 405px">
                                 <div class="card-header">
