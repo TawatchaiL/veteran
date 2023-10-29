@@ -165,12 +165,12 @@ class DashboardController extends Controller
                     <span class="sr-only">Toggle Dropdown</span>
                     </button>
                     <div class="dropdown-menu" role="menu">
-                    <a class="dropdown-item btn-pause" href="javascript:void(0)" data-rowid="' . $agent->phone . '"><i class="fa-solid fa-user-clock"></i> พัก</a>
-                    <a class="dropdown-item btn-unpause" href="javascript:void(0)" data-rowid="' . $agent->phone . '"><i class="fa-solid fa-user-check"></i> รับสายต่อ</a>
-                    <a class="dropdown-item btn-spy" href="javascript:void(0)" data-rowid="' . $agent->phone . '"><i class="fa-solid fa-user-secret"></i> แทรกสาย</a>
-                    <a class="dropdown-item btn-insert" href="javascript:void(0)" data-rowid="' . $agent->phone . '"><i class="fa-solid fa-user-group"></i> ดักฟัง</a>
+                    <button class="btn dropdown-item btn-pause"  data-rowid="' . $agent->phone . '"><i class="fa-solid fa-user-clock"></i> พัก</button>
+                    <button class="btn dropdown-item btn-unpause"  data-rowid="' . $agent->phone . '"><i class="fa-solid fa-user-check"></i> รับสายต่อ</button>
+                    <button class="btn dropdown-item btn-spy"  data-rowid="' . $agent->phone . '"><i class="fa-solid fa-user-secret"></i> แทรกสาย</button>
+                    <button class="btn dropdown-item btn-insert"  data-rowid="' . $agent->phone . '"><i class="fa-solid fa-user-group"></i> ดักฟัง</button>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item btn-logoff" href="javascript:void(0)" data-rowid="' . $agent->phone . '"><i class="fa-solid fa-user-xmark"></i> เตะออกจากระบบ</a>
+                    <abutton class="btn dropdown-item btn-logoff"  data-rowid="' . $agent->phone . '"><i class="fa-solid fa-user-xmark"></i> เตะออกจากระบบ</abutton>
                     </div>
                     </div>';
                 }
