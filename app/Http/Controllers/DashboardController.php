@@ -120,6 +120,17 @@ class DashboardController extends Controller
 
     public function getAgentList(Request $request)
     {
+        $queue_names = DB::connection('remote_connection')
+            ->table('asterisk.queues_config')
+            ->select('extension', 'descr')
+            ->get();
+
+        $queue_name_array = [];
+
+        foreach ($queue_names as $queue) {
+            $queue_name_array[$queue->extension] = $queue->descr;
+        }
+
         $agent_names = DB::connection('remote_connection')
             ->table('call_center.agent')
             ->select('id', 'name')
@@ -174,6 +185,7 @@ class DashboardController extends Controller
         return response()->json([
             'html' => $html,
             'agent_arr' => $agent_arr,
+            'queue_arr' => $queue_name_array,
             'agent_offline' => $agent_offline,
             'offline' => $offline
         ]);
