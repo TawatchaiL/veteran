@@ -159,6 +159,8 @@ class DashboardController extends Controller
                     $div = $agent->id;
                 } else {
                     $div = $agent->phone;
+                    $button = '<button type="button" data-rowid="' . $agent->phone . '" class="btn btn-sm btn-warning btn-pause"><i class="fa-solid fa-user-clock"></i> พัก / รับสายต่อ</button>
+                    <button type="button" data-rowid="' . $agent->phone . '" class="btn btn-sm btn-danger btn-logoff"><<i class="fa-solid fa-user-xmark"></i> เตะออกจากระบบ</button>';
                 }
 
                 $html .= '<tr id="' . $div . '">
@@ -173,7 +175,7 @@ class DashboardController extends Controller
                     <td style="text-align: center;" id="' . $div . '_duration">00:00:00</td>
                     <td style="text-align: center;" id="' . $div . '_src"></td>
                     <td style="text-align: center;" id="' . $div . '_queue"></td>
-                    <td><img src="' . asset('images/pauseagent.gif') . '"><img src="' . asset('images/logout-icon.png') . '"></td>
+                    <td>' . $button . '</td>
                 </tr>';
                 $x++;
 

@@ -468,13 +468,8 @@
     }
 
     let duration_miltime = (timestampMilliseconds) => {
-        // Get the current timestamp for the present time (in seconds)
         let presentTimestamp = Math.floor(Date.now() / 1000);
-
-        // Convert the provided timestamp in milliseconds to seconds
         let timestampSeconds = Math.floor(timestampMilliseconds);
-
-        // Calculate the time difference in seconds
         let timeDifference = presentTimestamp - timestampSeconds;
 
         let hours = Math.floor(timeDifference / 3600);
@@ -510,7 +505,6 @@
 
             },
             error: function(xhr, status, error) {
-                // Handle errors
             }
         });
     }
