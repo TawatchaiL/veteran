@@ -174,7 +174,6 @@
         });
 
         $("#Addbirthday").on("change", function() {
-            alert('OK');
         var selectedDate = new Date($(this).val());
         var currentDate = new Date();
         var age = currentDate.getFullYear() - selectedDate.getFullYear();
