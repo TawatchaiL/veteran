@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('tname',50)->nullable();
             $table->string('fname')->nullable();
             $table->string('lname')->nullable();
+            $table->string('sex',10)->nullable();
+            $table->date('birthday')->nullable();
+            $table->string('age')->nullable();
             $table->string('bloodgroup',5)->nullable();
             $table->string('homeno')->nullable();
             $table->string('moo')->nullable();
