@@ -30,7 +30,9 @@
     }
 
     .hide_text {
-        opacity: 0 !important;
+        opacity: 0.5 !important;
+        background-color: #eef3cd;
+        border-radius: 10px;
     }
 
     .toast-top-center {

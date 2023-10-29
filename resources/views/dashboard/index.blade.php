@@ -222,12 +222,28 @@
                                 <div class="card-body">
                                     <div class="chart">
                                         <div class="col-md-12 text-center">
-                                            <h6>สายที่รับภายใน
-
-                                                20 วินาที <i class="fa fa-edit" data-toggle="modal"
-                                                    data-target="#configModal4071"></i>
-                                            </h6>
-                                            <div id="agent_sla_chart" style="height:300px;"></div>
+                                            <div class="d-flex justify-content-center align-items-center">
+                                                <h6 class="mb-0 mr-3">สายที่รับภายใน</h6>
+                                                <select style="width: 75px" class="form-control" name="modal_sla"
+                                                    id="modal_sla">
+                                                    <option value="5">5</option>
+                                                    <option value="10">10</option>
+                                                    <option value="15">15</option>
+                                                    <option value="20">20</option>
+                                                    <option value="25">25</option>
+                                                    <option value="30">30</option>
+                                                    <option value="35">35</option>
+                                                    <option value="40">40</option>
+                                                    <option value="45">45</option>
+                                                    <option value="50">50</option>
+                                                    <option value="55">55</option>
+                                                    <option value="60">60</option>
+                                                </select>
+                                                <h6 class="ml-3 mb-0">วินาที</h6>
+                                            </div>
+                                            <!-- {{-- <i class="fa fa-edit" data-toggle="modal" data-target="#configModal"></i> --}} -->
+                                            <div class="d-flex justify-content-center align-items-center"
+                                                id="agent_sla_chart" style="height:300px;"></div>
                                             <div class="float-right "><i class="fa fa-refresh fa-spin "></i> <span
                                                     class="c" id="30"></span> sec</div>
                                         </div>
@@ -257,7 +273,8 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="col-md-12">
-                                        <div id="agent_status_chart" style="height:350px;"></div>
+                                        <div class="d-flex justify-content-center align-items-center"
+                                            id="agent_status_chart" style="height:350px;"></div>
                                     </div>
                                 </div>
 
@@ -378,7 +395,8 @@
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td colspan="4" style="text-align: center;"> ยังไม่มีสายรอในคิว</td>
+                                                                <td colspan="4" style="text-align: center;">
+                                                                    ยังไม่มีสายรอในคิว</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -402,7 +420,7 @@
 
     </section>
 
-    <div class="modal fade" id="configModal4071" tabindex="-1" role="dialog" aria-labelledby="configModalLabel"
+    <div class="modal fade" id="configModal" tabindex="-1" role="dialog" aria-labelledby="configModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -412,24 +430,24 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="" method="POST" id="4071">
+                <form action="" id="4071">
                     <div class="modal-body">
-                        <label for="sla">เลือกระดับเวลาการให้บริการที่ต้องการแสดงผล :</label>
-                        <select class="form-control" name="modal_sla" name="modal_sla">
+                        {{--  <label for="sla">เลือกระดับเวลาการให้บริการที่ต้องการแสดงผล :</label>
+                        <select class="form-control" name="modal_sla" id="modal_sla">
                             <option value="5">5s</option>
                             <option value="10">10s</option>
                             <option value="15">15s</option>
-                            <option value="20" selected>20s</option>
+                            <option value="20">20s</option>
                             <option value="25">25s</option>
                             <option value="30">30s</option>
                         </select>
-                        <input type="hidden" name="queuesla" value="4071">
+                        <input type="hidden" name="queuesla" value="4071"> --}}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal"><i
                                 class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
-                        <button type="submit" class="btn btn-primary" id="save"><i class="fas fa-download"></i>
-                            บันทึก</button>
+                        {{--  <button type="submit" class="btn btn-primary" id="set_sla"><i class="fas fa-download"></i>
+                            บันทึก</button> --}}
                     </div>
                 </form>
             </div>
