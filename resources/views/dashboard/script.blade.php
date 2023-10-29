@@ -205,7 +205,8 @@
 
 
     let queue_status_chart = (data, state) => {
-        if (state == 0) {
+        console.log(state)
+        if (state === 0) {
             state_text = 'รอสาย'
         } else {
             state_text = 'สนทนา'
