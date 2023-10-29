@@ -754,7 +754,7 @@
             //active_div.html(num_active);
             div_agent_status_chart.setOption(agent_status_chart(num_offline, num_ready, num_pause, num_warp,
                 num_busy));
-            div_queue_status_chart_talk.setOption(queue_status_chart(num_active), 'สนทนา');
+            div_queue_status_chart_talk.setOption(queue_status_chart(num_active, 'สนทนา'));
 
         }
 
@@ -765,7 +765,7 @@
         await delete active_call[response.data.connectedlinenum];
         if (Object.keys(active_call).length === 0) {
             //active_div.html('0');
-            div_queue_status_chart_talk.setOption(queue_status_chart(0), 'สนทนา');
+            div_queue_status_chart_talk.setOption(queue_status_chart(0, 'สนทนา'));
         }
     });
 
@@ -774,7 +774,7 @@
         await delete active_call[response.data.connectedlinenum];
         if (Object.keys(active_call).length === 0) {
             //active_div.html('0');
-            div_queue_status_chart_talk.setOption(queue_status_chart(0), 'สนทนา');
+            div_queue_status_chart_talk.setOption(queue_status_chart(0, 'สนทนา'));
         }
     });
 
@@ -792,13 +792,13 @@
             await delete ring_call[extractedNumber];
             if (Object.keys(ring_call).length === 0) {
                 //waiting_div.html('0');
-                div_queue_status_chart.setOption(queue_status_chart(0), 'รอสาย');
+                div_queue_status_chart.setOption(queue_status_chart(0, 'รอสาย'));
             }
 
             await delete active_call[extractedNumber];
             if (Object.keys(active_call).length === 0) {
                 //active_div.html('0');
-                div_queue_status_chart_talk.setOption(queue_status_chart(0), 'สนทนา');
+                div_queue_status_chart_talk.setOption(queue_status_chart(0, 'สนทนา'));
             }
 
 
@@ -839,7 +839,7 @@
         await delete active_call[response.data.connectedlinenum];
         if (Object.keys(active_call).length === 0) {
             //active_div.html('0');
-            div_queue_status_chart_talk.setOption(queue_status_chart(0), 'สนทนา');
+            div_queue_status_chart_talk.setOption(queue_status_chart(0, 'สนทนา'));
         }
     });
 
@@ -849,7 +849,7 @@
         if (Object.keys(waitData).length === 0) {
             tableBody.html(
                 '<tr><td colspan="5" style="text-align: center;">ยังไม่มีสายรอในคิว</td></tr>');
-            div_queue_status_chart.setOption(queue_status_chart(0), 'รอสาย');
+            div_queue_status_chart.setOption(queue_status_chart(0, 'รอสาย'));
         }
         //console.log(waitData);
     });
@@ -882,8 +882,8 @@
         setInterval(sla_count, 30000);
 
         div_agent_status_chart.setOption(agent_status_chart(0, 0, 0, 0));
-        div_queue_status_chart.setOption(queue_status_chart(waiting_total), 'รอสาย');
-        div_queue_status_chart_talk.setOption(queue_status_chart(active_call), 'สนทนา');
+        div_queue_status_chart.setOption(queue_status_chart(waiting_total, 'รอสาย'));
+        div_queue_status_chart_talk.setOption(queue_status_chart(active_call, 'สนทนา'));
         window.addEventListener('resize', div_agent_status_chart.resize);
         window.addEventListener('resize', div_queue_status_chart.resize);
         window.addEventListener('resize', div_queue_status_chart_talk.resize);
