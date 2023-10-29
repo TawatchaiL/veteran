@@ -587,7 +587,6 @@
 
         let html = '';
         waiting_total = 0;
-        ring_call = {};
 
         dataArray.forEach((item) => {
             let parsedNumber = parseInt(item.wait);
@@ -608,13 +607,12 @@
                     <td>${item.connectedlinenum === 'unknown' ? '-' : item.connectedlinenum}</td>
                 </tr>`;
             waiting_total++;
-            ring_call[item.calleridnum] = 1
             //}
         });
 
         tableBody.html(html);
         //waiting_div.html(waiting_total);
-        div_queue_status_chart.setOption(queue_status_chart(Object.keys(ring_call).length, Object.keys(active_call)
+        div_queue_status_chart.setOption(queue_status_chart(waiting_total, Object.keys(active_call)
             .length));
 
     });
