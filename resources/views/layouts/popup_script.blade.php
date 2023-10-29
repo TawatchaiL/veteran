@@ -284,11 +284,10 @@
         });
     }
 
-    $.datepickerp.setDefaults($.datepicker.regional['en']);
-
     $(document).ready(function() {
         positionCards();
-        //birth day change
+        
+        $.datepickerp.setDefaults($.datepicker.regional['en']);
         $(".AddDatep").datepickerp({
             /*  onSelect: function() {
                 table.draw();
@@ -298,6 +297,7 @@
             changeYear: true,
             yearRange: '1980:2050',
         });
+        //birth day change
         $(document).on("change", ".AddDatep", function() {
         alert('OK');
         });
