@@ -140,10 +140,10 @@ class CasesController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
-        $valifield =  Validator::make($request->all(), [
+        $valifield =  [
             'caseid1' => 'required|string|max:100',
             'casedetail' => 'required|string|max:200',
-        ]);
+        ];
         $valimess = [
             'caseid1.required' => 'กรุณาเลือกประเภทการติดต่อ',
             'casedetail.required' => 'กรุณากรอกรายละเอียดที่ติดต่อ',
@@ -172,10 +172,10 @@ class CasesController extends Controller
     public function update(Request $request, $id)
     {
         $user = Auth::user();
-        $valifield =  Validator::make($request->all(), [
+        $valifield =  [
             'caseid1' => 'required|string|max:100',
             'casedetail' => 'required|string|max:200',
-        ]);
+        ];
         $valimess = [
             'caseid1.required' => 'กรุณาเลือกประเภทการติดต่อ',
             'casedetail.required' => 'กรุณากรอกรายละเอียดที่ติดต่อ',
