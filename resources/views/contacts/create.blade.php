@@ -131,13 +131,13 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> วันเกิด:</strong>
-                                                    {!! Form::text('lname', null, ['id' => 'Addlname', 'placeholder' => 'นามสกุล', 'class' => 'form-control']) !!}
+                                                    {!! Form::text('birthday', null, ['id' => 'Addbirthday', 'placeholder' => 'วันเกิด', 'class' => 'form-control']) !!}
                                                 </div>
                                             </div>
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> อายุ:</strong>
-                                                    {!! Form::text('lname', null, ['id' => 'Addlname', 'placeholder' => 'นามสกุล', 'class' => 'form-control']) !!}
+                                                    {!! Form::text('age', null, ['id' => 'Addage', 'placeholder' => 'อายุ', 'class' => 'form-control','readonly' => true]) !!}
                                                 </div>
                                             </div>
                                         </div>
