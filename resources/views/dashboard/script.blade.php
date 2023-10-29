@@ -439,7 +439,7 @@
                         mcallapp = data[5][1];
                         mcallstate = data[6][1].replace(/\s*\(\d+\)/, '');
 
-                        console.log(mcallqueue);
+                        console.log(mcallapp);
 
                         set_state(exten, mcallexten, mcalluniq, mcallapp, mcallstate);
                     //}
