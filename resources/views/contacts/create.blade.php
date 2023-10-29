@@ -116,6 +116,34 @@
                                             </div>
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
+                                                    <strong><i class="fas fa-user-tie"></i> เพศ:</strong>
+                                                    <select style="width: 100%;"
+                                                        class="select2 form-control"
+                                                        id="Addsex" name="Addsex">
+                                                        <option value="">กรุณาเลือก</option>
+                                                        <option value="ชาย">ชาย</option>
+                                                        <option value="หญิง">หญิง</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <strong><i class="fas fa-user-tie"></i> วันเกิด:</strong>
+                                                    {!! Form::text('lname', null, ['id' => 'Addlname', 'placeholder' => 'นามสกุล', 'class' => 'form-control']) !!}
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <strong><i class="fas fa-user-tie"></i> อายุ:</strong>
+                                                    {!! Form::text('lname', null, ['id' => 'Addlname', 'placeholder' => 'นามสกุล', 'class' => 'form-control']) !!}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                                <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> กรุ๊ปเลือด:</strong>
                                                     <select style="width: 100%;"
                                                         class="select2 form-control"
