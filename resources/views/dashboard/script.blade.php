@@ -421,7 +421,6 @@
         let uniq = '';
         let mstrArray = [];
         let calls_active = 0;
-        waiting_total = 0;
 
 
         $.get(`${api_serv}/chans/` + exten, async (data, status) => {
