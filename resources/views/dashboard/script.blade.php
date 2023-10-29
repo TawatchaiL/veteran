@@ -587,6 +587,7 @@
 
         let html = '';
         waiting_total = 0;
+        ring_call = {};
 
         dataArray.forEach((item) => {
             let parsedNumber = parseInt(item.wait);
