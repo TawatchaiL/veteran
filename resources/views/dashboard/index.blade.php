@@ -175,7 +175,7 @@
                                     <div class="row chart">
                                         <div class="col-md-12">
                                             <div class="d-flex justify-content-center align-items-center"
-                                                id="queue_status_chart" style="height:370px;"></div>
+                                                id="queue_status_chart" style="height:350px;"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -203,7 +203,7 @@
                                     <div class="row chart">
                                         <div class="col-md-12">
                                             <div class="d-flex justify-content-center align-items-center"
-                                                id="queue_status_chart_talk" style="height:370px;"></div>
+                                                id="queue_status_chart_talk" style="height:350px;"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -262,7 +262,7 @@
                                             <div class="card">
                                                 <div class="card-header">
                                                     <h3 class="card-title"></h3>
-                                                    <div class="card-tools">
+                                                   {{--  <div class="card-tools">
                                                         <div class="input-group input-group-sm" style="width: 150px;">
                                                             <input type="text" name="table_search"
                                                                 class="form-control float-right" placeholder="Search">
@@ -272,7 +272,7 @@
                                                                 </button>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
 
                                                 <div class="card-body table-responsive p-0">
@@ -378,7 +378,7 @@
                                             <div class="card">
                                                 <div class="card-header">
                                                     <h3 class="card-title"></h3>
-                                                    <div class="card-tools">
+                                                   {{--  <div class="card-tools">
                                                         <div class="input-group input-group-sm" style="width: 150px;">
                                                             <input type="text" name="table_search"
                                                                 class="form-control float-right" placeholder="Search">
@@ -388,7 +388,7 @@
                                                                 </button>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
 
                                                 <div class="card-body table-responsive p-0">
@@ -398,11 +398,11 @@
                                                             <tr>
                                                                 <th>#</th>
                                                                 <th>ชื่อ Agent</th>
-                                                                <th>หมายเลข Agent</th>
+                                                                <th align="center">หมายเลข Agent</th>
                                                                 <th>สถานะ</th>
-                                                                <th>ระยะเวลา</th>
-                                                                <th>หมายเลขผู้โทร</th>
-                                                                <th>Queue</th>
+                                                                <th align="center">ระยะเวลา</th>
+                                                                <th align="center">หมายเลขผู้โทร</th>
+                                                                <th align="center">Queue</th>
                                                                 <th></th>
                                                             </tr>
                                                         </thead>
