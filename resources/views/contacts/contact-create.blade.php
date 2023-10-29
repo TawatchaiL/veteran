@@ -72,7 +72,7 @@
                                     {!! Form::text('adddatep'.$cardid, date('Y-m-d'), [
                                         'id' => 'adddatep'.$cardid,
                                         'placeholder' => 'วันที่บันทึก',
-                                        'class' => 'AddDate form-control',
+                                        'class' => 'AddDatep form-control',
                                         'data-target' => '#reservationdate',
                                     ]) !!}
                                 </div>
@@ -133,7 +133,7 @@
                                     {!! Form::text('birthdayp'.$cardid, null, [
                                         'id' => 'birthdayp'.$cardid,
                                         'placeholder' => 'วันเกิด',
-                                        'class' => 'AddDate form-control birthdayp',
+                                        'class' => 'AddDatep form-control',
                                         'data-target' => '#reservationdate',
                                     ]) !!}
                                 </div>

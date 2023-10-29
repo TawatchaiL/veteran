@@ -297,7 +297,7 @@
             changeYear: true,
             yearRange: '1980:2050',
         });
-        $(".AddDate").datepicker({
+        $(".AddDatep").datepicker({
             /*  onSelect: function() {
                  table.draw();
              }, */
@@ -307,7 +307,7 @@
             yearRange: '1980:2050',
         });
         //birth day change
-        $(document).on("change", ".birthdayp", function() {
+        $(document).on("change", ".AddDatep", function() {
 alert('OK');
         });
         //casetype changes
