@@ -730,8 +730,8 @@
             let num_offline = offline_total;
 
             //active_div.html(num_active);
-            div_agent_status_chart.setOption(agent_status_chart(num_offline, num_ready, num_pause, num_warp,
-                num_busy));
+            /* div_agent_status_chart.setOption(agent_status_chart(num_offline, num_ready, num_pause, num_warp,
+                num_busy)); */
             div_queue_status_chart.setOption(queue_status_chart(Object.keys(ring_call).length, Object.keys(active_call)
                 .length));
         }
