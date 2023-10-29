@@ -432,12 +432,14 @@
 
                 $.get(`${api_serv}/chans_variable/` + chan[1], (data, status) => {
                     //if (storedOption == data[3][1]) {
-                        console.log(mcallqueue);
+
                         mcallexten = data[2][1];
                         mcallqueue = data[3][1];
                         mcalluniq = data[4][1];
                         mcallapp = data[5][1];
                         mcallstate = data[6][1].replace(/\s*\(\d+\)/, '');
+
+                        console.log(mcallqueue);
 
                         set_state(exten, mcallexten, mcalluniq, mcallapp, mcallstate);
                     //}
