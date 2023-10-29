@@ -810,11 +810,13 @@
                 var additionalData = {
                     hn: $('#hnp' + cardId).val(),
                     adddate: $('#adddatep' + cardId).val(),
+                    tname: $('#tnamep' + cardId).val(),
                     fname: $('#fnamep' + cardId).val(),
                     lname: $('#lnamep' + cardId).val(),
                     sex: $('#sexp' + cardId).val(),
                     birthday: $('#birthdayp' + cardId).val(),
                     age: $('#agep' + cardId).val(),
+                    bloodgroup: $('#bloodgroupp' + cardId).val(),
                     homeno: $('#homenop' + cardId).val(),
                     moo: $('#moop' + cardId).val(),
                     soi: $('#soip' + cardId).val(),
