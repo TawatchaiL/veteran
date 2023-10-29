@@ -727,6 +727,7 @@
             //let num_offline = offline_total - (num_busy + num_pause + num_ready)
             let num_offline = offline_total;
 
+            console.log(num_warp);
             //active_div.html(num_active);
             div_agent_status_chart.setOption(agent_status_chart(num_offline, num_ready, num_pause, num_warp,
                 num_busy));
