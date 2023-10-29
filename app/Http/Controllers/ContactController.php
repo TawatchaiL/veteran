@@ -806,7 +806,7 @@ class ContactController extends Controller
 
         $Crmcsae = new CrmCase();
         $Crmcsae->contact_id = $id;
-        //$Crmcsae->telno = $request->get('telno');
+        $Crmcsae->telno = $request->get('telno');
         $Crmcsae->casetype1 = $request->get('casetype1');
         $Crmcsae->caseid1 = $request->get('caseid1');
         if ($request->get('casetype2') != "") {
