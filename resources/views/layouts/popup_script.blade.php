@@ -283,7 +283,7 @@
             }
         });
     }
-    
+
     $.datepickerp.setDefaults($.datepicker.regional['en']);
 
 $(".AddDatep").datepickerp({
@@ -295,13 +295,13 @@ $(".AddDatep").datepickerp({
     changeYear: true,
     yearRange: '1980:2050',
 });
-//birth day change
-$(document).on("change", ".AddDatep", function() {
-alert('OK');
-});
+
     $(document).ready(function() {
         positionCards();
-
+        //birth day change
+        $(document).on("change", ".AddDatep", function() {
+        alert('OK');
+        });
         //casetype changes
         $(document).on("change", ".casetypechang", function() {
             var cardId = $(this).data("tabid");
