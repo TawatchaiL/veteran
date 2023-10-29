@@ -175,29 +175,8 @@
                                 <div class="card-body">
                                     <div class="chart">
                                         <div class="col-md-12">
-                                            <div class="row">
-                                                &nbsp;
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6 col-sm-6 col-xs-6">
-                                                    <!-- class alignment ไว้ทำ css -->
-                                                    <div class="alignment info-box-number" id="">
-                                                        <p class="font" id="waiting_total">0</p>
-                                                    </div>
-                                                    <p class="alignment"><i class="fa-solid fa-user-clock"></i>
-                                                        รอสาย</p>
-                                                </div>
-
-                                                <div class="col-md-6 col-sm-6 col-xs-6">
-                                                    <div class="alignment info-box-number">
-                                                        <p class="font" id="active_total">0</p>
-                                                    </div>
-                                                    <p class="alignment"><i class="fa-solid fa-phone-volume"></i>
-                                                        สนทนา</p>
-                                                </div>
-
-                                            </div>
-                                            <div class="" style="visibility: collapse;">block</div>
+                                            <div class="d-flex justify-content-center align-items-center"
+                                            id="queue_status_chart" style="height:350px;"></div>
                                         </div>
                                     </div>
                                 </div>

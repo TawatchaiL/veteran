@@ -204,6 +204,56 @@
     }
 
 
+    let queue_status_chart = (wait, talk) => {
+        let option = {
+            title: {
+                show: false,
+                text: 'Referer of a Website',
+                subtext: 'Fake Data',
+                left: 'center'
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                top: '5%',
+                left: 'center'
+            },
+            series: [{
+                name: 'Status',
+                color: ['#f46884', '#46c184'],
+                type: 'pie',
+                selectedMode: 'single',
+                radius: '60%',
+                center: ['50%', '55%'],
+                data: [{
+                        value: wait,
+                        name: 'กำลังรอสาย'
+                    },
+                    {
+                        value: talk,
+                        name: 'กำลังสนทนา'
+                    },
+                ],
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }]
+        };
+        return option;
+    }
+
+
     let sla_count = () => {
         var n = $('.c').attr('id');
         var c = n;
@@ -231,6 +281,7 @@
     const selectSLA = $('#modal_sla');
     const div_agent_status_chart = echarts.init(document.getElementById("agent_status_chart"));
     const div_agent_sla_chart = echarts.init(document.getElementById("agent_sla_chart"));
+    const div_queue_status_chart = echarts.init(document.getElementById("queue_sla_chart"));
 
     const dashboard_serv = '{{ config('asterisk.toolbar_serv.address') }}';
     const api_serv = '{{ config('asterisk.api_serv.address') }}';
@@ -542,7 +593,9 @@
         });
 
         tableBody.html(html);
-        waiting_div.html(waiting_total);
+        //waiting_div.html(waiting_total);
+        div_queue_status_chart.setOption(queue_status_chart(waiting_total,Object.keys(active_call).length));
+
     });
 
     socket.on('queuemember', async (response) => {
@@ -655,9 +708,10 @@
             //let num_offline = offline_total - (num_busy + num_pause + num_ready)
             let num_offline = offline_total;
 
-            active_div.html(num_active);
+            //active_div.html(num_active);
             div_agent_status_chart.setOption(agent_status_chart(num_offline, num_ready, num_pause, num_warp,
                 num_busy));
+            div_queue_status_chart.setOption(queue_status_chart(waiting_total,Object.keys(active_call).length));
         }
 
     });
@@ -666,7 +720,8 @@
     socket.on('agentcomplete', async (response) => {
         await delete active_call[response.data.connectedlinenum];
         if (Object.keys(active_call).length === 0) {
-            active_div.html('0');
+            //active_div.html('0');
+            div_queue_status_chart.setOption(queue_status_chart(waiting_total,Object.keys(active_call).length));
         }
     });
 
@@ -674,7 +729,8 @@
         //console.log(response)
         await delete active_call[response.data.connectedlinenum];
         if (Object.keys(active_call).length === 0) {
-            active_div.html('0');
+            //active_div.html('0');
+            div_queue_status_chart.setOption(queue_status_chart(waiting_total,Object.keys(active_call).length));
         }
     });
 
@@ -698,6 +754,8 @@
             if (Object.keys(active_call).length === 0) {
                 active_div.html('0');
             }
+
+            div_queue_status_chart.setOption(queue_status_chart(Object.keys(ring_call).length,Object.keys(active_call).length));
         } else {
             console.log("Extension property is missing in the data object");
         }
