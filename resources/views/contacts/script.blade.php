@@ -166,22 +166,39 @@
 
         $("#Addbirthday").on("change", function() {
             var selectedDate = new Date($(this).val());
-        var currentDate = new Date();
-        var years = currentDate.getFullYear() - selectedDate.getFullYear();
-        var months = currentDate.getMonth() - selectedDate.getMonth();
-        var days = currentDate.getDate() - selectedDate.getDate();
-        if (days < 0) {
-            months--;
-            days += new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
-        }
+            var currentDate = new Date();
+            var years = currentDate.getFullYear() - selectedDate.getFullYear();
+            var months = currentDate.getMonth() - selectedDate.getMonth();
+            var days = currentDate.getDate() - selectedDate.getDate();
+            if (days < 0) {
+                months--;
+                days += new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
+            }
 
-        if (months < 0) {
-            years--;
-            months += 12;
-        }
-        $("#Addage").val(years + " ปี " + months + " เดือน " + days + " วัน");
-        //$("#Addage").val(age);
-    });
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+            $("#Addage").val(years + " ปี " + months + " เดือน " + days + " วัน");
+        });
+
+        $("#Editbirthday").on("change", function() {
+            var selectedDate = new Date($(this).val());
+            var currentDate = new Date();
+            var years = currentDate.getFullYear() - selectedDate.getFullYear();
+            var months = currentDate.getMonth() - selectedDate.getMonth();
+            var days = currentDate.getDate() - selectedDate.getDate();
+            if (days < 0) {
+                months--;
+                days += new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
+            }
+
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+            $("#Editage").val(years + " ปี " + months + " เดือน " + days + " วัน");
+        });
 
         var table = $('#Listview').DataTable({
             ajax: {
