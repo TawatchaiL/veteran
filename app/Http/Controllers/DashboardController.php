@@ -160,7 +160,9 @@ class DashboardController extends Controller
                 } else {
                     $div = $agent->phone;
                     $button = '<button type="button" data-rowid="' . $agent->phone . '" class="btn btn-sm btn-warning btn-pause"><i class="fa-solid fa-user-clock"></i> พัก / รับสายต่อ</button>
-                    <button type="button" data-rowid="' . $agent->phone . '" class="btn btn-sm btn-danger btn-logoff"><<i class="fa-solid fa-user-xmark"></i> เตะออกจากระบบ</button>';
+                    <button type="button" data-rowid="' . $agent->phone . '" class="btn btn-sm btn-warning btn-spy"><i class="fa-solid fa-user-secret"></i> ดักฟัง</button>
+                    <button type="button" data-rowid="' . $agent->phone . '" class="btn btn-sm btn-warning btn-insert"><i class="fa-solid fa-user-clock"></i> แทรกสาย </button>
+                    <button type="button" data-rowid="' . $agent->phone . '" class="btn btn-sm btn-danger btn-logoff"><i class="fa-solid fa-user-group"></i> เตะออกจากระบบ</button>';
                 }
 
                 $html .= '<tr id="' . $div . '">
