@@ -710,6 +710,7 @@
         dbv[res.destcalleridnum + '_cid'] = res.calleridnum;
         dbv[res.destcalleridnum + '_time'] = res.timestamp;
         $('#' + res.destcalleridnum + '_src').html(res.calleridnum);
+        $('#' + res.destcalleridnum + '_queue').html(res.queue);
     });
 
     socket.on('agentconnect', async (response) => {
