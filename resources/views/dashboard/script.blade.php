@@ -607,6 +607,7 @@
                     <td>${item.connectedlinenum === 'unknown' ? '-' : item.connectedlinenum}</td>
                 </tr>`;
             waiting_total++;
+            ring_call[item.calleridnum] = 1
             //}
         });
 
