@@ -355,7 +355,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-12">
 
                             <div class="card card-primary" style="min-height: 405px">
                                 <div class="card-header">
