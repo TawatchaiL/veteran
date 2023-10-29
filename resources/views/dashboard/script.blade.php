@@ -499,12 +499,14 @@
 
             let formattedTime =
                 `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-            //if (item.queue == storedOption) {
+            //chek if specific queue waiting
+                //if (item.queue == storedOption) {
                 html += `
                 <tr>
                     <td>${item.position}</td>
                     <td><i class="fa-solid fa-user-clock"></i> ${item.calleridnum}</td>
                     <td>${formattedTime}</td>
+                    <td>${item.queue}</td>
                     <td>${item.connectedlinenum === 'unknown' ? '-' : item.connectedlinenum}</td>
                 </tr>`;
                 waiting_total++;

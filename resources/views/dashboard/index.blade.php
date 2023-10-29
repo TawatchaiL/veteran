@@ -390,6 +390,7 @@
                                                                 <th>#</th>
                                                                 <th>หมายเลขผู้โทร</th>
                                                                 <th>ระยะเวลารอสาย</th>
+                                                                <th>Queue</th>
                                                                 <th>Agent</th>
                                                             </tr>
                                                         </thead>
