@@ -219,7 +219,7 @@
         }, 1000);
     }
 
-    const changeText = (div,text) => {
+    const changeText = (div, text) => {
         div.classList.add('hide_text');
         setTimeout(function() {
             div.innerHTML = text;
@@ -371,10 +371,10 @@
                         avg_wait.html(item.avg_hold_time)
                         total_talk.html(item.total_talk_time)
                         max_wait.html(item.max_hold_time) */
-                        changeText(avg_talk,item.avg_talk_time)
-                        changeText(avg_wait,item.avg_hold_time)
-                        changeText(total_talk,item.total_talk_time)
-                        changeText(max_wait,item.max_hold_time)
+                        changeText(avg_talk, item.avg_talk_time)
+                        changeText(avg_wait, item.avg_hold_time)
+                        changeText(total_talk, item.total_talk_time)
+                        changeText(max_wait, item.max_hold_time)
                     }
                 });
             },
@@ -412,6 +412,7 @@
 
 
     let call_list = (exten) => {
+        const storedOption = localStorage.getItem('selectedOption');
         let mcallprofile = '';
         let mcallexten = '';
         let luniq = '';
@@ -428,13 +429,16 @@
                 let phone = exten;
 
                 $.get(`${api_serv}/chans_variable/` + chan[1], (data, status) => {
-                    mcallexten = data[2][1];
-                    mcallqueue = data[3][1];
-                    mcalluniq = data[4][1];
-                    mcallapp = data[5][1];
-                    mcallstate = data[6][1].replace(/\s*\(\d+\)/, '');
+                    if (storedOption == mcallqueue = data[3][1]) {
+                        mcallexten = data[2][1];
+                        mcallqueue = data[3][1];
+                        mcalluniq = data[4][1];
+                        mcallapp = data[5][1];
+                        mcallstate = data[6][1].replace(/\s*\(\d+\)/, '');
 
-                    set_state(exten, mcallexten, mcalluniq, mcallapp, mcallstate);
+                        set_state(exten, mcallexten, mcalluniq, mcallapp, mcallstate);
+                    }
+
                 });
                 /* if (mcallapp !== 'AppQueue') {
                     calls_active += 1;
@@ -738,7 +742,7 @@
         setInterval(updateSLAData, 30000);
         sla_count();
         setInterval(function() {
-           sla_count();
+            sla_count();
         }, 30000);
 
         div_agent_status_chart.setOption(agent_status_chart(0, 0, 0, 0));
