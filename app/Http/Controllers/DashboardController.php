@@ -59,7 +59,7 @@ class DashboardController extends Controller
             ->with(['queue' => $queue]);
     }
 
-    public function dashboard_avg_data()
+    public function dashboard_avg_data(Request $request)
     {
         $queue = DB::connection('remote_connection')
             ->table('call_center.call_entry_today')
@@ -70,6 +70,7 @@ class DashboardController extends Controller
                 DB::raw('SUM(duration) as total_talk_time'),
                 DB::raw('MAX(duration_wait) as max_hold_time')
             )
+            ->where('queue_number', $request->get('queue'))
             ->groupBy('queue_number')
             ->get();
 
@@ -102,6 +103,7 @@ class DashboardController extends Controller
                 DB::raw('(COUNT(*) / (SELECT COUNT(*) FROM call_entry_today)) * 100 AS percentage'),
             )
             ->where('duration_wait', '<=', $sla) // Use the <= operator
+            ->where('queue_number', $request->get('queue'))
             ->groupBy('queue_number')
             ->get();
 

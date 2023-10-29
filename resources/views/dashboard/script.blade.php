@@ -357,6 +357,7 @@
             url: '{{ route('dashboard.avg_data') }}',
             method: 'POST',
             data: {
+                queue: storedOption,
                 _token: token,
             },
             success: (data) => {
@@ -394,6 +395,7 @@
             url: '{{ route('dashboard.sla_data') }}',
             method: 'POST',
             data: {
+                queue: storedOption,
                 sla: storedSLA,
                 _token: token,
             },
