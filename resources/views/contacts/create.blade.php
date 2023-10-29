@@ -131,7 +131,12 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> วันเกิด:</strong>
-                                                    {!! Form::text('birthday', null, ['id' => 'Addbirthday', 'placeholder' => 'วันเกิด', 'class' => 'form-control']) !!}
+                                                    {!! Form::text('addbirthday', null, [
+                                                        'id' => 'Addbirthday',
+                                                        'placeholder' => 'วันเกิด',
+                                                        'class' => 'AddDate form-control',
+                                                        'data-target' => '#reservationdate',
+                                                    ]) !!}
                                                 </div>
                                             </div>
                                             <div class="col-xs-6 col-sm-6 col-md-6">
