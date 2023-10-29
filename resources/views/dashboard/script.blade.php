@@ -262,6 +262,7 @@
     let completed_call = '';
     let abandoned_call = '';
     let abandonedPercentage = '';
+    let waiting_total = 0;
 
     let duration_time = (timestamp) => {
         let presentTimestamp = Math.floor(Date.now() / 1000);
@@ -515,7 +516,6 @@
         dataArray.sort((a, b) => parseInt(a.position) - parseInt(b.position));
 
         let html = '';
-        let waiting_total = 0;
 
         dataArray.forEach((item) => {
             let parsedNumber = parseInt(item.wait);
