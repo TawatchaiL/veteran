@@ -612,7 +612,7 @@
 
         tableBody.html(html);
         //waiting_div.html(waiting_total);
-        div_queue_status_chart.setOption(queue_status_chart(waiting_total, Object.keys(active_call)
+        div_queue_status_chart.setOption(queue_status_chart(Object.keys(ring_call).length, Object.keys(active_call)
             .length));
 
     });
@@ -730,7 +730,7 @@
             //active_div.html(num_active);
             div_agent_status_chart.setOption(agent_status_chart(num_offline, num_ready, num_pause, num_warp,
                 num_busy));
-            div_queue_status_chart.setOption(queue_status_chart(waiting_total, Object.keys(active_call)
+            div_queue_status_chart.setOption(queue_status_chart(Object.keys(ring_call).length, Object.keys(active_call)
                 .length));
         }
 
@@ -741,7 +741,7 @@
         await delete active_call[response.data.connectedlinenum];
         if (Object.keys(active_call).length === 0) {
             //active_div.html('0');
-            div_queue_status_chart.setOption(queue_status_chart(waiting_total, Object.keys(active_call)
+            div_queue_status_chart.setOption(queue_status_chart(Object.keys(ring_call).length, Object.keys(active_call)
                 .length));
         }
     });
@@ -769,12 +769,12 @@
             $('#' + extractedNumber + '_queue').html('');
             await delete ring_call[extractedNumber];
             if (Object.keys(ring_call).length === 0) {
-                waiting_div.html('0');
+                //waiting_div.html('0');
             }
 
             await delete active_call[extractedNumber];
             if (Object.keys(active_call).length === 0) {
-                active_div.html('0');
+                //active_div.html('0');
             }
 
             div_queue_status_chart.setOption(queue_status_chart(Object.keys(ring_call).length, Object.keys(
