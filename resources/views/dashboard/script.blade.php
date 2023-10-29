@@ -718,6 +718,7 @@
         dbv[res.destcalleridnum + '_cid'] = res.calleridnum;
         dbv[res.destcalleridnum + '_time'] = Math.floor(Date.now() / 1000);
         $('#' + res.destcalleridnum + '_src').html(res.calleridnum);
+        $('#' + res.destcalleridnum + '_queue').html(res.queue);
     });
 
 
@@ -772,9 +773,7 @@
         updateSLAData();
         setInterval(updateSLAData, 30000);
         sla_count();
-        setInterval(function() {
-            sla_count();
-        }, 30000);
+        setInterval(sla_count, 30000);
 
         div_agent_status_chart.setOption(agent_status_chart(0, 0, 0, 0));
         window.addEventListener('resize', div_agent_status_chart.resize);
