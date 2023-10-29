@@ -644,7 +644,7 @@
 
             $('#' + phone_number + '_status').html(status);
             $('#' + phone_number + '_phone').html(phone_status);
-            $('#' + phone_number + '_queue').html(res.queue);
+            //$('#' + phone_number + '_queue').html(res.queue);
             $('#' + phone_number + '_duration').html(state_dur);
 
             let num_ring = Object.keys(ring_call).length;
