@@ -398,11 +398,11 @@
                                                             <tr>
                                                                 <th>#</th>
                                                                 <th>ชื่อ Agent</th>
-                                                                <th align="center">หมายเลข Agent</th>
+                                                                <th style="text-align: center;">หมายเลข Agent</th>
                                                                 <th>สถานะ</th>
-                                                                <th align="center">ระยะเวลา</th>
-                                                                <th align="center">หมายเลขผู้โทร</th>
-                                                                <th align="center">Queue</th>
+                                                                <th style="text-align: center;">ระยะเวลา</th>
+                                                                <th style="text-align: center;">หมายเลขผู้โทร</th>
+                                                                <th style="text-align: center;">Queue</th>
                                                                 <th></th>
                                                             </tr>
                                                         </thead>
