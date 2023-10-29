@@ -269,7 +269,7 @@
                     borderRadius: 8,
                     offsetCenter: [0, '35%'],
                     valueAnimation: true,
-                    formatter: function(value) {
+                    formatter: function(value, state) {
                         return `{unit|${state}} {value| ${value.toFixed(0)} }{unit|สาย}`;
                     },
                     rich: {
