@@ -366,7 +366,7 @@
 
                         <div class="col-md-3">
 
-                            <div class="card card-primary" style="min-height: 440px">
+                            <div class="card card-primary" style="min-height: 405px">
                                 <div class="card-header">
                                     <h3 class="card-title"><i class="fa-solid fa-gauge"></i> สถานะเรียลไทม์ ( Queue Status
                                         )
@@ -394,7 +394,7 @@
                                                         <p class="font" id="waiting_total">0</p>
                                                     </div>
                                                     <p class="alignment"><i class="fa-solid fa-user-clock"></i>
-                                                        กำลังรอสาย</p>
+                                                        รอสาย</p>
                                                 </div>
 
                                                 <div class="col-md-6 col-sm-6 col-xs-6">
@@ -402,7 +402,7 @@
                                                         <p class="font" id="active_total">0</p>
                                                     </div>
                                                     <p class="alignment"><i class="fa-solid fa-phone-volume"></i>
-                                                        กำลังสนทนา</p>
+                                                        สนทนา</p>
                                                 </div>
 
                                             </div>
