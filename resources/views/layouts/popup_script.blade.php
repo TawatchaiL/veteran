@@ -288,16 +288,15 @@
         positionCards();
         
         $.datepicker.setDefaults($.datepicker.regional['en']);
-        alert('OK');
-        $(".AddDatep").datepicker({
-            /*  onSelect: function() {
-                table.draw();
-            }, */
-            dateFormat: 'yy-mm-dd',
-            changeMonth: true,
-            changeYear: true,
-            yearRange: '1980:2050',
+        $(document).on("focus", ".AddDatep", function(){
+            $(this).datepicker({
+                dateFormat: 'yy-mm-dd',
+                changeMonth: true,
+                changeYear: true,
+                yearRange: '1980:2050'
+            });
         });
+
         //birth day change
         $(document).on("change", ".AddDatep", function() {
         alert('OK');
