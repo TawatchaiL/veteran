@@ -173,10 +173,16 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <div class="chart">
+                                    <div class="row chart">
                                         <div class="col-md-12">
                                             <div class="d-flex justify-content-center align-items-center"
                                             id="queue_status_chart" style="height:350px;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row chart">
+                                        <div class="col-md-12">
+                                            <div class="d-flex justify-content-center align-items-center"
+                                            id="queue_status_chart_talk" style="height:350px;"></div>
                                         </div>
                                     </div>
                                 </div>

@@ -204,7 +204,7 @@
     }
 
 
-    let queue_status_chart = (wait) => {
+    let queue_status_chart = (data) => {
         /* const gaugeData = [{
                 value: wait,
                 name: 'รอสาย',
@@ -272,7 +272,7 @@
                     offsetCenter: [0, '70%']
                 },
                 data: [{
-                    value: wait,
+                    value: data,
                     name: 'รอสาย',
                 }]
             }]
@@ -309,6 +309,7 @@
     const div_agent_status_chart = echarts.init(document.getElementById("agent_status_chart"));
     const div_agent_sla_chart = echarts.init(document.getElementById("agent_sla_chart"));
     const div_queue_status_chart = echarts.init(document.getElementById("queue_status_chart"));
+    const div_queue_status_chart_talk = echarts.init(document.getElementById("queue_status_chart_talk"));
 
     const dashboard_serv = '{{ config('asterisk.toolbar_serv.address') }}';
     const api_serv = '{{ config('asterisk.api_serv.address') }}';
@@ -739,8 +740,8 @@
             //active_div.html(num_active);
             div_agent_status_chart.setOption(agent_status_chart(num_offline, num_ready, num_pause, num_warp,
                 num_busy));
-            /*  div_queue_status_chart.setOption(queue_status_chart(Object.keys(ring_call).length, Object.keys(active_call)
-                 .length)); */
+            div_queue_status_chart_talk.setOption(queue_status_chart(num_active));
+
         }
 
     });
@@ -750,9 +751,7 @@
         await delete active_call[response.data.connectedlinenum];
         if (Object.keys(active_call).length === 0) {
             //active_div.html('0');
-            div_queue_status_chart.setOption(queue_status_chart(Object.keys(ring_call).length, Object.keys(
-                    active_call)
-                .length));
+            div_queue_status_chart_talk.setOption(queue_status_chart(0));
         }
     });
 
@@ -761,8 +760,7 @@
         await delete active_call[response.data.connectedlinenum];
         if (Object.keys(active_call).length === 0) {
             //active_div.html('0');
-            div_queue_status_chart.setOption(queue_status_chart(waiting_total, Object.keys(active_call)
-                .length));
+            div_queue_status_chart_talk.setOption(queue_status_chart(0));
         }
     });
 
@@ -786,6 +784,7 @@
             await delete active_call[extractedNumber];
             if (Object.keys(active_call).length === 0) {
                 //active_div.html('0');
+                div_queue_status_chart_talk.setOption(queue_status_chart(0));
             }
 
 
@@ -825,7 +824,8 @@
         //console.log(response);
         await delete active_call[response.data.connectedlinenum];
         if (Object.keys(active_call).length === 0) {
-            active_div.html('0');
+            //active_div.html('0');
+            div_queue_status_chart_talk.setOption(queue_status_chart(0));
         }
     });
 
@@ -869,6 +869,7 @@
 
         div_agent_status_chart.setOption(agent_status_chart(0, 0, 0, 0));
         div_queue_status_chart.setOption(queue_status_chart(waiting_total));
+        div_queue_status_chart_talk.setOption(queue_status_chart(active_call));
         window.addEventListener('resize', div_agent_status_chart.resize);
 
         setInterval(function() {
