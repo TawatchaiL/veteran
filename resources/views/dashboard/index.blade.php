@@ -155,7 +155,7 @@
 
                     <div class="row">
 
-                        <div class="col-md-4">
+                        <div class="col-md-3">
 
                             <div class="card card-primary" style="min-height: 440px">
                                 <div class="card-header">
@@ -176,13 +176,36 @@
                                     <div class="row chart">
                                         <div class="col-md-12">
                                             <div class="d-flex justify-content-center align-items-center"
-                                            id="queue_status_chart" style="height:200px;"></div>
+                                            id="queue_status_chart" style="height:250px;"></div>
                                         </div>
                                     </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+
+                            <div class="card card-primary" style="min-height: 440px">
+                                <div class="card-header">
+                                    <h3 class="card-title"><i class="fa-solid fa-gauge"></i> สถานะเรียลไทม์ ( Queue Status
+                                        )
+                                    </h3>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                                            <i class="fas fa-expand"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+
+                                    </div>
+                                </div>
+                                <div class="card-body">
+
                                     <div class="row chart">
                                         <div class="col-md-12">
                                             <div class="d-flex justify-content-center align-items-center"
-                                            id="queue_status_chart_talk" style="height:200px;"></div>
+                                            id="queue_status_chart_talk" style="height:250px;"></div>
                                         </div>
                                     </div>
                                 </div>
