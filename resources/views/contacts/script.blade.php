@@ -174,17 +174,22 @@
         });
 
         $("#Addbirthday").on("change", function() {
-        var selectedDate = new Date($(this).val());
+            var selectedDate = new Date($(this).val());
         var currentDate = new Date();
-        var age = currentDate.getFullYear() - selectedDate.getFullYear();
-
-        var currentMonth = currentDate.getMonth();
-        var selectedMonth = selectedDate.getMonth();
-
-        if (selectedMonth > currentMonth || (selectedMonth === currentMonth && selectedDate.getDate() > currentDate.getDate())) {
-            age--;
+        var years = currentDate.getFullYear() - selectedDate.getFullYear();
+        var months = currentDate.getMonth() - selectedDate.getMonth();
+        var days = currentDate.getDate() - selectedDate.getDate();
+        if (days < 0) {
+            months--;
+            days += new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
         }
-        $("#Addage").val(age);
+
+        if (months < 0) {
+            years--;
+            months += 12;
+        }
+        $("#Addage").val(years + " ปี " + months + " เดือน " + days + " วัน");
+        //$("#Addage").val(age);
     });
 
         var table = $('#Listview').DataTable({
