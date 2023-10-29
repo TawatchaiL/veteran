@@ -155,7 +155,7 @@
 
                     <div class="row">
 
-                        <div class="col-md-3">
+                        <div class="col-md-4">
 
                             <div class="card card-primary" style="min-height: 440px">
                                 <div class="card-header">
@@ -176,14 +176,14 @@
                                     <div class="row chart">
                                         <div class="col-md-12">
                                             <div class="d-flex justify-content-center align-items-center"
-                                            id="queue_status_chart" style="height:250px;"></div>
+                                                id="queue_status_chart" style="height:250px;"></div>
                                         </div>
                                     </div>
                                 </div>
 
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
 
                             <div class="card card-primary" style="min-height: 440px">
                                 <div class="card-header">
@@ -205,13 +205,43 @@
                                     <div class="row chart">
                                         <div class="col-md-12">
                                             <div class="d-flex justify-content-center align-items-center"
-                                            id="queue_status_chart_talk" style="height:250px;"></div>
+                                                id="queue_status_chart_talk" style="height:250px;"></div>
                                         </div>
                                     </div>
                                 </div>
 
                             </div>
                         </div>
+
+
+                        <div class="col-md-4">
+
+                            <div class="card card-primary" style="max-height: 440px">
+                                <div class="card-header">
+                                    <h3 class="card-title"><i class="fa-solid fa-gauge"></i> สถานะพนักงานรับสาย ( Agent
+                                        Status )
+                                    </h3>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                                            <i class="fas fa-expand"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="col-md-12">
+                                        <div class="d-flex justify-content-center align-items-center"
+                                            id="agent_status_chart" style="height:350px;"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-5">
 
                             <div class="card card-primary" style="min-height: 405px">
@@ -276,14 +306,12 @@
 
                             </div>
                         </div>
+                        <div class="col-md-4">
 
-                        <div class="col-md-3">
-
-                            <div class="card card-primary" style="max-height: 440px">
+                            <div class="card card-primary" style="max-height: 405px">
                                 <div class="card-header">
-                                    <h3 class="card-title"><i class="fa-solid fa-gauge"></i> สถานะพนักงานรับสาย ( Agent
-                                        Status )
-                                    </h3>
+                                    <h3 class="card-title"><i class="fa-solid fa-gauge"></i> ระดับการให้บริการ ( Service
+                                        Level )</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="maximize">
                                             <i class="fas fa-expand"></i>
@@ -295,9 +323,33 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <div class="col-md-12">
-                                        <div class="d-flex justify-content-center align-items-center"
-                                            id="agent_status_chart" style="height:350px;"></div>
+                                    <div class="chart">
+                                        <div class="col-md-12 text-center">
+                                            <div class="d-flex justify-content-center align-items-center">
+                                                <h6 class="mb-0 mr-3">สายที่รับภายใน</h6>
+                                                <select style="width: 75px" class="form-control" name="modal_sla"
+                                                    id="modal_sla">
+                                                    <option value="5">5</option>
+                                                    <option value="10">10</option>
+                                                    <option value="15">15</option>
+                                                    <option value="20">20</option>
+                                                    <option value="25">25</option>
+                                                    <option value="30">30</option>
+                                                    <option value="35">35</option>
+                                                    <option value="40">40</option>
+                                                    <option value="45">45</option>
+                                                    <option value="50">50</option>
+                                                    <option value="55">55</option>
+                                                    <option value="60">60</option>
+                                                </select>
+                                                <h6 class="ml-3 mb-0">วินาที</h6>
+                                            </div>
+                                            <!-- {{-- <i class="fa fa-edit" data-toggle="modal" data-target="#configModal"></i> --}} -->
+                                            <div class="d-flex justify-content-center align-items-center"
+                                                id="agent_sla_chart" style="height:300px;"></div>
+                                            <div class="float-right "><i class="fa fa-refresh fa-spin "></i> <span
+                                                    class="c" id="30"></span> sec</div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -370,55 +422,7 @@
 
                             </div>
                         </div>
-                        <div class="col-md-4">
 
-                            <div class="card card-primary" style="max-height: 405px">
-                                <div class="card-header">
-                                    <h3 class="card-title"><i class="fa-solid fa-gauge"></i> ระดับการให้บริการ ( Service
-                                        Level )</h3>
-                                    <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="maximize">
-                                            <i class="fas fa-expand"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
-
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="chart">
-                                        <div class="col-md-12 text-center">
-                                            <div class="d-flex justify-content-center align-items-center">
-                                                <h6 class="mb-0 mr-3">สายที่รับภายใน</h6>
-                                                <select style="width: 75px" class="form-control" name="modal_sla"
-                                                    id="modal_sla">
-                                                    <option value="5">5</option>
-                                                    <option value="10">10</option>
-                                                    <option value="15">15</option>
-                                                    <option value="20">20</option>
-                                                    <option value="25">25</option>
-                                                    <option value="30">30</option>
-                                                    <option value="35">35</option>
-                                                    <option value="40">40</option>
-                                                    <option value="45">45</option>
-                                                    <option value="50">50</option>
-                                                    <option value="55">55</option>
-                                                    <option value="60">60</option>
-                                                </select>
-                                                <h6 class="ml-3 mb-0">วินาที</h6>
-                                            </div>
-                                            <!-- {{-- <i class="fa fa-edit" data-toggle="modal" data-target="#configModal"></i> --}} -->
-                                            <div class="d-flex justify-content-center align-items-center"
-                                                id="agent_sla_chart" style="height:300px;"></div>
-                                            <div class="float-right "><i class="fa fa-refresh fa-spin "></i> <span
-                                                    class="c" id="30"></span> sec</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
 
 
                     </div>
