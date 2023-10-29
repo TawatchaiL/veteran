@@ -868,6 +868,7 @@
         setInterval(sla_count, 30000);
 
         div_agent_status_chart.setOption(agent_status_chart(0, 0, 0, 0));
+        div_queue_status_chart.setOption(0);
         window.addEventListener('resize', div_agent_status_chart.resize);
 
         setInterval(function() {
