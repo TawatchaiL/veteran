@@ -112,15 +112,48 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> นามสกุล:</strong>
-                                                    {!! Form::text('elname', NULL, ['id' => 'Editlname', 'placeholder' => 'นามสกุล', 'class' => 'form-control']) !!}
+                                                    {!! Form::text('Editlname', null, ['id' => 'Editlname', 'placeholder' => 'นามสกุล', 'class' => 'form-control']) !!}
                                                 </div>
                                             </div>
+                                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <strong><i class="fas fa-user-tie"></i> เพศ:</strong>
+                                                    <select style="width: 100%;"
+                                                        class="select2 form-control"
+                                                        id="Editsex" name="Editsex">
+                                                        <option value="">กรุณาเลือก</option>
+                                                        <option value="ชาย">ชาย</option>
+                                                        <option value="หญิง">หญิง</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <strong><i class="fas fa-user-tie"></i> วันเกิด:</strong>
+                                                    {!! Form::text('Editbirthday', null, [
+                                                        'id' => 'Editbirthday',
+                                                        'placeholder' => 'วันเกิด',
+                                                        'class' => 'AddDate form-control',
+                                                        'data-target' => '#reservationdate',
+                                                    ]) !!}
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <strong><i class="fas fa-user-tie"></i> อายุ:</strong>
+                                                    {!! Form::text('Editage', null, ['id' => 'Editage', 'placeholder' => 'อายุ', 'class' => 'form-control','readonly' => true]) !!}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> กรุ๊ปเลือด:</strong>
                                                     <select style="width: 100%;"
                                                         class="select2 form-control"
-                                                        id="Editbloodgroup" name="ebloodgroup">
+                                                        id="Editbloodgroup" name="Editbloodgroup">
                                                         <option value="">กรุณาเลือก</option>
                                                         <option value="A">A</option>
                                                         <option value="B">B</option>

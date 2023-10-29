@@ -491,6 +491,9 @@
                         $('#Edittname').val(res.datax.datac.tname);
                         $('#Editfname').val(res.datax.datac.fname);
                         $('#Editlname').val(res.datax.datac.lname);
+                        $('#Editsex').val(res.datax.datac.sex);
+                        $('#Editbirthday').val(res.datax.datac.birthday);
+                        $('#Editage').val(res.datax.datac.age);
                         $('#Editbloodgroup').val(res.datax.datac.bloodgroup);
                         $('#Edithomeno').val(res.datax.datac.homeno);
                         $('#Editmoo').val(res.datax.datac.moo);
@@ -575,6 +578,9 @@
                 tname: $('#Edittname').val(),
                 fname: $('#Editfname').val(),
                 lname: $('#Editlname').val(),
+                sex: $('#Editsex').val(),
+                birthday: $('#Editbirthday').val(),
+                age: $('#Editage').val(),
                 bloodgroup: $('#Editbloodgroup').val(),
                 homeno: $('#Edithomeno').val(),
                 moo: $('#Editmoo').val(),
