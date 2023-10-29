@@ -780,6 +780,7 @@
             await delete ring_call[extractedNumber];
             if (Object.keys(ring_call).length === 0) {
                 //waiting_div.html('0');
+                div_queue_status_chart.setOption(queue_status_chart(0));
             }
 
             await delete active_call[extractedNumber];
@@ -787,8 +788,7 @@
                 //active_div.html('0');
             }
 
-            /*  div_queue_status_chart.setOption(queue_status_chart(Object.keys(ring_call).length, Object.keys(
-                 active_call).length)); */
+
         } else {
             console.log("Extension property is missing in the data object");
         }
@@ -835,7 +835,7 @@
         if (Object.keys(waitData).length === 0) {
             tableBody.html(
                 '<tr><td colspan="5" style="text-align: center;">ยังไม่มีสายรอในคิว</td></tr>');
-            waiting_div.html('0');
+            div_queue_status_chart.setOption(queue_status_chart(0));
         }
         //console.log(waitData);
     });
