@@ -710,7 +710,7 @@
         dbv[res.destcalleridnum + '_cid'] = res.calleridnum;
         dbv[res.destcalleridnum + '_time'] = res.timestamp;
         $('#' + res.destcalleridnum + '_src').html(res.calleridnum);
-        $('#' + res.destcalleridnum + '_queue').html(res.queue);
+        $('#' + res.destcalleridnum + '_queue').html(queue_name[res.queue]);
     });
 
     socket.on('agentconnect', async (response) => {
@@ -719,7 +719,7 @@
         dbv[res.destcalleridnum + '_cid'] = res.calleridnum;
         dbv[res.destcalleridnum + '_time'] = Math.floor(Date.now() / 1000);
         $('#' + res.destcalleridnum + '_src').html(res.calleridnum);
-        $('#' + res.destcalleridnum + '_queue').html(res.queue);
+        $('#' + res.destcalleridnum + '_queue').html(queue_name[res.queue]);
     });
 
 
