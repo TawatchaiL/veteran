@@ -294,6 +294,7 @@
     }
 
 
+
     let sla_count = () => {
         var n = $('.c').attr('id');
         var c = n;
