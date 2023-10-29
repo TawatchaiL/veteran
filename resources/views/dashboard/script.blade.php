@@ -475,7 +475,6 @@
 
             });
             /* active_div.html(calls_active); */
-            waiting_div.html(waiting_total);
         });
     };
 
