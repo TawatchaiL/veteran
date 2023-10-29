@@ -173,6 +173,23 @@
             yearRange: '1980:2050',
         });
 
+        $("#Addbirthday").on("change", function() {
+            alert('OK');
+        var selectedDate = new Date($(this).val());
+        var currentDate = new Date();
+        var age = currentDate.getFullYear() - selectedDate.getFullYear();
+
+        var currentMonth = currentDate.getMonth();
+        var selectedMonth = selectedDate.getMonth();
+
+        if (selectedMonth > currentMonth || (selectedMonth === currentMonth && selectedDate.getDate() > currentDate.getDate())) {
+            age--;
+        }
+
+        alert(age);
+        //console.log("Age is: " + age);
+    });
+
         var table = $('#Listview').DataTable({
             ajax: {
                 data: function(d) {
