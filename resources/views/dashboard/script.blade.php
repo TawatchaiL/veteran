@@ -204,8 +204,8 @@
     }
 
 
-    let queue_status_chart = (wait, talk) => {
-        const gaugeData = [{
+    let queue_status_chart = (wait) => {
+        /* const gaugeData = [{
                 value: wait,
                 name: 'รอสาย',
                 title: {
@@ -225,47 +225,56 @@
                     offsetCenter: ['0%', '95%']
                 }
             }
-        ];
+        ]; */
         let option = {
             series: [{
                 type: 'gauge',
                 min: 0,
                 max: 10,
+                progress: {
+                    show: true,
+                    width: 18
+                },
+                axisLine: {
+                    lineStyle: {
+                        width: 18
+                    }
+                },
+                axisTick: {
+                    show: false
+                },
+                splitLine: {
+                    length: 15,
+                    lineStyle: {
+                        width: 2,
+                        color: '#999'
+                    }
+                },
+                axisLabel: {
+                    distance: 25,
+                    color: '#999',
+                    fontSize: 20
+                },
                 anchor: {
                     show: true,
                     showAbove: true,
-                    size: 18,
+                    size: 25,
                     itemStyle: {
-                        color: '#FAC858'
+                        borderWidth: 10
                     }
                 },
-                pointer: {
-                    icon: 'path://M2.9,0.7L2.9,0.7c1.4,0,2.6,1.2,2.6,2.6v115c0,1.4-1.2,2.6-2.6,2.6l0,0c-1.4,0-2.6-1.2-2.6-2.6V3.3C0.3,1.9,1.4,0.7,2.9,0.7z',
-                    width: 8,
-                    length: '80%',
-                    offsetCenter: [0, '8%']
-                },
-                progress: {
-                    show: true,
-                    overlap: true,
-                    roundCap: true
-                },
-                axisLine: {
-                    roundCap: true
-                },
-                data: gaugeData,
                 title: {
-                    fontSize: 14
+                    show: false
                 },
                 detail: {
-                    width: 40,
-                    height: 14,
-                    fontSize: 14,
-                    color: '#fff',
-                    backgroundColor: 'inherit',
-                    borderRadius: 3,
-                    formatter: '{value}%'
-                }
+                    valueAnimation: true,
+                    fontSize: 80,
+                    offsetCenter: [0, '70%']
+                },
+                data: [{
+                    value: wait,
+                    name: 'รอสาย',
+                }]
             }]
         };
         return option;
@@ -612,8 +621,7 @@
 
         tableBody.html(html);
         //waiting_div.html(waiting_total);
-        /* div_queue_status_chart.setOption(queue_status_chart(waiting_total, Object.keys(active_call)
-            .length)); */
+        div_queue_status_chart.setOption(queue_status_chart(waiting_total));
 
     });
 
@@ -731,8 +739,8 @@
             //active_div.html(num_active);
             div_agent_status_chart.setOption(agent_status_chart(num_offline, num_ready, num_pause, num_warp,
                 num_busy));
-           /*  div_queue_status_chart.setOption(queue_status_chart(Object.keys(ring_call).length, Object.keys(active_call)
-                .length)); */
+            /*  div_queue_status_chart.setOption(queue_status_chart(Object.keys(ring_call).length, Object.keys(active_call)
+                 .length)); */
         }
 
     });
@@ -742,7 +750,8 @@
         await delete active_call[response.data.connectedlinenum];
         if (Object.keys(active_call).length === 0) {
             //active_div.html('0');
-            div_queue_status_chart.setOption(queue_status_chart(Object.keys(ring_call).length, Object.keys(active_call)
+            div_queue_status_chart.setOption(queue_status_chart(Object.keys(ring_call).length, Object.keys(
+                    active_call)
                 .length));
         }
     });
@@ -778,8 +787,8 @@
                 //active_div.html('0');
             }
 
-           /*  div_queue_status_chart.setOption(queue_status_chart(Object.keys(ring_call).length, Object.keys(
-                active_call).length)); */
+            /*  div_queue_status_chart.setOption(queue_status_chart(Object.keys(ring_call).length, Object.keys(
+                 active_call).length)); */
         } else {
             console.log("Extension property is missing in the data object");
         }
