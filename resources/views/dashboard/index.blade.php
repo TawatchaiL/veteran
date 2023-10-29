@@ -175,7 +175,7 @@
                                     <div class="row chart">
                                         <div class="col-md-12">
                                             <div class="d-flex justify-content-center align-items-center"
-                                                id="queue_status_chart" style="height:350px;"></div>
+                                                id="queue_status_chart" style="height:370px;"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -203,7 +203,7 @@
                                     <div class="row chart">
                                         <div class="col-md-12">
                                             <div class="d-flex justify-content-center align-items-center"
-                                                id="queue_status_chart_talk" style="height:350px;"></div>
+                                                id="queue_status_chart_talk" style="height:370px;"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -355,7 +355,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-12">
 
                             <div class="card card-primary" style="min-height: 405px">
                                 <div class="card-header">
