@@ -281,7 +281,7 @@
     const selectSLA = $('#modal_sla');
     const div_agent_status_chart = echarts.init(document.getElementById("agent_status_chart"));
     const div_agent_sla_chart = echarts.init(document.getElementById("agent_sla_chart"));
-    const div_queue_status_chart = echarts.init(document.getElementById("queue_sla_chart"));
+    const div_queue_status_chart = echarts.init(document.getElementById("queue_status_chart"));
 
     const dashboard_serv = '{{ config('asterisk.toolbar_serv.address') }}';
     const api_serv = '{{ config('asterisk.api_serv.address') }}';
