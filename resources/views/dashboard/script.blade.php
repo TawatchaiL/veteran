@@ -229,6 +229,8 @@
         let option = {
             series: [{
                 type: 'gauge',
+                min: 0,
+                max: 10,
                 anchor: {
                     show: true,
                     showAbove: true,
