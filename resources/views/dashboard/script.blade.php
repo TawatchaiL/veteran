@@ -421,6 +421,7 @@
         let uniq = '';
         let mstrArray = [];
         let calls_active = 0;
+        waiting_total = 0;
 
 
         $.get(`${api_serv}/chans/` + exten, async (data, status) => {
@@ -447,12 +448,14 @@
                             '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
                         state_color = 'card-danger';
                         check_box_state = 'disabled';
+                        waiting_total++;
                     } else if (strArray[4] == 'Up' && strArray[12] == '') {
                         state = 'กำลังรอสาย'
                         state_icon =
                             '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
                         state_color = 'card-danger';
                         check_box_state = 'disabled';
+                        waiting_total++;
                     } else if (strArray[4] == 'Up') {
                         active_call[chan[1]] = 1;
                         state = 'กำลังสนทนา'
@@ -469,6 +472,7 @@
 
             });
             /* active_div.html(calls_active); */
+            waiting_div.html(waiting_total);
         });
     };
 
