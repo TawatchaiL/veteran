@@ -286,19 +286,18 @@
 
     $.datepickerp.setDefaults($.datepicker.regional['en']);
 
-$(".AddDatep").datepickerp({
-    /*  onSelect: function() {
-         table.draw();
-     }, */
-    dateFormat: 'yy-mm-dd',
-    changeMonth: true,
-    changeYear: true,
-    yearRange: '1980:2050',
-});
-
     $(document).ready(function() {
         positionCards();
         //birth day change
+        $(".AddDatep").datepickerp({
+            /*  onSelect: function() {
+                table.draw();
+            }, */
+            dateFormat: 'yy-mm-dd',
+            changeMonth: true,
+            changeYear: true,
+            yearRange: '1980:2050',
+        });
         $(document).on("change", ".AddDatep", function() {
         alert('OK');
         });
