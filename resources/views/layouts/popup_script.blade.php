@@ -286,6 +286,15 @@
 
     $(document).ready(function() {
         positionCards();
+        $(".birthdayp").datepicker({
+            /*  onSelect: function() {
+                 table.draw();
+             }, */
+            dateFormat: 'yy-mm-dd',
+            changeMonth: true,
+            changeYear: true,
+            yearRange: '1980:2050',
+        });
         //birth day change
         $(document).on("change", ".birthdayp", function() {
 alert('OK');
