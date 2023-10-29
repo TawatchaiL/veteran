@@ -258,6 +258,7 @@
     let ready_total = {};
     let offline_total = 0;
     let offline_list = [];
+    let queue_name = [];
     let total_call = '';
     let completed_call = '';
     let abandoned_call = '';
@@ -319,6 +320,7 @@
 
                 $('#agent_list tbody').html(response.html);
                 offline_total = response.offline;
+                queue_name = response.queue_arr;
 
             },
             error: function(xhr, status, error) {
@@ -532,7 +534,7 @@
                     <td>${item.position}</td>
                     <td><i class="fa-solid fa-user-clock"></i> ${item.calleridnum}</td>
                     <td>${formattedTime}</td>
-                    <td>${item.queue}</td>
+                    <td>${queue_name[item.queue]}</td>
                     <td>${item.connectedlinenum === 'unknown' ? '-' : item.connectedlinenum}</td>
                 </tr>`;
                 waiting_total++;
