@@ -286,7 +286,7 @@
 
     $(document).ready(function() {
         positionCards();
-        
+        //datepicker
         $.datepicker.setDefaults($.datepicker.regional['en']);
         $(document).on("focus", ".AddDatep", function(){
             $(this).datepicker({
@@ -299,7 +299,22 @@
 
         //birth day change
         $(document).on("change", ".Birthdayp", function() {
-        alert('OK');
+            var selectedDate = new Date($(this).val());
+            var currentDate = new Date();
+            var tid = $(this).data("tid");
+            var years = currentDate.getFullYear() - selectedDate.getFullYear();
+            var months = currentDate.getMonth() - selectedDate.getMonth();
+            var days = currentDate.getDate() - selectedDate.getDate();
+            if (days < 0) {
+                months--;
+                days += new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
+            }
+
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+            $("#agep" + tid).val(years + " ปี " + months + " เดือน " + days + " วัน");
         });
         //casetype changes
         $(document).on("change", ".casetypechang", function() {
