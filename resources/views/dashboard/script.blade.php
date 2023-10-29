@@ -438,9 +438,6 @@
                         mcalluniq = data[4][1];
                         mcallapp = data[5][1];
                         mcallstate = data[6][1].replace(/\s*\(\d+\)/, '');
-
-                        console.log(mcallapp);
-
                         set_state(exten, mcallexten, mcalluniq, mcallapp, mcallstate);
                     //}
 
