@@ -711,6 +711,75 @@ class ContactController extends Controller
         }
 
 
+        $contact->update($contactd);
+        if (!empty($request->emergencyData)) {
+            foreach ($request->emergencyData as $edata) {
+                if ($edata['emertype'] == '') {
+                    $Crmemergency = new CrmPhoneEmergency();
+                    $Crmemergency->contact_id = $id;
+                    $Crmemergency->emergencyname = $edata['emergencyname'];
+                    $Crmemergency->emerrelation = $edata['emerrelation'];
+                    $Crmemergency->emerphone = $edata['emerphone'];
+                    $Crmemergency->agent = $user->id;
+                    $Crmemergency->save();
+                } else {
+                    $emerd = [
+                        'emergencyname' => $edata['emergencyname'],
+                        'emerrelation' => $edata['emerrelation'],
+                        'emerphone' => $edata['emerphone'],
+                        'agent' => $user->id,
+                    ];
+
+                    $emer = CrmPhoneEmergency::find($edata['emertype']);
+                    $emerlog = [
+                        'id' => $emer->id,
+                        'contact_id' => $emer->contact_id,
+                        'emergencyname' => $emer->emergencyname,
+                        'emerrelation' => $emer->emerrelation,
+                        'emerphone' => $emer->emerphone,
+                        'agent' => $emer->agent,
+                        'created_at' => $emer->created_at,
+                        'updated_at' => $emer->updated_at,
+                        'modifyaction' => 'edit',
+                        'modifyagent' => $user->id,
+                    ];
+                    CrmPhoneEmergencyLog::create($emerlog);
+                    $emer->update($emerd);
+                }
+            }
+        }
+
+        $Crmcsae = new CrmCase();
+        $Crmcsae->contact_id = $id;
+        $Crmcsae->telno = $request->get('telno');
+        $Crmcsae->casetype1 = $request->input('casetype1');
+        $Crmcsae->caseid1 = $request->input('caseid1');
+        if ($request->input('casetype2') != "") {
+            $Crmcsae->casetype2 = $request->input('casetype2');
+            $Crmcsae->caseid2 = $request->input('caseid2');
+        }
+        if ($request->input('casetype3') != "") {
+            $Crmcsae->casetype3 = $request->input('casetype3');
+            $Crmcsae->caseid3 = $request->input('caseid3');
+        }
+        if ($request->input('casetype4') != "") {
+            $Crmcsae->casetype4 = $request->input('casetype4');
+            $Crmcsae->caseid4 = $request->input('caseid4');
+        }
+        if ($request->input('casetype5') != "") {
+            $Crmcsae->casetype5 = $request->input('casetype5');
+            $Crmcsae->caseid5 = $request->input('caseid5');
+        }
+        if ($request->input('casetype6') != "") {
+            $Crmcsae->casetype6 = $request->input('casetype6');
+            $Crmcsae->caseid6 = $request->input('caseid6');
+        }
+        $Crmcsae->tranferstatus = $request->get('tranferstatus');
+        $Crmcsae->casedetail = $request->get('casedetail');
+        $Crmcsae->casestatus = $request->get('casestatus');
+        $Crmcsae->agent = $user->id;
+        $Crmcsae->save();
+
         //CrmIncoming::where('telno', $request->input('telno'))->update('status' => '2');
         DB::table('crm_incoming')->where('telno', $request->input('telno'))->update(['status' => '2']);
         //$income = CrmIncoming::find($edata['emertype']);
