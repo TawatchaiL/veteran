@@ -643,7 +643,7 @@
 
         tableBody.html(html);
         //waiting_div.html(waiting_total);
-        div_queue_status_chart.setOption(queue_status_chart(waiting_total, 0));
+        await div_queue_status_chart.setOption(queue_status_chart(waiting_total, 0));
 
     });
 
@@ -761,7 +761,7 @@
             //active_div.html(num_active);
             div_agent_status_chart.setOption(agent_status_chart(num_offline, num_ready, num_pause, num_warp,
                 num_busy));
-            div_queue_status_chart_talk.setOption(queue_status_chart(num_active, 1));
+            await div_queue_status_chart_talk.setOption(queue_status_chart(num_active, 1));
 
         }
 
@@ -772,7 +772,7 @@
         await delete active_call[response.data.connectedlinenum];
         if (Object.keys(active_call).length === 0) {
             //active_div.html('0');
-            div_queue_status_chart_talk.setOption(queue_status_chart(0, 1));
+            await div_queue_status_chart_talk.setOption(queue_status_chart(0, 1));
         }
     });
 
@@ -781,7 +781,7 @@
         await delete active_call[response.data.connectedlinenum];
         if (Object.keys(active_call).length === 0) {
             //active_div.html('0');
-            div_queue_status_chart_talk.setOption(queue_status_chart(0, 1));
+            await div_queue_status_chart_talk.setOption(queue_status_chart(0, 1));
         }
     });
 
@@ -799,13 +799,13 @@
             await delete ring_call[extractedNumber];
             if (Object.keys(ring_call).length === 0) {
                 //waiting_div.html('0');
-                div_queue_status_chart.setOption(queue_status_chart(0, 0));
+                await div_queue_status_chart.setOption(queue_status_chart(0, 0));
             }
 
             await delete active_call[extractedNumber];
             if (Object.keys(active_call).length === 0) {
                 //active_div.html('0');
-                div_queue_status_chart_talk.setOption(queue_status_chart(0, 1));
+                await div_queue_status_chart_talk.setOption(queue_status_chart(0, 1));
             }
 
 
@@ -846,7 +846,7 @@
         await delete active_call[response.data.connectedlinenum];
         if (Object.keys(active_call).length === 0) {
             //active_div.html('0');
-            div_queue_status_chart_talk.setOption(queue_status_chart(0, 1));
+            await div_queue_status_chart_talk.setOption(queue_status_chart(0, 1));
         }
     });
 
@@ -856,7 +856,7 @@
         if (Object.keys(waitData).length === 0) {
             tableBody.html(
                 '<tr><td colspan="5" style="text-align: center;">ยังไม่มีสายรอในคิว</td></tr>');
-            div_queue_status_chart.setOption(queue_status_chart(0, 0));
+            await div_queue_status_chart.setOption(queue_status_chart(0, 0));
         }
         //console.log(waitData);
     });
@@ -871,7 +871,7 @@
     });
 
 
-    $(document).ready(() => {
+    $(document).ready(async () => {
 
         if (storedOption) {
             selectElement.val(storedOption);
@@ -889,8 +889,8 @@
         setInterval(sla_count, 30000);
 
         div_agent_status_chart.setOption(agent_status_chart(0, 0, 0, 0));
-        div_queue_status_chart.setOption(queue_status_chart(waiting_total, 0));
-        div_queue_status_chart_talk.setOption(queue_status_chart(active_call, 1));
+        await div_queue_status_chart.setOption(queue_status_chart(waiting_total, 0));
+        await div_queue_status_chart_talk.setOption(queue_status_chart(active_call, 1));
         window.addEventListener('resize', div_agent_status_chart.resize);
         window.addEventListener('resize', div_queue_status_chart.resize);
         window.addEventListener('resize', div_queue_status_chart_talk.resize);
