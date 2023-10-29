@@ -290,7 +290,6 @@
         $.datepicker.setDefaults($.datepicker.regional['en']);
         alert('OK');
         $(".AddDatep").datepicker({
-            alert('OK2');
             /*  onSelect: function() {
                 table.draw();
             }, */
