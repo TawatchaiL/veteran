@@ -759,6 +759,7 @@
             }
 
             get_agent(selectedOption);
+            updateSLAData();
         });
 
         /* setInterval(() => {
