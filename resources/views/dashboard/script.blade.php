@@ -516,6 +516,7 @@
         dataArray.sort((a, b) => parseInt(a.position) - parseInt(b.position));
 
         let html = '';
+        waiting_total = 0;
 
         dataArray.forEach((item) => {
             let parsedNumber = parseInt(item.wait);
