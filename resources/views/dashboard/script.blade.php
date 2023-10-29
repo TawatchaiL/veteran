@@ -535,7 +535,7 @@
         let phone_number = exts[1];
         const div_src = $('#' + phone_number + '_src');
 
-        //if (res.queue == storedOption) {
+        if (res.queue == storedOption) {
             if (res.status == 5 || res.status == 0) {
                 phone_status = `<span style="font-size: 1em; color: red;">
                     <i class="fa-solid fa-triangle-exclamation"></i></span> ` + phone_number
@@ -632,7 +632,7 @@
             active_div.html(num_active);
             div_agent_status_chart.setOption(agent_status_chart(num_offline, num_ready, num_pause, num_warp,
                 num_busy));
-        //}
+        }
 
     });
 
