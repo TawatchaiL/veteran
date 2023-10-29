@@ -204,83 +204,89 @@
     }
 
 
-    let queue_status_chart = (data) => {
-        /* const gaugeData = [{
-                value: wait,
-                name: 'รอสาย',
-                title: {
-                    offsetCenter: ['-40%', '80%']
-                },
-                detail: {
-                    offsetCenter: ['-40%', '95%']
-                }
-            },
-            {
-                value: talk,
-                name: 'สนทนา',
-                title: {
-                    offsetCenter: ['0%', '80%']
-                },
-                detail: {
-                    offsetCenter: ['0%', '95%']
-                }
-            }
-        ]; */
+    let queue_status_chart = (data, state) => {
         let option = {
             series: [{
                 type: 'gauge',
+                startAngle: 180,
+                endAngle: 0,
                 min: 0,
                 max: 10,
+                splitNumber: 5,
+                itemStyle: {
+                    color: '#58D9F9',
+                    shadowColor: 'rgba(0,138,255,0.45)',
+                    shadowBlur: 10,
+                    shadowOffsetX: 2,
+                    shadowOffsetY: 2
+                },
                 progress: {
                     show: true,
-                    width: 10
+                    roundCap: true,
+                    width: 12
+                },
+                pointer: {
+                    icon: 'path://M2090.36389,615.30999 L2090.36389,615.30999 C2091.48372,615.30999 2092.40383,616.194028 2092.44859,617.312956 L2096.90698,728.755929 C2097.05155,732.369577 2094.2393,735.416212 2090.62566,735.56078 C2090.53845,735.564269 2090.45117,735.566014 2090.36389,735.566014 L2090.36389,735.566014 C2086.74736,735.566014 2083.81557,732.63423 2083.81557,729.017692 C2083.81557,728.930412 2083.81732,728.84314 2083.82081,728.755929 L2088.2792,617.312956 C2088.32396,616.194028 2089.24407,615.30999 2090.36389,615.30999 Z',
+                    length: '75%',
+                    width: 16,
+                    offsetCenter: [0, '5%']
                 },
                 axisLine: {
+                    roundCap: true,
                     lineStyle: {
-                        width: 10,
-                        color: [
-                            [0.4, '#00C853'],
-                            [0.8, '#FFD740'],
-                            [1, '#ff8484'],
-                        ],
+                        width: 12
                     }
                 },
                 axisTick: {
-                    show: false
-                },
-                splitLine: {
-                    length: 5,
+                    splitNumber: 2,
                     lineStyle: {
                         width: 2,
                         color: '#999'
                     }
                 },
-                axisLabel: {
-                    distance: 12,
-                    color: '#999',
-                    fontSize: 10
-                },
-                anchor: {
-                    show: true,
-                    showAbove: true,
-                    size: 15,
-                    itemStyle: {
-                        borderWidth: 5
+                splitLine: {
+                    length: 0.1,
+                    lineStyle: {
+                        width: 3,
+                        color: '#999'
                     }
                 },
+                axisLabel: {
+                    distance: 30,
+                    color: '#999',
+                    fontSize: 15
+                },
                 title: {
-                    show: true,
-                    fontSize: 15,
-
+                    show: false
                 },
                 detail: {
+                    backgroundColor: '#fff',
+                    borderColor: '#999',
+                    borderWidth: 0,
+                    width: '95%',
+                    lineHeight: 30,
+                    height: 30,
+                    borderRadius: 8,
+                    offsetCenter: [0, '35%'],
                     valueAnimation: true,
-                    fontSize: 20,
-                    offsetCenter: [0, '45%']
+                    formatter: function(value) {
+                        return `{unit|${state}} {value|' + value.toFixed(0) + '}{unit|สาย}`;
+                    },
+                    rich: {
+                        value: {
+                            fontSize: 30,
+                            fontWeight: 'bolder',
+                            color: '#777'
+                        },
+                        unit: {
+                            fontSize: 20,
+                            color: '#999',
+                            padding: [0, 0, -5, 10]
+                        }
+                    }
                 },
                 data: [{
-                    value: data,
-                    name: 'รอสาย',
+                    value: data
                 }]
             }]
         };
@@ -629,7 +635,7 @@
 
         tableBody.html(html);
         //waiting_div.html(waiting_total);
-        div_queue_status_chart.setOption(queue_status_chart(waiting_total));
+        div_queue_status_chart.setOption(queue_status_chart(waiting_total, 'รอสาย'));
 
     });
 
@@ -747,7 +753,7 @@
             //active_div.html(num_active);
             div_agent_status_chart.setOption(agent_status_chart(num_offline, num_ready, num_pause, num_warp,
                 num_busy));
-            div_queue_status_chart_talk.setOption(queue_status_chart(num_active));
+            div_queue_status_chart_talk.setOption(queue_status_chart(num_active), 'สนทนา');
 
         }
 
@@ -758,7 +764,7 @@
         await delete active_call[response.data.connectedlinenum];
         if (Object.keys(active_call).length === 0) {
             //active_div.html('0');
-            div_queue_status_chart_talk.setOption(queue_status_chart(0));
+            div_queue_status_chart_talk.setOption(queue_status_chart(0), 'สนทนา');
         }
     });
 
@@ -767,7 +773,7 @@
         await delete active_call[response.data.connectedlinenum];
         if (Object.keys(active_call).length === 0) {
             //active_div.html('0');
-            div_queue_status_chart_talk.setOption(queue_status_chart(0));
+            div_queue_status_chart_talk.setOption(queue_status_chart(0), 'สนทนา');
         }
     });
 
@@ -785,13 +791,13 @@
             await delete ring_call[extractedNumber];
             if (Object.keys(ring_call).length === 0) {
                 //waiting_div.html('0');
-                div_queue_status_chart.setOption(queue_status_chart(0));
+                div_queue_status_chart.setOption(queue_status_chart(0), 'รอสาย');
             }
 
             await delete active_call[extractedNumber];
             if (Object.keys(active_call).length === 0) {
                 //active_div.html('0');
-                div_queue_status_chart_talk.setOption(queue_status_chart(0));
+                div_queue_status_chart_talk.setOption(queue_status_chart(0), 'สนทนา');
             }
 
 
@@ -832,7 +838,7 @@
         await delete active_call[response.data.connectedlinenum];
         if (Object.keys(active_call).length === 0) {
             //active_div.html('0');
-            div_queue_status_chart_talk.setOption(queue_status_chart(0));
+            div_queue_status_chart_talk.setOption(queue_status_chart(0), 'สนทนา');
         }
     });
 
@@ -842,7 +848,7 @@
         if (Object.keys(waitData).length === 0) {
             tableBody.html(
                 '<tr><td colspan="5" style="text-align: center;">ยังไม่มีสายรอในคิว</td></tr>');
-            div_queue_status_chart.setOption(queue_status_chart(0));
+            div_queue_status_chart.setOption(queue_status_chart(0), 'รอสาย');
         }
         //console.log(waitData);
     });
@@ -875,8 +881,8 @@
         setInterval(sla_count, 30000);
 
         div_agent_status_chart.setOption(agent_status_chart(0, 0, 0, 0));
-        div_queue_status_chart.setOption(queue_status_chart(waiting_total));
-        div_queue_status_chart_talk.setOption(queue_status_chart(active_call));
+        div_queue_status_chart.setOption(queue_status_chart(waiting_total), 'รอสาย');
+        div_queue_status_chart_talk.setOption(queue_status_chart(active_call), 'สนทนา');
         window.addEventListener('resize', div_agent_status_chart.resize);
         window.addEventListener('resize', div_queue_status_chart.resize);
         window.addEventListener('resize', div_queue_status_chart_talk.resize);
