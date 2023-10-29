@@ -155,7 +155,7 @@
 
                     <div class="row">
 
-                        <div class="col-md-3">
+                        <div class="col-md-4">
 
                             <div class="card card-primary" style="min-height: 440px">
                                 <div class="card-header">
@@ -176,13 +176,13 @@
                                     <div class="row chart">
                                         <div class="col-md-12">
                                             <div class="d-flex justify-content-center align-items-center"
-                                            id="queue_status_chart" style="height:150px;"></div>
+                                            id="queue_status_chart" style="height:200px;"></div>
                                         </div>
                                     </div>
                                     <div class="row chart">
                                         <div class="col-md-12">
                                             <div class="d-flex justify-content-center align-items-center"
-                                            id="queue_status_chart_talk" style="height:150px;"></div>
+                                            id="queue_status_chart_talk" style="height:200px;"></div>
                                         </div>
                                     </div>
                                 </div>
