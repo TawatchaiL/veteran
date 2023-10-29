@@ -433,7 +433,7 @@ class ContactController extends Controller
             'fname.required' => 'กรุณากรอกชื่อ',
             'lname.required' => 'กรุณากรอกนามสกุล',
             'sex.required' => 'กรุณาเลือกเพศ',
-            'birthday.required' => 'กรุณาเลือกวันที่',
+            'birthday.required' => 'กรุณาเลือกวันเกิด',
             'bloodgroup.required' => 'กรุณาเลือกกรุ๊ปเลือด',
             'homeno.required' => 'กรุณากรอกบ้านเลขที่',
             'city.required' => 'กรุณาเลือกจังหวัด',
@@ -584,7 +584,7 @@ class ContactController extends Controller
             'fname.required' => 'กรุณากรอกชื่อ',
             'lname.required' => 'กรุณากรอกนามสกุล',
             'sex.required' => 'กรุณาเลือกเพศ',
-            'birthday.required' => 'กรุณาเลือกวันที่',
+            'birthday.required' => 'กรุณาเลือกวันเกิด',
             'bloodgroup.required' => 'กรุณาเลือกกรุ๊ปเลือด',
             'homeno.required' => 'กรุณากรอกบ้านเลขที่',
             'city.required' => 'กรุณาเลือกจังหวัด',
@@ -685,7 +685,7 @@ class ContactController extends Controller
             'fname.required' => 'กรุณากรอกชื่อ',
             'lname.required' => 'กรุณากรอกนามสกุล',
             'sex.required' => 'กรุณาเลือกเพศ',
-            'birthday.required' => 'กรุณาเลือกวันที่',
+            'birthday.required' => 'กรุณาเลือกวันเกิด',
             'bloodgroup.required' => 'กรุณาเลือกกรุ๊ปเลือด',
             'homeno.required' => 'กรุณากรอกบ้านเลขที่',
             'city.required' => 'กรุณาเลือกจังหวัด',
@@ -836,7 +836,7 @@ class ContactController extends Controller
         $Crmcsae->save();
 
         //CrmIncoming::where('telno', $request->input('telno'))->update('status' => '2');
-        DB::table('crm_incoming')->where('telno', $request->input('telno'))->update(['status' => '2']);
+        //DB::table('crm_incoming')->where('telno', $request->input('telno'))->update(['status' => '2']);
         //$income = CrmIncoming::find($edata['emertype']);
         //$income->update($incomea);
         //DB::table('crm_incoming')->where('telno',  $request->input('telno'))->delete();
