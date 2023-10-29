@@ -869,6 +869,7 @@
 
                     success: function(result) {
                         if (result.errors) {
+                            alert('OK1');
                             $('.alert-danger-pop' + cardId).html('');
                             $.each(result.errors, function(key,
                                 value) {
@@ -880,6 +881,7 @@
                                         '</li></strong>');
                             });
                         } else {
+                            alert('OK2');
                             $('.alert-danger-pop' + cardId).hide();
                             $('.alert-success-pop' + cardId).show();
                             $('.alert-success-pop' + cardId).append(
