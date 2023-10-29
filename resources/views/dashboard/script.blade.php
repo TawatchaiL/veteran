@@ -233,43 +233,50 @@
                 max: 10,
                 progress: {
                     show: true,
-                    width: 18
+                    width: 10
                 },
                 axisLine: {
                     lineStyle: {
-                        width: 18
+                        width: 10,
+                        color: [
+                            [0.4, '#00C853'],
+                            [0.8, '#FFD740'],
+                            [1, '#ff8484'],
+                        ],
                     }
                 },
                 axisTick: {
                     show: false
                 },
                 splitLine: {
-                    length: 15,
+                    length: 5,
                     lineStyle: {
                         width: 2,
                         color: '#999'
                     }
                 },
                 axisLabel: {
-                    distance: 25,
+                    distance: 12,
                     color: '#999',
-                    fontSize: 20
+                    fontSize: 10
                 },
                 anchor: {
                     show: true,
                     showAbove: true,
-                    size: 25,
+                    size: 15,
                     itemStyle: {
-                        borderWidth: 10
+                        borderWidth: 5
                     }
                 },
                 title: {
-                    show: false
+                    show: true,
+                    fontSize: 15,
+
                 },
                 detail: {
                     valueAnimation: true,
-                    fontSize: 80,
-                    offsetCenter: [0, '70%']
+                    fontSize: 20,
+                    offsetCenter: [0, '45%']
                 },
                 data: [{
                     value: data,
