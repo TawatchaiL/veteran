@@ -159,8 +159,7 @@
 
                             <div class="card card-primary" style="min-height: 440px">
                                 <div class="card-header">
-                                    <h3 class="card-title"><i class="fa-solid fa-gauge"></i> สถานะเรียลไทม์ ( Queue Status
-                                        )
+                                    <h3 class="card-title"><i class="fa-solid fa-gauge"></i> สายที่กำลังรอสาย
                                     </h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="maximize">
@@ -187,8 +186,7 @@
 
                             <div class="card card-primary" style="min-height: 440px">
                                 <div class="card-header">
-                                    <h3 class="card-title"><i class="fa-solid fa-gauge"></i> สถานะเรียลไทม์ ( Queue Status
-                                        )
+                                    <h3 class="card-title"><i class="fa-solid fa-gauge"></i> สายที่กำลังสนทนา
                                     </h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="maximize">

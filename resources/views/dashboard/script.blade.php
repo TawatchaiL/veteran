@@ -270,7 +270,7 @@
                     offsetCenter: [0, '35%'],
                     valueAnimation: true,
                     formatter: function(value, state) {
-                        return `{unit|${state}} {value| ${value.toFixed(0)} }{unit|สาย}`;
+                        return `{unit|จำนวน} {value| ${value.toFixed(0)} }{unit|สาย}`;
                     },
                     rich: {
                         value: {
