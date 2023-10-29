@@ -159,10 +159,20 @@ class DashboardController extends Controller
                     $div = $agent->id;
                 } else {
                     $div = $agent->phone;
-                    $button = '<button type="button" data-rowid="' . $agent->phone . '" class="btn btn-warning btn-pause"><i class="fa-solid fa-user-clock"></i> พัก / รับสายต่อ</button>
-                    <button type="button" data-rowid="' . $agent->phone . '" class="btn btn-primary btn-spy"><i class="fa-solid fa-user-secret"></i> ดักฟัง</button>
-                    <button type="button" data-rowid="' . $agent->phone . '" class="btn btn-info btn-insert"><i class="fa-solid fa-user-clock"></i> แทรกสาย </button>
-                    <button type="button" data-rowid="' . $agent->phone . '" class="btn btn-danger btn-logoff"><i class="fa-solid fa-user-group"></i> เตะออกจากระบบ</button>';
+                    $button = '<div class="btn-group">
+                    <button type="button" class="btn btn-default">Action</button>
+                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                    <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu" role="menu">
+                    <a class="dropdown-item btn-pause" href="#" data-rowid="' . $agent->phone . '"><i class="fa-solid fa-user-clock"></i> พัก</a>
+                    <a class="dropdown-item btn-unpause" href="#" data-rowid="' . $agent->phone . '"><i class="fa-solid fa-user-check"></i> รับสายต่อ</a>
+                    <a class="dropdown-item btn-spy" href="#" data-rowid="' . $agent->phone . '"><i class="fa-solid fa-user-secret"></i> แทรกสาย</a>
+                    <a class="dropdown-item btn-insert" href="#" data-rowid="' . $agent->phone . '"><i class="fa-solid fa-user-group"></i> ดักฟัง</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item btn-logoff" href="#" data-rowid="' . $agent->phone . '"><i class="fa-solid fa-user-xmark"></i> เตะออกจากระบบ</a>
+                    </div>
+                    </div>';
                 }
 
                 $html .= '<tr id="' . $div . '">
@@ -177,7 +187,7 @@ class DashboardController extends Controller
                     <td style="text-align: center;" id="' . $div . '_duration">00:00:00</td>
                     <td style="text-align: center;" id="' . $div . '_src"></td>
                     <td style="text-align: center;" id="' . $div . '_queue"></td>
-                    <td width="30%">' . $button . '</td>
+                    <td width="10%">' . $button . '</td>
                 </tr>';
                 $x++;
 
