@@ -577,6 +577,7 @@ class ContactController extends Controller
             'city' => 'required|string|max:8',
             'district' => 'required|string|max:8',
             'subdistrict' => 'required|string|max:8',
+            'casetype1' => 'required|string|max:100',
         ];
         $valimess = [
             'hn.required' => 'กรุณากรอกรหัสผู้ติดต่อ',
@@ -590,6 +591,7 @@ class ContactController extends Controller
             'city.required' => 'กรุณาเลือกจังหวัด',
             'district.required' => 'กรุณาเลือกอำเภอ',
             'subdistrict.required' => 'กรุณาเลือกตำบล',
+            'casetype1.required' => 'กรุณาเลือกประเภทการติดต่อ',
         ];
 
         if ($request->input('telhome') == "" && $request->input('phoneno') == "" && $request->input('workno') == "") {
@@ -807,27 +809,27 @@ class ContactController extends Controller
         $Crmcsae = new CrmCase();
         $Crmcsae->contact_id = $id;
         $Crmcsae->telno = $request->get('telno');
-        $Crmcsae->casetype1 = $request->input('casetype1');
-        $Crmcsae->caseid1 = $request->input('caseid1');
-        if ($request->input('casetype2') != "") {
-            $Crmcsae->casetype2 = $request->input('casetype2');
-            $Crmcsae->caseid2 = $request->input('caseid2');
+        $Crmcsae->casetype1 = $request->get('casetype1');
+        $Crmcsae->caseid1 = $request->get('caseid1');
+        if ($request->get('casetype2') != "") {
+            $Crmcsae->casetype2 = $request->get('casetype2');
+            $Crmcsae->caseid2 = $request->get('caseid2');
         }
-        if ($request->input('casetype3') != "") {
-            $Crmcsae->casetype3 = $request->input('casetype3');
-            $Crmcsae->caseid3 = $request->input('caseid3');
+        if ($request->get('casetype3') != "") {
+            $Crmcsae->casetype3 = $request->get('casetype3');
+            $Crmcsae->caseid3 = $request->get('caseid3');
         }
-        if ($request->input('casetype4') != "") {
-            $Crmcsae->casetype4 = $request->input('casetype4');
-            $Crmcsae->caseid4 = $request->input('caseid4');
+        if ($request->get('casetype4') != "") {
+            $Crmcsae->casetype4 = $request->get('casetype4');
+            $Crmcsae->caseid4 = $request->get('caseid4');
         }
-        if ($request->input('casetype5') != "") {
-            $Crmcsae->casetype5 = $request->input('casetype5');
-            $Crmcsae->caseid5 = $request->input('caseid5');
+        if ($request->get('casetype5') != "") {
+            $Crmcsae->casetype5 = $request->get('casetype5');
+            $Crmcsae->caseid5 = $request->get('caseid5');
         }
-        if ($request->input('casetype6') != "") {
-            $Crmcsae->casetype6 = $request->input('casetype6');
-            $Crmcsae->caseid6 = $request->input('caseid6');
+        if ($request->get('casetype6') != "") {
+            $Crmcsae->casetype6 = $request->get('casetype6');
+            $Crmcsae->caseid6 = $request->get('caseid6');
         }
         $Crmcsae->tranferstatus = $request->get('tranferstatus');
         $Crmcsae->casedetail = $request->get('casedetail');
