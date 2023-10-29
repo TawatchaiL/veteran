@@ -283,25 +283,25 @@
             }
         });
     }
+    
+    $.datepickerp.setDefaults($.datepicker.regional['en']);
 
+$(".AddDatep").datepickerp({
+    /*  onSelect: function() {
+         table.draw();
+     }, */
+    dateFormat: 'yy-mm-dd',
+    changeMonth: true,
+    changeYear: true,
+    yearRange: '1980:2050',
+});
+//birth day change
+$(document).on("change", ".AddDatep", function() {
+alert('OK');
+});
     $(document).ready(function() {
         positionCards();
 
-        $.datepickerp.setDefaults($.datepicker.regional['en']);
-
-        $(".AddDatep").datepickerp({
-            /*  onSelect: function() {
-                 table.draw();
-             }, */
-            dateFormat: 'yy-mm-dd',
-            changeMonth: true,
-            changeYear: true,
-            yearRange: '1980:2050',
-        });
-        //birth day change
-        $(document).on("change", ".AddDatep", function() {
-alert('OK');
-        });
         //casetype changes
         $(document).on("change", ".casetypechang", function() {
             var cardId = $(this).data("tabid");
