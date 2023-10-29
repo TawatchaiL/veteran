@@ -141,7 +141,8 @@ class CasesController extends Controller
     {
         $user = Auth::user();
         $validator =  Validator::make($request->all(), [
-            'casetype1' => 'required|string|max:50',
+            'casetype1' => 'required|string|max:100',
+            'casedetail' => 'required|string|max:200',
         ]);
 
         if ($validator->fails()) {
@@ -169,7 +170,7 @@ class CasesController extends Controller
         $user = Auth::user();
         $rules = [
             'casetype1' => 'required|string|max:20',
-            //'postcode' => 'integer|max:10',
+            'casedetail' => 'required|string|max:200',
 
         ];
 
