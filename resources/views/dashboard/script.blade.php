@@ -205,48 +205,64 @@
 
 
     let queue_status_chart = (wait, talk) => {
-        let option = {
-            title: {
-                show: false,
-                text: 'Referer of a Website',
-                subtext: 'Fake Data',
-                left: 'center'
-            },
-            toolbox: {
-                show: true,
-                feature: {
-                    saveAsImage: {}
+        const gaugeData = [{
+                value: wait,
+                name: 'รอสาย',
+                title: {
+                    offsetCenter: ['-40%', '80%']
+                },
+                detail: {
+                    offsetCenter: ['-40%', '95%']
                 }
             },
-            tooltip: {
-                trigger: 'item'
-            },
-            legend: {
-                top: '5%',
-                left: 'center'
-            },
+            {
+                value: talk,
+                name: 'สนทนา',
+                title: {
+                    offsetCenter: ['0%', '80%']
+                },
+                detail: {
+                    offsetCenter: ['0%', '95%']
+                }
+            }
+        ];
+        let option = {
             series: [{
-                name: 'Status',
-                color: ['#f46884', '#46c184'],
-                type: 'pie',
-                selectedMode: 'single',
-                radius: '60%',
-                center: ['50%', '55%'],
-                data: [{
-                        value: wait,
-                        name: 'กำลังรอสาย'
-                    },
-                    {
-                        value: talk,
-                        name: 'กำลังสนทนา'
-                    },
-                ],
-                emphasis: {
+                type: 'gauge',
+                anchor: {
+                    show: true,
+                    showAbove: true,
+                    size: 18,
                     itemStyle: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        color: '#FAC858'
                     }
+                },
+                pointer: {
+                    icon: 'path://M2.9,0.7L2.9,0.7c1.4,0,2.6,1.2,2.6,2.6v115c0,1.4-1.2,2.6-2.6,2.6l0,0c-1.4,0-2.6-1.2-2.6-2.6V3.3C0.3,1.9,1.4,0.7,2.9,0.7z',
+                    width: 8,
+                    length: '80%',
+                    offsetCenter: [0, '8%']
+                },
+                progress: {
+                    show: true,
+                    overlap: true,
+                    roundCap: true
+                },
+                axisLine: {
+                    roundCap: true
+                },
+                data: gaugeData,
+                title: {
+                    fontSize: 14
+                },
+                detail: {
+                    width: 40,
+                    height: 14,
+                    fontSize: 14,
+                    color: '#fff',
+                    backgroundColor: 'inherit',
+                    borderRadius: 3,
+                    formatter: '{value}%'
                 }
             }]
         };
@@ -486,12 +502,12 @@
                 $.get(`${api_serv}/chans_variable/` + chan[1], (data, status) => {
                     //if (storedOption == data[3][1]) {
 
-                        mcallexten = data[2][1];
-                        mcallqueue = data[3][1];
-                        mcalluniq = data[4][1];
-                        mcallapp = data[5][1];
-                        mcallstate = data[6][1].replace(/\s*\(\d+\)/, '');
-                        set_state(exten, mcallexten, mcalluniq, mcallapp, mcallstate);
+                    mcallexten = data[2][1];
+                    mcallqueue = data[3][1];
+                    mcalluniq = data[4][1];
+                    mcallapp = data[5][1];
+                    mcallstate = data[6][1].replace(/\s*\(\d+\)/, '');
+                    set_state(exten, mcallexten, mcalluniq, mcallapp, mcallstate);
                     //}
 
                     if (strArray[4] == 'Ringing' || strArray[4] == 'Ring') {
@@ -507,7 +523,7 @@
                         state_color = 'card-danger';
                         check_box_state = 'disabled';
                     } else if (strArray[4] == 'Up') {
-                        if (mcallapp!=='AppQueue') {
+                        if (mcallapp !== 'AppQueue') {
                             active_call[mcallexten] = 1;
                         }
 
@@ -579,8 +595,8 @@
             let formattedTime =
                 `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
             //chek if specific queue waiting
-                //if (item.queue == storedOption) {
-                html += `
+            //if (item.queue == storedOption) {
+            html += `
                 <tr>
                     <td>${item.position}</td>
                     <td><i class="fa-solid fa-user-clock"></i> ${item.calleridnum}</td>
@@ -588,13 +604,14 @@
                     <td>${queue_name[item.queue]}</td>
                     <td>${item.connectedlinenum === 'unknown' ? '-' : item.connectedlinenum}</td>
                 </tr>`;
-                waiting_total++;
+            waiting_total++;
             //}
         });
 
         tableBody.html(html);
         //waiting_div.html(waiting_total);
-        div_queue_status_chart.setOption(queue_status_chart(waiting_total,Object.keys(active_call).length));
+        div_queue_status_chart.setOption(queue_status_chart(waiting_total, Object.keys(active_call)
+            .length));
 
     });
 
@@ -711,7 +728,8 @@
             //active_div.html(num_active);
             div_agent_status_chart.setOption(agent_status_chart(num_offline, num_ready, num_pause, num_warp,
                 num_busy));
-            div_queue_status_chart.setOption(queue_status_chart(waiting_total,Object.keys(active_call).length));
+            div_queue_status_chart.setOption(queue_status_chart(waiting_total, Object.keys(active_call)
+                .length));
         }
 
     });
@@ -721,7 +739,8 @@
         await delete active_call[response.data.connectedlinenum];
         if (Object.keys(active_call).length === 0) {
             //active_div.html('0');
-            div_queue_status_chart.setOption(queue_status_chart(waiting_total,Object.keys(active_call).length));
+            div_queue_status_chart.setOption(queue_status_chart(waiting_total, Object.keys(active_call)
+                .length));
         }
     });
 
@@ -730,7 +749,8 @@
         await delete active_call[response.data.connectedlinenum];
         if (Object.keys(active_call).length === 0) {
             //active_div.html('0');
-            div_queue_status_chart.setOption(queue_status_chart(waiting_total,Object.keys(active_call).length));
+            div_queue_status_chart.setOption(queue_status_chart(waiting_total, Object.keys(active_call)
+                .length));
         }
     });
 
@@ -755,7 +775,8 @@
                 active_div.html('0');
             }
 
-            div_queue_status_chart.setOption(queue_status_chart(Object.keys(ring_call).length,Object.keys(active_call).length));
+            div_queue_status_chart.setOption(queue_status_chart(Object.keys(ring_call).length, Object.keys(
+                active_call).length));
         } else {
             console.log("Extension property is missing in the data object");
         }
