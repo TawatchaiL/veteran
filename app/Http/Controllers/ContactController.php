@@ -767,6 +767,43 @@ class ContactController extends Controller
         CrmContactLog::create($contactlog);
 
         $contact->update($contactd);
+        if (!empty($request->emergencyData)) {
+            foreach ($request->emergencyData as $edata) {
+                if ($edata['emertype'] == '') {
+                    $Crmemergency = new CrmPhoneEmergency();
+                    $Crmemergency->contact_id = $id;
+                    $Crmemergency->emergencyname = $edata['emergencyname'];
+                    $Crmemergency->emerrelation = $edata['emerrelation'];
+                    $Crmemergency->emerphone = $edata['emerphone'];
+                    $Crmemergency->agent = $user->id;
+                    $Crmemergency->save();
+                } else {
+                    $emerd = [
+                        'emergencyname' => $edata['emergencyname'],
+                        'emerrelation' => $edata['emerrelation'],
+                        'emerphone' => $edata['emerphone'],
+                        'agent' => $user->id,
+                    ];
+
+                    $emer = CrmPhoneEmergency::find($edata['emertype']);
+                    $emerlog = [
+                        'id' => $emer->id,
+                        'contact_id' => $emer->contact_id,
+                        'emergencyname' => $emer->emergencyname,
+                        'emerrelation' => $emer->emerrelation,
+                        'emerphone' => $emer->emerphone,
+                        'agent' => $emer->agent,
+                        'created_at' => $emer->created_at,
+                        'updated_at' => $emer->updated_at,
+                        'modifyaction' => 'edit',
+                        'modifyagent' => $user->id,
+                    ];
+                    CrmPhoneEmergencyLog::create($emerlog);
+                    $emer->update($emerd);
+                }
+            }
+        }
+
 
 
         //CrmIncoming::where('telno', $request->input('telno'))->update('status' => '2');
