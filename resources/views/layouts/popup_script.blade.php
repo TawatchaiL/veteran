@@ -109,6 +109,9 @@
                                     $('#tnamep' + cardId).val(res.datax.datac.tname);
                                     $('#fnamep' + cardId).val(res.datax.datac.fname);
                                     $('#lnamep' + cardId).val(res.datax.datac.lname);
+                                    $('#sexp').val(res.datax.datac.sex);
+                                    $('#birthdayp').val(res.datax.datac.birthday);
+                                    $('#agep').val(res.datax.datac.age);
                                     $('#bloodgroupp' + cardId).val(res.datax.datac.bloodgroup);
                                     $('#homenop' + cardId).val(res.datax.datac.homeno);
                                     $('#moop' + cardId).val(res.datax.datac.moo);
@@ -531,6 +534,9 @@
                                 $('#tnamep' + cardId).val(res.datax.datac.tname);
                                 $('#fnamep' + cardId).val(res.datax.datac.fname);
                                 $('#lnamep' + cardId).val(res.datax.datac.lname);
+                                $('#sexp').val(res.datax.datac.sex);
+                                $('#birthdayp').val(res.datax.datac.birthday);
+                                $('#agep').val(res.datax.datac.age);
                                 $('#bloodgroupp' + cardId).val(res.datax.datac.bloodgroup);
                                 $('#homenop' + cardId).val(res.datax.datac.homeno);
                                 $('#moop' + cardId).val(res.datax.datac.moo);
@@ -690,6 +696,9 @@
                     tname: $('#tnamep' + cardId).val(),
                     fname: $('#fnamep' + cardId).val(),
                     lname: $('#lnamep' + cardId).val(),
+                    sex: $('#sexp' + cardId).val(),
+                    birthday: $('#birthdayp' + cardId).val(),
+                    age: $('#agep' + cardId).val(),
                     bloodgroup: $('#bloodgroupp' + cardId).val(),
                     homeno: $('#homenop' + cardId).val(),
                     moo: $('#moop' + cardId).val(),
@@ -803,6 +812,9 @@
                     adddate: $('#adddatep' + cardId).val(),
                     fname: $('#fnamep' + cardId).val(),
                     lname: $('#lnamep' + cardId).val(),
+                    sex: $('#sexp' + cardId).val(),
+                    birthday: $('#birthdayp' + cardId).val(),
+                    age: $('#agep' + cardId).val(),
                     homeno: $('#homenop' + cardId).val(),
                     moo: $('#moop' + cardId).val(),
                     soi: $('#soip' + cardId).val(),
