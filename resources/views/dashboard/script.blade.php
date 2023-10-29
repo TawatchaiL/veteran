@@ -633,6 +633,9 @@
         let phone_number = exts[1];
         const div_src = $('#' + phone_number + '_src');
 
+        warp_total = {};
+        pause_total = {};
+
         if (res.queue == storedOption) {
             if (res.status == 5 || res.status == 0) {
                 phone_status = `<span style="font-size: 1em; color: red;">
