@@ -121,7 +121,7 @@ class DashboardController extends Controller
     public function getAgentList(Request $request)
     {
         $queue_names = DB::connection('remote_connection')
-            ->table('asterisk.agequeues_config')
+            ->table('asterisk.queues_config')
             ->select('extension', 'descr')
             ->get();
 
