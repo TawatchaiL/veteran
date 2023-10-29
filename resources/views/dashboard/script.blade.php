@@ -438,9 +438,6 @@
                         mcalluniq = data[4][1];
                         mcallapp = data[5][1];
                         mcallstate = data[6][1].replace(/\s*\(\d+\)/, '');
-
-                        console.log(mcallapp);
-
                         set_state(exten, mcallexten, mcalluniq, mcallapp, mcallstate);
                     //}
 
@@ -689,6 +686,7 @@
             } else {
                 extractedNumber = data.extension
             }
+            $('#' + extractedNumber + '_queue').html('');
             await delete ring_call[extractedNumber];
             if (Object.keys(ring_call).length === 0) {
                 waiting_div.html('0');
@@ -710,6 +708,7 @@
         dbv[res.destcalleridnum + '_cid'] = res.calleridnum;
         dbv[res.destcalleridnum + '_time'] = res.timestamp;
         $('#' + res.destcalleridnum + '_src').html(res.calleridnum);
+        $('#' + res.destcalleridnum + '_queue').html(res.queue);
     });
 
     socket.on('agentconnect', async (response) => {
@@ -718,6 +717,7 @@
         dbv[res.destcalleridnum + '_cid'] = res.calleridnum;
         dbv[res.destcalleridnum + '_time'] = Math.floor(Date.now() / 1000);
         $('#' + res.destcalleridnum + '_src').html(res.calleridnum);
+        $('#' + res.destcalleridnum + '_queue').html(res.queue);
     });
 
 
@@ -772,9 +772,7 @@
         updateSLAData();
         setInterval(updateSLAData, 30000);
         sla_count();
-        setInterval(function() {
-            sla_count();
-        }, 30000);
+        setInterval(sla_count, 30000);
 
         div_agent_status_chart.setOption(agent_status_chart(0, 0, 0, 0));
         window.addEventListener('resize', div_agent_status_chart.resize);
