@@ -184,7 +184,7 @@
                                                         <p class="font" id="waiting_total">0</p>
                                                     </div>
                                                     <p class="alignment"><i class="fa-solid fa-user-clock"></i>
-                                                        สายที่ <br>กำลังรอสาย</p>
+                                                        กำลังรอสาย</p>
                                                 </div>
 
                                                 <div class="col-md-6 col-sm-6 col-xs-6">
@@ -192,7 +192,7 @@
                                                         <p class="font" id="active_total">0</p>
                                                     </div>
                                                     <p class="alignment"><i class="fa-solid fa-phone-volume"></i>
-                                                        สายที่<br>กำลังสนทนา</p>
+                                                        กำลังสนทนา</p>
                                                 </div>
 
                                             </div>
@@ -269,7 +269,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-md-4">
 
                             <div class="card card-primary" style="max-height: 440px">
                                 <div class="card-header">
@@ -362,7 +362,7 @@
 
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
 
                             <div class="card card-primary" style="max-height: 440px">
                                 <div class="card-header">
