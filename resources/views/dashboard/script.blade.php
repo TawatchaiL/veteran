@@ -689,6 +689,7 @@
             } else {
                 extractedNumber = data.extension
             }
+            $('#' + extractedNumber + '_queue').html('');
             await delete ring_call[extractedNumber];
             if (Object.keys(ring_call).length === 0) {
                 waiting_div.html('0');
