@@ -204,13 +204,8 @@
     }
 
 
-    let queue_status_chart = (data, state) => {
-        console.log(state)
-        if (state === 0) {
-            state_text = 'รอสาย'
-        } else {
-            state_text = 'สนทนา'
-        }
+    let queue_status_chart = (data) => {
+
         let option = {
             series: [{
                 type: 'gauge',
@@ -276,7 +271,98 @@
                     offsetCenter: [0, '35%'],
                     valueAnimation: true,
                     formatter: function(value) {
-                        return `{unit|${state_text}} {value| ${value.toFixed(0)} }{unit|สาย}`;
+                        return `{unit|รอสาย} {value| ${value.toFixed(0)} }{unit|สาย}`;
+
+                    },
+                    rich: {
+                        value: {
+                            fontSize: 30,
+                            fontWeight: 'bolder',
+                            color: '#777'
+                        },
+                        unit: {
+                            fontSize: 20,
+                            color: '#999',
+                            padding: [0, 0, -5, 10]
+                        }
+                    }
+                },
+                data: [{
+                    value: data,
+                }]
+            }]
+        };
+        return option;
+    }
+
+    let queue_status_chart_talk = (data) => {
+
+        let option = {
+            series: [{
+                type: 'gauge',
+                startAngle: 180,
+                endAngle: 0,
+                min: 0,
+                max: 10,
+                splitNumber: 5,
+                itemStyle: {
+                    color: '#58D9F9',
+                    shadowColor: 'rgba(0,138,255,0.45)',
+                    shadowBlur: 10,
+                    shadowOffsetX: 2,
+                    shadowOffsetY: 2
+                },
+                progress: {
+                    show: true,
+                    roundCap: true,
+                    width: 12
+                },
+                pointer: {
+                    icon: 'path://M2090.36389,615.30999 L2090.36389,615.30999 C2091.48372,615.30999 2092.40383,616.194028 2092.44859,617.312956 L2096.90698,728.755929 C2097.05155,732.369577 2094.2393,735.416212 2090.62566,735.56078 C2090.53845,735.564269 2090.45117,735.566014 2090.36389,735.566014 L2090.36389,735.566014 C2086.74736,735.566014 2083.81557,732.63423 2083.81557,729.017692 C2083.81557,728.930412 2083.81732,728.84314 2083.82081,728.755929 L2088.2792,617.312956 C2088.32396,616.194028 2089.24407,615.30999 2090.36389,615.30999 Z',
+                    length: '75%',
+                    width: 16,
+                    offsetCenter: [0, '20%']
+                },
+                axisLine: {
+                    roundCap: true,
+                    lineStyle: {
+                        width: 12
+                    }
+                },
+                axisTick: {
+                    splitNumber: 2,
+                    lineStyle: {
+                        width: 2,
+                        color: '#999'
+                    }
+                },
+                splitLine: {
+                    length: 0.1,
+                    lineStyle: {
+                        width: 3,
+                        color: '#999'
+                    }
+                },
+                axisLabel: {
+                    distance: 30,
+                    color: '#999',
+                    fontSize: 15
+                },
+                title: {
+                    show: false
+                },
+                detail: {
+                    backgroundColor: '#fff',
+                    borderColor: '#999',
+                    borderWidth: 0,
+                    width: '95%',
+                    lineHeight: 30,
+                    height: 30,
+                    borderRadius: 8,
+                    offsetCenter: [0, '35%'],
+                    valueAnimation: true,
+                    formatter: function(value) {
+                        return `{unit|สนทนา} {value| ${value.toFixed(0)} }{unit|สาย}`;
 
                     },
                     rich: {
@@ -643,7 +729,7 @@
 
         tableBody.html(html);
         //waiting_div.html(waiting_total);
-        await div_queue_status_chart.setOption(queue_status_chart(waiting_total, 0));
+        div_queue_status_chart.setOption(queue_status_chart(waiting_total));
 
     });
 
@@ -761,7 +847,7 @@
             //active_div.html(num_active);
             div_agent_status_chart.setOption(agent_status_chart(num_offline, num_ready, num_pause, num_warp,
                 num_busy));
-            await div_queue_status_chart_talk.setOption(queue_status_chart(num_active, 1));
+            div_queue_status_chart_talk.setOption(queue_status_chart_talk(num_active));
 
         }
 
@@ -772,7 +858,7 @@
         await delete active_call[response.data.connectedlinenum];
         if (Object.keys(active_call).length === 0) {
             //active_div.html('0');
-            await div_queue_status_chart_talk.setOption(queue_status_chart(0, 1));
+            div_queue_status_chart_talk.setOption(queue_status_chart_talk(0));
         }
     });
 
@@ -781,7 +867,7 @@
         await delete active_call[response.data.connectedlinenum];
         if (Object.keys(active_call).length === 0) {
             //active_div.html('0');
-            await div_queue_status_chart_talk.setOption(queue_status_chart(0, 1));
+            div_queue_status_chart_talk.setOption(queue_status_chart_talk(0));
         }
     });
 
@@ -799,13 +885,13 @@
             await delete ring_call[extractedNumber];
             if (Object.keys(ring_call).length === 0) {
                 //waiting_div.html('0');
-                await div_queue_status_chart.setOption(queue_status_chart(0, 0));
+                div_queue_status_chart.setOption(queue_status_chart(0));
             }
 
             await delete active_call[extractedNumber];
             if (Object.keys(active_call).length === 0) {
                 //active_div.html('0');
-                await div_queue_status_chart_talk.setOption(queue_status_chart(0, 1));
+                div_queue_status_chart_talk.setOption(queue_status_chart_talk(0));
             }
 
 
@@ -846,7 +932,7 @@
         await delete active_call[response.data.connectedlinenum];
         if (Object.keys(active_call).length === 0) {
             //active_div.html('0');
-            await div_queue_status_chart_talk.setOption(queue_status_chart(0, 1));
+            div_queue_status_chart_talk.setOption(queue_status_chart_talk(0));
         }
     });
 
@@ -856,7 +942,7 @@
         if (Object.keys(waitData).length === 0) {
             tableBody.html(
                 '<tr><td colspan="5" style="text-align: center;">ยังไม่มีสายรอในคิว</td></tr>');
-            await div_queue_status_chart.setOption(queue_status_chart(0, 0));
+            div_queue_status_chart.setOption(queue_status_chart(0));
         }
         //console.log(waitData);
     });
@@ -871,7 +957,7 @@
     });
 
 
-    $(document).ready(async () => {
+    $(document).ready(() => {
 
         if (storedOption) {
             selectElement.val(storedOption);
@@ -889,8 +975,8 @@
         setInterval(sla_count, 30000);
 
         div_agent_status_chart.setOption(agent_status_chart(0, 0, 0, 0));
-        await div_queue_status_chart.setOption(queue_status_chart(waiting_total, 0));
-        await div_queue_status_chart_talk.setOption(queue_status_chart(active_call, 1));
+        div_queue_status_chart.setOption(queue_status_chart(waiting_total));
+        div_queue_status_chart_talk.setOption(queue_status_chart_talk(active_call));
         window.addEventListener('resize', div_agent_status_chart.resize);
         window.addEventListener('resize', div_queue_status_chart.resize);
         window.addEventListener('resize', div_queue_status_chart_talk.resize);
