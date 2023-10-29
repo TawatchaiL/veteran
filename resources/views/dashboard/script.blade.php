@@ -714,7 +714,7 @@
         await delete waitData[response.data.uniqueid];
         if (Object.keys(waitData).length === 0) {
             tableBody.html(
-                '<tr><td colspan="4" style="text-align: center;">ยังไม่มีสายรอในคิว</td></tr>');
+                '<tr><td colspan="5" style="text-align: center;">ยังไม่มีสายรอในคิว</td></tr>');
             waiting_div.html('0');
         }
         //console.log(waitData);
