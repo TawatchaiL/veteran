@@ -960,7 +960,7 @@
     });
 
 
-    $(document).on('click', '.btn_logoff', function(e) {
+    $(document).on('click', '.btn-logoff', function(e) {
         e.preventDefault();
         const lid = $(this).data('id');
         const additionalData = {
