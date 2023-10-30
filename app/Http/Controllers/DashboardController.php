@@ -172,8 +172,9 @@ class DashboardController extends Controller
                     <div class="dropdown-menu" role="menu">
                     <button class="btn dropdown-item btn-pause"  data-id="' . $agent->id . '"><i class="fa-solid fa-user-clock"></i> พัก</button>
                     <button class="btn dropdown-item btn-unpause"  data-id="' . $agent->id . '"><i class="fa-solid fa-user-check"></i> รับสายต่อ</button>
-                    <button class="btn dropdown-item btn-insert"  data-id="' . $agent->phone . '"><i class="fa-solid fa-user-secret"></i> แทรกสาย</button>
-                    <button class="btn dropdown-item btn-spy"  data-id="' . $agent->phone . '"><i class="fa-solid fa-user-group"></i> ดักฟัง</button>
+                    <button class="btn dropdown-item btn-spy"  data-id="' . $agent->phone . '"><i class="fa-solid fa-user-secret"></i> ดักฟัง</button>
+                    <button class="btn dropdown-item btn-whis"  data-id="' . $agent->phone . '"><i class="fa-solid fa-user-group"></i> กระซิบ</button>
+                    <button class="btn dropdown-item btn-barge"  data-id="' . $agent->phone . '"><i class="fa-solid fa-users"></i> แทรกสาย</button>
                     <button class="btn dropdown-item btn-logoff"  data-id="' . $agent->id . '"><i class="fa-solid fa-user-xmark"></i> ออกจากระบบรับสาย</button>
                     <div class="dropdown-divider"></div>
                     <button class="btn dropdown-item btn-logout"  data-id="' . $agent->id . '"><i class="fa-solid fa-power-off"></i> เตะออกจากระบบ</button>

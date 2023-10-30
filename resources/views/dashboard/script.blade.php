@@ -1024,7 +1024,29 @@
 
     });
 
-    $(document).on('click', '.btn-insert', function(e) {
+
+    $(document).on('click', '.btn-whis', function(e) {
+        e.preventDefault();
+        const call_number = $(this).data('id');
+        $.get(`${api_serv}/spy/` + call_number + "/" + exten + "/" + account_code+ "/w", (data, status) => {
+            if (status == 'success') {
+                const prom = ezBSAlert({
+                    headerText: "OK",
+                    messageText: "กระซิบ สำเร็จ",
+                    alertType: "success",
+                });
+            } else {
+                const prom = ezBSAlert({
+                    headerText: "Error",
+                    messageText: "กระซิบ ไม่สำเร็จ",
+                    alertType: "danger",
+                });
+            }
+        });
+
+    });
+
+    $(document).on('click', '.btn-barge', function(e) {
         e.preventDefault();
         const call_number = $(this).data('id');
         $.get(`${api_serv}/spy/` + call_number + "/" + exten + "/" + account_code+ "/B", (data, status) => {
