@@ -677,6 +677,53 @@
             $('#CreateModal').modal('show');
         })
 
+        $('#SubmitCommentForm').click(function(e) {
+            if (!confirm("ยืนยันการทำรายการ ?")) return;
+            e.preventDefault();
+
+            $('.alert-danger').html('');
+            $('.alert-danger').hide();
+            $('.alert-success').html('');
+            $('.alert-success').hide();
+
+            var additionalData = {
+                case_id: id,
+                comment: $('#cComment').val()
+            };
+            $.ajax({
+                url: "casescomment/save/" + id,
+                method: 'PUT',
+                data: additionalData,
+
+                success: function(result) {
+                    //console.log(result);
+                    if (result.errors) {
+                        $('.alert-danger').html('');
+                        $.each(result.errors, function(key, value) {
+                            $('.alert-danger').show();
+                            $('.alert-danger').append('<strong><li>' + value +
+                                '</li></strong>');
+                        });
+                    } else {
+                        $('.alert-danger').hide();
+                        $('.alert-success').show();
+                        $('.alert-success').append('<strong><li>' + result.success +
+                            '</li></strong>');
+                        $('#CommmentModal').modal('hide');
+                        toastr.success(result.success, {
+                            timeOut: 5000
+                        });
+                        $('#Listview').DataTable().ajax.reload();
+                        //setTimeout(function() {
+                        //$('.alert-success').hide();
+
+                        //}, 10000);
+
+                    }
+                }
+            });
+        });
+
         $('#SubmitEditForm').click(function(e) {
             if (!confirm("ยืนยันการทำรายการ ?")) return;
             e.preventDefault();
