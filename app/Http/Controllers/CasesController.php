@@ -265,7 +265,13 @@ class CasesController extends Controller
     {
         $data = CrmCaseComment::where('case_id', $id)->get();
 
-        return response()->json(['data' => $data]);
+        $template = 'cases.commentlist';
+        $htmlContent = View::make($template, [
+            'casecomment' => $data
+        ])->render();
+        return response()->json(['html' =>  $htmlContent,]);
+        
+        //return response()->json(['data' => $data]);
 
     }
 
