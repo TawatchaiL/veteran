@@ -669,7 +669,7 @@
                 }
             });
             $.ajax({
-            url: '{{ route('contacts.popup_content') }}',
+            url: '{{ route('cases.records') }}',
             type: 'POST',
             data: {
                 cardId: '2222'
