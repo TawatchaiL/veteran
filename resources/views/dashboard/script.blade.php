@@ -504,8 +504,7 @@
                 queue_name = response.queue_arr;
 
             },
-            error: function(xhr, status, error) {
-            }
+            error: function(xhr, status, error) {}
         });
     }
 
@@ -942,12 +941,41 @@
     });
 
 
+    const sendAjaxRequest = (url, method, data = {}) => {
+        $.ajax({
+            url,
+            method,
+            data,
+            async: false,
+        });
+    };
+
+
     $(document).on('change', '#modal_sla', function(e) {
         e.preventDefault();
         let sla = $('#modal_sla').val();
         localStorage.setItem('sla_setting',
             sla);
         updateSLAData();
+    });
+
+
+    $(document).on('click', '.btn_logoff', function(e) {
+        e.preventDefault();
+        const lid = $(this).data('id');
+        const additionalData = {
+            id: lid,
+        };
+        ezBSAlert({
+            type: "confirm",
+            headerText: "Confirm",
+            messageText: "ยืนยันการเตะ Agent ออกจากระบบรับสาย?",
+            alertType: "info",
+        }).done(function(r) {
+            if (r == true) {
+                sendAjaxRequest("{{ route('sup.logoff_agent') }}", "POST", additionalData);
+            }
+        });
     });
 
 

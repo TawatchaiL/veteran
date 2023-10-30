@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -620,6 +621,40 @@ class PBXController extends Controller
             ];
         } else {
             return ['error' => false, 'message' => 'error'];
+        }
+    }
+
+
+    public function logoffAgentFromQueuebySup(Request $request)
+    {
+        $id = $request->get('id');
+        $user = User::find($id);
+
+        if ($user) {
+
+            //check if not already logoff
+            if ($user->phone_status_id !== 0) {
+                $user->phone_status_id = 0;
+                $user->phone_status = "ไม่พร้อมรับสาย";
+                $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-xmark"></i>';
+                $user->logoff_time = Carbon::now();
+                $user->save();
+
+                $ret = $this->issable->agent_logoff($user->phone);
+
+                if ($ret == true) {
+                    return [
+                        'success' => true,
+                        'id' => $user->phone_status_id,
+                        'message' => $user->phone_status,
+                        'icon' => $user->phone_status_icon
+                    ];
+                } else {
+                    return ['success' => false, 'message' => 'login error'];
+                }
+            } else {
+                return ['success' => false, 'message' => 'logoff error'];
+            }
         }
     }
 }

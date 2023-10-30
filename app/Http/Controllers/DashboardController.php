@@ -165,12 +165,12 @@ class DashboardController extends Controller
                     <span class="sr-only">Toggle Dropdown</span>
                     </button>
                     <div class="dropdown-menu" role="menu">
-                    <button class="btn dropdown-item btn-pause"  data-rowid="' . $agent->phone . '"><i class="fa-solid fa-user-clock"></i> พัก</button>
-                    <button class="btn dropdown-item btn-unpause"  data-rowid="' . $agent->phone . '"><i class="fa-solid fa-user-check"></i> รับสายต่อ</button>
-                    <button class="btn dropdown-item btn-spy"  data-rowid="' . $agent->phone . '"><i class="fa-solid fa-user-secret"></i> แทรกสาย</button>
-                    <button class="btn dropdown-item btn-insert"  data-rowid="' . $agent->phone . '"><i class="fa-solid fa-user-group"></i> ดักฟัง</button>
+                    <button class="btn dropdown-item btn-pause"  data-id="' . $agent->id . '"><i class="fa-solid fa-user-clock"></i> พัก</button>
+                    <button class="btn dropdown-item btn-unpause"  data-id="' . $agent->id . '"><i class="fa-solid fa-user-check"></i> รับสายต่อ</button>
+                    <button class="btn dropdown-item btn-insert"  data-id="' . $agent->id . '"><i class="fa-solid fa-user-secret"></i> ดักฟัง</button>
+                    <button class="btn dropdown-item btn-spy"  data-id="' . $agent->id . '"><i class="fa-solid fa-user-group"></i> แทรกสาย</button>
                     <div class="dropdown-divider"></div>
-                    <abutton class="btn dropdown-item btn-logoff"  data-rowid="' . $agent->phone . '"><i class="fa-solid fa-user-xmark"></i> เตะออกจากระบบ</abutton>
+                    <abutton class="btn dropdown-item btn-logoff"  data-id="' . $agent->id . '"><i class="fa-solid fa-user-xmark"></i> เตะออกจากระบบ</abutton>
                     </div>
                     </div>';
                 }
