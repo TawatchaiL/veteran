@@ -1017,6 +1017,24 @@
         });
     });
 
+    $(document).on('click', '.btn-unpause', function(e) {
+        e.preventDefault();
+        const pid = $(this).data('id');
+        const additionalData = {
+            id: pid,
+        };
+        ezBSAlert({
+            type: "confirm",
+            headerText: "Confirm",
+            messageText: "ยืนยันการหยุดพักสาย Agent?",
+            alertType: "info",
+        }).done(function(r) {
+            if (r == true) {
+                sendAjaxRequest("{{ route('sup.unbreak_agent') }}", "POST", additionalData);
+            }
+        });
+    });
+
 
     $(document).ready(() => {
 
