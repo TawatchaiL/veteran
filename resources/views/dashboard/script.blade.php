@@ -1013,7 +1013,6 @@
                     messageText: "ดักฟัง สำเร็จ",
                     alertType: "success",
                 });
-                dial_number.val('');
             } else {
                 const prom = ezBSAlert({
                     headerText: "Error",
