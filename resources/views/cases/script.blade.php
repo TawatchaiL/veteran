@@ -443,6 +443,7 @@
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
+            $('.form').trigger('reset');
             actions = 'add';
             //_token: token
             $('#Hn').on('input', function() {
@@ -583,6 +584,7 @@
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
+            $('.form').trigger('reset');
             actions = 'edit';
             id = $(this).data('id');
             $.ajax({
