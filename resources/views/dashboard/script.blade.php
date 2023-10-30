@@ -1002,7 +1002,7 @@
         e.preventDefault();
         const pid = $(this).data('id');
         const additionalData = {
-            id: lid,
+            id: pid,
             id_break: 6,
         };
         ezBSAlert({
