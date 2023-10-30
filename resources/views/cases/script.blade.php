@@ -686,7 +686,7 @@
                 }
             });
             $('#CreateModal').modal('show');
-        })
+        });
 
         $('#SubmitCommentForm').click(function(e) {
             if (!confirm("ยืนยันการทำรายการ ?")) return;
