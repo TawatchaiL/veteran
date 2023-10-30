@@ -669,16 +669,16 @@
                 }
             });
             $.ajax({
-            url: '{{ route('contacts.popup_content') }}',
+            url: '{{ route('cases.records') }}',
             type: 'POST',
             data: {
-                cardId: '2222'
+                id: '5'
             },
             success: async function(response) {
                 alert(response.html);
                 //$('#' + cardId).removeClass('card-danger');
                 //$('#' + cardId).addClass('card-success');
-                await $('listlog').html(response.html);
+                await $('#listlog').html(response.html);
                 //$(".card-footer").css("display", "block")
                 //$('.bclose').css('display', 'none');
                 }
