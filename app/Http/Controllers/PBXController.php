@@ -598,7 +598,12 @@ class PBXController extends Controller
             Auth::logout();
             return 1;
         } else {
-            return 0;
+            return [
+                'success' => true,
+                'id' => $user->phone_status_id,
+                'message' => $user->phone_status,
+                'icon' => $user->phone_status_icon
+            ];
         }
     }
 
@@ -640,8 +645,8 @@ class PBXController extends Controller
                 $user->phone_status = "ไม่พร้อมรับสาย";
                 $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-xmark"></i>';
                 $user->logoff_time = Carbon::now();
-                $user->agent_id = 0;
-                $user->phone = '';
+                //$user->agent_id = 0;
+                //$user->phone = '';
                 $user->save();
 
                 if ($ret == true) {

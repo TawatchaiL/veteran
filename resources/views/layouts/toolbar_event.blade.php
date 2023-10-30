@@ -184,6 +184,9 @@
                         const errorMessage = "คุณถูกเตะออกจากระบบ กรุณาล็อกอิน";
                         const encodedErrorMessage = encodeURIComponent(errorMessage);
                         window.location.replace(`${web_url}/login?error=${encodedErrorMessage}`);
+                    } else {
+                        set_state_icon(result.id, result.icon, result.message);
+                        set_state_button(result.id);
                     }
 
                 }
