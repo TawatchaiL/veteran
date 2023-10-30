@@ -634,13 +634,15 @@ class PBXController extends Controller
 
             //check if not already logoff
             if ($user->phone_status_id !== 0) {
+                $ret = $this->issable->agent_logoff($user->phone);
+
                 $user->phone_status_id = 0;
                 $user->phone_status = "ไม่พร้อมรับสาย";
                 $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-xmark"></i>';
                 $user->logoff_time = Carbon::now();
+                $user->agent_id = 0;
+                $user->phone = '';
                 $user->save();
-
-                $ret = $this->issable->agent_logoff($user->phone);
 
                 if ($ret == true) {
                     return [
