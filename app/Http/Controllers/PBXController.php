@@ -704,4 +704,32 @@ class PBXController extends Controller
             return ['error' => false, 'message' => 'error'];
         }
     }
+
+    public function AgentUnBreakbySup(Request $request)
+    {
+
+        $id = $request->get('id');
+        $user = User::find($id);
+
+        if ($user) {
+
+            $ret = $this->issable->agent_unbreak($user->phone);
+
+            $user->phone_status_id = 1;
+            $user->phone_status = "พร้อมรับสาย";
+            $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
+            $user->save();
+
+            if ($ret == true) {
+                return [
+                    'success' => true,
+                ];
+            } else {
+                return ['success' => false, 'message' => 'login error'];
+            }
+        } else {
+            return ['error' => false, 'message' => 'error'];
+        }
+    }
+
 }
