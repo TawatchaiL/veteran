@@ -157,6 +157,7 @@ class DashboardController extends Controller
                     $agent_offline[] = $agent->id;
                     $offline++;
                     $div = $agent->id;
+                    $button = '';
                 } else {
                     $div = $agent->phone;
                     $button = '<div class="btn-group">
