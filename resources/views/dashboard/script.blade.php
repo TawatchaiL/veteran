@@ -998,6 +998,25 @@
         });
     });
 
+    $(document).on('click', '.btn-pause', function(e) {
+        e.preventDefault();
+        const pid = $(this).data('id');
+        const additionalData = {
+            id: lid,
+            id_break: 6,
+        };
+        ezBSAlert({
+            type: "confirm",
+            headerText: "Confirm",
+            messageText: "ยืนยันการพักสาย Agent?",
+            alertType: "info",
+        }).done(function(r) {
+            if (r == true) {
+                sendAjaxRequest("{{ route('sup.break_agent') }}", "POST", additionalData);
+            }
+        });
+    });
+
 
     $(document).ready(() => {
 

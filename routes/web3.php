@@ -38,6 +38,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/agent_kick', [App\Http\Controllers\PBXController::class, 'AgentKick'])->name('agent.kick');
     Route::post('/pause_list', [App\Http\Controllers\PBXController::class, 'pause_list'])->name('pause_list');
     Route::post('/sup_logoff_agent', [App\Http\Controllers\PBXController::class, 'logoffAgentFromQueuebySup'])->name('sup.logoff_agent');
+    Route::post('/sup_break_agent', [App\Http\Controllers\PBXController::class, 'AgentBreakbySup'])->name('sup.break_agent');
 
     Route::post('/agent_list', [App\Http\Controllers\DashboardController::class, 'getAgentList'])->name('dashboard.agent_list');
     Route::post('/avg_data', [App\Http\Controllers\DashboardController::class, 'dashboard_avg_data'])->name('dashboard.avg_data');

@@ -665,4 +665,43 @@ class PBXController extends Controller
             }
         }
     }
+
+    public function AgentBreakbySup(Request $request)
+    {
+
+        $id = $request->get('id');
+        $user = User::find($id);
+
+        if ($user) {
+
+            $ret = $this->issable->agent_break($user->phone, $request->get('id_break'));
+
+            DB::connection('remote_connection')
+                ->table('call_center.audit')
+                ->where('id_agent', $user->agent_id)
+                ->whereNotNull('id_break')
+                ->whereNull('datetime_end')
+                ->update(['crm_id' => $user->id]);
+
+            $resultb = DB::connection('remote_connection')
+                ->table('call_center.break')
+                ->where('id', $request->get('id_break'))
+                ->first();
+
+            $user->phone_status_id = 2;
+            $user->phone_status =  $resultb->name;
+            $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-clock"></i>';
+            $user->save();
+
+            if ($ret == true) {
+                return [
+                    'success' => true,
+                ];
+            } else {
+                return ['success' => false, 'message' => 'login error'];
+            }
+        } else {
+            return ['error' => false, 'message' => 'error'];
+        }
+    }
 }
