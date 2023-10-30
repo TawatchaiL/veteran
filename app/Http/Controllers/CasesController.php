@@ -239,7 +239,7 @@ class CasesController extends Controller
             'comment' => 'required|string|max:100',
         ];
         $valimess = [
-            'casecommentid1.required' => 'กรุณากรอกข้อมูล',
+            'comment.required' => 'กรุณากรอกข้อมูล',
         ];
         $validator =  Validator::make($request->all(), $valifield, $valimess);
 
