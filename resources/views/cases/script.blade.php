@@ -680,13 +680,13 @@
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
-
+            
             var additionalData = {
                 case_id: id,
                 comment: $('#cComment').val()
             };
             $.ajax({
-                url: "casescomment/save/" + id,
+                url: "cases/casecomment/" + id,
                 method: 'PUT',
                 data: additionalData,
 
