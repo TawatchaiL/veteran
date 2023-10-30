@@ -709,7 +709,7 @@
                         $('.alert-success').show();
                         $('.alert-success').append('<strong><li>' + result.success +
                             '</li></strong>');
-                        $('#CommmentModal').modal('hide');
+                        $('#CreateModal').modal('hide');
                         toastr.success(result.success, {
                             timeOut: 5000
                         });
