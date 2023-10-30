@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <h4 class="modal-title"><i class="fa-regular fa-clipboard"></i> เพิ่ม เรื่องที่ติดต่อ</h4>
+                <h4 class="modal-title" id="topiccase"><i class="fa-regular fa-clipboard"></i> เพิ่ม เรื่องที่ติดต่อ</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
