@@ -169,8 +169,9 @@ class DashboardController extends Controller
                     <button class="btn dropdown-item btn-unpause"  data-id="' . $agent->id . '"><i class="fa-solid fa-user-check"></i> รับสายต่อ</button>
                     <button class="btn dropdown-item btn-insert"  data-id="' . $agent->id . '"><i class="fa-solid fa-user-secret"></i> ดักฟัง</button>
                     <button class="btn dropdown-item btn-spy"  data-id="' . $agent->id . '"><i class="fa-solid fa-user-group"></i> แทรกสาย</button>
+                    <button class="btn dropdown-item btn-logoff"  data-id="' . $agent->id . '"><i class="fa-solid fa-user-xmark"></i> ออกจากระบบรับสาย</button>
                     <div class="dropdown-divider"></div>
-                    <abutton class="btn dropdown-item btn-logoff"  data-id="' . $agent->id . '"><i class="fa-solid fa-user-xmark"></i> เตะออกจากระบบ</abutton>
+                    <button class="btn dropdown-item btn-logout"  data-id="' . $agent->id . '"><i class="fa-solid fa-power-off"></i> เตะออกจากระบบ</button>
                     </div>
                     </div>';
                 }

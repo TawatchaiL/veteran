@@ -633,6 +633,7 @@ class PBXController extends Controller
     public function logoffAgentFromQueuebySup(Request $request)
     {
         $id = $request->get('id');
+        $logout = $request->get('logout');
         $user = User::find($id);
 
         if ($user) {
@@ -645,16 +646,16 @@ class PBXController extends Controller
                 $user->phone_status = "ไม่พร้อมรับสาย";
                 $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-xmark"></i>';
                 $user->logoff_time = Carbon::now();
-                //$user->agent_id = 0;
-                //$user->phone = '';
+                if ($logout == 1) {
+                    $user->agent_id = 0;
+                    $user->phone = '';
+                    $user->login_time = Carbon::now();
+                }
                 $user->save();
 
                 if ($ret == true) {
                     return [
                         'success' => true,
-                        'id' => $user->phone_status_id,
-                        'message' => $user->phone_status,
-                        'icon' => $user->phone_status_icon
                     ];
                 } else {
                     return ['success' => false, 'message' => 'login error'];

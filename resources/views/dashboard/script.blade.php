@@ -965,6 +965,26 @@
         const lid = $(this).data('id');
         const additionalData = {
             id: lid,
+            logout: 0,
+        };
+        ezBSAlert({
+            type: "confirm",
+            headerText: "Confirm",
+            messageText: "ยืนยันการออกจากระบบรับสาย?",
+            alertType: "info",
+        }).done(function(r) {
+            if (r == true) {
+                sendAjaxRequest("{{ route('sup.logoff_agent') }}", "POST", additionalData);
+            }
+        });
+    });
+
+    $(document).on('click', '.btn-logout', function(e) {
+        e.preventDefault();
+        const lid = $(this).data('id');
+        const additionalData = {
+            id: lid,
+            logout: 1,
         };
         ezBSAlert({
             type: "confirm",
