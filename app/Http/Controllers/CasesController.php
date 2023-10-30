@@ -261,8 +261,9 @@ class CasesController extends Controller
         //return response()->json(['success' => $user->id]);
     }
 
-    public function records($id)
+    public function records(Request $request)
     {
+        $id = $request->input('id');
         $data = CrmCaseComment::where('case_id', $id)->get();
 
         $template = 'cases.commentlist';
@@ -270,7 +271,7 @@ class CasesController extends Controller
             'casecomment' => $data
         ])->render();
         return response()->json(['html' =>  $htmlContent,]);
-        
+
         //return response()->json(['data' => $data]);
 
     }

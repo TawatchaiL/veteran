@@ -674,7 +674,7 @@
             async: false,
             type: 'POST',
             data: {
-                cardId: cardId
+                id: id
             },
             success: async function(response) {
                 //$('#' + cardId).removeClass('card-danger');
