@@ -713,7 +713,6 @@ class PBXController extends Controller
 
         if ($user) {
 
-            $ret = $this->issable->agent_unbreak($user->phone);
 
             if ($user->phone_status == "Warp UP") {
                 $resultb = DB::connection('remote_connection')
@@ -755,6 +754,7 @@ class PBXController extends Controller
                     ]);
             }
 
+            $ret = $this->issable->agent_unbreak($user->phone);
             $user->phone_status_id = 1;
             $user->phone_status = "พร้อมรับสาย";
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
