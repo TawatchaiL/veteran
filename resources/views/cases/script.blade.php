@@ -680,7 +680,7 @@
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
-
+alert(id);
             var additionalData = {
                 case_id: id,
                 comment: $('#cComment').val()
