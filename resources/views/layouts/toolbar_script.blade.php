@@ -804,11 +804,22 @@
                         state_color = 'card-danger';
                         check_box_state = 'disabled';
                     } else if (strArray[4] == 'Up' && strArray[12] == '') {
-                        state = 'กำลังรอสาย'
-                        state_icon =
-                            '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
-                        state_color = 'card-danger';
-                        check_box_state = 'disabled';
+                        if (strArray[5] == "ChanSpy") {
+                            spy_exten = strArray[5].split(',');
+                            mcallexten = spy_exten[0]
+                            state = 'กำลังดักฟัง'
+                            state_icon =
+                                '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
+                            state_color = 'card-danger';
+                            check_box_state = 'disabled';
+                        } else {
+                            state = 'กำลังรอสาย'
+                            state_icon =
+                                '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
+                            state_color = 'card-danger';
+                            check_box_state = 'disabled';
+                        }
+
                     } else if (strArray[4] == 'Up') {
                         state = 'กำลังสนทนา'
                         state_icon =
