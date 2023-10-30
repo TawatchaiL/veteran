@@ -669,6 +669,21 @@
                 }
             });
 
+            $.ajax({
+            url: '{{ route('cases.records') }}',
+            async: false,
+            type: 'POST',
+            data: {
+                id: id
+            },
+            success: function(response) {
+                //$('#' + cardId).removeClass('card-danger');
+                //$('#' + cardId).addClass('card-success');
+                $('#listlog').html(response.html);
+                //$(".card-footer").css("display", "block")
+                //$('.bclose').css('display', 'none');
+                }
+            });
             $('#CreateModal').modal('show');
         });
 
