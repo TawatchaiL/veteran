@@ -1006,7 +1006,7 @@
     $(document).on('click', '.btn-spy', function(e) {
         e.preventDefault();
         const call_number = $(this).data('id');
-        $.get(`${api_serv}/spy/` + call_number + "/" + exten + "/" + account_code, (data, status) => {
+        $.get(`${api_serv}/spy/` + call_number + "/" + exten + "/" + account_code+ "/o", (data, status) => {
             if (status == 'success') {
                 const prom = ezBSAlert({
                     headerText: "OK",
@@ -1017,6 +1017,27 @@
                 const prom = ezBSAlert({
                     headerText: "Error",
                     messageText: "ดักฟัง ไม่สำเร็จ",
+                    alertType: "danger",
+                });
+            }
+        });
+
+    });
+
+    $(document).on('click', '.btn-insert', function(e) {
+        e.preventDefault();
+        const call_number = $(this).data('id');
+        $.get(`${api_serv}/spy/` + call_number + "/" + exten + "/" + account_code+ "/B", (data, status) => {
+            if (status == 'success') {
+                const prom = ezBSAlert({
+                    headerText: "OK",
+                    messageText: "แทรหสาย สำเร็จ",
+                    alertType: "success",
+                });
+            } else {
+                const prom = ezBSAlert({
+                    headerText: "Error",
+                    messageText: "แทรหสาย ไม่สำเร็จ",
                     alertType: "danger",
                 });
             }
