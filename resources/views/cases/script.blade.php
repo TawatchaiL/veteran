@@ -672,7 +672,7 @@
             url: '{{ route('cases.records') }}',
             type: 'POST',
             data: {
-                cardId: '2222'
+                id: '5'
             },
             success: async function(response) {
                 alert(response.html);
