@@ -715,6 +715,46 @@ class PBXController extends Controller
 
             $ret = $this->issable->agent_unbreak($user->phone);
 
+            if ($user->phone_status == "Warp UP") {
+                $resultb = DB::connection('remote_connection')
+                    ->table('call_center.wrap_data')
+                    ->where('id_agent', $user->agent_id)
+                    ->whereNull('wrap_end')
+                    ->first();
+
+                $wrap_end = Carbon::now();
+                $wrap_start = Carbon::parse($resultb->wrap_start);
+
+                $duration = $wrap_start->diffInSeconds($wrap_end);
+
+                DB::connection('remote_connection')
+                    ->table('call_center.wrap_data')
+                    ->where('id_agent', $user->agent_id)
+                    ->whereNull('wrap_end')
+                    ->update([
+                        'wrap_end' => $wrap_end,
+                        'duration' => $duration,
+                    ]);
+
+                DB::connection('remote_connection')
+                    ->table('call_center.call_entry')
+                    ->where('uniqueid', $resultb->uniqid)
+                    ->update([
+                        'crm_id' => $user->id,
+                        //'duration_hold' => $hold_duration,
+                        'duration_warp' => $duration
+                    ]);
+
+                DB::connection('remote_connection')
+                    ->table('call_center.call_entry_today')
+                    ->where('uniqueid', $resultb->uniqid)
+                    ->update([
+                        'crm_id' => $user->id,
+                        //'duration_hold' => $hold_duration,
+                        'duration_warp' => $duration
+                    ]);
+            }
+
             $user->phone_status_id = 1;
             $user->phone_status = "พร้อมรับสาย";
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
@@ -731,5 +771,4 @@ class PBXController extends Controller
             return ['error' => false, 'message' => 'error'];
         }
     }
-
 }
