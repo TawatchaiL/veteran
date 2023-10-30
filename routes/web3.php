@@ -29,6 +29,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/agent_unwarp', [App\Http\Controllers\PBXController::class, 'AgentUnWarp'])->name('agent.unwarp');
     Route::post('/agent_ring', [App\Http\Controllers\PBXController::class, 'AgentRing'])->name('agent.ring');
     Route::post('/agent_talk', [App\Http\Controllers\PBXController::class, 'AgentTalk'])->name('agent.talk');
+    Route::post('/agent_spy', [App\Http\Controllers\PBXController::class, 'AgentSpy'])->name('agent.spy');
     Route::post('/agent_hold', [App\Http\Controllers\PBXController::class, 'AgentHold'])->name('agent.hold');
     Route::post('/agent_unhold', [App\Http\Controllers\PBXController::class, 'AgentUNHold'])->name('agent.unhold');
     Route::post('/agent_hang', [App\Http\Controllers\PBXController::class, 'AgentHang'])->name('agent.hang');

@@ -1006,8 +1006,13 @@
     $(document).on('click', '.btn-spy', function(e) {
         e.preventDefault();
         const call_number = $(this).data('id');
+        const additionalData = {
+            telno: call_number,
+            mode: 'ดักฟัง'
+        };
         $.get(`${api_serv}/spy/` + call_number + "/" + exten + "/" + account_code+ "/o", (data, status) => {
             if (status == 'success') {
+                sendAjaxRequest("{{ route('agent.spy') }}", "POST", additionalData);
                 const prom = ezBSAlert({
                     headerText: "OK",
                     messageText: "ดักฟัง สำเร็จ",
@@ -1028,8 +1033,13 @@
     $(document).on('click', '.btn-whis', function(e) {
         e.preventDefault();
         const call_number = $(this).data('id');
+        const additionalData = {
+            telno: call_number,
+            mode: 'กระซิบ'
+        };
         $.get(`${api_serv}/spy/` + call_number + "/" + exten + "/" + account_code+ "/w", (data, status) => {
             if (status == 'success') {
+                sendAjaxRequest("{{ route('agent.spy') }}", "POST", additionalData);
                 const prom = ezBSAlert({
                     headerText: "OK",
                     messageText: "กระซิบ สำเร็จ",
@@ -1049,8 +1059,13 @@
     $(document).on('click', '.btn-barge', function(e) {
         e.preventDefault();
         const call_number = $(this).data('id');
+        const additionalData = {
+            telno: call_number,
+            mode: 'แทรกสาย'
+        };
         $.get(`${api_serv}/spy/` + call_number + "/" + exten + "/" + account_code+ "/B", (data, status) => {
             if (status == 'success') {
+                sendAjaxRequest("{{ route('agent.spy') }}", "POST", additionalData);
                 const prom = ezBSAlert({
                     headerText: "OK",
                     messageText: "แทรกสาย สำเร็จ",

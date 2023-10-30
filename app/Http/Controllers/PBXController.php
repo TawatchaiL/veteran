@@ -302,6 +302,26 @@ class PBXController extends Controller
         }
     }
 
+
+    public function AgentSpy(Request $request)
+    {
+
+        $user = Auth::user();
+
+        if ($user) {
+
+            $user->phone_status_id = 5;
+            $user->phone_status = "กำลัง " . $request->input('mode') . " < " . $request->input('telno') . " >";
+            $user->phone_status_icon = '<i class="fa-solid fa-phone-volume fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i>';
+            $user->save();
+            return [
+                'success' => true,
+            ];
+        } else {
+            return ['error' => false, 'message' => 'error'];
+        }
+    }
+
     public function AgentHold(Request $request)
     {
 
