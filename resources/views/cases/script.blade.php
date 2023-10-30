@@ -668,7 +668,7 @@
                     $('#cCasestatus').text(res.data.casestatus);
                 }
             });
-
+alert(id);
             $.ajax({
             url: '{{ route('cases.records') }}',
             async: false,
@@ -677,6 +677,7 @@
                 id: id
             },
             success: async function(response) {
+                alert(response);
                 //$('#' + cardId).removeClass('card-danger');
                 //$('#' + cardId).addClass('card-success');
                 await $('#listlog').html(response.html);
