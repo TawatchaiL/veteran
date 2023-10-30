@@ -255,7 +255,7 @@
                 axisLabel: {
                     distance: 30,
                     color: '#999',
-                    fontSize: 15
+                    fontSize: 20
                 },
                 title: {
                     show: false
@@ -276,7 +276,7 @@
                     },
                     rich: {
                         value: {
-                            fontSize: 30,
+                            fontSize: 35,
                             fontWeight: 'bolder',
                             color: '#777'
                         },
@@ -346,7 +346,7 @@
                 axisLabel: {
                     distance: 30,
                     color: '#999',
-                    fontSize: 15
+                    fontSize: 20
                 },
                 title: {
                     show: false
@@ -367,7 +367,7 @@
                     },
                     rich: {
                         value: {
-                            fontSize: 30,
+                            fontSize: 35,
                             fontWeight: 'bolder',
                             color: '#777'
                         },
