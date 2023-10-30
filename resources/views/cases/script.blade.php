@@ -674,12 +674,12 @@
             async: false,
             type: 'POST',
             data: {
-                id: id
+                id: '1'
             },
             success: function(response) {
                 //$('#' + cardId).removeClass('card-danger');
                 //$('#' + cardId).addClass('card-success');
-                $('#listlog').html(response.html);
+                await $('#listlog').html(response.html);
                 //$(".card-footer").css("display", "block")
                 //$('.bclose').css('display', 'none');
                 }
