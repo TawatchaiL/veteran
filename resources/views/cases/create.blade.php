@@ -47,8 +47,8 @@
                                     aria-selected="true">แสดงความคิดเห็นเรื่องที่ติดต่อ</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="custom-tabs-one-comment-tab" data-toggle="pill"
-                                    href="#custom-tabs-one-comment" role="tab" aria-controls="custom-tabs-one-comment"
+                                <a class="nav-link" id="custom-tabs-one-commentlog-tab" data-toggle="pill"
+                                    href="#custom-tabs-one-commentlog" role="tab" aria-controls="custom-tabs-one-commentlog"
                                     aria-selected="true">แสดงความคิดเห็นเรื่องที่ติดต่อ</a>
                             </li>
                             {{-- <li class="nav-item">
