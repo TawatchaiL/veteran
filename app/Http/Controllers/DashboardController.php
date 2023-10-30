@@ -100,10 +100,10 @@ class DashboardController extends Controller
             ->table('call_center.call_entry_today')
             ->select(
                 'queue_number',
-                DB::raw('(COUNT(*) / (SELECT COUNT(*) FROM call_entry_today)) * 100 AS percentage'),
+                DB::raw('(COUNT(*) / (SELECT COUNT(*) FROM call_entry_today where queue_number = ' . $request->get('queue') . ')) * 100 AS percentage'),
             )
             ->where('duration_wait', '<=', $sla) // Use the <= operator
-            ->where('queue_number', $request->get('queue'))
+            //->where('queue_number', $request->get('queue'))
             ->groupBy('queue_number')
             ->get();
 
