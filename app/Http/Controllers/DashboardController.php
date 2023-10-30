@@ -157,7 +157,11 @@ class DashboardController extends Controller
                     $agent_offline[] = $agent->id;
                     $offline++;
                     $div = $agent->id;
-                    $button = '';
+                    $button = '<div class="btn-group">
+                    <button type="button" class="btn btn-default" disabled>Action</button>
+                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                    <span class="sr-only">Toggle Dropdown</span>
+                    </button></div>';
                 } else {
                     $div = $agent->phone;
                     $button = '<div class="btn-group">
