@@ -41,6 +41,11 @@
                                     href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home"
                                     aria-selected="true">ข้อมูลเรื่องที่ติดต่อ</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" id="custom-tabs-one-comment-tab" data-toggle="pill"
+                                    href="#custom-tabs-one-comment" role="tab" aria-controls="custom-tabs-one-comment"
+                                    aria-selected="true">ข้อมูลเรื่องที่ติดต่อ</a>
+                            </li>
                             {{-- <li class="nav-item">
                                 <a class="nav-link" id="custom-tabs-one-profile-tabp" data-toggle="pill"
                                     href="#custom-tabs-one-profilep" role="tab" aria-controls="custom-tabs-one-profilep"
