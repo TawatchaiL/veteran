@@ -421,6 +421,10 @@
     const dashboard_serv = '{{ config('asterisk.toolbar_serv.address') }}';
     const api_serv = '{{ config('asterisk.api_serv.address') }}';
     const socket = io.connect(`${dashboard_serv}`);
+    const web_url = '{{ url('/') }}';
+    const agent_username = '{{ $temporaryPhone }}';
+    const exten = '{{ $temporaryPhone }}';
+    const account_code = exten;
     const storedOption = localStorage.getItem('selectedOption');
     const storedSLA = localStorage.getItem('sla_setting');
 
@@ -996,6 +1000,29 @@
                 sendAjaxRequest("{{ route('sup.logoff_agent') }}", "POST", additionalData);
             }
         });
+    });
+
+
+    $(document).on('click', '.btn-spy', function(e) {
+        e.preventDefault();
+        const call_number = $(this).data('id');
+        $.get(`${api_serv}/spy/` + call_number + "/" + exten + "/" + account_code, (data, status) => {
+            if (status == 'success') {
+                const prom = ezBSAlert({
+                    headerText: "OK",
+                    messageText: "ดักฟัง สำเร็จ",
+                    alertType: "success",
+                });
+                dial_number.val('');
+            } else {
+                const prom = ezBSAlert({
+                    headerText: "Error",
+                    messageText: "ดักฟัง ไม่สำเร็จ",
+                    alertType: "danger",
+                });
+            }
+        });
+
     });
 
     $(document).on('click', '.btn-pause', function(e) {
