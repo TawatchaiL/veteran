@@ -439,6 +439,7 @@
 
         $(document).on('click', '#CreateButton', function(e) {
             e.preventDefault();
+            $('#topiccase').val('<i class="fa-regular fa-clipboard"></i> เพิ่ม เรื่องที่ติดต่อ');
             $('.alert-danger').html('');
             $('.alert-danger').hide();
             $('.alert-success').html('');
@@ -580,7 +581,7 @@
         let actions;
         $(document).on('click', '#getEditData', function(e) {
             e.preventDefault();
-            $('#topiccase').val('<i class="fa-regular fa-clipboard"></i> เพิ่ม เรื่องที่ติดต่อ');
+            $('#topiccase').val('<i class="fa-regular fa-clipboard"></i> แก้ไข เรื่องที่ติดต่อ');
             $('.alert-danger').html('');
             $('.alert-danger').hide();
             $('.alert-success').html('');
