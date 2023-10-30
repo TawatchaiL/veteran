@@ -670,10 +670,11 @@
             });
 
             $.ajax({
-            url: '{{ route('contacts.popup_content') }}',
+            url: '{{ route('cases.records') }}',
+            async: false,
             type: 'POST',
             data: {
-                cardId: '2222'
+                id: id
             },
             success: function(response) {
                 alert(response);
