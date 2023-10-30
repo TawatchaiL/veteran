@@ -783,7 +783,6 @@
 
 
         $.get(`${api_serv}/chans/` + exten, async (data, status) => {
-            console.log(data)
 
             await data.forEach((item, index) => {
                 let strArray = item.split("!");
