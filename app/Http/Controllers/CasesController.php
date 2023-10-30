@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CrmContact;
 use App\Models\CrmCase;
 use App\Models\Case_type;
+use App\Models\CrmCaseComment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -228,6 +229,36 @@ class CasesController extends Controller
        $company->update($companyd);
 
         return response()->json(['success' => 'แก้ไข เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
+    }
+
+    public function casecomment(Request $request, $id)
+    {
+        $user = Auth::user();
+
+        $valifield =  [
+            'comment' => 'required|string|max:100',
+        ];
+        $valimess = [
+            'casecommentid1.required' => 'กรุณากรอกข้อมูล',
+        ];
+        $validator =  Validator::make($request->all(), $valifield, $valimess);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all()]);
+        }
+
+        $input = $request->all();
+        $input = array_merge($input, ['agent' => $user->phone]);
+        $contract = CrmCaseComment::create($input);
+
+        //$case_id = $request->input('case_id');
+        //$comment = $request->input('comment');
+        //$agent = $user->phone;
+        //$data=array('case_id'=>$case_id,'comment'=>$comment,'agent'=>$agent);
+        //DB::table('crm_case_comments')->insert($data);
+
+        return response()->json(['success' => 'แสดงความคิดเห็น เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
+        //return response()->json(['success' => $user->id]);
     }
 
     public function destroy(Request $request)

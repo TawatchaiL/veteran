@@ -148,12 +148,13 @@ class CasesCommentController extends Controller
     public function update(Request $request, $id)
     {
         $user = Auth::user();
-        $rules = [
-            'comment' => 'required|string|max:20',
-            //'postcode' => 'integer|max:10',
+        $valifield =  [
+            'comment' => 'required|string|max:100',
         ];
-
-        $validator =  Validator::make($request->all(), $rules);
+        $valimess = [
+            'casecommentid1.required' => 'กรุณากรอกข้อมูล',
+        ];
+        $validator =  Validator::make($request->all(), $valifield, $valimess);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);
@@ -169,7 +170,7 @@ class CasesCommentController extends Controller
         //$data=array('case_id'=>$case_id,'comment'=>$comment,'agent'=>$agent);
         //DB::table('crm_case_comments')->insert($data);
 
-        //return response()->json(['success' => 'แสดงความคิดเห็น เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
-        return response()->json(['success' => $user->id]);
+        return response()->json(['success' => 'แสดงความคิดเห็น เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
+        //return response()->json(['success' => $user->id]);
     }
 }

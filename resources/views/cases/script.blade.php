@@ -654,13 +654,7 @@
                     if(res.data.caseid6 != 0){
                         $('#casetype6').val(res.data.caseid6);
                     }
-                }
-            });
-            $.ajax({
-                url: "casescomment/edit/" + id,
-                method: 'GET',
-                async: false,
-                success: function(res) {
+                    //Comment Data
                     $('#cHn').text(res.data.hn);
                     $('#cName').text(res.data.name);
                     $('#cCasetype1').text(res.data.casetype1);
@@ -674,6 +668,7 @@
                     $('#cCasestatus').text(res.data.casestatus);
                 }
             });
+
             $('#CreateModal').modal('show');
         })
 
@@ -691,7 +686,7 @@
                 comment: $('#cComment').val()
             };
             $.ajax({
-                url: "casescomment/save/" + id,
+                url: "cases/casecomment/" + id,
                 method: 'PUT',
                 data: additionalData,
 
