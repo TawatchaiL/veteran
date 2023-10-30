@@ -668,8 +668,20 @@
                     $('#cCasestatus').text(res.data.casestatus);
                 }
             });
-
-        
+            $.ajax({
+            url: '{{ route('contacts.popup_content') }}',
+            type: 'POST',
+            data: {
+                cardId: cardId
+            },
+            success: async function(response) {
+                $('#' + cardId).removeClass('card-danger');
+                $('#' + cardId).addClass('card-success');
+                await $('#pop_' + cardId).html(response.html);
+                $(".card-footer").css("display", "block")
+                $('.bclose').css('display', 'none');
+                }
+            });
             $('#CreateModal').modal('show');
         });
 
