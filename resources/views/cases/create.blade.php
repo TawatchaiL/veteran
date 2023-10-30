@@ -291,7 +291,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row justify-content-end">
-                                            <button type="button" class="btn btn-success" id="SubmitCreateForm"><i class="fas fa-download"></i>
+                                            <button type="button" class="btn btn-success" id="SubmitCommentForm"><i class="fas fa-download"></i>
                                                 บันทึกข้อมูล</button>&nbsp;
                                             <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i
                                                     class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
