@@ -173,8 +173,6 @@
 
                                     </div>
                                 </div>
-
-
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
@@ -204,6 +202,16 @@
                                                     </select>
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <button type="button" class="btn btn-success" id="SubmitCreateForm"><i class="fas fa-download"></i>
+                                                บันทึกข้อมูล</button>
+                                            <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i
+                                                    class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
                                         </div>
 
 
