@@ -691,7 +691,6 @@
         $('#SubmitCommentForm').click(function(e) {
             if (!confirm("ยืนยันการทำรายการ ?")) return;
             e.preventDefault();
-
             $('.alert-danger').html('');
             $('.alert-danger').hide();
             $('.alert-success').html('');
