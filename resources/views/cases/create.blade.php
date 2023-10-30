@@ -289,7 +289,28 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="tab-pane fade" id="custom-tabs-one-commentlog" role="tabpanel"
+                                aria-labelledby="custom-tabs-one-commentlog-tab">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                <table id="ListviewComment" class="display nowrap table table-bordered table-striped table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>การแสดงความคิดเห็น</th>
+                                                            <th>Agent</th>
+                                                            <th>วันที่ทำรายการ</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>  
+                                    </div>
+                                </div>
+                            </div>
                             {{--   <div class="tab-pane fade" id="custom-tabs-one-profilep" role="tabpanel"
                                 aria-labelledby="custom-tabs-one-profile-tabp">
                                 <div class="card">
