@@ -239,7 +239,7 @@ class CasesController extends Controller
             'comment' => 'required|string|max:100',
         ];
         $valimess = [
-            'comment.required' => 'กรุณากรอกข้อมูล',
+            'comment.required' => 'กรุณาแสดงความคิดเห็น',
         ];
         $validator =  Validator::make($request->all(), $valifield, $valimess);
 
@@ -259,6 +259,14 @@ class CasesController extends Controller
 
         return response()->json(['success' => 'แสดงความคิดเห็น เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
         //return response()->json(['success' => $user->id]);
+    }
+
+    public function records($id)
+    {
+        $data = CrmCaseComment::where('case_id', $id)->get();
+
+        return response()->json(['data' => $data]);
+
     }
 
     public function destroy(Request $request)
