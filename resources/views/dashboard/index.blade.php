@@ -21,7 +21,7 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-success"><i
+                                <span class="info-box-icon bg-warning"><i
                                         class="fa-solid fa-arrow-right-to-bracket"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text">สายทั้งหมด</span>
@@ -32,7 +32,7 @@
                         </div>
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-success"><i class="fa-regular fa-thumbs-up"></i></span>
+                                <span class="info-box-icon bg-warning"><i class="fa-regular fa-thumbs-up"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text">สายที่ได้รับ</span>
                                     <span class="info-box-number"><span id="completed">0</span> ครั้ง</span>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-success"><i class="fa-solid fa-phone-slash"></i></span>
+                                <span class="info-box-icon bg-warning"><i class="fa-solid fa-phone-slash"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text">สายที่พลาด</span>
                                     <span class="info-box-number"><span id="abandoned">0</span> ครั้ง</span>
@@ -52,7 +52,7 @@
                         </div>
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-success"><i class="fa-solid fa-percent"></i></span>
+                                <span class="info-box-icon bg-warning"><i class="fa-solid fa-percent"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text"> เปอร์เซ็นต์
                                         สายที่พลาด</span>
@@ -63,7 +63,7 @@
                         </div>
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-success"><i class="fa-regular fa-hourglass"></i></span>
+                                <span class="info-box-icon bg-warning"><i class="fa-regular fa-hourglass"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text">เวลารอสายเฉลี่ย
                                         ต่อสาย</span>
@@ -74,7 +74,7 @@
                         </div>
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-success"><i class="fa-solid fa-headset"></i></span>
+                                <span class="info-box-icon bg-warning"><i class="fa-solid fa-headset"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เวลาที่สนทนาทั้งหมด</span>
                                     <span class="info-box-number"><span id="total_talk">00:00:00</span></span>
@@ -84,7 +84,7 @@
                         </div>
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-success"><i class="fa-solid fa-phone-volume"></i></span>
+                                <span class="info-box-icon bg-warning"><i class="fa-solid fa-phone-volume"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เวลาสนทนาเฉลี่ยต่อสาย</span>
                                     <span class="info-box-number"><span id="avg_talk">00:00:00</span></span>
@@ -94,7 +94,7 @@
                         </div>
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-success"><i class="fa-solid fa-clock"></i></span>
+                                <span class="info-box-icon bg-warning"><i class="fa-solid fa-clock"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เวลารอสายที่นานที่สุด</span>
                                     <span class="info-box-number"><span id="max_wait">00:00:00</span></span>
@@ -106,7 +106,7 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-success"><i class="fa-solid fa-clipboard-question"></i></span>
+                                <span class="info-box-icon bg-warning"><i class="fa-solid fa-clipboard-question"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เคสที่รับแจ้ง</span>
                                     <span class="info-box-number">10 เคส</span>
@@ -119,7 +119,7 @@
 
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-success"><i class="fa-solid fa-clipboard-check"></i></span>
+                                <span class="info-box-icon bg-warning"><i class="fa-solid fa-clipboard-check"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เคสที่ปิดเคสแล้ว</span>
                                     <span class="info-box-number">4 เคส</span>
@@ -130,7 +130,7 @@
                         </div>
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-success"><i class="fa-solid fa-shuffle"></i></i></span>
+                                <span class="info-box-icon bg-warning"><i class="fa-solid fa-shuffle"></i></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เคสที่โอนสาย</span>
                                     <span class="info-box-number">6 เคส</span>
@@ -141,7 +141,7 @@
                         </div>
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
-                                <span class="info-box-icon bg-success"><i class="fa-solid fa-star"></i></span>
+                                <span class="info-box-icon bg-warning"><i class="fa-solid fa-star"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">คะแนนความพึงพอใจ</span>
                                     <span class="info-box-number">10 คะแนน</span>
@@ -437,7 +437,7 @@
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header bg-success" style="padding-bottom: 2em;">
+                <div class="modal-header bg-warning" style="padding-bottom: 2em;">
                     <h4 class="modal-title"><i class="fa-solid fa-gauge-high"></i> SLA Setting</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
