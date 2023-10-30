@@ -166,6 +166,20 @@
             /* toolbar_header.removeClass("bg-primary bg-secondary bg-danger");
             toolbar_header.addClass("bg-warning"); */
         }
+
+        $.ajax({
+            url: "{{ route('agent.status') }}",
+            method: 'post',
+            async: false,
+            data: {
+                _token: token,
+            },
+            success: function(result) {
+                console.log(result)
+                set_state_icon(result.id, result.icon, result.message);
+                set_state_button(result.id);
+            }
+        });
     });
 
     socket.on('qlogoff', data => {
