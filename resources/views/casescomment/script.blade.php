@@ -185,43 +185,6 @@
             //theme: 'bootstrap4'
             placeholder: 'รายละเอียดเคส เพิ่มเติม 3'
         });
-
-        $("#price,#amount,#stock").on("change", function() {
-            var parent = $(this).parent().parent().parent();
-
-            var amount = parent.find('#amount').val();
-            var price = parent.find('#price').val();
-            var sid = parent.find('#stock').val();
-
-            let total_cost = amount * price;
-            parent.find('#total').val(total_cost)
-
-            fatotal();
-            if (sid !== null) {
-                $.ajax({
-                    type: "GET",
-                    dataType: 'JSON',
-                    async: false,
-                    url: "stocks/find/price/" + sid,
-                    success: function(res) {
-                        //console.log(res);
-                        parent.find('#lot_price').html(
-                            `***ควรขายที่ราคา ${res.cost} - ${res.price} บาท `);
-                        if (parseInt(amount) > parseInt(res.remaining)) {
-                            toastr.error('จำนวนที่จะขายมากกว่าจำนวนที่เหลือในล๊อต', {
-                                timeOut: 5000
-                            });
-                            parent.find('#lot_error').html(
-                                '***จำนวนที่จะขายมากกว่าจำนวนที่เหลือในล๊อต');
-                            parent.find('#amount').val('')
-                        } else {
-                            parent.find('#lot_error').html('');
-                        }
-                    }
-                });
-            }
-        });
-
         //$.noConflict();
         var token = ''
         $.ajaxSetup({

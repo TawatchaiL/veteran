@@ -625,6 +625,7 @@
             $.ajax({
                 url: "cases/edit/" + id,
                 method: 'GET',
+                async: false,
                 success: function(res) {
                     console.log(res);
                     $('#Hn').val(res.data.hn);
@@ -653,9 +654,27 @@
                     if(res.data.caseid6 != 0){
                         $('#casetype6').val(res.data.caseid6);
                     }
-                    $('#CreateModal').modal('show');
                 }
             });
+            $.ajax({
+                url: "casescomment/edit/" + id,
+                method: 'GET',
+                async: false,
+                success: function(res) {
+                    $('#cHn').text(res.data.hn);
+                    $('#cName').text(res.data.name);
+                    $('#cCasetype1').text(res.data.casetype1);
+                    $('#cCasetype2').text(res.data.casetype2);
+                    $('#cCasetype3').text(res.data.casetype3);
+                    $('#cCasetype4').text(res.data.casetype4);
+                    $('#cCasetype5').text(res.data.casetype5);
+                    $('#cCasetype6').text(res.data.casetype6);
+                    $('#cDetail').text(res.data.casedetail);
+                    $('#cTranferstatus').text(res.data.tranferstatus);
+                    $('#cCasestatus').text(res.data.casestatus);
+                }
+            });
+            $('#CreateModal').modal('show');
         })
 
         $('#SubmitEditForm').click(function(e) {
