@@ -675,11 +675,11 @@
                 cardId: cardId
             },
             success: async function(response) {
-                $('#' + cardId).removeClass('card-danger');
-                $('#' + cardId).addClass('card-success');
-                await $('#pop_' + cardId).html(response.html);
-                $(".card-footer").css("display", "block")
-                $('.bclose').css('display', 'none');
+                //$('#' + cardId).removeClass('card-danger');
+                //$('#' + cardId).addClass('card-success');
+                await $('listlog').html(response.html);
+                //$(".card-footer").css("display", "block")
+                //$('.bclose').css('display', 'none');
                 }
             });
             $('#CreateModal').modal('show');
