@@ -675,7 +675,7 @@
                 cardId: '2222'
             },
             success: async function(response) {
-                alert(response);
+                alert(response.html);
                 //$('#' + cardId).removeClass('card-danger');
                 //$('#' + cardId).addClass('card-success');
                 await $('listlog').html(response.html);
