@@ -1053,13 +1053,13 @@
             if (status == 'success') {
                 const prom = ezBSAlert({
                     headerText: "OK",
-                    messageText: "แทรหสาย สำเร็จ",
+                    messageText: "แทรกสาย สำเร็จ",
                     alertType: "success",
                 });
             } else {
                 const prom = ezBSAlert({
                     headerText: "Error",
-                    messageText: "แทรหสาย ไม่สำเร็จ",
+                    messageText: "แทรกสาย ไม่สำเร็จ",
                     alertType: "danger",
                 });
             }
