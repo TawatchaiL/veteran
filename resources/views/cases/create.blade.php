@@ -173,8 +173,6 @@
 
                                     </div>
                                 </div>
-
-
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
@@ -205,8 +203,16 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row justify-content-end">
+                                            <button type="button" class="btn btn-success" id="SubmitCreateForm"><i class="fas fa-download"></i>
+                                                บันทึกข้อมูล</button>&nbsp;
+                                            <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i
+                                                    class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -253,8 +259,6 @@
                                                         รายละเอียด : </strong><div id="cDetail"></div>
                                             </div>
                                         </div>
-
-
                                     </div>
                                 </div>
                                 <div class="card">
@@ -267,8 +271,6 @@
                                                     <strong><i class="fas fa-arrows-rotate"></i> สถานะการเคส : </strong><div id="cCasestatus"></div>   
                                             </div>
                                         </div>
-
-
                                     </div>
                                 </div>
                                 <div class="card">
@@ -284,8 +286,16 @@
                                                     ]) !!}
                                             </div>
                                         </div>
-
-
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row justify-content-end">
+                                            <button type="button" class="btn btn-success" id="SubmitCreateForm"><i class="fas fa-download"></i>
+                                                บันทึกข้อมูล</button>&nbsp;
+                                            <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i
+                                                    class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -310,6 +320,14 @@
                                         </div>  
                                     </div>
                                 </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row justify-content-end">
+                                            <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i
+                                                    class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             {{--   <div class="tab-pane fade" id="custom-tabs-one-profilep" role="tabpanel"
                                 aria-labelledby="custom-tabs-one-profile-tabp">
@@ -324,12 +342,6 @@
 
                 </div>
                 {!! Form::close() !!}
-            </div>
-            <div class="modal-footer {{-- justify-content-between --}}">
-                <button type="button" class="btn btn-success" id="SubmitCreateForm"><i class="fas fa-download"></i>
-                    บันทึกข้อมูล</button>
-                <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i
-                        class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
             </div>
         </div>
     </div>
