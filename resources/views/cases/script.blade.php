@@ -675,10 +675,10 @@
                 cardId: '2222'
             },
             success: async function(response) {
-                alert(response.html);
+                //alert(response);
                 //$('#' + cardId).removeClass('card-danger');
                 //$('#' + cardId).addClass('card-success');
-                await $('listlog').html(response.html);
+                await $('#listlog').html(response.html);
                 //$(".card-footer").css("display", "block")
                 //$('.bclose').css('display', 'none');
                 }
