@@ -805,7 +805,7 @@
                         check_box_state = 'disabled';
                     } else if (strArray[4] == 'Up' && strArray[12] == '') {
                         if (strArray[5] == "ChanSpy") {
-                            spy_exten = strArray[5].split(',');
+                            spy_exten = strArray[6].split(',');
                             mcallexten = spy_exten[0]
                             state = 'กำลังดักฟัง'
                             state_icon =
