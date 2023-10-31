@@ -591,6 +591,7 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
             $('.form').trigger('reset');
+            $('#custom-tabs-one-home-tab').tab('show');
             $('#custom-tabs-one-comment-tab').attr('disabled', false);
             $('#custom-tabs-one-comment-tab').show();
             $('#custom-tabs-one-commentlog-tab').attr('disabled', false);
@@ -670,10 +671,10 @@
             });
 
             $.ajax({
-                url: '{{ route('cases.records') }}',
+                url: '{{ route('cases.commentlist') }}',
                 type: 'POST',
                 data: {
-                        id: '49'
+                        id: id
                     },
 
                 success: function(response) {
@@ -808,6 +809,24 @@
                 }
             });
         });
+
+        //loadcasescomment
+        $(document).on('click', '.selectcomment-button',function() {
+            comment_id = $(this).data('comment_id');
+            $.ajax({
+                url: '{{ route('cases.commentview') }}',
+                type: 'POST',
+                async: false,
+                data: {
+                    commentid: comment_id
+                    },
+                success: function(response) {
+                    alert('OK');
+                    $('#listlog').html(response.html);
+                }
+            });
+        });
+
         $('#casetype1').on('change', function() {
             var parent_id = $(this).val();
             $('#casetype2').html('<option value="">เลือกรายละเอียดเคส</option>');
