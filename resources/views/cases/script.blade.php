@@ -810,19 +810,7 @@
         });
 
         //loadcasescomment
-        $(document).on('click', '.selectcomment-button',function() {
-            $.ajax({
-                url: '{{ route('cases.commentview') }}',
-                type: 'POST',
-                data: {
-                        id: id
-                    },
 
-                success: function(response) {
-                    $('#listlog').html(response.html);
-                }
-            });
-        });
 
         $('#casetype1').on('change', function() {
             var parent_id = $(this).val();
