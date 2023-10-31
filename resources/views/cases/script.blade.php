@@ -672,13 +672,13 @@
             $.ajax({
                 url: '{{ route('cases.records') }}',
                 type: 'POST',
-                    data: {
+                data: {
                         id: '5'
                     },
 
                 success: function(response) {
                     //console.log(result);
-                    await $('#listlog').html(response.html);
+                    $('#listlog').html(response.html);
                 }
             });
 
