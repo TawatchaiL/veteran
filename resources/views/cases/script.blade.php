@@ -814,11 +814,11 @@
         $(document).on('click', '.selectcomment-button',function() {
             comment_id = $(this).data('comment_id');
             $.ajax({
-                url: '{{ route('cases.commentlist') }}',
+                url: '{{ route('cases.commentview') }}',
                 type: 'POST',
                 async: false,
                 data: {
-                    commentid: '16'
+                    commentid: comment_id
                     },
                 success: function(response) {
                     alert('OK');
