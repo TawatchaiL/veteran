@@ -671,7 +671,7 @@
             });
 
             $.ajax({
-                url: '{{ route('cases.records') }}',
+                url: '{{ route('cases.commentlist') }}',
                 type: 'POST',
                 data: {
                         id: id
@@ -811,7 +811,20 @@
         });
 
         //loadcasescomment
+        $(document).on('click', '.selectcomment-button',function() {
+            comment_id = $(this).data('comment_id');
+            $.ajax({
+                url: '{{ route('cases.commentview') }}',
+                type: 'POST',
+                data: {
+                    commentid: comment_id
+                    },
 
+                success: function(response) {
+                    $('#listlog').html(response.html);
+                }
+            });
+        });
 
         $('#casetype1').on('change', function() {
             var parent_id = $(this).val();

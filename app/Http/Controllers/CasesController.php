@@ -262,7 +262,7 @@ class CasesController extends Controller
         //return response()->json(['success' => $user->id]);
     }
 
-    public function records(Request $request)
+    public function commentlist(Request $request)
     {
         $id = $request->input('id');
         $data = CrmCaseComment::where('case_id', $id)->get();
@@ -274,7 +274,19 @@ class CasesController extends Controller
         //return response()->json(['data' => $data]);
 
     }
+    public function commentview(Request $request)
+    {
+        $commentid = $request->input('commentid');
+        $data = CrmCaseComment::where('id', $commentid)->get();
+        $datac = CrmCase::where('id', $data->id)->get();
 
+        $template = 'cases.commentdetail';
+        $htmlContent = View::make($template, ['casecomment' => $data, 'cases' => $datac])->render();
+        return response()->json(['html' =>  $htmlContent,]);
+
+        //return response()->json(['data' => $data]);
+
+    }
     public function destroy(Request $request)
     {
         $id = $request->get('id');
