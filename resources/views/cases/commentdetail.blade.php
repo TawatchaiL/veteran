@@ -2,7 +2,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6">
-                    <strong><i class="fas fa-code"></i> HN : </strong><div id="cHn"></div>                                              
+                    <strong><i class="fas fa-code"></i> HN : </strong>                                       
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
                     <strong><i class="fas fa-user-tie"></i> ชื่อ-สกุล : </strong><div id="cName"></div>                                    
@@ -11,7 +11,7 @@
 
         <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6">
-                    <strong><i class="fa-regular fa-message"></i> ประเภทเคส : </strong><div id="cCasetype1"></div>
+                    <strong><i class="fa-regular fa-message"></i> ประเภทเคส : </strong>{{ $casecomment->casetype1 }}  
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <strong><i class="fa-regular fa-message"></i> รายละเอียดเคส : </strong><div id="cCasetype2"></div>
