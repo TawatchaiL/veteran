@@ -668,21 +668,6 @@
                     $('#cCasestatus').text(res.data.casestatus);
                 }
             });
-            $.ajax({
-            url: '{{ route('cases.records') }}',
-            type: 'POST',
-            data: {
-                id: '5'
-            },
-            success: function(response) {
-                alert(response.html);
-                //$('#' + cardId).removeClass('card-danger');
-                //$('#' + cardId).addClass('card-success');
-                await $('#listlog').html(response.html);
-                //$(".card-footer").css("display", "block")
-                //$('.bclose').css('display', 'none');
-                }
-            });
             $('#CreateModal').modal('show');
         });
 
