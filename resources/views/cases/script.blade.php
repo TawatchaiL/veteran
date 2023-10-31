@@ -813,14 +813,12 @@
         //loadcasescomment
         $(document).on('click', '.selectcomment-button',function() {
             comment_id = $(this).data('comment_id');
-            alert(comment_id);
             $.ajax({
                 url: '{{ route('cases.commentview') }}',
                 type: 'POST',
                 data: {
                     commentid: comment_id
                     },
-
                 success: function(response) {
                     alert('OK');
                     $('#listlog').html(response.html);
