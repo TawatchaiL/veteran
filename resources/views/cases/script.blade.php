@@ -809,6 +809,21 @@
                 }
             });
         });
+        //listcomment
+        $(document).on('click', '.listcomment-button',function() {
+            var case_id = $(this).data('case_id');
+            $.ajax({
+                url: '{{ route('cases.commentlist') }}',
+                type: 'POST',
+                data: {
+                        id: case_id
+                    },
+
+                success: function(response) {
+                    $('#listlog').html(response.html);
+                }
+            });
+        });
 
         //loadcasescomment
         $(document).on('click', '.selectcomment-button',function() {
