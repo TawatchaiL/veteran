@@ -812,6 +812,7 @@
                             '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
                         state_color = 'card-danger';
                         check_box_state = 'disabled';
+                        hold_button = "d-none";
                     } else if (strArray[4] == 'Up' && strArray[12] == '') {
                         if (strArray[5] == "ChanSpy") {
                             spy_exten = strArray[6].split(',');
@@ -821,12 +822,14 @@
                                 '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
                             state_color = 'card-danger';
                             check_box_state = 'disabled';
+                            hold_button = "d-none";
                         } else {
                             state = 'กำลังรอสาย'
                             state_icon =
                                 '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
                             state_color = 'card-danger';
                             check_box_state = 'disabled';
+                            hold_button = "d-none";
                         }
 
                     } else if (strArray[4] == 'Up') {
@@ -835,6 +838,7 @@
                             '<i class="fa-solid fa-phone-volume fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i>';
                         state_color = 'card-danger';
                         check_box_state = '';
+                        hold_button = "";
                     }
 
 
@@ -850,7 +854,7 @@
 							<div class="card-body card-content">
 							</div>
 							<div class="card-footer text-muted text-right ">
-                                <a href="#" class="btn btn-warning hold_call d-none" data-id="${strArray[0]}" id="hold_${mcallexten}"><i class="fa-regular fa-circle-pause"></i> Hold</a>
+                                <a href="#" class="btn btn-warning hold_call ${hold_button}" data-id="${strArray[0]}"><i class="fa-regular fa-circle-pause"></i> Hold</a>
 							     <a href="#" class="btn btn-danger hangup_call" data-id="${strArray[0]}"><i class="fa-solid fa-phone-slash"></i> วางสาย</a>
 							</div>
 						</div>
