@@ -784,7 +784,15 @@
         const additionalData = {
             id_break: bid,
         };
-        sendAjaxRequest("{{ route('answer') }}", "POST", additionalData);
+        $.ajax({
+                url: "{{ route('answer') }}",
+                method: 'post',
+                async: false,
+                data: additionalData,
+                success: function(result) {
+                   console.log(result);
+                }
+            });
 
     })
 
