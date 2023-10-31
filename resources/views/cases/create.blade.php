@@ -301,6 +301,11 @@
                             </div>
                             <div class="tab-pane fade" id="custom-tabs-one-commentlog" role="tabpanel"
                                 aria-labelledby="custom-tabs-one-commentlog-tab">
+                                <div class="card-header">
+                                    <h3 class="card-title"><i class="fas fa-address-book"></i> ประวัติการแสดงความคิดเห็นเรื่องที่ติดต่อ</h3>
+                                    <div class="card-tools">
+                                    </div>
+                                </div>
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
