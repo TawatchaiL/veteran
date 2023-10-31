@@ -850,6 +850,7 @@
 							<div class="card-body card-content">
 							</div>
 							<div class="card-footer text-muted text-right ">
+                                <a href="#" class="btn btn-warning hold_call d-none" data-id="${strArray[0]}" id="hold_${mcallexten}"><i class="fa-regular fa-circle-pause"></i> Hold</a>
 							     <a href="#" class="btn btn-danger hangup_call" data-id="${strArray[0]}"><i class="fa-solid fa-phone-slash"></i> วางสาย</a>
 							</div>
 						</div>
