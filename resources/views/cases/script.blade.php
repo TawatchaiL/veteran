@@ -591,6 +591,7 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
             $('.form').trigger('reset');
+            $('#custom-tabs-one-home-tab').tab('show');
             $('#custom-tabs-one-comment-tab').attr('disabled', false);
             $('#custom-tabs-one-comment-tab').show();
             $('#custom-tabs-one-commentlog-tab').attr('disabled', false);
