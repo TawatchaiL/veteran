@@ -290,7 +290,7 @@
                     set_state_button(result.id);
                     positionCards();
                     call_list();
-                    $('#hold_' + data.dstnumber).removeClass('d-none');
+                    $('#hold_' + data.extension).removeClass('d-none');
                     toolbar_modal.modal('show');
                 }
             });
