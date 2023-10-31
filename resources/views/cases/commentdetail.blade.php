@@ -11,7 +11,7 @@
 
         <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6">
-                    <strong><i class="fa-regular fa-message"></i> ประเภทเคส : </strong>
+                    <strong><i class="fa-regular fa-message"></i> ประเภทเคส : </strong>{{ $cases->casetype1 }}  
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <strong><i class="fa-regular fa-message"></i> รายละเอียดเคส : </strong><div id="cCasetype2"></div>
