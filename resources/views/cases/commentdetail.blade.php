@@ -2,10 +2,10 @@
     <div class="card-body">
         <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6">
-                    <strong><i class="fas fa-code"></i> HN : {{ $datact->hn }}                                       
+                    <strong><i class="fas fa-code"></i> HN :                                    
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
-                    <strong><i class="fas fa-user-tie"></i> ชื่อ-สกุล : </strong>{{ $datact->tname }}{{ $datact->fname }} {{ $datact->lname }}                                 
+                    <strong><i class="fas fa-user-tie"></i> ชื่อ-สกุล : </strong>                             
             </div>
         </div>
 
@@ -45,10 +45,12 @@
     <div class="card-body">
         <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6">
-                    <strong><i class="fas fa-shuffle"></i> สถานะการโอนสาย : </strong><{{ $cases->tranferstatus }} 
+                    <strong><i class="fas fa-shuffle"></i> สถานะการโอนสาย : </strong>
+                    {{ $cases->tranferstatus }} 
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
-                    <strong><i class="fas fa-arrows-rotate"></i> สถานะการเคส : </strong>{{ $cases->casestatus }} 
+                    <strong><i class="fas fa-arrows-rotate"></i> สถานะการเคส : </strong>
+                    {{ $cases->casestatus }} 
             </div>
         </div>
     </div>
