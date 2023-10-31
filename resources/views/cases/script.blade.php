@@ -677,7 +677,6 @@
                     },
 
                 success: function(response) {
-                    //console.log(result);
                     $('#listlog').html(response.html);
                 }
             });

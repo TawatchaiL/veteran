@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -267,9 +268,7 @@ class CasesController extends Controller
         $data = CrmCaseComment::where('case_id', $id)->get();
 
         $template = 'cases.commentlist';
-        $htmlContent = View::make($template, [
-            'casecomment' => $data
-        ])->render();
+        $htmlContent = View::make($template, ['casecomment' => $data])->render();
         return response()->json(['html' =>  $htmlContent,]);
 
         //return response()->json(['data' => $data]);
