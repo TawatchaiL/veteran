@@ -317,6 +317,7 @@
                                             </div>  
                                         </div>
                                     </div>
+                                </div>
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="row justify-content-end">
@@ -325,7 +326,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                             </div>
                             {{--   <div class="tab-pane fade" id="custom-tabs-one-profilep" role="tabpanel"
                                 aria-labelledby="custom-tabs-one-profile-tabp">
