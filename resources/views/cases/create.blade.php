@@ -49,7 +49,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" id="custom-tabs-one-commentlog-tab" data-toggle="pill"
                                     href="#custom-tabs-one-commentlog" role="tab" aria-controls="custom-tabs-one-commentlog"
-                                    aria-selected="true">แสดงความคิดเห็นเรื่องที่ติดต่อ</a>
+                                    aria-selected="true">ประวัติการแสดงความคิดเห็นเรื่องที่ติดต่อ</a>
                             </li>
                             {{-- <li class="nav-item">
                                 <a class="nav-link" id="custom-tabs-one-profile-tabp" data-toggle="pill"

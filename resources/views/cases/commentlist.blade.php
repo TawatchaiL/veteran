@@ -2,7 +2,7 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-address-book"></i> รายชื่อผู้ติดต่อ</h3>
+                            <h3 class="card-title"><i class="fas fa-address-book"></i> ประวัติการแสดงความคิดเห็นเรื่องที่ติดต่อ</h3>
                             <div class="card-tools">
                             </div>
                         </div>
@@ -13,9 +13,6 @@
                                             class="display nowrap table table-bordered table-striped table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th width="5%"><input type="checkbox" id="check-all"
-                                                            class="flat">
-                                                    </th>
                                                     <th>การแสดงความคิดเห็น</th>
                                                     <th>Agent</th>
                                                     <th>วันที่ทำรายการ</th>
@@ -25,11 +22,12 @@
                                             <tbody>
                                                 @foreach($casecomment as $casecomments)
                                                 <tr>
-                                                    <td><input type="checkbox" class="flat"></td>
                                                     <td>{{ $casecomments->comment }}</td>
                                                     <td>{{ $casecomments->agent }}</td>
                                                     <td>{{ $casecomments->created_at }}</td>
-                                                    <td width="150px"></td>
+                                                    <td width="150px">
+                                                        <button type="button" data-id="{{ $casecomments->id }}" class="form-control btn btn-success selectcomment-button">รายละเอียด
+                                                        </button></td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>
