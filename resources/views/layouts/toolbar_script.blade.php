@@ -773,26 +773,13 @@
     })
 
     $(document).on('click', '.answer_call', function(data) {
-       /*  $.get(`http://admin:admin@192.168.1.90/servlet?key=OK`, (data, status) => {
+        $.get(`http://admin:admin@192.168.1.90/servlet?key=OK`, (data, status) => {
             const prom = ezBSAlert({
                 headerText: "OK",
                 messageText: "รับสายสำเร็จ",
                 alertType: "success",
             });
-        }); */
-        const bid = $(this).data('id');
-        const additionalData = {
-            id_break: bid,
-        };
-        $.ajax({
-                url: "{{ route('answer') }}",
-                method: 'post',
-                async: false,
-                data: additionalData,
-                success: function(result) {
-                   console.log(result);
-                }
-            });
+        });
 
     })
 
