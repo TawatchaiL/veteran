@@ -821,7 +821,6 @@
                     commentid: comment_id
                     },
                 success: function(response) {
-                    alert('OK');
                     $('#listlog').html(response.html);
                 }
             });
