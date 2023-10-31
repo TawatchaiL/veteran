@@ -277,12 +277,12 @@ class CasesController extends Controller
     public function commentview(Request $request)
     {
         $commentid = $request->input('commentid');
-        $data = CrmCaseComment::where('id', $commentid)->get();
-        $datac = CrmCase::where('id', $data->id)->get();
+        $data = CrmCaseComment::where('id', 5)->get();
+        $datac = CrmCase::where('id', 10)->get();
 
         $template = 'cases.commentdetail';
         $htmlContent = View::make($template, ['casecomment' => $data, 'cases' => $datac])->render();
-        $htmlContent = View::make($template, ['casecomment' => $data])->render();
+        //$htmlContent = View::make($template, ['casecomment' => $data])->render();
         return response()->json(['html' =>  $htmlContent,]);
 
         //return response()->json(['data' => $data]);
