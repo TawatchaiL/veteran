@@ -816,6 +816,7 @@
             $.ajax({
                 url: '{{ route('cases.commentview') }}',
                 type: 'POST',
+                async: false,
                 data: {
                     commentid: comment_id
                     },
