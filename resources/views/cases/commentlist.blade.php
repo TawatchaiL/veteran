@@ -16,7 +16,7 @@
                                                     <td>{{ $casecomments->agent }}</td>
                                                     <td>{{ $casecomments->created_at }}</td>
                                                     <td width="100px">
-                                                        <button type="button" data-id="{{ $casecomments->id }}" class="form-control btn btn-success selectcomment-button">รายละเอียด
+                                                        <button type="button" data-comment_id="{{ $casecomments->id }}" class="form-control btn btn-success selectcomment-button">รายละเอียด
                                                         </button></td>
                                                 </tr>
                                                 @endforeach
