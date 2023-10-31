@@ -812,6 +812,7 @@
 
         //loadcasescomment
         $(document).on('click', '.selectcomment-button',function() {
+            alert('OK');
             comment_id = $(this).data('comment_id');
             $.ajax({
                 url: '{{ route('cases.commentview') }}',
