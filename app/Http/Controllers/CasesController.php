@@ -278,7 +278,7 @@ class CasesController extends Controller
     {
         $commentid = $request->input('commentid');
         $data = CrmCaseComment::where('id', $commentid)->get();
-        $datac = CrmCase::where('id', $data->id)->get();
+        $datac = CrmCase::where('id', '10')->get();
 
         $template = 'cases.commentdetail';
         $htmlContent = View::make($template, ['casecomment' => $data, 'cases' => $datac])->render();
