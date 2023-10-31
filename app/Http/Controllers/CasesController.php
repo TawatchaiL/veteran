@@ -279,7 +279,7 @@ class CasesController extends Controller
         $commentid = $request->input('commentid');
         $data = CrmCaseComment::where('id', $commentid)->first();
         $datac = CrmCase::where('id', $data->id)->first();
-        //$datact = CrmContact::where('id', $datac->contact_id)->first();
+        $datact = CrmContact::where('id', $datac->contact_id)->first();
 
         $template = 'cases.commentdetail';
         $htmlContent = View::make($template, ['casecomment' => $data, 'cases' => $datac])->render();
