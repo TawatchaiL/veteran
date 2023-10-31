@@ -673,7 +673,7 @@
                 url: '{{ route('cases.records') }}',
                 type: 'POST',
                 data: {
-                        id: '5'
+                        id: '49'
                     },
 
                 success: function(response) {
