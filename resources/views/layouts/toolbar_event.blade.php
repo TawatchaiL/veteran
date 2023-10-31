@@ -251,11 +251,12 @@
                     <div class="card-body card-content">
                     </div>
                     <div class="card-footer text-muted text-right">
-                    <a href="#" class="btn btn-danger hangup_call" data-id="${data.extension}"><i class="fa-solid fa-phone-slash"></i> วางสาย</a>
+                        <a href="#" class="btn btn-success answer_call" data-id="${data.extension}"><i class="fa-solid fa-phone-volume"></i> รับสาย</a>
+                        <a href="#" class="btn btn-danger hangup_call" data-id="${data.extension}"><i class="fa-solid fa-phone-slash"></i> วางสาย</a>
                     </div>
                 </div>
             </div>`);
-                //toolbar_modal.modal('show');
+                toolbar_modal.modal('show');
 
 
             }
