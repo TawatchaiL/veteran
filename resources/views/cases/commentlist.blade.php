@@ -6,7 +6,7 @@
                                                     <th>การแสดงความคิดเห็น</th>
                                                     <th>Agent</th>
                                                     <th>วันที่ทำรายการ</th>
-                                                    <th width="120px"></th>
+                                                    <th width="140px"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -15,7 +15,7 @@
                                                     <td>{{ $casecomments->comment }}</td>
                                                     <td>{{ $casecomments->agent }}</td>
                                                     <td>{{ $casecomments->created_at }}</td>
-                                                    <td width="120px">
+                                                    <td width="140px">
                                                         <button type="button" data-comment_id="{{ $casecomments->id }}" class="form-control btn btn-success selectcomment-button">รายละเอียด
                                                         </button></td>
                                                 </tr>
