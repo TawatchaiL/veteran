@@ -274,6 +274,7 @@
 
         if (data.extension.match(exten)) {
             console.log(data);
+            $('#hold_' + data.cid).removeClass('d-none');
 
             $.ajax({
                 url: "{{ route('agent.talk') }}",
@@ -290,7 +291,6 @@
                     set_state_button(result.id);
                     positionCards();
                     call_list();
-                    $('#hold_' + data.cid).removeClass('d-none');
                     toolbar_modal.modal('show');
                 }
             });
