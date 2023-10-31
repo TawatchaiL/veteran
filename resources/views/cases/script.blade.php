@@ -622,59 +622,14 @@
             $('#casetype4').attr('disabled', true);
             $('#casetype5').attr('disabled', true);
             $('#casetype6').attr('disabled', true);
-            $.ajax({
-                url: "cases/edit/" + id,
-                method: 'GET',
-                async: false,
-                success: function(res) {
-                    console.log(res);
-                    $('#Hn').val(res.data.hn);
-                    $('#Name').val(res.data.name);
-                    $('#Detail').val(res.data.casedetail);
-                    $('#tranferstatus').val(res.data.tranferstatus);
-                    $('#casestatus').val(res.data.casestatus);
-                    $('#casetype1').val(res.data.caseid1);
-                    $('#casetype1').change();
-                    if(res.data.caseid2 != 0){
-                        $('#casetype2').val(res.data.caseid2);
-                        $('#casetype2').change();
-                    }
-                    if(res.data.caseid3 != 0){
-                        $('#casetype3').val(res.data.caseid3);
-                        $('#casetype3').change();
-                    }
-                    if(res.data.caseid4 != 0){
-                        $('#casetype4').val(res.data.caseid4);
-                        $('#casetype4').change();
-                    }
-                    if(res.data.caseid5 != 0){
-                        $('#casetype5').val(res.data.caseid5);
-                        $('#casetype5').change();
-                    }
-                    if(res.data.caseid6 != 0){
-                        $('#casetype6').val(res.data.caseid6);
-                    }
-                    //Comment Data
-                    $('#cHn').text(res.data.hn);
-                    $('#cName').text(res.data.name);
-                    $('#cCasetype1').text(res.data.casetype1);
-                    $('#cCasetype2').text(res.data.casetype2);
-                    $('#cCasetype3').text(res.data.casetype3);
-                    $('#cCasetype4').text(res.data.casetype4);
-                    $('#cCasetype5').text(res.data.casetype5);
-                    $('#cCasetype6').text(res.data.casetype6);
-                    $('#cDetail').text(res.data.casedetail);
-                    $('#cTranferstatus').text(res.data.tranferstatus);
-                    $('#cCasestatus').text(res.data.casestatus);
-                }
-            });
+
             $.ajax({
             url: '{{ route('cases.records') }}',
             type: 'POST',
             data: {
                 id: '5'
             },
-            success: async function(response) {
+            success: function(response) {
                 alert(response.html);
                 //$('#' + cardId).removeClass('card-danger');
                 //$('#' + cardId).addClass('card-success');
