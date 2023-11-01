@@ -134,8 +134,13 @@ class ContactController extends Controller
             ])->render();
         } else {
             $template = 'contacts.contact-create';
+            if($datap[0]->id != ''){
+                $contactpid = $datap[0]->id;
+            }else{
+                $contactpid = "";
+            }
             $htmlContent = View::make($template, [
-                'cardid' => $con, 'telephone' => $con, 'contactd' => $datap
+                'cardid' => $con, 'telephone' => $con, 'contactd' => $datap, 'conid' => $contactpid
             ])->render();
         }
         return response()->json(['html' =>  $htmlContent,]);
