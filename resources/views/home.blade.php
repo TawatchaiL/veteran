@@ -34,7 +34,7 @@
                                         class="fa-solid fa-arrow-right-to-bracket"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text">สายเข้า</span>
-                                    <span class="info-box-number">15 ครั้ง</span>
+                                    <span class="info-box-number"><span id="total_call">0</span> ครั้ง</span>
                                 </div>
 
                             </div>
@@ -44,7 +44,7 @@
                                 <span class="info-box-icon bg-warning"><i class="fa-solid fa-user-clock"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text">เวลารอสายเฉลี่ย</span>
-                                    <span class="info-box-number">00:00:12</span>
+                                    <span class="info-box-number" id="avg_wait">00:00:12</span>
                                 </div>
 
                             </div>
@@ -54,7 +54,7 @@
                                 <span class="info-box-icon bg-warning"><i class="fa-solid fa-phone-volume"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เวลาที่สนทนาทั้งหมด</span>
-                                    <span class="info-box-number">00:38:43</span>
+                                    <span class="info-box-number" id="total_talk">00:38:43</span>
                                 </div>
 
                             </div>
@@ -64,7 +64,7 @@
                                 <span class="info-box-icon bg-warning"><i class="fa-solid fa-headset"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เวลาสนทนาเฉลี่ยต่อสาย</span>
-                                    <span class="info-box-number"> 00:05:12</span>
+                                    <span class="info-box-number" id="avg_talk"> 00:05:12</span>
                                 </div>
 
                             </div>
@@ -240,13 +240,6 @@
 
 @section('script')
     <script language="javascript" type="text/javascript">
- /*        const changeText = (div, text) => {
-            div.classList.add('hide_text');
-            setTimeout(function() {
-                div.innerHTML = text;
-                div.classList.remove('hide_text');
-            }, 500);
-        } */
         const updateAvgData = () => {
             $.ajax({
                 url: '{{ route('dashboard.agent_avg_data') }}',
@@ -256,22 +249,11 @@
                 },
                 success: (data) => {
                     console.log(data);
-                    /* avg_talk.html('')
-                    avg_wait.html('')
-                    total_talk.html('')
-                    max_wait.html('') */
-
                     data.avg_data.forEach((item) => {
-                        if (item.queue_number == storedOption) {
-                            /* avg_talk.html(item.avg_talk_time)
-                            avg_wait.html(item.avg_hold_time)
-                            total_talk.html(item.total_talk_time)
-                            max_wait.html(item.max_hold_time) */
-                            changeText(avg_talk, item.avg_talk_time)
-                            changeText(avg_wait, item.avg_hold_time)
-                            changeText(total_talk, item.total_talk_time)
-                            changeText(max_wait, item.max_hold_time)
-                        }
+                        changeText(avg_talk, item.avg_talk_time)
+                        changeText(avg_wait, item.avg_hold_time)
+                        changeText(total_talk, item.total_talk_time)
+                        changeText(max_wait, item.max_hold_time)
                     });
                 },
                 error: (error) => {
@@ -726,9 +708,13 @@
 
         })
 
+        const total_call = document.getElementById("total_call");
+        const avg_talk = document.getElementById("avg_talk");
+        const total_talk = document.getElementById("total_talk");
+        const avg_wait = document.getElementById("avg_wait");
+        //const max_wait = document.getElementById("max_wait");
         $(document).ready(() => {
             updateAvgData();
         });
-
     </script>
 @endsection
