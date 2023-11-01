@@ -350,8 +350,7 @@ class CasesController extends Controller
     public function destroy(Request $request)
     {
         $id = $request->get('id');
-        $cases = CrmCase::find($id)->delete();
-
+        CrmCase::find($id)->delete();
         return ['success' => true, 'message' => 'ลบ เรื่องที่ติดต่อ เรียบร้อยแล้ว'];
     }
 
