@@ -248,7 +248,7 @@
                 strokeWidth: 4
             },
             chart: {
-                type: 'area',
+                type: 'bar',
                 height: 380,
                 zoom: {
                     enabled: false
