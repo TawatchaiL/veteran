@@ -82,6 +82,7 @@
         @if (empty($sidebarc))
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
+                    ผู้ติดต่อที่ยังไม่ได้บันทึกข้อมูล
                     <i class="far fa-xl fa-comments"></i>
                     <span class="badge badge-danger navbar-badge" id="hold_tab">0</span>
                 </a>
