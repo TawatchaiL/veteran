@@ -136,7 +136,7 @@
                 },
 
             },
-            colors: ['#aadc94', '#FF9800'],
+            colors: ['#91cc75', '#fc8452'],
             title: {
                 margin: 50,
                 //offsetX: 50,
@@ -264,7 +264,7 @@
                 curve: 'straight',
                 width: 4
             },
-            colors: ['#2E93fA'],
+            colors: ['#5470c6'],
             title: {
                 align: 'left'
             },
