@@ -67,8 +67,8 @@
                 type: 'scroll',
                 orient: 'vertical',
                 right: 5,
-                top: 30,
-                bottom: 50,
+                top: 20,
+                bottom: 20,
                 data: datac.map((item) => item.name),
             },
             series: [{
