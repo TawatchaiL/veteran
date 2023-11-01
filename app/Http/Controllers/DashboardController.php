@@ -213,7 +213,7 @@ class DashboardController extends Controller
         }
 
         // Create an array with days from 1 to 31
-        $allDays = range(1, 31);
+        $allDays = range(1, $lastDayOfMonth->day);
 
         // Fill in missing days with a count of 0
         foreach ($allDays as $day) {
