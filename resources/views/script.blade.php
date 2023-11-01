@@ -136,7 +136,7 @@
                 },
 
             },
-            colors: ['#21490e', '#FF9800'],
+            colors: ['#aadc94', '#FF9800'],
             title: {
                 margin: 50,
                 //offsetX: 50,
