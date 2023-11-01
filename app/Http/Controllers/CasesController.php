@@ -363,6 +363,6 @@ class CasesController extends Controller
             CrmCase::find($arr_del[$xx])->delete();
         }
 
-        return redirect('casescontract')->with('success', 'ลบ เรื่องที่ติดต่อ เรียบร้อยแล้ว');
+        return redirect('cases')->with('success', 'ลบ เรื่องที่ติดต่อ เรียบร้อยแล้ว');
     }
 }
