@@ -53,6 +53,53 @@
         }));
 
         const option = {
+            title: {
+                text: 'Stacked Area Chart'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    label: {
+                        backgroundColor: '#6a7985'
+                    }
+                }
+            },
+            legend: {
+                data: ['hour']
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: [{
+                type: 'category',
+                boundaryGap: false,
+                data: datac.map((item) => item.name)
+            }],
+            yAxis: [{
+                type: 'value'
+            }],
+            series: [{
+                    name: 'hour',
+                    type: 'line',
+                    stack: 'Total',
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: datac
+                }
+            ]
+        };
+       /*  const option = {
             tooltip: {
                 trigger: 'item',
             },
@@ -83,7 +130,7 @@
                     fontSize: 10,
                     color: '#ffffff',
                     formatter(param) {
-                        return /* param.name +  */ ' (' + param.percent * 2 + '%)';
+                        return  ' (' + param.percent * 2 + '%)';
                     },
                 },
                 color: ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452',
@@ -104,7 +151,7 @@
                 },
                 data: datac,
             }],
-        };
+        }; */
 
         return option;
 
