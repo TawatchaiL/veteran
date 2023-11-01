@@ -185,7 +185,7 @@ class DashboardController extends Controller
         ksort($hourCounts);
 
         return response()->json([
-            'sla_data' => $hourCounts,
+            'hour_data' => $hourCounts,
         ]);
     }
 
