@@ -733,7 +733,7 @@
         try {
             const datac = await AgentCasebyDateData();
             const optionc = date_case_chart_data(datac);
-            console.log(option)
+            console.log(optionc)
             var chart_case = new ApexCharts(document.querySelector("#chart_case"), optionc);
             chart_case.render();
         } catch (error) {
