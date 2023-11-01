@@ -133,7 +133,7 @@
                 height: 350,
 
             },
-            colors: ['#2E93fA', '#FF9800'],
+            colors: ['#3e8020', '#FF9800'],
             title: {
                 margin: 50,
                 //offsetX: 50,
@@ -261,7 +261,7 @@
                 curve: 'straight',
                 width: 4
             },
-            colors: ['#a5e1f8'],
+            colors: ['#2E93fA'],
             title: {
                 align: 'left'
             },
