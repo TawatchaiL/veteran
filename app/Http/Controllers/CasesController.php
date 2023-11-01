@@ -378,7 +378,7 @@ class CasesController extends Controller
             'modifyaction' => 'delete',
             'modifyagent' => $user->id,
         ];
-            CrmCaseslog::create($caseslog);
+            //CrmCaseslog::create($caseslog);
             $company->delete();
         return ['success' => true, 'message' => 'ลบ เรื่องที่ติดต่อ เรียบร้อยแล้ว'];
     }
