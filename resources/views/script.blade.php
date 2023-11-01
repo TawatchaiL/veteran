@@ -753,5 +753,6 @@
         updateAvgData();
         handleDataHour();
         handleDataDate();
+        handleCaseDataDate();
     });
 </script>
