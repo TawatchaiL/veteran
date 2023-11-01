@@ -124,7 +124,7 @@
                     <div class="row">
                         <div class="col-md-6">
 
-                            <div class="card card-primary" style="max-height: 485px">
+                            <div class="card card-primary" style="max-height:520px">
                                 <div class="card-header">
                                     <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> สถิติการรับสายตามช่วงเวลา
                                     </h3>
@@ -146,7 +146,7 @@
                         </div>
                         <div class="col-md-6">
 
-                            <div class="card card-primary" style="max-height: 485px">
+                            <div class="card card-primary" style="max-height: 520px">
                                 <div class="card-header">
                                     <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> สถิติ สายเข้า รายวัน
                                         ประจำเดือน 2023-08
@@ -164,7 +164,7 @@
                                 <div class="card-body">
                                     <div class="chart">
                                         <div class="col-md-12">
-                                            <div id="chart_date"></div>
+                                            <div id="chart_date" style="width: 100%; height: 450px;"></div>
                                         </div>
                                     </div>
                                 </div>
