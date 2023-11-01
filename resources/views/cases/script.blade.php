@@ -790,7 +790,7 @@
             $.ajax({
                 type: "POST",
                 dataType: 'JSON',
-                url: "casescontract/destroy/",
+                url: "cases/destroy/",
                 data: {
                     id: rowid,
                     _method: 'delete',
