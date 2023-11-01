@@ -150,7 +150,7 @@
                             <div class="card card-primary" style="max-height: 480px">
                                 <div class="card-header">
                                     <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> สถิติ สายเข้า รายวัน
-                                        ประจำเดือน @php date("Y-m") @endphp
+                                        ประจำเดือน {{ date("Y-m") }}
                                     </h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="maximize">
