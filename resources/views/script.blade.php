@@ -117,7 +117,7 @@
             all: counts.all,
             tranfer: counts.tranfer,
         }));
-        const options = {
+        const option = {
             series: [{
                     name: 'เคสที่รับแจ้งทั้งหมด',
                     data: dataArray.map((item) => item.all),
@@ -720,9 +720,9 @@
 
     const handleDataDate = async () => {
         try {
-            const data = await AgentbyDateData();
-            const option = date_chart_data(data);
-            var chart_d = new ApexCharts(document.querySelector("#chart_date"), option);
+            const datad = await AgentbyDateData();
+            const optiond = date_chart_data(datad);
+            var chart_d = new ApexCharts(document.querySelector("#chart_date"), optiond);
             chart_d.render();
         } catch (error) {
             console.error('Error:', error);
@@ -731,10 +731,10 @@
 
     const handleCaseDataDate = async () => {
         try {
-            const data = await AgentCasebyDateData();
-            const option = date_case_chart_data(data);
-            console.log(option)
-            var chart_case = new ApexCharts(document.querySelector("#chart_case"), option);
+            const datac = await AgentCasebyDateData();
+            const optionc = date_case_chart_data(datac);
+            console.log(optionc)
+            var chart_case = new ApexCharts(document.querySelector("#chart_case"), optionc);
             chart_case.render();
         } catch (error) {
             console.error('Error:', error);
