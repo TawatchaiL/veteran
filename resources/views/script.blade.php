@@ -36,6 +36,23 @@
         }
     };
 
+
+    const AgentCasebyDateData = async () => {
+        try {
+            const response = await $.ajax({
+                url: '{{ route('dashboard.agent_case_by_date') }}',
+                method: 'POST',
+                data: {
+                    _token: token,
+                },
+            });
+            return response.date_data;
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            throw error;
+        }
+    };
+
     const date_chart_data = (data) => {
         const dataArray = Object.entries(data).map(([day, count]) => ({
             day: parseInt(day), // Convert day to a number
@@ -87,6 +104,96 @@
             legend: {
                 horizontalAlign: 'left',
             },
+        };
+        return option;
+    };
+
+
+    const date_case_chart_data = (data) => {
+        const dataArray = Object.entries(data).map(([day, counts]) => ({
+            day: day,
+            all: counts.all,
+            tranfer: counts.tranfer,
+        }));
+        const options = {
+            series: [{
+                    name: 'เคสที่รับแจ้งทั้งหมด',
+                    data: dataArray.map((item) => item.all),
+                },
+                {
+                    name: 'เคสที่โอนสาย',
+                    data: dataArray.map((item) => item.tranfer),
+                },
+
+            ],
+            chart: {
+                type: 'bar',
+                height: 350,
+
+            },
+            colors: ['#2E93fA', '#FF9800'],
+            title: {
+                margin: 50,
+                //offsetX: 50,
+                //offsetY: 100,
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        position: 'top',
+                        enabled: true,
+                        textAnchor: 'start',
+                        style: {
+                            fontSize: '10pt',
+                            colors: ['#000']
+                        }
+                    },
+                    horizontal: false,
+                    columnWidth: '75%',
+                    endingShape: 'rounded'
+                },
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                show: true,
+                width: 2,
+                colors: ['transparent']
+            },
+            xaxis: {
+                labels: {
+                    rotate: -30,
+                    rotateAlways: true,
+                    maxHeight: 300,
+                    hideOverlappingLabels: false
+                },
+                categories: dataArray.map((item) => item.day.toString()),
+            },
+            yaxis: {
+
+            },
+            fill: {
+                type: 'gradient',
+                gradient: {
+                    shade: 'light',
+                    type: "horizontal",
+                    shadeIntensity: 0.25,
+                    gradientToColors: undefined,
+                    inverseColors: true,
+                    opacityFrom: 0.85,
+                    opacityTo: 0.85,
+                    stops: [50, 0, 100]
+                },
+                opacity: 1
+            },
+            tooltip: {
+                y: {
+                    formatter: function(val) {
+                        return " จำนวน " + val + "  เคส"
+                    }
+                }
+            }
         };
         return option;
     };
@@ -152,7 +259,7 @@
                 curve: 'straight',
                 width: 4
             },
-            colors: ['#ff7c3e'],
+            colors: ['#009900'],
             title: {
                 align: 'left'
             },
@@ -355,8 +462,7 @@
             }
         };
 
-        var chart = new ApexCharts(document.querySelector("#chart"), options);
-        chart.render();
+
 
         var options_d = {
             series: [{
@@ -620,6 +726,18 @@
             console.error('Error:', error);
         }
     };
+
+    const handleCaseDataDate = async () => {
+        try {
+            const data = await AgentCasebyDateData();
+            const option = date_case_chart_data(data)
+            var chart_case = new ApexCharts(document.querySelector("#chart_case"), option);
+            chart_case.render();
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
 
 
 
