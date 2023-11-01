@@ -134,13 +134,8 @@ class ContactController extends Controller
             ])->render();
         } else {
             $template = 'contacts.contact-create';
-            if($datap[0]->id != ''){
-                $contactpid = $datap[0]->id;
-            }else{
-                $contactpid = 0;
-            }
             $htmlContent = View::make($template, [
-                'cardid' => $con, 'telephone' => $con, 'contactd' => $datap, 'conid' => $contactpid
+                'cardid' => $con, 'telephone' => $con, 'contactd' => $datap
             ])->render();
         }
         return response()->json(['html' =>  $htmlContent,]);
@@ -198,16 +193,16 @@ class ContactController extends Controller
             ->get();
         $contactcount = count($datac);
         if ($contactcount > 0) {
-            //$cases = DB::table('crm_cases')
-            //->where('contact_id', '=', $datac[0]->id)
-            //->orderBy('created_at', 'desc')
-            //->get();
+            $cases = DB::table('crm_cases')
+            ->where('contact_id', '=', $datac[0]->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
             $emer = DB::table('crm_phone_emergencies')
                 ->where('contact_id', '=', $datac[0]->id)
                 ->get();
             $data = [
                 'datac' => $datac[0],
-            //    'cases' => $cases,
+                'cases' => $cases,
                 'emer' => $emer
             ];
             return response()->json(['datax' => $data]);
