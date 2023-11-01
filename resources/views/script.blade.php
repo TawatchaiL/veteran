@@ -179,7 +179,7 @@
 
             },
             fill: {
-                type: 'gradient',
+                type: 'solid',
                 gradient: {
                     shade: 'light',
                     type: "horizontal",
