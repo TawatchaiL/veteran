@@ -52,52 +52,65 @@
             name: interval,
         }));
 
-        const option = {
-            title: {
-                text: 'Stacked Area Chart'
+        const var options_d = {
+            series: [{
+                    name: 'สายเข้ารายชั่วโมง',
+                    data: datac
+                },
+
+            ],
+
+            markers: {
+                size: 5,
+                colors: ["#FFFFFF"],
+                strokeColor: "#A5978B",
+                strokeWidth: 4
             },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'cross',
-                    label: {
-                        backgroundColor: '#6a7985'
-                    }
+            chart: {
+                type: 'area',
+                height: 380,
+                zoom: {
+                    enabled: false
                 }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'straight',
+                width: 4
+            },
+            colors: ['#E91E63', '#66DA26', '#546E7A', '#E91E63', '#FF9800', '#4ECDC4', '#C7F464', '#81D4FA',
+                '#A5978B', '#FD6A6A'
+            ],
+            title: {
+                //text: 'สถิติการเข้าชม รายวัน ประจำเดือน 2023-06',
+                align: 'left'
+            },
+            subtitle: {
+                //text: 'จำนวน',
+                align: 'left'
+            },
+            //labels: ['06-09','06-10','06-11','06-12','06-13','06-14','06-15','06-16','06-17','06-18','06-19','06-20','06-21','06-22','06-23','06-24','06-25','06-26','06-27','06-28','06-29'],
+            /* xaxis: {
+               //type: 'datetime',
+            }, */
+            /*yaxis: {
+               opposite: true
+             }, */
+            xaxis: {
+                labels: {
+                    show: true,
+                    rotate: -30,
+                    rotateAlways: true,
+                    maxHeight: 300,
+                    //hideOverlappingLabels: false
+                },
+                categories: datac.map((item) => item.name),
             },
             legend: {
-                data: ['hour']
-            },
-            toolbox: {
-                feature: {
-                    saveAsImage: {}
-                }
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            xAxis: [{
-                type: 'category',
-                boundaryGap: false,
-                data: datac.map((item) => item.name)
-            }],
-            yAxis: [{
-                type: 'value'
-            }],
-            series: [{
-                    name: 'hour',
-                    type: 'line',
-                    stack: 'Total',
-                    areaStyle: {},
-                    emphasis: {
-                        focus: 'series'
-                    },
-                    data: datac
-                }
-            ]
+                horizontalAlign: 'left'
+            }
         };
        /*  const option = {
             tooltip: {
@@ -526,9 +539,11 @@
         try {
             const data = await AgentbyHourData();
             const option = hour_chart_data(data);
-            const hour_chart = echarts.init(document.getElementById("hour_chart"));
-            hour_chart.setOption(option);
-            window.addEventListener('resize', hour_chart.resize);
+            var chart_hour = new ApexCharts(document.querySelector("#hour_chart"), option);
+            chart_hour.render();
+            //const hour_chart = echarts.init(document.getElementById("hour_chart"));
+            //hour_chart.setOption(option);
+            //window.addEventListener('resize', hour_chart.resize);
         } catch (error) {
             console.error('Error:', error);
         }
