@@ -189,6 +189,45 @@ class DashboardController extends Controller
         ]);
     }
 
+    public function dashboard_agent_call_by_date()
+    {
+        $user = Auth::user();
+        $currentMonth = now()->startOfMonth();
+        $lastDayOfMonth = now()->endOfMonth();
+        $dateCounts = [];
+
+        $results = DB::connection('remote_connection')
+            ->table('call_center.call_entry_today')
+            ->select(
+                DB::raw('DATE(datetime_init) as date'),
+                DB::raw('COUNT(*) as count')
+            )
+            ->where('crm_id', $user->id)
+            ->whereDate('datetime_init', '>=', $currentMonth)
+            ->whereDate('datetime_init', '<=', $lastDayOfMonth)
+            ->groupBy('date')
+            ->get();
+
+        foreach ($results as $result) {
+            $dateCounts[$result->date] = $result->count;
+        }
+
+        $currentDate = $currentMonth;
+        while ($currentDate <= $lastDayOfMonth) {
+            $formattedDate = $currentDate->format('Y-m-d');
+            if (!isset($dateCounts[$formattedDate])) {
+                $dateCounts[$formattedDate] = 0;
+            }
+            $currentDate->addDay();
+        }
+
+        ksort($dateCounts);
+
+        return response()->json([
+            'date_data' => $dateCounts,
+        ]);
+    }
+
     public function getAgentList(Request $request)
     {
         $queue_names = DB::connection('remote_connection')

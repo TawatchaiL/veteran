@@ -20,6 +20,82 @@
         });
     };
 
+    const AgentbyDateData = async () => {
+        try {
+            const response = await $.ajax({
+                url: '{{ route('dashboard.agent_by_date') }}',
+                method: 'POST',
+                data: {
+                    _token: token,
+                },
+            });
+            console.log(response.date_data;);
+            return response.date_data;
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            throw error;
+        }
+    };
+
+    const date_chart_data = (data) => {
+
+        const option = {
+            series: [{
+                    name: 'สายเข้ารายวัน',
+                    data: datac.map((item) => item.value)
+                },
+
+            ],
+
+            markers: {
+                size: 5,
+                colors: ["#FFFFFF"],
+                strokeColor: "#A5978B",
+                strokeWidth: 4
+            },
+            chart: {
+                type: 'area',
+                height: 380,
+                zoom: {
+                    enabled: false
+                }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'straight',
+                width: 4
+            },
+            colors: ['#ff7c3e'
+            ],
+            title: {
+                align: 'left'
+            },
+            subtitle: {
+                text: 'จำนวน',
+                align: 'left'
+            },
+
+            xaxis: {
+                labels: {
+                    show: true,
+                    rotate: -30,
+                    rotateAlways: true,
+                    maxHeight: 300,
+                    //hideOverlappingLabels: false
+                },
+                categories: datac.map((item) => item.name),
+            },
+            legend: {
+                horizontalAlign: 'left'
+            }
+        };
+        return option;
+
+    };
+
+
     const AgentbyHourData = async () => {
         try {
             const response = await $.ajax({
@@ -550,5 +626,6 @@
     $(document).ready(() => {
         updateAvgData();
         handleDataHour();
+        AgentbyDateData();
     });
 </script>
