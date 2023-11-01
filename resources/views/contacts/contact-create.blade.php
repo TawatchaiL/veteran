@@ -42,7 +42,7 @@
                             aria-selected="true">ข้อมูลเรื่องที่ติดต่อ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link tablistcaseP" id="custom-tabs-one-casedetail-tabp{{$cardid}}" data-contactid="@if ($contactd[0]->id != '') {{ $contactd[0]->id }} @else {{}} @endif" data-toggle="pill"
+                        <a class="nav-link tablistcaseP" id="custom-tabs-one-casedetail-tabp{{$cardid}}" data-contactid="@if ($contactd[0]->id != '') {{ $contactd[0]->id }} @else {{''}} @endif" data-toggle="pill"
                             href="#custom-tabs-one-casedetailp{{$cardid}}" role="tab" aria-controls="custom-tabs-one-casedetailp{{$cardid}}"
                             aria-selected="false">ประวัติการติดต่อ</a>
                     </li>
