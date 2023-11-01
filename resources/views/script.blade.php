@@ -55,7 +55,7 @@
 
     const date_chart_data = (data) => {
         const dataArray = Object.entries(data).map(([day, count]) => ({
-            day: parseInt(day), // Convert day to a number
+            day: day, // Convert day to a number
             count: count,
         }));
         const option = {
