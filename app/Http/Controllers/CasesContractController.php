@@ -146,7 +146,7 @@ class CasesContractController extends Controller
         }
 
         $input = $request->all();
-        $input = array_merge($input, ['agent' => $user->phone]);
+        $input = array_merge($input, ['agent' => $user->id]);
         $contract = CrmCase::create($input);
         return response()->json(['success' => 'เพิ่ม เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
     }
@@ -185,7 +185,7 @@ class CasesContractController extends Controller
             'tranferstatus' => $request->get('tranferstatus'),
             'casedetail' => $request->get('casedetail'),
             'casestatus' => $request->get('casestatus'),
-            'agent' => $user->phone,
+            'agent' => $user->id,
         ];
 
         if (!empty($request->get('casetype2'))) {
