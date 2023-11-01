@@ -911,7 +911,8 @@
                 url: '{{ route('cases.caseslist') }}',
                 type: 'POST',
                 data: {
-                        id: contactid
+                        id: contactid,
+                        tabid: tabid
                     },
                 success: function(response) {
                     $('#ListviewcasesP'+tabid).html(response.html);

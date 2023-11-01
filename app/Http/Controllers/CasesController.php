@@ -292,10 +292,11 @@ class CasesController extends Controller
     public function caseslist(Request $request)
     {
         $id = $request->input('id');
+        $tabid = $request->input('tabid');
         $data = CrmCase::where('contact_id', $id)->get();
 
         $template = 'cases.caseslist';
-        $htmlContent = View::make($template, ['caselist' => $data])->render();
+        $htmlContent = View::make($template, ['caselist' => $data,'cardid' => $tabid])->render();
         return response()->json(['html' =>  $htmlContent,]);
 
         //return response()->json(['data' => $data]);
