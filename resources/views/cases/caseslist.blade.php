@@ -30,7 +30,7 @@
                         <td>{{ $caselists->agent }}</td>
                         <td>{{ $caselists->created_at }}</td>
                         <td width="140px">
-                            </td>
+                            <button type="button" data-cases_id="{{ $caselists->id }}" class="form-control btn btn-success caselistP-button">รายละเอียด</button></td>
                     </tr>
                     @endforeach
                 </tbody>
