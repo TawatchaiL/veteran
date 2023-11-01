@@ -261,6 +261,28 @@
             });
         };
 
+        const AgentbyHourData = () => {
+            $.ajax({
+                url: '{{ route('dashboard.agent_by_hour') }}',
+                method: 'POST',
+                data: {
+                    _token: token,
+                },
+                success: (data) => {
+                    console.log(data)
+                   /*  data.avg_data.forEach((item) => {
+                        avg_talk.html(item.avg_talk_time)
+                        avg_wait.html(item.avg_hold_time)
+                        total_talk.html(item.total_talk_time)
+                        total_call.html(item.total_call)
+                    }); */
+                },
+                error: (error) => {
+                    console.error('Error fetching data:', error);
+                },
+            });
+        };
+
         function generateRandomData(length) {
             const data = [];
             for (let i = 0; i < length; i++) {
@@ -714,6 +736,7 @@
         //const max_wait = document.getElementById("max_wait");
         $(document).ready(() => {
             updateAvgData();
+            AgentbyHourData();
         });
     </script>
 @endsection

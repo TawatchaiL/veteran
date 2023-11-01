@@ -94,7 +94,7 @@ class DashboardController extends Controller
         ]);
     }
 
-    public function dashboard_agent_avg_data(Request $request)
+    public function dashboard_agent_avg_data()
     {
         $user = Auth::user();
         $queue = DB::connection('remote_connection')
@@ -150,6 +150,41 @@ class DashboardController extends Controller
 
         return response()->json([
             'sla_data' => $formattedQueue,
+        ]);
+    }
+
+
+    public function dashboard_agent_call_by_hour()
+    {
+        $user = Auth::user();
+        $allHours = range(0, 23);
+
+        $results = DB::table('call_entry_today')
+            ->select(
+                DB::raw('HOUR(datetime_init) as hour'),
+                DB::raw('COUNT(*) as count')
+            )
+            ->where('crm_id', $user->id)
+            ->groupBy('hour')
+            ->get();
+
+
+        $hourCounts = [];
+        foreach ($results as $result) {
+            $hourCounts[$result->hour] = $result->count;
+        }
+
+
+        foreach ($allHours as $hour) {
+            if (!isset($hourCounts[$hour])) {
+                $hourCounts[$hour] = 0;
+            }
+        }
+
+        ksort($hourCounts);
+
+        return response()->json([
+            'sla_data' => $hourCounts,
         ]);
     }
 
