@@ -129,7 +129,7 @@
 
             ],
             chart: {
-                type: 'bar',
+                type: 'area',
                 height: 350,
 
             },
