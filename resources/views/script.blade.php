@@ -52,7 +52,7 @@
             name: interval,
         }));
 
-        const var options_d = {
+        const option = {
             series: [{
                     name: 'สายเข้ารายชั่วโมง',
                     data: datac
