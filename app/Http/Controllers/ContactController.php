@@ -428,7 +428,7 @@ class ContactController extends Controller
             'sex' => 'required|string|max:50',
             'birthday' => 'required|string|max:50',
             'bloodgroup' => 'required|string|max:50',
-            'homeno' => 'required|string|max:10',
+            'homeno' => 'required|string|max:50',
             'city' => 'required|string|max:8',
             'district' => 'required|string|max:8',
             'subdistrict' => 'required|string|max:8',
