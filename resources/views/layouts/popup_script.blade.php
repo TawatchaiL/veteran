@@ -905,8 +905,8 @@
 
         //Click Tab
         $(document).on('click', '.tablistcaseP', function() {
-            const tabText = $(this).text();
-            //alert(tabText);
+            var tabText = $(this).data("contactid");
+            alert(tabText);
         });
 
         $(document).on('click', '.custom-bottom-right-card .card-tools [data-card-widget="maximize"]',
