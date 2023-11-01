@@ -920,6 +920,7 @@
         });
         //case view
         $(document).on('click', '.caselistP-button', function() {
+            alert('OK');
             var casesid = $(this).data("cases_id");
             var tabid = $(this).data("tabid");
             $.ajax({
