@@ -29,7 +29,7 @@
                     _token: token,
                 },
             });
-            console.log(response.date_data;);
+            console.log(response.date_data);
             return response.date_data;
         } catch (error) {
             console.error('Error fetching data:', error);
