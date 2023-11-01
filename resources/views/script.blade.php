@@ -29,7 +29,7 @@
                     _token: token,
                 },
             });
-            return response;
+            return response.hour_data; // Assuming response has a 'hour_data' property
         } catch (error) {
             console.error('Error fetching data:', error);
             throw error;
@@ -477,6 +477,19 @@
 
     })
 
+
+    const handleDataHour = async () => {
+    try {
+        const data = await AgentbyHourData();
+        const option = hour_chart_data(data);
+        const hour_chart = echarts.init(document.getElementById("hour_chart"));
+        hour_chart.setOption(option);
+        window.addEventListener('resize', hour_chart.resize);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+};
+
     const total_call = $('#total_call');
     const avg_talk = $('#avg_talk');
     const total_talk = $('#total_talk');
@@ -484,10 +497,6 @@
     //const max_wait = document.getElementById("max_wait");
     $(document).ready(() => {
         updateAvgData();
-        var hour_chart = echarts.init(document.getElementById("hour_chart"));
-        let chart_hour_data = AgentbyHourData();
-        console.log(chart_hour_data);
-        hour_chart.setOption(hour_chart_data());
-        window.addEventListener('resize', hour_chart.resize);
+        handleDataHour();
     });
 </script>
