@@ -1,6 +1,6 @@
 <div class="card card-primary">
     <div class="card-header">
-        <h3 class="card-title"><i class="fas fa-address-book"></i> ประวัติการแสดงความคิดเห็นเรื่องที่ติดต่อ</h3>
+        <h3 class="card-title"><i class="fas fa-address-book"></i> ประวัติการการติดต่อ</h3>
         <div class="card-tools">
         </div>
     </div>
@@ -9,7 +9,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <table id="Listview"
+                <table id="ListCaseview"
                 class="display nowrap table table-bordered table-striped table-hover">
                 <thead>
                     <tr>
@@ -30,8 +30,7 @@
                         <td>{{ $casecomments->created_at }}</td>
                         <td>{{ $casecomments->created_at }}</td>
                         <td width="140px">
-                            <button type="button" data-contact_id="{{ $casecomments->id }}" class="form-control btn btn-success caseviewp-button">รายละเอียด
-                            </button></td>
+                            <button type="button" data-cases_id="{{ $casecomments->id }}" class="form-control btn btn-success caseviewP-button">รายละเอียด</button></td>
                     </tr>
                     @endforeach
                 </tbody>
