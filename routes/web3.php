@@ -45,5 +45,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/agent_list', [App\Http\Controllers\DashboardController::class, 'getAgentList'])->name('dashboard.agent_list');
     Route::post('/avg_data', [App\Http\Controllers\DashboardController::class, 'dashboard_avg_data'])->name('dashboard.avg_data');
+    Route::post('/agent_avg_data', [App\Http\Controllers\DashboardController::class, 'dashboard_agent_avg_data'])->name('dashboard.agent_avg_data');
     Route::post('/sla_data', [App\Http\Controllers\DashboardController::class, 'dashboard_sla_data'])->name('dashboard.sla_data');
 });

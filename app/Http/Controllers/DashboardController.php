@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
+/* use Carbon\Carbon;
 use DateInterval;
 use DateTime;
-use Exception;
+use Exception; */
 
 class DashboardController extends Controller
 {
@@ -80,6 +81,40 @@ class DashboardController extends Controller
         foreach ($queue as $item) {
             $formattedItem = new \stdClass();
             $formattedItem->queue_number = $item->queue_number;
+            $formattedItem->avg_talk_time = $this->formatDuration($item->avg_talk_time);
+            $formattedItem->avg_hold_time = $this->formatDuration($item->avg_hold_time);
+            $formattedItem->total_talk_time = $this->formatDuration($item->total_talk_time);
+            $formattedItem->max_hold_time = $this->formatDuration($item->max_hold_time);
+
+            $formattedQueue[] = $formattedItem;
+        }
+
+        return response()->json([
+            'avg_data' => $formattedQueue,
+        ]);
+    }
+
+    public function dashboard_agent_avg_data(Request $request)
+    {
+        $user = Auth::user();
+        $queue = DB::connection('remote_connection')
+            ->table('call_center.call_entry_today')
+            ->select(
+                DB::raw('count(*) as total_call'),
+                DB::raw('AVG(duration) as avg_talk_time'),
+                DB::raw('AVG(duration_wait) as avg_hold_time'),
+                DB::raw('SUM(duration) as total_talk_time'),
+                DB::raw('MAX(duration_wait) as max_hold_time')
+            )
+            ->where('crm_id', $user->id)
+            ->get();
+
+
+        $formattedQueue = [];
+
+        foreach ($queue as $item) {
+            $formattedItem = new \stdClass();
+            $formattedItem->total_call = $item->total_call;
             $formattedItem->avg_talk_time = $this->formatDuration($item->avg_talk_time);
             $formattedItem->avg_hold_time = $this->formatDuration($item->avg_hold_time);
             $formattedItem->total_talk_time = $this->formatDuration($item->total_talk_time);

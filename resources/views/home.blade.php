@@ -240,6 +240,46 @@
 
 @section('script')
     <script language="javascript" type="text/javascript">
+        const changeText = (div, text) => {
+            div.classList.add('hide_text');
+            setTimeout(function() {
+                div.innerHTML = text;
+                div.classList.remove('hide_text');
+            }, 500);
+        }
+        const updateAvgData = () => {
+            $.ajax({
+                url: '{{ route('dashboard.agent_avg_data') }}',
+                method: 'POST',
+                data: {
+                    _token: token,
+                },
+                success: (data) => {
+                    console.log(data);
+                    /* avg_talk.html('')
+                    avg_wait.html('')
+                    total_talk.html('')
+                    max_wait.html('') */
+
+                    data.avg_data.forEach((item) => {
+                        if (item.queue_number == storedOption) {
+                            /* avg_talk.html(item.avg_talk_time)
+                            avg_wait.html(item.avg_hold_time)
+                            total_talk.html(item.total_talk_time)
+                            max_wait.html(item.max_hold_time) */
+                            changeText(avg_talk, item.avg_talk_time)
+                            changeText(avg_wait, item.avg_hold_time)
+                            changeText(total_talk, item.total_talk_time)
+                            changeText(max_wait, item.max_hold_time)
+                        }
+                    });
+                },
+                error: (error) => {
+                    console.error('Error fetching data:', error);
+                },
+            });
+        };
+
         function generateRandomData(length) {
             const data = [];
             for (let i = 0; i < length; i++) {
