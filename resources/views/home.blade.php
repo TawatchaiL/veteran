@@ -248,7 +248,6 @@
                     _token: token,
                 },
                 success: (data) => {
-                    console.log(data);
                     data.avg_data.forEach((item) => {
                         changeText(avg_talk, item.avg_talk_time)
                         changeText(avg_wait, item.avg_hold_time)
@@ -714,7 +713,7 @@
         const avg_wait = document.getElementById("avg_wait");
         //const max_wait = document.getElementById("max_wait");
         $(document).ready(() => {
-            updateAvgData();
+            //updateAvgData();
         });
     </script>
 @endsection
