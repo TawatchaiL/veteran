@@ -55,7 +55,7 @@
 
     const date_chart_data = (data) => {
         const dataArray = Object.entries(data).map(([day, count]) => ({
-            day: day, // Convert day to a number
+            day: parseInt(day), // Convert day to a number
             count: count,
         }));
         const option = {
@@ -111,7 +111,7 @@
 
     const date_case_chart_data = (data) => {
         const dataArray = Object.entries(data).map(([day, counts]) => ({
-            day: day,
+            day: parseInt(day),
             all: counts.all,
             tranfer: counts.tranfer,
         }));
