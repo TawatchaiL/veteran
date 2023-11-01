@@ -193,16 +193,16 @@ class ContactController extends Controller
             ->get();
         $contactcount = count($datac);
         if ($contactcount > 0) {
-            $cases = DB::table('crm_cases')
-            ->where('contact_id', '=', $datac[0]->id)
-            ->orderBy('created_at', 'desc')
-            ->get();
+            //$cases = DB::table('crm_cases')
+            //->where('contact_id', '=', $datac[0]->id)
+            //->orderBy('created_at', 'desc')
+            //->get();
             $emer = DB::table('crm_phone_emergencies')
                 ->where('contact_id', '=', $datac[0]->id)
                 ->get();
             $data = [
                 'datac' => $datac[0],
-                'cases' => $cases,
+            //    'cases' => $cases,
                 'emer' => $emer
             ];
             return response()->json(['datax' => $data]);

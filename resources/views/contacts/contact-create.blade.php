@@ -331,19 +331,8 @@
                     <div class="tab-pane fade" id="custom-tabs-one-casedetailp{{$cardid}}" role="tabpanel" aria-labelledby="custom-tabs-one-casedetail-tabp{{$cardid}}">
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <table id="Listviewcasesp{{$cardid}}" class="display nowrap table table-bordered table-striped table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>ประเภทเคส</th>
-                                            <th>รายละเอียดเคส</th>
-                                            <th>สถานะเคส</th>
-                                            <th>สถานะการโอนสาย</th>
-                                            <th>วันที่ทำรายการ</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
+                                <div id="Listviewcasesp{{$cardid}}">
+                                </div>
                             </div>
                         </div>        
                     </div>
