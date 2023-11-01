@@ -352,6 +352,8 @@ class CasesController extends Controller
         $user = Auth::user();
         $id = $request->get('id');
         $company = CrmCase::where('id', $id);
+
+
             $company->delete();
         return ['success' => true, 'message' => 'ลบ เรื่องที่ติดต่อ เรียบร้อยแล้ว'];
     }
