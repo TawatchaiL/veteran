@@ -66,7 +66,7 @@
                 curve: 'straight',
                 width: 4,
             },
-            colors: ['#3ba272'],
+            colors: ['#ea7ccc'],
             title: {
                 align: 'left',
             },
@@ -258,9 +258,7 @@
     }
 
     $(document).ready(function() {
-        window.Apex.chart = {
-            fontFamily: "Sarabun"
-        };
+
         var options = {
             series: [{
                     name: 'เคสที่รับแจ้ง',
@@ -631,6 +629,9 @@
     const avg_wait = $('#avg_wait');
     //const max_wait = document.getElementById("max_wait");
     $(document).ready(() => {
+        window.Apex.chart = {
+            fontFamily: "Sarabun"
+        };
         updateAvgData();
         handleDataHour();
         handleDataDate();
