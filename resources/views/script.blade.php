@@ -261,7 +261,7 @@
                 curve: 'straight',
                 width: 4
             },
-            colors: ['#009900'],
+            colors: ['#a5e1f8'],
             title: {
                 align: 'left'
             },
