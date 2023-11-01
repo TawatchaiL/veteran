@@ -707,10 +707,10 @@
 
         })
 
-        const total_call = document.getElementById("total_call");
-        const avg_talk = document.getElementById("avg_talk");
-        const total_talk = document.getElementById("total_talk");
-        const avg_wait = document.getElementById("avg_wait");
+        const total_call = $('#total_call');
+        const avg_talk = $('#avg_talk');
+        const total_talk = $('#total_talk');
+        const avg_wait = $('#avg_wait');
         //const max_wait = document.getElementById("max_wait");
         $(document).ready(() => {
             updateAvgData();
