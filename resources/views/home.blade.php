@@ -725,5 +725,10 @@
             window.addEventListener('resize', pie4072.resize);
 
         })
+
+        $(document).ready(() => {
+            updateAvgData();
+        });
+
     </script>
 @endsection
