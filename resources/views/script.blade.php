@@ -80,23 +80,16 @@
                 curve: 'straight',
                 width: 4
             },
-            colors: ['#81D4FA'
+            colors: ['#339933'
             ],
             title: {
-                //text: 'สถิติการเข้าชม รายวัน ประจำเดือน 2023-06',
                 align: 'left'
             },
             subtitle: {
-                //text: 'จำนวน',
+                text: 'จำนวน',
                 align: 'left'
             },
-            //labels: ['06-09','06-10','06-11','06-12','06-13','06-14','06-15','06-16','06-17','06-18','06-19','06-20','06-21','06-22','06-23','06-24','06-25','06-26','06-27','06-28','06-29'],
-            /* xaxis: {
-               //type: 'datetime',
-            }, */
-            /*yaxis: {
-               opposite: true
-             }, */
+
             xaxis: {
                 labels: {
                     show: true,
@@ -111,6 +104,7 @@
                 horizontalAlign: 'left'
             }
         };
+
        /*  const option = {
             tooltip: {
                 trigger: 'item',
