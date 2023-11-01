@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\CrmCase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 /* use Carbon\Carbon;
@@ -228,6 +229,52 @@ class DashboardController extends Controller
             'date_data' => $dateCounts,
         ]);
     }
+
+    public function dashboard_agent_case_by_date()
+    {
+        $user = Auth::user();
+        $currentMonth = now()->startOfMonth();
+        $lastDayOfMonth = now()->endOfMonth();
+        $dateCounts = [];
+
+        $results = CrmCase::select(
+            DB::raw('DAY(created_at) as day'),
+            DB::raw('COUNT(*) as total_count'),
+            DB::raw('SUM(CASE
+            WHEN transferstatus = "รับสาย" OR transferstatus = "ไม่รับสาย" OR transferstatus = "สายไม่ว่าง"
+            THEN 1
+            ELSE 0
+            END) as transferstatus_count')
+        )
+            ->where('agent', $user->id)
+            ->whereDate('created_at', '>=', $currentMonth)
+            ->whereDate('created_at', '<=', $lastDayOfMonth)
+            ->groupBy('day')
+            ->get();
+
+        foreach ($results as $result) {
+            $dateCounts[$result->day]['all'] = $result->total_count;
+            $dateCounts[$result->day]['tranfer'] = $result->transferstatus_count;
+        }
+
+        // Create an array with days from 1 to 31
+        $allDays = range(1, $lastDayOfMonth->day);
+
+        // Fill in missing days with a count of 0
+        foreach ($allDays as $day) {
+            if (!isset($dateCounts[$day])) {
+                $dateCounts[$day] = ['all' => 0, 'tranfer' => 0];
+            }
+        }
+
+        ksort($dateCounts);
+
+        return response()->json([
+            'date_data' => $dateCounts,
+        ]);
+    }
+
+
 
     public function getAgentList(Request $request)
     {

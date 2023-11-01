@@ -181,8 +181,8 @@
 
                             <div class="card card-primary" style="max-height: 455px">
                                 <div class="card-header">
-                                    <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> สถิติ เคสที่รับแจ้ง /
-                                        เคสที่ปิดเคสแล้ว รายวัน ประจำเดือน 2023-08
+                                    <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> สถิติ เคสที่รับแจ้งทั้งหมด /
+                                        เคสที่โอนสาย รายวัน ประจำเดือน {{ date("Y-m") }}
                                     </h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="maximize">
@@ -197,7 +197,7 @@
                                 <div class="card-body">
                                     <div class="chart">
                                         <div class="col-md-12">
-                                            <div id="chart"></div>
+                                            <div id="chart_case"></div>
                                         </div>
                                     </div>
                                 </div>
