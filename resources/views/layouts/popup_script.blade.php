@@ -918,6 +918,22 @@
                 }
             });
         });
+        //case view
+        $(document).on('click', '.caselistP-button', function() {
+            alert('OK');
+            var casesid = $(this).data("cases_id");
+            var tabid = $(this).data("tabid");
+            $.ajax({
+                url: '{{ route('cases.casesview') }}',
+                type: 'POST',
+                data: {
+                        id: casesid
+                    },
+                success: function(response) {
+                    $('#ListviewcasesP'+tabid).html(response.html);
+                }
+            });
+        });
 
         $(document).on('click', '.custom-bottom-right-card .card-tools [data-card-widget="maximize"]',
             function() {

@@ -301,6 +301,20 @@ class CasesController extends Controller
         //return response()->json(['data' => $data]);
 
     }
+    public function casesview(Request $request)
+    {
+        $casesid = $request->input('id');
+        $datac = CrmCase::where('id', $casesid)->first();
+        $datact = CrmContact::where('id', $datac->contact_id)->first();
+
+        $template = 'cases.casesdetail';
+        $htmlContent = View::make($template, ['cases' => $datac, 'datact' => $datact])->render();
+        //$htmlContent = View::make($template, ['casecomment' => $data])->render();
+        return response()->json(['html' =>  $htmlContent,]);
+
+        //return response()->json(['data' => $data]);
+
+    }
     public function destroy(Request $request)
     {
         $id = $request->get('id');

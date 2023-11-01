@@ -30,20 +30,12 @@
                         <td>{{ $caselists->agent }}</td>
                         <td>{{ $caselists->created_at }}</td>
                         <td width="140px">
-                            <button type="button" data-contact_id="{{ $caselists->contact_id }}" class="form-control btn btn-success caselistP-button">รายละเอียด</button></td>
+                            <button type="button" data-cases_id="{{ $caselists->id }}" data-tabid="{{$cardid}}" class="form-control btn btn-success caselistP-button">รายละเอียด</button></td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
             </div>
         </div>  
-    </div>
-</div>
-<div class="card">
-    <div class="card-body">
-        <div class="row justify-content-end">
-            <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i
-                    class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
-        </div>
     </div>
 </div>
