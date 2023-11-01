@@ -117,7 +117,7 @@
             all: counts.all,
             tranfer: counts.tranfer,
         }));
-        const options = {
+        const option = {
             series: [{
                     name: 'เคสที่รับแจ้งทั้งหมด',
                     data: dataArray.map((item) => item.all),
