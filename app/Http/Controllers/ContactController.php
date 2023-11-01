@@ -891,7 +891,7 @@ class ContactController extends Controller
             'modifyagent' => $user->id,
         ];
 
-        CrmContactLog::create($contactlog);
+       // CrmContactLog::create($contactlog);
 
         $contact->delete();
 
