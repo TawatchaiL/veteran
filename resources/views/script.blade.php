@@ -29,7 +29,7 @@
                     _token: token,
                 },
             });
-            return response.hour_data; // Assuming response has a 'hour_data' property
+            return response.hour_data;
         } catch (error) {
             console.error('Error fetching data:', error);
             throw error;
@@ -37,80 +37,77 @@
     };
 
     const hour_chart_data = (data) => {
-        if (data && data.length === 24) {
-            const timeIntervals = [
-                '00:00 - 00:59', '01:00 - 01:59', '02:00 - 02:59', '03:00 - 03:59',
-                '04:00 - 04:59', '05:00 - 05:59', '06:00 - 06:59', '07:00 - 07:59',
-                '08:00 - 08:59', '09:00 - 09:59', '10:00 - 10:59', '11:00 - 11:59',
-                '12:00 - 12:59', '13:00 - 13:59', '14:00 - 14:59', '15:00 - 15:59',
-                '16:00 - 16:59', '17:00 - 17:59', '18:00 - 18:59', '19:00 - 19:59',
-                '20:00 - 20:59', '21:00 - 21:59', '22:00 - 22:59', '23:00 - 23:59',
-            ];
 
-            const datac = timeIntervals.map((interval, index) => ({
-                value: data[index],
-                name: interval,
-            }));
+        const timeIntervals = [
+            '00:00 - 00:59', '01:00 - 01:59', '02:00 - 02:59', '03:00 - 03:59',
+            '04:00 - 04:59', '05:00 - 05:59', '06:00 - 06:59', '07:00 - 07:59',
+            '08:00 - 08:59', '09:00 - 09:59', '10:00 - 10:59', '11:00 - 11:59',
+            '12:00 - 12:59', '13:00 - 13:59', '14:00 - 14:59', '15:00 - 15:59',
+            '16:00 - 16:59', '17:00 - 17:59', '18:00 - 18:59', '19:00 - 19:59',
+            '20:00 - 20:59', '21:00 - 21:59', '22:00 - 22:59', '23:00 - 23:59',
+        ];
 
-            const option = {
-                tooltip: {
-                    trigger: 'item',
+        const datac = timeIntervals.map((interval, index) => ({
+            value: data[index],
+            name: interval,
+        }));
+
+        const option = {
+            tooltip: {
+                trigger: 'item',
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    saveAsImage: {},
                 },
-                toolbox: {
+            },
+            legend: {
+                show: true,
+                type: 'scroll',
+                orient: 'vertical',
+                right: 5,
+                top: 30,
+                bottom: 20,
+                data: datac.map((item) => item.name),
+            },
+            series: [{
+                name: 'ช่วงเวลา',
+                type: 'pie',
+                radius: ['40%', '70%'],
+                center: ['35%', '40%'],
+                avoidLabelOverlap: true,
+                label: {
                     show: true,
-                    feature: {
-                        saveAsImage: {},
+                    position: 'inner',
+                    fontSize: 10,
+                    color: '#ffffff',
+                    formatter(param) {
+                        return /* param.name +  */ ' (' + param.percent * 2 + '%)';
                     },
                 },
-                legend: {
-                    show: true,
-                    type: 'scroll',
-                    orient: 'vertical',
-                    right: 5,
-                    top: 30,
-                    bottom: 20,
-                    data: datac.map((item) => item.name),
-                },
-                series: [{
-                    name: 'ช่วงเวลา',
-                    type: 'pie',
-                    radius: ['40%', '70%'],
-                    center: ['35%', '40%'],
-                    avoidLabelOverlap: true,
+                color: ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452',
+                    '#9a60b4', '#ea7ccc', '#91c7ae',
+                    '#fb7293',
+                    '#96BFFF',
+                    '#bda29a',
+                ],
+                emphasis: {
                     label: {
                         show: true,
-                        position: 'inner',
-                        fontSize: 10,
-                        color: '#ffffff',
-                        formatter(param) {
-                            return /* param.name +  */ ' (' + param.percent * 2 + '%)';
-                        },
+                        fontSize: 20,
+                        fontWeight: 'bold',
                     },
-                    color: ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452',
-                        '#9a60b4', '#ea7ccc', '#91c7ae',
-                        '#fb7293',
-                        '#96BFFF',
-                        '#bda29a',
-                    ],
-                    emphasis: {
-                        label: {
-                            show: true,
-                            fontSize: 20,
-                            fontWeight: 'bold',
-                        },
-                    },
-                    labelLine: {
-                        show: true,
-                    },
-                    data: datac,
-                }],
-            };
+                },
+                labelLine: {
+                    show: true,
+                },
+                data: datac,
+            }],
+        };
 
-            return option;
-        } else {
-            console.error('Data is undefined or has an incorrect length.');
-            return {};
-        }
+        return option;
+
     };
 
     function generateRandomData(length) {
@@ -479,16 +476,16 @@
 
 
     const handleDataHour = async () => {
-    try {
-        const data = await AgentbyHourData();
-        const option = hour_chart_data(data);
-        const hour_chart = echarts.init(document.getElementById("hour_chart"));
-        hour_chart.setOption(option);
-        window.addEventListener('resize', hour_chart.resize);
-    } catch (error) {
-        console.error('Error:', error);
-    }
-};
+        try {
+            const data = await AgentbyHourData();
+            const option = hour_chart_data(data);
+            const hour_chart = echarts.init(document.getElementById("hour_chart"));
+            hour_chart.setOption(option);
+            window.addEventListener('resize', hour_chart.resize);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
 
     const total_call = $('#total_call');
     const avg_talk = $('#avg_talk');
