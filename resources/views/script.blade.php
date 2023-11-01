@@ -29,7 +29,6 @@
                     _token: token,
                 },
             });
-            console.log(response.date_data);
             return response.date_data;
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -38,10 +37,14 @@
     };
 
     const date_chart_data = (data) => {
+        const dataArray = Object.entries(data).map(([day, count]) => ({
+            day: parseInt(day), // Convert day to a number
+            count: count,
+        }));
         const option = {
             series: [{
                 name: 'สายเข้ารายวัน',
-                data: data.map((item) => item.count),
+                data: dataArray.map((item) => item.count),
             }, ],
             markers: {
                 size: 5,
@@ -79,7 +82,7 @@
                     maxHeight: 300,
                     // hideOverlappingLabels: false
                 },
-                categories: data.map((item) => item.day.toString()), // Assuming day is a number
+                categories: dataArray.map((item) => item.day.toString()),
             },
             legend: {
                 horizontalAlign: 'left',
