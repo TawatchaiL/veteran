@@ -920,7 +920,7 @@
             });
         });
         //case view
-        $(document).on('click', '.caselistP-button', function() {
+        $(document).on('click', '.caselistP-button .listcasesP-button', function() {
             var casesid = $(this).data("cases_id");
             var tabid = $(this).data("tabid");
             $.ajax({
