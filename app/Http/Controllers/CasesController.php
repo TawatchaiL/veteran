@@ -289,6 +289,18 @@ class CasesController extends Controller
         //return response()->json(['data' => $data]);
 
     }
+    public function caseslist(Request $request)
+    {
+        $id = $request->input('id');
+        $data = CrmCase::where('contact_id', $id)->get();
+
+        $template = 'cases.caseslist';
+        $htmlContent = View::make($template, ['caselist' => $data])->render();
+        return response()->json(['html' =>  $htmlContent,]);
+
+        //return response()->json(['data' => $data]);
+
+    }
     public function destroy(Request $request)
     {
         $id = $request->get('id');

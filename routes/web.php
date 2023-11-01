@@ -86,6 +86,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/cases/casecomment/{id}', [App\Http\Controllers\CasesController::class, 'casecomment'])->name('cases.casecomment');
     Route::post('/cases/commentlist', [App\Http\Controllers\CasesController::class, 'commentlist'])->name('cases.commentlist');
     Route::post('/cases/commentview', [App\Http\Controllers\CasesController::class, 'commentview'])->name('cases.commentview');
+    Route::post('/cases/caseslist', [App\Http\Controllers\CasesController::class, 'caseslist'])->name('cases.caseslist');
     Route::delete('/cases/destroy', [App\Http\Controllers\CasesController::class, 'destroy'])->name('cases.destroy');
     Route::post('/cases/destroy_all', [App\Http\Controllers\CasesController::class, 'destroy_all'])->name('cases.destroy_all');
 

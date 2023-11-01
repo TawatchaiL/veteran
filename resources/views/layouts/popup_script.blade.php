@@ -905,8 +905,18 @@
 
         //Click Tab
         $(document).on('click', '.tablistcaseP', function() {
-            var tabText = $(this).data("contactid");
-            alert(tabText);
+            var contactid = $(this).data("contactid");
+            var tabid = $(this).data("tabid");
+            $.ajax({
+                url: '{{ route('cases.caseslist') }}',
+                type: 'POST',
+                data: {
+                        id: contactid
+                    },
+                success: function(response) {
+                    $('#ListviewcasesP'+tabid).html(response.html);
+                }
+            });
         });
 
         $(document).on('click', '.custom-bottom-right-card .card-tools [data-card-widget="maximize"]',

@@ -16,21 +16,21 @@
                         <th>ประเภทเคส</th>
                         <th>รายละเอียดเคส</th>
                         <th>สถานะเคส</th>
-                        <th>สถานะการโอนสาย</th>
+                        <th>Agent</th>
                         <th>วันที่ทำรายการ</th>
                         <th width="140px"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($casecomment as $casecomments)
+                    @foreach($caselist as $caselists)
                     <tr>
-                        <td>{{ $casecomments->comment }}</td>
-                        <td>{{ $casecomments->agent }}</td>
-                        <td>{{ $casecomments->created_at }}</td>
-                        <td>{{ $casecomments->created_at }}</td>
-                        <td>{{ $casecomments->created_at }}</td>
+                        <td>{{ $caselists->casetype1 }}</td>
+                        <td>{{ $caselists->casedetail }}</td>
+                        <td>{{ $caselists->casestatus }}</td>
+                        <td>{{ $caselists->agent }}</td>
+                        <td>{{ $caselists->created_at }}</td>
                         <td width="140px">
-                            <button type="button" data-cases_id="{{ $casecomments->id }}" class="form-control btn btn-success caseviewP-button">รายละเอียด</button></td>
+                            <button type="button" data-contact_id="{{ $caselists->contact_id }}" class="form-control btn btn-success caselistP-button">รายละเอียด</button></td>
                     </tr>
                     @endforeach
                 </tbody>
