@@ -241,7 +241,7 @@ class DashboardController extends Controller
             DB::raw('DAY(created_at) as day'),
             DB::raw('COUNT(*) as total_count'),
             DB::raw('SUM(CASE
-            WHEN transferstatus = "รับสาย" OR transferstatus = "ไม่รับสาย" OR transferstatus = "สายไม่ว่าง"
+            WHEN tranferstatus = "รับสาย" OR transferstatus = "ไม่รับสาย" OR transferstatus = "สายไม่ว่าง"
             THEN 1
             ELSE 0
             END) as transferstatus_count')
