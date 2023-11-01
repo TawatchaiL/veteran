@@ -249,10 +249,10 @@
                 },
                 success: (data) => {
                     data.avg_data.forEach((item) => {
-                        changeText(avg_talk, item.avg_talk_time)
+                       /*  changeText(avg_talk, item.avg_talk_time)
                         changeText(avg_wait, item.avg_hold_time)
                         changeText(total_talk, item.total_talk_time)
-                        changeText(total_call, item.total_call)
+                        changeText(total_call, item.total_call) */
                     });
                 },
                 error: (error) => {
@@ -713,7 +713,7 @@
         const avg_wait = document.getElementById("avg_wait");
         //const max_wait = document.getElementById("max_wait");
         $(document).ready(() => {
-            //updateAvgData();
+            updateAvgData();
         });
     </script>
 @endsection
