@@ -485,7 +485,9 @@
     $(document).ready(() => {
         updateAvgData();
         var hour_chart = echarts.init(document.getElementById("hour_chart"));
-        hour_chart.setOption(hour_chart_data(AgentbyHourData()));
+        let chart_hour_data = AgentbyHourData();
+        console.log(chart_hour_data);
+        hour_chart.setOption(hour_chart_data());
         window.addEventListener('resize', hour_chart.resize);
     });
 </script>
