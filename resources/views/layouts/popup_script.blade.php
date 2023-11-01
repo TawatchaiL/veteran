@@ -904,7 +904,7 @@
         });
 
         //Click Tab
-        $(document).on('click', '.tablistcaseP', function() {
+        $(document).on('click', '.tablistcaseP .listcasesP-button', function() {
             var contactid = $(this).data("contactid");
             var tabid = $(this).data("tabid");
             $.ajax({
@@ -920,14 +920,15 @@
             });
         });
         //case view
-        $(document).on('click', '.caselistP-button .listcasesP-button', function() {
+        $(document).on('click', '.casedetailP-button', function() {
             var casesid = $(this).data("cases_id");
             var tabid = $(this).data("tabid");
             $.ajax({
                 url: '{{ route('cases.casesview') }}',
                 type: 'POST',
                 data: {
-                        id: casesid
+                        id: casesid,
+                        tabid: tabid
                     },
                 success: function(response) {
                     $('#ListviewcasesP'+tabid).html(response.html);

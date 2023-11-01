@@ -305,11 +305,12 @@ class CasesController extends Controller
     public function casesview(Request $request)
     {
         $casesid = $request->input('id');
+        $tabid = $request->input('tabid');
         $datac = CrmCase::where('id', $casesid)->first();
         $datact = CrmContact::where('id', $datac->contact_id)->first();
 
         $template = 'cases.casesdetail';
-        $htmlContent = View::make($template, ['cases' => $datac, 'datact' => $datact])->render();
+        $htmlContent = View::make($template, ['cases' => $datac, 'datact' => $datact,'cardid' => $tabid])->render();
         //$htmlContent = View::make($template, ['casecomment' => $data])->render();
         return response()->json(['html' =>  $htmlContent,]);
 
