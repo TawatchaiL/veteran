@@ -214,14 +214,11 @@ class DashboardController extends Controller
 
         $currentDate = $currentMonth;
         while ($currentDate <= $lastDayOfMonth) {
-            $formattedDate = $currentDate->format('Y-m-d');
-            $formattedDateEndOfMonth = $currentDate->endOfMonth()->format('Y-m-d');
-            $formattedDateRange = $formattedDate . ' - ' . $formattedDateEndOfMonth;
-
-            if (!isset($dateCounts[$formattedDateRange])) {
-                $dateCounts[$formattedDateRange] = 0;
+            $formattedDate = $currentDate->format('d');
+            if (!isset($dateCounts[$formattedDate])) {
+                $dateCounts[$formattedDate] = 0;
             }
-            $currentDate->addMonth();
+            $currentDate->addDay();
         }
 
         ksort($dateCounts);
