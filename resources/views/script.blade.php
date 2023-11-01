@@ -66,7 +66,7 @@
                 curve: 'straight',
                 width: 4,
             },
-            colors: ['#ea7ccc'],
+            colors: ['#E91E63'],
             title: {
                 align: 'left',
             },
