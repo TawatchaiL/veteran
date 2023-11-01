@@ -240,13 +240,13 @@
 
 @section('script')
     <script language="javascript" type="text/javascript">
-        const changeText = (div, text) => {
+ /*        const changeText = (div, text) => {
             div.classList.add('hide_text');
             setTimeout(function() {
                 div.innerHTML = text;
                 div.classList.remove('hide_text');
             }, 500);
-        }
+        } */
         const updateAvgData = () => {
             $.ajax({
                 url: '{{ route('dashboard.agent_avg_data') }}',
