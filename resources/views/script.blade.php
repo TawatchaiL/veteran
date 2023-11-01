@@ -111,7 +111,7 @@
 
     const date_case_chart_data = (data) => {
         const dataArray = Object.entries(data).map(([day, counts]) => ({
-            day: day,
+            day: parseInt(day),
             all: counts.all,
             tranfer: counts.tranfer,
         }));
@@ -730,7 +730,8 @@
     const handleCaseDataDate = async () => {
         try {
             const data = await AgentCasebyDateData();
-            const option = date_case_chart_data(data)
+            const option = date_case_chart_data(data);
+            console.log(option)
             var chart_case = new ApexCharts(document.querySelector("#chart_case"), option);
             chart_case.render();
         } catch (error) {
@@ -753,5 +754,6 @@
         updateAvgData();
         handleDataHour();
         handleDataDate();
+        handleCaseDataDate();
     });
 </script>
