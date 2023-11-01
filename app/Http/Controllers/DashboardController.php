@@ -199,26 +199,27 @@ class DashboardController extends Controller
         $results = DB::connection('remote_connection')
             ->table('call_center.call_entry_today')
             ->select(
-                DB::raw('DATE(datetime_init) as date'),
+                DB::raw('DAY(datetime_init) as day'),
                 DB::raw('COUNT(*) as count')
             )
             ->where('crm_id', $user->id)
             ->whereDate('datetime_init', '>=', $currentMonth)
             ->whereDate('datetime_init', '<=', $lastDayOfMonth)
-            ->groupBy('date')
+            ->groupBy('day')
             ->get();
 
         foreach ($results as $result) {
-            $dateCounts[$result->date] = $result->count;
+            $dateCounts[$result->day] = $result->count;
         }
 
-        $currentDate = $currentMonth;
-        while ($currentDate <= $lastDayOfMonth) {
-            $formattedDate = $currentDate->format('d');
-            if (!isset($dateCounts[$formattedDate])) {
-                $dateCounts[$formattedDate] = 0;
+        // Create an array with days from 1 to 31
+        $allDays = range(1, 31);
+
+        // Fill in missing days with a count of 0
+        foreach ($allDays as $day) {
+            if (!isset($dateCounts[$day])) {
+                $dateCounts[$day] = 0;
             }
-            $currentDate->addDay();
         }
 
         ksort($dateCounts);
