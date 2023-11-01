@@ -253,7 +253,7 @@
                         changeText(avg_talk, item.avg_talk_time)
                         changeText(avg_wait, item.avg_hold_time)
                         changeText(total_talk, item.total_talk_time)
-                        changeText(max_wait, item.max_hold_time)
+                        changeText(total_call, item.total_call)
                     });
                 },
                 error: (error) => {
