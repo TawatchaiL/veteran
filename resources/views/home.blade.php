@@ -249,10 +249,10 @@
                 },
                 success: (data) => {
                     data.avg_data.forEach((item) => {
-                       /*  changeText(avg_talk, item.avg_talk_time)
-                        changeText(avg_wait, item.avg_hold_time)
-                        changeText(total_talk, item.total_talk_time)
-                        changeText(total_call, item.total_call) */
+                        avg_talk.html(item.avg_talk_time)
+                        avg_wait.html(avg_hold_time)
+                        total_talk.html(item.total_talk_time)
+                        total_call.html(item.total_call)
                     });
                 },
                 error: (error) => {
