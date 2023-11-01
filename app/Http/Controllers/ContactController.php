@@ -887,7 +887,7 @@ class ContactController extends Controller
             'agent' => $contact->agent,
             'created_at' => $contact->created_at,
             'updated_at' => $contact->updated_at,
-            'modifyaction' => 'edit',
+            'modifyaction' => 'delete',
             'modifyagent' => $user->id,
         ];
 
@@ -950,7 +950,7 @@ class ContactController extends Controller
                 'agent' => $contact->agent,
                 'created_at' => $contact->created_at,
                 'updated_at' => $contact->updated_at,
-                'modifyaction' => 'edit',
+                'modifyaction' => 'delete',
                 'modifyagent' => $user->id,
             ];
     
