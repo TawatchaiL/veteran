@@ -904,7 +904,23 @@
         });
 
         //Click Tab
-        $(document).on('click', '.tablistcaseP .listcasesP-button', function() {
+        $(document).on('click', '.tablistcaseP', function() {
+            var contactid = $(this).data("contactid");
+            var tabid = $(this).data("tabid");
+            $.ajax({
+                url: '{{ route('cases.caseslist') }}',
+                type: 'POST',
+                data: {
+                        id: contactid,
+                        tabid: tabid
+                    },
+                success: function(response) {
+                    $('#ListviewcasesP'+tabid).html(response.html);
+                }
+            });
+        });
+        //List cases
+        $(document).on('click', '.listcasesP-button', function() {
             var contactid = $(this).data("contactid");
             var tabid = $(this).data("tabid");
             $.ajax({
