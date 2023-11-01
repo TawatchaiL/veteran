@@ -131,9 +131,12 @@
             chart: {
                 type: 'area',
                 height: 350,
+                zoom: {
+                    enabled: false,
+                },
 
             },
-            colors: ['#3e8020', '#FF9800'],
+            colors: ['#21490e', '#FF9800'],
             title: {
                 margin: 50,
                 //offsetX: 50,
