@@ -129,11 +129,11 @@
 
             ],
             chart: {
-                type: 'bar',
+                type: 'area',
                 height: 350,
 
             },
-            colors: ['#2E93fA', '#FF9800'],
+            colors: ['#3e8020', '#FF9800'],
             title: {
                 margin: 50,
                 //offsetX: 50,
@@ -248,7 +248,7 @@
                 strokeWidth: 4
             },
             chart: {
-                type: 'area',
+                type: 'bar',
                 height: 380,
                 zoom: {
                     enabled: false
@@ -261,7 +261,7 @@
                 curve: 'straight',
                 width: 4
             },
-            colors: ['#009900'],
+            colors: ['#2E93fA'],
             title: {
                 align: 'left'
             },
