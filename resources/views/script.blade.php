@@ -630,6 +630,6 @@
     $(document).ready(() => {
         updateAvgData();
         handleDataHour();
-        AgentbyDateData();
+        handleDataDate();
     });
 </script>
