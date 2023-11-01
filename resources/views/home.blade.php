@@ -44,7 +44,7 @@
                                 <span class="info-box-icon bg-warning"><i class="fa-solid fa-user-clock"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text">เวลารอสายเฉลี่ย</span>
-                                    <span class="info-box-number" id="avg_wait">00:00:12</span>
+                                    <span class="info-box-number" id="avg_wait">00:00:00</span>
                                 </div>
 
                             </div>
@@ -54,7 +54,7 @@
                                 <span class="info-box-icon bg-warning"><i class="fa-solid fa-phone-volume"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เวลาที่สนทนาทั้งหมด</span>
-                                    <span class="info-box-number" id="total_talk">00:38:43</span>
+                                    <span class="info-box-number" id="total_talk">00:00:00</span>
                                 </div>
 
                             </div>
@@ -64,7 +64,7 @@
                                 <span class="info-box-icon bg-warning"><i class="fa-solid fa-headset"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เวลาสนทนาเฉลี่ยต่อสาย</span>
-                                    <span class="info-box-number" id="avg_talk"> 00:05:12</span>
+                                    <span class="info-box-number" id="avg_talk"> 00:00:00</span>
                                 </div>
 
                             </div>
@@ -250,7 +250,7 @@
                 success: (data) => {
                     data.avg_data.forEach((item) => {
                         avg_talk.html(item.avg_talk_time)
-                        avg_wait.html(avg_hold_time)
+                        avg_wait.html(item.avg_hold_time)
                         total_talk.html(item.total_talk_time)
                         total_call.html(item.total_call)
                     });
