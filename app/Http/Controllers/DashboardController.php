@@ -159,7 +159,8 @@ class DashboardController extends Controller
         $user = Auth::user();
         $allHours = range(0, 23);
 
-        $results = DB::table('call_entry_today')
+        $results =  DB::connection('remote_connection')
+            ->table('call_center.call_entry_today')
             ->select(
                 DB::raw('HOUR(datetime_init) as hour'),
                 DB::raw('COUNT(*) as count')
