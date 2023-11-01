@@ -137,7 +137,7 @@ class ContactController extends Controller
             if($datap[0]->id != ''){
                 $contactpid = $datap[0]->id;
             }else{
-                $contactpid = "";
+                $contactpid = 0;
             }
             $htmlContent = View::make($template, [
                 'cardid' => $con, 'telephone' => $con, 'contactd' => $datap, 'conid' => $contactpid
