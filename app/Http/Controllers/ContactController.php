@@ -862,36 +862,6 @@ class ContactController extends Controller
         $user = Auth::user();
         $contact = CrmContact::find($id);
 
-        $contactlog = [
-            'id' => $contact->id,
-            'hn' => $contact->hn,
-            'adddate' => $contact->adddate,
-            'tname' => $contact->tname,
-            'fname' => $contact->fname,
-            'lname' => $contact->lname,
-            'sex' => $contact->sex,
-            'birthday' => $contact->birthday,
-            'age' => $contact->age,
-            'bloodgroup' => $contact->bloodgroup,
-            'homeno' => $contact->homeno,
-            'moo' => $contact->moo,
-            'soi' => $contact->soi,
-            'road' => $contact->road,
-            'city' => $contact->city,
-            'district' => $contact->district,
-            'subdistrict' => $contact->subdistrict,
-            'postcode' => $contact->postcode,
-            'telhome' => $contact->telhome,
-            'phoneno' => $contact->phoneno,
-            'workno' => $contact->workno,
-            'agent' => $contact->agent,
-            'created_at' => $contact->created_at,
-            'updated_at' => $contact->updated_at,
-            'modifyaction' => 'edit',
-            'modifyagent' => $user->id,
-        ];
-
-       // CrmContactLog::create($contactlog);
 
         $contact->delete();
 
