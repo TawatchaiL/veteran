@@ -132,10 +132,15 @@ class ContactController extends Controller
             $htmlContent = View::make($template, [
                 'cardid' => $con, 'telephone' => $con, 'contactd' => $datap
             ])->render();
-        } else {
+        } elseif ($contactcount == 1) {
             $template = 'contacts.contact-create';
             $htmlContent = View::make($template, [
                 'cardid' => $con, 'telephone' => $con, 'contactd' => $datap
+            ])->render();
+        } else {
+            $template = 'contacts.contact-create';
+            $htmlContent = View::make($template, [
+                'cardid' => $con, 'telephone' => $con, 'contactd' => 0
             ])->render();
         }
         return response()->json(['html' =>  $htmlContent,]);
