@@ -42,7 +42,7 @@
                             aria-selected="true">ข้อมูลเรื่องที่ติดต่อ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="custom-tabs-one-casedetail-tabp{{$cardid}}" data-toggle="pill"
+                        <a class="nav-link tablistcaseP" id="custom-tabs-one-casedetail-tabp{{$cardid}}" data-contactid="" data-toggle="pill"
                             href="#custom-tabs-one-casedetailp{{$cardid}}" role="tab" aria-controls="custom-tabs-one-casedetailp{{$cardid}}"
                             aria-selected="false">ประวัติการติดต่อ</a>
                     </li>
@@ -331,19 +331,8 @@
                     <div class="tab-pane fade" id="custom-tabs-one-casedetailp{{$cardid}}" role="tabpanel" aria-labelledby="custom-tabs-one-casedetail-tabp{{$cardid}}">
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <table id="Listviewcasesp{{$cardid}}" class="display nowrap table table-bordered table-striped table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>ประเภทเคส</th>
-                                            <th>รายละเอียดเคส</th>
-                                            <th>สถานะเคส</th>
-                                            <th>สถานะการโอนสาย</th>
-                                            <th>วันที่ทำรายการ</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
+                                <div id="Listviewcasesp{{$cardid}}">
+                                </div>
                             </div>
                         </div>        
                     </div>
