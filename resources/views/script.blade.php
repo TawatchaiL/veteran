@@ -38,61 +38,54 @@
     };
 
     const date_chart_data = (data) => {
-
         const option = {
             series: [{
-                    name: 'สายเข้ารายวัน',
-                    data: datac.map((item) => item.value)
-                },
-
-            ],
-
+                name: 'สายเข้ารายวัน',
+                data: data.map((item) => item.count),
+            }, ],
             markers: {
                 size: 5,
                 colors: ["#FFFFFF"],
                 strokeColor: "#A5978B",
-                strokeWidth: 4
+                strokeWidth: 4,
             },
             chart: {
                 type: 'area',
                 height: 380,
                 zoom: {
-                    enabled: false
-                }
+                    enabled: false,
+                },
             },
             dataLabels: {
-                enabled: false
+                enabled: false,
             },
             stroke: {
                 curve: 'straight',
-                width: 4
+                width: 4,
             },
-            colors: ['#ff7c3e'
-            ],
+            colors: ['#3ba272'],
             title: {
-                align: 'left'
+                align: 'left',
             },
             subtitle: {
                 text: 'จำนวน',
-                align: 'left'
+                align: 'left',
             },
-
             xaxis: {
                 labels: {
                     show: true,
                     rotate: -30,
                     rotateAlways: true,
                     maxHeight: 300,
-                    //hideOverlappingLabels: false
+                    // hideOverlappingLabels: false
                 },
-                categories: datac.map((item) => item.name),
+                categories: data.map((item) => item.day.toString()), // Assuming day is a number
             },
             legend: {
-                horizontalAlign: 'left'
-            }
+                horizontalAlign: 'left',
+            },
         };
         return option;
-
     };
 
 
@@ -156,8 +149,7 @@
                 curve: 'straight',
                 width: 4
             },
-            colors: ['#ff7c3e'
-            ],
+            colors: ['#ff7c3e'],
             title: {
                 align: 'left'
             },
@@ -181,59 +173,59 @@
             }
         };
 
-       /*  const option = {
-            tooltip: {
-                trigger: 'item',
-            },
-            toolbox: {
-                show: true,
-                feature: {
-                    saveAsImage: {},
-                },
-            },
-            legend: {
-                show: true,
-                type: 'scroll',
-                orient: 'vertical',
-                right: 5,
-                top: 20,
-                bottom: 20,
-                data: datac.map((item) => item.name),
-            },
-            series: [{
-                name: 'ช่วงเวลา',
-                type: 'pie',
-                radius: ['40%', '70%'],
-                center: ['35%', '40%'],
-                avoidLabelOverlap: true,
-                label: {
-                    show: true,
-                    position: 'inner',
-                    fontSize: 10,
-                    color: '#ffffff',
-                    formatter(param) {
-                        return  ' (' + param.percent * 2 + '%)';
-                    },
-                },
-                color: ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452',
-                    '#9a60b4', '#ea7ccc', '#91c7ae',
-                    '#fb7293',
-                    '#96BFFF',
-                    '#bda29a',
-                ],
-                emphasis: {
-                    label: {
-                        show: true,
-                        fontSize: 20,
-                        fontWeight: 'bold',
-                    },
-                },
-                labelLine: {
-                    show: true,
-                },
-                data: datac,
-            }],
-        }; */
+        /*  const option = {
+             tooltip: {
+                 trigger: 'item',
+             },
+             toolbox: {
+                 show: true,
+                 feature: {
+                     saveAsImage: {},
+                 },
+             },
+             legend: {
+                 show: true,
+                 type: 'scroll',
+                 orient: 'vertical',
+                 right: 5,
+                 top: 20,
+                 bottom: 20,
+                 data: datac.map((item) => item.name),
+             },
+             series: [{
+                 name: 'ช่วงเวลา',
+                 type: 'pie',
+                 radius: ['40%', '70%'],
+                 center: ['35%', '40%'],
+                 avoidLabelOverlap: true,
+                 label: {
+                     show: true,
+                     position: 'inner',
+                     fontSize: 10,
+                     color: '#ffffff',
+                     formatter(param) {
+                         return  ' (' + param.percent * 2 + '%)';
+                     },
+                 },
+                 color: ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452',
+                     '#9a60b4', '#ea7ccc', '#91c7ae',
+                     '#fb7293',
+                     '#96BFFF',
+                     '#bda29a',
+                 ],
+                 emphasis: {
+                     label: {
+                         show: true,
+                         fontSize: 20,
+                         fontWeight: 'bold',
+                     },
+                 },
+                 labelLine: {
+                     show: true,
+                 },
+                 data: datac,
+             }],
+         }; */
 
         return option;
 
@@ -433,8 +425,7 @@
             }
         };
 
-        var chart_d = new ApexCharts(document.querySelector("#chart_date"), options_d);
-        chart_d.render();
+
 
 
         var options_os = {
@@ -617,6 +608,19 @@
             console.error('Error:', error);
         }
     };
+
+    const handleDataDate = async () => {
+        try {
+            const data = await AgentbyDateData();
+            const option = date_chart_data(data);
+            var chart_d = new ApexCharts(document.querySelector("#chart_date"), option);
+            chart_d.render();
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
+
 
     const total_call = $('#total_call');
     const avg_talk = $('#avg_talk');
