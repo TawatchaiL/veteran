@@ -351,7 +351,7 @@ class CasesController extends Controller
     {
         $user = Auth::user();
         $id = $request->get('id');
-        $company = CrmCase::whefindre($id);
+        $company = CrmCase::find($id);
 
         $caseslog = [
             'id' => $company->id,
