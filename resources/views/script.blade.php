@@ -68,7 +68,7 @@
                 orient: 'vertical',
                 right: 5,
                 top: 30,
-                bottom: 20,
+                bottom: 50,
                 data: datac.map((item) => item.name),
             },
             series: [{
