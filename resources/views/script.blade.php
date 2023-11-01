@@ -20,43 +20,98 @@
         });
     };
 
-    const AgentbyHourData = () => {
-        $.ajax({
-            url: '{{ route('dashboard.agent_by_hour') }}',
-            method: 'POST',
-            data: {
-                _token: token,
-            },
-            success: (data) => {
-                return data;
-            },
-            error: (error) => {
-                console.error('Error fetching data:', error);
-            },
-        });
+    const AgentbyHourData = async () => {
+        try {
+            const response = await $.ajax({
+                url: '{{ route('dashboard.agent_by_hour') }}',
+                method: 'POST',
+                data: {
+                    _token: token,
+                },
+            });
+            return response;
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            throw error;
+        }
     };
 
-    function hour_chart_data(data){
-        var datac = [];
-        var timeIntervals = [
-            '00:00 - 00:59', '01:00 - 01:59', '02:00 - 02:59', '03:00 - 03:59',
-            '04:00 - 04:59', '05:00 - 05:59', '06:00 - 06:59', '07:00 - 07:59',
-            '08:00 - 08:59', '09:00 - 09:59', '10:00 - 10:59', '11:00 - 11:59',
-            '12:00 - 12:59', '13:00 - 13:59', '14:00 - 14:59', '15:00 - 15:59',
-            '16:00 - 16:59', '17:00 - 17:59', '18:00 - 18:59', '19:00 - 19:59',
-            '20:00 - 20:59', '21:00 - 21:59', '22:00 - 22:59', '23:00 - 23:59',
-        ];
+    const hour_chart_data = (data) => {
+        if (data && data.length === 24) {
+            const timeIntervals = [
+                '00:00 - 00:59', '01:00 - 01:59', '02:00 - 02:59', '03:00 - 03:59',
+                '04:00 - 04:59', '05:00 - 05:59', '06:00 - 06:59', '07:00 - 07:59',
+                '08:00 - 08:59', '09:00 - 09:59', '10:00 - 10:59', '11:00 - 11:59',
+                '12:00 - 12:59', '13:00 - 13:59', '14:00 - 14:59', '15:00 - 15:59',
+                '16:00 - 16:59', '17:00 - 17:59', '18:00 - 18:59', '19:00 - 19:59',
+                '20:00 - 20:59', '21:00 - 21:59', '22:00 - 22:59', '23:00 - 23:59',
+            ];
 
-        for (var i = 0; i < timeIntervals.length; i++) {
-            var dataPoint = {
-                value: data[i], // Replace the value with data from response.hour_data
-                name: timeIntervals[i]
+            const datac = timeIntervals.map((interval, index) => ({
+                value: data[index],
+                name: interval,
+            }));
+
+            const option = {
+                tooltip: {
+                    trigger: 'item',
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        saveAsImage: {},
+                    },
+                },
+                legend: {
+                    show: true,
+                    type: 'scroll',
+                    orient: 'vertical',
+                    right: 5,
+                    top: 30,
+                    bottom: 20,
+                    data: datac.map((item) => item.name),
+                },
+                series: [{
+                    name: 'ช่วงเวลา',
+                    type: 'pie',
+                    radius: ['40%', '70%'],
+                    center: ['35%', '40%'],
+                    avoidLabelOverlap: true,
+                    label: {
+                        show: true,
+                        position: 'inner',
+                        fontSize: 10,
+                        color: '#ffffff',
+                        formatter(param) {
+                            return /* param.name +  */ ' (' + param.percent * 2 + '%)';
+                        },
+                    },
+                    color: ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452',
+                        '#9a60b4', '#ea7ccc', '#91c7ae',
+                        '#fb7293',
+                        '#96BFFF',
+                        '#bda29a',
+                    ],
+                    emphasis: {
+                        label: {
+                            show: true,
+                            fontSize: 20,
+                            fontWeight: 'bold',
+                        },
+                    },
+                    labelLine: {
+                        show: true,
+                    },
+                    data: datac,
+                }],
             };
-            datac.push(dataPoint);
-        }
 
-        return datac;
-    }
+            return option;
+        } else {
+            console.error('Data is undefined or has an incorrect length.');
+            return {};
+        }
+    };
 
     function generateRandomData(length) {
         const data = [];
@@ -418,75 +473,7 @@
 
 
 
-        var pie4072 = echarts.init(document.getElementById("mainbc2_4072"));
 
-        option4072 = {
-            tooltip: {
-                trigger: 'item'
-            },
-            toolbox: {
-                show: true,
-                feature: {
-                    /* dataZoom: {
-                        yAxisIndex: 'none'
-                    },
-                    dataView: {
-                        readOnly: false
-                    },
-                    magicType: {
-                        type: ['line', 'bar']
-                    },
-                    restore: {}, */
-                    saveAsImage: {}
-                }
-            },
-            legend: {
-                show: true,
-                type: 'scroll',
-                orient: 'vertical',
-                right: 5,
-                top: 30,
-                bottom: 20,
-                data: datac.legendData
-            },
-            series: [{
-                name: 'ช่วงเวลา',
-                type: 'pie',
-                radius: ['40%', '70%'],
-                center: ['35%', '40%'],
-                avoidLabelOverlap: true,
-                label: {
-                    show: true,
-                    position: 'inner',
-                    fontSize: 10,
-                    color: '#ffffff',
-                    formatter(param) {
-                        // correct the percentage
-                        return /* param.name +  */ ' (' + param.percent * 2 + '%)';
-                    }
-                },
-                color: ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452',
-                    '#9a60b4', '#ea7ccc', '#91c7ae',
-                    '#fb7293',
-                    '#96BFFF',
-                    '#bda29a',
-                ],
-                emphasis: {
-                    label: {
-                        show: true,
-                        fontSize: 20,
-                        fontWeight: 'bold'
-                    }
-                },
-                labelLine: {
-                    show: true
-                },
-                data: datac
-            }]
-        };
-
-        pie4072.setOption(option4072);
-        window.addEventListener('resize', pie4072.resize);
 
     })
 
@@ -497,6 +484,8 @@
     //const max_wait = document.getElementById("max_wait");
     $(document).ready(() => {
         updateAvgData();
-        hour_chart_data(AgentbyHourData());
+        var hour_chart = echarts.init(document.getElementById("hour_chart"));
+        hour_chart.setOption(ohour_chart_data(AgentbyHourData()));
+        window.addEventListener('resize', hour_chart.resize);
     });
 </script>

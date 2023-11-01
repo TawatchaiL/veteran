@@ -139,7 +139,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <div id="mainbc2_4072" style="width: 100%; height: 450px;"></div>
+                                    <div id="hour_chart" style="width: 100%; height: 450px;"></div>
                                 </div>
 
                             </div>
