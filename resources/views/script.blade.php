@@ -80,7 +80,7 @@
                 curve: 'straight',
                 width: 4
             },
-            colors: ['#6600cc'
+            colors: ['#ff7c3e'
             ],
             title: {
                 align: 'left'
