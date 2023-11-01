@@ -58,8 +58,6 @@
         <div class="row justify-content-end">
             <button type="button" data-contactid="{{ $cases->contact_id }}" data-tabid="{{$cardid}}" class="btn btn-success listcasesP-button"><i class="fas fa-download"></i>
                 ย้อนกลับ</button>&nbsp;
-            <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i
-                    class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
         </div>
     </div>
 </div>
