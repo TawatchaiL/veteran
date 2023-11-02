@@ -779,7 +779,9 @@ class ContactController extends Controller
             'modifyaction' => 'edit',
             'modifyagent' => $user->id,
         ];
-
+        if ($contact->birthday == "0000-00-00") {
+            $contactlog['birthday'] = null;
+        }
         CrmContactLog::create($contactlog);
 
         $contact->update($contactd);
@@ -893,7 +895,9 @@ class ContactController extends Controller
             'modifyaction' => 'delete',
             'modifyagent' => $user->id,
         ];
-
+        if ($contact->birthday == "0000-00-00") {
+            $contactlog['birthday'] = null;
+        }
         CrmContactLog::create($contactlog);
 
         $contact->delete();
@@ -956,7 +960,9 @@ class ContactController extends Controller
                 'modifyaction' => 'delete',
                 'modifyagent' => $user->id,
             ];
-    
+            if ($contact->birthday == "0000-00-00") {
+                $contactlog['birthday'] = null;
+            }   
             CrmContactLog::create($contactlog);
     
             $contact->delete();
