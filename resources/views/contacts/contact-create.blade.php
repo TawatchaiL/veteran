@@ -34,7 +34,7 @@
                     <li class="nav-item">
                         <a class="nav-link" id="custom-tabs-one-address-tabp{{$cardid}}" data-toggle="pill"
                             href="#custom-tabs-one-addressp{{$cardid}}" role="tab" aria-controls="custom-tabs-one-addressp{{$cardid}}"
-                            aria-selected="false">ที่อยู่</a>
+                            aria-selected="false">ข้อมูลที่อยู่</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="custom-tabs-one-profile-tabp{{$cardid}}" data-toggle="pill"

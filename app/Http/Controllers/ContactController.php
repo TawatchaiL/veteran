@@ -517,11 +517,14 @@ class ContactController extends Controller
             'modifyaction' => 'edit',
             'modifyagent' => $user->id,
         ];
+        if ($contact->birthday == "0000-00-00") {
+            $contactlog['birthday'] = null;
+        }
         //$bindings = $contact->getBindings();
         //DB::table('crm_contact_logs')->insert($contact);
         //$bindings = $contact->getBindings();
 
-        //CrmContactLog::create($contactlog);
+        CrmContactLog::create($contactlog);
 
         $contact->update($contactd);
 
@@ -556,7 +559,7 @@ class ContactController extends Controller
                         'modifyaction' => 'edit',
                         'modifyagent' => $user->id,
                     ];
-                    //CrmPhoneEmergencyLog::create($emerlog);
+                    CrmPhoneEmergencyLog::create($emerlog);
                     $emer->update($emerd);
                 }
             }
@@ -776,8 +779,10 @@ class ContactController extends Controller
             'modifyaction' => 'edit',
             'modifyagent' => $user->id,
         ];
-
-        //CrmContactLog::create($contactlog);
+        if ($contact->birthday == "0000-00-00") {
+            $contactlog['birthday'] = null;
+        }
+        CrmContactLog::create($contactlog);
 
         $contact->update($contactd);
         if (!empty($request->emergencyData)) {
@@ -811,7 +816,7 @@ class ContactController extends Controller
                         'modifyaction' => 'edit',
                         'modifyagent' => $user->id,
                     ];
-                    //CrmPhoneEmergencyLog::create($emerlog);
+                    CrmPhoneEmergencyLog::create($emerlog);
                     $emer->update($emerd);
                 }
             }
@@ -890,8 +895,10 @@ class ContactController extends Controller
             'modifyaction' => 'delete',
             'modifyagent' => $user->id,
         ];
-
-        //CrmContactLog::create($contactlog);
+        if ($contact->birthday == "0000-00-00") {
+            $contactlog['birthday'] = null;
+        }
+        CrmContactLog::create($contactlog);
 
         $contact->delete();
 
@@ -910,7 +917,7 @@ class ContactController extends Controller
                 'modifyaction' => 'delete',
                 'modifyagent' => $user->id,
             ];
-            //CrmPhoneEmergencyLog::create($emerlog);
+            CrmPhoneEmergencyLog::create($emerlog);
             CrmPhoneEmergency::where('contact_id', $emer->id)->delete();
         }
 
@@ -953,8 +960,10 @@ class ContactController extends Controller
                 'modifyaction' => 'delete',
                 'modifyagent' => $user->id,
             ];
-    
-            //CrmContactLog::create($contactlog);
+            if ($contact->birthday == "0000-00-00") {
+                $contactlog['birthday'] = null;
+            }   
+            CrmContactLog::create($contactlog);
     
             $contact->delete();
     
@@ -973,7 +982,7 @@ class ContactController extends Controller
                     'modifyaction' => 'delete',
                     'modifyagent' => $user->id,
                 ];
-                //CrmPhoneEmergencyLog::create($emerlog);
+                CrmPhoneEmergencyLog::create($emerlog);
                 CrmPhoneEmergency::where('contact_id', $emer->id)->delete();
             }
 
