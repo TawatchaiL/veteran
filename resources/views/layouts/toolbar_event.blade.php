@@ -352,7 +352,6 @@
     socket.on('hangup', data => {
         if (data.extension) {
             if (data.extension.match(exten)) {
-                console.log(data);
                 /* $.ajax({
                     url: "{{ route('agent.hang') }}",
                     method: 'post',
@@ -390,7 +389,6 @@
                             _token: token,
                         },
                         success: function(result) {
-                            console.log(result)
                             set_state_icon(result.id, result.icon, result.message);
                             set_state_button(result.id);
                             call_list();
@@ -444,7 +442,6 @@
     });
 
     /* socket.on('hangupconf', data => {
-        console.log(data)
         if (data.extension.match(exten)) {
             $('#' + data.luniq.replace('.', '')).remove();
             call_list();
