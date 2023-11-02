@@ -734,7 +734,7 @@ class PBXController extends Controller
 
             $resultb = DB::connection('remote_connection')
                 ->table('call_center.break')
-                ->where('id', $request->get('id_break'))
+                ->where('id', $this->sup_break_id)
                 ->first();
 
             $user->phone_status_id = 2;
