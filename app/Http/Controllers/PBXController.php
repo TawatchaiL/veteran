@@ -517,31 +517,31 @@ class PBXController extends Controller
             if ($context !== null && $context->context == "ext-queues") {
                 $indb = DB::connection('remote_connection')
                     ->table('call_center.wrap_data')
-                    ->where('uniqid', $request->get('uniqid'))
+                    ->where('uniqid', $context->uniqid)
                     ->get();
                 if (count($indb) == 0) {
                     $dataToInsert = [
                         'id_agent' => $user->agent_id,
                         'crm_id' => $user->id,
                         'phone' => $user->phone,
-                        'uniqid' => $request->get('uniqid'),
+                        'uniqid' => $context->uniqid,
                         'wrap_start' => date("Y-m-d H:i:s"),
                     ];
 
-                    $resulth = DB::table('crm_incoming')->where('uniqid', $request->get('uniqid'))->first();
+                    $resulth = DB::table('crm_incoming')->where('uniqid', $context->uniqid)->first();
                     $hold_duration = $resulth ? $resulth->holdtime : 0;
 
                     DB::connection('remote_connection')->table('wrap_data')->insert($dataToInsert);
                     DB::connection('remote_connection')
                         ->table('call_center.call_entry')
-                        ->where('uniqueid', $request->get('uniqid'))
+                        ->where('uniqueid', $context->uniqid)
                         ->update([
                             'crm_id' => $user->id,
                             'duration_hold' => $hold_duration
                         ]);
                     DB::connection('remote_connection')
                         ->table('call_center.call_entry_today')
-                        ->where('uniqueid', $request->get('uniqid'))
+                        ->where('uniqueid', $context->uniqid)
                         ->update([
                             'crm_id' => $user->id,
                             'duration_hold' => $hold_duration
