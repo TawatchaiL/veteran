@@ -501,7 +501,7 @@ class PBXController extends Controller
             $ex_exten = explode("-", $exten);
             $ex_phone = explode("/", $ex_exten[0]);
 
-            $condition = $request->input('uniqid') !== '' ? ['uniqueid', '=', $request->input('uniqid')] : ['agentno', '=', $request->input('exten')];
+            $condition = $request->input('uniqid') !== '' ? ['uniqid', '=', $request->input('uniqid')] : ['agentno', '=', $request->input('exten')];
 
             $context = DB::table('crm_incoming')
                 ->where([$condition])
