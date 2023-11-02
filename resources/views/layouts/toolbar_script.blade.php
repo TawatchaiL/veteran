@@ -674,9 +674,9 @@
     dial_button.click(function() {
         let call_number = dial_number.val();
         if (call_number !== '') {
-            $.get(`${api_serv}/dial/` + call_number + "/" + exten + "/" + account_code, (data, status) => {
+            $.get(`${api_serv}/dial/` + call_number + "/" + exten + "/" + account_code, async (data, status) => {
                 if (status == 'success') {
-                    $.ajax({
+                    await $.ajax({
                         url: "{{ route('answer') }}",
                         method: 'post',
                         data: {
