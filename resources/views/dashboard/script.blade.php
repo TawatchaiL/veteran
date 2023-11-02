@@ -573,8 +573,8 @@
     };
 
     const updateSLAData = () => {
-        const storedOption = localStorage.getItem('selectedOption');
-        const storedSLA = localStorage.getItem('sla_setting');
+        const storedOption = localStorage.getItem('selectedOption') || '{{ $queue[0]->extension }}';
+        const storedSLA = localStorage.getItem('sla_setting') || '30';
         if (storedSLA == '') {
             storedSLA = 20;
         }
