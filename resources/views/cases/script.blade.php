@@ -881,6 +881,7 @@
 
         //loadcaseslog
         $(document).on('click', '.selectlog-button',function() {
+            alert('OK');
             var log_id = $(this).data('log_id');
             $.ajax({
                 url: '{{ route('cases.casesviewlog') }}',
