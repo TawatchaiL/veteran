@@ -773,12 +773,28 @@
     })
 
     $(document).on('click', '.answer_call', function(data) {
-        $.get(`http://admin:admin@192.168.1.90/servlet?key=OK`, (data, status) => {
+        /* $.get(`http://admin:admin@192.168.1.90/servlet?key=OK`, (data, status) => {
             const prom = ezBSAlert({
                 headerText: "OK",
                 messageText: "รับสายสำเร็จ",
                 alertType: "success",
             });
+        }); */
+        $.ajax({
+            url: "{{ route('agent.answer') }}",
+            method: 'post',
+            data: {
+                _token: token,
+            },
+            async: true, // Use async:true for better performance
+            success: function(result) {
+                console.log(result)
+                const prom = ezBSAlert({
+                headerText: "OK",
+                messageText: "รับสายสำเร็จ",
+                alertType: "success",
+            });
+            }
         });
 
     })
