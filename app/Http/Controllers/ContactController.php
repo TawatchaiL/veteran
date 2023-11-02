@@ -521,7 +521,7 @@ class ContactController extends Controller
         //DB::table('crm_contact_logs')->insert($contact);
         //$bindings = $contact->getBindings();
 
-        CrmContactLog::create($contactlog);
+        //CrmContactLog::create($contactlog);
 
         $contact->update($contactd);
 
@@ -556,7 +556,7 @@ class ContactController extends Controller
                         'modifyaction' => 'edit',
                         'modifyagent' => $user->id,
                     ];
-                    CrmPhoneEmergencyLog::create($emerlog);
+                    //CrmPhoneEmergencyLog::create($emerlog);
                     $emer->update($emerd);
                 }
             }
@@ -777,7 +777,7 @@ class ContactController extends Controller
             'modifyagent' => $user->id,
         ];
 
-        CrmContactLog::create($contactlog);
+        //CrmContactLog::create($contactlog);
 
         $contact->update($contactd);
         if (!empty($request->emergencyData)) {
@@ -811,7 +811,7 @@ class ContactController extends Controller
                         'modifyaction' => 'edit',
                         'modifyagent' => $user->id,
                     ];
-                    CrmPhoneEmergencyLog::create($emerlog);
+                    //CrmPhoneEmergencyLog::create($emerlog);
                     $emer->update($emerd);
                 }
             }
@@ -891,7 +891,7 @@ class ContactController extends Controller
             'modifyagent' => $user->id,
         ];
 
-        CrmContactLog::create($contactlog);
+        //CrmContactLog::create($contactlog);
 
         $contact->delete();
 
@@ -910,7 +910,7 @@ class ContactController extends Controller
                 'modifyaction' => 'delete',
                 'modifyagent' => $user->id,
             ];
-            CrmPhoneEmergencyLog::create($emerlog);
+            //CrmPhoneEmergencyLog::create($emerlog);
             CrmPhoneEmergency::where('contact_id', $emer->id)->delete();
         }
 
@@ -954,7 +954,7 @@ class ContactController extends Controller
                 'modifyagent' => $user->id,
             ];
     
-            CrmContactLog::create($contactlog);
+            //CrmContactLog::create($contactlog);
     
             $contact->delete();
     
@@ -973,7 +973,7 @@ class ContactController extends Controller
                     'modifyaction' => 'delete',
                     'modifyagent' => $user->id,
                 ];
-                CrmPhoneEmergencyLog::create($emerlog);
+                //CrmPhoneEmergencyLog::create($emerlog);
                 CrmPhoneEmergency::where('contact_id', $emer->id)->delete();
             }
 
