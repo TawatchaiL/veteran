@@ -319,6 +319,7 @@ class CasesController extends Controller
         //return response()->json(['data' => $data]);
 
     }
+
     public function caseslist(Request $request)
     {
         $id = $request->input('id');
@@ -332,6 +333,7 @@ class CasesController extends Controller
         //return response()->json(['data' => $data]);
 
     }
+
     public function casesview(Request $request)
     {
         $casesid = $request->input('id');
@@ -347,6 +349,36 @@ class CasesController extends Controller
         //return response()->json(['data' => $data]);
 
     }
+
+    public function caseslistlog(Request $request)
+    {
+        $id = $request->input('id');
+        $tabid = $request->input('tabid');
+        $data = CrmCase::where('contact_id', $id)->get();
+
+        $template = 'cases.caseslist';
+        $htmlContent = View::make($template, ['caselist' => $data,'cardid' => $tabid])->render();
+        return response()->json(['html' =>  $htmlContent,]);
+
+        //return response()->json(['data' => $data]);
+
+    }
+    public function casesviewlog(Request $request)
+    {
+        $casesid = $request->input('id');
+        $tabid = $request->input('tabid');
+        $datac = CrmCase::where('id', $casesid)->first();
+        $datact = CrmContact::where('id', $datac->contact_id)->first();
+
+        $template = 'cases.casesdetail';
+        $htmlContent = View::make($template, ['cases' => $datac, 'datact' => $datact,'cardid' => $tabid])->render();
+        //$htmlContent = View::make($template, ['casecomment' => $data])->render();
+        return response()->json(['html' =>  $htmlContent,]);
+
+        //return response()->json(['data' => $data]);
+
+    }
+
     public function destroy(Request $request)
     {
         $user = Auth::user();
