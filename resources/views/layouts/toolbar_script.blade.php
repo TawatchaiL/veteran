@@ -467,14 +467,22 @@
                     //if (confirm("Click OK to Tranfer?")) {
                     let tranfer_chan = $("input[type='checkbox']").val();
                     let chan = tranfer_chan.split("/");
-                    /* $.get(`${event_serv}/tranfer/` + call_number + "/" + chan[1], (data, status) => {
+                    $.get(`${event_serv}/tranfer/` + call_number + "/" + chan[1], (data, status) => {
                         if (data.response == 'Success') {
-                            alert_success('OK', 'Tranfer Success', '');
+                            const prom = ezBSAlert({
+                                    headerText: "OK",
+                                    messageText: "โอนสายสำเร็จ",
+                                    alertType: "success",
+                                });
                         } else {
-                            alert_danger('Opp', 'หมายเลขปลายทางไม่สามารถติดต่อได้', '');
+                            const prom = ezBSAlert({
+                                    headerText: "Error",
+                                    messageText: "โอนสาย ไม่สำเร็จ",
+                                    alertType: "danger",
+                                });
                         }
-                    }); */
-                    $.ajax({
+                    });
+                    /* $.ajax({
                         url: "{{ route('tranfer') }}",
                         method: 'post',
                         data: {
@@ -498,7 +506,7 @@
                                 });
                             }
                         }
-                    });
+                    }); */
                     //}
                 } else {
                     const prom = ezBSAlert({
