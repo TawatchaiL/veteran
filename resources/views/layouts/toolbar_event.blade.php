@@ -429,7 +429,7 @@
         }
     });
 
-    socket.on('hangupconf', data => {
+    /* socket.on('hangupconf', data => {
         console.log(data)
         if (data.extension.match(exten)) {
             $('#' + data.luniq.replace('.', '')).remove();
@@ -470,7 +470,7 @@
             }
 
         }
-    });
+    }); */
 
     socket.on('disconnect', data => {
         socket.emit('join', 'Bye from client');
