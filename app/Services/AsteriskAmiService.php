@@ -27,7 +27,7 @@ class AsteriskAmiService
         $remote = new as_manager();
         $remote->connect($this->managerHost, $this->managerUser, $this->managerPass);
 
-        dd($this->managerHost);
+        dd($this->managerUser);
         return $remote;
     }
 
