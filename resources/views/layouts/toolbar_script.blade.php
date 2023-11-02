@@ -467,19 +467,19 @@
                     //if (confirm("Click OK to Tranfer?")) {
                     let tranfer_chan = $("input[type='checkbox']").val();
                     let chan = tranfer_chan.split("/");
-                    $.get(`${event_serv}/tranfer/` + call_number + "/" + chan[1], (data, status) => {
+                    $.get(`${api_serv}/tranfer/` + call_number + "/" + chan[1], (data, status) => {
                         if (data.response == 'Success') {
                             const prom = ezBSAlert({
-                                    headerText: "OK",
-                                    messageText: "โอนสายสำเร็จ",
-                                    alertType: "success",
-                                });
+                                headerText: "OK",
+                                messageText: "โอนสายสำเร็จ",
+                                alertType: "success",
+                            });
                         } else {
                             const prom = ezBSAlert({
-                                    headerText: "Error",
-                                    messageText: "โอนสาย ไม่สำเร็จ",
-                                    alertType: "danger",
-                                });
+                                headerText: "Error",
+                                messageText: "โอนสาย ไม่สำเร็จ",
+                                alertType: "danger",
+                            });
                         }
                     });
                     /* $.ajax({
@@ -542,14 +542,22 @@
                     //if (confirm("Click OK to Tranfer?")) {
                     let tranfer_chan = $("input[type='checkbox']").val();
                     let chan = tranfer_chan.split("/");
-                    /* $.get(`${event_serv}/atx_tranfer/` + call_number + "/" + chan[1], (data, status) => {
+                    $.get(`${api_serv}/atx_tranfer/` + call_number + "/" + chan[1], (data, status) => {
                         if (status == 'success') {
-                            alert_success('OK', 'Tranfer Success', '');
+                            const prom = ezBSAlert({
+                                headerText: "OK",
+                                messageText: "โอนสายสำเร็จ",
+                                alertType: "success",
+                            });
                         } else {
-                            alert_danger('Opp', 'Something Error', '');
+                            const prom = ezBSAlert({
+                                headerText: "Error",
+                                messageText: "โอนสาย ไม่สำเร็จ",
+                                alertType: "danger",
+                            });
                         }
-                    }); */
-                    $.ajax({
+                    });
+                    /* $.ajax({
                         url: "{{ route('tranfer') }}",
                         method: 'post',
                         data: {
@@ -573,7 +581,7 @@
                                 });
                             }
                         }
-                    });
+                    }); */
                     //}
                 } else {
                     const prom = ezBSAlert({
@@ -722,7 +730,7 @@
                         $.get(`${api_serv}/conf/` + mcalldestchan[1] + "/" + mcalldestchan2[
                             1] + "/" + chan[1] + "/" + exten, (data, status) => {
 
-                                console.log(status)
+                            console.log(status)
                             if (status == 'success') {
                                 const prom = ezBSAlert({
                                     headerText: "OK",
@@ -800,10 +808,10 @@
             success: function(result) {
                 console.log(result)
                 const prom = ezBSAlert({
-                headerText: "OK",
-                messageText: "รับสายสำเร็จ",
-                alertType: "success",
-            });
+                    headerText: "OK",
+                    messageText: "รับสายสำเร็จ",
+                    alertType: "success",
+                });
             }
         });
 
