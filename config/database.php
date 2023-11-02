@@ -37,11 +37,11 @@ return [
 
         'remote_connection' => [
             'driver' => 'mysql',
-            'host' => '10.148.0.4', // IP address or hostname of the remote machine
-            'port' => '3306', // Default MySQL port
-            'database' => 'call_center',
-            'username' => 'crm',
-            'password' => 'rsiippbx@2022',
+            'host' => env('DB_REMOTE_HOST','10.148.0.4'), // IP address or hostname of the remote machine
+            'port' => env('DB_REMOTE_PORT','3306'), // Default MySQL port
+            'database' => env('DB_REMOTE_DATABASE','call_center'),
+            'username' => env('DB_REMOTE_USERNAME','crm'),
+            'password' => env('DB_REMOTE_PASSWORD','rsiippbx@2022'),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
