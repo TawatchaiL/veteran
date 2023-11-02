@@ -517,9 +517,7 @@ class ContactController extends Controller
             'modifyaction' => 'edit',
             'modifyagent' => $user->id,
         ];
-        if ($contact->birthday && strtotime($contact->birthday) !== false) {
-
-        } else {
+        if ($contact->birthday == "0000-00-00") {
             $contactlog['birthday'] = null;
         }
         //$bindings = $contact->getBindings();
