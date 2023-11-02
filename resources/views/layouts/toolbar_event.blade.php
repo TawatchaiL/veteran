@@ -5,9 +5,19 @@
         socket.emit('join', 'Client Connect To Asterisk Event Serv');
     });
 
+    socket.on('gentconnect', async (response) => {
+       console.log(response)
+    });
+
+    socket.on('agentcalled', async (response) => {
+       console.log(response)
+    });
+
     socket.on('agentcomplete', async (response) => {
        console.log(response)
     });
+
+
 
     socket.on('queuecallerjoin', async (response) => {
         const dropdownButton = $('#queue_wait_button');
