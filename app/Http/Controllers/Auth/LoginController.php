@@ -50,7 +50,7 @@ class LoginController extends Controller
     public function __construct(AsteriskAmiService $asteriskAmiService) // Inject AsteriskAmiService
     {
         $this->middleware('guest')->except('logout');
-        //$this->remote = $asteriskAmiService; // Initialize $remote
+        $this->remote = $asteriskAmiService; // Initialize $remote
         $this->issable = new IssableService();
     }
     /*  protected function attemptLogin(Request $request)
@@ -101,13 +101,13 @@ class LoginController extends Controller
         } */
 
         //check phone status
-       /*  $phone_state_num = $this->remote->exten_state($request->get('phone'));
+        $phone_state_num = $this->remote->exten_state($request->get('phone'));
         if ($phone_state_num == 4 || $phone_state_num == -1) {
             //check phone status
             return redirect()->route('login')
                 ->with('login_error', 'หมายเลขโทรศัพท์ไม่พร้อมใช้งาน')
                 ->withErrors(['email' => 'หมายเลขโทรศัพท์ไม่พร้อมใช้งาน']);
-        } */
+        }
 
 
         if ($this->attemptLogin($request)) {
@@ -199,10 +199,10 @@ class LoginController extends Controller
                 $this->issable->agent_login($user->phone);
 
                 DB::connection('remote_connection')
-                ->table('call_center.audit')
-                ->where('id_agent', $user->agent_id)
-                ->whereNull('datetime_end')
-                ->update(['crm_id' => $user->id]);
+                    ->table('call_center.audit')
+                    ->where('id_agent', $user->agent_id)
+                    ->whereNull('datetime_end')
+                    ->update(['crm_id' => $user->id]);
 
 
                 //$this->issable->agent_login($user->phone);
