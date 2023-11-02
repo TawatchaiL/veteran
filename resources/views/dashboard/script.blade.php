@@ -538,7 +538,8 @@
     }
 
     const updateAvgData = () => {
-        const storedOption = localStorage.getItem('selectedOption');
+        const storedOption = localStorage.getItem('selectedOption') || '{{ $queue[0]->extension }}';
+        const storedSLA = localStorage.getItem('sla_setting') || '30';
         $.ajax({
             url: '{{ route('dashboard.avg_data') }}',
             method: 'POST',
@@ -600,7 +601,8 @@
 
 
     let call_list = (exten) => {
-        const storedOption = localStorage.getItem('selectedOption');
+        const storedOption = localStorage.getItem('selectedOption') || '{{ $queue[0]->extension }}';
+        const storedSLA = localStorage.getItem('sla_setting') || '30';
         let mcallprofile = '';
         let mcallexten = '';
         let luniq = '';
@@ -677,7 +679,8 @@
 
 
     socket.on('queueparams', async (response) => {
-        const storedOption = localStorage.getItem('selectedOption');
+        const storedOption = localStorage.getItem('selectedOption') || '{{ $queue[0]->extension }}';
+        const storedSLA = localStorage.getItem('sla_setting') || '30';
         let res = response.data;
         if (res.queue == storedOption) {
             total_call = parseInt(res.completed) + parseInt(res.abandoned);
@@ -690,7 +693,8 @@
     });
 
     socket.on('queueentry', async (response) => {
-        const storedOption = localStorage.getItem('selectedOption');
+        const storedOption = localStorage.getItem('selectedOption') || '{{ $queue[0]->extension }}';
+        const storedSLA = localStorage.getItem('sla_setting') || '30';
         waitData[response.data.uniqueid] = response.data;
         //console.log(waitData);
 
@@ -732,7 +736,8 @@
 
     socket.on('queuemember', async (response) => {
 
-        const storedOption = localStorage.getItem('selectedOption');
+        const storedOption = localStorage.getItem('selectedOption') || '{{ $queue[0]->extension }}';
+        const storedSLA = localStorage.getItem('sla_setting') || '30';
         let res = response.data;
         let status = '';
         let phone_status = '';
@@ -1010,7 +1015,7 @@
             telno: call_number,
             mode: 'ดักฟัง'
         };
-        $.get(`${api_serv}/spy/` + call_number + "/" + exten + "/" + account_code+ "/o", (data, status) => {
+        $.get(`${api_serv}/spy/` + call_number + "/" + exten + "/" + account_code + "/o", (data, status) => {
             if (status == 'success') {
                 sendAjaxRequest("{{ route('agent.spy') }}", "POST", additionalData);
                 const prom = ezBSAlert({
@@ -1037,7 +1042,7 @@
             telno: call_number,
             mode: 'กระซิบ'
         };
-        $.get(`${api_serv}/spy/` + call_number + "/" + exten + "/" + account_code+ "/w", (data, status) => {
+        $.get(`${api_serv}/spy/` + call_number + "/" + exten + "/" + account_code + "/w", (data, status) => {
             if (status == 'success') {
                 sendAjaxRequest("{{ route('agent.spy') }}", "POST", additionalData);
                 const prom = ezBSAlert({
@@ -1063,7 +1068,7 @@
             telno: call_number,
             mode: 'แทรกสาย'
         };
-        $.get(`${api_serv}/spy/` + call_number + "/" + exten + "/" + account_code+ "/B", (data, status) => {
+        $.get(`${api_serv}/spy/` + call_number + "/" + exten + "/" + account_code + "/B", (data, status) => {
             if (status == 'success') {
                 sendAjaxRequest("{{ route('agent.spy') }}", "POST", additionalData);
                 const prom = ezBSAlert({
