@@ -467,7 +467,7 @@
                     //if (confirm("Click OK to Tranfer?")) {
                     let tranfer_chan = $("input[type='checkbox']").val();
                     let chan = tranfer_chan.split("/");
-                    $.get(`${event_serv}/tranfer/` + call_number + "/" + chan[1], (data, status) => {
+                    $.get(`${api_serv}/tranfer/` + call_number + "/" + chan[1], (data, status) => {
                         if (data.response == 'Success') {
                             const prom = ezBSAlert({
                                     headerText: "OK",
