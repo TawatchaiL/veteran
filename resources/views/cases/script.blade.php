@@ -674,18 +674,6 @@
                 }
             });
 
-            $.ajax({
-                url: '{{ route('cases.commentlist') }}',
-                type: 'POST',
-                data: {
-                        id: id
-                    },
-
-                success: function(response) {
-                    $('#listlog').html(response.html);
-                }
-            });
-
             $('#CreateModal').modal('show');
         });
 
@@ -810,6 +798,21 @@
                             .remove()
                             .draw();
                     }
+                }
+            });
+        });
+        //Click Tab
+        $(document).on('click', '.tablistcommentlog', function() {
+            //var id = $(this).data("contactid");
+            $.ajax({
+                url: '{{ route('cases.commentlist') }}',
+                type: 'POST',
+                data: {
+                        id: id
+                    },
+
+                success: function(response) {
+                    $('#listlog').html(response.html);
                 }
             });
         });
