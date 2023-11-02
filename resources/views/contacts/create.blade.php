@@ -43,11 +43,15 @@
                                     aria-selected="true">ข้อมูลผู้ติดต่อ</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" id="custom-tabs-one-address-tab" data-toggle="pill"
+                                    href="#custom-tabs-one-address" role="tab"
+                                    aria-controls="custom-tabs-one-address" aria-selected="false">ที่อยู่</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill"
                                     href="#custom-tabs-one-profile" role="tab"
                                     aria-controls="custom-tabs-one-profile" aria-selected="false">ข้อมูลเบอร์ติดต่อ</a>
                             </li>
-
                         </ul>
                     </div>
                     <div class="card-body">
@@ -164,8 +168,9 @@
                                         </div>
                                     </div>
                                 </div>
-
-
+                            </div>
+                            <div class="tab-pane fade" id="custom-tabs-one-address" role="tabpanel"
+                                aria-labelledby="custom-tabs-one-address-tab">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
