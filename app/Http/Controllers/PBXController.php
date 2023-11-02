@@ -497,14 +497,22 @@ class PBXController extends Controller
             ->where('agentno', $user->phone)
             ->where('status', 1)
             ->delete(); */
+
+            $uniqid = $request->input('uniqid');
             $exten = $request->input('exten');
-            $ex_exten = explode("-", $exten);
-            $ex_phone = explode("/", $ex_exten[0]);
+
+            if (isset($uniqid) && $uniqid !== '') {
+                $condition = ['uniqid', '=', $uniqid];
+            } else {
+                $condition = ['agentno', '=', $exten];
+            }
 
             $context = DB::table('crm_incoming')
-                ->where('uniqid', $request->input('uniqid'))
-                ->where('agent_id', $user->id)
+                ->where([$condition])
+                ->orderBy('calltime', 'DESC')
+                ->limit(1)
                 ->first();
+
 
             if ($context !== null && $context->context == "ext-queues") {
                 $indb = DB::connection('remote_connection')
