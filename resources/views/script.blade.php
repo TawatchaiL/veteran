@@ -29,7 +29,6 @@
                     _token: token,
                 },
             });
-            console.log(response.date_data);
             return response.date_data;
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -47,7 +46,6 @@
                     _token: token,
                 },
             });
-            console.log(response.date_data);
             return response.date_data;
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -459,7 +457,6 @@
         try {
             const datac = await AgentCasebyDateData();
             const optionc = date_case_chart_data(datac);
-            console.log(optionc)
             var chart_case = new ApexCharts(document.querySelector("#chart_case"), optionc);
             chart_case.render();
         } catch (error) {

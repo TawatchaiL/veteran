@@ -425,8 +425,8 @@
     const agent_username = '{{ $temporaryPhone }}';
     const exten = '{{ $temporaryPhone }}';
     const account_code = exten;
-    const storedOption = localStorage.getItem('selectedOption');
-    const storedSLA = localStorage.getItem('sla_setting');
+    const storedOption = localStorage.getItem('selectedOption') || '{{ $queue[0]->extension }}';
+    const storedSLA = localStorage.getItem('sla_setting') || '30';
 
     const active_div = $('#active_total');
     const waiting_div = $('#waiting_total');
@@ -1087,7 +1087,6 @@
         const pid = $(this).data('id');
         const additionalData = {
             id: pid,
-            id_break: 6,
         };
         ezBSAlert({
             type: "confirm",

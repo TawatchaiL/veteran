@@ -14,6 +14,7 @@ use Exception; */
 
 class DashboardController extends Controller
 {
+
     /**
      * Create a new controller instance.
      *

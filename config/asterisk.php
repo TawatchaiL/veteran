@@ -8,6 +8,7 @@ return [
         'port' => env('ASTERISK_MANAGER_PORT', '5038'),
         'remote_context' => env('ASTERISK_REMOTE_CONTEXT', 'ext-local'),
         'warp_id' => env('WARP_ID', '5'),
+        'sup_break_id' => env('SUP_BREAK_ID', '6'),
     ],
     'eccp' => [
         'eccp_host' => env('ECCP_HOST', '10.148.0.4'),
