@@ -70,6 +70,31 @@ class PBXController extends Controller
         }
     }
 
+    public function call_hold(Request $request)
+    {
+
+        $user = Auth::user();
+
+        if ($user) {
+            $client = new Client();
+
+            $response = $client->request('GET', 'http://admin:admin@192.168.1.90/servlet?key=F_HOLD');
+
+            $responseBody = $response->getBody();
+            $status = $response->getStatusCode();
+
+            if ($status) {
+                return [
+                    'success' => $status,
+                ];
+            } else {
+                return ['success' => false, 'message' => 'error'];
+            }
+        } else {
+            return ['error' => false, 'message' => 'error'];
+        }
+    }
+
     public function call_tranfer(Request $request)
     {
 

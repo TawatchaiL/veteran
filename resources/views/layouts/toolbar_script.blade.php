@@ -799,6 +799,21 @@
 
     })
 
+    $(document).on('click', '.hold_call', function(data) {
+        $.ajax({
+            url: "{{ route('hold') }}",
+            method: 'post',
+            data: {
+                _token: token,
+            },
+            async: true, // Use async:true for better performance
+            success: function(result) {
+                console.log(result)
+            }
+        });
+
+    })
+
     //list all call function
     let call_list = () => {
         let mcallprofile = '';
@@ -870,7 +885,7 @@
 							<div class="card-body card-content">
 							</div>
 							<div class="card-footer text-muted text-right ">
-                                <a href="#" class="btn btn-warning hold_call ${hold_button}" data-id="${strArray[0]}"><i class="fa-regular fa-circle-pause"></i> Hold</a>
+                                <a href="#" class="btn btn-warning hold_call ${hold_button}" data-id="${exten}"><i class="fa-solid fa-pause"></i> Hold</a>
 							     <a href="#" class="btn btn-danger hangup_call" data-id="${strArray[0]}"><i class="fa-solid fa-phone-slash"></i> วางสาย</a>
 							</div>
 						</div>
