@@ -83,7 +83,6 @@
     });
 
     socket.on('peerstatus', async (data) => {
-        console.log(data);
         let peer = data.extension.split("/");
         if (peer[1] == exten) {
             if (data.status == 'Unregistered') {
@@ -115,7 +114,6 @@
                         _token: token,
                     },
                     success: function(result) {
-                        console.log(result)
                         set_state_icon(result.id, result.icon, result.message);
                         set_state_button(result.id);
                         //positionCards();
@@ -141,7 +139,6 @@
                         _token: token,
                     },
                     success: function(result) {
-                        console.log(result)
                         set_state_icon(result.id, result.icon, result.message);
                         set_state_button(result.id);
                         //positionCards();
@@ -158,7 +155,6 @@
 
 
     socket.on('pause', data => {
-        console.log(data);
         if (data.extension.match(exten) && data.paused == 0) {
             /* toolbar_header.removeClass("bg-warning");
             toolbar_header.addClass("bg-primary"); */
@@ -175,7 +171,6 @@
                 _token: token,
             },
             success: function(result) {
-                console.log(result)
                 set_state_icon(result.id, result.icon, result.message);
                 set_state_button(result.id);
             }
@@ -193,7 +188,6 @@
                     _token: token,
                 },
                 success: function(result) {
-                    console.log(result)
                     if (result == 1) {
                         const errorMessage = "คุณถูกเตะออกจากระบบ กรุณาล็อกอิน";
                         const encodedErrorMessage = encodeURIComponent(errorMessage);
@@ -213,7 +207,6 @@
     socket.on('ringing', data => {
 
         if (data.extension.match(exten)) {
-            console.log(data);
             let peer = data.extension.split("-");
             let peern = peer[0].split("/");
             $.ajax({
@@ -273,9 +266,6 @@
     socket.on('talking', data => {
 
         if (data.extension.match(exten)) {
-            console.log(data);
-
-
             $.ajax({
                 url: "{{ route('agent.talk') }}",
                 method: 'post',
@@ -396,9 +386,7 @@
 
                     /* $.get(`${web_url}/agent/agent_wrap/` + data.luniq + `/` + data.transfer, (dataw,
                         status) => {
-                        console.log(dataw);
-                        console.log('hang');
-                        console.log(data);
+
                         if (dataw !== 'error' && dataw !== '') {
                             //$.get(`${web_url}/agent/get_wrap_list/` + dataw, (datawl, status) => {
                             if (dataw == 'Outbound') {
