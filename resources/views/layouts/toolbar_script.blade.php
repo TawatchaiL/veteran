@@ -709,8 +709,8 @@
 
                 $.get(`${api_serv}/chans_variable/` + chan[0], (data, status) => {
                     $.get(`${api_serv}/chans_variable/` + chan[1], (data2, status2) => {
-                        mcalldestchan = data[3][1].split("/");
-                        mcalldestchan2 = data2[3][1].split("/");
+                        mcalldestchan = data[7][1].split("/");
+                        mcalldestchan2 = data2[7][1].split("/");
                         console.log(mcalldestchan[1])
                         console.log(mcalldestchan2[1])
                         console.log(chan[1])
