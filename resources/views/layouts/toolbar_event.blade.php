@@ -368,31 +368,9 @@
     socket.on('hangup', data => {
         if (data.extension) {
             if (data.extension.match(exten)) {
-                /* $.ajax({
-                    url: "{{ route('agent.hang') }}",
-                    method: 'post',
-                    async: false,
-                    data: {
-                        _token: token,
-                    },
-                    success: function(result) {
-                        //alert_success('OK', 'วางสายเรียบร้อยแล้ว', '');
-                        $('#phone_state').html(result.message);
-                        $('#phone_state_icon').html(result.icon);
-                        $('#phone_state').removeClass().addClass(get_state_color(result.id));
-                        $('#phone_state_icon').removeClass().addClass(get_state_color(result.id));
-                        //check_state();
-                        set_state_button(result.id);
-                        positionCards();
-                    }
-                }); */
                 if (data.luniq) {
                     $('#' + data.luniq.replace('.', '')).remove();
                 }
-                //if (data.extension.match(exten)) {
-                //(data.event == 'DialEnd' &&
-                //|| data.event == 'BlindTransfer'
-                //chan = data.extension.split("/");
                 if ((data.event == 'BridgeLeave' || data.event == 'SoftHangupRequest')) {
 
                     $.ajax({
@@ -408,42 +386,6 @@
                         }
                     });
 
-
-                    /* $.get(`${web_url}/agent/agent_wrap/` + data.luniq + `/` + data.transfer, (dataw,
-                        status) => {
-
-                        if (dataw !== 'error' && dataw !== '') {
-                            //$.get(`${web_url}/agent/get_wrap_list/` + dataw, (datawl, status) => {
-                            if (dataw == 'Outbound') {
-                                $('#dial_number').attr('disabled', true);
-                                $('.button_dial').attr('disabled', true);
-                                $('.button_tranfer').attr('disabled', true);
-                                $('.button_conf').attr('disabled', true);
-                                $('.cbutton_Inbound').addClass("d-none");
-                                $('.cbutton_Outbound').removeClass("d-none");
-                            } else {
-                                $('.cbutton_Outbound').addClass("d-none");
-                                $('.cbutton_Inbound').removeClass("d-none");
-                            }
-                            $('#btn-wrap').attr('disabled', false);
-                            $('.button_unbreak').attr('disabled', true);
-                            $('.button_unbreak').removeClass("d-none");
-                            $('#btn-system-logout').attr('disabled', true);
-                            $('#btn-agent-logout').attr('disabled', true);
-                            $('#break_group').addClass("d-none");
-                            $('#sub_header').append(
-                                `<div id="break_text"><i class="fas fa-pause"></i> Wrap UP (${dataw})</div>`
-                            );
-                            $('#toolbar_header').removeClass("card-primary");
-                            $('#toolbar_header').addClass("card-warning");
-                            alert_success('OK', 'Call End', '');
-                            //});
-                        }
-
-
-                    }); */
-                    //}
-
                 } else {
                     //set_state_button(1);
                     call_list();
@@ -454,47 +396,6 @@
         }
     });
 
-    /* socket.on('hangupconf', data => {
-        if (data.extension.match(exten)) {
-            $('#' + data.luniq.replace('.', '')).remove();
-            call_list();
-            if (data.extension.match(exten)) {
-                chan = data.extension.split("/");
-                $.get(`${web_url}/agent/agent_wrap/` + data.luniq + `/1`, (dataw, status) => {
-
-                    if (dataw) {
-                        //$.get(`${web_url}/agent/get_wrap_list/` + dataw, (datawl, status) => {
-                        if (dataw == 'Outbound') {
-                            $('#dial_number').attr('disabled', true);
-                            $('.button_dial').attr('disabled', true);
-                            $('.button_tranfer').attr('disabled', true);
-                            $('.button_conf').attr('disabled', true);
-                            $('.cbutton_Inbound').addClass("d-none");
-                            $('.cbutton_Outbound').removeClass("d-none");
-                        } else {
-                            $('.cbutton_Outbound').addClass("d-none");
-                            $('.cbutton_Inbound').removeClass("d-none");
-                        }
-                        $('#btn-wrap').attr('disabled', false);
-                        $('.button_unbreak').attr('disabled', true);
-                        $('.button_unbreak').removeClass("d-none");
-                        $('#btn-logout').attr('disabled', true);
-                        $('#break_group').addClass("d-none");
-                        $('#sub_header').append(
-                            `<div id="break_text"><i class="fas fa-pause"></i> Wrap UP (${dataw})</div>`
-                        );
-                        $('#toolbar_header').removeClass("card-primary");
-                        $('#toolbar_header').addClass("card-warning");
-                        alert_success('OK', 'Call End', '');
-                        //});
-                    }
-
-                });
-
-            }
-
-        }
-    }); */
 
     socket.on('disconnect', data => {
         socket.emit('join', 'Bye from client');

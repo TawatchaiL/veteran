@@ -676,6 +676,15 @@
         if (call_number !== '') {
             $.get(`${api_serv}/dial/` + call_number + "/" + exten + "/" + account_code, (data, status) => {
                 if (status == 'success') {
+                    $.ajax({
+                        url: "{{ route('answer') }}",
+                        method: 'post',
+                        data: {
+                            _token: token,
+                        },
+                        async: true,
+
+                    });
                     const prom = ezBSAlert({
                         headerText: "OK",
                         messageText: "โทรออกสำเร็จ",
