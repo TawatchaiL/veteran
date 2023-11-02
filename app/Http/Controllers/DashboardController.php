@@ -308,6 +308,7 @@ class DashboardController extends Controller
         $html = '';
 
         $x = 1;
+        $agent_arr = [];
         $offline = 0;
         if (!$agents->isEmpty()) {
             foreach ($agents as $agent) {
