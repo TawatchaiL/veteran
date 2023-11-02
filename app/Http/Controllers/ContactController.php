@@ -497,7 +497,7 @@ class ContactController extends Controller
             'fname' => $contact->fname,
             'lname' => $contact->lname,
             'sex' => $contact->sex,
-
+            'birthday' => $contact->birthday,
         ];
         //$bindings = $contact->getBindings();
         //DB::table('crm_contact_logs')->insert($contact);
