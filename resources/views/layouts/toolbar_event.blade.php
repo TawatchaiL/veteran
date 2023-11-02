@@ -5,7 +5,7 @@
         socket.emit('join', 'Client Connect To Asterisk Event Serv');
     });
 
-    socket.on('gentconnect', async (response) => {
+    socket.on('agentconnect', async (response) => {
        console.log(response)
     });
 
