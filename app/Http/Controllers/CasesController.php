@@ -364,7 +364,7 @@ class CasesController extends Controller
     {
         $id = $request->input('id');
         $data = CrmCaseslog::where('lid', $id)->first();
-        $datac = CrmCase::where('id', $data->case_id)->first();
+        $datac = CrmCase::where('id', $data->id)->first();
         $datact = CrmContact::where('id', $datac->contact_id)->first();
 
         $template = 'cases.caseslogdetail';
