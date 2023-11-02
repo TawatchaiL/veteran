@@ -705,6 +705,7 @@
                     let bv = $(this).val().split("/");
                     chan.push(bv[1]);
                 });
+                console.log(chan)
 
                 $.get(`${api_serv}/chans_variable/` + chan[0], (data, status) => {
                     $.get(`${api_serv}/chans_variable/` + chan[1], (data2, status2) => {
