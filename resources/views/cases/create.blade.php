@@ -51,6 +51,11 @@
                                     href="#custom-tabs-one-commentlog" role="tab" aria-controls="custom-tabs-one-commentlog"
                                     aria-selected="true">ประวัติการแสดงความคิดเห็นเรื่องที่ติดต่อ</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="custom-tabs-one-editlog-tab" data-toggle="pill"
+                                    href="#custom-tabs-one-editlog" role="tab" aria-controls="custom-tabs-one-editlog"
+                                    aria-selected="true">ประวัติการแก้ไขเรื่องที่ติดต่อ</a>
+                            </li>
                             {{-- <li class="nav-item">
                                 <a class="nav-link" id="custom-tabs-one-profile-tabp" data-toggle="pill"
                                     href="#custom-tabs-one-profilep" role="tab" aria-controls="custom-tabs-one-profilep"
@@ -304,6 +309,11 @@
                                 <div id="listlog">
                                 </div>
                             </div>
+                            <div class="tab-pane fade" id="custom-tabs-one-editlog" role="tabpanel"
+                            aria-labelledby="custom-tabs-one-editlog-tab">
+                            <div id="editlog">
+                            </div>
+                        </div>
                             {{--   <div class="tab-pane fade" id="custom-tabs-one-profilep" role="tabpanel"
                                 aria-labelledby="custom-tabs-one-profile-tabp">
                                 <div class="card">
