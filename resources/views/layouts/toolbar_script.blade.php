@@ -781,7 +781,7 @@
             });
         }); */
         $.ajax({
-            url: "{{ route('agent.answer') }}",
+            url: "{{ route('answer') }}",
             method: 'post',
             data: {
                 _token: token,
