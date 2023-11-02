@@ -382,7 +382,7 @@ class CasesController extends Controller
      ];
  
          CrmCaseslog::create($caseslog);
-        $company->update($companyd);
+        $company->delete();
         return ['success' => true, 'message' => 'ลบ เรื่องที่ติดต่อ เรียบร้อยแล้ว'];
     }
 
@@ -423,7 +423,7 @@ class CasesController extends Controller
          ];
      
              CrmCaseslog::create($caseslog);
-            $company->update($companyd);
+            $company->delete();
         }
 
         return redirect('cases')->with('success', 'ลบ เรื่องที่ติดต่อ เรียบร้อยแล้ว');
