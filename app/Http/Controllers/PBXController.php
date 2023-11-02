@@ -53,7 +53,7 @@ class PBXController extends Controller
         if ($user) {
             $client = new Client();
 
-            $response = $client->request('GET', 'http://admin:admin@192.168.1.90/servlet?key=OK');
+            $response = $client->request('GET', 'http://admin:admin@192.168.1.90/servlet?key=ANSWER');
 
             $responseBody = $response->getBody();
             $status = $response->getStatusCode();
