@@ -349,6 +349,7 @@ class CasesController extends Controller
     }
     public function destroy(Request $request)
     {
+        $user = Auth::user();
         $id = $request->get('id');
         //CrmCase::find($id)->delete();
         $company = CrmCase::find($id);
@@ -376,7 +377,7 @@ class CasesController extends Controller
          'agent' => $company->agent,
          'created_at' => $company->created_at,
          'updated_at' => $company->updated_at,
-         'modifyaction' => 'edit',
+         'modifyaction' => 'delete',
          'modifyagent' => $user->id,
      ];
  
@@ -387,7 +388,7 @@ class CasesController extends Controller
 
     public function destroy_all(Request $request)
     {
-
+        $user = Auth::user();
         $arr_del  = $request->get('table_records');
 
         for ($xx = 0; $xx < count($arr_del); $xx++) {
@@ -417,7 +418,7 @@ class CasesController extends Controller
              'agent' => $company->agent,
              'created_at' => $company->created_at,
              'updated_at' => $company->updated_at,
-             'modifyaction' => 'edit',
+             'modifyaction' => 'delete',
              'modifyagent' => $user->id,
          ];
      
