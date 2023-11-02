@@ -5,6 +5,10 @@
         socket.emit('join', 'Client Connect To Asterisk Event Serv');
     });
 
+    socket.on('agentcomplete', async (response) => {
+       console.log(response)
+    });
+
     socket.on('queuecallerjoin', async (response) => {
         const dropdownButton = $('#queue_wait_button');
         if (dropdownButton.length > 0 && !isDropdownClicked) {
