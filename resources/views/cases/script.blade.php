@@ -449,6 +449,8 @@
             $('#custom-tabs-one-comment-tab').hide();
             $('#custom-tabs-one-commentlog-tab').attr('disabled', true);
             $('#custom-tabs-one-commentlog-tab').hide();
+            $('#custom-tabs-one-editlog-tab').attr('disabled', true);
+            $('#custom-tabs-one-editlog-tab').hide();
             actions = 'add';
             //_token: token
             $('#Hn').on('input', function() {
@@ -596,6 +598,8 @@
             $('#custom-tabs-one-comment-tab').show();
             $('#custom-tabs-one-commentlog-tab').attr('disabled', false);
             $('#custom-tabs-one-commentlog-tab').show();
+            $('#custom-tabs-one-editlog-tab').attr('disabled', false);
+            $('#custom-tabs-one-editlog-tab').show();
             actions = 'edit';
             id = $(this).data('id');
             $.ajax({
