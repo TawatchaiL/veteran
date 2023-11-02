@@ -672,10 +672,13 @@
 
     //call button
     dial_button.click(function() {
+        dial_button.prop('disabled', true);
         let call_number = dial_number.val();
         if (call_number !== '') {
-            $.get(`${api_serv}/dial/` + call_number + "/" + exten + "/" + account_code, async (data, status) => {
+            $.get(`${api_serv}/dial/` + call_number + "/" + exten + "/" + account_code, async (data,
+            status) => {
                 if (status == 'success') {
+                    dial_button.prop('disabled', true);
                     await $.ajax({
                         url: "{{ route('answer') }}",
                         method: 'post',
@@ -683,7 +686,10 @@
                             _token: token,
                         },
                         async: true,
+                        success: function(result) {
+                            console.log(result)
 
+                        }
                     });
                     const prom = ezBSAlert({
                         headerText: "OK",
