@@ -517,6 +517,11 @@ class ContactController extends Controller
             'modifyaction' => 'edit',
             'modifyagent' => $user->id,
         ];
+        if ($contact->birthday && strtotime($contact->birthday) !== false) {
+
+        } else {
+            $contactlog['birthday'] = null;
+        }
         //$bindings = $contact->getBindings();
         //DB::table('crm_contact_logs')->insert($contact);
         //$bindings = $contact->getBindings();
