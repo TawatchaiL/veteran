@@ -710,10 +710,10 @@
                     $.get(`${api_serv}/chans_variable/` + chan[1], (data2, status2) => {
                         mcalldestchan = data[3][1].split("/");
                         mcalldestchan2 = data2[3][1].split("/");
-                        consloe.log(mcalldestchan[1])
-                        consloe.log(mcalldestchan2[1])
-                        consloe.log(chan[1])
-                        consloe.log(exten)
+                        console.log(mcalldestchan[1])
+                        console.log(mcalldestchan2[1])
+                        console.log(chan[1])
+                        console.log(exten)
                         $.get(`${api_serv}/conf/` + mcalldestchan[1] + "/" + mcalldestchan2[
                             1] + "/" + chan[1] + "/" + exten, (data, status) => {
 
