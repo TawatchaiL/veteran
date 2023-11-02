@@ -679,18 +679,7 @@
             status) => {
                 if (status == 'success') {
                     dial_button.prop('disabled', true);
-                    await $.ajax({
-                        url: "{{ route('answer') }}",
-                        method: 'post',
-                        data: {
-                            _token: token,
-                        },
-                        async: true,
-                        success: function(result) {
-                            console.log(result)
 
-                        }
-                    });
                     const prom = ezBSAlert({
                         headerText: "OK",
                         messageText: "โทรออกสำเร็จ",
