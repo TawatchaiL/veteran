@@ -847,6 +847,54 @@
                 }
             });
         });
+//Update Edit Log 
+        //Click Tab Log
+        $(document).on('click', '.tablisteditlog', function() {
+            //var id = $(this).data("contactid");
+            $.ajax({
+                url: '{{ route('cases.caseslistlog') }}',
+                type: 'POST',
+                data: {
+                        id: id
+                    },
+
+                success: function(response) {
+                    $('#editlog').html(response.html);
+                }
+            });
+        });
+        //listlog
+        $(document).on('click', '.listeditlog-button',function() {
+            var case_id = $(this).data('case_id');
+            $.ajax({
+                url: '{{ route('cases.caseslistlog') }}',
+                type: 'POST',
+                data: {
+                        id: case_id
+                    },
+
+                success: function(response) {
+                    $('#editlog').html(response.html);
+                }
+            });
+        });
+
+        //loadcaseslog
+        $(document).on('click', '.selectlog-button',function() {
+            var log_id = $(this).data('log_id');
+            $.ajax({
+                url: '{{ route('cases.casesviewlog') }}',
+                type: 'POST',
+                async: false,
+                data: {
+                    id: log_id
+                    },
+                success: function(response) {
+                    $('#editlog').html(response.html);
+                }
+            });
+        });
+
 
         $('#casetype1').on('change', function() {
             var parent_id = $(this).val();
