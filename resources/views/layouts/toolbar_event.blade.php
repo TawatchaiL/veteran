@@ -6,15 +6,30 @@
     });
 
     socket.on('agentconnect', async (response) => {
-       console.log(response)
+        console.log(response)
     });
 
     socket.on('agentcalled', async (response) => {
-       console.log(response)
+        console.log(response)
     });
 
     socket.on('agentcomplete', async (response) => {
-       console.log(response)
+        console.log(response)
+        $.ajax({
+            url: "{{ route('agent.warp') }}",
+            method: 'post',
+            async: false,
+            data: {
+                exten: response.data.membername,
+                uniqid: response.data.uniqueid,
+                _token: token,
+            },
+            success: function(result) {
+                set_state_icon(result.id, result.icon, result.message);
+                set_state_button(result.id);
+                call_list();
+            }
+        });
     });
 
 
@@ -380,18 +395,15 @@
                 if ((data.event == 'BridgeLeave' || data.event == 'SoftHangupRequest')) {
 
                     $.ajax({
-                        url: "{{ route('agent.warp') }}",
+                        url: "{{ route('agent.status') }}",
                         method: 'post',
                         async: false,
                         data: {
-                            exten: data.extension,
-                            uniqid: data.luniq,
                             _token: token,
                         },
                         success: function(result) {
                             set_state_icon(result.id, result.icon, result.message);
                             set_state_button(result.id);
-                            call_list();
                         }
                     });
 
