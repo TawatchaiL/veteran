@@ -713,6 +713,7 @@
                         $.get(`${api_serv}/conf/` + mcalldestchan[1] + "/" + mcalldestchan2[
                             1] + "/" + chan[1] + "/" + exten, (data, status) => {
 
+                                console.log(status)
                             if (status == 'success') {
                                 const prom = ezBSAlert({
                                     headerText: "OK",
