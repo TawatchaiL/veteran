@@ -498,8 +498,7 @@ class PBXController extends Controller
             ->where('status', 1)
             ->delete(); */
             $exten = $request->input('exten');
-            $ex_exten = explode("-", $exten);
-            $ex_phone = explode("/", $ex_exten[0]);
+            dd($request->input('uniqid'));
 
             $condition = $request->input('uniqid') !== '' ? ['uniqid', '=', $request->input('uniqid')] : ['agentno', '=', $request->input('exten')];
 
