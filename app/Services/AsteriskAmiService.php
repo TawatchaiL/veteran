@@ -27,13 +27,13 @@ class AsteriskAmiService
         $remote = new as_manager();
         $remote->connect($this->managerHost, $this->managerUser, $this->managerPass);
 
-        dd($this->managerPass);
         return $remote;
     }
 
     function exten_state($remote_extension)
     {
         $remote = $this->asterisk_ami();
+        dd($remote);
 
         if ($remote) {
             $foo[$remote_extension]  = $remote->ExtensionState($remote_extension, $this->remoteContext, '');
