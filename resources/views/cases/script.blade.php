@@ -788,12 +788,12 @@
             var el = $(this)
             if (!rowid) return;
             $.ajax({
-                type: "POST",
+                type: "DELETE",
                 dataType: 'JSON',
                 url: "cases/destroy/",
                 data: {
                     id: rowid,
-                    _method: 'delete',
+                    //_method: 'delete',
                     _token: token
                 },
                 success: function(data) {
