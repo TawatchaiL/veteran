@@ -878,17 +878,10 @@
     })
 
     $(document).on('click', '#ans_button', function(data) {
-
-  $.get(`${api_serv}/peer/${exten}`, (data, status) => {
-    console.log(data)
-    console.log(status)
-   /*  const ipAddress = data.address-id;
-    $.get(`${api_serv}/answer/${ipAddress}`, (data, status) => {
-    // Handle the response data or any other actions you need
-  }); */
-  });
-
-});
+        const ipAddress = '192.168.1.90';
+        $.get(`${api_serv}/answer/${ipAddress}`, (data, status) => {
+        });
+    });
 
     //list all call function
     let call_list = () => {
