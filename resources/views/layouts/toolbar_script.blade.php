@@ -832,11 +832,28 @@
 
     })
 
-    $(document).on('click', '.call_box', function(data) {
+    $(document).on('click', '#swap_button', function(data) {
         $.ajax({
             url: "{{ route('swap') }}",
             method: 'post',
             data: {
+                _token: token,
+            },
+            async: true, // Use async:true for better performance
+            success: function(result) {
+                console.log(result)
+            }
+        });
+
+    })
+
+    $(document).on('click', '#ans_button', function(data) {
+        let exten = $(this).data("id")
+        $.ajax({
+            url: "{{ route('answer') }}",
+            method: 'post',
+            data: {
+                exten: exten,
                 _token: token,
             },
             async: true, // Use async:true for better performance

@@ -224,6 +224,18 @@
                                     โทรออก</button>
                             </div>
                             <div class="mx-1">
+                                <button {{ $dial_button }} id="ans_button" name="ans_button"
+                                    class="btn custom-button btn-success {{ $dial_button_class }}"><i
+                                        class="fas fa-phone-square"></i>
+                                    รับสาย</button>
+                            </div>
+                            <div class="mx-1">
+                                <button {{ $dial_button }} id="swap_button" name="swap_button"
+                                    class="btn custom-button btn-success {{ $dial_button_class }}"><i
+                                        class="fas fa-phone-square"></i>
+                                    สลับสาย</button>
+                            </div>
+                            <div class="mx-1">
                                 {{-- <button <?= $outbound_dis ?> class="btn btn-warning button_tranfer"><i
                                         class="fas fa-random"></i> โอนสาย</button> --}}
                                 <div class="btn-group">

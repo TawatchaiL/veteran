@@ -229,8 +229,8 @@
     }
 
     .custom-button {
-        width: 175px;
+        width: 1505px;
         height: 50px;
-        font-size: 1.2em;
+        font-size: 1.0em;
     }
 </style>
