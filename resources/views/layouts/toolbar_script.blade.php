@@ -914,7 +914,7 @@
                         $('#call_list').prepend(`<div class="col-md-3 " id = "${luniq.replace('.', '')}">
 						<div class="card custom-bottom-right-card ${state_color}" id = "color_${luniq.replace('.', '')}" data-id="${mcallexten}">
 							<div class="card-header">
-								<h3 class="card-title call_box" id = "state_${luniq.replace('.', '')}" >  ${state_icon} ${state} ${mcallexten} </h3>
+								<h3 class="card-title call_box" id="state_${luniq.replace('.', '')}" >  ${state_icon} ${state} ${mcallexten} </h3>
 								<div class="card-tools">
 									<div ><input type="checkbox" style="width: 20px; height: 20px;" name="call[]" id="call[]" value="${strArray[0]}" ${check_box_state}></div>
 								</div>
