@@ -675,37 +675,16 @@
         dial_button.prop('disabled', true);
         let call_number = dial_number.val();
         if (call_number !== '') {
-            ezBSAlert({
-                type: "confirm",
-                headerText: "Accept Call",
-                messageText: "กรุณา Accept Call",
-                alertType: "info",
-            }).done(function(r) {
-                if (r == true) {
-                    $.ajax({
-                        url: "{{ route('answer') }}",
-                        method: 'post',
-                        data: {
-                            exten: exten,
-                            _token: token,
-                        },
-                        async: false,
-                        success: function(result) {
-                            console.log(result)
-                        }
-                    });
-                }
-            });
-
-            $.get(`${api_serv}/dial/` + call_number + "/" + exten + "/" + account_code, (data,
-                status) => {
+            $.get(`${api_serv}/dial/` + call_number + "/" + exten + "/" + account_code, async (data,
+            status) => {
                 if (status == 'success') {
                     dial_button.prop('disabled', true);
-                    /*  const prom = ezBSAlert({
-                         headerText: "OK",
-                         messageText: "โทรออกสำเร็จ",
-                         alertType: "success",
-                     }); */
+
+                    const prom = ezBSAlert({
+                        headerText: "OK",
+                        messageText: "โทรออกสำเร็จ",
+                        alertType: "success",
+                    });
                     dial_number.val('');
                 } else {
                     const prom = ezBSAlert({
@@ -824,7 +803,7 @@
                 exten: exten,
                 _token: token,
             },
-            async: true,
+            async: true, // Use async:true for better performance
             success: function(result) {
                 console.log(result)
                 const prom = ezBSAlert({
@@ -846,7 +825,7 @@
                 exten: exten,
                 _token: token,
             },
-            async: true,
+            async: true, // Use async:true for better performance
             success: function(result) {
                 console.log(result)
             }
@@ -884,7 +863,7 @@
                         state_color = 'card-danger';
                         check_box_state = 'disabled';
                         hold_button = "d-none";
-                        ans_button = "";
+                        ans_button = "d-none";
                     } else if (strArray[4] == 'Up' && strArray[12] == '') {
                         if (strArray[5] == "ChanSpy") {
                             spy_exten = strArray[6].split(',');
