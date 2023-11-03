@@ -92,7 +92,22 @@ class PBXController extends Controller
         if ($user) {
             $client = new Client();
 
-            $response = $client->request('GET', 'http://admin:admin@192.168.1.90/servlet?key=F_HOLD');
+            $api_url = config('asterisk.api_serv.address');
+
+            $response = $client->request('GET', $api_url . '/peer/' . $request->get('exten'));
+
+            $responseBody = $response->getBody()->getContents();
+            $data = json_decode($responseBody, true);
+
+            if (json_last_error() === JSON_ERROR_NONE && isset($data['address-ip'])) {
+                $addressIp = $data['address-ip'];
+            } else {
+                dd("Error parsing JSON or 'address-ip' not found in the response");
+            }
+
+
+
+            $response = $client->request('GET', 'http://admin:admin@' . $addressIp . '/servlet?key=F_HOLD');
 
             $responseBody = $response->getBody();
             $status = $response->getStatusCode();
