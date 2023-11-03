@@ -333,7 +333,7 @@
                 },
                 success: function(result) {
                     $('#state_' + data.luniq.replace('.', '')).html(
-                        `<i class="fa-solid fa-pause fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i> Hold ${data.luniq}`
+                        `<i class="fa-solid fa-pause fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i> Hold ${data.cid}`
                     );
                     $('#color_' + data.luniq.replace('.', '')).removeClass("card-danger");
                     $('#color_' + data.luniq.replace('.', '')).addClass("card-warning");
@@ -355,7 +355,7 @@
                 },
                 success: function(result) {
                     $('#state_' + data.luniq.replace('.', '')).html(
-                        `<i class="fa-solid fa-phone-volume fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i> Talking ${data.luniq}`
+                        `<i class="fa-solid fa-phone-volume fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i> Talking ${data.cid}`
                     );
                     $('#color_' + data.luniq.replace('.', '')).removeClass("card-warning");
                     $('#color_' + data.luniq.replace('.', '')).addClass("card-danger");
