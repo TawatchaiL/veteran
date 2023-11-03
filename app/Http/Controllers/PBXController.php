@@ -105,9 +105,46 @@ class PBXController extends Controller
                 dd("Error parsing JSON or 'address-ip' not found in the response");
             }
 
-
-
             $response = $client->request('GET', 'http://admin:admin@' . $addressIp . '/servlet?key=F_HOLD');
+            //$response = $client->request('GET', 'http://admin:admin@' . $addressIp . '/servlet?key=SWAP');
+
+            $responseBody = $response->getBody();
+            $status = $response->getStatusCode();
+
+            if ($status) {
+                return [
+                    'success' => $status,
+                ];
+            } else {
+                return ['success' => false, 'message' => 'error'];
+            }
+        } else {
+            return ['error' => false, 'message' => 'error'];
+        }
+    }
+
+    public function call_swap(Request $request)
+    {
+
+        $user = Auth::user();
+
+        if ($user) {
+            $client = new Client();
+
+            $api_url = config('asterisk.api_serv.address');
+
+            $response = $client->request('GET', $api_url . '/peer/' . $request->get('exten'));
+
+            $responseBody = $response->getBody()->getContents();
+            $data = json_decode($responseBody, true);
+
+            if (json_last_error() === JSON_ERROR_NONE && isset($data['address-ip'])) {
+                $addressIp = $data['address-ip'];
+            } else {
+                dd("Error parsing JSON or 'address-ip' not found in the response");
+            }
+
+            //$response = $client->request('GET', 'http://admin:admin@' . $addressIp . '/servlet?key=F_HOLD');
             $response = $client->request('GET', 'http://admin:admin@' . $addressIp . '/servlet?key=SWAP');
 
             $responseBody = $response->getBody();

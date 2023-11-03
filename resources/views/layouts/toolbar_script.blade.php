@@ -832,6 +832,21 @@
 
     })
 
+    $(document).on('click', '.call_box', function(data) {
+        $.ajax({
+            url: "{{ route('swap') }}",
+            method: 'post',
+            data: {
+                _token: token,
+            },
+            async: true, // Use async:true for better performance
+            success: function(result) {
+                console.log(result)
+            }
+        });
+
+    })
+
     //list all call function
     let call_list = () => {
         let mcallprofile = '';
@@ -896,7 +911,7 @@
 
 
                     if (!$('#' + luniq.replace('.', '')).length) {
-                        $('#call_list').prepend(`<div class="col-md-3" id = "${luniq.replace('.', '')}">
+                        $('#call_list').prepend(`<div class="col-md-3 call_box" id = "${luniq.replace('.', '')}">
 						<div class="card custom-bottom-right-card ${state_color}" id = "color_${luniq.replace('.', '')}" data-id="${mcallexten}">
 							<div class="card-header">
 								<h3 class="card-title" id = "state_${luniq.replace('.', '')}" >  ${state_icon} ${state} ${mcallexten} </h3>
