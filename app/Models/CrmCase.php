@@ -10,6 +10,7 @@ class CrmCase extends Model
     use HasFactory;
     protected $fillable = [
         'contact_id',
+        'uniqid',
         'telno',
         'casetype1',
         'caseid1',
