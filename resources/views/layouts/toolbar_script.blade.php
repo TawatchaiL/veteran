@@ -878,10 +878,11 @@
     })
 
     $(document).on('click', '#ans_button', function(data) {
-        $.get(`${api_serv}/answer/` + exten, (data, status) => {
-        });
-
-    })
+  const ipAddress = '192.168.1.90'; // Replace with the IP address you want to send
+  $.get(`${api_serv}/answer/${ipAddress}`, (data, status) => {
+    // Handle the response data or any other actions you need
+  });
+});
 
     //list all call function
     let call_list = () => {
