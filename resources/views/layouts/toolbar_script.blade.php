@@ -901,6 +901,7 @@
         let luniq = '';
         let mstrArray = [];
         let calls_active = 0;
+        let dans_button;
 
 
         $.get(`${api_serv}/chans/` + exten, async (data, status) => {
@@ -924,7 +925,7 @@
                         state_color = 'card-danger';
                         check_box_state = 'disabled';
                         hold_button = "d-none";
-                        ans_button = "";
+                        dans_button = "";
                     } else if (strArray[4] == 'Up' && strArray[12] == '') {
                         if (strArray[5] == "ChanSpy") {
                             spy_exten = strArray[6].split(',');
@@ -935,7 +936,7 @@
                             state_color = 'card-danger';
                             check_box_state = 'disabled';
                             hold_button = "d-none";
-                            ans_button = "d-none";
+                            dans_button = "d-none";
                         } else {
                             state = 'กำลังรอสาย'
                             state_icon =
@@ -943,7 +944,7 @@
                             state_color = 'card-danger';
                             check_box_state = 'disabled';
                             hold_button = "d-none";
-                            ans_button = "d-none";
+                            dans_button = "d-none";
                         }
 
                     } else if (strArray[4] == 'Up') {
@@ -953,7 +954,7 @@
                         state_color = 'card-danger';
                         check_box_state = '';
                         hold_button = "";
-                        ans_button = "d-none";
+                        dans_button = "d-none";
                     }
 
 
@@ -969,7 +970,7 @@
 							<div class="card-body card-content">
 							</div>
 							<div class="card-footer text-muted text-right ">
-                                <a href="#" class="btn btn-success answer_call ${ans_button}" data-id="${exten}"><i class="fa-solid fa-phone-volume"></i> รับสาย</a>
+                                <a href="#" class="btn btn-success answer_call ${dans_button}" data-id="${exten}"><i class="fa-solid fa-phone-volume"></i> รับสาย</a>
                                 <a href="#" class="btn btn-warning hold_call ${hold_button}" data-id="${exten}"><i class="fa-solid fa-pause"></i> Hold</a>
 							     <a href="#" class="btn btn-danger hangup_call" data-id="${strArray[0]}"><i class="fa-solid fa-phone-slash"></i> วางสาย</a>
 							</div>
