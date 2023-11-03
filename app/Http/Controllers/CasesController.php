@@ -233,6 +233,7 @@ class CasesController extends Controller
        $caseslog = [
         'id' => $company->id,
         'contact_id' => $company->contact_id,
+        'uniqid' => $company->uniqid,
         'telno' => $company->telno,
         'casetype1' => $company->casetype1,
         'caseid1' => $company->caseid1,
@@ -384,6 +385,7 @@ class CasesController extends Controller
         $caseslog = [
          'id' => $company->id,
          'contact_id' => $company->contact_id,
+         'uniqid' => $company->uniqid,
          'telno' => $company->telno,
          'casetype1' => $company->casetype1,
          'caseid1' => $company->caseid1,
@@ -425,6 +427,7 @@ class CasesController extends Controller
             $caseslog = [
              'id' => $company->id,
              'contact_id' => $company->contact_id,
+             'uniqid' => $company->uniqid,
              'telno' => $company->telno,
              'casetype1' => $company->casetype1,
              'caseid1' => $company->caseid1,
