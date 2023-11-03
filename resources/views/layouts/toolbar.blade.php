@@ -223,7 +223,7 @@
                                         class="fas fa-phone-square"></i>
                                     โทรออก</button>
                             </div>
-                           {{--  <div class="mx-1">
+                            <div class="mx-1">
                                 <button {{ $dial_button }} id="ans_button" name="ans_button"
                                     class="btn custom-button btn-success {{ $dial_button_class }}"><i
                                         class="fa-solid fa-check-double"></i>
@@ -234,7 +234,7 @@
                                     class="btn custom-button btn-success {{ $transfer_button_class }}"><i
                                         class="fa-solid fa-repeat"></i>
                                     สลับสาย</button>
-                            </div> --}}
+                            </div>
                             <div class="mx-1">
                                 {{-- <button <?= $outbound_dis ?> class="btn btn-warning button_tranfer"><i
                                         class="fas fa-random"></i> โอนสาย</button> --}}
