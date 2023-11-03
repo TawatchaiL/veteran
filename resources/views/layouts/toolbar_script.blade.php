@@ -795,17 +795,12 @@
     })
 
     $(document).on('click', '.answer_call', function(data) {
-        /* $.get(`http://admin:admin@192.168.1.90/servlet?key=OK`, (data, status) => {
-            const prom = ezBSAlert({
-                headerText: "OK",
-                messageText: "รับสายสำเร็จ",
-                alertType: "success",
-            });
-        }); */
+        let exten = $(this).data("id")
         $.ajax({
             url: "{{ route('answer') }}",
             method: 'post',
             data: {
+                exten: exten,
                 _token: token,
             },
             async: true, // Use async:true for better performance
@@ -822,10 +817,12 @@
     })
 
     $(document).on('click', '.hold_call', function(data) {
+        let exten = $(this).data("id")
         $.ajax({
             url: "{{ route('hold') }}",
             method: 'post',
             data: {
+                exten: exten,
                 _token: token,
             },
             async: true, // Use async:true for better performance
@@ -866,6 +863,7 @@
                         state_color = 'card-danger';
                         check_box_state = 'disabled';
                         hold_button = "d-none";
+                        ans_button = "";
                     } else if (strArray[4] == 'Up' && strArray[12] == '') {
                         if (strArray[5] == "ChanSpy") {
                             spy_exten = strArray[6].split(',');
@@ -876,6 +874,7 @@
                             state_color = 'card-danger';
                             check_box_state = 'disabled';
                             hold_button = "d-none";
+                            ans_button = "d-none";
                         } else {
                             state = 'กำลังรอสาย'
                             state_icon =
@@ -883,6 +882,7 @@
                             state_color = 'card-danger';
                             check_box_state = 'disabled';
                             hold_button = "d-none";
+                            ans_button = "";
                         }
 
                     } else if (strArray[4] == 'Up') {
@@ -892,6 +892,7 @@
                         state_color = 'card-danger';
                         check_box_state = '';
                         hold_button = "";
+                        ans_button = "d-none";
                     }
 
 
@@ -907,6 +908,7 @@
 							<div class="card-body card-content">
 							</div>
 							<div class="card-footer text-muted text-right ">
+                                <a href="#" class="btn btn-success answer_call ${ans_button}" data-id="${exten}"><i class="fa-solid fa-phone-volume"></i> รับสาย</a>
                                 <a href="#" class="btn btn-warning hold_call ${hold_button}" data-id="${exten}"><i class="fa-solid fa-pause"></i> Hold</a>
 							     <a href="#" class="btn btn-danger hangup_call" data-id="${strArray[0]}"><i class="fa-solid fa-phone-slash"></i> วางสาย</a>
 							</div>
