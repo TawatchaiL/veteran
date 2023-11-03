@@ -24,14 +24,6 @@
 @endcan
 @can('case-list')
     <li class="nav-item">
-        <a href="{{ route('casescomment') }}" class="nav-link {{ Request::is('casescomment') ? 'active' : '' }}">
-            <i class="fa-solid fa-comment"></i>
-            <p>ความคิดเห็นเรื่องที่ติดต่อ</p>
-        </a>
-    </li>
-@endcan
-@can('case-list')
-    <li class="nav-item">
         <a href="{{ route('dashboard.index') }}" class="nav-link {{ Request::is('dashboard.index') ? 'active' : '' }}">
             <i class="fa-solid fa-desktop nav-icon"></i>
             <p>Queue/Agent Monitor</p>

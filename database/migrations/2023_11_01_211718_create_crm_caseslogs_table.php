@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -15,6 +16,7 @@ return new class extends Migration
             $table->id("lid");
             $table->integer('id')->nullable();
             $table->integer('contact_id')->nullable();
+            $table->string('uniqid')->nullable();
             $table->string('telno')->nullable();
             $table->string('casetype1')->nullable();
             $table->integer('caseid1')->default(0);

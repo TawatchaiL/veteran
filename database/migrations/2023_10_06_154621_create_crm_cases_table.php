@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('crm_cases', function (Blueprint $table) {
             $table->id();
             $table->integer('contact_id')->nullable();
+            $table->string('uniqid')->nullable();
             $table->string('telno')->nullable();
             $table->string('casetype1')->nullable();
             $table->integer('caseid1')->default(0);
