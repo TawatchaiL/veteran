@@ -226,8 +226,8 @@
                             <div class="mx-1">
                                 <button {{ $dial_button }} id="ans_button" name="ans_button"
                                     class="btn custom-button btn-success {{ $dial_button_class }}"><i
-                                        class="fas fa-phone-square"></i>
-                                    รับสาย</button>
+                                        class="fa-solid fa-check-double"></i>
+                                    Accept</button>
                             </div>
                             <div class="mx-1">
                                 <button {{ $transfer_button }} id="swap_button" name="swap_button"
