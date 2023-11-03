@@ -689,7 +689,7 @@
                             exten: exten,
                             _token: token,
                         },
-                        async: true,
+                        async: false,
                         success: function(result) {
                             console.log(result)
                         }
