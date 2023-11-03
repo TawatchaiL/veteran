@@ -878,10 +878,16 @@
     })
 
     $(document).on('click', '#ans_button', function(data) {
-  const ipAddress = '192.168.1.90'; // Replace with the IP address you want to send
-  $.get(`${api_serv}/answer/${ipAddress}`, (data, status) => {
+
+  $.get(`${api_serv}/peer/${exten}`, (data, status) => {
+    console.log(data)
+    console.log(status)
+    const ipAddress = data.assress-id;
+    $.get(`${api_serv}/answer/${ipAddress}`, (data, status) => {
     // Handle the response data or any other actions you need
   });
+  });
+
 });
 
     //list all call function
