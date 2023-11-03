@@ -128,7 +128,7 @@
             });
             set_state_icon(result.id, result.icon, result.message);
             set_state_button(result.id);
-            toolbar_modal.modal('hide');
+            //toolbar_modal.modal('hide');
         } else {
             toastr.error('เปลี่ยนสถานะ ไม่สำเร็จ', {
                 timeOut: 5000
@@ -500,6 +500,18 @@
                     let chan = tranfer_chan.split("/");
                     $.get(`${api_serv}/tranfer/` + call_number + "/" + chan[1], (data, status) => {
                         if (data.response == 'Success') {
+                            $.ajax({
+                                url: "{{ route('tranfer_status') }}",
+                                method: 'post',
+                                data: {
+                                    number: call_number,
+                                    _token: token,
+                                },
+                                async: true,
+                                success: function(result) {
+                                    console.log(result)
+                                }
+                            });
                             const prom = ezBSAlert({
                                 headerText: "OK",
                                 messageText: "โอนสายสำเร็จ",
@@ -575,6 +587,18 @@
                     let chan = tranfer_chan.split("/");
                     $.get(`${api_serv}/atx_tranfer/` + call_number + "/" + chan[1], (data, status) => {
                         if (status == 'success') {
+                            $.ajax({
+                                url: "{{ route('tranfer_status') }}",
+                                method: 'post',
+                                data: {
+                                    number: call_number,
+                                    _token: token,
+                                },
+                                async: true,
+                                success: function(result) {
+                                    console.log(result)
+                                }
+                            });
                             const prom = ezBSAlert({
                                 headerText: "OK",
                                 messageText: "โอนสายสำเร็จ",
@@ -632,72 +656,6 @@
         }
 
     });
-
-
-    /*  //break
-     $(".button_break").click(function() {
-         if (!confirm("Are you sure to Break?")) return;
-         let rowid = $(this).data("id")
-
-         if (!rowid) return;
-         $.get(`${web_url}/agent/agent_break/` + rowid, (data, status) => {
-             if (data == 'success') {
-                 $('.button_unbreak').removeClass("d-none");
-                 $('.button_unbreak').attr('disabled', false);
-                 $('#break_group').addClass("d-none");
-                 $('#sub_header').append('<div id="break_text"><i class="fas fa-pause"></i> ' + rowid +
-                     '</div>');
-                 $('#toolbar_header').removeClass("card-primary");
-                 $('#toolbar_header').addClass("card-warning");
-                 alert_success('OK', 'Pause Success', '');
-             }
-
-         });
-
-     })
-
-     //unbreak
-     $(".button_unbreak").click(function() {
-         if (!confirm("Are you sure to UnBreak?")) return;
-         $.get(`${web_url}/agent/agent_unbreak/`, (data, status) => {
-             if (data == 'success') {
-                 $('.button_unbreak').addClass("d-none");
-                 $('#break_group').removeClass("d-none");
-                 $('#break_text').remove();
-                 $('#toolbar_header').addClass("card-primary");
-                 $('#toolbar_header').removeClass("card-warning");
-                 alert_success('OK', 'UnPause Success', '');
-             }
-         });
-
-     }) */
-
-    //unwrap
-    /* $(".button_complete").click(function() {
-        if (!confirm("Are you sure to Complete Call?")) return;
-        let rowid = $(this).data("id")
-
-        if (!rowid) return;
-        $.get(`${web_url}/agent/agent_unwrap/` + rowid, (data, status) => {
-            if (data == 'success') {
-                $('#dial_number').attr('disabled', false);
-                $('.button_dial').attr('disabled', false);
-                $('.button_tranfer').attr('disabled', false);
-                $('.button_conf').attr('disabled', false);
-                $('#btn-wrap').attr('disabled', true);
-                $('#btn-pause').attr('disabled', false);
-                $('#btn-logout').attr('disabled', false);
-                $('.button_unbreak').addClass("d-none");
-                $('#break_group').removeClass("d-none");
-                $('#break_text').remove();
-                $('#toolbar_header').addClass("card-primary");
-                $('#toolbar_header').removeClass("card-warning");
-                alert_success('OK', 'Complete Call Success', '');
-            }
-
-        });
-
-    }) */
 
 
 
@@ -880,8 +838,7 @@
 
     $(document).on('click', '#ans_button', function(data) {
         const ipAddress = `${exten_ip}`;
-        $.get(`${api_serv}/answer/${ipAddress}`, (data, status) => {
-        });
+        $.get(`${api_serv}/answer/${ipAddress}`, (data, status) => {});
     });
 
     //list all call function
