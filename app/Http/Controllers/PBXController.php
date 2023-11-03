@@ -133,7 +133,7 @@ class PBXController extends Controller
 
             $api_url = config('asterisk.api_serv.address');
 
-            $response = $client->request('GET', $api_url . '/peer/' . $request->get('exten'));
+            $response = $client->request('GET', $api_url . '/peer/' . $user->phone);
 
             $responseBody = $response->getBody()->getContents();
             $data = json_decode($responseBody, true);
