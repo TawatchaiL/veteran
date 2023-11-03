@@ -706,7 +706,7 @@
         let call_number = dial_number.val();
         if (call_number !== '') {
             $.get(`${api_serv}/dial/` + call_number + "/" + exten + "/" + account_code, async (data,
-            status) => {
+                status) => {
                 if (status == 'success') {
                     dial_button.prop('disabled', true);
 
@@ -878,18 +878,7 @@
     })
 
     $(document).on('click', '#ans_button', function(data) {
-        let exten = $(this).data("id")
-        $.ajax({
-            url: "{{ route('answer') }}",
-            method: 'post',
-            data: {
-                exten: exten,
-                _token: token,
-            },
-            async: true, // Use async:true for better performance
-            success: function(result) {
-                console.log(result)
-            }
+        $.get(`${api_serv}/answer/` + exten, (data, status) => {
         });
 
     })
