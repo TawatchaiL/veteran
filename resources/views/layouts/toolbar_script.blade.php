@@ -882,7 +882,7 @@
   $.get(`${api_serv}/peer/${exten}`, (data, status) => {
     console.log(data)
     console.log(status)
-    const ipAddress = data.assress-id;
+    const ipAddress = data.address-id;
     $.get(`${api_serv}/answer/${ipAddress}`, (data, status) => {
     // Handle the response data or any other actions you need
   });
