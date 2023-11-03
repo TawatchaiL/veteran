@@ -184,7 +184,7 @@ class LoginController extends Controller
                 $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-xmark"></i>'; */
 
                 //get ipphon ip
-                /* $client = new Client();
+                $client = new Client();
 
                 $api_url = config('asterisk.api_serv.address');
                 $response = $client->request('GET', $api_url . '/peer/' . $user->phone);
@@ -197,7 +197,7 @@ class LoginController extends Controller
                     dd("Error parsing JSON or 'address-ip' not found in the response");
                 }
 
-                $user->phone_ip = $addressIp; */
+                $user->phone_ip = $addressIp;
                 $user->phone_status_id = 1;
                 $user->phone_status = "พร้อมรับสาย";
                 $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
