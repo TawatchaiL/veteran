@@ -674,6 +674,8 @@
         // Save data asdf
         $(document).on('click', '.SubmitCreateFormP-button', function() {
             let cardId = $(this).data("tabid");
+            var uniqid = $('#custom-tabs-pop-' + cardId).data("tick");
+            alert(uniqid);
             var emergencyData = [];
             if ($('#contractid' + cardId).val() === "") {
                 $('#myTbl3p' + cardId + ' tbody tr').each(function() {

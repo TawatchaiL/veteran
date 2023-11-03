@@ -455,7 +455,7 @@
 
         {!! Form::close() !!}
         <div class="modal-footer {{-- justify-content-between --}}">
-            <button type="button" class="btn btn-success SubmitCreateFormP-button" data-id="" data-tabid="{{ $cardid }}" id="SubmitCreateFormP{{$cardid}}"><i class="fas fa-download"></i>
+            <button type="button" class="btn btn-success SubmitCreateFormP-button" data-id="" data-tabid="{{ $cardid }}" data-uniqid="{{ $cardid }}" id="SubmitCreateFormP{{$cardid}}"><i class="fas fa-download"></i>
                 บันทึกข้อมูล</button>
     </div>
 

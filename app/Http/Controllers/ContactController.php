@@ -268,7 +268,7 @@ class ContactController extends Controller
                     href="#custom-tabs-pop-' . $item->telno . '" role="tab" aria-controls="custom-tabs-pop-' . $item->telno . '"
                     aria-selected="false">' . $item->telno . '</a>
                 </li>';
-                $tab_content .= '<div class="tab-pane fade ' . $tab_content_active . '" id="custom-tabs-pop-' . $item->telno . '" role="tabpanel"
+                $tab_content .= '<div class="tab-pane fade ' . $tab_content_active . '" id="custom-tabs-pop-' . $item->telno . '" data-tick="' . $item->uniqid . '" role="tabpanel"
                 aria-labelledby="custom-tabs-pop-' . $item->telno . '-tab">
                 <div class="row" id="dpopup_' . $item->telno . '">
                 ' . $html . '
