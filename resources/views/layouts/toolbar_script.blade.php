@@ -675,16 +675,37 @@
         dial_button.prop('disabled', true);
         let call_number = dial_number.val();
         if (call_number !== '') {
-            $.get(`${api_serv}/dial/` + call_number + "/" + exten + "/" + account_code, async (data,
-            status) => {
+            ezBSAlert({
+                type: "confirm",
+                headerText: "Accept Call",
+                messageText: "กรุณา Accept Call",
+                alertType: "info",
+            }).done(function(r) {
+                if (r == true) {
+                    $.ajax({
+                        url: "{{ route('answer') }}",
+                        method: 'post',
+                        data: {
+                            exten: exten,
+                            _token: token,
+                        },
+                        async: true,
+                        success: function(result) {
+                            console.log(result)
+                        }
+                    });
+                }
+            });
+
+            $.get(`${api_serv}/dial/` + call_number + "/" + exten + "/" + account_code, (data,
+                status) => {
                 if (status == 'success') {
                     dial_button.prop('disabled', true);
-
-                    const prom = ezBSAlert({
-                        headerText: "OK",
-                        messageText: "โทรออกสำเร็จ",
-                        alertType: "success",
-                    });
+                    /*  const prom = ezBSAlert({
+                         headerText: "OK",
+                         messageText: "โทรออกสำเร็จ",
+                         alertType: "success",
+                     }); */
                     dial_number.val('');
                 } else {
                     const prom = ezBSAlert({
@@ -803,7 +824,7 @@
                 exten: exten,
                 _token: token,
             },
-            async: true, // Use async:true for better performance
+            async: true,
             success: function(result) {
                 console.log(result)
                 const prom = ezBSAlert({
@@ -825,7 +846,7 @@
                 exten: exten,
                 _token: token,
             },
-            async: true, // Use async:true for better performance
+            async: true,
             success: function(result) {
                 console.log(result)
             }
