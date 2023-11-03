@@ -108,6 +108,7 @@ class PBXController extends Controller
 
 
             $response = $client->request('GET', 'http://admin:admin@' . $addressIp . '/servlet?key=F_HOLD');
+            $response = $client->request('GET', 'http://admin:admin@' . $addressIp . '/servlet?key=SWAP');
 
             $responseBody = $response->getBody();
             $status = $response->getStatusCode();
