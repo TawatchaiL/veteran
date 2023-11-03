@@ -199,7 +199,7 @@ class DashboardController extends Controller
         $dateCounts = [];
 
         $results = DB::connection('remote_connection')
-            ->table('call_center.call_entry_today')
+            ->table('call_center.call_entry')
             ->select(
                 DB::raw('DAY(datetime_init) as day'),
                 DB::raw('COUNT(*) as count')
