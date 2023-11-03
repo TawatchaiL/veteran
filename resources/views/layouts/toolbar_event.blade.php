@@ -321,7 +321,7 @@
     });
 
     socket.on('hold', data => {
-        $('.hold_call').prop('disabled', true);
+        console.log(data)
         if (data.extension.match(exten)) {
             $.ajax({
                 url: "{{ route('agent.hold') }}",
@@ -332,7 +332,6 @@
                     _token: token,
                 },
                 success: function(result) {
-                    $('.hold_call').prop('disabled', false);
                     $('#state_' + data.luniq.replace('.', '')).html(
                         '<i class="fa-solid fa-pause fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i> Hold'
                     );
@@ -344,7 +343,7 @@
     });
 
     socket.on('unhold', data => {
-        $('.hold_call').prop('disabled', true);
+        console.log(data)
         if (data.extension.match(exten)) {
             $.ajax({
                 url: "{{ route('agent.unhold') }}",
@@ -355,7 +354,6 @@
                     _token: token,
                 },
                 success: function(result) {
-                    $('.hold_call').prop('disabled', false);
                     $('#state_' + data.luniq.replace('.', '')).html(
                         '<i class="fa-solid fa-phone-volume fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i> Talking'
                     );
