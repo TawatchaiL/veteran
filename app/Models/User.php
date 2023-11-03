@@ -30,6 +30,7 @@ class User extends Authenticatable
         'department_id',
         'position_id',
         'phone',
+        'phone_ip',
         'queue',
         'phone_status_id',
         'phone_status',

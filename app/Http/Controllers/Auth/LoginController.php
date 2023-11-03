@@ -16,6 +16,7 @@ use App\Services\IssableService;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
+use GuzzleHttp\Client;
 
 
 class LoginController extends Controller
@@ -181,6 +182,22 @@ class LoginController extends Controller
                 /* $user->phone_status_id = 0;
                 $user->phone_status = "ไม่พร้อมรับสาย";
                 $user->phone_status_icon = '<i class="fa-solid fa-lg fa-user-xmark"></i>'; */
+
+                //get ipphon ip
+                $client = new Client();
+
+                $api_url = config('asterisk.api_serv.address');
+                $response = $client->request('GET', $api_url . '/peer/' . $user->phone);
+                $responseBody = $response->getBody()->getContents();
+                $data = json_decode($responseBody, true);
+
+                if (json_last_error() === JSON_ERROR_NONE && isset($data['address-ip'])) {
+                    $addressIp = $data['address-ip'];
+                } else {
+                    dd("Error parsing JSON or 'address-ip' not found in the response");
+                }
+
+                $user->phone_ip = $addressIp;
                 $user->phone_status_id = 1;
                 $user->phone_status = "พร้อมรับสาย";
                 $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';

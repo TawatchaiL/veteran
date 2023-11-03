@@ -1,6 +1,7 @@
 <script>
     const web_url = '{{ url('/') }}';
     const agent_username = '{{ $temporaryPhone }}';
+    const exten_ip = '{{ $temporaryPhoneIP }}';
     const exten = '{{ $temporaryPhone }}';
     const account_code = exten;
     const toolbar_serv = '{{ config('asterisk.toolbar_serv.address') }}';
@@ -878,7 +879,7 @@
     })
 
     $(document).on('click', '#ans_button', function(data) {
-        const ipAddress = '192.168.1.90';
+        const ipAddress = `${exten_ip}`;
         $.get(`${api_serv}/answer/${ipAddress}`, (data, status) => {
         });
     });

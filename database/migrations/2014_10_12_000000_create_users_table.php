@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('queue')->nullable();
             $table->string('phone')->nullable();
+            $table->string('phone_ip')->nullable();
             $table->string('phone_status_id')->nullable();
             $table->string('phone_status')->nullable();
             $table->string('phone_status_icon')->nullable();
