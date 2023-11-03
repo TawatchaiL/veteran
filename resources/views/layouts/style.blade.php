@@ -229,7 +229,7 @@
     }
 
     .custom-button {
-        width: 140px;
+        width: 145px;
         height: 50px;
         font-size: 1.0em;
     }
