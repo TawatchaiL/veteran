@@ -412,15 +412,23 @@ class PBXController extends Controller
 
         if ($user) {
 
-            DB::table('crm_incoming')
-                ->where('uniqid', $request->input('uniqid'))
-                ->update([
-                    'start_hold' => date("Y-m-d H:i:s"),
-                ]);
+            $uniqid = $request->input('uniqid');
 
-            return [
-                'success' => true,
-            ];
+            if (DB::table('crm_incoming')->where('uniqid', $uniqid)->exists()) {
+                DB::table('crm_incoming')
+                    ->where('uniqid', $uniqid)
+                    ->update([
+                        'start_hold' => date("Y-m-d H:i:s"),
+                    ]);
+
+                return [
+                    'success' => true,
+                ];
+            } else {
+                return [
+                    'success' => true, 'message' => 'Record not found'
+                ];
+            }
         } else {
             return ['error' => false, 'message' => 'error'];
         }
@@ -436,21 +444,26 @@ class PBXController extends Controller
             $resultb =  DB::table('crm_incoming')
                 ->where('uniqid', $request->input('uniqid'))
                 ->first();
+            if ($resultb) {
+                $unhold = Carbon::now();
+                $hold_start = Carbon::parse($resultb->start_hold);
 
-            $unhold = Carbon::now();
-            $hold_start = Carbon::parse($resultb->start_hold);
+                $duration = $resultb->holdtime + $hold_start->diffInSeconds($unhold);
 
-            $duration = $resultb->holdtime + $hold_start->diffInSeconds($unhold);
+                DB::table('crm_incoming')
+                    ->where('uniqid', $request->input('uniqid'))
+                    ->update([
+                        'holdtime' => $duration,
+                    ]);
 
-            DB::table('crm_incoming')
-                ->where('uniqid', $request->input('uniqid'))
-                ->update([
-                    'holdtime' => $duration,
-                ]);
-
-            return [
-                'success' => true,
-            ];
+                return [
+                    'success' => true,
+                ];
+            } else {
+                return [
+                    'success' => true, 'message' => 'Record not found'
+                ];
+            }
         } else {
             return ['error' => false, 'message' => 'error'];
         }
