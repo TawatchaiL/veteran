@@ -863,7 +863,7 @@
                         state_color = 'card-danger';
                         check_box_state = 'disabled';
                         hold_button = "d-none";
-                        ans_button = "d-none";
+                        ans_button = "";
                     } else if (strArray[4] == 'Up' && strArray[12] == '') {
                         if (strArray[5] == "ChanSpy") {
                             spy_exten = strArray[6].split(',');
@@ -882,7 +882,7 @@
                             state_color = 'card-danger';
                             check_box_state = 'disabled';
                             hold_button = "d-none";
-                            ans_button = "";
+                            ans_button = "d-none";
                         }
 
                     } else if (strArray[4] == 'Up') {
