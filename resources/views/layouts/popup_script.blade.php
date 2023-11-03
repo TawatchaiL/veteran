@@ -675,7 +675,6 @@
         $(document).on('click', '.SubmitCreateFormP-button', function() {
             let cardId = $(this).data("tabid");
             var uniqid = $('#custom-tabs-pop-' + cardId).data("tick");
-            alert(uniqid);
             var emergencyData = [];
             if ($('#contractid' + cardId).val() === "") {
                 $('#myTbl3p' + cardId + ' tbody tr').each(function() {
@@ -713,6 +712,7 @@
                     telhome: $('#telhomep' + cardId).val(),
                     phoneno: $('#phonenop' + cardId).val(),
                     workno: $('#worknop' + cardId).val(),
+                    uniqid: uniqid,
                     telno: $('#telnop' + cardId).val(),
                     casetype1: $('#casetype1p' + cardId + ' option:selected').text(),
                     caseid1: $('#casetype1p' + cardId).val(),
@@ -830,6 +830,7 @@
                     telhome: $('#telhomep' + cardId).val(),
                     phoneno: $('#phonenop' + cardId).val(),
                     workno: $('#worknop' + cardId).val(),
+                    uniqid: uniqid,
                     telno: $('#telnop' + cardId).val(),
                     casetype1: $('#casetype1p' + cardId + ' option:selected').text(),
                     caseid1: $('#casetype1p' + cardId).val(),

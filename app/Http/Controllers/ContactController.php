@@ -639,6 +639,7 @@ class ContactController extends Controller
         }
         $Crmcsae = new CrmCase();
         $Crmcsae->contact_id = $insertedId;
+        $Crmcsae->telno = $request->input('uniqid');
         $Crmcsae->telno = $request->input('telno');
         $Crmcsae->casetype1 = $request->input('casetype1');
         $Crmcsae->caseid1 = $request->input('caseid1');
@@ -824,6 +825,7 @@ class ContactController extends Controller
 
         $Crmcsae = new CrmCase();
         $Crmcsae->contact_id = $id;
+        $Crmcsae->telno = $request->input('uniqid');
         $Crmcsae->telno = $request->get('telno');
         $Crmcsae->casetype1 = $request->get('casetype1');
         $Crmcsae->caseid1 = $request->get('caseid1');
