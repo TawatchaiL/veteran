@@ -208,7 +208,7 @@
                 <div class="card {{ $toolbar_card }}" id="toolbar_card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <input {{ $dial_number }} style="height:50px" type="number"
                                     class="{{ $dial_number_class }} form-control" maxlength="11" id="dial_number"
                                     name="dial_number" value="" placeholder="กรอกเบอร์" />
@@ -230,8 +230,8 @@
                                     รับสาย</button>
                             </div>
                             <div class="mx-1">
-                                <button {{ $dial_button }} id="swap_button" name="swap_button"
-                                    class="btn custom-button btn-success {{ $dial_button_class }}"><i
+                                <button {{ $transfer_button }} id="swap_button" name="swap_button"
+                                    class="btn custom-button btn-success {{ $transfer_button_class }}"><i
                                         class="fas fa-phone-square"></i>
                                     สลับสาย</button>
                             </div>

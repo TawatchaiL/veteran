@@ -8,6 +8,8 @@
 
     const dial_number = $('#dial_number');
     const dial_button = $('#dial_button');
+    const ans_button = $('#ans_button');
+    const swap_button = $('#swap_button');
     const performance_button = $('#performance_button');
     const tranfer_button = $('#tranfer_button');
     const conf_button = $('#conf_button');
@@ -182,6 +184,10 @@
             dial_number.prop('disabled', true);
             dial_button.addClass('d-none');
             dial_button.prop('disabled', true);
+            ans_button.addClass('d-none');
+            ans_button.prop('disabled', true);
+            swap_button.prop('disabled', true);
+            swap_button.addClass("d-none")
             performance_button.prop('disabled', true);
             performance_button.addClass("d-none");
             tranfer_button.prop('disabled', true);
@@ -205,6 +211,10 @@
             dial_number.prop('disabled', false);
             dial_button.removeClass('d-none');
             dial_button.prop('disabled', false);
+            ans_button.removeClass('d-none');
+            ans_button.prop('disabled', false);
+            swap_button.prop('disabled', true);
+            swap_button.removeClass("d-none")
             performance_button.prop('disabled', true);
             performance_button.removeClass("d-none");
             tranfer_button.prop('disabled', true);
@@ -228,6 +238,10 @@
             dial_number.prop('disabled', false);
             dial_button.removeClass('d-none');
             dial_button.prop('disabled', false);
+            ans_button.removeClass('d-none');
+            ans_button.prop('disabled', false);
+            swap_button.prop('disabled', true);
+            swap_button.removeClass("d-none")
             performance_button.prop('disabled', true);
             performance_button.removeClass("d-none");
             tranfer_button.prop('disabled', true);
@@ -252,6 +266,10 @@
             dial_number.prop('disabled', false);
             dial_button.removeClass('d-none');
             dial_button.prop('disabled', false);
+            ans_button.removeClass('d-none');
+            ans_button.prop('disabled', false);
+            swap_button.prop('disabled', true);
+            swap_button.removeClass("d-none")
             performance_button.prop('disabled', true);
             performance_button.removeClass("d-none");
             tranfer_button.prop('disabled', true);
@@ -276,6 +294,10 @@
             dial_number.prop('disabled', false);
             dial_button.removeClass('d-none');
             dial_button.prop('disabled', false);
+            ans_button.removeClass('d-none');
+            ans_button.prop('disabled', false);
+            swap_button.prop('disabled', false);
+            swap_button.removeClass("d-none")
             performance_button.prop('disabled', true);
             performance_button.removeClass("d-none");
             tranfer_button.prop('disabled', true);
@@ -301,6 +323,10 @@
             dial_number.prop('disabled', false);
             dial_button.removeClass('d-none');
             dial_button.prop('disabled', false);
+            ans_button.removeClass('d-none');
+            ans_button.prop('disabled', false);
+            swap_button.prop('disabled', false);
+            swap_button.removeClass("d-none")
             performance_button.prop('disabled', false);
             performance_button.removeClass("d-none");
             tranfer_button.prop('disabled', false);
@@ -326,6 +352,10 @@
             dial_number.prop('disabled', false);
             dial_button.removeClass('d-none');
             dial_button.prop('disabled', false);
+            ans_button.removeClass('d-none');
+            ans_button.prop('disabled', false);
+            swap_button.prop('disabled', false);
+            swap_button.removeClass("d-none")
             performance_button.prop('disabled', false);
             performance_button.removeClass("d-none");
             tranfer_button.prop('disabled', false);
