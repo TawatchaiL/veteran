@@ -739,6 +739,50 @@ class PBXController extends Controller
     }
 
 
+    public function TranferStatus(Request $request)
+    {
+
+        $user = Auth::user();
+
+        if ($user) {
+            $uniqid = $request->input('uniqid');
+            $exten = $request->input('exten');
+
+            if (isset($uniqid) && $uniqid !== '') {
+                $condition = ['uniqid', '=', $uniqid];
+            } else {
+                $condition = ['agentno', '=', $user->phone];
+            }
+
+            $context = DB::table('crm_incoming')
+                ->where([$condition])
+                ->orderBy('calltime', 'DESC')
+                ->limit(1)
+                ->first();
+
+                    DB::connection('remote_connection')
+                        ->table('call_center.call_entry')
+                        ->where('uniqueid', $context->uniqid)
+                        ->update([
+                            'transfer' => $exten,
+                        ]);
+                    DB::connection('remote_connection')
+                        ->table('call_center.call_entry_today')
+                        ->where('uniqueid', $context->uniqid)
+                        ->update([
+                            'transfer' => $exten,
+                        ]);
+
+                return [
+                    'success' => true,
+                ];
+            } else {
+                return ['error' => false, 'message' => 'error'];
+            }
+    }
+
+
+
     public function AgentStatus()
     {
 
