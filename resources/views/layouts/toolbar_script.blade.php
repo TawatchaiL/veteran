@@ -707,6 +707,25 @@
                         }); */
         }
 
+        $.ajax({
+            url: "{{ route('answer') }}",
+            method: 'post',
+            data: {
+                exten: exten,
+                _token: token,
+            },
+            async: true, // Use async:true for better performance
+            success: function(result) {
+                console.log(result)
+                const prom = ezBSAlert({
+                    headerText: "OK",
+                    messageText: "รับสายสำเร็จ",
+                    alertType: "success",
+                });
+            }
+        });
+
+
     });
 
     //conf
