@@ -922,6 +922,39 @@ class ContactController extends Controller
             CrmPhoneEmergencyLog::create($emerlog);
             CrmPhoneEmergency::where('contact_id', $emer->id)->delete();
         }
+        
+        $casesdelete = CrmCase::where('contact_id', $id)->get();
+    
+        foreach ($casesdelete as $cases) {
+            $caseslog = [
+                'id' => $cases->id,
+                'contact_id' => $cases->contact_id,
+                'uniqid' => $cases->uniqid,
+                'telno' => $cases->telno,
+                'casetype1' => $cases->casetype1,
+                'caseid1' => $cases->caseid1,
+                'casetype2' => $cases->casetype2,
+                'caseid2' => $cases->caseid2,
+                'casetype3' => $cases->casetype3,
+                'caseid3' => $cases->caseid3,
+                'casetype4' => $cases->casetype4,
+                'caseid4' => $cases->caseid4,
+                'casetype5' => $cases->casetype5,
+                'caseid5' => $cases->caseid5,
+                'casetype6' => $cases->casetype6,
+                'caseid6' => $cases->caseid6,
+                'tranferstatus' => $cases->tranferstatus,
+                'casedetail' => $cases->casedetail,
+                'casestatus' => $cases->casestatus,
+                'agent' => $cases->agent,
+                'created_at' => $cases->created_at,
+                'updated_at' => $cases->updated_at,
+                'modifyaction' => 'delete',
+                'modifyagent' => $user->id,
+            ];
+            CrmCaseslog::create($caseslog);
+            CrmCase::where('contact_id', $cases->id)->delete();
+        }
 
         return ['success' => true, 'message' => 'ลบ ผู้ติดต่อ เรียบร้อยแล้ว'];
     }
@@ -986,6 +1019,39 @@ class ContactController extends Controller
                 ];
                 CrmPhoneEmergencyLog::create($emerlog);
                 CrmPhoneEmergency::where('contact_id', $emer->id)->delete();
+            }
+
+            $casesdelete = CrmCase::where('contact_id', $contact->id)->get();
+    
+            foreach ($casesdelete as $cases) {
+                $caseslog = [
+                    'id' => $cases->id,
+                    'contact_id' => $cases->contact_id,
+                    'uniqid' => $cases->uniqid,
+                    'telno' => $cases->telno,
+                    'casetype1' => $cases->casetype1,
+                    'caseid1' => $cases->caseid1,
+                    'casetype2' => $cases->casetype2,
+                    'caseid2' => $cases->caseid2,
+                    'casetype3' => $cases->casetype3,
+                    'caseid3' => $cases->caseid3,
+                    'casetype4' => $cases->casetype4,
+                    'caseid4' => $cases->caseid4,
+                    'casetype5' => $cases->casetype5,
+                    'caseid5' => $cases->caseid5,
+                    'casetype6' => $cases->casetype6,
+                    'caseid6' => $cases->caseid6,
+                    'tranferstatus' => $cases->tranferstatus,
+                    'casedetail' => $cases->casedetail,
+                    'casestatus' => $cases->casestatus,
+                    'agent' => $cases->agent,
+                    'created_at' => $cases->created_at,
+                    'updated_at' => $cases->updated_at,
+                    'modifyaction' => 'delete',
+                    'modifyagent' => $user->id,
+                ];
+                CrmCaseslog::create($caseslog);
+                CrmCase::where('contact_id', $cases->id)->delete();
             }
 
         //CrmContact::find($arr_del[$xx])->delete();
