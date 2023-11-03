@@ -53,7 +53,7 @@ class PBXController extends Controller
         if ($user) {
             $client = new Client();
 
-            $api_url = config('asterisk.api_serv.address');
+            /* $api_url = config('asterisk.api_serv.address');
 
             $response = $client->request('GET', $api_url . '/peer/' . $user->phone);
 
@@ -65,7 +65,8 @@ class PBXController extends Controller
             } else {
                 dd("Error parsing JSON or 'address-ip' not found in the response");
             }
-
+ */
+            $addressIp = $user->phone_ip;
 
             $response = $client->request('GET', 'http://admin:admin@' . $addressIp . '/servlet?key=ANSWER');
 
@@ -92,7 +93,7 @@ class PBXController extends Controller
         if ($user) {
             $client = new Client();
 
-            $api_url = config('asterisk.api_serv.address');
+            /* $api_url = config('asterisk.api_serv.address');
 
             $response = $client->request('GET', $api_url . '/peer/' . $user->phone);
 
@@ -103,7 +104,9 @@ class PBXController extends Controller
                 $addressIp = $data['address-ip'];
             } else {
                 dd("Error parsing JSON or 'address-ip' not found in the response");
-            }
+            } */
+
+            $addressIp = $user->phone_ip;
 
             $response = $client->request('GET', 'http://admin:admin@' . $addressIp . '/servlet?key=F_HOLD');
             //$response = $client->request('GET', 'http://admin:admin@' . $addressIp . '/servlet?key=SWAP');
@@ -131,7 +134,7 @@ class PBXController extends Controller
         if ($user) {
             $client = new Client();
 
-            $api_url = config('asterisk.api_serv.address');
+            /* $api_url = config('asterisk.api_serv.address');
 
             $response = $client->request('GET', $api_url . '/peer/' . $user->phone);
 
@@ -142,7 +145,9 @@ class PBXController extends Controller
                 $addressIp = $data['address-ip'];
             } else {
                 dd("Error parsing JSON or 'address-ip' not found in the response");
-            }
+            } */
+
+            $addressIp = $user->phone_ip;
 
             //$response = $client->request('GET', 'http://admin:admin@' . $addressIp . '/servlet?key=F_HOLD');
             $response = $client->request('GET', 'http://admin:admin@' . $addressIp . '/servlet?key=SWAP');
