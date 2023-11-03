@@ -862,7 +862,7 @@
                             '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
                         state_color = 'card-danger';
                         check_box_state = 'disabled';
-                        hold_button = "d-none";
+                        hold_button = "";
                     } else if (strArray[4] == 'Up' && strArray[12] == '') {
                         if (strArray[5] == "ChanSpy") {
                             spy_exten = strArray[6].split(',');
@@ -879,7 +879,7 @@
                                 '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
                             state_color = 'card-danger';
                             check_box_state = 'disabled';
-                            hold_button = "d-none";
+                            hold_button = "";
                         }
 
                     } else if (strArray[4] == 'Up') {
@@ -888,7 +888,7 @@
                             '<i class="fa-solid fa-phone-volume fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i>';
                         state_color = 'card-danger';
                         check_box_state = '';
-                        hold_button = "";
+                        hold_button = "d-none";
                     }
 
 
