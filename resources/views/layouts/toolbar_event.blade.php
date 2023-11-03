@@ -267,7 +267,7 @@
 
             if (!$('#' + data.luniq.replace('.', '')).length) {
 
-                /* $('#call_list').prepend(`<div class="col-md-3" id = "${data.luniq.replace('.', '')}">
+                $('#call_list').prepend(`<div class="col-md-3" id = "${data.luniq.replace('.', '')}">
                 <div class="card card-danger" id = "color_${data.luniq.replace('.', '')}">
                     <div class="card-header">
                         <h3 class="card-title" id = "state_${data.luniq.replace('.', '')}"> ${state_icon} ${state} ${data.cid}</h3>
@@ -279,12 +279,12 @@
                     </div>
                     <div class="card-footer text-muted text-right">
                         <a href="#" class="btn btn-warning hold_call d-none" data-id="${peern[1]}"><i class="fa-solid fa-pause"></i> Hold</a>
-                        <a href="#" class="btn btn-success answer_call" data-id="${peern[1]}"><i class="fa-solid fa-phone-volume"></i> รับสาย</a>
+                        <a href="#" class="btn btn-success answer_call d-none" data-id="${peern[1]}"><i class="fa-solid fa-phone-volume"></i> รับสาย</a>
                         <a href="#" class="btn btn-danger hangup_call" data-id="${data.extension}"><i class="fa-solid fa-phone-slash"></i> วางสาย</a>
                     </div>
                 </div>
-            </div>`); */
-                call_list();
+            </div>`);
+                //call_list();
                 toolbar_modal.modal('show');
 
 
