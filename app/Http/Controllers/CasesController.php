@@ -353,30 +353,24 @@ class CasesController extends Controller
     public function caseslistlog(Request $request)
     {
         $id = $request->input('id');
-        $tabid = $request->input('tabid');
-        $data = CrmCase::where('contact_id', $id)->get();
+        $data = CrmCaseslog::where('id', $id)->get();
 
-        $template = 'cases.caseslist';
-        $htmlContent = View::make($template, ['caselist' => $data,'cardid' => $tabid])->render();
+        $template = 'cases.casesloglist';
+        $htmlContent = View::make($template, ['caselog' => $data])->render();
         return response()->json(['html' =>  $htmlContent,]);
-
-        //return response()->json(['data' => $data]);
 
     }
     public function casesviewlog(Request $request)
     {
-        $casesid = $request->input('id');
-        $tabid = $request->input('tabid');
-        $datac = CrmCase::where('id', $casesid)->first();
+        $id = $request->input('id');
+        $data = CrmCaseslog::where('lid', $id)->first();
+        $datac = CrmCase::where('id', $data->id)->first();
         $datact = CrmContact::where('id', $datac->contact_id)->first();
 
-        $template = 'cases.casesdetail';
-        $htmlContent = View::make($template, ['cases' => $datac, 'datact' => $datact,'cardid' => $tabid])->render();
+        $template = 'cases.caseslogdetail';
+        $htmlContent = View::make($template, ['caselog' => $data, 'cases' => $datac, 'datact' => $datact])->render();
         //$htmlContent = View::make($template, ['casecomment' => $data])->render();
         return response()->json(['html' =>  $htmlContent,]);
-
-        //return response()->json(['data' => $data]);
-
     }
 
     public function destroy(Request $request)
