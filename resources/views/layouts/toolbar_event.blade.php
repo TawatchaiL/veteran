@@ -263,7 +263,7 @@
 
             if (!$('#' + data.luniq.replace('.', '')).length) {
 
-                $('#call_list').prepend(`<div class="col-md-3" id = "${data.luniq.replace('.', '')}">
+                /* $('#call_list').prepend(`<div class="col-md-3" id = "${data.luniq.replace('.', '')}">
                 <div class="card card-danger" id = "color_${data.luniq.replace('.', '')}">
                     <div class="card-header">
                         <h3 class="card-title" id = "state_${data.luniq.replace('.', '')}"> ${state_icon} ${state} ${data.cid}</h3>
@@ -279,7 +279,8 @@
                         <a href="#" class="btn btn-danger hangup_call" data-id="${data.extension}"><i class="fa-solid fa-phone-slash"></i> วางสาย</a>
                     </div>
                 </div>
-            </div>`);
+            </div>`); */
+                call_list();
                 toolbar_modal.modal('show');
 
 
@@ -320,6 +321,7 @@
     });
 
     socket.on('hold', data => {
+        $('.hold_call').prop('disabled', true);
         if (data.extension.match(exten)) {
             $.ajax({
                 url: "{{ route('agent.hold') }}",
@@ -330,6 +332,7 @@
                     _token: token,
                 },
                 success: function(result) {
+                    $('.hold_call').prop('disabled', false);
                     $('#state_' + data.luniq.replace('.', '')).html(
                         '<i class="fa-solid fa-pause fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i> Hold'
                     );
@@ -341,6 +344,7 @@
     });
 
     socket.on('unhold', data => {
+        $('.hold_call').prop('disabled', true);
         if (data.extension.match(exten)) {
             $.ajax({
                 url: "{{ route('agent.unhold') }}",
@@ -351,6 +355,7 @@
                     _token: token,
                 },
                 success: function(result) {
+                    $('.hold_call').prop('disabled', false);
                     $('#state_' + data.luniq.replace('.', '')).html(
                         '<i class="fa-solid fa-phone-volume fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i> Talking'
                     );
