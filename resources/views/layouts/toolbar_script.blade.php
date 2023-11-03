@@ -504,7 +504,7 @@
                                 url: "{{ route('tranfer_status') }}",
                                 method: 'post',
                                 data: {
-                                    number: exten,
+                                    exten: call_number,
                                     _token: token,
                                 },
                                 async: true,
