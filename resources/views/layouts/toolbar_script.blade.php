@@ -945,6 +945,8 @@
                         check_box_state = '';
                         hold_button = "";
                         dans_button = "d-none";
+                    } else {
+                        state_color = "card-primary"
                     }
 
 
