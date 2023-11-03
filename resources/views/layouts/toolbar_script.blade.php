@@ -795,17 +795,12 @@
     })
 
     $(document).on('click', '.answer_call', function(data) {
-        /* $.get(`http://admin:admin@192.168.1.90/servlet?key=OK`, (data, status) => {
-            const prom = ezBSAlert({
-                headerText: "OK",
-                messageText: "รับสายสำเร็จ",
-                alertType: "success",
-            });
-        }); */
+        let exten = $(this).data("id")
         $.ajax({
             url: "{{ route('answer') }}",
             method: 'post',
             data: {
+                exten: exten,
                 _token: token,
             },
             async: true, // Use async:true for better performance
@@ -822,10 +817,12 @@
     })
 
     $(document).on('click', '.hold_call', function(data) {
+        let exten = $(this).data("id")
         $.ajax({
             url: "{{ route('hold') }}",
             method: 'post',
             data: {
+                exten: exten,
                 _token: token,
             },
             async: true, // Use async:true for better performance
