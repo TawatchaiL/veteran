@@ -534,54 +534,6 @@
         $('#exportPrintButton').on('click', function() {
             table.button('4').trigger();
         });
-
-
-
-
-        // Create product Ajax request.
-        $('#SubmitCreateForm').click(function(e) {
-            e.preventDefault();
-            $('.alert-danger').html('');
-            $('.alert-danger').hide();
-            $('.alert-success').html('');
-            $('.alert-success').hide();
-
-
-            $.ajax({
-                url: "{{ route('contacts.store') }}",
-                method: 'post',
-                data: {
-                    name: $('#AddName').val(),
-                    email: $('#AddEmail').val(),
-                    postcode: $('#AddPostcode').val(),
-                    address: $('#AddAddress').val(),
-                    telephone: $('#AddTelephone').val(),
-                    _token: token,
-                },
-                success: function(result) {
-                    if (result.errors) {
-                        $('.alert-danger').html('');
-                        $.each(result.errors, function(key, value) {
-                            $('.alert-danger').show();
-                            $('.alert-danger').append('<strong><li>' + value +
-                                '</li></strong>');
-                        });
-                    } else {
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('.alert-success').append('<strong><li>' + result.success +
-                            '</li></strong>');
-                        toastr.success(result.success, {
-                            timeOut: 5000
-                        });
-                        $('#Listview').DataTable().ajax.reload();
-                        $('.form').trigger('reset');
-                        $('#CreateModal').modal('hide');
-                    }
-                }
-            });
-        });
-
-
+        
     });
 </script>
