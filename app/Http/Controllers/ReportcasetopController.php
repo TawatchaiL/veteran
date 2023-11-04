@@ -35,8 +35,17 @@ class ReportcasetopController extends Controller
      */
     public function index(Request $request)
     {
-
-            $datas = DB::table('cases')
+        if (!empty($request->get('sdate'))) {
+            $dateRange = $request->input('sdate');
+            if ($dateRange) {
+                $dateRangeArray = explode(' - ', $dateRange);
+                if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
+                    $startDate = $dateRangeArray[0];
+                    $endDate = $dateRangeArray[1];
+                }
+            }
+        }
+            $datas = DB::table('crm_cases')
                 ->select('casetype1', DB::raw('count(casetype1) as sumcases'))
                 ->groupBy('casetype1')
                 ->orderBy("sumcases", "desc")
