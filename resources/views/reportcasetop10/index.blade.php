@@ -39,6 +39,8 @@
 
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row float-lg-left">
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <strong>&nbsp;</strong>
                                         <button type="button" class="form-control btn btn-success" id="btnsearch">
