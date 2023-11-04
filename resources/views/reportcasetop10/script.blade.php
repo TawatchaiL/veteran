@@ -343,6 +343,7 @@
         daterange();
 
         $('#btnsearch').click(function(e) {
+            alert('OK');
             $('#Listview').DataTable().ajax.reload();
         });
         $('#btnreset').click(function(e) {
