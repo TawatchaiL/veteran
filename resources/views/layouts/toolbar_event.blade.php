@@ -15,26 +15,28 @@
 
     socket.on('agentcomplete', async (response) => {
         console.log(response)
-        $.ajax({
-            url: "{{ route('agent.warp') }}",
-            method: 'post',
-            async: false,
-            data: {
-                exten: response.data.membername,
-                uniqid: response.data.uniqueid,
-                _token: token,
-            },
-            success: function(result) {
-                console.log(result)
-                set_state_icon(result.id, result.icon, result.message);
-                set_state_button(result.id);
-                call_list();
-                updateAvgData();
-                handleDataHour();
-                handleDataDate();
-                handleCaseDataDate();
-            }
-        });
+        if (response.data.membername == exten) {
+            $.ajax({
+                url: "{{ route('agent.warp') }}",
+                method: 'post',
+                async: false,
+                data: {
+                    exten: response.data.membername,
+                    uniqid: response.data.uniqueid,
+                    _token: token,
+                },
+                success: function(result) {
+                    console.log(result)
+                    set_state_icon(result.id, result.icon, result.message);
+                    set_state_button(result.id);
+                    call_list();
+                    updateAvgData();
+                    handleDataHour();
+                    handleDataDate();
+                    handleCaseDataDate();
+                }
+            });
+        }
     });
 
 

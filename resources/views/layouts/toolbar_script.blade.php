@@ -704,7 +704,7 @@
             if (len !== 2) {
                 const prom = ezBSAlert({
                     headerText: "Notice",
-                    messageText: "กรุณาเลือกสายสองสายขึ้นไป",
+                    messageText: "กรุณาเลือกสายสนทนาสองสายเพื่อประชุมสาย",
                     alertType: "info",
                 });
             } else {
