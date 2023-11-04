@@ -342,6 +342,15 @@
         datesearch();
         daterange();
 
+        $('#btnsearch').click(function(e) {
+            $('#Listview').DataTable().ajax.reload();
+        });
+        $('#btnreset').click(function(e) {
+            datereset();
+            daterange();
+            $('#Listview').DataTable().ajax.reload();
+        });
+
         var table = $('#Listview').DataTable({
             /*"aoColumnDefs": [
             {
@@ -359,7 +368,11 @@
             dom: 'Bfrtip',
             paging: true,
             searching: false,
-            ajax: '',
+            ajax: {
+                data: function(d) {
+                    d.sdate = $('#reservation').val();
+                }
+            },
             serverSide: true,
             processing: true,
             language: {
