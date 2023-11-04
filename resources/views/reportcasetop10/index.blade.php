@@ -21,45 +21,47 @@
                                 </button> --}}
                             </div>
                         </div>
-                        <div class="row ">
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="row float-lg-left">
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                            <strong>
-                                                วันที่บันทึกข้อมูล:</strong>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text">
-                                                        <i class="far fa-calendar-alt"></i>
-                                                    </span>
+                        <div class="card-body">
+                            <div class="row ">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row float-lg-left">
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <div class="form-group">
+                                                <strong>
+                                                    วันที่บันทึกข้อมูล:</strong>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">
+                                                            <i class="far fa-calendar-alt"></i>
+                                                        </span>
+                                                    </div>
+                                                    <input type="text" class="form-control float-right" id="reservation" style="width: 210px">
                                                 </div>
-                                                <input type="text" class="form-control float-right" id="reservation" style="width: 210px">
-                                            </div>
 
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row float-lg-right">
-                                    <div class="col-xs-4 col-sm-4 col-md-4">
-                                        <div class="form-group">
-                                            <strong><i class="fa-solid fa-id-card"></i>
-                                                Agent:</strong>
-                                            <select style="width: 100%;" class="select2 form-control" id="seachtype"
-                                                name="seachtype">
-                                                <option value="0" selected>ทั้งหมด</option>
-                                            </select>
+                                    <div class="row float-lg-right">
+                                        <div class="col-xs-4 col-sm-4 col-md-4">
+                                            <div class="form-group">
+                                                <strong><i class="fa-solid fa-id-card"></i>
+                                                    Agent:</strong>
+                                                <select style="width: 100%;" class="select2 form-control" id="seachtype"
+                                                    name="seachtype">
+                                                    <option value="0" selected>ทั้งหมด</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-xs-2 col-sm-2 col-md-2">
-                                        <strong>&nbsp;</strong>
-                                        <button type="button" class="form-control btn btn-success" id="btnsearch">
-                                            <i class="fas fa-search"></i></button>
-                                    </div>
-                                    <div class="col-xs-2 col-sm-2 col-md-2" style="align-items: flex-end;">
-                                        <strong>&nbsp;</strong>
-                                        <button type="button" class="form-control btn btn-warning" id="btnreset">
-                                            <i class="fa-solid fa-rotate-right"></i></button>
+                                        <div class="col-xs-2 col-sm-2 col-md-2">
+                                            <strong>&nbsp;</strong>
+                                            <button type="button" class="form-control btn btn-success" id="btnsearch">
+                                                <i class="fas fa-search"></i></button>
+                                        </div>
+                                        <div class="col-xs-2 col-sm-2 col-md-2" style="align-items: flex-end;">
+                                            <strong>&nbsp;</strong>
+                                            <button type="button" class="form-control btn btn-warning" id="btnreset">
+                                                <i class="fa-solid fa-rotate-right"></i></button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
