@@ -28,7 +28,7 @@
                                 <ol class="breadcrumb float-sm-center">
                                     {{-- <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item active">Users Management</li> --}}
-                        <div class="col-xs-10 col-sm-10 col-md-10">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <strong>
                                     วันที่บันทึกข้อมูล:</strong>
