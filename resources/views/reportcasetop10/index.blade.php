@@ -24,7 +24,7 @@
                         <div class="row ">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="row float-lg-left">
-                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
                                             <strong>
                                                 วันที่บันทึกข้อมูล:</strong>
@@ -36,6 +36,7 @@
                                                 </div>
                                                 <input type="text" class="form-control float-right" id="reservation" style="width: 210px">
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
