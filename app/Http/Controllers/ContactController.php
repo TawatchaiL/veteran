@@ -929,6 +929,7 @@ class ContactController extends Controller
             $caseslog = [
                 'id' => $cases->id,
                 'contact_id' => $cases->contact_id,
+                'adddate' => $cases->adddate,
                 'uniqid' => $cases->uniqid,
                 'telno' => $cases->telno,
                 'casetype1' => $cases->casetype1,
@@ -1027,6 +1028,7 @@ class ContactController extends Controller
                 $caseslog = [
                     'id' => $cases->id,
                     'contact_id' => $cases->contact_id,
+                    'adddate' => $cases->adddate,
                     'uniqid' => $cases->uniqid,
                     'telno' => $cases->telno,
                     'casetype1' => $cases->casetype1,
