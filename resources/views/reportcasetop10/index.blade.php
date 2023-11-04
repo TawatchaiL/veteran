@@ -4,6 +4,8 @@
     @include('reportcase.style')
 @endsection
 
+
+
 @section('content')
     <section class="content-header">
         <div class="container-fluid">
@@ -16,51 +18,38 @@
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
                                 </button>
+                                {{-- <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                                    <i class="fas fa-times"></i>
+                                </button> --}}
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="row ">
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="row float-lg-left">
-                                        <div class="col-xs-6 col-sm-6 col-md-6">
-                                            <div class="form-group">
-                                                <strong>
-                                                    วันที่บันทึกข้อมูล:</strong>
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text">
-                                                            <i class="far fa-calendar-alt"></i>
-                                                        </span>
-                                                    </div>
-                                                    <input type="text" class="form-control float-right" id="reservation" style="width: 210px">
-                                                </div>
-
-                                            </div>
-                                        </div>
+                            <div class="col-sm-12">
+                                <ol class="breadcrumb float-sm-center">
+                                    {{-- <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Users Management</li> --}}
+                        <div class="col-xs-10 col-sm-10 col-md-10">
+                            <div class="form-group">
+                                <strong>
+                                    วันที่บันทึกข้อมูล:</strong>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt"></i>
+                                        </span>
                                     </div>
-                                    <div class="row float-lg-right">
-                                        <div class="col-xs-4 col-sm-4 col-md-4">
-                                            <div class="form-group">
-                                                <strong><i class="fa-solid fa-id-card"></i>
-                                                    Agent:</strong>
-                                                <select style="width: 100%;" class="select2 form-control" id="seachtype"
-                                                    name="seachtype">
-                                                    <option value="0" selected>ทั้งหมด</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-2 col-sm-2 col-md-2">
-                                            <strong>&nbsp;</strong>
-                                            <button type="button" class="form-control btn btn-success" id="btnsearch">
-                                                <i class="fas fa-search"></i></button>
-                                        </div>
-                                        <div class="col-xs-2 col-sm-2 col-md-2" style="align-items: flex-end;">
-                                            <strong>&nbsp;</strong>
-                                            <button type="button" class="form-control btn btn-warning" id="btnreset">
-                                                <i class="fa-solid fa-rotate-right"></i></button>
-                                        </div>
-                                    </div>
+                                    <input type="text" class="form-control float-right" id="reservation" style="width: 210px">
                                 </div>
+
+                            </div>
+                        </div>
+                                    <div class="col-xs-2 col-sm-2 col-md-2 align-self-end">
+                                        <div class="form-group">
+                                            <button type="button" class="btn btn-success" id="CreateButton">
+                                                <i class="fas fa-search"></i> ค้นหา </button>
+                                        </div>
+                                    </div>
+                                </ol>
                             </div>
                         </div>
                     </div>
