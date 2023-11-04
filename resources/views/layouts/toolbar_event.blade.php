@@ -144,7 +144,7 @@
                 $.ajax({
                     url: "{{ route('agent.hang') }}",
                     method: 'post',
-                    async: true,
+                    async: false,
                     data: {
                         extension: data.extension,
                         _token: token,
@@ -169,7 +169,7 @@
                 $.ajax({
                     url: "{{ route('agent.hang') }}",
                     method: 'post',
-                    async: true,
+                    async: false,
                     data: {
                         extension: data.extension,
                         _token: token,
