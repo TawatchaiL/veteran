@@ -180,7 +180,7 @@ class CasesContractController extends Controller
         }
 
         $companyd = [
-            'adddate' => $request->get('adddate'),
+           // 'adddate' => $request->get('adddate'),
             'casetype1' => $request->get('casetype1'),
             'caseid1' => $request->get('caseid1'),
             'tranferstatus' => $request->get('tranferstatus'),
