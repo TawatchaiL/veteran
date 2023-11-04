@@ -222,7 +222,7 @@ class CasesContractController extends Controller
          'contact_id' => $company->contact_id,
          'adddate' => $company->adddate,
          'uniqid' => $company->uniqid,
-         //'telno' => $company->telno,
+         'telno' => $company->telno,
          'casetype1' => $company->casetype1,
          'caseid1' => $company->caseid1,
          'casetype2' => $company->casetype2,
