@@ -21,8 +21,6 @@
                                 </button> --}}
                             </div>
                         </div>
-                        <div class="row ">
-                            <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="row float-lg-left">
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
@@ -39,8 +37,6 @@
 
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row float-lg-right">
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <strong>&nbsp;</strong>
                                         <button type="button" class="form-control btn btn-success" id="btnsearch">
@@ -52,8 +48,6 @@
                                             <i class="fa-solid fa-rotate-right"></i></button>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
