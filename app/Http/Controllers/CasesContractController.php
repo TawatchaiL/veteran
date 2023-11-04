@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CrmCase;
 use App\Models\Case_type;
+use App\Models\CrmCaseslog;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
