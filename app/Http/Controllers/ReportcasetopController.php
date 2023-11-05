@@ -61,24 +61,8 @@ class ReportcasetopController extends Controller
             })->rawColumns(['checkbox', 'action'])->toJson();
         }
 
-        /* $datatablesJson = datatables()->of($datas)
-        ->editColumn('checkbox', function ($row) {
-            return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
-        })
-        ->rawColumns(['checkbox', 'action'])
-        ->toJson();
-
-        $htmlContent = // ... generate your HTML content here
-
-        return response()->json([
-            'html' => $htmlContent,
-            'datatables' => json_decode($datatablesJson, true) // Convert DataTables JSON to an array
-        ]);  */
-
-
-
         //graph data
-        /* $chart_data = array();
+        $chart_data = array();
         foreach ($datas as $data) {
             $chart_data[$data->casetype1] = $data->sumcases;
         }
@@ -121,8 +105,8 @@ class ReportcasetopController extends Controller
         $chart3 = new GraphService($chart_options);
 
         return view('reportcasetop10.index', compact('chart1', 'chart2', 'chart3'));
-        */
-        return view('reportcasetop10.index');
+        
+        //return view('reportcasetop10.index');
     }
 
 }
