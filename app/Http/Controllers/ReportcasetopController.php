@@ -132,6 +132,7 @@ class ReportcasetopController extends Controller
 
         return view('reportcasetop10.index', compact('chart1', 'chart2', 'chart3'));
         */
+        return view('reportcasetop10.index');
     }
 
 }
