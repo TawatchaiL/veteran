@@ -62,7 +62,7 @@ class ReportcasetopController extends Controller
         }
 
         //graph data
-        $chart_data = array();
+        /*$chart_data = array();
         foreach ($datas as $data) {
             $chart_data[$data->casetype1] = $data->sumcases;
         }
@@ -105,8 +105,8 @@ class ReportcasetopController extends Controller
         $chart3 = new GraphService($chart_options);
 
         return view('reportcasetop10.index', compact('chart1', 'chart2', 'chart3'));
-        
-        //return view('reportcasetop10.index');
+        */
+        return view('reportcasetop10.index');
     }
 
 }

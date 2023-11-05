@@ -212,10 +212,63 @@
 
 @section('script')
     @include('reportcasetop10.script')
-    {!! $chart1->renderJs() !!}
-
-    {!! $chart2->renderJs() !!}
-
-
-    {!! $chart3->renderJs() !!}
+    <script>
+    var options = {
+        series: [
+          {
+            name: "Desktop",
+            data: randData()//data: [4, 61, 45, 26, 79, 13, 55, 22, 78],
+          }
+        ],
+        chart: {
+          height: 400,
+          type: "line",
+          zoom: {
+            enabled: false
+          },
+          toolbar: {
+            show: false
+          }
+        },
+        markers: {
+          show: true,
+          size: 6
+        },
+        dataLabels: {
+          enabled: false
+        },
+        legend: {
+          show: true,
+          showForSingleSeries: true,
+          position: "top",
+          horizontalAlign: "right"
+        },
+        stroke: {
+          curve: "smooth",
+          linecap: "round"
+        },
+        grid: {
+          row: {
+            colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
+            opacity: 0.5
+          }
+        },
+        xaxis: {
+          categories: [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep"
+          ]
+        }
+      };
+    
+    var chart = new ApexCharts(document.querySelector("#bar_graph"), options);
+    chart.render();
+    </script>
 @endsection
