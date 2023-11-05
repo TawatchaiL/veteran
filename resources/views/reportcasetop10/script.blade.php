@@ -370,11 +370,11 @@
             dom: 'Bfrtip',
             paging: true,
             searching: false,
-            //ajax: {
-            //    data: function(d) {
-            //        d.sdate = $('#reservation').val();
-            //    }
-            //},
+            ajax: {
+                data: function(d) {
+                    d.sdate = $('#reservation').val();
+                }
+            },
             serverSide: true,
             processing: true,
             language: {
