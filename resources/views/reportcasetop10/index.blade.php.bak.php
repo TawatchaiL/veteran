@@ -99,7 +99,7 @@
                                         </button>
                                     </div>
                                     <div class="col-sm-10 mx-auto text-center" id="bar_chart_div">
-                                        <div id="bar_graph" ></div>
+                                        {!! $chart1->renderHtml() !!}
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="custom-tabs-one-line" role="tabpanel"
@@ -116,7 +116,7 @@
                                         </button>
                                     </div>
                                     <div class="col-sm-10 mx-auto text-center" id="bar_chart_div">
-                                        <div id="line_graph" ></div>
+                                        {!! $chart2->renderHtml() !!}
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="custom-tabs-one-pie" role="tabpanel"
@@ -133,7 +133,7 @@
                                         </button>
                                     </div>
                                     <div class="col-sm-10 mx-auto text-center" id="bar_chart_div">
-                                        <div id="pie_graph" ></div>
+                                        {!! $chart3->renderHtml() !!}
                                     </div>
                                 </div>
                             </div>
