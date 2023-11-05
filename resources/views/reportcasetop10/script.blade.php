@@ -601,3 +601,88 @@
 
     });
 </script>
+<script>
+    var options = {
+        series: [
+          {
+            name: "Desktop",
+            data: randData()//data: [4, 61, 45, 26, 79, 13, 55, 22, 78],
+          }
+        ],
+        chart: {
+          height: 400,
+          type: "line",
+          zoom: {
+            enabled: false
+          },
+          toolbar: {
+            show: false
+          }
+        },
+        markers: {
+          show: true,
+          size: 6
+        },
+        dataLabels: {
+          enabled: false
+        },
+        legend: {
+          show: true,
+          showForSingleSeries: true,
+          position: "top",
+          horizontalAlign: "right"
+        },
+        stroke: {
+          curve: "smooth",
+          linecap: "round"
+        },
+        grid: {
+          row: {
+            colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
+            opacity: 0.5
+          }
+        },
+        xaxis: {
+          categories: [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep"
+          ]
+        }
+      };
+    
+    var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
+    chart2.render();
+
+    var chart = new ApexCharts(document.querySelector("#bar_graph"), options);
+    chart.render();
+        chart.updateOptions({chart: {type: "bar",animate: true},
+                             labels: '',
+                             stroke: {width: 0}
+        });
+    var chart3 = new ApexCharts(document.querySelector("#pie_graph"), options);
+        chart3.render();
+        chart3.updateOptions({chart: {type: "donut",animate: true},
+                             series: [44, 55, 13],
+                             labels: ['Apple', 'Orange', 'Watermelon']
+        });
+
+    function randData() {
+        var arr = [];
+        for (var i = 0; i < 9; i++) {
+            arr.push(Math.floor(Math.random() * 200) + 1);
+        }
+
+        var str = [];
+        for (var i = 0; i < 9; i++) {
+            str[i] = arr[i];
+        }
+        return str;
+    }
+    </script>
