@@ -668,9 +668,8 @@
         });
     var chart3 = new ApexCharts(document.querySelector("#pie_graph"), options);
         chart3.render();
-        chart3.updateOptions({chart: {type: "donut",animate: true},
-                             series: [44, 55, 13],
-                             labels: ['Apple', 'Orange', 'Watermelon']
+        chart3.updateOptions({chart: {type: "donut",animate: true}
+
         });
 
     function randData() {
