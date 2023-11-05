@@ -270,6 +270,18 @@
     
     var chart = new ApexCharts(document.querySelector("#bar_graph"), options);
     chart.render();
+        chart.updateOptions({
+        chart: {
+        type: "bar",
+        animate: true
+        },
+        labels: '',
+        stroke: {
+        width: 0
+        }
+        });
+    var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
+    chart2.render();
 
     function randData() {
   var arr = [];
