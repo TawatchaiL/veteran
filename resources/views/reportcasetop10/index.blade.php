@@ -270,5 +270,18 @@
     
     var chart = new ApexCharts(document.querySelector("#bar_graph"), options);
     chart.render();
+
+    function randData() {
+  var arr = [];
+  for (var i = 0; i < 9; i++) {
+    arr.push(Math.floor(Math.random() * 200) + 1);
+  }
+
+  var str = [];
+  for (var i = 0; i < 9; i++) {
+    str[i] = arr[i];
+  }
+  return str;
+}
     </script>
 @endsection
