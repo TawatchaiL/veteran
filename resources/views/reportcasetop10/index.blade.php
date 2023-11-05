@@ -213,4 +213,10 @@
 @section('script')
     @include('reportcasetop10.script')
 
+    {!! $chart1->renderJs() !!}
+
+    {!! $chart2->renderJs() !!}
+
+
+    {!! $chart3->renderJs() !!}
 @endsection
