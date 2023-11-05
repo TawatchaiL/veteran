@@ -55,20 +55,10 @@ class ReportcasetopController extends Controller
                 ->orderBy("sumcases", "desc")
                 ->get();
         if ($request->ajax()) {
-            //return datatables()->of($datas)
-            //    ->editColumn('checkbox', function ($row) {
-            //        return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
-            //    })->rawColumns(['checkbox', 'action'])->toJson();
-
-            $datatablesJson = datatables()->of($datas)
-            ->editColumn('checkbox', function ($row) {
-                return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
+            return datatables()->of($datas)
+                ->editColumn('checkbox', function ($row) {
+                    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
             })->rawColumns(['checkbox', 'action'])->toJson();
-
-            return response()->json([
-                'datas' => $datas,
-                'datatables' => json_decode($datatablesJson, true)
-            ]);
         }
 
         /* $datatablesJson = datatables()->of($datas)
