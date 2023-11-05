@@ -45,7 +45,7 @@ class ReportcasetopController extends Controller
                 }
             }
         }else{
-                    $startDate = date("Y-m-d");
+                    $startDate = date("2023-11-01");
                     $endDate = date("Y-m-t", strtotime($startDate));  
         }
             $datas = DB::table('crm_cases')
