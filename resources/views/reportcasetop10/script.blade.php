@@ -343,9 +343,7 @@
         daterange();
 
         $('#btnsearch').click(function(e) {
-            alert('OK');
             $('#Listview').DataTable().ajax.reload();
-            alert('OK1');
         });
         $('#btnreset').click(function(e) {
             datereset();
@@ -660,23 +658,13 @@
                 }
             };
 
-
-            const TopData = () => {
-                $.ajax({
-                    url: '{{ route('reportcasetop10.report') }}',
-                    method: 'POST',
-                    data: {
-                        _token: token,
-                    },
-                    success: (data) => {
-                        alert('OK');
-                    },
-                    error: (error) => {
-                        console.error('Error fetching data:', error);
-                    },
-                });
-            };
-
+            $.ajax({
+                url: '{{ route('reportcasetop10.report') }}',
+                method: 'GET',
+                success: function(res) {
+                    alert('OKrr');
+                }
+            });
     });
 </script>
 <script>
