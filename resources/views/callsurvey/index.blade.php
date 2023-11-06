@@ -71,7 +71,7 @@
                                     });
                                 </script>
                             @endif
-                            <form method="post" action="{{ route('positions.destroy_all') }}" name="delete_all"
+                            <form method="post" action="{{ route('callsurvey.destroy_all') }}" name="delete_all"
                                 id="delete_all">
                                 @csrf
                                 @method('POST')

@@ -295,7 +295,7 @@
                 //type: "POST",
                 method: 'DELETE',
                 dataType: 'JSON',
-                url: "positions/destroy/",
+                url: "callsurvey/destroy/",
                 data: {
                     id: rowid,
                     //_method: 'delete',
