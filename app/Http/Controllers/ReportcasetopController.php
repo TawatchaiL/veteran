@@ -109,5 +109,29 @@ class ReportcasetopController extends Controller
         */
         //return view('reportcasetop10.index');
     }
+    public function report(Request $request)
+    {
+        if (!empty($request->get('sdate'))) {
+            $dateRange = $request->input('sdate');
+            if ($dateRange) {
+                $dateRangeArray = explode(' - ', $dateRange);
+                if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
+                    $startDate = $dateRangeArray[0];
+                    $endDate = $dateRangeArray[1];
+                }
+            }
+        }else{
+                    $startDate = date("Y-m-d");
+                    $endDate = date("Y-m-t", strtotime($startDate));  
+        }
+            $datas = DB::table('crm_cases')
+                ->select('casetype1', DB::raw('count(casetype1) as sumcases'))
+                ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
+                ->groupBy('casetype1')
+                ->orderBy("sumcases", "desc")
+                ->get();
+
+        return response()->json(['datag' => $datas]);
+    }
 
 }

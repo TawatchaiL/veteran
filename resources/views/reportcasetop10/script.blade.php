@@ -661,7 +661,7 @@
             };
 
         $.ajax({
-            url: '/reportcasetop10',
+            url: '/reportcasetop10/report',
             method: 'GET',
             //dataType: 'json',
             async: false,
