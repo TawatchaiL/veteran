@@ -130,10 +130,12 @@ class ReportcasetopController extends Controller
                 ->orderBy("sumcases", "desc")
                 ->get();
                 $chart_data = array();
+                $chart_label = array();
                 foreach ($datas as $data) {
-                    $chart_data[$data->casetype1] = $data->sumcases;
+                    $chart_data[] = $data->sumcases;
+                    $chart_label[] = $data->casetype1;
                 }
-        return response()->json(['datag' => $chart_data]);
+        return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
     }
 
 }
