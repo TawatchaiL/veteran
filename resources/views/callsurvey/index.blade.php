@@ -105,12 +105,12 @@
     </section>
 
 
-    {{-- @include('positions.create')
+    @include('callsurvey.create')
 
-    @include('positions.edit') --}}
+    @include('callsurvey.edit')
 
 @endsection
 
 @section('script')
-    {{-- @include('positions.script') --}}
+    @include('callsurvey.script')
 @endsection

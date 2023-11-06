@@ -43,7 +43,7 @@ id="EditModal">
                                     id="EditDepartment" name="edepartment" multiple="multiple">
                                     <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                     <option value="" selected>Select Parent</option>-->
-                                    @foreach ($department as $key2)
+                                    @foreach ($sound as $key2)
                                         <option value="{{ $key2->id }}">{{ $key2->name }}
                                         </option>
                                     @endforeach
