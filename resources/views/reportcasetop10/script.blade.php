@@ -602,7 +602,7 @@
             };
             var options = {
                 series: [
-                        { name: '',
+                        {
                           data: [4,1, 1]
                         },
                 ],
