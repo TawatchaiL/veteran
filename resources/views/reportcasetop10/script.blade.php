@@ -692,7 +692,7 @@
                                                     horizontalAlign: "right"
                                                     },
                                                 series: res.datag,
-                                                labels: res.datal;
+                                                labels: res.datal
                             });
                 }
             });
