@@ -61,7 +61,6 @@ class ReportcasetopController extends Controller
             })->rawColumns(['checkbox', 'action'])->toJson();
         }
 
-        return response()->json(['datag' => $datas]);
         //graph data
         /*$chart_data = array();
         foreach ($datas as $data) {
