@@ -662,7 +662,7 @@
                 url: '{{ route('reportcasetop10.report') }}',
                 method: 'GET',
                 success: function(res) {
-                    options.series[0].data = res.datag;
+                    options.series[0].data = res.datag.sumcases;
                     var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
                         chart2.render();
 
