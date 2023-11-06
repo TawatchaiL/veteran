@@ -638,7 +638,7 @@
                 enabled: false
                 },
                 legend: {
-                show: true,
+                show: false,
                 showForSingleSeries: false,
                 position: "top",
                 horizontalAlign: "right"
