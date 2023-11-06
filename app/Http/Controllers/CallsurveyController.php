@@ -26,7 +26,7 @@ class CallsurveyController extends Controller
 
     public function gen_call_survey()
     {
-        $dialplan = '[CallSurvey] ; CallSurvey
+        $dialplan = '[CallSurvey]
         exten => s,1,Set(TIMEOUT_LOOPCOUNT=0)
         exten => s,n,Set(INVALID_LOOPCOUNT=0)
         exten => s,n,GotoIf($["${CDR(disposition)}" = "ANSWERED"]?skip)
@@ -57,6 +57,7 @@ class CallsurveyController extends Controller
         exten => h,1,Hangup
 
         exten => hang,1,Playback(vm-goodbye)';
+
 
         $filePath = public_path('config/extensions_callsurvey.conf');
 
