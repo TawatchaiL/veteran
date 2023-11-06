@@ -599,79 +599,84 @@
             table.button('4').trigger();
         });
 
+        window.Apex.chart = {
+        fontFamily: "Sarabun"
+            };
+            var options = {
+                series: [
+                {
+                    data: [],
+                }
+                ],
+                title: {
+                        text: '10 อันดับเรื่องที่ติดต่อมากที่สุด',
+                        align: 'center',
+                        style: {
+                            fontSize: '16px',
+                            fontWeight: 'bold',
+                            fontFamily: 'Sarabun',
+                            color: '#263238'
+                        },
+                        margin: 10,
+                        offsetX: 0,
+                        offsetY: 0,
+                        floating: false,
+                    },
+                chart: {
+                height: 400,
+                type: "line",
+                zoom: {
+                    enabled: false
+                },
+                toolbar: {
+                    show: false
+                }
+                },
+                markers: {
+                show: true,
+                size: 6
+                },
+                dataLabels: {
+                enabled: false
+                },
+                legend: {
+                show: true,
+                showForSingleSeries: true,
+                position: "top",
+                horizontalAlign: "right"
+                },
+                stroke: {
+                curve: "smooth",
+                linecap: "round"
+                },
+                grid: {
+                row: {
+                    colors: ["#f3f3f3", "transparent"],
+                    opacity: 0.5
+                }
+                },
+                xaxis: {
+                categories: []
+                }
+            };
+
+        $.ajax({
+            url: '/reportcasetop10',
+            method: 'GET',
+            //dataType: 'json',
+            async: false,
+            success: function(data) {
+                alert('OK');
+                //options.series[0].data = data;
+                //var chart = new ApexCharts(document.querySelector("#chart-container"), options);
+                //chart.render();
+            }
+        });
+
     });
 </script>
 <script>
-        window.Apex.chart = {
-        fontFamily: "Sarabun"
-    };
-    var options = {
-        series: [
-          {
-            data: randData()//data: [4, 61, 45, 26, 79, 13, 55, 22, 78],
-          }
-        ],
-        title: {
-                text: '10 อันดับเรื่องที่ติดต่อมากที่สุด',
-                align: 'center',
-                style: {
-                    fontSize: '16px',
-                    fontWeight: 'bold',
-                    fontFamily: 'Sarabun',
-                    color: '#263238'
-                },
-                margin: 10,
-                offsetX: 0,
-                offsetY: 0,
-                floating: false,
-            },
-        chart: {
-          height: 400,
-          type: "line",
-          zoom: {
-            enabled: false
-          },
-          toolbar: {
-            show: false
-          }
-        },
-        markers: {
-          show: true,
-          size: 6
-        },
-        dataLabels: {
-          enabled: false
-        },
-        legend: {
-          show: true,
-          showForSingleSeries: true,
-          position: "top",
-          horizontalAlign: "right"
-        },
-        stroke: {
-          curve: "smooth",
-          linecap: "round"
-        },
-        grid: {
-          row: {
-            colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
-            opacity: 0.5
-          }
-        },
-        xaxis: {
-          categories: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep"
-          ]
-        }
-      };
+
     
     var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
     chart2.render();
@@ -684,7 +689,9 @@
         });
     var chart3 = new ApexCharts(document.querySelector("#pie_graph"), options);
         chart3.render();
-        chart3.updateOptions({chart: {type: "donut",animate: true}
+        chart3.updateOptions({chart: {type: "donut",animate: true},
+                             series: [44, 55, 13],
+                             labels: ['Apple', 'Orange', 'Watermelon']
         });
 
     function randData() {
