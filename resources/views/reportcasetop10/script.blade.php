@@ -663,7 +663,7 @@
         $.ajax({
             url: '/reportcasetop10',
             method: 'GET',
-            dataType: 'json',
+            //dataType: 'json',
             async: false,
             success: function(data) {
                 alert('OK');
