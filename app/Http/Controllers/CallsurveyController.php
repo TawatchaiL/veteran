@@ -34,13 +34,13 @@ class CallsurveyController extends Controller
             //sleep(2);
 
             $datas = Callsurvey::orderBy("id", "desc")->get();
-            $state_text = array('ไม่เปิดใช้งาน', 'เปิดใช้งาน');
+            $state_text = array('ไม่เปิดใช้งาน', 'ตั้งเป็น Call Survey');
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
                 })
-                ->editColumn('status', function ($row) use ($state_text) {
-                    $state = $state_text[$row->status];
+                ->editColumn('set_default', function ($row) use ($state_text) {
+                    $state = $state_text[$row->set_default];
                     return $state;
                 })
                 ->addColumn('action', function ($row) {
