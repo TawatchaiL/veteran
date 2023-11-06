@@ -251,12 +251,12 @@
             }
 
             $.ajax({
-                url: "positions/save/" + id,
+                url: "callsurvey/save/" + id,
                 method: 'PUT',
                 data: {
                     name: $('#EditName').val(),
-                    department: $('#EditDepartment').val()[0],
-                    status: esstatus,
+                    max_score: $('#EditScore').val()[0],
+                    set_default: esstatus,
                 },
 
                 success: function(result) {

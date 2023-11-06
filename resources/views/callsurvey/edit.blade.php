@@ -38,7 +38,7 @@
                                 <div class="form-group">
                                     <strong><i class="fas fa-list-ol"></i> คะแนนสูงสุด:</strong>
                                     {!! Form::number('escore', null, [
-                                        'id' => 'Editcore',
+                                        'id' => 'EditScore',
                                         'placeholder' => 'Score',
                                         'min' => '1',
                                         'max' => '10',

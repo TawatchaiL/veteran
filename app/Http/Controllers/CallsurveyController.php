@@ -132,9 +132,43 @@ class CallsurveyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Callsurvey $callsurvey)
+    public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'name' => 'required|string|max:255|unique:positions,name,' . $id,
+            'max_score' => 'required',
+            'wellcome_sound' => 'required',
+            'thankyou_sound' => 'required',
+            'timeout_sound' => 'required',
+            'invalid_sound' => 'required',
+            'max_sound' => 'required',
+        ];
+
+        $validator = Validator::make($request->all(), $rules,[
+            'name.required' => 'ชื่อต้องไม่เป็นค่าว่าง!',
+            'name.unique' => 'ชื่อนี้มีอยู่แล้วในฐานข้อมูล!',
+            'max_score.required' => 'กรุณาระบุคะแนนสูงสุด!',
+            'wellcome_sound.required' => 'กรุณาระบุเสียงต้อนรับ!',
+            'thankyou_sound.required' => 'กรุณาระบุเสียงขอบคุณ!',
+            'timeout_sound.required' => 'กรุณาเะบุเสียงไม่ทำรายการถายในระยะเวลา!',
+            'invalid_sound.required' => 'กรุณาเะบุเสียงกดเมนูไม่ถูกต้อง!',
+            'max_sound.required' => 'กรุณาะบุเสียงทำรายการเกินจำนวนครั้งที่กำหนด!',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all()]);
+        }
+
+        $contactd = [
+            'name' => $request->get('name'),
+            'max_score' => $request->get('department'),
+            'set_default' => $request->get('set_default'),
+        ];
+
+        $update = Callsurvey::find($id);
+        $update->update($contactd);
+
+        return response()->json(['success' => 'แก้ไข Call Survey เรียบร้อยแล้ว']);
     }
 
     /**
