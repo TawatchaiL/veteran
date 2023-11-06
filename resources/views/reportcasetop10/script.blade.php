@@ -662,7 +662,16 @@
                 url: '{{ route('reportcasetop10.report') }}',
                 method: 'GET',
                 success: function(res) {
-                    alert('OKrr');
+                    options.series[0].data = res.datag;
+                    var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
+                        chart2.render();
+
+                        var chart = new ApexCharts(document.querySelector("#bar_graph"), options);
+                        chart.render();
+                            chart.updateOptions({chart: {type: "bar",animate: true},
+                                                labels: '',
+                                                stroke: {width: 0}
+                            });
                 }
             });
     });
@@ -670,15 +679,7 @@
 <script>
 
     
-    var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
-    chart2.render();
 
-    var chart = new ApexCharts(document.querySelector("#bar_graph"), options);
-    chart.render();
-        chart.updateOptions({chart: {type: "bar",animate: true},
-                             labels: '',
-                             stroke: {width: 0}
-        });
     var chart3 = new ApexCharts(document.querySelector("#pie_graph"), options);
         chart3.render();
         chart3.updateOptions({chart: {type: "donut",animate: true},
