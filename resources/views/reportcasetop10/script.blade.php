@@ -672,7 +672,7 @@
                 success: function(res) {
                     options.series[0].data = res.datag;
                     options.xaxis.categories = res.datal;
-                    options.labels = res.datal;
+                   
                     var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
                         chart2.render();
 
@@ -692,7 +692,7 @@
                                                     horizontalAlign: "right"
                                                     },
                                                 series: res.datag,
-                                                
+                                                labels: res.datal;
                             });
                 }
             });
