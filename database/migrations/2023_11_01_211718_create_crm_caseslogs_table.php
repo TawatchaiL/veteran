@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id("lid");
             $table->integer('id')->nullable();
             $table->integer('contact_id')->nullable();
+            $table->date('adddate')->nullable();
             $table->string('uniqid')->nullable();
             $table->string('telno')->nullable();
             $table->string('casetype1')->nullable();

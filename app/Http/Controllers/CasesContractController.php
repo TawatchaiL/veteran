@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CrmCase;
 use App\Models\Case_type;
+use App\Models\CrmCaseslog;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -180,6 +181,7 @@ class CasesContractController extends Controller
         }
 
         $companyd = [
+            'adddate' => $request->get('adddate'),
             'casetype1' => $request->get('casetype1'),
             'caseid1' => $request->get('caseid1'),
             'tranferstatus' => $request->get('tranferstatus'),
@@ -214,8 +216,38 @@ class CasesContractController extends Controller
             $companyd = array_merge($companyd, ['casetype6' => '', 'caseid6' => 0]);
         }
 
-       $company = CrmCase::find($id);
-       $company->update($companyd);
+        $company = CrmCase::find($id);
+
+        $caseslog = [
+         'id' => $company->id,
+         'contact_id' => $company->contact_id,
+         'adddate' => $company->adddate,
+         'uniqid' => $company->uniqid,
+         'telno' => $company->telno,
+         'casetype1' => $company->casetype1,
+         'caseid1' => $company->caseid1,
+         'casetype2' => $company->casetype2,
+         'caseid2' => $company->caseid2,
+         'casetype3' => $company->casetype3,
+         'caseid3' => $company->caseid3,
+         'casetype4' => $company->casetype4,
+         'caseid4' => $company->caseid4,
+         'casetype5' => $company->casetype5,
+         'caseid5' => $company->caseid5,
+         'casetype6' => $company->casetype6,
+         'caseid6' => $company->caseid6,
+         'tranferstatus' => $company->tranferstatus,
+         'casedetail' => $company->casedetail,
+         'casestatus' => $company->casestatus,
+         'agent' => $company->agent,
+         'created_at' => $company->created_at,
+         'updated_at' => $company->updated_at,
+         'modifyaction' => 'edit',
+         'modifyagent' => $user->id,
+     ];
+ 
+         CrmCaseslog::create($caseslog);
+        $company->update($companyd);
 
         return response()->json(['success' => 'แก้ไข เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
     }
@@ -223,7 +255,39 @@ class CasesContractController extends Controller
     public function destroy(Request $request)
     {
         $id = $request->get('id');
-        CrmCase::find($id)->delete();
+        $company = CrmCase::find($id);
+
+       
+        $caseslog = [
+         'id' => $company->id,
+         'contact_id' => $company->contact_id,
+         'adddate' => $company->adddate,
+         'uniqid' => $company->uniqid,
+         'telno' => $company->telno,
+         'casetype1' => $company->casetype1,
+         'caseid1' => $company->caseid1,
+         'casetype2' => $company->casetype2,
+         'caseid2' => $company->caseid2,
+         'casetype3' => $company->casetype3,
+         'caseid3' => $company->caseid3,
+         'casetype4' => $company->casetype4,
+         'caseid4' => $company->caseid4,
+         'casetype5' => $company->casetype5,
+         'caseid5' => $company->caseid5,
+         'casetype6' => $company->casetype6,
+         'caseid6' => $company->caseid6,
+         'tranferstatus' => $company->tranferstatus,
+         'casedetail' => $company->casedetail,
+         'casestatus' => $company->casestatus,
+         'agent' => $company->agent,
+         'created_at' => $company->created_at,
+         'updated_at' => $company->updated_at,
+         'modifyaction' => 'delete',
+         'modifyagent' => $user->id,
+     ];
+ 
+         CrmCaseslog::create($caseslog);
+        $company->delete();
         return ['success' => true, 'message' => 'ลบ เรื่องที่ติดต่อ เรียบร้อยแล้ว'];
     }
 
@@ -233,7 +297,40 @@ class CasesContractController extends Controller
         $arr_del  = $request->get('table_records');
 
         for ($xx = 0; $xx < count($arr_del); $xx++) {
-            CrmCase::find($arr_del[$xx])->delete();
+            //CrmCase::find($arr_del[$xx])->delete();
+            $company = CrmCase::find($arr_del[$xx]);
+
+       
+            $caseslog = [
+             'id' => $company->id,
+             'contact_id' => $company->contact_id,
+             'adddate' => $company->adddate,
+             'uniqid' => $company->uniqid,
+             'telno' => $company->telno,
+             'casetype1' => $company->casetype1,
+             'caseid1' => $company->caseid1,
+             'casetype2' => $company->casetype2,
+             'caseid2' => $company->caseid2,
+             'casetype3' => $company->casetype3,
+             'caseid3' => $company->caseid3,
+             'casetype4' => $company->casetype4,
+             'caseid4' => $company->caseid4,
+             'casetype5' => $company->casetype5,
+             'caseid5' => $company->caseid5,
+             'casetype6' => $company->casetype6,
+             'caseid6' => $company->caseid6,
+             'tranferstatus' => $company->tranferstatus,
+             'casedetail' => $company->casedetail,
+             'casestatus' => $company->casestatus,
+             'agent' => $company->agent,
+             'created_at' => $company->created_at,
+             'updated_at' => $company->updated_at,
+             'modifyaction' => 'delete',
+             'modifyagent' => $user->id,
+         ];
+     
+             CrmCaseslog::create($caseslog);
+            $company->delete();
         }
 
         return redirect('casescontract?id='.$request->get('Delcontact_id'))->with('success', 'ลบ เรื่องที่ติดต่อ เรียบร้อยแล้ว');

@@ -79,7 +79,19 @@
                                                 </div>
                                             </div>
                                         </div>
-
+                                        <div class="row">
+                                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <strong><i class="fas fa-calendar"></i> วันที่บันทึก:</strong>
+                                                    {!! Form::text('adddate', null, [
+                                                        'id' => 'Addadddate',
+                                                        'placeholder' => 'วันที่บันทึก',
+                                                        'class' => 'AddDate form-control',
+                                                        'data-target' => '#reservationdate',
+                                                    ]) !!}
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="row">
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">

@@ -11,6 +11,7 @@ class CrmCaseslog extends Model
     protected $fillable = [
         'id',
         'contact_id',
+        'adddate',
         'uniqid',
         'telno',
         'casetype1',

@@ -519,6 +519,7 @@
 
             var additionalData = {
                 contact_id: $('#Addid').val(),
+                adddate: $('#Addadddate').val(),
                 casetype1: $('#casetype1 option:selected').text(),
                 caseid1: $('#casetype1').val(),
                 casedetail: $('#Detail').val(),
@@ -635,6 +636,7 @@
                     console.log(res);
                     $('#Hn').val(res.data.hn);
                     $('#Name').val(res.data.name);
+                    $('#Addadddate').val(res.data.adddate);
                     $('#Detail').val(res.data.casedetail);
                     $('#tranferstatus').val(res.data.tranferstatus);
                     $('#casestatus').val(res.data.casestatus);
@@ -734,6 +736,7 @@
             $('.alert-success').hide();
 
             var additionalData = {
+                adddate: $('#Addadddate').val(),
                 casetype1: $('#Editcasetype1e').val(),
                 tranferstatus: $('#Edittranferstatuse option:selected').text(),
                 casedetail: $('#Editdetail').val(),

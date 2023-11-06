@@ -193,6 +193,7 @@ class CasesController extends Controller
         }
 
         $companyd = [
+            'adddate' => $request->get('adddate'),
             'casetype1' => $request->get('casetype1'),
             'caseid1' => $request->get('caseid1'),
             'tranferstatus' => $request->get('tranferstatus'),
@@ -233,6 +234,7 @@ class CasesController extends Controller
        $caseslog = [
         'id' => $company->id,
         'contact_id' => $company->contact_id,
+        'adddate' => $company->adddate,
         'uniqid' => $company->uniqid,
         'telno' => $company->telno,
         'casetype1' => $company->casetype1,
@@ -385,6 +387,7 @@ class CasesController extends Controller
         $caseslog = [
          'id' => $company->id,
          'contact_id' => $company->contact_id,
+         'adddate' => $company->adddate,
          'uniqid' => $company->uniqid,
          'telno' => $company->telno,
          'casetype1' => $company->casetype1,
@@ -427,6 +430,7 @@ class CasesController extends Controller
             $caseslog = [
              'id' => $company->id,
              'contact_id' => $company->contact_id,
+             'adddate' => $company->adddate,
              'uniqid' => $company->uniqid,
              'telno' => $company->telno,
              'casetype1' => $company->casetype1,

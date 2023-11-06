@@ -35,9 +35,22 @@ class ReportcasetopController extends Controller
      */
     public function index(Request $request)
     {
-
-            $datas = DB::table('cases')
+        if (!empty($request->get('sdate'))) {
+            $dateRange = $request->input('sdate');
+            if ($dateRange) {
+                $dateRangeArray = explode(' - ', $dateRange);
+                if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
+                    $startDate = $dateRangeArray[0];
+                    $endDate = $dateRangeArray[1];
+                }
+            }
+        }else{
+                    $startDate = date("Y-m-d");
+                    $endDate = date("Y-m-t", strtotime($startDate));  
+        }
+            $datas = DB::table('crm_cases')
                 ->select('casetype1', DB::raw('count(casetype1) as sumcases'))
+                ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
                 ->groupBy('casetype1')
                 ->orderBy("sumcases", "desc")
                 ->get();
@@ -45,10 +58,11 @@ class ReportcasetopController extends Controller
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
-                })->rawColumns(['checkbox', 'action'])->toJson();
+            })->rawColumns(['checkbox', 'action'])->toJson();
         }
+
         //graph data
-        $chart_data = array();
+        /*$chart_data = array();
         foreach ($datas as $data) {
             $chart_data[$data->casetype1] = $data->sumcases;
         }
@@ -91,6 +105,8 @@ class ReportcasetopController extends Controller
         $chart3 = new GraphService($chart_options);
 
         return view('reportcasetop10.index', compact('chart1', 'chart2', 'chart3'));
+        */
+        return view('reportcasetop10.index');
     }
 
 }
