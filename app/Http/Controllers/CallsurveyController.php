@@ -123,9 +123,10 @@ class CallsurveyController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Callsurvey $callsurvey)
+    public function edit($id)
     {
-        //
+        $data =  Callsurvey::find($id);
+        return response()->json(['data' => $data]);
     }
 
     /**

@@ -211,12 +211,17 @@
 
             id = $(this).data('id');
             $.ajax({
-                url: "positions/edit/" + id,
+                url: "callsurvey/edit/" + id,
                 method: 'GET',
                 success: function(res) {
                     $('#EditName').val(res.data.name);
-                    $('#EditDepartment').val(res.data.department_id).change();
-                    if (res.data.status == 1) {
+                    $('#EditScore').val(res.data.max_score);
+                    $('#EditGreeting').val(res.data.wellcome_sound).change();
+                    $('#EditThankyou').val(res.data.thankyou_sound).change();
+                    $('#EditTimeout').val(res.data.timeout_sound).change();
+                    $('#EditInvalid').val(res.data.invalid_sound).change();
+                    $('#EditMax').val(res.data.max_sound).change();
+                    if (res.data.set_default == 1) {
                         $('#ecustomCheckbox1').prop('checked', true);
                     } else {
                         $('#ecustomCheckbox1').prop('checked', false);
