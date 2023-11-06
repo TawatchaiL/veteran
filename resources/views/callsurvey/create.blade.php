@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <h4 class="modal-title"><i class="fas fa-list-ol"></i> เพิ่ม รายการ Callsurvey</h4>
+                <h4 class="modal-title"><i class="fas fa-list-ol"></i> เพิ่ม Call Survey</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -26,7 +26,7 @@
                 <div class="row">
                     <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group">
-                            <strong><i class="fas fa-list-ol"></i> ชื่อรายการ:</strong>
+                            <strong><i class="fas fa-list-ol"></i> ชื่อ:</strong>
                             {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                         </div>
                     </div>
@@ -121,7 +121,7 @@
                 <div class="row">
                     <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group">
-                            <strong><i class="fas fa-eye"></i> ตั้งเป็น Callsurvey:</strong>
+                            <strong><i class="fas fa-eye"></i> ตั้งเป็น Call Survey:</strong>
                             <br />
                             <div class="custom-control custom-switch">
                                 {{ Form::checkbox('status', '1', false, ['id' => 'customCheckbox1', 'class' => 'custom-control-input name']) }}

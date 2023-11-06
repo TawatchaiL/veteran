@@ -17,12 +17,12 @@
 
                         @can('master-data-create')
                             <button type="button" class="btn btn-success" id="CreateButton">
-                                <i class="fas fa-list-ol"></i> เพิ่ม ตำแหน่ง </a> </button>
+                                <i class="fas fa-list-ol"></i> เพิ่ม Call Survey </a> </button>
                         @else
                             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
                                 title="คุณไม่มีสิทธิ์ในส่วนนี้">
                                 <button type="button" class="btn btn-success disabled">
-                                    <i class="fas fa-list-ol"></i> เพิ่ม ตำแหน่ง </a></button>
+                                    <i class="fas fa-list-ol"></i> เพิ่ม Call Survey </a></button>
                             </span>
                         @endcan &nbsp;
 
@@ -49,7 +49,7 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-list-ol"></i> ตำแหน่ง</h3>
+                            <h3 class="card-title"><i class="fas fa-list-ol"></i> Call Survey</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -79,8 +79,8 @@
                                     <thead>
                                         <tr>
                                             <th width="80px"><input type="checkbox" id="check-all" class="flat"></th>
-                                            <th>ตำแหน่ง</th>
-                                            <th>แผนก</th>
+                                            <th>Call Survey</th>
+                                            <th>คะแนนสูงสุด</th>
                                             <th>สถานะ</th>
                                             <th width="120px"></th>
                                         </tr>
@@ -108,7 +108,6 @@
     @include('callsurvey.create')
 
     @include('callsurvey.edit')
-
 @endsection
 
 @section('script')
