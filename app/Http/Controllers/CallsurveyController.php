@@ -73,7 +73,7 @@ class CallsurveyController extends Controller
             //file_put_contents($filePath, $dialplan);
             $file = fopen($filePath, 'w');
             foreach ($dialplanLines as $line) {
-                fwrite($file, $line . "\n");
+                fwrite($file, trim($line) . "\n");
             }
             fclose($file);
 
