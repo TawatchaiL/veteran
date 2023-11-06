@@ -661,7 +661,7 @@
             };
 
         $.ajax({
-            url: '/reportcasetop10',
+            url: '{{ route('reportcasetop10') }}',
             method: 'GET',
             //dataType: 'json',
             async: false,

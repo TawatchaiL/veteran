@@ -114,6 +114,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('pdfreportcases', [App\Http\Controllers\PDFcasesController::class, 'pdf'])->name('reportcase.pdf');
 
     Route::get('/reportcasetop10', [App\Http\Controllers\ReportcasetopController::class, 'index'])->name('reportcasetop10');
+    Route::get('/reportcasetop10/report', [App\Http\Controllers\ReportcasetopController::class, 'report'])->name('reportcasetop10.report');
     Route::get('/reporttop10in', [App\Http\Controllers\ReporttopinController::class, 'index'])->name('reporttop10in');
     Route::get('/reporttop10out', [App\Http\Controllers\ReporttopoutController::class, 'index'])->name('reporttop10out');
 //new
