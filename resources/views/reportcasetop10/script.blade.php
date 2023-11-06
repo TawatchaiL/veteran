@@ -660,18 +660,22 @@
                 }
             };
 
-        $.ajax({
-            url: '{{ route('reportcasetop10') }}',
-            method: 'GET',
-            //dataType: 'json',
-            async: false,
-            success: function(data) {
-                alert('OK');
-                //options.series[0].data = data;
-                //var chart = new ApexCharts(document.querySelector("#chart-container"), options);
-                //chart.render();
-            }
-        });
+
+            const TopData = () => {
+                $.ajax({
+                    url: '{{ route('reportcasetop10.report') }}',
+                    method: 'POST',
+                    data: {
+                        _token: token,
+                    },
+                    success: (data) => {
+                        alert('OK');
+                    },
+                    error: (error) => {
+                        console.error('Error fetching data:', error);
+                    },
+                });
+            };
 
     });
 </script>
