@@ -448,7 +448,7 @@
         </ul>
     </li>
 @endcan
-@can('pbx-tool-list')
+@can('pbx-tool')
     <li
         class="nav-item {{ in_array(Request::route()->getName(), [
             'callsurvey',
