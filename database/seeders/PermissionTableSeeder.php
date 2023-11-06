@@ -26,14 +26,14 @@ class PermissionTableSeeder extends Seeder
             'case-create',
             'case-edit',
             'case-delete',
-            'external-doc-list',
-            'external-doc-create',
-            'external-doc-edit',
-            'external-doc-delete',
             'master-data-list',
             'master-data-create',
             'master-data-edit',
             'master-data-delete',
+            'pbx-tool-list',
+            'call-survey-create',
+            'call-survey-edit',
+            'call-survey-delete',
             'role-list',
             'role-create',
             'role-edit',
@@ -42,7 +42,6 @@ class PermissionTableSeeder extends Seeder
             'user-create',
             'user-edit',
             'user-delete',
-            'all-centre'
         ];
 
         foreach ($permissions as $permission) {

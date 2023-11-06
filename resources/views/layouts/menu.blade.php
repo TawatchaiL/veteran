@@ -445,13 +445,35 @@
                     <p>ตำแหน่ง</p>
                 </a>
             </li>
-            {{-- <li class="nav-item" >
-            <a href="{{ route('persons') }}" class="nav-link {{ Request::is('persons') ? 'active' : '' }}">
-                <i class="fas fa-user-tie nav-icon"></i>
-                <p>บุคคล</p>
-            </a>
-        </li> --}}
-
+        </ul>
+    </li>
+@endcan
+@can('pbx-tool-list')
+    <li
+        class="nav-item {{ in_array(Request::route()->getName(), [
+            'callsurvey',
+            // Add more route names here if needed
+        ])
+            ? 'menu-open'
+            : '' }}">
+        <a href="#"
+            class="nav-link {{ in_array(Request::route()->getName(), [
+                'callsurvey',
+                // Add more route names here if needed
+            ])
+                ? 'active'
+                : '' }}">
+            <i class="nav-icon fa-solid fa-screwdriver-wrench"></i>
+            <p>PBX-Tool</p>
+            <i class="fas fa-angle-left right"></i>
+        </a>
+        <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="{{ route('callsurvey') }}" class="nav-link {{ Request::is('callsurvey') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p>Call survey</p>
+                </a>
+            </li>
         </ul>
     </li>
 @endcan
