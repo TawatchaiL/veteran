@@ -16,7 +16,6 @@ class Callsurvey extends Model
         'thankyou_sound',
         'timeout_sound',
         'invalid_sound',
-        'timeout_sound_retry',
-        'invalid_sound_retry',
+        'max_sound',
     ];
 }

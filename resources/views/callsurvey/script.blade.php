@@ -56,19 +56,6 @@
 
 
         var table = $('#Listview').DataTable({
-            /*"aoColumnDefs": [
-            {
-            'bSortable': true,
-            'aTargets': [0]
-            } //disables sorting for column one
-            ],
-            "searching": false,
-            "lengthChange": false,
-            "paging": false,
-            'iDisplayLength': 10,
-            "sPaginationType": "full_numbers",
-            "dom": 'T<"clear">lfrtip',
-                */
             ajax: '',
             serverSide: true,
             processing: true,
@@ -112,12 +99,12 @@
                     name: 'name'
                 },
                 {
-                    data: 'dname',
-                    name: 'dname'
+                    data: 'max_score',
+                    name: 'max_score'
                 },
                 {
-                    data: 'status',
-                    name: 'status'
+                    data: 'set_default',
+                    name: 'set_default'
                 },
                 {
                     data: 'action',
@@ -155,7 +142,6 @@
         });
 
 
-        // Create product Ajax request.
         $('#SubmitCreateForm').click(function(e) {
             e.preventDefault();
             $('.alert-danger').html('');
@@ -171,12 +157,17 @@
 
 
             $.ajax({
-                url: "{{ route('positions.store') }}",
+                url: "{{ route('callsurvey.store') }}",
                 method: 'post',
                 data: {
                     name: $('#AddName').val(),
-                    department_id: $('#AddDepartment').val()[0],
-                    status: sstatus,
+                    max_score: $('#AddScore').val(),
+                    wellcome_sound: $('#AddGreeting').val()[0],
+                    thankyou_sound: $('#AddThankyou').val()[0],
+                    timeout_sound: $('#AddTimeout').val()[0],
+                    invalid_sound: $('#AddInvalid').val()[0],
+                    max_sound: $('#AddMax').val()[0],
+                    set_default: sstatus,
                     _token: token,
                 },
                 success: function(result) {
@@ -196,7 +187,11 @@
                             timeOut: 5000
                         });
                         $('#Listview').DataTable().ajax.reload();
-                        $("#AddDepartment").val(null).trigger("change")
+                        $("#AddGreeting").val(null).trigger("change")
+                        $("#AddThankyou").val(null).trigger("change")
+                        $("#AddTimeout").val(null).trigger("change")
+                        $("#AddInvalid").val(null).trigger("change")
+                        $("#AddMax").val(null).trigger("change")
                         $('.form').trigger('reset');
                         $('#CreateModal').modal('hide');
                     }

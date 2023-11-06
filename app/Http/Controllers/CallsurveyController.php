@@ -77,7 +77,33 @@ class CallsurveyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator =  Validator::make($request->all(), [
+            'name' => 'required|string|max:100|unique:positions',
+            'max_score' => 'required',
+            'wellcome_sound' => 'required',
+            'thankyou_sound' => 'required',
+            'timeout_sound' => 'required',
+            'invalid_sound' => 'required',
+            'max_sound' => 'required',
+        ],[
+            'name.required' => 'ชื่อต้องไม่เป็นค่าว่าง!',
+            'name.unique' => 'ชื่อนี้มีอยู่แล้วในฐานข้อมูล!',
+            'max_score.required' => 'กรุณาระบุคะแนนสูงสุด!',
+            'wellcome_sound.required' => 'กรุณาระบุเสียงต้อนรับ!',
+            'thankyou_sound.required' => 'กรุณาระบุเสียงขอบคุณ!',
+            'timeout_sound.required' => 'กรุณาเะบุเสียงไม่ทำรายการถายในระยะเวลา!',
+            'invalid_sound.required' => 'กรุณาเะบุเสียงกดเมนูไม่ถูกต้อง!',
+            'max_sound.required' => 'กรุณาะบุเสียงทำรายการเกินจำนวนครั้งที่กำหนด!',
+        ]);
+
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all()]);
+        }
+
+        $input = $request->all();
+        Callsurvey::create($input);
+        return response()->json(['success' => 'เพิ่ม Call Survey เรียบร้อยแล้ว']);
     }
 
     /**

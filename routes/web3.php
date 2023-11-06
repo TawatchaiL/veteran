@@ -54,5 +54,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/agent_case_by_date', [App\Http\Controllers\DashboardController::class, 'dashboard_agent_case_by_date'])->name('dashboard.agent_case_by_date');
     Route::post('/sla_data', [App\Http\Controllers\DashboardController::class, 'dashboard_sla_data'])->name('dashboard.sla_data');
     Route::get('/callsurvey', [App\Http\Controllers\CallsurveyController::class, 'index'])->name('callsurvey');
+    Route::post('/callsurvey/store', [App\Http\Controllers\CallsurveyController::class, 'store'])->name('callsurvey.store');
+    Route::get('/callsurvey/edit/{id}', [App\Http\Controllers\CallsurveyController::class, 'edit'])->name('callsurvey.edit');
+    Route::put('/callsurvey/save/{id}', [App\Http\Controllers\CallsurveyController::class, 'update'])->name('callsurvey.save');
+    Route::delete('/callsurvey/destroy', [App\Http\Controllers\CallsurveyController::class, 'destroy'])->name('callsurvey.destroy');
+    Route::post('/callsurvey/destroy_all', [App\Http\Controllers\CallsurveyController::class, 'destroy_all'])->name('callsurvey.destroy_all');
 });
 

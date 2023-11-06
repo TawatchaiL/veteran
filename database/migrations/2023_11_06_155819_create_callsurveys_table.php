@@ -20,8 +20,7 @@ return new class extends Migration
             $table->string('thankyou_sound')->nullable();
             $table->string('timeout_sound')->nullable();
             $table->string('invalid_sound')->nullable();
-            $table->string('timeout_sound_retry')->nullable();
-            $table->string('invalid_sound_retry')->nullable();
+            $table->string('max_sound')->nullable();
             $table->timestamps();
         });
     }
