@@ -21,7 +21,7 @@ return new class extends Migration
             $table->dateTime('calltime')->nullable();
             $table->integer('status')->nullable();
             $table->dateTime('start_hold')->nullable();
-            $table->integer('holdtime', 10)->nullable();
+            $table->integer('holdtime')->nullable();
             $table->timestamps();
         });
     }
