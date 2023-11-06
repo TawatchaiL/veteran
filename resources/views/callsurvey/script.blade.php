@@ -255,7 +255,12 @@
                 method: 'PUT',
                 data: {
                     name: $('#EditName').val(),
-                    max_score: $('#EditScore').val()[0],
+                    max_score: $('#EditScore').val(),
+                    wellcome_sound: $('#EditGreeting').val()[0],
+                    thankyou_sound: $('#EditThankyou').val()[0],
+                    timeout_sound: $('#EditTimeout').val()[0],
+                    invalid_sound: $('#EditInvalid').val()[0],
+                    max_sound: $('#EditMax').val()[0],
                     set_default: esstatus,
                 },
 

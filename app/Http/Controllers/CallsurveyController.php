@@ -162,8 +162,19 @@ class CallsurveyController extends Controller
         $contactd = [
             'name' => $request->get('name'),
             'max_score' => $request->get('department'),
+            'wellcome_sound' => $request->get('wellcome_sound'),
+            'thankyou_sound' => $request->get('thankyou_sound'),
+            'timeout_sound' => $request->get('timeout_sound'),
+            'invalid_sound' => $request->get('invalid_sound'),
+            'max_sound' => $request->get('max_sound'),
             'set_default' => $request->get('set_default'),
         ];
+
+        $hasSetDefaultOne = Callsurvey::where('set_default', 1);
+
+        if ($hasSetDefaultOne->exists()) {
+            $hasSetDefaultOne->update(['set_default' => 0]);
+        }
 
         $update = Callsurvey::find($id);
         $update->update($contactd);
