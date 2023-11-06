@@ -689,8 +689,8 @@
                                                     position: "top",
                                                     horizontalAlign: "right"
                                                     },
-                                                series: res.datag,
-                                                labels: res.datal
+                                                series: res.datal,
+                                                //labels: res.datal
                             });
                 }
             });
