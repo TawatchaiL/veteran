@@ -61,6 +61,7 @@ class ReportcasetopController extends Controller
             })->rawColumns(['checkbox', 'action'])->toJson();
         }
 
+        return response()->json(['datag' => $datas]);
         //graph data
         /*$chart_data = array();
         foreach ($datas as $data) {
@@ -106,7 +107,7 @@ class ReportcasetopController extends Controller
 
         return view('reportcasetop10.index', compact('chart1', 'chart2', 'chart3'));
         */
-        return view('reportcasetop10.index');
+        //return view('reportcasetop10.index');
     }
 
 }
