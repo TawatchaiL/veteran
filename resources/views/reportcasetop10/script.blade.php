@@ -655,7 +655,14 @@
                 },
                 xaxis: {
                 categories: []
+                },
+                tooltip: {
+                y: {
+                    formatter: function(val) {
+                        return " จำนวน " + val + "  "
+                    }
                 }
+            }
             };
 
             $.ajax({
