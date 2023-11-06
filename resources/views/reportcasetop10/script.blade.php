@@ -656,6 +656,7 @@
                 xaxis: {
                 categories: []
                 },
+                labels: [],
                 tooltip: {
                 y: {
                     formatter: function(val) {
