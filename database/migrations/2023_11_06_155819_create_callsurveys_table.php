@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('callsurveys', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
+            $table->integer('max_score')->nullable();
+            $table->integer('set_default')->nullable();
+            $table->string('wellcome_sound')->nullable();
+            $table->string('thankyou_sound')->nullable();
+            $table->string('timeout_sound')->nullable();
+            $table->string('invalid_sound')->nullable();
+            $table->string('timeout_sound_retry')->nullable();
+            $table->string('invalid_sound_retry')->nullable();
             $table->timestamps();
         });
     }
