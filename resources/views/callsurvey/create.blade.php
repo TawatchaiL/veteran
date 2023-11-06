@@ -50,7 +50,7 @@
                                 <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                     <option value="" selected>Select Parent</option>-->
                                 @foreach ($sound as $key2)
-                                    <option value="{{ $key2->id }}">{{ $key2->name }}
+                                    <option value="{{ $key2->id }}">{{ $key2->displayname }}
                                     </option>
                                 @endforeach
 
