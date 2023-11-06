@@ -53,5 +53,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/agent_by_date', [App\Http\Controllers\DashboardController::class, 'dashboard_agent_call_by_date'])->name('dashboard.agent_by_date');
     Route::post('/agent_case_by_date', [App\Http\Controllers\DashboardController::class, 'dashboard_agent_case_by_date'])->name('dashboard.agent_case_by_date');
     Route::post('/sla_data', [App\Http\Controllers\DashboardController::class, 'dashboard_sla_data'])->name('dashboard.sla_data');
+    Route::get('/callsurvey', [App\Http\Controllers\CasesCommentController::class, 'index'])->name('callsurvey');
 });
 
