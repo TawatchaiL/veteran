@@ -199,7 +199,7 @@
             toolbar_header.addClass("bg-warning"); */
         }
 
-        $.ajax({
+        /* $.ajax({
             url: "{{ route('agent.status') }}",
             method: 'post',
             async: false,
@@ -207,10 +207,10 @@
                 _token: token,
             },
             success: function(result) {
-                //set_state_icon(result.id, result.icon, result.message);
-                //set_state_button(result.id);
+                set_state_icon(result.id, result.icon, result.message);
+                set_state_button(result.id);
             }
-        });
+        }); */
     });
 
     socket.on('qlogoff', data => {
