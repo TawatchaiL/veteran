@@ -675,35 +675,3 @@
 
     });
 </script>
-<script>
-
-    
-    var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
-    chart2.render();
-
-    var chart = new ApexCharts(document.querySelector("#bar_graph"), options);
-    chart.render();
-        chart.updateOptions({chart: {type: "bar",animate: true},
-                             labels: '',
-                             stroke: {width: 0}
-        });
-    var chart3 = new ApexCharts(document.querySelector("#pie_graph"), options);
-        chart3.render();
-        chart3.updateOptions({chart: {type: "donut",animate: true},
-                             series: [44, 55, 13],
-                             labels: ['Apple', 'Orange', 'Watermelon']
-        });
-
-    function randData() {
-        var arr = [];
-        for (var i = 0; i < 9; i++) {
-            arr.push(Math.floor(Math.random() * 200) + 1);
-        }
-
-        var str = [];
-        for (var i = 0; i < 9; i++) {
-            str[i] = arr[i];
-        }
-        return str;
-    }
-    </script>
