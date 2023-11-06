@@ -143,7 +143,7 @@ class CallsurveyController extends Controller
     {
         $id = $request->get('id');
         Callsurvey::find($id)->delete();
-        return ['success' => true, 'message' => 'ลบ ตำแหน่ง เรียบร้อยแล้ว'];
+        return ['success' => true, 'message' => 'ลบ Call Survey เรียบร้อยแล้ว'];
     }
 
     public function destroy_all(Request $request)
@@ -155,6 +155,6 @@ class CallsurveyController extends Controller
             Callsurvey::find($arr_del[$xx])->delete();
         }
 
-        return redirect('/positions')->with('success', 'ลบ ตำแหน่ง เรียบร้อยแล้ว');
+        return redirect('/callsurvey')->with('success', 'ลบ Call Survey เรียบร้อยแล้ว');
     }
 }
