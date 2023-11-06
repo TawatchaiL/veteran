@@ -85,7 +85,7 @@ class CallsurveyController extends Controller
             'timeout_sound' => 'required',
             'invalid_sound' => 'required',
             'max_sound' => 'required',
-        ],[
+        ], [
             'name.required' => 'ชื่อต้องไม่เป็นค่าว่าง!',
             'name.unique' => 'ชื่อนี้มีอยู่แล้วในฐานข้อมูล!',
             'max_score.required' => 'กรุณาระบุคะแนนสูงสุด!',
@@ -102,6 +102,12 @@ class CallsurveyController extends Controller
         }
 
         $input = $request->all();
+
+        $hasSetDefaultOne = Callsurvey::where('set_default', 1);
+
+        if ($hasSetDefaultOne->exists()) {
+            $hasSetDefaultOne->update(['set_default' => 0]);
+        }
         Callsurvey::create($input);
         return response()->json(['success' => 'เพิ่ม Call Survey เรียบร้อยแล้ว']);
     }
@@ -133,8 +139,22 @@ class CallsurveyController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Callsurvey $callsurvey)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request->get('id');
+        Callsurvey::find($id)->delete();
+        return ['success' => true, 'message' => 'ลบ ตำแหน่ง เรียบร้อยแล้ว'];
+    }
+
+    public function destroy_all(Request $request)
+    {
+
+        $arr_del  = $request->get('table_records'); //$arr_ans is Array MacAddress
+
+        for ($xx = 0; $xx < count($arr_del); $xx++) {
+            Callsurvey::find($arr_del[$xx])->delete();
+        }
+
+        return redirect('/positions')->with('success', 'ลบ ตำแหน่ง เรียบร้อยแล้ว');
     }
 }
