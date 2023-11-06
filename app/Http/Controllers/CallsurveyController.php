@@ -161,7 +161,7 @@ class CallsurveyController extends Controller
 
         $contactd = [
             'name' => $request->get('name'),
-            'max_score' => $request->get('department'),
+            'max_score' => $request->get('max_score'),
             'wellcome_sound' => $request->get('wellcome_sound'),
             'thankyou_sound' => $request->get('thankyou_sound'),
             'timeout_sound' => $request->get('timeout_sound'),
