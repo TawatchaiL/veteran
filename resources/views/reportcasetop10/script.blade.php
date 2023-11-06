@@ -602,6 +602,9 @@
     });
 </script>
 <script>
+        window.Apex.chart = {
+        fontFamily: "Sarabun"
+    };
     var options = {
         series: [
           {
@@ -609,6 +612,20 @@
             data: randData()//data: [4, 61, 45, 26, 79, 13, 55, 22, 78],
           }
         ],
+        title: {
+                text: 'ผลรวมแยกตามประเภทที่ติดต่อ',
+                align: 'center',
+                style: {
+                    fontSize: '16px',
+                    fontWeight: 'bold',
+                    fontFamily: 'Sarabun',
+                    color: '#263238'
+                },
+                margin: 10,
+                offsetX: 0,
+                offsetY: 0,
+                floating: false,
+            },
         chart: {
           height: 400,
           type: "line",
