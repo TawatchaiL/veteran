@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
-                            <strong><i class="fas fa-list-ol"></i> ชื่่อตำแหน่ง:</strong>
+                            <strong><i class="fas fa-list-ol"></i> ชื่อรายการ:</strong>
                             {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                         </div>
                     </div>
@@ -44,9 +44,17 @@
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
-                            <strong><i class="fas fa-list-ol"></i> แผนก:</strong>
+                            <strong><i class="fas fa-list-ol"></i> คะแนนสูงสุด:</strong>
+                            {!! Form::number('score', null, ['id' => 'AddScore', 'placeholder' => 'Score', 'min' => '1', 'max' => '10', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fas fa-list-ol"></i> เสียง Greeting:</strong>
                             <select style="width: 100%;" class="select2 select2_single form-control"
-                                id="AddDepartment" name="department" multiple="multiple">
+                                id="AddGreeting" name="greeting" multiple="multiple">
                                 <!-- <option value="" selected>Select Student</option>
                                                                                                                                                                                                                                                                                                                                                                                     <option value="" selected>Select Parent</option>-->
                                 @foreach ($sound as $key2)
@@ -58,11 +66,78 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
-                            <strong><i class="fas fa-eye"></i> สถานะ:</strong>
+                            <strong><i class="fas fa-list-ol"></i> เสียง ขอบคุณ:</strong>
+                            <select style="width: 100%;" class="select2 select2_single form-control"
+                                id="AddThankyou" name="thankyou" multiple="multiple">
+                                <!-- <option value="" selected>Select Student</option>
+                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
+                                @foreach ($sound as $key2)
+                                    <option value="{{ $key2->id }}">{{ $key2->displayname }}
+                                    </option>
+                                @endforeach
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fas fa-list-ol"></i> เสียง กดเมนูผิด:</strong>
+                            <select style="width: 100%;" class="select2 select2_single form-control"
+                                id="AddInvalid" name="invalid" multiple="multiple">
+                                <!-- <option value="" selected>Select Student</option>
+                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
+                                @foreach ($sound as $key2)
+                                    <option value="{{ $key2->id }}">{{ $key2->displayname }}
+                                    </option>
+                                @endforeach
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fas fa-list-ol"></i> เสียง ไม่ทำรายการตามเวลา:</strong>
+                            <select style="width: 100%;" class="select2 select2_single form-control"
+                                id="AddTimeout" name="timeout" multiple="multiple">
+                                <!-- <option value="" selected>Select Student</option>
+                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
+                                @foreach ($sound as $key2)
+                                    <option value="{{ $key2->id }}">{{ $key2->displayname }}
+                                    </option>
+                                @endforeach
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fas fa-list-ol"></i> เสียง ทำรายการเกินจำนวนครั้ง:</strong>
+                            <select style="width: 100%;" class="select2 select2_single form-control"
+                                id="AddMax" name="max" multiple="multiple">
+                                <!-- <option value="" selected>Select Student</option>
+                                                                                                                                                                                                                                                                                                                                                                                    <option value="" selected>Select Parent</option>-->
+                                @foreach ($sound as $key2)
+                                    <option value="{{ $key2->id }}">{{ $key2->displayname }}
+                                    </option>
+                                @endforeach
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fas fa-eye"></i> ตั้งเป็น Callsurvey:</strong>
                             <br />
                             <div class="custom-control custom-switch">
                                 {{ Form::checkbox('status', '1', false, ['id' => 'customCheckbox1', 'class' => 'custom-control-input name']) }}
