@@ -65,7 +65,6 @@
                             <strong><i class="fas fa-list-ol"></i> เสียง ขอบคุณ:</strong>
                             <select style="width: 100%;" class="select2 select2_single form-control" id="AddThankyou"
                                 name="thankyou" multiple="multiple">
-                                <option value="" selected>Select Parent</option>-->
                                 @foreach ($sound as $key2)
                                     <option value="{{ $key2->displayname }}">{{ $key2->displayname }}
                                 @endforeach
@@ -80,7 +79,6 @@
                             <strong><i class="fas fa-list-ol"></i> เสียง กดเมนูผิด:</strong>
                             <select style="width: 100%;" class="select2 select2_single form-control" id="AddInvalid"
                                 name="invalid" multiple="multiple">
-                                <option value="" selected>Select Parent</option>-->
                                 @foreach ($sound as $key2)
                                     <option value="{{ $key2->displayname }}">{{ $key2->displayname }}
                                     </option>
@@ -96,7 +94,6 @@
                             <strong><i class="fas fa-list-ol"></i> เสียง ไม่ทำรายการตามเวลา:</strong>
                             <select style="width: 100%;" class="select2 select2_single form-control" id="AddTimeout"
                                 name="timeout" multiple="multiple">
-                                <option value="" selected>Select Parent</option>-->
                                 @foreach ($sound as $key2)
                                     <option value="{{ $key2->displayname }}">{{ $key2->displayname }}
                                     </option>
@@ -112,7 +109,6 @@
                             <strong><i class="fas fa-list-ol"></i> เสียง ทำรายการเกินจำนวนครั้ง:</strong>
                             <select style="width: 100%;" class="select2 select2_single form-control" id="AddMax"
                                 name="max" multiple="multiple">
-                                <option value="" selected>Select Parent</option>-->
                                 @foreach ($sound as $key2)
                                     <option value="{{ $key2->displayname }}">{{ $key2->displayname }}
                                     </option>
