@@ -30,6 +30,12 @@ class AsteriskAmiService
         return $remote;
     }
 
+    function dialplan_reload()
+    {
+        $remote = $this->asterisk_ami();
+        $remote->Command('dialplan reload');
+    }
+
     function exten_state($remote_extension)
     {
         $remote = $this->asterisk_ami();

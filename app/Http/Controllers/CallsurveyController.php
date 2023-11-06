@@ -7,26 +7,31 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use App\Services\AsteriskAmiService;
 
 class CallsurveyController extends Controller
 {
+
+    protected $remote;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(AsteriskAmiService $asteriskAmiService)
     {
         //$this->middleware('auth');
         $this->middleware('permission:call-survey-list|call-survey-create|call-survey-edit|call-survey-delete', ['only' => ['index', 'show']]);
         $this->middleware('permission:call-survey-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:call-survey-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:call-survey-delete', ['only' => ['destroy']]);
+
+        $this->remote = $asteriskAmiService;
     }
 
     public function gen_call_survey()
     {
-            $dialplan = trim('
+        $dialplan = trim('
             [call-survey]
             exten => s,1,Set(TIMEOUT_LOOPCOUNT=0)
             exten => s,n,Set(INVALID_LOOPCOUNT=0)
@@ -65,6 +70,7 @@ class CallsurveyController extends Controller
 
         if (file_exists($filePath)) {
             file_put_contents($filePath, $dialplan);
+            $this->remote->dialplan_reload();
         } else {
             abort(404);
         }
