@@ -608,12 +608,11 @@
     var options = {
         series: [
           {
-            name: "Desktop",
             data: randData()//data: [4, 61, 45, 26, 79, 13, 55, 22, 78],
           }
         ],
         title: {
-                text: 'ผลรวมแยกตามประเภทที่ติดต่อ',
+                text: '10 อันดับเรื่องที่ติดต่อมากที่สุด',
                 align: 'center',
                 style: {
                     fontSize: '16px',
@@ -685,9 +684,7 @@
         });
     var chart3 = new ApexCharts(document.querySelector("#pie_graph"), options);
         chart3.render();
-        chart3.updateOptions({chart: {type: "donut",animate: true},
-                             series: [44, 55, 13],
-                             labels: ['Apple', 'Orange', 'Watermelon']
+        chart3.updateOptions({chart: {type: "donut",animate: true}
         });
 
     function randData() {
