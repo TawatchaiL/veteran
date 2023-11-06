@@ -471,7 +471,7 @@
             <li class="nav-item">
                 <a href="{{ route('callsurvey') }}" class="nav-link {{ Request::is('callsurvey') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p>Call survey</p>
+                    <p>Call Survey</p>
                 </a>
             </li>
         </ul>
