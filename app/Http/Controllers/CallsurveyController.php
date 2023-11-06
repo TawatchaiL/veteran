@@ -42,14 +42,14 @@ class CallsurveyController extends Controller
         exten => s,n,ExecIf($["${IVR_MSG}" != ""]?Background(${IVR_MSG}))
         exten => s,n,WaitExten(10)
 
-        exten => i,1,Set(INVALID_LOOPCOUNT=$[${INVALID_LOOPCOUNT}+1)
+        exten => i,1,Set(INVALID_LOOPCOUNT=$[${INVALID_LOOPCOUNT}+1])
         exten => i,n,GotoIf($[${INVALID_LOOPCOUNT} > 3]?final)
         exten => i,n,Set(IVR_MSG=custom/Invalid&custom/CallSurvwey-wellcome)
         exten => i,n,Goto(s,start)
         exten => i,n(final),Playback(custom/max)
         exten => i,n,Goto(app-announcement-1,s,1)
 
-        exten => t,1,Set(TIMEOUT_LOOPCOUNT=$[${TIMEOUT_LOOPCOUNT}+1)
+        exten => t,1,Set(TIMEOUT_LOOPCOUNT=$[${TIMEOUT_LOOPCOUNT}+1])
         exten => t,n,GotoIf($[${TIMEOUT_LOOPCOUNT} > 3]?final)
         exten => t,n,Set(IVR_MSG=custom/TimeOut&custom/CallSurvwey-wellcome)
         exten => t,n,Goto(s,start)
