@@ -667,7 +667,7 @@
             setTimeout(function() {
                 const ipAddress = `${exten_ip}`;
         $.get(`${api_serv}/answer/${ipAddress}`, (data, status) => {});
-                                    }, 1000)
+                                    }, 3000)
             $.get(`${api_serv}/dial/` + call_number + "/" + exten + "/" + account_code, async (data,
                 status) => {
                 if (status == 'success') {
