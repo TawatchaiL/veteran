@@ -639,7 +639,7 @@
                 },
                 legend: {
                 show: true,
-                showForSingleSeries: true,
+                showForSingleSeries: false,
                 position: "top",
                 horizontalAlign: "right"
                 },
