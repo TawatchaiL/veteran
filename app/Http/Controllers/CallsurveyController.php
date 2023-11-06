@@ -24,6 +24,49 @@ class CallsurveyController extends Controller
         $this->middleware('permission:call-survey-delete', ['only' => ['destroy']]);
     }
 
+    public function gen_call_survey()
+    {
+        $dialplan = '[CallSurvey] ; CallSurvey
+        exten => s,1,Set(TIMEOUT_LOOPCOUNT=0)
+        exten => s,n,Set(INVALID_LOOPCOUNT=0)
+        exten => s,n,GotoIf($["${CDR(disposition)}" = "ANSWERED"]?skip)
+        exten => s,n,Answer
+        exten => s,n,Wait(1)
+        exten => s,n(skip),Set(IVR_MSG=custom/CallSurvwey-wellcome)
+        exten => s,n(start),Set(TIMEOUT(digit)=3)
+        exten => s,n,ExecIf($["${IVR_MSG}" != ""]?Background(${IVR_MSG}))
+        exten => s,n,WaitExten(10,)
+
+        exten => i,1,Set(INVALID_LOOPCOUNT=$[${INVALID_LOOPCOUNT}+1])
+        exten => i,n,GotoIf($[${INVALID_LOOPCOUNT} > 3]?final)
+        exten => i,n,Set(IVR_MSG=custom/Invalid&custom/CallSurvwey-wellcome)
+        exten => i,n,Goto(s,start)
+        exten => i,n(final),Playback(custom/max)
+        exten => i,n,Goto(app-announcement-1,s,1)
+
+        exten => t,1,Set(TIMEOUT_LOOPCOUNT=$[${TIMEOUT_LOOPCOUNT}+1])
+        exten => t,n,GotoIf($[${TIMEOUT_LOOPCOUNT} > 3]?final)
+        exten => t,n,Set(IVR_MSG=custom/TimeOut&custom/CallSurvwey-wellcome)
+        exten => t,n,Goto(s,start)
+        exten => t,n(final),Playback(custom/max)
+        exten => t,n,Goto(app-announcement-1,s,1)
+
+        exten => return,1,Set(IVR_MSG=custom/CallSurvwey-wellcome)
+        exten => return,n,Goto(s,start)
+
+        exten => h,1,Hangup
+
+        exten => hang,1,Playback(vm-goodbye)';
+
+        $filePath = public_path('config/extensions_callsurvey.conf');
+
+        if (file_exists($filePath)) {
+            file_put_contents($filePath, $dialplan);
+        } else {
+            abort(404);
+        }
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -109,6 +152,11 @@ class CallsurveyController extends Controller
             $hasSetDefaultOne->update(['set_default' => 0]);
         }
         Callsurvey::create($input);
+
+        if ($request->get('set_default') == "1") {
+            $this->gen_call_survey();
+        }
+
         return response()->json(['success' => 'เพิ่ม Call Survey เรียบร้อยแล้ว']);
     }
 
@@ -144,7 +192,7 @@ class CallsurveyController extends Controller
             'max_sound' => 'required',
         ];
 
-        $validator = Validator::make($request->all(), $rules,[
+        $validator = Validator::make($request->all(), $rules, [
             'name.required' => 'ชื่อต้องไม่เป็นค่าว่าง!',
             'name.unique' => 'ชื่อนี้มีอยู่แล้วในฐานข้อมูล!',
             'max_score.required' => 'กรุณาระบุคะแนนสูงสุด!',
@@ -178,6 +226,10 @@ class CallsurveyController extends Controller
 
         $update = Callsurvey::find($id);
         $update->update($contactd);
+
+        if ($request->get('set_default') == "1") {
+            $this->gen_call_survey();
+        }
 
         return response()->json(['success' => 'แก้ไข Call Survey เรียบร้อยแล้ว']);
     }
