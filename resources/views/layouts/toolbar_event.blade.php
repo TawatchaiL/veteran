@@ -30,10 +30,10 @@
                     set_state_icon(result.id, result.icon, result.message);
                     set_state_button(result.id);
                     call_list();
-                    updateAvgData();
+                    /* updateAvgData();
                     handleDataHour();
                     handleDataDate();
-                    handleCaseDataDate();
+                    handleCaseDataDate(); */
                 }
             });
         }
