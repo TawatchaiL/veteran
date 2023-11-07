@@ -541,7 +541,7 @@
     const updateAvgData = () => {
         const storedOption = localStorage.getItem('selectedOption') || '{{ $queue[0]->extension }}';
         const storedSLA = localStorage.getItem('sla_setting') || '30';
-        console.log(storedOption)
+
         $.ajax({
             url: '{{ route('dashboard.avg_data') }}',
             method: 'POST',
@@ -554,7 +554,7 @@
                 avg_wait.html('')
                 total_talk.html('')
                 max_wait.html('') */
-
+                console.log(data)
                 data.avg_data.forEach((item) => {
                     if (item.queue_number == storedOption) {
                         /* avg_talk.html(item.avg_talk_time)
