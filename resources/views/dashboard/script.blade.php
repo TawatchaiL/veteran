@@ -1160,6 +1160,7 @@
         selectElement.on('change', () => {
             const selectedOption = selectElement.val();
             if (selectedOption) {
+                updateAvgData();
                 localStorage.setItem('selectedOption',
                     selectedOption);
             }
