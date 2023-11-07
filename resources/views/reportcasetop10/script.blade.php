@@ -375,9 +375,11 @@
                 data: function(d) {
                     d.sdate = $('#reservation').val();
                 },
-                dataSrc: function ( json ) {
-                //Make your callback here.
+                success: function () {
                 alert("Done!");
+                },
+                dataSrc: function ( json ) {
+
                 return json.data;
             }   
             },
