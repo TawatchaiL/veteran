@@ -719,7 +719,7 @@
                 $.ajax({
                 url: '{{ route('reportcasetop10.report') }}',
                 data: {
-                    sdate = rdate
+                    sdate: rdate
                 },
                 method: 'POST',
                 success: function(res) {
