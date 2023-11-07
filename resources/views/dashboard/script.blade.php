@@ -784,7 +784,7 @@
                     status = set_status('pause', res.pausedreason);
                 }
                 div_src.html('');
-                div_queue.html('');
+                div_queue.html(res.queue);
             } else if (res.status == 6) {
                 await call_list(phone_number);
                 ring_cid = dbv[phone_number + '_cid'];
@@ -854,7 +854,6 @@
 
             $('#' + phone_number + '_status').html(status);
             $('#' + phone_number + '_phone').html(phone_status);
-            //$('#' + phone_number + '_queue').html(res.queue);
             $('#' + phone_number + '_duration').html(state_dur);
 
             let num_ring = Object.keys(ring_call).length;
