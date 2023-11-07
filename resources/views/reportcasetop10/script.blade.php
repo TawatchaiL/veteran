@@ -375,7 +375,7 @@
                 data: function(d) {
                     d.sdate = $('#reservation').val();
                 },
-                success: function () {
+                complete: function (data) {
                 alert("Done!");
                 }  
             },
