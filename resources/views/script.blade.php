@@ -354,7 +354,6 @@
                     _token: token,
                 },
             });
-            console.log(response.score_data);
             return response.score_data;
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -363,10 +362,10 @@
     };
 
     const score_chart_data = (data) => {
-        //const labels = Object.keys(data);
-        //const values = Object.values(data);
+        const labels = Object.keys(data);
+        const values = Object.values(data);
 
-        const optionca = {
+        const option = {
             title: {
                 show: false,
                 text: 'Referer of a Website',
@@ -379,26 +378,13 @@
             toolbox: {
                 show: true,
                 feature: {
-                    /* dataZoom: {
-                        yAxisIndex: 'none'
-                    },
-                    dataView: {
-                        readOnly: false
-                    },
-                    magicType: {
-                        type: ['line', 'bar']
-                    },
-                    restore: {}, */
                     saveAsImage: {}
                 }
             },
-            /* legend: {
-                orient: 'vertical',
-                left: 'left'
-            }, */
             legend: {
                 top: '5%',
-                left: 'center'
+                left: 'center',
+                data: labels.map(String)
             },
             series: [{
                 name: 'คะแนน',
@@ -406,28 +392,10 @@
                 selectedMode: 'single',
                 radius: '60%',
                 center: ['50%', '45%'],
-                data: [{
-                        value: 10,
-                        name: '1'
-                    },
-                    {
-                        value: 15,
-                        name: '2'
-                    },
-                    {
-                        value: 18,
-                        name: '3'
-                    },
-                    {
-                        value: 20,
-                        name: '4'
-                    },
-                    {
-                        value: 50,
-                        name: '5',
-                        selected: true
-                    }
-                ],
+                data: labels.map(label => ({
+                    value: data[label],
+                    name: label
+                })),
                 emphasis: {
                     itemStyle: {
                         shadowBlur: 10,
@@ -437,7 +405,8 @@
                 }
             }]
         };
-        return optionca;
+
+        return option;
     };
 
     /*  $(document).ready(function() {
@@ -491,6 +460,7 @@
     const handleCallSurveyData = async () => {
         try {
             const datas = await AgentCallSurvey();
+            console.log(datas)
             const options = score_chart_data(datas);
             console.log(options)
             var chart_score = new ApexCharts(document.querySelector("#chart_call_survey"), options);
