@@ -378,23 +378,9 @@
             toolbox: {
                 show: true,
                 feature: {
-                    /* dataZoom: {
-                        yAxisIndex: 'none'
-                    },
-                    dataView: {
-                        readOnly: false
-                    },
-                    magicType: {
-                        type: ['line', 'bar']
-                    },
-                    restore: {}, */
                     saveAsImage: {}
                 }
             },
-            /* legend: {
-                orient: 'vertical',
-                left: 'left'
-            }, */
             legend: {
                 top: '5%',
                 left: 'center',
@@ -421,91 +407,17 @@
         };
 
         return option;
-
     };
 
-    $(document).ready(function() {
-
-
-        var pie4071 = echarts.init(document.getElementById("mainbc2_4071"));
-        var option4071 = {
-            title: {
-                show: false,
-                text: 'Referer of a Website',
-                subtext: 'Fake Data',
-                left: 'center'
-            },
-            tooltip: {
-                trigger: 'item'
-            },
-            toolbox: {
-                show: true,
-                feature: {
-                    /* dataZoom: {
-                        yAxisIndex: 'none'
-                    },
-                    dataView: {
-                        readOnly: false
-                    },
-                    magicType: {
-                        type: ['line', 'bar']
-                    },
-                    restore: {}, */
-                    saveAsImage: {}
-                }
-            },
-            /* legend: {
-                orient: 'vertical',
-                left: 'left'
-            }, */
-            legend: {
-                top: '5%',
-                left: 'center'
-            },
-            series: [{
-                name: 'คะแนน',
-                type: 'pie',
-                selectedMode: 'single',
-                radius: '60%',
-                center: ['50%', '45%'],
-                data: [{
-                        value: 10,
-                        name: '1'
-                    },
-                    {
-                        value: 15,
-                        name: '2'
-                    },
-                    {
-                        value: 18,
-                        name: '3'
-                    },
-                    {
-                        value: 20,
-                        name: '4'
-                    },
-                    {
-                        value: 50,
-                        name: '5',
-                        selected: true
-                    }
-                ],
-                emphasis: {
-                    itemStyle: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                }
-            }]
-        };
-
-        pie4071.setOption(option4071);
-        window.addEventListener('resize', pie4071.resize);
+    /*  $(document).ready(function() {
 
 
 
-    })
+         window.addEventListener('resize', pie4071.resize);
+
+
+
+     }) */
 
 
     const handleDataHour = async () => {
@@ -551,6 +463,7 @@
             const optionc = score_chart_data(datac);
             var chart_score = new ApexCharts(document.querySelector("#chart_call_survey"), optionc);
             chart_score.render();
+            window.addEventListener('resize', chart_score.resize);
         } catch (error) {
             console.error('Error:', error);
         }
