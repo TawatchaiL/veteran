@@ -104,12 +104,12 @@ class DashboardController extends Controller
         $queue = DB::connection('remote_connection')
             ->table('call_center.call_entry_today')
             ->select(
-                DB::raw('count(*) as total_call'),
-                DB::raw('AVG(duration) as avg_talk_time'),
-                DB::raw('AVG(duration_wait) as avg_hold_time'),
-                DB::raw('SUM(duration) as total_talk_time'),
-                DB::raw('MAX(duration_wait) as max_hold_time'),
-                DB::raw('(SELECT sum(score) FROM agent_score_today WHERE crm_id = ' . $user->id . ') as total_score')
+                DB::raw('COALESCE(count(*), 0) as total_call'),
+                DB::raw('COALESCE(AVG(duration), 0) as avg_talk_time'),
+                DB::raw('COALESCE(AVG(duration_wait), 0) as avg_hold_time'),
+                DB::raw('COALESCE(SUM(duration), 0) as total_talk_time'),
+                DB::raw('COALESCE(MAX(duration_wait), 0) as max_hold_time'),
+                DB::raw('(SELECT COALESCE(sum(score), 0) FROM agent_score_today WHERE crm_id = ' . $user->id . ') as total_score')
             )
             ->where('crm_id', $user->id)
             ->get();
