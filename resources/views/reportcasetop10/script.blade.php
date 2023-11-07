@@ -375,9 +375,11 @@
                 data: function(d) {
                     d.sdate = $('#reservation').val();
                 },
-                dataSrc: function (json) {
-                    alert(json.data);
-                    }
+                dataSrc: function ( json ) {
+                //Make your callback here.
+                alert("Done!");
+                return json.data;
+            }   
             },
             serverSide: true,
             processing: true,
