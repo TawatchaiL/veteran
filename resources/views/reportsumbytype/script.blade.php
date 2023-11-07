@@ -658,7 +658,7 @@
                         },
                 ],
                 title: {
-                        text: '10 อันดับเรื่องที่ติดต่อมากที่สุด',
+                        text: 'ผลรวมแยกตามประเภทที่ติดต่อ',
                         align: 'center',
                         style: {
                             fontSize: '16px',
@@ -731,7 +731,7 @@
                     type: 'gradient',
                 },
                 title: {
-                    text: '10 อันดับเรื่องที่ติดต่อมากที่สุด',
+                    text: 'ผลรวมแยกตามประเภทที่ติดต่อ',
                     align: 'center',
                     style: {
                         fontSize: '16px',
