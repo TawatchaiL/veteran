@@ -392,10 +392,10 @@
                 selectedMode: 'single',
                 radius: '60%',
                 center: ['50%', '45%'],
-                data: labels.map(label => ({
+                data: [labels.map(label => ({
                     value: data[label],
                     name: label
-                })),
+                }))],
                 emphasis: {
                     itemStyle: {
                         shadowBlur: 10,
