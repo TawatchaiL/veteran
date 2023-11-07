@@ -44,12 +44,12 @@ class CallsurveyController extends Controller
 
         for ($i = 1; $i <= $max_score; $i++) {
             $dialplan .= '
-            exten => $i,1,Noop()
-            exten => $i,n,Noop()
-            exten => $i,n,Set(IVR_SCORE=' . $i . ')
-            exten => $i,n,Saydigits(' . $i . ')
-            exten => $i,n,Playback(custom/' . $thankyou . ')
-            exten => $i,n,Hangup';
+            exten => ' . $i . ',1,Noop()
+            exten => ' . $i . ',n,Noop()
+            exten => ' . $i . ',n,Set(IVR_SCORE=' . $i . ')
+            exten => ' . $i . ',n,Saydigits(' . $i . ')
+            exten => ' . $i . ',n,Playback(custom/' . $thankyou . ')
+            exten => ' . $i . ',n,Hangup';
         }
 
         $dialplan .= '
