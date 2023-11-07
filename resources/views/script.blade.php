@@ -564,7 +564,7 @@
     const handleCallSurveyData = async () => {
         try {
             const datac = await AgentCallSurvey();
-            const optionc = agent_call_survey();
+            const optionc = score_chart_data();
             var chart_score = new ApexCharts(document.querySelector("#chart_call_survey"), optionc);
             chart_score.render();
         } catch (error) {
@@ -591,5 +591,6 @@
         handleDataHour();
         handleDataDate();
         handleCaseDataDate();
+        handleCallSurveyData();
     });
 </script>

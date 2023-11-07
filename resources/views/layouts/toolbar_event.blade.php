@@ -40,6 +40,7 @@
                         handleDataHour();
                         handleDataDate();
                         handleCaseDataDate();
+                        handleCallSurveyData();
                     }
                 }
             });
