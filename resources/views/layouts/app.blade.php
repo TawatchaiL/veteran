@@ -131,7 +131,7 @@
 @include('layouts.toolbar_script')
 @include('layouts.toolbar_event')
 
-@yield('script')
+
 
 </html>
 {{-- </x-laravel-ui-adminlte::adminlte-layout> --}}
