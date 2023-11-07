@@ -460,12 +460,10 @@
     const handleCallSurveyData = async () => {
         try {
             const datas = await AgentCallSurvey();
-            console.log(datas)
             const options = score_chart_data(datas);
-            console.log(options)
-            var chart_score = new ApexCharts(document.querySelector("#chart_call_survey"), options);
-            chart_score.render();
-            //window.addEventListener('resize', chart_score.resize);
+            var chart_score = echarts.init(document.getElementById("chart_call_survey"));
+            chart_score.setOption(options);
+            window.addEventListener('resize', chart_score.resize);
         } catch (error) {
             console.error('Error:', error);
         }
