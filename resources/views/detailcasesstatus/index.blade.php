@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2 align-self-end">
                                         <div class="form-group">
-                                            <button type="button" class="btn btn-success" id="CreateButton">
+                                            <button type="button" class="btn btn-success btnsearch" id="btnsearch">
                                                 <i class="fas fa-search"></i> ค้นหา </button>
                                         </div>
                                     </div>
