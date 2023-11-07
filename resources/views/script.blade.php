@@ -354,7 +354,7 @@
                     _token: token,
                 },
             });
-            console.log(data);
+            console.log(response.score_data);
             return response.score_data;
         } catch (error) {
             console.error('Error fetching data:', error);
