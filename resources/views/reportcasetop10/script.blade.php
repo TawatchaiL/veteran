@@ -738,6 +738,7 @@
                             options.series =  res.datag;
                         var chart3 = new ApexCharts(document.querySelector("#pie_graph"), optionsdonut);
                             chart3.render();
+                            alert('OK2');
                 }
             });
     }
