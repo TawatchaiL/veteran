@@ -673,7 +673,7 @@
                     options.series[0].data = res.datag;
                     options.xaxis.categories = res.datal;
                    
-                    var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
+                        var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
                         chart2.render();
 
                         var chart = new ApexCharts(document.querySelector("#bar_graph"), options);
