@@ -725,6 +725,12 @@
                             });
                             options.series.data =  res.datag;
                         var chart3 = new ApexCharts(document.querySelector("#pie_graph"), options);
+                            chart3.updateOptions({
+                                                chart: {
+                                                type: "donut",
+                                                animate: true
+                                                }
+                                            });
                             chart3.render();
                 }
             });
