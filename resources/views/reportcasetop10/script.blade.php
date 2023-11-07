@@ -714,11 +714,12 @@
                     }
                 }]
                 };
-alert($('#reservation').val());
+                var rdate = $('#reservation').val();
+                alert(rdate);
                 $.ajax({
                 url: '{{ route('reportcasetop10.report') }}',
                 data: {
-                    sdate = $('#reservation').val()
+                    sdate = rdate
                 },
                 method: 'POST',
                 success: function(res) {
