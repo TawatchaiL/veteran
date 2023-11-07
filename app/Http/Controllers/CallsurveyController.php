@@ -47,8 +47,9 @@ class CallsurveyController extends Controller
             exten => ' . $i . ',1,Noop(${CALLERID(number)})
             exten => ' . $i . ',n,Noop(${QUEUENUM})
             exten => ' . $i . ',n,Noop(${BLINDTRANSFER})
+            exten => ' . $i . ',n,Noop(${CDR(recordingfile)})
             exten => ' . $i . ',n,Set(IVR_SCORE=' . $i . ')
-            exten => ' . $i . ',n,Saydigits(' . $i . ')
+            exten => ' . $i . ',n,AGI(call-survey.php)
             exten => ' . $i . ',n,Playback(custom/' . $thankyou . ')
             exten => ' . $i . ',n,Hangup';
         }
