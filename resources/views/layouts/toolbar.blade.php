@@ -223,12 +223,12 @@
                                         class="fas fa-phone-square"></i>
                                     โทรออก</button>
                             </div>
-                            <div class="mx-1">
+                           {{--  <div class="mx-1">
                                 <button {{ $dial_button }} id="ans_button" name="ans_button"
                                     class="btn custom-button btn-success {{ $dial_button_class }}"><i
                                         class="fa-solid fa-check-double"></i>
                                     Accept</button>
-                            </div>
+                            </div> --}}
                             <div class="mx-1">
                                 <button {{ $transfer_button }} id="swap_button" name="swap_button"
                                     class="btn custom-button btn-success {{ $transfer_button_class }}"><i
@@ -252,14 +252,11 @@
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item button_atx_tranfer" href="#"><i
                                                 class="fas fa-random"></i> Attendant Tranfer</a>
+                                                <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item button_survey_tranfer" href="#"><i
+                                                class="fas fa-random"></i> ประเมิน</a>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="mx-1">
-                                <button {{ $performance_button }} id="performance_button"
-                                    class="{{ $performance_button_class }} btn custom-button btn-success button_conf"><i
-                                        class="fas fa-star"></i>
-                                    ประเมิน</button>
                             </div>
                             <div class="mx-1">
                                 <button {{ $conf_button }} id="conf_button"
@@ -267,6 +264,13 @@
                                         class="fas fa-handshake"></i>
                                     ประชุมสาย</button>
                             </div>
+                            <div class="mx-1">
+                                <button {{ $performance_button }} id="performance_button"
+                                    class="{{ $performance_button_class }} btn custom-button btn-success button_conf"><i
+                                        class="fas fa-star"></i>
+                                    ประเมิน</button>
+                            </div>
+
                         </div>
                         <div class="row">
                             <br>

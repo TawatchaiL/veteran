@@ -9,6 +9,7 @@ return [
         'remote_context' => env('ASTERISK_REMOTE_CONTEXT', 'ext-local'),
         'warp_id' => env('WARP_ID', '5'),
         'sup_break_id' => env('SUP_BREAK_ID', '6'),
+        'call_survey_number' => env('ASTERISK_CALLSURVEY_NUMBER','7891')
     ],
     'eccp' => [
         'eccp_host' => env('ECCP_HOST', '10.148.0.4'),

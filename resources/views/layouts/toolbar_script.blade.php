@@ -4,12 +4,13 @@
     const exten_ip = '{{ $temporaryPhoneIP }}';
     const exten = '{{ $temporaryPhone }}';
     const account_code = exten;
+    const call_survey_number = '{{ config('asterisk.manager.call_survey_number') }}';
     const toolbar_serv = '{{ config('asterisk.toolbar_serv.address') }}';
     const api_serv = '{{ config('asterisk.api_serv.address') }}';
 
     const dial_number = $('#dial_number');
     const dial_button = $('#dial_button');
-    const ans_button = $('#ans_button');
+    //const ans_button = $('#ans_button');
     const swap_button = $('#swap_button');
     const performance_button = $('#performance_button');
     const tranfer_button = $('#tranfer_button');
@@ -185,8 +186,8 @@
             dial_number.prop('disabled', true);
             dial_button.addClass('d-none');
             dial_button.prop('disabled', true);
-            ans_button.addClass('d-none');
-            ans_button.prop('disabled', true);
+            //ans_button.addClass('d-none');
+            //ans_button.prop('disabled', true);
             swap_button.prop('disabled', true);
             swap_button.addClass("d-none")
             performance_button.prop('disabled', true);
@@ -212,8 +213,8 @@
             dial_number.prop('disabled', false);
             dial_button.removeClass('d-none');
             dial_button.prop('disabled', false);
-            ans_button.removeClass('d-none');
-            ans_button.prop('disabled', false);
+            //ans_button.removeClass('d-none');
+            //ans_button.prop('disabled', false);
             swap_button.prop('disabled', true);
             swap_button.removeClass("d-none")
             performance_button.prop('disabled', true);
@@ -239,8 +240,8 @@
             dial_number.prop('disabled', false);
             dial_button.removeClass('d-none');
             dial_button.prop('disabled', false);
-            ans_button.removeClass('d-none');
-            ans_button.prop('disabled', false);
+            //ans_button.removeClass('d-none');
+            //ans_button.prop('disabled', false);
             swap_button.prop('disabled', true);
             swap_button.removeClass("d-none")
             performance_button.prop('disabled', true);
@@ -267,8 +268,8 @@
             dial_number.prop('disabled', false);
             dial_button.removeClass('d-none');
             dial_button.prop('disabled', false);
-            ans_button.removeClass('d-none');
-            ans_button.prop('disabled', false);
+            //ans_button.removeClass('d-none');
+            //ans_button.prop('disabled', false);
             swap_button.prop('disabled', true);
             swap_button.removeClass("d-none")
             performance_button.prop('disabled', true);
@@ -295,8 +296,8 @@
             dial_number.prop('disabled', false);
             dial_button.removeClass('d-none');
             dial_button.prop('disabled', false);
-            ans_button.removeClass('d-none');
-            ans_button.prop('disabled', false);
+            //ans_button.removeClass('d-none');
+            //ans_button.prop('disabled', false);
             swap_button.prop('disabled', false);
             swap_button.removeClass("d-none")
             performance_button.prop('disabled', true);
@@ -324,8 +325,8 @@
             dial_number.prop('disabled', false);
             dial_button.removeClass('d-none');
             dial_button.prop('disabled', false);
-            ans_button.removeClass('d-none');
-            ans_button.prop('disabled', false);
+            //ans_button.removeClass('d-none');
+            //ans_button.prop('disabled', false);
             swap_button.prop('disabled', false);
             swap_button.removeClass("d-none")
             performance_button.prop('disabled', false);
@@ -353,8 +354,8 @@
             dial_number.prop('disabled', false);
             dial_button.removeClass('d-none');
             dial_button.prop('disabled', false);
-            ans_button.removeClass('d-none');
-            ans_button.prop('disabled', false);
+            //ans_button.removeClass('d-none');
+            //ans_button.prop('disabled', false);
             swap_button.prop('disabled', false);
             swap_button.removeClass("d-none")
             performance_button.prop('disabled', false);
@@ -570,6 +571,68 @@
             });
         }
     });
+
+    $('.button_survey_tranfer', '#performance_button').click(function () {
+        let len = $('input[name="call[]"]:checked').length;
+        if (len > 0) {
+            if (len > 1) {
+                const prom = ezBSAlert({
+                    headerText: "Notice",
+                    messageText: "ไม่สามารถโอนสายมากกว่า 1 สายต่อครั้ง",
+                    alertType: "info",
+                });
+            } else {
+                let call_number = call_survey_number;
+                if (call_number !== '') {
+                    //if (confirm("Click OK to Tranfer?")) {
+                    let tranfer_chan = $('input[name="call[]"]:checked').val();
+                    let chan = tranfer_chan.split("/");
+                    console.log(call_number)
+                    console.log(chan[1])
+                    $.get(`${api_serv}/tranfer/` + call_number + "/" + chan[1], (data, status) => {
+                        if (data.response == 'Success') {
+                            $.ajax({
+                                url: "{{ route('tranfer_status') }}",
+                                method: 'post',
+                                data: {
+                                    exten: call_number,
+                                    _token: token,
+                                },
+                                async: true,
+                                success: function(result) {
+                                    console.log(result)
+                                }
+                            });
+                            const prom = ezBSAlert({
+                                headerText: "OK",
+                                messageText: "โอนสายสำเร็จ",
+                                alertType: "success",
+                            });
+                        } else {
+                            const prom = ezBSAlert({
+                                headerText: "Error",
+                                messageText: "โอนสาย ไม่สำเร็จ",
+                                alertType: "danger",
+                            });
+                        }
+                    });
+                } else {
+                    const prom = ezBSAlert({
+                        headerText: "Notice",
+                        messageText: "กรุณาระบุหมายเลขที่จะโอนสาย",
+                        alertType: "info",
+                    });
+                }
+
+            }
+        } else {
+            const prom = ezBSAlert({
+                headerText: "Notice",
+                messageText: "กรุณาระบุสายที่จะโอนสาย",
+                alertType: "info",
+            });
+        }
+});
 
     //atx tranfer
     $(".button_atx_tranfer").click(function() {
