@@ -496,7 +496,7 @@
                 let call_number = $('#dial_number').val();
                 if (call_number !== '') {
                     //if (confirm("Click OK to Tranfer?")) {
-                    let tranfer_chan = $("input[type='checkbox']").val();
+                    let tranfer_chan = $('input[name="call[]"]:checked').val();
                     let chan = tranfer_chan.split("/");
                     console.log(call_number)
                     console.log(chan[1])
@@ -585,7 +585,7 @@
                 let call_number = $('#dial_number').val();
                 if (call_number !== '') {
                     //if (confirm("Click OK to Tranfer?")) {
-                    let tranfer_chan = $("input[type='checkbox']").val();
+                    let tranfer_chan = $('input[name="call[]"]:checked').val();
                     let chan = tranfer_chan.split("/");
                     $.get(`${api_serv}/atx_tranfer/` + call_number + "/" + chan[1], (data, status) => {
                         if (status == 'success') {
