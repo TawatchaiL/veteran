@@ -29,7 +29,7 @@ class CallsurveyController extends Controller
         $this->remote = $asteriskAmiService;
     }
 
-    public function gen_call_survey()
+    public function gen_call_survey($max_score, $wellcome, $thankyou, $timeout, $invalid, $max)
     {
         $dialplan = '[call-survey]
         exten => s,1,Set(TIMEOUT_LOOPCOUNT=0)
@@ -37,31 +37,44 @@ class CallsurveyController extends Controller
         exten => s,n,GotoIf($["${CDR(disposition)}" = "ANSWERED"]?skip)
         exten => s,n,Answer
         exten => s,n,Wait(1)
-        exten => s,n(skip),Set(IVR_MSG=custom/CallSurvwey-wellcome)
+        exten => s,n(skip),Set(IVR_MSG=custom/' . $wellcome . ')
         exten => s,n(start),Set(TIMEOUT(digit)=3)
         exten => s,n,ExecIf($["${IVR_MSG}" != ""]?Background(${IVR_MSG}))
-        exten => s,n,WaitExten(10)
+        exten => s,n,WaitExten(10)';
 
+        for ($i = 1; $i <= $max_score; $i++) {
+            $dialplan .= '
+            exten => $i,1,Noop()
+            exten => $i,n,Noop()
+            exten => $i,n,Set(IVR_SCORE=' . $i . ')
+            exten => $i,n,Saydigits(' . $i . ')
+            exten => $i,n,Playback(custom/' . $thankyou . ')
+            exten => $i,n,Hangup';
+        }
+
+        $dialplan .= '
         exten => i,1,Set(INVALID_LOOPCOUNT=$[${INVALID_LOOPCOUNT}+1])
         exten => i,n,GotoIf($[${INVALID_LOOPCOUNT} > 3]?final)
-        exten => i,n,Set(IVR_MSG=custom/Invalid&custom/CallSurvwey-wellcome)
+        exten => i,n,Set(IVR_MSG=custom/' . $invalid . '&custom/' . $wellcome . ')
         exten => i,n,Goto(s,start)
-        exten => i,n(final),Playback(custom/max)
-        exten => i,n,Goto(app-announcement-1,s,1)
+        exten => i,n(final),Playback(custom/' . $max . ')
+        exten => i,n,Playback(custom/' . $thankyou . ')
+        exten => i,n,Hangup
 
         exten => t,1,Set(TIMEOUT_LOOPCOUNT=$[${TIMEOUT_LOOPCOUNT}+1])
         exten => t,n,GotoIf($[${TIMEOUT_LOOPCOUNT} > 3]?final)
-        exten => t,n,Set(IVR_MSG=custom/TimeOut&custom/CallSurvwey-wellcome)
+        exten => t,n,Set(IVR_MSG=custom/' . $timeout . '&custom/' . $wellcome . ')
         exten => t,n,Goto(s,start)
-        exten => t,n(final),Playback(custom/max)
-        exten => t,n,Goto(app-announcement-1,s,1)
+        exten => t,n(final),Playback(custom/' . $max . ')
+        exten => t,n,Playback(custom/' . $thankyou . ')
+        exten => t,n,Hangup
 
-        exten => return,1,Set(IVR_MSG=custom/CallSurvwey-wellcome)
+        exten => return,1,Set(IVR_MSG=custom/' . $wellcome . ')
         exten => return,n,Goto(s,start)
 
         exten => h,1,Hangup
 
-        exten => hang,1,Playback(vm-goodbye)
+        exten => hang,1,Playback(' . $thankyou . ')
         ';
 
         $dialplanLines = explode("\n", $dialplan);
