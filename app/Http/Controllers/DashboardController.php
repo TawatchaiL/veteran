@@ -211,7 +211,7 @@ class DashboardController extends Controller
         $scoreCounts = $results->pluck('count', 'score')->all();
         $maxScore = max(array_keys($scoreCounts));
 
-        $allscore = range(0, $maxScore);
+        $allscore = range(1, $maxScore);
 
 
         $scoreCounts = [];
