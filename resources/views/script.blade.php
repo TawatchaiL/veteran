@@ -392,10 +392,10 @@
                 selectedMode: 'single',
                 radius: '60%',
                 center: ['50%', '45%'],
-                data: [labels.map(label => ({
+                data: labels.map(label => ({
                     value: data[label],
                     name: label
-                }))],
+                })),
                 emphasis: {
                     itemStyle: {
                         shadowBlur: 10,
@@ -459,10 +459,10 @@
 
     const handleCallSurveyData = async () => {
         try {
-            const datac = await AgentCallSurvey();
-            const optionc = score_chart_data(datac);
-            console.log(optionc)
-            var chart_score = new ApexCharts(document.querySelector("#chart_call_survey"), optionc);
+            const datas = await AgentCallSurvey();
+            const options = score_chart_data(datas);
+            console.log(options)
+            var chart_score = new ApexCharts(document.querySelector("#chart_call_survey"), options);
             chart_score.render();
             window.addEventListener('resize', chart_score.resize);
         } catch (error) {
