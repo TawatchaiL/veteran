@@ -595,6 +595,7 @@
                 _token: token,
             },
             success: (data) => {
+                div_agent_sla_chart.setOption(agent_sla_chart(0));
                 data.sla_data.forEach((item) => {
                     if (item.queue_number == storedOption) {
                         div_agent_sla_chart.setOption(agent_sla_chart(item.percentage));
