@@ -376,8 +376,8 @@
                     d.sdate = $('#reservation').val();
                 },
                 complete: function (data) {
-                    var data = JSON.parse(data);
-                    alert(data.readyState);
+                    var dataa = JSON.parse(data);
+                    alert(dataa.readyState);
                     Loadchart();
                 }  
             },
