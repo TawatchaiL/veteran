@@ -329,7 +329,7 @@
                 startDate: startDate,
                 endDate: endDate,
                 locale: {
-                    format: 'Buddhist YYYY-MM-DD'
+                    format: 'YYYY-MM-DD'
                 }
             });
 
