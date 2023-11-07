@@ -724,7 +724,7 @@
                 url: '{{ route('reportcasetop10.report') }}',
                 data: {
                     sdate: rdate,
-                    rstatus = rstatus
+                    rstatus: rstatus
                     
                 },
                 method: 'GET',
