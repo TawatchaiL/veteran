@@ -602,7 +602,7 @@
             };
             var options = {
                 series: [
-                        { name: '',
+                        { name: [],
                           data: [4,1, 1]
                         },
                 ],
@@ -673,7 +673,7 @@
                     options.series[0].data = res.datag;
                     options.xaxis.categories = res.datal;
                    
-                    var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
+                        var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
                         chart2.render();
 
                         var chart = new ApexCharts(document.querySelector("#bar_graph"), options);
@@ -684,17 +684,17 @@
                             });
                         var chart3 = new ApexCharts(document.querySelector("#pie_graph"), options);
                             chart3.render();
-                            chart3.updateOptions({chart: {type: "donut",animate: true},
-                                                    legend: {
-                                                    show: true,
-                                                    showForSingleSeries: true,
-                                                    position: "top",
-                                                    horizontalAlign: "right"
+                            chart3.updateOptions({chart: {
+                                                    type: "donut",
+                                                    animate: true
                                                     },
-                                                series: res.datag,
-                                                labels: res.datal
-                            });
+                                                    series: [44, 55, 13],
+                                                    labels: ['Apple', 'Orange', 'Watermelon']
+                                                });
                 }
             });
     });
+
+var chart = new ApexCharts(document.querySelector("#pie_graph"), options);
+chart.render();
 </script>
