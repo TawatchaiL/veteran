@@ -60,7 +60,17 @@ class ReportcasetopController extends Controller
                     return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
             })->rawColumns(['checkbox', 'action'])->toJson();
         }
-
+        if (!empty($request->get('sdate'))) {
+            $chart_data = array();
+            $chart_label = array();
+            foreach ($datas as $data) {
+                $chart_data[] = $data->sumcases;
+                $chart_label[] = $data->casetype1;
+            }
+            return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
+        }else{
+            return view('reportcasetop10.index');
+        }
         //graph data
         /*$chart_data = array();
         foreach ($datas as $data) {
@@ -106,7 +116,7 @@ class ReportcasetopController extends Controller
 
         return view('reportcasetop10.index', compact('chart1', 'chart2', 'chart3'));
         */
-        return view('reportcasetop10.index');
+        
     }
     public function report(Request $request)
     {
