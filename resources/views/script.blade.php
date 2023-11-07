@@ -363,7 +363,8 @@
     };
 
     const score_chart_data = (data) => {
-
+        const datac = Object.values(data);
+        const labels = Object.keys(data);
         const option = {
             title: {
                 show: false,
@@ -396,7 +397,8 @@
             }, */
             legend: {
                 top: '5%',
-                left: 'center'
+                left: 'center',
+                data: labels
             },
             series: [{
                 name: 'คะแนน',
@@ -404,28 +406,10 @@
                 selectedMode: 'single',
                 radius: '60%',
                 center: ['50%', '45%'],
-                data: [{
-                        value: 10,
-                        name: '1'
-                    },
-                    {
-                        value: 15,
-                        name: '2'
-                    },
-                    {
-                        value: 18,
-                        name: '3'
-                    },
-                    {
-                        value: 20,
-                        name: '4'
-                    },
-                    {
-                        value: 50,
-                        name: '5',
-                        selected: true
-                    }
-                ],
+                data: datac.map((value, index) => ({
+                    value,
+                    name: labels[index]
+                })),
                 emphasis: {
                     itemStyle: {
                         shadowBlur: 10,
