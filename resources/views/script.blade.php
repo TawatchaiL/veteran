@@ -459,6 +459,7 @@
         try {
             const datac = await AgentCallSurvey();
             const optionc = score_chart_data(datac);
+            console.log(optionc)
             var chart_score = new ApexCharts(document.querySelector("#chart_call_survey"), optionc);
             chart_score.render();
             window.addEventListener('resize', chart_score.resize);
@@ -488,6 +489,5 @@
         handleCaseDataDate();
         handleCallSurveyData();
 
-        AgentCallSurvey();
     });
 </script>
