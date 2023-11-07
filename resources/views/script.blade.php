@@ -365,6 +365,7 @@
     const score_chart_data = (data) => {
         const labels = Object.keys(data);
         const values = Object.values(data);
+
         const option = {
             title: {
                 show: false,
