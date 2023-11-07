@@ -667,7 +667,7 @@
             };
             var optionsdonut = {
 
-                series: [4,1,1],
+                series: [],
                 chart: {
                     type: 'donut',
                     height: 380,
@@ -693,7 +693,7 @@
                     offsetY: 0,
                     floating: false,
                 },
-                labels: ["","2","ทดสอบ1",],
+                labels: [],
                 responsive: [{
                     breakpoint: 200,
                     options: {
