@@ -107,7 +107,7 @@ class DashboardController extends Controller
                 DB::raw('AVG(duration_wait) as avg_hold_time'),
                 DB::raw('SUM(duration) as total_talk_time'),
                 DB::raw('MAX(duration_wait) as max_hold_time'),
-                DB::raw('(SELECT count(*) FROM agent_score_today WHERE crm_id = ' . $user->id . ') as total_score')
+                DB::raw('(SELECT sum(score) FROM agent_score_today WHERE crm_id = ' . $user->id . ') as total_score')
             )
             ->where('crm_id', $user->id)
             ->get();
