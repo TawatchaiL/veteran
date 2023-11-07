@@ -712,8 +712,8 @@
                 success: function(res) {
                     options.series[0].data = res.datag;
                     options.xaxis.categories = res.datal;
-                    optionsdonut.labels = res.datal; 
-                    optionsdonut.series = res.datag;
+                    //optionsdonut.labels = res.datal; 
+                    //optionsdonut.series = res.datag;
                         var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
                         chart2.render();
 
@@ -723,7 +723,8 @@
                                                 labels: '',
                                                 stroke: {width: 0}
                             });
-                        var chart3 = new ApexCharts(document.querySelector("#pie_graph"), optionsdonut);
+                            options.series.data =  res.datag;
+                        var chart3 = new ApexCharts(document.querySelector("#pie_graph"), options);
                             chart3.render();
                 }
             });
