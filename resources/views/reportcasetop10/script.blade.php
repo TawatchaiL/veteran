@@ -377,7 +377,7 @@
                 },
                 complete: function (data) {
                     var myArr = JSON.parse(data);
-                    alert(myArr[5]);
+                    alert(myArr[2]);
                     Loadchart();
                 }  
             },
