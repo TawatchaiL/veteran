@@ -50,7 +50,7 @@ class DetailcaselogbyhnController extends Controller
         }
 
         $datas = DB::table('crm_caseslogs')
-        ->select('crm_caseslogs.id as id','hn', 'crm_caseslogs.modifyaction', 'crm_caseslogs.modifyagent', 'crm_caseslogs.modifydate')
+        ->select('crm_caseslogs.agent','crm_caseslogs.id as id','hn', 'crm_caseslogs.modifyaction', 'crm_caseslogs.modifyagent', 'crm_caseslogs.modifydate')
         ->join('crm_contacts', 'crm_caseslogs.contact_id', '=', 'crm_contacts.id')
         ->whereRaw('crm_caseslogs.modifydate between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
         ->get();

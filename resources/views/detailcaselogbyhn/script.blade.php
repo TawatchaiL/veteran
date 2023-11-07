@@ -567,8 +567,8 @@
                     name: 'id'
                 },
                 {
-                    data: 'modifydate',
-                    name: 'modifydate'
+                    data: 'modifyagent',
+                    name: 'modifyagent'
                 },
                 {
                     data: 'modifydate',

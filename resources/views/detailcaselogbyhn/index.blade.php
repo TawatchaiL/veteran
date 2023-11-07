@@ -111,8 +111,8 @@
                                             <th>Agent ที่รับสาย</th>
                                             <th>HN</th>
                                             <th>Caseid</th>
-                                            <th>วันที่</th>
-                                            <th>เวลา</th>
+                                            <th>Agent</th>
+                                            <th>วันที่ เวลา</th>
                                             <th>รายละเอียด</th>
                                         </tr>
                                     </thead>
