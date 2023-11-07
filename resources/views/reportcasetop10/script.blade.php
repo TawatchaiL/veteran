@@ -376,8 +376,6 @@
                     d.sdate = $('#reservation').val();
                 },
                 complete: function (data) {
-                    var dataa = JSON.parse(data);
-                    alert(dataa.readyState);
                     Loadchart();
                 }  
             },
@@ -722,7 +720,7 @@
                 
                 var rdate = $('#reservation').val();
                 $.ajax({
-                url: '{{ route('reportcasetop10.report') }}',
+                url: '{{ route('reportcasetop10') }}',
                 data: {
                     sdate: rdate
                 },
