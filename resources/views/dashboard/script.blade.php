@@ -635,7 +635,6 @@
                     mcalluniq = data[4][1];
                     mcallapp = data[5][1];
                     mcallstate = data[6][1].replace(/\s*\(\d+\)/, '');
-                    console.log(mcallqueue);
                     set_state(exten, mcallexten, mcalluniq, mcallapp, mcallstate,
                         mcallqueue);
                     //}
@@ -784,7 +783,7 @@
                     status = set_status('pause', res.pausedreason);
                 }
                 div_src.html('');
-                div_queue.html(res.queue);
+                div_queue.html(queue_name[res.queue]);
             } else if (res.status == 6) {
                 await call_list(phone_number);
                 ring_cid = dbv[phone_number + '_cid'];
@@ -804,7 +803,7 @@
                 state_dur = duration_miltime(ring_time);
                 status = set_status('ring', ring_text);
                 div_src.html(ring_cid);
-                div_queue.html(ring_queue);
+                div_queue.html(queue_name[ring_queue]);
             } else if (res.status == 2) {
                 call_list(phone_number);
 
@@ -828,7 +827,7 @@
 
                 status = set_status('answer', ans_text);
                 div_src.html(ans_cid);
-                div_queue.html(ans_queue);
+                div_queue.html(queue_name[ans_queue]);
             } else if (res.status == 8) {
                 active_call[phone_number] = 1;
                 status = set_status('hold', '');
@@ -849,7 +848,7 @@
                 }
                 status = set_status('ready', '');
                 div_src.html('');
-                div_queue.html(res.queue);
+                div_queue.html(queue_name[res.queue]);
             }
 
             $('#' + phone_number + '_status').html(status);
