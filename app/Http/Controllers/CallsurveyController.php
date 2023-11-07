@@ -46,6 +46,7 @@ class CallsurveyController extends Controller
             $dialplan .= '
             exten => ' . $i . ',1,Noop(${CALLERID(number)})
             exten => ' . $i . ',n,Noop(${QUEUENUM})
+            exten => ' . $i . ',n,Noop(${BLINDTRANSFER})
             exten => ' . $i . ',n,Set(IVR_SCORE=' . $i . ')
             exten => ' . $i . ',n,Saydigits(' . $i . ')
             exten => ' . $i . ',n,Playback(custom/' . $thankyou . ')
