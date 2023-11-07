@@ -557,7 +557,7 @@
                 changeText(avg_talk, '00:00:00');
                 changeText(avg_wait, '00:00:00');
                 changeText(total_talk, '00:00:00');
-                changeText(total_score, '00:00:00');
+                changeText(total_score, '0');
                 changeText(max_wait, '00:00:00');
 
                 data.avg_data.forEach((item) => {
