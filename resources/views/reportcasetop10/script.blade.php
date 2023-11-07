@@ -345,13 +345,11 @@
 
         $('#btnsearch').click(function(e) {
             $('#Listview').DataTable().ajax.reload();
-            Loadchart();
         });
         $('#btnreset').click(function(e) {
             datereset();
             daterange();
             $('#Listview').DataTable().ajax.reload();
-            Loadchart();
         });
 
         var table = $('#Listview').DataTable({
@@ -609,7 +607,6 @@
                // Loadchart();
     });
 
-   
     function Loadchart(){
         let options = {
                 series: [
@@ -709,7 +706,7 @@
                     breakpoint: 200,
                     options: {
                         chart: {
-                            width: 300,
+                            width: 30,
                         },
                         legend: {
                             position: 'bottom'
@@ -721,11 +718,10 @@
                 var rdate = $('#reservation').val();
                 var rstatus = 'report';
                 $.ajax({
-                url: '{{ route('reportcasetop10.report') }}',
+                url: '{{ route('reportcasetop10') }}',
                 data: {
                     sdate: rdate,
-                    rstatus = rstatus
-                    
+                    rstatus: rstatus
                 },
                 method: 'GET',
                 success: function(res) {

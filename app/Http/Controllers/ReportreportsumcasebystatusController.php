@@ -35,66 +35,43 @@ class ReportreportsumcasebystatusController extends Controller
      */
     public function index(Request $request)
     {
+        if (!empty($request->get('sdate'))) {
+            $dateRange = $request->input('sdate');
+            if ($dateRange) {
+                $dateRangeArray = explode(' - ', $dateRange);
+                if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
+                    $startDate = $dateRangeArray[0];
+                    $endDate = $dateRangeArray[1];
+                }
+            }
+        }else{
+                    $startDate = date("Y-m-d");
+                    $endDate = date("Y-m-t", strtotime($startDate));  
+        }
 
-        
-            //sleep(2);
-
-            //$datas = Cases::orderBy("id", "desc")->get();
-
-            $datas = DB::table('cases')
+            $datas = DB::table('crm_cases')
                 ->select('casestatus as name1', DB::raw('count(*) as sumcases'))
+                ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
                 ->groupBy('casestatus')
                 ->orderBy("sumcases", "desc")
                 ->get();
+
+            if (!empty($request->get('rstatus'))) {
+                $chart_data = array();
+                $chart_label = array();
+                foreach ($datas as $data) {
+                    $chart_data[] = $data->sumcases;
+                    $chart_label[] = $data->name1;
+                }
+                return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
+            }
+
         if ($request->ajax()) {
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
-
-        //graph data
-        $chart_data = array();
-        foreach ($datas as $data) {
-            $chart_data[$data->name1] = $data->sumcases;
-        }
-
-        $graph_color = array(
-            '#E91E63', '#2E93fA', '#546E7A', '#66DA26', '#FF9800',  '#4ECDC4', '#C7F464', '#81D4FA',
-            '#A5978B', '#FD6A6A'
-        );
-
-        $chart_title = "ผลรวมเรื่องที่ติดต่อแยกตามสถานะ";
-
-        $chart_options = [
-            'chart_id' => 'bar_graph',
-            'chart_title' => $chart_title,
-            'chart_type' => 'bar',
-            'color' => $graph_color,
-            'data' => $chart_data
-        ];
-
-        $chart1 = new GraphService($chart_options);
-
-        $chart_options = [
-            'chart_id' => 'line_graph',
-            'chart_title' => $chart_title,
-            'chart_type' => 'line',
-            'color' => $graph_color,
-            'data' => $chart_data
-        ];
-
-        $chart2 = new GraphService($chart_options);
-
-        $chart_options = [
-            'chart_id' => 'pie_graph',
-            'chart_title' => $chart_title,
-            'chart_type' => 'pie',
-            'color' => $graph_color,
-            'data' => $chart_data
-        ];
-
-        $chart3 = new GraphService($chart_options);
-        return view('reportsumcasebystatus.index', compact('chart1', 'chart2', 'chart3'));
+        return view('reportsumcasebystatus.index');
     }
 }
