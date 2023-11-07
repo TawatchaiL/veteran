@@ -371,18 +371,12 @@
             dom: 'Bfrtip',
             paging: true,
             searching: false,
-            ajax: {
+            ajax: ({
                 data: function(d) {
                     d.sdate = $('#reservation').val();
-                },
-                success: function () {
-                alert("Done!");
-                },
-                dataSrc: function ( json ) {
-
-                return json.data;
-            }   
-            },
+                }
+            }).success( function(){  alert("This Function will execute after data table loaded");    
+            }),
             serverSide: true,
             processing: true,
             language: {
