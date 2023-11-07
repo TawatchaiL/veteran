@@ -36,6 +36,7 @@
                         handleDataHour();
                         handleDataDate();
                         handleCaseDataDate();
+                        handleCallSurveyData();
                     @endif
 
                 }
