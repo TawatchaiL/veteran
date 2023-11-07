@@ -1170,6 +1170,12 @@
                 localStorage.setItem('selectedOption',
                     selectedOption);
             }
+
+            allcall.html(0);
+            completed.html(0);
+            abandoned.html(0);
+            abandoned_percent.html(0.0);
+
             get_agent(selectedOption);
             updateSLAData();
             updateAvgData();
