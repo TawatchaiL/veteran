@@ -706,7 +706,7 @@
                     breakpoint: 200,
                     options: {
                         chart: {
-                            width: 300,
+                            width: 30,
                         },
                         legend: {
                             position: 'bottom'
