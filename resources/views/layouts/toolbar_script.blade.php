@@ -572,7 +572,7 @@
         }
     });
 
-    $('.button_survey_tranfer', '#performance_button').click(function () {
+    $('.button_survey_tranfer,#performance_button').click(function () {
         let len = $('input[name="call[]"]:checked').length;
         if (len > 0) {
             if (len > 1) {
