@@ -12,6 +12,7 @@
                     avg_wait.html(item.avg_hold_time)
                     total_talk.html(item.total_talk_time)
                     total_call.html(item.total_call)
+                    total_score.html(item.total_score)
                 });
             },
             error: (error) => {
@@ -471,6 +472,7 @@
     const avg_talk = $('#avg_talk');
     const total_talk = $('#total_talk');
     const avg_wait = $('#avg_wait');
+    const total_score = $('#total_score');
 
     //const max_wait = document.getElementById("max_wait");
     $(document).ready(() => {

@@ -106,7 +106,8 @@ class DashboardController extends Controller
                 DB::raw('AVG(duration) as avg_talk_time'),
                 DB::raw('AVG(duration_wait) as avg_hold_time'),
                 DB::raw('SUM(duration) as total_talk_time'),
-                DB::raw('MAX(duration_wait) as max_hold_time')
+                DB::raw('MAX(duration_wait) as max_hold_time'),
+                DB::raw('(SELECT count(*) FROM agent_score_today WHERE crm_id = ' . $user->id . ') as total_score')
             )
             ->where('crm_id', $user->id)
             ->get();
@@ -117,6 +118,7 @@ class DashboardController extends Controller
         foreach ($queue as $item) {
             $formattedItem = new \stdClass();
             $formattedItem->total_call = $item->total_call;
+            $formattedItem->total_score = $item->total_score;
             $formattedItem->avg_talk_time = $this->formatDuration($item->avg_talk_time);
             $formattedItem->avg_hold_time = $this->formatDuration($item->avg_hold_time);
             $formattedItem->total_talk_time = $this->formatDuration($item->total_talk_time);
