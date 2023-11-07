@@ -61,7 +61,7 @@ class ReportsumbytypeController extends Controller
             $chart_label = array();
             foreach ($datas as $data) {
                 $chart_data[] = $data->sumcases;
-                $chart_label[] = $data->casetype1;
+                $chart_label[] = $data->name1;
             }
             return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
         }
