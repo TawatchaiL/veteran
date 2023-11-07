@@ -541,7 +541,7 @@
     const updateAvgData = () => {
         const storedOption = localStorage.getItem('selectedOption') || '{{ $queue[0]->extension }}';
         const storedSLA = localStorage.getItem('sla_setting') || '30';
-        console.log(storedOption)
+
         $.ajax({
             url: '{{ route('dashboard.avg_data') }}',
             method: 'POST',
@@ -554,6 +554,11 @@
                 avg_wait.html('')
                 total_talk.html('')
                 max_wait.html('') */
+                changeText(avg_talk, '00:00:00');
+                changeText(avg_wait, '00:00:00');
+                changeText(total_talk, '00:00:00');
+                changeText(total_score, '0');
+                changeText(max_wait, '00:00:00');
 
                 data.avg_data.forEach((item) => {
                     if (item.queue_number == storedOption) {
@@ -590,6 +595,7 @@
                 _token: token,
             },
             success: (data) => {
+                div_agent_sla_chart.setOption(agent_sla_chart(0));
                 data.sla_data.forEach((item) => {
                     if (item.queue_number == storedOption) {
                         div_agent_sla_chart.setOption(agent_sla_chart(item.percentage));
@@ -1164,8 +1170,6 @@
                 localStorage.setItem('selectedOption',
                     selectedOption);
             }
-
-            console.log(selectedOption)
             get_agent(selectedOption);
             updateSLAData();
             updateAvgData();
