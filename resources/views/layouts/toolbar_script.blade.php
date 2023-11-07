@@ -935,14 +935,14 @@
                     mcalldestchan = data[3][1];
 
                     if (strArray[4] == 'Ringing' || strArray[4] == 'Ring') {
-                        state = 'กำลังรอสาย' + strArray[1]
+                        state = 'กำลังรอสาย'
                         state_icon =
                             '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
                         state_color = 'card-danger';
                         check_box_state = 'disabled';
                         hold_button = "d-none";
                         dans_button = "";
-                        if (strArray[1] != "macro-dial-one" || strArray[1] != "macro-dialout-trunk") {
+                        if (strArray[1] !== "macro-dial-one" || strArray[1] !== "macro-dialout-trunk") {
                             button_ans =
                             `<a href="#" class="btn btn-success answer_call ${dans_button}" data-id="${exten}"><i class="fa-solid fa-phone-volume"></i> รับสาย</a>`
                         }
