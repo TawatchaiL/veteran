@@ -935,7 +935,7 @@
                     mcalldestchan = data[3][1];
 
                     if (strArray[4] == 'Ringing' || strArray[4] == 'Ring') {
-                        state = 'กำลังรอสาย'
+                        state = 'กำลังรอสาย1'
                         state_icon =
                             '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
                         state_color = 'card-danger';
@@ -954,7 +954,7 @@
                             hold_button = "d-none";
                             dans_button = "d-none";
                         } else {
-                            state = 'กำลังรอสาย'
+                            state = 'กำลังรอสาย2'
                             state_icon =
                                 '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
                             state_color = 'card-danger';
