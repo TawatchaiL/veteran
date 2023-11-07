@@ -607,7 +607,6 @@
                // Loadchart();
     });
 
-   
     function Loadchart(){
         let options = {
                 series: [
