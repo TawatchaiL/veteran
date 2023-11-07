@@ -541,6 +541,7 @@
     const updateAvgData = () => {
         const storedOption = localStorage.getItem('selectedOption') || '{{ $queue[0]->extension }}';
         const storedSLA = localStorage.getItem('sla_setting') || '30';
+        console.log(storedOption)
         $.ajax({
             url: '{{ route('dashboard.avg_data') }}',
             method: 'POST',
@@ -1160,13 +1161,14 @@
         selectElement.on('change', () => {
             const selectedOption = selectElement.val();
             if (selectedOption) {
-                updateAvgData();
                 localStorage.setItem('selectedOption',
                     selectedOption);
             }
 
+            console.log(selectedOption)
             get_agent(selectedOption);
             updateSLAData();
+            updateAvgData();
         });
 
         /* setInterval(() => {
