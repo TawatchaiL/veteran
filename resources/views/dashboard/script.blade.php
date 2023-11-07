@@ -1160,13 +1160,13 @@
         selectElement.on('change', () => {
             const selectedOption = selectElement.val();
             if (selectedOption) {
-                updateAvgData();
                 localStorage.setItem('selectedOption',
                     selectedOption);
             }
 
             get_agent(selectedOption);
             updateSLAData();
+            updateAvgData();
         });
 
         /* setInterval(() => {
