@@ -221,7 +221,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="col-md-12">
-                                        <div id="mainbc2_4071" style="width: 100%; height: 420px;"></div>
+                                        <div id="chart_call_survey" style="width: 100%; height: 420px;"></div>
                                     </div>
                                 </div>
 

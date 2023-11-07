@@ -193,6 +193,47 @@ class DashboardController extends Controller
         ]);
     }
 
+    public function dashboard_agent_call_survey()
+    {
+        $user = Auth::user();
+
+
+        $results = DB::connection('remote_connection')
+            ->table('agent_score_today')
+            ->select(
+                'score',
+                DB::raw('COUNT(*) as count')
+            )
+            ->where('crm_id', $user->id)
+            ->groupBy('score')
+            ->get();
+
+        $scoreCounts = $results->pluck('count', 'score')->all();
+        $maxScore = max(array_keys($scoreCounts));
+
+        $allscore = range(0, $maxScore);
+
+
+        $scoreCounts = [];
+        foreach ($results as $result) {
+            $scoreCounts[$result->score] = $result->count;
+        }
+
+
+        foreach ($allscore as $score) {
+            if (!isset($scoreCounts[$score])) {
+                $scoreCounts[$score] = 0;
+            }
+        }
+
+        ksort($scoreCounts);
+
+        return response()->json([
+            'score_data' => $scoreCounts,
+        ]);
+    }
+
+
     public function dashboard_agent_call_by_date()
     {
         $user = Auth::user();
