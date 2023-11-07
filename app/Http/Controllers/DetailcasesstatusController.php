@@ -51,7 +51,7 @@ class DetailcasesstatusController extends Controller
 
         $datas = DB::table('crm_cases')
         ->select(DB::raw('DATE(created_at) as cdate'), DB::raw('TIME(created_at) as ctime'),'telno','casetype1', 'casedetail', 'casestatus', 'tranferstatus', 'agent' )
-        ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '" and casestatus = "' . $request->input('casestatus') . '"')
+        ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '" and casestatus = "' . $request->input('casesstatus') . '"')
         ->get();
 
         if ($request->ajax()) {

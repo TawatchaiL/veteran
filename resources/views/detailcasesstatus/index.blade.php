@@ -42,7 +42,7 @@
                                             <strong><i class="fa-regular fa-comment-dots"></i>
                                                 สถานะเรื่องที่ติดต่อ:</strong>
                                             <select style="width: 100%;" class="select2 form-control" id="casesstatus"
-                                                name="casesstatus">
+                                                name="">
                                                 <option value="ปิดเคส" selected>ปิดเคส</option>
                                                 <option value="กำลังดำเนินการ" selected>กำลังดำเนินการ</option>
                                             </select>
