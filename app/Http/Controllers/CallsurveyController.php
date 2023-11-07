@@ -44,12 +44,12 @@ class CallsurveyController extends Controller
 
         for ($i = 1; $i <= $max_score; $i++) {
             $dialplan .= '
-            exten => $i,1,Noop()
-            exten => $i,n,Noop()
-            exten => $i,n,Set(IVR_SCORE=' . $i . ')
-            exten => $i,n,Saydigits(' . $i . ')
-            exten => $i,n,Playback(custom/' . $thankyou . ')
-            exten => $i,n,Hangup';
+            exten => ' . $i . ',1,Noop()
+            exten => ' . $i . ',n,Noop()
+            exten => ' . $i . ',n,Set(IVR_SCORE=' . $i . ')
+            exten => ' . $i . ',n,Saydigits(' . $i . ')
+            exten => ' . $i . ',n,Playback(custom/' . $thankyou . ')
+            exten => ' . $i . ',n,Hangup';
         }
 
         $dialplan .= '
@@ -183,7 +183,14 @@ class CallsurveyController extends Controller
         Callsurvey::create($input);
 
         if ($request->get('set_default') == "1") {
-            $this->gen_call_survey();
+            $this->gen_call_survey(
+                $request->get('max_score'),
+                $request->get('wellcome_sound'),
+                $request->get('thankyou_sound'),
+                $request->get('timeout_sound'),
+                $request->get('invalid_sound'),
+                $request->get('max_sound')
+            );
         }
 
         return response()->json(['success' => 'เพิ่ม Call Survey เรียบร้อยแล้ว']);
@@ -257,7 +264,14 @@ class CallsurveyController extends Controller
         $update->update($contactd);
 
         if ($request->get('set_default') == "1") {
-            $this->gen_call_survey();
+            $this->gen_call_survey(
+                $request->get('max_score'),
+                $request->get('wellcome_sound'),
+                $request->get('thankyou_sound'),
+                $request->get('timeout_sound'),
+                $request->get('invalid_sound'),
+                $request->get('max_sound')
+            );
         }
 
         return response()->json(['success' => 'แก้ไข Call Survey เรียบร้อยแล้ว']);
