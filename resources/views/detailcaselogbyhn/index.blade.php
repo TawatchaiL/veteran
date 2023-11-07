@@ -16,37 +16,31 @@
                             <div class="col-sm-12">
                                 <ol class="breadcrumb float-sm-center">
                                     {{-- <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Users Management</li> --}}
-                                    <div class="col-xs-2 col-sm-2 col-md-2">
-                                        <div class="form-group">
-                                            <strong><i class="fas fa-calendar"></i> วันที่เริ่ม:</strong>
-                                            {!! Form::text('start_date', null, [
-                                                'id' => 'SDate',
-                                                'placeholder' => '',
-                                                'class' => 'SDate form-control',
-                                                'data-target' => '#reservationdate',
-                                            ]) !!}
-                                        </div>
+                                    <li class="breadcrumb-item active">Users Management</li> --}}
+                        <div class="col-xs-3 col-sm-3 col-md-3">
+                            <div class="form-group">
+                                <strong>
+                                    วันที่บันทึกข้อมูล:</strong>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt"></i>
+                                        </span>
                                     </div>
-                                    <div class="col-xs-2 col-sm-2 col-md-2">
-                                        <div class="form-group">
-                                            <strong><i class="fas fa-calendar"></i> วันที่สิ้นสุด:</strong>
-                                            {!! Form::text('end_date', null, [
-                                                'id' => 'EDate',
-                                                'placeholder' => '',
-                                                'class' => 'EDate form-control',
-                                                'data-target' => '#reservationdate',
-                                            ]) !!}
-                                        </div>
-                                    </div>
+                                    <input type="text" class="form-control float-right" id="reservation" style="width: 210px">
+                                </div>
+
+                            </div>
+                        </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
                                             <strong><i class="fa-regular fa-comment-dots"></i>
-                                                เบอร์ปลายทาง:</strong>
-                                            <select style="width: 100%;" class="select2 form-control" id="telin"
-                                                name="telin">
-                                                <option value="" selected>1002</option>
-                                            </select>
+                                                Agent:</strong>
+                                                {!! Form::text('seachtext', null, [
+                                                    'id' => 'seachtext',
+                                                    'placeholder' => 'ข้อมูลที่ต้องการค้นหา',
+                                                    'class' => 'form-control',
+                                                ]) !!}
                                         </div>
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2 align-self-end">
