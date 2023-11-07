@@ -514,11 +514,12 @@
     }
 
 
-    let set_state = (phone, mcallexten, mcalluniq, mcallapp, mcallstate) => {
+    let set_state = (phone, mcallexten, mcalluniq, mcallapp, mcallstate, mcallqueue) => {
         dbv[phone + '_cid'] = mcallexten;
         dbv[phone + '_time'] = mcalluniq;
         dbv[phone + '_app'] = mcallapp;
         dbv[phone + '_state'] = mcallstate;
+        dbv[phone + '_queue'] = mcallqueue;
     }
 
     let set_status = (status, text = '') => {
@@ -634,7 +635,9 @@
                     mcalluniq = data[4][1];
                     mcallapp = data[5][1];
                     mcallstate = data[6][1].replace(/\s*\(\d+\)/, '');
-                    set_state(exten, mcallexten, mcalluniq, mcallapp, mcallstate);
+                    console.log(mcallqueue);
+                    set_state(exten, mcallexten, mcalluniq, mcallapp, mcallstate,
+                        mcallqueue);
                     //}
 
                     if (strArray[4] == 'Ringing' || strArray[4] == 'Ring') {
