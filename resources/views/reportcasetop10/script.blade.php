@@ -714,7 +714,7 @@
                     }
                 }]
                 };
-
+alert($('#reservation').val());
                 $.ajax({
                 url: '{{ route('reportcasetop10.report') }}',
                 data: function(d) {
