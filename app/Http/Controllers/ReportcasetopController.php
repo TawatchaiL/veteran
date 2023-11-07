@@ -120,8 +120,8 @@ class ReportcasetopController extends Controller
                 }
             }
         }else{
-                    $startDate = date("Y-m-d");
-                    $endDate = date("Y-m-t", strtotime($startDate));  
+                    //$startDate = date("Y-m-d");
+                    //$endDate = date("Y-m-t", strtotime($startDate));  
         }
             $datas = DB::table('crm_cases')
                 ->select('casetype1', DB::raw('count(casetype1) as sumcases'))
