@@ -35,35 +35,28 @@ class DetailcaselogbyhnController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
-            //sleep(2);
-
-            //$datas = Cases::orderBy("id", "desc")->get();
-            $numberOfRows = 50; // Change this to the desired number of rows
-            $simulatedDatas = [];
-
-            $rivrname = ['welcom', 'opd', 'callcenter'];
-            $rivrno = ['Comment', 'Edit'];
-
-            for ($i = 1; $i <= $numberOfRows; $i++) {
-
-                $ivrno  = $rivrno[array_rand($rivrno)];
-                $createDate = now()->subDays(rand(1, 365))->subHours(rand(0, 23))->subMinutes(rand(0, 59));
-
-
-                $simulatedDatas[] = (object) [
-                    'id' => $i,
-                    'agent' => rand(1001, 1020),
-                    'hn' => rand(10001, 99999),
-                    'caseid' => rand(100001, 999999),
-                    'cdate' => $createDate->format('Y-m-d'),
-                    'ctime' => $createDate->format('H:i:s'),
-                    'detaillog' => $ivrno,
-                ];
+        if (!empty($request->get('sdate'))) {
+            $dateRange = $request->input('sdate');
+            if ($dateRange) {
+                $dateRangeArray = explode(' - ', $dateRange);
+                if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
+                    $startDate = $dateRangeArray[0];
+                    $endDate = $dateRangeArray[1];
+                }
             }
+        }else{
+                    $startDate = date("Y-m-d");
+                    $endDate = date("Y-m-t", strtotime($startDate));  
+        }
 
+        $datas = DB::table('crm_caseslogs')
+        ->select('crm_caseslogs.agent','crm_caseslogs.id as id','hn', 'crm_caseslogs.modifyaction', 'crm_caseslogs.modifyagent', 'crm_caseslogs.modifydate')
+        ->join('crm_contacts', 'crm_caseslogs.contact_id', '=', 'crm_contacts.id')
+        ->whereRaw('crm_caseslogs.modifydate between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+        ->get();
 
-            return datatables()->of($simulatedDatas)
+        if ($request->ajax()) {
+            return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 })->rawColumns(['checkbox', 'action'])

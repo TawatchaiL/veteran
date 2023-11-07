@@ -563,20 +563,20 @@
                     name: 'hn'
                 },
                 {
-                    data: 'caseid',
-                    name: 'caseid'
+                    data: 'id',
+                    name: 'id'
                 },
                 {
-                    data: 'cdate',
-                    name: 'cdate'
+                    data: 'modifyagent',
+                    name: 'modifyagent'
                 },
                 {
-                    data: 'ctime',
-                    name: 'ctime'
+                    data: 'modifydate',
+                    name: 'modifydate'
                 },
                 {
-                    data: 'detaillog',
-                    name: 'detaillog'
+                    data: 'modifyaction',
+                    name: 'modifyaction'
                 },
             ]
         });
