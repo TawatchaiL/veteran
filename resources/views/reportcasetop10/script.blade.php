@@ -336,6 +336,7 @@
             // Apply the custom date range filter on input change
             $('#reservation').on('apply.daterangepicker', function() {
                 table.draw();
+                Loadchart();
                 //storeFieldValues();
             });
         }
@@ -344,11 +345,13 @@
 
         $('#btnsearch').click(function(e) {
             $('#Listview').DataTable().ajax.reload();
+            Loadchart();
         });
         $('#btnreset').click(function(e) {
             datereset();
             daterange();
             $('#Listview').DataTable().ajax.reload();
+            Loadchart();
         });
 
         var table = $('#Listview').DataTable({
@@ -729,11 +732,14 @@
                 }
             });
     });
-    
+
     Loadchart();
     function Loadchart(){
                     $.ajax({
                 url: '{{ route('reportcasetop10.report') }}',
+                data: function(d) {
+                    d.sdate = $('#reservation').val();
+                },
                 method: 'GET',
                 success: function(res) {
                     options.series[0].data = res.datag;
