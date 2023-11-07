@@ -49,8 +49,9 @@ class ReportreportsumcasebystatusController extends Controller
                     $endDate = date("Y-m-t", strtotime($startDate));  
         }
 
-            $datas = DB::table('cases')
+            $datas = DB::table('crm_cases')
                 ->select('casestatus as name1', DB::raw('count(*) as sumcases'))
+                ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
                 ->groupBy('casestatus')
                 ->orderBy("sumcases", "desc")
                 ->get();
@@ -64,7 +65,7 @@ class ReportreportsumcasebystatusController extends Controller
                 }
                 return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
             }
-            
+
         if ($request->ajax()) {
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
