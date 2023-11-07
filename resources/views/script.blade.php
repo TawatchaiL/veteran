@@ -385,7 +385,7 @@
             legend: {
                 top: '5%',
                 left: 'center',
-                data: labels.map(String)
+                data: ['1', '2', '3', '4', '5'] // Set legend data based on your names
             },
             series: [{
                 name: 'คะแนน',
@@ -393,10 +393,28 @@
                 selectedMode: 'single',
                 radius: '60%',
                 center: ['50%', '45%'],
-                data: labels.map(label => ({
-                    value: data[label],
-                    name: label
-                })),
+                data: [{
+                        value: 10,
+                        name: '1'
+                    },
+                    {
+                        value: 15,
+                        name: '2'
+                    },
+                    {
+                        value: 18,
+                        name: '3'
+                    },
+                    {
+                        value: 20,
+                        name: '4'
+                    },
+                    {
+                        value: 50,
+                        name: '5',
+                        selected: true
+                    }
+                ],
                 emphasis: {
                     itemStyle: {
                         shadowBlur: 10,
@@ -406,7 +424,6 @@
                 }
             }]
         };
-
         return option;
     };
 
