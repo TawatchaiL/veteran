@@ -592,5 +592,7 @@
         handleDataDate();
         handleCaseDataDate();
         handleCallSurveyData();
+
+        AgentCallSurvey();
     });
 </script>
