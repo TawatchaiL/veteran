@@ -374,6 +374,9 @@
             ajax: {
                 data: function(d) {
                     d.sdate = $('#reservation').val();
+                },
+                success:function(data){
+                    Loadchart();
                 }
             },
             serverSide: true,
@@ -603,7 +606,7 @@
         window.Apex.chart = {
         fontFamily: "Sarabun"
             };
-                Loadchart();
+               // Loadchart();
     });
 
    
