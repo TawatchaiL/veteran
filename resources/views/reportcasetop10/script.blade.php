@@ -602,7 +602,7 @@
             };
             var options = {
                 series: [
-                        { name: '',
+                        { name: [],
                           data: [4,1, 1]
                         },
                 ],
@@ -694,4 +694,7 @@
                 }
             });
     });
+
+var chart = new ApexCharts(document.querySelector("#pie_graph"), options);
+chart.render();
 </script>
