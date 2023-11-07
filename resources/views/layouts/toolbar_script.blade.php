@@ -431,7 +431,7 @@
         ezBSAlert({
             type: "confirm",
             headerText: "Confirm",
-            messageText: "ยืนยันการ Stop WrapUP",
+            messageText: "ยืนยันการ รับสายต่อ",
             alertType: "info",
         }).done(function(r) {
             if (r == true) {
