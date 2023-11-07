@@ -688,8 +688,12 @@
                                                     type: "donut",
                                                     animate: true
                                                     },
-                                                    series[name]: [44, 55, 13],
-                                                    labels: ['Apple', 'Orange', 'Watermelon']
+                                                    series: [
+                        { name: ['Apple', 'Orange', 'Watermelon'],
+                          data: [44, 55, 13]
+                        },
+                ]
+
                                                 });
                 }
             });
