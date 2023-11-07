@@ -463,9 +463,9 @@
             console.log(datas)
             const options = score_chart_data(datas);
             console.log(options)
-            var chart_score = new ApexCharts(document.querySelector("#chart_call_survey"), options);
+            /* var chart_score = new ApexCharts(document.querySelector("#chart_call_survey"), options);
             chart_score.render();
-            window.addEventListener('resize', chart_score.resize);
+            window.addEventListener('resize', chart_score.resize); */
         } catch (error) {
             console.error('Error:', error);
         }
