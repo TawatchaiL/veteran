@@ -31,7 +31,12 @@
                     set_state_button(result.id);
                     call_list();
 
-                    {{ Request::is('home') ? 'updateAvgData()\nhandleDataHour()\nhandleDataDate()\nhandleCaseDataDate()' : '' }}
+                    @if (Request::is('home'))
+                        updateAvgData();
+                        handleDataHour();
+                        handleDataDate();
+                        handleCaseDataDate();
+                    @endif
 
                 }
             });
