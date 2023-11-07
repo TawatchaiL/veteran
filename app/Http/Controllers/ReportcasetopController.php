@@ -54,17 +54,22 @@ class ReportcasetopController extends Controller
                 ->groupBy('casetype1')
                 ->orderBy("sumcases", "desc")
                 ->get();
+        if (!empty($request->get('rstatus'))) {
+            $chart_data = array();
+            $chart_label = array();
+            foreach ($datas as $data) {
+                $chart_data[] = $data->sumcases;
+                $chart_label[] = $data->casetype1;
+            }
+            return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
+        }
         if ($request->ajax()) {
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
             })->rawColumns(['checkbox', 'action'])->toJson();
         }
-        if (!empty($request->get('sdate'))) {
 
-        }else{
-            
-        }
         //graph data
         /*$chart_data = array();
         foreach ($datas as $data) {

@@ -719,12 +719,15 @@
                 };
                 
                 var rdate = $('#reservation').val();
+                var rstatus = 'report';
                 $.ajax({
                 url: '{{ route('reportcasetop10.report') }}',
                 data: {
-                    sdate: rdate
+                    sdate: rdate,
+                    rstatus = rstatus
+                    
                 },
-                method: 'POST',
+                method: 'GET',
                 success: function(res) {
                     options.series[0].data = res.datag;
                     options.xaxis.categories = res.datal;
