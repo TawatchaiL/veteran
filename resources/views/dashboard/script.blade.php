@@ -762,6 +762,7 @@
         let exts = res.location.split('/');
         let phone_number = exts[1];
         const div_src = $('#' + phone_number + '_src');
+        const div_queue = $('#' + phone_number + '_queue');
 
         if (res.queue == storedOption) {
             if (res.status == 5 || res.status == 0) {
@@ -783,11 +784,13 @@
                     status = set_status('pause', res.pausedreason);
                 }
                 div_src.html('');
+                div_queue.html('');
             } else if (res.status == 6) {
                 await call_list(phone_number);
                 ring_cid = dbv[phone_number + '_cid'];
                 ring_time = dbv[phone_number + '_time'];
                 ring_app = dbv[phone_number + '_app'];
+                ring_queue = dbv[phone_number + '_queue'];
                 ring_state = dbv[phone_number + '_state'];
 
                 let ring_text;
@@ -801,6 +804,7 @@
                 state_dur = duration_miltime(ring_time);
                 status = set_status('ring', ring_text);
                 div_src.html(ring_cid);
+                div_queue.html(ring_queue);
             } else if (res.status == 2) {
                 call_list(phone_number);
 
@@ -808,6 +812,7 @@
                 ans_time = dbv[phone_number + '_time'];
                 ans_app = dbv[phone_number + '_app'];
                 ans_state = dbv[phone_number + '_state'];
+                ans_queue = dbv[phone_number + '_queue'];
                 state_dur = duration_miltime(ans_time);
 
                 let ans_text;
@@ -823,6 +828,7 @@
 
                 status = set_status('answer', ans_text);
                 div_src.html(ans_cid);
+                div_queue.html(ans_queue);
             } else if (res.status == 8) {
                 active_call[phone_number] = 1;
                 status = set_status('hold', '');
@@ -843,6 +849,7 @@
                 }
                 status = set_status('ready', '');
                 div_src.html('');
+                div_queue.html(res.queue);
             }
 
             $('#' + phone_number + '_status').html(status);
