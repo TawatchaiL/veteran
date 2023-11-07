@@ -603,7 +603,7 @@
         window.Apex.chart = {
         fontFamily: "Sarabun"
             };
-            var options = {
+            let options = {
                 series: [
                         { name: [],
                           data: [4,1, 1]
@@ -668,7 +668,7 @@
                 }
             }
             };
-            var optionsdonut = {
+            let optionsdonut = {
 
                 series: [],
                 chart: {
