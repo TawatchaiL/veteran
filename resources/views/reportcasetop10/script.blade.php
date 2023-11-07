@@ -345,13 +345,11 @@
 
         $('#btnsearch').click(function(e) {
             $('#Listview').DataTable().ajax.reload();
-            Loadchart();
         });
         $('#btnreset').click(function(e) {
             datereset();
             daterange();
             $('#Listview').DataTable().ajax.reload();
-            Loadchart();
         });
 
         var table = $('#Listview').DataTable({
