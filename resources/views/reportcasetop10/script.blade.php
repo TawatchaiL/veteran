@@ -714,7 +714,8 @@
 
    
     function Loadchart(){
-                    $.ajax({
+        alert('OK');
+                $.ajax({
                 url: '{{ route('reportcasetop10.report') }}',
                 data: function(d) {
                     d.sdate = $('#reservation').val();
