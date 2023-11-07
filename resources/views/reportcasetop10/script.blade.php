@@ -665,14 +665,55 @@
                 }
             }
             };
+            var optionsdonut = {
 
+                series: [4,1,1],
+                chart: {
+                    type: 'donut',
+                    height: 380,
+                    toolbar: {
+                        show: false
+                    },
+                },
+                colors: ['#E91E63','#2E93fA','#546E7A','#66DA26','#FF9800','#4ECDC4','#C7F464','#81D4FA','#A5978B','#FD6A6A'],
+                fill: {
+                    type: 'gradient',
+                },
+                title: {
+                    text: 'ผลรวมแยกตามประเภทที่ติดต่อ',
+                    align: 'center',
+                    style: {
+                        fontSize: '16px',
+                        fontWeight: 'bold',
+                        fontFamily: 'Sarabun',
+                        color: '#263238'
+                    },
+                    margin: 10,
+                    offsetX: 0,
+                    offsetY: 0,
+                    floating: false,
+                },
+                labels: ["","2","ทดสอบ1",],
+                responsive: [{
+                    breakpoint: 200,
+                    options: {
+                        chart: {
+                            width: 300,
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }]
+                };
             $.ajax({
                 url: '{{ route('reportcasetop10.report') }}',
                 method: 'GET',
                 success: function(res) {
                     options.series[0].data = res.datag;
                     options.xaxis.categories = res.datal;
-                   
+                    optionsdonut.labels = res.datal; 
+                    optionsdonut.series = res.datag;
                         var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
                         chart2.render();
 
@@ -682,23 +723,9 @@
                                                 labels: '',
                                                 stroke: {width: 0}
                             });
-                        var chart3 = new ApexCharts(document.querySelector("#pie_graph"), options);
+                        var chart3 = new ApexCharts(document.querySelector("#pie_graph"), optionsdonut);
                             chart3.render();
-                            chart3.updateOptions({chart: {
-                                                    type: "donut",
-                                                    animate: true
-                                                    },
-                                                    series: [
-                        { name: ['Apple', 'Orange', 'Watermelon'],
-                          data: [44, 55, 13]
-                        },
-                ]
-
-                                                });
                 }
             });
     });
-
-var chart = new ApexCharts(document.querySelector("#pie_graph"), options);
-chart.render();
 </script>
