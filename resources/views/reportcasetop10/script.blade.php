@@ -720,11 +720,11 @@
                 
                 var rdate = $('#reservation').val();
                 $.ajax({
-                url: '{{ route('reportcasetop10') }}',
+                url: '{{ route('reportcasetop10.report') }}',
                 data: {
                     sdate: rdate
                 },
-                method: 'GET',
+                method: 'POST',
                 success: function(res) {
                     options.series[0].data = res.datag;
                     options.xaxis.categories = res.datal;
