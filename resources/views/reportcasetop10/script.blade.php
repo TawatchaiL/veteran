@@ -714,7 +714,6 @@
 
    
     function Loadchart(){
-        alert('OK');
                 $.ajax({
                 url: '{{ route('reportcasetop10.report') }}',
                 data: function(d) {
@@ -722,6 +721,7 @@
                 },
                 method: 'GET',
                 success: function(res) {
+                    alert('OK');
                     options.series[0].data = res.datag;
                     options.xaxis.categories = res.datal;
                     optionsdonut.labels = res.datal; 
