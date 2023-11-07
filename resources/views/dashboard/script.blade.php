@@ -1170,8 +1170,6 @@
                 localStorage.setItem('selectedOption',
                     selectedOption);
             }
-
-            console.log(selectedOption)
             get_agent(selectedOption);
             updateSLAData();
             updateAvgData();
