@@ -36,7 +36,7 @@ class ReportsumbytypeController extends Controller
     public function index(Request $request)
     {
 
-        if (!empty($request->get('crm_cases'))) {
+        if (!empty($request->get('sdate'))) {
             $dateRange = $request->input('sdate');
             if ($dateRange) {
                 $dateRangeArray = explode(' - ', $dateRange);
@@ -50,7 +50,7 @@ class ReportsumbytypeController extends Controller
                     $endDate = date("Y-m-t", strtotime($startDate));  
         }
         
-        $datas = DB::table('cases')
+        $datas = DB::table('crm_cases')
         ->select('casetype1 as name1', DB::raw('count(*) as sumcases'))
         ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
         ->groupBy('casetype1')
