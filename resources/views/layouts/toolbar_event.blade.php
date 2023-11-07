@@ -1,5 +1,9 @@
 <script src="{{ config('asterisk.toolbar_serv.address') }}/socket.io/socket.io.js"></script>
 <script>
+    @php
+        $isHome = Request::is('home');
+    @endphp
+
     const socket = io.connect(`${toolbar_serv}`);
     socket.on('connect', data => {
         socket.emit('join', 'Client Connect To Asterisk Event Serv');
@@ -30,10 +34,13 @@
                     set_state_icon(result.id, result.icon, result.message);
                     set_state_button(result.id);
                     call_list();
-                    /* updateAvgData();
-                    handleDataHour();
-                    handleDataDate();
-                    handleCaseDataDate(); */
+
+                    if (@json($isHome)) {
+                        updateAvgData();
+                        handleDataHour();
+                        handleDataDate();
+                        handleCaseDataDate();
+                    }
                 }
             });
         }
