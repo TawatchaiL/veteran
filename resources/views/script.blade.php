@@ -379,12 +379,26 @@
             toolbox: {
                 show: true,
                 feature: {
+                    /* dataZoom: {
+                        yAxisIndex: 'none'
+                    },
+                    dataView: {
+                        readOnly: false
+                    },
+                    magicType: {
+                        type: ['line', 'bar']
+                    },
+                    restore: {}, */
                     saveAsImage: {}
                 }
             },
+            /* legend: {
+                orient: 'vertical',
+                left: 'left'
+            }, */
             legend: {
                 top: '5%',
-                left: 'center',
+                left: 'center'
             },
             series: [{
                 name: 'คะแนน',
