@@ -723,7 +723,7 @@
                                                 labels: '',
                                                 stroke: {width: 0}
                             });
-                            options.series.data =  res.datag;
+                            options.series =  res.datag;
                         var chart3 = new ApexCharts(document.querySelector("#pie_graph"), options);
                             chart3.render();
                             chart3.updateOptions({
