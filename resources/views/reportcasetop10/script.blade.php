@@ -603,7 +603,12 @@
         window.Apex.chart = {
         fontFamily: "Sarabun"
             };
-            let options = {
+                Loadchart();
+    });
+
+   
+    function Loadchart(){
+        let options = {
                 series: [
                         { name: [],
                           data: [4,1, 1]
@@ -709,11 +714,6 @@
                     }
                 }]
                 };
-                Loadchart();
-    });
-
-   
-    function Loadchart(){
                 $.ajax({
                 url: '{{ route('reportcasetop10.report') }}',
                 data: function(d) {
