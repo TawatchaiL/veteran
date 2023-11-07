@@ -68,11 +68,11 @@ class DashboardController extends Controller
             ->table('call_center.call_entry_today')
             ->select(
                 'queue_number',
-                DB::raw('AVG(duration) as avg_talk_time'),
-                DB::raw('AVG(duration_wait) as avg_hold_time'),
-                DB::raw('SUM(duration) as total_talk_time'),
-                DB::raw('MAX(duration_wait) as max_hold_time'),
-                DB::raw('(SELECT sum(score) FROM agent_score_today WHERE queue = ' . $request->get('queue') . ') as total_score')
+                DB::raw('COALESCE(AVG(duration), 0) as avg_talk_time'),
+                DB::raw('COALESCE(AVG(duration_wait), 0) as avg_hold_time'),
+                DB::raw('COALESCE(SUM(duration), 0) as total_talk_time'),
+                DB::raw('COALESCE(MAX(duration_wait), 0) as max_hold_time'),
+                DB::raw('(SELECT COALESCE(sum(score), 0) FROM agent_score_today WHERE queue = ' . $request->get('queue') . ') as total_score')
             )
             ->where('queue_number', $request->get('queue'))
             ->groupBy('queue_number')
