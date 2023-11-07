@@ -572,7 +572,7 @@
         }
     });
 
-    $('.button_survey_tranfer,#performance_button').click(function () {
+    $('.button_survey_tranfer,#performance_button').click(function() {
         let len = $('input[name="call[]"]:checked').length;
         if (len > 0) {
             if (len > 1) {
@@ -632,7 +632,7 @@
                 alertType: "info",
             });
         }
-});
+    });
 
     //atx tranfer
     $(".button_atx_tranfer").click(function() {
@@ -935,13 +935,18 @@
                     mcalldestchan = data[3][1];
 
                     if (strArray[4] == 'Ringing' || strArray[4] == 'Ring') {
-                        state = 'กำลังรอสาย'+strArray[1]
+                        state = 'กำลังรอสาย' + strArray[1]
                         state_icon =
                             '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
                         state_color = 'card-danger';
                         check_box_state = 'disabled';
                         hold_button = "d-none";
                         dans_button = "";
+                        if (strArray[1] !== "macro-dial-one" || strArray[1] !==
+                            "macro-dial-trunk") {
+                            button_ans =
+                            `<a href="#" class="btn btn-success answer_call ${dans_button}" data-id="${exten}"><i class="fa-solid fa-phone-volume"></i> รับสาย</a>`
+                        }
                     } else if (strArray[4] == 'Up' && strArray[12] == '') {
                         if (strArray[5] == "ChanSpy") {
                             spy_exten = strArray[6].split(',');
@@ -986,7 +991,7 @@
 							<div class="card-body card-content">
 							</div>
 							<div class="card-footer text-muted text-right ">
-                                <a href="#" class="btn btn-success answer_call ${dans_button}" data-id="${exten}"><i class="fa-solid fa-phone-volume"></i> รับสาย</a>
+                                 ${button_ans}
                                 <a href="#" class="btn btn-warning hold_call ${hold_button}" data-id="${exten}"><i class="fa-solid fa-pause"></i> Hold</a>
 							     <a href="#" class="btn btn-danger hangup_call" data-id="${strArray[0]}"><i class="fa-solid fa-phone-slash"></i> วางสาย</a>
 							</div>
