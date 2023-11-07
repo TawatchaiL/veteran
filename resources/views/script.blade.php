@@ -409,17 +409,6 @@
         return option;
     };
 
-    /*  $(document).ready(function() {
-
-
-
-         window.addEventListener('resize', pie4071.resize);
-
-
-
-     }) */
-
-
     const handleDataHour = async () => {
         try {
             const data = await AgentbyHourData();
