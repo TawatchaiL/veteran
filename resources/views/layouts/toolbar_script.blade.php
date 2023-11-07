@@ -918,6 +918,7 @@
         let mstrArray = [];
         let calls_active = 0;
         let dans_button;
+        let button_ans '';
 
 
         $.get(`${api_serv}/chans/` + exten, async (data, status) => {
