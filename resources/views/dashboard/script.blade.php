@@ -554,7 +554,12 @@
                 avg_wait.html('')
                 total_talk.html('')
                 max_wait.html('') */
-                console.log(data)
+                changeText(avg_talk, '00:00:00');
+                changeText(avg_wait, '00:00:00');
+                changeText(total_talk, '00:00:00');
+                changeText(total_score, '00:00:00');
+                changeText(max_wait, '00:00:00');
+
                 data.avg_data.forEach((item) => {
                     if (item.queue_number == storedOption) {
                         /* avg_talk.html(item.avg_talk_time)
