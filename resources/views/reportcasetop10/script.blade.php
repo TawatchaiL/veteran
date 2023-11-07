@@ -608,71 +608,176 @@
     });
 
     function Loadchart(){
-        let options = {
-                series: [
-                        { name: [],
-                          data: []
-                        },
-                ],
-                title: {
-                        text: '10 อันดับเรื่องที่ติดต่อมากที่สุด',
-                        align: 'center',
-                        style: {
-                            fontSize: '16px',
-                            fontWeight: 'bold',
-                            fontFamily: 'Sarabun',
-                            color: '#263238'
-                        },
-                        margin: 10,
-                        offsetX: 0,
-                        offsetY: 0,
-                        floating: false,
+        var options = {
+            series: [
+                    {
+                        name: 'data',
+                        data: []
                     },
-                chart: {
-                height: 400,
-                type: "line",
-                zoom: {
-                    enabled: false
-                },
+                ],
+            chart: {
+                type: 'bar',
+                height: 350,
                 toolbar: {
                     show: false
-                }
                 },
-                markers: {
+                fontFamily: "Sarabun"
+
+            },
+            colors: ['#E91E63','#2E93fA','#546E7A','#66DA26','#FF9800','#4ECDC4','#C7F464','#81D4FA','#A5978B','#FD6A6A'],
+            title: {
+                text: '10 อันดับเรื่องที่ติดต่อมากที่สุด',
+                margin: 50,
+                align: 'center',
+                style: {
+                    fontSize: '16px',
+                    fontWeight: 'bold',
+                    fontFamily: 'Sarabun',
+                    color: '#263238'
+                },
+                //offsetX: 50,
+                //offsetY: 100,
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        position: 'top',
+                        enabled: true,
+                        textAnchor: 'start',
+                        style: {
+                            fontSize: '10pt',
+                            colors: ['#000']
+                        }
+                    },
+                    horizontal: false,
+                    columnWidth: '75%',
+                    endingShape: 'rounded'
+                },
+            },
+            dataLabels: {
+                enabled: true,
+                formatter: function(val) {
+                    return val /* + "%" */ ;
+                },
+                offsetY: -20,
+                style: {
+                    fontSize: '14px',
+                    colors: ["#304758"]
+                }
+            },
+            stroke: {
                 show: true,
-                size: 6
+                width: 2,
+                colors: ['transparent']
+            },
+            xaxis: {
+                labels: {
+                    rotate: -30,
+                    rotateAlways: true,
+                    maxHeight: 300,
+                    hideOverlappingLabels: false
                 },
-                dataLabels: {
-                enabled: false
+
+
+                categories: [],
+            },
+            yaxis: {
+
+            },
+
+            fill: {
+                type: 'gradient',
+                gradient: {
+                    shade: 'light',
+                    type: "horizontal",
+                    shadeIntensity: 0.25,
+                    gradientToColors: undefined,
+                    inverseColors: true,
+                    opacityFrom: 0.85,
+                    opacityTo: 0.85,
+                    stops: [50, 0, 100]
                 },
-                legend: {
-                show: false,
-                showForSingleSeries: false,
-                position: "top",
-                horizontalAlign: "right"
-                },
-                stroke: {
-                curve: "smooth",
-                linecap: "round"
-                },
-                grid: {
-                row: {
-                    colors: ["#f3f3f3", "transparent"],
-                    opacity: 0.5
-                }
-                },
-                xaxis: {
-                categories: []
-                },
-                labels: [],
-                tooltip: {
+                opacity: 1
+            },
+            tooltip: {
                 y: {
                     formatter: function(val) {
                         return " จำนวน " + val + "  "
                     }
                 }
             }
-            };
+        };
+
+            var optionsline = {
+                series: [
+                        { name: [],
+                          data: []
+                        },
+                ],
+
+            markers: {
+                size: 5,
+                colors: ["#FFFFFF"],
+                strokeColor: "#A5978B",
+                strokeWidth: 4
+            },
+            chart: {
+                type: 'area',
+                height: 380,
+                zoom: {
+                    enabled: false
+                },
+                toolbar: {
+                    show: false
+                },
+
+            },
+            dataLabels: {
+                enabled: true,
+                formatter: function(val) {
+                    return val /* + "%" */ ;
+                },
+                offsetY: -20,
+                style: {
+                    fontSize: '14px',
+                    colors: ["#2E93fA"]
+                }
+            },
+            stroke: {
+                curve: 'straight',
+                width: 4
+            },
+            colors: ['#E91E63','#2E93fA','#546E7A','#66DA26','#FF9800','#4ECDC4','#C7F464','#81D4FA','#A5978B','#FD6A6A'],
+            title: {
+                text: '10 อันดับเรื่องที่ติดต่อมากที่สุด',
+                align: 'center',
+                style: {
+                    fontSize: '16px',
+                    fontWeight: 'bold',
+                    fontFamily: 'Sarabun',
+                    color: '#263238'
+                },
+            },
+            subtitle: {
+                //text: 'จำนวน',
+                align: 'left'
+            },
+            xaxis: {
+                labels: {
+                    show: true,
+                    rotate: -30,
+                    rotateAlways: true,
+                    maxHeight: 300,
+                    //hideOverlappingLabels: false
+                },
+                categories: [],
+            },
+
+            legend: {
+                horizontalAlign: 'left'
+            }
+        };
+
             let optionsdonut = {
 
                 series: [],
@@ -727,18 +832,17 @@
                 success: function(res) {
                     options.series[0].data = res.datag;
                     options.xaxis.categories = res.datal;
+                    optionsline.series[0].data = res.datag;
+                    optionsline.xaxis.categories = res.datal;
                     optionsdonut.labels = res.datal; 
                     optionsdonut.series = res.datag;
-                        var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
-                        chart2.render();
-
+                    
                         var chart = new ApexCharts(document.querySelector("#bar_graph"), options);
-                        chart.render();
-                            chart.updateOptions({chart: {type: "bar",animate: true},
-                                                labels: '',
-                                                stroke: {width: 0}
-                            });
-                            options.series =  res.datag;
+                            chart.render();
+
+                        var chart2 = new ApexCharts(document.querySelector("#line_graph"), optionsline);
+                            chart2.render();
+
                         var chart3 = new ApexCharts(document.querySelector("#pie_graph"), optionsdonut);
                             chart3.render();
                 }
