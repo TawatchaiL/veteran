@@ -363,10 +363,10 @@
     };
 
     const score_chart_data = (data) => {
-        const labels = Object.keys(data);
-        const values = Object.values(data);
+        //const labels = Object.keys(data);
+        //const values = Object.values(data);
 
-        const option = {
+        const optionca = {
             title: {
                 show: false,
                 text: 'Referer of a Website',
@@ -385,7 +385,6 @@
             legend: {
                 top: '5%',
                 left: 'center',
-                data: ['1', '2', '3', '4', '5'] // Set legend data based on your names
             },
             series: [{
                 name: 'คะแนน',
@@ -424,7 +423,7 @@
                 }
             }]
         };
-        return option;
+        return optionca;
     };
 
     /*  $(document).ready(function() {
