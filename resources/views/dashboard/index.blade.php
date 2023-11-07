@@ -144,7 +144,7 @@
                                 <span class="info-box-icon bg-warning"><i class="fa-solid fa-star"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">คะแนนความพึงพอใจ</span>
-                                    <span class="info-box-number">10 คะแนน</span>
+                                    <span class="info-box-number"><span id="total_score"></span> คะแนน</span>
                                 </div>
 
                             </div>

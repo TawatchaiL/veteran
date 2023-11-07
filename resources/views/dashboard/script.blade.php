@@ -436,6 +436,7 @@
     const abandoned_percent = $('#abandoned_percent');
     const avg_talk = document.getElementById("avg_talk");
     const total_talk = document.getElementById("total_talk");
+    const total_score = document.getElementById("total_score");
     const avg_wait = document.getElementById("avg_wait");
     const max_wait = document.getElementById("max_wait");
     const dbv = {};
@@ -562,6 +563,7 @@
                         changeText(avg_talk, item.avg_talk_time)
                         changeText(avg_wait, item.avg_hold_time)
                         changeText(total_talk, item.total_talk_time)
+                        changeText(total_score, item.total_score)
                         changeText(max_wait, item.max_hold_time)
                     }
                 });
@@ -1158,6 +1160,7 @@
         selectElement.on('change', () => {
             const selectedOption = selectElement.val();
             if (selectedOption) {
+                updateAvgData();
                 localStorage.setItem('selectedOption',
                     selectedOption);
             }
