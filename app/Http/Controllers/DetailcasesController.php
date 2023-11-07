@@ -35,8 +35,23 @@ class DetailcasesController extends Controller
      */
     public function index(Request $request)
     {
+        if (!empty($request->get('sdate'))) {
+            $dateRange = $request->input('sdate');
+            if ($dateRange) {
+                $dateRangeArray = explode(' - ', $dateRange);
+                if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
+                    $startDate = $dateRangeArray[0];
+                    $endDate = $dateRangeArray[1];
+                }
+            }
+        }else{
+                    $startDate = date("Y-m-d");
+                    $endDate = date("Y-m-t", strtotime($startDate));  
+        }
+
         $datas = DB::table('crm_cases')
         ->select(DB::raw('DATE(created_at) as cdate'), DB::raw('TIME(created_at) as ctime'),'telno','casetype1', 'casedetail', 'casestatus', 'tranferstatus', 'agent' )
+        ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
         ->get();
 
         if ($request->ajax()) {
