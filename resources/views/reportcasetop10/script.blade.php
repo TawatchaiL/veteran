@@ -724,7 +724,7 @@
                 data: {
                     sdate: rdate
                 },
-                method: 'POST',
+                method: 'GET',
                 success: function(res) {
                     options.series[0].data = res.datag;
                     options.xaxis.categories = res.datal;
