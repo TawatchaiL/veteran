@@ -382,7 +382,7 @@
             legend: {
                 top: '5%',
                 left: 'center',
-                data: Object.keys(data) // Use keys (labels) from the data object
+                //data: Object.keys(data) // Use keys (labels) from the data object
             },
             series: [{
                 name: 'คะแนน',
