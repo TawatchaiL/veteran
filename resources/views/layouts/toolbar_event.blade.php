@@ -31,7 +31,7 @@
                     set_state_button(result.id);
                     call_list();
 
-                    {{ Request::is('callsurvey') ? 'updateAvgData()\nhandleDataHour()\nhandleDataDate()\nhandleCaseDataDate()' : '' }}
+                    {{ Request::is('home') ? 'updateAvgData()\nhandleDataHour()\nhandleDataDate()\nhandleCaseDataDate()' : '' }}
 
                 }
             });
