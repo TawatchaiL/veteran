@@ -942,8 +942,8 @@
                         check_box_state = 'disabled';
                         hold_button = "d-none";
                         dans_button = "";
-                        if (strArray[1] !== "macro-dial-one" || strArray[1] !==
-                            "macro-dial-trunk") {
+                        if (strArray[1] !=== "macro-dial-one" || strArray[1] !===
+                            "macro-dialout-trunk") {
                             button_ans =
                             `<a href="#" class="btn btn-success answer_call ${dans_button}" data-id="${exten}"><i class="fa-solid fa-phone-volume"></i> รับสาย</a>`
                         }
