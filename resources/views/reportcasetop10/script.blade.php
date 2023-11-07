@@ -611,7 +611,7 @@
         let options = {
                 series: [
                         { name: [],
-                          data: [4,1, 1]
+                          data: []
                         },
                 ],
                 title: {
@@ -688,7 +688,7 @@
                     type: 'gradient',
                 },
                 title: {
-                    text: 'ผลรวมแยกตามประเภทที่ติดต่อ',
+                    text: '10 อันดับเรื่องที่ติดต่อมากที่สุด',
                     align: 'center',
                     style: {
                         fontSize: '16px',
