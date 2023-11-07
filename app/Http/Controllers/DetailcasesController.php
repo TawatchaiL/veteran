@@ -35,7 +35,7 @@ class DetailcasesController extends Controller
      */
     public function index(Request $request)
     {
-        $datas = DB::table('cases')
+        $datas = DB::table('crm_cases')
         ->select(DB::raw('DATE(created_at) as cdate'), DB::raw('TIME(created_at) as ctime'),'telno','casetype1', 'casedetail', 'casestatus', 'tranferstatus', 'agent' )
         ->get();
 
