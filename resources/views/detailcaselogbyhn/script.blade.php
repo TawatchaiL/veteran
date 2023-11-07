@@ -378,6 +378,7 @@
             ajax: {
                 data: function(d) {
                     d.sdate = $('#reservation').val();
+                    d.seachtext = $('#seachtext').val();
                 }
             },
             serverSide: true,
