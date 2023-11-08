@@ -152,7 +152,7 @@ class CallsurveyController extends Controller
     public function store(Request $request)
     {
         $validator =  Validator::make($request->all(), [
-            'name' => 'required|string|max:100|unique:positions',
+            'name' => 'required|string|max:100|unique:callsurveys',
             'max_score' => 'required',
             'wellcome_sound' => 'required',
             'thankyou_sound' => 'required',
@@ -165,9 +165,9 @@ class CallsurveyController extends Controller
             'max_score.required' => 'กรุณาระบุคะแนนสูงสุด!',
             'wellcome_sound.required' => 'กรุณาระบุเสียงต้อนรับ!',
             'thankyou_sound.required' => 'กรุณาระบุเสียงขอบคุณ!',
-            'timeout_sound.required' => 'กรุณาเะบุเสียงไม่ทำรายการถายในระยะเวลา!',
-            'invalid_sound.required' => 'กรุณาเะบุเสียงกดเมนูไม่ถูกต้อง!',
-            'max_sound.required' => 'กรุณาะบุเสียงทำรายการเกินจำนวนครั้งที่กำหนด!',
+            'timeout_sound.required' => 'กรุณาระบุเสียงไม่ทำรายการถายในระยะเวลา!',
+            'invalid_sound.required' => 'กรุณาระบุเสียงกดเมนูไม่ถูกต้อง!',
+            'max_sound.required' => 'กรุณาระบุเสียงทำรายการเกินจำนวนครั้งที่กำหนด!',
         ]);
 
 
@@ -236,9 +236,9 @@ class CallsurveyController extends Controller
             'max_score.required' => 'กรุณาระบุคะแนนสูงสุด!',
             'wellcome_sound.required' => 'กรุณาระบุเสียงต้อนรับ!',
             'thankyou_sound.required' => 'กรุณาระบุเสียงขอบคุณ!',
-            'timeout_sound.required' => 'กรุณาเะบุเสียงไม่ทำรายการถายในระยะเวลา!',
-            'invalid_sound.required' => 'กรุณาเะบุเสียงกดเมนูไม่ถูกต้อง!',
-            'max_sound.required' => 'กรุณาะบุเสียงทำรายการเกินจำนวนครั้งที่กำหนด!',
+            'timeout_sound.required' => 'กรุณาระบุเสียงไม่ทำรายการถายในระยะเวลา!',
+            'invalid_sound.required' => 'กรุณาระบุเสียงกดเมนูไม่ถูกต้อง!',
+            'max_sound.required' => 'กรุณาระบุเสียงทำรายการเกินจำนวนครั้งที่กำหนด!',
         ]);
 
         if ($validator->fails()) {

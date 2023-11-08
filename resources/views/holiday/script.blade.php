@@ -116,12 +116,12 @@
                     name: 'name'
                 },
                 {
-                    data: 'max_score',
-                    name: 'max_score'
+                    data: 'start_date',
+                    name: 'start_date'
                 },
                 {
-                    data: 'set_default',
-                    name: 'set_default'
+                    data: 'status',
+                    name: 'status'
                 },
                 {
                     data: 'action',
@@ -174,17 +174,15 @@
 
 
             $.ajax({
-                url: "{{ route('callsurvey.store') }}",
+                url: "{{ route('holiday.store') }}",
                 method: 'post',
                 data: {
                     name: $('#AddName').val(),
-                    max_score: $('#AddScore').val(),
-                    wellcome_sound: $('#AddGreeting').val()[0],
+                    start_date: $('#AddSdate').val(),
+                    end_date: $('#AddEdate').val(),
+                    holiday_sound: $('#AddGreeting').val()[0],
                     thankyou_sound: $('#AddThankyou').val()[0],
-                    timeout_sound: $('#AddTimeout').val()[0],
-                    invalid_sound: $('#AddInvalid').val()[0],
-                    max_sound: $('#AddMax').val()[0],
-                    set_default: sstatus,
+                    status: sstatus,
                     _token: token,
                 },
                 success: function(result) {
@@ -206,9 +204,6 @@
                         $('#Listview').DataTable().ajax.reload();
                         $("#AddGreeting").val(null).trigger("change")
                         $("#AddThankyou").val(null).trigger("change")
-                        $("#AddTimeout").val(null).trigger("change")
-                        $("#AddInvalid").val(null).trigger("change")
-                        $("#AddMax").val(null).trigger("change")
                         $('.form').trigger('reset');
                         $('#CreateModal').modal('hide');
                     }
