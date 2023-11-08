@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\CrmContact;
 use App\Models\CrmCase;
-use App\Models\Case_type;
 use App\Models\CrmCaseComment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -117,9 +116,8 @@ class CasesCommentController extends Controller
                     return '';
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
-        $company = Case_type::orderBy("id", "asc")->get();
         //$contacts = DB::table('crm_contacts')->whereRaw('id = '.request('id').'')->get();
-        return view('casescomment.index')->with(['casetype' => $company]);
+        return view('casescomment.index');
     }
 
     public function create()

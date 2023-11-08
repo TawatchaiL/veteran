@@ -63,13 +63,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/positions/destroy', [App\Http\Controllers\PositionController::class, 'destroy'])->name('positions.destroy');
     Route::post('/positions/destroy_all', [App\Http\Controllers\PositionController::class, 'destroy_all'])->name('positions.destroy_all');
 
-    Route::get('/casetype', [App\Http\Controllers\CaseTypeController::class, 'index'])->name('casetype');
-    Route::post('/casetype/store', [App\Http\Controllers\CaseTypeController::class, 'store'])->name('casetype.store');
-    Route::get('/casetype/edit/{id}', [App\Http\Controllers\CaseTypeController::class, 'edit'])->name('casetype.edit');
-    Route::put('/casetype/save/{id}', [App\Http\Controllers\CaseTypeController::class, 'update'])->name('casetype.save');
-    Route::delete('/casetype/destroy', [App\Http\Controllers\CaseTypeController::class, 'destroy'])->name('casetype.destroy');
-    Route::post('/casetype/destroy_all', [App\Http\Controllers\CaseTypeController::class, 'destroy_all'])->name('casetype.destroy_all');
-
     Route::get('/casetype6', [App\Http\Controllers\CaseType6Controller::class, 'index'])->name('casetype6');
     Route::post('/casetype6/store', [App\Http\Controllers\CaseType6Controller::class, 'store'])->name('casetype6.store');
     Route::get('/casetype6/edit/{id}', [App\Http\Controllers\CaseType6Controller::class, 'edit'])->name('casetype6.edit');
@@ -111,8 +104,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/billing', [App\Http\Controllers\BillingController::class, 'index'])->name('billing');
 
     Route::get('/reportcase', [App\Http\Controllers\ReportcaseController::class, 'index'])->name('reportcase');
-    Route::get('pdfreportcases', [App\Http\Controllers\PDFcasesController::class, 'pdf'])->name('reportcase.pdf');
-
+    
     Route::get('/reportcasetop10', [App\Http\Controllers\ReportcasetopController::class, 'index'])->name('reportcasetop10');
     //Route::post('/reportcasetop10/report', [App\Http\Controllers\ReportcasetopController::class, 'report'])->name('reportcasetop10.report');
     Route::get('/reporttop10in', [App\Http\Controllers\ReporttopinController::class, 'index'])->name('reporttop10in');
