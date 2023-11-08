@@ -61,6 +61,7 @@
             }
         });
 
+        currentDate.setYear(currentDate.getFullYear() + 543);
         $('.datepick').datepicker("setDate", currentDate);
 
 
