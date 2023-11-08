@@ -18,7 +18,7 @@ class PermissionTableSeeder extends Seeder
         //Permission::truncate();
 
         $permissions = [
-            'contact-list',
+            /* 'contact-list',
             'contact-create',
             'contact-edit',
             'contact-delete',
@@ -38,15 +38,19 @@ class PermissionTableSeeder extends Seeder
             'holiday-list',
             'holiday-create',
             'holiday-edit',
-            'holiday-delete',
-            'role-list',
+            'holiday-delete', */
+            'billing-list',
+            'billing-create',
+            'billing-edit',
+            'billing-delete',
+            /* 'role-list',
             'role-create',
             'role-edit',
             'role-delete',
             'user-list',
             'user-create',
             'user-edit',
-            'user-delete',
+            'user-delete', */
         ];
 
         foreach ($permissions as $permission) {
