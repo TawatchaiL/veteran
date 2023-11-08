@@ -52,16 +52,14 @@ class DetailcaselogbyhnController extends Controller
         $datas = DB::table('crm_caseslogs')
         ->select('crm_caseslogs.agent','crm_caseslogs.id as id','hn', 'crm_caseslogs.modifyaction', 'crm_caseslogs.modifyagent', 'crm_caseslogs.modifydate')
         ->join('crm_contacts', 'crm_caseslogs.contact_id', '=', 'crm_contacts.id')
-        ->whereRaw('crm_caseslogs.modifydate between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
-        ->get();
+        ->whereRaw('crm_caseslogs.modifydate between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"');
 
         $datac = DB::table('crm_case_comments')
         ->select('crm_case.agent','crm_cases.id as id','hn', 'comment', 'crm_case_comments.agent', 'crm_case_comments.created_at')
         ->join('crm_cases', 'crm_case_comments.case_id', '=', 'crm_cases.id')
         ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
         ->whereRaw('crm_case_comments.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
-        ->union($datas)
-        ->get();
+        ->union($datas);
 
         if ($request->ajax()) {
             return datatables()->of($datac)
