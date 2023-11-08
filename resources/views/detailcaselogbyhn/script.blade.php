@@ -559,8 +559,8 @@
                     name: 'cagent'
                 },
                 {
-                    data: 'hn',
-                    name: 'hn'
+                    data: 'chn',
+                    name: 'chn'
                 },
                 {
                     data: 'id',
