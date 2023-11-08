@@ -98,20 +98,13 @@ class HolidaysController extends Controller
             return response()->json(['errors' => $validator->errors()->all()]);
         }
 
-        $std = Carbon::createFromFormat('d/m/Y H:i:00', $request->get('start_date') . ':00', 'Asia/Bangkok');
-        $stdutcDate = $std->setTimezone('UTC');
-        $stdutcFormattedDate = $stdutcDate->format('Y-m-d H:i:00');
-
-        $endDate = Carbon::createFromFormat('d/m/Y H:i:00', $request->get('end_date') . ':00', 'Asia/Bangkok');
-        $endUtcDate = $endDate->setTimezone('UTC');
-        $endUtcFormattedDate = $endUtcDate->format('Y-m-d H:i:00');
 
         $holiday = [
             'name' => $request->get('name'),
             'holiday_sound' => $request->get('holiday_sound'),
             'thankyou_sound' => $request->get('thankyou_sound'),
-            'start_datetime' => $stdutcFormattedDate,
-            'end_datetime' => $endUtcFormattedDate,
+            'start_datetime' => $request->get('start_date'),
+            'end_datetime' => $request->get('end_date'),
             'status' => $request->get('status'),
         ];
 
