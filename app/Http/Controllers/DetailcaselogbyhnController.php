@@ -56,7 +56,7 @@ class DetailcaselogbyhnController extends Controller
         ->toSql();
 
         $getData = DB::table('crm_contacts')
-        ->join(DB::raw("({$datac} as services) as services"), 'services.contact_id', '=', 'crm_contacts.id')
+        ->join(DB::raw("({$datac}) as services"), 'services.contact_id', '=', 'crm_contacts.id')
         ->select('cagent', 'cid', 'crm_contacts.hn','caction', 'magent', 'mdate');
 
         $datas = DB::table('crm_caseslogs')
