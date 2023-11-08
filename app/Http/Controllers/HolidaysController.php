@@ -108,7 +108,7 @@ class HolidaysController extends Controller
             'holiday_sound' => $request->get('holiday_sound'),
             'thankyou_sound' => $request->get('thankyou_sound'),
             'start_datetime' =>  $startutcFormattedDate . " " . $start_array[1] . ":00",
-            'end_datetime' => $request->get('end_date'),
+            //'end_datetime' => $request->get('end_date'),
             'status' => $request->get('status'),
         ];
 
