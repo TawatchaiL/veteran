@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rate', function (Blueprint $table) {
+        Schema::connection('remote_connection')->create('rate', function (Blueprint $table) {
             $table->id();
             $table->string('trunk')->nullable();
             $table->string('prefix')->nullable();
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rate');
+        Schema::connection('remote_connection')->dropIfExists('rate');
     }
 };
