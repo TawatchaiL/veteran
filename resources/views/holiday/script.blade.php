@@ -225,7 +225,7 @@
 
             id = $(this).data('id');
             $.ajax({
-                url: "้holiday/edit/" + id,
+                url: "holiday/edit/" + id,
                 method: 'GET',
                 success: function(res) {
                     $('#EditName').val(res.data.name);
