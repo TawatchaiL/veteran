@@ -40,8 +40,12 @@ class HolidaysController extends Controller
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
                 })
+                ->addColumn('holidaydate', function ($row) {
+                    $holiday = $row->start_datetime_th . " - " . $row->end_datetime_th;
+                    return $holiday;
+                })
                 ->editColumn('status', function ($row) use ($state_text) {
-                    $state = $state_text[$row->set_default];
+                    $state = $state_text[$row->status];
                     return $state;
                 })
                 ->addColumn('action', function ($row) {
@@ -100,15 +104,17 @@ class HolidaysController extends Controller
 
         $start_array = explode(" ", $request->get('start_date'));
         // Manually adjust the year from Buddhist to Gregorian calendar
-        $gregorianYear = intval(substr($start_array[0], 6)) - 543;
-        $gregorianDate = $gregorianYear . substr($start_array[0], 2, 3) . "/" . substr($start_array[0], 0, 2);
-        $start_date_convert = Carbon::createFromFormat('Y/m/d', $gregorianDate, 'Asia/Bangkok');
+        $sgregorianYear = intval(substr($start_array[0], 6)) - 543;
+        $sgregorianDate = $sgregorianYear . substr($start_array[0], 2, 3) . "/" . substr($start_array[0], 0, 2);
+        $start_date_convert = Carbon::createFromFormat('Y/m/d', $sgregorianDate, 'Asia/Bangkok');
         $startutcDate = $start_date_convert->setTimezone('UTC');
         $startutcFormattedDate = $startutcDate->format('Y-m-d');
 
 
         $end_array = explode(" ", $request->get('end_date'));
-        $end_date_convert = Carbon::createFromFormat('d/m/Y', $end_array[0], 'Asia/Bangkok');
+        $egregorianYear = intval(substr($end_array[0], 6)) - 543;
+        $egregorianDate = $egregorianYear . substr($end_array[0], 2, 3) . "/" . substr($end_array[0], 0, 2);
+        $end_date_convert = Carbon::createFromFormat('Y/m/d', $egregorianDate, 'Asia/Bangkok');
         $endutcDate = $end_date_convert->setTimezone('UTC');
         $endutcFormattedDate = $endutcDate->format('Y-m-d');
 
@@ -118,6 +124,8 @@ class HolidaysController extends Controller
             'thankyou_sound' => $request->get('thankyou_sound'),
             'start_datetime' =>  $startutcFormattedDate . " " . $start_array[1] . ":00",
             'end_datetime' => $endutcFormattedDate . " " . $end_array[1] . ":00",
+            'start_datetime_th' =>  $request->get('start_date'),
+            'end_datetime_th' => $request->get('end_date'),
             'status' => $request->get('status'),
         ];
 

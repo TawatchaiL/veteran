@@ -118,8 +118,8 @@
                     name: 'name'
                 },
                 {
-                    data: 'start_date',
-                    name: 'start_date'
+                    data: 'holidaydate',
+                    name: 'holidaydate'
                 },
                 {
                     data: 'status',

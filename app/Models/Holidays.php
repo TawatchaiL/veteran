@@ -13,5 +13,7 @@ class Holidays extends Model
 
     protected $table = 'holidays';
 
-    protected $fillable = ['name', 'start_datetime', 'end_datetime', 'holiday_sound', 'thankyou_sound', 'status'];
+    protected $fillable = [
+        'name', 'start_datetime', 'end_datetime', 'start_datetime_th', 'end_datetime_th', 'holiday_sound', 'thankyou_sound', 'status'
+    ];
 }
