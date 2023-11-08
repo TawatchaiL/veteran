@@ -59,7 +59,8 @@ class DetailcaselogbyhnController extends Controller
         ->join('crm_cases', 'crm_case_comments.case_id', '=', 'crm_cases.id')
         ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
         ->whereRaw('crm_case_comments.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
-        ->union($datas);
+        ->union($datas)
+        ->get();
 
         if ($request->ajax()) {
             return datatables()->of($datac)
