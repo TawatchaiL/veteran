@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->dateTime('start_datetime')->nullable();
             $table->dateTime('end_datetime')->nullable();
-            $table->dateTime('start_datetime_th')->nullable();
-            $table->dateTime('end_datetime_th')->nullable();
+            $table->string('start_datetime_th')->nullable();
+            $table->string('end_datetime_th')->nullable();
             $table->string('holiday_sound')->nullable();
             $table->string('thankyou_sound')->nullable();
             $table->integer('status')->nullable();
