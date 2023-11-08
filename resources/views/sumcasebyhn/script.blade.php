@@ -762,7 +762,7 @@
                 var rdate = $('#reservation').val();
                 var rstatus = 'report';
                 $.ajax({
-                url: '{{ route('reportsumbytype') }}',
+                url: '{{ route('sumcasebyhn') }}',
                 data: {
                     sdate: rdate,
                     rstatus: rstatus
