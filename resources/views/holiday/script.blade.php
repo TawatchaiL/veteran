@@ -271,7 +271,7 @@
                     end_date: $('#EditEDate').val(),
                     holiday_sound: $('#EditGreeting').val()[0],
                     thankyou_sound: $('#EditThankyou').val()[0],
-                    status: sstatus,
+                    status: esstatus,
                 },
 
                 success: function(result) {
