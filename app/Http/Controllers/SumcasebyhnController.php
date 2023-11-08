@@ -61,8 +61,8 @@ class SumcasebyhnController extends Controller
             $chart_data = array();
             $chart_label = array();
             foreach ($datas as $data) {
-                $chart_data[] = $data->sumcases;
-                $chart_label[] = $data->casetype1;
+                $chart_data[] = $data->sumhn;
+                $chart_label[] = $data->hn;
             }
             return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
         }
