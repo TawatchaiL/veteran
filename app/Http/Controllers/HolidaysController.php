@@ -41,7 +41,7 @@ class HolidaysController extends Controller
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
                 })
                 ->addColumn('holidaydate', function ($row) {
-                    $holiday = $row->start_date_th . " - " . $row->end_date_th;
+                    $holiday = $row->start_datetime_th . " - " . $row->end_datetime_th;
                     return $holiday;
                 })
                 ->editColumn('status', function ($row) use ($state_text) {
