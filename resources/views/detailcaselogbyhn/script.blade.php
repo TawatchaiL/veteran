@@ -555,8 +555,8 @@
                     className: 'no-print'
                 },
                 {
-                    data: 'agent',
-                    name: 'agent'
+                    data: 'cagent',
+                    name: 'cagent'
                 },
                 {
                     data: 'hn',
@@ -567,16 +567,16 @@
                     name: 'id'
                 },
                 {
-                    data: 'modifyagent',
-                    name: 'modifyagent'
+                    data: 'magent',
+                    name: 'magent'
                 },
                 {
-                    data: 'modifydate',
-                    name: 'modifydate'
+                    data: 'mdate',
+                    name: 'mdate'
                 },
                 {
-                    data: 'modifyaction',
-                    name: 'modifyaction'
+                    data: 'caction',
+                    name: 'caction'
                 },
             ]
         });
