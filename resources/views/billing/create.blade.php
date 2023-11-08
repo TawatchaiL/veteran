@@ -2,22 +2,12 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <h4 class="modal-title"><i class="fa-solid fa-volume-high"></i> Play & Comment</h4>
+                <h4 class="modal-title"><i class="fas fa-list-ol"></i> เพิ่ม วันหยุดประจำปี</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                {{-- @if (count($errors) > 0)
-                    <div class="alert alert-danger">
-                        <strong>Whoops!</strong>Something went wrong.<br><br>
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif --}}
                 <div class="alert alert-danger alert-dismissible fade show" role="alert" style="display: none;">
                     <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -30,31 +20,85 @@
                     </button>
                 </div>
 
+
+                {{-- 'route' => 'users.store', --}}
                 {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
                 <div class="row">
-                    <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group">
-                            <div class="custom-control custom-switch">
-                                <i class="fa-solid fa-file-audio"></i>
-                                09999999-1002-2023-08-01-110000.wav
-                                <audio controls>
-                                    <source src="" type="audio/ogg">
-                                    <source src="" type="audio/mpeg">
-                                    Your browser does not support the audio element.
-                                </audio>
-                            </div>
+                            <strong><i class="fas fa-list-ol"></i> ชื่อ:</strong>
+                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group">
-                            <strong><i class="fas fa-list-ol"></i> Comment:</strong>
-                            {!! Form::textarea('address', null, [
-                                'rows' => 4,
-                                'id' => 'AddAddress',
-                                'class' => 'form-control',
+                            <strong><i class="fas fa-calendar"></i> จากวันที่:</strong>
+                            @php
+                                $datethai = date('m/d/') . date('Y') + 543 . ' ' . date('H:i');
+                            @endphp
+                            {!! Form::text('start_date', $datethai, [
+                                'id' => 'AddSDate',
+                                'placeholder' => '',
+                                'class' => 'datepick form-control',
                             ]) !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8 col-sm-8 col-md-8">
+                        <div class="form-group">
+                            <strong><i class="fas fa-calendar"></i> ถึงวันที่:</strong>
+                            @php
+                                $datethai = date('m/d/') . date('Y') + 543 . ' ' . date('H:i');
+                            @endphp
+                            {!! Form::text('end_date', $datethai, [
+                                'id' => 'AddEDate',
+                                'placeholder' => '',
+                                'class' => 'datepick form-control',
+                            ]) !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8 col-sm-8 col-md-8">
+                        <div class="form-group">
+                            <strong><i class="fas fa-list-ol"></i> เสียง ประกาศวันหยุด:</strong>
+                            <select style="width: 100%;" class="select2 select2_single form-control" id="AddGreeting"
+                                name="greeting" multiple="multiple">
+                                @foreach ($sound as $key2)
+                                    <option value="{{ $key2->displayname }}">{{ $key2->displayname }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8 col-sm-8 col-md-8">
+                        <div class="form-group">
+                            <strong><i class="fas fa-list-ol"></i> เสียง ขอบคุณ:</strong>
+                            <select style="width: 100%;" class="select2 select2_single form-control" id="AddThankyou"
+                                name="thankyou" multiple="multiple">
+                                @foreach ($sound as $key2)
+                                    <option value="{{ $key2->displayname }}">{{ $key2->displayname }}
+                                @endforeach
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8 col-sm-8 col-md-8">
+                        <div class="form-group">
+                            <strong><i class="fas fa-eye"></i> เปิดใช้งาน:</strong>
+                            <br />
+                            <div class="custom-control custom-switch">
+                                {{ Form::checkbox('status', '1', false, ['id' => 'customCheckbox1', 'class' => 'custom-control-input name']) }}
+                                <label for="customCheckbox1" class="custom-control-label">
+                                    เปิดใช้งาน</label>
+                            </div>
                         </div>
                     </div>
                 </div>
