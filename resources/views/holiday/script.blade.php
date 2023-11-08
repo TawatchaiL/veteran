@@ -319,7 +319,7 @@
                 //type: "POST",
                 method: 'DELETE',
                 dataType: 'JSON',
-                url: "callsurvey/destroy/",
+                url: "holiday/destroy/",
                 data: {
                     id: rowid,
                     //_method: 'delete',
