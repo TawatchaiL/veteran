@@ -57,8 +57,8 @@ class DetailcaselogbyhnController extends Controller
 
         $users = DB::table('crm_contacts')
         ->join($datac, 'crm_contacts.id', '=', 'datac.contact_id')
-        ->select('cagent','id','crm_contacts.hn as hn ', DB::raw('CONCAT("comment") as caction'), 'magent', 'mdate')
-        ->get();
+        ->select('cagent','id','crm_contacts.hn as hn ', DB::raw('CONCAT("comment") as caction'), 'magent', 'mdate');
+        //->get();
 
         $datas = DB::table('crm_caseslogs')
         ->select('crm_caseslogs.agent as cagent','crm_caseslogs.id as id','crm_contacts.hn as chn', 'crm_caseslogs.modifyaction as caction', 'crm_caseslogs.modifyagent as magent', 'crm_caseslogs.modifydate as mdate')
