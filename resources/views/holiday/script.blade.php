@@ -51,7 +51,7 @@
         var currentYear = currentDate.getFullYear() + 543;
         var maxYear = currentYear + 1;
 
-        $(".datepick").datepicker({
+        $(".datepick").datetimepicker({
             changeMonth: true,
             changeYear: true,
             yearRange: currentYear + ':' + maxYear,
@@ -62,7 +62,7 @@
         });
 
         currentDate.setYear(currentDate.getFullYear() + 543);
-        $('.datepick').datepicker("setDate", currentDate);
+        $('.datepick').datetimepicker("setDate", currentDate);
 
 
         //$.noConflict();
@@ -180,8 +180,8 @@
                 method: 'post',
                 data: {
                     name: $('#AddName').val(),
-                    start_date: $('#AddSdate').val(),
-                    end_date: $('#AddEdate').val(),
+                    start_date: $('#AddSDate').val(),
+                    end_date: $('#AddEDate').val(),
                     holiday_sound: $('#AddGreeting').val()[0],
                     thankyou_sound: $('#AddThankyou').val()[0],
                     status: sstatus,
