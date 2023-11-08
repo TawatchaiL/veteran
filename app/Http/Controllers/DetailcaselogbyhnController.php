@@ -53,8 +53,8 @@ class DetailcaselogbyhnController extends Controller
         $datac = DB::table('crm_case_comments')
         ->select('crm_cases.agent as cagent','crm_cases.id as id','crm_cases.contact_id as contact_id ', DB::raw('CONCAT("comment") as caction'), 'crm_case_comments.agent as magent', 'crm_case_comments.created_at as mdate')
         ->join('crm_cases', 'crm_case_comments.case_id', '=', 'crm_cases.id')
-        ->whereRaw('crm_case_comments.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"');
-      
+        ->whereRaw('crm_case_comments.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+        ->get();
         //$users = DB::table('crm_contacts')
         //->join($datac, 'crm_contacts.id', '=', 'datac.contact_id')
         //->select('cagent','id','crm_contacts.hn as hn ', DB::raw('CONCAT("comment") as caction'), 'magent', 'mdate');
