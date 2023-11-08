@@ -473,13 +473,13 @@
             <li class="nav-item">
                 <a href="{{ route('holiday') }}" class="nav-link {{ Request::is('holiday') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p>Holidays</p>
+                    <p>ตั้งค่าวันหยุดประจำปี</p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="{{ route('callsurvey') }}" class="nav-link {{ Request::is('callsurvey') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p>Call Survey</p>
+                    <p>ตั้งค่าระบบประเมิน</p>
                 </a>
             </li>
         </ul>

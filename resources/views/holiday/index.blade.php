@@ -17,12 +17,12 @@
 
                         @can('master-data-create')
                             <button type="button" class="btn btn-success" id="CreateButton">
-                                <i class="fas fa-list-ol"></i> เพิ่ม Call Survey </a> </button>
+                                <i class="fas fa-list-ol"></i> เพิ่ม วันหยุดประจำปี </a> </button>
                         @else
                             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
                                 title="คุณไม่มีสิทธิ์ในส่วนนี้">
                                 <button type="button" class="btn btn-success disabled">
-                                    <i class="fas fa-list-ol"></i> เพิ่ม Call Survey </a></button>
+                                    <i class="fas fa-list-ol"></i> เพิ่ม วันหยุดประจำปี </a></button>
                             </span>
                         @endcan &nbsp;
 
@@ -49,7 +49,7 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-list-ol"></i> Call Survey</h3>
+                            <h3 class="card-title"><i class="fas fa-list-ol"></i> วันหยุดประจำปี</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -71,7 +71,7 @@
                                     });
                                 </script>
                             @endif
-                            <form method="post" action="{{ route('callsurvey.destroy_all') }}" name="delete_all"
+                            <form method="post" action="{{ route('holiday.destroy_all') }}" name="delete_all"
                                 id="delete_all">
                                 @csrf
                                 @method('POST')
@@ -79,8 +79,8 @@
                                     <thead>
                                         <tr>
                                             <th width="80px"><input type="checkbox" id="check-all" class="flat"></th>
-                                            <th>Call Survey</th>
-                                            <th>คะแนนสูงสุด</th>
+                                            <th>วันหยุดประจำปี</th>
+                                            <th>วันที่เวลา</th>
                                             <th>สถานะ</th>
                                             <th width="120px"></th>
                                         </tr>
@@ -105,11 +105,11 @@
     </section>
 
 
-    @include('callsurvey.create')
+    @include('holiday.create')
 
-    @include('callsurvey.edit')
+    @include('holiday.edit')
 @endsection
 
 @section('script')
-    @include('callsurvey.script')
+    @include('holiday.script')
 @endsection

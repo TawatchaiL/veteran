@@ -108,7 +108,7 @@ class CallsurveyController extends Controller
             //sleep(2);
 
             $datas = Callsurvey::orderBy("id", "desc")->get();
-            $state_text = array('ไม่เปิดใช้งาน', 'ตั้งเป็น Call Survey');
+            $state_text = array('ไม่เปิดใช้งาน', 'ตั้งเป็น ระบบประเมินหลัก');
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
@@ -195,7 +195,7 @@ class CallsurveyController extends Controller
             );
         }
 
-        return response()->json(['success' => 'เพิ่ม Call Survey เรียบร้อยแล้ว']);
+        return response()->json(['success' => 'เพิ่มหัวข้อ ระบบประเมิน เรียบร้อยแล้ว']);
     }
 
     /**
@@ -276,7 +276,7 @@ class CallsurveyController extends Controller
             );
         }
 
-        return response()->json(['success' => 'แก้ไข Call Survey เรียบร้อยแล้ว']);
+        return response()->json(['success' => 'แก้ไขหัวข้อ ระบบประเมิน เรียบร้อยแล้ว']);
     }
 
     /**
@@ -286,7 +286,7 @@ class CallsurveyController extends Controller
     {
         $id = $request->get('id');
         Callsurvey::find($id)->delete();
-        return ['success' => true, 'message' => 'ลบ Call Survey เรียบร้อยแล้ว'];
+        return ['success' => true, 'message' => 'ลบหัวข้อ ระบบประเมิน เรียบร้อยแล้ว'];
     }
 
     public function destroy_all(Request $request)
@@ -298,6 +298,6 @@ class CallsurveyController extends Controller
             Callsurvey::find($arr_del[$xx])->delete();
         }
 
-        return redirect('/callsurvey')->with('success', 'ลบ Call Survey เรียบร้อยแล้ว');
+        return redirect('/callsurvey')->with('success', 'ลบหัวข้อ ระบบประเมิน เรียบร้อยแล้ว');
     }
 }

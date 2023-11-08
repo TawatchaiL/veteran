@@ -17,12 +17,12 @@
 
                         @can('master-data-create')
                             <button type="button" class="btn btn-success" id="CreateButton">
-                                <i class="fas fa-list-ol"></i> เพิ่ม Call Survey </a> </button>
+                                <i class="fas fa-list-ol"></i> เพิ่มหัวข้อ ระบบประเมิน </a> </button>
                         @else
                             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
                                 title="คุณไม่มีสิทธิ์ในส่วนนี้">
                                 <button type="button" class="btn btn-success disabled">
-                                    <i class="fas fa-list-ol"></i> เพิ่ม Call Survey </a></button>
+                                    <i class="fas fa-list-ol"></i> เพิ่มหัวข้อ ระบบประเมิน </a></button>
                             </span>
                         @endcan &nbsp;
 
@@ -79,7 +79,7 @@
                                     <thead>
                                         <tr>
                                             <th width="80px"><input type="checkbox" id="check-all" class="flat"></th>
-                                            <th>Call Survey</th>
+                                            <th>หัวข้อระบบประเมิน</th>
                                             <th>คะแนนสูงสุด</th>
                                             <th>สถานะ</th>
                                             <th width="120px"></th>
