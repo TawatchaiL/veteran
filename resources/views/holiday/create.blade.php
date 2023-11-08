@@ -34,13 +34,14 @@
                 <div class="row">
                     <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group">
-                            <strong><i class="fas fa-list-ol"></i> คะแนนสูงสุด:</strong>
-                            {!! Form::number('score', null, [
-                                'id' => 'AddScore',
-                                'placeholder' => 'Score',
-                                'min' => '1',
-                                'max' => '10',
-                                'class' => 'form-control',
+                            <strong><i class="fas fa-calendar"></i> จากวันที่:</strong>
+                            @php
+                                $datethai = date('m/d/') . date('Y') + 543 . ' ' . date('H:i');
+                            @endphp
+                            {!! Form::text('start_date', $datethai, [
+                                'id' => 'AddSDate',
+                                'placeholder' => '',
+                                'class' => 'datepick form-control',
                             ]) !!}
                         </div>
                     </div>
@@ -48,7 +49,22 @@
                 <div class="row">
                     <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group">
-                            <strong><i class="fas fa-list-ol"></i> เสียง Greeting:</strong>
+                            <strong><i class="fas fa-calendar"></i> ถึงวันที่:</strong>
+                            @php
+                                $datethai = date('m/d/') . date('Y') + 543 . ' ' . date('H:i');
+                            @endphp
+                            {!! Form::text('end_date', $datethai, [
+                                'id' => 'AddEDate',
+                                'placeholder' => '',
+                                'class' => 'datepick form-control',
+                            ]) !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8 col-sm-8 col-md-8">
+                        <div class="form-group">
+                            <strong><i class="fas fa-list-ol"></i> เสียง ประกาศวันหยุด:</strong>
                             <select style="width: 100%;" class="select2 select2_single form-control" id="AddGreeting"
                                 name="greeting" multiple="multiple">
                                 @foreach ($sound as $key2)
@@ -70,64 +86,6 @@
                                 @endforeach
 
                             </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-8 col-sm-8 col-md-8">
-                        <div class="form-group">
-                            <strong><i class="fas fa-list-ol"></i> เสียง กดเมนูผิด:</strong>
-                            <select style="width: 100%;" class="select2 select2_single form-control" id="AddInvalid"
-                                name="invalid" multiple="multiple">
-                                @foreach ($sound as $key2)
-                                    <option value="{{ $key2->displayname }}">{{ $key2->displayname }}
-                                    </option>
-                                @endforeach
-
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-8 col-sm-8 col-md-8">
-                        <div class="form-group">
-                            <strong><i class="fas fa-list-ol"></i> เสียง ไม่ทำรายการตามเวลา:</strong>
-                            <select style="width: 100%;" class="select2 select2_single form-control" id="AddTimeout"
-                                name="timeout" multiple="multiple">
-                                @foreach ($sound as $key2)
-                                    <option value="{{ $key2->displayname }}">{{ $key2->displayname }}
-                                    </option>
-                                @endforeach
-
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-8 col-sm-8 col-md-8">
-                        <div class="form-group">
-                            <strong><i class="fas fa-list-ol"></i> เสียง ทำรายการเกินจำนวนครั้ง:</strong>
-                            <select style="width: 100%;" class="select2 select2_single form-control" id="AddMax"
-                                name="max" multiple="multiple">
-                                @foreach ($sound as $key2)
-                                    <option value="{{ $key2->displayname }}">{{ $key2->displayname }}
-                                    </option>
-                                @endforeach
-
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-8 col-sm-8 col-md-8">
-                        <div class="form-group">
-                            <strong><i class="fas fa-eye"></i> ตั้งเป็น Call Survey:</strong>
-                            <br />
-                            <div class="custom-control custom-switch">
-                                {{ Form::checkbox('status', '1', false, ['id' => 'customCheckbox1', 'class' => 'custom-control-input name']) }}
-                                <label for="customCheckbox1" class="custom-control-label">
-                                    เปิดใช้งาน</label>
-                            </div>
                         </div>
                     </div>
                 </div>
