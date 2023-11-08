@@ -6,6 +6,8 @@ use App\Models\Holidays;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 
 class HolidaysController extends Controller
 {
@@ -77,7 +79,45 @@ class HolidaysController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator =  Validator::make($request->all(), [
+            'name' => 'required|string|max:100',
+            'holiday_sound' => 'required',
+            'thankyou_sound' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+        ], [
+            'name.required' => 'ชื่อต้องไม่เป็นค่าว่าง!',
+            'holiday_sound.required' => 'กรุณาระบุเสียงวันหยุด!',
+            'thankyou_sound.required' => 'กรุณาระบุเสียงขอบคุณ!',
+            'start_date.required' => 'กรุณาระบุวันเริ่มต้น!',
+            'end_date.required' => 'กรุณาระบุวันสิ้นสุด!',
+        ]);
+
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all()]);
+        }
+
+        $std = Carbon::createFromFormat('d/m/Y H:i:00', $request->get('start_date') . ':00', 'Asia/Bangkok');
+        $stdutcDate = $std->setTimezone('UTC');
+        $stdutcFormattedDate = $stdutcDate->format('Y-m-d H:i:00');
+
+        $endDate = Carbon::createFromFormat('d/m/Y H:i:00', $request->get('end_date') . ':00', 'Asia/Bangkok');
+        $endUtcDate = $endDate->setTimezone('UTC');
+        $endUtcFormattedDate = $endUtcDate->format('Y-m-d H:i:00');
+
+        $holiday = [
+            'name' => $request->get('name'),
+            'holiday_sound' => $request->get('holiday_sound'),
+            'thankyou_sound' => $request->get('thankyou_sound'),
+            'start_date' => $stdutcFormattedDate,
+            'end_date' => $endUtcFormattedDate,
+            'status' => $request->get('status'),
+        ];
+
+        Holidays::create($holiday);
+
+        return response()->json(['success' => 'เพิ่ม วันหยุดประจำปี เรียบร้อยแล้ว']);
     }
 
     /**

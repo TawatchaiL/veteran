@@ -17,6 +17,7 @@ return new class extends Migration
             $table->dateTime('start_datetime')->nullable();
             $table->dateTime('end_datetime')->nullable();
             $table->string('holiday_sound')->nullable();
+            $table->string('thankyou_sound')->nullable();
             $table->integer('status')->nullable();
             $table->timestamps();
         });
