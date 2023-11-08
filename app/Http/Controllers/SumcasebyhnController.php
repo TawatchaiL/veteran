@@ -36,75 +36,44 @@ class SumcasebyhnController extends Controller
     public function index(Request $request)
     {
 
-        $numberOfRows = 50; // Change this to the desired number of rows
-        $simulatedDatas = [];
+        if (!empty($request->get('sdate'))) {
+            $dateRange = $request->input('sdate');
+            if ($dateRange) {
+                $dateRangeArray = explode(' - ', $dateRange);
+                if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
+                    $startDate = $dateRangeArray[0];
+                    $endDate = $dateRangeArray[1];
+                }
+            }
+        }else{
+                    $startDate = date("Y-m-d");
+                    $endDate = date("Y-m-t", strtotime($startDate));  
+        }
+                $datas = DB::table('crm_cases')
+                ->select('crm_contacts.hn', DB::raw('count(crm_contacts.hn) as sumhn'))
+                ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
+                ->whereRaw('crm_cases.adddate between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+                ->groupBy('crm_contacts.hn')
+                ->orderBy("sumhn", "desc")
+                ->get();
 
-        $rivrname = ['welcom', 'opd', 'callcenter'];
-        $rivrno = ['1', '2', '3', '4', '5'];
-
-        for ($i = 1; $i <= $numberOfRows; $i++) {
-
-            $ivrname = rand(10001, 99999);
-            $ivrsum = rand(1, 100);
-
-
-            $simulatedDatas[] = (object) [
-                'id' => $i,
-                'ivrname' => $ivrname,
-                'ivrsum' => $ivrsum,
-                // Simulate other fields as needed
-            ];
+        if (!empty($request->get('rstatus'))) {
+            $chart_data = array();
+            $chart_label = array();
+            foreach ($datas as $data) {
+                $chart_data[] = $data->sumcases;
+                $chart_label[] = $data->casetype1;
+            }
+            return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
         }
         if ($request->ajax()) {
-            return datatables()->of($simulatedDatas)
+            return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
-        //graph data
-        $chart_data = array();
-        foreach ($simulatedDatas as $data) {
-            $chart_data[$data->ivrname] = $data->ivrsum;
-        }
 
-        $graph_color = array(
-            '#E91E63', '#2E93fA', '#546E7A', '#66DA26', '#FF9800',  '#4ECDC4', '#C7F464', '#81D4FA',
-            '#A5978B', '#FD6A6A'
-        );
-
-        $chart_title = "ผลรวมเรื่องที่ติดต่อแยกตาม HN";
-
-        $chart_options = [
-            'chart_id' => 'bar_graph',
-            'chart_title' => $chart_title,
-            'chart_type' => 'bar',
-            'color' => $graph_color,
-            'data' => $chart_data
-        ];
-
-        $chart1 = new GraphService($chart_options);
-
-        $chart_options = [
-            'chart_id' => 'line_graph',
-            'chart_title' => $chart_title,
-            'chart_type' => 'line',
-            'color' => $graph_color,
-            'data' => $chart_data
-        ];
-
-        $chart2 = new GraphService($chart_options);
-
-        $chart_options = [
-            'chart_id' => 'pie_graph',
-            'chart_title' => $chart_title,
-            'chart_type' => 'pie',
-            'color' => $graph_color,
-            'data' => $chart_data
-        ];
-
-        $chart3 = new GraphService($chart_options);
-
-        return view('sumcasebyhn.index', compact('chart1', 'chart2', 'chart3'));
+        return view('sumcasebyhn.index');
     }
 
 }
