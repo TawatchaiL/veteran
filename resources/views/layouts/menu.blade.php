@@ -452,6 +452,7 @@
     <li
         class="nav-item {{ in_array(Request::route()->getName(), [
             'callsurvey',
+            'Holiday',
             // Add more route names here if needed
         ])
             ? 'menu-open'
@@ -459,6 +460,7 @@
         <a href="#"
             class="nav-link {{ in_array(Request::route()->getName(), [
                 'callsurvey',
+                'Holiday',
                 // Add more route names here if needed
             ])
                 ? 'active'
@@ -468,6 +470,12 @@
             <i class="fas fa-angle-left right"></i>
         </a>
         <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="{{ route('holiday') }}" class="nav-link {{ Request::is('holiday') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p>Holidays</p>
+                </a>
+            </li>
             <li class="nav-item">
                 <a href="{{ route('callsurvey') }}" class="nav-link {{ Request::is('callsurvey') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
