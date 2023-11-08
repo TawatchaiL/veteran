@@ -80,14 +80,13 @@ class HolidaysController extends Controller
     public function store(Request $request)
     {
         $validator =  Validator::make($request->all(), [
-            'name' => 'required|string|max:100|unique:holidays',
+            'name' => 'required|string|max:100',
             'holiday_sound' => 'required',
             'thankyou_sound' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
         ], [
             'name.required' => 'ชื่อต้องไม่เป็นค่าว่าง!',
-            'name.unique' => 'ชื่อนี้มีอยู่แล้วในฐานข้อมูล!',
             'holiday_sound.required' => 'กรุณาระบุเสียงวันหยุด!',
             'thankyou_sound.required' => 'กรุณาระบุเสียงขอบคุณ!',
             'start_date.required' => 'กรุณาระบุวันเริ่มต้น!',
