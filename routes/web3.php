@@ -68,5 +68,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/holiday/save/{id}', [App\Http\Controllers\HolidaysController::class, 'update'])->name('holiday.save');
     Route::delete('/holiday/destroy', [App\Http\Controllers\HolidaysController::class, 'destroy'])->name('holiday.destroy');
     Route::post('/holiday/destroy_all', [App\Http\Controllers\HolidaysController::class, 'destroy_all'])->name('holiday.destroy_all');
+
+    Route::get('/billing', [App\Http\Controllers\BillingController::class, 'index'])->name('billing');
+    Route::post('/billing/store', [App\Http\Controllers\BillingController::class, 'store'])->name('billing.store');
+    Route::get('/billing/edit/{id}', [App\Http\Controllers\HolidaysBillingControlleroller::class, 'edit'])->name('billing.edit');
+    Route::put('/billing/save/{id}', [App\Http\Controllers\BillingController::class, 'update'])->name('billing.save');
+    Route::delete('/billing/destroy', [App\Http\Controllers\BillingController::class, 'destroy'])->name('billing.destroy');
+    Route::post('/billing/destroy_all', [App\Http\Controllers\BillingController::class, 'destroy_all'])->name('billing.destroy_all');
 });
 
