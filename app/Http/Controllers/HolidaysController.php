@@ -40,8 +40,12 @@ class HolidaysController extends Controller
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
                 })
+                ->addColumn('holidaydate', function ($row) {
+                    $holiday = $row->start_date_th . " - " . $row->end_date_th;
+                    return $holiday;
+                })
                 ->editColumn('status', function ($row) use ($state_text) {
-                    $state = $state_text[$row->set_default];
+                    $state = $state_text[$row->status];
                     return $state;
                 })
                 ->addColumn('action', function ($row) {
