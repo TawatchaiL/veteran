@@ -100,8 +100,8 @@ class HolidaysController extends Controller
 
         $start_array = explode(" ", $request->get('start_date'));
         // Manually adjust the year from Buddhist to Gregorian calendar
-        $gregorianYear = intval(substr($start_array[0], 0, 4)) - 543;
-        $gregorianDate = $gregorianYear . substr($start_array[0], 4);
+        $gregorianYear = intval(substr($start_array[0], 6)) - 543;
+        $gregorianDate = $gregorianYear . substr($start_array[0], 2, 5);
         $start_date_convert = Carbon::createFromFormat('d/m/Y', $gregorianDate, 'Asia/Bangkok');
         $startutcDate = $start_date_convert->setTimezone('UTC');
         $startutcFormattedDate = $startutcDate->format('Y-m-d');
