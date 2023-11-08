@@ -563,8 +563,8 @@
                     name: 'chn'
                 },
                 {
-                    data: 'id',
-                    name: 'id'
+                    data: 'cid',
+                    name: 'cid'
                 },
                 {
                     data: 'magent',
