@@ -55,8 +55,16 @@ class DetailcaselogbyhnController extends Controller
         ->whereRaw('crm_caseslogs.modifydate between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
         ->get();
 
+        $datac = DB::table('crm_case_comments')
+        ->select('crm_case.agent','crm_cases.id as id','hn', 'comment', 'crm_case_comments.agent', 'crm_case_comments.created_at')
+        ->join('crm_cases', 'crm_case_comments.case_id', '=', 'crm_cases.id')
+        ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
+        ->whereRaw('crm_case_comments.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+        ->union($datas)
+        ->get();
+
         if ($request->ajax()) {
-            return datatables()->of($datas)
+            return datatables()->of($datac)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 })->rawColumns(['checkbox', 'action'])
