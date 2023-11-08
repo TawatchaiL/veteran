@@ -161,8 +161,22 @@ class HolidaysController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Holidays $holidays)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request->get('id');
+        Holidays::find($id)->delete();
+        return ['success' => true, 'message' => 'ลบ วันหยุดประจำปี เรียบร้อยแล้ว'];
+    }
+
+    public function destroy_all(Request $request)
+    {
+
+        $arr_del  = $request->get('table_records'); //$arr_ans is Array MacAddress
+
+        for ($xx = 0; $xx < count($arr_del); $xx++) {
+            Holidays::find($arr_del[$xx])->delete();
+        }
+
+        return redirect('/holiday')->with('success', 'ลบ วันหยุดประจำปี เรียบร้อยแล้ว');
     }
 }
