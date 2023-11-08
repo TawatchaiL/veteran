@@ -4,7 +4,7 @@
         <form id="editdata" class="form" action="" method="POST">
             <div class="modal-content">
                 <div class="modal-header bg-primary">
-                    <h4 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-list-ol"></i> แก้ไข Call Survey
+                    <h4 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-list-ol"></i> แก้ไข วันหยุดประจำปี
                     </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -36,13 +36,14 @@
                         <div class="row">
                             <div class="col-xs-8 col-sm-8 col-md-8">
                                 <div class="form-group">
-                                    <strong><i class="fas fa-list-ol"></i> คะแนนสูงสุด:</strong>
-                                    {!! Form::number('escore', null, [
-                                        'id' => 'EditScore',
-                                        'placeholder' => 'Score',
-                                        'min' => '1',
-                                        'max' => '10',
-                                        'class' => 'form-control',
+                                    <strong><i class="fas fa-calendar"></i> จากวันที่:</strong>
+                                    @php
+                                        $datethai = date('m/d/') . date('Y') + 543 . ' ' . date('H:i');
+                                    @endphp
+                                    {!! Form::text('start_date', $datethai, [
+                                        'id' => 'EditSDate',
+                                        'placeholder' => '',
+                                        'class' => 'datepick form-control',
                                     ]) !!}
                                 </div>
                             </div>
@@ -50,7 +51,22 @@
                         <div class="row">
                             <div class="col-xs-8 col-sm-8 col-md-8">
                                 <div class="form-group">
-                                    <strong><i class="fas fa-list-ol"></i> เสียง Greeting:</strong>
+                                    <strong><i class="fas fa-calendar"></i> ถึงวันที่:</strong>
+                                    @php
+                                        $datethai = date('m/d/') . date('Y') + 543 . ' ' . date('H:i');
+                                    @endphp
+                                    {!! Form::text('end_date', $datethai, [
+                                        'id' => 'EditEDate',
+                                        'placeholder' => '',
+                                        'class' => 'datepick form-control',
+                                    ]) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-8 col-sm-8 col-md-8">
+                                <div class="form-group">
+                                    <strong><i class="fas fa-list-ol"></i> เสียง ประกาศวันหยุด:</strong>
                                     <select style="width: 100%;" class="select2 select2_single form-control"
                                         id="EditGreeting" name="egreeting" multiple="multiple">
                                         @foreach ($sound as $key2)
@@ -78,52 +94,7 @@
                         <div class="row">
                             <div class="col-xs-8 col-sm-8 col-md-8">
                                 <div class="form-group">
-                                    <strong><i class="fas fa-list-ol"></i> เสียง กดเมนูผิด:</strong>
-                                    <select style="width: 100%;" class="select2 select2_single form-control"
-                                        id="EditInvalid" name="einvalid" multiple="multiple">
-                                        @foreach ($sound as $key2)
-                                            <option value="{{ $key2->displayname }}">{{ $key2->displayname }}
-                                            </option>
-                                        @endforeach
-
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-8 col-sm-8 col-md-8">
-                                <div class="form-group">
-                                    <strong><i class="fas fa-list-ol"></i> เสียง ไม่ทำรายการตามเวลา:</strong>
-                                    <select style="width: 100%;" class="select2 select2_single form-control"
-                                        id="EditTimeout" name="etimeout" multiple="multiple">
-                                        @foreach ($sound as $key2)
-                                            <option value="{{ $key2->displayname }}">{{ $key2->displayname }}
-                                            </option>
-                                        @endforeach
-
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-8 col-sm-8 col-md-8">
-                                <div class="form-group">
-                                    <strong><i class="fas fa-list-ol"></i> เสียง ทำรายการเกินจำนวนครั้ง:</strong>
-                                    <select style="width: 100%;" class="select2 select2_single form-control"
-                                        id="EditMax" name="emax" multiple="multiple">
-                                        @foreach ($sound as $key2)
-                                            <option value="{{ $key2->displayname }}">{{ $key2->displayname }}
-                                            </option>
-                                        @endforeach
-
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-8 col-sm-8 col-md-8">
-                                <div class="form-group">
-                                    <strong><i class="fas fa-eye"></i> ตั้งเป็น Call Survey:</strong>
+                                    <strong><i class="fas fa-eye"></i> เปิดใช้งาน:</strong>
                                     <br />
                                     <div class="custom-control custom-switch">
                                         {{ Form::checkbox('status', '1', false, ['id' => 'ecustomCheckbox1', 'class' => 'custom-control-input name']) }}

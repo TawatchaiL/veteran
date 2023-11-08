@@ -225,17 +225,15 @@
 
             id = $(this).data('id');
             $.ajax({
-                url: "callsurvey/edit/" + id,
+                url: "้holiday/edit/" + id,
                 method: 'GET',
                 success: function(res) {
                     $('#EditName').val(res.data.name);
-                    $('#EditScore').val(res.data.max_score);
-                    $('#EditGreeting').val(res.data.wellcome_sound).change();
+                    $('#EditGreeting').val(res.data.holiday_sound).change();
                     $('#EditThankyou').val(res.data.thankyou_sound).change();
-                    $('#EditTimeout').val(res.data.timeout_sound).change();
-                    $('#EditInvalid').val(res.data.invalid_sound).change();
-                    $('#EditMax').val(res.data.max_sound).change();
-                    if (res.data.set_default == 1) {
+                    $('#EditSDate').val(res.data.start_datetime).change();
+                    $('#EditEDate').val(res.data.end_datetime).change();
+                    if (res.data.status == 1) {
                         $('#ecustomCheckbox1').prop('checked', true);
                     } else {
                         $('#ecustomCheckbox1').prop('checked', false);

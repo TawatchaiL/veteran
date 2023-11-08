@@ -145,9 +145,10 @@ class HolidaysController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Holidays $holidays)
+    public function edit($id)
     {
-        //
+        $data =  Holidays::find($id);
+        return response()->json(['data' => $data]);
     }
 
     /**
