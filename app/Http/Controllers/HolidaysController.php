@@ -154,9 +154,60 @@ class HolidaysController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Holidays $holidays)
+    public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'name' => 'required|string|max:100',
+            'holiday_sound' => 'required',
+            'thankyou_sound' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, [
+            'name.required' => 'ชื่อต้องไม่เป็นค่าว่าง!',
+            'holiday_sound.required' => 'กรุณาระบุเสียงวันหยุด!',
+            'thankyou_sound.required' => 'กรุณาระบุเสียงขอบคุณ!',
+            'start_date.required' => 'กรุณาระบุวันเริ่มต้น!',
+            'end_date.required' => 'กรุณาระบุวันสิ้นสุด!',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all()]);
+        }
+
+        $start_array = explode(" ", $request->get('start_date'));
+        // Manually adjust the year from Buddhist to Gregorian calendar
+        $sgregorianYear = intval(substr($start_array[0], 6)) - 543;
+        $sgregorianDate = $sgregorianYear . substr($start_array[0], 2, 3) . "/" . substr($start_array[0], 0, 2);
+        $start_date_convert = Carbon::createFromFormat('Y/m/d', $sgregorianDate, 'Asia/Bangkok');
+        $startutcDate = $start_date_convert->setTimezone('UTC');
+        $startutcFormattedDate = $startutcDate->format('Y-m-d');
+
+
+        $end_array = explode(" ", $request->get('end_date'));
+        $egregorianYear = intval(substr($end_array[0], 6)) - 543;
+        $egregorianDate = $egregorianYear . substr($end_array[0], 2, 3) . "/" . substr($end_array[0], 0, 2);
+        $end_date_convert = Carbon::createFromFormat('Y/m/d', $egregorianDate, 'Asia/Bangkok');
+        $endutcDate = $end_date_convert->setTimezone('UTC');
+        $endutcFormattedDate = $endutcDate->format('Y-m-d');
+
+        $holiday = [
+            'name' => $request->get('name'),
+            'holiday_sound' => $request->get('holiday_sound'),
+            'thankyou_sound' => $request->get('thankyou_sound'),
+            'start_datetime' =>  $startutcFormattedDate . " " . $start_array[1] . ":00",
+            'end_datetime' => $endutcFormattedDate . " " . $end_array[1] . ":00",
+            'start_datetime_th' =>  $request->get('start_date'),
+            'end_datetime_th' => $request->get('end_date'),
+            'status' => $request->get('status'),
+        ];
+
+
+        $update = Holidays::find($id);
+        $update->update($holiday);
+
+        return response()->json(['success' => 'แก้ไข วันหยุดประจำปี เรียบร้อยแล้ว']);
     }
 
     /**
