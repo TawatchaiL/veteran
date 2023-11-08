@@ -99,24 +99,21 @@ class HolidaysController extends Controller
         }
 
         $start_array = explode(" ", $request->get('start_date'));
-        $end_array = explode(" ", $request->get('end_date'));
-
-        $startCarbon = Carbon::createFromFormat('d/m/Y H:i', $start_array[0] . ' ' . $start_array[1], 'Asia/Bangkok');
-        $endCarbon = Carbon::createFromFormat('d/m/Y H:i', $end_array[0] . ' ' . $end_array[1], 'Asia/Bangkok');
-
-        $startUtcDate = $startCarbon->setTimezone('UTC');
-        $endUtcDate = $endCarbon->setTimezone('UTC');
+        $start_date_convert = Carbon::createFromFormat('d/m/Y', $start_array[0], 'Asia/Bangkok');
+        $startutcDate = $start_date_convert->setTimezone('UTC');
+        $startutcFormattedDate = $startutcDate->format('Y-m-d');
 
         $holiday = [
             'name' => $request->get('name'),
             'holiday_sound' => $request->get('holiday_sound'),
             'thankyou_sound' => $request->get('thankyou_sound'),
-            'start_datetime' => $startUtcDate->format('Y-m-d H:i:00'),
-            'end_datetime' => $endUtcDate->format('Y-m-d H:i:00'),
+            'start_datetime' =>  $startutcFormattedDate . " " . $start_array[1] . ":00",
+            'end_datetime' => $request->get('end_date'),
             'status' => $request->get('status'),
         ];
 
         Holidays::create($holiday);
+
         return response()->json(['success' => 'เพิ่ม วันหยุดประจำปี เรียบร้อยแล้ว']);
     }
 
