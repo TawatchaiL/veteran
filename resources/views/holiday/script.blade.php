@@ -48,19 +48,20 @@
 
         $.datepicker.setDefaults($.datepicker.regional["th"]);
         var currentDate = new Date();
+        var currentYear = currentDate.getFullYear() + 543;
+        var maxYear = currentYear + 1;
 
-        currentDate.setYear(currentDate.getFullYear() + 543);
-        // Birth date
-        $(".datepick").datetimepicker({
+        $(".datepick").datepicker({
             changeMonth: true,
             changeYear: true,
-            yearRange: '+443:+543',
+            yearRange: currentYear + ':' + maxYear,
             dateFormat: 'dd/mm/yy',
             onSelect: function(date) {
                 $("#edit-date-of-birth").addClass('filled');
             }
         });
-        $('.datepick').datetimepicker("setDate", currentDate);
+
+        $('.datepick').datepicker("setDate", currentDate);
 
 
         //$.noConflict();
