@@ -231,8 +231,8 @@
                     $('#EditName').val(res.data.name);
                     $('#EditGreeting').val(res.data.holiday_sound).change();
                     $('#EditThankyou').val(res.data.thankyou_sound).change();
-                    $('#EditSDate').val(res.data.start_datetime).change();
-                    $('#EditEDate').val(res.data.end_datetime).change();
+                    $('#EditSDate').val(res.data.start_datetime_th).change();
+                    $('#EditEDate').val(res.data.end_datetime_th).change();
                     if (res.data.status == 1) {
                         $('#ecustomCheckbox1').prop('checked', true);
                     } else {
