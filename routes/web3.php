@@ -54,11 +54,19 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/agent_call_survey', [App\Http\Controllers\DashboardController::class, 'dashboard_agent_call_survey'])->name('dashboard.agent_call_survey');
     Route::post('/agent_case_by_date', [App\Http\Controllers\DashboardController::class, 'dashboard_agent_case_by_date'])->name('dashboard.agent_case_by_date');
     Route::post('/sla_data', [App\Http\Controllers\DashboardController::class, 'dashboard_sla_data'])->name('dashboard.sla_data');
+
     Route::get('/callsurvey', [App\Http\Controllers\CallsurveyController::class, 'index'])->name('callsurvey');
     Route::post('/callsurvey/store', [App\Http\Controllers\CallsurveyController::class, 'store'])->name('callsurvey.store');
     Route::get('/callsurvey/edit/{id}', [App\Http\Controllers\CallsurveyController::class, 'edit'])->name('callsurvey.edit');
     Route::put('/callsurvey/save/{id}', [App\Http\Controllers\CallsurveyController::class, 'update'])->name('callsurvey.save');
     Route::delete('/callsurvey/destroy', [App\Http\Controllers\CallsurveyController::class, 'destroy'])->name('callsurvey.destroy');
     Route::post('/callsurvey/destroy_all', [App\Http\Controllers\CallsurveyController::class, 'destroy_all'])->name('callsurvey.destroy_all');
+
+    Route::get('/holiday', [App\Http\Controllers\HolidaysController::class, 'index'])->name('holiday');
+    Route::post('/holiday/store', [App\Http\Controllers\HolidaysController::class, 'store'])->name('holiday.store');
+    Route::get('/holiday/edit/{id}', [App\Http\Controllers\HolidaysController::class, 'edit'])->name('holiday.edit');
+    Route::put('/holiday/save/{id}', [App\Http\Controllers\HolidaysController::class, 'update'])->name('holiday.save');
+    Route::delete('/holiday/destroy', [App\Http\Controllers\HolidaysController::class, 'destroy'])->name('holiday.destroy');
+    Route::post('/holiday/destroy_all', [App\Http\Controllers\HolidaysController::class, 'destroy_all'])->name('holiday.destroy_all');
 });
 
