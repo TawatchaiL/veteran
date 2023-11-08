@@ -49,26 +49,21 @@ class DetailcaselogbyhnController extends Controller
                     $endDate = date("Y-m-t", strtotime($startDate));  
         }
 
-
-        $datac = DB::table('crm_case_comments')
-        ->select('crm_cases.agent as cagent','crm_cases.id as id','crm_cases.contact_id as contact_id ', DB::raw('CONCAT("comment") as caction'), 'crm_case_comments.agent as magent', 'crm_case_comments.created_at as mdate')
-        ->join('crm_cases', 'crm_case_comments.case_id', '=', 'crm_cases.id')
-        ->whereRaw('crm_case_comments.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"');
-
-        $users = DB::table('crm_contacts')
-        ->join($datac, 'crm_contacts.id', '=', 'datac.contact_id')
-        ->select('cagent','id','crm_contacts.hn as hn ', DB::raw('CONCAT("comment") as caction'), 'magent', 'mdate');
-        //->get();
-
         $datas = DB::table('crm_caseslogs')
         ->select('crm_caseslogs.agent as cagent','crm_caseslogs.id as id','crm_contacts.hn as chn', 'crm_caseslogs.modifyaction as caction', 'crm_caseslogs.modifyagent as magent', 'crm_caseslogs.modifydate as mdate')
         ->join('crm_contacts', 'crm_caseslogs.contact_id', '=', 'crm_contacts.id')
-        ->whereRaw('crm_caseslogs.modifydate between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
-        ->union($users)
+        ->whereRaw('crm_caseslogs.modifydate between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"');
+
+        $datac = DB::table('crm_case_comments')
+        ->select('crm_cases.agent as cagent','crm_cases.id as id','crm_contacts.hn as chn ', DB::raw('CONCAT("comment") as caction'), 'crm_case_comments.agent as magent', 'crm_case_comments.created_at as mdate')
+        ->join('crm_cases', 'crm_case_comments.case_id', '=', 'crm_cases.id')
+        ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
+        ->whereRaw('crm_case_comments.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+        ->union($datas)
         ->get();
 
         if ($request->ajax()) {
-            return datatables()->of($datas)
+            return datatables()->of($datac)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 })->rawColumns(['checkbox', 'action'])
