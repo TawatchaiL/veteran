@@ -55,7 +55,7 @@ class DetailcaselogbyhnController extends Controller
         ->whereRaw('crm_caseslogs.modifydate between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"');
 
         $datac = DB::table('crm_case_comments')
-        ->select('crm_cases.agent as cagent','crm_cases.id as id','hn as chn ', '"comment" as caction', 'crm_case_comments.agent as magent', 'crm_case_comments.created_at as mdate')
+        ->select('crm_cases.agent as cagent','crm_cases.id as id','hn as chn ', DB::raw('CONCAT("comment") as caction'), 'crm_case_comments.agent as magent', 'crm_case_comments.created_at as mdate')
         ->join('crm_cases', 'crm_case_comments.case_id', '=', 'crm_cases.id')
         ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
         ->whereRaw('crm_case_comments.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
