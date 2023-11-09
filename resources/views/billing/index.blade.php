@@ -17,12 +17,12 @@
 
                         @can('billing-create')
                             <button type="button" class="btn btn-success" id="CreateButton">
-                                <i class="fas fa-list-ol"></i> อัตราค่าใช้จ่ายการโทร </a> </button>
+                                <i class="fas fa-list-ol"></i> เพิ่มอัตราค่าใช้จ่ายการโทร </a> </button>
                         @else
                             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
                                 title="คุณไม่มีสิทธิ์ในส่วนนี้">
                                 <button type="button" class="btn btn-success disabled">
-                                    <i class="fas fa-list-ol"></i> อัตราค่าใช้จ่ายการโทร </a></button>
+                                    <i class="fas fa-list-ol"></i> เพิ่มอัตราค่าใช้จ่ายการโทร </a></button>
                             </span>
                         @endcan &nbsp;
 

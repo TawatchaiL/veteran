@@ -114,16 +114,24 @@
                     searchable: false
                 },
                 {
-                    data: 'name',
-                    name: 'name'
+                    data: 'note',
+                    name: 'note'
                 },
                 {
-                    data: 'holidaydate',
-                    name: 'holidaydate'
+                    data: 'trunk',
+                    name: 'trunk'
                 },
                 {
-                    data: 'status',
-                    name: 'status'
+                    data: 'prefix',
+                    name: 'prefix'
+                },
+                {
+                    data: 'price',
+                    name: 'price'
+                },
+                {
+                    data: 'per',
+                    name: 'per'
                 },
                 {
                     data: 'action',
