@@ -98,7 +98,7 @@ class BillingController extends Controller
         }
 
 
-        $holiday = [
+        $billing = [
             'note' => $request->get('note'),
             'trunk' => $request->get('trunk'),
             'prefix' => $request->get('prefix'),
@@ -106,7 +106,7 @@ class BillingController extends Controller
             'per' => $request->get('per'),
         ];
 
-        Billing::create($holiday);
+        Billing::create($billing);
 
         return response()->json(['success' => 'เพิ่ม อัตราค่าใช้จ่ายการโทร เรียบร้อยแล้ว']);
     }
@@ -114,7 +114,7 @@ class BillingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Billing $holidays)
+    public function show(Billing $billing)
     {
         //
     }
@@ -134,57 +134,39 @@ class BillingController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'name' => 'required|string|max:100',
-            'holiday_sound' => 'required',
-            'thankyou_sound' => 'required',
-            'start_date' => 'required',
-            'end_date' => 'required',
+            'note' => 'required|string|max:100',
+            'trunk' => 'required',
+            'prefix' => 'required',
+            'price' => 'required',
+            'per' => 'required',
         ];
 
         $validator = Validator::make($request->all(), $rules, [
-            'name.required' => 'ชื่อต้องไม่เป็นค่าว่าง!',
-            'holiday_sound.required' => 'กรุณาระบุเสียงวันหยุด!',
-            'thankyou_sound.required' => 'กรุณาระบุเสียงขอบคุณ!',
-            'start_date.required' => 'กรุณาระบุวันเริ่มต้น!',
-            'end_date.required' => 'กรุณาระบุวันสิ้นสุด!',
+            'note.required' => ' Note ต้องไม่เป็นค่าว่าง!',
+            'trunk.required' => 'กรุณาระบุ Trunk!',
+            'prefix.required' => 'กรุณาระบุ Prefix!',
+            'price.required' => 'กรุณาระบุ Price!',
+            'per.required' => 'กรุณาระบุ Per!',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);
         }
 
-        $start_array = explode(" ", $request->get('start_date'));
-        // Manually adjust the year from Buddhist to Gregorian calendar
-        $sgregorianYear = intval(substr($start_array[0], 6)) - 543;
-        $sgregorianDate = $sgregorianYear . substr($start_array[0], 2, 3) . "/" . substr($start_array[0], 0, 2);
-        $start_date_convert = Carbon::createFromFormat('Y/m/d', $sgregorianDate, 'Asia/Bangkok');
-        $startutcDate = $start_date_convert->setTimezone('UTC');
-        $startutcFormattedDate = $startutcDate->format('Y-m-d');
 
 
-        $end_array = explode(" ", $request->get('end_date'));
-        $egregorianYear = intval(substr($end_array[0], 6)) - 543;
-        $egregorianDate = $egregorianYear . substr($end_array[0], 2, 3) . "/" . substr($end_array[0], 0, 2);
-        $end_date_convert = Carbon::createFromFormat('Y/m/d', $egregorianDate, 'Asia/Bangkok');
-        $endutcDate = $end_date_convert->setTimezone('UTC');
-        $endutcFormattedDate = $endutcDate->format('Y-m-d');
-
-        $holiday = [
-            'name' => $request->get('name'),
-            'holiday_sound' => $request->get('holiday_sound'),
-            'thankyou_sound' => $request->get('thankyou_sound'),
-            'start_datetime' =>  $startutcFormattedDate . " " . $start_array[1] . ":00",
-            'end_datetime' => $endutcFormattedDate . " " . $end_array[1] . ":00",
-            'start_datetime_th' =>  $request->get('start_date'),
-            'end_datetime_th' => $request->get('end_date'),
-            'status' => $request->get('status'),
+        $billing = [
+            'note' => $request->get('note'),
+            'trunk' => $request->get('trunk'),
+            'prefix' => $request->get('prefix'),
+            'price' =>  $request->get('price'),
+            'per' => $request->get('per'),
         ];
 
+        $update = Billing::find($id);
+        $update->update($billing);
 
-        $update = Holidays::find($id);
-        $update->update($holiday);
-
-        return response()->json(['success' => 'แก้ไข วันหยุดประจำปี เรียบร้อยแล้ว']);
+        return response()->json(['success' => 'แก้ไข อัตราค่าใช้จ่ายการโทร เรียบร้อยแล้ว']);
     }
 
     /**
@@ -193,8 +175,8 @@ class BillingController extends Controller
     public function destroy(Request $request)
     {
         $id = $request->get('id');
-        Holidays::find($id)->delete();
-        return ['success' => true, 'message' => 'ลบ วันหยุดประจำปี เรียบร้อยแล้ว'];
+        Billing::find($id)->delete();
+        return ['success' => true, 'message' => 'ลบ อัตราค่าใช้จ่ายการโทร เรียบร้อยแล้ว'];
     }
 
     public function destroy_all(Request $request)
@@ -203,9 +185,9 @@ class BillingController extends Controller
         $arr_del  = $request->get('table_records'); //$arr_ans is Array MacAddress
 
         for ($xx = 0; $xx < count($arr_del); $xx++) {
-            Holidays::find($arr_del[$xx])->delete();
+            Billing::find($arr_del[$xx])->delete();
         }
 
-        return redirect('/holiday')->with('success', 'ลบ วันหยุดประจำปี เรียบร้อยแล้ว');
+        return redirect('/holiday')->with('success', 'ลบ อัตราค่าใช้จ่ายการโทร เรียบร้อยแล้ว');
     }
 }

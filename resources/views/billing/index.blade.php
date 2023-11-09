@@ -71,7 +71,7 @@
                                     });
                                 </script>
                             @endif
-                            <form method="post" action="{{ route('holiday.destroy_all') }}" name="delete_all"
+                            <form method="post" action="{{ route('billing.destroy_all') }}" name="delete_all"
                                 id="delete_all">
                                 @csrf
                                 @method('POST')

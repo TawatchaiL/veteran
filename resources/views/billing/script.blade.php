@@ -244,7 +244,7 @@
                     console.log(res)
                     $('#EditNote').val(res.data.note);
                     $('#EditTrunk').val(res.data.trunk).change();
-                    $('#Editprice').val(res.data.price);
+                    $('#EditPrice').val(res.data.price);
                     $('#EditPrefix').val(res.data.prefix);
                     if (res.data.per == 1) {
                         $('#EditPerC').prop('checked', true);
@@ -268,22 +268,21 @@
             $('.alert-success').hide();
 
 
-            if ($('#ecustomCheckbox1').is(":checked")) {
+            if ($('#EditPerC').is(":checked")) {
                 esstatus = 1;
             } else {
                 esstatus = 0;
             }
 
             $.ajax({
-                url: "holiday/save/" + id,
+                url: "billing/save/" + id,
                 method: 'PUT',
                 data: {
-                    name: $('#EditName').val(),
-                    start_date: $('#EditSDate').val(),
-                    end_date: $('#EditEDate').val(),
-                    holiday_sound: $('#EditGreeting').val()[0],
-                    thankyou_sound: $('#EditThankyou').val()[0],
-                    status: esstatus,
+                    note: $('#EditNote').val(),
+                    trunk: $('#EditTrunk').val()[0],
+                    prefix: $('#EditPrefix').val(),
+                    price: $('#EditPrice').val(),
+                    per: esstatus,
                 },
 
                 success: function(result) {
@@ -327,7 +326,7 @@
                 //type: "POST",
                 method: 'DELETE',
                 dataType: 'JSON',
-                url: "holiday/destroy/",
+                url: "billing/destroy/",
                 data: {
                     id: rowid,
                     //_method: 'delete',
