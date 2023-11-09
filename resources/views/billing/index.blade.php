@@ -15,18 +15,18 @@
                         {{-- <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item active">Users Management</li> --}}
 
-                        @can('master-data-create')
+                        @can('billing-create')
                             <button type="button" class="btn btn-success" id="CreateButton">
-                                <i class="fas fa-list-ol"></i> วันหยุดประจำปี </a> </button>
+                                <i class="fas fa-list-ol"></i> ค่าใช้จ่ายการโทร </a> </button>
                         @else
                             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
                                 title="คุณไม่มีสิทธิ์ในส่วนนี้">
                                 <button type="button" class="btn btn-success disabled">
-                                    <i class="fas fa-list-ol"></i> วันหยุดประจำปี </a></button>
+                                    <i class="fas fa-list-ol"></i> ค่าใช้จ่ายการโทร </a></button>
                             </span>
                         @endcan &nbsp;
 
-                        @can('master-data-delete')
+                        @can('billing-delete')
                             <button type="button" class="btn btn-danger delete_all_button"><i class="fa fa-trash"></i> ลบ
                                 ทั้งหมด</button>
                         @else
@@ -49,7 +49,7 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-list-ol"></i> วันหยุดประจำปี</h3>
+                            <h3 class="card-title"><i class="fas fa-list-ol"></i> ค่าใช้จ่ายการโทร</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -79,9 +79,11 @@
                                     <thead>
                                         <tr>
                                             <th width="80px"><input type="checkbox" id="check-all" class="flat"></th>
-                                            <th>วันหยุดประจำปี</th>
-                                            <th>วันที่เวลา</th>
-                                            <th>สถานะ</th>
+                                            <th>Note</th>
+                                            <th>Trunk</th>
+                                            <th>Prefix</th>
+                                            <th>Price</th>
+                                            <th>Per</th>
                                             <th width="120px"></th>
                                         </tr>
                                     </thead>
@@ -105,11 +107,11 @@
     </section>
 
 
-    @include('holiday.create')
+    @include('billing.create')
 
-    @include('holiday.edit')
+    @include('billing.edit')
 @endsection
 
 @section('script')
-    @include('holiday.script')
+    @include('billing.script')
 @endsection
