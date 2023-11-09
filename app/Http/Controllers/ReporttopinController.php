@@ -51,7 +51,7 @@ class ReporttopinController extends Controller
             ->table('call_center.call_entry')
             ->select('callerid', DB::raw('count(callerid) as sumcases'))
             ->whereRaw('LENGTH(callerid) < 5')
-            ->groupBy('telno')
+            ->groupBy('callerid')
             ->orderBy("sumcases", "desc")
             //->limit(10)
             ->get();
