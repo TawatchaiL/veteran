@@ -64,34 +64,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-xs-8 col-sm-8 col-md-8">
-                                <div class="form-group">
-                                    <strong><i class="fas fa-list-ol"></i> เสียง ประกาศวันหยุด:</strong>
-                                    <select style="width: 100%;" class="select2 select2_single form-control"
-                                        id="EditGreeting" name="egreeting" multiple="multiple">
-                                        @foreach ($sound as $key2)
-                                            <option value="{{ $key2->displayname }}">{{ $key2->displayname }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-8 col-sm-8 col-md-8">
-                                <div class="form-group">
-                                    <strong><i class="fas fa-list-ol"></i> เสียง ขอบคุณ:</strong>
-                                    <select style="width: 100%;" class="select2 select2_single form-control"
-                                        id="EditThankyou" name="ethankyou" multiple="multiple">
-                                        @foreach ($sound as $key2)
-                                            <option value="{{ $key2->displayname }}">{{ $key2->displayname }}
-                                        @endforeach
 
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
                         <div class="row">
                             <div class="col-xs-8 col-sm-8 col-md-8">
                                 <div class="form-group">
