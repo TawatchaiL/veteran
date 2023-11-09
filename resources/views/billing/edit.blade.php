@@ -25,6 +25,7 @@
                         </button>
                     </div>
                     <div id="EditModalBody">
+                        {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
                         <div class="row">
                             <div class="col-xs-8 col-sm-8 col-md-8">
                                 <div class="form-group">
@@ -85,6 +86,7 @@
                                 </div>
                             </div>
                         </div>
+                        {!! Form::close() !!}
                     </div>
                 </div>
                 <!-- Modal footer -->
