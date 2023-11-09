@@ -5,7 +5,7 @@
             <div class="modal-content">
                 <div class="modal-header bg-primary">
                     <h4 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-list-ol"></i> แก้ไข
-                        วันหยุดประจำปี
+                        อัตราค่าใช้จ่ายการโทร
                     </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -29,22 +29,60 @@
                         <div class="row">
                             <div class="col-xs-8 col-sm-8 col-md-8">
                                 <div class="form-group">
-                                    <strong><i class="fas fa-list-ol"></i> ชื่อ:</strong>
-                                    {!! Form::text('ename', null, ['id' => 'EditName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
+                                    <strong><i class="fas fa-list-ol"></i> Note:</strong>
+                                    {!! Form::text('enote', null, ['id' => 'EditNote', 'placeholder' => 'Note', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-8 col-sm-8 col-md-8">
                                 <div class="form-group">
-                                    <strong><i class="fas fa-list-ol"></i> เสียง ประกาศวันหยุด:</strong>
+                                    <strong><i class="fas fa-list-ol"></i> Trunk:</strong>
                                     <select style="width: 100%;" class="select2 select2_single form-control"
-                                        id="EditGreeting" name="egreeting" multiple="multiple">
+                                        id="EditTrunk" name="etrunk" multiple="multiple">
                                         @foreach ($trunk as $key2)
                                             <option value="{{ strtoupper($key2->tech) }}/{{ $key2->channelid }}">
                                                 {{ $key2->name }}</option>
                                         @endforeach
                                     </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-8 col-sm-8 col-md-8">
+                                <div class="form-group">
+                                    <strong><i class="fas fa-list-ol"></i> Prefix:</strong>
+                                    {!! Form::text('eprefix', null, ['id' => 'EditPrefix', 'placeholder' => 'Prefix', 'class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-8 col-sm-8 col-md-8">
+                                <div class="form-group">
+                                    <strong><i class="fas fa-list-ol"></i> Price:</strong>
+                                    {!! Form::text('number', null, [
+                                        'id' => 'EditPrice',
+                                        'step' => 0.5,
+                                        'placeholder' => 'Price',
+                                        'class' => 'form-control auto_decimal',
+                                    ]) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-8 col-sm-8 col-md-8">
+                                <div class="form-group clearfix">
+                                    <strong><i class="fas fa-list-ol"></i> Per:</strong>
+                                    <div class="icheck-primary d-inline">
+                                        <input type="radio" id="EditPerM" name="eper" value="0" checked>
+                                        <label for="EditPerM">Minute
+                                        </label>
+                                    </div>
+                                    <div class="icheck-primary d-inline">
+                                        <input type="radio" id="EditPerC" name="eper" value="1">
+                                        <label for="EditPerC">Call
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>

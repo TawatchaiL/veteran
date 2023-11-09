@@ -238,18 +238,17 @@
 
             id = $(this).data('id');
             $.ajax({
-                url: "holiday/edit/" + id,
+                url: "billing/edit/" + id,
                 method: 'GET',
                 success: function(res) {
-                    $('#EditName').val(res.data.name);
-                    $('#EditGreeting').val(res.data.holiday_sound).change();
-                    $('#EditThankyou').val(res.data.thankyou_sound).change();
-                    $('#EditSDate').val(res.data.start_datetime_th).change();
-                    $('#EditEDate').val(res.data.end_datetime_th).change();
-                    if (res.data.status == 1) {
-                        $('#ecustomCheckbox1').prop('checked', true);
+                    $('#EditNote').val(res.data.note);
+                    $('#EditTrunk').val(res.data.trunk).change();
+                    $('#Editprice').val(res.data.price);
+                    $('#EditPrefix').val(res.data.prefix);
+                    if (res.data.per == 1) {
+                        $('#EditPerC').prop('checked', true);
                     } else {
-                        $('#ecustomCheckbox1').prop('checked', false);
+                        $('#EditPerM').prop('checked', true);
                     }
 
                     $('#EditModalBody').html(res.html);

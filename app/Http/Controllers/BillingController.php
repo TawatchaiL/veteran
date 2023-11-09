@@ -34,9 +34,14 @@ class BillingController extends Controller
             //sleep(2);
 
             $datas = billing::orderBy("id", "desc")->get();
+            $state_text = array('Minute', 'Call');
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
+                })
+                ->editColumn('per', function ($row) use ($state_text) {
+                    $state = $state_text[$row->per];
+                    return $state;
                 })
                 ->addColumn('action', function ($row) {
                     if (Gate::allows('holiday-edit')) {
@@ -109,7 +114,7 @@ class BillingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Holidays $holidays)
+    public function show(Billing $holidays)
     {
         //
     }
@@ -119,7 +124,7 @@ class BillingController extends Controller
      */
     public function edit($id)
     {
-        $data =  Holidays::find($id);
+        $data =  Billing::find($id);
         return response()->json(['data' => $data]);
     }
 

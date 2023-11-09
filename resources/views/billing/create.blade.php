@@ -82,8 +82,8 @@
                             </div>
                         </div>
                     </div>
-                    {!! Form::close() !!}
                 </div>
+                {!! Form::close() !!}
                 <div class="modal-footer {{-- justify-content-between --}}">
                     <button type="button" class="btn btn-success" id="SubmitCreateForm"><i class="fas fa-download"></i>
                         บันทึกข้อมูล</button>
