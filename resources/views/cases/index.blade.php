@@ -174,7 +174,6 @@
 
     @include('cases.create')
 
-    @include('cases.edit')
 @endsection
 
 @section('script')

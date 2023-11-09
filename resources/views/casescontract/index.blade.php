@@ -173,7 +173,6 @@
 
     @include('casescontract.create')
 
-    @include('casescontract.edit')
 @endsection
 
 @section('script')

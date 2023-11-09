@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Cases;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -49,26 +48,27 @@ class DetailcaselogbyhnController extends Controller
                     $endDate = date("Y-m-t", strtotime($startDate));  
         }
 
-
+        if (!empty($request->get('seachtext'))) {
+            $agentseachc = ' and crm_case_comments.agent = ' . $request->input('seachtext') . '';
+            $agentseachl = ' and crm_caseslogs.modifyagent = ' . $request->input('seachtext') . '';
+        }else{
+            $agentseachc = '';
+            $agentseachl = '';
+        }
         $datac = DB::table('crm_case_comments')
-        ->select('crm_cases.agent as cagent','crm_cases.id as id','crm_cases.contact_id as contact_id ', DB::raw('CONCAT("comment") as caction'), 'crm_case_comments.agent as magent', 'crm_case_comments.created_at as mdate')
+        ->select('crm_cases.agent as cagent','crm_cases.id as cid','crm_cases.contact_id as contact_id', DB::raw('CONCAT("comment") as caction'), 'crm_case_comments.agent as magent', 'crm_case_comments.created_at as mdate')
         ->join('crm_cases', 'crm_case_comments.case_id', '=', 'crm_cases.id')
-        ->whereRaw('crm_case_comments.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+        ->whereRaw('crm_case_comments.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"'.$agentseachc)
         ->toSql();
-        //->get();
-        //$users = DB::table('crm_contacts')
-        //->join($datac, 'crm_contacts.id', '=', 'datac.contact_id')
-        //->select('cagent','id','crm_contacts.hn as hn ', DB::raw('CONCAT("comment") as caction'), 'magent', 'mdate');
-        //->get();
 
         $getData = DB::table('crm_contacts')
-        ->join(DB::raw("({$datac} as services)"), 'services.contact_id', '=', 'crm_contacts.id')
-        ->select('cagent', 'id', 'crm_contacts.hn','caction', 'magent', 'mdate');
+        ->join(DB::raw("({$datac}) as services"), 'services.contact_id', '=', 'crm_contacts.id')
+        ->select('cagent', 'cid', 'crm_contacts.hn','caction', 'magent', 'mdate');
 
         $datas = DB::table('crm_caseslogs')
-        ->select('crm_caseslogs.agent as cagent','crm_caseslogs.id as id','crm_contacts.hn as chn', 'crm_caseslogs.modifyaction as caction', 'crm_caseslogs.modifyagent as magent', 'crm_caseslogs.modifydate as mdate')
+        ->select('crm_caseslogs.agent as cagent','crm_caseslogs.id as cid','crm_contacts.hn as chn', 'crm_caseslogs.modifyaction as caction', 'crm_caseslogs.modifyagent as magent', 'crm_caseslogs.modifydate as mdate')
         ->join('crm_contacts', 'crm_caseslogs.contact_id', '=', 'crm_contacts.id')
-        ->whereRaw('crm_caseslogs.modifydate between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+        ->whereRaw('crm_caseslogs.modifydate between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"'.$agentseachl)
         ->union($getData)
         ->get();
 

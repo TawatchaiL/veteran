@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Billing;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Cases;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
