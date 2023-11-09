@@ -51,7 +51,7 @@ class ReporttopinController extends Controller
             ->table('call_center.call_entry')
             ->select('callerid', DB::raw('count(callerid) as sumcases'))
             ->whereRaw('LENGTH(callerid) < 5')
-            ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"'.$agentseachl)
+            ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
             ->groupBy('callerid')
             ->orderBy("sumcases", "desc")
             //->limit(10)
