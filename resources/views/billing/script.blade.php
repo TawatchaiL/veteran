@@ -172,8 +172,7 @@
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
-            //$('#CreateModal').modal('show');
-            $('#EditModal').modal('show');
+            $('#CreateModal').modal('show');
         });
 
 
