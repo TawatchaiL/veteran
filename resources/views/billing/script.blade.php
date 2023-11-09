@@ -241,6 +241,7 @@
                 url: "billing/edit/" + id,
                 method: 'GET',
                 success: function(res) {
+                    console.log(res)
                     $('#EditNote').val(res.data.note);
                     $('#EditTrunk').val(res.data.trunk).change();
                     $('#Editprice').val(res.data.price);
