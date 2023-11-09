@@ -242,13 +242,16 @@
                 method: 'GET',
                 success: function(res) {
                     console.log(res)
-
+                    $('#EditNote').val(res.data.note);
+                    $('#EditTrunk').val(res.data.trunk).change();
+                    $('#Editprice').val(res.data.price);
+                    $('#EditPrefix').val(res.data.prefix);
                     if (res.data.per == 1) {
                         $('#EditPerC').prop('checked', true);
                     } else {
                         $('#EditPerM').prop('checked', true);
                     }
-                    $('#EditModal').modal('show');
+                    $('#CreateModal').modal('show');
                 }
             });
 
