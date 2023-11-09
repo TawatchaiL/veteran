@@ -47,7 +47,7 @@ class ReporttopinController extends Controller
                     $startDate = date("Y-m-d");
                     $endDate = date("Y-m-t", strtotime($startDate));  
         }
-        $resultb = DB::connection('remote_connection')
+        $datas = DB::connection('remote_connection')
             ->table('call_center.call_entry')
             ->select('callerid', DB::raw('count(callerid) as sumcases'))
             ->whereRaw('LENGTH(callerid) < 5')
