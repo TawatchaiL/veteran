@@ -188,6 +188,6 @@ class BillingController extends Controller
             Billing::find($arr_del[$xx])->delete();
         }
 
-        return redirect('/holiday')->with('success', 'ลบ อัตราค่าใช้จ่ายการโทร เรียบร้อยแล้ว');
+        return redirect('/billing')->with('success', 'ลบ อัตราค่าใช้จ่ายการโทร เรียบร้อยแล้ว');
     }
 }
