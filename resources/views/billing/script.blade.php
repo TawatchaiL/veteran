@@ -251,7 +251,8 @@
                     } else {
                         $('#EditPerM').prop('checked', true);
                     }
-                    $('#CreateModal').modal('show');
+
+                    $('#EditModal').modal('show');
                 }
             });
 
