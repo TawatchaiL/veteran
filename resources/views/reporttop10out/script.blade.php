@@ -545,8 +545,8 @@
                     className: 'no-print'
                 },
                 {
-                    data: 'telno',
-                    name: 'telno'
+                    data: 'callerid',
+                    name: 'callerid'
                 },
                 {
                     data: 'sumcases',
