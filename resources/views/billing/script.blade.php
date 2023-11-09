@@ -252,7 +252,7 @@
                         $('#EditPerM').prop('checked', true);
                     }
 
-                    $('#EditModalBody').html(res.html);
+                    //$('#EditModalBody').html(res.html);
                     $('#EditModal').modal('show');
                 }
             });
