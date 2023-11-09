@@ -27,7 +27,7 @@
                     <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group">
                             <strong><i class="fas fa-list-ol"></i> Note:</strong>
-                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Note', 'class' => 'form-control']) !!}
+                            {!! Form::text('note', null, ['id' => 'AddNote', 'placeholder' => 'Note', 'class' => 'form-control']) !!}
                         </div>
                     </div>
                 </div>
@@ -35,8 +35,8 @@
                     <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group">
                             <strong><i class="fas fa-list-ol"></i> Trunk:</strong>
-                            <select style="width: 100%;" class="select2 select2_single form-control" id="AddGreeting"
-                                name="greeting" multiple="multiple">
+                            <select style="width: 100%;" class="select2 select2_single form-control" id="AddTrunk"
+                                name="trunk" multiple="multiple">
                                 @foreach ($trunk as $key2)
                                     <option value="{{ strtoupper($key2->tech) }}/{{ $key2->channelid }}">
                                         {{ $key2->name }}</option>
@@ -69,6 +69,7 @@
                 <div class="row">
                     <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group clearfix">
+                            <strong><i class="fas fa-list-ol"></i> Per:</strong>
                             <div class="icheck-primary d-inline">
                                 <input type="radio" id="AddPerM" name="per" value="0" checked>
                                 <label for="AddPerM">Minute

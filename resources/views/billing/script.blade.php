@@ -183,7 +183,7 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
-            if ($('#customCheckbox1').is(":checked")) {
+            if ($('#AddPerC').is(":checked")) {
                 sstatus = 1;
             } else {
                 sstatus = 0;
@@ -191,15 +191,14 @@
 
 
             $.ajax({
-                url: "{{ route('holiday.store') }}",
+                url: "{{ route('billing.store') }}",
                 method: 'post',
                 data: {
-                    name: $('#AddName').val(),
-                    start_date: $('#AddSDate').val(),
-                    end_date: $('#AddEDate').val(),
-                    holiday_sound: $('#AddGreeting').val()[0],
-                    thankyou_sound: $('#AddThankyou').val()[0],
-                    status: sstatus,
+                    note: $('#AddNote').val(),
+                    trunk: $('#AddTrunk').val()[0],
+                    prefix: $('#AddPrefix').val(),
+                    price: $('#AddPrice').val(),
+                    per: sstatus,
                     _token: token,
                 },
                 success: function(result) {
@@ -219,8 +218,7 @@
                             timeOut: 5000
                         });
                         $('#Listview').DataTable().ajax.reload();
-                        $("#AddGreeting").val(null).trigger("change")
-                        $("#AddThankyou").val(null).trigger("change")
+                        $("#AddTrunk").val(null).trigger("change")
                         $('.form').trigger('reset');
                         $('#CreateModal').modal('hide');
                     }
