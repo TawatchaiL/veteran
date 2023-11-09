@@ -34,13 +34,12 @@ class ReporttopinController extends Controller
      */
     public function index(Request $request)
     {
-        $datas = DB::table('cases')
-        ->select('telno', DB::raw('count(telno) as sumcases'))
-        ->whereRaw('LENGTH(telno) < 5')
-        ->groupBy('telno')
-        ->orderBy("sumcases", "desc")
-        ->limit(10)
-        ->get();
+        $resultb = DB::connection('remote_connection')
+            ->table('call_center.call_entry')
+            ->where('tipo', 'B')
+            ->where('id', '!=', $this->warp_id)
+            ->where('id', '!=', $this->sup_break_id)
+            ->get();
 
         if ($request->ajax()) {
 
