@@ -763,7 +763,7 @@
                 var rdate = $('#reservation').val();
                 var rstatus = 'report';
                 $.ajax({
-                url: '{{ route('reportcasetop10') }}',
+                url: '{{ route('reporttop10in') }}',
                 data: {
                     sdate: rdate,
                     rstatus: rstatus
