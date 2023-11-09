@@ -52,6 +52,7 @@ class ReportcasetopController extends Controller
                 ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
                 ->groupBy('casetype1')
                 ->orderBy("sumcases", "desc")
+                ->limit(10)
                 ->get();
         if (!empty($request->get('rstatus'))) {
             $chart_data = array();
