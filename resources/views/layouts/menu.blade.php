@@ -480,7 +480,7 @@
             <li class="nav-item">
                 <a href="{{ route('billing') }}" class="nav-link {{ Request::is('billing') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p>ตั้งค่าค่าใช้จ่ายการโทร</p>
+                    <p>ตั้งค่าอัตราค่าใช้จ่ายการโทร</p>
                 </a>
             </li>
             <li class="nav-item">

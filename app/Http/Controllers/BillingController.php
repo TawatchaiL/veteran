@@ -55,7 +55,7 @@ class BillingController extends Controller
 
         $trunk = DB::connection('remote_connection')
             ->table('asterisk.trunks')
-            ->orderBy("id", "asc")->get();
+            ->orderBy("trunkid", "asc")->get();
 
         return view('billing.index')->with(['trunk' => $trunk]);
     }
