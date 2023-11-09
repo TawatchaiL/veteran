@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
     <link rel="stylesheet" href="plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <link rel="stylesheet" href="plugins/apexchart/apexcharts.min.css">
