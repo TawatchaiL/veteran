@@ -65,6 +65,13 @@
         $('.datepick').datetimepicker("setDate", currentDate);
 
 
+        $(document).on('change', '.auto_decimal', function() {
+            const inputValue = parseFloat(this.value);
+            const formattedValue = inputValue.toFixed(2);
+            this.value = formattedValue;
+        });
+
+
         //$.noConflict();
         var token = ''
         $.ajaxSetup({

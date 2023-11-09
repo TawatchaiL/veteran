@@ -27,7 +27,7 @@
                     <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group">
                             <strong><i class="fas fa-list-ol"></i> Note:</strong>
-                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
+                            {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Note', 'class' => 'form-control']) !!}
                         </div>
                     </div>
                 </div>
@@ -45,14 +45,50 @@
                         </div>
                     </div>
                 </div>
-                {!! Form::close() !!}
-            </div>
-            <div class="modal-footer {{-- justify-content-between --}}">
-                <button type="button" class="btn btn-success" id="SubmitCreateForm"><i class="fas fa-download"></i>
-                    บันทึกข้อมูล</button>
-                <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i
-                        class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
+                <div class="row">
+                    <div class="col-xs-8 col-sm-8 col-md-8">
+                        <div class="form-group">
+                            <strong><i class="fas fa-list-ol"></i> Prefix:</strong>
+                            {!! Form::text('prefix', null, ['id' => 'AddPrefix', 'placeholder' => 'Prefix', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8 col-sm-8 col-md-8">
+                        <div class="form-group">
+                            <strong><i class="fas fa-list-ol"></i> Price:</strong>
+                            {!! Form::text('number', null, [
+                                'id' => 'AddPrice',
+                                'step' => 0.5,
+                                'placeholder' => 'Price',
+                                'class' => 'form-control auto_decimal',
+                            ]) !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8 col-sm-8 col-md-8">
+                        <div class="form-group clearfix">
+                            <div class="icheck-primary d-inline">
+                                <input type="radio" id="AddPerM" name="per" value="0" checked>
+                                <label for="AddPerM">Minute
+                                </label>
+                            </div>
+                            <div class="icheck-primary d-inline">
+                                <input type="radio" id="AddPerC" name="per" value="1">
+                                <label for="AddPerC">Call
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+                <div class="modal-footer {{-- justify-content-between --}}">
+                    <button type="button" class="btn btn-success" id="SubmitCreateForm"><i class="fas fa-download"></i>
+                        บันทึกข้อมูล</button>
+                    <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i
+                            class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
