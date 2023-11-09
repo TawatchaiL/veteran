@@ -61,7 +61,7 @@ class ReporttopinController extends Controller
                 $chart_label = array();
                 foreach ($datas as $data) {
                     $chart_data[] = $data->sumcases;
-                    $chart_label[] = $data->casetype1;
+                    $chart_label[] = $data->callerid;
                 }
                 return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
             }
