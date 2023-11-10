@@ -119,7 +119,7 @@
 <!-- Additional button libraries -->
 <script src="plugins/datatables-buttons/2.1.1/js/buttons.html5.min.js"></script>
 <script src="plugins/datatables-buttons/2.1.1/js/buttons.print.min.js"></script>
-<script src="plugins/popper/popper.js"></script>
+<script src="plugins/popper/popperc.min.js"></script>
 {{-- <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script> --}}
