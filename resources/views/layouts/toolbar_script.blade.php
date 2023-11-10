@@ -9,7 +9,7 @@
     const api_serv = '{{ config('asterisk.api_serv.address') }}';
 
     const dial_number = $('#dial_number');
-    const dial_button = $('#dial_button');
+    const dial_button = $('#dial_button,#dialpadcall');
     //const ans_button = $('#ans_button');
     const swap_button = $('#swap_button');
     const performance_button = $('#performance_button');

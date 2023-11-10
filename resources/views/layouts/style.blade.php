@@ -270,7 +270,7 @@
 
     }
 
-    #call {
+    #dialpadcall {
         display: inline-block;
         background-color: #66bb6a;
         padding: 4px 30px;
@@ -294,7 +294,7 @@
         background-color: #e6e6e6;
     }
 
-    #call:hover {
+    #dialpadcall:hover {
         background-color: #81c784;
     }
 
