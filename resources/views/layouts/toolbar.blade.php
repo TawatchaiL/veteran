@@ -391,11 +391,7 @@
                 <div class="digit">#
                 </div>
             </div>
-            <div class="botrow"><i class="fa fa-star-o dig" aria-hidden="true"></i>
-                <div id="call"><i class="fa fa-phone" aria-hidden="true"></i></div>
-                <i class="fa fa-long-arrow-left dig" aria-hidden="true"></i>
-            </div>
-            <div class="botrow">
+            <div class="rowbutton">
                 <div class="btn-group">
                     <button type="button" id="tranfer_button" {{ $transfer_button }}
                         class="{{ $transfer_button_class }} btn btn-success custom-button dropdown-toggle dropdown-icon"
@@ -416,6 +412,11 @@
                     </div>
                 </div>
             </div>
+            <div class="botrow"><i class="fa fa-star-o dig" aria-hidden="true"></i>
+                <div id="call"><i class="fa fa-phone" aria-hidden="true"></i></div>
+                <i class="fa fa-long-arrow-left dig" aria-hidden="true"></i>
+            </div>
+
         </div>
     </div>
 </div>
