@@ -233,4 +233,80 @@
         height: 50px;
         font-size: 1.0em;
     }
+
+
+    .rowbutton {
+        margin: 0 auto;
+        width: 320px;
+        clear: both;
+        text-align: center;
+        font-family: 'Exo';
+    }
+
+    .digit,
+    .dig {
+        float: left;
+        padding: 10px 30px;
+        width: 90px;
+        font-size: 2rem;
+        cursor: pointer;
+        border: 2px solid #d3d3d3;
+        /* Set the border color */
+        border-radius: 4px;
+    }
+
+    .sub {
+        font-size: 0.8rem;
+        color: grey;
+    }
+
+    .containerbutton {
+        background-color: white;
+        width: 320px;
+        padding: 25px;
+        margin: 20px auto;
+        height: 350px;
+        text-align: center;
+
+    }
+
+    #call {
+        display: inline-block;
+        background-color: #66bb6a;
+        padding: 4px 30px;
+        margin: 10px;
+        color: white;
+        border-radius: 4px;
+        float: left;
+        cursor: pointer;
+    }
+
+    .botrow {
+        margin: 0 auto;
+        width: 320px;
+        clear: both;
+        text-align: center;
+        font-family: 'Exo';
+    }
+
+    .digit:active,
+    .dig:active {
+        background-color: #e6e6e6;
+    }
+
+    #call:hover {
+        background-color: #81c784;
+    }
+
+    .dig {
+        float: left;
+        padding: 10px 30px;
+        margin: 10px;
+        width: 70px;
+        cursor: pointer;
+    }
+
+    .popover {
+        max-width: 100%;
+    }
 </style>
