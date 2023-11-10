@@ -65,9 +65,10 @@
                     <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group">
                             <strong><i class="fas fa-list-ol"></i> แจ้งเตือนวันหยุด:</strong><br>
-                            <input type="checkbox" id="sat" name="sat" data-bootstrap-switch><label
-                                for="sat" class="custom-control-label">
-                                เสาร์</label>
+                            <div class="material-switch">
+                                <input id="sat" name="sat" type="checkbox">
+                                <label for="sat" class="primary-color"></label>
+                              </div>
                             <input type="checkbox" name="sun" id="sun" data-bootstrap-switch>
                             <label for="sun" class="custom-control-label">อาทิตย์</label>
                         </div>
