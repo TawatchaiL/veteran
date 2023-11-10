@@ -133,6 +133,7 @@
 
 
         $(document).on('click', '#closedialpad', function() {
+            console.log('close')
             $("[data-toggle=popover]").popover('hide');
             dialpadcount = 0;
         });
