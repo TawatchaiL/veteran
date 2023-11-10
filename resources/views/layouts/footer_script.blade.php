@@ -127,14 +127,12 @@
             },
             title: function() {
                 var title = $(this).attr("data-popover-content");
-                var closeButton =
-                    '<button type="button" class="close closedialpad" aria-label="Close" data-dismiss="popover"><span aria-hidden="true">&times;</span></button>';
-                return closeButton + $(title).children(".popover-heading").html();
+                return $(title).children(".popover-heading").html();
             }
         });
 
 
-        $(document).on('click', '.closedialpad', function() {
+        $(document).on('click', '#closedialpad', function() {
             $("[data-toggle=popover]").popover('hide');
             dialpadcount = 0;
         });
