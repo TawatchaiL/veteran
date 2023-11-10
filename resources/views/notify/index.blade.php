@@ -17,12 +17,12 @@
 
                         @can('notify-create')
                             <button type="button" class="btn btn-success" id="CreateButton">
-                                <i class="fas fa-list-ol"></i> ตั้งค่าการแจ้งเตือน สายที่ไม่ได้รับ </a> </button>
+                                <i class="fas fa-list-ol"></i> เพิ่ม กลุ่มการแจ้งเตือน </a> </button>
                         @else
                             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
                                 title="คุณไม่มีสิทธิ์ในส่วนนี้">
                                 <button type="button" class="btn btn-success disabled">
-                                    <i class="fas fa-list-ol"></i> ตั้งค่าการแจ้งเตือน สายที่ไม่ได้รับ </a></button>
+                                    <i class="fas fa-list-ol"></i> เพิ่ม กลุ่มการแจ้งเตือน </a></button>
                             </span>
                         @endcan &nbsp;
 
@@ -49,7 +49,7 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-list-ol"></i> ตั้งค่าการแจ้งเตือน สายที่ไม่ได้รับ</h3>
+                            <h3 class="card-title"><i class="fas fa-list-ol"></i> กลุ่มการแจ้งเตือน</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>

@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <h4 class="modal-title"><i class="fas fa-list-ol"></i> เพิ่ม วันหยุดประจำปี</h4>
+                <h4 class="modal-title"><i class="fas fa-list-ol"></i> เพิ่ม กลุ่มการแจ้งเตือน</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -68,7 +68,7 @@
                             <select style="width: 100%;" class="select2 select2_single form-control" id="AddGreeting"
                                 name="greeting" multiple="multiple">
                                 @foreach ($sound as $key2)
-                                    <option value="{{ $key2->displayname }}">{{ $key2->displayname }}
+                                    <option value="{{ $key2->number }}">{{ $key2->number }}
                                     </option>
                                 @endforeach
                             </select>
@@ -82,7 +82,8 @@
                             <select style="width: 100%;" class="select2 select2_single form-control" id="AddThankyou"
                                 name="thankyou" multiple="multiple">
                                 @foreach ($sound as $key2)
-                                    <option value="{{ $key2->displayname }}">{{ $key2->displayname }}
+                                <option value="{{ $key2->number }}">{{ $key2->number }}
+                                </option>
                                 @endforeach
 
                             </select>

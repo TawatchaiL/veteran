@@ -431,9 +431,9 @@
         }
     };
 
-    $(document).on('click', '.digit', function() {
+    $(document).on('click', '.digit', async function() {
         var num = ($(this).clone().children().remove().end().text());
-        playDigitSound(num.trim());
+        await playDigitSound(num.trim());
         if (dialpadcount < 11) {
             $('#dial_number').val(function(index, value) {
                 return value + num.trim();

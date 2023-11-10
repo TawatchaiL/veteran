@@ -70,8 +70,8 @@
                                     <select style="width: 100%;" class="select2 select2_single form-control"
                                         id="EditGreeting" name="egreeting" multiple="multiple">
                                         @foreach ($sound as $key2)
-                                            <option value="{{ $key2->displayname }}">{{ $key2->displayname }}
-                                            </option>
+                                        <option value="{{ $key2->number }}">{{ $key2->number }}
+                                        </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -84,7 +84,8 @@
                                     <select style="width: 100%;" class="select2 select2_single form-control"
                                         id="EditThankyou" name="ethankyou" multiple="multiple">
                                         @foreach ($sound as $key2)
-                                            <option value="{{ $key2->displayname }}">{{ $key2->displayname }}
+                                        <option value="{{ $key2->number }}">{{ $key2->number }}
+                                        </option>
                                         @endforeach
 
                                     </select>
