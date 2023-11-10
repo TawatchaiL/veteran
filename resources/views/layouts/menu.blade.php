@@ -333,21 +333,11 @@
 @endcan
 @can('master-data-list')
     <li
-        class="nav-item {{ in_array(Request::route()->getName(), [
-            'ivrreport',
-            'ivrreporttop10',
-            'detailscore',
-            'detailscoreagent',
-        ])
+        class="nav-item {{ in_array(Request::route()->getName(), ['ivrreport', 'ivrreporttop10', 'detailscore', 'detailscoreagent'])
             ? 'menu-open'
             : '' }}">
         <a href="#"
-            class="nav-link {{ in_array(Request::route()->getName(), [
-                'ivrreport',
-                'ivrreporttop10',
-                'detailscore',
-                'detailscoreagent',
-            ])
+            class="nav-link {{ in_array(Request::route()->getName(), ['ivrreport', 'ivrreporttop10', 'detailscore', 'detailscoreagent'])
                 ? 'active'
                 : '' }}">
             <i class="fa-solid fa-print nav-icon"></i>
@@ -452,7 +442,9 @@
     <li
         class="nav-item {{ in_array(Request::route()->getName(), [
             'callsurvey',
-            'Holiday',
+            'holiday',
+            'billing',
+            'notify',
             // Add more route names here if needed
         ])
             ? 'menu-open'
@@ -460,8 +452,9 @@
         <a href="#"
             class="nav-link {{ in_array(Request::route()->getName(), [
                 'callsurvey',
-                'Holiday',
-                'Billing',
+                'holiday',
+                'billing',
+                'notify',
                 // Add more route names here if needed
             ])
                 ? 'active'
@@ -487,6 +480,12 @@
                 <a href="{{ route('billing') }}" class="nav-link {{ Request::is('billing') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
                     <p>อัตราค่าใช้จ่ายการโทร</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('notify') }}" class="nav-link {{ Request::is('notify') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p>ตั้งค่าการแจ้งเตือน</p>
                 </a>
             </li>
         </ul>
