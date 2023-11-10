@@ -207,9 +207,9 @@
             <div class="modal-body">
                 <div class="card {{ $toolbar_card }}" id="toolbar_card">
                     <div class="card-body">
-                        <div class="row">
+                        {{-- <div class="row">
                             <br>
-                        </div>
+                        </div> --}}
                         <div class="row" id="call_list">
 
                         </div>
