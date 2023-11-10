@@ -67,11 +67,11 @@
                             <strong><i class="fas fa-list-ol"></i> แจ้งเตือนวันหยุด:</strong><br>
                             <div class="material-switch">
                                 <input id="sat" name="sat" type="checkbox">
-                                <label for="sat" class="primary">เสาร์</label>
+                                <label for="sat" class="label-primary">เสาร์</label>
                             </div>
                             <div class="material-switch">
                                 <input id="sun" name="sun" type="checkbox">
-                                <label for="sun" class="primary">อาทิตย์</label>
+                                <label for="sun" class="label-primary">อาทิตย์</label>
                             </div>
                         </div>
                     </div>
