@@ -238,7 +238,7 @@
 
     .rowbutton {
         margin: 0 auto;
-        width: 320px;
+        width: 300px;
         clear: both;
         text-align: center;
         font-family: 'Exo';
@@ -247,7 +247,7 @@
     .digit,
     .dig {
         float: left;
-        padding: 10px 30px;
+        padding: 10px 20px;
         width: 90px;
         cursor: pointer;
         border: 2px solid #d3d3d3;
