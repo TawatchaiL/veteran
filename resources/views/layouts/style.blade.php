@@ -247,7 +247,7 @@
     .digit,
     .dig {
         float: left;
-        padding: 10px 20px;
+        padding: 10px 30px;
         width: 90px;
         cursor: pointer;
         border: 2px solid #d3d3d3;
@@ -263,8 +263,8 @@
     .containerbutton {
         background-color: white;
         width: 300px;
-        padding: 25px;
-        margin: 20px auto;
+        padding: 20px;
+        margin: 10px auto;
         height: 350px;
         text-align: center;
 
