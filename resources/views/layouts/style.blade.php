@@ -223,7 +223,7 @@
 
     .digit {
         padding: 0.2em;
-        background-color: rgba(253, 252, 252, 0.681);
+        background-color: rgba(123, 118, 118, 0.681);
         color: rgb(15, 14, 14);
         border-radius: 0.2em;
         font-size: 2rem;
