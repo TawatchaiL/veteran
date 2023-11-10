@@ -297,6 +297,66 @@
             }
         });
 
+        var startDate;
+        var endDate;
+        function datesearch() {
+            var currentDate = moment();
+            // Set the start date to 7 days before today
+            //startDate = moment(currentDate).subtract(15, 'days').format('YYYY-MM-DD');
+            // Set the end date to the end of the current month
+            //endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
+            startDate = moment().format('YYYY-MM-DD');
+            endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
+        }
+        function datereset() {
+            var currentDate = moment();
+            startDate = moment().format('YYYY-MM-DD');
+            endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
+        }
+
+        function retrieveFieldValues() {
+            var saveddateStart = localStorage.getItem('dateStart');
+            var savedSearchType = localStorage.getItem('searchType');
+            var savedKeyword = localStorage.getItem('keyword');
+
+            // Set field values from local storage
+            if (saveddateStart) {
+                var dateParts = saveddateStart.split(' - ');
+                startDate = dateParts[0];
+                endDate = dateParts[1];
+            } else {
+                datesearch();
+            }
+        }
+
+        let daterange = () => {
+
+            $('#reservation').daterangepicker({
+                startDate: startDate,
+                endDate: endDate,
+                locale: {
+                    format: 'YYYY-MM-DD'
+                }
+            });
+
+            // Apply the custom date range filter on input change
+            $('#reservation').on('apply.daterangepicker', function() {
+                table.draw();
+                Loadchart();
+                //storeFieldValues();
+            });
+        }
+        datesearch();
+        daterange();
+
+        $('#btnsearch').click(function(e) {
+            $('#Listview').DataTable().ajax.reload();
+        });
+        $('#btnreset').click(function(e) {
+            datereset();
+            daterange();
+            $('#Listview').DataTable().ajax.reload();
+        });
 
         var table = $('#Listview').DataTable({
             /*"aoColumnDefs": [
@@ -315,7 +375,11 @@
             dom: 'Bfrtip',
             paging: true,
             searching: false,
-            ajax: '',
+            ajax: {
+                data: function(d) {
+                    d.sdate = $('#reservation').val();
+                }
+            },
             serverSide: true,
             processing: true,
             language: {
@@ -489,12 +553,12 @@
                     name: 'cdate'
                 },
                 {
-                    data: 'telt',
-                    name: 'telt'
+                    data: 'terminada',
+                    name: 'terminada'
                 },
                 {
-                    data: 'telf',
-                    name: 'telf'
+                    data: 'abandonada',
+                    name: 'abandonada'
                 },
             ]
         });
