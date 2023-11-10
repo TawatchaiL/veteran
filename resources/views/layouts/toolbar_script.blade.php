@@ -10,7 +10,6 @@
 
     const dial_number = $('#dial_number');
     const dial_button = $('#dial_button');
-    const dialpad_button = $('#dialpadcall');
     //const ans_button = $('#ans_button');
     const swap_button = $('#swap_button');
     const performance_button = $('#performance_button');
@@ -807,7 +806,7 @@
         dial_function();
     });
 
-    dialpad_button.click(function() {
+    $(document).on('click', '#dialpadcall', function(data) {
         dial_button.prop('disabled', true);
         dial_function();
     });
