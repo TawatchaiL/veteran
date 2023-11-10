@@ -64,19 +64,19 @@
                 <div class="row">
                     <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group">
-                            <strong><i class="fas fa-list-ol"></i> แจ้งเตือนวันหยุด:</strong>
+                            <strong><i class="fas fa-list-ol"></i> แจ้งเตือนวันหยุด:</strong><br>
                             <input type="checkbox" id="sat" name="sat" data-bootstrap-switch><label
                                 for="sat" class="custom-control-label">
-                                เปิดใช้งาน</label>
+                                เสาร์</label>
                             <input type="checkbox" name="sun" id="sun" data-bootstrap-switch>
-                            <label for="sun" class="custom-control-label">
+                            <label for="sun" class="custom-control-label">อาทิตย์</label>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group">
-                            <strong><i class="fas fa-list-ol"></i> ประเภทการแจ้งเตือน:</strong>
+                            <strong><i class="fas fa-list-ol"></i> ประเภทการแจ้งเตือน:</strong><br>
                             <input type="checkbox" name="miscall" data-bootstrap-switch>
                             <label for="sat" class="custom-control-label">
                                 MissCall</label>
