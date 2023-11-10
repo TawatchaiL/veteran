@@ -49,7 +49,7 @@ class SumtelController extends Controller
         }
         $datas = DB::connection('remote_connection')
             ->table('call_center.call_entry')
-            ->select(DB::raw('DATE(datetime_init) as cdate'), DB::raw('if(status = "terminada",1,0) as terminada'), DB::raw('if(status = "abandonada",1,0) as abandonada'))
+            ->select(DB::raw('DATE(datetime_init) as cdate'), DB::raw('SUM(if(status = "terminada",1,0)) as terminada'), DB::raw('SUM(if(status = "abandonada",1,0)) as abandonada'))
             ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
             ->groupBy('cdate')
             ->orderBy("cdate", "asc")
