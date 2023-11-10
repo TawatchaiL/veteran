@@ -28,7 +28,7 @@
                         <div class="row">
                             <div class="col-xs-8 col-sm-8 col-md-8">
                                 <div class="form-group">
-                                    <strong><i class="fas fa-list-ol"></i> ชื่อ:</strong>
+                                    <strong><i class="fas fa-list-ol"></i> ชื่อกลุ่ม:</strong>
                                     {!! Form::text('ename', null, ['id' => 'EditName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                                 </div>
                             </div>

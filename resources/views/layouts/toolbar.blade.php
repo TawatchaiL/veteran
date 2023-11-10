@@ -208,6 +208,12 @@
                 <div class="card {{ $toolbar_card }}" id="toolbar_card">
                     <div class="card-body">
                         <div class="row">
+                            <br>
+                        </div>
+                        <div class="row" id="call_list">
+
+                        </div>
+                        <div class="row">
                             <div class="col-md-2">
                                 <input {{ $dial_number }} style="height:50px" type="text"
                                     class="{{ $dial_number_class }} form-control" maxlength="11" id="dial_number"
@@ -274,12 +280,7 @@
                             </div>
 
                         </div>
-                        <div class="row">
-                            <br>
-                        </div>
-                        <div class="row" id="call_list">
 
-                        </div>
                     </div>
                     <div class="card-footer text-muted">
                         <div class="btn-group float-left {{ $break_button_class }}" id="break_group">
@@ -416,5 +417,3 @@
         </div>
     </div>
 </div>
-
-
