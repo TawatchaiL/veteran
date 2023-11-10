@@ -54,7 +54,7 @@ class ReporttopoutController extends Controller
             ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
             ->groupBy('callerid')
             ->orderBy("sumcases", "desc")
-            //->limit(10)
+            ->limit(10)
             ->get();
 
             if (!empty($request->get('rstatus'))) {
