@@ -409,9 +409,9 @@
                 <div class="digit">#
                 </div>
             </div>
-            <div class="botrow"><i class="fa fa-star-o dig" aria-hidden="true"></i>
+            <div class="botrow"><i class="fa-solid fa-eraser dig" aria-hidden="true"></i>
                 <div id="call"><i class="fa fa-phone" aria-hidden="true"></i></div>
-                <i class="fa fa-long-arrow-left dig" aria-hidden="true"></i>
+                <i class="fa-solid fa-delete-left dig" aria-hidden="true"></i>
             </div>
         </div>
     </div>

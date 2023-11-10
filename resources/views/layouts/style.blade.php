@@ -304,7 +304,7 @@
         margin: 10px;
         width: 70px;
         cursor: pointer;
-        font-size: 0.5rem;
+        font-size: 1rem;
     }
 
     .popover {

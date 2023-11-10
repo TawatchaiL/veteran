@@ -393,11 +393,18 @@
       }
     });
 
-    $(document).on('click', '.fa-long-arrow-left', function() {
+    $(document).on('click', '.fa-delete-left', function() {
       $('#dial_number').val(function(index, value) {
         return value.slice(0, -1); // Remove the last character
       });
       dialpadcount--;
+    });
+
+    $(document).on('click', '.fa-eraser', function() {
+      $('#dial_number').val(function(index, value) {
+        return ''; // Remove the last character
+      });
+      dialpadcount = 0;
     });
 
 
