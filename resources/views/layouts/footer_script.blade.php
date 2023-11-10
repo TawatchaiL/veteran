@@ -127,9 +127,16 @@
             },
             title: function() {
                 var title = $(this).attr("data-popover-content");
-                return $(title).children(".popover-heading").html();
+                var closeButton =
+                    '<button type="button" class="close" aria-label="Close" data-dismiss="popover"><span aria-hidden="true">&times;</span></button>';
+                return closeButton + $(title).children(".popover-heading").html();
             }
         });
+
+        $(document).on('click', '[data-dismiss="popover"]', function() {
+            $("[data-toggle=popover]").popover('hide');
+        });
+
 
         $('.sidebar-toggle-btn').on('click', function() {
             // Get the logo element
