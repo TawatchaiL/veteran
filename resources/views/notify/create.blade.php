@@ -65,13 +65,15 @@
                     <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group">
                             <strong><i class="fas fa-list-ol"></i> แจ้งเตือนวันหยุด:</strong><br>
-                            <div class="material-switch">
-                                <input id="sat" name="sat" type="checkbox">
-                                <label for="sat" class="label-primary">เสาร์</label>
+                            <div class="custom-control custom-switch">
+                                {{ Form::checkbox('sat', '1', false, ['id' => 'sat', 'class' => 'custom-control-input name']) }}
+                                <label for="sat" class="custom-control-label">
+                                    เสาร์</label>
                             </div>
-                            <div class="material-switch">
-                                <input id="sun" name="sun" type="checkbox">
-                                <label for="sun" class="label-primary">อาทิตย์</label>
+                            <div class="custom-control custom-switch">
+                                {{ Form::checkbox('sun', '1', false, ['id' => 'sun', 'class' => 'custom-control-input name']) }}
+                                <label for="sun" class="custom-control-label">
+                                    อาทิตย์</label>
                             </div>
                         </div>
                     </div>
