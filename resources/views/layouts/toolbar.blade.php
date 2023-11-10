@@ -374,32 +374,32 @@
             <div class="rowbutton">
                 <div class="digit" id="one">1</div>
                 <div class="digit" id="two">2
-
+                    <div class="sub">ABC</div>
                 </div>
                 <div class="digit" id="three">3
-
+                    <div class="sub">DEF</div>
                 </div>
             </div>
             <div class="rowbutton">
                 <div class="digit" id="four">4
-
+                    <div class="sub">GHI</div>
                 </div>
                 <div class="digit" id="five">5
-
+                    <div class="sub">JKL</div>
                 </div>
                 <div class="digit">6
-
+                    <div class="sub">MNO</div>
                 </div>
             </div>
             <div class="rowbutton">
                 <div class="digit">7
-
+                    PQRS
                 </div>
                 <div class="digit">8
-
+                    TUV
                 </div>
                 <div class="digit">9
-
+                    <div class="sub">WXYZ</div>
                 </div>
             </div>
             <div class="rowbutton">

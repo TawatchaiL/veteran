@@ -85,7 +85,7 @@
                             <div class="custom-control custom-switch">
                                 {{ Form::checkbox('misscall', '1', false, ['id' => 'misscall', 'class' => 'custom-control-input name']) }}
                                 <label for="misscall" class="custom-control-label">
-                                    อาทิตย์</label>
+                                    Misscall</label>
                             </div>
                         </div>
                     </div>
