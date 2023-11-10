@@ -82,9 +82,11 @@
                     <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group">
                             <strong><i class="fas fa-list-ol"></i> ประเภทการแจ้งเตือน:</strong><br>
-                            <input type="checkbox" name="miscall" data-bootstrap-switch>
-                            <label for="sat" class="custom-control-label">
-                                MissCall</label>
+                            <div class="custom-control custom-switch">
+                                {{ Form::checkbox('misscall', '1', false, ['id' => 'misscall', 'class' => 'custom-control-input name']) }}
+                                <label for="misscall" class="custom-control-label">
+                                    อาทิตย์</label>
+                            </div>
                         </div>
                     </div>
                 </div>
