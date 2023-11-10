@@ -248,7 +248,7 @@
     .dig {
         float: left;
         padding: 10px 30px;
-        width: 70px;
+        width: 90px;
         cursor: pointer;
         border: 2px solid #d3d3d3;
         /* Set the border color */
