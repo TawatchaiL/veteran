@@ -411,7 +411,7 @@
                 </div>
             </div>
             <div class="botrow"><i class="fa-solid fa-eraser dig" aria-hidden="true"></i>
-                <div id="dialpadcall"><i class="fa fa-phone" aria-hidden="true"></i></div>
+                <div id="dialpadcall"><i class="fa fa-phone dig" aria-hidden="true"></i></div>
                 <i class="fa-solid fa-delete-left dig" aria-hidden="true"></i>
             </div>
         </div>
