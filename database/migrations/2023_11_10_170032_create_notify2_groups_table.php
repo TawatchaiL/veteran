@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::connection('remote_connection')->create('notify2_groups', function (Blueprint $table) {
             $table->id();
-            $table->integer('gid');
-            $table->string('extension');
+            $table->integer('gid')->nullable();
+            $table->string('extension')->nullable();
             $table->timestamps();
         });
     }

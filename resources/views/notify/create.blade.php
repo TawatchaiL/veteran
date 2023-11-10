@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <h4 class="modal-title"><i class="fas fa-list-ol"></i> เพิ่ม กลุ่มการแจ้งเตือน</h4>
+                <h4 class="modal-title"><i class="fas fa-list-ol"></i> เพิ่มกลุ่มการแจ้งเตือน</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -64,9 +64,31 @@
                 <div class="row">
                     <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group">
-                            <strong><i class="fas fa-list-ol"></i> เสียง ประกาศวันหยุด:</strong>
-                            <select style="width: 100%;" class="select2 select2_single form-control" id="AddGreeting"
-                                name="greeting" multiple="multiple">
+                            <strong><i class="fas fa-list-ol"></i> แจ้งเตือนวันหยุด:</strong>
+                            <input type="checkbox" id="sat" name="sat" data-bootstrap-switch><label
+                                for="sat" class="custom-control-label">
+                                เปิดใช้งาน</label>
+                            <input type="checkbox" name="sun" id="sun" data-bootstrap-switch>
+                            <label for="sun" class="custom-control-label">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8 col-sm-8 col-md-8">
+                        <div class="form-group">
+                            <strong><i class="fas fa-list-ol"></i> ประเภทการแจ้งเตือน:</strong>
+                            <input type="checkbox" name="miscall" data-bootstrap-switch>
+                            <label for="sat" class="custom-control-label">
+                                MissCall</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8 col-sm-8 col-md-8">
+                        <div class="form-group">
+                            <strong><i class="fas fa-list-ol"></i> Extension:</strong>
+                            <select style="width: 100%;" class="select2 select2_multiple form-control" id="AddExtension"
+                                name="extension" multiple="multiple">
                                 @foreach ($sound as $key2)
                                     <option value="{{ $key2->number }}">{{ $key2->number }}
                                     </option>
@@ -78,15 +100,16 @@
                 <div class="row">
                     <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group">
-                            <strong><i class="fas fa-list-ol"></i> เสียง ขอบคุณ:</strong>
-                            <select style="width: 100%;" class="select2 select2_single form-control" id="AddThankyou"
-                                name="thankyou" multiple="multiple">
-                                @foreach ($sound as $key2)
-                                <option value="{{ $key2->number }}">{{ $key2->number }}
-                                </option>
-                                @endforeach
-
-                            </select>
+                            <strong><i class="fas fa-list-ol"></i> Line Token:</strong>
+                            {!! Form::text('line', null, ['id' => 'AddLine', 'placeholder' => 'Line Token', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8 col-sm-8 col-md-8">
+                        <div class="form-group">
+                            <strong><i class="fas fa-list-ol"></i> Email:</strong>
+                            {!! Form::email('email', null, ['id' => 'AddEmail', 'placeholder' => 'Email', 'class' => 'form-control']) !!}
                         </div>
                     </div>
                 </div>
