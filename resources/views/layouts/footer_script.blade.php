@@ -142,6 +142,25 @@
             dialpadcount = 0;
         });
 
+        $('#dial_number').on('keypress', function(event) {
+            var charCode = event.which;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                // Prevent non-numeric characters
+                event.preventDefault();
+            }
+        });
+
+        // Additionally, you might want to handle paste events to ensure only numbers are pasted
+        $('#dial_number').on('paste', function(event) {
+            var clipboardData = event.originalEvent.clipboardData || window.clipboardData;
+            var pastedData = clipboardData.getData('text');
+
+            if (isNaN(pastedData)) {
+                // Prevent pasting non-numeric values
+                event.preventDefault();
+            }
+        });
+
 
         $('.sidebar-toggle-btn').on('click', function() {
             // Get the logo element
