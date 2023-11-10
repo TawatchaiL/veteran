@@ -9,7 +9,8 @@
     const api_serv = '{{ config('asterisk.api_serv.address') }}';
 
     const dial_number = $('#dial_number');
-    const dial_button = $('#dial_button, #dialpadcall');
+    const dial_button = $('#dial_button');
+    const dialpad_button = $('#dialpadcall');
     //const ans_button = $('#ans_button');
     const swap_button = $('#swap_button');
     const performance_button = $('#performance_button');
@@ -756,10 +757,7 @@
     });
 
 
-
-    //call button
-    dial_button.click(function() {
-        dial_button.prop('disabled', true);
+    let dial_function = () => {
         let call_number = dial_number.val();
         if (call_number !== '') {
             setTimeout(function() {
@@ -769,7 +767,7 @@
             $.get(`${api_serv}/dial/` + call_number + "/" + exten + "/" + account_code, async (data,
                 status) => {
                 if (status == 'success') {
-                    dial_button.prop('disabled', true);
+                    dial_button.prop('disabled', false);
 
                     const prom = ezBSAlert({
                         headerText: "OK",
@@ -785,6 +783,7 @@
                         messageText: "โทรออก ไม่สำเร็จ",
                         alertType: "danger",
                     });
+                    dial_button.prop('disabled', false);
                 }
             });
         } else {
@@ -793,12 +792,24 @@
                 messageText: "กรุณาระบุหมายเลขที่จะโทร",
                 alertType: "info",
             })
+            dial_button.prop('disabled', false);
             /* .done(function(e) {
                             $('body').css("overflow-y", "hidden");
                             //$('.modal').css("overflow", "hidden");
                             $('.modal').css("overflow-y", "auto");
                         }); */
         }
+    }
+
+    //call button
+    dial_button.click(function() {
+        dial_button.prop('disabled', true);
+        dial_function();
+    });
+
+    dialpad_button.click(function() {
+        dial_button.prop('disabled', true);
+        dial_function();
     });
 
     //conf
