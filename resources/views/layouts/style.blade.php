@@ -226,6 +226,7 @@
         background-color: #fdfcfcdb;
         color: rgb(15, 14, 14);
         border-radius: 0.2em;
+        font-size: 2rem;
     }
 
     .custom-button {
@@ -248,7 +249,6 @@
         float: left;
         padding: 10px 30px;
         width: 90px;
-        font-size: 2rem;
         cursor: pointer;
         border: 2px solid #d3d3d3;
         /* Set the border color */
@@ -304,6 +304,7 @@
         margin: 10px;
         width: 70px;
         cursor: pointer;
+        font-size: 0.5rem;
     }
 
     .popover {
