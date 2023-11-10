@@ -392,6 +392,10 @@
                 </div>
             </div>
             <div class="rowbutton">
+                <button {{ $transfer_button }} id="swap_button" name="swap_button"
+                class="btn custom-button btn-success {{ $transfer_button_class }}"><i
+                    class="fa-solid fa-repeat"></i>
+                สลับสาย</button>
                 <div class="btn-group">
                     <button type="button" id="tranfer_button" {{ $transfer_button }}
                         class="{{ $transfer_button_class }} btn btn-success custom-button dropdown-toggle dropdown-icon"
