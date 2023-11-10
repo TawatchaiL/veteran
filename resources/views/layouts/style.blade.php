@@ -223,7 +223,7 @@
 
     .digit {
         padding: 0.2em;
-        background-color: #efe7e7;
+        background-color: #fdfcfcdb;
         color: white;
         border-radius: 0.2em;
     }
