@@ -66,13 +66,13 @@
                         <div class="form-group">
                             <strong><i class="fas fa-list-ol"></i> แจ้งเตือนวันหยุด:</strong><br>
                             <div class="material-switch">
-                                <input id="sat" name="sat" type="checkbox">
-                                <label for="sat" class="primary"></label>
-                              </div>
-                              <div class="material-switch">
-                                <input id="sun" name="sun" type="checkbox">
-                                <label for="sun" class="primary"></label>
-                              </div>
+                                <input id="sat" name="sat" type="checkbox"  class="primary">
+                                <label for="sat">เสาร์</label>
+                            </div>
+                            <div class="material-switch">
+                                <input id="sun" name="sun" type="checkbox" class="primary">
+                                <label for="sun" class="primary">อาทิตย์</label>
+                            </div>
                         </div>
                     </div>
                 </div>
