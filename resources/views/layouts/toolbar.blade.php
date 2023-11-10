@@ -240,7 +240,25 @@
                             <div class="mx-1">
                                 {{-- <button <?= $outbound_dis ?> class="btn btn-warning button_tranfer"><i
                                         class="fas fa-random"></i> โอนสาย</button> --}}
-
+                                <div class="btn-group">
+                                    <button type="button" id="tranfer_button" {{ $transfer_button }}
+                                        class="{{ $transfer_button_class }} btn btn-success custom-button dropdown-toggle dropdown-icon"
+                                        data-toggle="dropdown">
+                                        <i class="fas fa-random"></i> โอนสาย <span class="sr-only">Toggle
+                                            Dropdown</span>
+                                    </button>
+                                    <div class="dropdown-menu" role="menu">
+                                        <a class="dropdown-item button_tranfer" href="#"><i
+                                                class="fas fa-random"></i>
+                                            Blind Tranfer</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item button_atx_tranfer" href="#"><i
+                                                class="fas fa-random"></i> Attendant Tranfer</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item button_survey_tranfer" href="#"><i
+                                                class="fas fa-random"></i> ประเมิน</a>
+                                    </div>
+                                </div>
                             </div>
                             <div class="mx-1">
                                 <button {{ $conf_button }} id="conf_button"
@@ -391,38 +409,10 @@
                 <div class="digit">#
                 </div>
             </div>
-            <div class="rowbutton">
-                <div class="digit">
-                <button {{ $transfer_button }} id="swap_button" name="swap_button"
-                class="btn custom-button btn-success {{ $transfer_button_class }}"><i
-                    class="fa-solid fa-repeat"></i>
-                สลับสาย</button>
-                </div>
-                <div class="btn-group">
-                    <button type="button" id="tranfer_button" {{ $transfer_button }}
-                        class="{{ $transfer_button_class }} btn btn-success custom-button dropdown-toggle dropdown-icon"
-                        data-toggle="dropdown">
-                        <i class="fas fa-random"></i> โอนสาย <span class="sr-only">Toggle
-                            Dropdown</span>
-                    </button>
-                    <div class="dropdown-menu" role="menu">
-                        <a class="dropdown-item button_tranfer" href="#"><i
-                                class="fas fa-random"></i>
-                            Blind Tranfer</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item button_atx_tranfer" href="#"><i
-                                class="fas fa-random"></i> Attendant Tranfer</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item button_survey_tranfer" href="#"><i
-                                class="fas fa-random"></i> ประเมิน</a>
-                    </div>
-                </div>
-            </div>
             <div class="botrow"><i class="fa fa-star-o dig" aria-hidden="true"></i>
                 <div id="call"><i class="fa fa-phone" aria-hidden="true"></i></div>
                 <i class="fa fa-long-arrow-left dig" aria-hidden="true"></i>
             </div>
-
         </div>
     </div>
 </div>

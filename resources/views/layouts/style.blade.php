@@ -265,7 +265,7 @@
         width: 320px;
         padding: 25px;
         margin: 20px auto;
-        height: 550px;
+        height: 350px;
         text-align: center;
 
     }
