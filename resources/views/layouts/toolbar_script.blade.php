@@ -37,6 +37,7 @@
     let obj = {};
     let waitData = {};
     let isDropdownClicked = false;
+    let dialpadcount = 0;
 
 
     let alert_danger = (title, message, subtitle) => {
@@ -383,12 +384,12 @@
 
     $(document).on('click', '.digit', function() {
       var num = ($(this).clone().children().remove().end().text());
-      if (count < 11) {
+      if (dialpadcount < 11) {
         // Assuming 'dial_number' is the ID of your input element
         $('#dial_number').val(function(index, value) {
           return value + num.trim();
         });
-        count++;
+        dialpadcount++;
       }
     });
 
@@ -396,7 +397,7 @@
       $('#dial_number').val(function(index, value) {
         return value.slice(0, -1); // Remove the last character
       });
-      count--;
+      dialpadcount--;
     });
 
 
