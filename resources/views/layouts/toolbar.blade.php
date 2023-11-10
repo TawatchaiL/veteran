@@ -223,7 +223,7 @@
                                         class="fas fa-phone-square"></i>
                                     โทรออก</button>
                             </div>
-                           {{--  <div class="mx-1">
+                            {{--  <div class="mx-1">
                                 <button {{ $dial_button }} id="ans_button" name="ans_button"
                                     class="btn custom-button btn-success {{ $dial_button_class }}"><i
                                         class="fa-solid fa-check-double"></i>
@@ -252,7 +252,7 @@
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item button_atx_tranfer" href="#"><i
                                                 class="fas fa-random"></i> Attendant Tranfer</a>
-                                                <div class="dropdown-divider"></div>
+                                        <div class="dropdown-divider"></div>
                                         <a class="dropdown-item button_survey_tranfer" href="#"><i
                                                 class="fas fa-random"></i> ประเมิน</a>
                                     </div>
@@ -353,6 +353,62 @@
                         </h4>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="hidden d-none" id="a1">
+    <div class="popover-heading">
+
+    </div>
+
+    <div class="popover-body">
+        <div class="containerbutton">
+
+            <div class="rowbutton">
+                <div class="digit" id="one">1</div>
+                <div class="digit" id="two">2
+
+                </div>
+                <div class="digit" id="three">3
+
+                </div>
+            </div>
+            <div class="rowbutton">
+                <div class="digit" id="four">4
+
+                </div>
+                <div class="digit" id="five">5
+
+                </div>
+                <div class="digit">6
+
+                </div>
+            </div>
+            <div class="rowbutton">
+                <div class="digit">7
+
+                </div>
+                <div class="digit">8
+
+                </div>
+                <div class="digit">9
+
+                </div>
+            </div>
+            <div class="rowbutton">
+                <div class="digit">*
+                </div>
+                <div class="digit">0
+                </div>
+                <div class="digit">#
+                </div>
+            </div>
+            <div class="botrow"><i class="fa fa-star-o dig" aria-hidden="true"></i>
+                <div id="call"><i class="fa fa-phone" aria-hidden="true"></i></div>
+                <i class="fa fa-long-arrow-left dig" aria-hidden="true"></i>
             </div>
         </div>
     </div>
