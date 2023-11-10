@@ -34,10 +34,26 @@ class DetailcaseinternalnumberController extends Controller
      */
     public function index(Request $request)
     {
-        $datas = DB::table('cases')
-        ->select(DB::raw('DATE(created_at) as cdate'), DB::raw('TIME(created_at) as ctime'),'telno','agent' )
-        ->whereRaw('LENGTH(telno) < 5')
-        ->get();
+        if (!empty($request->get('sdate'))) {
+            $dateRange = $request->input('sdate');
+            if ($dateRange) {
+                $dateRangeArray = explode(' - ', $dateRange);
+                if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
+                    $startDate = $dateRangeArray[0];
+                    $endDate = $dateRangeArray[1];
+                }
+            }
+        }else{
+                    $startDate = date("Y-m-d");
+                    $endDate = date("Y-m-t", strtotime($startDate));  
+        }
+        $datas = DB::connection('remote_connection')
+            ->table('call_center.call_entry')
+            ->select(DB::raw('DATE(datetime_init) as cdate'), DB::raw('TIME(datetime_init) as ctime'),'callerid as telno','crm_id as agent' )
+            ->whereRaw('LENGTH(callerid) < 5')
+            ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+            ->limit(10)
+            ->get();
 
         if ($request->ajax()) {
 
