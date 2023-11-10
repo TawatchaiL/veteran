@@ -118,6 +118,19 @@
     $(document).ready(function() {
         //$('[data-toggle="tooltip"]').tooltip();
 
+        $("[data-toggle=popover]").popover({
+            trigger: 'click',
+            html: true,
+            content: function() {
+                var content = $(this).attr("data-popover-content");
+                return $(content).children(".popover-body").html();
+            },
+            title: function() {
+                var title = $(this).attr("data-popover-content");
+                return $(title).children(".popover-heading").html();
+            }
+        });
+
         $('.sidebar-toggle-btn').on('click', function() {
             // Get the logo element
             var logo = $('#logo');
