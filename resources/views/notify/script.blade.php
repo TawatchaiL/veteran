@@ -39,12 +39,16 @@
 
 
         $(".select2_multiple").select2({
-            maximumSelectionLength: 2,
+            maximumSelectionLength: 50,
             //placeholder: "With Max Selection limit 4",
             allowClear: false,
             //theme: 'bootstrap4'
             placeholder: 'กรุณาเลือก'
         });
+
+        $("input[data-bootstrap-switch]").each(function() {
+            $(this).bootstrapSwitch('state', $(this).prop('checked'));
+        })
 
         $.datepicker.setDefaults($.datepicker.regional["th"]);
         var currentDate = new Date();

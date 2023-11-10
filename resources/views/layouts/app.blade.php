@@ -114,6 +114,7 @@
 <script src="plugins/jquery-ui/jquery-ui-timepicker-addon.min.js"></script>
 <script src="plugins/signature/signature_pad.min.js"></script>
 <script src="plugins/jquery-ui/datepicker-th.js"></script>
+<script src="plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 
 <script src="plugins/datatables-buttons/2.1.1/js/dataTables.buttons.min.js"></script>
 <!-- Additional button libraries -->
