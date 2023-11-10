@@ -540,6 +540,7 @@
                                 messageText: "โอนสายสำเร็จ",
                                 alertType: "success",
                             });
+                            $("[data-toggle=popover]").popover('hide');
                         } else {
                             const prom = ezBSAlert({
                                 headerText: "Error",
@@ -628,6 +629,7 @@
                                 messageText: "โอนสายสำเร็จ",
                                 alertType: "success",
                             });
+                            $("[data-toggle=popover]").popover('hide');
                         } else {
                             const prom = ezBSAlert({
                                 headerText: "Error",
@@ -689,6 +691,7 @@
                                 messageText: "โอนสายสำเร็จ",
                                 alertType: "success",
                             });
+                            $("[data-toggle=popover]").popover('hide');
                         } else {
                             const prom = ezBSAlert({
                                 headerText: "Error",
@@ -764,6 +767,7 @@
                         alertType: "success",
                     });
                     dial_number.val('');
+                    $("[data-toggle=popover]").popover('hide');
                 } else {
                     const prom = ezBSAlert({
                         headerText: "Error",

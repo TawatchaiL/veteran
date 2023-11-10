@@ -133,10 +133,6 @@
             }
         });
 
-        // Close the popover when the close button is clicked
-        $(document).on('click', '[data-dismiss="popover"]', function() {
-            $("[data-toggle=popover]").popover('hide');
-        });
 
         $(document).on('click', '[data-dismiss="popover"]', function() {
             $("[data-toggle=popover]").popover('hide');
