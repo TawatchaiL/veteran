@@ -541,6 +541,7 @@
                                 alertType: "success",
                             });
                             $("[data-toggle=popover]").popover('hide');
+                            dialpadcount = 0;
                         } else {
                             const prom = ezBSAlert({
                                 headerText: "Error",
@@ -630,6 +631,7 @@
                                 alertType: "success",
                             });
                             $("[data-toggle=popover]").popover('hide');
+                            dialpadcount = 0;
                         } else {
                             const prom = ezBSAlert({
                                 headerText: "Error",
@@ -692,6 +694,7 @@
                                 alertType: "success",
                             });
                             $("[data-toggle=popover]").popover('hide');
+                            dialpadcount = 0;
                         } else {
                             const prom = ezBSAlert({
                                 headerText: "Error",
@@ -768,6 +771,7 @@
                     });
                     dial_number.val('');
                     $("[data-toggle=popover]").popover('hide');
+                    dialpadcount = 0;
                 } else {
                     const prom = ezBSAlert({
                         headerText: "Error",

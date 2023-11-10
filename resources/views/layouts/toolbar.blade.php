@@ -363,7 +363,8 @@
 
 <div class="hidden d-none" id="a1">
     <div class="popover-heading">
-        Dialpad <a class="close" aria-label="Close" data-dismiss="popover" href="#">&times;</a>
+        Dialpad <a id="#closedialpad" class="close" aria-label="Close" data-dismiss="popover"
+            href="#">&times;</a>
     </div>
 
     <div class="popover-body">

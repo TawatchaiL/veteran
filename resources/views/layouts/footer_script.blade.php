@@ -134,8 +134,9 @@
         });
 
 
-        $(document).on('click', '[data-dismiss="popover"]', function() {
+        $(document).on('click', '.closedialpad', function() {
             $("[data-toggle=popover]").popover('hide');
+            dialpadcount = 0;
         });
 
 
