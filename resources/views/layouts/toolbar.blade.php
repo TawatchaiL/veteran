@@ -405,11 +405,11 @@
                 </div>
             </div>
             <div class="rowbutton">
-                <div class="digit">*
+                <div class="digit">*<div class="sub">&nbsp;&nbsp;&nbsp;</div>
                 </div>
-                <div class="digit">0
+                <div class="digit">0<div class="sub">&nbsp;&nbsp;&nbsp;</div>
                 </div>
-                <div class="digit">#
+                <div class="digit">#<div class="sub">&nbsp;&nbsp;&nbsp;</div>
                 </div>
             </div>
             <div class="botrow"><i class="fa-solid fa-eraser dig" aria-hidden="true"></i>
