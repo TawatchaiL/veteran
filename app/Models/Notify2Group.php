@@ -21,6 +21,6 @@ class Notify2Group extends Model
 
     public function notifyGroup()
     {
-        return $this->belongsTo(NotifyGroup::class, 'gid', 'group_id');
+        return $this->belongsTo(NotifyGroup::class, 'gid', 'id');
     }
 }

@@ -14,7 +14,6 @@ class NotifyGroup extends Model
     protected $table = 'notify_groups';
 
     protected $fillable = [
-        'group_id',
         'group_name',
         'group_start',
         'group_end',

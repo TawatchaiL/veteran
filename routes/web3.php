@@ -75,5 +75,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/billing/save/{id}', [App\Http\Controllers\BillingController::class, 'update'])->name('billing.save');
     Route::delete('/billing/destroy', [App\Http\Controllers\BillingController::class, 'destroy'])->name('billing.destroy');
     Route::post('/billing/destroy_all', [App\Http\Controllers\BillingController::class, 'destroy_all'])->name('billing.destroy_all');
+
+    Route::get('/notify', [App\Http\Controllers\NotifyGroupController::class, 'index'])->name('notify');
+    Route::post('/notify/store', [App\Http\Controllers\NotifyGroupController::class, 'store'])->name('notify.store');
+    Route::get('/notify/edit/{id}', [App\Http\Controllers\NotifyGroupController::class, 'edit'])->name('notify.edit');
+    Route::put('/notify/save/{id}', [App\Http\Controllers\NotifyGroupController::class, 'update'])->name('notify.save');
+    Route::delete('/notify/destroy', [App\Http\Controllers\NotifyGroupController::class, 'destroy'])->name('notify.destroy');
+    Route::post('/notify/destroy_all', [App\Http\Controllers\NotifyGroupController::class, 'destroy_all'])->name('notify.destroy_all');
 });
 

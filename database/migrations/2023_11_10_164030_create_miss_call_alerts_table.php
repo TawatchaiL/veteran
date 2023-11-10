@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::connection('remote_connection')->create('notify_groups', function (Blueprint $table) {
             $table->id();
-            $table->integer('group_id');
             $table->string('group_name');
             $table->time('group_start');
             $table->time('group_end');

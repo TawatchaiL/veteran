@@ -38,11 +38,15 @@ class PermissionTableSeeder extends Seeder
             'holiday-list',
             'holiday-create',
             'holiday-edit',
-            'holiday-delete', */
+            'holiday-delete',
             'billing-list',
             'billing-create',
             'billing-edit',
-            'billing-delete',
+            'billing-delete',*/
+            'notify-list',
+            'notify-create',
+            'notify-edit',
+            'notify-delete',
             /* 'role-list',
             'role-create',
             'role-edit',
