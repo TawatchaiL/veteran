@@ -1,5 +1,8 @@
 <script>
     $(document).ready(function() {
+        $.fn.bootstrapSwitch.defaults.size = 'small';
+        $.fn.bootstrapSwitch.defaults.onColor = 'success';
+
         $(".delete_all_button").click(function() {
             var len = $('input[name="table_records[]"]:checked').length;
             if (len > 0) {
