@@ -39,6 +39,7 @@
     <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <link rel="stylesheet" href="plugins/apexchart/apexcharts.min.css">
     <link rel="stylesheet" href="plugins/dropzone/min/dropzone.min.css" type="text/css" />
+    <link rel="stylesheet" href="plugins/bootstrap-switch/css/boostrap4/bootstrap-switch.min.css" type="text/css" />
     {{-- <link rel="stylesheet" href="dist/css/jquery.datetimepicker.css"> --}}
     <link rel="stylesheet" href="plugins/jquery-ui/jquery-ui.css">
     <link rel="stylesheet" href="plugins/jquery-ui/jquery-ui-timepicker-addon.min.css" />
