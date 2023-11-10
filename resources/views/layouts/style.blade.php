@@ -279,6 +279,7 @@
         border-radius: 4px;
         float: left;
         cursor: pointer;
+        font-size: 1rem;
     }
 
     .botrow {
