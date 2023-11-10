@@ -34,11 +34,60 @@
     const popup_tab_main = $('#popup_tab_main');
     const elem_queue = document.getElementById("queue_wait");
 
+    const sound0 = new Audio("{{ asset('sound/cell-phone-1-nr0.mp3') }}");
+    const sound1 = new Audio("{{ asset('sound/cell-phone-1-nr1.mp3') }}");
+    const sound2 = new Audio("{{ asset('sound/cell-phone-1-nr2.mp3') }}");
+    const sound3 = new Audio("{{ asset('sound/cell-phone-1-nr3.mp3') }}");
+    const sound4 = new Audio("{{ asset('sound/cell-phone-1-nr4.mp3') }}");
+    const sound5 = new Audio("{{ asset('sound/cell-phone-1-nr5.mp3') }}");
+    const sound6 = new Audio("{{ asset('sound/cell-phone-1-nr6.mp3') }}");
+    const sound7 = new Audio("{{ asset('sound/cell-phone-1-nr7.mp3') }}");
+    const sound8 = new Audio("{{ asset('sound/cell-phone-1-nr8.mp3') }}");
+    const sound9 = new Audio("{{ asset('sound/cell-phone-1-nr9.mp3') }}");
+
+
     let obj = {};
     let waitData = {};
     let isDropdownClicked = false;
     let dialpadcount = 0;
 
+    let playDigitSound = (digit) => {
+        switch (digit) {
+            case '0':
+                sound0.play();
+                break;
+            case '1':
+                sound1.play();
+                break;
+            case '2':
+                sound2.play();
+                break;
+            case '3':
+                sound3.play();
+                break;
+            case '4':
+                sound4.play();
+                break;
+            case '5':
+                sound5.play();
+                break;
+            case '6':
+                sound6.play();
+                break;
+            case '7':
+                sound7.play();
+                break;
+            case '8':
+                sound8.play();
+                break;
+            case '9':
+                sound9.play();
+                break;
+            default:
+                sound1.play();
+                console.log('No sound available for digit: ' + digit);
+        }
+    }
 
     let alert_danger = (title, message, subtitle) => {
         $(document).Toasts('create', {
@@ -383,28 +432,28 @@
     };
 
     $(document).on('click', '.digit', function() {
-      var num = ($(this).clone().children().remove().end().text());
-      if (dialpadcount < 11) {
-        // Assuming 'dial_number' is the ID of your input element
-        $('#dial_number').val(function(index, value) {
-          return value + num.trim();
-        });
-        dialpadcount++;
-      }
+        var num = ($(this).clone().children().remove().end().text());
+        playDigitSound(num.trim());
+        if (dialpadcount < 11) {
+            $('#dial_number').val(function(index, value) {
+                return value + num.trim();
+            });
+            dialpadcount++;
+        }
     });
 
     $(document).on('click', '.fa-delete-left', function() {
-      $('#dial_number').val(function(index, value) {
-        return value.slice(0, -1); // Remove the last character
-      });
-      dialpadcount--;
+        $('#dial_number').val(function(index, value) {
+            return value.slice(0, -1); // Remove the last character
+        });
+        dialpadcount--;
     });
 
     $(document).on('click', '.fa-eraser', function() {
-      $('#dial_number').val(function(index, value) {
-        return ''; // Remove the last character
-      });
-      dialpadcount = 0;
+        $('#dial_number').val(function(index, value) {
+            return ''; // Remove the last character
+        });
+        dialpadcount = 0;
     });
 
 
