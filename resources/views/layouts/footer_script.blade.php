@@ -140,7 +140,6 @@
         });
 
         $(document).on('click', '#dial_number', function() {
-            $("[data-toggle=popover]").popover('hide');
             dialpadcount = 0;
         });
 
