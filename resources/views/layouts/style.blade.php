@@ -224,7 +224,7 @@
     .digit {
         padding: 0.2em;
         background-color: #fdfcfcdb;
-        color: white;
+        color: rgb(15, 14, 14);
         border-radius: 0.2em;
     }
 
