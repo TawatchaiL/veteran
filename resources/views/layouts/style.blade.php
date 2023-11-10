@@ -263,8 +263,8 @@
     .containerbutton {
         background-color: white;
         width: 300px;
-        padding: 20px;
-        margin: 10px auto;
+        padding: 15px;
+        margin: 8px auto;
         height: 350px;
         text-align: center;
 
