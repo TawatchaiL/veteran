@@ -372,7 +372,9 @@
         <div class="containerbutton">
 
             <div class="rowbutton">
-                <div class="digit" id="one">1</div>
+                <div class="digit" id="one">1
+                    <div class="sub">&nbsp;&nbsp;&nbsp;</div>
+                </div>
                 <div class="digit" id="two">2
                     <div class="sub">ABC</div>
                 </div>
@@ -393,10 +395,10 @@
             </div>
             <div class="rowbutton">
                 <div class="digit">7
-                    PQRS
+                    <div class="sub">PQRS</div>
                 </div>
                 <div class="digit">8
-                    TUV
+                    <div class="sub">TUV</div>
                 </div>
                 <div class="digit">9
                     <div class="sub">WXYZ</div>
