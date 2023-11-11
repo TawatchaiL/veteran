@@ -52,6 +52,7 @@ class ReportcaseController extends Controller
             ->select('crm_id as agent', DB::raw('count(crm_id) as sumcases'))
             ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
             ->groupBy('crm_id')
+            ->having('sumcases', '>', 0)
             ->orderBy("crm_id", "asc")
             ->get();
 
