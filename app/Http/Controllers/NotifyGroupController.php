@@ -120,7 +120,7 @@ class NotifyGroupController extends Controller
         $endutcDate = $end_date_convert->setTimezone('UTC');
         $endutcFormattedDate = $endutcDate->format('Y-m-d');
 
-        $holiday = [
+        $notify = [
             'group_name' => $request->get('group_name'),
             'line_token' => $request->get('line_token'),
             'email' => $request->get('email'),
@@ -134,7 +134,7 @@ class NotifyGroupController extends Controller
             'status' => $request->get('status'),
         ];
 
-        $notify = NotifyGroup::create($holiday);
+        $notify = NotifyGroup::create($notify);
 
         $extenData = [];
 
