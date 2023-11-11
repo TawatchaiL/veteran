@@ -534,8 +534,8 @@
                     className: 'no-print'
                 },
                 {
-                    data: 'agent',
-                    name: 'agent'
+                    data: 'crm_id',
+                    name: 'crm_id'
                 },
                 {
                     data: 'sumcases',

@@ -53,7 +53,6 @@ class ReportcaseController extends Controller
             ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
             ->groupBy('crm_id')
             ->orderBy("crm_id", "asc")
-            ->limit(10)
             ->get();
 
             if (!empty($request->get('rstatus'))) {
