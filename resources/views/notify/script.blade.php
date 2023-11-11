@@ -190,7 +190,7 @@
             }
 
             if ($('#miscall').is(":checked")) {
-                miscall = 1;
+                misscall = 1;
             } else {
                 misscall = 0;
             }

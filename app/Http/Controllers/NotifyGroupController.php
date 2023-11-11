@@ -120,10 +120,13 @@ class NotifyGroupController extends Controller
         $endutcDate = $end_date_convert->setTimezone('UTC');
         $endutcFormattedDate = $endutcDate->format('Y-m-d');
 
+        $groupExtensionCount = count($request->get('group_extension'));
+
         $notify = [
             'group_name' => $request->get('group_name'),
             'line_token' => $request->get('line_token'),
             'email' => $request->get('email'),
+            'group_extension' => $groupExtensionCount,
             'group_start' =>  $startutcFormattedDate . " " . $start_array[1] . ":00",
             'group_end' => $endutcFormattedDate . " " . $end_array[1] . ":00",
             'group_start_th' =>  $request->get('group_start'),
