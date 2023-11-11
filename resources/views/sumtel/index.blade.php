@@ -36,9 +36,12 @@
                                         <div class="form-group">
                                             <strong><i class="fa-regular fa-comment-dots"></i>
                                                 Agent:</strong>
-                                            <select style="width: 100%;" class="select2 form-control" id="telin"
-                                                name="telin">
-                                                <option value="" selected>1002</option>
+                                            <select style="width: 100%;" class="select2 form-control" id="Agent"
+                                                name="Agent">
+                                                <option value="0" selected>ทั้งหมด</option>
+                                                @foreach($agents as $agentss)
+                                                    <option value="{{ $agentss->id }}" selected>{{ $agentss->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
