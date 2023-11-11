@@ -34,40 +34,39 @@ class LoginstatusController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
-            //sleep(2);
-
-            //$datas = Cases::orderBy("id", "desc")->get();
-            $numberOfRows = 50; // Change this to the desired number of rows
-            $simulatedDatas = [];
-
-            $rivrname = ['welcom', 'opd', 'callcenter'];
-            $rivrno = ['Comment', 'Edit'];
-
-            for ($i = 1; $i <= $numberOfRows; $i++) {
-
-                $ivrno  = $rivrno[array_rand($rivrno)];
-                $createDate = now()->subDays(rand(1, 365))->subHours(rand(0, 23))->subMinutes(rand(0, 59));
-
-
-                $simulatedDatas[] = (object) [
-                    'id' => $i,
-                    'agent' => rand(1001, 1020),
-                    'login' => $createDate->format('H:i'),
-                    'logoff' => $createDate->format('H:i'),
-                    // Simulate other fields as needed
-                ];
+        if (!empty($request->get('sdate'))) {
+            $dateRange = $request->input('sdate');
+            if ($dateRange) {
+                $dateRangeArray = explode(' - ', $dateRange);
+                if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
+                    $startDate = $dateRangeArray[0];
+                    $endDate = $dateRangeArray[1];
+                }
             }
+        }else{
+                    $startDate = date("Y-m-d");
+                    $endDate = date("Y-m-t", strtotime($startDate));  
+        }
+        $datas = DB::connection('remote_connection')
+            ->table('call_center.audit')
+            ->select('id_agent','datetime_init', 'datetime_end')
+            ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+            ->whereNull('id_break'); 
+        if(!empty($request->get('agent'))){
+            $datas->whereRaw('id_agent = "'. $request->input('agent') .'"');  
+        }    
+        $datas->orderBy("datetime_init", "asc")
+            ->get();
 
+        if ($request->ajax()) {
 
-            return datatables()->of($simulatedDatas)
+            return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
-                })->rawColumns(['checkbox', 'action'])
-                ->toJson();
+                })->rawColumns(['checkbox', 'action'])->toJson();
         }
-
-        return view('loginstatus.index');
+        $agents = User::orderBy("id", "asc")->get();
+        return view('loginstatus.index')->with(['agents' => $agents]);
     }
 
 }
