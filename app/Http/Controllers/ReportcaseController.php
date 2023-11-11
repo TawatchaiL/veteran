@@ -34,13 +34,37 @@ class ReportcaseController extends Controller
      */
     public function index(Request $request)
     {
-
-        $datas = DB::table('cases')
-            ->select('agent', DB::raw('count(*) as sumcases'))
-            ->groupBy('agent')
-            ->orderBy("sumcases", "desc")
+        if (!empty($request->get('sdate'))) {
+            $dateRange = $request->input('sdate');
+            if ($dateRange) {
+                $dateRangeArray = explode(' - ', $dateRange);
+                if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
+                    $startDate = $dateRangeArray[0];
+                    $endDate = $dateRangeArray[1];
+                }
+            }
+        }else{
+                    $startDate = date("Y-m-d");
+                    $endDate = date("Y-m-t", strtotime($startDate));  
+        }
+        $datas = DB::connection('remote_connection')
+            ->table('call_center.call_entry')
+            ->select('crm_id', DB::raw('count(crm_id) as sumcases'))
+            ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+            ->groupBy('crm_id')
+            ->orderBy("crm_id", "asc")
+            ->limit(10)
             ->get();
 
+            if (!empty($request->get('rstatus'))) {
+                $chart_data = array();
+                $chart_label = array();
+                foreach ($datas as $data) {
+                    $chart_data[] = $data->sumcases;
+                    $chart_label[] = $data->crm_id;
+                }
+                return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
+            }
 
         if ($request->ajax()) {
 
@@ -49,51 +73,6 @@ class ReportcaseController extends Controller
                     return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
-
-        //graph data
-        $chart_data = array();
-        foreach ($datas as $data) {
-            $chart_data[$data->agent] = $data->sumcases;
-        }
-
-        $graph_color = array(
-            '#E91E63', '#2E93fA', '#546E7A', '#66DA26', '#FF9800',  '#4ECDC4', '#C7F464', '#81D4FA',
-            '#A5978B', '#FD6A6A'
-        );
-
-        $chart_title = "ผลรวมสายเข้าแยกตาม Agent";
-
-        $chart_options = [
-            'chart_id' => 'bar_graph',
-            'chart_title' => $chart_title,
-            'chart_type' => 'bar',
-            'color' => $graph_color,
-            'data' => $chart_data
-        ];
-
-        $chart1 = new GraphService($chart_options);
-
-        $chart_options = [
-            'chart_id' => 'line_graph',
-            'chart_title' => $chart_title,
-            'chart_type' => 'line',
-            'color' => $graph_color,
-            'data' => $chart_data
-        ];
-
-        $chart2 = new GraphService($chart_options);
-
-        $chart_options = [
-            'chart_id' => 'pie_graph',
-            'chart_title' => $chart_title,
-            'chart_type' => 'pie',
-            'color' => $graph_color,
-            'data' => $chart_data
-        ];
-
-        $chart3 = new GraphService($chart_options);
-
-
-        return view('reportcase.index', compact('chart1', 'chart2', 'chart3'));
+        return view('reportcase.index');
     }
 }

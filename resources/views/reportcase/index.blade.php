@@ -24,40 +24,32 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="row">
-                                {{-- <ol class="breadcrumb float-sm-center">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active">Users Management</li>
-                                </ol> --}}
-                                <div class="col-xs-2 col-sm-2 col-md-2">
-                                    <div class="form-group">
-                                        <strong><i class="fas fa-calendar"></i> วันที่เริ่ม:</strong>
-                                        {!! Form::text('start_date', null, [
-                                            'id' => 'SDate',
-                                            'placeholder' => '',
-                                            'class' => 'SDate form-control',
-                                            'data-target' => '#reservationdate',
-                                        ]) !!}
-                                    </div>
-                                </div>
-                                <div class="col-xs-2 col-sm-2 col-md-2">
-                                    <div class="form-group">
-                                        <strong><i class="fas fa-calendar"></i> วันที่สิ้นสุด:</strong>
-                                        {!! Form::text('end_date', null, [
-                                            'id' => 'EDate',
-                                            'placeholder' => '',
-                                            'class' => 'EDate form-control',
-                                            'data-target' => '#reservationdate',
-                                        ]) !!}
-                                    </div>
-                                </div>
-                                <div class="col-xs-2 col-sm-2 col-md-2 align-self-end">
-                                    <div class="form-group">
-                                        <button type="button" class="btn btn-success" id="CreateButton">
-                                            <i class="fas fa-search"></i> ค้นหา </button>
-                                    </div>
-                                </div>
+                            <div class="col-sm-12">
+                                <ol class="breadcrumb float-sm-center">
+                                    {{-- <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item active">Users Management</li> --}}
+                                    <div class="col-xs-3 col-sm-3 col-md-3">
+                                        <div class="form-group">
+                                            <strong>
+                                                วันที่บันทึกข้อมูล:</strong>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="far fa-calendar-alt"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text" class="form-control float-right" id="reservation" style="width: 210px">
+                                            </div>
 
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-2 col-sm-2 col-md-2 align-self-end">
+                                        <div class="form-group">
+                                            <button type="button" class="btn btn-success" id="btnsearch">
+                                                <i class="fas fa-search"></i> ค้นหา </button>
+                                        </div>
+                                    </div>
+                                </ol>
                             </div>
                         </div>
                     </div>
@@ -106,7 +98,7 @@
                                         </button>
                                     </div>
                                     <div class="col-sm-10 mx-auto text-center" id="bar_chart_div">
-                                        {!! $chart1->renderHtml() !!}
+                                        <div id="bar_graph" ></div>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="custom-tabs-one-line" role="tabpanel"
@@ -122,8 +114,8 @@
                                             <i class="fas fa-print"></i> พิมพ์กราฟ
                                         </button>
                                     </div>
-                                    <div class="col-sm-10 mx-auto text-center">
-                                        {!! $chart2->renderHtml() !!}
+                                    <div class="col-sm-10 mx-auto text-center" id="bar_chart_div">
+                                        <div id="line_graph" ></div>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="custom-tabs-one-pie" role="tabpanel"
@@ -139,10 +131,9 @@
                                             <i class="fas fa-print"></i> พิมพ์กราฟ
                                         </button>
                                     </div>
-                                    <div class="col-sm-8 mx-auto text-center">
-                                        {!! $chart3->renderHtml() !!}
+                                    <div class="col-sm-10 mx-auto text-center" id="bar_chart_div">
+                                        <div id="pie_graph" ></div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -219,10 +210,4 @@
 
 @section('script')
     @include('reportcase.script')
-
-    {!! $chart1->renderJs() !!}
-
-    {!! $chart2->renderJs() !!}
-
-    {!! $chart3->renderJs() !!}
 @endsection
