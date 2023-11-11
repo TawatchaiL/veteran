@@ -117,8 +117,8 @@
                     searchable: false
                 },
                 {
-                    data: 'name',
-                    name: 'name'
+                    data: 'group_name',
+                    name: 'group_name'
                 },
                 {
                     data: 'notifydate',
