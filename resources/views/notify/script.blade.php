@@ -254,10 +254,10 @@
                 success: function(res) {
                     $('#EditName').val(res.data.group_name);
                     $('#EditExtension').append(res.select_list_exten);
-                    $('#EditLine').val(res.data.line).;
+                    $('#EditLine').val(res.data.line);
                     $('#EditEmail').val(res.data.email);
-                    $('#EditSDate').val(res.data.group_start_th).change();
-                    $('#EditEDate').val(res.data.group_end_th).change();
+                    $('#EditSDate').val(res.data.group_start_th);
+                    $('#EditEDate').val(res.data.group_end_th);
                     if (res.data.status == 1) {
                         $('#ecustomCheckbox1').prop('checked', true);
                     } else {
