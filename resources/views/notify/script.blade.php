@@ -24,7 +24,6 @@
         $(".select2_single").select2({
             maximumSelectionLength: 1,
             allowClear: false,
-            //theme: 'bootstrap4'
             placeholder: 'กรุณาเลือก'
         });
 
@@ -36,16 +35,13 @@
         $(".select2_singles").select2({
             maximumSelectionLength: 1,
             allowClear: false,
-            //theme: 'bootstrap4'
             placeholder: 'กรุณาเลือก'
         });
 
 
         $(".select2_multiple").select2({
             maximumSelectionLength: 50,
-            //placeholder: "With Max Selection limit 4",
             allowClear: false,
-            //theme: 'bootstrap4'
             placeholder: 'กรุณาเลือก'
         });
 
@@ -181,16 +177,38 @@
                 sstatus = 0;
             }
 
+            if ($('#sat').is(":checked")) {
+                sat = 1;
+            } else {
+                sat = 0;
+            }
+
+            if ($('#sun').is(":checked")) {
+                sun = 1;
+            } else {
+                sun = 0;
+            }
+
+            if ($('#misscall').is(":checked")) {
+                misscall = 1;
+            } else {
+                misscall = 0;
+            }
+
 
             $.ajax({
-                url: "{{ route('holiday.store') }}",
+                url: "{{ route('notify.store') }}",
                 method: 'post',
                 data: {
-                    name: $('#AddName').val(),
-                    start_date: $('#AddSDate').val(),
-                    end_date: $('#AddEDate').val(),
-                    holiday_sound: $('#AddGreeting').val()[0],
-                    thankyou_sound: $('#AddThankyou').val()[0],
+                    group_name: $('#AddName').val(),
+                    group_start: $('#AddSDate').val(),
+                    group_end: $('#AddEDate').val(),
+                    group_extension: $('#AddExtension').val(),
+                    line_token: $('#AddLine').val(),
+                    email: $('#AddEmail').val(),
+                    sat: sat,
+                    sun: sun,
+                    misscall: misscall,
                     status: sstatus,
                     _token: token,
                 },
@@ -211,8 +229,7 @@
                             timeOut: 5000
                         });
                         $('#Listview').DataTable().ajax.reload();
-                        $("#AddGreeting").val(null).trigger("change")
-                        $("#AddThankyou").val(null).trigger("change")
+                        $("#AddExtension").val(null).trigger("change")
                         $('.form').trigger('reset');
                         $('#CreateModal').modal('hide');
                     }

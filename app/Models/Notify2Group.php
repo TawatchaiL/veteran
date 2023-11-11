@@ -11,12 +11,11 @@ class Notify2Group extends Model
 
     protected $connection = 'remote_connection';
 
-    protected $table = 'notify_groups';
+    protected $table = 'notify2_groups';
 
     protected $fillable = [
         'gid',
         'extension',
-        'name',
     ];
 
     public function notifyGroup()
