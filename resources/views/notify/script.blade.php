@@ -121,8 +121,8 @@
                     name: 'name'
                 },
                 {
-                    data: 'holidaydate',
-                    name: 'holidaydate'
+                    data: 'notifydate',
+                    name: 'notifydatee'
                 },
                 {
                     data: 'status',
