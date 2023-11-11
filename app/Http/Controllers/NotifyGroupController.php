@@ -177,7 +177,7 @@ class NotifyGroupController extends Controller
 
         foreach ($extena as $exten) {
 
-            $selected = ($extens->number == $exten->number) ? 'selected' : '';
+            $selected = ($extens->extension == $exten->number) ? 'selected' : '';
             $select_list_exten .= '<option value="' . $exten->number . '" ' . $selected . '> ' . $exten->number . '</option>';
         }
 
