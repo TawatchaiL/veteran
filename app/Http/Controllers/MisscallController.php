@@ -34,39 +34,38 @@ class MisscallController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
-            //sleep(2);
-
-            //$datas = Cases::orderBy("id", "desc")->get();
-            $numberOfRows = 50; // Change this to the desired number of rows
-            $simulatedDatas = [];
-
-            $rivrname = ['welcom', 'opd', 'callcenter'];
-            $rivrno = ['Comment', 'Edit'];
-
-            for ($i = 1; $i <= $numberOfRows; $i++) {
-
-                $ivrno  = $rivrno[array_rand($rivrno)];
-                $createDate = now()->subDays(rand(1, 365))->subHours(rand(0, 23))->subMinutes(rand(0, 59));
-
-
-                $simulatedDatas[] = (object) [
-                    'id' => $i,
-                    'cdate' => $createDate->format('Y-m-d'),
-                    'ctime' => $createDate->format('H:i:s'),
-                    'telno' => '08' . rand(10000000, 99999999),
-                ];
+        if (!empty($request->get('sdate'))) {
+            $dateRange = $request->input('sdate');
+            if ($dateRange) {
+                $dateRangeArray = explode(' - ', $dateRange);
+                if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
+                    $startDate = $dateRangeArray[0];
+                    $endDate = $dateRangeArray[1];
+                }
             }
+        }else{
+                    $startDate = date("Y-m-d");
+                    $endDate = date("Y-m-t", strtotime($startDate));  
+        }
+        $datas = DB::connection('remote_connection')
+            ->table('call_center.call_entry')
+            ->select(DB::raw('DATE(datetime_init) as cdate'), DB::raw('TIME(datetime_init) as ctime'), 'callerid as telno')
+            ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"');
+        if(!empty($request->get('agent'))){
+            $datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
+        }    
+        $datas->orderBy("datetime_init", "asc")
+            ->get();
 
+        if ($request->ajax()) {
 
-            return datatables()->of($simulatedDatas)
+            return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
-                })->rawColumns(['checkbox', 'action'])
-                ->toJson();
+                })->rawColumns(['checkbox', 'action'])->toJson();
         }
-
-        return view('misscall.index');
+        $agents = User::orderBy("id", "asc")->get();
+        return view('misscall.index')->with(['agents' => $agents]);
     }
 
 }
