@@ -274,7 +274,7 @@
                         $('#esun').prop('checked', false);
                     }
                     if (res.data.misscall == 1) {
-                        $('#emisscall1').prop('checked', true);
+                        $('#emisscall').prop('checked', true);
                     } else {
                         $('#emisscall').prop('checked', false);
                     }

@@ -172,12 +172,12 @@ class NotifyGroupController extends Controller
         $data =  NotifyGroup::find($id);
 
         $extena = DB::connection('remote_connection')->table('call_center.agent')->orderBy("number", "asc")->get();
-        $extens = Notify2Group::where('gid', $id)->get();
+        $extens = Notify2Group::where('gid', $data->id)->get();
         $select_list_exten = '';
 
         foreach ($extena as $exten) {
 
-            $selected = $extens->contains('extension', $exten->number) ? 'selected' : '';
+            $selected = ($extens->number == $exten->number) ? 'selected' : '';
             $select_list_exten .= '<option value="' . $exten->number . '" ' . $selected . '> ' . $exten->number . '</option>';
         }
 
