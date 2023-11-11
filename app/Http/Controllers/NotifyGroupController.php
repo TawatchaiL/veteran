@@ -167,9 +167,24 @@ class NotifyGroupController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(NotifyGroup $missCallAlert)
+    public function edit($id)
     {
-        //
+        $data =  NotifyGroup::find($id);
+
+        $extena = DB::connection('remote_connection')->table('call_center.agent')->orderBy("number", "asc")->get();
+        $extens = Notify2Group::where('gid', $id)->get();
+        $select_list_exten = '';
+
+        foreach ($extena as $exten) {
+
+            $selected = $extens->contains('extension', $exten->number) ? 'selected' : '';
+            $select_list_exten .= '<option value="' . $exten->number . '" ' . $selected . '> ' . $exten->extension . '</option>';
+        }
+
+        return response()->json([
+            'data' => $data,
+            'select_list_exten' => $select_list_exten
+        ]);
     }
 
     /**

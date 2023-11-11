@@ -249,18 +249,34 @@
 
             id = $(this).data('id');
             $.ajax({
-                url: "holiday/edit/" + id,
+                url: "notify/edit/" + id,
                 method: 'GET',
                 success: function(res) {
-                    $('#EditName').val(res.data.name);
-                    $('#EditGreeting').val(res.data.holiday_sound).change();
-                    $('#EditThankyou').val(res.data.thankyou_sound).change();
-                    $('#EditSDate').val(res.data.start_datetime_th).change();
-                    $('#EditEDate').val(res.data.end_datetime_th).change();
+                    $('#EditName').val(res.data.group_name);
+                    $('#EditExtension').append(res.select_list_exten);
+                    $('#EditLine').val(res.data.line).;
+                    $('#EditEmail').val(res.data.email);
+                    $('#EditSDate').val(res.data.group_start_th).change();
+                    $('#EditEDate').val(res.data.group_end_th).change();
                     if (res.data.status == 1) {
                         $('#ecustomCheckbox1').prop('checked', true);
                     } else {
                         $('#ecustomCheckbox1').prop('checked', false);
+                    }
+                    if (res.data.sat == 1) {
+                        $('#esat').prop('checked', true);
+                    } else {
+                        $('#esat').prop('checked', false);
+                    }
+                    if (res.data.sun == 1) {
+                        $('#esun').prop('checked', true);
+                    } else {
+                        $('#esun').prop('checked', false);
+                    }
+                    if (res.data.misscall == 1) {
+                        $('#emisscall1').prop('checked', true);
+                    } else {
+                        $('#emisscall').prop('checked', false);
                     }
 
                     $('#EditModalBody').html(res.html);
