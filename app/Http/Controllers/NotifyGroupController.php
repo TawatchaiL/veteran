@@ -83,13 +83,14 @@ class NotifyGroupController extends Controller
      */
     public function store(Request $request)
     {
-        $validator =  Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'group_name' => 'required|string|max:100',
             'group_start' => 'required',
             'group_end' => 'required',
             'group_extension' => 'required',
             'line_token' => 'required',
             'misscall' => 'required',
+            'email' => 'nullable|email',
         ], [
             'group_name.required' => 'ชื่อกลุ่มต้องไม่เป็นค่าว่าง!',
             'group_extension.required' => 'กรุณาระบุ หมายเลข Agent!',
@@ -97,6 +98,7 @@ class NotifyGroupController extends Controller
             'misscall.required' => 'กรุณาระบุ Misscall!',
             'group_start.required' => 'กรุณาระบุวันเริ่มต้น!',
             'group_end.required' => 'กรุณาระบุวันสิ้นสุด!',
+            'email' => 'กรุณาระบุ Email  ให้ถูกต้อง',
         ]);
 
 
