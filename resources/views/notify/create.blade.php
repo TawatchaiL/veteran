@@ -64,35 +64,6 @@
                 <div class="row">
                     <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group">
-                            <strong><i class="fas fa-list-ol"></i> แจ้งเตือนวันหยุด:</strong><br>
-                            <div class="custom-control custom-switch">
-                                {{ Form::checkbox('sat', '1', false, ['id' => 'sat', 'class' => 'custom-control-input name']) }}
-                                <label for="sat" class="custom-control-label">
-                                    เสาร์</label>
-                            </div>
-                            <div class="custom-control custom-switch">
-                                {{ Form::checkbox('sun', '1', false, ['id' => 'sun', 'class' => 'custom-control-input name']) }}
-                                <label for="sun" class="custom-control-label">
-                                    อาทิตย์</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-8 col-sm-8 col-md-8">
-                        <div class="form-group">
-                            <strong><i class="fas fa-list-ol"></i> ประเภทการแจ้งเตือน:</strong><br>
-                            <div class="custom-control custom-switch">
-                                {{ Form::checkbox('misscall', '1', false, ['id' => 'misscall', 'class' => 'custom-control-input name']) }}
-                                <label for="misscall" class="custom-control-label">
-                                    Misscall</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-8 col-sm-8 col-md-8">
-                        <div class="form-group">
                             <strong><i class="fas fa-list-ol"></i> Extension:</strong>
                             <select style="width: 100%;" class="select2 select2_multiple form-control" id="AddExtension"
                                 name="extension" multiple="multiple">
@@ -120,6 +91,36 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-xs-8 col-sm-8 col-md-8">
+                        <div class="form-group">
+                            <strong><i class="fas fa-list-ol"></i> แจ้งเตือนวันหยุด:</strong><br>
+                            <div class="custom-control custom-switch">
+                                {{ Form::checkbox('sat', '1', false, ['id' => 'sat', 'class' => 'custom-control-input name']) }}
+                                <label for="sat" class="custom-control-label">
+                                    เสาร์</label>
+                            </div>
+                            <div class="custom-control custom-switch">
+                                {{ Form::checkbox('sun', '1', false, ['id' => 'sun', 'class' => 'custom-control-input name']) }}
+                                <label for="sun" class="custom-control-label">
+                                    อาทิตย์</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8 col-sm-8 col-md-8">
+                        <div class="form-group">
+                            <strong><i class="fas fa-list-ol"></i> ประเภทการแจ้งเตือน:</strong><br>
+                            <div class="custom-control custom-switch">
+                                {{ Form::checkbox('misscall', '1', false, ['id' => 'misscall', 'class' => 'custom-control-input name']) }}
+                                <label for="misscall" class="custom-control-label">
+                                    Misscall</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group">
