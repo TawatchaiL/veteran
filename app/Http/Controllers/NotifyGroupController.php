@@ -138,8 +138,9 @@ class NotifyGroupController extends Controller
 
         $extenData = [];
 
+
         foreach ($request->get('group_extension') as $ea) {
-            $extenDataData[] = [
+            $extenData[] = [
                 'gid' => $notify->id,
                 'extension' => $ea,
             ];
