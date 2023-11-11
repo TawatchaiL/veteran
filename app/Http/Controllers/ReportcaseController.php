@@ -49,7 +49,7 @@ class ReportcaseController extends Controller
         }
         $datas = DB::connection('remote_connection')
             ->table('call_center.call_entry')
-            ->select('crm_id', DB::raw('count(crm_id) as sumcases'))
+            ->select('crm_id as agent', DB::raw('count(crm_id) as sumcases'))
             ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
             ->groupBy('crm_id')
             ->orderBy("crm_id", "asc")
@@ -60,7 +60,7 @@ class ReportcaseController extends Controller
                 $chart_label = array();
                 foreach ($datas as $data) {
                     $chart_data[] = $data->sumcases;
-                    $chart_label[] = $data->crm_id;
+                    $chart_label[] = $data->agent;
                 }
                 return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
             }
