@@ -20,10 +20,10 @@ class NotifyGroupController extends Controller
     public function __construct()
     {
         //$this->middleware('auth');
-        $this->middleware('permission:holiday-list|holiday-create|holiday-edit|holiday-delete', ['only' => ['index', 'show']]);
-        $this->middleware('permission:holiday-create', ['only' => ['create', 'store']]);
-        $this->middleware('permission:holiday-edit', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:holiday-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:notify-list|notify-create|notify-edit|notify-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:notify-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:notify-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:notify-delete', ['only' => ['destroy']]);
     }
 
     /**
@@ -41,7 +41,7 @@ class NotifyGroupController extends Controller
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
                 })
                 ->addColumn('notifydate', function ($row) {
-                    $holiday = $row->group_start . " - " . $row->group_end;
+                    $holiday = $row->group_start_th . " - " . $row->group_end_th;
                     return $holiday;
                 })
                 ->editColumn('status', function ($row) use ($state_text) {
