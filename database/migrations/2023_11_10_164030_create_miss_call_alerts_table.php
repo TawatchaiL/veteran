@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::connection('remote_connection')->create('notify_groups', function (Blueprint $table) {
             $table->id();
             $table->string('group_name')->nullable();
-            $table->time('group_start')->nullable();
-            $table->time('group_end')->nullable();
+            $table->datetime('group_start')->nullable();
+            $table->datetime('group_end')->nullable();
             $table->string('group_start_th')->nullable();
             $table->string('group_end_th')->nullable();
             $table->integer('group_sat')->nullable();
