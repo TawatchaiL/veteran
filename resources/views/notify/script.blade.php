@@ -189,7 +189,7 @@
                 sun = 0;
             }
 
-            if ($('#miscall').is(":checked")) {
+            if ($('#misscall').is(":checked")) {
                 misscall = 1;
             } else {
                 misscall = 0;
