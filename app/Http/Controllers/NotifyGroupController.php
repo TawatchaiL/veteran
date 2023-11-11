@@ -169,17 +169,17 @@ class NotifyGroupController extends Controller
      */
     public function edit($id)
     {
-        $data =  NotifyGroup::find($id);
+        $data = NotifyGroup::find($id);
 
+        // Use eloquent for better readability
         $extena = DB::connection('remote_connection')->table('call_center.agent')->orderBy("number", "asc")->get();
         $extens = Notify2Group::where('gid', $data->id)->get();
-        $select_list_exten = '';
 
-        foreach ($extena as $exten) {
-
+        // Use map and implode for building the options string
+        $select_list_exten = $extena->map(function ($exten) use ($extens) {
             $selected = $extens->contains('extension', $exten->number) ? 'selected' : '';
-            $select_list_exten .= '<option value="' . $exten->number . '" ' . $selected . '> ' . $exten->number . '</option>';
-        }
+            return '<option value="' . $exten->number . '" ' . $selected . '> ' . $exten->number . '</option>';
+        })->implode('');
 
         return response()->json([
             'data' => $data,
