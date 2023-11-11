@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\NotifyGroup;
+use App\Models\Notify2Group;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
@@ -82,7 +83,71 @@ class NotifyGroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator =  Validator::make($request->all(), [
+            'group_name' => 'required|string|max:100',
+            'group_start' => 'required',
+            'group_end' => 'required',
+            'group_extension' => 'required',
+            'line_token' => 'required',
+            'misscall' => 'required',
+        ], [
+            'group_name.required' => 'ชื่อกลุ่มต้องไม่เป็นค่าว่าง!',
+            'group_extension.required' => 'กรุณาระบุ หมายเลข Agent!',
+            'line_token.required' => 'กรุณาระบุ Line Token!',
+            'misscall.required' => 'กรุณาระบุ Misscall!',
+            'group_start.required' => 'กรุณาระบุวันเริ่มต้น!',
+            'group_end.required' => 'กรุณาระบุวันสิ้นสุด!',
+        ]);
+
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all()]);
+        }
+
+        $start_array = explode(" ", $request->get('group_start'));
+        // Manually adjust the year from Buddhist to Gregorian calendar
+        $sgregorianYear = intval(substr($start_array[0], 6)) - 543;
+        $sgregorianDate = $sgregorianYear . substr($start_array[0], 2, 3) . "/" . substr($start_array[0], 0, 2);
+        $start_date_convert = Carbon::createFromFormat('Y/m/d', $sgregorianDate, 'Asia/Bangkok');
+        $startutcDate = $start_date_convert->setTimezone('UTC');
+        $startutcFormattedDate = $startutcDate->format('Y-m-d');
+
+
+        $end_array = explode(" ", $request->get('group_end'));
+        $egregorianYear = intval(substr($end_array[0], 6)) - 543;
+        $egregorianDate = $egregorianYear . substr($end_array[0], 2, 3) . "/" . substr($end_array[0], 0, 2);
+        $end_date_convert = Carbon::createFromFormat('Y/m/d', $egregorianDate, 'Asia/Bangkok');
+        $endutcDate = $end_date_convert->setTimezone('UTC');
+        $endutcFormattedDate = $endutcDate->format('Y-m-d');
+
+        $holiday = [
+            'group_name' => $request->get('group_name'),
+            'line_token' => $request->get('line_token'),
+            'email' => $request->get('email'),
+            'group_start' =>  $startutcFormattedDate . " " . $start_array[1] . ":00",
+            'group_end' => $endutcFormattedDate . " " . $end_array[1] . ":00",
+            'group_start_th' =>  $request->get('group_start'),
+            'group_end_th' => $request->get('group_start_th'),
+            'sat' => $request->get('sat'),
+            'sun' => $request->get('sun'),
+            'misscall' => $request->get('misscall'),
+            'status' => $request->get('status'),
+        ];
+
+        $notify = NotifyGroup::create($holiday);
+
+        $extenData = [];
+
+        foreach ($request->get('group_extension') as $ea) {
+            $extenDataData[] = [
+                'gid' => $notify->id,
+                'extension' => $ea,
+            ];
+        }
+
+        Notify2Group::insert($extenData);
+
+        return response()->json(['success' => 'เพิ่ม กลุ่มการแจ้งเตือน เรียบร้อยแล้ว']);
     }
 
     /**

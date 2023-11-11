@@ -17,6 +17,8 @@ class NotifyGroup extends Model
         'group_name',
         'group_start',
         'group_end',
+        'group_start_th',
+        'group_end_th',
         'group_sat',
         'group_sun',
         'group_extension',
