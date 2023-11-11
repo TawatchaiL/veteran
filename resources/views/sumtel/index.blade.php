@@ -40,7 +40,7 @@
                                                 name="Agent">
                                                 <option value="0" selected>ทั้งหมด</option>
                                                 @foreach($agents as $agentss)
-                                                    <option value="{{ $agentss->id }}" selected>{{ $agentss->name }}</option>
+                                                    <option value="{{ $agentss->id }}">{{ $agentss->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
