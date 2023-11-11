@@ -127,7 +127,7 @@ class NotifyGroupController extends Controller
             'group_start' =>  $startutcFormattedDate . " " . $start_array[1] . ":00",
             'group_end' => $endutcFormattedDate . " " . $end_array[1] . ":00",
             'group_start_th' =>  $request->get('group_start'),
-            'group_end_th' => $request->get('group_start_th'),
+            'group_end_th' => $request->get('group_end'),
             'sat' => $request->get('sat'),
             'sun' => $request->get('sun'),
             'misscall' => $request->get('misscall'),
