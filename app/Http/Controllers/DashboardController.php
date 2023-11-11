@@ -199,7 +199,6 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
 
-
         $results = DB::connection('remote_connection')
             ->table('agent_score_today')
             ->select(
@@ -211,16 +210,21 @@ class DashboardController extends Controller
             ->get();
 
         $scoreCounts = $results->pluck('count', 'score')->all();
-        $maxScore = max(array_keys($scoreCounts));
+
+        // Check if $scoreCounts is not empty before finding the max score
+        if (!empty($scoreCounts)) {
+            $maxScore = max(array_keys($scoreCounts));
+        } else {
+            // Handle the case where $scoreCounts is empty
+            $maxScore = 0; // or any default value you prefer
+        }
 
         $allscore = range(1, $maxScore);
-
 
         $scoreCounts = [];
         foreach ($results as $result) {
             $scoreCounts[$result->score] = $result->count;
         }
-
 
         foreach ($allscore as $score) {
             if (!isset($scoreCounts[$score])) {
