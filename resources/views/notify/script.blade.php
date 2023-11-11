@@ -254,7 +254,7 @@
                 success: function(res) {
                     $('#EditName').val(res.data.group_name);
                     $('#EditExtension').append(res.select_list_exten);
-                    $('#EditLine').val(res.data.line);
+                    $('#EditLine').val(res.data.line_token);
                     $('#EditEmail').val(res.data.email);
                     $('#EditSDate').val(res.data.group_start_th);
                     $('#EditEDate').val(res.data.group_end_th);
@@ -263,12 +263,12 @@
                     } else {
                         $('#ecustomCheckbox1').prop('checked', false);
                     }
-                    if (res.data.sat == 1) {
+                    if (res.data.group_sat == 1) {
                         $('#esat').prop('checked', true);
                     } else {
                         $('#esat').prop('checked', false);
                     }
-                    if (res.data.sun == 1) {
+                    if (res.data.group_sun == 1) {
                         $('#esun').prop('checked', true);
                     } else {
                         $('#esun').prop('checked', false);
