@@ -86,8 +86,8 @@
                 <div class="row">
                     <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group">
-                            <strong><i class="fas fa-list-ol"></i> Email:</strong>
-                            {!! Form::email('email', null, ['id' => 'AddEmail', 'placeholder' => 'Email', 'class' => 'form-control']) !!}
+                            <label for="AddEmail"><strong><i class="fas fa-list-ol"></i> Email:</strong></label>
+                            <input type="email" id="AddEmail" name="email" placeholder="Email" class="form-control">
                         </div>
                     </div>
                 </div>
