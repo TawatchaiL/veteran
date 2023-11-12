@@ -117,8 +117,8 @@
                     searchable: false
                 },
                 {
-                    data: 'name',
-                    name: 'name'
+                    data: 'group_name',
+                    name: 'group_name'
                 },
                 {
                     data: 'notifydate',
@@ -247,20 +247,41 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
+            $("#EditExtension").empty();
+            $("#EditExtension").val(null).trigger("change")
+
             id = $(this).data('id');
             $.ajax({
-                url: "holiday/edit/" + id,
+                url: "notify/edit/" + id,
                 method: 'GET',
                 success: function(res) {
-                    $('#EditName').val(res.data.name);
-                    $('#EditGreeting').val(res.data.holiday_sound).change();
-                    $('#EditThankyou').val(res.data.thankyou_sound).change();
-                    $('#EditSDate').val(res.data.start_datetime_th).change();
-                    $('#EditEDate').val(res.data.end_datetime_th).change();
+
+                    $('#EditName').val(res.data.group_name);
+                    $('#EditExtension').append(res.select_list_exten);
+                    $('#EditLine').val(res.data.line_token);
+                    $('#EditEmail').val(res.data.email);
+                    $('#EditSDate').val(res.data.group_start_th);
+                    $('#EditEDate').val(res.data.group_end_th);
+
                     if (res.data.status == 1) {
                         $('#ecustomCheckbox1').prop('checked', true);
                     } else {
                         $('#ecustomCheckbox1').prop('checked', false);
+                    }
+                    if (res.data.group_sat == 1) {
+                        $('#esat').prop('checked', true);
+                    } else {
+                        $('#esat').prop('checked', false);
+                    }
+                    if (res.data.group_sun == 1) {
+                        $('#esun').prop('checked', true);
+                    } else {
+                        $('#esun').prop('checked', false);
+                    }
+                    if (res.data.misscall == 1) {
+                        $('#emisscall').prop('checked', true);
+                    } else {
+                        $('#emisscall').prop('checked', false);
                     }
 
                     $('#EditModalBody').html(res.html);
@@ -286,15 +307,37 @@
                 esstatus = 0;
             }
 
+            if ($('#esat').is(":checked")) {
+                sat = 1;
+            } else {
+                sat = 0;
+            }
+
+            if ($('#esun').is(":checked")) {
+                sun = 1;
+            } else {
+                sun = 0;
+            }
+
+            if ($('#emisscall').is(":checked")) {
+                misscall = 1;
+            } else {
+                misscall = 0;
+            }
+
             $.ajax({
-                url: "holiday/save/" + id,
+                url: "notify/save/" + id,
                 method: 'PUT',
                 data: {
-                    name: $('#EditName').val(),
-                    start_date: $('#EditSDate').val(),
-                    end_date: $('#EditEDate').val(),
-                    holiday_sound: $('#EditGreeting').val()[0],
-                    thankyou_sound: $('#EditThankyou').val()[0],
+                    group_name: $('#EditName').val(),
+                    group_start: $('#EditSDate').val(),
+                    group_end: $('#EditEDate').val(),
+                    group_extension: $('#EditExtension').val(),
+                    line_token: $('#EditLine').val(),
+                    email: $('#EditEmail').val(),
+                    sat: sat,
+                    sun: sun,
+                    misscall: misscall,
                     status: esstatus,
                 },
 
@@ -317,11 +360,6 @@
                             timeOut: 5000
                         });
                         $('#Listview').DataTable().ajax.reload();
-                        //setTimeout(function() {
-                        //$('.alert-success').hide();
-
-                        //}, 10000);
-
                     }
                 }
             });
@@ -339,7 +377,7 @@
                 //type: "POST",
                 method: 'DELETE',
                 dataType: 'JSON',
-                url: "holiday/destroy/",
+                url: "notify/destroy/",
                 data: {
                     id: rowid,
                     //_method: 'delete',

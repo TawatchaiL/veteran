@@ -4,7 +4,7 @@
         <form id="editdata" class="form" action="" method="POST">
             <div class="modal-content">
                 <div class="modal-header bg-primary">
-                    <h4 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-list-ol"></i> แก้ไข วันหยุดประจำปี
+                    <h4 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-list-ol"></i> แก้ไขกลุ่มการแจ้งเตือน
                     </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -40,7 +40,7 @@
                                     @php
                                         $datethai = date('m/d/') . date('Y') + 543 . ' ' . date('H:i');
                                     @endphp
-                                    {!! Form::text('start_date', $datethai, [
+                                    {!! Form::text('estart_date', $datethai, [
                                         'id' => 'EditSDate',
                                         'placeholder' => '',
                                         'class' => 'datepick form-control',
@@ -55,7 +55,7 @@
                                     @php
                                         $datethai = date('m/d/') . date('Y') + 543 . ' ' . date('H:i');
                                     @endphp
-                                    {!! Form::text('end_date', $datethai, [
+                                    {!! Form::text('eend_date', $datethai, [
                                         'id' => 'EditEDate',
                                         'placeholder' => '',
                                         'class' => 'datepick form-control',
@@ -66,12 +66,12 @@
                         <div class="row">
                             <div class="col-xs-8 col-sm-8 col-md-8">
                                 <div class="form-group">
-                                    <strong><i class="fas fa-list-ol"></i> เสียง ประกาศวันหยุด:</strong>
-                                    <select style="width: 100%;" class="select2 select2_single form-control"
-                                        id="EditGreeting" name="egreeting" multiple="multiple">
+                                    <strong><i class="fas fa-list-ol"></i> Extension:</strong>
+                                    <select style="width: 100%;" class="select2 select2_multiple form-control"
+                                        id="EditExtension" name="eextension" multiple="multiple">
                                         @foreach ($sound as $key2)
-                                        <option value="{{ $key2->number }}">{{ $key2->number }}
-                                        </option>
+                                            <option value="{{ $key2->number }}">{{ $key2->number }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -80,32 +80,62 @@
                         <div class="row">
                             <div class="col-xs-8 col-sm-8 col-md-8">
                                 <div class="form-group">
-                                    <strong><i class="fas fa-list-ol"></i> เสียง ขอบคุณ:</strong>
-                                    <select style="width: 100%;" class="select2 select2_single form-control"
-                                        id="EditThankyou" name="ethankyou" multiple="multiple">
-                                        @foreach ($sound as $key2)
-                                        <option value="{{ $key2->number }}">{{ $key2->number }}
-                                        </option>
-                                        @endforeach
-
-                                    </select>
+                                    <strong><i class="fas fa-list-ol"></i> Line Token:</strong>
+                                    {!! Form::text('eline', null, ['id' => 'EditLine', 'placeholder' => 'Line Token', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-xs-8 col-sm-8 col-md-8">
+                                <div class="form-group">
+                                    <label for="EditEmail"><strong><i class="fas fa-list-ol"></i> Email:</strong></label>
+                                    <input type="eemail" id="EditEmail" name="email" placeholder="Email"
+                                        class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-8 col-sm-8 col-md-8">
+                                <div class="form-group">
+                                    <strong><i class="fas fa-list-ol"></i> แจ้งเตือนวันหยุด:</strong><br>
+                                    <div class="custom-control custom-switch">
+                                        {{ Form::checkbox('esat', '1', false, ['id' => 'esat', 'class' => 'custom-control-input name']) }}
+                                        <label for="esat" class="custom-control-label">
+                                            เสาร์</label>
+                                    </div>
+                                    <div class="custom-control custom-switch">
+                                        {{ Form::checkbox('esun', '1', false, ['id' => 'esun', 'class' => 'custom-control-input name']) }}
+                                        <label for="esun" class="custom-control-label">
+                                            อาทิตย์</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-8 col-sm-8 col-md-8">
+                                <div class="form-group">
+                                    <strong><i class="fas fa-list-ol"></i> ประเภทการแจ้งเตือน:</strong><br>
+                                    <div class="custom-control custom-switch">
+                                        {{ Form::checkbox('emisscall', '1', false, ['id' => 'emisscall', 'class' => 'custom-control-input name']) }}
+                                        <label for="emisscall" class="custom-control-label">
+                                            Misscall</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-xs-8 col-sm-8 col-md-8">
                                 <div class="form-group">
                                     <strong><i class="fas fa-eye"></i> เปิดใช้งาน:</strong>
                                     <br />
                                     <div class="custom-control custom-switch">
-                                        {{ Form::checkbox('status', '1', false, ['id' => 'ecustomCheckbox1', 'class' => 'custom-control-input name']) }}
+                                        {{ Form::checkbox('estatus', '1', false, ['id' => 'ecustomCheckbox1', 'class' => 'custom-control-input name']) }}
                                         <label for="ecustomCheckbox1" class="custom-control-label">
                                             เปิดใช้งาน</label>
                                     </div>
-
                                 </div>
                             </div>
-
                         </div>
 
                         {!! Form::close() !!}
