@@ -180,8 +180,6 @@ class NotifyGroupController extends Controller
             return '<option value="' . $exten->number . '" ' . $selected . '> ' . $exten->number . '</option>';
         })->implode('');
 
-        dd($select_list_exten);
-
         return response()->json([
             'data' => $data,
             'select_list_exten' => $select_list_exten

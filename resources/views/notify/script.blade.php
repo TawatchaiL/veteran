@@ -247,6 +247,7 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
+            $("#EditExtension").empty();
             $("#EditExtension").val(null).trigger("change")
 
             id = $(this).data('id');
