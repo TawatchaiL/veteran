@@ -247,6 +247,8 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
+            $('#EditExtension').html();
+
             id = $(this).data('id');
             $.ajax({
                 url: "notify/edit/" + id,
