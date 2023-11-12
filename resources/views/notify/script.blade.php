@@ -377,7 +377,7 @@
                 //type: "POST",
                 method: 'DELETE',
                 dataType: 'JSON',
-                url: "holiday/destroy/",
+                url: "notify/destroy/",
                 data: {
                     id: rowid,
                     //_method: 'delete',
