@@ -271,7 +271,8 @@ class NotifyGroupController extends Controller
     public function destroy(Request $request)
     {
         $id = $request->get('id');
-        Holidays::find($id)->delete();
+        Notify2Group::where('gid', $id)->delete();
+        NotifyGroup::find($id)->delete();
         return ['success' => true, 'message' => 'ลบ กลุ่มการแจ้งเตือน เรียบร้อยแล้ว'];
     }
 
@@ -281,9 +282,10 @@ class NotifyGroupController extends Controller
         $arr_del  = $request->get('table_records'); //$arr_ans is Array MacAddress
 
         for ($xx = 0; $xx < count($arr_del); $xx++) {
-            Holidays::find($arr_del[$xx])->delete();
+            Notify2Group::where('gid', $arr_del[$xx])->delete();
+            NotifyGroup::find($arr_del[$xx])->delete();
         }
 
-        return redirect('/holiday')->with('success', 'ลบ กลุ่มการแจ้งเตือน เรียบร้อยแล้ว');
+        return redirect('/notify')->with('success', 'ลบ กลุ่มการแจ้งเตือน เรียบร้อยแล้ว');
     }
 }
