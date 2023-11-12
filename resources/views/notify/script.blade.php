@@ -247,7 +247,7 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
-            $('#EditExtension').html();
+            $("#EditExtension").val(null).trigger("change")
 
             id = $(this).data('id');
             $.ajax({
