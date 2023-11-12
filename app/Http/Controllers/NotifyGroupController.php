@@ -171,11 +171,10 @@ class NotifyGroupController extends Controller
     {
         $data = NotifyGroup::find($id);
 
-        // Use eloquent for better readability
+
         $extena = DB::connection('remote_connection')->table('call_center.agent')->orderBy("number", "asc")->get();
         $extens = Notify2Group::where('gid', $data->id)->get();
 
-        // Use map and implode for building the options string
         $select_list_exten = $extena->map(function ($exten) use ($extens) {
             $selected = $extens->contains('extension', $exten->number) ? 'selected' : '';
             return '<option value="' . $exten->number . '" ' . $selected . '> ' . $exten->number . '</option>';
@@ -190,16 +189,101 @@ class NotifyGroupController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, NotifyGroup $missCallAlert)
+    public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'group_name' => 'required|string|max:100',
+            'group_start' => 'required',
+            'group_end' => 'required',
+            'group_extension' => 'required',
+            'line_token' => 'required',
+            'misscall' => 'required',
+            'email' => 'nullable|email',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, [
+            'group_name.required' => 'ชื่อกลุ่มต้องไม่เป็นค่าว่าง!',
+            'group_extension.required' => 'กรุณาระบุ หมายเลข Agent!',
+            'line_token.required' => 'กรุณาระบุ Line Token!',
+            'misscall.required' => 'กรุณาระบุ Misscall!',
+            'group_start.required' => 'กรุณาระบุวันเริ่มต้น!',
+            'group_end.required' => 'กรุณาระบุวันสิ้นสุด!',
+            'email' => 'กรุณาระบุ Email  ให้ถูกต้อง',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all()]);
+        }
+
+        $start_array = explode(" ", $request->get('group_start'));
+        $sgregorianYear = intval(substr($start_array[0], 6)) - 543;
+        $sgregorianDate = $sgregorianYear . substr($start_array[0], 2, 3) . "/" . substr($start_array[0], 0, 2);
+        $start_date_convert = Carbon::createFromFormat('Y/m/d', $sgregorianDate, 'Asia/Bangkok');
+        $startutcDate = $start_date_convert->setTimezone('UTC');
+        $startutcFormattedDate = $startutcDate->format('Y-m-d');
+
+
+        $end_array = explode(" ", $request->get('group_end'));
+        $egregorianYear = intval(substr($end_array[0], 6)) - 543;
+        $egregorianDate = $egregorianYear . substr($end_array[0], 2, 3) . "/" . substr($end_array[0], 0, 2);
+        $end_date_convert = Carbon::createFromFormat('Y/m/d', $egregorianDate, 'Asia/Bangkok');
+        $endutcDate = $end_date_convert->setTimezone('UTC');
+        $endutcFormattedDate = $endutcDate->format('Y-m-d');
+
+        $groupExtensionCount = count($request->get('group_extension'));
+
+        $notify = [
+            'group_name' => $request->get('group_name'),
+            'line_token' => $request->get('line_token'),
+            'email' => $request->get('email'),
+            'group_extension' => $groupExtensionCount,
+            'group_start' =>  $startutcFormattedDate . " " . $start_array[1] . ":00",
+            'group_end' => $endutcFormattedDate . " " . $end_array[1] . ":00",
+            'group_start_th' =>  $request->get('group_start'),
+            'group_end_th' => $request->get('group_end'),
+            'group_sat' => $request->get('sat'),
+            'group_sun' => $request->get('sun'),
+            'misscall' => $request->get('misscall'),
+            'status' => $request->get('status'),
+        ];
+
+
+        $update = NotifyGroup::find($id);
+        $update->update($notify);
+
+        Notify2Group::where('gid', $id)->delete();
+
+        foreach ($request->get('group_extension') as $ea) {
+            $extenData[] = [
+                'gid' => $id,
+                'extension' => $ea,
+            ];
+        }
+
+        Notify2Group::insert($extenData);
+
+        return response()->json(['success' => 'แก้ไข กลุ่มการแจ้งเตือน เรียบร้อยแล้ว']);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(NotifyGroup $missCallAlert)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request->get('id');
+        Holidays::find($id)->delete();
+        return ['success' => true, 'message' => 'ลบ กลุ่มการแจ้งเตือน เรียบร้อยแล้ว'];
+    }
+
+    public function destroy_all(Request $request)
+    {
+
+        $arr_del  = $request->get('table_records'); //$arr_ans is Array MacAddress
+
+        for ($xx = 0; $xx < count($arr_del); $xx++) {
+            Holidays::find($arr_del[$xx])->delete();
+        }
+
+        return redirect('/holiday')->with('success', 'ลบ กลุ่มการแจ้งเตือน เรียบร้อยแล้ว');
     }
 }

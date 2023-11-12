@@ -252,12 +252,14 @@
                 url: "notify/edit/" + id,
                 method: 'GET',
                 success: function(res) {
+
                     $('#EditName').val(res.data.group_name);
                     $('#EditExtension').append(res.select_list_exten);
                     $('#EditLine').val(res.data.line_token);
                     $('#EditEmail').val(res.data.email);
                     $('#EditSDate').val(res.data.group_start_th);
                     $('#EditEDate').val(res.data.group_end_th);
+
                     if (res.data.status == 1) {
                         $('#ecustomCheckbox1').prop('checked', true);
                     } else {
@@ -302,15 +304,37 @@
                 esstatus = 0;
             }
 
+            if ($('#esat').is(":checked")) {
+                sat = 1;
+            } else {
+                sat = 0;
+            }
+
+            if ($('#esun').is(":checked")) {
+                sun = 1;
+            } else {
+                sun = 0;
+            }
+
+            if ($('#emisscall').is(":checked")) {
+                misscall = 1;
+            } else {
+                misscall = 0;
+            }
+
             $.ajax({
-                url: "holiday/save/" + id,
+                url: "notify/save/" + id,
                 method: 'PUT',
                 data: {
-                    name: $('#EditName').val(),
-                    start_date: $('#EditSDate').val(),
-                    end_date: $('#EditEDate').val(),
-                    holiday_sound: $('#EditGreeting').val()[0],
-                    thankyou_sound: $('#EditThankyou').val()[0],
+                    group_name: $('#EditName').val(),
+                    group_start: $('#EditSDate').val(),
+                    group_end: $('#EditEDate').val(),
+                    group_extension: $('#EditExtension').val(),
+                    line_token: $('#EditLine').val(),
+                    email: $('#EditEmail').val(),
+                    sat: sat,
+                    sun: sun,
+                    misscall: misscall,
                     status: esstatus,
                 },
 
@@ -333,11 +357,6 @@
                             timeOut: 5000
                         });
                         $('#Listview').DataTable().ajax.reload();
-                        //setTimeout(function() {
-                        //$('.alert-success').hide();
-
-                        //}, 10000);
-
                     }
                 }
             });
