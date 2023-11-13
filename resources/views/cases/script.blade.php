@@ -285,7 +285,7 @@
         $.datepicker.setDefaults($.datepicker.regional['th']);
         $(".AddDate").datepicker({
             dateFormat: "yy-mm-dd",
-	    defaultDate: '2023/11/13',
+	    defaultDate: '2023-11-13',
             isBuddhist: true,
             changeMonth: true,
             changeYear:true,
