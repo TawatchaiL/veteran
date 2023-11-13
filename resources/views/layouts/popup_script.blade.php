@@ -109,9 +109,9 @@
                                     $('#tnamep' + cardId).val(res.datax.datac.tname);
                                     $('#fnamep' + cardId).val(res.datax.datac.fname);
                                     $('#lnamep' + cardId).val(res.datax.datac.lname);
-                                    $('#sexp').val(res.datax.datac.sex);
-                                    $('#birthdayp').val(res.datax.datac.birthday);
-                                    $('#agep').val(res.datax.datac.age);
+                                    $('#sexp' + cardId).val(res.datax.datac.sex);
+                                    $('#birthdayp' + cardId).val(res.datax.datac.birthday);
+                                    $('#agep' + cardId).val(res.datax.datac.age);
                                     $('#bloodgroupp' + cardId).val(res.datax.datac.bloodgroup);
                                     $('#homenop' + cardId).val(res.datax.datac.homeno);
                                     $('#moop' + cardId).val(res.datax.datac.moo);
@@ -534,9 +534,9 @@
                                 $('#tnamep' + cardId).val(res.datax.datac.tname);
                                 $('#fnamep' + cardId).val(res.datax.datac.fname);
                                 $('#lnamep' + cardId).val(res.datax.datac.lname);
-                                $('#sexp').val(res.datax.datac.sex);
-                                $('#birthdayp').val(res.datax.datac.birthday);
-                                $('#agep').val(res.datax.datac.age);
+                                $('#sexp' + cardId).val(res.datax.datac.sex);
+                                $('#birthdayp' + cardId).val(res.datax.datac.birthday);
+                                $('#agep' + cardId).val(res.datax.datac.age);
                                 $('#bloodgroupp' + cardId).val(res.datax.datac.bloodgroup);
                                 $('#homenop' + cardId).val(res.datax.datac.homeno);
                                 $('#moop' + cardId).val(res.datax.datac.moo);
