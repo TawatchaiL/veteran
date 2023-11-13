@@ -282,7 +282,7 @@
         daterange();
 
 
-        $.datepicker.setDefaults($.datepicker.regional['en']);
+        $.datepicker.setDefaults($.datepicker.regional['th']);
         $(".AddDate").datepicker({
             /*  onSelect: function() {
                  table.draw();
