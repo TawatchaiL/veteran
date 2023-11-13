@@ -294,8 +294,8 @@
             monthNamesShort: [ "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม" ],
             beforeShow:function(){
 			if($(this).val()!=""){
-				var arrayDate=$(this).val().split("-");		
-				arrayDate[0]=parseInt(arrayDate[0])-543;
+				var arrayDate=$(this).val().split("/");		
+				arrayDate[2]=parseInt(arrayDate[2])-543;
 				$(this).val(arrayDate[2]+"-"+arrayDate[1]+"-"+arrayDate[0]);
 			}
 			setTimeout(function(){
@@ -316,16 +316,16 @@
 		},
 		onClose:function(){
 			if($(this).val()!="" && $(this).val()==dateBefore){			
-				var arrayDate=dateBefore.split("-");
-				arrayDate[0]=parseInt(arrayDate[0])+543;
-				$(this).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);	
+				var arrayDate=dateBefore.split("/");
+				arrayDate[2]=parseInt(arrayDate[2])+543;
+				$(this).val(arrayDate[2]+"-"+arrayDate[1]+"-"+arrayDate[0]);	
 			}		
 		},
 		onSelect: function(dateText, inst){ 
 			dateBefore=$(this).val();
-			var arrayDate=dateText.split("-");
-			arrayDate[0]=parseInt(arrayDate[0])+543;
-			$(this).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
+			var arrayDate=dateText.split("/");
+			arrayDate[2]=parseInt(arrayDate[2])+543;
+			$(this).val(arrayDate[2]+"-"+arrayDate[1]+"-"+arrayDate[0]);
 		}    
         });
         //$(".AddDate").datepicker({
