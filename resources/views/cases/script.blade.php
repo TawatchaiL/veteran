@@ -292,7 +292,7 @@
             beforeShow: function (input, inst) {
                 var currentDate = $(this).datepicker("getDate");
                 if (currentDate) {
-                    $(this).datepicker("setDate", new Date(currentDate.getFullYear() + 543, currentDate.getMonth(), currentDate.getDate()));
+                    $(this).datepicker("setDate", new Date(currentDate.getFullYear() - 543, currentDate.getMonth(), currentDate.getDate()));
                 }
             },
             onClose: function (dateText, inst) {
