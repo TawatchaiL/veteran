@@ -285,7 +285,7 @@
         $.datepicker.setDefaults($.datepicker.regional['th']);
         $(".AddDate").datepicker({
             dateFormat: 'yy-mm-dd',
-	        defaultDate: '13/11/2023',
+	        //defaultDate: '13/11/2023',
             isBuddhist: true,
             changeMonth: true,
             changeYear:true,
@@ -296,7 +296,7 @@
 			if($(this).val()!=""){
 				var arrayDate=$(this).val().split("/");		
 				arrayDate[2]=parseInt(arrayDate[2])-543;
-				$(this).val(arrayDate[0]+"/"+arrayDate[1]+"/"+arrayDate[2]);
+				$(this).val(arrayDate[2]+"-"+arrayDate[1]+"-"+arrayDate[0]);
 			}
 			setTimeout(function(){
 				$.each($(".ui-datepicker-year option"),function(j,k){
@@ -318,14 +318,14 @@
 			if($(this).val()!="" && $(this).val()==dateBefore){			
 				var arrayDate=dateBefore.split("/");
 				arrayDate[2]=parseInt(arrayDate[2])+543;
-				$(this).val(arrayDate[0]+"/"+arrayDate[1]+"/"+arrayDate[2]);	
+				$(this).val(arrayDate[2]+"-"+arrayDate[1]+"-"+arrayDate[0]);	
 			}		
 		},
 		onSelect: function(dateText, inst){ 
 			dateBefore=$(this).val();
 			var arrayDate=dateText.split("/");
 			arrayDate[2]=parseInt(arrayDate[2])+543;
-			$(this).val(arrayDate[0]+"/"+arrayDate[1]+"/"+arrayDate[2]);
+			$(this).val(arrayDate[2]+"-"+arrayDate[1]+"-"+arrayDate[0]);
 		}    
         });
         //$(".AddDate").datepicker({
