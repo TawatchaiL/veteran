@@ -284,6 +284,7 @@
 
         $.datepicker.setDefaults($.datepicker.regional['th']);
         $(".AddDate").datepicker({
+            isBuddhist: true,
             dateFormat: 'yy-mm-dd',
             changeMonth: true,
             changeYear: true,
