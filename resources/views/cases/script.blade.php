@@ -287,7 +287,7 @@
             dateFormat: 'yy-mm-dd',
             changeMonth: true,
             changeYear: true,
-            yearRange: '1937:2093',
+            yearRange: '2480:2593',
             yearSuffix: " พ.ศ.",
             beforeShow: function (input, inst) {
                 var currentDate = $(this).datepicker("getDate");
