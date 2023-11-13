@@ -298,7 +298,7 @@
             onClose: function (dateText, inst) {
                 var selectedDate = $(this).datepicker("getDate");
                 if (selectedDate) {
-                    $(this).datepicker("setDate", new Date(selectedDate.getFullYear() - 543, selectedDate.getMonth(), selectedDate.getDate()));
+                    $(this).datepicker("setDate", new Date(selectedDate.getFullYear() + 543, selectedDate.getMonth(), selectedDate.getDate()));
                 }
             },
         });
