@@ -284,14 +284,35 @@
 
         $.datepicker.setDefaults($.datepicker.regional['th']);
         $(".AddDate").datepicker({
-            /*  onSelect: function() {
-                 table.draw();
-             }, */
             dateFormat: 'yy-mm-dd',
             changeMonth: true,
             changeYear: true,
-            yearRange: '1980:2050',
+            yearRange: '1937:2093', // Adjusted for the Buddhist era (Gregorian years 1937 + 543 = 2480 to 2093 + 543 = 2550)
+            yearSuffix: " พ.ศ.", // This adds the Thai text for the Buddhist era
+            beforeShow: function (input, inst) {
+                // Adjust date for Buddhist era when the datepicker is shown
+                var currentDate = $(this).datepicker("getDate");
+                if (currentDate) {
+                    $(this).datepicker("setDate", new Date(currentDate.getFullYear() + 543, currentDate.getMonth(), currentDate.getDate()));
+                }
+            },
+            onClose: function (dateText, inst) {
+                // Adjust date back to Gregorian when the datepicker is closed
+                var selectedDate = $(this).datepicker("getDate");
+                if (selectedDate) {
+                    $(this).datepicker("setDate", new Date(selectedDate.getFullYear() - 543, selectedDate.getMonth(), selectedDate.getDate()));
+                }
+            },
         });
+        //$(".AddDate").datepicker({
+            /*  onSelect: function() {
+                 table.draw();
+             }, */
+        //    dateFormat: 'yy-mm-dd',
+        //    changeMonth: true,
+        //    changeYear: true,
+        //    yearRange: '1980:2050',
+        //});
         var table = $('#Listview').DataTable({
             ajax: {
                 data: function(d) {
