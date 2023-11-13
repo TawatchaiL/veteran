@@ -145,19 +145,20 @@ class LoginController extends Controller
                     ->where('id', '!=', $user->agent_id)
                     ->where('number', '=', $request->phone)
                     ->count(); */
-                $inuseCount = User::where('id', '!=', $user->id)
+                /* $inuseCount = User::where('id', '!=', $user->id)
                     ->where('phone', '=', $request->phone)
                     ->count();
 
                 if ($inuseCount > 0) {
-                    //$this->logoff_to_login_phone_error('หมายเลขโทรศัพท์ถูกใช้งานแล้ว');
                     auth()->logout();
                     return redirect()->route('login')
                         ->with('login_error', 'หมายเลขโทรศัพท์ถูกใช้งานแล้ว')
                         ->withErrors(['email' => 'หมายเลขโทรศัพท์ถูกใช้งานแล้ว']);
                 } else {
                     $user->agent_id = $issable->id;
-                }
+                } */
+
+                $user->agent_id = $issable->id;
 
 
                 $not_logout = DB::connection('remote_connection')
