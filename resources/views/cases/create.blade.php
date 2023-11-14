@@ -105,6 +105,7 @@
                                                         'class' => 'AddDate form-control',
                                                         'data-target' => '#reservationdate',
                                                     ]) !!}
+                                                    <div id="tempAddadddate" hidden="hidden">asf</div>
                                                 </div>
                                             </div>
                                         </div>

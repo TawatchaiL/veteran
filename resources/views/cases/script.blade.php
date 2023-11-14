@@ -557,6 +557,7 @@
             if(actions == 'edit'){
                 if (!confirm("ยืนยันการทำรายการ ?")) return;
             }
+            
             e.preventDefault();
             $('.alert-danger').html('');
             $('.alert-danger').hide();
