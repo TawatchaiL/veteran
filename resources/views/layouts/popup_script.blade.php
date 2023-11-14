@@ -764,6 +764,7 @@
                                         value +
                                         '</li></strong>');
                             });
+                            $('#ToolbarModal').scrollTop(0);
                             window.addEventListener('keydown', (e) => {
                                 console.log(e)
                             })
