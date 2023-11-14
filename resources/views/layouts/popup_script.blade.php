@@ -765,7 +765,18 @@
                                         '</li></strong>');
                                         
                             });
-                            $('#hnp' + cardId).focus();
+                            var targetDiv = $("#custom-tabs-one-tabContentp");
+
+// Check if the target div exists
+if (targetDiv.length) {
+    // Calculate the target position
+    var targetPosition = targetDiv.offset().top;
+
+    // Animate the scroll to the target position
+    $("html, body").animate({
+        scrollTop: targetPosition
+    }, 1000); // You can adjust the duration (in milliseconds) as needed
+}
                             //$('#toolbar_header').scrollTop(0);
                             //$('#ToolbarModal').scrollTop(0);modal-content
                             //window.addEventListener('keydown', (e) => {
