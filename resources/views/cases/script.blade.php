@@ -566,10 +566,15 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
+            var arrayDate=adddate.split("-");
+				    arrayDate[0]=parseInt(arrayDate[0])+543;
+            var tempadddate = arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2];
+
             var additionalData = {
                 contact_id: $('#Addid').val(),
+                adddate: tempadddate,
                 //adddate: $('#Addadddate').val(),
-                adddate: $('#tempAddadddate').html(),
+                //adddate: $('#tempAddadddate').html(),
                 casetype1: $('#casetype1 option:selected').text(),
                 caseid1: $('#casetype1').val(),
                 casedetail: $('#Detail').val(),
@@ -686,8 +691,12 @@
                     console.log(res);
                     $('#Hn').val(res.data.hn);
                     $('#Name').val(res.data.name);
-                    $('#Addadddate').val(res.data.adddate);
-                    $('#tempAddadddate').html(res.data.adddate);
+                    $('#temp'+$(this).attr('id')).html(dateBefore);
+                    //date+543
+                    var arrayDate=adddate.split("-");
+				    arrayDate[0]=parseInt(arrayDate[0])+543;
+                    $('#Addadddate').val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
+                    //$('#tempAddadddate').html(res.data.adddate);
                     $('#Detail').val(res.data.casedetail);
                     $('#tranferstatus').val(res.data.tranferstatus);
                     $('#casestatus').val(res.data.casestatus);
