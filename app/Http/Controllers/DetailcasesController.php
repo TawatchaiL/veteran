@@ -49,7 +49,8 @@ class DetailcasesController extends Controller
         }
 
         $datas = DB::table('crm_cases')
-        ->select(DB::raw('DATE(created_at) as cdate'), DB::raw('TIME(created_at) as ctime'),'telno','casetype1', 'casedetail', 'casestatus', 'tranferstatus', 'agent' )
+        ->select(DB::raw('DATE(created_at) as cdate'), DB::raw('TIME(created_at) as ctime'),'telno','casetype1', 'casedetail', 'casestatus', 'tranferstatus', 'users.name as agent' )
+        ->join('users', 'crm_cases.agent', '=', 'users.id')
         ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
         ->get();
 
