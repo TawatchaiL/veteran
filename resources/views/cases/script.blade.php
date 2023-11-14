@@ -289,7 +289,7 @@
             isBuddhist: true,
             changeMonth: true,
             changeYear:true,
-	        yearRange:'1950:2050',
+	        yearRange:'1940:2057',
             dayNamesMin: [ "อา", "จ", "อ", "พ", "พฤ", "ศ", "ส" ],
             monthNamesShort: [ "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม" ],
             beforeShow:function(){
