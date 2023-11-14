@@ -280,7 +280,7 @@ class CasesController extends Controller
         }
 
         $input = $request->all();
-        $input = array_merge($input, ['agent' => $user->phone]);
+        $input = array_merge($input, ['agent' => $user->id]);
         $contract = CrmCaseComment::create($input);
 
         //$case_id = $request->input('case_id');
