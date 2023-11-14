@@ -42,11 +42,13 @@ class PermissionTableSeeder extends Seeder
             'billing-list',
             'billing-create',
             'billing-edit',
-            'billing-delete',*/
+            'billing-delete',
             'notify-list',
             'notify-create',
             'notify-edit',
-            'notify-delete',
+            'notify-delete',*/
+            'customize-list',
+            'customize-edit',
             /* 'role-list',
             'role-create',
             'role-edit',
