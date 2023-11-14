@@ -765,7 +765,7 @@
                                         '</li></strong>');
                                         
                             });
-                            
+                            $('#hnp' + cardId).focus();
                             //$('#toolbar_header').scrollTop(0);
                             //$('#ToolbarModal').scrollTop(0);modal-content
                             //window.addEventListener('keydown', (e) => {
