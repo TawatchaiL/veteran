@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 
 class CustomizeFeatureController extends Controller
 {
-      /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -71,38 +71,17 @@ class CustomizeFeatureController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-        $start_array = explode(" ", $request->get('start_date'));
-        // Manually adjust the year from Buddhist to Gregorian calendar
-        $sgregorianYear = intval(substr($start_array[0], 6)) - 543;
-        $sgregorianDate = $sgregorianYear . substr($start_array[0], 2, 3) . "/" . substr($start_array[0], 0, 2);
-        $start_date_convert = Carbon::createFromFormat('Y/m/d', $sgregorianDate, 'Asia/Bangkok');
-        $startutcDate = $start_date_convert->setTimezone('UTC');
-        $startutcFormattedDate = $startutcDate->format('Y-m-d');
 
-
-        $end_array = explode(" ", $request->get('end_date'));
-        $egregorianYear = intval(substr($end_array[0], 6)) - 543;
-        $egregorianDate = $egregorianYear . substr($end_array[0], 2, 3) . "/" . substr($end_array[0], 0, 2);
-        $end_date_convert = Carbon::createFromFormat('Y/m/d', $egregorianDate, 'Asia/Bangkok');
-        $endutcDate = $end_date_convert->setTimezone('UTC');
-        $endutcFormattedDate = $endutcDate->format('Y-m-d');
-
-        $holiday = [
+        $config = [
             'name' => $request->get('name'),
-            'holiday_sound' => $request->get('holiday_sound'),
-            'thankyou_sound' => $request->get('thankyou_sound'),
-            'start_datetime' =>  $startutcFormattedDate . " " . $start_array[1] . ":00",
-            'end_datetime' => $endutcFormattedDate . " " . $end_array[1] . ":00",
-            'start_datetime_th' =>  $request->get('start_date'),
-            'end_datetime_th' => $request->get('end_date'),
+            'value' => $request->get('value'),
             'status' => $request->get('status'),
         ];
 
 
-        $update = Holidays::find($id);
-        $update->update($holiday);
+        $update = CustomizeFeature::find($id);
+        $update->update($config);
 
-        return response()->json(['success' => 'แก้ไข วันหยุดประจำปี เรียบร้อยแล้ว']);
+        return response()->json(['success' => 'แก้ไขค่า Customize เรียบร้อยแล้ว']);
     }
 }

@@ -4,7 +4,8 @@
         <form id="editdata" class="form" action="" method="POST">
             <div class="modal-content">
                 <div class="modal-header bg-primary">
-                    <h4 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-list-ol"></i> แก้ไข ค่า Customize
+                    <h4 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-list-ol"></i> แก้ไข ค่า
+                        Customize
                     </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -29,7 +30,12 @@
                             <div class="col-xs-8 col-sm-8 col-md-8">
                                 <div class="form-group">
                                     <strong><i class="fas fa-list-ol"></i> Customize Name:</strong>
-                                    {!! Form::text('ename', null, ['id' => 'EditName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
+                                    {!! Form::text('ename', null, [
+                                        'id' => 'EditName',
+                                        'placeholder' => 'Name',
+                                        'class' => 'form-control',
+                                        'readonly' => true,
+                                    ]) !!}
                                 </div>
                             </div>
                         </div>
@@ -62,8 +68,8 @@
                 </div>
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" id="SubmitEditForm"><i
-                            class="fas fa-download"></i> บันทึกข้อมูล</button>
+                    <button type="button" class="btn btn-success" id="SubmitEditForm"><i class="fas fa-download"></i>
+                        บันทึกข้อมูล</button>
                     <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i
                             class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
                 </div>
