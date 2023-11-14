@@ -282,16 +282,61 @@
         daterange();
 
 
-        $.datepicker.setDefaults($.datepicker.regional['en']);
+        $.datepicker.setDefaults($.datepicker.regional['th']);
         $(".AddDate").datepicker({
+            dateFormat: "dd/mm/yy",
+	    defaultDate: '13/11/2023',
+            isBuddhist: true,
+            changeMonth: true,
+            changeYear:true,
+	    yearRange:'c-60:c+1',
+            dayNamesMin: [ "อา", "จ", "อ", "พ", "พฤ", "ศ", "ส" ],//กำหนดชื่อย่อของวัน เป็น ภาษาไทย
+            monthNamesShort: [ "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม" ],
+            beforeShow:function(){
+			if($(this).val()!=""){
+				var arrayDate=$(this).val().split("/");		
+				arrayDate[2]=parseInt(arrayDate[2])-543;
+				$(this).val(arrayDate[0]+"/"+arrayDate[1]+"/"+arrayDate[2]);
+			}
+			setTimeout(function(){
+				$.each($(".ui-datepicker-year option"),function(j,k){
+					var textYear=parseInt($(".ui-datepicker-year option").eq(j).val())+543;
+					$(".ui-datepicker-year option").eq(j).text(textYear);
+				});				
+			},50);
+
+		},
+		onChangeMonthYear: function(){
+			setTimeout(function(){
+				$.each($(".ui-datepicker-year option"),function(j,k){
+					var textYear=parseInt($(".ui-datepicker-year option").eq(j).val())+543;
+					$(".ui-datepicker-year option").eq(j).text(textYear);
+				});				
+			},50);		
+		},
+		onClose:function(){
+			if($(this).val()!="" && $(this).val()==dateBefore){			
+				var arrayDate=dateBefore.split("/");
+				arrayDate[2]=parseInt(arrayDate[2])+543;
+				$(this).val(arrayDate[0]+"/"+arrayDate[1]+"/"+arrayDate[2]);	
+			}		
+		},
+		onSelect: function(dateText, inst){ 
+			dateBefore=$(this).val();
+			var arrayDate=dateText.split("/");
+			arrayDate[2]=parseInt(arrayDate[2])+543;
+			$(this).val(arrayDate[0]+"/"+arrayDate[1]+"/"+arrayDate[2]);
+		}       
+        });
+        //$(".AddDate").datepicker({
             /*  onSelect: function() {
                  table.draw();
              }, */
-            dateFormat: 'yy-mm-dd',
-            changeMonth: true,
-            changeYear: true,
-            yearRange: '1980:2050',
-        });
+        //    dateFormat: 'yy-mm-dd',
+        //    changeMonth: true,
+        //    changeYear: true,
+        //    yearRange: '1980:2050',
+        //});
         var table = $('#Listview').DataTable({
             ajax: {
                 data: function(d) {
