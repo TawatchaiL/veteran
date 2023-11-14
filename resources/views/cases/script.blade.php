@@ -318,14 +318,14 @@
 		onClose:function(){
 			if($(this).val()!="" && $(this).val()==dateBefore){			
 				var arrayDate=dateBefore.split("-");
-                $('#temp'+$(this).attr('id')).html(dateBefore);
+                //$('#temp'+$(this).attr('id')).html(dateBefore);
 				arrayDate[0]=parseInt(arrayDate[0])+543;
 				$(this).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);	
 			}		
 		},
 		onSelect: function(dateText, inst){ 
 			dateBefore=$(this).val();
-            $('#temp'+$(this).attr('id')).html(dateBefore);
+            //$('#temp'+$(this).attr('id')).html(dateBefore);
 			var arrayDate=dateText.split("-");
 			arrayDate[0]=parseInt(arrayDate[0])+543;
 			$(this).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
