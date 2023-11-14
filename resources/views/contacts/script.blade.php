@@ -440,6 +440,7 @@
                             $('.alert-danger').append('<strong><li>' + value +
                                 '</li></strong>');
                         });
+                        $('#CreateModal').scrollTop(0);
                     } else {
                         $('.alert-danger').hide();
                         $('.alert-success').show();
@@ -617,6 +618,7 @@
                             $('.alert-danger').append('<strong><li>' + value +
                                 '</li></strong>');
                         });
+                        $('#EditModal').scrollTop(0);
                     } else {
                         $('.alert-danger').hide();
                         $('.alert-success').show();
