@@ -82,5 +82,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/notify/save/{id}', [App\Http\Controllers\NotifyGroupController::class, 'update'])->name('notify.save');
     Route::delete('/notify/destroy', [App\Http\Controllers\NotifyGroupController::class, 'destroy'])->name('notify.destroy');
     Route::post('/notify/destroy_all', [App\Http\Controllers\NotifyGroupController::class, 'destroy_all'])->name('notify.destroy_all');
+
+    Route::get('/customize', [App\Http\Controllers\CustomizeFeatureController::class, 'index'])->name('customize');
+    Route::get('/customize/edit/{id}', [App\Http\Controllers\CustomizeFeatureController::class, 'edit'])->name('customize.edit');
+    Route::put('/customize/save/{id}', [App\Http\Controllers\CustomizeFeatureController::class, 'update'])->name('customize.save');
 });
 
