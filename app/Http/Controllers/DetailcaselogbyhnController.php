@@ -56,8 +56,9 @@ class DetailcaselogbyhnController extends Controller
             $agentseachl = '';
         }
         $datac = DB::table('crm_case_comments')
-        ->select('crm_cases.agent as cagent','crm_cases.id as cid','crm_cases.contact_id as contact_id', DB::raw('CONCAT("comment") as caction'), 'crm_case_comments.agent as magent', 'crm_case_comments.created_at as mdate')
+        ->select('crm_cases.agent as cagent','crm_cases.id as cid','crm_cases.contact_id as contact_id', DB::raw('CONCAT("comment") as caction'), 'users.name as magent', 'crm_case_comments.created_at as mdate')
         ->join('crm_cases', 'crm_case_comments.case_id', '=', 'crm_cases.id')
+        ->join('users', 'crm_case_comments.agent', '=', 'users.id')
         ->whereRaw('crm_case_comments.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"'.$agentseachc)
         ->toSql();
 
@@ -66,8 +67,9 @@ class DetailcaselogbyhnController extends Controller
         ->select('cagent', 'cid', 'crm_contacts.hn','caction', 'magent', 'mdate');
 
         $datas = DB::table('crm_caseslogs')
-        ->select('crm_caseslogs.agent as cagent','crm_caseslogs.id as cid','crm_contacts.hn as chn', 'crm_caseslogs.modifyaction as caction', 'crm_caseslogs.modifyagent as magent', 'crm_caseslogs.modifydate as mdate')
+        ->select('crm_caseslogs.agent as cagent','crm_caseslogs.id as cid','crm_contacts.hn as chn', 'crm_caseslogs.modifyaction as caction', 'users.name as magent', 'crm_caseslogs.modifydate as mdate')
         ->join('crm_contacts', 'crm_caseslogs.contact_id', '=', 'crm_contacts.id')
+        ->join('users', 'crm_caseslogs.modifyagent', '=', 'users.id')
         ->whereRaw('crm_caseslogs.modifydate between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"'.$agentseachl)
         ->union($getData)
         ->get();
