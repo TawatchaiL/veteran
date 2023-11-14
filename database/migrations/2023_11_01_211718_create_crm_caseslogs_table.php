@@ -38,7 +38,7 @@ return new class extends Migration
             $table->dateTime('created_at');
             $table->dateTime('updated_at');
             $table->string('modifyaction',10)->nullable();
-            $table->string('modifyagent',10)->nullable();
+            $table->integer('modifyagent')->default(0);
             $table->timestamp('modifydate')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }

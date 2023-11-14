@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('case_id')->nullable();
             $table->string('comment')->nullable();
-            $table->string('agent', 10)->nullable();
+            $table->integer('agent')->default(0);
             $table->timestamps();
         });
     }
