@@ -284,13 +284,13 @@
 
         $.datepicker.setDefaults($.datepicker.regional['th']);
         $(".AddDate").datepicker({
-            dateFormat: "dd/mm/yy",
-	    defaultDate: '13/11/2023',
+            dateFormat: "yy-mm-dd",
+	        defaultDate: '2023-11-14',
             isBuddhist: true,
             changeMonth: true,
             changeYear:true,
-	    yearRange:'c-60:c+1',
-            dayNamesMin: [ "อา", "จ", "อ", "พ", "พฤ", "ศ", "ส" ],//กำหนดชื่อย่อของวัน เป็น ภาษาไทย
+	        yearRange:'c-60:c+1',
+            dayNamesMin: [ "อา", "จ", "อ", "พ", "พฤ", "ศ", "ส" ],
             monthNamesShort: [ "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม" ],
             beforeShow:function(){
 			if($(this).val()!=""){
