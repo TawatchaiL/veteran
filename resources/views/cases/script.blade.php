@@ -568,7 +568,8 @@
 
             var additionalData = {
                 contact_id: $('#Addid').val(),
-                adddate: $('#Addadddate').val(),
+                //adddate: $('#Addadddate').val(),
+                adddate: $('#tempAddadddate').val(),
                 casetype1: $('#casetype1 option:selected').text(),
                 caseid1: $('#casetype1').val(),
                 casedetail: $('#Detail').val(),
@@ -686,6 +687,7 @@
                     $('#Hn').val(res.data.hn);
                     $('#Name').val(res.data.name);
                     $('#Addadddate').val(res.data.adddate);
+                    $('#tempAddadddate').val(res.data.adddate);
                     $('#Detail').val(res.data.casedetail);
                     $('#tranferstatus').val(res.data.tranferstatus);
                     $('#casestatus').val(res.data.casestatus);
