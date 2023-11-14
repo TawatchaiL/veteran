@@ -569,7 +569,7 @@
             var additionalData = {
                 contact_id: $('#Addid').val(),
                 //adddate: $('#Addadddate').val(),
-                adddate: $('#tempAddadddate').val(),
+                adddate: $('#tempAddadddate').text(),
                 casetype1: $('#casetype1 option:selected').text(),
                 caseid1: $('#casetype1').val(),
                 casedetail: $('#Detail').val(),
