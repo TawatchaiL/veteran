@@ -318,12 +318,14 @@
 		onClose:function(){
 			if($(this).val()!="" && $(this).val()==dateBefore){			
 				var arrayDate=dateBefore.split("-");
+                $('#temp'+$(this).attr('id')).val(dateBefore);
 				arrayDate[0]=parseInt(arrayDate[0])+543;
 				$(this).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);	
 			}		
 		},
 		onSelect: function(dateText, inst){ 
 			dateBefore=$(this).val();
+            $('#temp'+$(this).attr('id')).val(dateBefore);
 			var arrayDate=dateText.split("-");
 			arrayDate[0]=parseInt(arrayDate[0])+543;
 			$(this).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
@@ -557,7 +559,7 @@
             if(actions == 'edit'){
                 if (!confirm("ยืนยันการทำรายการ ?")) return;
             }
-            
+
             e.preventDefault();
             $('.alert-danger').html('');
             $('.alert-danger').hide();
