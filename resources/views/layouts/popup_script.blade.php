@@ -766,8 +766,9 @@
                                         
                             });
                             
-                            $('#toolbar_header').scrollTop(0);
-                            $('#ToolbarModal').scrollTop(0);
+                            //$('#toolbar_header').scrollTop(0);
+                            //$('#ToolbarModal').scrollTop(0);modal-content
+                            $('#modal-content').scrollTop(0);
                             //window.addEventListener('keydown', (e) => {
                             //    console.log(e)
                             //})
