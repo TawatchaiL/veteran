@@ -325,7 +325,7 @@
 		},
 		onSelect: function(dateText, inst){ 
 			dateBefore=$(this).val();
-            alert(dateBefore);
+            alert($(this).attr('id'));
             $('#temp'+$(this).attr('id')).val(dateBefore);
 			var arrayDate=dateText.split("-");
 			arrayDate[0]=parseInt(arrayDate[0])+543;
