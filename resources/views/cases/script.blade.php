@@ -557,6 +557,7 @@
             if(actions == 'edit'){
                 if (!confirm("ยืนยันการทำรายการ ?")) return;
             }
+            alert($( "Addadddate" )datepicker("getDate"));
             e.preventDefault();
             $('.alert-danger').html('');
             $('.alert-danger').hide();
