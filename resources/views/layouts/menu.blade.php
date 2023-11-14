@@ -445,6 +445,7 @@
             'holiday',
             'billing',
             'notify',
+            'customize',
             // Add more route names here if needed
         ])
             ? 'menu-open'
@@ -455,6 +456,7 @@
                 'holiday',
                 'billing',
                 'notify',
+                'customize',
                 // Add more route names here if needed
             ])
                 ? 'active'
@@ -486,6 +488,12 @@
                 <a href="{{ route('notify') }}" class="nav-link {{ Request::is('notify') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
                     <p>ตั้งค่าการแจ้งเตือน</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('customize') }}" class="nav-link {{ Request::is('customize') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p>ตั้งค่า Customize</p>
                 </a>
             </li>
         </ul>
