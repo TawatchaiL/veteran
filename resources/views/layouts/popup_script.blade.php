@@ -768,9 +768,9 @@
                             
                             $('#toolbar_header').scrollTop(0);
                             $('#ToolbarModal').scrollTop(0);
-                            window.addEventListener('keydown', (e) => {
-                                console.log(e)
-                            })
+                            //window.addEventListener('keydown', (e) => {
+                            //    console.log(e)
+                            //})
                         } else {
                             $('.alert-danger-pop' + cardId).hide();
                             $('.alert-success-pop' + cardId).show();
