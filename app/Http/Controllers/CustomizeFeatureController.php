@@ -43,7 +43,7 @@ class CustomizeFeatureController extends Controller
                     return $state;
                 })
                 ->addColumn('action', function ($row) {
-                    if (Gate::allows('holiday-edit')) {
+                    if (Gate::allows('customize-edit')) {
                         $html = '<button type="button" class="btn btn-sm btn-warning btn-edit" id="getEditData" data-id="' . $row->id . '"><i class="fa fa-edit"></i> แก้ไข</button> ';
                     } else {
                         $html = '<button type="button" class="btn btn-sm btn-warning disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-edit"></i> แก้ไข</button> ';
@@ -52,7 +52,7 @@ class CustomizeFeatureController extends Controller
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
 
-        return view('holiday.index');
+        return view('customize.index');
     }
 
 
