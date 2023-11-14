@@ -566,7 +566,7 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
-            var arrayDate=adddate.split("-");
+            var arrayDate=$('#Addadddate').val().split("-");
 				    arrayDate[0]=parseInt(arrayDate[0])+543;
             var tempadddate = arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2];
 
@@ -693,7 +693,7 @@
                     $('#Name').val(res.data.name);
                     $('#temp'+$(this).attr('id')).html(dateBefore);
                     //date+543
-                    var arrayDate=adddate.split("-");
+                    var arrayDate=res.data.adddate.split("-");
 				    arrayDate[0]=parseInt(arrayDate[0])+543;
                     $('#Addadddate').val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
                     //$('#tempAddadddate').html(res.data.adddate);
