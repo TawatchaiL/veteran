@@ -197,7 +197,7 @@
             url,
             method,
             data,
-            async: false,
+            async: true,
             success: updateUI,
         });
     };
@@ -431,6 +431,7 @@
         }
     };
 
+    //dialpad press
     $(document).on('click', '.digit', async function() {
         var num = ($(this).clone().children().remove().end().text());
         await playDigitSound(num.trim());
@@ -442,6 +443,7 @@
         }
     });
 
+    //dial pad del
     $(document).on('click', '.fa-delete-left', function() {
         $('#dial_number').val(function(index, value) {
             return value.slice(0, -1); // Remove the last character
@@ -449,6 +451,7 @@
         dialpadcount--;
     });
 
+    //dial pad remove all
     $(document).on('click', '.fa-eraser', function() {
         $('#dial_number').val(function(index, value) {
             return ''; // Remove the last character
@@ -457,12 +460,14 @@
     });
 
 
+    //agent ready
     $(document).on('click', '#btn-agent-login', function(e) {
         e.preventDefault();
         sendAjaxRequest("{{ route('agent.login') }}", "POST");
     });
 
 
+    //agen not ready
     $(document).on('click', '#btn-agent-logout', function(e) {
         e.preventDefault();
         ezBSAlert({
@@ -477,6 +482,7 @@
         });
     });
 
+    //agent break
     $(document).on('click', '.button_break', function(e) {
         e.preventDefault();
         const bid = $(this).data('id');
@@ -484,8 +490,10 @@
             id_break: bid,
         };
         sendAjaxRequest("{{ route('agent.break') }}", "POST", additionalData);
+        check_state();
     });
 
+    //agent unbreak
     $(document).on('click', '.button_unbreak', function(e) {
         e.preventDefault();
         ezBSAlert({
@@ -496,12 +504,14 @@
         }).done(function(r) {
             if (r == true) {
                 sendAjaxRequest("{{ route('agent.unbreak') }}", "POST");
+                check_state();
             }
 
         });
 
     });
 
+    //agent unwrap
     $(document).on('click', '#btn-unwarp', function(e) {
         e.preventDefault();
         ezBSAlert({
@@ -512,11 +522,13 @@
         }).done(function(r) {
             if (r == true) {
                 sendAjaxRequest("{{ route('agent.unwarp') }}", "POST");
+                check_state();
             }
 
         });
     });
 
+    //agent logout
     $(document).on('click', '#btn-system-logout', function(e) {
         e.preventDefault();
         ezBSAlert({
@@ -533,6 +545,7 @@
     });
 
 
+    //pause list
     btn_pause.click(function() {
         $.ajax({
             url: "{{ route('pause_list') }}",
@@ -650,6 +663,7 @@
         }
     });
 
+    //call survey
     $('.button_survey_tranfer,#performance_button').click(function() {
         let len = $('input[name="call[]"]:checked').length;
         if (len > 0) {
@@ -805,6 +819,7 @@
     });
 
 
+    //dial
     let dial_function = () => {
         let call_number = dial_number.val();
         if (call_number !== '') {
@@ -945,6 +960,7 @@
 
     })
 
+    //answer ipphone
     $(document).on('click', '.answer_call', function(data) {
         let exten = $(this).data("id")
         $.ajax({
@@ -967,6 +983,7 @@
 
     })
 
+    //hold ipphone
     $(document).on('click', '.hold_call', function(data) {
         let exten = $(this).data("id")
         $.ajax({
@@ -984,6 +1001,7 @@
 
     })
 
+    //swap ipphone
     $(document).on('click', '#swap_button', function(data) {
         $.ajax({
             url: "{{ route('swap') }}",
@@ -999,6 +1017,7 @@
 
     })
 
+    //answer
     $(document).on('click', '#ans_button', function(data) {
         const ipAddress = `${exten_ip}`;
         $.get(`${api_serv}/answer/${ipAddress}`, (data, status) => {});

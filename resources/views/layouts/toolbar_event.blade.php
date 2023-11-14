@@ -5,14 +5,17 @@
         socket.emit('join', 'Client Connect To Asterisk Event Serv');
     });
 
+    //agent receive call
     socket.on('agentconnect', async (response) => {
         console.log(response)
     });
 
+    //agent answer call
     socket.on('agentcalled', async (response) => {
         console.log(response)
     });
 
+    //agent or caller hangup after talk
     socket.on('agentcomplete', async (response) => {
         console.log(response)
         if (response.data.membername == exten) {
@@ -45,7 +48,7 @@
     });
 
 
-
+    //queue wait list on agent
     socket.on('queuecallerjoin', async (response) => {
         const dropdownButton = $('#queue_wait_button');
         if (dropdownButton.length > 0 && !isDropdownClicked) {
@@ -58,6 +61,7 @@
              .data.calleridnum + '<br>ในลำดับ: ' + response
              .data.position, ''); */
     });
+
 
 
     socket.on('queueentry', async (response) => {
@@ -122,6 +126,7 @@
             isDropdownClicked = false;
         }
     });
+    //queue wait list on agent
 
     socket.on('peerstatus', async (data) => {
         let peer = data.extension.split("/");
@@ -290,7 +295,7 @@
                         <a href="#" class="btn btn-danger hangup_call" data-id="${data.extension}"><i class="fa-solid fa-phone-slash"></i> วางสาย</a>
                     </div>
                 </div>
-            </div>`); */
+                </div>`); */
                 call_list();
                 toolbar_modal.modal('show');
 
@@ -387,7 +392,7 @@
                 }
                 if ((data.event == 'BridgeLeave' || data.event == 'SoftHangupRequest')) {
 
-                    $.ajax({
+                    /* $.ajax({
                         url: "{{ route('agent.status') }}",
                         method: 'post',
                         async: false,
@@ -398,7 +403,8 @@
                             set_state_icon(result.id, result.icon, result.message);
                             set_state_button(result.id);
                         }
-                    });
+                    }); */
+                    check_state();
 
                 } else {
                     //set_state_button(1);
