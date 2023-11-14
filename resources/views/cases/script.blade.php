@@ -692,7 +692,6 @@
                     console.log(res);
                     $('#Hn').val(res.data.hn);
                     $('#Name').val(res.data.name);
-                    $('#temp'+$(this).attr('id')).html(dateBefore);
                     //date+543
                     var arrayDate=res.data.adddate.split("-");
 				    arrayDate[0]=parseInt(arrayDate[0])+543;
