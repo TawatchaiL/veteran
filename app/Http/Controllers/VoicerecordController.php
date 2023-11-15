@@ -42,7 +42,7 @@ class VoicerecordController extends Controller
 
         $datass = DB::connection('remote_connection')
             ->table('asteriskcdrdb.cdr')
-            ->select('call_center.call_recording.*', 'asteriskcdrdb.cdr.*')
+            ->select('asteriskcdrdb.cdr.*')
             //->join('call_center.call_recording', 'asteriskcdrdb.cdr.uniqueid', '=', 'call_center.call_recording.uniqueid')
             ->where('asteriskcdrdb.cdr.dstchannel', '!=', '')
             ->where('asteriskcdrdb.cdr.recordingfile', '!=', '')
