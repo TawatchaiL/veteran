@@ -199,6 +199,7 @@ class VoicerecordController extends Controller
         } else {
             $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')
                 ->where('uniqueid', $id)
+                ->orderBy('calldate', 'asc')
                 ->first();
             $voic = $remoteData->recordingfile;
             $voic_name = substr($voic, 14);
