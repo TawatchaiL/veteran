@@ -203,7 +203,7 @@ class VoicerecordController extends Controller
                 ->orderBy('calldate', 'asc')
                 ->first();
             $avoic = explode("/", $remoteData->recordingfile);
-            $datep = explode("-", $remoteData->calldate);
+            $datep = explode("-", explode(" ", $remoteData->calldate)[0]);
             $voic = $datep[0] . "/" . $datep[1] . "/" . $datep[2] . "/" . end($avoic);
             $voic_name = end($avoic);
             $tooltips = Comment::where('call_recording_id', $id)->get();
