@@ -99,7 +99,7 @@ class VoicerecordController extends Controller
                             return $agentArray[$row->userfield]['name'] . " ( " . $row->src . " ) ";
                         } else {
                             return $row->src;
-                        }s
+                        }
                     } else {
                         return $row->src;
                     }
