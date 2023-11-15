@@ -176,30 +176,30 @@
 				});				
 			},50);
 
-		},
-		onChangeMonthYear: function(){
-			setTimeout(function(){
-				$.each($(".ui-datepicker-year option"),function(j,k){
-					var textYear=parseInt($(".ui-datepicker-year option").eq(j).val())+543;
-					$(".ui-datepicker-year option").eq(j).text(textYear);
-				});				
-			},50);		
-		},
-		onClose:function(){
-			if($(this).val()!="" && $(this).val()==dateBefore){			
-				var arrayDate=dateBefore.split("-");
+            },
+            onChangeMonthYear: function(){
+                setTimeout(function(){
+                    $.each($(".ui-datepicker-year option"),function(j,k){
+                        var textYear=parseInt($(".ui-datepicker-year option").eq(j).val())+543;
+                        $(".ui-datepicker-year option").eq(j).text(textYear);
+                    });				
+                },50);		
+            },
+            onClose:function(){
+                if($(this).val()!="" && $(this).val()==dateBefore){			
+                    var arrayDate=dateBefore.split("-");
+                    //$('#temp'+$(this).attr('id')).html(dateBefore);
+                    arrayDate[0]=parseInt(arrayDate[0])+543;
+                    $(this).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);	
+                }		
+            },
+            onSelect: function(dateText, inst){ 
+                dateBefore=$(this).val();
                 //$('#temp'+$(this).attr('id')).html(dateBefore);
-				arrayDate[0]=parseInt(arrayDate[0])+543;
-				$(this).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);	
-			}		
-		},
-		onSelect: function(dateText, inst){ 
-			dateBefore=$(this).val();
-            //$('#temp'+$(this).attr('id')).html(dateBefore);
-			var arrayDate=dateText.split("-");
-			arrayDate[0]=parseInt(arrayDate[0])+543;
-			$(this).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
-		}       
+                var arrayDate=dateText.split("-");
+                arrayDate[0]=parseInt(arrayDate[0])+543;
+                $(this).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
+            }       
         });
 
         $("#Addbirthday").on("change", function() {
