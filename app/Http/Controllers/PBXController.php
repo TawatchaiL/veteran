@@ -641,12 +641,12 @@ class PBXController extends Controller
                             'crm_id' => $user->id,
                         ]);
 
-                    /* DB::connection('remote_connection')
+                    DB::connection('remote_connection')
                         ->table('asteriskcdrdb.cdr')
                         ->where('uniqueid', $context->uniqid)
                         ->update([
                             'dst_userfield' => $user->id,
-                        ]); */
+                        ]);
                 }
 
                 $this->issable->agent_break($user->phone, $this->warp_id);
