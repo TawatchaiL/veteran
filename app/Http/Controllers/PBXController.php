@@ -633,6 +633,13 @@ class PBXController extends Controller
                             'crm_id' => $user->id,
                             'duration_hold' => $hold_duration
                         ]);
+
+                    DB::connection('remote_connection')
+                        ->table('call_center.call_recording')
+                        ->where('uniqueid', $context->uniqid)
+                        ->update([
+                            'crm_id' => $user->id,
+                        ]);
                 }
 
                 $this->issable->agent_break($user->phone, $this->warp_id);
@@ -725,12 +732,12 @@ class PBXController extends Controller
                     'crm_id' => $user->id,
                 ]);
 
-            DB::connection('remote_connection')
+            /* DB::connection('remote_connection')
                 ->table('call_center.call_recording')
                 ->where('uniqueid', $resultb->uniqid)
                 ->update([
                     'crm_id' => $user->id,
-                ]);
+                ]); */
 
 
 
