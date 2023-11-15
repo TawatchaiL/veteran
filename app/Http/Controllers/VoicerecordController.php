@@ -99,7 +99,11 @@ class VoicerecordController extends Controller
                     if ($dst !== null && strpos($dst, 'SIP/') === 0) {
                         list($sip, $no) = explode('/', $dst);
                         list($telp, $lear) = explode('-', $no);
-                        return $agentArray[$row->crm_id]['name'] . " ( " . $telp . " ) ";
+                        if (!empty($row->crm_id)) {
+                            return $agentArray[$row->crm_id]['name'] . " ( " . $telp . " ) ";
+                        } else {
+                            return $telp;
+                        }
                     } else {
                         return 'ไม่พบเบอร์โทรศัพท์';
                     }
