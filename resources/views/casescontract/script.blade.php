@@ -541,9 +541,13 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
+            var arrayDate=$('#Addadddate').val().split("-");
+				    arrayDate[0]=parseInt(arrayDate[0])-543;
+            var tempadddate = arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2];
+
             var additionalData = {
                 contact_id: $('#Addid').val(),
-                adddate: $('#Addadddate').val(),
+                adddate: tempadddate,
                 casetype1: $('#casetype1 option:selected').text(),
                 caseid1: $('#casetype1').val(),
                 casedetail: $('#Detail').val(),
@@ -591,6 +595,7 @@
                             $('.alert-danger').append('<strong><li>' + value +
                                 '</li></strong>');
                         });
+                        $('#CreateModal').scrollTop(0);
                     } else {
                         $('.alert-danger').hide();
                         $('.alert-success').show();
