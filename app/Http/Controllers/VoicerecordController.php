@@ -81,6 +81,25 @@ class VoicerecordController extends Controller
                 }
             }
 
+            if (!empty($request->get('telp'))) {
+                $telp = $request->input('telp');
+                if ($telp) {
+                    $datass->where(function ($query) use ($telp) {
+                        $query->where('asteriskcdrdb.cdr.src', 'like', "$telp%")
+                            ->orWhere('dst', 'like', "$telp%");
+                    });
+                }
+            }
+
+            if (!empty($request->get('ctype'))) {
+                $ctype = $request->input('ctype');
+                if ($ctype == 0) {
+                    $datass->where('asteriskcdrdb.cdr.accountcode', '');
+                } else if ($ctype == 1) {
+                    $datass->where('asteriskcdrdb.cdr.accountcode', '!=', '');
+                }
+            }
+
             if (!empty($request->get('agent'))) {
                 $agent = $request->input('agent');
                 if ($agent) {
