@@ -494,7 +494,6 @@
 
         })
 
-
         $(document).on('click', '#CreateButton', function(e) {
             e.preventDefault();
             $('.alert-danger').html('');
@@ -541,9 +540,13 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
+            var arrayDate=$('#Addadddate').val().split("-");
+				    arrayDate[0]=parseInt(arrayDate[0])-543;
+            var tempadddate = arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2];
+
             var additionalData = {
                 contact_id: $('#Addid').val(),
-                adddate: $('#Addadddate').val(),
+                adddate: tempadddate,
                 casetype1: $('#casetype1 option:selected').text(),
                 caseid1: $('#casetype1').val(),
                 casedetail: $('#Detail').val(),
@@ -591,6 +594,7 @@
                             $('.alert-danger').append('<strong><li>' + value +
                                 '</li></strong>');
                         });
+                        $('#CreateModal').scrollTop(0);
                     } else {
                         $('.alert-danger').hide();
                         $('.alert-success').show();
@@ -648,7 +652,11 @@
                 method: 'GET',
                 success: function(res) {
                     console.log(res);
-                    $('#Addadddate').val(res.data.adddate);
+
+                    var arrayDate=res.data.adddate.split("-");
+				    arrayDate[0]=parseInt(arrayDate[0])+543;
+                    $('#Addadddate').val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
+
                     $('#Detail').val(res.data.casedetail);
                     $('#tranferstatus').val(res.data.tranferstatus);
                     $('#casestatus').val(res.data.casestatus);
@@ -678,56 +686,6 @@
             });
             //$('#Detail').val('1234');
         })
-
-        $('#SubmitEditForm').click(function(e) {
-            if (!confirm("ยืนยันการทำรายการ ?")) return;
-            e.preventDefault();
-
-            $('.alert-danger').html('');
-            $('.alert-danger').hide();
-            $('.alert-success').html('');
-            $('.alert-success').hide();
-
-            var additionalData = {
-                adddate: $('#Eddadddate').val(),
-                casetype1: $('#Editcasetype1e').val(),
-                tranferstatus: $('#Edittranferstatuse option:selected').text(),
-                casedetail: $('#Editdetail').val(),
-                casestatus: $('#Editcasestatuse option:selected').text(),
-            };
-            $.ajax({
-                url: "casescontract/save/" + id,
-                method: 'PUT',
-                data: additionalData,
-
-                success: function(result) {
-                    //console.log(result);
-                    if (result.errors) {
-                        $('.alert-danger').html('');
-                        $.each(result.errors, function(key, value) {
-                            $('.alert-danger').show();
-                            $('.alert-danger').append('<strong><li>' + value +
-                                '</li></strong>');
-                        });
-                    } else {
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('.alert-success').append('<strong><li>' + result.success +
-                            '</li></strong>');
-                        $('#EditModal').modal('hide');
-                        toastr.success(result.success, {
-                            timeOut: 5000
-                        });
-                        $('#Listview').DataTable().ajax.reload();
-                        //setTimeout(function() {
-                        //$('.alert-success').hide();
-
-                        //}, 10000);
-
-                    }
-                }
-            });
-        });
 
         $(document).on('click', '.btn-delete', function() {
             if (!confirm("ยืนยันการทำรายการ ?")) return;
