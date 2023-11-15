@@ -40,7 +40,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
                                             <strong><i class="fas fa-square-phone"></i> เบอร์ที่โทรเข้า:</strong>
                                             {{-- {!! Form::text('telp', null, ['id' => 'telp', 'placeholder' => '', 'class' => 'form-control']) !!} --}}
@@ -48,7 +48,7 @@
                                                 autocomplete="off">
                                         </div>
                                     </div>
-                                    <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
                                             <strong><i class="fas fa-user"></i>
                                                 Agent ที่รับสาย:</strong>
