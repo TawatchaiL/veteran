@@ -126,10 +126,8 @@ class VoicerecordController extends Controller
         }
 
         return view('voicerecord.index', [
-
             'datas' => $datass,
             'agens' => $agens,
-
         ]);
     }
 
