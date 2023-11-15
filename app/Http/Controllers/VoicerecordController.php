@@ -95,16 +95,16 @@ class VoicerecordController extends Controller
                 $ctype = $request->input('ctype');
                 if ($ctype == 1) {
                     $datass->where('asteriskcdrdb.cdr.accountcode', '')
-                    ->where('asteriskcdrdb.cdr.userfield','=', '')
-                    ->where('asteriskcdrdb.cdr.dst_userfield','!=', NULL);
+                        ->where('asteriskcdrdb.cdr.userfield', '=', '')
+                        ->where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
                 } else if ($ctype == 2) {
                     $datass->where('asteriskcdrdb.cdr.accountcode', '!=', '')
-                    ->where('asteriskcdrdb.cdr.userfield','!=', '')
-                    ->where('asteriskcdrdb.cdr.dst_userfield','=', NULL);
+                        ->where('asteriskcdrdb.cdr.userfield', '!=', '')
+                        ->where('asteriskcdrdb.cdr.dst_userfield', '=', NULL);
                 } else if ($ctype == 3) {
                     $datass->where('asteriskcdrdb.cdr.accountcode', '!=', '')
-                    ->where('asteriskcdrdb.cdr.userfield','!=', '')
-                    ->where('asteriskcdrdb.cdr.dst_userfield','!=', NULL);
+                        ->where('asteriskcdrdb.cdr.userfield', '!=', '')
+                        ->where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
                 }
             }
 
@@ -191,9 +191,20 @@ class VoicerecordController extends Controller
         $remoteData = DB::connection('remote_connection')->table('call_center.call_recording')
             ->where('uniqueid', $id)
             ->first();
-        $voic = $remoteData->recordingfile;
-        $voic_name = substr($voic, 14);
-        $tooltips = Comment::where('call_recording_id', $id)->get();
+
+        if (!empty($remoteData)) {
+            $voic = $remoteData->recordingfile;
+            $voic_name = substr($voic, 14);
+            $tooltips = Comment::where('call_recording_id', $id)->get();
+        } else {
+            $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')
+                ->where('uniqueid', $id)
+                ->first();
+            $voic = $remoteData->recordingfile;
+            $voic_name = substr($voic, 14);
+            $tooltips = Comment::where('call_recording_id', $id)->get();
+        }
+
         return response()->json(['voic' => $voic, 'remoteData2' => $remoteData, 'voic_name' => $voic_name, 'tooltips' => $tooltips]);
     }
 
