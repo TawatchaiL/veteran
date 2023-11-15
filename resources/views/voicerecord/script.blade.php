@@ -521,7 +521,7 @@
             }
 
             if (savedsagent) {
-                $('#search_type').val(savedsagent);
+                $('#agen').val(savedsagent);
             }
             if (savedstelp) {
                 $('#telp').val(savedstelp);
@@ -531,11 +531,23 @@
 
 
         let daterange = () => {
+            moment.locale('th');
             $('#reservation').daterangepicker({
                 startDate: startDate,
                 endDate: endDate,
                 locale: {
-                    format: 'YYYY-MM-DD'
+                    format: 'YYYY-MM-DD',
+                    applyLabel: 'ตกลง',
+                    cancelLabel: 'ยกเลิก',
+                    fromLabel: 'จาก',
+                    toLabel: 'ถึง',
+                    customRangeLabel: 'กำหนดเอง',
+                    daysOfWeek: ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'],
+                    monthNames: [
+                        'มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน',
+                        'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'
+                    ],
+                    firstDay: 1
                 }
             });
             // Apply the custom date range filter on input change
@@ -777,17 +789,9 @@
             var telp = $('#telp').val();
             table.search('').draw();
             $.fn.dataTable.ext.search.pop();
-            /* if (agen !== '' && telp !== '') {
-                table.column(3).search(telp).draw();
-                table.column(4).search(agen).draw();
-            } */
             if (telp !== '') {
                 table.column(3).search(telp).draw();
             }
-            /*  if (agen !== '') {
-                 table.column(4).search(agen).draw();
-
-             } */
         });
 
         $('#resetSearchButton').on('click', async function() {
