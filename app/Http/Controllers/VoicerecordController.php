@@ -59,8 +59,15 @@ class VoicerecordController extends Controller
                     if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
                         $startDate = $dateRangeArray[0];
                         $endDate = $dateRangeArray[1];
-                        $datass->whereBetween('datetime_entry', [$startDate, $endDate]);
+                        $datass->whereBetween('call_center.datetime_entry', [$startDate, $endDate]);
                     }
+                }
+            }
+
+            if (!empty($request->get('agent'))) {
+                $agent = $request->input('agent');
+                if ($agent) {
+                    $datass->where('call_center.call_recording.crm_id', $agent);
                 }
             }
 

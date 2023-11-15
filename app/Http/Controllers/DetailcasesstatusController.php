@@ -43,16 +43,16 @@ class DetailcasesstatusController extends Controller
                     $endDate = $dateRangeArray[1];
                 }
             }
-        }else{
-                    $startDate = date("Y-m-d");
-                    $endDate = date("Y-m-t", strtotime($startDate));  
+        } else {
+            $startDate = date("Y-m-d");
+            $endDate = date("Y-m-t", strtotime($startDate));
         }
 
         $datas = DB::table('crm_cases')
-        ->select(DB::raw('DATE(crm_cases.created_at) as cdate'), DB::raw('TIME(crm_cases.created_at) as ctime'),'telno','casetype1', 'casedetail', 'casestatus', 'tranferstatus', 'users.name as agent' )
-        ->join('users', 'crm_cases.agent', '=', 'users.id')
-        ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '" and casestatus = "' . $request->input('casesstatus') . '"')
-        ->get();
+            ->select(DB::raw('DATE(crm_cases.created_at) as cdate'), DB::raw('TIME(crm_cases.created_at) as ctime'), 'telno', 'casetype1', 'casedetail', 'casestatus', 'tranferstatus', 'users.name as agent')
+            ->join('users', 'crm_cases.agent', '=', 'users.id')
+            ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '" and casestatus = "' . $request->input('casesstatus') . '"')
+            ->get();
 
         if ($request->ajax()) {
 
@@ -64,5 +64,4 @@ class DetailcasesstatusController extends Controller
 
         return view('detailcasesstatus.index');
     }
-
 }
