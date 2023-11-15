@@ -32,17 +32,20 @@ class VoicerecordController extends Controller
     public function index(Request $request)
     {
 
-        $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')->get();
+        /*  $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')->get();
         $remoteData2 = DB::connection('remote_connection')->table('call_center.call_recording')->orderBy('id', 'desc')->get();
-        // dd($datas);
-        $datass = DB::connection('remote_connection')
+        // dd($datas); */
+        /*  $datass = DB::connection('remote_connection')
             ->table('asteriskcdrdb.cdr')
             ->join('call_center.call_recording', 'asteriskcdrdb.cdr.uniqueid', '=', 'call_center.call_recording.uniqueid')
+            ->orderBy('id', 'desc'); */
+
+        $datass = DB::connection('remote_connection')
+            ->table('call_center.call_recording')
+            ->join('asteriskcdrdb.cdr', 'call_center.call_recording.uniqueid', '=', 'asteriskcdrdb.cdr.uniqueid')
             ->orderBy('id', 'desc');
 
         $agens = DB::connection('remote_connection')->table('asterisk.devices')->orderBy('id', 'desc')->get();
-
-
 
         if ($request->ajax()) {
 
@@ -113,13 +116,14 @@ class VoicerecordController extends Controller
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
 
-        return view('voicerecord.index',[
+        return view('voicerecord.index', [
 
             'datas' => $datass,
-            'agens'=> $agens,
+            'agens' => $agens,
 
         ]);
     }
+
     public function edit($id)
     {
         $remoteData2 = DB::connection('remote_connection')->table('call_center.call_recording')
@@ -142,6 +146,7 @@ class VoicerecordController extends Controller
 
         return response()->json(['message' => 'Comment updated successfully']);
     }
+
     public function comment(Request $request)
     {
         $call_recording_id = $request->call_recording_id;
@@ -164,6 +169,7 @@ class VoicerecordController extends Controller
             return response()->json(['message' => 'Comment saved successfully']);
         }
     }
+
     public function destroy($id)
     {
         // Code to delete the comment with the given ID
