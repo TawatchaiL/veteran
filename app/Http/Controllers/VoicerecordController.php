@@ -108,7 +108,7 @@ class VoicerecordController extends Controller
                     }
                 })
                 ->editColumn('agent', function ($row) use ($agentArray) {
-                    if ($row->accountcode !== '') {
+                    if ($row->accountcode == '') {
                         $dst = $row->dstchannel;
                         if ($dst !== null && strpos($dst, 'SIP/') === 0) {
                             list($sip, $no) = explode('/', $dst);
