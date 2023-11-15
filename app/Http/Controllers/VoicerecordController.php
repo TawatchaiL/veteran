@@ -74,7 +74,7 @@ class VoicerecordController extends Controller
             if (!empty($request->get('agent'))) {
                 $agent = $request->input('agent');
                 if ($agent) {
-                    $datass->where('asteriskcdrdb.cdr.crm_id', $agent);
+                    $datass->where('asteriskcdrdb.cdr.userfield', $agent);
                 }
             }
 
@@ -97,8 +97,8 @@ class VoicerecordController extends Controller
                     if ($row->accountcode !== '') {
                         return $row->src;
                     } else {
-                        if (!empty($row->crm_id)) {
-                            return $agentArray[$row->crm_id]['name'] . " ( " . $row->src . " ) ";
+                        if (!empty($row->userfield)) {
+                            return $agentArray[$row->userfield]['name'] . " ( " . $row->src . " ) ";
                         } else {
                             return $row->src;
                         }
@@ -112,8 +112,8 @@ class VoicerecordController extends Controller
                         if ($dst !== null && strpos($dst, 'SIP/') === 0) {
                             list($sip, $no) = explode('/', $dst);
                             list($telp, $lear) = explode('-', $no);
-                            if (!empty($row->crm_id)) {
-                                return $agentArray[$row->crm_id]['name'] . " ( " . $telp . " ) ";
+                            if (!empty($row->userfield)) {
+                                return $agentArray[$row->userfield]['name'] . " ( " . $telp . " ) ";
                             } else {
                                 return $telp;
                             }
