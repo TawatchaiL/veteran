@@ -42,7 +42,7 @@
 
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
-                                            <strong><i class="fas fa-square-phone"></i> เบอร์ที่โทรเข้า:</strong>
+                                            <strong><i class="fas fa-square-phone"></i> เบอร์ที่ติดต่อ:</strong>
                                             {{-- {!! Form::text('telp', null, ['id' => 'telp', 'placeholder' => '', 'class' => 'form-control']) !!} --}}
                                             <input type="text" name="telp" id="telp" class="form-control"
                                                 autocomplete="off">
@@ -51,7 +51,7 @@
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
                                             <strong><i class="fas fa-user"></i>
-                                                Agent ที่รับสาย:</strong>
+                                                Agent:</strong>
                                             <select style="width: 100%;" class="select2 form-control" id="agen"
                                                 name="agen">
                                                 <option value="" selected>ทั้งหมด</option>
@@ -59,6 +59,18 @@
                                                     <option value="{{ $agen->id }}">
                                                         {{ $agen->name ?? 'ไม่พบเบอร์โทรศัพท์' }} </option>
                                                 @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-2 col-sm-2 col-md-2">
+                                        <div class="form-group">
+                                            <strong><i class="fas fa-user"></i>
+                                                ประเภท:</strong>
+                                            <select style="width: 100%;" class="select2 form-control" id="ctype"
+                                                name="ctype">
+                                                <option value="">ทั้งหมด</option>
+                                                <option value="0"> สายเข้า</option>
+                                                <option value="1"> โทรออก</option>
                                             </select>
                                         </div>
                                     </div>
@@ -137,8 +149,8 @@
                                             </th>
                                             <th>วันที่</th>
                                             <th>เวลา</th>
-                                            <th>เบอร์โทรศัพท์</th>
-                                            <th>Agent ที่รับสาย</th>
+                                            <th>เบอร์ต้นทาง</th>
+                                            <th>เบอร์ปลายทาง</th>
                                             <th>เวลาที่ใช้สาย</th>
                                             <th width="100px"></th>
                                         </tr>
