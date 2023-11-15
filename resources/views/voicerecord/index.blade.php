@@ -71,6 +71,7 @@
                                                 <option value="">ทั้งหมด</option>
                                                 <option value="0"> สายเข้า</option>
                                                 <option value="1"> โทรออก</option>
+                                                <option value="2"> ภายใน</option>
                                             </select>
                                         </div>
                                     </div>
