@@ -108,21 +108,17 @@ class VoicerecordController extends Controller
                     }
                 })
                 ->editColumn('agent', function ($row) use ($agentArray) {
-                    if ($row->accountcode !== '') {
-                        return $row->dst;
-                    } else {
-                        $dst = $row->dstchannel;
-                        if ($dst !== null && strpos($dst, 'SIP/') === 0) {
-                            list($sip, $no) = explode('/', $dst);
-                            list($telp, $lear) = explode('-', $no);
-                            if (!empty($row->dst_userfield)) {
-                                return $agentArray[$row->dst_userfield]['name'] . " ( " . $telp . " ) ";
-                            } else {
-                                return $telp;
-                            }
+                    $dst = $row->dstchannel;
+                    if ($dst !== null && strpos($dst, 'SIP/') === 0) {
+                        list($sip, $no) = explode('/', $dst);
+                        list($telp, $lear) = explode('-', $no);
+                        if (!empty($row->dst_userfield)) {
+                            return $agentArray[$row->dst_userfield]['name'] . " ( " . $telp . " ) ";
                         } else {
-                            return 'ไม่พบเบอร์โทรศัพท์';
+                            return $telp;
                         }
+                    } else {
+                        return 'ไม่พบเบอร์โทรศัพท์';
                     }
                 })
                 ->editColumn('duration', function ($row) {
