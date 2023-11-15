@@ -89,9 +89,9 @@
             placeholder: 'กรุณาเลือก'
         });
 
-        $(".AddDate").datepicker({
-            dateFormat: "yy-mm-dd"
-        });
+        //$(".AddDate").datepicker({
+        //    dateFormat: "yy-mm-dd"
+        //});
 
         //$.noConflict();
         var token = ''
