@@ -48,6 +48,11 @@ class VoicerecordController extends Controller
             ->orderBy('call_center.call_recording.id', 'desc');
 
         $agens = User::orderBy('name', 'asc')->get();
+        $agentArray = [];
+
+        foreach ($agens as $agen) {
+            $agentArray[$agen->id]['name'] = $agen->name;
+        }
 
         if ($request->ajax()) {
 
@@ -89,12 +94,12 @@ class VoicerecordController extends Controller
                 ->editColumn('telno', function ($row) {
                     return $row->src;
                 })
-                ->editColumn('agent', function ($row) {
+                ->editColumn('agent', function ($row) use ($agentArray) {
                     $dst = $row->dstchannel;
                     if ($dst !== null && strpos($dst, 'SIP/') === 0) {
                         list($sip, $no) = explode('/', $dst);
                         list($telp, $lear) = explode('-', $no);
-                        return $telp;
+                        return $agentArray[$row->crm_id]['name'] . " ( " . $telp . " ) ";
                     } else {
                         return 'ไม่พบเบอร์โทรศัพท์';
                     }
