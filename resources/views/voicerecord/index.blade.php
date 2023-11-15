@@ -69,9 +69,9 @@
                                             <select style="width: 100%;" class="select2 form-control" id="ctype"
                                                 name="ctype">
                                                 <option value="">ทั้งหมด</option>
-                                                <option value="0"> สายเข้า</option>
-                                                <option value="1"> โทรออก</option>
-                                                <option value="2"> ภายใน</option>
+                                                <option value="1"> สายเข้า</option>
+                                                <option value="2"> โทรออก</option>
+                                                <option value="3"> ภายใน</option>
                                             </select>
                                         </div>
                                     </div>
