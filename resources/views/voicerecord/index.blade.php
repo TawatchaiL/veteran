@@ -63,7 +63,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-xs-2 col-sm-2 col-md-2 align-self-end">
+                                    <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
                                             <button class="btn btn-success" id="searchButton"> <i class="fas fa-search"></i>
                                                 Search </button>
