@@ -25,6 +25,16 @@ class VoicerecordController extends Controller
         $this->middleware('permission:contact-delete', ['only' => ['destroy']]);
     }
 
+    public function getTelpFromDstChannel($dstChannel)
+    {
+        if ($dstChannel !== null && strpos($dstChannel, 'SIP/') === 0) {
+            list($sip, $no) = explode('/', $dstChannel);
+            list($telp, $lear) = explode('-', $no);
+            return $telp;
+        }
+
+        return null;
+    }
 
     /**
      * Display a listing of the resource.
@@ -108,18 +118,11 @@ class VoicerecordController extends Controller
                     }
                 })
                 ->editColumn('agent', function ($row) use ($agentArray) {
-                    if ($row->accountcode == '') {
-                        $dst = $row->dstchannel;
-                        if ($dst !== null && strpos($dst, 'SIP/') === 0) {
-                            list($sip, $no) = explode('/', $dst);
-                            list($telp, $lear) = explode('-', $no);
-                        }
-                    } else {
-                        $telp = $row->dst;
-                    }
+                    $telp = $row->accountcode == '' ? $this->getTelpFromDstChannel($row->dstchannel) : $row->dst;
 
-                    if (!empty($row->dst_userfield)) {
-                        return $agentArray[$row->dst_userfield]['name'] . " ( " . $telp . " ) ";
+                    if (!empty($row->dst_userfield) && isset($agentArray[$row->dst_userfield])) {
+                        $agentName = $agentArray[$row->dst_userfield]['name'];
+                        return "$agentName ( $telp ) ";
                     } else {
                         return $telp;
                     }
