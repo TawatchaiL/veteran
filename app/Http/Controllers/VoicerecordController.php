@@ -194,7 +194,8 @@ class VoicerecordController extends Controller
 
         if (!empty($remoteData)) {
             $voic = $remoteData->recordingfile;
-            $voic_name = end(explode("/", $voic));
+            $avoic_name = explode("/", $voic);
+            $voic_name = end($avoic_name);
             $tooltips = Comment::where('call_recording_id', $id)->get();
         } else {
             $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')
