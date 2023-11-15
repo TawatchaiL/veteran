@@ -112,8 +112,8 @@ class VoicerecordController extends Controller
                         if ($dst !== null && strpos($dst, 'SIP/') === 0) {
                             list($sip, $no) = explode('/', $dst);
                             list($telp, $lear) = explode('-', $no);
-                            if (!empty($row->userfield)) {
-                                return $agentArray[$row->userfield]['name'] . " ( " . $telp . " ) ";
+                            if (!empty($row->dst_userfield)) {
+                                return $agentArray[$row->dst_userfield]['name'] . " ( " . $telp . " ) ";
                             } else {
                                 return $telp;
                             }
