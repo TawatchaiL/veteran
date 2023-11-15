@@ -188,13 +188,13 @@ class VoicerecordController extends Controller
 
     public function edit($id)
     {
-        $remoteData2 = DB::connection('remote_connection')->table('call_center.call_recording')
-            ->where('id', $id)
+        $remoteData = DB::connection('remote_connection')->table('call_center.call_recording')
+            ->where('uniqueid', $id)
             ->first();
-        $voic = $remoteData2->recordingfile;
+        $voic = $remoteData->recordingfile;
         $voic_name = substr($voic, 14);
         $tooltips = Comment::where('call_recording_id', $id)->get();
-        return response()->json(['voic' => $voic, 'remoteData2' => $remoteData2, 'voic_name' => $voic_name, 'tooltips' => $tooltips]);
+        return response()->json(['voic' => $voic, 'remoteData2' => $remoteData, 'voic_name' => $voic_name, 'tooltips' => $tooltips]);
     }
 
     public function update(Request $request, $id)
