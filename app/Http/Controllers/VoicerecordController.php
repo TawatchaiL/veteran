@@ -93,21 +93,33 @@ class VoicerecordController extends Controller
                     list($date, $time) = explode(' ', $calldate);
                     return $time;
                 })
-                ->editColumn('telno', function ($row) {
-                    return $row->src;
+                ->editColumn('telno', function ($row) use ($agentArray) {
+                    if ($row->accountcode !== '') {
+                        return $row->src;
+                    } else {
+                        if (!empty($row->crm_id)) {
+                            return $agentArray[$row->crm_id]['name'] . " ( " . $row->src . " ) ";
+                        } else {
+                            return $row->src;
+                        }
+                    }
                 })
                 ->editColumn('agent', function ($row) use ($agentArray) {
-                    $dst = $row->dstchannel;
-                    if ($dst !== null && strpos($dst, 'SIP/') === 0) {
-                        list($sip, $no) = explode('/', $dst);
-                        list($telp, $lear) = explode('-', $no);
-                        if (!empty($row->crm_id)) {
-                            return $agentArray[$row->crm_id]['name'] . " ( " . $telp . " ) ";
-                        } else {
-                            return $telp;
-                        }
+                    if ($row->accountcode !== '') {
+                        return $row->dst;
                     } else {
-                        return 'ไม่พบเบอร์โทรศัพท์';
+                        $dst = $row->dstchannel;
+                        if ($dst !== null && strpos($dst, 'SIP/') === 0) {
+                            list($sip, $no) = explode('/', $dst);
+                            list($telp, $lear) = explode('-', $no);
+                            if (!empty($row->crm_id)) {
+                                return $agentArray[$row->crm_id]['name'] . " ( " . $telp . " ) ";
+                            } else {
+                                return $telp;
+                            }
+                        } else {
+                            return 'ไม่พบเบอร์โทรศัพท์';
+                        }
                     }
                 })
                 ->editColumn('duration', function ($row) {
