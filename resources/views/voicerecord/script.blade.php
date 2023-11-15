@@ -310,7 +310,7 @@
                         },
                         success: function(response) {
                             console.log(response.message);
-                            $('#CreateModal').modal('hide');
+                            //$('#CreateModal').modal('hide');
                         },
                         error: function(error) {}
                     });
