@@ -231,12 +231,10 @@ class VoicerecordController extends Controller
         $start = $request->start;
         $end = $request->end;
 
-        $check_data = Comment::where([
-            //['call_recording_id', $call_recording_id],
-            ['uniqueid', $uniqueid],
-            ['start', $start],
-            ['end', $end]
-        ])->get();
+        $check_data = Comment::where('uniqueid', $uniqueid)
+            ->where('start', $start)
+            ->where('end', $end)
+            ->get();
 
         if (count($check_data) > 0) {
             return response()->json(['message' => 'ข้อมูลซ้ำ']);
