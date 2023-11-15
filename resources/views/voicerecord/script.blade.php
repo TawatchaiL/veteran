@@ -500,17 +500,20 @@
             var dateStart = $('#reservation').val();
             var sagent = $('#agen').val();
             var stelp = $('#telp').val();
+            var sctype = $('#ctype').val();
 
             // Store values in local storage
             localStorage.setItem('dateStart', dateStart);
             localStorage.setItem('sagent', sagent);
             localStorage.setItem('stelp', stelp);
+            localStorage.setItem('sctype', sctype);
         }
 
         function retrieveFieldValues() {
             var saveddateStart = localStorage.getItem('dateStart');
             var savedsagent = localStorage.getItem('sagent');
             var savedstelp = localStorage.getItem('stelp');
+            var savedctype = localStorage.getItem('sctype');
             // Set field values from local storage
             if (saveddateStart) {
                 var dateParts = saveddateStart.split(' - ');
@@ -525,6 +528,10 @@
             }
             if (savedstelp) {
                 $('#telp').val(savedstelp);
+            }
+
+            if (savedctype) {
+                $('#ctype').val(savedctype);
             }
 
         }
@@ -571,6 +578,8 @@
                 data: function(d) {
                     d.sdate = $('#reservation').val();
                     d.agent = $('#agen').val();
+                    d.telp = $('#telp').val();
+                    d.ctype = $('#ctype').val();
                     //d.search = $('input[type="search"]').val();
                 }
             },
@@ -786,22 +795,24 @@
         var table = $('#Listview').DataTable(table_option);
         $('#searchButton').on('click', function() {
             storeFieldValues();
-            var telp = $('#telp').val();
+            //var telp = $('#telp').val();
             table.search('').draw();
             $.fn.dataTable.ext.search.pop();
-            if (telp !== '') {
+            /* if (telp !== '') {
                 table.column(3).search(telp).draw();
-            }
+            } */
         });
 
         $('#resetSearchButton').on('click', async function() {
             localStorage.removeItem('dateStart');
             localStorage.removeItem('sagent');
             localStorage.removeItem('stelp');
+            localStorage.removeItem('sctype');
 
             // Set field values to empty
             $('#telp').val('');
             $('#agen').val('');
+            $('#ctype').val('');
 
             $('#Listview').html('');
 
