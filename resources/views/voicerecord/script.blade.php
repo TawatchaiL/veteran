@@ -773,6 +773,7 @@
 
         var table = $('#Listview').DataTable(table_option);
         $('#searchButton').on('click', function() {
+            storeFieldValues();
             var telp = $('#telp').val();
             table.search('').draw();
             $.fn.dataTable.ext.search.pop();
