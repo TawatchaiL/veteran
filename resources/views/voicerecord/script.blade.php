@@ -521,7 +521,7 @@
             }
 
             if (savedsagent) {
-                $('#search_type').val(savedsagent);
+                $('#agen').val(savedsagent);
             }
             if (savedstelp) {
                 $('#telp').val(savedstelp);
@@ -777,17 +777,9 @@
             var telp = $('#telp').val();
             table.search('').draw();
             $.fn.dataTable.ext.search.pop();
-            /* if (agen !== '' && telp !== '') {
-                table.column(3).search(telp).draw();
-                table.column(4).search(agen).draw();
-            } */
             if (telp !== '') {
                 table.column(3).search(telp).draw();
             }
-            /*  if (agen !== '') {
-                 table.column(4).search(agen).draw();
-
-             } */
         });
 
         $('#resetSearchButton').on('click', async function() {
