@@ -152,16 +152,54 @@
         datesearch();
         daterange();
 
-
-        $.datepicker.setDefaults($.datepicker.regional['en']);
+        $.datepicker.setDefaults($.datepicker.regional['th']);
         $(".AddDate").datepicker({
-            /*  onSelect: function() {
-                 table.draw();
-             }, */
-            dateFormat: 'yy-mm-dd',
+            dateFormat: "yy-mm-dd",
+	        //defaultDate: '2023-11-14',
+            isBuddhist: true,
             changeMonth: true,
-            changeYear: true,
-            yearRange: '1980:2050',
+            changeYear:true,
+	        //yearRange:'1940:2057',
+            yearRange:'c-40:c+10',
+            dayNamesMin: [ "อา", "จ", "อ", "พ", "พฤ", "ศ", "ส" ],
+            monthNamesShort: [ "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม" ],
+            beforeShow:function(){
+			if($(this).val()!=""){
+				var arrayDate=$(this).val().split("-");		
+				arrayDate[0]=parseInt(arrayDate[0])-543;
+				$(this).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
+			}
+			setTimeout(function(){
+				$.each($(".ui-datepicker-year option"),function(j,k){
+					var textYear=parseInt($(".ui-datepicker-year option").eq(j).val())+543;
+					$(".ui-datepicker-year option").eq(j).text(textYear);
+				});				
+			},50);
+
+		},
+		onChangeMonthYear: function(){
+			setTimeout(function(){
+				$.each($(".ui-datepicker-year option"),function(j,k){
+					var textYear=parseInt($(".ui-datepicker-year option").eq(j).val())+543;
+					$(".ui-datepicker-year option").eq(j).text(textYear);
+				});				
+			},50);		
+		},
+		onClose:function(){
+			if($(this).val()!="" && $(this).val()==dateBefore){			
+				var arrayDate=dateBefore.split("-");
+                //$('#temp'+$(this).attr('id')).html(dateBefore);
+				arrayDate[0]=parseInt(arrayDate[0])+543;
+				$(this).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);	
+			}		
+		},
+		onSelect: function(dateText, inst){ 
+			dateBefore=$(this).val();
+            //$('#temp'+$(this).attr('id')).html(dateBefore);
+			var arrayDate=dateText.split("-");
+			arrayDate[0]=parseInt(arrayDate[0])+543;
+			$(this).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
+		}       
         });
 
         $("#Addbirthday").on("change", function() {
@@ -402,14 +440,22 @@
                 emergencyData.push(emergency);
             });
 
+            var arrayDate=$('#Addadddate').val().split("-");
+				    arrayDate[0]=parseInt(arrayDate[0])-543;
+            var tempadddate = arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2];
+
+            var arrayDateb=$('#Addbirthday').val().split("-");
+				    arrayDateb[0]=parseInt(arrayDateb[0])-543;
+            var tempbirthday = arrayDateb[0]+"-"+arrayDateb[1]+"-"+arrayDateb[2];
+
             var additionalData = {
                 hn: $('#Addhn').val(),
-                adddate: $('#Addadddate').val(),
+                adddate: tempadddate,
                 tname: $('#Addtname').val(),
                 fname: $('#Addfname').val(),
                 lname: $('#Addlname').val(),
                 sex: $('#Addsex').val(),
-                birthday: $('#Addbirthday').val(),
+                birthday: tempbirthday,
                 age: $('#Addage').val(),
                 bloodgroup: $('#Addbloodgroup').val(),
                 homeno: $('#Addhomeno').val(),
@@ -496,12 +542,22 @@
                     method: 'GET',
                     success: function(res) {
                         $('#Edithn').val(res.datax.datac.hn);
-                        $('#Editadddate').val(res.datax.datac.adddate);
+
+                        var arrayDate=res.data.adddate.split("-");
+				        arrayDate[0]=parseInt(arrayDate[0])+543;
+                        $('#Editadddate').val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
+
+                        //$('#Editadddate').val(res.datax.datac.adddate);
                         $('#Edittname').val(res.datax.datac.tname);
                         $('#Editfname').val(res.datax.datac.fname);
                         $('#Editlname').val(res.datax.datac.lname);
                         $('#Editsex').val(res.datax.datac.sex);
-                        $('#Editbirthday').val(res.datax.datac.birthday);
+
+                        var arrayDateb=res.data.birthday.split("-");
+				        arrayDateb[0]=parseInt(arrayDateb[0])+543;
+                        $('#Editbirthday').val(arrayDateb[0]+"-"+arrayDateb[1]+"-"+arrayDateb[2]);
+                        //$('#Editbirthday').val(res.datax.datac.birthday);
+
                         $('#Editage').val(res.datax.datac.age);
                         $('#Editbloodgroup').val(res.datax.datac.bloodgroup);
                         $('#Edithomeno').val(res.datax.datac.homeno);
@@ -581,14 +637,23 @@
                 };
                 eemergencyData.push(eemergency);
             });
+
+            var arrayDate=$('#Addadddate').val().split("-");
+				    arrayDate[0]=parseInt(arrayDate[0])-543;
+            var tempadddate = arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2];
+
+            var arrayDateb=$('#Addbirthday').val().split("-");
+				    arrayDateb[0]=parseInt(arrayDateb[0])-543;
+            var tempbirthday = arrayDateb[0]+"-"+arrayDateb[1]+"-"+arrayDateb[2];
+
             var additionalData = {
                 hn: $('#Edithn').val(),
-                adddate: $('#Editadddate').val(),
+                adddate: tempadddate,
                 tname: $('#Edittname').val(),
                 fname: $('#Editfname').val(),
                 lname: $('#Editlname').val(),
                 sex: $('#Editsex').val(),
-                birthday: $('#Editbirthday').val(),
+                birthday: tempbirthday,
                 age: $('#Editage').val(),
                 bloodgroup: $('#Editbloodgroup').val(),
                 homeno: $('#Edithomeno').val(),
