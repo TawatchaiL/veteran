@@ -251,8 +251,8 @@
                     },
 
                     success: function(response) {
-                        region.remove();
-                        $('#CreateModal').modal('hide');
+                        //region.remove();
+                        //$('#CreateModal').modal('hide');
                         // console.log(wavesurfer);
                         // if (wavesurfer) {
                         //     // Destroy the WaveSurfer instance to clear it
