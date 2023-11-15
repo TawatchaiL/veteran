@@ -42,8 +42,10 @@ class VoicerecordController extends Controller
 
         $datass = DB::connection('remote_connection')
             ->table('call_center.call_recording')
+            ->select('call_center.call_recording.*', 'asteriskcdrdb.cdr.*')
             ->join('asteriskcdrdb.cdr', 'call_center.call_recording.uniqueid', '=', 'asteriskcdrdb.cdr.uniqueid')
-            ->orderBy('id', 'desc');
+            ->where('asteriskcdrdb.cdr.dstchannel', '!=', '')
+            ->orderBy('call_center.call_recording.id', 'desc');
 
         $agens = User::orderBy('name', 'asc')->get();
 
