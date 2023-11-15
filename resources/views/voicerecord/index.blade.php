@@ -23,47 +23,47 @@
                         <div class="card-body">
                             <div class="col-sm-12">
                                 <ol class="breadcrumb float-sm-center">
-
-                                    <div class="col-xs-3 col-sm-3 col-md-3">
-                                        <div class="form-group">
-                                            <strong>
-                                                วันที่โทรเข้า:</strong>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text">
-                                                        <i class="far fa-calendar-alt"></i>
-                                                    </span>
-                                                </div>
-                                                <input type="text" class="form-control float-right" id="reservation">
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xs-2 col-sm-2 col-md-2">
-                                        <div class="form-group">
-                                            <strong><i class="fas fa-square-phone"></i> เบอร์ที่โทรเข้า:</strong>
-                                            {{-- {!! Form::text('telp', null, ['id' => 'telp', 'placeholder' => '', 'class' => 'form-control']) !!} --}}
-                                            <input type="text" name="telp" id="telp" class="form-control"
-                                                autocomplete="off">
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-2 col-sm-2 col-md-2">
-                                        <div class="form-group">
-                                            <strong><i class="fas fa-user"></i>
-                                                Agent ที่รับสาย:</strong>
-                                            <select style="width: 100%;" class="select2 form-control" id="agen"
-                                                name="agen">
-                                                <option value="" selected>ทั้งหมด</option>
-                                                @foreach ($agens as $agen)
-                                                    <option value="{{ $agen->id }}">
-                                                        {{ $agen->name ?? 'ไม่พบเบอร์โทรศัพท์' }} </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-
                                     <div class="row">
+                                        <div class="col-xs-3 col-sm-3 col-md-3">
+                                            <div class="form-group">
+                                                <strong>
+                                                    วันที่โทรเข้า:</strong>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">
+                                                            <i class="far fa-calendar-alt"></i>
+                                                        </span>
+                                                    </div>
+                                                    <input type="text" class="form-control float-right" id="reservation">
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-2 col-sm-2 col-md-2">
+                                            <div class="form-group">
+                                                <strong><i class="fas fa-square-phone"></i> เบอร์ที่โทรเข้า:</strong>
+                                                {{-- {!! Form::text('telp', null, ['id' => 'telp', 'placeholder' => '', 'class' => 'form-control']) !!} --}}
+                                                <input type="text" name="telp" id="telp" class="form-control"
+                                                    autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-2 col-sm-2 col-md-2">
+                                            <div class="form-group">
+                                                <strong><i class="fas fa-user"></i>
+                                                    Agent ที่รับสาย:</strong>
+                                                <select style="width: 100%;" class="select2 form-control" id="agen"
+                                                    name="agen">
+                                                    <option value="" selected>ทั้งหมด</option>
+                                                    @foreach ($agens as $agen)
+                                                        <option value="{{ $agen->id }}">
+                                                            {{ $agen->name ?? 'ไม่พบเบอร์โทรศัพท์' }} </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
+
                                         <div class="col-xs-4 col-sm-4 col-md-4">
                                             <div class="form-group">
                                                 <button class="btn btn-success" id="searchButton">
