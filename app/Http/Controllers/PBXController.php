@@ -718,6 +718,22 @@ class PBXController extends Controller
                     'duration_warp' => $duration
                 ]);
 
+            DB::connection('remote_connection')
+                ->table('call_center.call_recording')
+                ->where('uniqueid', $resultb->uniqid)
+                ->update([
+                    'crm_id' => $user->id,
+                ]);
+
+            DB::connection('remote_connection')
+                ->table('call_center.call_recording')
+                ->where('uniqueid', $resultb->uniqid)
+                ->update([
+                    'crm_id' => $user->id,
+                ]);
+
+
+
             $ret = $this->issable->agent_unbreak($user->phone);
 
             $user->phone_status_id = 1;
@@ -762,25 +778,25 @@ class PBXController extends Controller
                 ->limit(1)
                 ->first();
 
-                    DB::connection('remote_connection')
-                        ->table('call_center.call_entry')
-                        ->where('uniqueid', $context->uniqid)
-                        ->update([
-                            'transfer' => $exten,
-                        ]);
-                    DB::connection('remote_connection')
-                        ->table('call_center.call_entry_today')
-                        ->where('uniqueid', $context->uniqid)
-                        ->update([
-                            'transfer' => $exten,
-                        ]);
+            DB::connection('remote_connection')
+                ->table('call_center.call_entry')
+                ->where('uniqueid', $context->uniqid)
+                ->update([
+                    'transfer' => $exten,
+                ]);
+            DB::connection('remote_connection')
+                ->table('call_center.call_entry_today')
+                ->where('uniqueid', $context->uniqid)
+                ->update([
+                    'transfer' => $exten,
+                ]);
 
-                return [
-                    'success' => true,
-                ];
-            } else {
-                return ['error' => false, 'message' => 'error'];
-            }
+            return [
+                'success' => true,
+            ];
+        } else {
+            return ['error' => false, 'message' => 'error'];
+        }
     }
 
 
