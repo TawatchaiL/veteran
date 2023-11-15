@@ -74,7 +74,10 @@ class VoicerecordController extends Controller
             if (!empty($request->get('agent'))) {
                 $agent = $request->input('agent');
                 if ($agent) {
-                    $datass->where('asteriskcdrdb.cdr.userfield', $agent);
+                    $datass->where(function ($query) use ($agent) {
+                        $query->where('asteriskcdrdb.cdr.userfield', $agent)
+                            ->orWhere('dst_userfield', $agent);
+                    });
                 }
             }
 
