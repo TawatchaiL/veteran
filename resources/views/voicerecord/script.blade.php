@@ -484,63 +484,6 @@
             $(':checkbox.flat').prop('checked', this.checked);
         });
 
-        $(".select2_single").select2({
-            maximumSelectionLength: 1,
-            allowClear: false,
-            //theme: 'bootstrap4'
-            placeholder: 'กรุณาเลือก'
-        });
-
-        $(".select2_single").on("select2:unselect", function(e) {
-            //log("select2:unselect", e);
-            //$('.products').html('');
-        });
-
-        $(".select2_singles").select2({
-            maximumSelectionLength: 1,
-            allowClear: false,
-            //theme: 'bootstrap4'
-            placeholder: 'กรุณาเลือก'
-        });
-
-        $(".select2_singlec").select2({
-            maximumSelectionLength: 1,
-            allowClear: false,
-            //theme: 'bootstrap4'
-            placeholder: 'กรุณาเลือก'
-        });
-
-        $(".select2_city").select2({
-            maximumSelectionLength: 1,
-            allowClear: false,
-            //theme: 'bootstrap4'
-            placeholder: 'กรุณาเลือกจังหวัด'
-        });
-        $(".select2_am").select2({
-            maximumSelectionLength: 1,
-            allowClear: false,
-            //theme: 'bootstrap4'
-            placeholder: 'กรุณาเลือกอำเภอ'
-        });
-        $(".select2_tm").select2({
-            maximumSelectionLength: 1,
-            allowClear: false,
-            //theme: 'bootstrap4'
-            placeholder: 'กรุณาเลือกตำบล'
-        });
-        $(".select2_casetype3").select2({
-            maximumSelectionLength: 1,
-            allowClear: true,
-            //theme: 'bootstrap4'
-            placeholder: 'สถานะเรื่องที่ติดต่อ'
-        });
-        $(".select2_multiple").select2({
-            maximumSelectionLength: 2,
-            //placeholder: "With Max Selection limit 4",
-            allowClear: false,
-            //theme: 'bootstrap4'
-            placeholder: 'กรุณาเลือก'
-        });
 
         $(".SDate").datepicker({
             dateFormat: "yy-mm-dd"
@@ -833,37 +776,14 @@
                 },
             ]
 
-            /*"aoColumnDefs": [
-            {
-            'bSortable': true,
-            'aTargets': [0]
-            } //disables sorting for column one
-            ],
-            "searching": false,
-            "lengthChange": false,
-            "paging": false,
-            'iDisplayLength': 10,
-            "sPaginationType": "full_numbers",
-            "dom": 'T<"clear">lfrtip',
-                */
+
 
         };
         var table = $('#Listview').DataTable(table_option);
-
-        console.log(table);
         $('#searchButton').on('click', function() {
-            //var agen = $('#agen').val();
             var telp = $('#telp').val();
-            console.log(telp);
-            if (/* agen == '' &&  */telp == '') {
-                toastr.error('Please input agen or telp', {
-                    timeOut: 5000
-                });
-
-            } else {
                 table.search('').draw();
                 $.fn.dataTable.ext.search.pop();
-
                 /* if (agen !== '' && telp !== '') {
                     table.column(3).search(telp).draw();
                     table.column(4).search(agen).draw();
@@ -875,7 +795,6 @@
                     table.column(4).search(agen).draw();
 
                 } */
-            }
         });
 
         $('#resetSearchButton').on('click', async function() {
@@ -953,50 +872,6 @@
 
         })
 
-
-        // Create product Ajax request.
-        $('#SubmitCreateForm').click(function(e) {
-            e.preventDefault();
-            $('.alert-danger').html('');
-            $('.alert-danger').hide();
-            $('.alert-success').html('');
-            $('.alert-success').hide();
-
-
-            $.ajax({
-                url: "{{ route('contacts.store') }}",
-                method: 'post',
-                data: {
-                    name: $('#AddName').val(),
-                    email: $('#AddEmail').val(),
-                    postcode: $('#AddPostcode').val(),
-                    address: $('#AddAddress').val(),
-                    telephone: $('#AddTelephone').val(),
-                    _token: token,
-                },
-                success: function(result) {
-                    if (result.errors) {
-                        $('.alert-danger').html('');
-                        $.each(result.errors, function(key, value) {
-                            $('.alert-danger').show();
-                            $('.alert-danger').append('<strong><li>' + value +
-                                '</li></strong>');
-                        });
-                    } else {
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('.alert-success').append('<strong><li>' + result.success +
-                            '</li></strong>');
-                        toastr.success(result.success, {
-                            timeOut: 5000
-                        });
-                        $('#Listview').DataTable().ajax.reload();
-                        $('.form').trigger('reset');
-                        $('#CreateModal').modal('hide');
-                    }
-                }
-            });
-        });
 
 
     });
