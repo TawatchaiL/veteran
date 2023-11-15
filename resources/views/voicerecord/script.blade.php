@@ -397,8 +397,8 @@
             type: "GET",
             url: "voicerecord/edit/" + dataId,
             success: function(response) {
-                // console.log(response.voic);
-                // console.log(response.remoteData2);
+                console.log(response.voic);
+                console.log(response.remoteData2);
                 const newUrl = 'wav/' + response.voic;
                 $('#vioc_name').text(response.voic_name);
                 $('#call_recording_id').val(response.remoteData2.id);
@@ -844,34 +844,6 @@
             table.button('4').trigger();
         });
 
-
-        let id;
-        $(document).on('click', '#getEditData', function(e) {
-            e.preventDefault();
-
-
-            $('.alert-danger').html('');
-            $('.alert-danger').hide();
-            $('.alert-success').html('');
-            $('.alert-success').hide();
-
-            id = $(this).data('id');
-            $.ajax({
-                url: "contacts/edit/" + id,
-                method: 'GET',
-                success: function(res) {
-                    $('#EditName').val(res.data.name);
-                    $('#EditEmail').val(res.data.email);
-                    $('#EditPostcode').val(res.data.postcode);
-                    $('#EditAddress').val(res.data.address);
-                    $('#EditTelephone').val(res.data.telephone);
-
-                    $('#EditModalBody').html(res.html);
-                    $('#EditModal').modal('show');
-                }
-            });
-
-        })
 
 
         retrieveFieldValues();

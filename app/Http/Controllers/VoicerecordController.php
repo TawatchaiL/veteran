@@ -194,7 +194,7 @@ class VoicerecordController extends Controller
 
         if (!empty($remoteData)) {
             $voic = $remoteData->recordingfile;
-            $voic_name = substr($voic, 14);
+            $voic_name = explode("/", $voic);
             $tooltips = Comment::where('call_recording_id', $id)->get();
         } else {
             $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')
@@ -205,7 +205,7 @@ class VoicerecordController extends Controller
             $tooltips = Comment::where('call_recording_id', $id)->get();
         }
 
-        return response()->json(['voic' => $voic, 'remoteData2' => $remoteData, 'voic_name' => $voic_name, 'tooltips' => $tooltips]);
+        return response()->json(['voic' => $voic, 'remoteData2' => $remoteData, 'voic_name' => end($voic_name), 'tooltips' => $tooltips]);
     }
 
     public function update(Request $request, $id)
