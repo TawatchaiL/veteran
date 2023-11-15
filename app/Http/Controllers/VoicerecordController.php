@@ -194,19 +194,21 @@ class VoicerecordController extends Controller
 
         if (!empty($remoteData)) {
             $voic = $remoteData->recordingfile;
-            $voic_name = explode("/", $voic);
+            $voic_name = end(explode("/", $voic));
             $tooltips = Comment::where('call_recording_id', $id)->get();
         } else {
             $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')
                 ->where('uniqueid', $id)
                 ->orderBy('calldate', 'asc')
                 ->first();
-            $voic = str_replace('/var/spool/asterisk/monitor/', '', $remoteData->recordingfile);
-            $voic_name = explode("/", $voic);
+            $avoic = explode("/", $remoteData->recordingfile);
+            $datep = explode("-", $remoteData->calldate);
+            $voic = $datep[0] . "/" . $datep[1] . "/" . $datep[2] . "/" . end($avoic);
+            $voic_name = end($avoic);
             $tooltips = Comment::where('call_recording_id', $id)->get();
         }
 
-        return response()->json(['voic' => $voic, 'remoteData2' => $remoteData, 'voic_name' => end($voic_name), 'tooltips' => $tooltips]);
+        return response()->json(['voic' => $voic, 'remoteData2' => $remoteData, 'voic_name' => $voic_name, 'tooltips' => $tooltips]);
     }
 
     public function update(Request $request, $id)
