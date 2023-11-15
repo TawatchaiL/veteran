@@ -201,7 +201,7 @@ class VoicerecordController extends Controller
                 ->where('uniqueid', $id)
                 ->orderBy('calldate', 'asc')
                 ->first();
-            $voic = $remoteData->recordingfile;
+            $voic = str_replace('/var/spool/asterisk/monitor/', '', $remoteData->recordingfile);
             $voic_name = explode("/", $voic);
             $tooltips = Comment::where('call_recording_id', $id)->get();
         }
