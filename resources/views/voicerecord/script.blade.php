@@ -293,7 +293,6 @@
                     customDialog.style.display = 'none'; // Close the dialog box
                     currentRegion.element.appendChild(tooltip);
 
-                    const callRecordingId = $('#call_recording_id').val();
                     const uniqueId = $('#uniqueid').val();
                     const csrfToken = document.querySelector('meta[name="csrf-token"]')
                         .getAttribute('content');
@@ -304,7 +303,6 @@
                             'X-CSRF-TOKEN': csrfToken
                         },
                         data: {
-                            call_recording_id: callRecordingId,
                             uniqueid: uniqueId,
                             comment: content,
                             start: region.start,
@@ -397,11 +395,10 @@
             type: "GET",
             url: "voicerecord/edit/" + dataId,
             success: function(response) {
-                console.log(response.voic);
-                console.log(response.remoteData2);
+                //console.log(response.voic);
+                //console.log(response.remoteData2);
                 const newUrl = 'wav/' + response.voic;
                 $('#vioc_name').text(response.voic_name);
-                $('#call_recording_id').val(response.remoteData2.id);
                 $('#uniqueid').val(response.remoteData2.uniqueid);
                 const tooltipsData = response.tooltips;
                 // console.log("tooltipsData");

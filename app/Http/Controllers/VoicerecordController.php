@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use App\Models\User;
@@ -196,7 +197,7 @@ class VoicerecordController extends Controller
             $voic = $remoteData->recordingfile;
             $avoic_name = explode("/", $voic);
             $voic_name = end($avoic_name);
-            $tooltips = Comment::where('call_recording_id', $id)->get();
+            $tooltips = Comment::where('uniqueid', $id)->get();
         } else {
             $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')
                 ->where('uniqueid', $id)
@@ -206,7 +207,7 @@ class VoicerecordController extends Controller
             $datep = explode("-", explode(" ", $remoteData->calldate)[0]);
             $voic = $datep[0] . "/" . $datep[1] . "/" . $datep[2] . "/" . end($avoic);
             $voic_name = end($avoic);
-            $tooltips = Comment::where('call_recording_id', $id)->get();
+            $tooltips = Comment::where('uniqueid', $id)->get();
         }
 
         return response()->json(['voic' => $voic, 'remoteData2' => $remoteData, 'voic_name' => $voic_name, 'tooltips' => $tooltips]);
@@ -217,7 +218,7 @@ class VoicerecordController extends Controller
         // $request->validate([
         //     'comment' => 'required|string|max:255',
         // ]);
-        $comment = Comment::findOrFail($id);
+        $comment = Comment::where('uniqueid', $id)->firstOrFail();
         $input = $request->all();
         $comment->update($input);
 
@@ -226,13 +227,13 @@ class VoicerecordController extends Controller
 
     public function comment(Request $request)
     {
-        $call_recording_id = $request->call_recording_id;
+        //$call_recording_id = $request->call_recording_id;
         $uniqueid = $request->uniqueid;
         $start = $request->start;
         $end = $request->end;
 
         $check_data = Comment::where([
-            ['call_recording_id', $call_recording_id],
+            //['call_recording_id', $call_recording_id],
             ['uniqueid', $uniqueid],
             ['start', $start],
             ['end', $end]
@@ -249,14 +250,13 @@ class VoicerecordController extends Controller
 
     public function destroy($id)
     {
-        // Code to delete the comment with the given ID
-        $comment = Comment::find($id);
+        try {
+            $comment = Comment::where('uniqueid', $id)->firstOrFail();
+            $comment->delete();
 
-        if (!$comment) {
+            return response()->json(['message' => 'Comment deleted successfully']);
+        } catch (ModelNotFoundException $e) {
             return response()->json(['message' => 'Comment not found'], 404);
         }
-
-        $comment->delete();
-        return response()->json(['message' => 'Comment deleted successfully']);
     }
 }

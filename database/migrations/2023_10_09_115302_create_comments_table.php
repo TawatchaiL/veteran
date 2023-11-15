@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('call_recording_id', 255)->nullable();
+            //$table->string('call_recording_id', 255)->nullable();
             $table->string('uniqueid', 255)->nullable();
             $table->string('comment', 255)->nullable();
             $table->string('start', 255)->nullable();
