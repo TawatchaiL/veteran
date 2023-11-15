@@ -93,18 +93,17 @@ class VoicerecordController extends Controller
 
             if (!empty($request->get('ctype'))) {
                 $ctype = $request->input('ctype');
+                $datass->where('asteriskcdrdb.cdr.accountcode', ($ctype == 0) ? '' : '!=', '');
+
                 if ($ctype == 0) {
-                    $datass->where('asteriskcdrdb.cdr.accountcode', '')
-                    ->where('asteriskcdrdb.cdr.userfield','=', NULL)
-                    ->where('asteriskcdrdb.cdr.dst_userfield','!=', NULL);
+                    $datass->whereNull('asteriskcdrdb.cdr.userfield')
+                        ->whereNotNull('asteriskcdrdb.cdr.dst_userfield');
                 } else if ($ctype == 1) {
-                    $datass->where('asteriskcdrdb.cdr.accountcode', '!=', '')
-                    ->where('asteriskcdrdb.cdr.userfield','!=', NULL)
-                    ->where('asteriskcdrdb.cdr.dst_userfield','=', NULL);
+                    $datass->whereNotNull('asteriskcdrdb.cdr.userfield')
+                        ->whereNull('asteriskcdrdb.cdr.dst_userfield');
                 } else if ($ctype == 2) {
-                    $datass->where('asteriskcdrdb.cdr.accountcode', '!=', '')
-                    ->where('asteriskcdrdb.cdr.userfield','!=', NULL)
-                    ->where('asteriskcdrdb.cdr.dst_userfield','!=', NULL);
+                    $datass->whereNotNull('asteriskcdrdb.cdr.userfield')
+                        ->whereNotNull('asteriskcdrdb.cdr.dst_userfield');
                 }
             }
 
