@@ -64,16 +64,16 @@
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
-                                            <strong>&nbsp;</strong>
-                                            <button class="btn btn-success" id="searchButton"> <i class="fas fa-search"></i>
-                                                Search </button>
+                                            <a class="btn btn-success" id="searchButton"> <i class="fas fa-search"></i>
+                                                Search </a>
+                                            <a class="btn bg-warning" id="resetSearchButton"> <i
+                                                    class="fa-solid fa-rotate"></i> Reset </a>
                                         </div>
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
                                             <strong>&nbsp;</strong>
-                                            <button class="btn bg-warning" id="resetSearchButton"> <i
-                                                    class="fa-solid fa-rotate"></i> Reset </button>
+
                                         </div>
                                     </div>
 
