@@ -485,40 +485,32 @@
         });
 
 
-        $(".SDate").datepicker({
-            dateFormat: "yy-mm-dd"
-        });
-        $(".EDate").datepicker({
-            dateFormat: "yy-mm-dd"
-        });
-
-
         var startDate;
         var endDate;
 
         function datesearch() {
             var currentDate = moment();
             // Set the start date to 7 days before today
-            startDate = moment(currentDate).subtract(7, 'days').format('YYYY-MM-DD');
+            startDate = moment(currentDate).subtract(30, 'days').format('YYYY-MM-DD');
             // Set the end date to the end of the current month
             endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
         }
 
         function storeFieldValues() {
             var dateStart = $('#reservation').val();
-            var searchType = $('#search_type').val();
-            var keyword = $('#keyword').val();
+            var sagent = $('#agen').val();
+            var stelp = $('#telp').val();
 
             // Store values in local storage
             localStorage.setItem('dateStart', dateStart);
-            localStorage.setItem('searchType', searchType);
-            localStorage.setItem('keyword', keyword);
+            localStorage.setItem('sagent', sagent);
+            localStorage.setItem('stelp', stelp);
         }
 
         function retrieveFieldValues() {
             var saveddateStart = localStorage.getItem('dateStart');
-            var savedSearchType = localStorage.getItem('searchType');
-            var savedKeyword = localStorage.getItem('keyword');
+            var savedsagent = localStorage.getItem('sagent');
+            var savedstelp = localStorage.getItem('stelp');
             // Set field values from local storage
             if (saveddateStart) {
                 var dateParts = saveddateStart.split(' - ');
@@ -527,16 +519,16 @@
             } else {
                 datesearch();
             }
-            if (savedSearchType) {
-                $('#search_type').val(savedSearchType);
+
+            if (savedsagent) {
+                $('#search_type').val(savedsagent);
             }
-            if (savedKeyword) {
-                $('#keyword').val(savedKeyword);
+            if (savedstelp) {
+                $('#telp').val(savedstelp);
             }
 
         }
-        // Call the function to set initial field values on page load
-        retrieveFieldValues();
+
 
         let daterange = () => {
             $('#reservation').daterangepicker({
@@ -552,7 +544,6 @@
                 storeFieldValues();
             });
         }
-        daterange();
 
         //$.noConflict();
         var token = ''
@@ -779,28 +770,29 @@
 
 
         };
+
         var table = $('#Listview').DataTable(table_option);
         $('#searchButton').on('click', function() {
             var telp = $('#telp').val();
-                table.search('').draw();
-                $.fn.dataTable.ext.search.pop();
-                /* if (agen !== '' && telp !== '') {
-                    table.column(3).search(telp).draw();
-                    table.column(4).search(agen).draw();
-                } */
-                if (telp !== '') {
-                    table.column(3).search(telp).draw();
-                }
-               /*  if (agen !== '') {
-                    table.column(4).search(agen).draw();
+            table.search('').draw();
+            $.fn.dataTable.ext.search.pop();
+            /* if (agen !== '' && telp !== '') {
+                table.column(3).search(telp).draw();
+                table.column(4).search(agen).draw();
+            } */
+            if (telp !== '') {
+                table.column(3).search(telp).draw();
+            }
+            /*  if (agen !== '') {
+                 table.column(4).search(agen).draw();
 
-                } */
+             } */
         });
 
         $('#resetSearchButton').on('click', async function() {
             localStorage.removeItem('dateStart');
-            localStorage.removeItem('searchType');
-            localStorage.removeItem('keyword');
+            localStorage.removeItem('sagent');
+            localStorage.removeItem('stelp');
 
             // Set field values to empty
             $('#telp').val('');
@@ -815,8 +807,9 @@
             }
             // Set the date range back to its default
             var currentDate = moment();
-            var startDate = moment(currentDate).subtract(7, 'days').format('YYYY-MM-DD');
+            var startDate = moment(currentDate).subtract(30, 'days').format('YYYY-MM-DD');
             var endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
+
             daterange();
             table = $('#Listview').DataTable(table_option);
             table.draw();
@@ -835,14 +828,6 @@
             table.button('4').trigger();
         });
 
-        $(document).on('click', '#CreateButton', function(e) {
-            e.preventDefault();
-            $('.alert-danger').html('');
-            $('.alert-danger').hide();
-            $('.alert-success').html('');
-            $('.alert-success').hide();
-            $('#CreateModal').modal('show');
-        });
 
         let id;
         $(document).on('click', '#getEditData', function(e) {
@@ -873,6 +858,8 @@
         })
 
 
+        retrieveFieldValues();
+        daterange();
 
     });
 </script>
