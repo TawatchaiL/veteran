@@ -243,7 +243,7 @@
                     tooltip.textContent = content; // Replace with your tooltip text
                     tooltip.style.paddingLeft = '10px';
                     customDialog.style.display = 'none'; // Close the dialog box
-                    currentRegion.element.appendChild(tooltip);
+                    region.element.appendChild(tooltip);
 
                     const uniqueId = $('#uniqueid').val();
                     const csrfToken = document.querySelector('meta[name="csrf-token"]')
