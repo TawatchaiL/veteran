@@ -310,6 +310,7 @@
                         },
                         success: function(response) {
                             console.log(response.message);
+                            region.id = response.id;
                             //$('#CreateModal').modal('hide');
                         },
                         error: function(error) {}

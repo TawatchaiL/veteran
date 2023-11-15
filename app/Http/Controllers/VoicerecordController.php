@@ -240,8 +240,8 @@ class VoicerecordController extends Controller
             return response()->json(['message' => 'ข้อมูลซ้ำ']);
         } else {
             $input = $request->all();
-            Comment::create($input);
-            return response()->json(['message' => 'Comment saved successfully']);
+            $comment = Comment::create($input);
+            return response()->json(['message' => 'Comment saved successfully', 'id' => $comment->id]);
         }
     }
 
