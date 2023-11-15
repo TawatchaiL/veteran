@@ -41,11 +41,13 @@ class VoicerecordController extends Controller
             ->orderBy('id', 'desc'); */
 
         $datass = DB::connection('remote_connection')
-            ->table('call_center.call_recording')
+            ->table('asteriskcdrdb.cdr')
             ->select('call_center.call_recording.*', 'asteriskcdrdb.cdr.*')
-            ->join('asteriskcdrdb.cdr', 'call_center.call_recording.uniqueid', '=', 'asteriskcdrdb.cdr.uniqueid')
+            //->join('call_center.call_recording', 'asteriskcdrdb.cdr.uniqueid', '=', 'call_center.call_recording.uniqueid')
             ->where('asteriskcdrdb.cdr.dstchannel', '!=', '')
-            ->orderBy('call_center.call_recording.id', 'desc');
+            ->where('asteriskcdrdb.cdr.recordingfile', '!=', '')
+            ->where('asteriskcdrdb.cdr.disposition', '=', 'ANSWERED')
+            ->orderBy('asteriskcdrdb.cdr.calldate', 'desc');
 
         $agens = User::orderBy('name', 'asc')->get();
         $agentArray = [];
@@ -64,7 +66,7 @@ class VoicerecordController extends Controller
                     if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
                         $startDate = $dateRangeArray[0];
                         $endDate = $dateRangeArray[1];
-                        $datass->whereBetween('call_center.call_recording.datetime_entry', [$startDate, $endDate]);
+                        $datass->whereBetween('asteriskcdrdb.cdr.calldate', [$startDate, $endDate]);
                     }
                 }
             }
@@ -72,7 +74,7 @@ class VoicerecordController extends Controller
             if (!empty($request->get('agent'))) {
                 $agent = $request->input('agent');
                 if ($agent) {
-                    $datass->where('call_center.call_recording.crm_id', $agent);
+                    $datass->where('asteriskcdrdb.cdr.crm_id', $agent);
                 }
             }
 
@@ -82,12 +84,12 @@ class VoicerecordController extends Controller
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
                 })
                 ->editColumn('cdate', function ($row) {
-                    $calldate = $row->datetime_entry;
+                    $calldate = $row->calldate;
                     list($date, $time) = explode(' ', $calldate);
                     return $date;
                 })
                 ->editColumn('ctime', function ($row) {
-                    $calldate = $row->datetime_entry;
+                    $calldate = $row->calldate;
                     list($date, $time) = explode(' ', $calldate);
                     return $time;
                 })
