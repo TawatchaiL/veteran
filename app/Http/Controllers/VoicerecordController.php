@@ -81,7 +81,7 @@ class VoicerecordController extends Controller
             $datas = $datass->get();
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
-                    return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
+                    return '<input type="checkbox" id="' . $row->uniqueid . '" class="flat" name="table_records[]" value="' . $row->uniqueid . '" >';
                 })
                 ->editColumn('cdate', function ($row) {
                     $calldate = $row->calldate;
