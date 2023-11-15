@@ -63,14 +63,18 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2">
-                                        <strong>&nbsp;</strong>
-                                        <button class="btn btn-success" id="searchButton"> <i class="fas fa-search"></i>
-                                            Search </button>
+                                        <div class="form-group">
+                                            <strong>&nbsp;</strong>
+                                            <button class="btn btn-success" id="searchButton"> <i class="fas fa-search"></i>
+                                                Search </button>
+                                        </div>
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2" style="align-items: flex-end;">
-                                        <strong>&nbsp;</strong>
-                                        <button class="btn bg-warning" id="resetSearchButton"> <i
-                                                class="fa-solid fa-rotate"></i> Reset </button>
+                                        <div class="form-group">
+                                            <strong>&nbsp;</strong>
+                                            <button class="btn bg-warning" id="resetSearchButton"> <i
+                                                    class="fa-solid fa-rotate"></i> Reset </button>
+                                        </div>
                                     </div>
 
                                 </ol>
