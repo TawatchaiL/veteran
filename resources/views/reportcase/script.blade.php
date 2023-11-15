@@ -58,9 +58,9 @@
                 var printWindow = window.open('', '_blank');
                 printWindow.document.open();
                 printWindow.document.write(
-                '<style>@page { size: landscape; }</style>'); // Set landscape orientation
+                    '<style>@page { size: landscape; }</style>'); // Set landscape orientation
                 printWindow.document.write(
-                '<style>body { font-family: Sarabun; }</style>'); // Set font style
+                    '<style>body { font-family: Sarabun; }</style>'); // Set font style
                 printWindow.document.write('<img src="' + imgData + '">');
 
 
@@ -124,9 +124,10 @@
                 var printWindow = window.open('', '_blank');
                 printWindow.document.open();
                 printWindow.document.write(
-                '<style>@page { size: landscape; }</style>'); // Set landscape orientation
+                    '<style>@page { size: landscape; }</style>'); // Set landscape orientation
                 printWindow.document.write(
-                '<link rel="stylesheet" href="dist/css/Sarabun.css"><style>body { font-family: Sarabun; }</style>'); // Set font style
+                    '<link rel="stylesheet" href="dist/css/Sarabun.css"><style>body { font-family: Sarabun; }</style>'
+                    ); // Set font style
                 printWindow.document.write('<img src="' + imgData + '">');
                 // Add an event listener for afterprint to close the print window
                 printWindow.addEventListener('afterprint', function() {
@@ -188,9 +189,9 @@
                 var printWindow = window.open('', '_blank');
                 printWindow.document.open();
                 printWindow.document.write(
-                '<style>@page { size: landscape; }</style>'); // Set landscape orientation
+                    '<style>@page { size: landscape; }</style>'); // Set landscape orientation
                 printWindow.document.write(
-                '<style>body { font-family: Sarabun; }</style>'); // Set font style
+                    '<style>body { font-family: Sarabun; }</style>'); // Set font style
                 printWindow.document.write('<img src="' + imgData + '">');
                 printWindow.document.close(); // Close the document for writing
 
@@ -297,6 +298,7 @@
 
         var startDate;
         var endDate;
+
         function datesearch() {
             var currentDate = moment();
             // Set the start date to 7 days before today
@@ -306,6 +308,7 @@
             startDate = moment().format('YYYY-MM-DD');
             endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
         }
+
         function datereset() {
             var currentDate = moment();
             startDate = moment().format('YYYY-MM-DD');
@@ -642,28 +645,27 @@
     });
 
 
-    function Loadchart(){
+    function Loadchart() {
         let options = {
-                series: [
-                        { name: [],
-                          data: []
-                        },
-                ],
-                title: {
-                        text: 'ผลรวมสายเข้าแยกตาม Agent',
-                        align: 'center',
-                        style: {
-                            fontSize: '16px',
-                            fontWeight: 'bold',
-                            fontFamily: 'Sarabun',
-                            color: '#263238'
-                        },
-                        margin: 10,
-                        offsetX: 0,
-                        offsetY: 0,
-                        floating: false,
-                    },
-                chart: {
+            series: [{
+                name: [],
+                data: []
+            }, ],
+            title: {
+                text: 'ผลรวมสายเข้าแยกตาม Agent',
+                align: 'center',
+                style: {
+                    fontSize: '16px',
+                    fontWeight: 'bold',
+                    fontFamily: 'Sarabun',
+                    color: '#263238'
+                },
+                margin: 10,
+                offsetX: 0,
+                offsetY: 0,
+                floating: false,
+            },
+            chart: {
                 height: 400,
                 type: "line",
                 zoom: {
@@ -672,111 +674,119 @@
                 toolbar: {
                     show: false
                 }
-                },
-                markers: {
+            },
+            markers: {
                 show: true,
                 size: 6
-                },
-                dataLabels: {
+            },
+            dataLabels: {
                 enabled: false
-                },
-                legend: {
+            },
+            legend: {
                 show: false,
                 showForSingleSeries: false,
                 position: "top",
                 horizontalAlign: "right"
-                },
-                stroke: {
+            },
+            stroke: {
                 curve: "smooth",
                 linecap: "round"
-                },
-                grid: {
+            },
+            grid: {
                 row: {
                     colors: ["#f3f3f3", "transparent"],
                     opacity: 0.5
                 }
-                },
-                xaxis: {
+            },
+            xaxis: {
                 categories: []
-                },
-                labels: [],
-                tooltip: {
+            },
+            labels: [],
+            tooltip: {
                 y: {
                     formatter: function(val) {
                         return " จำนวน " + val + "  "
                     }
                 }
             }
-            };
-            let optionsdonut = {
+        };
+        let optionsdonut = {
 
-                series: [],
-                chart: {
-                    type: 'donut',
-                    height: 380,
-                    toolbar: {
-                        show: false
+            series: [],
+            chart: {
+                type: 'donut',
+                height: 380,
+                toolbar: {
+                    show: false
+                },
+            },
+            colors: ['#E91E63', '#2E93fA', '#546E7A', '#66DA26', '#FF9800', '#4ECDC4', '#C7F464', '#81D4FA',
+                '#A5978B', '#FD6A6A'
+            ],
+            fill: {
+                type: 'gradient',
+            },
+            title: {
+                text: 'ผลรวมสายเข้าแยกตาม Agent',
+                align: 'center',
+                style: {
+                    fontSize: '16px',
+                    fontWeight: 'bold',
+                    fontFamily: 'Sarabun',
+                    color: '#263238'
+                },
+                margin: 10,
+                offsetX: 0,
+                offsetY: 0,
+                floating: false,
+            },
+            labels: [],
+            responsive: [{
+                breakpoint: 200,
+                options: {
+                    chart: {
+                        width: 30,
                     },
-                },
-                colors: ['#E91E63','#2E93fA','#546E7A','#66DA26','#FF9800','#4ECDC4','#C7F464','#81D4FA','#A5978B','#FD6A6A'],
-                fill: {
-                    type: 'gradient',
-                },
-                title: {
-                    text: 'ผลรวมสายเข้าแยกตาม Agent',
-                    align: 'center',
-                    style: {
-                        fontSize: '16px',
-                        fontWeight: 'bold',
-                        fontFamily: 'Sarabun',
-                        color: '#263238'
-                    },
-                    margin: 10,
-                    offsetX: 0,
-                    offsetY: 0,
-                    floating: false,
-                },
-                labels: [],
-                responsive: [{
-                    breakpoint: 200,
-                    options: {
-                        chart: {
-                            width: 30,
-                        },
-                        legend: {
-                            position: 'bottom'
-                        }
+                    legend: {
+                        position: 'bottom'
                     }
-                }]
-                };
-                
-                var rdate = $('#reservation').val();
-                var rstatus = 'report';
-                $.ajax({
-                url: '{{ route('reportcase') }}',
-                data: {
-                    sdate: rdate,
-                    rstatus: rstatus
-                },
-                method: 'GET',
-                success: function(res) {
-                    options.series[0].data = res.datag;
-                    options.xaxis.categories = res.datal;
-                    optionsdonut.labels = res.datal; 
-                    optionsdonut.series = res.datag;
-                        var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
-                        chart2.render();
-
-                        var chart = new ApexCharts(document.querySelector("#bar_graph"), options);
-                        chart.render();
-                            chart.updateOptions({chart: {type: "bar",animate: true},
-                                                labels: '',
-                                                stroke: {width: 0}
-                            });
-                            options.series =  res.datag;
-                        var chart3 = new ApexCharts(document.querySelector("#pie_graph"), optionsdonut);
-                            chart3.render();
                 }
-            });
+            }]
+        };
+
+        var rdate = $('#reservation').val();
+        var rstatus = 'report';
+        $.ajax({
+            url: '{{ route('reportcase') }}',
+            data: {
+                sdate: rdate,
+                rstatus: rstatus
+            },
+            method: 'GET',
+            success: function(res) {
+                options.series[0].data = res.datag;
+                options.xaxis.categories = res.datal;
+                optionsdonut.labels = res.datal;
+                optionsdonut.series = res.datag;
+                var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
+                chart2.render();
+
+                var chart = new ApexCharts(document.querySelector("#bar_graph"), options);
+                chart.render();
+                chart.updateOptions({
+                    chart: {
+                        type: "bar",
+                        animate: true
+                    },
+                    labels: '',
+                    stroke: {
+                        width: 0
+                    }
+                });
+                options.series = res.datag;
+                var chart3 = new ApexCharts(document.querySelector("#pie_graph"), optionsdonut);
+                chart3.render();
+            }
+        });
     }
 </script>

@@ -45,7 +45,7 @@ class VoicerecordController extends Controller
             ->join('asteriskcdrdb.cdr', 'call_center.call_recording.uniqueid', '=', 'asteriskcdrdb.cdr.uniqueid')
             ->orderBy('id', 'desc');
 
-        $agens = DB::connection('remote_connection')->table('asterisk.devices')->orderBy('id', 'desc')->get();
+        $agens = User::orderBy('name', 'asc')->get();
 
         if ($request->ajax()) {
 

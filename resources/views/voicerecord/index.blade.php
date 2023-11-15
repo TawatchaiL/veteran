@@ -56,7 +56,7 @@
                                                 name="agen">
                                                 <option value="" selected>ทั้งหมด</option>
                                                 @foreach ($agens as $agen)
-                                                    <option value="{{ $agen->user }}">{{ $agen->user ?? 'ไม่พบเบอร์โทรศัพท์'}} </option>
+                                                    <option value="{{ $agen->id }}">{{ $agen->name ?? 'ไม่พบเบอร์โทรศัพท์'}} </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -70,7 +70,7 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
-                                                    <button type="button" class="btn bg-gradient-warning" id="resetSearchButton"> <i class="fa-solid fa-rotate"></i> Reset </button>
+                                                    <button type="button" class="btn bg-warning" id="resetSearchButton"> <i class="fa-solid fa-rotate"></i> Reset </button>
                                                 </div>
                                             </div>
                                         </div>
