@@ -1,7 +1,7 @@
 <script src="dist/js/html2canvas.min.js"></script>
 <script src='dist/js/jspdf.min.js'></script>
 <script src="dist/js/jspdf.plugin.autotable.min.js"></script>
-<script src="/js/app.js?v=1"></script>
+{{-- <script src="/js/app.js?v=1"></script> --}}
 {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 <script type="module">
     import WaveSurfer from 'https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js'
@@ -560,6 +560,7 @@
             // Set the end date to the end of the current month
             endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
         }
+
         function storeFieldValues() {
             var dateStart = $('#reservation').val();
             var searchType = $('#search_type').val();
@@ -570,6 +571,7 @@
             localStorage.setItem('searchType', searchType);
             localStorage.setItem('keyword', keyword);
         }
+
         function retrieveFieldValues() {
             var saveddateStart = localStorage.getItem('dateStart');
             var savedSearchType = localStorage.getItem('searchType');
@@ -617,11 +619,12 @@
             }
         });
 
-        const table_option ={
+        const table_option = {
 
             ajax: {
                 data: function(d) {
                     d.sdate = $('#reservation').val();
+                    d.agent = $('#agen').val();
                     //d.search = $('input[type="search"]').val();
                 }
             },
@@ -849,10 +852,10 @@
 
         console.log(table);
         $('#searchButton').on('click', function() {
-            var agen = $('#agen').val();
+            //var agen = $('#agen').val();
             var telp = $('#telp').val();
             console.log(telp);
-            if (agen == '' && telp == '') {
+            if (/* agen == '' &&  */telp == '') {
                 toastr.error('Please input agen or telp', {
                     timeOut: 5000
                 });
@@ -861,19 +864,17 @@
                 table.search('').draw();
                 $.fn.dataTable.ext.search.pop();
 
-                if (agen !== '' && telp !== '') {
+                /* if (agen !== '' && telp !== '') {
                     table.column(3).search(telp).draw();
                     table.column(4).search(agen).draw();
-                }
-                if(telp !== ''){
+                } */
+                if (telp !== '') {
                     table.column(3).search(telp).draw();
                 }
-                if(agen !== ''){
+               /*  if (agen !== '') {
                     table.column(4).search(agen).draw();
 
-                }
-
-
+                } */
             }
         });
 

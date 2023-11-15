@@ -24,10 +24,10 @@
                             <div class="col-sm-12">
                                 <ol class="breadcrumb float-sm-center">
 
-                                    <div class="col-xs-2 col-sm-2 col-md-2">
+                                    <div class="col-xs-3 col-sm-3 col-md-3">
                                         <div class="form-group">
                                             <strong>
-                                                Start Date Filter:</strong>
+                                                วันที่โทรเข้า:</strong>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">
@@ -42,7 +42,7 @@
 
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
-                                            <strong><i class="fas fa-square-phone"></i> เบอร์โทรศัพท์:</strong>
+                                            <strong><i class="fas fa-square-phone"></i> เบอร์ที่โทรเข้า:</strong>
                                             {{-- {!! Form::text('telp', null, ['id' => 'telp', 'placeholder' => '', 'class' => 'form-control']) !!} --}}
                                             <input type="text" name="telp" id="telp" class="form-control"
                                                 autocomplete="off">
@@ -56,23 +56,18 @@
                                                 name="agen">
                                                 <option value="" selected>ทั้งหมด</option>
                                                 @foreach ($agens as $agen)
-                                                    <option value="{{ $agen->user }}">{{ $agen->user ?? 'ไม่พบเบอร์โทรศัพท์'}} </option>
+                                                    <option value="{{ $agen->id }}">
+                                                        {{ $agen->name ?? 'ไม่พบเบอร์โทรศัพท์' }} </option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-xs-2 col-sm-2 col-md-2 align-self-end">
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <button type="submit" class="btn btn-success" id="searchButton"> <i class="fas fa-search"></i> Search </button>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <button type="button" class="btn bg-gradient-warning" id="resetSearchButton"> <i class="fa-solid fa-rotate"></i> Reset </button>
-                                                </div>
-                                            </div>
+                                    <div class="col-xs-2 col-sm-2 col-md-2 align-self-end text-right">
+                                        <div class="form-group">
+                                            <a class="btn btn-success" id="searchButton"> <i class="fas fa-search"></i>
+                                                Search </a>
+                                            <a class="btn bg-warning" id="resetSearchButton"> <i
+                                                    class="fa-solid fa-rotate"></i> Reset </a>
                                         </div>
                                     </div>
                                 </ol>

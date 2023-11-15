@@ -42,10 +42,12 @@ class VoicerecordController extends Controller
 
         $datass = DB::connection('remote_connection')
             ->table('call_center.call_recording')
+            ->select('call_center.call_recording.*', 'asteriskcdrdb.cdr.*')
             ->join('asteriskcdrdb.cdr', 'call_center.call_recording.uniqueid', '=', 'asteriskcdrdb.cdr.uniqueid')
-            ->orderBy('id', 'desc');
+            ->where('asteriskcdrdb.cdr.dstchannel', '!=', '')
+            ->orderBy('call_center.call_recording.id', 'desc');
 
-        $agens = DB::connection('remote_connection')->table('asterisk.devices')->orderBy('id', 'desc')->get();
+        $agens = User::orderBy('name', 'asc')->get();
 
         if ($request->ajax()) {
 
@@ -57,8 +59,15 @@ class VoicerecordController extends Controller
                     if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
                         $startDate = $dateRangeArray[0];
                         $endDate = $dateRangeArray[1];
-                        $datass->whereBetween('datetime_entry', [$startDate, $endDate]);
+                        $datass->whereBetween('call_center.call_recording.datetime_entry', [$startDate, $endDate]);
                     }
+                }
+            }
+
+            if (!empty($request->get('agent'))) {
+                $agent = $request->input('agent');
+                if ($agent) {
+                    $datass->where('call_center.call_recording.crm_id', $agent);
                 }
             }
 
@@ -117,10 +126,8 @@ class VoicerecordController extends Controller
         }
 
         return view('voicerecord.index', [
-
             'datas' => $datass,
             'agens' => $agens,
-
         ]);
     }
 
