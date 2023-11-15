@@ -323,7 +323,6 @@
 
         });
 
-        //รอทำ พน อัพเดต
         wsRegions.on('region-updated', (region) => {
             console.log('Updated region', region)
             const regionId = region.id;

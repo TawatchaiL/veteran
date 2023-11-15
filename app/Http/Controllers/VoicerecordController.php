@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use App\Models\User;
@@ -218,7 +217,7 @@ class VoicerecordController extends Controller
         // $request->validate([
         //     'comment' => 'required|string|max:255',
         // ]);
-        $comment = Comment::where('uniqueid', $id)->firstOrFail();
+        $comment = Comment::findOrFail($id);
         $input = $request->all();
         $comment->update($input);
 
@@ -250,13 +249,14 @@ class VoicerecordController extends Controller
 
     public function destroy($id)
     {
-        try {
-            $comment = Comment::where('uniqueid', $id)->firstOrFail();
-            $comment->delete();
+        // Code to delete the comment with the given ID
+        $comment = Comment::find($id);
 
-            return response()->json(['message' => 'Comment deleted successfully']);
-        } catch (ModelNotFoundException $e) {
+        if (!$comment) {
             return response()->json(['message' => 'Comment not found'], 404);
         }
+
+        $comment->delete();
+        return response()->json(['message' => 'Comment deleted successfully']);
     }
 }
