@@ -95,13 +95,13 @@ class VoicerecordController extends Controller
                 })
                 ->editColumn('telno', function ($row) use ($agentArray) {
                     if ($row->accountcode !== '') {
-                        return $row->src;
-                    } else {
                         if (!empty($row->userfield)) {
                             return $agentArray[$row->userfield]['name'] . " ( " . $row->src . " ) ";
                         } else {
                             return $row->src;
-                        }
+                        }s
+                    } else {
+                        return $row->src;
                     }
                 })
                 ->editColumn('agent', function ($row) use ($agentArray) {
