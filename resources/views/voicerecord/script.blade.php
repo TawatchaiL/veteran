@@ -235,39 +235,6 @@
             button.textContent = 'X';
             customDialog.style.display = 'block';
 
-             // Create a tooltip element
-             const tooltip = document.createElement('div');
-                    const content = 'dddd';
-
-                    tooltip.className = 'region-tooltip';
-                    tooltip.textContent = content; // Replace with your tooltip text
-                    tooltip.style.paddingLeft = '10px';
-                    customDialog.style.display = 'none'; // Close the dialog box
-                    region.element.appendChild(tooltip);
-
-                    const uniqueId = $('#uniqueid').val();
-                    const csrfToken = document.querySelector('meta[name="csrf-token"]')
-                        .getAttribute('content');
-                    $.ajax({
-                        type: "get",
-                        url: "/voicerecord/comment",
-                        headers: {
-                            'X-CSRF-TOKEN': csrfToken
-                        },
-                        data: {
-                            uniqueid: uniqueId,
-                            comment: content,
-                            start: region.start,
-                            end: region.end,
-                        },
-                        success: function(response) {
-                            console.log(response.message);
-                            region.id = response.id;
-                            //$('#CreateModal').modal('hide');
-                        },
-                        error: function(error) {}
-                    });
-
             button.addEventListener('click', () => {
                 // console.log('comments_id : ' + region.id);
                 // console.log('start : ' + region.start);
@@ -316,7 +283,38 @@
                         tooltip.remove();
                     });
 
+                    // Create a tooltip element
+                    const tooltip = document.createElement('div');
+                    const content = contentInput.value;
 
+                    tooltip.className = 'region-tooltip';
+                    tooltip.textContent = content; // Replace with your tooltip text
+                    tooltip.style.paddingLeft = '10px';
+                    customDialog.style.display = 'none'; // Close the dialog box
+                    currentRegion.element.appendChild(tooltip);
+
+                    const uniqueId = $('#uniqueid').val();
+                    const csrfToken = document.querySelector('meta[name="csrf-token"]')
+                        .getAttribute('content');
+                    $.ajax({
+                        type: "get",
+                        url: "/voicerecord/comment",
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken
+                        },
+                        data: {
+                            uniqueid: uniqueId,
+                            comment: content,
+                            start: region.start,
+                            end: region.end,
+                        },
+                        success: function(response) {
+                            console.log(response.message);
+                            region.id = response.id;
+                            //$('#CreateModal').modal('hide');
+                        },
+                        error: function(error) {}
+                    });
 
                 }
             });
