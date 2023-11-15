@@ -543,7 +543,7 @@
                     success: function(res) {
                         $('#Edithn').val(res.datax.datac.hn);
 
-                        var arrayDate=res.data.adddate.split("-");
+                        var arrayDate=res.datax.datac.adddate.split("-");
 				        arrayDate[0]=parseInt(arrayDate[0])+543;
                         $('#Editadddate').val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
 
@@ -553,7 +553,7 @@
                         $('#Editlname').val(res.datax.datac.lname);
                         $('#Editsex').val(res.datax.datac.sex);
 
-                        var arrayDateb=res.data.birthday.split("-");
+                        var arrayDateb=res.datax.datac.birthday.split("-");
 				        arrayDateb[0]=parseInt(arrayDateb[0])+543;
                         $('#Editbirthday').val(arrayDateb[0]+"-"+arrayDateb[1]+"-"+arrayDateb[2]);
                         //$('#Editbirthday').val(res.datax.datac.birthday);
