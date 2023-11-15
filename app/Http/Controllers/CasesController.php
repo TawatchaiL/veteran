@@ -39,16 +39,18 @@ class CasesController extends Controller
             }
             if ($request->input('seachtype') === "0") {
                 $datas = DB::table('crm_cases')
-                ->select('crm_cases.id as id','hn', DB::raw("concat(fname, ' ', lname) as name"),'phoneno', 'crm_cases.created_at', 'crm_cases.casetype1 as casename', 'casestatus', 'tranferstatus', 'crm_cases.agent')
+                ->select('crm_cases.id as id','hn', DB::raw("concat(fname, ' ', lname) as name"),'phoneno', 'crm_cases.created_at', 'crm_cases.casetype1 as casename', 'casestatus', 'tranferstatus', 'users.name as agent')
                 ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
+                ->join('users', 'crm_cases.agent', '=', 'users.id')
                 //->join('case_types', 'crm_cases.casetype1', '=', 'case_types.id')
                 ->whereRaw('crm_cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
                 //->where('crm_cases.contact_id', '=', request('id'))
                 ->get();
             }else if ($request->input('seachtype') === "1") {
                 $datas = DB::table('crm_cases')
-                ->select('crm_cases.id as id','hn', DB::raw("concat(fname, ' ', lname) as name"),'phoneno', 'crm_cases.created_at', 'crm_cases.casetype1 as casename', 'casestatus', 'tranferstatus', 'crm_cases.agent')
+                ->select('crm_cases.id as id','hn', DB::raw("concat(fname, ' ', lname) as name"),'phoneno', 'crm_cases.created_at', 'crm_cases.casetype1 as casename', 'casestatus', 'tranferstatus', 'users.name as agent')
                 ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
+                ->join('users', 'crm_cases.agent', '=', 'users.id')
                 //->join('case_types', 'crm_cases.casetype1', '=', 'case_types.id')
                 ->where('casestatus', '=', 'กำลังดำเนินการ')
                 ->whereRaw('crm_cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
@@ -56,8 +58,9 @@ class CasesController extends Controller
                 ->get();
             }else if ($request->input('seachtype') === "2") {
                 $datas = DB::table('crm_cases')
-                ->select('crm_cases.id as id','hn', DB::raw("concat(fname, ' ', lname) as name"),'phoneno', 'crm_cases.created_at', 'crm_cases.casetype1 as casename', 'casestatus', 'tranferstatus', 'crm_cases.agent')
+                ->select('crm_cases.id as id','hn', DB::raw("concat(fname, ' ', lname) as name"),'phoneno', 'crm_cases.created_at', 'crm_cases.casetype1 as casename', 'casestatus', 'tranferstatus', 'users.name as agent')
                 ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
+                ->join('users', 'crm_cases.agent', '=', 'users.id')
                 //->join('case_types', 'crm_cases.casetype1', '=', 'case_types.id')
                 ->where('casestatus', '=', 'ปิดเคส')
                 ->whereRaw('crm_cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
@@ -65,8 +68,9 @@ class CasesController extends Controller
                 ->get();
             }else if ($request->input('seachtype') === "3") {
                 $datas = DB::table('crm_cases')
-                ->select('crm_cases.id as id','hn', DB::raw("concat(fname, ' ', lname) as name"),'phoneno', 'crm_cases.created_at', 'crm_cases.casetype1 as casename', 'casestatus', 'tranferstatus', 'crm_cases.agent')
+                ->select('crm_cases.id as id','hn', DB::raw("concat(fname, ' ', lname) as name"),'phoneno', 'crm_cases.created_at', 'crm_cases.casetype1 as casename', 'casestatus', 'tranferstatus', 'users.name as agent')
                 ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
+                ->join('users', 'crm_cases.agent', '=', 'users.id')
                 //->join('case_types', 'crm_cases.casetype1', '=', 'case_types.id')
                 ->where('crm_contacts.hn', 'like', '%' . $request->input('seachtext') . '%')
                 ->whereRaw('crm_cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
@@ -74,8 +78,9 @@ class CasesController extends Controller
                 ->get();
             }else if ($request->input('seachtype') === "4") {
                 $datas = DB::table('crm_cases')
-                ->select('crm_cases.id as id','hn', DB::raw("concat(fname, ' ', lname) as name"),'phoneno', 'crm_cases.created_at', 'crm_cases.casetype1 as casename', 'casestatus', 'tranferstatus', 'crm_cases.agent')
+                ->select('crm_cases.id as id','hn', DB::raw("concat(fname, ' ', lname) as name"),'phoneno', 'crm_cases.created_at', 'crm_cases.casetype1 as casename', 'casestatus', 'tranferstatus', 'users.name as agent')
                 ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
+                ->join('users', 'crm_cases.agent', '=', 'users.id')
                 //->join('case_types', 'crm_cases.casetype1', '=', 'case_types.id')
                 ->where('crm_contacts.fname', 'like', '%' . $request->input('seachtext') . '%')
                 ->orWhere('crm_contacts.lname', 'like', '%' . $request->input('seachtext') . '%')
@@ -83,8 +88,9 @@ class CasesController extends Controller
                 ->get();
             }else if ($request->input('seachtype') === "5") {
                 $datas = DB::table('crm_cases')
-                ->select('crm_cases.id as id','hn', DB::raw("concat(fname, ' ', lname) as name"),'phoneno', 'crm_cases.created_at', 'crm_cases.casetype1 as casename', 'casestatus', 'tranferstatus', 'crm_cases.agent')
+                ->select('crm_cases.id as id','hn', DB::raw("concat(fname, ' ', lname) as name"),'phoneno', 'crm_cases.created_at', 'crm_cases.casetype1 as casename', 'casestatus', 'tranferstatus', 'users.name as agent')
                 ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
+                ->join('users', 'crm_cases.agent', '=', 'users.id')
                 //->join('case_types', 'crm_cases.casetype1', '=', 'case_types.id')
                 ->where('crm_contacts.phoneno', 'like', '%' . $request->input('seachtext') . '%')
                 ->orWhere('crm_contacts.telhome', 'like', '%' . $request->input('seachtext') . '%')
@@ -280,7 +286,7 @@ class CasesController extends Controller
         }
 
         $input = $request->all();
-        $input = array_merge($input, ['agent' => $user->phone]);
+        $input = array_merge($input, ['agent' => $user->id]);
         $contract = CrmCaseComment::create($input);
 
         //$case_id = $request->input('case_id');
