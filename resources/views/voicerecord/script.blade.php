@@ -221,10 +221,13 @@
         const customDialog = document.getElementById('custom-dialog');
         const contentInput = document.getElementById('content-input');
         const addContentButton = document.getElementById('add-content-button');
-        wsRegions.enableDragSelection({
-            color: 'rgba(255, 0, 0, 0.1)',
-            //content: 'Region Content',
-        });
+
+        @can('voice-record-supervisor')
+            wsRegions.enableDragSelection({
+                color: 'rgba(255, 0, 0, 0.1)',
+                //content: 'Region Content',
+            });
+        @endcan
 
         let currentRegion;
         wsRegions.on('region-created', (region) => {
