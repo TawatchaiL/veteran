@@ -165,8 +165,8 @@
                 {!! Form::close() !!}
             </div>
             <div class="modal-footer {{-- justify-content-between --}}">
-                {{--   <button type="button" class="btn btn-success" id="SubmitCreateForm"><i class="fas fa-download"></i>
-                    บันทึกข้อมูล</button> --}}
+                <button type="button" class="btn btn-success" id="SubmitDownloadForm"><i class="fas fa-download"></i>
+                    Download</button>
                 <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i
                         class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
             </div>
