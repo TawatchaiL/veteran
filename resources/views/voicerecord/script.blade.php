@@ -270,7 +270,7 @@
                             },
                             data: {
                                 uniqueid: uniqueId,
-                                comment: content,
+                                comment: e,
                                 start: region.start,
                                 end: region.end,
                             },
