@@ -56,7 +56,7 @@ class DetailcaseinternalnumberController extends Controller
             ->get();
 
         if ($request->ajax()) {
-            $agents = User::orderBy("name", "asc")->get();
+            $agents = User::orderBy("id", "asc")->get();
             $agent_data = array();
             foreach ($agents as $agent) {
                 $agent_data[$agent->id] = $agent->name;
@@ -66,7 +66,11 @@ class DetailcaseinternalnumberController extends Controller
                     return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 })
                 ->addColumn('agent', function ($row) use ($agent_data){
-                    return $agent_data[$row->agentid];
+                    if (isset($agent_data[$row->agentid])) {
+                        return $agent_data[$row->agentid];
+                    } else {
+                        return 'Agent not found';
+                    }
                 })
                 ->rawColumns(['checkbox', 'action', 'agent'])->toJson();
         }
