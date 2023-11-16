@@ -74,7 +74,7 @@
         const toggleMuteButton = document.querySelector('#toggleMuteBtn')
         const setMuteOnButton = document.querySelector('#setMuteOnBtn')
         const setMuteOffButton = document.querySelector('#setMuteOffBtn')
-        let oldcreate = false;
+        let oldcreate = true;
 
 
 
@@ -217,6 +217,7 @@
                         console.log('One or more properties are null in the tooltip data');
                     }
                 });
+                oldcreate = false;
             } else {
                 // Handle the case where tooltipsData is null
                 console.log('Tooltips data is null');
@@ -241,13 +242,16 @@
             button.className = 'remove-region-button';
             button.textContent = 'X';
 
-            if (oldcreate === false) {
+            console.log(oldcreate)
+            if (oldcreate == false) {
                 ezBSAlert({
                     type: "prompt",
                     messageText: "Enter Something",
                     alertType: "primary"
                 }).done(function(e) {
-                    if (e !== '') {}
+                    if (e !== '') {} else {
+                        region.remove();
+                    }
                 });
             }
 
@@ -258,32 +262,34 @@
                 @can('voice-record-supervisor')
                     region.remove();
 
-                    const commentId = region.id;
-                    const csrfToken = document.querySelector('meta[name="csrf-token"]')
-                        .getAttribute('content');
-                    $.ajax({
-                        type: "DELETE",
-                        url: '/voicerecord/comment/' + commentId,
-                        headers: {
-                            'X-CSRF-TOKEN': csrfToken
-                        },
+                    if (oldcreate == true) {
+                        const commentId = region.id;
+                        const csrfToken = document.querySelector('meta[name="csrf-token"]')
+                            .getAttribute('content');
+                        $.ajax({
+                            type: "DELETE",
+                            url: '/voicerecord/comment/' + commentId,
+                            headers: {
+                                'X-CSRF-TOKEN': csrfToken
+                            },
 
-                        success: function(response) {
-                            //region.remove();
-                            //$('#CreateModal').modal('hide');
-                            // console.log(wavesurfer);
-                            // if (wavesurfer) {
-                            //     // Destroy the WaveSurfer instance to clear it
-                            //     wavesurfer.destroy();
-                            //     wavesurfer = null; // Set wavesurfer to null to indicate it's destroyed
-                            // }
+                            success: function(response) {
+                                //region.remove();
+                                //$('#CreateModal').modal('hide');
+                                // console.log(wavesurfer);
+                                // if (wavesurfer) {
+                                //     // Destroy the WaveSurfer instance to clear it
+                                //     wavesurfer.destroy();
+                                //     wavesurfer = null; // Set wavesurfer to null to indicate it's destroyed
+                                // }
 
-                            console.log(response.message);
+                                console.log(response.message);
 
 
-                        },
-                        error: function(error) {}
-                    });
+                            },
+                            error: function(error) {}
+                        });
+                    }
                 @else
                     toastr.error('คุณไม่มีสิทธิ์ลบ Comment', {
                         timeOut: 5000
