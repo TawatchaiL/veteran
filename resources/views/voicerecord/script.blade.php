@@ -211,7 +211,6 @@
 
                         // Attach the tooltip to the region's element
                         region.element.appendChild(tooltip);
-                        customDialog.style.display = 'none';
                     } else {
                         // Handle the case where any of the properties is null
                         console.log('One or more properties are null in the tooltip data');
@@ -224,9 +223,6 @@
             }
         });
 
-        const customDialog = document.getElementById('custom-dialog');
-        const contentInput = document.getElementById('content-input');
-        const addContentButton = document.getElementById('add-content-button');
 
         @can('voice-record-supervisor')
             wsRegions.enableDragSelection({
@@ -242,13 +238,12 @@
             button.className = 'remove-region-button';
             button.textContent = 'X';
 
-            console.log(oldcreate)
             if (oldcreate == false) {
                 ezBSAlert({
                     type: "prompt",
                     okButtonText: "บันทึกข้อมูล",
                     messageText: "กรุณาระบุ Comment",
-                    alertType: "warning"
+                    alertType: "primary"
                 }).done(function(e) {
                     if (e !== '') {
                         const tooltip = document.createElement('div');
@@ -257,7 +252,6 @@
                         tooltip.className = 'region-tooltip';
                         tooltip.textContent = e; // Replace with your tooltip text
                         tooltip.style.paddingLeft = '10px';
-                        customDialog.style.display = 'none'; // Close the dialog box
                         currentRegion.element.appendChild(tooltip);
 
                         const uniqueId = $('#uniqueid').val();
@@ -287,7 +281,7 @@
                     }
                 });
             }
-            customDialog.style.display = 'block';
+
             button.addEventListener('click', () => {
                 @can('voice-record-supervisor')
                     region.remove();
@@ -316,56 +310,6 @@
                 @endcan
             });
 
-            document.getElementById('add-content-button').addEventListener('click', function(e) {
-                // addContentButton.addEventListener('click', () => {
-                // console.log('current Region');
-                // console.log(currentRegion);
-
-                e.preventDefault();
-                if (currentRegion) {
-
-                    // Remove any existing tooltips in the current region
-                    const existingTooltips = currentRegion.element.querySelectorAll(
-                        '.region-tooltip');
-                    existingTooltips.forEach((tooltip) => {
-                        tooltip.remove();
-                    });
-
-                    // Create a tooltip element
-                    const tooltip = document.createElement('div');
-                    const content = contentInput.value;
-
-                    tooltip.className = 'region-tooltip';
-                    tooltip.textContent = content; // Replace with your tooltip text
-                    tooltip.style.paddingLeft = '10px';
-                    customDialog.style.display = 'none'; // Close the dialog box
-                    currentRegion.element.appendChild(tooltip);
-
-                    const uniqueId = $('#uniqueid').val();
-                    const csrfToken = document.querySelector('meta[name="csrf-token"]')
-                        .getAttribute('content');
-                    $.ajax({
-                        type: "get",
-                        url: "/voicerecord/comment",
-                        headers: {
-                            'X-CSRF-TOKEN': csrfToken
-                        },
-                        data: {
-                            uniqueid: uniqueId,
-                            comment: content,
-                            start: region.start,
-                            end: region.end,
-                        },
-                        success: function(response) {
-                            console.log(response.message);
-                            region.id = response.id;
-                            //$('#CreateModal').modal('hide');
-                        },
-                        error: function(error) {}
-                    });
-
-                }
-            });
 
             region.element.appendChild(button);
             currentRegion = region;
@@ -451,11 +395,6 @@
                 console.error('Error in Ajax request:', error);
             }
         });
-    });
-
-
-    $('#canclecomment').on('click', () => {
-        document.getElementById('custom-dialog').style.display = 'none';
     });
 
 

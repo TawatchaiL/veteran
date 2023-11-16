@@ -113,7 +113,7 @@
                     <input type="hidden" id="call_recording_id" value="">
                     <input type="hidden" id="uniqueid" value="">
 
-                    <div class="row" id="custom-dialog" style="display: none;">
+                    {{-- <div class="row" id="custom-dialog" style="display: none;">
                         <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
                                 <label for="content-input">ระบุ Comment:</label>
@@ -129,40 +129,10 @@
                                         class="fas fa-door-closed"></i> ยกเลิก</button>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </form>
 
 
-
-                {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
-                {{-- <div class="row">
-                    <div class="col-xs-6 col-sm-6 col-md-6">
-                        <div class="form-group">
-                            <div class="custom-control custom-switch">
-                                <i class="fa-solid fa-file-audio"></i>
-                                09999999-1002-2023-08-01-110000.wav
-                                <audio controls>
-                                    <source src="" type="audio/ogg">
-                                    <source src="" type="audio/mpeg">
-                                    Your browser does not support the audio element.
-                                </audio>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-6 col-sm-6 col-md-6">
-                        <div class="form-group">
-                            <strong><i class="fas fa-list-ol"></i> Comment:</strong>
-                            {!! Form::textarea('address', null, [
-                                'rows' => 4,
-                                'id' => 'AddAddress',
-                                'class' => 'form-control',
-                            ]) !!}
-                        </div>
-                    </div>
-                </div> --}}
-                {!! Form::close() !!}
             </div>
             <div class="modal-footer {{-- justify-content-between --}}">
                 <button type="button" class="btn btn-success" id="SubmitDownloadForm"><i class="fas fa-download"></i>
