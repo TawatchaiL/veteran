@@ -74,7 +74,7 @@
         const toggleMuteButton = document.querySelector('#toggleMuteBtn')
         const setMuteOnButton = document.querySelector('#setMuteOnBtn')
         const setMuteOffButton = document.querySelector('#setMuteOffBtn')
-        let oldcreate = false;
+        let oldcreate = true;
 
 
 
@@ -217,6 +217,7 @@
                         console.log('One or more properties are null in the tooltip data');
                     }
                 });
+                oldcreate = false;
             } else {
                 // Handle the case where tooltipsData is null
                 console.log('Tooltips data is null');
@@ -243,13 +244,13 @@
 
             console.log(oldcreate)
             //if (oldcreate == false) {
-                ezBSAlert({
-                    type: "prompt",
-                    messageText: "Enter Something",
-                    alertType: "primary"
-                }).done(function(e) {
-                    if (e !== '') {}
-                });
+            ezBSAlert({
+                type: "prompt",
+                messageText: "Enter Something",
+                alertType: "primary"
+            }).done(function(e) {
+                if (e !== '') {}
+            });
             //}
 
 
