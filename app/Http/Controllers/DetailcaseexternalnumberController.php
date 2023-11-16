@@ -49,19 +49,31 @@ class DetailcaseexternalnumberController extends Controller
         }
         $datas = DB::connection('remote_connection')
             ->table('call_center.call_entry')
-            ->select(DB::raw('DATE(datetime_init) as cdate'), DB::raw('TIME(datetime_init) as ctime'),'callerid as telno','crm_id as agent' )
+            ->select(DB::raw('DATE(datetime_init) as cdate'), DB::raw('TIME(datetime_init) as ctime'),'callerid as telno','crm_id as agentid' )
             ->whereRaw('LENGTH(callerid) < 5')
             ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
             ->limit(10)
             ->get();
 
-        if ($request->ajax()) {
-
-            return datatables()->of($datas)
-                ->editColumn('checkbox', function ($row) {
-                    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
-                })->rawColumns(['checkbox', 'action'])->toJson();
-        }
+            if ($request->ajax()) {
+                $agents = User::orderBy("id", "asc")->get();
+                $agent_data = array();
+                foreach ($agents as $agent) {
+                    $agent_data[$agent->id] = $agent->name;
+                }
+                return datatables()->of($datas)
+                    ->editColumn('checkbox', function ($row) {
+                        return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
+                    })
+                    ->addColumn('agent', function ($row) use ($agent_data){
+                        if (isset($agent_data[$row->agentid])) {
+                            return $agent_data[$row->agentid];
+                        } else {
+                            return 'Agent not found';
+                        }
+                    })
+                    ->rawColumns(['checkbox', 'action', 'agent'])->toJson();
+            }
 
         return view('detailcaseexternalnumber.index');
     }
