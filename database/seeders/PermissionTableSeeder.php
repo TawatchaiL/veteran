@@ -25,7 +25,10 @@ class PermissionTableSeeder extends Seeder
             'case-list',
             'case-create',
             'case-edit',
-            'case-delete',
+            'case-delete',*/
+            'voice-record-list',
+            'voice-record-supervisor',
+            /*
             'master-data-list',
             'master-data-create',
             'master-data-edit',
@@ -46,9 +49,9 @@ class PermissionTableSeeder extends Seeder
             'notify-list',
             'notify-create',
             'notify-edit',
-            'notify-delete',*/
+            'notify-delete',
             'customize-list',
-            'customize-edit',
+            'customize-edit',*/
             /* 'role-list',
             'role-create',
             'role-edit',
@@ -57,6 +60,7 @@ class PermissionTableSeeder extends Seeder
             'user-create',
             'user-edit',
             'user-delete', */
+
         ];
 
         foreach ($permissions as $permission) {

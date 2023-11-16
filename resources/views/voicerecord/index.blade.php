@@ -56,8 +56,18 @@
                                                 name="agen">
                                                 <option value="" selected>ทั้งหมด</option>
                                                 @foreach ($agens as $agen)
-                                                    <option value="{{ $agen->id }}">
-                                                        {{ $agen->name ?? 'ไม่พบเบอร์โทรศัพท์' }} </option>
+                                                    @can('voice-record-supervisor')
+                                                        <option value="{{ $agen->id }}">
+                                                            {{ $agen->name ?? 'ไม่พบเบอร์โทรศัพท์' }}
+                                                        </option>
+                                                    @else
+                                                        {{-- For non-supervisors, only show their own agent --}}
+                                                        @if (Auth::user()->id == $agen->id)
+                                                            <option value="{{ $agen->id }}">
+                                                                {{ $agen->name ?? 'ไม่พบเบอร์โทรศัพท์' }}
+                                                            </option>
+                                                        @endif
+                                                    @endcan
                                                 @endforeach
                                             </select>
                                         </div>

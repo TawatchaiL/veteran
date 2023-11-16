@@ -30,7 +30,7 @@
         </a>
     </li>
 @endcan
-@can('case-list')
+@can('voice-record-list')
     <li class="nav-item">
         <a href="{{ route('voicerecord') }}" class="nav-link {{ Request::is('voicerecord') ? 'active' : '' }}">
             <i class="fa-solid fa-volume-high nav-icon"></i>
