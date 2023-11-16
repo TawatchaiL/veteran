@@ -243,15 +243,15 @@
             button.textContent = 'X';
 
             console.log(oldcreate)
-            //if (oldcreate == false) {
-            ezBSAlert({
-                type: "prompt",
-                messageText: "Enter Something",
-                alertType: "primary"
-            }).done(function(e) {
-                if (e !== '') {}
-            });
-            //}
+            if (oldcreate == false) {
+                ezBSAlert({
+                    type: "prompt",
+                    messageText: "Enter Something",
+                    alertType: "primary"
+                }).done(function(e) {
+                    if (e !== '') {}
+                });
+            }
 
 
             customDialog.style.display = 'block';
