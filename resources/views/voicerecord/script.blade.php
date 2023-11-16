@@ -74,6 +74,7 @@
         const toggleMuteButton = document.querySelector('#toggleMuteBtn')
         const setMuteOnButton = document.querySelector('#setMuteOnBtn')
         const setMuteOffButton = document.querySelector('#setMuteOffBtn')
+        let oldcreate = false;
 
 
 
@@ -184,6 +185,8 @@
 
             wavesurfer.setVolume(0.4);
             document.querySelector('#volume').value = wavesurfer.getVolume();
+
+
             if (tooltipsData) {
                 tooltipsData.forEach(({
                     id,
@@ -201,6 +204,7 @@
 
                         // Create a tooltip element
                         const tooltip = document.createElement('div');
+                        oldcreate = true;
                         tooltip.className = 'region-tooltip';
                         tooltip.style.paddingLeft = '10px';
                         tooltip.textContent = comment;
@@ -237,15 +241,16 @@
             button.className = 'remove-region-button';
             button.textContent = 'X';
 
-            ezBSAlert({
-                type: "prompt",
-                messageText: "Enter Something",
-                alertType: "primary"
-            }).done(function(e) {
-                if (e !== '') {
-                    alert();
-                }
-            });
+            if (oldcreate === false) {
+                ezBSAlert({
+                    type: "prompt",
+                    messageText: "Enter Something",
+                    alertType: "primary"
+                }).done(function(e) {
+                    if (e !== '') {}
+                });
+            }
+
 
             customDialog.style.display = 'block';
 
