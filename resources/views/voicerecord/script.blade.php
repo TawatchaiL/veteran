@@ -228,6 +228,12 @@
 
         let currentRegion;
         wsRegions.on('region-created', (region) => {
+            if (!Array.isArray(wsRegions)) {
+                console.error('wsRegions is not an array. Unable to check for existing regions.');
+                return;
+            }
+
+            // Check if a region with the same id already exists
             const isExistingRegion = wsRegions.some(region => region.id === newRegion.id);
 
             if (isExistingRegion) {
