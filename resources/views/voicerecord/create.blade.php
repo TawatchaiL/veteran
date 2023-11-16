@@ -64,24 +64,24 @@
                             </div>
                         </div>
                         <div class="row float-lg-right">
-                            <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="col-xs-4 col-sm-4 col-md-4 d-none">
                                 <label>
                                     <input type="checkbox" id="loop" checked="${loop}" />
                                     วนซ้ำในกรอบ
                                 </label>
-                                {{--  <label>
-                    <input type="checkbox" id="pitch" checked />
-                    Preserve pitch
-                </label> --}}
+                                <label>
+                                    <input type="checkbox" id="pitch" checked />
+                                    Preserve pitch
+                                </label>
                             </div>
-                            <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
                                 <label for="speed" class="d-block">
                                     ความเร็ว: <span id="rate">1.00</span>x
                                 </label><input type="range" id="speed" min="0" max="4"
                                     step="1" value="2" />
 
                             </div>
-                            <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
                                 <label for="volume" class="d-block">
                                     ระดับเสียง: <span id="vol">4.00</span>
                                 </label><input id="volume" type="range" min="0" max="1"
