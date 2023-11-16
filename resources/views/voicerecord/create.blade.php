@@ -64,15 +64,15 @@
                             </div>
                         </div>
                         <div class="row float-lg-right">
-                            <div class="col-xs-4 col-sm-4 col-md-4">
-                                {{-- <label>
+                            <div class="col-xs-4 col-sm-4 col-md-4 d-none">
+                                <label>
                                     <input type="checkbox" id="loop" checked="${loop}" />
                                     วนซ้ำในกรอบ
-                                </label> --}}
-                                {{--  <label>
-                    <input type="checkbox" id="pitch" checked />
-                    Preserve pitch
-                </label> --}}
+                                </label>
+                                <label>
+                                    <input type="checkbox" id="pitch" checked />
+                                    Preserve pitch
+                                </label>
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <label for="speed" class="d-block">
