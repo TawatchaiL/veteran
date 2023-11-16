@@ -241,6 +241,7 @@
             button.className = 'remove-region-button';
             button.textContent = 'X';
 
+            console.log(oldcreate)
             //if (oldcreate == false) {
                 ezBSAlert({
                     type: "prompt",
