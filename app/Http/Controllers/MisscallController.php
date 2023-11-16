@@ -50,7 +50,7 @@ class MisscallController extends Controller
         $datas = DB::connection('remote_connection')
             ->table('call_center.call_entry')
             ->select(DB::raw('DATE(datetime_init) as cdate'), DB::raw('TIME(datetime_init) as ctime'), 'callerid as telno')
-            ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"');
+            ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59" AND status = "abandonada"');
         if(!empty($request->get('agent'))){
             $datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
         }    
@@ -65,7 +65,7 @@ class MisscallController extends Controller
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
         $agents = User::orderBy("id", "asc")->get();
-        return view('misscall.index')->with(['agents' => $agents]);
+        return view('misscall.index');
     }
 
 }
