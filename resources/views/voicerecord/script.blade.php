@@ -250,7 +250,7 @@
                         const content = e;
 
                         tooltip.className = 'region-tooltip';
-                        tooltip.textContent = content; // Replace with your tooltip text
+                        tooltip.textContent = content;
                         tooltip.style.paddingLeft = '10px';
                         currentRegion.element.appendChild(tooltip);
 
@@ -339,7 +339,7 @@
         })
 
         // Loop a region on click
-        let loop = true
+        let loop = false
         // Toggle looping with a checkbox
         document.querySelector('#loop').onclick = (e) => {
             loop = e.target.checked
@@ -362,7 +362,7 @@
             wsRegions.on('region-clicked', (region, e) => {
                 e.stopPropagation()
                 activeRegion = region
-                region.play()
+                //region.play()
                 /* region.setOptions({
                     color: randomColor()
                 }) */
@@ -400,7 +400,6 @@
 
 
     $('.modelClose').on('click', () => {
-        console.log(wavesurfer);
         if (wavesurfer) {
             wavesurfer.destroy();
             wavesurfer = null;

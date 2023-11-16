@@ -52,14 +52,14 @@
                                 <button class="btn btn-warning btn-lg" id="forward"><i
                                         class="fa-solid fa-forward"></i></button>
 
-                                <button id="toggleMuteBtn" class="btn btn-primary">Toggle Mute</button>
+                                {{-- <button id="toggleMuteBtn" class="btn btn-primary">Toggle Mute</button>
                                 <button id="setMuteOnBtn" class="btn btn-primary">
                                     Mute <i class="glyphicon glyphicon-volume-off"></i>
                                 </button>
 
                                 <button id="setMuteOffBtn" class="btn btn-primary">
                                     Unmute <i class="glyphicon glyphicon-volume-up"></i>
-                                </button>
+                                </button> --}}
 
                             </div>
                         </div>
