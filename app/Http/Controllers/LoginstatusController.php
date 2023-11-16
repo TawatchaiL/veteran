@@ -55,17 +55,29 @@ class LoginstatusController extends Controller
         if(!empty($request->get('agent'))){
             $datas->whereRaw('id_agent = "'. $request->input('agent') .'"');  
         }    
-        $datas->orderBy("datetime_init", "asc")
-            ->get();
+        $datas->orderBy("datetime_init", "asc")->get();
 
+        $agents = User::orderBy("id", "asc")->get();
+        $agent_data = array();
+        foreach ($agents as $agent) {
+            $agent_data[$agent->id] = $agent->name;
+        }
         if ($request->ajax()) {
 
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
-                })->rawColumns(['checkbox', 'action'])->toJson();
+                })
+                ->addColumn('agent', function ($row) use ($agent_data){
+                    if (isset($agent_data[$row->id_agent])) {
+                        return $agent_data[$row->id_agent];
+                    } else {
+                        return 'Agent not found';
+                    }
+                })
+                ->rawColumns(['checkbox', 'action'])->toJson();
         }
-        $agents = User::orderBy("id", "asc")->get();
+        
         return view('loginstatus.index')->with(['agents' => $agents]);
     }
 
