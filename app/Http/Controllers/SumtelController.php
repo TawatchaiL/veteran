@@ -51,9 +51,9 @@ class SumtelController extends Controller
             ->table('call_center.call_entry')
             ->select(DB::raw('DATE(datetime_init) as cdate'), DB::raw('SUM(if(status = "terminada",1,0)) as terminada'), DB::raw('SUM(if(status = "abandonada",1,0)) as abandonada'))
             ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"');
-        if(!empty($request->get('agent'))){
-        $datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
-        }    
+        //if(!empty($request->get('agent'))){
+        //$datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
+        //}    
         $datas->groupBy('cdate')
             ->orderBy("cdate", "asc")
             ->get();
@@ -68,7 +68,8 @@ class SumtelController extends Controller
 
         $agents = User::orderBy("id", "asc")->get();
 
-        return view('sumtel.index')->with(['agents' => $agents]);
+        //return view('sumtel.index')->with(['agents' => $agents]);
+        return view('sumtel.index');
     }
 
 }
