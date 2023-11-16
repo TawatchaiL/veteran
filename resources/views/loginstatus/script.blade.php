@@ -551,8 +551,8 @@
                     className: 'no-print'
                 },
                 {
-                    data: 'id_agent',
-                    name: 'id_agent'
+                    data: 'agent',
+                    name: 'agent'
                 },
                 {
                     data: 'datetime_init',
