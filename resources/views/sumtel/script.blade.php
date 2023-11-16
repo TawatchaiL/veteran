@@ -660,4 +660,142 @@
 
 
     });
+    
+    function Loadchart(){
+        let options = {
+                series: [
+                        { name: [],
+                          data: []
+                        },
+                ],
+                title: {
+                        text: '10 อันดับเบอร์ภายใน',
+                        align: 'center',
+                        style: {
+                            fontSize: '16px',
+                            fontWeight: 'bold',
+                            fontFamily: 'Sarabun',
+                            color: '#263238'
+                        },
+                        margin: 10,
+                        offsetX: 0,
+                        offsetY: 0,
+                        floating: false,
+                    },
+                chart: {
+                height: 400,
+                type: "line",
+                zoom: {
+                    enabled: false
+                },
+                toolbar: {
+                    show: false
+                }
+                },
+                markers: {
+                show: true,
+                size: 6
+                },
+                dataLabels: {
+                enabled: false
+                },
+                legend: {
+                show: false,
+                showForSingleSeries: false,
+                position: "top",
+                horizontalAlign: "right"
+                },
+                stroke: {
+                curve: "smooth",
+                linecap: "round"
+                },
+                grid: {
+                row: {
+                    colors: ["#f3f3f3", "transparent"],
+                    opacity: 0.5
+                }
+                },
+                xaxis: {
+                categories: []
+                },
+                labels: [],
+                tooltip: {
+                y: {
+                    formatter: function(val) {
+                        return " จำนวน " + val + "  "
+                    }
+                }
+            }
+            };
+            let optionsdonut = {
+
+                series: [],
+                chart: {
+                    type: 'donut',
+                    height: 380,
+                    toolbar: {
+                        show: false
+                    },
+                },
+                colors: ['#E91E63','#2E93fA','#546E7A','#66DA26','#FF9800','#4ECDC4','#C7F464','#81D4FA','#A5978B','#FD6A6A'],
+                fill: {
+                    type: 'gradient',
+                },
+                title: {
+                    text: '10 อันดับเบอร์ภายใน',
+                    align: 'center',
+                    style: {
+                        fontSize: '16px',
+                        fontWeight: 'bold',
+                        fontFamily: 'Sarabun',
+                        color: '#263238'
+                    },
+                    margin: 10,
+                    offsetX: 0,
+                    offsetY: 0,
+                    floating: false,
+                },
+                labels: [],
+                responsive: [{
+                    breakpoint: 200,
+                    options: {
+                        chart: {
+                            width: 30,
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }]
+                };
+                
+                var rdate = $('#reservation').val();
+                var rstatus = 'report';
+                $.ajax({
+                url: '{{ route('reporttop10in') }}',
+                data: {
+                    sdate: rdate,
+                    rstatus: rstatus
+                },
+                method: 'GET',
+                success: function(res) {
+                    options.series[0].data = res.datag;
+                    options.xaxis.categories = res.datal;
+                    optionsdonut.labels = res.datal; 
+                    optionsdonut.series = res.datag;
+                        var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
+                        chart2.render();
+
+                        var chart = new ApexCharts(document.querySelector("#bar_graph"), options);
+                        chart.render();
+                            chart.updateOptions({chart: {type: "bar",animate: true},
+                                                labels: '',
+                                                stroke: {width: 0}
+                            });
+                            options.series =  res.datag;
+                        var chart3 = new ApexCharts(document.querySelector("#pie_graph"), optionsdonut);
+                            chart3.render();
+                }
+            });
+    }
 </script>
