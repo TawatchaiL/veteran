@@ -439,16 +439,8 @@
 
     $("#SubmitDownloadForm").click(function() {
         const uniqueId = $('#uniqueid').val();
-        $.ajax({
-            url: '/voice/download/' + uniqueId,
-            method: 'GET',
-            success: function() {
-                console.log('File download successful!');
-            },
-            error: function(xhr, status, error) {
-                console.error('File download failed:', error);
-            }
-        });
+        var url = '/voice/download/' + uniqueId;
+        window.open(url, '_blank');
     });
 
     // Function to change the audio URL
