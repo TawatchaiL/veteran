@@ -239,36 +239,40 @@
             customDialog.style.display = 'block';
 
             button.addEventListener('click', () => {
-                // console.log('comments_id : ' + region.id);
-                // console.log('start : ' + region.start);
-                region.remove();
+                @can('voice-record-supervisor')
+                    region.remove();
 
-                const commentId = region.id;
-                const csrfToken = document.querySelector('meta[name="csrf-token"]')
-                    .getAttribute('content');
-                $.ajax({
-                    type: "DELETE",
-                    url: '/voicerecord/comment/' + commentId,
-                    headers: {
-                        'X-CSRF-TOKEN': csrfToken
-                    },
+                    const commentId = region.id;
+                    const csrfToken = document.querySelector('meta[name="csrf-token"]')
+                        .getAttribute('content');
+                    $.ajax({
+                        type: "DELETE",
+                        url: '/voicerecord/comment/' + commentId,
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken
+                        },
 
-                    success: function(response) {
-                        //region.remove();
-                        //$('#CreateModal').modal('hide');
-                        // console.log(wavesurfer);
-                        // if (wavesurfer) {
-                        //     // Destroy the WaveSurfer instance to clear it
-                        //     wavesurfer.destroy();
-                        //     wavesurfer = null; // Set wavesurfer to null to indicate it's destroyed
-                        // }
+                        success: function(response) {
+                            //region.remove();
+                            //$('#CreateModal').modal('hide');
+                            // console.log(wavesurfer);
+                            // if (wavesurfer) {
+                            //     // Destroy the WaveSurfer instance to clear it
+                            //     wavesurfer.destroy();
+                            //     wavesurfer = null; // Set wavesurfer to null to indicate it's destroyed
+                            // }
 
-                        console.log(response.message);
+                            console.log(response.message);
 
 
-                    },
-                    error: function(error) {}
-                });
+                        },
+                        error: function(error) {}
+                    });
+                @else
+                    toastr.error('คุณไม่มีสิทธิ์ลบ Comment', {
+                        timeOut: 5000
+                    });
+                @endcan
             });
 
             document.getElementById('add-content-button').addEventListener('click', function(e) {
