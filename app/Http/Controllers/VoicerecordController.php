@@ -8,6 +8,7 @@ use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 class VoicerecordController extends Controller
 {
@@ -19,7 +20,7 @@ class VoicerecordController extends Controller
     public function __construct()
     {
         //$this->middleware('auth');
-        $this->middleware('permission:contact-list|contact-create|contact-edit|contact-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:voice-record-list|voice-record-supervisor', ['only' => ['index', 'show']]);
         $this->middleware('permission:contact-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:contact-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:contact-delete', ['only' => ['destroy']]);
@@ -41,14 +42,6 @@ class VoicerecordController extends Controller
      */
     public function index(Request $request)
     {
-
-        /*  $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')->get();
-        $remoteData2 = DB::connection('remote_connection')->table('call_center.call_recording')->orderBy('id', 'desc')->get();
-        // dd($datas); */
-        /*  $datass = DB::connection('remote_connection')
-            ->table('asteriskcdrdb.cdr')
-            ->join('call_center.call_recording', 'asteriskcdrdb.cdr.uniqueid', '=', 'call_center.call_recording.uniqueid')
-            ->orderBy('id', 'desc'); */
 
         $datass = DB::connection('remote_connection')
             ->table('asteriskcdrdb.cdr')
@@ -116,6 +109,15 @@ class VoicerecordController extends Controller
                             ->orWhere('dst_userfield', $agent);
                     });
                 }
+            }
+
+            if (!Gate::allows('voice-record-supervisor')) {
+                $uid = Auth::user()->id;
+
+                $datass->where(function ($query) use ($uid) {
+                    $query->where('asteriskcdrdb.cdr.userfield', $uid)
+                        ->orWhere('dst_userfield', $uid);
+                });
             }
 
             $datas = $datass->get();
