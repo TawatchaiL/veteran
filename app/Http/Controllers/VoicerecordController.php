@@ -321,8 +321,8 @@ class VoicerecordController extends Controller
         $newFilePath = public_path('download/' . $voic_name);
         copy($originalFilePath, $newFilePath); */
 
-        $downloadedFile = file_get_contents($originalFilePath);
-        file_put_contents($voic_name, $downloadedFile);
+        echo $downloadedFile = file_get_contents($originalFilePath);
+        //file_put_contents($voic_name, $downloadedFile);
 
         /*  if ($response->getStatusCode() === 200) {
             unlink($newFilePath);
