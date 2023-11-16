@@ -247,10 +247,10 @@
                 }).done(function(e) {
                     if (e !== '') {
                         const tooltip = document.createElement('div');
-                        const content = contentInput.value;
+                        const content = e;
 
                         tooltip.className = 'region-tooltip';
-                        tooltip.textContent = e; // Replace with your tooltip text
+                        tooltip.textContent = content; // Replace with your tooltip text
                         tooltip.style.paddingLeft = '10px';
                         currentRegion.element.appendChild(tooltip);
 
@@ -265,7 +265,7 @@
                             },
                             data: {
                                 uniqueid: uniqueId,
-                                comment: e,
+                                comment: content,
                                 start: region.start,
                                 end: region.end,
                             },
