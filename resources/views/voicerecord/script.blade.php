@@ -436,6 +436,21 @@
         }
     });
 
+
+    $("#SubmitDownloadForm").click(function() {
+        const uniqueId = $('#uniqueid').val();
+        $.ajax({
+            url: '/voice/download/' + uniqueId,
+            method: 'GET',
+            success: function() {
+                console.log('File download successful!');
+            },
+            error: function(xhr, status, error) {
+                console.error('File download failed:', error);
+            }
+        });
+    });
+
     // Function to change the audio URL
     const changeAudioUrl = (newUrl) => {
         wavesurfer.load(newUrl);
