@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Response;
 
 class VoicerecordController extends Controller
 {
@@ -321,11 +322,22 @@ class VoicerecordController extends Controller
         $newFilePath = public_path('download/' . $voic_name);
         rename($originalFilePath, $newFilePath);
 
-        $response = response()->download($newFilePath);
+        // Create a response for the file download
+        $response = new Response();
+        $response->headers->set('Content-Type', 'application/octet-stream');
+        $response->headers->set('Content-Disposition', 'attachment; filename="' . $newFileName . '"');
+        $response->headers->set('Content-Length', filesize($newFilePath));
+        $response->headers->set('Cache-Control', 'must-revalidate');
+        $response->headers->set('Pragma', 'public');
+        $response->headers->set('Expires', '0');
 
-        if ($response->getStatusCode() === 200) {
-            unlink($newFilePath);
-        }
+        // Send the file content
+        $response->sendHeaders();
+        $response->setContent(file_get_contents($newFilePath));
+        $response->send();
+
+        // Delete the renamed file after successful download
+        unlink($newFilePath);
 
         return $response;
     }
