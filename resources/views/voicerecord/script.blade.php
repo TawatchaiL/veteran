@@ -242,10 +242,9 @@
                 messageText: "Enter Something",
                 alertType: "primary"
             }).done(function(e) {
-                ezBSAlert({
-                    messageText: "You entered: " + e,
-                    alertType: "success"
-                });
+                if (e !== = '') {
+                    alert();
+                }
             });
 
             customDialog.style.display = 'block';
