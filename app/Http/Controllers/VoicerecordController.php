@@ -215,10 +215,22 @@ class VoicerecordController extends Controller
                 ->where('uniqueid', $id)
                 ->orderBy('calldate', 'asc')
                 ->first();
+
             $avoic = explode("/", $remoteData->recordingfile);
             $datep = explode("-", explode(" ", $remoteData->calldate)[0]);
             $voic = $datep[0] . "/" . $datep[1] . "/" . $datep[2] . "/" . end($avoic);
-            $voic_name = end($avoic);
+
+            $agentname = '';
+
+            if ($remoteData->dst_userfield !== null) {
+                $agentname = $agentArray[$remoteData->dst_userfield]['name'];
+            } elseif ($remoteData->accountcode !== '' && $remoteData->userfield !== '') {
+                $agentname = $agentArray[$remoteData->userfield]['name'];
+            }
+
+            $agentname = $agentname ?: 'NoAgent';
+
+            $voic_name = $agentname . "-" . end($avoic);
             $tooltips = Comment::where('uniqueid', $id)->get();
         }
 
