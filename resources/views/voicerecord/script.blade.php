@@ -236,6 +236,18 @@
             const button = document.createElement('button');
             button.className = 'remove-region-button';
             button.textContent = 'X';
+
+            ezBSAlert({
+                type: "prompt",
+                messageText: "Enter Something",
+                alertType: "primary"
+            }).done(function(e) {
+                ezBSAlert({
+                    messageText: "You entered: " + e,
+                    alertType: "success"
+                });
+            });
+
             customDialog.style.display = 'block';
 
             button.addEventListener('click', () => {
