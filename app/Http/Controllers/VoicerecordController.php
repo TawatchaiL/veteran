@@ -317,13 +317,12 @@ class VoicerecordController extends Controller
         if (!file_exists($originalFilePath)) {
             abort(404); // Or handle the error as needed
         }
-
+/*
         $newFilePath = public_path('download/' . $voic_name);
-        copy($originalFilePath, $newFilePath);
+        copy($originalFilePath, $newFilePath); */
 
-        $response = response()->make(file_get_contents($newFilePath), 200);
-        $response->header('Content-Type', 'application/octet-stream');
-        $response->header('Content-Disposition', 'attachment; filename=' . $voic_name);
+        $downloadedFile = file_get_contents($originalFilePath);
+        file_put_contents($voic_name, $downloadedFile);
 
         /*  if ($response->getStatusCode() === 200) {
             unlink($newFilePath);
