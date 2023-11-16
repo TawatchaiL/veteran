@@ -9,7 +9,6 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Response;
 
 class VoicerecordController extends Controller
 {
@@ -318,28 +317,18 @@ class VoicerecordController extends Controller
         if (!file_exists($originalFilePath)) {
             abort(404); // Or handle the error as needed
         }
-
+/*
         $newFilePath = public_path('download/' . $voic_name);
-        rename($originalFilePath, $newFilePath);
+        copy($originalFilePath, $newFilePath); */
 
-        // Create a response for the file download
-        $response = new Response();
-        $response->headers->set('Content-Type', 'application/octet-stream');
-        $response->headers->set('Content-Disposition', 'attachment; filename="' . $newFileName . '"');
-        $response->headers->set('Content-Length', filesize($newFilePath));
-        $response->headers->set('Cache-Control', 'must-revalidate');
-        $response->headers->set('Pragma', 'public');
-        $response->headers->set('Expires', '0');
+        echo $downloadedFile = file_get_contents($originalFilePath);
+        //file_put_contents($voic_name, $downloadedFile);
 
-        // Send the file content
-        $response->sendHeaders();
-        $response->setContent(file_get_contents($newFilePath));
-        $response->send();
+        /*  if ($response->getStatusCode() === 200) {
+            unlink($newFilePath);
+        }
 
-        // Delete the renamed file after successful download
-        unlink($newFilePath);
-
-        return $response;
+        return $response; */
     }
 
     public function destroy($id)
