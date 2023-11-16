@@ -105,12 +105,20 @@
                                         .lname + '</h3>');
                                     $('#contractid' + cardId).val(res.datax.datac.id);
                                     $('#hnp' + cardId).val(res.datax.datac.hn);
-                                    $('#adddatep' + cardId).val(res.datax.datac.adddate);
+                                    //$('#adddatep' + cardId).val(res.datax.datac.adddate);
+                                        var arrayDate=res.datax.datac.adddate.split("-");
+                                        arrayDate[0]=parseInt(arrayDate[0])+543;
+                                        $('#adddatep' + cardId).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
+
                                     $('#tnamep' + cardId).val(res.datax.datac.tname);
                                     $('#fnamep' + cardId).val(res.datax.datac.fname);
                                     $('#lnamep' + cardId).val(res.datax.datac.lname);
                                     $('#sexp' + cardId).val(res.datax.datac.sex);
-                                    $('#birthdayp' + cardId).val(res.datax.datac.birthday);
+
+                                    //$('#birthdayp' + cardId).val(res.datax.datac.birthday);
+                                    var arrayDate=res.datax.datac.birthday.split("-");
+                                        arrayDate[0]=parseInt(arrayDate[0])+543;
+                                        $('#birthdayp' + cardId).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
                                     $('#agep' + cardId).val(res.datax.datac.age);
                                     $('#bloodgroupp' + cardId).val(res.datax.datac.bloodgroup);
                                     $('#homenop' + cardId).val(res.datax.datac.homeno);
