@@ -10,6 +10,7 @@ use App\Models\CrmPhoneEmergencyLog;
 use App\Models\CrmContactLog;
 use App\Models\Department;
 use App\Models\CrmCase;
+use App\Models\CrmCaseslog;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\View;
