@@ -228,117 +228,99 @@
 
         let currentRegion;
         wsRegions.on('region-created', (region) => {
-            if (!Array.isArray(wsRegions)) {
-                console.error('wsRegions is not an array. Unable to check for existing regions.');
-                return;
-            }
+            // Callback code
+            // console.log('Region Created:', region);
+            const button = document.createElement('button');
+            button.className = 'remove-region-button';
+            button.textContent = 'X';
+            customDialog.style.display = 'block';
 
-            // Check if a region with the same id already exists
-            const isExistingRegion = wsRegions.some(region => region.id === newRegion.id);
+            button.addEventListener('click', () => {
+                // console.log('comments_id : ' + region.id);
+                // console.log('start : ' + region.start);
+                region.remove();
 
-            if (isExistingRegion) {
-                console.log(`Region with id ${newRegion.id} already exists. Skipping creation.`);
-            } else {
-                wsRegions.push(newRegion);
-
-                const uniqueId = $('#uniqueid').val();
+                const commentId = region.id;
                 const csrfToken = document.querySelector('meta[name="csrf-token"]')
                     .getAttribute('content');
                 $.ajax({
-                    type: "get",
-                    url: "/voicerecord/comment",
+                    type: "DELETE",
+                    url: '/voicerecord/comment/' + commentId,
                     headers: {
                         'X-CSRF-TOKEN': csrfToken
                     },
-                    data: {
-                        uniqueid: uniqueId,
-                        comment: content,
-                        start: region.start,
-                        end: region.end,
-                    },
+
                     success: function(response) {
-                        console.log(response.message);
-                        region.id = response.id;
+                        //region.remove();
                         //$('#CreateModal').modal('hide');
+                        // console.log(wavesurfer);
+                        // if (wavesurfer) {
+                        //     // Destroy the WaveSurfer instance to clear it
+                        //     wavesurfer.destroy();
+                        //     wavesurfer = null; // Set wavesurfer to null to indicate it's destroyed
+                        // }
+
+                        console.log(response.message);
+
+
                     },
                     error: function(error) {}
                 });
+            });
 
+            document.getElementById('add-content-button').addEventListener('click', function(e) {
+                // addContentButton.addEventListener('click', () => {
+                // console.log('current Region');
+                // console.log(currentRegion);
 
-                const button = document.createElement('button');
-                button.className = 'remove-region-button';
-                button.textContent = 'X';
-                customDialog.style.display = 'block';
+                e.preventDefault();
+                if (currentRegion) {
 
-                button.addEventListener('click', () => {
-                    // console.log('comments_id : ' + region.id);
-                    // console.log('start : ' + region.start);
-                    region.remove();
+                    // Remove any existing tooltips in the current region
+                    const existingTooltips = currentRegion.element.querySelectorAll(
+                        '.region-tooltip');
+                    existingTooltips.forEach((tooltip) => {
+                        tooltip.remove();
+                    });
 
-                    const commentId = region.id;
+                    // Create a tooltip element
+                    const tooltip = document.createElement('div');
+                    const content = contentInput.value;
+
+                    tooltip.className = 'region-tooltip';
+                    tooltip.textContent = content; // Replace with your tooltip text
+                    tooltip.style.paddingLeft = '10px';
+                    customDialog.style.display = 'none'; // Close the dialog box
+                    currentRegion.element.appendChild(tooltip);
+
+                    const uniqueId = $('#uniqueid').val();
                     const csrfToken = document.querySelector('meta[name="csrf-token"]')
                         .getAttribute('content');
                     $.ajax({
-                        type: "DELETE",
-                        url: '/voicerecord/comment/' + commentId,
+                        type: "get",
+                        url: "/voicerecord/comment",
                         headers: {
                             'X-CSRF-TOKEN': csrfToken
                         },
-
+                        data: {
+                            uniqueid: uniqueId,
+                            comment: content,
+                            start: region.start,
+                            end: region.end,
+                        },
                         success: function(response) {
-                            //region.remove();
-                            //$('#CreateModal').modal('hide');
-                            // console.log(wavesurfer);
-                            // if (wavesurfer) {
-                            //     // Destroy the WaveSurfer instance to clear it
-                            //     wavesurfer.destroy();
-                            //     wavesurfer = null; // Set wavesurfer to null to indicate it's destroyed
-                            // }
-
                             console.log(response.message);
-
-
+                            region.id = response.id;
+                            //$('#CreateModal').modal('hide');
                         },
                         error: function(error) {}
                     });
-                });
 
-                document.getElementById('add-content-button').addEventListener('click', function(e) {
-                    // addContentButton.addEventListener('click', () => {
-                    // console.log('current Region');
-                    // console.log(currentRegion);
+                }
+            });
 
-                    e.preventDefault();
-                    if (currentRegion) {
-
-                        // Remove any existing tooltips in the current region
-                        const existingTooltips = currentRegion.element.querySelectorAll(
-                            '.region-tooltip');
-                        existingTooltips.forEach((tooltip) => {
-                            tooltip.remove();
-                        });
-
-                        // Create a tooltip element
-                        const tooltip = document.createElement('div');
-                        const content = contentInput.value;
-
-                        tooltip.className = 'region-tooltip';
-                        tooltip.textContent = content; // Replace with your tooltip text
-                        tooltip.style.paddingLeft = '10px';
-                        customDialog.style.display = 'none'; // Close the dialog box
-                        currentRegion.element.appendChild(tooltip);
-
-
-
-                    }
-                });
-
-                region.element.appendChild(button);
-                currentRegion = region;
-                console.log(`Region with id ${newRegion.id} created successfully.`);
-            }
-
-
+            region.element.appendChild(button);
+            currentRegion = region;
 
         });
 
