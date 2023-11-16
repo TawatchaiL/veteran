@@ -315,31 +315,18 @@ class VoicerecordController extends Controller
         $originalFilePath = public_path('wav/' . $voic);
 
         if (!file_exists($originalFilePath)) {
-            abort(404); // Or handle the error as needed
+            abort(404);
         }
-        /*
-        $newFilePath = public_path('download/' . $voic_name);
-        copy($originalFilePath, $newFilePath); */
-
-
 
         $fileContent = file_get_contents($originalFilePath);
 
         if ($fileContent === false) {
-            // Handle the case where file_get_contents failed
             return response()->json(['error' => 'Failed to retrieve file content'], 500);
         }
 
-        // Set appropriate headers for file download
         return response($fileContent)
             ->header('Content-Type', 'application/octet-stream')
             ->header('Content-Disposition', 'attachment; filename="' . $voic_name . '"');
-
-        /*  if ($response->getStatusCode() === 200) {
-            unlink($newFilePath);
-        }
-
-        return $response; */
     }
 
     public function destroy($id)
