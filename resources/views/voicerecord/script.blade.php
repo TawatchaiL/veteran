@@ -249,7 +249,9 @@
                     messageText: "Enter Something",
                     alertType: "primary"
                 }).done(function(e) {
-                    if (e !== '') {}
+                    if (e !== '') {} else {
+                        region.remove();
+                    }
                 });
             }
 
@@ -260,7 +262,7 @@
                 @can('voice-record-supervisor')
                     region.remove();
 
-                    if (oldcreate == false) {
+                    if (oldcreate == true) {
                         const commentId = region.id;
                         const csrfToken = document.querySelector('meta[name="csrf-token"]')
                             .getAttribute('content');
