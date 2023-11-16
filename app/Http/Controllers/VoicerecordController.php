@@ -321,9 +321,11 @@ class VoicerecordController extends Controller
         $newFilePath = public_path('download/' . $voic_name);
         copy($originalFilePath, $newFilePath);
 
-        $response = response()->download($newFilePath);
+        $response = response()->make(file_get_contents($newFilePath), 200);
+        $response->header('Content-Type', 'application/octet-stream');
+        $response->header('Content-Disposition', 'attachment; filename=' . $voic_name);
 
-       /*  if ($response->getStatusCode() === 200) {
+        /*  if ($response->getStatusCode() === 200) {
             unlink($newFilePath);
         }
 
