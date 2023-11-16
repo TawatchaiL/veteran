@@ -68,7 +68,7 @@ class DetailcaseinternalnumberController extends Controller
                 ->addColumn('agent', function ($row) use ($agent_data){
                     return $agent_data[$row->agentid];
                 })
-                ->rawColumns(['checkbox', 'action'])->toJson();
+                ->rawColumns(['checkbox', 'action', 'agent'])->toJson();
         }
 
         return view('detailcaseinternalnumber.index');
