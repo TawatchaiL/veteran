@@ -242,7 +242,7 @@
                 messageText: "Enter Something",
                 alertType: "primary"
             }).done(function(e) {
-                if (e !== = '') {
+                if (e !== '') {
                     alert();
                 }
             });
