@@ -194,10 +194,21 @@ class VoicerecordController extends Controller
             ->where('uniqueid', $id)
             ->first();
 
+        $agens = User::orderBy('name', 'asc')->get();
+        $agentArray = [];
+
+        foreach ($agens as $agen) {
+            $agentArray[$agen->id]['name'] = $agen->name;
+        }
+
         if (!empty($remoteData)) {
             $voic = $remoteData->recordingfile;
             $avoic_name = explode("/", $voic);
-            $voic_name = end($avoic_name);
+            $voic_name = $agentArray[$remoteData->crm_id]['name'] . "-" . end($avoic_name);
+            /* $avoic_name = explode("-", $voic_name_ori);
+            $voic_name = $avoic_name[0] . "-" . $avoic_name[1]
+                . "-" . $avoic_name[2] . "-" . $remoteData->crm_id . "-" . $avoic_name[3]
+                . "-" . $avoic_name[4] . "-" . $avoic_name[5]; */
             $tooltips = Comment::where('uniqueid', $id)->get();
         } else {
             $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')
