@@ -223,6 +223,7 @@
                 console.log('Tooltips data is null');
             }
         });
+
         const customDialog = document.getElementById('custom-dialog');
         const contentInput = document.getElementById('content-input');
         const addContentButton = document.getElementById('add-content-button');
@@ -236,7 +237,6 @@
 
         let currentRegion;
         wsRegions.on('region-created', (region) => {
-            // Callback code
             // console.log('Region Created:', region);
             const button = document.createElement('button');
             button.className = 'remove-region-button';
@@ -246,50 +246,69 @@
             if (oldcreate == false) {
                 ezBSAlert({
                     type: "prompt",
-                    messageText: "Enter Something",
-                    alertType: "primary"
+                    okButtonText: "บันทึกข้อมูล",
+                    messageText: "กรุณาระบุ Comment",
+                    alertType: "warning"
                 }).done(function(e) {
-                    if (e !== '') {} else {
+                    if (e !== '') {
+                        const tooltip = document.createElement('div');
+                        const content = contentInput.value;
+
+                        tooltip.className = 'region-tooltip';
+                        tooltip.textContent = e; // Replace with your tooltip text
+                        tooltip.style.paddingLeft = '10px';
+                        customDialog.style.display = 'none'; // Close the dialog box
+                        currentRegion.element.appendChild(tooltip);
+
+                        const uniqueId = $('#uniqueid').val();
+                        const csrfToken = document.querySelector('meta[name="csrf-token"]')
+                            .getAttribute('content');
+                        $.ajax({
+                            type: "get",
+                            url: "/voicerecord/comment",
+                            headers: {
+                                'X-CSRF-TOKEN': csrfToken
+                            },
+                            data: {
+                                uniqueid: uniqueId,
+                                comment: e,
+                                start: region.start,
+                                end: region.end,
+                            },
+                            success: function(response) {
+                                console.log(response.message);
+                                region.id = response.id;
+                                //$('#CreateModal').modal('hide');
+                            },
+                            error: function(error) {}
+                        });
+                    } else {
                         region.remove();
                     }
                 });
             }
-
-
             customDialog.style.display = 'block';
-
             button.addEventListener('click', () => {
                 @can('voice-record-supervisor')
                     region.remove();
 
-                    if (oldcreate == true) {
-                        const commentId = region.id;
-                        const csrfToken = document.querySelector('meta[name="csrf-token"]')
-                            .getAttribute('content');
-                        $.ajax({
-                            type: "DELETE",
-                            url: '/voicerecord/comment/' + commentId,
-                            headers: {
-                                'X-CSRF-TOKEN': csrfToken
-                            },
+                    const commentId = region.id;
+                    const csrfToken = document.querySelector('meta[name="csrf-token"]')
+                        .getAttribute('content');
+                    $.ajax({
+                        type: "DELETE",
+                        url: '/voicerecord/comment/' + commentId,
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken
+                        },
 
-                            success: function(response) {
-                                //region.remove();
-                                //$('#CreateModal').modal('hide');
-                                // console.log(wavesurfer);
-                                // if (wavesurfer) {
-                                //     // Destroy the WaveSurfer instance to clear it
-                                //     wavesurfer.destroy();
-                                //     wavesurfer = null; // Set wavesurfer to null to indicate it's destroyed
-                                // }
-
-                                console.log(response.message);
-
-
-                            },
-                            error: function(error) {}
-                        });
-                    }
+                        success: function(response) {
+                            //region.remove();
+                            //$('#CreateModal').modal('hide');
+                            console.log(response.message);
+                        },
+                        error: function(error) {}
+                    });
                 @else
                     toastr.error('คุณไม่มีสิทธิ์ลบ Comment', {
                         timeOut: 5000
@@ -397,14 +416,14 @@
                 }
             })
             wsRegions.on('region-clicked', (region, e) => {
-                e.stopPropagation() // prevent triggering a click on the waveform
+                e.stopPropagation()
                 activeRegion = region
                 region.play()
                 /* region.setOptions({
                     color: randomColor()
                 }) */
             })
-            // Reset the active region when the user clicks anywhere in the waveform
+
             wavesurfer.on('interaction', () => {
                 activeRegion = null
             })
@@ -417,22 +436,15 @@
     const randomColor = () => `rgba(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)}, 0.5)`
 
     $(document).on('click', '.changeUrlButton', function() {
-        //const newUrl = 'wav/PinkPanther60.wav'; // Replace with the new URL
-        // const newUrl = 'wav/2023/10/01/q-4567-8888-20231001-141026-1696169425.161.wav';
-        var dataId = $(this).data('id'); // Use $(this) to refer to the clicked button
+        var dataId = $(this).data('id');
         $.ajax({
             type: "GET",
             url: "voicerecord/edit/" + dataId,
             success: function(response) {
-                //console.log(response.voic);
-                //console.log(response.remoteData2);
-                const newUrl = 'wav/' + response.voic;
                 $('#vioc_name').text(response.voic_name);
                 $('#uniqueid').val(response.remoteData2.uniqueid);
                 const tooltipsData = response.tooltips;
-                // console.log("tooltipsData");
-                // console.log(tooltipsData);
-
+                const newUrl = 'wav/' + response.voic;
                 initializeWaveSurfer(newUrl, tooltipsData);
             },
             error: function(error) {
@@ -451,10 +463,8 @@
     $('.modelClose').on('click', () => {
         console.log(wavesurfer);
         if (wavesurfer) {
-
-            // Destroy the WaveSurfer instance to clear it
             wavesurfer.destroy();
-            wavesurfer = null; // Set wavesurfer to null to indicate it's destroyed
+            wavesurfer = null;
         }
     });
 
