@@ -241,7 +241,7 @@
             button.className = 'remove-region-button';
             button.textContent = 'X';
 
-            if (oldcreate == false) {
+            //if (oldcreate == false) {
                 ezBSAlert({
                     type: "prompt",
                     messageText: "Enter Something",
@@ -249,7 +249,7 @@
                 }).done(function(e) {
                     if (e !== '') {}
                 });
-            }
+            //}
 
 
             customDialog.style.display = 'block';
