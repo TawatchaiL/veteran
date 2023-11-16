@@ -270,6 +270,66 @@ class VoicerecordController extends Controller
         }
     }
 
+
+    public function downloadAndDelete($id)
+    {
+
+        $remoteData = DB::connection('remote_connection')->table('call_center.call_recording')
+            ->where('uniqueid', $id)
+            ->first();
+
+        $agens = User::orderBy('name', 'asc')->get();
+        $agentArray = [];
+
+        foreach ($agens as $agen) {
+            $agentArray[$agen->id]['name'] = $agen->name;
+        }
+
+        if (!empty($remoteData)) {
+            $voic = $remoteData->recordingfile;
+            $avoic_name = explode("/", $voic);
+            $voic_name = $agentArray[$remoteData->crm_id]['name'] . "-" . end($avoic_name);
+        } else {
+            $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')
+                ->where('uniqueid', $id)
+                ->orderBy('calldate', 'asc')
+                ->first();
+
+            $avoic = explode("/", $remoteData->recordingfile);
+            $datep = explode("-", explode(" ", $remoteData->calldate)[0]);
+            $voic = $datep[0] . "/" . $datep[1] . "/" . $datep[2] . "/" . end($avoic);
+
+            $agentname = '';
+
+            if ($remoteData->dst_userfield !== null) {
+                $agentname = $agentArray[$remoteData->dst_userfield]['name'];
+            } elseif ($remoteData->accountcode !== '' && $remoteData->userfield !== '') {
+                $agentname = $agentArray[$remoteData->userfield]['name'];
+            }
+
+            $agentname = $agentname ?: 'NoAgent';
+
+            $voic_name = $agentname . "-" . end($avoic);
+        }
+
+        $originalFilePath = public_path('wav/' . $voic);
+
+        if (!file_exists($originalFilePath)) {
+            abort(404); // Or handle the error as needed
+        }
+
+        $newFilePath = public_path('download/' . $voic_name);
+        rename($originalFilePath, $newFilePath);
+
+        $response = response()->download($newFilePath);
+
+        if ($response->getStatusCode() === 200) {
+            unlink($newFilePath);
+        }
+
+        return $response;
+    }
+
     public function destroy($id)
     {
         // Code to delete the comment with the given ID
