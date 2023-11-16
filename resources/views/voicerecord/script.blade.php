@@ -151,7 +151,7 @@
                 wavesurfer.playPause()
             })
 
-            toggleMuteButton.onclick = function() {
+            /* toggleMuteButton.onclick = function() {
                 wavesurfer.toggleMute();
             };
 
@@ -161,7 +161,7 @@
 
             setMuteOffButton.onclick = function() {
                 wavesurfer.setMute(false);
-            };
+            }; */
 
             playButton.onclick = () => {
                 wavesurfer.playPause()
