@@ -386,7 +386,6 @@
                     d.agent = $('#Agent').val();
                 },
                 complete: function (data) {
-                    alert('OK');
                     Loadchart();
                 }  
             },
