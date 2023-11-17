@@ -89,7 +89,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/voice/download/{id}', [App\Http\Controllers\VoicerecordController::class, 'downloadAndDelete'])->name('voice.download');
 
-    Route::post('/voicebackup', [App\Http\Controllers\VoiceBackupController::class, 'index'])->name('voicebackup');
+    Route::get('/voicebackup', [App\Http\Controllers\VoiceBackupController::class, 'index'])->name('voicebackup');
     Route::post('/voicebackup/store', [App\Http\Controllers\VoiceBackupController::class, 'store'])->name('voicebackup.store');
 });
 
