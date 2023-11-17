@@ -35,77 +35,47 @@ class Ivrreporttop10Controller extends Controller
     public function index(Request $request)
     {
 
-        $numberOfRows = 50; // Change this to the desired number of rows
-        $simulatedDatas = [];
-
-        $rivrname = ['welcom', 'opd', 'callcenter'];
-        $rivrno = ['1', '2', '3', '4', '5'];
-
-        for ($i = 1; $i <= $numberOfRows; $i++) {
-
-            $ivrno  = $rivrno[array_rand($rivrno)];
-            $ivrname = $rivrname[array_rand($rivrname)];
-            $ivrsum = rand(1, 1000);
-
-
-            $simulatedDatas[] = (object) [
-                'id' => $i,
-                'ivrname' => $ivrname,
-                'ivrno' => $ivrno,
-                'ivrsum' => $ivrsum,
-                // Simulate other fields as needed
-            ];
+        if (!empty($request->get('sdate'))) {
+            $dateRange = $request->input('sdate');
+            if ($dateRange) {
+                $dateRangeArray = explode(' - ', $dateRange);
+                if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
+                    $startDate = $dateRangeArray[0];
+                    $endDate = $dateRangeArray[1];
+                }
+            }
+        }else{
+                    $startDate = date("Y-m-d");
+                    $endDate = date("Y-m-t", strtotime($startDate));  
         }
+        $datas = DB::connection('remote_connection')
+            ->table('call_center.ivr_report')
+            ->select('asterisk.ivr_details.name as ivrname', DB::raw('count(asterisk.ivr_details.name) as sumhn'))
+            ->join('asterisk.ivr_details', 'call_center.ivr_report.ivr_id', '=', 'asterisk.ivr_details.id')
+            ->whereRaw('call_center.ivr_report.datetime between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+            ->groupBy('asterisk.ivr_details.name')
+            ->orderBy("call_center.ivr_report.datetime", "desc")
+            ->get();
+
+            if (!empty($request->get('rstatus'))) {
+                $chart_data = array();
+                $chart_label = array();
+                foreach ($datas as $data) {
+                    $chart_data[] = $data->sumhn;
+                    $chart_label[] = $data->ivrname;
+                }
+                return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
+            }
+
         if ($request->ajax()) {
-            return datatables()->of($simulatedDatas)
+
+            return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
-        //graph data
-        $chart_data = array();
-        foreach ($simulatedDatas as $data) {
-            $chart_data[$data->ivrname] = $data->ivrsum;
-        }
 
-        $graph_color = array(
-            '#E91E63', '#2E93fA', '#546E7A', '#66DA26', '#FF9800',  '#4ECDC4', '#C7F464', '#81D4FA',
-            '#A5978B', '#FD6A6A'
-        );
-
-        $chart_title = "IVR Report Top 10 ";
-
-        $chart_options = [
-            'chart_id' => 'bar_graph',
-            'chart_title' => $chart_title,
-            'chart_type' => 'bar',
-            'color' => $graph_color,
-            'data' => $chart_data
-        ];
-
-        $chart1 = new GraphService($chart_options);
-
-        $chart_options = [
-            'chart_id' => 'line_graph',
-            'chart_title' => $chart_title,
-            'chart_type' => 'line',
-            'color' => $graph_color,
-            'data' => $chart_data
-        ];
-
-        $chart2 = new GraphService($chart_options);
-
-        $chart_options = [
-            'chart_id' => 'pie_graph',
-            'chart_title' => $chart_title,
-            'chart_type' => 'pie',
-            'color' => $graph_color,
-            'data' => $chart_data
-        ];
-
-        $chart3 = new GraphService($chart_options);
-
-        return view('ivrreporttop10.index', compact('chart1', 'chart2', 'chart3'));
+        return view('ivrreporttop10.index');
     }
 
 }

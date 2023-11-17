@@ -48,24 +48,12 @@ class IvrreportController extends Controller
                     $endDate = date("Y-m-t", strtotime($startDate));  
         }
         $datas = DB::connection('remote_connection')
-            ->table('call_center.call_entry')
-            ->select('callerid', DB::raw('count(callerid) as sumcases'))
-            ->whereRaw('LENGTH(callerid) < 5')
-            ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
-            ->groupBy('callerid')
-            ->orderBy("sumcases", "desc")
-            ->limit(10)
+            ->table('call_center.ivr_report')
+            ->select(DB::raw('DATE(call_center.ivr_report.datetime) as cdate'), DB::raw('TIME(call_center.ivr_report.datetime) as ctime'),'call_center.ivr_report.callerid as telno','asterisk.ivr_details.name as ivrname','call_center.ivr_report.digit as ivrno')
+            ->join('asterisk.ivr_details', 'call_center.ivr_report.ivr_id', '=', 'asterisk.ivr_details.id')
+            ->whereRaw('call_center.ivr_report.datetime between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+            ->orderBy("call_center.ivr_report.datetime", "desc")
             ->get();
-
-            if (!empty($request->get('rstatus'))) {
-                $chart_data = array();
-                $chart_label = array();
-                foreach ($datas as $data) {
-                    $chart_data[] = $data->sumcases;
-                    $chart_label[] = $data->callerid;
-                }
-                return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
-            }
 
         if ($request->ajax()) {
 
