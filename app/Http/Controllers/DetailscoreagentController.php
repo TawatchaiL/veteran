@@ -55,7 +55,7 @@ class DetailscoreagentController extends Controller
                 $datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
             }   
             $datas->groupBy('score')
-            ->orderBy("sumscore", "desc")
+            ->orderBy("score", "desc")
             ->get();
 
             if (!empty($request->get('rstatus'))) {
