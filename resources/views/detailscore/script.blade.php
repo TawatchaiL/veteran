@@ -394,10 +394,8 @@
             ajax: {
                 data: function(d) {
                     d.sdate = $('#reservation').val();
-                },
-                complete: function (data) {
-                    Loadchart();
-                }  
+                    d.agent = $('#Agent').val();
+                }
             },
             serverSide: true,
             processing: true,
