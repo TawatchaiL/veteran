@@ -546,6 +546,9 @@
             });
         }
 
+
+        retrieveFieldValues();
+        daterange();
         //$.noConflict();
         var token = ''
         $.ajaxSetup({
@@ -775,6 +778,7 @@
         };
 
         var table = $('#Listview').DataTable(table_option);
+
         $('#searchButton').on('click', function() {
             storeFieldValues();
             //var telp = $('#telp').val();
@@ -828,8 +832,7 @@
 
 
 
-        retrieveFieldValues();
-        daterange();
+
 
     });
 </script>
