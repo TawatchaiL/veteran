@@ -297,6 +297,77 @@
             }
         });
 
+        var startDate;
+        var endDate;
+        function datesearch() {
+            var currentDate = moment();
+            // Set the start date to 7 days before today
+            //startDate = moment(currentDate).subtract(15, 'days').format('YYYY-MM-DD');
+            // Set the end date to the end of the current month
+            //endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
+            startDate = moment().format('YYYY-MM-DD');
+            endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
+        }
+        function datereset() {
+            var currentDate = moment();
+            startDate = moment().format('YYYY-MM-DD');
+            endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
+        }
+
+        function retrieveFieldValues() {
+            var saveddateStart = localStorage.getItem('dateStart');
+            var savedSearchType = localStorage.getItem('searchType');
+            var savedKeyword = localStorage.getItem('keyword');
+
+            // Set field values from local storage
+            if (saveddateStart) {
+                var dateParts = saveddateStart.split(' - ');
+                startDate = dateParts[0];
+                endDate = dateParts[1];
+            } else {
+                datesearch();
+            }
+        }
+
+        let daterange = () => {
+            moment.locale('th');
+            $('#reservation').daterangepicker({
+                startDate: startDate,
+                endDate: endDate,
+                ranges: {
+                    'วันนี้': [moment(), moment()],
+                    'เมื่อวานนี้': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'ย้อนหลัง 7 วัน': [moment().subtract(6, 'days'), moment()],
+                    'ย้อนหลัง 30 วัน': [moment().subtract(29, 'days'), moment()],
+                    'เดือนนี้': [moment().startOf('month'), moment().endOf('month')],
+                    'เดือนที่แล้ว': [moment().subtract(1, 'month').startOf('month'), moment()
+                        .subtract(1, 'month').endOf('month')
+                    ]
+                },
+                locale: {
+                    format: 'YYYY-MM-DD',
+                    applyLabel: 'ตกลง',
+                    cancelLabel: 'ยกเลิก',
+                    fromLabel: 'จาก',
+                    toLabel: 'ถึง',
+                    customRangeLabel: 'เลือกวันที่เอง',
+                    daysOfWeek: ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'],
+                    monthNames: [
+                        'มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน',
+                        'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'
+                    ],
+                    firstDay: 1
+                }
+            });
+            // Apply the custom date range filter on input change
+            $('#reservation').on('apply.daterangepicker', function() {
+                console.log($('#reservation').val())
+                table.draw();
+                storeFieldValues();
+            });
+        }
+        datesearch();
+        daterange();
 
         var table = $('#Listview').DataTable({
             /*"aoColumnDefs": [
@@ -315,7 +386,11 @@
             dom: 'Bfrtip',
             paging: true,
             searching: false,
-            ajax: '',
+            ajax: {
+                data: function(d) {
+                    d.sdate = $('#reservation').val();
+                }
+            },
             serverSide: true,
             processing: true,
             language: {
