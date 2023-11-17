@@ -28,10 +28,10 @@ class PermissionTableSeeder extends Seeder
             'case-delete',
             'voice-record-list',
             'voice-record-supervisor',*/
-            'voice-export-list',
-            'voice-export-create',
+            //'voice-export-list',
+            //'voice-export-create',
             'voice-export-download',
-            'voice-export-delete',
+            //'voice-export-delete',
             /*
             'master-data-list',
             'master-data-create',
