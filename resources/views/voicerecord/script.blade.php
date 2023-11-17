@@ -508,6 +508,9 @@
                 datesearch();
             }
 
+            console.log(`${startDate} - ${endDate}`)
+            $('#reservation').val(`${startDate} - ${endDate}`)
+
             if (savedsagent) {
                 $('#agen').val(savedsagent);
             }
