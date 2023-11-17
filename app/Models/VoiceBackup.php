@@ -14,7 +14,7 @@ class VoiceBackup extends Model
         'export_end',
         'export_src',
         'export_dst',
-        'export_type',
+        'export_ctype',
         'export_status',
         'export_progress',
         'export_filename',

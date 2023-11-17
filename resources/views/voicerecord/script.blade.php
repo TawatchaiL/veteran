@@ -808,28 +808,39 @@
 
         $('#exportVoiceButton').on('click', function(e) {
             e.preventDefault();
-            $.ajax({
-                url: "{{ route('voice_backup.store') }}",
-                method: 'post',
-                data: {
-                    export_date: $('#reservation').val(),
-                    src: $('#telp').val(),
-                    dst: $('#agen').val(),
-                    ctype: $('#ctype').val(),
-                    _token: token,
-                },
-                success: function(result) {
-                    if (result.errors) {
-                        toastr.error(result.success, {
-                            timeOut: 5000
-                        });
-                    } else {
-                        toastr.success(result.success, {
-                            timeOut: 5000
-                        });
-                    }
+            ezBSAlert({
+                type: "confirm",
+                headerText: "Confirm",
+                messageText: "ยืนยันการ Export Voice Recording?",
+                alertType: "info",
+            }).done(function(r) {
+                if (r == true) {
+                    $.ajax({
+                        url: "{{ route('voice_backup.store') }}",
+                        method: 'post',
+                        data: {
+                            export_date: $('#reservation').val(),
+                            src: $('#telp').val(),
+                            dst: $('#agen').val(),
+                            ctype: $('#ctype').val(),
+                            _token: token,
+                        },
+                        success: function(result) {
+                            if (result.errors) {
+                                toastr.error(result.success, {
+                                    timeOut: 5000
+                                });
+                            } else {
+                                toastr.success(result.success, {
+                                    timeOut: 5000
+                                });
+                            }
+                        }
+                    });
                 }
+
             });
+
         });
 
 
