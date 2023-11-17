@@ -119,7 +119,12 @@ class VoiceBackupController extends Controller
         }
 
         $datas = $datass->get();
-        $fileContent = json_encode($datas, JSON_PRETTY_PRINT);
+
+        $filenames = $datas->pluck('recordingfile')->map(function ($item) {
+            return basename($item);
+        })->toArray();
+
+        $fileContent = implode("\n", $filenames);
         Storage::disk('local')->put('export_result.txt', $fileContent);
     }
 
