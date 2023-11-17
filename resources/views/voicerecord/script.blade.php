@@ -546,7 +546,7 @@
                     cancelLabel: 'ยกเลิก',
                     fromLabel: 'จาก',
                     toLabel: 'ถึง',
-                    customRangeLabel: 'กำหนดเอง',
+                    customRangeLabel: 'เลือกวันที่เอง',
                     daysOfWeek: ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'],
                     monthNames: [
                         'มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน',
