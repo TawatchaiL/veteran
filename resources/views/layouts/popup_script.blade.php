@@ -105,12 +105,20 @@
                                         .lname + '</h3>');
                                     $('#contractid' + cardId).val(res.datax.datac.id);
                                     $('#hnp' + cardId).val(res.datax.datac.hn);
-                                    $('#adddatep' + cardId).val(res.datax.datac.adddate);
+                                    //$('#adddatep' + cardId).val(res.datax.datac.adddate);
+                                        var arrayDate=res.datax.datac.adddate.split("-");
+                                        arrayDate[0]=parseInt(arrayDate[0])+543;
+                                        $('#adddatep' + cardId).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
+
                                     $('#tnamep' + cardId).val(res.datax.datac.tname);
                                     $('#fnamep' + cardId).val(res.datax.datac.fname);
                                     $('#lnamep' + cardId).val(res.datax.datac.lname);
                                     $('#sexp' + cardId).val(res.datax.datac.sex);
-                                    $('#birthdayp' + cardId).val(res.datax.datac.birthday);
+
+                                    //$('#birthdayp' + cardId).val(res.datax.datac.birthday);
+                                    var arrayDate=res.datax.datac.birthday.split("-");
+                                        arrayDate[0]=parseInt(arrayDate[0])+543;
+                                        $('#birthdayp' + cardId).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
                                     $('#agep' + cardId).val(res.datax.datac.age);
                                     $('#bloodgroupp' + cardId).val(res.datax.datac.bloodgroup);
                                     $('#homenop' + cardId).val(res.datax.datac.homeno);
@@ -290,13 +298,55 @@
     $(document).ready(function() {
         positionCards();
         //datepicker
-        $.datepicker.setDefaults($.datepicker.regional['en']);
+        $.datepicker.setDefaults($.datepicker.regional['th']);
         $(document).on("focus", ".AddDatep", function(){
             $(this).datepicker({
-                dateFormat: 'yy-mm-dd',
-                changeMonth: true,
-                changeYear: true,
-                yearRange: '1980:2050'
+                dateFormat: "yy-mm-dd",
+	        //defaultDate: '2023-11-14',
+            isBuddhist: true,
+            changeMonth: true,
+            changeYear:true,
+	        //yearRange:'1940:2057',
+            yearRange:'c-40:c+10',
+            dayNamesMin: [ "อา", "จ", "อ", "พ", "พฤ", "ศ", "ส" ],
+            monthNamesShort: [ "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม" ],
+            beforeShow:function(){
+			if($(this).val()!=""){
+				var arrayDate=$(this).val().split("-");		
+				arrayDate[0]=parseInt(arrayDate[0])-543;
+				$(this).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
+			}
+			setTimeout(function(){
+				$.each($(".ui-datepicker-year option"),function(j,k){
+					var textYear=parseInt($(".ui-datepicker-year option").eq(j).val())+543;
+					$(".ui-datepicker-year option").eq(j).text(textYear);
+				});				
+			},50);
+
+		},
+		onChangeMonthYear: function(){
+			setTimeout(function(){
+				$.each($(".ui-datepicker-year option"),function(j,k){
+					var textYear=parseInt($(".ui-datepicker-year option").eq(j).val())+543;
+					$(".ui-datepicker-year option").eq(j).text(textYear);
+				});				
+			},50);		
+		},
+		onClose:function(){
+			if($(this).val()!="" && $(this).val()==dateBefore){			
+				var arrayDate=dateBefore.split("-");
+                //$('#temp'+$(this).attr('id')).html(dateBefore);
+				arrayDate[0]=parseInt(arrayDate[0])+543;
+				$(this).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);	
+			}		
+		},
+		onSelect: function(dateText, inst){ 
+			dateBefore=$(this).val();
+            //$('#temp'+$(this).attr('id')).html(dateBefore);
+			var arrayDate=dateText.split("-");
+			arrayDate[0]=parseInt(arrayDate[0])+543;
+			$(this).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
+		}
             });
         });
 
@@ -530,12 +580,18 @@
                                     .lname + '</h3>');
                                 $('#contractid' + cardId).val(res.datax.datac.id);
                                 $('#hnp' + cardId).val(res.datax.datac.hn);
-                                $('#adddatep' + cardId).val(res.datax.datac.adddate);
+                                    //$('#adddatep' + cardId).val(res.datax.datac.adddate);
+                                    var arrayDate=res.datax.datac.adddate.split("-");
+                                        arrayDate[0]=parseInt(arrayDate[0])+543;
+                                        $('#adddatep' + cardId).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
                                 $('#tnamep' + cardId).val(res.datax.datac.tname);
                                 $('#fnamep' + cardId).val(res.datax.datac.fname);
                                 $('#lnamep' + cardId).val(res.datax.datac.lname);
                                 $('#sexp' + cardId).val(res.datax.datac.sex);
-                                $('#birthdayp' + cardId).val(res.datax.datac.birthday);
+                                    //$('#birthdayp' + cardId).val(res.datax.datac.birthday);
+                                    var arrayDate=res.datax.datac.birthday.split("-");
+                                        arrayDate[0]=parseInt(arrayDate[0])+543;
+                                        $('#birthdayp' + cardId).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);                                
                                 $('#agep' + cardId).val(res.datax.datac.age);
                                 $('#bloodgroupp' + cardId).val(res.datax.datac.bloodgroup);
                                 $('#homenop' + cardId).val(res.datax.datac.homeno);
@@ -676,6 +732,15 @@
             let cardId = $(this).data("tabid");
             var uniqid = $('#custom-tabs-pop-' + cardId).data("tick");
             var emergencyData = [];
+
+            var arrayDate=$('#adddatep' + cardId).val().split("-");
+				    arrayDate[0]=parseInt(arrayDate[0])-543;
+            var tempadddate = arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2];
+
+            var arrayDateb=$('#birthdayp' + cardId).val().split("-");
+				    arrayDateb[0]=parseInt(arrayDateb[0])-543;
+            var tempbirthday = arrayDateb[0]+"-"+arrayDateb[1]+"-"+arrayDateb[2];
+
             if ($('#contractid' + cardId).val() === "") {
                 $('#myTbl3p' + cardId + ' tbody tr').each(function() {
                     var emergencyname = $(this).find(
@@ -693,12 +758,12 @@
                 });
                 var additionalData = {
                     hn: $('#hnp' + cardId).val(),
-                    adddate: $('#adddatep' + cardId).val(),
+                    adddate: tempadddate,
                     tname: $('#tnamep' + cardId).val(),
                     fname: $('#fnamep' + cardId).val(),
                     lname: $('#lnamep' + cardId).val(),
                     sex: $('#sexp' + cardId).val(),
-                    birthday: $('#birthdayp' + cardId).val(),
+                    birthday: tempbirthday,
                     age: $('#agep' + cardId).val(),
                     bloodgroup: $('#bloodgroupp' + cardId).val(),
                     homeno: $('#homenop' + cardId).val(),
@@ -815,12 +880,12 @@
                 var id = $('#contractid' + cardId).val();
                 var additionalData = {
                     hn: $('#hnp' + cardId).val(),
-                    adddate: $('#adddatep' + cardId).val(),
+                    adddate: tempadddate,
                     tname: $('#tnamep' + cardId).val(),
                     fname: $('#fnamep' + cardId).val(),
                     lname: $('#lnamep' + cardId).val(),
                     sex: $('#sexp' + cardId).val(),
-                    birthday: $('#birthdayp' + cardId).val(),
+                    birthday: tempbirthday,
                     age: $('#agep' + cardId).val(),
                     bloodgroup: $('#bloodgroupp' + cardId).val(),
                     homeno: $('#homenop' + cardId).val(),
