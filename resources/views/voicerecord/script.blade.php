@@ -806,6 +806,33 @@
             } */
         });
 
+        $('#exportVoiceButton').on('click', function() {
+            e.preventDefault();
+            $.ajax({
+                url: "{{ route('voice_backup.store') }}",
+                method: 'post',
+                data: {
+                    export_date: $('#reservation').val(),
+                    src: $('#telp').val(),
+                    dst: $('#agen').val(),
+                    ctype: $('#ctype').val(),
+                    _token: token,
+                },
+                success: function(result) {
+                    if (result.errors) {
+                        toastr.error(result.success, {
+                            timeOut: 5000
+                        });
+                    } else {
+                        toastr.success(result.success, {
+                            timeOut: 5000
+                        });
+                    }
+                }
+            });
+        });
+
+
         $('#resetSearchButton').on('click', async function() {
             localStorage.removeItem('dateStart');
             localStorage.removeItem('sagent');

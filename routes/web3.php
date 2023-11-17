@@ -87,6 +87,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/customize/edit/{id}', [App\Http\Controllers\CustomizeFeatureController::class, 'edit'])->name('customize.edit');
     Route::put('/customize/save/{id}', [App\Http\Controllers\CustomizeFeatureController::class, 'update'])->name('customize.save');
 
-    Route::get('/voice/download/{id}', [App\Http\Controllers\VoicerecordController::class, 'downloadAndDelete'])->name('voice.download');;
+    Route::get('/voice/download/{id}', [App\Http\Controllers\VoicerecordController::class, 'downloadAndDelete'])->name('voice.download');
+    Route::post('/voice/backup/store', [App\Http\Controllers\VoiceBackupController::class, 'store'])->name('voice_backup.store');
 });
 

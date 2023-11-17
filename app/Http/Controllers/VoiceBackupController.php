@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\VoiceBackup;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 
 class VoiceBackupController extends Controller
 {
@@ -28,7 +31,39 @@ class VoiceBackupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator =  Validator::make($request->all(), [
+            'export_date' => 'required',
+        ], [
+            'export_date.required' => 'กรุณาระบุวันที่จะ export!',
+        ]);
+
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all()]);
+        }
+
+        $dateRange = $request->input('export_date');
+        if ($dateRange) {
+            $dateRangeArray = explode(' - ', $dateRange);
+
+            if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
+                $startDate = $dateRangeArray[0] . ' 00:00:00';
+                $endDate = $dateRangeArray[1] . ' 23:59:59';
+            }
+        }
+
+        $holiday = [
+            'export_name' => "Export " . date("Y-m-d H:i:s"),
+            'export_start' =>  $startDate,
+            'export_end' => $endDate,
+            'export_src' =>  $request->get('src'),
+            'export_dst' => $request->get('dst'),
+            'export_ctype' => $request->get('ctype'),
+        ];
+
+        VoiceBackup::create($holiday);
+
+        return response()->json(['success' => 'เพิ่มรายการ Export Voice Record เรียบร้อยแล้ว']);
     }
 
     /**
