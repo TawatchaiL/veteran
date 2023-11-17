@@ -76,7 +76,7 @@ class DetailscoreController extends Controller
                 ->rawColumns(['checkbox', 'action'])->toJson();
         }
 
-        return view('detailscore.index');
+        return view('detailscore.index')->with(['agents' => $agents]);
     }
 
 }

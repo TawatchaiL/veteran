@@ -21,41 +21,38 @@
                             <div class="col-sm-12">
                                 <ol class="breadcrumb float-sm-center">
                                     {{-- <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Users Management</li> --}}
-                                    <div class="col-xs-2 col-sm-2 col-md-2">
-                                        <div class="form-group">
-                                            <strong><i class="fas fa-calendar"></i> วันที่เริ่ม:</strong>
-                                            {!! Form::text('start_date', null, [
-                                                'id' => 'SDate',
-                                                'placeholder' => '',
-                                                'class' => 'SDate form-control',
-                                                'data-target' => '#reservationdate',
-                                            ]) !!}
+                                        <li class="breadcrumb-item active">Users Management</li> --}}
+                                        <div class="col-xs-3 col-sm-3 col-md-3">
+                                            <div class="form-group">
+                                                <strong>
+                                                    วันที่บันทึกข้อมูล:</strong>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">
+                                                            <i class="far fa-calendar-alt"></i>
+                                                        </span>
+                                                    </div>
+                                                    <input type="text" class="form-control float-right" id="reservation" style="width: 210px">
+                                                </div>
+                
+                                            </div>
                                         </div>
-                                    </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
-                                            <strong><i class="fas fa-calendar"></i> วันที่สิ้นสุด:</strong>
-                                            {!! Form::text('end_date', null, [
-                                                'id' => 'EDate',
-                                                'placeholder' => '',
-                                                'class' => 'EDate form-control',
-                                                'data-target' => '#reservationdate',
-                                            ]) !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-2 col-sm-2 col-md-2">
-                                        <div class="form-group">
-                                            <strong><i class="fas fa-user"></i>
-                                                Agent ที่รับสาย:</strong>
-                                            <select style="width: 100%;" class="form-control" id="agent" name="agent">
-                                                <option value="" selected>ทั้งหมด</option>
+                                            <strong><i class="fa-regular fa-comment-dots"></i>
+                                                Agent:</strong>
+                                            <select style="width: 100%;" class="select2 form-control" id="Agent"
+                                                name="Agent">
+                                                <option value="0" selected>ทั้งหมด</option>
+                                                @foreach($agents as $agentss)
+                                                    <option value="{{ $agentss->id }}">{{ $agentss->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2 align-self-end">
                                         <div class="form-group">
-                                            <button type="button" class="btn btn-success" id="CreateButton">
+                                            <button type="button" class="btn btn-success btnsearch" id="btnsearch">
                                                 <i class="fas fa-search"></i> ค้นหา </button>
                                         </div>
                                     </div>
