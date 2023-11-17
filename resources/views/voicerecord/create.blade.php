@@ -43,7 +43,10 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="row float-lg-left">
                             <div class="col-xs-12 col-sm-12 col-md-12">
-
+                                <button type="button" class="btn btn-success btn-lg mx-auto"
+                                    id="waveform-time-indicator">
+                                    <i class="fa-solid fa-clock"></i> <span class="time">00:00:00</span>
+                                </button>
                             </div>
                         </div>
                         <div class="row float-lg-right">
@@ -84,19 +87,18 @@
                             <!-- the waveform will be rendered here -->
                         </div>
                         <div class="text-center">
-                            <button type="button" class="btn btn-success btn-lg mx-auto" id="waveform-time-indicator">
-                                <i class="fa-solid fa-clock"></i> <span class="time">00:00:00</span>
-                            </button>
-                            <button class="btn btn-warning btn-lg" id="backward"> <i
-                                class="fa-solid fa-backward"></i></button>
-                        <button class="btn btn-warning btn-lg" id="play"><i class="fa-solid fa-play"></i> /
-                            <i class="fa-solid fa-pause"></i></button>
-                        <button class="btn btn-warning btn-lg" id="stop"><i
-                                class="fa-solid fa-stop"></i></button>
-                        <button class="btn btn-warning btn-lg" id="forward"><i
-                                class="fa-solid fa-forward"></i></button>
 
-                        {{-- <button id="toggleMuteBtn" class="btn btn-primary">Toggle Mute</button>
+                            <button class="btn btn-warning btn-lg mx-auto" id="backward"> <i
+                                    class="fa-solid fa-backward"></i></button>
+                            <button class="btn btn-warning btn-lg mx-auto" id="play"><i
+                                    class="fa-solid fa-play"></i> /
+                                <i class="fa-solid fa-pause"></i></button>
+                            <button class="btn btn-warning btn-lg mx-auto" id="stop"><i
+                                    class="fa-solid fa-stop"></i></button>
+                            <button class="btn btn-warning btn-lg mx-auto" id="forward"><i
+                                    class="fa-solid fa-forward"></i></button>
+
+                            {{-- <button id="toggleMuteBtn" class="btn btn-primary">Toggle Mute</button>
                         <button id="setMuteOnBtn" class="btn btn-primary">
                             Mute <i class="glyphicon glyphicon-volume-off"></i>
                         </button>
