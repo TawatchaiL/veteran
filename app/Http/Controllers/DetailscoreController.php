@@ -50,8 +50,11 @@ class DetailscoreController extends Controller
         $datas = DB::connection('remote_connection')
             ->table('call_center.agent_score')
             ->select(DB::raw('DATE(datetime) as cdate'), DB::raw('TIME(datetime) as ctime'),'clid','queue','crm_id','score' )
-            ->whereRaw('call_center.agent_score.datetime between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
-            ->orderBy("call_center.agent_score.datetime", "desc")
+            ->whereRaw('call_center.agent_score.datetime between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"');
+            if(!empty($request->get('agent')) && $request->get('agent') != "0"){
+                $datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
+            }   
+            $datas->orderBy("call_center.agent_score.datetime", "desc")
             ->get();
 
         $agents = User::orderBy("id", "asc")->get();
