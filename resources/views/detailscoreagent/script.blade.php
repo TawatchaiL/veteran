@@ -383,6 +383,7 @@
             ajax: {
                 data: function(d) {
                     d.sdate = $('#reservation').val();
+                    d.agent = $('#Agent').val();
                 },
                 complete: function (data) {
                     Loadchart();
