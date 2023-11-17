@@ -39,7 +39,7 @@
                 {{-- <label>
                     Zoom: <input type="range" min="10" max="1000" value="100" />
                 </label> --}}
-                <div class="row pb-3">
+                <div class="row pb-2">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="row float-lg-left">
                             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -86,7 +86,7 @@
                         <div id="waveform">
                             <!-- the waveform will be rendered here -->
                         </div>
-                        <div class="text-center">
+                        <div class="text-center pt-2">
 
                             <button class="btn btn-warning btn-lg mx-auto" id="backward"> <i
                                     class="fa-solid fa-backward"></i></button>
