@@ -295,12 +295,99 @@
             }
         });
 
+        var startDate;
+        var endDate;
+        function datesearch() {
+            var currentDate = moment();
+            // Set the start date to 7 days before today
+            //startDate = moment(currentDate).subtract(15, 'days').format('YYYY-MM-DD');
+            // Set the end date to the end of the current month
+            //endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
+            startDate = moment().format('YYYY-MM-DD');
+            endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
+        }
+        function datereset() {
+            var currentDate = moment();
+            startDate = moment().format('YYYY-MM-DD');
+            endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
+        }
+
+        function retrieveFieldValues() {
+            var saveddateStart = localStorage.getItem('dateStart');
+            var savedSearchType = localStorage.getItem('searchType');
+            var savedKeyword = localStorage.getItem('keyword');
+
+            // Set field values from local storage
+            if (saveddateStart) {
+                var dateParts = saveddateStart.split(' - ');
+                startDate = dateParts[0];
+                endDate = dateParts[1];
+            } else {
+                datesearch();
+            }
+        }
+
+        let daterange = () => {
+            moment.locale('th');
+            $('#reservation').daterangepicker({
+                startDate: startDate,
+                endDate: endDate,
+                ranges: {
+                    'วันนี้': [moment(), moment()],
+                    'เมื่อวานนี้': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'ย้อนหลัง 7 วัน': [moment().subtract(6, 'days'), moment()],
+                    'ย้อนหลัง 30 วัน': [moment().subtract(29, 'days'), moment()],
+                    'เดือนนี้': [moment().startOf('month'), moment().endOf('month')],
+                    'เดือนที่แล้ว': [moment().subtract(1, 'month').startOf('month'), moment()
+                        .subtract(1, 'month').endOf('month')
+                    ]
+                },
+                locale: {
+                    format: 'YYYY-MM-DD',
+                    applyLabel: 'ตกลง',
+                    cancelLabel: 'ยกเลิก',
+                    fromLabel: 'จาก',
+                    toLabel: 'ถึง',
+                    customRangeLabel: 'เลือกวันที่เอง',
+                    daysOfWeek: ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'],
+                    monthNames: [
+                        'มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน',
+                        'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'
+                    ],
+                    firstDay: 1
+                }
+            });
+            // Apply the custom date range filter on input change
+            $('#reservation').on('apply.daterangepicker', function() {
+                console.log($('#reservation').val())
+                table.draw();
+                storeFieldValues();
+            });
+        }
+        datesearch();
+        daterange();
+
+        $('#btnsearch').click(function(e) {
+            $('#Listview').DataTable().ajax.reload();
+        });
+        $('#btnreset').click(function(e) {
+            datereset();
+            daterange();
+            $('#Listview').DataTable().ajax.reload();
+        });
 
         var table = $('#Listview').DataTable({
             dom: 'Bfrtip',
             paging: true,
             searching: false,
-            ajax: '',
+            ajax: {
+                data: function(d) {
+                    d.sdate = $('#reservation').val();
+                },
+                complete: function (data) {
+                    Loadchart();
+                }  
+            },
             serverSide: true,
             processing: true,
             language: {
@@ -576,4 +663,142 @@
 
 
     });
+
+    function Loadchart(){
+        let options = {
+                series: [
+                        { name: [],
+                          data: []
+                        },
+                ],
+                title: {
+                        text: 'ผลรวมการประเมินความพึงพอใจ ราย Agent ที่รับสาย',
+                        align: 'center',
+                        style: {
+                            fontSize: '16px',
+                            fontWeight: 'bold',
+                            fontFamily: 'Sarabun',
+                            color: '#263238'
+                        },
+                        margin: 10,
+                        offsetX: 0,
+                        offsetY: 0,
+                        floating: false,
+                    },
+                chart: {
+                height: 400,
+                type: "line",
+                zoom: {
+                    enabled: false
+                },
+                toolbar: {
+                    show: false
+                }
+                },
+                markers: {
+                show: true,
+                size: 6
+                },
+                dataLabels: {
+                enabled: false
+                },
+                legend: {
+                show: false,
+                showForSingleSeries: false,
+                position: "top",
+                horizontalAlign: "right"
+                },
+                stroke: {
+                curve: "smooth",
+                linecap: "round"
+                },
+                grid: {
+                row: {
+                    colors: ["#f3f3f3", "transparent"],
+                    opacity: 0.5
+                }
+                },
+                xaxis: {
+                categories: []
+                },
+                labels: [],
+                tooltip: {
+                y: {
+                    formatter: function(val) {
+                        return " จำนวน " + val + "  "
+                    }
+                }
+            }
+            };
+            let optionsdonut = {
+
+                series: [],
+                chart: {
+                    type: 'donut',
+                    height: 380,
+                    toolbar: {
+                        show: false
+                    },
+                },
+                colors: ['#E91E63','#2E93fA','#546E7A','#66DA26','#FF9800','#4ECDC4','#C7F464','#81D4FA','#A5978B','#FD6A6A'],
+                fill: {
+                    type: 'gradient',
+                },
+                title: {
+                    text: 'ผลรวมการประเมินความพึงพอใจ ราย Agent ที่รับสาย',
+                    align: 'center',
+                    style: {
+                        fontSize: '16px',
+                        fontWeight: 'bold',
+                        fontFamily: 'Sarabun',
+                        color: '#263238'
+                    },
+                    margin: 10,
+                    offsetX: 0,
+                    offsetY: 0,
+                    floating: false,
+                },
+                labels: [],
+                responsive: [{
+                    breakpoint: 200,
+                    options: {
+                        chart: {
+                            width: 300,
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }]
+                };
+                
+                var rdate = $('#reservation').val();
+                var rstatus = 'report';
+                $.ajax({
+                url: '{{ route('detailscoreagent') }}',
+                data: {
+                    sdate: rdate,
+                    rstatus: rstatus
+                },
+                method: 'GET',
+                success: function(res) {
+                    options.series[0].data = res.datag;
+                    options.xaxis.categories = res.datal;
+                    optionsdonut.labels = res.datal; 
+                    optionsdonut.series = res.datag;
+                        var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
+                        chart2.render();
+
+                        var chart = new ApexCharts(document.querySelector("#bar_graph"), options);
+                        chart.render();
+                            chart.updateOptions({chart: {type: "bar",animate: true},
+                                                labels: '',
+                                                stroke: {width: 0}
+                            });
+                            options.series =  res.datag;
+                        var chart3 = new ApexCharts(document.querySelector("#pie_graph"), optionsdonut);
+                            chart3.render();
+                }
+            });
+    }
 </script>
