@@ -18,7 +18,7 @@ return new class extends Migration
             $table->datetime('export_end')->nullable();
             $table->string('export_src')->nullable();
             $table->string('export_dst')->nullable();
-            $table->integer('export_type')->nullable();
+            $table->integer('export_ctype')->nullable();
             $table->integer('export_status')->nullable();
             $table->integer('export_progress')->nullable();
             $table->string('export_filename')->nullable();
