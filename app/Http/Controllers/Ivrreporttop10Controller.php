@@ -53,7 +53,7 @@ class Ivrreporttop10Controller extends Controller
             ->select('asterisk.ivr_details.name as ivrname','call_center.ivr_report.digit as ivrno', DB::raw('count(asterisk.ivr_details.name) as sumhn'))
             ->join('asterisk.ivr_details', 'call_center.ivr_report.ivr_id', '=', 'asterisk.ivr_details.id')
             ->whereRaw('call_center.ivr_report.datetime between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
-            ->groupBy('ivrname, ivrno')
+            ->groupBy('ivrname', 'ivrno')
             ->orderBy("call_center.ivr_report.datetime", "desc")
             ->get();
 
