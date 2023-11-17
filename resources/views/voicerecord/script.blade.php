@@ -495,6 +495,10 @@
             var savedsagent = localStorage.getItem('sagent');
             var savedstelp = localStorage.getItem('stelp');
             var savedctype = localStorage.getItem('sctype');
+            console.log(saveddateStart)
+            console.log(savedsagent)
+            console.log(savedstelp)
+            console.log(savedctype)
             // Set field values from local storage
             if (saveddateStart) {
                 var dateParts = saveddateStart.split(' - ');
