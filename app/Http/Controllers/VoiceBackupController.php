@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class VoiceBackupController extends Controller
 {
@@ -65,37 +66,25 @@ class VoiceBackupController extends Controller
 
         VoiceBackup::create($holiday);
 
+        $this->gent_export_list($startDate, $endDate, $request->get('src'), $request->get('dst'), $request->get('ctype'));
+
         return response()->json(['success' => 'เพิ่มรายการ Export Voice Record เรียบร้อยแล้ว']);
     }
 
-    public function gent_export_list()
+    public function gent_export_list($sdate, $edate, $telp, $agent, $ctype)
     {
         $datass = DB::connection('remote_connection')
             ->table('asteriskcdrdb.cdr')
             ->select('asteriskcdrdb.cdr.*')
-            //->join('call_center.call_recording', 'asteriskcdrdb.cdr.uniqueid', '=', 'call_center.call_recording.uniqueid')
             ->where('asteriskcdrdb.cdr.dstchannel', '!=', '')
             ->where('asteriskcdrdb.cdr.recordingfile', '!=', '')
             ->where('asteriskcdrdb.cdr.disposition', '=', 'ANSWERED')
             ->orderBy('asteriskcdrdb.cdr.calldate', 'desc');
 
-        if (!empty($request->get('sdate'))) {
-            $dateRange = $request->input('sdate');
-            if ($dateRange) {
-                $dateRangeArray = explode(' - ', $dateRange);
+        $datass->whereBetween('asteriskcdrdb.cdr.calldate', [$sdate,  $edate]);
 
-                if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
-                    $startDate = $dateRangeArray[0] . ' 00:00:00';
-                    $endDate = $dateRangeArray[1] . ' 23:59:59';
-                    //dd($startDate . ' - ' . $endDate);
 
-                    $datass->whereBetween('asteriskcdrdb.cdr.calldate', [$startDate, $endDate]);
-                }
-            }
-        }
-
-        if (!empty($request->get('telp'))) {
-            $telp = $request->input('telp');
+        if (!empty($telp)) {
             if ($telp) {
                 $datass->where(function ($query) use ($telp) {
                     $query->where('asteriskcdrdb.cdr.src', 'like', "$telp%")
@@ -104,8 +93,7 @@ class VoiceBackupController extends Controller
             }
         }
 
-        if (!empty($request->get('ctype'))) {
-            $ctype = $request->input('ctype');
+        if (!empty($ctype)) {
             if ($ctype == 1) {
                 $datass->where('asteriskcdrdb.cdr.accountcode', '')
                     ->where('asteriskcdrdb.cdr.userfield', '=', '')
@@ -121,8 +109,7 @@ class VoiceBackupController extends Controller
             }
         }
 
-        if (!empty($request->get('agent'))) {
-            $agent = $request->input('agent');
+        if (!empty($agent)) {
             if ($agent) {
                 $datass->where(function ($query) use ($agent) {
                     $query->where('asteriskcdrdb.cdr.userfield', $agent)
@@ -130,6 +117,10 @@ class VoiceBackupController extends Controller
                 });
             }
         }
+
+        $datas = $datass->get();
+        $fileContent = json_encode($datas, JSON_PRETTY_PRINT);
+        Storage::disk('local')->put('export_result.txt', $fileContent);
     }
 
     /**
