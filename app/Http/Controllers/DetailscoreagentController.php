@@ -67,7 +67,11 @@ class DetailscoreagentController extends Controller
                 }
                 return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
             }
-
+        $agents = User::orderBy("id", "asc")->get();
+            $agent_data = array();
+            foreach ($agents as $agent) {
+                $agent_data[$agent->id] = $agent->name;
+            }
         if ($request->ajax()) {
 
             return datatables()->of($datas)
@@ -75,7 +79,7 @@ class DetailscoreagentController extends Controller
                     return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
-        return view('detailscoreagent.index');
+        return view('detailscoreagent.index')->with(['agents' => $agents]);
     }
 
 }
