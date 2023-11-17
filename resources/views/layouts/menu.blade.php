@@ -446,6 +446,7 @@
             'billing',
             'notify',
             'customize',
+            'voicebackup'
             // Add more route names here if needed
         ])
             ? 'menu-open'
@@ -457,6 +458,7 @@
                 'billing',
                 'notify',
                 'customize',
+                'voicebackup'
                 // Add more route names here if needed
             ])
                 ? 'active'
@@ -466,6 +468,12 @@
             <i class="fas fa-angle-left right"></i>
         </a>
         <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="{{ route('voicebackup') }}" class="nav-link {{ Request::is('voicebackup') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p>Export ไฟล์บันทึกเสียง</p>
+                </a>
+            </li>
             <li class="nav-item">
                 <a href="{{ route('holiday') }}" class="nav-link {{ Request::is('holiday') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>

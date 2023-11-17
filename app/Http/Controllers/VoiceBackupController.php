@@ -14,12 +14,68 @@ use Illuminate\Support\Facades\Storage;
 class VoiceBackupController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //$this->middleware('auth');
+        $this->middleware('permission:voice-export-list|voice-export-create|notify-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:voice-export-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:voice-export-delete', ['only' => ['destroy']]);
+    }
+
+    /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+
+        $agens = User::orderBy('name', 'asc')->get();
+            $agentArray = [];
+
+            foreach ($agens as $agen) {
+                $agentArray[$agen->id]['name'] = $agen->name;
+            }
+
+
+        if ($request->ajax()) {
+
+            $datas = VoiceBackup::orderBy("id", "desc")->get();
+            $state_text = array('', 'Export Create', 'Export Process', 'Export Complete');
+            return datatables()->of($datas)
+                ->editColumn('checkbox', function ($row) {
+                    return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
+                })
+                ->addColumn('export_date', function ($row) {
+                    $export_date = $row->export_start . " - " . $row->export_end;
+                    return $export_date;
+                })
+                ->editColumn('status', function ($row) use ($state_text) {
+                    $state = $state_text[$row->export_status];
+                    return $state;
+                })
+                ->addColumn('action', function ($row) {
+                    if (Gate::allows('voice-export-download')) {
+                        $html = '<button type="button" class="btn btn-sm btn-warning btn-edit" id="getEditData" data-id="' . $row->id . '"><i class="fa fa-edit"></i> Download</button> ';
+                    } else {
+                        $html = '<button type="button" class="btn btn-sm btn-warning disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-edit"></i> Download</button> ';
+                    }
+                    if (Gate::allows('voice-export-delete')) {
+                        $html .= '<button type="button" data-rowid="' . $row->id . '" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i> ลบ</button>';
+                    } else {
+                        $html .= '<button type="button" class="btn btn-sm btn-danger disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-trash"></i> ลบ</button> ';
+                    }
+                    return $html;
+                })->rawColumns(['checkbox', 'action'])->toJson();
+        }
+
+
+
+        return view('voicebackup.index')->with(['agent' => $agens]);
     }
+
 
     /**
      * Show the form for creating a new resource.
