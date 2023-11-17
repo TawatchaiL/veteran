@@ -66,7 +66,7 @@ class SumtelController extends Controller
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
 
-        $agents = User::orderBy("id", "asc")->get();
+        //$agents = User::orderBy("id", "asc")->get();
 
         //return view('sumtel.index')->with(['agents' => $agents]);
         return view('sumtel.index');
