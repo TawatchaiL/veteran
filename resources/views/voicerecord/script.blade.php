@@ -806,7 +806,7 @@
             } */
         });
 
-        $('#exportVoiceButton').on('click', function() {
+        $('#exportVoiceButton').on('click', function(e) {
             e.preventDefault();
             $.ajax({
                 url: "{{ route('voice_backup.store') }}",
