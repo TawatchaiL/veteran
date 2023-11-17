@@ -150,7 +150,9 @@ class VoiceBackupController extends Controller
         })->toArray();
 
         $fileContent = implode("\n", $filenames);
-        Storage::disk('local')->put($id . '.txt', $fileContent);
+        $filePath = 'download/' . $id . '.txt';
+        $fullPath = public_path($filePath);
+        file_put_contents($fullPath, $fileContent);
     }
 
     /**
