@@ -34,16 +34,46 @@ class DetailscoreController extends Controller
      */
     public function index(Request $request)
     {
-        $datas = DB::table('agent_score')
-        ->select(DB::raw('DATE(datetime) as cdate'), DB::raw('TIME(datetime) as ctime'),'clid','queue','agent','score' )
-        ->get();
+        if (!empty($request->get('sdate'))) {
+            $dateRange = $request->input('sdate');
+            if ($dateRange) {
+                $dateRangeArray = explode(' - ', $dateRange);
+                if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
+                    $startDate = $dateRangeArray[0];
+                    $endDate = $dateRangeArray[1];
+                }
+            }
+        }else{
+                    $startDate = date("Y-m-d");
+                    $endDate = date("Y-m-t", strtotime($startDate));  
+        }
+        $datas = DB::connection('remote_connection')
+            ->table('call_center.agent_score')
+            ->select(DB::raw('DATE(datetime) as cdate'), DB::raw('TIME(datetime) as ctime'),'clid','queue','crm_id','score' )
+            ->whereRaw('call_center.agent_score.datetime between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+            ->orderBy("call_center.agent_score.datetime", "desc")
+            ->get();
+
+        $agents = User::orderBy("id", "asc")->get();
+            $agent_data = array();
+            foreach ($agents as $agent) {
+                $agent_data[$agent->id] = $agent->name;
+            }
 
         if ($request->ajax()) {
 
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
-                })->rawColumns(['checkbox', 'action'])->toJson();
+                })
+                ->addColumn('agent', function ($row) use ($agent_data){
+                    if (isset($agent_data[$row->crm_id])) {
+                        return $agent_data[$row->crm_id];
+                    } else {
+                        return 'Agent not found';
+                    }
+                })
+                ->rawColumns(['checkbox', 'action'])->toJson();
         }
 
         return view('detailscore.index');
