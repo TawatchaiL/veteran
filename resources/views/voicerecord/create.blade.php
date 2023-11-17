@@ -39,7 +39,7 @@
                 {{-- <label>
                     Zoom: <input type="range" min="10" max="1000" value="100" />
                 </label> --}}
-                <div class="row ">
+                <div class="row pb-3">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="row float-lg-left">
                             <div class="col-xs-12 col-sm-12 col-md-12">
