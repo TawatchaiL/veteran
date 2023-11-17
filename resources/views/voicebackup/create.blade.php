@@ -67,10 +67,10 @@
                             <strong><i class="fas fa-list-ol"></i> Extension:</strong>
                             <select style="width: 100%;" class="select2 select2_multiple form-control" id="AddExtension"
                                 name="extension" multiple="multiple">
-                                @foreach ($sound as $key2)
+                                {{-- @foreach ($sound as $key2)
                                     <option value="{{ $key2->number }}">{{ $key2->number }}
                                     </option>
-                                @endforeach
+                                @endforeach --}}
                             </select>
                         </div>
                     </div>
