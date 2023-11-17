@@ -575,8 +575,8 @@
                     name: 'ivrno'
                 },
                 {
-                    data: 'ivrsum',
-                    name: 'ivrsum'
+                    data: 'sumhn',
+                    name: 'sumhn'
                 },
             ]
         });
