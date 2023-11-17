@@ -34,7 +34,8 @@
                                                         <i class="far fa-calendar-alt"></i>
                                                     </span>
                                                 </div>
-                                                <input type="text" class="form-control float-right" id="reservation" readonly>
+                                                <input type="text" class="form-control float-right" id="reservation"
+                                                    readonly>
                                             </div>
 
                                         </div>
@@ -54,7 +55,9 @@
                                                 Agent:</strong>
                                             <select style="width: 100%;" class="select2 form-control" id="agen"
                                                 name="agen">
-                                                <option value="" selected>ทั้งหมด</option>
+                                                @can('voice-record-supervisor')
+                                                    <option value="" selected>ทั้งหมด</option>
+                                                @endcan
                                                 @foreach ($agens as $agen)
                                                     @can('voice-record-supervisor')
                                                         <option value="{{ $agen->id }}">
@@ -156,7 +159,8 @@
                                 <table id="Listview" class="table table-bordered table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th width="5%"><input disabled type="checkbox" id="check-all" class="flat">
+                                            <th width="5%"><input disabled type="checkbox" id="check-all"
+                                                    class="flat">
                                             </th>
                                             <th>วันที่</th>
                                             <th>เวลา</th>
