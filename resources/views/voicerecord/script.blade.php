@@ -530,6 +530,16 @@
             $('#reservation').daterangepicker({
                 startDate: startDate,
                 endDate: endDate,
+                ranges: {
+                    'วันนี้': [moment(), moment()],
+                    'เมื่อวานนี้': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'ย้อนหลัง 7 วัน': [moment().subtract(6, 'days'), moment()],
+                    'ย้อนหลัง 30 วัน': [moment().subtract(29, 'days'), moment()],
+                    'เดือนนี้': [moment().startOf('month'), moment().endOf('month')],
+                    'เดือนที่แล้ว': [moment().subtract(1, 'month').startOf('month'), moment()
+                        .subtract(1, 'month').endOf('month')
+                    ]
+                },
                 locale: {
                     format: 'YYYY-MM-DD',
                     applyLabel: 'ตกลง',
@@ -547,7 +557,7 @@
             });
             // Apply the custom date range filter on input change
             $('#reservation').on('apply.daterangepicker', function() {
-                console.log( $('#reservation').val())
+                console.log($('#reservation').val())
                 table.draw();
                 storeFieldValues();
             });
