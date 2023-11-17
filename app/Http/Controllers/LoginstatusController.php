@@ -52,7 +52,7 @@ class LoginstatusController extends Controller
             ->select('id_agent','datetime_init', 'datetime_end')
             ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
             ->whereNull('id_break'); 
-        if(!empty($request->get('agent')) && $request->get('agent' != "0")){
+        if(!empty($request->get('agent')) && $request->get('agent') != "0"){
             $datas->whereRaw('id_agent = "'. $request->input('agent') .'"');  
         }    
         $datas->orderBy("datetime_init", "asc")->get();
