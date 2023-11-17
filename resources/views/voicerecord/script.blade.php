@@ -540,6 +540,9 @@
             });
             // Apply the custom date range filter on input change
             $('#reservation').on('apply.daterangepicker', function() {
+                //console.log(this.value)
+                console.log('Start Date:', picker.startDate.format('YYYY-MM-DD'));
+                console.log('End Date:', picker.endDate.format('YYYY-MM-DD'));
                 table.draw();
                 storeFieldValues();
             });
