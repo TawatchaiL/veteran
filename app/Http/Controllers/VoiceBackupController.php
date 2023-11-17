@@ -64,14 +64,14 @@ class VoiceBackupController extends Controller
             'export_status' => 1,
         ];
 
-        VoiceBackup::create($holiday);
+        $vid = VoiceBackup::create($holiday);
 
-        $this->gent_export_list($startDate, $endDate, $request->get('src'), $request->get('dst'), $request->get('ctype'));
+        $this->gent_export_list($vid->id, $startDate, $endDate, $request->get('src'), $request->get('dst'), $request->get('ctype'));
 
         return response()->json(['success' => 'เพิ่มรายการ Export Voice Record เรียบร้อยแล้ว']);
     }
 
-    public function gent_export_list($sdate, $edate, $telp, $agent, $ctype)
+    public function gent_export_list($id, $sdate, $edate, $telp, $agent, $ctype)
     {
         $datass = DB::connection('remote_connection')
             ->table('asteriskcdrdb.cdr')
@@ -120,12 +120,14 @@ class VoiceBackupController extends Controller
 
         $datas = $datass->get();
 
-        $filenames = $datas->pluck('recordingfile')->map(function ($item) {
-            return basename($item);
+        $filenames = $datas->map(function ($item) {
+            $datep = explode("-", explode(" ", $item->calldate)[0]);
+            $voic = $datep[0] . "/" . $datep[1] . "/" . $datep[2] . "/" . basename($item->recordingfile);
+            return $voic;
         })->toArray();
 
         $fileContent = implode("\n", $filenames);
-        Storage::disk('local')->put('export_result.txt', $fileContent);
+        Storage::disk('local')->put($id . '.txt', $fileContent);
     }
 
     /**
