@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\VoiceBackup;
+use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -73,6 +74,15 @@ class VoiceBackupController extends Controller
 
     public function gent_export_list($id, $sdate, $edate, $telp, $agent, $ctype)
     {
+
+        $agens = User::orderBy('name', 'asc')->get();
+        $agentArray = [];
+
+        foreach ($agens as $agen) {
+            $agentArray[$agen->id]['name'] = $agen->name;
+        }
+
+
         $datass = DB::connection('remote_connection')
             ->table('asteriskcdrdb.cdr')
             ->select('asteriskcdrdb.cdr.*')
@@ -120,10 +130,23 @@ class VoiceBackupController extends Controller
 
         $datas = $datass->get();
 
-        $filenames = $datas->map(function ($item) {
+        $filenames = $datas->map(function ($item) use ($agentArray) {
             $datep = explode("-", explode(" ", $item->calldate)[0]);
-            $voic = $datep[0] . "/" . $datep[1] . "/" . $datep[2] . "/" . basename($item->recordingfile);
-            return $voic;
+            $original = $datep[0] . "/" . $datep[1] . "/" . $datep[2] . "/" . basename($item->recordingfile);
+
+            $agentname = '';
+
+            if ($item->dst_userfield !== null) {
+                $agentname = $agentArray[$item->dst_userfield]['name'];
+            } elseif ($item->accountcode !== '' && $item->userfield !== '') {
+                $agentname = $agentArray[$item->userfield]['name'];
+            }
+
+            $agentname = $agentname ?: 'NoAgent';
+
+            $newname = $agentname . "-" . basename($item->recordingfile);
+
+            return $original . ',' . $newname;
         })->toArray();
 
         $fileContent = implode("\n", $filenames);
