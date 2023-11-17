@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('voice_backups', function (Blueprint $table) {
             $table->id();
+            $table->string('export_name')->nullable();
+            $table->datetime('export_start')->nullable();
+            $table->string('export_src')->nullable();
+            $table->string('export_dst')->nullable();
+            $table->integer('export_type')->nullable();
             $table->timestamps();
         });
     }
