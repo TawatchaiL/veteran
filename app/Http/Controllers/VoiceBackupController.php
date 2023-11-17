@@ -53,12 +53,13 @@ class VoiceBackupController extends Controller
         }
 
         $holiday = [
-            'export_name' => "Export " . date("Y-m-d H:i:s"),
+            'export_name' => "Export Voice Recording" . date("Y-m-d H:i:s"),
             'export_start' =>  $startDate,
             'export_end' => $endDate,
             'export_src' =>  $request->get('src'),
             'export_dst' => $request->get('dst'),
             'export_ctype' => $request->get('ctype'),
+            'export_status' => 1,
         ];
 
         VoiceBackup::create($holiday);
