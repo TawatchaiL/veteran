@@ -34,40 +34,45 @@ class IvrreportController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
-            //sleep(2);
+        if (!empty($request->get('sdate'))) {
+            $dateRange = $request->input('sdate');
+            if ($dateRange) {
+                $dateRangeArray = explode(' - ', $dateRange);
+                if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
+                    $startDate = $dateRangeArray[0];
+                    $endDate = $dateRangeArray[1];
+                }
+            }
+        }else{
+                    $startDate = date("Y-m-d");
+                    $endDate = date("Y-m-t", strtotime($startDate));  
+        }
+        $datas = DB::connection('remote_connection')
+            ->table('call_center.call_entry')
+            ->select('callerid', DB::raw('count(callerid) as sumcases'))
+            ->whereRaw('LENGTH(callerid) < 5')
+            ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+            ->groupBy('callerid')
+            ->orderBy("sumcases", "desc")
+            ->limit(10)
+            ->get();
 
-            //$datas = Cases::orderBy("id", "desc")->get();
-            $numberOfRows = 50; // Change this to the desired number of rows
-            $simulatedDatas = [];
-
-            $rivrname = ['welcom', 'opd', 'callcenter'];
-            $rivrno = ['1', '2', '3', '4', '5'];
-
-            for ($i = 1; $i <= $numberOfRows; $i++) {
-
-                $ivrno  = $rivrno[array_rand($rivrno)];
-                $ivrname = $rivrname[array_rand($rivrname)];
-                $createDate = now()->subDays(rand(1, 365))->subHours(rand(0, 23))->subMinutes(rand(0, 59));
-
-
-                $simulatedDatas[] = (object) [
-                    'id' => $i,
-                    'cdate' => $createDate->format('Y-m-d'),
-                    'ctime' => $createDate->format('H:i:s'),
-                    'telno' => '08' . rand(10000000, 99999999),
-                    'ivrname' => $ivrname,
-                    'ivrno' => $ivrno,
-                    // Simulate other fields as needed
-                ];
+            if (!empty($request->get('rstatus'))) {
+                $chart_data = array();
+                $chart_label = array();
+                foreach ($datas as $data) {
+                    $chart_data[] = $data->sumcases;
+                    $chart_label[] = $data->callerid;
+                }
+                return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
             }
 
+        if ($request->ajax()) {
 
-            return datatables()->of($simulatedDatas)
+            return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
-                })->rawColumns(['checkbox', 'action'])
-                ->toJson();
+                })->rawColumns(['checkbox', 'action'])->toJson();
         }
 
         return view('ivrreport.index');
