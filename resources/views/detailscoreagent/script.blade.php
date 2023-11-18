@@ -386,7 +386,7 @@
                     d.agent = $('#Agent').val();
                 },
                 complete: function (data) {
-                    Loadchart();
+                    //Loadchart();
                 }  
             },
             serverSide: true,
@@ -775,7 +775,7 @@
                 
                 var rdate = $('#reservation').val();
                 var rstatus = 'report';
-                
+
                 $.ajax({
                 url: '{{ route('detailscoreagent') }}',
                 data: {
