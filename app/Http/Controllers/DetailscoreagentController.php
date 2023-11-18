@@ -58,15 +58,15 @@ class DetailscoreagentController extends Controller
             ->orderBy("call_center.agent_score.score", "desc")
             ->get();
 
-            //if (!empty($request->input('rstatus'))) {
+            if (!empty($request->input('rstatus'))) {
                 $chart_data = array();
                 $chart_label = array();
                 foreach ($datas as $data) {
-                    $chart_data[] = $data->sumscore;
+                    $chart_data[] = $data->score;
                     $chart_label[] = $data->score;
                 }
                 return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
-            //}
+            }
 
         if ($request->ajax()) {
 
