@@ -43,8 +43,9 @@ class VoiceBackupController extends Controller
         if ($request->ajax()) {
 
             $datas = VoiceBackup::orderBy("id", "desc")->get();
-            $state_text = array('', 'รอคิว', 'กำลังทำงาน', 'Export เสร็จแล้ว');
-            $ctype_text = array('', 'สายเข้า', 'โทรออก', 'ภายใน');
+            $state_text = ['รอคิว', 'กำลังทำงาน', 'Export เสร็จแล้ว'];
+            $ctype_text = ['สายเข้า', 'โทรออก', 'ภายใน'];
+
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
@@ -57,7 +58,8 @@ class VoiceBackupController extends Controller
                     return $agentArray[$row->export_dst]['name'];
                 })
                 ->editColumn('export_ctype', function ($row) use ($ctype_text) {
-                    if ($row->export_ctype !== NULL) {
+                    // Check if $row->export_ctype is set and within array bounds
+                    if ($row->export_ctype !== NULL && isset($ctype_text[$row->export_ctype])) {
                         return $ctype_text[$row->export_ctype];
                     }
                     return '';
