@@ -117,12 +117,12 @@
                     searchable: false
                 },
                 {
-                    data: 'group_name',
-                    name: 'group_name'
+                    data: 'export_name',
+                    name: 'export_name'
                 },
                 {
-                    data: 'notifydate',
-                    name: 'notifydatee'
+                    data: 'export_date',
+                    name: 'export_date'
                 },
                 {
                     data: 'status',
