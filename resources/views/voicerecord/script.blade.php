@@ -544,7 +544,7 @@
                     ]
                 },
                 locale: {
-                    format: 'YYYY-MM-DD hh:mm:ss',
+                    format: 'YYYY-MM-DD H:mm:ss',
                     applyLabel: 'ตกลง',
                     cancelLabel: 'ยกเลิก',
                     fromLabel: 'จาก',
