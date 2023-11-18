@@ -777,7 +777,7 @@
                 var rstatus = 'report';
 
                 $.ajax({
-                url: '{{ route('reportsumbytype') }}',
+                url: '{{ route('detailscoreagent') }}',
                 data: {
                     sdate: rdate,
                     rstatus: rstatus
