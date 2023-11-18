@@ -55,8 +55,8 @@ class DetailscoreagentController extends Controller
             if(!empty($request->get('agent')) && $request->get('agent') != "0"){
                 $datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
             }   
-            $datas->groupBy('call_center.agent_score.score')
-            ->orderBy("call_center.agent_score.score", "desc")
+            $datas->groupBy('clid')
+            ->orderBy("sumclid", "desc")
             ->get();
             if (!empty($request->input('rstatus'))) {
                 $chart_data = array();
