@@ -65,7 +65,7 @@ class DetailscoreagentController extends Controller
                     $chart_data[] = $data->score;
                     $chart_label[] = $data->score;
                 }
-                return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
+                //return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
             }
 
         if ($request->ajax()) {
