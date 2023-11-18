@@ -76,7 +76,7 @@ class VoiceBackupController extends Controller
                         $html .= '<button type="button" class="btn btn-sm btn-danger disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-trash"></i> ลบรายการ</button> ';
                     }
                     return $html;
-                })->rawColumns(['checkbox', 'action'])->toJson();
+                })->rawColumns(['checkbox', 'export_progress', 'action'])->toJson();
         }
 
 
