@@ -59,10 +59,10 @@ class DetailscoreagentController extends Controller
             if (!empty($request->get('rstatus'))) {
                 $chart_data = array();
                 $chart_label = array();
-                foreach ($datas as $data) {
+                //foreach ($datas as $data) {
                     $chart_data[] = [1,2];
-                    $chart_label[] = [a,b];
-                }
+                    $chart_label[] = ['a','b'];
+                //}
                 return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
             }
 
