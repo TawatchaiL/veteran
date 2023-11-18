@@ -471,11 +471,14 @@
 
         function datesearch() {
             var currentDate = moment();
-            // Set the start date to 7 days before today
-            startDate = moment(currentDate).subtract(30, 'days').format('YYYY-MM-DD');
-            // Set the end date to the end of the current month
-            endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
+
+            // Set the start date to 30 days before today with the default time 00:00:00
+            startDate = moment(currentDate).subtract(30, 'days').startOf('day').format('YYYY-MM-DD HH:mm:ss');
+
+            // Set the end date to the end of the current month with the default time 23:59:59
+            endDate = moment(currentDate).endOf('month').endOf('day').format('YYYY-MM-DD HH:mm:ss');
         }
+
 
         function storeFieldValues() {
             var dateStart = $('#reservation').val();
