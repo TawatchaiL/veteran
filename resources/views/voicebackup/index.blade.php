@@ -77,7 +77,7 @@
                                 <table id="Listview" class="table table-bordered table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th width="80px"><input type="checkbox" id="check-all" class="flat"></th>
+                                            <th width="50px"><input type="checkbox" id="check-all" class="flat"></th>
                                             <th>Name</th>
                                             <th>วันที่เวลา</th>
                                             <th>เบอร์ที่ติดต่อ</th>

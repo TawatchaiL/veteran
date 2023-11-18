@@ -42,7 +42,8 @@ class VoiceBackupController extends Controller
 
         if ($request->ajax()) {
 
-            $datas = VoiceBackup::orderBy("id", "desc")->get();
+            $datas = VoiceBackup::join('users', 'user.id', '=', 'voice_backups.export_dst')
+                ->orderBy("id", "desc")->get();
             $state_text = array('', 'รอคิว', 'กำลังทำงาน', 'Export เสร็จแล้ว');
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
@@ -51,6 +52,9 @@ class VoiceBackupController extends Controller
                 ->addColumn('export_date', function ($row) {
                     $export_date = $row->export_start . " - " . $row->export_end;
                     return $export_date;
+                })
+                ->addColumn('export_dst', function ($row) use ($agentArray) {
+                    return $agentArray[$row->export_dst]['name'];
                 })
                 ->editColumn('status', function ($row) use ($state_text) {
                     $state = $state_text[$row->export_status];
