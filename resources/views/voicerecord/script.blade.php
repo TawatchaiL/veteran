@@ -528,6 +528,7 @@
         let daterange = () => {
             moment.locale('th');
             $('#reservation').daterangepicker({
+                timePicker: true,
                 startDate: startDate,
                 endDate: endDate,
                 ranges: {
@@ -541,7 +542,7 @@
                     ]
                 },
                 locale: {
-                    format: 'YYYY-MM-DD',
+                    format: 'YYYY-MM-DD hh:mm:ss',
                     applyLabel: 'ตกลง',
                     cancelLabel: 'ยกเลิก',
                     fromLabel: 'จาก',
