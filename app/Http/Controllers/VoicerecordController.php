@@ -69,7 +69,7 @@ class VoicerecordController extends Controller
                     if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
                         $startDate = $dateRangeArray[0].' 00:00:00';
                         $endDate = $dateRangeArray[1].' 23:59:59';
-                        //dd($startDate . ' - ' . $endDate);
+                        dd($startDate . ' - ' . $endDate);
 
                         $datass->whereBetween('asteriskcdrdb.cdr.calldate', [$startDate, $endDate]);
                     }
