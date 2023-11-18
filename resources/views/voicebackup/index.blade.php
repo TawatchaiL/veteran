@@ -27,8 +27,7 @@
                         @endcan &nbsp;
 
                         @can('voice-export-delete')
-                            <button type="button" class="btn btn-danger delete_all_button"><i class="fa fa-trash"></i> ลบ
-                                ทั้งหมด</button>
+                            <button type="button" class="btn btn-danger delete_all_button"><i class="fa fa-trash"></i> ลบทั้งหมด</button>
                         @else
                             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
                                 title="คุณไม่มีสิทธิ์ในส่วนนี้">
