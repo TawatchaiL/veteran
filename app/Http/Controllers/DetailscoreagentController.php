@@ -58,7 +58,15 @@ class DetailscoreagentController extends Controller
             ->orderBy("score", "desc")
             ->get();
 
-
+            if (!empty($request->get('rstatus'))) {
+                $chart_data = array();
+                $chart_label = array();
+                foreach ($datas as $data) {
+                    $chart_data[] = $data->sumcases;
+                    $chart_label[] = $data->score;
+                }
+                return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
+            }
         $agents = User::orderBy("id", "asc")->get();
             $agent_data = array();
             foreach ($agents as $agent) {
