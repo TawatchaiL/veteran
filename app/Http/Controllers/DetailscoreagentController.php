@@ -58,7 +58,7 @@ class DetailscoreagentController extends Controller
             $datas->groupBy('clid')
             ->orderBy("sumclid", "desc")
             ->get();
-            if (!empty($request->input('rstatus'))) {
+            if (!empty($request->get('rstatus'))) {
                 $chart_data = array();
                 $chart_label = array();
                 foreach ($datas as $data) {
