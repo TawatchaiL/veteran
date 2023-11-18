@@ -473,10 +473,10 @@
             var currentDate = moment();
 
             // Set the start date to 30 days before today with the default time 00:00:00
-            startDate = moment(currentDate).subtract(30, 'days').startOf('day');
+            startDate = moment(currentDate).subtract(30, 'days').startOf('day').format('YYYY-MM-DD HH:mm:ss');
 
             // Set the end date to the end of the current month with the default time 23:59:59
-            endDate = moment(currentDate).endOf('month').endOf('day');
+            endDate = moment(currentDate).endOf('month').endOf('day').format('YYYY-MM-DD HH:mm:ss');
         }
 
 
