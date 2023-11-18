@@ -58,10 +58,10 @@ class VoiceBackupController extends Controller
                 })
                 ->editColumn('export_progress', function ($row) {
                     $progress = ' <div class="progress progress-sm active">
-                    <div class="progress-bar bg-success progress-bar-striped" role="progressbar" aria-valuenow="' . $row->export_progress . '" aria-valuemin="0" aria-valuemax="100" style="width: ' . $row->export_progress . '%">
+                    <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="' . $row->export_progress . '" aria-valuemin="0" aria-valuemax="100" style="width: ' . $row->export_progress . '%">
                     <span class="sr-only">' . $row->export_progress . '% Complete</span>
                     </div>
-                    </div>';
+                    </div><small>' . $row->export_progress . '% Complete</small>';
                     return $progress;
                 })
                 ->addColumn('action', function ($row) {

@@ -84,6 +84,7 @@
                                             <th>Agent</th>
                                             <th>ประเภท</th>
                                             <th>สถานะ</th>
+                                            <th>Progress</th>
                                             <th width="180px"></th>
                                         </tr>
                                     </thead>
