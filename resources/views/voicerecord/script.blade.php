@@ -530,6 +530,7 @@
             $('#reservation').daterangepicker({
                 timePicker: true,
                 timePicker24Hour: true,
+                timePickerSeconds: true,
                 timePickerIncrement: 30,
                 startDate: startDate,
                 endDate: endDate,
@@ -544,7 +545,7 @@
                     ]
                 },
                 locale: {
-                    format: 'YYYY-MM-DD H:mm:ss',
+                    format: 'YYYY-MM-DD HH:mm:ss',
                     applyLabel: 'ตกลง',
                     cancelLabel: 'ยกเลิก',
                     fromLabel: 'จาก',
