@@ -471,11 +471,7 @@
 
         function datesearch() {
             var currentDate = moment();
-
-            // Set the start date to 30 days before today with the default time 00:00:00
             startDate = moment(currentDate).subtract(30, 'days').startOf('day').format('YYYY-MM-DD HH:mm:ss');
-
-            // Set the end date to the end of the current month with the default time 23:59:59
             endDate = moment(currentDate).endOf('month').endOf('day').format('YYYY-MM-DD HH:mm:ss');
         }
 
@@ -547,7 +543,7 @@
                 timePicker: true,
                 timePicker24Hour: true,
                 timePickerSeconds: true,
-                timePickerIncrement: 30,
+                //timePickerIncrement: 5,
                 startDate: startDate,
                 endDate: endDate,
                 ranges: {
@@ -884,8 +880,8 @@
             }
             // Set the date range back to its default
             var currentDate = moment();
-            var startDate = moment(currentDate).subtract(30, 'days').format('YYYY-MM-DD');
-            var endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
+            var startDate = moment(currentDate).subtract(30, 'days').startOf('day').format('YYYY-MM-DD HH:mm:ss');
+            var endDate = moment(currentDate).endOf('month').endOf('day').format('YYYY-MM-DD HH:mm:ss');
 
             daterange();
             table = $('#Listview').DataTable(table_option);
