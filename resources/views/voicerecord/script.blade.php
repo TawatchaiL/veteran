@@ -816,7 +816,7 @@
             }).done(function(r) {
                 if (r == true) {
                     $.ajax({
-                        url: "{{ route('voice_backup.store') }}",
+                        url: "{{ route('voicebackup.store') }}",
                         method: 'post',
                         data: {
                             export_date: $('#reservation').val(),
