@@ -118,6 +118,10 @@
                     name: 'status'
                 },
                 {
+                    data: 'export_progress',
+                    name: 'export_progress'
+                },
+                {
                     data: 'action',
                     name: 'action'
                 },

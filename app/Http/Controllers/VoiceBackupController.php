@@ -33,17 +33,17 @@ class VoiceBackupController extends Controller
     {
 
         $agens = User::orderBy('name', 'asc')->get();
-            $agentArray = [];
+        $agentArray = [];
 
-            foreach ($agens as $agen) {
-                $agentArray[$agen->id]['name'] = $agen->name;
-            }
+        foreach ($agens as $agen) {
+            $agentArray[$agen->id]['name'] = $agen->name;
+        }
 
 
         if ($request->ajax()) {
 
             $datas = VoiceBackup::orderBy("id", "desc")->get();
-            $state_text = array('', 'Export Create', 'Export Process', 'Export Complete');
+            $state_text = array('', 'รอคิว', 'กำลังทำงาน', 'Export เสร็จแล้ว');
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
@@ -55,6 +55,14 @@ class VoiceBackupController extends Controller
                 ->editColumn('status', function ($row) use ($state_text) {
                     $state = $state_text[$row->export_status];
                     return $state;
+                })
+                ->editColumn('export_progress', function ($row) {
+                    $progress = ' <div class="progress progress-sm active">
+                    <div class="progress-bar bg-success progress-bar-striped" role="progressbar" aria-valuenow="' . $row->export_progress . '" aria-valuemin="0" aria-valuemax="100" style="width: ' . $row->export_progress . '%">
+                    <span class="sr-only">' . $row->export_progress . '% Complete</span>
+                    </div>
+                    </div>';
+                    return $progress;
                 })
                 ->addColumn('action', function ($row) {
                     if (Gate::allows('voice-export-download')) {
