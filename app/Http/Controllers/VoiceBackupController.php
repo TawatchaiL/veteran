@@ -43,8 +43,8 @@ class VoiceBackupController extends Controller
         if ($request->ajax()) {
 
             $datas = VoiceBackup::orderBy("id", "desc")->get();
-            $state_text = ['รอคิว', 'กำลังทำงาน', 'Export เสร็จแล้ว'];
-            $ctype_text = ['สายเข้า', 'โทรออก', 'ภายใน'];
+            $state_text = ['', 'รอคิว', 'กำลังทำงาน', 'Export เสร็จแล้ว'];
+            $ctype_text = ['', 'สายเข้า', 'โทรออก', 'ภายใน'];
 
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
