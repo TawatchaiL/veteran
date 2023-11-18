@@ -529,6 +529,8 @@
             moment.locale('th');
             $('#reservation').daterangepicker({
                 timePicker: true,
+                timePicker24Hour: true,
+                timePickerIncrement: 30,
                 startDate: startDate,
                 endDate: endDate,
                 ranges: {
