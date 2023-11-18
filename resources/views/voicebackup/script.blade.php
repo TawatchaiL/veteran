@@ -125,6 +125,18 @@
                     name: 'export_date'
                 },
                 {
+                    data: 'export_src',
+                    name: 'export_src'
+                },
+                {
+                    data: 'export_dst',
+                    name: 'export_dst'
+                },
+                {
+                    data: 'export_ctype',
+                    name: 'export_ctype'
+                },
+                {
                     data: 'status',
                     name: 'status'
                 },

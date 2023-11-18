@@ -81,8 +81,11 @@
                                             <th width="80px"><input type="checkbox" id="check-all" class="flat"></th>
                                             <th>Name</th>
                                             <th>วันที่เวลา</th>
+                                            <th>เบอร์ที่ติดต่อ</th>
+                                            <th>Agent</th>
+                                            <th>ประเภท</th>
                                             <th>สถานะ</th>
-                                            <th width="120px"></th>
+                                            <th width="150px"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
