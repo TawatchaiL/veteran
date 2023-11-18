@@ -775,31 +775,6 @@
                 
                 var rdate = $('#reservation').val();
                 var rstatus = 'report';
-                $.ajax({
-                url: '{{ route('detailscoreagent') }}',
-                data: {
-                    sdate: rdate,
-                    rstatus: rstatus
-                },
-                method: 'GET',
-                success: function(res) {
-                    options.series[0].data = res.datag;
-                    options.xaxis.categories = res.datal;
-                    optionsdonut.labels = res.datal; 
-                    optionsdonut.series = res.datag;
-                        var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
-                        chart2.render();
 
-                        var chart = new ApexCharts(document.querySelector("#bar_graph"), options);
-                        chart.render();
-                            chart.updateOptions({chart: {type: "bar",animate: true},
-                                                labels: '',
-                                                stroke: {width: 0}
-                            });
-                            options.series =  res.datag;
-                        var chart3 = new ApexCharts(document.querySelector("#pie_graph"), optionsdonut);
-                            chart3.render();
-                }
-            });
     }
 </script>
