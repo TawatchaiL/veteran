@@ -42,9 +42,9 @@ class VoiceBackupController extends Controller
 
         if ($request->ajax()) {
 
-            $datas = VoiceBackup::join('users', 'user.id', '=', 'voice_backups.export_dst')
-                ->orderBy("id", "desc")->get();
+            $datas = VoiceBackup::orderBy("id", "desc")->get();
             $state_text = array('', 'รอคิว', 'กำลังทำงาน', 'Export เสร็จแล้ว');
+            $ctype_text = array('', 'สายเข้า', 'โทรออก', 'ภายใน');
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
@@ -53,8 +53,11 @@ class VoiceBackupController extends Controller
                     $export_date = $row->export_start . " - " . $row->export_end;
                     return $export_date;
                 })
-                ->addColumn('export_dst', function ($row) use ($agentArray) {
+                ->editColumn('export_dst', function ($row) use ($agentArray) {
                     return $agentArray[$row->export_dst]['name'];
+                })
+                ->editColumn('export_ctype', function ($row) use ($ctype_text) {
+                    return $ctype_text[$row->export_ctype];
                 })
                 ->editColumn('status', function ($row) use ($state_text) {
                     $state = $state_text[$row->export_status];
