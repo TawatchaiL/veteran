@@ -59,10 +59,10 @@ class VoiceBackupController extends Controller
                 })
                 ->editColumn('export_ctype', function ($row) use ($ctype_text) {
                     // Check if $row->export_ctype is set and within array bounds
-                    if ($row->export_ctype !== '' && $row->export_ctype !== NULL && isset($ctype_text[$row->export_ctype])) {
+                  /*   if ($row->export_ctype !== '' && $row->export_ctype !== NULL && isset($ctype_text[$row->export_ctype])) {
                         return $ctype_text[$row->export_ctype];
-                    }
-                    return '';
+                    } */
+                    return  $row->export_ctype;
                 })
                 ->editColumn('status', function ($row) use ($state_text) {
                     $state = $state_text[$row->export_status];
