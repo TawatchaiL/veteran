@@ -57,7 +57,10 @@ class VoiceBackupController extends Controller
                     return $agentArray[$row->export_dst]['name'];
                 })
                 ->editColumn('export_ctype', function ($row) use ($ctype_text) {
-                    return $ctype_text[$row->export_ctype];
+                    if ($row->export_ctype !== NULL) {
+                        return $ctype_text[$row->export_ctype];
+                    }
+                    return '';
                 })
                 ->editColumn('status', function ($row) use ($state_text) {
                     $state = $state_text[$row->export_status];
