@@ -65,19 +65,20 @@ class DetailscoreagentController extends Controller
                     $chart_data[] = $data->sumscore;
                     $chart_label[] = $data->score;
                 }
-                //return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
+                return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
             }
-        $agents = User::orderBy("id", "asc")->get();
-            $agent_data = array();
-            foreach ($agents as $agent) {
-                $agent_data[$agent->id] = $agent->name;
-            }
+
         if ($request->ajax()) {
 
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 })->rawColumns(['checkbox', 'action'])->toJson();
+        }
+        $agents = User::orderBy("id", "asc")->get();
+        $agent_data = array();
+        foreach ($agents as $agent) {
+            $agent_data[$agent->id] = $agent->name;
         }
         return view('detailscoreagent.index')->with(['agents' => $agents]);
     }
