@@ -91,5 +91,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/voicebackup', [App\Http\Controllers\VoiceBackupController::class, 'index'])->name('voicebackup');
     Route::post('/voicebackup/store', [App\Http\Controllers\VoiceBackupController::class, 'store'])->name('voicebackup.store');
+    Route::delete('/voicebackup/destroy', [App\Http\Controllers\VoiceBackupController::class, 'destroy'])->name('voicebackup.destroy');
+    Route::post('/voicebackup/destroy_all', [App\Http\Controllers\VoiceBackupController::class, 'destroy_all'])->name('voicebackup.destroy_all');
 });
 

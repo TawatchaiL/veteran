@@ -71,7 +71,7 @@
                                     });
                                 </script>
                             @endif
-                            <form method="post" action="{{ route('notify.destroy_all') }}" name="delete_all"
+                            <form method="post" action="{{ route('voicebackup.destroy_all') }}" name="delete_all"
                                 id="delete_all">
                                 @csrf
                                 @method('POST')

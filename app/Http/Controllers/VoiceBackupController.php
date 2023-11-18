@@ -125,7 +125,7 @@ class VoiceBackupController extends Controller
 
         $this->gent_export_list($vid->id, $startDate, $endDate, $request->get('src'), $request->get('dst'), $request->get('ctype'));
 
-        return response()->json(['success' => 'เพิ่มรายการ Export Voice Record เรียบร้อยแล้ว']);
+        return response()->json(['success' => 'เพิ่มรายการ Export VoiceRecord เรียบร้อยแล้ว']);
     }
 
     public function gent_export_list($id, $sdate, $edate, $telp, $agent, $ctype)
@@ -227,19 +227,21 @@ class VoiceBackupController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, VoiceBackup $voiceBackup)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request->get('id');
+        VoiceBackup::find($id)->delete();
+        return ['success' => true, 'message' => 'ลบรายการ Export VoiceRecord เรียบร้อยแล้ว'];
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(VoiceBackup $voiceBackup)
+    public function destroy_all(Request $request)
     {
-        //
+
+        $arr_del  = $request->get('table_records');
+        for ($xx = 0; $xx < count($arr_del); $xx++) {
+            VoiceBackup::find($arr_del[$xx])->delete();
+        }
+
+        return redirect('/voicebackup')->with('success', 'ลบรายการ Export VoiceRecord เรียบร้อยแล้ว');
     }
 }

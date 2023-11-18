@@ -21,29 +21,6 @@
         });
 
 
-        $(".select2_single").select2({
-            maximumSelectionLength: 1,
-            allowClear: false,
-            placeholder: 'กรุณาเลือก'
-        });
-
-        $(".select2_single").on("select2:unselect", function(e) {
-            //log("select2:unselect", e);
-            //$('.products').html('');
-        });
-
-        $(".select2_singles").select2({
-            maximumSelectionLength: 1,
-            allowClear: false,
-            placeholder: 'กรุณาเลือก'
-        });
-
-
-        $(".select2_multiple").select2({
-            maximumSelectionLength: 50,
-            allowClear: false,
-            placeholder: 'กรุณาเลือก'
-        });
 
         $("input[data-bootstrap-switch]").each(function() {
             $(this).bootstrapSwitch('state', $(this).prop('checked'));
@@ -249,133 +226,6 @@
             });
         });
 
-        let id;
-        $(document).on('click', '#getEditData', function(e) {
-            e.preventDefault();
-
-
-            $('.alert-danger').html('');
-            $('.alert-danger').hide();
-            $('.alert-success').html('');
-            $('.alert-success').hide();
-
-            $("#EditExtension").empty();
-            $("#EditExtension").val(null).trigger("change")
-
-            id = $(this).data('id');
-            $.ajax({
-                url: "notify/edit/" + id,
-                method: 'GET',
-                success: function(res) {
-
-                    $('#EditName').val(res.data.group_name);
-                    $('#EditExtension').append(res.select_list_exten);
-                    $('#EditLine').val(res.data.line_token);
-                    $('#EditEmail').val(res.data.email);
-                    $('#EditSDate').val(res.data.group_start_th);
-                    $('#EditEDate').val(res.data.group_end_th);
-
-                    if (res.data.status == 1) {
-                        $('#ecustomCheckbox1').prop('checked', true);
-                    } else {
-                        $('#ecustomCheckbox1').prop('checked', false);
-                    }
-                    if (res.data.group_sat == 1) {
-                        $('#esat').prop('checked', true);
-                    } else {
-                        $('#esat').prop('checked', false);
-                    }
-                    if (res.data.group_sun == 1) {
-                        $('#esun').prop('checked', true);
-                    } else {
-                        $('#esun').prop('checked', false);
-                    }
-                    if (res.data.misscall == 1) {
-                        $('#emisscall').prop('checked', true);
-                    } else {
-                        $('#emisscall').prop('checked', false);
-                    }
-
-                    $('#EditModalBody').html(res.html);
-                    $('#EditModal').modal('show');
-                }
-            });
-
-        })
-
-        $('#SubmitEditForm').click(function(e) {
-            if (!confirm("ยืนยันการทำรายการ ?")) return;
-            e.preventDefault();
-
-            $('.alert-danger').html('');
-            $('.alert-danger').hide();
-            $('.alert-success').html('');
-            $('.alert-success').hide();
-
-
-            if ($('#ecustomCheckbox1').is(":checked")) {
-                esstatus = 1;
-            } else {
-                esstatus = 0;
-            }
-
-            if ($('#esat').is(":checked")) {
-                sat = 1;
-            } else {
-                sat = 0;
-            }
-
-            if ($('#esun').is(":checked")) {
-                sun = 1;
-            } else {
-                sun = 0;
-            }
-
-            if ($('#emisscall').is(":checked")) {
-                misscall = 1;
-            } else {
-                misscall = 0;
-            }
-
-            $.ajax({
-                url: "notify/save/" + id,
-                method: 'PUT',
-                data: {
-                    group_name: $('#EditName').val(),
-                    group_start: $('#EditSDate').val(),
-                    group_end: $('#EditEDate').val(),
-                    group_extension: $('#EditExtension').val(),
-                    line_token: $('#EditLine').val(),
-                    email: $('#EditEmail').val(),
-                    sat: sat,
-                    sun: sun,
-                    misscall: misscall,
-                    status: esstatus,
-                },
-
-                success: function(result) {
-                    console.log(result);
-                    if (result.errors) {
-                        $('.alert-danger').html('');
-                        $.each(result.errors, function(key, value) {
-                            $('.alert-danger').show();
-                            $('.alert-danger').append('<strong><li>' + value +
-                                '</li></strong>');
-                        });
-                    } else {
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('.alert-success').append('<strong><li>' + result.success +
-                            '</li></strong>');
-                        $('#EditModal').modal('hide');
-                        toastr.success(result.success, {
-                            timeOut: 5000
-                        });
-                        $('#Listview').DataTable().ajax.reload();
-                    }
-                }
-            });
-        });
 
         $(document).on('click', '.btn-delete', function() {
             if (!confirm("ยืนยันการทำรายการ ?")) return;
@@ -389,7 +239,7 @@
                 //type: "POST",
                 method: 'DELETE',
                 dataType: 'JSON',
-                url: "notify/destroy/",
+                url: "voicebackup/destroy/",
                 data: {
                     id: rowid,
                     //_method: 'delete',
