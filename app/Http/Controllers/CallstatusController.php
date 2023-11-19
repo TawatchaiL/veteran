@@ -50,9 +50,8 @@ class CallstatusController extends Controller
         $datas = DB::connection('remote_connection')
             ->table('call_center.call_entry')
             ->select('crm_id', DB::raw('SUM(if(status = "terminada",1,0)) as terminada'), DB::raw('SUM(if(status = "abandonada",1,0)) as abandonada') ,DB::raw('AVG(duration_wait) as avgwait'), DB::raw('SUM(duration) as duration') , DB::raw('AVG(duration) as avgduration'))
-            ->whereRaw('LENGTH(callerid) < 5')
             ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
-            ->limit(10)
+            ->groupBy('crm_id')
             ->get();
 
             $agents = User::orderBy("id", "asc")->get();
