@@ -775,11 +775,13 @@
                 
                 var rdate = $('#reservation').val();
                 var rstatus = 'report';
+                var ragent = $('#Agent').val();
 
                 $.ajax({
                 url: '{{ route('detailscoreagent') }}',
                 data: {
                     sdate: rdate,
+                    agent: ragent,
                     rstatus: rstatus
                 },
                 method: 'GET',
