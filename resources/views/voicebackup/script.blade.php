@@ -31,13 +31,13 @@
 
         $.datepicker.setDefaults($.datepicker.regional["th"]);
         var currentDate = new Date();
-        //var currentYear = currentDate.getFullYear() + 543;
-        //var maxYear = currentYear + 1;
+        var currentYear = currentDate.getFullYear()/*  + 543 */;
+        var maxYear = currentYear;
 
         $(".datepick").datetimepicker({
             changeMonth: true,
             changeYear: true,
-            yearRange: currentYear + ':' + maxYear,
+            yearRange: '2023' + ':' + maxYear,
             dateFormat: 'yy-mm-dd H:i:s',
             onSelect: function(date) {
                 $("#edit-date-of-birth").addClass('filled');
