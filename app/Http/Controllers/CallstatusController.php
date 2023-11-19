@@ -67,7 +67,8 @@ class CallstatusController extends Controller
             ->groupBy('crm_id');
             //->get();
 
-        $datas = DB::table(DB::raw("({$datac}) as datac"))
+        $datas = DB::connection('remote_connection')
+            ->table(DB::raw("({$datac}) as datac"))
             ->leftJoinSub($dataa, 'dataa', function ($join) {
                 $join->on('datac.crm_id', '=', 'dataa.crmid');
             })
