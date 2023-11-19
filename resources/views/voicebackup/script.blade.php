@@ -204,8 +204,8 @@
                 data: {
                     export_date: $('#AddSDate').val() + ' - ' + $('#AddEDate').val(),
                     src: $('#AddSrc').val(),
-                    dst: $('#AddAgent').val(),
-                    ctype: $('#AddCtype').val(),
+                    dst: $('#AddAgent').val()[0],
+                    ctype: $('#AddCtype').val()[0],
                     _token: token,
                 },
                 success: function(result) {
