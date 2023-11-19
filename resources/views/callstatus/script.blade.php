@@ -597,12 +597,12 @@
                     name: 'avgduration'
                 },
                 {
-                    data: 'login',
-                    name: 'login'
+                    data: 'logintime',
+                    name: 'logintime'
                 },
                 {
-                    data: 'pause',
-                    name: 'pause'
+                    data: 'breaktime',
+                    name: 'breaktime'
                 },
             ]
         });
