@@ -202,7 +202,7 @@
                 url: "{{ route('voicebackup.store') }}",
                 method: 'post',
                 data: {
-                    export_date: $('#AddSDate').val() + ' ' + $('#AddEDate').val(),
+                    export_date: $('#AddSDate').val() + ' - ' + $('#AddEDate').val(),
                     src: $('#AddSrc').val(),
                     dst: $('#AddAgent').val(),
                     ctype: $('#AddCtype').val(),
