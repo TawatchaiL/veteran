@@ -180,7 +180,7 @@ class VoiceBackupController extends Controller
             return response()->json(['success' => 'เพิ่มรายการ Export VoiceRecord เรียบร้อยแล้ว <br> กรุณาเช็คในหน้า Voice Export']);
         } else {
             VoiceBackup::find($vid->id)->delete();
-            return response()->json(['errors' => 'ไม่พบรายการไฟล์ตามช่วงเวลาที่ท่านระบุ']);
+            return response()->json(['errors' => ['ไม่พบรายการไฟล์ตามช่วงเวลาที่ท่านระบุ']]);
         }
     }
 
