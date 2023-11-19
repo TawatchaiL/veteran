@@ -297,13 +297,13 @@ class VoiceBackupController extends Controller
             $seconds = $durationInSeconds % 60;
     
             $duration = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
-    
+            $ctypeIndex = isset($ctype_text[$ctype]) ? $ctype : 0;
             // Create an array to store each row's values
             $rowValues = [
                 $item->calldate,
                 $src,
                 $dst,
-                $ctype_text[$ctype],
+                $ctype_text[$ctypeIndex],
                 $duration,
                 $newname,
             ];
