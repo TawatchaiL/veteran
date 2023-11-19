@@ -51,7 +51,11 @@ class DetailscoreagentController extends Controller
             ->table('call_center.agent_score')
             //->select('call_center.agent_score.score as score',  DB::raw('count(call_center.agent_score.score) as sumscore'))
             ->select('score',  DB::raw('count(id) as sumscore'))
-            ->whereRaw('call_center.agent_score.datetime between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')->groupBy('score')
+            ->whereRaw('call_center.agent_score.datetime between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')->groupBy('score');
+            if(!empty($request->get('agent')) && $request->get('agent') != "0"){
+                $datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
+            }   
+            $datas->groupBy('score')
             ->orderBy("score", "desc")
             ->get();
             if (!empty($request->get('rstatus'))) {
