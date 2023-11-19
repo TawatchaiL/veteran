@@ -39,65 +39,65 @@ class CasesController extends Controller
             }
             if ($request->input('seachtype') === "0") {
                 $datas = DB::table('crm_cases')
-                ->select('crm_cases.id as id','hn', DB::raw("concat(fname, ' ', lname) as name"),'phoneno', 'crm_cases.created_at', 'crm_cases.casetype1 as casename', 'casestatus', 'tranferstatus', 'users.name as agent')
-                ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
-                ->join('users', 'crm_cases.agent', '=', 'users.id')
-                //->join('case_types', 'crm_cases.casetype1', '=', 'case_types.id')
-                ->whereRaw('crm_cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
-                //->where('crm_cases.contact_id', '=', request('id'))
-                ->get();
-            }else if ($request->input('seachtype') === "1") {
+                    ->select('crm_cases.id as id', 'hn', DB::raw("concat(fname, ' ', lname) as name"), 'phoneno', 'crm_cases.created_at', 'crm_cases.casetype1 as casename', 'casestatus', 'tranferstatus', 'users.name as agent')
+                    ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
+                    ->join('users', 'crm_cases.agent', '=', 'users.id')
+                    //->join('case_types', 'crm_cases.casetype1', '=', 'case_types.id')
+                    ->whereRaw('crm_cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+                    //->where('crm_cases.contact_id', '=', request('id'))
+                    ->get();
+            } else if ($request->input('seachtype') === "1") {
                 $datas = DB::table('crm_cases')
-                ->select('crm_cases.id as id','hn', DB::raw("concat(fname, ' ', lname) as name"),'phoneno', 'crm_cases.created_at', 'crm_cases.casetype1 as casename', 'casestatus', 'tranferstatus', 'users.name as agent')
-                ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
-                ->join('users', 'crm_cases.agent', '=', 'users.id')
-                //->join('case_types', 'crm_cases.casetype1', '=', 'case_types.id')
-                ->where('casestatus', '=', 'กำลังดำเนินการ')
-                ->whereRaw('crm_cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
-                //->where('crm_cases.contact_id', '=', request('id'))
-                ->get();
-            }else if ($request->input('seachtype') === "2") {
+                    ->select('crm_cases.id as id', 'hn', DB::raw("concat(fname, ' ', lname) as name"), 'phoneno', 'crm_cases.created_at', 'crm_cases.casetype1 as casename', 'casestatus', 'tranferstatus', 'users.name as agent')
+                    ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
+                    ->join('users', 'crm_cases.agent', '=', 'users.id')
+                    //->join('case_types', 'crm_cases.casetype1', '=', 'case_types.id')
+                    ->where('casestatus', '=', 'กำลังดำเนินการ')
+                    ->whereRaw('crm_cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+                    //->where('crm_cases.contact_id', '=', request('id'))
+                    ->get();
+            } else if ($request->input('seachtype') === "2") {
                 $datas = DB::table('crm_cases')
-                ->select('crm_cases.id as id','hn', DB::raw("concat(fname, ' ', lname) as name"),'phoneno', 'crm_cases.created_at', 'crm_cases.casetype1 as casename', 'casestatus', 'tranferstatus', 'users.name as agent')
-                ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
-                ->join('users', 'crm_cases.agent', '=', 'users.id')
-                //->join('case_types', 'crm_cases.casetype1', '=', 'case_types.id')
-                ->where('casestatus', '=', 'ปิดเคส')
-                ->whereRaw('crm_cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
-                //->where('crm_cases.contact_id', '=', request('id'))
-                ->get();
-            }else if ($request->input('seachtype') === "3") {
+                    ->select('crm_cases.id as id', 'hn', DB::raw("concat(fname, ' ', lname) as name"), 'phoneno', 'crm_cases.created_at', 'crm_cases.casetype1 as casename', 'casestatus', 'tranferstatus', 'users.name as agent')
+                    ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
+                    ->join('users', 'crm_cases.agent', '=', 'users.id')
+                    //->join('case_types', 'crm_cases.casetype1', '=', 'case_types.id')
+                    ->where('casestatus', '=', 'ปิดเคส')
+                    ->whereRaw('crm_cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+                    //->where('crm_cases.contact_id', '=', request('id'))
+                    ->get();
+            } else if ($request->input('seachtype') === "3") {
                 $datas = DB::table('crm_cases')
-                ->select('crm_cases.id as id','hn', DB::raw("concat(fname, ' ', lname) as name"),'phoneno', 'crm_cases.created_at', 'crm_cases.casetype1 as casename', 'casestatus', 'tranferstatus', 'users.name as agent')
-                ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
-                ->join('users', 'crm_cases.agent', '=', 'users.id')
-                //->join('case_types', 'crm_cases.casetype1', '=', 'case_types.id')
-                ->where('crm_contacts.hn', 'like', '%' . $request->input('seachtext') . '%')
-                ->whereRaw('crm_cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
-                //->where('crm_cases.contact_id', '=', request('id'))
-                ->get();
-            }else if ($request->input('seachtype') === "4") {
+                    ->select('crm_cases.id as id', 'hn', DB::raw("concat(fname, ' ', lname) as name"), 'phoneno', 'crm_cases.created_at', 'crm_cases.casetype1 as casename', 'casestatus', 'tranferstatus', 'users.name as agent')
+                    ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
+                    ->join('users', 'crm_cases.agent', '=', 'users.id')
+                    //->join('case_types', 'crm_cases.casetype1', '=', 'case_types.id')
+                    ->where('crm_contacts.hn', 'like', '%' . $request->input('seachtext') . '%')
+                    ->whereRaw('crm_cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+                    //->where('crm_cases.contact_id', '=', request('id'))
+                    ->get();
+            } else if ($request->input('seachtype') === "4") {
                 $datas = DB::table('crm_cases')
-                ->select('crm_cases.id as id','hn', DB::raw("concat(fname, ' ', lname) as name"),'phoneno', 'crm_cases.created_at', 'crm_cases.casetype1 as casename', 'casestatus', 'tranferstatus', 'users.name as agent')
-                ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
-                ->join('users', 'crm_cases.agent', '=', 'users.id')
-                //->join('case_types', 'crm_cases.casetype1', '=', 'case_types.id')
-                ->where('crm_contacts.fname', 'like', '%' . $request->input('seachtext') . '%')
-                ->orWhere('crm_contacts.lname', 'like', '%' . $request->input('seachtext') . '%')
-                ->whereRaw('crm_cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
-                ->get();
-            }else if ($request->input('seachtype') === "5") {
+                    ->select('crm_cases.id as id', 'hn', DB::raw("concat(fname, ' ', lname) as name"), 'phoneno', 'crm_cases.created_at', 'crm_cases.casetype1 as casename', 'casestatus', 'tranferstatus', 'users.name as agent')
+                    ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
+                    ->join('users', 'crm_cases.agent', '=', 'users.id')
+                    //->join('case_types', 'crm_cases.casetype1', '=', 'case_types.id')
+                    ->where('crm_contacts.fname', 'like', '%' . $request->input('seachtext') . '%')
+                    ->orWhere('crm_contacts.lname', 'like', '%' . $request->input('seachtext') . '%')
+                    ->whereRaw('crm_cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+                    ->get();
+            } else if ($request->input('seachtype') === "5") {
                 $datas = DB::table('crm_cases')
-                ->select('crm_cases.id as id','hn', DB::raw("concat(fname, ' ', lname) as name"),'phoneno', 'crm_cases.created_at', 'crm_cases.casetype1 as casename', 'casestatus', 'tranferstatus', 'users.name as agent')
-                ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
-                ->join('users', 'crm_cases.agent', '=', 'users.id')
-                //->join('case_types', 'crm_cases.casetype1', '=', 'case_types.id')
-                ->where('crm_contacts.phoneno', 'like', '%' . $request->input('seachtext') . '%')
-                ->orWhere('crm_contacts.telhome', 'like', '%' . $request->input('seachtext') . '%')
-                ->orWhere('crm_contacts.workno', 'like', '%' . $request->input('seachtext') . '%')
-                ->whereRaw('crm_cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
-                //->where('crm_cases.contact_id', '=', request('id'))
-                ->get();
+                    ->select('crm_cases.id as id', 'hn', DB::raw("concat(fname, ' ', lname) as name"), 'phoneno', 'crm_cases.created_at', 'crm_cases.casetype1 as casename', 'casestatus', 'tranferstatus', 'users.name as agent')
+                    ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
+                    ->join('users', 'crm_cases.agent', '=', 'users.id')
+                    //->join('case_types', 'crm_cases.casetype1', '=', 'case_types.id')
+                    ->where('crm_contacts.phoneno', 'like', '%' . $request->input('seachtext') . '%')
+                    ->orWhere('crm_contacts.telhome', 'like', '%' . $request->input('seachtext') . '%')
+                    ->orWhere('crm_contacts.workno', 'like', '%' . $request->input('seachtext') . '%')
+                    ->whereRaw('crm_cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+                    //->where('crm_cases.contact_id', '=', request('id'))
+                    ->get();
             }
             //$datas = Cases::orderBy("id", "desc")->get();
 
@@ -118,7 +118,6 @@ class CasesController extends Controller
                         $html .= '<button type="button" class="btn btn-sm btn-danger disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-trash"></i> ลบ</button> ';
                     }
                     return $html;
-                    
                 })
                 ->addColumn('more', function ($row) {
                     return '';
@@ -130,18 +129,17 @@ class CasesController extends Controller
 
     public function create()
     {
-        
     }
 
     public function seachcontact($id)
     {
         //$data = CrmContact::select('crm_contacts.hn as hn')
         //$data = DB::table('crm_contacts')->get();
-       // $data = CrmContact::find($id);
-       $data = CrmContact::select("id","hn", "fname", "lname")
-       ->where('hn', 'LIKE', '%'. $id. '%')
-       ->get();
-       return response()->json($data);
+        // $data = CrmContact::find($id);
+        $data = CrmContact::select("id", "hn", "fname", "lname")
+            ->where('hn', 'LIKE', '%' . $id . '%')
+            ->get();
+        return response()->json($data);
     }
 
     public function store(Request $request)
@@ -169,9 +167,9 @@ class CasesController extends Controller
     public function edit($id)
     {
         $data = CrmCase::join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
-        ->select('crm_cases.*','crm_contacts.hn as hn', DB::raw("concat(crm_contacts.fname, ' ', crm_contacts.lname) as name"))
-        ->where('crm_cases.id', $id)
-        ->first();
+            ->select('crm_cases.*', 'crm_contacts.hn as hn', DB::raw("concat(crm_contacts.fname, ' ', crm_contacts.lname) as name"))
+            ->where('crm_cases.id', $id)
+            ->first();
 
         return response()->json(['data' => $data]);
     }
@@ -208,63 +206,63 @@ class CasesController extends Controller
 
         if (!empty($request->get('casetype2'))) {
             $companyd = array_merge($companyd, ['casetype2' => $request->get('casetype2'), 'caseid2' => $request->get('caseid2')]);
-        }else{
+        } else {
             $companyd = array_merge($companyd, ['casetype2' => '', 'caseid2' => 0]);
         }
         if (!empty($request->get('casetype3'))) {
             $companyd = array_merge($companyd, ['casetype3' => $request->get('casetype3'), 'caseid3' => $request->get('caseid3')]);
-        }else{
+        } else {
             $companyd = array_merge($companyd, ['casetype3' => '', 'caseid3' => 0]);
         }
         if (!empty($request->get('casetype4'))) {
             $companyd = array_merge($companyd, ['casetype4' => $request->get('casetype4'), 'caseid4' => $request->get('caseid4')]);
-        }else{
+        } else {
             $companyd = array_merge($companyd, ['casetype4' => '', 'caseid4' => 0]);
         }
         if (!empty($request->get('casetype5'))) {
             $companyd = array_merge($companyd, ['casetype5' => $request->get('casetype5'), 'caseid5' => $request->get('caseid5')]);
-        }else{
+        } else {
             $companyd = array_merge($companyd, ['casetype5' => '', 'caseid5' => 0]);
         }
         if (!empty($request->get('casetype6'))) {
             $companyd = array_merge($companyd, ['casetype6' => $request->get('casetype6'), 'caseid6' => $request->get('caseid6')]);
-        }else{
+        } else {
             $companyd = array_merge($companyd, ['casetype6' => '', 'caseid6' => 0]);
         }
 
-       $company = CrmCase::find($id);
+        $company = CrmCase::find($id);
 
-       
-       $caseslog = [
-        'id' => $company->id,
-        'contact_id' => $company->contact_id,
-        'adddate' => $company->adddate,
-        'uniqid' => $company->uniqid,
-        'telno' => $company->telno,
-        'casetype1' => $company->casetype1,
-        'caseid1' => $company->caseid1,
-        'casetype2' => $company->casetype2,
-        'caseid2' => $company->caseid2,
-        'casetype3' => $company->casetype3,
-        'caseid3' => $company->caseid3,
-        'casetype4' => $company->casetype4,
-        'caseid4' => $company->caseid4,
-        'casetype5' => $company->casetype5,
-        'caseid5' => $company->caseid5,
-        'casetype6' => $company->casetype6,
-        'caseid6' => $company->caseid6,
-        'tranferstatus' => $company->tranferstatus,
-        'casedetail' => $company->casedetail,
-        'casestatus' => $company->casestatus,
-        'agent' => $company->agent,
-        'created_at' => $company->created_at,
-        'updated_at' => $company->updated_at,
-        'modifyaction' => 'edit',
-        'modifyagent' => $user->id,
-    ];
+
+        $caseslog = [
+            'id' => $company->id,
+            'contact_id' => $company->contact_id,
+            'adddate' => $company->adddate,
+            'uniqid' => $company->uniqid,
+            'telno' => $company->telno,
+            'casetype1' => $company->casetype1,
+            'caseid1' => $company->caseid1,
+            'casetype2' => $company->casetype2,
+            'caseid2' => $company->caseid2,
+            'casetype3' => $company->casetype3,
+            'caseid3' => $company->caseid3,
+            'casetype4' => $company->casetype4,
+            'caseid4' => $company->caseid4,
+            'casetype5' => $company->casetype5,
+            'caseid5' => $company->caseid5,
+            'casetype6' => $company->casetype6,
+            'caseid6' => $company->caseid6,
+            'tranferstatus' => $company->tranferstatus,
+            'casedetail' => $company->casedetail,
+            'casestatus' => $company->casestatus,
+            'agent' => $company->agent,
+            'created_at' => $company->created_at,
+            'updated_at' => $company->updated_at,
+            'modifyaction' => 'edit',
+            'modifyagent' => $user->id,
+        ];
 
         CrmCaseslog::create($caseslog);
-       $company->update($companyd);
+        $company->update($companyd);
 
         return response()->json(['success' => 'แก้ไข เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
     }
@@ -334,7 +332,7 @@ class CasesController extends Controller
         $data = CrmCase::where('contact_id', $id)->get();
 
         $template = 'cases.caseslist';
-        $htmlContent = View::make($template, ['caselist' => $data,'cardid' => $tabid])->render();
+        $htmlContent = View::make($template, ['caselist' => $data, 'cardid' => $tabid])->render();
         return response()->json(['html' =>  $htmlContent,]);
 
         //return response()->json(['data' => $data]);
@@ -349,7 +347,7 @@ class CasesController extends Controller
         $datact = CrmContact::where('id', $datac->contact_id)->first();
 
         $template = 'cases.casesdetail';
-        $htmlContent = View::make($template, ['cases' => $datac, 'datact' => $datact,'cardid' => $tabid])->render();
+        $htmlContent = View::make($template, ['cases' => $datac, 'datact' => $datact, 'cardid' => $tabid])->render();
         //$htmlContent = View::make($template, ['casecomment' => $data])->render();
         return response()->json(['html' =>  $htmlContent,]);
 
@@ -365,7 +363,6 @@ class CasesController extends Controller
         $template = 'cases.casesloglist';
         $htmlContent = View::make($template, ['caselog' => $data])->render();
         return response()->json(['html' =>  $htmlContent,]);
-
     }
     public function casesviewlog(Request $request)
     {
@@ -387,36 +384,36 @@ class CasesController extends Controller
         //CrmCase::find($id)->delete();
         $company = CrmCase::find($id);
 
-       
+
         $caseslog = [
-         'id' => $company->id,
-         'contact_id' => $company->contact_id,
-         'adddate' => $company->adddate,
-         'uniqid' => $company->uniqid,
-         'telno' => $company->telno,
-         'casetype1' => $company->casetype1,
-         'caseid1' => $company->caseid1,
-         'casetype2' => $company->casetype2,
-         'caseid2' => $company->caseid2,
-         'casetype3' => $company->casetype3,
-         'caseid3' => $company->caseid3,
-         'casetype4' => $company->casetype4,
-         'caseid4' => $company->caseid4,
-         'casetype5' => $company->casetype5,
-         'caseid5' => $company->caseid5,
-         'casetype6' => $company->casetype6,
-         'caseid6' => $company->caseid6,
-         'tranferstatus' => $company->tranferstatus,
-         'casedetail' => $company->casedetail,
-         'casestatus' => $company->casestatus,
-         'agent' => $company->agent,
-         'created_at' => $company->created_at,
-         'updated_at' => $company->updated_at,
-         'modifyaction' => 'delete',
-         'modifyagent' => $user->id,
-     ];
- 
-         CrmCaseslog::create($caseslog);
+            'id' => $company->id,
+            'contact_id' => $company->contact_id,
+            'adddate' => $company->adddate,
+            'uniqid' => $company->uniqid,
+            'telno' => $company->telno,
+            'casetype1' => $company->casetype1,
+            'caseid1' => $company->caseid1,
+            'casetype2' => $company->casetype2,
+            'caseid2' => $company->caseid2,
+            'casetype3' => $company->casetype3,
+            'caseid3' => $company->caseid3,
+            'casetype4' => $company->casetype4,
+            'caseid4' => $company->caseid4,
+            'casetype5' => $company->casetype5,
+            'caseid5' => $company->caseid5,
+            'casetype6' => $company->casetype6,
+            'caseid6' => $company->caseid6,
+            'tranferstatus' => $company->tranferstatus,
+            'casedetail' => $company->casedetail,
+            'casestatus' => $company->casestatus,
+            'agent' => $company->agent,
+            'created_at' => $company->created_at,
+            'updated_at' => $company->updated_at,
+            'modifyaction' => 'delete',
+            'modifyagent' => $user->id,
+        ];
+
+        CrmCaseslog::create($caseslog);
         $company->delete();
         return ['success' => true, 'message' => 'ลบ เรื่องที่ติดต่อ เรียบร้อยแล้ว'];
     }
@@ -427,39 +424,39 @@ class CasesController extends Controller
         $arr_del  = $request->get('table_records');
 
         for ($xx = 0; $xx < count($arr_del); $xx++) {
-           // CrmCase::find($arr_del[$xx])->delete();
+            // CrmCase::find($arr_del[$xx])->delete();
             $company = CrmCase::find($arr_del[$xx]);
 
-       
+
             $caseslog = [
-             'id' => $company->id,
-             'contact_id' => $company->contact_id,
-             'adddate' => $company->adddate,
-             'uniqid' => $company->uniqid,
-             'telno' => $company->telno,
-             'casetype1' => $company->casetype1,
-             'caseid1' => $company->caseid1,
-             'casetype2' => $company->casetype2,
-             'caseid2' => $company->caseid2,
-             'casetype3' => $company->casetype3,
-             'caseid3' => $company->caseid3,
-             'casetype4' => $company->casetype4,
-             'caseid4' => $company->caseid4,
-             'casetype5' => $company->casetype5,
-             'caseid5' => $company->caseid5,
-             'casetype6' => $company->casetype6,
-             'caseid6' => $company->caseid6,
-             'tranferstatus' => $company->tranferstatus,
-             'casedetail' => $company->casedetail,
-             'casestatus' => $company->casestatus,
-             'agent' => $company->agent,
-             'created_at' => $company->created_at,
-             'updated_at' => $company->updated_at,
-             'modifyaction' => 'delete',
-             'modifyagent' => $user->id,
-         ];
-     
-             CrmCaseslog::create($caseslog);
+                'id' => $company->id,
+                'contact_id' => $company->contact_id,
+                'adddate' => $company->adddate,
+                'uniqid' => $company->uniqid,
+                'telno' => $company->telno,
+                'casetype1' => $company->casetype1,
+                'caseid1' => $company->caseid1,
+                'casetype2' => $company->casetype2,
+                'caseid2' => $company->caseid2,
+                'casetype3' => $company->casetype3,
+                'caseid3' => $company->caseid3,
+                'casetype4' => $company->casetype4,
+                'caseid4' => $company->caseid4,
+                'casetype5' => $company->casetype5,
+                'caseid5' => $company->caseid5,
+                'casetype6' => $company->casetype6,
+                'caseid6' => $company->caseid6,
+                'tranferstatus' => $company->tranferstatus,
+                'casedetail' => $company->casedetail,
+                'casestatus' => $company->casestatus,
+                'agent' => $company->agent,
+                'created_at' => $company->created_at,
+                'updated_at' => $company->updated_at,
+                'modifyaction' => 'delete',
+                'modifyagent' => $user->id,
+            ];
+
+            CrmCaseslog::create($caseslog);
             $company->delete();
         }
 

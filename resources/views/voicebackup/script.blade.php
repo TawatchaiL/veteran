@@ -143,6 +143,10 @@
                     data: 'action',
                     name: 'action'
                 },
+                {
+                    data: 'more',
+                    name: 'more'
+                }
             ]
         });
 
