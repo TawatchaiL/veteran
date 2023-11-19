@@ -259,7 +259,8 @@ class VoiceBackupController extends Controller
             return $original . ',' . $newname;
         })->toArray();
 
-        $csvs = $datas->map(function ($item) use ($agentArray, $ctype) {
+        $csv = 'วันที่เวลาโทร,เบอร์ต้นทาง,เบอร์ปลายทาง,ประเภทการโทร,ระยเวลาสนทา,ชื่อไฟล์บันทึกเสียง';
+        $csvs = $datas->map(function ($item) use ($agentArray, $ctype_text, $csv, $ctype) {
 
             $agentname = '';
 
@@ -300,8 +301,8 @@ class VoiceBackupController extends Controller
 
             $duration = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
 
-
-            return $item->calldate . ',' . $src . ',' . $dst . ',' . $duration . ',' . $newname;
+            $csv .= $item->calldate . ',' . $src . ',' . $dst . ',' . $ctype_text[$ctype] . ',' . $duration . ',' . $newname;
+            return $csv;
         })->toArray();
 
         $csvContent = implode("\n", $csvs);

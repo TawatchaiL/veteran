@@ -130,7 +130,7 @@ fs.readdir(folderPath, async (err, files) => {
                     if (fs.existsSync(originalFilePath)) {
                         // Use path.join to ensure correct file paths in the archive
                         archive.append(fs.createReadStream(originalFilePath), {
-                            name: path.join('zip', newFileName),
+                            name: path.join('voice', newFileName),
                         });
 
                         // Update progress in the database
@@ -144,7 +144,7 @@ fs.readdir(folderPath, async (err, files) => {
                 }
 
                 archive.append(fs.createReadStream(path.join(folderPath, recids[0] + '.csv')), {
-                    name: path.join('zip', recids[0] + '.csv'),
+                    name: path.join('index', recids[0] + '.csv'),
                 });
                 await updateProgress(recids[0], 92);
 
