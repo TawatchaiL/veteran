@@ -47,17 +47,35 @@ class CallstatusController extends Controller
                     $startDate = date("Y-m-d");
                     $endDate = date("Y-m-t", strtotime($startDate));  
         }
-        $datas = DB::connection('remote_connection')
+        //$datas = DB::connection('remote_connection')
+        //    ->table('call_center.call_entry')
+        //    ->select('crm_id', DB::raw('count(crm_id) as agentcall'), DB::raw('SUM(if(status = "terminada",1,0)) as terminada') ,DB::raw('SEC_TO_TIME(ROUND(AVG(duration_wait), 0)) as avgwait'), DB::raw('SEC_TO_TIME(SUM(duration)) as duration') , DB::raw('SEC_TO_TIME(ROUND(AVG(duration), 0)) as avgduration'))
+        //    ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59" and crm_id is not null')
+        //    ->groupBy('crm_id')
+        //    ->get();
+        $datac = DB::connection('remote_connection')
             ->table('call_center.call_entry')
             ->select('crm_id', DB::raw('count(crm_id) as agentcall'), DB::raw('SUM(if(status = "terminada",1,0)) as terminada') ,DB::raw('SEC_TO_TIME(ROUND(AVG(duration_wait), 0)) as avgwait'), DB::raw('SEC_TO_TIME(SUM(duration)) as duration') , DB::raw('SEC_TO_TIME(ROUND(AVG(duration), 0)) as avgduration'))
             ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59" and crm_id is not null')
-            ->groupBy('crm_id')
+            ->groupBy('crm_id');
+            //->toSql();
+            
+        $dataa = DB::connection('remote_connection')
+            ->table('call_center.audit')
+            ->select('crm_id as crmid', DB::raw('SEC_TO_TIME(SUM(if(id_break is null,duration,0))) as logintime'), DB::raw('SEC_TO_TIME(SUM(if(id_break is not null,duration,0))) as logintime'))
+            ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59" and crm_id is not null')
+            ->groupBy('crm_id');
+            //->get();
+
+        $datas = $datac
+            ->leftJoinSub($dataa, 'dataa', function ($join) {
+                $join->on('datac.crm_id', '=', 'dataa.crmid');
+            })
             ->get();
 
-            $agents = User::orderBy("id", "asc")->get();
+        $agents = User::orderBy("id", "asc")->get();
             
             if ($request->ajax()) {
-                
                 $agent_data = array();
                 foreach ($agents as $agent) {
                     $agent_data[$agent->id] = $agent->name;
