@@ -234,7 +234,7 @@ class VoiceBackupController extends Controller
         }
 
         if (!empty($agent)) {
-            if ($agent) {
+            if ($agent !== 0) {
                 $datass->where(function ($query) use ($agent) {
                     $query->where('asteriskcdrdb.cdr.userfield', $agent)
                         ->orWhere('dst_userfield', $agent);

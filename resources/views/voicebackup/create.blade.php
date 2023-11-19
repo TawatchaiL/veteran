@@ -76,7 +76,7 @@
                             <select style="width: 100%;" class="select2 select2_single form-control" id="AddAgent"
                                 name="agent" multiple="multiple">
                                 @can('voice-record-supervisor')
-                                    <option value="">ทั้งหมด</option>
+                                    <option value="0">ทั้งหมด</option>
                                 @endcan
                                 @foreach ($agent as $agen)
                                     @can('voice-record-supervisor')
@@ -101,7 +101,7 @@
                             <strong><i class="fas fa-list-ol"></i> ประเภทการโทร:</strong>
                             <select style="width: 100%;" class="select2 select2_single form-control" id="AddCtype"
                                 name="ctype" multiple="multiple">
-                                <option value="">ทั้งหมด</option>
+                                <option value="0">ทั้งหมด</option>
                                 <option value="1"> สายเข้า</option>
                                 <option value="2"> โทรออก</option>
                                 <option value="3"> ภายใน</option>
