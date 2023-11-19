@@ -87,7 +87,7 @@ class VoiceBackupController extends Controller
                 ->addColumn('action', function ($row) {
                     if (Gate::allows('voice-export-download')) {
                         if ($row->export_status == 3) {
-                            $html = '<button type="button" class="btn btn-sm btn-warning btn-edit" id="getEditData" data-id="' . $row->id . '"><i class="fa fa-download"></i> Download</button> ';
+                            $html = '<button type="button" class="btn btn-sm btn-warning btn-download" id="getEditData" data-id="' . $row->export_filename . '"><i class="fa fa-download"></i> Download</button> ';
                         } else {
                             $html = '<button type="button" class="btn btn-sm btn-warning disabled" data-toggle="tooltip" data-placement="bottom" title="ยัง Export ไม่เสร็จ"><i class="fa fa-download"></i> Download</button> ';
                         }

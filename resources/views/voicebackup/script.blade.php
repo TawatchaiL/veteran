@@ -252,6 +252,16 @@
             });
         });
 
+        $(document).on('click', '.btn-download', function() {
+            if (!confirm("ยืนยันการทำรายการ ?")) return;
+
+            var rowid = $(this).data('rowid')
+            if (!rowid) return;
+
+
+            var url = '/zip/' + rowid;
+            window.open(url, '_blank');
+        })
 
         $(document).on('click', '.btn-delete', function() {
             if (!confirm("ยืนยันการทำรายการ ?")) return;
