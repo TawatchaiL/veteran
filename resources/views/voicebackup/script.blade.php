@@ -253,12 +253,17 @@
         });
 
         $(document).on('click', '.btn-download', function() {
-            var rowid = $(this).data('rowid');
+            var confirmed = confirm("ยืนยันการทำรายการ ?");
+            if (!confirmed) {
+                return false; // Cancel the operation if not confirmed
+            }
+
+            var rowid = $(this).data('id');
             if (!rowid) {
                 return false; // Cancel the operation if rowid is missing
             }
 
-            var url = '/zip/' + rowid;
+            var url = '{{ url("zip") }}/' + rowid;
             console.log(url);
             window.open(url, '_blank');
         });
