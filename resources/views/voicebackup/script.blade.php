@@ -84,7 +84,22 @@
             lengthMenu: [5, 10, 25, 50, 75, 100],
             stateSave: true,
             autoWidth: false,
-            responsive: true,
+            fixedHeader: true,
+            @if ($detect->isMobile())
+                responsive: true,
+            @else
+                responsive: {
+                    details: {
+                        type: 'column',
+                        target: 'tr'
+                    }
+                },
+                columnDefs: [{
+                    className: 'control',
+                    orderable: false,
+                    targets: -1
+                }],
+            @endif
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
             columns: [{

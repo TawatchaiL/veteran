@@ -232,6 +232,7 @@
 
         var startDate;
         var endDate;
+
         function datesearch() {
             var currentDate = moment();
             // Set the start date to 7 days before today
@@ -241,6 +242,7 @@
             startDate = moment().format('YYYY-MM-DD');
             endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
         }
+
         function datereset() {
             var currentDate = moment();
             startDate = moment().format('YYYY-MM-DD');
@@ -285,56 +287,60 @@
         $.datepicker.setDefaults($.datepicker.regional['th']);
         $(".AddDate").datepicker({
             dateFormat: "yy-mm-dd",
-	        //defaultDate: '2023-11-14',
+            //defaultDate: '2023-11-14',
             isBuddhist: true,
             changeMonth: true,
-            changeYear:true,
-	        //yearRange:'1940:2057',
-            yearRange:'c-40:c+10',
-            dayNamesMin: [ "อา", "จ", "อ", "พ", "พฤ", "ศ", "ส" ],
-            monthNamesShort: [ "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม" ],
-            beforeShow:function(){
-			if($(this).val()!=""){
-				var arrayDate=$(this).val().split("-");		
-				arrayDate[0]=parseInt(arrayDate[0])-543;
-				$(this).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
-			}
-			setTimeout(function(){
-				$.each($(".ui-datepicker-year option"),function(j,k){
-					var textYear=parseInt($(".ui-datepicker-year option").eq(j).val())+543;
-					$(".ui-datepicker-year option").eq(j).text(textYear);
-				});				
-			},50);
+            changeYear: true,
+            //yearRange:'1940:2057',
+            yearRange: 'c-40:c+10',
+            dayNamesMin: ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"],
+            monthNamesShort: ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
+                "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+            ],
+            beforeShow: function() {
+                if ($(this).val() != "") {
+                    var arrayDate = $(this).val().split("-");
+                    arrayDate[0] = parseInt(arrayDate[0]) - 543;
+                    $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
+                }
+                setTimeout(function() {
+                    $.each($(".ui-datepicker-year option"), function(j, k) {
+                        var textYear = parseInt($(".ui-datepicker-year option").eq(
+                            j).val()) + 543;
+                        $(".ui-datepicker-year option").eq(j).text(textYear);
+                    });
+                }, 50);
 
-		},
-		onChangeMonthYear: function(){
-			setTimeout(function(){
-				$.each($(".ui-datepicker-year option"),function(j,k){
-					var textYear=parseInt($(".ui-datepicker-year option").eq(j).val())+543;
-					$(".ui-datepicker-year option").eq(j).text(textYear);
-				});				
-			},50);		
-		},
-		onClose:function(){
-			if($(this).val()!="" && $(this).val()==dateBefore){			
-				var arrayDate=dateBefore.split("-");
+            },
+            onChangeMonthYear: function() {
+                setTimeout(function() {
+                    $.each($(".ui-datepicker-year option"), function(j, k) {
+                        var textYear = parseInt($(".ui-datepicker-year option").eq(
+                            j).val()) + 543;
+                        $(".ui-datepicker-year option").eq(j).text(textYear);
+                    });
+                }, 50);
+            },
+            onClose: function() {
+                if ($(this).val() != "" && $(this).val() == dateBefore) {
+                    var arrayDate = dateBefore.split("-");
+                    //$('#temp'+$(this).attr('id')).html(dateBefore);
+                    arrayDate[0] = parseInt(arrayDate[0]) + 543;
+                    $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
+                }
+            },
+            onSelect: function(dateText, inst) {
+                dateBefore = $(this).val();
                 //$('#temp'+$(this).attr('id')).html(dateBefore);
-				arrayDate[0]=parseInt(arrayDate[0])+543;
-				$(this).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);	
-			}		
-		},
-		onSelect: function(dateText, inst){ 
-			dateBefore=$(this).val();
-            //$('#temp'+$(this).attr('id')).html(dateBefore);
-			var arrayDate=dateText.split("-");
-			arrayDate[0]=parseInt(arrayDate[0])+543;
-			$(this).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
-		}       
+                var arrayDate = dateText.split("-");
+                arrayDate[0] = parseInt(arrayDate[0]) + 543;
+                $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
+            }
         });
         //$(".AddDate").datepicker({
-            /*  onSelect: function() {
-                 table.draw();
-             }, */
+        /*  onSelect: function() {
+             table.draw();
+         }, */
         //    dateFormat: 'yy-mm-dd',
         //    changeMonth: true,
         //    changeYear: true,
@@ -503,15 +509,20 @@
             //_token: token
             $('#Hn').on('input', function() {
                 var query = $(this).val();
-                    $.ajax({
+                $.ajax({
                     url: 'cases/seachcontact/' + query,
                     method: 'GET',
                     async: false,
                     success: function(data) {
                         var suggestionsList = $('#suggestions');
                         suggestionsList.empty();
-                            $.each(data, function(index, item) {
-                            suggestionsList.append('<li data-id="' + item.id + '" data-hn="' + item.hn + '" data-name="' + item.fname + ' ' + item.fname + '">HN ' + item.hn + ' ชื่อ-สกุล ' + item.fname + ' ' + item.fname + '</li>');
+                        $.each(data, function(index, item) {
+                            suggestionsList.append('<li data-id="' + item
+                                .id + '" data-hn="' + item.hn +
+                                '" data-name="' + item.fname + ' ' +
+                                item.fname + '">HN ' + item.hn +
+                                ' ชื่อ-สกุล ' + item.fname + ' ' + item
+                                .fname + '</li>');
                         });
 
                         suggestionsList.on('click', 'li', function() {
@@ -520,12 +531,12 @@
                             $('#Name').val($(this).data('name'));
                             suggestionsList.empty();
                         });
-                    },        
+                    },
                     error: function(error) {
                         console.log('Error:', error);
                     }
-                    });
                 });
+            });
             $.ajax({
                 url: "casetype6/casetype/0",
                 method: 'GET',
@@ -554,9 +565,9 @@
             $('#CreateModal').modal('show');
         });
 
-        
+
         $('#SubmitCreateForm').click(function(e) {
-            if(actions == 'edit'){
+            if (actions == 'edit') {
                 if (!confirm("ยืนยันการทำรายการ ?")) return;
             }
 
@@ -566,9 +577,9 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
-            var arrayDate=$('#Addadddate').val().split("-");
-				    arrayDate[0]=parseInt(arrayDate[0])-543;
-            var tempadddate = arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2];
+            var arrayDate = $('#Addadddate').val().split("-");
+            arrayDate[0] = parseInt(arrayDate[0]) - 543;
+            var tempadddate = arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2];
 
             var additionalData = {
                 contact_id: $('#Addid').val(),
@@ -580,33 +591,33 @@
                 casedetail: $('#Detail').val(),
                 tranferstatus: $('#tranferstatus option:selected').text(),
                 casestatus: $('#casestatus option:selected').text(),
-                _token: token 
+                _token: token
             };
-            if($('#casetype2').val() !== ''){
+            if ($('#casetype2').val() !== '') {
                 additionalData.casetype2 = $('#casetype2 option:selected').text();
                 additionalData.caseid2 = $('#casetype2').val();
             }
-            if($('#casetype3').val() !== ''){
-                additionalData.casetype3= $('#casetype3 option:selected').text();
+            if ($('#casetype3').val() !== '') {
+                additionalData.casetype3 = $('#casetype3 option:selected').text();
                 additionalData.caseid3 = $('#casetype3').val();
             }
-            if($('#casetype4').val() !== ''){
+            if ($('#casetype4').val() !== '') {
                 additionalData.casetype4 = $('#casetype4 option:selected').text();
                 additionalData.caseid4 = $('#casetype4').val();
             }
-            if($('#casetype5').val() !== ''){
+            if ($('#casetype5').val() !== '') {
                 additionalData.casetype5 = $('#casetype5 option:selected').text();
                 additionalData.caseid5 = $('#casetype5').val();
             }
-            if($('#casetype6').val() !== ''){
+            if ($('#casetype6').val() !== '') {
                 additionalData.casetype6 = $('#casetype6 option:selected').text();
                 additionalData.caseid6 = $('#casetype6').val();
             }
 
-            if(actions == 'add'){
+            if (actions == 'add') {
                 urls = "{{ route('cases.store') }}";
                 methods = 'post';
-            }else if(actions == 'edit'){
+            } else if (actions == 'edit') {
                 urls = "cases/save/" + id;
                 methods = 'PUT';
             }
@@ -693,32 +704,33 @@
                     $('#Hn').val(res.data.hn);
                     $('#Name').val(res.data.name);
                     //date+543
-                    var arrayDate=res.data.adddate.split("-");
-				    arrayDate[0]=parseInt(arrayDate[0])+543;
-                    $('#Addadddate').val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
+                    var arrayDate = res.data.adddate.split("-");
+                    arrayDate[0] = parseInt(arrayDate[0]) + 543;
+                    $('#Addadddate').val(arrayDate[0] + "-" + arrayDate[1] + "-" +
+                        arrayDate[2]);
                     //$('#tempAddadddate').html(res.data.adddate);
                     $('#Detail').val(res.data.casedetail);
                     $('#tranferstatus').val(res.data.tranferstatus);
                     $('#casestatus').val(res.data.casestatus);
                     $('#casetype1').val(res.data.caseid1);
                     $('#casetype1').change();
-                    if(res.data.caseid2 != 0){
+                    if (res.data.caseid2 != 0) {
                         $('#casetype2').val(res.data.caseid2);
                         $('#casetype2').change();
                     }
-                    if(res.data.caseid3 != 0){
+                    if (res.data.caseid3 != 0) {
                         $('#casetype3').val(res.data.caseid3);
                         $('#casetype3').change();
                     }
-                    if(res.data.caseid4 != 0){
+                    if (res.data.caseid4 != 0) {
                         $('#casetype4').val(res.data.caseid4);
                         $('#casetype4').change();
                     }
-                    if(res.data.caseid5 != 0){
+                    if (res.data.caseid5 != 0) {
                         $('#casetype5').val(res.data.caseid5);
                         $('#casetype5').change();
                     }
-                    if(res.data.caseid6 != 0){
+                    if (res.data.caseid6 != 0) {
                         $('#casetype6').val(res.data.caseid6);
                     }
                     //Comment Data
@@ -747,7 +759,7 @@
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
-            
+
             var additionalData = {
                 case_id: id,
                 comment: $('#cComment').val()
@@ -871,8 +883,8 @@
                 url: '{{ route('cases.commentlist') }}',
                 type: 'POST',
                 data: {
-                        id: id
-                    },
+                    id: id
+                },
 
                 success: function(response) {
                     $('#listlog').html(response.html);
@@ -880,14 +892,14 @@
             });
         });
         //listcomment
-        $(document).on('click', '.listcomment-button',function() {
+        $(document).on('click', '.listcomment-button', function() {
             var case_id = $(this).data('case_id');
             $.ajax({
                 url: '{{ route('cases.commentlist') }}',
                 type: 'POST',
                 data: {
-                        id: case_id
-                    },
+                    id: case_id
+                },
 
                 success: function(response) {
                     $('#listlog').html(response.html);
@@ -896,7 +908,7 @@
         });
 
         //loadcasescomment
-        $(document).on('click', '.selectcomment-button',function() {
+        $(document).on('click', '.selectcomment-button', function() {
             var comment_id = $(this).data('comment_id');
             $.ajax({
                 url: '{{ route('cases.commentview') }}',
@@ -904,13 +916,13 @@
                 async: false,
                 data: {
                     commentid: comment_id
-                    },
+                },
                 success: function(response) {
                     $('#listlog').html(response.html);
                 }
             });
         });
-//Update Edit Log 
+        //Update Edit Log 
         //Click Tab Log
         $(document).on('click', '.tablisteditlog', function() {
             //var id = $(this).data("contactid");
@@ -918,8 +930,8 @@
                 url: '{{ route('cases.caseslistlog') }}',
                 type: 'POST',
                 data: {
-                        id: id
-                    },
+                    id: id
+                },
 
                 success: function(response) {
                     $('#editlog').html(response.html);
@@ -927,14 +939,14 @@
             });
         });
         //listlog
-        $(document).on('click', '.listeditlog-button',function() {
+        $(document).on('click', '.listeditlog-button', function() {
             var case_id = $(this).data('case_id');
             $.ajax({
                 url: '{{ route('cases.caseslistlog') }}',
                 type: 'POST',
                 data: {
-                        id: case_id
-                    },
+                    id: case_id
+                },
 
                 success: function(response) {
                     $('#editlog').html(response.html);
@@ -943,7 +955,7 @@
         });
 
         //loadcaseslog
-        $(document).on('click', '.selectlog-button',function() {
+        $(document).on('click', '.selectlog-button', function() {
             var log_id = $(this).data('log_id');
             $.ajax({
                 url: '{{ route('cases.casesviewlog') }}',
@@ -951,7 +963,7 @@
                 async: false,
                 data: {
                     id: log_id
-                    },
+                },
                 success: function(response) {
                     $('#editlog').html(response.html);
                 }
@@ -966,33 +978,34 @@
             $('#casetype4').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
             $('#casetype5').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
             $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
-                if(parent_id != ''){    
-                    $.ajax({
-                        url: "casetype6/casetype/" + parent_id,
-                        method: 'GET',
-                        async: false,
-                        success: function(res) {
-                            $.each(res.data, function(index, item) {
-                                $('#casetype2').append(
-                                    $('<option></option>').val(item.id).html(item.name)
-                                );
-                            });
-                        }
-                    });
-                    $('#casetype2').attr('disabled', false);
+            if (parent_id != '') {
+                $.ajax({
+                    url: "casetype6/casetype/" + parent_id,
+                    method: 'GET',
+                    async: false,
+                    success: function(res) {
+                        $.each(res.data, function(index, item) {
+                            $('#casetype2').append(
+                                $('<option></option>').val(item.id).html(item
+                                    .name)
+                            );
+                        });
+                    }
+                });
+                $('#casetype2').attr('disabled', false);
 
-                    $('#casetype3').attr('disabled', true);
-                    $('#casetype4').attr('disabled', true);
-                    $('#casetype5').attr('disabled', true);
-                    $('#casetype6').attr('disabled', true);
-                }else{
-                    $('#casetype2').attr('disabled', true);
+                $('#casetype3').attr('disabled', true);
+                $('#casetype4').attr('disabled', true);
+                $('#casetype5').attr('disabled', true);
+                $('#casetype6').attr('disabled', true);
+            } else {
+                $('#casetype2').attr('disabled', true);
 
-                    $('#casetype3').attr('disabled', true);
-                    $('#casetype4').attr('disabled', true);
-                    $('#casetype5').attr('disabled', true);
-                    $('#casetype6').attr('disabled', true);
-                }   
+                $('#casetype3').attr('disabled', true);
+                $('#casetype4').attr('disabled', true);
+                $('#casetype5').attr('disabled', true);
+                $('#casetype6').attr('disabled', true);
+            }
         });
 
         $('#casetype2').on('change', function() {
@@ -1001,107 +1014,111 @@
             $('#casetype4').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
             $('#casetype5').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
             $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
-                if(parent_id != ''){    
-                    $.ajax({
-                        url: "casetype6/casetype/" + parent_id,
-                        method: 'GET',
-                        async: false,
-                        success: function(res) {
-                            $.each(res.data, function(index, item) {
-                                $('#casetype3').append(
-                                    $('<option></option>').val(item.id).html(item.name)
-                                );
-                            });
-                        }
-                    });
-                    $('#casetype3').attr('disabled', false);
+            if (parent_id != '') {
+                $.ajax({
+                    url: "casetype6/casetype/" + parent_id,
+                    method: 'GET',
+                    async: false,
+                    success: function(res) {
+                        $.each(res.data, function(index, item) {
+                            $('#casetype3').append(
+                                $('<option></option>').val(item.id).html(item
+                                    .name)
+                            );
+                        });
+                    }
+                });
+                $('#casetype3').attr('disabled', false);
 
-                    $('#casetype4').attr('disabled', true);
-                    $('#casetype5').attr('disabled', true);
-                    $('#casetype6').attr('disabled', true);
-                }else{
-                    $('#casetype3').attr('disabled', true);
+                $('#casetype4').attr('disabled', true);
+                $('#casetype5').attr('disabled', true);
+                $('#casetype6').attr('disabled', true);
+            } else {
+                $('#casetype3').attr('disabled', true);
 
-                    $('#casetype4').attr('disabled', true);
-                    $('#casetype5').attr('disabled', true);
-                    $('#casetype6').attr('disabled', true);
-                }   
+                $('#casetype4').attr('disabled', true);
+                $('#casetype5').attr('disabled', true);
+                $('#casetype6').attr('disabled', true);
+            }
         });
         $('#casetype3').on('change', function() {
             var parent_id = $(this).val();
             $('#casetype4').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
             $('#casetype5').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
             $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
-                if(parent_id != ''){    
-                    $.ajax({
-                        url: "casetype6/casetype/" + parent_id,
-                        method: 'GET',
-                        async: false,
-                        success: function(res) {
-                            $.each(res.data, function(index, item) {
-                                $('#casetype4').append(
-                                    $('<option></option>').val(item.id).html(item.name)
-                                );
-                            });
-                        }
-                    });
-                    $('#casetype4').attr('disabled', false);
+            if (parent_id != '') {
+                $.ajax({
+                    url: "casetype6/casetype/" + parent_id,
+                    method: 'GET',
+                    async: false,
+                    success: function(res) {
+                        $.each(res.data, function(index, item) {
+                            $('#casetype4').append(
+                                $('<option></option>').val(item.id).html(item
+                                    .name)
+                            );
+                        });
+                    }
+                });
+                $('#casetype4').attr('disabled', false);
 
-                    $('#casetype5').attr('disabled', true);
-                    $('#casetype6').attr('disabled', true);
-                }else{
-                    $('#casetype4').attr('disabled', true);
+                $('#casetype5').attr('disabled', true);
+                $('#casetype6').attr('disabled', true);
+            } else {
+                $('#casetype4').attr('disabled', true);
 
-                    $('#casetype5').attr('disabled', true);
-                    $('#casetype6').attr('disabled', true);
-                }   
+                $('#casetype5').attr('disabled', true);
+                $('#casetype6').attr('disabled', true);
+            }
         });
         $('#casetype4').on('change', function() {
             var parent_id = $(this).val();
             $('#casetype5').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
             $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
-                if(parent_id != ''){    
-                    $.ajax({
-                        url: "casetype6/casetype/" + parent_id,
-                        method: 'GET',
-                        async: false,
-                        success: function(res) {
-                            $.each(res.data, function(index, item) {
-                                $('#casetype5').append(
-                                    $('<option></option>').val(item.id).html(item.name)
-                                );
-                            });
-                        }
-                    });
-                    $('#casetype5').attr('disabled', false);
+            if (parent_id != '') {
+                $.ajax({
+                    url: "casetype6/casetype/" + parent_id,
+                    method: 'GET',
+                    async: false,
+                    success: function(res) {
+                        $.each(res.data, function(index, item) {
+                            $('#casetype5').append(
+                                $('<option></option>').val(item.id).html(item
+                                    .name)
+                            );
+                        });
+                    }
+                });
+                $('#casetype5').attr('disabled', false);
 
-                    $('#casetype6').attr('disabled', true);
-                }else{
-                    $('#casetype5').attr('disabled', true);
+                $('#casetype6').attr('disabled', true);
+            } else {
+                $('#casetype5').attr('disabled', true);
 
-                    $('#casetype6').attr('disabled', true);
-                }   
+                $('#casetype6').attr('disabled', true);
+            }
         });
         $('#casetype5').on('change', function() {
             var parent_id = $(this).val();
             $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
-                if(parent_id != ''){    
-                    $.ajax({
-                        url: "casetype6/casetype/" + parent_id,
-                        method: 'GET',
-                        async: false,
-                        success: function(res) {
-                            $.each(res.data, function(index, item) {
-                                $('#casetype6').append(
-                                    $('<option></option>').val(item.id).html(item.name)
-                                );
-                            });
-                        }
-                    });
-                    $('#casetype6').attr('disabled', false);
-                }else{
-                    $('#casetype6').attr('disabled', true);
-                }   
+            if (parent_id != '') {
+                $.ajax({
+                    url: "casetype6/casetype/" + parent_id,
+                    method: 'GET',
+                    async: false,
+                    success: function(res) {
+                        $.each(res.data, function(index, item) {
+                            $('#casetype6').append(
+                                $('<option></option>').val(item.id).html(item
+                                    .name)
+                            );
+                        });
+                    }
+                });
+                $('#casetype6').attr('disabled', false);
+            } else {
+                $('#casetype6').attr('disabled', true);
+            }
         });
 
 
