@@ -50,7 +50,7 @@ class CallstatusController extends Controller
         $datas = DB::connection('remote_connection')
             ->table('call_center.call_entry')
             ->select('crm_id', DB::raw('SUM(if(status = "terminada",1,0)) as terminada'), DB::raw('SUM(if(status = "abandonada",1,0)) as abandonada') ,DB::raw('SEC_TO_TIME(AVG(duration_wait)) as avgwait'), DB::raw('SEC_TO_TIME(SUM(duration)) as duration') , DB::raw('SEC_TO_TIME(AVG(duration)) as avgduration'))
-            ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+            ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59" and crm_id is not null')
             ->groupBy('crm_id')
             ->get();
 
