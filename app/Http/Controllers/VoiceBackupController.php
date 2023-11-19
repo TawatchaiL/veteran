@@ -26,6 +26,18 @@ class VoiceBackupController extends Controller
         $this->middleware('permission:voice-export-delete', ['only' => ['destroy']]);
     }
 
+    public function getTelpFromDstChannel($dstChannel)
+    {
+        if ($dstChannel !== null && strpos($dstChannel, 'SIP/') === 0) {
+            list($sip, $no) = explode('/', $dstChannel);
+            list($telp, $lear) = explode('-', $no);
+            return $telp;
+        }
+
+        return null;
+    }
+
+
     /**
      * Display a listing of the resource.
      */
@@ -178,6 +190,8 @@ class VoiceBackupController extends Controller
             $agentArray[$agen->id]['name'] = $agen->name;
         }
 
+        $ctype_text = ['', 'สายเข้า', 'โทรออก', 'ภายใน'];
+
 
         $datass = DB::connection('remote_connection')
             ->table('asteriskcdrdb.cdr')
@@ -245,6 +259,57 @@ class VoiceBackupController extends Controller
             return $original . ',' . $newname;
         })->toArray();
 
+        $csvs = $datas->map(function ($item) use ($agentArray, $ctype) {
+
+            $agentname = '';
+
+            if ($item->dst_userfield !== null) {
+                $agentname = $agentArray[$item->dst_userfield]['name'];
+            } elseif ($item->accountcode !== '' && $item->userfield !== '') {
+                $agentname = $agentArray[$item->userfield]['name'];
+            }
+
+            $agentname = $agentname ?: 'NoAgent';
+
+            $newname = $agentname . "-" . basename($item->recordingfile);
+
+
+            if ($item->accountcode !== '') {
+                if (!empty($item->userfield)) {
+                    $src = $agentArray[$item->userfield]['name'] . " ( " . $item->src . " ) ";
+                } else {
+                    $src = $item->src;
+                }
+            } else {
+                $src = $item->src;
+            }
+
+            $telp = $item->accountcode == '' ? $this->getTelpFromDstChannel($item->dstchannel) : $item->dst;
+
+            if (!empty($item->dst_userfield) && isset($agentArray[$item->dst_userfield])) {
+                $agentName = $agentArray[$item->dst_userfield]['name'];
+                $dst =  "$agentName ( $telp ) ";
+            } else {
+                $dst = $telp;
+            }
+
+            $durationInSeconds = $item->billsec;
+            $hours = floor($durationInSeconds / 3600);
+            $minutes = floor(($durationInSeconds % 3600) / 60);
+            $seconds = $durationInSeconds % 60;
+
+            $duration = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
+
+
+            return $item->calldate . ',' . $src . ',' . $dst . ',' . $duration . ',' . $newname;
+        })->toArray();
+
+        $csvContent = implode("\n", $csvs);
+        $csvfilePath = 'download/' . $id . '.csv';
+        $csvfullPath = public_path($csvfilePath);
+        file_put_contents($csvfullPath, $csvContent);
+
+        $fileContent = array_merge($filenames, [($csvfilePath . ',' . $id . '.csv')]);
         $fileContent = implode("\n", $filenames);
         $filePath = 'download/' . $id . '.txt';
         $fullPath = public_path($filePath);
