@@ -36,7 +36,7 @@
                         <div class="form-group">
                             <strong><i class="fas fa-calendar"></i> จากวันที่:</strong>
                             @php
-                                $datethai = date('m/d/') . date('Y') + 543 . ' ' . date('H:i');
+                                $datethai = date('Y-m-d') . ' ' . date('H:i:s');
                             @endphp
                             {!! Form::text('start_date', $datethai, [
                                 'id' => 'AddSDate',
@@ -51,7 +51,7 @@
                         <div class="form-group">
                             <strong><i class="fas fa-calendar"></i> ถึงวันที่:</strong>
                             @php
-                                $datethai = date('m/d/') . date('Y') + 543 . ' ' . date('H:i');
+                                 $datethai = date('Y-m-d') . ' ' . date('H:i:s');
                             @endphp
                             {!! Form::text('end_date', $datethai, [
                                 'id' => 'AddEDate',
@@ -65,7 +65,7 @@
                     <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group">
                             <strong><i class="fas fa-list-ol"></i> เบอร์ที่ติดต่อ:</strong>
-                            {!! Form::text('line', null, ['id' => 'AddLine', 'placeholder' => 'Line Token', 'class' => 'form-control']) !!}
+                            {!! Form::text('src', null, ['id' => 'AddSrc', 'placeholder' => 'เบอร์ที่ติดต่อ', 'class' => 'form-control']) !!}
                         </div>
                     </div>
                 </div>
@@ -73,8 +73,8 @@
                     <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group">
                             <strong><i class="fas fa-list-ol"></i> Agent:</strong>
-                            <select style="width: 100%;" class="select2 select2_single form-control" id="AddExtension"
-                                name="extension" multiple="multiple">
+                            <select style="width: 100%;" class="select2 select2_single form-control" id="AddAgent"
+                                name="agent" multiple="multiple">
                                 @can('voice-record-supervisor')
                                     <option value="" selected>ทั้งหมด</option>
                                 @endcan
@@ -84,7 +84,6 @@
                                             {{ $agen->name ?? 'ไม่พบเบอร์โทรศัพท์' }}
                                         </option>
                                     @else
-                                        {{-- For non-supervisors, only show their own agent --}}
                                         @if (Auth::user()->id == $agen->id)
                                             <option value="{{ $agen->id }}">
                                                 {{ $agen->name ?? 'ไม่พบเบอร์โทรศัพท์' }}
@@ -100,8 +99,8 @@
                     <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group">
                             <strong><i class="fas fa-list-ol"></i> ประเภทการโทร:</strong>
-                            <select style="width: 100%;" class="select2 select2_single form-control" id="AddExtension"
-                                name="extension" multiple="multiple">
+                            <select style="width: 100%;" class="select2 select2_single form-control" id="AddCtype"
+                                name="ctype" multiple="multiple">
                                 <option value="">ทั้งหมด</option>
                                 <option value="1"> สายเข้า</option>
                                 <option value="2"> โทรออก</option>
