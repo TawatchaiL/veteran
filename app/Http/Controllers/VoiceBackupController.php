@@ -259,22 +259,19 @@ class VoiceBackupController extends Controller
             return $original . ',' . $newname;
         })->toArray();
 
-        $csv = 'วันที่เวลาโทร,เบอร์ต้นทาง,เบอร์ปลายทาง,ประเภทการโทร,ระยเวลาสนทา,ชื่อไฟล์บันทึกเสียง';
-        $csvs = $datas->map(function ($item) use ($agentArray, $ctype_text, $csv, $ctype) {
-
+        $csvs = $datas->map(function ($item) use ($agentArray, $ctype_text, $ctype) {
             $agentname = '';
-
+    
             if ($item->dst_userfield !== null) {
                 $agentname = $agentArray[$item->dst_userfield]['name'];
             } elseif ($item->accountcode !== '' && $item->userfield !== '') {
                 $agentname = $agentArray[$item->userfield]['name'];
             }
-
+    
             $agentname = $agentname ?: 'NoAgent';
-
+    
             $newname = $agentname . "-" . basename($item->recordingfile);
-
-
+    
             if ($item->accountcode !== '') {
                 if (!empty($item->userfield)) {
                     $src = $agentArray[$item->userfield]['name'] . " ( " . $item->src . " ) ";
@@ -284,26 +281,39 @@ class VoiceBackupController extends Controller
             } else {
                 $src = $item->src;
             }
-
+    
             $telp = $item->accountcode == '' ? $this->getTelpFromDstChannel($item->dstchannel) : $item->dst;
-
+    
             if (!empty($item->dst_userfield) && isset($agentArray[$item->dst_userfield])) {
                 $agentName = $agentArray[$item->dst_userfield]['name'];
                 $dst =  "$agentName ( $telp ) ";
             } else {
                 $dst = $telp;
             }
-
+    
             $durationInSeconds = $item->billsec;
             $hours = floor($durationInSeconds / 3600);
             $minutes = floor(($durationInSeconds % 3600) / 60);
             $seconds = $durationInSeconds % 60;
-
+    
             $duration = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
-
-            $csv .= $item->calldate . ',' . $src . ',' . $dst . ',' . $ctype_text[$ctype] . ',' . $duration . ',' . $newname;
-            return $csv;
+    
+            // Create an array to store each row's values
+            $rowValues = [
+                $item->calldate,
+                $src,
+                $dst,
+                $ctype_text[$ctype],
+                $duration,
+                $newname,
+            ];
+    
+            // Join the array values into a CSV formatted string
+            return implode(',', $rowValues);
         })->toArray();
+    
+        // Combine header and data
+        $csvContent = "วันที่เวลาโทร,เบอร์ต้นทาง,เบอร์ปลายทาง,ประเภทการโทร,ระยะเวลาสนทนา,ชื่อไฟล์บันทึกเสียง\n" . implode("\n", $csvs);
 
         $csvContent = implode("\n", $csvs);
         $csvfilePath = 'download/' . $id . '.csv';
