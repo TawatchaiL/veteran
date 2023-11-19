@@ -1,3 +1,6 @@
+@php
+    $detect = new Detection\MobileDetect();
+@endphp
 <script>
     $(document).ready(function() {
         $.fn.bootstrapSwitch.defaults.size = 'small';
