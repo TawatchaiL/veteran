@@ -175,9 +175,13 @@ class VoiceBackupController extends Controller
 
         $vid = VoiceBackup::create($holiday);
 
-        $this->gent_export_list($vid->id, $startDate, $endDate, $request->get('src'), $request->get('dst'), $request->get('ctype'));
-
-        return response()->json(['success' => 'เพิ่มรายการ Export VoiceRecord เรียบร้อยแล้ว <br> กรุณาเช็คในหน้า Voice Export']);
+        $ret = $this->gent_export_list($vid->id, $startDate, $endDate, $request->get('src'), $request->get('dst'), $request->get('ctype'));
+        if ($ret == 1) {
+            return response()->json(['success' => 'เพิ่มรายการ Export VoiceRecord เรียบร้อยแล้ว <br> กรุณาเช็คในหน้า Voice Export']);
+        } else {
+            VoiceBackup::find($vid)->delete();
+            return response()->json(['error' => 'ไม่พบรายการไฟล์ตามช่วงเวลาที่ท่านระบุ']);
+        }
     }
 
     public function gent_export_list($id, $sdate, $edate, $telp, $agent, $ctype)
@@ -240,6 +244,10 @@ class VoiceBackupController extends Controller
 
         $datas = $datass->get();
 
+        if ($datas->isEmpty()) {
+            return 0;
+        }
+
         $filenames = $datas->map(function ($item) use ($agentArray) {
             $datep = explode("-", explode(" ", $item->calldate)[0]);
             $original = $datep[0] . "/" . $datep[1] . "/" . $datep[2] . "/" . basename($item->recordingfile);
@@ -261,17 +269,17 @@ class VoiceBackupController extends Controller
 
         $csvs = $datas->map(function ($item) use ($agentArray, $ctype_text, $ctype) {
             $agentname = '';
-    
+
             if ($item->dst_userfield !== null) {
                 $agentname = $agentArray[$item->dst_userfield]['name'];
             } elseif ($item->accountcode !== '' && $item->userfield !== '') {
                 $agentname = $agentArray[$item->userfield]['name'];
             }
-    
+
             $agentname = $agentname ?: 'NoAgent';
-    
+
             $newname = $agentname . "-" . basename($item->recordingfile);
-    
+
             if ($item->accountcode !== '') {
                 if (!empty($item->userfield)) {
                     $src = $agentArray[$item->userfield]['name'] . " ( " . $item->src . " ) ";
@@ -281,21 +289,21 @@ class VoiceBackupController extends Controller
             } else {
                 $src = $item->src;
             }
-    
+
             $telp = $item->accountcode == '' ? $this->getTelpFromDstChannel($item->dstchannel) : $item->dst;
-    
+
             if (!empty($item->dst_userfield) && isset($agentArray[$item->dst_userfield])) {
                 $agentName = $agentArray[$item->dst_userfield]['name'];
                 $dst =  "$agentName ( $telp ) ";
             } else {
                 $dst = $telp;
             }
-    
+
             $durationInSeconds = $item->billsec;
             $hours = floor($durationInSeconds / 3600);
             $minutes = floor(($durationInSeconds % 3600) / 60);
             $seconds = $durationInSeconds % 60;
-    
+
             $duration = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
             $ctypeIndex = isset($ctype_text[$ctype]) ? $ctype : 0;
             // Create an array to store each row's values
@@ -307,11 +315,11 @@ class VoiceBackupController extends Controller
                 $duration,
                 $newname,
             ];
-    
+
             // Join the array values into a CSV formatted string
             return implode(',', $rowValues);
         })->toArray();
-    
+
         // Combine header and data
         $csvContent = "วันที่เวลาโทร,เบอร์ต้นทาง,เบอร์ปลายทาง,ประเภทการโทร,ระยะเวลาสนทนา,ชื่อไฟล์บันทึกเสียง\n" . implode("\n", $csvs);
 
@@ -324,7 +332,11 @@ class VoiceBackupController extends Controller
         $filePath = 'download/' . $id . '.txt';
         $fullPath = public_path($filePath);
         file_put_contents($fullPath, $fileContent);
+
+        return 1;
     }
+
+
 
     /**
      * Display the specified resource.
