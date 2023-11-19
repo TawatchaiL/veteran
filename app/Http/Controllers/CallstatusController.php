@@ -34,48 +34,48 @@ class CallstatusController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
-            //sleep(2);
-
-            //$datas = Cases::orderBy("id", "desc")->get();
-            $numberOfRows = 50; // Change this to the desired number of rows
-            $simulatedDatas = [];
-
-            $rivrname = ['welcom', 'opd', 'callcenter'];
-            $rivrno = ['Comment', 'Edit'];
-
-            for ($i = 1; $i <= $numberOfRows; $i++) {
-
-                $totalCall = rand(10, 28);
-                $sumCall = rand(10, 28);
-            
-                // Ensure 'totalcall' is not less than 'sumcall'
-                while ($totalCall < $sumCall) {
-                    $totalCall = rand(10, 28);
+        if (!empty($request->get('sdate'))) {
+            $dateRange = $request->input('sdate');
+            if ($dateRange) {
+                $dateRangeArray = explode(' - ', $dateRange);
+                if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
+                    $startDate = $dateRangeArray[0];
+                    $endDate = $dateRangeArray[1];
                 }
-            
-
-                $simulatedDatas[] = (object) [
-                    'id' => $i,
-                    'agent' => rand(100, 300),
-                    'totalcall' => $totalCall,
-                    'sumcall' => $sumCall,
-                    'wtime' => '00:'.rand(10, 50),
-                    'telf' => rand(3, 5).':'.rand(10, 50),
-                    'telfa' => rand(3, 5).':'.rand(10, 50),
-                    'login' => rand(3, 5).':'.rand(10, 50),
-                    'pause' => rand(3, 5).':'.rand(10, 50),
-                    // Simulate other fields as needed
-                ];
             }
-
-
-            return datatables()->of($simulatedDatas)
-                ->editColumn('checkbox', function ($row) {
-                    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
-                })->rawColumns(['checkbox', 'action'])
-                ->toJson();
+        }else{
+                    $startDate = date("Y-m-d");
+                    $endDate = date("Y-m-t", strtotime($startDate));  
         }
+        $datas = DB::connection('remote_connection')
+            ->table('call_center.call_entry')
+            ->select('crm_id', DB::raw('SUM(if(status = "terminada",1,0)) as terminada'), DB::raw('SUM(if(status = "abandonada",1,0)) as abandonada') ,DB::raw('AVG(duration_wait) as avgwait'), DB::raw('SUM(duration) as duration') , DB::raw('AVG(duration) as avgduration'))
+            ->whereRaw('LENGTH(callerid) < 5')
+            ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+            ->limit(10)
+            ->get();
+
+            $agents = User::orderBy("id", "asc")->get();
+            
+            if ($request->ajax()) {
+                
+                $agent_data = array();
+                foreach ($agents as $agent) {
+                    $agent_data[$agent->id] = $agent->name;
+                }
+                return datatables()->of($datas)
+                    ->editColumn('checkbox', function ($row) {
+                        return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
+                    })
+                    ->addColumn('agent', function ($row) use ($agent_data){
+                        if (isset($agent_data[$row->crm_id])) {
+                            return $agent_data[$row->crm_id];
+                        } else {
+                            return 'Agent not found';
+                        }
+                    })
+                    ->rawColumns(['checkbox', 'action', 'agent'])->toJson();
+            }
 
         return view('callstatus.index');
     }
