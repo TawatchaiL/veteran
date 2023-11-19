@@ -195,7 +195,7 @@ class VoiceBackupController extends Controller
             $agentArray[$agen->id]['name'] = $agen->name;
         }
 
-        $ctype_text = ['', 'สายเข้า', 'โทรออก', 'ภายใน'];
+        $ctype_text = ['', 'Incoming', 'Outgoing', 'Local'];
 
 
         $datass = DB::connection('remote_connection')
@@ -322,9 +322,9 @@ class VoiceBackupController extends Controller
         })->toArray();
 
         // Combine header and data
-        $csvContent = "วันที่เวลาโทร,เบอร์ต้นทาง,เบอร์ปลายทาง,ประเภทการโทร,ระยะเวลาสนทนา,ชื่อไฟล์บันทึกเสียง\n" . implode("\n", $csvs);
+        $csvContent = "Calldate,Source,Destination,Calltype,Duration,VoiceFileName\n" . implode("\n", $csvs);
 
-        $csvContent = implode("\n", $csvs);
+        //$csvContent = implode("\n", $csvs);
         $csvfilePath = 'download/' . $id . '.csv';
         $csvfullPath = public_path($csvfilePath);
         file_put_contents($csvfullPath, $csvContent);
