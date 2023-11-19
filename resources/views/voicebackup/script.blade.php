@@ -23,7 +23,17 @@
             $(':checkbox.flat').prop('checked', this.checked);
         });
 
+        $(".select2_single").select2({
+            maximumSelectionLength: 1,
+            allowClear: false,
+            //theme: 'bootstrap4'
+            placeholder: 'กรุณาเลือก'
+        });
 
+        $(".select2_single").on("select2:unselect", function(e) {
+            //log("select2:unselect", e);
+            //$('.positions').html('');
+        });
 
         $("input[data-bootstrap-switch]").each(function() {
             $(this).bootstrapSwitch('state', $(this).prop('checked'));
@@ -31,7 +41,7 @@
 
         $.datepicker.setDefaults($.datepicker.regional["th"]);
         var currentDate = new Date();
-        var currentYear = currentDate.getFullYear()/*  + 543 */;
+        var currentYear = currentDate.getFullYear() /*  + 543 */ ;
         var maxYear = currentYear;
 
         $(".datepick").datetimepicker({
@@ -39,7 +49,7 @@
             changeYear: true,
             yearRange: '2023' + ':' + maxYear,
             dateFormat: 'yy-mm-dd',
-            timeFormat:  "hh:mm:ss",
+            timeFormat: "hh:mm:ss",
             onSelect: function(date) {
                 $("#edit-date-of-birth").addClass('filled');
             }
@@ -264,7 +274,7 @@
                 return false; // Cancel the operation if rowid is missing
             }
 
-            var url = '{{ url("zip") }}/' + rowid;
+            var url = '{{ url('zip') }}/' + rowid;
             console.log(url);
             window.open(url, '_blank');
         });

@@ -64,21 +64,7 @@
                 <div class="row">
                     <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group">
-                            <strong><i class="fas fa-list-ol"></i> Extension:</strong>
-                            <select style="width: 100%;" class="select2 select2_multiple form-control" id="AddExtension"
-                                name="extension" multiple="multiple">
-                                {{-- @foreach ($sound as $key2)
-                                    <option value="{{ $key2->number }}">{{ $key2->number }}
-                                    </option>
-                                @endforeach --}}
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-8 col-sm-8 col-md-8">
-                        <div class="form-group">
-                            <strong><i class="fas fa-list-ol"></i> Line Token:</strong>
+                            <strong><i class="fas fa-list-ol"></i> เบอร์ที่ติดต่อ:</strong>
                             {!! Form::text('line', null, ['id' => 'AddLine', 'placeholder' => 'Line Token', 'class' => 'form-control']) !!}
                         </div>
                     </div>
@@ -86,54 +72,45 @@
                 <div class="row">
                     <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group">
-                            <label for="AddEmail"><strong><i class="fas fa-list-ol"></i> Email:</strong></label>
-                            <input type="email" id="AddEmail" name="email" placeholder="Email" class="form-control">
+                            <strong><i class="fas fa-list-ol"></i> Agent:</strong>
+                            <select style="width: 100%;" class="select2 select2_single form-control" id="AddExtension"
+                                name="extension" multiple="multiple">
+                                @can('voice-record-supervisor')
+                                    <option value="" selected>ทั้งหมด</option>
+                                @endcan
+                                @foreach ($agens as $agen)
+                                    @can('voice-record-supervisor')
+                                        <option value="{{ $agen->id }}">
+                                            {{ $agen->name ?? 'ไม่พบเบอร์โทรศัพท์' }}
+                                        </option>
+                                    @else
+                                        {{-- For non-supervisors, only show their own agent --}}
+                                        @if (Auth::user()->id == $agen->id)
+                                            <option value="{{ $agen->id }}">
+                                                {{ $agen->name ?? 'ไม่พบเบอร์โทรศัพท์' }}
+                                            </option>
+                                        @endif
+                                    @endcan
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group">
-                            <strong><i class="fas fa-list-ol"></i> แจ้งเตือนวันหยุด:</strong><br>
-                            <div class="custom-control custom-switch">
-                                {{ Form::checkbox('sat', '1', false, ['id' => 'sat', 'class' => 'custom-control-input name']) }}
-                                <label for="sat" class="custom-control-label">
-                                    เสาร์</label>
-                            </div>
-                            <div class="custom-control custom-switch">
-                                {{ Form::checkbox('sun', '1', false, ['id' => 'sun', 'class' => 'custom-control-input name']) }}
-                                <label for="sun" class="custom-control-label">
-                                    อาทิตย์</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-8 col-sm-8 col-md-8">
-                        <div class="form-group">
-                            <strong><i class="fas fa-list-ol"></i> ประเภทการแจ้งเตือน:</strong><br>
-                            <div class="custom-control custom-switch">
-                                {{ Form::checkbox('misscall', '1', false, ['id' => 'misscall', 'class' => 'custom-control-input name']) }}
-                                <label for="misscall" class="custom-control-label">
-                                    Misscall</label>
-                            </div>
+                            <strong><i class="fas fa-list-ol"></i> ประเภทการโทร:</strong>
+                            <select style="width: 100%;" class="select2 select2_single form-control" id="AddExtension"
+                                name="extension" multiple="multiple">
+                                <option value="">ทั้งหมด</option>
+                                <option value="1"> สายเข้า</option>
+                                <option value="2"> โทรออก</option>
+                                <option value="3"> ภายใน</option>
+                            </select>
                         </div>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-xs-8 col-sm-8 col-md-8">
-                        <div class="form-group">
-                            <strong><i class="fas fa-eye"></i> เปิดใช้งาน:</strong>
-                            <br />
-                            <div class="custom-control custom-switch">
-                                {{ Form::checkbox('status', '1', false, ['id' => 'customCheckbox1', 'class' => 'custom-control-input name']) }}
-                                <label for="customCheckbox1" class="custom-control-label">
-                                    เปิดใช้งาน</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 {!! Form::close() !!}
             </div>
             <div class="modal-footer {{-- justify-content-between --}}">
