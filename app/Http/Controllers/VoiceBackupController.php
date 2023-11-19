@@ -270,16 +270,36 @@ class VoiceBackupController extends Controller
     public function destroy(Request $request)
     {
         $id = $request->get('id');
-        VoiceBackup::find($id)->delete();
-        return ['success' => true, 'message' => 'ลบรายการ Export VoiceRecord เรียบร้อยแล้ว'];
+        $voice = VoiceBackup::find($id);
+
+        if ($voice && $voice->export_status == 3) {
+            $exportFilePath = public_path('zip/' . $voice->export_filename);
+            if (file_exists($exportFilePath)) {
+                unlink($exportFilePath);
+            }
+
+            $voice->delete();
+
+            return ['success' => true, 'message' => 'ลบรายการ Export VoiceRecord เรียบร้อยแล้ว'];
+        }
+
+        return ['success' => false, 'message' => 'ไม่สามารถลบรายการ Export VoiceRecord ได้'];
     }
 
     public function destroy_all(Request $request)
     {
+        $arr_del = $request->get('table_records');
 
-        $arr_del  = $request->get('table_records');
-        for ($xx = 0; $xx < count($arr_del); $xx++) {
-            VoiceBackup::find($arr_del[$xx])->delete();
+        foreach ($arr_del as $recordId) {
+            $voice = VoiceBackup::find($recordId);
+
+            if ($voice && $voice->export_status == 3) {
+                $exportFilePath = public_path('zip/' . $voice->export_filename);
+
+                if (file_exists($exportFilePath) && unlink($exportFilePath)) {
+                    $voice->delete();
+                }
+            }
         }
 
         return redirect('/voicebackup')->with('success', 'ลบรายการ Export VoiceRecord เรียบร้อยแล้ว');
