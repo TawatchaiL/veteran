@@ -69,7 +69,7 @@ class CallstatusController extends Controller
 
         $datas = $datac
             ->leftJoinSub($dataa, 'dataa', function ($join) {
-                $join->on('datac.crm_id', '=', 'dataa.crmid');
+                $join->on('call_entry.crm_id', '=', 'dataa.crmid');
             })
             ->get();
 
