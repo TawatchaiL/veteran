@@ -577,12 +577,12 @@
                     name: 'agent'
                 },
                 {
-                    data: 'terminada',
-                    name: 'terminada'
+                    data: 'agentcall',
+                    name: 'agentcall'
                 },
                 {
-                    data: 'abandonada',
-                    name: 'abandonada'
+                    data: 'terminada',
+                    name: 'terminada'
                 },
                 {
                     data: 'avgwait',
