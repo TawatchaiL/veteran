@@ -50,7 +50,7 @@ class DetailscoreagentController extends Controller
         $datas = DB::connection('remote_connection')
             ->table('call_center.agent_score')
             //->select('call_center.agent_score.score as score',  DB::raw('count(call_center.agent_score.score) as sumscore'))
-            ->select('clid',  DB::raw('count(clid) as sumclid'))
+            ->select('score',  DB::raw('count(clid) as sumscore'))
             ->whereRaw('call_center.agent_score.datetime between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"');
             if(!empty($request->get('agent')) && $request->get('agent') != "0"){
                 $datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
@@ -62,8 +62,8 @@ class DetailscoreagentController extends Controller
                 $chart_data = array();
                 $chart_label = array();
                 foreach ($datas as $data) {
-                    $chart_data[] = $data->sumclid;
-                    $chart_label[] = $data->clid;
+                    $chart_data[] = $data->sumscore;
+                    $chart_label[] = $data->score;
                 }
                 return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
             }
