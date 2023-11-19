@@ -577,24 +577,24 @@
                     name: 'agent'
                 },
                 {
-                    data: 'totalcall',
-                    name: 'totalcall'
+                    data: 'terminada',
+                    name: 'terminada'
                 },
                 {
-                    data: 'sumcall',
-                    name: 'sumcall'
+                    data: 'abandonada',
+                    name: 'abandonada'
                 },
                 {
-                    data: 'wtime',
-                    name: 'wtime'
+                    data: 'avgwait',
+                    name: 'avgwait'
                 },
                 {
-                    data: 'telf',
-                    name: 'telf'
+                    data: 'duration',
+                    name: 'duration'
                 },
                 {
-                    data: 'telfa',
-                    name: 'telfa'
+                    data: 'avgduration',
+                    name: 'avgduration'
                 },
                 {
                     data: 'login',
