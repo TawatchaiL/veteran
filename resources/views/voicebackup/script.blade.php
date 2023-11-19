@@ -31,20 +31,20 @@
 
         $.datepicker.setDefaults($.datepicker.regional["th"]);
         var currentDate = new Date();
-        var currentYear = currentDate.getFullYear() + 543;
-        var maxYear = currentYear + 1;
+        //var currentYear = currentDate.getFullYear() + 543;
+        //var maxYear = currentYear + 1;
 
         $(".datepick").datetimepicker({
             changeMonth: true,
             changeYear: true,
             yearRange: currentYear + ':' + maxYear,
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'yy-mm-dd H:i:s',
             onSelect: function(date) {
                 $("#edit-date-of-birth").addClass('filled');
             }
         });
 
-        currentDate.setYear(currentDate.getFullYear() + 543);
+        //currentDate.setYear(currentDate.getFullYear() + 543);
         $('.datepick').datetimepicker("setDate", currentDate);
 
 

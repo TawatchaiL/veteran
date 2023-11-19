@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <h4 class="modal-title"><i class="fas fa-list-ol"></i> เพิ่มกลุ่มการแจ้งเตือน</h4>
+                <h4 class="modal-title"><i class="fas fa-list-ol"></i> เพิ่มรายการ Export ไฟล์บันทึกเสียง</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -26,7 +26,7 @@
                 <div class="row">
                     <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group">
-                            <strong><i class="fas fa-list-ol"></i> ชื่อกลุ่ม:</strong>
+                            <strong><i class="fas fa-list-ol"></i> ชื่อรายการ:</strong>
                             {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                         </div>
                     </div>
