@@ -78,7 +78,7 @@
                                 @can('voice-record-supervisor')
                                     <option value="" selected>ทั้งหมด</option>
                                 @endcan
-                                @foreach ($agens as $agen)
+                                @foreach ($agent as $agen)
                                     @can('voice-record-supervisor')
                                         <option value="{{ $agen->id }}">
                                             {{ $agen->name ?? 'ไม่พบเบอร์โทรศัพท์' }}
