@@ -72,16 +72,7 @@ class CallstatusController extends Controller
             ->leftJoinSub($dataa, 'dataa', function ($join) {
                 $join->on('datac.crm_id', '=', 'dataa.crmid');
             })
-            ->select(
-                'datac.crm_id',
-                'datac.agentcall',
-                'datac.terminada',
-                'datac.avgwait',
-                'datac.duration',
-                'datac.avgduration',
-                'dataa.logintime',
-                'dataa.breaktime'
-            )
+            ->select('datac.crm_id','datac.agentcall','datac.terminada','datac.avgwait','datac.duration','datac.avgduration','dataa.logintime','dataa.breaktime')
             ->get();
 
         $agents = User::orderBy("id", "asc")->get();
