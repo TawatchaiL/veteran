@@ -26,6 +26,18 @@ class VoiceBackupController extends Controller
         $this->middleware('permission:voice-export-delete', ['only' => ['destroy']]);
     }
 
+    public function getTelpFromDstChannel($dstChannel)
+    {
+        if ($dstChannel !== null && strpos($dstChannel, 'SIP/') === 0) {
+            list($sip, $no) = explode('/', $dstChannel);
+            list($telp, $lear) = explode('-', $no);
+            return $telp;
+        }
+
+        return null;
+    }
+
+
     /**
      * Display a listing of the resource.
      */
@@ -87,7 +99,7 @@ class VoiceBackupController extends Controller
                 ->addColumn('action', function ($row) {
                     if (Gate::allows('voice-export-download')) {
                         if ($row->export_status == 3) {
-                            $html = '<button type="button" class="btn btn-sm btn-warning btn-edit" id="getEditData" data-id="' . $row->id . '"><i class="fa fa-download"></i> Download</button> ';
+                            $html = '<button type="button" class="btn btn-sm btn-warning btn-download" id="getEditData" data-id="' . $row->export_filename . '"><i class="fa fa-download"></i> Download</button> ';
                         } else {
                             $html = '<button type="button" class="btn btn-sm btn-warning disabled" data-toggle="tooltip" data-placement="bottom" title="ยัง Export ไม่เสร็จ"><i class="fa fa-download"></i> Download</button> ';
                         }
@@ -165,7 +177,7 @@ class VoiceBackupController extends Controller
 
         $this->gent_export_list($vid->id, $startDate, $endDate, $request->get('src'), $request->get('dst'), $request->get('ctype'));
 
-        return response()->json(['success' => 'เพิ่มรายการ Export VoiceRecord เรียบร้อยแล้ว']);
+        return response()->json(['success' => 'เพิ่มรายการ Export VoiceRecord เรียบร้อยแล้ว <br> กรุณาเช็คในหน้า Voice Export']);
     }
 
     public function gent_export_list($id, $sdate, $edate, $telp, $agent, $ctype)
@@ -177,6 +189,8 @@ class VoiceBackupController extends Controller
         foreach ($agens as $agen) {
             $agentArray[$agen->id]['name'] = $agen->name;
         }
+
+        $ctype_text = ['', 'สายเข้า', 'โทรออก', 'ภายใน'];
 
 
         $datass = DB::connection('remote_connection')
@@ -245,6 +259,56 @@ class VoiceBackupController extends Controller
             return $original . ',' . $newname;
         })->toArray();
 
+        $csvs = $datas->map(function ($item) use ($agentArray, $ctype) {
+
+            $agentname = '';
+
+            if ($item->dst_userfield !== null) {
+                $agentname = $agentArray[$item->dst_userfield]['name'];
+            } elseif ($item->accountcode !== '' && $item->userfield !== '') {
+                $agentname = $agentArray[$item->userfield]['name'];
+            }
+
+            $agentname = $agentname ?: 'NoAgent';
+
+            $newname = $agentname . "-" . basename($item->recordingfile);
+
+
+            if ($item->accountcode !== '') {
+                if (!empty($item->userfield)) {
+                    $src = $agentArray[$item->userfield]['name'] . " ( " . $item->src . " ) ";
+                } else {
+                    $src = $item->src;
+                }
+            } else {
+                $src = $item->src;
+            }
+
+            $telp = $item->accountcode == '' ? $this->getTelpFromDstChannel($item->dstchannel) : $item->dst;
+
+            if (!empty($item->dst_userfield) && isset($agentArray[$item->dst_userfield])) {
+                $agentName = $agentArray[$item->dst_userfield]['name'];
+                $dst =  "$agentName ( $telp ) ";
+            } else {
+                $dst = $telp;
+            }
+
+            $durationInSeconds = $item->billsec;
+            $hours = floor($durationInSeconds / 3600);
+            $minutes = floor(($durationInSeconds % 3600) / 60);
+            $seconds = $durationInSeconds % 60;
+
+            $duration = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
+
+
+            return $item->calldate . ',' . $src . ',' . $dst . ',' . $duration . ',' . $newname;
+        })->toArray();
+
+        $csvContent = implode("\n", $csvs);
+        $csvfilePath = 'download/' . $id . '.csv';
+        $csvfullPath = public_path($csvfilePath);
+        file_put_contents($csvfullPath, $csvContent);
+
         $fileContent = implode("\n", $filenames);
         $filePath = 'download/' . $id . '.txt';
         $fullPath = public_path($filePath);
@@ -270,16 +334,36 @@ class VoiceBackupController extends Controller
     public function destroy(Request $request)
     {
         $id = $request->get('id');
-        VoiceBackup::find($id)->delete();
-        return ['success' => true, 'message' => 'ลบรายการ Export VoiceRecord เรียบร้อยแล้ว'];
+        $voice = VoiceBackup::find($id);
+
+        if ($voice && $voice->export_status == 3) {
+            $exportFilePath = public_path('zip/' . $voice->export_filename);
+            if (file_exists($exportFilePath)) {
+                unlink($exportFilePath);
+            }
+
+            $voice->delete();
+
+            return ['success' => true, 'message' => 'ลบรายการ Export VoiceRecord เรียบร้อยแล้ว'];
+        }
+
+        return ['success' => false, 'message' => 'ไม่สามารถลบรายการ Export VoiceRecord ได้'];
     }
 
     public function destroy_all(Request $request)
     {
+        $arr_del = $request->get('table_records');
 
-        $arr_del  = $request->get('table_records');
-        for ($xx = 0; $xx < count($arr_del); $xx++) {
-            VoiceBackup::find($arr_del[$xx])->delete();
+        foreach ($arr_del as $recordId) {
+            $voice = VoiceBackup::find($recordId);
+
+            if ($voice && $voice->export_status == 3) {
+                $exportFilePath = public_path('zip/' . $voice->export_filename);
+
+                if (file_exists($exportFilePath) && unlink($exportFilePath)) {
+                    $voice->delete();
+                }
+            }
         }
 
         return redirect('/voicebackup')->with('success', 'ลบรายการ Export VoiceRecord เรียบร้อยแล้ว');

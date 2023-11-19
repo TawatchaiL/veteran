@@ -143,6 +143,18 @@ fs.readdir(folderPath, async (err, files) => {
                     }
                 }
 
+                archive.append(fs.createReadStream(path.join(folderPath, recids[0] + '.csv')), {
+                    name: path.join('zip', recids[0] + '.csv'),
+                });
+                await updateProgress(recids[0], 92);
+
+                fs.unlink(path.join(folderPath, recids[0] + '.csv'), (unlinkErr) => {
+                    if (unlinkErr) {
+                        console.error('Error deleting file:', unlinkErr);
+                    } else {
+                        console.log('File deleted:', fileName);
+                    }
+                });
                 // Delete the text file
                 fs.unlink(filePath, (unlinkErr) => {
                     if (unlinkErr) {
