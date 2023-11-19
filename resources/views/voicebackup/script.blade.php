@@ -253,11 +253,6 @@
         });
 
         $(document).on('click', '.btn-download', function() {
-            var confirmed = confirm("ยืนยันการทำรายการ ?");
-            if (!confirmed) {
-                return false; // Cancel the operation if not confirmed
-            }
-
             var rowid = $(this).data('rowid');
             if (!rowid) {
                 return false; // Cancel the operation if rowid is missing
