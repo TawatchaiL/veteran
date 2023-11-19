@@ -49,7 +49,7 @@
             changeYear: true,
             yearRange: '2023' + ':' + maxYear,
             dateFormat: 'yy-mm-dd',
-            timeFormat: "hh:mm:ss",
+            timeFormat: "HH:mm:ss",
             onSelect: function(date) {
                 $("#edit-date-of-birth").addClass('filled');
             }

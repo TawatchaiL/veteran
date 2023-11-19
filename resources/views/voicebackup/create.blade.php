@@ -76,7 +76,7 @@
                             <select style="width: 100%;" class="select2 select2_single form-control" id="AddAgent"
                                 name="agent" multiple="multiple">
                                 @can('voice-record-supervisor')
-                                    <option value="" selected>ทั้งหมด</option>
+                                    <option value="">ทั้งหมด</option>
                                 @endcan
                                 @foreach ($agent as $agen)
                                     @can('voice-record-supervisor')
