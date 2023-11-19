@@ -253,15 +253,20 @@
         });
 
         $(document).on('click', '.btn-download', function() {
-            if (!confirm("ยืนยันการทำรายการ ?")) return;
+            var confirmed = confirm("ยืนยันการทำรายการ ?");
+            if (!confirmed) {
+                return false; // Cancel the operation if not confirmed
+            }
 
-            var rowid = $(this).data('rowid')
-            if (!rowid) return;
-
+            var rowid = $(this).data('rowid');
+            if (!rowid) {
+                return false; // Cancel the operation if rowid is missing
+            }
 
             var url = '/zip/' + rowid;
+            console.log(url);
             window.open(url, '_blank');
-        })
+        });
 
         $(document).on('click', '.btn-delete', function() {
             if (!confirm("ยืนยันการทำรายการ ?")) return;
