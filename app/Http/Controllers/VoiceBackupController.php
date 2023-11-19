@@ -54,18 +54,23 @@ class VoiceBackupController extends Controller
                     $export_date = $row->export_start . " - " . $row->export_end;
                     return $export_date;
                 })
+                ->editColumn('export_src', function ($row) {
+                    if ($row->export_src !== '' && $row->export_src !== NULL) {
+                        return $row->export_src;
+                    }
+                    return 'All';
+                })
                 ->editColumn('export_dst', function ($row) use ($agentArray) {
                     if ($row->export_dst !== '' && $row->export_dst !== NULL) {
                         return $agentArray[$row->export_dst]['name'];
                     }
-                    return '';
+                    return 'All';
                 })
                 ->editColumn('export_ctype', function ($row) use ($ctype_text) {
-                    // Check if $row->export_ctype is set and within array bounds
                     if ($row->export_ctype !== '' && $row->export_ctype !== NULL) {
                         return $ctype_text[$row->export_ctype];
                     }
-                    return '';
+                    return 'All';
                 })
                 ->editColumn('status', function ($row) use ($state_text) {
                     $state = $state_text[$row->export_status];
