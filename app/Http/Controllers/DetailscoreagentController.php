@@ -47,15 +47,17 @@ class DetailscoreagentController extends Controller
                     $startDate = date("Y-m-d");
                     $endDate = date("Y-m-t", strtotime($startDate));  
         }
+        if(!empty($request->get('agent')) && $request->get('agent') != "0"){
+            $agentseachc = ' and call_center.agent_score.crm_id = ' . $request->input('agent') . '';
+        }else{
+            $agentseachc = '';
+        }
         $datas = DB::connection('remote_connection')
             ->table('call_center.agent_score')
             //->select('call_center.agent_score.score as score',  DB::raw('count(call_center.agent_score.score) as sumscore'))
             ->select('score',  DB::raw('count(id) as sumscore'))
-            ->whereRaw('call_center.agent_score.datetime between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"');
-            if(!empty($request->get('agent')) && $request->get('agent') != "0"){
-                $datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
-            }   
-            $datas->groupBy('score')
+            ->whereRaw('call_center.agent_score.datetime between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"'.$agentseachc)
+            ->groupBy('score')
             ->orderBy("score", "desc")
             ->get();
             if (!empty($request->get('rstatus'))) {
