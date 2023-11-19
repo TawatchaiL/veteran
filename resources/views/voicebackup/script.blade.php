@@ -197,45 +197,15 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
-            if ($('#customCheckbox1').is(":checked")) {
-                sstatus = 1;
-            } else {
-                sstatus = 0;
-            }
-
-            if ($('#sat').is(":checked")) {
-                sat = 1;
-            } else {
-                sat = 0;
-            }
-
-            if ($('#sun').is(":checked")) {
-                sun = 1;
-            } else {
-                sun = 0;
-            }
-
-            if ($('#misscall').is(":checked")) {
-                misscall = 1;
-            } else {
-                misscall = 0;
-            }
-
 
             $.ajax({
-                url: "{{ route('notify.store') }}",
+                url: "{{ route('voicebackup.store') }}",
                 method: 'post',
                 data: {
-                    group_name: $('#AddName').val(),
-                    group_start: $('#AddSDate').val(),
-                    group_end: $('#AddEDate').val(),
-                    group_extension: $('#AddExtension').val(),
-                    line_token: $('#AddLine').val(),
-                    email: $('#AddEmail').val(),
-                    sat: sat,
-                    sun: sun,
-                    misscall: misscall,
-                    status: sstatus,
+                    export_date: $('#AddSDate').val() + ' ' + $('#AddEDate').val(),
+                    src: $('#AddSrc').val(),
+                    dst: $('#AddAgent').val(),
+                    ctype: $('#AddCtype').val(),
                     _token: token,
                 },
                 success: function(result) {
@@ -255,7 +225,8 @@
                             timeOut: 5000
                         });
                         $('#Listview').DataTable().ajax.reload();
-                        $("#AddExtension").val(null).trigger("change")
+                        $("#AddAgent").val(null).trigger("change")
+                        $("#AddCtype").val(null).trigger("change")
                         $('.form').trigger('reset');
                         $('#CreateModal').modal('hide');
                     }
