@@ -47,6 +47,7 @@ class VoiceBackupController extends Controller
         $agens = User::orderBy('name', 'asc')->get();
         $agentArray = [];
 
+        $agentArray[0]['name'] = 'All';
         foreach ($agens as $agen) {
             $agentArray[$agen->id]['name'] = $agen->name;
         }
