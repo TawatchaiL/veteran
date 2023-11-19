@@ -49,11 +49,11 @@ class LoginstatusController extends Controller
         }
         $datas = DB::connection('remote_connection')
             ->table('call_center.audit')
-            ->select('id_agent','datetime_init', 'datetime_end')
+            ->select('crm_id','datetime_init', 'datetime_end')
             ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
             ->whereNull('id_break'); 
         if(!empty($request->get('agent')) && $request->get('agent') != "0"){
-            $datas->whereRaw('id_agent = "'. $request->input('agent') .'"');  
+            $datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
         }    
         $datas->orderBy("datetime_init", "asc")->get();
 
@@ -69,8 +69,8 @@ class LoginstatusController extends Controller
                     return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 })
                 ->addColumn('agent', function ($row) use ($agent_data){
-                    if (isset($agent_data[$row->id_agent])) {
-                        return $agent_data[$row->id_agent];
+                    if (isset($agent_data[$row->crm_id])) {
+                        return $agent_data[$row->crm_id];
                     } else {
                         return 'Agent not found';
                     }
