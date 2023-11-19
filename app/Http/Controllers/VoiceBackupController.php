@@ -165,7 +165,7 @@ class VoiceBackupController extends Controller
 
         $this->gent_export_list($vid->id, $startDate, $endDate, $request->get('src'), $request->get('dst'), $request->get('ctype'));
 
-        return response()->json(['success' => 'เพิ่มรายการ Export VoiceRecord เรียบร้อยแล้ว']);
+        return response()->json(['success' => 'เพิ่มรายการ Export VoiceRecord เรียบร้อยแล้ว <br> กรุณาเช็คในหน้า Voice Export']);
     }
 
     public function gent_export_list($id, $sdate, $edate, $telp, $agent, $ctype)
