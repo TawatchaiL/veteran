@@ -309,9 +309,6 @@ class VoiceBackupController extends Controller
         $csvfullPath = public_path($csvfilePath);
         file_put_contents($csvfullPath, $csvContent);
 
-        $csv_file = $csvfilePath . ',' . $id . '.csv';
-
-        $fileContent = array_merge($filenames, [$csv_file]);
         $fileContent = implode("\n", $filenames);
         $filePath = 'download/' . $id . '.txt';
         $fullPath = public_path($filePath);
