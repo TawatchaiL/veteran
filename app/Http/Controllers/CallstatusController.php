@@ -55,7 +55,7 @@ class CallstatusController extends Controller
         //    ->get();
         $datac = DB::connection('remote_connection')
             ->table('call_center.call_entry')
-            ->select('crm_id', DB::raw('count(crm_id) as agentcall'), DB::raw('SUM(if(status = "terminada",1,0)) as terminada') ,DB::raw('SEC_TO_TIME(ROUND(AVG(duration_wait), 0)) as avgwait'), DB::raw('SEC_TO_TIME(SUM(duration)) as duration') , DB::raw('SEC_TO_TIME(ROUND(AVG(duration), 0)) as avgduration'),'dataa.logintime','dataa.breaktime')
+            ->select('crm_id', DB::raw('count(crm_id) as agentcall'), DB::raw('SUM(if(status = "terminada",1,0)) as terminada') ,DB::raw('SEC_TO_TIME(ROUND(AVG(duration_wait), 0)) as avgwait'), DB::raw('SEC_TO_TIME(SUM(duration)) as duration') , DB::raw('SEC_TO_TIME(ROUND(AVG(duration), 0)) as avgduration'))
             ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59" and crm_id is not null')
             ->groupBy('crm_id');
             //->toSql();
@@ -71,6 +71,16 @@ class CallstatusController extends Controller
             ->leftJoinSub($dataa, 'dataa', function ($join) {
                 $join->on('call_entry.crm_id', '=', 'dataa.crmid');
             })
+            ->select(
+                'datac.crm_id',
+                'datac.agentcall',
+                'datac.terminada',
+                'datac.avgwait',
+                'datac.duration',
+                'datac.avgduration',
+                'dataa.logintime',
+                'dataa.breaktime'
+            )
             ->get();
 
         $agents = User::orderBy("id", "asc")->get();
