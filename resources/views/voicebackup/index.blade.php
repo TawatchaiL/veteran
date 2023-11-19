@@ -86,6 +86,7 @@
                                             <th>สถานะ</th>
                                             <th width="150px">Progress</th>
                                             <th width="180px"></th>
+                                            <th>More</th>
                                         </tr>
                                     </thead>
                                     <tbody>
