@@ -459,10 +459,6 @@
                     },
                     "customize": function(doc) { // ส่วนกำหนดเพิ่มเติม ส่วนนี้จะใช้จัดการกับ pdfmake
                         // กำหนด style หลัก
-                        doc.defaultStyle = {
-                            font: 'THSarabun',
-                            fontSize: 16
-                        };
                         doc.content.splice( 1, 0, {
                         margin: [ 0, 0, 0, 12 ],
                         alignment: 'center',
