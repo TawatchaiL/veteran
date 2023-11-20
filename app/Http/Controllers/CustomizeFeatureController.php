@@ -74,6 +74,7 @@ class CustomizeFeatureController extends Controller
 
         $config = [
             'name' => $request->get('name'),
+            'config' => $request->get('config'),
             'value' => $request->get('value'),
             'status' => $request->get('status'),
         ];

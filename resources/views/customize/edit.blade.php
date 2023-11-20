@@ -42,6 +42,19 @@
                         <div class="row">
                             <div class="col-xs-8 col-sm-8 col-md-8">
                                 <div class="form-group">
+                                    <strong><i class="fas fa-list-ol"></i> Customize Config Name:</strong>
+                                    {!! Form::text('econfig', null, [
+                                        'id' => 'EditConfig',
+                                        'placeholder' => 'Config',
+                                        'class' => 'form-control',
+                                        'readonly' => true,
+                                    ]) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-8 col-sm-8 col-md-8">
+                                <div class="form-group">
                                     <strong><i class="fas fa-list-ol"></i> Customize Value:</strong>
                                     {!! Form::text('eval', null, ['id' => 'EditVal', 'placeholder' => 'Value', 'class' => 'form-control']) !!}
                                 </div>

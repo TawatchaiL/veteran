@@ -55,6 +55,7 @@
                                     <tr>
                                         <th width="80px"><input type="checkbox" id="check-all" class="flat"></th>
                                         <th>Customize Name</th>
+                                        <th>Customize Config Name</th>
                                         <th>Customize Value</th>
                                         <th>สถานะ</th>
                                         <th width="120px"></th>
