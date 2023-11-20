@@ -56,7 +56,7 @@ class ReportBreakController extends Controller
         if(!empty($request->get('agent')) && $request->get('agent') != "0"){
             $datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
         }    
-        $datas->orderBy("datetime_init", "asc")->get();
+        $datas->orderBy("audit.id_break", "asc")->get();
 
         $agents = User::orderBy("id", "asc")->get();
         $agent_data = array();
