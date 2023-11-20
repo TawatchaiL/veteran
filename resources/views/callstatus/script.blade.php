@@ -472,7 +472,7 @@
                             fontSize: 16
                         };
                         // กำหนดความกว้างของ header แต่ละคอลัมน์หัวข้อ
-                        doc.content[1].table.widths = ['*', 100, 100, 100, 100];
+                        doc.content[1].table.widths = ['*', 80, 80, 80, 80, 80, 80];
                         doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
                         // Add cell borders
                         doc.content[1].table.layout = {
@@ -512,6 +512,12 @@
                             doc.content[1].table.body[i][3].alignment =
                                 'center'; // Align the second column to the right
                             doc.content[1].table.body[i][4].alignment =
+                                'center'; // Align the second column to the right
+                            doc.content[1].table.body[i][5].alignment =
+                                'center'; // Align the second column to the right
+                            doc.content[1].table.body[i][6].alignment =
+                                'center'; // Align the second column to the right
+                            doc.content[1].table.body[i][7].alignment =
                                 'center'; // Align the second column to the right
                             //doc.content[1].table.body[i][2].alignment =
                             //'center'; // Align the second column to the right
@@ -597,12 +603,12 @@
                     name: 'avgduration'
                 },
                 {
-                    data: 'login',
-                    name: 'login'
+                    data: 'logintime',
+                    name: 'logintime'
                 },
                 {
-                    data: 'pause',
-                    name: 'pause'
+                    data: 'breaktime',
+                    name: 'breaktime'
                 },
             ]
         });
