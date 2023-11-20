@@ -62,7 +62,7 @@ class CallstatusController extends Controller
             
         $dataa = DB::connection('remote_connection')
             ->table('call_center.audit')
-            ->select('crm_id as crmid', DB::raw('SEC_TO_TIME(SUM(TIME_TO_SEC(if(id_break is null,duration,0)))) as logintime'), DB::raw('SEC_TO_TIME(SUM(TIME_TO_SEC(if(id_break is not null,duration,0)))) as breaktime'))
+            ->select('crm_id as crmid', DB::raw('SEC_TO_TIME(ROUND(SUM(TIME_TO_SEC(if(id_break is null,duration,0))),0)) as logintime'), DB::raw('SEC_TO_TIME(ROUND(SUM(TIME_TO_SEC(if(id_break is not null,duration,0))),0)) as breaktime'))
             ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59" and crm_id is not null')
             ->groupBy('crm_id');
             //->get();
