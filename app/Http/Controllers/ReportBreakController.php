@@ -49,9 +49,10 @@ class ReportBreakController extends Controller
         }
         $datas = DB::connection('remote_connection')
             ->table('call_center.audit')
-            ->select('crm_id','datetime_init', 'datetime_end')
+            ->leftJoin('break', 'audit.id_break', '=', 'break.id')
+            ->select('audit.crm_id as crm_id', 'break.name as typebreak', 'audit.datetime_init as datetime_init', 'audit.datetime_end as datetime_end', DB::raw('SEC_TO_TIME(ROUND(SUM(TIME_TO_SEC(duration)),0)) as breaktime'))
             ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
-            ->whereNull('id_break'); 
+            ->whereNotNull('id_break'); 
         if(!empty($request->get('agent')) && $request->get('agent') != "0"){
             $datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
         }    

@@ -182,6 +182,7 @@
             'detailcaseinternalnumber',
             'detailcaseexternalnumber',
             'loginstatus',
+            'reportbreak',
             'sumtel',
             'callstatus',
             'misscall',
@@ -198,6 +199,7 @@
                 'detailcaseinternalnumber',
                 'detailcaseexternalnumber',
                 'loginstatus',
+                'reportbreak',
                 'sumtel',
                 'callstatus',
                 'misscall',
@@ -284,6 +286,16 @@
                     <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมสายเข้าแยกตาม Agent">
                         <span class="text-truncate d-block">
                             สถานะการเข้าสู่ระบบ
+                        </span>
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('reportbreak') }}" class="nav-link {{ Request::is('reportbreak') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ประวัติการหยุดรับสาย">
+                        <span class="text-truncate d-block">
+                            ประวัติการหยุดรับสาย
                         </span>
                     </p>
                 </a>

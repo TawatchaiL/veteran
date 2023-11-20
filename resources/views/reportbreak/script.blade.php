@@ -436,7 +436,7 @@
                 {
                     extend: 'excel',
                     text: 'Excel',
-                    title: 'สถานะการเข้าสู่ระบบ',
+                    title: 'ประวัติการหยุดรับสาย',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                     },
@@ -463,7 +463,7 @@
                     "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
                     "text": 'PDF', // ข้อความที่แสดง
                     "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
-                    "title": 'สถานะการเข้าสู่ระบบ',
+                    "title": 'ประวัติการหยุดรับสาย',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                     },
@@ -521,7 +521,7 @@
                 {
                     extend: 'print',
                     text: 'Print',
-                    title: 'สถานะการเข้าสู่ระบบ',
+                    title: 'ประวัติการหยุดรับสาย',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                         format: {
