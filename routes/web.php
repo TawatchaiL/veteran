@@ -122,7 +122,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/reportcaseoutbyhour', [App\Http\Controllers\ReportcaseoutbyhourController::class, 'index'])->name('reportcaseoutbyhour');
     Route::get('/reportsumcasebystatus', [App\Http\Controllers\ReportreportsumcasebystatusController::class, 'index'])->name('reportsumcasebystatus');
     Route::get('/reportsumcasebytranferstatus', [App\Http\Controllers\ReportreportsumcasebytranferstatusController::class, 'index'])->name('reportsumcasebytranferstatus');
-
+    Route::get('/reportbreak', [App\Http\Controllers\ReportBreakController::class, 'index'])->name('reportbreak');
     Route::get('/detailcaseinternalnumber', [App\Http\Controllers\DetailcaseinternalnumberController::class, 'index'])->name('detailcaseinternalnumber');
     Route::get('/detailcaseexternalnumber', [App\Http\Controllers\DetailcaseexternalnumberController::class, 'index'])->name('detailcaseexternalnumber');
     Route::get('/detailcases', [App\Http\Controllers\DetailcasesController::class, 'index'])->name('detailcases');
