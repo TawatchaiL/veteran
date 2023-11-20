@@ -89,6 +89,10 @@
                     name: 'name'
                 },
                 {
+                    data: 'config',
+                    name: 'config'
+                },
+                {
                     data: 'value',
                     name: 'value'
                 },
@@ -138,6 +142,7 @@
                 method: 'GET',
                 success: function(res) {
                     $('#EditName').val(res.data.name);
+                    $('#EditConfig').val(res.data.config);
                     $('#EditVal').val(res.data.value);
 
                     if (res.data.status == 1) {
@@ -174,6 +179,7 @@
                 method: 'PUT',
                 data: {
                     name: $('#EditName').val(),
+                    config: $('#EditConfig').val(),
                     value: $('#EditVal').val(),
                     status: esstatus,
                 },

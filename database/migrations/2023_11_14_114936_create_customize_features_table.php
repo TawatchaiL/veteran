@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::connection('remote_connection')->create('customize_features', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
+            $table->string('config')->nullable();
             $table->string('value')->nullable();
             $table->integer('status')->nullable();
             $table->timestamps();

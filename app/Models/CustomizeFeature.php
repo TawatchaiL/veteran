@@ -13,6 +13,6 @@ class CustomizeFeature extends Model
     protected $table = 'customize_features';
 
     protected $fillable = [
-        'name', 'value', 'status'
+        'name', 'config', 'value', 'status'
     ];
 }
