@@ -462,6 +462,14 @@
                             font: 'THSarabun',
                             fontSize: 16
                         };
+                        var imagePath = public_path('images/logo.png');
+
+                        doc.content.push({
+                            image: imagePath,
+                            width: 200,
+                            alignment: 'center',
+                            margin: [0, 10]
+                        });
                         // กำหนดความกว้างของ header แต่ละคอลัมน์หัวข้อ
                         doc.content[1].table.widths = [100, 100, 100, 100, '*'];
                         doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
