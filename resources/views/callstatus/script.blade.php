@@ -434,7 +434,7 @@
                 {
                     extend: 'excel',
                     text: 'Excel',
-                    title: 'รายละเอียดการประเมินความพึงพอใจ',
+                    title: 'สถานะการรับสาย',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                     },
@@ -461,7 +461,7 @@
                     "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
                     "text": 'PDF', // ข้อความที่แสดง
                     "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
-                    "title": 'รายละเอียดการประเมินความพึงพอใจ',
+                    "title": 'สถานะการรับสาย',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                     },
@@ -472,7 +472,7 @@
                             fontSize: 16
                         };
                         // กำหนดความกว้างของ header แต่ละคอลัมน์หัวข้อ
-                        doc.content[1].table.widths = [90, 90, 90, 90, 90, '*'];
+                        doc.content[1].table.widths = ['*', 80, 80, 80, 80, 80, 80];
                         doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
                         // Add cell borders
                         doc.content[1].table.layout = {
@@ -512,8 +512,12 @@
                             doc.content[1].table.body[i][3].alignment =
                                 'center'; // Align the second column to the right
                             doc.content[1].table.body[i][4].alignment =
-                                'center'; // Align the first column to the center
+                                'center'; // Align the second column to the right
                             doc.content[1].table.body[i][5].alignment =
+                                'center'; // Align the second column to the right
+                            doc.content[1].table.body[i][6].alignment =
+                                'center'; // Align the second column to the right
+                            doc.content[1].table.body[i][7].alignment =
                                 'center'; // Align the second column to the right
                             //doc.content[1].table.body[i][2].alignment =
                             //'center'; // Align the second column to the right
@@ -525,7 +529,7 @@
                 {
                     extend: 'print',
                     text: 'Print',
-                    title: 'รายละเอียดการประเมินความพึงพอใจ',
+                    title: 'สถานะการรับสาย',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                         format: {
