@@ -47,12 +47,7 @@ class CallstatusController extends Controller
                     $startDate = date("Y-m-d");
                     $endDate = date("Y-m-t", strtotime($startDate));  
         }
-        //$datas = DB::connection('remote_connection')
-        //    ->table('call_center.call_entry')
-        //    ->select('crm_id', DB::raw('count(crm_id) as agentcall'), DB::raw('SUM(if(status = "terminada",1,0)) as terminada') ,DB::raw('SEC_TO_TIME(ROUND(AVG(duration_wait), 0)) as avgwait'), DB::raw('SEC_TO_TIME(SUM(duration)) as duration') , DB::raw('SEC_TO_TIME(ROUND(AVG(duration), 0)) as avgduration'))
-        //    ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59" and crm_id is not null')
-        //    ->groupBy('crm_id')
-        //    ->get();
+        
         $datac = DB::connection('remote_connection')
             ->table('call_center.call_entry')
             ->select('crm_id', DB::raw('count(crm_id) as agentcall'), DB::raw('SUM(if(status = "terminada",1,0)) as terminada') ,DB::raw('SEC_TO_TIME(ROUND(AVG(duration_wait), 0)) as avgwait'), DB::raw('SEC_TO_TIME(SUM(duration)) as duration') , DB::raw('SEC_TO_TIME(ROUND(AVG(duration), 0)) as avgduration'))
