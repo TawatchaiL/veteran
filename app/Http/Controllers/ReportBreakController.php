@@ -79,7 +79,7 @@ class ReportBreakController extends Controller
                 ->rawColumns(['checkbox', 'action'])->toJson();
         }
         
-        return view('loginstatus.index')->with(['agents' => $agents]);
+        return view('reportbreak.index')->with(['agents' => $agents]);
     }
 
 }
