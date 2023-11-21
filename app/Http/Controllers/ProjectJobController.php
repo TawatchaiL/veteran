@@ -193,9 +193,10 @@ class ProjectJobController extends Controller
         $data = ProjectJob::find($id);
 
         if ($data && $data->job_status == 0) {
-            $dataFilePath = public_path('csv/' . $data->job_file);
+            ProjectJobNumber::where('project_job_id', $data->job_id)->delete();
+            $dataFilePath = public_path('csv/' . $data->job_file . '.csv');
             if (file_exists($dataFilePath)) {
-                unlink($dataFilePath . '.csv');
+                unlink($dataFilePath);
             }
 
             $data->delete();
@@ -203,7 +204,7 @@ class ProjectJobController extends Controller
             return ['success' => true, 'message' => 'ลบรายการ โทรออก เรียบร้อยแล้ว'];
         }
 
-        return ['success' => false, 'message' => 'ไม่สามารถลบรายการ โทรออก ได้'];
+        return ['errors' => true, 'message' => 'ไม่สามารถลบรายการ โทรออก ได้'];
     }
 
     public function destroy_all(Request $request)

@@ -257,8 +257,11 @@
                     _token: token
                 },
                 success: function(data) {
-                    console.log(data);
-                    if (data.success) {
+                    if (data.errors) {
+                        toastr.error(data.message, {
+                            timeOut: 5000
+                        });
+                    } else if (data.success) {
                         toastr.success(data.message, {
                             timeOut: 5000
                         });
