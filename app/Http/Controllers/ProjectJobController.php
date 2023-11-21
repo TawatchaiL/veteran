@@ -62,7 +62,14 @@ class ProjectJobController extends Controller
             )
                 ->join('project_job_numbers', 'project_jobs.job_id', '=', 'project_job_numbers.project_job_id')
                 //->whereRaw($ssql)
-                ->groupBy('project_jobs.job_id')
+                ->groupBy(
+                    'project_jobs.job_id',
+                    'project_jobs.job_code_id',
+                    'project_jobs.job_create_date',
+                    'project_jobs.job_admin',
+                    'project_jobs.job_status',
+                    'project_jobs.job_file'
+                )
                 ->orderByDesc('project_jobs.job_id')
                 //->limit(200)
                 ->get();
