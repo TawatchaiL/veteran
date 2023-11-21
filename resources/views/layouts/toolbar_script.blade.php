@@ -490,7 +490,6 @@
             id_break: bid,
         };
         sendAjaxRequest("{{ route('agent.break') }}", "POST", additionalData);
-        check_state();
     });
 
     //agent unbreak
@@ -504,7 +503,6 @@
         }).done(function(r) {
             if (r == true) {
                 sendAjaxRequest("{{ route('agent.unbreak') }}", "POST");
-                check_state();
             }
 
         });
@@ -522,7 +520,6 @@
         }).done(function(r) {
             if (r == true) {
                 sendAjaxRequest("{{ route('agent.unwarp') }}", "POST");
-                check_state();
             }
 
         });
