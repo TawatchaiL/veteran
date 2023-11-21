@@ -345,11 +345,11 @@
 @endcan
 @can('master-data-list')
     <li
-        class="nav-item {{ in_array(Request::route()->getName(), ['ivrreport', 'ivrreporttop10', 'detailscore', 'detailscoreagent'])
+        class="nav-item {{ in_array(Request::route()->getName(), ['ivrreport', 'ivrreporttop10', 'reportsumscoreagent', 'detailscore', 'detailscoreagent'])
             ? 'menu-open'
             : '' }}">
         <a href="#"
-            class="nav-link {{ in_array(Request::route()->getName(), ['ivrreport', 'ivrreporttop10', 'detailscore', 'detailscoreagent'])
+            class="nav-link {{ in_array(Request::route()->getName(), ['ivrreport', 'ivrreporttop10', 'reportsumscoreagent', 'detailscore', 'detailscoreagent'])
                 ? 'active'
                 : '' }}">
             <i class="fa-solid fa-print nav-icon"></i>
@@ -374,6 +374,17 @@
                     <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ivrreport">
                         <span class="text-truncate d-block">
                             IVR Report Top 10
+                        </span>
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('reportsumscoreagent') }}"
+                    class="nav-link {{ Request::is('reportsumscoreagent') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมการประเมินความพึงพอใจ 3 อันดับ ที่ได้คะแนนสูงสุด">
+                        <span class="text-truncate d-block">
+                            ผลรวมการประเมินความพึงพอใจ 3 อันดับ ที่ได้คะแนนสูงสุด
                         </span>
                     </p>
                 </a>
