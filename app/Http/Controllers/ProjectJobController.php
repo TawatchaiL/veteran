@@ -219,17 +219,20 @@ class ProjectJobController extends Controller
         $arr_del = $request->get('table_records');
 
         foreach ($arr_del as $recordId) {
-            $voice = ProjectJob::find($recordId);
+            $data = ProjectJob::find($recordId);
 
-            if ($voice && $voice->export_status == 3) {
-                $exportFilePath = public_path('zip/' . $voice->export_filename);
-
-                if (file_exists($exportFilePath) && unlink($exportFilePath)) {
-                    $voice->delete();
+            if ($data && $data->job_status == 0) {
+                ProjectJobNumber::where('project_job_id', $data->job_id)->delete();
+                $dataFilePath = public_path('csv/' . $data->job_file . '.csv');
+                if (file_exists($dataFilePath)) {
+                    unlink($dataFilePath);
                 }
+
+                $data->delete();
+
             }
         }
 
-        return redirect('/voicebackup')->with('success', 'ลบรายการ Export VoiceRecord เรียบร้อยแล้ว');
+        return redirect('/outbound')->with('success', 'ลบรายการ โทรออก เรียบร้อยแล้ว');
     }
 }
