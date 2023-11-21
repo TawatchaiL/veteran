@@ -208,7 +208,7 @@ class PBXController extends Controller
                 ->update(['crm_id' => $user->id]);
 
             $user->phone_status_id = 1;
-            $user->agent_id = $user->id;
+            //$user->agent_id = $user->id;
             $user->phone_status = "พร้อมรับสาย";
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
             $user->save();
