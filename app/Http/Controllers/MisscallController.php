@@ -49,22 +49,33 @@ class MisscallController extends Controller
         }
         $datas = DB::connection('remote_connection')
             ->table('call_center.call_entry')
-            ->select(DB::raw('DATE(datetime_init) as cdate'), DB::raw('TIME(datetime_init) as ctime'), 'callerid as telno')
-            ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59" AND status = "abandonada"');
+            ->select(DB::raw('DATE(datetime_init) as cdate'), DB::raw('TIME(datetime_init) as ctime'), 'callerid as telno', DB::raw('SEC_TO_TIME(duration_wait) as durationwait'))
+            ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59" AND status = "abandonada" AND  crm_id is not null');
         if(!empty($request->get('agent'))){
             $datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
         }    
         $datas->orderBy("datetime_init", "asc")
             ->get();
-
+        $agents = User::orderBy("id", "asc")->get();
         if ($request->ajax()) {
-
+            $agent_data = array();
+            foreach ($agents as $agent) {
+                $agent_data[$agent->id] = $agent->name;
+            }
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
-                })->rawColumns(['checkbox', 'action'])->toJson();
+                })
+                ->addColumn('agent', function ($row) use ($agent_data){
+                    if (isset($agent_data[$row->crm_id])) {
+                        return $agent_data[$row->crm_id];
+                    } else {
+                        return 'Agent not found';
+                    }
+                })
+                ->rawColumns(['checkbox', 'action'])->toJson();
         }
-        $agents = User::orderBy("id", "asc")->get();
+        
         return view('misscall.index');
     }
 

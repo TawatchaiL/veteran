@@ -427,7 +427,7 @@
             aaSorting: [
                 [0, "desc"]
             ],
-            iDisplayLength: 5,
+            iDisplayLength: 6,
             lengthMenu: [5, 10, 25, 50, 75, 100],
             stateSave: true,
             autoWidth: false,
@@ -511,6 +511,8 @@
                                 'center'; // Align the second column to the right
                                 doc.content[1].table.body[i][2].alignment =
                                 'center'; // Align the second column to the right
+                                doc.content[1].table.body[i][3].alignment =
+                                'center'; // Align the second column to the right
                             //doc.content[1].table.body[i][2].alignment =
                             //'center'; // Align the second column to the right
                             // Customize alignments for other columns as needed
@@ -581,6 +583,10 @@
                 {
                     data: 'telno',
                     name: 'telno'
+                },
+                {
+                    data: 'durationwait',
+                    name: 'durationwait'
                 },
             ]
         });
