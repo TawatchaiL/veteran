@@ -48,7 +48,7 @@ class DetailcaselogbyhnController extends Controller
                     $endDate = date("Y-m-t", strtotime($startDate));  
         }
 
-        if (!empty($request->get('seachtext'))) {
+        if (!empty($request->get('agent'))) {
             $agentseachc = ' and crm_case_comments.agent = ' . $request->input('agent') . '';
             $agentseachl = ' and crm_caseslogs.modifyagent = ' . $request->input('agent') . '';
         }else{
