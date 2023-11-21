@@ -473,6 +473,8 @@
                             fontSize: 16
                         };
                         doc.content.splice(0,1);
+                        doc.pageMargins = [20,60,20,30];
+						doc.styles.tableHeader.fontSize = 16;
                         doc['header']=(function() {
 							return {
 								columns: [
@@ -493,7 +495,7 @@
 										text: '10 อันดับเรื่องที่ติดต่อมากที่สุด'
 									}
 								],
-								margin:55
+								margin:20
 							}
 						});
                 }
