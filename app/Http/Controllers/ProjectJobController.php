@@ -102,7 +102,7 @@ class ProjectJobController extends Controller
             $fileExtension = $file->getClientOriginalExtension();
 
             if ($fileExtension !== 'csv') {
-                return "กรุณาอัพโหลดไฟล์ CSV";
+                return response()->json(['errors' => ['กรุณาอัพโหลดไฟล์ CSV']]);
             }
 
             $realn = str_replace(" ", "", pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME));
@@ -111,11 +111,11 @@ class ProjectJobController extends Controller
             $file->move(public_path('csv'), $remoteFilename);
 
             // Set file permissions
-            chmod(public_path("csv/$remoteFilename"), 0777);
+            //chmod(public_path("csv/$remoteFilename"), 0777);
 
             $NRow = ProjectJob::where('job_file', $realn)->count();
 
-            if ($NRow === 0) {
+            //if ($NRow === 0) {
                 $datea = date("YmdHis");
                 $cdate = date("Y-m-d H:i:s");
 
@@ -154,7 +154,7 @@ class ProjectJobController extends Controller
                 }
 
                 fclose($objCSV);
-            }
+            //} 
 
             return response()->json(['success' => 'เพิ่มรายการ โทรออกเรียบร้อยแล้ว']);
         }
