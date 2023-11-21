@@ -46,7 +46,7 @@ class ProjectJobController extends Controller
 
         if ($request->ajax()) {
 
-            $datas = ProjectJob::orderBy("id", "desc")->get();
+            $datas = ProjectJob::orderBy("job_id", "desc")->get();
             $state_text = ['กำลังทำงาน', 'หยุดชั่วคราว'];
 
             return datatables()->of($datas)
