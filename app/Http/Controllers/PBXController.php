@@ -296,8 +296,7 @@ class PBXController extends Controller
         $user = Auth::user();
 
         if ($user) {
-
-            dd($user);
+            
 
             $ret = $this->issable->agent_break($user->phone, $request->get('id_break'));
 
