@@ -203,7 +203,7 @@ class ProjectJobController extends Controller
             return ['success' => true, 'message' => 'ลบรายการ โทรออก เรียบร้อยแล้ว'];
         }
 
-        return ['errors' => false, 'message' => 'ไม่สามารถลบรายการ โทรออก ได้'];
+        return ['errors' => true, 'message' => 'ไม่สามารถลบรายการ โทรออก ได้'];
     }
 
     public function destroy_all(Request $request)
