@@ -113,6 +113,7 @@
                                             <th>Agent ที่รับสาย</th>
                                             <th>Login</th>
                                             <th>Logoff</th>
+                                            <th>เวลา</th>
                                         </tr>
                                     </thead>
                                     <tbody>
