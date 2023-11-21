@@ -241,8 +241,8 @@
 
             $.ajax({
                 //type: "POST",
-                method: 'POST',
-                url: "outbound/edit/",
+                url: "{{ route('outbound.edit') }}",
+                method: 'post',
                 data: {
                     id: rowid,
                     _token: token
