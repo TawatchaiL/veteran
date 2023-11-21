@@ -193,9 +193,10 @@ class ProjectJobController extends Controller
         $data = ProjectJob::find($id);
 
         if ($data && $data->job_status == 0) {
-            $dataFilePath = public_path('csv/' . $data->job_file);
+            ProjectJobNumber::where('project_job_id', $data->job_id)->delete();
+            $dataFilePath = public_path('csv/' . $data->job_file . '.csv');
             if (file_exists($dataFilePath)) {
-                unlink($dataFilePath . '.csv');
+                unlink($dataFilePath);
             }
 
             $data->delete();
