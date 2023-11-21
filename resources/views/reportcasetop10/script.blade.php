@@ -485,19 +485,22 @@
 									{
 										alignment: 'left',
 										italics: true,
-										text: 'dataTables',
+										text: '10 อันดับเรื่องที่ติดต่อมากที่สุด',
 										fontSize: 18,
 										margin: [50,0]
 									},
-									{
-										alignment: 'right',
-										fontSize: 14,
-										text: '10 อันดับเรื่องที่ติดต่อมากที่สุด'
-									}
 								],
 								margin:20
 							}
 						});
+                        var objLayout = {};
+						objLayout['hLineWidth'] = function(i) { return .5; };
+						objLayout['vLineWidth'] = function(i) { return .5; };
+						objLayout['hLineColor'] = function(i) { return '#aaa'; };
+						objLayout['vLineColor'] = function(i) { return '#aaa'; };
+						objLayout['paddingLeft'] = function(i) { return 4; };
+						objLayout['paddingRight'] = function(i) { return 4; };
+						doc.content[0].layout = objLayout;
                 }
                 },
                 {
