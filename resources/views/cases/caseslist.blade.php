@@ -30,7 +30,8 @@
                         <td>{{ $caselists->created_at }}</td>
                         <td width="140px">
                             <button type="button" data-cases_id="{{ $caselists->id }}" data-tabid="{{ $cardid }}"
-                                class="form-control btn btn-success btn-sm casedetailP-button">รายละเอียด</button>
+                                class="form-control btn btn-success btn-sm casedetailP-button"><i
+                                    class="fas fa-search"></i> รายละเอียด</button>
                         </td>
                     </tr>
                 @endforeach
