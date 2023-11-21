@@ -13,7 +13,7 @@ class Project_job_number extends Model
 
     protected $table = 'project_job_numbers';
 
-    //protected $primaryKey = 'job_number_id';
+    protected $primaryKey = 'job_number_id';
 
     protected $fillable = [
         'cdr_uniqueid',
