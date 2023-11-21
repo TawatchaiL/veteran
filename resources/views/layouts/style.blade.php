@@ -312,14 +312,14 @@
         max-width: 100%;
     }
 
-    aside.sidebar .single {
+    aside.sidebarv .single {
         padding: 30px 15px;
         margin-top: 40px;
         background: #fcfcfc;
         border: 1px solid #f0f0f0;
     }
 
-    aside.sidebar .single h3.side-title {
+    aside.sidebarv .single h3.side-title {
         margin: 0;
         margin-bottom: 10px;
         padding: 0;
@@ -328,7 +328,7 @@
         text-transform: uppercase;
     }
 
-    aside.sidebar .single h3.side-title:after {
+    aside.sidebarv .single h3.side-title:after {
         content: '';
         width: 60px;
         height: 1px;
