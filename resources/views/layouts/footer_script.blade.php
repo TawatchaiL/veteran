@@ -185,6 +185,10 @@
         //$('#ToolbarModal').modal('show');
         $(document).on('click', '#ToolbarButton, #user_button, #hold_tab_list, .hold_tab_a', function(e) {
             e.preventDefault();
+            $('.alert-danger').html('');
+            $('.alert-danger').hide();
+            $('.alert-success').html('');
+            $('.alert-success').hide();
             $('#ToolbarModal').modal('show');
         });
 
