@@ -58,7 +58,7 @@ class ProjectJobController extends Controller
                 DB::raw('SUM(CASE WHEN project_job_numbers.call_status = 1 THEN 1 ELSE 0 END) AS a_call'),
                 DB::raw('SUM(CASE WHEN project_job_numbers.call_status = 0 THEN 1 ELSE 0 END) AS an_call'),
                 DB::raw('SUM(CASE WHEN project_job_numbers.dial_status = 1 THEN 1 ELSE 0 END) AS call_success'),
-                DB::raw('SUM(CASE WHEN project_job_numbers.dial_status = 2 OR project_job_number.dial_status = 3 OR project_job_number.dial_status = 4 OR project_job_number.dial_status = 0 THEN 1 ELSE 0 END) AS call_failed'),
+                DB::raw('SUM(CASE WHEN project_job_numbers.dial_status = 2 OR project_job_numbers.dial_status = 3 OR project_job_numbers.dial_status = 4 OR project_job_numbers.dial_status = 0 THEN 1 ELSE 0 END) AS call_failed'),
             )
                 ->join('project_job_numbers', 'project_jobs.job_id', '=', 'project_job_numbers.project_job_id')
                 //->whereRaw($ssql)
