@@ -57,6 +57,10 @@ class ProjectJobController extends Controller
                     $state = $state_text[$row->job_status];
                     return $state;
                 })
+                ->editColumn('job_admin', function ($row) use ($agentArray) {
+                    $state = $agentArray[$row->job_admin]['name'];
+                    return $state;
+                })
                 ->editColumn('job_process', function ($row) {
                     $progress = ' <div class="progress progress-sm active">
                     <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="' . $row->job_process . '" aria-valuemin="0" aria-valuemax="100" style="width: ' . $row->export_progress . '%">
@@ -133,7 +137,7 @@ class ProjectJobController extends Controller
 
             $projectJob->save();
 
-            $lastId = $projectJob->id;
+            $lastId = $projectJob->job_id;
 
             $objCSV = fopen(public_path("csv/$remoteFilename"), "r");
 

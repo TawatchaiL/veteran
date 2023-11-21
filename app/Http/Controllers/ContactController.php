@@ -200,9 +200,9 @@ class ContactController extends Controller
         $contactcount = count($datac);
         if ($contactcount > 0) {
             $cases = DB::table('crm_cases')
-            ->where('contact_id', '=', $datac[0]->id)
-            ->orderBy('created_at', 'desc')
-            ->get();
+                ->where('contact_id', '=', $datac[0]->id)
+                ->orderBy('created_at', 'desc')
+                ->get();
             $emer = DB::table('crm_phone_emergencies')
                 ->where('contact_id', '=', $datac[0]->id)
                 ->get();
@@ -229,7 +229,7 @@ class ContactController extends Controller
                 $query->orWhere('status', '=', '0')
                     ->orWhere('status', '=', '1');
             })->get();
-        
+
         $html = '';
         $tab_link = '';
         $tab_content = '';
@@ -925,9 +925,9 @@ class ContactController extends Controller
             CrmPhoneEmergencyLog::create($emerlog);
             CrmPhoneEmergency::where('contact_id', $emer->id)->delete();
         }
-        
+
         $casesdelete = CrmCase::where('contact_id', $id)->get();
-    
+
         foreach ($casesdelete as $cases) {
             $caseslog = [
                 'id' => $cases->id,
@@ -1001,13 +1001,13 @@ class ContactController extends Controller
             ];
             if ($contact->birthday == "0000-00-00") {
                 $contactlog['birthday'] = null;
-            }   
+            }
             CrmContactLog::create($contactlog);
-    
+
             $contact->delete();
-    
+
             $emerdelete = CrmPhoneEmergency::where('contact_id', $contact->id)->get();
-    
+
             foreach ($emerdelete as $emer) {
                 $emerlog = [
                     'id' => $emer->id,
@@ -1026,7 +1026,7 @@ class ContactController extends Controller
             }
 
             $casesdelete = CrmCase::where('contact_id', $contact->id)->get();
-    
+
             foreach ($casesdelete as $cases) {
                 $caseslog = [
                     'id' => $cases->id,
@@ -1059,8 +1059,8 @@ class ContactController extends Controller
                 CrmCase::where('contact_id', $cases->id)->delete();
             }
 
-        //CrmContact::find($arr_del[$xx])->delete();
-        //DB::table('crm_phone_emergencies')->where('contact_id',  $arr_del[$xx])->delete();
+            //CrmContact::find($arr_del[$xx])->delete();
+            //DB::table('crm_phone_emergencies')->where('contact_id',  $arr_del[$xx])->delete();
         }
 
         return redirect('/contacts')->with('success', 'ลบ ผู้ติดต่อ เรียบร้อยแล้ว');
