@@ -470,7 +470,6 @@
                         doc.content.splice(0,1);
                         doc.pageMargins = [30,70,200,300];
 						doc.styles.tableHeader.fontSize = 16;
-                        doc.content.table.widths = [400, '*'];
                         doc['header']=(function() {
 							return {
 								columns: [
