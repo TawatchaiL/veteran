@@ -468,9 +468,8 @@
                             fontSize: 16
                         };
                         doc.content.splice(0,1);
-                        doc.pageMargins = [30,75,200,300];
+                        doc.pageMargins = [30,75,20,30];
 						doc.styles.tableHeader.fontSize = 16;
-                        doc.content.table.width = [400, '*'];
                         doc['header']=(function() {
 							return {
 								columns: [
