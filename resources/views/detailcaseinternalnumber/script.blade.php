@@ -370,6 +370,7 @@
         $('#btnreset').click(function(e) {
             datereset();
             daterange();
+            $('#Agent').val("0");
             $('#Listview').DataTable().ajax.reload();
         });
 
@@ -393,6 +394,7 @@
             ajax: {
                 data: function(d) {
                     d.sdate = $('#reservation').val();
+                    d.agent = $('#Agent').val();
                 }
             },
             serverSide: true,
@@ -566,6 +568,14 @@
                     className: 'no-print'
                 },
                 {
+                    data: 'agent',
+                    name: 'agent'
+                },
+                {
+                    data: 'telno',
+                    name: 'telno'
+                },
+                {
                     data: 'cdate',
                     name: 'cdate'
                 },
@@ -574,14 +584,21 @@
                     name: 'ctime'
                 },
                 {
-                    data: 'telno',
-                    name: 'telno'
+                    data: 'duration',
+                    name: 'duration'
                 },
                 {
-                    data: 'agent',
-                    name: 'agent'
+                    data: 'duration_wait',
+                    name: 'duration_wait'
                 },
-            ]
+            ],
+            "footerCallback": function(row, data, start, end, display) {
+                var api = this.api();
+                var recordsTotal = api.page.info().recordsTotal;
+
+                // Update the footer cell with the total record count.
+                $(api.column(4).footer()).html(recordsTotal + ' สาย');
+            }
         });
 
 
