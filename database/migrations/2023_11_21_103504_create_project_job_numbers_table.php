@@ -28,7 +28,7 @@ return new class extends Migration
             $table->dateTime('call_date')->nullable();
             $table->string('sound', 100)->nullable();
 
-            $table->primary('job_number_id');
+            //$table->primary('job_number_id');
             $table->foreign('project_job_id')->references('job_id')->on('project_jobs')->nullable();
         });
     }

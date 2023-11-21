@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('job_process')->nullable();
             $table->timestamps();
 
-            $table->primary('job_id');
+            //$table->primary('job_id');
         });
     }
 
