@@ -89,45 +89,46 @@
             </div>
         </aside>
     </div>
+    <div class="col-md-6">
+        <aside class="sidebarr">
+            <div class="single contact-info">
+                <h4 class="side-title">สถานะ เรื่องที่ติดต่อ</h4>
+                <ul class="list-unstyled">
+    
+                    <li>
+                        <div class="icon"><i class="fas fa-shuffle"></i></div>
+                        <div class="info">
+                            <p><strong>สถานะการโอนสาย</strong> <br>&nbsp;{{ $cases->tranferstatus }}</p>
+                        </div>
+                    </li>
+    
+    
+                </ul>
+            </div>
+        </aside>
+    </div>
+    <div class="col-md-6">
+        <aside class="sidebarr">
+            <div class="single contact-info">
+                <h4 class="side-title">&nbsp;</h4>
+                <ul class="list-unstyled">
+    
+                    <li>
+                        <div class="icon"><i class="fas fa-arrows-rotate"></i></div>
+                        <div class="info">
+                            <p><strong>สถานะการเคส</strong> <br>&nbsp;{{ $cases->casestatus }}</p>
+                        </div>
+                    </li>
+    
+    
+                </ul>
+            </div>
+        </aside>
+    </div>
 </div>
 
 
-<div class="col-md-6">
-    <aside class="sidebarr">
-        <div class="single contact-info">
-            <h4 class="side-title">รายละเอียด เรื่องที่ติดต่อ</h4>
-            <ul class="list-unstyled">
 
-                <li>
-                    <div class="icon"><i class="fas fa-shuffle"></i></div>
-                    <div class="info">
-                        <p><strong>สถานะการโอนสาย</strong> <br>&nbsp;{{ $cases->tranferstatus }}</p>
-                    </div>
-                </li>
-
-
-            </ul>
-        </div>
-    </aside>
-</div>
-<div class="col-md-6">
-    <aside class="sidebarr">
-        <div class="single contact-info">
-            <h4 class="side-title">รายละเอียด เรื่องที่ติดต่อ</h4>
-            <ul class="list-unstyled">
-
-                <li>
-                    <div class="icon"><i class="fas fa-arrows-rotate"></i></div>
-                    <div class="info">
-                        <p><strong>สถานะการเคส</strong> <br>&nbsp;{{ $cases->casestatus }}</p>
-                    </div>
-                </li>
-
-
-            </ul>
-        </div>
-    </aside>
-</div>
 
 <div class="row justify-content-end">
     <button type="button" data-contactid="{{ $cases->contact_id }}" data-tabid="{{ $cardid }}"
