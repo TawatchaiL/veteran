@@ -297,6 +297,8 @@ class PBXController extends Controller
 
         if ($user) {
 
+            dd($user);
+
             $ret = $this->issable->agent_break($user->phone, $request->get('id_break'));
 
             DB::connection('remote_connection')
