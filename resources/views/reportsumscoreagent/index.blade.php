@@ -210,5 +210,5 @@
 @endsection
 
 @section('script')
-    @include('detailscoreagent.script')
+    @include('reportsumscoreagent.script')
 @endsection
