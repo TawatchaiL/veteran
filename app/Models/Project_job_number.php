@@ -18,8 +18,6 @@ class Project_job_number extends Model
     protected $fillable = [
         'cdr_uniqueid',
         'project_job_id',
-        'project_name',
-        'callcode',
         'create_date',
         'call_number',
         'dial_agent',

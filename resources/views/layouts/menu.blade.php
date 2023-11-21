@@ -453,6 +453,7 @@
 @can('pbx-tool')
     <li
         class="nav-item {{ in_array(Request::route()->getName(), [
+            'outbound',
             'callsurvey',
             'holiday',
             'billing',
@@ -465,6 +466,7 @@
             : '' }}">
         <a href="#"
             class="nav-link {{ in_array(Request::route()->getName(), [
+                'outbound',
                 'callsurvey',
                 'holiday',
                 'billing',
@@ -480,6 +482,12 @@
             <i class="fas fa-angle-left right"></i>
         </a>
         <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="{{ route('outbound') }}" class="nav-link {{ Request::is('outbound') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p>Import รายการโทรออก</p>
+                </a>
+            </li>
             <li class="nav-item">
                 <a href="{{ route('voicebackup') }}" class="nav-link {{ Request::is('voicebackup') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>

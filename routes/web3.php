@@ -93,5 +93,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/voicebackup/store', [App\Http\Controllers\VoiceBackupController::class, 'store'])->name('voicebackup.store');
     Route::delete('/voicebackup/destroy', [App\Http\Controllers\VoiceBackupController::class, 'destroy'])->name('voicebackup.destroy');
     Route::post('/voicebackup/destroy_all', [App\Http\Controllers\VoiceBackupController::class, 'destroy_all'])->name('voicebackup.destroy_all');
+
+    Route::get('/outbound', [App\Http\Controllers\ProjectJobController::class, 'index'])->name('outbound');
+    Route::post('/outbound/store', [App\Http\Controllers\ProjectJobController::class, 'store'])->name('outbound.store');
+    Route::delete('/outbound/destroy', [App\Http\Controllers\ProjectJobController::class, 'destroy'])->name('outbound.destroy');
+    Route::post('/outbound/destroy_all', [App\Http\Controllers\ProjectJobController::class, 'destroy_all'])->name('outbound.destroy_all');
 });
 
