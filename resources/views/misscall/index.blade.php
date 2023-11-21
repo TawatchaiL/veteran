@@ -32,6 +32,19 @@
                 
                                             </div>
                                         </div>
+                                        <div class="col-xs-2 col-sm-2 col-md-2">
+                                            <div class="form-group">
+                                                <strong><i class="fa-regular fa-comment-dots"></i>
+                                                    Agent:</strong>
+                                                <select style="width: 100%;" class="select2 form-control" id="Agent"
+                                                    name="Agent">
+                                                    <option value="0" selected>ทั้งหมด</option>
+                                                    @foreach($agents as $agentss)
+                                                        <option value="{{ $agentss->id }}">{{ $agentss->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2 align-self-end">
                                         <div class="form-group">
                                             <button type="button" class="btn btn-success btnsearch" id="btnsearch">

@@ -56,7 +56,9 @@ class MisscallController extends Controller
         }    
         $datas->orderBy("datetime_init", "asc")
             ->get();
+
         $agents = User::orderBy("id", "asc")->get();
+
         if ($request->ajax()) {
             $agent_data = array();
             foreach ($agents as $agent) {
@@ -76,7 +78,7 @@ class MisscallController extends Controller
                 ->rawColumns(['checkbox', 'action'])->toJson();
         }
         
-        return view('misscall.index');
+        return view('misscall.index')->with(['agents' => $agents]);
     }
 
 }
