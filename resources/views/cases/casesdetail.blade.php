@@ -12,18 +12,24 @@
                                     <p>HN <br>{{ $datact->hn }}</p>
                                 </div>
                             </li>
-        
+
                             <li>
                                 <div class="icon"><i class="fa fa-phone"></i></div>
                                 <div class="info">
-                                    <p>098-765-4321<br>123-456-7890</p>
+                                    <p>ประเภทเคส <br>{{ $cases->casetype1 }}</p>
                                 </div>
                             </li>
-        
+
                             <li>
                                 <div class="icon"><i class="fa fa-envelope"></i></div>
                                 <div class="info">
-                                    <p>info@example.com<br>sales@yourdomain.com</p>
+                                    <p>รายละเอียดเคสย่อย<br>{{ $cases->casetype3 }}</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon"><i class="fa fa-envelope"></i></div>
+                                <div class="info">
+                                    <p>รายละเอียดเคส เพิ่มเติม 2<br>{{ $cases->casetype5 }}</p>
                                 </div>
                             </li>
                         </ul>
@@ -33,26 +39,33 @@
             <div class="col-md-6">
                 <aside class="sidebarr">
                     <div class="single contact-info">
-                        <h4 class="side-title">รายละเอียด เรื่องที่ติดต่อ</h4>
+                        <h4 class="side-title"></h4>
                         <ul class="list-unstyled">
                             <li>
                                 <div class="icon"><i class="fa fa-map-marker"></i></div>
                                 <div class="info">
-                                    <p>HN <br>{{ $datact->hn }}</p>
+                                    <p>ชื่อ-สกุล <br>{{ $datact->tname }}{{ $datact->fname }}
+                                        {{ $datact->lname }}</p>
                                 </div>
                             </li>
-        
+
                             <li>
                                 <div class="icon"><i class="fa fa-phone"></i></div>
                                 <div class="info">
-                                    <p>098-765-4321<br>123-456-7890</p>
+                                    <p>รายละเอียดเคส<br>{{ $cases->casetype2 }}</p>
                                 </div>
                             </li>
-        
+
                             <li>
                                 <div class="icon"><i class="fa fa-envelope"></i></div>
                                 <div class="info">
-                                    <p>info@example.com<br>sales@yourdomain.com</p>
+                                    <p>รายละเอียดเคส เพิ่มเติม 1<br>{{ $cases->casetype4 }}</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon"><i class="fa fa-envelope"></i></div>
+                                <div class="info">
+                                    <p>รายละเอียดเคส เพิ่มเติม 3<br>{{ $cases->casetype6 }}</p>
                                 </div>
                             </li>
                         </ul>
@@ -62,38 +75,37 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <strong><i class="fas fa-code"></i> HN : 
+                <strong><i class="fas fa-code"></i> HN :
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <strong><i class="fas fa-user-tie"></i> ชื่อ-สกุล : </strong>{{ $datact->tname }}{{ $datact->fname }}
-                {{ $datact->lname }}
+                <strong><i class="fas fa-user-tie"></i> : </strong>
             </div>
         </div>
 
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <strong><i class="fa-regular fa-message"></i> ประเภทเคส : </strong>{{ $cases->casetype1 }}
+                <strong><i class="fa-regular fa-message"></i> : </strong>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <strong><i class="fa-regular fa-message"></i> รายละเอียดเคส : </strong>{{ $cases->casetype2 }}
+                <strong><i class="fa-regular fa-message"></i>  : </strong>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <strong><i class="fa-regular fa-message"></i> รายละเอียดเคสย่อย : </strong>{{ $cases->casetype3 }}
+                <strong><i class="fa-regular fa-message"></i>  : </strong>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <strong><i class="fa-regular fa-message"></i> รายละเอียดเคส เพิ่มเติม 1 :
-                </strong>{{ $cases->casetype4 }}
+                <strong><i class="fa-regular fa-message"></i>  :
+                </strong>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <strong><i class="fa-regular fa-message"></i> รายละเอียดเคส เพิ่มเติม 2 :
-                </strong>{{ $cases->casetype5 }}
+                </strong>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <strong><i class="fa-regular fa-message"></i> รายละเอียดเคส เพิ่มเติม 3 :
+                <strong><i class="fa-regular fa-message"></i>  :
                 </strong>{{ $cases->casetype6 }}
             </div>
         </div>
@@ -126,6 +138,3 @@
         </div>
     </div>
 </div>
-
-
-
