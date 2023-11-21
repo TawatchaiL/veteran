@@ -103,49 +103,78 @@
                                         res.datax.datac.fname +
                                         ' ' + res.datax.datac
                                         .lname + '</h3>');
-                                    $('#contractid' + cardId).val(res.datax.datac.id);
+                                    $('#contractid' + cardId).val(res.datax
+                                        .datac.id);
                                     $('#hnp' + cardId).val(res.datax.datac.hn);
                                     //$('#adddatep' + cardId).val(res.datax.datac.adddate);
-                                        var arrayDate=res.datax.datac.adddate.split("-");
-                                        arrayDate[0]=parseInt(arrayDate[0])+543;
-                                        $('#adddatep' + cardId).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
+                                    var arrayDate = res.datax.datac.adddate
+                                        .split("-");
+                                    arrayDate[0] = parseInt(arrayDate[0]) + 543;
+                                    $('#adddatep' + cardId).val(arrayDate[0] +
+                                        "-" + arrayDate[1] + "-" +
+                                        arrayDate[2]);
 
-                                    $('#tnamep' + cardId).val(res.datax.datac.tname);
-                                    $('#fnamep' + cardId).val(res.datax.datac.fname);
-                                    $('#lnamep' + cardId).val(res.datax.datac.lname);
-                                    $('#sexp' + cardId).val(res.datax.datac.sex);
+                                    $('#tnamep' + cardId).val(res.datax.datac
+                                        .tname);
+                                    $('#fnamep' + cardId).val(res.datax.datac
+                                        .fname);
+                                    $('#lnamep' + cardId).val(res.datax.datac
+                                        .lname);
+                                    $('#sexp' + cardId).val(res.datax.datac
+                                    .sex);
 
                                     //$('#birthdayp' + cardId).val(res.datax.datac.birthday);
-                                    var arrayDate=res.datax.datac.birthday.split("-");
-                                        arrayDate[0]=parseInt(arrayDate[0])+543;
-                                        $('#birthdayp' + cardId).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
-                                    $('#agep' + cardId).val(res.datax.datac.age);
-                                    $('#bloodgroupp' + cardId).val(res.datax.datac.bloodgroup);
-                                    $('#homenop' + cardId).val(res.datax.datac.homeno);
-                                    $('#moop' + cardId).val(res.datax.datac.moo);
-                                    $('#soip' + cardId).val(res.datax.datac.soi);
-                                    $('#roadp' + cardId).val(res.datax.datac.road);
-                                    $('#cityp' + cardId).val(res.datax.datac.city);
+                                    var arrayDate = res.datax.datac.birthday
+                                        .split("-");
+                                    arrayDate[0] = parseInt(arrayDate[0]) + 543;
+                                    $('#birthdayp' + cardId).val(arrayDate[0] +
+                                        "-" + arrayDate[1] + "-" +
+                                        arrayDate[2]);
+                                    $('#agep' + cardId).val(res.datax.datac
+                                    .age);
+                                    $('#bloodgroupp' + cardId).val(res.datax
+                                        .datac.bloodgroup);
+                                    $('#homenop' + cardId).val(res.datax.datac
+                                        .homeno);
+                                    $('#moop' + cardId).val(res.datax.datac
+                                    .moo);
+                                    $('#soip' + cardId).val(res.datax.datac
+                                    .soi);
+                                    $('#roadp' + cardId).val(res.datax.datac
+                                        .road);
+                                    $('#cityp' + cardId).val(res.datax.datac
+                                        .city);
                                     $('#cityp' + cardId).change();
                                     setTimeout(function() {
-                                        $('#districtp' + cardId).val(res.datax.datac.district);
+                                        $('#districtp' + cardId).val(res
+                                            .datax.datac.district);
                                         $('#districtp' + cardId)
                                             .change();
                                         setTimeout(function() {
-                                            $('#subdistrictp' + cardId).val(res.datax.datac.subdistrict);
+                                            $('#subdistrictp' +
+                                                cardId).val(
+                                                res.datax
+                                                .datac
+                                                .subdistrict
+                                                );
                                         }, 500)
                                     }, 500)
-                                    $('#postcodep' + cardId).val(res.datax.datac.postcode);
-                                    $('#telhomep' + cardId).val(res.datax.datac.telhome);
-                                    $('#phonenop' + cardId).val(res.datax.datac.phoneno);
-                                    $('#worknop' + cardId).val(res.datax.datac.workno);
+                                    $('#postcodep' + cardId).val(res.datax.datac
+                                        .postcode);
+                                    $('#telhomep' + cardId).val(res.datax.datac
+                                        .telhome);
+                                    $('#phonenop' + cardId).val(res.datax.datac
+                                        .phoneno);
+                                    $('#worknop' + cardId).val(res.datax.datac
+                                        .workno);
 
                                     var tbody = document.querySelector(
                                         '#myTbl3p' + cardId + ' tbody');
                                     while (tbody.firstChild) {
                                         tbody.removeChild(tbody.firstChild);
                                     }
-                                    $.each(res.datax.emer, function(index, value) {
+                                    $.each(res.datax.emer, function(index,
+                                        value) {
                                         $('#myTbl3p' + cardId +
                                                 ' tbody')
                                             .append($('<tr>')
@@ -155,13 +184,21 @@
                                                     .append(
                                                         '<div class="col-md-12 col-sm-12 col-xs-12"><input type="hidden" value="' +
                                                         value.id +
-                                                        '" name="emertypep' + cardId +
-                                                        '[]" id="emertypep' + cardId +
-                                                        '"><input type="text" id="emergencynamep' + cardId +
-                                                        '" name="emergencynamep' + cardId +
-                                                        '[]" class="form-control has-feedback-left" value="' + value.emergencyname +
+                                                        '" name="emertypep' +
+                                                        cardId +
+                                                        '[]" id="emertypep' +
+                                                        cardId +
+                                                        '"><input type="text" id="emergencynamep' +
+                                                        cardId +
+                                                        '" name="emergencynamep' +
+                                                        cardId +
+                                                        '[]" class="form-control has-feedback-left" value="' +
+                                                        value
+                                                        .emergencyname +
                                                         '" required="required"></div>'
-                                                    )).append($('<td width="10%">')
+                                                    )).append($(
+                                                        '<td width="10%">'
+                                                        )
                                                     .append(
                                                         '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerrelation' +
                                                         cardId +
@@ -197,18 +234,41 @@
                                                     )));
                                     });
 
-                                    $.each(res.datax.cases, function(index, value) {
-                                        $('#Listviewcasesp' + cardId + ' tbody').append($('<tr>')
-                                                .append($('<td>')
-                                                    .append('<div class="col-md-12 col-sm-12 col-xs-12">' + value.casetype1 + '</div>'))
-                                                .append($('<td>')
-                                                    .append('<div class="col-md-12 col-sm-12 col-xs-12">' + value.casedetail + '</div>'))
-                                                .append($('<td>' )
-                                                    .append('<div class="col-md-12 col-sm-12 col-xs-12">' + value.casestatus + '</div>'))
-                                                .append($('<td>' )
-                                                    .append('<div class="col-md-12 col-sm-12 col-xs-12">' + value.tranferstatus + '</div>'))
-                                                .append($('<td>' )
-                                                    .append('<div class="col-md-12 col-sm-12 col-xs-12">' + value.created_at + '</div>'))
+                                    $.each(res.datax.cases, function(index,
+                                        value) {
+                                        $('#Listviewcasesp' + cardId +
+                                            ' tbody').append($(
+                                                '<tr>')
+                                            .append($('<td>')
+                                                .append(
+                                                    '<div class="col-md-12 col-sm-12 col-xs-12">' +
+                                                    value
+                                                    .casetype1 +
+                                                    '</div>'))
+                                            .append($('<td>')
+                                                .append(
+                                                    '<div class="col-md-12 col-sm-12 col-xs-12">' +
+                                                    value
+                                                    .casedetail +
+                                                    '</div>'))
+                                            .append($('<td>')
+                                                .append(
+                                                    '<div class="col-md-12 col-sm-12 col-xs-12">' +
+                                                    value
+                                                    .casestatus +
+                                                    '</div>'))
+                                            .append($('<td>')
+                                                .append(
+                                                    '<div class="col-md-12 col-sm-12 col-xs-12">' +
+                                                    value
+                                                    .tranferstatus +
+                                                    '</div>'))
+                                            .append($('<td>')
+                                                .append(
+                                                    '<div class="col-md-12 col-sm-12 col-xs-12">' +
+                                                    value
+                                                    .created_at +
+                                                    '</div>'))
                                         );
                                     });
                                 }
@@ -299,54 +359,63 @@
         positionCards();
         //datepicker
         $.datepicker.setDefaults($.datepicker.regional['th']);
-        $(document).on("focus", ".AddDatep", function(){
+        $(document).on("focus", ".AddDatep", function() {
             $(this).datepicker({
                 dateFormat: "yy-mm-dd",
-	        //defaultDate: '2023-11-14',
-            isBuddhist: true,
-            changeMonth: true,
-            changeYear:true,
-	        //yearRange:'1940:2057',
-            yearRange:'c-40:c+10',
-            dayNamesMin: [ "อา", "จ", "อ", "พ", "พฤ", "ศ", "ส" ],
-            monthNamesShort: [ "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม" ],
-            beforeShow:function(){
-			if($(this).val()!=""){
-				var arrayDate=$(this).val().split("-");		
-				arrayDate[0]=parseInt(arrayDate[0])-543;
-				$(this).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
-			}
-			setTimeout(function(){
-				$.each($(".ui-datepicker-year option"),function(j,k){
-					var textYear=parseInt($(".ui-datepicker-year option").eq(j).val())+543;
-					$(".ui-datepicker-year option").eq(j).text(textYear);
-				});				
-			},50);
+                //defaultDate: '2023-11-14',
+                isBuddhist: true,
+                changeMonth: true,
+                changeYear: true,
+                //yearRange:'1940:2057',
+                yearRange: 'c-40:c+10',
+                dayNamesMin: ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"],
+                monthNamesShort: ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม",
+                    "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน",
+                    "ธันวาคม"
+                ],
+                beforeShow: function() {
+                    if ($(this).val() != "") {
+                        var arrayDate = $(this).val().split("-");
+                        arrayDate[0] = parseInt(arrayDate[0]) - 543;
+                        $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
+                    }
+                    setTimeout(function() {
+                        $.each($(".ui-datepicker-year option"), function(j, k) {
+                            var textYear = parseInt($(
+                                    ".ui-datepicker-year option").eq(j)
+                                .val()) + 543;
+                            $(".ui-datepicker-year option").eq(j).text(
+                                textYear);
+                        });
+                    }, 50);
 
-		},
-		onChangeMonthYear: function(){
-			setTimeout(function(){
-				$.each($(".ui-datepicker-year option"),function(j,k){
-					var textYear=parseInt($(".ui-datepicker-year option").eq(j).val())+543;
-					$(".ui-datepicker-year option").eq(j).text(textYear);
-				});				
-			},50);		
-		},
-		onClose:function(){
-			if($(this).val()!="" && $(this).val()==dateBefore){			
-				var arrayDate=dateBefore.split("-");
-                //$('#temp'+$(this).attr('id')).html(dateBefore);
-				arrayDate[0]=parseInt(arrayDate[0])+543;
-				$(this).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);	
-			}		
-		},
-		onSelect: function(dateText, inst){ 
-			dateBefore=$(this).val();
-            //$('#temp'+$(this).attr('id')).html(dateBefore);
-			var arrayDate=dateText.split("-");
-			arrayDate[0]=parseInt(arrayDate[0])+543;
-			$(this).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
-		}
+                },
+                onChangeMonthYear: function() {
+                    setTimeout(function() {
+                        $.each($(".ui-datepicker-year option"), function(j, k) {
+                            var textYear = parseInt($(
+                                    ".ui-datepicker-year option").eq(j)
+                                .val()) + 543;
+                            $(".ui-datepicker-year option").eq(j).text(
+                                textYear);
+                        });
+                    }, 50);
+                },
+                onClose: function() {
+                    if ($(this).val() != "" && $(this).val() == dateBefore) {
+                        var arrayDate = dateBefore.split("-");
+                        //$('#temp'+$(this).attr('id')).html(dateBefore);
+                        arrayDate[0] = parseInt(arrayDate[0]) + 543;
+                        $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
+                    }
+                },
+                onSelect: function(dateText, inst) {
+                    dateBefore = $(this).val();
+                    //$('#temp'+$(this).attr('id')).html(dateBefore);
+                    var arrayDate = dateText.split("-");
+                    arrayDate[0] = parseInt(arrayDate[0]) + 543;
+                    $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
+                }
             });
         });
 
@@ -518,8 +587,8 @@
                             '" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
                         )));
             });
-            //Add phone number to textbox
-            $(document).on('click', '.btnpnumber',
+        //Add phone number to textbox
+        $(document).on('click', '.btnpnumber',
             function() {
                 let datatId = $(this).data("tabid");
                 let tagetp = $(this).data("tagetp");
@@ -580,20 +649,23 @@
                                     .lname + '</h3>');
                                 $('#contractid' + cardId).val(res.datax.datac.id);
                                 $('#hnp' + cardId).val(res.datax.datac.hn);
-                                    //$('#adddatep' + cardId).val(res.datax.datac.adddate);
-                                    var arrayDate=res.datax.datac.adddate.split("-");
-                                        arrayDate[0]=parseInt(arrayDate[0])+543;
-                                        $('#adddatep' + cardId).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
+                                //$('#adddatep' + cardId).val(res.datax.datac.adddate);
+                                var arrayDate = res.datax.datac.adddate.split("-");
+                                arrayDate[0] = parseInt(arrayDate[0]) + 543;
+                                $('#adddatep' + cardId).val(arrayDate[0] + "-" +
+                                    arrayDate[1] + "-" + arrayDate[2]);
                                 $('#tnamep' + cardId).val(res.datax.datac.tname);
                                 $('#fnamep' + cardId).val(res.datax.datac.fname);
                                 $('#lnamep' + cardId).val(res.datax.datac.lname);
                                 $('#sexp' + cardId).val(res.datax.datac.sex);
-                                    //$('#birthdayp' + cardId).val(res.datax.datac.birthday);
-                                    var arrayDate=res.datax.datac.birthday.split("-");
-                                        arrayDate[0]=parseInt(arrayDate[0])+543;
-                                        $('#birthdayp' + cardId).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);                                
+                                //$('#birthdayp' + cardId).val(res.datax.datac.birthday);
+                                var arrayDate = res.datax.datac.birthday.split("-");
+                                arrayDate[0] = parseInt(arrayDate[0]) + 543;
+                                $('#birthdayp' + cardId).val(arrayDate[0] + "-" +
+                                    arrayDate[1] + "-" + arrayDate[2]);
                                 $('#agep' + cardId).val(res.datax.datac.age);
-                                $('#bloodgroupp' + cardId).val(res.datax.datac.bloodgroup);
+                                $('#bloodgroupp' + cardId).val(res.datax.datac
+                                    .bloodgroup);
                                 $('#homenop' + cardId).val(res.datax.datac.homeno);
                                 $('#moop' + cardId).val(res.datax.datac.moo);
                                 $('#soip' + cardId).val(res.datax.datac.soi);
@@ -629,8 +701,12 @@
                                     $('#myTbl3p' + cardId + ' tbody')
                                         .append($('<tr>')
                                             .append($('<td width="30%">')
-                                                .append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="hidden" value="' +
-                                                    value.id + '" name="emertypep' + cardId + '[]" id="emertypep' +
+                                                .append(
+                                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="hidden" value="' +
+                                                    value.id +
+                                                    '" name="emertypep' +
+                                                    cardId +
+                                                    '[]" id="emertypep' +
                                                     cardId +
                                                     '"><input type="text" id="emergencynamep' +
                                                     cardId +
@@ -642,7 +718,8 @@
                                                     '" required="required"></div>'
                                                 ))
                                             .append($('<td width="10%">')
-                                                .append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerrelation' +
+                                                .append(
+                                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerrelation' +
                                                     cardId +
                                                     '" name="emerrelationp' +
                                                     cardId +
@@ -652,7 +729,8 @@
                                                     '" required="required"></div>'
                                                 ))
                                             .append($('<td width="10%">')
-                                                .append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone' +
+                                                .append(
+                                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone' +
                                                     cardId +
                                                     '" name="emerphonep' +
                                                     cardId +
@@ -662,7 +740,8 @@
                                                     '" required="required"></div>'
                                                 ))
                                             .append($('<td width="5%">')
-                                                .append('<button type="button" name="deletem' +
+                                                .append(
+                                                    '<button type="button" name="deletem' +
                                                     cardId +
                                                     '" id="deletem' +
                                                     cardId +
@@ -671,19 +750,35 @@
                                 });
 
                                 $.each(res.datax.cases, function(index, value) {
-                                        $('#Listviewcases' + cardId + ' tbody').append($('<tr>')
-                                                .append($('<td>')
-                                                    .append('<div class="col-md-12 col-sm-12 col-xs-12">' + value.casetype1 + '</div>'))
-                                                .append($('<td>')
-                                                    .append('<div class="col-md-12 col-sm-12 col-xs-12">' + value.casedetail + '</div>'))
-                                                .append($('<td>' )
-                                                    .append('<div class="col-md-12 col-sm-12 col-xs-12">' + value.casestatus + '</div>'))
-                                                .append($('<td>' )
-                                                    .append('<div class="col-md-12 col-sm-12 col-xs-12">' + value.tranferstatus + '</div>'))
-                                                .append($('<td>' )
-                                                    .append('<div class="col-md-12 col-sm-12 col-xs-12">' + value.created_at + '</div>'))
+                                    $('#Listviewcases' + cardId + ' tbody')
+                                        .append($('<tr>')
+                                            .append($('<td>')
+                                                .append(
+                                                    '<div class="col-md-12 col-sm-12 col-xs-12">' +
+                                                    value.casetype1 +
+                                                    '</div>'))
+                                            .append($('<td>')
+                                                .append(
+                                                    '<div class="col-md-12 col-sm-12 col-xs-12">' +
+                                                    value.casedetail +
+                                                    '</div>'))
+                                            .append($('<td>')
+                                                .append(
+                                                    '<div class="col-md-12 col-sm-12 col-xs-12">' +
+                                                    value.casestatus +
+                                                    '</div>'))
+                                            .append($('<td>')
+                                                .append(
+                                                    '<div class="col-md-12 col-sm-12 col-xs-12">' +
+                                                    value.tranferstatus +
+                                                    '</div>'))
+                                            .append($('<td>')
+                                                .append(
+                                                    '<div class="col-md-12 col-sm-12 col-xs-12">' +
+                                                    value.created_at +
+                                                    '</div>'))
                                         );
-                                    });
+                                });
 
                             }
                         });
@@ -733,13 +828,13 @@
             var uniqid = $('#custom-tabs-pop-' + cardId).data("tick");
             var emergencyData = [];
 
-            var arrayDate=$('#adddatep' + cardId).val().split("-");
-				    arrayDate[0]=parseInt(arrayDate[0])-543;
-            var tempadddate = arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2];
+            var arrayDate = $('#adddatep' + cardId).val().split("-");
+            arrayDate[0] = parseInt(arrayDate[0]) - 543;
+            var tempadddate = arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2];
 
-            var arrayDateb=$('#birthdayp' + cardId).val().split("-");
-				    arrayDateb[0]=parseInt(arrayDateb[0])-543;
-            var tempbirthday = arrayDateb[0]+"-"+arrayDateb[1]+"-"+arrayDateb[2];
+            var arrayDateb = $('#birthdayp' + cardId).val().split("-");
+            arrayDateb[0] = parseInt(arrayDateb[0]) - 543;
+            var tempbirthday = arrayDateb[0] + "-" + arrayDateb[1] + "-" + arrayDateb[2];
 
             if ($('#contractid' + cardId).val() === "") {
                 $('#myTbl3p' + cardId + ' tbody tr').each(function() {
@@ -828,7 +923,7 @@
                                     .append('<strong><li>' +
                                         value +
                                         '</li></strong>');
-                                        
+
                             });
                             //$('html, body').animate({scrollTop:0}, 'slow');
                             //$('#toolbar_header').scrollTop(0);
@@ -983,11 +1078,11 @@
                 url: '{{ route('cases.caseslist') }}',
                 type: 'POST',
                 data: {
-                        id: contactid,
-                        tabid: tabid
-                    },
+                    id: contactid,
+                    tabid: tabid
+                },
                 success: function(response) {
-                    $('#ListviewcasesP'+tabid).html(response.html);
+                    $('#ListviewcasesP' + tabid).html(response.html);
                 }
             });
         });
@@ -999,11 +1094,11 @@
                 url: '{{ route('cases.caseslist') }}',
                 type: 'POST',
                 data: {
-                        id: contactid,
-                        tabid: tabid
-                    },
+                    id: contactid,
+                    tabid: tabid
+                },
                 success: function(response) {
-                    $('#ListviewcasesP'+tabid).html(response.html);
+                    $('#ListviewcasesP' + tabid).html(response.html);
                 }
             });
         });
@@ -1015,11 +1110,11 @@
                 url: '{{ route('cases.casesview') }}',
                 type: 'POST',
                 data: {
-                        id: casesid,
-                        tabid: tabid
-                    },
+                    id: casesid,
+                    tabid: tabid
+                },
                 success: function(response) {
-                    $('#ListviewcasesP'+tabid).html(response.html);
+                    $('#ListviewcasesP' + tabid).html(response.html);
                 }
             });
         });
