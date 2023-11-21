@@ -473,7 +473,7 @@
                             fontSize: 16
                         };
                         doc.content.splice(0,1);
-                        doc.pageMargins = [20,60,20,30];
+                        doc.pageMargins = [100,60,20,30];
 						doc.styles.tableHeader.fontSize = 16;
                         doc['header']=(function() {
 							return {
@@ -490,7 +490,7 @@
 										margin: [50,0]
 									},
 								],
-								margin:100
+								margin:20
 							}
 						});
                         var objLayout = {};
