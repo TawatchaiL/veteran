@@ -54,15 +54,15 @@ class ProjectJobController extends Controller
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->job_id . '" >';
                 })
                 ->editColumn('job_status', function ($row) use ($state_text) {
-                    $state = $state_text[$row->export_status];
+                    $state = $state_text[$row->job_status];
                     return $state;
                 })
                 ->editColumn('job_process', function ($row) {
                     $progress = ' <div class="progress progress-sm active">
-                    <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="' . $row->export_progress . '" aria-valuemin="0" aria-valuemax="100" style="width: ' . $row->export_progress . '%">
-                    <span class="sr-only">' . $row->export_progress . '% Complete</span>
+                    <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="' . $row->job_process . '" aria-valuemin="0" aria-valuemax="100" style="width: ' . $row->export_progress . '%">
+                    <span class="sr-only">' . $row->job_process . '% Complete</span>
                     </div>
-                    </div><small>' . $row->export_progress . '% Complete</small>';
+                    </div><small>' . $row->job_process . '% Complete</small>';
                     return $progress;
                 })
                 ->addColumn('action', function ($row) {
