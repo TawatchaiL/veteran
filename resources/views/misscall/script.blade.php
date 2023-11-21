@@ -573,6 +573,10 @@
                     className: 'no-print'
                 },
                 {
+                    data: 'agent',
+                    name: 'agent'
+                },
+                {
                     data: 'cdate',
                     name: 'cdate'
                 },
