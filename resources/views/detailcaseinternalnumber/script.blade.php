@@ -469,7 +469,7 @@
                             fontSize: 16
                         };
                         // กำหนดความกว้างของ header แต่ละคอลัมน์หัวข้อ
-                        doc.content[1].table.widths = [120, 100, 100, '*'];
+                        doc.content[1].table.widths = [120, 100, 80, 80, 80, '*'];
                         doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
                         // Add cell borders
                         doc.content[1].table.layout = {
@@ -504,9 +504,13 @@
                                 'center'; // Align the first column to the center
                             doc.content[1].table.body[i][1].alignment =
                                 'center'; // Align the second column to the right
-                                doc.content[1].table.body[i][2].alignment =
+                            doc.content[1].table.body[i][2].alignment =
                                 'center'; // Align the first column to the center
                             doc.content[1].table.body[i][3].alignment =
+                                'center'; // Align the second column to the right
+                            doc.content[1].table.body[i][4].alignment =
+                                'center'; // Align the second column to the right
+                            doc.content[1].table.body[i][5].alignment =
                                 'center'; // Align the second column to the right
                             //doc.content[1].table.body[i][2].alignment =
                             //'center'; // Align the second column to the right
@@ -597,7 +601,7 @@
                 var recordsTotal = api.page.info().recordsTotal;
 
                 // Update the footer cell with the total record count.
-                $(api.column(4).footer()).html(recordsTotal + ' สาย');
+                $(api.column(2).footer()).html(recordsTotal + ' สาย');
             }
         });
 
