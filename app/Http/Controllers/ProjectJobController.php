@@ -105,10 +105,20 @@ class ProjectJobController extends Controller
                     return $progress;
                 })
                 ->addColumn('action', function ($row) {
-                    if (Gate::allows('outbound-delete')) {
-                        $html = '<button type="button" data-rowid="' . $row->job_id . '" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i> ลบรายการ</button>';
+                    if ($row->job_status == 0) {
+                        $button_txt = "Start/Resume";
+                    } else if ($row->job_status == 1) {
+                        $button_txt = "Stop/Pause";
+                    }
+                    if (Gate::allows('ounbound-edit')) {
+                        $html = '<button type="button" class="btn btn-sm btn-warning btn-edit"  data-id="' . $row->id . '"><i class="fa fa-edit"></i> ' . $button_txt . '</button> ';
                     } else {
-                        $html = '<button type="button" class="btn btn-sm btn-danger disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-trash"></i> ลบรายการ</button> ';
+                        $html = '<button type="button" class="btn btn-sm btn-warning disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-edit"></i> Pause</button> ';
+                    }
+                    if (Gate::allows('outbound-delete')) {
+                        $html .= '<button type="button" data-rowid="' . $row->job_id . '" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i> ลบรายการ</button>';
+                    } else {
+                        $html .= '<button type="button" class="btn btn-sm btn-danger disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-trash"></i> ลบรายการ</button> ';
                     }
                     return $html;
                 })
@@ -205,28 +215,36 @@ class ProjectJobController extends Controller
         return response()->json(['errors' => ['กรุณาอัพโหลดไฟล์']]);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Project_job $project_job)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Project_job $project_job)
+    public function edit(Request $request)
     {
-        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Project_job $project_job)
+    public function update(Request $request)
     {
-        //
+        $id = $request->get('id');
+        $update = ProjectJob::find($id);
+
+        if ($update->job_status == 0) {
+            $status = 1;
+        } elseif ($update->job_status == 1) {
+            $status = 0;
+        }
+
+        $data = [
+            'job_status' => $status
+        ];
+
+
+        $update->update($data);
+
+        return response()->json(['success' => 'แก้ไข สถานะรายการโทรออก เรียบร้อยแล้ว']);
     }
 
     public function destroy(Request $request)

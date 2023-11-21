@@ -228,7 +228,7 @@
             });
         });
 
-        $(document).on('click', '.btn-download', function() {
+        $(document).on('click', '.btn-edit', function() {
             var confirmed = confirm("ยืนยันการทำรายการ ?");
             if (!confirmed) {
                 return false; // Cancel the operation if not confirmed
@@ -239,9 +239,26 @@
                 return false; // Cancel the operation if rowid is missing
             }
 
-            var url = '{{ url('zip') }}/' + rowid;
-            console.log(url);
-            window.open(url, '_blank');
+            $.ajax({
+                //type: "POST",
+                method: 'POST',
+                url: "outbound/edit/",
+                data: {
+                    id: rowid,
+                    _token: token
+                },
+                success: function(data) {
+                    if (data.errors) {
+                        toastr.error(data.message, {
+                            timeOut: 5000
+                        });
+                    } else if (data.success) {
+                        toastr.success(data.message, {
+                            timeOut: 5000
+                        });
+                    }
+                }
+            });
         });
 
         $(document).on('click', '.btn-delete', function() {

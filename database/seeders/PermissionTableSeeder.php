@@ -56,9 +56,10 @@ class PermissionTableSeeder extends Seeder
             'notify-delete',
             'customize-list',
             'customize-edit',*/
-            'outbound-list',
-            'outbound-create',
-            'outbound-delete',
+            //'outbound-list',
+            //'outbound-create',
+            'outbound-edit',
+            //'outbound-delete',
             /* 'role-list',
             'role-create',
             'role-edit',
