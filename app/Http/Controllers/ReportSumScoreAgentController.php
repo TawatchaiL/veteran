@@ -66,7 +66,7 @@ class ReportSumScoreAgentController extends Controller
                 $chart_label = array();
                 foreach ($datas as $data) {
                     $chart_data[] = $data->sumscore;
-                    $chart_label[] = $agent_data[$data->crm_id];
+                    $chart_label[] = $agent_data[$data->crm_id]."a";
                 }
                 return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
             }
