@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('style')
-    @include('misscall.style')
+    @include('hitcall.style')
 @endsection
 @section('content')
     <section class="content-header">
@@ -10,7 +10,7 @@
                 <div class="col-12">
                     <div class="card card-info">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fa-solid fa-magnifying-glass"></i> สายที่ไม่ได้รับ</h3>
+                            <h3 class="card-title"><i class="fa-solid fa-magnifying-glass"></i> สายที่ได้รับ</h3>
                         </div>
                         <div class="card-body">
                             <div class="col-sm-12">
@@ -66,7 +66,7 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-address-print"></i> สายที่ไม่ได้รับ
+                            <h3 class="card-title"><i class="fas fa-address-print"></i> สายที่ได้รับ
                             </h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="maximize">
@@ -114,7 +114,8 @@
                                             <th>วันที่</th>
                                             <th>เวลา</th>
                                             <th>เบอร์โทรศัพท์</th>
-                                            <th>เวลารอสาย</th>
+                                            <th>ระยะเวลารอสาย</th>
+                                            <th>ระยะเวลาใช้สาย</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -130,5 +131,5 @@
     </section>
 @endsection
 @section('script')
-    @include('misscall.script')
+    @include('hitcall.script')
 @endsection

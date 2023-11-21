@@ -186,6 +186,7 @@
             'sumtel',
             'callstatus',
             'misscall',
+            'misscall',
             'reportcase',
         ])
             ? 'menu-open'
@@ -202,6 +203,7 @@
                 'reportbreak',
                 'sumtel',
                 'callstatus',
+                'hitcall',
                 'misscall',
                 'reportcase',
             ])
@@ -303,7 +305,7 @@
             <li class="nav-item">
                 <a href="{{ route('sumtel') }}" class="nav-link {{ Request::is('sumtel') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมสายเข้าแยกตาม Agent">
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="จำนวนสายที่ติดต่อ">
                         <span class="text-truncate d-block">
                             จำนวนสายที่ติดต่อ
                         </span>
@@ -313,7 +315,7 @@
             <li class="nav-item">
                 <a href="{{ route('callstatus') }}" class="nav-link {{ Request::is('callstatus') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมสายเข้าแยกตาม Agent">
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="สถานะการรับสาย">
                         <span class="text-truncate d-block">
                             สถานะการรับสาย
                         </span>
@@ -321,9 +323,19 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="{{ route('hitcall') }}" class="nav-link {{ Request::is('hitcall') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="สายที่ได้รับ">
+                        <span class="text-truncate d-block">
+                            สายที่ได้รับ
+                        </span>
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="{{ route('misscall') }}" class="nav-link {{ Request::is('misscall') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="ผลรวมสายเข้าแยกตาม Agent">
+                    <p class="d-inline-flex sidebar-item" data-toggle="tooltip" title="สายที่ไม่ได้รับ">
                         <span class="text-truncate d-block">
                             สายที่ไม่ได้รับ
                         </span>

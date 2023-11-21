@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Session;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 use App\Services\GraphService;
 
-class MisscallController extends Controller
+class HitcallController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -49,8 +49,8 @@ class MisscallController extends Controller
         }
         $datas = DB::connection('remote_connection')
             ->table('call_center.call_entry')
-            ->select('crm_id',DB::raw('DATE(datetime_init) as cdate'), DB::raw('TIME(datetime_init) as ctime'), 'callerid as telno', DB::raw('SEC_TO_TIME(duration_wait) as durationwait'))
-            ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59" AND status = "abandonada" AND  crm_id is not null');
+            ->select('crm_id',DB::raw('DATE(datetime_init) as cdate'), DB::raw('TIME(datetime_init) as ctime'), 'callerid as telno', DB::raw('SEC_TO_TIME(duration_wait) as durationwait'), DB::raw('SEC_TO_TIME(duration) as duration'))
+            ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59" AND status = "terminada" AND  crm_id is not null');
         if(!empty($request->get('agent'))){
             $datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
         }    
@@ -78,7 +78,7 @@ class MisscallController extends Controller
                 ->rawColumns(['checkbox', 'action'])->toJson();
         }
         
-        return view('misscall.index')->with(['agents' => $agents]);
+        return view('hitcall.index')->with(['agents' => $agents]);
     }
 
 }

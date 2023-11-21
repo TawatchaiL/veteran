@@ -436,7 +436,7 @@
                 {
                     extend: 'excel',
                     text: 'Excel',
-                    title: 'สายที่ไม่ได้รับ',
+                    title: 'สายที่ได้รับ',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                     },
@@ -463,7 +463,7 @@
                     "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
                     "text": 'PDF', // ข้อความที่แสดง
                     "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
-                    "title": 'สายที่ไม่ได้รับ',
+                    "title": 'สายที่ได้รับ',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                     },
@@ -474,7 +474,7 @@
                             fontSize: 16
                         };
                         // กำหนดความกว้างของ header แต่ละคอลัมน์หัวข้อ
-                        doc.content[1].table.widths = ['*', 70, 70, 100, 70];
+                        doc.content[1].table.widths = ['*', 70, 70, 100, 70, 70];
                         doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
                         // Add cell borders
                         doc.content[1].table.layout = {
@@ -505,15 +505,17 @@
 
                         }
                         for (var i = 1; i < doc.content[1].table.body.length; i++) {
-                            doc.content[1].table.body[i][0].alignment =
+                                doc.content[1].table.body[i][0].alignment =
                                 'center'; // Align the first column to the center
-                            doc.content[1].table.body[i][1].alignment =
+                                doc.content[1].table.body[i][1].alignment =
                                 'center'; // Align the second column to the right
                                 doc.content[1].table.body[i][2].alignment =
                                 'center'; // Align the second column to the right
                                 doc.content[1].table.body[i][3].alignment =
                                 'center'; // Align the second column to the right
                                 doc.content[1].table.body[i][4].alignment =
+                                'center'; // Align the second column to the right
+                                doc.content[1].table.body[i][5].alignment =
                                 'center'; // Align the second column to the right
                             //doc.content[1].table.body[i][2].alignment =
                             //'center'; // Align the second column to the right
@@ -525,7 +527,7 @@
                 {
                     extend: 'print',
                     text: 'Print',
-                    title: 'สายที่ไม่ได้รับ',
+                    title: 'สายที่ได้รับ',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                         format: {
@@ -594,6 +596,10 @@
                     data: 'durationwait',
                     name: 'durationwait'
                 },
+                {
+                    data: 'duration',
+                    name: 'duration'
+                },
             ]
         });
 
@@ -643,52 +649,6 @@
             table.button('4').trigger();
         });
 
-
-
-
-        // Create product Ajax request.
-        $('#SubmitCreateForm').click(function(e) {
-            e.preventDefault();
-            $('.alert-danger').html('');
-            $('.alert-danger').hide();
-            $('.alert-success').html('');
-            $('.alert-success').hide();
-
-
-            $.ajax({
-                url: "{{ route('contacts.store') }}",
-                method: 'post',
-                data: {
-                    name: $('#AddName').val(),
-                    email: $('#AddEmail').val(),
-                    postcode: $('#AddPostcode').val(),
-                    address: $('#AddAddress').val(),
-                    telephone: $('#AddTelephone').val(),
-                    _token: token,
-                },
-                success: function(result) {
-                    if (result.errors) {
-                        $('.alert-danger').html('');
-                        $.each(result.errors, function(key, value) {
-                            $('.alert-danger').show();
-                            $('.alert-danger').append('<strong><li>' + value +
-                                '</li></strong>');
-                        });
-                    } else {
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('.alert-success').append('<strong><li>' + result.success +
-                            '</li></strong>');
-                        toastr.success(result.success, {
-                            timeOut: 5000
-                        });
-                        $('#Listview').DataTable().ajax.reload();
-                        $('.form').trigger('reset');
-                        $('#CreateModal').modal('hide');
-                    }
-                }
-            });
-        });
 
 
     });
