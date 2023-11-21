@@ -115,6 +115,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/detailcaselogbyhn', [App\Http\Controllers\DetailcaselogbyhnController::class, 'index'])->name('detailcaselogbyhn');
     Route::get('/sumtel', [App\Http\Controllers\SumtelController::class, 'index'])->name('sumtel');
     Route::get('/callstatus', [App\Http\Controllers\CallstatusController::class, 'index'])->name('callstatus');
+    Route::get('/hitcall', [App\Http\Controllers\HitcallController::class, 'index'])->name('hitcall');
     Route::get('/misscall', [App\Http\Controllers\MisscallController::class, 'index'])->name('misscall');
 
     Route::get('/reportsumbytype', [App\Http\Controllers\ReportsumbytypeController::class, 'index'])->name('reportsumbytype');
