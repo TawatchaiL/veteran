@@ -135,6 +135,10 @@
                     name: 'job_admin'
                 },
                 {
+                    data: 'job_call',
+                    name: 'job_call'
+                },
+                {
                     data: 'job_status',
                     name: 'job_status'
                 },

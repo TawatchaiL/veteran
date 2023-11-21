@@ -88,6 +88,9 @@ class ProjectJobController extends Controller
                     $state = $agentArray[$row->job_admin]['name'];
                     return $state;
                 })
+                ->editColumn('job_call', function ($row) {
+                    return $row->a_call + $row->an_call . ' เบอร์';
+                })
                 ->editColumn('job_process', function ($row) {
                     $perp = 0; // Default value in case of division by zero
 
@@ -98,7 +101,7 @@ class ProjectJobController extends Controller
                     <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="' . $perp . '" aria-valuemin="0" aria-valuemax="100" style="width: ' . $perp . '%">
                     <span class="sr-only">' . $perp . '% Complete</span>
                     </div>
-                    </div><small>' . $perp . '% Complete</small>';
+                    </div><small>' . $row->a_call . ' เบอร์ ' . $perp . '% Complete</small>';
                     return $progress;
                 })
                 ->addColumn('action', function ($row) {
