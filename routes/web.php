@@ -130,6 +130,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/detailscore', [App\Http\Controllers\DetailscoreController::class, 'index'])->name('detailscore');
     Route::get('/detailscoreagent', [App\Http\Controllers\DetailscoreagentController::class, 'index'])->name('detailscoreagent');
+    Route::get('/reportsumscoreagent', [App\Http\Controllers\ReportSumScoreAgentController::class, 'index'])->name('reportsumscoreagent');
 
     Route::get('/thcity/city', [App\Http\Controllers\ThCityController::class, 'city'])->name('thcity.city');
     Route::get('/thdistrict/district/{provinceId}', [App\Http\Controllers\ThDistrictController::class, 'district'])->name('thdistrict.district');
