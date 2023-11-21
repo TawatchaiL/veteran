@@ -665,6 +665,7 @@
     });
 
     function Loadchart(){
+        alert('OK');
         let options = {
                 series: [
                         { name: [],
