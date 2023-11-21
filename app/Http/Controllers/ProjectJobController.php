@@ -51,7 +51,7 @@ class ProjectJobController extends Controller
 
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
-                    return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
+                    return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->job_id . '" >';
                 })
                 ->editColumn('job_status', function ($row) use ($state_text) {
                     $state = $state_text[$row->export_status];
@@ -67,7 +67,7 @@ class ProjectJobController extends Controller
                 })
                 ->addColumn('action', function ($row) {
                     if (Gate::allows('outbound-delete')) {
-                        $html = '<button type="button" data-rowid="' . $row->id . '" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i> ลบรายการ</button>';
+                        $html = '<button type="button" data-rowid="' . $row->job_id . '" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i> ลบรายการ</button>';
                     } else {
                         $html = '<button type="button" class="btn btn-sm btn-danger disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-trash"></i> ลบรายการ</button> ';
                     }

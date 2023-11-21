@@ -79,10 +79,9 @@
                                         <tr>
                                             <th width="50px"><input type="checkbox" id="check-all" class="flat"></th>
                                             <th>Name</th>
-                                            <th>วันที่เวลา</th>
+                                            <th>วันที่สร้าง</th>
                                             <th>ผู้สร้าง</th>
                                             <th>ประเภท</th>
-                                            <th>สถานะ</th>
                                             <th width="150px">Progress</th>
                                             <th width="180px"></th>
                                             <th>More</th>
