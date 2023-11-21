@@ -251,10 +251,9 @@
                 //type: "POST",
                 method: 'DELETE',
                 dataType: 'JSON',
-                url: "voicebackup/destroy/",
+                url: "outbound/destroy/",
                 data: {
                     id: rowid,
-                    //_method: 'delete',
                     _token: token
                 },
                 success: function(data) {

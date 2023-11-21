@@ -47,7 +47,7 @@ class ProjectJobController extends Controller
         if ($request->ajax()) {
 
             $datas = ProjectJob::orderBy("job_id", "desc")->get();
-            $state_text = ['กำลังทำงาน', 'หยุดชั่วคราว'];
+            $state_text = ['Stop', 'Start', 'Pause'];
 
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
@@ -116,44 +116,45 @@ class ProjectJobController extends Controller
             $NRow = ProjectJob::where('job_file', $realn)->count();
 
             //if ($NRow === 0) {
-                $datea = date("YmdHis");
-                $cdate = date("Y-m-d H:i:s");
+            $datea = date("YmdHis");
+            $cdate = date("Y-m-d H:i:s");
 
-                $user = Auth::user();
+            $user = Auth::user();
 
-                $projectJob = new ProjectJob([
-                    'job_project_id' => $request->input('project_id'),
-                    'job_code_id' => $datea,
-                    'job_create_date' => $cdate,
-                    'job_file' => $realn,
-                    'job_admin' => $user->id,
-                    'job_status' => 1,
-                ]);
+            $projectJob = new ProjectJob([
+                'job_project_id' => $request->input('project_id'),
+                'job_code_id' => $datea,
+                'job_create_date' => $cdate,
+                'job_file' => $realn,
+                'job_admin' => $user->id,
+                'job_status' => 0,
+                'job_process' => 0,
+            ]);
 
-                $projectJob->save();
+            $projectJob->save();
 
-                $lastId = $projectJob->id;
+            $lastId = $projectJob->id;
 
-                $objCSV = fopen(public_path("csv/$remoteFilename"), "r");
+            $objCSV = fopen(public_path("csv/$remoteFilename"), "r");
 
-                $i = 0;
-                while (($objArr = fgetcsv($objCSV, 100000, ",")) !== false) {
-                    //dd($objArr[0]);
-                    if ($objArr[0]) {
-                        $projectJobNumber = new ProjectJobNumber([
-                            'create_date' => $cdate,
-                            'call_number' => $objArr[0],
-                            'project_job_id' => $lastId,
-                            //'dial_agent' => '',
-                        ]);
+            $i = 0;
+            while (($objArr = fgetcsv($objCSV, 100000, ",")) !== false) {
+                //dd($objArr[0]);
+                if ($objArr[0]) {
+                    $projectJobNumber = new ProjectJobNumber([
+                        'create_date' => $cdate,
+                        'call_number' => $objArr[0],
+                        'project_job_id' => $lastId,
+                        //'dial_agent' => '',
+                    ]);
 
-                        $projectJobNumber->save();
+                    $projectJobNumber->save();
 
-                        $i++;
-                    }
+                    $i++;
                 }
+            }
 
-                fclose($objCSV);
+            fclose($objCSV);
             //} 
 
             return response()->json(['success' => 'เพิ่มรายการ โทรออกเรียบร้อยแล้ว']);
@@ -186,11 +187,41 @@ class ProjectJobController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Project_job $project_job)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request->get('id');
+        $data = ProjectJob::find($id);
+
+        if ($data && $data->job_status == 0) {
+            $dataFilePath = public_path('csv/' . $data->job_file);
+            if (file_exists($dataFilePath)) {
+                unlink($dataFilePath . '.csv');
+            }
+
+            $data->delete();
+
+            return ['success' => true, 'message' => 'ลบรายการ โทรออก เรียบร้อยแล้ว'];
+        }
+
+        return ['success' => false, 'message' => 'ไม่สามารถลบรายการ โทรออก ได้'];
+    }
+
+    public function destroy_all(Request $request)
+    {
+        $arr_del = $request->get('table_records');
+
+        foreach ($arr_del as $recordId) {
+            $voice = ProjectJob::find($recordId);
+
+            if ($voice && $voice->export_status == 3) {
+                $exportFilePath = public_path('zip/' . $voice->export_filename);
+
+                if (file_exists($exportFilePath) && unlink($exportFilePath)) {
+                    $voice->delete();
+                }
+            }
+        }
+
+        return redirect('/voicebackup')->with('success', 'ลบรายการ Export VoiceRecord เรียบร้อยแล้ว');
     }
 }
