@@ -1,4 +1,4 @@
-<div class="card card-primary">
+{{-- <div class="card card-primary">
     <div class="card-header">
         <h3 class="card-title"><i class="fas fa-address-book"></i> ประวัติการการติดต่อ</h3>
         <div class="card-tools">
@@ -6,7 +6,7 @@
     </div>
 </div>
 <div class="card">
-    <div class="card-body">
+    <div class="card-body"> --}}
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <table id="ListCaseview"
@@ -37,5 +37,5 @@
             </table>
             </div>
         </div>  
-    </div>
-</div>
+{{--     </div>
+</div> --}}
