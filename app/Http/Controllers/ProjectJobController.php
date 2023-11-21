@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Outbound_job;
+use App\Models\Project_job;
 use Illuminate\Http\Request;
 
-class OutboundJobController extends Controller
+class ProjectJobController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class OutboundJobController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Outbound_job $outbound_job)
+    public function show(Project_job $project_job)
     {
         //
     }
@@ -42,7 +42,7 @@ class OutboundJobController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Outbound_job $outbound_job)
+    public function edit(Project_job $project_job)
     {
         //
     }
@@ -50,7 +50,7 @@ class OutboundJobController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Outbound_job $outbound_job)
+    public function update(Request $request, Project_job $project_job)
     {
         //
     }
@@ -58,7 +58,7 @@ class OutboundJobController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Outbound_job $outbound_job)
+    public function destroy(Project_job $project_job)
     {
         //
     }
