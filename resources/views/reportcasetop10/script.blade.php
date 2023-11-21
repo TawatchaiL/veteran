@@ -490,7 +490,7 @@
 										margin: [50,0]
 									},
 								],
-								margin:20
+								margin:100
 							}
 						});
                         var objLayout = {};
