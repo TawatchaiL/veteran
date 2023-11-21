@@ -89,7 +89,11 @@ class ProjectJobController extends Controller
                     return $state;
                 })
                 ->editColumn('job_process', function ($row) {
-                    $perp = ($row->a_call/($row->a_call+$row->an_call))*100;
+                    $perp = 0; // Default value in case of division by zero
+
+                    if ($row->a_call + $row->an_call != 0) {
+                        $perp = ($row->a_call / ($row->a_call + $row->an_call)) * 100;
+                    }
                     $progress = ' <div class="progress progress-sm active">
                     <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="' . $perp . '" aria-valuemin="0" aria-valuemax="100" style="width: ' . $perp . '%">
                     <span class="sr-only">' . $perp . '% Complete</span>
