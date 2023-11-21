@@ -436,7 +436,7 @@
                 {
                     extend: 'excel',
                     text: 'Excel',
-                    title: 'สายที่ไม่ได้รับ',
+                    title: 'สายที่ได้รับ',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                     },
@@ -463,7 +463,7 @@
                     "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
                     "text": 'PDF', // ข้อความที่แสดง
                     "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
-                    "title": 'สายที่ไม่ได้รับ',
+                    "title": 'สายที่ได้รับ',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                     },
@@ -505,9 +505,9 @@
 
                         }
                         for (var i = 1; i < doc.content[1].table.body.length; i++) {
-                            doc.content[1].table.body[i][0].alignment =
+                                doc.content[1].table.body[i][0].alignment =
                                 'center'; // Align the first column to the center
-                            doc.content[1].table.body[i][1].alignment =
+                                doc.content[1].table.body[i][1].alignment =
                                 'center'; // Align the second column to the right
                                 doc.content[1].table.body[i][2].alignment =
                                 'center'; // Align the second column to the right
@@ -527,7 +527,7 @@
                 {
                     extend: 'print',
                     text: 'Print',
-                    title: 'สายที่ไม่ได้รับ',
+                    title: 'สายที่ได้รับ',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                         format: {
