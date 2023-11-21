@@ -25,6 +25,7 @@ return new class extends Migration
             $table->integer('realmin')->nullable();
             $table->dateTime('call_date')->nullable();
             $table->string('sound', 100)->nullable();
+            $table->timestamps();
 
             //$table->primary('job_number_id');
             $table->foreign('project_job_id')->references('job_id')->on('project_jobs')->nullable();
