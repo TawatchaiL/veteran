@@ -375,6 +375,7 @@
         $('#btnreset').click(function(e) {
             datereset();
             daterange();
+            $('#Agent').val("0");
             $('#Listview').DataTable().ajax.reload();
         });
 
@@ -398,7 +399,7 @@
             ajax: {
                 data: function(d) {
                     d.sdate = $('#reservation').val();
-                    d.seachtext = $('#seachtext').val();
+                    d.agent = $('#Agent').val();
                 }
             },
             serverSide: true,
@@ -575,8 +576,8 @@
                     className: 'no-print'
                 },
                 {
-                    data: 'cagent',
-                    name: 'cagent'
+                    data: 'agent',
+                    name: 'agent'
                 },
                 {
                     data: 'chn',

@@ -49,8 +49,8 @@ class DetailcaselogbyhnController extends Controller
         }
 
         if (!empty($request->get('seachtext'))) {
-            $agentseachc = ' and crm_case_comments.agent = ' . $request->input('seachtext') . '';
-            $agentseachl = ' and crm_caseslogs.modifyagent = ' . $request->input('seachtext') . '';
+            $agentseachc = ' and crm_case_comments.agent = ' . $request->input('agent') . '';
+            $agentseachl = ' and crm_caseslogs.modifyagent = ' . $request->input('agent') . '';
         }else{
             $agentseachc = '';
             $agentseachl = '';
@@ -74,15 +74,28 @@ class DetailcaselogbyhnController extends Controller
         ->union($getData)
         ->get();
 
+        $agents = User::orderBy("id", "asc")->get();
+
         if ($request->ajax()) {
+            $agent_data = array();
+            foreach ($agents as $agent) {
+                $agent_data[$agent->id] = $agent->name;
+            }
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 })->rawColumns(['checkbox', 'action'])
+                ->addColumn('agent', function ($row) use ($agent_data){
+                    if (isset($agent_data[$row->cagent])) {
+                        return $agent_data[$row->cagent];
+                    } else {
+                        return 'Agent not found';
+                    }
+                })
                 ->toJson();
         }
 
-        return view('detailcaselogbyhn.index');
+        return view('detailcaselogbyhn.index')->with(['agents' => $agents]);
     }
 
 }
