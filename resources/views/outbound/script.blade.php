@@ -189,17 +189,16 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
-
+            var formData = new FormData();
+            formData.append('csv_file', $('#AddCSV')[0].files[0]);
+            formData.append('_token', token);
             $.ajax({
-                url: "{{ route('voicebackup.store') }}",
+                url: "{{ route('outbound.store') }}",
                 method: 'post',
-                data: {
-                    export_date: $('#AddSDate').val() + ' - ' + $('#AddEDate').val(),
-                    src: $('#AddSrc').val(),
-                    dst: $('#AddAgent').val()[0],
-                    ctype: $('#AddCtype').val()[0],
-                    _token: token,
-                },
+                data: formData,
+                contentType: false,
+                processData: false,
+                cache: false,
                 success: function(result) {
                     if (result.errors) {
                         $('.alert-danger').html('');
@@ -217,8 +216,6 @@
                             timeOut: 5000
                         });
                         $('#Listview').DataTable().ajax.reload();
-                        $("#AddAgent").val(null).trigger("change")
-                        $("#AddCtype").val(null).trigger("change")
                         $('.form').trigger('reset');
                         $('#CreateModal').modal('hide');
                     }

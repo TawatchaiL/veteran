@@ -97,8 +97,8 @@ class ProjectJobController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->hasFile('job_file')) {
-            $file = $request->file('job_file');
+        if ($request->hasFile('csv_file')) {
+            $file = $request->file('csv_file');
             $fileExtension = $file->getClientOriginalExtension();
 
             if ($fileExtension !== 'csv') {
@@ -155,10 +155,10 @@ class ProjectJobController extends Controller
                 fclose($objCSV);
             }
 
-            return "File uploaded successfully";
+            return response()->json(['success' => 'เพิ่มรายการ โทรออกเรียบร้อยแล้ว']);
         }
 
-        return "No file uploaded";
+        return response()->json(['errors' => ['กรุณาอัพโหลดไฟล์']]);
     }
 
     /**
