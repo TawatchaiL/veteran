@@ -1,6 +1,37 @@
 <div class="card">
     <div class="card-body">
         <div class="row">
+            <div class="col-md-6">
+                <aside class="sidebar">
+                    <div class="single contact-info">
+                        <h3 class="side-title">Contact Information</h3>
+                        <ul class="list-unstyled">
+                            <li>
+                                <div class="icon"><i class="fa fa-map-marker"></i></div>
+                                <div class="info">
+                                    <p>1600 Amphitheatre Parkway <br>St Martin Church</p>
+                                </div>
+                            </li>
+        
+                            <li>
+                                <div class="icon"><i class="fa fa-phone"></i></div>
+                                <div class="info">
+                                    <p>098-765-4321<br>123-456-7890</p>
+                                </div>
+                            </li>
+        
+                            <li>
+                                <div class="icon"><i class="fa fa-envelope"></i></div>
+                                <div class="info">
+                                    <p>info@example.com<br>sales@yourdomain.com</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <strong><i class="fas fa-code"></i> HN : {{ $datact->hn }}
             </div>
@@ -68,34 +99,4 @@
 </div>
 
 
-<div class="row">
-    <div class="col-md-6">
-        <aside class="sidebar">
-            <div class="single contact-info">
-                <h3 class="side-title">Contact Information</h3>
-                <ul class="list-unstyled">
-                    <li>
-                        <div class="icon"><i class="fa fa-map-marker"></i></div>
-                        <div class="info">
-                            <p>1600 Amphitheatre Parkway <br>St Martin Church</p>
-                        </div>
-                    </li>
 
-                    <li>
-                        <div class="icon"><i class="fa fa-phone"></i></div>
-                        <div class="info">
-                            <p>098-765-4321<br>123-456-7890</p>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="icon"><i class="fa fa-envelope"></i></div>
-                        <div class="info">
-                            <p>info@example.com<br>sales@yourdomain.com</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </aside>
-    </div>
-</div>
