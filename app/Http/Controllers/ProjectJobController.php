@@ -47,40 +47,17 @@ class ProjectJobController extends Controller
         if ($request->ajax()) {
 
             $datas = ProjectJob::orderBy("id", "desc")->get();
-            $state_text = ['All', 'รอคิว', 'กำลังทำงาน', 'Export เสร็จแล้ว'];
-            $ctype_text = ['All', 'สายเข้า', 'โทรออก', 'ภายใน'];
+            $state_text = ['กำลังทำงาน', 'หยุดชั่วคราว'];
 
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
                 })
-                ->addColumn('export_date', function ($row) {
-                    $export_date = $row->export_start . " - " . $row->export_end;
-                    return $export_date;
-                })
-                ->editColumn('export_src', function ($row) {
-                    if ($row->export_src !== '' && $row->export_src !== NULL) {
-                        return $row->export_src;
-                    }
-                    return 'All';
-                })
-                ->editColumn('export_dst', function ($row) use ($agentArray) {
-                    if ($row->export_dst !== '' && $row->export_dst !== NULL) {
-                        return $agentArray[$row->export_dst]['name'];
-                    }
-                    return 'All';
-                })
-                ->editColumn('export_ctype', function ($row) use ($ctype_text) {
-                    if ($row->export_ctype !== '' && $row->export_ctype !== NULL) {
-                        return $ctype_text[$row->export_ctype];
-                    }
-                    return 'All';
-                })
-                ->editColumn('status', function ($row) use ($state_text) {
+                ->editColumn('job_status', function ($row) use ($state_text) {
                     $state = $state_text[$row->export_status];
                     return $state;
                 })
-                ->editColumn('export_progress', function ($row) {
+                ->editColumn('job_process', function ($row) {
                     $progress = ' <div class="progress progress-sm active">
                     <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="' . $row->export_progress . '" aria-valuemin="0" aria-valuemax="100" style="width: ' . $row->export_progress . '%">
                     <span class="sr-only">' . $row->export_progress . '% Complete</span>
@@ -89,30 +66,17 @@ class ProjectJobController extends Controller
                     return $progress;
                 })
                 ->addColumn('action', function ($row) {
-                    if (Gate::allows('voice-export-download')) {
-                        if ($row->export_status == 3) {
-                            $html = '<button type="button" class="btn btn-sm btn-warning btn-download" id="getEditData" data-id="' . $row->export_filename . '"><i class="fa fa-download"></i> Download</button> ';
-                        } else {
-                            $html = '<button type="button" class="btn btn-sm btn-warning disabled" data-toggle="tooltip" data-placement="bottom" title="ยัง Export ไม่เสร็จ"><i class="fa fa-download"></i> Download</button> ';
-                        }
+                    if (Gate::allows('outbound-delete')) {
+                        $html = '<button type="button" data-rowid="' . $row->id . '" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i> ลบรายการ</button>';
                     } else {
-                        $html = '<button type="button" class="btn btn-sm btn-warning disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-download"></i> Download</button> ';
-                    }
-                    if (Gate::allows('voice-export-delete')) {
-                        if ($row->export_status == 3) {
-                            $html .= '<button type="button" data-rowid="' . $row->id . '" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i> ลบรายการ</button>';
-                        } else {
-                            $html .= '<button type="button" class="btn btn-sm btn-danger disabled" data-toggle="tooltip" data-placement="bottom" title="ยัง Export ไม่เสร็จ"><i class="fa fa-trash"></i> ลบรายการ</button> ';
-                        }
-                    } else {
-                        $html .= '<button type="button" class="btn btn-sm btn-danger disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-trash"></i> ลบรายการ</button> ';
+                        $html = '<button type="button" class="btn btn-sm btn-danger disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-trash"></i> ลบรายการ</button> ';
                     }
                     return $html;
                 })
                 ->addColumn('more', function ($row) {
                     return '';
                 })
-                ->rawColumns(['checkbox', 'export_progress', 'action'])->toJson();
+                ->rawColumns(['checkbox', 'job_process', 'action'])->toJson();
         }
 
 
