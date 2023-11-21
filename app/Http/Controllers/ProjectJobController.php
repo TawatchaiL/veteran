@@ -138,7 +138,8 @@ class ProjectJobController extends Controller
 
                 $i = 0;
                 while (($objArr = fgetcsv($objCSV, 100000, ",")) !== false) {
-                    if (is_numeric($objArr[0])) {
+                    dd($objArr[0]);
+                    if ($objArr[0]) {
                         $projectJobNumber = new ProjectJobNumber([
                             'create_date' => $cdate,
                             'call_number' => $objArr[0],
