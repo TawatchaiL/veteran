@@ -468,9 +468,8 @@
                             fontSize: 16
                         };
                         doc.content.splice(0,1);
-                        doc.pageMargins = [30,75,200,300];
+                        doc.pageMargins = [30,75,20,30];
 						doc.styles.tableHeader.fontSize = 16;
-                        doc.content.table.width = [400, '*'];
                         doc['header']=(function() {
 							return {
 								columns: [
@@ -484,16 +483,12 @@
 										text: '10 อันดับเรื่องที่ติดต่อมากที่สุด',
 										fontSize: 18,
 										margin: [20,15]
-									},
-									{
-										alignment: 'right',
-										fontSize: 14,
-										text: 'Custom PDF export with dataTables'
 									}
 								],
 								margin:20
 							}
 						});
+                        doc.content[0].table.widths = [400, '*'];
                         var objLayout = {};
 						objLayout['hLineWidth'] = function(i) { return .5; };
 						objLayout['vLineWidth'] = function(i) { return .5; };
