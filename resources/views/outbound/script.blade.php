@@ -191,6 +191,7 @@
 
             var formData = new FormData();
             formData.append('csv_file', $('#AddCSV')[0].files[0]);
+            formData.append('agent', $('#AddAgent').val()[0]);
             formData.append('_token', token);
             $.ajax({
                 url: "{{ route('outbound.store') }}",

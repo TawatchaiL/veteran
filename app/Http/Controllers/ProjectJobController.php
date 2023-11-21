@@ -126,7 +126,6 @@ class ProjectJobController extends Controller
             $user = Auth::user();
 
             $projectJob = new ProjectJob([
-                'job_project_id' => $request->input('project_id'),
                 'job_code_id' => $datea,
                 'job_create_date' => $cdate,
                 'job_file' => $realn,
@@ -153,7 +152,7 @@ class ProjectJobController extends Controller
                         'create_date' => $cdate,
                         'call_number' => $addzero . $objArr[0],
                         'project_job_id' => $lastId,
-                        //'dial_agent' => '',
+                        'dial_agent' => $request->input('agent'),
                     ]);
 
                     $projectJobNumber->save();
