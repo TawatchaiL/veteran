@@ -86,11 +86,6 @@ class ReportSumScoreAgentController extends Controller
                 })
                 ->rawColumns(['checkbox', 'action'])->toJson();
         }
-        $agents = User::orderBy("id", "asc")->get();
-        $agent_data = array();
-        foreach ($agents as $agent) {
-            $agent_data[$agent->id] = $agent->name;
-        }
         return view('reportsumscoreagent.index');
     }
 
