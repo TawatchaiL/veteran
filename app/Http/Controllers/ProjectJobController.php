@@ -111,7 +111,7 @@ class ProjectJobController extends Controller
                         $button_txt = "Stop/Pause";
                     }
                     if (Gate::allows('outbound-edit')) {
-                        $html = '<button type="button" class="btn btn-sm btn-warning btn-edit"  data-id="' . $row->id . '"><i class="fa fa-edit"></i> ' . $button_txt . '</button> ';
+                        $html = '<button type="button" class="btn btn-sm btn-warning btn-edit"  data-id="' . $row->job_id . '"><i class="fa fa-edit"></i> ' . $button_txt . '</button> ';
                     } else {
                         $html = '<button type="button" class="btn btn-sm btn-warning disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-edit"></i> Pause</button> ';
                     }
