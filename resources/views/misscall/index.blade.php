@@ -97,9 +97,11 @@
                                     <thead>
                                         <tr>
                                             <th width="5%"><input type="checkbox" id="check-all" class="flat"></th>
+                                            <th>Agent</th>
                                             <th>วันที่</th>
                                             <th>เวลา</th>
                                             <th>เบอร์โทรศัพท์</th>
+                                            <th>เวลารอสาย</th>
                                         </tr>
                                     </thead>
                                     <tbody>
