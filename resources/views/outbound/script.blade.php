@@ -256,6 +256,7 @@
                         toastr.success(data.message, {
                             timeOut: 5000
                         });
+                        $('#Listview').DataTable().ajax.reload();
                     }
                 }
             });

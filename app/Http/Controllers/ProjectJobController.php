@@ -244,7 +244,7 @@ class ProjectJobController extends Controller
 
         $update->update($data);
 
-        return response()->json(['success' => 'แก้ไข สถานะรายการโทรออก เรียบร้อยแล้ว']);
+        return response()->json(['success' => true, 'message' => 'แก้ไข สถานะรายการโทรออก เรียบร้อยแล้ว']);
     }
 
     public function destroy(Request $request)
