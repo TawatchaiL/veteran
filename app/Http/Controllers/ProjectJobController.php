@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class ProjectJobController extends Controller
@@ -46,12 +47,31 @@ class ProjectJobController extends Controller
 
         if ($request->ajax()) {
 
-            $datas = ProjectJob::orderBy("job_id", "desc")->get();
+            //$datas = ProjectJob::orderBy("job_id", "desc")->get();
+            $datas = ProjectJob::select(
+                'project_jobs.job_id as job_id',
+                'project_jobs.job_code_id as job_code_id',
+                'project_jobs.job_create_date as job_create_date',
+                'project_jobs.job_admin as job_admin',
+                'project_jobs.job_status as job_status',
+                'project_jobs.job_file as jfile',
+                DB::raw('SUM(CASE WHEN project_job_numbers.call_status = 1 THEN 1 ELSE 0 END) AS a_call'),
+                DB::raw('SUM(CASE WHEN project_job_numbers.call_status = 0 THEN 1 ELSE 0 END) AS an_call'),
+                DB::raw('SUM(CASE WHEN project_job_numbers.dial_status = 1 THEN 1 ELSE 0 END) AS call_success'),
+                DB::raw('SUM(CASE WHEN project_job_numbers.dial_status = 2 OR project_job_number.dial_status = 3 OR project_job_number.dial_status = 4 OR project_job_number.dial_status = 0 THEN 1 ELSE 0 END) AS call_failed'),
+            )
+                ->join('project_job_numbers', 'project_jobs.job_id', '=', 'project_job_numbers.project_job_id')
+                //->whereRaw($ssql)
+                ->groupBy('project_jobs.job_id')
+                ->orderByDesc('project_jobs.job_id')
+                //->limit(200)
+                ->get();
+
             $state_text = ['Stop', 'Start', 'Pause'];
 
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
-                    return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->job_id . '" >';
+                    return '<input type="checkbox" id="' . $row->job_id . '" class="flat" name="table_records[]" value="' . $row->job_id . '" >';
                 })
                 ->editColumn('job_status', function ($row) use ($state_text) {
                     $state = $state_text[$row->job_status];
@@ -62,11 +82,12 @@ class ProjectJobController extends Controller
                     return $state;
                 })
                 ->editColumn('job_process', function ($row) {
+                    $perp = ($row->a_call/($row->a_call+$row->an_call))*100;
                     $progress = ' <div class="progress progress-sm active">
-                    <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="' . $row->job_process . '" aria-valuemin="0" aria-valuemax="100" style="width: ' . $row->export_progress . '%">
-                    <span class="sr-only">' . $row->job_process . '% Complete</span>
+                    <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="' . $perp . '" aria-valuemin="0" aria-valuemax="100" style="width: ' . $perp . '%">
+                    <span class="sr-only">' . $perp . '% Complete</span>
                     </div>
-                    </div><small>' . $row->job_process . '% Complete</small>';
+                    </div><small>' . $perp . '% Complete</small>';
                     return $progress;
                 })
                 ->addColumn('action', function ($row) {
@@ -126,7 +147,7 @@ class ProjectJobController extends Controller
             $user = Auth::user();
 
             $projectJob = new ProjectJob([
-                'job_code_id' => $datea,
+                'job_code_id' => $datea . '_' . $realn,
                 'job_create_date' => $cdate,
                 'job_file' => $realn,
                 'job_admin' => $user->id,
@@ -229,7 +250,6 @@ class ProjectJobController extends Controller
                 }
 
                 $data->delete();
-
             }
         }
 
