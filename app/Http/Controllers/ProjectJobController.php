@@ -138,12 +138,16 @@ class ProjectJobController extends Controller
             $objCSV = fopen(public_path("csv/$remoteFilename"), "r");
 
             $i = 0;
+            $addzero = '';
             while (($objArr = fgetcsv($objCSV, 100000, ",")) !== false) {
                 //dd($objArr[0]);
                 if ($objArr[0]) {
+                    if (strlen($objArr[0]) < 10) {
+                        $addzero = '0';
+                    }
                     $projectJobNumber = new ProjectJobNumber([
                         'create_date' => $cdate,
-                        'call_number' => $objArr[0],
+                        'call_number' => $addzero . $objArr[0],
                         'project_job_id' => $lastId,
                         //'dial_agent' => '',
                     ]);
