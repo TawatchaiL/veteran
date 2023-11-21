@@ -96,6 +96,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/outbound', [App\Http\Controllers\ProjectJobController::class, 'index'])->name('outbound');
     Route::post('/outbound/store', [App\Http\Controllers\ProjectJobController::class, 'store'])->name('outbound.store');
+    Route::post('/outbound/edit', [App\Http\Controllers\ProjectJobController::class, 'update'])->name('outbound.edit');
     Route::delete('/outbound/destroy', [App\Http\Controllers\ProjectJobController::class, 'destroy'])->name('outbound.destroy');
     Route::post('/outbound/destroy_all', [App\Http\Controllers\ProjectJobController::class, 'destroy_all'])->name('outbound.destroy_all');
 });
