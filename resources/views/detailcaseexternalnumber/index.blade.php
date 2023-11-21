@@ -134,7 +134,8 @@
                                             <th></th>
                                             <th align="right">รวม</th>
                                             <th align="left"></th>
-                                            
+                                            <th></th>
+                                            <th></th>
                                         </tr>
                                     </tfoot>
                                 </table>
