@@ -487,7 +487,7 @@
 										italics: true,
 										text: '10 อันดับเรื่องที่ติดต่อมากที่สุด',
 										fontSize: 18,
-										margin: [50,0]
+										margin: [20,20]
 									},
 									{
 										alignment: 'right',
