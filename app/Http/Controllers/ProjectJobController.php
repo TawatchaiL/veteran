@@ -57,6 +57,10 @@ class ProjectJobController extends Controller
                     $state = $state_text[$row->job_status];
                     return $state;
                 })
+                ->editColumn('job_admin', function ($row) use ($agentArray) {
+                    $state = $agentArray[$row->job_admin]['name'];
+                    return $state;
+                })
                 ->editColumn('job_process', function ($row) {
                     $progress = ' <div class="progress progress-sm active">
                     <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="' . $row->job_process . '" aria-valuemin="0" aria-valuemax="100" style="width: ' . $row->export_progress . '%">
@@ -122,7 +126,6 @@ class ProjectJobController extends Controller
             $user = Auth::user();
 
             $projectJob = new ProjectJob([
-                'job_project_id' => $request->input('project_id'),
                 'job_code_id' => $datea,
                 'job_create_date' => $cdate,
                 'job_file' => $realn,
@@ -133,7 +136,7 @@ class ProjectJobController extends Controller
 
             $projectJob->save();
 
-            $lastId = $projectJob->id;
+            $lastId = $projectJob->job_id;
 
             $objCSV = fopen(public_path("csv/$remoteFilename"), "r");
 
@@ -149,7 +152,7 @@ class ProjectJobController extends Controller
                         'create_date' => $cdate,
                         'call_number' => $addzero . $objArr[0],
                         'project_job_id' => $lastId,
-                        //'dial_agent' => '',
+                        'dial_agent' => $request->input('agent'),
                     ]);
 
                     $projectJobNumber->save();
