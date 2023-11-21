@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id('job_number_id');
             $table->string('cdr_uniqueid', 50)->nullable();
             $table->unsignedBigInteger('project_job_id')->nullable();
-            $table->string('project_name', 100)->nullable();
-            $table->string('callcode', 50)->nullable();
             $table->dateTime('create_date')->nullable();
             $table->string('call_number', 50)->nullable();
             $table->integer('dial_agent')->nullable();
