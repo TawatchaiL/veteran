@@ -79,7 +79,7 @@ class DetailcaseinternalnumberController extends Controller
                 ->rawColumns(['checkbox', 'action', 'agent'])->toJson();
         }
 
-        return view('detailcaseinternalnumber.index');
+        return view('detailcaseinternalnumber.index')->with(['agents' => $agents]);
     }
 
 
