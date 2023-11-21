@@ -144,7 +144,7 @@ class ProjectJobController extends Controller
                             'create_date' => $cdate,
                             'call_number' => $objArr[0],
                             'project_job_id' => $lastId,
-                            'dial_agent' => '',
+                            //'dial_agent' => '',
                         ]);
 
                         $projectJobNumber->save();
