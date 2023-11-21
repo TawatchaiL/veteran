@@ -2,7 +2,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-6">
-                <aside class="sidebar">
+                <aside class="sidebarr">
                     <div class="single contact-info">
                         <h3 class="side-title">Contact Information</h3>
                         <ul class="list-unstyled">
