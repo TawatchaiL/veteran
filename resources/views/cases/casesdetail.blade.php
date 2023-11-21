@@ -9,27 +9,27 @@
                             <li>
                                 <div class="icon"><i class="fa fa-map-marker"></i></div>
                                 <div class="info">
-                                    <p>HN <br>{{ $datact->hn }}</p>
+                                    <p><strong>HN</strong> <br>&nbsp;{{ $datact->hn }}</p>
                                 </div>
                             </li>
 
                             <li>
                                 <div class="icon"><i class="fa fa-phone"></i></div>
                                 <div class="info">
-                                    <p>ประเภทเคส <br>{{ $cases->casetype1 }}</p>
+                                    <p><strong>ประเภทเคส</strong> <br>&nbsp;{{ $cases->casetype1 }}</p>
                                 </div>
                             </li>
 
                             <li>
                                 <div class="icon"><i class="fa fa-envelope"></i></div>
                                 <div class="info">
-                                    <p>รายละเอียดเคสย่อย<br>{{ $cases->casetype3 }}</p>
+                                    <p><strong>รายละเอียดเคสย่อย</strong><br>&nbsp;{{ $cases->casetype3 }}</p>
                                 </div>
                             </li>
                             <li>
                                 <div class="icon"><i class="fa fa-envelope"></i></div>
                                 <div class="info">
-                                    <p>รายละเอียดเคส เพิ่มเติม 2<br>{{ $cases->casetype5 }}</p>
+                                    <p><strong>รายละเอียดเคส เพิ่มเติม 2</strong><br>&nbsp;{{ $cases->casetype5 }}</p>
                                 </div>
                             </li>
                         </ul>
@@ -44,7 +44,7 @@
                             <li>
                                 <div class="icon"><i class="fa fa-map-marker"></i></div>
                                 <div class="info">
-                                    <p>ชื่อ-สกุล <br>{{ $datact->tname }}{{ $datact->fname }}
+                                    <p><strong>ชื่อ-สกุล</strong> <br>&nbsp;{{ $datact->tname }}{{ $datact->fname }}
                                         {{ $datact->lname }}</p>
                                 </div>
                             </li>
@@ -52,22 +52,39 @@
                             <li>
                                 <div class="icon"><i class="fa fa-phone"></i></div>
                                 <div class="info">
-                                    <p>รายละเอียดเคส<br>{{ $cases->casetype2 }}</p>
+                                    <p><strong>รายละเอียดเคส</strong><br>&nbsp;{{ $cases->casetype2 }}</p>
                                 </div>
                             </li>
 
                             <li>
                                 <div class="icon"><i class="fa fa-envelope"></i></div>
                                 <div class="info">
-                                    <p>รายละเอียดเคส เพิ่มเติม 1<br>{{ $cases->casetype4 }}</p>
+                                    <p><strong>รายละเอียดเคส เพิ่มเติม 1</strong><br>&nbsp;{{ $cases->casetype4 }}</p>
                                 </div>
                             </li>
                             <li>
                                 <div class="icon"><i class="fa fa-envelope"></i></div>
                                 <div class="info">
-                                    <p>รายละเอียดเคส เพิ่มเติม 3<br>{{ $cases->casetype6 }}</p>
+                                    <p><strong>รายละเอียดเคส เพิ่มเติม 3</strong><br>&nbsp;{{ $cases->casetype6 }}</p>
                                 </div>
                             </li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+            <div class="col-md-12">
+                <aside class="sidebarr">
+                    <div class="single contact-info">
+                        <h4 class="side-title"></h4>
+                        <ul class="list-unstyled">
+                            <li>
+                                <div class="icon"><i class="fa fa-map-marker"></i></div>
+                                <div class="info">
+                                    <p><strong>รายละเอียด</strong> <br>&nbsp;{{ $cases->casedetail }}</p>
+                                </div>
+                            </li>
+
+                            
                         </ul>
                     </div>
                 </aside>
@@ -112,7 +129,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <strong><i class="fa-regular fa-comment-dots"></i>
-                    รายละเอียด : </strong>{{ $cases->casedetail }}
+                    รายละเอียด : </strong>
             </div>
         </div>
     </div>
