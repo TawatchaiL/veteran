@@ -474,36 +474,10 @@
                             fontSize: 16
                         };
                         // กำหนดความกว้างของ header แต่ละคอลัมน์หัวข้อ
-                        doc.content[1].table.widths = [400, '*'];
+                        //doc.content[1].table.widths = [400, '*'];
                         doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
                         // Add cell borders
-                        doc.content[1].table.layout = {
-                            hLineWidth: function(i, node) {
-                                return 1; // Border width for horizontal lines
-                            },
-                            vLineWidth: function(i, node) {
-                                return 1; // Border width for vertical lines
-                            },
-                            hLineColor: function(i, node) {
-                                return '#bfbfbf'; // Border color for horizontal lines
-                            },
-                            vLineColor: function(i, node) {
-                                return '#bfbfbf'; // Border color for vertical lines
-                            },
-                            paddingLeft: function(i, node) {
-                                return 5; // Padding for cells
-                            },
-                            paddingRight: function(i, node) {
-                                return 5; // Padding for cells
-                            },
-                            paddingTop: function(i, node) {
-                                return 3; // Padding for cells
-                            },
-                            paddingBottom: function(i, node) {
-                                return 3; // Padding for cells
-                            }
 
-                        }
                         for (var i = 1; i < doc.content[1].table.body.length; i++) {
                             doc.content[1].table.body[i][0].alignment =
                                 'left'; // Align the first column to the center
