@@ -7,6 +7,7 @@
                 _token: token,
             },
             success: (data) => {
+                console.log(data);
                 data.avg_data.forEach((item) => {
                     avg_talk.html(item.avg_talk_time)
                     avg_wait.html(item.avg_hold_time)
