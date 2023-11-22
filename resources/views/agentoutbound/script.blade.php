@@ -300,6 +300,7 @@
                     $('#dial_number').val(res.data.call_number)
                     $('#ToolbarModal').modal('show');
                     $('#dial_button').click();
+                    $('#Listview').DataTable().ajax.reload();
                 }
             });
 

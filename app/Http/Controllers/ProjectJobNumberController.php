@@ -140,7 +140,7 @@ class ProjectJobNumberController extends Controller
     public function call($id)
     {
         $data = ProjectJobNumber::find($id);
-
+        $data->update(['call_status' => 1]);
         return response()->json([
             'data' => $data,
         ]);
