@@ -1046,9 +1046,10 @@
                     mcallexten = data[2][1];
                     mcalldestchan = data[3][1];
                     mcallcontext = data[8][1];
+                    mcalldnid = data[9][1];
 
                     if (strArray[4] == 'Ringing' || strArray[4] == 'Ring') {
-                        state = 'กำลังรอสาย0'
+                        state = 'กำลังรอสาย'
                         state_icon =
                             '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
                         state_color = 'card-danger';
@@ -1074,13 +1075,14 @@
                             hold_button = "d-none";
                             dans_button = "d-none";
                         } else {
-                            state = 'กำลังรอสาย1'
+                            state = 'กำลังรอสาย'
                             state_icon =
                                 '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
                             state_color = 'card-danger';
                             check_box_state = 'disabled';
                             hold_button = "d-none";
                             dans_button = "d-none";
+                            mcallexten = mcalldnid;
                         }
                     } else if (strArray[4] == 'Up') {
                         state = 'กำลังสนทนา'
