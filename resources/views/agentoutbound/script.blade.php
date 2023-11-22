@@ -245,8 +245,8 @@
             localStorage.removeItem('searchText');
 
             // Set field values to empty
-            $('#searchtype').val('');
-            $('#calltype').val('');
+            $('#searchtype').val(0);
+            $('#calltype').val(0);
             $('#searchtext').val('');
 
             $('#Listview').html('');
