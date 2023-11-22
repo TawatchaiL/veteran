@@ -73,7 +73,7 @@ class ProjectJobNumberController extends Controller
                 $searchtext = $request->input('searchtext');
                 if ($searchtext) {
                     $datass->where(function ($query) use ($searchtext) {
-                        $query->where('call_number', $searchtext);
+                        $query->where('call_number', 'like', "$searchtext%");
                     });
                 }
             }
