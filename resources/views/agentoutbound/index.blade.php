@@ -60,7 +60,7 @@
                                         <div class="col-xs-4 col-sm-4 col-md-4">
                                             <div class="form-group">
                                                 <strong><i class="fa-solid fa-calendar"></i>
-                                                    วันที่:</strong>
+                                                    ประเภทวันที่:</strong>
                                                 <select style="width: 100%;" class="select2 form-control" id="seachtype"
                                                     name="seachtype">
                                                     <option value="0" selected>ตัวเลือก</option>
@@ -71,7 +71,7 @@
                                         </div>
                                         <div class="col-xs-8 col-sm-8 col-md-8">
                                             <div class="form-group">
-                                                <strong><i class="fa-solid fa-calendar"></i>
+                                                <strong><i class="fa-solid fa-calendar"></i> วันที่: 
                                                 </strong>
                                                 <input type="text" class="form-control" id="reservation"
                                                     style="width: 350px">
@@ -84,8 +84,8 @@
                                             <div class="form-group">
                                                 <strong><i class="fa-solid fa-id-card"></i>
                                                     ประเภทรายการ:</strong>
-                                                <select style="width: 100%;" class="select2 form-control" id="seachtype"
-                                                    name="seachtype">
+                                                <select style="width: 100%;" class="select2 form-control" id="calltype"
+                                                    name="calltype">
                                                     <option value="0" selected>ตัวเลือก</option>
                                                     <option value="1">ยังไม่ได้โทรออก</option>
                                                     <option value="2">โทรออกแล้ว</option>
