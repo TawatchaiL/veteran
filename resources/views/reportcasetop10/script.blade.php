@@ -479,11 +479,11 @@
                                         margin: [250, 0, 50, 50]
 									},
 									{
-										alignment: 'left',
+										alignment: 'center',
 										italics: true,
 										text: '10 อันดับเรื่องที่ติดต่อมากที่สุด',
 										fontSize: 18,
-										margin: [20,15]
+										margin: [100, 10, 100, 100]
 									}
 								],
 								margin:20
