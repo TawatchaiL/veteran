@@ -123,9 +123,11 @@
                                             <tr>
                                                 <th width="50px"><input type="checkbox" id="check-all" class="flat">
                                                 </th>
-                                                <th>วันที่เวลาที่สร้าง</th>
+                                                <th>วันเวลาที่สร้าง</th>
+                                                <th>วันเวลาที่โทร</th>
                                                 <th>เบอร์โทร</th>
                                                 <th>สถานะ</th>
+                                                <th>Agent</th>
                                                 <th width="180px"></th>
                                                 <th>More</th>
                                             </tr>

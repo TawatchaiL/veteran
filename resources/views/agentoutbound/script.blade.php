@@ -210,12 +210,20 @@
                     name: 'create_date'
                 },
                 {
+                    data: 'call_date',
+                    name: 'call_date'
+                },
+                {
                     data: 'call_number',
                     name: 'call_number'
                 },
                 {
                     data: 'call_status',
                     name: 'call_status'
+                },
+                {
+                    data: 'dial_number',
+                    name: 'dial_number'
                 },
                 {
                     data: 'action',

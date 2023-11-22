@@ -33,6 +33,13 @@ class ProjectJobNumberController extends Controller
     public function index(Request $request)
     {
         $uid = Auth::user()->id;
+        $agens = User::orderBy('name', 'asc')->get();
+        $agentArray = [];
+
+        foreach ($agens as $agen) {
+            $agentArray[$agen->id]['name'] = $agen->name;
+        }
+
         $datass = ProjectJobNumber::orderBy("job_number_id", "desc")
             ->where('dial_agent', $uid);
         if ($request->ajax()) {
@@ -90,6 +97,9 @@ class ProjectJobNumberController extends Controller
                 })
                 ->editColumn('call_status', function ($row) use ($ctype_text) {
                     return $ctype_text[$row->call_status];
+                })
+                ->editColumn('dial_number', function ($row) use ($agentArray) {
+                    return $agentArray[$row->dial_agent].' ('.$row->dial_nymber.')';
                 })
                 ->addColumn('action', function ($row) {
                     if (Gate::allows('agent-outbound')) {
