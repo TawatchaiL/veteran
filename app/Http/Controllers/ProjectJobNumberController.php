@@ -19,7 +19,7 @@ class ProjectJobNumberController extends Controller
     public function __construct()
     {
         //$this->middleware('auth');
-        $this->middleware('permission:outbound-list|outbound-create|outbound-edit|outbound-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:agent-outbound-list|outbound-create|outbound-edit|outbound-delete', ['only' => ['index', 'show']]);
         $this->middleware('permission:outbound-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:outbound-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:outbound-delete', ['only' => ['destroy']]);
@@ -35,7 +35,7 @@ class ProjectJobNumberController extends Controller
        
         if ($request->ajax()) {
 
-            $datas = ProjectJobNumber::orderBy("id", "desc")->get();
+            $datas = ProjectJobNumber::orderBy("job_number_id", "desc")->get();
             $state_text = ['All', 'รอคิว', 'กำลังทำงาน', 'Export เสร็จแล้ว'];
             $ctype_text = ['All', 'สายเข้า', 'โทรออก', 'ภายใน'];
 
