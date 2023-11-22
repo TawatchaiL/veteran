@@ -112,7 +112,7 @@ class BillingController extends Controller
                 }
             }
 
-            if (!Gate::allows('voice-record-supervisor')) {
+            if (!Gate::allows('billing-list')) {
                 $uid = Auth::user()->id;
 
                 $datass->where(function ($query) use ($uid) {
@@ -183,7 +183,7 @@ class BillingController extends Controller
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
 
-        return view('voicerecord.index', [
+        return view('billing.index', [
             'datas' => $datass,
             'agens' => $agens,
         ]);
