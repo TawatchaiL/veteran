@@ -214,6 +214,10 @@
                     name: 'call_number'
                 },
                 {
+                    data: 'call_status',
+                    name: 'call_status'
+                },
+                {
                     data: 'action',
                     name: 'action'
                 },

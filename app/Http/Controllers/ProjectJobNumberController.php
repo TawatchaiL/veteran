@@ -68,50 +68,28 @@ class ProjectJobNumberController extends Controller
                 $datass->where('call_status', 0);
             }
 
-            /*if (!empty($request->get('ctype'))) {
-                $ctype = $request->input('ctype');
-                if ($ctype == 1) {
-                    $datass->where('asteriskcdrdb.cdr.accountcode', '')
-                        ->where('asteriskcdrdb.cdr.userfield', '=', '')
-                        ->where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
-                } else if ($ctype == 2) {
-                    $datass->where('asteriskcdrdb.cdr.accountcode', '!=', '')
-                        ->where('asteriskcdrdb.cdr.userfield', '!=', '')
-                        ->where('asteriskcdrdb.cdr.dst_userfield', '=', NULL);
-                } else if ($ctype == 3) {
-                    $datass->where('asteriskcdrdb.cdr.accountcode', '!=', '')
-                        ->where('asteriskcdrdb.cdr.userfield', '!=', '')
-                        ->where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
-                }
-            }
 
-            if (!empty($request->get('agent'))) {
-                $agent = $request->input('agent');
-                if ($agent) {
-                    $datass->where(function ($query) use ($agent) {
-                        $query->where('asteriskcdrdb.cdr.userfield', $agent)
-                            ->orWhere('dst_userfield', $agent);
+            if (!empty($request->get('searchtext'))) {
+                $searchtext = $request->input('searchtext');
+                if ($searchtext) {
+                    $datass->where(function ($query) use ($searchtext) {
+                        $query->where('call_number', $searchtext);
                     });
                 }
             }
 
-            if (!Gate::allows('voice-record-supervisor')) {
-                $uid = Auth::user()->id;
-
-                $datass->where(function ($query) use ($uid) {
-                    $query->where('asteriskcdrdb.cdr.userfield', $uid)
-                        ->orWhere('dst_userfield', $uid);
-                });
-            } */
 
             $datas = $datass->get();
 
             $state_text = ['All', 'รอคิว', 'กำลังทำงาน', 'Export เสร็จแล้ว'];
-            $ctype_text = ['All', 'สายเข้า', 'โทรออก', 'ภายใน'];
+            $ctype_text = ['ยังไม่ได้โทรออก', 'โทรออกแล้ว'];
 
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row->job_number_id . '" class="flat" name="table_records[]" value="' . $row->job_number_id . '" >';
+                })
+                ->editColumn('call_status', function ($row) use ($ctype_text) {
+                    return $ctype_text[$row->status];
                 })
                 ->addColumn('action', function ($row) {
                     if (Gate::allows('agent-outbound')) {
