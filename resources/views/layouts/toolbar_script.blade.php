@@ -1084,7 +1084,7 @@
                             check_box_state = 'disabled';
                             hold_button = "d-none";
                             dans_button = "d-none";
-                            mcallexten = mcalldnid;
+                            mcallexten = mcallprofile;
                         }
                     } else if (strArray[4] == 'Up') {
                         state = 'กำลังสนทนา'
