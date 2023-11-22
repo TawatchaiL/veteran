@@ -443,6 +443,19 @@ class PBXController extends Controller
                     'status' => 0
                 ]);
 
+            //outbound
+            if ($request->input('context') == 'macro-dialout-trunk') {
+                $outbound = Project_job_number::where('call_number', $request->input('telno'))
+                    ->where('dial_agent', $user->id)
+                    ->orderByDesc('job_number_id')
+                    ->first();
+                if (!empty($outbound)) {
+                    $outbound->update([
+                        'dial_status' => 1,
+                    ]);
+                }
+            }
+
             $user->phone_status_id = 5;
             $user->phone_status = "กำลังสนทนากับ < " . $request->input('telno') . " >";
             $user->phone_status_icon = '<i class="fa-solid fa-phone-volume fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i>';
