@@ -46,7 +46,7 @@ class ProjectJobNumberController extends Controller
                         $startDate = $dateRangeArray[0];
                         $endDate = $dateRangeArray[1];
                         //dd($startDate . ' - ' . $endDate);
-                        $datass->whereBetween('asteriskcdrdb.cdr.calldate', [$startDate, $endDate]);
+                        $datass->whereBetween('create_date', [$startDate, $endDate]);
                     }
                 }
             }
