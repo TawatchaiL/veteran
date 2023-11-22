@@ -35,7 +35,11 @@ class ProjectJobNumberController extends Controller
 
         if ($request->ajax()) {
 
-            $datas = ProjectJobNumber::orderBy("job_number_id", "desc")->get();
+            $uid = Auth::user()->id;
+
+            $datas = ProjectJobNumber::orderBy("job_number_id", "desc")
+                ->where(['dial_agent', $uid])
+                ->get();
             $state_text = ['All', 'รอคิว', 'กำลังทำงาน', 'Export เสร็จแล้ว'];
             $ctype_text = ['All', 'สายเข้า', 'โทรออก', 'ภายใน'];
 
@@ -71,7 +75,7 @@ class ProjectJobNumberController extends Controller
         return view('agentoutbound.index');
     }
 
-     /**
+    /**
      * Show the form for editing the specified resource.
      */
     public function call($id)
