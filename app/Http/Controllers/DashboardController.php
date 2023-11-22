@@ -111,7 +111,8 @@ class DashboardController extends Controller
                 DB::raw('AVG(duration_wait) as avg_hold_time'),
                 DB::raw('SUM(duration) as total_talk_time'),
                 DB::raw('MAX(duration_wait) as max_hold_time'),
-                DB::raw('(SELECT sum(score) FROM agent_score_today WHERE crm_id = ' . $user->id . ') as total_score')
+                DB::raw('(SELECT sum(score) FROM agent_score_today WHERE crm_id = ' . $user->id . ') as total_score'),
+                DB::raw('(SELECT score FROM agent_score_today WHERE crm_id = ' . $user->id . ' order by datetime desc limit 0,1) as latest_score')
             )
             ->where('crm_id', $user->id)
             ->get();
@@ -134,6 +135,7 @@ class DashboardController extends Controller
             'total_talk_time' => $this->formatDuration($remoteQueue->first()->total_talk_time),
             'max_hold_time' => $this->formatDuration($remoteQueue->first()->max_hold_time),
             'total_score' => $remoteQueue->first()->total_score,
+            'latest_score' => $remoteQueue->first()->latest_score,
             'total_case' => $localQueue->first()->total_case,
             'total_closed_case' => $localQueue->first()->total_closed_case,
             'total_transfer_case' => $localQueue->first()->total_transfer_case,
