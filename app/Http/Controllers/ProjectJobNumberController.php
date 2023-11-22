@@ -89,7 +89,7 @@ class ProjectJobNumberController extends Controller
                     return '<input type="checkbox" id="' . $row->job_number_id . '" class="flat" name="table_records[]" value="' . $row->job_number_id . '" >';
                 })
                 ->editColumn('call_status', function ($row) use ($ctype_text) {
-                    return $ctype_text[$row->status];
+                    return $ctype_text[$row->call_status];
                 })
                 ->addColumn('action', function ($row) {
                     if (Gate::allows('agent-outbound')) {
