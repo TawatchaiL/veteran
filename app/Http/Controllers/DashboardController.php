@@ -109,11 +109,13 @@ class DashboardController extends Controller
                 DB::raw('AVG(duration_wait) as avg_hold_time'),
                 DB::raw('SUM(duration) as total_talk_time'),
                 DB::raw('MAX(duration_wait) as max_hold_time'),
+                DB::raw('(SELECT count(*) FROM crm_cases WHERE agent = ' . $user->id . ' && DATE(created_at) = CURDATE()) as total_case'),
+                DB::raw("(SELECT count(*) FROM crm_cases WHERE agent = " . $user->id . " && case_status='ปิดเคส' && DATE(created_at) = CURDATE()) as total_closed_case"),
+                DB::raw("(SELECT count(*) FROM crm_cases WHERE agent = " . $user->id . " && tranferstatus!='ไม่มีการโอนสาย' && DATE(created_at) = CURDATE()) as total_tranfer_case"),
                 DB::raw('(SELECT sum(score) FROM agent_score_today WHERE crm_id = ' . $user->id . ') as total_score')
             )
             ->where('crm_id', $user->id)
             ->get();
-
 
         $formattedQueue = [];
 

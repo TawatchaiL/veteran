@@ -13,6 +13,9 @@
                     total_talk.html(item.total_talk_time)
                     total_call.html(item.total_call)
                     total_score.html(item.total_score)
+                    total_closed_case.html(item.total_case)
+                    total_case.html(item.total_case)
+                    total_tranfer_case.html(item.total_tranfer_case)
                 });
             },
             error: (error) => {
@@ -467,6 +470,9 @@
     const total_talk = $('#total_talk');
     const avg_wait = $('#avg_wait');
     const total_score = $('#total_score');
+    const total_case = $('#total_case');
+    const total_closed_case = $('#total_closed_case');
+    const total_tranfer_case = $('#total_tranfer_case');
 
     //const max_wait = document.getElementById("max_wait");
     $(document).ready(() => {
