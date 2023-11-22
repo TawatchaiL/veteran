@@ -483,7 +483,7 @@
 										italics: true,
 										text: '10 อันดับเรื่องที่ติดต่อมากที่สุด',
 										fontSize: 18,
-										margin: [100, 55, 100, 50]
+										margin: [0, 50, 0, 0]
 									}
 								],
 								margin:20
