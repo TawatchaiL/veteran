@@ -82,8 +82,8 @@
                                                 <select style="width: 100%;" class="select2 form-control" id="seachtype"
                                                     name="seachtype">
                                                     <option value="0" selected>ตัวเลือกการค้นหา</option>
-                                                    <option value="0">ยังไม่ได้โทรออก</option>
-                                                    <option value="1">โทรออกแล้ว</option>
+                                                    <option value="1">ยังไม่ได้โทรออก</option>
+                                                    <option value="2">โทรออกแล้ว</option>
                                                 </select>
                                             </div>
                                         </div>
