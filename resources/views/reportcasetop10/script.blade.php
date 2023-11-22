@@ -470,6 +470,7 @@
                         doc.content.splice(0,1);
                         doc.pageMargins = [30,75,20,30];
 						doc.styles.tableHeader.fontSize = 16;
+                        doc.defaultStyle.alignment = 'center';
                         doc['header']=(function() {
 							return {
 								columns: [
