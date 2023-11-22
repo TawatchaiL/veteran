@@ -30,23 +30,21 @@
 
         function storeFieldValues() {
             var dateStart = $('#reservation').val();
-            var sagent = $('#agen').val();
+            var searchType = $('#seachtype').val();
             var stelp = $('#telp').val();
             var sctype = $('#ctype').val();
 
             // Store values in local storage
             localStorage.setItem('dateStart', dateStart);
-            localStorage.setItem('sagent', sagent);
+            localStorage.setItem('searchType', searchType);
             localStorage.setItem('stelp', stelp);
             localStorage.setItem('sctype', sctype);
         }
 
         function retrieveFieldValues() {
             var saveddateStart = localStorage.getItem('dateStart');
-            var savedsagent = localStorage.getItem('sagent');
-            var savedstelp = localStorage.getItem('stelp');
-            var savedctype = localStorage.getItem('sctype');
-
+            var savedSearchType = localStorage.getItem('searchType');
+            var savedKeyword = localStorage.getItem('keyword');
             // Set field values from local storage
             if (saveddateStart) {
                 var dateParts = saveddateStart.split(' - ');
@@ -58,8 +56,8 @@
 
             $('#reservation').val(`${startDate} - ${endDate}`)
 
-            if (savedsagent) {
-                $('#agen').val(savedsagent);
+            if (savedSearchType) {
+                $('#seachtype').val(savedSearchType);
             }
             if (savedstelp) {
                 $('#telp').val(savedstelp);
@@ -145,7 +143,7 @@
             ajax: {
                 data: function(d) {
                     d.sdate = $('#reservation').val();
-                    //d.agent = $('#agen').val();
+                    d.searchtype = $('#seachtype').val();
                     //d.telp = $('#telp').val();
                     //d.ctype = $('#ctype').val();
                     //d.search = $('input[type="search"]').val();
@@ -228,7 +226,7 @@
 
         var table = $('#Listview').DataTable(table_option);
 
-        $('#searchButton').on('click', function() {
+        $('#btnsearch').on('click', function() {
             storeFieldValues();
             //var telp = $('#telp').val();
             table.search('').draw();

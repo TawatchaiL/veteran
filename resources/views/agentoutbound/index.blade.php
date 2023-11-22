@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('style')
-<style>
-    .dataTables_filter {
-        display: none;
-    }
-</style>
+    <style>
+        .dataTables_filter {
+            display: none;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -60,7 +60,7 @@
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                                 <strong>
-                                                    วันที่บันทึกข้อมูล:</strong>
+                                                    วันที่:</strong>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text">
@@ -68,7 +68,7 @@
                                                         </span>
                                                     </div>
                                                     <input type="text" class="form-control float-right" id="reservation"
-                                                        style="width: 210px">
+                                                        style="width: 250px">
                                                 </div>
 
                                             </div>
@@ -82,12 +82,8 @@
                                                 <select style="width: 100%;" class="select2 form-control" id="seachtype"
                                                     name="seachtype">
                                                     <option value="0" selected>ตัวเลือกการค้นหา</option>
-                                                    <option value="5">รหัสผู้ติดต่อ</option>
-                                                    <option value="6">ชื่อผู้ติดต่อ</option>
-                                                    <option value="1">เบอร์โทรฉุกเฉิน</option>
-                                                    <option value="2">เบอร์โทรศัพท์บ้าน</option>
-                                                    <option value="3">เบอร์โทรศัพท์มือถือ</option>
-                                                    <option value="4">เบอร์โทรศัพท์ที่ทำงาน</option>
+                                                    <option value="1">ยังไม่ได้โทรออก</option>
+                                                    <option value="2">โทรออกแล้ว</option>
                                                 </select>
                                             </div>
                                         </div>
