@@ -1044,6 +1044,7 @@
                     mcallprofile = data[1][1];
                     mcallexten = data[2][1];
                     mcalldestchan = data[3][1];
+                    mcallcontext = data[3][1];
 
                     if (strArray[4] == 'Ringing' || strArray[4] == 'Ring') {
                         state = 'กำลังรอสาย'
@@ -1059,7 +1060,8 @@
                             <a href="#" class="btn btn-success answer_call ${dans_button}" data-id="${exten}">
                                 <i class="fa-solid fa-phone-volume"></i> รับสาย
                             </a>`;
-                        }
+                        } 
+                        mcallexten = data[3][1];
                     } else if (strArray[4] == 'Up' && strArray[12] == '') {
                         if (strArray[5] == "ChanSpy") {
                             spy_exten = strArray[6].split(',');
