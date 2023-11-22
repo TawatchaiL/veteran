@@ -22,6 +22,14 @@
         </a>
     </li>
 @endcan
+@can('agent_outbound-list')
+    <li class="nav-item">
+        <a href="{{ route('agent_outbound') }}" class="nav-link {{ Request::is('agent_outbound') ? 'active' : '' }}">
+            <i class="fas fa-clipboard nav-icon"></i>
+            <p>รายการโทรออก</p>
+        </a>
+    </li>
+@endcan
 @can('case-list')
     <li class="nav-item">
         <a href="{{ route('dashboard.index') }}" class="nav-link {{ Request::is('dashboard.index') ? 'active' : '' }}">
