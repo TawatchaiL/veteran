@@ -837,6 +837,10 @@
                     dial_number.val('');
                     $("[data-toggle=popover]").popover('hide');
                     dialpadcount = 0;
+                    
+                    setTimeout(function() {
+                        call_list();
+                    }, 1500)
                 } else {
                     const prom = ezBSAlert({
                         headerText: "Error",
@@ -1044,7 +1048,7 @@
                     mcallprofile = data[1][1];
                     mcallexten = data[2][1];
                     mcalldestchan = data[3][1];
-                    mcallcontext = data[3][1];
+                    mcallcontext = data[8][1];
 
                     if (strArray[4] == 'Ringing' || strArray[4] == 'Ring') {
                         state = 'กำลังรอสาย'
