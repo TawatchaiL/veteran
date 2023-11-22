@@ -57,7 +57,19 @@
                             <div class="row ">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="row float-lg-left">
-                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="col-xs-4 col-sm-4 col-md-4">
+                                            <div class="form-group">
+                                                <strong><i class="fa-solid fa-id-card"></i>
+                                                    ประเภทการค้นหา:</strong>
+                                                <select style="width: 100%;" class="select2 form-control" id="seachtype"
+                                                    name="seachtype">
+                                                    <option value="0" selected>ตัวเลือก</option>
+                                                    <option value="1">วันที่สร้าง</option>
+                                                    <option value="2">วันที่โทร</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-8 col-sm-8 col-md-8">
                                             <div class="form-group">
                                                 <strong>
                                                     วันที่:</strong>
@@ -68,20 +80,21 @@
                                                         </span>
                                                     </div>
                                                     <input type="text" class="form-control float-right" id="reservation"
-                                                        style="width: 250px">
+                                                        style="width: 300px">
                                                 </div>
 
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row float-lg-right">
+                                        
                                         <div class="col-xs-4 col-sm-4 col-md-4">
                                             <div class="form-group">
                                                 <strong><i class="fa-solid fa-id-card"></i>
-                                                    ประเภทการค้นหา:</strong>
+                                                    ประเภทรายการ:</strong>
                                                 <select style="width: 100%;" class="select2 form-control" id="seachtype"
                                                     name="seachtype">
-                                                    <option value="0" selected>ตัวเลือกการค้นหา</option>
+                                                    <option value="0" selected>ตัวเลือก</option>
                                                     <option value="1">ยังไม่ได้โทรออก</option>
                                                     <option value="2">โทรออกแล้ว</option>
                                                 </select>
@@ -90,10 +103,10 @@
                                         <div class="col-xs-4 col-sm-4 col-md-4">
                                             <div class="form-group">
                                                 <strong><i class="fa-regular fa-keyboard"></i>
-                                                    คำที่ต้องการค้นหา:</strong>
+                                                    เบอร์โทร:</strong>
                                                 {!! Form::text('seachtext', null, [
                                                     'id' => 'seachtext',
-                                                    'placeholder' => 'ข้อมูลที่ต้องการค้นหา',
+                                                    'placeholder' => 'เบอร์โทร',
                                                     'class' => 'form-control',
                                                 ]) !!}
                                                 <span id="validationMessages" style="color: red;"></span>
