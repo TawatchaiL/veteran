@@ -468,13 +468,14 @@
                             fontSize: 16
                         };
                         doc.content.splice(0,1);
+                        var logo = getBase64FromImageUrl('https://datatables.net/media/images/logo.png');
                         doc.pageMargins = [30,75,20,30];
 						doc.styles.tableHeader.fontSize = 16;
                         doc['header']=(function() {
 							return {
 								columns: [
 									{
-										image: 'data:image/png;base64,L2ltYWdlcy9sb2dvLnBuZw==',
+										image: logo,
 										width: 50
 									},
 									{
