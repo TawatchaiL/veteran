@@ -32,14 +32,73 @@ class ProjectJobNumberController extends Controller
      */
     public function index(Request $request)
     {
-
+        $uid = Auth::user()->id;
+        $datass = ProjectJobNumber::orderBy("job_number_id", "desc")
+            ->where('dial_agent', $uid);
         if ($request->ajax()) {
 
-            $uid = Auth::user()->id;
+            if (!empty($request->get('sdate'))) {
+                $dateRange = $request->input('sdate');
+                if ($dateRange) {
+                    $dateRangeArray = explode(' - ', $dateRange);
 
-            $datas = ProjectJobNumber::orderBy("job_number_id", "desc")
-                ->where('dial_agent', $uid)
-                ->get();
+                    if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
+                        $startDate = $dateRangeArray[0];
+                        $endDate = $dateRangeArray[1];
+                        //dd($startDate . ' - ' . $endDate);
+                        $datass->whereBetween('asteriskcdrdb.cdr.calldate', [$startDate, $endDate]);
+                    }
+                }
+            }
+
+           /*  if (!empty($request->get('telp'))) {
+                $telp = $request->input('telp');
+                if ($telp) {
+                    $datass->where(function ($query) use ($telp) {
+                        $query->where('asteriskcdrdb.cdr.src', 'like', "$telp%")
+                            ->orWhere('dst', 'like', "$telp%");
+                    });
+                }
+            }
+
+            if (!empty($request->get('ctype'))) {
+                $ctype = $request->input('ctype');
+                if ($ctype == 1) {
+                    $datass->where('asteriskcdrdb.cdr.accountcode', '')
+                        ->where('asteriskcdrdb.cdr.userfield', '=', '')
+                        ->where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
+                } else if ($ctype == 2) {
+                    $datass->where('asteriskcdrdb.cdr.accountcode', '!=', '')
+                        ->where('asteriskcdrdb.cdr.userfield', '!=', '')
+                        ->where('asteriskcdrdb.cdr.dst_userfield', '=', NULL);
+                } else if ($ctype == 3) {
+                    $datass->where('asteriskcdrdb.cdr.accountcode', '!=', '')
+                        ->where('asteriskcdrdb.cdr.userfield', '!=', '')
+                        ->where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
+                }
+            }
+
+            if (!empty($request->get('agent'))) {
+                $agent = $request->input('agent');
+                if ($agent) {
+                    $datass->where(function ($query) use ($agent) {
+                        $query->where('asteriskcdrdb.cdr.userfield', $agent)
+                            ->orWhere('dst_userfield', $agent);
+                    });
+                }
+            }
+
+            if (!Gate::allows('voice-record-supervisor')) {
+                $uid = Auth::user()->id;
+
+                $datass->where(function ($query) use ($uid) {
+                    $query->where('asteriskcdrdb.cdr.userfield', $uid)
+                        ->orWhere('dst_userfield', $uid);
+                });
+            } */
+
+            $datas = $datass->get();
+
             $state_text = ['All', 'รอคิว', 'กำลังทำงาน', 'Export เสร็จแล้ว'];
             $ctype_text = ['All', 'สายเข้า', 'โทรออก', 'ภายใน'];
 
