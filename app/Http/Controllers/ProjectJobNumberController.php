@@ -45,9 +45,9 @@ class ProjectJobNumberController extends Controller
                 })
                 ->addColumn('action', function ($row) {
                     if (Gate::allows('agent-outbound')) {
-                        $html = '<button type="button" class="btn btn-sm btn-warning btn-call" id="getEditData" data-id="' . $row->job_number_id . '"><i class="fa fa-download"></i> โทรออก</button> ';
+                        $html = '<button type="button" class="btn btn-sm btn-warning btn-call" id="getEditData" data-id="' . $row->job_number_id . '"><i class="fa-solid fa-phone-volume"></i> โทรออก</button> ';
                     } else {
-                        $html = '<button type="button" class="btn btn-sm btn-warning disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-download"></i> โทรออก</button> ';
+                        $html = '<button type="button" class="btn btn-sm btn-warning disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa-solid fa-phone-volume"></i> โทรออก</button> ';
                     }
                     /* if (Gate::allows('voice-export-delete')) {
                         if ($row->export_status == 3) {
