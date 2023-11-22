@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Project_job_number;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -296,7 +297,7 @@ class PBXController extends Controller
         $user = Auth::user();
 
         if ($user) {
-            
+
 
             $ret = $this->issable->agent_break($user->phone, $request->get('id_break'));
 
@@ -368,7 +369,7 @@ class PBXController extends Controller
 
         if ($user) {
             //check if queue call send to popup record
-            //if ($request->input('context') == 'ext-queues') {
+            if ($request->input('context') == 'ext-queues') {
                 DB::table('crm_incoming')
                     ->where('telno', $request->input('telno'))
                     ->where('agent_id', $user->id)
@@ -382,7 +383,35 @@ class PBXController extends Controller
                     'calltime' => date("Y-m-d H:i:s"),
                     'status' => 1
                 ]);
-            //}
+                //outbound
+            } elseif ($request->input('context') == 'macro-dialout-trunk') {
+                $outbound = Project_job_number::where('call_number', $request->input('telno'))
+                    ->where('dial_agent', $user->id)
+                    ->orderByDesc('job_number_id')
+                    ->first();
+                if (!empty($outbound)) {
+                    DB::table('crm_incoming')
+                        ->where('telno', $request->input('telno'))
+                        ->where('agent_id', $user->id)
+                        ->delete();
+                    DB::table('crm_incoming')->insert([
+                        'agent_id' => $user->id,
+                        'uniqid' => $request->input('uniqid'),
+                        'context' => 'ext-queues',
+                        'telno' => $request->input('telno'),
+                        'agentno' => $user->phone,
+                        'calltime' => date("Y-m-d H:i:s"),
+                        'status' => 1
+                    ]);
+
+                    $outbound->update([
+                        'cdr_uniqueid' => $request->input('uniqid'),
+                        'dial_number' => $user->phone,
+                        'call_status' => 1,
+                        'call_date' => date("Y-m-d H:i:s"),
+                    ]);
+                }
+            }
 
 
             $user->phone_status_id = 4;
