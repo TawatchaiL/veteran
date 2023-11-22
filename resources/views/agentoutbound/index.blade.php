@@ -73,7 +73,7 @@
                                             <div class="form-group">
                                                 <strong><i class="fa-solid fa-calendar"></i>
                                                 </strong>
-                                                <input type="text" class="form-control float-right" id="reservation"
+                                                <input type="text" class="form-control" id="reservation"
                                                     style="width: 350px">
                                             </div>
                                         </div>
