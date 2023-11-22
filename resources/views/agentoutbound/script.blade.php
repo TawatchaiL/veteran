@@ -238,7 +238,7 @@
         });
 
 
-        $('#resetSearchButton').on('click', async function() {
+        $('#btnreset').on('click', async function() {
             localStorage.removeItem('dateStart');
             localStorage.removeItem('searchType');
             localStorage.removeItem('callType');
