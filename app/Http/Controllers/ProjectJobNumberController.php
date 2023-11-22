@@ -96,7 +96,7 @@ class ProjectJobNumberController extends Controller
                     return '<input type="checkbox" id="' . $row->job_number_id . '" class="flat" name="table_records[]" value="' . $row->job_number_id . '" >';
                 })
                 ->editColumn('call_date', function ($row) {
-                    $cdate = $row->calldate !== null ? $row->calldate : ' - ';
+                    $cdate = $row->call_date !== null ? $row->call_date : ' - ';
                     return $cdate;
                 })
                 ->editColumn('call_status', function ($row) use ($ctype_text) {
