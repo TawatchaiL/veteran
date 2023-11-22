@@ -22,10 +22,10 @@
         </a>
     </li>
 @endcan
-@can('agent-outbound-list')
+@can('agent-outbound')
     <li class="nav-item">
         <a href="{{ route('agent_outbound') }}" class="nav-link {{ Request::is('agent_outbound') ? 'active' : '' }}">
-            <i class="fas fa-clipboard nav-icon"></i>
+            <i class="fa-solid fa-tty nav-icon"></i>
             <p>รายการโทรออก</p>
         </a>
     </li>
