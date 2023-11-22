@@ -106,7 +106,7 @@
                     name: 'create_date'
                 },
                 {
-                    data: 'call_numbere',
+                    data: 'call_number',
                     name: 'call_number'
                 },
                 {

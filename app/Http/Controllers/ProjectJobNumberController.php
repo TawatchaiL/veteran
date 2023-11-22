@@ -67,7 +67,7 @@ class ProjectJobNumberController extends Controller
                 ->addColumn('more', function ($row) {
                     return '';
                 })
-                ->rawColumns(['checkbox', 'export_progress', 'action'])->toJson();
+                ->rawColumns(['checkbox', 'action'])->toJson();
         }
 
 

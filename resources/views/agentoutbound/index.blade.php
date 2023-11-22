@@ -53,8 +53,8 @@
                                 <thead>
                                     <tr>
                                         <th width="50px"><input type="checkbox" id="check-all" class="flat"></th>
-                                        <th>วันที่เวลา</th>
-                                        <th>เบอร์ที่ติดต่อ</th>
+                                        <th>วันที่เวลาที่สร้าง</th>
+                                        <th>เบอร์โทร</th>
                                         <th width="180px"></th>
                                         <th>More</th>
                                     </tr>
