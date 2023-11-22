@@ -1033,13 +1033,15 @@
 
 
         $.get(`${api_serv}/chans/` + exten, async (data, status) => {
-
             await data.forEach((item, index) => {
                 let strArray = item.split("!");
                 let chan = strArray[0].split("/");
 
+                console.log(chan);
+
                 $.get(`${api_serv}/chans_variable/` + chan[1], (data, status) => {
 
+                    console.log(data);
                     luniq = data[0][1];
                     luniqrd = luniq.replace('.', '');
                     mcallprofile = data[1][1];
@@ -1082,7 +1084,6 @@
                             check_box_state = 'disabled';
                             hold_button = "d-none";
                             dans_button = "d-none";
-                            mcallexten = mcalldnid;
                         }
                     } else if (strArray[4] == 'Up') {
                         state = 'กำลังสนทนา'
