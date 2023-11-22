@@ -31,20 +31,21 @@
         function storeFieldValues() {
             var dateStart = $('#reservation').val();
             var searchType = $('#seachtype').val();
-            var stelp = $('#telp').val();
-            var sctype = $('#ctype').val();
+            var callType = $('#calltype').val();
+            var searchText = $('#searchtext').val();
 
             // Store values in local storage
             localStorage.setItem('dateStart', dateStart);
             localStorage.setItem('searchType', searchType);
-            localStorage.setItem('stelp', stelp);
-            localStorage.setItem('sctype', sctype);
+            localStorage.setItem('callType', callType);
+            localStorage.setItem('searchText', searchText);
         }
 
         function retrieveFieldValues() {
             var saveddateStart = localStorage.getItem('dateStart');
             var savedSearchType = localStorage.getItem('searchType');
-            var savedKeyword = localStorage.getItem('keyword');
+            var savedCallType = localStorage.getItem('callType');
+            var savedKeyword = localStorage.getItem('searchText');
             // Set field values from local storage
             if (saveddateStart) {
                 var dateParts = saveddateStart.split(' - ');
@@ -59,13 +60,13 @@
             if (savedSearchType) {
                 $('#seachtype').val(savedSearchType);
             }
-           /*  if (savedstelp) {
-                $('#telp').val(savedstelp);
+            if (savedCallType) {
+                $('#callType').val(savedCallType);
             }
 
-            if (savedctype) {
-                $('#ctype').val(savedctype);
-            } */
+            if (savedKeyword) {
+                $('#searchText').val(savedKeyword);
+            }
 
         }
 
@@ -144,8 +145,8 @@
                 data: function(d) {
                     d.sdate = $('#reservation').val();
                     d.searchtype = $('#seachtype').val();
-                    //d.telp = $('#telp').val();
-                    //d.ctype = $('#ctype').val();
+                    d.calltype = $('#calltype').val();
+                    d.searchtext = $('#seachtext').val();
                     //d.search = $('input[type="search"]').val();
                 }
             },
@@ -236,17 +237,17 @@
             } */
         });
 
-    
+
         $('#resetSearchButton').on('click', async function() {
             localStorage.removeItem('dateStart');
-            localStorage.removeItem('sagent');
-            localStorage.removeItem('stelp');
-            localStorage.removeItem('sctype');
+            localStorage.removeItem('searchType');
+            localStorage.removeItem('callType');
+            localStorage.removeItem('searchText');
 
             // Set field values to empty
-            $('#telp').val('');
-            $('#agen').val('');
-            $('#ctype').val('');
+            $('#searchtype').val('');
+            $('#calltype').val('');
+            $('#searchtext').val('');
 
             $('#Listview').html('');
 
