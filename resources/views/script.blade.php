@@ -7,17 +7,15 @@
                 _token: token,
             },
             success: (data) => {
-                console.log(data);
-                data.avg_data.forEach((item) => {
-                    avg_talk.html(item.avg_talk_time)
-                    avg_wait.html(item.avg_hold_time)
-                    total_talk.html(item.total_talk_time)
-                    total_call.html(item.total_call)
-                    total_score.html(item.total_score)
-                    total_closed_case.html(item.total_case)
-                    total_case.html(item.total_case)
-                    total_tranfer_case.html(item.total_tranfer_case)
-                });
+                const item = data.avg_data;
+                avg_talk.html(item.avg_talk_time);
+                avg_wait.html(item.avg_hold_time);
+                total_talk.html(item.total_talk_time);
+                total_call.html(item.total_call);
+                total_score.html(item.total_score);
+                total_closed_case.html(item.total_closed_case);
+                total_case.html(item.total_case);
+                total_tranfer_case.html(item.total_tranfer_case);
             },
             error: (error) => {
                 console.error('Error fetching data:', error);
