@@ -20,7 +20,7 @@ class BillingController extends Controller
     public function __construct()
     {
         //$this->middleware('auth');
-        $this->middleware('permission:voice-record-list|voice-record-supervisor', ['only' => ['index', 'show']]);
+        $this->middleware('permission:billing-list', ['only' => ['index', 'show']]);
         $this->middleware('permission:contact-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:contact-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:contact-delete', ['only' => ['destroy']]);
