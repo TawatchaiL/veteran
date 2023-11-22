@@ -59,6 +59,8 @@ class ProjectJobNumberController extends Controller
                         $query->where('call_status', '=', $search_array[$searchtype]);
                     });
                 }
+            } else {
+                $datass->where('call_status', 0);
             }
 
             /*if (!empty($request->get('ctype'))) {
