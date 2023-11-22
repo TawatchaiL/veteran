@@ -120,7 +120,7 @@ class DashboardController extends Controller
         $localQueue = DB::table('crm_cases')
             ->select(
                 DB::raw('count(id) as total_case'),
-                DB::raw('count(CASE WHEN case_status = "ปิดเคส" THEN 1 ELSE NULL END) as total_closed_case'),
+                DB::raw('count(CASE WHEN casestatus = "ปิดเคส" THEN 1 ELSE NULL END) as total_closed_case'),
                 DB::raw('count(CASE WHEN tranferstatus != "ไม่มีการโอนสาย" THEN 1 ELSE NULL END) as total_transfer_case')
             )
             ->where('agent', $user->id)
