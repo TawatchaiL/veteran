@@ -508,7 +508,7 @@
             <li class="nav-item">
                 <a href="{{ route('outbound') }}" class="nav-link {{ Request::is('outbound') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p>รายการโทรออก</p>
+                    <p>นำเข้ารายการโทรออก</p>
                 </a>
             </li>
             <li class="nav-item">
