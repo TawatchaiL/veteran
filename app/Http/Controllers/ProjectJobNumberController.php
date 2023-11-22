@@ -53,6 +53,7 @@ class ProjectJobNumberController extends Controller
 
             if (!empty($request->get('searchtype'))) {
                 $searchtype = $request->input('searchtype');
+                dd($searchtype);
                 if ($searchtype) {
                     $datass->where(function ($query) use ($searchtype) {
                         $query->where('call_status', '=', $searchtype);
