@@ -1082,7 +1082,7 @@
                             hold_button = "d-none";
                             dans_button = "d-none";
                         }
-
+                        mcallexten = data[3][1];
                     } else if (strArray[4] == 'Up') {
                         state = 'กำลังสนทนา'
                         state_icon =
