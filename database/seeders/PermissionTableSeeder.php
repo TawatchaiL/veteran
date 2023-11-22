@@ -26,7 +26,7 @@ class PermissionTableSeeder extends Seeder
             'case-create',
             'case-edit',
             'case-delete',*/
-            'agent_outbound-list',
+            'agent-outbound-list',
             /*
             'voice-record-list',
             'voice-record-supervisor',*/

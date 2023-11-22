@@ -22,7 +22,7 @@
         </a>
     </li>
 @endcan
-@can('agent_outbound-list')
+@can('agent-outbound-list')
     <li class="nav-item">
         <a href="{{ route('agent_outbound') }}" class="nav-link {{ Request::is('agent_outbound') ? 'active' : '' }}">
             <i class="fas fa-clipboard nav-icon"></i>
