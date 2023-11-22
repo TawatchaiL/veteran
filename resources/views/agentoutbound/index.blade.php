@@ -59,8 +59,8 @@
                                     <div class="row float-lg-left">
                                         <div class="col-xs-3 col-sm-3 col-md-3">
                                             <div class="form-group">
-                                                <strong><i class="fa-solid fa-id-card"></i>
-                                                    ประเภทการค้นหา:</strong>
+                                                <strong><i class="fa-solid fa-calendar"></i>
+                                                    วันที่:</strong>
                                                 <select style="width: 100%;" class="select2 form-control" id="seachtype"
                                                     name="seachtype">
                                                     <option value="0" selected>ตัวเลือก</option>
@@ -72,7 +72,7 @@
                                         <div class="col-xs-9 col-sm-9 col-md-9">
                                             <div class="form-group">
                                                 <strong>
-                                                    วันที่:</strong>
+                                                    </strong>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text">
