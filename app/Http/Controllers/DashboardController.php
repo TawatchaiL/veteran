@@ -101,7 +101,9 @@ class DashboardController extends Controller
     public function dashboard_agent_avg_data()
     {
         $user = Auth::user();
-        $queue = DB::connection('remote_connection')
+
+        // Query for remote connection
+        $remoteQueue = DB::connection('remote_connection')
             ->table('call_center.call_entry_today')
             ->select(
                 DB::raw('count(*) as total_call'),
@@ -109,38 +111,39 @@ class DashboardController extends Controller
                 DB::raw('AVG(duration_wait) as avg_hold_time'),
                 DB::raw('SUM(duration) as total_talk_time'),
                 DB::raw('MAX(duration_wait) as max_hold_time'),
-                DB::raw('(SELECT sum(score) FROM agent_score_today WHERE crm_id = ' . $user->id . ') as total_score'),
-                DB::raw('count(crm_cases.id) as total_case'),
-                DB::raw('count(CASE WHEN crm_cases.case_status = "ปิดเคส" THEN 1 ELSE NULL END) as total_closed_case'),
-                DB::raw('count(CASE WHEN crm_cases.tranferstatus != "ไม่มีการโอนสาย" THEN 1 ELSE NULL END) as total_tranfer_case')
+                DB::raw('(SELECT sum(score) FROM agent_score_today WHERE crm_id = ' . $user->id . ') as total_score')
             )
-            ->leftJoin('crm_cases', function ($join) use ($user) {
-                $join->on('crm_cases.agent', '=', DB::raw($user->id))
-                    ->where(DB::raw('DATE(crm_cases.created_at)'), '=', DB::raw('CURDATE()'));
-            })
             ->where('crm_id', $user->id)
             ->get();
-        $formattedQueue = [];
 
-        foreach ($queue as $item) {
-            $formattedItem = new \stdClass();
-            $formattedItem->total_call = $item->total_call;
-            $formattedItem->total_score = $item->total_score;
-            $formattedItem->avg_talk_time = $this->formatDuration($item->avg_talk_time);
-            $formattedItem->avg_hold_time = $this->formatDuration($item->avg_hold_time);
-            $formattedItem->total_talk_time = $this->formatDuration($item->total_talk_time);
-            $formattedItem->max_hold_time = $this->formatDuration($item->max_hold_time);
-            $formattedItem->total_case = $item->total_case;
-            $formattedItem->total_closed_case = $item->total_closed_case;
-            $formattedItem->total_tranfer_case = $item->total_tranfer_case;
+        // Query for local connection
+        $localQueue = DB::table('crm_cases')
+            ->select(
+                DB::raw('count(id) as total_case'),
+                DB::raw('count(CASE WHEN case_status = "ปิดเคส" THEN 1 ELSE NULL END) as total_closed_case'),
+                DB::raw('count(CASE WHEN tranferstatus != "ไม่มีการโอนสาย" THEN 1 ELSE NULL END) as total_transfer_case')
+            )
+            ->where('agent', $user->id)
+            ->whereDate('created_at', '=', now())
+            ->get();
 
-            $formattedQueue[] = $formattedItem;
-        }
+        $formattedQueue = [
+            'total_call' => $remoteQueue->first()->total_call,
+            'avg_talk_time' => $this->formatDuration($remoteQueue->first()->avg_talk_time),
+            'avg_hold_time' => $this->formatDuration($remoteQueue->first()->avg_hold_time),
+            'total_talk_time' => $this->formatDuration($remoteQueue->first()->total_talk_time),
+            'max_hold_time' => $this->formatDuration($remoteQueue->first()->max_hold_time),
+            'total_score' => $remoteQueue->first()->total_score,
+            'total_case' => $localQueue->first()->total_case,
+            'total_closed_case' => $localQueue->first()->total_closed_case,
+            'total_transfer_case' => $localQueue->first()->total_transfer_case,
+        ];
 
         return response()->json([
             'avg_data' => $formattedQueue,
         ]);
     }
+
 
     public function dashboard_sla_data(Request $request)
     {
