@@ -99,7 +99,7 @@ class ProjectJobNumberController extends Controller
                     return $ctype_text[$row->call_status];
                 })
                 ->editColumn('dial_number', function ($row) use ($agentArray) {
-                    return $agentArray[$row->dial_agent].' ('.$row->dial_nymber.')';
+                    return $agentArray[$row->dial_agent]['name'].' ('.$row->dial_nymber.')';
                 })
                 ->addColumn('action', function ($row) {
                     if (Gate::allows('agent-outbound')) {
