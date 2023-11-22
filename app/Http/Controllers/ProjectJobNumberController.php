@@ -38,7 +38,7 @@ class ProjectJobNumberController extends Controller
             $uid = Auth::user()->id;
 
             $datas = ProjectJobNumber::orderBy("job_number_id", "desc")
-                ->where(['dial_agent', $uid])
+                ->where('dial_agent', $uid)
                 ->get();
             $state_text = ['All', 'รอคิว', 'กำลังทำงาน', 'Export เสร็จแล้ว'];
             $ctype_text = ['All', 'สายเข้า', 'โทรออก', 'ภายใน'];
