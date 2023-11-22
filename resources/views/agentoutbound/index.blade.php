@@ -71,7 +71,7 @@
                                         </div>
                                         <div class="col-xs-8 col-sm-8 col-md-8">
                                             <div class="form-group">
-                                                <strong>
+                                                <strong><i class="fa-solid fa-calendar"></i>
                                                 </strong>
                                                 <input type="text" class="form-control float-right" id="reservation"
                                                     style="width: 350px">
