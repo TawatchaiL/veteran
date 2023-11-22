@@ -1061,7 +1061,6 @@
                                 <i class="fa-solid fa-phone-volume"></i> รับสาย
                             </a>`;
                         } 
-                        mcallexten = data[3][1];
                     } else if (strArray[4] == 'Up' && strArray[12] == '') {
                         if (strArray[5] == "ChanSpy") {
                             spy_exten = strArray[6].split(',');
