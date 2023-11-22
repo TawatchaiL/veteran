@@ -368,7 +368,7 @@ class PBXController extends Controller
 
         if ($user) {
             //check if queue call send to popup record
-            if ($request->input('context') == 'ext-queues') {
+            //if ($request->input('context') == 'ext-queues') {
                 DB::table('crm_incoming')
                     ->where('telno', $request->input('telno'))
                     ->where('agent_id', $user->id)
@@ -382,7 +382,7 @@ class PBXController extends Controller
                     'calltime' => date("Y-m-d H:i:s"),
                     'status' => 1
                 ]);
-            }
+            //}
 
 
             $user->phone_status_id = 4;
