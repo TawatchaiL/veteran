@@ -77,7 +77,7 @@
                                 <span class="info-box-icon bg-warning"><i class="fa-solid fa-clipboard-question"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เคสที่รับแจ้ง</span>
-                                    <span class="info-box-number">10 เคส</span>
+                                    <span class="info-box-number" ><span id="total_case">0</span> เคส</span>
                                 </div>
 
                             </div>
@@ -90,7 +90,7 @@
                                 <span class="info-box-icon bg-warning"><i class="fa-solid fa-clipboard-check"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เคสที่ปิดเคสแล้ว</span>
-                                    <span class="info-box-number">4 เคส</span>
+                                    <span class="info-box-number"><span id="total_closed_case">0</span> เคส</span>
                                 </div>
 
                             </div>
@@ -101,7 +101,7 @@
                                 <span class="info-box-icon bg-warning"><i class="fa-solid fa-shuffle"></i></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เคสที่โอนสาย</span>
-                                    <span class="info-box-number">6 เคส</span>
+                                    <span class="info-box-number"><span id="total_tranfer_case">0</span> เคส</span>
                                 </div>
 
                             </div>

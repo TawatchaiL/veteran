@@ -81,6 +81,7 @@
                                             <th>ชื่อรายการ</th>
                                             <th>วันที่สร้าง</th>
                                             <th>ผู้สร้าง</th>
+                                            <th>Assign To</th>
                                             <th>จำนวน</th>
                                             <th>สถานะ</th>
                                             <th width="150px">Progress</th>
@@ -104,8 +105,6 @@
         </div>
 
     </section>
-
-
     @include('outbound.create')
 @endsection
 

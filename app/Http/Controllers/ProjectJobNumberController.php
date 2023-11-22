@@ -102,6 +102,9 @@ class ProjectJobNumberController extends Controller
                 ->editColumn('call_status', function ($row) use ($ctype_text) {
                     return $ctype_text[$row->call_status];
                 })
+                ->editColumn('dial', function ($row) use ($ctype_text) {
+                    return $ctype_text[$row->call_status];
+                })
                 ->editColumn('dial_number', function ($row) use ($agentArray) {
                     $dnumber = $row->dial_number !== null ? $row->dial_number : ' - ';
                     return $agentArray[$row->dial_agent]['name'] . ' (' . $dnumber . ')';

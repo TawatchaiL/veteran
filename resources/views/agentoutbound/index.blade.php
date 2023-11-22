@@ -128,7 +128,7 @@
                                                 <th>เบอร์โทร</th>
                                                 <th>สถานะ</th>
                                                 <th>Agent</th>
-                                                <th width="180px"></th>
+                                                <th width="120px"></th>
                                                 <th>More</th>
                                             </tr>
                                         </thead>
