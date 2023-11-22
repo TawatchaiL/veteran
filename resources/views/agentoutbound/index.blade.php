@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('style')
+<style>
+    .dataTables_filter {
+        display: none;
+    }
+</style>
 @endsection
 
 @section('content')
@@ -112,20 +117,24 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <table id="Listview" class="display nowrap table table-bordered table-striped table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th width="50px"><input type="checkbox" id="check-all" class="flat"></th>
-                                            <th>วันที่เวลาที่สร้าง</th>
-                                            <th>เบอร์โทร</th>
-                                            <th width="180px"></th>
-                                            <th>More</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <table id="Listview"
+                                        class="display nowrap table table-bordered table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th width="50px"><input type="checkbox" id="check-all" class="flat">
+                                                </th>
+                                                <th>วันที่เวลาที่สร้าง</th>
+                                                <th>เบอร์โทร</th>
+                                                <th width="180px"></th>
+                                                <th>More</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
 
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
 

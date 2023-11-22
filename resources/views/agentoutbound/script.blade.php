@@ -18,24 +18,122 @@
         });
 
 
-        $.datepicker.setDefaults($.datepicker.regional["th"]);
-        var currentDate = new Date();
-        var currentYear = currentDate.getFullYear() /*  + 543 */ ;
-        var maxYear = currentYear;
+        var startDate;
+        var endDate;
 
-        $(".datepick").datetimepicker({
-            changeMonth: true,
-            changeYear: true,
-            yearRange: '2023' + ':' + maxYear,
-            dateFormat: 'yy-mm-dd',
-            timeFormat: "HH:mm:ss",
-            onSelect: function(date) {
-                $("#edit-date-of-birth").addClass('filled');
+        function datesearch() {
+            var currentDate = moment();
+            startDate = moment(currentDate).subtract(30, 'days').startOf('day').format('YYYY-MM-DD HH:mm:ss');
+            endDate = moment(currentDate).endOf('month').endOf('day').format('YYYY-MM-DD HH:mm:ss');
+        }
+
+
+        function storeFieldValues() {
+            var dateStart = $('#reservation').val();
+            var sagent = $('#agen').val();
+            var stelp = $('#telp').val();
+            var sctype = $('#ctype').val();
+
+            // Store values in local storage
+            localStorage.setItem('dateStart', dateStart);
+            localStorage.setItem('sagent', sagent);
+            localStorage.setItem('stelp', stelp);
+            localStorage.setItem('sctype', sctype);
+        }
+
+        function retrieveFieldValues() {
+            var saveddateStart = localStorage.getItem('dateStart');
+            var savedsagent = localStorage.getItem('sagent');
+            var savedstelp = localStorage.getItem('stelp');
+            var savedctype = localStorage.getItem('sctype');
+            console.log(saveddateStart)
+            console.log(savedsagent)
+            console.log(savedstelp)
+            console.log(savedctype)
+            // Set field values from local storage
+            if (saveddateStart) {
+                var dateParts = saveddateStart.split(' - ');
+                startDate = dateParts[0];
+                endDate = dateParts[1];
+            } else {
+                datesearch();
             }
-        });
 
-        //currentDate.setYear(currentDate.getFullYear() + 543);
-        $('.datepick').datetimepicker("setDate", currentDate);
+            console.log(`${startDate} - ${endDate}`)
+            $('#reservation').val(`${startDate} - ${endDate}`)
+
+            if (savedsagent) {
+                $('#agen').val(savedsagent);
+            }
+            if (savedstelp) {
+                $('#telp').val(savedstelp);
+            }
+
+            if (savedctype) {
+                $('#ctype').val(savedctype);
+            }
+
+        }
+
+
+        let daterange = () => {
+            moment.locale('th');
+
+            var startTime = '00:00:00';
+            var endTime = '23:59:59';
+
+            var todayRange = [moment(startTime, 'HH:mm:ss'), moment(endTime, 'HH:mm:ss')];
+            var yesterdayRange = [moment().subtract(1, 'days').startOf('day').set('hour', 0).set('minute',
+                0).set('second', 0), moment().subtract(1, 'days').endOf('day').set('hour', 23).set(
+                'minute', 59).set('second', 59)];
+            var last7DaysRange = [moment().subtract(6, 'days').startOf('day').set('hour', 0).set('minute',
+                0).set('second', 0), moment(endTime, 'HH:mm:ss')];
+            var last30DaysRange = [moment().subtract(29, 'days').startOf('day').set('hour', 0).set('minute',
+                0).set('second', 0), moment(endTime, 'HH:mm:ss')];
+
+            $('#reservation').daterangepicker({
+                timePicker: true,
+                timePicker24Hour: true,
+                timePickerSeconds: true,
+                //timePickerIncrement: 5,
+                startDate: startDate,
+                endDate: endDate,
+                ranges: {
+                    'วันนี้': todayRange,
+                    'เมื่อวานนี้': yesterdayRange,
+                    'ย้อนหลัง 7 วัน': last7DaysRange,
+                    'ย้อนหลัง 30 วัน': last30DaysRange,
+                    'เดือนนี้': [moment().startOf('month'), moment().endOf('month')],
+                    'เดือนที่แล้ว': [moment().subtract(1, 'month').startOf('month'), moment()
+                        .subtract(1, 'month').endOf('month')
+                    ]
+                },
+                locale: {
+                    format: 'YYYY-MM-DD HH:mm:ss',
+                    applyLabel: 'ตกลง',
+                    cancelLabel: 'ยกเลิก',
+                    fromLabel: 'จาก',
+                    toLabel: 'ถึง',
+                    customRangeLabel: 'เลือกวันที่เอง',
+                    daysOfWeek: ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'],
+                    monthNames: [
+                        'มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน',
+                        'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'
+                    ],
+                    firstDay: 1
+                }
+            });
+            // Apply the custom date range filter on input change
+            $('#reservation').on('apply.daterangepicker', function() {
+                console.log($('#reservation').val())
+                table.draw();
+                storeFieldValues();
+            });
+        }
+
+
+        retrieveFieldValues();
+        daterange();
 
 
         //$.noConflict();
@@ -47,8 +145,19 @@
         });
 
 
-        var table = $('#Listview').DataTable({
-            ajax: '',
+        const table_option = {
+            ajax: {
+                data: function(d) {
+                    d.sdate = $('#reservation').val();
+                    d.agent = $('#agen').val();
+                    d.telp = $('#telp').val();
+                    d.ctype = $('#ctype').val();
+                    //d.search = $('input[type="search"]').val();
+                }
+            },
+            dom: 'Bfrtip',
+            paging: true,
+            searching: true,
             serverSide: true,
             processing: true,
             language: {
@@ -118,129 +227,51 @@
                     name: 'more'
                 }
             ]
+        };
+
+
+        var table = $('#Listview').DataTable(table_option);
+
+        $('#searchButton').on('click', function() {
+            storeFieldValues();
+            //var telp = $('#telp').val();
+            table.search('').draw();
+            $.fn.dataTable.ext.search.pop();
+            /* if (telp !== '') {
+                table.column(3).search(telp).draw();
+            } */
         });
 
+    
+        $('#resetSearchButton').on('click', async function() {
+            localStorage.removeItem('dateStart');
+            localStorage.removeItem('sagent');
+            localStorage.removeItem('stelp');
+            localStorage.removeItem('sctype');
 
-        $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-        });
+            // Set field values to empty
+            $('#telp').val('');
+            $('#agen').val('');
+            $('#ctype').val('');
 
+            $('#Listview').html('');
 
-
-        $(document).on('click', '#CreateButton', function(e) {
-            e.preventDefault();
-            $('.alert-danger').html('');
-            $('.alert-danger').hide();
-            $('.alert-success').html('');
-            $('.alert-success').hide();
-            $('#CreateModal').modal('show');
-        });
-
-
-        $('#SubmitCreateForm').click(function(e) {
-            e.preventDefault();
-            $('.alert-danger').html('');
-            $('.alert-danger').hide();
-            $('.alert-success').html('');
-            $('.alert-success').hide();
-
-
-            $.ajax({
-                url: "{{ route('voicebackup.store') }}",
-                method: 'post',
-                data: {
-                    export_date: $('#AddSDate').val() + ' - ' + $('#AddEDate').val(),
-                    src: $('#AddSrc').val(),
-                    dst: $('#AddAgent').val()[0],
-                    ctype: $('#AddCtype').val()[0],
-                    _token: token,
-                },
-                success: function(result) {
-                    if (result.errors) {
-                        $('.alert-danger').html('');
-                        $.each(result.errors, function(key, value) {
-                            $('.alert-danger').show();
-                            $('.alert-danger').append('<strong><li>' + value +
-                                '</li></strong>');
-                        });
-                    } else {
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('.alert-success').append('<strong><li>' + result.success +
-                            '</li></strong>');
-                        toastr.success(result.success, {
-                            timeOut: 5000
-                        });
-                        $('#Listview').DataTable().ajax.reload();
-                        $("#AddAgent").val(null).trigger("change")
-                        $("#AddCtype").val(null).trigger("change")
-                        $('.form').trigger('reset');
-                        $('#CreateModal').modal('hide');
-                    }
-                }
-            });
-        });
-
-        $(document).on('click', '.btn-download', function() {
-            var confirmed = confirm("ยืนยันการทำรายการ ?");
-            if (!confirmed) {
-                return false; // Cancel the operation if not confirmed
+            // Clear DataTable state
+            if (table) {
+                table.state.clear();
+                await table.destroy();
             }
+            // Set the date range back to its default
+            var currentDate = moment();
+            var startDate = moment(currentDate).subtract(30, 'days').startOf('day').format(
+                'YYYY-MM-DD HH:mm:ss');
+            var endDate = moment(currentDate).endOf('month').endOf('day').format(
+                'YYYY-MM-DD HH:mm:ss');
 
-            var rowid = $(this).data('id');
-            if (!rowid) {
-                return false; // Cancel the operation if rowid is missing
-            }
-
-            var url = '{{ url('zip') }}/' + rowid;
-            console.log(url);
-            window.open(url, '_blank');
+            daterange();
+            table = $('#Listview').DataTable(table_option);
+            table.draw();
         });
-
-        $(document).on('click', '.btn-delete', function() {
-            if (!confirm("ยืนยันการทำรายการ ?")) return;
-
-            var rowid = $(this).data('rowid')
-            var el = $(this)
-            if (!rowid) return;
-
-
-            $.ajax({
-                //type: "POST",
-                method: 'DELETE',
-                dataType: 'JSON',
-                url: "voicebackup/destroy/",
-                data: {
-                    id: rowid,
-                    //_method: 'delete',
-                    _token: token
-                },
-                success: function(data) {
-                    console.log(data);
-                    if (data.success) {
-                        toastr.success(data.message, {
-                            timeOut: 5000
-                        });
-                        table.row(el.parents('tr'))
-                            .remove()
-                            .draw();
-                    }
-                }
-            }); //end ajax
-        })
-
 
         let id;
         $(document).on('click', '.btn-call', function(e) {

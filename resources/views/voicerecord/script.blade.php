@@ -446,6 +446,7 @@
             bolditalics: '{{ asset('fonts/THSarabunNew BoldItalic.ttf') }}'
         }
     }
+
     $(document).ready(function() {
 
         $(".delete_all_button").click(function() {
@@ -494,10 +495,6 @@
             var savedsagent = localStorage.getItem('sagent');
             var savedstelp = localStorage.getItem('stelp');
             var savedctype = localStorage.getItem('sctype');
-            console.log(saveddateStart)
-            console.log(savedsagent)
-            console.log(savedstelp)
-            console.log(savedctype)
             // Set field values from local storage
             if (saveddateStart) {
                 var dateParts = saveddateStart.split(' - ');
