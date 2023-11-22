@@ -59,13 +59,13 @@
             if (savedSearchType) {
                 $('#seachtype').val(savedSearchType);
             }
-            if (savedstelp) {
+           /*  if (savedstelp) {
                 $('#telp').val(savedstelp);
             }
 
             if (savedctype) {
                 $('#ctype').val(savedctype);
-            }
+            } */
 
         }
 
