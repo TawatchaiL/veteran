@@ -3,7 +3,7 @@
 @endphp
 <script>
     $(document).ready(function() {
-        
+
 
         $(".select2_single").select2({
             maximumSelectionLength: 1,
@@ -239,6 +239,32 @@
                     }
                 }
             }); //end ajax
+        })
+
+
+        let id;
+        $(document).on('click', '.btn-call', function(e) {
+            e.preventDefault();
+
+
+            $('.alert-danger').html('');
+            $('.alert-danger').hide();
+            $('.alert-success').html('');
+            $('.alert-success').hide();
+
+
+            id = $(this).data('id');
+            $.ajax({
+                url: "agent_outbound/call/" + id,
+                method: 'GET',
+                success: function(res) {
+                    console.log(res);
+
+                    //$('#EditModalBody').html(res.html);
+                    //$('#EditModal').modal('show');
+                }
+            });
+
         })
 
 
