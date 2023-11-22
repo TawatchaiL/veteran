@@ -144,9 +144,9 @@
             ajax: {
                 data: function(d) {
                     d.sdate = $('#reservation').val();
-                    d.searchtype = $('#seachtype').val();
+                    d.searchtype = $('#searchtype').val();
                     d.calltype = $('#calltype').val();
-                    d.searchtext = $('#seachtext').val();
+                    d.searchtext = $('#searchtext').val();
                     //d.search = $('input[type="search"]').val();
                 }
             },
