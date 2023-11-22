@@ -182,8 +182,8 @@
         </div>
     </section>
     @include('layouts.modal-form')
-    @include('voicerecord.create')
+    @include('billing.create')
 @endsection
 @section('script')
-    @include('voicerecord.script')
+    @include('billing.script')
 @endsection
