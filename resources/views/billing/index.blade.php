@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('style')
-    @include('voicerecord.style')
+    @include('billing.style')
 @endsection
 @section('content')
     <section class="content-header">
