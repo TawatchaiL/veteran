@@ -109,14 +109,17 @@ class DashboardController extends Controller
                 DB::raw('AVG(duration_wait) as avg_hold_time'),
                 DB::raw('SUM(duration) as total_talk_time'),
                 DB::raw('MAX(duration_wait) as max_hold_time'),
-                DB::raw('(SELECT count(*) FROM crm_cases WHERE agent = ' . $user->id . ' && DATE(created_at) = CURDATE()) as total_case'),
-                DB::raw("(SELECT count(*) FROM crm_cases WHERE agent = " . $user->id . " && case_status='ปิดเคส' && DATE(created_at) = CURDATE()) as total_closed_case"),
-                DB::raw("(SELECT count(*) FROM crm_cases WHERE agent = " . $user->id . " && tranferstatus!='ไม่มีการโอนสาย' && DATE(created_at) = CURDATE()) as total_tranfer_case"),
-                DB::raw('(SELECT sum(score) FROM agent_score_today WHERE crm_id = ' . $user->id . ') as total_score')
+                DB::raw('(SELECT sum(score) FROM agent_score_today WHERE crm_id = ' . $user->id . ') as total_score'),
+                DB::raw('count(crm_cases.id) as total_case'),
+                DB::raw('count(CASE WHEN crm_cases.case_status = "ปิดเคส" THEN 1 ELSE NULL END) as total_closed_case'),
+                DB::raw('count(CASE WHEN crm_cases.tranferstatus != "ไม่มีการโอนสาย" THEN 1 ELSE NULL END) as total_tranfer_case')
             )
+            ->leftJoin('crm_cases', function ($join) use ($user) {
+                $join->on('crm_cases.agent', '=', DB::raw($user->id))
+                    ->where(DB::raw('DATE(crm_cases.created_at)'), '=', DB::raw('CURDATE()'));
+            })
             ->where('crm_id', $user->id)
             ->get();
-
         $formattedQueue = [];
 
         foreach ($queue as $item) {
@@ -127,6 +130,9 @@ class DashboardController extends Controller
             $formattedItem->avg_hold_time = $this->formatDuration($item->avg_hold_time);
             $formattedItem->total_talk_time = $this->formatDuration($item->total_talk_time);
             $formattedItem->max_hold_time = $this->formatDuration($item->max_hold_time);
+            $formattedItem->total_case = $item->total_case;
+            $formattedItem->total_closed_case = $item->total_closed_case;
+            $formattedItem->total_tranfer_case = $item->total_tranfer_case;
 
             $formattedQueue[] = $formattedItem;
         }
