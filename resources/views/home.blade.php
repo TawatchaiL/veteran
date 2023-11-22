@@ -112,7 +112,7 @@
                                 <span class="info-box-icon bg-warning"><i class="fa-solid fa-star"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">คะแนนความพึงพอใจ</span>
-                                    <span class="info-box-number">คะแนนล่าสุด<span id="latest_score">0</span> / ทั้งหมด<span id="total_score">0</span> คะแนน</span>
+                                    <span class="info-box-number">คะแนนล่าสุด <span id="latest_score">0</span> / ทั้งหมด <span id="total_score">0</span> คะแนน</span>
                                 </div>
 
                             </div>
