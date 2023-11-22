@@ -72,22 +72,14 @@
                                         <div class="col-xs-8 col-sm-8 col-md-8">
                                             <div class="form-group">
                                                 <strong>
-                                                    </strong>
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text">
-                                                            <i class="far fa-calendar-alt"></i>
-                                                        </span>
-                                                    </div>
-                                                    <input type="text" class="form-control float-right" id="reservation"
-                                                        style="width: 350px">
-                                                </div>
-
+                                                </strong>
+                                                <input type="text" class="form-control float-right" id="reservation"
+                                                    style="width: 350px">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row float-lg-right">
-                                        
+
                                         <div class="col-xs-4 col-sm-4 col-md-4">
                                             <div class="form-group">
                                                 <strong><i class="fa-solid fa-id-card"></i>
