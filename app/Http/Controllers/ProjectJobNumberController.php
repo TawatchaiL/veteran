@@ -95,11 +95,16 @@ class ProjectJobNumberController extends Controller
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row->job_number_id . '" class="flat" name="table_records[]" value="' . $row->job_number_id . '" >';
                 })
+                ->editColumn('call_date', function ($row) {
+                    $cdate = $row->calldate !== null ? $row->calldate : ' - ';
+                    return $cdate;
+                })
                 ->editColumn('call_status', function ($row) use ($ctype_text) {
                     return $ctype_text[$row->call_status];
                 })
                 ->editColumn('dial_number', function ($row) use ($agentArray) {
-                    return $agentArray[$row->dial_agent]['name'].' ('.$row->dial_nymber.')';
+                    $dnumber = $row->dial_number !== null ? $row->dial_number : ' - ';
+                    return $agentArray[$row->dial_agent]['name'] . ' (' . $dnumber . ')';
                 })
                 ->addColumn('action', function ($row) {
                     if (Gate::allows('agent-outbound')) {
