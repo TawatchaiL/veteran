@@ -57,7 +57,7 @@
                             <div class="row ">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="row float-lg-left">
-                                        <div class="col-xs-3 col-sm-3 col-md-3">
+                                        <div class="col-xs-4 col-sm-4 col-md-4">
                                             <div class="form-group">
                                                 <strong><i class="fa-solid fa-calendar"></i>
                                                     วันที่:</strong>
@@ -69,7 +69,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-xs-9 col-sm-9 col-md-9">
+                                        <div class="col-xs-8 col-sm-8 col-md-8">
                                             <div class="form-group">
                                                 <strong>
                                                     </strong>
@@ -80,7 +80,7 @@
                                                         </span>
                                                     </div>
                                                     <input type="text" class="form-control float-right" id="reservation"
-                                                        style="width: 300px">
+                                                        style="width: 350px">
                                                 </div>
 
                                             </div>
