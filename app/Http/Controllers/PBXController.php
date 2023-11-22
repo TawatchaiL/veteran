@@ -443,6 +443,7 @@ class PBXController extends Controller
                     'status' => 0
                 ]);
 
+            //outbound
             if ($request->input('context') == 'macro-dialout-trunk') {
                 $outbound = Project_job_number::where('call_number', $request->input('telno'))
                     ->where('dial_agent', $user->id)
