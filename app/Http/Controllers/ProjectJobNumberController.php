@@ -41,19 +41,24 @@ class ProjectJobNumberController extends Controller
                 $dateRange = $request->input('sdate');
                 if ($dateRange) {
                     $dateRangeArray = explode(' - ', $dateRange);
-
+                    $search_array = ['create_date', 'call_date'];
+                    if (!empty($request->get('searchtype'))) {
+                        $search_field = $search_array[$request->get('searchtype')];
+                    } else {
+                        $search_field = 'create_date';
+                    }
                     if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
                         $startDate = $dateRangeArray[0];
                         $endDate = $dateRangeArray[1];
                         //dd($startDate . ' - ' . $endDate);
-                        $datass->whereBetween('create_date', [$startDate, $endDate]);
+                        $datass->whereBetween($search_field, [$startDate, $endDate]);
                     }
                 }
             }
 
-            if (!empty($request->get('searchtype'))) {
-                $searchtype = $request->input('searchtype');
-                $search_array = [0, 0, 1];
+            if (!empty($request->get('calltype'))) {
+                $searchtype = $request->input('calltype');
+                $search_array = [0, 1];
                 if ($searchtype) {
                     $datass->where(function ($query) use ($searchtype, $search_array) {
                         $query->where('call_status', '=', $search_array[$searchtype]);

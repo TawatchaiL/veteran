@@ -63,7 +63,6 @@
                                                     ประเภทวันที่:</strong>
                                                 <select style="width: 100%;" class="select2 form-control" id="searchtype"
                                                     name="searchtype">
-                                                    <option value="0" selected>ตัวเลือก</option>
                                                     <option value="1">วันที่สร้าง</option>
                                                     <option value="2">วันที่โทร</option>
                                                 </select>
@@ -86,7 +85,6 @@
                                                     ประเภทรายการ:</strong>
                                                 <select style="width: 100%;" class="select2 form-control" id="calltype"
                                                     name="calltype">
-                                                    <option value="0" selected>ตัวเลือก</option>
                                                     <option value="1">ยังไม่ได้โทรออก</option>
                                                     <option value="2">โทรออกแล้ว</option>
                                                 </select>
