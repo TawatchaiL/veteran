@@ -259,9 +259,9 @@
                 method: 'GET',
                 success: function(res) {
                     console.log(res);
-
-                    //$('#EditModalBody').html(res.html);
-                    //$('#EditModal').modal('show');
+                    $('#dial_number').val(res.data.call_number)
+                    $('#ToolbarModal').modal('show');
+                    $('#dial_button').click();
                 }
             });
 
