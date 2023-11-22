@@ -99,5 +99,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/outbound/edit', [App\Http\Controllers\ProjectJobController::class, 'update'])->name('outbound.edit');
     Route::delete('/outbound/destroy', [App\Http\Controllers\ProjectJobController::class, 'destroy'])->name('outbound.destroy');
     Route::post('/outbound/destroy_all', [App\Http\Controllers\ProjectJobController::class, 'destroy_all'])->name('outbound.destroy_all');
+
+    Route::get('/agent_outbound', [App\Http\Controllers\ProjectJobNumberController::class, 'index'])->name('agent_outbound');
 });
 
