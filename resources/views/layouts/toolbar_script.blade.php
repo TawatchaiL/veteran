@@ -837,7 +837,10 @@
                     dial_number.val('');
                     $("[data-toggle=popover]").popover('hide');
                     dialpadcount = 0;
-                    call_list();
+                    
+                    setTimeout(function() {
+                        call_list();
+                    }, 1500)
                 } else {
                     const prom = ezBSAlert({
                         headerText: "Error",
