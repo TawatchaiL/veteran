@@ -205,8 +205,7 @@ class BillingController extends Controller
         if (!empty($remoteData)) {
             $voic = $remoteData->recordingfile;
             $avoic_name = explode("/", $voic);
-            //$voic_name = $agentArray[$remoteData->crm_id]['name'] . "-" . end($avoic_name);
-            $voic_name = end($avoic_name);
+            $voic_name = $agentArray[$remoteData->crm_id]['name'] . "-" . end($avoic_name);
             /* $avoic_name = explode("-", $voic_name_ori);
             $voic_name = $avoic_name[0] . "-" . $avoic_name[1]
                 . "-" . $avoic_name[2] . "-" . $remoteData->crm_id . "-" . $avoic_name[3]
@@ -232,8 +231,7 @@ class BillingController extends Controller
 
             $agentname = $agentname ?: 'NoAgent';
 
-            //$voic_name = $agentname . "-" . end($avoic);
-            $voic_name = end($avoic);
+            $voic_name = $agentname . "-" . end($avoic);
             $tooltips = Comment::where('uniqueid', $id)->get();
         }
 
