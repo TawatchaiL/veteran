@@ -102,13 +102,12 @@ class LoginController extends Controller
         } */
 
         //check phone status
-        $phone_state_num = $this->remote->exten_state($request->get('phone'));
+        /* $phone_state_num = $this->remote->exten_state($request->get('phone'));
         if ($phone_state_num == 4 || $phone_state_num == -1) {
-            //check phone status
             return redirect()->route('login')
                 ->with('login_error', 'หมายเลขโทรศัพท์ไม่พร้อมใช้งาน')
                 ->withErrors(['email' => 'หมายเลขโทรศัพท์ไม่พร้อมใช้งาน']);
-        }
+        } */
 
 
         if ($this->attemptLogin($request)) {
