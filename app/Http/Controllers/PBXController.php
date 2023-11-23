@@ -39,6 +39,7 @@ class PBXController extends Controller
         $resultb = DB::connection('remote_connection')
             ->table('call_center.break')
             ->where('tipo', 'B')
+            ->where('status', 'A')
             ->where('id', '!=', $this->warp_id)
             ->where('id', '!=', $this->sup_break_id)
             ->get();
