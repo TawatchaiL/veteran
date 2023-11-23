@@ -385,7 +385,6 @@
             type: "GET",
             url: "billing/edit/" + dataId,
             success: function(response) {
-                alert('OK'+dataId);
                 $('#vioc_name').text(response.voic_name);
                 $('#uniqueid').val(response.remoteData2.uniqueid);
                 const tooltipsData = response.tooltips;
