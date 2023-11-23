@@ -380,6 +380,7 @@
     const randomColor = () => `rgba(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)}, 0.5)`
 
     $(document).on('click', '.changeUrlButton', function() {
+        alert('OK');
         var dataId = $(this).data('id');
         $.ajax({
             type: "GET",
