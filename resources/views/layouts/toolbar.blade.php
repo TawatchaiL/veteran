@@ -306,13 +306,13 @@
                         </div> --}}
                         <div class="btn-group float-left {{ $login_button_class }}">
                             <button {{ $login_button }} type="button" id="btn-agent-login"
-                                class="btn btn-warning custom-button  mx-1 dropdown-toggle dropdown-icon"
+                                class="btn btn-success custom-button  mx-1 dropdown-toggle dropdown-icon"
                                 data-toggle="dropdown">
-                                <i class="fa-solid fa-user-clock"></i> พักเบรค <span class="sr-only">Toggle
+                                <i class="fa-solid fa-user-clock"></i> พร้อมรับสาย <span class="sr-only">Toggle
                                     Dropdown</span>
                             </button>
                             <div class="dropdown-menu" role="menu">
-                                <a href="#" class="dropdown-item"></a>
+                                <a href="#" class="dropdown-item">Inbound</a>
                             </div>
                         </div>
 
