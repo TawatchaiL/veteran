@@ -16,12 +16,14 @@
     const tranfer_button = $('#tranfer_button');
     const conf_button = $('#conf_button');
     const break_group = $('#break_group');
+    const ready_group = $('#ready_group');
     const btn_pause = $('#btn-pause');
     const btn_unbreak = $('#btn-unbreak');
     const btn_unwarp = $('#btn-unwarp');
     const btn_agent_logout = $('#btn-system-logout');
     const btn_agent_logoff = $('#btn-agent-logout');
     const btn_agent_login = $('#btn-agent-login');
+    const btn_agent_inbound = $('#btn-agent-inbound');
     const toolbar_header = $('#toolbar_header');
     const phone_state = $('#phone_state');
     const phone_state_icon = $('#phone_state_icon');
@@ -255,6 +257,7 @@
             btn_agent_logoff.addClass("d-none");
             btn_agent_logoff.prop('disabled', true);
             btn_agent_login.addClass("d-none");
+            ready_group.addClass("d-none");
             btn_agent_login.prop('disabled', true);
             toolbar_header.removeClass();
             toolbar_header.addClass("modal-header bg-secondary");
@@ -283,6 +286,7 @@
             btn_agent_logoff.prop('disabled', true);
             btn_agent_login.removeClass("d-none");
             btn_agent_login.prop('disabled', false);
+            ready_group.removeClass("d-none");
             toolbar_header.removeClass();
             toolbar_header.addClass("modal-header bg-secondary");
         } else if (id === 1) {
@@ -311,6 +315,7 @@
             btn_agent_logoff.prop('disabled', false);
             btn_agent_login.prop('disabled', true);
             btn_agent_login.addClass("d-none");
+            ready_group.addClass("d-none");
             toolbar_header.removeClass();
             toolbar_header.addClass("modal-header bg-primary");
         } else if (id === 2) {
@@ -339,6 +344,7 @@
             btn_agent_logoff.prop('disabled', true);
             btn_agent_login.addClass("d-none");
             btn_agent_login.prop('disabled', true);
+            ready_group.addClass("d-none");
             toolbar_header.removeClass();
             toolbar_header.addClass("modal-header bg-warning");
         } else if (id === 3) {
@@ -367,6 +373,7 @@
             btn_agent_logoff.addClass("d-none");
             btn_agent_logoff.prop('disabled', true);
             btn_agent_login.addClass("d-none");
+            ready_group.addClass("d-none");
             btn_agent_login.prop('disabled', true);
             toolbar_header.removeClass();
             toolbar_header.addClass("modal-header bg-warning");
@@ -396,6 +403,7 @@
             btn_agent_logoff.prop('disabled', true);
             btn_agent_logout.prop('disabled', true);
             btn_agent_login.addClass("d-none");
+            ready_group.addClass("d-none");
             btn_agent_login.prop('disabled', true);
             toolbar_header.removeClass();
             toolbar_header.addClass("modal-header bg-danger");
@@ -425,6 +433,7 @@
             btn_agent_logoff.prop('disabled', true);
             btn_agent_logout.prop('disabled', true);
             btn_agent_login.addClass("d-none");
+            ready_group.addClass("d-none");
             btn_agent_login.prop('disabled', true);
             toolbar_header.removeClass();
             toolbar_header.addClass("modal-header bg-danger");
@@ -461,7 +470,7 @@
 
 
     //agent ready
-    $(document).on('click', '#btn-agent-login', function(e) {
+    $(document).on('click', '#btn-agent-inbound', function(e) {
         e.preventDefault();
         sendAjaxRequest("{{ route('agent.login') }}", "POST");
     });
