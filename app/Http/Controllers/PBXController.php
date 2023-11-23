@@ -390,7 +390,7 @@ class PBXController extends Controller
             if ($user->agent_type == "Inbound") {
                 $ret = $this->issable->agent_unbreak($user->phone);
             } else {
-                $ret = $this->remote->queue_unpause('6789', $user->phone);
+                $ret = $this->issable->agent_break($user->phone, 7);
             }
 
             $user->phone_status_id = 1;
@@ -747,17 +747,15 @@ class PBXController extends Controller
                         ]);
                 }
 
-                if ($user->agent_type == "Inbound") {
-                    $this->issable->agent_break($user->phone, $this->warp_id);
-                    DB::connection('remote_connection')
-                        ->table('call_center.audit')
-                        ->where('id_agent', $user->agent_id)
-                        ->whereNotNull('id_break')
-                        ->whereNull('datetime_end')
-                        ->update(['crm_id' => $user->id]);
-                } else {
-                    $ret = $this->remote->queue_pause('6789', $user->phone);
-                }
+                //if ($user->agent_type == "Inbound") {
+                $this->issable->agent_break($user->phone, $this->warp_id);
+                DB::connection('remote_connection')
+                    ->table('call_center.audit')
+                    ->where('id_agent', $user->agent_id)
+                    ->whereNotNull('id_break')
+                    ->whereNull('datetime_end')
+                    ->update(['crm_id' => $user->id]);
+                //} 
 
 
                 $user->phone_status_id = 3;
@@ -853,7 +851,7 @@ class PBXController extends Controller
 
                 $ret = $this->issable->agent_unbreak($user->phone);
             } else {
-                $ret = $this->remote->queue_unpause('6789', $user->phone);
+                $ret = $this->issable->agent_break($user->phone, 7);
             }
 
             $user->phone_status_id = 1;
