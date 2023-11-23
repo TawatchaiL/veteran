@@ -224,7 +224,7 @@
         });
 
 
-        @can('voice-record-supervisor')
+        @can('billing-supervisor')
             wsRegions.enableDragSelection({
                 color: 'rgba(255, 0, 0, 0.1)',
                 //content: 'Region Content',
@@ -283,7 +283,7 @@
             }
 
             button.addEventListener('click', () => {
-                @can('voice-record-supervisor')
+                @can('billing-supervisor')
                     region.remove();
 
                     const commentId = region.id;
