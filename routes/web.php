@@ -101,7 +101,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/billing', [App\Http\Controllers\BillingController::class, 'index'])->name('billing');
     Route::get('/billing/edit/{id}', [App\Http\Controllers\BillingController::class, 'edit'])->name('billing.edit');
     Route::get('/billing/comment', [App\Http\Controllers\BillingController::class, 'comment'])->name('billing.comment');
-    Route::delete('/billing/comment/{id}', [App\Http\Controllers\BillingController::class, 'destroy'])->name('billing.destroy');
     Route::POST('/billing/comment/update/{id}', [App\Http\Controllers\BillingController::class, 'update'])->name('billing.update');
 
     Route::get('/voicerecord', [App\Http\Controllers\VoicerecordController::class, 'index'])->name('voicerecord');
