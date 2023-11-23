@@ -410,7 +410,7 @@
                             set_state_button(result.id);
                         }
                     }); */
-                    check_state();
+                    //check_state();
 
                 } else {
                     //set_state_button(1);

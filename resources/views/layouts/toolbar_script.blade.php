@@ -191,7 +191,7 @@
     };
 
     const check_state = () => {
-        sendAjaxRequest("{{ route('agent.hang') }}", "POST");
+        sendAjaxRequest("{{ route('agent.status') }}", "POST");
     }
 
     const sendAjaxRequest = (url, method, data = {}) => {
