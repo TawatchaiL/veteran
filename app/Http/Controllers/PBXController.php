@@ -389,9 +389,10 @@ class PBXController extends Controller
         $user = Auth::user();
 
         if ($user) {
-            if ($user->agent_type == "Inbound") {
-                $ret = $this->issable->agent_unbreak($user->phone);
-            } else {
+
+            $ret = $this->issable->agent_unbreak($user->phone);
+
+            if ($user->agent_type == "Outbound") {
                 $ret = $this->issable->agent_break($user->phone, 7);
             }
 
