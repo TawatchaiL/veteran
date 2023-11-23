@@ -55,11 +55,11 @@
                                                 Agent:</strong>
                                             <select style="width: 100%;" class="select2 form-control" id="agen"
                                                 name="agen">
-                                                @can('voice-record-supervisor')
+                                                @can('billing-supervisor')
                                                     <option value="" selected>ทั้งหมด</option>
                                                 @endcan
                                                 @foreach ($agens as $agen)
-                                                    @can('voice-record-supervisor')
+                                                    @can('billing-supervisor')
                                                         <option value="{{ $agen->id }}">
                                                             {{ $agen->name ?? 'ไม่พบเบอร์โทรศัพท์' }}
                                                         </option>
