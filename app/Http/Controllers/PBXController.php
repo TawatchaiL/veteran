@@ -207,8 +207,8 @@ class PBXController extends Controller
                 ->where('id_agent', $user->agent_id)
                 ->whereNull('datetime_end')
                 ->update(['crm_id' => $user->id]);
-            $user->phone_status = "พร้อมรับสาย";
 
+            $user->phone_id = 1;
             $user->agent_type = 'inbound';
             //$user->agent_id = $user->id;
             $user->phone_status = "พร้อมรับสาย";
