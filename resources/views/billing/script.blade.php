@@ -259,7 +259,7 @@
                             .getAttribute('content');
                         $.ajax({
                             type: "get",
-                            url: "/voicerecord/comment",
+                            url: "/billing/comment",
                             headers: {
                                 'X-CSRF-TOKEN': csrfToken
                             },
@@ -291,7 +291,7 @@
                         .getAttribute('content');
                     $.ajax({
                         type: "DELETE",
-                        url: '/voicerecord/comment/' + commentId,
+                        url: '/billing/comment/' + commentId,
                         headers: {
                             'X-CSRF-TOKEN': csrfToken
                         },
@@ -323,7 +323,7 @@
                 .getAttribute('content');
             $.ajax({
                 type: "POST",
-                url: "/voicerecord/comment/update/" + regionId,
+                url: "/billing/comment/update/" + regionId,
                 headers: {
                     'X-CSRF-TOKEN': csrfToken
                 },
@@ -383,7 +383,7 @@
         var dataId = $(this).data('id');
         $.ajax({
             type: "GET",
-            url: "voicerecord/edit/" + dataId,
+            url: "billing/edit/" + dataId,
             success: function(response) {
                 $('#vioc_name').text(response.voic_name);
                 $('#uniqueid').val(response.remoteData2.uniqueid);
@@ -818,44 +818,6 @@
                 table.column(3).search(telp).draw();
             } */
         });
-
-        $('#exportVoiceButton').on('click', function(e) {
-            e.preventDefault();
-            ezBSAlert({
-                type: "confirm",
-                headerText: "Confirm",
-                messageText: "ยืนยันการ Export Voice Recording?",
-                alertType: "info",
-            }).done(function(r) {
-                if (r == true) {
-                    $.ajax({
-                        url: "{{ route('voicebackup.store') }}",
-                        method: 'post',
-                        data: {
-                            export_date: $('#reservation').val(),
-                            src: $('#telp').val(),
-                            dst: $('#agen').val(),
-                            ctype: $('#ctype').val(),
-                            _token: token,
-                        },
-                        success: function(result) {
-                            if (result.errors) {
-                                toastr.error(result.success, {
-                                    timeOut: 5000
-                                });
-                            } else {
-                                toastr.success(result.success, {
-                                    timeOut: 5000
-                                });
-                            }
-                        }
-                    });
-                }
-
-            });
-
-        });
-
 
         $('#resetSearchButton').on('click', async function() {
             localStorage.removeItem('dateStart');
