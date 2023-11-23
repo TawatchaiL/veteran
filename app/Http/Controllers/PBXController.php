@@ -376,13 +376,17 @@ class PBXController extends Controller
         $user = Auth::user();
 
         if ($user) {
-
-            $ret = $this->issable->agent_unbreak($user->phone);
+            if ($user->agent_type == "Inbound") {
+                $ret = $this->issable->agent_unbreak($user->phone);
+            } else {
+                $ret = $this->remote->queue_unpause('6789', $user->phone);
+            }
 
             $user->phone_status_id = 1;
-            $user->phone_status = "พร้อมรับสาย";
+            $user->phone_status = "พร้อมรับสาย" . " " . $user->agent_type;
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
             $user->save();
+
 
             if ($ret == true) {
                 return [
