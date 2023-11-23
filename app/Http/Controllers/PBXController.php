@@ -638,7 +638,7 @@ class PBXController extends Controller
                     $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-clock"></i>';
                 } else {
                     $user->phone_status_id = 1;
-                    $user->phone_status = "พร้อมรับสาย";
+                    $user->phone_status = "พร้อมรับสาย" . " " . $user->agent_type;
                     $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
                 }
             } else {
@@ -835,7 +835,7 @@ class PBXController extends Controller
             $ret = $this->issable->agent_unbreak($user->phone);
 
             $user->phone_status_id = 1;
-            $user->phone_status = "พร้อมรับสาย";
+            $user->phone_status = "พร้อมรับสาย" . " " . $user->agent_type;
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
             $user->save();
 
@@ -1083,7 +1083,7 @@ class PBXController extends Controller
 
             $ret = $this->issable->agent_unbreak($user->phone);
             $user->phone_status_id = 1;
-            $user->phone_status = "พร้อมรับสาย";
+            $user->phone_status = "พร้อมรับสาย" . " " . $user->agent_type;
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
             $user->save();
 
