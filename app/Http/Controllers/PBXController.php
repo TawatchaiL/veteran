@@ -20,6 +20,7 @@ class PBXController extends Controller
     protected $issable;
     protected $warp_id;
     protected $sup_break_id;
+    protected $outbound_id;
 
     /**
      * Create a new controller instance.
@@ -32,6 +33,7 @@ class PBXController extends Controller
         $this->issable = $issableService;
         $this->warp_id = config('asterisk.manager.warp_id');
         $this->sup_break_id = config('asterisk.manager.sup_break_id');
+        $this->outbound_id = config('asterisk.manager.out_break_id');
     }
 
     public function pause_list()
@@ -42,6 +44,7 @@ class PBXController extends Controller
             ->where('status', 'A')
             ->where('id', '!=', $this->warp_id)
             ->where('id', '!=', $this->sup_break_id)
+            ->where('id', '!=', $this->outbound_id)
             ->get();
 
         return response()->json($resultb);
@@ -245,7 +248,7 @@ class PBXController extends Controller
                 ->whereNull('datetime_end')
                 ->update(['crm_id' => $user->id]);
 
-            $ret = $this->issable->agent_break($user->phone, 7);
+            $ret = $this->issable->agent_break($user->phone, $this->outbound_id);
 
             DB::connection('remote_connection')
                 ->table('call_center.audit')
@@ -393,7 +396,7 @@ class PBXController extends Controller
             $ret = $this->issable->agent_unbreak($user->phone);
 
             if ($user->agent_type == "Outbound") {
-                $ret = $this->issable->agent_break($user->phone, 7);
+                $ret = $this->issable->agent_break($user->phone, $this->outbound_id);
             }
 
             $user->phone_status_id = 1;
@@ -860,7 +863,7 @@ class PBXController extends Controller
 
                 $ret = $this->issable->agent_unbreak($user->phone);
             } else {
-                $ret = $this->issable->agent_break($user->phone, 7);
+                $ret = $this->issable->agent_break($user->phone, $this->outbound_id);
             }
 
             $user->phone_status_id = 1;
