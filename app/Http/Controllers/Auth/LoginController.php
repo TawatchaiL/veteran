@@ -206,7 +206,7 @@ class LoginController extends Controller
                 $user->phone_status = "ไม่พร้อมรับสาย";
                 $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-xmark"></i>';
                 $user->logoff_time = Carbon::now();
-                $ret = $this->issable->agent_logoff($user->phone);
+                //$ret = $this->issable->agent_logoff($user->phone);
 
                 $user->login_time = Carbon::now();
                 $user->save();
