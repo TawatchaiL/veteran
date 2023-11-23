@@ -93,6 +93,7 @@ class AsteriskAmiService
         }
 
         $remote->disconnect();
+        return true;
     }
 
     public function queue_log_off($queues, $remote_extension)
