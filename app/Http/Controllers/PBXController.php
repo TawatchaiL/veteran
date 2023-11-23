@@ -207,7 +207,7 @@ class PBXController extends Controller
                 ->where('id_agent', $user->agent_id)
                 ->whereNull('datetime_end')
                 ->update(['crm_id' => $user->id]);
-                $user->phone_status = "พร้อมรับสาย";
+            $user->phone_status = "พร้อมรับสาย";
 
             $user->agent_type = 'inbound';
             //$user->agent_id = $user->id;
@@ -230,12 +230,13 @@ class PBXController extends Controller
         }
     }
 
-    public function loginAgentToQueueOutbound() {
+    public function loginAgentToQueueOutbound()
+    {
         $user = Auth::user();
 
         if ($user) {
 
-            $ret = $this->remote->QueueAdd('6789', 'SIP/'.$user->phone, 0, $user->phone, 'hint:'.$user->phone.'@'.config('asterisk.manager.warp_id'));
+            $ret = $this->remote->queue_log_in('6789', $user->phone);
             $user->agent_type = 'outbound';
             $user->phone_status_id = 1;
             //$user->agent_id = $user->id;
@@ -243,7 +244,7 @@ class PBXController extends Controller
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
             $user->save();
 
-            if ($ret) {
+            if ($ret == true) {
                 return [
                     'success' => true,
                     'id' => $user->phone_status_id,
