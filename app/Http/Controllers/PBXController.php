@@ -211,7 +211,7 @@ class PBXController extends Controller
             $user->phone_id = 1;
             $user->agent_type = 'inbound';
             //$user->agent_id = $user->id;
-            $user->phone_status = "พร้อมรับสาย";
+            $user->phone_status = "พร้อมรับสาย"." ".$user->agent_type;
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
             $user->save();
 
@@ -240,7 +240,7 @@ class PBXController extends Controller
             $user->agent_type = 'outbound';
             $user->phone_status_id = 1;
             //$user->agent_id = $user->id;
-            $user->phone_status = "พร้อมรับสาย";
+            $user->phone_status = "พร้อมรับสาย"." ".$user->agent_type;
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
             $user->save();
 
