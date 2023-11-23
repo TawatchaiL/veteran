@@ -16,7 +16,7 @@
     });
 
     socket.on('queuemember', (response) => {
-        console.log(response)
+        //console.log(response)
     });
 
 
