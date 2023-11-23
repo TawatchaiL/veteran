@@ -15,7 +15,7 @@
         console.log(response)
     });
 
-    socket.on('queuememberstatus', (response) => {
+    socket.on('queuemember', (response) => {
         console.log(response)
     });
 
