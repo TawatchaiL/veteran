@@ -237,7 +237,23 @@ class PBXController extends Controller
 
         if ($user) {
 
-            $ret = $this->remote->queue_log_in('6789', $user->phone);
+            $ret = $this->issable->agent_login($user->phone);
+
+            DB::connection('remote_connection')
+                ->table('call_center.audit')
+                ->where('id_agent', $user->agent_id)
+                ->whereNull('datetime_end')
+                ->update(['crm_id' => $user->id]);
+
+            $ret = $this->issable->agent_break($user->phone, 7);
+
+            DB::connection('remote_connection')
+                ->table('call_center.audit')
+                ->where('id_agent', $user->agent_id)
+                ->whereNotNull('id_break')
+                ->whereNull('datetime_end')
+                ->update(['crm_id' => $user->id]);
+
             $user->agent_type = 'Outbound';
             $user->phone_status_id = 1;
             //$user->agent_id = $user->id;
@@ -329,27 +345,21 @@ class PBXController extends Controller
 
         if ($user) {
 
-            if ($user->agent_type == "Inbound") {
-                $ret = $this->issable->agent_break($user->phone, $request->get('id_break'));
+            //if ($user->agent_type == "Inbound") {
+            $ret = $this->issable->agent_break($user->phone, $request->get('id_break'));
 
-                DB::connection('remote_connection')
-                    ->table('call_center.audit')
-                    ->where('id_agent', $user->agent_id)
-                    ->whereNotNull('id_break')
-                    ->whereNull('datetime_end')
-                    ->update(['crm_id' => $user->id]);
+            DB::connection('remote_connection')
+                ->table('call_center.audit')
+                ->where('id_agent', $user->agent_id)
+                ->whereNotNull('id_break')
+                ->whereNull('datetime_end')
+                ->update(['crm_id' => $user->id]);
 
-                $resultb = DB::connection('remote_connection')
-                    ->table('call_center.break')
-                    ->where('id', $request->get('id_break'))
-                    ->first();
-            } else {
-                $ret = $this->remote->queue_pause('6789', $user->phone);
-                $resultb = DB::connection('remote_connection')
-                    ->table('call_center.break')
-                    ->where('id', $request->get('id_break'))
-                    ->first();
-            }
+            $resultb = DB::connection('remote_connection')
+                ->table('call_center.break')
+                ->where('id', $request->get('id_break'))
+                ->first();
+            //} 
 
             $user->phone_status_id = 2;
             $user->phone_status =  $resultb->name;
