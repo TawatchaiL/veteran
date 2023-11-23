@@ -116,7 +116,7 @@
                     <input type="hidden" id="call_recording_id" value="">
                     <input type="hidden" id="uniqueid" value="">
 
-                    {{-- <div class="row" id="custom-dialog" style="display: none;">
+                    <div class="row" id="custom-dialog" style="display: none;">
                         <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
                                 <label for="content-input">ระบุ Comment:</label>
@@ -132,7 +132,7 @@
                                         class="fas fa-door-closed"></i> ยกเลิก</button>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                 </form>
 
 
