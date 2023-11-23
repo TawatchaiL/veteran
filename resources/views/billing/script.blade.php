@@ -385,6 +385,7 @@
             type: "GET",
             url: "billing/edit/" + dataId,
             success: function(response) {
+                alert('OK');
                 $('#vioc_name').text(response.voic_name);
                 $('#uniqueid').val(response.remoteData2.uniqueid);
                 const tooltipsData = response.tooltips;
@@ -392,7 +393,7 @@
                 initializeWaveSurfer(newUrl, tooltipsData);
             },
             error: function(error) {
-                alert('OKn');
+                alert('NO');
                 console.error('Error in Ajax request:', error);
             }
         });
