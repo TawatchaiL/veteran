@@ -15,6 +15,11 @@
         console.log(response)
     });
 
+    socket.on('queuememberstatus', async (response) => {
+        console.log(response)
+    });
+    
+
     //agent or caller hangup after talk
     socket.on('agentcomplete', async (response) => {
         console.log(response)
