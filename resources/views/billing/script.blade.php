@@ -393,7 +393,6 @@
                 initializeWaveSurfer(newUrl, tooltipsData);
             },
             error: function(error) {
-                alert('NO'+dataId);
                 console.error('Error in Ajax request:', error);
             }
         });
