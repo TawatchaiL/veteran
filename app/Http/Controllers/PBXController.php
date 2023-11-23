@@ -209,7 +209,7 @@ class PBXController extends Controller
                 ->update(['crm_id' => $user->id]);
 
             $user->phone_status_id = 1;
-            $user->agent_type = 'inbound';
+            $user->agent_type = 'Inbound';
             //$user->agent_id = $user->id;
             $user->phone_status = "พร้อมรับสาย"." ".$user->agent_type;
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
@@ -237,7 +237,7 @@ class PBXController extends Controller
         if ($user) {
 
             $ret = $this->remote->queue_log_in('6789', $user->phone);
-            $user->agent_type = 'outbound';
+            $user->agent_type = 'Outbound';
             $user->phone_status_id = 1;
             //$user->agent_id = $user->id;
             $user->phone_status = "พร้อมรับสาย"." ".$user->agent_type;
