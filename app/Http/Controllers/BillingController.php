@@ -232,7 +232,8 @@ class BillingController extends Controller
 
             $agentname = $agentname ?: 'NoAgent';
 
-            $voic_name = $agentname . "-" . end($avoic);
+            //$voic_name = $agentname . "-" . end($avoic);
+            $voic_name = end($avoic);
             $tooltips = Comment::where('uniqueid', $id)->get();
         }
 
