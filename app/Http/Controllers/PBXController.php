@@ -648,8 +648,14 @@ class PBXController extends Controller
                         $user->phone_status_id = 2;
                     }
 
-                    $user->phone_status =  $resultb->name;
-                    $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-clock"></i>';
+                    if ($user->agent_type == "Outbound") {
+                        $user->phone_status_id = 1;
+                        $user->phone_status = "พร้อมรับสาย" . " " . $user->agent_type;
+                        $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
+                    } else {
+                        $user->phone_status =  $resultb->name;
+                        $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-clock"></i>';
+                    }
                 } else {
                     $user->phone_status_id = 1;
                     $user->phone_status = "พร้อมรับสาย" . " " . $user->agent_type;
