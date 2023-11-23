@@ -214,13 +214,14 @@ class LoginController extends Controller
                     ->update(['number' => $user->phone]); */
 
 
-                $this->issable->agent_login($user->phone);
+                //login first
+                /* $this->issable->agent_login($user->phone);
 
                 DB::connection('remote_connection')
                     ->table('call_center.audit')
                     ->where('id_agent', $user->agent_id)
                     ->whereNull('datetime_end')
-                    ->update(['crm_id' => $user->id]);
+                    ->update(['crm_id' => $user->id]); */
 
 
                 //$this->issable->agent_login($user->phone);

@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('phone_status')->nullable();
             $table->string('phone_status_icon')->nullable();
             $table->string('break_text')->nullable();
+            $table->string('agent_type')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
