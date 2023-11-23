@@ -304,7 +304,7 @@
                                 <i class="fas fa-plug"></i> พร้อมรับสาย
                             </button>
                         </div> --}}
-                        <div class="btn-group float-left {{ $login_button_class }}">
+                        <div class="btn-group float-left {{ $login_button_class }}" id="ready_group">
                             <button {{ $login_button }} type="button" id="btn-agent-login"
                                 class="btn btn-success custom-button  mx-1 dropdown-toggle dropdown-icon"
                                 data-toggle="dropdown">

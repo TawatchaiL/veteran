@@ -16,6 +16,7 @@
     const tranfer_button = $('#tranfer_button');
     const conf_button = $('#conf_button');
     const break_group = $('#break_group');
+    const ready_group = $('#ready_group');
     const btn_pause = $('#btn-pause');
     const btn_unbreak = $('#btn-unbreak');
     const btn_unwarp = $('#btn-unwarp');
@@ -256,6 +257,7 @@
             btn_agent_logoff.addClass("d-none");
             btn_agent_logoff.prop('disabled', true);
             btn_agent_login.addClass("d-none");
+            ready_group.addClass("d-none");
             btn_agent_login.prop('disabled', true);
             toolbar_header.removeClass();
             toolbar_header.addClass("modal-header bg-secondary");
@@ -284,6 +286,7 @@
             btn_agent_logoff.prop('disabled', true);
             btn_agent_login.removeClass("d-none");
             btn_agent_login.prop('disabled', false);
+            ready_group.removeClass("d-none");
             toolbar_header.removeClass();
             toolbar_header.addClass("modal-header bg-secondary");
         } else if (id === 1) {
@@ -312,6 +315,7 @@
             btn_agent_logoff.prop('disabled', false);
             btn_agent_login.prop('disabled', true);
             btn_agent_login.addClass("d-none");
+            ready_group.addClass("d-none");
             toolbar_header.removeClass();
             toolbar_header.addClass("modal-header bg-primary");
         } else if (id === 2) {
@@ -340,6 +344,7 @@
             btn_agent_logoff.prop('disabled', true);
             btn_agent_login.addClass("d-none");
             btn_agent_login.prop('disabled', true);
+            ready_group.addClass("d-none");
             toolbar_header.removeClass();
             toolbar_header.addClass("modal-header bg-warning");
         } else if (id === 3) {
@@ -368,6 +373,7 @@
             btn_agent_logoff.addClass("d-none");
             btn_agent_logoff.prop('disabled', true);
             btn_agent_login.addClass("d-none");
+            ready_group.addClass("d-none");
             btn_agent_login.prop('disabled', true);
             toolbar_header.removeClass();
             toolbar_header.addClass("modal-header bg-warning");
@@ -397,6 +403,7 @@
             btn_agent_logoff.prop('disabled', true);
             btn_agent_logout.prop('disabled', true);
             btn_agent_login.addClass("d-none");
+            ready_group.addClass("d-none");
             btn_agent_login.prop('disabled', true);
             toolbar_header.removeClass();
             toolbar_header.addClass("modal-header bg-danger");
@@ -426,6 +433,7 @@
             btn_agent_logoff.prop('disabled', true);
             btn_agent_logout.prop('disabled', true);
             btn_agent_login.addClass("d-none");
+            ready_group.addClass("d-none");
             btn_agent_login.prop('disabled', true);
             toolbar_header.removeClass();
             toolbar_header.addClass("modal-header bg-danger");
