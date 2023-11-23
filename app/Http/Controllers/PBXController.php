@@ -207,14 +207,43 @@ class PBXController extends Controller
                 ->where('id_agent', $user->agent_id)
                 ->whereNull('datetime_end')
                 ->update(['crm_id' => $user->id]);
+                $user->phone_status = "พร้อมรับสาย";
 
-            $user->phone_status_id = 1;
+            $user->agent_type = 'inbound';
             //$user->agent_id = $user->id;
             $user->phone_status = "พร้อมรับสาย";
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
             $user->save();
 
             if ($ret == true) {
+                return [
+                    'success' => true,
+                    'id' => $user->phone_status_id,
+                    'message' => $user->phone_status,
+                    'icon' => $user->phone_status_icon
+                ];
+            } else {
+                return ['success' => false, 'message' => 'login error'];
+            }
+        } else {
+            return ['success' => false, 'message' => 'login error'];
+        }
+    }
+
+    public function loginAgentToQueueOutbound() {
+        $user = Auth::user();
+
+        if ($user) {
+
+            $ret = $this->remote->QueueAdd('6789', 'SIP/'.$user->phone, 0, $user->phone, 'hint:'.$user->phone.'@'.config('asterisk.manager.warp_id'));
+            $user->agent_type = 'outbound';
+            $user->phone_status_id = 1;
+            //$user->agent_id = $user->id;
+            $user->phone_status = "พร้อมรับสาย";
+            $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
+            $user->save();
+
+            if ($ret) {
                 return [
                     'success' => true,
                     'id' => $user->phone_status_id,
