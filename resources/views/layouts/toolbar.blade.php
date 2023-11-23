@@ -313,6 +313,7 @@
                             </button>
                             <div class="dropdown-menu" role="menu">
                                 <a href="#" class="dropdown-item" id="btn-agent-inbound">Inbound</a>
+                                <a href="#" class="dropdown-item" id="btn-agent-outbound">Outbound</a>
                             </div>
                         </div>
 

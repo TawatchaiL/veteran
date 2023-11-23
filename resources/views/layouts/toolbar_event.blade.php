@@ -6,14 +6,19 @@
     });
 
     //agent receive call
-    socket.on('agentconnect', async (response) => {
+    socket.on('agentconnect', (response) => {
         console.log(response)
     });
 
     //agent answer call
-    socket.on('agentcalled', async (response) => {
+    socket.on('agentcalled', (response) => {
         console.log(response)
     });
+
+    socket.on('queuemember', (response) => {
+        //console.log(response)
+    });
+
 
     //agent or caller hangup after talk
     socket.on('agentcomplete', async (response) => {

@@ -88,11 +88,12 @@ class AsteriskAmiService
         $remote = $this->asterisk_ami();
         $queue = explode(",", $queues);
         foreach ($queue as $qval) {
-            $remote->QueueAdd($qval, "SIP/$remote_extension", 0, 'Agent1', "hint:$remote_extension@$this->remoteContext");
+            $remote->QueueAdd($qval, "SIP/$remote_extension", 0, $remote_extension, "hint:$remote_extension@$this->remoteContext");
             $remote->QueuePause($qval, "SIP/$remote_extension", 'false', '');
         }
 
         $remote->disconnect();
+        return true;
     }
 
     public function queue_log_off($queues, $remote_extension)
@@ -105,5 +106,29 @@ class AsteriskAmiService
         }
 
         $remote->disconnect();
+    }
+
+    public function queue_pause($queues, $remote_extension)
+    {
+        $remote = $this->asterisk_ami();
+        $queue = explode(",", $queues);
+        foreach ($queue as $qval) {
+            $remote->QueuePause($qval, "SIP/$remote_extension", 'true', '');
+        }
+
+        $remote->disconnect();
+        return true;
+    }
+
+    public function queue_unpause($queues, $remote_extension)
+    {
+        $remote = $this->asterisk_ami();
+        $queue = explode(",", $queues);
+        foreach ($queue as $qval) {
+            $remote->QueuePause($qval, "SIP/$remote_extension", 'false', '');
+        }
+
+        $remote->disconnect();
+        return true;
     }
 }

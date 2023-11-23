@@ -475,6 +475,11 @@
         sendAjaxRequest("{{ route('agent.login') }}", "POST");
     });
 
+    $(document).on('click', '#btn-agent-outbound', function(e) {
+        e.preventDefault();
+        sendAjaxRequest("{{ route('agent.login_outbound') }}", "POST");
+    });
+
 
     //agen not ready
     $(document).on('click', '#btn-agent-logout', function(e) {
