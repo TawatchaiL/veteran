@@ -133,8 +133,8 @@ class LoginController extends Controller
                 } else {
                     auth()->logout();
                     return redirect()->route('login')
-                        ->with('login_error', 'กรุณาติดต่อผู้ดูแลระบบ')
-                        ->withErrors(['email' => 'กรุณาติดต่อผู้ดูแลระบบ']);
+                        ->with('login_error', 'ไม่พบเบอร์นี้ในระบบ')
+                        ->withErrors(['email' => 'ไม่พบเบอร์นี้ในระบบ']);
                 }
 
 
