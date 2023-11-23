@@ -345,7 +345,9 @@ class PBXController extends Controller
 
         if ($user) {
 
-            //if ($user->agent_type == "Inbound") {
+            if ($user->agent_type == "Outbound") {
+                $ret = $this->issable->agent_unbreak($user->phone);
+            }
             $ret = $this->issable->agent_break($user->phone, $request->get('id_break'));
 
             DB::connection('remote_connection')
@@ -359,7 +361,7 @@ class PBXController extends Controller
                 ->table('call_center.break')
                 ->where('id', $request->get('id_break'))
                 ->first();
-            //} 
+
 
             $user->phone_status_id = 2;
             $user->phone_status =  $resultb->name;
