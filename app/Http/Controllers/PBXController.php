@@ -344,6 +344,10 @@ class PBXController extends Controller
                     ->first();
             } else {
                 $ret = $this->remote->queue_pause('6789', $user->phone);
+                $resultb = DB::connection('remote_connection')
+                    ->table('call_center.break')
+                    ->where('id', $request->get('id_break'))
+                    ->first();
             }
 
             $user->phone_status_id = 2;
