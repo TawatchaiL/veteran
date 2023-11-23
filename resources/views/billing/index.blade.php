@@ -55,11 +55,11 @@
                                                 Agent:</strong>
                                             <select style="width: 100%;" class="select2 form-control" id="agen"
                                                 name="agen">
-                                                @can('voice-record-supervisor')
+                                                @can('billing-supervisor')
                                                     <option value="" selected>ทั้งหมด</option>
                                                 @endcan
                                                 @foreach ($agens as $agen)
-                                                    @can('voice-record-supervisor')
+                                                    @can('billing-supervisor')
                                                         <option value="{{ $agen->id }}">
                                                             {{ $agen->name ?? 'ไม่พบเบอร์โทรศัพท์' }}
                                                         </option>
@@ -142,8 +142,6 @@
                             {{-- <button class="changeUrlButton">Change URL</button> --}}
                             <div class="col-xs-12 col-sm-12 col-md-12 align-self-end text-right">
                                 <div class="form-group">
-                                    <a class="btn btn-warning" id="exportVoiceButton" {{-- href="{{ route('reportcase.pdf') }}" --}}>
-                                        <i class="fa-solid fa-file-export"></i> Export </a>
                                     <a class="btn btn-danger" id="exportPDFButton" {{-- href="{{ route('reportcase.pdf') }}" --}}>
                                         <i class="fa-regular fa-file-pdf"></i> PDF </a>
                                     <a class="btn btn-success" id="exportXLSButton" {{-- href="{{ route('reportcase.pdf') }}" --}}>
