@@ -658,7 +658,7 @@ class PBXController extends Controller
                     }
                 } else {
                     $user->phone_status_id = 1;
-                    $user->phone_status = "พร้อมรับสาย" . " " . $user->agent_type;
+                    $user->phone_status = "พร้อมรับสาย22" . " " . $user->agent_type;
                     $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
                 }
             } else {
