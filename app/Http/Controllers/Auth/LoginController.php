@@ -205,13 +205,11 @@ class LoginController extends Controller
                 $user->phone_status_id = 0;
                 $user->phone_status = "ไม่พร้อมรับสาย";
                 $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-xmark"></i>';
-                $user->logoff_time = Carbon::now();
+                //$user->logoff_time = Carbon::now();
                 $user->login_time = Carbon::now();
                 $user->save();
 
                 Session::put('login_time', $user->login_time);
-
-                $ret = $this->issable->agent_logoff($user->phone);
 
                 // Update 'number' in the 'call_center.agent' table
                 /* DB::connection('remote_connection')
