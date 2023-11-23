@@ -21,8 +21,8 @@
     const btn_unwarp = $('#btn-unwarp');
     const btn_agent_logout = $('#btn-system-logout');
     const btn_agent_logoff = $('#btn-agent-logout');
-    //const btn_agent_login = $('#btn-agent-login');login_group
-    const btn_agent_login = $('#login_group');
+    const btn_agent_login = $('#btn-agent-login');
+    const btn_agent_inbound = $('#btn-agent-inbound');
     const toolbar_header = $('#toolbar_header');
     const phone_state = $('#phone_state');
     const phone_state_icon = $('#phone_state_icon');
@@ -462,7 +462,7 @@
 
 
     //agent ready
-    $(document).on('click', '#btn-agent-login', function(e) {
+    $(document).on('click', '#btn-agent-inbound', function(e) {
         e.preventDefault();
         sendAjaxRequest("{{ route('agent.login') }}", "POST");
     });
