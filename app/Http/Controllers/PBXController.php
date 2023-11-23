@@ -453,6 +453,20 @@ class PBXController extends Controller
                         'call_date' => date("Y-m-d H:i:s"),
                     ]);
                 }
+            } else {
+                DB::table('crm_incoming')
+                    ->where('telno', $request->input('telno'))
+                    ->where('agent_id', $user->id)
+                    ->delete();
+                DB::table('crm_incoming')->insert([
+                    'agent_id' => $user->id,
+                    'uniqid' => $request->input('uniqid'),
+                    'context' => $request->input('context'),
+                    'telno' => $request->input('telno'),
+                    'agentno' => $user->phone,
+                    'calltime' => date("Y-m-d H:i:s"),
+                    'status' => 1
+                ]);
             }
 
 
