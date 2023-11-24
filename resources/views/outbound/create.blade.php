@@ -52,6 +52,19 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-xs-8 col-sm-8 col-md-8">
+                        <div class="form-group">
+                            <strong><i class="fas fa-eye"></i> โทรออกอัติโนมัติ:</strong>
+                            <br />
+                            <div class="custom-control custom-switch">
+                                {{ Form::checkbox('status', '1', false, ['id' => 'customCheckbox1', 'class' => 'custom-control-input name']) }}
+                                <label for="customCheckbox1" class="custom-control-label">
+                                    เปิดใช้งาน</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 {!! Form::close() !!}
             </div>
             <div class="modal-footer {{-- justify-content-between --}}">
