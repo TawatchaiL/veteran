@@ -512,6 +512,7 @@ class PBXController extends Controller
                     $outbound->update([
                         'dial_status' => 1,
                     ]);
+                    //set outbound warp
                     DB::table('crm_incoming')
                         ->where('uniqid', $request->input('uniqid'))
                         ->update([
@@ -672,6 +673,7 @@ class PBXController extends Controller
                             ];
 
                             DB::connection('remote_connection')->table('wrap_data')->insert($dataToInsert);
+                            $this->issable->agent_unbreak($user->phone);
                             $this->issable->agent_break($user->phone, $this->warp_id);
                             DB::connection('remote_connection')
                                 ->table('call_center.audit')
@@ -895,6 +897,7 @@ class PBXController extends Controller
 
                 $ret = $this->issable->agent_unbreak($user->phone);
             } else {
+                $ret = $this->issable->agent_unbreak($user->phone);
                 $ret = $this->issable->agent_break($user->phone, $this->outbound_id);
             }
 
