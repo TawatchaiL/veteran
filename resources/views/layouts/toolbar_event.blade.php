@@ -244,22 +244,8 @@
                         const encodedErrorMessage = encodeURIComponent(errorMessage);
                         window.location.replace(`${web_url}/login?error=${encodedErrorMessage}`);
                     } else {
-                        //set_state_icon(result.id, result.icon, result.message);
-                        //set_state_button(result.id);
-                        $.ajax({
-                            url: "{{ route('agent.hang') }}",
-                            method: 'post',
-                            async: true,
-                            data: {
-                                extension: data.extension,
-                                _token: token,
-                            },
-                            success: function(result) {
-                                set_state_icon(result.id, result.icon, result.message);
-                                set_state_button(result.id);
-                                //positionCards();
-                            }
-                        });
+                        set_state_icon(result.id, result.icon, result.message);
+                        set_state_button(result.id);
                     }
 
                 }
