@@ -135,6 +135,10 @@
                     name: 'job_admin'
                 },
                 {
+                    data: 'job_agent',
+                    name: 'job_agent'
+                },
+                {
                     data: 'job_call',
                     name: 'job_call'
                 },
@@ -145,6 +149,10 @@
                 {
                     data: 'job_process',
                     name: 'job_process'
+                },
+                {
+                    data: 'job_auto',
+                    name: 'job_auto'
                 },
                 {
                     data: 'action',

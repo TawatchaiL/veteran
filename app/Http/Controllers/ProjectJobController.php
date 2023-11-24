@@ -76,6 +76,7 @@ class ProjectJobController extends Controller
                 ->get();
 
             $state_text = ['Stop', 'Start', 'Pause'];
+            $auto_text = ['Manual', 'Auto'];
 
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
@@ -87,6 +88,10 @@ class ProjectJobController extends Controller
                 })
                 ->editColumn('job_admin', function ($row) use ($agentArray) {
                     $state = $agentArray[$row->job_admin]['name'];
+                    return $state;
+                })
+                ->editColumn('job_agent', function ($row) use ($agentArray) {
+                    $state = $agentArray[$row->job_agent]['name'];
                     return $state;
                 })
                 ->editColumn('job_call', function ($row) {
@@ -104,6 +109,10 @@ class ProjectJobController extends Controller
                     </div>
                     </div><small>' . $row->a_call . ' เบอร์ ' . $perp . '% Complete</small>';
                     return $progress;
+                })
+                ->editColumn('job_auto', function ($row) use ($auto_text) {
+                    $state = $auto_text[$row->job_auto];
+                    return $state;
                 })
                 ->addColumn('action', function ($row) {
                     if ($row->job_status == 0) {
