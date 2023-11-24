@@ -45,7 +45,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <button type="button" class="btn btn-success btn-lg mx-auto"
                                     id="waveform-time-indicator">
-                                    <i class="fa-solid fa-clock"></i> <span class="time">00:00:001234</span>
+                                    <i class="fa-solid fa-clock"></i> <span class="time">00:00:00</span>
                                 </button>
                             </div>
                         </div>

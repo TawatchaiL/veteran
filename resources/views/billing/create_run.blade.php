@@ -104,7 +104,7 @@
             </div>
             <div class="text-center">
                 <button type="button" class="btn btn-success btn-lg mx-auto" id="waveform-time-indicator">
-                    <i class="fa-solid fa-clock"></i> <span class="time">00:00:00</span>
+                    <i class="fa-solid fa-clock"></i> <span class="time">00:00:001234</span>
                 </button>
             </div>
         </div>
