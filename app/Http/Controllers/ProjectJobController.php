@@ -54,8 +54,10 @@ class ProjectJobController extends Controller
                 'project_jobs.job_code_id as job_code_id',
                 'project_jobs.job_create_date as job_create_date',
                 'project_jobs.job_admin as job_admin',
+                'project_jobs.job_agent as job_agent',
                 'project_jobs.job_status as job_status',
                 'project_jobs.job_file as jfile',
+                'project_jobs.job_auto as job_auto',
                 DB::raw('SUM(CASE WHEN project_job_numbers.call_status = 1 THEN 1 ELSE 0 END) AS a_call'),
                 DB::raw('SUM(CASE WHEN project_job_numbers.call_status = 0 THEN 1 ELSE 0 END) AS an_call'),
                 DB::raw('SUM(CASE WHEN project_job_numbers.dial_status = 1 THEN 1 ELSE 0 END) AS call_success'),
@@ -68,8 +70,10 @@ class ProjectJobController extends Controller
                     'project_jobs.job_code_id',
                     'project_jobs.job_create_date',
                     'project_jobs.job_admin',
+                    'project_jobs.job_agent',
                     'project_jobs.job_status',
-                    'project_jobs.job_file'
+                    'project_jobs.job_file',
+                    'project_jobs.job_auto',
                 )
                 ->orderByDesc('project_jobs.job_id')
                 //->limit(200)
