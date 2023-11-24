@@ -445,6 +445,7 @@ class PBXController extends Controller
             } elseif ($request->input('context') == 'macro-dialout-trunk' || $request->input('context') == 'macro-dial-one') {
                 $outbound = Project_job_number::where('call_number', $request->input('telno'))
                     ->where('dial_agent', $user->id)
+                    ->where('call_status', 0)
                     ->orderByDesc('job_number_id')
                     ->first();
                 if (!empty($outbound)) {
@@ -506,6 +507,7 @@ class PBXController extends Controller
             if ($request->input('context') == 'macro-dialout-trunk' || $request->input('context') == 'macro-dial-one' || $request->input('context') == 'from-internal') {
                 $outbound = Project_job_number::where('call_number', $request->input('telno'))
                     ->where('dial_agent', $user->id)
+                    ->where('cdr_uniqueid', $request->input('uniqid'))
                     ->orderByDesc('job_number_id')
                     ->first();
                 if (!empty($outbound)) {
