@@ -442,7 +442,7 @@ class PBXController extends Controller
                     'status' => 1
                 ]);
                 //outbound
-            } elseif ($request->input('context') == 'macro-dialout-trunk' || $request->input('context') == 'macro-dial-one') {
+            } elseif ($request->input('context') == 'macro-dialout-trunk' || $request->input('context') == 'macro-dial-one' || $request->input('context') == 'from-internal') {
                 $outbound = Project_job_number::where('call_number', $request->input('telno'))
                     ->where('dial_agent', $user->id)
                     ->where('call_status', 0)
