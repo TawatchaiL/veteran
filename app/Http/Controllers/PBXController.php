@@ -511,6 +511,11 @@ class PBXController extends Controller
                     $outbound->update([
                         'dial_status' => 1,
                     ]);
+                    DB::table('crm_incoming')
+                        ->where('uniqid', $request->input('uniqid'))
+                        ->update([
+                            'outbound_latest' => 1,
+                        ]);
                 }
             }
 
@@ -652,6 +657,28 @@ class PBXController extends Controller
                     }
 
                     if ($user->agent_type == "Outbound") {
+                        $ck = DB::table('crm_incoming')
+                            ->where('agent_id', $user->id)
+                            ->orderByDesc('calltime')
+                            ->first();
+                        if ($ck->outbound_latest == 1) {
+                            $dataToInsert = [
+                                'id_agent' => $user->agent_id,
+                                'crm_id' => $user->id,
+                                'phone' => $user->phone,
+                                'uniqid' => $ck->uniqid,
+                                'wrap_start' => date("Y-m-d H:i:s"),
+                            ];
+
+                            DB::connection('remote_connection')->table('wrap_data')->insert($dataToInsert);
+                            $this->issable->agent_break($user->phone, $this->warp_id);
+                            DB::connection('remote_connection')
+                                ->table('call_center.audit')
+                                ->where('id_agent', $user->agent_id)
+                                ->whereNotNull('id_break')
+                                ->whereNull('datetime_end')
+                                ->update(['crm_id' => $user->id]);
+                        }
                         $user->phone_status_id = 1;
                         $user->phone_status = "พร้อมรับสาย" . " " . $user->agent_type;
                         $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
