@@ -45,7 +45,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <button type="button" class="btn btn-success btn-lg mx-auto"
                                     id="waveform-time-indicator">
-                                    <i class="fa-solid fa-clock"></i> <span class="time">00:00:00</span>
+                                    <i class="fa-solid fa-clock"></i> <span class="time">00:00:001234</span>
                                 </button>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <label for="volume" class="d-block">
-                                    ระดับเสียง1234: <span id="vol">4.00</span>
+                                    ระดับเสียง: <span id="vol">4.00</span>
                                 </label><input id="volume" type="range" min="0" max="1"
                                     value="1" step="0.1" />
 
