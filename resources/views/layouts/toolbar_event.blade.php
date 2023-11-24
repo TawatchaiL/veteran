@@ -181,7 +181,7 @@
                 //toolbar_header.addClass("bg-secondary");
             } else if (data.status == 0) {
                 //toolbar_header.addClass("bg-primary");
-                 $.ajax({
+                $.ajax({
                     url: "{{ route('agent.hang') }}",
                     method: 'post',
                     async: false,
@@ -194,7 +194,7 @@
                         set_state_button(result.id);
                         //positionCards();
                     }
-                }); 
+                });
             } else if (data.status == 1 || data.status == 2 || data.status == 8 || data.status == 9) {
                 //toolbar_header.addClass("bg-danger");
             } else if (data.status == 16 || data.status == 17) {
@@ -246,6 +246,20 @@
                     } else {
                         //set_state_icon(result.id, result.icon, result.message);
                         //set_state_button(result.id);
+                        $.ajax({
+                            url: "{{ route('agent.hang') }}",
+                            method: 'post',
+                            async: false,
+                            data: {
+                                extension: data.extension,
+                                _token: token,
+                            },
+                            success: function(result) {
+                                set_state_icon(result.id, result.icon, result.message);
+                                set_state_button(result.id);
+                                //positionCards();
+                            }
+                        });
                     }
 
                 }
