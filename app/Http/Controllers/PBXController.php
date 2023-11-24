@@ -446,7 +446,7 @@ class PBXController extends Controller
                 $outbound = Project_job_number::where('call_number', $request->input('telno'))
                     ->where('dial_agent', $user->id)
                     ->where('call_status', 0)
-                    ->orderByAsc('job_number_id')
+                    ->orderBy('job_number_id')
                     ->first();
                 if (!empty($outbound)) {
                     DB::table('crm_incoming')
@@ -508,7 +508,7 @@ class PBXController extends Controller
                 $outbound = Project_job_number::where('call_number', $request->input('telno'))
                     ->where('dial_agent', $user->id)
                     ->where('cdr_uniqueid', $request->input('uniqid'))
-                    ->orderByAsc('job_number_id')
+                    ->orderBy('job_number_id')
                     ->first();
                 if (!empty($outbound)) {
                     $outbound->update([
