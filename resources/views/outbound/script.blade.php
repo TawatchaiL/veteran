@@ -230,6 +230,7 @@
                             timeOut: 5000
                         });
                         $('#Listview').DataTable().ajax.reload();
+                        $("#AddAgent").val(null).trigger("change")
                         $('.form').trigger('reset');
                         $('#CreateModal').modal('hide');
                     }
