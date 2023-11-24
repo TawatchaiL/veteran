@@ -195,8 +195,10 @@
                         _token: token,
                     },
                     success: function(result) {
-                        set_state_icon(result.id, result.icon, result.message);
-                        set_state_button(result.id);
+                        setTimeout(() => {
+                            set_state_icon(result.id, result.icon, result.message);
+                            set_state_button(result.id);
+                        }, 1000);
                         //positionCards();
                     }
                 });
