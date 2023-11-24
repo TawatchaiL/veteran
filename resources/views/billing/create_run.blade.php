@@ -6,7 +6,7 @@
     <h4 class="modal-title"><i class="fa-solid fa-volume-high"></i>
         {{ $remoteData2->recordingfile ?? null }}
     </h4>
-    <div class="closew"> <i class="fa-solid fa-clock"></i> ความยาว1234 <span id="duration">00:00:00</span> นาที
+    <div class="closew"> <i class="fa-solid fa-clock"></i> ความยาว <span id="duration">00:00:00</span> นาที
     </div>
     <input type="hidden" value="{{ $remoteData2->recordingfile ?? null}}" id="vioc">
 

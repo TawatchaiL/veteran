@@ -4,7 +4,7 @@
             <div class="modal-header bg-primary">
                 <h4 class="modal-title"><i class="fa-solid fa-volume-high"></i> <span id="vioc_name">
                         09999999-1002-2023-08-01-110000.wav </span> </h4>
-                <div class="closew"> <i class="fa-solid fa-clock"></i> ความยาว789 <span id="duration">00:00:00</span> นาที
+                <div class="closew"> <i class="fa-solid fa-clock"></i> ความยาว <span id="duration">00:00:00</span> นาที
                 </div>
 
 
@@ -97,7 +97,8 @@
                                     class="fa-solid fa-stop"></i></button>
                             <button class="btn btn-warning btn-lg mx-auto" id="forward"><i
                                     class="fa-solid fa-forward"></i></button>
-
+                                    <button class="btn btn-warning btn-lg mx-auto" id="forward"><i
+                                        class="fa-solid fa-forward"></i></button>
                             {{-- <button id="toggleMuteBtn" class="btn btn-primary">Toggle Mute</button>
                         <button id="setMuteOnBtn" class="btn btn-primary">
                             Mute <i class="glyphicon glyphicon-volume-off"></i>
