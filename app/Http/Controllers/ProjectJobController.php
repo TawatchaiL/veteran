@@ -7,6 +7,7 @@ use App\Models\Project_job_number as ProjectJobNumber;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -154,6 +155,16 @@ class ProjectJobController extends Controller
                 return response()->json(['errors' => ['กรุณาอัพโหลดไฟล์ CSV']]);
             }
 
+            $validator =  Validator::make($request->all(), [
+                'job_agent' => 'required',
+            ], [
+                'job_agent.required' => 'กรุณาระบุ Agent!',
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json(['errors' => $validator->errors()->all()]);
+            }
+
             $realn = str_replace(" ", "", pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME));
             $remoteFilename = str_replace(" ", "_", $realn) . '.' . $fileExtension;
 
@@ -175,6 +186,7 @@ class ProjectJobController extends Controller
                 'job_create_date' => $cdate,
                 'job_file' => $realn,
                 'job_admin' => $user->id,
+                'job_agent' => $request->input('agent'),
                 'job_status' => 0,
                 'job_process' => 0,
             ]);

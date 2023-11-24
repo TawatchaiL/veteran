@@ -43,7 +43,6 @@
                             <strong><i class="fas fa-list-ol"></i> Agent:</strong>
                             <select style="width: 100%;" class="select2 select2_single form-control" id="AddAgent"
                                 name="agent" multiple="multiple">
-                                <option value="0">ไม่ระบุ</option>
                                 @foreach ($agent as $agen)
                                     <option value="{{ $agen->id }}">
                                         {{ $agen->name ?? 'ไม่พบเบอร์โทรศัพท์' }}

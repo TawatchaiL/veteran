@@ -17,8 +17,10 @@ return new class extends Migration
             $table->dateTime('job_create_date')->nullable();
             $table->string('job_file', 100)->nullable();
             $table->integer('job_admin')->nullable();
+            $table->integer('job_agent')->nullable();
             $table->integer('job_status')->nullable();
             $table->integer('job_process')->nullable();
+            $table->integer('job_auto')->nullable();
             $table->timestamps();
 
             //$table->primary('job_id');
