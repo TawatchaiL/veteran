@@ -193,9 +193,18 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
+            
+            if ($('#customCheckbox1').is(":checked")) {
+                sstatus = 1;
+            } else {
+                sstatus = 0;
+            }
+
+
             var formData = new FormData();
             formData.append('csv_file', $('#AddCSV')[0].files[0]);
             formData.append('agent', $('#AddAgent').val()[0]);
+            formData.append('status', sstatus);
             formData.append('_token', token);
             $.ajax({
                 url: "{{ route('outbound.store') }}",

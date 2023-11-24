@@ -55,7 +55,7 @@
                 <div class="row">
                     <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group">
-                            <strong><i class="fas fa-eye"></i> โทรออกอัติโนมัติ:</strong>
+                            <strong><i class="fa-solid fa-robot"></i> โทรออกอัติโนมัติ:</strong>
                             <br />
                             <div class="custom-control custom-switch">
                                 {{ Form::checkbox('status', '1', false, ['id' => 'customCheckbox1', 'class' => 'custom-control-input name']) }}

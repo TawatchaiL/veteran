@@ -156,9 +156,9 @@ class ProjectJobController extends Controller
             }
 
             $validator =  Validator::make($request->all(), [
-                'job_agent' => 'required',
+                'agent' => 'required',
             ], [
-                'job_agent.required' => 'กรุณาระบุ Agent!',
+                'agent.required' => 'กรุณาระบุ Agent!',
             ]);
 
             if ($validator->fails()) {
@@ -189,6 +189,7 @@ class ProjectJobController extends Controller
                 'job_agent' => $request->input('agent'),
                 'job_status' => 0,
                 'job_process' => 0,
+                'job_auto' => $request->input('status'),
             ]);
 
             $projectJob->save();
