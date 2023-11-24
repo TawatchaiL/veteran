@@ -502,8 +502,8 @@ class PBXController extends Controller
                 ]);
 
             //outbound
-            dd($request->input('context'));
-            if ($request->input('context') == 'macro-dialout-trunk' || $request->input('context') == 'macro-dial-one') {
+            //dd($request->input('context'));
+            if ($request->input('context') == 'macro-dialout-trunk' || $request->input('context') == 'macro-dial-one' || $request->input('context') == 'from-internal') {
                 $outbound = Project_job_number::where('call_number', $request->input('telno'))
                     ->where('dial_agent', $user->id)
                     ->orderByDesc('job_number_id')
