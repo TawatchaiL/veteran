@@ -176,10 +176,12 @@
     });
 
     socket.on('event', async (data) => {
+        
         if (data.extension == exten) {
             if (data.status == 4 || data.status == -1) {
                 //toolbar_header.addClass("bg-secondary");
             } else if (data.status == 0) {
+                console.log(data)
                 //toolbar_header.addClass("bg-primary");
                 $.ajax({
                     url: "{{ route('agent.hang') }}",
