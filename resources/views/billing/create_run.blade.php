@@ -6,7 +6,7 @@
     <h4 class="modal-title"><i class="fa-solid fa-volume-high"></i>
         {{ $remoteData2->recordingfile ?? null }}
     </h4>
-    <div class="closew"> <i class="fa-solid fa-clock"></i> ความยาว <span id="duration">00:00:00</span> นาที
+    <div class="closew"> <i class="fa-solid fa-clock"></i> ความยาว1234 <span id="duration">00:00:00</span> นาที
     </div>
     <input type="hidden" value="{{ $remoteData2->recordingfile ?? null}}" id="vioc">
 
@@ -104,7 +104,7 @@
             </div>
             <div class="text-center">
                 <button type="button" class="btn btn-success btn-lg mx-auto" id="waveform-time-indicator">
-                    <i class="fa-solid fa-clock"></i> <span class="time">00:00:001234</span>
+                    <i class="fa-solid fa-clock"></i> <span class="time">00:00:00</span>
                 </button>
             </div>
         </div>

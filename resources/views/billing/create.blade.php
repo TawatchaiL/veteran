@@ -4,7 +4,7 @@
             <div class="modal-header bg-primary">
                 <h4 class="modal-title"><i class="fa-solid fa-volume-high"></i> <span id="vioc_name">
                         09999999-1002-2023-08-01-110000.wav </span> </h4>
-                <div class="closew"> <i class="fa-solid fa-clock"></i> ความยาว <span id="duration">00:00:00</span> นาที
+                <div class="closew"> <i class="fa-solid fa-clock"></i> ความยาว789 <span id="duration">00:00:00</span> นาที
                 </div>
 
 
