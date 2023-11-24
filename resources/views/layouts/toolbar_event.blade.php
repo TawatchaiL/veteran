@@ -27,7 +27,7 @@
             $.ajax({
                 url: "{{ route('agent.warp') }}",
                 method: 'post',
-                async: false,
+                async: true,
                 data: {
                     exten: response.data.membername,
                     uniqid: response.data.uniqueid,
