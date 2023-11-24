@@ -271,7 +271,6 @@ class BillingController extends Controller
         }
     }
 
-
     public function downloadAndDelete($id)
     {
 

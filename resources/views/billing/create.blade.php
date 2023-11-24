@@ -69,7 +69,7 @@
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <label for="volume" class="d-block">
-                                    ระดับเสียง: <span id="vol">4.00</span>
+                                    ระดับเสียง1234: <span id="vol">4.00</span>
                                 </label><input id="volume" type="range" min="0" max="1"
                                     value="1" step="0.1" />
 
