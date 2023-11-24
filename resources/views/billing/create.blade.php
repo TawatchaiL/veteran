@@ -117,14 +117,6 @@
                         </div>
             
                     </div>
-                    <div class="col-xs-6 col-sm-6 col-md-6">
-                        <div class="form-group">
-                            <button type="button" class="btn btn-success" id="add-content-button"><i
-                                    class="fas fa-download"></i> บันทึก</button>
-                            <button type="button" class="btn btn-danger" id="canclecomment"><i
-                                    class="fas fa-door-closed"></i> ยกเลิก</button>
-                        </div>
-                    </div>
                 </div>
                 <form action="#">
                     @csrf
@@ -153,8 +145,8 @@
 
             </div>
             <div class="modal-footer {{-- justify-content-between --}}">
-                <button type="button" class="btn btn-success" id="SubmitDownloadForm"><i class="fas fa-download"></i>
-                    Download</button>
+                <button type="button" class="btn btn-success" id="add-content-button"><i
+                    class="fas fa-download"></i> บันทึก</button>
                 <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i
                         class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
             </div>
