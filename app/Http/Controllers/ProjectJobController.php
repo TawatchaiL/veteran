@@ -7,6 +7,7 @@ use App\Models\Project_job_number as ProjectJobNumber;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -53,8 +54,10 @@ class ProjectJobController extends Controller
                 'project_jobs.job_code_id as job_code_id',
                 'project_jobs.job_create_date as job_create_date',
                 'project_jobs.job_admin as job_admin',
+                'project_jobs.job_agent as job_agent',
                 'project_jobs.job_status as job_status',
                 'project_jobs.job_file as jfile',
+                'project_jobs.job_auto as job_auto',
                 DB::raw('SUM(CASE WHEN project_job_numbers.call_status = 1 THEN 1 ELSE 0 END) AS a_call'),
                 DB::raw('SUM(CASE WHEN project_job_numbers.call_status = 0 THEN 1 ELSE 0 END) AS an_call'),
                 DB::raw('SUM(CASE WHEN project_job_numbers.dial_status = 1 THEN 1 ELSE 0 END) AS call_success'),
@@ -67,14 +70,17 @@ class ProjectJobController extends Controller
                     'project_jobs.job_code_id',
                     'project_jobs.job_create_date',
                     'project_jobs.job_admin',
+                    'project_jobs.job_agent',
                     'project_jobs.job_status',
-                    'project_jobs.job_file'
+                    'project_jobs.job_file',
+                    'project_jobs.job_auto',
                 )
                 ->orderByDesc('project_jobs.job_id')
                 //->limit(200)
                 ->get();
 
             $state_text = ['Stop', 'Start', 'Pause'];
+            $auto_text = ['Manual', 'Auto'];
 
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
@@ -86,6 +92,10 @@ class ProjectJobController extends Controller
                 })
                 ->editColumn('job_admin', function ($row) use ($agentArray) {
                     $state = $agentArray[$row->job_admin]['name'];
+                    return $state;
+                })
+                ->editColumn('job_agent', function ($row) use ($agentArray) {
+                    $state = $agentArray[$row->job_agent]['name'];
                     return $state;
                 })
                 ->editColumn('job_call', function ($row) {
@@ -103,6 +113,10 @@ class ProjectJobController extends Controller
                     </div>
                     </div><small>' . $row->a_call . ' เบอร์ ' . $perp . '% Complete</small>';
                     return $progress;
+                })
+                ->editColumn('job_auto', function ($row) use ($auto_text) {
+                    $state = $auto_text[$row->job_auto];
+                    return $state;
                 })
                 ->addColumn('action', function ($row) {
                     if ($row->job_status == 0) {
@@ -154,6 +168,16 @@ class ProjectJobController extends Controller
                 return response()->json(['errors' => ['กรุณาอัพโหลดไฟล์ CSV']]);
             }
 
+            $validator =  Validator::make($request->all(), [
+                'agent' => 'required',
+            ], [
+                'agent.required' => 'กรุณาระบุ Agent!',
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json(['errors' => $validator->errors()->all()]);
+            }
+
             $realn = str_replace(" ", "", pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME));
             $remoteFilename = str_replace(" ", "_", $realn) . '.' . $fileExtension;
 
@@ -175,8 +199,10 @@ class ProjectJobController extends Controller
                 'job_create_date' => $cdate,
                 'job_file' => $realn,
                 'job_admin' => $user->id,
+                'job_agent' => $request->input('agent'),
                 'job_status' => 0,
                 'job_process' => 0,
+                'job_auto' => $request->input('status'),
             ]);
 
             $projectJob->save();

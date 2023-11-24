@@ -27,7 +27,7 @@
             $.ajax({
                 url: "{{ route('agent.warp') }}",
                 method: 'post',
-                async: false,
+                async: true,
                 data: {
                     exten: response.data.membername,
                     uniqid: response.data.uniqueid,
@@ -35,8 +35,11 @@
                 },
                 success: function(result) {
                     console.log(result)
-                    set_state_icon(result.id, result.icon, result.message);
-                    set_state_button(result.id);
+                    setTimeout(() => {
+                        set_state_icon(result.id, result.icon, result.message);
+                        set_state_button(result.id);
+                    }, 1000);
+
                     call_list();
 
                     @if (Request::is('home'))
@@ -176,22 +179,26 @@
     });
 
     socket.on('event', async (data) => {
+
         if (data.extension == exten) {
             if (data.status == 4 || data.status == -1) {
                 //toolbar_header.addClass("bg-secondary");
             } else if (data.status == 0) {
+                console.log(data)
                 //toolbar_header.addClass("bg-primary");
                 $.ajax({
                     url: "{{ route('agent.hang') }}",
                     method: 'post',
-                    async: false,
+                    async: true,
                     data: {
                         extension: data.extension,
                         _token: token,
                     },
                     success: function(result) {
-                        set_state_icon(result.id, result.icon, result.message);
-                        set_state_button(result.id);
+                        setTimeout(() => {
+                            set_state_icon(result.id, result.icon, result.message);
+                            set_state_button(result.id);
+                        }, 1000);
                         //positionCards();
                     }
                 });
@@ -244,8 +251,25 @@
                         const encodedErrorMessage = encodeURIComponent(errorMessage);
                         window.location.replace(`${web_url}/login?error=${encodedErrorMessage}`);
                     } else {
-                        set_state_icon(result.id, result.icon, result.message);
-                        set_state_button(result.id);
+                        setTimeout(() => {
+                            set_state_icon(result.id, result.icon, result.message);
+                            set_state_button(result.id);
+                        }, 1000);
+
+                        /*  $.ajax({
+                             url: "{{ route('agent.hang') }}",
+                             method: 'post',
+                             async: true,
+                             data: {
+                                 extension: data.extension,
+                                 _token: token,
+                             },
+                             success: function(result) {
+                                 set_state_icon(result.id, result.icon, result.message);
+                                 set_state_button(result.id);
+                                 //positionCards();
+                             }
+                         }); */
                     }
 
                 }
@@ -410,7 +434,7 @@
                             set_state_button(result.id);
                         }
                     }); */
-                    check_state();
+                    //check_state();
 
                 } else {
                     //set_state_button(1);

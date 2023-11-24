@@ -84,6 +84,7 @@
                                             <th>Assign To</th>
                                             <th>จำนวน</th>
                                             <th>สถานะ</th>
+                                            <th>Auto Dial</th>
                                             <th width="150px">Progress</th>
                                             <th width="180px"></th>
                                             <th>More</th>

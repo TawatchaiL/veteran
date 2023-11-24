@@ -135,6 +135,10 @@
                     name: 'job_admin'
                 },
                 {
+                    data: 'job_agent',
+                    name: 'job_agent'
+                },
+                {
                     data: 'job_call',
                     name: 'job_call'
                 },
@@ -145,6 +149,10 @@
                 {
                     data: 'job_process',
                     name: 'job_process'
+                },
+                {
+                    data: 'job_auto',
+                    name: 'job_auto'
                 },
                 {
                     data: 'action',
@@ -193,9 +201,18 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
+            
+            if ($('#customCheckbox1').is(":checked")) {
+                sstatus = 1;
+            } else {
+                sstatus = 0;
+            }
+
+
             var formData = new FormData();
             formData.append('csv_file', $('#AddCSV')[0].files[0]);
             formData.append('agent', $('#AddAgent').val()[0]);
+            formData.append('status', sstatus);
             formData.append('_token', token);
             $.ajax({
                 url: "{{ route('outbound.store') }}",
@@ -221,6 +238,7 @@
                             timeOut: 5000
                         });
                         $('#Listview').DataTable().ajax.reload();
+                        $("#AddAgent").val(null).trigger("change")
                         $('.form').trigger('reset');
                         $('#CreateModal').modal('hide');
                     }

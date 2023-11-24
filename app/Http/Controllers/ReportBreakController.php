@@ -43,19 +43,19 @@ class ReportBreakController extends Controller
                     $endDate = $dateRangeArray[1];
                 }
             }
-        }else{
-                    $startDate = date("Y-m-d");
-                    $endDate = date("Y-m-t", strtotime($startDate));  
+        } else {
+            $startDate = date("Y-m-d");
+            $endDate = date("Y-m-t", strtotime($startDate));
         }
         $datas = DB::connection('remote_connection')
             ->table('call_center.audit')
             ->leftJoin('break', 'audit.id_break', '=', 'break.id')
             ->select('audit.crm_id as crm_id', 'break.name as typebreak', 'audit.datetime_init as datetime_init', 'audit.datetime_end as datetime_end', DB::raw('SEC_TO_TIME(duration) as breaktime'))
             ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
-            ->whereNotNull('id_break'); 
-        if(!empty($request->get('agent')) && $request->get('agent') != "0"){
-            $datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
-        }    
+            ->whereNotNull('id_break');
+        if (!empty($request->get('agent')) && $request->get('agent') != "0") {
+            $datas->whereRaw('crm_id = "' . $request->input('agent') . '"');
+        }
         $datas->orderBy("audit.id_break", "asc")->get();
 
         $agents = User::orderBy("id", "asc")->get();
@@ -69,7 +69,7 @@ class ReportBreakController extends Controller
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 })
-                ->addColumn('agent', function ($row) use ($agent_data){
+                ->addColumn('agent', function ($row) use ($agent_data) {
                     if (isset($agent_data[$row->crm_id])) {
                         return $agent_data[$row->crm_id];
                     } else {
@@ -78,8 +78,7 @@ class ReportBreakController extends Controller
                 })
                 ->rawColumns(['checkbox', 'action'])->toJson();
         }
-        
+
         return view('reportbreak.index')->with(['agents' => $agents]);
     }
-
 }

@@ -20,7 +20,9 @@ class Project_job extends Model
         'job_create_date',
         'job_file',
         'job_admin',
+        'job_agent',
         'job_status',
         'job_process',
+        'job_auto',
     ];
 }

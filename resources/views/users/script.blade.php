@@ -34,7 +34,7 @@
             maximumSelectionLength: 1,
             allowClear: false,
             //theme: 'bootstrap4'
-            placeholder: 'กรุณาเลือ'
+            placeholder: 'กรุณาเลือก'
         });
 
 
