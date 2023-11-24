@@ -35,8 +35,11 @@
                 },
                 success: function(result) {
                     console.log(result)
-                    set_state_icon(result.id, result.icon, result.message);
-                    set_state_button(result.id);
+                    setTimeout(() => {
+                        set_state_icon(result.id, result.icon, result.message);
+                        set_state_button(result.id);
+                    }, 2000);
+
                     call_list();
 
                     @if (Request::is('home'))
@@ -176,7 +179,7 @@
     });
 
     socket.on('event', async (data) => {
-        
+
         if (data.extension == exten) {
             if (data.status == 4 || data.status == -1) {
                 //toolbar_header.addClass("bg-secondary");
@@ -248,20 +251,20 @@
                     } else {
                         set_state_icon(result.id, result.icon, result.message);
                         set_state_button(result.id);
-                       /*  $.ajax({
-                            url: "{{ route('agent.hang') }}",
-                            method: 'post',
-                            async: true,
-                            data: {
-                                extension: data.extension,
-                                _token: token,
-                            },
-                            success: function(result) {
-                                set_state_icon(result.id, result.icon, result.message);
-                                set_state_button(result.id);
-                                //positionCards();
-                            }
-                        }); */
+                        /*  $.ajax({
+                             url: "{{ route('agent.hang') }}",
+                             method: 'post',
+                             async: true,
+                             data: {
+                                 extension: data.extension,
+                                 _token: token,
+                             },
+                             success: function(result) {
+                                 set_state_icon(result.id, result.icon, result.message);
+                                 set_state_button(result.id);
+                                 //positionCards();
+                             }
+                         }); */
                     }
 
                 }
