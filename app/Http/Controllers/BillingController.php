@@ -343,7 +343,7 @@ class BillingController extends Controller
         return response()->json(['message' => 'Comment deleted successfully']);
     }
 
-    public function updatebilling(Request $request, $id)
+    public function updatebilling(Request $request)
     {
         $rules = [
             'billing' => 'required|max:10',
