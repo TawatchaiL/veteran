@@ -966,8 +966,8 @@
                             var emertype = $(this).find(
                                 'input[name="emertypep' + cardId + '[]"]').val();
                             var emergencyname = $(this).find(
-                                'input[name="emergencynamep' + cardId + '[]"]')
-                            .val();
+                                    'input[name="emergencynamep' + cardId + '[]"]')
+                                .val();
                             var emerrelation = $(this).find(
                                 'input[name="emerrelationp' + cardId + '[]"]').val();
                             var emerphone = $(this).find(
@@ -1005,7 +1005,7 @@
                             uniqid: uniqid,
                             telno: $('#telnop' + cardId).val(),
                             casetype1: $('#casetype1p' + cardId + ' option:selected')
-                            .text(),
+                                .text(),
                             caseid1: $('#casetype1p' + cardId).val(),
                             tranferstatus: $('#tranferstatusp' + cardId).val(),
                             casedetail: $('#casedetailp' + cardId).val(),
@@ -1076,6 +1076,7 @@
 
                                     $('.alert-success-pop' + cardId).hide();
                                     $('#ToolbarModal').modal('hide');
+                                    positionCards();
                                 }
                             }
                         });
