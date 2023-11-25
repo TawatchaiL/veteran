@@ -257,7 +257,7 @@
             btn_agent_logoff.addClass("d-none");
             btn_agent_logoff.prop('disabled', true);
             btn_agent_login.addClass("d-none");
-            ready_group.addClass("d-none");
+            //ready_group.addClass("d-none");
             btn_agent_login.prop('disabled', true);
             toolbar_header.removeClass();
             toolbar_header.addClass("modal-header bg-secondary");
