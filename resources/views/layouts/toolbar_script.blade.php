@@ -1051,7 +1051,7 @@
                 let strArray = item.split("!");
                 let chan = strArray[0].split("/");
 
-                console.log(chan);
+                console.log(strArray);
 
                 $.get(`${api_serv}/chans_variable/` + chan[1], (data, status) => {
 
