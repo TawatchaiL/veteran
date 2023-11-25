@@ -1,14 +1,5 @@
 @extends('layouts.app')
-
 @section('content')
-    {{-- <div class="container-fluid">
-        <h1 class="text-black-50">You are logged in!</h1>
-        <canvas id="signature-pad" width="400" height="200"></canvas>
-        <button id="save-signature">Save Signature</button>
-        <button id="clear-signature">Clear Signature</button>
-        <img id="signature-image" src="" alt="Signature Image">
-    </div> --}}
-
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -77,7 +68,7 @@
                                 <span class="info-box-icon bg-warning"><i class="fa-solid fa-clipboard-question"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เคสที่รับแจ้ง</span>
-                                    <span class="info-box-number" ><span id="total_case">0</span> เคส</span>
+                                    <span class="info-box-number"><span id="total_case">0</span> เคส</span>
                                 </div>
 
                             </div>
@@ -112,7 +103,8 @@
                                 <span class="info-box-icon bg-warning"><i class="fa-solid fa-star"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">คะแนนความพึงพอใจ</span>
-                                    <span class="info-box-number">คะแนนล่าสุด <span id="latest_score">0</span> / ทั้งหมด <span id="total_score">0</span> คะแนน</span>
+                                    <span class="info-box-number">คะแนนล่าสุด <span id="latest_score">0</span> / ทั้งหมด
+                                        <span id="total_score">0</span> คะแนน</span>
                                 </div>
 
                             </div>
@@ -150,7 +142,7 @@
                             <div class="card card-primary" style="max-height: 480px">
                                 <div class="card-header">
                                     <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> สถิติ สายเข้า รายวัน
-                                        ประจำเดือน {{ date("Y-m") }}
+                                        ประจำเดือน {{ date('Y-m') }}
                                     </h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="maximize">
@@ -181,8 +173,9 @@
 
                             <div class="card card-primary" style="max-height: 455px">
                                 <div class="card-header">
-                                    <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> สถิติ เคสที่รับแจ้งทั้งหมด /
-                                        เคสที่โอนสาย รายวัน ประจำเดือน {{ date("Y-m") }}
+                                    <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> สถิติ
+                                        เคสที่รับแจ้งทั้งหมด /
+                                        เคสที่โอนสาย รายวัน ประจำเดือน {{ date('Y-m') }}
                                     </h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="maximize">
