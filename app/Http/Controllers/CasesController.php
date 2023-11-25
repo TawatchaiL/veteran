@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CrmContact;
 use App\Models\CrmCase;
+use App\Models\User;
 use App\Models\CrmCaseComment;
 use App\Models\CrmCaseslog;
 use Illuminate\Http\Request;
@@ -331,8 +332,16 @@ class CasesController extends Controller
         $tabid = $request->input('tabid');
         $data = CrmCase::where('contact_id', $id)->get();
 
+        $agens = User::orderBy('name', 'asc')->get();
+        $agentArray = [];
+        $agentArray[0]['name'] = 'All';
+        foreach ($agens as $agen) {
+            $agentArray[$agen->id]['name'] = $agen->name;
+        }
+
+
         $template = 'cases.caseslist';
-        $htmlContent = View::make($template, ['caselist' => $data, 'cardid' => $tabid])->render();
+        $htmlContent = View::make($template, ['caselist' => $data, 'cardid' => $tabid, 'agent' => $agentArray])->render();
         return response()->json(['html' =>  $htmlContent,]);
 
         //return response()->json(['data' => $data]);

@@ -25,7 +25,7 @@
                     <tr>
                         <td>{{ $caselists->created_at }}</td>
                         <td>{{ $caselists->casetype1 }}</td>
-                        <td>{{ $caselists->casedetail }}</td>
+                        <td>{{ $agent[$caselists->casedetail]['name'] }}</td>
                         <td>{{ $caselists->casestatus }}</td>
                         <td>{{ $caselists->agent }}</td>
                         <td width="140px">
