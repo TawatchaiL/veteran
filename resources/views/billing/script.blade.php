@@ -686,7 +686,7 @@
 									{
 										image: logobase64,
                                         width: 50,
-                                        margin: [370, 0, 50, 50],
+                                        margin: [380, 0, 50, 50],
 									},
 									{
 										alignment: 'center',
@@ -723,6 +723,7 @@
                             doc.content[0].table.body[i][7].alignment = 'center';
                             doc.content[0].table.body[i][8].alignment = 'left';
                         }
+                        doc.content[0].table.footer.fontSize = 16;
                 }
                 },
                 {
