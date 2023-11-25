@@ -25,9 +25,9 @@
                     <tr>
                         <td>{{ $caselists->created_at }}</td>
                         <td>{{ $caselists->casetype1 }}</td>
-                        <td>{{ $agent[$caselists->casedetail]['name'] }}</td>
+                        <td>{{ $caselists->casedetail }}</td>
                         <td>{{ $caselists->casestatus }}</td>
-                        <td>{{ $caselists->agent }}</td>
+                        <td>{{ $agent[$caselists->agent]['name'] }}</td>
                         <td width="140px">
                             <button type="button" data-cases_id="{{ $caselists->id }}" data-tabid="{{ $cardid }}"
                                 class="form-control btn btn-warning btn-sm casedetailP-button"><i
