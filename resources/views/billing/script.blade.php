@@ -11,7 +11,6 @@
     import RegionsPlugin from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/regions.esm.js'
 
     let wavesurfer; // Declare the wavesurfer variable
-    let dataId;
     // Function to create and initialize WaveSurfer
     const initializeWaveSurfer = (newUrl, tooltipsData) => {
 
@@ -380,7 +379,7 @@
     const randomColor = () => `rgba(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)}, 0.5)`
     
     $(document).on('click', '.changeUrlButton', function() {
-        dataId = $(this).data('id');
+        var dataId = $(this).data('id');
         $.ajax({
             type: "GET",
             url: "billing/edit/" + dataId,
@@ -863,7 +862,7 @@
         $('#billing-update-button').on('click', function() {
             if (!confirm("ยืนยันการทำรายการ ?")) return;
             //e.preventDefault();
-
+            var dataId = $(this).data('id');
             $('.alert-danger').html('');
             $('.alert-danger').hide();
             $('.alert-success').html('');
