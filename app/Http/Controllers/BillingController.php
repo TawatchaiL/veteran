@@ -255,21 +255,31 @@ class BillingController extends Controller
     {
         //$call_recording_id = $request->call_recording_id;
         $uniqueid = $request->uniqueid;
-        $start = $request->start;
-        $end = $request->end;
+        $billing = $request->billing;
 
-        $check_data = Comment::where('uniqueid', $uniqueid)
-            ->where('start', $start)
-            ->where('end', $end)
-            ->get();
+        $rules = [
+            'billing' => 'required|max:10',
+        ];
 
-        if (count($check_data) > 0) {
-            return response()->json(['message' => 'ข้อมูลซ้ำ']);
-        } else {
-            $input = $request->all();
-            $comment = Comment::create($input);
-            return response()->json(['message' => 'Comment saved successfully', 'id' => $comment->id]);
+        $validator = Validator::make($request->all(), $rules, [
+            'billing.required' => 'กรุณากรอกค่าใช้จ่าย',
+        ]);
+
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all()]);
         }
+
+        $companyd = [
+            'price' => $billing,
+        ];
+
+        $datas = DB::connection('remote_connection')->table('call_center.call_recording')
+        ->where('uniqueid', $uniqueid);
+
+        $datas->update($companyd);
+
+        return response()->json(['success' => 'แก้ไข ค่าใช้จ่าย เรียบร้อยแล้ว']);
     }
 
     public function downloadAndDelete($id)
