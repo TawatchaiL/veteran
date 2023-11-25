@@ -868,13 +868,12 @@
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
-
+alert(dataId);
             $.ajax({
                 url: "billing/updatebilling/" + dataId,
                 method: 'PUT',
                 data: {
                     billing: $('#billing-input').val(),
-                    status: esstatus,
                 },
 
                 success: function(result) {
