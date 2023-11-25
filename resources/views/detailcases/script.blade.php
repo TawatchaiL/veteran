@@ -1,6 +1,7 @@
 <script src="dist/js/html2canvas.min.js"></script>
 <script src='dist/js/jspdf.min.js'></script>
 <script src="dist/js/jspdf.plugin.autotable.min.js"></script>
+<script src='dist/js/logo.js'></script>
 <script>
     pdfMake.fonts = {
         THSarabun: {
