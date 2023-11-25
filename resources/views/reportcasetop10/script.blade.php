@@ -490,24 +490,22 @@
 								margin:20
 							}
 						});
+                        
                         doc.content[0].table.widths = [400, '*'];
                         var objLayout = {};
 						objLayout['hLineWidth'] = function(i) { return .5; };
 						objLayout['vLineWidth'] = function(i) { return .5; };
-						objLayout['hLineColor'] = function(i) { return '#aaa'; };
-						objLayout['vLineColor'] = function(i) { return '#aaa'; };
+						objLayout['hLineColor'] = function(i) { return '#bfbfbf'; };
+						objLayout['vLineColor'] = function(i) { return '#bfbfbf'; };
 						objLayout['paddingLeft'] = function(i) { return 4; };
 						objLayout['paddingRight'] = function(i) { return 4; };
+                        objLayout['paddingTop'] = function(i) { return 3; };
+                        objLayout['paddingBottom'] = function(i) { return 3; };
 						doc.content[0].layout = objLayout;
 
                         for (var i = 1; i < doc.content[0].table.body.length; i++) {
-                            doc.content[0].table.body[i][0].alignment =
-                                'left'; // Align the first column to the center
-                            doc.content[0].table.body[i][1].alignment =
-                                'center'; // Align the second column to the right
-                            //doc.content[1].table.body[i][2].alignment =
-                            //'center'; // Align the second column to the right
-                            // Customize alignments for other columns as needed
+                            doc.content[0].table.body[i][0].alignment = 'left';
+                            doc.content[0].table.body[i][1].alignment = 'center';
                         }
                 }
                 },
