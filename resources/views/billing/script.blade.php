@@ -811,6 +811,10 @@
                     data: 'note',
                     name: 'note'
                 },
+                {
+                    data: 'more',
+                    name: 'more'
+                }
             ]
 
 
