@@ -271,10 +271,10 @@ class BillingController extends Controller
         //}
 
         $companyd = [
-            'price' => $billing,
+            'cost' => $billing,
         ];
 
-        $datas = DB::connection('remote_connection')->table('call_center.call_recording')
+        $datas = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')
         ->where('uniqueid', $uniqueid);
 
         $datas->update($companyd);
