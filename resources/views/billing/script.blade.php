@@ -667,7 +667,7 @@
                     "text": 'PDF', // ข้อความที่แสดง
                     "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
                     "orientation": 'landscape',
-                    "fontSize": '10',
+                    "fontSize": '16',
                     "title": 'รายละเอียดค่าใช้จ่าย',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
@@ -723,7 +723,6 @@
                             doc.content[0].table.body[i][7].alignment = 'center';
                             doc.content[0].table.body[i][8].alignment = 'left';
                         }
-                        doc.content[0].table.footer.fontSize = 16;
                 }
                 },
                 {
