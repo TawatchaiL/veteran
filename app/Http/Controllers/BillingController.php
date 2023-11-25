@@ -343,7 +343,7 @@ class BillingController extends Controller
         return response()->json(['message' => 'Comment deleted successfully']);
     }
 
-    public function updatebilling(Request $request)
+    public function updatebilling(Request $request, $id)
     {
         $rules = [
             'billing' => 'required|max:10',
@@ -363,7 +363,7 @@ class BillingController extends Controller
         ];
 
         $datas = DB::connection('remote_connection')->table('call_center.call_recording')
-        ->where('uniqueid', $request->input('id'));
+        ->where('uniqueid', $id);
 
         $datas->update($companyd);
 

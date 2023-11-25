@@ -869,10 +869,9 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
             $.ajax({
-                url: "billing/updatebilling",
+                url: "billing/updatebilling/" + Id,
                 method: 'PUT',
                 data: {
-                    id: Id,
                     billing: $('#billing-input').val(),
                 },
 
