@@ -871,7 +871,7 @@
             
             $.ajax({
                 url: "billing/updatebilling/" + Id,
-                type: 'PUT',
+                method: 'PUT',
                 data: {
                     billing: $('#billing-input').val(),
                 },
