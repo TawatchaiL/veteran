@@ -1,6 +1,7 @@
 <script src="dist/js/html2canvas.min.js"></script>
 <script src='dist/js/jspdf.min.js'></script>
 <script src="dist/js/jspdf.plugin.autotable.min.js"></script>
+<script src='dist/js/logo.js'></script>
 <script>
     pdfMake.fonts = {
         THSarabun: {
@@ -456,68 +457,59 @@
                 'csv',
                 { // กำหนดพิเศษเฉพาะปุ่ม pdf
                     "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
+                    "footer": true,
                     "text": 'PDF', // ข้อความที่แสดง
                     "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
                     "title": 'รายละเอียดเบอร์ภายในที่โทรเข้ามาติดต่อ',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                     },
-                    "customize": function(doc) { // ส่วนกำหนดเพิ่มเติม ส่วนนี้จะใช้จัดการกับ pdfmake
-                        // กำหนด style หลัก
-                        doc.defaultStyle = {
+                    customize: function ( doc ) {
+                    doc.defaultStyle = {
                             font: 'THSarabun',
                             fontSize: 16
                         };
-                        // กำหนดความกว้างของ header แต่ละคอลัมน์หัวข้อ
-                        doc.content[1].table.widths = ['*', 100, 70, 70, 70, 70];
-                        doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
-                        // Add cell borders
-                        doc.content[1].table.layout = {
-                            hLineWidth: function(i, node) {
-                                return 1; // Border width for horizontal lines
-                            },
-                            vLineWidth: function(i, node) {
-                                return 1; // Border width for vertical lines
-                            },
-                            hLineColor: function(i, node) {
-                                return '#bfbfbf'; // Border color for horizontal lines
-                            },
-                            vLineColor: function(i, node) {
-                                return '#bfbfbf'; // Border color for vertical lines
-                            },
-                            paddingLeft: function(i, node) {
-                                return 5; // Padding for cells
-                            },
-                            paddingRight: function(i, node) {
-                                return 5; // Padding for cells
-                            },
-                            paddingTop: function(i, node) {
-                                return 3; // Padding for cells
-                            },
-                            paddingBottom: function(i, node) {
-                                return 3; // Padding for cells
-                            }
+                        doc.content.splice(0,1);
+                        doc.pageMargins = [20,100,20,30];
+						doc.styles.tableHeader.fontSize = 16;
+                        doc.styles.tableFooter.fontSize = 16;
+                        doc['header']=(function() {
+							return {
+								columns: [
+									{
+										image: logobase64,
+                                        width: 50,
+                                        margin: [250, 0, 50, 50],
+									},
+									{
+										alignment: 'center',
+										italics: true,
+										text: 'รายละเอียดเบอร์ภายในที่โทรเข้ามาติดต่อ',
+										fontSize: 18,
+										margin: [20, 50, 70, 0]
+									}
+								],
+								margin:20
+							}
+						});
 
-                        }
-                        for (var i = 1; i < doc.content[1].table.body.length; i++) {
-                            doc.content[1].table.body[i][0].alignment =
-                                'center'; // Align the first column to the center
-                            doc.content[1].table.body[i][1].alignment =
-                                'center'; // Align the second column to the right
-                            doc.content[1].table.body[i][2].alignment =
-                                'center'; // Align the first column to the center
-                            doc.content[1].table.body[i][3].alignment =
-                                'center'; // Align the second column to the right
-                            doc.content[1].table.body[i][4].alignment =
-                                'center'; // Align the second column to the right
-                            doc.content[1].table.body[i][5].alignment =
-                                'center'; // Align the second column to the right
-                            //doc.content[1].table.body[i][2].alignment =
-                            //'center'; // Align the second column to the right
-                            // Customize alignments for other columns as needed
-                        }
+                        doc.content[0].table.widths = ['*', 100, 70, 70, 70, 70];
+                        var objLayout = {};
+						objLayout['hLineWidth'] = function(i) { return .5; };
+						objLayout['vLineWidth'] = function(i) { return .5; };
+						objLayout['hLineColor'] = function(i) { return '#bfbfbf'; };
+						objLayout['vLineColor'] = function(i) { return '#bfbfbf'; };
+						objLayout['paddingLeft'] = function(i) { return 4; };
+						objLayout['paddingRight'] = function(i) { return 4; };
+                        objLayout['paddingTop'] = function(i) { return 3; };
+                        objLayout['paddingBottom'] = function(i) { return 3; };
+						doc.content[0].layout = objLayout;
 
-                    }
+                        for (var i = 1; i < doc.content[0].table.body.length; i++) {
+                            doc.content[0].table.body[i][0].alignment = 'left';
+                            doc.content[0].table.body[i][1].alignment = 'center';
+                        }
+                }
                 },
                 {
                     extend: 'print',
