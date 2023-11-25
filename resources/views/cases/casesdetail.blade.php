@@ -132,6 +132,6 @@
 
 <div class="row justify-content-end">
     <button type="button" data-contactid="{{ $cases->contact_id }}" data-tabid="{{ $cardid }}"
-        class="btn btn-success listcasesP-button"><i class="fas fa-download"></i>
+        class="btn btn-warning listcasesP-button"><i class="fa-solid fa-backward"></i>
         ย้อนกลับ</button>&nbsp;
 </div>

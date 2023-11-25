@@ -16,7 +16,7 @@
                     <th>ประเภทเคส</th>
                     <th>รายละเอียดเคส</th>
                     <th>สถานะเคส</th>
-                    <th>Agent</th>
+                    <th>Agent ที่รับ</th>
                     <th width="120px"></th>
                 </tr>
             </thead>
@@ -27,7 +27,7 @@
                         <td>{{ $caselists->casetype1 }}</td>
                         <td>{{ $caselists->casedetail }}</td>
                         <td>{{ $caselists->casestatus }}</td>
-                        <td>{{ $caselists->agent }}</td>
+                        <td>{{ $agent[$caselists->agent]['name'] }}</td>
                         <td width="140px">
                             <button type="button" data-cases_id="{{ $caselists->id }}" data-tabid="{{ $cardid }}"
                                 class="form-control btn btn-warning btn-sm casedetailP-button"><i

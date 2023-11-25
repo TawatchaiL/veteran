@@ -308,7 +308,7 @@
 
             if (!$('#' + data.luniq.replace('.', '')).length) {
 
-                /* $('#call_list').prepend(`<div class="col-md-3" id = "${data.luniq.replace('.', '')}">
+                $('#call_list').prepend(`<div class="col-md-3" id = "${data.luniq.replace('.', '')}">
                 <div class="card card-danger" id = "color_${data.luniq.replace('.', '')}">
                     <div class="card-header">
                         <h3 class="card-title" id = "state_${data.luniq.replace('.', '')}"> ${state_icon} ${state} ${data.cid}</h3>
@@ -324,7 +324,7 @@
                         <a href="#" class="btn btn-danger hangup_call" data-id="${data.extension}"><i class="fa-solid fa-phone-slash"></i> วางสาย</a>
                     </div>
                 </div>
-                </div>`); */
+                </div>`);
                 call_list();
                 toolbar_modal.modal('show');
 
