@@ -359,7 +359,7 @@ class BillingController extends Controller
         }
 
         $companyd = [
-            'price' => $request->get('billing'),
+            'price' => $request->put('billing'),
         ];
 
         $datas = DB::connection('remote_connection')->table('call_center.call_recording')

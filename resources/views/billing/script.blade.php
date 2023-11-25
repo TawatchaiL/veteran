@@ -868,7 +868,6 @@
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
-alert(Id);
             $.ajax({
                 url: "billing/updatebilling/" + Id,
                 method: 'PUT',
