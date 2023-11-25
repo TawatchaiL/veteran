@@ -811,11 +811,6 @@
                     data: 'note',
                     name: 'note'
                 },
-                {
-                    data: 'action',
-                    name: 'action',
-                    className: 'no-print'
-                },
             ]
 
 
