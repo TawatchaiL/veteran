@@ -204,6 +204,21 @@ class PBXController extends Controller
 
         if ($user) {
 
+            $phone_state_num = $this->remote->exten_state($user->phone);
+            if ($phone_state_num == 4 || $phone_state_num == -1) {
+                $user->phone_status_id = -1;
+                $user->phone_status = "โทรศัพท์ไม่พร้อมใช้งาน";
+                $user->phone_status_icon = '<i class="fa-solid fa-xl fa-plug-circle-exclamation fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1;"></i>';
+                $user->save();
+
+                return [
+                    'success' => true,
+                    'id' => $user->phone_status_id,
+                    'message' => $user->phone_status,
+                    'icon' => $user->phone_status_icon
+                ];
+            }
+
             $ret = $this->issable->agent_login($user->phone);
 
             DB::connection('remote_connection')
@@ -239,6 +254,21 @@ class PBXController extends Controller
         $user = Auth::user();
 
         if ($user) {
+
+            $phone_state_num = $this->remote->exten_state($user->phone);
+            if ($phone_state_num == 4 || $phone_state_num == -1) {
+                $user->phone_status_id = -1;
+                $user->phone_status = "โทรศัพท์ไม่พร้อมใช้งาน";
+                $user->phone_status_icon = '<i class="fa-solid fa-xl fa-plug-circle-exclamation fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1;"></i>';
+                $user->save();
+
+                return [
+                    'success' => true,
+                    'id' => $user->phone_status_id,
+                    'message' => $user->phone_status,
+                    'icon' => $user->phone_status_icon
+                ];
+            }
 
             $ret = $this->issable->agent_login($user->phone);
 
@@ -448,7 +478,7 @@ class PBXController extends Controller
                     ->where('call_status', 0)
                     ->orderBy('job_number_id', 'asc')
                     ->first();
-                    //dd($outbound);
+                //dd($outbound);
                 if (!empty($outbound)) {
                     DB::table('crm_incoming')
                         ->where('telno', $request->input('telno'))
@@ -1003,6 +1033,8 @@ class PBXController extends Controller
             ];
         }
     }
+
+
 
     public function AgentPhoneUnregis(Request $request)
     {
