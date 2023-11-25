@@ -672,6 +672,7 @@ class PBXController extends Controller
                 ->whereNull('datetime_end')
                 ->whereNull('duration')
                 ->get();
+                dd($inqueue);
             if ($inqueue) {
                 $inbreak = DB::connection('remote_connection')
                     ->table('call_center.audit')
