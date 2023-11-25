@@ -297,21 +297,6 @@
             stateSave: true,
             autoWidth: false,
             fixedHeader: true,
-            @if ($detect->isMobile())
-                responsive: true,
-            @else
-                responsive: {
-                    details: {
-                        type: 'column',
-                        target: 'tr'
-                    }
-                },
-                columnDefs: [{
-                    className: 'control',
-                    orderable: false,
-                    targets: -1
-                }],
-            @endif
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
             columns: [{
