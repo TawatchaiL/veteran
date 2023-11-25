@@ -201,7 +201,7 @@ class LoginController extends Controller
                 $user->phone_status_id = 1;
                 $user->phone_status = "พร้อมรับสาย";
                 $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>'; */
-                $phone_state_num = $this->remote->exten_state($request->get('phone'));
+                $phone_state_num = $this->remote->exten_state($user->phone);
                 if ($phone_state_num == 4 || $phone_state_num == -1) {
                     $user->phone_status_id = -1;
                     $user->phone_status = "โทรศัพท์ไม่พร้อมใช้งาน";
