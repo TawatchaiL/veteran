@@ -151,10 +151,10 @@
                 });
                 /* toolbar_header.removeClass("bg-primary");
                 toolbar_header.addClass("bg-secondary"); */
-                state_overlay.removeClass("d-none");
+                /* state_overlay.removeClass("d-none");
                 toolbar_card.addClass("d-none");
                 popup_tab_main.addClass("d-none");
-                toolbar_modal.modal('show');
+                toolbar_modal.modal('show'); */
             } else if (data.status == 'Registered') {
                 state_overlay.addClass("d-none");
                 toolbar_card.removeClass("d-none");
