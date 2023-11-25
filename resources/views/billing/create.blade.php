@@ -97,7 +97,6 @@
                                     class="fa-solid fa-stop"></i></button>
                             <button class="btn btn-warning btn-lg mx-auto" id="forward"><i
                                     class="fa-solid fa-forward"></i></button>
-
                             {{-- <button id="toggleMuteBtn" class="btn btn-primary">Toggle Mute</button>
                         <button id="setMuteOnBtn" class="btn btn-primary">
                             Mute <i class="glyphicon glyphicon-volume-off"></i>
@@ -110,13 +109,21 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="row" id="custom-dialog">
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <div class="form-group">
+                            <label for="content-input">ระบุค่าใช้จ่าย:</label>
+                            <input type="text" id="billing-input" class="form-control">
+                        </div>
+            
+                    </div>
+                </div>
                 <form action="#">
                     @csrf
                     <input type="hidden" id="call_recording_id" value="">
                     <input type="hidden" id="uniqueid" value="">
 
-                    <div class="row" id="custom-dialog" style="display: none;">
+                    {{-- <div class="row" id="custom-dialog" style="display: none;">
                         <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="form-group">
                                 <label for="content-input">ระบุ Comment:</label>
@@ -132,14 +139,14 @@
                                         class="fas fa-door-closed"></i> ยกเลิก</button>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </form>
 
 
             </div>
             <div class="modal-footer {{-- justify-content-between --}}">
-                <button type="button" class="btn btn-success" id="SubmitDownloadForm"><i class="fas fa-download"></i>
-                    Download</button>
+                <button type="button" class="btn btn-success" id="billing-update-button"><i
+                    class="fas fa-download"></i> บันทึก</button>
                 <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i
                         class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
             </div>

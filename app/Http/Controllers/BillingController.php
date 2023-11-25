@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
+use App\Models\Billing;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
@@ -20,7 +21,7 @@ class BillingController extends Controller
     public function __construct()
     {
         //$this->middleware('auth');
-        $this->middleware('permission:billing-list|billing-supervisor', ['only' => ['index', 'show']]);
+        $this->middleware('permission:billing-list|billing-supervisor', ['only' => ['index', 'show', 'updatebilling']]);
         $this->middleware('permission:contact-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:contact-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:contact-delete', ['only' => ['destroy']]);
@@ -254,23 +255,32 @@ class BillingController extends Controller
     {
         //$call_recording_id = $request->call_recording_id;
         $uniqueid = $request->uniqueid;
-        $start = $request->start;
-        $end = $request->end;
+        $billing = $request->billing;
 
-        $check_data = Comment::where('uniqueid', $uniqueid)
-            ->where('start', $start)
-            ->where('end', $end)
-            ->get();
+        $rules = [
+            'billing' => 'required|max:10',
+        ];
 
-        if (count($check_data) > 0) {
-            return response()->json(['message' => 'ข้อมูลซ้ำ']);
-        } else {
-            $input = $request->all();
-            $comment = Comment::create($input);
-            return response()->json(['message' => 'Comment saved successfully', 'id' => $comment->id]);
-        }
+        //$validator = Validator::make($request->all(), $rules, [
+        //    'billing.required' => 'กรุณากรอกค่าใช้จ่าย',
+        //]);
+
+
+        //if ($validator->fails()) {
+        //    return response()->json(['errors' => $validator->errors()->all()]);
+        //}
+
+        $companyd = [
+            'cost' => $billing,
+        ];
+
+        $datas = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')
+        ->where('uniqueid', $uniqueid);
+
+        $datas->update($companyd);
+
+        return response()->json(['success' => 'แก้ไข ค่าใช้จ่าย เรียบร้อยแล้ว']);
     }
-
 
     public function downloadAndDelete($id)
     {
@@ -341,5 +351,32 @@ class BillingController extends Controller
 
         $comment->delete();
         return response()->json(['message' => 'Comment deleted successfully']);
+    }
+
+    public function updatebilling(Request $request, $id)
+    {
+        $rules = [
+            'billing' => 'required|max:10',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, [
+            'billing.required' => 'กรุณากรอกค่าใช้จ่าย',
+        ]);
+
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all()]);
+        }
+
+        $companyd = [
+            'price' => $request->input('billing'),
+        ];
+
+        $datas = DB::connection('remote_connection')->table('call_center.call_recording')
+        ->where('uniqueid', $id);
+
+        $datas->update($companyd);
+
+        return response()->json(['success' => 'แก้ไข ค่าใช้จ่าย เรียบร้อยแล้ว']);
     }
 }
