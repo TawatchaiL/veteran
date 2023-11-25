@@ -846,7 +846,7 @@
  
         // Total over all pages
         total = api
-            .column( 4 )
+            .column( 8 )
             .data()
             .reduce( function (a, b) {
                 return intVal(a) + intVal(b);
@@ -854,7 +854,7 @@
  
         // Total over this page
         pageTotal = api
-            .column( 4, { page: 'current'} )
+            .column( 8, { page: 'current'} )
             .data()
             .reduce( function (a, b) {
                 return intVal(a) + intVal(b);
@@ -862,10 +862,10 @@
         
  
         // Total filtered rows on the selected column (code part added)
-        var sumCol4Filtered = display.map(el => data[el][4]).reduce((a, b) => intVal(a) + intVal(b), 0 );
+        var sumCol4Filtered = display.map(el => data[el][8]).reduce((a, b) => intVal(a) + intVal(b), 0 );
         
         // Update footer
-        $( api.column( 4 ).footer() ).html(
+        $( api.column( 8 ).footer() ).html(
             '$'+pageTotal +' ( $'+ total +' total) ($' + sumCol4Filtered +' filtered)'
         );
     }
