@@ -378,9 +378,9 @@
 
     const random = (min, max) => Math.random() * (max - min) + min
     const randomColor = () => `rgba(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)}, 0.5)`
-
+    let dataId;
     $(document).on('click', '.changeUrlButton', function() {
-        var dataId = $(this).data('id');
+        dataId = $(this).data('id');
         $.ajax({
             type: "GET",
             url: "billing/edit/" + dataId,
