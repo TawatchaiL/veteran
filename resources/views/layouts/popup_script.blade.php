@@ -1075,6 +1075,7 @@
                                     });
 
                                     $('.alert-success-pop' + cardId).hide();
+                                    $('#ToolbarModal').modal('hide');
                                 }
                             }
                         });
