@@ -36,9 +36,9 @@
                             <div class="info-box">
                                 <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text"> 10 อันดับเรื่องที่ติดต่อมากที่สุด</span>
+                                    <span class="info-box-text"> ผลรวมแยกตามประเภทที่ติดต่อ</span>
                                     <span class="info-box-number text-right"><button
-                                            onclick="window.location.href='{{ route('reportcasetop10') }}'"
+                                            onclick="window.location.href='{{ route('reportsumbytype') }}'"
                                             class="btn btn-success btn-sm"><i class="fas fa-search"></i>
                                             View</button></span>
                                 </div>
@@ -48,9 +48,9 @@
                             <div class="info-box">
                                 <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text"> 10 อันดับเรื่องที่ติดต่อมากที่สุด</span>
+                                    <span class="info-box-text"> ผลรวมเรื่องที่ติดต่อแยกตามสถานะ</span>
                                     <span class="info-box-number text-right"><button
-                                            onclick="window.location.href='{{ route('reportcasetop10') }}'"
+                                            onclick="window.location.href='{{ route('reportsumcasebystatus') }}'"
                                             class="btn btn-success btn-sm"><i class="fas fa-search"></i>
                                             View</button></span>
                                 </div>
@@ -60,9 +60,9 @@
                             <div class="info-box">
                                 <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text"> 10 อันดับเรื่องที่ติดต่อมากที่สุด</span>
+                                    <span class="info-box-text"> ผลรวมเรื่องที่ติดต่อแยกตามสถานะการโอนสาย</span>
                                     <span class="info-box-number text-right"><button
-                                            onclick="window.location.href='{{ route('reportcasetop10') }}'"
+                                            onclick="window.location.href='{{ route('reportsumcasebytranferstatus') }}'"
                                             class="btn btn-success btn-sm"><i class="fas fa-search"></i>
                                             View</button></span>
                                 </div>
@@ -75,9 +75,9 @@
                             <div class="info-box">
                                 <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text"> 10 อันดับเรื่องที่ติดต่อมากที่สุด</span>
+                                    <span class="info-box-text"> รายละเอียดเรื่องที่ติดต่อ</span>
                                     <span class="info-box-number text-right"><button
-                                            onclick="window.location.href='{{ route('reportcasetop10') }}'"
+                                            onclick="window.location.href='{{ route('detailcases') }}'"
                                             class="btn btn-success btn-sm"><i class="fas fa-search"></i>
                                             View</button></span>
                                 </div>
@@ -88,9 +88,9 @@
                             <div class="info-box">
                                 <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text"> 10 อันดับเรื่องที่ติดต่อมากที่สุด</span>
+                                    <span class="info-box-text"> รายละเอียดเรื่องที่ติดต่อแสดงตามสถานะ</span>
                                     <span class="info-box-number text-right"><button
-                                            onclick="window.location.href='{{ route('reportcasetop10') }}'"
+                                            onclick="window.location.href='{{ route('detailcasesstatus') }}'"
                                             class="btn btn-success btn-sm"><i class="fas fa-search"></i>
                                             View</button></span>
                                 </div>
@@ -100,9 +100,9 @@
                             <div class="info-box">
                                 <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text"> 10 อันดับเรื่องที่ติดต่อมากที่สุด</span>
+                                    <span class="info-box-text"> ผลรวมเรื่องที่ติดต่อแยกตาม HN</span>
                                     <span class="info-box-number text-right"><button
-                                            onclick="window.location.href='{{ route('reportcasetop10') }}'"
+                                            onclick="window.location.href='{{ route('sumcasebyhn') }}'"
                                             class="btn btn-success btn-sm"><i class="fas fa-search"></i>
                                             View</button></span>
                                 </div>
@@ -112,9 +112,9 @@
                             <div class="info-box">
                                 <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text"> 10 อันดับเรื่องที่ติดต่อมากที่สุด</span>
+                                    <span class="info-box-text">รายละเอียดเรื่องที่ติดต่อที่มีการ แก้ไข และการคอมเม้น</span>
                                     <span class="info-box-number text-right"><button
-                                            onclick="window.location.href='{{ route('reportcasetop10') }}'"
+                                            onclick="window.location.href='{{ route('detailcaselogbyhn') }}'"
                                             class="btn btn-success btn-sm"><i class="fas fa-search"></i>
                                             View</button></span>
                                 </div>
