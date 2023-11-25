@@ -26,7 +26,7 @@
                                         class="fa-solid fa-arrow-right-to-bracket"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text"> 10 อันดับเรื่องที่ติดต่อมากที่สุด</span>
-                                    <span class="info-box-number text-right"><span id="total_call">0</span> ครั้ง</span>
+                                    <span class="info-box-number text-right"><button class="btn btn-info"> View</button></span>
                                 </div>
 
                             </div>
