@@ -869,34 +869,40 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
             
-            $.ajax({
-                url: "billing/updatebilling/" + Id,
-                method: 'PUT',
-                data: {
-                    billing: $('#billing-input').val(),
-                },
-
-                success: function(result) {
-                    if (result.errors) {
-                        $('.alert-danger').html('');
-                        $.each(result.errors, function(key, value) {
-                            $('.alert-danger').show();
-                            $('.alert-danger').append('<strong><li>' + value +
-                                '</li></strong>');
+            var csrfToken = document.querySelector('meta[name="csrf-token"]')
+                            .getAttribute('content');
+                        $.ajax({
+                            type: "get",
+                            url: "/billing/comment",
+                            headers: {
+                                'X-CSRF-TOKEN': csrfToken
+                            },
+                            data: {
+                                uniqueid: Id,
+                                billing: $('#billing-input').val(),
+                            },
+                            success: function(response) {
+                                if (response.errors) {
+                                    $('.alert-danger').html('');
+                                    $.each(result.errors, function(key, value) {
+                                        $('.alert-danger').show();
+                                        $('.alert-danger').append('<strong><li>' + value +
+                                            '</li></strong>');
+                                    });
+                                } else {
+                                    $('.alert-danger').hide();
+                                    $('.alert-success').show();
+                                    $('.alert-success').append('<strong><li>' + result.success +
+                                        '</li></strong>');
+                                    $('#CreateModal').modal('hide');
+                                    toastr.success(result.success, {
+                                        timeOut: 5000
+                                    });
+                                    $('#Listview').DataTable().ajax.reload();
+                                }
+                            },
+                            error: function(error) {}
                         });
-                    } else {
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('.alert-success').append('<strong><li>' + result.success +
-                            '</li></strong>');
-                        $('#CreateModal').modal('hide');
-                        toastr.success(result.success, {
-                            timeOut: 5000
-                        });
-                        $('#Listview').DataTable().ajax.reload();
-                    }
-                }
-            });
         });
 
 
