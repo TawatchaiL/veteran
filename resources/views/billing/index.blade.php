@@ -180,7 +180,6 @@
         </div>
     </section>
     @include('layouts.modal-form')
-    @include('billing.create')
 @endsection
 @section('script')
     @include('billing.script')
