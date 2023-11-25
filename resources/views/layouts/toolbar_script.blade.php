@@ -252,8 +252,8 @@
             btn_pause.prop('disabled', true);
             btn_unbreak.addClass("d-none");
             btn_unwarp.addClass("d-none");
-            btn_agent_logout.addClass("d-none");
-            btn_agent_logout.prop('disabled', true);
+            btn_agent_logout.removeClass("d-none");
+            btn_agent_logout.prop('disabled', false);
             btn_agent_logoff.addClass("d-none");
             btn_agent_logoff.prop('disabled', true);
             btn_agent_login.addClass("d-none");

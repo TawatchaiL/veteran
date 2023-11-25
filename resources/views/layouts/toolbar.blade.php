@@ -17,14 +17,16 @@
             $unbreak_button_class = 'd-none';
             $unwarp_button = 'disabled';
             $unwarp_button_class = 'd-none';
-            $logout_button = 'disabled';
-            $logout_button_class = 'd-none';
+            $logout_button = '';
+            $logout_button_class = '';
             $logoff_button = 'disabled';
             $logoff_button_class = 'd-none';
             $login_button = 'disabled';
             $login_button_class = 'd-none';
             //$toolbar_card = 'd-none';
             //$popup_tab_main = 'd-none';
+            $toolbar_card = '';
+            $popup_tab_main = '';
             $toolbar_header = 'bg-secondary';
             break;
         case 0:
