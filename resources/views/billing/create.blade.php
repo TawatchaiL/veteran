@@ -29,7 +29,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="alert alert-successm alert-dismissible fade show" role="alert" style="display: none;">
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="display: none;">
 
                     <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true"></span>
