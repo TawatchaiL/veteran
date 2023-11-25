@@ -851,7 +851,7 @@
                     dial_number.val('');
                     $("[data-toggle=popover]").popover('hide');
                     dialpadcount = 0;
-                
+
                 } else {
                     const prom = ezBSAlert({
                         headerText: "Error",
@@ -1078,7 +1078,7 @@
                             <a href="#" class="btn btn-success answer_call ${dans_button}" data-id="${exten}">
                                 <i class="fa-solid fa-phone-volume"></i> รับสาย
                             </a>`;
-                        } 
+                        }
                     } else if (strArray[4] == 'Up' && strArray[12] == '') {
                         if (strArray[5] == "ChanSpy") {
                             spy_exten = strArray[6].split(',');
@@ -1151,7 +1151,7 @@
 
     //load call list on access page
     call_list();
-    @php
+    /* @php
     if ($temporaryPhoneStatusID == -1) {
         @endphp
         set_state_button(-1);
@@ -1159,5 +1159,5 @@
         toolbar_modal.modal('show');
         @php
     }
-    @endphp
+    @endphp */
 </script>
