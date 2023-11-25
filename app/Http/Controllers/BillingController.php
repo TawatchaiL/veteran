@@ -261,9 +261,9 @@ class BillingController extends Controller
             'billing' => 'required|max:10',
         ];
 
-        $validator = Validator::make($request->all(), $rules, [
-            'billing.required' => 'กรุณากรอกค่าใช้จ่าย',
-        ]);
+        //$validator = Validator::make($request->all(), $rules, [
+        //    'billing.required' => 'กรุณากรอกค่าใช้จ่าย',
+        //]);
 
 
         //if ($validator->fails()) {
