@@ -862,7 +862,7 @@
 
         $('#billing-update-button').on('click', function() {
             if (!confirm("ยืนยันการทำรายการ ?")) return;
-            e.preventDefault();
+            //e.preventDefault();
 
             $('.alert-danger').html('');
             $('.alert-danger').hide();
