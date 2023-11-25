@@ -201,9 +201,17 @@ class LoginController extends Controller
                 $user->phone_status_id = 1;
                 $user->phone_status = "พร้อมรับสาย";
                 $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>'; */
-                $user->phone_status_id = 0;
-                $user->phone_status = "ไม่พร้อมรับสาย";
-                $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-xmark"></i>';
+                $phone_state_num = $this->remote->exten_state($request->get('phone'));
+                if ($phone_state_num == 4 || $phone_state_num == -1) {
+                    $user->phone_status_id = -1;
+                    $user->phone_status = "โทรศัพท์ไม่พร้อมใช้งาน";
+                    $user->phone_status_icon = '<i class="fa-solid fa-xl fa-plug-circle-exclamation fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1;"></i>';
+                } else {
+                    $user->phone_status_id = 0;
+                    $user->phone_status = "ไม่พร้อมรับสาย";
+                    $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-xmark"></i>';
+                }
+
                 //$user->logoff_time = Carbon::now();
                 $user->login_time = Carbon::now();
                 $user->save();
