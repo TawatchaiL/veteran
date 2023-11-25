@@ -17,8 +17,8 @@
             $unbreak_button_class = 'd-none';
             $unwarp_button = 'disabled';
             $unwarp_button_class = 'd-none';
-            $logout_button = 'disabled';
-            $logout_button_class = 'd-none';
+            $logout_button = '';
+            $logout_button_class = '';
             $logoff_button = 'disabled';
             $logoff_button_class = 'd-none';
             $login_button = 'disabled';
