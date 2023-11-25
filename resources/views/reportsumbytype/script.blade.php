@@ -484,7 +484,7 @@
 									{
 										alignment: 'center',
 										italics: true,
-										text: '10 อันดับเรื่องที่ติดต่อมากที่สุด',
+										text: 'ผลรวมแยกตามประเภทที่ติดต่อ',
 										fontSize: 18,
 										margin: [20, 50, 70, 0]
 									}
