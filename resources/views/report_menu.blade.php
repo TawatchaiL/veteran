@@ -25,9 +25,11 @@
                                 <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text"> 10 อันดับเรื่องที่ติดต่อมากที่สุด</span>
-                                    <span class="info-box-number text-right"><button class="btn btn-info btn-sm"><i class="fas fa-search"></i> View</button></span>
+                                    <span class="info-box-number text-right"><button
+                                            onclick="window.location.href='{{ route('reportcasetop10') }}'"
+                                            class="btn btn-warning btn-sm"><i class="fas fa-search"></i>
+                                            View</button></span>
                                 </div>
-
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
