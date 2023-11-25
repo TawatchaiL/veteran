@@ -870,7 +870,7 @@
             $('.alert-success').hide();
             $.ajax({
                 url: "billing/updatebilling/" + Id,
-                method: 'POST',
+                method: 'PUT',
                 data: {
                     billing: $('#billing-input').val(),
                 },
