@@ -378,7 +378,7 @@
 
     const random = (min, max) => Math.random() * (max - min) + min
     const randomColor = () => `rgba(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)}, 0.5)`
-    let dataId;
+    
     $(document).on('click', '.changeUrlButton', function() {
         dataId = $(this).data('id');
         $.ajax({
@@ -448,7 +448,7 @@
     }
 
     $(document).ready(function() {
-
+        let dataId;
         $(".delete_all_button").click(function() {
             var len = $('input[name="table_records[]"]:checked').length;
             if (len > 0) {
