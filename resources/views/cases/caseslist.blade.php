@@ -16,7 +16,7 @@
                     <th>ประเภทเคส</th>
                     <th>รายละเอียดเคส</th>
                     <th>สถานะเคส</th>
-                    <th>Agent</th>
+                    <th>Agent ที่รับ</th>
                     <th width="120px"></th>
                 </tr>
             </thead>
