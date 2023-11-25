@@ -862,14 +862,14 @@
         $('#billing-update-button').on('click', function() {
             if (!confirm("ยืนยันการทำรายการ ?")) return;
             //e.preventDefault();
-            var dataId = $(this).data('id');
+            var Id = $(this).data('id');
             $('.alert-danger').html('');
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
-alert(dataId);
+alert(Id);
             $.ajax({
-                url: "billing/updatebilling/" + dataId,
+                url: "billing/updatebilling/" + Id,
                 method: 'PUT',
                 data: {
                     billing: $('#billing-input').val(),
