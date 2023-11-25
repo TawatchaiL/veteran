@@ -11,7 +11,7 @@
     import RegionsPlugin from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/regions.esm.js'
 
     let wavesurfer; // Declare the wavesurfer variable
-
+    let dataId;
     // Function to create and initialize WaveSurfer
     const initializeWaveSurfer = (newUrl, tooltipsData) => {
 
@@ -448,7 +448,7 @@
     }
 
     $(document).ready(function() {
-        let dataId;
+        
         $(".delete_all_button").click(function() {
             var len = $('input[name="table_records[]"]:checked').length;
             if (len > 0) {
