@@ -1051,11 +1051,11 @@
                 let strArray = item.split("!");
                 let chan = strArray[0].split("/");
 
-                console.log(strArray);
+                //console.log(strArray);
 
                 $.get(`${api_serv}/chans_variable/` + chan[1], (data, status) => {
 
-                    console.log(data);
+                    //console.log(data);
                     luniq = data[0][1];
                     luniqrd = luniq.replace('.', '');
                     mcallprofile = data[1][1];
