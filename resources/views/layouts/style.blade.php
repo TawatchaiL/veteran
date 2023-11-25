@@ -343,7 +343,7 @@
     }
 
     .single.contact-info li {
-        margin-top: 30px;
+        margin-top: 10px;
     }
 
     .single.contact-info li .icon {
