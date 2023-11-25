@@ -499,6 +499,16 @@
 						objLayout['paddingLeft'] = function(i) { return 4; };
 						objLayout['paddingRight'] = function(i) { return 4; };
 						doc.content[0].layout = objLayout;
+
+                        for (var i = 1; i < doc.content[0].table.body.length; i++) {
+                            doc.content[0].table.body[i][0].alignment =
+                                'left'; // Align the first column to the center
+                            doc.content[0].table.body[i][1].alignment =
+                                'center'; // Align the second column to the right
+                            //doc.content[1].table.body[i][2].alignment =
+                            //'center'; // Align the second column to the right
+                            // Customize alignments for other columns as needed
+                        }
                 }
                 },
                 {
