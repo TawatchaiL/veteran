@@ -869,7 +869,7 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
             $.ajax({
-                url: "billing/updatebilling/" + Id,
+                url: "billing/updatebilling",
                 method: 'PUT',
                 data: {
                     id: Id,
