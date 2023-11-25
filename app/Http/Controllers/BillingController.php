@@ -266,9 +266,9 @@ class BillingController extends Controller
         ]);
 
 
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()->all()]);
-        }
+        //if ($validator->fails()) {
+        //    return response()->json(['errors' => $validator->errors()->all()]);
+        //}
 
         $companyd = [
             'price' => $billing,
