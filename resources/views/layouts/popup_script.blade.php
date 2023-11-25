@@ -1055,6 +1055,7 @@
                                                 value +
                                                 '</li></strong>');
                                     });
+                                    $('.alert-danger-pop').focus();
                                 } else {
                                     $('.alert-danger-pop' + cardId).hide();
                                     $('.alert-success-pop' + cardId).show();
