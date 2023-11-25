@@ -21,7 +21,7 @@ class BillingController extends Controller
     public function __construct()
     {
         //$this->middleware('auth');
-        $this->middleware('permission:billing-list|billing-supervisor', ['only' => ['index', 'show']]);
+        $this->middleware('permission:billing-list|billing-supervisor', ['only' => ['index', 'show', 'updatebilling']]);
         $this->middleware('permission:contact-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:contact-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:contact-delete', ['only' => ['destroy']]);
