@@ -470,6 +470,7 @@
                         };
                         doc.content.splice(0,1);
                         doc.pageMargins = [20,100,20,30];
+                        doc.defaultStyle.fontSize = 16;
 						doc.styles.tableHeader.fontSize = 16;
                         doc['header']=(function() {
 							return {
