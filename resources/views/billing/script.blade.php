@@ -837,7 +837,6 @@
             "footerCallback": function(row, data, start, end, display) {
                 var api = this.api();
 
-                // Calculate the sum of values in column 8 for all pages
                 var sum = api
                     .column(8)
                     .data()
@@ -845,9 +844,8 @@
                         return parseFloat(acc) + parseFloat(value);
                     }, 0);
 
-                // Update the footer cell with the sum
                 $(api.column(8).footer()).html(sum.toFixed(
-                    2)); // Adjust the decimal places as needed
+                    2));
             }
 
         };
