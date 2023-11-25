@@ -56,6 +56,10 @@
                                 </div>
                             </div>
                         </div>
+
+
+                    </div>
+                    <div class="row">
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
                                 <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
@@ -68,9 +72,6 @@
                                 </div>
                             </div>
                         </div>
-
-                    </div>
-                    <div class="row">
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
                                 <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
@@ -96,6 +97,8 @@
                             </div>
                         </div>
 
+                    </div>
+                    <div class="row">
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
                                 <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
@@ -121,7 +124,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
 
