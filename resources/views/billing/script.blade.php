@@ -667,7 +667,6 @@
                     "text": 'PDF', // ข้อความที่แสดง
                     "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
                     "orientation": 'landscape',
-                    "fontSize": '16',
                     "title": 'รายละเอียดค่าใช้จ่าย',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
@@ -680,6 +679,7 @@
                         doc.content.splice(0,1);
                         doc.pageMargins = [20,100,20,30];
 						doc.styles.tableHeader.fontSize = 16;
+                        doc.styles.tableFooter.fontSize = 16;
                         doc['header']=(function() {
 							return {
 								columns: [
