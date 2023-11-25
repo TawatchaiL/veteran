@@ -127,7 +127,7 @@
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
                     <p class="d-inline-flex sidebar-item" data-toggle="tooltip"
                         title="ผลรวมเรื่องที่ติดต่อแยกตามสถานะการโอนสาย">
-                        <span class="text-truncate d-block">
+                        <span class="text-truncate d-inline-block" style="max-width: 150px">
                             ผลรวมเรื่องที่ติดต่อแยกตามสถานะการโอนสาย
                         </span>
                     </p>
