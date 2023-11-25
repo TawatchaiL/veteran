@@ -363,7 +363,7 @@ class BillingController extends Controller
         ];
 
         $datas = DB::connection('remote_connection')->table('call_center.call_recording')
-        ->where('uniqueid', $id);
+        ->where('uniqueid', $request->input('id'));
 
         $datas->update($companyd);
 
