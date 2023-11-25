@@ -372,7 +372,7 @@
             })
         }
 
-        $('#CreateModal').modal('show');
+        $('#CreateModalb').modal('show');
     }
 
     const random = (min, max) => Math.random() * (max - min) + min
@@ -894,7 +894,7 @@
                                     $('.alert-success').show();
                                     $('.alert-success').append('<strong><li>' + result.success +
                                         '</li></strong>');
-                                    $('#CreateModal').modal('hide');
+                                    $('#CreateModalb').modal('hide');
                                     toastr.success(result.success, {
                                         timeOut: 5000
                                     });

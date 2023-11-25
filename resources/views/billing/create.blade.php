@@ -1,4 +1,4 @@
-<div class="modal fade" id="CreateModal">
+<div class="modal fade" id="CreateModalb">
     <div class="modal-dialog modal-xxxl">
         <div class="modal-content">
             <div class="modal-header bg-primary">
