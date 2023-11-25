@@ -684,7 +684,7 @@
 									{
 										image: logobase64,
                                         width: 50,
-                                        margin: [250, 0, 50, 50],
+                                        margin: [350, 0, 50, 50],
 									},
 									{
 										alignment: 'center',
