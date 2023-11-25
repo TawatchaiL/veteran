@@ -490,7 +490,7 @@
 								margin:20
 							}
 						});
-                        
+
                         doc.content[0].table.widths = [400, '*'];
                         var objLayout = {};
 						objLayout['hLineWidth'] = function(i) { return .5; };
