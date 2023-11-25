@@ -23,8 +23,8 @@
             $logoff_button_class = 'd-none';
             $login_button = 'disabled';
             $login_button_class = 'd-none';
-            $toolbar_card = 'd-none';
-            $popup_tab_main = 'd-none';
+            //$toolbar_card = 'd-none';
+            //$popup_tab_main = 'd-none';
             $toolbar_header = 'bg-secondary';
             break;
         case 0:
