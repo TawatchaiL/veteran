@@ -175,6 +175,21 @@
                                     <tbody>
 
                                     </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th align="right"></th>
+                                            <th align="right"></th>
+                                            <th align="right"></th>
+                                            <th align="right">Total</th>
+                                            <th align="center"></th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </tfoot>
                                 </table>
                             </form>
                         </div>
