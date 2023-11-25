@@ -862,7 +862,8 @@
         $('#billing-update-button').on('click', function() {
             if (!confirm("ยืนยันการทำรายการ ?")) return;
             //e.preventDefault();
-            var Id = $(this).data('id');
+            var Id = $('#uniqueid').val();
+            
             $('.alert-danger').html('');
             $('.alert-danger').hide();
             $('.alert-success').html('');
