@@ -512,7 +512,6 @@
                             doc.content[0].table.body[i][5].alignment = 'center';
                             doc.content[0].table.body[i][6].alignment = 'center';
                             doc.content[0].table.body[i][7].alignment = 'center';
-                            doc.content[0].table.body[i][8].alignment = 'left';
                         }
                 }
                 },
