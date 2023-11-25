@@ -796,6 +796,22 @@
                     name: 'duration'
                 },
                 {
+                    data: 'rate',
+                    name: 'rate'
+                },
+                {
+                    data: 'per',
+                    name: 'per'
+                },
+                {
+                    data: 'cost',
+                    name: 'cost'
+                },
+                {
+                    data: 'note',
+                    name: 'note'
+                },
+                {
                     data: 'action',
                     name: 'action',
                     className: 'no-print'
