@@ -633,7 +633,8 @@
                             $('.alert-danger').append('<strong><li>' + value +
                                 '</li></strong>');
                         });
-                        $('#CreateModal').scrollTop(0);
+                        //$('#CreateModal').scrollTop(0);
+                        $('.alert-danger').focus();
                     } else {
                         $('.alert-danger').hide();
                         $('.alert-success').show();
