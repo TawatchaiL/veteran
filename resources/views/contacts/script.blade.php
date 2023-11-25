@@ -103,6 +103,7 @@
 
         var startDate;
         var endDate;
+
         function datesearch() {
             var currentDate = moment();
             // Set the start date to 7 days before today
@@ -112,6 +113,7 @@
             startDate = moment().format('YYYY-MM-DD');
             endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
         }
+
         function datereset() {
             var currentDate = moment();
             startDate = moment().format('YYYY-MM-DD');
@@ -176,51 +178,55 @@
         $.datepicker.setDefaults($.datepicker.regional['th']);
         $(".AddDate").datepicker({
             dateFormat: "yy-mm-dd",
-	        //defaultDate: '2023-11-14',
+            //defaultDate: '2023-11-14',
             isBuddhist: true,
             changeMonth: true,
-            changeYear:true,
-	        //yearRange:'1940:2057',
-            yearRange:'1930:2050',
-            dayNamesMin: [ "อา", "จ", "อ", "พ", "พฤ", "ศ", "ส" ],
-            monthNamesShort: [ "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม" ],
-            beforeShow:function(){
-			if($(this).val()!=""){
-				var arrayDate=$(this).val().split("-");		
-				arrayDate[0]=parseInt(arrayDate[0])-543;
-				$(this).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
-			}
-			setTimeout(function(){
-				$.each($(".ui-datepicker-year option"),function(j,k){
-					var textYear=parseInt($(".ui-datepicker-year option").eq(j).val())+543;
-					$(".ui-datepicker-year option").eq(j).text(textYear);
-				});				
-			},50);
+            changeYear: true,
+            //yearRange:'1940:2057',
+            yearRange: '1930:2050',
+            dayNamesMin: ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"],
+            monthNamesShort: ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
+                "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+            ],
+            beforeShow: function() {
+                if ($(this).val() != "") {
+                    var arrayDate = $(this).val().split("-");
+                    arrayDate[0] = parseInt(arrayDate[0]) - 543;
+                    $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
+                }
+                setTimeout(function() {
+                    $.each($(".ui-datepicker-year option"), function(j, k) {
+                        var textYear = parseInt($(".ui-datepicker-year option").eq(
+                            j).val()) + 543;
+                        $(".ui-datepicker-year option").eq(j).text(textYear);
+                    });
+                }, 50);
 
             },
-            onChangeMonthYear: function(){
-                setTimeout(function(){
-                    $.each($(".ui-datepicker-year option"),function(j,k){
-                        var textYear=parseInt($(".ui-datepicker-year option").eq(j).val())+543;
+            onChangeMonthYear: function() {
+                setTimeout(function() {
+                    $.each($(".ui-datepicker-year option"), function(j, k) {
+                        var textYear = parseInt($(".ui-datepicker-year option").eq(
+                            j).val()) + 543;
                         $(".ui-datepicker-year option").eq(j).text(textYear);
-                    });				
-                },50);		
+                    });
+                }, 50);
             },
-            onClose:function(){
-                if($(this).val()!="" && $(this).val()==dateBefore){			
-                    var arrayDate=dateBefore.split("-");
+            onClose: function() {
+                if ($(this).val() != "" && $(this).val() == dateBefore) {
+                    var arrayDate = dateBefore.split("-");
                     //$('#temp'+$(this).attr('id')).html(dateBefore);
-                    arrayDate[0]=parseInt(arrayDate[0])+543;
-                    $(this).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);	
-                }		
+                    arrayDate[0] = parseInt(arrayDate[0]) + 543;
+                    $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
+                }
             },
-            onSelect: function(dateText, inst){ 
-                dateBefore=$(this).val();
+            onSelect: function(dateText, inst) {
+                dateBefore = $(this).val();
                 //$('#temp'+$(this).attr('id')).html(dateBefore);
-                var arrayDate=dateText.split("-");
-                arrayDate[0]=parseInt(arrayDate[0])+543;
-                $(this).val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
-            }       
+                var arrayDate = dateText.split("-");
+                arrayDate[0] = parseInt(arrayDate[0]) + 543;
+                $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
+            }
         });
 
         $("#Addbirthday").on("change", function() {
@@ -461,13 +467,13 @@
                 emergencyData.push(emergency);
             });
 
-            var arrayDate=$('#Addadddate').val().split("-");
-				    arrayDate[0]=parseInt(arrayDate[0])-543;
-            var tempadddate = arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2];
+            var arrayDate = $('#Addadddate').val().split("-");
+            arrayDate[0] = parseInt(arrayDate[0]) - 543;
+            var tempadddate = arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2];
 
-            var arrayDateb=$('#Addbirthday').val().split("-");
-				    arrayDateb[0]=parseInt(arrayDateb[0])-543;
-            var tempbirthday = arrayDateb[0]+"-"+arrayDateb[1]+"-"+arrayDateb[2];
+            var arrayDateb = $('#Addbirthday').val().split("-");
+            arrayDateb[0] = parseInt(arrayDateb[0]) - 543;
+            var tempbirthday = arrayDateb[0] + "-" + arrayDateb[1] + "-" + arrayDateb[2];
 
             var additionalData = {
                 hn: $('#Addhn').val(),
@@ -507,7 +513,8 @@
                             $('.alert-danger').append('<strong><li>' + value +
                                 '</li></strong>');
                         });
-                        $('#CreateModal').scrollTop(0);
+                        //$('#CreateModal').scrollTop(0);
+                        $('.alert-danger').focus();
                     } else {
                         $('.alert-danger').hide();
                         $('.alert-success').show();
@@ -527,12 +534,12 @@
         let id;
         $(document).on('click', '#getCases', function(e) {
             id = $(this).data('id');
-            //window.location.href = "{{ route('cases', ['id' => ".id."])}}";
+            //window.location.href = "{{ route('cases', ['id' => '.id.']) }}";
             //window.location.href = "cases";
             //var id = '12';
-	        var url = "casescontract?id="+id;
-	        //url = url.replace(':id', id);
-	        location.href = url;
+            var url = "casescontract?id=" + id;
+            //url = url.replace(':id', id);
+            location.href = url;
         });
         $(document).on('click', '#getEditData', function(e) {
             e.preventDefault();
@@ -564,9 +571,10 @@
                     success: function(res) {
                         $('#Edithn').val(res.datax.datac.hn);
 
-                        var arrayDate=res.datax.datac.adddate.split("-");
-				        arrayDate[0]=parseInt(arrayDate[0])+543;
-                        $('#Editadddate').val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);
+                        var arrayDate = res.datax.datac.adddate.split("-");
+                        arrayDate[0] = parseInt(arrayDate[0]) + 543;
+                        $('#Editadddate').val(arrayDate[0] + "-" + arrayDate[1] +
+                            "-" + arrayDate[2]);
 
                         //$('#Editadddate').val(res.datax.datac.adddate);
                         $('#Edittname').val(res.datax.datac.tname);
@@ -574,9 +582,10 @@
                         $('#Editlname').val(res.datax.datac.lname);
                         $('#Editsex').val(res.datax.datac.sex);
 
-                        var arrayDateb=res.datax.datac.birthday.split("-");
-				        arrayDateb[0]=parseInt(arrayDateb[0])+543;
-                        $('#Editbirthday').val(arrayDateb[0]+"-"+arrayDateb[1]+"-"+arrayDateb[2]);
+                        var arrayDateb = res.datax.datac.birthday.split("-");
+                        arrayDateb[0] = parseInt(arrayDateb[0]) + 543;
+                        $('#Editbirthday').val(arrayDateb[0] + "-" + arrayDateb[1] +
+                            "-" + arrayDateb[2]);
                         //$('#Editbirthday').val(res.datax.datac.birthday);
 
                         $('#Editage').val(res.datax.datac.age);
@@ -659,13 +668,13 @@
                 eemergencyData.push(eemergency);
             });
 
-            var arrayDate=$('#Editadddate').val().split("-");
-				    arrayDate[0]=parseInt(arrayDate[0])-543;
-            var tempadddate = arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2];
+            var arrayDate = $('#Editadddate').val().split("-");
+            arrayDate[0] = parseInt(arrayDate[0]) - 543;
+            var tempadddate = arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2];
 
-            var arrayDateb=$('#Editbirthday').val().split("-");
-				    arrayDateb[0]=parseInt(arrayDateb[0])-543;
-            var tempbirthday = arrayDateb[0]+"-"+arrayDateb[1]+"-"+arrayDateb[2];
+            var arrayDateb = $('#Editbirthday').val().split("-");
+            arrayDateb[0] = parseInt(arrayDateb[0]) - 543;
+            var tempbirthday = arrayDateb[0] + "-" + arrayDateb[1] + "-" + arrayDateb[2];
 
             var additionalData = {
                 hn: $('#Edithn').val(),
@@ -877,6 +886,7 @@
             });
         });
     });
+
     function validateNumber(event) {
         //var keyCode = event.which || event.keyCode;
         //if ((keyCode < 48 || keyCode > 57) && keyCode !== 8) {
