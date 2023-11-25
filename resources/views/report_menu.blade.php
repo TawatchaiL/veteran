@@ -48,7 +48,7 @@
                             <div class="info-box">
                                 <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text"> ผลรวมเรื่องที่ติดต่อแยกตามสถานะ</span>
+                                    <span class="info-box-text"> ผลรวมแยกตามสถานะ</span>
                                     <span class="info-box-number text-right"><button
                                             onclick="window.location.href='{{ route('reportsumcasebystatus') }}'"
                                             class="btn btn-success btn-sm"><i class="fas fa-search"></i>
@@ -60,7 +60,7 @@
                             <div class="info-box">
                                 <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text"> ผลรวมเรื่องที่ติดต่อแยกตามสถานะการโอนสาย</span>
+                                    <span class="info-box-text"> ผลรวมแยกตามสถานะการโอนสาย</span>
                                     <span class="info-box-number text-right"><button
                                             onclick="window.location.href='{{ route('reportsumcasebytranferstatus') }}'"
                                             class="btn btn-success btn-sm"><i class="fas fa-search"></i>
@@ -71,31 +71,6 @@
 
                     </div>
                     <div class="row">
-                        <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text"> รายละเอียดเรื่องที่ติดต่อ</span>
-                                    <span class="info-box-number text-right"><button
-                                            onclick="window.location.href='{{ route('detailcases') }}'"
-                                            class="btn btn-success btn-sm"><i class="fas fa-search"></i>
-                                            View</button></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text"> รายละเอียดเรื่องที่ติดต่อแสดงตามสถานะ</span>
-                                    <span class="info-box-number text-right"><button
-                                            onclick="window.location.href='{{ route('detailcasesstatus') }}'"
-                                            class="btn btn-success btn-sm"><i class="fas fa-search"></i>
-                                            View</button></span>
-                                </div>
-                            </div>
-                        </div>
                         <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
                             <div class="info-box">
                                 <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
@@ -112,7 +87,33 @@
                             <div class="info-box">
                                 <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text">รายละเอียดเรื่องที่ติดต่อที่มีการ แก้ไข และการคอมเม้น</span>
+                                    <span class="info-box-text"> รายการเรื่องที่ติดต่อ</span>
+                                    <span class="info-box-number text-right"><button
+                                            onclick="window.location.href='{{ route('detailcases') }}'"
+                                            class="btn btn-success btn-sm"><i class="fas fa-search"></i>
+                                            View</button></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text"> รายการเรื่องที่ติดต่อแสดงตามสถานะ</span>
+                                    <span class="info-box-number text-right"><button
+                                            onclick="window.location.href='{{ route('detailcasesstatus') }}'"
+                                            class="btn btn-success btn-sm"><i class="fas fa-search"></i>
+                                            View</button></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-lg-6  col-xl-3 col-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">รายการแก้ไข/คอมเม้น เรื่องที่ติดต่อ</span>
                                     <span class="info-box-number text-right"><button
                                             onclick="window.location.href='{{ route('detailcaselogbyhn') }}'"
                                             class="btn btn-success btn-sm"><i class="fas fa-search"></i>
