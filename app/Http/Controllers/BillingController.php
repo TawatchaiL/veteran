@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
+use App\Models\Billing;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
@@ -340,5 +341,32 @@ class BillingController extends Controller
 
         $comment->delete();
         return response()->json(['message' => 'Comment deleted successfully']);
+    }
+
+    public function updatebilling(Request $request, $id)
+    {
+        $rules = [
+            'billing' => 'required|max:10',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, [
+            'billing.required' => 'กรุณากรอกค่าใช้จ่าย',
+        ]);
+
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all()]);
+        }
+
+        $companyd = [
+            'price' => $request->get('billing'),
+        ];
+
+        $datas = DB::connection('remote_connection')->table('call_center.call_recording')
+        ->where('uniqueid', $id);
+
+        $datas->update($companyd);
+
+        return response()->json(['success' => 'แก้ไข ค่าใช้จ่าย เรียบร้อยแล้ว']);
     }
 }

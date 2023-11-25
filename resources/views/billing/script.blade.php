@@ -860,6 +860,46 @@
             table.button('4').trigger();
         });
 
+        $('#billing-update-button').on('click', function() {
+            if (!confirm("ยืนยันการทำรายการ ?")) return;
+            e.preventDefault();
+
+            $('.alert-danger').html('');
+            $('.alert-danger').hide();
+            $('.alert-success').html('');
+            $('.alert-success').hide();
+
+            $.ajax({
+                url: "billing/updatebilling/" + dataId,
+                method: 'PUT',
+                data: {
+                    billing: $('#billing-input').val(),
+                    status: esstatus,
+                },
+
+                success: function(result) {
+                    if (result.errors) {
+                        $('.alert-danger').html('');
+                        $.each(result.errors, function(key, value) {
+                            $('.alert-danger').show();
+                            $('.alert-danger').append('<strong><li>' + value +
+                                '</li></strong>');
+                        });
+                    } else {
+                        $('.alert-danger').hide();
+                        $('.alert-success').show();
+                        $('.alert-success').append('<strong><li>' + result.success +
+                            '</li></strong>');
+                        $('#CreateModal').modal('hide');
+                        toastr.success(result.success, {
+                            timeOut: 5000
+                        });
+                        $('#Listview').DataTable().ajax.reload();
+                    }
+                }
+            });
+        });
+
 
 
 
