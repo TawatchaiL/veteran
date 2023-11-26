@@ -476,8 +476,10 @@
                 'csv',
                 { // กำหนดพิเศษเฉพาะปุ่ม pdf
                     "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
+                    "footer": true,
                     "text": 'PDF', // ข้อความที่แสดง
                     "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
+                    "orientation": 'landscape',
                     "title": 'สถานะการรับสาย',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
@@ -497,7 +499,7 @@
 									{
 										image: logobase64,
                                         width: 50,
-                                        margin: [250, 0, 50, 50],
+                                        margin: [380, 0, 50, 50],
 									},
 									{
 										alignment: 'center',
@@ -511,7 +513,7 @@
 							}
 						});
 
-                        doc.content[0].table.widths = ['*', 40, 40, 80, 80, 80, 80, 80];
+                        doc.content[0].table.widths = ['*', 80, 80, 80, 80, 80, 80, 80];
                         var objLayout = {};
 						objLayout['hLineWidth'] = function(i) { return .5; };
 						objLayout['vLineWidth'] = function(i) { return .5; };
