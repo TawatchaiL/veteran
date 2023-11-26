@@ -1,5 +1,4 @@
 <?php
-//
 return [
     'manager' => [
         'host' => env('ASTERISK_MANAGER_HOST', '10.148.0.4'),
