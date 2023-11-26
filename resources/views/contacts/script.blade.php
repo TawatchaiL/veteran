@@ -231,9 +231,8 @@
 
         $("#Addbirthday").on("change", function() {
             var selectedDate = new Date($(this).val());
-            var datenow = new Date();
-            var currentDate = datenow.setFullYear(datenow.getFullYear() + 543);
-            var years = currentDate.getFullYear() - selectedDate.getFullYear();
+            var currentDate = new Date();
+            var years = (currentDate.getFullYear() + 543) - selectedDate.getFullYear();
             var months = currentDate.getMonth() - selectedDate.getMonth();
             var days = currentDate.getDate() - selectedDate.getDate();
             if (days < 0) {
