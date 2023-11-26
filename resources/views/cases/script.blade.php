@@ -589,6 +589,8 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
+            console.log($('#Hn').val()[0]);
+
             var arrayDate = $('#Addadddate').val().split("-");
             arrayDate[0] = parseInt(arrayDate[0]) - 543;
             var tempadddate = arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2];
