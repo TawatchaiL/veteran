@@ -85,6 +85,7 @@
                                                     ]) !!}
                                                     <ul id="suggestions"></ul>
                                                 </div> --}}
+                                                <input type="hidden" value="" name="hn" id="Hn">
                                                 <select style="width: 100%;" class="select2 select2_single form-control" id="Addid"
                                                     name="Addid" multiple>
                                                     @foreach ($contacts as $contact)
