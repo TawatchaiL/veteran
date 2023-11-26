@@ -172,7 +172,7 @@ class BillingReportController extends Controller
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
 
-        return view('billing.index', [
+        return view('billingreport.index', [
             'datas' => $datass,
             'agens' => $agens,
         ]);
@@ -340,7 +340,7 @@ class BillingReportController extends Controller
         $comment->delete();
         return response()->json(['message' => 'Comment deleted successfully']);
     }
-
+/*
     public function updatebilling(Request $request, $id)
     {
         $rules = [
@@ -367,4 +367,5 @@ class BillingReportController extends Controller
 
         return response()->json(['success' => 'แก้ไข ค่าใช้จ่าย เรียบร้อยแล้ว']);
     }
+    */
 }
