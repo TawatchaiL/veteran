@@ -501,6 +501,7 @@
 
 
         $(document).on('change', '#Hn', function() {
+            alert();
             var query = $(this).val();
             $.ajax({
                 url: 'cases/seachcontact/' + query,
