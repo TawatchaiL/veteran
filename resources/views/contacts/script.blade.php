@@ -241,7 +241,7 @@
                     years--;
                     months += 12;
                 }
-                $("#"+$(this).data('id')).val(years + " ปี " + months + " เดือน " + days + " วัน");
+                $("#"+$(this).data('age')).val(years + " ปี " + months + " เดือน " + days + " วัน");
                 }
         });
 
