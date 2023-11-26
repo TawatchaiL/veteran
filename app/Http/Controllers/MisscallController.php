@@ -48,13 +48,13 @@ class MisscallController extends Controller
                     $endDate = date("Y-m-t", strtotime($startDate));  
         }
         $datas = DB::connection('remote_connection')
-            ->table('call_center.call_entry')
-            ->select('crm_id',DB::raw('DATE(datetime_init) as cdate'), DB::raw('TIME(datetime_init) as ctime'), 'callerid as telno', DB::raw('SEC_TO_TIME(duration_wait) as durationwait'))
-            ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59" AND status = "abandonada" AND  crm_id is not null');
-        if(!empty($request->get('agent'))){
-            $datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
-        }    
-        $datas->orderBy("datetime_init", "asc")
+            ->table('asteriskcdrdb.cdr')
+            ->select('dst_userfield',DB::raw('DATE(calldate) as cdate'), DB::raw('TIME(calldate) as ctime'), 'src as telno', DB::raw('SEC_TO_TIME(duration) as durationwait'))
+            ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59" AND status = "NO ANSWER"');
+        //if(!empty($request->get('agent'))){
+        //    $datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
+        //}    
+        $datas->orderBy("calldate", "asc")
             ->get();
 
         $agents = User::orderBy("id", "asc")->get();
@@ -69,8 +69,8 @@ class MisscallController extends Controller
                     return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 })
                 ->addColumn('agent', function ($row) use ($agent_data){
-                    if (isset($agent_data[$row->crm_id])) {
-                        return $agent_data[$row->crm_id];
+                    if (isset($agent_data[$row->dst_userfield])) {
+                        return $agent_data[$row->dst_userfield];
                     } else {
                         return 'Agent not found';
                     }
