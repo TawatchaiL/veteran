@@ -362,4 +362,12 @@
     .single.contact-info li .info {
         overflow: hidden;
     }
+
+    .info-box .info-box-text-sm {
+    display: block;
+    font-size: 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 </style>
