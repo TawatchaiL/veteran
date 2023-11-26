@@ -262,7 +262,7 @@
                             .getAttribute('content');
                         $.ajax({
                             type: "get",
-                            url: "/billing/comment",
+                            url: "/billingreport/comment",
                             headers: {
                                 'X-CSRF-TOKEN': csrfToken
                             },
@@ -294,7 +294,7 @@
                         .getAttribute('content');
                     $.ajax({
                         type: "DELETE",
-                        url: '/billing/comment/' + commentId,
+                        url: '/billingreport/comment/' + commentId,
                         headers: {
                             'X-CSRF-TOKEN': csrfToken
                         },
@@ -326,7 +326,7 @@
                 .getAttribute('content');
             $.ajax({
                 type: "POST",
-                url: "/billing/comment/update/" + regionId,
+                url: "/billingreport/comment/update/" + regionId,
                 headers: {
                     'X-CSRF-TOKEN': csrfToken
                 },
@@ -386,7 +386,7 @@
         var dataId = $(this).data('id');
         $.ajax({
             type: "GET",
-            url: "billing/edit/" + dataId,
+            url: "billingreport/edit/" + dataId,
             success: function(response) {
                 $('#vioc_name').text(response.voic_name);
                 $('#uniqueid').val(response.remoteData2.uniqueid);
@@ -918,7 +918,7 @@
                             .getAttribute('content');
                         $.ajax({
                             type: "get",
-                            url: "/billing/comment",
+                            url: "/billingreport/comment",
                             headers: {
                                 'X-CSRF-TOKEN': csrfToken
                             },

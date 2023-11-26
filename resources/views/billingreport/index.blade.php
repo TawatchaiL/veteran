@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('style')
-    @include('billing.style')
+    @include('billingreport.style')
 @endsection
 @section('content')
     <section class="content-header">
@@ -201,5 +201,5 @@
     @include('layouts.modal-form')
 @endsection
 @section('script')
-    @include('billing.script')
+    @include('billingreport.script')
 @endsection
