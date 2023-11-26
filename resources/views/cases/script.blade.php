@@ -620,8 +620,8 @@
                 async: false,
                 success: function(res) {
                     console.log(res);
-                    $('#Hn').val(res.data.hn);
-                    $('#Name').val(res.data.name);
+                    $('#Hn').val(res.data.hn).change();
+                    //$('#Name').val(res.data.name);
                     //date+543
                     var arrayDate = res.data.adddate.split("-");
                     arrayDate[0] = parseInt(arrayDate[0]) + 543;
