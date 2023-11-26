@@ -135,14 +135,13 @@
                 </div>
             </div>
             <div class="row">
-
                 <div class="col-md-4 col-sm-4 col-lg-4  col-xl-4 col-12">
                     <div class="info-box">
                         <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
                         <div class="info-box-content">
-                            <span class="info-box-text-sm"> 10 อันดับเบอร์ภายในที่โทรเข้ามาติดต่อ</span>
+                            <span class="info-box-text-sm">  ผลรวมสายเข้าแยกตาม Agent</span>
                             <span class="info-box-number text-right"><button
-                                    onclick="window.location.href='{{ route('reporttop10in') }}'"
+                                    onclick="window.location.href='{{ route('reportcase') }}'"
                                     class="btn btn-success btn-sm"><i class="fas fa-search"></i>
                                     View</button></span>
                         </div>
@@ -152,9 +151,47 @@
                     <div class="info-box">
                         <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
                         <div class="info-box-content">
-                            <span class="info-box-text-sm"> 10 อันดับเบอร์ภายนอกที่โทรเข้ามาติดต่อ</span>
+                            <span class="info-box-text-sm"> จำนวนสายที่ติดต่อ</span>
                             <span class="info-box-number text-right"><button
-                                    onclick="window.location.href='{{ route('reporttop10out') }}'"
+                                    onclick="window.location.href='{{ route('sumtel') }}'"
+                                    class="btn btn-success btn-sm"><i class="fas fa-search"></i>
+                                    View</button></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-4 col-lg-4  col-xl-4 col-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text-sm"> สถานะการรับสาย</span>
+                            <span class="info-box-number text-right"><button
+                                    onclick="window.location.href='{{ route('callstatus') }}'"
+                                    class="btn btn-success btn-sm"><i class="fas fa-search"></i>
+                                    View</button></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-lg-4  col-xl-4 col-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text-sm"> สายที่ได้รับบริการ</span>
+                            <span class="info-box-number text-right"><button
+                                    onclick="window.location.href='{{ route('hitcall') }}'"
+                                    class="btn btn-success btn-sm"><i class="fas fa-search"></i>
+                                    View</button></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-4 col-lg-4  col-xl-4 col-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text-sm"> สายที่ไม่ได้รับบริการ</span>
+                            <span class="info-box-number text-right"><button
+                                    onclick="window.location.href='{{ route('misscall') }}'"
                                     class="btn btn-success btn-sm"><i class="fas fa-search"></i>
                                     View</button></span>
                         </div>
@@ -184,6 +221,56 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-4 col-sm-4 col-lg-4  col-xl-4 col-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text-sm"> สถานะการเข้าสู่ระบบ</span>
+                            <span class="info-box-number text-right"><button
+                                    onclick="window.location.href='{{ route('loginstatus') }}'"
+                                    class="btn btn-success btn-sm"><i class="fas fa-search"></i>
+                                    View</button></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-lg-4  col-xl-4 col-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text-sm"> ประวัติการพักรับสาย</span>
+                            <span class="info-box-number text-right"><button
+                                    onclick="window.location.href='{{ route('reportbreak') }}'"
+                                    class="btn btn-success btn-sm"><i class="fas fa-search"></i>
+                                    View</button></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 col-sm-4 col-lg-4  col-xl-4 col-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text-sm"> 10 อันดับเบอร์ภายในที่โทรเข้ามาติดต่อ</span>
+                            <span class="info-box-number text-right"><button
+                                    onclick="window.location.href='{{ route('reporttop10in') }}'"
+                                    class="btn btn-success btn-sm"><i class="fas fa-search"></i>
+                                    View</button></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-lg-4  col-xl-4 col-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text-sm"> 10 อันดับเบอร์ภายนอกที่โทรเข้ามาติดต่อ</span>
+                            <span class="info-box-number text-right"><button
+                                    onclick="window.location.href='{{ route('reporttop10out') }}'"
+                                    class="btn btn-success btn-sm"><i class="fas fa-search"></i>
+                                    View</button></span>
+                        </div>
+                    </div>
+                </div>
+                
 
 
                 <div class="col-md-4 col-sm-4 col-lg-4  col-xl-4 col-12">
@@ -206,30 +293,6 @@
                             <span class="info-box-text-sm"> รายละเอียดเบอร์ภายนอกที่โทรเข้ามาติดต่อ</span>
                             <span class="info-box-number text-right"><button
                                     onclick="window.location.href='{{ route('detailcaseexternalnumber') }}'"
-                                    class="btn btn-success btn-sm"><i class="fas fa-search"></i>
-                                    View</button></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4 col-lg-4  col-xl-4 col-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
-                        <div class="info-box-content">
-                            <span class="info-box-text-sm"> สถานะการเข้าสู่ระบบ</span>
-                            <span class="info-box-number text-right"><button
-                                    onclick="window.location.href='{{ route('loginstatus') }}'"
-                                    class="btn btn-success btn-sm"><i class="fas fa-search"></i>
-                                    View</button></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4 col-lg-4  col-xl-4 col-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
-                        <div class="info-box-content">
-                            <span class="info-box-text-sm"> ประวัติการพักรับสาย</span>
-                            <span class="info-box-number text-right"><button
-                                    onclick="window.location.href='{{ route('reportbreak') }}'"
                                     class="btn btn-success btn-sm"><i class="fas fa-search"></i>
                                     View</button></span>
                         </div>
