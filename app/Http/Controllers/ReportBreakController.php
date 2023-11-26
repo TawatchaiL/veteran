@@ -44,14 +44,14 @@ class ReportBreakController extends Controller
                 }
             }
         } else {
-            $startDate = date("Y-m-d");
-            $endDate = date("Y-m-t", strtotime($startDate));
+            $startDate = date("Y-m-d H:i:s");
+            $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
         $datas = DB::connection('remote_connection')
             ->table('call_center.audit')
             ->leftJoin('break', 'audit.id_break', '=', 'break.id')
             ->select('audit.crm_id as crm_id', 'break.name as typebreak', 'audit.datetime_init as datetime_init', 'audit.datetime_end as datetime_end', DB::raw('SEC_TO_TIME(duration) as breaktime'))
-            ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+            ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '"')
             ->whereNotNull('id_break');
         if (!empty($request->get('agent')) && $request->get('agent') != "0") {
             $datas->whereRaw('crm_id = "' . $request->input('agent') . '"');
