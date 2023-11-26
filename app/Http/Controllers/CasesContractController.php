@@ -133,12 +133,10 @@ class CasesContractController extends Controller
     {
         $user = Auth::user();
         $valifield =  [
-            'contact_id' => 'required',
             'caseid1' => 'required|string|max:100',
             'casedetail' => 'required|string|max:200',
         ];
         $valimess = [
-            'contact_id.required' => 'กรุณาระบุผู้ติดต่อ',
             'caseid1.required' => 'กรุณาเลือกประเภทการติดต่อ',
             'casedetail.required' => 'กรุณากรอกรายละเอียดที่ติดต่อ',
         ];
