@@ -237,7 +237,7 @@
             var days = currentDate.getDate() - selectedDate.getDate();
             if (days < 0) {
                 months--;
-                days += new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
+                days += new Date(currentDate.getFullYear() + 543, currentDate.getMonth(), 0).getDate();
             }
 
             if (months < 0) {
