@@ -49,7 +49,20 @@
                                                 autocomplete="off">
                                         </div>
                                     </div>
-                                    <div class="col-xs-1 col-sm-1 col-md-1">
+                                    <div class="col-xs-2 col-sm-2 col-md-2">
+                                        <div class="form-group">
+                                            <strong><i class="fas fa-user"></i>
+                                                แผนก:</strong>
+                                            <select style="width: 100%;" class="select2 form-control" id="cdepartment"
+                                                name="cdepartment">
+                                                <option value="">ทั้งหมด</option>
+                                                <option value="1"> สายเข้า</option>
+                                                <option value="2"> โทรออก</option>
+                                                <option value="3"> ภายใน</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
                                             <strong><i class="fas fa-user"></i>
                                                 Agent:</strong>
