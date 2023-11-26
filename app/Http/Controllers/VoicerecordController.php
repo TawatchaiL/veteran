@@ -137,26 +137,25 @@ class VoicerecordController extends Controller
                     return $time;
                 })
                 ->editColumn('telno', function ($row) use ($agentArray) {
-                    if ($row->accountcode !== '') {
+                    /* if ($row->accountcode !== '') {
                         if (!empty($row->userfield)) {
                             return $agentArray[$row->userfield]['name'] . " ( " . $row->src . " ) ";
                         } else {
                             return $row->src;
                         }
-                    } else {
-                        return $row->src;
-                    }
+                    } else { */
+                    return $row->src;
+                    //}
                 })
                 ->editColumn('agent', function ($row) use ($agentArray) {
                     $telp = $row->accountcode == '' ? $this->getTelpFromDstChannel($row->dstchannel) : $row->dst;
 
-                    /* if (!empty($row->dst_userfield) && isset($agentArray[$row->dst_userfield])) {
+                    if (!empty($row->dst_userfield) && isset($agentArray[$row->dst_userfield])) {
                         $agentName = $agentArray[$row->dst_userfield]['name'];
                         return "$agentName ( $telp ) ";
                     } else {
                         return $telp;
-                    } */
-                    return $telp;
+                    }
                 })
                 ->editColumn('duration', function ($row) {
                     $durationInSeconds = $row->billsec;
