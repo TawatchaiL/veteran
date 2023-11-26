@@ -87,10 +87,10 @@
                                                 </div> --}}
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> Hn :</strong>
-                                                    <input type="hidden" value="" name="hn" id="Hn">
+                                                    <input type="hidden" value="" name="Addid" id="Addid">
                                                     <select style="width: 100%;"
-                                                        class="select2 select2_single form-control" id="Addid"
-                                                        name="Addid" multiple>
+                                                        class="select2 select2_single form-control" id="Hn"
+                                                        name="hn" multiple>
                                                         @foreach ($contacts as $contact)
                                                             <option value="{{ $contact->id }}">{{ $contact->hn }}
                                                                 {{ $contact->fname }} {{ $contact->lname }}
