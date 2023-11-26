@@ -44,13 +44,13 @@ class MisscallController extends Controller
                 }
             }
         }else{
-                    $startDate = date("Y-m-d");
-                    $endDate = date("Y-m-t", strtotime($startDate));  
+            $startDate = date("Y-m-d H:i:s");
+            $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
         $datas = DB::connection('remote_connection')
             ->table('call_center.call_entry')
             ->select('crm_id',DB::raw('DATE(datetime_init) as cdate'), DB::raw('TIME(datetime_init) as ctime'), 'callerid as telno', DB::raw('SEC_TO_TIME(duration_wait) as durationwait'))
-            ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59" AND status = "abandonada" AND  crm_id is not null');
+            ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '" AND status = "abandonada" AND  crm_id is not null');
         if(!empty($request->get('agent'))){
             $datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
         }    
