@@ -56,9 +56,9 @@
                                             <select style="width: 100%;" class="select2 form-control" id="cdepartment"
                                                 name="cdepartment">
                                                 <option value="">ทั้งหมด</option>
-                                                <option value="1"> สายเข้า</option>
-                                                <option value="2"> โทรออก</option>
-                                                <option value="3"> ภายใน</option>
+                                                @foreach ($departments as $department)
+                                                <option value="{{ $department->id }}">{{ $department->name ?? 'ไม่พบแผนก' }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>

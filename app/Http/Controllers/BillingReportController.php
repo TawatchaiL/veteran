@@ -59,7 +59,9 @@ class BillingReportController extends Controller
         foreach ($agens as $agen) {
             $agentArray[$agen->id]['name'] = $agen->name;
         }
-
+        
+        $department = Department::orderBy('id', 'asc')->get();
+        
         if ($request->ajax()) {
 
             if (!empty($request->get('sdate'))) {
@@ -103,13 +105,27 @@ class BillingReportController extends Controller
                 }
             }
 
-            if (!empty($request->get('agent'))) {
-                $agent = $request->input('agent');
-                if ($agent) {
-                    $datass->where(function ($query) use ($agent) {
-                        $query->where('asteriskcdrdb.cdr.userfield', $agent)
-                            ->orWhere('dst_userfield', $agent);
+            if (!empty($request->get('cdepartment'))) {
+                $department = $request->input('cdepartment');
+                if ($department) {
+
+                    $users = User::where('department_id', $department)->get();
+                    foreach ($users as $user) {
+                        $idd[] = $user->id;
+                    }
+                    $datass->where(function ($query) use ($department) {
+                        $query->wherein('asteriskcdrdb.cdr.userfield',$ids);
                     });
+                }
+            }else{
+                if (!empty($request->get('agent'))) {
+                    $agent = $request->input('agent');
+                    if ($agent) {
+                        $datass->where(function ($query) use ($agent) {
+                            $query->where('asteriskcdrdb.cdr.userfield', $agent)
+                                ->orWhere('dst_userfield', $agent);
+                        });
+                    }
                 }
             }
 
@@ -175,6 +191,7 @@ class BillingReportController extends Controller
         return view('billingreport.index', [
             'datas' => $datass,
             'agens' => $agens,
+            'departments' => $department,
         ]);
     }
 
