@@ -120,8 +120,7 @@ class BillingReportController extends Controller
                         });
                     }else{
                         $datass->where(function ($query) use ($idd) {
-                            $query->where('asteriskcdrdb.cdr.userfield', '0')
-                                ->orWhere('dst_userfield', '0');
+                            $query->where('asteriskcdrdb.cdr.userfield', '0');
                         });
                     }       
                 }
