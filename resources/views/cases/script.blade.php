@@ -621,6 +621,7 @@
                 success: function(res) {
                     console.log(res);
                     $('#Hn').val(res.data.contact_id).change();
+                    $('#Hn').attr("readonly", "readonly");
                     //$('#Name').val(res.data.name);
                     //date+543
                     var arrayDate = res.data.adddate.split("-");
