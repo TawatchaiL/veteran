@@ -118,10 +118,13 @@ class BillingReportController extends Controller
                         $datass->where(function ($query) use ($idd) {
                             $query->wherein('asteriskcdrdb.cdr.userfield',$idd);
                         });
-                    }        
+                    }else{
+                        $datass->where(function ($query) use ($agent) {
+                            $query->where('asteriskcdrdb.cdr.userfield', 0)
+                                ->orWhere('dst_userfield', 0);
+                        });
+                    }       
                 }
-            }else{
-
             }
 
             if (!empty($request->get('agent'))) {
@@ -133,7 +136,7 @@ class BillingReportController extends Controller
                     });
                 }
             }
-            
+
             if (!Gate::allows('billing-list')) {
                 $uid = Auth::user()->id;
 
