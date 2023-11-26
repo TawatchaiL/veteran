@@ -375,5 +375,4 @@
 @endsection
 
 @section('script')
-    @include('script')
 @endsection
