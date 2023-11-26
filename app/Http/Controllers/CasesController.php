@@ -374,7 +374,12 @@ class CasesController extends Controller
     public function caseslistlog(Request $request)
     {
         $id = $request->input('id');
-        $data = CrmCaseslog::where('id', $id)->get();
+        //$data = CrmCaseslog::where('id', $id)->get();
+
+        $data = CrmCaseslog::select('crm_caseslogs.*', 'users.name as agentname')
+        ->join('users', 'crm_caseslogs.modifyagent', '=', 'users.id')
+        ->where('crm_caseslogs.id', $id)
+        ->get();
 
         $template = 'cases.casesloglist';
         $htmlContent = View::make($template, ['caselog' => $data])->render();
