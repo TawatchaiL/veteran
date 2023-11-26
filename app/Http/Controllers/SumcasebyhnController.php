@@ -45,13 +45,13 @@ class SumcasebyhnController extends Controller
                 }
             }
         }else{
-                    $startDate = date("Y-m-d");
-                    $endDate = date("Y-m-t", strtotime($startDate));  
+            $startDate = date("Y-m-d H:i:s");
+            $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
                 $datas = DB::table('crm_cases')
                 ->select('crm_contacts.hn', DB::raw('count(crm_contacts.hn) as sumhn'))
                 ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
-                ->whereRaw('crm_cases.adddate between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+                ->whereRaw('crm_cases.adddate between "' . $startDate . '" and "' . $endDate . '"')
                 ->groupBy('crm_contacts.hn')
                 ->orderBy("sumhn", "desc")
                 ->get();

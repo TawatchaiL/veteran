@@ -301,13 +301,13 @@
             //startDate = moment(currentDate).subtract(15, 'days').format('YYYY-MM-DD');
             // Set the end date to the end of the current month
             //endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
-            startDate = moment().format('YYYY-MM-DD');
-            endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
+            startDate = moment().format('YYYY-MM-DD HH:mm:ss');
+            endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD HH:mm:ss');
         }
         function datereset() {
             var currentDate = moment();
-            startDate = moment().format('YYYY-MM-DD');
-            endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
+            startDate = moment().format('YYYY-MM-DD HH:mm:ss');
+            endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD HH:mm:ss');
         }
 
         function retrieveFieldValues() {
@@ -327,21 +327,38 @@
 
         let daterange = () => {
             moment.locale('th');
+
+            var startTime = '00:00:00';
+            var endTime = '23:59:59';
+
+            var todayRange = [moment(startTime, 'HH:mm:ss'), moment(endTime, 'HH:mm:ss')];
+            var yesterdayRange = [moment().subtract(1, 'days').startOf('day').set('hour', 0).set('minute',
+                0).set('second', 0), moment().subtract(1, 'days').endOf('day').set('hour', 23).set(
+                'minute', 59).set('second', 59)];
+            var last7DaysRange = [moment().subtract(6, 'days').startOf('day').set('hour', 0).set('minute',
+                0).set('second', 0), moment(endTime, 'HH:mm:ss')];
+            var last30DaysRange = [moment().subtract(29, 'days').startOf('day').set('hour', 0).set('minute',
+                0).set('second', 0), moment(endTime, 'HH:mm:ss')];
+
             $('#reservation').daterangepicker({
+                timePicker: true,
+                timePicker24Hour: true,
+                timePickerSeconds: true,
+                //timePickerIncrement: 5,
                 startDate: startDate,
                 endDate: endDate,
                 ranges: {
-                    'วันนี้': [moment(), moment()],
-                    'เมื่อวานนี้': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                    'ย้อนหลัง 7 วัน': [moment().subtract(6, 'days'), moment()],
-                    'ย้อนหลัง 30 วัน': [moment().subtract(29, 'days'), moment()],
+                    'วันนี้': todayRange,
+                    'เมื่อวานนี้': yesterdayRange,
+                    'ย้อนหลัง 7 วัน': last7DaysRange,
+                    'ย้อนหลัง 30 วัน': last30DaysRange,
                     'เดือนนี้': [moment().startOf('month'), moment().endOf('month')],
                     'เดือนที่แล้ว': [moment().subtract(1, 'month').startOf('month'), moment()
                         .subtract(1, 'month').endOf('month')
                     ]
                 },
                 locale: {
-                    format: 'YYYY-MM-DD',
+                    format: 'YYYY-MM-DD HH:mm:ss',
                     applyLabel: 'ตกลง',
                     cancelLabel: 'ยกเลิก',
                     fromLabel: 'จาก',
