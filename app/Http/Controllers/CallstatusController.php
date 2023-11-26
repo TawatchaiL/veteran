@@ -44,21 +44,21 @@ class CallstatusController extends Controller
                 }
             }
         }else{
-                    $startDate = date("Y-m-d");
-                    $endDate = date("Y-m-t", strtotime($startDate));  
+            $startDate = date("Y-m-d H:i:s");
+            $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
 
         $datac = DB::connection('remote_connection')
             ->table('call_center.call_entry')
             ->select('crm_id', DB::raw('count(crm_id) as agentcall'), DB::raw('SUM(if(status = "terminada",1,0)) as terminada') ,DB::raw('SEC_TO_TIME(ROUND(AVG(duration_wait), 0)) as avgwait'), DB::raw('SEC_TO_TIME(SUM(duration)) as duration') , DB::raw('SEC_TO_TIME(ROUND(AVG(duration), 0)) as avgduration'))
-            ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59" and crm_id is not null')
+            ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '" and crm_id is not null')
             ->groupBy('crm_id')
             ->toSql();
             
         $dataa = DB::connection('remote_connection')
             ->table('call_center.audit')
             ->select('crm_id as crmid', DB::raw('SEC_TO_TIME(ROUND(SUM(TIME_TO_SEC(if(id_break is null,duration,0))),0)) as logintime'), DB::raw('SEC_TO_TIME(ROUND(SUM(TIME_TO_SEC(if(id_break is not null,duration,0))),0)) as breaktime'))
-            ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59" and crm_id is not null')
+            ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '" and crm_id is not null')
             ->groupBy('crm_id');
             //->get();
 
