@@ -140,6 +140,7 @@
                                                     {!! Form::text('Editbirthday', null, [
                                                         'id' => 'Editbirthday',
                                                         'placeholder' => 'วันเกิด',
+                                                        'data-age' => 'Editage',
                                                         'class' => 'AddDate form-control',
                                                         'data-target' => '#reservationdate',
                                                     ]) !!}

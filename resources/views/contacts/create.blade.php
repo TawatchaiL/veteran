@@ -137,6 +137,7 @@
                                                     <strong><i class="fas fa-user-tie"></i> วันเกิด:</strong>
                                                     {!! Form::text('addbirthday', null, [
                                                         'id' => 'Addbirthday',
+                                                        'data-age' => 'Addage',
                                                         'placeholder' => 'วันเกิด',
                                                         'class' => 'AddDate form-control',
                                                         'data-target' => '#reservationdate',
