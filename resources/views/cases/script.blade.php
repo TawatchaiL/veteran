@@ -492,14 +492,14 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
-            console.log($('#Hn').val()[0]);
+            //console.log($('#Hn').val()[0]);
 
             var arrayDate = $('#Addadddate').val().split("-");
             arrayDate[0] = parseInt(arrayDate[0]) - 543;
             var tempadddate = arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2];
 
             var additionalData = {
-                contact_id: $('#Hn').val()[0],
+                contact_id: $('#Hn').val($('#Hn').val()[0] === undefined ? '' : $('#Hn').val());
                 adddate: tempadddate,
                 //adddate: $('#Addadddate').val(),
                 //adddate: $('#tempAddadddate').html(),
