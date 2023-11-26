@@ -14,8 +14,8 @@
                     <ol class="breadcrumb float-sm-right">
                         {{-- <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item active">Users Management</li> --}}
-                        @can('contact-create')
-                        {{--@can('billing-create')--}}
+
+                        @can('billing-create')
                             <button type="button" class="btn btn-success" id="CreateButton">
                                 <i class="fas fa-list-ol"></i> เพิ่มอัตราค่าใช้จ่ายการโทร </a> </button>
                         @else
