@@ -303,7 +303,12 @@ class CasesController extends Controller
     public function commentlist(Request $request)
     {
         $id = $request->input('id');
-        $data = CrmCaseComment::where('case_id', $id)->get();
+        //$data = CrmCaseComment::where('case_id', $id)->get();
+
+        $data = CrmCaseComment::select('crm_case_comments.*', 'users.name as agentname')
+        ->join('users', 'crm_case_comments.agent', '=', 'users.id')
+        ->where('crm_case_comments.case_id', $id)
+        ->get();
 
         $template = 'cases.commentlist';
         $htmlContent = View::make($template, ['casecomment' => $data])->render();
