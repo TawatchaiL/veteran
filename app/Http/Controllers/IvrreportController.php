@@ -44,14 +44,14 @@ class IvrreportController extends Controller
                 }
             }
         }else{
-                    $startDate = date("Y-m-d");
-                    $endDate = date("Y-m-t", strtotime($startDate));  
+            $startDate = date("Y-m-d H:i:s");
+            $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
         $datas = DB::connection('remote_connection')
             ->table('call_center.ivr_report')
             ->select(DB::raw('DATE(call_center.ivr_report.datetime) as cdate'), DB::raw('TIME(call_center.ivr_report.datetime) as ctime'),'call_center.ivr_report.callerid as telno','asterisk.ivr_details.name as ivrname','call_center.ivr_report.digit as ivrno')
             ->join('asterisk.ivr_details', 'call_center.ivr_report.ivr_id', '=', 'asterisk.ivr_details.id')
-            ->whereRaw('call_center.ivr_report.datetime between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+            ->whereRaw('call_center.ivr_report.datetime between "' . $startDate . '" and "' . $endDate . '"')
             ->orderBy("call_center.ivr_report.datetime", "desc")
             ->get();
 

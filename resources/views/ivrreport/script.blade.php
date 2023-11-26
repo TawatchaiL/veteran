@@ -1,6 +1,7 @@
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js'></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
+<script src='dist/js/logo.js'></script>
 <script>
     pdfMake.fonts = {
         THSarabun: {
@@ -305,13 +306,13 @@
             //startDate = moment(currentDate).subtract(15, 'days').format('YYYY-MM-DD');
             // Set the end date to the end of the current month
             //endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
-            startDate = moment().format('YYYY-MM-DD');
-            endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
+            startDate = moment().format('YYYY-MM-DD HH:mm:ss');
+            endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD HH:mm:ss');
         }
         function datereset() {
             var currentDate = moment();
-            startDate = moment().format('YYYY-MM-DD');
-            endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
+            startDate = moment().format('YYYY-MM-DD HH:mm:ss');
+            endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD HH:mm:ss');
         }
 
         function retrieveFieldValues() {
@@ -331,21 +332,38 @@
 
         let daterange = () => {
             moment.locale('th');
+
+            var startTime = '00:00:00';
+            var endTime = '23:59:59';
+
+            var todayRange = [moment(startTime, 'HH:mm:ss'), moment(endTime, 'HH:mm:ss')];
+            var yesterdayRange = [moment().subtract(1, 'days').startOf('day').set('hour', 0).set('minute',
+                0).set('second', 0), moment().subtract(1, 'days').endOf('day').set('hour', 23).set(
+                'minute', 59).set('second', 59)];
+            var last7DaysRange = [moment().subtract(6, 'days').startOf('day').set('hour', 0).set('minute',
+                0).set('second', 0), moment(endTime, 'HH:mm:ss')];
+            var last30DaysRange = [moment().subtract(29, 'days').startOf('day').set('hour', 0).set('minute',
+                0).set('second', 0), moment(endTime, 'HH:mm:ss')];
+
             $('#reservation').daterangepicker({
+                timePicker: true,
+                timePicker24Hour: true,
+                timePickerSeconds: true,
+                //timePickerIncrement: 5,
                 startDate: startDate,
                 endDate: endDate,
                 ranges: {
-                    'วันนี้': [moment(), moment()],
-                    'เมื่อวานนี้': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                    'ย้อนหลัง 7 วัน': [moment().subtract(6, 'days'), moment()],
-                    'ย้อนหลัง 30 วัน': [moment().subtract(29, 'days'), moment()],
+                    'วันนี้': todayRange,
+                    'เมื่อวานนี้': yesterdayRange,
+                    'ย้อนหลัง 7 วัน': last7DaysRange,
+                    'ย้อนหลัง 30 วัน': last30DaysRange,
                     'เดือนนี้': [moment().startOf('month'), moment().endOf('month')],
                     'เดือนที่แล้ว': [moment().subtract(1, 'month').startOf('month'), moment()
                         .subtract(1, 'month').endOf('month')
                     ]
                 },
                 locale: {
-                    format: 'YYYY-MM-DD',
+                    format: 'YYYY-MM-DD HH:mm:ss',
                     applyLabel: 'ตกลง',
                     cancelLabel: 'ยกเลิก',
                     fromLabel: 'จาก',
@@ -457,61 +475,55 @@
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                     },
-                    "customize": function(doc) { // ส่วนกำหนดเพิ่มเติม ส่วนนี้จะใช้จัดการกับ pdfmake
-                        // กำหนด style หลัก
-                        doc.defaultStyle = {
+                    customize: function ( doc ) {
+                    doc.defaultStyle = {
                             font: 'THSarabun',
                             fontSize: 16
                         };
+                        doc.content.splice(0,1);
+                        doc.pageMargins = [20,100,20,30];
+						doc.styles.tableHeader.fontSize = 16;
+                        doc.styles.tableFooter.fontSize = 16;
+                        doc['header']=(function() {
+							return {
+								columns: [
+									{
+										image: logobase64,
+                                        width: 50,
+                                        margin: [250, 0, 50, 50],
+									},
+									{
+										alignment: 'center',
+										italics: true,
+										text: 'IVR Report',
+										fontSize: 18,
+										margin: [20, 50, 70, 0]
+									}
+								],
+								margin:20
+							}
+						});
 
-                        // กำหนดความกว้างของ header แต่ละคอลัมน์หัวข้อ
-                        doc.content[1].table.widths = [100, 100, 100, 100, '*'];
-                        doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
-                        // Add cell borders
-                        doc.content[1].table.layout = {
-                            hLineWidth: function(i, node) {
-                                return 1; // Border width for horizontal lines
-                            },
-                            vLineWidth: function(i, node) {
-                                return 1; // Border width for vertical lines
-                            },
-                            hLineColor: function(i, node) {
-                                return '#bfbfbf'; // Border color for horizontal lines
-                            },
-                            vLineColor: function(i, node) {
-                                return '#bfbfbf'; // Border color for vertical lines
-                            },
-                            paddingLeft: function(i, node) {
-                                return 5; // Padding for cells
-                            },
-                            paddingRight: function(i, node) {
-                                return 5; // Padding for cells
-                            },
-                            paddingTop: function(i, node) {
-                                return 3; // Padding for cells
-                            },
-                            paddingBottom: function(i, node) {
-                                return 3; // Padding for cells
-                            }
+                        doc.content[0].table.widths = [100, 100, 100, 100, '*'];
+                        var objLayout = {};
+						objLayout['hLineWidth'] = function(i) { return .5; };
+						objLayout['vLineWidth'] = function(i) { return .5; };
+						objLayout['hLineColor'] = function(i) { return '#bfbfbf'; };
+						objLayout['vLineColor'] = function(i) { return '#bfbfbf'; };
+						objLayout['paddingLeft'] = function(i) { return 4; };
+						objLayout['paddingRight'] = function(i) { return 4; };
+                        objLayout['paddingTop'] = function(i) { return 3; };
+                        objLayout['paddingBottom'] = function(i) { return 3; };
+						doc.content[0].layout = objLayout;
 
+                        for (var i = 1; i < doc.content[0].table.body.length; i++) {
+                            doc.content[0].table.body[i][0].alignment = 'left';
+                            doc.content[0].table.body[i][1].alignment = 'center';
+                            doc.content[0].table.body[i][2].alignment = 'center';
+                            doc.content[0].table.body[i][3].alignment = 'center';
+                            doc.content[0].table.body[i][4].alignment = 'center';
                         }
-                        for (var i = 1; i < doc.content[1].table.body.length; i++) {
-                            doc.content[1].table.body[i][0].alignment =
-                                'center'; // Align the first column to the center
-                            doc.content[1].table.body[i][1].alignment =
-                                'center'; // Align the second column to the right
-                            doc.content[1].table.body[i][2].alignment =
-                                'center'; // Align the second column to the right
-                            doc.content[1].table.body[i][3].alignment =
-                                'center'; // Align the second column to the right
-                            doc.content[1].table.body[i][4].alignment =
-                                'center'; // Align the second column to the right
-                            //doc.content[1].table.body[i][2].alignment =
-                            //'center'; // Align the second column to the right
-                            // Customize alignments for other columns as needed
-                        }
-
-                    }
+                }
                 },
                 {
                     extend: 'print',
