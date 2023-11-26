@@ -437,6 +437,7 @@
         $(document).on('click', '#CreateButton', function(e) {
             e.preventDefault();
             $("#Hn").val(null).trigger("change")
+            $("#Hn").removeAttr('readonly');
             $('#topiccase').html('<i class="fa-regular fa-clipboard"></i> เพิ่ม เรื่องที่ติดต่อ');
             $('.alert-danger').html('');
             $('.alert-danger').hide();
