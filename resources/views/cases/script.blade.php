@@ -92,6 +92,14 @@
             placeholder: 'กรุณาเลือกประเภทการโอนสาย'
         });
 
+        
+        $(".select2_single").select2({
+            maximumSelectionLength: 1,
+            allowClear: true,
+            //theme: 'bootstrap4'
+            placeholder: 'กรุณาเลือก'
+        });
+
         $(".select2_single").on("select2:unselect", function(e) {
             //log("select2:unselect", e);
             $('.products').html('');
