@@ -44,13 +44,13 @@ class ReportcaseController extends Controller
                 }
             }
         }else{
-                    $startDate = date("Y-m-d");
-                    $endDate = date("Y-m-t", strtotime($startDate));  
+            $startDate = date("Y-m-d H:i:s");
+            $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
         $datas = DB::connection('remote_connection')
             ->table('call_center.call_entry')
             ->select('crm_id as agent', DB::raw('count(crm_id) as sumcases'))
-            ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"')
+            ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '"')
             ->groupBy('crm_id')
             ->having('sumcases', '>', 0)
             ->orderBy("crm_id", "asc")
