@@ -122,8 +122,7 @@ class VoicerecordController extends Controller
             }
 
             $datas = $datass->get();
-            print_r($datas);
-            exit();
+            dd($datas);
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input disabled type="checkbox" id="' . $row->uniqueid . '" class="flat" name="table_records[]" value="' . $row->uniqueid . '" >';
