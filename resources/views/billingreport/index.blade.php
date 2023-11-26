@@ -49,7 +49,7 @@
                                                 autocomplete="off">
                                         </div>
                                     </div>
-                                    <div class="col-xs-2 col-sm-2 col-md-2">
+                                    <div class="col-xs-1 col-sm-1 col-md-1">
                                         <div class="form-group">
                                             <strong><i class="fas fa-user"></i>
                                                 Agent:</strong>
