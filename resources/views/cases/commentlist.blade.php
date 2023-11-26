@@ -23,7 +23,7 @@
                     @foreach($casecomment as $casecomments)
                     <tr>
                         <td>{{ $casecomments->comment }}</td>
-                        <td>{{ $casecomments->agent }}</td>
+                        <td>{{ $casecomments->agentname }}</td>
                         <td>{{ $casecomments->created_at }}</td>
                         <td width="140px">
                             <button type="button" data-comment_id="{{ $casecomments->id }}" class="form-control btn btn-success selectcomment-button">รายละเอียด

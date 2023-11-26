@@ -23,7 +23,7 @@
                     @foreach($caselog as $caselogs)
                     <tr>
                         <td>{{ $caselogs->modifyaction }}</td>
-                        <td>{{ $caselogs->modifyagent }}</td>
+                        <td>{{ $caselogs->agentname }}</td>
                         <td>{{ $caselogs->modifydate }}</td>
                         <td width="140px">
                             <button type="button" data-log_id="{{ $caselogs->lid }}" class="form-control btn btn-success selectlog-button">รายละเอียด

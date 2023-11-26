@@ -303,7 +303,12 @@ class CasesController extends Controller
     public function commentlist(Request $request)
     {
         $id = $request->input('id');
-        $data = CrmCaseComment::where('case_id', $id)->get();
+        //$data = CrmCaseComment::where('case_id', $id)->get();
+
+        $data = CrmCaseComment::select('crm_case_comments.*', 'users.name as agentname')
+        ->join('users', 'crm_case_comments.agent', '=', 'users.id')
+        ->where('crm_case_comments.case_id', $id)
+        ->get();
 
         $template = 'cases.commentlist';
         $htmlContent = View::make($template, ['casecomment' => $data])->render();
@@ -369,7 +374,12 @@ class CasesController extends Controller
     public function caseslistlog(Request $request)
     {
         $id = $request->input('id');
-        $data = CrmCaseslog::where('id', $id)->get();
+        //$data = CrmCaseslog::where('id', $id)->get();
+
+        $data = CrmCaseslog::select('crm_caseslogs.*', 'users.name as agentname')
+        ->join('users', 'crm_caseslogs.modifyagent', '=', 'users.id')
+        ->where('crm_caseslogs.id', $id)
+        ->get();
 
         $template = 'cases.casesloglist';
         $htmlContent = View::make($template, ['caselog' => $data])->render();
