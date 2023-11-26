@@ -328,7 +328,6 @@
                 datesearch();
             }
         }
-
         let daterange = () => {
             moment.locale('th');
 
@@ -375,14 +374,6 @@
                     ],
                     firstDay: 1
                 }
-            });
-            // Apply the custom date range filter on input change
-            $('#reservation').on('apply.daterangepicker', function() {
-                console.log($('#reservation').val())
-                table.draw();
-                storeFieldValues();
-            });
-        }
             });
             // Apply the custom date range filter on input change
             $('#reservation').on('apply.daterangepicker', function() {
