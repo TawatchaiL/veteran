@@ -86,7 +86,7 @@
                                                     <ul id="suggestions"></ul>
                                                 </div> --}}
                                                 <div class="form-group">
-                                                    <strong><i class="fas fa-user-tie"></i> Contact :</strong>
+                                                    <strong><i class="fas fa-user-tie"></i> ผู้ติดต่อ :</strong>
                                                     <input type="hidden" value="" name="Addid" id="Addid">
                                                     <select style="width: 100%;"
                                                         class="select2 select2_single form-control" id="Hn"
