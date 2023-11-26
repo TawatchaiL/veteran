@@ -119,7 +119,7 @@
                 ? 'active'
                 : '' }}">
             <i class="fa-solid fa-print nav-icon"></i>
-            <p>Report</p>
+            <p>รายงาน</p>
             <i class="fas fa-angle-left right"></i>
         </a>
         {{-- <ul class="nav nav-treeview">
