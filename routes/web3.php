@@ -105,6 +105,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/agent_outbound/call/{id}', [App\Http\Controllers\ProjectJobNumberController::class, 'call'])->name('agent_outbound.call');
     Route::get('/report', function () {
         return view('report_menu');
-    });
+    })->name('report');
 });
 
