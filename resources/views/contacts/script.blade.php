@@ -230,7 +230,9 @@
         });
 
         $("#Addbirthday").on("change", function() {
-            var arrayDate = $(this).val().split("-");
+            var datetext = $(this).val();
+            alert(datetext);
+            var arrayDate = datetext.split("-");
                 arrayDate[0] = parseInt(arrayDate[0]) - 543;
             var selectedDate = new Date(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
             //var selectedDate = new Date($(this).val());
