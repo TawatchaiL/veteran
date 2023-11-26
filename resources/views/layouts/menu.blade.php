@@ -30,14 +30,6 @@
         </a>
     </li>
 @endcan
-@can('case-list')
-    <li class="nav-item">
-        <a href="{{ route('dashboard.index') }}" class="nav-link {{ Request::is('dashboard.index') ? 'active' : '' }}">
-            <i class="fa-solid fa-desktop nav-icon"></i>
-            <p>Queue/Agent Monitor</p>
-        </a>
-    </li>
-@endcan
 @can('voice-record-list')
     <li class="nav-item">
         <a href="{{ route('voicerecord') }}" class="nav-link {{ Request::is('voicerecord') ? 'active' : '' }}">
@@ -54,9 +46,18 @@
         </a>
     </li>
 @endcan
+@can('case-list')
+    <li class="nav-item">
+        <a href="{{ route('dashboard.index') }}" class="nav-link {{ Request::is('dashboard.index') ? 'active' : '' }}">
+            <i class="fa-solid fa-desktop nav-icon"></i>
+            <p>Queue/Agent Monitor</p>
+        </a>
+    </li>
+@endcan
 @can('master-data-list')
     <li
         class="nav-item {{ in_array(Request::route()->getName(), [
+            'report',
             'reportcasetop10',
             'reportsumbytype',
             'reportsumcasebystatus',
@@ -65,6 +66,24 @@
             'detailcasesstatus',
             'sumcasebyhn',
             'detailcaselogbyhn',
+            'reportcaseinbyhour',
+            'reporttop10in',
+            'reporttop10out',
+            'reportcaseoutbyhour',
+            'detailcaseinternalnumber',
+            'detailcaseexternalnumber',
+            'loginstatus',
+            'reportbreak',
+            'sumtel',
+            'callstatus',
+            'misscall',
+            'misscall',
+            'reportcase',
+            'ivrreport',
+            'ivrreporttop10',
+            'reportsumscoreagent',
+            'detailscore',
+            'detailscoreagent',
         ])
             ? 'menu-open'
             : '' }}">
@@ -78,6 +97,24 @@
                 'detailcasesstatus',
                 'sumcasebyhn',
                 'detailcaselogbyhn',
+                'reportcaseinbyhour',
+                'reporttop10in',
+                'reporttop10out',
+                'reportcaseoutbyhour',
+                'detailcaseinternalnumber',
+                'detailcaseexternalnumber',
+                'loginstatus',
+                'reportbreak',
+                'sumtel',
+                'callstatus',
+                'misscall',
+                'misscall',
+                'reportcase',
+                'ivrreport',
+                'ivrreporttop10',
+                'reportsumscoreagent',
+                'detailscore',
+                'detailscoreagent',
             ])
                 ? 'active'
                 : '' }}">
@@ -490,7 +527,7 @@
             'billing',
             'notify',
             'customize',
-            'voicebackup'
+            'voicebackup',
             // Add more route names here if needed
         ])
             ? 'menu-open'
@@ -503,7 +540,7 @@
                 'billing',
                 'notify',
                 'customize',
-                'voicebackup'
+                'voicebackup',
                 // Add more route names here if needed
             ])
                 ? 'active'
