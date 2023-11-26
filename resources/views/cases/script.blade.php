@@ -499,7 +499,7 @@
             var tempadddate = arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2];
 
             var additionalData = {
-                contact_id: $('#Hn').val($('#Hn').val()[0] === undefined ? '' : $('#Hn').val()[0]),
+                contact_id: $('#Hn').val()[0],
                 adddate: tempadddate,
                 //adddate: $('#Addadddate').val(),
                 //adddate: $('#tempAddadddate').html(),
