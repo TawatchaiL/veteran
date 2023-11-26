@@ -365,7 +365,7 @@
 
     .info-box .info-box-text-sm {
     display: block;
-    font-size: 0.5rem;
+    font-size: 0.8rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
