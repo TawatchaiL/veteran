@@ -119,7 +119,7 @@ class BillingReportController extends Controller
                             $query->wherein('asteriskcdrdb.cdr.userfield',$idd);
                         });
                     }else{
-                        $datass->where(function ($query) use ($idd) {
+                        $datass->where(function ($query){
                             $query->where('asteriskcdrdb.cdr.userfield', '0');
                         });
                     }       
