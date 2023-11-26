@@ -139,7 +139,7 @@ class VoicerecordController extends Controller
                 ->editColumn('telno', function ($row) use ($agentArray) {
                     if ($row->accountcode !== '') {
                         if (!empty($row->userfield)) {
-                            return $agentArray[$row->userfield]['name'] . " ( " . $row->src . " ) ";
+                            return $agentArray[str_replace(';', '', $row->userfield)]['name'] . " ( " . $row->src . " ) ";
                         } else {
                             return $row->src;
                         }

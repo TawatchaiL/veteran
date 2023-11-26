@@ -68,7 +68,7 @@
         ])
             ? 'menu-open'
             : '' }}">
-        <a href="#"
+        <a href="{{ route('report') }}"
             class="nav-link {{ in_array(Request::route()->getName(), [
                 'reportcasetop10',
                 'reportsumbytype',
@@ -82,10 +82,10 @@
                 ? 'active'
                 : '' }}">
             <i class="fa-solid fa-print nav-icon"></i>
-            <p>CRM Report</p>
+            <p>Report</p>
             <i class="fas fa-angle-left right"></i>
         </a>
-        <ul class="nav nav-treeview">
+        {{-- <ul class="nav nav-treeview">
             <li class="nav-item">
                 <a href="{{ route('reportcasetop10') }}"
                     class="nav-link {{ Request::is('reportcasetop10') ? 'active' : '' }}">
@@ -177,10 +177,10 @@
                     </p>
                 </a>
             </li>
-        </ul>
+        </ul> --}}
     </li>
 @endcan
-@can('master-data-list')
+{{-- @can('master-data-list')
     <li
         class="nav-item {{ in_array(Request::route()->getName(), [
             'reportcaseinbyhour',
@@ -435,7 +435,7 @@
             </li>
         </ul>
     </li>
-@endcan
+@endcan --}}
 @can('master-data-list')
     <li
         class="nav-item {{ in_array(Request::route()->getName(), [
