@@ -85,15 +85,19 @@
                                                     ]) !!}
                                                     <ul id="suggestions"></ul>
                                                 </div> --}}
-                                                <input type="hidden" value="" name="hn" id="Hn">
-                                                <select style="width: 100%;" class="select2 select2_single form-control" id="Addid"
-                                                    name="Addid" multiple>
-                                                    @foreach ($contacts as $contact)
-                                                        <option value="{{ $contact->id }}">{{ $contact->hn }}
-                                                            {{ $contact->fname }} {{ $contact->lname }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
+                                                <div class="form-group">
+                                                    <strong><i class="fas fa-user-tie"></i> Hn :</strong>
+                                                    <input type="hidden" value="" name="hn" id="Hn">
+                                                    <select style="width: 100%;"
+                                                        class="select2 select2_single form-control" id="Addid"
+                                                        name="Addid" multiple>
+                                                        @foreach ($contacts as $contact)
+                                                            <option value="{{ $contact->id }}">{{ $contact->hn }}
+                                                                {{ $contact->fname }} {{ $contact->lname }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
                                             </div>
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
