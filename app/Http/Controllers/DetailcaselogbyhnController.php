@@ -44,8 +44,8 @@ class DetailcaselogbyhnController extends Controller
                 }
             }
         }else{
-                    $startDate = date("Y-m-d");
-                    $endDate = date("Y-m-t", strtotime($startDate));  
+            $startDate = date("Y-m-d H:i:s");
+            $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
 
         if (!empty($request->get('agent'))) {
@@ -59,7 +59,7 @@ class DetailcaselogbyhnController extends Controller
         ->select('crm_cases.agent as cagent','crm_cases.id as cid','crm_cases.contact_id as contact_id', DB::raw('CONCAT("comment") as caction'), 'users.name as magent', 'crm_case_comments.created_at as mdate')
         ->join('crm_cases', 'crm_case_comments.case_id', '=', 'crm_cases.id')
         ->join('users', 'crm_case_comments.agent', '=', 'users.id')
-        ->whereRaw('crm_case_comments.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"'.$agentseachc)
+        ->whereRaw('crm_case_comments.created_at between "' . $startDate . '" and "' . $endDate . '"'.$agentseachc)
         ->toSql();
 
         $getData = DB::table('crm_contacts')
