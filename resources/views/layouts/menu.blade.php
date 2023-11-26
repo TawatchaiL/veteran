@@ -82,7 +82,7 @@
                 ? 'active'
                 : '' }}">
             <i class="fa-solid fa-print nav-icon"></i>
-            <p>CRM Report</p>
+            <p>Report</p>
             <i class="fas fa-angle-left right"></i>
         </a>
         {{-- <ul class="nav nav-treeview">
@@ -180,7 +180,7 @@
         </ul> --}}
     </li>
 @endcan
-@can('master-data-list')
+{{-- @can('master-data-list')
     <li
         class="nav-item {{ in_array(Request::route()->getName(), [
             'reportcaseinbyhour',
@@ -435,7 +435,7 @@
             </li>
         </ul>
     </li>
-@endcan
+@endcan --}}
 @can('master-data-list')
     <li
         class="nav-item {{ in_array(Request::route()->getName(), [
