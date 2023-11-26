@@ -598,6 +598,7 @@
                     d.agent = $('#agen').val();
                     d.telp = $('#telp').val();
                     d.ctype = $('#ctype').val();
+                    d.cdepartment = $('#cdepartment').val();
                     //d.search = $('input[type="search"]').val();
                 }
             },
