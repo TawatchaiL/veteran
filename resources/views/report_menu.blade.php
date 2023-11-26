@@ -34,7 +34,7 @@
                     <div class="info-box">
                         <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
                         <div class="info-box-content">
-                            <span class="info-box-text"> ผลรวมแยกตามประเภทที่ติดต่อ</span>
+                            <span class="info-box-text-sm"> ผลรวมเรื่องที่ติดต่อแยกตามประเภทที่ติดต่อ</span>
                             <span class="info-box-number text-right"><button
                                     onclick="window.location.href='{{ route('reportsumbytype') }}'"
                                     class="btn btn-success btn-sm"><i class="fas fa-search"></i>
@@ -46,7 +46,7 @@
                     <div class="info-box">
                         <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
                         <div class="info-box-content">
-                            <span class="info-box-text"> ผลรวมแยกตามสถานะ</span>
+                            <span class="info-box-text-sm"> ผลรวมเรื่องที่ติดต่อแยกตามสถานะ</span>
                             <span class="info-box-number text-right"><button
                                     onclick="window.location.href='{{ route('reportsumcasebystatus') }}'"
                                     class="btn btn-success btn-sm"><i class="fas fa-search"></i>
@@ -61,7 +61,7 @@
                     <div class="info-box">
                         <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
                         <div class="info-box-content">
-                            <span class="info-box-text"> ผลรวมแยกตามสถานะการโอนสาย</span>
+                            <span class="info-box-text-sm"> ผลรวมเรื่องที่ติดต่อแยกตามสถานะการโอนสาย</span>
                             <span class="info-box-number text-right"><button
                                     onclick="window.location.href='{{ route('reportsumcasebytranferstatus') }}'"
                                     class="btn btn-success btn-sm"><i class="fas fa-search"></i>
@@ -73,7 +73,7 @@
                     <div class="info-box">
                         <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
                         <div class="info-box-content">
-                            <span class="info-box-text"> ผลรวมเรื่องที่ติดต่อแยกตาม HN</span>
+                            <span class="info-box-text-sm"> ผลรวมเรื่องที่ติดต่อแยกตาม HN</span>
                             <span class="info-box-number text-right"><button
                                     onclick="window.location.href='{{ route('sumcasebyhn') }}'"
                                     class="btn btn-success btn-sm"><i class="fas fa-search"></i>
@@ -85,7 +85,7 @@
                     <div class="info-box">
                         <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
                         <div class="info-box-content">
-                            <span class="info-box-text"> รายการเรื่องที่ติดต่อ</span>
+                            <span class="info-box-text-sm"> รายการเรื่องที่ติดต่อ</span>
                             <span class="info-box-number text-right"><button
                                     onclick="window.location.href='{{ route('detailcases') }}'"
                                     class="btn btn-success btn-sm"><i class="fas fa-search"></i>
@@ -99,7 +99,7 @@
                     <div class="info-box">
                         <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
                         <div class="info-box-content">
-                            <span class="info-box-text"> รายการเรื่องที่ติดต่อแสดงตามสถานะ</span>
+                            <span class="info-box-text-sm"> รายการเรื่องที่ติดต่อแสดงตามสถานะ</span>
                             <span class="info-box-number text-right"><button
                                     onclick="window.location.href='{{ route('detailcasesstatus') }}'"
                                     class="btn btn-success btn-sm"><i class="fas fa-search"></i>
@@ -112,7 +112,7 @@
                     <div class="info-box">
                         <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
                         <div class="info-box-content">
-                            <span class="info-box-text">รายการแก้ไข/คอมเม้น เรื่องที่ติดต่อ</span>
+                            <span class="info-box-text-sm">รายการแก้ไข/คอมเม้น เรื่องที่ติดต่อ</span>
                             <span class="info-box-number text-right"><button
                                     onclick="window.location.href='{{ route('detailcaselogbyhn') }}'"
                                     class="btn btn-success btn-sm"><i class="fas fa-search"></i>
