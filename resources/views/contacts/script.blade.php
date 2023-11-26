@@ -230,14 +230,17 @@
         });
 
         $("#Addbirthday").on("change", function() {
-            var selectedDate = new Date($(this).val());
+            var arrayDate = $(this).val().split("-");
+                arrayDate[0] = parseInt(arrayDate[0]) - 543;
+            var selectedDate = new Date(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
+            //var selectedDate = new Date($(this).val());
             var currentDate = new Date();
-            var years = (currentDate.getFullYear() + 543) - selectedDate.getFullYear();
+            var years = currentDate.getFullYear() - selectedDate.getFullYear();
             var months = currentDate.getMonth() - selectedDate.getMonth();
             var days = currentDate.getDate() - selectedDate.getDate();
             if (days < 0) {
                 months--;
-                days += new Date(currentDate.getFullYear() + 543, currentDate.getMonth(), 0).getDate();
+                days += new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
             }
 
             if (months < 0) {
