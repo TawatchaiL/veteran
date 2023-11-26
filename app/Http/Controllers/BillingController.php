@@ -4,12 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Comment;
 use App\Models\Billing;
-use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class BillingController extends Controller
 {
@@ -21,21 +19,10 @@ class BillingController extends Controller
     public function __construct()
     {
         //$this->middleware('auth');
-        $this->middleware('permission:billing-list|billing-supervisor', ['only' => ['index', 'show', 'updatebilling']]);
-        $this->middleware('permission:contact-create', ['only' => ['create', 'store']]);
-        $this->middleware('permission:contact-edit', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:contact-delete', ['only' => ['destroy']]);
-    }
-
-    public function getTelpFromDstChannel($dstChannel)
-    {
-        if ($dstChannel !== null && strpos($dstChannel, 'SIP/') === 0) {
-            list($sip, $no) = explode('/', $dstChannel);
-            list($telp, $lear) = explode('-', $no);
-            return $telp;
-        }
-
-        return null;
+        $this->middleware('permission:billing-list|billing-create|billing-edit|billing-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:billing-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:billing-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:billing-delete', ['only' => ['destroy']]);
     }
 
     /**
@@ -43,312 +30,66 @@ class BillingController extends Controller
      */
     public function index(Request $request)
     {
-
-        $datass = DB::connection('remote_connection')
-            ->table('asteriskcdrdb.cdr')
-            ->select('asteriskcdrdb.cdr.*')
-            //->join('call_center.call_recording', 'asteriskcdrdb.cdr.uniqueid', '=', 'call_center.call_recording.uniqueid')
-            ->where('asteriskcdrdb.cdr.dstchannel', '!=', '')
-            ->where('asteriskcdrdb.cdr.recordingfile', '!=', '')
-            ->where('asteriskcdrdb.cdr.disposition', '=', 'ANSWERED')
-            ->orderBy('asteriskcdrdb.cdr.calldate', 'desc');
-
-        $agens = User::orderBy('name', 'asc')->get();
-        $agentArray = [];
-
-        foreach ($agens as $agen) {
-            $agentArray[$agen->id]['name'] = $agen->name;
-        }
-
         if ($request->ajax()) {
+            //sleep(2);
 
-            if (!empty($request->get('sdate'))) {
-                $dateRange = $request->input('sdate');
-                if ($dateRange) {
-                    $dateRangeArray = explode(' - ', $dateRange);
-
-                    if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
-                        $startDate = $dateRangeArray[0];
-                        $endDate = $dateRangeArray[1];
-                        //dd($startDate . ' - ' . $endDate);
-                        $datass->whereBetween('asteriskcdrdb.cdr.calldate', [$startDate, $endDate]);
-                    }
-                }
-            }
-
-            if (!empty($request->get('telp'))) {
-                $telp = $request->input('telp');
-                if ($telp) {
-                    $datass->where(function ($query) use ($telp) {
-                        $query->where('asteriskcdrdb.cdr.src', 'like', "$telp%")
-                            ->orWhere('dst', 'like', "$telp%");
-                    });
-                }
-            }
-
-            if (!empty($request->get('ctype'))) {
-                $ctype = $request->input('ctype');
-                if ($ctype == 1) {
-                    $datass->where('asteriskcdrdb.cdr.accountcode', '')
-                        ->where('asteriskcdrdb.cdr.userfield', '=', '')
-                        ->where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
-                } else if ($ctype == 2) {
-                    $datass->where('asteriskcdrdb.cdr.accountcode', '!=', '')
-                        ->where('asteriskcdrdb.cdr.userfield', '!=', '')
-                        ->where('asteriskcdrdb.cdr.dst_userfield', '=', NULL);
-                } else if ($ctype == 3) {
-                    $datass->where('asteriskcdrdb.cdr.accountcode', '!=', '')
-                        ->where('asteriskcdrdb.cdr.userfield', '!=', '')
-                        ->where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
-                }
-            }
-
-            if (!empty($request->get('agent'))) {
-                $agent = $request->input('agent');
-                if ($agent) {
-                    $datass->where(function ($query) use ($agent) {
-                        $query->where('asteriskcdrdb.cdr.userfield', $agent)
-                            ->orWhere('dst_userfield', $agent);
-                    });
-                }
-            }
-
-            if (!Gate::allows('billing-list')) {
-                $uid = Auth::user()->id;
-
-                $datass->where(function ($query) use ($uid) {
-                    $query->where('asteriskcdrdb.cdr.userfield', $uid)
-                        ->orWhere('dst_userfield', $uid);
-                });
-            }
-
-            $datas = $datass->get();
+            $datas = billing::orderBy("id", "desc")->get();
+            $state_text = array('Minute', 'Call');
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
-                    return '<input disabled type="checkbox" id="' . $row->uniqueid . '" class="flat" name="table_records[]" value="' . $row->uniqueid . '" >';
+                    return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
                 })
-                ->editColumn('cdate', function ($row) {
-                    $calldate = $row->calldate;
-                    list($date, $time) = explode(' ', $calldate);
-                    return $date;
+                ->editColumn('per', function ($row) use ($state_text) {
+                    $state = $state_text[$row->per];
+                    return $state;
                 })
-                ->editColumn('ctime', function ($row) {
-                    $calldate = $row->calldate;
-                    list($date, $time) = explode(' ', $calldate);
-                    return $time;
-                })
-                ->editColumn('telno', function ($row) use ($agentArray) {
-                    if ($row->accountcode !== '') {
-                        if (!empty($row->userfield)) {
-                            return $agentArray[$row->userfield]['name'] . " ( " . $row->src . " ) ";
-                        } else {
-                            return $row->src;
-                        }
+                ->addColumn('action', function ($row) {
+                    if (Gate::allows('holiday-edit')) {
+                        $html = '<button type="button" class="btn btn-sm btn-warning btn-edit" id="getEditData" data-id="' . $row->id . '"><i class="fa fa-edit"></i> แก้ไข</button> ';
                     } else {
-                        return $row->src;
+                        $html = '<button type="button" class="btn btn-sm btn-warning disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-edit"></i> แก้ไข</button> ';
                     }
-                })
-                ->editColumn('agent', function ($row) use ($agentArray) {
-                    $telp = $row->accountcode == '' ? $this->getTelpFromDstChannel($row->dstchannel) : $row->dst;
-
-                    if (!empty($row->dst_userfield) && isset($agentArray[$row->dst_userfield])) {
-                        $agentName = $agentArray[$row->dst_userfield]['name'];
-                        return "$agentName ( $telp ) ";
+                    if (Gate::allows('holiday-delete')) {
+                        $html .= '<button type="button" data-rowid="' . $row->id . '" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i> ลบ</button>';
                     } else {
-                        return $telp;
+                        $html .= '<button type="button" class="btn btn-sm btn-danger disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa fa-trash"></i> ลบ</button> ';
                     }
-                })
-                ->editColumn('duration', function ($row) {
-                    $durationInSeconds = $row->billsec;
-                    $hours = floor($durationInSeconds / 3600);
-                    $minutes = floor(($durationInSeconds % 3600) / 60);
-                    $seconds = $durationInSeconds % 60;
-
-                    $duration = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
-                    return $duration;
-                })
-                ->addColumn('more', function ($row) {
-                    return '';
+                    return $html;
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
 
-        return view('billing.index', [
-            'datas' => $datass,
-            'agens' => $agens,
-        ]);
+        $trunk = DB::connection('remote_connection')
+            ->table('asterisk.trunks')
+            ->orderBy("trunkid", "asc")->get();
+
+        return view('billing.index')->with(['trunk' => $trunk]);
     }
 
-    public function edit($id)
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
     {
-        $remoteData = DB::connection('remote_connection')->table('call_center.call_recording')
-            ->where('uniqueid', $id)
-            ->first();
-
-        $agens = User::orderBy('name', 'asc')->get();
-        $agentArray = [];
-
-        foreach ($agens as $agen) {
-            $agentArray[$agen->id]['name'] = $agen->name;
-        }
-
-        if (!empty($remoteData)) {
-            $voic = $remoteData->recordingfile;
-            $avoic_name = explode("/", $voic);
-            $voic_name = $agentArray[$remoteData->crm_id]['name'] . "-" . end($avoic_name);
-            /* $avoic_name = explode("-", $voic_name_ori);
-            $voic_name = $avoic_name[0] . "-" . $avoic_name[1]
-                . "-" . $avoic_name[2] . "-" . $remoteData->crm_id . "-" . $avoic_name[3]
-                . "-" . $avoic_name[4] . "-" . $avoic_name[5]; */
-            $tooltips = Comment::where('uniqueid', $id)->get();
-        } else {
-            $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')
-                ->where('uniqueid', $id)
-                ->orderBy('calldate', 'asc')
-                ->first();
-
-            $avoic = explode("/", $remoteData->recordingfile);
-            $datep = explode("-", explode(" ", $remoteData->calldate)[0]);
-            $voic = $datep[0] . "/" . $datep[1] . "/" . $datep[2] . "/" . end($avoic);
-
-            $agentname = '';
-
-            if ($remoteData->dst_userfield !== null) {
-                $agentname = $agentArray[$remoteData->dst_userfield]['name'];
-            } elseif ($remoteData->accountcode !== '' && $remoteData->userfield !== '') {
-                $agentname = $agentArray[$remoteData->userfield]['name'];
-            }
-
-            $agentname = $agentname ?: 'NoAgent';
-
-            $voic_name = $agentname . "-" . end($avoic);
-            $tooltips = Comment::where('uniqueid', $id)->get();
-        }
-
-        return response()->json(['voic' => $voic, 'remoteData2' => $remoteData, 'voic_name' => $voic_name, 'tooltips' => $tooltips]);
+        //
     }
 
-    public function update(Request $request, $id)
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
     {
-        // $request->validate([
-        //     'comment' => 'required|string|max:255',
-        // ]);
-        $comment = Comment::findOrFail($id);
-        $input = $request->all();
-        $comment->update($input);
-
-        return response()->json(['message' => 'Comment updated successfully']);
-    }
-
-    public function comment(Request $request)
-    {
-        //$call_recording_id = $request->call_recording_id;
-        $uniqueid = $request->uniqueid;
-        $billing = $request->billing;
-
-        $rules = [
-            'billing' => 'required|max:10',
-        ];
-
-        //$validator = Validator::make($request->all(), $rules, [
-        //    'billing.required' => 'กรุณากรอกค่าใช้จ่าย',
-        //]);
-
-
-        //if ($validator->fails()) {
-        //    return response()->json(['errors' => $validator->errors()->all()]);
-        //}
-
-        $companyd = [
-            'cost' => $billing,
-        ];
-
-        $datas = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')
-        ->where('uniqueid', $uniqueid);
-
-        $datas->update($companyd);
-
-        return response()->json(['success' => 'แก้ไข ค่าใช้จ่าย เรียบร้อยแล้ว']);
-    }
-
-    public function downloadAndDelete($id)
-    {
-
-        $remoteData = DB::connection('remote_connection')->table('call_center.call_recording')
-            ->where('uniqueid', $id)
-            ->first();
-
-        $agens = User::orderBy('name', 'asc')->get();
-        $agentArray = [];
-
-        foreach ($agens as $agen) {
-            $agentArray[$agen->id]['name'] = $agen->name;
-        }
-
-        if (!empty($remoteData)) {
-            $voic = $remoteData->recordingfile;
-            $avoic_name = explode("/", $voic);
-            $voic_name = $agentArray[$remoteData->crm_id]['name'] . "-" . end($avoic_name);
-        } else {
-            $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')
-                ->where('uniqueid', $id)
-                ->orderBy('calldate', 'asc')
-                ->first();
-
-            $avoic = explode("/", $remoteData->recordingfile);
-            $datep = explode("-", explode(" ", $remoteData->calldate)[0]);
-            $voic = $datep[0] . "/" . $datep[1] . "/" . $datep[2] . "/" . end($avoic);
-
-            $agentname = '';
-
-            if ($remoteData->dst_userfield !== null) {
-                $agentname = $agentArray[$remoteData->dst_userfield]['name'];
-            } elseif ($remoteData->accountcode !== '' && $remoteData->userfield !== '') {
-                $agentname = $agentArray[$remoteData->userfield]['name'];
-            }
-
-            $agentname = $agentname ?: 'NoAgent';
-
-            $voic_name = $agentname . "-" . end($avoic);
-        }
-
-        $originalFilePath = public_path('wav/' . $voic);
-
-        if (!file_exists($originalFilePath)) {
-            abort(404);
-        }
-
-        $fileContent = file_get_contents($originalFilePath);
-
-        if ($fileContent === false) {
-            return response()->json(['error' => 'Failed to retrieve file content'], 500);
-        }
-
-        return response($fileContent)
-            ->header('Content-Type', 'application/octet-stream')
-            ->header('Content-Disposition', 'attachment; filename="' . $voic_name . '"');
-    }
-
-    public function destroy($id)
-    {
-        // Code to delete the comment with the given ID
-        $comment = Comment::find($id);
-
-        if (!$comment) {
-            return response()->json(['message' => 'Comment not found'], 404);
-        }
-
-        $comment->delete();
-        return response()->json(['message' => 'Comment deleted successfully']);
-    }
-
-    public function updatebilling(Request $request, $id)
-    {
-        $rules = [
-            'billing' => 'required|max:10',
-        ];
-
-        $validator = Validator::make($request->all(), $rules, [
-            'billing.required' => 'กรุณากรอกค่าใช้จ่าย',
+        $validator =  Validator::make($request->all(), [
+            'note' => 'required|string|max:100',
+            'trunk' => 'required',
+            'prefix' => 'required',
+            'price' => 'required',
+            'per' => 'required',
+        ], [
+            'note.required' => ' Note ต้องไม่เป็นค่าว่าง!',
+            'trunk.required' => 'กรุณาระบุ Trunk!',
+            'prefix.required' => 'กรุณาระบุ Prefix!',
+            'price.required' => 'กรุณาระบุ Price!',
+            'per.required' => 'กรุณาระบุ Per!',
         ]);
 
 
@@ -356,15 +97,97 @@ class BillingController extends Controller
             return response()->json(['errors' => $validator->errors()->all()]);
         }
 
-        $companyd = [
-            'price' => $request->input('billing'),
+
+        $billing = [
+            'note' => $request->get('note'),
+            'trunk' => $request->get('trunk'),
+            'prefix' => $request->get('prefix'),
+            'price' =>  $request->get('price'),
+            'per' => $request->get('per'),
         ];
 
-        $datas = DB::connection('remote_connection')->table('call_center.call_recording')
-        ->where('uniqueid', $id);
+        Billing::create($billing);
 
-        $datas->update($companyd);
+        return response()->json(['success' => 'เพิ่ม อัตราค่าใช้จ่ายการโทร เรียบร้อยแล้ว']);
+    }
 
-        return response()->json(['success' => 'แก้ไข ค่าใช้จ่าย เรียบร้อยแล้ว']);
+    /**
+     * Display the specified resource.
+     */
+    public function show(Billing $billing)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit($id)
+    {
+        $data =  Billing::find($id);
+        return response()->json(['data' => $data]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, $id)
+    {
+        $rules = [
+            'note' => 'required|string|max:100',
+            'trunk' => 'required',
+            'prefix' => 'required',
+            'price' => 'required',
+            'per' => 'required',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, [
+            'note.required' => ' Note ต้องไม่เป็นค่าว่าง!',
+            'trunk.required' => 'กรุณาระบุ Trunk!',
+            'prefix.required' => 'กรุณาระบุ Prefix!',
+            'price.required' => 'กรุณาระบุ Price!',
+            'per.required' => 'กรุณาระบุ Per!',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all()]);
+        }
+
+
+
+        $billing = [
+            'note' => $request->get('note'),
+            'trunk' => $request->get('trunk'),
+            'prefix' => $request->get('prefix'),
+            'price' =>  $request->get('price'),
+            'per' => $request->get('per'),
+        ];
+
+        $update = Billing::find($id);
+        $update->update($billing);
+
+        return response()->json(['success' => 'แก้ไข อัตราค่าใช้จ่ายการโทร เรียบร้อยแล้ว']);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Request $request)
+    {
+        $id = $request->get('id');
+        Billing::find($id)->delete();
+        return ['success' => true, 'message' => 'ลบ อัตราค่าใช้จ่ายการโทร เรียบร้อยแล้ว'];
+    }
+
+    public function destroy_all(Request $request)
+    {
+
+        $arr_del  = $request->get('table_records'); //$arr_ans is Array MacAddress
+
+        for ($xx = 0; $xx < count($arr_del); $xx++) {
+            Billing::find($arr_del[$xx])->delete();
+        }
+
+        return redirect('/billing')->with('success', 'ลบ อัตราค่าใช้จ่ายการโทร เรียบร้อยแล้ว');
     }
 }

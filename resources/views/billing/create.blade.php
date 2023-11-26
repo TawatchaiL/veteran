@@ -1,29 +1,13 @@
-<div class="modal fade" id="CreateModalb">
-    <div class="modal-dialog modal-xxxl">
+<div class="modal fade" id="CreateModal">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <h4 class="modal-title"><i class="fa-solid fa-volume-high"></i> <span id="vioc_name">
-                        09999999-1002-2023-08-01-110000.wav </span> </h4>
-                <div class="closew"> <i class="fa-solid fa-clock"></i> ความยาว <span id="duration">00:00:00</span> นาที
-                </div>
-
-
-                {{-- <button type="button" class="close modelClose" data-dismiss="modal" aria-label="Close">
+                <h4 class="modal-title"><i class="fas fa-list-ol"></i> เพิ่ม อัตราค่าใช้จ่ายการโทร</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
-                </button> --}}
+                </button>
             </div>
             <div class="modal-body">
-                {{-- @if (count($errors) > 0)
-                    <div class="alert alert-danger">
-                        <strong>Whoops!</strong>Something went wrong.<br><br>
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif --}}
-
                 <div class="alert alert-danger alert-dismissible fade show" role="alert" style="display: none;">
                     <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -36,119 +20,76 @@
                     </button>
                 </div>
 
-                {{-- <label>
-                    Zoom: <input type="range" min="10" max="1000" value="100" />
-                </label> --}}
-                <div class="row pb-2">
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="row float-lg-left">
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <button type="button" class="btn btn-success btn-lg mx-auto"
-                                    id="waveform-time-indicator">
-                                    <i class="fa-solid fa-clock"></i> <span class="time">00:00:00</span>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="row float-lg-right">
-                            <div class="col-xs-4 col-sm-4 col-md-4 d-none">
-                                <label>
-                                    <input type="checkbox" id="loop" checked="${loop}" />
-                                    วนซ้ำในกรอบ
-                                </label>
-                                <label>
-                                    <input type="checkbox" id="pitch" checked />
-                                    Preserve pitch
-                                </label>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                <label for="speed" class="d-block">
-                                    ความเร็ว: <span id="rate">1.00</span>x
-                                </label><input type="range" id="speed" min="0" max="4"
-                                    step="1" value="2" />
 
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                <label for="volume" class="d-block">
-                                    ระดับเสียง: <span id="vol">4.00</span>
-                                </label><input id="volume" type="range" min="0" max="1"
-                                    value="1" step="0.1" />
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-
-
+                {{-- 'route' => 'users.store', --}}
+                {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div id="waveform">
-                            <!-- the waveform will be rendered here -->
-                        </div>
-                        <div class="text-center pt-2">
-
-                            <button class="btn btn-warning btn-lg mx-auto" id="backward"> <i
-                                    class="fa-solid fa-backward"></i></button>
-                            <button class="btn btn-warning btn-lg mx-auto" id="play"><i
-                                    class="fa-solid fa-play"></i> /
-                                <i class="fa-solid fa-pause"></i></button>
-                            <button class="btn btn-warning btn-lg mx-auto" id="stop"><i
-                                    class="fa-solid fa-stop"></i></button>
-                            <button class="btn btn-warning btn-lg mx-auto" id="forward"><i
-                                    class="fa-solid fa-forward"></i></button>
-                            {{-- <button id="toggleMuteBtn" class="btn btn-primary">Toggle Mute</button>
-                        <button id="setMuteOnBtn" class="btn btn-primary">
-                            Mute <i class="glyphicon glyphicon-volume-off"></i>
-                        </button>
-
-                        <button id="setMuteOffBtn" class="btn btn-primary">
-                            Unmute <i class="glyphicon glyphicon-volume-up"></i>
-                        </button> --}}
-
-                        </div>
-                    </div>
-                </div>
-                <div class="row" id="custom-dialog">
-                    <div class="col-xs-4 col-sm-4 col-md-4">
+                    <div class="col-xs-8 col-sm-8 col-md-8">
                         <div class="form-group">
-                            <label for="content-input">ระบุค่าใช้จ่าย:</label>
-                            <input type="text" id="billing-input" class="form-control">
+                            <strong><i class="fas fa-list-ol"></i> Note:</strong>
+                            {!! Form::text('note', null, ['id' => 'AddNote', 'placeholder' => 'Note', 'class' => 'form-control']) !!}
                         </div>
-            
                     </div>
                 </div>
-                <form action="#">
-                    @csrf
-                    <input type="hidden" id="call_recording_id" value="">
-                    <input type="hidden" id="uniqueid" value="">
-
-                    {{-- <div class="row" id="custom-dialog" style="display: none;">
-                        <div class="col-xs-4 col-sm-4 col-md-4">
-                            <div class="form-group">
-                                <label for="content-input">ระบุ Comment:</label>
-                                <input type="text" id="content-input" class="form-control">
-                            </div>
-
+                <div class="row">
+                    <div class="col-xs-8 col-sm-8 col-md-8">
+                        <div class="form-group">
+                            <strong><i class="fas fa-list-ol"></i> Trunk:</strong>
+                            <select style="width: 100%;" class="select2 select2_single form-control" id="AddTrunk"
+                                name="trunk" multiple="multiple">
+                                @foreach ($trunk as $key2)
+                                    <option value="{{ strtoupper($key2->tech) }}/{{ $key2->channelid }}">
+                                        {{ $key2->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                            <div class="form-group">
-                                <button type="button" class="btn btn-success" id="add-content-button"><i
-                                        class="fas fa-download"></i> บันทึก</button>
-                                <button type="button" class="btn btn-danger" id="canclecomment"><i
-                                        class="fas fa-door-closed"></i> ยกเลิก</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8 col-sm-8 col-md-8">
+                        <div class="form-group">
+                            <strong><i class="fas fa-list-ol"></i> Prefix:</strong>
+                            {!! Form::text('prefix', null, ['id' => 'AddPrefix', 'placeholder' => 'Prefix', 'class' => 'form-control']) !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8 col-sm-8 col-md-8">
+                        <div class="form-group">
+                            <strong><i class="fas fa-list-ol"></i> Price:</strong>
+                            {!! Form::text('number', null, [
+                                'id' => 'AddPrice',
+                                'step' => 0.5,
+                                'placeholder' => 'Price',
+                                'class' => 'form-control auto_decimal',
+                            ]) !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8 col-sm-8 col-md-8">
+                        <div class="form-group clearfix">
+                            <strong><i class="fas fa-list-ol"></i> Per:</strong>
+                            <div class="icheck-primary d-inline">
+                                <input type="radio" id="AddPerM" name="per" value="0" checked>
+                                <label for="AddPerM">Minute
+                                </label>
+                            </div>
+                            <div class="icheck-primary d-inline">
+                                <input type="radio" id="AddPerC" name="per" value="1">
+                                <label for="AddPerC">Call
+                                </label>
                             </div>
                         </div>
-                    </div> --}}
-                </form>
-
-
-            </div>
-            <div class="modal-footer {{-- justify-content-between --}}">
-                <button type="button" class="btn btn-success" id="billing-update-button"><i
-                    class="fas fa-download"></i> บันทึก</button>
-                <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i
-                        class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
+                    </div>
+                </div>
+                {!! Form::close() !!}
+                <div class="modal-footer {{-- justify-content-between --}}">
+                    <button type="button" class="btn btn-success" id="SubmitCreateForm"><i class="fas fa-download"></i>
+                        บันทึกข้อมูล</button>
+                    <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i
+                            class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
+                </div>
             </div>
         </div>
     </div>

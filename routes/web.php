@@ -98,15 +98,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/casescontract/destroy', [App\Http\Controllers\CasesContractController::class, 'destroy'])->name('casescontract.destroy');
     Route::post('/casescontract/destroy_all', [App\Http\Controllers\CasesContractController::class, 'destroy_all'])->name('casescontract.destroy_all');
 
-    Route::get('/billing', [App\Http\Controllers\BillingController::class, 'index'])->name('billing');
-    Route::get('/billing/edit/{id}', [App\Http\Controllers\BillingController::class, 'edit'])->name('billing.edit');
-    Route::put('/billing/updatebilling/{id}', [App\Http\Controllers\BillingController::class, 'updatebilling'])->name('billing.updatebilling');
-    Route::get('/billing/comment', [App\Http\Controllers\BillingController::class, 'comment'])->name('billing.comment');
-    Route::POST('/billing/comment/update/{id}', [App\Http\Controllers\BillingController::class, 'update'])->name('billing.update');
+    Route::get('/billingreport', [App\Http\Controllers\BillingReportController::class, 'index'])->name('billingreport');
+    Route::get('/billingreport/edit/{id}', [App\Http\Controllers\BillingReportController::class, 'edit'])->name('billingreport.edit');
+    Route::get('/billingreport/comment', [App\Http\Controllers\BillingReportController::class, 'comment'])->name('billingreport.comment');
+    Route::POST('/billingreport/comment/update/{id}', [App\Http\Controllers\BillingReportController::class, 'update'])->name('billingreport.update');
 
     Route::get('/voicerecord', [App\Http\Controllers\VoicerecordController::class, 'index'])->name('voicerecord');
     Route::get('/ivrreport', [App\Http\Controllers\IvrreportController::class, 'index'])->name('ivrreport');
     Route::get('/ivrreporttop10', [App\Http\Controllers\Ivrreporttop10Controller::class, 'index'])->name('ivrreporttop10');
+    Route::get('/billing', [App\Http\Controllers\BillingController::class, 'index'])->name('billing');
     
     Route::get('/reportcase', [App\Http\Controllers\ReportcaseController::class, 'index'])->name('reportcase');
     
