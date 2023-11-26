@@ -378,14 +378,6 @@
                 storeFieldValues();
             });
         }
-            });
-            // Apply the custom date range filter on input change
-            $('#reservation').on('apply.daterangepicker', function() {
-                console.log($('#reservation').val())
-                table.draw();
-                storeFieldValues();
-            });
-        }
         datesearch();
         daterange();
         $('#btnsearch').click(function(e) {
