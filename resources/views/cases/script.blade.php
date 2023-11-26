@@ -92,7 +92,7 @@
             placeholder: 'กรุณาเลือกประเภทการโอนสาย'
         });
 
-        
+
         $(".select2_single").select2({
             maximumSelectionLength: 1,
             allowClear: true,
@@ -499,6 +499,39 @@
         });
 
 
+
+        $(document).on('change', '#Hn', function() {
+            var query = $(this).val();
+            $.ajax({
+                url: 'cases/seachcontact/' + query,
+                method: 'GET',
+                async: false,
+                success: function(data) {
+                    console.log(data);
+                    /* var suggestionsList = $('#suggestions');
+                    suggestionsList.empty();
+                    $.each(data, function(index, item) {
+                        suggestionsList.append('<li data-id="' + item
+                            .id + '" data-hn="' + item.hn +
+                            '" data-name="' + item.fname + ' ' +
+                            item.fname + '">HN ' + item.hn +
+                            ' ชื่อ-สกุล ' + item.fname + ' ' + item
+                            .fname + '</li>');
+                    });
+
+                    suggestionsList.on('click', 'li', function() {
+                        $('#Addid').val($(this).data('id'));
+                        $('#Hn').val($(this).data('hn'));
+                        $('#Name').val($(this).data('name'));
+                        suggestionsList.empty();
+                    }); */
+                },
+                error: function(error) {
+                    console.log('Error:', error);
+                }
+            });
+        });
+
         $(document).on('click', '#CreateButton', function(e) {
             e.preventDefault();
             $('#topiccase').html('<i class="fa-regular fa-clipboard"></i> เพิ่ม เรื่องที่ติดต่อ');
@@ -515,36 +548,7 @@
             $('#custom-tabs-one-editlog-tab').hide();
             actions = 'add';
             //_token: token
-            $('#Hn').on('input', function() {
-                var query = $(this).val();
-                $.ajax({
-                    url: 'cases/seachcontact/' + query,
-                    method: 'GET',
-                    async: false,
-                    success: function(data) {
-                        var suggestionsList = $('#suggestions');
-                        suggestionsList.empty();
-                        $.each(data, function(index, item) {
-                            suggestionsList.append('<li data-id="' + item
-                                .id + '" data-hn="' + item.hn +
-                                '" data-name="' + item.fname + ' ' +
-                                item.fname + '">HN ' + item.hn +
-                                ' ชื่อ-สกุล ' + item.fname + ' ' + item
-                                .fname + '</li>');
-                        });
 
-                        suggestionsList.on('click', 'li', function() {
-                            $('#Addid').val($(this).data('id'));
-                            $('#Hn').val($(this).data('hn'));
-                            $('#Name').val($(this).data('name'));
-                            suggestionsList.empty();
-                        });
-                    },
-                    error: function(error) {
-                        console.log('Error:', error);
-                    }
-                });
-            });
             $.ajax({
                 url: "casetype6/casetype/0",
                 method: 'GET',
