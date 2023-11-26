@@ -2,69 +2,6 @@
     $detect = new Detection\MobileDetect();
 @endphp
 <script>
-    var $eventLog = $(".js-event-log");
-    let fatotal = () => {
-        let atotal = 0;
-        let aamount = 0;
-        $("input[name='total[]']").each(function() {
-            let value = parseFloat(this.value);
-            if (!isNaN(value)) {
-                atotal += value;
-            }
-        });
-        $("input[name='amount[]']").each(function() {
-            let value = parseFloat(this.value);
-            if (!isNaN(value)) {
-                aamount += value;
-            }
-        });
-        //alert(atotal);
-        $('#AddTotalCost').val(atotal);
-        $('#AddAmount').val(aamount);
-    }
-
-    let efatotal = () => {
-        let atotal = 0;
-        let aamount = 0;
-        $("input[name='etotal[]']").each(function() {
-            let value = parseFloat(this.value);
-            if (!isNaN(value)) {
-                atotal += value;
-            }
-        });
-        $("input[name='eamount[]']").each(function() {
-            let value = parseFloat(this.value);
-            if (!isNaN(value)) {
-                aamount += value;
-            }
-        });
-        //alert(atotal);
-        $('#EditTotalCost').val(atotal);
-        $('#EditAmount').val(aamount);
-    }
-
-    let log = (name, evt) => {
-        if (!evt) {
-            var args = "{}";
-        } else {
-            var args = JSON.stringify(evt.params, function(key, value) {
-                if (value && value.nodeName) return "[DOM node]";
-                if (value instanceof $.Event) return "[$.Event]";
-                return value;
-            });
-        }
-        var $e = $("<li>" + name + " -> " + args + "</li>");
-        $eventLog.append($e);
-        $e.animate({
-            opacity: 1
-        }, 10000, 'linear', function() {
-            $e.animate({
-                opacity: 0
-            }, 2000, 'linear', function() {
-                $e.remove();
-            });
-        });
-    }
 
     $(document).ready(function() {
 
@@ -102,7 +39,7 @@
 
         $(".select2_single").on("select2:unselect", function(e) {
             //log("select2:unselect", e);
-            $('.products').html('');
+            //$('.products').html('');
         });
 
         $(".select2_casestatus").select2({
@@ -194,42 +131,7 @@
             placeholder: 'รายละเอียดเคส เพิ่มเติม 3'
         });
 
-        $("#price,#amount,#stock").on("change", function() {
-            var parent = $(this).parent().parent().parent();
-
-            var amount = parent.find('#amount').val();
-            var price = parent.find('#price').val();
-            var sid = parent.find('#stock').val();
-
-            let total_cost = amount * price;
-            parent.find('#total').val(total_cost)
-
-            fatotal();
-            if (sid !== null) {
-                $.ajax({
-                    type: "GET",
-                    dataType: 'JSON',
-                    async: false,
-                    url: "stocks/find/price/" + sid,
-                    success: function(res) {
-                        //console.log(res);
-                        parent.find('#lot_price').html(
-                            `***ควรขายที่ราคา ${res.cost} - ${res.price} บาท `);
-                        if (parseInt(amount) > parseInt(res.remaining)) {
-                            toastr.error('จำนวนที่จะขายมากกว่าจำนวนที่เหลือในล๊อต', {
-                                timeOut: 5000
-                            });
-                            parent.find('#lot_error').html(
-                                '***จำนวนที่จะขายมากกว่าจำนวนที่เหลือในล๊อต');
-                            parent.find('#amount').val('')
-                        } else {
-                            parent.find('#lot_error').html('');
-                        }
-                    }
-                });
-            }
-        });
-
+        
         //$.noConflict();
         var token = ''
         $.ajaxSetup({
@@ -534,6 +436,7 @@
  */
         $(document).on('click', '#CreateButton', function(e) {
             e.preventDefault();
+            $("#Hn").val(null).trigger("change")
             $('#topiccase').html('<i class="fa-regular fa-clipboard"></i> เพิ่ม เรื่องที่ติดต่อ');
             $('.alert-danger').html('');
             $('.alert-danger').hide();
