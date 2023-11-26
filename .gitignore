@@ -6,6 +6,7 @@
 /public/file_store
 /public/stamps
 /public/storage
+/public/index.php
 /storage/*.key
 /vendor
 /config
