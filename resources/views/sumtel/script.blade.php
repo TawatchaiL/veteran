@@ -529,6 +529,7 @@
                         for (var i = 1; i < doc.content[0].table.body.length; i++) {
                             doc.content[0].table.body[i][0].alignment = 'left';
                             doc.content[0].table.body[i][1].alignment = 'center';
+                            doc.content[0].table.body[i][2].alignment = 'center';
                         }
                 }
                 },
