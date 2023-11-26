@@ -111,12 +111,14 @@ class BillingReportController extends Controller
                 if ($department) {
 
                     $users = User::where('department_id', $department)->get();
-                    foreach ($users as $user) {
-                        $idd[] = $user->id;
-                    }
-                    $datass->where(function ($query) use ($idd) {
-                        //$query->wherein('asteriskcdrdb.cdr.userfield',$idd);
-                    });
+                    if(count($users) > 0){
+                        foreach ($users as $user) {
+                            $idd[] = $user->id;
+                        }
+                        $datass->where(function ($query) use ($idd) {
+                            $query->wherein('asteriskcdrdb.cdr.userfield',$idd);
+                        });
+                    }        
                 }
             }else{
                 if (!empty($request->get('agent'))) {
