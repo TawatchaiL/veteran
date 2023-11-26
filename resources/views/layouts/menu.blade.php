@@ -46,6 +46,14 @@
         </a>
     </li>
 @endcan
+@can('billing-list')
+    <li class="nav-item">
+        <a href="{{ route('billingreport') }}" class="nav-link {{ Request::is('billingreport') ? 'active' : '' }}">
+            <i class="fa-solid fa-file-invoice-dollar nav-icon"></i>
+            <p>ระบบคำนวนค่าใช้จ่าย</p>
+        </a>
+    </li>
+@endcan
 @can('case-list')
     <li class="nav-item">
         <a href="{{ route('dashboard.index') }}" class="nav-link {{ Request::is('dashboard.index') ? 'active' : '' }}">
