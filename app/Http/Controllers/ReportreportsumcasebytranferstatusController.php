@@ -44,8 +44,8 @@ class ReportreportsumcasebytranferstatusController extends Controller
                 }
             }
         }else{
-                    $startDate = date("Y-m-d");
-                    $endDate = date("Y-m-t", strtotime($startDate));  
+            $startDate = date("Y-m-d H:i:s");
+            $endDate = date("Y-m-t H:i:s", strtotime($startDate));    
         }
         $datas = DB::table('crm_cases')
             ->select('tranferstatus as name1', DB::raw('count(*) as sumcases'))
