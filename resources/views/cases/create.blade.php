@@ -86,7 +86,7 @@
                                                     <ul id="suggestions"></ul>
                                                 </div> --}}
                                                 <div class="form-group">
-                                                    <strong><i class="fas fa-user-tie"></i> Hn :</strong>
+                                                    <strong><i class="fas fa-user-tie"></i> ผู้ติดต่อ :</strong>
                                                     <input type="hidden" value="" name="Addid" id="Addid">
                                                     <select style="width: 100%;"
                                                         class="select2 select2_single form-control" id="Hn"
@@ -101,19 +101,6 @@
                                             </div>
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <strong><i class="fas fa-user-tie"></i> ชื่อ-สกุล :</strong>
-                                                    {!! Form::text('name', null, [
-                                                        'id' => 'Name',
-                                                        'placeholder' => 'Name',
-                                                        'class' => 'form-control',
-                                                        'readonly' => true,
-                                                    ]) !!}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                                <div class="form-group">
                                                     <strong><i class="fas fa-calendar"></i> วันที่บันทึก:</strong>
                                                     {!! Form::text('adddate', null, [
                                                         'id' => 'Addadddate',
@@ -123,7 +110,21 @@
                                                     ]) !!}
                                                 </div>
                                             </div>
+                                            {{-- <div class="col-xs-6 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <strong><i class="fas fa-user-tie"></i> ชื่อ-สกุล :</strong>
+                                                    {!! Form::text('name', null, [
+                                                        'id' => 'Name',
+                                                        'placeholder' => 'Name',
+                                                        'class' => 'form-control',
+                                                        'readonly' => true,
+                                                    ]) !!}
+                                                </div>
+                                            </div> --}}
                                         </div>
+                                        {{-- <div class="row">
+                                            
+                                        </div> --}}
                                         <div class="row">
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">

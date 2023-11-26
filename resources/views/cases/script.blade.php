@@ -500,8 +500,7 @@
 
 
 
-        $(document).on('change', '#Hn', function() {
-            alert();
+        /* $(document).on('change', '#Hn', function() {
             var query = $(this).val();
             $.ajax({
                 url: 'cases/seachcontact/' + query,
@@ -509,7 +508,7 @@
                 async: false,
                 success: function(data) {
                     console.log(data);
-                    /* var suggestionsList = $('#suggestions');
+                    var suggestionsList = $('#suggestions');
                     suggestionsList.empty();
                     $.each(data, function(index, item) {
                         suggestionsList.append('<li data-id="' + item
@@ -525,14 +524,14 @@
                         $('#Hn').val($(this).data('hn'));
                         $('#Name').val($(this).data('name'));
                         suggestionsList.empty();
-                    }); */
+                    }); 
                 },
                 error: function(error) {
                     console.log('Error:', error);
                 }
             });
         });
-
+ */
         $(document).on('click', '#CreateButton', function(e) {
             e.preventDefault();
             $('#topiccase').html('<i class="fa-regular fa-clipboard"></i> เพิ่ม เรื่องที่ติดต่อ');
@@ -657,6 +656,7 @@
                             timeOut: 5000
                         });
                         $('#Listview').DataTable().ajax.reload();
+                        $("#Hn").val(null).trigger("change")
                         $('.form').trigger('reset');
                         $('#CreateModal').modal('hide');
                     }
