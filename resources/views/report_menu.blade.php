@@ -135,114 +135,105 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12">
 
-                    <div class="row">
-                        <div class="col-md-4 col-sm-4 col-lg-4  col-xl-4 col-12">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text"> 10 อันดับเรื่องที่ติดต่อมากที่สุด</span>
-                                    <span class="info-box-number text-right"><button
-                                            onclick="window.location.href='{{ route('reportcasetop10') }}'"
-                                            class="btn btn-success btn-sm"><i class="fas fa-search"></i>
-                                            View</button></span>
-                                </div>
-                            </div>
+                <div class="col-md-4 col-sm-4 col-lg-4  col-xl-4 col-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text-sm"> 10 อันดับเบอร์ภายในที่โทรเข้ามาติดต่อ</span>
+                            <span class="info-box-number text-right"><button
+                                    onclick="window.location.href='{{ route('reporttop10in') }}'"
+                                    class="btn btn-success btn-sm"><i class="fas fa-search"></i>
+                                    View</button></span>
                         </div>
-                        <div class="col-md-4 col-sm-4 col-lg-4  col-xl-4 col-12">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text"> 10 อันดับเรื่องที่ติดต่อมากที่สุด</span>
-                                    <span class="info-box-number text-right"><button
-                                            onclick="window.location.href='{{ route('reportcasetop10') }}'"
-                                            class="btn btn-success btn-sm"><i class="fas fa-search"></i>
-                                            View</button></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-4 col-lg-4  col-xl-4 col-12">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text"> 10 อันดับเรื่องที่ติดต่อมากที่สุด</span>
-                                    <span class="info-box-number text-right"><button
-                                            onclick="window.location.href='{{ route('reportcasetop10') }}'"
-                                            class="btn btn-success btn-sm"><i class="fas fa-search"></i>
-                                            View</button></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-4 col-lg-4  col-xl-4 col-12">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text"> 10 อันดับเรื่องที่ติดต่อมากที่สุด</span>
-                                    <span class="info-box-number text-right"><button
-                                            onclick="window.location.href='{{ route('reportcasetop10') }}'"
-                                            class="btn btn-success btn-sm"><i class="fas fa-search"></i>
-                                            View</button></span>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
-                    <div class="row">
-                        <div class="col-md-4 col-sm-4 col-lg-4  col-xl-4 col-12">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text"> 10 อันดับเรื่องที่ติดต่อมากที่สุด</span>
-                                    <span class="info-box-number text-right"><button
-                                            onclick="window.location.href='{{ route('reportcasetop10') }}'"
-                                            class="btn btn-success btn-sm"><i class="fas fa-search"></i>
-                                            View</button></span>
-                                </div>
-                            </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-lg-4  col-xl-4 col-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text-sm"> 10 อันดับเบอร์ภายนอกที่โทรเข้ามาติดต่อ</span>
+                            <span class="info-box-number text-right"><button
+                                    onclick="window.location.href='{{ route('reporttop10out') }}'"
+                                    class="btn btn-success btn-sm"><i class="fas fa-search"></i>
+                                    View</button></span>
                         </div>
-
-                        <div class="col-md-4 col-sm-4 col-lg-4  col-xl-4 col-12">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text"> 10 อันดับเรื่องที่ติดต่อมากที่สุด</span>
-                                    <span class="info-box-number text-right"><button
-                                            onclick="window.location.href='{{ route('reportcasetop10') }}'"
-                                            class="btn btn-success btn-sm"><i class="fas fa-search"></i>
-                                            View</button></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-4 col-lg-4  col-xl-4 col-12">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text"> 10 อันดับเรื่องที่ติดต่อมากที่สุด</span>
-                                    <span class="info-box-number text-right"><button
-                                            onclick="window.location.href='{{ route('reportcasetop10') }}'"
-                                            class="btn btn-success btn-sm"><i class="fas fa-search"></i>
-                                            View</button></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-4 col-lg-4  col-xl-4 col-12">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text"> 10 อันดับเรื่องที่ติดต่อมากที่สุด</span>
-                                    <span class="info-box-number text-right"><button
-                                            onclick="window.location.href='{{ route('reportcasetop10') }}'"
-                                            class="btn btn-success btn-sm"><i class="fas fa-search"></i>
-                                            View</button></span>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-lg-4  col-xl-4 col-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text-sm"> ผลรวมสายเข้าภายในแยกตามช่วงเวลา</span>
+                            <span class="info-box-number text-right"><button
+                                    onclick="window.location.href='{{ route('reportcaseinbyhour') }}'"
+                                    class="btn btn-success btn-sm"><i class="fas fa-search"></i>
+                                    View</button></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-lg-4  col-xl-4 col-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text-sm"> ผลรวมสายเข้าภายนอกแยกตามช่วงเวลา</span>
+                            <span class="info-box-number text-right"><button
+                                    onclick="window.location.href='{{ route('reportcaseoutbyhour') }}'"
+                                    class="btn btn-success btn-sm"><i class="fas fa-search"></i>
+                                    View</button></span>
+                        </div>
+                    </div>
+                </div>
 
 
+                <div class="col-md-4 col-sm-4 col-lg-4  col-xl-4 col-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text-sm"> รายละเอียดเบอร์ภายในที่โทรเข้ามาติดต่อ</span>
+                            <span class="info-box-number text-right"><button
+                                    onclick="window.location.href='{{ route('detailcaseinternalnumber') }}'"
+                                    class="btn btn-success btn-sm"><i class="fas fa-search"></i>
+                                    View</button></span>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="col-md-4 col-sm-4 col-lg-4  col-xl-4 col-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text-sm"> รายละเอียดเบอร์ภายนอกที่โทรเข้ามาติดต่อ</span>
+                            <span class="info-box-number text-right"><button
+                                    onclick="window.location.href='{{ route('detailcaseexternalnumber') }}'"
+                                    class="btn btn-success btn-sm"><i class="fas fa-search"></i>
+                                    View</button></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-lg-4  col-xl-4 col-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text-sm"> สถานะการเข้าสู่ระบบ</span>
+                            <span class="info-box-number text-right"><button
+                                    onclick="window.location.href='{{ route('loginstatus') }}'"
+                                    class="btn btn-success btn-sm"><i class="fas fa-search"></i>
+                                    View</button></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-lg-4  col-xl-4 col-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-primary"><i class="fa-solid fa-print"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text-sm"> ประวัติการพักรับสาย</span>
+                            <span class="info-box-number text-right"><button
+                                    onclick="window.location.href='{{ route('reportbreak') }}'"
+                                    class="btn btn-success btn-sm"><i class="fas fa-search"></i>
+                                    View</button></span>
+                        </div>
+                    </div>
                 </div>
 
             </div>
