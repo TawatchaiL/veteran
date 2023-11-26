@@ -50,7 +50,7 @@ class MisscallController extends Controller
         $datas = DB::connection('remote_connection')
             ->table('asteriskcdrdb.cdr')
             ->select('dst_userfield',DB::raw('DATE(calldate) as cdate'), DB::raw('TIME(calldate) as ctime'), 'src as telno', DB::raw('SEC_TO_TIME(duration) as durationwait'))
-            ->whereRaw('datetime_init between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59" AND disposition = "NO ANSWER"');
+            ->whereRaw('calldate between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59" AND disposition = "NO ANSWER"');
         if(!empty($request->get('agent'))){
             $datas->whereRaw('dst_userfield = "'. $request->input('agent') .'"');  
         }    
