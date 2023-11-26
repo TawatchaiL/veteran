@@ -227,25 +227,25 @@
                 arrayDate[0] = parseInt(arrayDate[0]) + 543;
                 $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
 
-                //var selectedDate = new Date(dateText);
-                //var currentDate = new Date();
-                //var years = currentDate.getFullYear() - selectedDate.getFullYear();
-                //var months = currentDate.getMonth() - selectedDate.getMonth();
-                //var days = currentDate.getDate() - selectedDate.getDate();
-                //if (days < 0) {
-                //    months--;
-                //    days += new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
-               // }
+                var selectedDate = new Date(dateText);
+                var currentDate = new Date();
+                var years = currentDate.getFullYear() - selectedDate.getFullYear();
+                var months = currentDate.getMonth() - selectedDate.getMonth();
+                var days = currentDate.getDate() - selectedDate.getDate();
+                if (days < 0) {
+                    months--;
+                    days += new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
+                }
 
-                //if (months < 0) {
-                //    years--;
-                //    months += 12;
-                //}
-                //$("#Addage").val(years + " ปี " + months + " เดือน " + days + " วัน");
+                if (months < 0) {
+                    years--;
+                    months += 12;
+                }
+                $("#"+$(this).data('id')).val(years + " ปี " + months + " เดือน " + days + " วัน");
                 }
         });
 
-        $("#Addbirthday").on("onSelect", function() {
+        $("#Addbirthday").on("change", function() {
             alert('OK');
             var datetext = $(this).val();
             alert(datetext);
