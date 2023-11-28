@@ -212,10 +212,10 @@
                     });
                 }, 50);
             },
-            onClose: function() {
+            onClose: function(dateText, inst) {
                 if ($(this).val() != "") {
                     alert($(this).val());
-                    var arrayDate = dateBefore.split("-");
+                    var arrayDate = dateText.split("-");
                     //$('#temp'+$(this).attr('id')).html(dateBefore);
                     arrayDate[0] = parseInt(arrayDate[0]) + 543;
                     $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
