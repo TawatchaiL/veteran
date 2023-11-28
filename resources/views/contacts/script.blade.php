@@ -214,9 +214,6 @@
                 }, 50);
             },
             onClose: function(dateText, inst) {
-                alert(dateText);
-                alert(dateBefore);
-                alert($(this).val());
                 if ($(this).val() != "" && dateText == dateBefore) {
                     var arrayDate = dateText.split("-");
                     //$('#temp'+$(this).attr('id')).html(dateBefore);
