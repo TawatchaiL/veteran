@@ -237,6 +237,7 @@
                 }
             },*/
             onSelect: function(dateText, inst) {
+                alert('oooo');
                 dateBefore = $(this).val();
                 //$('#temp'+$(this).attr('id')).html(dateBefore);
                 var arrayDate = dateText.split("-");
