@@ -219,7 +219,7 @@
                 if ($(this).val() != "" && dateText != dateBefore) {
                     var arrayDate = dateText.split("-");
                     //$('#temp'+$(this).attr('id')).html(dateBefore);
-                    //arrayDate[0] = parseInt(arrayDate[0]) + 543;
+                    arrayDate[0] = parseInt(arrayDate[0]) + 543;
                     $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
                 }
             },
