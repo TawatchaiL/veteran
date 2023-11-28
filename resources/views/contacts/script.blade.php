@@ -241,9 +241,8 @@
                     years--;
                     months += 12;
                 }
-                $("#"+$(this).data('age')).val(years + " ปี " + months + " เดือน " + days + " วัน");
+                $("#"+$(this).data('age')).val(years + " ปี " + months + " เดือน " + days + " วัน"); */
                 }
-                */
         });
 
         $("#Addbirthday").on("change", function() {
