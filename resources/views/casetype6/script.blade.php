@@ -181,7 +181,7 @@
                     }else{
                         parent_id = $('#casetype' + p).val();
                     }
-                    break;
+                    //break;
                 }
             }
             var additionalData = {
@@ -409,9 +409,9 @@
                             '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
                     }
                     $('#casetype' + i).attr('disabled', true);
+                    $('#AddName' + i).attr('disabled', true);
                     $('#typelev' + i).hide();
                 }
-                alert('OK');
                 $('#typelev' + levcase).show();
             }
         });
