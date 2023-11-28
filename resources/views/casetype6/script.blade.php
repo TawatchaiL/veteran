@@ -181,7 +181,7 @@
                     }else{
                         parent_id = $('#casetype' + p).val();
                     }
-                    //break;
+                    break;
                 }
             }
             var additionalData = {
