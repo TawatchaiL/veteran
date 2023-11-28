@@ -213,7 +213,7 @@
                 }, 50);
             },
             onClose: function() {
-                if ($(this).val() != "" && $(this).val() == dateBefore) {
+                if ($(this).val() != "") {
                     alert(dateBefore);
                     var arrayDate = dateBefore.split("-");
                     //$('#temp'+$(this).attr('id')).html(dateBefore);
