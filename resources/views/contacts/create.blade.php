@@ -79,7 +79,7 @@
                                                     {!! Form::text('adddate', null, [
                                                         'id' => 'Addadddate',
                                                         'placeholder' => 'วันที่บันทึก',
-                                                        'class' => 'form-control',
+                                                        'class' => 'AddDate form-control',
                                                         'data-target' => '#reservationdate',
                                                     ]) !!}
                                                 </div>
@@ -139,7 +139,7 @@
                                                         'id' => 'Addbirthday',
                                                         'data-age' => 'Addage',
                                                         'placeholder' => 'วันเกิด',
-                                                        'class' => 'form-control',
+                                                        'class' => 'AddDate form-control',
                                                         'data-target' => '#reservationdate',
                                                     ]) !!}
                                                 </div>
