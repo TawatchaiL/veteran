@@ -378,6 +378,7 @@
                         var arrayDate = $(this).val().split("-");
                         arrayDate[0] = parseInt(arrayDate[0]) - 543;
                         $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
+                        dateBefore = $(this).val();
                     }
                     setTimeout(function() {
                         $.each($(".ui-datepicker-year option"), function(j, k) {
@@ -437,6 +438,7 @@
 
         //birth day change
         $(document).on("change", ".Birthdayp", function() {
+            alert('ok');
             var selectedDate = new Date($(this).val());
             var currentDate = new Date();
             var tid = $(this).data("tid");
