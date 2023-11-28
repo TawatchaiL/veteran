@@ -190,6 +190,7 @@
             ],
             beforeShow: function() {
                 if ($(this).val() != "") {
+                    alert('no1');
                     var arrayDate = $(this).val().split("-");
                     arrayDate[0] = parseInt(arrayDate[0]) - 543;
                     $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
@@ -226,7 +227,7 @@
                 var arrayDate = dateText.split("-");
                 arrayDate[0] = parseInt(arrayDate[0]) + 543;
                 $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
-
+                alert('no2');
                 var selectedDate = new Date(dateText);
                 var currentDate = new Date();
                 var years = currentDate.getFullYear() - selectedDate.getFullYear();
