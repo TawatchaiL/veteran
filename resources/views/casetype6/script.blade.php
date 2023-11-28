@@ -411,6 +411,7 @@
                     $('#casetype' + i).attr('disabled', true);
                     $('#typelev' + i).hide();
                 }
+                alert('OK');
                 $('#typelev' + levcase).show();
             }
         });
