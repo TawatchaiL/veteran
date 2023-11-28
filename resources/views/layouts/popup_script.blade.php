@@ -437,7 +437,7 @@
         });
 
         //birth day change
-        $(document).on("change", ".Birthdayp", function() {
+       /* $(document).on("change", ".Birthdayp", function() {
             alert('ok');
             var selectedDate = new Date($(this).val());
             var currentDate = new Date();
@@ -455,7 +455,7 @@
                 months += 12;
             }
             $("#agep" + tid).val(years + " ปี " + months + " เดือน " + days + " วัน");
-        });
+        });*/
         //casetype changes
         $(document).on("change", ".casetypechang", function() {
             var cardId = $(this).data("tabid");
