@@ -189,7 +189,6 @@
                 "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
             ],
             beforeShow: function() {
-                alert('OK');
                 if ($(this).val() != "") {
                     var arrayDate = $(this).val().split("-");
                     arrayDate[0] = parseInt(arrayDate[0]) - 543;
@@ -214,6 +213,8 @@
                 }, 50);
             },
             onClose: function(dateText, inst) {
+                alert(dateText);
+                alert(dateBefore);
                 if ($(this).val() != "") {
                     var arrayDate = dateText.split("-");
                     //$('#temp'+$(this).attr('id')).html(dateBefore);
