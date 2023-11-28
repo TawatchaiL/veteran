@@ -227,7 +227,7 @@
                 arrayDate[0] = parseInt(arrayDate[0]) + 543;
                 $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
 
-            /*    var selectedDate = new Date(dateText);
+                var selectedDate = new Date(dateText);
                 var currentDate = new Date();
                 var years = currentDate.getFullYear() - selectedDate.getFullYear();
                 var months = currentDate.getMonth() - selectedDate.getMonth();
@@ -241,50 +241,8 @@
                     years--;
                     months += 12;
                 }
-                $("#"+$(this).data('age')).val(years + " ปี " + months + " เดือน " + days + " วัน"); */
+                $("#"+$(this).data('age')).val(years + " ปี " + months + " เดือน " + days + " วัน"); 
                 }
-        });
-
-        $("#Addbirthday").on("change", function() {
-            alert('OK');
-            var datetext = $(this).val();
-            alert(datetext);
-            var arrayDate = datetext.split("-");
-                arrayDate[0] = parseInt(arrayDate[0]) - 543;
-            var selectedDate = new Date(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
-            //var selectedDate = new Date($(this).val());
-            var currentDate = new Date();
-            var years = currentDate.getFullYear() - selectedDate.getFullYear();
-            var months = currentDate.getMonth() - selectedDate.getMonth();
-            var days = currentDate.getDate() - selectedDate.getDate();
-            if (days < 0) {
-                months--;
-                days += new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
-            }
-
-            if (months < 0) {
-                years--;
-                months += 12;
-            }
-            $("#Addage").val(years + " ปี " + months + " เดือน " + days + " วัน");
-        });
-
-        $("#Editbirthday").on("change", function() {
-            var selectedDate = new Date($(this).val());
-            var currentDate = new Date();
-            var years = currentDate.getFullYear() - selectedDate.getFullYear();
-            var months = currentDate.getMonth() - selectedDate.getMonth();
-            var days = currentDate.getDate() - selectedDate.getDate();
-            if (days < 0) {
-                months--;
-                days += new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
-            }
-
-            if (months < 0) {
-                years--;
-                months += 12;
-            }
-            $("#Editage").val(years + " ปี " + months + " เดือน " + days + " วัน");
         });
 
         var table = $('#Listview').DataTable({
