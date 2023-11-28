@@ -227,7 +227,7 @@
                 arrayDate[0] = parseInt(arrayDate[0]) + 543;
                 $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
 
-                var selectedDate = new Date(dateText);
+            /*    var selectedDate = new Date(dateText);
                 var currentDate = new Date();
                 var years = currentDate.getFullYear() - selectedDate.getFullYear();
                 var months = currentDate.getMonth() - selectedDate.getMonth();
@@ -243,6 +243,7 @@
                 }
                 $("#"+$(this).data('age')).val(years + " ปี " + months + " เดือน " + days + " วัน");
                 }
+                */
         });
 
         $("#Addbirthday").on("change", function() {
