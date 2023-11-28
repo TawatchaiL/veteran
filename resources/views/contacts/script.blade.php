@@ -213,7 +213,7 @@
                 }, 50);
             },
             onClose: function() {
-                if ($(this).val() != "") {
+                if ($(this).val() != "" && $(this).val() == dateBefore) {
                     var arrayDate = dateBefore.split("-");
                     //$('#temp'+$(this).attr('id')).html(dateBefore);
                     arrayDate[0] = parseInt(arrayDate[0]) + 543;
