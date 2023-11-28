@@ -214,7 +214,7 @@
             },
             onClose: function(dateText, inst) {
                 if ($(this).val() != "") {
-                    alert($(this).val());
+                    alert(dateText);
                     var arrayDate = dateText.split("-");
                     //$('#temp'+$(this).attr('id')).html(dateBefore);
                     arrayDate[0] = parseInt(arrayDate[0]) + 543;
