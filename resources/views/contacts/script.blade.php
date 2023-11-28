@@ -193,6 +193,7 @@
                     var arrayDate = $(this).val().split("-");
                     arrayDate[0] = parseInt(arrayDate[0]) - 543;
                     $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
+                    dateBefore = $(this).val();
                 }
                 setTimeout(function() {
                     $.each($(".ui-datepicker-year option"), function(j, k) {
