@@ -17,6 +17,9 @@
 
     socket.on('queuemember', (response) => {
         console.log(response)
+        const currentTimestamp = Date.now() / 1000;
+
+        console.log(currentTimestamp);
     });
 
 
