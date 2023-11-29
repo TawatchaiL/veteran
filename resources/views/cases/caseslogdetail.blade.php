@@ -14,20 +14,23 @@
                     <li>
                         <div class="icon"><i class="fa-solid fa-list-ul"></i></div>
                         <div class="info">
-                            <p><strong>ประเภทเคส</strong> <br>&nbsp;{{ $cases->casetype1 !== '' ? $cases->casetype1 : '-'  }}</p>
+                            <p><strong>ประเภทเคส</strong> <br>&nbsp;{{ $caselog->casetype1 !== '' ? $caselog->casetype1 : '-'  }}
+                                {{ $cases->casetype1 !== $caselog->casetype1 ? ' >> '.$cases->casetype1 : ''  }}</p>
                         </div>
                     </li>
 
                     <li>
                         <div class="icon"><i class="fa-solid fa-list-ul"></i></div>
                         <div class="info">
-                            <p><strong>รายละเอียดเคสย่อย</strong><br>&nbsp;{{ $cases->casetype3 !== '' ? $cases->casetype3 : '-'  }}</p>
+                            <p><strong>รายละเอียดเคสย่อย</strong><br>&nbsp;{{ $caselog->casetype3 !== '' ? $caselog->casetype3 : '-'  }}
+                                {{ $cases->casetype3 !== $caselog->casetype3 ? ' >> '.$cases->casetype3 : ''  }}</p>
                         </div>
                     </li>
                     <li>
                         <div class="icon"><i class="fa-solid fa-list-ul"></i></div>
                         <div class="info">
-                            <p><strong>รายละเอียดเคส เพิ่มเติม 2</strong><br>&nbsp;{{ $cases->casetype5 !== '' ? $cases->casetype5 : '-'  }}</p>
+                            <p><strong>รายละเอียดเคส เพิ่มเติม 2</strong><br>&nbsp;{{ $caselog->casetype5 !== '' ? $caselog->casetype5 : '-'  }}
+                                {{ $cases->casetype5 !== $caselog->casetype5 ? ' >> '.$cases->casetype5 : ''  }}</p>
                         </div>
                     </li>
                 </ul>
@@ -50,7 +53,8 @@
                     <li>
                         <div class="icon"><i class="fa-solid fa-list-ul"></i></div>
                         <div class="info">
-                            <p><strong>รายละเอียดเคส</strong><br>&nbsp;{{ $cases->casetype2 !== '' ? $cases->casetype2 : '-'  }}</p>
+                            <p><strong>รายละเอียดเคส</strong><br>&nbsp;{{ $caselog->casetype2 !== '' ? $caselog->casetype2 : '-'  }}
+                                {{ $cases->casetype2 !== $caselog->casetype2 ? ' >> '.$cases->casetype2 : ''  }}</p>
                         </div>
                     </li>
 
@@ -59,13 +63,15 @@
                             <i class="fa-solid fa-list-ul"></i>
                         </div>
                         <div class="info">
-                            <p><strong>รายละเอียดเคส เพิ่มเติม 1</strong><br>&nbsp;{{ $cases->casetype4 !== '' ? $cases->casetype4 : '-'  }}</p>
+                            <p><strong>รายละเอียดเคส เพิ่มเติม 1</strong><br>&nbsp;{{ $caselog->casetype4 !== '' ? $caselog->casetype4 : '-'  }}
+                                {{ $cases->casetype4 !== $caselog->casetype4 ? ' >> '.$cases->casetype4 : ''  }}</p>
                         </div>
                     </li>
                     <li>
                         <div class="icon"><i class="fa-solid fa-list-ul"></i></div>
                         <div class="info">
-                            <p><strong>รายละเอียดเคส เพิ่มเติม 3</strong><br>&nbsp;{{ $cases->casetype6 !== '' ? $cases->casetype6 : '-'  }}</p>
+                            <p><strong>รายละเอียดเคส เพิ่มเติม 3</strong><br>&nbsp;{{ $caselog->casetype6 !== '' ? $caselog->casetype6 : '-'  }}
+                                {{ $cases->casetype6 !== $caselog->casetype6 ? ' >> '.$cases->casetype6 : ''  }}</p>
                         </div>
                     </li>
                 </ul>
@@ -80,7 +86,7 @@
                     <li>
                         <div class="icon"><i class="fa-regular fa-comment-dots"></i></div>
                         <div class="info">
-                            <p><strong>รายละเอียด</strong> <br>&nbsp;{{ $cases->casedetail !== '' ? $cases->casedetail : '-'  }}</p>
+                            <p><strong>รายละเอียด</strong> <br>&nbsp;{{ $caselog->casedetail !== '' ? $caselog->casedetail : '-'  }}{{ $cases->casedetail !== $caselog->casedetail ? ' >> '.$cases->casedetail : ''  }}</p>
                         </div>
                     </li>
 
@@ -98,7 +104,8 @@
                     <li>
                         <div class="icon"><i class="fas fa-shuffle"></i></div>
                         <div class="info">
-                            <p><strong>สถานะการโอนสาย</strong> <br>&nbsp;{{ $cases->tranferstatus }}</p>
+                            <p><strong>สถานะการโอนสาย</strong> <br>&nbsp;{{ $caselog->tranferstatus }}
+                                {{ $cases->tranferstatus !== $caselog->tranferstatus ? ' >> '.$cases->tranferstatus : ''  }}</p>
                         </div>
                     </li>
     
@@ -116,7 +123,7 @@
                     <li>
                         <div class="icon"><i class="fas fa-arrows-rotate"></i></div>
                         <div class="info">
-                            <p><strong>สถานะการเคส</strong> <br>&nbsp;{{ $cases->casestatus }}</p>
+                            <p><strong>สถานะการเคส</strong> <br>&nbsp;{{ $caselog->casestatus }}{{ $cases->casestatus !== $caselog->casestatus ? ' >> '.$cases->casestatus : ''  }}</p>
                         </div>
                     </li>
     
