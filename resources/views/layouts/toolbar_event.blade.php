@@ -18,7 +18,7 @@
     socket.on('queuemember', (response) => {
         console.log(response)
         const currentTimestamp = Math.floor(Date.now() / 1000) - response.data.lastpause;
-        $('#warpdur').html(currentTimestamp)
+        $('#pausedur').html(currentTimestamp)
     });
 
 
