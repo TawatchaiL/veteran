@@ -297,7 +297,7 @@
                         </div>
                         <button {{ $unwarp_button }} id="btn-unwarp"
                             class="{{ $unwarp_button_class }} btn btn-warning custom-button mx-1 float-left">
-                            <i class="fas fa-clock"></i> รับสายต่อ
+                            <i class="fas fa-clock"></i> รับสายต่อ <span id="warpdur"></span>
                         </button>
 
                        {{--  <div class="mx-2 px-2">
