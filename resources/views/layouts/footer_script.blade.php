@@ -390,11 +390,12 @@
         }
         // For Safari
         return confirmClose;
-    } // Detect refresh event
+    }
+    /* // Detect refresh event
     window.addEventListener('beforeunload', function() {
         isRefreshing = true;
 
-
+        
     });
 
     // Detect close event
@@ -402,8 +403,8 @@
         if (!isRefreshing) {
             // The page is being closed (not refreshed)
             // Perform actions for page close here
-
+            
             sendAjaxRequest("{{ route('agent.logoff') }}", "POST");
         }
-    });*/
+    }); */
 </script>
