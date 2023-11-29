@@ -378,20 +378,9 @@
     }
 
 
-    let isRefreshing = false;
+    /*let isRefreshing = false;
 
-
-    window.onbeforeunload = function(event) {
-        event = event || window.event;
-        var confirmClose = 'Are you sure?';
-        // For IE and Firefox prior to version 4
-        if (event) {
-            event.returnValue = confirmClose;
-        }
-        // For Safari
-        return confirmClose;
-    }
-    /* // Detect refresh event
+     // Detect refresh event
     window.addEventListener('beforeunload', function() {
         isRefreshing = true;
 
