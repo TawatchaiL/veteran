@@ -959,6 +959,7 @@ class PBXController extends Controller
     {
 
         $user = User::where('phone', $request->input('phone'))
+            ->where('phone_status_id', 3)
             ->orderby('login_time', 'desc')
             ->first();
 
