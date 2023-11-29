@@ -374,4 +374,21 @@
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     }
+
+
+    let isRefreshing = false;
+
+    // Detect refresh event
+    window.addEventListener('beforeunload', function() {
+        isRefreshing = true;
+    });
+
+    // Detect close event
+    window.addEventListener('unload', function() {
+        if (!isRefreshing) {
+            // The page is being closed (not refreshed)
+            // Perform actions for page close here
+            console.log('Page is closing');
+        }
+    });
 </script>
