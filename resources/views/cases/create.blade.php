@@ -255,27 +255,27 @@
                                                             <li>
                                                                 <div class="icon"><i class="fas fa-code"></i></div>
                                                                 <div class="info">
-                                                                    <p><strong>HN</strong> <br>&nbsp;<div id="cHn"></div></p>
+                                                                    <p><strong>HN</strong> &nbsp;<div id="cHn"></div></p>
                                                                 </div>
                                                             </li>
                                         
                                                             <li>
                                                                 <div class="icon"><i class="fa-solid fa-list-ul"></i></div>
                                                                 <div class="info">
-                                                                    <p><strong>ประเภทเคส</strong> <br>&nbsp;<div id="cCasetype1"></div></p>
+                                                                    <p><strong>ประเภทเคส</strong> &nbsp;<div id="cCasetype1"></div></p>
                                                                 </div>
                                                             </li>
                                         
                                                             <li>
                                                                 <div class="icon"><i class="fa-solid fa-list-ul"></i></div>
                                                                 <div class="info">
-                                                                    <p><strong>รายละเอียดเคสย่อย</strong><br>&nbsp;<div id="cCasetype3"></div></p>
+                                                                    <p><strong>รายละเอียดเคสย่อย</strong> &nbsp;<div id="cCasetype3"></div></p>
                                                                 </div>
                                                             </li>
                                                             <li>
                                                                 <div class="icon"><i class="fa-solid fa-list-ul"></i></div>
                                                                 <div class="info">
-                                                                    <p><strong>รายละเอียดเคส เพิ่มเติม 2</strong><br>&nbsp;<div id="cCasetype5"></div></p>
+                                                                    <p><strong>รายละเอียดเคส เพิ่มเติม 2</strong> &nbsp;<div id="cCasetype5"></div></p>
                                                                 </div>
                                                             </li>
                                                         </ul>
@@ -290,14 +290,14 @@
                                                             <li>
                                                                 <div class="icon"><i class="fas fa-user-tie"></i></div>
                                                                 <div class="info">
-                                                                    <p><strong>ชื่อ-สกุล</strong> <br>&nbsp;<div id="cName"></div></p>
+                                                                    <p><strong>ชื่อ-สกุล</strong> &nbsp;<div id="cName"></div></p>
                                                                 </div>
                                                             </li>
                                         
                                                             <li>
                                                                 <div class="icon"><i class="fa-solid fa-list-ul"></i></div>
                                                                 <div class="info">
-                                                                    <p><strong>รายละเอียดเคส</strong><br>&nbsp;<div id="cCasetype2"></div></p>
+                                                                    <p><strong>รายละเอียดเคส</strong> &nbsp;<div id="cCasetype2"></div></p>
                                                                 </div>
                                                             </li>
                                         
@@ -306,13 +306,13 @@
                                                                     <i class="fa-solid fa-list-ul"></i>
                                                                 </div>
                                                                 <div class="info">
-                                                                    <p><strong>รายละเอียดเคส เพิ่มเติม 1</strong><br>&nbsp;<div id="cCasetype4"></div></p>
+                                                                    <p><strong>รายละเอียดเคส เพิ่มเติม 1</strong> &nbsp;<div id="cCasetype4"></div></p>
                                                                 </div>
                                                             </li>
                                                             <li>
                                                                 <div class="icon"><i class="fa-solid fa-list-ul"></i></div>
                                                                 <div class="info">
-                                                                    <p><strong>รายละเอียดเคส เพิ่มเติม 3</strong><br>&nbsp;<div id="cCasetype6"></div></p>
+                                                                    <p><strong>รายละเอียดเคส เพิ่มเติม 3</strong> &nbsp;<div id="cCasetype6"></div></p>
                                                                 </div>
                                                             </li>
                                                         </ul>
@@ -327,7 +327,7 @@
                                                             <li>
                                                                 <div class="icon"><i class="fa-regular fa-comment-dots"></i></div>
                                                                 <div class="info">
-                                                                    <p><strong>รายละเอียด</strong> <br>&nbsp;<div id="cDetail"></div></p>
+                                                                    <p><strong>รายละเอียด</strong> &nbsp;<div id="cDetail"></div></p>
                                                                 </div>
                                                             </li>
                                         
@@ -345,7 +345,7 @@
                                                             <li>
                                                                 <div class="icon"><i class="fas fa-shuffle"></i></div>
                                                                 <div class="info">
-                                                                    <p><strong>สถานะการโอนสาย</strong> <br>&nbsp;<div id="cTranferstatus"></div></p>
+                                                                    <p><strong>สถานะการโอนสาย</strong> &nbsp;<div id="cTranferstatus"></div></p>
                                                                 </div>
                                                             </li>
                                             
@@ -363,7 +363,7 @@
                                                             <li>
                                                                 <div class="icon"><i class="fas fa-arrows-rotate"></i></div>
                                                                 <div class="info">
-                                                                    <p><strong>สถานะการเคส</strong> <br>&nbsp;<div id="cCasestatus"></div></p>
+                                                                    <p><strong>สถานะการเคส</strong> &nbsp;<div id="cCasestatus"></div></p>
                                                                 </div>
                                                             </li>
                                             
@@ -373,18 +373,17 @@
                                                 </aside>
                                             </div>
                                         </div>
-                                                <div class="row">
-                                                    <div class="col-xs-6 col-sm-6 col-md-6">
-                                                            <strong><i class="fas fa-shuffle"></i> แสดงความคิดเห็น : </strong>
-                                                            {!! Form::text('cComment', null , [
-                                                                'id' => 'cComment',
-                                                                'placeholder' => '',
-                                                                'class' => 'form-control',
-                                                                'readonly' => false,
-                                                            ]) !!}
-                                                    </div>
-                                                </div>
-
+                                        <div class="row">
+                                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                                    <strong><i class="fas fa-shuffle"></i> แสดงความคิดเห็น : </strong>
+                                                    {!! Form::text('cComment', null , [
+                                                        'id' => 'cComment',
+                                                        'placeholder' => '',
+                                                        'class' => 'form-control',
+                                                        'readonly' => false,
+                                                    ]) !!}
+                                            </div>
+                                        </div>
                                         <div class="row justify-content-end">
                                             <button type="button" class="btn btn-success" id="SubmitCommentForm"><i
                                                     class="fas fa-download"></i>
