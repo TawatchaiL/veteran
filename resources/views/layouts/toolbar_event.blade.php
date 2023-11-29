@@ -1,5 +1,13 @@
 <script src="{{ config('asterisk.toolbar_serv.address') }}/socket.io/socket.io.js"></script>
 <script>
+    const formatTime = seconds => {
+        const hours = Math.floor(seconds / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        const remainingSeconds = seconds % 60;
+
+        return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+    };
+
     const socket = io.connect(`${toolbar_serv}`);
     socket.on('connect', data => {
         socket.emit('join', 'Client Connect To Asterisk Event Serv');
@@ -18,7 +26,8 @@
     socket.on('queuemember', (response) => {
         console.log(response)
         const currentTimestamp = Math.floor(Date.now() / 1000) - response.data.lastpause;
-        $('#pausedur').html(currentTimestamp)
+        const formattedTime = formatTime(currentTimestamp);
+        $('#pausedur').html(formattedTime);
     });
 
 
