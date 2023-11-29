@@ -233,6 +233,7 @@
         } else if (data.extension.match(exten) && data.paused == 1) {
             /* toolbar_header.removeClass("bg-primary bg-secondary bg-danger");
             toolbar_header.addClass("bg-warning"); */
+            $('#pausedur').html('');
         }
 
         /* $.ajax({
