@@ -388,6 +388,7 @@
         if (!isRefreshing) {
             // The page is being closed (not refreshed)
             // Perform actions for page close here
+            document.getElementById('logout-form').submit();
             console.log('Page is closing');
         }
     });
