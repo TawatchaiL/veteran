@@ -672,7 +672,7 @@ class PBXController extends Controller
                 ->whereNull('datetime_end')
                 ->whereNull('duration')
                 ->get();
-                //dd($inqueue);
+            //dd($inqueue);
             if ($inqueue->isNotEmpty()) {
                 $inbreak = DB::connection('remote_connection')
                     ->table('call_center.audit')
@@ -835,7 +835,7 @@ class PBXController extends Controller
                     ->whereNotNull('id_break')
                     ->whereNull('datetime_end')
                     ->update(['crm_id' => $user->id]);
-                //} 
+                //}
 
 
                 $user->phone_status_id = 3;
@@ -946,6 +946,84 @@ class PBXController extends Controller
                     'id' => $user->phone_status_id,
                     'message' => $user->phone_status,
                     'icon' => $user->phone_status_icon
+                ];
+            } else {
+                return ['success' => false, 'message' => 'login error'];
+            }
+        } else {
+            return ['error' => false, 'message' => 'error'];
+        }
+    }
+
+    public function AgentUnWarpapi(Request $request)
+    {
+
+        $user = User::where('phone', $request->input('phone'))
+            ->orderby('login_time', 'desc')
+            ->first();
+
+        if ($user) {
+
+            $resultb = DB::connection('remote_connection')
+                ->table('call_center.wrap_data')
+                ->where('id_agent', $user->agent_id)
+                ->whereNull('wrap_end')
+                ->first();
+
+            $wrap_end = Carbon::now();
+            $wrap_start = Carbon::parse($resultb->wrap_start);
+
+            $duration = $wrap_start->diffInSeconds($wrap_end);
+
+
+            DB::connection('remote_connection')
+                ->table('call_center.wrap_data')
+                ->where('id_agent', $user->agent_id)
+                ->whereNull('wrap_end')
+                ->update([
+                    'wrap_end' => $wrap_end,
+                    'duration' => $duration,
+                ]);
+            if ($user->agent_type == "Inbound") {
+                DB::connection('remote_connection')
+                    ->table('call_center.call_entry')
+                    ->where('uniqueid', $resultb->uniqid)
+                    ->update([
+                        'crm_id' => $user->id,
+                        'duration_warp' => $duration
+                    ]);
+
+                DB::connection('remote_connection')
+                    ->table('call_center.call_entry_today')
+                    ->where('uniqueid', $resultb->uniqid)
+                    ->update([
+                        'crm_id' => $user->id,
+                        'duration_warp' => $duration
+                    ]);
+
+                DB::connection('remote_connection')
+                    ->table('call_center.call_recording')
+                    ->where('uniqueid', $resultb->uniqid)
+                    ->update([
+                        'crm_id' => $user->id,
+                    ]);
+
+
+                $ret = $this->issable->agent_unbreak($user->phone);
+            } else {
+                $ret = $this->issable->agent_unbreak($user->phone);
+                $ret = $this->issable->agent_break($user->phone, $this->outbound_id);
+            }
+
+            $user->phone_status_id = 1;
+            $user->phone_status = "พร้อมรับสาย" . " " . $user->agent_type;
+            $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
+            $user->save();
+
+            if ($ret == true) {
+                return [
+                    'success' => true,
+                    'message' => 'unwarp success',
                 ];
             } else {
                 return ['success' => false, 'message' => 'login error'];

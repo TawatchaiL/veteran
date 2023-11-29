@@ -28,6 +28,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/agent_unbreak', [App\Http\Controllers\PBXController::class, 'AgentUnBreak'])->name('agent.unbreak');
     Route::post('/agent_warp', [App\Http\Controllers\PBXController::class, 'AgentWarp'])->name('agent.warp');
     Route::post('/agent_unwarp', [App\Http\Controllers\PBXController::class, 'AgentUnWarp'])->name('agent.unwarp');
+    Route::get('/agent_unwarp_api', [App\Http\Controllers\PBXController::class, 'AgentUnWarpAPI'])->name('agent.unwarp_api');
     Route::post('/agent_ring', [App\Http\Controllers\PBXController::class, 'AgentRing'])->name('agent.ring');
     Route::post('/agent_talk', [App\Http\Controllers\PBXController::class, 'AgentTalk'])->name('agent.talk');
     Route::post('/agent_spy', [App\Http\Controllers\PBXController::class, 'AgentSpy'])->name('agent.spy');
