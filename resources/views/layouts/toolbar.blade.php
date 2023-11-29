@@ -323,7 +323,7 @@
                             <button {{ $unbreak_button }}
                                 class="{{ $unbreak_button_class }} btn btn-warning custom-button float-left mx-1 button_unbreak"
                                 id="btn-unbreak">
-                                <i class="fas fa-clock"></i> รับสายต่อ <span id="pausedur"></span>
+                                <i class="fas fa-clock"></i> รับสายต่อ <br><span id="pausedur"></span><br>
                             </button>
                         </div>
 
