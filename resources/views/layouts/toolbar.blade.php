@@ -200,8 +200,8 @@
         <div class="modal-content">
             <div class="modal-header {{ $toolbar_header }}" id="toolbar_header">
                 <h4 class="modal-title">{{-- <i class="fas fa-wrench"></i> --}} <i class="fas fa-spin fa-gear"></i>
-                    Agent ToolBar [
-                    {{ $temporaryPhone }} ]</h4>
+                    {{ $temporaryUserName }} [
+                    {{ $temporaryPhone }} <span id="pausedur"></span> ] </h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -297,7 +297,7 @@
                         </div>
                         <button {{ $unwarp_button }} id="btn-unwarp"
                             class="{{ $unwarp_button_class }} btn btn-warning custom-button mx-1 float-left">
-                            <i class="fas fa-clock"></i> รับสายต่อ <span id="warpdur"></span>
+                            <i class="fas fa-clock"></i> รับสายต่อ 
                         </button>
 
                        {{--  <div class="mx-2 px-2">
@@ -323,7 +323,7 @@
                             <button {{ $unbreak_button }}
                                 class="{{ $unbreak_button_class }} btn btn-warning custom-button float-left mx-1 button_unbreak"
                                 id="btn-unbreak">
-                                <i class="fas fa-clock"></i> รับสายต่อ <span id="pausedur" class="mb-2"></span>
+                                <i class="fas fa-clock"></i> รับสายต่อ 
                             </button>
                         </div>
 

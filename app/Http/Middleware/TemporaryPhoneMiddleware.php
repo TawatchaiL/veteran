@@ -18,6 +18,7 @@ class TemporaryPhoneMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $user = Auth::user();
+        $temporaryUserName = $user ? $user->name : '';
         $temporaryPhone = $user ? $user->phone : '';
         $temporaryPhoneIP = $user ? $user->phone_ip : '';
         $temporaryPhoneStatusID = $user ? $user->phone_status_id : '';
