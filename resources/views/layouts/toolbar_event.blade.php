@@ -39,6 +39,7 @@
         if (!ckw) {
             console.log(response)
             localStorage.setItem('warp', 'OK');
+            sendAjaxRequest("{{ route('agent.unwarp') }}", "POST");
         }
 
     });
