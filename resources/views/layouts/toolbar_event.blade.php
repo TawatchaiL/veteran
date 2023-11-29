@@ -35,7 +35,12 @@
     });
 
     socket.on('unwarp', (response) => {
-        console.log(response)
+        ckw = localStorage.getItem('warp');
+        if (!ckw) {
+            console.log(response)
+            localStorage.setItem('warp', 'OK');
+        }
+
     });
 
 
@@ -237,10 +242,11 @@
             toolbar_header.addClass("bg-primary"); */
             $('#pausedur').html('');
             $('#pausereason').html('');
+            localStorage.removeItem('warp');
         } else if (data.extension.match(exten) && data.paused == 1) {
             /* toolbar_header.removeClass("bg-primary bg-secondary bg-danger");
             toolbar_header.addClass("bg-warning"); */
-            
+
         }
 
         /* $.ajax({
