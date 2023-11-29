@@ -381,10 +381,16 @@
     let isRefreshing = false;
 
 
-    window.addEventListener('beforeunload', function(e) {
-        e.preventDefault();
-        e.returnValue = '';
-    });
+    isBrowserClosed() {
+        var localStorageTime = parseInt(localStorage.getItem('storageTime'));
+        var currentTime = new Date().getTime();
+        var timeDifference = currentTime - localStorageTime;
+
+        if (timeDifference < 50) {
+            //Browser is being closed
+            // Do something before browser closes.
+        }
+    }
     /* // Detect refresh event
     window.addEventListener('beforeunload', function() {
         isRefreshing = true;
