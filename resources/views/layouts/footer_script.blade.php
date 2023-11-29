@@ -381,6 +381,8 @@
     // Detect refresh event
     window.addEventListener('beforeunload', function() {
         isRefreshing = true;
+
+        sendAjaxRequest("{{ route('agent.logoff') }}", "POST");
     });
 
     // Detect close event
@@ -388,7 +390,7 @@
         if (!isRefreshing) {
             // The page is being closed (not refreshed)
             // Perform actions for page close here
-            document.getElementById('logout-form').submit();
+            
             console.log('Page is closing');
         }
     });
