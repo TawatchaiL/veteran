@@ -129,7 +129,7 @@
 <div class="col-md-12">
     <aside class="sidebarr">
         <div class="single contact-info">
-            <h4 class="side-title"></h4>
+            <h4 class="side-title">การแสดงความคิดเห็น</h4>
             <ul class="list-unstyled">
                 <li>
                     <div class="icon"><i class="fa-regular fa-comment-dots"></i></div>
