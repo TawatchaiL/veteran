@@ -354,6 +354,10 @@
             });
         });
 
+        $(window).bind("beforeunload", function() {
+            return confirm("Do you really want to close?");
+        });
+
     });
 
 
@@ -378,7 +382,7 @@
 
     let isRefreshing = false;
 
-    // Detect refresh event
+    /* // Detect refresh event
     window.addEventListener('beforeunload', function() {
         isRefreshing = true;
 
@@ -393,5 +397,5 @@
             
             sendAjaxRequest("{{ route('agent.logoff') }}", "POST");
         }
-    });
+    }); */
 </script>
