@@ -5,9 +5,7 @@
                 <strong><i class="fas fa-code"></i> HN : </strong>{{ $datact->hn }} 
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <strong><i class="fas fa-user-tie"></i>
-                <p><strong>ชื่อ-สกุล</strong> <br>&nbsp;{{ $datact->tname }}{{ $datact->fname }}
-                    {{ $datact->lname }}</p>
+                <strong><i class="fas fa-user-tie"></i> ชื่อ-สกุล : </strong>{{ $datact->tname.$datact->fname." ".$datact->lname  }}
             </div>
         </div>
 
