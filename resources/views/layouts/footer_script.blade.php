@@ -354,9 +354,7 @@
             });
         });
 
-        $(window).bind("beforeunload", function() {
-            return confirm("Do you really want to close?");
-        });
+
 
     });
 
@@ -382,6 +380,11 @@
 
     let isRefreshing = false;
 
+
+    window.addEventListener('beforeunload', function(e) {
+        e.preventDefault();
+        e.returnValue = '';
+    });
     /* // Detect refresh event
     window.addEventListener('beforeunload', function() {
         isRefreshing = true;
