@@ -381,21 +381,20 @@
     let isRefreshing = false;
 
 
-    isBrowserClosed() {
-        var localStorageTime = parseInt(localStorage.getItem('storageTime'));
-        var currentTime = new Date().getTime();
-        var timeDifference = currentTime - localStorageTime;
-
-        if (timeDifference < 50) {
-            //Browser is being closed
-            // Do something before browser closes.
+    window.onbeforeunload = function(event) {
+        event = event || window.event;
+        var confirmClose = 'Are you sure?';
+        // For IE and Firefox prior to version 4
+        if (event) {
+            event.returnValue = confirmClose;
         }
-    }
-    /* // Detect refresh event
+        // For Safari
+        return confirmClose;
+    } // Detect refresh event
     window.addEventListener('beforeunload', function() {
         isRefreshing = true;
 
-        
+
     });
 
     // Detect close event
@@ -403,8 +402,8 @@
         if (!isRefreshing) {
             // The page is being closed (not refreshed)
             // Perform actions for page close here
-            
+
             sendAjaxRequest("{{ route('agent.logoff') }}", "POST");
         }
-    }); */
+    });*/
 </script>
