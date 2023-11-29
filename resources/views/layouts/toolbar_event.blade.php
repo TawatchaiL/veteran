@@ -35,13 +35,22 @@
     });
 
     socket.on('unwarp', (response) => {
-        //ckw = localStorage.getItem('warp');
-        //if (!ckw) {
-            console.log(response)
-            //localStorage.setItem('warp', 'OK');
-            //endAjaxRequest("{{ route('agent.unwarp') }}", "POST");
-        //}
-
+        $.ajax({
+            url: "{{ route('agent.hang') }}",
+            method: 'post',
+            async: true,
+            data: {
+                extension: response.phone,
+                _token: token,
+            },
+            success: function(result) {
+                setTimeout(() => {
+                    set_state_icon(result.id, result.icon, result.message);
+                    set_state_button(result.id);
+                }, 1000);
+                //positionCards();
+            }
+        });
     });
 
 
