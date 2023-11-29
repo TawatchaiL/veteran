@@ -25,9 +25,12 @@
 
     socket.on('queuemember', (response) => {
         console.log(response)
-        const currentTimestamp = Math.floor(Date.now() / 1000) - response.data.lastpause;
-        const formattedTime = formatTime(currentTimestamp);
-        $('#pausedur').html(formattedTime);
+        if (response.data.paused == 1) {
+            const currentTimestamp = Math.floor(Date.now() / 1000) - response.data.lastpause;
+            const formattedTime = formatTime(currentTimestamp);
+            $('#pausedur').html(formattedTime);
+        }
+
     });
 
 
