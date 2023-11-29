@@ -2,13 +2,11 @@
     <div class="card-body">
         <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <strong><i class="fas fa-code"></i> HN : {{ $datact->hn }} 
+                <strong><i class="fas fa-code"></i> HN : </strong>{{ $datact->hn }} 
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <div class="icon"><i class="fas fa-code"></i></div>
-                <div class="info">
-                <strong> ชื่อ-สกุล : </strong>{{ $datact->tname }}{{ $datact->fname }} {{ $datact->lname }}
-            </div>
+                <strong><i class="fas fa-user-tie"></i> ชื่อ-สกุล : </strong>{{ $datact->tname }} {{ $datact->fname }}
+                {{ $datact->lname }}
             </div>
         </div>
 
