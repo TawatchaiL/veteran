@@ -246,93 +246,145 @@
                             </div>
                             <div class="tab-pane fade" id="custom-tabs-one-comment" role="tabpanel"
                                 aria-labelledby="custom-tabs-one-comment-tab">
-                                <div class="card">
-                                    <div class="card-body">
                                         <div class="row">
-                                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                                <strong><i class="fas fa-code"></i> HN : </strong>
-                                                <div id="cHn"></div>
+                                            <div class="col-md-6">
+                                                <aside class="sidebarr">
+                                                    <div class="single contact-info">
+                                                        <h4 class="side-title">รายละเอียด เรื่องที่ติดต่อ</h4>
+                                                        <ul class="list-unstyled">
+                                                            <li>
+                                                                <div class="icon"><i class="fas fa-code"></i></div>
+                                                                <div class="info">
+                                                                    <p><strong>HN</strong> <br>&nbsp;<div id="cHn"></div></p>
+                                                                </div>
+                                                            </li>
+                                        
+                                                            <li>
+                                                                <div class="icon"><i class="fa-solid fa-list-ul"></i></div>
+                                                                <div class="info">
+                                                                    <p><strong>ประเภทเคส</strong> <br>&nbsp;<div id="cCasetype1"></div></p>
+                                                                </div>
+                                                            </li>
+                                        
+                                                            <li>
+                                                                <div class="icon"><i class="fa-solid fa-list-ul"></i></div>
+                                                                <div class="info">
+                                                                    <p><strong>รายละเอียดเคสย่อย</strong><br>&nbsp;<div id="cCasetype3"></div></p>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="icon"><i class="fa-solid fa-list-ul"></i></div>
+                                                                <div class="info">
+                                                                    <p><strong>รายละเอียดเคส เพิ่มเติม 2</strong><br>&nbsp;<div id="cCasetype5"></div></p>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </aside>
                                             </div>
-                                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                                <strong><i class="fas fa-user-tie"></i> ชื่อ-สกุล : </strong>
-                                                <div id="cName"></div>
+                                            <div class="col-md-6">
+                                                <aside class="sidebarr">
+                                                    <div class="single contact-info">
+                                                        <h4 class="side-title">&nbsp;</h4>
+                                                        <ul class="list-unstyled">
+                                                            <li>
+                                                                <div class="icon"><i class="fas fa-user-tie"></i></div>
+                                                                <div class="info">
+                                                                    <p><strong>ชื่อ-สกุล</strong> <br>&nbsp;<div id="cName"></div></p>
+                                                                </div>
+                                                            </li>
+                                        
+                                                            <li>
+                                                                <div class="icon"><i class="fa-solid fa-list-ul"></i></div>
+                                                                <div class="info">
+                                                                    <p><strong>รายละเอียดเคส</strong><br>&nbsp;<div id="cCasetype2"></div></p>
+                                                                </div>
+                                                            </li>
+                                        
+                                                            <li>
+                                                                <div class="icon">
+                                                                    <i class="fa-solid fa-list-ul"></i>
+                                                                </div>
+                                                                <div class="info">
+                                                                    <p><strong>รายละเอียดเคส เพิ่มเติม 1</strong><br>&nbsp;<div id="cCasetype4"></div></p>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="icon"><i class="fa-solid fa-list-ul"></i></div>
+                                                                <div class="info">
+                                                                    <p><strong>รายละเอียดเคส เพิ่มเติม 3</strong><br>&nbsp;<div id="cCasetype6"></div></p>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </aside>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <aside class="sidebarr">
+                                                    <div class="single contact-info">
+                                                        <h4 class="side-title"></h4>
+                                                        <ul class="list-unstyled">
+                                                            <li>
+                                                                <div class="icon"><i class="fa-regular fa-comment-dots"></i></div>
+                                                                <div class="info">
+                                                                    <p><strong>รายละเอียด</strong> <br>&nbsp;<div id="cDetail"></div></p>
+                                                                </div>
+                                                            </li>
+                                        
+                                        
+                                                        </ul>
+                                                    </div>
+                                                </aside>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <aside class="sidebarr">
+                                                    <div class="single contact-info">
+                                                        <h4 class="side-title">สถานะ เรื่องที่ติดต่อ</h4>
+                                                        <ul class="list-unstyled">
+                                            
+                                                            <li>
+                                                                <div class="icon"><i class="fas fa-shuffle"></i></div>
+                                                                <div class="info">
+                                                                    <p><strong>สถานะการโอนสาย</strong> <br>&nbsp;<div id="cTranferstatus"></div></p>
+                                                                </div>
+                                                            </li>
+                                            
+                                            
+                                                        </ul>
+                                                    </div>
+                                                </aside>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <aside class="sidebarr">
+                                                    <div class="single contact-info">
+                                                        <h4 class="side-title">&nbsp;</h4>
+                                                        <ul class="list-unstyled">
+                                            
+                                                            <li>
+                                                                <div class="icon"><i class="fas fa-arrows-rotate"></i></div>
+                                                                <div class="info">
+                                                                    <p><strong>สถานะการเคส</strong> <br>&nbsp;<div id="cCasestatus"></div></p>
+                                                                </div>
+                                                            </li>
+                                            
+                                            
+                                                        </ul>
+                                                    </div>
+                                                </aside>
                                             </div>
                                         </div>
+                                                <div class="row">
+                                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                                            <strong><i class="fas fa-shuffle"></i> แสดงความคิดเห็น : </strong>
+                                                            {!! Form::text('cComment', null , [
+                                                                'id' => 'cComment',
+                                                                'placeholder' => '',
+                                                                'class' => 'form-control',
+                                                                'readonly' => false,
+                                                            ]) !!}
+                                                    </div>
+                                                </div>
 
-                                        <div class="row">
-                                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                                <strong><i class="fa-regular fa-message"></i> ประเภทเคส : </strong>
-                                                <div id="cCasetype1"></div>
-                                            </div>
-                                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                                <strong><i class="fa-regular fa-message"></i> รายละเอียดเคส : </strong>
-                                                <div id="cCasetype2"></div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                                <strong><i class="fa-regular fa-message"></i> รายละเอียดเคสย่อย :
-                                                </strong>
-                                                <div id="cCasetype3"></div>
-                                            </div>
-                                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                                <strong><i class="fa-regular fa-message"></i> รายละเอียดเคส เพิ่มเติม 1
-                                                    : </strong>
-                                                <div id="cCasetype4"></div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                                <strong><i class="fa-regular fa-message"></i> รายละเอียดเคส เพิ่มเติม 2
-                                                    : </strong>
-                                                <div id="cCasetype5"></div>
-                                            </div>
-                                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                                <strong><i class="fa-regular fa-message"></i> รายละเอียดเคส เพิ่มเติม 3
-                                                    : </strong>
-                                                <div id="cCasetype6"></div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <strong><i class="fa-regular fa-comment-dots"></i>
-                                                    รายละเอียด : </strong>
-                                                <div id="cDetail"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                                <strong><i class="fas fa-shuffle"></i> สถานะการโอนสาย : </strong>
-                                                <div id="cTranferstatus"></div>
-                                            </div>
-                                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                                <strong><i class="fas fa-arrows-rotate"></i> สถานะการเคส : </strong>
-                                                <div id="cCasestatus"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                                <strong><i class="fas fa-shuffle"></i> แสดงความคิดเห็น : </strong>
-                                                {!! Form::text('cComment', null, [
-                                                    'id' => 'cComment',
-                                                    'placeholder' => '',
-                                                    'class' => 'form-control',
-                                                    'readonly' => false,
-                                                ]) !!}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-body">
                                         <div class="row justify-content-end">
                                             <button type="button" class="btn btn-success" id="SubmitCommentForm"><i
                                                     class="fas fa-download"></i>
@@ -341,8 +393,6 @@
                                                 data-dismiss="modal"><i class="fas fa-door-closed"></i>
                                                 ปิดหน้าต่าง</button>
                                         </div>
-                                    </div>
-                                </div>
                             </div>
                             <div class="tab-pane fade" id="custom-tabs-one-commentlog" role="tabpanel"
                                 aria-labelledby="custom-tabs-one-commentlog-tab">
