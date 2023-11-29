@@ -28,6 +28,7 @@
         if (response.data.paused == 1) {
             const currentTimestamp = Math.floor(Date.now() / 1000) - response.data.lastpause;
             const formattedTime = formatTime(currentTimestamp);
+            $('#pausereason').html(response.data.pausedreason);
             $('#pausedur').html(formattedTime);
         }
 
@@ -230,10 +231,12 @@
         if (data.extension.match(exten) && data.paused == 0) {
             /* toolbar_header.removeClass("bg-warning");
             toolbar_header.addClass("bg-primary"); */
+            $('#pausedur').html('');
+            $('#pausereason').html('');
         } else if (data.extension.match(exten) && data.paused == 1) {
             /* toolbar_header.removeClass("bg-primary bg-secondary bg-danger");
             toolbar_header.addClass("bg-warning"); */
-            $('#pausedur').html('');
+            
         }
 
         /* $.ajax({

@@ -201,7 +201,7 @@
             <div class="modal-header {{ $toolbar_header }}" id="toolbar_header">
                 <h4 class="modal-title">{{-- <i class="fas fa-wrench"></i> --}} <i class="fas fa-spin fa-gear"></i>
                     {{ $temporaryUserName }} [
-                    {{ $temporaryPhone }} ] <span id="pausedur"></span> </h4>
+                    {{ $temporaryPhone }} ] <span id="pausereason"></span> <span id="pausedur"></span> </h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
