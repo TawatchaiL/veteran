@@ -382,7 +382,7 @@
     window.addEventListener('beforeunload', function() {
         isRefreshing = true;
 
-        sendAjaxRequest("{{ route('agent.logoff') }}", "POST");
+        
     });
 
     // Detect close event
@@ -391,7 +391,7 @@
             // The page is being closed (not refreshed)
             // Perform actions for page close here
             
-            console.log('Page is closing');
+            sendAjaxRequest("{{ route('agent.logoff') }}", "POST");
         }
     });
 </script>
