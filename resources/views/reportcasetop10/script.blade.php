@@ -377,22 +377,19 @@
                 table.draw();
                 storeFieldValues();
             });
-
-            $('#reservation').on('show.daterangepicker', function(ev, picker) {
-                alert('show');
-                //$('#reservation').val('');
-            });
-            $('#reservation').on('hide.daterangepicker', function(ev, picker) {
-                alert('hide');
-                //$('#reservation').val('');
-            });
             $('#reservation').on('showCalendar.daterangepicker', function(ev, picker) {
-                alert('showCalendar');
-                //$('#reservation').val('');
+                alert($('#reservation').val());
+                
+            });
+            //$('#reservation').on('show.daterangepicker', function(ev, picker) {
+            //    alert('show');
+            //    //$('#reservation').val('');
+            //});
+            $('#reservation').on('hide.daterangepicker', function(ev, picker) {
+                alert($('#reservation').val());
             });
             $('#reservation').on('hideCalendar.daterangepicker', function(ev, picker) {
-                alert('hideCalendar');
-                //$('#reservation').val('');
+                alert($('#reservation').val());
             });
         }
         datesearch();
