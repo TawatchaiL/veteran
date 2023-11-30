@@ -380,7 +380,7 @@
             $('#reservation').on('showCalendar.daterangepicker', function(ev, picker) {
                 var arrayDate = $('#reservation').val().split(" ");
                 var sDate = arrayDate[0].split("-");
-                var eDate = arrayDate[5].split("-");
+                var eDate = arrayDate[4].split("-");
                     sDate[0] = parseInt(sDate[0]) + 543;
                     eDate[0] = parseInt(eDate[0]) + 543;
                 $('#reservation').val(sDate[0] + "-" + sDate[1] + "-" + sDate[2] + " - " + eDate[0] + "-" + eDate[1] + "-" + eDate[2]);    
