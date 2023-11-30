@@ -96,7 +96,7 @@ class LoginController extends Controller
             $ldapport = config('ldap.ldap.port');
             $ldapdn = "uid=" . $request->email . ",cn=" . config('ldap.ldap.cn') . ",dc=" . config('ldap.ldap.dc') . "";
             $ldappass = $request->password;
-            dd($ldaphost);
+            dd($ldapdn);
 
             $base = "dc=" . config('ldap.ldap.dc') . "";
             $filter = "(&(objectClass=person)(cn=*))";
