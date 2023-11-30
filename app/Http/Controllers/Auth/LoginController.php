@@ -127,19 +127,12 @@ class LoginController extends Controller
                     if ($lauser) {
                         auth()->login($lauser);
 
-                        // Check if the phone number is provided
-                        if (!$request->filled('phone')) {
-                            $message = "Phone number is required.";
-                            return redirect()->route('login')
-                                ->with('login_error', $message)
-                                ->withErrors(['phone' => $message]);
-                        }
                         $user = auth()->user();
                         $user->phone = $request->phone;
                         $user->save();
                         $login = true;
                     } else {
-                        $message = "User not found in local database";
+                        $message = "ไม่พบ User นี้ในระบบ กรุณาติดต่อผู้ดูแลระบบ";
                         return redirect()->route('login')
                             ->with('login_error', $message)
                             ->withErrors(['phone' => $message]);
@@ -147,13 +140,13 @@ class LoginController extends Controller
 
                     ldap_close($ds);
                 } else {
-                    $message = "Username or Password for Active Directory is incorrect";
+                    $message = "Username หรือ Password  Active Directory ไม่ถูกต้อง";
                     return redirect()->route('login')
                         ->with('login_error', $message)
                         ->withErrors(['phone' => $message]);
                 }
             } else {
-                $message = "Unable to connect to Active Directory";
+                $message = "ไม่สามารถเชื่อมต่อ  Active Directory ได้";
                 return redirect()->route('login')
                     ->with('login_error', $message)
                     ->withErrors(['phone' => $message]);
