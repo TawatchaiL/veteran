@@ -119,11 +119,11 @@ class LoginController extends Controller
                     for ($i = 0; $i < $entries["count"]; $i++) {
                         if (isset($entries[$i]["mail"][0])) {
                             $luser = $entries[$i]["mail"][0];
-                            echo $luser . '<br>';
                         }
                     }
 
-                    dd($luser);
+                    $lauser = User::where('email', $luser)->first();
+                    auth()->login($lauser);
 
                     ldap_close($ds);
                 } else {
