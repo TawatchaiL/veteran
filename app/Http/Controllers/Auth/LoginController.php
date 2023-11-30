@@ -114,7 +114,7 @@ class LoginController extends Controller
 
                     $sr = ldap_search($ds, $base, $filter);
                     $entries = ldap_get_entries($ds, $sr);
-                    dd($entries);
+                    //dd($entries);
 
                     for ($i = 0; $i < $entries["count"]; $i++) {
                         $luser = $entries[$i]["mail"][0];
