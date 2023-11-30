@@ -378,8 +378,20 @@
                 storeFieldValues();
             });
 
-            $('#reservation').on('cancel.daterangepicker', function(ev, picker) {
-                alert('OK');
+            $('#reservation').on('show.daterangepicker', function(ev, picker) {
+                alert('show');
+                //$('#reservation').val('');
+            });
+            $('#reservation').on('hide.daterangepicker', function(ev, picker) {
+                alert('hide');
+                //$('#reservation').val('');
+            });
+            $('#reservation').on('showCalendar.daterangepicker', function(ev, picker) {
+                alert('showCalendar');
+                //$('#reservation').val('');
+            });
+            $('#reservation').on('hideCalendar.daterangepicker', function(ev, picker) {
+                alert('hideCalendar');
                 //$('#reservation').val('');
             });
         }
