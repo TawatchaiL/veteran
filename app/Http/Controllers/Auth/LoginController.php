@@ -115,6 +115,7 @@ class LoginController extends Controller
                     // Perform LDAP search
                     $sr = ldap_search($ds, $base, $filter);
                     $entries = ldap_get_entries($ds, $sr);
+                    dd($entries);
 
                     // Display search results
                     //echo "Search results:<br>";
