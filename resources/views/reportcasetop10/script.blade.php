@@ -344,8 +344,8 @@
                 timePicker24Hour: true,
                 timePickerSeconds: true,
                 //timePickerIncrement: 5,
-                startDate: moment().subtract(543, 'years'),
-                endDate: moment().subtract(543, 'years'),
+                startDate: moment(startDate).subtract(543, 'years'),
+                endDate: moment(endDate).subtract(543, 'years'),
                 ranges: {
                     'วันนี้': todayRange,
                     'เมื่อวานนี้': yesterdayRange,
