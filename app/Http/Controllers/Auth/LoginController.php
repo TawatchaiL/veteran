@@ -96,7 +96,6 @@ class LoginController extends Controller
             $ldapport = config('ldap.ldap.port');
             $ldapdn = "uid=" . $request->email . ",cn=" . config('ldap.ldap.cn') . ",dc=" . config('ldap.ldap.dc') . "";
             $ldappass = $request->password;
-            dd($ldapdn);
 
             $base = "dc=" . config('ldap.ldap.dc') . "";
             $filter = "(&(objectClass=person)(cn=*))";
@@ -115,13 +114,16 @@ class LoginController extends Controller
 
                     $sr = ldap_search($ds, $base, $filter);
                     $entries = ldap_get_entries($ds, $sr);
-                    dd($entries);
+                    //dd($entries);
 
                     for ($i = 0; $i < $entries["count"]; $i++) {
-                        $luser = $entries[$i]["mail"][0];
+                        if (isset($entries[$i]["mail"][0])) {
+                            $luser = $entries[$i]["mail"][0];
+                            echo $luser . '<br>';
+                        }
                     }
 
-                    echo $luser;
+                    dd($luser);
 
                     ldap_close($ds);
                 } else {
