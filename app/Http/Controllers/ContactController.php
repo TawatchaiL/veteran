@@ -128,6 +128,7 @@ class ContactController extends Controller
             ->orWhere('crm_contacts.telhome', '=', $con)
             ->orWhere('crm_contacts.workno', '=', $con)
             ->orWhere('crm_phone_emergencies.emerphone', '=', $con)
+            ->groupBy('crm_contacts.id')
             ->get();
         $contactcount = count($datap);
         if ($contactcount > 1) {
