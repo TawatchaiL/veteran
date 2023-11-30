@@ -12,6 +12,7 @@ $ds = ldap_connect($ldaphost, $ldapport);
 if ($ds) {
     ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 3);
     ldap_set_option($ds, LDAP_OPT_REFERRALS, 0);
+    ldap_set_option(NULL, LDAP_OPT_DEBUG_LEVEL, 7);
 
     $r = ldap_bind($ds, $ldapdn, $ldappass);
 
