@@ -379,7 +379,7 @@
             });
             $('#reservation').on('showCalendar.daterangepicker', function(ev, picker) {
                 alert($('#reservation').val());
-                alert(picker);
+                alert(count(picker));
                 
             });
             //$('#reservation').on('show.daterangepicker', function(ev, picker) {
