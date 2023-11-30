@@ -10,7 +10,6 @@
 /config/asterisk.php
 /storage/*.key
 /vendor
-/config
 .env
 .env.backup
 .env.production
