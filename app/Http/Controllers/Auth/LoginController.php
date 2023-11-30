@@ -110,27 +110,49 @@ class LoginController extends Controller
                 $r = ldap_bind($ds, $ldapdn, $ldappass);
 
                 if ($r) {
-                    echo "LDAP bind successful<br>";
-
                     $sr = ldap_search($ds, $base, $filter);
                     $entries = ldap_get_entries($ds, $sr);
-                    //dd($entries);
+
+                    $luser = null;
 
                     for ($i = 0; $i < $entries["count"]; $i++) {
                         if (isset($entries[$i]["mail"][0])) {
                             $luser = $entries[$i]["mail"][0];
+                            break;
                         }
                     }
 
                     $lauser = User::where('email', $luser)->first();
-                    $login = auth()->login($lauser);
+
+                    if ($lauser) {
+                        auth()->login($lauser);
+
+                        // Check if the phone number is provided
+                        if (!$request->filled('phone')) {
+                            $message = "Phone number is required.";
+                            return redirect()->route('login')
+                                ->with('login_error', $message)
+                                ->withErrors(['phone' => $message]);
+                        }
+                    } else {
+                        $message = "User not found in local database";
+                        return redirect()->route('login')
+                            ->with('login_error', $message)
+                            ->withErrors(['phone' => $message]);
+                    }
 
                     ldap_close($ds);
                 } else {
-                    echo "LDAP bind failed";
+                    $message = "Username or Password for Active Directory is incorrect";
+                    return redirect()->route('login')
+                        ->with('login_error', $message)
+                        ->withErrors(['phone' => $message]);
                 }
             } else {
-                echo "Unable to connect to LDAP server";
+                $message = "Unable to connect to Active Directory";
+                return redirect()->route('login')
+                    ->with('login_error', $message)
+                    ->withErrors(['phone' => $message]);
             }
         } else {
             $login = $this->attemptLogin($request);
