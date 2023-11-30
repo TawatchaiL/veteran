@@ -331,13 +331,13 @@
             var endTime = '23:59:59';
 
             var todayRange = [moment(startTime, 'HH:mm:ss'), moment(endTime, 'HH:mm:ss')];
-            var yesterdayRange = [moment().subtract(1, 'days').startOf('day').set('hour', 0).set('minute',
-                0).set('second', 0), moment().subtract(1, 'days').endOf('day').set('hour', 23).set(
+            var yesterdayRange = [moment().add(543, 'y').subtract(1, 'days').startOf('day').set('hour', 0).set('minute',
+                0).set('second', 0), moment().add(543, 'y').subtract(1, 'days').endOf('day').set('hour', 23).set(
                 'minute', 59).set('second', 59)];
-            var last7DaysRange = [moment().subtract(6, 'days').startOf('day').set('hour', 0).set('minute',
-                0).set('second', 0), moment(endTime, 'HH:mm:ss')];
-            var last30DaysRange = [moment().subtract(29, 'days').startOf('day').set('hour', 0).set('minute',
-                0).set('second', 0), moment(endTime, 'HH:mm:ss')];
+            var last7DaysRange = [moment().add(543, 'y').subtract(6, 'days').startOf('day').set('hour', 0).set('minute',
+                0).set('second', 0), moment(endTime, 'HH:mm:ss').add(543, 'y')];
+            var last30DaysRange = [moment().add(543, 'y').subtract(29, 'days').startOf('day').set('hour', 0).set('minute',
+                0).set('second', 0), moment(endTime, 'HH:mm:ss').add(543, 'y')];
 
             $('#reservation').daterangepicker({
                 timePicker: true,
@@ -351,8 +351,8 @@
                     'เมื่อวานนี้': yesterdayRange,
                     'ย้อนหลัง 7 วัน': last7DaysRange,
                     'ย้อนหลัง 30 วัน': last30DaysRange,
-                    'เดือนนี้': [moment().startOf('month'), moment().endOf('month')],
-                    'เดือนที่แล้ว': [moment().subtract(1, 'month').startOf('month'), moment()
+                    'เดือนนี้': [moment().add(543, 'y').startOf('month'), moment().add(543, 'y').endOf('month')],
+                    'เดือนที่แล้ว': [moment().add(543, 'y').subtract(1, 'month').startOf('month'), moment().add(543, 'y')
                         .subtract(1, 'month').endOf('month')
                     ]
                 },
