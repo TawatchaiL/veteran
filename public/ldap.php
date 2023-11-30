@@ -5,7 +5,7 @@ $ldapport = "389";
 //$ldapdn = $_POST["user_name"]."@ipst.ac.th";
 $ldapdn = $_POST["user_name"] . $_POST["ips_name"];
 $ldappass = $_POST["password"];
-$ldapdn = "manon2029@manon2029.local";
+$ldapdn = "manon2029@manon2029";
 $ldappass = "Hackbychu@2022";
 $base = "cn=users,dc=manon2029";
 //$base = "ou=VPN,dc=ad,dc=ipst,dc=ac,dc=th";
