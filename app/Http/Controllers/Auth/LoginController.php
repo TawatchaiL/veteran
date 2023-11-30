@@ -92,8 +92,47 @@ class LoginController extends Controller
         $this->validateLogin($request);
 
         if ($request->ldap == 1) {
-            dd('ldap');
-        } 
+            $ldaphost = config('ldap.ldap.host'); // Replace with the actual IP address of your Synology NAS
+            $ldapport = config('ldap.ldap.port'); // Default LDAP port
+            $ldapdn = "uid=".$request->email.",cn=".config('ldap.ldap.cn').",dc=".config('ldap.ldap.dc').""; // Replace with the admin DN of your Synology LDAP
+            $ldappass = $request->password; // Replace with the admin password
+
+            $base = "dc=".config('ldap.ldap.dc').""; // Replace with the base DN of your LDAP directory
+            $filter = "(&(objectClass=person)(cn=*))"; // Adjust the filter based on your requirements
+
+            $ds = ldap_connect($ldaphost, $ldapport);
+
+            if ($ds) {
+                ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 3);
+                ldap_set_option($ds, LDAP_OPT_REFERRALS, 0);
+                ldap_set_option(NULL, LDAP_OPT_DEBUG_LEVEL, 7);
+
+                $r = ldap_bind($ds, $ldapdn, $ldappass);
+
+                if ($r) {
+                    echo "LDAP bind successful<br>";
+
+                    // Perform LDAP search
+                    $sr = ldap_search($ds, $base, $filter);
+                    $entries = ldap_get_entries($ds, $sr);
+
+                    // Display search results
+                    //echo "Search results:<br>";
+                    //print_r($entries);
+                    for ($i = 0; $i < $entries["count"]; $i++) {
+                        $luser = $entries[$i]["mail"][0];
+                    }
+
+                    echo $luser;
+
+                    ldap_close($ds);
+                } else {
+                    echo "LDAP bind failed";
+                }
+            } else {
+                echo "Unable to connect to LDAP server";
+            }
+        }
 
 
         //check already login

@@ -98,7 +98,7 @@
                         @csrf
 
                         <div class="input-group mb-3">
-                            <input type="email" name="email" value="test@gmail.com{{-- {{ old('email') }} --}}"
+                            <input type="text" name="email" value="{{-- {{ old('email') }} --}}"
                                 placeholder="Email" class="form-control @error('email') is-invalid @enderror">
                             <div class="input-group-append">
                                 <div class="input-group-text"><span class="fas fa-user"></span></div>
