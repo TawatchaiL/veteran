@@ -300,13 +300,13 @@
             //startDate = moment(currentDate).subtract(15, 'days').format('YYYY-MM-DD');
             // Set the end date to the end of the current month
             //endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
-            startDate = moment().format('YYYY-MM-DD HH:mm:ss');
-            endDate = moment(currentDate).format('YYYY-MM-DD HH:mm:ss');
+            startDate = moment().add(543, 'y').format('YYYY-MM-DD HH:mm:ss');
+            endDate = moment(currentDate).add(543, 'y').format('YYYY-MM-DD HH:mm:ss');
         }
         function datereset() {
             var currentDate = moment();
-            startDate = moment().format('YYYY-MM-DD HH:mm:ss');
-            endDate = moment(currentDate).format('YYYY-MM-DD HH:mm:ss');
+            startDate = moment().add(543, 'y').format('YYYY-MM-DD HH:mm:ss');
+            endDate = moment(currentDate).add(543, 'y').format('YYYY-MM-DD HH:mm:ss');
         }
 
         function retrieveFieldValues() {
@@ -381,8 +381,8 @@
                 var arrayDate = $('#reservation').val().split(" ");
                 var sDate = arrayDate[0].split("-");
                 var eDate = arrayDate[3].split("-");
-                    sDate[0] = parseInt(sDate[0]) + 543;
-                    eDate[0] = parseInt(eDate[0]) + 543;
+                    sDate[0] = parseInt(sDate[0]) - 543;
+                    eDate[0] = parseInt(eDate[0]) - 543;
                 $('#reservation').val(sDate[0] + "-" + sDate[1] + "-" + sDate[2] + " " + arrayDate[1] + " - " + eDate[0] + "-" + eDate[1] + "-" + eDate[2] + " " + arrayDate[4]);    
             });
             //$('#reservation').on('show.daterangepicker', function(ev, picker) {
