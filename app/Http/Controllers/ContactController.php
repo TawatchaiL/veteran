@@ -123,9 +123,11 @@ class ContactController extends Controller
         $contact_name = "";
         $contact_lname = "";
         $datap = DB::table('crm_contacts')
-            ->where('phoneno', '=', $con)
-            ->orWhere('telhome', '=', $con)
-            ->orWhere('workno', '=', $con)
+            ->join('crm_phone_emergencies', 'crm_contacts.id', '=', 'crm_phone_emergencies.contact_id')
+            ->where('crm_contacts.phoneno', '=', $con)
+            ->orWhere('crm_contacts.telhome', '=', $con)
+            ->orWhere('crm_contacts.workno', '=', $con)
+            ->orWhere('crm_phone_emergencies.emerphone', '=', $con)
             ->get();
         $contactcount = count($datap);
         if ($contactcount > 1) {
