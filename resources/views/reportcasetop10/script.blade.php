@@ -379,8 +379,6 @@
             });
             $('#reservation').on('showCalendar.daterangepicker', function(ev, picker) {
                 alert($('#reservation').val());
-                alert(count(picker));
-                
             });
             //$('#reservation').on('show.daterangepicker', function(ev, picker) {
             //    alert('show');
