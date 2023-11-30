@@ -7,7 +7,7 @@ $ldapdn = $_POST["user_name"] . $_POST["ips_name"];
 $ldappass = $_POST["password"];
 $ldapdn = "manon2029";
 $ldappass = "Hackbychu@2022";
-$base = "dc=manon2029";
+$base = "uid=root,cn=users,dc=manon2029";
 //$base = "ou=VPN,dc=ad,dc=ipst,dc=ac,dc=th";
 $filter = "sAMAccountName=" . $ldapdn . "";
 //$filter = "Mail=".$_POST["user_name"]."";
