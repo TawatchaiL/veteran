@@ -4,7 +4,7 @@ $ldapport = "389"; // Default LDAP port
 $ldapdn = "uid=root,cn=users,dc=synology"; // Replace with the admin DN of your Synology LDAP
 $ldappass = "Hackbychu@2022"; // Replace with the admin password
 
-$base = "ou=users,dc=synology"; // Replace with the base DN of your LDAP directory
+$base = "dc=synology"; // Replace with the base DN of your LDAP directory
 $filter = "(&(objectClass=person)(cn=*))"; // Adjust the filter based on your requirements
 
 $ds = ldap_connect($ldaphost, $ldapport);
