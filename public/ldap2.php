@@ -16,8 +16,7 @@ if (!$ad) {
         die("<br><br>
 <div align='center'> ท่านกรอกรหัสผ่านผิดพลาด
 <br>
-</div>
-<meta http-equiv='refresh' content='3 ;url=index.php'>");
+</div>");
     } else {
 
         echo "ok";
