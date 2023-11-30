@@ -107,7 +107,19 @@ class LoginController extends Controller
                 ldap_set_option($ds, LDAP_OPT_REFERRALS, 0);
                 ldap_set_option(NULL, LDAP_OPT_DEBUG_LEVEL, 7);
 
-                $r = ldap_bind($ds, $ldapdn, $ldappass);
+                try {
+                    $r = ldap_bind($ds, $ldapdn, $ldappass);
+                } catch (\Exception $e) {
+                    ldap_close($ds);
+
+                    // You can handle the error as needed, for example, log it
+                    // or return a response with the error message
+                    $message = "Username หรือ Password  Active Directory ไม่ถูกต้อง";
+                    return redirect()->route('login')
+                        ->with('login_error', $message)
+                        ->withErrors(['phone' => $message]);
+                }
+
 
                 if ($r) {
                     $sr = ldap_search($ds, $base, $filter);
@@ -132,6 +144,7 @@ class LoginController extends Controller
                         $user->save();
                         $login = true;
                     } else {
+                        ldap_close($ds);
                         $message = "ไม่พบ User นี้ในระบบ กรุณาติดต่อผู้ดูแลระบบ";
                         return redirect()->route('login')
                             ->with('login_error', $message)
