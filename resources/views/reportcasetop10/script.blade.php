@@ -377,6 +377,10 @@
                 table.draw();
                 storeFieldValues();
             });
+
+            $('#reservation').on('cancel.daterangepicker', function(ev, picker) {
+            $('#reservation').val('');
+            });
         }
         datesearch();
         daterange();
