@@ -123,7 +123,7 @@ class ContactController extends Controller
         $contact_name = "";
         $contact_lname = "";
         $datap = DB::table('crm_contacts')
-            ->select('crm_contacts.*', DB::raw('count(crm_contacts.id) as sumcases'))
+            ->select('crm_contacts.*')
             ->leftjoin('crm_phone_emergencies', 'crm_contacts.id', '=', 'crm_phone_emergencies.contact_id')
             ->where('crm_contacts.phoneno', '=', $con)
             ->orWhere('crm_contacts.telhome', '=', $con)
