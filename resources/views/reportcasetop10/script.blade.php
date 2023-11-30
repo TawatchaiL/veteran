@@ -379,7 +379,8 @@
             });
 
             $('#reservation').on('cancel.daterangepicker', function(ev, picker) {
-            $('#reservation').val('');
+                alert('OK');
+                //$('#reservation').val('');
             });
         }
         datesearch();
