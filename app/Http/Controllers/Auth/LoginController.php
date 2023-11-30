@@ -107,30 +107,62 @@ class LoginController extends Controller
                 ldap_set_option($ds, LDAP_OPT_REFERRALS, 0);
                 ldap_set_option(NULL, LDAP_OPT_DEBUG_LEVEL, 7);
 
-                $r = ldap_bind($ds, $ldapdn, $ldappass);
+                try {
+                    $r = ldap_bind($ds, $ldapdn, $ldappass);
+                } catch (\Exception $e) {
+                    ldap_close($ds);
+
+                    // You can handle the error as needed, for example, log it
+                    // or return a response with the error message
+                    $message = "Username หรือ Password  Active Directory ไม่ถูกต้อง";
+                    return redirect()->route('login')
+                        ->with('login_error', $message)
+                        ->withErrors(['phone' => $message]);
+                }
+
 
                 if ($r) {
-                    echo "LDAP bind successful<br>";
-
                     $sr = ldap_search($ds, $base, $filter);
                     $entries = ldap_get_entries($ds, $sr);
-                    //dd($entries);
+
+                    $luser = null;
 
                     for ($i = 0; $i < $entries["count"]; $i++) {
                         if (isset($entries[$i]["mail"][0])) {
                             $luser = $entries[$i]["mail"][0];
+                            break;
                         }
                     }
 
                     $lauser = User::where('email', $luser)->first();
-                    $login = auth()->login($lauser);
+
+                    if ($lauser) {
+                        auth()->login($lauser);
+
+                        $user = auth()->user();
+                        $user->phone = $request->phone;
+                        $user->save();
+                        $login = true;
+                    } else {
+                        ldap_close($ds);
+                        $message = "ไม่พบ User นี้ในระบบ กรุณาติดต่อผู้ดูแลระบบ";
+                        return redirect()->route('login')
+                            ->with('login_error', $message)
+                            ->withErrors(['phone' => $message]);
+                    }
 
                     ldap_close($ds);
                 } else {
-                    echo "LDAP bind failed";
+                    $message = "Username หรือ Password  Active Directory ไม่ถูกต้อง";
+                    return redirect()->route('login')
+                        ->with('login_error', $message)
+                        ->withErrors(['phone' => $message]);
                 }
             } else {
-                echo "Unable to connect to LDAP server";
+                $message = "ไม่สามารถเชื่อมต่อ  Active Directory ได้";
+                return redirect()->route('login')
+                    ->with('login_error', $message)
+                    ->withErrors(['phone' => $message]);
             }
         } else {
             $login = $this->attemptLogin($request);
