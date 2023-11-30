@@ -135,7 +135,14 @@
                             @enderror
 
                         </div>
-
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="icheck-primary from-group">
+                                    <input type="checkbox" id="ldap" name="ldap" value="1">
+                                    <label for="remember">เข้าสู่ระบบด้วย Active Directory</label>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
                             {{-- <div class="col-8">
                                 <div class="icheck-primary">
@@ -143,12 +150,7 @@
                                     <label for="remember">Remember Me</label>
                                 </div>
                             </div> --}}
-                            <div class="col-8">
-                                <div class="icheck-primary">
-                                    <input type="checkbox" id="ldap" value="1">
-                                    <label for="remember">เข้าระบบด้วย Active Directory</label>
-                                </div>
-                            </div>
+                           
 
                             <div class="col-6">
                                 <button type="submit" class="btn btn-primary btn-block">เข้าสู่ระบบ</button>
