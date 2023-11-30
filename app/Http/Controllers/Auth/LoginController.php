@@ -88,7 +88,13 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+
         $this->validateLogin($request);
+
+        if ($request->ldap == 1) {
+            dd('ldap');
+        } 
+
 
         //check already login
         /* $inuseUCount = User::where('phone', '!=', '')

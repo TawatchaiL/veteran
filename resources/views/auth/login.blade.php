@@ -143,6 +143,12 @@
                                     <label for="remember">Remember Me</label>
                                 </div>
                             </div> --}}
+                            <div class="col-8">
+                                <div class="icheck-primary">
+                                    <input type="checkbox" id="ldap" value="1">
+                                    <label for="remember">เข้าระบบด้วย Active Directory</label>
+                                </div>
+                            </div>
 
                             <div class="col-6">
                                 <button type="submit" class="btn btn-primary btn-block">เข้าสู่ระบบ</button>
