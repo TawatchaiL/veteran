@@ -1,6 +1,6 @@
 
 <?php
-$server = " 192.168.1.103"; //dc1-nu
+$server = "192.168.1.103"; //dc1-nu
 $user = $_POST["username"] . "@manon2029.local";
 $pass = "Hackbychu@2022";
 
