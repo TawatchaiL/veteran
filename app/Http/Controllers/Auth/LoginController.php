@@ -134,6 +134,7 @@ class LoginController extends Controller
                                 ->with('login_error', $message)
                                 ->withErrors(['phone' => $message]);
                         }
+                        $login = true;
                     } else {
                         $message = "User not found in local database";
                         return redirect()->route('login')
