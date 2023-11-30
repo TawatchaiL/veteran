@@ -24,8 +24,13 @@ if ($ds) {
         $entries = ldap_get_entries($ds, $sr);
 
         // Display search results
-        echo "Search results:<br>";
-        print_r($entries);
+        //echo "Search results:<br>";
+        //print_r($entries);
+        for ($i = 0; $i < $info["count"]; $i++) {
+            $luser = $info[$i]["mail"][0];
+        }
+
+        echo $luser;
 
         ldap_close($ds);
     } else {
@@ -34,4 +39,3 @@ if ($ds) {
 } else {
     echo "Unable to connect to LDAP server";
 }
-?>
