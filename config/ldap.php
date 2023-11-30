@@ -1,7 +1,7 @@
 <?php
 return [
     'ldap' => [
-        'host' => env('LDAP_HOST', '192.168.1.103'),
+        'host' => env('LDAP_HOST', '192.168.1.105'),
         'port' => env('LDAP_PORT', '389'),
         'cn' => env('LDAP_CN', 'users'),
         'dc' => env('LDAP_DC', 'synology'),
