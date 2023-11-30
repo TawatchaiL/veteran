@@ -134,6 +134,9 @@ class LoginController extends Controller
                                 ->with('login_error', $message)
                                 ->withErrors(['phone' => $message]);
                         }
+                        $user = auth()->user();
+                        $user->phone = $request->phone;
+                        $user->save();
                         $login = true;
                     } else {
                         $message = "User not found in local database";
