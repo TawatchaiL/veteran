@@ -1,7 +1,7 @@
 <?php
 $ldaphost = "192.168.1.103"; // Replace with the actual IP address of your Synology NAS
 $ldapport = "389"; // Default LDAP port
-$ldapdn = "uid=root,cn=users,dc=synology"; // Replace with the admin DN of your Synology LDAP
+$ldapdn = "uid=manon2029,cn=users,dc=synology"; // Replace with the admin DN of your Synology LDAP
 $ldappass = "Hackbychu@2022"; // Replace with the admin password
 
 $base = "dc=synology"; // Replace with the base DN of your LDAP directory
