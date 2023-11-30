@@ -378,15 +378,15 @@
                 storeFieldValues();
             });
             $('#reservation').on('showCalendar.daterangepicker', function(ev, picker) {
-
-            });
-            $('#reservation').on('show.daterangepicker', function(ev, picker) {
                 var arrayDate = $('#reservation').val().split(" ");
                 var sDate = arrayDate[0].split("-");
                 var eDate = arrayDate[3].split("-");
                     sDate[0] = parseInt(sDate[0]) + 543;
                     eDate[0] = parseInt(eDate[0]) + 543;
-                $('#reservation').val(sDate[0] + "-" + sDate[1] + "-" + sDate[2] + " " + arrayDate[1] + " - " + eDate[0] + "-" + eDate[1] + "-" + eDate[2] + " " + arrayDate[4]);    
+                $('#reservation').val(sDate[0] + "-" + sDate[1] + "-" + sDate[2] + " " + arrayDate[1] + " - " + eDate[0] + "-" + eDate[1] + "-" + eDate[2] + " " + arrayDate[4]);  
+            });
+            $('#reservation').on('show.daterangepicker', function(ev, picker) {
+  
             });
             $('#reservation').on('hide.daterangepicker', function(ev, picker) {
 
