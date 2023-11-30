@@ -26,8 +26,8 @@ if ($ds) {
         // Display search results
         //echo "Search results:<br>";
         //print_r($entries);
-        for ($i = 0; $i < $info["count"]; $i++) {
-            $luser = $info[$i]["mail"][0];
+        for ($i = 0; $i < $entries["count"]; $i++) {
+            $luser = $entries[$i]["mail"][0];
         }
 
         echo $luser;
