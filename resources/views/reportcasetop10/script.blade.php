@@ -369,6 +369,9 @@
                         'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'
                     ],
                     firstDay: 1
+                },
+                isCustomDate: {
+                    
                 }
             });
             // Apply the custom date range filter on input change
