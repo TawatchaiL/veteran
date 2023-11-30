@@ -123,6 +123,7 @@ class ContactController extends Controller
         $contact_name = "";
         $contact_lname = "";
         $datap = DB::table('crm_contacts')
+            ->select('crm_contacts.*')
             ->join('crm_phone_emergencies', 'crm_contacts.id', '=', 'crm_phone_emergencies.contact_id')
             ->where('crm_contacts.phoneno', '=', $con)
             ->orWhere('crm_contacts.telhome', '=', $con)
