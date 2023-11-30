@@ -123,7 +123,7 @@ class LoginController extends Controller
                         }
                     }
 
-                    echo $luser;
+                    dd($luser);
 
                     ldap_close($ds);
                 } else {
