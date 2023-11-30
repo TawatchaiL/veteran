@@ -123,7 +123,7 @@ class LoginController extends Controller
                     }
 
                     $lauser = User::where('email', $luser)->first();
-                    auth()->login($lauser);
+                    $login = auth()->login($lauser);
 
                     ldap_close($ds);
                 } else {
@@ -132,6 +132,8 @@ class LoginController extends Controller
             } else {
                 echo "Unable to connect to LDAP server";
             }
+        } else {
+            $login = $this->attemptLogin($request);
         }
 
 
@@ -155,7 +157,7 @@ class LoginController extends Controller
         } */
 
 
-        if ($this->attemptLogin($request)) {
+        if ($login) {
             // Update the user's phone if provided
             if ($request->has('phone')) {
                 $user = Auth::user();
