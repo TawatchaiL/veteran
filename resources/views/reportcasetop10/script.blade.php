@@ -596,6 +596,9 @@
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
             columns: [{
+                    data: 'rowno',
+                    name: 'rowno'
+                },{
                     data: 'casetype1',
                     name: 'casetype1'
                 },
