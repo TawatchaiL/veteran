@@ -596,13 +596,6 @@
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
             columns: [{
-                    data: 'checkbox',
-                    name: 'checkbox',
-                    orderable: false,
-                    searchable: false,
-                    className: 'no-print'
-                },
-                {
                     data: 'casetype1',
                     name: 'casetype1'
                 },
