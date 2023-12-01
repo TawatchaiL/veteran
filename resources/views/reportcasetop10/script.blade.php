@@ -620,8 +620,7 @@
             .every(function (cell) {
                 this.data(i++);
             });
-    })
-    .draw();
+        }).draw();
 
         $('#exportPDFButton').on('click', function() {
             /* var doc = new jsPDF();
