@@ -54,7 +54,7 @@
                         <div class="icon"><i class="fa-solid fa-list-ul"></i></div>
                         <div class="info">
                             <p><strong>รายละเอียดเคส</strong><br>&nbsp;{{ $caselog->casetype2 !== '' ? $caselog->casetype2 : '-'  }}
-                                {{ $cases->casetype2 !== $caselog->casetype2 ? ' >> '.$cases->casetype2 : ''  }}</p>
+                                {{ $cases->casetype2 !== $caselog->casetype2 and $cases->casetype2 !== '' ? ' >> '.$cases->casetype2 : ''  }}</p>
                         </div>
                     </li>
 

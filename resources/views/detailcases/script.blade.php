@@ -619,7 +619,7 @@
             ]
         });
         
-        table.on('order.dt search.dt', function () {
+       /* table.on('order.dt search.dt', function () {
         let i = 1;
  
         table
@@ -628,7 +628,7 @@
                 this.data(i++);
             });
         }).draw();
-
+        */
         $('#exportPDFButton').on('click', function() {
             /* var doc = new jsPDF();
 
