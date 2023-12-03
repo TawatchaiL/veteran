@@ -15,7 +15,7 @@
                         <div class="icon"><i class="fa-solid fa-list-ul"></i></div>
                         <div class="info">
                             <p><strong>ประเภทเคส</strong> <br>&nbsp;{{ $caselog->casetype1 !== '' ? $caselog->casetype1 : '-'  }}
-                                {{ $cases->casetype1 !== $caselog->casetype1 ? ' >> '.$cases->casetype1 : ''  }}</p>
+                                {{ $cases->casetype1 !== $caselog->casetype1 and $cases->casetype1 !== '' ? ' >> '.$cases->casetype1 : ''  }}</p>
                         </div>
                     </li>
 
@@ -23,14 +23,14 @@
                         <div class="icon"><i class="fa-solid fa-list-ul"></i></div>
                         <div class="info">
                             <p><strong>รายละเอียดเคสย่อย</strong><br>&nbsp;{{ $caselog->casetype3 !== '' ? $caselog->casetype3 : '-'  }}
-                                {{ $cases->casetype3 !== $caselog->casetype3 ? ' >> '.$cases->casetype3 : ''  }}</p>
+                                {{ $cases->casetype3 !== $caselog->casetype3 and $cases->casetype3 !== '' ? ' >> '.$cases->casetype3 : ''  }}</p>
                         </div>
                     </li>
                     <li>
                         <div class="icon"><i class="fa-solid fa-list-ul"></i></div>
                         <div class="info">
                             <p><strong>รายละเอียดเคส เพิ่มเติม 2</strong><br>&nbsp;{{ $caselog->casetype5 !== '' ? $caselog->casetype5 : '-'  }}
-                                {{ $cases->casetype5 !== $caselog->casetype5 ? ' >> '.$cases->casetype5 : ''  }}</p>
+                                {{ $cases->casetype5 !== $caselog->casetype5 and $cases->casetype5 !== '' ? ' >> '.$cases->casetype5 : ''  }}</p>
                         </div>
                     </li>
                 </ul>
@@ -64,14 +64,14 @@
                         </div>
                         <div class="info">
                             <p><strong>รายละเอียดเคส เพิ่มเติม 1</strong><br>&nbsp;{{ $caselog->casetype4 !== '' ? $caselog->casetype4 : '-'  }}
-                                {{ $cases->casetype4 !== $caselog->casetype4 ? ' >> '.$cases->casetype4 : ''  }}</p>
+                                {{ $cases->casetype4 !== $caselog->casetype4 and $cases->casetype4 !== '' ? ' >> '.$cases->casetype4 : ''  }}</p>
                         </div>
                     </li>
                     <li>
                         <div class="icon"><i class="fa-solid fa-list-ul"></i></div>
                         <div class="info">
                             <p><strong>รายละเอียดเคส เพิ่มเติม 3</strong><br>&nbsp;{{ $caselog->casetype6 !== '' ? $caselog->casetype6 : '-'  }}
-                                {{ $cases->casetype6 !== $caselog->casetype6 ? ' >> '.$cases->casetype6 : ''  }}</p>
+                                {{ $cases->casetype6 !== $caselog->casetype6 and $cases->casetype6 !== '' ? ' >> '.$cases->casetype6 : ''  }}</p>
                         </div>
                     </li>
                 </ul>
