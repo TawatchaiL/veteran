@@ -516,6 +516,7 @@
                         doc.pageMargins = [20,100,20,30];
 						doc.styles.tableHeader.fontSize = 16;
                         doc.styles.tableBodyOdd.alignment = 'center';
+                        doc.styles.tableBodyEven.alignment = 'center';
                         doc.styles.tableFooter.fontSize = 16;
                         doc['header']=(function() {
 							return {
