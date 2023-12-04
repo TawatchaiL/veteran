@@ -507,6 +507,7 @@
                     customize: function ( doc ) {
                     doc.defaultStyle = {
                             font: 'THSarabun',
+                            alignment: 'center',
                             fontSize: 16
                         };
                         doc.content.splice(0,1);
@@ -533,7 +534,7 @@
 							}
 						});
 
-                        doc.content[0].table.widths = [10, 400, '*'];
+                        doc.content[0].table.widths = [40, 400, '*'];
                         var objLayout = {};
 						objLayout['hLineWidth'] = function(i) { return .5; };
 						objLayout['vLineWidth'] = function(i) { return .5; };
@@ -546,9 +547,9 @@
 						doc.content[0].layout = objLayout;
 
                         for (var i = 1; i < doc.content[0].table.body.length; i++) {
-                            doc.content[0].table.body[i][0].alignment = 'center';
-                            doc.content[0].table.body[i][1].alignment = 'left';
-                            doc.content[0].table.body[i][2].alignment = 'center';
+                            //doc.content[0].table.body[i][0].alignment = 'center';
+                            //doc.content[0].table.body[i][1].alignment = 'left';
+                            //doc.content[0].table.body[i][2].alignment = 'center';
                         }
                 }
                 },
