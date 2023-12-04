@@ -549,11 +549,11 @@
                         objLayout['paddingBottom'] = function(i) { return 3; };
 						doc.content[0].layout = objLayout;
 
-                        for (var i = 1; i < doc.content[0].table.body.length; i++) {
+                        //for (var i = 1; i < doc.content[0].table.body.length; i++) {
                             //doc.content[0].table.body[i][0].alignment = 'center';
                             //doc.content[0].table.body[i][1].alignment = 'left';
                             //doc.content[0].table.body[i][2].alignment = 'center';
-                        }
+                        //}
                 }
                 },
                 {
