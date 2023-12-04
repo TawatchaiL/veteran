@@ -533,7 +533,7 @@
 							}
 						});
 
-                        doc.content[0].table.widths = [400, '*'];
+                        doc.content[0].table.widths = [10, 400, '*'];
                         var objLayout = {};
 						objLayout['hLineWidth'] = function(i) { return .5; };
 						objLayout['vLineWidth'] = function(i) { return .5; };
@@ -546,8 +546,9 @@
 						doc.content[0].layout = objLayout;
 
                         for (var i = 1; i < doc.content[0].table.body.length; i++) {
-                            doc.content[0].table.body[i][0].alignment = 'left';
-                            doc.content[0].table.body[i][1].alignment = 'center';
+                            doc.content[0].table.body[i][0].alignment = 'center';
+                            doc.content[0].table.body[i][1].alignment = 'left';
+                            doc.content[0].table.body[i][2].alignment = 'center';
                         }
                 }
                 },
@@ -597,15 +598,15 @@
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
             columns: [{
-                    data: 'checkbox',
-                    name: 'checkbox',
+                    data: 'row_number',
+                    name: 'row_number',
                     orderable: false,
                     searchable: false,
-                    className: 'no-print'
+//                    className: 'no-print'
                 },
                 {
-                    data: 'row_number',
-                    name: 'row_number'
+                    data: 'casetype1',
+                    name: 'casetype1'
                 },
                 {
                     data: 'sumcases',
