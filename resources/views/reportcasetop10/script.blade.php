@@ -502,9 +502,9 @@
                     "title": '10 อันดับเรื่องที่ติดต่อมากที่สุด',
                     "download": 'open',
                     "autoPrint": true,
-                    exportOptions: {
-                        columns: ':visible:not(.no-print)',
-                    },
+                    //exportOptions: {
+                    //    columns: ':visible:not(.no-print)',
+                    //},
                     customize: function ( doc ) {
                     doc.defaultStyle = {
                             font: 'THSarabun',
