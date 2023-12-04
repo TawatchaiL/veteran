@@ -604,8 +604,8 @@
                     className: 'no-print'
                 },
                 {
-                    data: 'casetype1',
-                    name: 'casetype1'
+                    data: 'row_number',
+                    name: 'row_number'
                 },
                 {
                     data: 'sumcases',
