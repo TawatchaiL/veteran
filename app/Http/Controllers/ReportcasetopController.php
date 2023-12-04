@@ -65,9 +65,10 @@ class ReportcasetopController extends Controller
         }
         if ($request->ajax()) {
             return datatables()->of($datas)
-                ->editColumn('checkbox', function ($row) {
-                    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
-            })->rawColumns(['checkbox', 'action'])->toJson();
+            //    ->editColumn('checkbox', function ($row) {
+            //        return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
+            //})->rawColumns(['checkbox', 'action'])
+            ->toJson();
         }
 
         //graph data
