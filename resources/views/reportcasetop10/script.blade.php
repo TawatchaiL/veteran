@@ -513,7 +513,6 @@
                         doc.content.splice(0,1);
                         doc.pageMargins = [20,100,20,30];
 						doc.styles.tableHeader.fontSize = 16;
-                        doc.styles.tableFooter.fontSize = 16;
                         doc['header']=(function() {
 							return {
 								columns: [
@@ -521,7 +520,7 @@
 										image: logobase64,
                                         alignment: 'center',
                                         width: 50,
-                                        margin: [250, 0, 50, 50],
+                                        margin: [500, 0, 50, 50],
 									},
 									{
 										alignment: 'center',
