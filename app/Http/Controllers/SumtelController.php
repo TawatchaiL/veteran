@@ -49,7 +49,7 @@ class SumtelController extends Controller
         }
         $datas = DB::connection('remote_connection')
             ->table('call_center.call_entry')
-            ->select(DB::raw('ROW_NUMBER() OVER(PARTITION BY cdate) as row_number'), DB::raw('DATE(datetime_init) as cdate'), DB::raw('SUM(if(status = "terminada",1,0)) as terminada'), DB::raw('SUM(if(status = "abandonada",1,0)) as abandonada'))
+            ->select(DB::raw('ROW_NUMBER() OVER(ORDER BY datetime_init DESC) as row_number'), DB::raw('DATE(datetime_init) as cdate'), DB::raw('SUM(if(status = "terminada",1,0)) as terminada'), DB::raw('SUM(if(status = "abandonada",1,0)) as abandonada'))
             ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '"');
         //if(!empty($request->get('agent'))){
         //$datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
