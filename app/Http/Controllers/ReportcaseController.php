@@ -56,12 +56,23 @@ class ReportcaseController extends Controller
             ->orderBy("crm_id", "asc")
             ->get();
 
+            $agents = User::orderBy("id", "asc")->get();
+            $agent_data = array();
+            foreach ($agents as $agent) {
+                $agent_data[$agent->id] = $agent->name;
+            }
+
             if (!empty($request->get('rstatus'))) {
                 $chart_data = array();
                 $chart_label = array();
                 foreach ($datas as $data) {
-                    $chart_data[] = $data->sumcases;
-                    $chart_label[] = $data->agent;
+                    if (array_key_exists($data->crm_id, $agent_data)) {
+                        $chart_data[] = $data->sumscore;
+                        $chart_label[] = $agent_data[$data->crm_id];
+                    }else{
+                        $chart_data[] = $data->sumscore;
+                        $chart_label[] = 'Agent not found';
+                    }
                 }
                 return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
             }
@@ -72,6 +83,13 @@ class ReportcaseController extends Controller
                 //->editColumn('checkbox', function ($row) {
                 //    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 //})->rawColumns(['checkbox', 'action'])
+                ->addColumn('agent', function ($row) use ($agent_data){
+                    if (isset($agent_data[$row->crm_id])) {
+                        return $agent_data[$row->crm_id];
+                    } else {
+                        return 'Agent not found';
+                    }
+                })
                 ->toJson();
         }
         return view('reportcase.index');
