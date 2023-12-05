@@ -71,11 +71,11 @@ class ReportcaseController extends Controller
                 //    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 //})->rawColumns(['checkbox', 'action'])
                 ->addColumn('agent', function ($row) use ($agent_data){
-                    if (isset($agent_data[$row->crm_id])) {
-                        return $agent_data[$row->crm_id];
-                    } else {
+                    //if (isset($agent_data[$row->crm_id])) {
+                    //    return $agent_data[$row->crm_id];
+                    //} else {
                         return 'Agent not found';
-                    }
+                    //}
                 })
                 ->toJson();
         }
