@@ -49,7 +49,7 @@ class ReportcaseController extends Controller
         }
         $datas = DB::connection('remote_connection')
             ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.call_entry'))
-            ->select(DB::raw('(@rownumber:=@rownumber + 1) AS row_number'),'crm_id as agent', DB::raw('count(crm_id) as sumcases'))
+            ->select(DB::raw('(@rownumber:=@rownumber + 1) AS row_number'),'crm_id', DB::raw('count(crm_id) as sumcases'))
             ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '"')
             ->groupBy('crm_id')
             ->having('sumcases', '>', 0)
@@ -62,7 +62,20 @@ class ReportcaseController extends Controller
                 $agent_data[$agent->id] = $agent->name;
             }
 
-
+            if (!empty($request->get('rstatus'))) {
+                $chart_data = array();
+                $chart_label = array();
+                foreach ($datas as $data) {
+                    if (array_key_exists($data->crm_id, $agent_data)) {
+                        $chart_data[] = $data->sumcases;
+                        $chart_label[] = $agent_data[$data->crm_id];
+                    }else{
+                        $chart_data[] = $data->sumcases;
+                        $chart_label[] = 'Agent not found';
+                    }
+                }
+                return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
+            }
 
         if ($request->ajax()) {
 
@@ -71,11 +84,11 @@ class ReportcaseController extends Controller
                 //    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 //})->rawColumns(['checkbox', 'action'])
                 ->addColumn('agent', function ($row) use ($agent_data){
-                    //if (isset($agent_data[$row->crm_id])) {
-                    //    return $agent_data[$row->crm_id];
-                    //} else {
+                    if (isset($agent_data[$row->crm_id])) {
+                        return $agent_data[$row->crm_id];
+                    } else {
                         return 'Agent not found';
-                    //}
+                    }
                 })
                 ->toJson();
         }
