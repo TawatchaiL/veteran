@@ -49,7 +49,7 @@ class ReportreportsumcasebystatusController extends Controller
         }
 
             $datas = DB::table('crm_cases')
-                ->select(DB::raw('ROW_NUMBER() OVER (ORDER BY count(sumcases) DESC) as row_number'),'casestatus as name1', DB::raw('count(*) as sumcases'))
+                ->select(DB::raw('ROW_NUMBER() OVER (ORDER BY sumcases DESC) as row_number'),'casestatus as name1', DB::raw('count(*) as sumcases'))
                 ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
                 ->groupBy('casestatus')
                 ->orderBy("sumcases", "desc")
