@@ -49,7 +49,7 @@ class DetailcasesController extends Controller
         }
 
         $datas = DB::table('crm_cases')
-        ->select(DB::raw('DATE(crm_cases.created_at) as cdate'), DB::raw('TIME(crm_cases.created_at) as ctime'),'telno','casetype1', 'casedetail', 'casestatus', 'tranferstatus', 'users.name as agent' )
+        ->select(DB::raw('ROW_NUMBER() as row_number'),DB::raw('DATE(crm_cases.created_at) as cdate'), DB::raw('TIME(crm_cases.created_at) as ctime'),'telno','casetype1', 'casedetail', 'casestatus', 'tranferstatus', 'users.name as agent' )
         ->join('users', 'crm_cases.agent', '=', 'users.id')
         ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
         ->get();
@@ -57,9 +57,10 @@ class DetailcasesController extends Controller
         if ($request->ajax()) {
 
             return datatables()->of($datas)
-                ->editColumn('checkbox', function ($row) {
-                    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
-                })->rawColumns(['checkbox', 'action'])->toJson();
+                //->editColumn('checkbox', function ($row) {
+                //    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
+                //})->rawColumns(['checkbox', 'action'])
+                ->toJson();
         }
 
         return view('detailcases.index');
