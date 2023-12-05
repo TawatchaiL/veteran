@@ -49,7 +49,7 @@ class DetailcasesController extends Controller
         }
 
         $datas = DB::table('crm_cases')
-        ->select(DB::raw('ROW_NUMBER() OVER (ORDER BY id ASC) as row_number'),DB::raw('DATE(crm_cases.created_at) as cdate'), DB::raw('TIME(crm_cases.created_at) as ctime'),'telno','casetype1', 'casedetail', 'casestatus', 'tranferstatus', 'users.name as agent' )
+        ->select(DB::raw('ROW_NUMBER() OVER (ORDER BY crm_cases.created_at ASC) as row_number'),DB::raw('DATE(crm_cases.created_at) as cdate'), DB::raw('TIME(crm_cases.created_at) as ctime'),'telno','casetype1', 'casedetail', 'casestatus', 'tranferstatus', 'users.name as agent' )
         ->join('users', 'crm_cases.agent', '=', 'users.id')
         ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
         ->get();
