@@ -49,7 +49,7 @@ class ReportcaseController extends Controller
         }
         $datas = DB::connection('remote_connection')
             ->table('call_center.call_entry')
-            ->select('crm_id as agent', DB::raw('count(crm_id) as sumcases'))
+            ->select(DB::raw('ROW_NUMBER() OVER (ORDER BY sumcases DESC) as row_number'),'crm_id as agent', DB::raw('count(crm_id) as sumcases'))
             ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '"')
             ->groupBy('crm_id')
             ->having('sumcases', '>', 0)
@@ -69,9 +69,10 @@ class ReportcaseController extends Controller
         if ($request->ajax()) {
 
             return datatables()->of($datas)
-                ->editColumn('checkbox', function ($row) {
-                    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
-                })->rawColumns(['checkbox', 'action'])->toJson();
+                //->editColumn('checkbox', function ($row) {
+                //    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
+                //})->rawColumns(['checkbox', 'action'])
+                ->toJson();
         }
         return view('reportcase.index');
     }

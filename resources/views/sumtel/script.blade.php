@@ -482,6 +482,7 @@
                     "text": 'PDF', // ข้อความที่แสดง
                     "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
                     "title": 'จำนวนสายที่ติดต่อ',
+                    "download": 'open',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                     },
@@ -493,6 +494,8 @@
                         doc.content.splice(0,1);
                         doc.pageMargins = [20,100,20,30];
 						doc.styles.tableHeader.fontSize = 16;
+                        doc.styles.tableBodyOdd.alignment = 'center';
+                        doc.styles.tableBodyEven.alignment = 'center';
                         doc.styles.tableFooter.fontSize = 16;
                         doc['header']=(function() {
 							return {
@@ -514,7 +517,7 @@
 							}
 						});
 
-                        doc.content[0].table.widths = ['*', 150, 150];
+                        doc.content[0].table.widths = [40, '*', 150, 150];
                         var objLayout = {};
 						objLayout['hLineWidth'] = function(i) { return .5; };
 						objLayout['vLineWidth'] = function(i) { return .5; };
@@ -527,9 +530,9 @@
 						doc.content[0].layout = objLayout;
 
                         for (var i = 1; i < doc.content[0].table.body.length; i++) {
-                            doc.content[0].table.body[i][0].alignment = 'left';
-                            doc.content[0].table.body[i][1].alignment = 'center';
-                            doc.content[0].table.body[i][2].alignment = 'center';
+                            doc.content[0].table.body[i][1].alignment = 'left';
+                            //doc.content[0].table.body[i][1].alignment = 'center';
+                            //doc.content[0].table.body[i][2].alignment = 'center';
                         }
                 }
                 },
@@ -579,11 +582,11 @@
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
             columns: [{
-                    data: 'checkbox',
-                    name: 'checkbox',
+                data: 'row_number',
+                    name: 'row_number',
                     orderable: false,
                     searchable: false,
-                    className: 'no-print'
+//                    className: 'no-print'
                 },
                 {
                     data: 'cdate',
