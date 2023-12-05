@@ -62,20 +62,7 @@ class ReportcaseController extends Controller
                 $agent_data[$agent->id] = $agent->name;
             }
 
-            if (!empty($request->get('rstatus'))) {
-                $chart_data = array();
-                $chart_label = array();
-                foreach ($datas as $data) {
-                    if (array_key_exists($data->crm_id, $agent_data)) {
-                        $chart_data[] = $data->sumcases;
-                        $chart_label[] = $agent_data[$data->crm_id];
-                    }else{
-                        $chart_data[] = $data->sumcases;
-                        $chart_label[] = 'Agent not found';
-                    }
-                }
-                return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
-            }
+
 
         if ($request->ajax()) {
 
