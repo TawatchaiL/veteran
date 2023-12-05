@@ -509,7 +509,7 @@
                             font: 'THSarabun',
                             fontSize: 16
                         };
-                        doc.content.splice(0,2);
+                        doc.content.splice(0,1);
                         doc.pageMargins = [20,100,20,30];
 						doc.styles.tableHeader.fontSize = 16;
                         doc.styles.tableBodyOdd.alignment = 'center';
