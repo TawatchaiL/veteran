@@ -109,7 +109,6 @@
                                 <table id="Listview" class="table table-bordered table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th width="5%">ลำดับ</th>
                                             <th>Agent ที่รับสาย</th>
                                             <th>HN</th>
                                             <th>Caseid</th>

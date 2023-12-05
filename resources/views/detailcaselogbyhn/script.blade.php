@@ -519,7 +519,7 @@
 							}
 						});
                         
-                        doc.content[0].table.widths = [40, 80, 80, 80, 80, '*', 130];
+                        doc.content[0].table.widths = [80, 80, 80, 80, '*', 130];
                         var objLayout = {};
 						objLayout['hLineWidth'] = function(i) { return .5; };
 						objLayout['vLineWidth'] = function(i) { return .5; };
@@ -538,7 +538,7 @@
                             doc.content[0].table.body[i][3].alignment = 'center';
                             doc.content[0].table.body[i][4].alignment = 'center';
                             doc.content[0].table.body[i][5].alignment = 'center';
-                        */}
+                        }*/
                 }
                 },
                 {
@@ -586,11 +586,12 @@
             responsive: true,
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
-            columns: [{
-                    data: 'row_number',
-                    name: 'row_number',
-                    orderable: false,
-                    searchable: false,
+            columns: [
+                {
+//                    data: 'row_number',
+//                    name: 'row_number',
+//                    orderable: false,
+//                    searchable: false,
 //                    className: 'no-print'
                 },
                 {

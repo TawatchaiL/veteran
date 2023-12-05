@@ -67,7 +67,7 @@ class DetailcaselogbyhnController extends Controller
         ->select('cagent', 'cid', 'crm_contacts.hn','caction', 'magent', 'mdate');
 
         $datas = DB::table('crm_caseslogs')
-        ->select(DB::raw('ROW_NUMBER() OVER (ORDER BY mdate DESC) as row_number'),'crm_caseslogs.agent as cagent','crm_caseslogs.id as cid','crm_contacts.hn as chn', 'crm_caseslogs.modifyaction as caction', 'users.name as magent', 'crm_caseslogs.modifydate as mdate')
+        ->select('crm_caseslogs.agent as cagent','crm_caseslogs.id as cid','crm_contacts.hn as chn', 'crm_caseslogs.modifyaction as caction', 'users.name as magent', 'crm_caseslogs.modifydate as mdate')
         ->join('crm_contacts', 'crm_caseslogs.contact_id', '=', 'crm_contacts.id')
         ->join('users', 'crm_caseslogs.modifyagent', '=', 'users.id')
         ->whereRaw('crm_caseslogs.modifydate between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"'.$agentseachl)
@@ -82,9 +82,9 @@ class DetailcaselogbyhnController extends Controller
                 $agent_data[$agent->id] = $agent->name;
             }
             return datatables()->of($datas)
-                ->editColumn('checkbox', function ($row) {
-                    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
-                })->rawColumns(['checkbox', 'action'])
+                //->editColumn('checkbox', function ($row) {
+                //    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
+                //})->rawColumns(['checkbox', 'action'])
                 ->addColumn('agent', function ($row) use ($agent_data){
                     if (isset($agent_data[$row->cagent])) {
                         return $agent_data[$row->cagent];
