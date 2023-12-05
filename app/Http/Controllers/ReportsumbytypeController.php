@@ -50,7 +50,7 @@ class ReportsumbytypeController extends Controller
         }
         
         $datas = DB::table('crm_cases')
-        ->select('casetype1 as name1', DB::raw('count(*) as sumcases'))
+        ->select(DB::raw('ROW_NUMBER() OVER (ORDER BY count(casetype1) DESC) as row_number'),'casetype1 as name1', DB::raw('count(*) as sumcases'))
         ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
         ->groupBy('casetype1')
         ->orderBy("sumcases", "desc")
@@ -66,9 +66,10 @@ class ReportsumbytypeController extends Controller
         }
         if ($request->ajax()) {
             return datatables()->of($datas)
-                ->editColumn('checkbox', function ($row) {
-                    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
-                })->rawColumns(['checkbox', 'action'])->toJson();
+                //->editColumn('checkbox', function ($row) {
+                //    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
+                //})->rawColumns(['checkbox', 'action'])
+                ->toJson();
         }
 
         return view('reportsumbytype.index');
