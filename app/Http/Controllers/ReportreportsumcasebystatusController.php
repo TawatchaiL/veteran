@@ -49,7 +49,7 @@ class ReportreportsumcasebystatusController extends Controller
         }
 
             $datas = DB::table('crm_cases')
-                ->select('casestatus as name1', DB::raw('count(*) as sumcases'))
+                ->select(DB::raw('ROW_NUMBER() OVER (ORDER BY count(sumcases) DESC) as row_number'),'casestatus as name1', DB::raw('count(*) as sumcases'))
                 ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
                 ->groupBy('casestatus')
                 ->orderBy("sumcases", "desc")
@@ -67,9 +67,10 @@ class ReportreportsumcasebystatusController extends Controller
 
         if ($request->ajax()) {
             return datatables()->of($datas)
-                ->editColumn('checkbox', function ($row) {
-                    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
-                })->rawColumns(['checkbox', 'action'])->toJson();
+                //->editColumn('checkbox', function ($row) {
+                //    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
+                //})->rawColumns(['checkbox', 'action'])
+                ->toJson();
         }
         return view('reportsumcasebystatus.index');
     }

@@ -48,7 +48,7 @@ class ReportreportsumcasebytranferstatusController extends Controller
             $endDate = date("Y-m-t H:i:s", strtotime($startDate));    
         }
         $datas = DB::table('crm_cases')
-            ->select('tranferstatus as name1', DB::raw('count(*) as sumcases'))
+            ->select(DB::raw('ROW_NUMBER() OVER (ORDER BY count(sumcases) DESC) as row_number'),'tranferstatus as name1', DB::raw('count(*) as sumcases'))
             ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
             ->groupBy('tranferstatus')
             ->orderBy("sumcases", "desc")
@@ -66,9 +66,10 @@ class ReportreportsumcasebytranferstatusController extends Controller
 
         if ($request->ajax()) {
             return datatables()->of($datas)
-                ->editColumn('checkbox', function ($row) {
-                    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
-                })->rawColumns(['checkbox', 'action'])->toJson();
+                //->editColumn('checkbox', function ($row) {
+                //    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
+                //})->rawColumns(['checkbox', 'action'])
+                ->toJson();
         }
 
         return view('reportsumcasebytranferstatus.index');
