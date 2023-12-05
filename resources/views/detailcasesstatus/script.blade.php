@@ -589,11 +589,11 @@
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
             columns: [{
-                    data: 'checkbox',
-                    name: 'checkbox',
+                    data: 'row_number',
+                    name: 'row_number',
                     orderable: false,
                     searchable: false,
-                    className: 'no-print'
+//                    className: 'no-print'
                 },
                 {
                     data: 'cdate',
