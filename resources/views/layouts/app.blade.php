@@ -112,7 +112,6 @@
 <script src="plugins/daterangepicker/daterangepicker.js"></script>
 <script src="plugins/datepicker/bootstrap-datetimepicker.min.js"></script>
 <script src="plugins/jquery-ui/jquery-ui.js"></script>
-<script src="https://www.codopa.com/web/DatePicker/js/jquery-ui-1.8.10.offset.datepicker.min.js"></script>
 <script src="plugins/jquery-ui/jquery-ui-timepicker-addon.min.js"></script>
 <script src="plugins/signature/signature_pad.min.js"></script>
 <script src="plugins/jquery-ui/datepicker-th.js"></script>
