@@ -57,6 +57,8 @@
         $(".datepick").datetimepicker({
             changeMonth: true,
             changeYear: true,
+            langTh: true,
+            yearTh: true,
             yearRange: currentYear + ':' + maxYear,
             dateFormat: 'dd/mm/yy',
             dayNamesMin: ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"],
