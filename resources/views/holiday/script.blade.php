@@ -186,6 +186,8 @@
                     name: $('#AddName').val(),
                     start_date: $('#AddSDate').val(),
                     end_date: $('#AddEDate').val(),
+                    start_time: $('#AddSTime').val(),
+                    end_time: $('#AddETime').val(),
                     holiday_sound: $('#AddGreeting').val()[0],
                     thankyou_sound: $('#AddThankyou').val()[0],
                     status: sstatus,

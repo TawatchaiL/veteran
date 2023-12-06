@@ -89,12 +89,16 @@ class HolidaysController extends Controller
             'thankyou_sound' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required',
         ], [
             'name.required' => 'ชื่อต้องไม่เป็นค่าว่าง!',
             'holiday_sound.required' => 'กรุณาระบุเสียงวันหยุด!',
             'thankyou_sound.required' => 'กรุณาระบุเสียงขอบคุณ!',
             'start_date.required' => 'กรุณาระบุวันเริ่มต้น!',
             'end_date.required' => 'กรุณาระบุวันสิ้นสุด!',
+            'start_time.required' => 'กรุณาระบุเวลาเริ่มต้น!',
+            'end_time.required' => 'กรุณาระบุเวลาสิ้นสุด!',
         ]);
 
 
@@ -102,7 +106,8 @@ class HolidaysController extends Controller
             return response()->json(['errors' => $validator->errors()->all()]);
         }
 
-        $start_array = explode(" ", $request->get('start_date'));
+        $sdate_time = $request->get('start_date') . " " . $request->get('start_time');
+        $start_array = explode(" ", $sdate_time);
         // Manually adjust the year from Buddhist to Gregorian calendar
         $sgregorianYear = intval(substr($start_array[0], 6)) - 543;
         $sgregorianDate = $sgregorianYear . substr($start_array[0], 2, 3) . "/" . substr($start_array[0], 0, 2);
@@ -111,7 +116,8 @@ class HolidaysController extends Controller
         $startutcFormattedDate = $startutcDate->format('Y-m-d');
 
 
-        $end_array = explode(" ", $request->get('end_date'));
+        $edate_time = $request->get('end_date') . " " . $request->get('end_time');
+        $end_array = explode(" ", $edate_time);
         $egregorianYear = intval(substr($end_array[0], 6)) - 543;
         $egregorianDate = $egregorianYear . substr($end_array[0], 2, 3) . "/" . substr($end_array[0], 0, 2);
         $end_date_convert = Carbon::createFromFormat('Y/m/d', $egregorianDate, 'Asia/Bangkok');
@@ -123,9 +129,9 @@ class HolidaysController extends Controller
             'holiday_sound' => $request->get('holiday_sound'),
             'thankyou_sound' => $request->get('thankyou_sound'),
             'start_datetime' =>  $startutcFormattedDate . " " . $start_array[1] . ":00",
-            'end_datetime' => $endutcFormattedDate . " " . $end_array[1] . ":00",
-            'start_datetime_th' =>  $request->get('start_date'),
-            'end_datetime_th' => $request->get('end_date'),
+            'end_datetime' => $endutcFormattedDate . " " . $end_array[1] . ":59",
+            'start_datetime_th' =>  $request->get('start_date') . " " . $start_array[1],
+            'end_datetime_th' => $request->get('end_date') . " " . $end_array[1],
             'status' => $request->get('status'),
         ];
 
@@ -170,6 +176,8 @@ class HolidaysController extends Controller
             'thankyou_sound' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required',
         ];
 
         $validator = Validator::make($request->all(), $rules, [

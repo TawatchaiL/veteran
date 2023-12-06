@@ -54,7 +54,7 @@
         var currentYear = currentDate.getFullYear();
         var maxYear = currentYear + 1;
 
-        $(".datepick").datepicker({
+        $(".datepick").datetimepicker({
             changeMonth: true,
             changeYear: true,
             langTh: true,
