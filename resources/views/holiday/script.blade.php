@@ -51,7 +51,7 @@
         var currentYear = currentDate.getFullYear();
         var maxYear = currentYear + 1;
 
-        $(".datepick").datepicker_thai({
+        $(".datepick").datetimepicker({
             changeMonth: true,
             changeYear: true,
             langTh: true,
