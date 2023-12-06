@@ -263,7 +263,7 @@ class ContactController extends Controller
                     $tab_link_active = 'active';
                     $tab_content_active = 'show active';
                     $tab_active = 'card-danger';
-                    $active_id = $item->uniqid;
+                    $active_id = str_replace(".","d",$item->uniqid);
                 } else {
                     $tab_link_active = '';
                     $tab_content_active = '';
