@@ -112,23 +112,16 @@
                 $(this).val(arrayDate[0] + "/" + arrayDate[1] + "/" + arrayDate[2] + " " +
                     arrayDateT[1]);
                 console.log($(this).val())
-
-                /* var selectedDate = new Date(dateText);
-                var currentDate = new Date();
-                var years = currentDate.getFullYear() - selectedDate.getFullYear();
-                var months = currentDate.getMonth() - selectedDate.getMonth();
-                var days = currentDate.getDate() - selectedDate.getDate();
-                if (days < 0) {
-                    months--;
-                    days += new Date(currentDate.getFullYear(), currentDate.getMonth(), 0)
-                        .getDate();
+            },
+            onBlur: function(dateText, inst) {
+                if ($(this).val() != "") {
+                    var arrayDateT = dateBefore.split(" ");
+                    var arrayDate = arrayDateT[0].split("/");
+                    //$('#temp'+$(this).attr('id')).html(dateBefore);
+                    arrayDate[2] = parseInt(arrayDate[2]) + 543;
+                    $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
                 }
-
-                if (months < 0) {
-                    years--;
-                    months += 12;
-                } */
-            }
+            },
         });
 
         //currentDate.setYear(currentDate.getFullYear() + 543);
