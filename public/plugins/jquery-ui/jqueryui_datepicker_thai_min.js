@@ -7,7 +7,7 @@ $.widget("ui.datepicker_thai", {
             b = null,
             c = null,
             d = null,
-            g = ["มค.", "กพ.", "มีค.", "เมย.", "พค.", "มิย.", "กค.", "สค.", "กย.", "ตค.", "พย.", "ธค."],
+            g = ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."],
             h = !(!this.options || !this.options.yearTh),
             i = !(!this.options || !this.options.langTh),
             j = !(!this.options || !this.options.changeYear);
