@@ -64,11 +64,13 @@
                 "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
             ],
             beforeShow: function() {
+                console.log($(this).val())
                 if ($(this).val() != "") {
                     var arrayDateT = $(this).val().split(" ");
                     var arrayDate = arrayDateT[0].split("/");
                     arrayDate[0] = parseInt(arrayDate[0]) - 543;
-                    $(this).val(arrayDate[0] + "/" + arrayDate[1] + "/" + arrayDate[2]);
+                    $(this).val(arrayDate[0] + "/" + arrayDate[1] + "/" + arrayDate[2] + " " +
+                        arrayDateT[1]);
                     dateBefore = $(this).val();
                 }
                 setTimeout(function() {
