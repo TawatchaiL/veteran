@@ -119,9 +119,13 @@ class ContactController extends Controller
 
     public function popup_content(Request $request)
     {
-        $con = $request->input('cardId');
-        $contact_name = "";
-        $contact_lname = "";
+        $uid = $request->input('cardId');
+
+        $datau = DB::table('crm_incoming')
+        ->orderBy('id', 'desc')
+        ->where('uniqid', '=', $uid)
+        ->get();
+        $con = $datau[0]->telno;
         $datap = DB::table('crm_contacts')
             ->select('crm_contacts.*')
             ->leftjoin('crm_phone_emergencies', 'crm_contacts.id', '=', 'crm_phone_emergencies.contact_id')
