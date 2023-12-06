@@ -110,7 +110,7 @@
                 $(this).val(arrayDate[0] + "/" + arrayDate[1] + "/" + arrayDate[2] + " " +
                     arrayDateT[1]);
 
-                /* var selectedDate = new Date(dateText);
+                var selectedDate = new Date(dateText);
                 var currentDate = new Date();
                 var years = currentDate.getFullYear() - selectedDate.getFullYear();
                 var months = currentDate.getMonth() - selectedDate.getMonth();
@@ -124,7 +124,7 @@
                 if (months < 0) {
                     years--;
                     months += 12;
-                } */
+                }
             }
         });
 
