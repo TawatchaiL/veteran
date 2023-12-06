@@ -126,6 +126,7 @@ class ContactController extends Controller
         ->where('uniqid', '=', $uid)
         ->get();
         $con = $datau[0]->telno;
+        $tid = $datau[0]->id;
         $datap = DB::table('crm_contacts')
             ->select('crm_contacts.*')
             ->leftjoin('crm_phone_emergencies', 'crm_contacts.id', '=', 'crm_phone_emergencies.contact_id')
@@ -139,17 +140,17 @@ class ContactController extends Controller
         if ($contactcount > 1) {
             $template = 'casescontract.contactpop';
             $htmlContent = View::make($template, [
-                'cardid' => $uid, 'telephone' => $con, 'contactd' => $datap
+                'cardid' => $tid, 'telephone' => $con, 'contactd' => $datap
             ])->render();
         } elseif ($contactcount == 1) {
             $template = 'contacts.contact-create';
             $htmlContent = View::make($template, [
-                'cardid' => $uid, 'telephone' => $con, 'contactd' => $datap[0]->id
+                'cardid' => $tid, 'telephone' => $con, 'contactd' => $datap[0]->id
             ])->render();
         } else {
             $template = 'contacts.contact-create';
             $htmlContent = View::make($template, [
-                'cardid' => $uid, 'telephone' => $con, 'contactd' => 0
+                'cardid' => $tid, 'telephone' => $con, 'contactd' => 0
             ])->render();
         }
         return response()->json(['html' =>  $htmlContent,]);
