@@ -405,7 +405,7 @@ class DashboardController extends Controller
                     <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
                     <span class="sr-only">Toggle Dropdown</span>
                     </button>
-                    <div class="dropdown-menu" role="menu">
+                    <div class="dropdown-menu" role="menu" style="z-index: 9999;">
                     <button class="btn dropdown-item btn-pause"  data-id="' . $agent->id . '"><i class="fa-solid fa-user-clock"></i> พัก</button>
                     <button class="btn dropdown-item btn-unpause"  data-id="' . $agent->id . '"><i class="fa-solid fa-user-check"></i> รับสายต่อ</button>
                     <button class="btn dropdown-item btn-spy"  data-id="' . $agent->phone . '"><i class="fa-solid fa-user-secret"></i> ดักฟัง</button>
