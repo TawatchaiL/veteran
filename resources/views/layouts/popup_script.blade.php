@@ -59,8 +59,8 @@
                 cardId: cardId
             },
             success: async function(response) {
-                $('#'$.escapeSelector(cardId)).removeClass('card-danger');
-                $('#'$.escapeSelector(cardId)).addClass('card-success');
+                $('#' +  $.escapeSelector(cardId)).removeClass('card-danger');
+                $('#' +  $.escapeSelector(cardId)).addClass('card-success');
                 await $('#pop_' +  $.escapeSelector(cardId)).html(response.html);
                 $(".card-footer").css("display", "block")
                 $('.bclose').css('display', 'none');
@@ -71,7 +71,7 @@
                         method: 'GET',
                         async: false,
                         success: function(res) {
-                            var provinceOb = $('#cityp'$.escapeSelector(cardId));
+                            var provinceOb = $('#cityp' +  $.escapeSelector(cardId));
                             provinceOb.html(
                                 '<option value="">เลือกจังหวัด</option>'
                             );
@@ -87,9 +87,9 @@
                     });
 
                     setTimeout(function() {
-                        //let contactid = $('#contractid'$.escapeSelector(cardId)).val();
-                        var telnop = $('#telnop'$.escapeSelector(cardId)).val();
-                        $('#phonenosuccess'$.escapeSelector(cardId)).html(
+                        //let contactid = $('#contractid' +  $.escapeSelector(cardId)).val();
+                        var telnop = $('#telnop' +  $.escapeSelector(cardId)).val();
+                        $('#phonenosuccess' +  $.escapeSelector(cardId)).html(
                             '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ผู้ติดต่อใหม่</h3>'
                         );
                         $.ajax({
@@ -98,57 +98,57 @@
                             async: false,
                             success: function(res) {
                                 if (res.datax.length != 0) {
-                                    $('#phonenosuccess'$.escapeSelector(cardId)).html(
+                                    $('#phonenosuccess' +  $.escapeSelector(cardId)).html(
                                         '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ' +
                                         res.datax.datac.fname +
                                         ' ' + res.datax.datac
                                         .lname + '</h3>');
-                                    $('#contractid'$.escapeSelector(cardId)).val(res.datax
+                                    $('#contractid' +  $.escapeSelector(cardId)).val(res.datax
                                         .datac.id);
-                                    $('#hnp'$.escapeSelector(cardId)).val(res.datax.datac.hn);
-                                    //$('#adddatep'$.escapeSelector(cardId)).val(res.datax.datac.adddate);
+                                    $('#hnp' +  $.escapeSelector(cardId)).val(res.datax.datac.hn);
+                                    //$('#adddatep' +  $.escapeSelector(cardId)).val(res.datax.datac.adddate);
                                     var arrayDate = res.datax.datac.adddate
                                         .split("-");
                                     arrayDate[0] = parseInt(arrayDate[0]) + 543;
-                                    $('#adddatep'$.escapeSelector(cardId)).val(arrayDate[0] +
+                                    $('#adddatep' +  $.escapeSelector(cardId)).val(arrayDate[0] +
                                         "-" + arrayDate[1] + "-" +
                                         arrayDate[2]);
 
-                                    $('#tnamep'$.escapeSelector(cardId)).val(res.datax.datac
+                                    $('#tnamep' +  $.escapeSelector(cardId)).val(res.datax.datac
                                         .tname);
-                                    $('#fnamep'$.escapeSelector(cardId)).val(res.datax.datac
+                                    $('#fnamep' +  $.escapeSelector(cardId)).val(res.datax.datac
                                         .fname);
-                                    $('#lnamep'$.escapeSelector(cardId)).val(res.datax.datac
+                                    $('#lnamep' +  $.escapeSelector(cardId)).val(res.datax.datac
                                         .lname);
-                                    $('#sexp'$.escapeSelector(cardId)).val(res.datax.datac
+                                    $('#sexp' +  $.escapeSelector(cardId)).val(res.datax.datac
                                         .sex);
 
-                                    //$('#birthdayp'$.escapeSelector(cardId)).val(res.datax.datac.birthday);
+                                    //$('#birthdayp' +  $.escapeSelector(cardId)).val(res.datax.datac.birthday);
                                     var arrayDate = res.datax.datac.birthday
                                         .split("-");
                                     arrayDate[0] = parseInt(arrayDate[0]) + 543;
-                                    $('#birthdayp'$.escapeSelector(cardId)).val(arrayDate[0] +
+                                    $('#birthdayp' +  $.escapeSelector(cardId)).val(arrayDate[0] +
                                         "-" + arrayDate[1] + "-" +
                                         arrayDate[2]);
-                                    $('#agep'$.escapeSelector(cardId)).val(res.datax.datac
+                                    $('#agep' +  $.escapeSelector(cardId)).val(res.datax.datac
                                         .age);
-                                    $('#bloodgroupp'$.escapeSelector(cardId)).val(res.datax
+                                    $('#bloodgroupp' +  $.escapeSelector(cardId)).val(res.datax
                                         .datac.bloodgroup);
-                                    $('#homenop'$.escapeSelector(cardId)).val(res.datax.datac
+                                    $('#homenop' +  $.escapeSelector(cardId)).val(res.datax.datac
                                         .homeno);
-                                    $('#moop'$.escapeSelector(cardId)).val(res.datax.datac
+                                    $('#moop' +  $.escapeSelector(cardId)).val(res.datax.datac
                                         .moo);
-                                    $('#soip'$.escapeSelector(cardId)).val(res.datax.datac
+                                    $('#soip' +  $.escapeSelector(cardId)).val(res.datax.datac
                                         .soi);
-                                    $('#roadp'$.escapeSelector(cardId)).val(res.datax.datac
+                                    $('#roadp' +  $.escapeSelector(cardId)).val(res.datax.datac
                                         .road);
-                                    $('#cityp'$.escapeSelector(cardId)).val(res.datax.datac
+                                    $('#cityp' +  $.escapeSelector(cardId)).val(res.datax.datac
                                         .city);
-                                    $('#cityp'$.escapeSelector(cardId)).change();
+                                    $('#cityp' +  $.escapeSelector(cardId)).change();
                                     setTimeout(function() {
-                                        $('#districtp'$.escapeSelector(cardId)).val(res
+                                        $('#districtp' +  $.escapeSelector(cardId)).val(res
                                             .datax.datac.district);
-                                        $('#districtp'$.escapeSelector(cardId))
+                                        $('#districtp' +  $.escapeSelector(cardId))
                                             .change();
                                         setTimeout(function() {
                                             $('#subdistrictp' +
@@ -159,23 +159,23 @@
                                             );
                                         }, 500)
                                     }, 500)
-                                    $('#postcodep'$.escapeSelector(cardId)).val(res.datax.datac
+                                    $('#postcodep' +  $.escapeSelector(cardId)).val(res.datax.datac
                                         .postcode);
-                                    $('#telhomep'$.escapeSelector(cardId)).val(res.datax.datac
+                                    $('#telhomep' +  $.escapeSelector(cardId)).val(res.datax.datac
                                         .telhome);
-                                    $('#phonenop'$.escapeSelector(cardId)).val(res.datax.datac
+                                    $('#phonenop' +  $.escapeSelector(cardId)).val(res.datax.datac
                                         .phoneno);
-                                    $('#worknop'$.escapeSelector(cardId)).val(res.datax.datac
+                                    $('#worknop' +  $.escapeSelector(cardId)).val(res.datax.datac
                                         .workno);
 
                                     var tbody = document.querySelector(
-                                        '#myTbl3p'$.escapeSelector(cardId) + ' tbody');
+                                        '#myTbl3p' +  $.escapeSelector(cardId) + ' tbody');
                                     while (tbody.firstChild) {
                                         tbody.removeChild(tbody.firstChild);
                                     }
                                     $.each(res.datax.emer, function(index,
                                         value) {
-                                        $('#myTbl3p'$.escapeSelector(cardId) +
+                                        $('#myTbl3p' +  $.escapeSelector(cardId) +
                                                 ' tbody')
                                             .append($('<tr>')
                                                 .append($(
@@ -236,7 +236,7 @@
 
                                     $.each(res.datax.cases, function(index,
                                         value) {
-                                        $('#Listviewcasesp'$.escapeSelector(cardId) +
+                                        $('#Listviewcasesp' +  $.escapeSelector(cardId) +
                                             ' tbody').append($(
                                                 '<tr>')
                                             .append($('<td>')
@@ -299,25 +299,25 @@
                                     });
                                 }
                             });
-                            $('#casetype2p'$.escapeSelector(cardId)).html(
+                            $('#casetype2p' +  $.escapeSelector(cardId)).html(
                                 '<option value="">เลือกรายละเอียดเคส</option>');
-                            $('#casetype3p'$.escapeSelector(cardId)).html(
+                            $('#casetype3p' +  $.escapeSelector(cardId)).html(
                                 '<option value="">เลือกรายละเอียดเคสย่อย</option>'
                             );
-                            $('#casetype4p'$.escapeSelector(cardId)).html(
+                            $('#casetype4p' +  $.escapeSelector(cardId)).html(
                                 '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>'
                             );
-                            $('#casetype5p'$.escapeSelector(cardId)).html(
+                            $('#casetype5p' +  $.escapeSelector(cardId)).html(
                                 '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>'
                             );
-                            $('#casetype6p'$.escapeSelector(cardId)).html(
+                            $('#casetype6p' +  $.escapeSelector(cardId)).html(
                                 '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>'
                             );
-                            $('#casetype2p'$.escapeSelector(cardId)).attr('disabled', true);
-                            $('#casetype3p'$.escapeSelector(cardId)).attr('disabled', true);
-                            $('#casetype4p'$.escapeSelector(cardId)).attr('disabled', true);
-                            $('#casetype5p'$.escapeSelector(cardId)).attr('disabled', true);
-                            $('#casetype6p'$.escapeSelector(cardId)).attr('disabled', true);
+                            $('#casetype2p' +  $.escapeSelector(cardId)).attr('disabled', true);
+                            $('#casetype3p' +  $.escapeSelector(cardId)).attr('disabled', true);
+                            $('#casetype4p' +  $.escapeSelector(cardId)).attr('disabled', true);
+                            $('#casetype5p' +  $.escapeSelector(cardId)).attr('disabled', true);
+                            $('#casetype6p' +  $.escapeSelector(cardId)).attr('disabled', true);
                         }, 500)
                     }, 500)
                 }, 500)
@@ -466,22 +466,22 @@
             if (parent_id != '' && levcase < 6) {
                 for (let i = nextcase; i < 7; i++) {
                     if (i === 2) {
-                        $('#casetype2p'$.escapeSelector(cardId)).html('<option value="">เลือกรายละเอียดเคส</option>');
+                        $('#casetype2p' +  $.escapeSelector(cardId)).html('<option value="">เลือกรายละเอียดเคส</option>');
                     }
                     if (i === 3) {
-                        $('#casetype3p'$.escapeSelector(cardId)).html(
+                        $('#casetype3p' +  $.escapeSelector(cardId)).html(
                             '<option value="">เลือกรายละเอียดเคสย่อย</option>');
                     }
                     if (i === 4) {
-                        $('#casetype4p'$.escapeSelector(cardId)).html(
+                        $('#casetype4p' +  $.escapeSelector(cardId)).html(
                             '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
                     }
                     if (i === 5) {
-                        $('#casetype5p'$.escapeSelector(cardId)).html(
+                        $('#casetype5p' +  $.escapeSelector(cardId)).html(
                             '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
                     }
                     if (i === 6) {
-                        $('#casetype6p'$.escapeSelector(cardId)).html(
+                        $('#casetype6p' +  $.escapeSelector(cardId)).html(
                             '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
                     }
                 }
@@ -491,7 +491,7 @@
                     async: false,
                     success: function(res) {
                         $.each(res.data, function(index, item) {
-                            $('#casetype' + nextcase + 'p'$.escapeSelector(cardId)).append(
+                            $('#casetype' + nextcase + 'p' +  $.escapeSelector(cardId)).append(
                                 $('<option></option>').val(item.id)
                                 .html(item.name)
                             );
@@ -499,32 +499,32 @@
                     }
                 });
 
-                $('#casetype' + nextcase + 'p'$.escapeSelector(cardId)).attr('disabled', false);
+                $('#casetype' + nextcase + 'p' +  $.escapeSelector(cardId)).attr('disabled', false);
                 for (let i = discase; i < 7; i++) {
-                    $('#casetype' + i + 'p'$.escapeSelector(cardId)).attr('disabled', true);
+                    $('#casetype' + i + 'p' +  $.escapeSelector(cardId)).attr('disabled', true);
                 }
             } else {
                 for (let i = nextcase; i < 7; i++) {
                     if (i === 2) {
-                        $('#casetype2p'$.escapeSelector(cardId)).html('<option value="">เลือกรายละเอียดเคส</option>');
+                        $('#casetype2p' +  $.escapeSelector(cardId)).html('<option value="">เลือกรายละเอียดเคส</option>');
                     }
                     if (i === 3) {
-                        $('#casetype3p'$.escapeSelector(cardId)).html(
+                        $('#casetype3p' +  $.escapeSelector(cardId)).html(
                             '<option value="">เลือกรายละเอียดเคสย่อย</option>');
                     }
                     if (i === 4) {
-                        $('#casetype4p'$.escapeSelector(cardId)).html(
+                        $('#casetype4p' +  $.escapeSelector(cardId)).html(
                             '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
                     }
                     if (i === 5) {
-                        $('#casetype5p'$.escapeSelector(cardId)).html(
+                        $('#casetype5p' +  $.escapeSelector(cardId)).html(
                             '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
                     }
                     if (i === 6) {
-                        $('#casetype6p'$.escapeSelector(cardId)).html(
+                        $('#casetype6p' +  $.escapeSelector(cardId)).html(
                             '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
                     }
-                    $('#casetype' + i + 'p'$.escapeSelector(cardId)).attr('disabled', true);
+                    $('#casetype' + i + 'p' +  $.escapeSelector(cardId)).attr('disabled', true);
                 }
             }
         });
@@ -574,14 +574,14 @@
         $(document).on('click', '.addRowBtnp-button',
             function() {
                 let cardId = $(this).data("tabid");
-                $('#myTbl3p'$.escapeSelector(cardId) + ' tbody')
+                $('#myTbl3p' +  $.escapeSelector(cardId) + ' tbody')
                     .append($('<tr>')
                         .append($('<td width="30%">')
                             .append(
                                 '<div class="col-md-12 col-sm-12 col-xs-12"><input type="hidden" value="" name="emertypep' +
-                                cardId + '[]" id="emertypep'$.escapeSelector(cardId) +
-                                '"><input type="text" id="emergencynamep'$.escapeSelector(cardId) +
-                                '" name="emergencynamep'$.escapeSelector(cardId) +
+                                cardId + '[]" id="emertypep' +  $.escapeSelector(cardId) +
+                                '"><input type="text" id="emergencynamep' +  $.escapeSelector(cardId) +
+                                '" name="emergencynamep' +  $.escapeSelector(cardId) +
                                 '[]" class="form-control has-feedback-left" value="" required="required"></div>'
                             ))
                         .append($('<td width="10%">').append(
@@ -651,8 +651,8 @@
                             }
                         });
 
-                        //let telnop = $('#telnop'$.escapeSelector(cardId)).val();
-                        $('#phonenosuccess'$.escapeSelector(cardId)).html(
+                        //let telnop = $('#telnop' +  $.escapeSelector(cardId)).val();
+                        $('#phonenosuccess' +  $.escapeSelector(cardId)).html(
                             '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ผู้ติดต่อใหม่</h3>'
                         );
                         $.ajax({
@@ -660,63 +660,63 @@
                             method: 'GET',
                             async: false,
                             success: function(res) {
-                                $('#phonenosuccess'$.escapeSelector(cardId)).html(
+                                $('#phonenosuccess' +  $.escapeSelector(cardId)).html(
                                     '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ' +
                                     res.datax.datac.fname +
                                     ' ' + res.datax.datac
                                     .lname + '</h3>');
-                                $('#contractid'$.escapeSelector(cardId)).val(res.datax.datac.id);
-                                $('#hnp'$.escapeSelector(cardId)).val(res.datax.datac.hn);
-                                //$('#adddatep'$.escapeSelector(cardId)).val(res.datax.datac.adddate);
+                                $('#contractid' +  $.escapeSelector(cardId)).val(res.datax.datac.id);
+                                $('#hnp' +  $.escapeSelector(cardId)).val(res.datax.datac.hn);
+                                //$('#adddatep' +  $.escapeSelector(cardId)).val(res.datax.datac.adddate);
                                 var arrayDate = res.datax.datac.adddate.split("-");
                                 arrayDate[0] = parseInt(arrayDate[0]) + 543;
-                                $('#adddatep'$.escapeSelector(cardId)).val(arrayDate[0] + "-" +
+                                $('#adddatep' +  $.escapeSelector(cardId)).val(arrayDate[0] + "-" +
                                     arrayDate[1] + "-" + arrayDate[2]);
-                                $('#tnamep'$.escapeSelector(cardId)).val(res.datax.datac.tname);
-                                $('#fnamep'$.escapeSelector(cardId)).val(res.datax.datac.fname);
-                                $('#lnamep'$.escapeSelector(cardId)).val(res.datax.datac.lname);
-                                $('#sexp'$.escapeSelector(cardId)).val(res.datax.datac.sex);
-                                //$('#birthdayp'$.escapeSelector(cardId)).val(res.datax.datac.birthday);
+                                $('#tnamep' +  $.escapeSelector(cardId)).val(res.datax.datac.tname);
+                                $('#fnamep' +  $.escapeSelector(cardId)).val(res.datax.datac.fname);
+                                $('#lnamep' +  $.escapeSelector(cardId)).val(res.datax.datac.lname);
+                                $('#sexp' +  $.escapeSelector(cardId)).val(res.datax.datac.sex);
+                                //$('#birthdayp' +  $.escapeSelector(cardId)).val(res.datax.datac.birthday);
                                 var arrayDate = res.datax.datac.birthday.split("-");
                                 arrayDate[0] = parseInt(arrayDate[0]) + 543;
-                                $('#birthdayp'$.escapeSelector(cardId)).val(arrayDate[0] + "-" +
+                                $('#birthdayp' +  $.escapeSelector(cardId)).val(arrayDate[0] + "-" +
                                     arrayDate[1] + "-" + arrayDate[2]);
-                                $('#agep'$.escapeSelector(cardId)).val(res.datax.datac.age);
-                                $('#bloodgroupp'$.escapeSelector(cardId)).val(res.datax.datac
+                                $('#agep' +  $.escapeSelector(cardId)).val(res.datax.datac.age);
+                                $('#bloodgroupp' +  $.escapeSelector(cardId)).val(res.datax.datac
                                     .bloodgroup);
-                                $('#homenop'$.escapeSelector(cardId)).val(res.datax.datac.homeno);
-                                $('#moop'$.escapeSelector(cardId)).val(res.datax.datac.moo);
-                                $('#soip'$.escapeSelector(cardId)).val(res.datax.datac.soi);
-                                $('#roadp'$.escapeSelector(cardId)).val(res.datax.datac.road);
-                                $('#cityp'$.escapeSelector(cardId)).val(res.datax.datac.city);
-                                $('#cityp'$.escapeSelector(cardId)).change();
+                                $('#homenop' +  $.escapeSelector(cardId)).val(res.datax.datac.homeno);
+                                $('#moop' +  $.escapeSelector(cardId)).val(res.datax.datac.moo);
+                                $('#soip' +  $.escapeSelector(cardId)).val(res.datax.datac.soi);
+                                $('#roadp' +  $.escapeSelector(cardId)).val(res.datax.datac.road);
+                                $('#cityp' +  $.escapeSelector(cardId)).val(res.datax.datac.city);
+                                $('#cityp' +  $.escapeSelector(cardId)).change();
                                 setTimeout(function() {
-                                    $('#districtp'$.escapeSelector(cardId)).val(res.datax
+                                    $('#districtp' +  $.escapeSelector(cardId)).val(res.datax
                                         .datac.district);
-                                    $('#districtp'$.escapeSelector(cardId)).change();
+                                    $('#districtp' +  $.escapeSelector(cardId)).change();
                                     setTimeout(function() {
-                                        $('#subdistrictp'$.escapeSelector(cardId))
+                                        $('#subdistrictp' +  $.escapeSelector(cardId))
                                             .val(res.datax.datac
                                                 .subdistrict);
                                     }, 500)
                                 }, 500)
-                                $('#postcodep'$.escapeSelector(cardId)).val(res.datax.datac
+                                $('#postcodep' +  $.escapeSelector(cardId)).val(res.datax.datac
                                     .postcode);
-                                $('#telhomep'$.escapeSelector(cardId)).val(res.datax.datac
+                                $('#telhomep' +  $.escapeSelector(cardId)).val(res.datax.datac
                                     .telhome);
-                                $('#phonenop'$.escapeSelector(cardId)).val(res.datax.datac
+                                $('#phonenop' +  $.escapeSelector(cardId)).val(res.datax.datac
                                     .phoneno);
-                                $('#worknop'$.escapeSelector(cardId)).val(res.datax.datac.workno);
+                                $('#worknop' +  $.escapeSelector(cardId)).val(res.datax.datac.workno);
 
                                 var tbody = document.querySelector(
-                                    '#myTbl3p'$.escapeSelector(cardId) + ' tbody');
+                                    '#myTbl3p' +  $.escapeSelector(cardId) + ' tbody');
                                 while (tbody.firstChild) {
                                     tbody.removeChild(tbody
                                         .firstChild);
                                 }
                                 $.each(res.datax.emer, function(
                                     index, value) {
-                                    $('#myTbl3p'$.escapeSelector(cardId) + ' tbody')
+                                    $('#myTbl3p' +  $.escapeSelector(cardId) + ' tbody')
                                         .append($('<tr>')
                                             .append($('<td width="30%">')
                                                 .append(
@@ -768,7 +768,7 @@
                                 });
 
                                 $.each(res.datax.cases, function(index, value) {
-                                    $('#Listviewcases'$.escapeSelector(cardId) + ' tbody')
+                                    $('#Listviewcases' +  $.escapeSelector(cardId) + ' tbody')
                                         .append($('<tr>')
                                             .append($('<td>')
                                                 .append(
@@ -818,50 +818,50 @@
                                 });
                             }
                         });
-                        $('#casetype2p'$.escapeSelector(cardId)).html(
+                        $('#casetype2p' +  $.escapeSelector(cardId)).html(
                             '<option value="">เลือกรายละเอียดเคส</option>');
-                        $('#casetype3p'$.escapeSelector(cardId)).html(
+                        $('#casetype3p' +  $.escapeSelector(cardId)).html(
                             '<option value="">เลือกรายละเอียดเคสย่อย</option>'
                         );
-                        $('#casetype4p'$.escapeSelector(cardId)).html(
+                        $('#casetype4p' +  $.escapeSelector(cardId)).html(
                             '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>'
                         );
-                        $('#casetype5p'$.escapeSelector(cardId)).html(
+                        $('#casetype5p' +  $.escapeSelector(cardId)).html(
                             '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>'
                         );
-                        $('#casetype6p'$.escapeSelector(cardId)).html(
+                        $('#casetype6p' +  $.escapeSelector(cardId)).html(
                             '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>'
                         );
-                        $('#casetype2p'$.escapeSelector(cardId)).attr('disabled', true);
-                        $('#casetype3p'$.escapeSelector(cardId)).attr('disabled', true);
-                        $('#casetype4p'$.escapeSelector(cardId)).attr('disabled', true);
-                        $('#casetype5p'$.escapeSelector(cardId)).attr('disabled', true);
-                        $('#casetype6p'$.escapeSelector(cardId)).attr('disabled', true);
+                        $('#casetype2p' +  $.escapeSelector(cardId)).attr('disabled', true);
+                        $('#casetype3p' +  $.escapeSelector(cardId)).attr('disabled', true);
+                        $('#casetype4p' +  $.escapeSelector(cardId)).attr('disabled', true);
+                        $('#casetype5p' +  $.escapeSelector(cardId)).attr('disabled', true);
+                        $('#casetype6p' +  $.escapeSelector(cardId)).attr('disabled', true);
                     }
                 });
             });
         // Save data asdf
         $(document).on('click', '.SubmitCreateFormP-button', function() {
             let cardId = $(this).data("tabid");
-            var uniqid = $('#custom-tabs-pop-'$.escapeSelector(cardId)).data("tick");
+            var uniqid = $('#custom-tabs-pop-' +  $.escapeSelector(cardId)).data("tick");
             var emergencyData = [];
 
-            var arrayDate = $('#adddatep'$.escapeSelector(cardId)).val().split("-");
+            var arrayDate = $('#adddatep' +  $.escapeSelector(cardId)).val().split("-");
             arrayDate[0] = parseInt(arrayDate[0]) - 543;
             var tempadddate = arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2];
 
-            var arrayDateb = $('#birthdayp'$.escapeSelector(cardId)).val().split("-");
+            var arrayDateb = $('#birthdayp' +  $.escapeSelector(cardId)).val().split("-");
             arrayDateb[0] = parseInt(arrayDateb[0]) - 543;
             var tempbirthday = arrayDateb[0] + "-" + arrayDateb[1] + "-" + arrayDateb[2];
 
-            if ($('#contractid'$.escapeSelector(cardId)).val() === "") {
-                $('#myTbl3p'$.escapeSelector(cardId) + ' tbody tr').each(function() {
+            if ($('#contractid' +  $.escapeSelector(cardId)).val() === "") {
+                $('#myTbl3p' +  $.escapeSelector(cardId) + ' tbody tr').each(function() {
                     var emergencyname = $(this).find(
-                        'input[name="emergencynamep'$.escapeSelector(cardId) + '[]"]').val();
+                        'input[name="emergencynamep' +  $.escapeSelector(cardId) + '[]"]').val();
                     var emerrelation = $(this).find(
-                        'input[name="emerrelationp'$.escapeSelector(cardId) + '[]"]').val();
+                        'input[name="emerrelationp' +  $.escapeSelector(cardId) + '[]"]').val();
                     var emerphone = $(this).find(
-                        'input[name="emerphonep'$.escapeSelector(cardId) + '[]"]').val();
+                        'input[name="emerphonep' +  $.escapeSelector(cardId) + '[]"]').val();
                     var emergency = {
                         emergencyname: emergencyname,
                         emerrelation: emerrelation,
@@ -870,61 +870,61 @@
                     emergencyData.push(emergency);
                 });
                 var additionalData = {
-                    hn: $('#hnp'$.escapeSelector(cardId)).val(),
+                    hn: $('#hnp' +  $.escapeSelector(cardId)).val(),
                     adddate: tempadddate,
-                    tname: $('#tnamep'$.escapeSelector(cardId)).val(),
-                    fname: $('#fnamep'$.escapeSelector(cardId)).val(),
-                    lname: $('#lnamep'$.escapeSelector(cardId)).val(),
-                    sex: $('#sexp'$.escapeSelector(cardId)).val(),
+                    tname: $('#tnamep' +  $.escapeSelector(cardId)).val(),
+                    fname: $('#fnamep' +  $.escapeSelector(cardId)).val(),
+                    lname: $('#lnamep' +  $.escapeSelector(cardId)).val(),
+                    sex: $('#sexp' +  $.escapeSelector(cardId)).val(),
                     birthday: tempbirthday,
-                    age: $('#agep'$.escapeSelector(cardId)).val(),
-                    bloodgroup: $('#bloodgroupp'$.escapeSelector(cardId)).val(),
-                    homeno: $('#homenop'$.escapeSelector(cardId)).val(),
-                    moo: $('#moop'$.escapeSelector(cardId)).val(),
-                    soi: $('#soip'$.escapeSelector(cardId)).val(),
-                    road: $('#roadp'$.escapeSelector(cardId)).val(),
-                    city: $('#cityp'$.escapeSelector(cardId)).val(),
-                    district: $('#districtp'$.escapeSelector(cardId)).val(),
-                    subdistrict: $('#subdistrictp'$.escapeSelector(cardId)).val(),
-                    postcode: $('#postcodep'$.escapeSelector(cardId)).val(),
-                    telhome: $('#telhomep'$.escapeSelector(cardId)).val(),
-                    phoneno: $('#phonenop'$.escapeSelector(cardId)).val(),
-                    workno: $('#worknop'$.escapeSelector(cardId)).val(),
+                    age: $('#agep' +  $.escapeSelector(cardId)).val(),
+                    bloodgroup: $('#bloodgroupp' +  $.escapeSelector(cardId)).val(),
+                    homeno: $('#homenop' +  $.escapeSelector(cardId)).val(),
+                    moo: $('#moop' +  $.escapeSelector(cardId)).val(),
+                    soi: $('#soip' +  $.escapeSelector(cardId)).val(),
+                    road: $('#roadp' +  $.escapeSelector(cardId)).val(),
+                    city: $('#cityp' +  $.escapeSelector(cardId)).val(),
+                    district: $('#districtp' +  $.escapeSelector(cardId)).val(),
+                    subdistrict: $('#subdistrictp' +  $.escapeSelector(cardId)).val(),
+                    postcode: $('#postcodep' +  $.escapeSelector(cardId)).val(),
+                    telhome: $('#telhomep' +  $.escapeSelector(cardId)).val(),
+                    phoneno: $('#phonenop' +  $.escapeSelector(cardId)).val(),
+                    workno: $('#worknop' +  $.escapeSelector(cardId)).val(),
                     uniqid: uniqid,
-                    telno: $('#telnop'$.escapeSelector(cardId)).val(),
-                    casetype1: $('#casetype1p'$.escapeSelector(cardId) + ' option:selected').text(),
-                    caseid1: $('#casetype1p'$.escapeSelector(cardId)).val(),
-                    tranferstatus: $('#tranferstatusp'$.escapeSelector(cardId)).val(),
-                    casedetail: $('#casedetailp'$.escapeSelector(cardId)).val(),
-                    casestatus: $('#casestatusp'$.escapeSelector(cardId)).val(),
-                    agent: $('#telnop'$.escapeSelector(cardId)).val(),
+                    telno: $('#telnop' +  $.escapeSelector(cardId)).val(),
+                    casetype1: $('#casetype1p' +  $.escapeSelector(cardId) + ' option:selected').text(),
+                    caseid1: $('#casetype1p' +  $.escapeSelector(cardId)).val(),
+                    tranferstatus: $('#tranferstatusp' +  $.escapeSelector(cardId)).val(),
+                    casedetail: $('#casedetailp' +  $.escapeSelector(cardId)).val(),
+                    casestatus: $('#casestatusp' +  $.escapeSelector(cardId)).val(),
+                    agent: $('#telnop' +  $.escapeSelector(cardId)).val(),
                     emergencyData: emergencyData,
                     _token: token
                 };
-                if ($('#casetype2p'$.escapeSelector(cardId)).val() !== '') {
-                    additionalData.casetype2 = $('#casetype2p'$.escapeSelector(cardId) +
+                if ($('#casetype2p' +  $.escapeSelector(cardId)).val() !== '') {
+                    additionalData.casetype2 = $('#casetype2p' +  $.escapeSelector(cardId) +
                         ' option:selected').text();
-                    additionalData.caseid2 = $('#casetype2p'$.escapeSelector(cardId)).val();
+                    additionalData.caseid2 = $('#casetype2p' +  $.escapeSelector(cardId)).val();
                 }
-                if ($('#casetype3p'$.escapeSelector(cardId)).val() !== '') {
-                    additionalData.casetype3 = $('#casetype3p'$.escapeSelector(cardId) +
+                if ($('#casetype3p' +  $.escapeSelector(cardId)).val() !== '') {
+                    additionalData.casetype3 = $('#casetype3p' +  $.escapeSelector(cardId) +
                         ' option:selected').text();
-                    additionalData.caseid3 = $('#casetype3p'$.escapeSelector(cardId)).val();
+                    additionalData.caseid3 = $('#casetype3p' +  $.escapeSelector(cardId)).val();
                 }
-                if ($('#casetype4p'$.escapeSelector(cardId)).val() !== '') {
-                    additionalData.casetype4 = $('#casetype4p'$.escapeSelector(cardId) +
+                if ($('#casetype4p' +  $.escapeSelector(cardId)).val() !== '') {
+                    additionalData.casetype4 = $('#casetype4p' +  $.escapeSelector(cardId) +
                         ' option:selected').text();
-                    additionalData.caseid4 = $('#casetype4p'$.escapeSelector(cardId)).val();
+                    additionalData.caseid4 = $('#casetype4p' +  $.escapeSelector(cardId)).val();
                 }
-                if ($('#casetype5p'$.escapeSelector(cardId)).val() !== '') {
-                    additionalData.casetype5 = $('#casetype5p'$.escapeSelector(cardId) +
+                if ($('#casetype5p' +  $.escapeSelector(cardId)).val() !== '') {
+                    additionalData.casetype5 = $('#casetype5p' +  $.escapeSelector(cardId) +
                         ' option:selected').text();
-                    additionalData.caseid5 = $('#casetype5p'$.escapeSelector(cardId)).val();
+                    additionalData.caseid5 = $('#casetype5p' +  $.escapeSelector(cardId)).val();
                 }
-                if ($('#casetype6p'$.escapeSelector(cardId)).val() !== '') {
-                    additionalData.casetype6 = $('#casetype6p'$.escapeSelector(cardId) +
+                if ($('#casetype6p' +  $.escapeSelector(cardId)).val() !== '') {
+                    additionalData.casetype6 = $('#casetype6p' +  $.escapeSelector(cardId) +
                         ' option:selected').text();
-                    additionalData.caseid6 = $('#casetype6p'$.escapeSelector(cardId)).val();
+                    additionalData.caseid6 = $('#casetype6p' +  $.escapeSelector(cardId)).val();
                 }
                 $.ajax({
                     url: "{{ route('contacts.casescontract') }}",
@@ -932,12 +932,12 @@
                     data: additionalData,
                     success: function(result) {
                         if (result.errors) {
-                            $('.alert-danger-pop'$.escapeSelector(cardId)).html('');
+                            $('.alert-danger-pop' +  $.escapeSelector(cardId)).html('');
                             $.each(result.errors, function(key,
                                 value) {
-                                $('.alert-danger-pop'$.escapeSelector(cardId))
+                                $('.alert-danger-pop' +  $.escapeSelector(cardId))
                                     .show();
-                                $('.alert-danger-pop'$.escapeSelector(cardId))
+                                $('.alert-danger-pop' +  $.escapeSelector(cardId))
                                     .append('<strong><li>' +
                                         value +
                                         '</li></strong>');
@@ -950,13 +950,13 @@
                             //    console.log(e)
                             //})
                         } else {
-                            $('.alert-danger-pop'$.escapeSelector(cardId)).hide();
-                            $('.alert-success-pop'$.escapeSelector(cardId)).show();
-                            $('.alert-success-pop'$.escapeSelector(cardId)).append(
+                            $('.alert-danger-pop' +  $.escapeSelector(cardId)).hide();
+                            $('.alert-success-pop' +  $.escapeSelector(cardId)).show();
+                            $('.alert-success-pop' +  $.escapeSelector(cardId)).append(
                                 '<strong><li>' + result
                                 .success +
                                 '</li></strong>');
-                            var cardElementId = $('#telnop'$.escapeSelector(cardId))
+                            var cardElementId = $('#telnop' +  $.escapeSelector(cardId))
                                 .val();
 
                             $(`#custom-tabs-pop-${cardElementId}-tab`).closest(
@@ -966,7 +966,7 @@
                                 timeOut: 5000
                             });
 
-                            $('.alert-success-pop'$.escapeSelector(cardId)).hide();
+                            $('.alert-success-pop' +  $.escapeSelector(cardId)).hide();
 
                         }
                     }
@@ -980,16 +980,16 @@
                     alertType: "info",
                 }).done(function(r) {
                     if (r == true) {
-                        $('#myTbl3p'$.escapeSelector(cardId) + ' tbody tr').each(function(index, tr) {
+                        $('#myTbl3p' +  $.escapeSelector(cardId) + ' tbody tr').each(function(index, tr) {
                             var emertype = $(this).find(
-                                'input[name="emertypep'$.escapeSelector(cardId) + '[]"]').val();
+                                'input[name="emertypep' +  $.escapeSelector(cardId) + '[]"]').val();
                             var emergencyname = $(this).find(
-                                    'input[name="emergencynamep'$.escapeSelector(cardId) + '[]"]')
+                                    'input[name="emergencynamep' +  $.escapeSelector(cardId) + '[]"]')
                                 .val();
                             var emerrelation = $(this).find(
-                                'input[name="emerrelationp'$.escapeSelector(cardId) + '[]"]').val();
+                                'input[name="emerrelationp' +  $.escapeSelector(cardId) + '[]"]').val();
                             var emerphone = $(this).find(
-                                'input[name="emerphonep'$.escapeSelector(cardId) + '[]"]').val();
+                                'input[name="emerphonep' +  $.escapeSelector(cardId) + '[]"]').val();
                             var emergency = {
                                 emertype: emertype,
                                 emergencyname: emergencyname,
@@ -998,63 +998,63 @@
                             };
                             emergencyData.push(emergency);
                         });
-                        var id = $('#contractid'$.escapeSelector(cardId)).val();
+                        var id = $('#contractid' +  $.escapeSelector(cardId)).val();
                         var additionalData = {
-                            hn: $('#hnp'$.escapeSelector(cardId)).val(),
+                            hn: $('#hnp' +  $.escapeSelector(cardId)).val(),
                             adddate: tempadddate,
-                            tname: $('#tnamep'$.escapeSelector(cardId)).val(),
-                            fname: $('#fnamep'$.escapeSelector(cardId)).val(),
-                            lname: $('#lnamep'$.escapeSelector(cardId)).val(),
-                            sex: $('#sexp'$.escapeSelector(cardId)).val(),
+                            tname: $('#tnamep' +  $.escapeSelector(cardId)).val(),
+                            fname: $('#fnamep' +  $.escapeSelector(cardId)).val(),
+                            lname: $('#lnamep' +  $.escapeSelector(cardId)).val(),
+                            sex: $('#sexp' +  $.escapeSelector(cardId)).val(),
                             birthday: tempbirthday,
-                            age: $('#agep'$.escapeSelector(cardId)).val(),
-                            bloodgroup: $('#bloodgroupp'$.escapeSelector(cardId)).val(),
-                            homeno: $('#homenop'$.escapeSelector(cardId)).val(),
-                            moo: $('#moop'$.escapeSelector(cardId)).val(),
-                            soi: $('#soip'$.escapeSelector(cardId)).val(),
-                            road: $('#roadp'$.escapeSelector(cardId)).val(),
-                            city: $('#cityp'$.escapeSelector(cardId)).val(),
-                            district: $('#districtp'$.escapeSelector(cardId)).val(),
-                            subdistrict: $('#subdistrictp'$.escapeSelector(cardId)).val(),
-                            postcode: $('#postcodep'$.escapeSelector(cardId)).val(),
-                            telhome: $('#telhomep'$.escapeSelector(cardId)).val(),
-                            phoneno: $('#phonenop'$.escapeSelector(cardId)).val(),
-                            workno: $('#worknop'$.escapeSelector(cardId)).val(),
+                            age: $('#agep' +  $.escapeSelector(cardId)).val(),
+                            bloodgroup: $('#bloodgroupp' +  $.escapeSelector(cardId)).val(),
+                            homeno: $('#homenop' +  $.escapeSelector(cardId)).val(),
+                            moo: $('#moop' +  $.escapeSelector(cardId)).val(),
+                            soi: $('#soip' +  $.escapeSelector(cardId)).val(),
+                            road: $('#roadp' +  $.escapeSelector(cardId)).val(),
+                            city: $('#cityp' +  $.escapeSelector(cardId)).val(),
+                            district: $('#districtp' +  $.escapeSelector(cardId)).val(),
+                            subdistrict: $('#subdistrictp' +  $.escapeSelector(cardId)).val(),
+                            postcode: $('#postcodep' +  $.escapeSelector(cardId)).val(),
+                            telhome: $('#telhomep' +  $.escapeSelector(cardId)).val(),
+                            phoneno: $('#phonenop' +  $.escapeSelector(cardId)).val(),
+                            workno: $('#worknop' +  $.escapeSelector(cardId)).val(),
                             uniqid: uniqid,
-                            telno: $('#telnop'$.escapeSelector(cardId)).val(),
-                            casetype1: $('#casetype1p'$.escapeSelector(cardId) + ' option:selected')
+                            telno: $('#telnop' +  $.escapeSelector(cardId)).val(),
+                            casetype1: $('#casetype1p' +  $.escapeSelector(cardId) + ' option:selected')
                                 .text(),
-                            caseid1: $('#casetype1p'$.escapeSelector(cardId)).val(),
-                            tranferstatus: $('#tranferstatusp'$.escapeSelector(cardId)).val(),
-                            casedetail: $('#casedetailp'$.escapeSelector(cardId)).val(),
-                            casestatus: $('#casestatusp'$.escapeSelector(cardId)).val(),
-                            agent: $('#telnop'$.escapeSelector(cardId)).val(),
+                            caseid1: $('#casetype1p' +  $.escapeSelector(cardId)).val(),
+                            tranferstatus: $('#tranferstatusp' +  $.escapeSelector(cardId)).val(),
+                            casedetail: $('#casedetailp' +  $.escapeSelector(cardId)).val(),
+                            casestatus: $('#casestatusp' +  $.escapeSelector(cardId)).val(),
+                            agent: $('#telnop' +  $.escapeSelector(cardId)).val(),
                             emergencyData: emergencyData
                         };
-                        if ($('#casetype2p'$.escapeSelector(cardId)).val() !== '') {
-                            additionalData.casetype2 = $('#casetype2p'$.escapeSelector(cardId) +
+                        if ($('#casetype2p' +  $.escapeSelector(cardId)).val() !== '') {
+                            additionalData.casetype2 = $('#casetype2p' +  $.escapeSelector(cardId) +
                                 ' option:selected').text();
-                            additionalData.caseid2 = $('#casetype2p'$.escapeSelector(cardId)).val();
+                            additionalData.caseid2 = $('#casetype2p' +  $.escapeSelector(cardId)).val();
                         }
-                        if ($('#casetype3p'$.escapeSelector(cardId)).val() !== '') {
-                            additionalData.casetype3 = $('#casetype3p'$.escapeSelector(cardId) +
+                        if ($('#casetype3p' +  $.escapeSelector(cardId)).val() !== '') {
+                            additionalData.casetype3 = $('#casetype3p' +  $.escapeSelector(cardId) +
                                 ' option:selected').text();
-                            additionalData.caseid3 = $('#casetype3p'$.escapeSelector(cardId)).val();
+                            additionalData.caseid3 = $('#casetype3p' +  $.escapeSelector(cardId)).val();
                         }
-                        if ($('#casetype4p'$.escapeSelector(cardId)).val() !== '') {
-                            additionalData.casetype4 = $('#casetype4p'$.escapeSelector(cardId) +
+                        if ($('#casetype4p' +  $.escapeSelector(cardId)).val() !== '') {
+                            additionalData.casetype4 = $('#casetype4p' +  $.escapeSelector(cardId) +
                                 ' option:selected').text();
-                            additionalData.caseid4 = $('#casetype4p'$.escapeSelector(cardId)).val();
+                            additionalData.caseid4 = $('#casetype4p' +  $.escapeSelector(cardId)).val();
                         }
-                        if ($('#casetype5p'$.escapeSelector(cardId)).val() !== '') {
-                            additionalData.casetype5 = $('#casetype5p'$.escapeSelector(cardId) +
+                        if ($('#casetype5p' +  $.escapeSelector(cardId)).val() !== '') {
+                            additionalData.casetype5 = $('#casetype5p' +  $.escapeSelector(cardId) +
                                 ' option:selected').text();
-                            additionalData.caseid5 = $('#casetype5p'$.escapeSelector(cardId)).val();
+                            additionalData.caseid5 = $('#casetype5p' +  $.escapeSelector(cardId)).val();
                         }
-                        if ($('#casetype6p'$.escapeSelector(cardId)).val() !== '') {
-                            additionalData.casetype6 = $('#casetype6p'$.escapeSelector(cardId) +
+                        if ($('#casetype6p' +  $.escapeSelector(cardId)).val() !== '') {
+                            additionalData.casetype6 = $('#casetype6p' +  $.escapeSelector(cardId) +
                                 ' option:selected').text();
-                            additionalData.caseid6 = $('#casetype6p'$.escapeSelector(cardId)).val();
+                            additionalData.caseid6 = $('#casetype6p' +  $.escapeSelector(cardId)).val();
                         }
                         $.ajax({
                             url: "contacts/casescontractupdate/" + id,
@@ -1063,25 +1063,25 @@
 
                             success: function(result) {
                                 if (result.errors) {
-                                    $('.alert-danger-pop'$.escapeSelector(cardId)).html('');
+                                    $('.alert-danger-pop' +  $.escapeSelector(cardId)).html('');
                                     $.each(result.errors, function(key,
                                         value) {
-                                        $('.alert-danger-pop'$.escapeSelector(cardId))
+                                        $('.alert-danger-pop' +  $.escapeSelector(cardId))
                                             .show();
-                                        $('.alert-danger-pop'$.escapeSelector(cardId))
+                                        $('.alert-danger-pop' +  $.escapeSelector(cardId))
                                             .append('<strong><li>' +
                                                 value +
                                                 '</li></strong>');
                                     });
                                     $('.alert-danger-pop').focus();
                                 } else {
-                                    $('.alert-danger-pop'$.escapeSelector(cardId)).hide();
-                                    $('.alert-success-pop'$.escapeSelector(cardId)).show();
-                                    $('.alert-success-pop'$.escapeSelector(cardId)).append(
+                                    $('.alert-danger-pop' +  $.escapeSelector(cardId)).hide();
+                                    $('.alert-success-pop' +  $.escapeSelector(cardId)).show();
+                                    $('.alert-success-pop' +  $.escapeSelector(cardId)).append(
                                         '<strong><li>' + result
                                         .success +
                                         '</li></strong>');
-                                    var cardElementId = $('#telnop'$.escapeSelector(cardId))
+                                    var cardElementId = $('#telnop' +  $.escapeSelector(cardId))
                                         .val();
 
                                     $(`#custom-tabs-pop-${cardElementId}-tab`)
@@ -1092,7 +1092,7 @@
                                         timeOut: 5000
                                     });
 
-                                    $('.alert-success-pop'$.escapeSelector(cardId)).hide();
+                                    $('.alert-success-pop' +  $.escapeSelector(cardId)).hide();
                                     $('#ToolbarModal').modal('hide');
                                     positionCards();
                                 }
