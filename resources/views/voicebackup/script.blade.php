@@ -39,24 +39,32 @@
             $(this).bootstrapSwitch('state', $(this).prop('checked'));
         })
 
+       
+
         $.datepicker.setDefaults($.datepicker.regional["th"]);
         var currentDate = new Date();
-        var currentYear = currentDate.getFullYear() /*  + 543 */ ;
-        var maxYear = currentYear;
+        var currentYear = currentDate.getFullYear();
+        var maxYear = currentYear + 1;
 
-        $(".datepick").datetimepicker({
+        $(".datepick").datepicker_thai({
             changeMonth: true,
             changeYear: true,
+            langTh: true,
+            yearTh: true,
             yearRange: '2023' + ':' + maxYear,
-            dateFormat: 'yy-mm-dd',
-            timeFormat: "HH:mm:ss",
+            dateFormat: 'dd/mm/yy',
             onSelect: function(date) {
                 $("#edit-date-of-birth").addClass('filled');
             }
         });
 
+        $('.timepick').timepicker({
+            timeFormat: "HH:mm:ss",
+        });
+
         //currentDate.setYear(currentDate.getFullYear() + 543);
-        $('.datepick').datetimepicker("setDate", currentDate);
+        //$('.datepick').datetimepicker("setDate", currentDate);
+
 
 
         //$.noConflict();

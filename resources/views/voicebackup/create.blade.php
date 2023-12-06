@@ -32,31 +32,61 @@
                     </div>
                 </div> --}}
                 <div class="row">
-                    <div class="col-xs-8 col-sm-8 col-md-8">
+                    <div class="col-xs-4 col-sm-4 col-md-4">
                         <div class="form-group">
                             <strong><i class="fas fa-calendar"></i> จากวันที่:</strong>
                             @php
-                                $datethai = date('Y-m-d') . ' ' . date('H:i:s');
+                                $datethai = date('d/m/') . date('Y') + 543;
                             @endphp
                             {!! Form::text('start_date', $datethai, [
                                 'id' => 'AddSDate',
                                 'placeholder' => '',
+                                'readonly' => true,
                                 'class' => 'datepick form-control',
+                            ]) !!}
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <div class="form-group">
+                            <strong><i class="fas fa-clock-o"></i> เวลา:</strong>
+                            @php
+                                $timethai = date('H:i:s');
+                            @endphp
+                            {!! Form::text('start_time', $timethai, [
+                                'id' => 'AddSTime',
+                                'placeholder' => '',
+                                'readonly' => true,
+                                'class' => 'timepick form-control',
                             ]) !!}
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-8 col-sm-8 col-md-8">
+                    <div class="col-xs-4 col-sm-4 col-md-4">
                         <div class="form-group">
                             <strong><i class="fas fa-calendar"></i> ถึงวันที่:</strong>
                             @php
-                                 $datethai = date('Y-m-d') . ' ' . date('H:i:s');
+                                $datethai = date('d/m/') . date('Y') + 543;
                             @endphp
                             {!! Form::text('end_date', $datethai, [
                                 'id' => 'AddEDate',
                                 'placeholder' => '',
+                                'readonly' => true,
                                 'class' => 'datepick form-control',
+                            ]) !!}
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <div class="form-group">
+                            <strong><i class="fas fa-clock-o"></i> เวลา:</strong>
+                            @php
+                                $timethai = date('H:i:s');
+                            @endphp
+                            {!! Form::text('end_time', $timethai, [
+                                'id' => 'AddETime',
+                                'placeholder' => '',
+                                'readonly' => true,
+                                'class' => 'timepick form-control',
                             ]) !!}
                         </div>
                     </div>
