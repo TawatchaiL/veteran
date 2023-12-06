@@ -61,6 +61,7 @@
                 $('#' + cardId).removeClass('card-danger');
                 $('#' + cardId).addClass('card-success');
                 alert('OK');
+                alert(response.html);
                 await $('#pop_' + cardId).html(response.html);
                 alert('OK1');
                 $(".card-footer").css("display", "block")
