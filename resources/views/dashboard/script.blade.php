@@ -561,19 +561,20 @@
                 changeText(total_score, '0');
                 changeText(max_wait, '00:00:00');
 
-                data.avg_data.forEach((item) => {
-                    if (item.queue_number == storedOption) {
-                        /* avg_talk.html(item.avg_talk_time)
-                        avg_wait.html(item.avg_hold_time)
-                        total_talk.html(item.total_talk_time)
-                        max_wait.html(item.max_hold_time) */
-                        changeText(avg_talk, item.avg_talk_time)
-                        changeText(avg_wait, item.avg_hold_time)
-                        changeText(total_talk, item.total_talk_time)
-                        changeText(total_score, item.total_score)
-                        changeText(max_wait, item.max_hold_time)
-                    }
-                });
+                //data.avg_data.forEach((item) => {
+                const item = data.avg_data;
+                if (item.queue_number == storedOption) {
+                    /* avg_talk.html(item.avg_talk_time)
+                    avg_wait.html(item.avg_hold_time)
+                    total_talk.html(item.total_talk_time)
+                    max_wait.html(item.max_hold_time) */
+                    changeText(avg_talk, item.avg_talk_time)
+                    changeText(avg_wait, item.avg_hold_time)
+                    changeText(total_talk, item.total_talk_time)
+                    changeText(total_score, item.total_score)
+                    changeText(max_wait, item.max_hold_time)
+                }
+                //});
             },
             error: (error) => {
                 console.error('Error fetching data:', error);
