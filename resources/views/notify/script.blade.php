@@ -64,7 +64,6 @@
                 "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
             ],
             beforeShow: function() {
-                console.log($(this).val())
                 if ($(this).val() != "") {
                     var arrayDateT = $(this).val().split(" ");
                     var arrayDate = arrayDateT[0].split("/");
@@ -109,8 +108,9 @@
                 arrayDate[2] = parseInt(arrayDate[2]) + 543;
                 $(this).val(arrayDate[0] + "/" + arrayDate[1] + "/" + arrayDate[2] + " " +
                     arrayDateT[1]);
+                    console.log($(this).val())
 
-                var selectedDate = new Date(dateText);
+                /* var selectedDate = new Date(dateText);
                 var currentDate = new Date();
                 var years = currentDate.getFullYear() - selectedDate.getFullYear();
                 var months = currentDate.getMonth() - selectedDate.getMonth();
@@ -124,7 +124,7 @@
                 if (months < 0) {
                     years--;
                     months += 12;
-                }
+                } */
             }
         });
 
