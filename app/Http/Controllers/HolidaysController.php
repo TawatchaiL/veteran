@@ -148,7 +148,15 @@ class HolidaysController extends Controller
     public function edit($id)
     {
         $data =  Holidays::find($id);
-        return response()->json(['data' => $data]);
+        $datasdate = explode(' ', $data->start_datetime_th);
+        $dataedate = explode(' ', $data->end_datetime_th);
+        return response()->json([
+            'data' => $data,
+            'datasdate' => $datasdate[0], 
+            'datastime' => $datasdate[1], 
+            'dataedate' => $dataedate[0], 
+            'dataetime' => $dataedate[1]
+        ]);
     }
 
     /**
