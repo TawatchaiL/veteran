@@ -71,6 +71,7 @@
                             {!! Form::text('end_date', $datethai, [
                                 'id' => 'AddEDate',
                                 'placeholder' => '',
+                                'readonly' => true,
                                 'class' => 'datepick form-control',
                             ]) !!}
                         </div>

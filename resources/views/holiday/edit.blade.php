@@ -34,7 +34,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-xs-8 col-sm-8 col-md-8">
+                            <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
                                     <strong><i class="fas fa-calendar"></i> จากวันที่:</strong>
                                     @php
@@ -43,13 +43,28 @@
                                     {!! Form::text('start_date', $datethai, [
                                         'id' => 'EditSDate',
                                         'placeholder' => '',
+                                        'readonly' => true,
                                         'class' => 'datepick form-control',
+                                    ]) !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                <div class="form-group">
+                                    <strong><i class="fas fa-clock-o"></i> เวลา:</strong>
+                                    @php
+                                        $timethai = date('H:i');
+                                    @endphp
+                                    {!! Form::text('end_time', $timethai, [
+                                        'id' => 'EditSTime',
+                                        'placeholder' => '',
+                                        'readonly' => true,
+                                        'class' => 'timepick form-control',
                                     ]) !!}
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-xs-8 col-sm-8 col-md-8">
+                            <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="form-group">
                                     <strong><i class="fas fa-calendar"></i> ถึงวันที่:</strong>
                                     @php
@@ -58,7 +73,22 @@
                                     {!! Form::text('end_date', $datethai, [
                                         'id' => 'EditEDate',
                                         'placeholder' => '',
+                                        'readonly' => true,
                                         'class' => 'datepick form-control',
+                                    ]) !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                <div class="form-group">
+                                    <strong><i class="fas fa-clock-o"></i> เวลา:</strong>
+                                    @php
+                                        $timethai = date('H:i');
+                                    @endphp
+                                    {!! Form::text('end_time', $timethai, [
+                                        'id' => 'EditETime',
+                                        'placeholder' => '',
+                                        'readonly' => true,
+                                        'class' => 'timepick form-control',
                                     ]) !!}
                                 </div>
                             </div>
