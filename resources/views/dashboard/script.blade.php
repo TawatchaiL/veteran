@@ -819,6 +819,18 @@
             } else if (res.status == 8) {
                 active_call[phone_number] = 1;
                 status = set_status('hold', '');
+            } else if (res.paused == 1) {
+                if (res.pausedreason == 'Warp UP') {
+                    state_dur = duration_time(res.lastpause);
+                    warp_total[phone_number] = 1;
+                    status = set_status('warp', '');
+                } else {
+                    state_dur = duration_time(res.lastpause);
+                    pause_total[phone_number] = 1;
+                    status = set_status('pause', res.pausedreason);
+                }
+                div_src.html('');
+                div_queue.html(queue_name[res.queue]);
             } else if (res.status == 1) {
                 delete warp_total[phone_number];
                 delete pause_total[phone_number];
@@ -837,19 +849,7 @@
                 status = set_status('ready', '');
                 div_src.html('');
                 div_queue.html(queue_name[res.queue]);
-            } else if (res.paused == 1) {
-                if (res.pausedreason == 'Warp UP') {
-                    state_dur = duration_time(res.lastpause);
-                    warp_total[phone_number] = 1;
-                    status = set_status('warp', '');
-                } else {
-                    state_dur = duration_time(res.lastpause);
-                    pause_total[phone_number] = 1;
-                    status = set_status('pause', res.pausedreason);
-                }
-                div_src.html('');
-                div_queue.html(queue_name[res.queue]);
-            } 
+            }
 
             $('#' + phone_number + '_status').html(status);
             $('#' + phone_number + '_phone').html(phone_status);
