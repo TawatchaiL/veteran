@@ -139,17 +139,17 @@ class ContactController extends Controller
         if ($contactcount > 1) {
             $template = 'casescontract.contactpop';
             $htmlContent = View::make($template, [
-                'cardid' => $con, 'telephone' => $con, 'contactd' => $datap
+                'cardid' => $uid, 'telephone' => $con, 'contactd' => $datap
             ])->render();
         } elseif ($contactcount == 1) {
             $template = 'contacts.contact-create';
             $htmlContent = View::make($template, [
-                'cardid' => $con, 'telephone' => $con, 'contactd' => $datap[0]->id
+                'cardid' => $uid, 'telephone' => $con, 'contactd' => $datap[0]->id
             ])->render();
         } else {
             $template = 'contacts.contact-create';
             $htmlContent = View::make($template, [
-                'cardid' => $con, 'telephone' => $con, 'contactd' => 0
+                'cardid' => $uid, 'telephone' => $con, 'contactd' => 0
             ])->render();
         }
         return response()->json(['html' =>  $htmlContent,]);
