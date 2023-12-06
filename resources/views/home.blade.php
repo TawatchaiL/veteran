@@ -142,7 +142,7 @@
                             <div class="card card-primary" style="max-height: 480px">
                                 <div class="card-header">
                                     <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> สถิติ สายเข้า รายวัน
-                                        ประจำเดือน {{ date('Y')+543 }} {{ date('-m') }}
+                                        ประจำเดือน {{ date('m') }} /  {{ date('Y')+543 }}
                                     </h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="maximize">
@@ -175,7 +175,7 @@
                                 <div class="card-header">
                                     <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> สถิติ
                                         เคสที่รับแจ้งทั้งหมด /
-                                        เคสที่โอนสาย รายวัน ประจำเดือน {{ date('Y')+543 }} {{ date('-m') }}
+                                        เคสที่โอนสาย รายวัน ประจำเดือน {{ date('m') }} /  {{ date('Y')+543 }}
                                     </h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="maximize">
