@@ -772,19 +772,7 @@
                 phone_status = phone_number
             }
 
-            if (res.paused == 1) {
-                if (res.pausedreason == 'Warp UP') {
-                    state_dur = duration_time(res.lastpause);
-                    warp_total[phone_number] = 1;
-                    status = set_status('warp', '');
-                } else {
-                    state_dur = duration_time(res.lastpause);
-                    pause_total[phone_number] = 1;
-                    status = set_status('pause', res.pausedreason);
-                }
-                div_src.html('');
-                div_queue.html(queue_name[res.queue]);
-            } else if (res.status == 6) {
+            if (res.status == 6) {
                 await call_list(phone_number);
                 ring_cid = dbv[phone_number + '_cid'];
                 ring_time = dbv[phone_number + '_time'];
@@ -849,7 +837,19 @@
                 status = set_status('ready', '');
                 div_src.html('');
                 div_queue.html(queue_name[res.queue]);
-            }
+            } else if (res.paused == 1) {
+                if (res.pausedreason == 'Warp UP') {
+                    state_dur = duration_time(res.lastpause);
+                    warp_total[phone_number] = 1;
+                    status = set_status('warp', '');
+                } else {
+                    state_dur = duration_time(res.lastpause);
+                    pause_total[phone_number] = 1;
+                    status = set_status('pause', res.pausedreason);
+                }
+                div_src.html('');
+                div_queue.html(queue_name[res.queue]);
+            } 
 
             $('#' + phone_number + '_status').html(status);
             $('#' + phone_number + '_phone').html(phone_status);
@@ -861,7 +861,7 @@
             let num_pause = Object.keys(pause_total).length;
             let num_warp = Object.keys(warp_total).length;
             let num_ready = Object.keys(ready_total).length - (num_active + num_ring) - num_pause -
-            num_warp;
+                num_warp;
             //let num_offline = offline_total - (num_busy + num_pause + num_ready)
             let num_offline = offline_total;
             //active_div.html(num_active);
