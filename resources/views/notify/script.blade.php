@@ -68,7 +68,7 @@
                 if ($(this).val() != "") {
                     var arrayDateT = $(this).val().split(" ");
                     var arrayDate = arrayDateT[0].split("/");
-                    arrayDate[0] = parseInt(arrayDate[0]) - 543;
+                    arrayDate[2] = parseInt(arrayDate[2]) - 543;
                     $(this).val(arrayDate[0] + "/" + arrayDate[1] + "/" + arrayDate[2] + " " +
                         arrayDateT[1]);
                     dateBefore = $(this).val();
@@ -96,8 +96,9 @@
                     var arrayDateT = $(this).val().split(" ");
                     var arrayDate = arrayDateT[0].split("/");
                     //$('#temp'+$(this).attr('id')).html(dateBefore);
-                    arrayDate[0] = parseInt(arrayDate[0]) + 543;
-                    $(this).val(arrayDate[0] + "/" + arrayDate[1] + "/" + arrayDate[2]);
+                    arrayDate[2] = parseInt(arrayDate[2]) + 543;
+                    $(this).val(arrayDate[0] + "/" + arrayDate[1] + "/" + arrayDate[2] + " " +
+                        arrayDateT[1]);
                 }
             },
             onSelect: function(dateText, inst) {
@@ -105,8 +106,9 @@
                 //$('#temp'+$(this).attr('id')).html(dateBefore);
                 var arrayDateT = $(this).val().split(" ");
                 var arrayDate = arrayDateT[0].split("/");
-                arrayDate[0] = parseInt(arrayDate[0]) + 543;
-                $(this).val(arrayDate[0] + "/" + arrayDate[1] + "/" + arrayDate[2]);
+                arrayDate[2] = parseInt(arrayDate[2]) + 543;
+                $(this).val(arrayDate[0] + "/" + arrayDate[1] + "/" + arrayDate[2] + " " +
+                    arrayDateT[1]);
 
                 /* var selectedDate = new Date(dateText);
                 var currentDate = new Date();
