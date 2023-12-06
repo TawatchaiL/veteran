@@ -51,10 +51,9 @@
         var currentYear = currentDate.getFullYear() + 543;
         var maxYear = currentYear + 1;
 
-        $(".datepick").datetimepicker({
+        $(".datepick").datepicker_thai({
             changeMonth: true,
             changeYear: true,
-            isBuddhist: true,
             yearRange: currentYear + ':' + maxYear,
             dateFormat: 'dd/mm/yy',
             onSelect: function(date) {
