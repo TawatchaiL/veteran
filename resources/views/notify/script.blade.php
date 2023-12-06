@@ -54,7 +54,7 @@
         var currentYear = currentDate.getFullYear();
         var maxYear = currentYear + 1;
 
-        $(".datepick").datetimepicker({
+        $(".datepick").datepicker({
             changeMonth: true,
             changeYear: true,
             langTh: true,
@@ -113,7 +113,7 @@
                     arrayDateT[1]);
                 console.log($(this).val())
             },
-            onBlur: function(dateText, inst) {
+            /* onBlur: function(dateText, inst) {
                 if ($(this).val() != "") {
                     var arrayDateT = dateBefore.split(" ");
                     var arrayDate = arrayDateT[0].split("/");
@@ -121,7 +121,7 @@
                     arrayDate[2] = parseInt(arrayDate[2]) + 543;
                     $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
                 }
-            },
+            }, */
         });
 
         //currentDate.setYear(currentDate.getFullYear() + 543);
