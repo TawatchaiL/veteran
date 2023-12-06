@@ -64,7 +64,7 @@ class DashboardController extends Controller
 
     public function dashboard_avg_data(Request $request)
     {
-        $queue = DB::connection('remote_connection')
+        $remoteQueue = DB::connection('remote_connection')
             ->table('call_center.call_entry_today')
             ->select(
                 'queue_number',
@@ -72,26 +72,37 @@ class DashboardController extends Controller
                 DB::raw('AVG(duration_wait) as avg_hold_time'),
                 DB::raw('SUM(duration) as total_talk_time'),
                 DB::raw('MAX(duration_wait) as max_hold_time'),
-                DB::raw('(SELECT sum(score) FROM agent_score_today WHERE queue = ' . $request->get('queue') . ') as total_score')
+                DB::raw('(SELECT sum(score) FROM agent_score_today WHERE queue = ' . $request->get('queue') . ') as total_score'),
+                DB::raw('(SELECT score FROM agent_score_today order by datetime desc limit 0,1) as latest_score')
             )
             ->where('queue_number', $request->get('queue'))
             ->groupBy('queue_number')
             ->get();
 
+        $localQueue = DB::table('crm_cases')
+            ->select(
+                DB::raw('count(id) as total_case'),
+                DB::raw('count(CASE WHEN casestatus = "ปิดเคส" THEN 1 ELSE NULL END) as total_closed_case'),
+                DB::raw('count(CASE WHEN tranferstatus != "ไม่มีการโอนสาย" THEN 1 ELSE NULL END) as total_transfer_case')
+            )
+            ->whereDate('created_at', '=', now())
+            ->get();
 
-        $formattedQueue = [];
 
-        foreach ($queue as $item) {
-            $formattedItem = new \stdClass();
-            $formattedItem->queue_number = $item->queue_number;
-            $formattedItem->total_score = $item->total_score;
-            $formattedItem->avg_talk_time = $this->formatDuration($item->avg_talk_time);
-            $formattedItem->avg_hold_time = $this->formatDuration($item->avg_hold_time);
-            $formattedItem->total_talk_time = $this->formatDuration($item->total_talk_time);
-            $formattedItem->max_hold_time = $this->formatDuration($item->max_hold_time);
 
-            $formattedQueue[] = $formattedItem;
-        }
+        $formattedQueue = [
+            'total_call' => $remoteQueue->first()->total_call,
+            'avg_talk_time' => $this->formatDuration($remoteQueue->first()->avg_talk_time),
+            'avg_hold_time' => $this->formatDuration($remoteQueue->first()->avg_hold_time),
+            'total_talk_time' => $this->formatDuration($remoteQueue->first()->total_talk_time),
+            'max_hold_time' => $this->formatDuration($remoteQueue->first()->max_hold_time),
+            'total_score' => $remoteQueue->first()->total_score,
+            'latest_score' => $remoteQueue->first()->latest_score,
+            'total_case' => $localQueue->first()->total_case,
+            'total_closed_case' => $localQueue->first()->total_closed_case,
+            'total_transfer_case' => $localQueue->first()->total_transfer_case,
+        ];
+
 
         return response()->json([
             'avg_data' => $formattedQueue,
