@@ -51,6 +51,7 @@
     }
     /// Maximize card AJAX function
     function maximizeCard(cardId) {
+        cardId = $.escapeSelector(cardId);
         $.ajax({
             url: '{{ route('contacts.popup_content') }}',
             type: 'POST',
@@ -60,7 +61,7 @@
             success: async function(response) {
                 $('#' + cardId).removeClass('card-danger');
                 $('#' + cardId).addClass('card-success');
-                await $('#pop_' +  $.escapeSelector(cardId)).html(response.html);
+                await $('#pop_' +  cardId).html(response.html);
                 $(".card-footer").css("display", "block")
                 $('.bclose').css('display', 'none');
 
