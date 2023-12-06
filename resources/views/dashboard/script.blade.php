@@ -560,6 +560,7 @@
                 changeText(total_talk, '00:00:00');
                 changeText(total_score, '0');
                 changeText(max_wait, '00:00:00');
+                console.log(data);
 
                 //data.avg_data.forEach((item) => {
                 const item = data.avg_data;
