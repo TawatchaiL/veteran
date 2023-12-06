@@ -395,12 +395,12 @@ class DashboardController extends Controller
                     $div = $agent->id;
                     $button = '<div class="btn-group">
                     <button type="button" class="btn btn-default" disabled>Action</button>
-                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon disabled" data-toggle="dropdown">
                     <span class="sr-only">Toggle Dropdown</span>
                     </button></div>';
                 } else {
                     $div = $agent->phone;
-                    $button = '<div class="btn-group" style="z-index: 9999;"> 
+                    $button = '<div class="btn-group"> 
                     <button type="button" class="btn btn-default">Action</button>
                     <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
                     <span class="sr-only">Toggle Dropdown</span>
