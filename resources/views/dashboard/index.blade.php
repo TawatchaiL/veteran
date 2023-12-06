@@ -392,9 +392,9 @@
                                                     </div> --}}
                                                 </div>
 
-                                                <div class="card-body p-0">
+                                                <div class="card-body {{-- table-responsive --}} p-0">
                                                     <table id="agent_list"
-                                                        class="table table-responsive table-striped table-bordered table-hover text-nowrap">
+                                                        class="table table-striped table-bordered table-hover text-nowrap">
                                                         <thead>
                                                             <tr>
                                                                 <th>#</th>
