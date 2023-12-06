@@ -101,7 +101,7 @@ class DashboardController extends Controller
             'total_score' => $remoteQueue->first()->total_score,
             'latest_score' => $remoteQueue->first()->latest_score,
             'total_case' => $localQueue->first()->total_case,
-            'total_closed_case' => $localQueue->first()->total_closed_case,
+            'total_close_case' => $localQueue->first()->total_closed_case,
             'total_transfer_case' => $localQueue->first()->total_transfer_case,
         ];
 

@@ -109,7 +109,7 @@
                                 <span class="info-box-icon bg-warning"><i class="fa-solid fa-clipboard-question"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เคสที่รับแจ้ง</span>
-                                    <span class="info-box-number">10 เคส</span>
+                                    <span class="info-box-number"><span id="total_case">0</span> เคส</span>
                                 </div>
 
                             </div>
@@ -122,7 +122,7 @@
                                 <span class="info-box-icon bg-warning"><i class="fa-solid fa-clipboard-check"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เคสที่ปิดเคสแล้ว</span>
-                                    <span class="info-box-number">4 เคส</span>
+                                    <span class="info-box-number"><span id="total_close_case">0</span> เคส</span>
                                 </div>
 
                             </div>
@@ -133,7 +133,7 @@
                                 <span class="info-box-icon bg-warning"><i class="fa-solid fa-shuffle"></i></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">เคสที่โอนสาย</span>
-                                    <span class="info-box-number">6 เคส</span>
+                                    <span class="info-box-number"><span id="total_tranfer_case">0</span> เคส</span>
                                 </div>
 
                             </div>
@@ -144,7 +144,8 @@
                                 <span class="info-box-icon bg-warning"><i class="fa-solid fa-star"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text ">คะแนนความพึงพอใจ</span>
-                                    <span class="info-box-number"><span id="total_score"></span> คะแนน</span>
+                                    <span class="info-box-number">ล่าสุด <span id="latest_score">0</span> / ทั้งหมด
+                                        <span id="total_score">0</span></span>
                                 </div>
 
                             </div>
@@ -262,7 +263,7 @@
                                             <div class="card">
                                                 <div class="card-header">
                                                     <h3 class="card-title"></h3>
-                                                   {{--  <div class="card-tools">
+                                                    {{--  <div class="card-tools">
                                                         <div class="input-group input-group-sm" style="width: 150px;">
                                                             <input type="text" name="table_search"
                                                                 class="form-control float-right" placeholder="Search">
@@ -378,7 +379,7 @@
                                             <div class="card">
                                                 <div class="card-header">
                                                     <h3 class="card-title"></h3>
-                                                   {{--  <div class="card-tools">
+                                                    {{--  <div class="card-tools">
                                                         <div class="input-group input-group-sm" style="width: 150px;">
                                                             <input type="text" name="table_search"
                                                                 class="form-control float-right" placeholder="Search">

@@ -437,8 +437,12 @@
     const avg_talk = document.getElementById("avg_talk");
     const total_talk = document.getElementById("total_talk");
     const total_score = document.getElementById("total_score");
+    const latest_score = document.getElementById("latest_score");
     const avg_wait = document.getElementById("avg_wait");
     const max_wait = document.getElementById("max_wait");
+    const total_case = document.getElementById("total_case");
+    const total_close_case = document.getElementById("total_close_case");
+    const total_tranfer_case = document.getElementById("total_tranfer_case");
     const dbv = {};
 
     let waitData = {};
@@ -559,8 +563,11 @@
                 changeText(avg_wait, '00:00:00');
                 changeText(total_talk, '00:00:00');
                 changeText(total_score, '0');
+                changeText(latest_score, '0');
                 changeText(max_wait, '00:00:00');
-                console.log(data);
+                changeText(total_case, '0');
+                changeText(total_close_case, '0');
+                changeText(total_tranfer_case, '0');
 
                 //data.avg_data.forEach((item) => {
                 const item = data.avg_data;
@@ -574,6 +581,11 @@
                     changeText(total_talk, item.total_talk_time)
                     changeText(total_score, item.total_score)
                     changeText(max_wait, item.max_hold_time)
+                    changeText(latest_score, item.latest_score);
+                    changeText(total_case, item.total_case)
+                    changeText(total_close_case, item.total_close_case)
+                    changeText(total_tranfer_case, item.total_tranfer_case)
+        
                 }
                 //});
             },
