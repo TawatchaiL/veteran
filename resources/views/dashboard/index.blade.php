@@ -276,9 +276,9 @@
                                                     </div> --}}
                                                 </div>
 
-                                                <div class="card-body ">
+                                                <div class="card-body table-responsive p-0">
                                                     <table id="waiting_list"
-                                                        class="table table-striped table-bordered table-hover ">
+                                                        class="table table-striped table-bordered table-hover text-nowrap">
                                                         <thead>
                                                             <tr>
                                                                 <th>#</th>

@@ -400,7 +400,7 @@ class DashboardController extends Controller
                     </button></div>';
                 } else {
                     $div = $agent->phone;
-                    $button = '<div class="btn-group">
+                    $button = '<div class="btn-group" style="z-index: 9999;"> 
                     <button type="button" class="btn btn-default">Action</button>
                     <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
                     <span class="sr-only">Toggle Dropdown</span>
