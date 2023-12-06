@@ -51,7 +51,7 @@
         var currentYear = currentDate.getFullYear();
         var maxYear = currentYear + 1;
 
-        $(".datepick").datetimepicker({
+        $(".datepick").datepicker_thai({
             changeMonth: true,
             changeYear: true,
             langTh: true,
@@ -62,6 +62,8 @@
                 $("#edit-date-of-birth").addClass('filled');
             }
         });
+
+        $('.timepick').timepicker();
 
         //currentDate.setYear(currentDate.getFullYear() + 543);
         //$('.datepick').datetimepicker("setDate", currentDate);

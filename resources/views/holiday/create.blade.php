@@ -45,6 +45,19 @@
                             ]) !!}
                         </div>
                     </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8">
+                        <div class="form-group">
+                            <strong><i class="fas fa-calendar"></i> จากวันที่:</strong>
+                            @php
+                                $datethai = date('H:i');
+                            @endphp
+                            {!! Form::text('start_time', $datethai, [
+                                'id' => 'AddSTime',
+                                'placeholder' => '',
+                                'class' => 'timepick form-control',
+                            ]) !!}
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-8 col-sm-8 col-md-8">
