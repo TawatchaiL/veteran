@@ -275,6 +275,8 @@
                     name: $('#EditName').val(),
                     start_date: $('#EditSDate').val(),
                     end_date: $('#EditEDate').val(),
+                    start_time: $('#EditSTime').val(),
+                    end_time: $('#EditETime').val(),
                     holiday_sound: $('#EditGreeting').val()[0],
                     thankyou_sound: $('#EditThankyou').val()[0],
                     status: esstatus,

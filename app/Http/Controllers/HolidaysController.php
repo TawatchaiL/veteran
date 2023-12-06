@@ -178,13 +178,16 @@ class HolidaysController extends Controller
             'thankyou_sound.required' => 'กรุณาระบุเสียงขอบคุณ!',
             'start_date.required' => 'กรุณาระบุวันเริ่มต้น!',
             'end_date.required' => 'กรุณาระบุวันสิ้นสุด!',
+            'start_time.required' => 'กรุณาระบุเวลาเริ่มต้น!',
+            'end_time.required' => 'กรุณาระบุเวลาสิ้นสุด!',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);
         }
 
-        $start_array = explode(" ", $request->get('start_date'));
+        $sdate_time = $request->get('start_date')." ".$request->get('start_time');
+        $start_array = explode(" ", $sdate_time);
         // Manually adjust the year from Buddhist to Gregorian calendar
         $sgregorianYear = intval(substr($start_array[0], 6)) - 543;
         $sgregorianDate = $sgregorianYear . substr($start_array[0], 2, 3) . "/" . substr($start_array[0], 0, 2);
@@ -192,8 +195,8 @@ class HolidaysController extends Controller
         $startutcDate = $start_date_convert->setTimezone('UTC');
         $startutcFormattedDate = $startutcDate->format('Y-m-d');
 
-
-        $end_array = explode(" ", $request->get('end_date'));
+        $edate_time = $request->get('end_date')." ".$request->get('end_time');
+        $end_array = explode(" ", $edate_time);
         $egregorianYear = intval(substr($end_array[0], 6)) - 543;
         $egregorianDate = $egregorianYear . substr($end_array[0], 2, 3) . "/" . substr($end_array[0], 0, 2);
         $end_date_convert = Carbon::createFromFormat('Y/m/d', $egregorianDate, 'Asia/Bangkok');
