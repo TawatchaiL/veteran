@@ -52,7 +52,7 @@
                             @php
                                 $timethai = date('H:i');
                             @endphp
-                            {!! Form::text('start_time', $thaithai, [
+                            {!! Form::text('start_time', $timethai, [
                                 'id' => 'AddSTime',
                                 'placeholder' => '',
                                 'class' => 'timepick form-control',
