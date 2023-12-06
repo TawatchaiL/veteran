@@ -89,21 +89,24 @@ class DashboardController extends Controller
             ->whereDate('created_at', '=', now())
             ->get();
 
+        $formattedQueue = [];
 
+        if ($remoteQueue && !$remoteQueue->isEmpty()) {
 
-        $formattedQueue = [
-            'queue_number' => $remoteQueue->first()->queue_number,
-            'total_call' => $remoteQueue->first()->total_call,
-            'avg_talk_time' => $this->formatDuration($remoteQueue->first()->avg_talk_time),
-            'avg_hold_time' => $this->formatDuration($remoteQueue->first()->avg_hold_time),
-            'total_talk_time' => $this->formatDuration($remoteQueue->first()->total_talk_time),
-            'max_hold_time' => $this->formatDuration($remoteQueue->first()->max_hold_time),
-            'total_score' => $remoteQueue->first()->total_score,
-            'latest_score' => $remoteQueue->first()->latest_score,
-            'total_case' => $localQueue->first()->total_case,
-            'total_close_case' => $localQueue->first()->total_closed_case,
-            'total_transfer_case' => $localQueue->first()->total_transfer_case,
-        ];
+            $formattedQueue = [
+                'queue_number' => $remoteQueue->first()->queue_number,
+                'total_call' => $remoteQueue->first()->total_call,
+                'avg_talk_time' => $this->formatDuration($remoteQueue->first()->avg_talk_time),
+                'avg_hold_time' => $this->formatDuration($remoteQueue->first()->avg_hold_time),
+                'total_talk_time' => $this->formatDuration($remoteQueue->first()->total_talk_time),
+                'max_hold_time' => $this->formatDuration($remoteQueue->first()->max_hold_time),
+                'total_score' => $remoteQueue->first()->total_score,
+                'latest_score' => $remoteQueue->first()->latest_score,
+                'total_case' => $localQueue->first()->total_case,
+                'total_close_case' => $localQueue->first()->total_closed_case,
+                'total_transfer_case' => $localQueue->first()->total_transfer_case,
+            ];
+        }
 
 
         return response()->json([
