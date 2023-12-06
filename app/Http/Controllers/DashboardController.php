@@ -92,6 +92,7 @@ class DashboardController extends Controller
 
 
         $formattedQueue = [
+            'queue_number' => $remoteQueue->first()->queue_number,
             'total_call' => $remoteQueue->first()->total_call,
             'avg_talk_time' => $this->formatDuration($remoteQueue->first()->avg_talk_time),
             'avg_hold_time' => $this->formatDuration($remoteQueue->first()->avg_hold_time),
