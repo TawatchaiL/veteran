@@ -584,7 +584,7 @@
                     changeText(latest_score, item.latest_score);
                     changeText(total_case, item.total_case)
                     changeText(total_close_case, item.total_close_case)
-                    changeText(total_tranfer_case, item.total_tranfer_case)
+                    changeText(total_tranfer_case, item.total_transfer_case)
         
                 }
                 //});
