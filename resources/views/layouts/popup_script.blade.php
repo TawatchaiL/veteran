@@ -7,7 +7,6 @@
     $('#custom-tabs-pop').on('click', '.nav-link', function() {
         var dataId = $(this).data('id');
         var datatext = $('#pop_' + dataId).text();
-        alert(dataId);
         if (datatext === '(ผู้ติดต่อที่เคยบันทึกข้อมูลไว้)' || datatext === '(ผู้ติดต่อใหม่)') {
             maximizeCard(dataId);
         }
@@ -53,6 +52,7 @@
     }
     /// Maximize card AJAX function
     function maximizeCard(cardId) {
+        alert(cardId);
         $.ajax({
             url: '{{ route('contacts.popup_content') }}',
             type: 'POST',
