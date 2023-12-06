@@ -394,7 +394,7 @@
 
                                                 <div class="card-body">
                                                     <table id="agent_list"
-                                                        class="table table-striped table-bordered table-hover">
+                                                        class="table table-striped table-bordered table-hover text-nowrap">
                                                         <thead>
                                                             <tr>
                                                                 <th>#</th>
