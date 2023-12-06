@@ -271,7 +271,7 @@ class ContactController extends Controller
                 }
 
                 $html = '<div class="col-md-12">
-                <div class=" pop_content" id="pop_' . $item->uniqid . '">' . $statusText . '</div></div>';
+                <div class=" pop_content" id="pop_' . str_replace(".","d",$item->uniqid) . '">' . $statusText . '</div></div>';
                 $tab_link .= '<li class="nav-item">
                 <a class="popup-tab-font-size nav-link ' . $tab_link_active . '" id="custom-tabs-pop-' . $item->uniqid . '-tab" data-toggle="pill" data-id="' . $item->uniqid . '" data-telno="' . $item->telno . '"
                     href="#custom-tabs-pop-' . $item->uniqid . '" role="tab" aria-controls="custom-tabs-pop-' . $item->uniqid . '"
