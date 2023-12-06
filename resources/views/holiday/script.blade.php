@@ -56,8 +56,13 @@
             changeYear: true,
             yearRange: currentYear + ':' + maxYear,
             dateFormat: 'dd/mm/yy',
-            onSelect: function(date) {
-                $("#edit-date-of-birth").addClass('filled');
+            onSelect: function(date, $input) {
+                //$("#edit-date-of-birth").addClass('filled');
+                var yearT = new Date(date).getFullYear() - 0;
+                var yearTH = yearT + 543;
+                var fulldate = $input.val();
+                var fulldateTH = fulldate.replace(yearT, yearTH);
+                $input.val(fulldateTH);
             }
         });
 
