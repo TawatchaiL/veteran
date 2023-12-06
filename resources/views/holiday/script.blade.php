@@ -48,7 +48,7 @@
 
         $.datepicker.setDefaults($.datepicker.regional["th"]);
         var currentDate = new Date();
-        var currentYear = currentDate.getFullYear() + 543;
+        var currentYear = currentDate.getFullYear();
         var maxYear = currentYear + 1;
 
         $(".datepick").datetimepicker({
