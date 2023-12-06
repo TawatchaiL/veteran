@@ -159,8 +159,14 @@ class VoiceBackupController extends Controller
             $dateRangeArray = explode(' - ', $dateRange);
 
             if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
-                $startDate = $dateRangeArray[0];
-                $endDate = $dateRangeArray[1];
+                list($startDate, $startTime) = explode(' ', $dateRangeArray[0]);
+                list($endDate, $endTime) = explode(' ', $dateRangeArray[1]);
+
+                [$startDay, $startMonth, $startYear] = explode('/', $startDate);
+                [$endDay, $endMonth, $endYear] = explode('/', $endDate);
+
+                $startDate = "$startYear-$startMonth-$startDay $startTime";
+                $endDate = "$endYear-$endMonth-$endDay $endTime";
             }
         }
 

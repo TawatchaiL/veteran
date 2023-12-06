@@ -39,7 +39,7 @@
             $(this).bootstrapSwitch('state', $(this).prop('checked'));
         })
 
-       
+
 
         $.datepicker.setDefaults($.datepicker.regional["th"]);
         var currentDate = new Date();
@@ -210,7 +210,8 @@
                 url: "{{ route('voicebackup.store') }}",
                 method: 'post',
                 data: {
-                    export_date: $('#AddSDate').val() + ' - ' + $('#AddEDate').val(),
+                    export_date: $('#AddSDate').val() + ' ' + $('#AddSTime').val() + ' - ' + $(
+                        '#AddEDate').val() + ' ' + $('#AddETime').val(),
                     src: $('#AddSrc').val(),
                     dst: $('#AddAgent').val()[0],
                     ctype: $('#AddCtype').val()[0],
