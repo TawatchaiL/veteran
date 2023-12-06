@@ -98,6 +98,7 @@
                     arrayDate[2] = parseInt(arrayDate[2]) + 543;
                     $(this).val(arrayDate[0] + "/" + arrayDate[1] + "/" + arrayDate[2] + " " +
                         arrayDateT[1]);
+                        console.log($(this).val())
                 }
             },
             onSelect: function(dateText, inst) {
