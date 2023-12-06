@@ -23,6 +23,7 @@
 
                     $('#custom-tabs-pop').prepend(response.tab_link);
                     $('#custom-tabs-pop-tabContent').prepend(response.tab_content);
+
                     maximizeCard(response.active_id);
                 }
                 $('#hold_tab').html(response.hold_tab);
