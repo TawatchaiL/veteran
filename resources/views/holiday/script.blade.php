@@ -63,8 +63,8 @@
             }
         });
 
-        currentDate.setYear(currentDate.getFullYear() + 543);
-        $('.datepick').datetimepicker("setDate", currentDate);
+        /* currentDate.setYear(currentDate.getFullYear() + 543);
+        $('.datepick').datetimepicker("setDate", currentDate); */
 
 
         //$.noConflict();
