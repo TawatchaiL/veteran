@@ -54,6 +54,8 @@
         $(".datepick").datepicker_thai({
             changeMonth: true,
             changeYear: true,
+            langTh: true,
+            yearTh: true,
             yearRange: currentYear + ':' + maxYear,
             dateFormat: 'dd/mm/yy',
             onSelect: function(date) {
