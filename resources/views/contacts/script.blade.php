@@ -251,15 +251,17 @@
                 var days = currentDate.getDate() - selectedDate.getDate();
                 if (days < 0) {
                     months--;
-                    days += new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
+                    days += new Date(currentDate.getFullYear(), currentDate.getMonth(), 0)
+                .getDate();
                 }
 
                 if (months < 0) {
                     years--;
                     months += 12;
                 }
-                $("#"+$(this).data('age')).val(years + " ปี " + months + " เดือน " + days + " วัน"); 
-                }
+                $("#" + $(this).data('age')).val(years + " ปี " + months + " เดือน " + days +
+                    " วัน");
+            }
         });
 
         var table = $('#Listview').DataTable({

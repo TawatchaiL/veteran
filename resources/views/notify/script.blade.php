@@ -51,7 +51,7 @@
 
         $.datepicker.setDefaults($.datepicker.regional["th"]);
         var currentDate = new Date();
-        var currentYear = currentDate.getFullYear() + 543;
+        var currentYear = currentDate.getFullYear();
         var maxYear = currentYear + 1;
 
         $(".datepick").datetimepicker({
@@ -59,13 +59,72 @@
             changeYear: true,
             yearRange: currentYear + ':' + maxYear,
             dateFormat: 'dd/mm/yy',
-            onSelect: function(date) {
-                $("#edit-date-of-birth").addClass('filled');
+            dayNamesMin: ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"],
+            monthNamesShort: ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
+                "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+            ],
+            beforeShow: function() {
+                if ($(this).val() != "") {
+                    var arrayDate = $(this).val().split("-");
+                    arrayDate[0] = parseInt(arrayDate[0]) - 543;
+                    $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
+                    dateBefore = $(this).val();
+                }
+                setTimeout(function() {
+                    $.each($(".ui-datepicker-year option"), function(j, k) {
+                        var textYear = parseInt($(".ui-datepicker-year option").eq(
+                            j).val()) + 543;
+                        $(".ui-datepicker-year option").eq(j).text(textYear);
+                    });
+                }, 50);
+
+            },
+            onChangeMonthYear: function() {
+                setTimeout(function() {
+                    $.each($(".ui-datepicker-year option"), function(j, k) {
+                        var textYear = parseInt($(".ui-datepicker-year option").eq(
+                            j).val()) + 543;
+                        $(".ui-datepicker-year option").eq(j).text(textYear);
+                    });
+                }, 50);
+            },
+            onClose: function(dateText, inst) {
+                if ($(this).val() != "" && dateText == dateBefore) {
+                    var arrayDate = dateText.split("-");
+                    //$('#temp'+$(this).attr('id')).html(dateBefore);
+                    arrayDate[0] = parseInt(arrayDate[0]) + 543;
+                    $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
+                }
+            },
+            onSelect: function(dateText, inst) {
+                dateBefore = $(this).val();
+                //$('#temp'+$(this).attr('id')).html(dateBefore);
+                var arrayDate = dateText.split("-");
+                arrayDate[0] = parseInt(arrayDate[0]) + 543;
+                $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
+
+                var selectedDate = new Date(dateText);
+                var currentDate = new Date();
+                var years = currentDate.getFullYear() - selectedDate.getFullYear();
+                var months = currentDate.getMonth() - selectedDate.getMonth();
+                var days = currentDate.getDate() - selectedDate.getDate();
+                if (days < 0) {
+                    months--;
+                    days += new Date(currentDate.getFullYear(), currentDate.getMonth(), 0)
+                .getDate();
+                }
+
+                if (months < 0) {
+                    years--;
+                    months += 12;
+                }
+                $("#" + $(this).data('age')).val(years + " ปี " + months + " เดือน " + days +
+                    " วัน");
             }
         });
 
-        currentDate.setYear(currentDate.getFullYear() + 543);
-        $('.datepick').datetimepicker("setDate", currentDate);
+        //currentDate.setYear(currentDate.getFullYear() + 543);
+        //$('.datepick').datetimepicker("setDate", currentDate);
 
 
         //$.noConflict();
