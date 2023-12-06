@@ -531,8 +531,8 @@
         //province changes
         $(document).on("change", ".citypchang", function() {
             let datatId = $(this).data("tabid");
-            var districtOb = $('#districtp' + datatId);
-            var cartonOb = $('#subdistrictp' + datatId);
+            var districtOb = $('#districtp' +  $.escapeSelector(datatId));
+            var cartonOb = $('#subdistrictp' +  $.escapeSelector(datatId));
             districtOb.html('<option value="">เลือกอำเภอ</option>');
             $.ajax({
                 url: "thdistrict/district/" + $(this).val(),
@@ -554,7 +554,7 @@
 
         $(document).on("change", ".districtpchang", function() {
             let datatId = $(this).data("tabid");
-            var cartonOb = $('#subdistrictp' + datatId);
+            var cartonOb = $('#subdistrictp' +  $.escapeSelector(datatId));
             //cartonOb.html('<option value="">เลือกตำบล</option>');
             $.ajax({
                 url: "thsubdistrict/subdistrict/" + $(this).val(),
@@ -610,7 +610,7 @@
             function() {
                 let datatId = $(this).data("tabid");
                 let tagetp = $(this).data("tagetp");
-                $('#' + tagetp + datatId).val(datatId);
+                $('#' + tagetp +  $.escapeSelector(datatId)).val(datatId);
             });
         // contact list to from
         $(document).on('click', '.selectcontactp-button',
@@ -619,7 +619,7 @@
                 let cardId = $(this).data("tabid");
                 let contactid = $(this).data("id");
                 //alert($(this).attr("id"));
-                $('#custom-tabs-pop-' + datatId).empty();
+                $('#custom-tabs-pop-' +  $.escapeSelector(datatId)).empty();
                 $.ajax({
                     url: '{{ route('contacts.popupcontact') }}',
                     type: 'POST',
@@ -628,9 +628,9 @@
                         cardid: datatId
                     },
                     success: async function(response) {
-                        $('#' + datatId).removeClass('card-danger');
-                        $('#' + datatId).addClass('card-success');
-                        await $('#custom-tabs-pop-' + datatId).html(response.html);
+                        $('#' +  $.escapeSelector(datatId)).removeClass('card-danger');
+                        $('#' +  $.escapeSelector(datatId)).addClass('card-success');
+                        await $('#custom-tabs-pop-' +  $.escapeSelector(datatId)).html(response.html);
                         $(".card-footer").css("display", "block")
                         $('.bclose').css('display', 'none');
 
@@ -639,7 +639,7 @@
                             method: 'GET',
                             async: false,
                             success: function(res) {
-                                var provinceOb = $('#cityp' + datatId);
+                                var provinceOb = $('#cityp' +  $.escapeSelector(datatId));
                                 provinceOb.html(
                                     '<option value="">เลือกจังหวัด</option>'
                                 );
@@ -806,7 +806,7 @@
                             method: 'GET',
                             async: false,
                             success: function(res) {
-                                var caseOb = $('#casetype1p' + datatId);
+                                var caseOb = $('#casetype1p' +  $.escapeSelector(datatId));
                                 caseOb.html(
                                     '<option value="">เลือกประเภทการติดต่อ</option>'
                                 );
