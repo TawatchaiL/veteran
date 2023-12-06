@@ -170,7 +170,8 @@ class NotifyGroupController extends Controller
     public function edit($id)
     {
         $data = NotifyGroup::find($id);
-
+        $datasdate = explode(' ', $data->group_start_th);
+        $dataedate = explode(' ', $data->group_end_th);
 
         $extena = DB::connection('remote_connection')->table('call_center.agent')->orderBy("number", "asc")->get();
         $extens = Notify2Group::where('gid', $data->id)->get();
@@ -182,7 +183,11 @@ class NotifyGroupController extends Controller
 
         return response()->json([
             'data' => $data,
-            'select_list_exten' => $select_list_exten
+            'select_list_exten' => $select_list_exten,
+            'datasdate' => $datasdate[0],
+            'datastime' => $datasdate[1],
+            'dataedate' => $dataedate[0],
+            'dataetime' => $dataedate[1]
         ]);
     }
 

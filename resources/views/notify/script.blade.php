@@ -267,8 +267,11 @@
                     $('#EditExtension').append(res.select_list_exten);
                     $('#EditLine').val(res.data.line_token);
                     $('#EditEmail').val(res.data.email);
-                    $('#EditSDate').val(res.data.group_start_th);
-                    $('#EditEDate').val(res.data.group_end_th);
+                    $('#EditSDate').val(res.datasdate);
+                    $('#EditEDate').val(res.dataedate);
+                    $('#EditSTime').val(res.datastime);
+                    $('#EditETime').val(res.dataetime);
+
 
                     if (res.data.status == 1) {
                         $('#ecustomCheckbox1').prop('checked', true);
