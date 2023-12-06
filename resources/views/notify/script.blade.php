@@ -54,78 +54,25 @@
         var currentYear = currentDate.getFullYear();
         var maxYear = currentYear + 1;
 
-        $(".datepick").datetimepicker({
+        $(".datepick").datepicker_thai({
             changeMonth: true,
             changeYear: true,
             langTh: true,
             yearTh: true,
-            yearRange: currentYear + ':' + maxYear,
+            yearRange: '2023' + ':' + maxYear,
             dateFormat: 'dd/mm/yy',
-            dayNamesMin: ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"],
-            monthNamesShort: ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
-                "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
-            ],
-            beforeShow: function() {
-                if ($(this).val() != "") {
-                    var arrayDateT = $(this).val().split(" ");
-                    var arrayDate = arrayDateT[0].split("/");
-                    arrayDate[2] = parseInt(arrayDate[2]) - 543;
-                    $(this).val(arrayDate[0] + "/" + arrayDate[1] + "/" + arrayDate[2] + " " +
-                        arrayDateT[1]);
-                    dateBefore = $(this).val();
-                }
-                setTimeout(function() {
-                    $.each($(".ui-datepicker-year option"), function(j, k) {
-                        var textYear = parseInt($(".ui-datepicker-year option").eq(
-                            j).val()) + 543;
-                        $(".ui-datepicker-year option").eq(j).text(textYear);
-                    });
-                }, 50);
+            onSelect: function(date) {
+                $("#edit-date-of-birth").addClass('filled');
+            }
+        });
 
-            },
-            onChangeMonthYear: function() {
-                setTimeout(function() {
-                    $.each($(".ui-datepicker-year option"), function(j, k) {
-                        var textYear = parseInt($(".ui-datepicker-year option").eq(
-                            j).val()) + 543;
-                        $(".ui-datepicker-year option").eq(j).text(textYear);
-                    });
-                }, 50);
-            },
-            onClose: function(dateText, inst) {
-                if ($(this).val() != "" && dateText == dateBefore) {
-                    var arrayDateT = $(this).val().split(" ");
-                    var arrayDate = arrayDateT[0].split("/");
-                    //$('#temp'+$(this).attr('id')).html(dateBefore);
-                    arrayDate[2] = parseInt(arrayDate[2]) + 543;
-                    $(this).val(arrayDate[0] + "/" + arrayDate[1] + "/" + arrayDate[2] + " " +
-                        arrayDateT[1]);
-                    console.log($(this).val())
-                }
-            },
-            onSelect: function(dateText, inst) {
-                dateBefore = $(this).val();
-                //$('#temp'+$(this).attr('id')).html(dateBefore);
-                var arrayDateT = $(this).val().split(" ");
-                var arrayDate = arrayDateT[0].split("/");
-                arrayDate[2] = parseInt(arrayDate[2]) + 543;
-                $(this).val(arrayDate[0] + "/" + arrayDate[1] + "/" + arrayDate[2] + " " +
-                    arrayDateT[1]);
-                console.log($(this).val())
-            },
-            /* onBlur: function(dateText, inst) {
-                if ($(this).val() != "") {
-                    var arrayDateT = dateBefore.split(" ");
-                    var arrayDate = arrayDateT[0].split("/");
-                    //$('#temp'+$(this).attr('id')).html(dateBefore);
-                    arrayDate[2] = parseInt(arrayDate[2]) + 543;
-                    $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
-                }
-            }, */
+        $('.timepick').timepicker({
+            timeFormat: "HH:mm:ss",
         });
 
         //currentDate.setYear(currentDate.getFullYear() + 543);
         //$('.datepick').datetimepicker("setDate", currentDate);
+
 
 
         //$.noConflict();
@@ -261,8 +208,8 @@
                 method: 'post',
                 data: {
                     group_name: $('#AddName').val(),
-                    group_start: $('#AddSDate').val(),
-                    group_end: $('#AddEDate').val(),
+                    group_start: $('#AddSDate').val() + ' ' + $('#AddSTime').val(),
+                    group_end: $('#AddEDate').val() + ' ' + $('#AddETime').val(),
                     group_extension: $('#AddExtension').val(),
                     line_token: $('#AddLine').val(),
                     email: $('#AddEmail').val(),
@@ -390,8 +337,10 @@
                 method: 'PUT',
                 data: {
                     group_name: $('#EditName').val(),
-                    group_start: $('#EditSDate').val(),
-                    group_end: $('#EditEDate').val(),
+                    group_start: $('#EditSDate').val() + ' ' + $('#EditSTime').val(),
+                    ,
+                    group_end: $('#EditEDate').val() + ' ' + $('#EditETime').val(),
+                    ,
                     group_extension: $('#EditExtension').val(),
                     line_token: $('#EditLine').val(),
                     email: $('#EditEmail').val(),

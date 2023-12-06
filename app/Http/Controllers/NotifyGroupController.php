@@ -130,7 +130,7 @@ class NotifyGroupController extends Controller
             'email' => $request->get('email'),
             'group_extension' => $groupExtensionCount,
             'group_start' =>  $startutcFormattedDate . " " . $start_array[1] . ":00",
-            'group_end' => $endutcFormattedDate . " " . $end_array[1] . ":00",
+            'group_end' => $endutcFormattedDate . " " . $end_array[1] . ":59",
             'group_start_th' =>  $request->get('group_start'),
             'group_end_th' => $request->get('group_end'),
             'group_sat' => $request->get('sat'),
