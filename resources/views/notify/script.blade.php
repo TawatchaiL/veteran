@@ -66,9 +66,9 @@
             beforeShow: function() {
                 if ($(this).val() != "") {
                     var arrayDateT = $(this).val().split(" ");
-                    var arrayDate = arrayDateT[0].split("-");
+                    var arrayDate = arrayDateT[0].split("/");
                     arrayDate[0] = parseInt(arrayDate[0]) - 543;
-                    $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
+                    $(this).val(arrayDate[0] + "/" + arrayDate[1] + "/" + arrayDate[2]);
                     dateBefore = $(this).val();
                 }
                 setTimeout(function() {
@@ -92,21 +92,21 @@
             onClose: function(dateText, inst) {
                 if ($(this).val() != "" && dateText == dateBefore) {
                     var arrayDateT = $(this).val().split(" ");
-                    var arrayDate = arrayDateT[0].split("-");
+                    var arrayDate = arrayDateT[0].split("/");
                     //$('#temp'+$(this).attr('id')).html(dateBefore);
                     arrayDate[0] = parseInt(arrayDate[0]) + 543;
-                    $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
+                    $(this).val(arrayDate[0] + "/" + arrayDate[1] + "/" + arrayDate[2]);
                 }
             },
             onSelect: function(dateText, inst) {
                 dateBefore = $(this).val();
                 //$('#temp'+$(this).attr('id')).html(dateBefore);
                 var arrayDateT = $(this).val().split(" ");
-                var arrayDate = arrayDateT[0].split("-");
+                var arrayDate = arrayDateT[0].split("/");
                 arrayDate[0] = parseInt(arrayDate[0]) + 543;
-                $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
+                $(this).val(arrayDate[0] + "/" + arrayDate[1] + "/" + arrayDate[2]);
 
-                var selectedDate = new Date(dateText);
+                /* var selectedDate = new Date(dateText);
                 var currentDate = new Date();
                 var years = currentDate.getFullYear() - selectedDate.getFullYear();
                 var months = currentDate.getMonth() - selectedDate.getMonth();
@@ -120,7 +120,7 @@
                 if (months < 0) {
                     years--;
                     months += 12;
-                }
+                } */
             }
         });
 
