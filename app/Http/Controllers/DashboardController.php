@@ -68,6 +68,7 @@ class DashboardController extends Controller
             ->table('call_center.call_entry_today')
             ->select(
                 'queue_number',
+                DB::raw('count(*) as total_call'),
                 DB::raw('AVG(duration) as avg_talk_time'),
                 DB::raw('AVG(duration_wait) as avg_hold_time'),
                 DB::raw('SUM(duration) as total_talk_time'),
