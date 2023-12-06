@@ -52,7 +52,7 @@
     }
     /// Maximize card AJAX function
     function maximizeCard(cardId) {
-        alert(cardId);
+        alert($('#pop_' + cardId).data('telno'));
         $.ajax({
             url: '{{ route('contacts.popup_content') }}',
             type: 'POST',
