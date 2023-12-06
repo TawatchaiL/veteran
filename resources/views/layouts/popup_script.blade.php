@@ -60,7 +60,9 @@
             success: async function(response) {
                 $('#' + cardId).removeClass('card-danger');
                 $('#' + cardId).addClass('card-success');
+                alert('OK');
                 await $('#pop_' + cardId).html(response.html);
+                alert('OK1');
                 $(".card-footer").css("display", "block")
                 $('.bclose').css('display', 'none');
 
