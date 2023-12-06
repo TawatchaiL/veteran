@@ -271,7 +271,7 @@ class ContactController extends Controller
                 $tab_link .= '<li class="nav-item">
                 <a class="popup-tab-font-size nav-link ' . $tab_link_active . '" id="custom-tabs-pop-' . $item->uniqid . '-tab" data-toggle="pill" data-id="' . $item->uniqid . '"
                     href="#custom-tabs-pop-' . $item->uniqid . '" role="tab" aria-controls="custom-tabs-pop-' . $item->uniqid . '"
-                    aria-selected="false">' . $item->uniqid . '</a>
+                    aria-selected="false">' . $item->telno . '</a>
                 </li>';
                 $tab_content .= '<div class="tab-pane fade ' . $tab_content_active . '" id="custom-tabs-pop-' . $item->uniqid . '" data-tick="' . $item->uniqid . '" role="tabpanel"
                 aria-labelledby="custom-tabs-pop-' . $item->uniqid . '-tab">
@@ -285,7 +285,7 @@ class ContactController extends Controller
                         <img src="' . asset('images/user.png') . '" alt="..." class="img-size-50 mr-3 img-circle">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
-                            ' . $item->uniqid . '
+                            ' . $item->telno . '
                                 <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
                             </h3>
                             <p class="text-sm">' . $statusText . '</p>
