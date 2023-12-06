@@ -65,7 +65,8 @@
             ],
             beforeShow: function() {
                 if ($(this).val() != "") {
-                    var arrayDate = $(this).val().split("-");
+                    var arrayDateT = $(this).val().split(" ");
+                    var arrayDate = arrayDateT[0].split("-");
                     arrayDate[0] = parseInt(arrayDate[0]) - 543;
                     $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
                     dateBefore = $(this).val();
@@ -90,7 +91,8 @@
             },
             onClose: function(dateText, inst) {
                 if ($(this).val() != "" && dateText == dateBefore) {
-                    var arrayDate = dateText.split("-");
+                    var arrayDateT = $(this).val().split(" ");
+                    var arrayDate = arrayDateT[0].split("-");
                     //$('#temp'+$(this).attr('id')).html(dateBefore);
                     arrayDate[0] = parseInt(arrayDate[0]) + 543;
                     $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
@@ -99,7 +101,8 @@
             onSelect: function(dateText, inst) {
                 dateBefore = $(this).val();
                 //$('#temp'+$(this).attr('id')).html(dateBefore);
-                var arrayDate = dateText.split("-");
+                var arrayDateT = $(this).val().split(" ");
+                var arrayDate = arrayDateT[0].split("-");
                 arrayDate[0] = parseInt(arrayDate[0]) + 543;
                 $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
 
@@ -111,15 +114,13 @@
                 if (days < 0) {
                     months--;
                     days += new Date(currentDate.getFullYear(), currentDate.getMonth(), 0)
-                .getDate();
+                        .getDate();
                 }
 
                 if (months < 0) {
                     years--;
                     months += 12;
                 }
-                $("#" + $(this).data('age')).val(years + " ปี " + months + " เดือน " + days +
-                    " วัน");
             }
         });
 
