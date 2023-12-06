@@ -7,7 +7,7 @@
     $('#custom-tabs-pop').on('click', '.nav-link', function() {
         var dataId = $(this).data('id');
         var datatext = $('#pop_' + dataId).text();
-        alert($('#pop_' + dataId));
+        alert(dataId);
         if (datatext === '(ผู้ติดต่อที่เคยบันทึกข้อมูลไว้)' || datatext === '(ผู้ติดต่อใหม่)') {
             maximizeCard(dataId);
         }
