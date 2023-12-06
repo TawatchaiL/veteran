@@ -119,14 +119,9 @@ class ContactController extends Controller
 
     public function popup_content(Request $request)
     {
-        $uid = $request->input('cardId');
-
-        $datau = DB::table('crm_incoming')
-        ->orderBy('id', 'desc')
-        ->where('uniqid', '=', $uid)
-        ->get();
-        $con = $datau[0]->telno;
-        $tid = $datau[0]->id;
+        $con = $request->input('cardId');
+        $contact_name = "";
+        $contact_lname = "";
         $datap = DB::table('crm_contacts')
             ->select('crm_contacts.*')
             ->leftjoin('crm_phone_emergencies', 'crm_contacts.id', '=', 'crm_phone_emergencies.contact_id')
@@ -140,17 +135,17 @@ class ContactController extends Controller
         if ($contactcount > 1) {
             $template = 'casescontract.contactpop';
             $htmlContent = View::make($template, [
-                'cardid' => $tid, 'telephone' => $con, 'contactd' => $datap
+                'cardid' => $con, 'telephone' => $con, 'contactd' => $datap
             ])->render();
         } elseif ($contactcount == 1) {
             $template = 'contacts.contact-create';
             $htmlContent = View::make($template, [
-                'cardid' => $tid, 'telephone' => $con, 'contactd' => $datap[0]->id
+                'cardid' => $con, 'telephone' => $con, 'contactd' => $datap[0]->id
             ])->render();
         } else {
             $template = 'contacts.contact-create';
             $htmlContent = View::make($template, [
-                'cardid' => $tid, 'telephone' => $con, 'contactd' => 0
+                'cardid' => $con, 'telephone' => $con, 'contactd' => 0
             ])->render();
         }
         return response()->json(['html' =>  $htmlContent,]);
@@ -258,6 +253,7 @@ class ContactController extends Controller
                     $statusText = "(ผู้ติดต่อใหม่)";
                 }
                 /* style="width: 300px; height: 150px;"  */
+
 
                 if ($i == 1) {
                     $tab_link_active = 'active';
