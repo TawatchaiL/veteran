@@ -50,8 +50,8 @@
         });
     }
     /// Maximize card AJAX function
-    function maximizeCard(cardId) {
-        cardId = $.escapeSelector(cardId);
+    function maximizeCard(cardIdf) {
+        var cardId = $.escapeSelector(cardIdf);
         $.ajax({
             url: '{{ route('contacts.popup_content') }}',
             type: 'POST',
