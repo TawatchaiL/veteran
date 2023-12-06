@@ -338,9 +338,7 @@
                 data: {
                     group_name: $('#EditName').val(),
                     group_start: $('#EditSDate').val() + ' ' + $('#EditSTime').val(),
-                    ,
                     group_end: $('#EditEDate').val() + ' ' + $('#EditETime').val(),
-                    ,
                     group_extension: $('#EditExtension').val(),
                     line_token: $('#EditLine').val(),
                     email: $('#EditEmail').val(),
