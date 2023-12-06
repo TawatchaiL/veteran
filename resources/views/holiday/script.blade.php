@@ -54,15 +54,11 @@
         $(".datepick").datetimepicker({
             changeMonth: true,
             changeYear: true,
+            isBuddhist: true,
             yearRange: currentYear + ':' + maxYear,
             dateFormat: 'dd/mm/yy',
             onSelect: function(date) {
-                //$("#edit-date-of-birth").addClass('filled');
-                var yearT = new Date(date).getFullYear() - 0;
-                var yearTH = yearT + 543;
-                var fulldate = this.val();
-                var fulldateTH = fulldate.replace(yearT, yearTH);
-                this.val(fulldateTH);
+                $("#edit-date-of-birth").addClass('filled');
             }
         });
 
