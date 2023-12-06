@@ -259,7 +259,7 @@ class ContactController extends Controller
                     $tab_link_active = 'active';
                     $tab_content_active = 'show active';
                     $tab_active = 'card-danger';
-                    $active_id = $item->telno;
+                    $active_id = $item->uniqid;
                 } else {
                     $tab_link_active = '';
                     $tab_content_active = '';
@@ -267,25 +267,25 @@ class ContactController extends Controller
                 }
 
                 $html = '<div class="col-md-12">
-                <div class=" pop_content" id="pop_' . $item->telno . '">' . $statusText . '</div></div>';
+                <div class=" pop_content" id="pop_' . $item->uniqid . '">' . $statusText . '</div></div>';
                 $tab_link .= '<li class="nav-item">
-                <a class="popup-tab-font-size nav-link ' . $tab_link_active . '" id="custom-tabs-pop-' . $item->telno . '-tab" data-toggle="pill" data-id="' . $item->telno . '"
-                    href="#custom-tabs-pop-' . $item->telno . '" role="tab" aria-controls="custom-tabs-pop-' . $item->telno . '"
-                    aria-selected="false">' . $item->telno . '</a>
+                <a class="popup-tab-font-size nav-link ' . $tab_link_active . '" id="custom-tabs-pop-' . $item->uniqid . '-tab" data-toggle="pill" data-id="' . $item->uniqid . '"
+                    href="#custom-tabs-pop-' . $item->uniqid . '" role="tab" aria-controls="custom-tabs-pop-' . $item->uniqid . '"
+                    aria-selected="false">' . $item->uniqid . '</a>
                 </li>';
-                $tab_content .= '<div class="tab-pane fade ' . $tab_content_active . '" id="custom-tabs-pop-' . $item->telno . '" data-tick="' . $item->uniqid . '" role="tabpanel"
-                aria-labelledby="custom-tabs-pop-' . $item->telno . '-tab">
-                <div class="row" id="dpopup_' . $item->telno . '">
+                $tab_content .= '<div class="tab-pane fade ' . $tab_content_active . '" id="custom-tabs-pop-' . $item->uniqid . '" data-tick="' . $item->uniqid . '" role="tabpanel"
+                aria-labelledby="custom-tabs-pop-' . $item->uniqid . '-tab">
+                <div class="row" id="dpopup_' . $item->uniqid . '">
                 ' . $html . '
                 </div>
             </div>';
 
-                $tab_hold .= ' <a href="#" class="dropdown-item hold_tab_a" data-id="' . $item->telno . '" data-tick="' . $item->uniqid . '">
+                $tab_hold .= ' <a href="#" class="dropdown-item hold_tab_a" data-id="' . $item->uniqid . '" data-tick="' . $item->uniqid . '">
                     <div class="media ">
                         <img src="' . asset('images/user.png') . '" alt="..." class="img-size-50 mr-3 img-circle">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
-                            ' . $item->telno . '
+                            ' . $item->uniqid . '
                                 <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
                             </h3>
                             <p class="text-sm">' . $statusText . '</p>
