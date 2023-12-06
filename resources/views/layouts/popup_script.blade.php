@@ -23,7 +23,6 @@
 
                     $('#custom-tabs-pop').prepend(response.tab_link);
                     $('#custom-tabs-pop-tabContent').prepend(response.tab_content);
-alert(response.active_id);
                     maximizeCard(response.active_id);
                 }
                 $('#hold_tab').html(response.hold_tab);
@@ -52,6 +51,7 @@ alert(response.active_id);
     }
     /// Maximize card AJAX function
     function maximizeCard(cardId) {
+        alert('OK');
         $.ajax({
             url: '{{ route('contacts.popup_content') }}',
             type: 'POST',
