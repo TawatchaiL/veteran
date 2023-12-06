@@ -27,7 +27,12 @@
                         <h3 class="card-title" id="contact_name"></h3>
                     </li> --}}
                     <li class="nav-item">
-                        <a class="nav-link active" id="custom-tabs-one-home-tabp{{$cardid}}" data-toggle="pill"
+                        <a class="nav-link active tablistcaseP" id="custom-tabs-one-casedetail-tabp{{$cardid}}" data-tabid="{{$cardid}}" data-contactid="{{$contactd}}" data-toggle="pill"
+                            href="#custom-tabs-one-casedetailp{{$cardid}}" role="tab" aria-controls="custom-tabs-one-casedetailp{{$cardid}}"
+                            aria-selected="false">ประวัติการติดต่อ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="custom-tabs-one-home-tabp{{$cardid}}" data-toggle="pill"
                             href="#custom-tabs-one-homep{{$cardid}}" role="tab" aria-controls="custom-tabs-one-homep{{$cardid}}"
                             aria-selected="true">ข้อมูลผู้ติดต่อ</a>
                     </li>
@@ -45,11 +50,6 @@
                         <a class="nav-link" id="custom-tabs-one-case-tabp{{$cardid}}" data-toggle="pill"
                             href="#custom-tabs-one-casep{{$cardid}}" role="tab" aria-controls="custom-tabs-one-casep{{$cardid}}"
                             aria-selected="true">ข้อมูลเรื่องที่ติดต่อ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link tablistcaseP" id="custom-tabs-one-casedetail-tabp{{$cardid}}" data-tabid="{{$cardid}}" data-contactid="{{$contactd}}" data-toggle="pill"
-                            href="#custom-tabs-one-casedetailp{{$cardid}}" role="tab" aria-controls="custom-tabs-one-casedetailp{{$cardid}}"
-                            aria-selected="false">ประวัติการติดต่อ</a>
                     </li>
                 </ul>
             </div>
