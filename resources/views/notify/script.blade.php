@@ -50,9 +50,9 @@
         })
 
         $.datepicker.setDefaults($.datepicker.regional["th"]);
-        /* var currentDate = new Date();
+        var currentDate = new Date();
         var currentYear = currentDate.getFullYear();
-        var maxYear = currentYear + 1; */
+        var maxYear = currentYear + 1;
         var d = new Date();
         d.setDate(d.getDate());
         var toDay = d.getDate() + '/' + (d.getMonth() + 1) + '/' + (d.getFullYear() + 543);
