@@ -4,11 +4,11 @@
 {{-- <script src="/js/app.js?v=1"></script> --}}
 {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 <script type="module">
-    import WaveSurfer from 'https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js'
-    import Hover from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/hover.esm.js'
-    import Minimap from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/minimap.esm.js'
-    import TimelinePlugin from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/timeline.esm.js'
-    import RegionsPlugin from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/regions.esm.js'
+    import WaveSurfer from 'dist/js/wavesurfer.esm.js'
+    import Hover from 'dist/js/hover.esm.js'
+    import Minimap from 'dist/js/minimap.esm.js'
+    import TimelinePlugin from 'dist/js/timeline.esm.js'
+    import RegionsPlugin from 'dist/js/regions.esm.js'
 
     let wavesurfer; // Declare the wavesurfer variable
 
@@ -472,7 +472,8 @@
         var endDate;
 
         function datesearch() {
-            var currentDate = moment().add(1, 'month').add(543, 'year').format('LLLL');
+            //.add(1, 'month').add(543, 'year').format('LLLL')
+            var currentDate = moment();
             console.log(currentDate)
             startDate = moment(currentDate).subtract(30, 'days').startOf('day').format('YYYY-MM-DD HH:mm:ss');
             endDate = moment(currentDate).endOf('month').endOf('day').format('YYYY-MM-DD HH:mm:ss');
@@ -572,9 +573,10 @@
             });
             // Apply the custom date range filter on input change
             $('#reservation').on('apply.daterangepicker', function(ev, picker) {
-                var startYear = picker.startDate.format('YYYY') - 543;
-                var endYear = picker.endDate.format('YYYY') - 543;
-                $('#reservation').val(startYear + '-' + picker.startDate.format('MM-DD HH:mm:ss') + ' - ' +
+                /* var startYear = picker.startDate.format('YYYY') - 543;
+                var endYear = picker.endDate.format('YYYY') - 543; */
+                $('#reservation').val(startYear + '-' + picker.startDate.format('MM-DD HH:mm:ss') +
+                    ' - ' +
                     endYear + '-' + picker.endDate.format('MM-DD HH:mm:ss'));
                 console.log($('#reservation').val())
                 table.draw();
