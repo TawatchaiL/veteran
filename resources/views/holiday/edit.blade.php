@@ -38,7 +38,7 @@
                                 <div class="form-group">
                                     <strong><i class="fas fa-calendar"></i> จากวันที่:</strong>
                                     @php
-                                        $datethai = date('d/m/') . date('Y');
+                                        $datethai = date('Y-m-d');
                                     @endphp
                                     {!! Form::text('start_date', $datethai, [
                                         'id' => 'EditSDate',
@@ -68,7 +68,7 @@
                                 <div class="form-group">
                                     <strong><i class="fas fa-calendar"></i> ถึงวันที่:</strong>
                                     @php
-                                        $datethai = date('d/m/') . date('Y');
+                                        $datethai = date('Y-m-d');
                                     @endphp
                                     {!! Form::text('end_date', $datethai, [
                                         'id' => 'EditEDate',
