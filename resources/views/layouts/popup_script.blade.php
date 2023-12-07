@@ -803,7 +803,7 @@
                                         );
                                 });
                                 */
-                                $('#custom-tabs-one-casedetail-tabp' + cardId).click();
+                                //$('#custom-tabs-one-casedetail-tabp' + cardId).click();
                             }
                         });
 
