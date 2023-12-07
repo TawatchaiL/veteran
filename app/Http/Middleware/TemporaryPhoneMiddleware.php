@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
+use App\Services\FileUploadService;
 
 class TemporaryPhoneMiddleware
 {
@@ -27,11 +28,7 @@ class TemporaryPhoneMiddleware
         $temporaryLogintime = $user ? $user->login_time : '';
         $temporaryLogofftime = $user ? $user->logoff_time : '';
 
-        //print logo
-        $imagePath = asset('image/logo.png');
-        $type = pathinfo($imagePath, PATHINFO_EXTENSION);
-        $data = file_get_contents($imagePath);
-        $base64logo = 'data:image/' . $type . ';base64,' . base64_encode($data);
+        $base64logo = FileUploadService::getLogoDataURL();
 
         View::share('temporaryUserName', $temporaryUserName);
         View::share('temporaryPhone', $temporaryPhone);
