@@ -4,11 +4,11 @@
 {{-- <script src="/js/app.js?v=1"></script> --}}
 {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 <script type="module">
-    import WaveSurfer from 'dist/js/wavesurfer.esm.js'
-    import Hover from 'dist/js/hover.esm.js'
-    import Minimap from 'dist/js/minimap.esm.js'
-    import TimelinePlugin from 'dist/js/timeline.esm.js'
-    import RegionsPlugin from 'dist/js/regions.esm.js'
+    import WaveSurfer from './dist/js/wavesurfer.esm.js'
+    import Hover from './dist/js/hover.esm.js'
+    import Minimap from './dist/js/minimap.esm.js'
+    import TimelinePlugin from './dist/js/timeline.esm.js'
+    import RegionsPlugin from './dist/js/regions.esm.js'
 
     let wavesurfer; // Declare the wavesurfer variable
 
