@@ -472,7 +472,7 @@
         var endDate;
 
         function datesearch() {
-            var currentDate = moment();
+            var currentDate = moment.locale('th');
             startDate = moment(currentDate).subtract(30, 'days').startOf('day').format('YYYY-MM-DD HH:mm:ss');
             endDate = moment(currentDate).endOf('month').endOf('day').format('YYYY-MM-DD HH:mm:ss');
         }
