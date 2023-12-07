@@ -733,7 +733,8 @@
                         doc.content.splice(1, 0, {
                             margin: [0, 0, 0, 12],
                             alignment: 'center',
-                            image: '{{ $base64logo }}'
+                            image: '{{ $base64logo }}',
+                            fit: [100, 100]
                         });
 
                     }
