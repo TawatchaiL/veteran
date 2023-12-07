@@ -142,10 +142,13 @@ function setDatepickerSchedule(selector) {
 } //function setDatepicker(selector){
 
 function setDateBetween(select1, select2) {
+	var currentDate = new Date();
+	var currentYear = currentDate.getFullYear();
+	var maxYear = currentYear + 1;
 	$('#' + select1 + ',#' + select2).datepicker({
 		changeMonth: true,
 		changeYear: true,
-		yearRange: "-1:+1",
+		yearRange: currentYear + ':' + maxYear,
 		dateFormat: 'dd/mm/yy',
 		beforeShow: function () {
 			if (this.id == select2 && $('#' + select1).val() != "") {
