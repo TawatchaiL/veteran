@@ -584,8 +584,8 @@
                     },
                     customize: function(win) {
                         // Customize the print layout
-                        $(win.document.body).prepend('<img style="position:absolute; top:0; left:500;width:50" src='+logobase64+'>')
-                        $(win.document.body).find('h1').css('text-align', 'center').css('font-size','12px').css('margin-top','65px');
+                        $(win.document.body).prepend('<img style="position:absolute; top:0; left:450;width:100" src='+logobase64+'>')
+                        $(win.document.body).find('h1').css('text-align', 'center').css('font-size','16px').css('margin-top','65px');
                         $(win.document.body).find('table').addClass('display').css('font-size','12px').removeClass('dataTable').css('margin-top','80px').css('margin-bottom','60px');
                         $(win.document.body).find('table.dataTable th, table.dataTable td').css(
                             'border', '1px solid #ddd');
