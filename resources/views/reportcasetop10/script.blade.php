@@ -372,10 +372,7 @@
                 },
                 isCustomDate: {
 
-                }, function(start, end, label) {
-    var years = moment().diff(start, 'years');
-    alert("You are " + years + " years old!");
-  }
+                }
             });
             // Apply the custom date range filter on input change
             $('#reservation').on('apply.daterangepicker', function() {
