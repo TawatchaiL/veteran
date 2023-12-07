@@ -682,8 +682,9 @@ class ContactController extends Controller
         $Crmcsae->agent = $user->id;
         $Crmcsae->save();
 
-        //CrmIncoming::where('telno', $request->input('telno'))->update('status' => '2');
-        DB::table('crm_incoming')->where('telno', $request->input('telno'))->update(['status' => '2']);
+        //CrmIncoming::where('telno', $request->input('telno'))->update('status' => '2');uniqid
+        //DB::table('crm_incoming')->where('telno', $request->input('telno'))->update(['status' => '2']);
+        DB::table('crm_incoming')->where('uniqid', $request->input('uniqid'))->update(['status' => '2']);
         //$income = CrmIncoming::find($edata['emertype']);
         //$income->update($incomea);
         //DB::table('crm_incoming')->where('telno',  $request->input('telno'))->delete();
@@ -870,7 +871,8 @@ class ContactController extends Controller
         $Crmcsae->save();
 
         //CrmIncoming::where('telno', $request->input('telno'))->update('status' => '2');
-        DB::table('crm_incoming')->where('telno', $request->input('telno'))->update(['status' => '2']);
+        //DB::table('crm_incoming')->where('telno', $request->input('telno'))->update(['status' => '2']);
+        DB::table('crm_incoming')->where('uniqid', $request->input('uniqid'))->update(['status' => '2']);
         //$income = CrmIncoming::find($edata['emertype']);
         //$income->update($incomea);
         //DB::table('crm_incoming')->where('telno',  $request->input('telno'))->delete();
