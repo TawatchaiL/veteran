@@ -76,7 +76,7 @@
                 console.log(new_date)
             },
             beforeShow: () => {
-
+                console.log($(this).val())
                 if ($(this).val() !== "") {
                     let arr = $(this).val().split("/");
                     let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) - 543)
@@ -84,7 +84,7 @@
                     $(this).val(new_date);
 
                 }
-                console.log(new_date)
+                
                 $(this).css("color", "white");
             },
             onClose: () => {
