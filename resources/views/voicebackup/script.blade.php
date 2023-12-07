@@ -90,7 +90,7 @@
             }
         });
 
-        setDateBetween('start_date','end_date');
+        setDateBetween('AddSDate','AddEDate');
 
 
         $('.timepick').timepicker({
