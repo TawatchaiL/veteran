@@ -524,7 +524,7 @@
 
 
         let daterange = () => {
-            moment.locale('th');
+
 
             var startTime = '00:00:00';
             var endTime = '23:59:59';
