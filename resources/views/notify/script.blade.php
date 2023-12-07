@@ -57,11 +57,11 @@
         $(".datepick").datepicker({
             changeMonth: true,
             changeYear: true,
-            langTh: true,
-            yearTh: true,
+            /*   langTh: true,
+              yearTh: true, */
             yearRange: '2023' + ':' + maxYear,
             dateFormat: 'dd/mm/yy',
-            isBE:true,
+            isBE: true,
             autoConversionField: true,
             onSelect: function(date) {
                 $("#edit-date-of-birth").addClass('filled');
@@ -69,9 +69,12 @@
         });
 
         $('.timepick').timepicker({
-            isBE:true,
-            autoConversionField: true,
             timeFormat: "HH:mm:ss",
+            timeText: 'เวลา',
+            hourText: 'ชั่วโมง',
+            minuteText: 'นาที',
+            currentText: 'เวลาปัจจุบัน',
+            closeText: 'ตกลง',
         });
 
         //currentDate.setYear(currentDate.getFullYear() + 543);
