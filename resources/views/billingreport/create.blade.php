@@ -115,7 +115,7 @@
                             <label for="content-input">ระบุค่าใช้จ่าย:</label>
                             <input type="text" id="billing-input" class="form-control">
                         </div>
-            
+
                     </div>
                 </div>
                 <form action="#">
@@ -146,7 +146,7 @@
             </div>
             <div class="modal-footer {{-- justify-content-between --}}">
                 <button type="button" class="btn btn-success" id="billing-update-button"><i
-                    class="fas fa-download"></i> บันทึก</button>
+                        class="fas fa-download"></i> บันทึก</button>
                 <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i
                         class="fas fa-door-closed"></i> ปิดหน้าต่าง</button>
             </div>
