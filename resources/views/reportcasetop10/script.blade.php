@@ -595,9 +595,6 @@
                         $(win.document.body).find('table.dataTable td:nth-child(0)').css(
                             'width', '50px');
                     }
-                },
-                exportOptions: {
-                    columns: [40, 400, '*'],
                 }
             ],
             layout: {
