@@ -146,9 +146,9 @@ function setDateBetween(select1, select2) {
 		dateFormat: 'dd/mm/yy',
 		beforeShow: function () {
 			if ($(this).val() != "") {
-				var arrD = $(this).val().split("-");
+				var arrD = $(this).val().split("/");
 				arrD[2] = parseInt(arrD[2]) - 543;
-				$(this).val(arrD[0] + "-" + arrD[1] + "-" + arrD[2]);
+				$(this).val(arrD[0] + "/" + arrD[1] + "/" + arrD[2]);
 			}
 			setTimeout(function () {
 				$.each($(".ui-datepicker-year option"), function (j, k) {
@@ -157,31 +157,31 @@ function setDateBetween(select1, select2) {
 				});
 			}, 50);
 			if (this.id == select2 && $('#' + select1).val() != "") {
-				var arrD = $('#' + select1).val().split("-");
+				var arrD = $('#' + select1).val().split("/");
 				arrD[2] = parseInt(arrD[2]) - 543;
 				return {
-					minDate: arrD[0] + "-" + arrD[1] + "-" + arrD[2],
+					minDate: arrD[0] + "/" + arrD[1] + "/" + arrD[2],
 				}
 			} else if (this.id == select1 && $('#' + select2).val() != "") {
-				var arrD = $('#' + select2).val().split("-");
+				var arrD = $('#' + select2).val().split("/");
 				arrD[2] = parseInt(arrD[2]) - 543;
-				return { maxDate: arrD[0] + "-" + arrD[1] + "-" + arrD[2], }
+				return { maxDate: arrD[0] + "/" + arrD[1] + "/" + arrD[2], }
 			}
 		}, //beforeShow
 
 		onClose: function () {
 			if ($(this).val() != "" && $(this).val() == dateBefore) {
-				var arrD = dateBefore.split("-");
+				var arrD = dateBefore.split("/");
 				arrD[2] = parseInt(arrD[2]) + 543;
-				$(this).val(arrD[0] + "-" + arrD[1] + "-" + arrD[2]);
+				$(this).val(arrD[0] + "/" + arrD[1] + "/" + arrD[2]);
 			}
 		},
 
 		onSelect: function (dateText, inst) {
 			dateBefore = $(this).val();
-			var arrD = dateText.split("-");
+			var arrD = dateText.split("/");
 			arrD[2] = parseInt(arrD[2]) + 543;
-			$(this).val(arrD[0] + "-" + arrD[1] + "-" + arrD[2]);
+			$(this).val(arrD[0] + "/" + arrD[1] + "/" + arrD[2]);
 		}
 
 	});
