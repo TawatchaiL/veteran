@@ -154,12 +154,12 @@ function setDateBetween(select1, select2) {
 				$(this).val(arrD[0] + "/" + arrD[1] + "/" + arrD[2]);
 			}
 			$(this).css("color", "#e9ecef");
-			setTimeout(function () {
+			/* setTimeout(function () {
 				$.each($(".ui-datepicker-year option"), function (j, k) {
 					var textYear = parseInt($(".ui-datepicker-year option").eq(j).val()) + 543;
 					$(".ui-datepicker-year option").eq(j).text(textYear);
 				});
-			}, 50);
+			}, 50); */
 			if (this.id == select2 && $('#' + select1).val() != "") {
 				var arrD = $('#' + select1).val().split("/");
 				arrD[2] = parseInt(arrD[2]) - 543;
