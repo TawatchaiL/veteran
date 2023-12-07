@@ -108,7 +108,7 @@ class CasesController extends Controller
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
                 })
                 ->editColumn('created_at', function ($row) {
-                    $adddate = Carbon::parse($row->adddate)->addYears(543)->format('d/m/Y H:i:s');
+                    $adddate = Carbon::parse($row->created_at)->addYears(543)->format('d/m/Y H:i:s');
                     return $adddate;
                 })
                 ->addColumn('action', function ($row) {
