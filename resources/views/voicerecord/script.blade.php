@@ -560,16 +560,20 @@
                     fromLabel: 'จาก',
                     toLabel: 'ถึง',
                     customRangeLabel: 'เลือกวันที่เอง',
-                    daysOfWeek: ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'],
+                    /* daysOfWeek: ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'],
                     monthNames: [
                         'มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน',
                         'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'
-                    ],
+                    ], */
+                    daysOfWeek: moment.weekdaysMin(),
+                    monthNames: moment.months(),
                     firstDay: 1
                 }
             });
             // Apply the custom date range filter on input change
             $('#reservation').on('apply.daterangepicker', function() {
+                var startYear = picker.startDate.format('YYYY') - 543;
+                var endYear = picker.endDate.format('YYYY') - 543;
                 console.log($('#reservation').val())
                 table.draw();
                 storeFieldValues();
@@ -877,8 +881,10 @@
             }
             // Set the date range back to its default
             var currentDate = moment();
-            var startDate = moment(currentDate).subtract(30, 'days').startOf('day').format('YYYY-MM-DD HH:mm:ss');
-            var endDate = moment(currentDate).endOf('month').endOf('day').format('YYYY-MM-DD HH:mm:ss');
+            var startDate = moment(currentDate).subtract(30, 'days').startOf('day').format(
+                'YYYY-MM-DD HH:mm:ss');
+            var endDate = moment(currentDate).endOf('month').endOf('day').format(
+                'YYYY-MM-DD HH:mm:ss');
 
             daterange();
             table = $('#Listview').DataTable(table_option);
