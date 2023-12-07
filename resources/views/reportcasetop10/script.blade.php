@@ -569,42 +569,33 @@
                     }
                 },
                 {
-          extend: 'print',
-          className: 'btn btn-primary btn-icon-split',
-          titleAttr: 'Stampa Tabella',
-          text:'<span class="icon text-white-50"><i class="fa fa-print"></i></span><span class="text"> Stampa</span>',         
-          footer:false,
-          //autoPrint: false,
-          customize: function (doc) {
-            var now = new Date();
-            var jsDate = now.getDate()+'-'+(now.getMonth()+1)+'-'+now.getFullYear();
-            $(doc.document.body)
-                                               
-                .prepend('<img style="position:absolute; top:10; left:0;width:50" src='+logobase64+'>')
-                .prepend('<div style="position:absolute; top:10; right:0;">My Title</div>')
-                .prepend('<div style="position:absolute; bottom:20; left:0;">Creato il: '+jsDate.toString()+'</div>')
-                .prepend('<div style="position:absolute; top:10; left:50;font-size:24px;">SubTitle</div>')
-                .prepend('<div style="position:absolute; top:30; left:450;font-size:20px;margin-botton:50px">My Title</div>')
-            //  .prepend('<div style="position:absolute; bottom:20; left:100;">Pagina '+page.toString()+' of '+pages.toString()+'</div>');
-            
-            $(doc.document.body).find('table')            			
-            			.removeClass('dataTable')
-                  .css('font-size','12px') 
-            			.css('margin-top','65px')
-                  .css('margin-bottom','60px')
-         		$(doc.document.body).find('th').each(function(index){
-                  $(this).css('font-size','18px');
-                  $(this).css('color','#fff');
-                  $(this).css('background-color','blue');
-            });                
-        },
-          title:'',
-          exportOptions:{
-            columns:':visible:not(.not-export-col)',
-            orthogonal: "Export-print"
-          },
-          init: function(api, node, config) {$(node).removeClass('dt-button')}    
-    }
+                    extend: 'print',
+                    text: 'Print',
+                    title: '10 อันดับเรื่องที่ติดต่อมากที่สุด',
+                    exportOptions: {
+                        columns: ':visible:not(.no-print)',
+                        format: {
+                            body: function(data, row, column, node) {
+                                // You can set your font here
+                                $(node).css('font-family', 'THSarabun');
+                                return data;
+                            }
+                        }
+                    },
+                    customize: function(win) {
+                        // Customize the print layout
+                        $(win.document.body).prepend('<img style="position:absolute; top:10; left:200;width:50" src='+logobase64+'>')
+                        $(win.document.body).find('h1').css('text-align', 'center');
+                        $(win.document.body).find('table').addClass('display').css('font-size',
+                            '12px');
+                        $(win.document.body).find('table.dataTable th, table.dataTable td').css(
+                            'border', '1px solid #ddd');
+                        $(win.document.body).find('table.dataTable th').css('background-color',
+                            '#f2f2f2');
+                        $(win.document.body).find('table.dataTable td:nth-child(0)').css(
+                            'width', '50px');
+                    }
+                }
             ],
             layout: {
                 hLineWidth: function(i, node) {
