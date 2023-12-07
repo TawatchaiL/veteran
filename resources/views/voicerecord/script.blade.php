@@ -560,13 +560,11 @@
                     fromLabel: 'จาก',
                     toLabel: 'ถึง',
                     customRangeLabel: 'เลือกวันที่เอง',
-                    /* daysOfWeek: ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'],
+                    daysOfWeek: ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'],
                     monthNames: [
                         'มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน',
                         'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'
-                    ], */
-                    daysOfWeek: moment.weekdaysMin(),
-                    monthNames: moment.months(),
+                    ],
                     firstDay: 1
                 }
             });
