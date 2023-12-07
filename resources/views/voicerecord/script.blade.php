@@ -735,19 +735,20 @@
                         };
                         doc.content[0].layout = objLayout;
 
+
                         for (var i = 1; i < doc.content[0].table.body.length; i++) {
-                            doc.content[1].table.body[i][0].alignment =
+                            doc.content[0].table.body[i][0].alignment =
                                 'center'; // Align the first column to the center
-                            doc.content[1].table.body[i][1].alignment =
+                            doc.content[0].table.body[i][1].alignment =
                                 'center'; // Align the second column to the right
                             //doc.content[1].table.body[i][2].alignment =
                             //'center'; // Align the second column to the right
                             // Customize alignments for other columns as needed
-                            doc.content[1].table.body[i][2].alignment =
+                            doc.content[0].table.body[i][2].alignment =
                                 'center';
-                            doc.content[1].table.body[i][3].alignment =
+                            doc.content[0].table.body[i][3].alignment =
                                 'center';
-                            doc.content[1].table.body[i][4].alignment =
+                            doc.content[0].table.body[i][4].alignment =
                                 'center';
 
                         }
