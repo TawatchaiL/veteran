@@ -691,8 +691,8 @@
                             return {
                                 columns: [{
                                         image: logobase64,
-                                        width: 50,
-                                        margin: [380, 0, 50, 50],
+                                        width: 70,
+                                        margin: [20, 0, 50, 50],
                                     },
                                     {
                                         alignment: 'center',
@@ -706,7 +706,7 @@
                             }
                         });
 
-                        doc.content[0].table.widths = [80, 80, 80, 80, '*'];
+                        doc.content[0].table.widths = [100, 100, 100, 100, '*'];
                         var objLayout = {};
                         objLayout['hLineWidth'] = function(i) {
                             return .5;
