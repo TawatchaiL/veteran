@@ -164,19 +164,21 @@ class VoiceBackupController extends Controller
             $dateRangeArray = explode(' - ', $dateRange);
 
             if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
-                list($startDate, $startTime) = explode(' ', $dateRangeArray[0]);
-                list($endDate, $endTime) = explode(' ', $dateRangeArray[1]);
+                /* list($startDate, $startTime) = explode(' ', $dateRangeArray[0]);
+                list($endDate, $endTime) = explode(' ', $dateRangeArray[1]); */
 
-                [$startDay, $startMonth, $startYear] = explode('/', $startDate);
+                /* [$startDay, $startMonth, $startYear] = explode('/', $startDate);
                 [$endDay, $endMonth, $endYear] = explode('/', $endDate);
 
                 $startDate = ($startYear - 543) . "-$startMonth-$startDay $startTime";
-                $endDate = ($endYear - 543) . "-$endMonth-$endDay $endTime";
+                $endDate = ($endYear - 543) . "-$endMonth-$endDay $endTime"; */
+                $startDate = $dateRangeArray[0];
+                $endDate = $dateRangeArray[1];
             }
         }
 
         $holiday = [
-            'export_name' => "Export Voice Recording" . date("Y-m-d H:i:s"),
+            'export_name' => "Export Voice Recording " . date("Y-m-d H:i:s"),
             'export_start' =>  $startDate,
             'export_end' => $endDate,
             'export_src' =>  $request->get('src'),
