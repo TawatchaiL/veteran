@@ -50,7 +50,7 @@
                         <div class="form-group">
                             <strong><i class="fas fa-clock-o"></i> เวลา:</strong>
                             @php
-                                $timethai = date('H:i');
+                                $timethai = date('H:i:s');
                             @endphp
                             {!! Form::text('start_time', $timethai, [
                                 'id' => 'AddSTime',
@@ -80,7 +80,7 @@
                         <div class="form-group">
                             <strong><i class="fas fa-clock-o"></i> เวลา:</strong>
                             @php
-                                $timethai = date('H:i');
+                                $timethai = date('H:i:s');
                             @endphp
                             {!! Form::text('end_time', $timethai, [
                                 'id' => 'AddETime',
