@@ -23,6 +23,7 @@
 
                     $('#custom-tabs-pop').prepend(response.tab_link);
                     $('#custom-tabs-pop-tabContent').prepend(response.tab_content);
+
                     maximizeCard(response.active_id);
                 }
                 $('#hold_tab').html(response.hold_tab);
@@ -91,6 +92,7 @@
                         $('#phonenosuccess' + cardId).html(
                             '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ผู้ติดต่อใหม่</h3>'
                         );
+
                         $.ajax({
                             url: "contacts/popupeditphone/" + telnop,
                             method: 'GET',
@@ -102,6 +104,9 @@
                                         res.datax.datac.fname +
                                         ' ' + res.datax.datac
                                         .lname + '</h3>');
+
+                                       // $('#Listviewcasesp' + cardId).click();
+
                                     $('#contractid' + cardId).val(res.datax
                                         .datac.id);
                                     $('#hnp' + cardId).val(res.datax.datac.hn);
@@ -1239,8 +1244,10 @@
         $(document).on('show.bs.tab', '#custom-tabs-pop a[data-toggle="pill"]',
             function(e) {
 
-                var href = $(e.target).attr("href");
-                var targetTab = href.replace("#custom-tabs-pop-", "");
+                //var href = $(e.target).attr("href");
+                //var targetTab = href.replace("#custom-tabs-pop-", "");
+
+                var targetTab = $(e.target).data("tel");
 
                 if (!confirm("ยืนยันการเปลี่ยน Tab ไปยัง " + targetTab +
                         " ? \nกรุณาบันทึกข้อมุลก่อนเปลี่ยน Tab")) {

@@ -119,14 +119,16 @@ class ContactController extends Controller
 
     public function popup_content(Request $request)
     {
-        $uid = $request->input('cardId');
+
+        //$con = $request->input('cardId');
+
+        $cid = $request->input('cardId');
 
         $datau = DB::table('crm_incoming')
-        ->orderBy('id', 'desc')
-        ->where('uniqid', '=', $uid)
+        ->where('id', '=', $cid)
         ->get();
         $con = $datau[0]->telno;
-        $tid = $datau[0]->id;
+
         $datap = DB::table('crm_contacts')
             ->select('crm_contacts.*')
             ->leftjoin('crm_phone_emergencies', 'crm_contacts.id', '=', 'crm_phone_emergencies.contact_id')
@@ -140,17 +142,17 @@ class ContactController extends Controller
         if ($contactcount > 1) {
             $template = 'casescontract.contactpop';
             $htmlContent = View::make($template, [
-                'cardid' => $tid, 'telephone' => $con, 'contactd' => $datap
+                'cardid' => $cid, 'telephone' => $con, 'contactd' => $datap
             ])->render();
         } elseif ($contactcount == 1) {
             $template = 'contacts.contact-create';
             $htmlContent = View::make($template, [
-                'cardid' => $tid, 'telephone' => $con, 'contactd' => $datap[0]->id
+                'cardid' => $cid, 'telephone' => $con, 'contactd' => $datap[0]->id
             ])->render();
         } else {
             $template = 'contacts.contact-create';
             $htmlContent = View::make($template, [
-                'cardid' => $tid, 'telephone' => $con, 'contactd' => 0
+                'cardid' => $cid, 'telephone' => $con, 'contactd' => 0
             ])->render();
         }
         return response()->json(['html' =>  $htmlContent,]);
@@ -259,11 +261,12 @@ class ContactController extends Controller
                 }
                 /* style="width: 300px; height: 150px;"  */
 
+
                 if ($i == 1) {
                     $tab_link_active = 'active';
                     $tab_content_active = 'show active';
                     $tab_active = 'card-danger';
-                    $active_id = $item->telno;
+                    $active_id = $item->id;
                 } else {
                     $tab_link_active = '';
                     $tab_content_active = '';
@@ -271,20 +274,20 @@ class ContactController extends Controller
                 }
 
                 $html = '<div class="col-md-12">
-                <div class=" pop_content" id="pop_' . $item->telno . '">' . $statusText . '</div></div>';
+                <div class=" pop_content" id="pop_' . $item->id . '">' . $statusText . '</div></div>';
                 $tab_link .= '<li class="nav-item">
-                <a class="popup-tab-font-size nav-link ' . $tab_link_active . '" id="custom-tabs-pop-' . $item->telno . '-tab" data-toggle="pill" data-id="' . $item->telno . '"
-                    href="#custom-tabs-pop-' . $item->telno . '" role="tab" aria-controls="custom-tabs-pop-' . $item->telno . '"
+                <a class="popup-tab-font-size nav-link ' . $tab_link_active . '" id="custom-tabs-pop-' . $item->id . '-tab" data-toggle="pill" data-id="' . $item->id . '" data-tel="' . $item->telno . '"
+                    href="#custom-tabs-pop-' . $item->id . '" role="tab" aria-controls="custom-tabs-pop-' . $item->id . '"
                     aria-selected="false">' . $item->telno . '</a>
                 </li>';
-                $tab_content .= '<div class="tab-pane fade ' . $tab_content_active . '" id="custom-tabs-pop-' . $item->telno . '" data-tick="' . $item->uniqid . '" role="tabpanel"
-                aria-labelledby="custom-tabs-pop-' . $item->telno . '-tab">
-                <div class="row" id="dpopup_' . $item->telno . '">
+                $tab_content .= '<div class="tab-pane fade ' . $tab_content_active . '" id="custom-tabs-pop-' . $item->id . '" data-tick="' . $item->uniqid . '" role="tabpanel"
+                aria-labelledby="custom-tabs-pop-' . $item->id . '-tab">
+                <div class="row" id="dpopup_' . $item->id . '">
                 ' . $html . '
                 </div>
             </div>';
 
-                $tab_hold .= ' <a href="#" class="dropdown-item hold_tab_a" data-id="' . $item->telno . '" data-tick="' . $item->uniqid . '">
+                $tab_hold .= ' <a href="#" class="dropdown-item hold_tab_a" data-id="' . $item->id . '" data-tick="' . $item->uniqid . '">
                     <div class="media ">
                         <img src="' . asset('images/user.png') . '" alt="..." class="img-size-50 mr-3 img-circle">
                         <div class="media-body">
