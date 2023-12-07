@@ -53,9 +53,7 @@
         var currentDate = new Date();
         var currentYear = currentDate.getFullYear();
         var maxYear = currentYear + 1;
-        /*  var d = new Date();
-         d.setDate(d.getDate());
-         var toDay = d.getDate() + '/' + (d.getMonth() + 1) + '/' + (d.getFullYear() + 543); */
+       
 
         $(".datepick").datepicker({
             changeMonth: true,
@@ -79,11 +77,11 @@
             beforeShow: function(input, inst) {
                 if ($(input).val() !== "") {
                     let arr = $(input).val().split("/");
-                    let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) + 543)
+                    let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) - 543)
                         .toString();
                     $(input).val(new_date);
                 }
-                $(input).css("color", "white");
+                $(input).css("color", "grey");
             },
             onClose: function(dateText, inst) {
                 $(this).css("color", "");
