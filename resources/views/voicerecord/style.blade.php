@@ -21,6 +21,21 @@
         display: none;
     }
 
+    @media print {
+
+        html,
+        body {
+            height: auto;
+        }
+
+        .dt-print-table,
+        .dt-print-table thead,
+        .dt-print-table th,
+        .dt-print-table tr {
+            border: 0 none !important;
+        }
+    }
+
     .overlay {
         position: fixed;
         display: none;

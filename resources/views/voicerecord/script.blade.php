@@ -737,6 +737,12 @@
                     extend: 'print',
                     text: 'Print',
                     title: 'ไฟล์บันทึกเสียงสนทนา',
+                    repeatingHead: {
+                        logo: 'https://www.google.co.in/logos/doodles/2018/world-cup-2018-day-22-5384495837478912-s.png',
+                        logoPosition: 'right',
+                        logoStyle: '',
+                        title: '<h3>Sample Heading</h3>'
+                    },
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                         format: {
