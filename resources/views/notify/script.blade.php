@@ -85,19 +85,19 @@
                 }
                 $(input).css("color", "white");
             },
-            onClose: function(input, inst) {
-                $(input).css("color", "");
+            onClose: function(dateText, inst) {
+                $(this).css("color", "");
 
-                if ($(input).val() != "") {
-                    let arr = $(input).val().split("/");
+                if ($(this).val() != "") {
+                    let arr = dateText.split("/");
                     if (parseInt(arr[2]) < 2500) {
                         let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) + 543)
                             .toString();
-                        $(input).val(new_date);
+                        $(this).val(new_date);
                     }
                 }
 
-                console.log($(input).val());
+                console.log($(this).val());
             }
         });
 
