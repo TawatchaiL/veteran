@@ -143,6 +143,9 @@ function setDatepickerSchedule(selector) {
 
 function setDateBetween(select1, select2) {
 	$('#' + select1 + ',#' + select2).datepicker({
+		changeMonth: true,
+		changeYear: true,
+		yearRange: "-1:+1",
 		dateFormat: 'dd/mm/yy',
 		beforeShow: function () {
 			if ($(this).val() != "") {
