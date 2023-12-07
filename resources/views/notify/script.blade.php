@@ -69,12 +69,12 @@
             /*  isBuddhist: true,
              defaultDate: toDay, */
             beforeShow: function() {
-                $(this).css("color","white");
+                $(this).css("color", "white");
                 if ($(this).val() != "") {
                     var arrayDate = $(this).val().split("-");
                     arrayDate[2] = parseInt(arrayDate[2]) - 543;
                     $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
-                    
+
                 }
                 /* setTimeout(function() {
                     $.each($(".ui-datepicker-year option"), function(j, k) {
@@ -84,9 +84,40 @@
                     });
                 }, 50); */
             },
-            onSelect: function(date) {
-                $("#edit-date-of-birth").addClass('filled');
-            }
+            onSelect: (date_text) => {
+                let arr = date_text.split("/");
+                let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) + 543).toString();
+                $(this).val(new_date);
+                $(this).css("color", "");
+            },
+            beforeShow: () => {
+
+                if ($(this).val() != "") {
+                    let arr = $(this).val().split("/");
+                    let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) - 543)
+                .toString();
+                    $(this).val(new_date);
+
+                }
+
+                $(this).css("color", "white");
+            },
+            onClose: () => {
+
+                $(this).css("color", "");
+
+                if ($(this).val() != "") {
+
+                    let arr = $(this).val().split("/");
+                    if (parseInt(arr[2]) < 2500) {
+                        let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) + 543)
+                            .toString();
+                        $(this).val(new_date);
+                    }
+                }
+
+
+            },
         });
 
         $('.timepick').timepicker({
