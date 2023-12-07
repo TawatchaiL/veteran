@@ -584,7 +584,7 @@
                     },
                     customize: function(win) {
                         // Customize the print layout
-                        $(win.document.body).prepend('<img style="position:center; top:10; left:0;width:50" src='+logobase64+'>')
+                        $(win.document.body).prepend('<img style="position:absolute; top:10; left:200;width:50" src='+logobase64+'>')
                         $(win.document.body).find('h1').css('text-align', 'center');
                         $(win.document.body).find('table').addClass('display').css('font-size',
                             '12px');
