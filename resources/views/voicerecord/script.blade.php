@@ -671,6 +671,7 @@
                     "text": 'PDF', // ข้อความที่แสดง
                     "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
                     "title": 'ไฟล์บันทึกเสียงสนทนา',
+                    "autoBom": true,
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                     },
