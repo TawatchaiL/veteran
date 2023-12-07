@@ -692,7 +692,7 @@
                                 columns: [{
                                         image: logobase64,
                                         width: 70,
-                                        margin: [250, 20, 50, 50],
+                                        margin: [250, -20, 50, 50],
                                     },
                                     {
                                         alignment: 'center',
