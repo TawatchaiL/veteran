@@ -81,7 +81,7 @@
                         .toString();
                     $(input).val(new_date);
                 }
-                $(input).css("color", "grey");
+                $(input).css("color", "e9ecef");
             },
             onClose: function(dateText, inst) {
                 $(this).css("color", "");
