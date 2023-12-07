@@ -91,7 +91,7 @@ class ContactController extends Controller
                     return $row->fname . ' ' . $row->lname;
                 })
                 ->editColumn('adddate', function ($row) {
-                    $adddate = Carbon::parse($row->adddate)->addYears(543);
+                    $adddate = Carbon::parse($row->adddate)->addYears(543)->format('Y-m-d');
                     return $adddate;
                 })
                 ->addColumn('action', function ($row) {
