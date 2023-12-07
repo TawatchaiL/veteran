@@ -46,20 +46,59 @@
         var currentYear = currentDate.getFullYear();
         var maxYear = currentYear + 1;
 
-        $(".datepick").datepicker_thai({
+        $(".datepick").datepicker({
             changeMonth: true,
             changeYear: true,
-            langTh: true,
-            yearTh: true,
+            /* langTh: true,
+            yearTh: true, */
             yearRange: '2023' + ':' + maxYear,
             dateFormat: 'dd/mm/yy',
-            onSelect: function(date) {
-                $("#edit-date-of-birth").addClass('filled');
+            /* isBE: true,
+            autoConversionField: true, */
+            /*  isBuddhist: true,
+             defaultDate: toDay, */
+            onSelect: function(date_text, inst) {
+                console.log(date_text)
+                let arr = date_text.split("/");
+                let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) + 543).toString();
+                $(this).val(new_date);
+                $(this).css("color", "");
+                console.log(new_date)
+            },
+            beforeShow: function(input, inst) {
+                if ($(input).val() !== "") {
+                    let arr = $(input).val().split("/");
+                    let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) - 543)
+                        .toString();
+                    $(input).val(new_date);
+                }
+                $(input).css("color", "#e9ecef");
+            },
+            onClose: function(dateText, inst) {
+                $(this).css("color", "");
+
+                if ($(this).val() != "") {
+                    let arr = dateText.split("/");
+                    if (parseInt(arr[2]) < 2500) {
+                        let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) + 543)
+                            .toString();
+                        $(this).val(new_date);
+                    }
+                }
+
+                console.log($(this).val());
             }
         });
 
+
         $('.timepick').timepicker({
             timeFormat: "HH:mm:ss",
+            timeText: 'เวลา',
+            hourText: 'ชั่วโมง',
+            minuteText: 'นาที',
+            secondText: 'วินาที',
+            currentText: 'เวลาปัจจุบัน',
+            closeText: 'ตกลง',
         });
 
         //currentDate.setYear(currentDate.getFullYear() + 543);

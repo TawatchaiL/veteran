@@ -53,13 +53,13 @@
         var currentDate = new Date();
         var currentYear = currentDate.getFullYear();
         var maxYear = currentYear + 1;
-       
+
 
         $(".datepick").datepicker({
             changeMonth: true,
             changeYear: true,
-            /*             langTh: true,
-                        yearTh: true, */
+            /* langTh: true,
+            yearTh: true, */
             yearRange: '2023' + ':' + maxYear,
             dateFormat: 'dd/mm/yy',
             /* isBE: true,
@@ -81,7 +81,7 @@
                         .toString();
                     $(input).val(new_date);
                 }
-                $(input).css("color", "grey");
+                $(input).css("color", "#e9ecef");
             },
             onClose: function(dateText, inst) {
                 $(this).css("color", "");
