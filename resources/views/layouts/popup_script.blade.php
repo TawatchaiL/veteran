@@ -624,6 +624,7 @@
                 let datatId = $(this).data("tabid");
                 let cardId = $(this).data("tabid");
                 let contactid = $(this).data("id");
+                let telephoneno = $(this).data("telephoneno");
                 //alert($(this).attr("id"));
                 $('#custom-tabs-pop-' + datatId).empty();
                 $.ajax({
@@ -631,7 +632,8 @@
                     type: 'POST',
                     data: {
                         contactid: contactid,
-                        cardid: datatId
+                        cardid: datatId,
+                        telephoneno: telephoneno
                     },
                     success: async function(response) {
                         $('#' + datatId).removeClass('card-danger');

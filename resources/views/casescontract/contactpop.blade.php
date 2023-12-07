@@ -34,7 +34,7 @@
                                                     <td>{{ $contact->workno }}</td>
                                                     <td>{{ $contact->created_at }}</td>
                                                     <td width="150px">
-                                                        <button type="button" data-id="{{ $contact->id }}" data-tabid="{{ $cardid }}" class="form-control btn btn-success selectcontactp-button">บันทึกข้อมูล
+                                                        <button type="button" data-id="{{ $contact->id }}" data-tabid="{{ $cardid }}" data-telephoneno="{{ $telephone }}" class="form-control btn btn-success selectcontactp-button">บันทึกข้อมูล
                                                         </button></td>
                                                 </tr>
                                                 @endforeach
