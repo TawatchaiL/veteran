@@ -803,7 +803,9 @@
                                         );
                                 });
                                 */
-                                $('#custom-tabs-one-casedetail-tabp' + cardId).click();
+                                if (res.datax.cases.length != 0) {
+                                    $('#custom-tabs-one-casedetail-tabp' + cardId).click();
+                                }
                             }
                         });
 

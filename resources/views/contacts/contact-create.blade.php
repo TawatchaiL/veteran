@@ -355,6 +355,9 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    <tr>
+                                                        <td colspan="6" align="center">ไม่พบข้อมูลการติดต่อ</td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
