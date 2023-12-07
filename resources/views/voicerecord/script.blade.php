@@ -764,7 +764,7 @@
                             }
                         }
                     },
-                    customize: function(win) {
+                    /* customize: function(win) {
                         // Customize the print layout
                         $(win.document.body)
                             .css('font-size', '10pt')
@@ -784,7 +784,41 @@
                             '#f2f2f2');
                         $(win.document.body).find('table.dataTable td:nth-child(0)').css(
                             'width', '50px');
-                    }
+                    } */
+                    customize: function(doc) {
+                        var now = new Date();
+                        var jsDate = now.getDate() + '-' + (now.getMonth() + 1) + '-' + now
+                            .getFullYear();
+                        $(doc.document.body)
+
+                            .prepend(
+                                '<img style="position:absolute; top:10; left:0;width:50" src=' +
+                                logobase64 + '>')
+                            .prepend(
+                                '<div style="position:absolute; top:10; right:0;">My Title</div>')
+                            .prepend(
+                                '<div style="position:absolute; bottom:20; left:0;">Creato il: ' +
+                                jsDate.toString() + '</div>')
+                            .prepend(
+                                '<div style="position:absolute; top:10; left:50;font-size:24px;">SubTitle</div>'
+                                )
+                            .prepend(
+                                '<div style="position:absolute; top:30; left:450;font-size:20px;margin-botton:50px">My Title</div>'
+                                )
+                        //  .prepend('<div style="position:absolute; bottom:20; left:100;">Pagina '+page.toString()+' of '+pages.toString()+'</div>');
+
+                        $(doc.document.body).find('table')
+                            .removeClass('dataTable')
+                            .css('font-size', '12px')
+                            .css('margin-top', '65px')
+                            .css('margin-bottom', '60px')
+                        $(doc.document.body).find('th').each(function(index) {
+                            $(this).css('font-size', '18px');
+                            $(this).css('color', '#fff');
+                            $(this).css('background-color', 'blue');
+                        });
+                    },
+
                 }
             ],
             layout: {
