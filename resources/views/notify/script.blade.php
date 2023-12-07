@@ -73,7 +73,7 @@
             timeText: 'เวลา',
             hourText: 'ชั่วโมง',
             minuteText: 'นาที',
-            secoundText: 'วินาที',
+            secondText: 'วินาที',
             currentText: 'เวลาปัจจุบัน',
             closeText: 'ตกลง',
         });
