@@ -57,7 +57,7 @@
          d.setDate(d.getDate());
          var toDay = d.getDate() + '/' + (d.getMonth() + 1) + '/' + (d.getFullYear() + 543); */
 
-        $(".datepick").datepicker_thai({
+        $(".datepick").datepicker({
             changeMonth: true,
             changeYear: true,
             langTh: true,
