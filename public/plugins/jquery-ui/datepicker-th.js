@@ -148,6 +148,29 @@ function setDateBetween(select1, select2) {
 		yearRange: "-1:+1",
 		dateFormat: 'dd/mm/yy',
 		beforeShow: function () {
+			if (this.id == select2 && $('#' + select1).val() != "") {
+				var arrD = $('#' + select1).val().split("/");
+				arrD[2] = parseInt(arrD[2]) - 543;
+				return {
+					minDate: arrD[0] + "/" + arrD[1] + "/" + arrD[2],
+				}
+			} else if (this.id == select1 && $('#' + select2).val() != "") {
+				var arrD = $('#' + select2).val().split("/");
+				arrD[2] = parseInt(arrD[2]) - 543;
+				return { maxDate: arrD[0] + "/" + arrD[1] + "/" + arrD[2], }
+			}
+		}, //beforeShow
+	});
+}
+
+
+function setDateBetweenTH(select1, select2) {
+	$('#' + select1 + ',#' + select2).datepicker({
+		changeMonth: true,
+		changeYear: true,
+		yearRange: "-1:+1",
+		dateFormat: 'dd/mm/yy',
+		beforeShow: function () {
 			if ($(this).val() != "") {
 				var arrD = $(this).val().split("/");
 				arrD[2] = parseInt(arrD[2]) - 543;
