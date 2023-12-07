@@ -54,15 +54,15 @@
         var currentYear = currentDate.getFullYear();
         var maxYear = currentYear + 1;
 
-        $(".datepick").datepicker({
+        $(".datepick").datepicker_thai({
             changeMonth: true,
             changeYear: true,
-            /*   langTh: true,
-              yearTh: true, */
+            langTh: true,
+            yearTh: true,
             yearRange: '2023' + ':' + maxYear,
             dateFormat: 'dd/mm/yy',
-            isBE: true,
-            autoConversionField: true,
+            /* isBE: true,
+            autoConversionField: true, */
             onSelect: function(date) {
                 $("#edit-date-of-birth").addClass('filled');
             }
@@ -73,6 +73,7 @@
             timeText: 'เวลา',
             hourText: 'ชั่วโมง',
             minuteText: 'นาที',
+            secoundText: 'วินาที',
             currentText: 'เวลาปัจจุบัน',
             closeText: 'ตกลง',
         });
