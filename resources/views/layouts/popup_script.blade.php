@@ -92,6 +92,7 @@
                         $('#phonenosuccess' + cardId).html(
                             '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ผู้ติดต่อใหม่</h3>'
                         );
+
                         $.ajax({
                             url: "contacts/popupeditphone/" + telnop,
                             method: 'GET',
@@ -236,6 +237,7 @@
 
                                     $.each(res.datax.cases, function(index,
                                         value) {
+                                            alert('OK');
                                         $('#Listviewcasesp' + cardId +
                                             ' tbody').append($(
                                                 '<tr>')
