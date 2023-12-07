@@ -844,7 +844,7 @@
                         $('#casetype5p' + cardId).attr('disabled', true);
                         $('#casetype6p' + cardId).attr('disabled', true);
                     }
-                    $('#custom-tabs-one-casedetail-tabp' + cardId).click();
+                    //$('#custom-tabs-one-casedetail-tabp' + cardId).click();
                 });
             });
         // Save data asdf
