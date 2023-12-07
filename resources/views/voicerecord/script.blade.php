@@ -644,6 +644,7 @@
                     extend: 'excel',
                     text: 'Excel',
                     title: 'ไฟล์บันทึกเสียงสนทนา',
+                    "download": 'open',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                     },
@@ -672,6 +673,7 @@
                     "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
                     "title": 'ไฟล์บันทึกเสียงสนทนา',
                     "autoBom": true,
+                    "download": 'open',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                     },
