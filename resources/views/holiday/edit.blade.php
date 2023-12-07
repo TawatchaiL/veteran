@@ -52,7 +52,7 @@
                                 <div class="form-group">
                                     <strong><i class="fas fa-clock-o"></i> เวลา:</strong>
                                     @php
-                                        $timethai = date('H:i:s');
+                                        $timethai = "00:00:00";
                                     @endphp
                                     {!! Form::text('end_time', $timethai, [
                                         'id' => 'EditSTime',
@@ -82,7 +82,7 @@
                                 <div class="form-group">
                                     <strong><i class="fas fa-clock-o"></i> เวลา:</strong>
                                     @php
-                                        $timethai = date('H:i:s');
+                                        $timethai = "23:59:59";
                                     @endphp
                                     {!! Form::text('end_time', $timethai, [
                                         'id' => 'EditETime',
