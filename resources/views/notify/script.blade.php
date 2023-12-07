@@ -67,12 +67,10 @@
             /*  isBuddhist: true,
              defaultDate: toDay, */
             onSelect: function(date_text, inst) {
-                console.log(date_text)
                 let arr = date_text.split("/");
                 let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) + 543).toString();
                 $(this).val(new_date);
                 $(this).css("color", "");
-                console.log(new_date)
             },
             beforeShow: function(input, inst) {
                 if ($(input).val() !== "") {

@@ -175,7 +175,7 @@ function setDateBetween(select1, select2) {
 
 		onClose: function () {
 			$(this).css("color", "");
-			if ($(this).val() != "" && $(this).val() == dateBefore) {
+			if ($(this).val() != "") {
 				var arrD = dateBefore.split("/");
 				arrD[2] = parseInt(arrD[2]) + 543;
 				$(this).val(arrD[0] + "/" + arrD[1] + "/" + arrD[2]);
@@ -183,7 +183,6 @@ function setDateBetween(select1, select2) {
 		},
 
 		onSelect: function (dateText, inst) {
-			dateBefore = $(this).val();
 			var arrD = dateText.split("/");
 			arrD[2] = parseInt(arrD[2]) + 543;
 			$(this).val(arrD[0] + "/" + arrD[1] + "/" + arrD[2]);
