@@ -90,6 +90,8 @@
             }
         });
 
+        setDateBetween('start_date','end_date');
+
 
         $('.timepick').timepicker({
             timeFormat: "HH:mm:ss",

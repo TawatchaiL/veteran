@@ -42,7 +42,7 @@
                                 'id' => 'AddSDate',
                                 'placeholder' => '',
                                 'readonly' => true,
-                                'class' => 'datepick form-control',
+                                'class' => 'datepick2 form-control',
                             ]) !!}
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                                 'id' => 'AddEDate',
                                 'placeholder' => '',
                                 'readonly' => true,
-                                'class' => 'datepick form-control',
+                                'class' => 'datepick2 form-control',
                             ]) !!}
                         </div>
                     </div>
