@@ -104,7 +104,7 @@ function setDatepickerSchedule(selector) {
 
 		minDate: minD,
 		maxDate: maxD,
-		
+
 
 		beforeShow: function () {
 			if ($(this).val() != "") {
@@ -176,16 +176,19 @@ function setDateBetween(select1, select2) {
 		onClose: function (dateText, inst) {
 			$(this).css("color", "");
 			if ($(this).val() != "") {
-				var arrD = dateText.split("/");
-				arrD[2] = parseInt(arrD[2]) + 543;
-				$(this).val(arrD[0] + "/" + arrD[1] + "/" + arrD[2]);
+				let arr = dateText.split("/");
+				if (parseInt(arr[2]) < 2500) {
+					let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) + 543)
+						.toString();
+					$(this).val(new_date);
+				}
 			}
 		},
 
 		onSelect: function (dateText, inst) {
-			var arrD = dateText.split("/");
-			arrD[2] = parseInt(arrD[2]) + 543;
-			$(this).val(arrD[0] + "/" + arrD[1] + "/" + arrD[2]);
+			var arr = dateText.split("/");
+			let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) + 543).toString();
+			$(this).val(new_date);
 			$(this).css("color", "");
 		}
 
