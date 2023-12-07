@@ -53,11 +53,11 @@
         var currentDate = new Date();
         var currentYear = currentDate.getFullYear();
         var maxYear = currentYear + 1;
-        var d = new Date();
-        d.setDate(d.getDate());
-        var toDay = d.getDate() + '/' + (d.getMonth() + 1) + '/' + (d.getFullYear() + 543);
+        /*  var d = new Date();
+         d.setDate(d.getDate());
+         var toDay = d.getDate() + '/' + (d.getMonth() + 1) + '/' + (d.getFullYear() + 543); */
 
-        $(".datepick").datepicker({
+        $(".datepick").datepicker_thai({
             changeMonth: true,
             changeYear: true,
             langTh: true,
@@ -66,8 +66,8 @@
             dateFormat: 'dd/mm/yy',
             /* isBE: true,
             autoConversionField: true, */
-            isBuddhist: true,
-            defaultDate: toDay,
+            /*  isBuddhist: true,
+             defaultDate: toDay, */
             onSelect: function(date) {
                 $("#edit-date-of-birth").addClass('filled');
             }
