@@ -104,6 +104,9 @@
                                         res.datax.datac.fname +
                                         ' ' + res.datax.datac
                                         .lname + '</h3>');
+
+                                        $('#Listviewcasesp' + cardId).click();
+
                                     $('#contractid' + cardId).val(res.datax
                                         .datac.id);
                                     $('#hnp' + cardId).val(res.datax.datac.hn);
@@ -237,7 +240,6 @@
 
                                     $.each(res.datax.cases, function(index,
                                         value) {
-                                            alert('OK');
                                         $('#Listviewcasesp' + cardId +
                                             ' tbody').append($(
                                                 '<tr>')
