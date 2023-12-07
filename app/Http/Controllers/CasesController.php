@@ -107,6 +107,10 @@ class CasesController extends Controller
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
                 })
+                ->editColumn('created_at', function ($row) {
+                    $adddate = Carbon::parse($row->adddate)->addYears(543)->format('d/m/Y H:i:s');
+                    return $adddate;
+                })
                 ->addColumn('action', function ($row) {
                     if (Gate::allows('case-edit')) {
                         $html = '<button type="button" class="btn btn-sm btn-warning btn-edit" id="getEditData" data-id="' . $row->id . '"><i class="fa fa-edit"></i> แก้ไข</button> ';
