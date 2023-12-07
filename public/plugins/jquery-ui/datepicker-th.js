@@ -181,6 +181,7 @@ function setDateBetween(select1, select2) {
 			var arrD = dateText.split("/");
 			arrD[2] = parseInt(arrD[2]) + 543;
 			$(this).val(arrD[0] + "/" + arrD[1] + "/" + arrD[2]);
+			$(this).css("color", "");
 		}
 
 	});

@@ -63,7 +63,7 @@
                 let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) + 543).toString();
                 $(this).val(new_date);
                 $(this).css("color", "");
-                console.log(new_date)
+
             },
             beforeShow: function(input, inst) {
                 if ($(input).val() !== "") {
@@ -85,8 +85,6 @@
                         $(this).val(new_date);
                     }
                 }
-
-                console.log($(this).val());
             }
         });
 
