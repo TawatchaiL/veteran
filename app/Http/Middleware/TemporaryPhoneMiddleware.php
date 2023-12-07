@@ -28,7 +28,7 @@ class TemporaryPhoneMiddleware
         $temporaryLogofftime = $user ? $user->logoff_time : '';
 
         //print logo
-        $imagePath = 'public/image/logo.png';
+        $imagePath = asset('image/logo.png');
         $type = pathinfo($imagePath, PATHINFO_EXTENSION);
         $data = file_get_contents($imagePath);
         $base64logo = 'data:image/' . $type . ';base64,' . base64_encode($data);
