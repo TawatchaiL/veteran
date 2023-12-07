@@ -105,7 +105,7 @@
                                         ' ' + res.datax.datac
                                         .lname + '</h3>');
 
-                                       // $('#Listviewcasesp' + cardId).click();
+                                        $('#custom-tabs-one-casedetail-tabp' + cardId).click();
 
                                     $('#contractid' + cardId).val(res.datax
                                         .datac.id);
@@ -237,10 +237,11 @@
                                                         '" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
                                                     )));
                                     });
-
+/*
                                     $.each(res.datax.cases, function(index,
                                         value) {
-                                        $('#ListCaseview' + cardId +
+                                        //$('#ListCaseview' + cardId +
+                                        $('#Listviewcasesp' + cardId +
                                             ' tbody').append($(
                                                 '<tr>')
                                             .append($('<td>')
@@ -274,7 +275,8 @@
                                                     .created_at +
                                                     '</div>'))
                                         );
-                                    });
+                                    }); 
+                                    */
                                 }
                             }
                         });
