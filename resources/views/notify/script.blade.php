@@ -60,8 +60,8 @@
         $(".datepick").datepicker({
             changeMonth: true,
             changeYear: true,
-/*             langTh: true,
-            yearTh: true, */
+            /*             langTh: true,
+                        yearTh: true, */
             yearRange: '2023' + ':' + maxYear,
             dateFormat: 'dd/mm/yy',
             /* isBE: true,
@@ -73,6 +73,7 @@
                 let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) + 543).toString();
                 $(this).val(new_date);
                 $(this).css("color", "");
+                console.log(new_date)
             },
             beforeShow: () => {
 
@@ -83,7 +84,7 @@
                     $(this).val(new_date);
 
                 }
-
+                console.log(new_date)
                 $(this).css("color", "white");
             },
             onClose: () => {
@@ -100,7 +101,7 @@
                     }
                 }
 
-
+                console.log(new_date)
             },
         });
 
