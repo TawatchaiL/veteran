@@ -569,24 +569,24 @@
                     method: 'GET',
                     success: function(res) {
                         $('#Edithn').val(res.datax.datac.hn);
-
-                        var arrayDate = res.datax.datac.adddate.split("-");
-                        arrayDate[0] = parseInt(arrayDate[0]) + 543;
-                        $('#Editadddate').val(arrayDate[0] + "-" + arrayDate[1] +
-                            "-" + arrayDate[2]);
-
+                        if(res.datax.datac.adddate !== '' && res.datax.datac.adddate !== null && res.datax.datac.adddate !== undefined){
+                            var arrayDate = res.datax.datac.adddate.split("-");
+                            arrayDate[0] = parseInt(arrayDate[0]) + 543;
+                            $('#Editadddate').val(arrayDate[0] + "-" + arrayDate[1] +
+                                "-" + arrayDate[2]);   
+                        }
                         //$('#Editadddate').val(res.datax.datac.adddate);
                         $('#Edittname').val(res.datax.datac.tname);
                         $('#Editfname').val(res.datax.datac.fname);
                         $('#Editlname').val(res.datax.datac.lname);
                         $('#Editsex').val(res.datax.datac.sex);
-
-                        var arrayDateb = res.datax.datac.birthday.split("-");
-                        arrayDateb[0] = parseInt(arrayDateb[0]) + 543;
-                        $('#Editbirthday').val(arrayDateb[0] + "-" + arrayDateb[1] +
-                            "-" + arrayDateb[2]);
-                        //$('#Editbirthday').val(res.datax.datac.birthday);
-
+                        if(res.datax.datac.birthday !== '' && res.datax.datac.birthday !== null && res.datax.datac.birthday !== undefined){
+                            var arrayDateb = res.datax.datac.birthday.split("-");
+                            arrayDateb[0] = parseInt(arrayDateb[0]) + 543;
+                            $('#Editbirthday').val(arrayDateb[0] + "-" + arrayDateb[1] +
+                                "-" + arrayDateb[2]);
+                            //$('#Editbirthday').val(res.datax.datac.birthday);
+                        }
                         $('#Editage').val(res.datax.datac.age);
                         $('#Editbloodgroup').val(res.datax.datac.bloodgroup);
                         $('#Edithomeno').val(res.datax.datac.homeno);
