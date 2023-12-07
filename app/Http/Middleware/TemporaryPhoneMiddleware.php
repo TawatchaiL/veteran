@@ -26,6 +26,13 @@ class TemporaryPhoneMiddleware
         $temporaryPhoneStatusIcon = $user ? $user->phone_status_icon : '';
         $temporaryLogintime = $user ? $user->login_time : '';
         $temporaryLogofftime = $user ? $user->logoff_time : '';
+
+        //print logo
+        $imagePath = 'public/image/logo.png';
+        $type = pathinfo($imagePath, PATHINFO_EXTENSION);
+        $data = file_get_contents($imagePath);
+        $base64logo = 'data:image/' . $type . ';base64,' . base64_encode($data);
+
         View::share('temporaryUserName', $temporaryUserName);
         View::share('temporaryPhone', $temporaryPhone);
         View::share('temporaryPhoneIP', $temporaryPhoneIP);
@@ -34,6 +41,7 @@ class TemporaryPhoneMiddleware
         View::share('temporaryPhoneStatusIcon', $temporaryPhoneStatusIcon);
         View::share('temporaryLogintime', $temporaryLogintime);
         View::share('temporaryLogofftime', $temporaryLogofftime);
+        View::share('base64logo', $base64logo);
         return $next($request);
     }
 }
