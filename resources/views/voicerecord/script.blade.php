@@ -571,7 +571,7 @@
                 }
             });
             // Apply the custom date range filter on input change
-            $('#reservation').on('apply.daterangepicker', function() {
+            $('#reservation').on('apply.daterangepicker', function(ev, picker) {
                 var startYear = picker.startDate.format('YYYY') - 543;
                 var endYear = picker.endDate.format('YYYY') - 543;
                 console.log($('#reservation').val())
