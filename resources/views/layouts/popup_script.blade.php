@@ -771,7 +771,7 @@
                                                     '" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
                                                 )));
                                 });
-
+                                /*
                                 $.each(res.datax.cases, function(index, value) {
                                     $('#Listviewcases' + cardId + ' tbody')
                                         .append($('<tr>')
@@ -802,7 +802,8 @@
                                                     '</div>'))
                                         );
                                 });
-
+                                */
+                                $('#custom-tabs-one-casedetail-tabp' + cardId).click();
                             }
                         });
 
