@@ -644,6 +644,7 @@
                     extend: 'excel',
                     text: 'Excel',
                     title: 'ไฟล์บันทึกเสียงสนทนา',
+                    "download": 'open',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                     },
