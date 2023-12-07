@@ -41,14 +41,7 @@
                 </label> --}}
                 <div class="row pb-2">
                     <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="row float-lg-left">
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <button type="button" class="btn btn-success btn-lg mx-auto"
-                                    id="waveform-time-indicator">
-                                    <i class="fa-solid fa-clock"></i> <span class="time">00:00:00</span>
-                                </button>
-                            </div>
-                        </div>
+                       
                         <div class="row float-lg-right">
                             <div class="col-xs-4 col-sm-4 col-md-4 d-none">
                                 <label>
@@ -138,6 +131,14 @@
 
             </div>
             <div class="modal-footer {{-- justify-content-between --}}">
+                <div class="row float-lg-left">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <button type="button" class="btn btn-success btn-lg mx-auto"
+                            id="waveform-time-indicator">
+                            <i class="fa-solid fa-clock"></i> <span class="time">00:00:00</span>
+                        </button>
+                    </div>
+                </div>
                 <button type="button" class="btn btn-success" id="SubmitDownloadForm"><i class="fas fa-download"></i>
                     Download</button>
                 <button type="button" class="btn btn-danger modelClose" data-dismiss="modal"><i
