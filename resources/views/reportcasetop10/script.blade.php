@@ -294,6 +294,7 @@
         });
         var startDate;
         var endDate;
+
         function datesearch() {
             var currentDate = moment();
             // Set the start date to 7 days before today
@@ -303,6 +304,7 @@
             startDate = moment().add(543, 'y').format('YYYY-MM-DD HH:mm:ss');
             endDate = moment(currentDate).add(543, 'y').format('YYYY-MM-DD HH:mm:ss');
         }
+
         function datereset() {
             var currentDate = moment();
             startDate = moment().add(543, 'y').format('YYYY-MM-DD HH:mm:ss');
@@ -431,9 +433,9 @@
                 data: function(d) {
                     d.sdate = $('#reservation').val();
                 },
-                complete: function (data) {
+                complete: function(data) {
                     Loadchart();
-                }  
+                }
             },
             serverSide: true,
             processing: true,
@@ -501,55 +503,70 @@
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                     },
-                    customize: function ( doc ) {
-                    doc.defaultStyle = {
+                    customize: function(doc) {
+                        doc.defaultStyle = {
                             font: 'THSarabun',
                             fontSize: 16
                         };
-                        doc.content.splice(0,1);
-                        doc.pageMargins = [20,100,20,30];
-						doc.styles.tableHeader.fontSize = 16;
+                        doc.content.splice(0, 1);
+                        doc.pageMargins = [20, 100, 20, 30];
+                        doc.styles.tableHeader.fontSize = 16;
                         doc.styles.tableBodyOdd.alignment = 'center';
                         doc.styles.tableBodyEven.alignment = 'center';
                         doc.styles.tableFooter.fontSize = 16;
-                        doc['header']=(function() {
-							return {
-								columns: [
-									{
-										image: logobase64,
+                        doc['header'] = (function() {
+                            return {
+                                columns: [{
+                                        image: logobase64,
                                         width: 50,
                                         margin: [250, 0, 50, 50],
-									},
-									{
-										alignment: 'center',
-										italics: true,
-										text: '10 อันดับเรื่องที่ติดต่อมากที่สุด',
-										fontSize: 18,
-										margin: [20, 50, 70, 0]
-									}
-								],
-								margin:20
-							}
-						});
+                                    },
+                                    {
+                                        alignment: 'center',
+                                        italics: true,
+                                        text: '10 อันดับเรื่องที่ติดต่อมากที่สุด',
+                                        fontSize: 18,
+                                        margin: [20, 50, 70, 0]
+                                    }
+                                ],
+                                margin: 20
+                            }
+                        });
 
                         doc.content[0].table.widths = [40, 400, '*'];
                         var objLayout = {};
-						objLayout['hLineWidth'] = function(i) { return .5; };
-						objLayout['vLineWidth'] = function(i) { return .5; };
-						objLayout['hLineColor'] = function(i) { return '#bfbfbf'; };
-						objLayout['vLineColor'] = function(i) { return '#bfbfbf'; };
-						objLayout['paddingLeft'] = function(i) { return 4; };
-						objLayout['paddingRight'] = function(i) { return 4; };
-                        objLayout['paddingTop'] = function(i) { return 3; };
-                        objLayout['paddingBottom'] = function(i) { return 3; };
-						doc.content[0].layout = objLayout;
+                        objLayout['hLineWidth'] = function(i) {
+                            return .5;
+                        };
+                        objLayout['vLineWidth'] = function(i) {
+                            return .5;
+                        };
+                        objLayout['hLineColor'] = function(i) {
+                            return '#bfbfbf';
+                        };
+                        objLayout['vLineColor'] = function(i) {
+                            return '#bfbfbf';
+                        };
+                        objLayout['paddingLeft'] = function(i) {
+                            return 4;
+                        };
+                        objLayout['paddingRight'] = function(i) {
+                            return 4;
+                        };
+                        objLayout['paddingTop'] = function(i) {
+                            return 3;
+                        };
+                        objLayout['paddingBottom'] = function(i) {
+                            return 3;
+                        };
+                        doc.content[0].layout = objLayout;
 
                         for (var i = 1; i < doc.content[0].table.body.length; i++) {
                             //doc.content[0].table.body[i][0].alignment = 'center';
                             doc.content[0].table.body[i][1].alignment = 'left';
                             //doc.content[0].table.body[i][2].alignment = 'center';
                         }
-                }
+                    }
                 },
                 {
                     extend: 'print',
@@ -601,7 +618,7 @@
                     name: 'rownumber',
                     orderable: false,
                     searchable: false,
-//                    className: 'no-print'
+                    //                    className: 'no-print'
                 },
                 {
                     data: 'casetype1',
@@ -671,33 +688,32 @@
         });
 
         window.Apex.chart = {
-        fontFamily: "Sarabun"
-            };
-               // Loadchart();
+            fontFamily: "Sarabun"
+        };
+        // Loadchart();
     });
 
-    function Loadchart(){
+    function Loadchart() {
         let options = {
-                series: [
-                        { name: [],
-                          data: []
-                        },
-                ],
-                title: {
-                        text: '10 อันดับเรื่องที่ติดต่อมากที่สุด',
-                        align: 'center',
-                        style: {
-                            fontSize: '16px',
-                            fontWeight: 'bold',
-                            fontFamily: 'Sarabun',
-                            color: '#263238'
-                        },
-                        margin: 10,
-                        offsetX: 0,
-                        offsetY: 0,
-                        floating: false,
-                    },
-                chart: {
+            series: [{
+                name: [],
+                data: []
+            }, ],
+            title: {
+                text: '10 อันดับเรื่องที่ติดต่อมากที่สุด',
+                align: 'center',
+                style: {
+                    fontSize: '16px',
+                    fontWeight: 'bold',
+                    fontFamily: 'Sarabun',
+                    color: '#263238'
+                },
+                margin: 10,
+                offsetX: 0,
+                offsetY: 0,
+                floating: false,
+            },
+            chart: {
                 height: 400,
                 type: "line",
                 zoom: {
@@ -706,111 +722,119 @@
                 toolbar: {
                     show: false
                 }
-                },
-                markers: {
+            },
+            markers: {
                 show: true,
                 size: 6
-                },
-                dataLabels: {
+            },
+            dataLabels: {
                 enabled: false
-                },
-                legend: {
+            },
+            legend: {
                 show: false,
                 showForSingleSeries: false,
                 position: "top",
                 horizontalAlign: "right"
-                },
-                stroke: {
+            },
+            stroke: {
                 curve: "smooth",
                 linecap: "round"
-                },
-                grid: {
+            },
+            grid: {
                 row: {
                     colors: ["#f3f3f3", "transparent"],
                     opacity: 0.5
                 }
-                },
-                xaxis: {
+            },
+            xaxis: {
                 categories: []
-                },
-                labels: [],
-                tooltip: {
+            },
+            labels: [],
+            tooltip: {
                 y: {
                     formatter: function(val) {
                         return " จำนวน " + val + "  "
                     }
                 }
             }
-            };
-            let optionsdonut = {
+        };
+        let optionsdonut = {
 
-                series: [],
-                chart: {
-                    type: 'donut',
-                    height: 380,
-                    toolbar: {
-                        show: false
+            series: [],
+            chart: {
+                type: 'donut',
+                height: 380,
+                toolbar: {
+                    show: false
+                },
+            },
+            colors: ['#E91E63', '#2E93fA', '#546E7A', '#66DA26', '#FF9800', '#4ECDC4', '#C7F464', '#81D4FA',
+                '#A5978B', '#FD6A6A'
+            ],
+            fill: {
+                type: 'gradient',
+            },
+            title: {
+                text: '10 อันดับเรื่องที่ติดต่อมากที่สุด',
+                align: 'center',
+                style: {
+                    fontSize: '16px',
+                    fontWeight: 'bold',
+                    fontFamily: 'Sarabun',
+                    color: '#263238'
+                },
+                margin: 10,
+                offsetX: 0,
+                offsetY: 0,
+                floating: false,
+            },
+            labels: [],
+            responsive: [{
+                breakpoint: 200,
+                options: {
+                    chart: {
+                        width: 30,
                     },
-                },
-                colors: ['#E91E63','#2E93fA','#546E7A','#66DA26','#FF9800','#4ECDC4','#C7F464','#81D4FA','#A5978B','#FD6A6A'],
-                fill: {
-                    type: 'gradient',
-                },
-                title: {
-                    text: '10 อันดับเรื่องที่ติดต่อมากที่สุด',
-                    align: 'center',
-                    style: {
-                        fontSize: '16px',
-                        fontWeight: 'bold',
-                        fontFamily: 'Sarabun',
-                        color: '#263238'
-                    },
-                    margin: 10,
-                    offsetX: 0,
-                    offsetY: 0,
-                    floating: false,
-                },
-                labels: [],
-                responsive: [{
-                    breakpoint: 200,
-                    options: {
-                        chart: {
-                            width: 30,
-                        },
-                        legend: {
-                            position: 'bottom'
-                        }
+                    legend: {
+                        position: 'bottom'
                     }
-                }]
-                };
-                
-                var rdate = $('#reservation').val();
-                var rstatus = 'report';
-                $.ajax({
-                url: '{{ route('reportcasetop10') }}',
-                data: {
-                    sdate: rdate,
-                    rstatus: rstatus
-                },
-                method: 'GET',
-                success: function(res) {
-                    options.series[0].data = res.datag;
-                    options.xaxis.categories = res.datal;
-                    optionsdonut.labels = res.datal; 
-                    optionsdonut.series = res.datag;
-                        var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
-                        chart2.render();
-
-                        var chart = new ApexCharts(document.querySelector("#bar_graph"), options);
-                        chart.render();
-                            chart.updateOptions({chart: {type: "bar",animate: true},
-                                                labels: '',
-                                                stroke: {width: 0}
-                            });
-                            options.series =  res.datag;
-                        var chart3 = new ApexCharts(document.querySelector("#pie_graph"), optionsdonut);
-                            chart3.render();
                 }
-            });
+            }]
+        };
+
+        var rdate = $('#reservation').val();
+        var rstatus = 'report';
+        $.ajax({
+            url: '{{ route('reportcasetop10') }}',
+            data: {
+                sdate: rdate,
+                rstatus: rstatus
+            },
+            method: 'GET',
+            success: function(res) {
+                options.series[0].data = res.datag;
+                options.xaxis.categories = res.datal;
+                optionsdonut.labels = res.datal;
+                optionsdonut.series = res.datag;
+                var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
+                chart2.render();
+
+                var chart = new ApexCharts(document.querySelector("#bar_graph"), options);
+                chart.render();
+                chart.updateOptions({
+                    chart: {
+                        type: "bar",
+                        animate: true
+                    },
+                    labels: '',
+                    stroke: {
+                        width: 0
+                    }
+                });
+                options.series = res.datag;
+                var chart3 = new ApexCharts(document.querySelector("#pie_graph"), optionsdonut);
+                chart3.render();
+            }
+        });
     }
 </script>
