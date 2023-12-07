@@ -68,22 +68,6 @@
             autoConversionField: true, */
             /*  isBuddhist: true,
              defaultDate: toDay, */
-            beforeShow: function() {
-                $(this).css("color", "white");
-                if ($(this).val() != "") {
-                    var arrayDate = $(this).val().split("-");
-                    arrayDate[2] = parseInt(arrayDate[2]) - 543;
-                    $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
-
-                }
-                /* setTimeout(function() {
-                    $.each($(".ui-datepicker-year option"), function(j, k) {
-                        var textYear = parseInt($(".ui-datepicker-year option").eq(
-                            j).val()) + 543;
-                        $(".ui-datepicker-year option").eq(j).text(textYear);
-                    });
-                }, 50); */
-            },
             onSelect: (date_text) => {
                 let arr = date_text.split("/");
                 let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) + 543).toString();
@@ -95,7 +79,7 @@
                 if ($(this).val() != "") {
                     let arr = $(this).val().split("/");
                     let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) - 543)
-                .toString();
+                        .toString();
                     $(this).val(new_date);
 
                 }
