@@ -41,7 +41,7 @@
 var dateBefore = null;
 var minD = null;
 var maxD = null;
-var obj = null;
+//var obj = null;
 
 
 
