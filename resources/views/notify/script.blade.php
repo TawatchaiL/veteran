@@ -62,6 +62,7 @@
             yearRange: '2023' + ':' + maxYear,
             dateFormat: 'dd/mm/yy',
             isBE:true,
+            autoConversionField: true,
             onSelect: function(date) {
                 $("#edit-date-of-birth").addClass('filled');
             }
