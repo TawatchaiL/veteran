@@ -69,6 +69,8 @@
         });
 
         $('.timepick').timepicker({
+            isBE:true,
+            autoConversionField: true,
             timeFormat: "HH:mm:ss",
         });
 
