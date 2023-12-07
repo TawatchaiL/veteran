@@ -792,31 +792,31 @@
                         $(doc.document.body)
 
                             .prepend(
-                                '<img style="position:absolute; top:10; left:0;width:50" src=' +
+                                '<img style="position:absolute; top:10; left:250;width:100" src=' +
                                 logobase64 + '>')
-                            .prepend(
-                                '<div style="position:absolute; top:10; right:0;">My Title</div>')
-                            .prepend(
-                                '<div style="position:absolute; bottom:20; left:0;">Creato il: ' +
-                                jsDate.toString() + '</div>')
-                            .prepend(
-                                '<div style="position:absolute; top:10; left:50;font-size:24px;">SubTitle</div>'
-                                )
-                            .prepend(
-                                '<div style="position:absolute; top:30; left:450;font-size:20px;margin-botton:50px">My Title</div>'
-                                )
+                        /* .prepend(
+                            '<div style="position:absolute; top:10; right:0;">My Title</div>') 
+                        .prepend(
+                            '<div style="position:absolute; bottom:20; left:0;">Creato il: ' +
+                            jsDate.toString() + '</div>')
+                        .prepend(
+                            '<div style="position:absolute; top:10; left:50;font-size:24px;">SubTitle</div>'
+                            )
+                        .prepend(
+                            '<div style="position:absolute; top:30; left:450;font-size:20px;margin-botton:50px">My Title</div>'
+                            )*/
                         //  .prepend('<div style="position:absolute; bottom:20; left:100;">Pagina '+page.toString()+' of '+pages.toString()+'</div>');
 
                         $(doc.document.body).find('table')
-                            .removeClass('dataTable')
+                            //.removeClass('dataTable')
                             .css('font-size', '12px')
                             .css('margin-top', '65px')
                             .css('margin-bottom', '60px')
-                        $(doc.document.body).find('th').each(function(index) {
+                        /* $(doc.document.body).find('th').each(function(index) {
                             $(this).css('font-size', '18px');
                             $(this).css('color', '#fff');
                             $(this).css('background-color', 'blue');
-                        });
+                        } );*/
                     },
 
                 }
