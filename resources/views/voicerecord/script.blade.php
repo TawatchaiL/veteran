@@ -692,14 +692,14 @@
                                 columns: [{
                                         image: logobase64,
                                         width: 70,
-                                        margin: [200, 0, 50, 100],
+                                        margin: [200, 0, 50, 50],
                                     },
                                     {
                                         alignment: 'center',
                                         italics: true,
                                         text: 'ไฟล์บันทึกเสียงสนทนา',
                                         fontSize: 18,
-                                        margin: [20, 50, 70, 0]
+                                        margin: [20, 70, 70, 0]
                                     }
                                 ],
                                 margin: 20
