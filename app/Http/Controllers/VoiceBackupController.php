@@ -64,7 +64,10 @@ class VoiceBackupController extends Controller
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
                 })
                 ->addColumn('export_date', function ($row) {
-                    $export_date = $row->export_start . " - " . $row->export_end;
+                    $startCarbon = Carbon::parse($row->export_start)->addYears(543);
+                    $endCarbon = Carbon::parse($row->export_end)->addYears(543);
+
+                    $export_date = $startCarbon->format('Y-m-d H:i:s') . " - " . $endCarbon->format('Y-m-d H:i:s');
                     return $export_date;
                 })
                 ->editColumn('export_src', function ($row) {
