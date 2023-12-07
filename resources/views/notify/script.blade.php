@@ -60,8 +60,8 @@
         $(".datepick").datepicker({
             changeMonth: true,
             changeYear: true,
-            langTh: true,
-            yearTh: true,
+/*             langTh: true,
+            yearTh: true, */
             yearRange: '2023' + ':' + maxYear,
             dateFormat: 'dd/mm/yy',
             /* isBE: true,
