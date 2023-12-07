@@ -71,30 +71,30 @@
             onSelect: (date_text) => {
                 let arr = date_text.split("/");
                 let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) + 543).toString();
-                $(this).val(new_date);
-                $(this).css("color", "");
+                $(date_text).val(new_date);
+                $(date_text).css("color", "");
                 console.log(new_date)
             },
             beforeShow: function(input, inst) {
                 if ($(input).val() !== "") {
                     let arr = $(input).val().split("/");
                     let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) - 543)
-                .toString();
+                        .toString();
                     $(input).val(new_date);
                 }
                 $(input).css("color", "white");
             },
-            onClose: () => {
+            onClose: (input, inst) => {
 
-                $(this).css("color", "");
+                $(input).css("color", "");
 
-                if ($(this).val() != "") {
+                if ($(input).val() != "") {
 
-                    let arr = $(this).val().split("/");
+                    let arr = $(input).val().split("/");
                     if (parseInt(arr[2]) < 2500) {
                         let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) + 543)
                             .toString();
-                        $(this).val(new_date);
+                        $(input).val(new_date);
                     }
                 }
 
