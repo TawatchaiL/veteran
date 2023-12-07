@@ -103,9 +103,7 @@
                                         '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ' +
                                         res.datax.datac.fname +
                                         ' ' + res.datax.datac
-                                        .lname + '</h3>');
-
-                                       // $('#Listviewcasesp' + cardId).click();
+                                        .lname + '</h3>');    
 
                                     $('#contractid' + cardId).val(res.datax
                                         .datac.id);
@@ -237,10 +235,11 @@
                                                         '" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
                                                     )));
                                     });
-
+/*
                                     $.each(res.datax.cases, function(index,
                                         value) {
-                                        $('#ListCaseview' + cardId +
+                                        //$('#ListCaseview' + cardId +
+                                        $('#Listviewcasesp' + cardId +
                                             ' tbody').append($(
                                                 '<tr>')
                                             .append($('<td>')
@@ -274,7 +273,9 @@
                                                     .created_at +
                                                     '</div>'))
                                         );
-                                    });
+                                    }); 
+                                    */
+                                    $('#custom-tabs-one-casedetail-tabp' + cardId).click();
                                 }
                             }
                         });
