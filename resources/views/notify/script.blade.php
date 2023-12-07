@@ -55,13 +55,13 @@
         var maxYear = currentYear + 1;
        
 
-        $(".datepick").datepicker({
+        $(".datepick").datetimepicker({
             changeMonth: true,
             changeYear: true,
             /*             langTh: true,
                         yearTh: true, */
             yearRange: '2023' + ':' + maxYear,
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd/mm/yy hh:mm:ss',
             /* isBE: true,
             autoConversionField: true, */
             /*  isBuddhist: true,
