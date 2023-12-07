@@ -46,7 +46,7 @@
         var currentYear = currentDate.getFullYear();
         var maxYear = currentYear + 1;
 
-        $(".datepick").datepicker({
+        $(".datepick2").datepicker({
             changeMonth: true,
             changeYear: true,
             /* langTh: true,
@@ -63,7 +63,7 @@
                 let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) + 543).toString();
                 $(this).val(new_date);
                 $(this).css("color", "");
-                console.log(new_date)
+
             },
             beforeShow: function(input, inst) {
                 if ($(input).val() !== "") {
@@ -85,10 +85,10 @@
                         $(this).val(new_date);
                     }
                 }
-
-                console.log($(this).val());
             }
         });
+
+        setDateBetween('AddSDate','AddEDate');
 
 
         $('.timepick').timepicker({
