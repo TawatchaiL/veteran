@@ -343,7 +343,7 @@
                                 <div id="ListviewcasesP{{$cardid}}">
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-12">
-                                            <table id="ListCaseview" class="display nowrap table table-bordered table-striped table-hover">
+                                            <table id="ListCaseview{{$cardid}}" class="display nowrap table table-bordered table-striped table-hover">
                                                 <thead>
                                                     <tr>
                                                         <th>วันที่ทำรายการ</th>

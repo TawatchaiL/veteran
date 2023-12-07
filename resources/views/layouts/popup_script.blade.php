@@ -240,7 +240,7 @@
 
                                     $.each(res.datax.cases, function(index,
                                         value) {
-                                        $('#Listviewcasesp' + cardId +
+                                        $('#ListCaseview' + cardId +
                                             ' tbody').append($(
                                                 '<tr>')
                                             .append($('<td>')
