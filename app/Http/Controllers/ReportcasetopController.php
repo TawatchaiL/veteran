@@ -47,8 +47,8 @@ class ReportcasetopController extends Controller
                     $startDate = date("Y-m-d H:i:s");
                     $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
-            $datas = DB::table('crm_cases')
-                ->select(DB::raw('ROW_NUMBER() OVER (ORDER BY count(casetype1) DESC) as row_number'),'casetype1', DB::raw('count(casetype1) as sumcases'))
+            $datas = DB::table(DB::raw('(SELECT @rownumber:=0) AS temp, crm_cases'))
+                ->select(DB::raw('(@rownumber:=@rownumber + 1) AS row_number'), 'casetype1', DB::raw('count(casetype1) as sumcases'))
                 ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
                 ->groupBy('casetype1')
                 ->orderBy("sumcases", "desc")
