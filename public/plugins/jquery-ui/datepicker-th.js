@@ -149,16 +149,16 @@ function setDateBetween(select1, select2) {
 		changeMonth: true,
 		changeYear: true,
 		yearRange: currentYear + ':' + maxYear,
-		dateFormat: 'dd/mm/yy',
+		dateFormat: 'yy-mm-dd',
 		beforeShow: function () {
 			if (this.id == select2 && $('#' + select1).val() != "") {
-				var arrD = $('#' + select1).val().split("/");
+				var arrD = $('#' + select1).val().split("-");
 				return {
-					minDate: arrD[0] + "/" + arrD[1] + "/" + arrD[2],
+					minDate: arrD[0] + "-" + arrD[1] + "-" + arrD[2],
 				}
 			} else if (this.id == select1 && $('#' + select2).val() != "") {
-				var arrD = $('#' + select2).val().split("/");
-				return { maxDate: arrD[0] + "/" + arrD[1] + "/" + arrD[2], }
+				var arrD = $('#' + select2).val().split("-");
+				return { maxDate: arrD[0] + "-" + arrD[1] + "-" + arrD[2], }
 			}
 		}, //beforeShow
 	});
