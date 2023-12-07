@@ -108,8 +108,8 @@ class HolidaysController extends Controller
 
         $sdate_time = $request->get('start_date') . " " . $request->get('start_time');
         $start_array = explode(" ", $sdate_time);
-        // Manually adjust the year from Buddhist to Gregorian calendar
-        $sgregorianYear = intval(substr($start_array[0], 6)) - 543;
+        // Manually adjust the year from Buddhist to Gregorian calendar- 543
+        $sgregorianYear = intval(substr($start_array[0], 6));
         $sgregorianDate = $sgregorianYear . substr($start_array[0], 2, 3) . "/" . substr($start_array[0], 0, 2);
         $start_date_convert = Carbon::createFromFormat('Y/m/d', $sgregorianDate, 'Asia/Bangkok');
         $startutcDate = $start_date_convert->setTimezone('UTC');
@@ -118,7 +118,7 @@ class HolidaysController extends Controller
 
         $edate_time = $request->get('end_date') . " " . $request->get('end_time');
         $end_array = explode(" ", $edate_time);
-        $egregorianYear = intval(substr($end_array[0], 6)) - 543;
+        $egregorianYear = intval(substr($end_array[0], 6));
         $egregorianDate = $egregorianYear . substr($end_array[0], 2, 3) . "/" . substr($end_array[0], 0, 2);
         $end_date_convert = Carbon::createFromFormat('Y/m/d', $egregorianDate, 'Asia/Bangkok');
         $endutcDate = $end_date_convert->setTimezone('UTC');
@@ -197,7 +197,7 @@ class HolidaysController extends Controller
         $sdate_time = $request->get('start_date') . " " . $request->get('start_time');
         $start_array = explode(" ", $sdate_time);
         // Manually adjust the year from Buddhist to Gregorian calendar
-        $sgregorianYear = intval(substr($start_array[0], 6)) - 543;
+        $sgregorianYear = intval(substr($start_array[0], 6));
         $sgregorianDate = $sgregorianYear . substr($start_array[0], 2, 3) . "/" . substr($start_array[0], 0, 2);
         $start_date_convert = Carbon::createFromFormat('Y/m/d', $sgregorianDate, 'Asia/Bangkok');
         $startutcDate = $start_date_convert->setTimezone('UTC');
@@ -205,7 +205,7 @@ class HolidaysController extends Controller
 
         $edate_time = $request->get('end_date') . " " . $request->get('end_time');
         $end_array = explode(" ", $edate_time);
-        $egregorianYear = intval(substr($end_array[0], 6)) - 543;
+        $egregorianYear = intval(substr($end_array[0], 6));
         $egregorianDate = $egregorianYear . substr($end_array[0], 2, 3) . "/" . substr($end_array[0], 0, 2);
         $end_date_convert = Carbon::createFromFormat('Y/m/d', $egregorianDate, 'Asia/Bangkok');
         $endutcDate = $end_date_convert->setTimezone('UTC');
