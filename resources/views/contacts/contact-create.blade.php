@@ -341,7 +341,24 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div id="ListviewcasesP{{$cardid}}">
-
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <table id="ListCaseview" class="display nowrap table table-bordered table-striped table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>วันที่ทำรายการ</th>
+                                                        <th>ประเภทเคส</th>
+                                                        <th>รายละเอียดเคส</th>
+                                                        <th>สถานะเคส</th>
+                                                        <th>Agent ที่รับ</th>
+                                                        <th width="120px"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>        

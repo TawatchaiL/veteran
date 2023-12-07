@@ -105,7 +105,7 @@
                                         ' ' + res.datax.datac
                                         .lname + '</h3>');
 
-                                        $('#Listviewcasesp' + cardId).click();
+                                       // $('#Listviewcasesp' + cardId).click();
 
                                     $('#contractid' + cardId).val(res.datax
                                         .datac.id);
