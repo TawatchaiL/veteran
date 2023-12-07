@@ -11,6 +11,7 @@ use App\Models\CrmContactLog;
 use App\Models\Department;
 use App\Models\CrmCase;
 use App\Models\CrmCaseslog;
+use Carbon\Carbon;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\View;
@@ -88,6 +89,10 @@ class ContactController extends Controller
                 })
                 ->editColumn('fname', function ($row) {
                     return $row->fname . ' ' . $row->lname;
+                })
+                ->editColumn('adddate', function ($row) {
+                    $adddate = Carbon::parse($row->adddate)->addYears(543);
+                    return $adddate;
                 })
                 ->addColumn('action', function ($row) {
                     if (Gate::allows('contact-edit')) {
