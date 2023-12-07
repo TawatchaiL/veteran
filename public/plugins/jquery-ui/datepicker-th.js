@@ -104,7 +104,7 @@ function setDatepickerSchedule(selector) {
 
 		minDate: minD,
 		maxDate: maxD,
-
+		
 
 		beforeShow: function () {
 			if ($(this).val() != "") {
@@ -147,14 +147,19 @@ function setDateBetween(select1, select2) {
 		changeYear: true,
 		yearRange: "-1:+1",
 		dateFormat: 'dd/mm/yy',
-		beforeShow: function (input, inst) {
-			if ($(input).val() !== "") {
-				let arr = $(input).val().split("/");
-				let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) - 543)
-					.toString();
-				$(input).val(new_date);
+		beforeShow: function () {
+			if ($(this).val() != "") {
+				var arrD = $(this).val().split("/");
+				arrD[2] = parseInt(arrD[2]) - 543;
+				$(this).val(arrD[0] + "/" + arrD[1] + "/" + arrD[2]);
 			}
-			$(input).css("color", "#e9ecef");
+			$(this).css("color", "#e9ecef");
+			setTimeout(function () {
+				$.each($(".ui-datepicker-year option"), function (j, k) {
+					var textYear = parseInt($(".ui-datepicker-year option").eq(j).val()) + 543;
+					$(".ui-datepicker-year option").eq(j).text(textYear);
+				});
+			}, 50);
 			if (this.id == select2 && $('#' + select1).val() != "") {
 				var arrD = $('#' + select1).val().split("/");
 				arrD[2] = parseInt(arrD[2]) - 543;
