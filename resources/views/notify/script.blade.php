@@ -75,17 +75,14 @@
                 $(this).css("color", "");
                 console.log(new_date)
             },
-            beforeShow: () => {
-                console.log($(this).val())
-                if ($(this).val() !== "") {
-                    let arr = $(this).val().split("/");
+            beforeShow: function(input, inst) {
+                if ($(input).val() !== "") {
+                    let arr = $(input).val().split("/");
                     let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) - 543)
-                        .toString();
-                    $(this).val(new_date);
-
+                .toString();
+                    $(input).val(new_date);
                 }
-                
-                $(this).css("color", "white");
+                $(input).css("color", "white");
             },
             onClose: () => {
 
