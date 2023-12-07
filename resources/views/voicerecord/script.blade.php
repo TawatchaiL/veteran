@@ -672,6 +672,7 @@
                     "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
                     "title": 'ไฟล์บันทึกเสียงสนทนา',
                     "autoBom": true,
+                    "download": 'open',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                     },
