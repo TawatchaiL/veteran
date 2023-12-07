@@ -68,6 +68,20 @@
             autoConversionField: true, */
             /*  isBuddhist: true,
              defaultDate: toDay, */
+            beforeShow: function() {
+                if ($(this).val() != "") {
+                    var arrayDate = $(this).val().split("-");
+                    arrayDate[2] = parseInt(arrayDate[2]) + 543;
+                    $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
+                }
+                setTimeout(function() {
+                    $.each($(".ui-datepicker-year option"), function(j, k) {
+                        var textYear = parseInt($(".ui-datepicker-year option").eq(
+                            j).val()) + 543;
+                        $(".ui-datepicker-year option").eq(j).text(textYear);
+                    });
+                }, 50);
+            },
             onSelect: function(date) {
                 $("#edit-date-of-birth").addClass('filled');
             }
