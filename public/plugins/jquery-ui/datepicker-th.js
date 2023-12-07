@@ -174,6 +174,7 @@ function setDateBetween(select1, select2) {
 		}, //beforeShow
 
 		onClose: function () {
+			$(this).css("color", "");
 			if ($(this).val() != "" && $(this).val() == dateBefore) {
 				var arrD = dateBefore.split("/");
 				arrD[2] = parseInt(arrD[2]) + 543;
