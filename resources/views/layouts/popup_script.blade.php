@@ -103,9 +103,7 @@
                                         '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ' +
                                         res.datax.datac.fname +
                                         ' ' + res.datax.datac
-                                        .lname + '</h3>');
-
-                                        $('#custom-tabs-one-casedetail-tabp' + cardId).click();
+                                        .lname + '</h3>');    
 
                                     $('#contractid' + cardId).val(res.datax
                                         .datac.id);
@@ -277,6 +275,7 @@
                                         );
                                     }); 
                                     */
+                                    $('#custom-tabs-one-casedetail-tabp' + cardId).click();
                                 }
                             }
                         });
