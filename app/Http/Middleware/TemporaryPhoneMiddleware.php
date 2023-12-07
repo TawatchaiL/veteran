@@ -28,7 +28,7 @@ class TemporaryPhoneMiddleware
         $temporaryLogintime = $user ? $user->login_time : '';
         $temporaryLogofftime = $user ? $user->logoff_time : '';
 
-        $base64logo = FileUploadService::getLogoDataURL();
+        $base64logo = FileUploadService::getLogoDataURLBase64();
 
         View::share('temporaryUserName', $temporaryUserName);
         View::share('temporaryPhone', $temporaryPhone);
