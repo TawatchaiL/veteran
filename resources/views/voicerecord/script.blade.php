@@ -472,7 +472,8 @@
         var endDate;
 
         function datesearch() {
-            var currentDate = moment().add(543, 'year').format('YYYY-MM-DD HH:mm:ss');
+            var currentDate = moment();
+            console.log(currentDate)
             startDate = moment(currentDate).subtract(30, 'days').startOf('day').format('YYYY-MM-DD HH:mm:ss');
             endDate = moment(currentDate).endOf('month').endOf('day').format('YYYY-MM-DD HH:mm:ss');
         }
@@ -573,8 +574,7 @@
             $('#reservation').on('apply.daterangepicker', function(ev, picker) {
                 var startYear = picker.startDate.format('YYYY') - 543;
                 var endYear = picker.endDate.format('YYYY') - 543;
-                $('#reservation').val(startYear + '-' + picker.startDate.format('MM-DD HH:mm:ss') +
-                    ' - ' +
+                $('#reservation').val(startYear + '-' + picker.startDate.format('MM-DD HH:mm:ss') + ' - ' +
                     endYear + '-' + picker.endDate.format('MM-DD HH:mm:ss'));
                 console.log($('#reservation').val())
                 table.draw();
