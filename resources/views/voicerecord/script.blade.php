@@ -766,6 +766,15 @@
                     },
                     customize: function(win) {
                         // Customize the print layout
+                        $(win.document.body)
+                            .css('font-size', '10pt')
+                            .prepend(
+                                '<div><img src="http://datatables.net/media/images/logo-fade.png" style="position:absolute; top:0; left:0;"  alt="logo"/></div>'
+                            );
+
+                        $(win.document.body).find('table')
+                            .addClass('compact')
+                            .css('font-size', 'inherit');
                         $(win.document.body).find('h1').css('text-align', 'center');
                         $(win.document.body).find('table').addClass('display').css('font-size',
                             '12px');
