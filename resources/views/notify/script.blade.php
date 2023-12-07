@@ -79,7 +79,7 @@
             beforeShow: function(input, inst) {
                 if ($(input).val() !== "") {
                     let arr = $(input).val().split("/");
-                    let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) - 543)
+                    let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) + 543)
                         .toString();
                     $(input).val(new_date);
                 }
