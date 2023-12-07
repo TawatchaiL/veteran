@@ -55,7 +55,7 @@
         var maxYear = currentYear + 1;
 
 
-        $(".datepick").datepicker({
+        $(".datepick2").datepicker({
             changeMonth: true,
             changeYear: true,
             /* langTh: true,
@@ -98,6 +98,9 @@
                 console.log($(this).val());
             }
         });
+
+        setDateBetween('AddSDate','AddEDate');
+        setDateBetween('EditSDate','EditEDate');
 
         $('.timepick').timepicker({
             timeFormat: "HH:mm:ss",
