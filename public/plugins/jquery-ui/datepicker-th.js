@@ -104,6 +104,7 @@ function setDatepickerSchedule(selector) {
 
 		minDate: minD,
 		maxDate: maxD,
+		
 
 		beforeShow: function () {
 			if ($(this).val() != "") {
@@ -142,6 +143,7 @@ function setDatepickerSchedule(selector) {
 
 function setDateBetween(select1, select2) {
 	$('#' + select1 + ',#' + select2).datepicker({
+		dateFormat: 'dd/mm/yy',
 		beforeShow: function () {
 			if ($(this).val() != "") {
 				var arrD = $(this).val().split("-");
