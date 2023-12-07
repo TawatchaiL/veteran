@@ -615,7 +615,7 @@
             function() {
                 let datatId = $(this).data("tabid");
                 let tagetp = $(this).data("tagetp");
-                let tabtelno = $('#custom-tabs-pop-' + datatId).data("tel");
+                let tabtelno = $('#telnop' + datatId).val();
                 $('#' + tagetp + datatId).val(tabtelno);
             });
         // contact list to from
