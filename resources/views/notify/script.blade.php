@@ -69,10 +69,12 @@
             /*  isBuddhist: true,
              defaultDate: toDay, */
             beforeShow: function() {
+                $(this).css("color","white");
                 if ($(this).val() != "") {
                     var arrayDate = $(this).val().split("-");
                     arrayDate[2] = parseInt(arrayDate[2]) + 543;
                     $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
+                    
                 }
                 setTimeout(function() {
                     $.each($(".ui-datepicker-year option"), function(j, k) {
