@@ -93,6 +93,12 @@
 
         $('.timepick').timepicker({
             timeFormat: "HH:mm:ss",
+            timeText: 'เวลา',
+            hourText: 'ชั่วโมง',
+            minuteText: 'นาที',
+            secondText: 'วินาที',
+            currentText: 'เวลาปัจจุบัน',
+            closeText: 'ตกลง',
         });
 
         //currentDate.setYear(currentDate.getFullYear() + 543);
