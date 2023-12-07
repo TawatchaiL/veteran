@@ -685,15 +685,13 @@
                         doc.content.splice(0, 1);
                         doc.pageMargins = [20, 100, 20, 30];
                         doc.styles.tableHeader.fontSize = 16;
-                        doc.styles.tableBodyOdd.alignment = 'center';
-                        doc.styles.tableBodyEven.alignment = 'center';
                         doc.styles.tableFooter.fontSize = 16;
                         doc['header'] = (function() {
                             return {
                                 columns: [{
                                         image: logobase64,
                                         width: 50,
-                                        margin: [250, 0, 50, 50],
+                                        margin: [380, 0, 50, 50],
                                     },
                                     {
                                         alignment: 'center',
@@ -707,7 +705,7 @@
                             }
                         });
 
-                        doc.content[0].table.widths = [40, 400, '*'];
+                        doc.content[0].table.widths = [80, 80, 80, 80, '*'];
                         var objLayout = {};
                         objLayout['hLineWidth'] = function(i) {
                             return .5;
@@ -735,22 +733,12 @@
                         };
                         doc.content[0].layout = objLayout;
 
-
                         for (var i = 1; i < doc.content[0].table.body.length; i++) {
-                            doc.content[0].table.body[i][0].alignment =
-                                'center'; // Align the first column to the center
-                            doc.content[0].table.body[i][1].alignment =
-                                'center'; // Align the second column to the right
-                            //doc.content[1].table.body[i][2].alignment =
-                            //'center'; // Align the second column to the right
-                            // Customize alignments for other columns as needed
-                            doc.content[0].table.body[i][2].alignment =
-                                'center';
-                            doc.content[0].table.body[i][3].alignment =
-                                'center';
-                            doc.content[0].table.body[i][4].alignment =
-                                'center';
-
+                            doc.content[0].table.body[i][0].alignment = 'center';
+                            doc.content[0].table.body[i][1].alignment = 'center';
+                            doc.content[0].table.body[i][2].alignment = 'center';
+                            doc.content[0].table.body[i][3].alignment = 'center';
+                            doc.content[0].table.body[i][4].alignment = 'center';
                         }
                         /*  doc.content.splice(1, 0, {
                              margin: [0, 0, 0, 12],
