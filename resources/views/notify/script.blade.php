@@ -68,7 +68,7 @@
             autoConversionField: true, */
             /*  isBuddhist: true,
              defaultDate: toDay, */
-            onSelect: (date_text) => {
+            onSelect: function(date_text) {
                 console.log(date_text)
                 let arr = date_text.split("/");
                 let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) + 543).toString();
@@ -85,12 +85,10 @@
                 }
                 $(input).css("color", "white");
             },
-            onClose: (input, inst) => {
-
+            onClose: function(input, inst) {
                 $(input).css("color", "");
 
                 if ($(input).val() != "") {
-
                     let arr = $(input).val().split("/");
                     if (parseInt(arr[2]) < 2500) {
                         let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) + 543)
@@ -99,8 +97,8 @@
                     }
                 }
 
-                console.log(new_date)
-            },
+                console.log($(input).val());
+            }
         });
 
         $('.timepick').timepicker({
