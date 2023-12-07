@@ -683,6 +683,7 @@
                             font: 'THSarabun',
                             fontSize: 16
                         };
+                        doc.addImage('{{ asset('images/logo.png') }}', 'PNG', 10, 10, 20, 20);
                         // กำหนดความกว้างของ header แต่ละคอลัมน์หัวข้อ
                         doc.content[1].table.widths = [80, 80, 100, 110, 60, 60];
                         doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
@@ -737,12 +738,6 @@
                     extend: 'print',
                     text: 'Print',
                     title: 'ไฟล์บันทึกเสียงสนทนา',
-                    repeatingHead: {
-                        logo: 'https://www.google.co.in/logos/doodles/2018/world-cup-2018-day-22-5384495837478912-s.png',
-                        logoPosition: 'right',
-                        logoStyle: '',
-                        title: '<h3>Sample Heading</h3>'
-                    },
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                         format: {
