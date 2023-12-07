@@ -173,10 +173,10 @@ function setDateBetween(select1, select2) {
 			}
 		}, //beforeShow
 
-		onClose: function () {
+		onClose: function (dateText, inst) {
 			$(this).css("color", "");
 			if ($(this).val() != "") {
-				var arrD = dateBefore.split("/");
+				var arrD = dateText.split("/");
 				arrD[2] = parseInt(arrD[2]) + 543;
 				$(this).val(arrD[0] + "/" + arrD[1] + "/" + arrD[2]);
 			}
