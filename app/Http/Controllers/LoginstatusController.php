@@ -48,8 +48,8 @@ class LoginstatusController extends Controller
             $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
         $datas = DB::connection('remote_connection')
-            ->table('call_center.audit')
-            ->select('crm_id','datetime_init', 'datetime_end','duration')
+            ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.audit'))
+            ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), 'crm_id','datetime_init', 'datetime_end','duration')
             ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '"')
             ->whereNull('id_break'); 
         if(!empty($request->get('agent')) && $request->get('agent') != "0"){
