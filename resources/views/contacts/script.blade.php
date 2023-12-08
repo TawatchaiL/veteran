@@ -161,6 +161,11 @@
                 endDate: endDate,
                 showDropdowns: true,
                 linkedCalendars: false,
+                minDate: "2023-01-01",
+                maxDate: "2030-12-31",
+                maxSpan: {
+                    "days": 365
+                },
                 ranges: {
                     'วันนี้': todayRange,
                     'เมื่อวานนี้': yesterdayRange,
