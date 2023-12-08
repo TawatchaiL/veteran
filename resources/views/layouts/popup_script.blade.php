@@ -54,6 +54,7 @@
     }
     /// Maximize card AJAX function
     function maximizeCard(cardId) {
+        state_overlay.removeClass("d-none");
         $.ajax({
             url: '{{ route('contacts.popup_content') }}',
             type: 'POST',
@@ -328,6 +329,7 @@
                             $('#casetype6p' + cardId).attr('disabled', true);
                         }, 500)
                     }, 500)
+                    state_overlay.addClass("d-none");
                 }, 500)
             }
         });
