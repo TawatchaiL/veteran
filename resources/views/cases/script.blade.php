@@ -334,6 +334,7 @@
             e.preventDefault();
             $("#Hn").val(null).trigger("change")
             $("#Hn").removeAttr('readonly');
+            $('#casetype1').html('')
             $('#casetype1').val(null).trigger("change")
             $('#topiccase').html('<i class="fa-solid fa-clipboard-list"></i> เพิ่มเรื่องที่ติดต่อ');
             $('.alert-danger').html('');
