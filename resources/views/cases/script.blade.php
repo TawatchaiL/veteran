@@ -406,9 +406,9 @@
                 adddate: tempadddate,
                 //adddate: $('#Addadddate').val(),
                 //adddate: $('#tempAddadddate').html(),
-                casetype1: $('#casetype1 option:selected').text()[0],
+                casetype1: $('#casetype1 option:selected').text(),
                 caseid1: $('#casetype1').val()[0],
-                casedetail: $('#Detail').val()[0],
+                casedetail: $('#Detail').val(),
                 tranferstatus: $('#tranferstatus option:selected').text(),
                 casestatus: $('#casestatus option:selected').text(),
                 _token: token
