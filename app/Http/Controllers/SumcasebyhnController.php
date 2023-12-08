@@ -49,7 +49,7 @@ class SumcasebyhnController extends Controller
             $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
                 $datas = DB::table('crm_cases')
-                ->select(DB::raw('ROW_NUMBER() OVER (ORDER BY sumhn DESC) as row_number'),'crm_contacts.hn', DB::raw('count(crm_contacts.hn) as sumhn'))
+                ->select(DB::raw('ROW_NUMBER() OVER (ORDER BY sumhn DESC) as rownumber'),'crm_contacts.hn', DB::raw('count(crm_contacts.hn) as sumhn'))
                 ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
                 ->whereRaw('crm_cases.adddate between "' . $startDate . '" and "' . $endDate . '"')
                 ->groupBy('crm_contacts.hn')
