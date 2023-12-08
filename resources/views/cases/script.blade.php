@@ -31,7 +31,7 @@
 
         $(".select2_single").select2({
             maximumSelectionLength: 1,
-            allowClear: true,
+            //allowClear: true,
             //theme: 'bootstrap4'
             placeholder: 'กรุณาเลือก'
         });
