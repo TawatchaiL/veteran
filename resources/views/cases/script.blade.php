@@ -539,8 +539,7 @@
                     $('#Detail').val(res.data.casedetail);
                     $('#tranferstatus').val(res.data.tranferstatus);
                     $('#casestatus').val(res.data.casestatus);
-                    $('#casetype1').val(res.data.caseid1);
-                    $('#casetype1').change();
+                    $('#casetype1').val(res.data.caseid1).change();
                     if (res.data.caseid2 != 0) {
                         $('#casetype2').val(res.data.caseid2);
                         $('#casetype2').change();
