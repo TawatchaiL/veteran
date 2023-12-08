@@ -482,17 +482,20 @@
                     "text": 'PDF', // ข้อความที่แสดง
                     "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
                     "title": 'สายที่ไม่ได้รับ',
+                    "download": 'open',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                     },
-                    customize: function ( doc ) {
-                    doc.defaultStyle = {
+                    customize: function(doc) {
+                        doc.defaultStyle = {
                             font: 'THSarabun',
                             fontSize: 16
                         };
-                        doc.content.splice(0,1);
-                        doc.pageMargins = [20,100,20,30];
-						doc.styles.tableHeader.fontSize = 16;
+                        doc.content.splice(0, 1);
+                        doc.pageMargins = [20, 100, 20, 30];
+                        doc.styles.tableHeader.fontSize = 16;
+                        doc.styles.tableBodyOdd.alignment = 'center';
+                        doc.styles.tableBodyEven.alignment = 'center';
                         doc.styles.tableFooter.fontSize = 16;
                         doc['header']=(function() {
 							return {
@@ -514,7 +517,7 @@
 							}
 						});
 
-                        doc.content[0].table.widths = ['*', 70, 70, 100, 70];
+                        doc.content[0].table.widths = [40, '*', 70, 60, 90, 60];
                         var objLayout = {};
 						objLayout['hLineWidth'] = function(i) { return .5; };
 						objLayout['vLineWidth'] = function(i) { return .5; };
@@ -527,11 +530,7 @@
 						doc.content[0].layout = objLayout;
 
                         for (var i = 1; i < doc.content[0].table.body.length; i++) {
-                            doc.content[0].table.body[i][0].alignment = 'left';
-                            doc.content[0].table.body[i][1].alignment = 'center';
-                            doc.content[0].table.body[i][2].alignment = 'center';
-                            doc.content[0].table.body[i][3].alignment = 'center';
-                            doc.content[0].table.body[i][4].alignment = 'center';
+                            doc.content[0].table.body[i][1].alignment = 'left';
                         }
                 }
                 },
@@ -551,11 +550,12 @@
                     },
                     customize: function(win) {
                         // Customize the print layout
-                        $(win.document.body).find('h1').css('text-align', 'center');
-                        $(win.document.body).find('table').addClass('display').css('font-size',
-                            '12px');
+                        $(win.document.body).prepend('<img style="position:absolute; top:0; left:470;width:100" src='+logobase64+'>')
+                        $(win.document.body).find('h1').css('text-align', 'center').css('font-size','16px').css('margin-top','105px');
+                        $(win.document.body).find('table').addClass('display').css('font-size','12px')
+                                            .removeClass('dataTable').css('margin-top','5px').css('margin-bottom','60px');
                         $(win.document.body).find('table.dataTable th, table.dataTable td').css(
-                            'border', '1px solid #ddd');
+                            'border', '1px solid black');
                         $(win.document.body).find('table.dataTable th').css('background-color',
                             '#f2f2f2');
                         $(win.document.body).find('table.dataTable td:nth-child(0)').css(
@@ -581,11 +581,10 @@
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
             columns: [{
-                    data: 'checkbox',
-                    name: 'checkbox',
+                data: 'rownumber',
+                    name: 'rownumber',
                     orderable: false,
-                    searchable: false,
-                    className: 'no-print'
+                    searchable: false
                 },
                 {
                     data: 'agent',
