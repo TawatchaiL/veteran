@@ -7,10 +7,19 @@
         $(".delete_all_button").click(function() {
             var len = $('input[name="table_records[]"]:checked').length;
             if (len > 0) {
-
-                if (confirm("ยืนยันการลบข้อมูล?")) {
+                ezBSAlert({
+                    type: "confirm",
+                    headerText: "Confirm",
+                    messageText: "ยืนยันการลบข้อมูล??",
+                    alertType: "info",
+                }).done(function(r) {
+                    if (r == true) {
+                        $('form#delete_all').submit();
+                    }
+                });
+                /* if (confirm("ยืนยันการลบข้อมูล?")) {
                     $('form#delete_all').submit();
-                }
+                } */
             } else {
                 alert("กรุณาเลือกรายการที่จะลบ");
             }
@@ -21,7 +30,7 @@
             $(':checkbox.flat').prop('checked', this.checked);
         });
 
-      
+
         $(".select2_single").select2({
             maximumSelectionLength: 1,
             //allowClear: true,
@@ -383,7 +392,17 @@
 
         $('#SubmitCreateForm').click(function(e) {
             if (actions == 'edit') {
-                if (!confirm("ยืนยันการทำรายการ ?")) return;
+                //if (!confirm("ยืนยันการทำรายการ ?")) return;
+                ezBSAlert({
+                    type: "confirm",
+                    headerText: "Confirm",
+                    messageText: "ยืนยันการลบข้อมูล??",
+                    alertType: "info",
+                }).done(function(r) {
+                    if (r == true) {
+                        return
+                    }
+                });
             }
 
             e.preventDefault();
