@@ -301,7 +301,7 @@ class CasesController extends Controller
         //$data=array('case_id'=>$case_id,'comment'=>$comment,'agent'=>$agent);
         //DB::table('crm_case_comments')->insert($data);
 
-        return response()->json(['success' => 'แสดงความคิดเห็น เรื่องที่ติดต่อ เรียบร้อยแล้ว']);
+        return response()->json(['success' => 'แสดงความคิดเห็น เรียบร้อยแล้ว']);
         //return response()->json(['success' => $user->id]);
     }
 
@@ -311,9 +311,9 @@ class CasesController extends Controller
         //$data = CrmCaseComment::where('case_id', $id)->get();
 
         $data = CrmCaseComment::select('crm_case_comments.*', 'users.name as agentname')
-        ->join('users', 'crm_case_comments.agent', '=', 'users.id')
-        ->where('crm_case_comments.case_id', $id)
-        ->get();
+            ->join('users', 'crm_case_comments.agent', '=', 'users.id')
+            ->where('crm_case_comments.case_id', $id)
+            ->get();
 
         $template = 'cases.commentlist';
         $htmlContent = View::make($template, ['casecomment' => $data])->render();
@@ -382,9 +382,9 @@ class CasesController extends Controller
         //$data = CrmCaseslog::where('id', $id)->get();
 
         $data = CrmCaseslog::select('crm_caseslogs.*', 'users.name as agentname')
-        ->join('users', 'crm_caseslogs.modifyagent', '=', 'users.id')
-        ->where('crm_caseslogs.id', $id)
-        ->get();
+            ->join('users', 'crm_caseslogs.modifyagent', '=', 'users.id')
+            ->where('crm_caseslogs.id', $id)
+            ->get();
 
         $template = 'cases.casesloglist';
         $htmlContent = View::make($template, ['caselog' => $data])->render();
