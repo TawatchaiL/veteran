@@ -160,6 +160,7 @@
                 startDate: startDate,
                 endDate: endDate,
                 showDropdowns: true,
+                linkedCalendars: false,
                 ranges: {
                     'วันนี้': todayRange,
                     'เมื่อวานนี้': yesterdayRange,
