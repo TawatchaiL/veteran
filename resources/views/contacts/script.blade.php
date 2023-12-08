@@ -129,7 +129,7 @@
             var currentDate = moment();
             //startDate = moment().format('YYYY-MM-DD');
             //startDate = moment(currentDate).subtract(3,650, 'days').format('YYYY-MM-DD');
-            startDate = '2023-12-01';
+            startDate = '2023-01-01';
             endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
         }
 
@@ -159,13 +159,9 @@
             $('#reservation').dateRangePicker({
                 startDate: startDate,
                 endDate: endDate,
-                minDate: '2023-01-01',
-                maxDate: '2030-12-31',
-                dateLimit: {
-                    days: 120
-                },
-                showDropdowns: true,
-                ranges: {
+                language: 'th',
+                separator: ' - ',
+                shortcuts: {
                     'วันนี้': todayRange,
                     'เมื่อวานนี้': yesterdayRange,
                     'ย้อนหลัง 7 วัน': last7DaysRange,
@@ -175,7 +171,7 @@
                         .subtract(1, 'month').endOf('month')
                     ]
                 },
-                locale: {
+                /* locale: {
                     format: 'YYYY-MM-DD',
                     applyLabel: 'ตกลง',
                     cancelLabel: 'ยกเลิก',
@@ -188,7 +184,7 @@
                         'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'
                     ],
                     firstDay: 1
-                }
+                } */
 
             });
 
