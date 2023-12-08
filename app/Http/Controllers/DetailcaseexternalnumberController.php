@@ -48,8 +48,8 @@ class DetailcaseexternalnumberController extends Controller
             $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
         $datas = DB::connection('remote_connection')
-            ->table('call_center.call_entry')
-            ->select(DB::raw('DATE(datetime_init) as cdate'), DB::raw('TIME(datetime_init) as ctime'),'callerid as telno','crm_id as agentid', DB::raw('SEC_TO_TIME(duration) as duration'), DB::raw('SEC_TO_TIME(duration_wait) as duration_wait') )
+            ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.call_entry'))
+            ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), DB::raw('DATE(datetime_init) as cdate'), DB::raw('TIME(datetime_init) as ctime'),'callerid as telno','crm_id as agentid', DB::raw('SEC_TO_TIME(duration) as duration'), DB::raw('SEC_TO_TIME(duration_wait) as duration_wait') )
             ->whereRaw('LENGTH(callerid) > 4')
             ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '"'); 
             if(!empty($request->get('agent')) && $request->get('agent') != "0"){
@@ -64,9 +64,6 @@ class DetailcaseexternalnumberController extends Controller
                     $agent_data[$agent->id] = $agent->name;
                 }
                 return datatables()->of($datas)
-                    ->editColumn('checkbox', function ($row) {
-                        return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
-                    })
                     ->addColumn('agent', function ($row) use ($agent_data){
                         if (isset($agent_data[$row->agentid])) {
                             return $agent_data[$row->agentid];
