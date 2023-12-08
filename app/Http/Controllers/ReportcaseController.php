@@ -85,9 +85,9 @@ class ReportcaseController extends Controller
                 //->editColumn('checkbox', function ($row) {
                 //    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 //})->rawColumns(['checkbox', 'action'])
-                ->addColumn('rownumber', function ($row) {
-                    $rowKey = $row['crm_id'];
-                    return $rowKey;
+                ->addColumn('rownumber', function ($row, $index) {
+                    //$rowKey = $row['crm_id'];
+                    return $index;
                 })
                 ->addColumn('agent', function ($row) use ($agent_data){
                     if (isset($agent_data[$row->crm_id])) {
