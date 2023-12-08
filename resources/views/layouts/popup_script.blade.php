@@ -329,7 +329,9 @@
                             $('#casetype6p' + cardId).attr('disabled', true);
                         }, 500)
                     }, 500)
-                    state_overlay.addClass("d-none");
+                    setTimeout(function() {
+                        state_overlay.addClass("d-none");
+                    }, 1500)
                 }, 500)
             }
         });
