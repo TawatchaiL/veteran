@@ -43,8 +43,11 @@
                 <div class="timeline">
 
 
-                    <div class="time-label">
+                    {{-- <div class="time-label">
                         <span class="bg-blue">รายการความคิดเห็น</span>
+                    </div> --}}
+                    <div>
+                        <i class="fas fa-comment-dots bg-gray"></i>
                     </div>
 
 
