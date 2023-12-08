@@ -183,7 +183,7 @@
                                 <table id="Listview" class="table table-bordered table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th width="5%"><input type="checkbox" id="check-all" class="flat"></th>
+                                            <th width="5%">ลำดับ</th>
                                             <th>เบอร์โทรศัพท์</th>
                                             <th width="280px">จำนวน</th>
                                         </tr>
