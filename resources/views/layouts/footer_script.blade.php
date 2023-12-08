@@ -183,12 +183,23 @@
         });
 
         //$('#ToolbarModal').modal('show');
-        $(document).on('click', '#ToolbarButton, #user_button, #hold_tab_list, .hold_tab_a', function(e) {
+        $(document).on('click', '#ToolbarButton, #user_button, #hold_tab_list', function(e) {
             e.preventDefault();
             $('.alert-danger').html('');
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
+            $('#ToolbarModal').modal('show');
+        });
+
+        $(document).on('click', '.hold_tab_a', function(e) {
+            e.preventDefault();
+            $('.alert-danger').html('');
+            $('.alert-danger').hide();
+            $('.alert-success').html('');
+            $('.alert-success').hide();
+            let dataId = $(this).data('tick');
+            console.log(dataId)
             $('#ToolbarModal').modal('show');
         });
 

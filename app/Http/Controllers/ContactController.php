@@ -130,8 +130,8 @@ class ContactController extends Controller
         $cid = $request->input('cardId');
 
         $datau = DB::table('crm_incoming')
-        ->where('id', '=', $cid)
-        ->get();
+            ->where('id', '=', $cid)
+            ->get();
         $con = $datau[0]->telno;
 
         $datap = DB::table('crm_contacts')
