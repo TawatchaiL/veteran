@@ -48,8 +48,8 @@ class DetailscoreController extends Controller
             $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
         $datas = DB::connection('remote_connection')
-            ->table('call_center.agent_score')
-            ->select(DB::raw('DATE(datetime) as cdate'), DB::raw('TIME(datetime) as ctime'),'clid','queue','crm_id','score' )
+            ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.agent_score'))
+            ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), DB::raw('DATE(datetime) as cdate'), DB::raw('TIME(datetime) as ctime'),'clid','queue','crm_id','score' )
             ->whereRaw('call_center.agent_score.datetime between "' . $startDate . '" and "' . $endDate . '"');
             if(!empty($request->get('agent')) && $request->get('agent') != "0"){
                 $datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
@@ -66,9 +66,6 @@ class DetailscoreController extends Controller
         if ($request->ajax()) {
 
             return datatables()->of($datas)
-                ->editColumn('checkbox', function ($row) {
-                    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
-                })
                 ->addColumn('agent', function ($row) use ($agent_data){
                     if (isset($agent_data[$row->crm_id])) {
                         return $agent_data[$row->crm_id];
@@ -76,7 +73,7 @@ class DetailscoreController extends Controller
                         return 'Agent not found';
                     }
                 })
-                ->rawColumns(['checkbox', 'action'])->toJson();
+                ->toJson();
         }
 
         return view('detailscore.index')->with(['agents' => $agents]);

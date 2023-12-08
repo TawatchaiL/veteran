@@ -53,9 +53,9 @@ class DetailscoreagentController extends Controller
             $agentseachc = '';
         }
         $datas = DB::connection('remote_connection')
-            ->table('call_center.agent_score')
+            ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.agent_score'))
             //->select('call_center.agent_score.score as score',  DB::raw('count(call_center.agent_score.score) as sumscore'))
-            ->select('score',  DB::raw('count(id) as sumscore'))
+            ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), 'score',  DB::raw('count(id) as sumscore'))
             ->whereRaw('call_center.agent_score.datetime between "' . $startDate . '" and "' . $endDate . '"'.$agentseachc)
             ->groupBy('score')
             ->orderBy("score", "desc")
@@ -73,9 +73,7 @@ class DetailscoreagentController extends Controller
         if ($request->ajax()) {
 
             return datatables()->of($datas)
-                ->editColumn('checkbox', function ($row) {
-                    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
-                })->rawColumns(['checkbox', 'action'])->toJson();
+                ->toJson();
         }
         $agents = User::orderBy("id", "asc")->get();
         $agent_data = array();

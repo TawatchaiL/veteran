@@ -48,8 +48,8 @@ class ReportSumScoreAgentController extends Controller
             $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
         $datas = DB::connection('remote_connection')
-            ->table('call_center.agent_score')
-            ->select('crm_id',  DB::raw('sum(score) as sumscore'))
+            ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.agent_score'))
+            ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), 'crm_id',  DB::raw('sum(score) as sumscore'))
             ->whereRaw('call_center.agent_score.datetime between "' . $startDate . '" and "' . $endDate . '"')
             ->groupBy('crm_id')
             ->orderBy("sumscore", "desc")
@@ -80,9 +80,6 @@ class ReportSumScoreAgentController extends Controller
         if ($request->ajax()) {
 
             return datatables()->of($datas)
-                ->editColumn('checkbox', function ($row) {
-                    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
-                })
                 ->addColumn('agent', function ($row) use ($agent_data){
                     if (isset($agent_data[$row->crm_id])) {
                         return $agent_data[$row->crm_id];
@@ -90,7 +87,7 @@ class ReportSumScoreAgentController extends Controller
                         return 'Agent not found';
                     }
                 })
-                ->rawColumns(['checkbox', 'action'])->toJson();
+                ->toJson();
         }
         return view('reportsumscoreagent.index');
     }
