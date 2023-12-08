@@ -71,7 +71,8 @@
 
         function datereset() {
             var currentDate = moment();
-            startDate = moment().format('YYYY-MM-DD');
+            //startDate = moment().format('YYYY-MM-DD');
+            startDate = moment(currentDate).subtract(15, 'days').format('YYYY-MM-DD');
             endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
         }
 
@@ -205,8 +206,8 @@
             aaSorting: [
                 [0, "desc"]
             ],
-            iDisplayLength: 5,
-            lengthMenu: [5, 10, 25, 50, 75, 100],
+            iDisplayLength: 10,
+            lengthMenu: [10, 25, 50, 75, 100],
             stateSave: true,
             autoWidth: false,
             fixedHeader: true,
