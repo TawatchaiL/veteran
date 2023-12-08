@@ -48,8 +48,8 @@ class ReportcaseController extends Controller
             $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
         $datas = DB::connection('remote_connection')
-            ->table('call_center.call_entry')
-            ->select(DB::raw('ROW_NUMBER() OVER (ORDER BY count(crm_id) DESC) as rownumber'),'crm_id', DB::raw('count(crm_id) as sumcases'))
+            ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.call_entry'))
+            ->select(DB::raw('(@rownumber:=@rownumber + 1) AS row_number'),'crm_id', DB::raw('count(crm_id) as sumcases'))
             ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '"')
             ->groupBy('crm_id')
             ->having('sumcases', '>', 0)
