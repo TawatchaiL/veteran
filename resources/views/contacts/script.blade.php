@@ -10,12 +10,22 @@
         $(".delete_all_button").click(function() {
             var len = $('input[name="table_records[]"]:checked').length;
             if (len > 0) {
-
-                if (confirm("ยืนยันการลบข้อมูล ?")) {
-                    $('form#delete_all').submit();
-                }
+                ezBSAlert({
+                    type: "confirm",
+                    headerText: "Confirm",
+                    messageText: "ยืนยันการลบข้อมูล??",
+                    alertType: "info",
+                }).done(function(r) {
+                    if (r == true) {
+                        $('form#delete_all').submit();
+                    }
+                });
             } else {
-                alert("กรุณาเลือกรายการที่จะลบ");
+                const prom = ezBSAlert({
+                    headerText: "Alert",
+                    messageText: "กรุณาเลือกรายการที่จะลบ",
+                    alertType: "danger",
+                });
             }
 
         });
@@ -26,7 +36,7 @@
 
         $(".select2_single").select2({
             maximumSelectionLength: 1,
-            allowClear: true,
+            //allowClear: true,
             //theme: 'bootstrap4'
             placeholder: 'กรุณาเลือก'
         });
@@ -107,17 +117,19 @@
         function datesearch() {
             var currentDate = moment();
             // Set the start date to 7 days before today
-            startDate = moment(currentDate).subtract(60, 'days').format('YYYY-MM-DD');
+            //startDate = moment(currentDate).subtract(3,650, 'days').format('YYYY-MM-DD');
             // Set the end date to the end of the current month
             //endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
             //startDate = moment().format('YYYY-MM-DD');
+            startDate = '2023-12-01';
             endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
         }
 
         function datereset() {
             var currentDate = moment();
             //startDate = moment().format('YYYY-MM-DD');
-            startDate = moment(currentDate).subtract(60, 'days').format('YYYY-MM-DD');
+            //startDate = moment(currentDate).subtract(3,650, 'days').format('YYYY-MM-DD');
+            startDate = '2023-12-01';
             endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
         }
 
@@ -353,7 +365,7 @@
                     data: 'phoneno',
                     name: 'phoneno'
                 },
-              
+
                 {
                     data: 'action',
                     name: 'action'
@@ -384,26 +396,12 @@
         $('#btnreset').click(function(e) {
             $("#seachtype").val(0);
             $("#seachtext").val('');
-            document.getElementById('validationMessages').textContent = '';
             datereset();
             daterange();
+            document.getElementById('validationMessages').textContent = '';
             $('#Listview').DataTable().ajax.reload();
         });
-        $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-        });
+
 
 
 
@@ -417,7 +415,6 @@
                 method: "GET",
                 url: "{{ route('contacts.running') }}",
                 success: function(res) {
-                    console.log(res)
                     $('#AddCode').val(res.running);
                 }
             });

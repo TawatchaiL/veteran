@@ -17,11 +17,7 @@
                         $('form#delete_all').submit();
                     }
                 });
-                /* if (confirm("ยืนยันการลบข้อมูล?")) {
-                    $('form#delete_all').submit();
-                } */
             } else {
-                //alert("กรุณาเลือกรายการที่จะลบ");
                 const prom = ezBSAlert({
                     headerText: "Alert",
                     messageText: "กรุณาเลือกรายการที่จะลบ",
