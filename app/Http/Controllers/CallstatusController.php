@@ -63,11 +63,11 @@ class CallstatusController extends Controller
             //->get();
 
         $datas = DB::connection('remote_connection')
-            ->table(DB::raw("({$datac}) as datac"))
+            ->table(DB::raw("(SELECT @rownumber:=0) AS temp, ({$datac}) as datac"))
             ->leftJoinSub($dataa, 'dataa', function ($join) {
                 $join->on('datac.crm_id', '=', 'dataa.crmid');
             })
-            ->select('datac.crm_id','datac.agentcall','datac.terminada','datac.avgwait','datac.duration','datac.avgduration','dataa.logintime','dataa.breaktime')
+            ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), 'datac.crm_id','datac.agentcall','datac.terminada','datac.avgwait','datac.duration','datac.avgduration','dataa.logintime','dataa.breaktime')
             ->get();
 
         $agents = User::orderBy("id", "asc")->get();
