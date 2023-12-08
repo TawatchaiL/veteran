@@ -29,7 +29,9 @@
                 }
                 $('#hold_tab').html(response.hold_tab);
                 $('#hold_tab_content').html(response.hold_tab_content);
-                state_overlay.addClass("d-none");
+                setTimeout(function() {
+                    state_overlay.addClass("d-none");
+                }, 1500)
             },
             error: function(xhr, status, error) {
 
