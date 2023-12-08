@@ -49,8 +49,8 @@ class Ivrreporttop10Controller extends Controller
             $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
         $datas = DB::connection('remote_connection')
-            ->table('call_center.ivr_report')
-            ->select('asterisk.ivr_details.name as ivrname','call_center.ivr_report.digit as ivrno', DB::raw('count(asterisk.ivr_details.name) as sumhn'))
+            ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.ivr_report'))
+            ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), 'asterisk.ivr_details.name as ivrname','call_center.ivr_report.digit as ivrno', DB::raw('count(asterisk.ivr_details.name) as sumhn'))
             ->join('asterisk.ivr_details', 'call_center.ivr_report.ivr_id', '=', 'asterisk.ivr_details.id')
             ->whereRaw('call_center.ivr_report.datetime between "' . $startDate . '" and "' . $endDate . '"')
             ->groupBy('ivrname', 'ivrno')
@@ -71,9 +71,7 @@ class Ivrreporttop10Controller extends Controller
         if ($request->ajax()) {
 
             return datatables()->of($datas)
-                ->editColumn('checkbox', function ($row) {
-                    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
-                })->rawColumns(['checkbox', 'action'])->toJson();
+                ->toJson();
         }
 
         return view('ivrreporttop10.index');
