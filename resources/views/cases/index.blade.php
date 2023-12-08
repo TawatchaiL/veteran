@@ -142,10 +142,10 @@
                                                 <tr>
                                                     <th width="5%"><input type="checkbox" id="check-all"
                                                             class="flat"></th>
+                                                    <th>วันที่ทำรายการ</th>
                                                     <th>HN</th>
                                                     <th>ชื่อสกุล</th>
                                                     <th>เบอร์โทร</th>
-                                                    <th>วันที่ทำรายการ</th>
                                                     <th>ประเภทเคส</th>
                                                     <th>สถานะเคส</th>
                                                     <th>สถานะการโอนสาย</th>

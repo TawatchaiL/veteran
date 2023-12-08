@@ -269,6 +269,10 @@
                     searchable: false
                 },
                 {
+                    data: 'created_at',
+                    name: 'created_at'
+                },
+                {
                     data: 'hn',
                     name: 'hn'
                 },
@@ -279,10 +283,6 @@
                 {
                     data: 'phoneno',
                     name: 'phoneno'
-                },
-                {
-                    data: 'created_at',
-                    name: 'created_at'
                 },
                 {
                     data: 'casename',
