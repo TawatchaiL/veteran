@@ -334,6 +334,7 @@
             e.preventDefault();
             $("#Hn").val(null).trigger("change")
             $("#Hn").removeAttr('readonly');
+            $('#casetype1').val(null).trigger("change")
             $('#topiccase').html('<i class="fa-solid fa-clipboard-list"></i> เพิ่มเรื่องที่ติดต่อ');
             $('.alert-danger').html('');
             $('.alert-danger').hide();
@@ -369,8 +370,6 @@
             $('#casetype4').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
             $('#casetype5').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
             $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>'); */
-            $("#Hn").val(null).trigger("change")
-            //$('#casetype1').val(null).trigger("change")
             $('#casetype2').val(null).trigger("change")
             $('#casetype3').val(null).trigger("change")
             $('#casetype4').val(null).trigger("change")
