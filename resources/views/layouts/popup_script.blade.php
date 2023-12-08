@@ -13,6 +13,7 @@
     });
 
     function positionCards() {
+        state_overlay.removeClass("d-none");
         var cardPositions = [];
         $.ajax({
             url: '{{ route('contacts.popup') }}',
@@ -28,6 +29,7 @@
                 }
                 $('#hold_tab').html(response.hold_tab);
                 $('#hold_tab_content').html(response.hold_tab_content);
+                state_overlay.addClass("d-none");
             },
             error: function(xhr, status, error) {
 
