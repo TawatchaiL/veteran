@@ -21,7 +21,12 @@
                     $('form#delete_all').submit();
                 } */
             } else {
-                alert("กรุณาเลือกรายการที่จะลบ");
+                //alert("กรุณาเลือกรายการที่จะลบ");
+                const prom = ezBSAlert({
+                    headerText: "Alert",
+                    messageText: "กรุณาเลือกรายการที่จะลบ",
+                    alertType: "danger",
+                });
             }
 
         });
@@ -392,90 +397,102 @@
 
         $('#SubmitCreateForm').click(function(e) {
             if (actions == 'edit') {
-                if (!confirm("ยืนยันการทำรายการ ?")) return;
+                //if (!confirm("ยืนยันการทำรายการ ?")) return;
             }
 
             e.preventDefault();
-            $('.alert-danger').html('');
-            $('.alert-danger').hide();
-            $('.alert-success').html('');
-            $('.alert-success').hide();
+            ezBSAlert({
+                type: "confirm",
+                headerText: "Confirm",
+                messageText: "ยืนยันการบันทึกข้อมูล?",
+                alertType: "info",
+            }).done(function(r) {
+                if (r == true) {
+                    $('.alert-danger').html('');
+                    $('.alert-danger').hide();
+                    $('.alert-success').html('');
+                    $('.alert-success').hide();
 
-            //console.log($('#Hn').val()[0]);
+                    //console.log($('#Hn').val()[0]);
 
-            var arrayDate = $('#Addadddate').val().split("-");
-            arrayDate[0] = parseInt(arrayDate[0]) - 543;
-            var tempadddate = arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2];
+                    var arrayDate = $('#Addadddate').val().split("-");
+                    arrayDate[0] = parseInt(arrayDate[0]) - 543;
+                    var tempadddate = arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2];
 
-            var additionalData = {
-                contact_id: $('#Hn').val()[0],
-                adddate: tempadddate,
-                //adddate: $('#Addadddate').val(),
-                //adddate: $('#tempAddadddate').html(),
-                casetype1: $('#casetype1 option:selected').text(),
-                caseid1: $('#casetype1').val()[0],
-                casedetail: $('#Detail').val(),
-                tranferstatus: $('#tranferstatus option:selected').text(),
-                casestatus: $('#casestatus option:selected').text(),
-                _token: token
-            };
-            if ($('#casetype2').val() !== '') {
-                additionalData.casetype2 = $('#casetype2 option:selected').text();
-                additionalData.caseid2 = $('#casetype2').val()[0];
-            }
-            if ($('#casetype3').val() !== '') {
-                additionalData.casetype3 = $('#casetype3 option:selected').text();
-                additionalData.caseid3 = $('#casetype3').val()[0];
-            }
-            if ($('#casetype4').val() !== '') {
-                additionalData.casetype4 = $('#casetype4 option:selected').text();
-                additionalData.caseid4 = $('#casetype4').val()[0];
-            }
-            if ($('#casetype5').val() !== '') {
-                additionalData.casetype5 = $('#casetype5 option:selected').text();
-                additionalData.caseid5 = $('#casetype5').val()[0];
-            }
-            if ($('#casetype6').val() !== '') {
-                additionalData.casetype6 = $('#casetype6 option:selected').text();
-                additionalData.caseid6 = $('#casetype6').val()[0];
-            }
-
-            if (actions == 'add') {
-                urls = "{{ route('cases.store') }}";
-                methods = 'post';
-            } else if (actions == 'edit') {
-                urls = "cases/save/" + id;
-                methods = 'PUT';
-            }
-            $.ajax({
-                url: urls,
-                method: methods,
-                data: additionalData,
-                success: function(result) {
-                    if (result.errors) {
-                        $('.alert-danger').html('');
-                        $.each(result.errors, function(key, value) {
-                            $('.alert-danger').show();
-                            $('.alert-danger').append('<strong><li>' + value +
-                                '</li></strong>');
-                        });
-                        //$('#CreateModal').scrollTop(0);
-                        $('.alert-danger').focus();
-                    } else {
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('.alert-success').append('<strong><li>' + result.success +
-                            '</li></strong>');
-                        toastr.success(result.success, {
-                            timeOut: 5000
-                        });
-                        $('#Listview').DataTable().ajax.reload();
-                        $("#Hn").val(null).trigger("change")
-                        $('.form').trigger('reset');
-                        $('#CreateModal').modal('hide');
+                    var additionalData = {
+                        contact_id: $('#Hn').val()[0],
+                        adddate: tempadddate,
+                        //adddate: $('#Addadddate').val(),
+                        //adddate: $('#tempAddadddate').html(),
+                        casetype1: $('#casetype1 option:selected').text(),
+                        caseid1: $('#casetype1').val()[0],
+                        casedetail: $('#Detail').val(),
+                        tranferstatus: $('#tranferstatus option:selected').text(),
+                        casestatus: $('#casestatus option:selected').text(),
+                        _token: token
+                    };
+                    if ($('#casetype2').val() !== '') {
+                        additionalData.casetype2 = $('#casetype2 option:selected').text();
+                        additionalData.caseid2 = $('#casetype2').val()[0];
                     }
+                    if ($('#casetype3').val() !== '') {
+                        additionalData.casetype3 = $('#casetype3 option:selected').text();
+                        additionalData.caseid3 = $('#casetype3').val()[0];
+                    }
+                    if ($('#casetype4').val() !== '') {
+                        additionalData.casetype4 = $('#casetype4 option:selected').text();
+                        additionalData.caseid4 = $('#casetype4').val()[0];
+                    }
+                    if ($('#casetype5').val() !== '') {
+                        additionalData.casetype5 = $('#casetype5 option:selected').text();
+                        additionalData.caseid5 = $('#casetype5').val()[0];
+                    }
+                    if ($('#casetype6').val() !== '') {
+                        additionalData.casetype6 = $('#casetype6 option:selected').text();
+                        additionalData.caseid6 = $('#casetype6').val()[0];
+                    }
+
+                    if (actions == 'add') {
+                        urls = "{{ route('cases.store') }}";
+                        methods = 'post';
+                    } else if (actions == 'edit') {
+                        urls = "cases/save/" + id;
+                        methods = 'PUT';
+                    }
+                    $.ajax({
+                        url: urls,
+                        method: methods,
+                        data: additionalData,
+                        success: function(result) {
+                            if (result.errors) {
+                                $('.alert-danger').html('');
+                                $.each(result.errors, function(key, value) {
+                                    $('.alert-danger').show();
+                                    $('.alert-danger').append(
+                                        '<strong><li>' + value +
+                                        '</li></strong>');
+                                });
+                                //$('#CreateModal').scrollTop(0);
+                                $('.alert-danger').focus();
+                            } else {
+                                $('.alert-danger').hide();
+                                $('.alert-success').show();
+                                $('.alert-success').append('<strong><li>' + result
+                                    .success +
+                                    '</li></strong>');
+                                toastr.success(result.success, {
+                                    timeOut: 5000
+                                });
+                                $('#Listview').DataTable().ajax.reload();
+                                $("#Hn").val(null).trigger("change")
+                                $('.form').trigger('reset');
+                                $('#CreateModal').modal('hide');
+                            }
+                        }
+                    });
                 }
             });
+
         });
 
 
@@ -748,8 +765,13 @@
                         }
                     });
                 } else {
-                    toastr.error('กรุณาระบุความคิดเห็น', {
+                    /* toastr.error('กรุณาระบุความคิดเห็น', {
                         timeOut: 5000
+                    }); */
+                    const prom = ezBSAlert({
+                        headerText: "Alert",
+                        messageText: "กรุณาระบุความคิดเห็น",
+                        alertType: "danger",
                     });
                 }
             });
