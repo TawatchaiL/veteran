@@ -13,7 +13,7 @@
 
                     @foreach ($casecomment as $casecomments)
                         <div>
-                            <i class="fas fa-user bg-blue"></i>
+                            <i class="fas fa-user bg-red"></i>
                             <div class="timeline-item">
                                 <span class="time"><i class="fas fa-clock"></i> {{ $casecomments->created_at }}</span>
                                 <h3 class="timeline-header"><a href="#">{{ $casecomments->agentname }}</a></h3>
@@ -22,7 +22,7 @@
                                 </div>
                                 <div class="timeline-footer text-right">
                                     <button type="button" data-comment_id="{{ $casecomments->id }}"
-                                        class="btn btn-sm btn-danger selectcomment-button"><i
+                                        class="btn btn-sm btn-primary selectcomment-button"><i
                                             class="fa-solid fa-comment-dots"></i> รายละเอียด
                                     </button>
                                 </div>
