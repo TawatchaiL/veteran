@@ -2,7 +2,7 @@
     <div class="container-fluid">
 
         <div class="row">
-            <div class="col-md-12" style="overflow: auto; height: 650px">
+            <div class="col-md-12" style="overflow: auto; height: 630px">
 
                 <div class="timeline">
 

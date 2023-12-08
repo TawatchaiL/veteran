@@ -149,7 +149,7 @@
     </div>
 </div>
 <div class="row justify-content-end">
-    <button type="button" data-case_id="{{ $cases->id }}" class="btn btn-warning listeditlog-button"
+    <button type="button" data-case_id="{{ $cases->id }}" class="btn btn-primary listeditlog-button"
         id="ListcommentButton"><i class="fa-solid fa-backward"></i>
         ย้อนกลับ</button>&nbsp;
 </div>
