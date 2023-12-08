@@ -5,7 +5,8 @@
         </div>
 
         <div class="card-body p-0" style="height: 300px;">
-            <table id="Listview" class="table table-sm table-head-fixed text-nowrap table-bordered table-striped table-hover">
+            <table id="Listview"
+                class="table table-sm table-head-fixed text-nowrap table-bordered table-striped table-hover">
                 <thead>
                     <tr>
                         <th>วันที่แก้ไข</th>
@@ -14,18 +15,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($caselog as $caselogs)
+                    @if (count($caselog) > 0)
+                        @foreach ($caselog as $caselogs)
+                            <tr>
+                                <td>{{ $caselogs->modifydate }}</td>
+                                <td>{{ $caselogs->agentname }}</td>
+                                {{--  <td>{{ $caselogs->modifyaction }}</td> --}}
+                                <td width="150px">
+                                    <button type="button" data-log_id="{{ $caselogs->lid }}"
+                                        class="btn btn-sm btn-primary selectlog-button"> <i
+                                            class="fas fa-rectangle-list"></i> รายละเอียด
+                                    </button>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @else
                         <tr>
-                            <td>{{ $caselogs->modifydate }}</td>
-                            <td>{{ $caselogs->agentname }}</td>
-                           {{--  <td>{{ $caselogs->modifyaction }}</td> --}}
-                            <td width="150px">
-                                <button type="button" data-log_id="{{ $caselogs->lid }}"
-                                    class="btn btn-sm btn-primary selectlog-button"> <i class="fas fa-rectangle-list"></i> รายละเอียด
-                                </button>
-                            </td>
+                            <td colspan="3">ยังไม่มีรายการการแก้ไขเรื่องที่ติดต่อ</td>
                         </tr>
-                    @endforeach
+                    @endif
                 </tbody>
             </table>
 
