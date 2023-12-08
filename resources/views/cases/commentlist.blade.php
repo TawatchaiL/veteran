@@ -5,11 +5,11 @@
         </div>
 
         <div class="card-body p-0">
-            <table id="Listview" class="table table-striped table-hover">
+            <table id="Listview" class="table table-bordered table-striped table-hover">
                 <thead>
                     <tr>
-                        <th width="25%">วันที่ทำรายการ</th>
-                        <th width="25%">ผู้ทำรายการ</th>
+                        <th width="20%">วันที่ทำรายการ</th>
+                        <th width="20%">ผู้ทำรายการ</th>
                         <th width="40%">ความคิดเห็น</th>
                         <th width="160px"></th>
                     </tr>
