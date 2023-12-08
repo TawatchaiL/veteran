@@ -107,16 +107,17 @@
         function datesearch() {
             var currentDate = moment();
             // Set the start date to 7 days before today
-            //startDate = moment(currentDate).subtract(15, 'days').format('YYYY-MM-DD');
+            startDate = moment(currentDate).subtract(15, 'days').format('YYYY-MM-DD');
             // Set the end date to the end of the current month
             //endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
-            startDate = moment().format('YYYY-MM-DD');
+            //startDate = moment().format('YYYY-MM-DD');
             endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
         }
 
         function datereset() {
             var currentDate = moment();
-            startDate = moment().format('YYYY-MM-DD');
+            //startDate = moment().format('YYYY-MM-DD');
+            startDate = moment(currentDate).subtract(15, 'days').format('YYYY-MM-DD');
             endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
         }
 
@@ -136,15 +137,21 @@
         }
 
         let daterange = () => {
-            moment.locale('th');
+            var todayRange = [moment().startOf('day'), moment().endOf('day')];
+            var yesterdayRange = [moment().subtract(1, 'days').startOf('day'), moment().subtract(1, 'days')
+                .endOf('day')
+            ];
+            var last7DaysRange = [moment().subtract(6, 'days').startOf('day'), moment().endOf('day')];
+            var last30DaysRange = [moment().subtract(29, 'days').startOf('day'), moment().endOf('day')];
+
             $('#reservation').daterangepicker({
                 startDate: startDate,
                 endDate: endDate,
                 ranges: {
-                    'วันนี้': [moment(), moment()],
-                    'เมื่อวานนี้': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                    'ย้อนหลัง 7 วัน': [moment().subtract(6, 'days'), moment()],
-                    'ย้อนหลัง 30 วัน': [moment().subtract(29, 'days'), moment()],
+                    'วันนี้': todayRange,
+                    'เมื่อวานนี้': yesterdayRange,
+                    'ย้อนหลัง 7 วัน': last7DaysRange,
+                    'ย้อนหลัง 30 วัน': last30DaysRange,
                     'เดือนนี้': [moment().startOf('month'), moment().endOf('month')],
                     'เดือนที่แล้ว': [moment().subtract(1, 'month').startOf('month'), moment()
                         .subtract(1, 'month').endOf('month')
@@ -164,12 +171,13 @@
                     ],
                     firstDay: 1
                 }
+
             });
+
             // Apply the custom date range filter on input change
             $('#reservation').on('apply.daterangepicker', function() {
-                console.log($('#reservation').val())
                 table.draw();
-                storeFieldValues();
+                //storeFieldValues();
             });
         }
         datesearch();
@@ -252,7 +260,7 @@
                 if (days < 0) {
                     months--;
                     days += new Date(currentDate.getFullYear(), currentDate.getMonth(), 0)
-                .getDate();
+                        .getDate();
                 }
 
                 if (months < 0) {
@@ -569,21 +577,27 @@
                     method: 'GET',
                     success: function(res) {
                         $('#Edithn').val(res.datax.datac.hn);
-                        if(res.datax.datac.adddate !== '' && res.datax.datac.adddate !== null && res.datax.datac.adddate !== undefined){
+                        if (res.datax.datac.adddate !== '' && res.datax.datac
+                            .adddate !== null && res.datax.datac.adddate !==
+                            undefined) {
                             var arrayDate = res.datax.datac.adddate.split("-");
                             arrayDate[0] = parseInt(arrayDate[0]) + 543;
-                            $('#Editadddate').val(arrayDate[0] + "-" + arrayDate[1] +
-                                "-" + arrayDate[2]);   
+                            $('#Editadddate').val(arrayDate[0] + "-" + arrayDate[
+                                    1] +
+                                "-" + arrayDate[2]);
                         }
                         //$('#Editadddate').val(res.datax.datac.adddate);
                         $('#Edittname').val(res.datax.datac.tname);
                         $('#Editfname').val(res.datax.datac.fname);
                         $('#Editlname').val(res.datax.datac.lname);
                         $('#Editsex').val(res.datax.datac.sex);
-                        if(res.datax.datac.birthday !== '' && res.datax.datac.birthday !== null && res.datax.datac.birthday !== undefined){
+                        if (res.datax.datac.birthday !== '' && res.datax.datac
+                            .birthday !== null && res.datax.datac.birthday !==
+                            undefined) {
                             var arrayDateb = res.datax.datac.birthday.split("-");
                             arrayDateb[0] = parseInt(arrayDateb[0]) + 543;
-                            $('#Editbirthday').val(arrayDateb[0] + "-" + arrayDateb[1] +
+                            $('#Editbirthday').val(arrayDateb[0] + "-" + arrayDateb[
+                                    1] +
                                 "-" + arrayDateb[2]);
                             //$('#Editbirthday').val(res.datax.datac.birthday);
                         }
