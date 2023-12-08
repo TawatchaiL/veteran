@@ -409,28 +409,28 @@
                 casetype1: $('#casetype1 option:selected').text()[0],
                 caseid1: $('#casetype1').val()[0],
                 casedetail: $('#Detail').val()[0],
-                tranferstatus: $('#tranferstatus option:selected').text()[0],
-                casestatus: $('#casestatus option:selected').text()[0],
+                tranferstatus: $('#tranferstatus option:selected').text(),
+                casestatus: $('#casestatus option:selected').text(),
                 _token: token
             };
             if ($('#casetype2').val() !== '') {
-                additionalData.casetype2 = $('#casetype2 option:selected').text()[0];
+                additionalData.casetype2 = $('#casetype2 option:selected').text();
                 additionalData.caseid2 = $('#casetype2').val()[0];
             }
             if ($('#casetype3').val() !== '') {
-                additionalData.casetype3 = $('#casetype3 option:selected').text()[0];
+                additionalData.casetype3 = $('#casetype3 option:selected').text();
                 additionalData.caseid3 = $('#casetype3').val()[0];
             }
             if ($('#casetype4').val() !== '') {
-                additionalData.casetype4 = $('#casetype4 option:selected').text()[0];
+                additionalData.casetype4 = $('#casetype4 option:selected').text();
                 additionalData.caseid4 = $('#casetype4').val()[0];
             }
             if ($('#casetype5').val() !== '') {
-                additionalData.casetype5 = $('#casetype5 option:selected').text()[0];
+                additionalData.casetype5 = $('#casetype5 option:selected').text();
                 additionalData.caseid5 = $('#casetype5').val()[0];
             }
             if ($('#casetype6').val() !== '') {
-                additionalData.casetype6 = $('#casetype6 option:selected').text()[0];
+                additionalData.casetype6 = $('#casetype6 option:selected').text();
                 additionalData.caseid6 = $('#casetype6').val()[0];
             }
 
