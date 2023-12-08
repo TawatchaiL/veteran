@@ -99,7 +99,7 @@
                                             <div class="form-group">
                                                 <strong><i class="fa-solid fa-clipboard-question"></i>
                                                     ประเภทการค้นหา:</strong>
-                                                <select style="width: 150px;" class="select2 form-control" id="seachtype"
+                                                <select style="width: 170px;" class="select2 form-control" id="seachtype"
                                                     name="seachtype">
                                                     <option value="0" selected>ตัวเลือกการค้นหา</option>
                                                     <option value="1">กำลังดำเนินการ</option>
