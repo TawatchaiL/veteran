@@ -339,6 +339,7 @@
  */
         $(document).on('click', '#CreateButton', function(e) {
             e.preventDefault();
+            $('#custom-tabs-one-home-tab').tab('show');
             $("#Hn").val(null).trigger("change")
             $("#Hn").removeAttr('readonly');
             $('#casetype1').html('')
