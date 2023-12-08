@@ -156,11 +156,13 @@
             var last7DaysRange = [moment().subtract(6, 'days').startOf('day'), moment().endOf('day')];
             var last30DaysRange = [moment().subtract(29, 'days').startOf('day'), moment().endOf('day')];
 
+
             $('#reservation').dateRangePicker({
                 startDate: startDate,
                 endDate: endDate,
-                language: 'th',
+                language: 'auto',
                 separator: ' - ',
+                showShortcuts: true,
                 shortcuts: {
                     'วันนี้': todayRange,
                     'เมื่อวานนี้': yesterdayRange,
@@ -187,7 +189,7 @@
                 } */
 
             });
-
+            $('#reservation').data('dateRangePicker').setDateRange('2013-11-20','2014-08-25');
             // Apply the custom date range filter on input change
             $('#reservation').on('datepicker-apply', function() {
                 table.draw();
