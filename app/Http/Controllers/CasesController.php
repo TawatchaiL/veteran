@@ -101,7 +101,8 @@ class CasesController extends Controller
                     //->where('crm_cases.contact_id', '=', request('id'))
                     ->get();
             }
-            //$datas = Cases::orderBy("id", "desc")->get();
+
+            $datas::orderBy("created_at", "desc")->get();
 
 
             return datatables()->of($datas)
