@@ -17,7 +17,7 @@
                         <td>{{ $casecomments->comment }}</td>
                         <td width="140px">
                             <button type="button" data-comment_id="{{ $casecomments->id }}"
-                                class="form-control btn btn-warning selectcomment-button"><i
+                                class="btn btn-warning selectcomment-button"><i
                                     class="fa-solid fa-comment-dots"></i> รายละเอียด
                             </button>
                         </td>
