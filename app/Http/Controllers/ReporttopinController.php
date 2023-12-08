@@ -48,8 +48,8 @@ class ReporttopinController extends Controller
             $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
         $datas = DB::connection('remote_connection')
-            ->table('call_center.call_entry')
-            ->select('callerid', DB::raw('count(callerid) as sumcases'))
+            ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.call_entry'))
+            ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), 'callerid', DB::raw('count(callerid) as sumcases'))
             ->whereRaw('LENGTH(callerid) < 5')
             ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '"')
             ->groupBy('callerid')
