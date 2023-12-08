@@ -160,6 +160,7 @@
                 startDate: startDate,
                 endDate: endDate,
                 language: 'th',
+                separator: ' - ',
                 dateLimit: {
                     days: 120
                 },
