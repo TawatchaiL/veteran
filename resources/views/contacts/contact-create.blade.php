@@ -343,14 +343,14 @@
                                 <div id="ListviewcasesP{{$cardid}}">
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-12">
-                                            <table id="ListCaseview{{$cardid}}" class="display nowrap table table-bordered table-striped table-hover">
+                                            <table id="ListCaseview{{$cardid}}" class="table table-sm table-head-fixed text-nowrap table-bordered table-striped table-hover">
                                                 <thead>
                                                     <tr>
                                                         <th>วันที่ทำรายการ</th>
                                                         <th>ประเภทเคส</th>
                                                         <th>รายละเอียดเคส</th>
                                                         <th>สถานะเคส</th>
-                                                        <th>Agent ที่รับ</th>
+                                                        <th>Agent ที่บันทึก</th>
                                                         <th width="120px"></th>
                                                     </tr>
                                                 </thead>
