@@ -345,7 +345,7 @@ class CasesController extends Controller
     {
         $id = $request->input('id');
         $tabid = $request->input('tabid');
-        $data = CrmCase::where('contact_id', $id)->get();
+        $data = CrmCase::where('contact_id', $id)->orderBy("id", "desc")->get();
 
         $agens = User::orderBy('name', 'asc')->get();
         $agentArray = [];
@@ -387,6 +387,7 @@ class CasesController extends Controller
         $data = CrmCaseslog::select('crm_caseslogs.*', 'users.name as agentname')
             ->join('users', 'crm_caseslogs.modifyagent', '=', 'users.id')
             ->where('crm_caseslogs.id', $id)
+            ->orderBy("id", "desc")
             ->get();
 
         $template = 'cases.casesloglist';
