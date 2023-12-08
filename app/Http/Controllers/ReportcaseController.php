@@ -48,8 +48,10 @@ class ReportcaseController extends Controller
             $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
         $datas = DB::connection('remote_connection')
-            ->table(DB::raw('call_center.call_entry'))
-            ->select(DB::raw('ROW_NUMBER() OVER (ORDER BY crm_id ASC) as rownumber'),'crm_id', DB::raw('count(crm_id) as sumcases'))
+            //->table(DB::raw('call_center.call_entry'))
+            //->select(DB::raw('ROW_NUMBER() OVER (ORDER BY crm_id ASC) as rownumber'),'crm_id', DB::raw('count(crm_id) as sumcases'))
+            ->table('call_center.call_entry')
+            ->select('crm_id', DB::raw('count(crm_id) as sumcases'))
             ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '"')
             ->groupBy('crm_id')
             ->having('sumcases', '>', 0)
@@ -78,11 +80,15 @@ class ReportcaseController extends Controller
             }
 
         if ($request->ajax()) {
-
+            $colnumber = 0;
             return datatables()->of($datas)
                 //->editColumn('checkbox', function ($row) {
                 //    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 //})->rawColumns(['checkbox', 'action'])
+                ->addColumn('rownumber', function ($row) use ($colnumber){
+                        $colnumber++;
+                        return $colnumber;    
+                })
                 ->addColumn('agent', function ($row) use ($agent_data){
                     if (isset($agent_data[$row->crm_id])) {
                         return $agent_data[$row->crm_id];
