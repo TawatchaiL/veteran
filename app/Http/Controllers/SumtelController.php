@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -61,6 +62,11 @@ class SumtelController extends Controller
         if ($request->ajax()) {
 
             return datatables()->of($datas)
+            ->editColumn('cdate', function ($row) {
+                //$adddate = Carbon::parse($row->adddate)->addYears(543)->format('d/m/Y');
+                $adddate = Carbon::parse($row->cdate)->format('Y-m-d');
+                return $adddate;
+            })
                 //->editColumn('checkbox', function ($row) {
                 //    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 //})->rawColumns(['checkbox', 'action'])
