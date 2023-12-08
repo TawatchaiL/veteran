@@ -60,7 +60,7 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-code"></i> HN:</strong>
-                                                    {!! Form::text('ehn', NULL, [
+                                                    {!! Form::text('ehn', null, [
                                                         'id' => 'Edithn',
                                                         'placeholder' => 'Name',
                                                         'class' => 'form-control',
@@ -71,7 +71,7 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> ชื่อ-สกุล :</strong>
-                                                    {!! Form::text('ename', NULL, [
+                                                    {!! Form::text('ename', null, [
                                                         'id' => 'EditName',
                                                         'placeholder' => 'Name',
                                                         'class' => 'form-control',
@@ -85,9 +85,8 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fa-regular fa-message"></i> ประเภทเคส:</strong>
-                                                    <select style="width: 100%;"
-                                                        class="select2 form-control" id="Editcasetype1e"
-                                                        name="casetype1e">
+                                                    <select style="width: 100%;" class="select2 form-control"
+                                                        id="Editcasetype1e" name="casetype1e">
                                                         @foreach ($casetype as $key2)
                                                             <option value="{{ $key2->id }}">{{ $key2->name }}
                                                             </option>
@@ -102,7 +101,7 @@
                                                 <div class="form-group">
                                                     <strong><i class="fa-regular fa-comment-dots"></i>
                                                         รายละเอียด:</strong>
-                                                    {!! Form::textarea('edetail', NULL, [
+                                                    {!! Form::textarea('edetail', null, [
                                                         'rows' => 4,
                                                         'id' => 'Editdetail',
                                                         'class' => 'form-control',
@@ -121,8 +120,7 @@
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-shuffle"></i> สถานะการโอนสาย
                                                         :</strong>
-                                                    <select style="width: 100%;"
-                                                        class="select2 form-control"
+                                                    <select style="width: 100%;" class="select2 form-control"
                                                         id="Edittranferstatuse" name="tranferstatuse">
                                                         <option value="ไม่มีการโอนสาย">ไม่มีการโอนสาย</option>
                                                         <option value="รับสาย">รับสาย</option>
@@ -133,10 +131,9 @@
                                             </div>
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <strong><i class="fas fa-arrows-rotate"></i> สถานะการเคส
+                                                    <strong><i class="fas fa-arrows-rotate"></i> สถานะเคส
                                                         :</strong>
-                                                    <select style="width: 100%;"
-                                                        class="select2 form-control"
+                                                    <select style="width: 100%;" class="select2 form-control"
                                                         id="Editcasestatuse" name="casestatuse">
                                                         <option value="ปิดเคส">ปิดเคส</option>
                                                         <option value="กำลังดำเนินการ">กำลังดำเนินการ</option>
