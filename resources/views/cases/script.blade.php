@@ -392,17 +392,7 @@
 
         $('#SubmitCreateForm').click(function(e) {
             if (actions == 'edit') {
-                //if (!confirm("ยืนยันการทำรายการ ?")) return;
-                ezBSAlert({
-                    type: "confirm",
-                    headerText: "Confirm",
-                    messageText: "ยืนยันการลบข้อมูล??",
-                    alertType: "info",
-                }).done(function(r) {
-                    if (r == true) {
-                        return
-                    }
-                });
+                if (!confirm("ยืนยันการทำรายการ ?")) return;
             }
 
             e.preventDefault();
@@ -636,53 +626,64 @@
         });
 
         $('#SubmitEditForm').click(function(e) {
-            if (!confirm("ยืนยันการทำรายการ ?")) return;
+            //if (!confirm("ยืนยันการทำรายการ ?")) return;
             e.preventDefault();
+            ezBSAlert({
+                type: "confirm",
+                headerText: "Confirm",
+                messageText: "ยืนยันการบันทึกข้อมูล?",
+                alertType: "info",
+            }).done(function(r) {
+                if (r == true) {
+                    $('.alert-danger').html('');
+                    $('.alert-danger').hide();
+                    $('.alert-success').html('');
+                    $('.alert-success').hide();
 
-            $('.alert-danger').html('');
-            $('.alert-danger').hide();
-            $('.alert-success').html('');
-            $('.alert-success').hide();
+                    var additionalData = {
+                        adddate: $('#Addadddate').val(),
+                        casetype1: $('#Editcasetype1e').val()[0],
+                        tranferstatus: $('#Edittranferstatuse option:selected').text(),
+                        casedetail: $('#Editdetail').val(),
+                        casestatus: $('#Editcasestatuse option:selected').text(),
+                    };
+                    $.ajax({
+                        url: "cases/save/" + id,
+                        method: 'PUT',
+                        data: additionalData,
 
-            var additionalData = {
-                adddate: $('#Addadddate').val(),
-                casetype1: $('#Editcasetype1e').val()[0],
-                tranferstatus: $('#Edittranferstatuse option:selected').text(),
-                casedetail: $('#Editdetail').val(),
-                casestatus: $('#Editcasestatuse option:selected').text(),
-            };
-            $.ajax({
-                url: "cases/save/" + id,
-                method: 'PUT',
-                data: additionalData,
+                        success: function(result) {
+                            //console.log(result);
+                            if (result.errors) {
+                                $('.alert-danger').html('');
+                                $.each(result.errors, function(key, value) {
+                                    $('.alert-danger').show();
+                                    $('.alert-danger').append(
+                                        '<strong><li>' + value +
+                                        '</li></strong>');
+                                });
+                            } else {
+                                $('.alert-danger').hide();
+                                $('.alert-success').show();
+                                $('.alert-success').append('<strong><li>' + result
+                                    .success +
+                                    '</li></strong>');
+                                $('#EditModal').modal('hide');
+                                toastr.success(result.success, {
+                                    timeOut: 5000
+                                });
+                                $('#Listview').DataTable().ajax.reload();
+                                //setTimeout(function() {
+                                //$('.alert-success').hide();
 
-                success: function(result) {
-                    //console.log(result);
-                    if (result.errors) {
-                        $('.alert-danger').html('');
-                        $.each(result.errors, function(key, value) {
-                            $('.alert-danger').show();
-                            $('.alert-danger').append('<strong><li>' + value +
-                                '</li></strong>');
-                        });
-                    } else {
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('.alert-success').append('<strong><li>' + result.success +
-                            '</li></strong>');
-                        $('#EditModal').modal('hide');
-                        toastr.success(result.success, {
-                            timeOut: 5000
-                        });
-                        $('#Listview').DataTable().ajax.reload();
-                        //setTimeout(function() {
-                        //$('.alert-success').hide();
+                                //}, 10000);
 
-                        //}, 10000);
-
-                    }
+                            }
+                        }
+                    });
                 }
             });
+
         });
 
         $('#CommentButton').click(function(e) {
@@ -758,32 +759,41 @@
 
 
         $(document).on('click', '.btn-delete', function() {
-            if (!confirm("ยืนยันการทำรายการ ?")) return;
-
-            var rowid = $(this).data('rowid')
-            var el = $(this)
-            if (!rowid) return;
-            $.ajax({
-                type: "DELETE",
-                dataType: 'JSON',
-                url: "cases/destroy/",
-                data: {
-                    id: rowid,
-                    //_method: 'delete',
-                    _token: token
-                },
-                success: function(data) {
-                    console.log(data);
-                    if (data.success) {
-                        toastr.success(data.message, {
-                            timeOut: 5000
-                        });
-                        table.row(el.parents('tr'))
-                            .remove()
-                            .draw();
-                    }
+            //if (!confirm("ยืนยันการทำรายการ ?")) return;
+            ezBSAlert({
+                type: "confirm",
+                headerText: "Confirm",
+                messageText: "ยืนยันการลบข้อมูล?",
+                alertType: "info",
+            }).done(function(r) {
+                if (r == true) {
+                    var rowid = $(this).data('rowid')
+                    var el = $(this)
+                    if (!rowid) return;
+                    $.ajax({
+                        type: "DELETE",
+                        dataType: 'JSON',
+                        url: "cases/destroy/",
+                        data: {
+                            id: rowid,
+                            //_method: 'delete',
+                            _token: token
+                        },
+                        success: function(data) {
+                            console.log(data);
+                            if (data.success) {
+                                toastr.success(data.message, {
+                                    timeOut: 5000
+                                });
+                                table.row(el.parents('tr'))
+                                    .remove()
+                                    .draw();
+                            }
+                        }
+                    });
                 }
             });
+
         });
         //Click Tab
         $(document).on('click', '.tablistcommentlog', function() {
