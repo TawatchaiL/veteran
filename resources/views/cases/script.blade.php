@@ -21,14 +21,7 @@
             $(':checkbox.flat').prop('checked', this.checked);
         });
 
-        $(".select2_tranfer").select2({
-            maximumSelectionLength: 1,
-            allowClear: true,
-            //theme: 'bootstrap4'
-            placeholder: 'กรุณาเลือกประเภทการโอนสาย'
-        });
-
-
+      
         $(".select2_single").select2({
             maximumSelectionLength: 1,
             //allowClear: true,
@@ -870,17 +863,18 @@
 
         $('#casetype1').on('change', function() {
             var parent_id = $(this).val();
-            $('#casetype2').html('<option value="">เลือกรายละเอียดเคส</option>');
+            /* $('#casetype2').html('<option value="">เลือกรายละเอียดเคส</option>');
             $('#casetype3').html('<option value="">เลือกรายละเอียดเคสย่อย</option>');
             $('#casetype4').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
             $('#casetype5').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
-            $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
+            $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>'); */
             if (parent_id != '') {
                 $.ajax({
                     url: "casetype6/casetype/" + parent_id,
                     method: 'GET',
                     async: false,
                     success: function(res) {
+                        $('#casetype2').html('');
                         $.each(res.data, function(index, item) {
                             $('#casetype2').append(
                                 $('<option></option>').val(item.id).html(item
@@ -907,16 +901,17 @@
 
         $('#casetype2').on('change', function() {
             var parent_id = $(this).val();
-            $('#casetype3').html('<option value="">เลือกรายละเอียดเคสย่อย</option>');
+            /* $('#casetype3').html('<option value="">เลือกรายละเอียดเคสย่อย</option>');
             $('#casetype4').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
             $('#casetype5').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
-            $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
+            $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>'); */
             if (parent_id != '') {
                 $.ajax({
                     url: "casetype6/casetype/" + parent_id,
                     method: 'GET',
                     async: false,
                     success: function(res) {
+                        $('#casetype3').html('');
                         $.each(res.data, function(index, item) {
                             $('#casetype3').append(
                                 $('<option></option>').val(item.id).html(item
@@ -941,15 +936,16 @@
 
         $('#casetype3').on('change', function() {
             var parent_id = $(this).val();
-            $('#casetype4').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
+            /* $('#casetype4').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
             $('#casetype5').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
-            $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
+            $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>'); */
             if (parent_id != '') {
                 $.ajax({
                     url: "casetype6/casetype/" + parent_id,
                     method: 'GET',
                     async: false,
                     success: function(res) {
+                        $('#casetype4').html('');
                         $.each(res.data, function(index, item) {
                             $('#casetype4').append(
                                 $('<option></option>').val(item.id).html(item
@@ -972,14 +968,15 @@
 
         $('#casetype4').on('change', function() {
             var parent_id = $(this).val();
-            $('#casetype5').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
-            $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
+            /* $('#casetype5').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
+            $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>'); */
             if (parent_id != '') {
                 $.ajax({
                     url: "casetype6/casetype/" + parent_id,
                     method: 'GET',
                     async: false,
                     success: function(res) {
+                        $('#casetype5').html('');
                         $.each(res.data, function(index, item) {
                             $('#casetype5').append(
                                 $('<option></option>').val(item.id).html(item
@@ -1000,13 +997,14 @@
 
         $('#casetype5').on('change', function() {
             var parent_id = $(this).val();
-            $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
+            //$('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
             if (parent_id != '') {
                 $.ajax({
                     url: "casetype6/casetype/" + parent_id,
                     method: 'GET',
                     async: false,
                     success: function(res) {
+                        $('#casetype6').html('');
                         $.each(res.data, function(index, item) {
                             $('#casetype6').append(
                                 $('<option></option>').val(item.id).html(item

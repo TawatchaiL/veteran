@@ -22,7 +22,7 @@
                                 </div>
                                 <div class="timeline-footer text-right">
                                     <button type="button" data-comment_id="{{ $casecomments->id }}"
-                                        class="btn btn-sm btn-warning selectcomment-button"><i
+                                        class="btn btn-sm btn-danger selectcomment-button"><i
                                             class="fa-solid fa-comment-dots"></i> รายละเอียด
                                     </button>
                                 </div>
