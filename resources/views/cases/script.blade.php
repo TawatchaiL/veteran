@@ -58,7 +58,7 @@
         function datesearch() {
             var currentDate = moment();
             // Set the start date to 7 days before today
-            startDate = moment(currentDate).subtract(15, 'days').format('YYYY-MM-DD');
+            startDate = moment(currentDate).subtract(30, 'days').format('YYYY-MM-DD');
             // Set the end date to the end of the current month
             //endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
             //startDate = moment().format('YYYY-MM-DD');
@@ -68,7 +68,7 @@
         function datereset() {
             var currentDate = moment();
             //startDate = moment().format('YYYY-MM-DD');
-            startDate = moment(currentDate).subtract(15, 'days').format('YYYY-MM-DD');
+            startDate = moment(currentDate).subtract(30, 'days').format('YYYY-MM-DD');
             endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
         }
 
@@ -94,10 +94,16 @@
             ];
             var last7DaysRange = [moment().subtract(6, 'days').startOf('day'), moment().endOf('day')];
             var last30DaysRange = [moment().subtract(29, 'days').startOf('day'), moment().endOf('day')];
+            var maxYear = moment().year(currentYear).add(1, 'year').format('YYYY-MM-DD');
+            var minYear = moment().year(currentYear).subtract(2, 'years').format('YYYY-MM-DD');
 
             $('#reservation').daterangepicker({
                 startDate: startDate,
                 endDate: endDate,
+                showDropdowns: true,
+                linkedCalendars: false,
+                minDate: minYear,
+                maxDate: maxYear,
                 ranges: {
                     'วันนี้': todayRange,
                     'เมื่อวานนี้': yesterdayRange,
