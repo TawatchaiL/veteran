@@ -174,6 +174,10 @@
         positionCards();
     });
 
+    socket.on('agentdump', async (response) => {
+        positionCards();
+    });
+
     socket.on('peerstatus', async (data) => {
         let peer = data.extension.split("/");
         if (peer[1] == exten) {
