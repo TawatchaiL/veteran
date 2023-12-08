@@ -83,7 +83,7 @@
                                                     <strong><i class="fas fa-user-tie"></i> ผู้ติดต่อ :</strong>
                                                     <input type="hidden" value="" name="Addid" id="Addid">
                                                     <select style="width: 100%;"
-                                                        class="select2 select2_single form-control" id="Hn"
+                                                        class="select2 select2_single bg-white" form-control" id="Hn"
                                                         name="hn" multiple="multiple">
                                                         @foreach ($contacts as $contact)
                                                             <option value="{{ $contact->id }}">{{ $contact->hn }}
@@ -132,7 +132,7 @@
                                                 <div class="form-group">
                                                     <strong><i class="fa-regular fa-comment-dots"></i>
                                                         รายละเอียดเคส:</strong>
-                                                    <select style="width: 100%;" class="select2 select2_single form-control"
+                                                    <select style="width: 100%;" class="select2 select2_single bg-white" form-control"
                                                         id="casetype2" name="casetype2" multiple="multiple">
                                                     </select>
                                                 </div>
@@ -143,7 +143,7 @@
                                                 <div class="form-group">
                                                     <strong><i class="fa-regular fa-comment-dots"></i>
                                                         รายละเอียดเคสย่อย:</strong>
-                                                    <select style="width: 100%;" class="select2 select2_single form-control"
+                                                    <select style="width: 100%;" class="select2 select2_single bg-white" form-control"
                                                         id="casetype3" name="casetype3" multiple="multiple">
                                                     </select>
                                                 </div>
@@ -152,7 +152,7 @@
                                                 <div class="form-group">
                                                     <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
                                                         เพิ่มเติม 1:</strong>
-                                                    <select style="width: 100%;" class="select2 select2_single form-control"
+                                                    <select style="width: 100%;" class="select2 select2_single bg-white" form-control"
                                                         id="casetype4" name="casetype4" multiple="multiple">
                                                     </select>
                                                 </div>
@@ -163,7 +163,7 @@
                                                 <div class="form-group">
                                                     <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
                                                         เพิ่มเติม 2:</strong>
-                                                    <select style="width: 100%;" class="select2 select2_single form-control"
+                                                    <select style="width: 100%;" class="select2 select2_single bg-white" form-control"
                                                         id="casetype5" name="casetype5" multiple="multiple">
                                                     </select>
                                                 </div>
@@ -172,7 +172,7 @@
                                                 <div class="form-group">
                                                     <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
                                                         เพิ่มเติม 3:</strong>
-                                                    <select style="width: 100%;" class="select2 select2_single form-control"
+                                                    <select style="width: 100%;" class="select2 select2_single bg-white" form-control"
                                                         id="casetype6" name="casetype6" multiple="multiple">
                                                     </select>
                                                 </div>
