@@ -50,7 +50,7 @@ class ReportsumbytypeController extends Controller
         }
         
         $datas = DB::table('crm_cases')
-        ->select(DB::raw('ROW_NUMBER() OVER (ORDER BY count(casetype1) DESC) as row_number'),'casetype1 as name1', DB::raw('count(*) as sumcases'))
+        ->select(DB::raw('ROW_NUMBER() OVER (ORDER BY sumcases DESC) as rownumber'),'casetype1 as name1', DB::raw('count(*) as sumcases'))
         ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
         ->groupBy('casetype1')
         ->orderBy("sumcases", "desc")
