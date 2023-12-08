@@ -62,10 +62,10 @@
         function datesearch() {
             var currentDate = moment();
             // Set the start date to 7 days before today
-            //startDate = moment(currentDate).subtract(15, 'days').format('YYYY-MM-DD');
+            startDate = moment(currentDate).subtract(15, 'days').format('YYYY-MM-DD');
             // Set the end date to the end of the current month
             //endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
-            startDate = moment().format('YYYY-MM-DD');
+            //startDate = moment().format('YYYY-MM-DD');
             endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
         }
 
@@ -123,7 +123,7 @@
             monthNamesShort: ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
                 "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
             ],
-            beforeShow: function() {
+            /* beforeShow: function() {
                 if ($(this).val() != "") {
                     var arrayDate = $(this).val().split("-");
                     arrayDate[0] = parseInt(arrayDate[0]) - 543;
@@ -161,7 +161,7 @@
                 var arrayDate = dateText.split("-");
                 arrayDate[0] = parseInt(arrayDate[0]) + 543;
                 $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
-            }
+            } */
         });
         //$(".AddDate").datepicker({
         /*  onSelect: function() {
@@ -417,7 +417,7 @@
                     //console.log($('#Hn').val()[0]);
 
                     var arrayDate = $('#Addadddate').val().split("-");
-                    arrayDate[0] = parseInt(arrayDate[0]) - 543;
+                    //arrayDate[0] = parseInt(arrayDate[0]) - 543;
                     var tempadddate = arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2];
 
                     var additionalData = {
@@ -555,7 +555,7 @@
                     //$('#Name').val(res.data.name);
                     //date+543
                     var arrayDate = res.data.adddate.split("-");
-                    arrayDate[0] = parseInt(arrayDate[0]) + 543;
+                    //arrayDate[0] = parseInt(arrayDate[0]) + 543;
                     $('#Addadddate').val(arrayDate[0] + "-" + arrayDate[1] + "-" +
                         arrayDate[2]);
                     //$('#tempAddadddate').html(res.data.adddate);
