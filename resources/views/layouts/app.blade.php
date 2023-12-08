@@ -108,8 +108,8 @@
 <script src="plugins/inputmask/jquery.inputmask.min.js"></script>
 <script src="plugins/pdfmake/pdfmake.min.js"></script>
 <script src="plugins/pdfmake/vfs_fonts.js"></script>
-<script src="plugins/moment/momentn.misn.js"></script>
-<script src="plugins/daterangepicker/jquery.daterangepicker.min"></script>
+<script src="plugins/moment/momentn.min.js"></script>
+<script src="plugins/daterangepicker/jquery.daterangepicker.min.js"></script>
 <script src="plugins/datepicker/bootstrap-datetimepicker.min.js"></script>
 <script src="plugins/jquery-ui/jquery-ui.js"></script>
 {{-- <script src="plugins/jquery-ui/jquery-ui-th.js"></script> --}}
