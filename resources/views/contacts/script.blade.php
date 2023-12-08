@@ -159,7 +159,7 @@
             $('#reservation').daterangepicker({
                 startDate: startDate,
                 endDate: endDate,
-                minDate: '2023-12-01',
+                minDate: '2023-01-01',
                 maxDate: '2030-12-31',
                 dateLimit: {
                     days: 120
