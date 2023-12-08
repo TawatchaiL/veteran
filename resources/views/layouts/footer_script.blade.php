@@ -198,8 +198,9 @@
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
-            let dataId = $(this).data('tick');
+            let dataId = $(this).data('id');
             console.log(dataId)
+            $('#custom-tabs-pop-' + dataId + '-tab').tab('show');
             $('#ToolbarModal').modal('show');
         });
 
