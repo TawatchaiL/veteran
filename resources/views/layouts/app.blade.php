@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
-    <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.min.css">
     <link rel="stylesheet" href="plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
@@ -109,7 +109,7 @@
 <script src="plugins/pdfmake/pdfmake.min.js"></script>
 <script src="plugins/pdfmake/vfs_fonts.js"></script>
 <script src="plugins/moment/momentn.min.js"></script>
-<script src="plugins/daterangepicker/daterangepicker.js"></script>
+<script src="plugins/daterangepicker/jquery.daterangepicker.min.js"></script>
 <script src="plugins/datepicker/bootstrap-datetimepicker.min.js"></script>
 <script src="plugins/jquery-ui/jquery-ui.js"></script>
 {{-- <script src="plugins/jquery-ui/jquery-ui-th.js"></script> --}}
