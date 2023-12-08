@@ -501,6 +501,7 @@
                 method: 'GET',
                 async: false,
                 success: function(res) {
+                    $('#casetype1').html('');
                     var provinceOb = $('#casetype1');
                     //provinceOb.html('<option value="">เลือกประเภทการติดต่อ</option>');
                     $.each(res.data, function(index, item) {
