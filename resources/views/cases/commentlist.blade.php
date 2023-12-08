@@ -45,7 +45,7 @@
 
 
                     <div>
-                        <i class="fa-solid fa-comment-dots bg-gray"></i>
+                        <i class="fas fa-comment-dots bg-gray"></i>
                     </div>
                 </div>
             </div>
