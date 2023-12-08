@@ -21,7 +21,7 @@
                            {{--  <td>{{ $caselogs->modifyaction }}</td> --}}
                             <td width="150px">
                                 <button type="button" data-log_id="{{ $caselogs->lid }}"
-                                    class="btn btn-sm btn-success selectlog-button"> <i class="fa-regular fa-rectangle-list"></i> รายละเอียด
+                                    class="btn btn-sm btn-warning selectlog-button"> <i class="fa-regular fa-rectangle-list"></i> รายละเอียด
                                 </button>
                             </td>
                         </tr>
