@@ -156,7 +156,7 @@
             var last7DaysRange = [moment().subtract(6, 'days').startOf('day'), moment().endOf('day')];
             var last30DaysRange = [moment().subtract(29, 'days').startOf('day'), moment().endOf('day')];
 
-            $('#reservation').daterangepicker({
+            $('#reservation').dateRangePicker({
                 startDate: startDate,
                 endDate: endDate,
                 minDate: '2023-01-01',
