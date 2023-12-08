@@ -27,21 +27,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($caselist as $caselists)
+                    @if (count($casecomment) > 0)
+                        @foreach ($caselist as $caselists)
+                            <tr>
+                                <td>{{ $caselists->created_at }}</td>
+                                <td>{{ $caselists->casetype1 }}</td>
+                                <td>{{ $caselists->casedetail }}</td>
+                                <td>{{ $caselists->casestatus }}</td>
+                                <td>{{ $agent[$caselists->agent]['name'] }}</td>
+                                <td width="140px">
+                                    <button type="button" data-cases_id="{{ $caselists->id }}"
+                                        data-tabid="{{ $cardid }}"
+                                        class="form-control btn btn-warning btn-sm casedetailP-button"><i
+                                            class="fas fa-search"></i> รายละเอียด</button>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @else
                         <tr>
-                            <td>{{ $caselists->created_at }}</td>
-                            <td>{{ $caselists->casetype1 }}</td>
-                            <td>{{ $caselists->casedetail }}</td>
-                            <td>{{ $caselists->casestatus }}</td>
-                            <td>{{ $agent[$caselists->agent]['name'] }}</td>
-                            <td width="140px">
-                                <button type="button" data-cases_id="{{ $caselists->id }}"
-                                    data-tabid="{{ $cardid }}"
-                                    class="form-control btn btn-warning btn-sm casedetailP-button"><i
-                                        class="fas fa-search"></i> รายละเอียด</button>
-                            </td>
+                            <td colspan="6">ยังไม่มีรายการการแก้ไขเรื่องที่ติดต่อ</td>
                         </tr>
-                    @endforeach
+                    @endif
                 </tbody>
             </table>
         </div>
