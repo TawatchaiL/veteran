@@ -53,14 +53,13 @@
                             <i class="fas fa-user bg-green"></i>
                             <div class="timeline-item">
                                 <span class="time"><i class="fas fa-clock"></i> {{ $casecomments->created_at }}</span>
-                                <h3 class="timeline-header"><a href="#">{{ $casecomments->agentname }}</a>
-                                    commented on your post</h3>
+                                <h3 class="timeline-header"><a href="#">{{ $casecomments->agentname }}</a></h3>
                                 <div class="timeline-body">
                                     {{ $casecomments->comment }}
                                 </div>
                                 <div class="timeline-footer">
                                     <button type="button" data-comment_id="{{ $casecomments->id }}"
-                                        class="btn btn-warning selectcomment-button"><i
+                                        class="btn btn-sm btn-info selectcomment-button"><i
                                             class="fa-solid fa-comment-dots"></i> รายละเอียด
                                     </button>
                                 </div>
