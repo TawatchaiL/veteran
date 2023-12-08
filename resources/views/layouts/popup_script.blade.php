@@ -1260,11 +1260,8 @@
             });
         }
 
-        $(document).on('show.bs.tab', '#custom-tabs-pop a[data-toggle="pill"]',
+        /* $(document).on('show.bs.tab', '#custom-tabs-pop a[data-toggle="pill"]',
             function(e) {
-
-                //var href = $(e.target).attr("href");
-                //var targetTab = href.replace("#custom-tabs-pop-", "");
 
                 var targetTab = $(e.target).data("tel");
 
@@ -1273,6 +1270,8 @@
                     e.preventDefault();
                 }
 
+
             });
+ */
     });
 </script>
