@@ -27,7 +27,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if (count($casecomment) > 0)
+                    @if (count($caselist) > 0)
                         @foreach ($caselist as $caselists)
                             <tr>
                                 <td>{{ $caselists->created_at }}</td>
