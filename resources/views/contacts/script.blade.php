@@ -161,6 +161,7 @@
                 endDate: endDate,
                 language: 'auto',
                 separator: ' - ',
+                showShortcuts: true,
                 shortcuts: {
                     'วันนี้': todayRange,
                     'เมื่อวานนี้': yesterdayRange,
@@ -186,10 +187,7 @@
                     firstDay: 1
                 } */
 
-            });
-
-            $('#reservation').setDateRange('2013-11-20','2013-11-25');
-
+            }).setDateRange('2013-11-20', '2013-11-25');
             // Apply the custom date range filter on input change
             $('#reservation').on('datepicker-apply', function() {
                 table.draw();
