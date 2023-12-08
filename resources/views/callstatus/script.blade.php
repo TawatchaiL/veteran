@@ -589,11 +589,10 @@
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
             columns: [{
-                    data: 'checkbox',
-                    name: 'checkbox',
+                    data: 'rownumber',
+                    name: 'rownumber',
                     orderable: false,
                     searchable: false,
-                    className: 'no-print'
                 },
                 {
                     data: 'agent',
