@@ -31,7 +31,7 @@
                         @endforeach
                     @else
                         <tr>
-                            <td colspan="3">ยังไม่มีรายการการแก้ไขเรื่องที่ติดต่อ</td>
+                            <td colspan="3" align="center">ยังไม่มีรายการการแก้ไขเรื่องที่ติดต่อ</td>
                         </tr>
                     @endif
                 </tbody>
