@@ -17,7 +17,7 @@
 @can('case-list')
     <li class="nav-item">
         <a href="{{ route('cases') }}" class="nav-link {{ Request::is('cases') ? 'active' : '' }}">
-            <i class="fas fa-clipboard nav-icon"></i>
+            <i class="fa-solid fa-clipboard-list nav-icon"></i>
             <p>เรื่องที่ติดต่อ</p>
         </a>
     </li>

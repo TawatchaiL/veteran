@@ -18,12 +18,12 @@
 
                         @can('case-create')
                             <button type="button" class="btn btn-success" id="CreateButton">
-                                <i class="fa-solid fa-clipboard"></i> เพิ่มเรื่องที่ติดต่อ</a> </button>
+                                <i class="fa-solid fa-clipboard-list"></i> เพิ่มเรื่องที่ติดต่อ</a> </button>
                         @else
                             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
                                 title="คุณไม่มีสิทธิ์ในส่วนนี้">
                                 <button type="button" class="btn btn-success disabled">
-                                    <i class="fa-solid fa-clipboard"></i> เพิ่มเรื่องที่ติดต่อ </a></button>
+                                    <i class="fa-solid fa-clipboard-list"></i> เพิ่มเรื่องที่ติดต่อ </a></button>
                             </span>
                         @endcan &nbsp;
 
@@ -99,7 +99,7 @@
                                             <div class="form-group">
                                                 <strong><i class="fa-solid fa-clipboard-question"></i>
                                                     ประเภทการค้นหา:</strong>
-                                                <select style="width: 100%;" class="select2 form-control" id="seachtype"
+                                                <select style="width: 150px;" class="select2 form-control" id="seachtype"
                                                     name="seachtype">
                                                     <option value="0" selected>ตัวเลือกการค้นหา</option>
                                                     <option value="1">กำลังดำเนินการ</option>
@@ -149,7 +149,7 @@
                                                     <th>ประเภทเคส</th>
                                                     <th>สถานะเคส</th>
                                                     <th>สถานะการโอนสาย</th>
-                                                    <th>Agent</th>
+                                                    <th>ผู้บันทึก</th>
                                                     <th width="120px"></th>
                                                     <th>More</th>
                                                 </tr>
