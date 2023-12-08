@@ -241,7 +241,7 @@
                             set_state_icon(result.id, result.icon, result.message);
                             set_state_button(result.id);
                         }, 1000);
-                        //positionCards();
+                        positionCards();
                     }
                 });
             } else if (data.status == 1 || data.status == 2 || data.status == 8 || data.status == 9) {
