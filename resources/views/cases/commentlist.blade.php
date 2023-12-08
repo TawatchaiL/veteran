@@ -49,7 +49,7 @@
 
                     @foreach ($casecomment as $casecomments)
                         <div>
-                            <i class="fas fa-user bg-green"></i>
+                            <i class="fas fa-user bg-blue"></i>
                             <div class="timeline-item">
                                 <span class="time"><i class="fas fa-clock"></i> {{ $casecomments->created_at }}</span>
                                 <h3 class="timeline-header"><a href="#">{{ $casecomments->agentname }}</a></h3>
