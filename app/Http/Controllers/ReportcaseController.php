@@ -51,7 +51,7 @@ class ReportcaseController extends Controller
             //->table(DB::raw('call_center.call_entry'))
             //->select(DB::raw('ROW_NUMBER() OVER (ORDER BY crm_id ASC) as rownumber'),'crm_id', DB::raw('count(crm_id) as sumcases'))
             ->table('call_center.call_entry')
-            ->select('row_number() over (order by sumcases desc) rownum','crm_id', DB::raw('count(crm_id) as sumcases'))
+            ->select(DB::raw('row_number() over (order by sumcases desc) rownum'),'crm_id', DB::raw('count(crm_id) as sumcases'))
             ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '"')
             ->groupBy('crm_id')
             ->having('sumcases', '>', 0)
