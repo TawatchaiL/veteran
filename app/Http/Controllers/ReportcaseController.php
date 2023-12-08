@@ -51,7 +51,7 @@ class ReportcaseController extends Controller
             //->table(DB::raw('call_center.call_entry'))
             //->select(DB::raw('ROW_NUMBER() OVER (ORDER BY crm_id ASC) as rownumber'),'crm_id', DB::raw('count(crm_id) as sumcases'))
             ->table('call_center.call_entry')
-            ->select('crm_id', DB::raw('count(crm_id) as sumcases'))
+            ->select('row_number() over (order by sumcases desc) rownum','crm_id', DB::raw('count(crm_id) as sumcases'))
             ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '"')
             ->groupBy('crm_id')
             ->having('sumcases', '>', 0)
@@ -85,10 +85,6 @@ class ReportcaseController extends Controller
                 //->editColumn('checkbox', function ($row) {
                 //    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 //})->rawColumns(['checkbox', 'action'])
-                ->addColumn('rownumber', function ($row, $index) {
-                    //$rowKey = $row['crm_id'];
-                    return $index;
-                })
                 ->addColumn('agent', function ($row) use ($agent_data){
                     if (isset($agent_data[$row->crm_id])) {
                         return $agent_data[$row->crm_id];

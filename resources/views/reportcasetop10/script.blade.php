@@ -615,8 +615,8 @@
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
             columns: [{
-                    data: 'rownumber',
-                    name: 'rownumber',
+                    data: 'rownum',
+                    name: 'rownum',
                     orderable: false,
                     searchable: false,
                     //                    className: 'no-print'
