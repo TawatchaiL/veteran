@@ -155,17 +155,17 @@
             ];
             var last7DaysRange = [moment().subtract(6, 'days').startOf('day'), moment().endOf('day')];
             var last30DaysRange = [moment().subtract(29, 'days').startOf('day'), moment().endOf('day')];
+            var currentYear = moment().year();
+            var maxYear = moment().year(currentYear).add(1, 'year').format('YYYY-MM-DD');
+            var minYear = moment().year(currentYear).subtract(2, 'years').format('YYYY-MM-DD');
 
             $('#reservation').daterangepicker({
                 startDate: startDate,
                 endDate: endDate,
                 showDropdowns: true,
                 linkedCalendars: false,
-                minDate: "2023-01-01",
-                maxDate: "2030-12-31",
-                maxSpan: {
-                    "days": 365
-                },
+                minDate: minYear,
+                maxDate: maxYear,
                 ranges: {
                     'วันนี้': todayRange,
                     'เมื่อวานนี้': yesterdayRange,
