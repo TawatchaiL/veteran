@@ -89,7 +89,8 @@
                                                             <i class="far fa-calendar-alt"></i>
                                                         </span>
                                                     </div>
-                                                    <input type="text" class="form-control float-right" id="reservation" style="width: 210px">
+                                                    <input type="text" class="form-control float-right" id="reservation"
+                                                        style="width: 210px">
                                                 </div>
 
                                             </div>
@@ -150,11 +151,11 @@
                                                     <th width="5%"><input type="checkbox" id="check-all"
                                                             class="flat">
                                                     </th>
+                                                    <th>วันที่บันทึก</th>
                                                     <th>รหัสผู้ติดต่อ</th>
                                                     <th>ชื่อผู้ติดต่อ</th>
                                                     <th>เบอร์โทรศัพท์บ้าน</th>
                                                     <th>เบอร์โทรศัพท์มือถือ</th>
-                                                    <th>วันที่บันทึก</th>
                                                     <th width="120px"></th>
                                                     <th>More</th>
                                                 </tr>

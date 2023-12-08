@@ -305,8 +305,8 @@
             aaSorting: [
                 [0, "desc"]
             ],
-            iDisplayLength: 5,
-            lengthMenu: [5, 10, 25, 50, 75, 100],
+            iDisplayLength: 10,
+            lengthMenu: [10, 25, 50, 75, 100],
             stateSave: true,
             autoWidth: false,
             fixedHeader: true,
@@ -334,6 +334,10 @@
                     searchable: false
                 },
                 {
+                    data: 'adddate',
+                    name: 'adddate'
+                },
+                {
                     data: 'hn',
                     name: 'hn'
                 },
@@ -349,10 +353,7 @@
                     data: 'phoneno',
                     name: 'phoneno'
                 },
-                {
-                    data: 'adddate',
-                    name: 'adddate'
-                },
+              
                 {
                     data: 'action',
                     name: 'action'
