@@ -15,7 +15,8 @@
                         <div class="icon"><i class="fa-solid fa-list-ul"></i></div>
                         <div class="info">
                             <p><strong>ประเภทเคส</strong>
-                                <br>&nbsp;{{ $cases->casetype1 !== '' ? $cases->casetype1 : '-' }}</p>
+                                <br>&nbsp;{{ $cases->casetype1 !== '' ? $cases->casetype1 : '-' }}
+                            </p>
                         </div>
                     </li>
 
@@ -87,7 +88,8 @@
                         <div class="icon"><i class="fa-regular fa-comment-dots"></i></div>
                         <div class="info">
                             <p><strong>รายละเอียด</strong>
-                                <br>&nbsp;{{ $cases->casedetail !== '' ? $cases->casedetail : '-' }}</p>
+                                <br>&nbsp;{{ $cases->casedetail !== '' ? $cases->casedetail : '-' }}
+                            </p>
                         </div>
                     </li>
 
