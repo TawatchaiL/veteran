@@ -1,4 +1,4 @@
-<div class="row">
+{{-- <div class="row">
     <div class="card col-xs-12 col-sm-12 col-md-12">
         <div class="card-header">
             <h3 class="card-title"></h3>
@@ -33,4 +33,51 @@
 
         </div>
     </div>
-</div>
+</div> --}}
+<section class="content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="timeline">
+
+
+                    <div class="time-label">
+                        <span class="bg-blue">รายการความคิดเห็น</span>
+                    </div>
+
+
+                    @foreach ($casecomment as $casecomments)
+                        <div>
+                            <i class="fas fa-user bg-green"></i>
+                            <div class="timeline-item">
+                                <span class="time"><i class="fas fa-clock"></i> {{ $casecomments->created_at }}</span>
+                                <h3 class="timeline-header"><a href="#">{{ $casecomments->agentname }}</a>
+                                    commented on your post</h3>
+                                <div class="timeline-body">
+                                    {{ $casecomments->comment }}
+                                </div>
+                                <div class="timeline-footer">
+                                    <button type="button" data-comment_id="{{ $casecomments->id }}"
+                                        class="btn btn-warning selectcomment-button"><i
+                                            class="fa-solid fa-comment-dots"></i> รายละเอียด
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+
+
+
+
+                    <div>
+                        <i class="fas fa-clock bg-gray"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
