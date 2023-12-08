@@ -124,7 +124,7 @@
                                                 <div class="form-group">
                                                     <strong><i class="fa-regular fa-message"></i> ประเภทเคส:</strong>
                                                     <select style="width: 100%;" class="select2  select2_single form-control"
-                                                        id="casetype1" name="casetype1">
+                                                        id="casetype1" name="casetype1" multiple="multiple">
                                                     </select>
                                                 </div>
                                             </div>
@@ -133,7 +133,7 @@
                                                     <strong><i class="fa-regular fa-comment-dots"></i>
                                                         รายละเอียดเคส:</strong>
                                                     <select style="width: 100%;" class="select2 select2_single form-control"
-                                                        id="casetype2" name="casetype2">
+                                                        id="casetype2" name="casetype2" multiple="multiple">
                                                     </select>
                                                 </div>
                                             </div>
@@ -144,7 +144,7 @@
                                                     <strong><i class="fa-regular fa-comment-dots"></i>
                                                         รายละเอียดเคสย่อย:</strong>
                                                     <select style="width: 100%;" class="select2 select2_single form-control"
-                                                        id="casetype3" name="casetype3">
+                                                        id="casetype3" name="casetype3" multiple="multiple">
                                                     </select>
                                                 </div>
                                             </div>
@@ -153,7 +153,7 @@
                                                     <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
                                                         เพิ่มเติม 1:</strong>
                                                     <select style="width: 100%;" class="select2 select2_single form-control"
-                                                        id="casetype4" name="casetype4">
+                                                        id="casetype4" name="casetype4" multiple="multiple">
                                                     </select>
                                                 </div>
                                             </div>
@@ -164,7 +164,7 @@
                                                     <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
                                                         เพิ่มเติม 2:</strong>
                                                     <select style="width: 100%;" class="select2 select2_single form-control"
-                                                        id="casetype5" name="casetype5">
+                                                        id="casetype5" name="casetype5" multiple="multiple">
                                                     </select>
                                                 </div>
                                             </div>
@@ -173,7 +173,7 @@
                                                     <strong><i class="fa-regular fa-comment-dots"></i> รายละเอียดเคส
                                                         เพิ่มเติม 3:</strong>
                                                     <select style="width: 100%;" class="select2 select2_single form-control"
-                                                        id="casetype6" name="casetype6">
+                                                        id="casetype6" name="casetype6" multiple="multiple">
                                                     </select>
                                                 </div>
                                             </div>
@@ -203,7 +203,7 @@
                                                     <strong><i class="fas fa-shuffle"></i> สถานะการโอนสาย
                                                         :</strong>
                                                     <select style="width: 100%;" class="select2 select2_single form-control"
-                                                        id="tranferstatus" name="tranferstatus">
+                                                        id="tranferstatus" name="tranferstatus" multiple="multiple">
                                                         <option value="ไม่มีการโอนสาย">ไม่มีการโอนสาย</option>
                                                         <option value="รับสาย">รับสาย</option>
                                                         <option value="ไม่รับสาย">ไม่รับสาย</option>
@@ -216,7 +216,7 @@
                                                     <strong><i class="fas fa-arrows-rotate"></i> สถานะเคส
                                                         :</strong>
                                                     <select style="width: 100%;" class="select2 select2_single form-control"
-                                                        id="casestatus" name="casestatus">
+                                                        id="casestatus" name="casestatus" multiple="multiple">
                                                         <option value="ปิดเคส">ปิดเคส</option>
                                                         <option value="กำลังดำเนินการ">กำลังดำเนินการ</option>
                                                     </select>
