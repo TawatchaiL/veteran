@@ -316,6 +316,7 @@ class CasesController extends Controller
             ->join('users', 'crm_case_comments.agent', '=', 'users.id')
             ->where('crm_case_comments.case_id', $id)
             ->orderBy("id", "desc")
+            ->limit(20)
             ->get();
 
         $template = 'cases.commentlist';
@@ -345,7 +346,10 @@ class CasesController extends Controller
     {
         $id = $request->input('id');
         $tabid = $request->input('tabid');
-        $data = CrmCase::where('contact_id', $id)->orderBy("id", "desc")->get();
+        $data = CrmCase::where('contact_id', $id)
+            ->orderBy("id", "desc")
+            ->limit(10)
+            ->get();
 
         $agens = User::orderBy('name', 'asc')->get();
         $agentArray = [];
@@ -388,6 +392,7 @@ class CasesController extends Controller
             ->join('users', 'crm_caseslogs.modifyagent', '=', 'users.id')
             ->where('crm_caseslogs.id', $id)
             ->orderBy("id", "desc")
+            ->limit(20)
             ->get();
 
         $template = 'cases.casesloglist';
