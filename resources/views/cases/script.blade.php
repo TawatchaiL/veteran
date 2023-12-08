@@ -755,6 +755,60 @@
             });
         });
 
+        $('#CommentButton').click(function(e) {
+            e.preventDefault();
+
+            $('.alert-danger').html('');
+            $('.alert-danger').hide();
+            $('.alert-success').html('');
+            $('.alert-success').hide();
+            
+            ezBSAlert({
+                type: "prompt",
+                okButtonText: "บันทึกข้อมูล",
+                messageText: "กรุณาระบุ Comment",
+                alertType: "primary"
+            }).done(function(e) {
+                if (e !== '') {
+                    const tooltip = document.createElement('div');
+                    const content = e;
+
+                    tooltip.className = 'region-tooltip';
+                    tooltip.textContent = content;
+                    tooltip.style.paddingLeft = '10px';
+                    currentRegion.element.appendChild(tooltip);
+
+                    const uniqueId = $('#uniqueid').val();
+                    const csrfToken = document.querySelector('meta[name="csrf-token"]')
+                        .getAttribute('content');
+                    $.ajax({
+                        type: "get",
+                        url: "/voicerecord/comment",
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken
+                        },
+                        data: {
+                            uniqueid: uniqueId,
+                            comment: content,
+                            start: region.start,
+                            end: region.end,
+                        },
+                        success: function(response) {
+                            console.log(response.message);
+                            region.id = response.id;
+                            //$('#CreateModal').modal('hide');
+                        },
+                        error: function(error) {}
+                    });
+                } else {
+                    region.remove();
+                }
+            });
+
+        });
+
+
+
         $(document).on('click', '.btn-delete', function() {
             if (!confirm("ยืนยันการทำรายการ ?")) return;
 
