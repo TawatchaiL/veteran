@@ -517,7 +517,7 @@
 							}
 						});
 
-                        doc.content[0].table.widths = [40,'*', 90, 90, 90, 90];
+                        doc.content[0].table.widths = [40,'*', 90, 100, 100, 70];
                         var objLayout = {};
 						objLayout['hLineWidth'] = function(i) { return .5; };
 						objLayout['vLineWidth'] = function(i) { return .5; };
