@@ -2,7 +2,6 @@
     $detect = new Detection\MobileDetect();
 @endphp
 <script>
-
     $(document).ready(function() {
 
         $(".delete_all_button").click(function() {
@@ -131,7 +130,7 @@
             placeholder: 'รายละเอียดเคส เพิ่มเติม 3'
         });
 
-        
+
         //$.noConflict();
         var token = ''
         $.ajaxSetup({
@@ -359,6 +358,7 @@
                 }
             ]
         });
+
         $('#btnsearch').click(function(e) {
             var fieldValue = $("#seachtype").val();
             var textValue = $("#seachtext").val();
@@ -375,6 +375,7 @@
             }
             $('#Listview').DataTable().ajax.reload();
         });
+
         $('#btnreset').click(function(e) {
             $("#seachtype").val(0);
             $("#seachtext").val('');
@@ -384,21 +385,6 @@
             $('#Listview').DataTable().ajax.reload();
         });
 
-        $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-        });
 
 
 
@@ -962,6 +948,7 @@
                 $('#casetype6').attr('disabled', true);
             }
         });
+
         $('#casetype3').on('change', function() {
             var parent_id = $(this).val();
             $('#casetype4').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
@@ -992,6 +979,7 @@
                 $('#casetype6').attr('disabled', true);
             }
         });
+
         $('#casetype4').on('change', function() {
             var parent_id = $(this).val();
             $('#casetype5').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
@@ -1019,6 +1007,7 @@
                 $('#casetype6').attr('disabled', true);
             }
         });
+
         $('#casetype5').on('change', function() {
             var parent_id = $(this).val();
             $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');

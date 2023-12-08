@@ -18,12 +18,12 @@
 
                         @can('case-create')
                             <button type="button" class="btn btn-success" id="CreateButton">
-                                <i class="fa-solid fa-clipboard"></i> เพิ่ม เรื่องที่ติดต่อ</a> </button>
+                                <i class="fa-solid fa-clipboard"></i> เพิ่มเรื่องที่ติดต่อ</a> </button>
                         @else
                             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
                                 title="คุณไม่มีสิทธิ์ในส่วนนี้">
                                 <button type="button" class="btn btn-success disabled">
-                                    <i class="fa-solid fa-clipboard"></i> เพิ่ม เรื่องที่ติดต่อ </a></button>
+                                    <i class="fa-solid fa-clipboard"></i> เพิ่มเรื่องที่ติดต่อ </a></button>
                             </span>
                         @endcan &nbsp;
 
@@ -49,7 +49,7 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fa-solid fa-clipboard"></i> เรื่องที่ติดต่อ</h3>
+                            <h3 class="card-title"><i class="fa-solid fa-clipboard-list"></i> เรื่องที่ติดต่อ</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="maximize">
                                     <i class="fas fa-expand"></i>
