@@ -159,9 +159,8 @@
             $('#reservation').daterangepicker({
                 startDate: startDate,
                 endDate: endDate,
-                "maxSpan": {
-                    "days": 365
-                },
+                minDays: 0,
+                maxDays: 0,
                 ranges: {
                     'วันนี้': todayRange,
                     'เมื่อวานนี้': yesterdayRange,
