@@ -112,14 +112,20 @@
 
 
         $.datepicker.setDefaults($.datepicker.regional['th']);
+        var currentDate = new Date();
+        var currentYear = currentDate.getFullYear();
+        var maxYear = currentYear + 1;
+
+           
         $(".AddDate").datepicker({
             dateFormat: "yy-mm-dd",
             //defaultDate: '2023-11-14',
-            isBuddhist: true,
+            //isBuddhist: true,
             changeMonth: true,
             changeYear: true,
             //yearRange:'1940:2057',
-            yearRange: 'c-40:c+10',
+            //yearRange: 'c-40:c+10',
+            yearRange: '2023' + ':' + maxYear,
             dayNamesMin: ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"],
             monthNamesShort: ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
                 "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
