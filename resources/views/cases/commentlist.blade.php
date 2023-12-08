@@ -42,12 +42,8 @@
 
                 <div class="timeline">
 
-
-                    {{-- <div class="time-label">
-                        <span class="bg-blue">รายการความคิดเห็น</span>
-                    </div> --}}
                     <div class="time-label">
-                        <span><i class="fas fa-comment-dots bg-gray"></i></span> 
+                        <span></span>
                     </div>
 
 
