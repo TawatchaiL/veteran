@@ -46,7 +46,7 @@
                     {{-- <div class="time-label">
                         <span class="bg-blue">รายการความคิดเห็น</span>
                     </div> --}}
-                    <div>
+                    <div class="time-label">
                         <i class="fas fa-comment-dots bg-gray"></i>
                     </div>
 
