@@ -161,11 +161,7 @@
                 endDate: endDate,
                 language: 'th',
                 separator: ' - ',
-                dateLimit: {
-                    days: 120
-                },
-                showDropdowns: true,
-                ranges: {
+                shortcuts: {
                     'วันนี้': todayRange,
                     'เมื่อวานนี้': yesterdayRange,
                     'ย้อนหลัง 7 วัน': last7DaysRange,
@@ -175,7 +171,7 @@
                         .subtract(1, 'month').endOf('month')
                     ]
                 },
-                locale: {
+                /* locale: {
                     format: 'YYYY-MM-DD',
                     applyLabel: 'ตกลง',
                     cancelLabel: 'ยกเลิก',
@@ -188,7 +184,7 @@
                         'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'
                     ],
                     firstDay: 1
-                }
+                } */
 
             });
 
