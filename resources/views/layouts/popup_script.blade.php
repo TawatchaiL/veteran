@@ -18,14 +18,14 @@
         $.ajax({
             url: '{{ route('contacts.popup') }}',
             type: 'get',
-            success: function(response) {
+            success: async function(response) {
                 if (response.tab_link !== '') {
                     removeAllTabs();
 
                     $('#custom-tabs-pop').prepend(response.tab_link);
                     $('#custom-tabs-pop-tabContent').prepend(response.tab_content);
 
-                    maximizeCard(response.active_id);
+                    await maximizeCard(response.active_id);
                 }
                 $('#hold_tab').html(response.hold_tab);
                 $('#hold_tab_content').html(response.hold_tab_content);
