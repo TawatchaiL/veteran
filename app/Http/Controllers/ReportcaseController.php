@@ -58,7 +58,7 @@ class ReportcaseController extends Controller
             //->get();
 
             $datas = DB::connection('remote_connection')
-            ->table(DB::raw('(SELECT @rownumber:=0) AS temp, ({$datasql}) as datatmp'))
+            ->table(DB::raw("({$datasql}) as datatmp"), '(SELECT @rownumber:=0) AS temp')
             ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), 'datatmp.*')
             ->get();
 
