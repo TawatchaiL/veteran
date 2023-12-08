@@ -762,46 +762,53 @@
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
-            
+
             ezBSAlert({
                 type: "prompt",
                 okButtonText: "บันทึกข้อมูล",
-                messageText: "กรุณาระบุ Comment",
+                messageText: "กรุณาระบุ ความคิดเห็น",
                 alertType: "primary"
             }).done(function(e) {
                 if (e !== '') {
-                    const tooltip = document.createElement('div');
                     const content = e;
-
-                    tooltip.className = 'region-tooltip';
-                    tooltip.textContent = content;
-                    tooltip.style.paddingLeft = '10px';
-                    currentRegion.element.appendChild(tooltip);
-
-                    const uniqueId = $('#uniqueid').val();
-                    const csrfToken = document.querySelector('meta[name="csrf-token"]')
-                        .getAttribute('content');
+                    var additionalData = {
+                        case_id: id,
+                        comment: content
+                    };
                     $.ajax({
-                        type: "get",
-                        url: "/voicerecord/comment",
-                        headers: {
-                            'X-CSRF-TOKEN': csrfToken
-                        },
-                        data: {
-                            uniqueid: uniqueId,
-                            comment: content,
-                            start: region.start,
-                            end: region.end,
-                        },
-                        success: function(response) {
-                            console.log(response.message);
-                            region.id = response.id;
-                            //$('#CreateModal').modal('hide');
-                        },
-                        error: function(error) {}
+                        url: "cases/casecomment/" + id,
+                        method: 'PUT',
+                        data: additionalData,
+
+                        success: function(result) {
+                            //console.log(result);
+                            if (result.errors) {
+                                $('.alert-danger').html('');
+                                $.each(result.errors, function(key, value) {
+                                    $('.alert-danger').show();
+                                    $('.alert-danger').append(
+                                        '<strong><li>' + value +
+                                        '</li></strong>');
+                                });
+                            } else {
+                                $('.alert-danger').hide();
+                                $('.alert-success').show();
+                                $('.alert-success').append('<strong><li>' + result
+                                    .success +
+                                    '</li></strong>');
+                                //$('#CreateModal').modal('hide');
+                                toastr.success(result.success, {
+                                    timeOut: 5000
+                                });
+
+
+                            }
+                        }
                     });
                 } else {
-                    region.remove();
+                    toastr.error('กรุณาระบุความคิดเห็น', {
+                        timeOut: 5000
+                    });
                 }
             });
 
