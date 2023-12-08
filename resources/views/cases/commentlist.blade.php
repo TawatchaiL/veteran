@@ -1,7 +1,7 @@
 <div class="row">
     <div class="card col-xs-12 col-sm-12 col-md-12">
         <div class="card-header">
-            <h3 class="card-title">รายการความคิดเห็น</h3>
+            <h3 class="card-title"></h3>
         </div>
 
         <div class="card-body p-0">
