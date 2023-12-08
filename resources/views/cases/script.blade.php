@@ -369,6 +369,13 @@
             $('#casetype4').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
             $('#casetype5').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
             $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>'); */
+            $("#Hn").val(null).trigger("change")
+            $('#casetype1').val(null).trigger("change")
+            $('#casetype2').val(null).trigger("change")
+            $('#casetype3').val(null).trigger("change")
+            $('#casetype4').val(null).trigger("change")
+            $('#casetype5').val(null).trigger("change")
+            $('#casetype6').val(null).trigger("change")
             $('#casetype2').attr('disabled', true);
             $('#casetype3').attr('disabled', true);
             $('#casetype4').attr('disabled', true);
@@ -400,32 +407,32 @@
                 adddate: tempadddate,
                 //adddate: $('#Addadddate').val(),
                 //adddate: $('#tempAddadddate').html(),
-                casetype1: $('#casetype1 option:selected').text(),
-                caseid1: $('#casetype1').val(),
-                casedetail: $('#Detail').val(),
-                tranferstatus: $('#tranferstatus option:selected').text(),
-                casestatus: $('#casestatus option:selected').text(),
+                casetype1: $('#casetype1 option:selected').text()[0],
+                caseid1: $('#casetype1').val()[0],
+                casedetail: $('#Detail').val()[0],
+                tranferstatus: $('#tranferstatus option:selected').text()[0],
+                casestatus: $('#casestatus option:selected').text()[0],
                 _token: token
             };
             if ($('#casetype2').val() !== '') {
-                additionalData.casetype2 = $('#casetype2 option:selected').text();
-                additionalData.caseid2 = $('#casetype2').val();
+                additionalData.casetype2 = $('#casetype2 option:selected').text()[0];
+                additionalData.caseid2 = $('#casetype2').val()[0];
             }
             if ($('#casetype3').val() !== '') {
-                additionalData.casetype3 = $('#casetype3 option:selected').text();
-                additionalData.caseid3 = $('#casetype3').val();
+                additionalData.casetype3 = $('#casetype3 option:selected').text()[0];
+                additionalData.caseid3 = $('#casetype3').val()[0];
             }
             if ($('#casetype4').val() !== '') {
-                additionalData.casetype4 = $('#casetype4 option:selected').text();
-                additionalData.caseid4 = $('#casetype4').val();
+                additionalData.casetype4 = $('#casetype4 option:selected').text()[0];
+                additionalData.caseid4 = $('#casetype4').val()[0];
             }
             if ($('#casetype5').val() !== '') {
-                additionalData.casetype5 = $('#casetype5 option:selected').text();
-                additionalData.caseid5 = $('#casetype5').val();
+                additionalData.casetype5 = $('#casetype5 option:selected').text()[0];
+                additionalData.caseid5 = $('#casetype5').val()[0];
             }
             if ($('#casetype6').val() !== '') {
-                additionalData.casetype6 = $('#casetype6 option:selected').text();
-                additionalData.caseid6 = $('#casetype6').val();
+                additionalData.casetype6 = $('#casetype6 option:selected').text()[0];
+                additionalData.caseid6 = $('#casetype6').val()[0];
             }
 
             if (actions == 'add') {
