@@ -363,7 +363,8 @@
                 </div>
             </div>
             <div class="overlay d-none" id="state_overlay">
-                <div class="card" id="toolbar_card">
+                <i class="fas fa-2x fa-sync-alt"></i>
+                <div class="card d-none" id="toolbar_card">
                     <div class="card-body">
                         <h4><i class="fa-solid icon-black fa-xl fa-phone-slash"></i> <span
                                 class="icon-black">หมายเลขโทรศัพท์

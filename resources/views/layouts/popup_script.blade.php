@@ -103,7 +103,7 @@
                                         '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ' +
                                         res.datax.datac.fname +
                                         ' ' + res.datax.datac
-                                        .lname + '</h3>');    
+                                        .lname + '</h3>');
 
                                     $('#contractid' + cardId).val(res.datax
                                         .datac.id);
@@ -235,47 +235,48 @@
                                                         '" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
                                                     )));
                                     });
-/*
-                                    $.each(res.datax.cases, function(index,
-                                        value) {
-                                        //$('#ListCaseview' + cardId +
-                                        $('#Listviewcasesp' + cardId +
-                                            ' tbody').append($(
-                                                '<tr>')
-                                            .append($('<td>')
-                                                .append(
-                                                    '<div class="col-md-12 col-sm-12 col-xs-12">' +
-                                                    value
-                                                    .casetype1 +
-                                                    '</div>'))
-                                            .append($('<td>')
-                                                .append(
-                                                    '<div class="col-md-12 col-sm-12 col-xs-12">' +
-                                                    value
-                                                    .casedetail +
-                                                    '</div>'))
-                                            .append($('<td>')
-                                                .append(
-                                                    '<div class="col-md-12 col-sm-12 col-xs-12">' +
-                                                    value
-                                                    .casestatus +
-                                                    '</div>'))
-                                            .append($('<td>')
-                                                .append(
-                                                    '<div class="col-md-12 col-sm-12 col-xs-12">' +
-                                                    value
-                                                    .tranferstatus +
-                                                    '</div>'))
-                                            .append($('<td>')
-                                                .append(
-                                                    '<div class="col-md-12 col-sm-12 col-xs-12">' +
-                                                    value
-                                                    .created_at +
-                                                    '</div>'))
-                                        );
-                                    }); 
-                                    */
-                                    $('#custom-tabs-one-casedetail-tabp' + cardId).click();
+                                    /*
+                                                                        $.each(res.datax.cases, function(index,
+                                                                            value) {
+                                                                            //$('#ListCaseview' + cardId +
+                                                                            $('#Listviewcasesp' + cardId +
+                                                                                ' tbody').append($(
+                                                                                    '<tr>')
+                                                                                .append($('<td>')
+                                                                                    .append(
+                                                                                        '<div class="col-md-12 col-sm-12 col-xs-12">' +
+                                                                                        value
+                                                                                        .casetype1 +
+                                                                                        '</div>'))
+                                                                                .append($('<td>')
+                                                                                    .append(
+                                                                                        '<div class="col-md-12 col-sm-12 col-xs-12">' +
+                                                                                        value
+                                                                                        .casedetail +
+                                                                                        '</div>'))
+                                                                                .append($('<td>')
+                                                                                    .append(
+                                                                                        '<div class="col-md-12 col-sm-12 col-xs-12">' +
+                                                                                        value
+                                                                                        .casestatus +
+                                                                                        '</div>'))
+                                                                                .append($('<td>')
+                                                                                    .append(
+                                                                                        '<div class="col-md-12 col-sm-12 col-xs-12">' +
+                                                                                        value
+                                                                                        .tranferstatus +
+                                                                                        '</div>'))
+                                                                                .append($('<td>')
+                                                                                    .append(
+                                                                                        '<div class="col-md-12 col-sm-12 col-xs-12">' +
+                                                                                        value
+                                                                                        .created_at +
+                                                                                        '</div>'))
+                                                                            );
+                                                                        }); 
+                                                                        */
+                                    $('#custom-tabs-one-casedetail-tabp' +
+                                        cardId).click();
                                 }
                             }
                         });
@@ -429,38 +430,40 @@
                     var days = currentDate.getDate() - selectedDate.getDate();
                     if (days < 0) {
                         months--;
-                        days += new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
+                        days += new Date(currentDate.getFullYear(), currentDate.getMonth(),
+                            0).getDate();
                     }
 
                     if (months < 0) {
                         years--;
                         months += 12;
                     }
-                    $("#agep"+$(this).data('tid')).val(years + " ปี " + months + " เดือน " + days + " วัน");
+                    $("#agep" + $(this).data('tid')).val(years + " ปี " + months +
+                        " เดือน " + days + " วัน");
                 }
             });
         });
 
         //birth day change
-       /* $(document).on("change", ".Birthdayp", function() {
-            alert('ok');
-            var selectedDate = new Date($(this).val());
-            var currentDate = new Date();
-            var tid = $(this).data("tid");
-            var years = currentDate.getFullYear() - selectedDate.getFullYear();
-            var months = currentDate.getMonth() - selectedDate.getMonth();
-            var days = currentDate.getDate() - selectedDate.getDate();
-            if (days < 0) {
-                months--;
-                days += new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
-            }
+        /* $(document).on("change", ".Birthdayp", function() {
+             alert('ok');
+             var selectedDate = new Date($(this).val());
+             var currentDate = new Date();
+             var tid = $(this).data("tid");
+             var years = currentDate.getFullYear() - selectedDate.getFullYear();
+             var months = currentDate.getMonth() - selectedDate.getMonth();
+             var days = currentDate.getDate() - selectedDate.getDate();
+             if (days < 0) {
+                 months--;
+                 days += new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
+             }
 
-            if (months < 0) {
-                years--;
-                months += 12;
-            }
-            $("#agep" + tid).val(years + " ปี " + months + " เดือน " + days + " วัน");
-        });*/
+             if (months < 0) {
+                 years--;
+                 months += 12;
+             }
+             $("#agep" + tid).val(years + " ปี " + months + " เดือน " + days + " วัน");
+         });*/
         //casetype changes
         $(document).on("change", ".casetypechang", function() {
             var cardId = $(this).data("tabid");
@@ -807,7 +810,8 @@
                                 });
                                 */
                                 if (res.datax.cases.length != 0) {
-                                    $('#custom-tabs-one-casedetail-tabp' + cardId).click();
+                                    $('#custom-tabs-one-casedetail-tabp' + cardId)
+                                        .click();
                                 }
                             }
                         });
