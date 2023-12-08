@@ -377,6 +377,8 @@
             $('#casetype4').val(null).trigger("change")
             $('#casetype5').val(null).trigger("change")
             $('#casetype6').val(null).trigger("change")
+            $('#tranferstatus').val(null).trigger("change")
+            $('#casestatus').val(null).trigger("change")
             $('#casetype2').attr('disabled', true);
             $('#casetype3').attr('disabled', true);
             $('#casetype4').attr('disabled', true);
@@ -538,8 +540,8 @@
                         arrayDate[2]);
                     //$('#tempAddadddate').html(res.data.adddate);
                     $('#Detail').val(res.data.casedetail);
-                    $('#tranferstatus').val(res.data.tranferstatus);
-                    $('#casestatus').val(res.data.casestatus);
+                    $('#tranferstatus').val(res.data.tranferstatus).change();
+                    $('#casestatus').val(res.data.casestatus).change();
                     $('#casetype1').val(res.data.caseid1).change();
                     if (res.data.caseid2 != 0) {
                         $('#casetype2').val(res.data.caseid2).change();
