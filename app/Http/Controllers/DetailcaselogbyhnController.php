@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -85,6 +86,10 @@ class DetailcaselogbyhnController extends Controller
                 //->editColumn('checkbox', function ($row) {
                 //    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 //})->rawColumns(['checkbox', 'action'])
+                ->editColumn('mdate', function ($row) {
+                    $adddate = Carbon::parse($row->mdate)->addYears(543)->format('d/m/Y H:i:s');
+                    return $adddate;
+                })
                 ->addColumn('agent', function ($row) use ($agent_data){
                     if (isset($agent_data[$row->cagent])) {
                         return $agent_data[$row->cagent];
