@@ -159,7 +159,7 @@
             $('#reservation').dateRangePicker({
                 startDate: startDate,
                 endDate: endDate,
-                language: 'th',
+                language: 'auto',
                 separator: ' - ',
                 shortcuts: {
                     'วันนี้': todayRange,
@@ -187,6 +187,8 @@
                 } */
 
             });
+
+            $('#reservation').setDateRange('2013-11-20','2013-11-25');
 
             // Apply the custom date range filter on input change
             $('#reservation').on('datepicker-apply', function() {
