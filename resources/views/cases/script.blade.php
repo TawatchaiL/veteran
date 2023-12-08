@@ -96,9 +96,31 @@
             $('#reservation').daterangepicker({
                 startDate: startDate,
                 endDate: endDate,
+                ranges: {
+                    'วันนี้': todayRange,
+                    'เมื่อวานนี้': yesterdayRange,
+                    'ย้อนหลัง 7 วัน': last7DaysRange,
+                    'ย้อนหลัง 30 วัน': last30DaysRange,
+                    'เดือนนี้': [moment().startOf('month'), moment().endOf('month')],
+                    'เดือนที่แล้ว': [moment().subtract(1, 'month').startOf('month'), moment()
+                        .subtract(1, 'month').endOf('month')
+                    ]
+                },
                 locale: {
-                    format: 'YYYY-MM-DD'
+                    format: 'YYYY-MM-DD',
+                    applyLabel: 'ตกลง',
+                    cancelLabel: 'ยกเลิก',
+                    fromLabel: 'จาก',
+                    toLabel: 'ถึง',
+                    customRangeLabel: 'เลือกวันที่เอง',
+                    daysOfWeek: ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'],
+                    monthNames: [
+                        'มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน',
+                        'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'
+                    ],
+                    firstDay: 1
                 }
+                
             });
 
             // Apply the custom date range filter on input change
