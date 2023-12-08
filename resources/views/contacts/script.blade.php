@@ -189,7 +189,7 @@
             });
 
             // Apply the custom date range filter on input change
-            $('#reservation').on('apply.daterangepicker', function() {
+            $('#reservation').dateRangePicker().bind('datepicker-apply', function(event, obj) {
                 table.draw();
                 //storeFieldValues();
             });
