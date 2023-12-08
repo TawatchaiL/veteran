@@ -92,6 +92,12 @@
         }
 
         let daterange = () => {
+            var todayRange = [moment().startOf('day'), moment().endOf('day')];
+            var yesterdayRange = [moment().subtract(1, 'days').startOf('day'), moment().subtract(1, 'days')
+                .endOf('day')
+            ];
+            var last7DaysRange = [moment().subtract(6, 'days').startOf('day'), moment().endOf('day')];
+            var last30DaysRange = [moment().subtract(29, 'days').startOf('day'), moment().endOf('day')];
 
             $('#reservation').daterangepicker({
                 startDate: startDate,
@@ -120,7 +126,7 @@
                     ],
                     firstDay: 1
                 }
-                
+
             });
 
             // Apply the custom date range filter on input change
@@ -138,7 +144,7 @@
         var currentYear = currentDate.getFullYear();
         var maxYear = currentYear + 1;
 
-           
+
         $(".AddDate").datepicker({
             dateFormat: "yy-mm-dd",
             //defaultDate: '2023-11-14',
