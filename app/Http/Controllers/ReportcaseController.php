@@ -91,8 +91,7 @@ class ReportcaseController extends Controller
                     }else{
                         $colnumber++;
                         return $colnumber;  
-                    }
-                          
+                    }     
                 })
                 ->addColumn('agent', function ($row) use ($agent_data){
                     if (isset($agent_data[$row->crm_id])) {
