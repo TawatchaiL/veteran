@@ -540,6 +540,10 @@
             var last30DaysRange = [moment().subtract(29, 'days').startOf('day').set('hour', 0).set('minute',
                 0).set('second', 0), moment(endTime, 'HH:mm:ss')];
 
+            var currentYear = moment().year();
+            var maxYear = moment().year(currentYear).add(1, 'year').format('YYYY-MM-DD');
+            var minYear = moment().year(currentYear).subtract(2, 'years').format('YYYY-MM-DD');
+
             $('#reservation').daterangepicker({
                 timePicker: true,
                 timePicker24Hour: true,
@@ -547,6 +551,10 @@
                 //timePickerIncrement: 5,
                 startDate: startDate,
                 endDate: endDate,
+                showDropdowns: true,
+                linkedCalendars: false,
+                minDate: minYear,
+                maxDate: maxYear,
                 ranges: {
                     'วันนี้': todayRange,
                     'เมื่อวานนี้': yesterdayRange,
@@ -635,8 +643,8 @@
             aaSorting: [
                 [0, "desc"]
             ],
-            iDisplayLength: 5,
-            lengthMenu: [5, 10, 25, 50, 75, 100],
+            iDisplayLength: 10,
+            lengthMenu: [10, 25, 50, 75, 100],
             stateSave: true,
             autoWidth: false,
             buttons: [
