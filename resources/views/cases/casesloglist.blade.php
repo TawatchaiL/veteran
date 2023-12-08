@@ -4,8 +4,8 @@
             <h3 class="card-title"></h3>
         </div>
 
-        <div class="card-body p-0">
-            <table id="Listview" class="table table-bordered table-striped table-hover">
+        <div class="card-body p-0" style="height: 300px;">
+            <table id="Listview" class="table table-sm table-head-fixed text-nowrap table-bordered table-striped table-hover">
                 <thead>
                     <tr>
                         <th>วันที่แก้ไข</th>
@@ -21,7 +21,7 @@
                            {{--  <td>{{ $caselogs->modifyaction }}</td> --}}
                             <td width="150px">
                                 <button type="button" data-log_id="{{ $caselogs->lid }}"
-                                    class="btn btn-sm btn-warning selectlog-button"> <i class="fa-regular fa-rectangle-list"></i> รายละเอียด
+                                    class="btn btn-sm btn-warning selectlog-button"> <i class="fas fa-rectangle-list"></i> รายละเอียด
                                 </button>
                             </td>
                         </tr>

@@ -793,14 +793,25 @@
                             } else {
                                 $('.alert-danger').hide();
                                 $('.alert-success').show();
-                                $('.alert-success').append('<strong><li>' + result
-                                    .success +
-                                    '</li></strong>');
+                                /*  $('.alert-success').append('<strong><li>' + result
+                                     .success +
+                                     '</li></strong>'); */
                                 //$('#CreateModal').modal('hide');
                                 toastr.success(result.success, {
                                     timeOut: 5000
                                 });
+                                $.ajax({
+                                    url: '{{ route('cases.commentlist') }}',
+                                    type: 'POST',
+                                    data: {
+                                        id: id
+                                    },
 
+                                    success: function(response) {
+                                        $('#listlog').html(response
+                                            .html);
+                                    }
+                                });
 
                             }
                         }
