@@ -42,7 +42,7 @@
     <li class="nav-item">
         <a href="{{ route('billingreport') }}" class="nav-link {{ Request::is('billing') ? 'active' : '' }}">
             <i class="fa-solid fa-comment-dollar nav-icon"></i>
-            <p>ประวัติและค่าใช้จ่ายการโทร</p>
+            <p>ประวัติ/ค่าใช้จ่ายการโทร</p>
         </a>
     </li>
 @endcan
