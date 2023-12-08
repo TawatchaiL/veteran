@@ -41,8 +41,8 @@
 @can('case-list')
     <li class="nav-item">
         <a href="{{ route('billingreport') }}" class="nav-link {{ Request::is('billing') ? 'active' : '' }}">
-            <i class="fa-solid fa-file-invoice-dollar nav-icon"></i>
-            <p>CDR & Billing</p>
+            <i class="fa-solid fa-comment-dollar nav-icon"></i>
+            <p>ประวัติและค่าใช้จ่ายการโทร</p>
         </a>
     </li>
 @endcan
