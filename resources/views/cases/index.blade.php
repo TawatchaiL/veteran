@@ -142,7 +142,7 @@
                                                 <tr>
                                                     <th width="5%"><input type="checkbox" id="check-all"
                                                             class="flat"></th>
-                                                    <th>วันที่ทำรายการ</th>
+                                                    <th>วันที่บันทึกข้อมูล</th>
                                                     <th>HN</th>
                                                     <th>ชื่อสกุล</th>
                                                     <th>เบอร์โทร</th>
