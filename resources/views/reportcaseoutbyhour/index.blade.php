@@ -181,7 +181,6 @@
                                 <table id="Listview" class="table table-bordered table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th width="5%"><input type="checkbox" id="check-all" class="flat"></th>
                                             <th>ช่วงเวลา</th>
                                             <th width="280px">จำนวน</th>
                                         </tr>
