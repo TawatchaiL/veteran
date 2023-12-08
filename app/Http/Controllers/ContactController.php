@@ -53,35 +53,36 @@ class ContactController extends Controller
             }
 
             if ($request->input('seachtype') === "0") {
-                $datas = DB::table('crm_contacts')->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
-                    ->get();
+                $datas = DB::table('crm_contacts')->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"');
+                //->get();
             } else if ($request->input('seachtype') === "1") {
                 $datas = DB::table('crm_contacts')
                     ->join('crm_phone_emergencies', 'crm_contacts.id', '=', 'crm_phone_emergencies.contact_id')
                     ->where('emerphone', '=', $request->input('seachtext'))
-                    ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
-                    ->get();
+                    ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"');
+                //->get();
             } else if ($request->input('seachtype') === "2") {
                 $datas = DB::table('crm_contacts')->where('telhome', '=', $request->input('seachtext'))
-                    ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
-                    ->get();
+                    ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"');
+                //->get();
             } else if ($request->input('seachtype') === "3") {
                 $datas = DB::table('crm_contacts')->where('phoneno', '=', $request->input('seachtext'))
-                    ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
-                    ->get();
+                    ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"');
+                //->get();
             } else if ($request->input('seachtype') === "4") {
                 $datas = DB::table('crm_contacts')->where('workno', '=', $request->input('seachtext'))
-                    ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
-                    ->get();
+                    ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"');
+                //->get();
             } else if ($request->input('seachtype') === "5") {
                 $datas = DB::table('crm_contacts')->where('hn', 'like', '%' . $request->input('seachtext') . '%')
-                    ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
-                    ->get();
+                    ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"');
+                //->get();
             } else if ($request->input('seachtype') === "6") {
                 $datas = DB::table('crm_contacts')->where('fname', 'like', '%' . $request->input('seachtext') . '%')
-                    ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
-                    ->get();
+                    ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"');
+                //->get();
             }
+            $datas->orderBy("created_at", "desc")->get();
 
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
@@ -91,7 +92,8 @@ class ContactController extends Controller
                     return $row->fname . ' ' . $row->lname;
                 })
                 ->editColumn('adddate', function ($row) {
-                    $adddate = Carbon::parse($row->adddate)->addYears(543)->format('d/m/Y');
+                    //$adddate = Carbon::parse($row->adddate)->addYears(543)->format('d/m/Y');
+                    $adddate = Carbon::parse($row->created_at)->format('Y-m-d H:i:s');
                     return $adddate;
                 })
                 ->addColumn('action', function ($row) {
