@@ -313,6 +313,7 @@ class CasesController extends Controller
         $data = CrmCaseComment::select('crm_case_comments.*', 'users.name as agentname')
             ->join('users', 'crm_case_comments.agent', '=', 'users.id')
             ->where('crm_case_comments.case_id', $id)
+            ->orderBy("id", "desc")
             ->get();
 
         $template = 'cases.commentlist';
