@@ -56,7 +56,7 @@
                                 <div class="timeline-body">
                                     {{ $casecomments->comment }}
                                 </div>
-                                <div class="timeline-footer">
+                                <div class="timeline-footer text-right">
                                     <button type="button" data-comment_id="{{ $casecomments->id }}"
                                         class="btn btn-sm btn-warning selectcomment-button"><i
                                             class="fa-solid fa-comment-dots"></i> รายละเอียด
