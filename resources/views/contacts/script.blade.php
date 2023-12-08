@@ -159,7 +159,7 @@
             $('#reservation').daterangepicker({
                 startDate: startDate,
                 endDate: endDate,
-                stickyMonths : false,
+                showDropdowns: true,
                 ranges: {
                     'วันนี้': todayRange,
                     'เมื่อวานนี้': yesterdayRange,
