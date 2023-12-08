@@ -170,6 +170,10 @@
     });
     //queue wait list on agent
 
+    socket.on('queuecallerabandon', async (response) => {
+        positionCards();
+    });
+
     socket.on('peerstatus', async (data) => {
         let peer = data.extension.split("/");
         if (peer[1] == exten) {
@@ -394,7 +398,7 @@
                 success: function(result) {
                     set_state_icon(result.id, result.icon, result.message);
                     set_state_button(result.id);
-                    positionCards();
+                    //positionCards();
                     call_list();
                     toolbar_modal.modal('show');
                 }
