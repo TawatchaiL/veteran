@@ -545,11 +545,12 @@
                     },
                     customize: function(win) {
                         // Customize the print layout
-                        $(win.document.body).find('h1').css('text-align', 'center');
-                        $(win.document.body).find('table').addClass('display').css('font-size',
-                            '12px');
+                        $(win.document.body).prepend('<img style="position:absolute; top:0; left:470;width:100" src='+logobase64+'>')
+                        $(win.document.body).find('h1').css('text-align', 'center').css('font-size','16px').css('margin-top','105px');
+                        $(win.document.body).find('table').addClass('display').css('font-size','12px')
+                                            .removeClass('dataTable').css('margin-top','5px').css('margin-bottom','60px');
                         $(win.document.body).find('table.dataTable th, table.dataTable td').css(
-                            'border', '1px solid #ddd');
+                            'border', '1px solid black');
                         $(win.document.body).find('table.dataTable th').css('background-color',
                             '#f2f2f2');
                         $(win.document.body).find('table.dataTable td:nth-child(0)').css(
@@ -575,8 +576,8 @@
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
             columns: [{
-                    data: 'row_number',
-                    name: 'row_number',
+                    data: 'rownumber',
+                    name: 'rownumber',
                     orderable: false,
                     searchable: false,
                 },
