@@ -516,7 +516,7 @@
 							}
 						});
 
-                        doc.content[0].table.widths = ['*', 80, 80, 80, 80, 80, 80, 80];
+                        doc.content[0].table.widths = [40,'*', 80, 80, 80, 70, 70, 70, 70];
                         var objLayout = {};
 						objLayout['hLineWidth'] = function(i) { return .5; };
 						objLayout['vLineWidth'] = function(i) { return .5; };
@@ -529,7 +529,8 @@
 						doc.content[0].layout = objLayout;
 
                         for (var i = 1; i < doc.content[0].table.body.length; i++) {
-                            doc.content[0].table.body[i][0].alignment = 'left';
+                            doc.content[0].table.body[i][1].alignment = 'left';
+                            /*
                             doc.content[0].table.body[i][1].alignment = 'center';
                             doc.content[0].table.body[i][2].alignment = 'center';
                             doc.content[0].table.body[i][3].alignment = 'center';
@@ -537,6 +538,7 @@
                             doc.content[0].table.body[i][5].alignment = 'center';
                             doc.content[0].table.body[i][6].alignment = 'center';
                             doc.content[0].table.body[i][7].alignment = 'center';
+                            */
                         }
                 }
                 },
@@ -587,10 +589,11 @@
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
             columns: [{
-                    data: 'rownumber',
-                    name: 'rownumber',
+                    data: 'checkbox',
+                    name: 'checkbox',
                     orderable: false,
                     searchable: false,
+                    className: 'no-print'
                 },
                 {
                     data: 'agent',
