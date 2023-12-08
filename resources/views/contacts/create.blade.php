@@ -91,8 +91,7 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> คำนำหน้าชื่อ:</strong>
-                                                    <select style="width: 100%;"
-                                                        class="select2 form-control"
+                                                    <select style="width: 100%;" class="select2 form-control"
                                                         id="Addtname" name="Addtname">
                                                         <option value="">กรุณาเลือก</option>
                                                         <option value="คุณ">คุณ</option>
@@ -121,8 +120,7 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> เพศ:</strong>
-                                                    <select style="width: 100%;"
-                                                        class="select2 form-control"
+                                                    <select style="width: 100%;" class="select2 form-control"
                                                         id="Addsex" name="Addsex">
                                                         <option value="">กรุณาเลือก</option>
                                                         <option value="ชาย">ชาย</option>
@@ -147,7 +145,12 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> อายุ:</strong>
-                                                    {!! Form::text('Addage', null, ['id' => 'Addage', 'placeholder' => 'อายุ', 'class' => 'form-control','readonly' => true]) !!}
+                                                    {!! Form::text('Addage', null, [
+                                                        'id' => 'Addage',
+                                                        'placeholder' => 'อายุ',
+                                                        'class' => 'form-control',
+                                                        'readonly' => true,
+                                                    ]) !!}
                                                 </div>
                                             </div>
                                         </div>
@@ -155,8 +158,7 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> กรุ๊ปเลือด:</strong>
-                                                    <select style="width: 100%;"
-                                                        class="select2 form-control"
+                                                    <select style="width: 100%;" class="select2 form-control"
                                                         id="Addbloodgroup" name="Addbloodgroup">
                                                         <option value="">กรุณาเลือก</option>
                                                         <option value="A">A</option>
@@ -320,7 +322,9 @@
                                                     <thead>
                                                         <tr class="headings">
                                                             <th class="column-title">
-                                                                ชื่อบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน<input type="hidden" value="" name="checkemer" id="Addcheckemer"></th>
+                                                                ชื่อบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน<input type="hidden"
+                                                                    value="" name="checkemer"
+                                                                    id="Addcheckemer"></th>
                                                             <th class="column-title"> ความสัมพันธ์</th>
                                                             <th class="column-title"> เบอร์โทรศัพท์</th>
                                                         </tr>
@@ -332,7 +336,8 @@
                                             <div class="col-md-12" align="right">
 
                                                 <button type="button" id="addRowBtn"
-                                                    class="btn btn-primary btnAddg"><i class="fa-solid fa-plus"></i> เพิ่มบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน</button>
+                                                    class="btn btn-primary btnAddg"><i class="fa-solid fa-plus"></i>
+                                                    เพิ่มบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน</button>
                                             </div>
                                         </div>
 

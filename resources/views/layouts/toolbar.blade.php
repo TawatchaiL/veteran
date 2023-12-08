@@ -201,7 +201,8 @@
             <div class="modal-header {{ $toolbar_header }}" id="toolbar_header">
                 <h4 class="modal-title">{{-- <i class="fas fa-wrench"></i> --}} <i class="fas fa-spin fa-gear"></i>
                     {{ $temporaryUserName }} [
-                    {{ $temporaryPhone }} ] <span id="pausereason" class="ml-auto"></span> <span id="pausedur" class="ml-2"></span> </h4>
+                    {{ $temporaryPhone }} ] <span id="pausereason" class="ml-auto"></span> <span id="pausedur"
+                        class="ml-2"></span> </h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -297,10 +298,10 @@
                         </div>
                         <button {{ $unwarp_button }} id="btn-unwarp"
                             class="{{ $unwarp_button_class }} btn btn-warning custom-button mx-1 float-left">
-                            <i class="fas fa-clock"></i> รับสายต่อ 
+                            <i class="fas fa-clock"></i> รับสายต่อ
                         </button>
 
-                       {{--  <div class="mx-2 px-2">
+                        {{--  <div class="mx-2 px-2">
                             <button {{ $login_button }} id="btn-agent-login"
                                 class="{{ $login_button_class }} btn btn-success custom-button mx-1 float-left">
                                 <i class="fas fa-plug"></i> พร้อมรับสาย
@@ -323,7 +324,7 @@
                             <button {{ $unbreak_button }}
                                 class="{{ $unbreak_button_class }} btn btn-warning custom-button float-left mx-1 button_unbreak"
                                 id="btn-unbreak">
-                                <i class="fas fa-clock"></i> รับสายต่อ 
+                                <i class="fas fa-clock"></i> รับสายต่อ
                             </button>
                         </div>
 
@@ -363,7 +364,8 @@
                 </div>
             </div>
             <div class="overlay d-none" id="state_overlay">
-                <div class="card" id="toolbar_card">
+                <i class="fas fa-spin fa-2x fa-sync-alt"></i>
+                <div class="card d-none" id="toolbar_card">
                     <div class="card-body">
                         <h4><i class="fa-solid icon-black fa-xl fa-phone-slash"></i> <span
                                 class="icon-black">หมายเลขโทรศัพท์

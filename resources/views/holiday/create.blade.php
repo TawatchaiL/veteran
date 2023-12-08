@@ -36,7 +36,7 @@
                         <div class="form-group">
                             <strong><i class="fas fa-calendar"></i> จากวันที่:</strong>
                             @php
-                                $datethai = date('d/m/') . date('Y') + 543 . ' ' . date('H:i');
+                                $datethai = date('Y-m-d');
                             @endphp
                             {!! Form::text('start_date', $datethai, [
                                 'id' => 'AddSDate',
@@ -50,7 +50,7 @@
                         <div class="form-group">
                             <strong><i class="fas fa-clock-o"></i> เวลา:</strong>
                             @php
-                                $timethai = date('H:i');
+                                $timethai = "00:00:00";
                             @endphp
                             {!! Form::text('start_time', $timethai, [
                                 'id' => 'AddSTime',
@@ -66,7 +66,7 @@
                         <div class="form-group">
                             <strong><i class="fas fa-calendar"></i> ถึงวันที่:</strong>
                             @php
-                                $datethai = date('d/m/') . date('Y') + 543 . ' ' . date('H:i');
+                                $datethai = date('Y') + 1 . '-' . date('m-d');
                             @endphp
                             {!! Form::text('end_date', $datethai, [
                                 'id' => 'AddEDate',
@@ -80,7 +80,7 @@
                         <div class="form-group">
                             <strong><i class="fas fa-clock-o"></i> เวลา:</strong>
                             @php
-                                $timethai = date('H:i');
+                                $timethai = "23:59:59";
                             @endphp
                             {!! Form::text('end_time', $timethai, [
                                 'id' => 'AddETime',

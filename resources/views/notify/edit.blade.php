@@ -39,7 +39,7 @@
                                 <div class="form-group">
                                     <strong><i class="fas fa-calendar"></i> จากวันที่:</strong>
                                     @php
-                                        $datethai = date('d/m/') . date('Y') + 543;
+                                        $datethai = date('Y-m-d');
                                     @endphp
                                     {!! Form::text('start_date', $datethai, [
                                         'id' => 'EditSDate',
@@ -53,7 +53,7 @@
                                 <div class="form-group">
                                     <strong><i class="fas fa-clock-o"></i> เวลา:</strong>
                                     @php
-                                        $timethai = date('H:i:s');
+                                        $timethai = "00:00:00";
                                     @endphp
                                     {!! Form::text('end_time', $timethai, [
                                         'id' => 'EditSTime',
@@ -69,7 +69,7 @@
                                 <div class="form-group">
                                     <strong><i class="fas fa-calendar"></i> ถึงวันที่:</strong>
                                     @php
-                                        $datethai = date('d/m/') . date('Y') + 543;
+                                        $datethai = date('Y-m-d');
                                     @endphp
                                     {!! Form::text('end_date', $datethai, [
                                         'id' => 'EditEDate',
@@ -83,7 +83,7 @@
                                 <div class="form-group">
                                     <strong><i class="fas fa-clock-o"></i> เวลา:</strong>
                                     @php
-                                        $timethai = date('H:i:s');
+                                        $timethai = "2359:59";
                                     @endphp
                                     {!! Form::text('end_time', $timethai, [
                                         'id' => 'EditETime',

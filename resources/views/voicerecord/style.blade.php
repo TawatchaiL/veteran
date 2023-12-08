@@ -20,6 +20,7 @@
     .dataTables_filter {
         display: none;
     }
+    
 
     .overlay {
         position: fixed;

@@ -458,10 +458,10 @@ class PBXController extends Controller
         if ($user) {
             //check if queue call send to popup record
             if ($request->input('context') == 'ext-queues') {
-                DB::table('crm_incoming')
+               /*  DB::table('crm_incoming')
                     ->where('telno', $request->input('telno'))
                     ->where('agent_id', $user->id)
-                    ->delete();
+                    ->delete(); */
                 DB::table('crm_incoming')->insert([
                     'agent_id' => $user->id,
                     'uniqid' => $request->input('uniqid'),

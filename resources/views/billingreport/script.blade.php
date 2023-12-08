@@ -8,11 +8,11 @@
 {{-- <script src="/js/app.js?v=1"></script> --}}
 {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 <script type="module">
-    import WaveSurfer from 'https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js'
-    import Hover from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/hover.esm.js'
-    import Minimap from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/minimap.esm.js'
-    import TimelinePlugin from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/timeline.esm.js'
-    import RegionsPlugin from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/regions.esm.js'
+    import WaveSurfer from './dist/js/wavesurfer.esm.js'
+    import Hover from './dist/js/hover.esm.js'
+    import Minimap from './dist/js/minimap.esm.js'
+    import TimelinePlugin from './dist/js/timeline.esm.js'
+    import RegionsPlugin from './dist/js/regions.esm.js'
 
     let wavesurfer; // Declare the wavesurfer variable
     // Function to create and initialize WaveSurfer
@@ -381,7 +381,7 @@
 
     const random = (min, max) => Math.random() * (max - min) + min
     const randomColor = () => `rgba(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)}, 0.5)`
-    
+
     $(document).on('click', '.changeUrlButton', function() {
         var dataId = $(this).data('id');
         $.ajax({
@@ -451,7 +451,7 @@
     }
 
     $(document).ready(function() {
-        
+
         $(".delete_all_button").click(function() {
             var len = $('input[name="table_records[]"]:checked').length;
             if (len > 0) {
@@ -672,46 +672,61 @@
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                     },
-                    customize: function ( doc ) {
-                    doc.defaultStyle = {
+                    customize: function(doc) {
+                        doc.defaultStyle = {
                             font: 'THSarabun',
                             fontSize: 16
                         };
-                        doc.content.splice(0,1);
-                        doc.pageMargins = [20,100,20,30];
-						doc.styles.tableHeader.fontSize = 16;
+                        doc.content.splice(0, 1);
+                        doc.pageMargins = [20, 100, 20, 30];
+                        doc.styles.tableHeader.fontSize = 16;
                         doc.styles.tableFooter.fontSize = 16;
-                        doc['header']=(function() {
-							return {
-								columns: [
-									{
-										image: logobase64,
+                        doc['header'] = (function() {
+                            return {
+                                columns: [{
+                                        image: logobase64,
                                         width: 50,
                                         margin: [380, 0, 50, 50],
-									},
-									{
-										alignment: 'center',
-										italics: true,
-										text: 'รายละเอียดค่าใช้จ่าย',
-										fontSize: 18,
-										margin: [20, 50, 70, 0]
-									}
-								],
-								margin:20
-							}
-						});
-                        
+                                    },
+                                    {
+                                        alignment: 'center',
+                                        italics: true,
+                                        text: 'รายละเอียดค่าใช้จ่าย',
+                                        fontSize: 18,
+                                        margin: [20, 50, 70, 0]
+                                    }
+                                ],
+                                margin: 20
+                            }
+                        });
+
                         doc.content[0].table.widths = [70, 70, 70, 70, 70, 70, 70, 70, '*'];
                         var objLayout = {};
-						objLayout['hLineWidth'] = function(i) { return .5; };
-						objLayout['vLineWidth'] = function(i) { return .5; };
-						objLayout['hLineColor'] = function(i) { return '#bfbfbf'; };
-						objLayout['vLineColor'] = function(i) { return '#bfbfbf'; };
-						objLayout['paddingLeft'] = function(i) { return 4; };
-						objLayout['paddingRight'] = function(i) { return 4; };
-                        objLayout['paddingTop'] = function(i) { return 3; };
-                        objLayout['paddingBottom'] = function(i) { return 3; };
-						doc.content[0].layout = objLayout;
+                        objLayout['hLineWidth'] = function(i) {
+                            return .5;
+                        };
+                        objLayout['vLineWidth'] = function(i) {
+                            return .5;
+                        };
+                        objLayout['hLineColor'] = function(i) {
+                            return '#bfbfbf';
+                        };
+                        objLayout['vLineColor'] = function(i) {
+                            return '#bfbfbf';
+                        };
+                        objLayout['paddingLeft'] = function(i) {
+                            return 4;
+                        };
+                        objLayout['paddingRight'] = function(i) {
+                            return 4;
+                        };
+                        objLayout['paddingTop'] = function(i) {
+                            return 3;
+                        };
+                        objLayout['paddingBottom'] = function(i) {
+                            return 3;
+                        };
+                        doc.content[0].layout = objLayout;
 
                         for (var i = 1; i < doc.content[0].table.body.length; i++) {
                             doc.content[0].table.body[i][0].alignment = 'center';
@@ -724,7 +739,7 @@
                             doc.content[0].table.body[i][7].alignment = 'center';
                             doc.content[0].table.body[i][8].alignment = 'left';
                         }
-                }
+                    }
                 },
                 {
                     extend: 'print',
@@ -835,7 +850,7 @@
                     data: 'more',
                     name: 'more'
                 }
-            ],            
+            ],
             "footerCallback": function(row, data, start, end, display) {
                 var api = this.api();
 
@@ -884,8 +899,10 @@
             }
             // Set the date range back to its default
             var currentDate = moment();
-            var startDate = moment(currentDate).subtract(30, 'days').startOf('day').format('YYYY-MM-DD HH:mm:ss');
-            var endDate = moment(currentDate).endOf('month').endOf('day').format('YYYY-MM-DD HH:mm:ss');
+            var startDate = moment(currentDate).subtract(30, 'days').startOf('day').format(
+                'YYYY-MM-DD HH:mm:ss');
+            var endDate = moment(currentDate).endOf('month').endOf('day').format(
+                'YYYY-MM-DD HH:mm:ss');
 
             daterange();
             table = $('#Listview').DataTable(table_option);
@@ -909,46 +926,46 @@
             if (!confirm("ยืนยันการทำรายการ ?")) return;
             //e.preventDefault();
             var Id = $('#uniqueid').val();
-            
+
             $('.alert-danger').html('');
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
-            
+
             var csrfToken = document.querySelector('meta[name="csrf-token"]')
-                            .getAttribute('content');
-                        $.ajax({
-                            type: "get",
-                            url: "/billingreport/comment",
-                            headers: {
-                                'X-CSRF-TOKEN': csrfToken
-                            },
-                            data: {
-                                uniqueid: Id,
-                                billing: $('#billing-input').val(),
-                            },
-                            success: function(response) {
-                                if (response.errors) {
-                                    $('.alert-danger').html('');
-                                    $.each(result.errors, function(key, value) {
-                                        $('.alert-danger').show();
-                                        $('.alert-danger').append('<strong><li>' + value +
-                                            '</li></strong>');
-                                    });
-                                } else {
-                                    $('.alert-danger').hide();
-                                    $('.alert-success').show();
-                                    $('.alert-success').append('<strong><li>' + response.success +
-                                        '</li></strong>');
-                                    $('#CreateModalb').modal('hide');
-                                    toastr.success(response.success, {
-                                        timeOut: 5000
-                                    });
-                                    $('#Listview').DataTable().ajax.reload();
-                                }
-                            },
-                            error: function(error) {}
+                .getAttribute('content');
+            $.ajax({
+                type: "get",
+                url: "/billingreport/comment",
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken
+                },
+                data: {
+                    uniqueid: Id,
+                    billing: $('#billing-input').val(),
+                },
+                success: function(response) {
+                    if (response.errors) {
+                        $('.alert-danger').html('');
+                        $.each(result.errors, function(key, value) {
+                            $('.alert-danger').show();
+                            $('.alert-danger').append('<strong><li>' + value +
+                                '</li></strong>');
                         });
+                    } else {
+                        $('.alert-danger').hide();
+                        $('.alert-success').show();
+                        $('.alert-success').append('<strong><li>' + response.success +
+                            '</li></strong>');
+                        $('#CreateModalb').modal('hide');
+                        toastr.success(response.success, {
+                            timeOut: 5000
+                        });
+                        $('#Listview').DataTable().ajax.reload();
+                    }
+                },
+                error: function(error) {}
+            });
         });
 
 

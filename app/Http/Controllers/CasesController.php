@@ -7,6 +7,7 @@ use App\Models\CrmCase;
 use App\Models\User;
 use App\Models\CrmCaseComment;
 use App\Models\CrmCaseslog;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -106,6 +107,10 @@ class CasesController extends Controller
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
+                })
+                ->editColumn('created_at', function ($row) {
+                    $adddate = Carbon::parse($row->created_at)->addYears(543)->format('d/m/Y H:i:s');
+                    return $adddate;
                 })
                 ->addColumn('action', function ($row) {
                     if (Gate::allows('case-edit')) {

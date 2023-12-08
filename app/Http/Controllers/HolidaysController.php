@@ -107,29 +107,16 @@ class HolidaysController extends Controller
         }
 
         $sdate_time = $request->get('start_date') . " " . $request->get('start_time');
-        $start_array = explode(" ", $sdate_time);
-        // Manually adjust the year from Buddhist to Gregorian calendar
-        $sgregorianYear = intval(substr($start_array[0], 6)) - 543;
-        $sgregorianDate = $sgregorianYear . substr($start_array[0], 2, 3) . "/" . substr($start_array[0], 0, 2);
-        $start_date_convert = Carbon::createFromFormat('Y/m/d', $sgregorianDate, 'Asia/Bangkok');
-        $startutcDate = $start_date_convert->setTimezone('UTC');
-        $startutcFormattedDate = $startutcDate->format('Y-m-d');
-
-
         $edate_time = $request->get('end_date') . " " . $request->get('end_time');
+        $start_array = explode(" ", $sdate_time);
         $end_array = explode(" ", $edate_time);
-        $egregorianYear = intval(substr($end_array[0], 6)) - 543;
-        $egregorianDate = $egregorianYear . substr($end_array[0], 2, 3) . "/" . substr($end_array[0], 0, 2);
-        $end_date_convert = Carbon::createFromFormat('Y/m/d', $egregorianDate, 'Asia/Bangkok');
-        $endutcDate = $end_date_convert->setTimezone('UTC');
-        $endutcFormattedDate = $endutcDate->format('Y-m-d');
 
         $holiday = [
             'name' => $request->get('name'),
             'holiday_sound' => $request->get('holiday_sound'),
             'thankyou_sound' => $request->get('thankyou_sound'),
-            'start_datetime' =>  $startutcFormattedDate . " " . $start_array[1],
-            'end_datetime' => $endutcFormattedDate . " " . $end_array[1],
+            'start_datetime' =>  $request->get('start_date') . " " . $start_array[1],
+            'end_datetime' => $request->get('end_date') . " " . $end_array[1],
             'start_datetime_th' =>  $request->get('start_date') . " " . $start_array[1],
             'end_datetime_th' => $request->get('end_date') . " " . $end_array[1],
             'status' => $request->get('status'),
@@ -196,27 +183,17 @@ class HolidaysController extends Controller
 
         $sdate_time = $request->get('start_date') . " " . $request->get('start_time');
         $start_array = explode(" ", $sdate_time);
-        // Manually adjust the year from Buddhist to Gregorian calendar
-        $sgregorianYear = intval(substr($start_array[0], 6)) - 543;
-        $sgregorianDate = $sgregorianYear . substr($start_array[0], 2, 3) . "/" . substr($start_array[0], 0, 2);
-        $start_date_convert = Carbon::createFromFormat('Y/m/d', $sgregorianDate, 'Asia/Bangkok');
-        $startutcDate = $start_date_convert->setTimezone('UTC');
-        $startutcFormattedDate = $startutcDate->format('Y-m-d');
 
         $edate_time = $request->get('end_date') . " " . $request->get('end_time');
         $end_array = explode(" ", $edate_time);
-        $egregorianYear = intval(substr($end_array[0], 6)) - 543;
-        $egregorianDate = $egregorianYear . substr($end_array[0], 2, 3) . "/" . substr($end_array[0], 0, 2);
-        $end_date_convert = Carbon::createFromFormat('Y/m/d', $egregorianDate, 'Asia/Bangkok');
-        $endutcDate = $end_date_convert->setTimezone('UTC');
-        $endutcFormattedDate = $endutcDate->format('Y-m-d');
+
 
         $holiday = [
             'name' => $request->get('name'),
             'holiday_sound' => $request->get('holiday_sound'),
             'thankyou_sound' => $request->get('thankyou_sound'),
-            'start_datetime' =>  $startutcFormattedDate . " " . $start_array[1],
-            'end_datetime' => $endutcFormattedDate . " " . $end_array[1],
+            'start_datetime' =>  $request->get('start_date') . " " . $start_array[1],
+            'end_datetime' => $request->get('end_date') . " " . $end_array[1],
             'start_datetime_th' =>  $request->get('start_date') . " " . $start_array[1],
             'end_datetime_th' => $request->get('end_date') . " " . $end_array[1],
             'status' => $request->get('status'),

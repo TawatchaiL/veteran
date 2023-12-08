@@ -91,7 +91,7 @@ class ContactController extends Controller
                     return $row->fname . ' ' . $row->lname;
                 })
                 ->editColumn('adddate', function ($row) {
-                    $adddate = Carbon::parse($row->adddate)->addYears(543)->format('Y-m-d');
+                    $adddate = Carbon::parse($row->adddate)->addYears(543)->format('d/m/Y');
                     return $adddate;
                 })
                 ->addColumn('action', function ($row) {
@@ -130,8 +130,8 @@ class ContactController extends Controller
         $cid = $request->input('cardId');
 
         $datau = DB::table('crm_incoming')
-        ->where('id', '=', $cid)
-        ->get();
+            ->where('id', '=', $cid)
+            ->get();
         $con = $datau[0]->telno;
 
         $datap = DB::table('crm_contacts')
@@ -167,12 +167,13 @@ class ContactController extends Controller
     {
         $con = $request->get('contactid');
         $cards = $request->get('cardid');
+        $telephoneno = $request->get('telephoneno');
         $datap = DB::table('crm_contacts')
             ->where('id', '=', $con)
             ->get();
         $template = 'contacts.contact-create';
         $htmlContent = View::make($template, [
-            'cardid' => $cards, 'telephone' => $cards, 'contactd' => $datap
+            'cardid' => $cards, 'telephone' => $telephoneno, 'contactd' => $datap
         ])->render();
         return response()->json([
             'html' =>  $htmlContent,

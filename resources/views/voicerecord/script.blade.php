@@ -1,14 +1,15 @@
 <script src="dist/js/html2canvas.min.js"></script>
 <script src='dist/js/jspdf.min.js'></script>
 <script src="dist/js/jspdf.plugin.autotable.min.js"></script>
+<script src='dist/js/logo.js'></script>
 {{-- <script src="/js/app.js?v=1"></script> --}}
 {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 <script type="module">
-    import WaveSurfer from 'https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js'
-    import Hover from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/hover.esm.js'
-    import Minimap from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/minimap.esm.js'
-    import TimelinePlugin from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/timeline.esm.js'
-    import RegionsPlugin from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/regions.esm.js'
+    import WaveSurfer from './dist/js/wavesurfer.esm.js'
+    import Hover from './dist/js/hover.esm.js'
+    import Minimap from './dist/js/minimap.esm.js'
+    import TimelinePlugin from './dist/js/timeline.esm.js'
+    import RegionsPlugin from './dist/js/regions.esm.js'
 
     let wavesurfer; // Declare the wavesurfer variable
 
@@ -472,7 +473,8 @@
         var endDate;
 
         function datesearch() {
-            var currentDate = moment().add(1, 'month').add(543, 'year').format('LLLL');
+            //.add(1, 'month').add(543, 'year').format('LLLL')
+            var currentDate = moment();
             console.log(currentDate)
             startDate = moment(currentDate).subtract(30, 'days').startOf('day').format('YYYY-MM-DD HH:mm:ss');
             endDate = moment(currentDate).endOf('month').endOf('day').format('YYYY-MM-DD HH:mm:ss');
@@ -572,10 +574,11 @@
             });
             // Apply the custom date range filter on input change
             $('#reservation').on('apply.daterangepicker', function(ev, picker) {
-                var startYear = picker.startDate.format('YYYY') - 543;
-                var endYear = picker.endDate.format('YYYY') - 543;
-                $('#reservation').val(startYear + '-' + picker.startDate.format('MM-DD HH:mm:ss') + ' - ' +
-                    endYear + '-' + picker.endDate.format('MM-DD HH:mm:ss'));
+                /* var startYear = picker.startDate.format('YYYY') - 543;
+                var endYear = picker.endDate.format('YYYY') - 543; 
+                $('#reservation').val(startYear + '-' + picker.startDate.format('MM-DD HH:mm:ss') +
+                    ' - ' +
+                    endYear + '-' + picker.endDate.format('MM-DD HH:mm:ss'));*/
                 console.log($('#reservation').val())
                 table.draw();
                 storeFieldValues();
@@ -642,6 +645,7 @@
                     extend: 'excel',
                     text: 'Excel',
                     title: 'ไฟล์บันทึกเสียงสนทนา',
+                    "download": 'open',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                     },
@@ -665,66 +669,84 @@
                 },
                 'csv',
                 { // กำหนดพิเศษเฉพาะปุ่ม pdf
-                    "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
+                    "extend": 'pdfHtml5', // ปุ่มสร้าง pdf ไฟล์
                     "text": 'PDF', // ข้อความที่แสดง
                     "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
                     "title": 'ไฟล์บันทึกเสียงสนทนา',
+                    "autoBom": true,
+                    "download": 'open',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                     },
                     "customize": function(doc) { // ส่วนกำหนดเพิ่มเติม ส่วนนี้จะใช้จัดการกับ pdfmake
-                        // กำหนด style หลัก
                         doc.defaultStyle = {
                             font: 'THSarabun',
                             fontSize: 16
                         };
-                        // กำหนดความกว้างของ header แต่ละคอลัมน์หัวข้อ
-                        doc.content[1].table.widths = [80, 80, 100, 110, 60, 60];
-                        doc.styles.tableHeader.fontSize = 16; // กำหนดขนาด font ของ header
-                        // Add cell borders
-                        doc.content[1].table.layout = {
-                            hLineWidth: function(i, node) {
-                                return 1; // Border width for horizontal lines
-                            },
-                            vLineWidth: function(i, node) {
-                                return 1; // Border width for vertical lines
-                            },
-                            hLineColor: function(i, node) {
-                                return '#bfbfbf'; // Border color for horizontal lines
-                            },
-                            vLineColor: function(i, node) {
-                                return '#bfbfbf'; // Border color for vertical lines
-                            },
-                            paddingLeft: function(i, node) {
-                                return 5; // Padding for cells
-                            },
-                            paddingRight: function(i, node) {
-                                return 5; // Padding for cells
-                            },
-                            paddingTop: function(i, node) {
-                                return 3; // Padding for cells
-                            },
-                            paddingBottom: function(i, node) {
-                                return 3; // Padding for cells
+                        doc.content.splice(0, 1);
+                        doc.pageMargins = [20, 100, 20, 30];
+                        doc.styles.tableHeader.fontSize = 16;
+                        doc.styles.tableFooter.fontSize = 16;
+                        doc['header'] = (function() {
+                            return {
+                                columns: [{
+                                        image: logobase64,
+                                        width: 70,
+                                        margin: [250, -20, 50, 50],
+                                    },
+                                    {
+                                        alignment: 'center',
+                                        italics: true,
+                                        text: 'ไฟล์บันทึกเสียงสนทนา',
+                                        fontSize: 18,
+                                        margin: [20, 50, 70, 0]
+                                    }
+                                ],
+                                margin: 20
                             }
+                        });
 
-                        }
-                        for (var i = 1; i < doc.content[1].table.body.length; i++) {
-                            doc.content[1].table.body[i][0].alignment =
-                                'center'; // Align the first column to the center
-                            doc.content[1].table.body[i][1].alignment =
-                                'center'; // Align the second column to the right
-                            //doc.content[1].table.body[i][2].alignment =
-                            //'center'; // Align the second column to the right
-                            // Customize alignments for other columns as needed
-                            doc.content[1].table.body[i][2].alignment =
-                                'center';
-                            doc.content[1].table.body[i][3].alignment =
-                                'center';
-                            doc.content[1].table.body[i][4].alignment =
-                                'center';
+                        doc.content[0].table.widths = [100, 100, 100, 100, '*'];
+                        var objLayout = {};
+                        objLayout['hLineWidth'] = function(i) {
+                            return .5;
+                        };
+                        objLayout['vLineWidth'] = function(i) {
+                            return .5;
+                        };
+                        objLayout['hLineColor'] = function(i) {
+                            return '#bfbfbf';
+                        };
+                        objLayout['vLineColor'] = function(i) {
+                            return '#bfbfbf';
+                        };
+                        objLayout['paddingLeft'] = function(i) {
+                            return 4;
+                        };
+                        objLayout['paddingRight'] = function(i) {
+                            return 4;
+                        };
+                        objLayout['paddingTop'] = function(i) {
+                            return 3;
+                        };
+                        objLayout['paddingBottom'] = function(i) {
+                            return 3;
+                        };
+                        doc.content[0].layout = objLayout;
 
+                        for (var i = 1; i < doc.content[0].table.body.length; i++) {
+                            doc.content[0].table.body[i][0].alignment = 'center';
+                            doc.content[0].table.body[i][1].alignment = 'center';
+                            doc.content[0].table.body[i][2].alignment = 'center';
+                            doc.content[0].table.body[i][3].alignment = 'center';
+                            doc.content[0].table.body[i][4].alignment = 'center';
                         }
+                        /*  doc.content.splice(1, 0, {
+                             margin: [0, 0, 0, 12],
+                             alignment: 'center',
+                             image: '{{ $base64logo }}',
+                             fit: [100, 100]
+                         }); */
 
                     }
                 },
@@ -742,8 +764,17 @@
                             }
                         }
                     },
-                    customize: function(win) {
+                    /* customize: function(win) {
                         // Customize the print layout
+                        $(win.document.body)
+                            .css('font-size', '10pt')
+                            .prepend(
+                                '<div><img src="http://datatables.net/media/images/logo-fade.png" style="position:absolute; top:0; left:0;"  alt="logo"/></div>'
+                            );
+
+                        $(win.document.body).find('table')
+                            .addClass('compact')
+                            .css('font-size', 'inherit');
                         $(win.document.body).find('h1').css('text-align', 'center');
                         $(win.document.body).find('table').addClass('display').css('font-size',
                             '12px');
@@ -753,7 +784,41 @@
                             '#f2f2f2');
                         $(win.document.body).find('table.dataTable td:nth-child(0)').css(
                             'width', '50px');
-                    }
+                    } */
+                    customize: function(doc) {
+                        var now = new Date();
+                        var jsDate = now.getDate() + '-' + (now.getMonth() + 1) + '-' + now
+                            .getFullYear();
+                        $(doc.document.body)
+
+                            .prepend(
+                                '<img style="position:absolute; top:10; left:250;width:100" src=' +
+                                logobase64 + '>')
+                        /* .prepend(
+                            '<div style="position:absolute; top:10; right:0;">My Title</div>') 
+                        .prepend(
+                            '<div style="position:absolute; bottom:20; left:0;">Creato il: ' +
+                            jsDate.toString() + '</div>')
+                        .prepend(
+                            '<div style="position:absolute; top:10; left:50;font-size:24px;">SubTitle</div>'
+                            )
+                        .prepend(
+                            '<div style="position:absolute; top:30; left:450;font-size:20px;margin-botton:50px">My Title</div>'
+                            )*/
+                        //  .prepend('<div style="position:absolute; bottom:20; left:100;">Pagina '+page.toString()+' of '+pages.toString()+'</div>');
+
+                        $(doc.document.body).find('table')
+                            //.removeClass('dataTable')
+                            .css('font-size', '12px')
+                            .css('margin-top', '65px')
+                            .css('margin-bottom', '60px')
+                        /* $(doc.document.body).find('th').each(function(index) {
+                            $(this).css('font-size', '18px');
+                            $(this).css('color', '#fff');
+                            $(this).css('background-color', 'blue');
+                        } );*/
+                    },
+
                 }
             ],
             layout: {

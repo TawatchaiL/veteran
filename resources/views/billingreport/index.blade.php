@@ -57,7 +57,8 @@
                                                 name="cdepartment">
                                                 <option value="">ทั้งหมด</option>
                                                 @foreach ($departments as $department)
-                                                <option value="{{ $department->id }}">{{ $department->name ?? 'ไม่พบแผนก' }}</option>
+                                                    <option value="{{ $department->id }}">
+                                                        {{ $department->name ?? 'ไม่พบแผนก' }}</option>
                                                 @endforeach
                                             </select>
                                         </div>

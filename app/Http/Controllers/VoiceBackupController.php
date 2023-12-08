@@ -64,8 +64,10 @@ class VoiceBackupController extends Controller
                     return '<input type="checkbox" id="' . $row->id . '" class="flat" name="table_records[]" value="' . $row->id . '" >';
                 })
                 ->addColumn('export_date', function ($row) {
-                    $startCarbon = Carbon::parse($row->export_start)->addYears(543);
-                    $endCarbon = Carbon::parse($row->export_end)->addYears(543);
+                    /* $startCarbon = Carbon::parse($row->export_start)->addYears(543);
+                    $endCarbon = Carbon::parse($row->export_end)->addYears(543); */
+                    $startCarbon = Carbon::parse($row->export_start);
+                    $endCarbon = Carbon::parse($row->export_end);
 
                     $export_date = $startCarbon->format('Y-m-d H:i:s') . " - " . $endCarbon->format('Y-m-d H:i:s');
                     return $export_date;
@@ -162,19 +164,21 @@ class VoiceBackupController extends Controller
             $dateRangeArray = explode(' - ', $dateRange);
 
             if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
-                list($startDate, $startTime) = explode(' ', $dateRangeArray[0]);
-                list($endDate, $endTime) = explode(' ', $dateRangeArray[1]);
+                /* list($startDate, $startTime) = explode(' ', $dateRangeArray[0]);
+                list($endDate, $endTime) = explode(' ', $dateRangeArray[1]); */
 
-                [$startDay, $startMonth, $startYear] = explode('/', $startDate);
+                /* [$startDay, $startMonth, $startYear] = explode('/', $startDate);
                 [$endDay, $endMonth, $endYear] = explode('/', $endDate);
 
                 $startDate = ($startYear - 543) . "-$startMonth-$startDay $startTime";
-                $endDate = ($endYear - 543) . "-$endMonth-$endDay $endTime";
+                $endDate = ($endYear - 543) . "-$endMonth-$endDay $endTime"; */
+                $startDate = $dateRangeArray[0];
+                $endDate = $dateRangeArray[1];
             }
         }
 
         $holiday = [
-            'export_name' => "Export Voice Recording" . date("Y-m-d H:i:s"),
+            'export_name' => "Export Voice Recording " . date("Y-m-d H:i:s"),
             'export_start' =>  $startDate,
             'export_end' => $endDate,
             'export_src' =>  $request->get('src'),

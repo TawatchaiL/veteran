@@ -92,8 +92,6 @@
                         $(this).val(new_date);
                     }
                 }
-
-                console.log($(this).val());
             }
         });
 

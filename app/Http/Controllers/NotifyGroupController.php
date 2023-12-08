@@ -108,19 +108,19 @@ class NotifyGroupController extends Controller
 
         $start_array = explode(" ", $request->get('group_start'));
         // Manually adjust the year from Buddhist to Gregorian calendar
-        $sgregorianYear = intval(substr($start_array[0], 6)) - 543;
+        /* $sgregorianYear = intval(substr($start_array[0], 6)) - 543;
         $sgregorianDate = $sgregorianYear . substr($start_array[0], 2, 3) . "/" . substr($start_array[0], 0, 2);
         $start_date_convert = Carbon::createFromFormat('Y/m/d', $sgregorianDate, 'Asia/Bangkok');
         $startutcDate = $start_date_convert->setTimezone('UTC');
-        $startutcFormattedDate = $startutcDate->format('Y-m-d');
+        $startutcFormattedDate = $startutcDate->format('Y-m-d'); */
 
 
         $end_array = explode(" ", $request->get('group_end'));
-        $egregorianYear = intval(substr($end_array[0], 6)) - 543;
+        /* $egregorianYear = intval(substr($end_array[0], 6)) - 543;
         $egregorianDate = $egregorianYear . substr($end_array[0], 2, 3) . "/" . substr($end_array[0], 0, 2);
         $end_date_convert = Carbon::createFromFormat('Y/m/d', $egregorianDate, 'Asia/Bangkok');
         $endutcDate = $end_date_convert->setTimezone('UTC');
-        $endutcFormattedDate = $endutcDate->format('Y-m-d');
+        $endutcFormattedDate = $endutcDate->format('Y-m-d'); */
 
         $groupExtensionCount = count($request->get('group_extension'));
 
@@ -129,8 +129,8 @@ class NotifyGroupController extends Controller
             'line_token' => $request->get('line_token'),
             'email' => $request->get('email'),
             'group_extension' => $groupExtensionCount,
-            'group_start' =>  $startutcFormattedDate . " " . $start_array[1],
-            'group_end' => $endutcFormattedDate . " " . $end_array[1],
+            'group_start' =>  $start_array[0] . " " . $start_array[1],
+            'group_end' => $end_array[0] . " " . $end_array[1],
             'group_start_th' =>  $request->get('group_start'),
             'group_end_th' => $request->get('group_end'),
             'group_sat' => $request->get('sat'),
@@ -221,19 +221,19 @@ class NotifyGroupController extends Controller
         }
 
         $start_array = explode(" ", $request->get('group_start'));
-        $sgregorianYear = intval(substr($start_array[0], 6)) - 543;
+        /* $sgregorianYear = intval(substr($start_array[0], 6)) - 543;
         $sgregorianDate = $sgregorianYear . substr($start_array[0], 2, 3) . "/" . substr($start_array[0], 0, 2);
         $start_date_convert = Carbon::createFromFormat('Y/m/d', $sgregorianDate, 'Asia/Bangkok');
         $startutcDate = $start_date_convert->setTimezone('UTC');
-        $startutcFormattedDate = $startutcDate->format('Y-m-d');
+        $startutcFormattedDate = $startutcDate->format('Y-m-d'); */
 
 
         $end_array = explode(" ", $request->get('group_end'));
-        $egregorianYear = intval(substr($end_array[0], 6)) - 543;
+        /* $egregorianYear = intval(substr($end_array[0], 6)) - 543;
         $egregorianDate = $egregorianYear . substr($end_array[0], 2, 3) . "/" . substr($end_array[0], 0, 2);
         $end_date_convert = Carbon::createFromFormat('Y/m/d', $egregorianDate, 'Asia/Bangkok');
         $endutcDate = $end_date_convert->setTimezone('UTC');
-        $endutcFormattedDate = $endutcDate->format('Y-m-d');
+        $endutcFormattedDate = $endutcDate->format('Y-m-d'); */
 
         $groupExtensionCount = count($request->get('group_extension'));
 
@@ -242,8 +242,8 @@ class NotifyGroupController extends Controller
             'line_token' => $request->get('line_token'),
             'email' => $request->get('email'),
             'group_extension' => $groupExtensionCount,
-            'group_start' =>  $startutcFormattedDate . " " . $start_array[1],
-            'group_end' => $endutcFormattedDate . " " . $end_array[1],
+            'group_start' =>  $start_array[0] . " " . $start_array[1],
+            'group_end' => $end_array[0] . " " . $end_array[1],
             'group_start_th' =>  $request->get('group_start'),
             'group_end_th' => $request->get('group_end'),
             'group_sat' => $request->get('sat'),

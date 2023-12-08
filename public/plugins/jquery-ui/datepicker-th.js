@@ -142,6 +142,30 @@ function setDatepickerSchedule(selector) {
 } //function setDatepicker(selector){
 
 function setDateBetween(select1, select2) {
+	var currentDate = new Date();
+	var currentYear = currentDate.getFullYear();
+	var maxYear = currentYear + 1;
+	$('#' + select1 + ',#' + select2).datepicker({
+		changeMonth: true,
+		changeYear: true,
+		yearRange: currentYear + ':' + maxYear,
+		dateFormat: 'yy-mm-dd',
+		beforeShow: function () {
+			if (this.id == select2 && $('#' + select1).val() != "") {
+				var arrD = $('#' + select1).val().split("-");
+				return {
+					minDate: arrD[0] + "-" + arrD[1] + "-" + arrD[2],
+				}
+			} else if (this.id == select1 && $('#' + select2).val() != "") {
+				var arrD = $('#' + select2).val().split("-");
+				return { maxDate: arrD[0] + "-" + arrD[1] + "-" + arrD[2], }
+			}
+		}, //beforeShow
+	});
+}
+
+
+function setDateBetweenTH(select1, select2) {
 	$('#' + select1 + ',#' + select2).datepicker({
 		changeMonth: true,
 		changeYear: true,
