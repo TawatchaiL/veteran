@@ -348,6 +348,7 @@
             $('#custom-tabs-one-commentlog-tab').hide();
             $('#custom-tabs-one-editlog-tab').attr('disabled', true);
             $('#custom-tabs-one-editlog-tab').hide();
+            $('#CommentButton').addClass('d-none');
             actions = 'add';
             //_token: token
 
@@ -491,6 +492,8 @@
             $('#custom-tabs-one-commentlog-tab').show();
             $('#custom-tabs-one-editlog-tab').attr('disabled', false);
             $('#custom-tabs-one-editlog-tab').show();
+            $('#CommentButton').removeClass('d-none')
+
             actions = 'edit';
             id = $(this).data('id');
             $.ajax({
@@ -499,7 +502,7 @@
                 async: false,
                 success: function(res) {
                     var provinceOb = $('#casetype1');
-                    provinceOb.html('<option value="">เลือกประเภทการติดต่อ</option>');
+                    //provinceOb.html('<option value="">เลือกประเภทการติดต่อ</option>');
                     $.each(res.data, function(index, item) {
                         provinceOb.append(
                             $('<option></option>').val(item.id).html(item
@@ -508,11 +511,11 @@
                     });
                 }
             });
-            $('#casetype2').html('<option value="">เลือกรายละเอียดเคส</option>');
+            /* $('#casetype2').html('<option value="">เลือกรายละเอียดเคส</option>');
             $('#casetype3').html('<option value="">เลือกรายละเอียดเคสย่อย</option>');
             $('#casetype4').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
             $('#casetype5').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
-            $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
+            $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>'); */
             $('#casetype2').attr('disabled', true);
             $('#casetype3').attr('disabled', true);
             $('#casetype4').attr('disabled', true);
@@ -633,7 +636,7 @@
 
             var additionalData = {
                 adddate: $('#Addadddate').val(),
-                casetype1: $('#Editcasetype1e').val(),
+                casetype1: $('#Editcasetype1e').val()[0],
                 tranferstatus: $('#Edittranferstatuse option:selected').text(),
                 casedetail: $('#Editdetail').val(),
                 casestatus: $('#Editcasestatuse option:selected').text(),
