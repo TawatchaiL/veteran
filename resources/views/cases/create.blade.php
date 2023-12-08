@@ -45,7 +45,7 @@
                                 <a class="nav-link tablistcommentlog" id="custom-tabs-one-commentlog-tab"
                                     data-toggle="pill" href="#custom-tabs-one-commentlog" role="tab"
                                     aria-controls="custom-tabs-one-commentlog"
-                                    aria-selected="true">ประวัติการแสดงความคิดเห็นเรื่องที่ติดต่อ</a>
+                                    aria-selected="true">ความคิดเห็นเรื่องที่ติดต่อ</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link tablisteditlog" id="custom-tabs-one-editlog-tab" data-toggle="pill"
