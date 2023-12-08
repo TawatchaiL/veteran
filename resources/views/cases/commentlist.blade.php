@@ -5,13 +5,13 @@
         </div>
 
         <div class="card-body p-0">
-            <table id="Listview" class="display nowrap table table-bordered table-striped table-hover">
+            <table id="Listview" class="table table-bordered table-striped table-hover">
                 <thead>
                     <tr>
                         <th>วันที่ทำรายการ</th>
                         <th>ผู้ทำรายการ</th>
-                        <th width="60%">การแสดงความคิดเห็น</th>
-                        <th width="1ุ0px"></th>
+                        <th width="60%">ความคิดเห็น</th>
+                        <th width="160px"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -20,7 +20,7 @@
                             <td>{{ $casecomments->created_at }}</td>
                             <td>{{ $casecomments->agentname }}</td>
                             <td>{{ $casecomments->comment }}</td>
-                            <td width="1ุ0px">
+                            <td width="160px">
                                 <button type="button" data-comment_id="{{ $casecomments->id }}"
                                     class="btn btn-warning selectcomment-button"><i
                                         class="fa-solid fa-comment-dots"></i> รายละเอียด
