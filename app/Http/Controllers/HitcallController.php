@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -48,8 +49,8 @@ class HitcallController extends Controller
             $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
         $datas = DB::connection('remote_connection')
-            ->table('call_center.call_entry')
-            ->select('crm_id',DB::raw('DATE(datetime_init) as cdate'), DB::raw('TIME(datetime_init) as ctime'), 'callerid as telno', DB::raw('SEC_TO_TIME(duration_wait) as durationwait'), DB::raw('SEC_TO_TIME(duration) as duration'))
+            ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.call_entry'))
+            ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), 'crm_id',DB::raw('DATE(datetime_init) as cdate'), DB::raw('TIME(datetime_init) as ctime'), 'callerid as telno', DB::raw('SEC_TO_TIME(duration_wait) as durationwait'), DB::raw('SEC_TO_TIME(duration) as duration'))
             ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '" AND status = "terminada" AND  crm_id is not null');
         if(!empty($request->get('agent'))){
             $datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
@@ -67,6 +68,11 @@ class HitcallController extends Controller
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
+                })
+                ->editColumn('adddate', function ($row) {
+                    //$adddate = Carbon::parse($row->adddate)->addYears(543)->format('d/m/Y');
+                    $adddate = Carbon::parse($row->cdate)->format('Y-m-d');
+                    return $adddate;
                 })
                 ->addColumn('agent', function ($row) use ($agent_data){
                     if (isset($agent_data[$row->crm_id])) {
