@@ -84,7 +84,7 @@
         }
 
         function datereset() {
-            ocalStorage.removeItem('dateStart');
+            localStorage.removeItem('dateStart');
             localStorage.removeItem('searchType');
             localStorage.removeItem('keyword');
 
