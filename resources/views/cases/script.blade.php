@@ -77,10 +77,19 @@
         }
 
         function datereset() {
+            localStorage.removeItem('dateStart');
+            localStorage.removeItem('searchType');
+            localStorage.removeItem('keyword');
+
+            $('#seachtext').val('');
+            $('#seachtype').val('');
+
             var currentDate = moment();
             //startDate = moment().format('YYYY-MM-DD');
             startDate = moment(currentDate).subtract(30, 'days').format('YYYY-MM-DD');
             endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
+            daterange();
+
         }
 
         function retrieveFieldValues() {
