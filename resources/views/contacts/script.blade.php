@@ -381,6 +381,8 @@
 
             //$('#custom-tabs-one-home-tab').tab('show');
             $("#Addcity").val(null).trigger("change")
+            $("#Adddistrict").val(null).trigger("change")
+            $("#Addsubdistrict").val(null).trigger("change")
             $('#Addcity').html('')
             $('#Addtname').val(null).trigger("change")
             $('#Addsex').val(null).trigger("change")
@@ -458,20 +460,20 @@
             var additionalData = {
                 hn: $('#Addhn').val(),
                 adddate: tempadddate,
-                tname: $('#Addtname').val(),
+                tname: $('#Addtname').val()[0],
                 fname: $('#Addfname').val(),
                 lname: $('#Addlname').val(),
-                sex: $('#Addsex').val(),
+                sex: $('#Addsex').val()[0],
                 birthday: tempbirthday,
                 age: $('#Addage').val(),
-                bloodgroup: $('#Addbloodgroup').val(),
+                bloodgroup: $('#Addbloodgroup').val()[0],
                 homeno: $('#Addhomeno').val(),
                 moo: $('#Addmoo').val(),
                 soi: $('#Addsoi').val(),
                 road: $('#Addroad').val(),
-                city: $('#Addcity').val(),
-                district: $('#Adddistrict').val(),
-                subdistrict: $('#Addsubdistrict').val(),
+                city: $('#Addcity').val()[0],
+                district: $('#Adddistrict').val()[0],
+                subdistrict: $('#Addsubdistrict').val()[0],
                 postcode: $('#Addpostcode').val(),
                 telhome: $('#Addtelhome').val(),
                 phoneno: $('#Addphoneno').val(),
@@ -521,6 +523,7 @@
             //url = url.replace(':id', id);
             location.href = url;
         });
+
         $(document).on('click', '#getEditData', function(e) {
             e.preventDefault();
             $('.alert-danger').html('');
