@@ -591,7 +591,7 @@
                             $('#Editdistrict').val(res.datax.datac
                                 .district).change();
                             setTimeout(function() {
-                                $('#Editsubdistrict').('');
+                                $('#Editsubdistrict').html('');
                                 $('#Editsubdistrict').val(res.datax
                                     .datac.subdistrict).change();
                             }, 1000)
