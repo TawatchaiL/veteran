@@ -537,6 +537,7 @@
                 success: function(res) {
                     //alert(res.data.code);
                     var provinceOb = $('#Editcity');
+                    provinceOb.html('')
                     //provinceOb.html('<option value="">เลือกจังหวัด</option>');
                     $.each(res.data, function(index, item) {
                         provinceOb.append(
@@ -583,12 +584,10 @@
                         $('#Editmoo').val(res.datax.datac.moo);
                         $('#Editsoi').val(res.datax.datac.soi);
                         $('#Editroad').val(res.datax.datac.road);
-                        $('#Editcity').val(res.datax.datac.city);
-                        $('#Editcity').change();
+                        $('#Editcity').val(res.datax.datac.city).change();
                         setTimeout(function() {
                             $('#Editdistrict').val(res.datax.datac
-                                .district);
-                            $('#Editdistrict').change();
+                                .district).change();
                             setTimeout(function() {
                                 $('#Editsubdistrict').val(res.datax
                                     .datac.subdistrict).change();
