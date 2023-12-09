@@ -842,13 +842,13 @@
         // on change province
         $('#Addcity').on('change', function() {
             var provinceId = $(this).val();
-            districtOb.html('<option value="">เลือกอำเภอ</option>');
+            //districtOb.html('<option value="">เลือกอำเภอ</option>');
             $.ajax({
                 url: "thdistrict/district/" + provinceId,
                 method: 'GET',
                 success: function(res) {
-                    districtOb.html('<option value="">เลือกอำเภอ</option>');
-                    cartonOb.html('<option value="">เลือกตำบล</option>');
+                    //districtOb.html('<option value="">เลือกอำเภอ</option>');
+                    //cartonOb.html('<option value="">เลือกตำบล</option>');
                     $.each(res.data, function(index, item) {
                         districtOb.append(
                             $('<option></option>').val(item.code).html(item
@@ -857,15 +857,18 @@
                     });
                 }
             });
+            districtOb.val(null).trigger("change")
+            cartonOb.val(null).trigger("change")
         });
+
         districtOb.on('change', function() {
             var districtId = $(this).val();
-            cartonOb.html('<option value="">เลือกตำบล</option>');
+            //cartonOb.html('<option value="">เลือกตำบล</option>');
             $.ajax({
                 url: "thsubdistrict/subdistrict/" + districtId,
                 method: 'GET',
                 success: function(res) {
-                    cartonOb.html('<option value="">เลือกตำบล</option>');
+                    //cartonOb.html('<option value="">เลือกตำบล</option>');
                     $.each(res.data, function(index, item) {
                         cartonOb.append(
                             $('<option></option>').val(item.code).html(item
@@ -874,6 +877,7 @@
                     });
                 }
             });
+            cartonOb.val(null).trigger("change")
         });
 
         var EprovinceOb = $('#Editcity');
@@ -883,13 +887,13 @@
         // Edit
         $('#Editcity').on('change', function() {
             var provinceId = $(this).val();
-            EdistrictOb.html('<option value="">เลือกอำเภอ</option>');
+            //EdistrictOb.html('<option value="">เลือกอำเภอ</option>');
             $.ajax({
                 url: "thdistrict/district/" + provinceId,
                 method: 'GET',
                 success: function(res) {
-                    EdistrictOb.html('<option value="">เลือกอำเภอ</option>');
-                    EcartonOb.html('<option value="">เลือกตำบล</option>');
+                    //EdistrictOb.html('<option value="">เลือกอำเภอ</option>');
+                    //EcartonOb.html('<option value="">เลือกตำบล</option>');
                     $.each(res.data, function(index, item) {
                         EdistrictOb.append(
                             $('<option></option>').val(item.code).html(item
@@ -898,15 +902,17 @@
                     });
                 }
             });
+            EdistrictOb.val(null).trigger("change")
+            EcartonOb.val(null).trigger("change")
         });
         EdistrictOb.on('change', function() {
             var districtId = $(this).val();
-            EcartonOb.html('<option value="">เลือกตำบล</option>');
+            //EcartonOb.html('<option value="">เลือกตำบล</option>');
             $.ajax({
                 url: "thsubdistrict/subdistrict/" + districtId,
                 method: 'GET',
                 success: function(res) {
-                    EcartonOb.html('<option value="">เลือกตำบล</option>');
+                    //EcartonOb.html('<option value="">เลือกตำบล</option>');
                     $.each(res.data, function(index, item) {
                         EcartonOb.append(
                             $('<option></option>').val(item.code).html(item
@@ -915,6 +921,7 @@
                     });
                 }
             });
+            EcartonOb.val(null).trigger("change")
         });
     });
 
