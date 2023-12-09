@@ -531,9 +531,9 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
-            /* $('#Editcity').html('');
+            $('#Editcity').html('');
             $('#Editdistrict').html('');
-            $('#Editsubdistrict').html(''); */
+            $('#Editsubdistrict').html('');
 
             id = $(this).data('id');
             $.ajax({
@@ -860,8 +860,8 @@
                     });
                 }
             });
-            districtOb.val(null).trigger("change")
-            cartonOb.val(null).trigger("change")
+            //districtOb.val(null).trigger("change")
+            //cartonOb.val(null).trigger("change")
         });
 
         $('#Adddistrict').on('change', function() {
@@ -880,7 +880,7 @@
                     });
                 }
             });
-            cartonOb.val(null).trigger("change")
+            //cartonOb.val(null).trigger("change")
         });
 
         var EprovinceOb = $('#Editcity');
