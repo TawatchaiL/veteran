@@ -531,9 +531,9 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
-            $('#Editcity').html('');
+            /* $('#Editcity').html('');
             $('#Editdistrict').html('');
-            $('#Editsubdistrict').html('');
+            $('#Editsubdistrict').html(''); */
 
             id = $(this).data('id');
             $.ajax({
