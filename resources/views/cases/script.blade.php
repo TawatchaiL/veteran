@@ -65,6 +65,17 @@
             endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
         }
 
+        function storeFieldValues() {
+            var dateStart = $('#reservation').val();
+            var searchtext = $('#seachtext').val();
+            var searchtype = $('#seachtype').val();
+        
+            localStorage.setItem('dateStart', dateStart);
+            localStorage.setItem('keyword', searchtext);
+            localStorage.setItem('searchType', searchtype);
+
+        }
+
         function datereset() {
             var currentDate = moment();
             //startDate = moment().format('YYYY-MM-DD');
@@ -85,6 +96,17 @@
             } else {
                 datesearch();
             }
+
+            $('#reservation').val(`${startDate} - ${endDate}`)
+
+            if (savedKeyword) {
+                $('#seachtext').val(savedKeyword);
+            }
+
+            if (savedSearchType) {
+                $('#seachtype').val(savedSearchType);
+            }
+
         }
 
         let daterange = () => {
@@ -135,10 +157,11 @@
             // Apply the custom date range filter on input change
             $('#reservation').on('apply.daterangepicker', function() {
                 table.draw();
-                //storeFieldValues();
+                storeFieldValues();
             });
         }
-        datesearch();
+        
+        retrieveFieldValues();
         daterange();
 
 
