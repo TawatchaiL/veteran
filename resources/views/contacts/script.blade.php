@@ -538,7 +538,7 @@
                 success: function(res) {
                     //alert(res.data.code);
                     var provinceOb = $('#Editcity');
-                    //provinceOb.html('<option value="">เลือกจังหวัด</option>');
+                    provinceOb.html('<option value="">เลือกจังหวัด</option>');
                     $.each(res.data, function(index, item) {
                         provinceOb.append(
                             $('<option></option>').val(item.code).html(item
@@ -563,10 +563,10 @@
                                 "-" + arrayDate[2]);
                         }
                         //$('#Editadddate').val(res.datax.datac.adddate);
-                        $('#Edittname').val(res.datax.datac.tname).change();
+                        $('#Edittname').val(res.datax.datac.tname);
                         $('#Editfname').val(res.datax.datac.fname);
                         $('#Editlname').val(res.datax.datac.lname);
-                        $('#Editsex').val(res.datax.datac.sex).change();
+                        $('#Editsex').val(res.datax.datac.sex);
                         if (res.datax.datac.birthday !== '' && res.datax.datac
                             .birthday !== null && res.datax.datac.birthday !==
                             undefined) {
@@ -578,7 +578,7 @@
                             //$('#Editbirthday').val(res.datax.datac.birthday);
                         }
                         $('#Editage').val(res.datax.datac.age);
-                        $('#Editbloodgroup').val(res.datax.datac.bloodgroup).change();
+                        $('#Editbloodgroup').val(res.datax.datac.bloodgroup);
                         $('#Edithomeno').val(res.datax.datac.homeno);
                         $('#Editmoo').val(res.datax.datac.moo);
                         $('#Editsoi').val(res.datax.datac.soi);
@@ -587,6 +587,7 @@
                         setTimeout(function() {
                             $('#Editdistrict').val(res.datax.datac
                                 .district).change();
+                            $('#Editdistrict').change();
                             setTimeout(function() {
                                 $('#Editsubdistrict').val(res.datax
                                     .datac.subdistrict).change();
@@ -666,20 +667,20 @@
             var additionalData = {
                 hn: $('#Edithn').val(),
                 adddate: tempadddate,
-                tname: $('#Edittname').val()[0],
+                tname: $('#Edittname').val(),
                 fname: $('#Editfname').val(),
                 lname: $('#Editlname').val(),
-                sex: $('#Editsex').val()[0],
+                sex: $('#Editsex').val(),
                 birthday: tempbirthday,
                 age: $('#Editage').val(),
-                bloodgroup: $('#Editbloodgroup').val()[0],
+                bloodgroup: $('#Editbloodgroup').val(),
                 homeno: $('#Edithomeno').val(),
                 moo: $('#Editmoo').val(),
                 soi: $('#Editsoi').val(),
                 road: $('#Editroad').val(),
-                city: $('#Editcity').val()[0],
-                district: $('#Editdistrict').val()[0],
-                subdistrict: $('#Editsubdistrict').val()[0],
+                city: $('#Editcity').val(),
+                district: $('#Editdistrict').val(),
+                subdistrict: $('#Editsubdistrict').val(),
                 postcode: $('#Editpostcode').val(),
                 telhome: $('#Edittelhome').val(),
                 phoneno: $('#Editphoneno').val(),
