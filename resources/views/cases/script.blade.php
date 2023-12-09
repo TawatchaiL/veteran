@@ -352,7 +352,7 @@
             if (fieldValue === '3' || fieldValue === '4' || fieldValue === '5') {
                 if (textValue === '') {
                     document.getElementById('validationMessages').textContent =
-                        'กรุณากรอกข้อมูลที่จะค้นหา';
+                        'กรุณาระบุคำที่จะค้นหา';
                     return false;
                 } else {
                     document.getElementById('validationMessages').textContent = '';
