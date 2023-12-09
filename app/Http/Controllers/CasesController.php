@@ -81,19 +81,22 @@ class CasesController extends Controller
                 //->where('crm_cases.contact_id', '=', request('id'))
                 //->get();
             } else if ($request->input('seachtype') === "4") {
-                if (strpos($request->input('seachtext'), ' ') !== false) {
-                    $aname = explode(' ', $request->input('seachtext'));
-                } else {
-                    $aname = $request->input('seachtext');
-                }
                 $datas = DB::table('crm_cases')
                     ->select('crm_cases.id as id', 'hn', DB::raw("concat(fname, ' ', lname) as name"), 'phoneno', 'crm_cases.created_at', 'crm_cases.casetype1 as casename', 'casestatus', 'tranferstatus', 'users.name as agent')
                     ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
-                    ->join('users', 'crm_cases.agent', '=', 'users.id')
-                    //->join('case_types', 'crm_cases.casetype1', '=', 'case_types.id')
-                    ->where('crm_contacts.fname', 'like', $aname . '%')
-                    ->orWhere('crm_contacts.lname', 'like', $aname . '%')
-                    ->whereRaw('crm_cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"');
+                    ->join('users', 'crm_cases.agent', '=', 'users.id');
+                //->join('case_types', 'crm_cases.casetype1', '=', 'case_types.id')
+
+                if (strpos($request->input('seachtext'), ' ') !== false) {
+                    $aname = explode(' ', $request->input('seachtext'));
+                    $datas->where('crm_contacts.fname', 'like', $aname[0] . '%')
+                        ->orWhere('crm_contacts.lname', 'like', $aname[1] . '%');
+                } else {
+                    $aname = $request->input('seachtext');
+                    $datas->where('crm_contacts.fname', 'like', $aname . '%')
+                        ->orWhere('crm_contacts.lname', 'like', $aname . '%');
+                }
+                $datas->whereRaw('crm_cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"');
                 //->get();
             } else if ($request->input('seachtype') === "5") {
                 $datas = DB::table('crm_cases')
