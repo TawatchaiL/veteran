@@ -30,8 +30,8 @@ class CasesController extends Controller
     {
         
         if ($request->ajax()) {
-            dd($request->input('seachtext'));
-            dd($request->input('seachtype'));
+            dd($request->input('seachtype').$request->input('seachtext'));
+
             if (!empty($request->get('sdate'))) {
                 $dateRange = $request->input('sdate');
                 if ($dateRange) {
