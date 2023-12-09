@@ -160,7 +160,7 @@
                 storeFieldValues();
             });
         }
-        
+
         retrieveFieldValues();
         daterange();
 
@@ -351,7 +351,10 @@
             } else {
                 document.getElementById('validationMessages').textContent = '';
             }
-            $('#Listview').DataTable().ajax.reload();
+            storeFieldValues();
+            table.search('').draw();
+            $.fn.dataTable.ext.search.pop();
+            //$('#Listview').DataTable().ajax.reload();
         });
 
         $('#btnreset').click(function(e) {
