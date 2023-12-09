@@ -531,10 +531,6 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
-            $('#Editcity').html('');
-            $('#Editdistrict').html('');
-            $('#Editsubdistrict').html('');
-
             id = $(this).data('id');
             $.ajax({
                 url: "{{ route('thcity.city') }}",
@@ -582,8 +578,7 @@
                             //$('#Editbirthday').val(res.datax.datac.birthday);
                         }
                         $('#Editage').val(res.datax.datac.age);
-                        $('#Editbloodgroup').val(res.datax.datac.bloodgroup)
-                            .change();
+                        $('#Editbloodgroup').val(res.datax.datac.bloodgroup).change();
                         $('#Edithomeno').val(res.datax.datac.homeno);
                         $('#Editmoo').val(res.datax.datac.moo);
                         $('#Editsoi').val(res.datax.datac.soi);
@@ -860,11 +855,11 @@
                     });
                 }
             });
-            //districtOb.val(null).trigger("change")
-            //cartonOb.val(null).trigger("change")
+            districtOb.val(null).trigger("change")
+            cartonOb.val(null).trigger("change")
         });
 
-        $('#Adddistrict').on('change', function() {
+        districtOb.on('change', function() {
             var districtId = $(this).val();
             //cartonOb.html('<option value="">เลือกตำบล</option>');
             $.ajax({
@@ -880,7 +875,7 @@
                     });
                 }
             });
-            //cartonOb.val(null).trigger("change")
+            cartonOb.val(null).trigger("change")
         });
 
         var EprovinceOb = $('#Editcity');
@@ -890,8 +885,6 @@
         // Edit
         $('#Editcity').on('change', function() {
             var provinceId = $(this).val();
-            EdistrictOb.val(null).trigger("change")
-            EcartonOb.val(null).trigger("change")
             //EdistrictOb.html('<option value="">เลือกอำเภอ</option>');
             $.ajax({
                 url: "thdistrict/district/" + provinceId,
@@ -907,12 +900,11 @@
                     });
                 }
             });
-
-        });
-
-        $('#Editdistrict').on('change', function() {
-            var districtId = $(this).val();
+            EdistrictOb.val(null).trigger("change")
             EcartonOb.val(null).trigger("change")
+        });
+        EdistrictOb.on('change', function() {
+            var districtId = $(this).val();
             //EcartonOb.html('<option value="">เลือกตำบล</option>');
             $.ajax({
                 url: "thsubdistrict/subdistrict/" + districtId,
@@ -927,7 +919,7 @@
                     });
                 }
             });
-
+            EcartonOb.val(null).trigger("change")
         });
     });
 
