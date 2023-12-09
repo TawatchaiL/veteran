@@ -563,10 +563,10 @@
                                 "-" + arrayDate[2]);
                         }
                         //$('#Editadddate').val(res.datax.datac.adddate);
-                        $('#Edittname').val(res.datax.datac.tname);
+                        $('#Edittname').val(res.datax.datac.tname).change();
                         $('#Editfname').val(res.datax.datac.fname);
                         $('#Editlname').val(res.datax.datac.lname);
-                        $('#Editsex').val(res.datax.datac.sex);
+                        $('#Editsex').val(res.datax.datac.sex).change();
                         if (res.datax.datac.birthday !== '' && res.datax.datac
                             .birthday !== null && res.datax.datac.birthday !==
                             undefined) {
@@ -578,7 +578,7 @@
                             //$('#Editbirthday').val(res.datax.datac.birthday);
                         }
                         $('#Editage').val(res.datax.datac.age);
-                        $('#Editbloodgroup').val(res.datax.datac.bloodgroup);
+                        $('#Editbloodgroup').val(res.datax.datac.bloodgroup).change();
                         $('#Edithomeno').val(res.datax.datac.homeno);
                         $('#Editmoo').val(res.datax.datac.moo);
                         $('#Editsoi').val(res.datax.datac.soi);
@@ -666,20 +666,20 @@
             var additionalData = {
                 hn: $('#Edithn').val(),
                 adddate: tempadddate,
-                tname: $('#Edittname').val(),
+                tname: $('#Edittname').val()[0],
                 fname: $('#Editfname').val(),
                 lname: $('#Editlname').val(),
-                sex: $('#Editsex').val(),
+                sex: $('#Editsex').val()[0],
                 birthday: tempbirthday,
                 age: $('#Editage').val(),
-                bloodgroup: $('#Editbloodgroup').val(),
+                bloodgroup: $('#Editbloodgroup').val()[0],
                 homeno: $('#Edithomeno').val(),
                 moo: $('#Editmoo').val(),
                 soi: $('#Editsoi').val(),
                 road: $('#Editroad').val(),
-                city: $('#Editcity').val(),
-                district: $('#Editdistrict').val(),
-                subdistrict: $('#Editsubdistrict').val(),
+                city: $('#Editcity').val()[0],
+                district: $('#Editdistrict').val()[0],
+                subdistrict: $('#Editsubdistrict').val()[0],
                 postcode: $('#Editpostcode').val(),
                 telhome: $('#Edittelhome').val(),
                 phoneno: $('#Editphoneno').val(),
