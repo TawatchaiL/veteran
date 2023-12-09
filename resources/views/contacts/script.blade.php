@@ -896,8 +896,10 @@
                     url: "thdistrict/district/" + provinceId,
                     method: 'GET',
                     success: function(res) {
-                        EdistrictOb.html('<option value="">เลือกอำเภอ</option>');
-                        EcartonOb.html('<option value="">เลือกตำบล</option>');
+                        //EdistrictOb.html('<option value="">เลือกอำเภอ</option>');
+                        //EcartonOb.html('<option value="">เลือกตำบล</option>');
+                        EdistrictOb.html('')
+                        EcartonOb.html('')
                         $.each(res.data, function(index, item) {
                             EdistrictOb.append(
                                 $('<option></option>').val(item.code).html(item
@@ -916,7 +918,8 @@
                     url: "thsubdistrict/subdistrict/" + districtId,
                     method: 'GET',
                     success: function(res) {
-                        EcartonOb.html('<option value="">เลือกตำบล</option>');
+                        //EcartonOb.html('<option value="">เลือกตำบล</option>');
+                        EcartonOb.html('')
                         $.each(res.data, function(index, item) {
                             EcartonOb.append(
                                 $('<option></option>').val(item.code).html(item
