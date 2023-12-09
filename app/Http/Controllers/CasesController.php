@@ -86,7 +86,7 @@ class CasesController extends Controller
                     ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
                     ->join('users', 'crm_cases.agent', '=', 'users.id');
                 //->join('case_types', 'crm_cases.casetype1', '=', 'case_types.id')
-
+                //manon fix
                 if (strpos($request->input('seachtext'), ' ') !== false) {
                     $aname = explode(' ', $request->input('seachtext'));
                     $datas->where('crm_contacts.fname', 'like', $aname[0] . '%')
