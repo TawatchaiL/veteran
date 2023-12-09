@@ -865,13 +865,13 @@
                 var api = this.api();
 
                 var sum = api
-                    .column(8)
+                    .column(7)
                     .data()
                     .reduce(function(acc, value) {
                         return parseFloat(acc) + parseFloat(value);
                     }, 0);
 
-                $(api.column(8).footer()).html(sum.toFixed(
+                $(api.column(7).footer()).html(sum.toFixed(
                     2));
             }
 
