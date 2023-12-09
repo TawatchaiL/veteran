@@ -358,6 +358,7 @@
             }
             $('#Listview').DataTable().ajax.reload();
         });
+
         $('#btnreset').click(function(e) {
             $("#seachtype").val(0);
             $("#seachtext").val('');
@@ -376,6 +377,15 @@
             $('.alert-danger').hide();
             $('.alert-success').html('');
             $('.alert-success').hide();
+
+
+            //$('#custom-tabs-one-home-tab').tab('show');
+            $("#Addcity").val(null).trigger("change")
+            $('#Addcity').html('')
+            $('#Addtname').val(null).trigger("change")
+            $('#Addsex').val(null).trigger("change")
+            $('#Addbloodgroup').val(null).trigger("change")
+
             $.ajax({
                 method: "GET",
                 url: "{{ route('contacts.running') }}",
@@ -389,7 +399,7 @@
                 success: function(res) {
                     //alert(res.data.code);
                     var provinceOb = $('#Addcity');
-                    provinceOb.html('<option value="">เลือกจังหวัด</option>');
+                    //provinceOb.html('<option value="">เลือกจังหวัด</option>');
                     $.each(res.data, function(index, item) {
                         provinceOb.append(
                             $('<option></option>').val(item.code).html(item
