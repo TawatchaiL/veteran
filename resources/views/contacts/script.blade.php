@@ -587,9 +587,11 @@
                         $('#Editroad').val(res.datax.datac.road);
                         $('#Editcity').val(res.datax.datac.city).change();
                         setTimeout(function() {
+                            $('#Editdistrict').html('');
                             $('#Editdistrict').val(res.datax.datac
                                 .district).change();
                             setTimeout(function() {
+                                $('#Editsubdistrict').('');
                                 $('#Editsubdistrict').val(res.datax
                                     .datac.subdistrict).change();
                             }, 1000)
