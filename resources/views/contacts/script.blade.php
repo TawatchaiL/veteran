@@ -889,8 +889,8 @@
         // Edit
         $('#Editcity').on('change', function() {
             var provinceId = $(this).val();
-            EdistrictOb.val(null).trigger("change")
-            EcartonOb.val(null).trigger("change")
+            //EdistrictOb.val(null).trigger("change")
+            //EcartonOb.val(null).trigger("change")
             //EdistrictOb.html('<option value="">เลือกอำเภอ</option>');
             $.ajax({
                 url: "thdistrict/district/" + provinceId,
@@ -910,7 +910,7 @@
         });
         $('#Editdistrict').on('change', function() {
             var districtId = $(this).val();
-            EcartonOb.val(null).trigger("change")
+            //EcartonOb.val(null).trigger("change")
             //EcartonOb.html('<option value="">เลือกตำบล</option>');
             $.ajax({
                 url: "thsubdistrict/subdistrict/" + districtId,
