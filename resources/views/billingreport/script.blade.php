@@ -812,14 +812,13 @@
             @endif
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
-            columns: [
-                /*{
+            columns: [{
                     data: 'checkbox',
                     name: 'checkbox',
                     orderable: false,
                     searchable: false,
                     className: 'no-print'
-                },*/
+                },
                 {
                     data: 'cdate',
                     name: 'cdate'
