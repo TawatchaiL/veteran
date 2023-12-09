@@ -84,11 +84,30 @@
         }
 
         function datereset() {
+            ocalStorage.removeItem('dateStart');
+            localStorage.removeItem('searchType');
+            localStorage.removeItem('keyword');
+
+            $('#seachtext').val('');
+            $('#seachtype').val('0');
+
             var currentDate = moment();
             //startDate = moment().format('YYYY-MM-DD');
             //startDate = moment(currentDate).subtract(3,650, 'days').format('YYYY-MM-DD');
             startDate = '2023-01-01';
             endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
+            daterange();
+        }
+
+        function storeFieldValues() {
+            var dateStart = $('#reservation').val();
+            var searchtext = $('#seachtext').val();
+            var searchtype = $('#seachtype').val();
+
+            localStorage.setItem('dateStart', dateStart);
+            localStorage.setItem('keyword', searchtext);
+            localStorage.setItem('searchType', searchtype);
+
         }
 
         function retrieveFieldValues() {
@@ -104,6 +123,18 @@
             } else {
                 datesearch();
             }
+
+            $('#reservation').val(`${startDate} - ${endDate}`)
+
+            if (savedKeyword) {
+                $('#seachtext').val(savedKeyword);
+            }
+
+            if (savedSearchType) {
+                $('#seachtype').val(savedSearchType);
+            }
+
+
         }
 
         let daterange = () => {
@@ -154,10 +185,13 @@
             // Apply the custom date range filter on input change
             $('#reservation').on('apply.daterangepicker', function() {
                 table.draw();
-                //storeFieldValues();
+                storeFieldValues();
             });
         }
-        datesearch();
+
+
+        //datesearch();
+        retrieveFieldValues();
         daterange();
 
         $.datepicker.setDefaults($.datepicker.regional['th']);
@@ -356,7 +390,10 @@
             } else {
                 document.getElementById('validationMessages').textContent = '';
             }
-            $('#Listview').DataTable().ajax.reload();
+            //$('#Listview').DataTable().ajax.reload();
+            storeFieldValues();
+            table.search('').draw();
+            $.fn.dataTable.ext.search.pop();
         });
 
         $('#btnreset').click(function(e) {
@@ -656,7 +693,7 @@
                         var eemerrelation = $(this).find(
                             'input[name="eemerrelation[]"]').val();
                         var eemerphone = $(this).find('input[name="eemerphone[]"]')
-                        .val();
+                            .val();
                         var eemergency = {
                             eemertype: eemertype,
                             emergencyname: eemergencyname,
@@ -673,7 +710,7 @@
                     var arrayDateb = $('#Editbirthday').val().split("-");
                     arrayDateb[0] = parseInt(arrayDateb[0]) - 543;
                     var tempbirthday = arrayDateb[0] + "-" + arrayDateb[1] + "-" + arrayDateb[
-                    2];
+                        2];
 
                     var additionalData = {
                         hn: $('#Edithn').val(),
