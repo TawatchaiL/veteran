@@ -865,7 +865,7 @@
                 var api = this.api();
 
                 var sum = api
-                    .column(8)
+                    .column(8, { page: 'all' })
                     .data()
                     .reduce(function(acc, value) {
                         return parseFloat(acc) + parseFloat(value);
