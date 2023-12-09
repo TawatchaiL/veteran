@@ -4,9 +4,9 @@
             <h3 class="card-title"></h3>
         </div>
 
-        <div class="card-body p-0" style="height: 300px;">
+        <div class="card-body p-0" style="min-height: 200px; max-height: 400px; overflow: auto;">
             <table id="Listview"
-                class="table table-sm table-head-fixed text-nowrap table-bordered table-striped table-hover">
+                class="display nowrap table table-sm table-head-fixed text-nowrap table-bordered table-striped table-hover">
                 <thead>
                     <tr>
                         <th>วันที่แก้ไข</th>
