@@ -583,15 +583,13 @@
                         $('#Editmoo').val(res.datax.datac.moo);
                         $('#Editsoi').val(res.datax.datac.soi);
                         $('#Editroad').val(res.datax.datac.road);
-                        $('#Editcity').val(res.datax.datac.city);
-                        $('#Editcity').change();
+                        $('#Editcity').val(res.datax.datac.city).change();
                         setTimeout(function() {
                             $('#Editdistrict').val(res.datax.datac
-                                .district);
-                            $('#Editdistrict').change();
+                                .district).change();
                             setTimeout(function() {
                                 $('#Editsubdistrict').val(res.datax
-                                    .datac.subdistrict);
+                                    .datac.subdistrict).change();
                             }, 1000)
                         }, 1000)
                         $('#Editpostcode').val(res.datax.datac.postcode);
