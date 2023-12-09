@@ -40,55 +40,13 @@
             //theme: 'bootstrap4'
             placeholder: 'กรุณาเลือก'
         });
-        $(".select2_single2").select2({
-            maximumSelectionLength: 1,
-            allowClear: true,
-            //theme: 'bootstrap4'
-            placeholder: 'กรุณาเลือก'
-        });
-        $(".select2_single3").select2({
-            maximumSelectionLength: 1,
-            allowClear: true,
-            //theme: 'bootstrap4'
-            placeholder: 'กรุณาเลือก'
-        });
-        $(".select2_singlee").select2({
-            maximumSelectionLength: 1,
-            allowClear: true,
-            //theme: 'bootstrap4'
-            placeholder: 'กรุณาเลือก'
-        });
-        $(".select2_singlee2").select2({
-            maximumSelectionLength: 1,
-            allowClear: true,
-            //theme: 'bootstrap4'
-            placeholder: 'กรุณาเลือก'
-        });
-        $(".select2_singlee3").select2({
-            maximumSelectionLength: 1,
-            allowClear: true,
-            //theme: 'bootstrap4'
-            placeholder: 'กรุณาเลือก'
-        });
+
 
         $(".select2_single").on("select2:unselect", function(e) {
             //log("select2:unselect", e);
             //$('.products').html('');
         });
 
-        $(".select2_singles").select2({
-            maximumSelectionLength: 1,
-            allowClear: false,
-            //theme: 'bootstrap4'
-            placeholder: 'กรุณาเลือก'
-        });
-
-        $(".select2_singlec").select2({
-            maximumSelectionLength: 1,
-            allowClear: false,
-            //theme: 'bootstrap4'
-            placeholder: 'กรุณาเลือก'
-        });
 
 
         $(".select2_multiple").select2({
@@ -952,7 +910,7 @@
         //if ((keyCode < 48 || keyCode > 57) && keyCode !== 8) {
         //if ((keyCode < 48 || (keyCode > 57 && keyCode < 96) || keyCode > 105) && keyCode !== 8) {
         //    event.preventDefault();
-        //} 
+        //}
         var allowedKeys = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
         var keyCode = event.key;
 

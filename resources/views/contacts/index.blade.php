@@ -19,12 +19,12 @@
 
                         @can('contact-create')
                             <button type="button" class="btn btn-success" id="CreateButton">
-                                <i class="fas fa-address-book"></i> เพิ่ม รายชื่อผู้ติดต่อ </button>
+                                <i class="fas fa-address-book"></i> เพิ่มรายชื่อผู้ติดต่อ </button>
                         @else
                             <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
                                 title="คุณไม่มีสิทธิ์ในส่วนนี้">
                                 <button type="button" class="btn btn-success disabled">
-                                    <i class="fas fa-address-book"></i> เพิ่ม รายชื่อผู้ติดต่อ </button>
+                                    <i class="fas fa-address-book"></i> เพิ่มรายชื่อผู้ติดต่อ </button>
                             </span>
                         @endcan &nbsp;
 

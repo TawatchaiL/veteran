@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <h4 class="modal-title"><i class="fas fa-address-book"></i> เพิ่ม รายชื่อผู้ติดต่อ</h4>
+                <h4 class="modal-title"><i class="fas fa-address-book"></i> เพิ่มรายชื่อผู้ติดต่อ</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -91,9 +91,10 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> คำนำหน้าชื่อ:</strong>
-                                                    <select style="width: 100%;" class="select2 form-control"
-                                                        id="Addtname" name="Addtname">
-                                                        <option value="">กรุณาเลือก</option>
+                                                    <select style="width: 100%;"
+                                                        class="select2 select2_single form-control" id="Addtname"
+                                                        name="Addtname" multiple="multiple">
+                                                        {{-- <option value="">กรุณาเลือก</option> --}}
                                                         <option value="คุณ">คุณ</option>
                                                         <option value="เด็กชาย">เด็กชาย</option>
                                                         <option value="เด็กหญิง">เด็กหญิง</option>
@@ -120,9 +121,10 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> เพศ:</strong>
-                                                    <select style="width: 100%;" class="select2 form-control"
-                                                        id="Addsex" name="Addsex">
-                                                        <option value="">กรุณาเลือก</option>
+                                                    <select style="width: 100%;"
+                                                        class="select2 select2_single form-control" id="Addsex"
+                                                        name="Addsex" multiple="multiple">
+                                                        {{-- <option value="">กรุณาเลือก</option> --}}
                                                         <option value="ชาย">ชาย</option>
                                                         <option value="หญิง">หญิง</option>
                                                     </select>
@@ -158,9 +160,10 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> กรุ๊ปเลือด:</strong>
-                                                    <select style="width: 100%;" class="select2 form-control"
-                                                        id="Addbloodgroup" name="Addbloodgroup">
-                                                        <option value="">กรุณาเลือก</option>
+                                                    <select style="width: 100%;"
+                                                        class="select2 select2_single form-control" id="Addbloodgroup"
+                                                        name="Addbloodgroup" multiple="multiple">
+                                                        {{-- <option value="">กรุณาเลือก</option> --}}
                                                         <option value="A">A</option>
                                                         <option value="B">B</option>
                                                         <option value="AB">AB</option>
@@ -224,8 +227,8 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fa-solid fa-city"></i> จังหวัด :</strong>
-                                                    <select class="select2 form-control" id="Addcity"
-                                                        name="city">
+                                                    <select class="select2 select2_single form-control" id="Addcity"
+                                                        name="city" multiple="multiple">
                                                     </select>
                                                 </div>
                                             </div>
@@ -233,9 +236,9 @@
                                                 <div class="form-group">
                                                     <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
                                                         อำเภอ:</strong>
-                                                    <select class="select2 form-control" id="Adddistrict"
-                                                        name="district">
-                                                        <option value="">กรุณาเลือกอำเภอ</option>
+                                                    <select class="select2 select2_single form-control"
+                                                        id="Adddistrict" name="district" multiple="multiple">
+                                                        {{-- <option value="">กรุณาเลือกอำเภอ</option> --}}
                                                     </select>
                                                 </div>
                                             </div>
@@ -246,9 +249,9 @@
                                                     <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
                                                         ตำบล
                                                         :</strong>
-                                                    <select class="select2 form-control" id="Addsubdistrict"
-                                                        name="subdistrict">
-                                                        <option value="">กรุณาเลือกตำบล</option>
+                                                    <select class="select2 select2_single form-control"
+                                                        id="Addsubdistrict" name="subdistrict" multiple="multiple">
+                                                        {{-- <option value="">กรุณาเลือกตำบล</option> --}}
                                                     </select>
                                                 </div>
                                             </div>
