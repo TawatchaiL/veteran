@@ -1,13 +1,4 @@
-{{-- <div class="card card-primary">
-    <div class="card-header">
-        <h3 class="card-title"><i class="fas fa-address-book"></i> ประวัติการการติดต่อ</h3>
-        <div class="card-tools">
-        </div>
-    </div>
-</div>
-<div class="card">
-    <div class="card-body"> --}}
-<div class="row">
+
     <div class="card col-xs-12 col-sm-12 col-md-12">
         <div class="card-header">
             <h3 class="card-title"></h3>
@@ -53,5 +44,4 @@
         </div>
     </div>
 </div>
-{{--     </div>
-</div> --}}
+
