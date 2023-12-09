@@ -76,7 +76,7 @@ class CasesController extends Controller
                     ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
                     ->join('users', 'crm_cases.agent', '=', 'users.id')
                     //->join('case_types', 'crm_cases.casetype1', '=', 'case_types.id')
-                    ->where('crm_contacts.hn', 'like', '%' . $request->input('seachtext') . '%')
+                    ->where('crm_contacts.hn', 'like',  $request->input('seachtext') . '%')
                     ->whereRaw('crm_cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"');
                 //->where('crm_cases.contact_id', '=', request('id'))
                 //->get();
@@ -104,9 +104,9 @@ class CasesController extends Controller
                     ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
                     ->join('users', 'crm_cases.agent', '=', 'users.id')
                     //->join('case_types', 'crm_cases.casetype1', '=', 'case_types.id')
-                    ->where('crm_contacts.phoneno', 'like', '%' . $request->input('seachtext') . '%')
-                    ->orWhere('crm_contacts.telhome', 'like', '%' . $request->input('seachtext') . '%')
-                    ->orWhere('crm_contacts.workno', 'like', '%' . $request->input('seachtext') . '%')
+                    ->where('crm_contacts.phoneno', 'like', $request->input('seachtext') . '%')
+                    ->orWhere('crm_contacts.telhome', 'like',  $request->input('seachtext') . '%')
+                    ->orWhere('crm_contacts.workno', 'like',  $request->input('seachtext') . '%')
                     ->whereRaw('crm_cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"');
                 //->where('crm_cases.contact_id', '=', request('id'))
                 //->get();
