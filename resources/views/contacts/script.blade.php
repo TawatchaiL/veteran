@@ -348,7 +348,7 @@
             if (fieldValue !== '0') {
                 if (textValue === '') {
                     document.getElementById('validationMessages').textContent =
-                        'กรุณากรอกข้อมูลที่จะค้นหา';
+                        'กรุณาระบุคำที่จะค้นหา';
                     return false;
                 } else {
                     document.getElementById('validationMessages').textContent = '';
@@ -633,7 +633,7 @@
         });
 
         $('#SubmitEditForm').click(function(e) {
-            if (!confirm("ยืนยันการทำรายการ ?")) return;
+            //if (!confirm("ยืนยันการทำรายการ ?")) return;
             e.preventDefault();
 
             $('.alert-danger').html('');
@@ -641,117 +641,142 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
-            var eemergencyData = [];
-            $('#myTbl3e tbody tr').each(function(index, tr) {
-                var eemertype = tr.cells[0].innerHTML;
-                var eemergencyname = $(this).find('input[name="eemergencyname[]"]').val();
-                var eemerrelation = $(this).find('input[name="eemerrelation[]"]').val();
-                var eemerphone = $(this).find('input[name="eemerphone[]"]').val();
-                var eemergency = {
-                    eemertype: eemertype,
-                    emergencyname: eemergencyname,
-                    emerrelation: eemerrelation,
-                    emerphone: eemerphone
-                };
-                eemergencyData.push(eemergency);
-            });
+            ezBSAlert({
+                type: "confirm",
+                headerText: "Confirm",
+                messageText: "ยืนยันการทำรายการ?",
+                alertType: "info",
+            }).done(function(r) {
+                if (r == true) {
+                    var eemergencyData = [];
+                    $('#myTbl3e tbody tr').each(function(index, tr) {
+                        var eemertype = tr.cells[0].innerHTML;
+                        var eemergencyname = $(this).find(
+                            'input[name="eemergencyname[]"]').val();
+                        var eemerrelation = $(this).find(
+                            'input[name="eemerrelation[]"]').val();
+                        var eemerphone = $(this).find('input[name="eemerphone[]"]')
+                        .val();
+                        var eemergency = {
+                            eemertype: eemertype,
+                            emergencyname: eemergencyname,
+                            emerrelation: eemerrelation,
+                            emerphone: eemerphone
+                        };
+                        eemergencyData.push(eemergency);
+                    });
 
-            var arrayDate = $('#Editadddate').val().split("-");
-            arrayDate[0] = parseInt(arrayDate[0]) - 543;
-            var tempadddate = arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2];
+                    var arrayDate = $('#Editadddate').val().split("-");
+                    arrayDate[0] = parseInt(arrayDate[0]) - 543;
+                    var tempadddate = arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2];
 
-            var arrayDateb = $('#Editbirthday').val().split("-");
-            arrayDateb[0] = parseInt(arrayDateb[0]) - 543;
-            var tempbirthday = arrayDateb[0] + "-" + arrayDateb[1] + "-" + arrayDateb[2];
+                    var arrayDateb = $('#Editbirthday').val().split("-");
+                    arrayDateb[0] = parseInt(arrayDateb[0]) - 543;
+                    var tempbirthday = arrayDateb[0] + "-" + arrayDateb[1] + "-" + arrayDateb[
+                    2];
 
-            var additionalData = {
-                hn: $('#Edithn').val(),
-                adddate: tempadddate,
-                tname: $('#Edittname').val()[0],
-                fname: $('#Editfname').val(),
-                lname: $('#Editlname').val(),
-                sex: $('#Editsex').val()[0],
-                birthday: tempbirthday,
-                age: $('#Editage').val(),
-                bloodgroup: $('#Editbloodgroup').val()[0],
-                homeno: $('#Edithomeno').val(),
-                moo: $('#Editmoo').val(),
-                soi: $('#Editsoi').val(),
-                road: $('#Editroad').val(),
-                city: $('#Editcity').val()[0],
-                district: $('#Editdistrict').val()[0],
-                subdistrict: $('#Editsubdistrict').val()[0],
-                postcode: $('#Editpostcode').val(),
-                telhome: $('#Edittelhome').val(),
-                phoneno: $('#Editphoneno').val(),
-                workno: $('#Editworkno').val(),
-                eemergencyData: eemergencyData
-            };
-            $.ajax({
-                url: "contacts/update/" + id,
-                method: 'PUT',
-                data: additionalData,
+                    var additionalData = {
+                        hn: $('#Edithn').val(),
+                        adddate: tempadddate,
+                        tname: $('#Edittname').val()[0],
+                        fname: $('#Editfname').val(),
+                        lname: $('#Editlname').val(),
+                        sex: $('#Editsex').val()[0],
+                        birthday: tempbirthday,
+                        age: $('#Editage').val(),
+                        bloodgroup: $('#Editbloodgroup').val()[0],
+                        homeno: $('#Edithomeno').val(),
+                        moo: $('#Editmoo').val(),
+                        soi: $('#Editsoi').val(),
+                        road: $('#Editroad').val(),
+                        city: $('#Editcity').val()[0],
+                        district: $('#Editdistrict').val()[0],
+                        subdistrict: $('#Editsubdistrict').val()[0],
+                        postcode: $('#Editpostcode').val(),
+                        telhome: $('#Edittelhome').val(),
+                        phoneno: $('#Editphoneno').val(),
+                        workno: $('#Editworkno').val(),
+                        eemergencyData: eemergencyData
+                    };
+                    $.ajax({
+                        url: "contacts/update/" + id,
+                        method: 'PUT',
+                        data: additionalData,
 
-                success: function(result) {
-                    //console.log(result);
-                    if (result.errors) {
-                        $('.alert-danger').html('');
-                        $.each(result.errors, function(key, value) {
-                            $('.alert-danger').show();
-                            $('.alert-danger').append('<strong><li>' + value +
-                                '</li></strong>');
-                        });
-                        $('#EditModal').scrollTop(0);
-                    } else {
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('.alert-success').append('<strong><li>' + result.success +
-                            '</li></strong>');
-                        $('#EditModal').modal('hide');
-                        toastr.success(result.success, {
-                            timeOut: 5000
-                        });
-                        $('#Listview').DataTable().ajax.reload();
-                        //setTimeout(function() {
-                        //$('.alert-success').hide();
+                        success: function(result) {
+                            //console.log(result);
+                            if (result.errors) {
+                                $('.alert-danger').html('');
+                                $.each(result.errors, function(key, value) {
+                                    $('.alert-danger').show();
+                                    $('.alert-danger').append(
+                                        '<strong><li>' + value +
+                                        '</li></strong>');
+                                });
+                                $('#EditModal').scrollTop(0);
+                            } else {
+                                $('.alert-danger').hide();
+                                $('.alert-success').show();
+                                $('.alert-success').append('<strong><li>' + result
+                                    .success +
+                                    '</li></strong>');
+                                $('#EditModal').modal('hide');
+                                toastr.success(result.success, {
+                                    timeOut: 5000
+                                });
+                                $('#Listview').DataTable().ajax.reload();
+                                //setTimeout(function() {
+                                //$('.alert-success').hide();
 
-                        //}, 10000);
+                                //}, 10000);
 
-                    }
+                            }
+                        }
+                    });
                 }
             });
+
         });
 
         $(document).on('click', '.btn-delete', function() {
-            if (!confirm("ยืนยันการทำรายการ ?")) return;
+            //if (!confirm("ยืนยันการทำรายการ ?")) return;
+            ezBSAlert({
+                type: "confirm",
+                headerText: "Confirm",
+                messageText: "ยืนยันการลบข้อมูล??",
+                alertType: "info",
+            }).done(function(r) {
+                if (r == true) {
+                    var rowid = $(this).data('rowid')
+                    var el = $(this)
+                    if (!rowid) return;
 
-            var rowid = $(this).data('rowid')
-            var el = $(this)
-            if (!rowid) return;
 
-
-            $.ajax({
-                //type: "POST",
-                method: 'DELETE',
-                dataType: 'JSON',
-                url: "contacts/destroy/",
-                data: {
-                    id: rowid,
-                    //_method: 'delete',
-                    _token: token
-                },
-                success: function(data) {
-                    console.log(data);
-                    if (data.success) {
-                        toastr.success(data.message, {
-                            timeOut: 5000
-                        });
-                        table.row(el.parents('tr'))
-                            .remove()
-                            .draw();
-                    }
+                    $.ajax({
+                        //type: "POST",
+                        method: 'DELETE',
+                        dataType: 'JSON',
+                        url: "contacts/destroy/",
+                        data: {
+                            id: rowid,
+                            //_method: 'delete',
+                            _token: token
+                        },
+                        success: function(data) {
+                            console.log(data);
+                            if (data.success) {
+                                toastr.success(data.message, {
+                                    timeOut: 5000
+                                });
+                                table.row(el.parents('tr'))
+                                    .remove()
+                                    .draw();
+                            }
+                        }
+                    }); //end ajax
                 }
-            }); //end ajax
+            });
+
         })
 
         //Click Tab
@@ -847,7 +872,7 @@
                     url: "thdistrict/district/" + provinceId,
                     method: 'GET',
                     success: function(res) {
-                         //districtOb.html('<option value="">เลือกอำเภอ</option>');
+                        //districtOb.html('<option value="">เลือกอำเภอ</option>');
                         //cartonOb.html('<option value="">เลือกตำบล</option>');
                         districtOb.html('')
                         cartonOb.html('')
