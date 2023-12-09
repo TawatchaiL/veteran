@@ -4,7 +4,7 @@
             <h3 class="card-title"></h3>
         </div>
 
-        <div class="card-body p-0" style="max-height: 350px; overflow: auto;">
+        <div class="card-body p-0" style="max-height: 400px; overflow: auto;">
             <table id="Listview"
                 class="display nowrap table table-sm table-head-fixed text-nowrap table-bordered table-striped table-hover">
                 <thead>

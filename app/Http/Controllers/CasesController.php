@@ -348,7 +348,7 @@ class CasesController extends Controller
         $tabid = $request->input('tabid');
         $data = CrmCase::where('contact_id', $id)
             ->orderBy("id", "desc")
-            ->limit(6)
+            ->limit(10)
             ->get();
 
         $agens = User::orderBy('name', 'asc')->get();
