@@ -82,7 +82,7 @@
             localStorage.removeItem('keyword');
 
             $('#seachtext').val('');
-            $('#seachtype').val('');
+            $('#seachtype').val('0');
 
             var currentDate = moment();
             //startDate = moment().format('YYYY-MM-DD');
