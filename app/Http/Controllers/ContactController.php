@@ -1086,4 +1086,44 @@ class ContactController extends Controller
 
         return redirect('/contacts')->with('success', 'ลบ ผู้ติดต่อ เรียบร้อยแล้ว');
     }
+
+    public function caseslist(Request $request)
+    {
+        $id = $request->input('id');
+
+        $data = CrmCase::where('contact_id', $id)
+            ->orderBy("id", "desc")
+            ->limit(10)
+            ->get();
+
+        $agens = User::orderBy('name', 'asc')->get();
+        $agentArray = [];
+        $agentArray[0]['name'] = 'All';
+        foreach ($agens as $agen) {
+            $agentArray[$agen->id]['name'] = $agen->name;
+        }
+
+
+        $template = 'contacts.caseslist';
+        $htmlContent = View::make($template, ['caselist' => $data, 'agent' => $agentArray])->render();
+        return response()->json(['html' =>  $htmlContent,]);
+
+        //return response()->json(['data' => $data]);
+
+    }
+
+    public function casesview(Request $request)
+    {
+        $casesid = $request->input('id');
+        $datac = CrmCase::where('id', $casesid)->first();
+        $datact = CrmContact::where('id', $datac->contact_id)->first();
+
+        $template = 'contacts.casesdetail';
+        $htmlContent = View::make($template, ['cases' => $datac, 'datact' => $datact])->render();
+        //$htmlContent = View::make($template, ['casecomment' => $data])->render();
+        return response()->json(['html' =>  $htmlContent,]);
+
+        //return response()->json(['data' => $data]);
+
+    }
 }

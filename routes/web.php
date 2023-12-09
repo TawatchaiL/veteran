@@ -46,7 +46,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/contacts/casescontractupdate/{id}', [App\Http\Controllers\ContactController::class, 'casescontractupdate'])->name('contacts.casescontractupdate');
     Route::delete('/contacts/destroy', [App\Http\Controllers\ContactController::class, 'destroy'])->name('contacts.destroy');
     Route::post('/contacts/destroy_all', [App\Http\Controllers\ContactController::class, 'destroy_all'])->name('contacts.destroy_all');
-
+    Route::post('/contacts/caseslist', [App\Http\Controllers\ContactController::class, 'caseslist'])->name('contacts.caseslist');
+    Route::post('/contacts/casesview', [App\Http\Controllers\ContactController::class, 'casesview'])->name('contacts.casesview');
 
     Route::get('/departments', [App\Http\Controllers\DepartmentController::class, 'index'])->name('departments');
     Route::post('/departments/store', [App\Http\Controllers\DepartmentController::class, 'store'])->name('departments.store');

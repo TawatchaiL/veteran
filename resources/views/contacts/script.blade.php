@@ -788,7 +788,7 @@
         $(document).on('click', '.tablistcase', function() {
             var contactid = id;
             $.ajax({
-                url: '{{ route('cases.caseslist') }}',
+                url: '{{ route('contacts.caseslist') }}',
                 type: 'POST',
                 data: {
                     id: contactid
@@ -802,7 +802,7 @@
         $(document).on('click', '.listcases-button', function() {
             var contactid = $(this).data("contactid");
             $.ajax({
-                url: '{{ route('cases.caseslist') }}',
+                url: '{{ route('contacts.caseslist') }}',
                 type: 'POST',
                 data: {
                     id: contactid
@@ -816,7 +816,7 @@
         $(document).on('click', '.casedetail-button', function() {
             var casesid = $(this).data("cases_id");
             $.ajax({
-                url: '{{ route('cases.casesview') }}',
+                url: '{{ route('contacts.casesview') }}',
                 type: 'POST',
                 data: {
                     id: casesid
