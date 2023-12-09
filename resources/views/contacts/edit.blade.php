@@ -54,7 +54,7 @@
                                     aria-controls="custom-tabs-one-profilee" aria-selected="false">ข้อมูลเบอร์ติดต่อ</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="custom-tabs-one-history-tabe" data-toggle="pill"
+                                <a class="nav-link tablistcase" id="custom-tabs-one-history-tabe" data-toggle="pill"
                                     href="#custom-tabs-one-history" role="tab"
                                     aria-controls="custom-tabs-one-history" aria-selected="false">ประวัติการติดต่อ</a>
                             </li>
