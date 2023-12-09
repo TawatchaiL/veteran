@@ -812,13 +812,14 @@
             @endif
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
-            columns: [{
+            columns: [
+                /*{
                     data: 'checkbox',
                     name: 'checkbox',
                     orderable: false,
                     searchable: false,
                     className: 'no-print'
-                },
+                },*/
                 {
                     data: 'cdate',
                     name: 'cdate'
@@ -860,18 +861,18 @@
                     name: 'more'
                 }
             ],
-            "footerCallback": function(row, data, start, end, display) {
+            "footerCallback": function (row, data, start, end, display) {
                 var api = this.api();
 
-                var sum = api
-                    .column(8)
-                    .data()
-                    .reduce(function(acc, value) {
-                        return parseFloat(acc) + parseFloat(value);
-                    }, 0);
+                var columnData = api.column(7, { page: 'all' }).data();
+                console.log('Column Data:', columnData);
 
-                $(api.column(8).footer()).html(sum.toFixed(
-                    2));
+                var sum = columnData.reduce(function (acc, value) {
+                    return parseFloat(acc) + parseFloat(value);
+                }, 0);
+                console.log('Sum:', sum);
+
+                $(api.column(7).footer()).html(sum.toFixed(2));
             }
 
         };
