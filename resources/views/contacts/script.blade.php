@@ -784,6 +784,49 @@
             }); //end ajax
         })
 
+        //Click Tab
+        $(document).on('click', '.tablistcase', function() {
+            var contactid = $(this).data("contactid");
+            alert(contactid);
+            $.ajax({
+                url: '{{ route('cases.caseslist') }}',
+                type: 'POST',
+                data: {
+                    id: contactid
+                },
+                success: function(response) {
+                    $('#casehistory').html(response.html);
+                }
+            });
+        });
+        //List cases
+        $(document).on('click', '.listcases-button', function() {
+            var contactid = $(this).data("contactid");
+            $.ajax({
+                url: '{{ route('cases.caseslist') }}',
+                type: 'POST',
+                data: {
+                    id: contactid
+                },
+                success: function(response) {
+                    $('#casehistory').html(response.html);
+                }
+            });
+        });
+        //case view
+        $(document).on('click', '.casedetail-button', function() {
+            var casesid = $(this).data("cases_id");
+            $.ajax({
+                url: '{{ route('cases.casesview') }}',
+                type: 'POST',
+                data: {
+                    id: casesid
+                },
+                success: function(response) {
+                    $('#casehistory').html(response.html);
+                }
+            });
+        });
 
     });
 </script>

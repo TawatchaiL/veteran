@@ -347,7 +347,7 @@
                                 </div>
                             </div>
                             
-                            <div class="tab-pane fade tablistcaseP" id="custom-tabs-one-history" role="tabpanel"
+                            <div class="tab-pane fade tablistcase" id="custom-tabs-one-history" role="tabpanel"
                                 aria-labelledby="custom-tabs-one-history-tabe">
                                 <div id="casehistory"></div>
                             </div>
