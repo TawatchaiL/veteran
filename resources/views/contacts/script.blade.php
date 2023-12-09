@@ -531,6 +531,10 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
 
+            $('#Editcity').html('');
+            $('#Editdistrict').html('');
+            $('#Editsubdistrict').html('');
+
             id = $(this).data('id');
             $.ajax({
                 url: "{{ route('thcity.city') }}",
@@ -538,9 +542,6 @@
                 success: function(res) {
                     //alert(res.data.code);
                     var provinceOb = $('#Editcity');
-                    provinceOb.html('');
-                    $('#Editdistrict').html('');
-                    $('#Editsubdistrict').html('');
                     //provinceOb.html('<option value="">เลือกจังหวัด</option>');
                     $.each(res.data, function(index, item) {
                         provinceOb.append(
@@ -582,7 +583,7 @@
                         }
                         $('#Editage').val(res.datax.datac.age);
                         $('#Editbloodgroup').val(res.datax.datac.bloodgroup)
-                        .change();
+                            .change();
                         $('#Edithomeno').val(res.datax.datac.homeno);
                         $('#Editmoo').val(res.datax.datac.moo);
                         $('#Editsoi').val(res.datax.datac.soi);
@@ -889,8 +890,8 @@
         // Edit
         $('#Editcity').on('change', function() {
             var provinceId = $(this).val();
-            //EdistrictOb.val(null).trigger("change")
-            //EcartonOb.val(null).trigger("change")
+            EdistrictOb.val(null).trigger("change")
+            EcartonOb.val(null).trigger("change")
             //EdistrictOb.html('<option value="">เลือกอำเภอ</option>');
             $.ajax({
                 url: "thdistrict/district/" + provinceId,
@@ -908,9 +909,10 @@
             });
 
         });
+
         $('#Editdistrict').on('change', function() {
             var districtId = $(this).val();
-            //EcartonOb.val(null).trigger("change")
+            EcartonOb.val(null).trigger("change")
             //EcartonOb.html('<option value="">เลือกตำบล</option>');
             $.ajax({
                 url: "thsubdistrict/subdistrict/" + districtId,
