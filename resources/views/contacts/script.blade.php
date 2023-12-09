@@ -786,7 +786,7 @@
 
         //Click Tab
         $(document).on('click', '.tablistcase', function() {
-            var contactid = $(this).data("contactid");
+            var contactid = id;
             alert(contactid);
             $.ajax({
                 url: '{{ route('cases.caseslist') }}',
