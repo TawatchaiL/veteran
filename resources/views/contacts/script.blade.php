@@ -563,10 +563,10 @@
                                 "-" + arrayDate[2]);
                         }
                         //$('#Editadddate').val(res.datax.datac.adddate);
-                        $('#Edittname').val(res.datax.datac.tname)change();
+                        $('#Edittname').val(res.datax.datac.tname).change();
                         $('#Editfname').val(res.datax.datac.fname);
                         $('#Editlname').val(res.datax.datac.lname);
-                        $('#Editsex').val(res.datax.datac.sex)change();
+                        $('#Editsex').val(res.datax.datac.sex).change();
                         if (res.datax.datac.birthday !== '' && res.datax.datac
                             .birthday !== null && res.datax.datac.birthday !==
                             undefined) {
@@ -578,7 +578,7 @@
                             //$('#Editbirthday').val(res.datax.datac.birthday);
                         }
                         $('#Editage').val(res.datax.datac.age);
-                        $('#Editbloodgroup').val(res.datax.datac.bloodgroup)change();
+                        $('#Editbloodgroup').val(res.datax.datac.bloodgroup).change();
                         $('#Edithomeno').val(res.datax.datac.homeno);
                         $('#Editmoo').val(res.datax.datac.moo);
                         $('#Editsoi').val(res.datax.datac.soi);
