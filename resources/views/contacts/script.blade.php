@@ -409,10 +409,9 @@
                         );
                     });
 
-                    //setTimeout(function() {
-                    $('#Addcity').val('65');
-                    $('#Addcity').change();
-                    //}, 1000)
+                    setTimeout(function() {
+                        $('#Addcity').val('65').change();
+                    }, 1000)
 
                 }
             });
