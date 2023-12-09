@@ -538,7 +538,8 @@
                 success: function(res) {
                     //alert(res.data.code);
                     var provinceOb = $('#Editcity');
-                    provinceOb.html('<option value="">เลือกจังหวัด</option>');
+                    provinceOb.html('');
+                    //provinceOb.html('<option value="">เลือกจังหวัด</option>');
                     $.each(res.data, function(index, item) {
                         provinceOb.append(
                             $('<option></option>').val(item.code).html(item
@@ -578,7 +579,8 @@
                             //$('#Editbirthday').val(res.datax.datac.birthday);
                         }
                         $('#Editage').val(res.datax.datac.age);
-                        $('#Editbloodgroup').val(res.datax.datac.bloodgroup).change();
+                        $('#Editbloodgroup').val(res.datax.datac.bloodgroup)
+                        .change();
                         $('#Edithomeno').val(res.datax.datac.homeno);
                         $('#Editmoo').val(res.datax.datac.moo);
                         $('#Editsoi').val(res.datax.datac.soi);
