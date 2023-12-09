@@ -842,7 +842,7 @@
         $('#Addcity').on('change', function() {
             var provinceId = $(this).val();
             //districtOb.html('<option value="">เลือกอำเภอ</option>');
-            if (provinceId !== '') {
+            if (provinceId != '') {
                 $.ajax({
                     url: "thdistrict/district/" + provinceId,
                     method: 'GET',
@@ -861,10 +861,11 @@
                 });
             }
         });
+
         districtOb.on('change', function() {
             var districtId = $(this).val();
             //cartonOb.html('<option value="">เลือกตำบล</option>');
-            if (districtId !== '') {
+            if (districtId != '') {
                 $.ajax({
                     url: "thsubdistrict/subdistrict/" + districtId,
                     method: 'GET',
@@ -890,7 +891,7 @@
         $('#Editcity').on('change', function() {
             var provinceId = $(this).val();
             //EdistrictOb.html('<option value="">เลือกอำเภอ</option>');
-            if (provinceId !== '') {
+            if (provinceId != '') {
                 $.ajax({
                     url: "thdistrict/district/" + provinceId,
                     method: 'GET',
@@ -909,10 +910,11 @@
                 });
             }
         });
+
         EdistrictOb.on('change', function() {
             var districtId = $(this).val();
             //EcartonOb.html('<option value="">เลือกตำบล</option>');
-            if (districtId !== '') {
+            if (districtId != '') {
                 $.ajax({
                     url: "thsubdistrict/subdistrict/" + districtId,
                     method: 'GET',
