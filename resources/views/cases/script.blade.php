@@ -69,7 +69,7 @@
             var dateStart = $('#reservation').val();
             var searchtext = $('#seachtext').val();
             var searchtype = $('#seachtype').val();
-        
+
             localStorage.setItem('dateStart', dateStart);
             localStorage.setItem('keyword', searchtext);
             localStorage.setItem('searchType', searchtype);
@@ -369,9 +369,9 @@
         $('#btnreset').click(function(e) {
             $("#seachtype").val(0);
             $("#seachtext").val('');
-            document.getElementById('validationMessages').textContent = '';
             datereset();
             daterange();
+            document.getElementById('validationMessages').textContent = '';
             $('#Listview').DataTable().ajax.reload();
         });
 
