@@ -10,6 +10,7 @@ use App\Models\CrmPhoneEmergencyLog;
 use App\Models\CrmContactLog;
 use App\Models\Department;
 use App\Models\CrmCase;
+use App\Models\User;
 use App\Models\CrmCaseslog;
 use Carbon\Carbon;
 use Spatie\Permission\Models\Role;

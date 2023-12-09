@@ -355,11 +355,7 @@ class CasesController extends Controller
     public function caseslist(Request $request)
     {
         $id = $request->input('id');
-        if (!empty($request->get('tabid'))) {
-            $tabid = $request->input('tabid');
-        } else {
-            $tabid = '';
-        }
+        $tabid = $request->input('tabid');
 
         $data = CrmCase::where('contact_id', $id)
             ->orderBy("id", "desc")
