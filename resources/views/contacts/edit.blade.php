@@ -71,7 +71,7 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-code"></i> รหัสผู้ติดต่อ.</strong>
-                                                    {!! Form::text('ehn', NULL, [
+                                                    {!! Form::text('ehn', null, [
                                                         'id' => 'Edithn',
                                                         'placeholder' => 'Code',
                                                         'class' => 'form-control',
@@ -97,10 +97,9 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> คำนำหน้าชื่อ:</strong>
-                                                    <select style="width: 100%;"
-                                                        class="select2 form-control"
-                                                        id="Edittname" name="etname">
-                                                        <option value="">กรุณาเลือก</option>
+                                                    <select style="width: 100%;" class="select2 select2_single form-control"
+                                                        id="Edittname" name="etname" multiple="multiple">
+                                                        {{-- <option value="">กรุณาเลือก</option> --}}
                                                         <option value="คุณ">คุณ</option>
                                                         <option value="เด็กชาย">เด็กชาย</option>
                                                         <option value="เด็กหญิง">เด็กหญิง</option>
@@ -113,7 +112,7 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> ชื่อ:</strong>
-                                                    {!! Form::text('efname', NULL, ['id' => 'Editfname', 'placeholder' => 'ชื่อ', 'class' => 'form-control']) !!}
+                                                    {!! Form::text('efname', null, ['id' => 'Editfname', 'placeholder' => 'ชื่อ', 'class' => 'form-control']) !!}
                                                 </div>
                                             </div>
                                         </div>
@@ -127,10 +126,9 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> เพศ:</strong>
-                                                    <select style="width: 100%;"
-                                                        class="select2 form-control"
-                                                        id="Editsex" name="Editsex">
-                                                        <option value="">กรุณาเลือก</option>
+                                                    <select style="width: 100%;" class="select2 select2_single form-control"
+                                                        id="Editsex" name="Editsex" multiple="multiple">
+                                                        {{-- <option value="">กรุณาเลือก</option> --}}
                                                         <option value="ชาย">ชาย</option>
                                                         <option value="หญิง">หญิง</option>
                                                     </select>
@@ -153,7 +151,12 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> อายุ:</strong>
-                                                    {!! Form::text('Editage', null, ['id' => 'Editage', 'placeholder' => 'อายุ', 'class' => 'form-control','readonly' => true]) !!}
+                                                    {!! Form::text('Editage', null, [
+                                                        'id' => 'Editage',
+                                                        'placeholder' => 'อายุ',
+                                                        'class' => 'form-control',
+                                                        'readonly' => true,
+                                                    ]) !!}
                                                 </div>
                                             </div>
                                         </div>
@@ -161,10 +164,9 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> กรุ๊ปเลือด:</strong>
-                                                    <select style="width: 100%;"
-                                                        class="select2 form-control"
-                                                        id="Editbloodgroup" name="Editbloodgroup">
-                                                        <option value="">กรุณาเลือก</option>
+                                                    <select style="width: 100%;" class="select2 select2_single form-control"
+                                                        id="Editbloodgroup" name="Editbloodgroup" multiple="multiple">
+                                                       {{--  <option value="">กรุณาเลือก</option> --}}
                                                         <option value="A">A</option>
                                                         <option value="B">B</option>
                                                         <option value="AB">AB</option>
@@ -184,7 +186,7 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-home"></i> บ้านเลขที่:</strong>
-                                                    {!! Form::text('homeno', NULL, [
+                                                    {!! Form::text('homeno', null, [
                                                         'id' => 'Edithomeno',
                                                         'placeholder' => 'Address',
                                                         'class' => 'form-control',
@@ -194,7 +196,7 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fa-solid fa-people-roof"></i> หมู่:</strong>
-                                                    {!! Form::text('moo', NULL, [
+                                                    {!! Form::text('moo', null, [
                                                         'id' => 'Editmoo',
                                                         'placeholder' => 'Group',
                                                         'class' => 'form-control',
@@ -206,7 +208,7 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fa-solid fa-people-roof"></i> ซอย :</strong>
-                                                    {!! Form::text('esoi', NULL, [
+                                                    {!! Form::text('esoi', null, [
                                                         'id' => 'Editsoi',
                                                         'placeholder' => 'Soi',
                                                         'class' => 'form-control',
@@ -216,7 +218,7 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-road"></i> ถนน :</strong>
-                                                    {!! Form::text('eroad', NULL, [
+                                                    {!! Form::text('eroad', null, [
                                                         'id' => 'Editroad',
                                                         'placeholder' => 'Road',
                                                         'class' => 'form-control',
@@ -228,8 +230,8 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fa-solid fa-city"></i> จังหวัด :</strong>
-                                                    <select class="select2 form-control" id="Editcity"
-                                                        name="ecity">
+                                                    <select class="select2 select2_single form-control" id="Editcity"
+                                                        name="ecity" multiple="multiple">
                                                     </select>
                                                 </div>
                                             </div>
@@ -237,9 +239,9 @@
                                                 <div class="form-group">
                                                     <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
                                                         อำเภอ:</strong>
-                                                    <select class="select2 form-control" id="Editdistrict"
-                                                        name="edistrict">
-                                                        <option value="">กรุณาเลือกอำเภอ</option>
+                                                    <select class="select2 select2_single form-control" id="Editdistrict"
+                                                        name="edistrict" multiple="multiple">
+                                                        {{-- <option value="">กรุณาเลือกอำเภอ</option> --}}
                                                     </select>
                                                 </div>
                                             </div>
@@ -250,16 +252,16 @@
                                                     <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
                                                         ตำบล
                                                         :</strong>
-                                                    <select class="select2 form-control" id="Editsubdistrict"
-                                                        name="esubdistrict">
-                                                        <option value="">กรุณาเลือกตำบล</option>
+                                                    <select class="select2 select2_single form-control" id="Editsubdistrict"
+                                                        name="esubdistrict" multiple="multiple">
+                                                        {{-- <option value="">กรุณาเลือกตำบล</option> --}}
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-code"></i> รหัสไปรษณีย์:</strong>
-                                                    {!! Form::text('epostcode', NULL, [
+                                                    {!! Form::text('epostcode', null, [
                                                         'id' => 'Editpostcode',
                                                         'placeholder' => 'Postcode',
                                                         'class' => 'form-control',
@@ -339,14 +341,15 @@
                                             <div class="col-md-12" align="right">
 
                                                 <button type="button" id="editRowBtne"
-                                                    class="btn btn-primary btnAddg"><i class="fa-solid fa-plus"></i> เพิ่มบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน</button>
+                                                    class="btn btn-primary btnAddg"><i class="fa-solid fa-plus"></i>
+                                                    เพิ่มบุคคลที่ติดต่อได้ในกรณีฉุกเฉิน</button>
                                             </div>
                                         </div>
 
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="tab-pane fade" id="custom-tabs-one-history" role="tabpanel"
                                 aria-labelledby="custom-tabs-one-history-tabe">
                                 <div id="casehistory"></div>
