@@ -848,8 +848,10 @@
                     url: "thdistrict/district/" + provinceId,
                     method: 'GET',
                     success: function(res) {
-                        districtOb.html('<option value="">เลือกอำเภอ</option>');
-                        cartonOb.html('<option value="">เลือกตำบล</option>');
+                         //districtOb.html('<option value="">เลือกอำเภอ</option>');
+                        //cartonOb.html('<option value="">เลือกตำบล</option>');
+                        districtOb.html('')
+                        cartonOb.html('')
                         $.each(res.data, function(index, item) {
                             districtOb.append(
                                 $('<option></option>').val(item.code).html(item
@@ -868,7 +870,8 @@
                     url: "thsubdistrict/subdistrict/" + districtId,
                     method: 'GET',
                     success: function(res) {
-                        cartonOb.html('<option value="">เลือกตำบล</option>');
+                        //cartonOb.html('<option value="">เลือกตำบล</option>');
+                        cartonOb.html('')
                         $.each(res.data, function(index, item) {
                             cartonOb.append(
                                 $('<option></option>').val(item.code).html(item
