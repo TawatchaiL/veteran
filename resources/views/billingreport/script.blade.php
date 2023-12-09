@@ -861,19 +861,19 @@
                     name: 'more'
                 }
             ],
-            "footerCallback": function (row, data, start, end, display) {
-    var api = this.api();
+            "footerCallback": function(row, data, start, end, display) {
+                var api = this.api();
 
-    var columnData = api.column(8, { page: 'all' }).data();
-    console.log('Column Data:', columnData);
+                var sum = api
+                    .column(8)
+                    .data()
+                    .reduce(function(acc, value) {
+                        return parseFloat(acc) + parseFloat(value);
+                    }, 0);
 
-    var sum = columnData.reduce(function (acc, value) {
-        return parseFloat(acc) + parseFloat(value);
-    }, 0);
-    console.log('Sum:', sum);
-
-    $(api.column(8).footer()).html(sum.toFixed(2));
-}
+                $(api.column(8).footer()).html(sum.toFixed(
+                    2));
+            }
 
         };
 
