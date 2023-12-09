@@ -909,6 +909,7 @@
         });
         $('#Editdistrict').on('change', function() {
             var districtId = $(this).val();
+            console.log(districtId)
             //EcartonOb.html('<option value="">เลือกตำบล</option>');
             $.ajax({
                 url: "thsubdistrict/subdistrict/" + districtId,
