@@ -843,7 +843,7 @@
 
         // on change province
         $('#Addcity').on('change', function() {
-            var provinceId = $(this).val();
+            var provinceId = $(this).val()[0];
             //districtOb.html('<option value="">เลือกอำเภอ</option>');
             $.ajax({
                 url: "thdistrict/district/" + provinceId,
@@ -864,7 +864,7 @@
         });
 
         districtOb.on('change', function() {
-            var districtId = $(this).val();
+            var districtId = $(this).val()[0];
             //cartonOb.html('<option value="">เลือกตำบล</option>');
             $.ajax({
                 url: "thsubdistrict/subdistrict/" + districtId,
@@ -888,7 +888,7 @@
 
         // Edit
         $('#Editcity').on('change', function() {
-            var provinceId = $(this).val();
+            var provinceId = $(this).val()[0];
             //EdistrictOb.html('<option value="">เลือกอำเภอ</option>');
             $.ajax({
                 url: "thdistrict/district/" + provinceId,
@@ -908,7 +908,7 @@
             EcartonOb.val(null).trigger("change")
         });
         EdistrictOb.on('change', function() {
-            var districtId = $(this).val();
+            var districtId = $(this).val()[0];
             //EcartonOb.html('<option value="">เลือกตำบล</option>');
             $.ajax({
                 url: "thsubdistrict/subdistrict/" + districtId,
