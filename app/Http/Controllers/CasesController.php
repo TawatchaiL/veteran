@@ -28,7 +28,10 @@ class CasesController extends Controller
     }
     public function index(Request $request)
     {
+        
         if ($request->ajax()) {
+            dd($request->input('seachtype').$request->input('seachtext'));
+
             if (!empty($request->get('sdate'))) {
                 $dateRange = $request->input('sdate');
                 if ($dateRange) {
@@ -84,8 +87,8 @@ class CasesController extends Controller
                     ->join('crm_contacts', 'crm_cases.contact_id', '=', 'crm_contacts.id')
                     ->join('users', 'crm_cases.agent', '=', 'users.id')
                     //->join('case_types', 'crm_cases.casetype1', '=', 'case_types.id')
-                    ->where('crm_contacts.fname', 'like', '%' . $request->input('seachtext') . '%')
-                    ->orWhere('crm_contacts.lname', 'like', '%' . $request->input('seachtext') . '%')
+                    ->where('crm_contacts.fname', 'like', $request->input('seachtext') . '%')
+                    ->orWhere('crm_contacts.lname', 'like', $request->input('seachtext') . '%')
                     ->whereRaw('crm_cases.created_at between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"');
                 //->get();
             } else if ($request->input('seachtype') === "5") {
