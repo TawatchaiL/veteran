@@ -45,8 +45,6 @@
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group" id="typelev5">
-                                    <strong><i class="fas fa-list-ol"></i> รายละเอียดเคส
-                                        เพิ่มเติม 2:</strong>
                                     {!! Form::text('name5', null, ['id' => 'AddName5', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
@@ -54,8 +52,6 @@
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group" id="typelev5">
-                                    <strong><i class="fas fa-list-ol"></i> รายละเอียดเคส
-                                        เพิ่มเติม 2:</strong>
                                     {!! Form::text('name5', null, ['id' => 'AddName5', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
@@ -63,8 +59,6 @@
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group" id="typelev5">
-                                    <strong><i class="fas fa-list-ol"></i> รายละเอียดเคส
-                                        เพิ่มเติม 2:</strong>
                                     {!! Form::text('name5', null, ['id' => 'AddName5', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
