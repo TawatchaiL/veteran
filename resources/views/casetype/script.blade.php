@@ -121,7 +121,7 @@
             $('.form').trigger('reset');
 
             $.ajax({
-                url: "casetype6/casetype/0",
+                url: "casetype/casetype/0",
                 method: 'GET',
                 success: function(res) {
                     var provinceOb = $('#casetype1');
@@ -191,7 +191,7 @@
                 status: sstatus,
             };
             $.ajax({
-                url: "{{ route('casetype6.store') }}",
+                url: "{{ route('casetype.store') }}",
                 method: 'post',
                 data: additionalData,
                 success: function(result) {
@@ -234,7 +234,7 @@
 
             id = $(this).data('id');
             $.ajax({
-                url: "casetype6/edit/" + id,
+                url: "casetype/edit/" + id,
                 method: 'GET',
                 success: function(res) {
                     console.log(res);
@@ -267,7 +267,7 @@
             }
 
             $.ajax({
-                url: "casetype6/save/" + id,
+                url: "casetype/save/" + id,
                 method: 'PUT',
                 data: {
                     name: $('#EditName').val(),
@@ -312,7 +312,7 @@
             $.ajax({
                 type: "POST",
                 dataType: 'JSON',
-                url: "casetype6/destroy/",
+                url: "casetype/destroy/",
                 data: {
                     id: rowid,
                     _method: 'delete',
@@ -364,7 +364,7 @@
                 }
                 if(parent_id != ''){
                 $.ajax({
-                    url: "casetype6/casetype/" + parent_id,
+                    url: "casetype/casetype/" + parent_id,
                     method: 'GET',
                     async: false,
                     success: function(res) {
