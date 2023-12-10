@@ -348,7 +348,7 @@
                     method: 'GET',
                     async: false,
                     success: function(res) {
-                        $('#targettext').val('');
+                        $('#targettext').html('');
                         $.each(res.data, function(index, item) {
                             $('#targettext').append('<div class="row"><div class="col-xs-12 col-sm-12 col-md-12"><div class="form-group" id="typelev5"><input type="text" id="eemergencyname" name="eemergencyname[]" class="form-control has-feedback-left" value="" required="required"></div></div></div>');
                         });
