@@ -29,22 +29,20 @@
                         <span aria-hidden="true"></span>
                     </button>
                 </div>
-
-                {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
                 <div class="row">
-                    <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="col-xs-6 col-sm-6 col-md-6" id="targetselect">
                         <div class="form-group">
-                            <strong><i class="fa-regular fa-message"></i> ประเภทเคส:</strong>
                             <select style="width: 100%;"
-                                class="select2 form-control casetype6chang" id="casetype1" data-lev="1"
+                                class="select2 form-control casetypechang" id="casetype1" data-lev="1"
                                 name="casetype1">
                             </select>
                         </div>
                     </div>
-                    <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="col-xs-6 col-sm-6 col-md-6" id="targettext">
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group" id="typelev5">
+
                                     {!! Form::text('name5', null, ['id' => 'AddName5', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                                 </div>
                             </div>
@@ -65,8 +63,6 @@
                         </div>
                     </div>
                 </div>
-
-                {!! Form::close() !!}
             </div>
             <div class="modal-footer {{-- justify-content-between --}}">
                 <button type="button" class="btn btn-success" id="SubmitCreateForm"><i class="fas fa-download"></i>

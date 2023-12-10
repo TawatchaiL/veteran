@@ -335,33 +335,13 @@
         //$('#casetype'+1).on('change', function() {
         //        alert('OK');
         //});
-        $(document).on("change", ".casetype6chang", function() {
+        $(document).on("change", ".casetypechang", function() {
             let levcase = $(this).data("lev");
             let parent_id = $(this).val();
             let nextcase = levcase + 1;
             let discase = nextcase + 1;
             if (parent_id != '' && levcase < 6) {
-                for (let i = nextcase; i < 7; i++) {
-                    if (i === 2) {
-                        $('#casetype2').html('<option value="">เลือกรายละเอียดเคส</option>');
-                    }
-                    if (i === 3) {
-                        $('#casetype3').html(
-                            '<option value="">เลือกรายละเอียดเคสย่อย</option>');
-                    }
-                    if (i === 4) {
-                        $('#casetype4').html(
-                            '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
-                    }
-                    if (i === 5) {
-                        $('#casetype5').html(
-                            '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
-                    }
-                    if (i === 6) {
-                        $('#casetype6').html(
-                            '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
-                    }
-                }
+
                 if(parent_id != ''){
                 $.ajax({
                     url: "casetype/casetype/" + parent_id,
@@ -369,50 +349,14 @@
                     async: false,
                     success: function(res) {
                         $.each(res.data, function(index, item) {
-                            $('#casetype' + nextcase).append(
-                                $('<option></option>').val(item.id)
-                                .html(item.name)
-                            );
+                            $('#targettext').append('<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemergencyname" name="eemergencyname[]" class="form-control has-feedback-left" value="" required="required"></div>');
                         });
                     }
                 });
                 }
-                $('#casetype' + nextcase).attr('disabled', false);
-                $('#AddName' + nextcase).attr('disabled', false);
-                $('#typelev' + nextcase).show();
-                $('#typelev' + levcase).hide();
 
-                for (let i = discase; i < 7; i++) {
-                    $('#casetype' + i).attr('disabled', true);
-                    $('#AddName' + i).attr('disabled', true);
-                    $('#typelev' + i).hide();
-                }
             } else {
-                for (let i = nextcase; i < 7; i++) {
-                    if (i === 2) {
-                        $('#casetype2').html('<option value="">เลือกรายละเอียดเคส</option>');
-                    }
-                    if (i === 3) {
-                        $('#casetype3').html(
-                            '<option value="">เลือกรายละเอียดเคสย่อย</option>');
-                    }
-                    if (i === 4) {
-                        $('#casetype4').html(
-                            '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
-                    }
-                    if (i === 5) {
-                        $('#casetype5').html(
-                            '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
-                    }
-                    if (i === 6) {
-                        $('#casetype6').html(
-                            '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
-                    }
-                    $('#casetype' + i).attr('disabled', true);
-                    $('#AddName' + i).attr('disabled', true);
-                    $('#typelev' + i).hide();
-                }
-                $('#typelev' + levcase).show();
+
             }
         });
     });
