@@ -41,15 +41,6 @@
                     <div class="col-xs-6 col-sm-6 col-md-6" id="targettext">
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xs-6 col-sm-6 col-md-6">
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-6">
-                        <input type="text" id="eemergencyname" name="eemergencyname[]" class="form-control has-feedback-left" value="" required="required">
-                        <button type="button" class="btn btn-success"><i class="fas fa-download"></i>
-                            เพิ่ม</button>
-                    </div>
-                </div>
             </div>
             <div class="modal-footer {{-- justify-content-between --}}">
                 <button type="button" class="btn btn-success" id="SubmitCreateForm"><i class="fas fa-download"></i>
