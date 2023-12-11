@@ -350,7 +350,7 @@
                     success: function(res) {
                         $('#targettext').html('');
                         $.each(res.data, function(index, item) {
-                            $('#targettext').append('<div class="row"><div class="col-xs-12 col-sm-12 col-md-12"><div class="form-group" id="typelev5"><input type="text" id="eemergencyname" name="eemergencyname[]" class="form-control has-feedback-left" value="" required="required"></div></div></div>');
+                            $('#targettext').append('<div class="row"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group"><input type="text" id="newcasetype" name="newcasetype[]" class="form-control has-feedback-left" value="" required="required">&nbsp;<button type="button" class="btn btn-success" id="SubmitNewCasetype"><i class="fas fa-download"></i>เพิ่ม</button>&nbsp;<button type="button" class="btn btn-success" id="SubmitNewCasetype"><i class="fas fa-download"></i>เพิ่ม</button></div></div></div>');
                         });
                         $('#targettext').append('<div class="row"><div class="col-xs-12 col-sm-12 col-md-12"><div><input type="text" id="newcasetype" name="newcasetype[]" class="form-control has-feedback-left" value="" required="required"> <button type="button" class="btn btn-success" id="SubmitNewCasetype"><i class="fas fa-download"></i>เพิ่ม</button></div></div></div>');
                     }
