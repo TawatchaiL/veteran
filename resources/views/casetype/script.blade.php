@@ -354,10 +354,10 @@
                                 '<div class="row mb-1"><div class="col-xs-10 col-sm-10 col-md-10"><div class="input-group">'
                                 + '<input type="text" id="newcasetype" name="newcasetype[]" class="form-control has-feedback-left" value="" required="required">' 
                                 + '&nbsp;<button type="button" class="btn btn-success" id="SubmitNewCasetype"><i class="fas fa-download"></i>แก้ไข</button></div></div>' 
-                                + '<div class="col-xs-2 col-sm-2 col-md-2">'
-+ '&nbsp;<button type="button" class="btn btn-success" id="SubmitNewCasetype"><i class="fa-solid fa-angle-up"></i></button>'
-+ '&nbsp;<button type="button" class="btn btn-success" id="SubmitNewCasetype"><i class="fa-solid fa-angle-down"></i></button>' 
-+ '</div></div>');
+                                + '<div class="col-xs-2 col-sm-2 col-md-2"><div class="input-group">'
+                                + '&nbsp;<button type="button" class="btn btn-success" id="SubmitNewCasetype"><i class="fa-solid fa-angle-up"></i></button>'
+                                + '&nbsp;<button type="button" class="btn btn-success" id="SubmitNewCasetype"><i class="fa-solid fa-angle-down"></i></button>' 
+                                + '</div></div></div>');
 /*
                             $('#targettext').append(
                                 '<div class="row mb-1"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
