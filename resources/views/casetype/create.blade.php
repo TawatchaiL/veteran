@@ -1,5 +1,5 @@
 <div class="modal fade" id="CreateModal">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header bg-primary">
                 <h4 class="modal-title"><i class="fas fa-list-ol"></i> เพิ่ม ประเภทการติดต่อ</h4>
