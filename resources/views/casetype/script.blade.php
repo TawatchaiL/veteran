@@ -351,9 +351,9 @@
                         $('#targettext').html('');
                         $.each(res.data, function(index, item) {
                             $('#targettext').append(
-                                '<div class="row mb-1"><div class="col-xs-10 col-sm-10 col-md-10">'
+                                '<div class="row mb-1"><div class="col-xs-10 col-sm-10 col-md-10"><div class="input-group">'
                                 + '<input type="text" id="newcasetype" name="newcasetype[]" class="form-control has-feedback-left" value="" required="required">' 
-                                + '&nbsp;<button type="button" class="btn btn-success" id="SubmitNewCasetype"><i class="fas fa-download"></i>แก้ไข</button></div>' 
+                                + '&nbsp;<button type="button" class="btn btn-success" id="SubmitNewCasetype"><i class="fas fa-download"></i>แก้ไข</button></div></div>' 
                                 + '<div class="col-xs-1 col-sm-1 col-md-1">&nbsp;<button type="button" class="btn btn-success" id="SubmitNewCasetype"><i class="fa-solid fa-angle-up"></i></button></div>' 
                                 + '<div class="col-xs-1 col-sm-1 col-md-1">&nbsp;<button type="button" class="btn btn-success" id="SubmitNewCasetype"><i class="fa-solid fa-angle-down"></i></button>' 
                                 + '</div></div>');
