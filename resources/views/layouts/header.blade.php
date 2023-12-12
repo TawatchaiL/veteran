@@ -7,7 +7,7 @@
         </li>
         <li class="nav-item dropdown user-menu">
             <a href="#" id="user_button" class="btn" {{-- dropdown-toggle" data-toggle="dropdown" --}}>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/2048px-User_icon_2.svg.png"
+                <img src="{{ asset('images/User_icon_2.svg.png') }}"
                     height="150" class="user-image img-circle elevation-1" alt="User Image">
                 <b class="d-none d-md-inline text-toolbar">{{ Auth::user()->name }} [
                     {{ $temporaryPhone }} ]</b>
