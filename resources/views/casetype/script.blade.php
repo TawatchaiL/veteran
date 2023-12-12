@@ -387,7 +387,7 @@
                                 );
                                 $('#targettext').append(
                                     '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
-                                    + '<input type="text" class="form-control has-feedback-left editcasetype" value="' + item.name + '" required="required">' 
+                                    + '<input type="text" class="form-control has-feedback-left editcasetype" value="' + item.name + '" required="required" disabled>' 
                                     + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
                                     + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel"><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>' 
                                     + '&nbsp;<button type="button" class="btn btn-primary btn-editup"><i class="fa-solid fa-angle-up"></i></button>' 
@@ -426,7 +426,7 @@
                             $.each(res.data, function(index, item) {
                                 $('#targettext').append(
                                     '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
-                                    + '<input type="text" class="form-control has-feedback-left editcasetype" value="' + item.name + '" required="required">' 
+                                    + '<input type="text" class="form-control has-feedback-left editcasetype" value="' + item.name + '" required="required" disabled>' 
                                     + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
                                     + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel"><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>' 
                                     + '&nbsp;<button type="button" class="btn btn-primary btn-editup"><i class="fa-solid fa-angle-up"></i></button>' 
