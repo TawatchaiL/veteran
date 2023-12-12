@@ -868,7 +868,11 @@
                     data: 'cost',
                     name: 'cost'
                 },
-
+                {
+                    data: 'action',
+                    name: 'action',
+                    className: 'no-print'
+                },
                 {
                     data: 'more',
                     name: 'more'
