@@ -136,8 +136,8 @@
                                 + '<input type="text" class="form-control has-feedback-left text-editcasetype" id="editcasetype' + item.id + '" value="' + item.name + '" required="required" disabled>' 
                                 + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype" id="btneditcasetype' + item.id + '" data-id="' + item.id + '"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
                                 + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel" id="btneditcancel' + item.id + '" data-id="' + item.id + '" disabled><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>' 
-                                + '&nbsp;<button type="button" class="btn btn-primary btn-editup"><i class="fa-solid fa-angle-up"></i></button>' 
-                                + '&nbsp;<button type="button" class="btn btn-primary btn-editdown"><i class="fa-solid fa-angle-down"></i></button>' 
+                                + '&nbsp;<button type="button" class="btn btn-primary btn-editup" data-id="' + item.id + '"><i class="fa-solid fa-angle-up"></i></button>' 
+                                + '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '"><i class="fa-solid fa-angle-down"></i></button>' 
                                 + '</div></div></div>');
                     });
                         $('#targettext').append(
@@ -390,8 +390,8 @@
                                     + '<input type="text" class="form-control has-feedback-left text-editcasetype" id="editcasetype' + item.id + '" value="' + item.name + '" required="required" disabled>' 
                                     + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype" id="btneditcasetype' + item.id + '" data-id="' + item.id + '"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
                                     + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel" id="btneditcancel' + item.id + '" data-id="' + item.id + '" disabled><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>' 
-                                    + '&nbsp;<button type="button" class="btn btn-primary btn-editup"><i class="fa-solid fa-angle-up"></i></button>' 
-                                    + '&nbsp;<button type="button" class="btn btn-primary btn-editdown"><i class="fa-solid fa-angle-down"></i></button>' 
+                                    + '&nbsp;<button type="button" class="btn btn-primary btn-editup" data-id="' + item.id + '"><i class="fa-solid fa-angle-up"></i></button>' 
+                                    + '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '"><i class="fa-solid fa-angle-down"></i></button>' 
                                     + '</div></div></div>');
                             });
                             for (let i = discase; i < 7; i++) {
@@ -429,8 +429,8 @@
                                     + '<input type="text" class="form-control has-feedback-left text-editcasetype" id="editcasetype' + item.id + '" value="' + item.name + '" required="required" disabled>' 
                                     + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype" id="btneditcasetype' + item.id + '" data-id="' + item.id + '"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
                                     + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel" id="btneditcancel' + item.id + '" data-id="' + item.id + '" disabled><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>' 
-                                    + '&nbsp;<button type="button" class="btn btn-primary btn-editup"><i class="fa-solid fa-angle-up"></i></button>' 
-                                    + '&nbsp;<button type="button" class="btn btn-primary btn-editdown"><i class="fa-solid fa-angle-down"></i></button>' 
+                                    + '&nbsp;<button type="button" class="btn btn-primary btn-editup" data-id="' + item.id + '"><i class="fa-solid fa-angle-up"></i></button>' 
+                                    + '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '"><i class="fa-solid fa-angle-down"></i></button>' 
                                     + '</div></div></div>');
                             });
                         }
@@ -460,7 +460,7 @@
 
         $(document).on("click", ".btn-editcancel", function() {
             var id = $(this).data("id");
-            $('#editcasetype' + id).prop('disabled', false);
+            $('#editcasetype' + id).attr('disabled', true);
             $('.btn-editup').prop('disabled', false);
             $('.btn-editdown').prop('disabled', false);
             $('#btneditcasetype' + id).html('<i class="fa-regular fa-pen-to-square"></i>แก้ไข').removeClass("btn-savecasetype");
