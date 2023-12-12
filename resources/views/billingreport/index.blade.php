@@ -182,6 +182,7 @@
                                             <th>ต่อ</th>
                                             <th>เป็นเงิน</th>
                                             <th width="100px"></th>
+                                            <th width="100px"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
