@@ -195,8 +195,8 @@
                                             <th align="right"></th>
                                             <th align="right"></th>
                                             <th align="right"></th>
-                                            <th align="right">รวม</th>
-                                            <th align="center"></th>
+                                            <th align="right"></th>
+                                            <th align="center">รวม</th>
                                             <th></th>
                                             <th></th>
                                         </tr>
