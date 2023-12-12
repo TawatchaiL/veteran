@@ -31,11 +31,12 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6" id="targetselect">
-                        <div class="form-group">
-                            <select style="width: 100%;"
-                                class="select2 form-control casetypechang" id="casetype1" data-lev="1"
-                                name="casetype1">
-                            </select>
+                        <div class="row mb-3">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <select style="width: 100%;"
+                                    class="select2 form-control casetypechang" id="casetype1" data-lev="1" name="casetype1">
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6" id="targettext">
