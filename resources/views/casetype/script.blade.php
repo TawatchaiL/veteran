@@ -361,8 +361,14 @@
                     method: 'GET',
                     async: false,
                     success: function(res) {
-                        $('#targettext').html('');
-                        $.each(res.data, function(index, item) {
+                        var caseOb = $('#casetype' + nextcase);
+                            caseOb.attr('disabled', false);
+                            //caseOb.html('<option value="">เลือกประเภทการติดต่อ</option>');
+                            $('#targettext').html('');
+                    $.each(res.data, function(index, item) {
+                            caseOb.append(
+                                $('<option></option>').val(item.id).html(item.name)
+                            );
                             $('#targettext').append(
                                 '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
                                 + '<input type="text" class="form-control has-feedback-left editcasetype" value="' + item.name + '" required="required">' 
