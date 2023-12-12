@@ -111,15 +111,15 @@ class BillingReportController extends Controller
                 if ($department) {
 
                     $users = User::where('department_id', $department)->get();
-                    if(count($users) > 0){
+                    if (count($users) > 0) {
                         foreach ($users as $user) {
                             $idd[] = $user->id;
                         }
                         $datass->where(function ($query) use ($idd) {
-                            $query->wherein('asteriskcdrdb.cdr.userfield',$idd);
+                            $query->wherein('asteriskcdrdb.cdr.userfield', $idd);
                         });
-                    }else{
-                        $datass->where(function ($query){
+                    } else {
+                        $datass->where(function ($query) {
                             $query->where('asteriskcdrdb.cdr.userfield', '0');
                         });
                     }
@@ -189,6 +189,18 @@ class BillingReportController extends Controller
 
                     $duration = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
                     return $duration;
+                })
+                ->addColumn('action', function ($row) {
+
+                    if (Gate::allows('contact-edit')) {
+                        $html = '<button type="button" class="changeUrlButton btn btn-sm btn-success btn-edit" id="changeUrlButtonw" data-id="' . $row->uniqueid . '"><i class="fa-solid fa-volume-high"></i> Play</button> ';
+                        // $html .= '<a href="#" class="btn btn-success changeUrlButton" onclick="formModal(\'' . route('voicerecord.edit', $row->id) . '\')" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="vioc1">vioc1</a>';
+                        // $html .= '<a href="#" class="btn btn-success vioc" onclick="formModal(\'' . route('voicerecord.edit', $row->id) . '\')" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="vioc2">vioc2</a>';
+                    } else {
+                        $html = '<button type="button" class="btn btn-sm btn-success disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa-solid fa-volume-high"></i> Play</button> ';
+                    }
+
+                    return $html;
                 })
                 ->addColumn('more', function ($row) {
                     return '';
@@ -287,7 +299,7 @@ class BillingReportController extends Controller
         ];
 
         $datas = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')
-        ->where('uniqueid', $uniqueid);
+            ->where('uniqueid', $uniqueid);
 
         $datas->update($companyd);
 
@@ -364,7 +376,7 @@ class BillingReportController extends Controller
         $comment->delete();
         return response()->json(['message' => 'Comment deleted successfully']);
     }
-/*
+    /*
     public function updatebilling(Request $request, $id)
     {
         $rules = [
