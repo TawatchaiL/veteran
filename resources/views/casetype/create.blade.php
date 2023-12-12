@@ -31,10 +31,45 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6" id="targetselect">
-                        <div class="row mb-3">
+                        <div class="row mb-3 case1">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <select style="width: 100%;"
                                     class="select2 form-control casetypechang" id="casetype1" data-lev="1" data-parent="0" name="casetype1">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3 case2">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <select style="width: 100%;"
+                                    class="select2 form-control casetypechang" id="casetype2" data-lev="2" name="casetype2">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3 case3">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <select style="width: 100%;"
+                                    class="select2 form-control casetypechang" id="casetype3" data-lev="3" name="casetype3">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3 case4">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <select style="width: 100%;"
+                                    class="select2 form-control casetypechang" id="casetype4" data-lev="4" name="casetype4">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3 case5">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <select style="width: 100%;"
+                                    class="select2 form-control casetypechang" id="casetype5" data-lev="5" name="casetype5">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3 case6">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <select style="width: 100%;"
+                                    class="select2 form-control casetypechang" id="casetype6" data-lev="6" name="casetype6">
                                 </select>
                             </div>
                         </div>
