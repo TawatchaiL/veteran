@@ -820,7 +820,7 @@
                 columnDefs: [{
                     className: 'control',
                     orderable: false,
-                    targets: -1
+                    targets: -2
                 }],
             @endif
             sPaginationType: "full_numbers",
