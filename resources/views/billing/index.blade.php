@@ -108,8 +108,6 @@
 
     @include('billing.edit')
     @include('billing.create')
-
-
 @endsection
 
 @section('script')
