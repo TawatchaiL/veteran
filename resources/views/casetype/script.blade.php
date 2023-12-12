@@ -143,7 +143,7 @@
                         $('#targettext').append(
                             '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
                                  + '<input type="text" class="form-control has-feedback-left newcasetype" value="" required="required">' 
-                                 + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
+                                 + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype" data-pid="0"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
                                  + '</div></div></div>');
                 }
             });
@@ -401,7 +401,7 @@
                                 $('#targettext').append(
                                 '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
                                     + '<input type="text" class="form-control has-feedback-left newcasetype" value="" required="required">' 
-                                    + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
+                                    + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype" data-pid="' + parent_id + '"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
                                     + '</div></div></div>');
                         }
                     });
@@ -443,7 +443,7 @@
                     $('#targettext').append(
                     '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
                         + '<input type="text" class="form-control has-feedback-left newcasetype" value="" required="required">' 
-                        + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
+                        + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype" data-pid="' + parent_id + '"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
                         + '</div></div></div>');
             }
         });
@@ -453,6 +453,7 @@
             $('.btn-editcasetype').attr('disabled', true);
             $('.btn-editup').attr('disabled', true);
             $('.btn-editdown').attr('disabled', true);
+            $('.btn-newcasetype').attr('disabled', true);
             $('#editcasetype' + id).prop('disabled', false);
             $('#btneditcasetype' + id).html('<i class="fa-regular fa-pen-to-square"></i>บันทึก').prop('disabled', false).addClass("btn-savecasetype");
             $('#btneditcancel' + id).prop('disabled', false);
@@ -463,6 +464,7 @@
             $('#editcasetype' + id).attr('disabled', true);
             $('.btn-editup').prop('disabled', false);
             $('.btn-editdown').prop('disabled', false);
+            $('.btn-newcasetype').prop('disabled', false);
             $('#btneditcasetype' + id).html('<i class="fa-regular fa-pen-to-square"></i>แก้ไข').removeClass("btn-savecasetype");
             $('.btn-editcasetype').prop('disabled', false);
             $(this).attr('disabled', true);
