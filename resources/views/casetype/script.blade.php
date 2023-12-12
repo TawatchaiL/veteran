@@ -441,7 +441,8 @@
                                     + '&nbsp;<button type="button" class="btn btn-primary btn-editdown"><i class="fa-solid fa-angle-down"></i></button>' 
                                     + '</div></div></div>');
                             });
-                            for (let d = discase; d < 7; d++) {
+                        }
+                        for (let d = discase; d < 7; d++) {
                                 $('#casetype' + d).attr('disabled', true);
                                 $('#case' + d).hide();
                             }
@@ -450,7 +451,6 @@
                                     + '<input type="text" class="form-control has-feedback-left newcasetype" value="" required="required">' 
                                     + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
                                     + '</div></div></div>');
-                        }
                     });
                 /*
                 $('#targettext').html('');
