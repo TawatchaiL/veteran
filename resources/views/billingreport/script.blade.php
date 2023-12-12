@@ -873,7 +873,7 @@
                     data: 'action',
                     name: 'action',
                     className: 'no-print',
-                    visible: false,
+                    visible: true,
                 },
                 {
                     data: 'more',
