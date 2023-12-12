@@ -451,8 +451,9 @@
         $(document).on("click", ".btn-editcasetype", function() {
             var id = $(this).data("id");
             $('.btn-editcasetype').attr('disabled', true);
+
             $('#editcasetype' + id).prop('disabled', false);
-            $('#btneditcasetype' + id).html('<i class="fa-regular fa-pen-to-square"></i>บันทึก');
+            $('#btneditcasetype' + id).html('<i class="fa-regular fa-pen-to-square"></i>บันทึก').prop('disabled', false);
             $('#btneditcancel' + id).prop('disabled', false);
         });
     });
