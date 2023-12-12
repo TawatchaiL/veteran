@@ -133,8 +133,8 @@
                         );
                         $('#targettext').append(
                                 '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
-                                + '<input type="text" class="form-control has-feedback-left editcasetype" value="' + item.name + '" required="required" disabled>' 
-                                + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
+                                + '<input type="text" class="form-control has-feedback-left editcasetype" id="editcasetype' + item.id + '" value="' + item.name + '" required="required" disabled>' 
+                                + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype" data-id="' + item.id + '"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
                                 + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel" disabled><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>' 
                                 + '&nbsp;<button type="button" class="btn btn-primary btn-editup"><i class="fa-solid fa-angle-up"></i></button>' 
                                 + '&nbsp;<button type="button" class="btn btn-primary btn-editdown"><i class="fa-solid fa-angle-down"></i></button>' 
@@ -387,8 +387,8 @@
                                 );
                                 $('#targettext').append(
                                     '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
-                                    + '<input type="text" class="form-control has-feedback-left editcasetype" value="' + item.name + '" required="required" disabled>' 
-                                    + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
+                                    + '<input type="text" class="form-control has-feedback-left editcasetype" id="editcasetype' + item.id + '" value="' + item.name + '" required="required" disabled>' 
+                                    + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype" data-id="' + item.id + '"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
                                     + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel" disabled><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>' 
                                     + '&nbsp;<button type="button" class="btn btn-primary btn-editup"><i class="fa-solid fa-angle-up"></i></button>' 
                                     + '&nbsp;<button type="button" class="btn btn-primary btn-editdown"><i class="fa-solid fa-angle-down"></i></button>' 
@@ -426,8 +426,8 @@
                             $.each(res.data, function(index, item) {
                                 $('#targettext').append(
                                     '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
-                                    + '<input type="text" class="form-control has-feedback-left editcasetype" value="' + item.name + '" required="required" disabled>' 
-                                    + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
+                                    + '<input type="text" class="form-control has-feedback-left editcasetype" id="editcasetype' + item.id + '" value="' + item.name + '" required="required" disabled>' 
+                                    + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype" data-id="' + item.id + '"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
                                     + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel" disabled><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>' 
                                     + '&nbsp;<button type="button" class="btn btn-primary btn-editup"><i class="fa-solid fa-angle-up"></i></button>' 
                                     + '&nbsp;<button type="button" class="btn btn-primary btn-editdown"><i class="fa-solid fa-angle-down"></i></button>' 
@@ -446,6 +446,11 @@
                         + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
                         + '</div></div></div>');
             }
+        });
+
+        $(document).on("click", ".btn-editcasetype", function() {
+            var id = $this.data("id");
+            $('#editcasetype' + id).attr('disabled', false);
         });
     });
 </script>
