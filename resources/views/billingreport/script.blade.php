@@ -881,15 +881,16 @@
                 var sum = 0;
 
                 for (var page = 0; page < totalPages; page++) {
-                    api.page(page).draw(false); // Move to the page without redrawing
-                    api.rows().every(function() {
-                        var value = this.data()[8];
+                    var pageData = api.page(page).data();
+
+                    for (var i = 0; i < pageData.length; i++) {
+                        var value = pageData[i][8];
                         if (value !== null) {
                             var numericValue = parseFloat(value.replace(/[^\d.-]/g, '') ||
                             0); // Replace null with 0
                             sum += isNaN(numericValue) ? 0 : numericValue;
                         }
-                    });
+                    }
                 }
 
                 $(api.column(8).footer()).html(sum.toFixed(2));
