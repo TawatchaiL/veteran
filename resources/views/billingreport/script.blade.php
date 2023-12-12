@@ -876,27 +876,22 @@
             ],
             "footerCallback": function(row, data, start, end, display) {
                 var api = this.api();
-                var totalPages = api.page.info().pages;
 
                 var sum = 0;
 
-                for (var page = 0; page < totalPages; page++) {
-                    var pageData = api.page(page).data();
-
-                    for (var i = 0; i < pageData.length; i++) {
-                        var value = pageData[i][8];
-
-                        if (value !== undefined && value !== null) {
-                            var numericValue = parseFloat(value.replace(/[^\d.-]/g, '') ||
-                            0); // Replace null with 0
-                            sum += isNaN(numericValue) ? 0 : numericValue;
-                        }
+                for (var i = 0; i < api.rows().count(); i++) {
+                    var value = api.cell(i, 8, {
+                        page: 'all'
+                    }).data();
+                    if (value !== null) {
+                        var numericValue = parseFloat(value.replace(/[^\d.-]/g, '') ||
+                        0); // Replace null with 0
+                        sum += isNaN(numericValue) ? 0 : numericValue;
                     }
                 }
 
                 $(api.column(8).footer()).html(sum.toFixed(2));
             }
-
         };
 
         var table = $('#Listview').DataTable(table_option);
