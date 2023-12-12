@@ -102,12 +102,12 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-xs-2 col-sm-2 col-md-2 align-self-end text-right">
+                                    <div class="col-xs-2 col-sm-2 col-md-2 align-self-end">
                                         <div class="form-group">
                                             <a class="btn btn-success" id="searchButton"> <i class="fas fa-search"></i>
-                                                Search </a>
+                                            </a>
                                             <a class="btn bg-warning" id="resetSearchButton"> <i
-                                                    class="fa-solid fa-rotate"></i> Reset </a>
+                                                    class="fa-solid fa-rotate"></i> </a>
                                         </div>
                                     </div>
                                 </ol>
