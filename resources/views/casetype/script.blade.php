@@ -465,7 +465,7 @@
             $('.btn-editdown').prop('disabled', false);
             $('#btneditcasetype' + id).html('<i class="fa-regular fa-pen-to-square"></i>แก้ไข').removeClass("btn-savecasetype");
             $('.btn-editcasetype').prop('disabled', false);
-            $(this).prop('disabled', false);
+            $(this).attr('disabled', true);
         });
 
         $(document).on("click", ".btn-savecasetype", function() {
