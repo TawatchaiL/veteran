@@ -450,7 +450,7 @@
 
         $(document).on("click", ".btn-editcasetype", function() {
             var id = $this.data("id");
-            $('#editcasetype' + id).attr('disabled', false);
+            $('#editcasetype' + id).prop('disabled', false);
         });
     });
 </script>
