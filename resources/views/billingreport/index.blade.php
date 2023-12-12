@@ -212,6 +212,7 @@
         </div>
     </section>
     @include('layouts.modal-form')
+    @include('voicerecord.create')
 @endsection
 @section('script')
     @include('billingreport.script')
