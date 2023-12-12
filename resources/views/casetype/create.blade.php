@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6" id="targettext">
-                        <div class="row"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group"><input type="text" id="newcasetype" name="newcasetype[]" class="form-control has-feedback-left" value="" required="required">&nbsp;<button type="button" class="btn btn-success" id="SubmitNewCasetype"><i class="fas fa-download"></i>เพิ่ม</button>&nbsp;<button type="button" class="btn btn-success" id="SubmitNewCasetype"><i class="fas fa-download"></i>เพิ่ม</button></div></div></div>
+                        <div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group"><input type="text" id="newcasetype" name="newcasetype[]" class="form-control has-feedback-left" value="" required="required">&nbsp;<button type="button" class="btn btn-success" id="SubmitNewCasetype"><i class="fas fa-download"></i>เพิ่ม</button></div></div></div>
                     </div>
                 </div>
             </div>
