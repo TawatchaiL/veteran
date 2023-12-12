@@ -353,8 +353,7 @@
             let parent_id = $(this).val();
             let nextcase = levcase + 1;
             let discase = nextcase + 1;
-            if (parent_id != '' && levcase < 6) {
-                for (let i = nextcase; i < 7; i++) {
+            for (let i = nextcase; i < 7; i++) {
                     if (i === 2) {
                         $('#casetype2').html('<option value="">เลือกรายละเอียดเคส</option>');
                     }
@@ -375,6 +374,7 @@
                             '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
                     }
                 }
+            if (parent_id != '' && levcase < 6) {
                 if(parent_id != ''){
                     $.ajax({
                         url: "casetype/casetype/" + parent_id,
@@ -412,12 +412,53 @@
                 }
 
             } else {
+        
+                let levcase = $(this).data("lev");
+                let nextcase = levcase + 1;
+                let backcase = levcase - 1;
+                let discase = nextcase + 1;
+                let parent_id = $('#casetype' + backcase).val();
+                $.ajax({
+                        url: "casetype/casetype/" + parent_id,
+                        method: 'GET',
+                        async: false,
+                        success: function(res) {
+                            var caseOb = $('#casetype' + nextcase);
+                                caseOb.attr('disabled', false);
+                                //caseOb.html('<option value="">เลือกประเภทการติดต่อ</option>');
+                                $('#targettext').html('');
+                            $.each(res.data, function(index, item) {
+                                caseOb.append(
+                                    $('<option></option>').val(item.id).html(item.name)
+                                );
+                                $('#targettext').append(
+                                    '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
+                                    + '<input type="text" class="form-control has-feedback-left editcasetype" value="' + item.name + '" required="required">' 
+                                    + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
+                                    + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel"><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>' 
+                                    + '&nbsp;<button type="button" class="btn btn-primary btn-editup"><i class="fa-solid fa-angle-up"></i></button>' 
+                                    + '&nbsp;<button type="button" class="btn btn-primary btn-editdown"><i class="fa-solid fa-angle-down"></i></button>' 
+                                    + '</div></div></div>');
+                            });
+                            for (let i = discase; i < 7; i++) {
+                                $('#casetype' + i).attr('disabled', true);
+                                $('#case' + i).hide();
+                            }
+                                $('#targettext').append(
+                                '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
+                                    + '<input type="text" class="form-control has-feedback-left newcasetype" value="" required="required">' 
+                                    + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
+                                    + '</div></div></div>');
+                        }
+                    });
+                /*
                 $('#targettext').html('');
                 $('#targettext').append(
                             '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
                                  + '<input type="text" class="form-control has-feedback-left newcasetype" value="" required="required">' 
                                  + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
                                  + '</div></div></div>');
+                */
             }
         });
     });
