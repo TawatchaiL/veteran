@@ -460,7 +460,7 @@
 
         $(document).on("click", ".btn-editcancel", function() {
             var id = $(this).data("id");
-            $('#editcasetype' + id).attr('disabled', true);
+            $('#editcasetype' + id).prop('disabled', false);
             $('.btn-editup').prop('disabled', false);
             $('.btn-editdown').prop('disabled', false);
             $('#btneditcasetype' + id).html('<i class="fa-regular fa-pen-to-square"></i>แก้ไข').attr('disabled', true).removeClass("btn-savecasetype");
