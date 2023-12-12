@@ -36,16 +36,13 @@
         }
     </script>
 
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400&display=swap" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Libre Caslon Text' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
-        crossorigin="anonymous" />
+    <link rel="stylesheet" href="dist/css/Sans.css?:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="dist/css/Sarabun.css?:wght@400&display=swap">
+    <link rel='stylesheet' href='dist/css/LibreCaslonText.css'>
+    <link rel='stylesheet' href='dist/css/Roboto.css'>
+    <link rel="stylesheet" href="dist/css/adminlte.css?v=3.2.0">
     {{-- <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css"> --}}
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="plugins/ionicons/css/ionicons.min.css">
     <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
@@ -98,8 +95,8 @@
                         @csrf
 
                         <div class="input-group mb-3">
-                            <input type="text" name="email" value="{{-- {{ old('email') }} --}}"
-                                placeholder="Email" class="form-control @error('email') is-invalid @enderror">
+                            <input type="text" name="email" value="{{-- {{ old('email') }} --}}" placeholder="Email"
+                                class="form-control @error('email') is-invalid @enderror">
                             <div class="input-group-append">
                                 <div class="input-group-text"><span class="fas fa-user"></span></div>
                             </div>
@@ -150,7 +147,7 @@
                                     <label for="remember">Remember Me</label>
                                 </div>
                             </div> --}}
-                           
+
 
                             <div class="col-6">
                                 <button type="submit" class="btn btn-primary btn-block">เข้าสู่ระบบ</button>
