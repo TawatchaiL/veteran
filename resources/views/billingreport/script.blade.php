@@ -878,16 +878,18 @@
                 var api = this.api();
 
                 var sum = api
-                    .column(8)
+                    .column(8, {
+                        search: 'applied'
+                    }) // Use 'search: applied' to consider only visible rows
                     .data()
                     .reduce(function(acc, value) {
-                        return parseFloat(acc) + parseFloat(value);
+                        var numericValue = parseFloat(value.replace(/[^\d.-]/g,
+                        '')); // Remove non-numeric characters
+                        return isNaN(numericValue) ? acc : acc + numericValue;
                     }, 0);
 
-                $(api.column(8).footer()).html(sum.toFixed(
-                    2));
+                $(api.column(8).footer()).html(sum.toFixed(2));
             }
-
         };
 
         var table = $('#Listview').DataTable(table_option);
