@@ -451,10 +451,15 @@
         $(document).on("click", ".btn-editcasetype", function() {
             var id = $(this).data("id");
             $('.btn-editcasetype').attr('disabled', true);
-
+            $('.btn-editup').attr('disabled', true);
+            $('.btn-editdown').attr('disabled', true);
             $('#editcasetype' + id).prop('disabled', false);
-            $('#btneditcasetype' + id).html('<i class="fa-regular fa-pen-to-square"></i>บันทึก').prop('disabled', false);
+            $('#btneditcasetype' + id).html('<i class="fa-regular fa-pen-to-square"></i>บันทึก').prop('disabled', false).addClass(".btn-savecasetype");
             $('#btneditcancel' + id).prop('disabled', false);
+        });
+
+        $(document).on("click", ".btn-savecasetype", function() {
+            alert('OK');
         });
     });
 </script>
