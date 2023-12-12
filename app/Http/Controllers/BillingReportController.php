@@ -60,9 +60,9 @@ class BillingReportController extends Controller
         foreach ($agens as $agen) {
             $agentArray[$agen->id]['name'] = $agen->name;
         }
-        
+
         $department = Department::orderBy('id', 'asc')->get();
-        
+
         if ($request->ajax()) {
 
             if (!empty($request->get('sdate'))) {
@@ -122,7 +122,7 @@ class BillingReportController extends Controller
                         $datass->where(function ($query){
                             $query->where('asteriskcdrdb.cdr.userfield', '0');
                         });
-                    }       
+                    }
                 }
             }
 
