@@ -876,18 +876,20 @@
             ],
             "footerCallback": function(row, data, start, end, display) {
                 var api = this.api();
+                var totalPages = api.page.info().pages;
 
                 var sum = 0;
 
-                for (var i = 0; i < api.rows().count(); i++) {
-                    var value = api.cell(i, 8, {
-                        page: 'all'
-                    }).data();
-                    if (value !== null) {
-                        var numericValue = parseFloat(value.replace(/[^\d.-]/g, '') ||
-                        0); // Replace null with 0
-                        sum += isNaN(numericValue) ? 0 : numericValue;
-                    }
+                for (var page = 0; page < totalPages; page++) {
+                    api.page(page).draw(false); // Move to the page without redrawing
+                    api.rows().every(function() {
+                        var value = this.data()[8];
+                        if (value !== null) {
+                            var numericValue = parseFloat(value.replace(/[^\d.-]/g, '') ||
+                            0); // Replace null with 0
+                            sum += isNaN(numericValue) ? 0 : numericValue;
+                        }
+                    });
                 }
 
                 $(api.column(8).footer()).html(sum.toFixed(2));
