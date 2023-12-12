@@ -872,7 +872,7 @@
                 {
                     data: 'action',
                     name: 'action',
-                    className: 'no-print'
+                    className: 'no-print',
                     visible: false,
                 },
                 {
