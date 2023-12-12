@@ -421,8 +421,7 @@
                 }else{
                     let parent_id = $('#casetype' + backcase).val();
                 }
-                
-                alert();
+                alert(levcase);
                 $.ajax({
                         url: "casetype/casetype/" + parent_id,
                         method: 'GET',
