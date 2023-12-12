@@ -41,7 +41,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-xs-2 col-sm-2 col-md-2">
+                                    <div class="col-xs-1 col-sm-1 col-md-1">
                                         <div class="form-group">
                                             <strong><i class="fas fa-square-phone"></i> เบอร์ที่ติดต่อ:</strong>
                                             {{-- {!! Form::text('telp', null, ['id' => 'telp', 'placeholder' => '', 'class' => 'form-control']) !!} --}}
@@ -49,7 +49,7 @@
                                                 autocomplete="off">
                                         </div>
                                     </div>
-                                    <div class="col-xs-2 col-sm-2 col-md-2">
+                                    <div class="col-xs-1 col-sm-1 col-md-1">
                                         <div class="form-group">
                                             <strong><i class="fa-solid fa-building-user"></i>
                                                 แผนก:</strong>
@@ -63,7 +63,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-xs-2 col-sm-2 col-md-2">
+                                    <div class="col-xs-1 col-sm-1 col-md-1">
                                         <div class="form-group">
                                             <strong><i class="fas fa-user"></i>
                                                 Agent:</strong>
@@ -89,7 +89,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-xs-2 col-sm-2 col-md-2">
+                                    <div class="col-xs-1 col-sm-1 col-md-1">
                                         <div class="form-group">
                                             <strong><i class="fa-solid fa-list"></i>
                                                 ประเภท:</strong>
