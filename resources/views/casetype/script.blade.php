@@ -413,13 +413,11 @@
 
             } else {
         
-                let levcase = $(this).data("lev");
-                let nextcase = levcase + 1;
                 let backcase = levcase - 1;
                 if(levcase > 1){
-                    let parent_id = $('#casetype' + backcase).val();
+                    parent_id = $('#casetype' + backcase).val();
                 }else{
-                    let parent_id = 0;
+                    parent_id = 0;
                 }
                 alert(parent_id);
                 $.ajax({
