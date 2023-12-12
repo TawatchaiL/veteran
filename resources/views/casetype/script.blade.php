@@ -378,7 +378,7 @@
                                     + '&nbsp;<button type="button" class="btn btn-primary btn-editdown"><i class="fa-solid fa-angle-down"></i></button>' 
                                     + '</div></div></div>');
                             });
-                            for (let i = nextcase; i < 7; i++) {
+                            for (let i = discase; i < 7; i++) {
                                 if (i === 2) {
                                     $('#casetype2').html('<option value="">เลือกรายละเอียดเคส</option>');
                                 }
@@ -399,6 +399,7 @@
                                         '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
                                 }
                                 $('#casetype' + i).attr('disabled', true);
+                                $('#case' + i).hide();
                             }
                                 $('#targettext').append(
                                 '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
