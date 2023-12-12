@@ -45,13 +45,13 @@
                                         <div class="form-group">
                                             <strong><i class="fas fa-square-phone"></i> เบอร์ที่ติดต่อ:</strong>
                                             {{-- {!! Form::text('telp', null, ['id' => 'telp', 'placeholder' => '', 'class' => 'form-control']) !!} --}}
-                                            <input type="text" name="telp" id="telp" class="form-control"
+                                            <input type="text" name="telp" id="telp" class="form-control" style="width: 100px"
                                                 autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
-                                            <strong><i class="fas fa-user"></i>
+                                            <strong><i class="fa-solid fa-building-user"></i>
                                                 แผนก:</strong>
                                             <select style="width: 100%;" class="select2 form-control" id="cdepartment"
                                                 name="cdepartment">
@@ -91,7 +91,7 @@
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
-                                            <strong><i class="fas fa-user"></i>
+                                            <strong><i class="fa-solid fa-list"></i>
                                                 ประเภท:</strong>
                                             <select style="width: 100%;" class="select2 form-control" id="ctype"
                                                 name="ctype">
