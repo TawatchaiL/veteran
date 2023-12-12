@@ -473,5 +473,9 @@
         $(document).on("click", ".btn-savecasetype", function() {
             alert('OK');
         });
+
+        $(document).on("click", ".btn-newcasetype", function() {
+            alert('OK SAVE');
+        });
     });
 </script>
