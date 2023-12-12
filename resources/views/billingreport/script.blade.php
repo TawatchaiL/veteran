@@ -848,6 +848,10 @@
                     name: 'duration'
                 },
                 {
+                    data: 'note',
+                    name: 'note'
+                },
+                {
                     data: 'rate',
                     name: 'rate'
                 },
@@ -859,10 +863,7 @@
                     data: 'cost',
                     name: 'cost'
                 },
-                {
-                    data: 'note',
-                    name: 'note'
-                },
+
                 {
                     data: 'more',
                     name: 'more'
