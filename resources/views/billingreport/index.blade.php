@@ -177,11 +177,11 @@
                                             <th>เบอร์ต้นทาง</th>
                                             <th>เบอร์ปลายทาง</th>
                                             <th>เวลาที่ใช้สาย</th>
-                                            <th>ประเภทค่าใช้จ่าย</th>
-                                            <th>อัตราค่าใช้จ่าย</th>
+                                            <th>ประเภท</th>
+                                            <th>อัตราค่าโทร</th>
                                             <th>ต่อ</th>
                                             <th>เป็นเงิน</th>
-                                            <th width="80px"></th>
+                                            <th width="60px"></th>
                                             <th>More</th>
                                         </tr>
                                     </thead>
@@ -197,8 +197,8 @@
                                             <th align="right"></th>
                                             <th align="right"></th>
                                             <th align="right"></th>
-                                            <th align="right"></th>
-                                            <th align="center">รวม</th>
+                                            <th align="right">รวม</th>
+                                            <th align="center"></th>
                                             <th></th>
                                             <th></th>
                                         </tr>
