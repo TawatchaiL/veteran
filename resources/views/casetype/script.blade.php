@@ -340,9 +340,9 @@
             let parent_id = $(this).val();
             let nextcase = levcase + 1;
             let discase = nextcase + 1;
-            if (parent_id != '' && levcase < 6) {
+            //if (parent_id != '' && levcase < 6) {
 
-                if(parent_id != ''){
+            //    if(parent_id != ''){
                 $.ajax({
                     url: "casetype/casetype/" + parent_id,
                     method: 'GET',
@@ -368,9 +368,9 @@
                 });
                 }
 
-            } else {
+            //} else {
 
-            }
+            //}
         });
     });
 
