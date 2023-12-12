@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="card card-info">
+                    <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title"><i class="fa-solid fa-magnifying-glass"></i> Filter</h3>
                             <div class="card-tools">
@@ -69,11 +69,11 @@
                                                 Agent:</strong>
                                             <select style="width: 100%;" class="select2 form-control" id="agen"
                                                 name="agen">
-                                                @can('billing-supervisor')
+                                                @can('voice-record-supervisor')
                                                     <option value="" selected>ทั้งหมด</option>
                                                 @endcan
                                                 @foreach ($agens as $agen)
-                                                    @can('billing-supervisor')
+                                                    @can('voice-record-supervisor')
                                                         <option value="{{ $agen->id }}">
                                                             {{ $agen->name ?? 'ไม่พบเบอร์โทรศัพท์' }}
                                                         </option>
