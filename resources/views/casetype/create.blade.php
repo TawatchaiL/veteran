@@ -34,7 +34,7 @@
                         <div class="row mb-3">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <select style="width: 100%;"
-                                    class="select2 form-control casetypechang" id="casetype1" data-lev="1" name="casetype1">
+                                    class="select2 form-control casetypechang" id="casetype1" data-lev="1" data-parent="0" name="casetype1">
                                 </select>
                             </div>
                         </div>
