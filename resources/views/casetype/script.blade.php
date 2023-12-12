@@ -441,9 +441,9 @@
                                     + '&nbsp;<button type="button" class="btn btn-primary btn-editdown"><i class="fa-solid fa-angle-down"></i></button>' 
                                     + '</div></div></div>');
                             });
-                            for (let i = discase; i < 7; i++) {
-                                $('#casetype' + i).attr('disabled', true);
-                                $('#case' + i).hide();
+                            for (let d = discase; d < 7; d++) {
+                                $('#casetype' + d).attr('disabled', true);
+                                $('#case' + d).hide();
                             }
                                 $('#targettext').append(
                                 '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
