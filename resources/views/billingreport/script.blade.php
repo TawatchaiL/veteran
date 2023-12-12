@@ -820,7 +820,7 @@
                 columnDefs: [{
                     className: 'control',
                     orderable: false,
-                    targets: -2
+                    targets: -1
                 }],
             @endif
             sPaginationType: "full_numbers",
@@ -872,7 +872,8 @@
                 {
                     data: 'action',
                     name: 'action',
-                    className: 'no-print'
+                    className: 'no-print',
+                    visible: true,
                 },
                 {
                     data: 'more',
