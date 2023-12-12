@@ -416,9 +416,7 @@
                 let levcase = $(this).data("lev");
                 let nextcase = levcase + 1;
                 let backcase = levcase - 1;
-                let discase = nextcase;
                 let parent_id = $('#casetype' + backcase).val();
-                alert(discase);
                 $.ajax({
                         url: "casetype/casetype/" + parent_id,
                         method: 'GET',
