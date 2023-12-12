@@ -425,10 +425,12 @@
                                 $('#targettext').html('');
                             $.each(res.data, function(index, item) {
                                 htmltargettext = '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
-                                    + '<input type="text" class="form-control has-feedback-left text-editcasetype" id="editcasetype' + item.id + '" value="' + item.name + '" required="required" disabled>' 
+                                    + '<input type="text" class="form-control has-feedback-left text-editcasetype" id="editcasetype' + item.id + '" value="' + index + '" required="required" disabled>' 
                                     + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype" id="btneditcasetype' + item.id + '" data-id="' + item.id + '"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
                                     + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel" id="btneditcancel' + item.id + '" data-id="' + item.id + '" disabled><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>' 
+                                    if(index != 0){
                                     + '&nbsp;<button type="button" class="btn btn-primary btn-editup" data-id="' + item.id + '"><i class="fa-solid fa-angle-up"></i></button>' 
+                                    }
                                     + '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '"><i class="fa-solid fa-angle-down"></i></button>' 
                                     + '</div></div></div>';
                                 $('#targettext').append(htmltargettext);
