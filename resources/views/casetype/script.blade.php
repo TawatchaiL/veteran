@@ -463,7 +463,7 @@
             $('#editcasetype' + id).attr('disabled', true);
             $('.btn-editup').prop('disabled', false);
             $('.btn-editdown').prop('disabled', false);
-            $('#btneditcasetype' + id).html('<i class="fa-regular fa-pen-to-square"></i>แก้ไข').prop('disabled', true).removeClass("btn-savecasetype");
+            $('#btneditcasetype' + id).html('<i class="fa-regular fa-pen-to-square"></i>แก้ไข').attr('disabled', true).removeClass("btn-savecasetype");
             $('.btn-editcasetype').prop('disabled', false);
             $(this).prop('disabled', false);
         });
