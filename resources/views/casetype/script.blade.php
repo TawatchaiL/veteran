@@ -354,7 +354,27 @@
             let nextcase = levcase + 1;
             let discase = nextcase + 1;
             if (parent_id != '' && levcase < 6) {
-
+                for (let i = nextcase; i < 7; i++) {
+                    if (i === 2) {
+                        $('#casetype2').html('<option value="">เลือกรายละเอียดเคส</option>');
+                    }
+                    if (i === 3) {
+                        $('#casetype3').html(
+                            '<option value="">เลือกรายละเอียดเคสย่อย</option>');
+                    }
+                    if (i === 4) {
+                        $('#casetype4').html(
+                            '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
+                    }
+                    if (i === 5) {
+                        $('#casetype5').html(
+                            '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
+                    }
+                    if (i === 6) {
+                        $('#casetype6').html(
+                            '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
+                    }
+                }
                 if(parent_id != ''){
                     $.ajax({
                         url: "casetype/casetype/" + parent_id,
@@ -379,25 +399,6 @@
                                     + '</div></div></div>');
                             });
                             for (let i = discase; i < 7; i++) {
-                                if (i === 2) {
-                                    $('#casetype2').html('<option value="">เลือกรายละเอียดเคส</option>');
-                                }
-                                if (i === 3) {
-                                    $('#casetype3').html(
-                                        '<option value="">เลือกรายละเอียดเคสย่อย</option>');
-                                }
-                                if (i === 4) {
-                                    $('#casetype4').html(
-                                        '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
-                                }
-                                if (i === 5) {
-                                    $('#casetype5').html(
-                                        '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
-                                }
-                                if (i === 6) {
-                                    $('#casetype6').html(
-                                        '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
-                                }
                                 $('#casetype' + i).attr('disabled', true);
                                 $('#case' + i).hide();
                             }
