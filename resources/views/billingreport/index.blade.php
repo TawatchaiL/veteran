@@ -24,7 +24,7 @@
                             <div class="row">
 
 
-                                <div class="col-xs-5 col-sm-5 col-md-5">
+                                <div class="col-xs-4 col-sm-4 col-md-4">
                                     <div class="form-group">
                                         <strong>
                                             วันที่โทรเข้า:</strong>
