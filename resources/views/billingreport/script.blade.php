@@ -15,6 +15,7 @@
     import RegionsPlugin from './dist/js/regions.esm.js'
 
     let wavesurfer; // Declare the wavesurfer variable
+
     // Function to create and initialize WaveSurfer
     const initializeWaveSurfer = (newUrl, tooltipsData) => {
 
@@ -227,7 +228,7 @@
         });
 
 
-        @can('billing-supervisor')
+        @can('voice-record-supervisor')
             wsRegions.enableDragSelection({
                 color: 'rgba(255, 0, 0, 0.1)',
                 //content: 'Region Content',
@@ -262,7 +263,7 @@
                             .getAttribute('content');
                         $.ajax({
                             type: "get",
-                            url: "/billingreport/comment",
+                            url: "/voicerecord/comment",
                             headers: {
                                 'X-CSRF-TOKEN': csrfToken
                             },
@@ -286,7 +287,7 @@
             }
 
             button.addEventListener('click', () => {
-                @can('billing-supervisor')
+                @can('voice-record-supervisor')
                     region.remove();
 
                     const commentId = region.id;
@@ -294,7 +295,7 @@
                         .getAttribute('content');
                     $.ajax({
                         type: "DELETE",
-                        url: '/billingreport/comment/' + commentId,
+                        url: '/voicerecord/comment/' + commentId,
                         headers: {
                             'X-CSRF-TOKEN': csrfToken
                         },
@@ -326,7 +327,7 @@
                 .getAttribute('content');
             $.ajax({
                 type: "POST",
-                url: "/billingreport/comment/update/" + regionId,
+                url: "/voicerecord/comment/update/" + regionId,
                 headers: {
                     'X-CSRF-TOKEN': csrfToken
                 },
@@ -376,7 +377,7 @@
             })
         }
 
-        $('#CreateModalb').modal('show');
+        $('#CreateModal').modal('show');
     }
 
     const random = (min, max) => Math.random() * (max - min) + min
@@ -386,7 +387,7 @@
         var dataId = $(this).data('id');
         $.ajax({
             type: "GET",
-            url: "billingreport/edit/" + dataId,
+            url: "voicerecord/edit/" + dataId,
             success: function(response) {
                 $('#vioc_name').text(response.voic_name);
                 $('#uniqueid').val(response.remoteData2.uniqueid);
@@ -887,7 +888,7 @@
                     .reduce(function(acc, value) {
                         if (value !== null) {
                             var numericValue = parseFloat(value.replace(/[^\d.-]/g, '') ||
-                            0); // Replace null with 0
+                                0); // Replace null with 0
                             return isNaN(numericValue) ? acc : acc + numericValue;
                         } else {
                             return acc;

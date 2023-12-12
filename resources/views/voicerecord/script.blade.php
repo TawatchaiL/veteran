@@ -580,7 +580,7 @@
                     firstDay: 1
                 }
             });
-            
+
             // Apply the custom date range filter on input change
             $('#reservation').on('apply.daterangepicker', function(ev, picker) {
                 table.draw();
@@ -798,7 +798,7 @@
                                 '<img style="position:absolute; top:10; left:250;width:100" src=' +
                                 logobase64 + '>')
                         /* .prepend(
-                            '<div style="position:absolute; top:10; right:0;">My Title</div>') 
+                            '<div style="position:absolute; top:10; right:0;">My Title</div>')
                         .prepend(
                             '<div style="position:absolute; bottom:20; left:0;">Creato il: ' +
                             jsDate.toString() + '</div>')
