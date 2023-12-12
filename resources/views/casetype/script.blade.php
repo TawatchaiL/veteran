@@ -342,12 +342,9 @@
                             .draw();
                     }
                 }
-            }); //end ajax
+            });
         })
 
-        //$('#casetype'+1).on('change', function() {
-        //        alert('OK');
-        //});
         $(document).on("change", ".casetypechang", function() {
             let levcase = $(this).data("lev");
             let parent_id = $(this).val();
@@ -383,7 +380,6 @@
                         success: function(res) {
                             var caseOb = $('#casetype' + nextcase);
                                 caseOb.attr('disabled', false);
-                                //caseOb.html('<option value="">เลือกประเภทการติดต่อ</option>');
                                 $('#targettext').html('');
                             $.each(res.data, function(index, item) {
                                 caseOb.append(
@@ -419,7 +415,6 @@
                 }else{
                     parent_id = 0;
                 }
-                alert(parent_id);
                 $.ajax({
                         url: "casetype/casetype/" + parent_id,
                         method: 'GET',
@@ -427,12 +422,8 @@
                         success: function(res) {
                             var caseOb = $('#casetype' + nextcase);
                                 caseOb.attr('disabled', false);
-                                //caseOb.html('<option value="">เลือกประเภทการติดต่อ</option>');
                                 $('#targettext').html('');
                             $.each(res.data, function(index, item) {
-                                //caseOb.append(
-                                //    $('<option></option>').val(item.id).html(item.name)
-                                //);
                                 $('#targettext').append(
                                     '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
                                     + '<input type="text" class="form-control has-feedback-left editcasetype" value="' + item.name + '" required="required">' 
@@ -457,31 +448,4 @@
             }
         });
     });
-
-
-
-
-    //function changecasetype(event) {
-    //    var selectno = parseInt(event.target.name.substring(8, 9));
-        //if(selectnext < 7){
-    //        for (let i = selectno; i < 7; i++) {
-    //            var selectnext = i + 1;
-    //                if($('#casetype' + i).val() == ''){
-    //                    $('#AddName' + i).attr('disabled', false);
-    //                    $('#casetype' + selectnext).attr('disabled', true);
-    //                    $('#AddName' + selectnext).attr('disabled', true);
-    //                }else{
-    //                    $('#AddName' + i).attr('disabled', true);
-    //                    $('#casetype' + selectnext).attr('disabled', false);
-    //                    $('#AddName' + selectnext).attr('disabled', true);
-    //                }
-
-                //$('#casetype' + selectnext).attr('disabled', true);
-                //$('#AddName' + selectno).attr('disabled', true);
-
-                //$('#casetype' + selectnext).attr('disabled', false);
-                //$('#AddName' + selectnext).attr('disabled', false);
-    //        }
-        //}
-    //}
 </script>
