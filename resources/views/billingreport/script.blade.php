@@ -885,7 +885,8 @@
 
                     for (var i = 0; i < pageData.length; i++) {
                         var value = pageData[i][8];
-                        if (value !== null) {
+
+                        if (value !== undefined && value !== null) {
                             var numericValue = parseFloat(value.replace(/[^\d.-]/g, '') ||
                             0); // Replace null with 0
                             sum += isNaN(numericValue) ? 0 : numericValue;
@@ -895,6 +896,17 @@
 
                 $(api.column(8).footer()).html(sum.toFixed(2));
             }
+            This modification checks
+            if the value is neither undefined nor null before attempting to replace characters
+            .This should help prevent the "Cannot read properties of undefined"
+            error.
+
+
+
+
+
+
+
         };
 
         var table = $('#Listview').DataTable(table_option);
