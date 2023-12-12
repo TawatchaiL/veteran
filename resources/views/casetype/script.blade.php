@@ -441,16 +441,8 @@
                                     + '&nbsp;<button type="button" class="btn btn-primary btn-editdown"><i class="fa-solid fa-angle-down"></i></button>' 
                                     + '</div></div></div>');
                             });
-                            for (let i = discase; i < 7; i++) {
-                                $('#casetype' + i).attr('disabled', true);
-                                $('#case' + i).hide();
-                            }
-                                $('#targettext').append(
-                                '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
-                                    + '<input type="text" class="form-control has-feedback-left newcasetype" value="" required="required">' 
-                                    + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
-                                    + '</div></div></div>');
                         }
+
                     });
                 /*
                 $('#targettext').html('');
@@ -460,6 +452,15 @@
                                  + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
                                  + '</div></div></div>');
                 */
+                for (let d = discase; d < 7; d++) {
+                                $('#casetype' + d).attr('disabled', true);
+                                $('#case' + d).hide();
+                            }
+                    $('#targettext').append(
+                    '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
+                        + '<input type="text" class="form-control has-feedback-left newcasetype" value="" required="required">' 
+                        + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
+                        + '</div></div></div>');
             }
         });
     });
