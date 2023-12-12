@@ -126,12 +126,25 @@
                 success: function(res) {
                     var provinceOb = $('#casetype1');
                     provinceOb.html('<option value="">เลือกประเภทการติดต่อ</option>');
+                    $('#targettext').html('');
                     $.each(res.data, function(index, item) {
                         provinceOb.append(
-                            $('<option></option>').val(item.id).html(item
-                                .name)
+                            $('<option></option>').val(item.id).html(item.name)
                         );
+                        $('#targettext').append(
+                                '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
+                                + '<input type="text" class="form-control has-feedback-left editcasetype" value="' + item.name + '" required="required">' 
+                                + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
+                                + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel"><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>' 
+                                + '&nbsp;<button type="button" class="btn btn-primary btn-editup"><i class="fa-solid fa-angle-up"></i></button>' 
+                                + '&nbsp;<button type="button" class="btn btn-primary btn-editdown"><i class="fa-solid fa-angle-down"></i></button>' 
+                                + '</div></div></div>');
                     });
+                        $('#targettext').append(
+                            '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
+                                 + '<input type="text" class="form-control has-feedback-left newcasetype" value="" required="required">' 
+                                 + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
+                                 + '</div></div></div>');
                 }
             });
             $('#casetype2').html('<option value="">เลือกรายละเอียดเคส</option>');
