@@ -181,8 +181,8 @@
                                             <th>อัตราค่าใช้จ่าย</th>
                                             <th>ต่อ</th>
                                             <th>เป็นเงิน</th>
-                                            <th width="100px"></th>
-                                            <th width="100px"></th>
+                                            <th width="120px"></th>
+                                            <th>More</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -190,6 +190,7 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
+                                            <th></th>
                                             <th></th>
                                             <th></th>
                                             <th></th>
