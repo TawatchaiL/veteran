@@ -352,17 +352,17 @@
                         $.each(res.data, function(index, item) {
                             $('#targettext').append(
                                 '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
-                                + '<input type="text" id="newcasetype" name="newcasetype[]" class="form-control has-feedback-left" value="" required="required">' 
-                                + '&nbsp;<button type="button" class="btn btn-success"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
-                                + '&nbsp;<button type="button" class="btn btn-danger"><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>' 
-                                + '&nbsp;<button type="button" class="btn btn-primary"><i class="fa-solid fa-angle-up"></i></button>' 
-                                + '&nbsp;<button type="button" class="btn btn-primary"><i class="fa-solid fa-angle-down"></i></button>' 
+                                + '<input type="text" class="form-control has-feedback-left editcasetype" value="' + item + '" required="required">' 
+                                + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
+                                + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel"><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>' 
+                                + '&nbsp;<button type="button" class="btn btn-primary btn-editup"><i class="fa-solid fa-angle-up"></i></button>' 
+                                + '&nbsp;<button type="button" class="btn btn-primary btn-editdown"><i class="fa-solid fa-angle-down"></i></button>' 
                                 + '</div></div></div>');
                         });
                             $('#targettext').append(
                             '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
-                                 + '<input type="text" id="newcasetype" name="newcasetype[]" class="form-control has-feedback-left" value="" required="required">' 
-                                 + '&nbsp;<button type="button" class="btn btn-success" id="SubmitNewCasetype"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
+                                 + '<input type="text" class="form-control has-feedback-left newcasetype" value="" required="required">' 
+                                 + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
                                  + '</div></div></div>');
                     }
                 });
