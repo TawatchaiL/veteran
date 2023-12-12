@@ -772,10 +772,15 @@
                     },
                     customize: function(win) {
                         // Customize the print layout
-                        $(win.document.body).prepend('<img style="position:absolute; top:0; left:470;width:100" src='+logobase64+'>')
-                        $(win.document.body).find('h1').css('text-align', 'center').css('font-size','16px').css('margin-top','105px');
-                        $(win.document.body).find('table').addClass('display').css('font-size','12px')
-                                            .removeClass('dataTable').css('margin-top','5px').css('margin-bottom','60px');
+                        $(win.document.body).prepend(
+                            '<img style="position:absolute; top:0; left:470;width:100" src=' +
+                            logobase64 + '>')
+                        $(win.document.body).find('h1').css('text-align', 'center').css('font-size',
+                            '16px').css('margin-top', '105px');
+                        $(win.document.body).find('table').addClass('display').css('font-size',
+                                '12px')
+                            .removeClass('dataTable').css('margin-top', '5px').css('margin-bottom',
+                                '60px');
                         $(win.document.body).find('table.dataTable th, table.dataTable td').css(
                             'border', '1px solid black');
                         $(win.document.body).find('table.dataTable th').css('background-color',
@@ -873,13 +878,13 @@
                 var api = this.api();
 
                 var sum = api
-                    .column(7)
+                    .column(8)
                     .data()
                     .reduce(function(acc, value) {
                         return parseFloat(acc) + parseFloat(value);
                     }, 0);
 
-                $(api.column(7).footer()).html(sum.toFixed(
+                $(api.column(8).footer()).html(sum.toFixed(
                     2));
             }
 
