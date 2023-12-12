@@ -131,19 +131,19 @@
                         provinceOb.append(
                             $('<option></option>').val(item.id).html(item.name)
                         );
-                        $('#targettext').append(
-                                '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
-                                + '<input type="text" class="form-control has-feedback-left text-editcasetype" id="editcasetype' + item.id + '" value="' + item.name + '" required="required" disabled>' 
-                                + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype" id="btneditcasetype' + item.id + '" data-id="' + item.id + '"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
-                                + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel" id="btneditcancel' + item.id + '" disabled><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>' 
-                                + '&nbsp;<button type="button" class="btn btn-primary btn-editup"><i class="fa-solid fa-angle-up"></i></button>' 
-                                + '&nbsp;<button type="button" class="btn btn-primary btn-editdown"><i class="fa-solid fa-angle-down"></i></button>' 
-                                + '</div></div></div>');
+                        htmltargettext = '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
+                                    + '<input type="text" class="form-control has-feedback-left text-editcasetype" id="editcasetype' + item.id + '" value="' + item.name + '" required="required" disabled>' 
+                                    + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype" id="btneditcasetype' + item.id + '" data-id="' + item.id + '"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
+                                    + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel" id="btneditcancel' + item.id + '" data-id="' + item.id + '" disabled><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>' 
+                                    + '&nbsp;<button type="button" class="btn btn-primary btn-editup" data-id="' + item.id + '"><i class="fa-solid fa-angle-up"></i></button>' 
+                                    + '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '"><i class="fa-solid fa-angle-down"></i></button>' 
+                                    + '</div></div></div>';
+                        $('#targettext').append(htmltargettext);
                     });
                         $('#targettext').append(
                             '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
                                  + '<input type="text" class="form-control has-feedback-left newcasetype" value="" required="required">' 
-                                 + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
+                                 + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype" data-pid="0"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
                                  + '</div></div></div>');
                 }
             });
@@ -385,14 +385,14 @@
                                 caseOb.append(
                                     $('<option></option>').val(item.id).html(item.name)
                                 );
-                                $('#targettext').append(
-                                    '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
+                                htmltargettext = '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
                                     + '<input type="text" class="form-control has-feedback-left text-editcasetype" id="editcasetype' + item.id + '" value="' + item.name + '" required="required" disabled>' 
                                     + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype" id="btneditcasetype' + item.id + '" data-id="' + item.id + '"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
-                                    + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel" id="btneditcancel' + item.id + '" disabled><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>' 
-                                    + '&nbsp;<button type="button" class="btn btn-primary btn-editup"><i class="fa-solid fa-angle-up"></i></button>' 
-                                    + '&nbsp;<button type="button" class="btn btn-primary btn-editdown"><i class="fa-solid fa-angle-down"></i></button>' 
-                                    + '</div></div></div>');
+                                    + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel" id="btneditcancel' + item.id + '" data-id="' + item.id + '" disabled><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>' 
+                                    + '&nbsp;<button type="button" class="btn btn-primary btn-editup" data-id="' + item.id + '"><i class="fa-solid fa-angle-up"></i></button>' 
+                                    + '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '"><i class="fa-solid fa-angle-down"></i></button>' 
+                                    + '</div></div></div>';
+                                $('#targettext').append(htmltargettext);
                             });
                             for (let i = discase; i < 7; i++) {
                                 $('#casetype' + i).attr('disabled', true);
@@ -401,7 +401,7 @@
                                 $('#targettext').append(
                                 '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
                                     + '<input type="text" class="form-control has-feedback-left newcasetype" value="" required="required">' 
-                                    + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
+                                    + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype" data-pid="' + parent_id + '"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
                                     + '</div></div></div>');
                         }
                     });
@@ -424,14 +424,14 @@
                                 caseOb.attr('disabled', false);
                                 $('#targettext').html('');
                             $.each(res.data, function(index, item) {
-                                $('#targettext').append(
-                                    '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
+                                htmltargettext = '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
                                     + '<input type="text" class="form-control has-feedback-left text-editcasetype" id="editcasetype' + item.id + '" value="' + item.name + '" required="required" disabled>' 
                                     + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype" id="btneditcasetype' + item.id + '" data-id="' + item.id + '"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
-                                    + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel" id="btneditcancel' + item.id + '" disabled><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>' 
-                                    + '&nbsp;<button type="button" class="btn btn-primary btn-editup"><i class="fa-solid fa-angle-up"></i></button>' 
-                                    + '&nbsp;<button type="button" class="btn btn-primary btn-editdown"><i class="fa-solid fa-angle-down"></i></button>' 
-                                    + '</div></div></div>');
+                                    + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel" id="btneditcancel' + item.id + '" data-id="' + item.id + '" disabled><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>' 
+                                    + '&nbsp;<button type="button" class="btn btn-primary btn-editup" data-id="' + item.id + '"><i class="fa-solid fa-angle-up"></i></button>' 
+                                    + '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '"><i class="fa-solid fa-angle-down"></i></button>' 
+                                    + '</div></div></div>';
+                                $('#targettext').append(htmltargettext);
                             });
                         }
 
@@ -443,7 +443,7 @@
                     $('#targettext').append(
                     '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
                         + '<input type="text" class="form-control has-feedback-left newcasetype" value="" required="required">' 
-                        + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
+                        + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype" data-pid="' + parent_id + '"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
                         + '</div></div></div>');
             }
         });
@@ -453,6 +453,7 @@
             $('.btn-editcasetype').attr('disabled', true);
             $('.btn-editup').attr('disabled', true);
             $('.btn-editdown').attr('disabled', true);
+            $('.btn-newcasetype').attr('disabled', true);
             $('#editcasetype' + id).prop('disabled', false);
             $('#btneditcasetype' + id).html('<i class="fa-regular fa-pen-to-square"></i>บันทึก').prop('disabled', false).addClass("btn-savecasetype");
             $('#btneditcancel' + id).prop('disabled', false);
@@ -463,13 +464,18 @@
             $('#editcasetype' + id).attr('disabled', true);
             $('.btn-editup').prop('disabled', false);
             $('.btn-editdown').prop('disabled', false);
-            $('#btneditcasetype' + id).html('<i class="fa-regular fa-pen-to-square"></i>แก้ไข').prop('disabled', true).removeClass("btn-savecasetype");
+            $('.btn-newcasetype').prop('disabled', false);
+            $('#btneditcasetype' + id).html('<i class="fa-regular fa-pen-to-square"></i>แก้ไข').removeClass("btn-savecasetype");
             $('.btn-editcasetype').prop('disabled', false);
-            $(this).prop('disabled', false);
+            $(this).attr('disabled', true);
         });
 
         $(document).on("click", ".btn-savecasetype", function() {
             alert('OK');
+        });
+
+        $(document).on("click", ".btn-newcasetype", function() {
+            alert('OK SAVE');
         });
     });
 </script>
