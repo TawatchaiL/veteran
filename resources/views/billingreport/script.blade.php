@@ -485,12 +485,14 @@
             var sagent = $('#agen').val();
             var stelp = $('#telp').val();
             var sctype = $('#ctype').val();
+            var sdepartment = $('#cdepartment').val();
 
             // Store values in local storage
             localStorage.setItem('dateStart', dateStart);
             localStorage.setItem('sagent', sagent);
             localStorage.setItem('stelp', stelp);
             localStorage.setItem('sctype', sctype);
+            localStorage.setItem('sdepartment', sdepartment);
         }
 
         function retrieveFieldValues() {
@@ -498,6 +500,7 @@
             var savedsagent = localStorage.getItem('sagent');
             var savedstelp = localStorage.getItem('stelp');
             var savedctype = localStorage.getItem('sctype');
+            var saveddepartment = localStorage.getItem('sdepartment');
             // Set field values from local storage
             if (saveddateStart) {
                 var dateParts = saveddateStart.split(' - ');
@@ -519,6 +522,10 @@
 
             if (savedctype) {
                 $('#ctype').val(savedctype);
+            }
+
+            if (saveddepartment) {
+                $('#cdepartment').val(saveddepartment);
             }
 
         }
@@ -894,12 +901,13 @@
             localStorage.removeItem('sagent');
             localStorage.removeItem('stelp');
             localStorage.removeItem('sctype');
+            localStorage.removeItem('sdepartment');
 
             // Set field values to empty
             $('#telp').val('');
             $('#agen').val('');
             $('#ctype').val('');
-
+            $('#cdepartment').val('');
             $('#Listview').html('');
 
             // Clear DataTable state
