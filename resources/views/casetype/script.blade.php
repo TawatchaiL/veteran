@@ -353,14 +353,17 @@
                             $('#targettext').append(
                                 '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
                                 + '<input type="text" id="newcasetype" name="newcasetype[]" class="form-control has-feedback-left" value="" required="required">' 
-                                + '&nbsp;<button type="button" class="btn btn-success"><i class="fas fa-download"></i>แก้ไข</button>' 
-                                + '&nbsp;<button type="button" class="btn btn-danger"><i class="fas fa-download"></i>ยกเลิก</button>' 
+                                + '&nbsp;<button type="button" class="btn btn-success"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
+                                + '&nbsp;<button type="button" class="btn btn-danger"><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>' 
                                 + '&nbsp;<button type="button" class="btn btn-primary"><i class="fa-solid fa-angle-up"></i></button>' 
                                 + '&nbsp;<button type="button" class="btn btn-primary"><i class="fa-solid fa-angle-down"></i></button>' 
                                 + '</div></div></div>');
                         });
                             $('#targettext').append(
-                            '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div><input type="text" id="newcasetype" name="newcasetype[]" class="form-control has-feedback-left" value="" required="required"> <button type="button" class="btn btn-success" id="SubmitNewCasetype"><i class="fas fa-download"></i>เพิ่ม</button></div></div></div>');
+                            '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
+                                 + '<input type="text" id="newcasetype" name="newcasetype[]" class="form-control has-feedback-left" value="" required="required">' 
+                                 + ' <button type="button" class="btn btn-success" id="SubmitNewCasetype"><i class="fas fa-download"></i>เพิ่ม</button>' 
+                                 + '</div></div></div>');
                     }
                 });
                 }
