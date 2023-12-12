@@ -883,9 +883,13 @@
                     }) // Use 'search: applied' to consider only visible rows
                     .data()
                     .reduce(function(acc, value) {
-                        var numericValue = parseFloat(value.replace(/[^\d.-]/g,
-                        '')); // Remove non-numeric characters
-                        return isNaN(numericValue) ? acc : acc + numericValue;
+                        if (value !== null) {
+                            var numericValue = parseFloat(value.replace(/[^\d.-]/g, '') ||
+                            0); // Replace null with 0
+                            return isNaN(numericValue) ? acc : acc + numericValue;
+                        } else {
+                            return acc;
+                        }
                     }, 0);
 
                 $(api.column(8).footer()).html(sum.toFixed(2));
