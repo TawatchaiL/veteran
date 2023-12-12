@@ -422,6 +422,7 @@
                         success: function(res) {
                             var caseOb = $('#casetype' + nextcase);
                                 caseOb.attr('disabled', false);
+                            var countres = res.data.length - 1;
                                 $('#targettext').html('');
                             $.each(res.data, function(index, item) {
                                 htmltargettext = '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
@@ -433,7 +434,11 @@
                                     }else{
                                         htmltargettext += '&nbsp;<button type="button" class="btn btn-primary" data-id="' + item.id + '" disabled><i class="fa-solid fa-angle-up"></i></button>';     
                                     }
-                                    htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '"><i class="fa-solid fa-angle-down"></i></button>'; 
+                                    if(index < countres){
+                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '"><i class="fa-solid fa-angle-down"></i></button>'; 
+                                    }else{
+                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary" data-id="' + item.id + '"><i class="fa-solid fa-angle-down"></i></button>';     
+                                    }
                                     htmltargettext += '</div></div></div>';
                                 $('#targettext').append(htmltargettext);
                             });
