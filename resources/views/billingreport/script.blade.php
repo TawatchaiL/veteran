@@ -881,13 +881,17 @@
                     .column(8)
                     .data()
                     .reduce(function(acc, value) {
-                        return parseFloat(acc) + parseFloat(value);
+                        if (value !== null) {
+                            var numericValue = parseFloat(value.replace(/[^\d.-]/g, '') ||
+                            0); // Replace null with 0
+                            return isNaN(numericValue) ? acc : acc + numericValue;
+                        } else {
+                            return acc;
+                        }
                     }, 0);
 
-                $(api.column(8).footer()).html(sum.toFixed(
-                    2));
+                $(api.column(8).footer()).html(sum.toFixed(2));
             }
-
         };
 
         var table = $('#Listview').DataTable(table_option);
