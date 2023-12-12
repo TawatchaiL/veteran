@@ -416,7 +416,7 @@
                 let levcase = $(this).data("lev");
                 let nextcase = levcase + 1;
                 let backcase = levcase - 1;
-                let discase = nextcase + 1;
+                let discase = nextcase;
                 let parent_id = $('#casetype' + backcase).val();
                 alert(discase);
                 $.ajax({
@@ -429,9 +429,9 @@
                                 //caseOb.html('<option value="">เลือกประเภทการติดต่อ</option>');
                                 $('#targettext').html('');
                             $.each(res.data, function(index, item) {
-                                caseOb.append(
-                                    $('<option></option>').val(item.id).html(item.name)
-                                );
+                                //caseOb.append(
+                                //    $('<option></option>').val(item.id).html(item.name)
+                                //);
                                 $('#targettext').append(
                                     '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
                                     + '<input type="text" class="form-control has-feedback-left editcasetype" value="' + item.name + '" required="required">' 
@@ -444,15 +444,7 @@
                         }
 
                     });
-                /*
-                $('#targettext').html('');
-                $('#targettext').append(
-                            '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
-                                 + '<input type="text" class="form-control has-feedback-left newcasetype" value="" required="required">' 
-                                 + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
-                                 + '</div></div></div>');
-                */
-                for (let d = discase; d < 7; d++) {
+                for (let d = nextcase; d < 7; d++) {
                                 $('#casetype' + d).attr('disabled', true);
                                 $('#case' + d).hide();
                             }
