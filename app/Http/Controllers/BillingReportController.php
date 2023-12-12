@@ -190,6 +190,22 @@ class BillingReportController extends Controller
                     $duration = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
                     return $duration;
                 })
+                ->editColumn('note', function ($row) {
+                    $note = $row->note ? $row->note : '-';
+                    return $note;
+                })
+                ->editColumn('rate', function ($row) {
+                    $rate = $row->rate ? $row->rate : '-';
+                    return $rate;
+                })
+                ->editColumn('per', function ($row) {
+                    $per = $row->rate ? $row->per : '-';
+                    return $per;
+                })
+                ->editColumn('cost', function ($row) {
+                    $cost = $row->cost ? $row->cost : '0.00';
+                    return $cost;
+                })
                 ->addColumn('action', function ($row) {
 
                     if (Gate::allows('contact-edit')) {
