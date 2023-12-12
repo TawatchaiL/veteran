@@ -896,16 +896,6 @@
 
                 $(api.column(8).footer()).html(sum.toFixed(2));
             }
-            This modification checks
-            if the value is neither undefined nor null before attempting to replace characters
-            .This should help prevent the "Cannot read properties of undefined"
-            error.
-
-
-
-
-
-
 
         };
 
