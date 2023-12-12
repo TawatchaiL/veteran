@@ -877,18 +877,18 @@
             "footerCallback": function(row, data, start, end, display) {
                 var api = this.api();
 
-                var sum = api
-                    .column(8)
-                    .data()
-                    .reduce(function(acc, value) {
-                        if (value !== null) {
-                            var numericValue = parseFloat(value.replace(/[^\d.-]/g, '') ||
-                            0); // Replace null with 0
-                            return isNaN(numericValue) ? acc : acc + numericValue;
-                        } else {
-                            return acc;
-                        }
-                    }, 0);
+                var sum = 0;
+
+                for (var i = 0; i < api.rows().count(); i++) {
+                    var value = api.cell(i, 8, {
+                        page: 'all'
+                    }).data();
+                    if (value !== null) {
+                        var numericValue = parseFloat(value.replace(/[^\d.-]/g, '') ||
+                        0); // Replace null with 0
+                        sum += isNaN(numericValue) ? 0 : numericValue;
+                    }
+                }
 
                 $(api.column(8).footer()).html(sum.toFixed(2));
             }
