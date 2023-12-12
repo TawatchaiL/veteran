@@ -878,9 +878,7 @@
                 var api = this.api();
 
                 var sum = api
-                    .column(8, {
-                        search: 'applied'
-                    }) // Use 'search: applied' to consider only visible rows
+                    .column(8)
                     .data()
                     .reduce(function(acc, value) {
                         if (value !== null) {
