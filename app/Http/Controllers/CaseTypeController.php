@@ -187,7 +187,6 @@ class CaseTypeController extends Controller
         ];
         $movedown = CrmCaseType::find($request->get('upid'));
         $movedown->update($crmdown);
-        
         return response()->json(['success' => 'เปลี่ยนลำดับ ประเภทการติดต่อ เรียบร้อยแล้ว']);
     }
     
