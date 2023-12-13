@@ -270,10 +270,9 @@
                         });
                     } else {
                         $('#textnewcasetype').val('');
-                        $('.alert-success').html('');
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('.alert-success').append('<strong><li>' + result.success + '</li></strong>');
+                        toastr.success(result.success, {
+                            timeOut: 5000
+                        });
                         loadcrm(pid, crmlev);
                     }
                 }

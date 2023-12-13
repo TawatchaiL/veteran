@@ -27,17 +27,6 @@
                         </div>
 
                         <div class="card-body">
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert" style="display: none;">
-                                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="alert alert-success alert-dismissible fade show" role="alert" style="display: none;">
-            
-                                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true"></span>
-                                </button>
-                            </div>
                             <div class="row">
                                 <div class="col-xs-5 col-sm-5 col-md-5" id="targetselect">
                                     <div class="row mb-3 case1">
