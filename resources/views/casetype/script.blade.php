@@ -446,7 +446,7 @@
                                 htmltargettext = '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
                                     + '<input type="text" class="form-control has-feedback-left text-editcasetype" id="editcasetype' + item.id + '" value="' + item.name + '" required="required" disabled>' 
                                     + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype" id="btneditcasetype' + item.id + '" data-id="' + item.id + '"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
-                                    + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel" id="btneditcancel' + item.id + '" data-id="' + item.id + '" disabled><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>'; 
+                                    + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel" id="btneditcancel' + item.id + '" data-id="' + item.id + '" data-oldvalue="' + item.name + '" disabled><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>'; 
                                     if(index > 0){
                                         htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editup" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-upid="' + res.data[index-1].id + '" data-upcrmlist="' + res.data[index-1].crmlist + '"><i class="fa-solid fa-angle-up"></i></button>'; 
                                     }else{
@@ -488,6 +488,11 @@
 
         $(document).on("click", ".btn-editcancel", function() {
             var id = $(this).data("id");
+            var oldvalue = $(this).data("oldvalue");
+            var thisvalue = $('#editcasetype' + id).val();
+            if(oldvalue != thisvalue){
+                $('#editcasetype' + id).val(oldvalue);
+            }
             $('#editcasetype' + id).attr('disabled', true);
             $('.btn-editup').prop('disabled', false);
             $('.btn-editdown').prop('disabled', false);
