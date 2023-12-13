@@ -570,6 +570,31 @@
             var crmlist = $(this).data("crmlist");
             var upid = $(this).data("upid");
             var upcrmlist = $(this).data("upcrmlist");
+            $.ajax({
+                url: "casetype/crmmoveup/" + id,
+                method: 'PUT',
+                data: {
+                    id: id,
+                    crmlist: crmlist,
+                    upid: upid,
+                    upcrmlist: upcrmlist,
+                },
+                success: function(result) {
+                    if (result.errors) {
+                        $('.alert-danger').html('');
+                        $.each(result.errors, function(key, value) {
+                            $('.alert-danger').show();
+                            $('.alert-danger').append('<strong><li>' + value +
+                                '</li></strong>');
+                        });
+                    } else {
+                        $('.alert-danger').hide();
+                        $('.alert-success').show();
+                        $('.alert-success').append('<strong><li>' + result.success +
+                            '</li></strong>');
+                    }
+                }
+            });
         });
 
         $(document).on("click", ".btn-editdown", function() {
