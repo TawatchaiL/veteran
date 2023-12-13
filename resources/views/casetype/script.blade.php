@@ -466,7 +466,7 @@
                 for (let d = nextcase; d < 7; d++) {
                                 $('#casetype' + d).attr('disabled', true);
                                 $('#case' + d).hide();
-                            }
+                    }
                     $('#targettext').append(
                     '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
                         + '<input type="text" class="form-control has-feedback-left newcasetype" id="textnewcasetype" value="" required="required">' 
@@ -590,10 +590,10 @@
                                 caseOb.attr('disabled', false);
                                 var countres = res.data.length - 1;
                                 $('#targettext').html('');
-                            $.each(res.data, function(index, item) {
-                                caseOb.append(
-                                    $('<option></option>').val(item.id).html(item.name)
-                                );
+                                $.each(res.data, function(index, item) {
+                                    caseOb.append(
+                                        $('<option></option>').val(item.id).html(item.name)
+                                    );
                                     htmltargettext = '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
                                         + '<input type="text" class="form-control has-feedback-left text-editcasetype" id="editcasetype' + item.id + '" value="' + item.name + '" required="required" disabled>' 
                                         + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype" id="btneditcasetype' + item.id + '" data-id="' + item.id + '"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
@@ -611,6 +611,11 @@
                                         htmltargettext += '</div></div></div>';
                                     $('#targettext').append(htmltargettext);
                                 });
+                                $('#targettext').append(
+                                        '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
+                                            + '<input type="text" class="form-control has-feedback-left newcasetype" id="textnewcasetype" value="" required="required">' 
+                                            + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype" data-pid="' + parent_id + '" data-crmlev="' + levcase + '"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
+                                            + '</div></div></div>');
                             }
                         });
                     }
