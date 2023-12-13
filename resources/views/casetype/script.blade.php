@@ -9,13 +9,7 @@
         });
 
         //$(document).on('click', '#CreateButton', function(e) {
-        //    e.preventDefault();
-            $('.alert-danger').html('');
-            $('.alert-danger').hide();
-            $('.alert-success').html('');
-            $('.alert-success').hide();
-            $('.form').trigger('reset');
-
+        //    e.preventDefault()
             $.ajax({
                 url: "casetype/casetype/0",
                 method: 'GET',
@@ -226,12 +220,7 @@
                 },
                 success: function(result) {
                     if (result.errors) {
-                        $('.alert-danger').html('');
-                        $.each(result.errors, function(key, value) {
-                            $('.alert-danger').show();
-                            $('.alert-danger').append('<strong><li>' + value +
-                                '</li></strong>');
-                        });
+
                     } else {
                         $('#btneditcasetype' + id).html('<i class="fa-regular fa-pen-to-square"></i>แก้ไข').removeClass("btn-savecasetype");
                         $('#editcasetype' + id).attr('disabled', true);
@@ -239,10 +228,9 @@
                         $('.btn-editcasetype').prop('disabled', false);
                         $('.btn-newcasetype').prop('disabled', false);
                         $('.btn-casetypedelete').prop('disabled', false);
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('.alert-success').append('<strong><li>' + result.success +
-                            '</li></strong>');
+                        toastr.success(result.success, {
+                            timeOut: 5000
+                        });
                     }
                 }
             });
@@ -296,11 +284,9 @@
                 },
                 success: function(data) {
                     if (data.success) {
-                        $('.alert-success').html('');
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('.alert-success').append('<strong><li>' + data.message +
-                            '</li></strong>');
+                        toastr.success(result.success, {
+                            timeOut: 5000
+                        });
                             loadcrm(pid, crmlev);
                     }else{
                         $('.alert-danger').html('');
@@ -337,11 +323,9 @@
                                 '</li></strong>');
                         });
                     } else {
-                        $('.alert-success').html('');
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('.alert-success').append('<strong><li>' + result.success +
-                            '</li></strong>');
+                        toastr.success(result.success, {
+                            timeOut: 5000
+                        });
                             loadcrm(pid, crmlev);
                     }
                 }
@@ -373,11 +357,9 @@
                                 '</li></strong>');
                         });
                     } else {
-                        $('.alert-success').html('');
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('.alert-success').append('<strong><li>' + result.success +
-                            '</li></strong>');
+                        toastr.success(result.success, {
+                            timeOut: 5000
+                        });
                             loadcrm(pid, crmlev);
                     }
                 }
