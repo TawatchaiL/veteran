@@ -614,7 +614,7 @@
                                 $('#targettext').append(
                                         '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
                                             + '<input type="text" class="form-control has-feedback-left newcasetype" id="textnewcasetype" value="" required="required">' 
-                                            + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype" data-pid="' + parent_id + '" data-crmlev="' + crmlev + '"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
+                                            + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype" data-pid="' + pid + '" data-crmlev="' + crmlev + '"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
                                             + '</div></div></div>');
                             }
                         });
