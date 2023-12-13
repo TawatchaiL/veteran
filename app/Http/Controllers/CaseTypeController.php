@@ -134,7 +134,7 @@ class CaseTypeController extends Controller
         $validator = Validator::make($request->all(), $rules, [
             'name.required' => 'ชื่อประเภทการติดต่อ ต้องไม่เป็นค่าว่าง!',
             'name.unique' => 'ชื่อประเภทการติดต่อ นี้มีอยู่แล้วในฐานข้อมูล!',
-            'status.required' => 'กรุณาเลือกสถานะ!',
+            //'status.required' => 'กรุณาเลือกสถานะ!',
         ]);
 
 
@@ -144,7 +144,7 @@ class CaseTypeController extends Controller
 
         $companyd = [
             'name' => $request->get('name'),
-            'status' => $request->get('status'),
+            //'status' => $request->get('status'),
         ];
 
         $company = CrmCaseType::find($id);
