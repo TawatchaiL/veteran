@@ -564,6 +564,28 @@
                             method: 'GET',
                             async: false,
                             success: function(res) {
+                                if (crmlev === 1) {
+                                    $('#casetype1').html('<option value="">เลือกประเภทการติดต่อ</option>');
+                                }
+                                if (crmlev === 2) {
+                                    $('#casetype2').html('<option value="">เลือกรายละเอียดเคส</option>');
+                                }
+                                if (crmlev === 3) {
+                                    $('#casetype3').html(
+                                        '<option value="">เลือกรายละเอียดเคสย่อย</option>');
+                                }
+                                if (crmlev === 4) {
+                                    $('#casetype4').html(
+                                        '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
+                                }
+                                if (crmlev === 5) {
+                                    $('#casetype5').html(
+                                        '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
+                                }
+                                if (crmlev === 6) {
+                                    $('#casetype6').html(
+                                        '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
+                                }
                                 var caseOb = $('#casetype' + crmlev);
                                 caseOb.attr('disabled', false);
                                 var countres = res.data.length - 1;
