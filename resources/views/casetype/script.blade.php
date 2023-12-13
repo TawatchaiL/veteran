@@ -538,8 +538,8 @@
             var pid = $(this).data("pid");
             var crmlev = $(this).data("crmlev");
             $.ajax({
-                url: "casetype/store/" + id,
-                method: 'PUT',
+                url: "{{ route('casetype.store') }}",
+                method: 'post',
                 data: {
                     parent_id: pid,
                     name: $('#editcasetype' + id).val(),
