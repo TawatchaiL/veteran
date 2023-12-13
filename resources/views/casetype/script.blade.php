@@ -571,6 +571,34 @@
             });
         });
 
+        $(document).on('click', '.btn-casetypedelete', function() {
+            if (!confirm("ยืนยันการทำรายการ ?")) return;
+            var id = $(this).data("id");
+            var pid = $(this).data("pid");
+            var crmlev = $(this).data("crmlev");
+            if (!id) return;
+            $.ajax({
+                type: "POST",
+                dataType: 'JSON',
+                url: "casetype/destroy/",
+                data: {
+                    id: id,
+                    _method: 'delete',
+                    _token: token
+                },
+                success: function(data) {
+                    if (data.success) {
+                        $('.alert-success').html('');
+                        $('.alert-danger').hide();
+                        $('.alert-success').show();
+                        $('.alert-success').append('<strong><li>' + data.success +
+                            '</li></strong>');
+                            loadcrm(pid, crmlev);
+                    }
+                }
+            });
+        });
+
         $(document).on("click", ".btn-editup", function() {
             var id = $(this).data("id");
             var crmlist = $(this).data("crmlist");
