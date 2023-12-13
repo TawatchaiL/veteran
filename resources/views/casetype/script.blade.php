@@ -319,20 +319,15 @@
                     upcrmlist: upcrmlist,
                 },
                 success: function(result) {
-                    if (result.errors) {
-                        $('.alert-danger').html('');
-                        $.each(result.errors, function(key, value) {
-                            $('.alert-danger').show();
-                            $('.alert-danger').append('<strong><li>' + value +
-                                '</li></strong>');
+                    if (result.success) {
+                        toastr.success(data.message, {
+                            timeOut: 5000
                         });
+                        loadcrm(pid, crmlev);
                     } else {
-                        $('.alert-success').html('');
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('.alert-success').append('<strong><li>' + result.success +
-                            '</li></strong>');
-                            loadcrm(pid, crmlev);
+                        toastr.error('ไม่สามารถเปลี่ยนลำดับเรื่องที่ติดต่อได้', {
+                            timeOut: 5000
+                        });
                     }
                 }
             });
@@ -355,20 +350,15 @@
                     upcrmlist: downcrmlist,
                 },
                 success: function(result) {
-                    if (result.errors) {
-                        $('.alert-danger').html('');
-                        $.each(result.errors, function(key, value) {
-                            $('.alert-danger').show();
-                            $('.alert-danger').append('<strong><li>' + value +
-                                '</li></strong>');
+                    if (result.success) {
+                        toastr.success(data.message, {
+                            timeOut: 5000
                         });
+                        loadcrm(pid, crmlev);
                     } else {
-                        $('.alert-success').html('');
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('.alert-success').append('<strong><li>' + result.success +
-                            '</li></strong>');
-                            loadcrm(pid, crmlev);
+                        toastr.error('ไม่สามารถเปลี่ยนลำดับเรื่องที่ติดต่อได้', {
+                            timeOut: 5000
+                        });
                     }
                 }
             });
