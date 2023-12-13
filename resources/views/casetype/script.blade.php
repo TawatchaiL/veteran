@@ -580,7 +580,7 @@
             $.ajax({
                 type: "POST",
                 dataType: 'JSON',
-                url: "casetype/destroy/",
+                url: "casetype/destroy",
                 data: {
                     id: id,
                     _method: 'delete',
