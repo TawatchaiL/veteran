@@ -93,7 +93,7 @@ class CaseTypeController extends Controller
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);
         }
-        $crmlist = CrmCaseType::where('parent_id', '=', $request->post('parent_id'))->max('id');
+        $crmlist = CrmCaseType::where('parent_id', '=', $request->post('parent_id'))->max('crmlist');
         $input = $request->all();
         $input = array_merge($input, ['crmlist' => $crmlist + 1]);
         $contract = CrmCaseType::create($input);
