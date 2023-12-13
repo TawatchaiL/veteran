@@ -108,20 +108,6 @@ class CaseTypeController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-
-        $data = CrmCaseType::find($id);
-        return response()->json(['data' => $data]);
-    }
-
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
@@ -163,22 +149,30 @@ class CaseTypeController extends Controller
         return ['success' => true, 'message' => 'ลบ ประเภทการติดต่อ เรียบร้อยแล้ว'];
     }
 
-    public function destroy_all(Request $request)
-    {
-
-        $arr_del  = $request->get('table_records'); //$arr_ans is Array MacAddress
-
-        for ($xx = 0; $xx < count($arr_del); $xx++) {
-            CrmCaseType::find($arr_del[$xx])->delete();
-        }
-
-        return redirect('casetype6')->with('success', 'ลบ ประเภทการติดต่อ เรียบร้อยแล้ว');
-    } //
     public function casetype($id)
     {
         $data = DB::table('crm_case_types')
         ->whereRaw('parent_id = ' . $id . '')
+        ->orderBy("crmlist", "asc")
         ->get();
         return response()->json(['data' => $data]);
     }
+
+    public function crmmoveup(Request $request)
+    {
+        $crmlist = CrmCaseType::where('parent_id', '=', $request->post('parent_id'))->max('crmlist');
+        $input = $request->all();
+        $input = array_merge($input, ['crmlist' => $crmlist + 1]);
+        $contract = CrmCaseType::create($input);
+        return response()->json(['success' => 'เปลี่ยนลำดับ ประเภทการติดต่อ เรียบร้อยแล้ว']);
+    }
+    public function crmmovedown(Request $request)
+    {
+        $crmlist = CrmCaseType::where('parent_id', '=', $request->post('parent_id'))->max('crmlist');
+        $input = $request->all();
+        $input = array_merge($input, ['crmlist' => $crmlist + 1]);
+        $contract = CrmCaseType::create($input);
+        return response()->json(['success' => 'เปลี่ยนลำดับ ประเภทการติดต่อ เรียบร้อยแล้ว']);
+    }
+    
 }
