@@ -294,10 +294,9 @@
                         });
                             loadcrm(pid, crmlev);
                     }else{
-                        $('.alert-danger').html('');
-                        $('.alert-danger').show();
-                        $('.alert-danger').append('<strong><li>' + data.message +
-                            '</li></strong>');
+                        toastr.errors(data.message, {
+                            timeOut: 5000
+                        });
                     }
                 }
             });
