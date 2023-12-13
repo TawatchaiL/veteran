@@ -484,6 +484,7 @@
             $('.btn-editup').attr('disabled', true);
             $('.btn-editdown').attr('disabled', true);
             $('.btn-newcasetype').attr('disabled', true);
+            $('.btn-casetypedelete').attr('disabled', true);
             $('#editcasetype' + id).prop('disabled', false);
             $('#btneditcasetype' + id).html('<i class="fa-regular fa-pen-to-square"></i>บันทึก').prop('disabled', false).addClass("btn-savecasetype");
             $('#btneditcancel' + id).prop('disabled', false);
@@ -500,6 +501,7 @@
             $('.btn-editup').prop('disabled', false);
             $('.btn-editdown').prop('disabled', false);
             $('.btn-newcasetype').prop('disabled', false);
+            $('.btn-casetypedelete').prop('disabled', false);
             $('#btneditcasetype' + id).html('<i class="fa-regular fa-pen-to-square"></i>แก้ไข').removeClass("btn-savecasetype");
             $('.btn-editcasetype').prop('disabled', false);
             $(this).attr('disabled', true);
@@ -527,6 +529,7 @@
                         $('#btneditcancel' + id).attr('disabled', true);
                         $('.btn-editcasetype').prop('disabled', false);
                         $('.btn-newcasetype').prop('disabled', false);
+                        $('.btn-casetypedelete').prop('disabled', false);
                         $('.alert-danger').hide();
                         $('.alert-success').show();
                         $('.alert-success').append('<strong><li>' + result.success +
