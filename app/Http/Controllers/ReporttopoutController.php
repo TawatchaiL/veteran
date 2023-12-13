@@ -47,10 +47,9 @@ class ReporttopoutController extends Controller
             $startDate = date("Y-m-d H:i:s");
             $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
+        DB::statement('SET @row_number = 0');
         $datas = DB::connection('remote_connection')
-        ->statement(DB::raw('SET @rownumber := 0'));
-        $datas = DB::connection('remote_connection')
-            ->table('call_center.call_entry')
+            ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.call_entry'))
             ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), 'callerid', DB::raw('count(callerid) as sumcases'))
             ->whereRaw('LENGTH(callerid) > 4')
             ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '"')
