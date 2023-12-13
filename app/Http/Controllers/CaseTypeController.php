@@ -128,7 +128,7 @@ class CaseTypeController extends Controller
     {
         $rules = [
             'name' => 'required|string|max:255|unique:case_types,name,' . $id,
-            'status' => 'required|max:10',
+            //'status' => 'required|max:10',
         ];
 
         $validator = Validator::make($request->all(), $rules, [
