@@ -152,7 +152,7 @@
                         $('#targettext').append(
                             '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
                                  + '<input type="text" class="form-control has-feedback-left newcasetype" value="" required="required">' 
-                                 + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype" data-pid="0"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
+                                 + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype" data-pid="0" data-crmlev="1"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
                                  + '</div></div></div>');
                 }
             });
@@ -419,7 +419,7 @@
                                 $('#targettext').append(
                                 '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
                                     + '<input type="text" class="form-control has-feedback-left newcasetype" value="" required="required">' 
-                                    + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype" data-pid="' + parent_id + '"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
+                                    + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype" data-pid="' + parent_id + '" data-crmlev="' + levcase + '"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
                                     + '</div></div></div>');
                         }
                     });
@@ -470,7 +470,7 @@
                     $('#targettext').append(
                     '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
                         + '<input type="text" class="form-control has-feedback-left newcasetype" value="" required="required">' 
-                        + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype" data-pid="' + parent_id + '"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
+                        + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype" data-pid="' + parent_id + '" data-crmlev="' + levcase + '"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
                         + '</div></div></div>');
             }
         });
@@ -523,6 +523,7 @@
                         $('#editcasetype' + id).attr('disabled', true);
                         $('#btneditcancel' + id).attr('disabled', true);
                         $('.btn-editcasetype').prop('disabled', false);
+                        $('.btn-newcasetype').prop('disabled', false);
                         $('.alert-danger').hide();
                         $('.alert-success').show();
                         $('.alert-success').append('<strong><li>' + result.success +
@@ -533,7 +534,38 @@
         });
 
         $(document).on("click", ".btn-newcasetype", function() {
-            alert('OK SAVE');
+            var id = $(this).data("id");
+            var pid = $(this).data("pid");
+            var crmlev = $(this).data("crmlev");
+            $.ajax({
+                url: "casetype/store/" + id,
+                method: 'PUT',
+                data: {
+                    parent_id: pid,
+                    name: $('#editcasetype' + id).val(),
+                    crmlev: crmlev,
+                },
+                success: function(result) {
+                    if (result.errors) {
+                        $('.alert-danger').html('');
+                        $.each(result.errors, function(key, value) {
+                            $('.alert-danger').show();
+                            $('.alert-danger').append('<strong><li>' + value +
+                                '</li></strong>');
+                        });
+                    } else {
+                        $('#btneditcasetype' + id).html('<i class="fa-regular fa-pen-to-square"></i>แก้ไข').removeClass("btn-savecasetype");
+                        $('#editcasetype' + id).attr('disabled', true);
+                        $('#btneditcancel' + id).attr('disabled', true);
+                        $('.btn-editcasetype').prop('disabled', false);
+                        $('.btn-newcasetype').prop('disabled', false);
+                        $('.alert-danger').hide();
+                        $('.alert-success').show();
+                        $('.alert-success').append('<strong><li>' + result.success +
+                            '</li></strong>');
+                    }
+                }
+            });
         });
 
         $(document).on("click", ".btn-editup", function() {

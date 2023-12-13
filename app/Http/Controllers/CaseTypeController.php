@@ -81,13 +81,13 @@ class CaseTypeController extends Controller
         $validator =  Validator::make($request->all(), [
             'name' => 'required|string|max:70',
             //'code' => 'required|string|max:10',
-            'status' => 'required',
+            //'status' => 'required',
         ], [
             'name.required' => 'ชื่อประเภทการติดต่อ ต้องไม่เป็นค่าว่าง!',
             //'name.unique' => 'ชื่อประเภทการติดต่อ นี้มีอยู่แล้วในฐานข้อมูล!',
             //'code.required' => 'รหัสแผนกต้องไม่เป็นค่าว่าง!',
             //'code.max' => 'รหัสแผนกต้องห้ามเกิน10ตัวอักษร!',
-            'status.required' => 'กรุณาเลือกสถานะ!',
+            //'status.required' => 'กรุณาเลือกสถานะ!',
         ]);
 
         if ($validator->fails()) {
