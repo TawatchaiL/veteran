@@ -594,6 +594,11 @@
                         $('.alert-success').append('<strong><li>' + data.message +
                             '</li></strong>');
                             loadcrm(pid, crmlev);
+                    }else{
+                        $('.alert-danger').html('');
+                        $('.alert-danger').show();
+                        $('.alert-danger').append('<strong><li>' + data.message +
+                            '</li></strong>');
                     }
                 }
             });

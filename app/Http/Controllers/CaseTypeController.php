@@ -145,8 +145,13 @@ class CaseTypeController extends Controller
     public function destroy(Request $request)
     {
         $id = $request->get('id');
-        CrmCaseType::find($id)->delete();
-        return ['success' => true, 'message' => 'ลบ ประเภทการติดต่อ เรียบร้อยแล้ว'];
+        $crmlist = CrmCaseType::where('parent_id', '=', $request->post('id'))->count();
+        if($crmlist > 0){
+            return ['error' => true, 'message' => 'ไม่สามารถลบ ประเภทการติดต่อได้'];
+        }else{
+            CrmCaseType::find($id)->delete();
+            return ['success' => true, 'message' => 'ลบ ประเภทการติดต่อ เรียบร้อยแล้ว'];
+        }
     }
 
     public function casetype($id)
