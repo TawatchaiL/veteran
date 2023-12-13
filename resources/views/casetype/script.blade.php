@@ -537,6 +537,7 @@
             var id = $(this).data("id");
             var pid = $(this).data("pid");
             var crmlev = $(this).data("crmlev");
+            alert(crmlev);
             $.ajax({
                 url: "{{ route('casetype.store') }}",
                 method: 'post',
@@ -555,7 +556,7 @@
                         });
                     } else {
                         $('#textnewcasetype').val('');
-                        
+
                         $('.alert-danger').hide();
                         $('.alert-success').show();
                         $('.alert-success').append('<strong><li>' + result.success +
