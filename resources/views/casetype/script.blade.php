@@ -573,7 +573,7 @@
             var pid = $(this).data("pid");
             var crmlev = $(this).data("crmlev");
             $.ajax({
-                url: "casetype/crmmoveup/" + id,
+                url: "casetype/crmmoveup",
                 method: 'PUT',
                 data: {
                     id: id,
@@ -601,7 +601,38 @@
         });
 
         $(document).on("click", ".btn-editdown", function() {
-            alert('OK DOWN');
+            var id = $(this).data("id");
+            var crmlist = $(this).data("crmlist");
+            var downid = $(this).data("downid");
+            var downcrmlist = $(this).data("downcrmlist");
+            var pid = $(this).data("pid");
+            var crmlev = $(this).data("crmlev");
+            $.ajax({
+                url: "casetype/crmmovedown",
+                method: 'PUT',
+                data: {
+                    id: id,
+                    crmlist: crmlist,
+                    upid: downid,
+                    upcrmlist: downcrmlist,
+                },
+                success: function(result) {
+                    if (result.errors) {
+                        $('.alert-danger').html('');
+                        $.each(result.errors, function(key, value) {
+                            $('.alert-danger').show();
+                            $('.alert-danger').append('<strong><li>' + value +
+                                '</li></strong>');
+                        });
+                    } else {
+                        $('.alert-danger').hide();
+                        $('.alert-success').show();
+                        $('.alert-success').append('<strong><li>' + result.success +
+                            '</li></strong>');
+                            loadcrm(pid, crmlev);
+                    }
+                }
+            });
         });
     });
     function loadcrm(pid, crmlev){
