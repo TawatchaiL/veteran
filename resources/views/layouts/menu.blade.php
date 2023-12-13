@@ -506,7 +506,7 @@
         </a>
         <ul class="nav nav-treeview">
             <li class="nav-item">
-                <a href="{{ route('casetype6') }}" class="nav-link {{ Request::is('casetype6') ? 'active' : '' }}">
+                <a href="{{ route('casetype') }}" class="nav-link {{ Request::is('casetype') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
                     <p>ประเภทการติดต่อ</p>
                 </a>
