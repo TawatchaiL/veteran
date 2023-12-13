@@ -294,7 +294,7 @@
                         });
                             loadcrm(pid, crmlev);
                     }else{
-                        toastr.errors(data.message, {
+                        toastr.error(data.message, {
                             timeOut: 5000
                         });
                     }
