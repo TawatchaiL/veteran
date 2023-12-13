@@ -77,6 +77,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/casetype/casetype/{id}', [App\Http\Controllers\CaseTypeController::class, 'casetype'])->name('casetype.casetype');
     Route::put('/casetype/save/{id}', [App\Http\Controllers\CaseTypeController::class, 'update'])->name('casetype.save');
     Route::put('/casetype/crmmoveup/{id}', [App\Http\Controllers\CaseTypeController::class, 'crmmoveup'])->name('casetype.crmmoveup');
+    Route::put('/casetype/crmmovedown/{id}', [App\Http\Controllers\CaseTypeController::class, 'crmmovedown'])->name('casetype.crmmovedown');
     Route::delete('/casetype/destroy', [App\Http\Controllers\CaseTypeController::class, 'destroy'])->name('casetype.destroy');
 
     Route::get('/cases', [App\Http\Controllers\CasesController::class, 'index'])->name('cases');

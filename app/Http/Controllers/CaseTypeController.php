@@ -176,10 +176,18 @@ class CaseTypeController extends Controller
     }
     public function crmmovedown(Request $request)
     {
-        $crmlist = CrmCaseType::where('parent_id', '=', $request->post('parent_id'))->max('crmlist');
-        $input = $request->all();
-        $input = array_merge($input, ['crmlist' => $crmlist + 1]);
-        $contract = CrmCaseType::create($input);
+        $crmup = [
+            'crmlist' => $request->get('upcrmlist'),
+        ];
+        $moveup = CrmCaseType::find($request->get('id'));
+        $moveup->update($crmup);
+
+        $crmdown = [
+            'crmlist' => $request->get('crmlist'),
+        ];
+        $movedown = CrmCaseType::find($request->get('upid'));
+        $movedown->update($crmdown);
+        
         return response()->json(['success' => 'เปลี่ยนลำดับ ประเภทการติดต่อ เรียบร้อยแล้ว']);
     }
     
