@@ -522,6 +522,7 @@
                         $('#btneditcasetype' + id).html('<i class="fa-regular fa-pen-to-square"></i>แก้ไข').removeClass("btn-savecasetype");
                         $('#editcasetype' + id).attr('disabled', true);
                         $('#btneditcancel' + id).attr('disabled', true);
+                        $('.btn-editcasetype').prop('disabled', false);
                         $('.alert-danger').hide();
                         $('.alert-success').show();
                         $('.alert-success').append('<strong><li>' + result.success +
