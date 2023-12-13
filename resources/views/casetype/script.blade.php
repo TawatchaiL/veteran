@@ -448,7 +448,7 @@
                                     + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype" id="btneditcasetype' + item.id + '" data-id="' + item.id + '"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
                                     + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel" id="btneditcancel' + item.id + '" data-id="' + item.id + '" disabled><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>'; 
                                     if(index > 0){
-                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editup" data-id="' + item.id + '"><i class="fa-solid fa-angle-up"></i></button>'; 
+                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editup" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-upid="' + res.data[index-1].id + '" data-upcrmlist="' + res.data[index-1].crmlist + '"><i class="fa-solid fa-angle-up"></i></button>'; 
                                     }else{
                                         htmltargettext += '&nbsp;<button type="button" class="btn btn-primary" data-id="' + item.id + '" disabled><i class="fa-solid fa-angle-up"></i></button>';     
                                     }
@@ -503,6 +503,15 @@
 
         $(document).on("click", ".btn-newcasetype", function() {
             alert('OK SAVE');
+        });
+
+        $(document).on("click", ".btn-editup", function() {
+            var id = $(this).data("upid");
+            alert('OK UP' + id);
+        });
+
+        $(document).on("click", ".btn-editdown", function() {
+            alert('OK DOWN');
         });
     });
 </script>
