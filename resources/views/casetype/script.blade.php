@@ -564,8 +564,6 @@
                             method: 'GET',
                             async: false,
                             success: function(res) {
-                                var caseOb = $('#casetype' + nextcase);
-                                    caseOb.attr('disabled', false);
                                 var countres = res.data.length - 1;
                                     $('#targettext').html('');
                                 $.each(res.data, function(index, item) {
