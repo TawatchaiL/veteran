@@ -63,18 +63,6 @@
             $('#casetype4').attr('disabled', true);
             $('#casetype5').attr('disabled', true);
             $('#casetype6').attr('disabled', true);
-            $('#AddName2').attr('disabled', true);
-            $('#AddName3').attr('disabled', true);
-            $('#AddName4').attr('disabled', true);
-            $('#AddName5').attr('disabled', true);
-            $('#AddName6').attr('disabled', true);
-            $('#typelev2').hide();
-            $('#typelev3').hide();
-            $('#typelev4').hide();
-            $('#typelev5').hide();
-            $('#typelev6').hide();
-            $('#CreateModal').modal('show');
-        //});
 
         $(document).on("change", ".casetypechang", function() {
             let levcase = $(this).data("lev");
