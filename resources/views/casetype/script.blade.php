@@ -542,7 +542,7 @@
                 method: 'post',
                 data: {
                     parent_id: pid,
-                    name: $('#editcasetype' + id).val(),
+                    name: $('#textnewcasetype').val(),
                     crmlev: crmlev,
                 },
                 success: function(result) {
