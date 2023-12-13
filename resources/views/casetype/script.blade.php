@@ -608,7 +608,7 @@
             var pid = $(this).data("pid");
             var crmlev = $(this).data("crmlev");
             $.ajax({
-                url: "casetype/crmmoveup/" + id,
+                url: "casetype/crmmovedown/" + id,
                 method: 'PUT',
                 data: {
                     id: id,
