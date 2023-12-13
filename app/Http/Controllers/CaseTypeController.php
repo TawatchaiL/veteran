@@ -147,7 +147,7 @@ class CaseTypeController extends Controller
         $id = $request->get('id');
         $crmlist = CrmCaseType::where('parent_id', '=', $request->post('id'))->count();
         if($crmlist > 0){
-            return ['error' => true, 'message' => 'ไม่สามารถลบ ประเภทการติดต่อได้'];
+            return ['error' => true, 'message' => 'ไม่สามารถลบ ประเภทการติดต่อได้ เนื่องจากมีข้อมูลลูกอยู่'];
         }else{
             CrmCaseType::find($id)->delete();
             return ['success' => true, 'message' => 'ลบ ประเภทการติดต่อ เรียบร้อยแล้ว'];

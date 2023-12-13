@@ -220,7 +220,12 @@
                 },
                 success: function(result) {
                     if (result.errors) {
-
+                        $('.alert-danger').html('');
+                        $.each(result.errors, function(key, value) {
+                            $('.alert-danger').show();
+                            $('.alert-danger').append('<strong><li>' + value +
+                                '</li></strong>');
+                        });
                     } else {
                         $('#btneditcasetype' + id).html('<i class="fa-regular fa-pen-to-square"></i>แก้ไข').removeClass("btn-savecasetype");
                         $('#editcasetype' + id).attr('disabled', true);
@@ -284,9 +289,11 @@
                 },
                 success: function(data) {
                     if (data.success) {
-                        toastr.success(result.success, {
-                            timeOut: 5000
-                        });
+                        $('.alert-success').html('');
+                        $('.alert-danger').hide();
+                        $('.alert-success').show();
+                        $('.alert-success').append('<strong><li>' + data.message +
+                            '</li></strong>');
                             loadcrm(pid, crmlev);
                     }else{
                         $('.alert-danger').html('');
@@ -323,9 +330,11 @@
                                 '</li></strong>');
                         });
                     } else {
-                        toastr.success(result.success, {
-                            timeOut: 5000
-                        });
+                        $('.alert-success').html('');
+                        $('.alert-danger').hide();
+                        $('.alert-success').show();
+                        $('.alert-success').append('<strong><li>' + result.success +
+                            '</li></strong>');
                             loadcrm(pid, crmlev);
                     }
                 }
@@ -357,9 +366,11 @@
                                 '</li></strong>');
                         });
                     } else {
-                        toastr.success(result.success, {
-                            timeOut: 5000
-                        });
+                        $('.alert-success').html('');
+                        $('.alert-danger').hide();
+                        $('.alert-success').show();
+                        $('.alert-success').append('<strong><li>' + result.success +
+                            '</li></strong>');
                             loadcrm(pid, crmlev);
                     }
                 }
