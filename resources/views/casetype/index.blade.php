@@ -4,42 +4,6 @@
 @endsection
 
 @section('content')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    {{-- <h4>Users & Roles Management</h4> --}}
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        @can('master-data-create')
-                            <button type="button" class="btn btn-success" id="CreateButton">
-                                <i class="fas fa-list-ol"></i> เพิ่ม ประเภทการติดต่อ</a> </button>
-                        @else
-                            <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
-                                title="คุณไม่มีสิทธิ์ในส่วนนี้">
-                                <button type="button" class="btn btn-success disabled">
-                                    <i class="fas fa-list-ol"></i> เพิ่ม ประเภทการติดต่อ </a></button>
-                            </span>
-                        @endcan &nbsp;
-
-                        @can('master-data-delete')
-                            <button type="button" class="btn btn-danger delete_all_button"><i class="fa fa-trash"></i>
-                                ลบทั้งหมด</button>
-                        @else
-                            <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom"
-                                title="คุณไม่มีสิทธิ์ในส่วนนี้">
-                                <button type="button" class="btn btn-danger disabled"><i class="fa fa-trash"></i>
-                                    ลบทั้งหมด</button>
-                            </span>
-                        @endcan
-                    </ol>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="content">
         <div class="container-fluid">
             <div class="row">
