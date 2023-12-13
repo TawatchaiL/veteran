@@ -405,7 +405,7 @@
                                         htmltargettext += '&nbsp;<button type="button" class="btn btn-primary" data-id="' + item.id + '" disabled><i class="fa-solid fa-angle-up"></i></button>';     
                                     }
                                     if(index < countres){
-                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '"><i class="fa-solid fa-angle-down"></i></button>'; 
+                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-downid="' + res.data[index+1].id + '" data-downcrmlist="' + res.data[index+1].crmlist + '"><i class="fa-solid fa-angle-down"></i></button>'; 
                                     }else{
                                         htmltargettext += '&nbsp;<button type="button" class="btn btn-primary" data-id="' + item.id + '" disabled><i class="fa-solid fa-angle-down"></i></button>';     
                                     }
@@ -453,7 +453,7 @@
                                         htmltargettext += '&nbsp;<button type="button" class="btn btn-primary" data-id="' + item.id + '" disabled><i class="fa-solid fa-angle-up"></i></button>';     
                                     }
                                     if(index < countres){
-                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '"><i class="fa-solid fa-angle-down"></i></button>'; 
+                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-downid="' + res.data[index+1].id + '" data-downcrmlist="' + res.data[index+1].crmlist + '"><i class="fa-solid fa-angle-down"></i></button>'; 
                                     }else{
                                         htmltargettext += '&nbsp;<button type="button" class="btn btn-primary" data-id="' + item.id + '" disabled><i class="fa-solid fa-angle-down"></i></button>';     
                                     }
