@@ -53,7 +53,7 @@ class ReporttopoutController extends Controller
             ->whereRaw('LENGTH(callerid) > 4')
             ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '"')
             ->groupBy('callerid')
-            ->orderBy("sumcases", "desc")
+            ->orderBy("count(callerid)", "desc")
             ->limit(10)
             ->get();
 
