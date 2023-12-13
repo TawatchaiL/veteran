@@ -320,7 +320,7 @@
                 },
                 success: function(result) {
                     if (result.success) {
-                        toastr.success(data.message, {
+                        toastr.success(result.message, {
                             timeOut: 5000
                         });
                         loadcrm(pid, crmlev);
@@ -351,7 +351,7 @@
                 },
                 success: function(result) {
                     if (result.success) {
-                        toastr.success(data.message, {
+                        toastr.success(result.message, {
                             timeOut: 5000
                         });
                         loadcrm(pid, crmlev);
