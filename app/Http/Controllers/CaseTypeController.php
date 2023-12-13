@@ -95,7 +95,7 @@ class CaseTypeController extends Controller
         }
         $crmlist = CrmCaseType::where('parent_id', '=', $request->post('parent_id'))->max('id');
         $input = $request->all();
-        $input = array_merge($input, ['crmlist' => $input + 1]);
+        $input = array_merge($input, ['crmlist' => $crmlist + 1]);
         $contract = CrmCaseType::create($input);
         return response()->json(['success' => 'เพิ่ม ประเภทการติดต่อ เรียบร้อยแล้ว']);
     }
