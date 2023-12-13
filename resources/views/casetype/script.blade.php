@@ -289,11 +289,9 @@
                 },
                 success: function(data) {
                     if (data.success) {
-                        $('.alert-success').html('');
-                        $('.alert-danger').hide();
-                        $('.alert-success').show();
-                        $('.alert-success').append('<strong><li>' + data.message +
-                            '</li></strong>');
+                        toastr.success(data.message, {
+                            timeOut: 5000
+                        });
                             loadcrm(pid, crmlev);
                     }else{
                         $('.alert-danger').html('');
