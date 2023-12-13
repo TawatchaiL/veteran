@@ -81,24 +81,24 @@ class CaseTypeController extends Controller
         $validator =  Validator::make($request->all(), [
             'name' => 'required|string|max:70',
             //'code' => 'required|string|max:10',
-            'status' => 'required',
+            //'status' => 'required',
         ], [
             'name.required' => 'ชื่อประเภทการติดต่อ ต้องไม่เป็นค่าว่าง!',
             //'name.unique' => 'ชื่อประเภทการติดต่อ นี้มีอยู่แล้วในฐานข้อมูล!',
             //'code.required' => 'รหัสแผนกต้องไม่เป็นค่าว่าง!',
             //'code.max' => 'รหัสแผนกต้องห้ามเกิน10ตัวอักษร!',
-            'status.required' => 'กรุณาเลือกสถานะ!',
+            //'status.required' => 'กรุณาเลือกสถานะ!',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()->all()]);
         }
-
+        $crmlist = CrmCaseType::where('parent_id', '=', $request->post('parent_id'))->max('crmlist');
         $input = $request->all();
+        $input = array_merge($input, ['crmlist' => $crmlist + 1]);
         $contract = CrmCaseType::create($input);
         return response()->json(['success' => 'เพิ่ม ประเภทการติดต่อ เรียบร้อยแล้ว']);
     }
-
     /**
      * Display the specified resource.
      */
@@ -108,33 +108,19 @@ class CaseTypeController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-
-        $data = CrmCaseType::find($id);
-        return response()->json(['data' => $data]);
-    }
-
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
     {
         $rules = [
             'name' => 'required|string|max:255|unique:case_types,name,' . $id,
-            'status' => 'required|max:10',
+            //'status' => 'required|max:10',
         ];
 
         $validator = Validator::make($request->all(), $rules, [
             'name.required' => 'ชื่อประเภทการติดต่อ ต้องไม่เป็นค่าว่าง!',
             'name.unique' => 'ชื่อประเภทการติดต่อ นี้มีอยู่แล้วในฐานข้อมูล!',
-            'status.required' => 'กรุณาเลือกสถานะ!',
+            //'status.required' => 'กรุณาเลือกสถานะ!',
         ]);
 
 
@@ -144,7 +130,7 @@ class CaseTypeController extends Controller
 
         $companyd = [
             'name' => $request->get('name'),
-            'status' => $request->get('status'),
+            //'status' => $request->get('status'),
         ];
 
         $company = CrmCaseType::find($id);
@@ -163,22 +149,46 @@ class CaseTypeController extends Controller
         return ['success' => true, 'message' => 'ลบ ประเภทการติดต่อ เรียบร้อยแล้ว'];
     }
 
-    public function destroy_all(Request $request)
-    {
-
-        $arr_del  = $request->get('table_records'); //$arr_ans is Array MacAddress
-
-        for ($xx = 0; $xx < count($arr_del); $xx++) {
-            CrmCaseType::find($arr_del[$xx])->delete();
-        }
-
-        return redirect('casetype6')->with('success', 'ลบ ประเภทการติดต่อ เรียบร้อยแล้ว');
-    } //
     public function casetype($id)
     {
         $data = DB::table('crm_case_types')
         ->whereRaw('parent_id = ' . $id . '')
+        ->orderBy("crmlist", "asc")
         ->get();
         return response()->json(['data' => $data]);
     }
+
+    public function crmmoveup(Request $request)
+    {
+        $crmup = [
+            'crmlist' => $request->get('upcrmlist'),
+        ];
+        $moveup = CrmCaseType::find($request->get('id'));
+        $moveup->update($crmup);
+
+        $crmdown = [
+            'crmlist' => $request->get('crmlist'),
+        ];
+        $movedown = CrmCaseType::find($request->get('upid'));
+        $movedown->update($crmdown);
+
+        return response()->json(['success' => 'เปลี่ยนลำดับ ประเภทการติดต่อ เรียบร้อยแล้ว']);
+    }
+    public function crmmovedown(Request $request)
+    {
+        $crmup = [
+            'crmlist' => $request->get('upcrmlist'),
+        ];
+        $moveup = CrmCaseType::find($request->get('id'));
+        $moveup->update($crmup);
+
+        $crmdown = [
+            'crmlist' => $request->get('crmlist'),
+        ];
+        $movedown = CrmCaseType::find($request->get('upid'));
+        $movedown->update($crmdown);
+        
+        return response()->json(['success' => 'เปลี่ยนลำดับ ประเภทการติดต่อ เรียบร้อยแล้ว']);
+    }
+    
 }

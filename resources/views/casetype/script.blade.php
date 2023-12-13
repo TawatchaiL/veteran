@@ -126,6 +126,7 @@
                 success: function(res) {
                     var provinceOb = $('#casetype1');
                     provinceOb.html('<option value="">เลือกประเภทการติดต่อ</option>');
+                    var countres = res.data.length - 1;
                     $('#targettext').html('');
                     $.each(res.data, function(index, item) {
                         provinceOb.append(
@@ -134,16 +135,24 @@
                         htmltargettext = '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
                                     + '<input type="text" class="form-control has-feedback-left text-editcasetype" id="editcasetype' + item.id + '" value="' + item.name + '" required="required" disabled>' 
                                     + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype" id="btneditcasetype' + item.id + '" data-id="' + item.id + '"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
-                                    + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel" id="btneditcancel' + item.id + '" data-id="' + item.id + '" disabled><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>' 
-                                    + '&nbsp;<button type="button" class="btn btn-primary btn-editup" data-id="' + item.id + '"><i class="fa-solid fa-angle-up"></i></button>' 
-                                    + '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '"><i class="fa-solid fa-angle-down"></i></button>' 
-                                    + '</div></div></div>';
+                                    + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel" id="btneditcancel' + item.id + '" data-id="' + item.id + '" data-oldvalue="' + item.name + '" disabled><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>'; 
+                                    if(index > 0){
+                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editup" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-upid="' + res.data[index-1].id + '" data-upcrmlist="' + res.data[index-1].crmlist + '" data-pid="' + item.parent_id + '" data-crmlev="' + item.crmlev + '"><i class="fa-solid fa-angle-up"></i></button>'; 
+                                    }else{
+                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary" data-id="' + item.id + '" disabled><i class="fa-solid fa-angle-up"></i></button>';     
+                                    }
+                                    if(index < countres){
+                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-downid="' + res.data[index+1].id + '" data-downcrmlist="' + res.data[index+1].crmlist + '" data-pid="' + item.parent_id + '" data-crmlev="' + item.crmlev + '"><i class="fa-solid fa-angle-down"></i></button>'; 
+                                    }else{
+                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary" data-id="' + item.id + '" disabled><i class="fa-solid fa-angle-down"></i></button>';     
+                                    }
+                                    htmltargettext += '</div></div></div>';
                         $('#targettext').append(htmltargettext);
                     });
                         $('#targettext').append(
                             '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
-                                 + '<input type="text" class="form-control has-feedback-left newcasetype" value="" required="required">' 
-                                 + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype" data-pid="0"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
+                                 + '<input type="text" class="form-control has-feedback-left newcasetype" value="" id="textnewcasetype" required="required">' 
+                                 + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype" data-pid="0" data-crmlev="1"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
                                  + '</div></div></div>');
                 }
             });
@@ -380,6 +389,7 @@
                         success: function(res) {
                             var caseOb = $('#casetype' + nextcase);
                                 caseOb.attr('disabled', false);
+                                var countres = res.data.length - 1;
                                 $('#targettext').html('');
                             $.each(res.data, function(index, item) {
                                 caseOb.append(
@@ -388,10 +398,18 @@
                                 htmltargettext = '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
                                     + '<input type="text" class="form-control has-feedback-left text-editcasetype" id="editcasetype' + item.id + '" value="' + item.name + '" required="required" disabled>' 
                                     + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype" id="btneditcasetype' + item.id + '" data-id="' + item.id + '"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
-                                    + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel" id="btneditcancel' + item.id + '" data-id="' + item.id + '" disabled><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>' 
-                                    + '&nbsp;<button type="button" class="btn btn-primary btn-editup" data-id="' + item.id + '"><i class="fa-solid fa-angle-up"></i></button>' 
-                                    + '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '"><i class="fa-solid fa-angle-down"></i></button>' 
-                                    + '</div></div></div>';
+                                    + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel" id="btneditcancel' + item.id + '" data-id="' + item.id + '" data-oldvalue="' + item.name + '" disabled><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>'; 
+                                    if(index > 0){
+                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editup" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-upid="' + res.data[index-1].id + '" data-upcrmlist="' + res.data[index-1].crmlist + '" data-pid="' + item.parent_id + '" data-crmlev="' + item.crmlev + '"><i class="fa-solid fa-angle-up"></i></button>'; 
+                                    }else{
+                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary" data-id="' + item.id + '" disabled><i class="fa-solid fa-angle-up"></i></button>';     
+                                    }
+                                    if(index < countres){
+                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-downid="' + res.data[index+1].id + '" data-downcrmlist="' + res.data[index+1].crmlist + '" data-pid="' + item.parent_id + '" data-crmlev="' + item.crmlev + '"><i class="fa-solid fa-angle-down"></i></button>'; 
+                                    }else{
+                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary" data-id="' + item.id + '" disabled><i class="fa-solid fa-angle-down"></i></button>';     
+                                    }
+                                    htmltargettext += '</div></div></div>';
                                 $('#targettext').append(htmltargettext);
                             });
                             for (let i = discase; i < 7; i++) {
@@ -400,8 +418,8 @@
                             }
                                 $('#targettext').append(
                                 '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
-                                    + '<input type="text" class="form-control has-feedback-left newcasetype" value="" required="required">' 
-                                    + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype" data-pid="' + parent_id + '"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
+                                    + '<input type="text" class="form-control has-feedback-left newcasetype" id="textnewcasetype" value="" required="required">' 
+                                    + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype" data-pid="' + parent_id + '" data-crmlev="' + nextcase + '"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
                                     + '</div></div></div>');
                         }
                     });
@@ -422,18 +440,23 @@
                         success: function(res) {
                             var caseOb = $('#casetype' + nextcase);
                                 caseOb.attr('disabled', false);
+                            var countres = res.data.length - 1;
                                 $('#targettext').html('');
                             $.each(res.data, function(index, item) {
                                 htmltargettext = '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
                                     + '<input type="text" class="form-control has-feedback-left text-editcasetype" id="editcasetype' + item.id + '" value="' + item.name + '" required="required" disabled>' 
                                     + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype" id="btneditcasetype' + item.id + '" data-id="' + item.id + '"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
-                                    + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel" id="btneditcancel' + item.id + '" data-id="' + item.id + '" disabled><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>'; 
+                                    + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel" id="btneditcancel' + item.id + '" data-id="' + item.id + '" data-oldvalue="' + item.name + '" disabled><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>'; 
                                     if(index > 0){
-                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editup" data-id="' + item.id + '"><i class="fa-solid fa-angle-up"></i></button>'; 
+                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editup" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-upid="' + res.data[index-1].id + '" data-upcrmlist="' + res.data[index-1].crmlist + '" data-pid="' + item.parent_id + '" data-crmlev="' + item.crmlev + '"><i class="fa-solid fa-angle-up"></i></button>'; 
                                     }else{
                                         htmltargettext += '&nbsp;<button type="button" class="btn btn-primary" data-id="' + item.id + '" disabled><i class="fa-solid fa-angle-up"></i></button>';     
                                     }
-                                    htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '"><i class="fa-solid fa-angle-down"></i></button>'; 
+                                    if(index < countres){
+                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-downid="' + res.data[index+1].id + '" data-downcrmlist="' + res.data[index+1].crmlist + '" data-pid="' + item.parent_id + '" data-crmlev="' + item.crmlev + '"><i class="fa-solid fa-angle-down"></i></button>'; 
+                                    }else{
+                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary" data-id="' + item.id + '" disabled><i class="fa-solid fa-angle-down"></i></button>';     
+                                    }
                                     htmltargettext += '</div></div></div>';
                                 $('#targettext').append(htmltargettext);
                             });
@@ -443,11 +466,11 @@
                 for (let d = nextcase; d < 7; d++) {
                                 $('#casetype' + d).attr('disabled', true);
                                 $('#case' + d).hide();
-                            }
+                    }
                     $('#targettext').append(
                     '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
-                        + '<input type="text" class="form-control has-feedback-left newcasetype" value="" required="required">' 
-                        + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype" data-pid="' + parent_id + '"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
+                        + '<input type="text" class="form-control has-feedback-left newcasetype" id="textnewcasetype" value="" required="required">' 
+                        + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype" data-pid="' + parent_id + '" data-crmlev="' + levcase + '"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
                         + '</div></div></div>');
             }
         });
@@ -465,6 +488,11 @@
 
         $(document).on("click", ".btn-editcancel", function() {
             var id = $(this).data("id");
+            var oldvalue = $(this).data("oldvalue");
+            var thisvalue = $('#editcasetype' + id).val();
+            if(oldvalue != thisvalue){
+                $('#editcasetype' + id).val(oldvalue);
+            }
             $('#editcasetype' + id).attr('disabled', true);
             $('.btn-editup').prop('disabled', false);
             $('.btn-editdown').prop('disabled', false);
@@ -475,11 +503,197 @@
         });
 
         $(document).on("click", ".btn-savecasetype", function() {
-            alert('OK');
+            var id = $(this).data("id");
+            $.ajax({
+                url: "casetype/save/" + id,
+                method: 'PUT',
+                data: {
+                    name: $('#editcasetype' + id).val(),
+                },
+                success: function(result) {
+                    if (result.errors) {
+                        $('.alert-danger').html('');
+                        $.each(result.errors, function(key, value) {
+                            $('.alert-danger').show();
+                            $('.alert-danger').append('<strong><li>' + value +
+                                '</li></strong>');
+                        });
+                    } else {
+                        $('#btneditcasetype' + id).html('<i class="fa-regular fa-pen-to-square"></i>แก้ไข').removeClass("btn-savecasetype");
+                        $('#editcasetype' + id).attr('disabled', true);
+                        $('#btneditcancel' + id).attr('disabled', true);
+                        $('.btn-editcasetype').prop('disabled', false);
+                        $('.btn-newcasetype').prop('disabled', false);
+                        $('.alert-danger').hide();
+                        $('.alert-success').show();
+                        $('.alert-success').append('<strong><li>' + result.success +
+                            '</li></strong>');
+                    }
+                }
+            });
         });
 
         $(document).on("click", ".btn-newcasetype", function() {
-            alert('OK SAVE');
+            var id = $(this).data("id");
+            var pid = $(this).data("pid");
+            var crmlev = $(this).data("crmlev");
+            $.ajax({
+                url: "{{ route('casetype.store') }}",
+                method: 'post',
+                data: {
+                    parent_id: pid,
+                    name: $('#textnewcasetype').val(),
+                    crmlev: crmlev,
+                },
+                success: function(result) {
+                    if (result.errors) {
+                        $('.alert-danger').html('');
+                        $.each(result.errors, function(key, value) {
+                            $('.alert-danger').show();
+                            $('.alert-danger').append('<strong><li>' + value +
+                                '</li></strong>');
+                        });
+                    } else {
+                        $('#textnewcasetype').val('');
+                        $('.alert-success').html('');
+                        $('.alert-danger').hide();
+                        $('.alert-success').show();
+                        $('.alert-success').append('<strong><li>' + result.success + '</li></strong>');
+                        loadcrm(pid, crmlev);
+                    }
+                }
+            });
+        });
+
+        $(document).on("click", ".btn-editup", function() {
+            var id = $(this).data("id");
+            var crmlist = $(this).data("crmlist");
+            var upid = $(this).data("upid");
+            var upcrmlist = $(this).data("upcrmlist");
+            var pid = $(this).data("pid");
+            var crmlev = $(this).data("crmlev");
+            $.ajax({
+                url: "casetype/crmmoveup",
+                method: 'PUT',
+                data: {
+                    id: id,
+                    crmlist: crmlist,
+                    upid: upid,
+                    upcrmlist: upcrmlist,
+                },
+                success: function(result) {
+                    if (result.errors) {
+                        $('.alert-danger').html('');
+                        $.each(result.errors, function(key, value) {
+                            $('.alert-danger').show();
+                            $('.alert-danger').append('<strong><li>' + value +
+                                '</li></strong>');
+                        });
+                    } else {
+                        $('.alert-danger').hide();
+                        $('.alert-success').show();
+                        $('.alert-success').append('<strong><li>' + result.success +
+                            '</li></strong>');
+                            loadcrm(pid, crmlev);
+                    }
+                }
+            });
+        });
+
+        $(document).on("click", ".btn-editdown", function() {
+            var id = $(this).data("id");
+            var crmlist = $(this).data("crmlist");
+            var downid = $(this).data("downid");
+            var downcrmlist = $(this).data("downcrmlist");
+            var pid = $(this).data("pid");
+            var crmlev = $(this).data("crmlev");
+            $.ajax({
+                url: "casetype/crmmovedown",
+                method: 'PUT',
+                data: {
+                    id: id,
+                    crmlist: crmlist,
+                    upid: downid,
+                    upcrmlist: downcrmlist,
+                },
+                success: function(result) {
+                    if (result.errors) {
+                        $('.alert-danger').html('');
+                        $.each(result.errors, function(key, value) {
+                            $('.alert-danger').show();
+                            $('.alert-danger').append('<strong><li>' + value +
+                                '</li></strong>');
+                        });
+                    } else {
+                        $('.alert-danger').hide();
+                        $('.alert-success').show();
+                        $('.alert-success').append('<strong><li>' + result.success +
+                            '</li></strong>');
+                            loadcrm(pid, crmlev);
+                    }
+                }
+            });
         });
     });
+    function loadcrm(pid, crmlev){
+        $.ajax({
+            url: "casetype/casetype/" + pid,
+            method: 'GET',
+            async: false,
+            success: function(res) {
+                if (crmlev === 1) {
+                    $('#casetype1').html('<option value="">เลือกประเภทการติดต่อ</option>');
+                }
+                if (crmlev === 2) {
+                    $('#casetype2').html('<option value="">เลือกรายละเอียดเคส</option>');
+                }
+                if (crmlev === 3) {
+                    $('#casetype3').html(
+                        '<option value="">เลือกรายละเอียดเคสย่อย</option>');
+                }
+                if (crmlev === 4) {
+                    $('#casetype4').html(
+                        '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
+                }
+                if (crmlev === 5) {
+                    $('#casetype5').html(
+                        '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
+                }
+                if (crmlev === 6) {
+                    $('#casetype6').html(
+                        '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
+                }
+                var caseOb = $('#casetype' + crmlev);
+                caseOb.attr('disabled', false);
+                var countres = res.data.length - 1;
+                $('#targettext').html('');
+                $.each(res.data, function(index, item) {
+                    caseOb.append(
+                        $('<option></option>').val(item.id).html(item.name)
+                    );
+                    htmltargettext = '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
+                        + '<input type="text" class="form-control has-feedback-left text-editcasetype" id="editcasetype' + item.id + '" value="' + item.name + '" required="required" disabled>' 
+                        + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype" id="btneditcasetype' + item.id + '" data-id="' + item.id + '"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
+                        + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel" id="btneditcancel' + item.id + '" data-id="' + item.id + '" data-oldvalue="' + item.name + '" disabled><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>'; 
+                        if(index > 0){
+                            htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editup" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-upid="' + res.data[index-1].id + '" data-upcrmlist="' + res.data[index-1].crmlist + '" data-pid="' + item.parent_id + '" data-crmlev="' + item.crmlev + '"><i class="fa-solid fa-angle-up"></i></button>'; 
+                        }else{
+                            htmltargettext += '&nbsp;<button type="button" class="btn btn-primary" data-id="' + item.id + '" disabled><i class="fa-solid fa-angle-up"></i></button>';     
+                        }
+                        if(index < countres){
+                            htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-downid="' + res.data[index+1].id + '" data-downcrmlist="' + res.data[index+1].crmlist + '" data-pid="' + item.parent_id + '" data-crmlev="' + item.crmlev + '"><i class="fa-solid fa-angle-down"></i></button>'; 
+                        }else{
+                            htmltargettext += '&nbsp;<button type="button" class="btn btn-primary" data-id="' + item.id + '" disabled><i class="fa-solid fa-angle-down"></i></button>';     
+                        }
+                        htmltargettext += '</div></div></div>';
+                    $('#targettext').append(htmltargettext);
+                });
+                $('#targettext').append(
+                        '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
+                            + '<input type="text" class="form-control has-feedback-left newcasetype" id="textnewcasetype" value="" required="required">' 
+                            + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype" data-pid="' + pid + '" data-crmlev="' + crmlev + '"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
+                            + '</div></div></div>');
+            }
+        });
+    }
 </script>
