@@ -151,7 +151,7 @@
                     });
                         $('#targettext').append(
                             '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
-                                 + '<input type="text" class="form-control has-feedback-left newcasetype" value="" required="required">' 
+                                 + '<input type="text" class="form-control has-feedback-left newcasetype" value="" id="textnewcasetype" required="required">' 
                                  + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype" data-pid="0" data-crmlev="1"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
                                  + '</div></div></div>');
                 }
@@ -418,7 +418,7 @@
                             }
                                 $('#targettext').append(
                                 '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
-                                    + '<input type="text" class="form-control has-feedback-left newcasetype" value="" required="required">' 
+                                    + '<input type="text" class="form-control has-feedback-left newcasetype" id="textnewcasetype" value="" required="required">' 
                                     + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype" data-pid="' + parent_id + '" data-crmlev="' + levcase + '"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
                                     + '</div></div></div>');
                         }
@@ -469,7 +469,7 @@
                             }
                     $('#targettext').append(
                     '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
-                        + '<input type="text" class="form-control has-feedback-left newcasetype" value="" required="required">' 
+                        + '<input type="text" class="form-control has-feedback-left newcasetype" id="textnewcasetype" value="" required="required">' 
                         + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype" data-pid="' + parent_id + '" data-crmlev="' + levcase + '"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
                         + '</div></div></div>');
             }
