@@ -137,12 +137,12 @@
                                     + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype" id="btneditcasetype' + item.id + '" data-id="' + item.id + '"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
                                     + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel" id="btneditcancel' + item.id + '" data-id="' + item.id + '" data-oldvalue="' + item.name + '" disabled><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>'; 
                                     if(index > 0){
-                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editup" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-upid="' + res.data[index-1].id + '" data-upcrmlist="' + res.data[index-1].crmlist + '"><i class="fa-solid fa-angle-up"></i></button>'; 
+                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editup" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-upid="' + res.data[index-1].id + '" data-upcrmlist="' + res.data[index-1].crmlist + '" data-pid="' + item.parent_id + '" data-crmlev="' + item.crmlev + '"><i class="fa-solid fa-angle-up"></i></button>'; 
                                     }else{
                                         htmltargettext += '&nbsp;<button type="button" class="btn btn-primary" data-id="' + item.id + '" disabled><i class="fa-solid fa-angle-up"></i></button>';     
                                     }
                                     if(index < countres){
-                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-downid="' + res.data[index+1].id + '" data-downcrmlist="' + res.data[index+1].crmlist + '"><i class="fa-solid fa-angle-down"></i></button>'; 
+                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-downid="' + res.data[index+1].id + '" data-downcrmlist="' + res.data[index+1].crmlist + '" data-pid="' + item.parent_id + '" data-crmlev="' + item.crmlev + '"><i class="fa-solid fa-angle-down"></i></button>'; 
                                     }else{
                                         htmltargettext += '&nbsp;<button type="button" class="btn btn-primary" data-id="' + item.id + '" disabled><i class="fa-solid fa-angle-down"></i></button>';     
                                     }
@@ -400,12 +400,12 @@
                                     + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype" id="btneditcasetype' + item.id + '" data-id="' + item.id + '"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
                                     + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel" id="btneditcancel' + item.id + '" data-id="' + item.id + '" data-oldvalue="' + item.name + '" disabled><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>'; 
                                     if(index > 0){
-                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editup" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-upid="' + res.data[index-1].id + '" data-upcrmlist="' + res.data[index-1].crmlist + '"><i class="fa-solid fa-angle-up"></i></button>'; 
+                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editup" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-upid="' + res.data[index-1].id + '" data-upcrmlist="' + res.data[index-1].crmlist + '" data-pid="' + item.parent_id + '" data-crmlev="' + item.crmlev + '"><i class="fa-solid fa-angle-up"></i></button>'; 
                                     }else{
                                         htmltargettext += '&nbsp;<button type="button" class="btn btn-primary" data-id="' + item.id + '" disabled><i class="fa-solid fa-angle-up"></i></button>';     
                                     }
                                     if(index < countres){
-                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-downid="' + res.data[index+1].id + '" data-downcrmlist="' + res.data[index+1].crmlist + '"><i class="fa-solid fa-angle-down"></i></button>'; 
+                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-downid="' + res.data[index+1].id + '" data-downcrmlist="' + res.data[index+1].crmlist + '" data-pid="' + item.parent_id + '" data-crmlev="' + item.crmlev + '"><i class="fa-solid fa-angle-down"></i></button>'; 
                                     }else{
                                         htmltargettext += '&nbsp;<button type="button" class="btn btn-primary" data-id="' + item.id + '" disabled><i class="fa-solid fa-angle-down"></i></button>';     
                                     }
@@ -448,12 +448,12 @@
                                     + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype" id="btneditcasetype' + item.id + '" data-id="' + item.id + '"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
                                     + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel" id="btneditcancel' + item.id + '" data-id="' + item.id + '" data-oldvalue="' + item.name + '" disabled><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>'; 
                                     if(index > 0){
-                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editup" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-upid="' + res.data[index-1].id + '" data-upcrmlist="' + res.data[index-1].crmlist + '"><i class="fa-solid fa-angle-up"></i></button>'; 
+                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editup" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-upid="' + res.data[index-1].id + '" data-upcrmlist="' + res.data[index-1].crmlist + '" data-pid="' + item.parent_id + '" data-crmlev="' + item.crmlev + '"><i class="fa-solid fa-angle-up"></i></button>'; 
                                     }else{
                                         htmltargettext += '&nbsp;<button type="button" class="btn btn-primary" data-id="' + item.id + '" disabled><i class="fa-solid fa-angle-up"></i></button>';     
                                     }
                                     if(index < countres){
-                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-downid="' + res.data[index+1].id + '" data-downcrmlist="' + res.data[index+1].crmlist + '"><i class="fa-solid fa-angle-down"></i></button>'; 
+                                        htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-downid="' + res.data[index+1].id + '" data-downcrmlist="' + res.data[index+1].crmlist + '" data-pid="' + item.parent_id + '" data-crmlev="' + item.crmlev + '"><i class="fa-solid fa-angle-down"></i></button>'; 
                                     }else{
                                         htmltargettext += '&nbsp;<button type="button" class="btn btn-primary" data-id="' + item.id + '" disabled><i class="fa-solid fa-angle-down"></i></button>';     
                                     }
@@ -570,6 +570,8 @@
             var crmlist = $(this).data("crmlist");
             var upid = $(this).data("upid");
             var upcrmlist = $(this).data("upcrmlist");
+            var pid = $(this).data("pid");
+            var crmlev = $(this).data("crmlev");
             $.ajax({
                 url: "casetype/crmmoveup/" + id,
                 method: 'PUT',
@@ -592,6 +594,7 @@
                         $('.alert-success').show();
                         $('.alert-success').append('<strong><li>' + result.success +
                             '</li></strong>');
+                            loadcrm(pid, crmlev);
                     }
                 }
             });
@@ -642,12 +645,12 @@
                         + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype" id="btneditcasetype' + item.id + '" data-id="' + item.id + '"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
                         + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel" id="btneditcancel' + item.id + '" data-id="' + item.id + '" data-oldvalue="' + item.name + '" disabled><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>'; 
                         if(index > 0){
-                            htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editup" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-upid="' + res.data[index-1].id + '" data-upcrmlist="' + res.data[index-1].crmlist + '"><i class="fa-solid fa-angle-up"></i></button>'; 
+                            htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editup" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-upid="' + res.data[index-1].id + '" data-upcrmlist="' + res.data[index-1].crmlist + '" data-pid="' + item.parent_id + '" data-crmlev="' + item.crmlev + '"><i class="fa-solid fa-angle-up"></i></button>'; 
                         }else{
                             htmltargettext += '&nbsp;<button type="button" class="btn btn-primary" data-id="' + item.id + '" disabled><i class="fa-solid fa-angle-up"></i></button>';     
                         }
                         if(index < countres){
-                            htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-downid="' + res.data[index+1].id + '" data-downcrmlist="' + res.data[index+1].crmlist + '"><i class="fa-solid fa-angle-down"></i></button>'; 
+                            htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-downid="' + res.data[index+1].id + '" data-downcrmlist="' + res.data[index+1].crmlist + '" data-pid="' + item.parent_id + '" data-crmlev="' + item.crmlev + '"><i class="fa-solid fa-angle-down"></i></button>'; 
                         }else{
                             htmltargettext += '&nbsp;<button type="button" class="btn btn-primary" data-id="' + item.id + '" disabled><i class="fa-solid fa-angle-down"></i></button>';     
                         }
