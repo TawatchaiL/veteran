@@ -320,10 +320,11 @@
                 },
                 success: function(result) {
                     if (result.success) {
+                        loadcrm(pid, crmlev);
                         toastr.success(result.message, {
                             timeOut: 5000
                         });
-                        loadcrm(pid, crmlev);
+                        
                     } else {
                         toastr.error('ไม่สามารถเปลี่ยนลำดับเรื่องที่ติดต่อได้', {
                             timeOut: 5000
@@ -351,10 +352,10 @@
                 },
                 success: function(result) {
                     if (result.success) {
+                        loadcrm(pid, crmlev);
                         toastr.success(result.message, {
                             timeOut: 5000
                         });
-                        loadcrm(pid, crmlev);
                     } else {
                         toastr.error('ไม่สามารถเปลี่ยนลำดับเรื่องที่ติดต่อได้', {
                             timeOut: 5000
