@@ -8,8 +8,8 @@
             }
         });
 
-        $(document).on('click', '#CreateButton', function(e) {
-            e.preventDefault();
+        //$(document).on('click', '#CreateButton', function(e) {
+        //    e.preventDefault();
             $('.alert-danger').html('');
             $('.alert-danger').hide();
             $('.alert-success').html('');
@@ -74,7 +74,7 @@
             $('#typelev5').hide();
             $('#typelev6').hide();
             $('#CreateModal').modal('show');
-        });
+        //});
 
         $(document).on("change", ".casetypechang", function() {
             let levcase = $(this).data("lev");
@@ -396,7 +396,7 @@
                 }
             });
         });
-        $(".casetypechang").trigger("change");
+        
     });
     function loadcrm(pid, crmlev){
         $.ajax({
