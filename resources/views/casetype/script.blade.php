@@ -603,8 +603,8 @@
         $(document).on("click", ".btn-editdown", function() {
             var id = $(this).data("id");
             var crmlist = $(this).data("crmlist");
-            var downid = $(this).data("upid");
-            var downcrmlist = $(this).data("upcrmlist");
+            var downid = $(this).data("downid");
+            var downcrmlist = $(this).data("downcrmlist");
             var pid = $(this).data("pid");
             var crmlev = $(this).data("crmlev");
             $.ajax({
