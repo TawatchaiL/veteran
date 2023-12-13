@@ -559,68 +559,7 @@
                         $('.alert-danger').hide();
                         $('.alert-success').show();
                         $('.alert-success').append('<strong><li>' + result.success + '</li></strong>');
-                        loadcrm(pid, crmlev)
-                        /*
-                        $.ajax({
-                            url: "casetype/casetype/" + pid,
-                            method: 'GET',
-                            async: false,
-                            success: function(res) {
-                                if (crmlev === 1) {
-                                    $('#casetype1').html('<option value="">เลือกประเภทการติดต่อ</option>');
-                                }
-                                if (crmlev === 2) {
-                                    $('#casetype2').html('<option value="">เลือกรายละเอียดเคส</option>');
-                                }
-                                if (crmlev === 3) {
-                                    $('#casetype3').html(
-                                        '<option value="">เลือกรายละเอียดเคสย่อย</option>');
-                                }
-                                if (crmlev === 4) {
-                                    $('#casetype4').html(
-                                        '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
-                                }
-                                if (crmlev === 5) {
-                                    $('#casetype5').html(
-                                        '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
-                                }
-                                if (crmlev === 6) {
-                                    $('#casetype6').html(
-                                        '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
-                                }
-                                var caseOb = $('#casetype' + crmlev);
-                                caseOb.attr('disabled', false);
-                                var countres = res.data.length - 1;
-                                $('#targettext').html('');
-                                $.each(res.data, function(index, item) {
-                                    caseOb.append(
-                                        $('<option></option>').val(item.id).html(item.name)
-                                    );
-                                    htmltargettext = '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
-                                        + '<input type="text" class="form-control has-feedback-left text-editcasetype" id="editcasetype' + item.id + '" value="' + item.name + '" required="required" disabled>' 
-                                        + '&nbsp;<button type="button" class="btn btn-success btn-editcasetype" id="btneditcasetype' + item.id + '" data-id="' + item.id + '"><i class="fa-regular fa-pen-to-square"></i>แก้ไข</button>' 
-                                        + '&nbsp;<button type="button" class="btn btn-danger btn-editcancel" id="btneditcancel' + item.id + '" data-id="' + item.id + '" data-oldvalue="' + item.name + '" disabled><i class="fa-regular fa-rectangle-xmark"></i>ยกเลิก</button>'; 
-                                        if(index > 0){
-                                            htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editup" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-upid="' + res.data[index-1].id + '" data-upcrmlist="' + res.data[index-1].crmlist + '"><i class="fa-solid fa-angle-up"></i></button>'; 
-                                        }else{
-                                            htmltargettext += '&nbsp;<button type="button" class="btn btn-primary" data-id="' + item.id + '" disabled><i class="fa-solid fa-angle-up"></i></button>';     
-                                        }
-                                        if(index < countres){
-                                            htmltargettext += '&nbsp;<button type="button" class="btn btn-primary btn-editdown" data-id="' + item.id + '" data-crmlist="' + item.crmlist + '" data-downid="' + res.data[index+1].id + '" data-downcrmlist="' + res.data[index+1].crmlist + '"><i class="fa-solid fa-angle-down"></i></button>'; 
-                                        }else{
-                                            htmltargettext += '&nbsp;<button type="button" class="btn btn-primary" data-id="' + item.id + '" disabled><i class="fa-solid fa-angle-down"></i></button>';     
-                                        }
-                                        htmltargettext += '</div></div></div>';
-                                    $('#targettext').append(htmltargettext);
-                                });
-                                $('#targettext').append(
-                                        '<div class="row mb-3"><div class="col-xs-12 col-sm-12 col-md-12"><div class="input-group">'
-                                            + '<input type="text" class="form-control has-feedback-left newcasetype" id="textnewcasetype" value="" required="required">' 
-                                            + '&nbsp;<button type="button" class="btn btn-success btn-newcasetype" data-pid="' + pid + '" data-crmlev="' + crmlev + '"><i class="fa-solid fa-plus"></i>เพิ่ม</button>' 
-                                            + '</div></div></div>');
-                            }
-                        });
-                        */
+                        loadcrm(pid, crmlev);
                     }
                 }
             });
