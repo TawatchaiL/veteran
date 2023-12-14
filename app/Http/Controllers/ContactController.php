@@ -595,6 +595,7 @@ class ContactController extends Controller
 
 
         $valifield = [
+            /*
             'hn' => 'required|string|max:10',
             'tname' => 'required|string|max:50',
             'fname' => 'required|string|max:50',
@@ -606,10 +607,12 @@ class ContactController extends Controller
             'city' => 'required|string|max:8',
             'district' => 'required|string|max:8',
             'subdistrict' => 'required|string|max:8',
+            */
             'caseid1' => 'required|string|max:100',
             'casedetail' => 'required|string|max:200',
         ];
         $valimess = [
+            /*
             'hn.required' => 'กรุณากรอกรหัสผู้ติดต่อ',
             'tname.required' => 'กรุณาเลือกคำนำหน้าชื่อ',
             'fname.required' => 'กรุณากรอกชื่อ',
@@ -621,6 +624,7 @@ class ContactController extends Controller
             'city.required' => 'กรุณาเลือกจังหวัด',
             'district.required' => 'กรุณาเลือกอำเภอ',
             'subdistrict.required' => 'กรุณาเลือกตำบล',
+            */
             'caseid1.required' => 'กรุณาเลือกประเภทการติดต่อ',
             'casedetail.required' => 'กรุณากรอกรายละเอียดที่ติดต่อ',
         ];
@@ -705,6 +709,7 @@ class ContactController extends Controller
     {
         $user = Auth::user();
         $valifield = [
+            /*
             'tname' => 'required|string|max:50',
             'fname' => 'required|string|max:50',
             'lname' => 'required|string|max:50',
@@ -715,10 +720,12 @@ class ContactController extends Controller
             'city' => 'required|string|max:8',
             'district' => 'required|string|max:8',
             'subdistrict' => 'required|string|max:8',
+            */
             'caseid1' => 'required|string|max:100',
             'casedetail' => 'required|string|max:200',
         ];
         $valimess = [
+            /*
             'tname.required' => 'กรุณาเลือกคำนำหน้าชื่อ',
             'fname.required' => 'กรุณากรอกชื่อ',
             'lname.required' => 'กรุณากรอกนามสกุล',
@@ -729,6 +736,7 @@ class ContactController extends Controller
             'city.required' => 'กรุณาเลือกจังหวัด',
             'district.required' => 'กรุณาเลือกอำเภอ',
             'subdistrict.required' => 'กรุณาเลือกตำบล',
+            */
             'caseid1.required' => 'กรุณาเลือกประเภทการติดต่อ',
             'casedetail.required' => 'กรุณากรอกรายละเอียดที่ติดต่อ',
         ];
