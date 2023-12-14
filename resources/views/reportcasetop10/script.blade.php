@@ -24,7 +24,7 @@
 
             var chartContainer = document.querySelector("#bar_graph");
             var logoImage = new Image();
-            logoImage.src = 'images/logo.png'; 
+            logoImage.src = 'public/images/logo.png'; 
 
             html2canvas(chartContainer).then(canvas => {
                 var imgData = canvas.toDataURL("image/png");
