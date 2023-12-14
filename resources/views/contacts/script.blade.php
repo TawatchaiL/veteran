@@ -542,9 +542,9 @@
                 emergencyData.push(emergency);
             });
 
-            var arrayDate = $('#Addadddate').val().split("-");
-            arrayDate[0] = parseInt(arrayDate[0]) - 543;
-            var tempadddate = arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2];
+            //var arrayDate = $('#Addadddate').val().split("-");
+            //arrayDate[0] = parseInt(arrayDate[0]) - 543;
+            //var tempadddate = arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2];
 
             var arrayDateb = $('#Addbirthday').val().split("-");
             arrayDateb[0] = parseInt(arrayDateb[0]) - 543;
@@ -552,7 +552,7 @@
 
             var additionalData = {
                 hn: $('#Addhn').val(),
-                adddate: tempadddate,
+                adddate: $('#Addadddate').val(),
                 tname: $('#Addtname').val()[0],
                 fname: $('#Addfname').val(),
                 lname: $('#Addlname').val(),
@@ -647,6 +647,7 @@
                     method: 'GET',
                     success: function(res) {
                         $('#Edithn').val(res.datax.datac.hn);
+                        /*
                         if (res.datax.datac.adddate !== '' && res.datax.datac
                             .adddate !== null && res.datax.datac.adddate !==
                             undefined) {
@@ -656,7 +657,8 @@
                                     1] +
                                 "-" + arrayDate[2]);
                         }
-                        //$('#Editadddate').val(res.datax.datac.adddate);
+                        */
+                        $('#Editadddate').val(res.datax.datac.adddate);
                         $('#Edittname').val(res.datax.datac.tname).change();
                         $('#Editfname').val(res.datax.datac.fname);
                         $('#Editlname').val(res.datax.datac.lname);
@@ -760,9 +762,9 @@
                         eemergencyData.push(eemergency);
                     });
 
-                    var arrayDate = $('#Editadddate').val().split("-");
-                    arrayDate[0] = parseInt(arrayDate[0]) - 543;
-                    var tempadddate = arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2];
+                    //var arrayDate = $('#Editadddate').val().split("-");
+                    //arrayDate[0] = parseInt(arrayDate[0]) - 543;
+                    //var tempadddate = arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2];
 
                     var arrayDateb = $('#Editbirthday').val().split("-");
                     arrayDateb[0] = parseInt(arrayDateb[0]) - 543;
@@ -771,7 +773,7 @@
 
                     var additionalData = {
                         hn: $('#Edithn').val(),
-                        adddate: tempadddate,
+                        adddate: $('#Editadddate').val(),
                         tname: $('#Edittname').val()[0],
                         fname: $('#Editfname').val(),
                         lname: $('#Editlname').val(),

@@ -139,7 +139,7 @@
                                         'id' => 'birthdayp'.$cardid,
                                         'data-tid' => $cardid,
                                         'placeholder' => 'วันเกิด',
-                                        'class' => 'AddDatep form-control Birthdayp',
+                                        'class' => 'Birthdayp form-control',
                                         'data-target' => '#reservationdate',
                                     ]) !!}
                                 </div>
