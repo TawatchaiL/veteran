@@ -17,16 +17,12 @@
             var pdfWidth = 595.28;
             var pdfHeight = 841.89;
             var margin = 40;
-            var logoWidth = 50;
-            var logoHeight = 50;
             var pdf = new jsPDF({
                 unit: 'pt',
                 format: [pdfWidth, pdfHeight]
             });
 
             var chartContainer = document.querySelector("#bar_graph");
-            var logoImage = new Image();
-            logoImage.src = 'images/logo.png'; 
 
             html2canvas(chartContainer).then(canvas => {
                 var imgData = canvas.toDataURL("image/png");
@@ -34,8 +30,6 @@
                 var imgWidth = pdfWidth;
                 var imgHeight = (canvas.height * imgWidth) / canvas
                     .width;
-
-                pdf.addImage(logoImage, 'PNG', margin, margin, logoWidth, logoHeight);
 
                 pdf.addImage(imgData, 'PNG', margin, 0, imgWidth,
                     imgHeight);
