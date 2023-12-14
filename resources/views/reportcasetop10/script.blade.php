@@ -13,29 +13,34 @@
     }
     $(document).ready(function() {
         $('#download_bar').click(function(event) {
+    var pdfWidth = 595.28;
+    var pdfHeight = 841.89;
+    var pdf = new jsPDF({
+        unit: 'pt',
+        format: [pdfWidth, pdfHeight]
+    });
 
-            var pdfWidth = 595.28;
-            var pdfHeight = 841.89;
-            var pdf = new jsPDF({
-                unit: 'pt',
-                format: [pdfWidth, pdfHeight]
-            });
+    var chartContainer = document.querySelector("#bar_graph");
 
-            var chartContainer = document.querySelector("#bar_graph");
+    html2canvas(chartContainer).then(canvas => {
+        var imgData = canvas.toDataURL("image/png");
 
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png");
+        var imgWidth = pdfWidth;
+        var imgHeight = (canvas.height * imgWidth) / canvas.width;
 
-                var imgWidth = pdfWidth;
-                var imgHeight = (canvas.height * imgWidth) / canvas
-                    .width;
+        pdf.addImage(imgData, 'PNG', 0, 60, imgWidth, imgHeight);
 
-                pdf.addImage(imgData, 'PNG', 0, 60, imgWidth,
-                    imgHeight);
-                pdf.save("bar_chart.pdf");
-            });
+        // Get the data URI of the PDF
+        var pdfDataUri = pdf.output('datauristring');
 
-        });
+        // Open the PDF in a new tab or window
+        var iframe = document.createElement('iframe');
+        iframe.src = pdfDataUri;
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        document.body.appendChild(iframe);
+    });
+});
 
         $('#download_bar_img').click(function(event) {
             var chartContainer = document.querySelector("#bar_graph");
