@@ -17,6 +17,8 @@
             var pdfWidth = 595.28;
             var pdfHeight = 841.89;
             var margin = 40;
+            var logoWidth = 50;
+            var logoHeight = 50;
             var pdf = new jsPDF({
                 unit: 'pt',
                 format: [pdfWidth, pdfHeight]
