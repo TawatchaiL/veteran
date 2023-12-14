@@ -74,7 +74,7 @@
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <strong><i class="fas fa-calendar"></i> วันที่บันทึก:</strong>
-                                    {!! Form::text('adddatep'.$cardid, date('Y-m-d', strtotime(date('Y-m-d') . ' +543 years')), [
+                                    {!! Form::text('adddatep'.$cardid, date('Y-m-d'), [
                                         'id' => 'adddatep'.$cardid,
                                         'placeholder' => 'วันที่บันทึก',
                                         'class' => 'AddDatep form-control',
