@@ -437,6 +437,16 @@
             table.draw();
         });
 
+        $('#btnsearch').on('click', function() {
+            storeFieldValues();
+            //var telp = $('#telp').val();
+            table.search('').draw();
+            $.fn.dataTable.ext.search.pop();
+            /* if (telp !== '') {
+                table.column(3).search(telp).draw();
+            } */
+        });
+
         var table = $('#Listview').DataTable({
             /*"aoColumnDefs": [
             {
@@ -651,15 +661,6 @@
             ]
         });
 
-        $('#searchButton').on('click', function() {
-            storeFieldValues();
-            //var telp = $('#telp').val();
-            table.search('').draw();
-            $.fn.dataTable.ext.search.pop();
-            /* if (telp !== '') {
-                table.column(3).search(telp).draw();
-            } */
-        });
         /*
         table.on('order.dt search.dt', function () {
         let i = 1;
