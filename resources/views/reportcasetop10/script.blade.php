@@ -23,8 +23,6 @@
             });
 
             var chartContainer = document.querySelector("#bar_graph");
-            var logoImage = new Image();
-                logoImage.src = logoBase64;
 
             html2canvas(chartContainer).then(canvas => {
                 var imgData = canvas.toDataURL("image/png");
@@ -32,13 +30,13 @@
                 var imgWidth = pdfWidth;
                 var imgHeight = (canvas.height * imgWidth) / canvas
                     .width;
-                pdf.addImage(logoImage, 'PNG', 50, 20, 50, 50);
+                pdf.addImage(logoBase64, 'PNG', 50, 20, 50, 50);
 
                 pdf.addImage(imgData, 'PNG', 0, margin, imgWidth,
                     imgHeight);
                 pdf.save("bar_chart.pdf");
             });
-
+            pdf.addImage(logoBase64, 'PNG', 50, 20, 50, 50);
         });
 
         $('#download_bar_img').click(function(event) {
