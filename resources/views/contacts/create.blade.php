@@ -69,6 +69,7 @@
                                                         'id' => 'Addhn',
                                                         'placeholder' => 'รหัสผู้ติดต่อ',
                                                         'class' => 'form-control',
+                                                        'tabindex' => '1',
                                                         //'readonly' => true,
                                                     ]) !!}
                                                 </div>
@@ -80,6 +81,7 @@
                                                         'id' => 'Addadddate',
                                                         'placeholder' => 'วันที่บันทึก',
                                                         'class' => 'AddDate form-control',
+                                                        'tabindex' => '2',
                                                         'data-target' => '#reservationdate',
                                                     ]) !!}
                                                 </div>
@@ -93,7 +95,7 @@
                                                     <strong><i class="fas fa-user-tie"></i> คำนำหน้าชื่อ:</strong>
                                                     <select style="width: 100%;"
                                                         class="select2 select2_single form-control" id="Addtname"
-                                                        name="Addtname" multiple="multiple">
+                                                        name="Addtname" multiple="multiple" tabindex="3">
                                                         {{-- <option value="">กรุณาเลือก</option> --}}
                                                         <option value="คุณ">คุณ</option>
                                                         <option value="เด็กชาย">เด็กชาย</option>
@@ -107,7 +109,12 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> ชื่อ:</strong>
-                                                    {!! Form::text('fname', null, ['id' => 'Addfname', 'placeholder' => 'ชื่อ', 'class' => 'form-control']) !!}
+                                                    {!! Form::text('fname', null, [
+                                                        'id' => 'Addfname',
+                                                        'placeholder' => 'ชื่อ',
+                                                        'class' => 'form-control',
+                                                        'tabindex' => '4',
+                                                    ]) !!}
                                                 </div>
                                             </div>
                                         </div>
@@ -115,7 +122,12 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> นามสกุล:</strong>
-                                                    {!! Form::text('lname', null, ['id' => 'Addlname', 'placeholder' => 'นามสกุล', 'class' => 'form-control']) !!}
+                                                    {!! Form::text('lname', null, [
+                                                        'id' => 'Addlname',
+                                                        'placeholder' => 'นามสกุล',
+                                                        'class' => 'form-control',
+                                                        'tabindex' => '5',
+                                                    ]) !!}
                                                 </div>
                                             </div>
                                             <div class="col-xs-6 col-sm-6 col-md-6">
@@ -123,7 +135,7 @@
                                                     <strong><i class="fas fa-user-tie"></i> เพศ:</strong>
                                                     <select style="width: 100%;"
                                                         class="select2 select2_single form-control" id="Addsex"
-                                                        name="Addsex" multiple="multiple">
+                                                        name="Addsex" multiple="multiple" tabindex="6">
                                                         {{-- <option value="">กรุณาเลือก</option> --}}
                                                         <option value="ชาย">ชาย</option>
                                                         <option value="หญิง">หญิง</option>
@@ -141,6 +153,7 @@
                                                         'placeholder' => 'วันเกิด',
                                                         'class' => 'BirthDate form-control',
                                                         'data-target' => '#reservationdate',
+                                                        'tabindex' => '7',
                                                     ]) !!}
                                                 </div>
                                             </div>
@@ -152,6 +165,7 @@
                                                         'placeholder' => 'อายุ',
                                                         'class' => 'form-control',
                                                         'readonly' => true,
+                                                        'tabindex' => '8',
                                                     ]) !!}
                                                 </div>
                                             </div>
@@ -162,7 +176,7 @@
                                                     <strong><i class="fas fa-user-tie"></i> กรุ๊ปเลือด:</strong>
                                                     <select style="width: 100%;"
                                                         class="select2 select2_single form-control" id="Addbloodgroup"
-                                                        name="Addbloodgroup" multiple="multiple">
+                                                        name="Addbloodgroup" multiple="multiple" tabindex="9">
                                                         {{-- <option value="">กรุณาเลือก</option> --}}
                                                         <option value="A">A</option>
                                                         <option value="B">B</option>
@@ -187,6 +201,7 @@
                                                         'id' => 'Addhomeno',
                                                         'placeholder' => 'บ้านเลขที่',
                                                         'class' => 'form-control',
+                                                        'tabindex' => '10',
                                                     ]) !!}
                                                 </div>
                                             </div>
@@ -197,6 +212,7 @@
                                                         'id' => 'Addmoo',
                                                         'placeholder' => 'หมู่',
                                                         'class' => 'form-control',
+                                                        'tabindex' => '11',
                                                     ]) !!}
                                                 </div>
                                             </div>
@@ -209,6 +225,7 @@
                                                         'id' => 'Addsoi',
                                                         'placeholder' => 'ซอย',
                                                         'class' => 'form-control',
+                                                        'tabindex' => '12',
                                                     ]) !!}
                                                 </div>
                                             </div>
@@ -219,6 +236,7 @@
                                                         'id' => 'Addroad',
                                                         'placeholder' => 'ถนน',
                                                         'class' => 'form-control',
+                                                        'tabindex' => '13',
                                                     ]) !!}
                                                 </div>
                                             </div>
@@ -228,7 +246,7 @@
                                                 <div class="form-group">
                                                     <strong><i class="fa-solid fa-city"></i> จังหวัด :</strong>
                                                     <select class="select2 select2_single form-control" id="Addcity"
-                                                        name="city" multiple="multiple">
+                                                        name="city" multiple="multiple" tabindex="14">
                                                     </select>
                                                 </div>
                                             </div>
@@ -237,7 +255,8 @@
                                                     <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
                                                         อำเภอ:</strong>
                                                     <select class="select2 select2_single form-control"
-                                                        id="Adddistrict" name="district" multiple="multiple">
+                                                        id="Adddistrict" name="district" multiple="multiple"
+                                                        tabindex="15">
                                                         {{-- <option value="">กรุณาเลือกอำเภอ</option> --}}
                                                     </select>
                                                 </div>
@@ -250,7 +269,8 @@
                                                         ตำบล
                                                         :</strong>
                                                     <select class="select2 select2_single form-control"
-                                                        id="Addsubdistrict" name="subdistrict" multiple="multiple">
+                                                        id="Addsubdistrict" name="subdistrict" multiple="multiple"
+                                                        tabindex="16">
                                                         {{-- <option value="">กรุณาเลือกตำบล</option> --}}
                                                     </select>
                                                 </div>
@@ -262,6 +282,7 @@
                                                         'id' => 'Addpostcode',
                                                         'placeholder' => 'รหัสไปรษณีย์',
                                                         'class' => 'form-control',
+                                                        'tabindex' => '17',
                                                     ]) !!}
                                                 </div>
                                             </div>
@@ -286,6 +307,7 @@
                                                         'placeholder' => 'เบอร์โทรศัพท์บ้าน',
                                                         'class' => 'form-control',
                                                         'onkeydown' => 'validateNumber(event)',
+                                                        'tabindex' => '18',
                                                     ]) !!}
                                                 </div>
                                             </div>
@@ -297,6 +319,7 @@
                                                         'placeholder' => 'เบอร์โทรศัพท์มือถือ',
                                                         'class' => 'form-control',
                                                         'onkeydown' => 'validateNumber(event)',
+                                                        'tabindex' => '19',
                                                     ]) !!}
                                                 </div>
                                             </div>
@@ -312,6 +335,7 @@
                                                         'placeholder' => 'เบอร์โทรศัพท์ที่ทำงาน',
                                                         'class' => 'form-control',
                                                         'onkeydown' => 'validateNumber(event)',
+                                                        'tabindex' => '20',
                                                     ]) !!}
                                                 </div>
                                             </div>
