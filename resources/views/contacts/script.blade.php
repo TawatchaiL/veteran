@@ -195,6 +195,9 @@
         daterange();
 
         $.datepicker.setDefaults($.datepicker.regional['th']);
+        var currentDate = new Date();
+        var currentYear = currentDate.getFullYear();
+        var maxYear = currentYear + 1;
         $(".BirthDate").datepicker({
             dateFormat: "yy-mm-dd",
             //defaultDate: '2023-11-14',
