@@ -376,7 +376,7 @@
         $(document).on("focus", ".AddDatep", function() {
             $(this).datepicker({
                 dateFormat: "yy-mm-dd",
-                //defaultDate: '2023-11-14',
+                defaultDate: new Date(),
                 isBuddhist: true,
                 changeMonth: true,
                 changeYear: true,
