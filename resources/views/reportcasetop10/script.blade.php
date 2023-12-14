@@ -16,13 +16,15 @@
 
             var pdfWidth = 595.28;
             var pdfHeight = 841.89;
-            var margin = 20;
+            var margin = 40;
             var pdf = new jsPDF({
                 unit: 'pt',
                 format: [pdfWidth, pdfHeight]
             });
 
             var chartContainer = document.querySelector("#bar_graph");
+            var logoImage = new Image();
+            logoImage.src = 'images/logo.png'; 
 
             html2canvas(chartContainer).then(canvas => {
                 var imgData = canvas.toDataURL("image/png");
@@ -31,7 +33,9 @@
                 var imgHeight = (canvas.height * imgWidth) / canvas
                     .width;
 
-                pdf.addImage(imgData, 'PNG', margin, margin, imgWidth,
+                pdf.addImage(logoImage, 'PNG', margin, margin, logoWidth, logoHeight);
+
+                pdf.addImage(imgData, 'PNG', margin, 0, imgWidth,
                     imgHeight);
                 pdf.save("bar_chart.pdf");
             });
