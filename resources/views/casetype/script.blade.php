@@ -233,6 +233,8 @@
                         $('.btn-editcasetype').prop('disabled', false);
                         $('.btn-newcasetype').prop('disabled', false);
                         $('.btn-casetypedelete').prop('disabled', false);
+                        $('.btn-editup').prop('disabled', false);
+                        $('.btn-editdown').prop('disabled', false);
                         toastr.success(result.success, {
                             timeOut: 5000
                         });
