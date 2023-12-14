@@ -58,7 +58,7 @@ class ReporttopoutController extends Controller
             ->limit(10)
             ->get();
 
-            if (!empty($request->get('rstatus'))) {
+            if (!empty($request->get('rstatus'))) {                                             
                 $chart_data = array();
                 $chart_label = array();
                 foreach ($datas as $data) {
