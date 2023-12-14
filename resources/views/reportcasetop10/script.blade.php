@@ -16,7 +16,6 @@
 
             var pdfWidth = 595.28;
             var pdfHeight = 841.89;
-            var margin = 40;
             var pdf = new jsPDF({
                 unit: 'pt',
                 format: [pdfWidth, pdfHeight]
@@ -31,7 +30,7 @@
                 var imgHeight = (canvas.height * imgWidth) / canvas
                     .width;
 
-                pdf.addImage(imgData, 'PNG', 0, margin, imgWidth,
+                pdf.addImage(imgData, 'PNG', 0, 40, imgWidth,
                     imgHeight);
                 pdf.save("bar_chart.pdf");
             });
