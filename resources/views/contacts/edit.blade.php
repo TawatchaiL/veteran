@@ -145,7 +145,7 @@
                                                         'id' => 'Editbirthday',
                                                         'placeholder' => 'วันเกิด',
                                                         'data-age' => 'Editage',
-                                                        'class' => 'AddDate form-control',
+                                                        'class' => 'BirthDate form-control',
                                                         'data-target' => '#reservationdate',
                                                     ]) !!}
                                                 </div>
