@@ -369,7 +369,7 @@
         $('#seachtype').change(function(e) {
             var fieldValue = $("#seachtype").val();
             if (fieldValue === '1' || fieldValue === '2') {
-                $("#seachtype").val('');
+                $("#seachtext").val('');
                 $("#seachtext").attr('disabled', true);
             } else {
                 $("#seachtext").prop('disabled', false);
