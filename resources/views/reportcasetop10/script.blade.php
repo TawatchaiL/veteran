@@ -31,7 +31,7 @@
                 var imgHeight = (canvas.height * imgWidth) / canvas
                     .width;
 
-                pdf.addImage(imgData, 'PNG', margin, 0, imgWidth,
+                pdf.addImage(imgData, 'PNG', 0, margin, imgWidth,
                     imgHeight);
                 pdf.save("bar_chart.pdf");
             });
