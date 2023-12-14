@@ -33,7 +33,7 @@
                                                         <i class="far fa-calendar-alt"></i>
                                                     </span>
                                                 </div>
-                                                <input type="text" class="form-control float-right" id="reservation" style="width: 210px">
+                                                <input type="text" class="form-control float-right" id="reservation" style="width: 210px" readonly>
                                             </div>
 
                                         </div>
@@ -181,7 +181,6 @@
                                 <table id="Listview" class="table table-bordered table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th width="5%">ลำดับ</th>
                                             <th>ประเภทการติดต่อ</th>
                                             <th width="280px">จำนวน</th>
                                         </tr>
