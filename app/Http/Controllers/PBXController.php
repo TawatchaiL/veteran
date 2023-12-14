@@ -458,7 +458,7 @@ class PBXController extends Controller
         if ($user) {
             //check if queue call send to popup record
             if ($request->input('context') == 'ext-queues') {
-               /*  DB::table('crm_incoming')
+                /*  DB::table('crm_incoming')
                     ->where('telno', $request->input('telno'))
                     ->where('agent_id', $user->id)
                     ->delete(); */
@@ -659,6 +659,11 @@ class PBXController extends Controller
 
         if ($user) {
 
+            $tabid = DB::table('crm_incoming')
+                //->where('agentno', $request->input('extension'))
+                ->where('agent_id', $user->id)
+                ->where('status', 1)
+                ->first();
             DB::table('crm_incoming')
                 //->where('agentno', $request->input('extension'))
                 ->where('agent_id', $user->id)
@@ -740,12 +745,22 @@ class PBXController extends Controller
             }
 
             $user->save();
-            return [
-                'success' => true,
-                'id' => $user->phone_status_id,
-                'message' => $user->phone_status,
-                'icon' => $user->phone_status_icon
-            ];
+            if ($tabid()) {
+                return [
+                    'success' => true,
+                    'tab_id' => $tabid->id,
+                    'id' => $user->phone_status_id,
+                    'message' => $user->phone_status,
+                    'icon' => $user->phone_status_icon
+                ];
+            } else {
+                return [
+                    'success' => true,
+                    'id' => $user->phone_status_id,
+                    'message' => $user->phone_status,
+                    'icon' => $user->phone_status_icon
+                ];
+            }
         } else {
             return ['error' => false, 'message' => 'error'];
         }
