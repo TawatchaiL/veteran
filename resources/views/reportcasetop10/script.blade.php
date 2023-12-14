@@ -30,7 +30,7 @@
                 var imgHeight = (canvas.height * imgWidth) / canvas
                     .width;
 
-                pdf.addImage(imgData, 'PNG', 0, 40, imgWidth,
+                pdf.addImage(imgData, 'PNG', 0, 60, imgWidth,
                     imgHeight);
                 pdf.save("bar_chart.pdf");
             });
@@ -92,8 +92,8 @@
                 var imgHeight = (canvas.height * imgWidth) / canvas
                     .width; // Calculate proportional height
 
-                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth,
-                    imgHeight); // Add the resized image
+                    pdf.addImage(imgData, 'PNG', 0, 60, imgWidth,
+                    imgHeight);
                 pdf.save("line_chart.pdf");
             });
 
@@ -152,8 +152,8 @@
                 var imgHeight = (canvas.height * imgWidth) / canvas
                     .width; // Calculate proportional height
 
-                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth,
-                    imgHeight); // Add the resized image
+                    pdf.addImage(imgData, 'PNG', 0, 60, imgWidth,
+                    imgHeight);
                 pdf.save("pie_chart.pdf");
             });
 
