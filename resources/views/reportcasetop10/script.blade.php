@@ -319,79 +319,67 @@
         }
 
         let daterange = () => {
-            moment.locale('th');
 
-            var startTime = '00:00:00';
-            var endTime = '23:59:59';
 
-            var todayRange = [moment(startTime, 'HH:mm:ss'), moment(endTime, 'HH:mm:ss')];
-            var yesterdayRange = [moment().subtract(1, 'days').startOf('day').set('hour', 0).set('minute',
-                0).set('second', 0), moment().subtract(1, 'days').endOf('day').set('hour', 23).set(
-                'minute', 59).set('second', 59)];
-            var last7DaysRange = [moment().subtract(6, 'days').startOf('day').set('hour', 0).set('minute',
-                0).set('second', 0), moment(endTime, 'HH:mm:ss')];
-            var last30DaysRange = [moment().subtract(29, 'days').startOf('day').set('hour', 0).set('minute',
-                0).set('second', 0), moment(endTime, 'HH:mm:ss')];
+var startTime = '00:00:00';
+var endTime = '23:59:59';
 
-            $('#reservation').daterangepicker({
-                timePicker: true,
-                timePicker24Hour: true,
-                timePickerSeconds: true,
-                //timePickerIncrement: 5,
-                startDate: moment(startDate).subtract(543, 'years'),
-                endDate: moment(endDate).subtract(543, 'years'),
-                ranges: {
-                    'วันนี้': todayRange,
-                    'เมื่อวานนี้': yesterdayRange,
-                    'ย้อนหลัง 7 วัน': last7DaysRange,
-                    'ย้อนหลัง 30 วัน': last30DaysRange,
-                    'เดือนนี้': [moment().startOf('month'), moment().endOf('month')],
-                    'เดือนที่แล้ว': [moment().subtract(1, 'month').startOf('month'), moment()
-                        .subtract(1, 'month').endOf('month')
-                    ]
-                },
-                locale: {
-                    format: 'YYYY-MM-DD HH:mm:ss',
-                    applyLabel: 'ตกลง',
-                    cancelLabel: 'ยกเลิก',
-                    fromLabel: 'จาก',
-                    toLabel: 'ถึง',
-                    customRangeLabel: 'เลือกวันที่เอง',
-                    daysOfWeek: ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'],
-                    monthNames: [
-                        'มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน',
-                        'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'
-                    ],
-                    firstDay: 1
-                },
-                isCustomDate: {
+var todayRange = [moment(startTime, 'HH:mm:ss'), moment(endTime, 'HH:mm:ss')];
+var yesterdayRange = [moment().subtract(1, 'days').startOf('day').set('hour', 0).set('minute',
+    0).set('second', 0), moment().subtract(1, 'days').endOf('day').set('hour', 23).set(
+    'minute', 59).set('second', 59)];
+var last7DaysRange = [moment().subtract(6, 'days').startOf('day').set('hour', 0).set('minute',
+    0).set('second', 0), moment(endTime, 'HH:mm:ss')];
+var last30DaysRange = [moment().subtract(29, 'days').startOf('day').set('hour', 0).set('minute',
+    0).set('second', 0), moment(endTime, 'HH:mm:ss')];
 
-                }
-            });
-            // Apply the custom date range filter on input change
-            $('#reservation').on('apply.daterangepicker', function() {
-                console.log($('#reservation').val())
-                table.draw();
-                //storeFieldValues();
-            });
-            $('#reservation').on('showCalendar.daterangepicker', function(ev, picker) {
+var currentYear = moment().year();
+var maxYear = moment().year(currentYear).add(1, 'year').format('YYYY-MM-DD');
+var minYear = moment().year(currentYear).subtract(2, 'years').format('YYYY-MM-DD');
 
-            });
-            $('#reservation').on('show.daterangepicker', function(ev, picker) {
-                //var arrayDate = $('#reservation').val().split(" ");
-                //var sDate = arrayDate[0].split("-");
-                //var eDate = arrayDate[3].split("-");
-                //    sDate[0] = parseInt(sDate[0]) + 543;
-                //    eDate[0] = parseInt(eDate[0]) + 543;
-                //$('#reservation').val(sDate[0] + "-" + sDate[1] + "-" + sDate[2] + " " + arrayDate[1] + " - " + eDate[0] + "-" + eDate[1] + "-" + eDate[2] + " " + arrayDate[4]);  
-            });
-            $('#reservation').on('hide.daterangepicker', function(ev, picker) {
+$('#reservation').daterangepicker({
+    timePicker: true,
+    timePicker24Hour: true,
+    timePickerSeconds: true,
+    //timePickerIncrement: 5,
+    startDate: startDate,
+    endDate: endDate,
+    showDropdowns: true,
+    linkedCalendars: false,
+    minDate: minYear,
+    maxDate: maxYear,
+    ranges: {
+        'วันนี้': todayRange,
+        'เมื่อวานนี้': yesterdayRange,
+        'ย้อนหลัง 7 วัน': last7DaysRange,
+        'ย้อนหลัง 30 วัน': last30DaysRange,
+        'เดือนนี้': [moment().startOf('month'), moment().endOf('month')],
+        'เดือนที่แล้ว': [moment().subtract(1, 'month').startOf('month'), moment()
+            .subtract(1, 'month').endOf('month')
+        ]
+    },
+    locale: {
+        format: 'YYYY-MM-DD HH:mm:ss',
+        applyLabel: 'ตกลง',
+        cancelLabel: 'ยกเลิก',
+        fromLabel: 'จาก',
+        toLabel: 'ถึง',
+        customRangeLabel: 'เลือกวันที่เอง',
+        daysOfWeek: ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'],
+        monthNames: [
+            'มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน',
+            'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'
+        ],
+        firstDay: 1
+    }
+});
 
-            });
-            $('#reservation').on('hideCalendar.daterangepicker', function(ev, picker) {
-
-            });
-        }
+// Apply the custom date range filter on input change
+$('#reservation').on('apply.daterangepicker', function(ev, picker) {
+    table.draw();
+    storeFieldValues();
+});
+}
         datesearch();
         daterange();
 
@@ -454,7 +442,7 @@
             aaSorting: [
                 [0, "desc"]
             ],
-            iDisplayLength: 5,
+            iDisplayLength: 10,
             lengthMenu: [5, 10, 25, 50, 75, 100],
             stateSave: true,
             autoWidth: false,
