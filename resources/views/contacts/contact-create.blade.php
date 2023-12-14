@@ -74,7 +74,7 @@
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <strong><i class="fas fa-calendar"></i> วันที่บันทึก:</strong>
-                                    {!! Form::text('adddatep'.$cardid, null, [
+                                    {!! Form::text('adddatep'.$cardid, date('Y')+543.''.date('-m-d'), [
                                         'id' => 'adddatep'.$cardid,
                                         'placeholder' => 'วันที่บันทึก',
                                         'class' => 'AddDatep form-control',
