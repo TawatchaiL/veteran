@@ -988,9 +988,9 @@
                             toastr.success('บันทึกข้อมูลเรียบร้อยแล้ว', {
                                 timeOut: 5000
                             });
-
                             $('.alert-success-pop' + cardId).hide();
-
+                                    $('#ToolbarModal').modal('hide');
+                                    positionCards();
                         }
                     }
                 });
