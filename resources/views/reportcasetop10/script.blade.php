@@ -13,20 +13,13 @@
     }
     $(document).ready(function() {
         $('#download_bar').click(function(event) {
-            /*  var pdf = new jsPDF();
-             var chartContainer = document.querySelector("#bar_chart_div");
 
-             html2canvas(chartContainer).then(canvas => {
-                 var imgData = canvas.toDataURL("image/png");
-
-                 pdf.addImage(imgData, 'PNG', 0, 0);
-                 pdf.save("chart.pdf");
-             });  */
-            var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
-            var pdfHeight = 841.89; // Height of A4 in points
+            var pdfWidth = 595.28;
+            var pdfHeight = 841.89;
+            var margin = 20;
             var pdf = new jsPDF({
-                unit: 'pt', // Use points as the unit for measurements
-                format: [pdfWidth, pdfHeight] // Set the format to A4 size
+                unit: 'pt',
+                format: [pdfWidth, pdfHeight]
             });
 
             var chartContainer = document.querySelector("#bar_graph");
@@ -34,12 +27,12 @@
             html2canvas(chartContainer).then(canvas => {
                 var imgData = canvas.toDataURL("image/png");
 
-                var imgWidth = pdfWidth; // Use the same width as PDF
+                var imgWidth = pdfWidth;
                 var imgHeight = (canvas.height * imgWidth) / canvas
-                    .width; // Calculate proportional height
+                    .width;
 
-                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth,
-                    imgHeight); // Add the resized image
+                pdf.addImage(imgData, 'PNG', margin, margin, imgWidth,
+                    imgHeight);
                 pdf.save("bar_chart.pdf");
             });
 
