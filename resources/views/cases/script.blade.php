@@ -375,8 +375,8 @@
                 $("#seachtext").prop('disabled', false);
             }
             storeFieldValues();
-            table.search('').draw();
-            $.fn.dataTable.ext.search.pop();
+            //table.search('').draw();
+            //$.fn.dataTable.ext.search.pop();
             //$('#Listview').DataTable().ajax.reload();
         });
 
