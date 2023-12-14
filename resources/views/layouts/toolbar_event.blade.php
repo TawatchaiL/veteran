@@ -241,7 +241,9 @@
                             set_state_icon(result.id, result.icon, result.message);
                             set_state_button(result.id);
                         }, 1000);
-                        positionCards();
+                        //positionCards();
+                        $('#custom-tabs-pop-' + result.tab_id + '-tab').remove();
+                        $('#custom-tabs-pop-' + result.tab_id).remove();
                     }
                 });
             } else if (data.status == 1 || data.status == 2 || data.status == 8 || data.status == 9) {
