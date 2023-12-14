@@ -345,7 +345,7 @@
                 }
             ]
         });
-
+        $("#seachtext").attr('disabled', true);
         $('#btnsearch').click(function(e) {
             var fieldValue = $("#seachtype").val();
             var textValue = $("#seachtext").val();
@@ -359,6 +359,20 @@
                 }
             } else {
                 document.getElementById('validationMessages').textContent = '';
+            }
+            storeFieldValues();
+            table.search('').draw();
+            $.fn.dataTable.ext.search.pop();
+            //$('#Listview').DataTable().ajax.reload();
+        });
+
+        $('#seachtype').change(function(e) {
+            var fieldValue = $("#seachtype").val();
+            if (fieldValue === '1' || fieldValue === '2') {
+                $("#seachtype").val('');
+                $("#seachtext").attr('disabled', true);
+            } else {
+                $("#seachtext").prop('disabled', false);
             }
             storeFieldValues();
             table.search('').draw();
