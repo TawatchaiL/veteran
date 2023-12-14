@@ -24,8 +24,8 @@
     });
 
     socket.on('queuemember', (response) => {
-        //console.log(response)
-        if (response.data.paused == 1) {
+        console.log(response)
+        if (response.data.paused == 1 && response.data.name == exten) {
             const currentTimestamp = Math.floor(Date.now() / 1000) - response.data.lastpause;
             const formattedTime = formatTime(currentTimestamp);
             $('#pausereason').html(response.data.pausedreason);
