@@ -59,7 +59,7 @@ class ReportcaseController extends Controller
 */
         $datas = DB::connection('remote_connection')
             ->table(DB::raw('SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT crm_id, COUNT(crm_id) AS sumcases FROM call_center.call_entry WHERE datetime_init BETWEEN "' . $startDate . '" AND "' . $endDate . '" GROUP BY crm_id HAVING sumcases > 0 ORDER BY crm_id ASC) t, (SELECT @rownumber:=0) r'))
-            ->select('rownumber', 'crm_id', 'sumcases')
+            //->select('rownumber', 'crm_id', 'sumcases')
             ->get();
 
             $agents = User::orderBy("id", "asc")->get();
