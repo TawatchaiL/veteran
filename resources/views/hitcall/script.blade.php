@@ -381,7 +381,7 @@
             $('#reservation').on('apply.daterangepicker', function() {
                 console.log($('#reservation').val())
                 table.draw();
-                storeFieldValues();
+                //storeFieldValues();
             });
         }
         datesearch();

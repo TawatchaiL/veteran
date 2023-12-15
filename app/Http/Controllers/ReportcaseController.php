@@ -56,23 +56,10 @@ class ReportcaseController extends Controller
             ->having('sumcases', '>', 0)
             ->orderBy("crm_id", "asc")
             ->get();
-
-        $datas = DB::connection('remote_connection')
-            ->table(DB::raw('SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT crm_id, COUNT(crm_id) AS sumcases FROM call_center.call_entry WHERE datetime_init BETWEEN "' . $startDate . '" AND "' . $endDate . '" GROUP BY crm_id HAVING sumcases > 0 ORDER BY crm_id ASC) t, (SELECT @rownumber:=0) r'))
-            //->select('rownumber', 'crm_id', 'sumcases')
-            ->get();
 */
-            $datas = DB::connection('remote_connection')
-            ->table('call_center.call_entry')
-            ->select(
-                DB::raw('(@rownumber := @rownumber + 1) AS rownumber'),
-                'crm_id',
-                DB::raw('count(crm_id) as sumcases')
-            )
-            ->whereRaw('datetime_init BETWEEN "' . $startDate . '" AND "' . $endDate . '"')
-            ->groupBy('crm_id')
-            ->having('sumcases', '>', 0)
-            ->orderBy('crm_id', 'asc')
+        $datas = DB::connection('remote_connection')
+            ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT crm_id, COUNT(crm_id) AS sumcases FROM call_center.call_entry WHERE datetime_init BETWEEN "' . $startDate . '" AND "' . $endDate . '" GROUP BY crm_id HAVING sumcases > 0 ORDER BY crm_id ASC) t, (SELECT @rownumber:=0) r) AS temp'))
+            ->select('rownumber', 'crm_id', 'sumcases')
             ->get();
 
             $agents = User::orderBy("id", "asc")->get();
