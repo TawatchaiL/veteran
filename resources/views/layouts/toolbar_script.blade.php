@@ -1048,7 +1048,7 @@
 
 
         $.get(`${api_serv}/chans/` + exten, async (data, status) => {
-            $('#call_list').html('');
+            //$('#call_list').html('');
             await data.forEach((item, index) => {
                 let strArray = item.split("!");
                 let chan = strArray[0].split("/");
