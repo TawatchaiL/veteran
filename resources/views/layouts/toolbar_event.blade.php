@@ -76,7 +76,7 @@
                         set_state_button(result.id);
                     }, 1000);
 
-                    call_list();
+                    //call_list();
 
                     @if (Request::is('home'))
                         updateAvgData();
@@ -410,7 +410,7 @@
                     set_state_icon(result.id, result.icon, result.message);
                     set_state_button(result.id);
                     //positionCards();
-                    call_list();
+                    //call_list();
                     toolbar_modal.modal('show');
                 }
             });
@@ -491,7 +491,7 @@
 
                 } else {
                     //set_state_button(1);
-                    call_list();
+                    //call_list();
                 }
 
             }
