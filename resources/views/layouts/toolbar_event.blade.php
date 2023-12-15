@@ -16,12 +16,14 @@
     //agent receive call
     socket.on('agentconnect', (response) => {
         //console.log(response)
+        call_list();
+        console.log(response)
     });
 
     //agent answer call
     socket.on('agentcalled', (response) => {
         call_list();
-        //console.log(response)
+        console.log(response)
     });
 
     socket.on('queuemember', (response) => {
