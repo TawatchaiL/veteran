@@ -199,8 +199,10 @@
             $('.alert-success').html('');
             $('.alert-success').hide();
             let dataId = $(this).data('id');
-            $('#custom-tabs-pop-' + dataId + '-tab').tab('show');
-            await maximizeCard(dataId);
+            if (dataId !== '') {
+                $('#custom-tabs-pop-' + dataId + '-tab').tab('show');
+                await maximizeCard(dataId);
+            }
             $('#ToolbarModal').modal('show');
         });
 
@@ -396,7 +398,7 @@
     window.addEventListener('beforeunload', function() {
         isRefreshing = true;
 
-        
+
     });
 
     // Detect close event
@@ -404,7 +406,7 @@
         if (!isRefreshing) {
             // The page is being closed (not refreshed)
             // Perform actions for page close here
-            
+
             sendAjaxRequest("{{ route('agent.logoff') }}", "POST");
         }
     }); */
