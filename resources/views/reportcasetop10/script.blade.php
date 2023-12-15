@@ -554,7 +554,7 @@
                                 columns: [{
                                         image: logobase64,
                                         width: 50,
-                                        margin: [250, 0, 50, 50],
+                                        margin: [10, 0, 50, 50],
                                     },
                                     {
                                         alignment: 'left',
