@@ -1048,6 +1048,7 @@
 
 
         $.get(`${api_serv}/chans/` + exten, async (data, status) => {
+            $('#call_list').html('');
             await data.forEach((item, index) => {
                 let strArray = item.split("!");
                 let chan = strArray[0].split("/");
@@ -1115,7 +1116,7 @@
 
 
                     if (!$('#' + luniq.replace('.', '')).length) {
-                        $('#call_list').prepend(`<div class="col-md-3 " id = "${luniq.replace('.', '')}">
+                        prepend(`<div class="col-md-3 " id = "${luniq.replace('.', '')}">
 						<div class="card custom-bottom-right-card ${state_color}" id = "color_${luniq.replace('.', '')}" data-id="${mcallexten}">
 							<div class="card-header">
 								<h3 class="card-title call_box" id="state_${luniq.replace('.', '')}" >  ${state_icon} ${state} ${mcallexten} </h3>
