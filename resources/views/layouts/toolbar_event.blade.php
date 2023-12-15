@@ -340,7 +340,7 @@
             $.ajax({
                 url: "{{ route('agent.ring') }}",
                 method: 'post',
-                async: false,
+                async: true,
                 data: {
                     uniqid: data.luniq,
                     context: data.context,
