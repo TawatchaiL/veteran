@@ -1121,6 +1121,8 @@
 
 
                     if (!$('#' + luniq.replace('.', '')).length) {
+                        $('#' + luniq.replace('.', '')).remove();
+                    }
                         $('#call_list').prepend(`<div class="col-md-3 " id = "${luniq.replace('.', '')}">
 						<div class="card custom-bottom-right-card ${state_color}" id = "color_${luniq.replace('.', '')}" data-id="${mcallexten}">
 							<div class="card-header">
@@ -1140,7 +1142,7 @@
 
 			             </div>`);
 
-                    }
+
 
                 });
                 calls_active += 1;
