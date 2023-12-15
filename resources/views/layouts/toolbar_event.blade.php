@@ -331,7 +331,7 @@
 
 
     socket.on('ringing', data => {
-
+        console.log(data);
         if (data.extension.match(sipexten)) {
             console.log(data)
             console.log('match')
