@@ -555,7 +555,6 @@
                                     {
                                         text: [  
                                                 { text: 'REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
-                                                '\n',
                                                 {
         canvas: [
             { type: 'line', x1: 0, y1: 5, x2: 515, y2: 5, lineWidth: 2, lineColor: '#000000' } // Adjust the x1, y1, x2, y2 values as needed
