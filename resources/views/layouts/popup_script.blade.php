@@ -748,6 +748,7 @@
                             method: 'GET',
                             async: false,
                             success: function(res) {
+                            if (res.datax.length != 0) {
                                 $('#phonenosuccess' + cardId).html(
                                     '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ' +
                                     res.datax.datac.fname +
@@ -886,6 +887,7 @@
                                         );
                                 });
                                 */
+                                }
                                 if (res.datax.cases.length != 0) {
                                     $('#custom-tabs-one-casedetail-tabp' + cardId)
                                         .click();
