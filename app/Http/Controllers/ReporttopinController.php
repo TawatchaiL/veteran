@@ -53,7 +53,7 @@ class ReporttopinController extends Controller
             ->whereRaw('LENGTH(callerid) < 5')
             ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '"')
             ->groupBy('callerid')
-            ->orderBy("sumcases", "desc")
+            ->orderBy(DB::raw('count(callerid)'), "desc")
             ->limit(10)
             ->get();
 
