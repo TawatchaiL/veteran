@@ -52,10 +52,10 @@ class HitcallController extends Controller
         if(!empty($request->get('agent')) && $request->get('agent') != "0"){
             $sqlagent = " and crm_id = '".$request->input('agent')."'";
         }else{
-            $sqlagent = "";
+            $sqlagent = " AND crm_id is not null";
         }      
         $datas = DB::connection('remote_connection')
-        ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT crm_id, DATE(datetime_init) as cdate, TIME(datetime_init) as ctime, callerid as telno, SEC_TO_TIME(duration_wait) as durationwait, SEC_TO_TIME(duration) as duration FROM call_center.call_entry WHERE datetime_init BETWEEN "' . $startDate . '" AND "' . $endDate . '" AND status = "terminada" AND crm_id is not null' .$sqlagent. ' ORDER BY datetime_init ASC) t, (SELECT @rownumber:=0) r) AS temp'))
+        ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT crm_id, DATE(datetime_init) as cdate, TIME(datetime_init) as ctime, callerid as telno, SEC_TO_TIME(duration_wait) as durationwait, SEC_TO_TIME(duration) as duration FROM call_center.call_entry WHERE datetime_init BETWEEN "' . $startDate . '" AND "' . $endDate . '" AND status = "terminada"' .$sqlagent. ' ORDER BY datetime_init ASC) t, (SELECT @rownumber:=0) r) AS temp'))
         ->select('rownumber', 'cdate', 'ctime', 'telno', 'durationwait', 'duration')
         ->get();
 /*
