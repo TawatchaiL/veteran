@@ -16,12 +16,11 @@
     //agent receive call
     socket.on('agentconnect', (response) => {
         //console.log(response)
-        call_list();
-        console.log(response)
     });
 
     //agent answer call
     socket.on('agentcalled', (response) => {
+        console.log('call')
         call_list();
         console.log(response)
     });
@@ -332,6 +331,7 @@
     socket.on('ringing', data => {
 
         if (data.extension.match(sipexten)) {
+            console.log('ring')
             let peer = data.extension.split("-");
             let peern = peer[0].split("/");
 
@@ -393,6 +393,7 @@
     socket.on('talking', data => {
 
         if (data.extension.match(sipexten)) {
+            console.log('talk')
             $.ajax({
                 url: "{{ route('agent.talk') }}",
                 method: 'post',
