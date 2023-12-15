@@ -470,26 +470,26 @@
                 if (data.luniq) {
                     $('#' + data.luniq.replace('.', '')).remove();
                 }
-                if ((data.event == 'BridgeLeave' || data.event == 'SoftHangupRequest')) {
+                //if ((data.event == 'BridgeLeave' || data.event == 'SoftHangupRequest')) {
 
-                    /* $.ajax({
-                        url: "{{ route('agent.status') }}",
-                        method: 'post',
-                        async: false,
-                        data: {
-                            _token: token,
-                        },
-                        success: function(result) {
-                            set_state_icon(result.id, result.icon, result.message);
-                            set_state_button(result.id);
-                        }
-                    }); */
-                    //check_state();
+                /* $.ajax({
+                    url: "{{ route('agent.status') }}",
+                    method: 'post',
+                    async: false,
+                    data: {
+                        _token: token,
+                    },
+                    success: function(result) {
+                        set_state_icon(result.id, result.icon, result.message);
+                        set_state_button(result.id);
+                    }
+                }); */
+                //check_state();
 
-                } else {
-                    call_list();
+                //} else {
+                call_list();
 
-                }
+                //}
 
             }
 
