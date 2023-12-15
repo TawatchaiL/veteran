@@ -282,11 +282,9 @@
                                                                         }); 
                                                                         */
                                     
-
                                     $('#custom-tabs-one-casedetail-tabp' +
                                         cardId).click();
                                 }
-                                $('#cityp' + cardId).val('65').change();
                             }
                         });
 
@@ -892,14 +890,11 @@
                                 */
                                 }
 
-                                
-
                                 if (res.datax.cases.length != 0) {
                                     $('#custom-tabs-one-casedetail-tabp' + cardId)
                                         .click();
                                 }
                             }
-                            $('#cityp' + cardId).val('65').change();
                         });
 
                         $.ajax({
