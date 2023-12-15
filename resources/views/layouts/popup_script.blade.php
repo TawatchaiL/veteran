@@ -281,6 +281,9 @@
                                                                             );
                                                                         }); 
                                                                         */
+                                $('#cityp' + cardId).val(res.datax.datac.city);
+                                $('#cityp' + cardId).change('65');
+
                                     $('#custom-tabs-one-casedetail-tabp' +
                                         cardId).click();
                                 }
@@ -888,6 +891,10 @@
                                 });
                                 */
                                 }
+
+                                $('#cityp' + cardId).val(res.datax.datac.city);
+                                $('#cityp' + cardId).change('65');
+
                                 if (res.datax.cases.length != 0) {
                                     $('#custom-tabs-one-casedetail-tabp' + cardId)
                                         .click();
