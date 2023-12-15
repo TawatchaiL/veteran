@@ -582,7 +582,13 @@
             responsive: true,
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
-            columns: [
+            columns: [{
+                    data: 'row_number',
+                    name: 'row_number',
+                    orderable: false,
+                    searchable: false,
+//                    className: 'no-print'
+                },
                 {
                     data: 'cdate',
                     name: 'cdate'
@@ -617,14 +623,7 @@
                 },
             ]
         });
-        table.on('order.dt search.dt', function () {
-        let i = 1;
- 
-        table.cells(null, 0, { search: 'applied', order: 'applied' })
-            .every(function (cell) {
-                this.data(i++);
-            });
-        }).draw();
+        
        /* table.on('order.dt search.dt', function () {
         let i = 1;
  
