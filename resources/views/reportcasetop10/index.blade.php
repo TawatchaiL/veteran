@@ -189,7 +189,6 @@
                                 <table id="Listview" class="table table-bordered table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th></th>
                                             <th>เรื่องที่ติดต่อ</th>
                                             <th width="280px">จำนวน</th>
                                         </tr>

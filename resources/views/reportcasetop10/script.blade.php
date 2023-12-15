@@ -649,7 +649,7 @@
             responsive: true,
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
-            columns: [{},
+            columns: [
                 {
                     data: 'casetype1',
                     name: 'casetype1'
@@ -660,15 +660,6 @@
                 },
             ]
         });
-
-        table.on('order.dt search.dt', function () {
-        let i = 1;
- 
-        table.cells(null, 0, { search: 'applied', order: 'applied' })
-            .every(function (cell) {
-                this.data(i++);
-            });
-        }).draw();
         /*
         table.on('order.dt search.dt', function () {
         let i = 1;
