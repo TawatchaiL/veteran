@@ -50,8 +50,8 @@ class SumtelController extends Controller
         }
 
         $datas = DB::connection('remote_connection')
-            ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT DATE(datetime_init) as cdate, SUM(if(status = "terminada",1,0)) as terminada, SUM(if(status = "abandonada",1,0)) as abandonada FROM call_center.call_entry WHERE datetime_init BETWEEN "' . $startDate . '" AND "' . $endDate . '" GROUP BY cdate ORDER BY cdate ASC) t, (SELECT @rownumber:=0) r) AS temp'))
-            ->select('rownumber', 'cdate', 'terminada', 'abandonada')
+            ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS row_number, t.* FROM (SELECT DATE(datetime_init) as cdate, SUM(if(status = "terminada",1,0)) as terminada, SUM(if(status = "abandonada",1,0)) as abandonada FROM call_center.call_entry WHERE datetime_init BETWEEN "' . $startDate . '" AND "' . $endDate . '" GROUP BY cdate ORDER BY cdate ASC) t, (SELECT @rownumber:=0) r) AS temp'))
+            ->select('row_number', 'cdate', 'terminada', 'abandonada')
             ->get();
 /*
         $datas = DB::connection('remote_connection')
