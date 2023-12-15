@@ -51,7 +51,7 @@ class ReportcasetopController extends Controller
                 ->select('casetype1', DB::raw('count(casetype1) as sumcases'))
                 ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
                 ->groupBy('casetype1')
-                ->orderBy("sumcases", "desc")
+                ->orderBy("count(casetype1)", "desc")
                 ->limit(10)
                 ->get();
         if (!empty($request->get('rstatus'))) {
