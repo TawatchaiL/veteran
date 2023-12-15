@@ -609,7 +609,7 @@ class ContactController extends Controller
             'subdistrict' => 'required|string|max:8',
             */
             'caseid1' => 'required|string|max:100',
-            'casedetail' => 'required|string|max:200',
+            //'casedetail' => 'required|string|max:200',
         ];
         $valimess = [
             /*
@@ -626,7 +626,7 @@ class ContactController extends Controller
             'subdistrict.required' => 'กรุณาเลือกตำบล',
             */
             'caseid1.required' => 'กรุณาเลือกประเภทการติดต่อ',
-            'casedetail.required' => 'กรุณากรอกรายละเอียดที่ติดต่อ',
+            //'casedetail.required' => 'กรุณากรอกรายละเอียดที่ติดต่อ',
         ];
 
         if ($request->input('telhome') == "" && $request->input('phoneno') == "" && $request->input('workno') == "") {
