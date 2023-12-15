@@ -1094,17 +1094,11 @@
                             dans_button = "d-none";
                         } else {
                             if (mcallprofile === undefined) {
-
-                                state = 'กำลังสนทนา'
-                                state_icon =
-                                    '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
-                                state_color = 'card-danger';
-                                check_box_state = 'disabled';
-                                hold_button = "d-none";
-                                dans_button = "d-none";
-                                mcallexten = mcallexten;
+                                desextwen = mcallexten;
                             } else {
-                                state = 'กำลังรอสาย'
+                                desextwen = mcallprofile;
+                            }
+                            state = 'กำลังรอสาย'
                                 state_icon =
                                     '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
                                 state_color = 'card-danger';
@@ -1112,8 +1106,7 @@
                                 hold_button = "d-none";
                                 dans_button = "d-none";
                                 //originate cid
-                                mcallexten = mcallprofile;
-                            }
+                                mcallexten = desextwen;
 
                         }
                     } else if (strArray[4] == 'Up') {
