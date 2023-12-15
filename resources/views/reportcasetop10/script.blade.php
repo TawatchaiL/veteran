@@ -555,16 +555,13 @@
                                     {
                                         alignment: 'left',
                                         //italics: true,
-                                        text: 'Top 10 (10 อันดับเรื่องที่ติดต่อมากที่สุด)',
+                                        text: [
+                    { text: 'Top 10 (10 อันดับเรื่องที่ติดต่อมากที่สุด)', fontSize: 18, margin: [0, 10, 70, 0] },
+                    '\n',
+                    { text: 'Report By : {{ Auth::user()->name }}', fontSize: 18, margin: [0, 0, 70, 0] }
+                ],
                                         fontSize: 18,
                                         margin: [0, 10, 70, 0]
-                                    },
-                                    {
-                                        alignment: 'left',
-                                        //italics: true,
-                                        text: 'Report By : {{ Auth::user()->name }}',
-                                        fontSize: 18,
-                                        margin: [0, 40, 70, 0]
                                     }
                                 ],
                                 margin: 20
