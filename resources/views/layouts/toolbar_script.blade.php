@@ -1093,16 +1093,28 @@
                             hold_button = "d-none";
                             dans_button = "d-none";
                         } else {
-                            state = 'กำลังรอสาย'
-                            //state = 'กำลังสนทนา'
-                            state_icon =
-                                '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
-                            state_color = 'card-danger';
-                            check_box_state = 'disabled';
-                            hold_button = "d-none";
-                            dans_button = "d-none";
-                            //originate cid
-                            mcallexten = mcallprofile;
+                            if (mcallprofile === undefined) {
+
+                                state = 'กำลังสนทนา'
+                                state_icon =
+                                    '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
+                                state_color = 'card-danger';
+                                check_box_state = 'disabled';
+                                hold_button = "d-none";
+                                dans_button = "d-none";
+                                mcallexten = mcallexten;
+                            } else {
+                                state = 'กำลังรอสาย'
+                                state_icon =
+                                    '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
+                                state_color = 'card-danger';
+                                check_box_state = 'disabled';
+                                hold_button = "d-none";
+                                dans_button = "d-none";
+                                //originate cid
+                                mcallexten = mcallprofile;
+                            }
+
                         }
                     } else if (strArray[4] == 'Up') {
                         state = 'กำลังสนทนา'
@@ -1154,7 +1166,7 @@
 
     //load call list on access page
     call_list();
-    /* @php
+     /* @php
     if ($temporaryPhoneStatusID == -1) {
         @endphp
         set_state_button(-1);
