@@ -405,13 +405,9 @@
                     _token: token,
                 },
                 success: function(result) {
-                    //call_list();
+                    call_list();
                     set_state_icon(result.id, result.icon, result.message);
                     set_state_button(result.id);
-
-                    setTimeout(() => {
-                        call_list();
-                    }, 7000);
                     //positionCards();
                     toolbar_modal.modal('show');
                 }
