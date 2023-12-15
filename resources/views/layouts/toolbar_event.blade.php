@@ -491,7 +491,7 @@
 
                 } else {
                     //set_state_button(1);
-                    //call_list();
+                    call_list();
                 }
 
             }
