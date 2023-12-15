@@ -530,7 +530,7 @@
                 },
                 'csv',
                 { // กำหนดพิเศษเฉพาะปุ่ม pdf
-                    "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
+                    "extend": 'pdfHtml5', // ปุ่มสร้าง pdf ไฟล์
                     "text": 'PDF', // ข้อความที่แสดง
                     "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
                     "title": '10 อันดับเรื่องที่ติดต่อมากที่สุด',
@@ -555,7 +555,7 @@
                                 columns: [
                                     {
                                         text: [  
-                                                { text: 'REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
+                                                { text: 'CRM REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
                                                 '\n',
                                                 { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
                                                 '\n',
