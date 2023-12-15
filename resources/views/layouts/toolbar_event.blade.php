@@ -395,7 +395,7 @@
     });
 
     socket.on('talking', data => {
-
+console.log(data);
         if (data.extension.match(sipexten)) {
             $.ajax({
                 url: "{{ route('agent.talk') }}",
