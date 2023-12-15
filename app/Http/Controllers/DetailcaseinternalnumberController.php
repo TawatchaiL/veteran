@@ -55,7 +55,6 @@ class DetailcaseinternalnumberController extends Controller
             ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '"');
 */          
         if(!empty($request->get('agent')) && $request->get('agent') != "0"){
-            $datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
             $sqlagent = " and crm_id = '".$request->input('agent')."'";
         }else{
             $sqlagent = "";
