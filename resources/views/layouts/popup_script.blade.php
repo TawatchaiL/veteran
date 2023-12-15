@@ -281,8 +281,8 @@
                                                                             );
                                                                         }); 
                                                                         */
-                                $('#cityp' + cardId).val(res.datax.datac.city);
-                                $('#cityp' + cardId).change('65');
+                                $('#cityp' + cardId).val('65');
+                                $('#cityp' + cardId).change();
 
                                     $('#custom-tabs-one-casedetail-tabp' +
                                         cardId).click();
@@ -892,8 +892,8 @@
                                 */
                                 }
 
-                                $('#cityp' + cardId).val(res.datax.datac.city);
-                                $('#cityp' + cardId).change('65');
+                                $('#cityp' + cardId).val('65');
+                                $('#cityp' + cardId).change();
 
                                 if (res.datax.cases.length != 0) {
                                     $('#custom-tabs-one-casedetail-tabp' + cardId)
