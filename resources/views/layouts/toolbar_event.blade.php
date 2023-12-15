@@ -18,7 +18,7 @@
         //console.log(response)
         setTimeout(() => {
             call_list();
-        }, 1000);
+        }, 2000);
 
     });
 
