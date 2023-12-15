@@ -407,12 +407,12 @@
                     context: data.context,
                     _token: token,
                 },
-                success: function(result) {
+                success: async function(result) {
                     console.log(result);
+                    await call_list();
                     set_state_icon(result.id, result.icon, result.message);
                     set_state_button(result.id);
                     //positionCards();
-                    call_list();
                     toolbar_modal.modal('show');
                 }
             });
