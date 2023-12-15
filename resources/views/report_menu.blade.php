@@ -7,7 +7,7 @@
     </section>
 
     <section class="content">
-        @can(['crm-list'])
+        @can(['crm-report'])
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
@@ -127,7 +127,7 @@
 
             </div>
         @endcan
-        @can(['callcenter-list'])
+        @can(['callcenter-report'])
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
@@ -306,7 +306,7 @@
 
             </div>
         @endcan
-        @can(['ivr-list'])
+        @can(['ivr-report'])
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
