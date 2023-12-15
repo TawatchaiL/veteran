@@ -16,6 +16,7 @@
     //agent receive call
     socket.on('agentconnect', (response) => {
         console.log(response)
+        call_list();
     });
 
     //agent answer call
