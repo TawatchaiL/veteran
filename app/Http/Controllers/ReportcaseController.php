@@ -47,17 +47,28 @@ class ReportcaseController extends Controller
             $startDate = date("Y-m-d H:i:s");
             $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
+/*
         $datas = DB::connection('remote_connection')
-            //->table(DB::raw('call_center.call_entry'))
-            //->select(DB::raw('ROW_NUMBER() OVER (ORDER BY crm_id ASC) as rownumber'),'crm_id', DB::raw('count(crm_id) as sumcases'))
             ->table('call_center.call_entry')
-            ->select(DB::raw('row_number() over(order by sumcases) as rownum'),'crm_id', DB::raw('count(crm_id) as sumcases'))
+            ->select('crm_id', DB::raw('count(crm_id) as sumcases'))
             ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '"')
             ->groupBy('crm_id')
             ->having('sumcases', '>', 0)
             ->orderBy("crm_id", "asc")
             ->get();
-
+*/
+            $datas = DB::connection('remote_connection')
+            ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.call_entry'))
+            ->select(
+                DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'),
+                'crm_id',
+                DB::raw('COUNT(crm_id) as sumcases')
+            )
+            ->whereRaw('datetime_init BETWEEN "' . $startDate . '" AND "' . $endDate . '"')
+            ->groupBy('crm_id')
+            ->having('sumcases', '>', 0)
+            ->orderBy("crm_id", "asc")
+            ->get();
             $agents = User::orderBy("id", "asc")->get();
             $agent_data = array();
             foreach ($agents as $agent) {
