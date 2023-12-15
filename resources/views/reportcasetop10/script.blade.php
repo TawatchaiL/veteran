@@ -544,7 +544,7 @@
                             fontSize: 16
                         };
                         doc.content.splice(0, 1);
-                        doc.pageMargins = [50, 150, 20, 30];
+                        doc.pageMargins = [20, 150, 20, 30];
                         doc.styles.tableHeader.fontSize = 16;
                         doc.styles.tableBodyOdd.alignment = 'center';
                         doc.styles.tableBodyEven.alignment = 'center';
@@ -555,12 +555,6 @@
                                     {
                                         text: [  
                                                 { text: 'REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
-                                                {
-        canvas: [
-            { type: 'line', x1: 0, y1: 5, x2: 515, y2: 5, lineWidth: 2, lineColor: '#000000' } // Adjust the x1, y1, x2, y2 values as needed
-        ],
-        margin: [0, -5, 0, 5] // Adjust the margin values as needed
-    },
                                                 '\n',
                                                 { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
                                                 '\n',
