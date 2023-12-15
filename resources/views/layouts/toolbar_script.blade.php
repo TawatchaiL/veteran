@@ -1038,6 +1038,7 @@
 
     //list all call function
     let call_list = () => {
+        console.log('xx');
         let mcallprofile = '';
         let mcallexten = '';
         let luniq = '';
