@@ -60,7 +60,7 @@ class DetailcaseinternalnumberController extends Controller
         ->toSql();
 
         $datas = DB::connection('remote_connection')
-                ->table(DB::raw("(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM ({$datasql}) t, (SELECT @rownumber:=0) r) AS temp"))
+                ->table(DB::raw("(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM ($datasql) t, (SELECT @rownumber:=0) r) AS temp"))
                 ->select('rownumber', 'cdate', 'ctime', 'telno', 'agentid', 'duration', 'duration_wait')
                 ->get();
          
