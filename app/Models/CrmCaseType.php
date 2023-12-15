@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class CrmCaseType extends Model
 {
     use HasFactory;
+    protected $table = 'crm_case_types';
     protected $fillable = [
         'parent_id',
         'name',

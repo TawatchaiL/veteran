@@ -544,7 +544,7 @@
                             fontSize: 16
                         };
                         doc.content.splice(0, 1);
-                        doc.pageMargins = [20, 100, 20, 30];
+                        doc.pageMargins = [20, 150, 20, 30];
                         doc.styles.tableHeader.fontSize = 16;
                         doc.styles.tableBodyOdd.alignment = 'center';
                         doc.styles.tableBodyEven.alignment = 'center';
@@ -553,16 +553,19 @@
                             return {
                                 columns: [
                                     {
-                                        alignment: 'left',
-                                        text: [
-                                                { text: 'Top 10 (10 อันดับเรื่องที่ติดต่อมากที่สุด)', fontSize: 18, margin: [0, 10, 70, 0] },
+                                        text: [  
+                                                { text: 'REPORT', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
                                                 '\n',
-                                                { text: 'Report By : {{ Auth::user()->name }}', fontSize: 18, margin: [0, 0, 70, 0] }
+                                                { text: 'Top 10 (10 อันดับเรื่องที่ติดต่อมากที่สุด)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
                                             ]
                                     }
                                 ],
-                                margin: 20,
-                                decoration: 'underline'
+                                margin: 10,
+                                canvas: [
+                                    { type: 'line', x1: 0, y1: 5, x2: 515, y2: 5, lineWidth: 100, lineColor: '#000000' }
+                                ]
                             }
                         });
 
