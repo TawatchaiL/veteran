@@ -564,7 +564,7 @@
                                         //italics: true,
                                         text: 'Report By : {{ Auth::user()->name }}',
                                         fontSize: 18,
-                                        margin: [0, 20, 70, 0]
+                                        margin: [0, 100, 70, 0]
                                     }
                                 ],
                                 margin: 20
