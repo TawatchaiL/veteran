@@ -556,7 +556,7 @@
                                         text: [  
                                                 { text: 'REPORT', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
                                                 '\n',
-                                                { text: 'ข้อมูลวันที่ '.$('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
                                                 '\n',
                                                 { text: 'Top 10 (10 อันดับเรื่องที่ติดต่อมากที่สุด)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
                                                 '\n',
