@@ -132,12 +132,18 @@
                                         .sex);
 
                                     //$('#birthdayp' + cardId).val(res.datax.datac.birthday);
-                                    var arrayDate = res.datax.datac.birthday
-                                        .split("-");
-                                    arrayDate[0] = parseInt(arrayDate[0]) + 543;
-                                    $('#birthdayp' + cardId).val(arrayDate[0] +
-                                        "-" + arrayDate[1] + "-" +
-                                        arrayDate[2]);
+                                    if(res.datax.datac.birthday != ''){
+                                        var arrayDate = res.datax.datac.birthday.split("-");
+                                        arrayDate[0] = parseInt(arrayDate[0]) + 543;
+                                        $('#birthdayp' + cardId).val(arrayDate[0] + "-" +
+                                            arrayDate[1] + "-" + arrayDate[2]);
+                                    }
+                                    //var arrayDate = res.datax.datac.birthday
+                                    //    .split("-");
+                                    //arrayDate[0] = parseInt(arrayDate[0]) + 543;
+                                    //$('#birthdayp' + cardId).val(arrayDate[0] +
+                                    //    "-" + arrayDate[1] + "-" +
+                                    //    arrayDate[2]);
                                     $('#agep' + cardId).val(res.datax.datac
                                         .age);
                                     $('#bloodgroupp' + cardId).val(res.datax
@@ -770,10 +776,17 @@
                                 $('#lnamep' + cardId).val(res.datax.datac.lname);
                                 $('#sexp' + cardId).val(res.datax.datac.sex);
                                 //$('#birthdayp' + cardId).val(res.datax.datac.birthday);
-                                var arrayDate = res.datax.datac.birthday.split("-");
-                                arrayDate[0] = parseInt(arrayDate[0]) + 543;
-                                $('#birthdayp' + cardId).val(arrayDate[0] + "-" +
-                                    arrayDate[1] + "-" + arrayDate[2]);
+                                if(res.datax.datac.birthday != ''){
+                                    var arrayDate = res.datax.datac.birthday.split("-");
+                                    arrayDate[0] = parseInt(arrayDate[0]) + 543;
+                                    $('#birthdayp' + cardId).val(arrayDate[0] + "-" +
+                                        arrayDate[1] + "-" + arrayDate[2]);
+                                }
+                                //var arrayDate = res.datax.datac.birthday.split("-");
+                                //arrayDate[0] = parseInt(arrayDate[0]) + 543;
+                                //$('#birthdayp' + cardId).val(arrayDate[0] + "-" +
+                                //    arrayDate[1] + "-" + arrayDate[2]);
+
                                 $('#agep' + cardId).val(res.datax.datac.age);
                                 $('#bloodgroupp' + cardId).val(res.datax.datac
                                     .bloodgroup);
@@ -952,11 +965,13 @@
             //var arrayDate = $('#adddatep' + cardId).val().split("-");
             //arrayDate[0] = parseInt(arrayDate[0]) - 543;
             //var tempadddate = arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2];
-
-            var arrayDateb = $('#birthdayp' + cardId).val().split("-");
-            arrayDateb[0] = parseInt(arrayDateb[0]) - 543;
-            var tempbirthday = arrayDateb[0] + "-" + arrayDateb[1] + "-" + arrayDateb[2];
-
+            if($('#birthdayp' + cardId).val() != ''){
+                var arrayDateb = $('#birthdayp' + cardId).val().split("-");
+                arrayDateb[0] = parseInt(arrayDateb[0]) - 543;
+                var tempbirthday = arrayDateb[0] + "-" + arrayDateb[1] + "-" + arrayDateb[2];
+            }else{
+                tempbirthday = '';
+            }
             if ($('#contractid' + cardId).val() === "") {
                 $('#myTbl3p' + cardId + ' tbody tr').each(function() {
                     var emergencyname = $(this).find(
