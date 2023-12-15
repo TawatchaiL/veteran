@@ -16,7 +16,6 @@
     //agent receive call
     socket.on('agentconnect', (response) => {
         console.log(response)
-        //call_list();
     });
 
     //agent answer call
@@ -76,7 +75,7 @@
                         set_state_button(result.id);
                     }, 1000);
 
-                    //call_list();
+                    call_list();
 
                     @if (Request::is('home'))
                         updateAvgData();
@@ -331,8 +330,10 @@
 
 
     socket.on('ringing', data => {
+
         if (data.extension.match(sipexten)) {
             console.log(data)
+            console.log('match')
 
             let peer = data.extension.split("-");
             let peern = peer[0].split("/");
@@ -340,7 +341,7 @@
             $.ajax({
                 url: "{{ route('agent.ring') }}",
                 method: 'post',
-                async: true,
+                async: false,
                 data: {
                     uniqid: data.luniq,
                     context: data.context,
@@ -378,7 +379,7 @@
                     </div>
                 </div>
                 </div>`);
-                //call_list();
+                call_list();
                 toolbar_modal.modal('show');
 
 
@@ -393,8 +394,8 @@
     });
 
     socket.on('talking', data => {
+
         if (data.extension.match(sipexten)) {
-            console.log(data);
             $.ajax({
                 url: "{{ route('agent.talk') }}",
                 method: 'post',
@@ -410,7 +411,7 @@
                     set_state_icon(result.id, result.icon, result.message);
                     set_state_button(result.id);
                     //positionCards();
-                    //call_list();
+                    call_list();
                     toolbar_modal.modal('show');
                 }
             });
