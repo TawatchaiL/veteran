@@ -470,8 +470,8 @@
 
     socket.on('hangup', data => {
         if (data.extension) {
-            console.log(data);
             if (data.extension.match(sipexten)) {
+                console.log(data);
                 if (data.luniq) {
                     $('#' + data.luniq.replace('.', '')).remove();
                 }
