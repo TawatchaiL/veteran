@@ -13,20 +13,12 @@
     }
     $(document).ready(function() {
         $('#download_bar').click(function(event) {
-            /*  var pdf = new jsPDF();
-             var chartContainer = document.querySelector("#bar_chart_div");
 
-             html2canvas(chartContainer).then(canvas => {
-                 var imgData = canvas.toDataURL("image/png");
-
-                 pdf.addImage(imgData, 'PNG', 0, 0);
-                 pdf.save("chart.pdf");
-             });  */
-            var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
-            var pdfHeight = 841.89; // Height of A4 in points
+            var pdfWidth = 595.28;
+            var pdfHeight = 841.89;
             var pdf = new jsPDF({
-                unit: 'pt', // Use points as the unit for measurements
-                format: [pdfWidth, pdfHeight] // Set the format to A4 size
+                unit: 'pt',
+                format: [pdfWidth, pdfHeight]
             });
 
             var chartContainer = document.querySelector("#bar_graph");
@@ -34,12 +26,12 @@
             html2canvas(chartContainer).then(canvas => {
                 var imgData = canvas.toDataURL("image/png");
 
-                var imgWidth = pdfWidth; // Use the same width as PDF
+                var imgWidth = pdfWidth;
                 var imgHeight = (canvas.height * imgWidth) / canvas
-                    .width; // Calculate proportional height
+                    .width;
 
-                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth,
-                    imgHeight); // Add the resized image
+                pdf.addImage(imgData, 'PNG', 0, 60, imgWidth,
+                    imgHeight);
                 pdf.save("bar_chart.pdf");
             });
 
@@ -100,8 +92,8 @@
                 var imgHeight = (canvas.height * imgWidth) / canvas
                     .width; // Calculate proportional height
 
-                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth,
-                    imgHeight); // Add the resized image
+                    pdf.addImage(imgData, 'PNG', 0, 60, imgWidth,
+                    imgHeight);
                 pdf.save("line_chart.pdf");
             });
 
@@ -160,8 +152,8 @@
                 var imgHeight = (canvas.height * imgWidth) / canvas
                     .width; // Calculate proportional height
 
-                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth,
-                    imgHeight); // Add the resized image
+                    pdf.addImage(imgData, 'PNG', 0, 60, imgWidth,
+                    imgHeight);
                 pdf.save("pie_chart.pdf");
             });
 
@@ -292,30 +284,37 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+
         var startDate;
         var endDate;
 
         function datesearch() {
+            //.add(1, 'month').add(543, 'year').format('LLLL')
             var currentDate = moment();
-            // Set the start date to 7 days before today
-            //startDate = moment(currentDate).subtract(15, 'days').format('YYYY-MM-DD');
-            // Set the end date to the end of the current month
-            //endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
-            startDate = moment().add(543, 'y').format('YYYY-MM-DD HH:mm:ss');
-            endDate = moment(currentDate).add(543, 'y').format('YYYY-MM-DD HH:mm:ss');
+            console.log(currentDate)
+            startDate = moment(currentDate).subtract(30, 'days').startOf('day').format('YYYY-MM-DD HH:mm:ss');
+            endDate = moment(currentDate).endOf('month').endOf('day').format('YYYY-MM-DD HH:mm:ss');
         }
 
-        function datereset() {
-            var currentDate = moment();
-            startDate = moment().add(543, 'y').format('YYYY-MM-DD HH:mm:ss');
-            endDate = moment(currentDate).add(543, 'y').format('YYYY-MM-DD HH:mm:ss');
+
+        function storeFieldValues() {
+            var dateStart = $('#reservation').val();
+            var sagent = $('#agen').val();
+            var stelp = $('#telp').val();
+            var sctype = $('#ctype').val();
+
+            // Store values in local storage
+            localStorage.setItem('dateStart', dateStart);
+            localStorage.setItem('sagent', sagent);
+            localStorage.setItem('stelp', stelp);
+            localStorage.setItem('sctype', sctype);
         }
 
         function retrieveFieldValues() {
             var saveddateStart = localStorage.getItem('dateStart');
-            var savedSearchType = localStorage.getItem('searchType');
-            var savedKeyword = localStorage.getItem('keyword');
-
+            var savedsagent = localStorage.getItem('sagent');
+            var savedstelp = localStorage.getItem('stelp');
+            var savedctype = localStorage.getItem('sctype');
             // Set field values from local storage
             if (saveddateStart) {
                 var dateParts = saveddateStart.split(' - ');
@@ -324,10 +323,26 @@
             } else {
                 datesearch();
             }
+
+            console.log(`${startDate} - ${endDate}`)
+            $('#reservation').val(`${startDate} - ${endDate}`)
+
+            if (savedsagent) {
+                $('#agen').val(savedsagent);
+            }
+            if (savedstelp) {
+                $('#telp').val(savedstelp);
+            }
+
+            if (savedctype) {
+                $('#ctype').val(savedctype);
+            }
+
         }
 
+
         let daterange = () => {
-            moment.locale('th');
+
 
             var startTime = '00:00:00';
             var endTime = '23:59:59';
@@ -341,13 +356,21 @@
             var last30DaysRange = [moment().subtract(29, 'days').startOf('day').set('hour', 0).set('minute',
                 0).set('second', 0), moment(endTime, 'HH:mm:ss')];
 
+            var currentYear = moment().year();
+            var maxYear = moment().year(currentYear).add(1, 'year').format('YYYY-MM-DD');
+            var minYear = moment().year(currentYear).subtract(2, 'years').format('YYYY-MM-DD');
+
             $('#reservation').daterangepicker({
                 timePicker: true,
                 timePicker24Hour: true,
                 timePickerSeconds: true,
                 //timePickerIncrement: 5,
-                startDate: moment(startDate).subtract(543, 'years'),
-                endDate: moment(endDate).subtract(543, 'years'),
+                startDate: startDate,
+                endDate: endDate,
+                showDropdowns: true,
+                linkedCalendars: false,
+                minDate: minYear,
+                maxDate: maxYear,
                 ranges: {
                     'วันนี้': todayRange,
                     'เมื่อวานนี้': yesterdayRange,
@@ -371,45 +394,57 @@
                         'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'
                     ],
                     firstDay: 1
-                },
-                isCustomDate: {
-
                 }
             });
+
             // Apply the custom date range filter on input change
-            $('#reservation').on('apply.daterangepicker', function() {
-                console.log($('#reservation').val())
+            $('#reservation').on('apply.daterangepicker', function(ev, picker) {
                 table.draw();
-                //storeFieldValues();
-            });
-            $('#reservation').on('showCalendar.daterangepicker', function(ev, picker) {
-
-            });
-            $('#reservation').on('show.daterangepicker', function(ev, picker) {
-                //var arrayDate = $('#reservation').val().split(" ");
-                //var sDate = arrayDate[0].split("-");
-                //var eDate = arrayDate[3].split("-");
-                //    sDate[0] = parseInt(sDate[0]) + 543;
-                //    eDate[0] = parseInt(eDate[0]) + 543;
-                //$('#reservation').val(sDate[0] + "-" + sDate[1] + "-" + sDate[2] + " " + arrayDate[1] + " - " + eDate[0] + "-" + eDate[1] + "-" + eDate[2] + " " + arrayDate[4]);  
-            });
-            $('#reservation').on('hide.daterangepicker', function(ev, picker) {
-
-            });
-            $('#reservation').on('hideCalendar.daterangepicker', function(ev, picker) {
-
+                storeFieldValues();
             });
         }
-        datesearch();
+
+        retrieveFieldValues();
         daterange();
 
-        $('#btnsearch').click(function(e) {
-            $('#Listview').DataTable().ajax.reload();
-        });
-        $('#btnreset').click(function(e) {
-            datereset();
+        $('#resetSearchButton').on('click', async function() {
+            localStorage.removeItem('dateStart');
+            localStorage.removeItem('sagent');
+            localStorage.removeItem('stelp');
+            localStorage.removeItem('sctype');
+
+            // Set field values to empty
+            $('#telp').val('');
+            $('#agen').val('');
+            $('#ctype').val('');
+
+            $('#Listview').html('');
+
+            // Clear DataTable state
+            if (table) {
+                table.state.clear();
+                await table.destroy();
+            }
+            // Set the date range back to its default
+            var currentDate = moment();
+            var startDate = moment(currentDate).subtract(30, 'days').startOf('day').format(
+                'YYYY-MM-DD HH:mm:ss');
+            var endDate = moment(currentDate).endOf('month').endOf('day').format(
+                'YYYY-MM-DD HH:mm:ss');
+
             daterange();
-            $('#Listview').DataTable().ajax.reload();
+            table = $('#Listview').DataTable(table_option);
+            table.draw();
+        });
+
+        $('#btnsearch').on('click', function() {
+            storeFieldValues();
+            //var telp = $('#telp').val();
+            table.search('').draw();
+            $.fn.dataTable.ext.search.pop();
+            /* if (telp !== '') {
+                table.column(3).search(telp).draw();
+            } */
         });
 
         var table = $('#Listview').DataTable({
@@ -462,7 +497,7 @@
             aaSorting: [
                 [0, "desc"]
             ],
-            iDisplayLength: 5,
+            iDisplayLength: 10,
             lengthMenu: [5, 10, 25, 50, 75, 100],
             stateSave: true,
             autoWidth: false,
@@ -522,7 +557,7 @@
                                         margin: [250, 0, 50, 50],
                                     },
                                     {
-                                        alignment: 'center',
+                                        alignment: 'left',
                                         italics: true,
                                         text: '10 อันดับเรื่องที่ติดต่อมากที่สุด',
                                         fontSize: 18,
@@ -533,7 +568,7 @@
                             }
                         });
 
-                        doc.content[0].table.widths = [40, 400, '*'];
+                        doc.content[0].table.widths = [400, '*'];
                         var objLayout = {};
                         objLayout['hLineWidth'] = function(i) {
                             return .5;
@@ -563,7 +598,7 @@
 
                         for (var i = 1; i < doc.content[0].table.body.length; i++) {
                             //doc.content[0].table.body[i][0].alignment = 'center';
-                            doc.content[0].table.body[i][1].alignment = 'left';
+                            doc.content[0].table.body[i][0].alignment = 'left';
                             //doc.content[0].table.body[i][2].alignment = 'center';
                         }
                     }
@@ -614,13 +649,7 @@
             responsive: true,
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
-            columns: [{
-                    data: 'rownum',
-                    name: 'rownum',
-                    orderable: false,
-                    searchable: false,
-                    //                    className: 'no-print'
-                },
+            columns: [
                 {
                     data: 'casetype1',
                     name: 'casetype1'

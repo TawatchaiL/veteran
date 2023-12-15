@@ -113,14 +113,15 @@
                                     $('#contractid' + cardId).val(res.datax
                                         .datac.id);
                                     $('#hnp' + cardId).val(res.datax.datac.hn);
-                                    //$('#adddatep' + cardId).val(res.datax.datac.adddate);
+                                    $('#adddatep' + cardId).val(res.datax.datac.adddate);
+                                    /*
                                     var arrayDate = res.datax.datac.adddate
                                         .split("-");
                                     arrayDate[0] = parseInt(arrayDate[0]) + 543;
                                     $('#adddatep' + cardId).val(arrayDate[0] +
                                         "-" + arrayDate[1] + "-" +
                                         arrayDate[2]);
-
+                                    */
                                     $('#tnamep' + cardId).val(res.datax.datac
                                         .tname);
                                     $('#fnamep' + cardId).val(res.datax.datac
@@ -280,12 +281,13 @@
                                                                             );
                                                                         }); 
                                                                         */
+
                                     $('#custom-tabs-one-casedetail-tabp' +
                                         cardId).click();
                                 }
                             }
                         });
-
+                        $('#cityp' + cardId).val('65').change();
                         setTimeout(function() {
                             $.ajax({
                                 url: "casetype6/casetype/0",
@@ -747,6 +749,7 @@
                             method: 'GET',
                             async: false,
                             success: function(res) {
+                            if (res.datax.length != 0) {
                                 $('#phonenosuccess' + cardId).html(
                                     '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ' +
                                     res.datax.datac.fname +
@@ -885,13 +888,17 @@
                                         );
                                 });
                                 */
+                                }
+
+                               
+
                                 if (res.datax.cases.length != 0) {
                                     $('#custom-tabs-one-casedetail-tabp' + cardId)
                                         .click();
                                 }
                             }
                         });
-
+                        $('#cityp' + cardId).val('65').change();
                         $.ajax({
                             url: "casetype6/casetype/0",
                             method: 'GET',
@@ -962,12 +969,12 @@
                 });
                 var additionalData = {
                     hn: $('#hnp' + cardId).val(),
-                    adddate: tempadddate,
+                    adddate: $('#adddatep' + cardId).val(),
                     tname: $('#tnamep' + cardId).val(),
                     fname: $('#fnamep' + cardId).val(),
                     lname: $('#lnamep' + cardId).val(),
                     sex: $('#sexp' + cardId).val(),
-                    birthday: $('#adddatep' + cardId).val(),
+                    birthday: tempbirthday,
                     age: $('#agep' + cardId).val(),
                     bloodgroup: $('#bloodgroupp' + cardId).val(),
                     homeno: $('#homenop' + cardId).val(),
