@@ -113,7 +113,7 @@ class CaseTypeController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'name' => 'required|string|max:255|unique:case_types,name,' . $id,
+            'name' => 'required|string|max:255|unique:crm_case_types,name,' . $id,
             //'status' => 'required|max:10',
         ];
 
