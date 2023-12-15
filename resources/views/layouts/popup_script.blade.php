@@ -281,13 +281,13 @@
                                                                             );
                                                                         }); 
                                                                         */
-                                    
+
                                     $('#custom-tabs-one-casedetail-tabp' +
                                         cardId).click();
                                 }
                             }
                         });
-
+                        $('#cityp' + cardId).val('65').change();
                         setTimeout(function() {
                             $.ajax({
                                 url: "casetype6/casetype/0",
@@ -890,13 +890,15 @@
                                 */
                                 }
 
+                               
+
                                 if (res.datax.cases.length != 0) {
                                     $('#custom-tabs-one-casedetail-tabp' + cardId)
                                         .click();
                                 }
                             }
                         });
-
+                        $('#cityp' + cardId).val('65').change();
                         $.ajax({
                             url: "casetype6/casetype/0",
                             method: 'GET',
