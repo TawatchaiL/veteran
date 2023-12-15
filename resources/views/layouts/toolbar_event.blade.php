@@ -16,10 +16,6 @@
     //agent receive call
     socket.on('agentconnect', (response) => {
         //console.log(response)
-        setTimeout(() => {
-            call_list();
-        }, 7000);
-
     });
 
     //agent answer call
@@ -408,11 +404,14 @@
                     context: data.context,
                     _token: token,
                 },
-                success: async function(result) {
-                    console.log(result);
-                    await call_list();
+                success: function(result) {
+                    //call_list();
                     set_state_icon(result.id, result.icon, result.message);
                     set_state_button(result.id);
+
+                    setTimeout(() => {
+                        call_list();
+                    }, 7000);
                     //positionCards();
                     toolbar_modal.modal('show');
                 }
