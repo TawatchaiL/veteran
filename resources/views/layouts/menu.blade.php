@@ -62,7 +62,7 @@
         </a>
     </li>
 @endcan
-@can(['crm-list', 'callcenter-report', 'ivr-report'])
+@canany(['crm-report', 'callcenter-report', 'ivr-report'])
     <li
         class="nav-item {{ in_array(Request::route()->getName(), [
             'report',
