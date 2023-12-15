@@ -172,11 +172,11 @@
     //queue wait list on agent
 
     socket.on('queuecallerabandon', async (response) => {
-        positionCards();
+        //positionCards();
     });
 
     socket.on('agentdump', async (response) => {
-        positionCards();
+        //positionCards();
     });
 
     socket.on('peerstatus', async (data) => {
@@ -224,7 +224,7 @@
     socket.on('event', async (data) => {
 
         if (data.extension == exten) {
-            console.log('match')
+            console.log('match event')
             if (data.status == 4 || data.status == -1) {
                 //toolbar_header.addClass("bg-secondary");
             } else if (data.status == 0) {
