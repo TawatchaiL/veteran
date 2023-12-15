@@ -551,11 +551,7 @@
                         doc.styles.tableFooter.fontSize = 16;
                         doc['header'] = (function() {
                             return {
-                                columns: [{
-                                        image: logobase64,
-                                        width: 50,
-                                        margin: [10, 0, 50, 50],
-                                    },
+                                columns: [
                                     {
                                         alignment: 'left',
                                         //italics: true,
