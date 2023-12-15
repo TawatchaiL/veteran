@@ -570,10 +570,7 @@
                                             ]
                                     }
                                 ],
-                                margin: 10,
-                                canvas: [
-                                    { type: 'line', x1: 0, y1: 5, x2: 515, y2: 5, lineWidth: 100, lineColor: '#000000' }
-                                ]
+                                margin: 10
                             }
                         });
 
