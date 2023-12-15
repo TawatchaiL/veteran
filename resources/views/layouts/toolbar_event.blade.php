@@ -16,13 +16,14 @@
     //agent receive call
     socket.on('agentconnect', (response) => {
         //console.log(response)
+        console.log('call')
+        call_list();
+        console.log(response)
     });
 
     //agent answer call
     socket.on('agentcalled', (response) => {
-        console.log('call')
-        call_list();
-        console.log(response)
+
     });
 
     socket.on('queuemember', (response) => {
@@ -394,6 +395,7 @@
 
         if (data.extension.match(sipexten)) {
             console.log('talk')
+            console.log(data)
             $.ajax({
                 url: "{{ route('agent.talk') }}",
                 method: 'post',
