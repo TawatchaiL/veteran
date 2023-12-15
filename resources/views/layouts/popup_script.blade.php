@@ -113,14 +113,15 @@
                                     $('#contractid' + cardId).val(res.datax
                                         .datac.id);
                                     $('#hnp' + cardId).val(res.datax.datac.hn);
-                                    //$('#adddatep' + cardId).val(res.datax.datac.adddate);
+                                    $('#adddatep' + cardId).val(res.datax.datac.adddate);
+                                    /*
                                     var arrayDate = res.datax.datac.adddate
                                         .split("-");
                                     arrayDate[0] = parseInt(arrayDate[0]) + 543;
                                     $('#adddatep' + cardId).val(arrayDate[0] +
                                         "-" + arrayDate[1] + "-" +
                                         arrayDate[2]);
-
+                                    */
                                     $('#tnamep' + cardId).val(res.datax.datac
                                         .tname);
                                     $('#fnamep' + cardId).val(res.datax.datac
@@ -962,12 +963,12 @@
                 });
                 var additionalData = {
                     hn: $('#hnp' + cardId).val(),
-                    adddate: tempadddate,
+                    adddate: $('#adddatep' + cardId).val(),
                     tname: $('#tnamep' + cardId).val(),
                     fname: $('#fnamep' + cardId).val(),
                     lname: $('#lnamep' + cardId).val(),
                     sex: $('#sexp' + cardId).val(),
-                    birthday: $('#adddatep' + cardId).val(),
+                    birthday: tempbirthday,
                     age: $('#agep' + cardId).val(),
                     bloodgroup: $('#bloodgroupp' + cardId).val(),
                     homeno: $('#homenop' + cardId).val(),
