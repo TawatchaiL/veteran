@@ -31,7 +31,7 @@ class PermissionTableSeeder extends Seeder
             'crm-report',
             'callcenter-report',
             'ivr-report',
-            'dashboard',
+            'dashboard-view',
             /*
             'voice-record-list',
             'voice-record-supervisor',*/
