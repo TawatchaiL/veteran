@@ -104,12 +104,20 @@
                             async: false,
                             success: function(res) {
                                 if (res.datax.length != 0) {
+                                    var fullname;
+                                    if(res.datax.datac.fname !== null && res.datax.datac.fname !== ''){
+                                        fullname = res.datax.datac.fname + ' ' + res.datax.datac.lname;
+                                    }else{
+                                        if(res.datax.datac.telhome !== null && res.datax.datac.telhome !== ''){
+                                            fullname = res.datax.datac.telhome;
+                                        }else if(res.datax.datac.phoneno !== null && res.datax.datac.phoneno !== ''){
+                                            fullname = res.datax.datac.phoneno;
+                                        }else if(res.datax.datac.workno !== null && res.datax.datac.workno !== ''){
+                                            fullname = res.datax.datac.workno;
+                                        }
+                                    }
                                     $('#phonenosuccess' + cardId).html(
-                                        '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ' +
-                                        res.datax.datac.fname +
-                                        ' ' + res.datax.datac
-                                        .lname + '</h3>');
-
+                                        '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ' + fullname + '</h3>');
                                     $('#contractid' + cardId).val(res.datax
                                         .datac.id);
                                     $('#hnp' + cardId).val(res.datax.datac.hn);
@@ -759,11 +767,20 @@
                             async: false,
                             success: function(res) {
                             if (res.datax.length != 0) {
-                                $('#phonenosuccess' + cardId).html(
-                                    '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ' +
-                                    res.datax.datac.fname +
-                                    ' ' + res.datax.datac
-                                    .lname + '</h3>');
+                                var fullname;
+                                    if(res.datax.datac.fname !== null && res.datax.datac.fname !== ''){
+                                        fullname = res.datax.datac.fname + ' ' + res.datax.datac.lname;
+                                    }else{
+                                        if(res.datax.datac.telhome !== null && res.datax.datac.telhome !== ''){
+                                            fullname = res.datax.datac.telhome;
+                                        }else if(res.datax.datac.phoneno !== null && res.datax.datac.phoneno !== ''){
+                                            fullname = res.datax.datac.phoneno;
+                                        }else if(res.datax.datac.workno !== null && res.datax.datac.workno !== ''){
+                                            fullname = res.datax.datac.workno;
+                                        }
+                                    }
+                                    $('#phonenosuccess' + cardId).html(
+                                        '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ' + fullname + '</h3>');
                                 $('#contractid' + cardId).val(res.datax.datac.id);
                                 $('#hnp' + cardId).val(res.datax.datac.hn);
                                 $('#adddatep' + cardId).val(res.datax.datac.adddate);
