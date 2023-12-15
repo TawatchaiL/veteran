@@ -544,7 +544,7 @@
                             fontSize: 16
                         };
                         doc.content.splice(0, 1);
-                        doc.pageMargins = [20, 100, 20, 30];
+                        doc.pageMargins = [50, 100, 20, 30];
                         doc.styles.tableHeader.fontSize = 16;
                         doc.styles.tableBodyOdd.alignment = 'center';
                         doc.styles.tableBodyEven.alignment = 'center';
@@ -562,7 +562,7 @@
                                             ]
                                     }
                                 ],
-                                margin: 40,
+                                margin: 10,
                                 canvas: [
                                     { type: 'line', x1: 0, y1: 5, x2: 515, y2: 5, lineWidth: 100, lineColor: '#000000' }
                                 ]
