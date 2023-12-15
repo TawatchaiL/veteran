@@ -132,7 +132,7 @@
                                         .sex);
 
                                     //$('#birthdayp' + cardId).val(res.datax.datac.birthday);
-                                    if(res.datax.datac.birthday != ''){
+                                    if(res.datax.datac.birthday !== null && res.datax.datac.birthday !== ''){
                                         var arrayDate = res.datax.datac.birthday.split("-");
                                         arrayDate[0] = parseInt(arrayDate[0]) + 543;
                                         $('#birthdayp' + cardId).val(arrayDate[0] + "-" +
@@ -776,7 +776,7 @@
                                 $('#lnamep' + cardId).val(res.datax.datac.lname);
                                 $('#sexp' + cardId).val(res.datax.datac.sex);
                                 //$('#birthdayp' + cardId).val(res.datax.datac.birthday);
-                                if(res.datax.datac.birthday != ''){
+                                if(res.datax.datac.birthday !== null && res.datax.datac.birthday !== ''){
                                     var arrayDate = res.datax.datac.birthday.split("-");
                                     arrayDate[0] = parseInt(arrayDate[0]) + 543;
                                     $('#birthdayp' + cardId).val(arrayDate[0] + "-" +
