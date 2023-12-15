@@ -48,6 +48,17 @@ class HitcallController extends Controller
             $startDate = date("Y-m-d H:i:s");
             $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
+
+        if(!empty($request->get('agent')) && $request->get('agent') != "0"){
+            $sqlagent = " and crm_id = '".$request->input('agent')."'";
+        }else{
+            $sqlagent = "";
+        }      
+        $datas = DB::connection('remote_connection')
+        ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT crm_id, DATE(datetime_init) as cdate, TIME(datetime_init) as ctime, callerid as telno, SEC_TO_TIME(duration_wait) as durationwait, SEC_TO_TIME(duration) as duration FROM call_center.call_entry WHERE datetime_init BETWEEN "' . $startDate . '" AND "' . $endDate . '" AND status = "terminada" AND  crm_id is not null' .$sqlagent. ' ORDER BY datetime_init ASC) t, (SELECT @rownumber:=0) r) AS temp'))
+        ->select('rownumber', 'cdate', 'ctime', 'telno', 'durationwait', 'duration')
+        ->get();
+/*
         $datas = DB::connection('remote_connection')
             ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.call_entry'))
             ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), 'crm_id',DB::raw('DATE(datetime_init) as cdate'), DB::raw('TIME(datetime_init) as ctime'), 'callerid as telno', DB::raw('SEC_TO_TIME(duration_wait) as durationwait'), DB::raw('SEC_TO_TIME(duration) as duration'))
@@ -57,7 +68,7 @@ class HitcallController extends Controller
         }    
         $datas->orderBy("datetime_init", "asc")
             ->get();
-
+*/
         $agents = User::orderBy("id", "asc")->get();
 
         if ($request->ajax()) {
