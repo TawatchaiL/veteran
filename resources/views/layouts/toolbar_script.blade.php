@@ -1120,7 +1120,7 @@
                     }
 
 
-                    if (!$('#' + luniq.replace('.', '')).length) {
+                    if ($('#' + luniq.replace('.', '')).length) {
                         $('#' + luniq.replace('.', '')).remove();
                     }
                         $('#call_list').prepend(`<div class="col-md-3 " id = "${luniq.replace('.', '')}">
