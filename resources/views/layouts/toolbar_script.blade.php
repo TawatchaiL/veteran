@@ -1066,7 +1066,7 @@
                     mcalldnid = data[9][1];
 
                     if (strArray[4] == 'Ringing' || strArray[4] == 'Ring') {
-                        state = 'กำลังรอสายe'
+                        state = 'กำลังรอสาย'
                         state_icon =
                             '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
                         state_color = 'card-danger';
@@ -1077,7 +1077,7 @@
                             "macro-dialout-trunk") {
                             button_ans = `
                             <a href="#" class="btn btn-success answer_call ${dans_button}" data-id="${exten}">
-                                <i class="fa-solid fa-phone-volume"></i> รับสายee
+                                <i class="fa-solid fa-phone-volume"></i> รับสาย
                             </a>`;
                         }
                     } else if (strArray[4] == 'Up' && strArray[12] == '') {
@@ -1092,7 +1092,7 @@
                             hold_button = "d-none";
                             dans_button = "d-none";
                         } else {
-                            state = 'กำลังรอสายe'
+                            state = 'กำลังรอสาย'
                             //state = 'กำลังสนทนา'
                             state_icon =
                                 '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
