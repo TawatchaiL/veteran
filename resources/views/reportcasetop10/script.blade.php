@@ -551,20 +551,18 @@
                         doc.styles.tableFooter.fontSize = 16;
                         doc['header'] = (function() {
                             return {
-                                columns: [{
-                                        image: logobase64,
-                                        width: 50,
-                                        margin: [250, 0, 50, 50],
-                                    },
+                                columns: [
                                     {
                                         alignment: 'left',
-                                        italics: true,
-                                        text: '10 อันดับเรื่องที่ติดต่อมากที่สุด',
-                                        fontSize: 18,
-                                        margin: [20, 50, 70, 0]
+                                        text: [
+                                                { text: 'Top 10 (10 อันดับเรื่องที่ติดต่อมากที่สุด)', fontSize: 18, margin: [0, 10, 70, 0] },
+                                                '\n',
+                                                { text: 'Report By : {{ Auth::user()->name }}', fontSize: 18, margin: [0, 0, 70, 0] }
+                                            ]
                                     }
                                 ],
-                                margin: 20
+                                margin: 20,
+                                decoration: 'underline'
                             }
                         });
 
