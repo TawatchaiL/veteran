@@ -561,14 +561,14 @@
                                         //italics: true,
                                         text: 'Top 10 (10 อันดับเรื่องที่ติดต่อมากที่สุด)',
                                         fontSize: 18,
-                                        margin: [20, 10, 70, 0]
+                                        margin: [0, 10, 70, 0]
                                     },
                                     {
                                         alignment: 'left',
                                         //italics: true,
                                         text: 'Report By : {{ Auth::user()->name }}',
                                         fontSize: 18,
-                                        margin: [40, 10, 70, 0]
+                                        margin: [0, 20, 70, 0]
                                     }
                                 ],
                                 margin: 20
