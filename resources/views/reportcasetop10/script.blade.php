@@ -551,7 +551,7 @@
                         doc.styles.tableFooter.fontSize = 16;
                         doc['header'] = (function() {
                             return {
-                            canvas: [ { type: 'line', x1: 40, y1: 0, x2: 595-40, y2: 0, lineWidth: 1,color:'black' } ],
+                            canvas: [ { type: 'line', x1: 40, y1: 100, x2: 595-40, y2: 100, lineWidth: 5,color:'black' } ],
                                 columns: [
                                     {
                                         text: [  
