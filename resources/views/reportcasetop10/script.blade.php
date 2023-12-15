@@ -530,7 +530,7 @@
                 },
                 'csv',
                 { // กำหนดพิเศษเฉพาะปุ่ม pdf
-                    "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
+                    "extend": 'pdfHtml5', // ปุ่มสร้าง pdf ไฟล์
                     "text": 'PDF', // ข้อความที่แสดง
                     "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
                     "title": '10 อันดับเรื่องที่ติดต่อมากที่สุด',
@@ -551,21 +551,21 @@
                         doc.styles.tableFooter.fontSize = 16;
                         doc['header'] = (function() {
                             return {
+                            canvas: [ { type: 'line', x1: 40, y1: 100, x2: 595-40, y2: 100, lineWidth: 5,color:'black' } ],
                                 columns: [
                                     {
                                         text: [  
-                                                { text: 'REPORT', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
+                                                { text: 'CRM REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
                                                 '\n',
-                                                { text: 'Top 10 (10 อันดับเรื่องที่ติดต่อมากที่สุด)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'Report : Top 10 (10 อันดับเรื่องที่ติดต่อมากที่สุด)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
                                                 '\n',
                                                 { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
                                             ]
                                     }
                                 ],
-                                margin: 10,
-                                canvas: [
-                                    { type: 'line', x1: 0, y1: 5, x2: 515, y2: 5, lineWidth: 100, lineColor: '#000000' }
-                                ]
+                                margin: 20
                             }
                         });
 
