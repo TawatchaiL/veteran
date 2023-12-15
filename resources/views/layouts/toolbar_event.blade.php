@@ -15,12 +15,12 @@
 
     //agent receive call
     socket.on('agentconnect', (response) => {
-        console.log(response)
+        //console.log(response)
     });
 
     //agent answer call
     socket.on('agentcalled', (response) => {
-        console.log(response)
+        //console.log(response)
     });
 
     socket.on('queuemember', (response) => {
@@ -57,7 +57,6 @@
 
     //agent or caller hangup after talk
     socket.on('agentcomplete', async (response) => {
-        console.log(response)
         if (response.data.membername == exten) {
             $.ajax({
                 url: "{{ route('agent.warp') }}",
@@ -224,11 +223,9 @@
     socket.on('event', async (data) => {
 
         if (data.extension == exten) {
-            console.log('match event')
             if (data.status == 4 || data.status == -1) {
                 //toolbar_header.addClass("bg-secondary");
             } else if (data.status == 0) {
-                console.log(data)
                 //toolbar_header.addClass("bg-primary");
                 $.ajax({
                     url: "{{ route('agent.hang') }}",
@@ -332,9 +329,6 @@
     socket.on('ringing', data => {
 
         if (data.extension.match(sipexten)) {
-            console.log(data)
-            console.log('match')
-
             let peer = data.extension.split("-");
             let peern = peer[0].split("/");
 
@@ -421,7 +415,6 @@
     });
 
     socket.on('hold', data => {
-        console.log(data)
         if (data.extension.match(sipexten)) {
             $.ajax({
                 url: "{{ route('agent.hold') }}",
@@ -443,7 +436,6 @@
     });
 
     socket.on('unhold', data => {
-        console.log(data)
         if (data.extension.match(sipexten)) {
             $.ajax({
                 url: "{{ route('agent.unhold') }}",
@@ -473,6 +465,7 @@
             if (data.extension.match(sipexten)) {
                 console.log(data);
                 if (data.luniq) {
+                    //check answer announce
                     if (data.chanstate !== 'Up') {
                         $('#' + data.luniq.replace('.', '')).remove();
                     }
@@ -494,7 +487,7 @@
                     //check_state();
 
                 } else {
-                    //set_state_button(1);
+                    //check answer announce
                     if (data.chanstate !== 'Up') {
                         call_list();
                     }
