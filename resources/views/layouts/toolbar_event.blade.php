@@ -473,7 +473,7 @@
             if (data.extension.match(sipexten)) {
                 console.log(data);
                 if (data.luniq) {
-                    if (data.chanstate !== 'UP') {
+                    if (data.chanstate !== 'Up') {
                         $('#' + data.luniq.replace('.', '')).remove();
                     }
                 }
@@ -495,7 +495,7 @@
 
                 } else {
                     //set_state_button(1);
-                    if (data.chanstate !== 'UP') {
+                    if (data.chanstate !== 'Up') {
                         call_list();
                     }
 
