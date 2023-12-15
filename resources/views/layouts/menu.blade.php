@@ -38,7 +38,7 @@
         </a>
     </li>
 @endcan
-@can('case-list')
+@can('billing-report')
     <li class="nav-item">
         <a href="{{ route('billingreport') }}" class="nav-link {{ Request::is('billing') ? 'active' : '' }}">
             <i class="fa-solid fa-comment-dollar nav-icon"></i>
@@ -54,7 +54,7 @@
         </a>
     </li>
 @endcan --}}
-@can('case-list')
+@can('dashboard-view')
     <li class="nav-item">
         <a href="{{ route('dashboard.index') }}" class="nav-link {{ Request::is('dashboard.index') ? 'active' : '' }}">
             <i class="fa-solid fa-desktop nav-icon"></i>
@@ -62,7 +62,7 @@
         </a>
     </li>
 @endcan
-@can('master-data-list')
+@can(['crm-list', 'callcenter-report', 'ivr-report'])
     <li
         class="nav-item {{ in_array(Request::route()->getName(), [
             'report',
