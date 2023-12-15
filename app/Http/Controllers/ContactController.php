@@ -308,14 +308,14 @@ class ContactController extends Controller
                             <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i>' . $item->calltime . '</p>
                         </div>
                     </div>
-    
+
                 </a>
                 <div class="dropdown-divider"></div>';
 
                 $i++;
             }
         } else {
-            $tab_hold .= ' <a href="#" class="dropdown-item hold_tab_a">
+            $tab_hold .= ' <a href="#" class="dropdown-item hold_tab_ae">
                     <div class="media ">
                         <img src="' . asset('images/user.png') . '" alt="..." class="img-size-50 mr-3 img-circle">
                         <div class="media-body">
@@ -324,7 +324,7 @@ class ContactController extends Controller
                             </h3>
                         </div>
                     </div>
-    
+
                 </a>
                 <div class="dropdown-divider"></div>';
             $i = 1;
