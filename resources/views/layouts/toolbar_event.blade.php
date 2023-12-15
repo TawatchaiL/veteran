@@ -473,7 +473,9 @@
             if (data.extension.match(sipexten)) {
                 console.log(data);
                 if (data.luniq) {
-                    $('#' + data.luniq.replace('.', '')).remove();
+                    if (data.chanstate !== 'UP') {
+                        $('#' + data.luniq.replace('.', '')).remove();
+                    }
                 }
                 if ((data.event == 'BridgeLeave' || data.event == 'SoftHangupRequest')) {
 
@@ -493,7 +495,10 @@
 
                 } else {
                     //set_state_button(1);
-                    call_list();
+                    if (data.chanstate !== 'UP') {
+                        call_list();
+                    }
+
                 }
 
             }

@@ -1093,8 +1093,8 @@
                             hold_button = "d-none";
                             dans_button = "d-none";
                         } else {
-                            //state = 'กำลังรอสาย'
-                            state = 'กำลังสนทนา'
+                            state = 'กำลังรอสาย'
+                            //state = 'กำลังสนทนา'
                             state_icon =
                                 '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
                             state_color = 'card-danger';
@@ -1102,7 +1102,7 @@
                             hold_button = "d-none";
                             dans_button = "d-none";
                             //originate cid
-                            //mcallexten = mcallprofile;
+                            mcallexten = mcallprofile;
                         }
                     } else if (strArray[4] == 'Up') {
                         state = 'กำลังสนทนา'
