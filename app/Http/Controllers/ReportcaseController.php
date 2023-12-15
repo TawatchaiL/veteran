@@ -58,9 +58,8 @@ class ReportcaseController extends Controller
             ->get();
 */
         $datas = DB::connection('remote_connection')
-            ->select(DB::raw('temp.rownumber, t.crm_id, t.sumcases'))
-            ->from(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT crm_id, COUNT(crm_id) AS sumcases FROM call_center.call_entry WHERE datetime_init BETWEEN "' . $startDate . '" AND "' . $endDate . '" GROUP BY crm_id HAVING sumcases > 0 ORDER BY crm_id ASC) t, (SELECT @rownumber:=0) r) AS temp'))
-            //->orderBy('temp.rownumber', 'asc')
+            ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT crm_id, COUNT(crm_id) AS sumcases FROM call_center.call_entry WHERE datetime_init BETWEEN "' . $startDate . '" AND "' . $endDate . '" GROUP BY crm_id HAVING sumcases > 0 ORDER BY crm_id ASC) t, (SELECT @rownumber:=0) r) AS temp'))
+            ->select('rownumber', 'crm_id', 'sumcases')
             ->get();
 
             $agents = User::orderBy("id", "asc")->get();
