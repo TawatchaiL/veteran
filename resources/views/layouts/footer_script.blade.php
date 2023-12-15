@@ -200,6 +200,7 @@
             $('.alert-success').hide();
             let dataId = $(this).data('id');
             if (dataId !== '') {
+                // If dataId is not an empty string
                 $('#custom-tabs-pop-' + dataId + '-tab').tab('show');
                 await maximizeCard(dataId);
             }
