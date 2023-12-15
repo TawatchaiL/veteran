@@ -13,34 +13,29 @@
     }
     $(document).ready(function() {
         $('#download_bar').click(function(event) {
-    var pdfWidth = 595.28;
-    var pdfHeight = 841.89;
-    var pdf = new jsPDF({
-        unit: 'pt',
-        format: [pdfWidth, pdfHeight]
-    });
 
-    var chartContainer = document.querySelector("#bar_graph");
+            var pdfWidth = 595.28;
+            var pdfHeight = 841.89;
+            var pdf = new jsPDF({
+                unit: 'pt',
+                format: [pdfWidth, pdfHeight]
+            });
 
-    html2canvas(chartContainer).then(canvas => {
-        var imgData = canvas.toDataURL("image/png");
+            var chartContainer = document.querySelector("#bar_graph");
 
-        var imgWidth = pdfWidth;
-        var imgHeight = (canvas.height * imgWidth) / canvas.width;
+            html2canvas(chartContainer).then(canvas => {
+                var imgData = canvas.toDataURL("image/png");
 
-        pdf.addImage(imgData, 'PNG', 0, 60, imgWidth, imgHeight);
+                var imgWidth = pdfWidth;
+                var imgHeight = (canvas.height * imgWidth) / canvas
+                    .width;
 
-        // Get the data URI of the PDF
-        var pdfDataUri = pdf.output('datauristring');
+                pdf.addImage(imgData, 'PNG', 0, 60, imgWidth,
+                    imgHeight);
+                pdf.save("bar_chart.pdf");
+            });
 
-        // Open the PDF in a new tab or window
-        var iframe = document.createElement('iframe');
-        iframe.src = pdfDataUri;
-        iframe.style.width = '100%';
-        iframe.style.height = '100%';
-        document.body.appendChild(iframe);
-    });
-});
+        });
 
         $('#download_bar_img').click(function(event) {
             var chartContainer = document.querySelector("#bar_graph");
@@ -654,7 +649,7 @@
             responsive: true,
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
-            columns: [
+            columns: [{},
                 {
                     data: 'casetype1',
                     name: 'casetype1'
@@ -666,6 +661,14 @@
             ]
         });
 
+        table.on('order.dt search.dt', function () {
+        let i = 1;
+ 
+        table.cells(null, 0, { search: 'applied', order: 'applied' })
+            .every(function (cell) {
+                this.data(i++);
+            });
+        }).draw();
         /*
         table.on('order.dt search.dt', function () {
         let i = 1;
