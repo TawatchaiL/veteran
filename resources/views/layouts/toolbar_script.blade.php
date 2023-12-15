@@ -3,6 +3,7 @@
     const agent_username = '{{ $temporaryPhone }}';
     const exten_ip = '{{ $temporaryPhoneIP }}';
     const exten = '{{ $temporaryPhone }}';
+    const sipexten = 'SIP/{{ $temporaryPhone }}';
     const account_code = exten;
     const call_survey_number = '{{ config('asterisk.manager.call_survey_number') }}';
     const toolbar_serv = '{{ config('asterisk.toolbar_serv.address') }}';

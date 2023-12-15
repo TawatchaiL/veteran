@@ -27,14 +27,14 @@
                          <div class="row">
                              <div class="col-xs-12 col-sm-12 col-md-12">
                                  <div class="form-group">
-                                     <label for="Name"><i class="fas fa-user"></i> ชื่อ ผู้ใช้งาน :</label>
+                                     <label for="Name"><i class="fas fa-user"></i> ชื่อ-สกุล :</label>
                                      <input type="text" class="form-control" name="name" id="editName"
                                          value="">
                                  </div>
                              </div>
                              <div class="col-xs-12 col-sm-12 col-md-12">
                                  <div class="form-group">
-                                     <label for="Name"><i class="fas fa-at"></i> อีเมล์ :</label>
+                                     <label for="Name"><i class="fas fa-at"></i> Username :</label>
                                      <input type="text" class="form-control" name="email" id="editEmail"
                                          value="">
                                  </div>
@@ -54,18 +54,15 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6">
+                           {{--  <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <strong><i class="fas fa-list-ol"></i> Agent :</strong>
                                     <select style="width: 100%;" class="select2 select2_single form-control"
                                         id="EditAgent" name="eagent" multiple="multiple">
-                                        {{-- @foreach ($agent as $keya)
-                                            <option value="{{ $keya->id }}">{{ $keya->name }}
-                                            </option>
-                                        @endforeach --}}
+
                                     </select>
                                 </div>
-                            </div>
+                            </div> --}}
                              <div class="col-xs-6 col-sm-6 col-md-6">
                                  <div class="form-group">
                                      <strong><i class="fas fa-list-ol"></i> แผนก:</strong>

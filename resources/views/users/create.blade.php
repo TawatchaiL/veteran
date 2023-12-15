@@ -36,13 +36,13 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong><i class="fas fa-user"></i> ชื่อผู้ใช้งาน:</strong>
+                            <strong><i class="fas fa-user"></i> ชื่อ-นามสกุล:</strong>
                             {!! Form::text('name', null, ['id' => 'AddName', 'placeholder' => 'Name', 'class' => 'form-control']) !!}
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong><i class="fas fa-at"></i> อีเมล์:</strong>
+                            <strong><i class="fas fa-at"></i> Username:</strong>
                             {!! Form::text('email', null, ['id' => 'AddEmail', 'placeholder' => 'Email', 'class' => 'form-control']) !!}
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-xs-6 col-sm-6 col-md-6">
+                    {{-- <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
                             <strong><i class="fas fa-list-ol"></i> Agent :</strong>
                             <select style="width: 100%;" class="select2 select2_single form-control" id="AddAgent"
@@ -72,7 +72,7 @@
                                 @endforeach
                             </select>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
                             <strong><i class="fas fa-list-ol"></i> แผนก:</strong>

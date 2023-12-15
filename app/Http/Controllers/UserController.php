@@ -123,13 +123,13 @@ class UserController extends Controller
 
         $validator =  Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
             'department_id' => 'required',
             'position_id' => 'required',
             'role' => 'required',
             'queue' => 'required|array',
-            'agent_id' => 'required|unique:users,agent_id',
+            //'agent_id' => 'required|unique:users,agent_id',
         ], [
             'name.required' => 'กรุณาระบุ ชื่อ-นามสกุล ผู้ใช้งาน!',
             'email.required' => 'Username ต้องไม่เป็นค่าว่าง!',
@@ -142,8 +142,8 @@ class UserController extends Controller
             'position_id.required' => 'ตำแหน่ง ต้องไม่เป็นค่าว่าง!',
             'role.required' => 'สิทธิ์การใช้งาน ต้องไม่เป็นค่าว่าง!',
             'queue.required' => 'กรุณาระบุ Queue ผู้ใช้งาน!',
-            'agent_id.required' => 'กรุณาระบุ Agent ผู้ใช้งาน!',
-            'agent_id.unique' => 'Agent นี้ถูกใช้งานแล้ว',
+            //'agent_id.required' => 'กรุณาระบุ Agent ผู้ใช้งาน!',
+            //'agent_id.unique' => 'Agent นี้ถูกใช้งานแล้ว',
         ]);
 
 
@@ -318,11 +318,11 @@ class UserController extends Controller
 
         $rules = [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $id,
+            'email' => 'required|string|max:255|unique:users,email,' . $id,
             'department' => 'required',
             'position' => 'required',
             'queue' => 'required',
-            'agent' => 'required|unique:users,agent_id,' . $id,
+            //'agent' => 'required|unique:users,agent_id,' . $id,
         ];
 
         if ($request->get('password')) {
@@ -341,8 +341,8 @@ class UserController extends Controller
             'position_id.required' => 'ตำแหน่ง ต้องไม่เป็นค่าว่าง!',
             'role.required' => 'สิทธิ์การใช้งาน ต้องไม่เป็นค่าว่าง!',
             'queue.required' => 'กรุณาระบุ Queue ผู้ใช้งาน!',
-            'agent.required' => 'กรุณาระบุ Agent ผู้ใช้งาน!',
-            'agent.unique' => 'Agent นี้ถูกใช้งานแล้ว',
+            //'agent.required' => 'กรุณาระบุ Agent ผู้ใช้งาน!',
+            //'agent.unique' => 'Agent นี้ถูกใช้งานแล้ว',
         ]);
 
         if ($validator->fails()) {
@@ -350,7 +350,7 @@ class UserController extends Controller
         }
 
         $users = [
-            'agent_id' => $request->get('agent'),
+            //'agent_id' => $request->get('agent'),
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'role' => $request->get('role'),

@@ -76,6 +76,7 @@
                                                         'placeholder' => 'Code',
                                                         'class' => 'form-control',
                                                         'readonly' => true,
+                                                        'tabindex' => '1',
                                                     ]) !!}
                                                 </div>
                                             </div>
@@ -86,6 +87,7 @@
                                                         'id' => 'Editadddate',
                                                         'placeholder' => '',
                                                         'class' => 'AddDate form-control',
+                                                        'tabindex' => '2',
                                                         'data-target' => '#reservationdate',
                                                     ]) !!}
                                                 </div>
@@ -99,7 +101,7 @@
                                                     <strong><i class="fas fa-user-tie"></i> คำนำหน้าชื่อ:</strong>
                                                     <select style="width: 100%;"
                                                         class="select2 select2_single form-control" id="Edittname"
-                                                        name="etname" multiple="multiple">
+                                                        name="etname" multiple="multiple" tabindex="3">
                                                         {{-- <option value="">กรุณาเลือก</option> --}}
                                                         <option value="คุณ">คุณ</option>
                                                         <option value="เด็กชาย">เด็กชาย</option>
@@ -113,7 +115,12 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> ชื่อ:</strong>
-                                                    {!! Form::text('efname', null, ['id' => 'Editfname', 'placeholder' => 'ชื่อ', 'class' => 'form-control']) !!}
+                                                    {!! Form::text('efname', null, [
+                                                        'id' => 'Editfname',
+                                                        'placeholder' => 'ชื่อ',
+                                                        'class' => 'form-control',
+                                                        'tabindex' => '4',
+                                                    ]) !!}
                                                 </div>
                                             </div>
                                         </div>
@@ -121,7 +128,12 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <strong><i class="fas fa-user-tie"></i> นามสกุล:</strong>
-                                                    {!! Form::text('Editlname', null, ['id' => 'Editlname', 'placeholder' => 'นามสกุล', 'class' => 'form-control']) !!}
+                                                    {!! Form::text('Editlname', null, [
+                                                        'id' => 'Editlname',
+                                                        'placeholder' => 'นามสกุล',
+                                                        'class' => 'form-control',
+                                                        'tabindex' => '5',
+                                                    ]) !!}
                                                 </div>
                                             </div>
                                             <div class="col-xs-6 col-sm-6 col-md-6">
@@ -129,7 +141,7 @@
                                                     <strong><i class="fas fa-user-tie"></i> เพศ:</strong>
                                                     <select style="width: 100%;"
                                                         class="select2 select2_single form-control" id="Editsex"
-                                                        name="Editsex" multiple="multiple">
+                                                        name="Editsex" multiple="multiple" tabindex="6">
                                                         {{-- <option value="">กรุณาเลือก</option> --}}
                                                         <option value="ชาย">ชาย</option>
                                                         <option value="หญิง">หญิง</option>
@@ -145,6 +157,7 @@
                                                         'id' => 'Editbirthday',
                                                         'placeholder' => 'วันเกิด',
                                                         'data-age' => 'Editage',
+                                                        'tabindex' => '7',
                                                         'class' => 'BirthDate form-control',
                                                         'data-target' => '#reservationdate',
                                                     ]) !!}
@@ -156,6 +169,7 @@
                                                     {!! Form::text('Editage', null, [
                                                         'id' => 'Editage',
                                                         'placeholder' => 'อายุ',
+                                                        'tabindex' => '8',
                                                         'class' => 'form-control',
                                                         'readonly' => true,
                                                     ]) !!}
@@ -168,8 +182,8 @@
                                                     <strong><i class="fas fa-user-tie"></i> กรุ๊ปเลือด:</strong>
                                                     <select style="width: 100%;"
                                                         class="select2 select2_single form-control"
-                                                        id="Editbloodgroup" name="Editbloodgroup"
-                                                        multiple="multiple">
+                                                        id="Editbloodgroup" name="Editbloodgroup" multiple="multiple"
+                                                        tabindex="9">
                                                         {{--  <option value="">กรุณาเลือก</option> --}}
                                                         <option value="A">A</option>
                                                         <option value="B">B</option>
@@ -194,6 +208,7 @@
                                                         'id' => 'Edithomeno',
                                                         'placeholder' => 'Address',
                                                         'class' => 'form-control',
+                                                        'tabindex' => '10',
                                                     ]) !!}
                                                 </div>
                                             </div>
@@ -204,6 +219,7 @@
                                                         'id' => 'Editmoo',
                                                         'placeholder' => 'Group',
                                                         'class' => 'form-control',
+                                                        'tabindex' => '11',
                                                     ]) !!}
                                                 </div>
                                             </div>
@@ -216,6 +232,7 @@
                                                         'id' => 'Editsoi',
                                                         'placeholder' => 'Soi',
                                                         'class' => 'form-control',
+                                                        'tabindex' => '12',
                                                     ]) !!}
                                                 </div>
                                             </div>
@@ -226,6 +243,7 @@
                                                         'id' => 'Editroad',
                                                         'placeholder' => 'Road',
                                                         'class' => 'form-control',
+                                                        'tabindex' => '13',
                                                     ]) !!}
                                                 </div>
                                             </div>
@@ -235,7 +253,7 @@
                                                 <div class="form-group">
                                                     <strong><i class="fa-solid fa-city"></i> จังหวัด :</strong>
                                                     <select class="select2 select2_single form-control" id="Editcity"
-                                                        name="ecity" multiple="multiple">
+                                                        name="ecity" multiple="multiple" tabindex="14">
                                                     </select>
                                                 </div>
                                             </div>
@@ -244,7 +262,8 @@
                                                     <strong><i class="fa-solid fa-building-circle-arrow-right"></i>
                                                         อำเภอ:</strong>
                                                     <select class="select2 select2_single form-control"
-                                                        id="Editdistrict" name="edistrict" multiple="multiple">
+                                                        id="Editdistrict" name="edistrict" multiple="multiple"
+                                                        tabindex="15">
                                                         {{-- <option value="">กรุณาเลือกอำเภอ</option> --}}
                                                     </select>
                                                 </div>
@@ -257,7 +276,8 @@
                                                         ตำบล
                                                         :</strong>
                                                     <select class="select2 select2_single form-control"
-                                                        id="Editsubdistrict" name="esubdistrict" multiple="multiple">
+                                                        id="Editsubdistrict" name="esubdistrict" multiple="multiple"
+                                                        tabindex="16">
                                                         {{-- <option value="">กรุณาเลือกตำบล</option> --}}
                                                     </select>
                                                 </div>
@@ -269,6 +289,7 @@
                                                         'id' => 'Editpostcode',
                                                         'placeholder' => 'Postcode',
                                                         'class' => 'form-control',
+                                                        'tabindex' => '17',
                                                     ]) !!}
                                                 </div>
                                             </div>
@@ -292,6 +313,7 @@
                                                         'id' => 'Edittelhome',
                                                         'placeholder' => 'Telephone',
                                                         'class' => 'form-control',
+                                                        'tabindex' => '18',
                                                         'onkeydown' => 'validateNumber(event)',
                                                     ]) !!}
                                                 </div>
@@ -303,6 +325,7 @@
                                                         'id' => 'Editphoneno',
                                                         'placeholder' => 'Postcode',
                                                         'class' => 'form-control',
+                                                        'tabindex' => '19',
                                                         'onkeydown' => 'validateNumber(event)',
                                                     ]) !!}
                                                 </div>
@@ -318,6 +341,7 @@
                                                         'id' => 'Editworkno',
                                                         'placeholder' => 'Telephone',
                                                         'class' => 'form-control',
+                                                        'tabindex' => '20',
                                                         'onkeydown' => 'validateNumber(event)',
                                                     ]) !!}
                                                 </div>

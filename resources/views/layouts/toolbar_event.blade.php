@@ -3,7 +3,7 @@
     const formatTime = seconds => {
         const hours = Math.floor(seconds / 3600);
         const minutes = Math.floor((seconds % 3600) / 60);
-        const remainingSeconds = seconds % 60;
+        const remainingSeconds = Math.floor(seconds % 60);
 
         return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
     };
@@ -24,9 +24,10 @@
     });
 
     socket.on('queuemember', (response) => {
-        console.log(response)
+        //console.log(response)
         if (response.data.paused == 1 && response.data.name == exten) {
-            const currentTimestamp = Math.floor(Date.now() / 1000) - response.data.lastpause;
+            //const currentTimestamp = Math.floor(Date.now() / 1000) - response.data.lastpause;
+            const currentTimestamp = (response.timestamp / 1000) - response.data.lastpause;
             const formattedTime = formatTime(currentTimestamp);
             $('#pausereason').html(response.data.pausedreason);
             $('#pausedur').html(formattedTime);
@@ -223,6 +224,7 @@
     socket.on('event', async (data) => {
 
         if (data.extension == exten) {
+            console.log('match')
             if (data.status == 4 || data.status == -1) {
                 //toolbar_header.addClass("bg-secondary");
             } else if (data.status == 0) {
@@ -329,9 +331,13 @@
 
     socket.on('ringing', data => {
 
-        if (data.extension.match(exten)) {
+        if (data.extension.match(sipexten)) {
+            console.log(data)
+            console.log('match')
+
             let peer = data.extension.split("-");
             let peern = peer[0].split("/");
+
             $.ajax({
                 url: "{{ route('agent.ring') }}",
                 method: 'post',
@@ -389,7 +395,7 @@
 
     socket.on('talking', data => {
 
-        if (data.extension.match(exten)) {
+        if (data.extension.match(sipexten)) {
             $.ajax({
                 url: "{{ route('agent.talk') }}",
                 method: 'post',
@@ -416,7 +422,7 @@
 
     socket.on('hold', data => {
         console.log(data)
-        if (data.extension.match(exten)) {
+        if (data.extension.match(sipexten)) {
             $.ajax({
                 url: "{{ route('agent.hold') }}",
                 method: 'post',
@@ -438,7 +444,7 @@
 
     socket.on('unhold', data => {
         console.log(data)
-        if (data.extension.match(exten)) {
+        if (data.extension.match(sipexten)) {
             $.ajax({
                 url: "{{ route('agent.unhold') }}",
                 method: 'post',
@@ -464,7 +470,7 @@
 
     socket.on('hangup', data => {
         if (data.extension) {
-            if (data.extension.match(exten)) {
+            if (data.extension.match(sipexten)) {
                 if (data.luniq) {
                     $('#' + data.luniq.replace('.', '')).remove();
                 }
