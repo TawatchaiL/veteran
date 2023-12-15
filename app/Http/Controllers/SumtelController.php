@@ -48,6 +48,12 @@ class SumtelController extends Controller
             $startDate = date("Y-m-d H:i:s");
             $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
+
+        $datas = DB::connection('remote_connection')
+            ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT DATE(datetime_init) as cdate, SUM(if(status = "terminada",1,0)) as terminada, SUM(if(status = "abandonada",1,0)) as abandonada FROM call_center.call_entry WHERE datetime_init BETWEEN "' . $startDate . '" AND "' . $endDate . '" GROUP BY cdate ORDER BY cdate ASC) t, (SELECT @rownumber:=0) r) AS temp'))
+            ->select('rownumber', 'crm_id', 'sumcases')
+            ->get();
+/*
         $datas = DB::connection('remote_connection')
             ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.call_entry'))
             ->select(DB::raw('(@rownumber:=@rownumber + 1) AS row_number'), DB::raw('DATE(datetime_init) as cdate'), DB::raw('SUM(if(status = "terminada",1,0)) as terminada'), DB::raw('SUM(if(status = "abandonada",1,0)) as abandonada'))
@@ -58,7 +64,7 @@ class SumtelController extends Controller
         $datas->groupBy('cdate')
             ->orderBy("cdate", "asc")
             ->get();
-
+*/
         if ($request->ajax()) {
 
             return datatables()->of($datas)
