@@ -41,6 +41,8 @@
     <link rel='stylesheet' href='dist/css/LibreCaslonText.css'>
     <link rel='stylesheet' href='dist/css/Roboto.css'>
     <link rel="stylesheet" href="dist/css/adminlte.css?v=3.2.0">
+    <link rel="stylesheet" href="dist/css/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/font-awesome-animation.min.css">
     {{-- <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css"> --}}
     <link rel="stylesheet" href="plugins/ionicons/css/ionicons.min.css">
     <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
@@ -95,7 +97,7 @@
                         @csrf
 
                         <div class="input-group mb-3">
-                            <input type="text" name="email" value="{{-- {{ old('email') }} --}}" placeholder="Email"
+                            <input type="text" name="email" value="{{-- {{ old('email') }} --}}" placeholder="Username"
                                 class="form-control @error('email') is-invalid @enderror">
                             <div class="input-group-append">
                                 <div class="input-group-text"><span class="fas fa-user"></span></div>

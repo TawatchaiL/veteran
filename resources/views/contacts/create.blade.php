@@ -306,8 +306,9 @@
                                                         'id' => 'Addtelhome',
                                                         'placeholder' => 'เบอร์โทรศัพท์บ้าน',
                                                         'class' => 'form-control',
-                                                        'onkeydown' => 'validateNumber(event)',
                                                         'tabindex' => '18',
+                                                        'onkeydown' => 'validateNumber(event)',
+
                                                     ]) !!}
                                                 </div>
                                             </div>
@@ -318,8 +319,9 @@
                                                         'id' => 'Addphoneno',
                                                         'placeholder' => 'เบอร์โทรศัพท์มือถือ',
                                                         'class' => 'form-control',
-                                                        'onkeydown' => 'validateNumber(event)',
                                                         'tabindex' => '19',
+                                                        'onkeydown' => 'validateNumber(event)',
+
                                                     ]) !!}
                                                 </div>
                                             </div>
@@ -334,8 +336,9 @@
                                                         'id' => 'Addworkno',
                                                         'placeholder' => 'เบอร์โทรศัพท์ที่ทำงาน',
                                                         'class' => 'form-control',
-                                                        'onkeydown' => 'validateNumber(event)',
                                                         'tabindex' => '20',
+                                                        'onkeydown' => 'validateNumber(event)',
+
                                                     ]) !!}
                                                 </div>
                                             </div>

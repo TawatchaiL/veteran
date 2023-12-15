@@ -200,7 +200,7 @@
             $('.form').trigger('reset');
 
             $("#AddQueue").val(null).trigger("change")
-            $("#AddAgent").val(null).trigger("change")
+            //$("#AddAgent").val(null).trigger("change")
             $("#AddDepartment").val(null).trigger("change")
             $("#AddPosition").val(null).trigger("change")
 
@@ -228,7 +228,7 @@
                     department_id: $("#AddDepartment").val()[0],
                     position_id: $("#AddPosition").val()[0],
                     queue: $("#AddQueue").val(),
-                    agent_id: $("#AddAgent").val()[0],
+                    //agent_id: $("#AddAgent").val()[0],
                     role: $('#AddRole').val(),
                     _token: token,
                 },
@@ -251,7 +251,7 @@
                         });
                         $('#Listview').DataTable().ajax.reload();
                         $("#AddQueue").val(null).trigger("change")
-                        $("#AddAgent").val(null).trigger("change")
+                        //$("#AddAgent").val(null).trigger("change")
                         $("#AddDepartment").val(null).trigger("change")
                         $("#AddPosition").val(null).trigger("change")
                         $('.form').trigger('reset');
@@ -278,7 +278,7 @@
 
             $('#EditPosition').empty();
             $('#EditQueue').empty();
-            $('#EditAgent').empty();
+            //$('#EditAgent').empty();
 
             id = $(this).data('id');
             $.ajax({
@@ -290,7 +290,7 @@
                     $('#editName').val(res.data.name);
                     $('#editEmail').val(res.data.email);
                     $('#EditQueue').append(res.select_list_queue);
-                    $('#EditAgent').append(res.select_list_agent);
+                    //$('#EditAgent').append(res.select_list_agent);
                     $('#EditDepartment').val(res.data.department_id).change();
                     $('#EditPosition').append(res.select_list_position);
                     $('#EditPosition').val(res.data.position_id).change();
@@ -321,7 +321,7 @@
                     email: $('#editEmail').val(),
                     role: $('#editRole').val(),
                     queue: $("#EditQueue").val(),
-                    agent: $("#EditAgent").val()[0],
+                    //agent: $("#EditAgent").val()[0],
                     department: $("#EditDepartment").val()[0],
                     position: $("#EditPosition").val()[0],
                 },
