@@ -20,6 +20,7 @@
 
     //agent answer call
     socket.on('agentcalled', (response) => {
+        call_list();
         //console.log(response)
     });
 
