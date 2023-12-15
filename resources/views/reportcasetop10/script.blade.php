@@ -556,6 +556,12 @@
                                         text: [  
                                                 { text: 'REPORT', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
                                                 '\n',
+                                                {
+                                                    canvas: [
+                                                        { type: 'line', x1: 0, y1: 5, x2: 515, y2: 5, lineWidth: 2, lineColor: '#000000' }
+                                                    ],
+                                                    margin: [0, 0, 0, 10] 
+                                                },
                                                 { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
                                                 '\n',
                                                 { text: 'Top 10 (10 อันดับเรื่องที่ติดต่อมากที่สุด)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
