@@ -274,7 +274,7 @@
         } else if (data.extension.match(exten) && data.paused == 1) {
             if (data.pausereason == "Auto-Pause") {
                 $.ajax({
-                    url: "{{ route('agent.agent.break_auto') }}",
+                    url: "{{ route('agent.break_auto') }}",
                     method: 'post',
                     async: false,
                     success: function(result) {
