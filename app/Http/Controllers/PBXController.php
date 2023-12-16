@@ -1130,6 +1130,43 @@ class PBXController extends Controller
     }
 
 
+    public function AgentPhoneRegis(Request $request)
+    {
+        $user = Auth::user();
+
+        if ($user) {
+
+            //get ipphon ip
+            $client = new Client();
+
+            $api_url = config('asterisk.api_serv.address');
+            $response = $client->request('GET', $api_url . '/peer/' . $user->phone);
+            $responseBody = $response->getBody()->getContents();
+            $data = json_decode($responseBody, true);
+
+            if (json_last_error() === JSON_ERROR_NONE && isset($data['address-ip'])) {
+                $addressIp = $data['address-ip'];
+            } else {
+                dd("Error parsing JSON or 'address-ip' not found in the response");
+            }
+
+
+            $user->phone_ip = $addressIp;
+            $user->phone_status_id = 1;
+            $user->phone_status = "พร้อมรับสาย" . " " . $user->agent_type;
+            $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
+            $user->save();
+
+            return [
+                'success' => true,
+                'id' => $user->phone_status_id,
+                'message' => $user->phone_status,
+                'icon' => $user->phone_status_icon
+            ];
+        } else {
+            return ['error' => false, 'message' => 'error'];
+        }
+    }
 
     public function AgentPhoneUnregis(Request $request)
     {
@@ -1138,6 +1175,7 @@ class PBXController extends Controller
         if ($user) {
 
             $user->phone_status_id = -1;
+            $user->phone_ip  = '';
             $user->phone_status = "โทรศัพท์ไม่พร้อมใช้งาน";
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-plug-circle-exclamation fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1;"></i>';
             $user->save();

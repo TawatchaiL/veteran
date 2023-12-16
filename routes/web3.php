@@ -35,6 +35,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/agent_unhold', [App\Http\Controllers\PBXController::class, 'AgentUNHold'])->name('agent.unhold');
     Route::post('/agent_hang', [App\Http\Controllers\PBXController::class, 'AgentHang'])->name('agent.hang');
     Route::post('/agent_phone_unregis', [App\Http\Controllers\PBXController::class, 'AgentPhoneUnregis'])->name('agent.phone_unregis');
+    Route::post('/agent_phone_regis', [App\Http\Controllers\PBXController::class, 'AgentPhoneRegis'])->name('agent.phone_regis');
     Route::post('/agent_status', [App\Http\Controllers\PBXController::class, 'AgentStatus'])->name('agent.status');
     Route::post('/answer', [App\Http\Controllers\PBXController::class, 'call_answer'])->name('answer');
     Route::post('/hold', [App\Http\Controllers\PBXController::class, 'call_hold'])->name('hold');
