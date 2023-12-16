@@ -49,7 +49,7 @@ class VoicerecordController extends Controller
             //->join('call_center.call_recording', 'asteriskcdrdb.cdr.uniqueid', '=', 'call_center.call_recording.uniqueid')
             ->where('asteriskcdrdb.cdr.dstchannel', '!=', '')
             ->where('asteriskcdrdb.cdr.recordingfile', '!=', '')
-            ->where('asteriskcdrdb.cdr.disposition', '=', 'ANSWERED')
+            //->where('asteriskcdrdb.cdr.disposition', '=', 'ANSWERED')
             ->orderBy('asteriskcdrdb.cdr.calldate', 'desc');
 
         $agens = User::orderBy('name', 'asc')->get();
