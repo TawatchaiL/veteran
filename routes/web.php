@@ -116,9 +116,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/ivrreport', [App\Http\Controllers\IvrreportController::class, 'index'])->name('ivrreport');
     Route::get('/ivrreporttop10', [App\Http\Controllers\Ivrreporttop10Controller::class, 'index'])->name('ivrreporttop10');
     Route::get('/billing', [App\Http\Controllers\BillingController::class, 'index'])->name('billing');
-    
+
     Route::get('/reportcase', [App\Http\Controllers\ReportcaseController::class, 'index'])->name('reportcase');
-    
+
     Route::get('/reportcasetop10', [App\Http\Controllers\ReportcasetopController::class, 'index'])->name('reportcasetop10');
     //Route::post('/reportcasetop10/report', [App\Http\Controllers\ReportcasetopController::class, 'report'])->name('reportcasetop10.report');
     Route::get('/reporttop10in', [App\Http\Controllers\ReporttopinController::class, 'index'])->name('reporttop10in');
