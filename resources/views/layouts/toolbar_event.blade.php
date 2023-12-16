@@ -268,6 +268,15 @@
         if (data.extension.match(exten) && data.paused == 0) {
             /* toolbar_header.removeClass("bg-warning");
             toolbar_header.addClass("bg-primary"); */
+            $.ajax({
+                url: "{{ route('agent.unbreak') }}",
+                method: 'post',
+                async: false,
+                success: function(result) {
+                    set_state_icon(result.id, result.icon, result.message);
+                    set_state_button(result.id);
+                }
+            });
             $('#pausedur').html('');
             $('#pausereason').html('');
             //localStorage.removeItem('warp');
