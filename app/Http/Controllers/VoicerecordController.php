@@ -99,9 +99,9 @@ class VoicerecordController extends Controller
                         //->where('asteriskcdrdb.cdr.dst_userfield', '=', NULL);
                 } else if ($ctype == 3) {
                     //$datass->where('asteriskcdrdb.cdr.accountcode', '!=', '')
-                    $datass->where('asteriskcdrdb.cdr.recordingfile', 'like', 'exten-%');
+                    $datass->where('asteriskcdrdb.cdr.recordingfile', 'like', 'exten-%')
                         //->where('asteriskcdrdb.cdr.userfield', '!=', '')
-                        //->where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
+                        ->where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
                 }
             }
 
