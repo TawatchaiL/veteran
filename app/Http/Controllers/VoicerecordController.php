@@ -149,7 +149,12 @@ class VoicerecordController extends Controller
                     }
                 })
                 ->editColumn('agent', function ($row) use ($agentArray) {
-                    $telp = $row->accountcode == '' ? $this->getTelpFromDstChannel($row->dstchannel) : $row->accountcode;
+                    if ($row->dst_exten == "QUEUE") {
+                        $telp = $row->accountcode == '' ? $this->getTelpFromDstChannel($row->dstchannel) : $row->accountcode;
+                    } else {
+                        $telp = $row->dst;
+                    }
+
 
                     if (!empty($row->dst_userfield) && isset($agentArray[$row->dst_userfield])) {
                         $agentName = $agentArray[$row->dst_userfield]['name'];
