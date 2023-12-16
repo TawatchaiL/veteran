@@ -15,31 +15,30 @@ class PermissionTableSeeder extends Seeder
     public function run()
     {
 
-        //Permission::truncate();
+        Permission::truncate();
 
         $permissions = [
-            /* 'contact-list',
+            'contact-list',
             'contact-create',
             'contact-edit',
             'contact-delete',
             'case-list',
             'case-create',
             'case-edit',
-            'case-delete',*/
-            //'agent-outbound',
+            'case-delete',
+            'agent-outbound',
             'billing-report',
             'crm-report',
             'callcenter-report',
             'ivr-report',
             'dashboard-view',
-            /*
+            
             'voice-record-list',
-            'voice-record-supervisor',*/
-            //'voice-export-list',
-            //'voice-export-create',
-            //'voice-export-download',
-            //'voice-export-delete',
-            /*
+            'voice-record-supervisor',
+            'voice-export-list',
+            'voice-export-create',
+            'voice-export-download',
+            'voice-export-delete',
             'master-data-list',
             'master-data-create',
             'master-data-edit',
@@ -62,19 +61,19 @@ class PermissionTableSeeder extends Seeder
             'notify-edit',
             'notify-delete',
             'customize-list',
-            'customize-edit',*/
-            //'outbound-list',
-            //'outbound-create',
-            //'outbound-edit',
-            //'outbound-delete',
-            /* 'role-list',
+            'customize-edit',
+            'outbound-list',
+            'outbound-create',
+            'outbound-edit',
+            'outbound-delete',
+            'role-list',
             'role-create',
             'role-edit',
             'role-delete',
             'user-list',
             'user-create',
             'user-edit',
-            'user-delete', */
+            'user-delete',
 
         ];
 
