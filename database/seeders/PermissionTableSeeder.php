@@ -15,7 +15,7 @@ class PermissionTableSeeder extends Seeder
     public function run()
     {
 
-        Permission::truncate();
+        //Permission::truncate();
 
         $permissions = [
             'contact-list',
