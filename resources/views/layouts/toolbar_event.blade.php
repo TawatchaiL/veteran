@@ -272,6 +272,17 @@
             $('#pausereason').html('');
             //localStorage.removeItem('warp');
         } else if (data.extension.match(exten) && data.paused == 1) {
+            if (data.pausereason == "Auto-Pause") {
+                $.ajax({
+                    url: "{{ route('agent.agent.break_auto') }}",
+                    method: 'post',
+                    async: false,
+                    success: function(result) {
+                        set_state_icon(result.id, result.icon, result.message);
+                        set_state_button(result.id);
+                    }
+                });
+            }
             /* toolbar_header.removeClass("bg-primary bg-secondary bg-danger");
             toolbar_header.addClass("bg-warning"); */
 
