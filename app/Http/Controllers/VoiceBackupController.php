@@ -232,7 +232,7 @@ class VoiceBackupController extends Controller
         }
 
         if (!empty($ctype)) {
-            if ($ctype == 1) {
+            /*  if ($ctype == 1) {
                 $datass->where('asteriskcdrdb.cdr.accountcode', '')
                     ->where('asteriskcdrdb.cdr.userfield', '=', '')
                     ->where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
@@ -244,6 +244,23 @@ class VoiceBackupController extends Controller
                 $datass->where('asteriskcdrdb.cdr.accountcode', '!=', '')
                     ->where('asteriskcdrdb.cdr.userfield', '!=', '')
                     ->where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
+            } */
+            if ($ctype == 1) {
+                //where('asteriskcdrdb.cdr.accountcode', '')
+                $datass->where('asteriskcdrdb.cdr.dst_exten', 'QUEUE');
+                //->where('asteriskcdrdb.cdr.userfield', '=', '')
+                //->where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
+            } else if ($ctype == 2) {
+                //where('asteriskcdrdb.cdr.accountcode', '!=', '')
+                $datass->where('asteriskcdrdb.cdr.recordingfile', 'like', 'out-%');
+                //->where('asteriskcdrdb.cdr.userfield', '!=', '')
+                //->where('asteriskcdrdb.cdr.dst_userfield', '=', NULL);
+            } else if ($ctype == 3) {
+                //$datass->where('asteriskcdrdb.cdr.accountcode', '!=', '')
+                $datass->where('asteriskcdrdb.cdr.recordingfile', 'like', 'exten-%')
+                    //->where('asteriskcdrdb.cdr.userfield', '!=', '')
+                    //->where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
+                    ->where('asteriskcdrdb.cdr.dcontext', '=', 'from-internal');
             }
         }
 
