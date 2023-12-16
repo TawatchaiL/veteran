@@ -745,7 +745,7 @@ class PBXController extends Controller
             }
 
             $user->save();
-            if ($tabid()) {
+            if ($tabid) {
                 return [
                     'success' => true,
                     'tab_id' => $tabid->id,

@@ -1048,6 +1048,7 @@
 
 
         $.get(`${api_serv}/chans/` + exten, async (data, status) => {
+            //$('#call_list').html('');
             await data.forEach((item, index) => {
                 let strArray = item.split("!");
                 let chan = strArray[0].split("/");
@@ -1092,6 +1093,11 @@
                             hold_button = "d-none";
                             dans_button = "d-none";
                         } else {
+                            if (mcallprofile === undefined) {
+                                desextwen = mcallexten;
+                            } else {
+                                desextwen = mcallprofile;
+                            }
                             state = 'กำลังรอสาย'
                             state_icon =
                                 '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
@@ -1100,7 +1106,8 @@
                             hold_button = "d-none";
                             dans_button = "d-none";
                             //originate cid
-                            mcallexten = mcallprofile;
+                            mcallexten = desextwen;
+
                         }
                     } else if (strArray[4] == 'Up') {
                         state = 'กำลังสนทนา'
@@ -1113,8 +1120,10 @@
                     }
 
 
-                    if (!$('#' + luniq.replace('.', '')).length) {
-                        $('#call_list').prepend(`<div class="col-md-3 " id = "${luniq.replace('.', '')}">
+                    if ($('#' + luniq.replace('.', '')).length) {
+                        $('#' + luniq.replace('.', '')).remove();
+                    }
+                    $('#call_list').prepend(`<div class="col-md-3 " id = "${luniq.replace('.', '')}">
 						<div class="card custom-bottom-right-card ${state_color}" id = "color_${luniq.replace('.', '')}" data-id="${mcallexten}">
 							<div class="card-header">
 								<h3 class="card-title call_box" id="state_${luniq.replace('.', '')}" >  ${state_icon} ${state} ${mcallexten} </h3>
@@ -1133,7 +1142,7 @@
 
 			             </div>`);
 
-                    }
+
 
                 });
                 calls_active += 1;
@@ -1152,7 +1161,7 @@
 
     //load call list on access page
     call_list();
-    /* @php
+      /* @php
     if ($temporaryPhoneStatusID == -1) {
         @endphp
         set_state_button(-1);
