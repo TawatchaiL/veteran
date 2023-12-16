@@ -101,7 +101,9 @@ class VoicerecordController extends Controller
                     //$datass->where('asteriskcdrdb.cdr.accountcode', '!=', '')
                     $datass->where('asteriskcdrdb.cdr.recordingfile', 'like', 'exten-%')
                         //->where('asteriskcdrdb.cdr.userfield', '!=', '')
-                        ->where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
+                        //->where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
+                        ->where('asteriskcdrdb.cdr.dcontext', '=', 'from-internal');
+
                 }
             }
 
