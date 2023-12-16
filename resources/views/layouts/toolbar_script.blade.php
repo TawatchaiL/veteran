@@ -1099,14 +1099,14 @@
                                 desextwen = mcallprofile;
                             }
                             state = 'กำลังรอสาย'
-                                state_icon =
-                                    '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
-                                state_color = 'card-danger';
-                                check_box_state = 'disabled';
-                                hold_button = "d-none";
-                                dans_button = "d-none";
-                                //originate cid
-                                mcallexten = desextwen;
+                            state_icon =
+                                '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
+                            state_color = 'card-danger';
+                            check_box_state = 'disabled';
+                            hold_button = "d-none";
+                            dans_button = "d-none";
+                            //originate cid
+                            mcallexten = desextwen;
 
                         }
                     } else if (strArray[4] == 'Up') {
@@ -1123,7 +1123,7 @@
                     if ($('#' + luniq.replace('.', '')).length) {
                         $('#' + luniq.replace('.', '')).remove();
                     }
-                        $('#call_list').prepend(`<div class="col-md-3 " id = "${luniq.replace('.', '')}">
+                    $('#call_list').prepend(`<div class="col-md-3 " id = "${luniq.replace('.', '')}">
 						<div class="card custom-bottom-right-card ${state_color}" id = "color_${luniq.replace('.', '')}" data-id="${mcallexten}">
 							<div class="card-header">
 								<h3 class="card-title call_box" id="state_${luniq.replace('.', '')}" >  ${state_icon} ${state} ${mcallexten} </h3>
@@ -1161,7 +1161,7 @@
 
     //load call list on access page
     call_list();
-     /* @php
+      /* @php
     if ($temporaryPhoneStatusID == -1) {
         @endphp
         set_state_button(-1);
