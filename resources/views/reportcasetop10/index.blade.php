@@ -175,7 +175,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-12 align-self-end text-right">
                                 <div class="form-group">
                                     <a class="btn btn-danger" id="exportPDFButton" {{-- href="{{ route('reportcase.pdf') }}" --}}>
-                                        <i class="fa-regular fa-file-pdf"></i> PDF/<i class="fa-solid fa-print"></i> PRINT</a>
+                                        <i class="fa-regular fa-file-pdf"></i> PDF / <i class="fa-solid fa-print"></i> PRINT</a>
                                     <a class="btn btn-success" id="exportXLSButton" {{-- href="{{ route('reportcase.pdf') }}" --}}>
                                         <i class="fa-regular fa-file-excel"></i> XLS </a>
                                 </div>
@@ -187,6 +187,7 @@
                                 <table id="Listview" class="table table-bordered table-striped table-hover">
                                     <thead>
                                         <tr>
+                                            <th width="5%">ลำดับ</th>
                                             <th>เรื่องที่ติดต่อ</th>
                                             <th width="280px">จำนวน</th>
                                         </tr>

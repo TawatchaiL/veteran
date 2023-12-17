@@ -551,7 +551,6 @@
                         doc.styles.tableFooter.fontSize = 16;
                         doc['header'] = (function() {
                             return {
-                            canvas: [ { type: 'line', x1: 40, y1: 100, x2: 595-40, y2: 100, lineWidth: 5,color:'black' } ],
                                 columns: [
                                     {
                                         text: [  
@@ -598,8 +597,8 @@
                         doc.content[0].layout = objLayout;
 
                         for (var i = 1; i < doc.content[0].table.body.length; i++) {
-                            //doc.content[0].table.body[i][0].alignment = 'center';
-                            doc.content[0].table.body[i][0].alignment = 'left';
+                            doc.content[0].table.body[i][0].alignment = 'center';
+                            //doc.content[0].table.body[i][0].alignment = 'left';
                             //doc.content[0].table.body[i][2].alignment = 'center';
                         }
                     }
@@ -651,6 +650,13 @@
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
             columns: [
+                {
+                    data: 'rownumber',
+                    name: 'rownumber',
+                    orderable: false,
+                    searchable: false,
+//                    className: 'no-print'
+                },
                 {
                     data: 'casetype1',
                     name: 'casetype1'
