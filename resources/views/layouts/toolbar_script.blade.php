@@ -1045,9 +1045,9 @@
         let calls_active = 0;
         let dans_button;
         let button_ans = '';
-        let state_color = '';
-        let state = '';
-        let state_icon = '';
+        let state_color = 'card-danger';
+        let state = 'กำลังรอสาย';
+        let state_icon = '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
         let check_box_state = '';
         let hold_button = "";
 
