@@ -1067,6 +1067,9 @@
                     mcalldnid = data[9][1];
 
                     state_color = '';
+                    state = '';
+                    state_icon = '';
+                    check_box_state = '';
 
                     if (strArray[4] == 'Ringing' || strArray[4] == 'Ring') {
                         state = 'กำลังรอสาย'
@@ -1163,7 +1166,7 @@
 
     //load call list on access page
     call_list();
-      /* @php
+     /* @php
     if ($temporaryPhoneStatusID == -1) {
         @endphp
         set_state_button(-1);
