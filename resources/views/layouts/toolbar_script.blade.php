@@ -1066,6 +1066,8 @@
                     mcallcontext = data[8][1];
                     mcalldnid = data[9][1];
 
+                    state_color = '';
+
                     if (strArray[4] == 'Ringing' || strArray[4] == 'Ring') {
                         state = 'กำลังรอสาย'
                         state_icon =
