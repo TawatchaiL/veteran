@@ -713,11 +713,6 @@
             table.button('1').trigger();
         });
 
-
-        $('#exportPrintButton').on('click', function() {
-            table.button('4').trigger();
-        });
-
         window.Apex.chart = {
             fontFamily: "Sarabun"
         };
