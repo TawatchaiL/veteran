@@ -552,32 +552,31 @@
                             fontSize: 16
                         };
                         doc.content.splice(0,1);
-                        doc.pageMargins = [20,100,20,30];
-						doc.styles.tableHeader.fontSize = 16;
+                        doc.pageMargins = [20, 150, 20, 30];
+                        doc.styles.tableHeader.fontSize = 16;
                         doc.styles.tableBodyOdd.alignment = 'center';
                         doc.styles.tableBodyEven.alignment = 'center';
                         doc.styles.tableFooter.fontSize = 16;
-                        doc['header']=(function() {
-							return {
-								columns: [
-									{
-										image: logobase64,
-                                        width: 50,
-                                        margin: [250, 0, 50, 50],
-									},
-									{
-										alignment: 'center',
-										italics: true,
-										text: 'ผลรวมแยกตามประเภทที่ติดต่อ',
-										fontSize: 18,
-										margin: [20, 50, 70, 0]
-									}
-								],
-								margin:20
-							}
-						});
+                        doc['header'] = (function() {
+                            return {
+                                columns: [
+                                    {
+                                        text: [  
+                                                { text: 'CRM REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'Report : Sum Case By Case Type (ผลรวมแยกตามประเภทที่ติดต่อ)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
+                                            ]
+                                    }
+                                ],
+                                margin: 20
+                            }
+                        });
 
-                        doc.content[0].table.widths = [400, '*'];
+                        doc.content[0].table.widths = [40, 400, '*'];
                         var objLayout = {};
 						objLayout['hLineWidth'] = function(i) { return .5; };
 						objLayout['vLineWidth'] = function(i) { return .5; };
@@ -590,7 +589,7 @@
 						doc.content[0].layout = objLayout;
 
                         for (var i = 1; i < doc.content[0].table.body.length; i++) {
-                            doc.content[0].table.body[i][0].alignment = 'left';
+                            doc.content[0].table.body[i][0].alignment = 'center';
                             //doc.content[0].table.body[i][2].alignment = 'center';
                         }
                 }
@@ -642,6 +641,13 @@
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
             columns: [
+                {
+                    data: 'rownumber',
+                    name: 'rownumber',
+                    orderable: false,
+                    searchable: false,
+//                    className: 'no-print'
+                },
                 {
                     data: 'name1',
                     name: 'name1'
