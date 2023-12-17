@@ -25,6 +25,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/agent_logoff', [App\Http\Controllers\PBXController::class, 'logoffAgentFromQueue'])->name('agent.logoff');
     Route::post('/agent_logoff_out', [App\Http\Controllers\PBXController::class, 'logoffAgentFromQueueAndLogout'])->name('agent.logoff_out');
     Route::post('/agent_break', [App\Http\Controllers\PBXController::class, 'AgentBreak'])->name('agent.break');
+    Route::post('/agent_break_auto', [App\Http\Controllers\PBXController::class, 'AgentBreakAuto'])->name('agent.break_auto');
     Route::post('/agent_unbreak', [App\Http\Controllers\PBXController::class, 'AgentUnBreak'])->name('agent.unbreak');
     Route::post('/agent_warp', [App\Http\Controllers\PBXController::class, 'AgentWarp'])->name('agent.warp');
     Route::post('/agent_unwarp', [App\Http\Controllers\PBXController::class, 'AgentUnWarp'])->name('agent.unwarp');
@@ -35,6 +36,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/agent_unhold', [App\Http\Controllers\PBXController::class, 'AgentUNHold'])->name('agent.unhold');
     Route::post('/agent_hang', [App\Http\Controllers\PBXController::class, 'AgentHang'])->name('agent.hang');
     Route::post('/agent_phone_unregis', [App\Http\Controllers\PBXController::class, 'AgentPhoneUnregis'])->name('agent.phone_unregis');
+    Route::post('/agent_phone_regis', [App\Http\Controllers\PBXController::class, 'AgentPhoneRegis'])->name('agent.phone_regis');
     Route::post('/agent_status', [App\Http\Controllers\PBXController::class, 'AgentStatus'])->name('agent.status');
     Route::post('/answer', [App\Http\Controllers\PBXController::class, 'call_answer'])->name('answer');
     Route::post('/hold', [App\Http\Controllers\PBXController::class, 'call_hold'])->name('hold');

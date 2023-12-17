@@ -202,19 +202,28 @@
                 toolbar_card.removeClass("d-none");
                 popup_tab_main.removeClass("d-none");
                 $.ajax({
-                    url: "{{ route('agent.hang') }}",
+                    url: "{{ route('agent.phone_regis') }}",
                     method: 'post',
                     async: false,
-                    data: {
-                        extension: data.extension,
-                        _token: token,
-                    },
                     success: function(result) {
-                        set_state_icon(result.id, result.icon, result.message);
-                        set_state_button(result.id);
-                        //positionCards();
+                        $.ajax({
+                            url: "{{ route('agent.hang') }}",
+                            method: 'post',
+                            async: false,
+                            data: {
+                                extension: data.extension,
+                                _token: token,
+                            },
+                            success: function(result) {
+                                set_state_icon(result.id, result.icon, result
+                                    .message);
+                                set_state_button(result.id);
+                                //positionCards();
+                            }
+                        });
                     }
                 });
+
                 //toolbar_modal.modal('hide');
             }
         }
@@ -259,10 +268,30 @@
         if (data.extension.match(exten) && data.paused == 0) {
             /* toolbar_header.removeClass("bg-warning");
             toolbar_header.addClass("bg-primary"); */
+            $.ajax({
+                url: "{{ route('agent.unbreak') }}",
+                method: 'post',
+                async: false,
+                success: function(result) {
+                    set_state_icon(result.id, result.icon, result.message);
+                    set_state_button(result.id);
+                }
+            });
             $('#pausedur').html('');
             $('#pausereason').html('');
             //localStorage.removeItem('warp');
         } else if (data.extension.match(exten) && data.paused == 1) {
+            if (data.pausereason == "Auto-Pause") {
+                $.ajax({
+                    url: "{{ route('agent.break_auto') }}",
+                    method: 'post',
+                    async: false,
+                    success: function(result) {
+                        set_state_icon(result.id, result.icon, result.message);
+                        set_state_button(result.id);
+                    }
+                });
+            }
             /* toolbar_header.removeClass("bg-primary bg-secondary bg-danger");
             toolbar_header.addClass("bg-warning"); */
 
