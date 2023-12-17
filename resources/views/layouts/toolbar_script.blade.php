@@ -1047,7 +1047,7 @@
         let button_ans = '';
         let state_color = '';
         let state = '';
-        letstate_icon = '';
+        let state_icon = '';
         let check_box_state = '';
         let hold_button = "";
 
