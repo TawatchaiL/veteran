@@ -20,6 +20,7 @@
                 unit: 'pt',
                 format: [pdfWidth, pdfHeight]
             });
+            pdf.addFont('{{ asset('fonts/THSarabunNew.ttf') }}', 'THSarabunNew', 'normal');
             var fontSizehead = 72;
             var fontSize = 16;
             pdf.text('Crm Report', pdfWidth - 40, 10, { baseline: 'top', fontSize: fontSizehead, align: 'right' });
