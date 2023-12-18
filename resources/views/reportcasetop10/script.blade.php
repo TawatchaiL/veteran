@@ -11,41 +11,33 @@
             bolditalics: '{{ asset('fonts/THSarabunNew BoldItalic.ttf') }}'
         }
     }
-    
-    $('#download_bar').click(function(event) {
-    var pdfWidth = 595.28;
-    var pdfHeight = 841.89;
-    var pdf = new jsPDF({
-        unit: 'pt',
-        format: [pdfWidth, pdfHeight]
-    });
+    $(document).ready(function() {
+        $('#download_bar').click(function(event) {
 
-    // Custom header
-    var headerText = "Custom Header Text";
-    pdf.setProperties({
-        title: headerText,
-        subject: headerText,
-        author: "Your Name",
-        keywords: "PDF, Custom Header, Bar Chart",
-    });
+            var pdfWidth = 595.28;
+            var pdfHeight = 841.89;
+            var pdf = new jsPDF({
+                unit: 'pt',
+                format: [pdfWidth, pdfHeight]
+            });
 
-    // Set custom header content (you can also use addHTML method for more complex content)
-    pdf.text(headerText, pdfWidth / 2, 30, { align: 'center' });
+            pdfDoc.text('Report 2014', 40, 15, { baseline: 'top' });
 
-    var chartContainer = document.querySelector("#bar_graph");
+            var chartContainer = document.querySelector("#bar_graph");
 
-    html2canvas(chartContainer).then(canvas => {
-        var imgData = canvas.toDataURL("image/png");
+            html2canvas(chartContainer).then(canvas => {
+                var imgData = canvas.toDataURL("image/png");
 
-        var imgWidth = pdfWidth;
-        var imgHeight = (canvas.height * imgWidth) / canvas.width;
+                var imgWidth = pdfWidth;
+                var imgHeight = (canvas.height * imgWidth) / canvas
+                    .width;
 
-        // Adjust the vertical position based on the header height
-        pdf.addImage(imgData, 'PNG', 0, 90, imgWidth, imgHeight);
+                pdf.addImage(imgData, 'PNG', 0, 60, imgWidth,
+                    imgHeight);
+                pdf.save("bar_chart.pdf");
+            });
 
-        pdf.save("bar_chart.pdf");
-    });
-});
+        });
 
         $('#download_bar_img').click(function(event) {
             var chartContainer = document.querySelector("#bar_graph");
