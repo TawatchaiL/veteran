@@ -13,50 +13,13 @@
     }
     $(document).ready(function() {
         $('#download_bar').click(function(event) {
-
-var thaiFontUrl = '{{ asset('fonts/THSarabunNew.ttf') }}'; // Replace with the actual path to your Thai font file
-    var fontName = 'THSarabunNew'; // You can use any name you like
-
-    // Load the Thai font
-    var font = new FontFace(fontName, `url(${thaiFontUrl})`);
-    font.load().then(function() {
-        document.fonts.add(font);
-
-        // Continue with the PDF creation once the font is loaded
-        createPDF();
-    });
-
-    function createPDF() {
-        var pdfWidth = 595.28;
-        var pdfHeight = 841.89;
-        var pdf = new jsPDF({
-            unit: 'pt',
-            format: [pdfWidth, pdfHeight]
-        });
-
-        var fontSizehead = 72;
-        var fontSize = 16;
-
-        // Set Thai font for the entire document
-        pdf.setFont(fontName);
-
-        pdf.text('Crm Report', pdfWidth - 40, 10, { baseline: 'top', fontSize: fontSizehead, align: 'right' });
-        pdf.text('ข้อมูลวันที่ ', 40, 30, { baseline: 'top', fontSize: fontSize, align: 'left' });
-        pdf.text('Report : Top 10 (10 อันดับเรื่องที่ติดต่อมากที่สุด)', 40, 50, { baseline: 'top', fontSize: fontSize, align: 'left' });
-        pdf.text('Report By : ', 40, 70, { baseline: 'top', fontSize: fontSize, align: 'left' });
-
-        var chartContainer = document.querySelector("#bar_graph");
-
-        html2canvas(chartContainer).then(canvas => {
-            var imgData = canvas.toDataURL("image/png");
-
-            var imgWidth = pdfWidth;
-            var imgHeight = (canvas.height * imgWidth) / canvas.width;
-
-            pdf.addImage(imgData, 'PNG', 0, 110, imgWidth, imgHeight);
-            pdf.save("bar_chart.pdf");
-        });
-    }
+            var doc = new jsPDF();
+	        doc.addFont('THSarabun.ttf', 'THSarabun', 'normal');
+            doc.setFont('THSarabun');
+            var name = 'ธวัชชัย';
+            doc.setFontSize(10); doc.text(txt + name, 10, 10);
+            for(var i = 2; i <= 10; i ++) { doc.setFontSize(5 * i); doc.text(txt, 10, 20 * i); }
+            doc.save('Test6.pdf');
             
         });
 
