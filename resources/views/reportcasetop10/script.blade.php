@@ -20,10 +20,12 @@
                 unit: 'pt',
                 format: [pdfWidth, pdfHeight]
             });
+            var fontSizehead = 72;
             var fontSize = 16;
-            pdf.text('Crm Report', pdfWidth - 40, 15, { baseline: 'top', fontSize: 100, align: 'right' });
-            pdf.text('Second Line', 40, 30, { baseline: 'top', fontSize: fontSize, align: 'left' });
-            pdf.text('Third Line', 40, 45, { baseline: 'top', fontSize: fontSize, align: 'left' });
+            pdf.text('Crm Report', pdfWidth - 40, 10, { baseline: 'top', fontSize: fontSizehead, align: 'right' });
+            pdf.text('Second Line', 40, 40, { baseline: 'top', fontSize: fontSize, align: 'left' });
+            pdf.text('Third Line', 40, 70, { baseline: 'top', fontSize: fontSize, align: 'left' });
+            pdf.text('Third Line', 40, 100, { baseline: 'top', fontSize: fontSize, align: 'left' });
 
 
             var chartContainer = document.querySelector("#bar_graph");
