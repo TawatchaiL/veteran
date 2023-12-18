@@ -880,6 +880,7 @@
                     var rowid = $(this).data('rowid')
                     var el = $(this)
                     if (!rowid) return;
+                    alert('OK');
                     $.ajax({
                         type: "DELETE",
                         dataType: 'JSON',
