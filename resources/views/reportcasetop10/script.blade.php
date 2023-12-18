@@ -13,15 +13,35 @@
     }
     $(document).ready(function() {
         $('#download_bar').click(function(event) {
-            var doc = new jsPDF();
-            doc.addFont('{{ asset('fonts/THSarabunNew.ttf') }}', 'THSarabunNew', 'normal');
-            //doc.addFileToVFS('{{ asset('fonts/THSarabunNew.ttf') }}', THSarabunNew);
-            doc.setFont('THSarabunNew');
-            var name = 'ธวัชชัย';
-            doc.setFontSize(10); doc.text(txt + name, 10, 10);
-            for(var i = 2; i <= 10; i ++) { doc.setFontSize(5 * i); doc.text(txt, 10, 20 * i); }
-            doc.save('Test6.pdf');
-            
+            var docDefinition = {
+                content: [
+                    { text: 'PDFMake Example', style: 'header' },
+                    'Hello, this is a sample PDF generated using pdfMake.',
+                    { text: 'Additional Information:', style: 'subheader' },
+                    {
+                        ul: [
+                            'Item 1',
+                            'Item 2',
+                            'Item 3'
+                        ]
+                    }
+                ],
+                styles: {
+                    header: {
+                        fontSize: 18,
+                        bold: true,
+                        margin: [0, 0, 0, 10]
+                    },
+                    subheader: {
+                        fontSize: 14,
+                        bold: true,
+                        margin: [0, 10, 0, 5]
+                    }
+                }
+            };
+
+            // Create the PDF
+            pdfMake.createPdf(docDefinition).download('example.pdf');
         });
 
         $('#download_bar_img').click(function(event) {
