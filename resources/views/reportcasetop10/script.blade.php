@@ -21,7 +21,7 @@
                 format: [pdfWidth, pdfHeight]
             });
             pdf.text('Report 2014', 40, 15, { baseline: 'top' });
-            
+            pdf.save('filePDF.pdf');
 /*
             var chartContainer = document.querySelector("#bar_graph");
 
