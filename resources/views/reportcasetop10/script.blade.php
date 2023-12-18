@@ -23,9 +23,9 @@
             var fontSizehead = 72;
             var fontSize = 16;
             pdf.text('Crm Report', pdfWidth - 40, 10, { baseline: 'top', fontSize: fontSizehead, align: 'right' });
-            pdf.text('Second Line', 40, 40, { baseline: 'top', fontSize: fontSize, align: 'left' });
-            pdf.text('Third Line', 40, 70, { baseline: 'top', fontSize: fontSize, align: 'left' });
-            pdf.text('Third Line', 40, 100, { baseline: 'top', fontSize: fontSize, align: 'left' });
+            pdf.text('ข้อมูลวันที่ ', 40, 30, { baseline: 'top', fontSize: fontSize, align: 'left' });
+            pdf.text('Report : Top 10 (10 อันดับเรื่องที่ติดต่อมากที่สุด)', 40, 50, { baseline: 'top', fontSize: fontSize, align: 'left' });
+            pdf.text('Report By : {{ Auth::user()->name }}', 40, 70, { baseline: 'top', fontSize: fontSize, align: 'left' });
 
 
             var chartContainer = document.querySelector("#bar_graph");
