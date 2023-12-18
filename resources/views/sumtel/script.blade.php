@@ -13,196 +13,188 @@
     }
     $(document).ready(function() {
         $('#download_bar').click(function(event) {
-            /*  var pdf = new jsPDF();
-             var chartContainer = document.querySelector("#bar_chart_div");
 
-             html2canvas(chartContainer).then(canvas => {
-                 var imgData = canvas.toDataURL("image/png");
+var pdfWidth = 595.28;
+var pdfHeight = 841.89;
+var pdf = new jsPDF({
+    unit: 'pt',
+    format: [pdfWidth, pdfHeight]
+});
 
-                 pdf.addImage(imgData, 'PNG', 0, 0);
-                 pdf.save("chart.pdf");
-             });  */
-            var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
-            var pdfHeight = 841.89; // Height of A4 in points
-            var pdf = new jsPDF({
-                unit: 'pt', // Use points as the unit for measurements
-                format: [pdfWidth, pdfHeight] // Set the format to A4 size
-            });
+var chartContainer = document.querySelector("#bar_graph");
 
-            var chartContainer = document.querySelector("#bar_graph");
+html2canvas(chartContainer).then(canvas => {
+    var imgData = canvas.toDataURL("image/png");
 
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png");
+    var imgWidth = pdfWidth;
+    var imgHeight = (canvas.height * imgWidth) / canvas
+        .width;
 
-                var imgWidth = pdfWidth; // Use the same width as PDF
-                var imgHeight = (canvas.height * imgWidth) / canvas
-                    .width; // Calculate proportional height
+    pdf.addImage(imgData, 'PNG', 0, 60, imgWidth,
+        imgHeight);
+    pdf.save("bar_chart.pdf");
+});
 
-                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth,
-                    imgHeight); // Add the resized image
-                pdf.save("bar_chart.pdf");
-            });
+});
 
-        });
+$('#download_bar_img').click(function(event) {
+var chartContainer = document.querySelector("#bar_graph");
 
-        $('#download_bar_img').click(function(event) {
-            var chartContainer = document.querySelector("#bar_graph");
+html2canvas(chartContainer).then(canvas => {
+    var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
 
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
+    // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
+    var link = document.createElement('a');
+    link.href = imgData;
+    link.download = 'bar_chart.png'; // ชื่อไฟล์ที่จะบันทึก
+    link.click();
+});
+});
 
-                // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
-                var link = document.createElement('a');
-                link.href = imgData;
-                link.download = 'bar_chart.png'; // ชื่อไฟล์ที่จะบันทึก
-                link.click();
-            });
-        });
+$('#print_bar').click(function(event) {
+var chartContainer = document.querySelector("#bar_graph");
 
-        $('#print_bar').click(function(event) {
-            var chartContainer = document.querySelector("#bar_graph");
+html2canvas(chartContainer).then(canvas => {
+    var imgData = canvas.toDataURL("image/png");
 
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png");
-
-                var printWindow = window.open('', '_blank');
-                printWindow.document.open();
-                printWindow.document.write('<img src="' + imgData + '">');
+    var printWindow = window.open('', '_blank');
+    printWindow.document.open();
+    printWindow.document.write('<img src="' + imgData + '">');
 
 
-                // Add an event listener for afterprint to close the print window
-                printWindow.addEventListener('afterprint', function() {
-                    printWindow.close();
-                });
+    // Add an event listener for afterprint to close the print window
+    printWindow.addEventListener('afterprint', function() {
+        printWindow.close();
+    });
 
-                setTimeout(function() {
-                    printWindow.focus();
-                    printWindow.print();
-                }, 1000); // Adjust the delay as needed
-            });
-        });
+    setTimeout(function() {
+        printWindow.focus();
+        printWindow.print();
+    }, 1000); // Adjust the delay as needed
+});
+});
 
-        $('#download_line').click(function(event) {
+$('#download_line').click(function(event) {
 
-            var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
-            var pdfHeight = 841.89; // Height of A4 in points
-            var pdf = new jsPDF({
-                unit: 'pt', // Use points as the unit for measurements
-                format: [pdfWidth, pdfHeight] // Set the format to A4 size
-            });
+var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
+var pdfHeight = 841.89; // Height of A4 in points
+var pdf = new jsPDF({
+    unit: 'pt', // Use points as the unit for measurements
+    format: [pdfWidth, pdfHeight] // Set the format to A4 size
+});
 
-            var chartContainer = document.querySelector("#line_graph");
+var chartContainer = document.querySelector("#line_graph");
 
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png");
+html2canvas(chartContainer).then(canvas => {
+    var imgData = canvas.toDataURL("image/png");
 
-                var imgWidth = pdfWidth; // Use the same width as PDF
-                var imgHeight = (canvas.height * imgWidth) / canvas
-                    .width; // Calculate proportional height
+    var imgWidth = pdfWidth; // Use the same width as PDF
+    var imgHeight = (canvas.height * imgWidth) / canvas
+        .width; // Calculate proportional height
 
-                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth,
-                    imgHeight); // Add the resized image
-                pdf.save("line_chart.pdf");
-            });
+        pdf.addImage(imgData, 'PNG', 0, 60, imgWidth,
+        imgHeight);
+    pdf.save("line_chart.pdf");
+});
 
-        });
+});
 
-        $('#download_line_img').click(function(event) {
-            var chartContainer = document.querySelector("#line_graph");
+$('#download_line_img').click(function(event) {
+var chartContainer = document.querySelector("#line_graph");
 
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
+html2canvas(chartContainer).then(canvas => {
+    var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
 
-                // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
-                var link = document.createElement('a');
-                link.href = imgData;
-                link.download = 'line_chart.png'; // ชื่อไฟล์ที่จะบันทึก
-                link.click();
-            });
-        });
+    // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
+    var link = document.createElement('a');
+    link.href = imgData;
+    link.download = 'line_chart.png'; // ชื่อไฟล์ที่จะบันทึก
+    link.click();
+});
+});
 
-        $('#print_line').click(function(event) {
-            var chartContainer = document.querySelector("#line_graph");
+$('#print_line').click(function(event) {
+var chartContainer = document.querySelector("#line_graph");
 
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png");
+html2canvas(chartContainer).then(canvas => {
+    var imgData = canvas.toDataURL("image/png");
 
-                var printWindow = window.open('', '_blank');
-                printWindow.document.open();
-                printWindow.document.write('<img src="' + imgData + '">');
-                // Add an event listener for afterprint to close the print window
-                printWindow.addEventListener('afterprint', function() {
-                    printWindow.close();
-                });
+    var printWindow = window.open('', '_blank');
+    printWindow.document.open();
+    printWindow.document.write('<img src="' + imgData + '">');
+    // Add an event listener for afterprint to close the print window
+    printWindow.addEventListener('afterprint', function() {
+        printWindow.close();
+    });
 
-                setTimeout(function() {
-                    printWindow.focus();
-                    printWindow.print();
-                }, 1000); // Adjust the delay as needed
-            });
-        });
+    setTimeout(function() {
+        printWindow.focus();
+        printWindow.print();
+    }, 1000); // Adjust the delay as needed
+});
+});
 
-        $('#download_pie').click(function(event) {
+$('#download_pie').click(function(event) {
 
-            var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
-            var pdfHeight = 841.89; // Height of A4 in points
-            var pdf = new jsPDF({
-                unit: 'pt', // Use points as the unit for measurements
-                format: [pdfWidth, pdfHeight] // Set the format to A4 size
-            });
+var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
+var pdfHeight = 841.89; // Height of A4 in points
+var pdf = new jsPDF({
+    unit: 'pt', // Use points as the unit for measurements
+    format: [pdfWidth, pdfHeight] // Set the format to A4 size
+});
 
-            var chartContainer = document.querySelector("#pie_graph");
+var chartContainer = document.querySelector("#pie_graph");
 
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png");
+html2canvas(chartContainer).then(canvas => {
+    var imgData = canvas.toDataURL("image/png");
 
-                var imgWidth = pdfWidth; // Use the same width as PDF
-                var imgHeight = (canvas.height * imgWidth) / canvas
-                    .width; // Calculate proportional height
+    var imgWidth = pdfWidth; // Use the same width as PDF
+    var imgHeight = (canvas.height * imgWidth) / canvas
+        .width; // Calculate proportional height
 
-                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth,
-                    imgHeight); // Add the resized image
-                pdf.save("pie_chart.pdf");
-            });
+        pdf.addImage(imgData, 'PNG', 0, 60, imgWidth,
+        imgHeight);
+    pdf.save("pie_chart.pdf");
+});
 
-        });
+});
 
-        $('#download_pie_img').click(function(event) {
-            var chartContainer = document.querySelector("#pie_graph");
+$('#download_pie_img').click(function(event) {
+var chartContainer = document.querySelector("#pie_graph");
 
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
+html2canvas(chartContainer).then(canvas => {
+    var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
 
-                // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
-                var link = document.createElement('a');
-                link.href = imgData;
-                link.download = 'pie_chart.png'; // ชื่อไฟล์ที่จะบันทึก
-                link.click();
-            });
-        });
+    // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
+    var link = document.createElement('a');
+    link.href = imgData;
+    link.download = 'pie_chart.png'; // ชื่อไฟล์ที่จะบันทึก
+    link.click();
+});
+});
 
-        $('#print_pie').click(function(event) {
-            var chartContainer = document.querySelector("#pie_graph");
+$('#print_pie').click(function(event) {
+var chartContainer = document.querySelector("#pie_graph");
 
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png");
+html2canvas(chartContainer).then(canvas => {
+    var imgData = canvas.toDataURL("image/png");
 
-                var printWindow = window.open('', '_blank');
-                printWindow.document.open();
-                printWindow.document.write('<img src="' + imgData + '">');
-                printWindow.document.close(); // Close the document for writing
+    var printWindow = window.open('', '_blank');
+    printWindow.document.open();
+    printWindow.document.write('<img src="' + imgData + '">');
+    printWindow.document.close(); // Close the document for writing
 
-                // Add an event listener for afterprint to close the print window
-                printWindow.addEventListener('afterprint', function() {
-                    printWindow.close();
-                });
+    // Add an event listener for afterprint to close the print window
+    printWindow.addEventListener('afterprint', function() {
+        printWindow.close();
+    });
 
-                setTimeout(function() {
-                    printWindow.focus();
-                    printWindow.print();
-                }, 1000); // Adjust the delay as needed
-            });
-        });
+    setTimeout(function() {
+        printWindow.focus();
+        printWindow.print();
+    }, 1000); // Adjust the delay as needed
+});
+});
 
 
 
