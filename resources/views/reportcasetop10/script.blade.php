@@ -14,40 +14,30 @@
     $(document).ready(function() {
         $('#download_bar').click(function(event) {
 
-            var doc = new jsPDF();
-    var totalPagesExp = "{total_pages_count_string}";
+            var pdfWidth = 595.28;
+            var pdfHeight = 841.89;
+            var pdf = new jsPDF({
+                unit: 'pt',
+                format: [pdfWidth, pdfHeight]
+            });
+            
+            pdf.text('Report 2014', 40, 15, { baseline: 'top' });
+            pdf.save('filePDF.pdf');
+/*
+            var chartContainer = document.querySelector("#bar_graph");
 
-    var pageContent = function (data) {
-        // HEADER
-        doc.setFontSize(20);
-        doc.setTextColor(40);
-        doc.setFontStyle('normal');
-        if (logobase64) {
-            doc.addImage(logobase64, 'JPEG', data.settings.margin.left, 15, 10, 10);
-        }
-        doc.text("Report", data.settings.margin.left + 15, 22);
+            html2canvas(chartContainer).then(canvas => {
+                var imgData = canvas.toDataURL("image/png");
 
-        // FOOTER
-        var str = "Page " + data.pageCount;
-        // Total page number plugin only available in jspdf v1.0+
-        if (typeof doc.putTotalPages === 'function') {
-            str = str + " of " + totalPagesExp;
-        }
-        doc.setFontSize(10);
-        doc.text(str, data.settings.margin.left, doc.internal.pageSize.height - 10);
-    };
-
-    doc.autoTable(getColumns(), getData(40), {
-        addPageContent: pageContent,
-        margin: {top: 30}
-    });
-
-    // Total page number plugin only available in jspdf v1.0+
-    if (typeof doc.putTotalPages === 'function') {
-        doc.putTotalPages(totalPagesExp);
-    }
-
-    return doc;
+                var imgWidth = pdfWidth;
+                var imgHeight = (canvas.height * imgWidth) / canvas
+                    .width;
+                
+                pdf.addImage(imgData, 'PNG', 0, 60, imgWidth,
+                    imgHeight);
+                pdf.save("bar_chart.pdf");
+            });
+*/
         });
 
         $('#download_bar_img').click(function(event) {
