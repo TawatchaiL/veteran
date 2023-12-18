@@ -21,8 +21,7 @@
                 format: [pdfWidth, pdfHeight]
             });
             
-            pdf.text('Report 2014', 40, 15, { baseline: 'top' });
-            pdf.save('filePDF.pdf');
+            pdf.text('Crm Report', 40, 15, { baseline: 'top' });
 
             var chartContainer = document.querySelector("#bar_graph");
 
@@ -35,9 +34,9 @@
                 
                 pdf.addImage(imgData, 'PNG', 0, 60, imgWidth,
                     imgHeight);
-                pdf.save("bar_chart.pdf");
+                
             });
-
+            pdf.save("bar_chart.pdf");
         });
 
         $('#download_bar_img').click(function(event) {
