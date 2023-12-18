@@ -14,7 +14,7 @@
     $(document).ready(function() {
         $('#download_bar').click(function(event) {
 
-var thaiFontUrl = 'path/to/your/thai-font.ttf'; // Replace with the actual path to your Thai font file
+var thaiFontUrl = '{{ asset('fonts/THSarabunNew.ttf') }}'; // Replace with the actual path to your Thai font file
     var fontName = 'THSarabunNew'; // You can use any name you like
 
     // Load the Thai font
