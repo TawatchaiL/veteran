@@ -21,7 +21,7 @@
                 format: [pdfWidth, pdfHeight]
             });
 
-            pdfDoc.text('Report 2014', 40, 15, { baseline: 'top' });
+            pdf.text('Report 2014', 40, 15, { baseline: 'top' });
 
             var chartContainer = document.querySelector("#bar_graph");
 
