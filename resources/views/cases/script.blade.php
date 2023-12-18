@@ -1020,10 +1020,14 @@
                                     .name)
                             );
                         });
+                        if(res.data.length === 0){
+                            $('#casetype2').attr('disabled', true);
+                        }else{
+                            $('#casetype2').attr('disabled', false);
+                        }
                     }
                 });
-                $('#casetype2').attr('disabled', false);
-
+                
                 $('#casetype3').attr('disabled', true);
                 $('#casetype4').attr('disabled', true);
                 $('#casetype5').attr('disabled', true);
@@ -1057,9 +1061,13 @@
                                     .name)
                             );
                         });
+                        if(res.data.length === 0){
+                            $('#casetype3').attr('disabled', true);
+                        }else{
+                            $('#casetype3').attr('disabled', false);
+                        }
                     }
                 });
-                $('#casetype3').attr('disabled', false);
 
                 $('#casetype4').attr('disabled', true);
                 $('#casetype5').attr('disabled', true);
@@ -1091,9 +1099,13 @@
                                     .name)
                             );
                         });
+                        if(res.data.length === 0){
+                            $('#casetype4').attr('disabled', true);
+                        }else{
+                            $('#casetype4').attr('disabled', false);
+                        }
                     }
                 });
-                $('#casetype4').attr('disabled', false);
 
                 $('#casetype5').attr('disabled', true);
                 $('#casetype6').attr('disabled', true);
@@ -1122,9 +1134,13 @@
                                     .name)
                             );
                         });
+                        if(res.data.length === 0){
+                            $('#casetype5').attr('disabled', true);
+                        }else{
+                            $('#casetype5').attr('disabled', false);
+                        }
                     }
                 });
-                $('#casetype5').attr('disabled', false);
 
                 $('#casetype6').attr('disabled', true);
             } else {
@@ -1150,9 +1166,13 @@
                                     .name)
                             );
                         });
+                        if(res.data.length === 0){
+                            $('#casetype6').attr('disabled', true);
+                        }else{
+                            $('#casetype6').attr('disabled', false);
+                        }
                     }
                 });
-                $('#casetype6').attr('disabled', false);
             } else {
                 $('#casetype6').attr('disabled', true);
             }

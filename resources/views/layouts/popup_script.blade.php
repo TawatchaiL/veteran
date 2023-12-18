@@ -599,10 +599,16 @@
                                 .html(item.name)
                             );
                         });
+                        if(res.data.length === 0){
+                            //$('#casetype6').attr('disabled', true);
+                            $('#casetype' + nextcase + 'p' + cardId).attr('disabled', true);
+                        }else{
+                            //$('#casetype6').attr('disabled', false);
+                            $('#casetype' + nextcase + 'p' + cardId).attr('disabled', false);
+                        }
                     }
                 });
 
-                $('#casetype' + nextcase + 'p' + cardId).attr('disabled', false);
                 for (let i = discase; i < 7; i++) {
                     $('#casetype' + i + 'p' + cardId).attr('disabled', true);
                 }
