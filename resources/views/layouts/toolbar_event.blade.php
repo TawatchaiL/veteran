@@ -403,7 +403,7 @@
                     </div>
                 </div>
                 </div>`);
-                call_list();
+                //call_list();
                 toolbar_modal.modal('show');
 
 

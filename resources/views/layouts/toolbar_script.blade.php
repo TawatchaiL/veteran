@@ -1045,6 +1045,11 @@
         let calls_active = 0;
         let dans_button;
         let button_ans = '';
+        let state_color = 'card-danger';
+        let state = 'กำลังรอสาย';
+        let state_icon = '<i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i>';
+        let check_box_state = '';
+        let hold_button = "";
 
 
         $.get(`${api_serv}/chans/` + exten, async (data, status) => {
@@ -1065,6 +1070,8 @@
                     mcalldestchan = data[3][1];
                     mcallcontext = data[8][1];
                     mcalldnid = data[9][1];
+
+
 
                     if (strArray[4] == 'Ringing' || strArray[4] == 'Ring') {
                         state = 'กำลังรอสาย'
@@ -1161,7 +1168,7 @@
 
     //load call list on access page
     call_list();
-      /* @php
+     /* @php
     if ($temporaryPhoneStatusID == -1) {
         @endphp
         set_state_button(-1);
