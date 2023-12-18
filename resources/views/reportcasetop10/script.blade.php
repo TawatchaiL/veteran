@@ -22,8 +22,8 @@
             });
             var fontSize = 16;
             pdf.text('Crm Report', pdfWidth - 40, 15, { baseline: 'top', fontSize: 100, align: 'right' });
-            pdf.text('Second Line', pdfWidth - 40, 30, { baseline: 'top', fontSize: fontSize, align: 'left' });
-            pdf.text('Third Line', pdfWidth - 40, 45, { baseline: 'top', fontSize: fontSize, align: 'left' });
+            pdf.text('Second Line', 40, 30, { baseline: 'top', fontSize: fontSize, align: 'left' });
+            pdf.text('Third Line', 40, 45, { baseline: 'top', fontSize: fontSize, align: 'left' });
 
 
             var chartContainer = document.querySelector("#bar_graph");
