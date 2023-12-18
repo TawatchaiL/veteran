@@ -13,200 +13,188 @@
     }
     $(document).ready(function() {
         $('#download_bar').click(function(event) {
-            var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
-            var pdfHeight = 841.89; // Height of A4 in points
-            var pdf = new jsPDF({
-                unit: 'pt', // Use points as the unit for measurements
-                format: [pdfWidth, pdfHeight] // Set the format to A4 size
-            });
 
-            var chartContainer = document.querySelector("#bar_graph");
+var pdfWidth = 595.28;
+var pdfHeight = 841.89;
+var pdf = new jsPDF({
+    unit: 'pt',
+    format: [pdfWidth, pdfHeight]
+});
 
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png");
+var chartContainer = document.querySelector("#bar_graph");
 
-                var imgWidth = pdfWidth; // Use the same width as PDF
-                var imgHeight = (canvas.height * imgWidth) / canvas
-                    .width; // Calculate proportional height
+html2canvas(chartContainer).then(canvas => {
+    var imgData = canvas.toDataURL("image/png");
 
-                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth,
-                    imgHeight); // Add the resized image
-                pdf.save("bar_chart.pdf");
-            });
+    var imgWidth = pdfWidth;
+    var imgHeight = (canvas.height * imgWidth) / canvas
+        .width;
 
-        });
+    pdf.addImage(imgData, 'PNG', 0, 60, imgWidth,
+        imgHeight);
+    pdf.save("bar_chart.pdf");
+});
 
-        $('#download_bar_img').click(function(event) {
-            var chartContainer = document.querySelector("#bar_graph");
+});
 
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
+$('#download_bar_img').click(function(event) {
+var chartContainer = document.querySelector("#bar_graph");
 
-                // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
-                var link = document.createElement('a');
-                link.href = imgData;
-                link.download = 'bar_chart.png'; // ชื่อไฟล์ที่จะบันทึก
-                link.click();
-            });
-        });
+html2canvas(chartContainer).then(canvas => {
+    var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
 
-        $('#print_bar').click(function(event) {
-            var chartContainer = document.querySelector("#bar_graph");
+    // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
+    var link = document.createElement('a');
+    link.href = imgData;
+    link.download = 'bar_chart.png'; // ชื่อไฟล์ที่จะบันทึก
+    link.click();
+});
+});
 
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png");
+$('#print_bar').click(function(event) {
+var chartContainer = document.querySelector("#bar_graph");
 
-                var printWindow = window.open('', '_blank');
-                printWindow.document.open();
-                printWindow.document.write(
-                    '<style>@page { size: landscape; }</style>'); // Set landscape orientation
-                printWindow.document.write(
-                    '<style>body { font-family: Sarabun; }</style>'); // Set font style
-                printWindow.document.write('<img src="' + imgData + '">');
+html2canvas(chartContainer).then(canvas => {
+    var imgData = canvas.toDataURL("image/png");
+
+    var printWindow = window.open('', '_blank');
+    printWindow.document.open();
+    printWindow.document.write('<img src="' + imgData + '">');
 
 
-                // Add an event listener for afterprint to close the print window
-                printWindow.addEventListener('afterprint', function() {
-                    printWindow.close();
-                });
+    // Add an event listener for afterprint to close the print window
+    printWindow.addEventListener('afterprint', function() {
+        printWindow.close();
+    });
 
-                setTimeout(function() {
-                    printWindow.focus();
-                    printWindow.print();
-                }, 1000); // Adjust the delay as needed
-            });
-        });
+    setTimeout(function() {
+        printWindow.focus();
+        printWindow.print();
+    }, 1000); // Adjust the delay as needed
+});
+});
 
-        $('#download_line').click(function(event) {
+$('#download_line').click(function(event) {
 
-            var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
-            var pdfHeight = 841.89; // Height of A4 in points
-            var pdf = new jsPDF({
-                unit: 'pt', // Use points as the unit for measurements
-                format: [pdfWidth, pdfHeight] // Set the format to A4 size
-            });
+var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
+var pdfHeight = 841.89; // Height of A4 in points
+var pdf = new jsPDF({
+    unit: 'pt', // Use points as the unit for measurements
+    format: [pdfWidth, pdfHeight] // Set the format to A4 size
+});
 
-            var chartContainer = document.querySelector("#line_graph");
+var chartContainer = document.querySelector("#line_graph");
 
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png");
+html2canvas(chartContainer).then(canvas => {
+    var imgData = canvas.toDataURL("image/png");
 
-                var imgWidth = pdfWidth; // Use the same width as PDF
-                var imgHeight = (canvas.height * imgWidth) / canvas
-                    .width; // Calculate proportional height
+    var imgWidth = pdfWidth; // Use the same width as PDF
+    var imgHeight = (canvas.height * imgWidth) / canvas
+        .width; // Calculate proportional height
 
-                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth,
-                    imgHeight); // Add the resized image
-                pdf.save("line_chart.pdf");
-            });
+        pdf.addImage(imgData, 'PNG', 0, 60, imgWidth,
+        imgHeight);
+    pdf.save("line_chart.pdf");
+});
 
-        });
+});
 
-        $('#download_line_img').click(function(event) {
-            var chartContainer = document.querySelector("#line_graph");
+$('#download_line_img').click(function(event) {
+var chartContainer = document.querySelector("#line_graph");
 
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
+html2canvas(chartContainer).then(canvas => {
+    var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
 
-                // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
-                var link = document.createElement('a');
-                link.href = imgData;
-                link.download = 'line_chart.png'; // ชื่อไฟล์ที่จะบันทึก
-                link.click();
-            });
-        });
+    // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
+    var link = document.createElement('a');
+    link.href = imgData;
+    link.download = 'line_chart.png'; // ชื่อไฟล์ที่จะบันทึก
+    link.click();
+});
+});
 
-        $('#print_line').click(function(event) {
-            var chartContainer = document.querySelector("#line_graph");
+$('#print_line').click(function(event) {
+var chartContainer = document.querySelector("#line_graph");
 
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png");
+html2canvas(chartContainer).then(canvas => {
+    var imgData = canvas.toDataURL("image/png");
 
-                var printWindow = window.open('', '_blank');
-                printWindow.document.open();
-                printWindow.document.write(
-                    '<style>@page { size: landscape; }</style>'); // Set landscape orientation
-                printWindow.document.write(
-                    '<link rel="stylesheet" href="dist/css/Sarabun.css"><style>body { font-family: Sarabun; }</style>'
-                    ); // Set font style
-                printWindow.document.write('<img src="' + imgData + '">');
-                // Add an event listener for afterprint to close the print window
-                printWindow.addEventListener('afterprint', function() {
-                    printWindow.close();
-                });
+    var printWindow = window.open('', '_blank');
+    printWindow.document.open();
+    printWindow.document.write('<img src="' + imgData + '">');
+    // Add an event listener for afterprint to close the print window
+    printWindow.addEventListener('afterprint', function() {
+        printWindow.close();
+    });
 
-                setTimeout(function() {
-                    printWindow.focus();
-                    printWindow.print();
-                }, 1000); // Adjust the delay as needed
-            });
-        });
+    setTimeout(function() {
+        printWindow.focus();
+        printWindow.print();
+    }, 1000); // Adjust the delay as needed
+});
+});
 
-        $('#download_pie').click(function(event) {
+$('#download_pie').click(function(event) {
 
-            var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
-            var pdfHeight = 841.89; // Height of A4 in points
-            var pdf = new jsPDF({
-                unit: 'pt', // Use points as the unit for measurements
-                format: [pdfWidth, pdfHeight] // Set the format to A4 size
-            });
+var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
+var pdfHeight = 841.89; // Height of A4 in points
+var pdf = new jsPDF({
+    unit: 'pt', // Use points as the unit for measurements
+    format: [pdfWidth, pdfHeight] // Set the format to A4 size
+});
 
-            var chartContainer = document.querySelector("#pie_graph");
+var chartContainer = document.querySelector("#pie_graph");
 
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png");
+html2canvas(chartContainer).then(canvas => {
+    var imgData = canvas.toDataURL("image/png");
 
-                var imgWidth = pdfWidth; // Use the same width as PDF
-                var imgHeight = (canvas.height * imgWidth) / canvas
-                    .width; // Calculate proportional height
+    var imgWidth = pdfWidth; // Use the same width as PDF
+    var imgHeight = (canvas.height * imgWidth) / canvas
+        .width; // Calculate proportional height
 
-                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth,
-                    imgHeight); // Add the resized image
-                pdf.save("pie_chart.pdf");
-            });
+        pdf.addImage(imgData, 'PNG', 0, 60, imgWidth,
+        imgHeight);
+    pdf.save("pie_chart.pdf");
+});
 
-        });
+});
 
-        $('#download_pie_img').click(function(event) {
-            var chartContainer = document.querySelector("#pie_graph");
+$('#download_pie_img').click(function(event) {
+var chartContainer = document.querySelector("#pie_graph");
 
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
+html2canvas(chartContainer).then(canvas => {
+    var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
 
-                // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
-                var link = document.createElement('a');
-                link.href = imgData;
-                link.download = 'pie_chart.png'; // ชื่อไฟล์ที่จะบันทึก
-                link.click();
-            });
-        });
+    // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
+    var link = document.createElement('a');
+    link.href = imgData;
+    link.download = 'pie_chart.png'; // ชื่อไฟล์ที่จะบันทึก
+    link.click();
+});
+});
 
-        $('#print_pie').click(function(event) {
-            var chartContainer = document.querySelector("#pie_graph");
+$('#print_pie').click(function(event) {
+var chartContainer = document.querySelector("#pie_graph");
 
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png");
+html2canvas(chartContainer).then(canvas => {
+    var imgData = canvas.toDataURL("image/png");
 
-                var printWindow = window.open('', '_blank');
-                printWindow.document.open();
-                printWindow.document.write(
-                    '<style>@page { size: landscape; }</style>'); // Set landscape orientation
-                printWindow.document.write(
-                    '<style>body { font-family: Sarabun; }</style>'); // Set font style
-                printWindow.document.write('<img src="' + imgData + '">');
-                printWindow.document.close(); // Close the document for writing
+    var printWindow = window.open('', '_blank');
+    printWindow.document.open();
+    printWindow.document.write('<img src="' + imgData + '">');
+    printWindow.document.close(); // Close the document for writing
 
-                // Add an event listener for afterprint to close the print window
-                printWindow.addEventListener('afterprint', function() {
-                    printWindow.close();
-                });
+    // Add an event listener for afterprint to close the print window
+    printWindow.addEventListener('afterprint', function() {
+        printWindow.close();
+    });
 
-                setTimeout(function() {
-                    printWindow.focus();
-                    printWindow.print();
-                }, 1000); // Adjust the delay as needed
-            });
-        });
+    setTimeout(function() {
+        printWindow.focus();
+        printWindow.print();
+    }, 1000); // Adjust the delay as needed
+});
+});
 
 
 
@@ -299,26 +287,34 @@
 
         var startDate;
         var endDate;
+
         function datesearch() {
+            //.add(1, 'month').add(543, 'year').format('LLLL')
             var currentDate = moment();
-            // Set the start date to 7 days before today
-            //startDate = moment(currentDate).subtract(15, 'days').format('YYYY-MM-DD');
-            // Set the end date to the end of the current month
-            //endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
-            startDate = moment().format('YYYY-MM-DD HH:mm:ss');
-            endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD HH:mm:ss');
+            console.log(currentDate)
+            startDate = moment(currentDate).subtract(30, 'days').startOf('day').format('YYYY-MM-DD HH:mm:ss');
+            endDate = moment(currentDate).endOf('month').endOf('day').format('YYYY-MM-DD HH:mm:ss');
         }
-        function datereset() {
-            var currentDate = moment();
-            startDate = moment().format('YYYY-MM-DD HH:mm:ss');
-            endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD HH:mm:ss');
+
+
+        function storeFieldValues() {
+            var dateStart = $('#reservation').val();
+            var sagent = $('#agen').val();
+            var stelp = $('#telp').val();
+            var sctype = $('#ctype').val();
+
+            // Store values in local storage
+            localStorage.setItem('dateStart', dateStart);
+            localStorage.setItem('sagent', sagent);
+            localStorage.setItem('stelp', stelp);
+            localStorage.setItem('sctype', sctype);
         }
 
         function retrieveFieldValues() {
             var saveddateStart = localStorage.getItem('dateStart');
-            var savedSearchType = localStorage.getItem('searchType');
-            var savedKeyword = localStorage.getItem('keyword');
-
+            var savedsagent = localStorage.getItem('sagent');
+            var savedstelp = localStorage.getItem('stelp');
+            var savedctype = localStorage.getItem('sctype');
             // Set field values from local storage
             if (saveddateStart) {
                 var dateParts = saveddateStart.split(' - ');
@@ -327,10 +323,26 @@
             } else {
                 datesearch();
             }
+
+            console.log(`${startDate} - ${endDate}`)
+            $('#reservation').val(`${startDate} - ${endDate}`)
+
+            if (savedsagent) {
+                $('#agen').val(savedsagent);
+            }
+            if (savedstelp) {
+                $('#telp').val(savedstelp);
+            }
+
+            if (savedctype) {
+                $('#ctype').val(savedctype);
+            }
+
         }
 
+
         let daterange = () => {
-            moment.locale('th');
+
 
             var startTime = '00:00:00';
             var endTime = '23:59:59';
@@ -344,6 +356,10 @@
             var last30DaysRange = [moment().subtract(29, 'days').startOf('day').set('hour', 0).set('minute',
                 0).set('second', 0), moment(endTime, 'HH:mm:ss')];
 
+            var currentYear = moment().year();
+            var maxYear = moment().year(currentYear).add(1, 'year').format('YYYY-MM-DD');
+            var minYear = moment().year(currentYear).subtract(2, 'years').format('YYYY-MM-DD');
+
             $('#reservation').daterangepicker({
                 timePicker: true,
                 timePicker24Hour: true,
@@ -351,6 +367,10 @@
                 //timePickerIncrement: 5,
                 startDate: startDate,
                 endDate: endDate,
+                showDropdowns: true,
+                linkedCalendars: false,
+                minDate: minYear,
+                maxDate: maxYear,
                 ranges: {
                     'วันนี้': todayRange,
                     'เมื่อวานนี้': yesterdayRange,
@@ -376,23 +396,55 @@
                     firstDay: 1
                 }
             });
+
             // Apply the custom date range filter on input change
-            $('#reservation').on('apply.daterangepicker', function() {
-                console.log($('#reservation').val())
+            $('#reservation').on('apply.daterangepicker', function(ev, picker) {
                 table.draw();
                 storeFieldValues();
             });
         }
-        datesearch();
+
+        retrieveFieldValues();
         daterange();
 
-        $('#btnsearch').click(function(e) {
-            $('#Listview').DataTable().ajax.reload();
-        });
-        $('#btnreset').click(function(e) {
-            datereset();
+        $('#resetSearchButton').on('click', async function() {
+            localStorage.removeItem('dateStart');
+            localStorage.removeItem('sagent');
+            localStorage.removeItem('stelp');
+            localStorage.removeItem('sctype');
+
+            // Set field values to empty
+            $('#telp').val('');
+            $('#agen').val('');
+            $('#ctype').val('');
+
+            $('#Listview').html('');
+
+            // Clear DataTable state
+            if (table) {
+                table.state.clear();
+                await table.destroy();
+            }
+            // Set the date range back to its default
+            var currentDate = moment();
+            var startDate = moment(currentDate).subtract(30, 'days').startOf('day').format(
+                'YYYY-MM-DD HH:mm:ss');
+            var endDate = moment(currentDate).endOf('month').endOf('day').format(
+                'YYYY-MM-DD HH:mm:ss');
+
             daterange();
-            $('#Listview').DataTable().ajax.reload();
+            table = $('#Listview').DataTable(table_option);
+            table.draw();
+        });
+
+        $('#btnsearch').on('click', function() {
+            storeFieldValues();
+            //var telp = $('#telp').val();
+            table.search('').draw();
+            $.fn.dataTable.ext.search.pop();
+            /* if (telp !== '') {
+                table.column(3).search(telp).draw();
+            } */
         });
 
         var table = $('#Listview').DataTable({
@@ -479,30 +531,29 @@
                             fontSize: 16
                         };
                         doc.content.splice(0,1);
-                        doc.pageMargins = [20,100,20,30];
-						doc.styles.tableHeader.fontSize = 16;
+                        doc.pageMargins = [20, 150, 20, 30];
+                        doc.styles.tableHeader.fontSize = 16;
                         doc.styles.tableBodyOdd.alignment = 'center';
                         doc.styles.tableBodyEven.alignment = 'center';
                         doc.styles.tableFooter.fontSize = 16;
-                        doc['header']=(function() {
-							return {
-								columns: [
-									{
-										image: logobase64,
-                                        width: 50,
-                                        margin: [250, 0, 50, 50],
-									},
-									{
-										alignment: 'center',
-										italics: true,
-										text: 'ผลรวมสายเข้าแยกตาม Agent',
-										fontSize: 18,
-										margin: [20, 50, 70, 0]
-									}
-								],
-								margin:20
-							}
-						});
+                        doc['header'] = (function() {
+                            return {
+                                columns: [
+                                    {
+                                        text: [  
+                                                { text: 'CRM REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'Report : Summary Incoming Call By Agent (ผลรวมสายเข้าแยกตาม Agent)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
+                                            ]
+                                    }
+                                ],
+                                margin: 20
+                            }
+                        });
 
                         doc.content[0].table.widths = [40, 400, '*'];
                         var objLayout = {};
