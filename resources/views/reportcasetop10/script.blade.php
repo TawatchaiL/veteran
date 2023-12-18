@@ -29,14 +29,12 @@
                 var imgData = canvas.toDataURL("image/png");
 
                 var imgWidth = pdfWidth;
-                var imgHeight = (canvas.height * imgWidth) / canvas
-                    .width;
+                var imgHeight = (canvas.height * imgWidth) / canvas.width;
                 
-                pdf.addImage(imgData, 'PNG', 0, 60, imgWidth,
-                    imgHeight);
-                
+                pdf.addImage(imgData, 'PNG', 0, 60, imgWidth, imgHeight);
+                pdf.save("bar_chart.pdf");
             });
-            pdf.save("bar_chart.pdf");
+            
         });
 
         $('#download_bar_img').click(function(event) {
