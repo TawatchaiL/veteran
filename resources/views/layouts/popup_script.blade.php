@@ -599,6 +599,7 @@
                                 .html(item.name)
                             );
                         });
+                        alert(res.data.length);
                         if(res.data.length === 0){
                             //$('#casetype6').attr('disabled', true);
                             $('#casetype' + nextcase + 'p' + cardId).attr('disabled', true);
