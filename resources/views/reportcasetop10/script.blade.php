@@ -20,9 +20,9 @@
                 unit: 'pt',
                 format: [pdfWidth, pdfHeight]
             });
-
+            pdf.text('Report 2014', 40, 15, { baseline: 'top' });
             
-
+/*
             var chartContainer = document.querySelector("#bar_graph");
 
             html2canvas(chartContainer).then(canvas => {
@@ -31,12 +31,12 @@
                 var imgWidth = pdfWidth;
                 var imgHeight = (canvas.height * imgWidth) / canvas
                     .width;
-                pdf.text('Report 2014', 40, 15, { baseline: 'top' });
+                
                 pdf.addImage(imgData, 'PNG', 0, 60, imgWidth,
                     imgHeight);
                 pdf.save("bar_chart.pdf");
             });
-
+*/
         });
 
         $('#download_bar_img').click(function(event) {
