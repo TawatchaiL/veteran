@@ -836,6 +836,8 @@
 
         $(document).on('click', '.btn-delete', function() {
             //if (!confirm("ยืนยันการทำรายการ ?")) return;
+            var rowid = $(this).data('rowid');
+            var el = $(this);
             ezBSAlert({
                 type: "confirm",
                 headerText: "Confirm",
@@ -843,11 +845,7 @@
                 alertType: "info",
             }).done(function(r) {
                 if (r == true) {
-                    var rowid = $(this).data('rowid')
-                    var el = $(this)
                     if (!rowid) return;
-
-
                     $.ajax({
                         //type: "POST",
                         method: 'DELETE',
