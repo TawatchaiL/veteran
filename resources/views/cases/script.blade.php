@@ -870,6 +870,7 @@
 
         $(document).on('click', '.btn-delete', function() {
             //if (!confirm("ยืนยันการทำรายการ ?")) return;
+            alert('OK');
             ezBSAlert({
                 type: "confirm",
                 headerText: "Confirm",
@@ -880,7 +881,7 @@
                     var rowid = $(this).data('rowid')
                     var el = $(this)
                     if (!rowid) return;
-                    alert('OK');
+                    alert(rowid);
                     $.ajax({
                         type: "DELETE",
                         dataType: 'JSON',
