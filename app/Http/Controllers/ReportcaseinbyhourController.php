@@ -50,7 +50,7 @@ class ReportcaseinbyhourController extends Controller
         }
 
             $datas = DB::connection('remote_connection')
-            ->table('call_center.timeslot', DB::raw('(SELECT @rownumber:=0) AS temp'))
+            ->table(DB::raw('call_center.timeslot, (SELECT @rownumber:=0) AS temp'))
                     ->selectRaw("@rownumber:=@rownumber + 1 AS rownumber, timeslot.timeslot as timelabel, c.numberhour, if(c.numberhour IS NULL,0,c.total_cases) as sumt")
                     ->leftJoin(DB::raw("(SELECT
                         CASE
