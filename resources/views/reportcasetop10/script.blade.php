@@ -13,35 +13,28 @@
     }
     $(document).ready(function() {
         $('#download_bar').click(function(event) {
-            var docDefinition = {
-                content: [
-                    { text: 'PDFMake Example', style: 'header' },
-                    'Hello, this is a sample PDF generated using pdfMake.',
-                    { text: 'Additional Information:', style: 'subheader' },
-                    {
-                        ul: [
-                            'Item 1',
-                            'Item 2',
-                            'Item 3'
-                        ]
-                    }
-                ],
-                styles: {
-                    header: {
-                        fontSize: 18,
-                        bold: true,
-                        margin: [0, 0, 0, 10]
-                    },
-                    subheader: {
-                        fontSize: 14,
-                        bold: true,
-                        margin: [0, 10, 0, 5]
-                    }
-                }
-            };
 
-            // Create the PDF
-            pdfMake.createPdf(docDefinition).download('example.pdf');
+            var pdfWidth = 595.28;
+            var pdfHeight = 841.89;
+            var pdf = new jsPDF({
+                unit: 'pt',
+                format: [pdfWidth, pdfHeight]
+            });
+
+            var chartContainer = document.querySelector("#bar_graph");
+
+            html2canvas(chartContainer).then(canvas => {
+                var imgData = canvas.toDataURL("image/png");
+
+                var imgWidth = pdfWidth;
+                var imgHeight = (canvas.height * imgWidth) / canvas
+                    .width;
+
+                pdf.addImage(imgData, 'PNG', 0, 60, imgWidth,
+                    imgHeight);
+                pdf.save("bar_chart.pdf");
+            });
+
         });
 
         $('#download_bar_img').click(function(event) {
