@@ -13,20 +13,13 @@
     }
     $(document).ready(function() {
         $('#download_bar').click(function(event) {
-            var pdf = new jsPDF();
-
-// Load Thai font
-var thaiFontUrl = 'http://110.77.139.46/fonts/THSarabunNew.ttf'; // Replace with the actual path to your Thai font file
-
-// Use the addFont method to load the font
-pdf.addFileToVFS('THSarabunNew.ttf', thaiFontUrl);
-pdf.addFont('THSarabunNew.ttf', 'custom', 'normal');
-
-// Continue with the rest of your code
-pdf.text('Hello, สวัสดี', 10, 10);
-
-// Save the PDF
-pdf.save('output.pdf');
+            var doc = new jsPDF();
+	        doc.addFont('{{ asset('fonts/THSarabunNew.ttf') }}', 'THSarabunNew', 'normal');
+            doc.setFont('THSarabunNew');
+            var name = 'ธวัชชัย';
+            doc.setFontSize(10); doc.text(txt + name, 10, 10);
+            for(var i = 2; i <= 10; i ++) { doc.setFontSize(5 * i); doc.text(txt, 10, 20 * i); }
+            doc.save('Test6.pdf');
             
         });
 
