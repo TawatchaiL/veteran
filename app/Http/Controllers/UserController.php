@@ -124,7 +124,7 @@ class UserController extends Controller
         $validator =  Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
+            'password' => 'required|string|min:4|confirmed',
             'department_id' => 'required',
             'position_id' => 'required',
             'role' => 'required',
@@ -136,7 +136,7 @@ class UserController extends Controller
             'email.email' => 'กรุณาระบุ Username ในรูปแบบ Email!',
             'email.unique' => 'Username นี้มีอยู่แล้วในฐานข้อมูล!',
             'password.required' => 'กรุณาระบุ รหัสผ่าน!',
-            'password.min' => 'กรุณาระบุ รหัสผ่านไม่น้อยกว่า 8 ตัวอักษร!',
+            'password.min' => 'กรุณาระบุ รหัสผ่านไม่น้อยกว่า 4 ตัวอักษร!',
             'password.confirmed' => 'รหัสผ่านยืนยันไม่ตรงกัน!',
             'department_id.required' => 'แผนก ต้องไม่เป็นค่าว่าง!',
             'position_id.required' => 'ตำแหน่ง ต้องไม่เป็นค่าว่าง!',

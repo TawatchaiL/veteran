@@ -49,7 +49,7 @@ class VoiceBackupController extends Controller
 
         $agentArray[0]['name'] = 'All';
         foreach ($agens as $agen) {
-            $agentArray[$agen->id]['name'] = $agen->name;
+            $agentArray[$agen->id]['name'] = explode(' ', $agen->name)[0];
         }
 
 
@@ -205,7 +205,7 @@ class VoiceBackupController extends Controller
         $agentArray = [];
 
         foreach ($agens as $agen) {
-            $agentArray[$agen->id]['name'] = $agen->name;
+            $agentArray[$agen->id]['name'] = explode(' ', $agen->name)[0];
         }
 
         $ctype_text = ['', 'Incoming', 'Outgoing', 'Local'];

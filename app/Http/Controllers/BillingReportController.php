@@ -91,7 +91,7 @@ class BillingReportController extends Controller
                 }
             }
 
-            if (!empty($request->get('ctype'))) {
+            /*  if (!empty($request->get('ctype'))) {
                 $ctype = $request->input('ctype');
                 if ($ctype == 1) {
                     $datass->where('asteriskcdrdb.cdr.accountcode', '')
@@ -105,6 +105,27 @@ class BillingReportController extends Controller
                     $datass->where('asteriskcdrdb.cdr.accountcode', '!=', '')
                         ->where('asteriskcdrdb.cdr.userfield', '!=', '')
                         ->where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
+                }
+            } */
+            if (!empty($request->get('ctype'))) {
+                $ctype = $request->input('ctype');
+                if ($ctype == 1) {
+                    //where('asteriskcdrdb.cdr.accountcode', '')
+                    $datass->where('asteriskcdrdb.cdr.dst_exten', 'QUEUE')
+                        ->where('asteriskcdrdb.cdr.billsec', '!=', 0);
+                    //->where('asteriskcdrdb.cdr.userfield', '=', '')
+                    //->where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
+                } else if ($ctype == 2) {
+                    //where('asteriskcdrdb.cdr.accountcode', '!=', '')
+                    $datass->where('asteriskcdrdb.cdr.recordingfile', 'like', 'out-%');
+                    //->where('asteriskcdrdb.cdr.userfield', '!=', '')
+                    //->where('asteriskcdrdb.cdr.dst_userfield', '=', NULL);
+                } else if ($ctype == 3) {
+                    //$datass->where('asteriskcdrdb.cdr.accountcode', '!=', '')
+                    $datass->where('asteriskcdrdb.cdr.recordingfile', 'like', 'exten-%')
+                        //->where('asteriskcdrdb.cdr.userfield', '!=', '')
+                        //->where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
+                        ->where('asteriskcdrdb.cdr.dcontext', '=', 'from-internal');
                 }
             }
 
@@ -162,7 +183,7 @@ class BillingReportController extends Controller
                     list($date, $time) = explode(' ', $calldate);
                     return $time;
                 })
-                ->editColumn('telno', function ($row) use ($agentArray) {
+               /*  ->editColumn('telno', function ($row) use ($agentArray) {
                     if ($row->accountcode !== '') {
                         if (!empty($row->userfield)) {
                             return $agentArray[str_replace(';', '', $row->userfield)]['name'] . " ( " . $row->src . " ) ";
@@ -175,6 +196,32 @@ class BillingReportController extends Controller
                 })
                 ->editColumn('agent', function ($row) use ($agentArray) {
                     $telp = $row->accountcode == '' ? $this->getTelpFromDstChannel($row->dstchannel) : $row->dst;
+
+                    if (!empty($row->dst_userfield) && isset($agentArray[$row->dst_userfield])) {
+                        $agentName = $agentArray[$row->dst_userfield]['name'];
+                        return "$agentName ( $telp ) ";
+                    } else {
+                        return $telp;
+                    }
+                }) */
+                ->editColumn('telno', function ($row) use ($agentArray) {
+                    if ($row->accountcode !== '') {
+                        if (!empty($row->userfield)) {
+                            return $agentArray[str_replace(';', '', $row->userfield)]['name'] . " ( " . $row->src . " ) ";
+                        } else {
+                            return $row->src;
+                        }
+                    } else {
+                        return $row->src;
+                    }
+                })
+                ->editColumn('agent', function ($row) use ($agentArray) {
+                    if ($row->dst_exten == "QUEUE" || $row->dst == "s") {
+                        $telp = $row->accountcode == '' ? $this->getTelpFromDstChannel($row->dstchannel) : $row->accountcode;
+                    } else {
+                        $telp = $row->dst;
+                    }
+
 
                     if (!empty($row->dst_userfield) && isset($agentArray[$row->dst_userfield])) {
                         $agentName = $agentArray[$row->dst_userfield]['name'];

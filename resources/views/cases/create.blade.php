@@ -83,11 +83,11 @@
                                                     <strong><i class="fas fa-user-tie"></i> ผู้ติดต่อ :</strong>
                                                     <input type="hidden" value="" name="Addid" id="Addid">
                                                     <select style="width: 100%;"
-                                                        class="select2 select2_single bg-white" form-control" id="Hn"
+                                                        class="select2 select2_single bg-white form-control" id="Hn"
                                                         name="hn" multiple="multiple">
                                                         @foreach ($contacts as $contact)
                                                             <option value="{{ $contact->id }}">{{ $contact->hn }}
-                                                                {{ $contact->fname }} {{ $contact->lname }}
+                                                                {{ $contact->fname }} {{ $contact->lname }} {{ $contact->phoneno ?: $contact->telhome ?: $contact->workno }}
                                                             </option>
                                                         @endforeach
                                                     </select>
@@ -117,7 +117,7 @@
                                             </div> --}}
                                         </div>
                                         {{-- <div class="row">
-                                            
+
                                         </div> --}}
                                         <div class="row">
                                             <div class="col-xs-6 col-sm-6 col-md-6">

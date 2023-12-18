@@ -56,7 +56,7 @@ class VoicerecordController extends Controller
         $agentArray = [];
 
         foreach ($agens as $agen) {
-            $agentArray[$agen->id]['name'] = $agen->name;
+            $agentArray[$agen->id]['name'] = explode(' ', $agen->name)[0];
         }
 
         if ($request->ajax()) {
@@ -209,7 +209,7 @@ class VoicerecordController extends Controller
         $agentArray = [];
 
         foreach ($agens as $agen) {
-            $agentArray[$agen->id]['name'] = $agen->name;
+            $agentArray[$agen->id]['name'] = explode(' ', $agen->name)[0];
         }
 
         if (!empty($remoteData)) {
@@ -293,7 +293,7 @@ class VoicerecordController extends Controller
         $agentArray = [];
 
         foreach ($agens as $agen) {
-            $agentArray[$agen->id]['name'] = $agen->name;
+            $agentArray[$agen->id]['name'] = explode(' ', $agen->name)[0];
         }
 
         if (!empty($remoteData)) {
