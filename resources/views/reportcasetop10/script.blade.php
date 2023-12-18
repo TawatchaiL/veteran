@@ -21,7 +21,7 @@
                 format: [pdfWidth, pdfHeight]
             });
             
-            pdf.text('Crm Report', pdfWidth - 40, 15, { baseline: 'top', fontSize: 36, align: 'right' });
+            pdf.text('Crm Report', pdfWidth - 40, 15, { baseline: 'top', fontSize: 48, align: 'right' });
 
             var chartContainer = document.querySelector("#bar_graph");
 
