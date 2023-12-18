@@ -561,6 +561,7 @@
          });*/
         //casetype changes
         $(document).on("change", ".casetypechang", function() {
+            alert('OKOK');
             var cardId = $(this).data("tabid");
             var levcase = $(this).data("lev");
             var parent_id = $(this).val();
@@ -593,13 +594,13 @@
                     method: 'GET',
                     async: false,
                     success: function(res) {
+                        alert(res.data.length);
                         $.each(res.data, function(index, item) {
                             $('#casetype' + nextcase + 'p' + cardId).append(
                                 $('<option></option>').val(item.id)
                                 .html(item.name)
                             );
                         });
-                        alert(res.data.length);
                         if(res.data.length === 0){
                             //$('#casetype6').attr('disabled', true);
                             $('#casetype' + nextcase + 'p' + cardId).attr('disabled', true);
