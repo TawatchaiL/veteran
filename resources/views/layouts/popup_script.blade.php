@@ -561,7 +561,6 @@
          });*/
         //casetype changes
         $(document).on("change", ".casetypechang", function() {
-            alert('OKOK');
             var cardId = $(this).data("tabid");
             var levcase = $(this).data("lev");
             var parent_id = $(this).val();
