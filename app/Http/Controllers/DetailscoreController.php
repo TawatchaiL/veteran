@@ -54,7 +54,7 @@ class DetailscoreController extends Controller
         }    
 
         $datas = DB::connection('remote_connection')
-            ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT DATE(datetime) as cdate, TIME(datetime) as ctime, clid, queue, crm_id, score FROM call_center.agent_score WHERE call_center.agent_score.datetime BETWEEN "' . $startDate . '" AND "' . $endDate . '" AND id_break is not null' .$sqlagent. ' ORDER BY call_center.agent_score.datetime DESC) t, (SELECT @rownumber:=0) r) AS temp'))
+            ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT DATE(datetime) as cdate, TIME(datetime) as ctime, clid, queue, crm_id, score FROM call_center.agent_score WHERE call_center.agent_score.datetime BETWEEN "' . $startDate . '" AND "' . $endDate . '"' .$sqlagent. ' ORDER BY call_center.agent_score.datetime DESC) t, (SELECT @rownumber:=0) r) AS temp'))
             ->select('rownumber', 'cdate', 'ctime', 'clid', 'queue', 'crm_id', 'score')
             ->get();
 /*
