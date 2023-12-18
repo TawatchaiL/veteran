@@ -47,6 +47,18 @@ class LoginstatusController extends Controller
             $startDate = date("Y-m-d H:i:s");
             $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
+
+        if(!empty($request->get('agent')) && $request->get('agent') != "0"){
+            $sqlagent = " and crm_id = '".$request->input('agent')."'";
+        }else{
+            $sqlagent = "";
+        }    
+
+        $datas = DB::connection('remote_connection')
+            ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT crm_id, datetime_init, datetime_end, duration FROM call_center.audit WHERE datetime_init BETWEEN "' . $startDate . '" AND "' . $endDate . '" AND id_break is not null' .$sqlagent. ' ORDER BY crmdatetime_initid ASC) t, (SELECT @rownumber:=0) r) AS temp'))
+            ->select('rownumber', 'crm_id', 'datetime_init', 'datetime_end', 'duration')
+            ->get();
+/*
         $datas = DB::connection('remote_connection')
             ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.audit'))
             ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), 'crm_id','datetime_init', 'datetime_end','duration')
@@ -56,7 +68,7 @@ class LoginstatusController extends Controller
             $datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
         }    
         $datas->orderBy("datetime_init", "asc")->get();
-
+*/
         $agents = User::orderBy("id", "asc")->get();
         $agent_data = array();
         foreach ($agents as $agent) {
