@@ -14,7 +14,7 @@
     $(document).ready(function() {
         $('#download_bar').click(function(event) {
             var doc = new jsPDF();
-	        doc.addFont('fonts/THSarabunNew.ttf', 'THSarabunNew', 'normal');
+	        doc.addFont('http://110.77.139.46/fonts/THSarabunNew.ttf', 'THSarabunNew', 'normal');
             doc.setFont('THSarabunNew');
             var name = 'ธวัชชัย';
             doc.setFontSize(10); doc.text(txt + name, 10, 10);
