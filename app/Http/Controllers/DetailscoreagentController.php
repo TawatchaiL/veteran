@@ -52,6 +52,12 @@ class DetailscoreagentController extends Controller
         }else{
             $agentseachc = '';
         }
+
+        $datas = DB::connection('remote_connection')
+        ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT score, count(id) as sumscore FROM call_center.agent_score WHERE call_center.agent_score.datetime BETWEEN "' . $startDate . '" AND "' . $endDate . '"' .$agentseachc. 'GROUP BY score ORDER BY call_center.agent_score.score DESC) t, (SELECT @rownumber:=0) r) AS temp'))
+        ->select('rownumber', 'score', 'sumscore')
+        ->get();
+/*
         $datas = DB::connection('remote_connection')
             ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.agent_score'))
             //->select('call_center.agent_score.score as score',  DB::raw('count(call_center.agent_score.score) as sumscore'))
@@ -60,6 +66,7 @@ class DetailscoreagentController extends Controller
             ->groupBy('score')
             ->orderBy("score", "desc")
             ->get();
+*/
             if (!empty($request->get('rstatus'))) {
                 $chart_data = array();
                 $chart_label = array();

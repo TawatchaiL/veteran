@@ -47,6 +47,17 @@ class DetailscoreController extends Controller
             $startDate = date("Y-m-d H:i:s");
             $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
+        if(!empty($request->get('agent')) && $request->get('agent') != "0"){
+            $sqlagent = " and crm_id = '".$request->input('agent')."'";
+        }else{
+            $sqlagent = "";
+        }    
+
+        $datas = DB::connection('remote_connection')
+            ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT DATE(datetime) as cdate, TIME(datetime) as ctime, clid, queue, crm_id, score FROM call_center.agent_score WHERE call_center.agent_score.datetime BETWEEN "' . $startDate . '" AND "' . $endDate . '" AND id_break is not null' .$sqlagent. ' ORDER BY call_center.agent_score.datetime DESC) t, (SELECT @rownumber:=0) r) AS temp'))
+            ->select('rownumber', 'cdate', 'ctime', 'clid', 'queue', 'crm_id', 'score')
+            ->get();
+/*
         $datas = DB::connection('remote_connection')
             ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.agent_score'))
             ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), DB::raw('DATE(datetime) as cdate'), DB::raw('TIME(datetime) as ctime'),'clid','queue','crm_id','score' )
@@ -56,7 +67,7 @@ class DetailscoreController extends Controller
             }   
             $datas->orderBy("call_center.agent_score.datetime", "desc")
             ->get();
-
+*/
         $agents = User::orderBy("id", "asc")->get();
             $agent_data = array();
             foreach ($agents as $agent) {
