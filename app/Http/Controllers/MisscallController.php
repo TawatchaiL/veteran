@@ -44,17 +44,17 @@ class MisscallController extends Controller
                     $endDate = $dateRangeArray[1];
                 }
             }
-        }else{
+        } else {
             $startDate = date("Y-m-d H:i:s");
-            $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
+            $endDate = date("Y-m-t H:i:s", strtotime($startDate));
         }
         $datas = DB::connection('remote_connection')
-        ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.call_entry'))
-            ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), 'crm_id',DB::raw('DATE(datetime_init) as cdate'), DB::raw('TIME(datetime_init) as ctime'), 'callerid as telno', DB::raw('SEC_TO_TIME(duration_wait) as durationwait'))
+            ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.call_entry'))
+            ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), 'crm_id', DB::raw('DATE(datetime_init) as cdate'), DB::raw('TIME(datetime_init) as ctime'), 'callerid as telno', DB::raw('SEC_TO_TIME(duration_wait) as durationwait'))
             ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '" AND status = "abandonada" AND  crm_id is not null');
-        if(!empty($request->get('agent'))){
-            $datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
-        }    
+        if (!empty($request->get('agent'))) {
+            $datas->whereRaw('crm_id = "' . $request->input('agent') . '"');
+        }
         $datas->orderBy("datetime_init", "asc")
             ->get();
 
@@ -74,7 +74,7 @@ class MisscallController extends Controller
                     $adddate = Carbon::parse($row->cdate)->format('Y-m-d');
                     return $adddate;
                 })
-                ->addColumn('agent', function ($row) use ($agent_data){
+                ->addColumn('agent', function ($row) use ($agent_data) {
                     if (isset($agent_data[$row->crm_id])) {
                         return $agent_data[$row->crm_id];
                     } else {
@@ -83,8 +83,7 @@ class MisscallController extends Controller
                 })
                 ->rawColumns(['checkbox', 'action'])->toJson();
         }
-        
+
         return view('misscall.index')->with(['agents' => $agents]);
     }
-
 }

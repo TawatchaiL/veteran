@@ -44,23 +44,23 @@ class SumtelController extends Controller
                     $endDate = $dateRangeArray[1];
                 }
             }
-        }else{
+        } else {
             $startDate = date("Y-m-d H:i:s");
-            $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
+            $endDate = date("Y-m-t H:i:s", strtotime($startDate));
         }
 
         $datas = DB::connection('remote_connection')
-            ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS row_number, t.* FROM (SELECT DATE(datetime_init) as cdate, SUM(if(status = "terminada",1,0)) as terminada, SUM(if(status = "abandonada",1,0)) as abandonada FROM call_center.call_entry WHERE datetime_init BETWEEN "' . $startDate . '" AND "' . $endDate . '" GROUP BY DATE(datetime_init) ORDER BY DATE(datetime_init) ASC) t, (SELECT @rownumber:=0) r) AS temp order by temp.cdate'))
+            ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS row_number, t.* FROM (SELECT DATE(datetime_entry_queue) as cdate, SUM(if(status = "terminada",1,0)) as terminada, SUM(if(status = "abandonada ",1,0)) as abandonada FROM call_center.call_entry WHERE datetime_entry_queue BETWEEN "' . $startDate . '" AND "' . $endDate . '" GROUP BY DATE(datetime_entry_queue) ORDER BY DATE(datetime_entry_queue) DESC) t, (SELECT @rownumber:=0) r) AS temp order by temp.cdate'))
             ->select('row_number', 'cdate', 'terminada', 'abandonada')
             ->get();
-/*
+        /*
         $datas = DB::connection('remote_connection')
             ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.call_entry'))
             ->select(DB::raw('(@rownumber:=@rownumber + 1) AS row_number'), DB::raw('DATE(datetime_init) as cdate'), DB::raw('SUM(if(status = "terminada",1,0)) as terminada'), DB::raw('SUM(if(status = "abandonada",1,0)) as abandonada'))
             ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '"');
         //if(!empty($request->get('agent'))){
-        //$datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
-        //}    
+        //$datas->whereRaw('crm_id = "'. $request->input('agent') .'"');
+        //}
         $datas->groupBy('cdate')
             ->orderBy("cdate", "asc")
             ->get();
@@ -68,11 +68,11 @@ class SumtelController extends Controller
         if ($request->ajax()) {
 
             return datatables()->of($datas)
-            ->editColumn('cdate', function ($row) {
-                //$adddate = Carbon::parse($row->adddate)->addYears(543)->format('d/m/Y');
-                $adddate = Carbon::parse($row->cdate)->format('Y-m-d');
-                return $adddate;
-            })
+                ->editColumn('cdate', function ($row) {
+                    //$adddate = Carbon::parse($row->adddate)->addYears(543)->format('d/m/Y');
+                    $adddate = Carbon::parse($row->cdate)->format('Y-m-d');
+                    return $adddate;
+                })
                 //->editColumn('checkbox', function ($row) {
                 //    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 //})->rawColumns(['checkbox', 'action'])
@@ -84,5 +84,4 @@ class SumtelController extends Controller
         //return view('sumtel.index')->with(['agents' => $agents]);
         return view('sumtel.index');
     }
-
 }
