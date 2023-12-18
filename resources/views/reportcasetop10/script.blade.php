@@ -14,7 +14,7 @@
     $(document).ready(function() {
         $('#download_bar').click(function(event) {
 
-            var thaiFontUrl = '{{ asset('fonts/THSarabunNew.ttf') }}'; // Replace with the actual path to your Thai font file
+var thaiFontUrl = 'path/to/your/thai-font.ttf'; // Replace with the actual path to your Thai font file
     var fontName = 'THSarabunNew'; // You can use any name you like
 
     // Load the Thai font
@@ -43,7 +43,7 @@
         pdf.text('Crm Report', pdfWidth - 40, 10, { baseline: 'top', fontSize: fontSizehead, align: 'right' });
         pdf.text('ข้อมูลวันที่ ', 40, 30, { baseline: 'top', fontSize: fontSize, align: 'left' });
         pdf.text('Report : Top 10 (10 อันดับเรื่องที่ติดต่อมากที่สุด)', 40, 50, { baseline: 'top', fontSize: fontSize, align: 'left' });
-        pdf.text('Report By : {{ Auth::user().name }}', 40, 70, { baseline: 'top', fontSize: fontSize, align: 'left' });
+        pdf.text('Report By : ', 40, 70, { baseline: 'top', fontSize: fontSize, align: 'left' });
 
         var chartContainer = document.querySelector("#bar_graph");
 
