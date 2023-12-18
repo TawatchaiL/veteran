@@ -38,7 +38,7 @@
                                                             <i class="far fa-calendar-alt"></i>
                                                         </span>
                                                     </div>
-                                                    <input type="text" class="form-control float-right" id="reservation" style="width: 210px">
+                                                    <input type="text" class="form-control float-right" id="reservation" style="width: 210px" readonly>
                                                 </div>
                 
                                             </div>
@@ -173,11 +173,9 @@
                             <div class="col-xs-12 col-sm-12 col-md-12 align-self-end text-right">
                                 <div class="form-group">
                                     <a class="btn btn-danger" id="exportPDFButton" {{-- href="{{ route('reportcase.pdf') }}" --}}>
-                                        <i class="fa-regular fa-file-pdf"></i> PDF </a>
+                                        <i class="fa-regular fa-file-pdf"></i> PDF / <i class="fa-solid fa-print"></i> PRINT</a>
                                     <a class="btn btn-success" id="exportXLSButton" {{-- href="{{ route('reportcase.pdf') }}" --}}>
                                         <i class="fa-regular fa-file-excel"></i> XLS </a>
-                                    <a class="btn btn-info" id="exportPrintButton" {{-- href="{{ route('reportcase.pdf') }}" --}}>
-                                        <i class="fa-solid fa-print"></i> PRINT </a>
                                 </div>
                                 <div id="#Listview_wrapper"></div>
                             </div>
