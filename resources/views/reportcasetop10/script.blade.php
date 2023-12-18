@@ -14,6 +14,7 @@
     $(document).ready(function() {
         $('#download_bar').click(function(event) {
             var doc = new jsPDF();
+            doc.addFileToVFS("PTSans.ttf", PTSans);
 	        doc.addFont('{{ asset('fonts/THSarabunNew.ttf') }}', 'THSarabunNew', 'normal');
             doc.setFont('THSarabunNew');
             var name = 'ธวัชชัย';
