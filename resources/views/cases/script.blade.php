@@ -880,8 +880,9 @@
                 if (r == true) {
                     var rowid = $(this).data('rowid')
                     var el = $(this)
-                    if (!rowid) return;
                     alert(rowid);
+                    if (!rowid) return;
+                    
                     $.ajax({
                         type: "DELETE",
                         dataType: 'JSON',
