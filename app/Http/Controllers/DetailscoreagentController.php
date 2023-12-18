@@ -48,13 +48,13 @@ class DetailscoreagentController extends Controller
             $endDate = date("Y-m-t H:i:s", strtotime($startDate));   
         }
         if(!empty($request->get('agent')) && $request->get('agent') != "0"){
-            $agentseachc = ' and call_center.agent_score.crm_id = ' . $request->input('agent') . '';
+            $sqlagent = " and crm_id = '".$request->input('agent')."'";
         }else{
-            $agentseachc = '';
-        }
+            $sqlagent = "";
+        }  
 
         $datas = DB::connection('remote_connection')
-        ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT score, count(id) as sumscore FROM call_center.agent_score WHERE call_center.agent_score.datetime BETWEEN "' . $startDate . '" AND "' . $endDate . '"' .$agentseachc. 'GROUP BY score ORDER BY call_center.agent_score.score DESC) t, (SELECT @rownumber:=0) r) AS temp'))
+        ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT score, count(id) as sumscore FROM call_center.agent_score WHERE call_center.agent_score.datetime BETWEEN "' . $startDate . '" AND "' . $endDate . '"'.$sqlagent. 'GROUP BY score ORDER BY call_center.agent_score.score DESC) t, (SELECT @rownumber:=0) r) AS temp'))
         ->select('rownumber', 'score', 'sumscore')
         ->get();
 /*
