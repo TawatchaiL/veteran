@@ -22,8 +22,8 @@
         doc.setFontSize(20);
         doc.setTextColor(40);
         doc.setFontStyle('normal');
-        if (logo) {
-            doc.addImage(logo, 'JPEG', data.settings.margin.left, 15, 10, 10);
+        if (logobase64) {
+            doc.addImage(logobase64, 'JPEG', data.settings.margin.left, 15, 10, 10);
         }
         doc.text("Report", data.settings.margin.left + 15, 22);
 
