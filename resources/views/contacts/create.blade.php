@@ -64,7 +64,7 @@
 
                                             <div class="col-xs-6 col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <strong><i class="fas fa-code"></i> รหัสผู้ติดต่อ.</strong>
+                                                    <strong><i class="fas fa-code"></i> HN.</strong>
                                                     {!! Form::text('hn', null, [
                                                         'id' => 'Addhn',
                                                         'placeholder' => 'รหัสผู้ติดต่อ',
