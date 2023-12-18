@@ -593,7 +593,6 @@
                     method: 'GET',
                     async: false,
                     success: function(res) {
-                        alert(res.data.length);
                         $.each(res.data, function(index, item) {
                             $('#casetype' + nextcase + 'p' + cardId).append(
                                 $('<option></option>').val(item.id)
