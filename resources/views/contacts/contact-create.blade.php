@@ -451,6 +451,7 @@
                                         <option value="รับสาย">รับสาย</option>
                                         <option value="ไม่รับสาย">ไม่รับสาย</option>
                                         <option value="สายไม่ว่าง">สายไม่ว่าง</option>
+                                        <option value="โอนอัตโนมัติ">โอนอัตโนมัติ</option>
                                     </select>
                                 </div>
                             </div>
