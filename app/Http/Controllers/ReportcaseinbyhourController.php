@@ -111,7 +111,7 @@ class ReportcaseinbyhourController extends Controller
                     ->get();
 */        
                     $datas = DB::connection('remote_connection')
-                    ->table(DB::raw("(SELECT @rownumber:=0) AS temp, call_center.timeslot left join (SELECT
+                    ->table(DB::raw("(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT timeslot.timeslot as timelabel, c.* FROM call_center.timeslot left join (SELECT
                                 CASE
                                     WHEN TIME(datetime_init) < '01:00:00' THEN '00:00-01:00'
                                     WHEN TIME(datetime_init) < '02:00:00' THEN '01:00-02:00'
@@ -164,10 +164,10 @@ class ReportcaseinbyhourController extends Controller
                                     WHEN TIME(datetime_init) < '23:00:00' THEN 1 
                                     WHEN TIME(datetime_init) < '24:00:00' THEN 1 
                                     ELSE 0
-                                END) as total_cases
-                            FROM call_center.call_entry WHERE LENGTH(callerid) < 5 AND datetime_init between '". $startDate ." 00:00:00' and '". $endDate ." 23:59:59' GROUP BY numberhour) as c"))
-                            ->selectRaw("@rownumber:=@rownumber + 1 AS rownumber, timeslot.timeslot as timelabel, c.numberhour, if(c.numberhour IS NULL,0,c.total_cases) as sumt")
-                            ->orderBy("timelabel", "asc")
+                                END) as total_cases FROM call_center.call_entry WHERE LENGTH(callerid) < 6 AND datetime_init between '". $startDate ." 00:00:00' and '". $endDate ." 23:59:59' GROUP BY numberhour) as c on timeslot.timeslot = c.numberhour
+                            ) as t, (SELECT @rownumber:=0) AS temp"))
+                            ->select("rownumber, timelabel, numberhour, if(numberhour IS NULL,0,c.total_cases) as sumt")
+                            //->orderBy("timelabel", "asc")
                             ->get();
             
                         if (!empty($request->get('rstatus'))) {
