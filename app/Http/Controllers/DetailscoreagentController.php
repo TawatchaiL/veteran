@@ -77,8 +77,9 @@ class DetailscoreagentController extends Controller
                 $chart_data = array();
                 $chart_label = array();
                 foreach ($datas as $data) {
-                    $chart_data[] = $data->sumscore;
-                    $chart_label[$data->crm_id] = $data->score;
+                   //$chart_data[] = $data->sumscore;
+                   $chart_data[$data->crm_id][$data->score] = $data->sumscore;
+                   $chart_label[] = $data->score;
                 }
                 return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
             }
