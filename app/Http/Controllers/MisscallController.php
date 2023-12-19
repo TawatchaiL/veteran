@@ -63,12 +63,12 @@ class MisscallController extends Controller
         $datas = DB::connection('remote_connection')
             ->table(DB::raw('(SELECT @rownumber:=0) AS temp, asteriskcdrdb.cdr'))
             ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), 'dst_userfield as crm_id', DB::raw('DATE(calldate) as cdate'), DB::raw('TIME(calldate) as ctime'), 'src as telno', DB::raw('SEC_TO_TIME(duration) as durationwait'))
-            ->whereRaw('calldate between "' . $startDate . '" and "' . $endDate . '" AND disposition = "NO ANSWER" AND  dst_userfield is not null');
+            ->whereRaw('calldate between "' . $startDate . '" and "' . $endDate . '" AND disposition = "NO ANSWER" AND  dst_userfield is not null ORDER BY calldate desc');
         if (!empty($request->get('agent'))) {
             $datas->whereRaw('dst_userfield = "' . $request->input('agent') . '"');
         }
-        $datas->orderBy("calldate", "desc")
-            ->get();
+        //$datas->orderBy("calldate", "desc")
+        $datas->get();
 
         $agents = User::orderBy("id", "asc")->get();
 

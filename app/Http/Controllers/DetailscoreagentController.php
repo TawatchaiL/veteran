@@ -54,8 +54,8 @@ class DetailscoreagentController extends Controller
         }  
 
         $datas = DB::connection('remote_connection')
-        ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT score, count(id) as sumscore FROM call_center.agent_score WHERE call_center.agent_score.datetime BETWEEN "' . $startDate . '" AND "' . $endDate . '"'.$sqlagent. 'GROUP BY score ORDER BY call_center.agent_score.score DESC) t, (SELECT @rownumber:=0) r) AS temp'))
-        ->select('rownumber', 'score', 'sumscore')
+        ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT crm_id, score, count(id) as sumscore FROM call_center.agent_score WHERE call_center.agent_score.datetime BETWEEN "' . $startDate . '" AND "' . $endDate . '"'.$sqlagent. 'GROUP BY crm_id, score ORDER BY call_center.agent_score.score DESC) t, (SELECT @rownumber:=0) r) AS temp'))
+        ->select('rownumber', 'crm_id', 'score', 'sumscore')
         ->get();
 /*
         $datas = DB::connection('remote_connection')
@@ -67,26 +67,42 @@ class DetailscoreagentController extends Controller
             ->orderBy("score", "desc")
             ->get();
 */
+            $agents = User::orderBy("id", "asc")->get();
+            $agent_data = array();
+            foreach ($agents as $agent) {
+                $agent_data[$agent->id] = $agent->name;
+            }
+
             if (!empty($request->get('rstatus'))) {
                 $chart_data = array();
                 $chart_label = array();
                 foreach ($datas as $data) {
-                    $chart_data[] = $data->sumscore;
-                    $chart_label[] = $data->score;
+                   //$chart_data[] = $data->sumscore;
+                   //$chart_data[$data->crm_id][$data->score] = $data->sumscore;
+                   //$chart_label[] = $data->score;
+                   $datat[$data->crmid][$data->crmid] = $data->sumscore;
                 }
-                return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
+                /*$datat = [
+                    ['name'=>'line 1', 'data'=> [10, 15, 23, 5, 9]],
+                    ['name'=>'line 2', 'data'=> [5, 2, 3, 6, 7]],
+                ];*/
+                $chart_label = ['5 คะแนน','4 คะแนน','3 คะแนน','2 คะแนน','1 คะแนน'];
+                return response()->json(['datag' => $chart_data,'datal' => $chart_label,'datat' => $datat]);
             }
 
         if ($request->ajax()) {
 
             return datatables()->of($datas)
+                ->addColumn('agent', function ($row) use ($agent_data){
+                    if (isset($agent_data[$row->crm_id])) {
+                        return $agent_data[$row->crm_id];
+                    } else {
+                        return 'Agent not found';
+                    }
+                })
                 ->toJson();
         }
-        $agents = User::orderBy("id", "asc")->get();
-        $agent_data = array();
-        foreach ($agents as $agent) {
-            $agent_data[$agent->id] = $agent->name;
-        }
+
         return view('detailscoreagent.index')->with(['agents' => $agents]);
     }
 

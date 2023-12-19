@@ -73,6 +73,7 @@ class DetailcaselogbyhnController extends Controller
         ->join('users', 'crm_caseslogs.modifyagent', '=', 'users.id')
         ->whereRaw('crm_caseslogs.modifydate between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"'.$agentseachl)
         ->union($getData)
+        ->orderBy("mdate", "desc")
         ->get();
 
         $agents = User::orderBy("id", "asc")->get();

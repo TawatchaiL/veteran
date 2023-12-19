@@ -203,6 +203,7 @@
                                         <tr>
                                             <th width="5%">ลำดับ
                                             </th>
+                                            <th>Agent</th>
                                             <th>ระดับคะแนน</th>
                                             <th width="280px">จำนวน</th>
                                         </tr>
