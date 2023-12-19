@@ -247,8 +247,15 @@ class VoiceBackupController extends Controller
             } */
             if ($ctype == 1) {
                 //where('asteriskcdrdb.cdr.accountcode', '')
-                $datass->where('asteriskcdrdb.cdr.dst_exten', 'QUEUE')
-                    ->where('asteriskcdrdb.cdr.billsec', '!=', 0);
+                $datass->Where(function ($query) {
+                    $query->where('asteriskcdrdb.cdr.dst_exten', 'QUEUE')
+                        ->where('asteriskcdrdb.cdr.billsec', '!=', 0)
+                        ->whereNotIn('asteriskcdrdb.cdr.dcontext', ['app-blackhole', 'call-survey']);
+                })->orWhere(function ($query) {
+                    $query->where('asteriskcdrdb.cdr.dst_exten', '!=', 'QUEUE')
+                        ->where('asteriskcdrdb.cdr.userfield', '=', '')
+                        ->Where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
+                });
                 //->where('asteriskcdrdb.cdr.userfield', '=', '')
                 //->where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
             } else if ($ctype == 2) {
