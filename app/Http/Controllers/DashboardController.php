@@ -23,6 +23,7 @@ class DashboardController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('permission:dashboard-view', ['only' => ['index']]);
     }
 
     function formatDuration($sec)
@@ -403,7 +404,7 @@ class DashboardController extends Controller
                     </button></div>';
                 } else {
                     $div = $agent->phone;
-                    $button = '<div class="btn-group"> 
+                    $button = '<div class="btn-group">
                     <button type="button" class="btn btn-default">Action</button>
                     <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
                     <span class="sr-only">Toggle Dropdown</span>
