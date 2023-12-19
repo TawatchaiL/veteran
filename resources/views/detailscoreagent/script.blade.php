@@ -867,16 +867,17 @@
                 method: 'GET',
                 success: function(res) {
                     //options.series[0].data = res.datag;
-                    options.series[0] = {
+                    options.series = res.datat;
+                    /*options.series[0] = {
                         name: 'Line 1',
                         data: [10, 15, 23, 5, 9]
                     };
                     options.series[1] = {
                         name: 'Line 2',
                         data: [5,2,3,6,7]
-                    };
-                    //options.xaxis.categories = res.datal;
-                    options.labels = ['Label 1', 'Label 2'];
+                    };*/
+                    options.xaxis.categories = res.datal;
+                    //options.labels = ['Label 1', 'Label 2'];
                     optionsdonut.labels = res.datal; 
                     optionsdonut.series = res.datag;
                         var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
