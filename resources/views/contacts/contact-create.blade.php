@@ -65,7 +65,7 @@
                                     <strong><i class="fas fa-code"></i> HN:</strong>
                                     {!! Form::text('hnp'.$cardid, '', [
                                         'id' => 'hnp'.$cardid,
-                                        'placeholder' => 'รหัสผู้ติดต่อ',
+                                        'placeholder' => 'HN',
                                         'class' => 'form-control',
                                         'readonly' => false,
                                     ]) !!}

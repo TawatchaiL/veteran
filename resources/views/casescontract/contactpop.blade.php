@@ -16,7 +16,7 @@
                                     <th width="5%"><input type="checkbox" id="check-all" class="flat">
                                     </th>
                                     <th>วันที่บันทึก</th>
-                                    <th>รหัสผู้ติดต่อ</th>
+                                    <th>HN</th>
                                     <th>ชื่อผู้ติดต่อ</th>
                                     <th>เบอร์โทรศัพท์บ้าน</th>
                                     <th>เบอร์โทรศัพท์มือถือ</th>
