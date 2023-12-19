@@ -75,7 +75,6 @@
                                                         'id' => 'Edithn',
                                                         'placeholder' => 'HN',
                                                         'class' => 'form-control',
-                                                        'readonly' => true,
                                                         'tabindex' => '1',
                                                     ]) !!}
                                                 </div>
