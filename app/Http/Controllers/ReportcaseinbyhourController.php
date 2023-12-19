@@ -111,7 +111,7 @@ class ReportcaseinbyhourController extends Controller
                     ->get();
 */        
                     $datas = DB::connection('remote_connection')
-                    ->table(DB::raw("(SELECT timeslot.timeslot as timelabel, c.*, if(c.numberhour IS NULL,0,c.total_cases) as sumt FROM call_center.timeslot left join (SELECT
+                    ->table(DB::raw("SELECT timeslot.timeslot as timelabel, c.*, if(c.numberhour IS NULL,0,c.total_cases) as sumt FROM call_center.timeslot left join (SELECT
                                 CASE
                                     WHEN TIME(datetime_init) < '01:00:00' THEN '00:00-01:00'
                                     WHEN TIME(datetime_init) < '02:00:00' THEN '01:00-02:00'
