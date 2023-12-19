@@ -48,7 +48,7 @@ class ReportcaseinbyhourController extends Controller
             $startDate = date("Y-m-d");
             $endDate = date("Y-m-t", strtotime($startDate));  
         }
-/*
+
             $datas = DB::connection('remote_connection')
             ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.timeslot'))
                     ->selectRaw("@rownumber:=@rownumber + 1 AS rownumber, timeslot.timeslot as timelabel, c.numberhour, if(c.numberhour IS NULL,0,c.total_cases) as sumt")
@@ -109,7 +109,7 @@ class ReportcaseinbyhourController extends Controller
                     FROM call_center.call_entry WHERE LENGTH(callerid) < 5 AND datetime_init between '". $startDate ." 00:00:00' and '". $endDate ." 23:59:59' GROUP BY numberhour) as c"), 'timeslot.timeslot', '=', 'c.numberhour')
                     ->orderBy("timelabel", "asc")
                     ->get();
-*/        
+        /*
                     $datas = DB::connection('remote_connection')
                     ->table(DB::raw("(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT timeslot.timeslot as timelabel, c.*, if(c.numberhour IS NULL,0,c.total_cases) as sumt FROM call_center.timeslot left join (SELECT
                                 CASE
@@ -164,12 +164,12 @@ class ReportcaseinbyhourController extends Controller
                                     WHEN TIME(datetime_init) < '23:00:00' THEN 1 
                                     WHEN TIME(datetime_init) < '24:00:00' THEN 1 
                                     ELSE 0
-                                END) as total_cases FROM call_center.call_entry WHERE LENGTH(callerid) < 6 AND datetime_init between '". $startDate ." 00:00:00' and '". $endDate ." 23:59:59' GROUP BY numberhour) as c on timeslot.timeslot = c.numberhour
-                            ) as t order by t.timelabel, (SELECT @rownumber:=0) AS temp) as ff"))
+                                END) as total_cases FROM call_center.call_entry WHERE LENGTH(callerid) < 6 AND datetime_init between '". $startDate ." 00:00:00' and '". $endDate ." 23:59:59' GROUP BY numberhour) as c on timeslot.timeslot = c.numberhour ORDER BY timelabel asc
+                            ) as t, (SELECT @rownumber:=0) AS temp) as ff"))
                             ->select('rownumber', 'timelabel', 'numberhour', 'sumt')
                             //->orderBy("timelabel", "asc")
                             ->get();
-            
+    */        
                         if (!empty($request->get('rstatus'))) {
                             $chart_data = array();
                             $chart_label = array();
