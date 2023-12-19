@@ -48,6 +48,7 @@ class MisscallController extends Controller
             $startDate = date("Y-m-d H:i:s");
             $endDate = date("Y-m-t H:i:s", strtotime($startDate));
         }
+        /*
         $datas = DB::connection('remote_connection')
             ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.call_entry'))
             ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), 'crm_id', DB::raw('DATE(datetime_init) as cdate'), DB::raw('TIME(datetime_init) as ctime'), 'callerid as telno', DB::raw('SEC_TO_TIME(duration_wait) as durationwait'))
@@ -56,6 +57,17 @@ class MisscallController extends Controller
             $datas->whereRaw('crm_id = "' . $request->input('agent') . '"');
         }
         $datas->orderBy("datetime_init", "asc")
+            ->get();
+        */
+
+        $datas = DB::connection('remote_connection')
+            ->table(DB::raw('(SELECT @rownumber:=0) AS temp, asteriskcdrdb.cdr'))
+            ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), 'dst_userfield as crm_id', DB::raw('DATE(calldate) as cdate'), DB::raw('TIME(calldate) as ctime'), 'src as telno', DB::raw('SEC_TO_TIME(duration) as durationwait'))
+            ->whereRaw('calldate between "' . $startDate . '" and "' . $endDate . '" AND disposition = "NO ANSWER" AND  dst_userfield is not null');
+        if (!empty($request->get('agent'))) {
+            $datas->whereRaw('dst_userfield = "' . $request->input('agent') . '"');
+        }
+        $datas->orderBy("calldate", "desc")
             ->get();
 
         $agents = User::orderBy("id", "asc")->get();
