@@ -467,6 +467,10 @@
             $('#casetype4').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
             $('#casetype5').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
             $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>'); */
+            if($('#Addadddate').is(':disabled')){
+                $("#Addadddate").removeAttr("disabled"); 
+            }
+
             $('#casetype2').val(null).trigger("change")
             $('#casetype3').val(null).trigger("change")
             $('#casetype4').val(null).trigger("change")
