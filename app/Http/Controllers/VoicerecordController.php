@@ -90,7 +90,11 @@ class VoicerecordController extends Controller
                 if ($ctype == 1) {
                     //where('asteriskcdrdb.cdr.accountcode', '')
                     $datass->where('asteriskcdrdb.cdr.dst_exten', 'QUEUE')
-                        ->where('asteriskcdrdb.cdr.billsec', '!=', 0);
+                        ->where('asteriskcdrdb.cdr.billsec', '!=', 0)
+                        ->orWhere(function ($query) {
+                            $query->where('asteriskcdrdb.cdr.userfield', '=', '')
+                                ->Where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
+                        });
                     //->where('asteriskcdrdb.cdr.userfield', '=', '')
                     //->where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
                 } else if ($ctype == 2) {
@@ -154,6 +158,8 @@ class VoicerecordController extends Controller
                 })
                 ->editColumn('agent', function ($row) use ($agentArray) {
                     if ($row->dst_exten == "QUEUE" || $row->dst == "s") {
+                        $telp = $row->accountcode == '' ? $this->getTelpFromDstChannel($row->dstchannel) : $row->accountcode;
+                    } else if ($row->dst_userfield !== "" and $row->userfield =="") {
                         $telp = $row->accountcode == '' ? $this->getTelpFromDstChannel($row->dstchannel) : $row->accountcode;
                     } else {
                         $telp = $row->dst;

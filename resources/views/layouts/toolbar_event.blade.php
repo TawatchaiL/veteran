@@ -416,7 +416,10 @@
                     </div>
                 </div>
                 </div>`);
-                //call_list();
+                setTimeout(() => {
+                    call_list();
+                }, 1000);
+
                 toolbar_modal.modal('show');
 
 
