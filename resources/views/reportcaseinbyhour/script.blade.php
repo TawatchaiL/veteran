@@ -306,7 +306,6 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
         var startDate;
         var endDate;
 
@@ -663,7 +662,7 @@
 //                    orderable: false,
 //                    searchable: false,
 //                    className: 'no-print'
-                },
+ //               },
                 {
                     data: 'timelabel',
                     name: 'timelabel'
