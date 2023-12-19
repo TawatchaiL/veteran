@@ -698,7 +698,7 @@
                                                 '\n',
                                                 { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
                                                 '\n',
-                                                { text: 'Report : Summary Call (จำนวนสายที่ติดต่อ)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                { text: 'Report : Voice Record (ไฟล์บันทึกเสียงสนทนา)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
                                                 '\n',
                                                 { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
                                             ]
