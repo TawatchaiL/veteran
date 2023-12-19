@@ -645,8 +645,8 @@
                     //arrayDate[0] = parseInt(arrayDate[0]) + 543;
                     $('#Addadddate').val(arrayDate[0] + "-" + arrayDate[1] + "-" +
                         arrayDate[2]);
-                    $('#Addadddate').attr("readonly", "readonly").removeClass("AddDate");
-                    
+                    $('#Addadddate').attr("readonly", "readonly");
+                    $('#Addadddate').removeClass("AddDate");
                     //$('#tempAddadddate').html(res.data.adddate);
                     $('#Detail').val(res.data.casedetail);
                     $('#tranferstatus').val(res.data.tranferstatus).change();
