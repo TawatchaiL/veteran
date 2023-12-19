@@ -54,7 +54,7 @@ class DetailscoreagentController extends Controller
         }  
 
         $datas = DB::connection('remote_connection')
-        ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT score, count(id) as sumscore FROM call_center.agent_score WHERE call_center.agent_score.datetime BETWEEN "' . $startDate . '" AND "' . $endDate . '"'.$sqlagent. 'GROUP BY score ORDER BY call_center.agent_score.score DESC) t, (SELECT @rownumber:=0) r) AS temp'))
+        ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT crm_id, score, count(id) as sumscore FROM call_center.agent_score WHERE call_center.agent_score.datetime BETWEEN "' . $startDate . '" AND "' . $endDate . '"'.$sqlagent. 'GROUP BY crm_id, score ORDER BY call_center.agent_score.score DESC) t, (SELECT @rownumber:=0) r) AS temp'))
         ->select('rownumber', 'score', 'sumscore')
         ->get();
 /*
@@ -78,7 +78,7 @@ class DetailscoreagentController extends Controller
                 $chart_label = array();
                 foreach ($datas as $data) {
                     $chart_data[] = $data->sumscore;
-                    $chart_label[] = $data->score;
+                    $chart_label[$data->crm_id] = $data->score;
                 }
                 return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
             }
