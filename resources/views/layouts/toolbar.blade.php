@@ -219,7 +219,7 @@
                         <div class="row">
                             <div class="col-md-2">
                                 <input {{ $dial_number }} style="height:50px" type="text"
-                                    class="{{ $dial_number_class }} form-control" maxlength="11" id="dial_number"
+                                    class="{{ $dial_number_class }} form-control" maxlength="15" id="dial_number"
                                     name="dial_number" value="" placeholder="กรอกเบอร์" data-html="true"
                                     data-placement="top" data-popover-content="#a1" data-toggle="popover"
                                     data-trigger="focus" href="#" tabindex="0" />

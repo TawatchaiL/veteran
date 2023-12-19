@@ -250,8 +250,11 @@
                             set_state_button(result.id);
                         }, 1000);
                         //positionCards();
-                        $('#custom-tabs-pop-' + result.tab_id + '-tab').remove();
-                        $('#custom-tabs-pop-' + result.tab_id).remove();
+                        if (result.tab_id) {
+                            $('#custom-tabs-pop-' + result.tab_id + '-tab').remove();
+                            $('#custom-tabs-pop-' + result.tab_id).remove();
+                        }
+
                     }
                 });
             } else if (data.status == 1 || data.status == 2 || data.status == 8 || data.status == 9) {
@@ -284,6 +287,16 @@
             if (data.pausereason == "Auto-Pause") {
                 $.ajax({
                     url: "{{ route('agent.break_auto') }}",
+                    method: 'post',
+                    async: false,
+                    success: function(result) {
+                        set_state_icon(result.id, result.icon, result.message);
+                        set_state_button(result.id);
+                    }
+                });
+            } else {
+                $.ajax({
+                    url: "{{ route('agent.status') }}",
                     method: 'post',
                     async: false,
                     success: function(result) {

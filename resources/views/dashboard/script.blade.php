@@ -424,6 +424,8 @@
     const web_url = '{{ url('/') }}';
     const agent_username = '{{ $temporaryPhone }}';
     const exten = '{{ $temporaryPhone }}';
+    const exten_ip = '{{ $temporaryPhoneIP }}';
+    const sipexten = 'SIP/{{ $temporaryPhone }}';
     const account_code = exten;
     const storedOption = localStorage.getItem('selectedOption') || '{{ $queue[0]->extension }}';
     const storedSLA = localStorage.getItem('sla_setting') || '30';
@@ -585,7 +587,7 @@
                     changeText(total_case, item.total_case)
                     changeText(total_close_case, item.total_close_case)
                     changeText(total_tranfer_case, item.total_transfer_case)
-        
+
                 }
                 //});
             },
@@ -982,6 +984,44 @@
     });
 
 
+    socket.on('event', async (data) => {
+
+        if (data.extension == exten) {
+            if (data.status == 4 || data.status == -1) {
+                //toolbar_header.addClass("bg-secondary");
+            } else if (data.status == 0) {
+                //toolbar_header.addClass("bg-primary");
+                $.ajax({
+                    url: "{{ route('agent.hang') }}",
+                    method: 'post',
+                    async: true,
+                    data: {
+                        extension: data.extension,
+                        _token: token,
+                    },
+                    success: function(result) {
+                        setTimeout(() => {
+                            set_state_icon(result.id, result.icon, result.message);
+                            set_state_button(result.id);
+                        }, 1000);
+                        //positionCards();
+                        if (result.tab_id) {
+                            $('#custom-tabs-pop-' + result.tab_id + '-tab').remove();
+                            $('#custom-tabs-pop-' + result.tab_id).remove();
+                        }
+
+                    }
+                });
+            } else if (data.status == 1 || data.status == 2 || data.status == 8 || data.status == 9) {
+                //toolbar_header.addClass("bg-danger");
+            } else if (data.status == 16 || data.status == 17) {
+                //toolbar_header.addClass("bg-danger");
+            }
+
+        }
+    });
+
+
     const sendAjaxRequest = (url, method, data = {}) => {
         $.ajax({
             url,
@@ -1042,6 +1082,10 @@
 
     $(document).on('click', '.btn-spy', function(e) {
         e.preventDefault();
+        setTimeout(function() {
+            const ipAddress = `${exten_ip}`;
+            $.get(`${api_serv}/answer/${ipAddress}`, (data, status) => {});
+        }, 1000)
         const call_number = $(this).data('id');
         const additionalData = {
             telno: call_number,
@@ -1069,6 +1113,10 @@
 
     $(document).on('click', '.btn-whis', function(e) {
         e.preventDefault();
+        setTimeout(function() {
+            const ipAddress = `${exten_ip}`;
+            $.get(`${api_serv}/answer/${ipAddress}`, (data, status) => {});
+        }, 1000)
         const call_number = $(this).data('id');
         const additionalData = {
             telno: call_number,
@@ -1095,6 +1143,10 @@
 
     $(document).on('click', '.btn-barge', function(e) {
         e.preventDefault();
+        setTimeout(function() {
+            const ipAddress = `${exten_ip}`;
+            $.get(`${api_serv}/answer/${ipAddress}`, (data, status) => {});
+        }, 1000)
         const call_number = $(this).data('id');
         const additionalData = {
             telno: call_number,
