@@ -447,6 +447,14 @@
             } else {
                 document.getElementById('validationMessages').textContent = '';
             }
+
+            if (fieldValue.length < 4) {
+                    document.getElementById('validationMessages').textContent =
+                        'กรุณาระบุคำที่จะค้นหาอย่างน้อย 4 ตัวอักษร';
+                        return false;
+            } else {
+                document.getElementById('validationMessages').textContent = '';
+            }
             //$('#Listview').DataTable().ajax.reload();
             storeFieldValues();
             table.search('').draw();

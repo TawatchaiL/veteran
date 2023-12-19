@@ -63,15 +63,15 @@ class ContactController extends Controller
                     ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"');
                 //->get();
             } else if ($request->input('seachtype') === "2") {
-                $datas = DB::table('crm_contacts')->where('telhome', '=', $request->input('seachtext'))
+                $datas = DB::table('crm_contacts')->where('telhome', 'like', $request->input('seachtext') . '%')
                     ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"');
                 //->get();
             } else if ($request->input('seachtype') === "3") {
-                $datas = DB::table('crm_contacts')->where('phoneno', '=', $request->input('seachtext'))
+                $datas = DB::table('crm_contacts')->where('phoneno', 'like', $request->input('seachtext') . '%')
                     ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"');
                 //->get();
             } else if ($request->input('seachtype') === "4") {
-                $datas = DB::table('crm_contacts')->where('workno', '=', $request->input('seachtext'))
+                $datas = DB::table('crm_contacts')->where('workno', 'like', $request->input('seachtext') . '%')
                     ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"');
                 //->get();
             } else if ($request->input('seachtype') === "5") {
