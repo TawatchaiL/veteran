@@ -646,7 +646,8 @@
                     $('#Addadddate').val(arrayDate[0] + "-" + arrayDate[1] + "-" +
                         arrayDate[2]);
                     $('#Addadddate').attr("readonly", "readonly");
-                    $('#Addadddate').removeClass("AddDate");
+                    $('#Addadddate').attr("disabled", "disabled");
+                    //$('#Addadddate').removeClass("AddDate");
                     //$('#tempAddadddate').html(res.data.adddate);
                     $('#Detail').val(res.data.casedetail);
                     $('#tranferstatus').val(res.data.tranferstatus).change();
