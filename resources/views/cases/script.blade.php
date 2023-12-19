@@ -470,6 +470,12 @@
             if($('#Addadddate').is(':disabled')){
                 $("#Addadddate").removeAttr("disabled"); 
             }
+            if($('#casetype1').prop('readonly')){
+                $("#casetype1").removeAttr("readonly"); 
+            }
+            if($('#tranferstatus').is(':disabled')){
+                $("#tranferstatus").removeAttr("disabled"); 
+            }
 
             $('#casetype2').val(null).trigger("change")
             $('#casetype3').val(null).trigger("change")
@@ -655,7 +661,7 @@
                     //$('#tempAddadddate').html(res.data.adddate);
                     $('#Detail').val(res.data.casedetail);
                     $('#tranferstatus').val(res.data.tranferstatus).change();
-                    $('#tranferstatus').attr("readonly", "readonly");
+                    $('#tranferstatus').attr("disabled", "disabled");
                     $('#casestatus').val(res.data.casestatus).change();
                     $('#casetype1').val(res.data.caseid1).change();
                     $('#casetype1').attr("readonly", "readonly");
