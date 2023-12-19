@@ -82,6 +82,16 @@ class DetailscoreagentController extends Controller
                    //$chart_label[] = $data->score;
                    $datat[$data->crmid][$data->score] = $data->sumscore;
                 }
+                $a = 0;
+                foreach ($datat as $keys => $values) {
+                        $datat[$a]['name'] = $agent_data[$keys];
+                        $datat[$a]['data'][0] = $values[0];
+                        $datat[$a]['data'][1] = $values[1];
+                        $datat[$a]['data'][2] = $values[2];
+                        $datat[$a]['data'][3] = $values[3];
+                        $datat[$a]['data'][4] = $values[4];
+                        $a++;
+                }
                 /*$datat = [
                     ['name'=>'line 1', 'data'=> [10, 15, 23, 5, 9]],
                     ['name'=>'line 2', 'data'=> [5, 2, 3, 6, 7]],
