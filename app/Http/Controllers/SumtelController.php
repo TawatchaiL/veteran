@@ -50,7 +50,7 @@ class SumtelController extends Controller
         }
 
         $datas = DB::connection('remote_connection')
-            ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS row_number, t.* FROM (SELECT DATE(datetime_entry_queue) as cdate, SUM(if(status = "terminada",1,0)) as terminada, SUM(if(status = "abandonada ",1,0)) as abandonada FROM call_center.call_entry WHERE datetime_entry_queue BETWEEN "' . $startDate . '" AND "' . $endDate . '" GROUP BY DATE(datetime_entry_queue) ORDER BY DATE(datetime_entry_queue) DESC) t, (SELECT @rownumber:=0) r) AS temp order by temp.cdate'))
+            ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS row_number, t.* FROM (SELECT DATE(datetime_entry_queue) as cdate, SUM(if(status = "terminada",1,0)) as terminada, SUM(if(status = "abandonada ",1,0)) as abandonada FROM call_center.call_entry WHERE datetime_entry_queue BETWEEN "' . $startDate . '" AND "' . $endDate . '" GROUP BY DATE(datetime_entry_queue) ORDER BY DATE(datetime_entry_queue) DESC) t, (SELECT @rownumber:=0) r) AS temp'))
             ->select('row_number', 'cdate', 'terminada', 'abandonada')
             ->get();
         /*
