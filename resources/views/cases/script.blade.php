@@ -470,6 +470,12 @@
             if($('#Addadddate').is(':disabled')){
                 $("#Addadddate").removeAttr("disabled"); 
             }
+            if($('#casetype1').is(':readonly')){
+                $("#casetype1").removeAttr("readonly"); 
+            }
+            if($('#tranferstatus').is(':readonly')){
+                $("#tranferstatus").removeAttr("readonly"); 
+            }
 
             $('#casetype2').val(null).trigger("change")
             $('#casetype3').val(null).trigger("change")
