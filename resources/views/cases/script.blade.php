@@ -674,19 +674,19 @@
                         //$('#casetype6').attr("readonly", "readonly");
                     }
 
-                    if (res.data.caseid2 != 0) {
+                    if (res.data.caseid2 == 0) {
                         $('#casetype2').attr("readonly", "readonly");
                     }
-                    if (res.data.caseid3 != 0) {
+                    if (res.data.caseid3 == 0) {
                         $('#casetype3').attr("readonly", "readonly");
                     }
-                    if (res.data.caseid4 != 0) {
+                    if (res.data.caseid4 == 0) {
                         $('#casetype4').attr("readonly", "readonly");
                     }
-                    if (res.data.caseid5 != 0) {
+                    if (res.data.caseid5 == 0) {
                         $('#casetype5').attr("readonly", "readonly");
                     }
-                    if (res.data.caseid6 != 0) {
+                    if (res.data.caseid6 == 0) {
                         $('#casetype6').attr("readonly", "readonly");
                     }
                     //Comment Data
