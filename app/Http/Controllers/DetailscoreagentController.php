@@ -81,8 +81,8 @@ class DetailscoreagentController extends Controller
                    //$chart_data[$data->crm_id][$data->score] = $data->sumscore;
                    //$chart_label[] = $data->score;
                 }
-                $chart_data['data']=[10,15,23,5,9];
-                $chart_data['data']=[9,5,8,4,1];
+                $chart_data[]=[10,15,23,5,9];
+                $chart_data[]=[9,5,8,4,1];
                 $chart_label=[1,5];
                 return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
             }
