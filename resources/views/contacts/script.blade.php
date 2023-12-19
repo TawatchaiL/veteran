@@ -448,7 +448,7 @@
                 document.getElementById('validationMessages').textContent = '';
             }
 
-            if (fieldValue.length < 4) {
+            if (textValue.length < 4) {
                     document.getElementById('validationMessages').textContent =
                         'กรุณาระบุคำที่จะค้นหาอย่างน้อย 4 ตัวอักษร';
                         return false;
