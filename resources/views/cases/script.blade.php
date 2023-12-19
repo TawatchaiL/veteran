@@ -467,6 +467,10 @@
             $('#casetype4').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
             $('#casetype5').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
             $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>'); */
+            if($('#Addadddate').is(':disabled')){
+                $("#Addadddate").removeAttr("disabled"); 
+            }
+
             $('#casetype2').val(null).trigger("change")
             $('#casetype3').val(null).trigger("change")
             $('#casetype4').val(null).trigger("change")
@@ -645,25 +649,51 @@
                     //arrayDate[0] = parseInt(arrayDate[0]) + 543;
                     $('#Addadddate').val(arrayDate[0] + "-" + arrayDate[1] + "-" +
                         arrayDate[2]);
+                    //$('#Addadddate').attr("readonly", "readonly");
+                    $('#Addadddate').attr("disabled", "disabled");
+                    //$('#Addadddate').removeClass("AddDate");
                     //$('#tempAddadddate').html(res.data.adddate);
                     $('#Detail').val(res.data.casedetail);
                     $('#tranferstatus').val(res.data.tranferstatus).change();
+                    $('#tranferstatus').attr("readonly", "readonly");
                     $('#casestatus').val(res.data.casestatus).change();
                     $('#casetype1').val(res.data.caseid1).change();
+                    $('#casetype1').attr("readonly", "readonly");
                     if (res.data.caseid2 != 0) {
                         $('#casetype2').val(res.data.caseid2).change();
+                        $('#casetype2').attr("readonly", "readonly");
                     }
                     if (res.data.caseid3 != 0) {
                         $('#casetype3').val(res.data.caseid3).change();
+                        $('#casetype3').attr("readonly", "readonly");
                     }
                     if (res.data.caseid4 != 0) {
                         $('#casetype4').val(res.data.caseid4).change();
+                        $('#casetype4').attr("readonly", "readonly");
                     }
                     if (res.data.caseid5 != 0) {
                         $('#casetype5').val(res.data.caseid5).change();
+                        $('#casetype5').attr("readonly", "readonly");
                     }
                     if (res.data.caseid6 != 0) {
                         $('#casetype6').val(res.data.caseid6).change();
+                        $('#casetype6').attr("readonly", "readonly");
+                    }
+
+                    if (res.data.caseid2 == 0) {
+                        $('#casetype2').attr("readonly", "readonly");
+                    }
+                    if (res.data.caseid3 == 0) {
+                        $('#casetype3').attr("readonly", "readonly");
+                    }
+                    if (res.data.caseid4 == 0) {
+                        $('#casetype4').attr("readonly", "readonly");
+                    }
+                    if (res.data.caseid5 == 0) {
+                        $('#casetype5').attr("readonly", "readonly");
+                    }
+                    if (res.data.caseid6 == 0) {
+                        $('#casetype6').attr("readonly", "readonly");
                     }
                     //Comment Data
                     $('#cHn').text(res.data.hn);

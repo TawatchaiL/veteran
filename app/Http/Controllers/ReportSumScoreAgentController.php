@@ -47,6 +47,12 @@ class ReportSumScoreAgentController extends Controller
             $startDate = date("Y-m-d H:i:s");
             $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
+
+        $datas = DB::connection('remote_connection')
+        ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT crm_id, sum(score) as sumscore FROM call_center.agent_score WHERE call_center.agent_score.datetime BETWEEN "' . $startDate . '" AND "' . $endDate . '" GROUP BY crm_id ORDER BY sumscore DESC LIMIT 3) t, (SELECT @rownumber:=0) r) AS temp'))
+        ->select('rownumber', 'crm_id', 'sumscore')
+        ->get();
+/*
         $datas = DB::connection('remote_connection')
             ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.agent_score'))
             ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), 'crm_id',  DB::raw('sum(score) as sumscore'))
@@ -55,7 +61,7 @@ class ReportSumScoreAgentController extends Controller
             ->orderBy("sumscore", "desc")
             ->limit(3)
             ->get();
-
+*/
             $agents = User::orderBy("id", "asc")->get();
             $agent_data = array();
             foreach ($agents as $agent) {

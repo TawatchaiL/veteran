@@ -47,6 +47,15 @@ class DetailcaseexternalnumberController extends Controller
             $startDate = date("Y-m-d H:i:s");
             $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
+        if(!empty($request->get('agent')) && $request->get('agent') != "0"){
+            $sqlagent = " and crm_id = '".$request->input('agent')."'";
+        }else{
+            $sqlagent = "";
+        }    
+        $datas = DB::connection('remote_connection')
+        ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT DATE(datetime_init) as cdate, TIME(datetime_init) as ctime, callerid as telno, crm_id as agentid, SEC_TO_TIME(duration) as duration, SEC_TO_TIME(duration_wait) as duration_wait FROM call_center.call_entry WHERE LENGTH(callerid) > 5 AND datetime_init BETWEEN "' . $startDate . '" AND "' . $endDate . '"' .$sqlagent. ' ORDER BY datetime_init) t, (SELECT @rownumber:=0) r) AS temp'))
+        ->select('rownumber', 'cdate', 'ctime', 'telno', 'agentid', 'duration', 'duration_wait');
+/*
         $datas = DB::connection('remote_connection')
             ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.call_entry'))
             ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), DB::raw('DATE(datetime_init) as cdate'), DB::raw('TIME(datetime_init) as ctime'),'callerid as telno','crm_id as agentid', DB::raw('SEC_TO_TIME(duration) as duration'), DB::raw('SEC_TO_TIME(duration_wait) as duration_wait') )
@@ -57,6 +66,7 @@ class DetailcaseexternalnumberController extends Controller
             }    
             //->limit(10)
             $datas->get();
+*/
             $agents = User::orderBy("id", "asc")->get();
             if ($request->ajax()) {
                 $agent_data = array();

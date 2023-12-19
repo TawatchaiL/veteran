@@ -13,14 +13,28 @@
     }
     $(document).ready(function() {
         $('#download_bar').click(function(event) {
-            var doc = new jsPDF();
-	        doc.addFont('THSarabun.ttf', 'THSarabun', 'normal');
-            doc.setFont('THSarabun');
-            var name = 'ธวัชชัย';
-            doc.setFontSize(10); doc.text(txt + name, 10, 10);
-            for(var i = 2; i <= 10; i ++) { doc.setFontSize(5 * i); doc.text(txt, 10, 20 * i); }
-            doc.save('Test6.pdf');
-            
+
+            var pdfWidth = 595.28;
+            var pdfHeight = 841.89;
+            var pdf = new jsPDF({
+                unit: 'pt',
+                format: [pdfWidth, pdfHeight]
+            });
+
+            var chartContainer = document.querySelector("#bar_graph");
+
+            html2canvas(chartContainer).then(canvas => {
+                var imgData = canvas.toDataURL("image/png");
+
+                var imgWidth = pdfWidth;
+                var imgHeight = (canvas.height * imgWidth) / canvas
+                    .width;
+
+                pdf.addImage(imgData, 'PNG', 0, 60, imgWidth,
+                    imgHeight);
+                pdf.save("bar_chart.pdf");
+            });
+
         });
 
         $('#download_bar_img').click(function(event) {

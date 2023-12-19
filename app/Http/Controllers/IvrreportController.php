@@ -47,6 +47,12 @@ class IvrreportController extends Controller
             $startDate = date("Y-m-d H:i:s");
             $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
+
+        $datas = DB::connection('remote_connection')
+        ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT DATE(call_center.ivr_report.datetime) as cdate, TIME(call_center.ivr_report.datetime) as ctime, call_center.ivr_report.callerid as telno, asterisk.ivr_details.name as ivrname, call_center.ivr_report.digit as ivrno FROM call_center.ivr_report left join asterisk.ivr_details on call_center.ivr_report.ivr_id = asterisk.ivr_details.id  WHERE call_center.ivr_report.datetime between "' . $startDate . '" AND "' . $endDate . '" ORDER BY call_center.ivr_report.datetime ASC) t, (SELECT @rownumber:=0) r) AS temp'))
+        ->select('rownumber', 'cdate', 'ctime', 'telno', 'ivrname', 'ivrno')
+        ->get();
+/*
         $datas = DB::connection('remote_connection')
             ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.ivr_report'))
             ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), DB::raw('DATE(call_center.ivr_report.datetime) as cdate'), DB::raw('TIME(call_center.ivr_report.datetime) as ctime'),'call_center.ivr_report.callerid as telno','asterisk.ivr_details.name as ivrname','call_center.ivr_report.digit as ivrno')
@@ -54,7 +60,7 @@ class IvrreportController extends Controller
             ->whereRaw('call_center.ivr_report.datetime between "' . $startDate . '" and "' . $endDate . '"')
             ->orderBy("call_center.ivr_report.datetime", "asc")
             ->get();
-
+*/
         if ($request->ajax()) {
 
             return datatables()->of($datas)

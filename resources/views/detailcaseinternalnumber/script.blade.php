@@ -440,7 +440,7 @@
             aaSorting: [
                 [0, "desc"]
             ],
-            iDisplayLength: 5,
+            iDisplayLength: 10,
             lengthMenu: [5, 10, 25, 50, 75, 100],
             stateSave: true,
             autoWidth: false,
@@ -488,30 +488,29 @@
                             fontSize: 16
                         };
                         doc.content.splice(0, 1);
-                        doc.pageMargins = [20, 100, 20, 30];
+                        doc.pageMargins = [20, 150, 20, 30];
                         doc.styles.tableHeader.fontSize = 16;
                         doc.styles.tableBodyOdd.alignment = 'center';
                         doc.styles.tableBodyEven.alignment = 'center';
                         doc.styles.tableFooter.fontSize = 16;
-                        doc['header']=(function() {
-							return {
-								columns: [
-									{
-										image: logobase64,
-                                        width: 50,
-                                        margin: [250, 0, 50, 50],
-									},
-									{
-										alignment: 'center',
-										italics: true,
-										text: 'รายละเอียดเบอร์ภายในที่โทรเข้ามาติดต่อ',
-										fontSize: 18,
-										margin: [20, 50, 70, 0]
-									}
-								],
-								margin:20
-							}
-						});
+                        doc['header'] = (function() {
+                            return {
+                                columns: [
+                                    {
+                                        text: [  
+                                                { text: 'CRM REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'Report : Detail Internal Number (รายละเอียดเบอร์ภายในที่โทรเข้ามาติดต่อ)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
+                                            ]
+                                    }
+                                ],
+                                margin: 20
+                            }
+                        });
 
                         doc.content[0].table.widths = [40, '*', 80, 70, 70, 70, 70];
                         var objLayout = {};

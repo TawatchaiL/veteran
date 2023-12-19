@@ -47,6 +47,12 @@ class ReporttopoutController extends Controller
             $startDate = date("Y-m-d H:i:s");
             $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
+
+        $datas = DB::connection('remote_connection')
+        ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT callerid, COUNT(callerid) AS sumcases FROM call_center.call_entry WHERE LENGTH(callerid) > 5 AND datetime_init BETWEEN "' . $startDate . '" AND "' . $endDate . '" GROUP BY callerid ORDER BY COUNT(callerid) DESC LIMIT 10) t, (SELECT @rownumber:=0) r) AS temp'))
+        ->select('rownumber', 'callerid', 'sumcases')
+        ->get();
+/*
         DB::statement('SET @row_number = 0');
         $datas = DB::connection('remote_connection')
             ->table('call_center.call_entry')
@@ -57,7 +63,7 @@ class ReporttopoutController extends Controller
             ->orderBy("sumcases", "desc")
             ->limit(10)
             ->get();
-
+*/
             if (!empty($request->get('rstatus'))) {                                             
                 $chart_data = array();
                 $chart_label = array();
