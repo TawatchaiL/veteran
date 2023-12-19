@@ -25,7 +25,7 @@
                                 <div class="col-xs-4 col-sm-4 col-md-4">
                                     <div class="form-group">
                                         <strong>
-                                            วันที่โทรเข้า:</strong>
+                                            วันที่โทร:</strong>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">
@@ -177,7 +177,7 @@
                                             <th>เบอร์ต้นทาง</th>
                                             <th>เบอร์ปลายทาง</th>
                                             <th>เวลาที่ใช้สาย</th>
-                                            <th>ประเภท</th>
+                                            <th>ประเภทค่าโทร</th>
                                             <th>อัตราค่าโทร</th>
                                             <th>ต่อ</th>
                                             <th>เป็นเงิน</th>
