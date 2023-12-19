@@ -166,7 +166,7 @@ class ReportcaseinbyhourController extends Controller
                                     ELSE 0
                                 END) as total_cases FROM call_center.call_entry WHERE LENGTH(callerid) < 6 AND datetime_init between '". $startDate ." 00:00:00' and '". $endDate ." 23:59:59' GROUP BY numberhour) as c on timeslot.timeslot = c.numberhour
                             ) as t, (SELECT @rownumber:=0) AS temp"))
-                            ->select("rownumber, timelabel, numberhour, if(numberhour IS NULL,0,c.total_cases) as sumt")
+                            ->select('rownumber', 'timelabel', 'numberhour', 'if(numberhour IS NULL,0,c.total_cases) as sumt')
                             //->orderBy("timelabel", "asc")
                             ->get();
             
