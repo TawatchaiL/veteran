@@ -20,7 +20,9 @@
     <meta name="msapplication-tap-highlight" content="no">
     <script src="plugins/jquery/jquery.min.js"></script>
     <script src="plugins/toastr/toastr.min.js"></script>
-
+    <script src="dist/js/html2canvas.min.js"></script>
+    <script src='dist/js/jspdf.min.js'></script>
+    <script src="dist/js/jspdf.plugin.autotable.min.js"></script>
 
     <link rel="stylesheet" href="dist/css/Sans.css?:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="dist/css/Sarabun.css?:wght@400&display=swap">
