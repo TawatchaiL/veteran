@@ -179,7 +179,6 @@
                                 <table id="Listview" class="table table-bordered table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th>ลำดับ</th>
                                             <th>ช่วงเวลา</th>
                                             <th width="280px">จำนวน</th>
                                         </tr>

@@ -580,7 +580,7 @@
                                                 '\n',
                                                 { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
                                                 '\n',
-                                                { text: 'Report : Top 10 (10 อันดับเรื่องที่ติดต่อมากที่สุด)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                { text: 'Report : Summary Call Internal (ผลรวมสายเข้าภายในแยกตามช่วงเวลา)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
                                                 '\n',
                                                 { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
                                             ]
@@ -657,11 +657,11 @@
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
             columns: [
-                {
-                    data: 'rownumber',
-                    name: 'rownumber',
-                    orderable: false,
-                    searchable: false,
+//                {
+//                    data: 'rownumber',
+//                    name: 'rownumber',
+//                    orderable: false,
+//                    searchable: false,
 //                    className: 'no-print'
                 },
                 {
