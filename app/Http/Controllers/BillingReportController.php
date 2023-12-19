@@ -51,7 +51,7 @@ class BillingReportController extends Controller
             //->join('call_center.call_recording', 'asteriskcdrdb.cdr.uniqueid', '=', 'call_center.call_recording.uniqueid')
             ->where('asteriskcdrdb.cdr.dstchannel', '!=', '')
             ->where('asteriskcdrdb.cdr.recordingfile', '!=', '')
-            ->where('asteriskcdrdb.cdr.disposition', '=', 'ANSWERED')
+            //->where('asteriskcdrdb.cdr.disposition', '=', 'ANSWERED')
             ->orderBy('asteriskcdrdb.cdr.calldate', 'desc');
 
         $agens = User::orderBy('name', 'asc')->get();
@@ -111,8 +111,15 @@ class BillingReportController extends Controller
                 $ctype = $request->input('ctype');
                 if ($ctype == 1) {
                     //where('asteriskcdrdb.cdr.accountcode', '')
-                    $datass->where('asteriskcdrdb.cdr.dst_exten', 'QUEUE')
-                        ->where('asteriskcdrdb.cdr.billsec', '!=', 0);
+                    $datass->Where(function ($query) {
+                        $query->where('asteriskcdrdb.cdr.dst_exten', 'QUEUE')
+                            ->where('asteriskcdrdb.cdr.billsec', '!=', 0)
+                            ->whereNotIn('asteriskcdrdb.cdr.dcontext', ['app-blackhole', 'call-survey']);
+                    })->orWhere(function ($query) {
+                        $query->where('asteriskcdrdb.cdr.dst_exten', '!=', 'QUEUE')
+                            ->where('asteriskcdrdb.cdr.userfield', '=', '')
+                            ->Where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
+                    });
                     //->where('asteriskcdrdb.cdr.userfield', '=', '')
                     //->where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
                 } else if ($ctype == 2) {
@@ -183,7 +190,7 @@ class BillingReportController extends Controller
                     list($date, $time) = explode(' ', $calldate);
                     return $time;
                 })
-               /*  ->editColumn('telno', function ($row) use ($agentArray) {
+                /*  ->editColumn('telno', function ($row) use ($agentArray) {
                     if ($row->accountcode !== '') {
                         if (!empty($row->userfield)) {
                             return $agentArray[str_replace(';', '', $row->userfield)]['name'] . " ( " . $row->src . " ) ";
@@ -217,6 +224,8 @@ class BillingReportController extends Controller
                 })
                 ->editColumn('agent', function ($row) use ($agentArray) {
                     if ($row->dst_exten == "QUEUE" || $row->dst == "s") {
+                        $telp = $row->accountcode == '' ? $this->getTelpFromDstChannel($row->dstchannel) : $row->accountcode;
+                    } else if ($row->dst_userfield !== "" and $row->userfield == "") {
                         $telp = $row->accountcode == '' ? $this->getTelpFromDstChannel($row->dstchannel) : $row->accountcode;
                     } else {
                         $telp = $row->dst;
