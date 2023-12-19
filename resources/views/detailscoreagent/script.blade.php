@@ -866,7 +866,9 @@
                 },
                 method: 'GET',
                 success: function(res) {
-                    options.series[0].data = res.datag;
+                    //options.series[0].data = res.datag;
+                    options.series[0].data = [10,15,23,5,9];
+                    options.series[1].data = [9,5,8,4,1];
                     options.xaxis.categories = res.datal;
                     optionsdonut.labels = res.datal; 
                     optionsdonut.series = res.datag;
