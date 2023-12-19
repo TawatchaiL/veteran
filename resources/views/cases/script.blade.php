@@ -645,7 +645,8 @@
                     //arrayDate[0] = parseInt(arrayDate[0]) + 543;
                     $('#Addadddate').val(arrayDate[0] + "-" + arrayDate[1] + "-" +
                         arrayDate[2]);
-                    $('#Addadddate').attr("readonly", "readonly");
+                    $('#Addadddate').attr("readonly", "readonly").removeClass("btn-savecasetype");
+                    
                     //$('#tempAddadddate').html(res.data.adddate);
                     $('#Detail').val(res.data.casedetail);
                     $('#tranferstatus').val(res.data.tranferstatus).change();
