@@ -67,6 +67,12 @@ class DetailscoreagentController extends Controller
             ->orderBy("score", "desc")
             ->get();
 */
+            $agents = User::orderBy("id", "asc")->get();
+            $agent_data = array();
+            foreach ($agents as $agent) {
+                $agent_data[$agent->id] = $agent->name;
+            }
+
             if (!empty($request->get('rstatus'))) {
                 $chart_data = array();
                 $chart_label = array();
@@ -80,13 +86,16 @@ class DetailscoreagentController extends Controller
         if ($request->ajax()) {
 
             return datatables()->of($datas)
+                ->addColumn('agent', function ($row) use ($agent_data){
+                    if (isset($agent_data[$row->crm_id])) {
+                        return $agent_data[$row->crm_id];
+                    } else {
+                        return 'Agent not found';
+                    }
+                })
                 ->toJson();
         }
-        $agents = User::orderBy("id", "asc")->get();
-        $agent_data = array();
-        foreach ($agents as $agent) {
-            $agent_data[$agent->id] = $agent->name;
-        }
+
         return view('detailscoreagent.index')->with(['agents' => $agents]);
     }
 

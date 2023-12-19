@@ -634,6 +634,10 @@
                     searchable: false
                 },
                 {
+                    data: 'agent',
+                    name: 'agent'
+                },
+                {
                     data: 'score',
                     name: 'score'
                 },
