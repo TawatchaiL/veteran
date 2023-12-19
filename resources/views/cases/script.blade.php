@@ -470,10 +470,10 @@
             if($('#Addadddate').is(':disabled')){
                 $("#Addadddate").removeAttr("disabled"); 
             }
-            if($('#casetype1').is(':readonly')){
+            if($('#casetype1').prop('readonly')){
                 $("#casetype1").removeAttr("readonly"); 
             }
-            if($('#tranferstatus').is(':readonly')){
+            if($('#tranferstatus').prop('readonly')){
                 $("#tranferstatus").removeAttr("readonly"); 
             }
 
