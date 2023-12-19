@@ -355,7 +355,13 @@
                         'กรุณาระบุคำที่จะค้นหา';
                     return false;
                 } else {
-                    document.getElementById('validationMessages').textContent = '';
+                    if (textValue.length < 4) {
+                    document.getElementById('validationMessages').textContent =
+                        'กรุณาระบุคำที่จะค้นหาอย่างน้อย 4 ตัวอักษร';
+                        return false;
+                    } else {
+                        document.getElementById('validationMessages').textContent = '';
+                    }
                 }
             } else {
                 document.getElementById('validationMessages').textContent = '';
