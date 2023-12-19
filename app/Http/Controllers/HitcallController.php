@@ -55,7 +55,7 @@ class HitcallController extends Controller
             $sqlagent = "";
         }      
         $datas = DB::connection('remote_connection')
-        ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT crm_id, DATE(datetime_init) as cdate, TIME(datetime_init) as ctime, callerid as telno, SEC_TO_TIME(duration_wait) as durationwait, SEC_TO_TIME(duration) as duration FROM call_center.call_entry WHERE datetime_init BETWEEN "' . $startDate . '" AND "' . $endDate . '" AND status = "terminada" AND crm_id is not null' .$sqlagent. ' ORDER BY datetime_init ASC) t, (SELECT @rownumber:=0) r) AS temp'))
+        ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT crm_id, DATE(datetime_init) as cdate, TIME(datetime_init) as ctime, callerid as telno, SEC_TO_TIME(duration_wait) as durationwait, SEC_TO_TIME(duration) as duration FROM call_center.call_entry WHERE datetime_init BETWEEN "' . $startDate . '" AND "' . $endDate . '" AND status = "terminada" AND crm_id is not null' .$sqlagent. ' ORDER BY datetime_init DESC) t, (SELECT @rownumber:=0) r) AS temp'))
         ->select('rownumber', 'crm_id', 'cdate', 'ctime', 'telno', 'durationwait', 'duration')
         ->get();
 /*

@@ -55,7 +55,7 @@ class LoginstatusController extends Controller
         }    
 
         $datas = DB::connection('remote_connection')
-            ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT crm_id, datetime_init, datetime_end, duration FROM call_center.audit WHERE datetime_init BETWEEN "' . $startDate . '" AND "' . $endDate . '" AND id_break is null' .$sqlagent. ' ORDER BY datetime_init ASC) t, (SELECT @rownumber:=0) r) AS temp'))
+            ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT crm_id, datetime_init, datetime_end, duration FROM call_center.audit WHERE datetime_init BETWEEN "' . $startDate . '" AND "' . $endDate . '" AND id_break is null' .$sqlagent. ' ORDER BY datetime_init DESC) t, (SELECT @rownumber:=0) r) AS temp'))
             ->select('rownumber', 'crm_id', 'datetime_init', 'datetime_end', 'duration')
             ->get();
 /*

@@ -350,7 +350,7 @@ class ContactController extends Controller
     {
         $user = Auth::user();
         $valifield = [
-            'hn' => 'required|string|max:10',
+        /*    'hn' => 'required|string|max:10',
             'tname' => 'required|string|max:50',
             'fname' => 'required|string|max:50',
             'lname' => 'required|string|max:50',
@@ -360,10 +360,10 @@ class ContactController extends Controller
             'homeno' => 'required|string|max:10',
             'city' => 'required|string|max:8',
             'district' => 'required|string|max:8',
-            'subdistrict' => 'required|string|max:8',
+            'subdistrict' => 'required|string|max:8', */
         ];
         $valimess = [
-            'hn.required' => 'กรุณากรอกรหัสผู้ติดต่อ',
+        /*    'hn.required' => 'กรุณากรอกรหัสผู้ติดต่อ',
             'tname.required' => 'กรุณาเลือกคำนำหน้าชื่อ',
             'fname.required' => 'กรุณากรอกชื่อ',
             'lname.required' => 'กรุณากรอกนามสกุล',
@@ -373,7 +373,7 @@ class ContactController extends Controller
             'homeno.required' => 'กรุณากรอกบ้านเลขที่',
             'city.required' => 'กรุณาเลือกจังหวัด',
             'district.required' => 'กรุณาเลือกอำเภอ',
-            'subdistrict.required' => 'กรุณาเลือกตำบล',
+            'subdistrict.required' => 'กรุณาเลือกตำบล', */
         ];
         if ($request->input('telhome') == "" && $request->input('phoneno') == "" && $request->input('workno') == "") {
             $valifield = array_merge($valifield, ['telhome' => 'required|string|max:25']);
@@ -443,7 +443,7 @@ class ContactController extends Controller
     {
         $user = Auth::user();
         $valifield = [
-            'tname' => 'required|string|max:50',
+           /* 'tname' => 'required|string|max:50',
             'fname' => 'required|string|max:50',
             'lname' => 'required|string|max:50',
             'sex' => 'required|string|max:50',
@@ -452,10 +452,10 @@ class ContactController extends Controller
             'homeno' => 'required|string|max:50',
             'city' => 'required|string|max:8',
             'district' => 'required|string|max:8',
-            'subdistrict' => 'required|string|max:8',
+            'subdistrict' => 'required|string|max:8', */
         ];
         $valimess = [
-            'tname.required' => 'กรุณาเลือกคำนำหน้าชื่อ',
+           /* 'tname.required' => 'กรุณาเลือกคำนำหน้าชื่อ',
             'fname.required' => 'กรุณากรอกชื่อ',
             'lname.required' => 'กรุณากรอกนามสกุล',
             'sex.required' => 'กรุณาเลือกเพศ',
@@ -464,7 +464,7 @@ class ContactController extends Controller
             'homeno.required' => 'กรุณากรอกบ้านเลขที่',
             'city.required' => 'กรุณาเลือกจังหวัด',
             'district.required' => 'กรุณาเลือกอำเภอ',
-            'subdistrict.required' => 'กรุณาเลือกตำบล',
+            'subdistrict.required' => 'กรุณาเลือกตำบล', */
         ];
         if ($request->input('telhome') == "" && $request->input('phoneno') == "" && $request->input('workno') == "") {
             $valifield = array_merge($valifield, ['telhome' => 'required|string|max:25']);
