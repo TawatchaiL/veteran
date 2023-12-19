@@ -876,8 +876,8 @@
                         name: 'Line 2',
                         data: [5,2,3,6,7]
                     };*/
-                    options.xaxis.categories = res.datal;
-                    //options.labels = ['Label 1', 'Label 2'];
+                    //options.xaxis.categories = res.datal;
+                    options.labels = res.datal;
                     optionsdonut.labels = res.datal; 
                     optionsdonut.series = res.datag;
                         var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
