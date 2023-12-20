@@ -38,7 +38,7 @@ var docDefinition = {
                     defaultStyle = {
                             font: 'THSarabun',
                             fontSize: 16
-                        },
+                        };
                     content: [
                         'Hello, this is a basic PDF created using pdfMake!',
                         {
