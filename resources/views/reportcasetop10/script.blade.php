@@ -10,29 +10,6 @@
     }
     $(document).ready(function() {
         $('#download_bar').click(function(event) {
-            /*
-
-            var pdfWidth = 595.28;
-            var pdfHeight = 841.89;
-            var pdf = new jsPDF({
-                unit: 'pt',
-                format: [pdfWidth, pdfHeight]
-            });
-
-            var chartContainer = document.querySelector("#bar_graph");
-
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png");
-
-                var imgWidth = pdfWidth;
-                var imgHeight = (canvas.height * imgWidth) / canvas
-                    .width;
-
-                pdf.addImage(imgData, 'PNG', 0, 60, imgWidth,
-                    imgHeight);
-                pdf.save("bar_chart.pdf");
-            });
-*/
 
 var docDefinition = {
         defaultStyle: {
@@ -42,13 +19,13 @@ var docDefinition = {
         content: [
             'Hello, this is a basic PDF created using pdfMake!',
             {
-                text: 'A simple table:',
+                text: 'ทดสอบ',
                 style: 'header'
             },
             {
                 table: {
                     body: [
-                        ['Column 1', 'Column 2', 'Column 3'],
+                        ['ทดสอบ 1', 'ทดสอบ 2', 'ทดสอบ 3'],
                         ['Row 1, Cell 1', 'Row 1, Cell 2', 'Row 1, Cell 3'],
                         ['Row 2, Cell 1', 'Row 2, Cell 2', 'Row 2, Cell 3']
                     ]
