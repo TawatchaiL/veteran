@@ -11,36 +11,50 @@
     $(document).ready(function() {
         $('#download_bar').click(function(event) {
 
-var docDefinition = {
-        defaultStyle: {
-            font: 'THSarabun',
-            fontSize: 16
-        },
-        content: [
-            'Hello, this is a basic PDF created using pdfMake!',
-            {
-                text: 'ทดสอบ',
-                style: 'header'
-            },
-            {
-                table: {
-                    body: [
-                        ['ทดสอบ 1', 'ทดสอบ 2', 'ทดสอบ 3'],
-                        ['Row 1, Cell 1', 'Row 1, Cell 2', 'Row 1, Cell 3'],
-                        ['Row 2, Cell 1', 'Row 2, Cell 2', 'Row 2, Cell 3']
-                    ]
-                }
-            }
-        ],
-        styles: {
-            header: {
-                fontSize: 18,
-                bold: true
-            }
-        }
-    };
+                    var docDefinition = {
+                defaultStyle: {
+                    font: 'THSarabun',
+                    fontSize: 16
+                },
+                content: [
 
-    pdfMake.createPdf(docDefinition).download('example.pdf');
+                ],
+                pageMargins: [20, 150, 20, 30],
+                styles: {
+                    tableHeader: {
+                        fontSize: 16
+                    },
+                    tableBodyOdd: {
+                        alignment: 'center'
+                    },
+                    tableBodyEven: {
+                        alignment: 'center'
+                    },
+                    tableFooter: {
+                        fontSize: 16
+                    }
+                },
+                header: (function() {
+                    return {
+                        columns: [
+                            {
+                                text: [  
+                                    { text: 'CRM REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
+                                    '\n',
+                                    { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                    '\n',
+                                    { text: 'Report : Sum Case By Case Type (ผลรวมแยกตามประเภทที่ติดต่อ)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                    '\n',
+                                    { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
+                                ]
+                            }
+                        ],
+                        margin: 20
+                    };
+                })
+            };
+
+            pdfMake.createPdf(docDefinition).download('reports.pdf');
         });
 
         $('#download_bar_img').click(function(event) {
