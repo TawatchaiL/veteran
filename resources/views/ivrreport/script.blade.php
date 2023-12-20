@@ -559,39 +559,73 @@
                         doc.styles.tableFooter.fontSize = 16;
                         doc['header'] = (function() {
                             return {
-                                columns: [
-                                    {
-                                        text: [  
-                                                { text: 'CRM REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
-                                                '\n',
-                                                { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
-                                                '\n',
-                                                { text: 'Report : IVR Report', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
-                                                '\n',
-                                                { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
-                                            ]
-                                    }
-                                ],
+                                columns: [{
+                                    text: [{
+                                            text: 'CRM REPORT ',
+                                            alignment: 'right',
+                                            fontSize: 42,
+                                            margin: [0, 50, 70, 0]
+                                        },
+                                        '\n',
+                                        {
+                                            text: 'ข้อมูลวันที่ ' + $(
+                                                '#reservation').val(),
+                                            alignment: 'left',
+                                            fontSize: 18,
+                                            margin: [0, 50, 70, 0]
+                                        },
+                                        '\n',
+                                        {
+                                            text: 'Report : IVR Report',
+                                            alignment: 'left',
+                                            fontSize: 18,
+                                            margin: [0, 50, 70, 0]
+                                        },
+                                        '\n',
+                                        {
+                                            text: 'Report By : {{ Auth::user()->name }}',
+                                            alignment: 'left',
+                                            fontSize: 18,
+                                            margin: [0, 0, 70, 0]
+                                        }
+                                    ]
+                                }],
                                 margin: 20
                             }
                         });
 
                         doc.content[0].table.widths = [40, 95, 95, 95, 95, '*'];
                         var objLayout = {};
-						objLayout['hLineWidth'] = function(i) { return .5; };
-						objLayout['vLineWidth'] = function(i) { return .5; };
-						objLayout['hLineColor'] = function(i) { return '#bfbfbf'; };
-						objLayout['vLineColor'] = function(i) { return '#bfbfbf'; };
-						objLayout['paddingLeft'] = function(i) { return 4; };
-						objLayout['paddingRight'] = function(i) { return 4; };
-                        objLayout['paddingTop'] = function(i) { return 3; };
-                        objLayout['paddingBottom'] = function(i) { return 3; };
-						doc.content[0].layout = objLayout;
+                        objLayout['hLineWidth'] = function(i) {
+                            return .5;
+                        };
+                        objLayout['vLineWidth'] = function(i) {
+                            return .5;
+                        };
+                        objLayout['hLineColor'] = function(i) {
+                            return '#bfbfbf';
+                        };
+                        objLayout['vLineColor'] = function(i) {
+                            return '#bfbfbf';
+                        };
+                        objLayout['paddingLeft'] = function(i) {
+                            return 4;
+                        };
+                        objLayout['paddingRight'] = function(i) {
+                            return 4;
+                        };
+                        objLayout['paddingTop'] = function(i) {
+                            return 3;
+                        };
+                        objLayout['paddingBottom'] = function(i) {
+                            return 3;
+                        };
+                        doc.content[0].layout = objLayout;
 
                         for (var i = 1; i < doc.content[0].table.body.length; i++) {
                             doc.content[0].table.body[i][1].alignment = 'left';
                         }
-                }
+                    }
                 },
                 {
                     extend: 'print',
@@ -609,10 +643,15 @@
                     },
                     customize: function(win) {
                         // Customize the print layout
-                        $(win.document.body).prepend('<img style="position:absolute; top:0; left:470;width:100" src='+logobase64+'>')
-                        $(win.document.body).find('h1').css('text-align', 'center').css('font-size','16px').css('margin-top','105px');
-                        $(win.document.body).find('table').addClass('display').css('font-size','12px')
-                                            .removeClass('dataTable').css('margin-top','5px').css('margin-bottom','60px');
+                        $(win.document.body).prepend(
+                            '<img style="position:absolute; top:0; left:470;width:100" src=' +
+                            logobase64 + '>')
+                        $(win.document.body).find('h1').css('text-align', 'center').css(
+                            'font-size', '16px').css('margin-top', '105px');
+                        $(win.document.body).find('table').addClass('display').css('font-size',
+                                '12px')
+                            .removeClass('dataTable').css('margin-top', '5px').css(
+                                'margin-bottom', '60px');
                         $(win.document.body).find('table.dataTable th, table.dataTable td').css(
                             'border', '1px solid black');
                         $(win.document.body).find('table.dataTable th').css('background-color',
@@ -640,7 +679,7 @@
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
             columns: [{
-                data: 'rownumber',
+                    data: 'rownumber',
                     name: 'rownumber',
                     orderable: false,
                     searchable: false
@@ -668,28 +707,28 @@
             ]
         });
 
-        $('#exportPDFButton').on('click', function() {
-            //$('#loadingModal').show();
+        $('#exportPDFButton').on('click', async function() {
+            $('#loadingModal').show();
             table.page.len(-1).draw();
+            setTimeout(function() {
+                await table.button('3').trigger();
+                $('#loadingModal').hide();
                 setTimeout(function() {
-                    table.button('3').trigger();
-                    //$('#loadingModal').hide();
-                        setTimeout(function() {
-                            table.page.len(10).draw();
-                        }, 1000);
-                }, 3000);
+                    table.page.len(10).draw();
+                }, 1000);
+            }, 3000);
         });
 
         $('#exportXLSButton').on('click', function() {
             //$('#loadingModal').show();
             table.page.len(-1).draw();
+            setTimeout(function() {
+                table.button('1').trigger();
+                //$('#loadingModal').hide();
                 setTimeout(function() {
-                    table.button('1').trigger();
-                    //$('#loadingModal').hide();
-                        setTimeout(function() {
-                            table.page.len(10).draw();
-                        }, 1000);
-                }, 3000);
+                    table.page.len(10).draw();
+                }, 1000);
+            }, 3000);
         });
 
         // Create product Ajax request.

@@ -364,10 +364,30 @@
     }
 
     .info-box .info-box-text-sm {
-    display: block;
-    font-size: 0.8rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
+        display: block;
+        font-size: 0.8rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .loader {
+        margin: auto;
+        border: 20px solid #EAF0F6;
+        border-radius: 50%;
+        border-top: 20px solid #FF7A59;
+        width: 200px;
+        height: 200px;
+        animation: spinner 4s linear infinite;
+    }
+
+    @keyframes spinner {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
 </style>

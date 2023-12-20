@@ -95,7 +95,7 @@
         </div>
 
     </div>
-
+    <div class="loader" id="loadingModal"></div>
 </body>
 
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
