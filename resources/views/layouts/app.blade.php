@@ -95,7 +95,7 @@
         </div>
 
     </div>
-    <div class="loader" id="loadingModal"></div>
+
 </body>
 
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
@@ -134,6 +134,7 @@
 <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script> --}}
 <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <script src="dist/js/adminlte.min.js?v=3.2.0"></script>
+<script src="dist/js/loadingOverlay.js"></script>
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="plugins/dropzone/min/dropzone.min.js"></script>
 

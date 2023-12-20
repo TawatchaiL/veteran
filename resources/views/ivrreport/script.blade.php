@@ -708,11 +708,11 @@
         });
 
         $('#exportPDFButton').on('click', async function() {
-            $('#loadingModal').show();
+            var spinHandle = loadingOverlay().activate();
             table.page.len(-1).draw();
             setTimeout(function() {
                 await table.button('3').trigger();
-                $('#loadingModal').hide();
+                loadingOverlay().cancel(spinHandle);
                 setTimeout(function() {
                     table.page.len(10).draw();
                 }, 1000);
@@ -720,11 +720,11 @@
         });
 
         $('#exportXLSButton').on('click', function() {
-            //$('#loadingModal').show();
+            var spinHandle = loadingOverlay().activate();
             table.page.len(-1).draw();
             setTimeout(function() {
                 table.button('1').trigger();
-                //$('#loadingModal').hide();
+                loadingOverlay().cancel(spinHandle);
                 setTimeout(function() {
                     table.page.len(10).draw();
                 }, 1000);
