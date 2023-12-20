@@ -17,17 +17,15 @@
 
             html2canvas(chartContainer).then(canvas => {
                 var imgData = canvas.toDataURL("image/png");
-
-            });
-            var docDefinition = {
+                var docDefinition = {
                 defaultStyle: {
                     font: 'THSarabun',
                     fontSize: 16
                 },
-                content: [
+                content: {
                     image: imgData,
                     width: 500
-                ],
+            },
                 pageMargins: [20, 150, 20, 30],
                 styles: {
                     tableHeader: {
@@ -63,6 +61,8 @@
                 })
             };
             pdfMake.createPdf(docDefinition).download('reports.pdf');
+            });
+
         });
 
         $('#download_bar_img').click(function(event) {
