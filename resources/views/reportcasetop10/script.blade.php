@@ -69,10 +69,13 @@
 
             var chartContainer = document.querySelector("#bar_graph");
 
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png");
-
+            function getImageDataUrl() {
+                var chartContainer = document.querySelector("#bar_graph");
+                return html2canvas(chartContainer)
+                .then(function(canvas) {
+                    return canvas.toDataURL("image/png");
             });
+    }
  
             var docDefinition = {
                 defaultStyle: {
@@ -80,7 +83,7 @@
                     fontSize: 16
                 },
                 content: {
-                    image: imgData,
+                    image: getImageDataUrl(),
                     width: 500
             },
                 pageMargins: [20, 150, 20, 30],
