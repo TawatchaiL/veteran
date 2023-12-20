@@ -598,7 +598,7 @@ html2canvas(chartContainer).then(canvas => {
 
                         for (var i = 1; i < doc.content[0].table.body.length; i++) {
                             doc.content[0].table.body[i][0].alignment = 'center';
-                            //doc.content[0].table.body[i][2].alignment = 'center';
+                            doc.content[0].table.body[i][1].alignment = 'left';
                         }
                 }
                 },
