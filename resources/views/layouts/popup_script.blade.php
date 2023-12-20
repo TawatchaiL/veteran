@@ -1099,15 +1099,20 @@
                                 '</li></strong>');
                             var cardElementId = $('#telnop' + cardId)
                                 .val();
-
+/*
                             $(`#custom-tabs-pop-${cardElementId}-tab`).closest(
                                 '.nav-item').remove();
                             $(`#custom-tabs-pop-${cardElementId}`).remove();
+*/
+                                    $('#custom-tabs-pop-' + cardId + '-tab')
+                                        .closest(
+                                            '.nav-item').remove();
+                                    $('#custom-tabs-pop-' + cardId).remove();                            
                             toastr.success('บันทึกข้อมูลเรียบร้อยแล้ว', {
                                 timeOut: 5000
                             });
                             $('.alert-success-pop' + cardId).hide();
-                                    $('#ToolbarModal').modal('hide');
+                                    //$('#ToolbarModal').modal('hide');
                                     positionCards();
                         }
                     }
@@ -1225,17 +1230,23 @@
                                     var cardElementId = $('#telnop' + cardId)
                                         .val();
 
+                                    $('#custom-tabs-pop-' + cardId + '-tab')
+                                        .closest(
+                                            '.nav-item').remove();
+                                    $('#custom-tabs-pop-' + cardId).remove();
+/*
                                     $(`#custom-tabs-pop-${cardElementId}-tab`)
                                         .closest(
                                             '.nav-item').remove();
                                     $(`#custom-tabs-pop-${cardElementId}`).remove();
+*/
                                     toastr.success('บันทึกข้อมูลเรียบร้อยแล้ว', {
                                         timeOut: 5000
                                     });
 
                                     $('.alert-success-pop' + cardId).hide();
-                                    $('#ToolbarModal').modal('hide');
-                                    positionCards();
+                                    //$('#ToolbarModal').modal('hide');
+                                    //positionCards();
                                 }
                             }
                         });
