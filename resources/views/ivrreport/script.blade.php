@@ -540,9 +540,6 @@
                     //"extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
                     "extend": 'pdfHtml5',
                     "text": 'PDF', // ข้อความที่แสดง
-                    action: function (e, dt, node, config) {
-                        table.page.len(10).draw();
-                     },
                     "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
                     "title": 'IVR Report',
                     "download": 'open',
@@ -671,22 +668,29 @@
             ]
         });
 
-        $('#exportPDFButton').on('click', async function() {
-            await table.page.len(-1).draw();
-                table.button('3').trigger();
+        $('#exportPDFButton').on('click', function() {
+            $('#loadingModal').show();
+            table.page.len(-1).draw();
+                setTimeout(function() {
+                    table.button('3').trigger();
+                    $('#loadingModal').hide();
+                        setTimeout(function() {
+                            table.page.len(10).draw();
+                        }, 1000);
+                }, 3000);
         });
 
         $('#exportXLSButton').on('click', function() {
-            table.button('1').trigger();
+            $('#loadingModal').show();
+            table.page.len(-1).draw();
+                setTimeout(function() {
+                    table.button('1').trigger();
+                    $('#loadingModal').hide();
+                        setTimeout(function() {
+                            table.page.len(10).draw();
+                        }, 1000);
+                }, 3000);
         });
-
-
-        $('#exportPrintButton').on('click', function() {
-            table.button('4').trigger();
-        });
-
-
-
 
         // Create product Ajax request.
         $('#SubmitCreateForm').click(function(e) {
