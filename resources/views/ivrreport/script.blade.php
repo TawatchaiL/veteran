@@ -669,9 +669,8 @@
         });
 
         $('#exportPDFButton').on('click', async function() {
-            await table.page.len(-1).draw().then(function () {
+            await table.page.len(-1).draw();
                 table.button('3').trigger();
-            });
         });
 
         $('#exportXLSButton').on('click', function() {
