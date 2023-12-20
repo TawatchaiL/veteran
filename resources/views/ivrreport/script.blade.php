@@ -540,6 +540,9 @@
                     //"extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
                     "extend": 'pdfHtml5',
                     "text": 'PDF', // ข้อความที่แสดง
+                    action: function (e, dt, node, config) {
+                        table.page.len(10).draw();
+                     },
                     "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
                     "title": 'IVR Report',
                     "download": 'open',
