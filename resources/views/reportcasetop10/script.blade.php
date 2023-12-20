@@ -10,7 +10,7 @@
     }
     $(document).ready(function() {
         $('#download_bar').click(function(event) {
-            /*
+
             var pdfWidth = 595.28;
             var pdfHeight = 841.89;
 
@@ -18,7 +18,7 @@
 
             html2canvas(chartContainer).then(canvas => {
                 var imgData = canvas.toDataURL("image/png");
-                var docDefinition = {
+                let docDefinition = {
                 defaultStyle: {
                     font: 'THSarabun',
                     fontSize: 16
@@ -63,64 +63,6 @@
             };
             pdfMake.createPdf(docDefinition).download('reports.pdf');
             });
-*/
-            var pdfWidth = 595.28;
-            var pdfHeight = 841.89;
-
-            var chartContainer = document.querySelector("#bar_graph");
-
-            function getImageDataUrl() {
-                var chartContainer = document.querySelector("#bar_graph");
-                return html2canvas(chartContainer)
-                .then(function(canvas) {
-                    return canvas.toDataURL("image/png");
-            });
-    }
- 
-            var docDefinition = {
-                defaultStyle: {
-                    font: 'THSarabun',
-                    fontSize: 16
-                },
-                content: {
-                    image: getImageDataUrl(),
-                    width: 500
-            },
-                pageMargins: [20, 150, 20, 30],
-                styles: {
-                    tableHeader: {
-                        fontSize: 16
-                    },
-                    tableBodyOdd: {
-                        alignment: 'center'
-                    },
-                    tableBodyEven: {
-                        alignment: 'center'
-                    },
-                    tableFooter: {
-                        fontSize: 16
-                    }
-                },
-                header: (function() {
-                    return {
-                        columns: [
-                            {
-                                text: [  
-                                    { text: 'CRM REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
-                                    '\n',
-                                    { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
-                                    '\n',
-                                    { text: 'Report : Sum Case By Case Type (ผลรวมแยกตามประเภทที่ติดต่อ)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
-                                    '\n',
-                                    { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
-                                ]
-                            }
-                        ],
-                        margin: 20
-                    };
-                })
-            };
-            pdfMake.createPdf(docDefinition).download('reports.pdf');
         });
 
         $('#download_bar_img').click(function(event) {
