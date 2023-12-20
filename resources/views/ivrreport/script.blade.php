@@ -707,11 +707,11 @@
             ]
         });
 
-        $('#exportPDFButton').on('click', async function() {
+        $('#exportPDFButton').on('click', function() {
             var spinHandle = loadingOverlay().activate();
             table.page.len(-1).draw();
             setTimeout(function() {
-                await table.button('3').trigger();
+                table.button('3').trigger();
                 loadingOverlay().cancel(spinHandle);
                 setTimeout(function() {
                     table.page.len(10).draw();
