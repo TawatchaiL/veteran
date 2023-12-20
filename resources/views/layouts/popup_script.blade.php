@@ -314,7 +314,7 @@
                                     var provinceOb = $('#casetype1p' +
                                         cardId);
                                     provinceOb.html(
-                                        '<option value="">เลือกประเภทการติดต่อ</option>'
+                                        '<option value="">กรุณาเลือก</option>'
                                     );
                                     $.each(res.data, function(index,
                                         item) {
@@ -330,18 +330,18 @@
                                 }
                             });
                             $('#casetype2p' + cardId).html(
-                                '<option value="">เลือกรายละเอียดเคส</option>');
+                                '<option value="">กรุณาเลือก</option>');
                             $('#casetype3p' + cardId).html(
-                                '<option value="">เลือกรายละเอียดเคสย่อย</option>'
+                                '<option value="">กรุณาเลือก</option>'
                             );
                             $('#casetype4p' + cardId).html(
-                                '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>'
+                                '<option value="">กรุณาเลือก</option>'
                             );
                             $('#casetype5p' + cardId).html(
-                                '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>'
+                                '<option value="">กรุณาเลือก</option>'
                             );
                             $('#casetype6p' + cardId).html(
-                                '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>'
+                                '<option value="">กรุณาเลือก</option>'
                             );
                             $('#casetype2p' + cardId).attr('disabled', true);
                             $('#casetype3p' + cardId).attr('disabled', true);
@@ -569,23 +569,23 @@
             if (parent_id != '' && levcase < 6) {
                 for (let i = nextcase; i < 7; i++) {
                     if (i === 2) {
-                        $('#casetype2p' + cardId).html('<option value="">เลือกรายละเอียดเคส</option>');
+                        $('#casetype2p' + cardId).html('<option value="">กรุณาเลือก</option>');
                     }
                     if (i === 3) {
                         $('#casetype3p' + cardId).html(
-                            '<option value="">เลือกรายละเอียดเคสย่อย</option>');
+                            '<option value="">กรุณาเลือก</option>');
                     }
                     if (i === 4) {
                         $('#casetype4p' + cardId).html(
-                            '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
+                            '<option value="">กรุณาเลือก</option>');
                     }
                     if (i === 5) {
                         $('#casetype5p' + cardId).html(
-                            '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
+                            '<option value="">กรุณาเลือก</option>');
                     }
                     if (i === 6) {
                         $('#casetype6p' + cardId).html(
-                            '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
+                            '<option value="">กรุณาเลือก</option>');
                     }
                 }
                 $.ajax({
@@ -615,23 +615,23 @@
             } else {
                 for (let i = nextcase; i < 7; i++) {
                     if (i === 2) {
-                        $('#casetype2p' + cardId).html('<option value="">เลือกรายละเอียดเคส</option>');
+                        $('#casetype2p' + cardId).html('<option value="">กรุณาเลือก</option>');
                     }
                     if (i === 3) {
                         $('#casetype3p' + cardId).html(
-                            '<option value="">เลือกรายละเอียดเคสย่อย</option>');
+                            '<option value="">กรุณาเลือก</option>');
                     }
                     if (i === 4) {
                         $('#casetype4p' + cardId).html(
-                            '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>');
+                            '<option value="">กรุณาเลือก</option>');
                     }
                     if (i === 5) {
                         $('#casetype5p' + cardId).html(
-                            '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
+                            '<option value="">กรุณาเลือก</option>');
                     }
                     if (i === 6) {
                         $('#casetype6p' + cardId).html(
-                            '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>');
+                            '<option value="">กรุณาเลือก</option>');
                     }
                     $('#casetype' + i + 'p' + cardId).attr('disabled', true);
                 }
@@ -947,7 +947,7 @@
                             success: function(res) {
                                 var caseOb = $('#casetype1p' + datatId);
                                 caseOb.html(
-                                    '<option value="">เลือกประเภทการติดต่อ</option>'
+                                    '<option value="">กรุณาเลือก</option>'
                                 );
                                 $.each(res.data, function(index, item) {
                                     caseOb.append(
@@ -958,18 +958,18 @@
                             }
                         });
                         $('#casetype2p' + cardId).html(
-                            '<option value="">เลือกรายละเอียดเคส</option>');
+                            '<option value="">กรุณาเลือก</option>');
                         $('#casetype3p' + cardId).html(
-                            '<option value="">เลือกรายละเอียดเคสย่อย</option>'
+                            '<option value="">กรุณาเลือก</option>'
                         );
                         $('#casetype4p' + cardId).html(
-                            '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 1</option>'
+                            '<option value="">กรุณาเลือก</option>'
                         );
                         $('#casetype5p' + cardId).html(
-                            '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>'
+                            '<option value="">กรุณาเลือก</option>'
                         );
                         $('#casetype6p' + cardId).html(
-                            '<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>'
+                            '<option value="">กรุณาเลือก</option>'
                         );
                         $('#casetype2p' + cardId).attr('disabled', true);
                         $('#casetype3p' + cardId).attr('disabled', true);
