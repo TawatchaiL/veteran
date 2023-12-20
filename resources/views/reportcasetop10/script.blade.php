@@ -72,7 +72,6 @@
                 // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
                 var link = document.createElement('a');
                 link.href = imgData;
-                alert(imgData);
                 link.download = 'bar_chart.png'; // ชื่อไฟล์ที่จะบันทึก
                 link.click();
             });
