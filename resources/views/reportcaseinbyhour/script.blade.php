@@ -43,7 +43,7 @@ html2canvas(chartContainer).then(canvas => {
             columns: [
                 {
                     text: [  
-                                                { text: 'CRM REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
+                                                { text: 'Callcenter REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
                                                 '\n',
                                                 { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
                                                 '\n',
@@ -111,7 +111,7 @@ html2canvas(chartContainer).then(canvas => {
             columns: [
                 {
                     text: [  
-                                                { text: 'CRM REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
+                                                { text: 'Callcenter REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
                                                 '\n',
                                                 { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
                                                 '\n',
@@ -179,7 +179,7 @@ html2canvas(chartContainer).then(canvas => {
             columns: [
                 {
                     text: [  
-                                                { text: 'CRM REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
+                                                { text: 'Callcenter REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
                                                 '\n',
                                                 { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
                                                 '\n',
@@ -565,7 +565,7 @@ html2canvas(chartContainer).then(canvas => {
                                 columns: [
                                     {
                                         text: [  
-                                                { text: 'CRM REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
+                                                { text: 'Callcenter REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
                                                 '\n',
                                                 { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
                                                 '\n',
