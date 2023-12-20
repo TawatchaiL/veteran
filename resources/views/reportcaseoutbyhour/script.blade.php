@@ -10,214 +10,207 @@
     }
     $(document).ready(function() {
         $('#download_bar').click(function(event) {
-            var pdfWidth = 841.89; // Width of A4 in points (1 point = 1/72 inch)
-            var pdfHeight = 595.28; // Height of A4 in points
-            var pdf = new jsPDF({
-                unit: 'pt', // Use points as the unit for measurements
-                format: [pdfWidth, pdfHeight] // Set the format to A4 size in landscape
-            });
 
-            var chartContainer = document.querySelector("#bar_graph");
-
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png");
-
-                var imgAspectRatio = canvas.width / canvas.height;
-                var pdfAspectRatio = pdfWidth / pdfHeight;
-
-                var imgWidth, imgHeight;
-
-                if (imgAspectRatio > pdfAspectRatio) {
-                    imgWidth = pdfWidth;
-                    imgHeight = imgWidth / imgAspectRatio;
-                } else {
-                    imgHeight = pdfHeight;
-                    imgWidth = imgHeight * imgAspectRatio;
+var chartContainer = document.querySelector("#bar_graph");
+html2canvas(chartContainer).then(canvas => {
+    var imgData = canvas.toDataURL("image/png");
+    let docDefinition = {
+    defaultStyle: {
+        font: 'THSarabun',
+        fontSize: 16
+    },
+    content: {
+        image: imgData,
+        width: 570
+},
+    pageMargins: [20, 150, 20, 30],
+    styles: {
+        tableHeader: {
+            fontSize: 16
+        },
+        tableBodyOdd: {
+            alignment: 'center'
+        },
+        tableBodyEven: {
+            alignment: 'center'
+        },
+        tableFooter: {
+            fontSize: 16
+        }
+    },
+    header: (function() {
+        return {
+            columns: [
+                {
+                    text: [  
+                                                { text: 'CRM REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'Report : Summary Call External (ผลรวมสายเข้าภายในแยกตามช่วงเวลา) (ผลรวมสายเข้าภายนอกแยกตามช่วงเวลา)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
+                                            ]
                 }
+            ],
+            margin: 20
+        };
+    })
+};
+pdfMake.createPdf(docDefinition).download('reports.pdf');
+});
 
-                var xOffset = (pdfWidth - imgWidth) / 2;
-                var yOffset = (pdfHeight - imgHeight) / 2;
+});
 
-                pdf.addImage(imgData, 'PNG', xOffset, yOffset, imgWidth,
-                imgHeight); // Add the resized image
-                pdf.save("bar_chart.pdf");
-            });
-        });
+$('#download_bar_img').click(function(event) {
+var chartContainer = document.querySelector("#bar_graph");
 
-        $('#download_bar_img').click(function(event) {
-            var chartContainer = document.querySelector("#bar_graph");
+html2canvas(chartContainer).then(canvas => {
+    var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
 
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
+    // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
+    var link = document.createElement('a');
+    link.href = imgData;
+    link.download = 'bar_chart.png'; // ชื่อไฟล์ที่จะบันทึก
+    link.click();
+});
+});
 
-                // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
-                var link = document.createElement('a');
-                link.href = imgData;
-                link.download = 'bar_chart.png'; // ชื่อไฟล์ที่จะบันทึก
-                link.click();
-            });
-        });
+$('#download_line').click(function(event) {
 
-        $('#print_bar').click(function(event) {
-            var chartContainer = document.querySelector("#bar_graph");
+var chartContainer = document.querySelector("#line_graph");
 
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png");
+html2canvas(chartContainer).then(canvas => {
+    var imgData = canvas.toDataURL("image/png");
+    let docDefinition = {
+    defaultStyle: {
+        font: 'THSarabun',
+        fontSize: 16
+    },
+    content: {
+        image: imgData,
+        width: 570
+},
+    pageMargins: [20, 150, 20, 30],
+    styles: {
+        tableHeader: {
+            fontSize: 16
+        },
+        tableBodyOdd: {
+            alignment: 'center'
+        },
+        tableBodyEven: {
+            alignment: 'center'
+        },
+        tableFooter: {
+            fontSize: 16
+        }
+    },
+    header: (function() {
+        return {
+            columns: [
+                {
+                    text: [  
+                                                { text: 'CRM REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'Report : Summary Call External (ผลรวมสายเข้าภายในแยกตามช่วงเวลา) (ผลรวมสายเข้าภายนอกแยกตามช่วงเวลา)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
+                                            ]
+                }
+            ],
+            margin: 20
+        };
+    })
+};
+pdfMake.createPdf(docDefinition).download('reports.pdf');
+});
 
-                var printWindow = window.open('', '_blank');
-                printWindow.document.open();
-                printWindow.document.write(
-                    '<style>@page { size: landscape; }</style>'); // Set landscape orientation
-                printWindow.document.write(
-                    '<style>body { font-family: Sarabun; }</style>'); // Set font style
-                printWindow.document.write('<img src="' + imgData + '">');
+});
 
+$('#download_line_img').click(function(event) {
+var chartContainer = document.querySelector("#line_graph");
 
-                // Add an event listener for afterprint to close the print window
-                printWindow.addEventListener('afterprint', function() {
-                    printWindow.close();
-                });
+html2canvas(chartContainer).then(canvas => {
+    var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
 
-                setTimeout(function() {
-                    printWindow.focus();
-                    printWindow.print();
-                }, 1000); // Adjust the delay as needed
-            });
-        });
+    // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
+    var link = document.createElement('a');
+    link.href = imgData;
+    link.download = 'line_chart.png'; // ชื่อไฟล์ที่จะบันทึก
+    link.click();
+});
+});
 
-        $('#download_line').click(function(event) {
+$('#download_pie').click(function(event) {
 
-            var pdfWidth = 841.89; // Width of A4 in points (1 point = 1/72 inch)
-            var pdfHeight = 595.28; // Height of A4 in points
-            var pdf = new jsPDF({
-                unit: 'pt', // Use points as the unit for measurements
-                format: [pdfWidth, pdfHeight] // Set the format to A4 size in landscape
-            });
+var chartContainer = document.querySelector("#pie_graph");
 
-            var chartContainer = document.querySelector("#line_graph");
+html2canvas(chartContainer).then(canvas => {
+    var imgData = canvas.toDataURL("image/png");
+    let docDefinition = {
+    defaultStyle: {
+        font: 'THSarabun',
+        fontSize: 16
+    },
+    content: {
+        image: imgData,
+        width: 570
+},
+    pageMargins: [20, 150, 20, 30],
+    styles: {
+        tableHeader: {
+            fontSize: 16
+        },
+        tableBodyOdd: {
+            alignment: 'center'
+        },
+        tableBodyEven: {
+            alignment: 'center'
+        },
+        tableFooter: {
+            fontSize: 16
+        }
+    },
+    header: (function() {
+        return {
+            columns: [
+                {
+                    text: [  
+                                                { text: 'CRM REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'Report : Summary Call External (ผลรวมสายเข้าภายในแยกตามช่วงเวลา) (ผลรวมสายเข้าภายนอกแยกตามช่วงเวลา)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
+                                            ]
+                }
+            ],
+            margin: 20
+        };
+    })
+};
+pdfMake.createPdf(docDefinition).download('reports.pdf');
+});
 
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png");
+});
 
-                var imgWidth = pdfWidth; // Use the same width as PDF
-                var imgHeight = (canvas.height * imgWidth) / canvas
-                    .width; // Calculate proportional height
+$('#download_pie_img').click(function(event) {
+var chartContainer = document.querySelector("#pie_graph");
 
-                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth,
-                    imgHeight); // Add the resized image
-                pdf.save("line_chart.pdf");
-            });
+html2canvas(chartContainer).then(canvas => {
+    var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
 
-        });
-
-        $('#download_line_img').click(function(event) {
-            var chartContainer = document.querySelector("#line_graph");
-
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
-
-                // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
-                var link = document.createElement('a');
-                link.href = imgData;
-                link.download = 'line_chart.png'; // ชื่อไฟล์ที่จะบันทึก
-                link.click();
-            });
-        });
-
-        $('#print_line').click(function(event) {
-            var chartContainer = document.querySelector("#line_graph");
-
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png");
-
-                var printWindow = window.open('', '_blank');
-                printWindow.document.open();
-                printWindow.document.write(
-                    '<style>@page { size: landscape; }</style>'); // Set landscape orientation
-                printWindow.document.write(
-                    '<style>body { font-family: Sarabun; }</style>'); // Set font style
-                printWindow.document.write('<img src="' + imgData + '">');
-                // Add an event listener for afterprint to close the print window
-                printWindow.addEventListener('afterprint', function() {
-                    printWindow.close();
-                });
-
-                setTimeout(function() {
-                    printWindow.focus();
-                    printWindow.print();
-                }, 1000); // Adjust the delay as needed
-            });
-        });
-
-        $('#download_pie').click(function(event) {
-
-            var pdfWidth = 841.89; // Width of A4 in points (1 point = 1/72 inch)
-            var pdfHeight = 595.28; // Height of A4 in points
-            var pdf = new jsPDF({
-                unit: 'pt', // Use points as the unit for measurements
-                format: [pdfWidth, pdfHeight] // Set the format to A4 size in landscape
-            });
-
-            var chartContainer = document.querySelector("#pie_graph");
-
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png");
-
-                var imgWidth = pdfWidth; // Use the same width as PDF
-                var imgHeight = (canvas.height * imgWidth) / canvas
-                    .width; // Calculate proportional height
-
-                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth,
-                    imgHeight); // Add the resized image
-                pdf.save("pie_chart.pdf");
-            });
-
-        });
-
-        $('#download_pie_img').click(function(event) {
-            var chartContainer = document.querySelector("#pie_graph");
-
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
-
-                // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
-                var link = document.createElement('a');
-                link.href = imgData;
-                link.download = 'pie_chart.png'; // ชื่อไฟล์ที่จะบันทึก
-                link.click();
-            });
-        });
-
-        $('#print_pie').click(function(event) {
-            var chartContainer = document.querySelector("#pie_graph");
-
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png");
-
-                var printWindow = window.open('', '_blank');
-                printWindow.document.open();
-                printWindow.document.write(
-                    '<style>@page { size: landscape; }</style>'); // Set landscape orientation
-                printWindow.document.write(
-                    '<style>body { font-family: Sarabun; }</style>'); // Set font style
-                printWindow.document.write('<img src="' + imgData + '">');
-                printWindow.document.close(); // Close the document for writing
-
-                // Add an event listener for afterprint to close the print window
-                printWindow.addEventListener('afterprint', function() {
-                    printWindow.close();
-                });
-
-                setTimeout(function() {
-                    printWindow.focus();
-                    printWindow.print();
-                }, 1000); // Adjust the delay as needed
-            });
-        });
-
-
-
-
+    // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
+    var link = document.createElement('a');
+    link.href = imgData;
+    link.download = 'pie_chart.png'; // ชื่อไฟล์ที่จะบันทึก
+    link.click();
+});
+});
         $(".delete_all_button").click(function() {
             var len = $('input[name="table_records[]"]:checked').length;
             if (len > 0) {
@@ -665,56 +658,29 @@
             ]
         });
 
-
         $('#exportPDFButton').on('click', function() {
-            /* var doc = new jsPDF();
-
-            doc.setFontSize(12); // Set font size
-            doc.setFont('Sarabun'); // Set Google Font family
-
-            doc.text("Table Export", 10, 10);
-
-            var columns = [];
-            var data = [];
-
-            // Get column names from DataTable
-            table.columns().every(function() {
-                columns.push(this.header().textContent.trim());
-            });
-
-            // Get data from DataTable
-            table.rows({
-                selected: true
-            }).every(function() {
-                var rowData = [];
-                var cells = this.nodes().to$();
-                cells.find('td').each(function() {
-                    rowData.push($(this).text());
-                });
-                data.push(rowData);
-            });
-
-            doc.autoTable({
-                head: [columns],
-                body: data
-            });
-
-            doc.save('table-export.pdf'); */
-            table.button('3').trigger();
+            var spinHandle = loadingOverlay().activate();
+            table.page.len(-1).draw();
+            setTimeout(function() {
+                table.button('3').trigger();
+                loadingOverlay().cancel(spinHandle);
+                setTimeout(function() {
+                    table.page.len(10).draw();
+                }, 1000);
+            }, 3000);
         });
 
         $('#exportXLSButton').on('click', function() {
-            table.button('1').trigger();
+            var spinHandle = loadingOverlay().activate();
+            table.page.len(-1).draw();
+            setTimeout(function() {
+                table.button('1').trigger();
+                loadingOverlay().cancel(spinHandle);
+                setTimeout(function() {
+                    table.page.len(10).draw();
+                }, 1000);
+            }, 3000);
         });
-
-
-        $('#exportPrintButton').on('click', function() {
-            table.button('4').trigger();
-        });
-
-
-
-
         // Create product Ajax request.
         $('#SubmitCreateForm').click(function(e) {
             e.preventDefault();

@@ -9,192 +9,6 @@
         }
     }
     $(document).ready(function() {
-        $('#download_bar').click(function(event) {
-
-var pdfWidth = 595.28;
-var pdfHeight = 841.89;
-var pdf = new jsPDF({
-    unit: 'pt',
-    format: [pdfWidth, pdfHeight]
-});
-
-var chartContainer = document.querySelector("#bar_graph");
-
-html2canvas(chartContainer).then(canvas => {
-    var imgData = canvas.toDataURL("image/png");
-
-    var imgWidth = pdfWidth;
-    var imgHeight = (canvas.height * imgWidth) / canvas
-        .width;
-
-    pdf.addImage(imgData, 'PNG', 0, 60, imgWidth,
-        imgHeight);
-    pdf.save("bar_chart.pdf");
-});
-
-});
-
-$('#download_bar_img').click(function(event) {
-var chartContainer = document.querySelector("#bar_graph");
-
-html2canvas(chartContainer).then(canvas => {
-    var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
-
-    // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
-    var link = document.createElement('a');
-    link.href = imgData;
-    link.download = 'bar_chart.png'; // ชื่อไฟล์ที่จะบันทึก
-    link.click();
-});
-});
-
-$('#print_bar').click(function(event) {
-var chartContainer = document.querySelector("#bar_graph");
-
-html2canvas(chartContainer).then(canvas => {
-    var imgData = canvas.toDataURL("image/png");
-
-    var printWindow = window.open('', '_blank');
-    printWindow.document.open();
-    printWindow.document.write('<img src="' + imgData + '">');
-
-
-    // Add an event listener for afterprint to close the print window
-    printWindow.addEventListener('afterprint', function() {
-        printWindow.close();
-    });
-
-    setTimeout(function() {
-        printWindow.focus();
-        printWindow.print();
-    }, 1000); // Adjust the delay as needed
-});
-});
-
-$('#download_line').click(function(event) {
-
-var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
-var pdfHeight = 841.89; // Height of A4 in points
-var pdf = new jsPDF({
-    unit: 'pt', // Use points as the unit for measurements
-    format: [pdfWidth, pdfHeight] // Set the format to A4 size
-});
-
-var chartContainer = document.querySelector("#line_graph");
-
-html2canvas(chartContainer).then(canvas => {
-    var imgData = canvas.toDataURL("image/png");
-
-    var imgWidth = pdfWidth; // Use the same width as PDF
-    var imgHeight = (canvas.height * imgWidth) / canvas
-        .width; // Calculate proportional height
-
-        pdf.addImage(imgData, 'PNG', 0, 60, imgWidth,
-        imgHeight);
-    pdf.save("line_chart.pdf");
-});
-
-});
-
-$('#download_line_img').click(function(event) {
-var chartContainer = document.querySelector("#line_graph");
-
-html2canvas(chartContainer).then(canvas => {
-    var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
-
-    // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
-    var link = document.createElement('a');
-    link.href = imgData;
-    link.download = 'line_chart.png'; // ชื่อไฟล์ที่จะบันทึก
-    link.click();
-});
-});
-
-$('#print_line').click(function(event) {
-var chartContainer = document.querySelector("#line_graph");
-
-html2canvas(chartContainer).then(canvas => {
-    var imgData = canvas.toDataURL("image/png");
-
-    var printWindow = window.open('', '_blank');
-    printWindow.document.open();
-    printWindow.document.write('<img src="' + imgData + '">');
-    // Add an event listener for afterprint to close the print window
-    printWindow.addEventListener('afterprint', function() {
-        printWindow.close();
-    });
-
-    setTimeout(function() {
-        printWindow.focus();
-        printWindow.print();
-    }, 1000); // Adjust the delay as needed
-});
-});
-
-$('#download_pie').click(function(event) {
-
-var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
-var pdfHeight = 841.89; // Height of A4 in points
-var pdf = new jsPDF({
-    unit: 'pt', // Use points as the unit for measurements
-    format: [pdfWidth, pdfHeight] // Set the format to A4 size
-});
-
-var chartContainer = document.querySelector("#pie_graph");
-
-html2canvas(chartContainer).then(canvas => {
-    var imgData = canvas.toDataURL("image/png");
-
-    var imgWidth = pdfWidth; // Use the same width as PDF
-    var imgHeight = (canvas.height * imgWidth) / canvas
-        .width; // Calculate proportional height
-
-        pdf.addImage(imgData, 'PNG', 0, 60, imgWidth,
-        imgHeight);
-    pdf.save("pie_chart.pdf");
-});
-
-});
-
-$('#download_pie_img').click(function(event) {
-var chartContainer = document.querySelector("#pie_graph");
-
-html2canvas(chartContainer).then(canvas => {
-    var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
-
-    // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
-    var link = document.createElement('a');
-    link.href = imgData;
-    link.download = 'pie_chart.png'; // ชื่อไฟล์ที่จะบันทึก
-    link.click();
-});
-});
-
-$('#print_pie').click(function(event) {
-var chartContainer = document.querySelector("#pie_graph");
-
-html2canvas(chartContainer).then(canvas => {
-    var imgData = canvas.toDataURL("image/png");
-
-    var printWindow = window.open('', '_blank');
-    printWindow.document.open();
-    printWindow.document.write('<img src="' + imgData + '">');
-    printWindow.document.close(); // Close the document for writing
-
-    // Add an event listener for afterprint to close the print window
-    printWindow.addEventListener('afterprint', function() {
-        printWindow.close();
-    });
-
-    setTimeout(function() {
-        printWindow.focus();
-        printWindow.print();
-    }, 1000); // Adjust the delay as needed
-});
-});
-
-
-
 
         $(".delete_all_button").click(function() {
             var len = $('input[name="table_records[]"]:checked').length;
@@ -593,54 +407,28 @@ html2canvas(chartContainer).then(canvas => {
         });
 
         $('#exportPDFButton').on('click', function() {
-            /* var doc = new jsPDF();
-
-            doc.setFontSize(12); // Set font size
-            doc.setFont('Sarabun'); // Set Google Font family
-
-            doc.text("Table Export", 10, 10);
-
-            var columns = [];
-            var data = [];
-
-            // Get column names from DataTable
-            table.columns().every(function() {
-                columns.push(this.header().textContent.trim());
-            });
-
-            // Get data from DataTable
-            table.rows({
-                selected: true
-            }).every(function() {
-                var rowData = [];
-                var cells = this.nodes().to$();
-                cells.find('td').each(function() {
-                    rowData.push($(this).text());
-                });
-                data.push(rowData);
-            });
-
-            doc.autoTable({
-                head: [columns],
-                body: data
-            });
-
-            doc.save('table-export.pdf'); */
-            table.button('3').trigger();
+            var spinHandle = loadingOverlay().activate();
+            table.page.len(-1).draw();
+            setTimeout(function() {
+                table.button('3').trigger();
+                loadingOverlay().cancel(spinHandle);
+                setTimeout(function() {
+                    table.page.len(10).draw();
+                }, 1000);
+            }, 3000);
         });
 
         $('#exportXLSButton').on('click', function() {
-            table.button('1').trigger();
+            var spinHandle = loadingOverlay().activate();
+            table.page.len(-1).draw();
+            setTimeout(function() {
+                table.button('1').trigger();
+                loadingOverlay().cancel(spinHandle);
+                setTimeout(function() {
+                    table.page.len(10).draw();
+                }, 1000);
+            }, 3000);
         });
-
-
-        $('#exportPrintButton').on('click', function() {
-            table.button('4').trigger();
-        });
-
-
-
-
         // Create product Ajax request.
         $('#SubmitCreateForm').click(function(e) {
             e.preventDefault();

@@ -10,39 +10,59 @@
     }
     $(document).ready(function() {
         $('#download_bar').click(function(event) {
-            /*  var pdf = new jsPDF();
-             var chartContainer = document.querySelector("#bar_chart_div");
-
-             html2canvas(chartContainer).then(canvas => {
-                 var imgData = canvas.toDataURL("image/png");
-
-                 pdf.addImage(imgData, 'PNG', 0, 0);
-                 pdf.save("chart.pdf");
-             });  */
-            var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
-            var pdfHeight = 841.89; // Height of A4 in points
-            var pdf = new jsPDF({
-                unit: 'pt', // Use points as the unit for measurements
-                format: [pdfWidth, pdfHeight] // Set the format to A4 size
-            });
 
             var chartContainer = document.querySelector("#bar_graph");
-
             html2canvas(chartContainer).then(canvas => {
                 var imgData = canvas.toDataURL("image/png");
-
-                var imgWidth = pdfWidth; // Use the same width as PDF
-                var imgHeight = (canvas.height * imgWidth) / canvas
-                    .width; // Calculate proportional height
-
-                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth,
-                    imgHeight); // Add the resized image
-                pdf.save("bar_chart.pdf");
+                let docDefinition = {
+                defaultStyle: {
+                    font: 'THSarabun',
+                    fontSize: 16
+                },
+                content: {
+                    image: imgData,
+                    width: 570
+            },
+                pageMargins: [20, 150, 20, 30],
+                styles: {
+                    tableHeader: {
+                        fontSize: 16
+                    },
+                    tableBodyOdd: {
+                        alignment: 'center'
+                    },
+                    tableBodyEven: {
+                        alignment: 'center'
+                    },
+                    tableFooter: {
+                        fontSize: 16
+                    }
+                },
+                header: (function() {
+                    return {
+                        columns: [
+                            {
+                                text: [  
+                                                { text: 'CRM REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'Report : Sum Case By Status (ผลรวมแยกเรื่องที่ติดต่อแยกตามสถานะ)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
+                                            ]
+                            }
+                        ],
+                        margin: 20
+                    };
+                })
+            };
+            pdfMake.createPdf(docDefinition).download('reports.pdf');
             });
 
-        });
+            });
 
-        $('#download_bar_img').click(function(event) {
+            $('#download_bar_img').click(function(event) {
             var chartContainer = document.querySelector("#bar_graph");
 
             html2canvas(chartContainer).then(canvas => {
@@ -54,57 +74,63 @@
                 link.download = 'bar_chart.png'; // ชื่อไฟล์ที่จะบันทึก
                 link.click();
             });
-        });
-
-        $('#print_bar').click(function(event) {
-            var chartContainer = document.querySelector("#bar_graph");
-
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png");
-
-                var printWindow = window.open('', '_blank');
-                printWindow.document.open();
-                printWindow.document.write('<img src="' + imgData + '">');
-
-
-                // Add an event listener for afterprint to close the print window
-                printWindow.addEventListener('afterprint', function() {
-                    printWindow.close();
-                });
-
-                setTimeout(function() {
-                    printWindow.focus();
-                    printWindow.print();
-                }, 1000); // Adjust the delay as needed
             });
-        });
 
-        $('#download_line').click(function(event) {
-
-            var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
-            var pdfHeight = 841.89; // Height of A4 in points
-            var pdf = new jsPDF({
-                unit: 'pt', // Use points as the unit for measurements
-                format: [pdfWidth, pdfHeight] // Set the format to A4 size
-            });
+            $('#download_line').click(function(event) {
 
             var chartContainer = document.querySelector("#line_graph");
 
             html2canvas(chartContainer).then(canvas => {
                 var imgData = canvas.toDataURL("image/png");
-
-                var imgWidth = pdfWidth; // Use the same width as PDF
-                var imgHeight = (canvas.height * imgWidth) / canvas
-                    .width; // Calculate proportional height
-
-                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth,
-                    imgHeight); // Add the resized image
-                pdf.save("line_chart.pdf");
+                let docDefinition = {
+                defaultStyle: {
+                    font: 'THSarabun',
+                    fontSize: 16
+                },
+                content: {
+                    image: imgData,
+                    width: 570
+            },
+                pageMargins: [20, 150, 20, 30],
+                styles: {
+                    tableHeader: {
+                        fontSize: 16
+                    },
+                    tableBodyOdd: {
+                        alignment: 'center'
+                    },
+                    tableBodyEven: {
+                        alignment: 'center'
+                    },
+                    tableFooter: {
+                        fontSize: 16
+                    }
+                },
+                header: (function() {
+                    return {
+                        columns: [
+                            {
+                                text: [  
+                                                { text: 'CRM REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'Report : Sum Case By Status (ผลรวมแยกเรื่องที่ติดต่อแยกตามสถานะ)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
+                                            ]
+                            }
+                        ],
+                        margin: 20
+                    };
+                })
+            };
+            pdfMake.createPdf(docDefinition).download('reports.pdf');
             });
 
-        });
+            });
 
-        $('#download_line_img').click(function(event) {
+            $('#download_line_img').click(function(event) {
             var chartContainer = document.querySelector("#line_graph");
 
             html2canvas(chartContainer).then(canvas => {
@@ -116,55 +142,63 @@
                 link.download = 'line_chart.png'; // ชื่อไฟล์ที่จะบันทึก
                 link.click();
             });
-        });
-
-        $('#print_line').click(function(event) {
-            var chartContainer = document.querySelector("#line_graph");
-
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png");
-
-                var printWindow = window.open('', '_blank');
-                printWindow.document.open();
-                printWindow.document.write('<img src="' + imgData + '">');
-                // Add an event listener for afterprint to close the print window
-                printWindow.addEventListener('afterprint', function() {
-                    printWindow.close();
-                });
-
-                setTimeout(function() {
-                    printWindow.focus();
-                    printWindow.print();
-                }, 1000); // Adjust the delay as needed
             });
-        });
 
-        $('#download_pie').click(function(event) {
-
-            var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
-            var pdfHeight = 841.89; // Height of A4 in points
-            var pdf = new jsPDF({
-                unit: 'pt', // Use points as the unit for measurements
-                format: [pdfWidth, pdfHeight] // Set the format to A4 size
-            });
+            $('#download_pie').click(function(event) {
 
             var chartContainer = document.querySelector("#pie_graph");
 
             html2canvas(chartContainer).then(canvas => {
                 var imgData = canvas.toDataURL("image/png");
-
-                var imgWidth = pdfWidth; // Use the same width as PDF
-                var imgHeight = (canvas.height * imgWidth) / canvas
-                    .width; // Calculate proportional height
-
-                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth,
-                    imgHeight); // Add the resized image
-                pdf.save("pie_chart.pdf");
+                let docDefinition = {
+                defaultStyle: {
+                    font: 'THSarabun',
+                    fontSize: 16
+                },
+                content: {
+                    image: imgData,
+                    width: 570
+            },
+                pageMargins: [20, 150, 20, 30],
+                styles: {
+                    tableHeader: {
+                        fontSize: 16
+                    },
+                    tableBodyOdd: {
+                        alignment: 'center'
+                    },
+                    tableBodyEven: {
+                        alignment: 'center'
+                    },
+                    tableFooter: {
+                        fontSize: 16
+                    }
+                },
+                header: (function() {
+                    return {
+                        columns: [
+                            {
+                                text: [  
+                                                { text: 'CRM REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'Report : Sum Case By Status (ผลรวมแยกเรื่องที่ติดต่อแยกตามสถานะ)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                '\n',
+                                                { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
+                                            ]
+                            }
+                        ],
+                        margin: 20
+                    };
+                })
+            };
+            pdfMake.createPdf(docDefinition).download('reports.pdf');
             });
 
-        });
+            });
 
-        $('#download_pie_img').click(function(event) {
+            $('#download_pie_img').click(function(event) {
             var chartContainer = document.querySelector("#pie_graph");
 
             html2canvas(chartContainer).then(canvas => {
@@ -176,33 +210,7 @@
                 link.download = 'pie_chart.png'; // ชื่อไฟล์ที่จะบันทึก
                 link.click();
             });
-        });
-
-        $('#print_pie').click(function(event) {
-            var chartContainer = document.querySelector("#pie_graph");
-
-            html2canvas(chartContainer).then(canvas => {
-                var imgData = canvas.toDataURL("image/png");
-
-                var printWindow = window.open('', '_blank');
-                printWindow.document.open();
-                printWindow.document.write('<img src="' + imgData + '">');
-                printWindow.document.close(); // Close the document for writing
-
-                // Add an event listener for afterprint to close the print window
-                printWindow.addEventListener('afterprint', function() {
-                    printWindow.close();
-                });
-
-                setTimeout(function() {
-                    printWindow.focus();
-                    printWindow.print();
-                }, 1000); // Adjust the delay as needed
             });
-        });
-
-
-
 
         $(".delete_all_button").click(function() {
             var len = $('input[name="table_records[]"]:checked').length;
@@ -655,46 +663,28 @@
             ]
         });
 
-
         $('#exportPDFButton').on('click', function() {
-            /* var doc = new jsPDF();
-
-            doc.setFontSize(12); // Set font size
-            doc.setFont('Sarabun'); // Set Google Font family
-
-            doc.text("Table Export", 10, 10);
-
-            var columns = [];
-            var data = [];
-
-            // Get column names from DataTable
-            table.columns().every(function() {
-                columns.push(this.header().textContent.trim());
-            });
-
-            // Get data from DataTable
-            table.rows({
-                selected: true
-            }).every(function() {
-                var rowData = [];
-                var cells = this.nodes().to$();
-                cells.find('td').each(function() {
-                    rowData.push($(this).text());
-                });
-                data.push(rowData);
-            });
-
-            doc.autoTable({
-                head: [columns],
-                body: data
-            });
-
-            doc.save('table-export.pdf'); */
-            table.button('3').trigger();
+            var spinHandle = loadingOverlay().activate();
+            table.page.len(-1).draw();
+            setTimeout(function() {
+                table.button('3').trigger();
+                loadingOverlay().cancel(spinHandle);
+                setTimeout(function() {
+                    table.page.len(10).draw();
+                }, 1000);
+            }, 3000);
         });
 
         $('#exportXLSButton').on('click', function() {
-            table.button('1').trigger();
+            var spinHandle = loadingOverlay().activate();
+            table.page.len(-1).draw();
+            setTimeout(function() {
+                table.button('1').trigger();
+                loadingOverlay().cancel(spinHandle);
+                setTimeout(function() {
+                    table.page.len(10).draw();
+                }, 1000);
+            }, 3000);
         });
 
         // Create product Ajax request.

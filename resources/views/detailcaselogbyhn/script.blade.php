@@ -682,53 +682,28 @@
         });
 
         $('#exportPDFButton').on('click', function() {
-            /* var doc = new jsPDF();
-
-            doc.setFontSize(12); // Set font size
-            doc.setFont('Sarabun'); // Set Google Font family
-
-            doc.text("Table Export", 10, 10);
-
-            var columns = [];
-            var data = [];
-
-            // Get column names from DataTable
-            table.columns().every(function() {
-                columns.push(this.header().textContent.trim());
-            });
-
-            // Get data from DataTable
-            table.rows({
-                selected: true
-            }).every(function() {
-                var rowData = [];
-                var cells = this.nodes().to$();
-                cells.find('td').each(function() {
-                    rowData.push($(this).text());
-                });
-                data.push(rowData);
-            });
-
-            doc.autoTable({
-                head: [columns],
-                body: data
-            });
-
-            doc.save('table-export.pdf'); */
-            table.button('3').trigger();
+            var spinHandle = loadingOverlay().activate();
+            table.page.len(-1).draw();
+            setTimeout(function() {
+                table.button('3').trigger();
+                loadingOverlay().cancel(spinHandle);
+                setTimeout(function() {
+                    table.page.len(10).draw();
+                }, 1000);
+            }, 3000);
         });
 
         $('#exportXLSButton').on('click', function() {
-            table.button('1').trigger();
+            var spinHandle = loadingOverlay().activate();
+            table.page.len(-1).draw();
+            setTimeout(function() {
+                table.button('1').trigger();
+                loadingOverlay().cancel(spinHandle);
+                setTimeout(function() {
+                    table.page.len(10).draw();
+                }, 1000);
+            }, 3000);
         });
-
-
-        $('#exportPrintButton').on('click', function() {
-            table.button('4').trigger();
-        });
-
-
-
 
         // Create product Ajax request.
         $('#SubmitCreateForm').click(function(e) {

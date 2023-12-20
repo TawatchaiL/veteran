@@ -684,27 +684,27 @@
         });
         
         $('#exportPDFButton').on('click', function() {
-            //$('#loadingModal').show();
+            var spinHandle = loadingOverlay().activate();
             table.page.len(-1).draw();
+            setTimeout(function() {
+                table.button('3').trigger();
+                loadingOverlay().cancel(spinHandle);
                 setTimeout(function() {
-                    table.button('3').trigger();
-                    //$('#loadingModal').hide();
-                        setTimeout(function() {
-                            table.page.len(10).draw();
-                        }, 1000);
-                }, 3000);
+                    table.page.len(10).draw();
+                }, 1000);
+            }, 3000);
         });
 
         $('#exportXLSButton').on('click', function() {
-            //$('#loadingModal').show();
+            var spinHandle = loadingOverlay().activate();
             table.page.len(-1).draw();
+            setTimeout(function() {
+                table.button('1').trigger();
+                loadingOverlay().cancel(spinHandle);
                 setTimeout(function() {
-                    table.button('1').trigger();
-                    //$('#loadingModal').hide();
-                        setTimeout(function() {
-                            table.page.len(10).draw();
-                        }, 1000);
-                }, 3000);
+                    table.page.len(10).draw();
+                }, 1000);
+            }, 3000);
         });
 
         window.Apex.chart = {
