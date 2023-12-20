@@ -105,23 +105,32 @@
                             success: function(res) {
                                 if (res.datax.length != 0) {
                                     var fullname;
-                                    if(res.datax.datac.fname !== null && res.datax.datac.fname !== ''){
-                                        fullname = res.datax.datac.fname + ' ' + res.datax.datac.lname;
-                                    }else{
-                                        if(res.datax.datac.telhome !== null && res.datax.datac.telhome !== ''){
+                                    if (res.datax.datac.fname !== null && res
+                                        .datax.datac.fname !== '') {
+                                        fullname = res.datax.datac.fname + ' ' +
+                                            res.datax.datac.lname;
+                                    } else {
+                                        if (res.datax.datac.telhome !== null &&
+                                            res.datax.datac.telhome !== '') {
                                             fullname = res.datax.datac.telhome;
-                                        }else if(res.datax.datac.phoneno !== null && res.datax.datac.phoneno !== ''){
+                                        } else if (res.datax.datac.phoneno !==
+                                            null && res.datax.datac.phoneno !==
+                                            '') {
                                             fullname = res.datax.datac.phoneno;
-                                        }else if(res.datax.datac.workno !== null && res.datax.datac.workno !== ''){
+                                        } else if (res.datax.datac.workno !==
+                                            null && res.datax.datac.workno !==
+                                            '') {
                                             fullname = res.datax.datac.workno;
                                         }
                                     }
                                     $('#phonenosuccess' + cardId).html(
-                                        '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ' + fullname + '</h3>');
+                                        '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ' +
+                                        fullname + '</h3>');
                                     $('#contractid' + cardId).val(res.datax
                                         .datac.id);
                                     $('#hnp' + cardId).val(res.datax.datac.hn);
-                                    $('#adddatep' + cardId).val(res.datax.datac.adddate);
+                                    $('#adddatep' + cardId).val(res.datax.datac
+                                        .adddate);
                                     /*
                                     var arrayDate = res.datax.datac.adddate
                                         .split("-");
@@ -140,11 +149,16 @@
                                         .sex);
 
                                     //$('#birthdayp' + cardId).val(res.datax.datac.birthday);
-                                    if(res.datax.datac.birthday !== null && res.datax.datac.birthday !== ''){
-                                        var arrayDate = res.datax.datac.birthday.split("-");
-                                        arrayDate[0] = parseInt(arrayDate[0]) + 543;
-                                        $('#birthdayp' + cardId).val(arrayDate[0] + "-" +
-                                            arrayDate[1] + "-" + arrayDate[2]);
+                                    if (res.datax.datac.birthday !== null && res
+                                        .datax.datac.birthday !== '') {
+                                        var arrayDate = res.datax.datac.birthday
+                                            .split("-");
+                                        arrayDate[0] = parseInt(arrayDate[0]) +
+                                            543;
+                                        $('#birthdayp' + cardId).val(arrayDate[
+                                                0] + "-" +
+                                            arrayDate[1] + "-" + arrayDate[
+                                                2]);
                                     }
                                     //var arrayDate = res.datax.datac.birthday
                                     //    .split("-");
@@ -256,55 +270,56 @@
                                                     )));
                                     });
                                     /*
-                                                                        $.each(res.datax.cases, function(index,
-                                                                            value) {
-                                                                            //$('#ListCaseview' + cardId +
-                                                                            $('#Listviewcasesp' + cardId +
-                                                                                ' tbody').append($(
-                                                                                    '<tr>')
-                                                                                .append($('<td>')
-                                                                                    .append(
-                                                                                        '<div class="col-md-12 col-sm-12 col-xs-12">' +
-                                                                                        value
-                                                                                        .casetype1 +
-                                                                                        '</div>'))
-                                                                                .append($('<td>')
-                                                                                    .append(
-                                                                                        '<div class="col-md-12 col-sm-12 col-xs-12">' +
-                                                                                        value
-                                                                                        .casedetail +
-                                                                                        '</div>'))
-                                                                                .append($('<td>')
-                                                                                    .append(
-                                                                                        '<div class="col-md-12 col-sm-12 col-xs-12">' +
-                                                                                        value
-                                                                                        .casestatus +
-                                                                                        '</div>'))
-                                                                                .append($('<td>')
-                                                                                    .append(
-                                                                                        '<div class="col-md-12 col-sm-12 col-xs-12">' +
-                                                                                        value
-                                                                                        .tranferstatus +
-                                                                                        '</div>'))
-                                                                                .append($('<td>')
-                                                                                    .append(
-                                                                                        '<div class="col-md-12 col-sm-12 col-xs-12">' +
-                                                                                        value
-                                                                                        .created_at +
-                                                                                        '</div>'))
-                                                                            );
-                                                                        }); 
-                                                                        */
+                                    $.each(res.datax.cases, function(index,
+                                        value) {
+                                        //$('#ListCaseview' + cardId +
+                                        $('#Listviewcasesp' + cardId +
+                                            ' tbody').append($(
+                                                '<tr>')
+                                            .append($('<td>')
+                                                .append(
+                                                    '<div class="col-md-12 col-sm-12 col-xs-12">' +
+                                                    value
+                                                    .casetype1 +
+                                                    '</div>'))
+                                            .append($('<td>')
+                                                .append(
+                                                    '<div class="col-md-12 col-sm-12 col-xs-12">' +
+                                                    value
+                                                    .casedetail +
+                                                    '</div>'))
+                                            .append($('<td>')
+                                                .append(
+                                                    '<div class="col-md-12 col-sm-12 col-xs-12">' +
+                                                    value
+                                                    .casestatus +
+                                                    '</div>'))
+                                            .append($('<td>')
+                                                .append(
+                                                    '<div class="col-md-12 col-sm-12 col-xs-12">' +
+                                                    value
+                                                    .tranferstatus +
+                                                    '</div>'))
+                                            .append($('<td>')
+                                                .append(
+                                                    '<div class="col-md-12 col-sm-12 col-xs-12">' +
+                                                    value
+                                                    .created_at +
+                                                    '</div>'))
+                                        );
+                                    });
+                                    */
                                     if (res.datax.cases.length != 0) {
-                                    $('#custom-tabs-one-casedetail-tabp' + cardId).click();
+                                        $('#custom-tabs-one-casedetail-tabp' +
+                                            cardId).click();
                                     }
 
-                                }else{
+                                } else {
                                     $('#cityp' + cardId).val('65').change();
                                 }
                             }
                         });
-                        
+
                         setTimeout(function() {
                             $.ajax({
                                 url: "casetype6/casetype/0",
@@ -599,12 +614,13 @@
                                 .html(item.name)
                             );
                         });
-                        if(res.data.length === 0){
+                        if (res.data.length === 0) {
                             //$('#casetype6').attr('disabled', true);
                             $('#casetype' + nextcase + 'p' + cardId).attr('disabled', true);
-                        }else{
+                        } else {
                             //$('#casetype6').attr('disabled', false);
-                            $('#casetype' + nextcase + 'p' + cardId).attr('disabled', false);
+                            $('#casetype' + nextcase + 'p' + cardId).attr('disabled',
+                                false);
                         }
                     }
                 });
@@ -772,166 +788,188 @@
                             method: 'GET',
                             async: false,
                             success: function(res) {
-                            if (res.datax.length != 0) {
-                                var fullname;
-                                    if(res.datax.datac.fname !== null && res.datax.datac.fname !== ''){
-                                        fullname = res.datax.datac.fname + ' ' + res.datax.datac.lname;
-                                    }else{
-                                        if(res.datax.datac.telhome !== null && res.datax.datac.telhome !== ''){
+                                if (res.datax.length != 0) {
+                                    var fullname;
+                                    if (res.datax.datac.fname !== null && res.datax
+                                        .datac.fname !== '') {
+                                        fullname = res.datax.datac.fname + ' ' + res
+                                            .datax.datac.lname;
+                                    } else {
+                                        if (res.datax.datac.telhome !== null && res
+                                            .datax.datac.telhome !== '') {
                                             fullname = res.datax.datac.telhome;
-                                        }else if(res.datax.datac.phoneno !== null && res.datax.datac.phoneno !== ''){
+                                        } else if (res.datax.datac.phoneno !==
+                                            null && res.datax.datac.phoneno !== ''
+                                        ) {
                                             fullname = res.datax.datac.phoneno;
-                                        }else if(res.datax.datac.workno !== null && res.datax.datac.workno !== ''){
+                                        } else if (res.datax.datac.workno !==
+                                            null && res.datax.datac.workno !== '') {
                                             fullname = res.datax.datac.workno;
                                         }
                                     }
                                     $('#phonenosuccess' + cardId).html(
-                                        '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ' + fullname + '</h3>');
-                                $('#contractid' + cardId).val(res.datax.datac.id);
-                                $('#hnp' + cardId).val(res.datax.datac.hn);
-                                $('#adddatep' + cardId).val(res.datax.datac.adddate);
-                                //var arrayDate = res.datax.datac.adddate.split("-");
-                                //arrayDate[0] = parseInt(arrayDate[0]) + 543;
-                                //$('#adddatep' + cardId).val(arrayDate[0] + "-" +
-                                //    arrayDate[1] + "-" + arrayDate[2]);
-                                $('#tnamep' + cardId).val(res.datax.datac.tname);
-                                $('#fnamep' + cardId).val(res.datax.datac.fname);
-                                $('#lnamep' + cardId).val(res.datax.datac.lname);
-                                $('#sexp' + cardId).val(res.datax.datac.sex);
-                                //$('#birthdayp' + cardId).val(res.datax.datac.birthday);
-                                if(res.datax.datac.birthday !== null && res.datax.datac.birthday !== ''){
-                                    var arrayDate = res.datax.datac.birthday.split("-");
-                                    arrayDate[0] = parseInt(arrayDate[0]) + 543;
-                                    $('#birthdayp' + cardId).val(arrayDate[0] + "-" +
-                                        arrayDate[1] + "-" + arrayDate[2]);
-                                }
-                                //var arrayDate = res.datax.datac.birthday.split("-");
-                                //arrayDate[0] = parseInt(arrayDate[0]) + 543;
-                                //$('#birthdayp' + cardId).val(arrayDate[0] + "-" +
-                                //    arrayDate[1] + "-" + arrayDate[2]);
+                                        '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ' +
+                                        fullname + '</h3>');
+                                    $('#contractid' + cardId).val(res.datax.datac
+                                        .id);
+                                    $('#hnp' + cardId).val(res.datax.datac.hn);
+                                    $('#adddatep' + cardId).val(res.datax.datac
+                                        .adddate);
+                                    //var arrayDate = res.datax.datac.adddate.split("-");
+                                    //arrayDate[0] = parseInt(arrayDate[0]) + 543;
+                                    //$('#adddatep' + cardId).val(arrayDate[0] + "-" +
+                                    //    arrayDate[1] + "-" + arrayDate[2]);
+                                    $('#tnamep' + cardId).val(res.datax.datac
+                                        .tname);
+                                    $('#fnamep' + cardId).val(res.datax.datac
+                                        .fname);
+                                    $('#lnamep' + cardId).val(res.datax.datac
+                                        .lname);
+                                    $('#sexp' + cardId).val(res.datax.datac.sex);
+                                    //$('#birthdayp' + cardId).val(res.datax.datac.birthday);
+                                    if (res.datax.datac.birthday !== null && res
+                                        .datax.datac.birthday !== '') {
+                                        var arrayDate = res.datax.datac.birthday
+                                            .split("-");
+                                        arrayDate[0] = parseInt(arrayDate[0]) + 543;
+                                        $('#birthdayp' + cardId).val(arrayDate[0] +
+                                            "-" +
+                                            arrayDate[1] + "-" + arrayDate[2]);
+                                    }
+                                    //var arrayDate = res.datax.datac.birthday.split("-");
+                                    //arrayDate[0] = parseInt(arrayDate[0]) + 543;
+                                    //$('#birthdayp' + cardId).val(arrayDate[0] + "-" +
+                                    //    arrayDate[1] + "-" + arrayDate[2]);
 
-                                $('#agep' + cardId).val(res.datax.datac.age);
-                                $('#bloodgroupp' + cardId).val(res.datax.datac
-                                    .bloodgroup);
-                                $('#homenop' + cardId).val(res.datax.datac.homeno);
-                                $('#moop' + cardId).val(res.datax.datac.moo);
-                                $('#soip' + cardId).val(res.datax.datac.soi);
-                                $('#roadp' + cardId).val(res.datax.datac.road);
-                                $('#cityp' + cardId).val(res.datax.datac.city);
-                                $('#cityp' + cardId).change();
-                                setTimeout(function() {
-                                    $('#districtp' + cardId).val(res.datax
-                                        .datac.district);
-                                    $('#districtp' + cardId).change();
+                                    $('#agep' + cardId).val(res.datax.datac.age);
+                                    $('#bloodgroupp' + cardId).val(res.datax.datac
+                                        .bloodgroup);
+                                    $('#homenop' + cardId).val(res.datax.datac
+                                        .homeno);
+                                    $('#moop' + cardId).val(res.datax.datac.moo);
+                                    $('#soip' + cardId).val(res.datax.datac.soi);
+                                    $('#roadp' + cardId).val(res.datax.datac.road);
+                                    $('#cityp' + cardId).val(res.datax.datac.city);
+                                    $('#cityp' + cardId).change();
                                     setTimeout(function() {
-                                        $('#subdistrictp' + cardId)
-                                            .val(res.datax.datac
-                                                .subdistrict);
+                                        $('#districtp' + cardId).val(res
+                                            .datax
+                                            .datac.district);
+                                        $('#districtp' + cardId).change();
+                                        setTimeout(function() {
+                                            $('#subdistrictp' +
+                                                    cardId)
+                                                .val(res.datax.datac
+                                                    .subdistrict);
+                                        }, 500)
                                     }, 500)
-                                }, 500)
-                                $('#postcodep' + cardId).val(res.datax.datac
-                                    .postcode);
-                                $('#telhomep' + cardId).val(res.datax.datac
-                                    .telhome);
-                                $('#phonenop' + cardId).val(res.datax.datac
-                                    .phoneno);
-                                $('#worknop' + cardId).val(res.datax.datac.workno);
+                                    $('#postcodep' + cardId).val(res.datax.datac
+                                        .postcode);
+                                    $('#telhomep' + cardId).val(res.datax.datac
+                                        .telhome);
+                                    $('#phonenop' + cardId).val(res.datax.datac
+                                        .phoneno);
+                                    $('#worknop' + cardId).val(res.datax.datac
+                                        .workno);
 
-                                var tbody = document.querySelector(
-                                    '#myTbl3p' + cardId + ' tbody');
-                                while (tbody.firstChild) {
-                                    tbody.removeChild(tbody
-                                        .firstChild);
-                                }
-                                $.each(res.datax.emer, function(
-                                    index, value) {
-                                    $('#myTbl3p' + cardId + ' tbody')
-                                        .append($('<tr>')
-                                            .append($('<td width="30%">')
-                                                .append(
-                                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="hidden" value="' +
-                                                    value.id +
-                                                    '" name="emertypep' +
-                                                    cardId +
-                                                    '[]" id="emertypep' +
-                                                    cardId +
-                                                    '"><input type="text" id="emergencynamep' +
-                                                    cardId +
-                                                    '" name="emergencynamep' +
-                                                    cardId +
-                                                    '[]" class="form-control has-feedback-left" value="' +
-                                                    value
-                                                    .emergencyname +
-                                                    '" required="required"></div>'
-                                                ))
-                                            .append($('<td width="10%">')
-                                                .append(
-                                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerrelation' +
-                                                    cardId +
-                                                    '" name="emerrelationp' +
-                                                    cardId +
-                                                    '[]" class="form-control has-feedback-left" value="' +
-                                                    value
-                                                    .emerrelation +
-                                                    '" required="required"></div>'
-                                                ))
-                                            .append($('<td width="10%">')
-                                                .append(
-                                                    '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone' +
-                                                    cardId +
-                                                    '" name="emerphonep' +
-                                                    cardId +
-                                                    '[]" class="form-control has-feedback-left" onkeydown="validateNumberp(event)" value="' +
-                                                    value
-                                                    .emerphone +
-                                                    '" required="required"></div>'
-                                                ))
-                                            .append($('<td width="5%">')
-                                                .append(
-                                                    '<button type="button" name="deletem' +
-                                                    cardId +
-                                                    '" id="deletem' +
-                                                    cardId +
-                                                    '" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
-                                                )));
-                                });
-                                /*
-                                $.each(res.datax.cases, function(index, value) {
-                                    $('#Listviewcases' + cardId + ' tbody')
-                                        .append($('<tr>')
-                                            .append($('<td>')
-                                                .append(
-                                                    '<div class="col-md-12 col-sm-12 col-xs-12">' +
-                                                    value.casetype1 +
-                                                    '</div>'))
-                                            .append($('<td>')
-                                                .append(
-                                                    '<div class="col-md-12 col-sm-12 col-xs-12">' +
-                                                    value.casedetail +
-                                                    '</div>'))
-                                            .append($('<td>')
-                                                .append(
-                                                    '<div class="col-md-12 col-sm-12 col-xs-12">' +
-                                                    value.casestatus +
-                                                    '</div>'))
-                                            .append($('<td>')
-                                                .append(
-                                                    '<div class="col-md-12 col-sm-12 col-xs-12">' +
-                                                    value.tranferstatus +
-                                                    '</div>'))
-                                            .append($('<td>')
-                                                .append(
-                                                    '<div class="col-md-12 col-sm-12 col-xs-12">' +
-                                                    value.created_at +
-                                                    '</div>'))
-                                        );
-                                });
-                                */
-                                }else{
+                                    var tbody = document.querySelector(
+                                        '#myTbl3p' + cardId + ' tbody');
+                                    while (tbody.firstChild) {
+                                        tbody.removeChild(tbody
+                                            .firstChild);
+                                    }
+                                    $.each(res.datax.emer, function(
+                                        index, value) {
+                                        $('#myTbl3p' + cardId + ' tbody')
+                                            .append($('<tr>')
+                                                .append($(
+                                                        '<td width="30%">')
+                                                    .append(
+                                                        '<div class="col-md-12 col-sm-12 col-xs-12"><input type="hidden" value="' +
+                                                        value.id +
+                                                        '" name="emertypep' +
+                                                        cardId +
+                                                        '[]" id="emertypep' +
+                                                        cardId +
+                                                        '"><input type="text" id="emergencynamep' +
+                                                        cardId +
+                                                        '" name="emergencynamep' +
+                                                        cardId +
+                                                        '[]" class="form-control has-feedback-left" value="' +
+                                                        value
+                                                        .emergencyname +
+                                                        '" required="required"></div>'
+                                                    ))
+                                                .append($(
+                                                        '<td width="10%">')
+                                                    .append(
+                                                        '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerrelation' +
+                                                        cardId +
+                                                        '" name="emerrelationp' +
+                                                        cardId +
+                                                        '[]" class="form-control has-feedback-left" value="' +
+                                                        value
+                                                        .emerrelation +
+                                                        '" required="required"></div>'
+                                                    ))
+                                                .append($(
+                                                        '<td width="10%">')
+                                                    .append(
+                                                        '<div class="col-md-12 col-sm-12 col-xs-12"><input type="text" id="eemerphone' +
+                                                        cardId +
+                                                        '" name="emerphonep' +
+                                                        cardId +
+                                                        '[]" class="form-control has-feedback-left" onkeydown="validateNumberp(event)" value="' +
+                                                        value
+                                                        .emerphone +
+                                                        '" required="required"></div>'
+                                                    ))
+                                                .append($('<td width="5%">')
+                                                    .append(
+                                                        '<button type="button" name="deletem' +
+                                                        cardId +
+                                                        '" id="deletem' +
+                                                        cardId +
+                                                        '" class="btn btn-sm btn-danger removeRowBtn" onclick="$(this).closest(\'tr\').remove();\"><i class="fa fa-minus"></i></button>'
+                                                    )));
+                                    });
+                                    /*
+                                    $.each(res.datax.cases, function(index, value) {
+                                        $('#Listviewcases' + cardId + ' tbody')
+                                            .append($('<tr>')
+                                                .append($('<td>')
+                                                    .append(
+                                                        '<div class="col-md-12 col-sm-12 col-xs-12">' +
+                                                        value.casetype1 +
+                                                        '</div>'))
+                                                .append($('<td>')
+                                                    .append(
+                                                        '<div class="col-md-12 col-sm-12 col-xs-12">' +
+                                                        value.casedetail +
+                                                        '</div>'))
+                                                .append($('<td>')
+                                                    .append(
+                                                        '<div class="col-md-12 col-sm-12 col-xs-12">' +
+                                                        value.casestatus +
+                                                        '</div>'))
+                                                .append($('<td>')
+                                                    .append(
+                                                        '<div class="col-md-12 col-sm-12 col-xs-12">' +
+                                                        value.tranferstatus +
+                                                        '</div>'))
+                                                .append($('<td>')
+                                                    .append(
+                                                        '<div class="col-md-12 col-sm-12 col-xs-12">' +
+                                                        value.created_at +
+                                                        '</div>'))
+                                            );
+                                    });
+                                    */
+                                } else {
                                     $('#cityp' + cardId).val('65').change();
                                 }
 
-                               
+
 
                                 if (res.datax.cases.length != 0) {
                                     $('#custom-tabs-one-casedetail-tabp' + cardId)
@@ -939,7 +977,7 @@
                                 }
                             }
                         });
-                        
+
                         $.ajax({
                             url: "casetype6/casetype/0",
                             method: 'GET',
@@ -988,11 +1026,11 @@
             //var arrayDate = $('#adddatep' + cardId).val().split("-");
             //arrayDate[0] = parseInt(arrayDate[0]) - 543;
             //var tempadddate = arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2];
-            if($('#birthdayp' + cardId).val() != ''){
+            if ($('#birthdayp' + cardId).val() != '') {
                 var arrayDateb = $('#birthdayp' + cardId).val().split("-");
                 arrayDateb[0] = parseInt(arrayDateb[0]) - 543;
                 var tempbirthday = arrayDateb[0] + "-" + arrayDateb[1] + "-" + arrayDateb[2];
-            }else{
+            } else {
                 tempbirthday = '';
             }
             if ($('#contractid' + cardId).val() === "") {
@@ -1099,21 +1137,21 @@
                                 '</li></strong>');
                             var cardElementId = $('#telnop' + cardId)
                                 .val();
-/*
+                            /*
                             $(`#custom-tabs-pop-${cardElementId}-tab`).closest(
-                                '.nav-item').remove();
+                            '.nav-item').remove();
                             $(`#custom-tabs-pop-${cardElementId}`).remove();
-*/
-                                    $('#custom-tabs-pop-' + cardId + '-tab')
-                                        .closest(
-                                            '.nav-item').remove();
-                                    $('#custom-tabs-pop-' + cardId).remove();                            
+                            */
+                            $('#custom-tabs-pop-' + cardId + '-tab')
+                                .closest(
+                                    '.nav-item').remove();
+                            $('#custom-tabs-pop-' + cardId).remove();
                             toastr.success('บันทึกข้อมูลเรียบร้อยแล้ว', {
                                 timeOut: 5000
                             });
                             $('.alert-success-pop' + cardId).hide();
-                                    //$('#ToolbarModal').modal('hide');
-                                    positionCards();
+                            //$('#ToolbarModal').modal('hide');
+                            positionCards();
                         }
                     }
                 });
@@ -1234,12 +1272,12 @@
                                         .closest(
                                             '.nav-item').remove();
                                     $('#custom-tabs-pop-' + cardId).remove();
-/*
-                                    $(`#custom-tabs-pop-${cardElementId}-tab`)
-                                        .closest(
-                                            '.nav-item').remove();
-                                    $(`#custom-tabs-pop-${cardElementId}`).remove();
-*/
+                                    /*
+                                                                        $(`#custom-tabs-pop-${cardElementId}-tab`)
+                                                                            .closest(
+                                                                                '.nav-item').remove();
+                                                                        $(`#custom-tabs-pop-${cardElementId}`).remove();
+                                    */
                                     toastr.success('บันทึกข้อมูลเรียบร้อยแล้ว', {
                                         timeOut: 5000
                                     });
