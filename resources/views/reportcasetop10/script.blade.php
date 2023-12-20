@@ -13,7 +13,7 @@
 
             var chartContainer = document.querySelector("#bar_graph");
 
-            html2canvas(chartContainer).then(canvas => {
+            html2canvas(chartContainer, { useCORS: true }).then(canvas => {
                 var imgData = canvas.toDataURL("image/png");
                 let docDefinition = {
                 defaultStyle: {
@@ -72,6 +72,7 @@
                 // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
                 var link = document.createElement('a');
                 link.href = imgData;
+                alert(imgData);
                 link.download = 'bar_chart.png'; // ชื่อไฟล์ที่จะบันทึก
                 link.click();
             });
