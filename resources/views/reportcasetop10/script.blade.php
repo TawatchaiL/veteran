@@ -10,20 +10,22 @@
     }
     $(document).ready(function() {
         $('#download_bar').click(function(event) {
-            function getImageDataUrl() {
-                var chartContainer = document.querySelector("#bar_graph");
-                return html2canvas(chartContainer)
-                    .then(function(canvas) {
-                        return canvas.toDataURL("image/png");
-                    });
-            }
+            var pdfWidth = 595.28;
+            var pdfHeight = 841.89;
+
+            var chartContainer = document.querySelector("#bar_graph");
+
+            html2canvas(chartContainer).then(canvas => {
+                var imgData = canvas.toDataURL("image/png");
+
+            });
             var docDefinition = {
                 defaultStyle: {
                     font: 'THSarabun',
                     fontSize: 16
                 },
                 content: [
-                    image: getImageDataUrl(),
+                    image: imgData,
                     width: 500
                 ],
                 pageMargins: [20, 150, 20, 30],
