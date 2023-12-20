@@ -197,11 +197,6 @@
         </div>
 
     </section>
-    <div id="loadingModal" class="modal">
-        <div class="modal-content">
-            <div class="loader"></div>
-        </div>
-    </div>
 @endsection
 
 @section('script')

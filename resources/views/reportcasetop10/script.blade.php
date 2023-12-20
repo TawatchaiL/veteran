@@ -684,11 +684,11 @@
         });
         
         $('#exportPDFButton').on('click', function() {
-            $('#loadingModal').show();
+            //$('#loadingModal').show();
             table.page.len(-1).draw();
                 setTimeout(function() {
                     table.button('3').trigger();
-                    $('#loadingModal').hide();
+                    //$('#loadingModal').hide();
                         setTimeout(function() {
                             table.page.len(10).draw();
                         }, 1000);
@@ -696,11 +696,11 @@
         });
 
         $('#exportXLSButton').on('click', function() {
-            $('#loadingModal').show();
+            //$('#loadingModal').show();
             table.page.len(-1).draw();
                 setTimeout(function() {
                     table.button('1').trigger();
-                    $('#loadingModal').hide();
+                    //$('#loadingModal').hide();
                         setTimeout(function() {
                             table.page.len(10).draw();
                         }, 1000);
