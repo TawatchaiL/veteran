@@ -11,50 +11,71 @@
     $(document).ready(function() {
         $('#download_bar').click(function(event) {
 
-                    var docDefinition = {
-                defaultStyle: {
-                    font: 'THSarabun',
+            var pdfWidth = 595.28; // Width of A4 in points (1 point = 1/72 inch)
+    var pdfHeight = 841.89; // Height of A4 in points
+    var pdf = new jsPDF({
+        unit: 'pt', // Use points as the unit for measurements
+        format: [pdfWidth, pdfHeight] // Set the format to A4 size
+    });
+
+    // Add your chart image to the PDF
+    var chartContainer = document.querySelector("#bar_graph");
+
+    html2canvas(chartContainer).then(canvas => {
+        var imgData = canvas.toDataURL("image/png");
+
+        var imgWidth = pdfWidth; // Use the same width as PDF
+        var imgHeight = (canvas.height * imgWidth) / canvas.width; // Calculate proportional height
+
+        pdf.addImage(imgData, 'PNG', 0, 60, imgWidth, imgHeight);
+
+        // Define the rest of your document definition
+        var docDefinition = {
+            defaultStyle: {
+                font: 'THSarabun',
+                fontSize: 16
+            },
+            content: [
+                // Your content here...
+            ],
+            pageMargins: [20, 150, 20, 30],
+            styles: {
+                tableHeader: {
                     fontSize: 16
                 },
-                content: [
-
-                ],
-                pageMargins: [20, 150, 20, 30],
-                styles: {
-                    tableHeader: {
-                        fontSize: 16
-                    },
-                    tableBodyOdd: {
-                        alignment: 'center'
-                    },
-                    tableBodyEven: {
-                        alignment: 'center'
-                    },
-                    tableFooter: {
-                        fontSize: 16
-                    }
+                tableBodyOdd: {
+                    alignment: 'center'
                 },
-                header: (function() {
-                    return {
-                        columns: [
-                            {
-                                text: [  
-                                    { text: 'CRM REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
-                                    '\n',
-                                    { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
-                                    '\n',
-                                    { text: 'Report : Sum Case By Case Type (ผลรวมแยกตามประเภทที่ติดต่อ)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
-                                    '\n',
-                                    { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
-                                ]
-                            }
-                        ],
-                        margin: 20
-                    };
-                })
-            };
+                tableBodyEven: {
+                    alignment: 'center'
+                },
+                tableFooter: {
+                    fontSize: 16
+                }
+            },
+            header: (function() {
+                return {
+                    columns: [
+                        {
+                            text: [  
+                                { text: 'CRM REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
+                                '\n',
+                                { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                '\n',
+                                { text: 'Report : Sum Case By Case Type (ผลรวมแยกตามประเภทที่ติดต่อ)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                '\n',
+                                { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
+                            ]
+                        }
+                    ],
+                    margin: 20
+                };
+            })
+        };
 
-            pdfMake.createPdf(docDefinition).download('reports.pdf');
+        // Create the PDF with the combined content
+        pdfMake.createPdf(docDefinition).download('example.pdf');
+    });
         });
 
         $('#download_bar_img').click(function(event) {
