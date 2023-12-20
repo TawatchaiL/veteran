@@ -672,9 +672,6 @@
             await table.page.len(-1).draw().then(function () {
                 table.button('3').trigger();
             });
-    });
-            
-            
         });
 
         $('#exportXLSButton').on('click', function() {
