@@ -82,7 +82,7 @@
                     fontSize: 16
                 },
                 content: {
-                    image: dataURL,
+                    image: 'data:image/png;base64,'+dataURL,
                     width: 500
             },
                 pageMargins: [20, 150, 20, 30],
