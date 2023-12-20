@@ -35,34 +35,35 @@
 */
 
 var docDefinition = {
-                    defaultStyle = {
-                            font: 'THSarabun',
-                            fontSize: 16
-                        };
-                    content: [
-                        'Hello, this is a basic PDF created using pdfMake!',
-                        {
-                            text: 'A simple table:',
-                            style: 'header'
-                        },
-                        {
-                            table: {
-                                body: [
-                                    ['Column 1', 'Column 2', 'Column 3'],
-                                    ['Row 1, Cell 1', 'Row 1, Cell 2', 'Row 1, Cell 3'],
-                                    ['Row 2, Cell 1', 'Row 2, Cell 2', 'Row 2, Cell 3']
-                                ]
-                            }
-                        }
-                    ],
-                    styles: {
-                        header: {
-                            fontSize: 18,
-                            bold: true
-                        }
-                    }
-                };
-                pdfMake.createPdf(docDefinition).download('example.pdf');
+        defaultStyle: {
+            font: 'THSarabun',
+            fontSize: 16
+        },
+        content: [
+            'Hello, this is a basic PDF created using pdfMake!',
+            {
+                text: 'A simple table:',
+                style: 'header'
+            },
+            {
+                table: {
+                    body: [
+                        ['Column 1', 'Column 2', 'Column 3'],
+                        ['Row 1, Cell 1', 'Row 1, Cell 2', 'Row 1, Cell 3'],
+                        ['Row 2, Cell 1', 'Row 2, Cell 2', 'Row 2, Cell 3']
+                    ]
+                }
+            }
+        ],
+        styles: {
+            header: {
+                fontSize: 18,
+                bold: true
+            }
+        }
+    };
+
+    pdfMake.createPdf(docDefinition).download('example.pdf');
         });
 
         $('#download_bar_img').click(function(event) {
