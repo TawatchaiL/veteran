@@ -76,10 +76,14 @@ class DetailcaselogbyhnController extends Controller
         ->orderBy("mdate", "desc")
         ->toSql();
 
-        $datas = DB::table(DB::raw("({$datass}) as caseslogs"))
+        $query = DB::table(DB::raw("({$datass}) as caseslogs"))
         ->select('cagent', 'cid', 'chn','caction', 'magent', 'mdate')
-        ->orderBy("mdate", "desc")
-        ->get();
+        ->orderBy("caseslogs.mdate", "desc");
+        //->get();
+
+        dd($query->toSql(), $query->getBindings());
+        $datas = $query->get();
+        dd($datas);
         $agents = User::orderBy("id", "asc")->get();
 
         if ($request->ajax()) {
