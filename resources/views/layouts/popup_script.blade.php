@@ -630,7 +630,8 @@
                         });
                         if (res.data.length === 0) {
                             //$('#casetype6').attr('disabled', true);
-                            $('#casetype' + nextcase + 'p' + cardId).val(null).trigger('change');
+                            $('#casetype' + nextcase + 'p' + cardId).val(null).trigger(
+                                'change');
                             $('#casetype' + nextcase + 'p' + cardId).attr('disabled', true);
                         } else {
                             //$('#casetype6').attr('disabled', false);
@@ -675,46 +676,49 @@
             let datatId = $(this).data("tabid");
             var districtOb = $('#districtp' + datatId);
             var cartonOb = $('#subdistrictp' + datatId);
-            //districtOb.html('<option value="">เลือกอำเภอ</option>');
-            $.ajax({
-                url: "thdistrict/district/" + $(this).val(),
-                method: 'GET',
-                success: function(res) {
 
-                    districtOb.html(
-                        '');
-                    cartonOb.html(
-                        '');
-                    $.each(res.data, function(index, item) {
-                        districtOb.append(
-                            $('<option></option>').val(item.code).html(item
-                                .name_th)
-                        );
-                    });
-                    districtOb.val(null).trigger('change');
-                    cartonOb.val(null).trigger('change');
-                }
-            });
+            // Check if the value is not empty
+            if (this.value !== '') {
+                $.ajax({
+                    url: "thdistrict/district/" + $(this).val(),
+                    method: 'GET',
+                    success: function(res) {
+                        districtOb.html('');
+                        cartonOb.html('');
+                        $.each(res.data, function(index, item) {
+                            districtOb.append(
+                                $('<option></option>').val(item.code).html(item
+                                    .name_th)
+                            );
+                        });
+                        districtOb.val(null).trigger('change');
+                        cartonOb.val(null).trigger('change');
+                    }
+                });
+            }
         });
 
         $(document).on("change", ".districtpchang", function() {
             let datatId = $(this).data("tabid");
             var cartonOb = $('#subdistrictp' + datatId);
-            cartonOb.html('');
-            $.ajax({
-                url: "thsubdistrict/subdistrict/" + $(this).val(),
-                method: 'GET',
-                success: function(res) {
-                    cartonOb.html('');
-                    $.each(res.data, function(index, item) {
-                        cartonOb.append(
-                            $('<option></option>').val(item.code).html(item
-                                .name_th)
-                        );
-                    });
-                    cartonOb.val(null).trigger('change');
-                }
-            });
+
+            // Check if the value is not empty
+            if (this.value !== '') {
+                $.ajax({
+                    url: "thsubdistrict/subdistrict/" + $(this).val(),
+                    method: 'GET',
+                    success: function(res) {
+                        cartonOb.html('');
+                        $.each(res.data, function(index, item) {
+                            cartonOb.append(
+                                $('<option></option>').val(item.code).html(item
+                                    .name_th)
+                            );
+                        });
+                        cartonOb.val(null).trigger('change');
+                    }
+                });
+            }
         });
         //Add new phone emergency
         $(document).on('click', '.addRowBtnp-button',
