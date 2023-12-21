@@ -13,6 +13,7 @@
     });
 
     function positionCards() {
+        console.log('position');
         state_overlay.removeClass("d-none");
         var cardPositions = [];
         $.ajax({

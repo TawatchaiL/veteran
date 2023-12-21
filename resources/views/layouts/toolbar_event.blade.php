@@ -16,16 +16,19 @@
     //agent receive call
     socket.on('agentconnect', (response) => {
         //console.log(response)
+        console.log('connect')
     });
 
     //agent answer call
     socket.on('agentcalled', (response) => {
+        console.log('called')
 
     });
 
     socket.on('queuemember', (response) => {
         //console.log(response)
-        if (response.data.paused == 1 && response.data.name == exten) {
+        console.log('queuemember')
+        if (response.data.paused == 1 && response.data.name == exten && response.data.pausedreason !=="Outbound") {
             //const currentTimestamp = Math.floor(Date.now() / 1000) - response.data.lastpause;
             const currentTimestamp = (response.timestamp / 1000) - response.data.lastpause;
             const formattedTime = formatTime(currentTimestamp);
@@ -36,6 +39,7 @@
     });
 
     socket.on('unwarp', (response) => {
+        console.log('unwarp')
         $.ajax({
             url: "{{ route('agent.hang') }}",
             method: 'post',
@@ -57,6 +61,7 @@
 
     //agent or caller hangup after talk
     socket.on('agentcomplete', async (response) => {
+        console.log('complete')
         if (response.data.membername == exten) {
             $.ajax({
                 url: "{{ route('agent.warp') }}",
@@ -179,6 +184,7 @@
     });
 
     socket.on('peerstatus', async (data) => {
+        console.log('peer')
         let peer = data.extension.split("/");
         if (peer[1] == exten) {
             if (data.status == 'Unregistered') {
@@ -230,7 +236,7 @@
     });
 
     socket.on('event', async (data) => {
-
+        console.log('event')
         if (data.extension == exten) {
             if (data.status == 4 || data.status == -1) {
                 //toolbar_header.addClass("bg-secondary");
@@ -269,22 +275,24 @@
 
     socket.on('pause', data => {
         if (data.extension.match(exten) && data.paused == 0) {
+            console.log('paused')
             /* toolbar_header.removeClass("bg-warning");
             toolbar_header.addClass("bg-primary"); */
-            $.ajax({
-                url: "{{ route('agent.unbreak') }}",
-                method: 'post',
-                async: false,
-                success: function(result) {
-                    set_state_icon(result.id, result.icon, result.message);
-                    set_state_button(result.id);
-                }
-            });
+            /*  $.ajax({
+                 url: "{{ route('agent.unbreak') }}",
+                 method: 'post',
+                 async: false,
+                 success: function(result) {
+                     set_state_icon(result.id, result.icon, result.message);
+                     set_state_button(result.id);
+                 }
+             }); */
             $('#pausedur').html('');
             $('#pausereason').html('');
             //localStorage.removeItem('warp');
         } else if (data.extension.match(exten) && data.paused == 1) {
-            if (data.pausereason == "Auto-Pause") {
+            console.log('unpaused')
+            /* if (data.pausereason == "Auto-Pause") {
                 $.ajax({
                     url: "{{ route('agent.break_auto') }}",
                     method: 'post',
@@ -304,9 +312,18 @@
                         set_state_button(result.id);
                     }
                 });
-            }
+            } */
             /* toolbar_header.removeClass("bg-primary bg-secondary bg-danger");
             toolbar_header.addClass("bg-warning"); */
+            $.ajax({
+                url: "{{ route('agent.status') }}",
+                method: 'post',
+                async: false,
+                success: function(result) {
+                    set_state_icon(result.id, result.icon, result.message);
+                    set_state_button(result.id);
+                }
+            });
 
         }
 
