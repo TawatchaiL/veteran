@@ -476,8 +476,8 @@
             if($('#Addadddate').is(':disabled')){
                 $("#Addadddate").removeAttr("disabled"); 
             }
-            if($('#casetype1').prop('readonly')){
-                $("#casetype1").removeAttr("readonly"); 
+            if($('#casetype1').prop('disabled')){
+                $("#casetype1").removeAttr("disabled"); 
             }
             if($('#tranferstatus').is(':disabled')){
                 $("#tranferstatus").removeAttr("disabled"); 
@@ -670,7 +670,7 @@
                     $('#tranferstatus').attr("disabled", "disabled");
                     $('#casestatus').val(res.data.casestatus).change();
                     $('#casetype1').val(res.data.caseid1).change();
-                    $('#casetype1').attr("readonly", "readonly");
+                    $('#casetype1').attr("disabled", "disabled");
                     if (res.data.caseid2 != 0) {
                         $('#casetype2').val(res.data.caseid2).change();
                         $('#casetype2').attr("readonly", "readonly");
