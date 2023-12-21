@@ -1110,6 +1110,7 @@
                     url: "{{ route('contacts.casescontract') }}",
                     method: 'post',
                     data: additionalData,
+                    async : false,
                     success: function(result) {
                         if (result.errors) {
                             $('.alert-danger-pop' + cardId).html('');
@@ -1285,7 +1286,7 @@
 
                                     $('.alert-success-pop' + cardId).hide();
                                     //$('#ToolbarModal').modal('hide');
-                                    //positionCards();
+                                    positionCards();
                                 }
                             }
                         });
