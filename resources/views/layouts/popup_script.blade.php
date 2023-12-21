@@ -75,7 +75,7 @@
                     console.log($('#pop_' + cardId).find("#tranferstatusp" + cardId).length);
                     $("#tranferstatusp" + cardId).select2({
                         maximumSelectionLength: 1,
-                        placeholder: 'กรุณาเลือก'
+                        placeholder: 'กรุณาเลือกwwwwwwww'
                     });
                 }, 1500)
 
