@@ -64,7 +64,7 @@ class CDRController extends Controller
             return datatables()->of($datas)
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row['uniqueid'] . '" class="flat" name="table_records[]" value="' . $row['uniqueid'] . '" >';
-                })->toJson();
+                })->rawColumns(['checkbox'])->toJson();
         }
 
 
