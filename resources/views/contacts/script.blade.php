@@ -973,7 +973,7 @@
         // on change province
         $('#Addcity').on('change', function() {
             var provinceId = $(this).val();
-            alert(provinceId);
+            alert(provinceId.length);
             //districtOb.html('<option value="">เลือกอำเภอ</option>');
             if (provinceId !== '') {
                 alert('no');
