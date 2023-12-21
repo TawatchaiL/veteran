@@ -681,10 +681,10 @@
                 method: 'GET',
                 success: function(res) {
 
-                    /* districtOb.html(
-                        '<option value="">เลือกอำเภอ</option>');
+                    districtOb.html(
+                        '');
                     cartonOb.html(
-                        '<option value="">เลือกตำบล</option>'); */
+                        '');
                     $.each(res.data, function(index, item) {
                         districtOb.append(
                             $('<option></option>').val(item.code).html(item
@@ -700,12 +700,12 @@
         $(document).on("change", ".districtpchang", function() {
             let datatId = $(this).data("tabid");
             var cartonOb = $('#subdistrictp' + datatId);
-            //cartonOb.html('<option value="">เลือกตำบล</option>');
+            cartonOb.html('');
             $.ajax({
                 url: "thsubdistrict/subdistrict/" + $(this).val(),
                 method: 'GET',
                 success: function(res) {
-                    //cartonOb.html('<option value="">เลือกตำบล</option>');
+                    cartonOb.html('');
                     $.each(res.data, function(index, item) {
                         cartonOb.append(
                             $('<option></option>').val(item.code).html(item
