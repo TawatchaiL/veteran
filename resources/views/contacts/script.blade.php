@@ -552,10 +552,13 @@
             //var arrayDate = $('#Addadddate').val().split("-");
             //arrayDate[0] = parseInt(arrayDate[0]) - 543;
             //var tempadddate = arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2];
-
-            var arrayDateb = $('#Addbirthday').val().split("-");
-            arrayDateb[0] = parseInt(arrayDateb[0]) - 543;
-            var tempbirthday = arrayDateb[0] + "-" + arrayDateb[1] + "-" + arrayDateb[2];
+            if ($('#Addbirthday').val() != '') {
+                var arrayDateb = $('#Addbirthday').val().split("-");
+                arrayDateb[0] = parseInt(arrayDateb[0]) - 543;
+                var tempbirthday = arrayDateb[0] + "-" + arrayDateb[1] + "-" + arrayDateb[2];
+            } else {
+                tempbirthday = '';
+            }
 
             var additionalData = {
                 hn: $('#Addhn').val(),
@@ -772,11 +775,14 @@
                     //var arrayDate = $('#Editadddate').val().split("-");
                     //arrayDate[0] = parseInt(arrayDate[0]) - 543;
                     //var tempadddate = arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2];
-
-                    var arrayDateb = $('#Editbirthday').val().split("-");
-                    arrayDateb[0] = parseInt(arrayDateb[0]) - 543;
-                    var tempbirthday = arrayDateb[0] + "-" + arrayDateb[1] + "-" + arrayDateb[
+                    if ($('#Editbirthday').val() != '') {
+                        var arrayDateb = $('#Editbirthday').val().split("-");
+                        arrayDateb[0] = parseInt(arrayDateb[0]) - 543;
+                        var tempbirthday = arrayDateb[0] + "-" + arrayDateb[1] + "-" + arrayDateb[
                         2];
+                    } else {
+                        tempbirthday = '';
+                    }
 
                     var additionalData = {
                         hn: $('#Edithn').val(),
