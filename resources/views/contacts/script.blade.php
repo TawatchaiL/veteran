@@ -976,6 +976,7 @@
             alert(provinceId);
             //districtOb.html('<option value="">เลือกอำเภอ</option>');
             if (provinceId !== '') {
+                alert('no');
                 $.ajax({
                     url: "thdistrict/district/" + provinceId,
                     method: 'GET',
