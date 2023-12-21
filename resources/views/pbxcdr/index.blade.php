@@ -56,39 +56,38 @@
                             @endif
                             <div class="row ">
 
-                                <div class="row">
 
-                                    <div class="col-xs-4 col-sm-4 col-md-4">
-                                        <div class="form-group">
-                                            <strong><i class="fa-solid fa-calendar"></i> วันที่:
-                                            </strong>
-                                            <input type="text" class="form-control" id="reservation"
-                                                style="width: 350px">
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-4 col-sm-4 col-md-4">
-                                        <div class="form-group">
-                                            <strong><i class="fa-regular fa-keyboard"></i>
-                                                เบอร์โทร:</strong>
-                                            {!! Form::text('searchtext', null, [
-                                                'id' => 'searchtext',
-                                                'placeholder' => 'เบอร์โทร',
-                                                'class' => 'form-control',
-                                            ]) !!}
-                                            <span id="validationMessages" style="color: red;"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-2 col-sm-2 col-md-2">
-                                        <strong>&nbsp;</strong>
-                                        <button type="button" class="form-control btn btn-success" id="btnsearch">
-                                            <i class="fas fa-search"></i></button>
-                                    </div>
-                                    <div class="col-xs-2 col-sm-2 col-md-2" style="align-items: flex-end;">
-                                        <strong>&nbsp;</strong>
-                                        <button type="button" class="form-control btn btn-warning" id="btnreset">
-                                            <i class="fa-solid fa-rotate-right"></i></button>
+
+                                <div class="col-xs-4 col-sm-4 col-md-4">
+                                    <div class="form-group">
+                                        <strong><i class="fa-solid fa-calendar"></i> วันที่:
+                                        </strong>
+                                        <input type="text" class="form-control" id="reservation" style="width: 350px">
                                     </div>
                                 </div>
+                                <div class="col-xs-4 col-sm-4 col-md-4">
+                                    <div class="form-group">
+                                        <strong><i class="fa-regular fa-keyboard"></i>
+                                            เบอร์โทร:</strong>
+                                        {!! Form::text('searchtext', null, [
+                                            'id' => 'searchtext',
+                                            'placeholder' => 'เบอร์โทร',
+                                            'class' => 'form-control',
+                                        ]) !!}
+                                        <span id="validationMessages" style="color: red;"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2 col-sm-2 col-md-2">
+                                    <strong>&nbsp;</strong>
+                                    <button type="button" class="form-control btn btn-success" id="btnsearch">
+                                        <i class="fas fa-search"></i></button>
+                                </div>
+                                <div class="col-xs-2 col-sm-2 col-md-2" style="align-items: flex-end;">
+                                    <strong>&nbsp;</strong>
+                                    <button type="button" class="form-control btn btn-warning" id="btnreset">
+                                        <i class="fa-solid fa-rotate-right"></i></button>
+                                </div>
+
 
 
                             </div>
