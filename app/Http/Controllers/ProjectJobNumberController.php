@@ -88,7 +88,6 @@ class ProjectJobNumberController extends Controller
 
             $datas = $datass->get();
 
-            $state_text = ['All', 'รอคิว', 'กำลังทำงาน', 'Export เสร็จแล้ว'];
             $ctype_text = ['ยังไม่ได้โทรออก', 'โทรออกแล้ว'];
 
             return datatables()->of($datas)

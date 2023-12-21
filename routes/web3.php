@@ -105,6 +105,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/agent_outbound', [App\Http\Controllers\ProjectJobNumberController::class, 'index'])->name('agent_outbound');
     Route::get('/agent_outbound/call/{id}', [App\Http\Controllers\ProjectJobNumberController::class, 'call'])->name('agent_outbound.call');
+    Route::get('/pbxcdr', [App\Http\Controllers\CDRController::class, 'index'])->name('pbxcdr');
     Route::get('/report', function () {
         return view('report_menu');
     })->name('report');

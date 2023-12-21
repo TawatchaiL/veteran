@@ -40,6 +40,12 @@
 @endcan
 @can('billing-report')
     <li class="nav-item">
+        <a href="{{ route('pbxcdr') }}" class="nav-link {{ Request::is('pbxcdr') ? 'active' : '' }}">
+            <i class="fa-solid fa-tty nav-icon"></i>
+            <p>ค้หารายการโทรของโรงพยาบาล</p>
+        </a>
+    </li>
+    <li class="nav-item">
         <a href="{{ route('billingreport') }}" class="nav-link {{ Request::is('billing') ? 'active' : '' }}">
             <i class="fa-solid fa-comment-dollar nav-icon"></i>
             <p>ประวัติ/ค่าใช้จ่ายการโทร</p>
