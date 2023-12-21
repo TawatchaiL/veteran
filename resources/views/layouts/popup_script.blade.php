@@ -1440,7 +1440,7 @@
             //log("select2:unselect", e);
             //$('.products').html('');
         });
- */       
+ */
         /* $(document).on('show.bs.tab', '#custom-tabs-pop a[data-toggle="pill"]',
             function(e) {
 
