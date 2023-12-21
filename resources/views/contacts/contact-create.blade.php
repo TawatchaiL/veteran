@@ -97,7 +97,7 @@
                                 <div class="form-group">
                                     <strong><i class="fas fa-user-tie"></i> คำนำหน้าชื่อ:</strong>
                                     <select style="width: 100%;" class="select2 select2_single form-control"
-                                        id="tnamep{{ $cardid }}" name="tnamep{{ $cardid }}">
+                                        id="tnamep{{ $cardid }}" name="tnamep{{ $cardid }}" multiple="multiple">
                                         <option value="">กรุณาเลือก</option>
                                         <option value="คุณ">คุณ</option>
                                         <option value="เด็กชาย">เด็กชาย</option>
@@ -134,7 +134,7 @@
                                 <div class="form-group">
                                     <strong><i class="fas fa-user-tie"></i> เพศ:</strong>
                                     <select style="width: 100%;" class="select2 select2_single form-control"
-                                        id="sexp{{ $cardid }}" name="sexp{{ $cardid }}">
+                                        id="sexp{{ $cardid }}" name="sexp{{ $cardid }}" multiple="multiple">
                                         <option value="">กรุณาเลือก</option>
                                         <option value="ชาย">ชาย</option>
                                         <option value="หญิง">หญิง</option>
@@ -172,7 +172,7 @@
                                 <div class="form-group">
                                     <strong><i class="fas fa-user-tie"></i> กรุ๊ปเลือด:</strong>
                                     <select style="width: 100%;" class="select2 select2_single form-control"
-                                        id="bloodgroupp{{ $cardid }}" name="bloodgroupp{{ $cardid }}">
+                                        id="bloodgroupp{{ $cardid }}" name="bloodgroupp{{ $cardid }}" multiple="multiple">
                                         <option value="">กรุณาเลือก</option>
                                         <option value="A">A</option>
                                         <option value="B">B</option>
@@ -236,7 +236,7 @@
                                     <strong><i class="fa-solid fa-city"></i> จังหวัด :</strong>
                                     <select style="width: 100%;" class="select2 select2_single form-control citypchang"
                                         id="cityp{{ $cardid }}" data-tabid="{{ $cardid }}"
-                                        name="cityp{{ $cardid }}">
+                                        name="cityp{{ $cardid }}" multiple="multiple">
                                     </select>
                                 </div>
                             </div>
@@ -246,7 +246,7 @@
                                         อำเภอ:</strong>
                                     <select style="width: 100%;" class="select2 select2_single form-control districtpchang"
                                         id="districtp{{ $cardid }}" data-tabid="{{ $cardid }}"
-                                        name="districtp{{ $cardid }}">
+                                        name="districtp{{ $cardid }}" multiple="multiple">
                                     </select>
                                 </div>
                             </div>
@@ -257,7 +257,7 @@
                                     <strong><i class="fa-solid fa-building-circle-arrow-right"></i> ตำบล
                                         :</strong>
                                     <select style="width: 100%;" class="select2 select2_single form-control"
-                                        id="subdistrictp{{ $cardid }}" name="subdistrictp{{ $cardid }}">
+                                        id="subdistrictp{{ $cardid }}" name="subdistrictp{{ $cardid }}" multiple="multiple">
                                     </select>
                                 </div>
                             </div>
@@ -401,7 +401,7 @@
                                     <strong><i class="fa-regular fa-message"></i> ประเภทเคส:</strong>
                                     <select style="width: 100%;" class="select2 select2_single form-control casetypechang"
                                         id="casetype1p{{ $cardid }}" name="casetype1p{{ $cardid }}"
-                                        data-tabid="{{ $cardid }}" data-lev="1">
+                                        data-tabid="{{ $cardid }}" data-lev="1" multiple="multiple">
                                     </select>
                                 </div>
                             </div>
@@ -411,7 +411,7 @@
                                         รายละเอียดเคส:</strong>
                                     <select style="width: 100%;" class="select2 select2_single form-control casetypechang"
                                         id="casetype2p{{ $cardid }}" name="casetype2p{{ $cardid }}"
-                                        data-tabid="{{ $cardid }}" data-lev="2">
+                                        data-tabid="{{ $cardid }}" data-lev="2" multiple="multiple">
                                     </select>
                                 </div>
                             </div>
@@ -423,7 +423,7 @@
                                         รายละเอียดเคสย่อย:</strong>
                                     <select style="width: 100%;" class="select2 select2_single form-control casetypechang"
                                         id="casetype3p{{ $cardid }}" name="casetype3p{{ $cardid }}"
-                                        data-tabid="{{ $cardid }}" data-lev="3">
+                                        data-tabid="{{ $cardid }}" data-lev="3" multiple="multiple">
                                     </select>
                                 </div>
                             </div>
@@ -433,7 +433,7 @@
                                         เพิ่มเติม 1:</strong>
                                     <select style="width: 100%;" class="select2 select2_single form-control casetypechang"
                                         id="casetype4p{{ $cardid }}" name="casetype4p{{ $cardid }}"
-                                        data-tabid="{{ $cardid }}" data-lev="4">
+                                        data-tabid="{{ $cardid }}" data-lev="4" multiple="multiple">
                                     </select>
                                 </div>
                             </div>
@@ -445,7 +445,7 @@
                                         เพิ่มเติม 2:</strong>
                                     <select style="width: 100%;" class="select2 select2_single form-control casetypechang"
                                         id="casetype5p{{ $cardid }}" name="casetype5p{{ $cardid }}"
-                                        data-tabid="{{ $cardid }}" data-lev="5">
+                                        data-tabid="{{ $cardid }}" data-lev="5" multiple="multiple">
                                     </select>
                                 </div>
                             </div>
@@ -455,7 +455,7 @@
                                         เพิ่มเติม 3:</strong>
                                     <select style="width: 100%;" class="select2 select2_single form-control casetypechang"
                                         id="casetype6p{{ $cardid }}" name="casetype6p{{ $cardid }}"
-                                        data-tabid="{{ $cardid }}" data-lev="6">
+                                        data-tabid="{{ $cardid }}" data-lev="6" multiple="multiple">
                                     </select>
                                 </div>
                             </div>
@@ -479,7 +479,7 @@
                                     <strong><i class="fas fa-shuffle"></i> สถานะการโอนสาย
                                         :</strong>
                                     <select class="select2 select2_single form-control" id="tranferstatusp{{ $cardid }}"
-                                        name="tranferstatusp{{ $cardid }}">
+                                        name="tranferstatusp{{ $cardid }}" multiple="multiple">
                                         <option value="ไม่มีการโอนสาย">ไม่มีการโอนสาย</option>
                                         <option value="รับสาย">รับสาย</option>
                                         <option value="ไม่รับสาย">ไม่รับสาย</option>
@@ -493,7 +493,7 @@
                                     <strong><i class="fas fa-arrows-rotate"></i> สถานะการเคส
                                         :</strong>
                                     <select class="select2 select2_single form-control" id="casestatusp{{ $cardid }}"
-                                        name="casestatusp{{ $cardid }}">
+                                        name="casestatusp{{ $cardid }}" multiple="multiple">
                                         <option value="ปิดเคส">ปิดเคส</option>
                                         <option value="กำลังดำเนินการ">กำลังดำเนินการ</option>
                                     </select>
