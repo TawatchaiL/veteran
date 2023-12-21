@@ -905,7 +905,7 @@
                                             $('#subdistrictp' +
                                                     cardId)
                                                 .val(res.datax.datac
-                                                    .subdistrict);
+                                                    .subdistrict).change();
                                         }, 500)
                                     }, 500)
                                     $('#postcodep' + cardId).val(res.datax.datac
