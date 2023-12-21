@@ -62,13 +62,13 @@ class LoginstatusController extends Controller
         $datas = DB::connection('remote_connection')
             ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.audit'))
             ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), 'crm_id','datetime_init', 'datetime_end','duration')
-            ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '" order by datetime_init desc')
-            ->whereNull('id_break'); 
-        if(!empty($request->get('agent')) && $request->get('agent') != "0"){
-            $datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
-        }    
+            ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '" and id_break is null'.$sqlagent.' order by datetime_init desc')
+            //->whereNull('id_break'); 
+        //if(!empty($request->get('agent')) && $request->get('agent') != "0"){
+        //    $datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
+        //}    
         //$datas->orderBy("datetime_init", "asc")->get();
-        $datas->get();
+        ->get();
 
         $agents = User::orderBy("id", "asc")->get();
         $agent_data = array();
