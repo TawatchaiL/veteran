@@ -73,7 +73,7 @@
                 //meeh fix
                 setTimeout(function() {
                     console.log($('#pop_' + cardId).find("#tranferstatusp" + cardId).length);
-                    $('#pop_' + cardId).find("#tranferstatusp" + cardId).select2({
+                    $("#tranferstatusp" + cardId).select2({
                         maximumSelectionLength: 1,
                         placeholder: 'กรุณาเลือก'
                     });
