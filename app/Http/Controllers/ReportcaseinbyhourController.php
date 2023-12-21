@@ -49,66 +49,66 @@ class ReportcaseinbyhourController extends Controller
             $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
 
-            $datas = DB::connection('remote_connection')
-            ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.timeslot'))
-                    ->select(DB::raw('@rownumber:=@rownumber + 1 AS rownumber'), 'timeslot.timeslot as timelabel', 'c.numberhour', DB::raw('if(c.numberhour IS NULL,0,c.total_cases) as sumt'))
-                    ->leftJoin(DB::raw("(SELECT
-                        CASE
-                            WHEN TIME(datetime_init) < '01:00:00' THEN '00:00-01:00'
-                            WHEN TIME(datetime_init) < '02:00:00' THEN '01:00-02:00'
-                            WHEN TIME(datetime_init) < '03:00:00' THEN '02:00-03:00' 
-                            WHEN TIME(datetime_init) < '04:00:00' THEN '03:00-04:00' 
-                            WHEN TIME(datetime_init) < '05:00:00' THEN '04:00-05:00' 
-                            WHEN TIME(datetime_init) < '06:00:00' THEN '05:00-06:00' 
-                            WHEN TIME(datetime_init) < '07:00:00' THEN '06:00-07:00' 
-                            WHEN TIME(datetime_init) < '08:00:00' THEN '07:00-08:00' 
-                            WHEN TIME(datetime_init) < '09:00:00' THEN '08:00-09:00' 
-                            WHEN TIME(datetime_init) < '10:00:00' THEN '09:00-10:00' 
-                            WHEN TIME(datetime_init) < '11:00:00' THEN '10:00-11:00' 
-                            WHEN TIME(datetime_init) < '12:00:00' THEN '11:00-12:00' 
-                            WHEN TIME(datetime_init) < '13:00:00' THEN '12:00-13:00' 
-                            WHEN TIME(datetime_init) < '14:00:00' THEN '13:00-14:00' 
-                            WHEN TIME(datetime_init) < '15:00:00' THEN '14:00-15:00' 
-                            WHEN TIME(datetime_init) < '16:00:00' THEN '15:00-16:00' 
-                            WHEN TIME(datetime_init) < '17:00:00' THEN '16:00-17:00' 
-                            WHEN TIME(datetime_init) < '18:00:00' THEN '17:00-18:00' 
-                            WHEN TIME(datetime_init) < '19:00:00' THEN '18:00-19:00' 
-                            WHEN TIME(datetime_init) < '20:00:00' THEN '19:00-20:00' 
-                            WHEN TIME(datetime_init) < '21:00:00' THEN '20:00-21:00' 
-                            WHEN TIME(datetime_init) < '22:00:00' THEN '21:00-22:00' 
-                            WHEN TIME(datetime_init) < '23:00:00' THEN '22:00-23:00'
-                            ELSE '23:00-24:00'
-                        END as numberhour,
-                        SUM(CASE
-                            WHEN TIME(datetime_init) < '01:00:00' THEN 1
-                            WHEN TIME(datetime_init) < '02:00:00' THEN 1
-                            WHEN TIME(datetime_init) < '03:00:00' THEN 1 
-                            WHEN TIME(datetime_init) < '04:00:00' THEN 1 
-                            WHEN TIME(datetime_init) < '05:00:00' THEN 1 
-                            WHEN TIME(datetime_init) < '06:00:00' THEN 1 
-                            WHEN TIME(datetime_init) < '07:00:00' THEN 1 
-                            WHEN TIME(datetime_init) < '08:00:00' THEN 1 
-                            WHEN TIME(datetime_init) < '09:00:00' THEN 1 
-                            WHEN TIME(datetime_init) < '10:00:00' THEN 1 
-                            WHEN TIME(datetime_init) < '11:00:00' THEN 1 
-                            WHEN TIME(datetime_init) < '12:00:00' THEN 1 
-                            WHEN TIME(datetime_init) < '13:00:00' THEN 1 
-                            WHEN TIME(datetime_init) < '14:00:00' THEN 1 
-                            WHEN TIME(datetime_init) < '15:00:00' THEN 1 
-                            WHEN TIME(datetime_init) < '16:00:00' THEN 1 
-                            WHEN TIME(datetime_init) < '17:00:00' THEN 1 
-                            WHEN TIME(datetime_init) < '18:00:00' THEN 1 
-                            WHEN TIME(datetime_init) < '19:00:00' THEN 1 
-                            WHEN TIME(datetime_init) < '20:00:00' THEN 1 
-                            WHEN TIME(datetime_init) < '21:00:00' THEN 1 
-                            WHEN TIME(datetime_init) < '22:00:00' THEN 1 
-                            WHEN TIME(datetime_init) < '23:00:00' THEN 1 
-                            WHEN TIME(datetime_init) < '24:00:00' THEN 1 
-                            ELSE 0
-                        END) as total_cases
-                    FROM call_center.call_entry WHERE LENGTH(callerid) < 5 AND datetime_init between '". $startDate ."' and '". $endDate ."' GROUP BY numberhour) as c"), 'timeslot.timeslot', '=', 'c.numberhour')
-                    //->orderBy("timelabel", "asc")
-                    ->get();
+        $datas = DB::connection('remote_connection')
+        ->table('call_center.timeslot')
+                ->selectRaw("timeslot.timeslot as timelabel, c.numberhour, if(c.numberhour IS NULL,0,c.total_cases) as sumt")
+                ->leftJoin(DB::raw("(SELECT
+                    CASE
+                        WHEN TIME(datetime_init) < '01:00:00' THEN '00:00-01:00'
+                        WHEN TIME(datetime_init) < '02:00:00' THEN '01:00-02:00'
+                        WHEN TIME(datetime_init) < '03:00:00' THEN '02:00-03:00' 
+                        WHEN TIME(datetime_init) < '04:00:00' THEN '03:00-04:00' 
+                        WHEN TIME(datetime_init) < '05:00:00' THEN '04:00-05:00' 
+                        WHEN TIME(datetime_init) < '06:00:00' THEN '05:00-06:00' 
+                        WHEN TIME(datetime_init) < '07:00:00' THEN '06:00-07:00' 
+                        WHEN TIME(datetime_init) < '08:00:00' THEN '07:00-08:00' 
+                        WHEN TIME(datetime_init) < '09:00:00' THEN '08:00-09:00' 
+                        WHEN TIME(datetime_init) < '10:00:00' THEN '09:00-10:00' 
+                        WHEN TIME(datetime_init) < '11:00:00' THEN '10:00-11:00' 
+                        WHEN TIME(datetime_init) < '12:00:00' THEN '11:00-12:00' 
+                        WHEN TIME(datetime_init) < '13:00:00' THEN '12:00-13:00' 
+                        WHEN TIME(datetime_init) < '14:00:00' THEN '13:00-14:00' 
+                        WHEN TIME(datetime_init) < '15:00:00' THEN '14:00-15:00' 
+                        WHEN TIME(datetime_init) < '16:00:00' THEN '15:00-16:00' 
+                        WHEN TIME(datetime_init) < '17:00:00' THEN '16:00-17:00' 
+                        WHEN TIME(datetime_init) < '18:00:00' THEN '17:00-18:00' 
+                        WHEN TIME(datetime_init) < '19:00:00' THEN '18:00-19:00' 
+                        WHEN TIME(datetime_init) < '20:00:00' THEN '19:00-20:00' 
+                        WHEN TIME(datetime_init) < '21:00:00' THEN '20:00-21:00' 
+                        WHEN TIME(datetime_init) < '22:00:00' THEN '21:00-22:00' 
+                        WHEN TIME(datetime_init) < '23:00:00' THEN '22:00-23:00'
+                        ELSE '23:00-24:00'
+                    END as numberhour,
+                    SUM(CASE
+                        WHEN TIME(datetime_init) < '01:00:00' THEN 1
+                        WHEN TIME(datetime_init) < '02:00:00' THEN 1
+                        WHEN TIME(datetime_init) < '03:00:00' THEN 1 
+                        WHEN TIME(datetime_init) < '04:00:00' THEN 1 
+                        WHEN TIME(datetime_init) < '05:00:00' THEN 1 
+                        WHEN TIME(datetime_init) < '06:00:00' THEN 1 
+                        WHEN TIME(datetime_init) < '07:00:00' THEN 1 
+                        WHEN TIME(datetime_init) < '08:00:00' THEN 1 
+                        WHEN TIME(datetime_init) < '09:00:00' THEN 1 
+                        WHEN TIME(datetime_init) < '10:00:00' THEN 1 
+                        WHEN TIME(datetime_init) < '11:00:00' THEN 1 
+                        WHEN TIME(datetime_init) < '12:00:00' THEN 1 
+                        WHEN TIME(datetime_init) < '13:00:00' THEN 1 
+                        WHEN TIME(datetime_init) < '14:00:00' THEN 1 
+                        WHEN TIME(datetime_init) < '15:00:00' THEN 1 
+                        WHEN TIME(datetime_init) < '16:00:00' THEN 1 
+                        WHEN TIME(datetime_init) < '17:00:00' THEN 1 
+                        WHEN TIME(datetime_init) < '18:00:00' THEN 1 
+                        WHEN TIME(datetime_init) < '19:00:00' THEN 1 
+                        WHEN TIME(datetime_init) < '20:00:00' THEN 1 
+                        WHEN TIME(datetime_init) < '21:00:00' THEN 1 
+                        WHEN TIME(datetime_init) < '22:00:00' THEN 1 
+                        WHEN TIME(datetime_init) < '23:00:00' THEN 1 
+                        WHEN TIME(datetime_init) < '24:00:00' THEN 1 
+                        ELSE 0
+                    END) as total_cases
+                FROM call_center.call_entry WHERE LENGTH(callerid) < 6 AND datetime_init between '". $startDate ."' and '". $endDate ."' GROUP BY numberhour ORDER BY numberhour ASC) as c"), 'timeslot.timeslot', '=', 'c.numberhour')
+                ->orderBy("timelabel", "asc")
+                ->get();
         /*
                     $datas = DB::connection('remote_connection')
                     ->table(DB::raw("(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT timeslot.timeslot as timelabel, c.*, if(c.numberhour IS NULL,0,c.total_cases) as sumt FROM call_center.timeslot left join (SELECT
