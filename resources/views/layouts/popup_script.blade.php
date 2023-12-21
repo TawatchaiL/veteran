@@ -65,9 +65,21 @@
                 cardId: cardId
             },
             success: async function(response) {
+
                 $('#' + cardId).removeClass('card-danger');
                 $('#' + cardId).addClass('card-success');
                 await $('#pop_' + cardId).html(response.html);
+                //meeh fix
+                //setTimeout(function() {
+                console.log($('#pop_' + cardId).find(
+                    "#tranferstatusp" + cardId).length);
+                $('#pop_' + cardId).find(".select2_single")
+                    .select2({
+                        maximumSelectionLength: 1,
+                        placeholder: 'กรุณาเลือก'
+                    });
+                //}, 1500)
+
                 $(".card-footer").css("display", "block")
                 $('.bclose').css('display', 'none');
 
@@ -318,6 +330,7 @@
                                 } else {
                                     $('#cityp' + cardId).val('65').change();
                                 }
+
                             }
                         });
 
@@ -617,6 +630,7 @@
                         });
                         if (res.data.length === 0) {
                             //$('#casetype6').attr('disabled', true);
+                            $('#casetype' + nextcase + 'p' + cardId).val(null).trigger('change');
                             $('#casetype' + nextcase + 'p' + cardId).attr('disabled', true);
                         } else {
                             //$('#casetype6').attr('disabled', false);
@@ -627,6 +641,7 @@
                 });
 
                 for (let i = discase; i < 7; i++) {
+                    $('#casetype' + i + 'p' + cardId).val(null).trigger('change');
                     $('#casetype' + i + 'p' + cardId).attr('disabled', true);
                 }
             } else {
@@ -650,6 +665,7 @@
                         $('#casetype6p' + cardId).html(
                             '<option value="">กรุณาเลือก</option>');
                     }
+                    $('#casetype' + i + 'p' + cardId).val(null).trigger('change');
                     $('#casetype' + i + 'p' + cardId).attr('disabled', true);
                 }
             }
@@ -760,6 +776,19 @@
                         $('#' + datatId).removeClass('card-danger');
                         $('#' + datatId).addClass('card-success');
                         await $('#custom-tabs-pop-' + datatId).html(response.html);
+
+
+                        //meeh fix
+                        //setTimeout(function() {
+                        /* console.log($('#custom-tabs-pop-' + cardId).find(
+                            "#tranferstatusp" + cardId).length); */
+                        $('#custom-tabs-pop-' + cardId).find(".select2_single")
+                            .select2({
+                                maximumSelectionLength: 1,
+                                placeholder: 'กรุณาเลือก'
+                            });
+                        //}, 1500)
+
                         $(".card-footer").css("display", "block")
                         $('.bclose').css('display', 'none');
 
@@ -1110,7 +1139,7 @@
                     url: "{{ route('contacts.casescontract') }}",
                     method: 'post',
                     data: additionalData,
-                    async : false,
+                    async: false,
                     success: function(result) {
                         if (result.errors) {
                             $('.alert-danger-pop' + cardId).html('');
@@ -1428,19 +1457,19 @@
                 $confirm.modal("hide");
             });
         }
-/*
-        $(".select2_single").select2({
-            maximumSelectionLength: 1,
-            //allowClear: true,
-            //theme: 'bootstrap4'
-            placeholder: 'กรุณาเลือก'
-        });
+        /*
+                $(".select2_single").select2({
+                    maximumSelectionLength: 1,
+                    //allowClear: true,
+                    //theme: 'bootstrap4'
+                    placeholder: 'กรุณาเลือก'
+                });
 
-        $(".select2_single").on("select2:unselect", function(e) {
-            //log("select2:unselect", e);
-            //$('.products').html('');
-        });
- */
+                $(".select2_single").on("select2:unselect", function(e) {
+                    //log("select2:unselect", e);
+                    //$('.products').html('');
+                });
+         */
         /* $(document).on('show.bs.tab', '#custom-tabs-pop a[data-toggle="pill"]',
             function(e) {
 
