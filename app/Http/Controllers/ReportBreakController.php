@@ -53,24 +53,25 @@ class ReportBreakController extends Controller
         }else{
             $sqlagent = "";
         }    
-
+/*
         $datas = DB::connection('remote_connection')
             ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT audit.crm_id as crm_id, break.name as typebreak, audit.datetime_init as datetime_init, audit.datetime_end as datetime_end, SEC_TO_TIME(duration) as breaktime FROM call_center.audit left join call_center.break on call_center.audit.id_break=call_center.break.id WHERE datetime_init BETWEEN "' . $startDate . '" AND "' . $endDate . '" AND id_break is not null AND (id_break != 5 OR id_break != 7)' .$sqlagent. ' ORDER BY datetime_init DESC) t, (SELECT @rownumber:=0) r) AS temp'))
             ->select('rownumber', 'crm_id', 'typebreak', 'datetime_init', 'datetime_end', 'breaktime')
             ->get();
+*/
 
-/*
         $datas = DB::connection('remote_connection')
         ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.audit'))
             ->leftJoin('break', 'audit.id_break', '=', 'break.id')
             ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), 'audit.crm_id as crm_id', 'break.name as typebreak', 'audit.datetime_init as datetime_init', 'audit.datetime_end as datetime_end', DB::raw('SEC_TO_TIME(duration) as breaktime'))
-            ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '"')
-            ->whereNotNull('id_break');
-        if (!empty($request->get('agent')) && $request->get('agent') != "0") {
-            $datas->whereRaw('crm_id = "' . $request->input('agent') . '"');
-        }
-        $datas->orderBy("audit.id_break", "asc")->get();
-*/
+            ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '" and id_break is not null'.$sqlagent.' order by audit.datetime_init desc')
+            //->whereNotNull('id_break');
+        //if (!empty($request->get('agent')) && $request->get('agent') != "0") {
+        //    $datas->whereRaw('crm_id = "' . $request->input('agent') . '"');
+        //}
+        //$datas->orderBy("audit.id_break", "asc"
+        ->get();
+
         $agents = User::orderBy("id", "asc")->get();
         $agent_data = array();
         foreach ($agents as $agent) {
