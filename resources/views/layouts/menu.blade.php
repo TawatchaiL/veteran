@@ -37,16 +37,16 @@
             <p>ไฟล์บันทึกเสียงสนทนา</p>
         </a>
     </li>
-@endcan
-@can('billing-report')
     <li class="nav-item">
         <a href="{{ route('pbxcdr') }}" class="nav-link {{ Request::is('pbxcdr') ? 'active' : '' }}">
             <i class="fa-solid fa-tty nav-icon"></i>
             <p>ค้หารายการโทรของโรงพยาบาล</p>
         </a>
     </li>
+@endcan
+@can('billing-report')
     <li class="nav-item">
-        <a href="{{ route('billingreport') }}" class="nav-link {{ Request::is('billing') ? 'active' : '' }}">
+        <a href="{{ route('billingreport') }}" class="nav-link {{ Request::is('billingreport') ? 'active' : '' }}">
             <i class="fa-solid fa-comment-dollar nav-icon"></i>
             <p>ประวัติ/ค่าใช้จ่ายการโทร</p>
         </a>
