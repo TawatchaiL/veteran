@@ -69,6 +69,7 @@
                 $('#' + cardId).removeClass('card-danger');
                 $('#' + cardId).addClass('card-success');
                 await $('#pop_' + cardId).html(response.html);
+                console.log(response.html)
 
                 //meeh fix
                 setTimeout(function() {
