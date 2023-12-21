@@ -34,7 +34,7 @@
     <li class="nav-item">
         <a href="{{ route('pbxcdr') }}" class="nav-link {{ Request::is('pbxcdr') ? 'active' : '' }}">
             <i class="fa-solid fa-magnifying-glass nav-icon"></i>
-            <p>ค้นหารายการโทร</p>
+            <p>ค้นหารายการโทร ร.พ.</p>
         </a>
     </li>
     <li class="nav-item">
