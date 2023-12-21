@@ -680,6 +680,7 @@
                 url: "thdistrict/district/" + $(this).val(),
                 method: 'GET',
                 success: function(res) {
+
                     districtOb.html(
                         '<option value="">เลือกอำเภอ</option>');
                     cartonOb.html(
@@ -690,6 +691,8 @@
                                 .name_th)
                         );
                     });
+                    districtOb.val(null).trigger('change');
+                    cartonOb.val(null).trigger('change');
                 }
             });
         });
@@ -709,6 +712,7 @@
                                 .name_th)
                         );
                     });
+                    cartonOb.val(null).trigger('change');
                 }
             });
         });
