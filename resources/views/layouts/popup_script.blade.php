@@ -26,6 +26,11 @@
                     $('#custom-tabs-pop').prepend(response.tab_link);
                     $('#custom-tabs-pop-tabContent').prepend(response.tab_content);
 
+                    $(".select2_single").select2({
+                        maximumSelectionLength: 1,
+                        placeholder: 'กรุณาเลือก'
+                    });
+
                     await maximizeCard(response.active_id);
                 }
                 $('#hold_tab').html(response.hold_tab);
@@ -320,10 +325,6 @@
                                     $('#cityp' + cardId).val('65').change();
                                 }
 
-                                $(".select2_single").select2({
-                                    maximumSelectionLength: 1,
-                                    placeholder: 'กรุณาเลือก'
-                                });
                             }
                         });
 
