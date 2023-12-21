@@ -675,16 +675,16 @@
             let datatId = $(this).data("tabid");
             var districtOb = $('#districtp' + datatId);
             var cartonOb = $('#subdistrictp' + datatId);
-            districtOb.html('<option value="">เลือกอำเภอ</option>');
+            //districtOb.html('<option value="">เลือกอำเภอ</option>');
             $.ajax({
                 url: "thdistrict/district/" + $(this).val(),
                 method: 'GET',
                 success: function(res) {
 
-                    districtOb.html(
+                    /* districtOb.html(
                         '<option value="">เลือกอำเภอ</option>');
                     cartonOb.html(
-                        '<option value="">เลือกตำบล</option>');
+                        '<option value="">เลือกตำบล</option>'); */
                     $.each(res.data, function(index, item) {
                         districtOb.append(
                             $('<option></option>').val(item.code).html(item
@@ -705,7 +705,7 @@
                 url: "thsubdistrict/subdistrict/" + $(this).val(),
                 method: 'GET',
                 success: function(res) {
-                    cartonOb.html('<option value="">เลือกตำบล</option>');
+                    //cartonOb.html('<option value="">เลือกตำบล</option>');
                     $.each(res.data, function(index, item) {
                         cartonOb.append(
                             $('<option></option>').val(item.code).html(item
