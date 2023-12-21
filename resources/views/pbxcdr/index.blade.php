@@ -66,9 +66,6 @@
                                                     style="width: 350px">
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row float-lg-right">
-
                                         <div class="col-xs-4 col-sm-4 col-md-4">
                                             <div class="form-group">
                                                 <strong><i class="fa-regular fa-keyboard"></i>
@@ -92,6 +89,7 @@
                                                 <i class="fa-solid fa-rotate-right"></i></button>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                             <div class="row">
