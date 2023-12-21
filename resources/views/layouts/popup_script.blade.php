@@ -205,7 +205,7 @@
                                                 res.datax
                                                 .datac
                                                 .subdistrict
-                                            );
+                                            ).change();
                                         }, 500)
                                     }, 500)
                                     $('#postcodep' + cardId).val(res.datax.datac
