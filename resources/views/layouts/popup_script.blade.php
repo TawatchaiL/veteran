@@ -69,7 +69,16 @@
                 $('#' + cardId).removeClass('card-danger');
                 $('#' + cardId).addClass('card-success');
                 await $('#pop_' + cardId).html(response.html);
-
+                //meeh fix
+                //setTimeout(function() {
+                console.log($('#pop_' + cardId).find(
+                    "#tranferstatusp" + cardId).length);
+                $('#pop_' + cardId).find(".select2_single")
+                    .select2({
+                        maximumSelectionLength: 1,
+                        placeholder: 'กรุณาเลือก'
+                    });
+                //}, 1500)
 
                 $(".card-footer").css("display", "block")
                 $('.bclose').css('display', 'none');
@@ -621,6 +630,7 @@
                         });
                         if (res.data.length === 0) {
                             //$('#casetype6').attr('disabled', true);
+                            $('#casetype' + nextcase + 'p' + cardId).val(null).trigger('change');
                             $('#casetype' + nextcase + 'p' + cardId).attr('disabled', true);
                         } else {
                             //$('#casetype6').attr('disabled', false);
@@ -767,15 +777,15 @@
 
 
                         //meeh fix
-                        setTimeout(function() {
-                            console.log($('#custom-tabs-pop-' + cardId).find(
-                                "#tranferstatusp" + cardId).length);
-                            $('#custom-tabs-pop-' + cardId).find(".select2_single")
-                                .select2({
-                                    maximumSelectionLength: 1,
-                                    placeholder: 'กรุณาเลือก'
-                                });
-                        }, 1500)
+                        //setTimeout(function() {
+                        /* console.log($('#custom-tabs-pop-' + cardId).find(
+                            "#tranferstatusp" + cardId).length); */
+                        $('#custom-tabs-pop-' + cardId).find(".select2_single")
+                            .select2({
+                                maximumSelectionLength: 1,
+                                placeholder: 'กรุณาเลือก'
+                            });
+                        //}, 1500)
 
                         $(".card-footer").css("display", "block")
                         $('.bclose').css('display', 'none');
