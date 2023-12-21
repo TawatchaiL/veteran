@@ -71,11 +71,14 @@
                 await $('#pop_' + cardId).html(response.html);
 
                 //meeh fix
-                console.log($('#pop_' + cardId).find(".select2_single").length);
-                $('#pop_' + cardId).find(".select2_single").select2({
-                    maximumSelectionLength: 1,
-                    placeholder: 'กรุณาเลือก'
-                });
+                setTimeout(function() {
+                    console.log($('#pop_' + cardId).find(".select2_single").length);
+                    $('#pop_' + cardId).find(".select2_single").select2({
+                        maximumSelectionLength: 1,
+                        placeholder: 'กรุณาเลือก'
+                    });
+                }, 1500)
+
 
                 $(".card-footer").css("display", "block")
                 $('.bclose').css('display', 'none');
