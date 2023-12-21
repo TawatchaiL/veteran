@@ -631,7 +631,7 @@
                         if (res.data.length === 0) {
                             //$('#casetype6').attr('disabled', true);
                             $('#casetype' + nextcase + 'p' + cardId).val(null).trigger('change');
-                            $('#casetype' + nextcase + 'p' + cardId).attr('disabled', false);
+                            $('#casetype' + nextcase + 'p' + cardId).attr('disabled', true);
                         } else {
                             //$('#casetype6').attr('disabled', false);
                             $('#casetype' + nextcase + 'p' + cardId).attr('disabled',
@@ -641,6 +641,7 @@
                 });
 
                 for (let i = discase; i < 7; i++) {
+                    $('#casetype' + i + 'p' + cardId).val(null).trigger('change');
                     $('#casetype' + i + 'p' + cardId).attr('disabled', true);
                 }
             } else {
@@ -664,6 +665,7 @@
                         $('#casetype6p' + cardId).html(
                             '<option value="">กรุณาเลือก</option>');
                     }
+                    $('#casetype' + i + 'p' + cardId).val(null).trigger('change');
                     $('#casetype' + i + 'p' + cardId).attr('disabled', true);
                 }
             }
