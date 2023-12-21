@@ -1110,6 +1110,7 @@
                     url: "{{ route('contacts.casescontract') }}",
                     method: 'post',
                     data: additionalData,
+                    async : false,
                     success: function(result) {
                         if (result.errors) {
                             $('.alert-danger-pop' + cardId).html('');
@@ -1439,7 +1440,7 @@
             //log("select2:unselect", e);
             //$('.products').html('');
         });
- */       
+ */
         /* $(document).on('show.bs.tab', '#custom-tabs-pop a[data-toggle="pill"]',
             function(e) {
 
