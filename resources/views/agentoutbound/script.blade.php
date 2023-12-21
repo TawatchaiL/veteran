@@ -297,7 +297,7 @@
                 method: 'GET',
                 success: function(res) {
                     console.log(res);
-                    $('#dial_number').val(res.data.call_number)
+                    $('#dial_number').val('90' + res.data.call_number)
                     $('#ToolbarModal').modal('show');
                     $('#dial_button').click();
                     $('#Listview').DataTable().ajax.reload();
