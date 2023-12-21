@@ -33,7 +33,7 @@
 @can('voice-record-list')
     <li class="nav-item">
         <a href="{{ route('pbxcdr') }}" class="nav-link {{ Request::is('pbxcdr') ? 'active' : '' }}">
-            <i class="fa-solid fa-tty nav-icon"></i>
+            <i class="fa-solid fa-magnifying-glass nav-icon"></i>
             <p>ค้นหารายการโทร</p>
         </a>
     </li>
