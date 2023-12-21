@@ -443,8 +443,8 @@
                     return false;
                 } else {
                     if (textValue.length < 4) {
-                    document.getElementById('validationMessages').textContent =
-                        'กรุณาระบุคำที่จะค้นหาอย่างน้อย 4 ตัวอักษร';
+                        document.getElementById('validationMessages').textContent =
+                            'กรุณาระบุคำที่จะค้นหาอย่างน้อย 4 ตัวอักษร';
                         return false;
                     } else {
                         document.getElementById('validationMessages').textContent = '';
@@ -778,8 +778,9 @@
                     if ($('#Editbirthday').val() != '') {
                         var arrayDateb = $('#Editbirthday').val().split("-");
                         arrayDateb[0] = parseInt(arrayDateb[0]) - 543;
-                        var tempbirthday = arrayDateb[0] + "-" + arrayDateb[1] + "-" + arrayDateb[
-                        2];
+                        var tempbirthday = arrayDateb[0] + "-" + arrayDateb[1] + "-" +
+                            arrayDateb[
+                                2];
                     } else {
                         tempbirthday = '';
                     }
@@ -973,10 +974,8 @@
         // on change province
         $('#Addcity').on('change', function() {
             var provinceId = $(this).val();
-            alert(provinceId.length);
             //districtOb.html('<option value="">เลือกอำเภอ</option>');
-            if (provinceId !== '') {
-                alert('no');
+            if (this.value !== '') {
                 $.ajax({
                     url: "thdistrict/district/" + provinceId,
                     method: 'GET',
@@ -991,12 +990,11 @@
                                     .name_th)
                             );
                         });
-                districtOb.val(null).trigger('change');
-                cartonOb.val(null).trigger('change');
+                        districtOb.val(null).trigger('change');
+                        cartonOb.val(null).trigger('change');
                     }
                 });
-            }else{
-                alert('OK');
+            } else {
                 districtOb.html('');
                 districtOb.val(null).trigger('change');
                 cartonOb.html('');
@@ -1007,7 +1005,7 @@
         districtOb.on('change', function() {
             var districtId = $(this).val();
             //cartonOb.html('<option value="">เลือกตำบล</option>');
-            if (districtId !== '') {
+            if (this.value !== '') {
                 $.ajax({
                     url: "thsubdistrict/subdistrict/" + districtId,
                     method: 'GET',
@@ -1023,7 +1021,8 @@
                         cartonOb.val(null).trigger('change');
                     }
                 });
-            }else{
+            } else {
+                cartonOb.html('');
                 cartonOb.val(null).trigger('change');
             }
         });
@@ -1082,7 +1081,7 @@
                         EcartonOb.val(null).trigger('change');
                     }
                 });
-            }else{
+            } else {
                 EcartonOb.val(null).trigger('change');
             }
         });
