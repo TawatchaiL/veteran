@@ -422,7 +422,7 @@
                         $('#Hn').val($(this).data('hn'));
                         $('#Name').val($(this).data('name'));
                         suggestionsList.empty();
-                    }); 
+                    });
                 },
                 error: function(error) {
                     console.log('Error:', error);
@@ -474,13 +474,13 @@
             $('#casetype5').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 2</option>');
             $('#casetype6').html('<option value="">เลือกรายละเอียดเคสเพิ่มเติม 3</option>'); */
             if($('#Addadddate').is(':disabled')){
-                $("#Addadddate").removeAttr("disabled"); 
+                $("#Addadddate").removeAttr("disabled");
             }
             if($('#casetype1').prop('disabled')){
-                $("#casetype1").removeAttr("disabled"); 
+                $("#casetype1").removeAttr("disabled");
             }
             if($('#tranferstatus').is(':disabled')){
-                $("#tranferstatus").removeAttr("disabled"); 
+                $("#tranferstatus").removeAttr("disabled");
             }
 
             $('#casetype2').val(null).trigger("change")
@@ -993,7 +993,7 @@
                 }
             });
         });
-        //Update Edit Log 
+        //Update Edit Log
         //Click Tab Log
         $(document).on('click', '.tablisteditlog', function() {
             //var id = $(this).data("contactid");
@@ -1069,7 +1069,7 @@
                         }
                     }
                 });
-                
+
                 $('#casetype3').attr('disabled', true);
                 $('#casetype4').attr('disabled', true);
                 $('#casetype5').attr('disabled', true);

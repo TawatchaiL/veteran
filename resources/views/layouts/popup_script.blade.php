@@ -1099,17 +1099,17 @@
                     tname: $('#tnamep' + cardId).val(),
                     fname: $('#fnamep' + cardId).val(),
                     lname: $('#lnamep' + cardId).val(),
-                    sex: $('#sexp' + cardId).val(),
+                    sex: $('#sexp' + cardId).val()[0],
                     birthday: tempbirthday,
                     age: $('#agep' + cardId).val(),
-                    bloodgroup: $('#bloodgroupp' + cardId).val(),
+                    bloodgroup: $('#bloodgroupp' + cardId).val()[0],
                     homeno: $('#homenop' + cardId).val(),
                     moo: $('#moop' + cardId).val(),
                     soi: $('#soip' + cardId).val(),
                     road: $('#roadp' + cardId).val(),
-                    city: $('#cityp' + cardId).val(),
-                    district: $('#districtp' + cardId).val(),
-                    subdistrict: $('#subdistrictp' + cardId).val(),
+                    city: $('#cityp' + cardId).val()[0],
+                    district: $('#districtp' + cardId).val()[0],
+                    subdistrict: $('#subdistrictp' + cardId).val()[0],
                     postcode: $('#postcodep' + cardId).val(),
                     telhome: $('#telhomep' + cardId).val(),
                     phoneno: $('#phonenop' + cardId).val(),
@@ -1117,10 +1117,10 @@
                     uniqid: uniqid,
                     telno: $('#telnop' + cardId).val(),
                     casetype1: $('#casetype1p' + cardId + ' option:selected').text(),
-                    caseid1: $('#casetype1p' + cardId).val(),
-                    tranferstatus: $('#tranferstatusp' + cardId).val(),
+                    caseid1: $('#casetype1p' + cardId).val()[0],
+                    tranferstatus: $('#tranferstatusp' + cardId).val()[0],
                     casedetail: $('#casedetailp' + cardId).val(),
-                    casestatus: $('#casestatusp' + cardId).val(),
+                    casestatus: $('#casestatusp' + cardId).val()[0],
                     agent: $('#telnop' + cardId).val(),
                     emergencyData: emergencyData,
                     _token: token
@@ -1128,27 +1128,27 @@
                 if ($('#casetype2p' + cardId).val() !== '') {
                     additionalData.casetype2 = $('#casetype2p' + cardId +
                         ' option:selected').text();
-                    additionalData.caseid2 = $('#casetype2p' + cardId).val();
+                    additionalData.caseid2 = $('#casetype2p' + cardId).val()[0];
                 }
                 if ($('#casetype3p' + cardId).val() !== '') {
                     additionalData.casetype3 = $('#casetype3p' + cardId +
                         ' option:selected').text();
-                    additionalData.caseid3 = $('#casetype3p' + cardId).val();
+                    additionalData.caseid3 = $('#casetype3p' + cardId).val()[0];
                 }
                 if ($('#casetype4p' + cardId).val() !== '') {
                     additionalData.casetype4 = $('#casetype4p' + cardId +
                         ' option:selected').text();
-                    additionalData.caseid4 = $('#casetype4p' + cardId).val();
+                    additionalData.caseid4 = $('#casetype4p' + cardId).val()[0];
                 }
                 if ($('#casetype5p' + cardId).val() !== '') {
                     additionalData.casetype5 = $('#casetype5p' + cardId +
                         ' option:selected').text();
-                    additionalData.caseid5 = $('#casetype5p' + cardId).val();
+                    additionalData.caseid5 = $('#casetype5p' + cardId).val()[0];
                 }
                 if ($('#casetype6p' + cardId).val() !== '') {
                     additionalData.casetype6 = $('#casetype6p' + cardId +
                         ' option:selected').text();
-                    additionalData.caseid6 = $('#casetype6p' + cardId).val();
+                    additionalData.caseid6 = $('#casetype6p' + cardId).val()[0];
                 }
                 $.ajax({
                     url: "{{ route('contacts.casescontract') }}",
@@ -1235,17 +1235,17 @@
                             tname: $('#tnamep' + cardId).val(),
                             fname: $('#fnamep' + cardId).val(),
                             lname: $('#lnamep' + cardId).val(),
-                            sex: $('#sexp' + cardId).val(),
+                            sex: $('#sexp' + cardId).val()[0],
                             birthday: tempbirthday,
                             age: $('#agep' + cardId).val(),
-                            bloodgroup: $('#bloodgroupp' + cardId).val(),
+                            bloodgroup: $('#bloodgroupp' + cardId).val()[0],
                             homeno: $('#homenop' + cardId).val(),
                             moo: $('#moop' + cardId).val(),
                             soi: $('#soip' + cardId).val(),
                             road: $('#roadp' + cardId).val(),
-                            city: $('#cityp' + cardId).val(),
-                            district: $('#districtp' + cardId).val(),
-                            subdistrict: $('#subdistrictp' + cardId).val(),
+                            city: $('#cityp' + cardId).val()[0],
+                            district: $('#districtp' + cardId).val()[0],
+                            subdistrict: $('#subdistrictp' + cardId).val()[0],
                             postcode: $('#postcodep' + cardId).val(),
                             telhome: $('#telhomep' + cardId).val(),
                             phoneno: $('#phonenop' + cardId).val(),
@@ -1254,37 +1254,37 @@
                             telno: $('#telnop' + cardId).val(),
                             casetype1: $('#casetype1p' + cardId + ' option:selected')
                                 .text(),
-                            caseid1: $('#casetype1p' + cardId).val(),
-                            tranferstatus: $('#tranferstatusp' + cardId).val(),
+                            caseid1: $('#casetype1p' + cardId).val()[0],
+                            tranferstatus: $('#tranferstatusp' + cardId).val()[0],
                             casedetail: $('#casedetailp' + cardId).val(),
-                            casestatus: $('#casestatusp' + cardId).val(),
+                            casestatus: $('#casestatusp' + cardId).val()[0],
                             agent: $('#telnop' + cardId).val(),
                             emergencyData: emergencyData
                         };
                         if ($('#casetype2p' + cardId).val() !== '') {
                             additionalData.casetype2 = $('#casetype2p' + cardId +
                                 ' option:selected').text();
-                            additionalData.caseid2 = $('#casetype2p' + cardId).val();
+                            additionalData.caseid2 = $('#casetype2p' + cardId).val()[0];
                         }
                         if ($('#casetype3p' + cardId).val() !== '') {
                             additionalData.casetype3 = $('#casetype3p' + cardId +
                                 ' option:selected').text();
-                            additionalData.caseid3 = $('#casetype3p' + cardId).val();
+                            additionalData.caseid3 = $('#casetype3p' + cardId).val()[0];
                         }
                         if ($('#casetype4p' + cardId).val() !== '') {
                             additionalData.casetype4 = $('#casetype4p' + cardId +
                                 ' option:selected').text();
-                            additionalData.caseid4 = $('#casetype4p' + cardId).val();
+                            additionalData.caseid4 = $('#casetype4p' + cardId).val()[0];
                         }
                         if ($('#casetype5p' + cardId).val() !== '') {
                             additionalData.casetype5 = $('#casetype5p' + cardId +
                                 ' option:selected').text();
-                            additionalData.caseid5 = $('#casetype5p' + cardId).val();
+                            additionalData.caseid5 = $('#casetype5p' + cardId).val()[0];
                         }
                         if ($('#casetype6p' + cardId).val() !== '') {
                             additionalData.casetype6 = $('#casetype6p' + cardId +
                                 ' option:selected').text();
-                            additionalData.caseid6 = $('#casetype6p' + cardId).val();
+                            additionalData.caseid6 = $('#casetype6p' + cardId).val()[0];
                         }
                         $.ajax({
                             url: "contacts/casescontractupdate/" + id,
