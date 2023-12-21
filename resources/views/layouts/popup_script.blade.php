@@ -770,7 +770,7 @@
                         setTimeout(function() {
                             console.log($('##custom-tabs-pop-' + cardId).find(
                                 "#tranferstatusp" + cardId).length);
-                            $('##custom-tabs-pop-' + cardId).find(".select2_single")
+                            $('#custom-tabs-pop-' + cardId).find(".select2_single")
                                 .select2({
                                     maximumSelectionLength: 1,
                                     placeholder: 'กรุณาเลือก'
