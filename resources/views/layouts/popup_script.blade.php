@@ -698,6 +698,8 @@
             } else {
                 cartonOb.html('');
                 cartonOb.val(null).trigger('change');
+                districtOb.html('');
+                districtOb.val(null).trigger('change');
             }
         });
 
