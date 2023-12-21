@@ -993,13 +993,11 @@
                 cartonOb.val(null).trigger('change');
                     }
                 });
-                alert('OO');
             }else{
-                alert('NO');
-                cartonOb.html('');
-                cartonOb.val(null).trigger('change');
                 districtOb.html('');
                 districtOb.val(null).trigger('change');
+                cartonOb.html('');
+                cartonOb.val(null).trigger('change');
             }
         });
 
