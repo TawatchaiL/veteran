@@ -67,15 +67,19 @@ class DetailcaselogbyhnController extends Controller
         ->join(DB::raw("({$datac}) as services"), 'services.contact_id', '=', 'crm_contacts.id')
         ->select('cagent', 'cid', 'crm_contacts.hn','caction', 'magent', 'mdate');
 
-        $datas = DB::table('crm_caseslogs')
+        $datass = DB::table('crm_caseslogs')
         ->select('crm_caseslogs.agent as cagent','crm_caseslogs.id as cid','crm_contacts.hn as chn', 'crm_caseslogs.modifyaction as caction', 'users.name as magent', 'crm_caseslogs.modifydate as mdate')
         ->join('crm_contacts', 'crm_caseslogs.contact_id', '=', 'crm_contacts.id')
         ->join('users', 'crm_caseslogs.modifyagent', '=', 'users.id')
         ->whereRaw('crm_caseslogs.modifydate between "' . $startDate . ' 00:00:00" and "' . $endDate . ' 23:59:59"'.$agentseachl)
         ->union($getData)
         ->orderBy("mdate", "desc")
-        ->get();
+        ->toSql();
 
+        $datas = DB::table(DB::raw("({$datass}) as caseslogs"))
+        ->select('cagent', 'cid', 'chn','caction', 'magent', 'mdate')
+        ->orderBy("mdate", "desc")
+        ->get();
         $agents = User::orderBy("id", "asc")->get();
 
         if ($request->ajax()) {
