@@ -631,7 +631,7 @@
                         if (res.data.length === 0) {
                             //$('#casetype6').attr('disabled', true);
                             $('#casetype' + nextcase + 'p' + cardId).val(null).trigger('change');
-                            $('#casetype' + nextcase + 'p' + cardId).attr('disabled', true);
+                            $('#casetype' + nextcase + 'p' + cardId).attr('disabled', false);
                         } else {
                             //$('#casetype6').attr('disabled', false);
                             $('#casetype' + nextcase + 'p' + cardId).attr('disabled',
