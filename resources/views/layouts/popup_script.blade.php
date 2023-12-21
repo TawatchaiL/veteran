@@ -69,16 +69,6 @@
                 $('#' + cardId).removeClass('card-danger');
                 $('#' + cardId).addClass('card-success');
                 await $('#pop_' + cardId).html(response.html);
-                console.log(response.html)
-
-                //meeh fix
-                setTimeout(function() {
-                    console.log($('#pop_' + cardId).find("#tranferstatusp" + cardId).length);
-                    $("#tranferstatusp" + cardId).select2({
-                        maximumSelectionLength: 1,
-                        placeholder: 'กรุณาเลือกwwwwwwww'
-                    });
-                }, 1500)
 
 
                 $(".card-footer").css("display", "block")
@@ -774,6 +764,19 @@
                         $('#' + datatId).removeClass('card-danger');
                         $('#' + datatId).addClass('card-success');
                         await $('#custom-tabs-pop-' + datatId).html(response.html);
+
+
+                        //meeh fix
+                        setTimeout(function() {
+                            console.log($('##custom-tabs-pop-' + cardId).find(
+                                "#tranferstatusp" + cardId).length);
+                            $('##custom-tabs-pop-' + cardId).find(".select2_single")
+                                .select2({
+                                    maximumSelectionLength: 1,
+                                    placeholder: 'กรุณาเลือก'
+                                });
+                        }, 1500)
+
                         $(".card-footer").css("display", "block")
                         $('.bclose').css('display', 'none');
 
