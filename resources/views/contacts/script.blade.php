@@ -995,6 +995,7 @@
                     }
                 });
             }else{
+                alert('OK');
                 districtOb.html('');
                 districtOb.val(null).trigger('change');
                 cartonOb.html('');
