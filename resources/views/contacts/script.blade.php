@@ -974,7 +974,7 @@
         $('#Addcity').on('change', function() {
             var provinceId = $(this).val();
             //districtOb.html('<option value="">เลือกอำเภอ</option>');
-            if (provinceId != '') {
+            if (provinceId !== '') {
                 $.ajax({
                     url: "thdistrict/district/" + provinceId,
                     method: 'GET',
@@ -989,15 +989,22 @@
                                     .name_th)
                             );
                         });
+                districtOb.val(null).trigger('change');
+                cartonOb.val(null).trigger('change');
                     }
                 });
+            }else{
+                cartonOb.html('');
+                cartonOb.val(null).trigger('change');
+                districtOb.html('');
+                districtOb.val(null).trigger('change');
             }
         });
 
         districtOb.on('change', function() {
             var districtId = $(this).val();
             //cartonOb.html('<option value="">เลือกตำบล</option>');
-            if (districtId != '') {
+            if (districtId !== '') {
                 $.ajax({
                     url: "thsubdistrict/subdistrict/" + districtId,
                     method: 'GET',
@@ -1010,8 +1017,11 @@
                                     .name_th)
                             );
                         });
+                        cartonOb.val(null).trigger('change');
                     }
                 });
+            }else{
+                cartonOb.val(null).trigger('change');
             }
         });
 
@@ -1023,7 +1033,7 @@
         $('#Editcity').on('change', function() {
             var provinceId = $(this).val();
             //EdistrictOb.html('<option value="">เลือกอำเภอ</option>');
-            if (provinceId != '') {
+            if (provinceId !== '') {
                 $.ajax({
                     url: "thdistrict/district/" + provinceId,
                     method: 'GET',
@@ -1038,15 +1048,22 @@
                                     .name_th)
                             );
                         });
+                        EdistrictOb.val(null).trigger('change');
+                        EcartonOb.val(null).trigger('change');
                     }
                 });
+            } else {
+                EcartonOb.html('');
+                EcartonOb.val(null).trigger('change');
+                EdistrictOb.html('');
+                EdistrictOb.val(null).trigger('change');
             }
         });
 
         EdistrictOb.on('change', function() {
             var districtId = $(this).val();
             //EcartonOb.html('<option value="">เลือกตำบล</option>');
-            if (districtId != '') {
+            if (districtId !== '') {
                 $.ajax({
                     url: "thsubdistrict/subdistrict/" + districtId,
                     method: 'GET',
@@ -1059,8 +1076,11 @@
                                     .name_th)
                             );
                         });
+                        EcartonOb.val(null).trigger('change');
                     }
                 });
+            }else{
+                EcartonOb.val(null).trigger('change');
             }
         });
     });
