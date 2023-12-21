@@ -65,10 +65,6 @@
                 cardId: cardId
             },
             success: async function(response) {
-                $(".select2_single").select2({
-                    maximumSelectionLength: 1,
-                    placeholder: 'กรุณาเลือก'
-                });
 
                 $('#' + cardId).removeClass('card-danger');
                 $('#' + cardId).addClass('card-success');
@@ -323,6 +319,11 @@
                                 } else {
                                     $('#cityp' + cardId).val('65').change();
                                 }
+
+                                $(".select2_single").select2({
+                                    maximumSelectionLength: 1,
+                                    placeholder: 'กรุณาเลือก'
+                                });
                             }
                         });
 
