@@ -73,6 +73,9 @@ class CDRController extends Controller
                 ->editColumn('checkbox', function ($row) {
                     return '<input type="checkbox" id="' . $row['uniqueid'] . '" class="flat" name="table_records[]" value="' . $row['uniqueid'] . '" >';
                 })
+                ->editColumn('duration', function ($row) {
+                    return $this->formatDuration($row['duration']);
+                })
                 ->editColumn('billsec', function ($row) {
                     return $this->formatDuration($row['billsec']);
                 })->rawColumns(['checkbox'])->toJson();

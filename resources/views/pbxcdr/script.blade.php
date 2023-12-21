@@ -193,13 +193,18 @@
                     name: 'dst'
                 },
                 {
-                    data: 'disposition',
-                    name: 'disposition'
+                    data: 'duration',
+                    name: 'duration'
                 },
                 {
                     data: 'billsec',
                     name: 'billsec'
                 },
+                {
+                    data: 'disposition',
+                    name: 'disposition'
+                },
+
 
             ]
         };
