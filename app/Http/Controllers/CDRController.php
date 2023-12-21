@@ -32,6 +32,8 @@ class CDRController extends Controller
 
         if ($request->ajax()) {
 
+            $startDate = '';
+            $endDate = '';
             if (!empty($request->get('sdate'))) {
                 $dateRange = $request->input('sdate');
                 if ($dateRange) {
@@ -40,16 +42,14 @@ class CDRController extends Controller
                     if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
                         $startDate = $dateRangeArray[0];
                         $endDate = $dateRangeArray[1];
-
                     }
                 }
             }
 
 
-
+            $searchtext = '';
             if (!empty($request->get('searchtext'))) {
                 $searchtext = $request->input('searchtext');
-
             }
 
             $response = Http::withOptions(['verify' => false])->get('https://192.168.1.91/cdr-api.php', [
@@ -70,6 +70,4 @@ class CDRController extends Controller
 
         return view('pbxcdr.index');
     }
-
-
 }
