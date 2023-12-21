@@ -673,39 +673,39 @@
                     $('#casetype1').attr("disabled", "disabled");
                     if (res.data.caseid2 != 0) {
                         $('#casetype2').val(res.data.caseid2).change();
-                        $('#casetype2').attr("readonly", "readonly");
+                        $('#casetype2').attr("disabled", "disabled");
                     }
                     if (res.data.caseid3 != 0) {
                         $('#casetype3').val(res.data.caseid3).change();
-                        $('#casetype3').attr("readonly", "readonly");
+                        $('#casetype3').attr("disabled", "disabled");
                     }
                     if (res.data.caseid4 != 0) {
                         $('#casetype4').val(res.data.caseid4).change();
-                        $('#casetype4').attr("readonly", "readonly");
+                        $('#casetype4').attr("disabled", "disabled");
                     }
                     if (res.data.caseid5 != 0) {
                         $('#casetype5').val(res.data.caseid5).change();
-                        $('#casetype5').attr("readonly", "readonly");
+                        $('#casetype5').attr("disabled", "disabled");
                     }
                     if (res.data.caseid6 != 0) {
                         $('#casetype6').val(res.data.caseid6).change();
-                        $('#casetype6').attr("readonly", "readonly");
+                        $('#casetype6').attr("disabled", "disabled");
                     }
 
                     if (res.data.caseid2 == 0) {
-                        $('#casetype2').attr("readonly", "readonly");
+                        $('#casetype2').attr("disabled", "disabled");
                     }
                     if (res.data.caseid3 == 0) {
-                        $('#casetype3').attr("readonly", "readonly");
+                        $('#casetype3').attr("disabled", "disabled");
                     }
                     if (res.data.caseid4 == 0) {
-                        $('#casetype4').attr("readonly", "readonly");
+                        $('#casetype4').attr("disabled", "disabled");
                     }
                     if (res.data.caseid5 == 0) {
-                        $('#casetype5').attr("readonly", "readonly");
+                        $('#casetype5').attr("disabled", "disabled");
                     }
                     if (res.data.caseid6 == 0) {
-                        $('#casetype6').attr("readonly", "readonly");
+                        $('#casetype6').attr("disabled", "disabled");
                     }
                     //Comment Data
                     $('#cHn').text(res.data.hn);
