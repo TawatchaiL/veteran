@@ -79,8 +79,13 @@ class DetailscoreagentController extends Controller
                 foreach ($datas as $data) {
                    $chart_data[] = $data->sumscore;
                    //$chart_data[$data->crm_id][$data->score] = $data->sumscore;
-                   $chart_label[] = $data->score;
+                   //$chart_label[] = $data->score;
                    //$datatt[$data->crmid][$data->score] = $data->sumscore;
+                   if (isset($agent_data[$row->crm_id])) {
+                        $chart_label[] = $agent_data[$row->crm_id];
+                    } else {
+                        $chart_label[] = 'Agent not found';
+                    }
                 }
                 /*
                 $a = 0;
