@@ -695,6 +695,9 @@
                         cartonOb.val(null).trigger('change');
                     }
                 });
+            } else {
+                cartonOb.html('');
+                cartonOb.val(null).trigger('change');
             }
         });
 
@@ -718,6 +721,8 @@
                         cartonOb.val(null).trigger('change');
                     }
                 });
+            } else {
+                cartonOb.val(null).trigger('change');
             }
         });
         //Add new phone emergency
