@@ -32,15 +32,15 @@
 @endcan
 @can('voice-record-list')
     <li class="nav-item">
-        <a href="{{ route('voicerecord') }}" class="nav-link {{ Request::is('voicerecord') ? 'active' : '' }}">
-            <i class="fa-solid fa-volume-high nav-icon"></i>
-            <p>ไฟล์บันทึกเสียงสนทนา</p>
+        <a href="{{ route('pbxcdr') }}" class="nav-link {{ Request::is('pbxcdr') ? 'active' : '' }}">
+            <i class="fa-solid fa-tty nav-icon"></i>
+            <p>ค้นหารายการโทร</p>
         </a>
     </li>
     <li class="nav-item">
-        <a href="{{ route('pbxcdr') }}" class="nav-link {{ Request::is('pbxcdr') ? 'active' : '' }}">
-            <i class="fa-solid fa-tty nav-icon"></i>
-            <p>ค้หารายการโทรของโรงพยาบาล</p>
+        <a href="{{ route('voicerecord') }}" class="nav-link {{ Request::is('voicerecord') ? 'active' : '' }}">
+            <i class="fa-solid fa-volume-high nav-icon"></i>
+            <p>ไฟล์บันทึกเสียงสนทนา</p>
         </a>
     </li>
 @endcan
