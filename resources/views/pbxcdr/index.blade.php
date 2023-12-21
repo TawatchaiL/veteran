@@ -62,7 +62,7 @@
                                     <div class="form-group">
                                         <strong><i class="fa-solid fa-calendar"></i> วันที่:
                                         </strong>
-                                        <input type="text" class="form-control" id="reservation" style="width: 350px">
+                                        <input type="text" class="form-control" id="reservation">
                                     </div>
                                 </div>
                                 <div class="col-xs-4 col-sm-4 col-md-4">
@@ -77,12 +77,12 @@
                                         <span id="validationMessages" style="color: red;"></span>
                                     </div>
                                 </div>
-                                <div class="col-xs-2 col-sm-2 col-md-2">
+                                <div class="col-xs-1 col-sm-1 col-md-1">
                                     <strong>&nbsp;</strong>
                                     <button type="button" class="form-control btn btn-success" id="btnsearch">
                                         <i class="fas fa-search"></i></button>
                                 </div>
-                                <div class="col-xs-2 col-sm-2 col-md-2" style="align-items: flex-end;">
+                                <div class="col-xs-1 col-sm-1 col-md-1" style="align-items: flex-end;">
                                     <strong>&nbsp;</strong>
                                     <button type="button" class="form-control btn btn-warning" id="btnreset">
                                         <i class="fa-solid fa-rotate-right"></i></button>
