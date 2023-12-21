@@ -26,11 +26,6 @@
                     $('#custom-tabs-pop').prepend(response.tab_link);
                     $('#custom-tabs-pop-tabContent').prepend(response.tab_content);
 
-                    $(".select2_single").select2({
-                        maximumSelectionLength: 1,
-                        placeholder: 'กรุณาเลือก'
-                    });
-
                     await maximizeCard(response.active_id);
                 }
                 $('#hold_tab').html(response.hold_tab);
@@ -74,6 +69,13 @@
                 $('#' + cardId).removeClass('card-danger');
                 $('#' + cardId).addClass('card-success');
                 await $('#pop_' + cardId).html(response.html);
+
+                //meeh fix
+                $('#pop_' + cardId).find(".select2_single").select2({
+                    maximumSelectionLength: 1,
+                    placeholder: 'กรุณาเลือก'
+                });
+
                 $(".card-footer").css("display", "block")
                 $('.bclose').css('display', 'none');
 
