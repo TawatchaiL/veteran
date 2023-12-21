@@ -52,22 +52,23 @@ class DetailscoreController extends Controller
         }else{
             $sqlagent = "";
         }    
-
+/*
         $datas = DB::connection('remote_connection')
             ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT datetime, DATE(datetime) as cdate, TIME(datetime) as ctime, clid, asterisk.queues_config.descr as queue, crm_id, score FROM call_center.agent_score left join asterisk.queues_config on call_center.agent_score.queue=asterisk.queues_config.extension WHERE call_center.agent_score.datetime BETWEEN "' . $startDate . '" AND "' . $endDate . '"' .$sqlagent. ' ORDER BY call_center.agent_score.datetime DESC) as t, (SELECT @rownumber:=0) as r) AS temp'))
             ->select('rownumber', 'cdate', 'ctime', 'clid', 'queue', 'crm_id', 'score')
             ->get();
-/*
+            
+*/
         $datas = DB::connection('remote_connection')
             ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.agent_score'))
             ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), DB::raw('DATE(datetime) as cdate'), DB::raw('TIME(datetime) as ctime'),'clid','queue','crm_id','score' )
-            ->whereRaw('call_center.agent_score.datetime between "' . $startDate . '" and "' . $endDate . '"');
-            if(!empty($request->get('agent')) && $request->get('agent') != "0"){
-                $datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
-            }   
-            $datas->orderBy("call_center.agent_score.datetime", "desc")
+            ->join('asterisk.queues_config', 'call_center.agent_score.queue', '=', 'asterisk.queues_config.extension')
+            ->whereRaw('call_center.agent_score.datetime between "' . $startDate . '" and "' . $endDate . '"'.$sqlagent.' ORDER BY call_center.agent_score.datetime DESC')
+            //if(!empty($request->get('agent')) && $request->get('agent') != "0"){
+            //    $datas->whereRaw('crm_id = "'. $request->input('agent') .'"');  
+            //}   
+            //$datas->orderBy("call_center.agent_score.datetime", "desc")
             ->get();
-*/
         $agents = User::orderBy("id", "asc")->get();
             $agent_data = array();
             foreach ($agents as $agent) {
