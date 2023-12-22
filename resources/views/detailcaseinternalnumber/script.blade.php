@@ -98,38 +98,9 @@
 
         var startDate;
         var endDate;
-        function datesearch() {
-            var currentDate = moment();
-            // Set the start date to 7 days before today
-            //startDate = moment(currentDate).subtract(15, 'days').format('YYYY-MM-DD');
-            // Set the end date to the end of the current month
-            //endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD');
-            startDate = moment().format('YYYY-MM-DD HH:mm:ss');
-            endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD HH:mm:ss');
-        }
-        function datereset() {
-            var currentDate = moment();
-            startDate = moment().format('YYYY-MM-DD HH:mm:ss');
-            endDate = moment(currentDate).endOf('month').format('YYYY-MM-DD HH:mm:ss');
-        }
-
-        function retrieveFieldValues() {
-            var saveddateStart = localStorage.getItem('dateStart');
-            var savedSearchType = localStorage.getItem('searchType');
-            var savedKeyword = localStorage.getItem('keyword');
-
-            // Set field values from local storage
-            if (saveddateStart) {
-                var dateParts = saveddateStart.split(' - ');
-                startDate = dateParts[0];
-                endDate = dateParts[1];
-            } else {
-                datesearch();
-            }
-        }
 
         let daterange = () => {
-            moment.locale('th');
+
 
             var startTime = '00:00:00';
             var endTime = '23:59:59';
@@ -143,6 +114,10 @@
             var last30DaysRange = [moment().subtract(29, 'days').startOf('day').set('hour', 0).set('minute',
                 0).set('second', 0), moment(endTime, 'HH:mm:ss')];
 
+            var currentYear = moment().year();
+            var maxYear = moment().year(currentYear).add(1, 'year').format('YYYY-MM-DD');
+            var minYear = moment().year(currentYear).subtract(2, 'years').format('YYYY-MM-DD');
+
             $('#reservation').daterangepicker({
                 timePicker: true,
                 timePicker24Hour: true,
@@ -150,6 +125,10 @@
                 //timePickerIncrement: 5,
                 startDate: startDate,
                 endDate: endDate,
+                showDropdowns: true,
+                linkedCalendars: false,
+                minDate: minYear,
+                maxDate: maxYear,
                 ranges: {
                     'วันนี้': todayRange,
                     'เมื่อวานนี้': yesterdayRange,
@@ -175,24 +154,81 @@
                     firstDay: 1
                 }
             });
+
             // Apply the custom date range filter on input change
-            $('#reservation').on('apply.daterangepicker', function() {
-                console.log($('#reservation').val())
+            $('#reservation').on('apply.daterangepicker', function(ev, picker) {
                 table.draw();
                 storeFieldValues();
             });
         }
-        datesearch();
+
+        function datesearch() {
+            //.add(1, 'month').add(543, 'year').format('LLLL')
+            var currentDate = moment();
+            console.log(currentDate)
+            startDate = moment(currentDate).subtract(30, 'days').startOf('day').format('YYYY-MM-DD HH:mm:ss');
+            endDate = moment(currentDate).endOf('month').endOf('day').format('YYYY-MM-DD HH:mm:ss');
+        }
+
+
+        function storeFieldValues() {
+            var dateStart = $('#reservation').val();
+            var sagent = $('#agen').val();
+
+            // Store values in local storage
+            localStorage.setItem('dateStart', dateStart);
+            localStorage.setItem('sagent', sagent);
+
+        }
+
+        function retrieveFieldValues() {
+            var saveddateStart = localStorage.getItem('dateStart');
+            var savedsagent = localStorage.getItem('sagent');
+            // Set field values from local storage
+            if (saveddateStart) {
+                var dateParts = saveddateStart.split(' - ');
+                startDate = dateParts[0];
+                endDate = dateParts[1];
+            } else {
+                datesearch();
+            }
+
+            console.log(`${startDate} - ${endDate}`)
+            $('#reservation').val(`${startDate} - ${endDate}`)
+
+            if (savedsagent) {
+                $('#agen').val(savedsagent);
+            }
+        }
+
+        retrieveFieldValues();
         daterange();
 
-        $('#btnsearch').click(function(e) {
-            $('#Listview').DataTable().ajax.reload();
-        });
-        $('#btnreset').click(function(e) {
-            datereset();
+        $('#resetSearchButton').on('click', async function() {
+            localStorage.removeItem('dateStart');
+            localStorage.removeItem('sagent');
+
+            $('#agen').val('');
+
+            var currentDate = moment();
+            var startDate = moment(currentDate).subtract(30, 'days').startOf('day').format(
+                'YYYY-MM-DD HH:mm:ss');
+            var endDate = moment(currentDate).endOf('month').endOf('day').format(
+                'YYYY-MM-DD HH:mm:ss');
+
             daterange();
-            $('#Agent').val("0");
-            $('#Listview').DataTable().ajax.reload();
+            //table = $('#Listview').DataTable(table_option);
+            table.draw();
+        });
+
+        $('#btnsearch').on('click', function() {
+            storeFieldValues();
+            //var telp = $('#telp').val();
+            table.search('').draw();
+            $.fn.dataTable.ext.search.pop();
+            /* if (telp !== '') {
+                table.column(3).search(telp).draw();
+            } */
         });
 
         var table = $('#Listview').DataTable({

@@ -298,59 +298,6 @@
         var startDate;
         var endDate;
 
-        function datesearch() {
-            //.add(1, 'month').add(543, 'year').format('LLLL')
-            var currentDate = moment();
-            console.log(currentDate)
-            startDate = moment(currentDate).subtract(30, 'days').startOf('day').format('YYYY-MM-DD HH:mm:ss');
-            endDate = moment(currentDate).endOf('month').endOf('day').format('YYYY-MM-DD HH:mm:ss');
-        }
-
-
-        function storeFieldValues() {
-            var dateStart = $('#reservation').val();
-            var sagent = $('#agen').val();
-            var stelp = $('#telp').val();
-            var sctype = $('#ctype').val();
-
-            // Store values in local storage
-            localStorage.setItem('dateStart', dateStart);
-            localStorage.setItem('sagent', sagent);
-            localStorage.setItem('stelp', stelp);
-            localStorage.setItem('sctype', sctype);
-        }
-
-        function retrieveFieldValues() {
-            var saveddateStart = localStorage.getItem('dateStart');
-            var savedsagent = localStorage.getItem('sagent');
-            var savedstelp = localStorage.getItem('stelp');
-            var savedctype = localStorage.getItem('sctype');
-            // Set field values from local storage
-            if (saveddateStart) {
-                var dateParts = saveddateStart.split(' - ');
-                startDate = dateParts[0];
-                endDate = dateParts[1];
-            } else {
-                datesearch();
-            }
-
-            console.log(`${startDate} - ${endDate}`)
-            $('#reservation').val(`${startDate} - ${endDate}`)
-
-            if (savedsagent) {
-                $('#agen').val(savedsagent);
-            }
-            if (savedstelp) {
-                $('#telp').val(savedstelp);
-            }
-
-            if (savedctype) {
-                $('#ctype').val(savedctype);
-            }
-
-        }
-
-
         let daterange = () => {
 
 
@@ -414,28 +361,54 @@
             });
         }
 
+        function datesearch() {
+            //.add(1, 'month').add(543, 'year').format('LLLL')
+            var currentDate = moment();
+            console.log(currentDate)
+            startDate = moment(currentDate).subtract(30, 'days').startOf('day').format('YYYY-MM-DD HH:mm:ss');
+            endDate = moment(currentDate).endOf('month').endOf('day').format('YYYY-MM-DD HH:mm:ss');
+        }
+
+
+        function storeFieldValues() {
+            var dateStart = $('#reservation').val();
+            var sagent = $('#agen').val();
+
+            // Store values in local storage
+            localStorage.setItem('dateStart', dateStart);
+            localStorage.setItem('sagent', sagent);
+
+        }
+
+        function retrieveFieldValues() {
+            var saveddateStart = localStorage.getItem('dateStart');
+            var savedsagent = localStorage.getItem('sagent');
+            // Set field values from local storage
+            if (saveddateStart) {
+                var dateParts = saveddateStart.split(' - ');
+                startDate = dateParts[0];
+                endDate = dateParts[1];
+            } else {
+                datesearch();
+            }
+
+            console.log(`${startDate} - ${endDate}`)
+            $('#reservation').val(`${startDate} - ${endDate}`)
+
+            if (savedsagent) {
+                $('#agen').val(savedsagent);
+            }
+        }
+
         retrieveFieldValues();
         daterange();
 
         $('#resetSearchButton').on('click', async function() {
             localStorage.removeItem('dateStart');
             localStorage.removeItem('sagent');
-            localStorage.removeItem('stelp');
-            localStorage.removeItem('sctype');
 
-            // Set field values to empty
-            $('#telp').val('');
             $('#agen').val('');
-            $('#ctype').val('');
 
-            $('#Listview').html('');
-
-            // Clear DataTable state
-            if (table) {
-                table.state.clear();
-                await table.destroy();
-            }
-            // Set the date range back to its default
             var currentDate = moment();
             var startDate = moment(currentDate).subtract(30, 'days').startOf('day').format(
                 'YYYY-MM-DD HH:mm:ss');
@@ -443,7 +416,7 @@
                 'YYYY-MM-DD HH:mm:ss');
 
             daterange();
-            table = $('#Listview').DataTable(table_option);
+            //table = $('#Listview').DataTable(table_option);
             table.draw();
         });
 

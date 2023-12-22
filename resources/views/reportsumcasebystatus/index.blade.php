@@ -44,6 +44,8 @@
                                         <div class="form-group">
                                             <button type="button" class="btn btn-success" id="btnsearch">
                                                 <i class="fas fa-search"></i> ค้นหา </button>
+                                                <button type="button" class="btn bg-warning" id="resetSearchButton">
+                                                    <i class="fas fa-search"></i> RESET </button>
                                         </div>
                                     </div>
                                 </ol>

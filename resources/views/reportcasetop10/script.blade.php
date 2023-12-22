@@ -412,7 +412,7 @@
             localStorage.removeItem('dateStart');
             //localStorage.removeItem('sagent');
 
-            $('#agen').val('');
+            //$('#agen').val('');
 
             var currentDate = moment();
             var startDate = moment(currentDate).subtract(30, 'days').startOf('day').format(
