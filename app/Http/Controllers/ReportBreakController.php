@@ -64,7 +64,7 @@ class ReportBreakController extends Controller
         ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.audit'))
             ->leftJoin('break', 'audit.id_break', '=', 'break.id')
             ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), 'audit.crm_id as crm_id', 'break.name as typebreak', 'audit.datetime_init as datetime_init', 'audit.datetime_end as datetime_end', DB::raw('SEC_TO_TIME(duration) as breaktime'))
-            ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '" and id_break is not null'.$sqlagent.' order by audit.datetime_init desc')
+            ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '" and id_break is not null AND (id_break != 5 OR id_break != 7)'.$sqlagent.' order by audit.datetime_init desc')
             //->whereNotNull('id_break');
         //if (!empty($request->get('agent')) && $request->get('agent') != "0") {
         //    $datas->whereRaw('crm_id = "' . $request->input('agent') . '"');
