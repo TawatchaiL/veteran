@@ -374,7 +374,7 @@ html2canvas(chartContainer).then(canvas => {
 
         function storeFieldValues() {
             var dateStart = $('#reservation').val();
-            var sagent = $('#agen').val();
+            var sagent = $('#Agent').val();
 
             // Store values in local storage
             localStorage.setItem('dateStart', dateStart);
@@ -398,7 +398,7 @@ html2canvas(chartContainer).then(canvas => {
             $('#reservation').val(`${startDate} - ${endDate}`)
 
             if (savedsagent) {
-                $('#agen').val(savedsagent);
+                $('#Agent').val(savedsagent);
             }
         }
 
@@ -409,7 +409,7 @@ html2canvas(chartContainer).then(canvas => {
             localStorage.removeItem('dateStart');
             localStorage.removeItem('sagent');
 
-            $('#agen').val('');
+            $('#Agent').val('0');
 
             var currentDate = moment();
             var startDate = moment(currentDate).subtract(30, 'days').startOf('day').format(
@@ -541,7 +541,7 @@ html2canvas(chartContainer).then(canvas => {
                             }
                         });
 
-                        doc.content[0].table.widths = [40, 360, '*'];
+                        doc.content[0].table.widths = [40, '*', 100,100];
                         var objLayout = {};
 						objLayout['hLineWidth'] = function(i) { return .5; };
 						objLayout['vLineWidth'] = function(i) { return .5; };

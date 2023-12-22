@@ -178,17 +178,17 @@
 
         function storeFieldValues() {
             var dateStart = $('#reservation').val();
-            //var sagent = $('#agen').val();
+            var scasesstatus = $('#casesstatus').val();
 
             // Store values in local storage
             localStorage.setItem('dateStart', dateStart);
-            //localStorage.setItem('sagent', sagent);
+            localStorage.setItem('scasesstatus', scasesstatus);
 
         }
 
         function retrieveFieldValues() {
             var saveddateStart = localStorage.getItem('dateStart');
-            //var savedsagent = localStorage.getItem('sagent');
+            var savedscasesstatus = localStorage.getItem('scasesstatus');
             // Set field values from local storage
             if (saveddateStart) {
                 var dateParts = saveddateStart.split(' - ');
@@ -201,9 +201,9 @@
             console.log(`${startDate} - ${endDate}`)
             $('#reservation').val(`${startDate} - ${endDate}`)
 
-            //if (savedsagent) {
-            //    $('#agen').val(savedsagent);
-            //}
+            if (savedscasesstatus) {
+                $('#casesstatus').val(savedscasesstatus);
+            }
         }
 
         retrieveFieldValues();
@@ -211,9 +211,9 @@
 
         $('#resetSearchButton').on('click', async function() {
             localStorage.removeItem('dateStart');
-            //localStorage.removeItem('sagent');
+            localStorage.removeItem('scasesstatus');
 
-            $('#agen').val('');
+            $('#casesstatus').val('ปิดเคส');
 
             var currentDate = moment();
             var startDate = moment(currentDate).subtract(30, 'days').startOf('day').format(
