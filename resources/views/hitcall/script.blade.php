@@ -282,7 +282,7 @@
             },
 
             aaSorting: [
-                [0, "desc"]
+                [2, "desc"]
             ],
             iDisplayLength: 10,
             lengthMenu: [5, 10, 25, 50, 75, 100],
@@ -355,7 +355,7 @@
                             }
                         });
 
-                        doc.content[0].table.widths = [40, '*', 70, 70, 70, 60, 60];
+                        doc.content[0].table.widths = [40, '*', 140, 70, 60, 60];
                         var objLayout = {};
 						objLayout['hLineWidth'] = function(i) { return .5; };
 						objLayout['vLineWidth'] = function(i) { return .5; };
@@ -436,10 +436,6 @@
                 {
                     data: 'cdate',
                     name: 'cdate'
-                },
-                {
-                    data: 'ctime',
-                    name: 'ctime'
                 },
                 {
                     data: 'telno',
