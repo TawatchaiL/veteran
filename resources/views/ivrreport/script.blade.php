@@ -484,7 +484,7 @@
             },
 
             aaSorting: [
-                [0, "asc"]
+                [0, "desc"]
             ],
             iDisplayLength: 10,
             lengthMenu: [5, 10, 25, 50, 75, 100],
