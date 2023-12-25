@@ -482,10 +482,6 @@
                     "sLast": "สุดท้าย"
                 }
             },
-
-            aaSorting: [
-                [1, "desc"]
-            ],
             iDisplayLength: 10,
             lengthMenu: [5, 10, 25, 50, 75, 100],
             stateSave: false,
