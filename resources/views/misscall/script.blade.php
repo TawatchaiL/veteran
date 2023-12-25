@@ -282,7 +282,7 @@
             },
 
             aaSorting: [
-                [0, "desc"]
+                [2, "desc"]
             ],
             iDisplayLength: 10,
             lengthMenu: [5, 10, 25, 50, 75, 100],
