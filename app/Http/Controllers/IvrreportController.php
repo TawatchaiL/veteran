@@ -54,8 +54,8 @@ class IvrreportController extends Controller
         ->get();
 */
         $datas = DB::connection('remote_connection')
-            ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.ivr_report'))
-            ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), DB::raw('call_center.ivr_report.datetime as cdate'), DB::raw('TIME(call_center.ivr_report.datetime) as ctime'),'call_center.ivr_report.callerid as telno','asterisk.ivr_details.name as ivrname','call_center.ivr_report.digit as ivrno order by call_center.ivr_report.datetime desc')
+            ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.ivr_report order by call_center.ivr_report.datetime desc'))
+            ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), DB::raw('call_center.ivr_report.datetime as cdate'), DB::raw('TIME(call_center.ivr_report.datetime) as ctime'),'call_center.ivr_report.callerid as telno','asterisk.ivr_details.name as ivrname','call_center.ivr_report.digit as ivrno')
             ->join('asterisk.ivr_details', 'call_center.ivr_report.ivr_id', '=', 'asterisk.ivr_details.id')
             ->whereRaw('call_center.ivr_report.datetime between "' . $startDate . '" and "' . $endDate . '"')
             ->get();
