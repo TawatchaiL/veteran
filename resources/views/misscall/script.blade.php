@@ -355,7 +355,7 @@
                             }
                         });
 
-                        doc.content[0].table.widths = [40, '*', 70, 60, 90, 60];
+                        doc.content[0].table.widths = [40, '*', 130, 90, 60];
                         var objLayout = {};
 						objLayout['hLineWidth'] = function(i) { return .5; };
 						objLayout['vLineWidth'] = function(i) { return .5; };
@@ -431,10 +431,6 @@
                 {
                     data: 'cdate',
                     name: 'cdate'
-                },
-                {
-                    data: 'ctime',
-                    name: 'ctime'
                 },
                 {
                     data: 'telno',
