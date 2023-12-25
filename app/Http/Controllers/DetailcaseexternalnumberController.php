@@ -58,7 +58,7 @@ class DetailcaseexternalnumberController extends Controller
 
         $datas = DB::connection('remote_connection')
         ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.call_entry'))
-        ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), DB::raw('DATE(datetime_init) as cdate'), DB::raw('TIME(datetime_init) as ctime'),'callerid as telno','crm_id as agentid', DB::raw('SEC_TO_TIME(duration) as duration'), DB::raw('SEC_TO_TIME(duration_wait) as duration_wait'))
+        ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), DB::raw('datetime_init as cdate'), DB::raw('TIME(datetime_init) as ctime'),'callerid as telno','crm_id as agentid', DB::raw('SEC_TO_TIME(duration) as duration'), DB::raw('SEC_TO_TIME(duration_wait) as duration_wait'))
         ->whereRaw('LENGTH(callerid) > 5 and datetime_init between "' . $startDate . '" and "' . $endDate . '"'.$sqlagent.' ORDER BY datetime_init DESC')
         ->get();
 
