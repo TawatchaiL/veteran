@@ -664,7 +664,8 @@
                     data: 'rownumber',
                     name: 'rownumber',
                     orderable: false,
-                    searchable: false
+                    searchable: false,
+                    sorting: false
                 },
                 {
                     data: 'cdate',
