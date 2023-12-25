@@ -433,10 +433,6 @@
                     name: 'cdate'
                 },
                 {
-                    data: 'ctime',
-                    name: 'ctime'
-                },
-                {
                     data: 'duration',
                     name: 'duration'
                 },
