@@ -58,10 +58,10 @@ class DetailcasesController extends Controller
         if ($request->ajax()) {
 
             return datatables()->of($datas)
-                ->editColumn('cdate', function ($row) {
-                    $adddate = Carbon::parse($row->cdate)->addYears(543)->format('d/m/Y');
-                    return $adddate;
-                })
+                //->editColumn('cdate', function ($row) {
+                //    $adddate = Carbon::parse($row->cdate)->addYears(543)->format('d/m/Y');
+                //    return $adddate;
+                //})
                 //->editColumn('checkbox', function ($row) {
                 //    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 //})->rawColumns(['checkbox', 'action'])
