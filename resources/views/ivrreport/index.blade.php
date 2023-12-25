@@ -97,8 +97,7 @@
                                     <thead>
                                         <tr>
                                             <th width="5%">ลำดับ</th>
-                                            <th>วันที่</th>
-                                            <th>เวลา</th>
+                                            <th>วันที่ เวลา</th>
                                             <th>เบอร์โทรศัพท์</th>
                                             <th>IVR Flow</th>
                                             <th>เมนูที่กด</th>

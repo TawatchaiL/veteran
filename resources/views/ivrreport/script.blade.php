@@ -672,10 +672,6 @@
                     name: 'cdate'
                 },
                 {
-                    data: 'ctime',
-                    name: 'ctime'
-                },
-                {
                     data: 'telno',
                     name: 'telno'
                 },
