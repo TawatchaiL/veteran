@@ -473,7 +473,7 @@
 
         function datesearch() {
             var currentDate = moment();
-            startDate = moment(currentDate).subtract(30, 'days').startOf('day').format('YYYY-MM-DD HH:mm:ss');
+            startDate = moment(currentDate).subtract(1, 'days').startOf('day').format('YYYY-MM-DD HH:mm:ss');
             endDate = moment(currentDate).endOf('month').endOf('day').format('YYYY-MM-DD HH:mm:ss');
         }
 
@@ -700,7 +700,7 @@
                             return {
                                 columns: [
                                     {
-                                        text: [  
+                                        text: [
                                                 { text: 'CRM REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
                                                 '\n',
                                                 { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
@@ -928,7 +928,7 @@
             }
             // Set the date range back to its default
             var currentDate = moment();
-            var startDate = moment(currentDate).subtract(30, 'days').startOf('day').format(
+            var startDate = moment(currentDate).subtract(1, 'days').startOf('day').format(
                 'YYYY-MM-DD HH:mm:ss');
             var endDate = moment(currentDate).endOf('month').endOf('day').format(
                 'YYYY-MM-DD HH:mm:ss');

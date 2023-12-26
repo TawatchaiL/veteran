@@ -1091,7 +1091,7 @@
             telno: call_number,
             mode: 'ดักฟัง'
         };
-        $.get(`${api_serv}/spy/` + call_number + "/" + exten + "/" + account_code + "/o", (data, status) => {
+        $.get(`${api_serv}/spy/` + call_number + "/" + exten + "/" + account_code + "/b", (data, status) => {
             if (status == 'success') {
                 sendAjaxRequest("{{ route('agent.spy') }}", "POST", additionalData);
                 const prom = ezBSAlert({
