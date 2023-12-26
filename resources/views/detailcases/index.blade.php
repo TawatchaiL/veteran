@@ -41,6 +41,8 @@
                                         <div class="form-group">
                                             <button type="button" class="btn btn-success" id="btnsearch">
                                                 <i class="fas fa-search"></i> ค้นหา </button>
+                                                <button type="button" class="btn bg-warning" id="resetSearchButton">
+                                                    <i class="fas fa-search"></i> RESET </button>
                                         </div>
                                     </div>
                                 </ol>
@@ -99,8 +101,7 @@
                                     <thead>
                                         <tr>
                                             <th width="5%">ลำดับ</th>
-                                            <th>วันที่</th>
-                                            <th>เวลา</th>
+                                            <th>วันที่ เวลา</th>
                                             <th>เบอร์โทรศัพท์</th>
                                             <th>เรื่องที่ติดต่อ</th>
                                             <th>รายละเอียดเรื่องที่ติดต่อ</th>

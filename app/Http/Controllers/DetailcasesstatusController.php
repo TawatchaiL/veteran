@@ -50,7 +50,7 @@ class DetailcasesstatusController extends Controller
         }
 
         $datas = DB::table('crm_cases')
-            ->select(DB::raw('ROW_NUMBER() OVER (ORDER BY crm_cases.created_at DESC) as rownumber'),DB::raw('DATE(crm_cases.created_at) as cdate'), DB::raw('TIME(crm_cases.created_at) as ctime'), 'telno', 'casetype1', 'casedetail', 'casestatus', 'tranferstatus', 'users.name as agent')
+            ->select(DB::raw('ROW_NUMBER() OVER (ORDER BY crm_cases.created_at DESC) as rownumber'),DB::raw('crm_cases.created_at as cdate'), DB::raw('TIME(crm_cases.created_at) as ctime'), 'telno', 'casetype1', 'casedetail', 'casestatus', 'tranferstatus', 'users.name as agent')
             ->join('users', 'crm_cases.agent', '=', 'users.id')
             ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '" and casestatus = "' . $request->input('casesstatus') . '"')
             ->get();
@@ -58,10 +58,10 @@ class DetailcasesstatusController extends Controller
         if ($request->ajax()) {
 
             return datatables()->of($datas)
-            ->editColumn('cdate', function ($row) {
-                $adddate = Carbon::parse($row->cdate)->addYears(543)->format('d/m/Y');
-                return $adddate;
-            })
+            //->editColumn('cdate', function ($row) {
+            //    $adddate = Carbon::parse($row->cdate)->addYears(543)->format('d/m/Y');
+            //    return $adddate;
+            //})
                 //->editColumn('checkbox', function ($row) {
                 //    return '<input type="checkbox" id="" class="flat" name="table_records[]" value="" >';
                 //})->rawColumns(['checkbox', 'action'])

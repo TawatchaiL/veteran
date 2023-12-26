@@ -52,8 +52,10 @@
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2 align-self-end">
                                         <div class="form-group">
-                                            <button type="button" class="btn btn-success btnsearch" id="btnsearch">
+                                            <button type="button" class="btn btn-success" id="btnsearch">
                                                 <i class="fas fa-search"></i> ค้นหา </button>
+                                                <button type="button" class="btn bg-warning" id="resetSearchButton">
+                                                    <i class="fas fa-search"></i> RESET </button>
                                         </div>
                                     </div>
                                 </ol>
@@ -112,8 +114,7 @@
                                     <thead>
                                         <tr>
                                             <th width="5%">ลำดับ</th>
-                                            <th>วันที่</th>
-                                            <th>เวลา</th>
+                                            <th>วันที่ เวลา</th>
                                             <th>เบอร์โทรศัพท์</th>
                                             <th>Queue</th>
                                             <th>Agent ที่รับสาย</th>

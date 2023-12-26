@@ -54,6 +54,8 @@
                                         <div class="form-group">
                                             <button type="button" class="btn btn-success" id="btnsearch">
                                                 <i class="fas fa-search"></i> ค้นหา </button>
+                                                <button type="button" class="btn bg-warning" id="resetSearchButton">
+                                                    <i class="fas fa-search"></i> RESET </button>
                                         </div>
                                     </div>
                                 </ol>
@@ -115,8 +117,7 @@
                                             <th width="5%">ลำดับ</th>
                                             <th>Agent ที่รับสาย</th>
                                             <th>เบอร์โทรศัพท์</th>
-                                            <th>วันที่</th>
-                                            <th>เวลา</th>
+                                            <th>วันที่ เวลา</th>
                                             <th>เวลารอสาย</th>
                                             <th>เวลาใข้สาย</th>
                                         </tr>
@@ -129,7 +130,6 @@
                                             <th></th>
                                             <th align="right">รวม</th>
                                             <th align="left"></th>
-                                            <th></th>
                                             <th></th>
                                             <th></th>
                                             <th></th>

@@ -61,7 +61,7 @@ class DetailscoreController extends Controller
 */
         $datas = DB::connection('remote_connection')
             ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.agent_score'))
-            ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), DB::raw('DATE(datetime) as cdate'), DB::raw('TIME(datetime) as ctime'),'clid','queue','crm_id','score' )
+            ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), DB::raw('datetime as cdate'), DB::raw('TIME(datetime) as ctime'),'clid','queue','crm_id','score' )
             ->join('asterisk.queues_config', 'call_center.agent_score.queue', '=', 'asterisk.queues_config.extension')
             ->whereRaw('call_center.agent_score.datetime between "' . $startDate . '" and "' . $endDate . '"'.$sqlagent.' ORDER BY call_center.agent_score.datetime DESC')
             //if(!empty($request->get('agent')) && $request->get('agent') != "0"){
