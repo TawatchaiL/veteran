@@ -496,12 +496,12 @@ class PBXController extends Controller
                 ]);
                 //outbound
             } elseif ($request->input('context') == 'macro-dialout-trunk' || $request->input('context') == 'macro-dial-one' || $request->input('context') == 'from-internal') {
-                $outbound = Project_job_number::where('call_number', '=', '0822846414')
+                $outbound = Project_job_number::where('call_number', '=', $request->input('telno'))
                     ->where('dial_agent', '=', $user->id)
                     ->where('call_status', '=', 0)
                     ->orderBy('job_number_id', 'asc')
                     ->first();
-                dd($request->input('telno'));
+                //dd($request->input('telno'));
                 if (!empty($outbound)) {
                     DB::table('crm_incoming')
                         ->where('telno', $request->input('telno'))
