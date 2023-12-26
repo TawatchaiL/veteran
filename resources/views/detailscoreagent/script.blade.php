@@ -818,8 +818,7 @@ html2canvas(chartContainer).then(canvas => {
                 success: function(res) {
                     options.series = res.datag;
                     options.xaxis.categories = res.datal;
-                    optionsdonut.labels = res.datal; 
-                    optionsdonut.series = [[1,2,3,4,5],[5,6,3,7,5]];
+
                         var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
                         chart2.render();
 
@@ -830,9 +829,22 @@ html2canvas(chartContainer).then(canvas => {
                                                 stroke: {width: 0}
                             });
                             options.series =  res.datag;
-                        var chart3 = new ApexCharts(document.querySelector("#pie_graph"), optionsdonut);
-                            chart3.render();
 
+
+                            $.each(res.datag, function(index, value) {
+                                optionsdonut.labels = res.datal; 
+                                optionsdonut.series = value.data;
+
+                                var innerDiv = $('<div>', {
+                                    id: 'innerDiv'+index,
+                                    class: 'inner-div',
+                                    html: '<p>This is the inner div with id.</p>'
+                                });
+                                $('#pie_graph').append(innerDiv);
+
+                                var chart3 = new ApexCharts(document.querySelector("#innerDiv"+index), optionsdonut);
+                                    chart3.render();
+                            });
 
                 }
             });
