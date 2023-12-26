@@ -102,12 +102,12 @@ class DetailscoreagentController extends Controller
 
                         $a++;
                 //}
-                //$datat[] = ['name' => 'test', 'data' => [10, 15, 23, 5, 9]];
-                //$datat[] = ['name' => 'test', 'data' => [10, 15, 23, 5, 9]];
-                $datat = [
-                    ['name'=>'line 1', 'data'=> [10, 15, 23, 5, 9]],
-                    ['name'=>'line 2', 'data'=> [5, 2, 3, 6, 7]],
-                ];
+                $datat[] = ['name' => 'test', 'data' => [10, 15, 23, 5, 9]];
+                $datat[] = ['name' => 'test', 'data' => [2, 7, 16, 5, 9]];
+                //$datat = [
+                //    ['name'=>'line 1', 'data'=> [10, 15, 23, 5, 9]],
+                //    ['name'=>'line 2', 'data'=> [5, 2, 3, 6, 7]],
+                //];
                 $chart_label = ['5 คะแนน','4 คะแนน','3 คะแนน','2 คะแนน','1 คะแนน'];
                 return response()->json(['datag' => $datat,'datal' => $chart_label, 'cdatat' => $datat]);
             }
