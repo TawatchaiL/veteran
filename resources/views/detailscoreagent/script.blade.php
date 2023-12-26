@@ -819,7 +819,7 @@ html2canvas(chartContainer).then(canvas => {
                     options.series = res.datag;
                     options.xaxis.categories = res.datal;
                     optionsdonut.labels = res.datal; 
-                    optionsdonut.series = [1,2,3,4,5];
+                    optionsdonut.series = [[1,2,3,4,5],[5,6,3,7,5]];
                         var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
                         chart2.render();
 
@@ -831,8 +831,6 @@ html2canvas(chartContainer).then(canvas => {
                             });
                             options.series =  res.datag;
                         var chart3 = new ApexCharts(document.querySelector("#pie_graph"), optionsdonut);
-                            chart3.render();
-
                             chart3.render();
 
 
