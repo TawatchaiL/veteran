@@ -468,7 +468,7 @@ html2canvas(chartContainer).then(canvas => {
             },
 
             aaSorting: [
-                [0, "desc"]
+                [1, "desc"], [2, "desc"]
             ],
             iDisplayLength: 10,
             lengthMenu: [5, 10, 25, 50, 75, 100],

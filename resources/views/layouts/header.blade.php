@@ -91,6 +91,17 @@
 
                 </div>
             </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    คอมเม้น
+                    <i class="far fa-xl fa-comments"></i>
+                    <span class="badge badge-danger navbar-badge" id="hcomment_tab">0</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" id="hcomment_tab_content">
+
+
+                </div>
+            </li>
         @endif
 
     </ul>
