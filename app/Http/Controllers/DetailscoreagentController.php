@@ -97,19 +97,19 @@ class DetailscoreagentController extends Controller
                     } else {
                         $name = count($values);
                     }
-                    
+                    /*
                         $sumagent[0] = (!is_null($values[1])) ? $values[1] : 0;
                         $sumagent[1] = (!is_null($values[2])) ? $values[2] : 0;
                         $sumagent[2] = (!is_null($values[3])) ? $values[3] : 0;
                         $sumagent[3] = (!is_null($values[4])) ? $values[4] : 0;
                         $sumagent[4] = (!is_null($values[5])) ? $values[5] : 0;
-                        /*
+                        */
                         $sumagent[0] = 10;
                         $sumagent[1] = 15;
                         $sumagent[2] = 1;
                         $sumagent[3] = 7;
                         $sumagent[4] = 9;
-                        */
+                        
                         $datat[] = ['name' => $name, 'data' => $sumagent];
                         //$datat[$a]['data'][1] = 2;
                         //$datat[$a]['data'][2] = 3;
