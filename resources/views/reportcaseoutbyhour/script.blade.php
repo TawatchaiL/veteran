@@ -543,7 +543,7 @@ html2canvas(chartContainer).then(canvas => {
                                                 '\n',
                                                 { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
                                                 '\n',
-                                                { text: 'Report : Summary Call External (ผลรวมสายเข้าภายในแยกตามช่วงเวลา) (ผลรวมสายเข้าภายนอกแยกตามช่วงเวลา)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                { text: 'Report : Summary Call External (ผลรวมสายเข้าภายในแยกตามช่วงเวลา)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
                                                 '\n',
                                                 { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
                                             ]
