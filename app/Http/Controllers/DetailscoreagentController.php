@@ -109,7 +109,7 @@ class DetailscoreagentController extends Controller
                         $sumagent[2] = 1;
                         $sumagent[3] = 7;
                         $sumagent[4] = 9;
-                        $datat[] = ['name' => $name, 'data' => $sumagent];
+                        $datat[] = ['name' => $name, 'data' => $values];
                         //$datat[$a]['data'][1] = 2;
                         //$datat[$a]['data'][2] = 3;
                         //$datat[$a]['data'][3] = 4;
