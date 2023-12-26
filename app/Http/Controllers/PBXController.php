@@ -504,7 +504,7 @@ class PBXController extends Controller
                 //dd($request->input('telno'));
                 if (!empty($outbound)) {
                     DB::table('crm_incoming')
-                        ->where('telno', $request->input('telno'))
+                        ->where('uniqid', $request->input('uniqid'))
                         ->where('agent_id', $user->id)
                         ->delete();
                     DB::table('crm_incoming')->insert([
@@ -1056,7 +1056,7 @@ class PBXController extends Controller
 
                 $ret = $this->issable->agent_unbreak($user->phone);
             } else {
-                /* $ck = DB::table('crm_incoming')
+                $ck = DB::table('crm_incoming')
                     ->where('agent_id', $user->id)
                     ->orderByDesc('calltime')
                     ->first();
@@ -1064,7 +1064,7 @@ class PBXController extends Controller
                     DB::table('crm_incoming')
                         ->where('id', $ck->id)
                         ->update(['outbound_latest' => 0]);
-                } */
+                }
                 $ret = $this->issable->agent_unbreak($user->phone);
                 $ret = $this->issable->agent_break($user->phone, $this->outbound_id);
             }
