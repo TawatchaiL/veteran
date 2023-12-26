@@ -95,7 +95,7 @@ class DetailscoreagentController extends Controller
                    if (isset($agent_data[$keys])) {
                         $name = $agent_data[$data->crm_id];
                     } else {
-                        $name = 'Agent not found';
+                        $name = count($values);
                     }
                     
                         $sumagent[0] = (!is_null($values[1])) ? $values[1] : 0;
@@ -110,7 +110,7 @@ class DetailscoreagentController extends Controller
                         $sumagent[3] = 7;
                         $sumagent[4] = 9;
                         */
-                        $datat[] = ['name' => $name, 'data' => $values];
+                        $datat[] = ['name' => $name, 'data' => $sumagent];
                         //$datat[$a]['data'][1] = 2;
                         //$datat[$a]['data'][2] = 3;
                         //$datat[$a]['data'][3] = 4;
