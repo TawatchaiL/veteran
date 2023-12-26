@@ -153,13 +153,13 @@
                                         arrayDate[2]);
                                     */
                                     $('#tnamep' + cardId).val(res.datax.datac
-                                        .tname);
+                                        .tname).change();
                                     $('#fnamep' + cardId).val(res.datax.datac
                                         .fname);
                                     $('#lnamep' + cardId).val(res.datax.datac
                                         .lname);
                                     $('#sexp' + cardId).val(res.datax.datac
-                                        .sex);
+                                        .sex).change();
 
                                     //$('#birthdayp' + cardId).val(res.datax.datac.birthday);
                                     if (res.datax.datac.birthday !== null && res
@@ -182,7 +182,7 @@
                                     $('#agep' + cardId).val(res.datax.datac
                                         .age);
                                     $('#bloodgroupp' + cardId).val(res.datax
-                                        .datac.bloodgroup);
+                                        .datac.bloodgroup).change();
                                     $('#homenop' + cardId).val(res.datax.datac
                                         .homeno);
                                     $('#moop' + cardId).val(res.datax.datac
@@ -865,12 +865,12 @@
                                     //$('#adddatep' + cardId).val(arrayDate[0] + "-" +
                                     //    arrayDate[1] + "-" + arrayDate[2]);
                                     $('#tnamep' + cardId).val(res.datax.datac
-                                        .tname);
+                                        .tname).change();
                                     $('#fnamep' + cardId).val(res.datax.datac
                                         .fname);
                                     $('#lnamep' + cardId).val(res.datax.datac
                                         .lname);
-                                    $('#sexp' + cardId).val(res.datax.datac.sex);
+                                    $('#sexp' + cardId).val(res.datax.datac.sex).change();
                                     //$('#birthdayp' + cardId).val(res.datax.datac.birthday);
                                     if (res.datax.datac.birthday !== null && res
                                         .datax.datac.birthday !== '') {
@@ -888,7 +888,7 @@
 
                                     $('#agep' + cardId).val(res.datax.datac.age);
                                     $('#bloodgroupp' + cardId).val(res.datax.datac
-                                        .bloodgroup);
+                                        .bloodgroup).change();
                                     $('#homenop' + cardId).val(res.datax.datac
                                         .homeno);
                                     $('#moop' + cardId).val(res.datax.datac.moo);

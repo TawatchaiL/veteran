@@ -98,7 +98,6 @@
                                     <strong><i class="fas fa-user-tie"></i> คำนำหน้าชื่อ:</strong>
                                     <select style="width: 100%;" class="select2 select2_single form-control"
                                         id="tnamep{{ $cardid }}" name="tnamep{{ $cardid }}" multiple="multiple">
-                                        <option value="">กรุณาเลือก</option>
                                         <option value="คุณ">คุณ</option>
                                         <option value="เด็กชาย">เด็กชาย</option>
                                         <option value="เด็กหญิง">เด็กหญิง</option>
@@ -135,7 +134,6 @@
                                     <strong><i class="fas fa-user-tie"></i> เพศ:</strong>
                                     <select style="width: 100%;" class="select2 select2_single form-control"
                                         id="sexp{{ $cardid }}" name="sexp{{ $cardid }}" multiple="multiple">
-                                        <option value="">กรุณาเลือก</option>
                                         <option value="ชาย">ชาย</option>
                                         <option value="หญิง">หญิง</option>
                                     </select>
@@ -173,7 +171,6 @@
                                     <strong><i class="fas fa-user-tie"></i> กรุ๊ปเลือด:</strong>
                                     <select style="width: 100%;" class="select2 select2_single form-control"
                                         id="bloodgroupp{{ $cardid }}" name="bloodgroupp{{ $cardid }}" multiple="multiple">
-                                        <option value="">กรุณาเลือก</option>
                                         <option value="A">A</option>
                                         <option value="B">B</option>
                                         <option value="AB">AB</option>

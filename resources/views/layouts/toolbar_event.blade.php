@@ -28,7 +28,8 @@
     socket.on('queuemember', (response) => {
         //console.log(response)
         console.log('queuemember')
-        if (response.data.paused == 1 && response.data.name == exten && response.data.pausedreason !=="Outbound") {
+        if (response.data.paused == 1 && response.data.name == exten && response.data.pausedreason !==
+            "Outbound") {
             //const currentTimestamp = Math.floor(Date.now() / 1000) - response.data.lastpause;
             const currentTimestamp = (response.timestamp / 1000) - response.data.lastpause;
             const formattedTime = formatTime(currentTimestamp);
@@ -40,22 +41,25 @@
 
     socket.on('unwarp', (response) => {
         console.log('unwarp')
-        $.ajax({
-            url: "{{ route('agent.hang') }}",
-            method: 'post',
-            async: true,
-            data: {
-                extension: response.phone,
-                _token: token,
-            },
-            success: function(result) {
-                setTimeout(() => {
-                    set_state_icon(result.id, result.icon, result.message);
-                    set_state_button(result.id);
-                }, 1000);
-                //positionCards();
-            }
-        });
+        if (response.phone == exten) {
+            $.ajax({
+                url: "{{ route('agent.hang') }}",
+                method: 'post',
+                async: true,
+                data: {
+                    extension: response.phone,
+                    _token: token,
+                },
+                success: function(result) {
+                    setTimeout(() => {
+                        set_state_icon(result.id, result.icon, result.message);
+                        set_state_button(result.id);
+                    }, 1000);
+                    //positionCards();
+                }
+            });
+        }
+
     });
 
 
