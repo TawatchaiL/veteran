@@ -90,20 +90,24 @@ class DetailscoreagentController extends Controller
                 }
 
                 $a = 0;
-                //foreach ($datatt as $keys => $values) {
-                        //$datat[$a]['name'] = 'test'.$a;
-                        //$datat[$a]['data'] = array(10, 15, 23, 5, 9);
+                foreach ($datatt as $keys => $values) {
 
-                        //$datat[] = ['name' => 'test', 'data' => [10, 15, 23, 5, 9]];
+                   if (isset($agent_data[$keys])) {
+                        $name = $agent_data[$data->crm_id];
+                    } else {
+                        $name = 'Agent not found';
+                    }
+
+                        $datat[] = ['name' => $name, 'data' => [10, 15, 23, 5, 9]];
                         //$datat[$a]['data'][1] = 2;
                         //$datat[$a]['data'][2] = 3;
                         //$datat[$a]['data'][3] = 4;
                         //$datat[$a]['data'][4] = 5;
 
                         $a++;
-                //}
-                $datat[] = ['name' => 'test', 'data' => [10, 15, 23, 5, 9]];
-                $datat[] = ['name' => 'test', 'data' => [2, 7, 16, 5, 9]];
+                }
+                //$datat[] = ['name' => 'test', 'data' => [10, 15, 23, 5, 9]];
+                //$datat[] = ['name' => 'test', 'data' => [2, 7, 16, 5, 9]];
                 //$datat = [
                 //    ['name'=>'line 1', 'data'=> [10, 15, 23, 5, 9]],
                 //    ['name'=>'line 2', 'data'=> [5, 2, 3, 6, 7]],
