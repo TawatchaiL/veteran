@@ -97,11 +97,18 @@ class DetailscoreagentController extends Controller
                     } else {
                         $name = 'Agent not found';
                     }
+                    /*
                         $sumagent[0] = (!empty($values[1])) ? $values[1] : 0;
-                        $sumagent[1] = (!empty($values[2])) ? $values[1] : 0;
-                        $sumagent[2] = (!empty($values[3])) ? $values[1] : 0;
-                        $sumagent[3] = (!empty($values[4])) ? $values[1] : 0;
-                        $sumagent[4] = (!empty($values[5])) ? $values[1] : 0;
+                        $sumagent[1] = (!empty($values[2])) ? $values[2] : 0;
+                        $sumagent[2] = (!empty($values[3])) ? $values[3] : 0;
+                        $sumagent[3] = (!empty($values[4])) ? $values[4] : 0;
+                        $sumagent[4] = (!empty($values[5])) ? $values[5] : 0;
+                    */
+                        $sumagent[0] = 10;
+                        $sumagent[1] = 15;
+                        $sumagent[2] = 1;
+                        $sumagent[3] = 7;
+                        $sumagent[4] = 9;
                         $datat[] = ['name' => $name, 'data' => $sumagent];
                         //$datat[$a]['data'][1] = 2;
                         //$datat[$a]['data'][2] = 3;
