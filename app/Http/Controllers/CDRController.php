@@ -60,7 +60,7 @@ class CDRController extends Controller
                 $searchtext = $request->input('searchtext');
             }
 
-            $response = Http::withOptions(['verify' => false])->get('https://192.168.1.91/cdr-api.php', [
+            $response = Http::withOptions(['verify' => false])->get('https://192.168.1.10/cdr-api.php', [
                 'start_date' => $startDate,
                 'end_date' => $endDate,
                 'caller_number' => $searchtext,
