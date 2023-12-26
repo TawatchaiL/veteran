@@ -80,7 +80,7 @@ class DetailscoreagentController extends Controller
                    //$chart_data[] = $data->sumscore;
                    //$chart_data['data'][$data->score] = $data->sumscore;
                    //$chart_label[] = $data->score;
-                   //$datatt[$data->crmid][$data->score] = $data->sumscore;
+                   $datatt[$data->crmid][$data->score] = $data->sumscore;
 
                    //if (isset($agent_data[$data->crm_id])) {
                    //     $chart_label[] = $agent_data[$data->crm_id];
@@ -89,22 +89,18 @@ class DetailscoreagentController extends Controller
                    // }
                 }
 
-                /*
+                
                 $a = 0;
                 foreach ($datatt as $keys => $values) {
-                        $datat[$a]['name'] = $agent_data[$keys];
-                        $datat[$a]['data'][0] = $values[0];
-                        $datat[$a]['data'][1] = $values[1];
-                        $datat[$a]['data'][2] = $values[2];
-                        $datat[$a]['data'][3] = $values[3];
-                        $datat[$a]['data'][4] = $values[4];
+                        $datat['name'] = $agent_data[$keys];
+                        $datat['data'] = $values;
                         $a++;
                 }
-                */
-                $datat = [
-                    ['name'=>'line 1', 'data'=> [10, 15, 23, 5, 9]],
-                    ['name'=>'line 2', 'data'=> [5, 2, 3, 6, 7]],
-                ];
+                
+                //$datat = [
+                //    ['name'=>'line 1', 'data'=> [10, 15, 23, 5, 9]],
+                //    ['name'=>'line 2', 'data'=> [5, 2, 3, 6, 7]],
+                //];
                 $chart_label = ['5 คะแนน','4 คะแนน','3 คะแนน','2 คะแนน','1 คะแนน'];
                 return response()->json(['datag' => $datat,'datal' => $chart_label]);
             }
