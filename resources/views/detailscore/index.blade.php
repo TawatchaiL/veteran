@@ -114,8 +114,7 @@
                                     <thead>
                                         <tr>
                                             <th width="5%">ลำดับ</th>
-                                            <th>วันที่</th>
-                                            <th>เวลา</th>
+                                            <th>วันที่ เวลา</th>
                                             <th>เบอร์โทรศัพท์</th>
                                             <th>Queue</th>
                                             <th>Agent ที่รับสาย</th>
