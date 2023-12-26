@@ -715,7 +715,7 @@
                             }
                         });
 
-                        doc.content[0].table.widths = [70, 70, 70, 70, 70, 70, 70, 70, '*'];
+                        doc.content[0].table.widths = [140, 70, 70, 70, 70, 70, 70, '*'];
                         var objLayout = {};
                         objLayout['hLineWidth'] = function(i) {
                             return .5;
@@ -837,10 +837,6 @@
                     name: 'cdate'
                 },
                 {
-                    data: 'ctime',
-                    name: 'ctime'
-                },
-                {
                     data: 'telno',
                     name: 'telno'
                 },
@@ -883,7 +879,7 @@
                 var api = this.api();
 
                 var sum = api
-                    .column(8)
+                    .column(7)
                     .data()
                     .reduce(function(acc, value) {
                         if (value !== null) {
@@ -895,7 +891,7 @@
                         }
                     }, 0);
 
-                $(api.column(8).footer()).html(sum.toFixed(2));
+                $(api.column(7).footer()).html(sum.toFixed(2));
             }
         };
 

@@ -182,14 +182,14 @@ class BillingReportController extends Controller
                 })
                 ->editColumn('cdate', function ($row) {
                     $calldate = $row->calldate;
-                    list($date, $time) = explode(' ', $calldate);
-                    return $date;
+                    //list($date, $time) = explode(' ', $calldate);
+                    return $calldate;
                 })
-                ->editColumn('ctime', function ($row) {
-                    $calldate = $row->calldate;
-                    list($date, $time) = explode(' ', $calldate);
-                    return $time;
-                })
+                //->editColumn('ctime', function ($row) {
+                //    $calldate = $row->calldate;
+                //    list($date, $time) = explode(' ', $calldate);
+                //    return $time;
+                //})
                 /*  ->editColumn('telno', function ($row) use ($agentArray) {
                     if ($row->accountcode !== '') {
                         if (!empty($row->userfield)) {
@@ -225,7 +225,7 @@ class BillingReportController extends Controller
                 ->editColumn('agent', function ($row) use ($agentArray) {
                     if ($row->dst_exten == "QUEUE" || $row->dst == "s") {
                         $telp = $row->accountcode == '' ? $this->getTelpFromDstChannel($row->dstchannel) : $row->accountcode;
-                    } else if ($row->dst_userfield !== "" and $row->userfield == "") {
+                    } else if ($row->dst_userfield !== "" && $row->userfield == "") {
                         $telp = $row->accountcode == '' ? $this->getTelpFromDstChannel($row->dstchannel) : $row->accountcode;
                     } else {
                         $telp = $row->dst;

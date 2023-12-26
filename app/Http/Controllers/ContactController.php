@@ -333,6 +333,49 @@ class ContactController extends Controller
 
         $tab_hold .= '<a href="#" class="dropdown-item dropdown-footer" id="hold_tab_list">ดูรายการคอมเม้น</a>';
 
+        $cstartDate = date("Y-m-d");
+        $datacomment = DB::table('crm_case_comments')
+        ->select('crm_case_comments.comment', 'crm_case_comments.agent', 'crm_case_comments.created_at', 'crm_case_comments.id')
+        ->join('crm_cases', 'crm_case_comments.case_id', '=', 'crm_cases.id')
+        ->where('crm_cases.agent', '=', $user->id)
+        ->whereRaw('crm_case_comments.created_at between "' . $cstartDate . ' 00:00:00" and "' . $cstartDate . ' 23:59:59"')
+        ->get();
+        $countcomment = $datacomment->count();
+        $ctab_hold = '';
+        $c = 0;
+        if ($countcomment > 0) {
+            foreach ($datacomment as $citem) {
+                $ctab_hold .= ' <a href="#" class="dropdown-item hold_tab_a" data-id="' . $citem->id . '">
+                    <div class="media ">
+                        <img src="' . asset('images/user.png') . '" alt="..." class="img-size-50 mr-3 img-circle">
+                        <div class="media-body">
+                            <h3 class="dropdown-item-title">
+                            ' . $citem->telno . '
+                                <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                            </h3>
+                            <p class="text-sm">' . $citem->telno . '</p>
+                            <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i>' . $citem->calltime . '</p>
+                        </div>
+                    </div>
+                </a>
+                <div class="dropdown-divider"></div>';
+                $c++;
+            }
+        } else {
+            $ctab_hold = ' <a href="#" class="dropdown-item hold_tab_em">
+                    <div class="media ">
+                        <img src="' . asset('images/user.png') . '" alt="..." class="img-size-50 mr-3 img-circle">
+                        <div class="media-body">
+                            <h3 class="dropdown-item-title">
+                            ไม่มีรายการคอมเม้น
+                            </h3>
+                        </div>
+                    </div>
+                </a>
+                <div class="dropdown-divider"></div>';
+            $c = 1;
+        }
+
         return response()->json([
             'tab_link' => $tab_link,
             'tab_content' => $tab_content,
