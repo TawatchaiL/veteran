@@ -616,11 +616,11 @@
                                     console.log(result)
                                 }
                             });
-                            const prom = ezBSAlert({
+                           /*  const prom = ezBSAlert({
                                 headerText: "OK",
                                 messageText: "โอนสายสำเร็จ",
                                 alertType: "success",
-                            });
+                            }); */
                             $("[data-toggle=popover]").popover('hide');
                             dialpadcount = 0;
                         } else {
@@ -707,11 +707,11 @@
                                     console.log(result)
                                 }
                             });
-                            const prom = ezBSAlert({
+                            /* const prom = ezBSAlert({
                                 headerText: "OK",
                                 messageText: "โอนสายสำเร็จ",
                                 alertType: "success",
-                            });
+                            }); */
                             $("[data-toggle=popover]").popover('hide');
                             dialpadcount = 0;
                         } else {
@@ -770,11 +770,11 @@
                                     console.log(result)
                                 }
                             });
-                            const prom = ezBSAlert({
+                            /* const prom = ezBSAlert({
                                 headerText: "OK",
                                 messageText: "โอนสายสำเร็จ",
                                 alertType: "success",
-                            });
+                            }); */
                             $("[data-toggle=popover]").popover('hide');
                             dialpadcount = 0;
                         } else {
@@ -844,11 +844,11 @@
                 if (status == 'success') {
                     dial_button.prop('disabled', false);
 
-                    const prom = ezBSAlert({
+                    /* const prom = ezBSAlert({
                         headerText: "OK",
                         messageText: "โทรออกสำเร็จ",
                         alertType: "success",
-                    });
+                    }); */
                     dial_number.val('');
                     $("[data-toggle=popover]").popover('hide');
                     dialpadcount = 0;
@@ -915,11 +915,11 @@
 
                             console.log(status)
                             if (status == 'success') {
-                                const prom = ezBSAlert({
+                               /*  const prom = ezBSAlert({
                                     headerText: "OK",
                                     messageText: "ประชุมสายสำเร็จ",
                                     alertType: "success",
-                                });
+                                }); */
                             } else {
 
                                 const prom = ezBSAlert({
@@ -961,11 +961,11 @@
                 let chan = rowid.split("/");
 
                 $.get(`${api_serv}/hangup/` + chan[1], (data, status) => {
-                    const prom = ezBSAlert({
+                    /* const prom = ezBSAlert({
                         headerText: "OK",
                         messageText: "วางสายสำเร็จ",
                         alertType: "success",
-                    });
+                    }); */
                 });
             }
 
@@ -986,11 +986,11 @@
             async: true, // Use async:true for better performance
             success: function(result) {
                 console.log(result)
-                const prom = ezBSAlert({
+                /* const prom = ezBSAlert({
                     headerText: "OK",
                     messageText: "รับสายสำเร็จ",
                     alertType: "success",
-                });
+                }); */
             }
         });
 
