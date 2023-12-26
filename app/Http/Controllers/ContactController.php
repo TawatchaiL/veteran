@@ -333,6 +333,21 @@ class ContactController extends Controller
 
         $tab_hold .= '<a href="#" class="dropdown-item dropdown-footer" id="hold_tab_list">ดูรายการคอมเม้น</a>';
 
+        $cstartDate = date("Y-m-d");
+        $datacomment = DB::table('crm_case_comments')
+        ->join('crm_cases', 'crm_case_comments.case_id', '=', 'crm_cases.id')
+        ->where('crm_cases.agent', '=', $user->id)
+        ->whereRaw('crm_case_comments.created_at between "' . $cstartDate . ' 00:00:00" and "' . $cstartDate . ' 23:59:59"')
+        ->get();
+        $countcomment = $datacomment->count();
+        if ($countcomment > 0) {
+            foreach ($datacomment as $item) {
+            }
+        } else {
+
+        }
+
+
         return response()->json([
             'tab_link' => $tab_link,
             'tab_content' => $tab_content,
