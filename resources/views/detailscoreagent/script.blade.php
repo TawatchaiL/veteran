@@ -816,10 +816,10 @@ html2canvas(chartContainer).then(canvas => {
                 },
                 method: 'GET',
                 success: function(res) {
-                alert(res.cdatat);
+                //alert(res.cdatat);
                     options.series = res.datag;
-                    options.xaxis.categories = res.datal;
-                    optionsdonut.labels = res.datal; 
+                    options.xaxis = res.datal;
+                    optionsdonut.labels = res.cdatat; 
                     optionsdonut.series = res.datag;
                         var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
                         chart2.render();
