@@ -97,6 +97,15 @@ class DetailscoreagentController extends Controller
                     } else {
                         $name = count($values);
                     }
+
+                    $sumagent[0] = 0;
+                    $sumagent[1] = 0;
+                    $sumagent[2] = 0;
+                    $sumagent[3] = 0;
+                    $sumagent[4] = 0;
+                    foreach ($values as $keys2 => $values2) {
+                        $sumagent[$keys2-1] = $values2;
+                    }
                     /*
                         $sumagent[0] = (!is_null($values[1])) ? $values[1] : 0;
                         $sumagent[1] = (!is_null($values[2])) ? $values[2] : 0;
