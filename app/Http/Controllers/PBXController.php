@@ -1056,6 +1056,15 @@ class PBXController extends Controller
 
                 $ret = $this->issable->agent_unbreak($user->phone);
             } else {
+                $ck = DB::table('crm_incoming')
+                    ->where('agent_id', $user->id)
+                    ->orderByDesc('calltime')
+                    ->first();
+                if ($ck && $ck->outbound_latest == 1) {
+                    DB::table('crm_incoming')
+                        ->where('id', $ck->id)
+                        ->update(['outbound_latest' => 0]);
+                }
                 $ret = $this->issable->agent_unbreak($user->phone);
                 $ret = $this->issable->agent_break($user->phone, $this->outbound_id);
             }
