@@ -501,7 +501,9 @@ class PBXController extends Controller
                     ->where('call_status', 0)
                     ->orderBy('job_number_id', 'asc')
                     ->first();
-                //dd($request->input('telno'));
+
+                // Print the SQL query
+                dd($outbound->toSql());
                 if (!empty($outbound)) {
                     DB::table('crm_incoming')
                         ->where('telno', $request->input('telno'))
