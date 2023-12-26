@@ -89,7 +89,7 @@ class DetailscoreagentController extends Controller
                    // }
                 }
 
-                /*
+               
                 $a = 0;
                 foreach ($datatt as $keys => $values) {
                         $datat[$a]['name'] = $agent_data[$keys];
@@ -100,12 +100,13 @@ class DetailscoreagentController extends Controller
                         $datat[$a]['data'][4] = $values[4];
                         $a++;
                 }
+                 /*
                 $datat = [
                     ['name'=>'line 1', 'data'=> [10, 15, 23, 5, 9]],
                     ['name'=>'line 2', 'data'=> [5, 2, 3, 6, 7]],
                 ];*/
                 $chart_label = ['5 คะแนน','4 คะแนน','3 คะแนน','2 คะแนน','1 คะแนน'];
-                return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
+                return response()->json(['datag' => $datat,'datal' => $chart_label]);
             }
 
         if ($request->ajax()) {
