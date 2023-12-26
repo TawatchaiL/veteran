@@ -879,7 +879,7 @@
                 var api = this.api();
 
                 var sum = api
-                    .column(8)
+                    .column(7)
                     .data()
                     .reduce(function(acc, value) {
                         if (value !== null) {
@@ -891,7 +891,7 @@
                         }
                     }, 0);
 
-                $(api.column(8).footer()).html(sum.toFixed(2));
+                $(api.column(7).footer()).html(sum.toFixed(2));
             }
         };
 
