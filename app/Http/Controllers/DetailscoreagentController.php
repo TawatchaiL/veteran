@@ -92,7 +92,7 @@ class DetailscoreagentController extends Controller
                 
                 $a = 0;
                 foreach ($datatt as $keys => $values) {
-                        $datat[$a]['name'] = $agent_data[$keys];
+                        $datat[$a]['name'] = 'test'.$a;
                         $datat[$a]['data'][0] = 1;
                         $datat[$a]['data'][1] = 2;
                         $datat[$a]['data'][2] = 3;
