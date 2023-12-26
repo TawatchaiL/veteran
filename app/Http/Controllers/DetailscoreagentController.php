@@ -93,7 +93,7 @@ class DetailscoreagentController extends Controller
                 foreach ($datatt as $keys => $values) {
 
                    if (isset($agent_data[$keys])) {
-                        $name = $agent_data[$data->crm_id];
+                        $name = count($values);
                     } else {
                         $name = count($values);
                     }
