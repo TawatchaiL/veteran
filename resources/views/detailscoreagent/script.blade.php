@@ -816,10 +816,9 @@ html2canvas(chartContainer).then(canvas => {
                 },
                 method: 'GET',
                 success: function(res) {
-                //alert(res.cdatat);
                     options.series = res.datag;
-                    options.xaxis = res.datal;
-                    optionsdonut.labels = res.cdatat; 
+                    options.xaxis.categories = res.datal;
+                    optionsdonut.labels = res.datal; 
                     optionsdonut.series = res.datag;
                         var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
                         chart2.render();
@@ -827,8 +826,8 @@ html2canvas(chartContainer).then(canvas => {
                         var chart = new ApexCharts(document.querySelector("#bar_graph"), options);
                         chart.render();
                             chart.updateOptions({chart: {type: "bar",animate: true},
-                                                //labels: '',
-                                                //stroke: {width: 0}
+                                                labels: '',
+                                                stroke: {width: 0}
                             });
                             options.series =  res.datag;
                         var chart3 = new ApexCharts(document.querySelector("#pie_graph"), optionsdonut);
