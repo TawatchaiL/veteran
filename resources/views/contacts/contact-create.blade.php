@@ -13,7 +13,12 @@
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-
+        <div class="modal-footer {{-- justify-content-between --}}">
+            <button type="button" class="btn btn-success SubmitCreateFormP-button" data-id=""
+                data-tabid="{{ $cardid }}" data-uniqid="{{ $cardid }}"
+                id="SubmitCreateFormP{{ $cardid }}"><i class="fas fa-download"></i>
+                บันทึกข้อมูล</button>
+        </div>
         {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
         <div class="text-end"><input type="hidden" value="" name="contractid{{ $cardid }}"
                 id="contractid{{ $cardid }}"><input type="hidden" value="{{ $telephone }}"
