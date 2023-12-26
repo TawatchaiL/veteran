@@ -77,16 +77,18 @@ class DetailscoreagentController extends Controller
                 $chart_data = array();
                 $chart_label = array();
                 foreach ($datas as $data) {
-                   $chart_data[] = $data->sumscore;
-                   //$chart_data[$data->crm_id][$data->score] = $data->sumscore;
+                   //$chart_data[] = $data->sumscore;
+                   $chart_data['data'][$data->score] = $data->sumscore;
                    //$chart_label[] = $data->score;
                    //$datatt[$data->crmid][$data->score] = $data->sumscore;
-                   if (isset($agent_data[$data->crm_id])) {
-                        $chart_label[] = $agent_data[$data->crm_id];
-                    } else {
-                        $chart_label[] = 'Agent not found';
-                    }
+
+                   //if (isset($agent_data[$data->crm_id])) {
+                   //     $chart_label[] = $agent_data[$data->crm_id];
+                   // } else {
+                   //     $chart_label[] = 'Agent not found';
+                   // }
                 }
+
                 /*
                 $a = 0;
                 foreach ($datatt as $keys => $values) {
@@ -102,7 +104,7 @@ class DetailscoreagentController extends Controller
                     ['name'=>'line 1', 'data'=> [10, 15, 23, 5, 9]],
                     ['name'=>'line 2', 'data'=> [5, 2, 3, 6, 7]],
                 ];*/
-                //$chart_label = ['5 คะแนน','4 คะแนน','3 คะแนน','2 คะแนน','1 คะแนน'];
+                $chart_label = ['5 คะแนน','4 คะแนน','3 คะแนน','2 คะแนน','1 คะแนน'];
                 return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
             }
 
