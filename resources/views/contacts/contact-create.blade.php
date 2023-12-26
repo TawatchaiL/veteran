@@ -16,7 +16,7 @@
         <div class="modal-footer {{-- justify-content-between --}}">
             <button type="button" class="btn btn-success SubmitCreateFormP-button" data-id=""
                 data-tabid="{{ $cardid }}" data-uniqid="{{ $cardid }}"
-                id="SubmitCreateFormP{{ $cardid }}"><i class="fas fa-download"></i>
+                id="SubmitCreateFormP{{ $cardid }}1"><i class="fas fa-download"></i>
                 บันทึกข้อมูล</button>
         </div>
         {!! Form::open(['method' => 'POST', 'class' => 'form']) !!}
@@ -514,7 +514,7 @@
         <div class="modal-footer {{-- justify-content-between --}}">
             <button type="button" class="btn btn-success SubmitCreateFormP-button" data-id=""
                 data-tabid="{{ $cardid }}" data-uniqid="{{ $cardid }}"
-                id="SubmitCreateFormP{{ $cardid }}"><i class="fas fa-download"></i>
+                id="SubmitCreateFormP{{ $cardid }}2"><i class="fas fa-download"></i>
                 บันทึกข้อมูล</button>
         </div>
 

@@ -331,7 +331,7 @@ class ContactController extends Controller
         }
 
 
-        $tab_hold .= '<a href="#" class="dropdown-item dropdown-footer" id="hold_tab_list">ดูรายการผู้ติดต่อ</a>';
+        $tab_hold .= '<a href="#" class="dropdown-item dropdown-footer" id="hold_tab_list">ดูรายการคอมเม้น</a>';
 
         return response()->json([
             'tab_link' => $tab_link,
