@@ -97,8 +97,12 @@ class DetailscoreagentController extends Controller
                     } else {
                         $name = 'Agent not found';
                     }
-
-                        $datat[] = ['name' => $name, 'data' => [10, 15, 23, 5, 9]];
+                        $sumagent[0] = $values[1];
+                        $sumagent[1] = $values[2];
+                        $sumagent[2] = $values[3];
+                        $sumagent[3] = $values[4];
+                        $sumagent[4] = $values[5];
+                        $datat[] = ['name' => $name, 'data' => $sumagent];
                         //$datat[$a]['data'][1] = 2;
                         //$datat[$a]['data'][2] = 3;
                         //$datat[$a]['data'][3] = 4;
