@@ -496,13 +496,13 @@ class PBXController extends Controller
                 ]);
                 //outbound
             } elseif ($request->input('context') == 'macro-dialout-trunk' || $request->input('context') == 'macro-dial-one' || $request->input('context') == 'from-internal') {
-                $outbound = Project_job_number::where('call_number', $request->input('telno'))
-                    ->where('dial_agent', $user->id)
-                    ->where('call_status', 0)
+                $outbound = Project_job_number::where('call_number', '=', $request->input('telno'))
+                    ->where('dial_agent', '=', $user->id)
+                    ->where('call_status', '=', 0)
                     ->orderBy('job_number_id', 'asc')
                     ->first();
-                //dd($outbound);
-                //if (!empty($outbound)) {
+                dd($outbound);
+                if (!empty($outbound)) {
                     DB::table('crm_incoming')
                         ->where('telno', $request->input('telno'))
                         ->where('agent_id', $user->id)
@@ -523,7 +523,7 @@ class PBXController extends Controller
                         'call_status' => 1,
                         'call_date' => date("Y-m-d H:i:s"),
                     ]);
-                //}
+                }
             }
 
 
