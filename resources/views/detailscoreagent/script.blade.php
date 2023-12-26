@@ -817,7 +817,7 @@ html2canvas(chartContainer).then(canvas => {
                 method: 'GET',
                 success: function(res) {
                     options.series = res.datag;
-                    options.xaxis.categories = res.datal;
+                    options.xaxis = res.datal;
                     optionsdonut.labels = res.datal; 
                     optionsdonut.series = res.datag;
                         var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
