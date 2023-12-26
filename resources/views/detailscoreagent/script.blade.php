@@ -827,8 +827,8 @@ html2canvas(chartContainer).then(canvas => {
                         var chart = new ApexCharts(document.querySelector("#bar_graph"), options);
                         chart.render();
                             chart.updateOptions({chart: {type: "bar",animate: true},
-                                                labels: '',
-                                                stroke: {width: 0}
+                                                //labels: '',
+                                                //stroke: {width: 0}
                             });
                             options.series =  res.datag;
                         var chart3 = new ApexCharts(document.querySelector("#pie_graph"), optionsdonut);
