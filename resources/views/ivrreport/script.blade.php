@@ -576,7 +576,7 @@
                             }
                         });
 
-                        doc.content[0].table.widths = [40, 95, 95, 95, 95, '*'];
+                        doc.content[0].table.widths = [40, 160, 100, 100, '*'];
                         var objLayout = {};
                         objLayout['hLineWidth'] = function(i) {
                             return .5;
