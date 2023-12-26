@@ -182,14 +182,14 @@ class BillingReportController extends Controller
                 })
                 ->editColumn('cdate', function ($row) {
                     $calldate = $row->calldate;
-                    list($date, $time) = explode(' ', $calldate);
-                    return $date;
+                    //list($date, $time) = explode(' ', $calldate);
+                    return $calldate;
                 })
-                ->editColumn('ctime', function ($row) {
-                    $calldate = $row->calldate;
-                    list($date, $time) = explode(' ', $calldate);
-                    return $time;
-                })
+                //->editColumn('ctime', function ($row) {
+                //    $calldate = $row->calldate;
+                //    list($date, $time) = explode(' ', $calldate);
+                //    return $time;
+                //})
                 /*  ->editColumn('telno', function ($row) use ($agentArray) {
                     if ($row->accountcode !== '') {
                         if (!empty($row->userfield)) {

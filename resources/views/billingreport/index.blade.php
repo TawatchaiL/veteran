@@ -170,8 +170,7 @@
                                 <table id="Listview" class="table table-bordered table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th>วันที่</th>
-                                            <th>เวลา</th>
+                                            <th>วันที่ เวลา</th>
                                             <th>เบอร์ต้นทาง</th>
                                             <th>เบอร์ปลายทาง</th>
                                             <th>เวลาที่ใช้สาย</th>
@@ -188,7 +187,6 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th></th>
                                             <th></th>
                                             <th></th>
                                             <th></th>
