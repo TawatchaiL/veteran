@@ -816,6 +816,7 @@ html2canvas(chartContainer).then(canvas => {
                 },
                 method: 'GET',
                 success: function(res) {
+                alert(res.cdatat);
                     options.series = res.datag;
                     options.xaxis.categories = res.datal;
                     optionsdonut.labels = res.datal; 
