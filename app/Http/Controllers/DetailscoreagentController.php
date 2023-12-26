@@ -80,7 +80,7 @@ class DetailscoreagentController extends Controller
                    //$chart_data[] = $data->sumscore;
                    //$chart_data['data'][$data->score] = $data->sumscore;
                    //$chart_label[] = $data->score;
-                   $datatt[$data->crmid][$data->score] = $data->sumscore;
+                   $datatt[$data->crm_id][$data->score] = $data->sumscore;
 
                    //if (isset($agent_data[$data->crm_id])) {
                    //     $chart_label[] = $agent_data[$data->crm_id];
