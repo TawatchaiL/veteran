@@ -91,19 +91,20 @@ class DetailscoreagentController extends Controller
 
                 
                 $a = 0;
-                foreach ($datatt as $keys => $values) {
+                //foreach ($datatt as $keys => $values) {
                         //$datat[$a]['name'] = 'test'.$a;
                         //$datat[$a]['data'] = array(10, 15, 23, 5, 9);
 
-                        $datat[] = array('name' => 'test', 'data' => array(10, 15, 23, 5, 9));
+                        $datat[] = ['name' => 'test', 'data' => [10, 15, 23, 5, 9]];
                         //$datat[$a]['data'][1] = 2;
                         //$datat[$a]['data'][2] = 3;
                         //$datat[$a]['data'][3] = 4;
                         //$datat[$a]['data'][4] = 5;
 
                         $a++;
-                }
-                
+                //}
+                $datat[] = ['name' => 'test', 'data' => [10, 15, 23, 5, 9]];
+                $datat[] = ['name' => 'test', 'data' => [10, 15, 23, 5, 9]];
                 //$datat = [
                 //    ['name'=>'line 1', 'data'=> [10, 15, 23, 5, 9]],
                 //    ['name'=>'line 2', 'data'=> [5, 2, 3, 6, 7]],
