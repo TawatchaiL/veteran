@@ -225,7 +225,7 @@ class BillingReportController extends Controller
                 ->editColumn('agent', function ($row) use ($agentArray) {
                     if ($row->dst_exten == "QUEUE" || $row->dst == "s") {
                         $telp = $row->accountcode == '' ? $this->getTelpFromDstChannel($row->dstchannel) : $row->accountcode;
-                    } else if ($row->dst_userfield !== "" and $row->userfield == "") {
+                    } else if ($row->dst_userfield !== "" && $row->userfield == "") {
                         $telp = $row->accountcode == '' ? $this->getTelpFromDstChannel($row->dstchannel) : $row->accountcode;
                     } else {
                         $telp = $row->dst;
