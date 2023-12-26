@@ -481,10 +481,10 @@ class PBXController extends Controller
         if ($user) {
             //check if queue call send to popup record
             if ($request->input('context') == 'ext-queues') {
-                /*  DB::table('crm_incoming')
-                    ->where('telno', $request->input('telno'))
+                DB::table('crm_incoming')
+                    ->where('uniqid', $request->input('uniqid'))
                     ->where('agent_id', $user->id)
-                    ->delete(); */
+                    ->delete();
                 DB::table('crm_incoming')->insert([
                     'agent_id' => $user->id,
                     'uniqid' => $request->input('uniqid'),
@@ -920,49 +920,50 @@ class PBXController extends Controller
                 ->whereNull('wrap_end')
                 ->first();
 
-            $wrap_end = Carbon::now();
-            $wrap_start = Carbon::parse($resultb->wrap_start);
+            if ($resultb !== null) {
+                $wrap_end = Carbon::now();
+                $wrap_start = Carbon::parse($resultb->wrap_start);
 
-            $duration = $wrap_start->diffInSeconds($wrap_end);
+                $duration = $wrap_start->diffInSeconds($wrap_end);
 
-            /* $resulth = DB::table('crm_incoming')->where('uniqid', $request->get('uniqid'))->first();
+                /* $resulth = DB::table('crm_incoming')->where('uniqid', $request->get('uniqid'))->first();
             $hold_duration = $resulth ? $resulth->holdtime : 0; */
 
-            DB::connection('remote_connection')
-                ->table('call_center.wrap_data')
-                ->where('id_agent', $user->agent_id)
-                ->whereNull('wrap_end')
-                ->update([
-                    'wrap_end' => $wrap_end,
-                    'duration' => $duration,
-                ]);
-            if ($user->agent_type == "Inbound") {
                 DB::connection('remote_connection')
-                    ->table('call_center.call_entry')
-                    ->where('uniqueid', $resultb->uniqid)
+                    ->table('call_center.wrap_data')
+                    ->where('id_agent', $user->agent_id)
+                    ->whereNull('wrap_end')
                     ->update([
-                        'crm_id' => $user->id,
-                        //'duration_hold' => $hold_duration,
-                        'duration_warp' => $duration
+                        'wrap_end' => $wrap_end,
+                        'duration' => $duration,
                     ]);
+                if ($user->agent_type == "Inbound") {
+                    DB::connection('remote_connection')
+                        ->table('call_center.call_entry')
+                        ->where('uniqueid', $resultb->uniqid)
+                        ->update([
+                            'crm_id' => $user->id,
+                            //'duration_hold' => $hold_duration,
+                            'duration_warp' => $duration
+                        ]);
 
-                DB::connection('remote_connection')
-                    ->table('call_center.call_entry_today')
-                    ->where('uniqueid', $resultb->uniqid)
-                    ->update([
-                        'crm_id' => $user->id,
-                        //'duration_hold' => $hold_duration,
-                        'duration_warp' => $duration
-                    ]);
+                    DB::connection('remote_connection')
+                        ->table('call_center.call_entry_today')
+                        ->where('uniqueid', $resultb->uniqid)
+                        ->update([
+                            'crm_id' => $user->id,
+                            //'duration_hold' => $hold_duration,
+                            'duration_warp' => $duration
+                        ]);
 
-                DB::connection('remote_connection')
-                    ->table('call_center.call_recording')
-                    ->where('uniqueid', $resultb->uniqid)
-                    ->update([
-                        'crm_id' => $user->id,
-                    ]);
+                    DB::connection('remote_connection')
+                        ->table('call_center.call_recording')
+                        ->where('uniqueid', $resultb->uniqid)
+                        ->update([
+                            'crm_id' => $user->id,
+                        ]);
 
-                /* DB::connection('remote_connection')
+                    /* DB::connection('remote_connection')
                 ->table('call_center.call_recording')
                 ->where('uniqueid', $resultb->uniqid)
                 ->update([
@@ -971,10 +972,11 @@ class PBXController extends Controller
 
 
 
-                $ret = $this->issable->agent_unbreak($user->phone);
-            } else {
-                $ret = $this->issable->agent_unbreak($user->phone);
-                $ret = $this->issable->agent_break($user->phone, $this->outbound_id);
+                    $ret = $this->issable->agent_unbreak($user->phone);
+                } else {
+                    $ret = $this->issable->agent_unbreak($user->phone);
+                    $ret = $this->issable->agent_break($user->phone, $this->outbound_id);
+                }
             }
 
             $user->phone_status_id = 1;
