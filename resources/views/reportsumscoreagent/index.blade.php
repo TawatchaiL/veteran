@@ -110,7 +110,7 @@
                                             <i class="fas fa-file-image"></i> บันทึกเป็นรูป
                                         </button>
                                     </div>
-                                    <div class="col-sm-10 mx-auto text-center" id="bar_chart_div">
+                                    <div class="col-sm-10 mx-auto text-center" id="line_graph_div">
                                         <div id="line_graph" ></div>
                                     </div>
                                 </div>
@@ -124,7 +124,7 @@
                                             <i class="fas fa-file-image"></i> บันทึกเป็นรูป
                                         </button>
                                     </div>
-                                    <div class="col-sm-10 mx-auto text-center" id="bar_chart_div">
+                                    <div class="col-sm-10 mx-auto text-center" id="pie_graph_div">
                                         <div id="pie_graph" ></div>
                                     </div>
                                 </div>
