@@ -89,7 +89,7 @@ class DetailscoreagentController extends Controller
                    // }
                 }
 
-                
+                $datat = [];
                 $a = 0;
                 //foreach ($datatt as $keys => $values) {
                         //$datat[$a]['name'] = 'test'.$a;
