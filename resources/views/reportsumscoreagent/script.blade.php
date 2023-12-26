@@ -802,7 +802,7 @@ html2canvas(chartContainer).then(canvas => {
                 var rstatus = 'report';
 
                 $.ajax({
-                url: '{{ route('reportcasetop10') }}',
+                url: '{{ route('reportsumscoreagent') }}',
                 data: {
                     sdate: rdate,
                     rstatus: rstatus
