@@ -60,7 +60,7 @@ class BillingReportController extends Controller
         $ratea = array('Minute' => 'นาที', 'Call' => 'ครั้ง');
 
         foreach ($agens as $agen) {
-            $agentArray[$agen->id]['name'] = $agen->name;
+            $agentArray[$agen->id]['name'] = explode(' ', $agen->name)[0];
         }
 
         $department = Department::orderBy('id', 'asc')->get();
@@ -240,7 +240,7 @@ class BillingReportController extends Controller
                     }
                 })
                 ->editColumn('duration', function ($row) {
-                    $durationInSeconds = $row->billsec;
+                    $durationInSeconds = $row->duration;
                     $hours = floor($durationInSeconds / 3600);
                     $minutes = floor(($durationInSeconds % 3600) / 60);
                     $seconds = $durationInSeconds % 60;

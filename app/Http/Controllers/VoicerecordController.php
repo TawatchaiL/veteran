@@ -178,7 +178,7 @@ class VoicerecordController extends Controller
                     }
                 })
                 ->editColumn('duration', function ($row) {
-                    $durationInSeconds = $row->billsec;
+                    $durationInSeconds = $row->duration;
                     $hours = floor($durationInSeconds / 3600);
                     $minutes = floor(($durationInSeconds % 3600) / 60);
                     $seconds = $durationInSeconds % 60;

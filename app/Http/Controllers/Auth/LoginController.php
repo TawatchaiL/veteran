@@ -223,8 +223,10 @@ class LoginController extends Controller
                     ->where('id', '!=', $user->agent_id)
                     ->where('number', '=', $request->phone)
                     ->count(); */
-                /* $inuseCount = User::where('id', '!=', $user->id)
+                /*  $inuseCount = User::where('id', '!=', $user->id)
                     ->where('phone', '=', $request->phone)
+                    ->count(); */
+                $inuseCount = User::where('phone', '=', $request->phone)
                     ->count();
 
                 if ($inuseCount > 0) {
@@ -234,7 +236,7 @@ class LoginController extends Controller
                         ->withErrors(['email' => 'หมายเลขโทรศัพท์ถูกใช้งานแล้ว']);
                 } else {
                     $user->agent_id = $issable->id;
-                } */
+                }
 
                 $user->agent_id = $issable->id;
 

@@ -473,7 +473,7 @@
             //.add(1, 'month').add(543, 'year').format('LLLL')
             var currentDate = moment();
             console.log(currentDate)
-            startDate = moment(currentDate).subtract(30, 'days').startOf('day').format('YYYY-MM-DD HH:mm:ss');
+            startDate = moment(currentDate).subtract(1, 'days').startOf('day').format('YYYY-MM-DD HH:mm:ss');
             endDate = moment(currentDate).endOf('month').endOf('day').format('YYYY-MM-DD HH:mm:ss');
         }
 
@@ -693,7 +693,7 @@
                             return {
                                 columns: [
                                     {
-                                        text: [  
+                                        text: [
                                                 { text: 'CRM REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
                                                 '\n',
                                                 { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
@@ -831,6 +831,10 @@
                 {
                     data: 'duration',
                     name: 'duration'
+                },
+                {
+                    data: 'disposition',
+                    name: 'disposition'
                 },
                 {
                     data: 'action',

@@ -381,7 +381,9 @@ class DashboardController extends Controller
         }
 
         $agents = User::where('queue', 'LIKE', '%' . $request->get('queue') . '%')
-            ->orderBy('id', 'asc')
+            //->where('phone_status_id', '!=', 0)
+            ->orderBy('phone_status_id', 'desc')
+            ->orderBy('phone', 'desc')
             ->get();
 
         $html = '';
