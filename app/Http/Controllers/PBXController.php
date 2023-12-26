@@ -500,7 +500,7 @@ class PBXController extends Controller
                     ->where('dial_agent', '=', $user->id)
                     ->where('call_status', '=', 0)
                     ->orderBy('job_number_id', 'asc')
-                    ->first();
+                    ->get();
                 dd($outbound);
                 if (!empty($outbound)) {
                     DB::table('crm_incoming')
