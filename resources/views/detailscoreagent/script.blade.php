@@ -813,8 +813,8 @@ html2canvas(chartContainer).then(canvas => {
                     //offsetY: 0,
                     //offsetX: 0
                     position: 'right',
-                    offsetY: 0,
-                    offsetX: 0,
+                    offsetY: 20,
+                    offsetX: -200,
                     height: 230,
                 }
                 };
