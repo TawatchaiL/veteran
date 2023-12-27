@@ -54,23 +54,9 @@ class ReportDetailAbandonada extends Controller
             ->whereRaw('call_center.call_entry.datetime_entry_queue between "' . $startDate . '" and "' . $endDate . '" ORDER BY call_center.call_entry.datetime_entry_queue DESC')
             ->get();
 
-        $agents = User::orderBy("id", "asc")->get();
-            $agent_data = array();
-            foreach ($agents as $agent) {
-                $agent_data[$agent->id] = $agent->name;
-            }
-
         if ($request->ajax()) {
 
-            return datatables()->of($datas)
-                ->addColumn('agent', function ($row) use ($agent_data){
-                    if (isset($agent_data[$row->crm_id])) {
-                        return $agent_data[$row->crm_id];
-                    } else {
-                        return 'Agent not found';
-                    }
-                })
-                ->toJson();
+            return datatables()->of($datas)->toJson();
         }
 
         return view('reportdetailabandonada.index')->with(['agents' => $agents]);
