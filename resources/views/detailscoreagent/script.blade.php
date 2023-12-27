@@ -776,7 +776,7 @@ html2canvas(chartContainer).then(canvas => {
                     type: 'gradient',
                 },
                 title: {
-                    text: 'ผลรวมการประเมินความพึงพอใจ ราย Agent ที่รับสาย',
+                    text: '',
                     align: 'center',
                     style: {
                         fontSize: '16px',
