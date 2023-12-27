@@ -765,7 +765,7 @@ html2canvas(chartContainer).then(canvas => {
                 series: [],
                 chart: {
                     type: 'donut',
-                    height: 250,
+                    height: 300,
                     toolbar: {
                         show: false
                     },
@@ -789,6 +789,12 @@ html2canvas(chartContainer).then(canvas => {
                     floating: false,
                 },
                 labels: [],
+                dataLabels: {
+                dropShadow: {
+                    blur: 3,
+                    opacity: 0.8
+                }
+                },
                 responsive: [{
                     breakpoint: 200,
                     options: {
