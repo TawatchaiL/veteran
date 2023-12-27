@@ -837,8 +837,7 @@ html2canvas(chartContainer).then(canvas => {
 
                                 var innerDiv = $('<div>', {
                                     id: 'innerDiv'+index,
-                                    class: 'inner-div',
-                                    html: '<p>This is the inner div with id.</p>'
+                                    class: 'inner-div'
                                 });
                                 $('#pie_graph').append(innerDiv);
 
