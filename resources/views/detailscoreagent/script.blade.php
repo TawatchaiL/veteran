@@ -761,7 +761,7 @@ html2canvas(chartContainer).then(canvas => {
                 }
             }
             };
- /*           
+                     
             let optionsdonut = {
                 series: [],
                 chart: {
@@ -807,42 +807,14 @@ html2canvas(chartContainer).then(canvas => {
                         }
                     }
                 }]
+                ,
+  legend: {
+    position: 'top',
+    horizontalAlign: 'left',
+    offsetY: -20,
+    offsetX: -30
+  }
                 };
-*/    
-
-                    var optionsdonut = {
-                    chart: {
-                        type: 'donut',
-                        width: '100%'
-                    },
-                    dataLabels: {
-                        enabled: false,
-                    },
-                    plotOptions: {
-                        pie: {
-                        donut: {
-                            size: '75%',
-                        },
-                        offsetY: 20,
-                        },
-                        stroke: {
-                        colors: undefined
-                        }
-                    },
-                    colors: colorPalette,
-                    title: {
-                        text: '',
-                        style: {
-                        fontSize: '18px'
-                        }
-                    },
-                    series: [],
-                    labels: [],
-                    legend: {
-                        position: 'left',
-                        offsetY: 80
-                    }
-                    }
 
                 var rdate = $('#reservation').val();
                 var rstatus = 'report';
