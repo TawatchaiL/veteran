@@ -1,11 +1,8 @@
 @extends('layouts.app')
 
 @section('style')
-    @include('reportcase.style')
+    @include('reportcasebyagent.style')
 @endsection
-
-
-
 @section('content')
     <section class="content-header">
         <div class="container-fluid">
@@ -200,5 +197,5 @@
 @endsection
 
 @section('script')
-    @include('reportcase.script')
+    @include('reportcasebyagent.script')
 @endsection

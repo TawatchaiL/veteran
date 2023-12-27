@@ -11,206 +11,206 @@
     $(document).ready(function() {
         $('#download_bar').click(function(event) {
 
-var chartContainer = document.querySelector("#bar_graph");
-html2canvas(chartContainer).then(canvas => {
-    var imgData = canvas.toDataURL("image/png");
-    let docDefinition = {
-    defaultStyle: {
-        font: 'THSarabun',
-        fontSize: 16
-    },
-    content: {
-        image: imgData,
-        width: 570
-},
-    pageMargins: [20, 150, 20, 30],
-    styles: {
-        tableHeader: {
-            fontSize: 16
+        var chartContainer = document.querySelector("#bar_graph");
+        html2canvas(chartContainer).then(canvas => {
+            var imgData = canvas.toDataURL("image/png");
+            let docDefinition = {
+            defaultStyle: {
+                font: 'THSarabun',
+                fontSize: 16
+            },
+            content: {
+                image: imgData,
+                width: 570
         },
-        tableBodyOdd: {
-            alignment: 'center'
-        },
-        tableBodyEven: {
-            alignment: 'center'
-        },
-        tableFooter: {
-            fontSize: 16
-        }
-    },
-    header: (function() {
-        return {
-            columns: [
-                {
-                    text: [  
-                                                { text: 'Callcenter REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
-                                                '\n',
-                                                { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
-                                                '\n',
-                                                { text: 'Report : Summary Incoming Call By Agent (ผลรวมสายเข้าแยกตาม Agent)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
-                                                '\n',
-                                                { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
-                                            ]
+            pageMargins: [20, 150, 20, 30],
+            styles: {
+                tableHeader: {
+                    fontSize: 16
+                },
+                tableBodyOdd: {
+                    alignment: 'center'
+                },
+                tableBodyEven: {
+                    alignment: 'center'
+                },
+                tableFooter: {
+                    fontSize: 16
                 }
-            ],
-            margin: 20
+            },
+            header: (function() {
+                return {
+                    columns: [
+                        {
+                            text: [  
+                                                        { text: 'Callcenter REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
+                                                        '\n',
+                                                        { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                        '\n',
+                                                        { text: 'Report : Summary Incoming Call By Agent (ผลรวมสายเข้าแยกตาม Agent)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                        '\n',
+                                                        { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
+                                                    ]
+                        }
+                    ],
+                    margin: 20
+                };
+            })
         };
-    })
-};
-pdfMake.createPdf(docDefinition).download('reports.pdf');
-});
+        pdfMake.createPdf(docDefinition).download('reports.pdf');
+        });
 
-});
+        });
 
-$('#download_bar_img').click(function(event) {
-var chartContainer = document.querySelector("#bar_graph");
+        $('#download_bar_img').click(function(event) {
+        var chartContainer = document.querySelector("#bar_graph");
 
-html2canvas(chartContainer).then(canvas => {
-    var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
+        html2canvas(chartContainer).then(canvas => {
+            var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
 
-    // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
-    var link = document.createElement('a');
-    link.href = imgData;
-    link.download = 'bar_chart.png'; // ชื่อไฟล์ที่จะบันทึก
-    link.click();
-});
-});
+            // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
+            var link = document.createElement('a');
+            link.href = imgData;
+            link.download = 'bar_chart.png'; // ชื่อไฟล์ที่จะบันทึก
+            link.click();
+        });
+        });
 
-$('#download_line').click(function(event) {
+        $('#download_line').click(function(event) {
 
-var chartContainer = document.querySelector("#line_graph");
+        var chartContainer = document.querySelector("#line_graph");
 
-html2canvas(chartContainer).then(canvas => {
-    var imgData = canvas.toDataURL("image/png");
-    let docDefinition = {
-    defaultStyle: {
-        font: 'THSarabun',
-        fontSize: 16
-    },
-    content: {
-        image: imgData,
-        width: 570
-},
-    pageMargins: [20, 150, 20, 30],
-    styles: {
-        tableHeader: {
-            fontSize: 16
+        html2canvas(chartContainer).then(canvas => {
+            var imgData = canvas.toDataURL("image/png");
+            let docDefinition = {
+            defaultStyle: {
+                font: 'THSarabun',
+                fontSize: 16
+            },
+            content: {
+                image: imgData,
+                width: 570
         },
-        tableBodyOdd: {
-            alignment: 'center'
-        },
-        tableBodyEven: {
-            alignment: 'center'
-        },
-        tableFooter: {
-            fontSize: 16
-        }
-    },
-    header: (function() {
-        return {
-            columns: [
-                {
-                    text: [  
-                                                { text: 'Callcenter REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
-                                                '\n',
-                                                { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
-                                                '\n',
-                                                { text: 'Report : Summary Incoming Call By Agent (ผลรวมสายเข้าแยกตาม Agent)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
-                                                '\n',
-                                                { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
-                                            ]
+            pageMargins: [20, 150, 20, 30],
+            styles: {
+                tableHeader: {
+                    fontSize: 16
+                },
+                tableBodyOdd: {
+                    alignment: 'center'
+                },
+                tableBodyEven: {
+                    alignment: 'center'
+                },
+                tableFooter: {
+                    fontSize: 16
                 }
-            ],
-            margin: 20
+            },
+            header: (function() {
+                return {
+                    columns: [
+                        {
+                            text: [  
+                                                        { text: 'Callcenter REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
+                                                        '\n',
+                                                        { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                        '\n',
+                                                        { text: 'Report : Summary Incoming Call By Agent (ผลรวมสายเข้าแยกตาม Agent)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                        '\n',
+                                                        { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
+                                                    ]
+                        }
+                    ],
+                    margin: 20
+                };
+            })
         };
-    })
-};
-pdfMake.createPdf(docDefinition).download('reports.pdf');
-});
+        pdfMake.createPdf(docDefinition).download('reports.pdf');
+        });
 
-});
+        });
 
-$('#download_line_img').click(function(event) {
-var chartContainer = document.querySelector("#line_graph");
+        $('#download_line_img').click(function(event) {
+        var chartContainer = document.querySelector("#line_graph");
 
-html2canvas(chartContainer).then(canvas => {
-    var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
+        html2canvas(chartContainer).then(canvas => {
+            var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
 
-    // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
-    var link = document.createElement('a');
-    link.href = imgData;
-    link.download = 'line_chart.png'; // ชื่อไฟล์ที่จะบันทึก
-    link.click();
-});
-});
+            // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
+            var link = document.createElement('a');
+            link.href = imgData;
+            link.download = 'line_chart.png'; // ชื่อไฟล์ที่จะบันทึก
+            link.click();
+        });
+        });
 
-$('#download_pie').click(function(event) {
+        $('#download_pie').click(function(event) {
 
-var chartContainer = document.querySelector("#pie_graph");
+        var chartContainer = document.querySelector("#pie_graph");
 
-html2canvas(chartContainer).then(canvas => {
-    var imgData = canvas.toDataURL("image/png");
-    let docDefinition = {
-    defaultStyle: {
-        font: 'THSarabun',
-        fontSize: 16
-    },
-    content: {
-        image: imgData,
-        width: 570
-},
-    pageMargins: [20, 150, 20, 30],
-    styles: {
-        tableHeader: {
-            fontSize: 16
+        html2canvas(chartContainer).then(canvas => {
+            var imgData = canvas.toDataURL("image/png");
+            let docDefinition = {
+            defaultStyle: {
+                font: 'THSarabun',
+                fontSize: 16
+            },
+            content: {
+                image: imgData,
+                width: 570
         },
-        tableBodyOdd: {
-            alignment: 'center'
-        },
-        tableBodyEven: {
-            alignment: 'center'
-        },
-        tableFooter: {
-            fontSize: 16
-        }
-    },
-    header: (function() {
-        return {
-            columns: [
-                {
-                    text: [  
-                                                { text: 'Callcenter REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
-                                                '\n',
-                                                { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
-                                                '\n',
-                                                { text: 'Report : Summary Incoming Call By Agent (ผลรวมสายเข้าแยกตาม Agent)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
-                                                '\n',
-                                                { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
-                                            ]
+            pageMargins: [20, 150, 20, 30],
+            styles: {
+                tableHeader: {
+                    fontSize: 16
+                },
+                tableBodyOdd: {
+                    alignment: 'center'
+                },
+                tableBodyEven: {
+                    alignment: 'center'
+                },
+                tableFooter: {
+                    fontSize: 16
                 }
-            ],
-            margin: 20
+            },
+            header: (function() {
+                return {
+                    columns: [
+                        {
+                            text: [  
+                                                        { text: 'Callcenter REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
+                                                        '\n',
+                                                        { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                        '\n',
+                                                        { text: 'Report : Summary Incoming Call By Agent (ผลรวมสายเข้าแยกตาม Agent)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                        '\n',
+                                                        { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
+                                                    ]
+                        }
+                    ],
+                    margin: 20
+                };
+            })
         };
-    })
-};
-pdfMake.createPdf(docDefinition).download('reports.pdf');
-});
+        pdfMake.createPdf(docDefinition).download('reports.pdf');
+        });
 
-});
+        });
 
-$('#download_pie_img').click(function(event) {
-var chartContainer = document.querySelector("#pie_graph");
+        $('#download_pie_img').click(function(event) {
+        var chartContainer = document.querySelector("#pie_graph");
 
-html2canvas(chartContainer).then(canvas => {
-    var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
+        html2canvas(chartContainer).then(canvas => {
+            var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
 
-    // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
-    var link = document.createElement('a');
-    link.href = imgData;
-    link.download = 'pie_chart.png'; // ชื่อไฟล์ที่จะบันทึก
-    link.click();
-});
-});
+            // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
+            var link = document.createElement('a');
+            link.href = imgData;
+            link.download = 'pie_chart.png'; // ชื่อไฟล์ที่จะบันทึก
+            link.click();
+        });
+        });
 
         $(".delete_all_button").click(function() {
             var len = $('input[name="table_records[]"]:checked').length;
