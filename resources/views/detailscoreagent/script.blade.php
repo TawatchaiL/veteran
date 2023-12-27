@@ -783,14 +783,14 @@ html2canvas(chartContainer).then(canvas => {
                         fontFamily: 'Sarabun',
                         color: '#263238'
                     },
-                    margin: 10,
+                    margin: 0,
                     offsetX: 0,
                     offsetY: 0,
                     floating: false,
                 },
                 labels: [],
                 responsive: [{
-                    breakpoint: 20,
+                    breakpoint: 200,
                     options: {
                         chart: {
                             width: 300,
