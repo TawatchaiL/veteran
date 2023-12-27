@@ -762,7 +762,6 @@ html2canvas(chartContainer).then(canvas => {
             }
             };
             let optionsdonut = {
-
                 series: [],
                 chart: {
                     type: 'donut',
@@ -777,7 +776,7 @@ html2canvas(chartContainer).then(canvas => {
                 },
                 title: {
                     text: '',
-                    align: 'left',
+                    align: 'center',
                     style: {
                         fontSize: '16px',
                         fontWeight: 'bold',
@@ -791,10 +790,10 @@ html2canvas(chartContainer).then(canvas => {
                 },
                 labels: [],
                 responsive: [{
-                    breakpoint: 200,
+                    breakpoint: 20,
                     options: {
                         chart: {
-                            width: 200,
+                            width: 300,
                         },
                         legend: {
                             position: 'bottom'
