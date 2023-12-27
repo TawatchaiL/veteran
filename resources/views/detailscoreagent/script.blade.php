@@ -810,8 +810,8 @@ html2canvas(chartContainer).then(canvas => {
                 legend: {
                     position: 'bottom',
                     horizontalAlign: 'center',
-                    offsetY: -20,
-                    offsetX: -30
+                    offsetY: 0,
+                    offsetX: 0
                 }
                 };
 
