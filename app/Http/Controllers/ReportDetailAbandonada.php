@@ -51,7 +51,7 @@ class ReportDetailAbandonada extends Controller
         $datas = DB::connection('remote_connection')
             ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.call_entry'))
             ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), DB::raw('datetime_entry_queue as cdate'), 'callerid', DB::raw('SEC_TO_TIME(duration_wait) as duration'))
-            ->whereRaw('call_center.call_entry.datetime_entry_queue between "' . $startDate . '" and "' . $endDate . '" ORDER BY call_center.call_entry.datetime_entry_queue DESC')
+            ->whereRaw('call_center.call_entry.datetime_entry_queue between "' . $startDate . '" and "' . $endDate . '"')
             ->get();
 
         if ($request->ajax()) {
