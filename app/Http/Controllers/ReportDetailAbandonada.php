@@ -59,7 +59,7 @@ class ReportDetailAbandonada extends Controller
             return datatables()->of($datas)->toJson();
         }
 
-        return view('reportdetailabandonada.index')->with();
+        return view('reportdetailabandonada.index');
     }
 
 }
