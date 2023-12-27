@@ -315,7 +315,7 @@
                     "text": 'PDF', // ข้อความที่แสดง
                     "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
                     //"orientation": 'landscape',
-                    "title": 'รายละเอียดเรื่องที่ติดต่อ',
+                    "title": 'รายละเอียดสายที่ไม่ได้รับ',
                     "download": 'open',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
@@ -340,7 +340,7 @@
                                                 '\n',
                                                 { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
                                                 '\n',
-                                                { text: 'Report : Detail ฉฟสส Abandonada (รายละเอียดสายที่ไม่ได้รับ)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                { text: 'Report : Detail Call Abandonada (รายละเอียดสายที่ไม่ได้รับ)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
                                                 '\n',
                                                 { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
                                             ]
@@ -350,7 +350,7 @@
                             }
                         });
                         
-                        doc.content[0].table.widths = [40, 120, 85, 85, '*', 85, 85, 75];
+                        doc.content[0].table.widths = [40, 120, 150, *];
                         var objLayout = {};
 						objLayout['hLineWidth'] = function(i) { return .5; };
 						objLayout['vLineWidth'] = function(i) { return .5; };
