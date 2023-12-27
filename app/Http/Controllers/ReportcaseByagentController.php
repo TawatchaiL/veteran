@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Session;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 use App\Services\GraphService;
 
-class ReportcaseController extends Controller
+class ReportcaseByagentController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -47,19 +47,13 @@ class ReportcaseController extends Controller
             $startDate = date("Y-m-d H:i:s");
             $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
         }
-/*
-        $datas = DB::connection('remote_connection')
-            ->table('call_center.call_entry')
-            ->select('crm_id', DB::raw('count(crm_id) as sumcases'))
-            ->whereRaw('datetime_init between "' . $startDate . '" and "' . $endDate . '"')
-            ->groupBy('crm_id')
-            ->having('sumcases', '>', 0)
-            ->orderBy("crm_id", "asc")
-            ->get();
-*/
-        $datas = DB::connection('remote_connection')
-            ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT crm_id, COUNT(crm_id) AS sumcases FROM call_center.call_entry WHERE datetime_init BETWEEN "' . $startDate . '" AND "' . $endDate . '" GROUP BY crm_id HAVING sumcases > 0 ORDER BY crm_id ASC) t, (SELECT @rownumber:=0) r) AS temp'))
-            ->select('rownumber', 'crm_id', 'sumcases')
+
+            $datas = DB::table('crm_cases')
+            ->select(DB::raw('ROW_NUMBER() OVER (ORDER BY sumcases DESC) as rownumber'),'agent as crm_id', DB::raw('count(agent) as sumcases'))
+            ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
+            ->groupBy('agent')
+            ->orderBy(DB::raw('count(agent)'), "desc")
+            //->limit(10)
             ->get();
 
             $agents = User::orderBy("id", "asc")->get();
@@ -98,6 +92,6 @@ class ReportcaseController extends Controller
                 })
                 ->toJson();
         }
-        return view('reportcase.index');
+        return view('reportcasebyagent.index');
     }
 }

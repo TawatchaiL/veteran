@@ -47,7 +47,7 @@
                                                         '\n',
                                                         { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
                                                         '\n',
-                                                        { text: 'Report : Summary Incoming Call By Agent (ผลรวมสายเข้าแยกตาม Agent)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                        { text: 'Report : Summary Case By Agent (ผลรวมเรื่องที่ติดต่อแยกตาม Agent)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
                                                         '\n',
                                                         { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
                                                     ]
@@ -115,7 +115,7 @@
                                                         '\n',
                                                         { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
                                                         '\n',
-                                                        { text: 'Report : Summary Incoming Call By Agent (ผลรวมสายเข้าแยกตาม Agent)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                        { text: 'Report : Summary Case By Agent (ผลรวมเรื่องที่ติดต่อแยกตาม Agent)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
                                                         '\n',
                                                         { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
                                                     ]
@@ -183,7 +183,7 @@
                                                         '\n',
                                                         { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
                                                         '\n',
-                                                        { text: 'Report : Summary Incoming Call By Agent (ผลรวมสายเข้าแยกตาม Agent)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                        { text: 'Report : Summary Case By Agent (ผลรวมเรื่องที่ติดต่อแยกตาม Agent)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
                                                         '\n',
                                                         { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
                                                     ]
@@ -506,7 +506,7 @@
                     "extend": 'pdf', // ปุ่มสร้าง pdf ไฟล์
                     "text": 'PDF', // ข้อความที่แสดง
                     "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
-                    "title": 'ผลรวมสายเข้าแยกตาม Agent',
+                    "title": 'ผลรวมเรื่องที่ติดต่อแยกตาม Agent',
                     "download": 'open',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
@@ -531,7 +531,7 @@
                                                 '\n',
                                                 { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
                                                 '\n',
-                                                { text: 'Report : Summary Incoming Call By Agent (ผลรวมสายเข้าแยกตาม Agent)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                { text: 'Report : Summary Case By Agent (ผลรวมเรื่องที่ติดต่อแยกตาม Agent)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
                                                 '\n',
                                                 { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
                                             ]
@@ -562,7 +562,7 @@
                 {
                     extend: 'print',
                     text: 'Print',
-                    title: 'ผลรวมสายเข้าแยกตาม Agent',
+                    title: 'ผลรวมเรื่องที่ติดต่อแยกตาม Agent',
                     exportOptions: {
                         columns: ':visible:not(.no-print)',
                         format: {
@@ -702,7 +702,7 @@
                 data: []
             }, ],
             title: {
-                text: 'ผลรวมสายเข้าแยกตาม Agent',
+                text: 'ผลรวมเรื่องที่ติดต่อแยกตาม Agent',
                 align: 'center',
                 style: {
                     fontSize: '16px',
@@ -777,7 +777,7 @@
                 type: 'gradient',
             },
             title: {
-                text: 'ผลรวมสายเข้าแยกตาม Agent',
+                text: 'ผลรวมเรื่องที่ติดต่อแยกตาม Agent',
                 align: 'center',
                 style: {
                     fontSize: '16px',
@@ -807,7 +807,7 @@
         var rdate = $('#reservation').val();
         var rstatus = 'report';
         $.ajax({
-            url: '{{ route('reportcase') }}',
+            url: '{{ route('reportcasebyagent') }}',
             data: {
                 sdate: rdate,
                 rstatus: rstatus
