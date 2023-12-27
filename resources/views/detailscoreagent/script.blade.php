@@ -835,6 +835,8 @@ html2canvas(chartContainer).then(canvas => {
                                 optionsdonut.labels = res.datal; 
                                 optionsdonut.series = value.data;
 
+                                optionsdonut.title.text = value.name;
+
                                 var innerDiv = $('<div>', {
                                     id: 'innerDiv'+index,
                                     class: 'inner-div'
