@@ -275,7 +275,7 @@
             },
 
             aaSorting: [
-                [0, "desc"]
+                [1, "desc"]
             ],
             iDisplayLength: 10,
             lengthMenu: [5, 10, 25, 50, 75, 100],
@@ -350,7 +350,7 @@
                             }
                         });
                         
-                        doc.content[0].table.widths = [40, 120, 150, '*'];
+                        doc.content[0].table.widths = [40, 180, 120, '*'];
                         var objLayout = {};
 						objLayout['hLineWidth'] = function(i) { return .5; };
 						objLayout['vLineWidth'] = function(i) { return .5; };
