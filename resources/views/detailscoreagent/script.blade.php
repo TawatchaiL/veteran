@@ -777,7 +777,7 @@ html2canvas(chartContainer).then(canvas => {
                 },
                 title: {
                     text: '',
-                    align: 'center',
+                    align: 'left',
                     style: {
                         fontSize: '16px',
                         fontWeight: 'bold',
