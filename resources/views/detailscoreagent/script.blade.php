@@ -766,7 +766,7 @@ html2canvas(chartContainer).then(canvas => {
                 series: [],
                 chart: {
                     type: 'donut',
-                    height: 380,
+                    height: 250,
                     toolbar: {
                         show: false
                     },
@@ -794,7 +794,7 @@ html2canvas(chartContainer).then(canvas => {
                     breakpoint: 200,
                     options: {
                         chart: {
-                            width: 300,
+                            width: 200,
                         },
                         legend: {
                             position: 'bottom'
