@@ -143,6 +143,7 @@ use Illuminate\Http\Request;
     Route::get('/detailcases', [App\Http\Controllers\DetailcasesController::class, 'index'])->name('detailcases');
     Route::get('/detailcasesstatus', [App\Http\Controllers\DetailcasesstatusController::class, 'index'])->name('detailcasesstatus');
     Route::get('/reportcasebyagent', [App\Http\Controllers\ReportcaseByagentController::class, 'index'])->name('reportcasebyagent');
+    Route::get('/reportdetailabandonada', [App\Http\Controllers\ReportDetailAbandonada::class, 'index'])->name('reportdetailabandonada');
 
     Route::get('/detailscore', [App\Http\Controllers\DetailscoreController::class, 'index'])->name('detailscore');
     Route::get('/detailscoreagent', [App\Http\Controllers\DetailscoreagentController::class, 'index'])->name('detailscoreagent');
