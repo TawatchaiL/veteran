@@ -761,75 +761,53 @@ html2canvas(chartContainer).then(canvas => {
                 }
             }
             };
-
+            
             let optionsdonut = {
-          series: [],
-          chart: {
-          width: 380,
-          type: 'donut',
-          dropShadow: {
-            enabled: true,
-            color: '#111',
-            top: -1,
-            left: 3,
-            blur: 3,
-            opacity: 0.2
-          }
-        },
-        stroke: {
-          width: 0,
-        },
-        plotOptions: {
-          pie: {
-            donut: {
-              labels: {
-                show: true,
-                total: {
-                  showAlways: true,
-                  show: true
+                series: [],
+                chart: {
+                    type: 'donut',
+                    height: 300,
+                    toolbar: {
+                        show: false
+                    },
+                },
+                colors: ['#E91E63','#2E93fA','#546E7A','#66DA26','#FF9800','#4ECDC4','#C7F464','#81D4FA','#A5978B','#FD6A6A'],
+                fill: {
+                    type: 'gradient',
+                },
+                title: {
+                    text: '',
+                    align: 'center',
+                    style: {
+                        fontSize: '16px',
+                        fontWeight: 'bold',
+                        fontFamily: 'Sarabun',
+                        color: '#263238'
+                    },
+                    margin: 0,
+                    offsetX: 0,
+                    offsetY: 0,
+                    floating: false,
+                },
+                labels: [],
+                dataLabels: {
+                dropShadow: {
+                    blur: 3,
+                    opacity: 0.8
                 }
-              }
-            }
-          }
-        },
-        labels: [],
-        dataLabels: {
-          dropShadow: {
-            blur: 3,
-            opacity: 0.8
-          }
-        },
-        fill: {
-        type: 'pattern',
-          opacity: 1,
-          pattern: {
-            enabled: true,
-            style: ['verticalLines', 'squares', 'horizontalLines', 'circles','slantedLines'],
-          },
-        },
-        states: {
-          hover: {
-            filter: 'none'
-          }
-        },
-        theme: {
-          palette: 'palette2'
-        },
-        title: {
-          text: "Favourite Movie Type"
-        },
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200
-            },
-            legend: {
-              position: 'bottom'
-            }
-          }
-        }]
-        };
+                },
+                responsive: [{
+                    breakpoint: 200,
+                    options: {
+                        chart: {
+                            width: 300,
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }]
+                };
                 
                 var rdate = $('#reservation').val();
                 var rstatus = 'report';
