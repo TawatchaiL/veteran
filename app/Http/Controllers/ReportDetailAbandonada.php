@@ -55,7 +55,6 @@ class ReportDetailAbandonada extends Controller
             ->get();
 
         if ($request->ajax()) {
-
             return datatables()->of($datas)->toJson();
         }
 
