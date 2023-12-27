@@ -314,7 +314,7 @@
                     "footer": true,
                     "text": 'PDF', // ข้อความที่แสดง
                     "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
-                    "orientation": 'landscape',
+                    //"orientation": 'landscape',
                     "title": 'รายละเอียดเรื่องที่ติดต่อ',
                     "download": 'open',
                     exportOptions: {
