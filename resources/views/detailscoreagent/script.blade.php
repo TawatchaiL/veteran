@@ -806,14 +806,13 @@ html2canvas(chartContainer).then(canvas => {
                             position: 'bottom'
                         }
                     }
-                }]
-                ,
-  legend: {
-    position: 'top',
-    horizontalAlign: 'left',
-    offsetY: -20,
-    offsetX: -30
-  }
+                }],
+                legend: {
+                    position: 'bottom',
+                    horizontalAlign: 'left',
+                    offsetY: -20,
+                    offsetX: -30
+                }
                 };
 
                 var rdate = $('#reservation').val();
