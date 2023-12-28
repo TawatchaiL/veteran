@@ -381,9 +381,9 @@ class ContactController extends Controller
             'tab_content' => $tab_content,
             'active_id' => $active_id,
             'hold_tab' => $i - 1,
-            'hold_tab_content' => $tab_hold
-            //'chold_tab' => $c - 1,
-            //'chold_tab_content' => $ctab_hold
+            'hold_tab_content' => $tab_holdม
+            'chold_tab' => $c - 1,
+            'chold_tab_content' => $ctab_hold
         ]);
     }
 
