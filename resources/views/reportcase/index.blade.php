@@ -22,7 +22,7 @@
                 </div><!-- /.col -->
               </div><!-- /.row -->
             </div><!-- /.container-fluid -->
-          </div>
+        </div>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
