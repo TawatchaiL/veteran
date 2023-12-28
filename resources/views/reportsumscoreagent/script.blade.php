@@ -796,7 +796,7 @@ html2canvas(chartContainer).then(canvas => {
                         }
                     }
                 }]
-                };
+            };
                 
                 var rdate = $('#reservation').val();
                 var rstatus = 'report';
