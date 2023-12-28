@@ -50,7 +50,7 @@ class Ivrreporttop10Controller extends Controller
         }
 
         $datas = DB::connection('remote_connection')
-                ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT call_center.ivr_name as ivrname, call_center.ivr_report.digit as ivrno, count(call_center.ivr_name) as sumhn FROM call_center.ivr_report WHERE call_center.ivr_report.datetime BETWEEN "' . $startDate . '" AND "' . $endDate . '" GROUP BY ivrname, ivrno ORDER BY sumhn DESC LIMIT 10) t, (SELECT @rownumber:=0) r) AS temp'))
+                ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT call_center.ivr_report.ivr_name as ivrname, call_center.ivr_report.digit as ivrno, count(call_center.ivr_name) as sumhn FROM call_center.ivr_report WHERE call_center.ivr_report.datetime BETWEEN "' . $startDate . '" AND "' . $endDate . '" GROUP BY ivrname, ivrno ORDER BY sumhn DESC LIMIT 10) t, (SELECT @rownumber:=0) r) AS temp'))
                 ->select('rownumber', 'ivrname', 'ivrno', 'sumhn')
                 ->get();
         /*
