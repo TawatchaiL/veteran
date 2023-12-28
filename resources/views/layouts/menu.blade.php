@@ -517,18 +517,20 @@
                     <p>ประเภทการติดต่อ</p>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="{{ route('departments') }}" class="nav-link {{ Request::is('departments') ? 'active' : '' }}">
-                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p>แผนก</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('positions') }}" class="nav-link {{ Request::is('positions') ? 'active' : '' }}">
-                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p>ตำแหน่ง</p>
-                </a>
-            </li>
+            @can('user-list')
+                <li class="nav-item">
+                    <a href="{{ route('departments') }}" class="nav-link {{ Request::is('departments') ? 'active' : '' }}">
+                        <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                        <p>แผนก</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('positions') }}" class="nav-link {{ Request::is('positions') ? 'active' : '' }}">
+                        <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                        <p>ตำแหน่ง</p>
+                    </a>
+                </li>
+            @endcan
         </ul>
     </li>
 @endcan

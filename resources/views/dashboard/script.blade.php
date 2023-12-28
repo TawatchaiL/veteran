@@ -536,7 +536,7 @@
             'warp': `<span style="font-size: 1em; color: #ff9900;"><i class="fa-solid fa-user-pen"></i></span> Warp UP`,
             'ring': `<span style="font-size: 1em; color: red;"><i class="fa-solid fa-bell fa-beat" style="--fa-beat-scale: 2.0;"></i></span> ${text}`,
             'answer': `<span style="font-size: 1em; color: red;"><i class="fa-solid fa-phone-volume fa-beat" style="--fa-beat-scale: 1.5;"></i></span> ${text}`,
-            'hold': `<span style="font-size: 1em; color: #ff9900;"><i class="fa-solid fa-user-clock fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังพักสาย`,
+            'hold': `<span style="font-size: 1em; color: red;"><i class="fa-solid fa-user-clock fa-beat" style="--fa-beat-scale: 1.5;"></i></span> กำลังพักสาย`,
             'ready': `<span style="font-size: 1em; color: green;"><i class="fa-solid fa-user-check"></i></span> พร้อมรับสาย`,
         };
 
