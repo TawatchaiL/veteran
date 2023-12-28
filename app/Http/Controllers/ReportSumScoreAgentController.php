@@ -80,7 +80,7 @@ class ReportSumScoreAgentController extends Controller
                         $chart_label[] = 'Agent not found';
                     }
                 }
-                $chart_data = [1,2,3,4,5,6,7];
+                $chart_label = [1,2,3];
                 return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
             }
 
