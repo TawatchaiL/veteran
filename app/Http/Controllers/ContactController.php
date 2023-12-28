@@ -342,7 +342,7 @@ class ContactController extends Controller
         ->get();
         $countcomment = $datacomment->count();
         $ctab_hold = '';
-        $c = 0;
+        $c = 1;
         if ($countcomment > 0) {
             foreach ($datacomment as $citem) {
                 $ctab_hold .= ' <a href="#" class="dropdown-item hold_tab_a" data-id="' . $citem->id . '">
