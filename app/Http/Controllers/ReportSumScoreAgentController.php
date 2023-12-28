@@ -74,15 +74,13 @@ class ReportSumScoreAgentController extends Controller
                 foreach ($datas as $data) {
                     if (array_key_exists($data->crm_id, $agent_data)) {
                         $chart_data[] = $data->sumscore;
-                        $chart_label[] = "x".$data->sumscore."X";
-                        //$chart_label[] = $agent_data[$data->crm_id];
+                        $chart_label[] = $agent_data[$data->crm_id];
                     }else{
                         $chart_data[] = $data->sumscore;
-                        $chart_label[] = "x".$data->sumscore."X";
-                        //$chart_label[] = 'Agent not found';
+                        $chart_label[] = 'Agent not found';
                     }
                 }
-                return response()->json(['datag' => $chart_data,'datal' => $chart_label]);
+                return response()->json(['datag' => $chart_data, 'datal' => $chart_label]);
             }
 
         if ($request->ajax()) {
