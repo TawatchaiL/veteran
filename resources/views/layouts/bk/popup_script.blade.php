@@ -30,8 +30,6 @@
                 }
                 $('#hold_tab').html(response.hold_tab);
                 $('#hold_tab_content').html(response.hold_tab_content);
-                $('#hcomment_tab').html(response.chold_tab);
-                $('#hcomment_tab_content').html(response.chold_tab_content);
                 setTimeout(function() {
                     state_overlay.addClass("d-none");
                 }, 1500)
