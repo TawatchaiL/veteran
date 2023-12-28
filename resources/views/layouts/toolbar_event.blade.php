@@ -258,6 +258,7 @@
                         setTimeout(() => {
                             set_state_icon(result.id, result.icon, result.message);
                             set_state_button(result.id);
+                            call_list();
                         }, 1000);
                         //positionCards();
                         if (result.tab_id) {

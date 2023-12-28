@@ -692,6 +692,11 @@ class PBXController extends Controller
                 ->where('agent_id', $user->id)
                 ->where('status', 1)
                 ->delete();
+            DB::table('crm_incoming')
+                //->where('agentno', $request->input('extension'))
+                ->where('agent_id', $user->id)
+                ->where('status', 2)
+                ->delete();
 
             $inqueue = DB::connection('remote_connection')
                 ->table('call_center.audit')

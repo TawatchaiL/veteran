@@ -108,7 +108,7 @@
                         </div>
 
                         <div class="input-group mb-3">
-                            <input type="password" name="password" id="password" value="12345678"
+                            <input type="password" name="password" id="password" value=""
                                 placeholder="Password" class="form-control @error('password') is-invalid @enderror">
                             <div class="input-group-append">
                                 <div class="input-group-text">
