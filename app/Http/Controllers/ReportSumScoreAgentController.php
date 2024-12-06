@@ -43,16 +43,16 @@ class ReportSumScoreAgentController extends Controller
                     $endDate = $dateRangeArray[1];
                 }
             }
-        }else{
+        } else {
             $startDate = date("Y-m-d H:i:s");
-            $endDate = date("Y-m-t H:i:s", strtotime($startDate));  
+            $endDate = date("Y-m-t H:i:s", strtotime($startDate));
         }
 
         $datas = DB::connection('remote_connection')
-        ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT crm_id, sum(score) as sumscore FROM call_center.agent_score WHERE call_center.agent_score.datetime BETWEEN "' . $startDate . '" AND "' . $endDate . '" GROUP BY crm_id ORDER BY sumscore DESC LIMIT 3) t, (SELECT @rownumber:=0) r) AS temp'))
-        ->select('rownumber', 'crm_id', 'sumscore')
-        ->get();
-/*
+            ->table(DB::raw('(SELECT @rownumber:=@rownumber + 1 AS rownumber, t.* FROM (SELECT crm_id, sum(score) as sumscore FROM call_center.agent_score WHERE call_center.agent_score.datetime BETWEEN "' . $startDate . '" AND "' . $endDate . '" GROUP BY crm_id ORDER BY sumscore DESC LIMIT 3) t, (SELECT @rownumber:=0) r) AS temp'))
+            ->select('rownumber', 'crm_id', 'sumscore')
+            ->get();
+        /*
         $datas = DB::connection('remote_connection')
             ->table(DB::raw('(SELECT @rownumber:=0) AS temp, call_center.agent_score'))
             ->select(DB::raw('(@rownumber:=@rownumber + 1) AS rownumber'), 'crm_id',  DB::raw('sum(score) as sumscore'))
@@ -62,31 +62,31 @@ class ReportSumScoreAgentController extends Controller
             ->limit(3)
             ->get();
 */
-            $agents = User::orderBy("id", "asc")->get();
-            $agent_data = array();
-            foreach ($agents as $agent) {
-                $agent_data[$agent->id] = $agent->name;
-            }
+        $agents = User::orderBy("id", "asc")->get();
+        $agent_data = array();
+        foreach ($agents as $agent) {
+            $agent_data[$agent->id] = $agent->name;
+        }
 
-            if (!empty($request->get('rstatus'))) {
-                $chart_data = array();
-                $chart_label = array();
-                foreach ($datas as $data) {
-                    if (array_key_exists($data->crm_id, $agent_data)) {
-                        $chart_data[] = $data->sumscore;
-                        $chart_label[] = $agent_data[$data->crm_id];
-                    }else{
-                        $chart_data[] = $data->sumscore;
-                        $chart_label[] = 'Agent not found';
-                    }
+        if (!empty($request->get('rstatus'))) {
+            $chart_data = array();
+            $chart_label = array();
+            foreach ($datas as $data) {
+                if (array_key_exists($data->crm_id, $agent_data)) {
+                    $chart_data[] = $data->sumscore;
+                    $chart_label[] = $agent_data[$data->crm_id];
+                } else {
+                    $chart_data[] = $data->sumscore;
+                    $chart_label[] = 'Agent not found';
                 }
-                return response()->json(['datag' => $chart_data, 'datal' => $chart_label]);
             }
+            return response()->json(['datag' => $chart_data, 'datal' => $chart_label]);
+        }
 
         if ($request->ajax()) {
 
             return datatables()->of($datas)
-                ->addColumn('agent', function ($row) use ($agent_data){
+                ->addColumn('agent', function ($row) use ($agent_data) {
                     if (isset($agent_data[$row->crm_id])) {
                         return $agent_data[$row->crm_id];
                     } else {
@@ -97,5 +97,4 @@ class ReportSumScoreAgentController extends Controller
         }
         return view('reportsumscoreagent.index');
     }
-
 }

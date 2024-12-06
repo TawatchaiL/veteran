@@ -11,206 +11,260 @@
     $(document).ready(function() {
         $('#download_bar').click(function(event) {
 
-var chartContainer = document.querySelector("#bar_graph");
-html2canvas(chartContainer).then(canvas => {
-    var imgData = canvas.toDataURL("image/png");
-    let docDefinition = {
-    defaultStyle: {
-        font: 'THSarabun',
-        fontSize: 16
-    },
-    content: {
-        image: imgData,
-        width: 570
-},
-    pageMargins: [20, 150, 20, 30],
-    styles: {
-        tableHeader: {
-            fontSize: 16
-        },
-        tableBodyOdd: {
-            alignment: 'center'
-        },
-        tableBodyEven: {
-            alignment: 'center'
-        },
-        tableFooter: {
-            fontSize: 16
-        }
-    },
-    header: (function() {
-        return {
-            columns: [
-                {
-                    text: [  
-                                                { text: 'IVR & Call Survey REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
-                                                '\n',
-                                                { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
-                                                '\n',
-                                                { text: 'Report : Top 3 Performance (ผลรวมการประเมินความพึงพอใจ 3 อันดับ ที่ได้คะแนนสูงสุด)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
-                                                '\n',
-                                                { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
-                                            ]
-                }
-            ],
-            margin: 20
-        };
-    })
-};
-pdfMake.createPdf(docDefinition).download('reports.pdf');
-});
+            var chartContainer = document.querySelector("#bar_graph");
+            html2canvas(chartContainer).then(canvas => {
+                var imgData = canvas.toDataURL("image/png");
+                let docDefinition = {
+                    defaultStyle: {
+                        font: 'THSarabun',
+                        fontSize: 16
+                    },
+                    content: {
+                        image: imgData,
+                        width: 570
+                    },
+                    pageMargins: [20, 150, 20, 30],
+                    styles: {
+                        tableHeader: {
+                            fontSize: 16
+                        },
+                        tableBodyOdd: {
+                            alignment: 'center'
+                        },
+                        tableBodyEven: {
+                            alignment: 'center'
+                        },
+                        tableFooter: {
+                            fontSize: 16
+                        }
+                    },
+                    header: (function() {
+                        return {
+                            columns: [{
+                                text: [{
+                                        text: 'IVR & Call Survey REPORT ',
+                                        alignment: 'right',
+                                        fontSize: 42,
+                                        margin: [0, 50, 70, 0]
+                                    },
+                                    '\n',
+                                    {
+                                        text: 'ข้อมูลวันที่ ' + $(
+                                            '#reservation').val(),
+                                        alignment: 'left',
+                                        fontSize: 18,
+                                        margin: [0, 50, 70, 0]
+                                    },
+                                    '\n',
+                                    {
+                                        text: 'Report : Top 3 Performance (ผลรวมการประเมินความพึงพอใจ 3 อันดับ ที่ได้คะแนนสูงสุด)',
+                                        alignment: 'left',
+                                        fontSize: 18,
+                                        margin: [0, 50, 70, 0]
+                                    },
+                                    '\n',
+                                    {
+                                        text: 'Report By : {{ Auth::user()->name }}',
+                                        alignment: 'left',
+                                        fontSize: 18,
+                                        margin: [0, 0, 70, 0]
+                                    }
+                                ]
+                            }],
+                            margin: 20
+                        };
+                    })
+                };
+                pdfMake.createPdf(docDefinition).download('reports.pdf');
+            });
 
-});
+        });
 
-$('#download_bar_img').click(function(event) {
-var chartContainer = document.querySelector("#bar_graph");
+        $('#download_bar_img').click(function(event) {
+            var chartContainer = document.querySelector("#bar_graph");
 
-html2canvas(chartContainer).then(canvas => {
-    var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
+            html2canvas(chartContainer).then(canvas => {
+                var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
 
-    // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
-    var link = document.createElement('a');
-    link.href = imgData;
-    link.download = 'bar_chart.png'; // ชื่อไฟล์ที่จะบันทึก
-    link.click();
-});
-});
+                // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
+                var link = document.createElement('a');
+                link.href = imgData;
+                link.download = 'bar_chart.png'; // ชื่อไฟล์ที่จะบันทึก
+                link.click();
+            });
+        });
 
-$('#download_line').click(function(event) {
+        $('#download_line').click(function(event) {
 
-var chartContainer = document.querySelector("#line_graph");
+            var chartContainer = document.querySelector("#line_graph");
 
-html2canvas(chartContainer).then(canvas => {
-    var imgData = canvas.toDataURL("image/png");
-    let docDefinition = {
-    defaultStyle: {
-        font: 'THSarabun',
-        fontSize: 16
-    },
-    content: {
-        image: imgData,
-        width: 570
-},
-    pageMargins: [20, 150, 20, 30],
-    styles: {
-        tableHeader: {
-            fontSize: 16
-        },
-        tableBodyOdd: {
-            alignment: 'center'
-        },
-        tableBodyEven: {
-            alignment: 'center'
-        },
-        tableFooter: {
-            fontSize: 16
-        }
-    },
-    header: (function() {
-        return {
-            columns: [
-                {
-                    text: [  
-                                                { text: 'IVR & Call Survey REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
-                                                '\n',
-                                                { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
-                                                '\n',
-                                                { text: 'Report : Top 3 Performance (ผลรวมการประเมินความพึงพอใจ 3 อันดับ ที่ได้คะแนนสูงสุด)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
-                                                '\n',
-                                                { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
-                                            ]
-                }
-            ],
-            margin: 20
-        };
-    })
-};
-pdfMake.createPdf(docDefinition).download('reports.pdf');
-});
+            html2canvas(chartContainer).then(canvas => {
+                var imgData = canvas.toDataURL("image/png");
+                let docDefinition = {
+                    defaultStyle: {
+                        font: 'THSarabun',
+                        fontSize: 16
+                    },
+                    content: {
+                        image: imgData,
+                        width: 570
+                    },
+                    pageMargins: [20, 150, 20, 30],
+                    styles: {
+                        tableHeader: {
+                            fontSize: 16
+                        },
+                        tableBodyOdd: {
+                            alignment: 'center'
+                        },
+                        tableBodyEven: {
+                            alignment: 'center'
+                        },
+                        tableFooter: {
+                            fontSize: 16
+                        }
+                    },
+                    header: (function() {
+                        return {
+                            columns: [{
+                                text: [{
+                                        text: 'IVR & Call Survey REPORT ',
+                                        alignment: 'right',
+                                        fontSize: 42,
+                                        margin: [0, 50, 70, 0]
+                                    },
+                                    '\n',
+                                    {
+                                        text: 'ข้อมูลวันที่ ' + $(
+                                            '#reservation').val(),
+                                        alignment: 'left',
+                                        fontSize: 18,
+                                        margin: [0, 50, 70, 0]
+                                    },
+                                    '\n',
+                                    {
+                                        text: 'Report : Top 3 Performance (ผลรวมการประเมินความพึงพอใจ 3 อันดับ ที่ได้คะแนนสูงสุด)',
+                                        alignment: 'left',
+                                        fontSize: 18,
+                                        margin: [0, 50, 70, 0]
+                                    },
+                                    '\n',
+                                    {
+                                        text: 'Report By : {{ Auth::user()->name }}',
+                                        alignment: 'left',
+                                        fontSize: 18,
+                                        margin: [0, 0, 70, 0]
+                                    }
+                                ]
+                            }],
+                            margin: 20
+                        };
+                    })
+                };
+                pdfMake.createPdf(docDefinition).download('reports.pdf');
+            });
 
-});
+        });
 
-$('#download_line_img').click(function(event) {
-var chartContainer = document.querySelector("#line_graph");
+        $('#download_line_img').click(function(event) {
+            var chartContainer = document.querySelector("#line_graph");
 
-html2canvas(chartContainer).then(canvas => {
-    var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
+            html2canvas(chartContainer).then(canvas => {
+                var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
 
-    // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
-    var link = document.createElement('a');
-    link.href = imgData;
-    link.download = 'line_chart.png'; // ชื่อไฟล์ที่จะบันทึก
-    link.click();
-});
-});
+                // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
+                var link = document.createElement('a');
+                link.href = imgData;
+                link.download = 'line_chart.png'; // ชื่อไฟล์ที่จะบันทึก
+                link.click();
+            });
+        });
 
-$('#download_pie').click(function(event) {
+        $('#download_pie').click(function(event) {
 
-var chartContainer = document.querySelector("#pie_graph");
+            var chartContainer = document.querySelector("#pie_graph");
 
-html2canvas(chartContainer).then(canvas => {
-    var imgData = canvas.toDataURL("image/png");
-    let docDefinition = {
-    defaultStyle: {
-        font: 'THSarabun',
-        fontSize: 16
-    },
-    content: {
-        image: imgData,
-        width: 570
-},
-    pageMargins: [20, 150, 20, 30],
-    styles: {
-        tableHeader: {
-            fontSize: 16
-        },
-        tableBodyOdd: {
-            alignment: 'center'
-        },
-        tableBodyEven: {
-            alignment: 'center'
-        },
-        tableFooter: {
-            fontSize: 16
-        }
-    },
-    header: (function() {
-        return {
-            columns: [
-                {
-                    text: [  
-                                                { text: 'IVR & Call Survey REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
-                                                '\n',
-                                                { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
-                                                '\n',
-                                                { text: 'Report : Top 3 Performance (ผลรวมการประเมินความพึงพอใจ 3 อันดับ ที่ได้คะแนนสูงสุด)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
-                                                '\n',
-                                                { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
-                                            ]
-                }
-            ],
-            margin: 20
-        };
-    })
-};
-pdfMake.createPdf(docDefinition).download('reports.pdf');
-});
+            html2canvas(chartContainer).then(canvas => {
+                var imgData = canvas.toDataURL("image/png");
+                let docDefinition = {
+                    defaultStyle: {
+                        font: 'THSarabun',
+                        fontSize: 16
+                    },
+                    content: {
+                        image: imgData,
+                        width: 570
+                    },
+                    pageMargins: [20, 150, 20, 30],
+                    styles: {
+                        tableHeader: {
+                            fontSize: 16
+                        },
+                        tableBodyOdd: {
+                            alignment: 'center'
+                        },
+                        tableBodyEven: {
+                            alignment: 'center'
+                        },
+                        tableFooter: {
+                            fontSize: 16
+                        }
+                    },
+                    header: (function() {
+                        return {
+                            columns: [{
+                                text: [{
+                                        text: 'IVR & Call Survey REPORT ',
+                                        alignment: 'right',
+                                        fontSize: 42,
+                                        margin: [0, 50, 70, 0]
+                                    },
+                                    '\n',
+                                    {
+                                        text: 'ข้อมูลวันที่ ' + $(
+                                            '#reservation').val(),
+                                        alignment: 'left',
+                                        fontSize: 18,
+                                        margin: [0, 50, 70, 0]
+                                    },
+                                    '\n',
+                                    {
+                                        text: 'Report : Top 3 Performance (ผลรวมการประเมินความพึงพอใจ 3 อันดับ ที่ได้คะแนนสูงสุด)',
+                                        alignment: 'left',
+                                        fontSize: 18,
+                                        margin: [0, 50, 70, 0]
+                                    },
+                                    '\n',
+                                    {
+                                        text: 'Report By : {{ Auth::user()->name }}',
+                                        alignment: 'left',
+                                        fontSize: 18,
+                                        margin: [0, 0, 70, 0]
+                                    }
+                                ]
+                            }],
+                            margin: 20
+                        };
+                    })
+                };
+                pdfMake.createPdf(docDefinition).download('reports.pdf');
+            });
 
-});
+        });
 
-$('#download_pie_img').click(function(event) {
-var chartContainer = document.querySelector("#pie_graph");
+        $('#download_pie_img').click(function(event) {
+            var chartContainer = document.querySelector("#pie_graph");
 
-html2canvas(chartContainer).then(canvas => {
-    var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
+            html2canvas(chartContainer).then(canvas => {
+                var imgData = canvas.toDataURL("image/png"); // แปลงเป็นข้อมูล URI ของรูปภาพ
 
-    // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
-    var link = document.createElement('a');
-    link.href = imgData;
-    link.download = 'pie_chart.png'; // ชื่อไฟล์ที่จะบันทึก
-    link.click();
-});
-});
+                // สร้างลิงก์สำหรับการดาวน์โหลดภาพ
+                var link = document.createElement('a');
+                link.href = imgData;
+                link.download = 'pie_chart.png'; // ชื่อไฟล์ที่จะบันทึก
+                link.click();
+            });
+        });
         $(".delete_all_button").click(function() {
             var len = $('input[name="table_records[]"]:checked').length;
             if (len > 0) {
@@ -440,9 +494,9 @@ html2canvas(chartContainer).then(canvas => {
                 data: function(d) {
                     d.sdate = $('#reservation').val();
                 },
-                complete: function (data) {
+                complete: function(data) {
                     Loadchart();
-                }  
+                }
             },
             serverSide: true,
             processing: true,
@@ -523,39 +577,73 @@ html2canvas(chartContainer).then(canvas => {
                         doc.styles.tableFooter.fontSize = 16;
                         doc['header'] = (function() {
                             return {
-                                columns: [
-                                    {
-                                        text: [  
-                                                { text: 'IVR & Call Survey REPORT ', alignment: 'right', fontSize: 42, margin: [0, 50, 70, 0] },
-                                                '\n',
-                                                { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
-                                                '\n',
-                                                { text: 'Report : Top 3 Performance (ผลรวมการประเมินความพึงพอใจ 3 อันดับ ที่ได้คะแนนสูงสุด)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
-                                                '\n',
-                                                { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
-                                            ]
-                                    }
-                                ],
+                                columns: [{
+                                    text: [{
+                                            text: 'IVR & Call Survey REPORT ',
+                                            alignment: 'right',
+                                            fontSize: 42,
+                                            margin: [0, 50, 70, 0]
+                                        },
+                                        '\n',
+                                        {
+                                            text: 'ข้อมูลวันที่ ' + $(
+                                                '#reservation').val(),
+                                            alignment: 'left',
+                                            fontSize: 18,
+                                            margin: [0, 50, 70, 0]
+                                        },
+                                        '\n',
+                                        {
+                                            text: 'Report : Top 3 Performance (ผลรวมการประเมินความพึงพอใจ 3 อันดับ ที่ได้คะแนนสูงสุด)',
+                                            alignment: 'left',
+                                            fontSize: 18,
+                                            margin: [0, 50, 70, 0]
+                                        },
+                                        '\n',
+                                        {
+                                            text: 'Report By : {{ Auth::user()->name }}',
+                                            alignment: 'left',
+                                            fontSize: 18,
+                                            margin: [0, 0, 70, 0]
+                                        }
+                                    ]
+                                }],
                                 margin: 20
                             }
                         });
 
                         doc.content[0].table.widths = [40, 360, '*'];
                         var objLayout = {};
-						objLayout['hLineWidth'] = function(i) { return .5; };
-						objLayout['vLineWidth'] = function(i) { return .5; };
-						objLayout['hLineColor'] = function(i) { return '#bfbfbf'; };
-						objLayout['vLineColor'] = function(i) { return '#bfbfbf'; };
-						objLayout['paddingLeft'] = function(i) { return 4; };
-						objLayout['paddingRight'] = function(i) { return 4; };
-                        objLayout['paddingTop'] = function(i) { return 3; };
-                        objLayout['paddingBottom'] = function(i) { return 3; };
-						doc.content[0].layout = objLayout;
+                        objLayout['hLineWidth'] = function(i) {
+                            return .5;
+                        };
+                        objLayout['vLineWidth'] = function(i) {
+                            return .5;
+                        };
+                        objLayout['hLineColor'] = function(i) {
+                            return '#bfbfbf';
+                        };
+                        objLayout['vLineColor'] = function(i) {
+                            return '#bfbfbf';
+                        };
+                        objLayout['paddingLeft'] = function(i) {
+                            return 4;
+                        };
+                        objLayout['paddingRight'] = function(i) {
+                            return 4;
+                        };
+                        objLayout['paddingTop'] = function(i) {
+                            return 3;
+                        };
+                        objLayout['paddingBottom'] = function(i) {
+                            return 3;
+                        };
+                        doc.content[0].layout = objLayout;
 
                         for (var i = 1; i < doc.content[0].table.body.length; i++) {
                             doc.content[0].table.body[i][1].alignment = 'left';
                         }
-                }
+                    }
                 },
                 {
                     extend: 'print',
@@ -573,10 +661,15 @@ html2canvas(chartContainer).then(canvas => {
                     },
                     customize: function(win) {
                         // Customize the print layout
-                        $(win.document.body).prepend('<img style="position:absolute; top:0; left:470;width:100" src='+logobase64+'>')
-                        $(win.document.body).find('h1').css('text-align', 'center').css('font-size','16px').css('margin-top','105px');
-                        $(win.document.body).find('table').addClass('display').css('font-size','12px')
-                                            .removeClass('dataTable').css('margin-top','5px').css('margin-bottom','60px');
+                        $(win.document.body).prepend(
+                            '<img style="position:absolute; top:0; left:470;width:100" src=' +
+                            logobase64 + '>')
+                        $(win.document.body).find('h1').css('text-align', 'center').css(
+                            'font-size', '16px').css('margin-top', '105px');
+                        $(win.document.body).find('table').addClass('display').css('font-size',
+                                '12px')
+                            .removeClass('dataTable').css('margin-top', '5px').css(
+                                'margin-bottom', '60px');
                         $(win.document.body).find('table.dataTable th, table.dataTable td').css(
                             'border', '1px solid black');
                         $(win.document.body).find('table.dataTable th').css('background-color',
@@ -604,7 +697,7 @@ html2canvas(chartContainer).then(canvas => {
             sPaginationType: "full_numbers",
             dom: 'T<"clear">lfrtip',
             columns: [{
-                data: 'rownumber',
+                    data: 'rownumber',
                     name: 'rownumber',
                     orderable: false,
                     searchable: false
@@ -690,28 +783,27 @@ html2canvas(chartContainer).then(canvas => {
 
     });
 
-    function Loadchart(){
+    function Loadchart() {
         let options = {
-                series: [
-                        { name: [],
-                          data: []
-                        },
-                ],
-                title: {
-                        text: 'ผลรวมการประเมินความพึงพอใจ 3 อันดับ ที่ได้คะแนนสูงสุด',
-                        align: 'center',
-                        style: {
-                            fontSize: '16px',
-                            fontWeight: 'bold',
-                            fontFamily: 'Sarabun',
-                            color: '#263238'
-                        },
-                        margin: 10,
-                        offsetX: 0,
-                        offsetY: 0,
-                        floating: false,
-                    },
-                chart: {
+            series: [{
+                name: [],
+                data: []
+            }, ],
+            title: {
+                text: 'ผลรวมการประเมินความพึงพอใจ 3 อันดับ ที่ได้คะแนนสูงสุด',
+                align: 'center',
+                style: {
+                    fontSize: '16px',
+                    fontWeight: 'bold',
+                    fontFamily: 'Sarabun',
+                    color: '#263238'
+                },
+                margin: 10,
+                offsetX: 0,
+                offsetY: 0,
+                floating: false,
+            },
+            chart: {
                 height: 400,
                 type: "line",
                 zoom: {
@@ -720,112 +812,120 @@ html2canvas(chartContainer).then(canvas => {
                 toolbar: {
                     show: false
                 }
-                },
-                markers: {
+            },
+            markers: {
                 show: true,
                 size: 6
-                },
-                dataLabels: {
+            },
+            dataLabels: {
                 enabled: false
-                },
-                legend: {
+            },
+            legend: {
                 show: false,
                 showForSingleSeries: false,
                 position: "top",
                 horizontalAlign: "right"
-                },
-                stroke: {
+            },
+            stroke: {
                 curve: "smooth",
                 linecap: "round"
-                },
-                grid: {
+            },
+            grid: {
                 row: {
                     colors: ["#f3f3f3", "transparent"],
                     opacity: 0.5
                 }
-                },
-                xaxis: {
+            },
+            xaxis: {
                 categories: []
-                },
-                labels: [],
-                tooltip: {
+            },
+            labels: [],
+            tooltip: {
                 y: {
                     formatter: function(val) {
                         return " จำนวน " + val + "  "
                     }
                 }
             }
-            };
-            let optionsdonut = {
+        };
+        let optionsdonut = {
 
-                series: [],
-                chart: {
-                    type: 'donut',
-                    height: 380,
-                    toolbar: {
-                        show: false
+            series: [],
+            chart: {
+                type: 'donut',
+                height: 380,
+                toolbar: {
+                    show: false
+                },
+            },
+            colors: ['#E91E63', '#2E93fA', '#546E7A', '#66DA26', '#FF9800', '#4ECDC4', '#C7F464', '#81D4FA',
+                '#A5978B', '#FD6A6A'
+            ],
+            fill: {
+                type: 'gradient',
+            },
+            title: {
+                text: 'ผลรวมการประเมินความพึงพอใจ 3 อันดับ ที่ได้คะแนนสูงสุด',
+                align: 'center',
+                style: {
+                    fontSize: '16px',
+                    fontWeight: 'bold',
+                    fontFamily: 'Sarabun',
+                    color: '#263238'
+                },
+                margin: 10,
+                offsetX: 0,
+                offsetY: 0,
+                floating: false,
+            },
+            labels: [],
+            responsive: [{
+                breakpoint: 200,
+                options: {
+                    chart: {
+                        width: 300,
                     },
-                },
-                colors: ['#E91E63','#2E93fA','#546E7A','#66DA26','#FF9800','#4ECDC4','#C7F464','#81D4FA','#A5978B','#FD6A6A'],
-                fill: {
-                    type: 'gradient',
-                },
-                title: {
-                    text: 'ผลรวมการประเมินความพึงพอใจ 3 อันดับ ที่ได้คะแนนสูงสุด',
-                    align: 'center',
-                    style: {
-                        fontSize: '16px',
-                        fontWeight: 'bold',
-                        fontFamily: 'Sarabun',
-                        color: '#263238'
-                    },
-                    margin: 10,
-                    offsetX: 0,
-                    offsetY: 0,
-                    floating: false,
-                },
-                labels: [],
-                responsive: [{
-                    breakpoint: 200,
-                    options: {
-                        chart: {
-                            width: 300,
-                        },
-                        legend: {
-                            position: 'bottom'
-                        }
+                    legend: {
+                        position: 'bottom'
                     }
-                }]
-            };
-                
-                var rdate = $('#reservation').val();
-                var rstatus = 'report';
-
-                $.ajax({
-                url: '{{ route('reportsumscoreagent') }}',
-                data: {
-                    sdate: rdate,
-                    rstatus: rstatus
-                },
-                method: 'GET',
-                success: function(res) {
-                    options.series[0].data = res.datag;
-                    options.xaxis.categories = res.datal;
-                    optionsdonut.labels = res.datal; 
-                    optionsdonut.series = res.datag;
-                        var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
-                        chart2.render();
-
-                        var chart = new ApexCharts(document.querySelector("#bar_graph"), options);
-                        chart.render();
-                            chart.updateOptions({chart: {type: "bar",animate: true},
-                                                labels: '',
-                                                stroke: {width: 0}
-                            });
-                            options.series =  res.datag;
-                        var chart3 = new ApexCharts(document.querySelector("#pie_graph"), optionsdonut);
-                            chart3.render();
                 }
-            });
+            }]
+        };
+
+        var rdate = $('#reservation').val();
+        var rstatus = 'report';
+
+        $.ajax({
+            url: '{{ route('reportsumscoreagent') }}',
+            data: {
+                sdate: rdate,
+                rstatus: rstatus
+            },
+            method: 'GET',
+            success: function(res) {
+                options.series[0].data = res.datag;
+                options.xaxis.categories = res.datal;
+                optionsdonut.labels = res.datal;
+                optionsdonut.series = res.datag;
+                var chart2 = new ApexCharts(document.querySelector("#line_graph"), options);
+                chart2.render();
+
+                var chart = new ApexCharts(document.querySelector("#bar_graph"), options);
+                chart.render();
+                chart.updateOptions({
+                    chart: {
+                        type: "bar",
+                        animate: true
+                    },
+                    labels: '',
+                    stroke: {
+                        width: 0
+                    }
+                });
+                options.series = res.datag;
+                var chart3 = new ApexCharts(document.querySelector("#pie_graph"), optionsdonut);
+                chart3.render();
+            }
+        });
     }
 </script>
