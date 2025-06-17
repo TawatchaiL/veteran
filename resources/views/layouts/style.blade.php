@@ -1,4 +1,9 @@
 <style>
+    body.sidebar-mini .logo-area,
+    body.sidebar-collapse .logo-area {
+        display: none !important;
+    }
+
     .nav-tabs .nav-item:first-child .nav-link {
         margin-left: 10px;
         /* Adjust the value to your desired space */
@@ -370,5 +375,4 @@
         text-overflow: ellipsis;
         white-space: nowrap;
     }
-
 </style>
