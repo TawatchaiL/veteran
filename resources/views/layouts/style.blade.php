@@ -1,7 +1,13 @@
 <style>
+    /* ซ่อน logo เมื่อ sidebar ย่อ */
     body.sidebar-mini .logo-area,
     body.sidebar-collapse .logo-area {
         display: none !important;
+    }
+
+    /* แสดง logo เฉพาะตอน sidebar ขยาย */
+    body:not(.sidebar-mini):not(.sidebar-collapse) .logo-area {
+        display: block;
     }
 
     .nav-tabs .nav-item:first-child .nav-link {
