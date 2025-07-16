@@ -141,13 +141,11 @@ class CasesController extends Controller
                     return '';
                 })->rawColumns(['checkbox', 'action'])->toJson();
         }
-        $contacts = DB::table('crm_contacts')->orderBy('id', 'asc')->get();
-        return view('cases.index')->with(['contacts' => $contacts]);
+        //$contacts = DB::table('crm_contacts')->orderBy('id', 'asc')->get();
+        return view('cases.index');
     }
 
-    public function create()
-    {
-    }
+    public function create() {}
 
     public function seachcontact($id)
     {
