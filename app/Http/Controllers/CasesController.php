@@ -362,13 +362,14 @@ class CasesController extends Controller
 
         $agentArray = User::orderBy('name', 'asc')->pluck('name', 'id')->toArray();
         $agentArray[0] = 'All';
-        $agentArray[0]['name'] = 'All';
-        $agentArray = array_merge(['0' => 'All'], $agentArray);
 
+        $htmlContent = View::make('cases.caseslist', [
+            'caselist' => $data,
+            'cardid' => $tabid,
+            'agent' => $agentArray
+        ])->render();
 
-        $template = 'cases.caseslist';
-        $htmlContent = View::make($template, ['caselist' => $data, 'cardid' => $tabid, 'agent' => $agentArray])->render();
-        return response()->json(['html' =>  $htmlContent,]);
+        return response()->json(['html' => $htmlContent]);
 
         //return response()->json(['data' => $data]);
 
