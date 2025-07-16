@@ -25,7 +25,7 @@
                                 <td>{{ $caselists->casetype1 }}</td>
                                 <td>{{ $caselists->casedetail }}</td>
                                 <td>{{ $caselists->casestatus }}</td>
-                                <td>{{ $agent[$caselists->agent] ?? '-' }}</td>
+                                <td>{{ $agent[$caselists->agent]['name'] }}</td>
                                 <td width="140px">
                                     <button type="button" data-cases_id="{{ $caselists->id }}" class="form-control btn btn-warning btn-sm casedetail-button"><i
                                             class="fas fa-search"></i> รายละเอียด</button>
