@@ -360,12 +360,10 @@ class CasesController extends Controller
             ->limit(10)
             ->get();
 
-        $agens = User::orderBy('name', 'asc')->get();
-        $agentArray = [];
+        $agentArray = User::orderBy('name', 'asc')->pluck('name', 'id')->toArray();
+        $agentArray[0] = 'All';
         $agentArray[0]['name'] = 'All';
-        foreach ($agens as $agen) {
-            $agentArray[$agen->id]['name'] = $agen->name;
-        }
+        $agentArray = array_merge(['0' => 'All'], $agentArray);
 
 
         $template = 'cases.caseslist';
