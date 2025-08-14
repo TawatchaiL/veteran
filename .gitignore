@@ -7,7 +7,6 @@
 /public/stamps
 /public/storage
 /public/index.php
-/config/asterisk.php
 /storage/*.key
 /vendor
 .env
