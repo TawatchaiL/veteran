@@ -1,4 +1,4 @@
-<script src="{{ config('asterisk.toolbar_serv.address') }}/socket.io/socket.io.js"></script>
+<script src="{{ config('asterisk.toolbar_serv_ext.address') }}/socket.io/socket.io.js"></script>
 <script>
     const formatTime = seconds => {
         const hours = Math.floor(seconds / 3600);
