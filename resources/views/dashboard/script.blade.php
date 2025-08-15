@@ -1,4 +1,4 @@
-<script src="{{ config('asterisk.toolbar_serv.address') }}/socket.io/socket.io.js"></script>
+<script src="{{ config('asterisk.toolbar_serv_ext.address') }}/socket.io/socket.io.js"></script>
 <script language="javascript" type="text/javascript">
     let agent_sla_chart = (sla) => {
         option = {
