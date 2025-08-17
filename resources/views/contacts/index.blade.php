@@ -104,7 +104,7 @@
                                                 <select style="width: 100%;" class="select2 form-control" id="seachtype"
                                                     name="seachtype">
                                                     <option value="0" selected>ตัวเลือกการค้นหา</option>
-                                                    <option value="5">HN</option>
+                                                    <option value="5">เลขประจำตัว</option>
                                                     <option value="6">ชื่อผู้ติดต่อ</option>
                                                     <option value="1">เบอร์โทรฉุกเฉิน</option>
                                                     <option value="2">เบอร์โทรศัพท์บ้าน</option>
@@ -152,7 +152,7 @@
                                                             class="flat">
                                                     </th>
                                                     <th>วันที่บันทึกข้อมูล</th>
-                                                    <th>HN</th>
+                                                    <th>เลขประจำตัว</th>
                                                     <th>ชื่อผู้ติดต่อ</th>
                                                     <th>เบอร์โทรศัพท์บ้าน</th>
                                                     <th>เบอร์โทรศัพท์มือถือ</th>

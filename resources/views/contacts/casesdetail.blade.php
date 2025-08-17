@@ -7,7 +7,7 @@
                     <li>
                         <div class="icon"><i class="fas fa-code"></i></div>
                         <div class="info">
-                            <p><strong>HN</strong> <br>&nbsp;{{ $datact->hn !== '' ? $datact->hn : '-' }}</p>
+                            <p><strong>เลขประจำตัว</strong> <br>&nbsp;{{ $datact->hn !== '' ? $datact->hn : '-' }}</p>
                         </div>
                     </li>
 
