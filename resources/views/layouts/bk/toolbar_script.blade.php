@@ -1125,8 +1125,8 @@
 							<div class="card-body card-content">
 							</div>
 							<div class="card-footer text-muted text-right ">
-                                 ${button_ans}
-                                <a href="#" class="btn btn-warning hold_call ${hold_button}" data-id="${exten}"><i class="fa-solid fa-pause"></i> Hold</a>
+                                 /* ${button_ans} */
+                               /*  <a href="#" class="btn btn-warning hold_call ${hold_button}" data-id="${exten}"><i class="fa-solid fa-pause"></i> Hold</a> */
 							     <a href="#" class="btn btn-danger hangup_call" data-id="${strArray[0]}"><i class="fa-solid fa-phone-slash"></i> วางสาย</a>
 							</div>
 						</div>

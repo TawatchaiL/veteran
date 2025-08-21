@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
 /* use App\Services\IssableService;
 
 Route::post('/agent_break', function (Request $request) {
@@ -112,4 +113,3 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 Route::get('/agent_unwarp_api', [App\Http\Controllers\PBXController::class, 'AgentUnWarpAPI'])->name('agent.unwarp_api');
-
