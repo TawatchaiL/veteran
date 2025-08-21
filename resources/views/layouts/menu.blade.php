@@ -31,12 +31,12 @@
     </li>
 @endcan
 @can('voice-record-list')
-    <li class="nav-item">
+   <!--  <li class="nav-item">
         <a href="{{ route('pbxcdr') }}" class="nav-link {{ Request::is('pbxcdr') ? 'active' : '' }}">
             <i class="fa-solid fa-magnifying-glass nav-icon"></i>
             <p>ค้นหารายการโทร ร.พ.</p>
         </a>
-    </li>
+    </li> -->
     <li class="nav-item">
         <a href="{{ route('voicerecord') }}" class="nav-link {{ Request::is('voicerecord') ? 'active' : '' }}">
             <i class="fa-solid fa-volume-high nav-icon"></i>
