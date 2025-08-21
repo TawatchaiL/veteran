@@ -224,28 +224,28 @@
                                     data-placement="top" data-popover-content="#a1" data-toggle="popover"
                                     data-trigger="focus" href="#" tabindex="0" />
                             </div>
-                            {{-- <div class="mx-1">
+                           <!--  {{-- <div class="mx-1">
                                 <button class="btn custom-button btn-success button_dial"><i
                                         class="fa-solid fa-phone-volume"></i> รับสาย</button>
-                            </div> --}}
+                            </div> --}} -->
                             <div class="mx-1">
                                 <button {{ $dial_button }} id="dial_button" name="dial_button"
                                     class="btn custom-button btn-success {{ $dial_button_class }}"><i
                                         class="fas fa-phone-square"></i>
                                     โทรออก</button>
                             </div>
-                            {{--  <div class="mx-1">
+                           <!--  {{--  <div class="mx-1">
                                 <button {{ $dial_button }} id="ans_button" name="ans_button"
                                     class="btn custom-button btn-success {{ $dial_button_class }}"><i
                                         class="fa-solid fa-check-double"></i>
                                     Accept</button>
-                            </div> --}}
-                            <div class="mx-1">
+                            </div> --}} -->
+                           <!--  <div class="mx-1">
                                 <button {{ $transfer_button }} id="swap_button" name="swap_button"
                                     class="btn custom-button btn-success {{ $transfer_button_class }}"><i
                                         class="fa-solid fa-repeat"></i>
                                     สลับสาย</button>
-                            </div>
+                            </div> -->
                             <div class="mx-1">
                                 {{-- <button <?= $outbound_dis ?> class="btn btn-warning button_tranfer"><i
                                         class="fas fa-random"></i> โอนสาย</button> --}}
