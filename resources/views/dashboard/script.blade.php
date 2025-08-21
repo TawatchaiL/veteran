@@ -1,4 +1,4 @@
-<script src="{{ config('asterisk.toolbar_serv.address') }}/socket.io/socket.io.js"></script>
+<script src="{{ config('asterisk.toolbar_serv_ext.address') }}/socket.io/socket.io.js"></script>
 <script language="javascript" type="text/javascript">
     let agent_sla_chart = (sla) => {
         option = {
@@ -418,8 +418,8 @@
     const div_queue_status_chart = echarts.init(document.getElementById("queue_status_chart"));
     const div_queue_status_chart_talk = echarts.init(document.getElementById("queue_status_chart_talk"));
 
-    const dashboard_serv = '{{ config('asterisk.toolbar_serv.address') }}';
-    const api_serv = '{{ config('asterisk.api_serv.address') }}';
+    const dashboard_serv = '{{ config('asterisk.toolbar_serv_ext.address') }}';
+    const api_serv = '{{ config('asterisk.api_serv_ext.address') }}';
     const socket = io.connect(`${dashboard_serv}`);
     const web_url = '{{ url('/') }}';
     const agent_username = '{{ $temporaryPhone }}';

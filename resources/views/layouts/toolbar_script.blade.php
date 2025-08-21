@@ -6,8 +6,8 @@
     const sipexten = 'SIP/{{ $temporaryPhone }}';
     const account_code = exten;
     const call_survey_number = '{{ config('asterisk.manager.call_survey_number') }}';
-    const toolbar_serv = '{{ config('asterisk.toolbar_serv.address') }}';
-    const api_serv = '{{ config('asterisk.api_serv.address') }}';
+    const toolbar_serv = '{{ config('asterisk.toolbar_serv_ext.address') }}';
+    const api_serv = '{{ config('asterisk.api_serv_ext.address') }}';
 
     const dial_number = $('#dial_number');
     const dial_button = $('#dial_button');
