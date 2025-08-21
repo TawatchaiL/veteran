@@ -1083,10 +1083,11 @@
                         dans_button = "";
                         if (strArray[1] !== "macro-dial-one" && strArray[1] !==
                             "macro-dialout-trunk") {
-                            button_ans = `
+                           /*  button_ans = `
                             <a href="#" class="btn btn-success answer_call ${dans_button}" data-id="${exten}">
                                 <i class="fa-solid fa-phone-volume"></i> รับสาย
-                            </a>`;
+                            </a>`; */
+                            button_ans = '';
                         }
                     } else if (strArray[4] == 'Up' && strArray[12] == '') {
                         if (strArray[5] == "ChanSpy") {
@@ -1176,4 +1177,7 @@
         @php
     }
     @endphp */
-</script>
+
+    /* <!-- ${button_ans} 
+    <a href="#" class="btn btn-warning hold_call ${hold_button}" data-id="${exten}"><i class="fa-solid fa-pause"></i> Hold</a>-->*/
+</script> 
