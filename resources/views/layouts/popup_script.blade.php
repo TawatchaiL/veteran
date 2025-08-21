@@ -1098,7 +1098,7 @@
                 var additionalData = {
                     hn: $('#hnp' + cardId).val(),
                     adddate: $('#adddatep' + cardId).val(),
-                    tname: $('#tnamep' + cardId).val(),
+                    tname: $('#tnamep' + cardId).val()[0],
                     fname: $('#fnamep' + cardId).val(),
                     lname: $('#lnamep' + cardId).val(),
                     sex: $('#sexp' + cardId).val()[0],
@@ -1234,7 +1234,7 @@
                         var additionalData = {
                             hn: $('#hnp' + cardId).val(),
                             adddate: $('#adddatep' + cardId).val(),
-                            tname: $('#tnamep' + cardId).val(),
+                            tname: $('#tnamep' + cardId).val()[0],
                             fname: $('#fnamep' + cardId).val(),
                             lname: $('#lnamep' + cardId).val(),
                             sex: $('#sexp' + cardId).val()[0],

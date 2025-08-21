@@ -104,7 +104,7 @@
                                                     <option value="0" selected>ตัวเลือกการค้นหา</option>
                                                     <option value="1">กำลังดำเนินการ</option>
                                                     <option value="2">ปิดเคส</option>
-                                                    <option value="3">HN</option>
+                                                    <option value="3">เลขประจำตัว</option>
                                                     <option value="4">ชื่อ-สกุล</option>
                                                     <option value="5">เบอร์โทร</option>
                                                 </select>

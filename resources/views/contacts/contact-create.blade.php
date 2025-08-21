@@ -76,7 +76,7 @@
 
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <strong><i class="fas fa-code"></i> HN:</strong>
+                                    <strong><i class="fas fa-code"></i> เลขประจำตัว:</strong>
                                     {!! Form::text('hnp' . $cardid, '', [
                                         'id' => 'hnp' . $cardid,
                                         'placeholder' => 'HN',
