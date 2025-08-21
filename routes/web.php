@@ -1,28 +1,25 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
-
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
-
 use App\Services\FileUploadService;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 /* Route::get('/', function () {
     return view('home');
 }); */
 
-//Auth::routes();
+// Auth::routes();
 
-    Route::group(['middleware' => ['auth']], function () {
-    //Route::get('/roles', [RoleController::class, 'index'])->name('roles.index');
-    //Route::get('/roles/store', [RoleController::class, 'store'])->name('roles.store');
+Route::group(['middleware' => ['auth']], function () {
+    // Route::get('/roles', [RoleController::class, 'index'])->name('roles.index');
+    // Route::get('/roles/store', [RoleController::class, 'store'])->name('roles.store');
     Route::get('/roles/edit/{id}', [RoleController::class, 'edit'])->name('roles.edit2');
     Route::put('/roles/save/{id}', [RoleController::class, 'update'])->name('roles.save');
-    //Route::delete('/roles/destroy', [RoleController::class, 'destroy'])->name('roles.destroy');
+    // Route::delete('/roles/destroy', [RoleController::class, 'destroy'])->name('roles.destroy');
     Route::post('/roles/destroy_all', [RoleController::class, 'destroy_all'])->name('roles.destroy_all');
     Route::resource('users', UserController::class);
     Route::get('/logout', [UserController::class, 'perform'])->name('logout.perform');
@@ -120,10 +117,10 @@ use Illuminate\Http\Request;
     Route::get('/reportcase', [App\Http\Controllers\ReportcaseController::class, 'index'])->name('reportcase');
 
     Route::get('/reportcasetop10', [App\Http\Controllers\ReportcasetopController::class, 'index'])->name('reportcasetop10');
-    //Route::post('/reportcasetop10/report', [App\Http\Controllers\ReportcasetopController::class, 'report'])->name('reportcasetop10.report');
+    // Route::post('/reportcasetop10/report', [App\Http\Controllers\ReportcasetopController::class, 'report'])->name('reportcasetop10.report');
     Route::get('/reporttop10in', [App\Http\Controllers\ReporttopinController::class, 'index'])->name('reporttop10in');
     Route::get('/reporttop10out', [App\Http\Controllers\ReporttopoutController::class, 'index'])->name('reporttop10out');
-//new
+    // new
     Route::get('/loginstatus', [App\Http\Controllers\LoginstatusController::class, 'index'])->name('loginstatus');
     Route::get('/sumcasebyhn', [App\Http\Controllers\SumcasebyhnController::class, 'index'])->name('sumcasebyhn');
     Route::get('/detailcaselogbyhn', [App\Http\Controllers\DetailcaselogbyhnController::class, 'index'])->name('detailcaselogbyhn');
@@ -152,7 +149,7 @@ use Illuminate\Http\Request;
     Route::get('/thcity/city', [App\Http\Controllers\ThCityController::class, 'city'])->name('thcity.city');
     Route::get('/thdistrict/district/{provinceId}', [App\Http\Controllers\ThDistrictController::class, 'district'])->name('thdistrict.district');
     Route::get('/thsubdistrict/subdistrict/{districtId}', [App\Http\Controllers\ThSubDistrictController::class, 'subdistrict'])->name('thsubdistrict.subdistrict');
-    //file
+    // file
     Route::post('/file/upload', function (Request $request) {
         $result = FileUploadService::fileStore($request);
         return response()->json(['success' => $result]);
@@ -168,10 +165,8 @@ use Illuminate\Http\Request;
         return $result;
     })->name('file.get');
 
-
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
-
 
 Auth::routes();
