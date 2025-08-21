@@ -432,8 +432,8 @@
                     <div class="card-body card-content">
                     </div>
                     <div class="card-footer text-muted text-right">
-                        <a href="#" class="btn btn-warning hold_call d-none" data-id="${peern[1]}"><i class="fa-solid fa-pause"></i> Hold</a>
-                        <a href="#" class="btn btn-success answer_call" data-id="${peern[1]}"><i class="fa-solid fa-phone-volume"></i> รับสาย</a>
+                        <!--<a href="#" class="btn btn-warning hold_call d-none" data-id="${peern[1]}"><i class="fa-solid fa-pause"></i> Hold</a>
+                        <a href="#" class="btn btn-success answer_call" data-id="${peern[1]}"><i class="fa-solid fa-phone-volume"></i> รับสาย</a>-->
                         <a href="#" class="btn btn-danger hangup_call" data-id="${data.extension}"><i class="fa-solid fa-phone-slash"></i> วางสาย</a>
                     </div>
                 </div>
