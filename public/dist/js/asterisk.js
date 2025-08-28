@@ -549,5 +549,10 @@ socket.on('qlogoff', data => {
 });
 
 socket.on('disconnect', data => {
+	$.get(`${web_url}/agent/kick/`, (dataw, status) => {
+		if (dataw) {
+			window.location.replace(`${web_url}/auth/agent_kick`);
+		}
+	});
 	socket.emit('join', 'Bye from client');
 });
