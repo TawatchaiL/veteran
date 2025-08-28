@@ -689,8 +689,9 @@
         });
     };
 
-    socket.on('connect', () => {
+    socket.on('connect', data => {
         socket.emit('join', 'Client Connect To Asterisk Event Serv');
+        socket.emit("register", { extension: exten });
     });
 
     socket.on('queuememberstatus', async (response) => {});
