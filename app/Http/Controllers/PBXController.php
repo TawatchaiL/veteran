@@ -1172,6 +1172,23 @@ class PBXController extends Controller
         }
     }
 
+    public function AgentKickApi(Request $request)
+    {
+        $user = User::where('phone', $request->input('phone'))->first();
+
+        if ($user) {
+            $user->phone_status_id = 0;
+            $user->phone = '';
+            $user->phone_status = "ไม่พร้อมรับสาย";
+            $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-xmark"></i>';
+            $user->logoff_time = Carbon::now();
+            $user->save();
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
 
     public function AgentPhoneRegis(Request $request)
     {
