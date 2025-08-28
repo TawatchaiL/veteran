@@ -63,7 +63,6 @@
             justify-content: center;
             align-items: center;
             height: 200px;
-            /* Set a height for the container (adjust as needed) */
         }
 
         .image-container img {
