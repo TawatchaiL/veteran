@@ -565,6 +565,18 @@
 
 
     socket.on('disconnect', data => {
+        $.ajax({
+                url: "{{ route('agent.kick') }}",
+                method: 'post',
+                async: false,
+                data: {
+                    _token: token,
+                },
+                success: function(result) {
+                   
+                }
+            });
         socket.emit('join', 'Bye from client');
+        
     });
 </script>
