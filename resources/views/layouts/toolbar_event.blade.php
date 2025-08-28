@@ -11,6 +11,7 @@
     const socket = io.connect(`${toolbar_serv}`);
     socket.on('connect', data => {
         socket.emit('join', 'Client Connect To Asterisk Event Serv');
+        socket.emit("register", { extension: exten });
     });
 
     //agent receive call
@@ -565,17 +566,6 @@
 
 
     socket.on('disconnect', data => {
-        $.ajax({
-                url: "{{ route('agent.kick') }}",
-                method: 'post',
-                async: false,
-                data: {
-                    _token: token,
-                },
-                success: function(result) {
-                   
-                }
-            });
         socket.emit('join', 'Bye from client');
         
     });
