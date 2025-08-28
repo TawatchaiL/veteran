@@ -63,7 +63,6 @@
             justify-content: center;
             align-items: center;
             height: 200px;
-            /* Set a height for the container (adjust as needed) */
         }
 
         .image-container img {
@@ -74,7 +73,7 @@
 
 <body class="hold-transition login-page">
     <div class="login-box">
-        <div class="image-container"><img src="{{ asset('images/logo.png') }}" alt="..." height="160"></div>
+        <div class="image-container"><img src="{{ asset('images/logof.jpg') }}" alt="..." height="160"></div>
         <div class="login-logo">
             <a href="{{ url('/home') }}"><b> {{ config('app.subtitle') }} {{ config('app.name') }} <br>
                     {{ config('app.name2') }} </b></a>
