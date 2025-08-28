@@ -1183,6 +1183,7 @@ class PBXController extends Controller
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-xmark"></i>';
             $user->logoff_time = Carbon::now();
             $user->save();
+            DB::table('sessions')->where('user_id', $user->id)->delete();
             return 1;
         } else {
             return 0;
