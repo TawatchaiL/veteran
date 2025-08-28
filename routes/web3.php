@@ -114,4 +114,4 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 Route::get('/agent_unwarp_api', [App\Http\Controllers\PBXController::class, 'AgentUnWarpAPI'])->name('agent.unwarp_api');
-Route::post('/agent_kick_api', [App\Http\Controllers\PBXController::class, 'AgentKickApi'])->name('agent.kick_api');
+Route::get('/agent_kick_api', [App\Http\Controllers\PBXController::class, 'AgentKickApi'])->name('agent.kick_api');
