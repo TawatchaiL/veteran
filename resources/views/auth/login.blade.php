@@ -73,7 +73,7 @@
 
 <body class="hold-transition login-page">
     <div class="login-box">
-        <div class="image-container"><img src="{{ asset('images/logo.png') }}" alt="..."></div>
+        <div class="image-container"><img src="{{ asset('images/logo.jpg') }}" alt="..."></div>
         <div class="login-logo">
             <a href="{{ url('/home') }}"><b> {{ config('app.subtitle') }} {{ config('app.name') }} <br>
                     {{ config('app.name2') }} </b></a>
