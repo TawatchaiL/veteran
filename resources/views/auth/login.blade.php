@@ -52,24 +52,75 @@
     <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <link rel="stylesheet" href="dist/css/adminlte.css?v=3.2.0">
 
-    <style>
-        body {
-            font-family: 'Roboto', 'Sarabun';
-            font-size: 16px;
-        }
+<style>
+    body {
+        font-family: 'Roboto', 'Sarabun';
+        font-size: 16px;
+        background: linear-gradient(135deg, #002B7F 0%, #C4161C 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+    }
 
-        .image-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 200px;
-        }
+    .login-box {
+        width: 400px;
+    }
 
-        .image-container img {
-            max-height: 100%;
-            /* Ensures the image scales proportionally within the container */
-        }
-    </style>
+    .login-logo a {
+        color: #ffffff !important;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    }
+
+    .card {
+        border-radius: 16px;
+        background: #ffffff;
+        color: #333;
+        overflow: hidden;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .login-card-body {
+        background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
+        border-radius: 12px;
+        padding: 30px;
+    }
+
+    .btn-primary {
+        background-color: #005A41;
+        border-color: #004C37;
+        font-weight: bold;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .btn-primary:hover {
+        background-color: #007A59;
+        border-color: #00664A;
+    }
+
+    .login-box-msg {
+        font-weight: 600;
+        color: #005A41;
+    }
+
+    .image-container img {
+        height: 120px;
+        filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.3));
+    }
+
+    input.form-control {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+    }
+
+    .input-group-text {
+        background-color: #005A41;
+        color: white;
+        border: none;
+        border-radius: 0 8px 8px 0;
+    }
+</style>
 
 <body class="hold-transition login-page">
     <div class="login-box">
