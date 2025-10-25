@@ -120,6 +120,31 @@
         border: none;
         border-radius: 0 8px 8px 0;
     }
+        body.login-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #005A9C 0%, #9B0B16 100%);
+            color: #fff;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .image-container img {
+            height: 120px;
+            width: auto;
+            display: block;
+            margin: 0 auto;
+        }
 </style>
 
 <body class="hold-transition login-page">
