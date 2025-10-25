@@ -381,28 +381,5 @@
         text-overflow: ellipsis;
         white-space: nowrap;
     }
-    body {
-    background: linear-gradient(135deg, #a2df90 0%, #d4f1b1 100%) !important;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-/* ให้ card และ panel ยังคงพื้นหลังขาว อ่านง่าย */
-.card, .content-wrapper, .main-footer {
-    background-color: rgba(255, 255, 255, 0.9) !important;
-    border-radius: 8px;
-}
-
-/* Sidebar ปรับให้กลมกลืน */
-.main-sidebar {
-    background: rgba(162, 223, 144, 0.9) !important;
-}
-
-/* Navbar สีขาวโปร่ง */
-.main-header.navbar {
-    background-color: rgba(255, 255, 255, 0.85) !important;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
+    
 </style>
