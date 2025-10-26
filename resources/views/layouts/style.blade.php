@@ -417,4 +417,26 @@
 .main-sidebar {
     box-shadow: 2px 0 8px rgba(0, 0, 0, 0.25);
 }
+
+/* === แก้เส้นขาวล่างของ Sidebar === */
+.main-sidebar {
+    border-bottom: none !important;  /* ตัดขอบล่างออก */
+    position: relative;              /* เพื่อให้ pseudo-element ทำงาน */
+}
+
+/* กันไม่ให้เกิดเส้นจางหรือรอยขอบระหว่าง sidebar กับ content */
+.content-wrapper {
+    border-top: none !important;
+}
+
+/* เติม gradient ลงสุด (เพื่อกลืนกับพื้นหลังและกันเส้นขาว 1px) */
+.main-sidebar::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px; /* บางพอให้กลืนกับสี */
+    background: linear-gradient(135deg, #002B7F 0%, #C4161C 100%);
+}
 </style>
