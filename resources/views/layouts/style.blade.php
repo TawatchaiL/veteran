@@ -477,4 +477,30 @@ body.sidebar-collapse .logo-area .brand-text {
     padding-top: 10px;
 }
 
+
+/* === ปรับโทนสีหัวกล่องทุกหน้าทั้งระบบ === */
+.card-primary:not(.card-outline) > .card-header {
+    background: linear-gradient(135deg, #002B7F 0%, #C4161C 100%) !important; /* น้ำเงิน-แดง */
+    color: #fff !important;
+    border-bottom: none !important;
+}
+
+/* ปรับตัวหนังสือหัวการ์ดให้ดูชัด */
+.card-primary .card-title {
+    color: #fff !important;
+    font-weight: 600;
+}
+
+/* ปรับไอคอนปุ่มมุมขวา (minimize / collapse) */
+.card-primary .btn-tool {
+    color: #fff !important;
+}
+
+/* ถ้ามี .bg-primary ที่ใช้ที่อื่น (ปุ่ม, กล่อง, ฯลฯ) ให้เปลี่ยนโทนเดียวกัน */
+.bg-primary,
+.btn-primary {
+    background: linear-gradient(135deg, #002B7F 0%, #C4161C 100%) !important;
+    border: none !important;
+    color: #fff !important;
+}
 </style>
