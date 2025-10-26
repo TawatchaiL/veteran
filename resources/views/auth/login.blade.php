@@ -207,7 +207,7 @@
                             <input type="text" name="email" value="{{-- {{ old('email') }} --}}" placeholder="Username"
                                 class="form-control @error('email') is-invalid @enderror">
                             <div class="input-group-append">
-                                <div class="input-group-text"><span class="fas fa-user"></span></div>
+                                <div class="input-group-text"> <span class="fas fa-user"></span></div>
                             </div>
                             @error('email')
                                 <span class="error invalid-feedback">{{ $message }}</span>
@@ -233,7 +233,7 @@
                                 class="form-control @error('phone') is-invalid @enderror" {{-- value="{{ old('phone', $temporaryPhone) }}" --}}>
                             <div class="input-group-append">
                                 <div class="input-group-text">
-                                    <span class="fas fa-phone"></span>
+                                    
                                 </div>
                             </div>
                             @error('phone')
