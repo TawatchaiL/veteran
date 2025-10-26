@@ -432,4 +432,49 @@
     height: 2px;
     background: linear-gradient(135deg, #002B7F 0%, #C4161C 100%);
 }
+
+/* โลโก้ด้านบนของ Sidebar */
+.logo-area {
+    display: block;
+    text-align: center;
+    padding: 20px 10px;
+    background: transparent !important;
+    border-bottom: none !important;
+}
+
+/* รูปโลโก้ */
+.logo-area img {
+    max-width: 120px;
+    height: auto;
+    display: block;
+    margin: 0 auto 8px auto;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+    transition: all 0.3s ease-in-out;
+}
+
+/* ชื่อแอปใต้โลโก้ */
+.logo-area .brand-text {
+    display: block;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* ซ่อนโลโก้ใหญ่เมื่อ sidebar ถูกย่อ (collapse) */
+body.sidebar-collapse .logo-area img {
+    max-width: 40px;
+    margin-bottom: 0;
+}
+
+/* ซ่อนข้อความเมื่อ sidebar ย่อ */
+body.sidebar-collapse .logo-area .brand-text {
+    display: none;
+}
+
+/* จัดระยะห่างไม่ให้ sidebar-menu ทับโลโก้ */
+.main-sidebar .sidebar {
+    padding-top: 10px;
+}
+
 </style>
