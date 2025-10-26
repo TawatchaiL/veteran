@@ -145,10 +145,6 @@
             display: block;
             margin: 0 auto;
         }
-        /* แก้ icon ถูกตัดขอบใน input group */
-.card {
-    overflow: visible !important; /* เดิม hidden ทำให้ icon หาย */
-}
 
 /* ปรับ input ให้เว้นช่องขวา และให้ขอบโค้งพอดี */
 .input-group .form-control {
