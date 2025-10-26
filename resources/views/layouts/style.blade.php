@@ -505,8 +505,6 @@ body.sidebar-collapse .logo-area .brand-text {
 }
 /* เปลี่ยน back ground */
 body, .content-wrapper {
-    background-color: #1E2430 !important; /* เทาอมฟ้าเข้ม */
-    color: #E8E8E8 !important;
+    background-color: #E8EBF0 !important; /* เทาอมฟ้า */
 }
-
 </style>
