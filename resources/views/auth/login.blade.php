@@ -145,30 +145,30 @@
             display: block;
             margin: 0 auto;
         }
-     /* ปรับ input-group ให้ขอบเนียนไม่จาง */
-.input-group {
-    overflow: hidden; /* รวมขอบให้กลมและเนียน */
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-}
 
-.input-group .form-control {
-    border: none !important;
-    box-shadow: none !important;
-}
+        .input-group {
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
 
-.input-group-append .input-group-text {
-    background-color: #005A41;
-    color: white;
-    border: none;
-    border-left: 1px solid #005A41;
-}
+        .input-group .form-control {
+            border: none !important;
+            box-shadow: none !important;
+        }
 
-.input-group .form-control:focus {
-    outline: none;
-    box-shadow: none;
-}   
+        .input-group-append .input-group-text {
+            background-color: #005A41;
+            color: white;
+            border: none;
+            border-left: 1px solid #005A41;
+        }
+
+        .input-group .form-control:focus {
+            outline: none;
+            box-shadow: none;
+        }   
 </style>
 
 <body class="hold-transition login-page">
@@ -198,6 +198,9 @@
                         <div class="input-group mb-3">
                             <input type="text" name="email" value="{{-- {{ old('email') }} --}}" placeholder="Username"
                                 class="form-control @error('email') is-invalid @enderror">
+                            <div class="input-group-append">
+                                <div class="input-group-text"><span class="fas fa-user"></span></div>
+                            </div>
                             @error('email')
                                 <span class="error invalid-feedback">{{ $message }}</span>
                             @enderror
