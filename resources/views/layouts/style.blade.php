@@ -510,11 +510,12 @@ body, .content-wrapper {
 
 /* === ปรับแถบบน Navbar ให้เข้ากับธีมเข้ม === */
 .main-header.navbar {
-    background: linear-gradient(135deg, #002B7F 0%, #C4161C 100%) !important; /* น้ำเงิน-แดง */
+    background: #1E2A38 !important; /* กรมอมเทา */
     color: #ffffff !important;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
     border: none !important;
 }
+
 
 /* ปรับสีตัวอักษรและ icon ใน navbar */
 .main-header .nav-link, 
