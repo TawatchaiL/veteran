@@ -382,10 +382,13 @@
         white-space: nowrap;
     }
     
-    /* === ปรับ Sidebar ให้เป็นโทนเดียวกับหน้า Login === */
+/* === ปรับ Sidebar ให้เป็นโทนเดียวกับหน้า Login === */
 .main-sidebar {
     background: linear-gradient(135deg, #002B7F 0%, #C4161C 100%) !important;
     color: #fff !important;
+    border-bottom: none !important;
+    position: relative;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.25);
 }
 
 .nav-sidebar .nav-item > .nav-link {
@@ -414,16 +417,6 @@
     border-bottom: none !important;
 }
 
-.main-sidebar {
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.25);
-}
-
-/* === แก้เส้นขาวล่างของ Sidebar === */
-.main-sidebar {
-    border-bottom: none !important;  /* ตัดขอบล่างออก */
-    position: relative;              /* เพื่อให้ pseudo-element ทำงาน */
-}
-
 /* กันไม่ให้เกิดเส้นจางหรือรอยขอบระหว่าง sidebar กับ content */
 .content-wrapper {
     border-top: none !important;
@@ -436,7 +429,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 2px; /* บางพอให้กลืนกับสี */
+    height: 2px;
     background: linear-gradient(135deg, #002B7F 0%, #C4161C 100%);
 }
 </style>
