@@ -576,4 +576,17 @@ body, .content-wrapper {
     transition: all 0.2s ease;
 }
 
+.main-footer {
+    background-color: #1E2A38 !important; /* กรมอมเทาเข้ม */
+    color: #ffffff !important;
+    border-top: none !important;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+}
+.main-footer a {
+    color: #FFD54F !important; /* เหลืองทองเวลา hover หรือลิงก์ */
+}
+.main-footer a:hover {
+    text-decoration: underline;
+}
 </style>
