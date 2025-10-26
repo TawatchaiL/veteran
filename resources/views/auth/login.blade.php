@@ -206,9 +206,7 @@
                         <div class="input-group mb-3">
                             <input type="text" name="email" value="{{-- {{ old('email') }} --}}" placeholder="Username"
                                 class="form-control @error('email') is-invalid @enderror">
-                            <div class="input-group-append">
                                 <span class="fas fa-user"></span>
-                            </div>
                             @error('email')
                                 <span class="error invalid-feedback">{{ $message }}</span>
                             @enderror
