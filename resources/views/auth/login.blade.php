@@ -145,19 +145,20 @@
             display: block;
             margin: 0 auto;
         }
-
-        .card {
-    overflow: visible; /* เดิม hidden ทำให้ icon หาย */
+        /* แก้ icon ถูกตัดขอบใน input group */
+.card {
+    overflow: visible !important; /* เดิม hidden ทำให้ icon หาย */
 }
 
-/* --- ปรับกล่อง input ให้เว้นที่ด้านขวา --- */
+/* ปรับ input ให้เว้นช่องขวา และให้ขอบโค้งพอดี */
 .input-group .form-control {
     border-right: 0;
-    padding-right: 40px; /* เผื่อพื้นที่ให้ icon */
+    padding-right: 40px; /* เผื่อพื้นที่ icon */
+    border-radius: 8px 0 0 8px;
 }
 
-/* --- ทำให้ icon อยู่พอดีกับขอบขวา --- */
-.input-group-text {
+/* ปรับกล่อง icon ด้านขวาให้เท่ากันทุกช่อง */
+.input-group-append .input-group-text {
     background-color: #005A41;
     color: white;
     border: none;
@@ -165,16 +166,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    min-width: 42px; /* เพิ่มพื้นที่ไม่ให้ icon แนบขอบ */
     padding: 0 12px;
-    min-width: 40px; /* ให้มีพื้นที่แน่นอน */
 }
 
-/* --- กรณีใช้ position absolute --- */
-.input-group.position-relative i {
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
+/* ปรับขนาดและตำแหน่ง icon ให้ตรงกลางแน่นอน */
+.input-group-text .fas {
+    font-size: 16px;
+    line-height: 1;
+}
+
+/* ปรับให้ checkbox อยู่ชิดซ้ายสวยขึ้น */
+.icheck-primary label {
+    font-weight: 500;
+    color: #333;
 }
 </style>
 
