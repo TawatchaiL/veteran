@@ -504,20 +504,19 @@ body.sidebar-collapse .logo-area .brand-text {
     color: #fff !important;
 }
 
-/* === ปุ่มเหลืองสวยแบบ Gradient === */
+/* === ปุ่มเหลือง Gradient โทนเดียวกับปุ่มเขียว/แดง === */
 .btn-warning {
-    background: linear-gradient(135deg, #FFB300 0%, #FFD54F 100%) !important; /* เหลืองทอง */
+    background: linear-gradient(135deg, #F9A825 0%, #FDD835 100%) !important; /* ไล่สีเหลืองทอง */
     border: none !important;
-    color: #212121 !important; /* ตัวอักษรเข้มชัดอ่านง่าย */
+    color: #1B1B1B !important; /* สีข้อความเข้ม เพื่อให้อ่านง่าย */
     font-weight: 500;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: all 0.2s ease-in-out;
 }
 
-/* Hover */
+/* Hover: สว่างขึ้นเล็กน้อย */
 .btn-warning:hover {
     filter: brightness(1.1);
     transform: translateY(-1px);
-    transition: all 0.2s ease;
 }
 /* เปลี่ยน back ground */
 body, .content-wrapper {
