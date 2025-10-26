@@ -145,38 +145,7 @@
             display: block;
             margin: 0 auto;
         }
-
-/* ปรับ input ให้เว้นช่องขวา และให้ขอบโค้งพอดี */
-.input-group .form-control {
-    border-right: 0;
-    padding-right: 40px; /* เผื่อพื้นที่ icon */
-    border-radius: 8px 0 0 8px;
-}
-
-/* ปรับกล่อง icon ด้านขวาให้เท่ากันทุกช่อง */
-.input-group-append .input-group-text {
-    background-color: #005A41;
-    color: white;
-    border: none;
-    border-radius: 0 8px 8px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 42px; /* เพิ่มพื้นที่ไม่ให้ icon แนบขอบ */
-    padding: 0 12px;
-}
-
-/* ปรับขนาดและตำแหน่ง icon ให้ตรงกลางแน่นอน */
-.input-group-text .fas {
-    font-size: 16px;
-    line-height: 1;
-}
-
-/* ปรับให้ checkbox อยู่ชิดซ้ายสวยขึ้น */
-.icheck-primary label {
-    font-weight: 500;
-    color: #333;
-}
+        
 </style>
 
 <body class="hold-transition login-page">
@@ -206,7 +175,6 @@
                         <div class="input-group mb-3">
                             <input type="text" name="email" value="{{-- {{ old('email') }} --}}" placeholder="Username"
                                 class="form-control @error('email') is-invalid @enderror">
-                                <span class="fas fa-user"></span>
                             @error('email')
                                 <span class="error invalid-feedback">{{ $message }}</span>
                             @enderror
