@@ -145,6 +145,37 @@
             display: block;
             margin: 0 auto;
         }
+
+        .card {
+    overflow: visible; /* เดิม hidden ทำให้ icon หาย */
+}
+
+/* --- ปรับกล่อง input ให้เว้นที่ด้านขวา --- */
+.input-group .form-control {
+    border-right: 0;
+    padding-right: 40px; /* เผื่อพื้นที่ให้ icon */
+}
+
+/* --- ทำให้ icon อยู่พอดีกับขอบขวา --- */
+.input-group-text {
+    background-color: #005A41;
+    color: white;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 12px;
+    min-width: 40px; /* ให้มีพื้นที่แน่นอน */
+}
+
+/* --- กรณีใช้ position absolute --- */
+.input-group.position-relative i {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+}
 </style>
 
 <body class="hold-transition login-page">
