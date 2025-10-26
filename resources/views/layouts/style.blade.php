@@ -507,4 +507,57 @@ body.sidebar-collapse .logo-area .brand-text {
 body, .content-wrapper {
     background-color: #E8EBF0 !important; /* เทาอมฟ้า */
 }
+
+/* === ปรับแถบบน Navbar ให้เข้ากับธีมเข้ม === */
+.main-header.navbar {
+    background: linear-gradient(135deg, #002B7F 0%, #C4161C 100%) !important; /* น้ำเงิน-แดง */
+    color: #ffffff !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    border: none !important;
+}
+
+/* ปรับสีตัวอักษรและ icon ใน navbar */
+.main-header .nav-link, 
+.main-header .navbar-nav .nav-item > a {
+    color: #ffffff !important;
+    transition: color 0.2s;
+}
+
+.main-header .nav-link:hover {
+    color: #FFE082 !important; /* สีทองอ่อนเวลา hover */
+}
+
+/* === ปรับสีปุ่มให้เข้ากับธีม === */
+
+/* ปุ่มหลัก */
+.btn-primary {
+    background: linear-gradient(135deg, #002B7F 0%, #C4161C 100%) !important;
+    border: none !important;
+    color: #fff !important;
+    font-weight: 500;
+}
+
+/* ปุ่มบันทึก / เพิ่มข้อมูล */
+.btn-success {
+    background: linear-gradient(135deg, #007F4E 0%, #00B87B 100%) !important;
+    border: none !important;
+    color: #fff !important;
+    font-weight: 500;
+}
+
+/* ปุ่มลบ / ยกเลิก */
+.btn-danger {
+    background: linear-gradient(135deg, #C62828 0%, #E53935 100%) !important;
+    border: none !important;
+    color: #fff !important;
+    font-weight: 500;
+}
+
+/* Hover effect ให้มีความรู้สึกโต้ตอบ */
+.btn:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+    transition: all 0.2s ease;
+}
+
 </style>
