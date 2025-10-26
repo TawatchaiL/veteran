@@ -382,5 +382,39 @@
         white-space: nowrap;
     }
     
-    
+    /* === ปรับ Sidebar ให้เป็นโทนเดียวกับหน้า Login === */
+.main-sidebar {
+    background: linear-gradient(135deg, #002B7F 0%, #C4161C 100%) !important;
+    color: #fff !important;
+}
+
+.nav-sidebar .nav-item > .nav-link {
+    color: #ffffff !important;
+    transition: background 0.3s, color 0.3s;
+}
+
+.nav-sidebar .nav-item > .nav-link:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff !important;
+}
+
+.nav-sidebar .nav-item > .nav-link.active {
+    background-color: rgba(0, 0, 0, 0.25) !important;
+    color: #fff !important;
+    font-weight: 600;
+}
+
+.nav-sidebar .nav-icon {
+    color: #fff !important;
+}
+
+.brand-link {
+    background: transparent !important;
+    color: #fff !important;
+    border-bottom: none !important;
+}
+
+.main-sidebar {
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.25);
+}
 </style>
