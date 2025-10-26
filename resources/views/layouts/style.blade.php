@@ -503,6 +503,22 @@ body.sidebar-collapse .logo-area .brand-text {
     border: none !important;
     color: #fff !important;
 }
+
+/* === ปุ่มเหลืองสวยแบบ Gradient === */
+.btn-warning {
+    background: linear-gradient(135deg, #FFB300 0%, #FFD54F 100%) !important; /* เหลืองทอง */
+    border: none !important;
+    color: #212121 !important; /* ตัวอักษรเข้มชัดอ่านง่าย */
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Hover */
+.btn-warning:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+    transition: all 0.2s ease;
+}
 /* เปลี่ยน back ground */
 body, .content-wrapper {
     background-color: #E8EBF0 !important; /* เทาอมฟ้า */
