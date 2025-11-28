@@ -224,10 +224,10 @@
                                     data-placement="top" data-popover-content="#a1" data-toggle="popover"
                                     data-trigger="focus" href="#" tabindex="0" />
                             </div>
-                           <!--  {{-- <div class="mx-1">
+                           <div class="mx-1">
                                 <button class="btn custom-button btn-success button_dial"><i
                                         class="fa-solid fa-phone-volume"></i> รับสาย</button>
-                            </div> --}} -->
+                            </div>
                             <div class="mx-1">
                                 <button {{ $dial_button }} id="dial_button" name="dial_button"
                                     class="btn custom-button btn-success {{ $dial_button_class }}"><i
