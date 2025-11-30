@@ -32,7 +32,7 @@
                 <ul class="nav nav-tabs" id="custom-tabs-one-tabp" role="tablist">
                     <li class="pt-2 px-3" id="phonenosuccess{{ $cardid }}"> </li>
                    <li class="pt-2 px-3">
-                        <h3 class="card-title" id="contact_name">123456</h3>
+                        <h3 class="card-title" id="contact_name"></h3>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active tablistcaseP" id="custom-tabs-one-casedetail-tabp{{ $cardid }}"
