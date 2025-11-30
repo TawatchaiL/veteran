@@ -243,7 +243,7 @@
                                         class="fa-solid fa-check-double"></i>
                                     Accept</button>
                             </div>
-                            
+                            --}}
                            <!--  <div class="mx-1">
                                 <button {{ $transfer_button }} id="swap_button" name="swap_button"
                                     class="btn custom-button btn-success {{ $transfer_button_class }}"><i
