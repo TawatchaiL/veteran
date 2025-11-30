@@ -110,7 +110,7 @@
                         //let contactid = $('#contractid' + cardId).val();
                         var telnop = $('#telnop' + cardId).val();
                         $('#phonenosuccess' + cardId).html(
-                            '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ผู้ติดต่อใหม่</h3>'
+                            '<h3 class="card-title" style="color:1a16eb !important"> <i class="fa-solid fa-user-tie"></i> ผู้ติดต่อใหม่</h3>'
                         );
 
                         $.ajax({
@@ -120,6 +120,7 @@
                             success: function(res) {
                                 if (res.datax.length != 0) {
                                     var fullname;
+                                    /*
                                     if (res.datax.datac.fname !== null && res
                                         .datax.datac.fname !== '') {
                                         fullname = res.datax.datac.fname + ' ' +
@@ -138,6 +139,20 @@
                                             fullname = res.datax.datac.workno;
                                         }
                                     }
+                                    */
+const d = res.datax.datac;
+
+if (d.fname) {
+    fullname = `${d.fname} ${d.lname ?? ''}`.trim();
+} else if (d.telhome) {
+    fullname = d.telhome;
+} else if (d.phoneno) {
+    fullname = d.phoneno;
+} else if (d.workno) {
+    fullname = d.workno;
+} else {
+    fullname = ""; 
+}
                                     $('#phonenosuccess' + cardId).html(
                                         '<h3 class="card-title" style="color:#1a16eb !important"> <i class="fa-solid fa-user-tie"></i> ' +
                                         fullname + '</h3>');
@@ -828,7 +843,7 @@
 
                         //let telnop = $('#telnop' + cardId).val();
                         $('#phonenosuccess' + cardId).html(
-                            '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ผู้ติดต่อใหม่</h3>'
+                            '<h3 class="card-title" style="color:1a16eb !important"> <i class="fa-solid fa-user-tie"></i> ผู้ติดต่อใหม่</h3>'
                         );
                         $.ajax({
                             url: "contacts/popupedit/" + contactid,
@@ -837,6 +852,7 @@
                             success: function(res) {
                                 if (res.datax.length != 0) {
                                     var fullname;
+                                    /*
                                     if (res.datax.datac.fname !== null && res.datax
                                         .datac.fname !== '') {
                                         fullname = res.datax.datac.fname + ' ' + res
@@ -854,6 +870,20 @@
                                             fullname = res.datax.datac.workno;
                                         }
                                     }
+                                        */
+                                       const d = res.datax.datac;
+
+if (d.fname) {
+    fullname = `${d.fname} ${d.lname ?? ''}`.trim();
+} else if (d.telhome) {
+    fullname = d.telhome;
+} else if (d.phoneno) {
+    fullname = d.phoneno;
+} else if (d.workno) {
+    fullname = d.workno;
+} else {
+    fullname = "";
+}
                                     $('#phonenosuccess' + cardId).html(
                                         '<h3 class="card-title" style="color:#1a16eb !important"> <i class="fa-solid fa-user-tie"></i> ' +
                                         fullname + '</h3>');
