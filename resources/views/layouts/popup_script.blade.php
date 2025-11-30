@@ -139,7 +139,7 @@
                                         }
                                     }
                                     $('#phonenosuccess' + cardId).html(
-                                        '<h3 class="card-title" style="color:#1a16eb"> <i class="fa-solid fa-user-tie"></i> ' +
+                                        '<h3 class="card-title" style="color:#1a16eb !important"> <i class="fa-solid fa-user-tie"></i> ' +
                                         fullname + '</h3>');
                                     $('#contractid' + cardId).val(res.datax
                                         .datac.id);
@@ -855,7 +855,7 @@
                                         }
                                     }
                                     $('#phonenosuccess' + cardId).html(
-                                        '<h3 class="card-title" style="color: #1a16eb"> <i class="fa-solid fa-user-tie"></i> ' +
+                                        '<h3 class="card-title" style="color:#1a16eb !important"> <i class="fa-solid fa-user-tie"></i> ' +
                                         fullname + '</h3>');
                                     $('#contractid' + cardId).val(res.datax.datac
                                         .id);
