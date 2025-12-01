@@ -140,19 +140,19 @@
                                         }
                                     }
                                     */
-const d = res.datax.datac;
+                                    const d = res.datax.datac;
 
-if (d.fname) {
-    fullname = `${d.fname} ${d.lname ?? ''}`.trim();
-} else if (d.telhome) {
-    fullname = d.telhome;
-} else if (d.phoneno) {
-    fullname = d.phoneno;
-} else if (d.workno) {
-    fullname = d.workno;
-} else {
-    fullname = ""; 
-}
+                                    if (d.fname) {
+                                        fullname = `${d.fname} ${d.lname ?? ''}`.trim();
+                                    } else if (d.telhome) {
+                                        fullname = d.telhome;
+                                    } else if (d.phoneno) {
+                                        fullname = d.phoneno;
+                                    } else if (d.workno) {
+                                        fullname = d.workno;
+                                    } else {
+                                        fullname = ""; 
+                                    }
                                     $('#phonenosuccess' + cardId).html(
                                         '<h3 class="card-title" style="color:#1a16eb !important"> <i class="fa-solid fa-user-tie"></i> ' +
                                         fullname + '</h3>');
@@ -873,17 +873,17 @@ if (d.fname) {
                                         */
                                        const d = res.datax.datac;
 
-if (d.fname) {
-    fullname = `${d.fname} ${d.lname ?? ''}`.trim();
-} else if (d.telhome) {
-    fullname = d.telhome;
-} else if (d.phoneno) {
-    fullname = d.phoneno;
-} else if (d.workno) {
-    fullname = d.workno;
-} else {
-    fullname = "";
-}
+                                    if (d.fname) {
+                                        fullname = `${d.fname} ${d.lname ?? ''}`.trim();
+                                    } else if (d.telhome) {
+                                        fullname = d.telhome;
+                                    } else if (d.phoneno) {
+                                        fullname = d.phoneno;
+                                    } else if (d.workno) {
+                                        fullname = d.workno;
+                                    } else {
+                                        fullname = "";
+                                    }
                                     $('#phonenosuccess' + cardId).html(
                                         '<h3 class="card-title" style="color:#1a16eb !important"> <i class="fa-solid fa-user-tie"></i> ' +
                                         fullname + '</h3>');
