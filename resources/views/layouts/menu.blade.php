@@ -22,6 +22,7 @@
         </a>
     </li>
 @endcan
+{{--
 @can('agent-outbound')
     <li class="nav-item">
         <a href="{{ route('agent_outbound') }}" class="nav-link {{ Request::is('agent_outbound') ? 'active' : '' }}">
@@ -30,6 +31,7 @@
         </a>
     </li>
 @endcan
+--}}
 @can('voice-record-list')
    <!--  <li class="nav-item">
         <a href="{{ route('pbxcdr') }}" class="nav-link {{ Request::is('pbxcdr') ? 'active' : '' }}">
@@ -566,12 +568,14 @@
             <i class="fas fa-angle-left right"></i>
         </a>
         <ul class="nav nav-treeview">
+            {{--
             <li class="nav-item">
                 <a href="{{ route('outbound') }}" class="nav-link {{ Request::is('outbound') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
                     <p>นำเข้ารายการโทรออก</p>
                 </a>
             </li>
+            --}}
             <li class="nav-item">
                 <a href="{{ route('voicebackup') }}" class="nav-link {{ Request::is('voicebackup') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
