@@ -175,57 +175,85 @@ public function index(Request $request)
     ]);
 }
 
-    public function edit($id)
-    {
-        /*
-        $remoteData = DB::connection('remote_connection_pbx')->table('call_center.call_recording')
-            ->where('uniqueid', $id)
-            ->first();
+public function edit($id)
+{
+    // ------------------------------------------------------------------
+    // ❌ โค้ดเดิมแบบใช้ call_center.call_recording (ขอคอมเมนต์ไว้ก่อน)
+    // ------------------------------------------------------------------
+    /*
+    $remoteData = DB::connection('remote_connection_pbx')->table('call_center.call_recording')
+        ->where('uniqueid', $id)
+        ->first();
 
-        $agens = User::orderBy('name', 'asc')->get();
-        $agentArray = [];
+    ...
+    */
 
-        foreach ($agens as $agen) {
-            $agentArray[$agen->id]['name'] = explode(' ', $agen->name)[0];
-        }
+    // ------------------------------------------------------------------
+    // ✔ โค้ดใหม่: ดึงข้อมูลจาก CDR เท่านั้น
+    // ------------------------------------------------------------------
+    $remoteData = DB::connection('remote_connection_pbx')->table('asteriskcdrdb.cdr')
+        ->where('uniqueid', $id)
+        ->orderBy('calldate', 'asc')
+        ->first();
 
-        if (!empty($remoteData)) {
-            $voic = $remoteData->recordingfile;
-            $avoic_name = explode("/", $voic);
-            $voic_name = $agentArray[$remoteData->crm_id]['name'] . "-" . end($avoic_name);
-            /* $avoic_name = explode("-", $voic_name_ori);
-            $voic_name = $avoic_name[0] . "-" . $avoic_name[1]
-                . "-" . $avoic_name[2] . "-" . $remoteData->crm_id . "-" . $avoic_name[3]
-                . "-" . $avoic_name[4] . "-" . $avoic_name[5]; 
-            $tooltips = Comment::where('uniqueid', $id)->get();
-        } else {
-
-        */    
-            $remoteData = DB::connection('remote_connection_pbx')->table('asteriskcdrdb.cdr')
-                ->where('uniqueid', $id)
-                ->orderBy('calldate', 'asc')
-                ->first();
-
-            $avoic = explode("/", $remoteData->recordingfile);
-            $datep = explode("-", explode(" ", $remoteData->calldate)[0]);
-            $voic = $datep[0] . "/" . $datep[1] . "/" . $datep[2] . "/" . end($avoic);
-
-            $agentname = '';
-
-            if ($remoteData->dst_userfield !== null) {
-                $agentname = $agentArray[$remoteData->dst_userfield]['name'];
-            } elseif ($remoteData->accountcode !== '' && $remoteData->userfield !== '') {
-                $agentname = $agentArray[$remoteData->userfield]['name'];
-            }
-
-            $agentname = $agentname ?: 'NoAgent';
-
-            $voic_name = $agentname . "-" . end($avoic);
-            $tooltips = Comment::where('uniqueid', $id)->get();
-        //}
-
-        return response()->json(['voic' => $voic, 'remoteData2' => $remoteData, 'voic_name' => $voic_name, 'tooltips' => $tooltips]);
+    if (!$remoteData) {
+        return response()->json(['error' => 'Record not found'], 404);
     }
+
+    // ------------------------------------------------------------------
+    // ✔ เตรียม Agent Array (จำเป็นต้องใช้)
+    // ------------------------------------------------------------------
+    $agens = User::orderBy('name', 'asc')->get();
+    $agentArray = [];
+    foreach ($agens as $agen) {
+        $agentArray[$agen->id]['name'] = explode(' ', $agen->name)[0];
+    }
+
+    // ------------------------------------------------------------------
+    // ✔ เตรียมพาธไฟล์เสียงตามวันที่
+    // ------------------------------------------------------------------
+    $avoic = explode("/", $remoteData->recordingfile);
+    $datep = explode("-", explode(" ", $remoteData->calldate)[0]);
+    $voic = $datep[0] . "/" . $datep[1] . "/" . $datep[2] . "/" . end($avoic);
+
+    // ------------------------------------------------------------------
+    // ✔ หา Agent Name จาก userfield (เพราะ CDR มีฟิลด์นี้จริง)
+    // ------------------------------------------------------------------
+
+    /*
+    // ❌ เดิม: ใช้ dst_userfield ซึ่งไม่มีใน CDR
+    if ($remoteData->dst_userfield !== null) {
+        $agentname = $agentArray[$remoteData->dst_userfield]['name'];
+    }
+    */
+
+    $agentname = '';
+
+    // ✔ ใช้ userfield แทน dst_userfield
+    if (!empty($remoteData->userfield) && isset($agentArray[$remoteData->userfield])) {
+        $agentname = $agentArray[$remoteData->userfield]['name'];
+    }
+
+    // ถ้าไม่พบ agent เลย → ตั้งชื่อ “NoAgent”
+    $agentname = $agentname ?: 'NoAgent';
+
+    // ------------------------------------------------------------------
+    // ✔ ตั้งชื่อไฟล์สำหรับแสดงบน Modal
+    // ------------------------------------------------------------------
+    $voic_name = $agentname . "-" . end($avoic);
+
+    // ------------------------------------------------------------------
+    // ✔ โหลดคอมเมนต์ (Tooltip)
+    // ------------------------------------------------------------------
+    $tooltips = Comment::where('uniqueid', $id)->get();
+
+    return response()->json([
+        'voic' => $voic,
+        'remoteData2' => $remoteData,
+        'voic_name' => $voic_name,
+        'tooltips' => $tooltips
+    ]);
+}
 
     public function update(Request $request, $id)
     {
