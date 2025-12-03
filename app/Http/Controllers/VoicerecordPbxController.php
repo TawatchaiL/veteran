@@ -289,86 +289,46 @@ public function edit($id)
     }
 
 
-public function downloadAndDelete($id)
-{
-    // ---------------------------------------------------------------
-    // ❌ โค้ดเดิม - คอมเมนต์ไว้ก่อน (ใช้ call_center.call_recording)
-    // ---------------------------------------------------------------
-    /*
-    $remoteData = DB::connection('remote_connection')->table('call_center.call_recording')
-        ->where('uniqueid', $id)
-        ->first();
+    public function downloadAndDelete($id)
+    {
 
-    if (!empty($remoteData)) {
-        $voic = $remoteData->recordingfile;
-        $avoic_name = explode("/", $voic);
-        $voic_name = $agentArray[$remoteData->crm_id]['name'] . "-" . end($avoic_name);
-    } else {
-    */
-    // ---------------------------------------------------------------
-    // ✔ โค้ดใหม่: ใช้ CDR จาก PBX เท่านั้น
-    // ---------------------------------------------------------------
-    $remoteData = DB::connection('remote_connection_pbx')->table('asteriskcdrdb.cdr')
-        ->where('uniqueid', $id)
-        ->orderBy('calldate', 'asc')
-        ->first();
+            $remoteData = DB::connection('remote_connection_pbx')->table('asteriskcdrdb.cdr')
+                ->where('uniqueid', $id)
+                ->orderBy('calldate', 'asc')
+                ->first();
 
-    if (!$remoteData) {
-        return abort(404, 'Record not found');
+            $avoic = explode("/", $remoteData->recordingfile);
+            $datep = explode("-", explode(" ", $remoteData->calldate)[0]);
+            $voic = $datep[0] . "/" . $datep[1] . "/" . $datep[2] . "/" . end($avoic);
+
+            $agentname = '';
+
+            if ($remoteData->dst_userfield !== null) {
+                $agentname = $agentArray[$remoteData->dst_userfield]['name'];
+            } elseif ($remoteData->accountcode !== '' && $remoteData->userfield !== '') {
+                $agentname = $agentArray[$remoteData->userfield]['name'];
+            }
+
+            $agentname = $agentname ?: 'NoAgent';
+
+            $voic_name = $agentname . "-" . end($avoic);
+
+        $originalFilePath = public_path('wav2/' . $voic);
+
+        if (!file_exists($originalFilePath)) {
+            abort(404);
+        }
+
+        $fileContent = file_get_contents($originalFilePath);
+
+        if ($fileContent === false) {
+            return response()->json(['error' => 'Failed to retrieve file content'], 500);
+        }
+
+        return response($fileContent)
+            ->header('Content-Type', 'application/octet-stream')
+            ->header('Content-Disposition', 'attachment; filename="' . $voic_name . '"');
     }
-
-    // โหลด Agent
-    $agens = User::orderBy('name', 'asc')->get();
-    $agentArray = [];
-    foreach ($agens as $agen) {
-        $agentArray[$agen->id]['name'] = explode(' ', $agen->name)[0];
-    }
-
-    // ---------------------------------------------------------------
-    // ✔ จัดรูปแบบไฟล์เสียงตามวันที่ (ปี/เดือน/วัน/ไฟล์)
-    // ---------------------------------------------------------------
-    $avoic = explode("/", $remoteData->recordingfile);
-    $datep = explode("-", explode(" ", $remoteData->calldate)[0]);
-
-    $voic = $datep[0] . "/" . $datep[1] . "/" . $datep[2] . "/" . end($avoic);
-
-    // ---------------------------------------------------------------
-    // ✔ หา agent name จาก userfield (มีใน CDR จริง)
-    // ---------------------------------------------------------------
-    $agentname = '';
-
-    if (!empty($remoteData->userfield) && isset($agentArray[$remoteData->userfield])) {
-        $agentname = $agentArray[$remoteData->userfield]['name'];
-    }
-
-    $agentname = $agentname ?: 'NoAgent';
-
-    $voic_name = $agentname . "-" . end($avoic);
-
-    // ---------------------------------------------------------------
-    // ✔ สร้าง path ไฟล์เสียง (ปรับเองตาม NFS)
-    // ---------------------------------------------------------------
-    // ตัวอย่างเดิม (public/wav/)
-    // $originalFilePath = public_path('wav/' . $voic);
-
-    // ถ้าคุณเก็บไฟล์ใน NFS
-    // เช่น /mnt/nfs/monitor/YYYY/MM/DD/filename.wav
-    $originalFilePath = "/mnt/nfs/" . $voic;   // ← ปรับ directory ตรงนี้ให้ตรงของคุณ
-
-    if (!file_exists($originalFilePath)) {
-        return abort(404, 'File not found: ' . $originalFilePath);
-    }
-
-    $fileContent = file_get_contents($originalFilePath);
-
-    if ($fileContent === false) {
-        return response()->json(['error' => 'Failed to retrieve file content'], 500);
-    }
-
-    return response($fileContent)
-        ->header('Content-Type', 'application/octet-stream')
-        ->header('Content-Disposition', 'attachment; filename="' . $voic_name . '"');
-}
 
 
     public function destroy($id)
