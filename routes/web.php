@@ -110,6 +110,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::POST('/billingreport/comment/update/{id}', [App\Http\Controllers\BillingReportController::class, 'update'])->name('billingreport.update');
 
     Route::get('/voicerecord', [App\Http\Controllers\VoicerecordController::class, 'index'])->name('voicerecord');
+    Route::get('/voicerecordpbx', [App\Http\Controllers\VoicerecordPbxController::class, 'index'])->name('voicerecord');
     Route::get('/ivrreport', [App\Http\Controllers\IvrreportController::class, 'index'])->name('ivrreport');
     Route::get('/ivrreporttop10', [App\Http\Controllers\Ivrreporttop10Controller::class, 'index'])->name('ivrreporttop10');
     Route::get('/billing', [App\Http\Controllers\BillingController::class, 'index'])->name('billing');

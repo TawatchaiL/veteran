@@ -48,6 +48,19 @@ return [
             'strict' => true,
         ],
 
+        'remote_connection_pbx' => [
+            'driver' => 'mysql',
+            'host' => env('DB_REMOTEPBX_HOST','10.10.0.80'), // IP address or hostname of the remote machine
+            'port' => env('DB_REMOTEPBX_PORT','3306'), // Default MySQL port
+            'database' => env('DB_REMOTEPBX_DATABASE','asteriskcdrdb'),
+            'username' => env('DB_REMOTEPBX_USERNAME','crm'),
+            'password' => env('DB_REMOTEPBX_PASSWORD','rsiippbx'),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+        ],
+
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DATABASE_URL'),
