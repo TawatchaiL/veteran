@@ -177,7 +177,7 @@ public function index(Request $request)
 
     public function edit($id)
     {
-        $remoteData = DB::connection('remote_connection')->table('call_center.call_recording')
+        $remoteData = DB::connection('remote_connection_pbx')->table('call_center.call_recording')
             ->where('uniqueid', $id)
             ->first();
 
@@ -198,7 +198,7 @@ public function index(Request $request)
                 . "-" . $avoic_name[4] . "-" . $avoic_name[5]; */
             $tooltips = Comment::where('uniqueid', $id)->get();
         } else {
-            $remoteData = DB::connection('remote_connection')->table('asteriskcdrdb.cdr')
+            $remoteData = DB::connection('remote_connection_pbx')->table('asteriskcdrdb.cdr')
                 ->where('uniqueid', $id)
                 ->orderBy('calldate', 'asc')
                 ->first();

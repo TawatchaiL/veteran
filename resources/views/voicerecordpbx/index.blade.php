@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('style')
-    @include('voicerecord.style')
+    @include('voicerecordpbx.style')
 @endsection
 @section('content')
     <section class="content-header">
@@ -183,7 +183,7 @@
         </div>
     </section>
     @include('layouts.modal-form')
-    @include('voicerecord.create')
+    @include('voicerecordpbx.create')
 @endsection
 @section('script')
     @include('voicerecord.script')
