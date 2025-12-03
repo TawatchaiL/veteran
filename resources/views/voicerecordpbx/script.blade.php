@@ -386,7 +386,7 @@
                 $('#vioc_name').text(response.voic_name);
                 $('#uniqueid').val(response.remoteData2.uniqueid);
                 const tooltipsData = response.tooltips;
-                const newUrl = 'wav/' + response.voic;
+                const newUrl = 'wav2/' + response.voic;
                 initializeWaveSurfer(newUrl, tooltipsData);
             },
             error: function(error) {
