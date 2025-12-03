@@ -46,6 +46,14 @@
         </a>
     </li>
 @endcan
+@can('master-data-list')
+    <li class="nav-item">
+        <a href="{{ route('voicerecordpbx') }}" class="nav-link {{ Request::is('voicerecordpbx') ? 'active' : '' }}">
+            <i class="fa-solid fa-volume-high nav-icon"></i>
+            <p>ไฟล์บันทึกเสียงสนทนาตู้สาขาโทรศัพท์</p>
+        </a>
+    </li>
+@endcan
 @can('billing-report')
     <li class="nav-item">
         <a href="{{ route('billingreport') }}" class="nav-link {{ Request::is('billingreport') ? 'active' : '' }}">
