@@ -301,17 +301,6 @@ public function edit($id)
             $datep = explode("-", explode(" ", $remoteData->calldate)[0]);
             $voic = $datep[0] . "/" . $datep[1] . "/" . $datep[2] . "/" . end($avoic);
 
-            $agentname = '';
-
-            if ($remoteData->dst_userfield !== null) {
-                $agentname = $agentArray[$remoteData->dst_userfield]['name'];
-            } elseif ($remoteData->accountcode !== '' && $remoteData->userfield !== '') {
-                $agentname = $agentArray[$remoteData->userfield]['name'];
-            }
-
-            $agentname = $agentname ?: 'NoAgent';
-
-            $voic_name = $agentname . "-" . end($avoic);
 
         $originalFilePath = public_path('wav2/' . $voic);
 
@@ -327,7 +316,7 @@ public function edit($id)
 
         return response($fileContent)
             ->header('Content-Type', 'application/octet-stream')
-            ->header('Content-Disposition', 'attachment; filename="' . $voic_name . '"');
+            ->header('Content-Disposition', 'attachment; filename="' . $voic . '"');
     }
 
 
