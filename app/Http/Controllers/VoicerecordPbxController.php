@@ -177,6 +177,7 @@ public function index(Request $request)
 
     public function edit($id)
     {
+        /*
         $remoteData = DB::connection('remote_connection_pbx')->table('call_center.call_recording')
             ->where('uniqueid', $id)
             ->first();
@@ -195,9 +196,11 @@ public function index(Request $request)
             /* $avoic_name = explode("-", $voic_name_ori);
             $voic_name = $avoic_name[0] . "-" . $avoic_name[1]
                 . "-" . $avoic_name[2] . "-" . $remoteData->crm_id . "-" . $avoic_name[3]
-                . "-" . $avoic_name[4] . "-" . $avoic_name[5]; */
+                . "-" . $avoic_name[4] . "-" . $avoic_name[5]; 
             $tooltips = Comment::where('uniqueid', $id)->get();
         } else {
+
+        */    
             $remoteData = DB::connection('remote_connection_pbx')->table('asteriskcdrdb.cdr')
                 ->where('uniqueid', $id)
                 ->orderBy('calldate', 'asc')
@@ -219,7 +222,7 @@ public function index(Request $request)
 
             $voic_name = $agentname . "-" . end($avoic);
             $tooltips = Comment::where('uniqueid', $id)->get();
-        }
+        //}
 
         return response()->json(['voic' => $voic, 'remoteData2' => $remoteData, 'voic_name' => $voic_name, 'tooltips' => $tooltips]);
     }
