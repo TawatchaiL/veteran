@@ -186,5 +186,5 @@
     @include('voicerecordpbx.create')
 @endsection
 @section('script')
-    @include('voicerecord.script')
+    @include('voicerecordpbx.script')
 @endsection
