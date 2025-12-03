@@ -34,3 +34,5 @@ Route::get('/voicerecord/edit/{id}', [App\Http\Controllers\VoicerecordController
 Route::get('/voicerecord/comment', [App\Http\Controllers\VoicerecordController::class, 'comment'])->name('voicerecord.comment');
 Route::delete('/voicerecord/comment/{id}', [App\Http\Controllers\VoicerecordController::class, 'destroy'])->name('voicerecord.destroy');
 Route::POST('/voicerecord/comment/update/{id}', [App\Http\Controllers\VoicerecordController::class, 'update'])->name('voicerecord.update');
+
+Route::get('/voicerecordpbx/edit/{id}', [App\Http\Controllers\VoicerecordPbxController::class, 'edit'])->name('voicerecordpbx.edit');

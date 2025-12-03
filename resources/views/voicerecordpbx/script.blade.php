@@ -381,7 +381,7 @@
         var dataId = $(this).data('id');
         $.ajax({
             type: "GET",
-            url: "voicerecord/edit/" + dataId,
+            url: "voicerecordpbx/edit/" + dataId,
             success: function(response) {
                 $('#vioc_name').text(response.voic_name);
                 $('#uniqueid').val(response.remoteData2.uniqueid);
