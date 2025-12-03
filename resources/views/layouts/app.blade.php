@@ -11,8 +11,8 @@
     <meta http-equiv="Content-Language" content="en">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title> {{ config('app.subtitle') }} {{ config('app.name') }} </title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/cropped-footer-logo-32x32.png') }}">
-    <link rel="shortcut icon" href="{{ asset('images/cropped-footer-logo-32x32.png') }}" type="image/x-icon">
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/vteranlogo.png') }}">
+    <link rel="shortcut icon" href="{{ asset('images/vteranlogo.png') }}" type="image/x-icon">
 
     <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
