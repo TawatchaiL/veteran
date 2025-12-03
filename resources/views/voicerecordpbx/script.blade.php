@@ -407,7 +407,7 @@
 
     $("#SubmitDownloadForm").click(function() {
         const uniqueId = $('#uniqueid').val();
-        var url = '/voice/download/' + uniqueId;
+        var url = '/voicepbx/download/' + uniqueId;
         window.open(url, '_blank');
     });
 
