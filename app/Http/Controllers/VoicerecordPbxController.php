@@ -40,174 +40,140 @@ class VoicerecordPbxController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
-    {
+public function index(Request $request)
+{
+    $datass = DB::connection('remote_connection_pbx')
+        ->table('asteriskcdrdb.cdr')
+        ->select('asteriskcdrdb.cdr.*')
+        //->where('asteriskcdrdb.cdr.dstchannel', '!=', '')   // ❌ REMOVED
+        ->where('asteriskcdrdb.cdr.recordingfile', '!=', '')
+        ->orderBy('asteriskcdrdb.cdr.calldate', 'desc');
 
-        $datass = DB::connection('remote_connection_pbx')
-            ->table('asteriskcdrdb.cdr')
-            ->select('asteriskcdrdb.cdr.*')
-            //->join('call_center.call_recording', 'asteriskcdrdb.cdr.uniqueid', '=', 'call_center.call_recording.uniqueid')
-            ->where('asteriskcdrdb.cdr.dstchannel', '!=', '')
-            ->where('asteriskcdrdb.cdr.recordingfile', '!=', '')
-            //->where('asteriskcdrdb.cdr.disposition', '=', 'ANSWERED')
-            ->orderBy('asteriskcdrdb.cdr.calldate', 'desc');
+    $agens = User::orderBy('name', 'asc')->get();
+    $agentArray = [];
 
-        $agens = User::orderBy('name', 'asc')->get();
-        $agentArray = [];
+    foreach ($agens as $agen) {
+        $agentArray[$agen->id]['name'] = explode(' ', $agen->name)[0];
+    }
 
-        foreach ($agens as $agen) {
-            $agentArray[$agen->id]['name'] = explode(' ', $agen->name)[0];
+    if ($request->ajax()) {
+
+        // --- FILTER วันที่ (ใช้งานได้) ---
+        if (!empty($request->get('sdate'))) {
+            $dateRange = $request->input('sdate');
+            if ($dateRange) {
+                $dateRangeArray = explode(' - ', $dateRange);
+
+                if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
+                    $startDate = $dateRangeArray[0];
+                    $endDate = $dateRangeArray[1];
+                    $datass->whereBetween('asteriskcdrdb.cdr.calldate', [$startDate, $endDate]);
+                }
+            }
         }
 
-        if ($request->ajax()) {
-
-            if (!empty($request->get('sdate'))) {
-                $dateRange = $request->input('sdate');
-                if ($dateRange) {
-                    $dateRangeArray = explode(' - ', $dateRange);
-
-                    if (!empty($dateRangeArray) && count($dateRangeArray) == 2) {
-                        $startDate = $dateRangeArray[0];
-                        $endDate = $dateRangeArray[1];
-                        //dd($startDate . ' - ' . $endDate);
-                        $datass->whereBetween('asteriskcdrdb.cdr.calldate', [$startDate, $endDate]);
-                    }
-                }
-            }
-
-            if (!empty($request->get('telp'))) {
-                $telp = $request->input('telp');
-                if ($telp) {
-                    $datass->where(function ($query) use ($telp) {
-                        $query->where('asteriskcdrdb.cdr.src', 'like', "$telp%")
-                            ->orWhere('dst', 'like', "$telp%");
-                    });
-                }
-            }
-
-            if (!empty($request->get('ctype'))) {
-                $ctype = $request->input('ctype');
-                if ($ctype == 1) {
-                    //where('asteriskcdrdb.cdr.accountcode', '')
-                    $datass->Where(function ($query) {
-                        $query->where('asteriskcdrdb.cdr.dst_exten', 'QUEUE')
-                            ->where('asteriskcdrdb.cdr.billsec', '!=', 0)
-                            ->where('asteriskcdrdb.cdr.dcontext', '!=', 'app-blackhole')
-                            ->where('asteriskcdrdb.cdr.dcontext', '!=', 'call-survey');
-                    })->orWhere(function ($query) {
-                        $query->where('asteriskcdrdb.cdr.dst_exten', '!=', 'QUEUE')
-                            ->where('asteriskcdrdb.cdr.userfield', '=', '')
-                            ->Where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
-                    });
-                    //->where('asteriskcdrdb.cdr.userfield', '=', '')
-                    //->where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
-                } else if ($ctype == 2) {
-                    //where('asteriskcdrdb.cdr.accountcode', '!=', '')
-                    $datass->where('asteriskcdrdb.cdr.recordingfile', 'like', 'out-%');
-                    //->where('asteriskcdrdb.cdr.userfield', '!=', '')
-                    //->where('asteriskcdrdb.cdr.dst_userfield', '=', NULL);
-                } else if ($ctype == 3) {
-                    //$datass->where('asteriskcdrdb.cdr.accountcode', '!=', '')
-                    $datass->where('asteriskcdrdb.cdr.recordingfile', 'like', 'exten-%')
-                        //->where('asteriskcdrdb.cdr.userfield', '!=', '')
-                        //->where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
-                        ->where('asteriskcdrdb.cdr.dcontext', '=', 'from-internal');
-                }
-            }
-
-            if (!empty($request->get('agent'))) {
-                $agent = $request->input('agent');
-                if ($agent) {
-                    $datass->where(function ($query) use ($agent) {
-                        $query->where('asteriskcdrdb.cdr.userfield', $agent)
-                            ->orWhere('dst_userfield', $agent);
-                    });
-                }
-            }
-
-            if (!Gate::allows('voice-record-supervisor')) {
-                $uid = Auth::user()->id;
-
-                $datass->where(function ($query) use ($uid) {
-                    $query->where('asteriskcdrdb.cdr.userfield', $uid)
-                        ->orWhere('dst_userfield', $uid);
+        // --- FILTER เบอร์โทร (ใช้งานได้) ---
+        if (!empty($request->get('telp'))) {
+            $telp = $request->input('telp');
+            if ($telp) {
+                $datass->where(function ($query) use ($telp) {
+                    $query->where('asteriskcdrdb.cdr.src', 'like', "$telp%")
+                        ->orWhere('asteriskcdrdb.cdr.dst', 'like', "$telp%");
                 });
             }
+        }
 
-            $datas = $datass->get();
-            return datatables()->of($datas)
-                ->editColumn('checkbox', function ($row) {
-                    return '<input disabled type="checkbox" id="' . $row->uniqueid . '" class="flat" name="table_records[]" value="' . $row->uniqueid . '" >';
-                })
-                ->editColumn('cdate', function ($row) {
-                    $calldate = $row->calldate;
-                    list($date, $time) = explode(' ', $calldate);
-                    return $date;
-                })
-                ->editColumn('ctime', function ($row) {
-                    $calldate = $row->calldate;
-                    list($date, $time) = explode(' ', $calldate);
-                    return $time;
-                })
-                ->editColumn('telno', function ($row) use ($agentArray) {
-                    if ($row->accountcode !== '') {
-                        if (!empty($row->userfield)) {
-                            return $agentArray[str_replace(';', '', $row->userfield)]['name'] . " ( " . $row->src . " ) ";
-                        } else {
-                            return $row->src;
-                        }
+        // --- FILTER ctype (❌ ตัดทั้งหมดที่ใช้ฟิลด์ผิดออก) ---
+        if (!empty($request->get('ctype'))) {
+            $ctype = $request->input('ctype');
+
+            if ($ctype == 2) {
+                // สายออก — ใช้ recordingfile ได้
+                $datass->where('asteriskcdrdb.cdr.recordingfile', 'like', 'out-%');
+            } else if ($ctype == 3) {
+                // สายภายใน — ใช้ recordingfile ได้
+                $datass->where('asteriskcdrdb.cdr.recordingfile', 'like', 'exten-%');
+            }
+
+            // ❌ ลบเงื่อนไขที่อ้าง dst_exten, dst_userfield, dcontext ออกทั้งหมด
+        }
+
+        // --- FILTER Agent (❌ ตัด dst_userfield ออก) ---
+        if (!empty($request->get('agent'))) {
+            $agent = $request->input('agent');
+            if ($agent) {
+                $datass->where('asteriskcdrdb.cdr.userfield', $agent);
+                // ->orWhere('dst_userfield', $agent); // ❌ REMOVED
+            }
+        }
+
+        // --- Supervisor Filter (❌ ตัด dst_userfield ออก) ---
+        if (!Gate::allows('voice-record-supervisor')) {
+            $uid = Auth::user()->id;
+
+            $datass->where('asteriskcdrdb.cdr.userfield', $uid);
+            // ->orWhere('dst_userfield', $uid); // ❌ REMOVED
+        }
+
+        $datas = $datass->get();
+
+        return datatables()->of($datas)
+            ->editColumn('checkbox', function ($row) {
+                return '<input disabled type="checkbox" id="' . $row->uniqueid . '" class="flat" name="table_records[]" value="' . $row->uniqueid . '" >';
+            })
+            ->editColumn('cdate', function ($row) {
+                return explode(' ', $row->calldate)[0];
+            })
+            ->editColumn('ctime', function ($row) {
+                return explode(' ', $row->calldate)[1];
+            })
+            ->editColumn('telno', function ($row) use ($agentArray) {
+                if ($row->accountcode !== '') {
+                    if (!empty($row->userfield)) {
+                        return $agentArray[str_replace(';', '', $row->userfield)]['name'] . " ( " . $row->src . " ) ";
                     } else {
                         return $row->src;
                     }
-                })
-                ->editColumn('agent', function ($row) use ($agentArray) {
-                    if ($row->dst_exten == "QUEUE" || $row->dst == "s") {
-                        $telp = $row->accountcode == '' ? $this->getTelpFromDstChannel($row->dstchannel) : $row->accountcode;
-                    } else if ($row->dst_userfield !== "" and $row->userfield == "") {
-                        $telp = $row->accountcode == '' ? $this->getTelpFromDstChannel($row->dstchannel) : $row->accountcode;
-                    } else {
-                        $telp = $row->dst;
-                    }
+                } else {
+                    return $row->src;
+                }
+            })
 
+            // --- Agent Column (❌ ลบ logic ที่ใช้ dst_exten, dst_userfield, dstchannel) ---
+            ->editColumn('agent', function ($row) use ($agentArray) {
 
-                    if (!empty($row->dst_userfield) && isset($agentArray[$row->dst_userfield])) {
-                        $agentName = $agentArray[$row->dst_userfield]['name'];
-                        return "$agentName ( $telp ) ";
-                    } else {
-                        return $telp;
-                    }
-                })
-                ->editColumn('duration', function ($row) {
-                    $durationInSeconds = $row->duration;
-                    $hours = floor($durationInSeconds / 3600);
-                    $minutes = floor(($durationInSeconds % 3600) / 60);
-                    $seconds = $durationInSeconds % 60;
+                // วิธีใหม่แบบง่าย ไม่ใช้ฟิลด์ที่หายไป
+                if (!empty($row->userfield) && isset($agentArray[$row->userfield])) {
+                    return $agentArray[$row->userfield]['name'] . " ( " . $row->dst . " ) ";
+                }
 
-                    $duration = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
-                    return $duration;
-                })
-                ->addColumn('action', function ($row) {
+                return $row->dst;
+            })
 
-                    if (Gate::allows('contact-edit')) {
-                        $html = '<button type="button" class="changeUrlButton btn btn-sm btn-success btn-edit" id="changeUrlButtonw" data-id="' . $row->uniqueid . '"><i class="fa-solid fa-volume-high"></i> Play</button> ';
-                        // $html .= '<a href="#" class="btn btn-success changeUrlButton" onclick="formModal(\'' . route('voicerecord.edit', $row->id) . '\')" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="vioc1">vioc1</a>';
-                        // $html .= '<a href="#" class="btn btn-success vioc" onclick="formModal(\'' . route('voicerecord.edit', $row->id) . '\')" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="vioc2">vioc2</a>';
-                    } else {
-                        $html = '<button type="button" class="btn btn-sm btn-success disabled" data-toggle="tooltip" data-placement="bottom" title="คุณไม่มีสิทธิ์ในส่วนนี้"><i class="fa-solid fa-volume-high"></i> Play</button> ';
-                    }
+            ->editColumn('duration', function ($row) {
+                $durationInSeconds = $row->duration;
+                $hours = floor($durationInSeconds / 3600);
+                $minutes = floor(($durationInSeconds % 3600) / 60);
+                $seconds = $durationInSeconds % 60;
+                return sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
+            })
+            ->addColumn('action', function ($row) {
 
-                    return $html;
-                })
-                ->addColumn('more', function ($row) {
-                    return '';
-                })->rawColumns(['checkbox', 'action'])->toJson();
-        }
+                if (Gate::allows('contact-edit')) {
+                    return '<button type="button" class="changeUrlButton btn btn-sm btn-success btn-edit" id="changeUrlButtonw" data-id="' . $row->uniqueid . '"><i class="fa-solid fa-volume-high"></i> Play</button> ';
+                }
 
-        return view('voicerecordpbx.index', [
-            'datas' => $datass,
-            'agens' => $agens,
-        ]);
+                return '<button type="button" class="btn btn-sm btn-success disabled" title="คุณไม่มีสิทธิ์"><i class="fa-solid fa-volume-high"></i> Play</button> ';
+            })
+            ->rawColumns(['checkbox', 'action'])
+            ->toJson();
     }
+
+    return view('voicerecordpbx.index', [
+        'datas' => $datass,
+        'agens' => $agens,
+    ]);
+}
 
     public function edit($id)
     {
