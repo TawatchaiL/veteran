@@ -89,6 +89,7 @@ class VoicerecordController extends Controller
                 $ctype = $request->input('ctype');
                 if ($ctype == 1) {
                     //where('asteriskcdrdb.cdr.accountcode', '')
+                    /*
                     $datass->Where(function ($query) {
                         $query->where('asteriskcdrdb.cdr.dst_exten', 'QUEUE')
                             ->where('asteriskcdrdb.cdr.billsec', '!=', 0)
@@ -99,6 +100,21 @@ class VoicerecordController extends Controller
                             ->where('asteriskcdrdb.cdr.userfield', '=', '')
                             ->Where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
                     });
+                    */
+                    $datass->where(function ($q) {
+                        $q->where(function ($query) {
+                            $query->where('asteriskcdrdb.cdr.dst_exten', 'QUEUE')
+                                ->where('asteriskcdrdb.cdr.billsec', '!=', 0)
+                                ->where('asteriskcdrdb.cdr.dcontext', '!=', 'app-blackhole')
+                                ->where('asteriskcdrdb.cdr.dcontext', '!=', 'call-survey');
+                        })
+                        ->orWhere(function ($query) {
+                            $query->where('asteriskcdrdb.cdr.dst_exten', '!=', 'QUEUE')
+                                ->where('asteriskcdrdb.cdr.userfield', '=', '')
+                                ->where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
+                        });
+                    });
+
                     //->where('asteriskcdrdb.cdr.userfield', '=', '')
                     //->where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
                 } else if ($ctype == 2) {
