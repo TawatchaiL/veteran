@@ -122,6 +122,7 @@
                                                         :</strong>
                                                     <select style="width: 100%;" class="select2 form-control"
                                                         id="Edittranferstatuse" name="tranferstatuse">
+                                                        <option value="มีการโอนสาย">มีการโอนสาย</option>
                                                         <option value="ไม่มีการโอนสาย">ไม่มีการโอนสาย</option>
                                                         <option value="รับสาย">รับสาย</option>
                                                         <option value="ไม่รับสาย">ไม่รับสาย</option>
