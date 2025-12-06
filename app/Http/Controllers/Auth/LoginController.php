@@ -226,17 +226,19 @@ class LoginController extends Controller
                 /*  $inuseCount = User::where('id', '!=', $user->id)
                     ->where('phone', '=', $request->phone)
                     ->count(); */
-                $inuseCount = User::where('phone', '=', $request->phone)
-                    ->count();
+                    
+                //edit 061268    
+                //$inuseCount = User::where('phone', '=', $request->phone)
+                //    ->count();
 
-                if ($inuseCount > 0) {
-                    auth()->logout();
-                    return redirect()->route('login')
-                        ->with('login_error', 'หมายเลขโทรศัพท์ถูกใช้งานแล้ว')
-                        ->withErrors(['email' => 'หมายเลขโทรศัพท์ถูกใช้งานแล้ว']);
-                } else {
+                //if ($inuseCount > 0) {
+                //    auth()->logout();
+                //    return redirect()->route('login')
+                //        ->with('login_error', 'หมายเลขโทรศัพท์ถูกใช้งานแล้ว')
+                //        ->withErrors(['email' => 'หมายเลขโทรศัพท์ถูกใช้งานแล้ว']);
+                //} else {
                     $user->agent_id = $issable->id;
-                }
+                //}
 
                 $user->agent_id = $issable->id;
 
