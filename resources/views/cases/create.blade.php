@@ -204,6 +204,7 @@
                                                         :</strong>
                                                     <select style="width: 100%;" class="select2 select2_single form-control"
                                                         id="tranferstatus" name="tranferstatus" multiple="multiple">
+                                                        <option value="มีการโอนสาย">มีการโอนสาย</option>
                                                         <option value="ไม่มีการโอนสาย">ไม่มีการโอนสาย</option>
                                                         <option value="รับสาย">รับสาย</option>
                                                         <option value="ไม่รับสาย">ไม่รับสาย</option>
