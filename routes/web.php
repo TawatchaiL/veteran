@@ -139,6 +139,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/detailcaseinternalnumber', [App\Http\Controllers\DetailcaseinternalnumberController::class, 'index'])->name('detailcaseinternalnumber');
     Route::get('/detailcaseexternalnumber', [App\Http\Controllers\DetailcaseexternalnumberController::class, 'index'])->name('detailcaseexternalnumber');
     Route::get('/detailcases', [App\Http\Controllers\DetailcasesController::class, 'index'])->name('detailcases');
+    Route::get('/detailtranfer', [App\Http\Controllers\DetailtranferController::class, 'index'])->name('detailtranfer');
     Route::get('/detailcasesstatus', [App\Http\Controllers\DetailcasesstatusController::class, 'index'])->name('detailcasesstatus');
     Route::get('/reportcasebyagent', [App\Http\Controllers\ReportcaseByagentController::class, 'index'])->name('reportcasebyagent');
     Route::get('/reportdetailabandonada', [App\Http\Controllers\ReportDetailAbandonada::class, 'index'])->name('reportdetailabandonada');
