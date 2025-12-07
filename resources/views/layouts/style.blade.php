@@ -8,6 +8,10 @@
 body.sidebar-collapse .logo-area {
     display: none !important;
 }
+
+body.sidebar-collapse.sidebar-collapse-hover .logo-area {
+    display: block !important;
+}
     /* ซ่อน logo เมื่อ sidebar ย่อ */
     /*
     body.sidebar-mini .logo-area,
