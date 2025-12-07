@@ -47,6 +47,7 @@ public function index(Request $request)
         ->select('asteriskcdrdb.cdr.*')
         //->where('asteriskcdrdb.cdr.dstchannel', '!=', '')   // ❌ REMOVED
         ->where('asteriskcdrdb.cdr.recordingfile', '!=', '')
+        ->where('asteriskcdrdb.cdr.disposition', 'ANSWERED')
         ->orderBy('asteriskcdrdb.cdr.calldate', 'desc');
 
     $agens = User::orderBy('name', 'asc')->get();
