@@ -78,20 +78,34 @@ class VoiceBackupController extends Controller
                     }
                     return 'All';
                 })
+                /*
                 ->editColumn('export_dst', function ($row) use ($agentArray) {
                     if ($row->export_dst !== '' && $row->export_dst !== NULL) {
                         return $agentArray[$row->export_dst]['name'];
                     }
                     return 'All';
                 })
-                ->editColumn('export_ctype', function ($row) use ($ctype_text) {
-                    if ($row->export_ctype !== '' && $row->export_ctype !== NULL) {
-                        return $ctype_text[$row->export_ctype];
+                */
+                ->editColumn('export_dst', function ($row) use ($agentArray) {
+                    if (!empty($row->export_dst) && isset($agentArray[$row->export_dst])) {
+                        return $agentArray[$row->export_dst]['name'];
                     }
                     return 'All';
                 })
+                ->editColumn('export_ctype', function ($row) use ($ctype_text) {
+                    /*
+                    if ($row->export_ctype !== '' && $row->export_ctype !== NULL) {
+                        //return $ctype_text[$row->export_ctype];
+                        return $ctype_text[$row->export_ctype] ?? 'All';
+                    }
+                    return 'All';
+                    */
+                    return $ctype_text[$row->export_ctype] ?? 'All';
+                })
                 ->editColumn('status', function ($row) use ($state_text) {
-                    $state = $state_text[$row->export_status];
+                    //$state = $state_text[$row->export_status];
+                    $state = $state_text[$row->export_status] ?? 'All';
+
                     return $state;
                 })
                 ->editColumn('export_progress', function ($row) {
