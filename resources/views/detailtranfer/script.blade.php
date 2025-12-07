@@ -340,7 +340,7 @@
                                                 '\n',
                                                 { text: 'ข้อมูลวันที่ ' + $('#reservation').val(), alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
                                                 '\n',
-                                                { text: 'Report : Detail Case (รายละเอียดเรื่องที่ติดต่อ)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
+                                                { text: 'Report : Detail Case (รายละเอียดการโอนสาย)', alignment: 'left', fontSize: 18, margin: [0, 50, 70, 0] },
                                                 '\n',
                                                 { text: 'Report By : {{ Auth::user()->name }}', alignment: 'left', fontSize: 18, margin: [0, 0, 70, 0] }
                                             ]
