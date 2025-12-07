@@ -1,7 +1,7 @@
 <aside class="main-sidebar main-sidebar-custom sidebar-light-primary elevation-2">
     <div class="center-content">
         <a href="{{ route('home') }}" class="brand-link logo-area">
-            <img id="logo" src="{{ asset('images/logov.png') }}" alt="..." height="300"><br>
+            <img id="logo" src="{{ asset('images/logov.png') }}" alt="..." height="200"><br>
             <span class="brand-text font-weight-light">
                 {{ config('app.subtitle') }} {{ config('app.name') }} <br>
                 {{ config('app.name2') }}
