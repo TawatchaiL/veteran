@@ -53,6 +53,7 @@ class DetailtranferController extends Controller
         ->select(DB::raw('ROW_NUMBER() OVER (ORDER BY crm_cases.created_at DESC) as rownumber'),DB::raw('crm_cases.created_at as cdate'), DB::raw('TIME(crm_cases.created_at) as ctime'),'telno','casetype1', 'casedetail', 'casestatus', 'tranferstatus', 'users.name as agent' )
         ->join('users', 'crm_cases.agent', '=', 'users.id')
         ->whereRaw('adddate between "' . $startDate . '" and "' . $endDate . '"')
+        ->where('tranferstatus', 'มีการโอนสาย')
         ->get();
 
         if ($request->ajax()) {
