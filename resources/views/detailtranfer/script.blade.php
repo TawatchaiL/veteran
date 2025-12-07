@@ -326,7 +326,7 @@
                             fontSize: 16
                         };
                         doc.content.splice(0,1);
-                        doc.pageMargins = [20, 150, 40, 150];
+                        doc.pageMargins = [20, 150, 20, 30];
                         doc.styles.tableHeader.fontSize = 16;
                         doc.styles.tableBodyOdd.alignment = 'center';
                         doc.styles.tableBodyEven.alignment = 'center';
@@ -350,7 +350,7 @@
                             }
                         });
                         
-                        doc.content[0].table.widths = [40, 120, 85, 85, '*', 85, 85, 75];
+                        doc.content[0].table.widths = [40, 120, 85, 85, '*'];
                         var objLayout = {};
 						objLayout['hLineWidth'] = function(i) { return .5; };
 						objLayout['vLineWidth'] = function(i) { return .5; };
