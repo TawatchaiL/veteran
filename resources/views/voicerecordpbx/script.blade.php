@@ -825,10 +825,6 @@
                     name: 'telno'
                 },
                 {
-                    data: 'agent',
-                    name: 'agent'
-                },
-                {
                     data: 'duration',
                     name: 'duration'
                 },

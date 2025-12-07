@@ -98,23 +98,6 @@ public function index(Request $request)
             // ❌ ลบเงื่อนไขที่อ้าง dst_exten, dst_userfield, dcontext ออกทั้งหมด
         }
 
-        // --- FILTER Agent (❌ ตัด dst_userfield ออก) ---
-        if (!empty($request->get('agent'))) {
-            $agent = $request->input('agent');
-            if ($agent) {
-                $datass->where('asteriskcdrdb.cdr.userfield', $agent);
-                // ->orWhere('dst_userfield', $agent); // ❌ REMOVED
-            }
-        }
-
-        // --- Supervisor Filter (❌ ตัด dst_userfield ออก) ---
-        if (!Gate::allows('voice-record-supervisor')) {
-            $uid = Auth::user()->id;
-
-            $datass->where('asteriskcdrdb.cdr.userfield', $uid);
-            // ->orWhere('dst_userfield', $uid); // ❌ REMOVED
-        }
-
         $datas = $datass->get();
 
         return datatables()->of($datas)

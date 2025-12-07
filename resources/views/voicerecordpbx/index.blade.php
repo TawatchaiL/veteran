@@ -52,32 +52,6 @@
                                     <div class="col-xs-2 col-sm-2 col-md-2">
                                         <div class="form-group">
                                             <strong><i class="fas fa-user"></i>
-                                                Agent:</strong>
-                                            <select style="width: 100%;" class="select2 form-control" id="agen"
-                                                name="agen">
-                                                @can('voice-record-supervisor')
-                                                    <option value="" selected>ทั้งหมด</option>
-                                                @endcan
-                                                @foreach ($agens as $agen)
-                                                    @can('voice-record-supervisor')
-                                                        <option value="{{ $agen->id }}">
-                                                            {{ $agen->name ?? 'ไม่พบเบอร์โทรศัพท์' }}
-                                                        </option>
-                                                    @else
-                                                        {{-- For non-supervisors, only show their own agent --}}
-                                                        @if (Auth::user()->id == $agen->id)
-                                                            <option value="{{ $agen->id }}">
-                                                                {{ $agen->name ?? 'ไม่พบเบอร์โทรศัพท์' }}
-                                                            </option>
-                                                        @endif
-                                                    @endcan
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-2 col-sm-2 col-md-2">
-                                        <div class="form-group">
-                                            <strong><i class="fas fa-user"></i>
                                                 ประเภท:</strong>
                                             <select style="width: 100%;" class="select2 form-control" id="ctype"
                                                 name="ctype">
