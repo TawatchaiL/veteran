@@ -314,7 +314,7 @@
                     "footer": true,
                     "text": 'PDF', // ข้อความที่แสดง
                     "pageSize": 'A4', // ขนาดหน้ากระดาษเป็น A4
-                    "orientation": 'landscape',
+                    "orientation": 'portrait',
                     "title": 'รายละเอียดการโอนสาย',
                     "download": 'open',
                     exportOptions: {
