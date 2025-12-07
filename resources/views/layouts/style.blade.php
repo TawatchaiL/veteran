@@ -3,23 +3,9 @@
     /*
     body.sidebar-mini .logo-area,
     body.sidebar-collapse .logo-area {
-        display: block !important;
-    }
-    */
-    body.sidebar-collapse .logo-area img {
-    max-width: 40px !important;
-    height: auto;
-    margin-bottom: 0;
-    }
-
-    /* ซ่อนข้อความข้างใต้โลโก้เมื่อย่อเมนู */
-    body.sidebar-collapse .logo-area .brand-text {
         display: none !important;
     }
-
-    .logo-area {
-    display: block !important;
-}
+    */
     /* แสดง logo เฉพาะตอน sidebar ขยาย */
     body:not(.sidebar-mini):not(.sidebar-collapse) .logo-area {
         display: block;
@@ -475,12 +461,7 @@
     font-size: 14px;
     line-height: 1.4;
 }
-/* ขนาดโลโก้ตอน sidebar ปกติ */
-.logo-area img {
-    max-width: 180px !important;
-    height: auto;
-    transition: all 0.3s ease-in-out;
-}
+
 /* ซ่อนโลโก้ใหญ่เมื่อ sidebar ถูกย่อ (collapse) */
 body.sidebar-collapse .logo-area img {
     max-width: 40px;
