@@ -825,6 +825,10 @@
                     name: 'telno'
                 },
                 {
+                    data: 'dst',
+                    name: 'dst'
+                },
+                {
                     data: 'duration',
                     name: 'duration'
                 },
