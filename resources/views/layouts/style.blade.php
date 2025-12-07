@@ -6,7 +6,10 @@
 
 /* ซ่อนโลโก้ตอน Sidebar ย่อ (collapse) */
 body.sidebar-collapse .logo-area {
-    display: none !important;
+    display: block !important;        /* คงพื้นที่ไว้ */
+    visibility: hidden !important;    /* ซ่อนโลโก้ แต่ไม่หายไป */
+    height: 80px !important;          /* ปรับตามความสูงโลโก้ของคุณ */
+    padding: 20px 10px !important;    /* ป้องกันพื้นที่ยุบ */
 }
 
 body.sidebar-collapse.sidebar-collapse-hover .logo-area {
