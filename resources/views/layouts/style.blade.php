@@ -1,11 +1,10 @@
 <style>
     /* ซ่อน logo เมื่อ sidebar ย่อ */
-    /*
     body.sidebar-mini .logo-area,
     body.sidebar-collapse .logo-area {
-        display: none !important;
+        display: block !important;
     }
-*/
+
     /* แสดง logo เฉพาะตอน sidebar ขยาย */
     body:not(.sidebar-mini):not(.sidebar-collapse) .logo-area {
         display: block;
@@ -461,7 +460,11 @@
     font-size: 14px;
     line-height: 1.4;
 }
-
+/* ขนาดโลโก้ตอน sidebar ปกติ */
+.logo-area img {
+    max-width: 200px !important;   /* ขนาดใหญ่ปกติ */
+    height: auto;
+}
 /* ซ่อนโลโก้ใหญ่เมื่อ sidebar ถูกย่อ (collapse) */
 body.sidebar-collapse .logo-area img {
     max-width: 40px;
