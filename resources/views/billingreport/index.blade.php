@@ -195,7 +195,7 @@
                                             <th align="right"></th>
                                             <th align="right">รวม</th>
                                             <th align="center"></th>
-                                            <th></th>
+                                            {{-- <th></th> --}}
                                             <th></th>
                                         </tr>
                                     </tfoot>
