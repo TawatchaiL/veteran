@@ -482,7 +482,7 @@
                                         :</strong>
                                     <select class="select2 select2_single form-control" id="tranferstatusp{{ $cardid }}"
                                         name="tranferstatusp{{ $cardid }}" multiple="multiple">
-                                        <option value="มีการโอนสาย"  selected>มีการโอนสาย</option>
+                                        <option value="มีการโอนสาย" selected>มีการโอนสาย</option>
                                         <option value="ไม่มีการโอนสาย">ไม่มีการโอนสาย</option>
                                         <option value="รับสาย">รับสาย</option>
                                         <option value="ไม่รับสาย">ไม่รับสาย</option>
