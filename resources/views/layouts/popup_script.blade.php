@@ -373,6 +373,7 @@
                                                 .name)
                                         );
                                     });
+                                    provinceOb.val(288).change();
                                 }
                             });
                             $('#casetype2p' + cardId).html(
