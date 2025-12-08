@@ -178,7 +178,7 @@
                                             <th>อัตราค่าโทร</th>
                                             <th>ต่อ</th>
                                             <th>เป็นเงิน</th>
-                                            <th width="60px"></th>
+                                            {{-- <th width="60px"></th> --}}
                                             <th>More</th>
                                         </tr>
                                     </thead>

@@ -864,12 +864,12 @@
                     data: 'cost',
                     name: 'cost'
                 },
-                {
-                    data: 'action',
-                    name: 'action',
-                    className: 'no-print',
-                    visible: true,
-                },
+                // {
+                //     data: 'action',
+                //     name: 'action',
+                //     className: 'no-print',
+                //     visible: true,
+                // },
                 {
                     data: 'more',
                     name: 'more'
