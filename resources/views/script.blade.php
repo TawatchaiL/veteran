@@ -16,7 +16,7 @@
                 latest_score.html(item.latest_score);
                 total_closed_case.html(item.total_closed_case);
                 total_case.html(item.total_case);
-                total_tranfer_case.html(100);
+                total_tranfer_case.html(item.total_transfer_case);
             },
             error: (error) => {
                 console.error('Error fetching data:', error);
