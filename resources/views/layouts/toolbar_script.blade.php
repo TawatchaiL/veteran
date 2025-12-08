@@ -485,6 +485,7 @@
     //agen not ready
     $(document).on('click', '#btn-agent-logout', function(e) {
         e.preventDefault();
+        /*
         ezBSAlert({
             type: "confirm",
             headerText: "Confirm",
@@ -492,9 +493,12 @@
             alertType: "info",
         }).done(function(r) {
             if (r == true) {
+        */  
                 sendAjaxRequest("{{ route('agent.logoff') }}", "POST");
+        /*
             }
         });
+        */
     });
 
     //agent break
@@ -510,6 +514,7 @@
     //agent unbreak
     $(document).on('click', '.button_unbreak', function(e) {
         e.preventDefault();
+        /*
         ezBSAlert({
             type: "confirm",
             headerText: "Confirm",
@@ -517,16 +522,19 @@
             alertType: "info",
         }).done(function(r) {
             if (r == true) {
+            */
                 sendAjaxRequest("{{ route('agent.unbreak') }}", "POST");
+                /*
             }
 
         });
-
+*/
     });
 
     //agent unwrap
     $(document).on('click', '#btn-unwarp', function(e) {
         e.preventDefault();
+        /*
         ezBSAlert({
             type: "confirm",
             headerText: "Confirm",
@@ -534,15 +542,19 @@
             alertType: "info",
         }).done(function(r) {
             if (r == true) {
+            */
                 sendAjaxRequest("{{ route('agent.unwarp') }}", "POST");
+                /*
             }
 
         });
+        */
     });
 
     //agent logout
     $(document).on('click', '#btn-system-logout', function(e) {
         e.preventDefault();
+        /*
         ezBSAlert({
             type: "confirm",
             headerText: "Confirm",
@@ -550,10 +562,12 @@
             alertType: "info",
         }).done(function(r) {
             if (r == true) {
+            */
                 document.getElementById('logout-form').submit();
+                /*
             }
         });
-
+*/
     });
 
 
@@ -950,6 +964,7 @@
     $(document).on('click', '.hangup_call', function(data) {
         //if (!confirm("ยืนยันการวางสาย?")) return;
         let rowid = $(this).data("id")
+        /*
         ezBSAlert({
             type: "confirm",
             headerText: "Confirm",
@@ -957,6 +972,7 @@
             alertType: "info",
         }).done(function(e) {
             if (e == true) {
+            */
                 if (!rowid) return;
                 let chan = rowid.split("/");
 
@@ -967,10 +983,11 @@
                         alertType: "success",
                     }); */
                 });
+                /*
             }
 
         });
-
+*/
     })
 
     //answer ipphone
