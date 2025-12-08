@@ -124,7 +124,7 @@ class BillingReportController extends Controller
                     //->where('asteriskcdrdb.cdr.dst_userfield', '!=', NULL);
                 } else if ($ctype == 2) {
                     //where('asteriskcdrdb.cdr.accountcode', '!=', '')
-                    $datass->where('asteriskcdrdb.cdr.recordingfile', 'like', 'out-%');
+                    $datass->where('asteriskcdrdb.cdr.recordingfile', 'like', 'force-%');
                     //->where('asteriskcdrdb.cdr.userfield', '!=', '')
                     //->where('asteriskcdrdb.cdr.dst_userfield', '=', NULL);
                 } else if ($ctype == 3) {
