@@ -1235,13 +1235,13 @@
                 });
             } else {
                 //if (!confirm("ยืนยันการทำรายการ ?")) return;
-                ezBSAlert({
-                    type: "confirm",
-                    headerText: "Confirm",
-                    messageText: "ยืนยันการทำรายการ?",
-                    alertType: "info",
-                }).done(function(r) {
-                    if (r == true) {
+                //ezBSAlert({
+                //    type: "confirm",
+                //    headerText: "Confirm",
+                //    messageText: "ยืนยันการทำรายการ?",
+                //    alertType: "info",
+                //}).done(function(r) {
+                //    if (r == true) {
                         $('#myTbl3p' + cardId + ' tbody tr').each(function(index, tr) {
                             var emertype = $(this).find(
                                 'input[name="emertypep' + cardId + '[]"]').val();
@@ -1364,8 +1364,8 @@
                                     //$('#ToolbarModal').modal('hide');
                                     positionCards();
                                 }
-                            }
-                        });
+                        //    }
+                        //});
                     }
                 });
 
