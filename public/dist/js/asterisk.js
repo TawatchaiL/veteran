@@ -539,11 +539,11 @@ socket.on('hangup', data => {
 socket.on('qlogoff', data => {
 	console.log(data)
 	if (data.extension.match(exten)) {
-		$.get(`${web_url}/agent/kick/`, (dataw, status) => {
-			if (dataw) {
-				window.location.replace(`${web_url}/auth/agent_kick`);
-			}
-		});
+		// $.get(`${web_url}/agent/kick/`, (dataw, status) => {
+		// 	if (dataw) {
+		// 		window.location.replace(`${web_url}/auth/agent_kick`);
+		// 	}
+		// });
 	}
 
 });

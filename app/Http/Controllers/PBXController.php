@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Project_job_number;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
-
+use App\Models\User;
 use App\Services\AsteriskAmiService;
 use App\Services\IssableService;
-use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class PBXController extends Controller
 {
@@ -52,25 +51,25 @@ class PBXController extends Controller
 
     public function call_answer(Request $request)
     {
-
         $user = Auth::user();
 
         if ($user) {
             $client = new Client();
 
-            /* $api_url = config('asterisk.api_serv.address');
-
-            $response = $client->request('GET', $api_url . '/peer/' . $user->phone);
-
-            $responseBody = $response->getBody()->getContents();
-            $data = json_decode($responseBody, true);
-
-            if (json_last_error() === JSON_ERROR_NONE && isset($data['address-ip'])) {
-                $addressIp = $data['address-ip'];
-            } else {
-                dd("Error parsing JSON or 'address-ip' not found in the response");
-            }
- */
+            /*
+             * $api_url = config('asterisk.api_serv.address');
+             *
+             * $response = $client->request('GET', $api_url . '/peer/' . $user->phone);
+             *
+             * $responseBody = $response->getBody()->getContents();
+             * $data = json_decode($responseBody, true);
+             *
+             * if (json_last_error() === JSON_ERROR_NONE && isset($data['address-ip'])) {
+             *     $addressIp = $data['address-ip'];
+             * } else {
+             *     dd("Error parsing JSON or 'address-ip' not found in the response");
+             * }
+             */
             $addressIp = $user->phone_ip;
 
             $response = $client->request('GET', 'http://admin:admin@' . $addressIp . '/servlet?key=ANSWER');
@@ -92,7 +91,6 @@ class PBXController extends Controller
 
     public function call_hold(Request $request)
     {
-
         $user = Auth::user();
 
         if ($user) {
@@ -114,7 +112,7 @@ class PBXController extends Controller
             $addressIp = $user->phone_ip;
 
             $response = $client->request('GET', 'http://admin:admin@' . $addressIp . '/servlet?key=F_HOLD');
-            //$response = $client->request('GET', 'http://admin:admin@' . $addressIp . '/servlet?key=SWAP');
+            // $response = $client->request('GET', 'http://admin:admin@' . $addressIp . '/servlet?key=SWAP');
 
             $responseBody = $response->getBody();
             $status = $response->getStatusCode();
@@ -133,7 +131,6 @@ class PBXController extends Controller
 
     public function call_swap(Request $request)
     {
-
         $user = Auth::user();
 
         if ($user) {
@@ -154,7 +151,7 @@ class PBXController extends Controller
 
             $addressIp = $user->phone_ip;
 
-            //$response = $client->request('GET', 'http://admin:admin@' . $addressIp . '/servlet?key=F_HOLD');
+            // $response = $client->request('GET', 'http://admin:admin@' . $addressIp . '/servlet?key=F_HOLD');
             $response = $client->request('GET', 'http://admin:admin@' . $addressIp . '/servlet?key=SWAP');
 
             $responseBody = $response->getBody();
@@ -174,7 +171,6 @@ class PBXController extends Controller
 
     public function call_tranfer(Request $request)
     {
-
         $user = Auth::user();
 
         if ($user) {
@@ -183,7 +179,6 @@ class PBXController extends Controller
             } else {
                 $ret = $this->issable->transfer($user->phone, $request->get('number'));
             }
-
 
             if ($ret == true) {
                 return [
@@ -199,15 +194,13 @@ class PBXController extends Controller
 
     public function loginAgentToQueue()
     {
-
         $user = Auth::user();
 
         if ($user) {
-
             $phone_state_num = $this->remote->exten_state($user->phone);
             if ($phone_state_num == 4 || $phone_state_num == -1) {
                 $user->phone_status_id = -1;
-                $user->phone_status = "โทรศัพท์ไม่พร้อมใช้งาน";
+                $user->phone_status = 'โทรศัพท์ไม่พร้อมใช้งาน';
                 $user->phone_status_icon = '<i class="fa-solid fa-xl fa-plug-circle-exclamation fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1;"></i>';
                 $user->save();
 
@@ -229,8 +222,8 @@ class PBXController extends Controller
 
             $user->phone_status_id = 1;
             $user->agent_type = 'Inbound';
-            //$user->agent_id = $user->id;
-            $user->phone_status = "พร้อมรับสาย" . " " . $user->agent_type;
+            // $user->agent_id = $user->id;
+            $user->phone_status = 'พร้อมรับสาย' . ' ' . $user->agent_type;
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
             $user->save();
 
@@ -254,11 +247,10 @@ class PBXController extends Controller
         $user = Auth::user();
 
         if ($user) {
-
             $phone_state_num = $this->remote->exten_state($user->phone);
             if ($phone_state_num == 4 || $phone_state_num == -1) {
                 $user->phone_status_id = -1;
-                $user->phone_status = "โทรศัพท์ไม่พร้อมใช้งาน";
+                $user->phone_status = 'โทรศัพท์ไม่พร้อมใช้งาน';
                 $user->phone_status_icon = '<i class="fa-solid fa-xl fa-plug-circle-exclamation fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1;"></i>';
                 $user->save();
 
@@ -289,8 +281,8 @@ class PBXController extends Controller
 
             $user->agent_type = 'Outbound';
             $user->phone_status_id = 1;
-            //$user->agent_id = $user->id;
-            $user->phone_status = "พร้อมรับสาย" . " " . $user->agent_type;
+            // $user->agent_id = $user->id;
+            $user->phone_status = 'พร้อมรับสาย' . ' ' . $user->agent_type;
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
             $user->save();
 
@@ -311,15 +303,13 @@ class PBXController extends Controller
 
     public function logoffAgentFromQueue()
     {
-
         $user = Auth::user();
 
         if ($user) {
-
-            //check if not already logoff
+            // check if not already logoff
             if ($user->phone_status_id !== 0) {
                 $user->phone_status_id = 0;
-                $user->phone_status = "ไม่พร้อมรับสาย";
+                $user->phone_status = 'ไม่พร้อมรับสาย';
                 $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-xmark"></i>';
                 $user->logoff_time = Carbon::now();
                 $user->save();
@@ -344,17 +334,15 @@ class PBXController extends Controller
 
     public function logoffAgentFromQueueAndLogout()
     {
-
         $user = Auth::user();
 
         if ($user) {
-
             $this->issable->agent_logoff($user->phone);
 
             $user->phone = '';
-            //$user->agent_id = '';
+            // $user->agent_id = '';
             $user->phone_status_id = 0;
-            $user->phone_status = "ไม่พร้อมรับสาย";
+            $user->phone_status = 'ไม่พร้อมรับสาย';
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-xmark"></i>';
             $user->logoff_time = Carbon::now();
             $user->save();
@@ -370,15 +358,12 @@ class PBXController extends Controller
         }
     }
 
-
     public function AgentBreak(Request $request)
     {
-
         $user = Auth::user();
 
         if ($user) {
-
-            if ($user->agent_type == "Outbound") {
+            if ($user->agent_type == 'Outbound') {
                 $ret = $this->issable->agent_unbreak($user->phone);
             }
             $ret = $this->issable->agent_break($user->phone, $request->get('id_break'));
@@ -395,9 +380,8 @@ class PBXController extends Controller
                 ->where('id', $request->get('id_break'))
                 ->first();
 
-
             $user->phone_status_id = 2;
-            $user->phone_status =  $resultb->name;
+            $user->phone_status = $resultb->name;
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-clock"></i>';
             $user->save();
 
@@ -418,13 +402,11 @@ class PBXController extends Controller
 
     public function AgentBreakAuto(Request $request)
     {
-
         $user = Auth::user();
 
         if ($user) {
-
             $user->phone_status_id = 2;
-            $user->phone_status =  'Auto-Pause';
+            $user->phone_status = 'Auto-Pause';
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-clock"></i>';
             $user->save();
 
@@ -441,22 +423,19 @@ class PBXController extends Controller
 
     public function AgentUnBreak(Request $request)
     {
-
         $user = Auth::user();
 
         if ($user) {
-
             $ret = $this->issable->agent_unbreak($user->phone);
 
-            if ($user->agent_type == "Outbound") {
+            if ($user->agent_type == 'Outbound') {
                 $ret = $this->issable->agent_break($user->phone, $this->outbound_id);
             }
 
             $user->phone_status_id = 1;
-            $user->phone_status = "พร้อมรับสาย" . " " . $user->agent_type;
+            $user->phone_status = 'พร้อมรับสาย' . ' ' . $user->agent_type;
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
             $user->save();
-
 
             if ($ret == true) {
                 return [
@@ -475,11 +454,10 @@ class PBXController extends Controller
 
     public function AgentRing(Request $request)
     {
-
         $user = Auth::user();
 
         if ($user) {
-            //check if queue call send to popup record
+            // check if queue call send to popup record
             if ($request->input('context') == 'ext-queues') {
                 DB::table('crm_incoming')
                     ->where('uniqid', $request->input('uniqid'))
@@ -491,17 +469,17 @@ class PBXController extends Controller
                     'context' => $request->input('context'),
                     'telno' => $request->input('telno'),
                     'agentno' => $request->input('agentno'),
-                    'calltime' => date("Y-m-d H:i:s"),
+                    'calltime' => date('Y-m-d H:i:s'),
                     'status' => 1
                 ]);
-                //outbound
+                // outbound
             } elseif ($request->input('context') == 'macro-dialout-trunk' || $request->input('context') == 'macro-dial-one' || $request->input('context') == 'from-internal') {
                 $outbound = Project_job_number::where('call_number', '=', $request->input('telno'))
                     ->where('dial_agent', '=', $user->id)
                     ->where('call_status', '=', 0)
                     ->orderBy('job_number_id', 'asc')
                     ->first();
-                //dd($request->input('telno'));
+                // dd($request->input('telno'));
                 if (!empty($outbound)) {
                     DB::table('crm_incoming')
                         ->where('uniqid', $request->input('uniqid'))
@@ -513,7 +491,7 @@ class PBXController extends Controller
                         'context' => 'ext-queues',
                         'telno' => $request->input('telno'),
                         'agentno' => $user->phone,
-                        'calltime' => date("Y-m-d H:i:s"),
+                        'calltime' => date('Y-m-d H:i:s'),
                         'status' => 1
                     ]);
 
@@ -521,14 +499,13 @@ class PBXController extends Controller
                         'cdr_uniqueid' => $request->input('uniqid'),
                         'dial_number' => $user->phone,
                         'call_status' => 1,
-                        'call_date' => date("Y-m-d H:i:s"),
+                        'call_date' => date('Y-m-d H:i:s'),
                     ]);
                 }
             }
 
-
             $user->phone_status_id = 4;
-            $user->phone_status = "กำลังรอสาย < " . $request->input('telno') . " >";
+            $user->phone_status = 'กำลังรอสาย < ' . $request->input('telno') . ' >';
             $user->phone_status_icon = '<i class="fa-solid fa-bell fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i>';
             $user->save();
             return [
@@ -544,11 +521,9 @@ class PBXController extends Controller
 
     public function AgentTalk(Request $request)
     {
-
         $user = Auth::user();
 
         if ($user) {
-
             DB::table('crm_incoming')
                 ->where('uniqid', $request->input('uniqid'))
                 ->update([
@@ -556,8 +531,8 @@ class PBXController extends Controller
                     'status' => 0
                 ]);
 
-            //outbound
-            //dd($request->input('context'));
+            // outbound
+            // dd($request->input('context'));
             if ($request->input('context') == 'macro-dialout-trunk' || $request->input('context') == 'macro-dial-one' || $request->input('context') == 'from-internal') {
                 $outbound = Project_job_number::where('call_number', $request->input('telno'))
                     ->where('dial_agent', $user->id)
@@ -568,7 +543,7 @@ class PBXController extends Controller
                     $outbound->update([
                         'dial_status' => 1,
                     ]);
-                    //set outbound warp
+                    // set outbound warp
                     DB::table('crm_incoming')
                         ->where('uniqid', $request->input('uniqid'))
                         ->update([
@@ -578,7 +553,7 @@ class PBXController extends Controller
             }
 
             $user->phone_status_id = 5;
-            $user->phone_status = "กำลังสนทนากับ < " . $request->input('telno') . " >";
+            $user->phone_status = 'กำลังสนทนากับ < ' . $request->input('telno') . ' >';
             $user->phone_status_icon = '<i class="fa-solid fa-phone-volume fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i>';
             $user->save();
             return [
@@ -592,16 +567,13 @@ class PBXController extends Controller
         }
     }
 
-
     public function AgentSpy(Request $request)
     {
-
         $user = Auth::user();
 
         if ($user) {
-
             $user->phone_status_id = 5;
-            $user->phone_status = "กำลัง " . $request->input('mode') . " < " . $request->input('telno') . " >";
+            $user->phone_status = 'กำลัง ' . $request->input('mode') . ' < ' . $request->input('telno') . ' >';
             $user->phone_status_icon = '<i class="fa-solid fa-phone-volume fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i>';
             $user->save();
             return [
@@ -614,18 +586,16 @@ class PBXController extends Controller
 
     public function AgentHold(Request $request)
     {
-
         $user = Auth::user();
 
         if ($user) {
-
             $uniqid = $request->input('uniqid');
 
             if (DB::table('crm_incoming')->where('uniqid', $uniqid)->exists()) {
                 DB::table('crm_incoming')
                     ->where('uniqid', $uniqid)
                     ->update([
-                        'start_hold' => date("Y-m-d H:i:s"),
+                        'start_hold' => date('Y-m-d H:i:s'),
                     ]);
 
                 return [
@@ -643,12 +613,10 @@ class PBXController extends Controller
 
     public function AgentUNHold(Request $request)
     {
-
         $user = Auth::user();
 
         if ($user) {
-
-            $resultb =  DB::table('crm_incoming')
+            $resultb = DB::table('crm_incoming')
                 ->where('uniqid', $request->input('uniqid'))
                 ->first();
             if ($resultb) {
@@ -681,19 +649,18 @@ class PBXController extends Controller
         $user = Auth::user();
 
         if ($user) {
-
             $tabid = DB::table('crm_incoming')
-                //->where('agentno', $request->input('extension'))
+                // ->where('agentno', $request->input('extension'))
                 ->where('agent_id', $user->id)
                 ->where('status', 1)
                 ->first();
             DB::table('crm_incoming')
-                //->where('agentno', $request->input('extension'))
+                // ->where('agentno', $request->input('extension'))
                 ->where('agent_id', $user->id)
                 ->where('status', 1)
                 ->delete();
             DB::table('crm_incoming')
-                //->where('agentno', $request->input('extension'))
+                // ->where('agentno', $request->input('extension'))
                 ->where('agent_id', $user->id)
                 ->where('status', 2)
                 ->delete();
@@ -705,7 +672,7 @@ class PBXController extends Controller
                 ->whereNull('datetime_end')
                 ->whereNull('duration')
                 ->get();
-            //dd($inqueue);
+            // dd($inqueue);
             if ($inqueue->isNotEmpty()) {
                 $inbreak = DB::connection('remote_connection')
                     ->table('call_center.audit')
@@ -725,7 +692,7 @@ class PBXController extends Controller
                         $user->phone_status_id = 2;
                     }
 
-                    if ($user->agent_type == "Outbound") {
+                    if ($user->agent_type == 'Outbound') {
                         $ck = DB::table('crm_incoming')
                             ->where('agent_id', $user->id)
                             ->orderByDesc('calltime')
@@ -736,7 +703,7 @@ class PBXController extends Controller
                                 'crm_id' => $user->id,
                                 'phone' => $user->phone,
                                 'uniqid' => $ck->uniqid,
-                                'wrap_start' => date("Y-m-d H:i:s"),
+                                'wrap_start' => date('Y-m-d H:i:s'),
                             ];
 
                             DB::connection('remote_connection')->table('wrap_data')->insert($dataToInsert);
@@ -749,29 +716,29 @@ class PBXController extends Controller
                                 ->whereNull('datetime_end')
                                 ->update(['crm_id' => $user->id]);
                             $user->phone_status_id = 3;
-                            $user->phone_status =  'Wrap UP';
+                            $user->phone_status = 'Wrap UP';
                             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-clock"></i>';
                         } else {
                             $user->phone_status_id = 1;
-                            $user->phone_status = "พร้อมรับสาย" . " " . $user->agent_type;
+                            $user->phone_status = 'พร้อมรับสาย' . ' ' . $user->agent_type;
                             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
                         }
                     } else {
-                        $user->phone_status =  $resultb->name;
+                        $user->phone_status = $resultb->name;
                         $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-clock"></i>';
                     }
                 } elseif ($user->phone_status_id == 2) {
-                    //auto pause
+                    // auto pause
                     $user->phone_status_id = 2;
                     $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-clock"></i>';
                 } else {
                     $user->phone_status_id = 1;
-                    $user->phone_status = "พร้อมรับสาย" . " " . $user->agent_type;
+                    $user->phone_status = 'พร้อมรับสาย' . ' ' . $user->agent_type;
                     $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
                 }
             } else {
                 $user->phone_status_id = 0;
-                $user->phone_status = "ไม่พร้อมรับสาย";
+                $user->phone_status = 'ไม่พร้อมรับสาย';
                 $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-xmark"></i>';
                 $user->logoff_time = Carbon::now();
             }
@@ -822,8 +789,7 @@ class PBXController extends Controller
                 ->limit(1)
                 ->first();
 
-
-            if ($context !== null && $context->context == "ext-queues") {
+            if ($context !== null && $context->context == 'ext-queues') {
                 $indb = DB::connection('remote_connection')
                     ->table('call_center.wrap_data')
                     ->where('uniqid', $context->uniqid)
@@ -834,7 +800,7 @@ class PBXController extends Controller
                         'crm_id' => $user->id,
                         'phone' => $user->phone,
                         'uniqid' => $context->uniqid,
-                        'wrap_start' => date("Y-m-d H:i:s"),
+                        'wrap_start' => date('Y-m-d H:i:s'),
                     ];
 
                     $resulth = DB::table('crm_incoming')->where('uniqid', $context->uniqid)->first();
@@ -842,7 +808,7 @@ class PBXController extends Controller
 
                     DB::connection('remote_connection')->table('wrap_data')->insert($dataToInsert);
 
-                    if ($user->agent_type == "Inbound") {
+                    if ($user->agent_type == 'Inbound') {
                         DB::connection('remote_connection')
                             ->table('call_center.call_entry')
                             ->where('uniqueid', $context->uniqid)
@@ -874,7 +840,7 @@ class PBXController extends Controller
                         ]);
                 }
 
-                //if ($user->agent_type == "Inbound") {
+                // if ($user->agent_type == "Inbound") {
                 $this->issable->agent_break($user->phone, $this->warp_id);
                 DB::connection('remote_connection')
                     ->table('call_center.audit')
@@ -882,11 +848,10 @@ class PBXController extends Controller
                     ->whereNotNull('id_break')
                     ->whereNull('datetime_end')
                     ->update(['crm_id' => $user->id]);
-                //}
-
+                // }
 
                 $user->phone_status_id = 3;
-                $user->phone_status =  'Wrap UP';
+                $user->phone_status = 'Wrap UP';
                 $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-clock"></i>';
                 $user->save();
 
@@ -901,7 +866,7 @@ class PBXController extends Controller
                 $user->phone_status = "พร้อมรับสาย";
                 $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
                 $user->save(); */
-                //in not queue get status from pbx and db
+                // in not queue get status from pbx and db
                 return [
                     'success' => true,
                     'id' => $user->phone_status_id,
@@ -914,11 +879,9 @@ class PBXController extends Controller
 
     public function AgentUnWarp(Request $request)
     {
-
         $user = Auth::user();
 
         if ($user) {
-
             $resultb = DB::connection('remote_connection')
                 ->table('call_center.wrap_data')
                 ->where('id_agent', $user->agent_id)
@@ -942,13 +905,13 @@ class PBXController extends Controller
                         'wrap_end' => $wrap_end,
                         'duration' => $duration,
                     ]);
-                if ($user->agent_type == "Inbound") {
+                if ($user->agent_type == 'Inbound') {
                     DB::connection('remote_connection')
                         ->table('call_center.call_entry')
                         ->where('uniqueid', $resultb->uniqid)
                         ->update([
                             'crm_id' => $user->id,
-                            //'duration_hold' => $hold_duration,
+                            // 'duration_hold' => $hold_duration,
                             'duration_warp' => $duration
                         ]);
 
@@ -957,7 +920,7 @@ class PBXController extends Controller
                         ->where('uniqueid', $resultb->uniqid)
                         ->update([
                             'crm_id' => $user->id,
-                            //'duration_hold' => $hold_duration,
+                            // 'duration_hold' => $hold_duration,
                             'duration_warp' => $duration
                         ]);
 
@@ -975,8 +938,6 @@ class PBXController extends Controller
                     'crm_id' => $user->id,
                 ]); */
 
-
-
                     $ret = $this->issable->agent_unbreak($user->phone);
                 } else {
                     $ret = $this->issable->agent_unbreak($user->phone);
@@ -985,7 +946,7 @@ class PBXController extends Controller
             }
 
             $user->phone_status_id = 1;
-            $user->phone_status = "พร้อมรับสาย" . " " . $user->agent_type;
+            $user->phone_status = 'พร้อมรับสาย' . ' ' . $user->agent_type;
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
             $user->save();
 
@@ -1006,14 +967,12 @@ class PBXController extends Controller
 
     public function AgentUnWarpapi(Request $request)
     {
-
         $user = User::where('phone', $request->input('phone'))
             ->where('phone_status_id', 3)
             ->orderby('login_time', 'desc')
             ->first();
 
         if ($user) {
-
             $resultb = DB::connection('remote_connection')
                 ->table('call_center.wrap_data')
                 ->where('id_agent', $user->agent_id)
@@ -1025,7 +984,6 @@ class PBXController extends Controller
 
             $duration = $wrap_start->diffInSeconds($wrap_end);
 
-
             DB::connection('remote_connection')
                 ->table('call_center.wrap_data')
                 ->where('id_agent', $user->agent_id)
@@ -1034,7 +992,7 @@ class PBXController extends Controller
                     'wrap_end' => $wrap_end,
                     'duration' => $duration,
                 ]);
-            if ($user->agent_type == "Inbound") {
+            if ($user->agent_type == 'Inbound') {
                 DB::connection('remote_connection')
                     ->table('call_center.call_entry')
                     ->where('uniqueid', $resultb->uniqid)
@@ -1058,7 +1016,6 @@ class PBXController extends Controller
                         'crm_id' => $user->id,
                     ]);
 
-
                 $ret = $this->issable->agent_unbreak($user->phone);
             } else {
                 $ck = DB::table('crm_incoming')
@@ -1075,7 +1032,7 @@ class PBXController extends Controller
             }
 
             $user->phone_status_id = 1;
-            $user->phone_status = "พร้อมรับสาย" . " " . $user->agent_type;
+            $user->phone_status = 'พร้อมรับสาย' . ' ' . $user->agent_type;
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
             $user->save();
 
@@ -1092,10 +1049,8 @@ class PBXController extends Controller
         }
     }
 
-
     public function TranferStatus(Request $request)
     {
-
         $user = Auth::user();
 
         if ($user) {
@@ -1135,11 +1090,8 @@ class PBXController extends Controller
         }
     }
 
-
-
     public function AgentStatus()
     {
-
         $user = Auth::user();
 
         if ($user) {
@@ -1158,18 +1110,24 @@ class PBXController extends Controller
     {
         $loginTimeSession = Session::get('login_time');
         $user = Auth::user();
+        return [
+            'success' => true,
+            'id' => $user->phone_status_id,
+            'message' => $user->phone_status,
+            'icon' => $user->phone_status_icon
+        ];
 
-        if ($user && $loginTimeSession->format('Y-m-d H:i:s') !== $user->login_time) {
-            Auth::logout();
-            return 1;
-        } else {
-            return [
-                'success' => true,
-                'id' => $user->phone_status_id,
-                'message' => $user->phone_status,
-                'icon' => $user->phone_status_icon
-            ];
-        }
+        // if ($user && $loginTimeSession->format('Y-m-d H:i:s') !== $user->login_time) {
+        //     Auth::logout();
+        //     return 1;
+        // } else {
+        //     return [
+        //         'success' => true,
+        //         'id' => $user->phone_status_id,
+        //         'message' => $user->phone_status,
+        //         'icon' => $user->phone_status_icon
+        //     ];
+        // }
     }
 
     public function AgentKickApi(Request $request)
@@ -1179,7 +1137,7 @@ class PBXController extends Controller
         if ($user) {
             $user->phone_status_id = 0;
             $user->phone = '';
-            $user->phone_status = "ไม่พร้อมรับสาย";
+            $user->phone_status = 'ไม่พร้อมรับสาย';
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-xmark"></i>';
             $user->logoff_time = Carbon::now();
             $user->save();
@@ -1190,14 +1148,12 @@ class PBXController extends Controller
         }
     }
 
-
     public function AgentPhoneRegis(Request $request)
     {
         $user = Auth::user();
 
         if ($user) {
-
-            //get ipphon ip
+            // get ipphon ip
             $client = new Client();
 
             $api_url = config('asterisk.api_serv.address');
@@ -1211,10 +1167,9 @@ class PBXController extends Controller
                 dd("Error parsing JSON or 'address-ip' not found in the response");
             }
 
-
             $user->phone_ip = $addressIp;
             $user->phone_status_id = 1;
-            $user->phone_status = "พร้อมรับสาย" . " " . $user->agent_type;
+            $user->phone_status = 'พร้อมรับสาย' . ' ' . $user->agent_type;
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
             $user->save();
 
@@ -1234,10 +1189,9 @@ class PBXController extends Controller
         $user = Auth::user();
 
         if ($user) {
-
             $user->phone_status_id = -1;
-            $user->phone_ip  = '';
-            $user->phone_status = "โทรศัพท์ไม่พร้อมใช้งาน";
+            $user->phone_ip = '';
+            $user->phone_status = 'โทรศัพท์ไม่พร้อมใช้งาน';
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-plug-circle-exclamation fa-bounce" style=" --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1;"></i>';
             $user->save();
 
@@ -1252,7 +1206,6 @@ class PBXController extends Controller
         }
     }
 
-
     public function logoffAgentFromQueuebySup(Request $request)
     {
         $id = $request->get('id');
@@ -1260,13 +1213,12 @@ class PBXController extends Controller
         $user = User::find($id);
 
         if ($user) {
-
-            //check if not already logoff
+            // check if not already logoff
             if ($user->phone_status_id !== 0) {
                 $ret = $this->issable->agent_logoff($user->phone);
 
                 $user->phone_status_id = 0;
-                $user->phone_status = "ไม่พร้อมรับสาย";
+                $user->phone_status = 'ไม่พร้อมรับสาย';
                 $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-xmark"></i>';
                 $user->logoff_time = Carbon::now();
                 if ($logout == 1) {
@@ -1291,12 +1243,10 @@ class PBXController extends Controller
 
     public function AgentBreakbySup(Request $request)
     {
-
         $id = $request->get('id');
         $user = User::find($id);
 
         if ($user) {
-
             $ret = $this->issable->agent_break($user->phone, $this->sup_break_id);
 
             DB::connection('remote_connection')
@@ -1312,7 +1262,7 @@ class PBXController extends Controller
                 ->first();
 
             $user->phone_status_id = 2;
-            $user->phone_status =  $resultb->name;
+            $user->phone_status = $resultb->name;
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-clock"></i>';
             $user->save();
 
@@ -1330,14 +1280,11 @@ class PBXController extends Controller
 
     public function AgentUnBreakbySup(Request $request)
     {
-
         $id = $request->get('id');
         $user = User::find($id);
 
         if ($user) {
-
-
-            if ($user->phone_status == "Warp UP") {
+            if ($user->phone_status == 'Warp UP') {
                 $resultb = DB::connection('remote_connection')
                     ->table('call_center.wrap_data')
                     ->where('id_agent', $user->agent_id)
@@ -1363,7 +1310,7 @@ class PBXController extends Controller
                     ->where('uniqueid', $resultb->uniqid)
                     ->update([
                         'crm_id' => $user->id,
-                        //'duration_hold' => $hold_duration,
+                        // 'duration_hold' => $hold_duration,
                         'duration_warp' => $duration
                     ]);
 
@@ -1372,14 +1319,14 @@ class PBXController extends Controller
                     ->where('uniqueid', $resultb->uniqid)
                     ->update([
                         'crm_id' => $user->id,
-                        //'duration_hold' => $hold_duration,
+                        // 'duration_hold' => $hold_duration,
                         'duration_warp' => $duration
                     ]);
             }
 
             $ret = $this->issable->agent_unbreak($user->phone);
             $user->phone_status_id = 1;
-            $user->phone_status = "พร้อมรับสาย" . " " . $user->agent_type;
+            $user->phone_status = 'พร้อมรับสาย' . ' ' . $user->agent_type;
             $user->phone_status_icon = '<i class="fa-solid fa-xl fa-user-check"></i>';
             $user->save();
 
