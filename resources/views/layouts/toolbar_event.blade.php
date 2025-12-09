@@ -34,7 +34,17 @@
             //const currentTimestamp = Math.floor(Date.now() / 1000) - response.data.lastpause;
             const currentTimestamp = (response.timestamp / 1000) - response.data.lastpause;
             const formattedTime = formatTime(currentTimestamp);
-            $('#pausereason').html(response.data.pausedreason);
+            const mapText = {
+                'Toilet': 'เข้าห้องน้ำ',
+                'Lunch': 'รับประทานอาหารกลางวัน',
+                'Meeting': 'ประชุม'
+            };
+
+            let reason = response.data.pausedreason;
+            let text = mapText[reason] ?? reason;
+
+            $('#pausereason').html(text);
+            //$('#pausereason').html(response.data.pausedreason);
             $('#pausedur').html(formattedTime);
         }
 
