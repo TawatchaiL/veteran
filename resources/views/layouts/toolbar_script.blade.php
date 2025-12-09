@@ -572,6 +572,7 @@
 
 
     //pause list
+    /*
     btn_pause.click(function() {
         $.ajax({
             url: "{{ route('pause_list') }}",
@@ -595,8 +596,42 @@
             }
         });
     });
+*/
 
+    btn_pause.click(function() {
 
+        const mapText = {
+            'Toilet': 'เข้าห้องน้ำ',
+            'Lunch': 'รับประทานอาหารกลางวัน',
+            'Meeting': 'ประชุม'
+        };
+
+        $.ajax({
+            url: "{{ route('pause_list') }}",
+            method: 'post',
+            data: {
+                _token: token,
+            },
+            async: true,
+            success: function(result) {
+
+                $("#pause_list").empty();
+
+                result.forEach(function(item) {
+
+                    let thName = mapText[item.name] ?? item.name;
+
+                    var newDropdownItem = $("<a>").attr({
+                        class: "dropdown-item button_break",
+                        href: "#",
+                        "data-id": item.id
+                    }).text(thName);
+
+                    $("#pause_list").append(newDropdownItem);
+                });
+            }
+        });
+    });
 
     //blind tranfer
     $(".button_tranfer").click(function() {
