@@ -336,7 +336,7 @@ class LoginController extends Controller
     public function clear_login($agent_id, $phone)
     {
 
-        $this->issable->agent_logoff($phone);
+        //$this->issable->agent_logoff($phone);
         //update agent number
         /* DB::connection('remote_connection')
             ->table('call_center.agent')
