@@ -131,4 +131,32 @@ class AsteriskAmiService
         $remote->disconnect();
         return true;
     }
+
+    public function blacklist_add(string $phone): bool
+    {
+        $remote = $this->asterisk_ami();
+
+        if (!$remote) {
+            return false;
+        }
+
+        $remote->Command("database put blacklist {$phone} 1");
+        $remote->disconnect();
+
+        return true;
+    }
+
+    public function blacklist_remove(string $phone): bool
+    {
+        $remote = $this->asterisk_ami();
+
+        if (!$remote) {
+            return false;
+        }
+
+        $remote->Command("database del blacklist {$phone}");
+        $remote->disconnect();
+
+        return true;
+    }
 }
