@@ -37,7 +37,7 @@ return [
 
         'remote_connection' => [
             'driver' => 'mysql',
-            'host' => env('DB_REMOTE_HOST','10.148.0.4'), // IP address or hostname of the remote machine
+            'host' => env('DB_REMOTE_HOST','10.10.0.9'), // IP address or hostname of the remote machine
             'port' => env('DB_REMOTE_PORT','3306'), // Default MySQL port
             'database' => env('DB_REMOTE_DATABASE','call_center'),
             'username' => env('DB_REMOTE_USERNAME','crm'),
