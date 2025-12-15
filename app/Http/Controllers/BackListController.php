@@ -133,7 +133,7 @@ class BackListController extends Controller
             $blacklist = BackList::create($data);
 
             // ใส่ AstDB
-            $ami->blacklist_add($blacklist->phone);
+            $ami->blacklist_add($request->phone);
 
             DB::commit();
 
