@@ -21,7 +21,7 @@ class BackListController extends Controller
     public function __construct()
     {
         //$this->middleware('auth');
-        $this->middleware('permission:holiday-list|holiday-create|holiday-edit|holiday-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:holiday-list|holiday-create|holiday-edit|holiday-delete', ['only' => ['index']]);
         $this->middleware('permission:holiday-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:holiday-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:holiday-delete', ['only' => ['destroy']]);
@@ -121,8 +121,8 @@ class BackListController extends Controller
         $data = [
             'phone'        => $request->phone,
             'description'  => $request->description,
-            'created_by'   => auth()->id(),
-            'updated_by'   => auth()->id(),
+            //'created_by'   => auth()->id(),
+            //'updated_by'   => auth()->id(),
         ];
 
         // 3) DB → AMI (transaction)
@@ -145,10 +145,10 @@ class BackListController extends Controller
             DB::rollBack();
 
             // (แนะนำ) log error ไว้ดูย้อนหลัง
-            \Log::error('Blacklist store failed', [
-                'error' => $e->getMessage(),
-                'phone' => $request->phone,
-            ]);
+            //\Log::error('Blacklist store failed', [
+            //    'error' => $e->getMessage(),
+            //    'phone' => $request->phone,
+            //]);
 
             return response()->json([
                 'error' => 'ไม่สามารถเพิ่ม Backlist ได้'
@@ -159,10 +159,6 @@ class BackListController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Holidays $holidays)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -199,7 +195,7 @@ class BackListController extends Controller
         $holiday = [
             'phone' => $request->get('phone'),
             'description' => $request->get('description'),
-            'updated_by' => auth()->id(),
+            //'updated_by' => auth()->id(),
         ];
 
 
