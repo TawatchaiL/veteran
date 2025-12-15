@@ -121,8 +121,8 @@ class BackListController extends Controller
         $data = [
             'phone'        => $request->phone,
             'description'  => $request->description,
-            //'created_by'   => auth()->id(),
-            //'updated_by'   => auth()->id(),
+            'created_by'   => auth()->id(),
+            'updated_by'   => auth()->id(),
         ];
 
         // 3) DB → AMI (transaction)
@@ -133,7 +133,7 @@ class BackListController extends Controller
             $blacklist = BackList::create($data);
 
             // ใส่ AstDB
-            $ami->blacklist_add($blacklist->phone);
+            //$ami->blacklist_add($blacklist->phone);
 
             DB::commit();
 
