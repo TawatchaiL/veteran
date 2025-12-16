@@ -550,6 +550,7 @@
             'outbound',
             'callsurvey',
             'holiday',
+            'backlist',
             'billing',
             'notify',
             'customize',
@@ -563,6 +564,7 @@
                 'outbound',
                 'callsurvey',
                 'holiday',
+                'backlist',
                 'billing',
                 'notify',
                 'customize',
@@ -594,6 +596,12 @@
                 <a href="{{ route('holiday') }}" class="nav-link {{ Request::is('holiday') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
                     <p>ตั้งค่าวันหยุดประจำปี</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('backlist') }}" class="nav-link {{ Request::is('backlist') ? 'active' : '' }}">
+                    <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
+                    <p>เบอร์โทรศัพท์ที่ต้องการบล็อก</p>
                 </a>
             </li>
             <li class="nav-item">
