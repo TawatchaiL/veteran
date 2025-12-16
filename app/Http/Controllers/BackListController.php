@@ -230,7 +230,7 @@ class BackListController extends Controller
             return ['success' => false, 'message' => 'ลบ Backlist ไม่สำเร็จ'];
         }
     }
-
+/*
     public function destroy_all(Request $request)
     {
 
@@ -242,5 +242,36 @@ class BackListController extends Controller
         }
 
         return redirect('/backlist')->with('success', 'ลบ Backlist เรียบร้อยแล้ว');
+    }
+*/
+    public function destroy_all(Request $request, AsteriskAmiService $ami)
+    {
+        $ids = $request->get('table_records'); // ผ่านการเช็คมาแล้ว
+
+        DB::beginTransaction();
+
+        try {
+            // ดึงรายการที่จะลบ
+            $blacklists = BackList::whereIn('id', $ids)->get();
+
+            // ลบออกจาก AstDB
+            foreach ($blacklists as $item) {
+                $ami->blacklist_remove($item->phone);
+            }
+
+            // ลบจาก DB
+            BackList::whereIn('id', $ids)->delete();
+
+            DB::commit();
+
+            return redirect('/backlist')
+                ->with('success', 'ลบ Backlist เรียบร้อยแล้ว');
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            return redirect('/backlist')
+                ->with('error', 'ลบ Backlist ไม่สำเร็จ');
+        }
     }
 }
