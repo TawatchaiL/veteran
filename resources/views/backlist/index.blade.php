@@ -49,7 +49,7 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-list-ol"></i> วันหยุดประจำปี</h3>
+                            <h3 class="card-title"><i class="fas fa-list-ol"></i> แบล็กลิสต์</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -71,7 +71,7 @@
                                     });
                                 </script>
                             @endif
-                            <form method="post" action="{{ route('holiday.destroy_all') }}" name="delete_all"
+                            <form method="post" action="{{ route('backlist.destroy_all') }}" name="delete_all"
                                 id="delete_all">
                                 @csrf
                                 @method('POST')
@@ -81,6 +81,7 @@
                                             <th width="80px"><input type="checkbox" id="check-all" class="flat"></th>
                                             <th>เบอร์โทรศัพท์</th>
                                             <th>เหตุผล</th>
+                                            <th width="120px"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
