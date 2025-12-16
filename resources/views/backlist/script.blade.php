@@ -150,6 +150,7 @@
                         });
                         $('.form').trigger('reset');
                         $('#CreateModal').modal('hide');
+                        table.ajax.reload(null, false);
                     }
                 }
             });
