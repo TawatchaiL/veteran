@@ -100,8 +100,8 @@
 
         $(document).on('click', '#CreateButton', function(e) {
             e.preventDefault();
-            $('#Addphone').html('')
-            $('#Adddescription').html('')
+            $('#Addphone').val('');
+            $('#Adddescription').val('');
             $('.alert-danger').html('');
             $('.alert-danger').hide();
             $('.alert-success').html('');
