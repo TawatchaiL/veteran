@@ -76,8 +76,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/backlist', [App\Http\Controllers\BackListController::class, 'index'])->name('backlist');
     Route::post('/backlist/store', [App\Http\Controllers\BackListController::class, 'store'])->name('backlist.store');
-    Route::get('/backlist/edit/{id}', [App\Http\Controllers\BackListController::class, 'edit'])->name('backlist.edit');
-    Route::put('/backlist/save/{id}', [App\Http\Controllers\BackListController::class, 'update'])->name('backlist.save');
+    //Route::get('/backlist/edit/{id}', [App\Http\Controllers\BackListController::class, 'edit'])->name('backlist.edit');
+    //Route::put('/backlist/save/{id}', [App\Http\Controllers\BackListController::class, 'update'])->name('backlist.save');
     Route::delete('/backlist/destroy', [App\Http\Controllers\BackListController::class, 'destroy'])->name('backlist.destroy');
     Route::post('/backlist/destroy_all', [App\Http\Controllers\BackListController::class, 'destroy_all'])->name('backlist.destroy_all');
 

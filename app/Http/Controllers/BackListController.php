@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
+use Illuminate\Validation\Rule;
 use App\Services\AsteriskAmiService;
 
 class BackListController extends Controller
@@ -65,7 +66,7 @@ class BackListController extends Controller
 
     public function store(Request $request, AsteriskAmiService $ami)
     {
-        // 1) Validation
+        /*
         $validator = Validator::make($request->all(), [
             'phone' => 'required',
             'description' => 'required',
@@ -73,7 +74,15 @@ class BackListController extends Controller
             'phone.required' => 'กรุณาระบุเบอร์โทร',
             'description.required' => 'กรุณาระบุรายละเอียด',
         ]);
-
+        */
+        $validator = Validator::make($request->all(), [
+            'phone' => 'required|unique:back_lists,phone',
+            'description' => 'required',
+        ], [
+            'phone.required' => 'กรุณาระบุเบอร์โทร',
+            'phone.unique'   => 'เบอร์โทรนี้มีอยู่ในระบบแล้ว',
+            'description.required' => 'กรุณาระบุรายละเอียด',
+        ]);
         if ($validator->fails()) {
             return response()->json([
                 'errors' => $validator->errors()->all()
@@ -118,7 +127,7 @@ class BackListController extends Controller
             ], 500);
         }
     }
-
+/*
     public function edit($id)
     {
         $data =  BackList::find($id);
@@ -157,7 +166,7 @@ class BackListController extends Controller
 
         return response()->json(['success' => 'แก้ไข เบอร์โทรศัพท์แบล็กลิสต์ เรียบร้อยแล้ว']);
     }
-
+*/
     public function destroy(Request $request, AsteriskAmiService $ami)
     {
         $id = $request->get('id');
