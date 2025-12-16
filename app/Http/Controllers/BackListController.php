@@ -63,38 +63,6 @@ class BackListController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    /*
-    public function store(Request $request, AsteriskAmiService $ami)
-    {
-        $validator =  Validator::make($request->all(), [
-            'phone' => 'required',
-            'description' => 'required',
-        ], [
-            'phone.required' => 'กรุณาระบุเบอร์โทร',
-            'description.required' => 'กรุณาระบุรายละเอียด',
-        ]);
-
-
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()->all()]);
-        }
-
-        $holiday = [
-            'phone' => $request->get('phone'),
-            'description' => $request->get('description'),
-            'created_by' => auth()->id(),
-            'updated_by' => auth()->id(),
-        ];
-
-        $ami->blacklist_add($request->phone);
-
-        BackList::create($holiday);
-        return response()->json(['success' => 'เพิ่ม Backlist เรียบร้อยแล้ว']);
-    }
-*/
     public function store(Request $request, AsteriskAmiService $ami)
     {
         // 1) Validation
@@ -151,13 +119,6 @@ class BackListController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit($id)
     {
         $data =  BackList::find($id);
@@ -167,9 +128,6 @@ class BackListController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, $id)
     {
         $rules = [
@@ -200,16 +158,6 @@ class BackListController extends Controller
         return response()->json(['success' => 'แก้ไข เบอร์โทรศัพท์แบล็กลิสต์ เรียบร้อยแล้ว']);
     }
 
-    /*
-
-    public function destroy(Request $request)
-    {
-        $id = $request->get('id');
-        BackList::find($id)->delete();
-        return ['success' => true, 'message' => 'ลบ Backlist เรียบร้อยแล้ว'];
-    }
-    */
-
     public function destroy(Request $request, AsteriskAmiService $ami)
     {
         $id = $request->get('id');
@@ -230,20 +178,7 @@ class BackListController extends Controller
             return ['success' => false, 'message' => 'ลบ เบอร์โทรศัพท์แบล็กลิสต์ ไม่สำเร็จ'];
         }
     }
-/*
-    public function destroy_all(Request $request)
-    {
 
-        $arr_del  = $request->get('table_records'); //$arr_ans is Array MacAddress
-
-        for ($xx = 0; $xx < count($arr_del); $xx++) {
-            //BackList::find($arr_del[$xx])->delete();
-            BackList::whereIn('id', $arr_del)->delete();
-        }
-
-        return redirect('/backlist')->with('success', 'ลบ Backlist เรียบร้อยแล้ว');
-    }
-*/
     public function destroy_all(Request $request, AsteriskAmiService $ami)
     {
         $ids = $request->get('table_records'); // ผ่านการเช็คมาแล้ว
