@@ -133,7 +133,7 @@ class BackListController extends Controller
             DB::commit();
 
             return response()->json([
-                'success' => 'เพิ่ม Backlist เรียบร้อยแล้ว'
+                'success' => 'เพิ่ม เบอร์โทรศัพท์แบล็กลิสต์ เรียบร้อยแล้ว'
             ]);
 
         } catch (\Exception $e) {
@@ -146,7 +146,7 @@ class BackListController extends Controller
             //]);
 
             return response()->json([
-                'error' => 'ไม่สามารถเพิ่ม Backlist ได้'
+                'error' => 'ไม่สามารถเพิ่ม เบอร์โทรศัพท์แบล็กลิสต์ ได้'
             ], 500);
         }
     }
@@ -197,7 +197,7 @@ class BackListController extends Controller
         $update = BackList::find($id);
         $update->update($holiday);
 
-        return response()->json(['success' => 'แก้ไข Backlist เรียบร้อยแล้ว']);
+        return response()->json(['success' => 'แก้ไข เบอร์โทรศัพท์แบล็กลิสต์ เรียบร้อยแล้ว']);
     }
 
     /*
@@ -223,11 +223,11 @@ class BackListController extends Controller
 
             DB::commit();
 
-            return ['success' => true, 'message' => 'ลบ Backlist เรียบร้อยแล้ว'];
+            return ['success' => true, 'message' => 'ลบ เบอร์โทรศัพท์แบล็กลิสต์ เรียบร้อยแล้ว'];
 
         } catch (\Exception $e) {
             DB::rollBack();
-            return ['success' => false, 'message' => 'ลบ Backlist ไม่สำเร็จ'];
+            return ['success' => false, 'message' => 'ลบ เบอร์โทรศัพท์แบล็กลิสต์ ไม่สำเร็จ'];
         }
     }
 /*
@@ -265,13 +265,13 @@ class BackListController extends Controller
             DB::commit();
 
             return redirect('/backlist')
-                ->with('success', 'ลบ Backlist เรียบร้อยแล้ว');
+                ->with('success', 'ลบ เบอร์โทรศัพท์แบล็กลิสต์ เรียบร้อยแล้ว');
 
         } catch (\Exception $e) {
             DB::rollBack();
 
             return redirect('/backlist')
-                ->with('error', 'ลบ Backlist ไม่สำเร็จ');
+                ->with('error', 'ลบ เบอร์โทรศัพท์แบล็กลิสต์ ไม่สำเร็จ');
         }
     }
 }

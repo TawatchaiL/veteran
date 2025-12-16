@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <h4 class="modal-title"><i class="fas fa-list-ol"></i> เพิ่ม เบอร์โทรศัพท์ที่ต้องการบล็อก</h4>
+                <h4 class="modal-title"><i class="fas fa-list-ol"></i> เพิ่ม เบอร์โทรศัพท์แบล็กลิสต์</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

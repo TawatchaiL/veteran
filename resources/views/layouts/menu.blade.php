@@ -601,7 +601,7 @@
             <li class="nav-item">
                 <a href="{{ route('backlist') }}" class="nav-link {{ Request::is('backlist') ? 'active' : '' }}">
                     <i class="fa-solid fa-xs fa-angle-right nav-icon"></i>
-                    <p>เบอร์โทรศัพท์ที่ต้องการบล็อก</p>
+                    <p>เบอร์โทรศัพท์แบล็กลิสต์</p>
                 </a>
             </li>
             <li class="nav-item">
