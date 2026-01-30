@@ -248,7 +248,8 @@ class ContactController extends Controller
             ->where(function ($query) {
                 $query->orWhere('status', '=', '0')
                     ->orWhere('status', '=', '1');
-            })->get();
+            })->limit(5)
+            ->get();
 
         $html = '';
         $tab_link = '';
