@@ -615,6 +615,7 @@
             var discase = nextcase + 1;
 
             // ================= เริ่มส่วนที่แก้ไข/เพิ่มเติม =================
+            console.log("Check Data -> levcase:", levcase, "| parent_id:", parent_id, "| cardId:", cardId);
             if (levcase === 1) {
                 switch (parent_id) {
                     case "288":
