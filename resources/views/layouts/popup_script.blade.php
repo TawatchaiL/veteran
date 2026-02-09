@@ -615,9 +615,10 @@
             var discase = nextcase + 1;
 
             // ================= เริ่มส่วนที่แก้ไข/เพิ่มเติม =================
-            console.log("Check Data -> levcase:", levcase, "| parent_id:", parent_id, "| cardId:", cardId);
+            //console.log("Check Data -> levcase:", levcase, "| parent_id:", parent_id, "| cardId:", cardId);
+            var paid = Array.isArray(parent_id) ? parent_id[0] : parent_id;
             if (levcase === 1) {
-                switch (parent_id) {
+                switch (paid) {
                     case "288":
                         $('#tranferstatusp' + cardId).val("มีการโอนสาย").trigger('change');
                         break;
