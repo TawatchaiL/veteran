@@ -613,6 +613,24 @@
             var parent_id = $(this).val();
             var nextcase = levcase + 1;
             var discase = nextcase + 1;
+
+            // ================= เริ่มส่วนที่แก้ไข/เพิ่มเติม =================
+            if (levcase === 1) {
+                switch (parent_id) {
+                    case "288":
+                        $('#tranferstatusp' + cardId).val("มีการโอนสาย").trigger('change');
+                        break;
+                    case "309":
+                        $('#tranferstatusp' + cardId).val("ไม่มีการโอนสาย").trigger('change');
+                        break;
+                    default:
+                        $('#tranferstatusp' + cardId).val("มีการโอนสาย").trigger('change');
+                        break;
+                }
+            }
+            // ================= สิ้นสุดส่วนที่แก้ไข =================
+
+
             if (parent_id != '' && levcase < 6) {
                 for (let i = nextcase; i < 7; i++) {
                     if (i === 2) {
